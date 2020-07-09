@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ru">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.1">
 <context>
     <name>AccountCheckModel</name>
     <message>
         <source>(category)</source>
-        <translation type="unfinished"></translation>
+        <translation>(категория)</translation>
     </message>
     <message>
         <source>(feed)</source>
-        <translation type="unfinished"></translation>
+        <translation>(канал)</translation>
     </message>
 </context>
 <context>
@@ -232,11 +230,11 @@
     </message>
     <message>
         <source>Removing starred messages...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Starred messages purged...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -277,7 +275,7 @@
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -289,14 +287,11 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
-Этот сайт содержит %n канал(ов).</numerusform>
-            <numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
-Этот сайт содержит %n канал(ов).</numerusform>
-            <numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
-Этот сайт содержит %n канал(ов).</numerusform>
-        </translation>
+        <translation><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
+Этот сайт содержит %n канал(ов).</numerusform><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
+Этот сайт содержит %n канал(ов).</numerusform><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
+Этот сайт содержит %n канал(ов).</numerusform><numerusform>Нажмите меня, чтобы добавить каналы с этого сайта.
+Этот сайт содержит %n канал(ов).</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -382,7 +377,7 @@ This website contains %n feed(s).</source>
         <translation>Скачивание завершено</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Файл &quot;%1&quot; загружен.
 Нажмите здесь, чтобы открыть.</translation>
@@ -408,19 +403,11 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n минута осталась</numerusform>
-            <numerusform>%n минуты осталось</numerusform>
-            <numerusform>%n минут осталось</numerusform>
-        </translation>
+        <translation><numerusform>%n минута осталась</numerusform><numerusform>%n минуты осталось</numerusform><numerusform>%n минут осталось</numerusform><numerusform>%n минуты осталось</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>осталась %n секунда</numerusform>
-            <numerusform>осталось %n секунды</numerusform>
-            <numerusform>осталось %n секунд</numerusform>
-        </translation>
+        <translation><numerusform>осталась %n секунда</numerusform><numerusform>осталось %n секунды</numerusform><numerusform>осталось %n секунд</numerusform><numerusform>осталось %n секунды</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -440,11 +427,7 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Загрузка %n файла...</numerusform>
-            <numerusform>Загрузка %n файлов...</numerusform>
-            <numerusform>Загрузка %n файлов...</numerusform>
-        </translation>
+        <translation><numerusform>Загрузка %n файла...</numerusform><numerusform>Загрузка %n файлов...</numerusform><numerusform>Загрузка %n файлов...</numerusform><numerusform>Загрузка %n файлов...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -476,20 +459,12 @@ Click here to open parent directory.</source>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
-            <numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
-            <numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
-        </translation>
+        <translation><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического обновления)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
-            <numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
-            <numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform>
-        </translation>
+        <translation><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления)</numerusform></translation>
     </message>
     <message>
         <source>no errors</source>
@@ -513,13 +488,13 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -549,11 +524,7 @@ Status: %3</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation>
-            <numerusform>Будет автоматически обновляться %n канал(ов).</numerusform>
-            <numerusform>Будет автоматически обновляться %n канал(ов).</numerusform>
-            <numerusform>Будет автоматически обновляться %n канал(ов).</numerusform>
-        </translation>
+        <translation><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform><numerusform>Будет автоматически обновляться %n канал(ов).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -678,7 +649,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for important messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -889,11 +860,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform>день</numerusform>
-            <numerusform>дня</numerusform>
-            <numerusform>дней</numerusform>
-        </translation>
+        <translation><numerusform>день</numerusform><numerusform>дня</numerusform><numerusform>дней</numerusform><numerusform>дня</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1071,7 +1038,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1174,7 +1141,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1277,47 +1244,47 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Edit existing Nextcloud News account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1488,7 +1455,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2148,178 +2115,178 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show only &amp;unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Message &amp;filters</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
     <message>
         <source>Message filters</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Remove selected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Add new</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Check all</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Uncheck all</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Message filter details</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Заголовок</translation>
+        <translation>Заголовок</translation>
     </message>
     <message>
         <source>Title of message filter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>JavaScript code</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sample message</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished">Чтение</translation>
+        <translation>Чтение</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation type="unfinished">Важное</translation>
+        <translation>Важное</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"></translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Автор</translation>
+        <translation>Автор</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished">Дата создания</translation>
+        <translation>Дата создания</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="unfinished">Контент</translation>
+        <translation>Контент</translation>
     </message>
     <message>
         <source>Script output</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Test!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Beautify!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Detailed &amp;help</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>New message filter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Message will be %1.
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>ACCEPTED</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>REJECTED</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Output (modified) message is:
-  Title = &apos;%1&apos;
-  URL = &apos;%2&apos;
-  Author = &apos;%3&apos;
-  Is read/important = &apos;%4/%5&apos;
-  Created on = &apos;%6&apos;
+  Title = '%1'
+  URL = '%2'
+  Author = '%3'
+  Is read/important = '%4/%5'
+  Created on = '%6'
   Contents = &apos;%7&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot find &apos;clang-format&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Beautifier was running for too long time</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2855,7 +2822,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2945,11 +2912,11 @@ Login tokens expiration: %2</source>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You can find all important messages here.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3376,11 +3343,7 @@ Login tokens expiration: %2</source>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation>
-            <numerusform>Показать больше сообщений (осталось %n)</numerusform>
-            <numerusform>Показать больше сообщений (осталось %n)</numerusform>
-            <numerusform>Показать больше сообщений (осталось %n)</numerusform>
-        </translation>
+        <translation><numerusform>Показать больше сообщений (осталось %n)</numerusform><numerusform>Показать больше сообщений (осталось %n)</numerusform><numerusform>Показать больше сообщений (осталось %n)</numerusform><numerusform>Показать больше сообщений (осталось %n)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3411,11 +3374,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Navigate to website</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>To login, you need to navigate to this website:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3460,17 +3423,15 @@ Login tokens expiration: %2</source>
         <source>
 
 + %n other feeds.</source>
-        <translation>
-            <numerusform>
+        <translation><numerusform>
 
-+ %n другой канал.</numerusform>
-            <numerusform>
++ %n другой канал.</numerusform><numerusform>
 
-+ %n других канала.</numerusform>
-            <numerusform>
++ %n других канала.</numerusform><numerusform>
 
-+ %n других каналов.</numerusform>
-        </translation>
++ %n других каналов.</numerusform><numerusform>
+
++ %n других каналов.</numerusform></translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3525,7 +3486,7 @@ Tiny Tiny RSS - это программа для чтения и агрегац�
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3540,11 +3501,7 @@ version by clicking this popup notification.</source>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n удаленное сообщение.</numerusform>
-            <numerusform>%n удаленных сообщения.</numerusform>
-            <numerusform>%n удаленных сообщений.</numerusform>
-        </translation>
+        <translation><numerusform>%n удаленное сообщение.</numerusform><numerusform>%n удаленных сообщения.</numerusform><numerusform>%n удаленных сообщений.</numerusform><numerusform>%n удаленных сообщения.</numerusform></translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3560,11 +3517,7 @@ version by clicking this popup notification.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n непрочитанное(ых) сообщение(й)</numerusform>
-            <numerusform>%n непрочитанное(ых) сообщение(й)</numerusform>
-            <numerusform>%n непрочитанное(ых) сообщение(й)</numerusform>
-        </translation>
+        <translation><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3788,7 +3741,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4065,7 +4018,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Update all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4219,20 +4172,20 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4448,19 +4401,11 @@ Unread news: %2</source>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation>
-            <numerusform>%n час(ов)</numerusform>
-            <numerusform>%n час(ов)</numerusform>
-            <numerusform>%n час(ов)</numerusform>
-        </translation>
+        <translation><numerusform>%n час(ов)</numerusform><numerusform>%n час(ов)</numerusform><numerusform>%n час(ов)</numerusform><numerusform>%n час(ов)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation>
-            <numerusform>%n минут(а)</numerusform>
-            <numerusform>%n минут(а)</numerusform>
-            <numerusform>%n минут(а)</numerusform>
-        </translation>
+        <translation><numerusform>%n минут(а)</numerusform><numerusform>%n минут(а)</numerusform><numerusform>%n минут(а)</numerusform><numerusform>%n минут(а)</numerusform></translation>
     </message>
     <message>
         <source> and </source>
@@ -4468,11 +4413,7 @@ Unread news: %2</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
