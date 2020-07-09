@@ -52,7 +52,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setAutoUpdateType(other.autoUpdateType());
   setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
   setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
-  setFilters(other.messageFilters());
+  setMessageFilters(other.messageFilters());
 }
 
 Feed::~Feed() = default;
@@ -288,8 +288,18 @@ QList<QPointer<MessageFilter>> Feed::messageFilters() const {
   return m_messageFilters;
 }
 
-void Feed::setFilters(const QList<QPointer<MessageFilter>>& filters) {
+void Feed::setMessageFilters(const QList<QPointer<MessageFilter>>& filters) {
   m_messageFilters = filters;
+}
+
+void Feed::removeMessageFilter(MessageFilter* filter) {
+  // TODO: check this.
+
+  int idx = m_messageFilters.indexOf(filter);
+
+  if (idx >= 0) {
+    m_messageFilters.removeAll(filter);
+  }
 }
 
 QString Feed::additionalTooltip() const {

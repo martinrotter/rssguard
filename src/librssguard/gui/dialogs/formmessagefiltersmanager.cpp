@@ -15,6 +15,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/accountcheckmodel.h"
+#include "services/abstract/feed.h"
 
 FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const QList<ServiceRoot*>& accounts, QWidget* parent)
   : QDialog(parent), m_feedsModel(new AccountCheckModel(this)), m_rootItem(new RootItem()),
@@ -45,15 +46,16 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
   connect(m_ui.m_txtScript, &QPlainTextEdit::textChanged, this, &FormMessageFiltersManager::saveSelectedFilter);
   connect(m_ui.m_btnTest, &QPushButton::clicked, this, &FormMessageFiltersManager::testFilter);
   connect(m_ui.m_btnBeautify, &QPushButton::clicked, this, &FormMessageFiltersManager::beautifyScript);
-  connect(m_ui.m_cmbAccounts, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, [this]() {
-    // Load feeds/categories of the account and check marks.
-    loadSelectedAccount();
-    loadFilterFeedAssignments();
-  });
+  connect(m_ui.m_cmbAccounts, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this,
+          &FormMessageFiltersManager::onAccountChanged);
   connect(m_ui.m_btnCheckAll, &QPushButton::clicked, m_feedsModel, &AccountCheckModel::checkAllItems);
   connect(m_ui.m_btnUncheckAll, &QPushButton::clicked, m_feedsModel, &AccountCheckModel::uncheckAllItems);
+  connect(m_feedsModel, &AccountCheckModel::checkStateChanged, this,
+          &FormMessageFiltersManager::onFeedChecked);
 
   initializeTestingMessage();
+  loadFilters();
   loadFilter();
   loadAccounts();
 }
@@ -75,6 +77,14 @@ ServiceRoot* FormMessageFiltersManager::selectedAccount() const {
   auto dat = m_ui.m_cmbAccounts->currentData(Qt::ItemDataRole::UserRole);
 
   return dat.isNull() ? nullptr : dat.value<ServiceRoot*>();
+}
+
+void FormMessageFiltersManager::loadFilters() {
+  for (auto* fltr : m_reader->messageFilters()) {
+    auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
+
+    it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<MessageFilter*>(fltr));
+  }
 }
 
 void FormMessageFiltersManager::addNewFilter() {
@@ -111,6 +121,7 @@ void FormMessageFiltersManager::loadFilter() {
   auto* acc = selectedAccount();
 
   showFilter(filter);
+  loadFilterFeedAssignments(filter, acc);
 }
 
 void FormMessageFiltersManager::testFilter() {
@@ -165,12 +176,60 @@ void FormMessageFiltersManager::testFilter() {
   m_ui.m_tcMessage->setCurrentIndex(1);
 }
 
-void FormMessageFiltersManager::loadSelectedAccount() {
-  m_feedsModel->setRootItem(selectedAccount(), false, true);
+void FormMessageFiltersManager::loadAccount(ServiceRoot* account) {
+  m_feedsModel->setRootItem(account, false, true);
   m_ui.m_treeFeeds->expandAll();
 }
 
-void FormMessageFiltersManager::loadFilterFeedAssignments() {}
+void FormMessageFiltersManager::loadFilterFeedAssignments(MessageFilter* filter, ServiceRoot* account) {
+  if (account == nullptr || filter == nullptr) {
+    return;
+  }
+
+  m_loadingFilter = true;
+
+  for (auto* feed : account->getSubTreeFeeds()) {
+    if (feed->messageFilters().contains(filter)) {
+      m_feedsModel->setItemChecked(feed, Qt::CheckState::Checked);
+    }
+  }
+
+  m_loadingFilter = false;
+}
+
+void FormMessageFiltersManager::onAccountChanged() {
+  // Load feeds/categories of the account and check marks.
+  auto* filter = selectedFilter();
+  auto* acc = selectedAccount();
+
+  loadAccount(acc);
+  loadFilterFeedAssignments(filter, acc);
+}
+
+void FormMessageFiltersManager::onFeedChecked(RootItem* item, Qt::CheckState state) {
+  if (m_loadingFilter) {
+    return;
+  }
+
+  auto* feed = qobject_cast<Feed*>(item);
+
+  if (feed == nullptr) {
+    return;
+  }
+
+  switch (state) {
+    case Qt::CheckState::Checked:
+      m_reader->assignMessageFilterToFeed(feed, selectedFilter());
+      break;
+
+    case Qt::CheckState::Unchecked:
+      m_reader->removeMessageFilterToFeedAssignment(feed, selectedFilter());
+      break;
+
+    case Qt::CheckState::PartiallyChecked:
+      break;
+  }
+}
 
 void FormMessageFiltersManager::showFilter(MessageFilter* filter) {
   m_loadingFilter = true;

@@ -167,6 +167,18 @@ void FeedReader::updateMessageFilter(MessageFilter* filter) {
   // TODO: Filter's name or script is changed, save to database.
 }
 
+void FeedReader::assignMessageFilterToFeed(Feed* feed, MessageFilter* filter) {
+  feed->appendMessageFilter(filter);
+
+  // TODO: Add assignment to database.
+}
+
+void FeedReader::removeMessageFilterToFeedAssignment(Feed* feed, MessageFilter* filter) {
+  feed->removeMessageFilter(filter);
+
+  // TODO: Remove assignment from database.
+}
+
 void FeedReader::updateAllFeeds() {
   updateFeeds(m_feedsModel->rootItem()->getSubTreeFeeds());
 }

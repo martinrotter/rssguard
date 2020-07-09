@@ -229,18 +229,28 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
       item = item->parent();
 
       // Check children of this new parent item.
-      Qt::CheckState parent_state = Qt::Unchecked;
+      bool all_checked = true;
+      bool all_unchecked = true;
 
       for (RootItem* child_of_parent : item->childItems()) {
-        if (m_checkStates.contains(child_of_parent) && m_checkStates[child_of_parent] == Qt::Checked) {
-          // We found out, that some child of this item is checked,
-          // therefore this item must be checked too.
-          parent_state = Qt::Checked;
-          break;
+        if (m_checkStates.contains(child_of_parent)) {
+          all_checked &= m_checkStates[child_of_parent] == Qt::CheckState::Checked;
+          all_unchecked &= m_checkStates[child_of_parent] == Qt::CheckState::Unchecked;
+        }
+        else {
+          all_checked = false;
         }
       }
 
-      setData(parent_index, parent_state, Qt::CheckStateRole);
+      if (all_checked) {
+        setData(parent_index, Qt::CheckState::Checked, Qt::CheckStateRole);
+      }
+      else if (all_unchecked) {
+        setData(parent_index, Qt::CheckState::Unchecked, Qt::CheckStateRole);
+      }
+      else {
+        setData(parent_index, Qt::CheckState::PartiallyChecked, Qt::CheckStateRole);
+      }
     }
 
     m_recursiveChange = false;

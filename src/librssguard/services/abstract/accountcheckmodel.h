@@ -44,7 +44,7 @@ class AccountCheckModel : public QAbstractItemModel {
     void uncheckAllItems();
 
   signals:
-    void checkStateChanged(RootItem* item, Qt::CheckState);
+    void checkStateChanged(RootItem* item, Qt::CheckState state);
 
   protected:
     RootItem* m_rootItem;

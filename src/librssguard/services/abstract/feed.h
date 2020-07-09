@@ -71,7 +71,8 @@ class Feed : public RootItem {
 
     void appendMessageFilter(MessageFilter* filter);
     QList<QPointer<MessageFilter>> messageFilters() const;
-    void setFilters(const QList<QPointer<MessageFilter>>& messageFilters);
+    void setMessageFilters(const QList<QPointer<MessageFilter>>& messageFilters);
+    void removeMessageFilter(MessageFilter* filter);
 
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clean_read_only);
