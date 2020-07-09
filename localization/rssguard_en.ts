@@ -4,12 +4,12 @@
 <context>
     <name>AccountCheckModel</name>
     <message>
-        <source> (category)</source>
-        <translation>(category)</translation>
+        <source>(category)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> (feed)</source>
-        <translation>(feed)</translation>
+        <source>(feed)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -504,8 +504,13 @@ Click here to open parent directory.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>uses global settings (global feed auto-updating is disabled)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Auto-update status: %1
-Status: %2</source>
+Active message filters: %2
+Status: %3</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1048,15 +1053,15 @@ or this functionality is not implemented yet.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1159,7 +1164,7 @@ or this functionality is not implemented yet.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
+        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2146,6 +2151,165 @@ or this functionality is not implemented yet.</translation>
     </message>
     <message>
         <source>Show only &amp;unread messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message &amp;filters</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormMessageFiltersManager</name>
+    <message>
+        <source>Message filters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Check all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Uncheck all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message filter details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished">Title</translation>
+    </message>
+    <message>
+        <source>Title of message filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JavaScript code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your JavaScript-based message filtering logic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sample message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read</source>
+        <translation type="unfinished">Read</translation>
+    </message>
+    <message>
+        <source>Important</source>
+        <translation type="unfinished">Important</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished">Author</translation>
+    </message>
+    <message>
+        <source>Created on</source>
+        <translation type="unfinished">Created on</translation>
+    </message>
+    <message>
+        <source>Contents</source>
+        <translation type="unfinished">Contents</translation>
+    </message>
+    <message>
+        <source>Script output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Test!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Beautify!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Detailed &amp;help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New message filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message will be %1.
+
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ACCEPTED</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>REJECTED</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Output (modified) message is:
+  Title = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Author = &apos;%3&apos;
+  Is read/important = &apos;%4/%5&apos;
+  Created on = &apos;%6&apos;
+  Contents = &apos;%7&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot find &apos;clang-format&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Beautifier was running for too long time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3225,11 +3389,15 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Requesting access authorization for &apos;%1&apos;...</source>
+        <source>You have to login first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>You have to login first</source>
+        <source>Navigate to website</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To login, you need to navigate to this website:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3237,13 +3405,6 @@ Login tokens expiration: %2</source>
     <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>OAuthLogin</name>
-    <message>
-        <source>Access authorization to service is requested</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4275,7 +4436,7 @@ Unread news: %2</translation>
         <translation> and </translation>
     </message>
     <message numerus="yes">
-        <source>%n seconds(s)</source>
+        <source>%n second(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>

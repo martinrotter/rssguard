@@ -1,13 +1,15 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sv">
 <context>
     <name>AccountCheckModel</name>
     <message>
-        <source> (category)</source>
-        <translation> (kategori)</translation>
+        <source>(category)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> (feed)</source>
-        <translation> (flöde)</translation>
+        <source>(feed)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -287,9 +289,12 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller ett annat flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %n flöden.</numerusform></translation>
+        <translation>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller ett annat flöde.</numerusform>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %n flöden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -375,7 +380,7 @@ Denna webbsida innehåller %n flöden.</numerusform></translation>
         <translation>Nedladdning slutförd</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Filen &apos;%1&apos; är nedlladdad.
 Klicka här för att öppna målmappen.</translation>
@@ -401,11 +406,17 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n minut kvar</numerusform>
+            <numerusform>%n minuter kvar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n sekund kvar</numerusform>
+            <numerusform>%n sekunder kvar</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -425,7 +436,10 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Laddar ner %n fil...</numerusform><numerusform>Laddar ner %n filer...</numerusform></translation>
+        <translation>
+            <numerusform>Laddar ner %n fil...</numerusform>
+            <numerusform>Laddar ner %n filer...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -457,12 +471,18 @@ Klicka här för att öppna målmappen.</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder global inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder globala inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>använder global inställning (%n minut till nästa automatiska uppdatering)</numerusform>
+            <numerusform>använder globala inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifik inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>använder specifik inställning (%n minut till nästa automatiska uppdatering)</numerusform>
+            <numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
+        </translation>
     </message>
     <message>
         <source>no errors</source>
@@ -485,10 +505,14 @@ Klicka här för att öppna målmappen.</translation>
         <translation>ospecificerat fel</translation>
     </message>
     <message>
+        <source>uses global settings (global feed auto-updating is disabled)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Auto-update status: %1
-Status: %2</source>
-        <translation>Status för automatisk uppdatering: %1
-Status: %2</translation>
+Active message filters: %2
+Status: %3</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -518,7 +542,10 @@ Status: %2</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
+        <translation>
+            <numerusform>Jag uppdaterar %n flöde automatiskt</numerusform>
+            <numerusform>Jag uppdaterar %n flöden automatiskt</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -855,7 +882,10 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
+        <translation>
+            <numerusform>dag</numerusform>
+            <numerusform>dagar</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1024,16 +1054,16 @@ att funktionen inte är implementerad än.</translation>
         <translation>Ett värde angavs.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation>Du måste använda &quot;%1&quot; som omdirigerings-URL. Du kan dock använda valfri port, för att säkerställa att den inte är upptagen av någon lokal tjänst. Tillse att denna omdirigerings-URL stämmer med omdirigerings-URL för den &quot;applikation&quot; som används.</translation>
-    </message>
-    <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation>Fördefinierade inställningar BEHÖVER INTE ändras från standardinställning. Ändra dessa inställningar, endast om du räknar dig som avancerad användare och vet vad du gör!</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>Testet lyckades. Du kan behöva logga in igen.</translation>
+    </message>
+    <message>
+        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1135,8 +1165,8 @@ att funktionen inte är implementerad än.</translation>
         <translation>Ett värde angavs.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation>Du måste använda &quot;%1&quot; som omdirigerings-URL. Du kan dock använda valfri port, för att säkerställa att den inte är upptagen av någon lokal tjänst. Tillse att denna omdirigerings-URL stämmer med omdirigerings-URL för den &quot;applikation&quot; som används.</translation>
+        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2123,6 +2153,165 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Show only &amp;unread messages</source>
         <translation>Visa endast &amp;olästa meddelanden</translation>
+    </message>
+    <message>
+        <source>Message &amp;filters</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormMessageFiltersManager</name>
+    <message>
+        <source>Message filters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Check all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Uncheck all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message filter details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title of message filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JavaScript code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your JavaScript-based message filtering logic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sample message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read</source>
+        <translation type="unfinished">Läst</translation>
+    </message>
+    <message>
+        <source>Important</source>
+        <translation type="unfinished">Viktigt</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished">URL</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished">Författare</translation>
+    </message>
+    <message>
+        <source>Created on</source>
+        <translation type="unfinished">Skapad</translation>
+    </message>
+    <message>
+        <source>Contents</source>
+        <translation type="unfinished">Innehåll</translation>
+    </message>
+    <message>
+        <source>Script output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Test!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Beautify!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Detailed &amp;help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New message filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message will be %1.
+
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ACCEPTED</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>REJECTED</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Output (modified) message is:
+  Title = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Author = &apos;%3&apos;
+  Is read/important = &apos;%4/%5&apos;
+  Created on = &apos;%6&apos;
+  Contents = &apos;%7&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot find &apos;clang-format&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Beautifier was running for too long time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3177,7 +3366,10 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Visa fler meddelanden (%n återstår)</numerusform><numerusform>Visa fler meddelanden (%n återstår)</numerusform></translation>
+        <translation>
+            <numerusform>Visa fler meddelanden (%n återstår)</numerusform>
+            <numerusform>Visa fler meddelanden (%n återstår)</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3203,12 +3395,16 @@ Inloggningstoken upphör: %2</translation>
         <translation>Uppdaterar inloggningstoken för &quot;%1&quot;...</translation>
     </message>
     <message>
-        <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation>Begär åtkomstauktorisering för &quot;%1&quot;...</translation>
-    </message>
-    <message>
         <source>You have to login first</source>
         <translation>Du måste logga in först</translation>
+    </message>
+    <message>
+        <source>Navigate to website</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To login, you need to navigate to this website:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3216,13 +3412,6 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>You can close this window now. Go back to %1</source>
         <translation>Du kan stänga det här fönstret nu. Gå tillbaka till %1</translation>
-    </message>
-</context>
-<context>
-    <name>OAuthLogin</name>
-    <message>
-        <source>Access authorization to service is requested</source>
-        <translation>Åtkomstautentisering begärs för tjänsten</translation>
     </message>
 </context>
 <context>
@@ -3260,11 +3449,14 @@ Inloggningstoken upphör: %2</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n annat flöde.</numerusform><numerusform>
++ %n annat flöde.</numerusform>
+            <numerusform>
 
-+ %n andra flöden.</numerusform></translation>
++ %n andra flöden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3337,7 +3529,10 @@ genom att klicka på denna popup-avisering.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n borttaget meddelande.</numerusform>
+            <numerusform>%n borttagna meddelanden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3353,7 +3548,10 @@ genom att klicka på denna popup-avisering.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -4238,19 +4436,28 @@ Olästa nyheter: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n timma</numerusform><numerusform>%n timmar</numerusform></translation>
+        <translation>
+            <numerusform>%n timma</numerusform>
+            <numerusform>%n timmar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minut</numerusform><numerusform>%n minuter</numerusform></translation>
+        <translation>
+            <numerusform>%n minut</numerusform>
+            <numerusform>%n minuter</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
         <translation> och </translation>
     </message>
     <message numerus="yes">
-        <source>%n seconds(s)</source>
-        <translation><numerusform>%n sekund</numerusform><numerusform>%n sekunder</numerusform></translation>
+        <source>%n second(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

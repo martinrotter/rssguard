@@ -1,13 +1,15 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_CN">
 <context>
     <name>AccountCheckModel</name>
     <message>
-        <source> (category)</source>
-        <translation>（分类）</translation>
+        <source>(category)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> (feed)</source>
-        <translation>（Feed）</translation>
+        <source>(feed)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -230,11 +232,11 @@
     </message>
     <message>
         <source>Removing starred messages...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Starred messages purged...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -275,7 +277,7 @@
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -287,8 +289,10 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>点此添加来自此网站的 Feed
-此网站包含 %n 个 Feed</numerusform></translation>
+        <translation>
+            <numerusform>点此添加来自此网站的 Feed
+此网站包含 %n 个 Feed</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -374,7 +378,7 @@ This website contains %n feed(s).</source>
         <translation>下载完成</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>文件 &apos;%1&apos; 下载完成
 点此打开所在目录</translation>
@@ -400,11 +404,15 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>剩余 %n 分钟</numerusform></translation>
+        <translation>
+            <numerusform>剩余 %n 分钟</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>剩余 %n 秒</numerusform></translation>
+        <translation>
+            <numerusform>剩余 %n 秒</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -424,7 +432,9 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>正在下载 %n 个文件…</numerusform></translation>
+        <translation>
+            <numerusform>正在下载 %n 个文件…</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -456,12 +466,16 @@ Click here to open parent directory.</source>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>使用全局设置（每 %n 分钟自动更新）</numerusform></translation>
+        <translation>
+            <numerusform>使用全局设置（每 %n 分钟自动更新）</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>使用指定设置（每 %n 分钟自动更新）</numerusform></translation>
+        <translation>
+            <numerusform>使用指定设置（每 %n 分钟自动更新）</numerusform>
+        </translation>
     </message>
     <message>
         <source>no errors</source>
@@ -484,10 +498,14 @@ Click here to open parent directory.</source>
         <translation>不明错误</translation>
     </message>
     <message>
+        <source>uses global settings (global feed auto-updating is disabled)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Auto-update status: %1
-Status: %2</source>
-        <translation>自动更新：%1
-状态：%2</translation>
+Active message filters: %2
+Status: %3</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -517,7 +535,9 @@ Status: %2</source>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>即将更新 %n 个 Feed</numerusform></translation>
+        <translation>
+            <numerusform>即将更新 %n 个 Feed</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -642,7 +662,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for important messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -853,7 +873,9 @@ or this functionality is not implemented yet.</source>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>天</numerusform></translation>
+        <translation>
+            <numerusform>天</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1022,16 +1044,16 @@ or this functionality is not implemented yet.</source>
         <translation>已有输入值</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation>你必须使用 &quot;%1&quot; 作为基础的重定向 URL。你可以使用自定义端口，以防本地服务占用它。请确保此处的重定向 URL与“应用”中一致。</translation>
-    </message>
-    <message>
         <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation>通常不需要改动默认值。请只在你是高级用户，以及你知道自己在做什么时，才修改这些值。</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>测试成功…你可能需要再次登录</translation>
+    </message>
+    <message>
+        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1133,8 +1155,8 @@ or this functionality is not implemented yet.</source>
         <translation>已有输入值</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as base redirect URL. You can use custom port to make sure that no local service occupies it. Make sure that this redirect URL matches redirect URL of used &quot;application&quot;.</source>
-        <translation>你必须使用 &quot;%1&quot; 作为基础的重定向 URL。你可以使用自定义端口，以防本地服务占用它。请确保此处的重定向 URL与“应用”中一致。</translation>
+        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1237,47 +1259,47 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Edit existing Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1385,7 +1407,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
         <translation>Tiny Tiny RSS 服务器就绪，当前 API 级别 %1，所需最低级别 %2
- </translation>
+&#xa0;</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
@@ -1449,7 +1471,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2109,19 +2131,178 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Show only &amp;unread messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message &amp;filters</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormMessageFiltersManager</name>
+    <message>
+        <source>Message filters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Check all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Uncheck all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message filter details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title of message filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JavaScript code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your JavaScript-based message filtering logic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sample message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read</source>
+        <translation type="unfinished">已读</translation>
+    </message>
+    <message>
+        <source>Important</source>
+        <translation type="unfinished">重要</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished">URL</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished">作者</translation>
+    </message>
+    <message>
+        <source>Created on</source>
+        <translation type="unfinished">创建时间</translation>
+    </message>
+    <message>
+        <source>Contents</source>
+        <translation type="unfinished">内容</translation>
+    </message>
+    <message>
+        <source>Script output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Test!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Beautify!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Detailed &amp;help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New message filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message will be %1.
+
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ACCEPTED</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>REJECTED</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Output (modified) message is:
+  Title = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Author = &apos;%3&apos;
+  Is read/important = &apos;%4/%5&apos;
+  Created on = &apos;%6&apos;
+  Contents = &apos;%7&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot find &apos;clang-format&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Beautifier was running for too long time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2658,7 +2839,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2748,11 +2929,11 @@ Token 过期时间：%2</translation>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You can find all important messages here.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3178,7 +3359,9 @@ Token 过期时间：%2</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>显示更多消息（剩余 %n 条）</numerusform></translation>
+        <translation>
+            <numerusform>显示更多消息（剩余 %n 条）</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot show more messages</source>
@@ -3204,12 +3387,16 @@ Token 过期时间：%2</translation>
         <translation>正在为 &apos;%1&apos; 刷新用户 Token…</translation>
     </message>
     <message>
-        <source>Requesting access authorization for &apos;%1&apos;...</source>
-        <translation>正在为 &apos;%1&apos; 请求访问授权…</translation>
-    </message>
-    <message>
         <source>You have to login first</source>
         <translation>你必须先登录</translation>
+    </message>
+    <message>
+        <source>Navigate to website</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To login, you need to navigate to this website:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3217,13 +3404,6 @@ Token 过期时间：%2</translation>
     <message>
         <source>You can close this window now. Go back to %1</source>
         <translation>你现在可以关闭窗口，返回到 %1</translation>
-    </message>
-</context>
-<context>
-    <name>OAuthLogin</name>
-    <message>
-        <source>Access authorization to service is requested</source>
-        <translation>访问授权已请求</translation>
     </message>
 </context>
 <context>
@@ -3261,9 +3441,11 @@ Token 过期时间：%2</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>
+        <translation>
+            <numerusform>
 
-+ %n 其它 Feed</numerusform></translation>
++ %n 其它 Feed</numerusform>
+        </translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3318,7 +3500,7 @@ Tiny Tiny RSS 是一个开源的基于 Web 的 RSS/Atom 阅读器，允许你以
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3333,7 +3515,9 @@ version by clicking this popup notification.</source>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n 条被删除的消息</numerusform></translation>
+        <translation>
+            <numerusform>%n 条被删除的消息</numerusform>
+        </translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3349,7 +3533,9 @@ version by clicking this popup notification.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n 条未读消息</numerusform></translation>
+        <translation>
+            <numerusform>%n 条未读消息</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3573,7 +3759,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3851,7 +4037,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Update all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4005,20 +4191,20 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4234,19 +4420,25 @@ Unread news: %2</source>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n 小时</numerusform></translation>
+        <translation>
+            <numerusform>%n 小时</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n 分钟</numerusform></translation>
+        <translation>
+            <numerusform>%n 分钟</numerusform>
+        </translation>
     </message>
     <message>
         <source> and </source>
         <translation>又</translation>
     </message>
     <message numerus="yes">
-        <source>%n seconds(s)</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <source>%n second(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

@@ -142,9 +142,7 @@ void FeedReader::loadSavedMessageFilters() {
   // Load all message filters from database.
   // All plugin services will hook active filters to
   // all feeds.
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedReader"));
-
-  m_messageFilters = DatabaseQueries::getMessageFilters(database);
+  m_messageFilters = DatabaseQueries::getMessageFilters(qApp->database()->connection(metaObject()->className()));
 
   for (auto* filter : m_messageFilters) {
     filter->setParent(this);
@@ -169,14 +167,18 @@ void FeedReader::updateMessageFilter(MessageFilter* filter) {
 
 void FeedReader::assignMessageFilterToFeed(Feed* feed, MessageFilter* filter) {
   feed->appendMessageFilter(filter);
-
-  // TODO: Add assignment to database.
+  DatabaseQueries::assignMessageFilterToFeed(qApp->database()->connection(metaObject()->className()),
+                                             feed->customId(),
+                                             filter->id(),
+                                             feed->getParentServiceRoot()->accountId());
 }
 
 void FeedReader::removeMessageFilterToFeedAssignment(Feed* feed, MessageFilter* filter) {
   feed->removeMessageFilter(filter);
-
-  // TODO: Remove assignment from database.
+  DatabaseQueries::removeMessageFilterFromFeed(qApp->database()->connection(metaObject()->className()),
+                                               feed->customId(),
+                                               filter->id(),
+                                               feed->getParentServiceRoot()->accountId());
 }
 
 void FeedReader::updateAllFeeds() {

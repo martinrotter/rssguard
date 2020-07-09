@@ -1456,6 +1456,54 @@ QMultiMap<QString, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabas
   return filters_in_feeds;
 }
 
+void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db, const QString& feed_custom_id,
+                                                int filter_id, int account_id, bool* ok) {
+  QSqlQuery q(db);
+
+  q.prepare("INSERT INTO MessageFiltersInFeeds (filter, feed_custom_id, account_id) "
+            "VALUES(:filter, :feed_custom_id, :account_id);");
+
+  q.bindValue(QSL(":filter"), filter_id);
+  q.bindValue(QSL(":feed_custom_id"), feed_custom_id);
+  q.bindValue(QSL(":account_id"), account_id);
+  q.setForwardOnly(true);
+
+  if (q.exec()) {
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+}
+
+void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db, const QString& feed_custom_id,
+                                                  int filter_id, int account_id, bool* ok) {
+  QSqlQuery q(db);
+
+  q.prepare("DELETE FROM MessageFiltersInFeeds "
+            "WHERE filter = :filter AND feed_custom_id = :feed_custom_id AND account_id = :account_id;");
+
+  q.bindValue(QSL(":filter"), filter_id);
+  q.bindValue(QSL(":feed_custom_id"), feed_custom_id);
+  q.bindValue(QSL(":account_id"), account_id);
+  q.setForwardOnly(true);
+
+  if (q.exec()) {
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+}
+
 QList<ServiceRoot*> DatabaseQueries::getStandardAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery q(db);
   QList<ServiceRoot*> roots;
