@@ -162,7 +162,7 @@ MessageFilter* FeedReader::addMessageFilter(const QString& title, const QString&
 }
 
 void FeedReader::updateMessageFilter(MessageFilter* filter) {
-  // TODO: Filter's name or script is changed, save to database.
+  DatabaseQueries::updateMessageFilter(qApp->database()->connection(metaObject()->className()), filter);
 }
 
 void FeedReader::assignMessageFilterToFeed(Feed* feed, MessageFilter* filter) {

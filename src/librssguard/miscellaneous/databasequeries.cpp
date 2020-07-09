@@ -1480,6 +1480,28 @@ void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db, const QS
   }
 }
 
+void DatabaseQueries::updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter, bool* ok) {
+  QSqlQuery q(db);
+
+  q.prepare("UPDATE MessageFilters SET name = :name, script = :script WHERE id = :id;");
+
+  q.bindValue(QSL(":name"), filter->name());
+  q.bindValue(QSL(":script"), filter->script());
+  q.bindValue(QSL(":id"), filter->id());
+  q.setForwardOnly(true);
+
+  if (q.exec()) {
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+}
+
 void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db, const QString& feed_custom_id,
                                                   int filter_id, int account_id, bool* ok) {
   QSqlQuery q(db);
