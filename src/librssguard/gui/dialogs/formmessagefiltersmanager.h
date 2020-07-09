@@ -24,6 +24,7 @@ class FormMessageFiltersManager : public QDialog {
     ServiceRoot* selectedAccount() const;
 
   private slots:
+    void removeSelectedFilter();
     void addNewFilter();
     void saveSelectedFilter();
     void loadFilter();

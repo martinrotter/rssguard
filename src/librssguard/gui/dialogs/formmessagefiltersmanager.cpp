@@ -42,6 +42,8 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
           this, &FormMessageFiltersManager::loadFilter);
   connect(m_ui.m_btnAddNew, &QPushButton::clicked,
           this, &FormMessageFiltersManager::addNewFilter);
+  connect(m_ui.m_btnRemoveSelected, &QPushButton::clicked,
+          this, &FormMessageFiltersManager::removeSelectedFilter);
   connect(m_ui.m_txtTitle, &QLineEdit::textChanged, this, &FormMessageFiltersManager::saveSelectedFilter);
   connect(m_ui.m_txtScript, &QPlainTextEdit::textChanged, this, &FormMessageFiltersManager::saveSelectedFilter);
   connect(m_ui.m_btnTest, &QPushButton::clicked, this, &FormMessageFiltersManager::testFilter);
@@ -79,6 +81,17 @@ ServiceRoot* FormMessageFiltersManager::selectedAccount() const {
   return dat.isNull() ? nullptr : dat.value<ServiceRoot*>();
 }
 
+void FormMessageFiltersManager::removeSelectedFilter() {
+  auto* fltr = selectedFilter();
+
+  if (fltr == nullptr) {
+    return;
+  }
+
+  m_reader->removeMessageFilter(fltr);
+  delete m_ui.m_listFilters->currentItem();
+}
+
 void FormMessageFiltersManager::loadFilters() {
   for (auto* fltr : m_reader->messageFilters()) {
     auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
@@ -88,14 +101,20 @@ void FormMessageFiltersManager::loadFilters() {
 }
 
 void FormMessageFiltersManager::addNewFilter() {
-  auto* fltr = m_reader->addMessageFilter(
-    tr("New message filter"),
-    QSL("function filterMessage() { return 1; }"));
-  auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
+  try {
+    auto* fltr = m_reader->addMessageFilter(
+      tr("New message filter"),
+      QSL("function filterMessage() { return 1; }"));
+    auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
 
-  it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<MessageFilter*>(fltr));
+    it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<MessageFilter*>(fltr));
 
-  m_ui.m_listFilters->setCurrentRow(m_ui.m_listFilters->count() - 1);
+    m_ui.m_listFilters->setCurrentRow(m_ui.m_listFilters->count() - 1);
+  }
+  catch (const ApplicationException& ex) {
+    MessageBox::show(this, QMessageBox::Icon::Critical, tr("Error"),
+                     tr("Cannot save new filter, error: ''.").arg(ex.message()));
+  }
 }
 
 void FormMessageFiltersManager::saveSelectedFilter() {

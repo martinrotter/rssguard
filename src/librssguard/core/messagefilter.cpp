@@ -81,3 +81,7 @@ QString MessageFilter::script() const {
 void MessageFilter::setScript(const QString& script) {
   m_script = script;
 }
+
+void MessageFilter::setId(int id) {
+  m_id = id;
+}

@@ -68,7 +68,7 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     QList<Message> messagesForItem(RootItem* item) const;
 
     // Returns ALL RECURSIVE CHILD feeds contained within single index.
-    QList<Feed*> feedsForIndex(const QModelIndex& index) const;
+    QList<Feed*> feedsForIndex(const QModelIndex& index = QModelIndex()) const;
 
     // Returns feed/category which lies at the specified index or
     // root item if index is invalid.
@@ -156,7 +156,6 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
   private:
     RootItem* m_rootItem;
     int m_itemHeight;
-
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QIcon m_countsIcon;

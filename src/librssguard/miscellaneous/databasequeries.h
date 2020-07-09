@@ -87,6 +87,9 @@ class DatabaseQueries {
                                int account_id, bool* ok = nullptr);
 
     // Message filters operators.
+    static MessageFilter* addMessageFilter(const QSqlDatabase& db, const QString& title, const QString& script);
+    static void removeMessageFilter(const QSqlDatabase& db, int filter_id, bool* ok = nullptr);
+    static void removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id, bool* ok = nullptr);
     static QList<MessageFilter*> getMessageFilters(const QSqlDatabase& db, bool* ok = nullptr);
     static QMultiMap<QString, int> messageFiltersInFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static void assignMessageFilterToFeed(const QSqlDatabase& db, const QString& feed_custom_id, int filter_id,

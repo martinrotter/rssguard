@@ -2,6 +2,7 @@
 
 #include "miscellaneous/databasequeries.h"
 
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -26,6 +27,7 @@
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
+#include <QSqlDriver>
 #include <QUrl>
 #include <QVariant>
 
@@ -1394,6 +1396,73 @@ bool DatabaseQueries::editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::Au
   q.bindValue(QSL(":update_interval"), auto_update_interval);
   q.bindValue(QSL(":id"), feed_id);
   return q.exec();
+}
+
+MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const QString& title,
+                                                 const QString& script) {
+  if (!db.driver()->hasFeature(QSqlDriver::DriverFeature::LastInsertId)) {
+    throw ApplicationException(QObject::tr("Cannot insert message filter, because current database cannot return last inserted row ID."));
+  }
+
+  QSqlQuery q(db);
+
+  q.prepare("INSERT INTO MessageFilters (name, script) VALUES(:name, :script);");
+
+  q.bindValue(QSL(":name"), title);
+  q.bindValue(QSL(":script"), script);
+  q.setForwardOnly(true);
+
+  if (q.exec()) {
+    auto* fltr = new MessageFilter(q.lastInsertId().toInt());
+
+    fltr->setName(title);
+    fltr->setScript(script);
+
+    return fltr;
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
+void DatabaseQueries::removeMessageFilter(const QSqlDatabase& db, int filter_id, bool* ok) {
+  QSqlQuery q(db);
+
+  q.prepare("DELETE FROM MessageFilters WHERE id = :id;");
+
+  q.bindValue(QSL(":id"), filter_id);
+  q.setForwardOnly(true);
+
+  if (q.exec()) {
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+}
+
+void DatabaseQueries::removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id, bool* ok) {
+  QSqlQuery q(db);
+
+  q.prepare("DELETE FROM MessageFiltersInFeeds WHERE filter = :filter;");
+
+  q.bindValue(QSL(":filter"), filter_id);
+  q.setForwardOnly(true);
+
+  if (q.exec()) {
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
 }
 
 QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db, bool* ok) {

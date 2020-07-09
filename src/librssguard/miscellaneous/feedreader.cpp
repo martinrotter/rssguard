@@ -150,15 +150,28 @@ void FeedReader::loadSavedMessageFilters() {
 }
 
 MessageFilter* FeedReader::addMessageFilter(const QString& title, const QString& script) {
-  auto* fltr = new MessageFilter(12, this);
-
-  fltr->setName(title);
-  fltr->setScript(script);
-
-  // TODO: Save into database, then return.
+  auto* fltr = DatabaseQueries::addMessageFilter(qApp->database()->connection(metaObject()->className()), title, script);
 
   m_messageFilters.append(fltr);
   return fltr;
+}
+
+void FeedReader::removeMessageFilter(MessageFilter* filter) {
+  m_messageFilters.removeAll(filter);
+
+  // Now, remove all references from all feeds.
+  auto all_feeds = m_feedsModel->feedsForIndex();
+
+  for (auto* feed : all_feeds) {
+    feed->removeMessageFilter(filter);
+  }
+
+  // Remove from DB.
+  DatabaseQueries::removeMessageFilterAssignments(qApp->database()->connection(metaObject()->className()), filter->id());
+  DatabaseQueries::removeMessageFilter(qApp->database()->connection(metaObject()->className()), filter->id());
+
+  // Free from memory as last step.
+  filter->deleteLater();
 }
 
 void FeedReader::updateMessageFilter(MessageFilter* filter) {
