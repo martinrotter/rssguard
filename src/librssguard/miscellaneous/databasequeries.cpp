@@ -767,10 +767,11 @@ bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, int account_id) {
   query.setForwardOnly(true);
   QStringList queries;
 
-  queries << QSL("DELETE FROM Messages WHERE account_id = :account_id;") <<
-    QSL("DELETE FROM Feeds WHERE account_id = :account_id;") <<
-    QSL("DELETE FROM Categories WHERE account_id = :account_id;") <<
-    QSL("DELETE FROM Accounts WHERE id = :account_id;");
+  queries << QSL("DELETE FROM Messages WHERE account_id = :account_id;")
+          << QSL("DELETE FROM Feeds WHERE account_id = :account_id;")
+          << QSL("DELETE FROM Categories WHERE account_id = :account_id;")
+          << QSL("DELETE FROM MessageFiltersInFeeds WHERE account_id = :account_id;")
+          << QSL("DELETE FROM Accounts WHERE id = :account_id;");
 
   for (const QString& q : queries) {
     query.prepare(q);
@@ -1198,7 +1199,15 @@ bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, int feed_custom_id, int
 
   q.setForwardOnly(true);
 
-  // Remove all messages from this feed.
+  // Remove all messages and other data from this feed.
+  q.prepare(QSL("DELETE FROM MessageFiltersInFeeds WHERE feed_custom_id = :feed AND account_id = :account_id;"));
+  q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    return false;
+  }
+
   q.prepare(QSL("DELETE FROM Messages WHERE feed = :feed AND account_id = :account_id;"));
   q.bindValue(QSL(":feed"), feed_custom_id);
   q.bindValue(QSL(":account_id"), account_id);

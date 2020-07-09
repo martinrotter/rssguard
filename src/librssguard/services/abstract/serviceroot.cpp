@@ -298,6 +298,8 @@ void ServiceRoot::syncIn() {
   RootItem* new_tree = obtainNewTreeForSyncIn();
 
   if (new_tree != nullptr) {
+    // TODO: Store msg filter assignments and then restore it and
+    // also remove any leftover assignments.
     QMap<QString, QVariant> feed_custom_data = storeCustomFeedsData();
 
     // Remove from feeds model, then from SQL but leave messages intact.
