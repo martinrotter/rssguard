@@ -207,6 +207,12 @@ void ServiceRoot::removeLeftOverMessages() {
   DatabaseQueries::purgeLeftoverMessages(database, accountId());
 }
 
+void ServiceRoot::removeLeftOverMessageFilterAssignments() {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  DatabaseQueries::purgeLeftoverMessageFilterAssignments(database, accountId());
+}
+
 QList<Message> ServiceRoot::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
@@ -251,22 +257,23 @@ void ServiceRoot::addNewFeed(const QString& url) {
 
 void ServiceRoot::addNewCategory() {}
 
-QMap<QString, QVariant> ServiceRoot::storeCustomFeedsData() {
-  QMap<QString, QVariant> custom_data;
+QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
+  QMap<QString, QVariantMap> custom_data;
 
   for (const Feed* feed : getSubTreeFeeds()) {
     QVariantMap feed_custom_data;
 
     feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInitialInterval());
     feed_custom_data.insert(QSL("auto_update_type"), feed->autoUpdateType());
+    feed_custom_data.insert(QSL("msg_filters"), QVariant::fromValue(feed->messageFilters()));
     custom_data.insert(feed->customId(), feed_custom_data);
   }
 
   return custom_data;
 }
 
-void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariant>& data, const QHash<QString, Feed*>& feeds) {
-  QMapIterator<QString, QVariant> i(data);
+void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data, const QHash<QString, Feed*>& feeds) {
+  QMapIterator<QString, QVariantMap> i(data);
 
   while (i.hasNext()) {
     i.next();
@@ -274,10 +281,11 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariant>& data, co
 
     if (feeds.contains(custom_id)) {
       Feed* feed = feeds.value(custom_id);
-      QVariantMap feed_custom_data = i.value().toMap();
+      QVariantMap feed_custom_data = i.value();
 
       feed->setAutoUpdateInitialInterval(feed_custom_data.value(QSL("auto_update_interval")).toInt());
       feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(feed_custom_data.value(QSL("auto_update_type")).toInt()));
+      feed->setMessageFilters(feed_custom_data.value(QSL("msg_filters")).value<QList<QPointer<MessageFilter>>>());
     }
   }
 }
@@ -298,9 +306,7 @@ void ServiceRoot::syncIn() {
   RootItem* new_tree = obtainNewTreeForSyncIn();
 
   if (new_tree != nullptr) {
-    // TODO: Store msg filter assignments and then restore it and
-    // also remove any leftover assignments.
-    QMap<QString, QVariant> feed_custom_data = storeCustomFeedsData();
+    auto feed_custom_data = storeCustomFeedsData();
 
     // Remove from feeds model, then from SQL but leave messages intact.
     cleanAllItemsFromModel();
@@ -312,8 +318,9 @@ void ServiceRoot::syncIn() {
     storeNewFeedTree(new_tree);
 
     // We have new feed, some feeds were maybe removed,
-    // so remove left over messages.
+    // so remove left over messages and filter assignments.
     removeLeftOverMessages();
+    removeLeftOverMessageFilterAssignments();
 
     for (RootItem* top_level_item : new_tree->childItems()) {
       top_level_item->setParent(nullptr);

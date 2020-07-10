@@ -866,6 +866,25 @@ bool DatabaseQueries::cleanFeeds(const QSqlDatabase& db, const QStringList& ids,
   }
 }
 
+bool DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(
+    QSL("DELETE FROM MessageFiltersInFeeds "
+        "WHERE account_id = :account_id AND "
+        "feed_custom_id NOT IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id);"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    qWarning("Removing of left over message filter assignments failed: '%s'.", qPrintable(q.lastError().text()));
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
 bool DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 

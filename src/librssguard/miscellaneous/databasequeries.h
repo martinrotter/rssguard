@@ -87,6 +87,7 @@ class DatabaseQueries {
                                int account_id, bool* ok = nullptr);
 
     // Message filters operators.
+    static bool purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id);
     static MessageFilter* addMessageFilter(const QSqlDatabase& db, const QString& title, const QString& script);
     static void removeMessageFilter(const QSqlDatabase& db, int filter_id, bool* ok = nullptr);
     static void removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id, bool* ok = nullptr);

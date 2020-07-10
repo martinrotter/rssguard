@@ -175,6 +175,13 @@ class ServiceRoot : public RootItem {
     // from another machine and then performs sync-in on this machine.
     void removeLeftOverMessages();
 
+    // Removes all msg. filter assignments which are (within this account)
+    // assigned to feed (via custom ID) which does not exist anymore.
+    //
+    // NOTE: This situation may happen if user deletes some feed
+    // from another machine and then performs sync-in on this machine.
+    void removeLeftOverMessageFilterAssignments();
+
     QStringList textualFeedUrls(const QList<Feed*>& feeds) const;
     QStringList textualFeedIds(const QList<Feed*>& feeds) const;
     QStringList customIDsOfMessages(const QList<ImportanceChange>& changes);
@@ -194,8 +201,8 @@ class ServiceRoot : public RootItem {
     void itemRemovalRequested(RootItem* item);
 
   private:
-    virtual QMap<QString, QVariant> storeCustomFeedsData();
-    virtual void restoreCustomFeedsData(const QMap<QString, QVariant>& data, const QHash<QString, Feed*>& feeds);
+    virtual QMap<QString, QVariantMap> storeCustomFeedsData();
+    virtual void restoreCustomFeedsData(const QMap<QString, QVariantMap>& data, const QHash<QString, Feed*>& feeds);
 
   private:
     RecycleBin* m_recycleBin;
