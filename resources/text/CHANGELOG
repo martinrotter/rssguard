@@ -1,3 +1,38 @@
+3.7.0
+—————
+
+Added:
+▪ Fully scriptable MESSAGE FILTERING:
+    ▪ Is avaialble for all accounts, including TT-RSS, Inoreader, etc.
+    ▪ Is fully scriptable with JavaScript.
+    ▪ Almost all attributes of every single message are changeable.
+    ▪ You can assign the same filter to multiple feeds.
+    ▪ There is a special JavaScript function which allows you to check if message is "duplicate".
+    ▪ There is a simple dialog for creating and testing filters.
+    ▪ Filters are automagically applied when new messages are downloaded.
+    ▪ See dialog accessible from menu "Messages -> Message filters".
+    ▪ Note that this feature is highly experimental, report bugs, please.
+    ▪ For more information, see https://github.com/martinrotter/rssguard/wiki/Message-filtering
+▪ Delay for first automatic feed update after application launch is now configurable and defaults to smaller value.
+▪ It is now possible to download UNREAD messages ONLY for TT-RSS and Nextcloud News accounts. See settings dialog for each respective account.
+▪ All accounts now offer "Important message" node in feed's list which allows you to
+  elegantly display all important messages you have.
+▪ Message list is now able to show UNREAD messages only, see "Messages" menu. Setting is persistent.
+▪ RSS parser now partially supports M-RSS.
+
+Fixed/changed:
+▪ Localizations updated.
+▪ Show correct DB size for MariaDB in DB cleanup dialog.
+▪ Sorting in feed's list is now case insensitive.
+▪ Fixed couple of crashes when saving in-memory SQLite databases to persistent file.
+▪ Simplified code for OAuth2.0 flow, removed WebEngine-based solution entirely, rely on system web browser to handle the challenge.
+▪ Fixed mouse selections in message's list when "keep selection in center" setting is enabled.
+▪ Feed updating logic was rewritten and now should be more reliable.
+▪ Some obsolete code removed and refactored.
+▪ Purging of messages wasn't purgin important messages if chosen, now fixed.
+▪ Fixed errors in internal SQL code when displaying empty message list.
+
+
 3.6.3
 —————
 
