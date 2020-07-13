@@ -139,6 +139,7 @@ void FormMessageFiltersManager::loadFilter() {
   auto* filter = selectedFilter();
   auto* acc = selectedAccount();
 
+  loadAccount(acc);
   showFilter(filter);
   loadFilterFeedAssignments(filter, acc);
 }
