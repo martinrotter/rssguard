@@ -3,11 +3,11 @@
     <name>AccountCheckModel</name>
     <message>
         <source>(category)</source>
-        <translation type="unfinished"/>
+        <translation>(kategori)</translation>
     </message>
     <message>
         <source>(feed)</source>
-        <translation type="unfinished"/>
+        <translation>(feed)</translation>
     </message>
 </context>
 <context>
@@ -2162,7 +2162,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Title of message filter</source>
@@ -2182,27 +2182,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished"/>
+        <translation>Læst</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation type="unfinished"/>
+        <translation>Vigtigt</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Udvikler</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"/>
+        <translation>Oprettet den</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="unfinished"/>
+        <translation>Indhold</translation>
     </message>
     <message>
         <source>Script output</source>

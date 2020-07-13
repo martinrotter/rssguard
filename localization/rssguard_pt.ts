@@ -486,13 +486,15 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message>
         <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>usa configurações globais (atualização automática global de feeds é desativada)</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
-        <translation type="unfinished"/>
+        <translation>Status da atualização automática: %1
+Filtros de mensagem ativa: %2
+Status: %3</translation>
     </message>
 </context>
 <context>
@@ -1037,7 +1039,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation type="unfinished"/>
+        <translation>Você precisa usar &quot;%1&quot; como URL de redirecionamento. É importante deixar esta URL intacta, pois o %2 está aguardando na porta específica por tokens de serviço.</translation>
     </message>
 </context>
 <context>
@@ -1140,7 +1142,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation type="unfinished"/>
+        <translation>Você precisa usar &quot;%1&quot; como URL de redirecionamento. É importante deixar esta URL intacta, pois o %2 está aguardando na porta específica por tokens de serviço.</translation>
     </message>
 </context>
 <context>
@@ -2130,38 +2132,38 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Message &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Filtros de mensagem</translation>
     </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
     <message>
         <source>Message filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtros de mensagem</translation>
     </message>
     <message>
         <source>Remove selected</source>
-        <translation type="unfinished"/>
+        <translation>Remover selecionados</translation>
     </message>
     <message>
         <source>Add new</source>
-        <translation type="unfinished"/>
+        <translation>Adicionar novo</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Conta</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
-        <translation type="unfinished"/>
+        <translation>Mar&amp;car todos</translation>
     </message>
     <message>
         <source>&amp;Uncheck all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Desmarcar todos</translation>
     </message>
     <message>
         <source>Message filter details</source>
-        <translation type="unfinished"/>
+        <translation>Detalhes do filtro de mensagem</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2169,19 +2171,19 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Title of message filter</source>
-        <translation type="unfinished"/>
+        <translation>Título do filtro de mensagem</translation>
     </message>
     <message>
         <source>JavaScript code</source>
-        <translation type="unfinished"/>
+        <translation>Código JavaScript</translation>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
-        <translation type="unfinished"/>
+        <translation>Sua lógica de filtragem de mensagens baseada em JavaScript</translation>
     </message>
     <message>
         <source>Sample message</source>
-        <translation type="unfinished"/>
+        <translation>Mensagem de amostra</translation>
     </message>
     <message>
         <source>Read</source>
@@ -2209,37 +2211,39 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Script output</source>
-        <translation type="unfinished"/>
+        <translation>Saída de script</translation>
     </message>
     <message>
         <source>&amp;Test!</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testar!</translation>
     </message>
     <message>
         <source>&amp;Beautify!</source>
-        <translation type="unfinished"/>
+        <translation>Em&amp;belezar!</translation>
     </message>
     <message>
         <source>Detailed &amp;help</source>
-        <translation type="unfinished"/>
+        <translation>A&amp;juda detalhada</translation>
     </message>
     <message>
         <source>New message filter</source>
-        <translation type="unfinished"/>
+        <translation>Novo filtro de mensagem</translation>
     </message>
     <message>
         <source>Message will be %1.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>A mensagem será %1.
+
+</translation>
     </message>
     <message>
         <source>ACCEPTED</source>
-        <translation type="unfinished"/>
+        <translation>ACEITA</translation>
     </message>
     <message>
         <source>REJECTED</source>
-        <translation type="unfinished"/>
+        <translation>REJEITADA</translation>
     </message>
     <message>
         <source>Output (modified) message is:
@@ -2249,43 +2253,49 @@ ou esta função ainda não foi implementada.</translation>
   Is read/important = '%4/%5'
   Created on = '%6'
   Contents = &apos;%7&apos;</source>
-        <translation type="unfinished"/>
+        <translation>A mensagem (modificada) de saída é:
+  Título = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Autor = &apos;%3&apos;
+  Foi lida/importante = &apos;%4/%5&apos;
+  Criada em = &apos;%6&apos;
+  Conteúdo = &apos;%7&apos;</translation>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished"/>
+        <translation>sim</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"/>
+        <translation>não</translation>
     </message>
     <message>
         <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>O filtro baseado em JavaScript contém erros: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Cannot find &apos;clang-format&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível localizar &apos;clang-format&apos;</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-        <translation type="unfinished"/>
+        <translation>O script não foi &apos;embelezado&apos;, pois a ferramenta &apos;clang-format&apos; não foi localizada.</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Erro</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-        <translation type="unfinished"/>
+        <translation>O script não foi &apos;embelezado&apos;, pois a ferramenta &apos;clang-format&apos; retornou um erro.</translation>
     </message>
     <message>
         <source>Beautifier was running for too long time</source>
-        <translation type="unfinished"/>
+        <translation>O &apos;embelezador&apos; está sendo executado por muito tempo</translation>
     </message>
     <message>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-        <translation type="unfinished"/>
+        <translation>O script não foi &apos;embelezado&apos;, a ferramenta &apos;clang-format&apos; está instalada?</translation>
     </message>
 </context>
 <context>
@@ -3372,11 +3382,11 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Navigate to website</source>
-        <translation type="unfinished"/>
+        <translation>Acessar o site</translation>
     </message>
     <message>
         <source>To login, you need to navigate to this website:</source>
-        <translation type="unfinished"/>
+        <translation>Para fazer login, você precisa acessar este site:</translation>
     </message>
 </context>
 <context>
@@ -4410,7 +4420,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n segundo(s)</numerusform><numerusform>%n segundo(s)</numerusform></translation>
     </message>
 </context>
 <context>

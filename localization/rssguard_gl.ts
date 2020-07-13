@@ -3,11 +3,11 @@
     <name>AccountCheckModel</name>
     <message>
         <source>(category)</source>
-        <translation type="unfinished"/>
+        <translation>(categoría)</translation>
     </message>
     <message>
         <source>(feed)</source>
-        <translation type="unfinished"/>
+        <translation>(fonte)</translation>
     </message>
 </context>
 <context>
@@ -2162,7 +2162,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Title of message filter</source>
@@ -2190,11 +2190,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>

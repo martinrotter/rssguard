@@ -3,11 +3,11 @@
     <name>AccountCheckModel</name>
     <message>
         <source>(category)</source>
-        <translation type="unfinished"/>
+        <translation>(kategorie)</translation>
     </message>
     <message>
         <source>(feed)</source>
-        <translation type="unfinished"/>
+        <translation>(zdroj)</translation>
     </message>
 </context>
 <context>
@@ -2167,7 +2167,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Nadpis</translation>
     </message>
     <message>
         <source>Title of message filter</source>
@@ -2187,27 +2187,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished"/>
+        <translation>Přečteno</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation type="unfinished"/>
+        <translation>Důležité</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"/>
+        <translation>Vytvořeno</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="unfinished"/>
+        <translation>Obsah</translation>
     </message>
     <message>
         <source>Script output</source>

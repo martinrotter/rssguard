@@ -2161,7 +2161,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>כותרת</translation>
     </message>
     <message>
         <source>Title of message filter</source>
@@ -2193,7 +2193,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>מחבר</translation>
     </message>
     <message>
         <source>Created on</source>
@@ -2201,7 +2201,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="unfinished"/>
+        <translation>תכנים</translation>
     </message>
     <message>
         <source>Script output</source>

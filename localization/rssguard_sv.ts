@@ -486,13 +486,15 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message>
         <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>använder globala inställningar (automatisk global flödesuppdatering inaktiverad)</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
-        <translation type="unfinished"/>
+        <translation>Status för automatisk uppdatering: %1
+Aktiva meddelandefilter: %2
+Status: %3</translation>
     </message>
 </context>
 <context>
@@ -1037,7 +1039,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation type="unfinished"/>
+        <translation>Du måste använda &quot;%1&quot; som vidarebefordrings-URL. Det är viktigt att lämna denna URL intakt, eftersom %2 lyssnar på specificerad port, efter tjänst-tokens.</translation>
     </message>
 </context>
 <context>
@@ -1140,7 +1142,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation type="unfinished"/>
+        <translation>Du måste använda &quot;%1&quot; som vidarebefordrings-URL. Det är viktigt att lämna denna URL intakt, eftersom %2 lyssnar på specificerad port, efter tjänst-tokens.</translation>
     </message>
 </context>
 <context>
@@ -2130,38 +2132,38 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Message &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>Meddelande&amp;filter</translation>
     </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
     <message>
         <source>Message filters</source>
-        <translation type="unfinished"/>
+        <translation>Meddelandefilter</translation>
     </message>
     <message>
         <source>Remove selected</source>
-        <translation type="unfinished"/>
+        <translation>Ta bort markerat</translation>
     </message>
     <message>
         <source>Add new</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till nytt</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Konto</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Markera alla</translation>
     </message>
     <message>
         <source>&amp;Uncheck all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Avmarkera alla</translation>
     </message>
     <message>
         <source>Message filter details</source>
-        <translation type="unfinished"/>
+        <translation>Meddelandefilter detaljerat</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2169,19 +2171,19 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Title of message filter</source>
-        <translation type="unfinished"/>
+        <translation>Namn på meddelandefilter</translation>
     </message>
     <message>
         <source>JavaScript code</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript-kod</translation>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
-        <translation type="unfinished"/>
+        <translation>Din JavaScript-baserade meddelandefiltreringslogik</translation>
     </message>
     <message>
         <source>Sample message</source>
-        <translation type="unfinished"/>
+        <translation>Exempelmeddelande</translation>
     </message>
     <message>
         <source>Read</source>
@@ -2209,37 +2211,39 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Script output</source>
-        <translation type="unfinished"/>
+        <translation>Skriptutdata</translation>
     </message>
     <message>
         <source>&amp;Test!</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testa!</translation>
     </message>
     <message>
         <source>&amp;Beautify!</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Försköna!</translation>
     </message>
     <message>
         <source>Detailed &amp;help</source>
-        <translation type="unfinished"/>
+        <translation>Detaljerad &amp;hjälp</translation>
     </message>
     <message>
         <source>New message filter</source>
-        <translation type="unfinished"/>
+        <translation>Nytt meddelandefilter</translation>
     </message>
     <message>
         <source>Message will be %1.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>Meddelandet kommer att bli %1.
+
+</translation>
     </message>
     <message>
         <source>ACCEPTED</source>
-        <translation type="unfinished"/>
+        <translation>ACCEPTERAT</translation>
     </message>
     <message>
         <source>REJECTED</source>
-        <translation type="unfinished"/>
+        <translation>AVVISAT</translation>
     </message>
     <message>
         <source>Output (modified) message is:
@@ -2249,43 +2253,49 @@ att funktionen inte är implementerad än.</translation>
   Is read/important = '%4/%5'
   Created on = '%6'
   Contents = &apos;%7&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Utdatameddelandet (ändrat) är:
+  Rubrik = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Författare = &apos;%3&apos;
+  Är läst/viktigt = &apos;%4/%5&apos;
+  Skapat = &apos;%6&apos;
+  Innehåll = &apos;%7&apos;</translation>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished"/>
+        <translation>ja</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"/>
+        <translation>nej</translation>
     </message>
     <message>
         <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript-baserat filter innehåller fel: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Cannot find &apos;clang-format&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte hitta &quot;clang-format&quot;</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-        <translation type="unfinished"/>
+        <translation>Skriptet har inte förskönats, eftersom verktyget &quot;clang-format&quot; inte hittades.</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Fel</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-        <translation type="unfinished"/>
+        <translation>Skriptet har inte förskönats, eftersom ett fel inträffat i verktyget &quot;clang-format&quot; .</translation>
     </message>
     <message>
         <source>Beautifier was running for too long time</source>
-        <translation type="unfinished"/>
+        <translation>Försköningsverktyget arbetade för länge</translation>
     </message>
     <message>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-        <translation type="unfinished"/>
+        <translation>Skriptet har inte förskönats, är &quot;clang-format&quot; installerat?</translation>
     </message>
 </context>
 <context>
@@ -3371,11 +3381,11 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Navigate to website</source>
-        <translation type="unfinished"/>
+        <translation>Gå till webbsidan</translation>
     </message>
     <message>
         <source>To login, you need to navigate to this website:</source>
-        <translation type="unfinished"/>
+        <translation>Du måste gå till denna webbsida för att logga in:</translation>
     </message>
 </context>
 <context>
@@ -4410,7 +4420,7 @@ Olästa nyheter: %2</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n sekund</numerusform><numerusform>%n sekunder</numerusform></translation>
     </message>
 </context>
 <context>
