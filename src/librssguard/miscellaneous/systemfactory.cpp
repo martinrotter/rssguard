@@ -33,7 +33,7 @@ SystemFactory::~SystemFactory() = default;
 QRegularExpression SystemFactory::supportedUpdateFiles() {
 #if defined(Q_OS_WIN)
   return QRegularExpression(QSL(".+win.+\\.(exe|7z)"));
-#elif defined(Q_OS_MAC)
+#elif defined(Q_OS_MACOS)
   return QRegularExpression(QSL(".dmg"));
 #elif defined(Q_OS_LINUX)
   return QRegularExpression(QSL(".AppImage"));

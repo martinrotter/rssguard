@@ -7,7 +7,7 @@
 #include "gui/feedsview.h"
 #include "miscellaneous/application.h"
 
-#if defined (Q_OS_MAC)
+#if defined (Q_OS_MACOS)
 extern void disableWindowTabbing();
 
 #endif
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
   // Ensure that ini format is used as application settings storage on Mac OS.
   QSettings::setDefaultFormat(QSettings::IniFormat);
 
-#if defined (Q_OS_MAC)
+#if defined (Q_OS_MACOS)
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
   disableWindowTabbing();
 #endif

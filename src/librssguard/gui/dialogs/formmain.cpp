@@ -133,7 +133,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionRestart;
   actions << m_ui->m_actionQuit;
 
-#if !defined(Q_OS_MAC)
+#if !defined(Q_OS_MACOS)
   actions << m_ui->m_actionFullscreen;
 #endif
 
@@ -141,7 +141,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSwitchFeedsList;
   actions << m_ui->m_actionSwitchMainWindow;
 
-#if !defined(Q_OS_MAC)
+#if !defined(Q_OS_MACOS)
   actions << m_ui->m_actionSwitchMainMenu;
 #endif
 
@@ -219,7 +219,7 @@ void FormMain::prepareMenus() {
   m_ui->m_menuWebBrowserTabs->removeAction(m_ui->m_actionTabNewWebBrowser);
   m_ui->m_menuWebBrowserTabs->setTitle(tr("Tabs"));
 #endif
-#if defined(Q_OS_MAC)
+#if defined(Q_OS_MACOS)
   m_ui->m_actionSwitchMainMenu->setVisible(false);
   m_ui->m_actionFullscreen->setVisible(false);
 #endif

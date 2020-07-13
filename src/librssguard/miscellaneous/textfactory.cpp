@@ -121,7 +121,7 @@ QString TextFactory::decrypt(const QString& text) {
 QString TextFactory::newline() {
 #if defined(Q_OS_WIN)
   return QSL("\r\n");
-#elif defined(Q_OS_MACOS)
+#elif defined(Q_OS_MACOSOS)
   return QSL("\r");
 #else
   return QSL("\n");

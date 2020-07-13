@@ -44,7 +44,7 @@ FormUpdate::FormUpdate(QWidget* parent)
 }
 
 bool FormUpdate::isSelfUpdateSupported() const {
-#if defined(Q_OS_WIN) || defined(Q_OS_MAC)
+#if defined(Q_OS_WIN) || defined(Q_OS_MACOS)
   return true;
 #else
   return false;

@@ -229,7 +229,7 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
   int final_index;
   QString browser_tab_name = tr("Web browser");
 
-#if defined (Q_OS_MACOS)
+#if defined (Q_OS_MACOSOS)
   browser_tab_name = browser_tab_name.prepend(QSL("  "));
 #endif
 
@@ -291,7 +291,7 @@ void TabWidget::gotoPreviousTab() {
 }
 
 void TabWidget::indentTabText(int index) {
-#if defined (Q_OS_MACOS)
+#if defined (Q_OS_MACOSOS)
   if (tabBar()->tabType(index) != TabBar::FeedReader && !tabIcon(index).isNull()) {
     // We have closable tab with some icon, fix the title.
     const QString text = tabText(index);
