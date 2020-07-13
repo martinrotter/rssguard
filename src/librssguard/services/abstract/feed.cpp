@@ -293,8 +293,6 @@ void Feed::setMessageFilters(const QList<QPointer<MessageFilter>>& filters) {
 }
 
 void Feed::removeMessageFilter(MessageFilter* filter) {
-  // TODO: check this.
-
   int idx = m_messageFilters.indexOf(filter);
 
   if (idx >= 0) {

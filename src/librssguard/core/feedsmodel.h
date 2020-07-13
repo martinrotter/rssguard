@@ -150,7 +150,6 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     void reloadMessageListRequested(bool mark_selected_messages_read);
 
     // There was some drag/drop operation, notify view about this.
-    // NOTE: View will probably expand dropped index.
     void requireItemValidationAfterDragDrop(const QModelIndex& source_index);
 
   private:

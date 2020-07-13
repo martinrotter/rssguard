@@ -77,7 +77,11 @@ bool IOFactory::startProcessDetached(const QString& program, const QStringList& 
 
   process.setProgram(program);
   process.setArguments(arguments);
+
+#if !defined(Q_OS_MAC)
   process.setNativeArguments(native_arguments);
+#endif
+
   process.setWorkingDirectory(working_directory);
 
   return process.startDetached(nullptr);
