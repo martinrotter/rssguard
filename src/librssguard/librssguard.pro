@@ -413,6 +413,10 @@ else {
            gui/newspaperpreviewer.ui
 }
 
+# Add mimesis.
+SOURCES += $$files(3rd-party/mimesis/*.cpp, false)
+HEADERS  += $$files(3rd-party/mimesis/*.hpp, false)
+
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/gui \
                 $$PWD/gui/dialogs \

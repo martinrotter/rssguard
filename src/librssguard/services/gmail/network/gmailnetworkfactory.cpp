@@ -228,11 +228,11 @@ void GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance, c
   QJsonArray param_add, param_remove;
 
   if (importance == RootItem::Importance::Important) {
-    // We add label UNREAD.
+    // We add label STARRED.
     param_add.append(GMAIL_SYSTEM_LABEL_STARRED);
   }
   else {
-    // We remove label UNREAD.
+    // We remove label STARRED.
     param_remove.append(GMAIL_SYSTEM_LABEL_STARRED);
   }
 

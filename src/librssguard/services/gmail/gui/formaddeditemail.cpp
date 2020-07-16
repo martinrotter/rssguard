@@ -2,6 +2,7 @@
 
 #include "services/gmail/gui/formaddeditemail.h"
 
+#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/gmail/gmailserviceroot.h"
@@ -9,6 +10,8 @@
 
 FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent) : QDialog(parent), m_root(root) {
   m_ui.setupUi(this);
+
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("mail-message-new")));
 
   m_ui.m_layoutAdder->setMargin(0);
   m_ui.m_layoutAdder->setContentsMargins(0, 0, 0, 0);

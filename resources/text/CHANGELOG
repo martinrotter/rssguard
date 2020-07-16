@@ -32,7 +32,6 @@ Fixed/changed:
 ▪ Purging of messages wasn't purgin important messages if chosen, now fixed.
 ▪ Fixed errors in internal SQL code when displaying empty message list.
 
-
 3.6.3
 —————
 
