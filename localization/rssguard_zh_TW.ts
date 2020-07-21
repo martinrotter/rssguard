@@ -230,11 +230,11 @@
     </message>
     <message>
         <source>Removing starred messages...</source>
-        <translation type="unfinished"/>
+        <translation>標為重要的消息移除中...</translation>
     </message>
     <message>
         <source>Starred messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>標為重要的消息清空...</translation>
     </message>
 </context>
 <context>
@@ -275,7 +275,7 @@
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation type="unfinished"/>
+        <translation>未知的錯誤: &apos;%1&apos;。</translation>
     </message>
 </context>
 <context>
@@ -485,13 +485,15 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>使用全局設定 (全局新聞源自動更新已停用)</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
-        <translation type="unfinished"/>
+        <translation>自動更新之狀態: %1
+使用中的篩選器: %2
+狀態: %3</translation>
     </message>
 </context>
 <context>
@@ -647,7 +649,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for important messages</source>
-        <translation type="unfinished"/>
+        <translation>重要消息的鼠右鍵選單</translation>
     </message>
 </context>
 <context>
@@ -1036,7 +1038,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation type="unfinished"/>
+        <translation>一定得用 &quot;%1&quot; 作為重導向 URL。維持 URL 不變很重要，因為 %2 正在指定的端埠等待服務的溝通碼。</translation>
     </message>
 </context>
 <context>
@@ -1139,7 +1141,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation type="unfinished"/>
+        <translation>一定得用 &quot;%1&quot; 作為重導向 URL。維持 URL 不變很重要，因為 %2 正在指定的端埠等待服務的溝通碼。</translation>
     </message>
 </context>
 <context>
@@ -1242,47 +1244,47 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>只下載未讀消息</translation>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud 帳號的密碼</translation>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud 帳號的使用者名稱</translation>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud 伺服器 URL，不包括 API 路徑</translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>新增 Nextcloud 新聞帳號</translation>
     </message>
     <message>
         <source>Edit existing Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>編輯既有的 Nextcloud 新聞帳號</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>本程式不支援所選的 Nextcloud 新聞伺服器執行的版本 (%1)。至少要 %2 才有支援。</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>本程式不支援所選的 Nextcloud 新聞伺服器執行的版本。</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud 新聞伺服器無問題，執行 %1 版；不過本程式最低需 %2 版。</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud 新聞伺服器無問題。</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>網路錯誤，有輸入正確的 Nextcloud 端點(endpoint)與密碼嗎？</translation>
     </message>
 </context>
 <context>
@@ -1453,7 +1455,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>只下載未讀消息</translation>
     </message>
 </context>
 <context>
@@ -2125,42 +2127,42 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Show only &amp;unread messages</source>
-        <translation type="unfinished"/>
+        <translation>只顯示未讀消息(&amp;U)</translation>
     </message>
     <message>
         <source>Message &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>消息篩選器(&amp;F)</translation>
     </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
     <message>
         <source>Message filters</source>
-        <translation type="unfinished"/>
+        <translation>消息篩選器</translation>
     </message>
     <message>
         <source>Remove selected</source>
-        <translation type="unfinished"/>
+        <translation>移除所選</translation>
     </message>
     <message>
         <source>Add new</source>
-        <translation type="unfinished"/>
+        <translation>新增</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>帳號</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
-        <translation type="unfinished"/>
+        <translation>勾全部</translation>
     </message>
     <message>
         <source>&amp;Uncheck all</source>
-        <translation type="unfinished"/>
+        <translation>不勾全部</translation>
     </message>
     <message>
         <source>Message filter details</source>
-        <translation type="unfinished"/>
+        <translation>消息篩選器細節</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2168,19 +2170,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title of message filter</source>
-        <translation type="unfinished"/>
+        <translation>消息篩選器名稱</translation>
     </message>
     <message>
         <source>JavaScript code</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript 碼</translation>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
-        <translation type="unfinished"/>
+        <translation>您的使用 JavaScript 的消息篩選器機制</translation>
     </message>
     <message>
         <source>Sample message</source>
-        <translation type="unfinished"/>
+        <translation>測試用的消息</translation>
     </message>
     <message>
         <source>Read</source>
@@ -2208,37 +2210,37 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Script output</source>
-        <translation type="unfinished"/>
+        <translation>隨譯即行碼之輸出</translation>
     </message>
     <message>
         <source>&amp;Test!</source>
-        <translation type="unfinished"/>
+        <translation>測試！(&amp;T)</translation>
     </message>
     <message>
         <source>&amp;Beautify!</source>
-        <translation type="unfinished"/>
+        <translation>美化！(&amp;B)</translation>
     </message>
     <message>
         <source>Detailed &amp;help</source>
-        <translation type="unfinished"/>
+        <translation>詳細的說明(&amp;H)</translation>
     </message>
     <message>
         <source>New message filter</source>
-        <translation type="unfinished"/>
+        <translation>新增消息篩選器</translation>
     </message>
     <message>
         <source>Message will be %1.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>消息會是 %1。</translation>
     </message>
     <message>
         <source>ACCEPTED</source>
-        <translation type="unfinished"/>
+        <translation>已接受</translation>
     </message>
     <message>
         <source>REJECTED</source>
-        <translation type="unfinished"/>
+        <translation>已拒絕</translation>
     </message>
     <message>
         <source>Output (modified) message is:
@@ -2248,43 +2250,49 @@ or this functionality is not implemented yet.</source>
   Is read/important = '%4/%5'
   Created on = '%6'
   Contents = &apos;%7&apos;</source>
-        <translation type="unfinished"/>
+        <translation>輸出的 (修改過的) 消息是:
+標題 = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  作者 = &apos;%3&apos;
+  已讀/重要 = &apos;%4/%5&apos;
+  建立於 = &apos;%6&apos;
+  內容 = &apos;%7&apos;</translation>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished"/>
+        <translation>是</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"/>
+        <translation>否</translation>
     </message>
     <message>
         <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>使用 JavaScript 的篩選器含有錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
         <source>Cannot find &apos;clang-format&apos;</source>
-        <translation type="unfinished"/>
+        <translation>找不到 &apos;clang-format&apos;</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-        <translation type="unfinished"/>
+        <translation>未美化隨譯即行碼，因為找不到 &apos;clang-format&apos; 工具。</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>出錯</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-        <translation type="unfinished"/>
+        <translation>未美化隨譯即行碼，因為 &apos;clang-format&apos; 工具傳回錯誤訊息。</translation>
     </message>
     <message>
         <source>Beautifier was running for too long time</source>
-        <translation type="unfinished"/>
+        <translation>美化工具執行時間過久</translation>
     </message>
     <message>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-        <translation type="unfinished"/>
+        <translation>隨譯即行碼尚未美化，有安裝 &apos;clang-format&apos; 嗎？</translation>
     </message>
 </context>
 <context>
@@ -2910,11 +2918,11 @@ Login tokens expiration: %2</source>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"/>
+        <translation>重要的消息</translation>
     </message>
     <message>
         <source>You can find all important messages here.</source>
-        <translation type="unfinished"/>
+        <translation>您可以在此找到所有重要的消息。</translation>
     </message>
 </context>
 <context>
@@ -3371,11 +3379,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Navigate to website</source>
-        <translation type="unfinished"/>
+        <translation>瀏覽網站</translation>
     </message>
     <message>
         <source>To login, you need to navigate to this website:</source>
-        <translation type="unfinished"/>
+        <translation>登入，您需要瀏覽此網站: </translation>
     </message>
 </context>
 <context>
@@ -4013,7 +4021,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Update all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>於應用程式啟動時更新全部新聞源，但先等待</translation>
     </message>
 </context>
 <context>
@@ -4408,7 +4416,7 @@ Unread news: %2</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n 秒</numerusform></translation>
     </message>
 </context>
 <context>
