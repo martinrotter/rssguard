@@ -35,3 +35,11 @@ EmailRecipientControl::EmailRecipientControl(const QString& recipient, QWidget* 
 
   setLayout(lay);
 }
+
+QString EmailRecipientControl::recipientAddress() const {
+  return m_txtRecipient->text();
+}
+
+RecipientType EmailRecipientControl::recipientType() const {
+  return RecipientType(m_cmbRecipientType->currentData(Qt::ItemDataRole::UserRole).toInt());
+}

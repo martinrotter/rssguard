@@ -170,7 +170,7 @@ void FormEditGmailAccount::execForEdit(GmailServiceRoot* existing_root) {
   m_ui.m_txtAppKey->lineEdit()->setText(existing_root->network()->oauth()->clientSecret());
   m_ui.m_txtRedirectUrl->lineEdit()->setText(existing_root->network()->oauth()->redirectUrl());
 
-  m_ui.m_txtUsername->lineEdit()->setText(existing_root->network()->userName());
+  m_ui.m_txtUsername->lineEdit()->setText(existing_root->network()->username());
   m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
 
   exec();

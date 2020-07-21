@@ -5,6 +5,8 @@
 
 #include <QWidget>
 
+#include "services/gmail/definitions.h"
+
 class QComboBox;
 class QLineEdit;
 class PlainToolButton;
@@ -14,6 +16,10 @@ class EmailRecipientControl : public QWidget {
 
   public:
     explicit EmailRecipientControl(const QString& recipient, QWidget* parent = nullptr);
+
+  public:
+    QString recipientAddress() const;
+    RecipientType recipientType() const;
 
   signals:
     void removalRequested();

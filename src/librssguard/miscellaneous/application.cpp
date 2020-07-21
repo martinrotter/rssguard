@@ -523,6 +523,7 @@ void Application::onFeedUpdatesProgress(const Feed* feed, int current, int total
 void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::NoIcon, nullptr, false);
+    qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::MessageIcon::NoIcon,
+                         nullptr, false);
   }
 }

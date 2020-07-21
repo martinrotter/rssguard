@@ -7,6 +7,7 @@
 
 #include "core/message.h"
 
+#include "3rd-party/mimesis/mimesis.hpp"
 #include "services/abstract/feed.h"
 #include "services/abstract/rootitem.h"
 
@@ -27,17 +28,14 @@ class GmailNetworkFactory : public QObject {
 
     OAuth2Service* oauth() const;
 
-    QString userName() const;
+    QString username() const;
     void setUsername(const QString& username);
 
     // Gets/sets the amount of messages to obtain during single feed update.
     int batchSize() const;
     void setBatchSize(int batch_size);
 
-    // Returns tree of feeds/categories.
-    // Top-level root of the tree is not needed here.
-    // Returned items do not have primary IDs assigned.
-    //RootItem* feedsCategories();
+    void sendEmail(const Mimesis::Message& msg);
 
     Downloader* downloadAttachment(const QString& msg_id, const QString& attachment_id);
 

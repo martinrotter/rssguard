@@ -3,6 +3,7 @@
 #include "services/gmail/network/gmailnetworkfactory.h"
 
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "miscellaneous/application.h"
@@ -39,7 +40,7 @@ OAuth2Service* GmailNetworkFactory::oauth() const {
   return m_oauth2;
 }
 
-QString GmailNetworkFactory::userName() const {
+QString GmailNetworkFactory::username() const {
   return m_username;
 }
 
@@ -49,6 +50,27 @@ int GmailNetworkFactory::batchSize() const {
 
 void GmailNetworkFactory::setBatchSize(int batch_size) {
   m_batchSize = batch_size;
+}
+
+void GmailNetworkFactory::sendEmail(const Mimesis::Message& msg) {
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
+
+  if (bearer.isEmpty()) {
+    throw ApplicationException(tr("you aren't logged in"));
+  }
+
+  QString rfc_email = QString::fromStdString(msg.to_string());
+  QString json = QSL("{\"raw\": \"%1\"}").arg(QString(rfc_email.toUtf8().toBase64(QByteArray::Base64Option::Base64UrlEncoding)));
+  QByteArray input_data = json.toUtf8();
+  QList<QPair<QByteArray, QByteArray>> headers;
+  QByteArray out;
+  auto xx = NetworkFactory::performNetworkOperation(GMAIL_API_SEND_MESSAGE,
+                                                    DOWNLOAD_TIMEOUT,
+                                                    input_data,
+                                                    out,
+                                                    QNetworkAccessManager::Operation::PostOperation,
+                                                    headers);
+  int a = 5;
 }
 
 void GmailNetworkFactory::initializeOauth() {

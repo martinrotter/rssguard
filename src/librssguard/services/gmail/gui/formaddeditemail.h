@@ -12,6 +12,7 @@ namespace Ui {
 }
 
 class GmailServiceRoot;
+class Message;
 class EmailRecipientControl;
 
 class FormAddEditEmail : public QDialog {
@@ -25,13 +26,18 @@ class FormAddEditEmail : public QDialog {
 
   private slots:
     void removeRecipientRow();
+    void onOkClicked();
     void addRecipientRow(const QString& recipient = QString());
+
+  private:
+    QList<EmailRecipientControl*> recipientControls() const;
 
   private:
     GmailServiceRoot* m_root;
 
     Ui::FormAddEditEmail m_ui;
     QList<EmailRecipientControl*> m_recipientControls;
+    Message* m_originalMessage;
 };
 
 #endif // FORMADDEDITEMAIL_H

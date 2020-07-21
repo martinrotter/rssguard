@@ -7,6 +7,7 @@
 #define GMAIL_OAUTH_TOKEN_URL     "https://accounts.google.com/o/oauth2/token"
 #define GMAIL_OAUTH_SCOPE         "https://mail.google.com/"
 
+#define GMAIL_API_SEND_MESSAGE      "https://www.googleapis.com/upload/gmail/v1/users/me/messages/send?uploadType=multipart"
 #define GMAIL_API_BATCH_UPD_LABELS  "https://www.googleapis.com/gmail/v1/users/me/messages/batchModify"
 #define GMAIL_API_GET_ATTACHMENT    "https://www.googleapis.com/gmail/v1/users/me/messages/%1/attachments/%2"
 #define GMAIL_API_LABELS_LIST       "https://www.googleapis.com/gmail/v1/users/me/labels"

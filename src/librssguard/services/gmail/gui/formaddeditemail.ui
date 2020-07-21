@@ -6,27 +6,37 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>552</width>
-    <height>491</height>
+    <width>423</width>
+    <height>310</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Write e-mail message</string>
   </property>
   <layout class="QFormLayout" name="m_layout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>From</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="m_txtSender">
-     <property name="placeholderText">
-      <string>Name and address of this e-mail message sender</string>
-     </property>
-    </widget>
+   <item row="0" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="m_layoutAdder">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="PlainToolButton" name="m_btnAdder">
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="2" column="0" colspan="2">
     <widget class="QTextEdit" name="m_txtMessage">
@@ -51,29 +61,22 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="m_layoutAdder">
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="PlainToolButton" name="m_btnAdder">
-       <property name="text">
-        <string>...</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="1" column="0">
+    <widget class="QLabel" name="m_lblSubject">
+     <property name="text">
+      <string>Subject</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_txtSubject</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="m_txtSubject">
+     <property name="placeholderText">
+      <string>Title of your message</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -84,24 +87,13 @@
    <header>plaintoolbutton.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_btnAdder</tabstop>
+  <tabstop>m_txtSubject</tabstop>
+  <tabstop>m_txtMessage</tabstop>
+ </tabstops>
  <resources/>
  <connections>
-  <connection>
-   <sender>m_buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>FormAddEditEmail</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>m_buttonBox</sender>
    <signal>rejected()</signal>

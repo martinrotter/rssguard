@@ -33,7 +33,7 @@ GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* paren
 GmailServiceRoot::~GmailServiceRoot() = default;
 
 void GmailServiceRoot::updateTitle() {
-  setTitle(m_network->userName() + QSL(" (Gmail)"));
+  setTitle(m_network->username() + QSL(" (Gmail)"));
 }
 
 RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
@@ -78,7 +78,7 @@ void GmailServiceRoot::saveAccountDataToDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (accountId() != NO_PARENT_CATEGORY) {
-    if (DatabaseQueries::overwriteGmailAccount(database, m_network->userName(),
+    if (DatabaseQueries::overwriteGmailAccount(database, m_network->username(),
                                                m_network->oauth()->clientId(),
                                                m_network->oauth()->clientSecret(),
                                                m_network->oauth()->redirectUrl(),
@@ -95,7 +95,7 @@ void GmailServiceRoot::saveAccountDataToDatabase() {
 
     if (saved) {
       if (DatabaseQueries::createGmailAccount(database, id_to_assign,
-                                              m_network->userName(),
+                                              m_network->username(),
                                               m_network->oauth()->clientId(),
                                               m_network->oauth()->clientSecret(),
                                               m_network->oauth()->redirectUrl(),
