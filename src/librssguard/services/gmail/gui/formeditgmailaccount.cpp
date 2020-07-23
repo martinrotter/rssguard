@@ -14,12 +14,8 @@ FormEditGmailAccount::FormEditGmailAccount(QWidget* parent) : QDialog(parent),
                             QString(), QString(), GMAIL_OAUTH_SCOPE)), m_editableRoot(nullptr) {
   m_ui.setupUi(this);
 
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblAuthInfo, true);
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("gmail")));
 
-  m_ui.m_lblAuthInfo->setText(tr("You must use \"%1\" as redirect URL. It is important to leave this "
-                                 "URL intact, because %2 is waiting on specified port for "
-                                 "service tokens.").arg(OAUTH_REDIRECT_URI, APP_NAME));
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("Not tested yet."),
                                   tr("Not tested yet."));

@@ -57,16 +57,6 @@
       <item row="2" column="1">
        <widget class="LineEditWithStatus" name="m_txtRedirectUrl" native="true"/>
       </item>
-      <item row="3" column="0" colspan="2">
-       <widget class="QLabel" name="m_lblAuthInfo">
-        <property name="text">
-         <string>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</string>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>

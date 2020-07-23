@@ -15,8 +15,14 @@ class OAuthHttpHandler : public QObject {
     explicit OAuthHttpHandler(QObject* parent = nullptr);
     virtual ~OAuthHttpHandler();
 
+    quint16 listenPort() const;
+    QHostAddress listenAddress() const;
+    QString listenAddressPort() const;
+
+    void setListenAddressPort(const QString& full_uri);
+
   signals:
-    void authRejected(const QString& error_description, const QString& state = QString());
+    void authRejected(const QString& error_description, const QString& state);
     void authGranted(const QString& auth_code, const QString& state);
 
   private slots:
@@ -52,6 +58,7 @@ class OAuthHttpHandler : public QObject {
         Delete,
       } m_method = Method::Unknown;
 
+      QString m_address;
       quint16 m_port = 0;
       QByteArray m_fragment;
       QUrl m_url;
@@ -62,7 +69,9 @@ class OAuthHttpHandler : public QObject {
 
     QMap<QTcpSocket*, QHttpRequest> m_connectedClients;
     QTcpServer m_httpServer;
-    QHostAddress m_listenAddress = QHostAddress::LocalHost;
+    QHostAddress m_listenAddress;
+    quint16 m_listenPort;
+    QString m_listenAddressPort;
     QString m_text;
 };
 

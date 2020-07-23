@@ -14,15 +14,28 @@ OAuthHttpHandler::OAuthHttpHandler(QObject* parent) : QObject(parent) {
   m_text = tr("You can close this window now. Go back to %1").arg(APP_NAME);
 
   connect(&m_httpServer, &QTcpServer::newConnection, this, &OAuthHttpHandler::clientConnected);
-
-  if (!m_httpServer.listen(m_listenAddress, OAUTH_REDIRECT_URI_PORT)) {
-    qCritical("OAuth HTTP handler: Failed to start listening on port '%d'.", OAUTH_REDIRECT_URI_PORT);
-  }
+  setListenAddressPort(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(OAUTH_REDIRECT_URI_PORT));
 }
 
 OAuthHttpHandler::~OAuthHttpHandler() {
   if (m_httpServer.isListening()) {
     m_httpServer.close();
+  }
+}
+
+void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
+  QUrl url = QUrl::fromUserInput(full_uri);
+
+  m_listenAddress = QHostAddress(url.host());
+  m_listenPort = quint16(url.port());
+  m_listenAddressPort = full_uri;
+
+  if (m_httpServer.isListening()) {
+    m_httpServer.close();
+  }
+
+  if (!m_httpServer.listen(m_listenAddress, m_listenPort)) {
+    qCritical("OAuth HTTP handler: Failed to start listening on port '%d'.", OAUTH_REDIRECT_URI_PORT);
   }
 }
 
@@ -99,6 +112,7 @@ void OAuthHttpHandler::answerClient(QTcpSocket* socket, const QUrl& url) {
 
 void OAuthHttpHandler::readReceivedData(QTcpSocket* socket) {
   if (!m_connectedClients.contains(socket)) {
+    m_connectedClients[socket].m_address = QSL("http://") + m_httpServer.serverAddress().toString();
     m_connectedClients[socket].m_port = m_httpServer.serverPort();
   }
 
@@ -139,6 +153,18 @@ void OAuthHttpHandler::readReceivedData(QTcpSocket* socket) {
     answerClient(socket, request->m_url);
     m_connectedClients.remove(socket);
   }
+}
+
+QHostAddress OAuthHttpHandler::listenAddress() const {
+  return m_listenAddress;
+}
+
+QString OAuthHttpHandler::listenAddressPort() const {
+  return m_listenAddressPort;
+}
+
+quint16 OAuthHttpHandler::listenPort() const {
+  return m_listenPort;
 }
 
 bool OAuthHttpHandler::QHttpRequest::readMethod(QTcpSocket* socket) {
@@ -204,7 +230,7 @@ bool OAuthHttpHandler::QHttpRequest::readUrl(QTcpSocket* socket) {
       return false;
     }
 
-    m_url.setUrl(QStringLiteral("http://localhost:") + QString::number(m_port) + QString::fromUtf8(m_fragment));
+    m_url.setUrl(m_address + QString::number(m_port) + QString::fromUtf8(m_fragment));
     m_state = State::ReadingStatus;
 
     if (!m_url.isValid()) {

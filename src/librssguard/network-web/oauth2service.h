@@ -109,14 +109,13 @@ class OAuth2Service : public QObject {
     QString m_accessToken;
     QString m_refreshToken;
     QString m_tokenGrantType;
-    QString m_redirectUrl;
     QString m_clientId;
     QString m_clientSecret;
     QUrl m_tokenUrl;
     QString m_authUrl;
     QString m_scope;
     SilentNetworkAccessManager m_networkManager;
-    static OAuthHttpHandler* handler();
+    OAuthHttpHandler* m_redirectionHandler;
 };
 
 #endif // OAUTH2SERVICE_H

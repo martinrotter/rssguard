@@ -45,8 +45,7 @@ Q_GLOBAL_STATIC(OAuthHttpHandler, qz_silent_acmanager)
 
 OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, const QString& client_id,
                              const QString& client_secret, const QString& scope, QObject* parent)
-  : QObject(parent), m_id(QString::number(std::rand())), m_timerId(-1) {
-  m_redirectUrl = QSL(OAUTH_REDIRECT_URI);
+  : QObject(parent), m_id(QString::number(std::rand())), m_timerId(-1), m_redirectionHandler(new OAuthHttpHandler(this)) {
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(token_url);
   m_authUrl = auth_url;
@@ -56,13 +55,13 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
   m_scope = scope;
 
   connect(&m_networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(tokenRequestFinished(QNetworkReply*)));
-  connect(handler(), &OAuthHttpHandler::authGranted, [this](const QString& auth_code, const QString& id) {
+  connect(m_redirectionHandler, &OAuthHttpHandler::authGranted, [this](const QString& auth_code, const QString& id) {
     if (id.isEmpty() || id == m_id) {
       // We process this further only if handler (static singleton) responded to our original request.
       retrieveAccessToken(auth_code);
     }
   });
-  connect(handler(), &OAuthHttpHandler::authRejected, [this](const QString& error_description, const QString& id) {
+  connect(m_redirectionHandler, &OAuthHttpHandler::authRejected, [this](const QString& error_description, const QString& id) {
     Q_UNUSED(error_description)
 
     if (id.isEmpty() || id == m_id) {
@@ -130,10 +129,6 @@ void OAuth2Service::setId(const QString& id) {
   m_id = id;
 }
 
-OAuthHttpHandler* OAuth2Service::handler() {
-  return qz_silent_acmanager();
-}
-
 void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
   QNetworkRequest networkRequest;
 
@@ -144,7 +139,9 @@ void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
                             "client_secret=%2&"
                             "code=%3&"
                             "redirect_uri=%5&"
-                            "grant_type=%4").arg(m_clientId, m_clientSecret, auth_code, m_tokenGrantType, m_redirectUrl);
+                            "grant_type=%4").arg(m_clientId, m_clientSecret,
+                                                 auth_code, m_tokenGrantType,
+                                                 m_redirectionHandler->listenAddressPort());
 
   m_networkManager.post(networkRequest, content.toUtf8());
 }
@@ -242,11 +239,11 @@ void OAuth2Service::setClientId(const QString& client_id) {
 }
 
 QString OAuth2Service::redirectUrl() const {
-  return m_redirectUrl;
+  return m_redirectionHandler->listenAddressPort();
 }
 
 void OAuth2Service::setRedirectUrl(const QString& redirect_url) {
-  m_redirectUrl = redirect_url;
+  m_redirectionHandler->setListenAddressPort(redirect_url);
 }
 
 QString OAuth2Service::refreshToken() const {
@@ -305,7 +302,10 @@ void OAuth2Service::retrieveAuthCode() {
                                          "response_type=code&"
                                          "state=%4&"
                                          "prompt=consent&"
-                                         "access_type=offline").arg(m_clientId, m_scope, m_redirectUrl, m_id);
+                                         "access_type=offline").arg(m_clientId,
+                                                                    m_scope,
+                                                                    m_redirectionHandler->listenAddressPort(),
+                                                                    m_id);
 
   // We run login URL in external browser, response is caught by light HTTP server.
   if (qApp->web()->openUrlInExternalBrowser(auth_url)) {
