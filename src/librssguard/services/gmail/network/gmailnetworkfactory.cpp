@@ -52,7 +52,7 @@ void GmailNetworkFactory::setBatchSize(int batch_size) {
   m_batchSize = batch_size;
 }
 
-void GmailNetworkFactory::sendEmail(const Mimesis::Message& msg) {
+QString GmailNetworkFactory::sendEmail(const Mimesis::Message& msg) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
@@ -60,17 +60,39 @@ void GmailNetworkFactory::sendEmail(const Mimesis::Message& msg) {
   }
 
   QString rfc_email = QString::fromStdString(msg.to_string());
-  QString json = QSL("{\"raw\": \"%1\"}").arg(QString(rfc_email.toUtf8().toBase64(QByteArray::Base64Option::Base64UrlEncoding)));
-  QByteArray input_data = json.toUtf8();
+  QByteArray input_data = rfc_email.toUtf8();
   QList<QPair<QByteArray, QByteArray>> headers;
+
+  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                               m_oauth2->bearer().toLocal8Bit()));
+  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                               QString("message/rfc822").toLocal8Bit()));
+
   QByteArray out;
-  auto xx = NetworkFactory::performNetworkOperation(GMAIL_API_SEND_MESSAGE,
-                                                    DOWNLOAD_TIMEOUT,
-                                                    input_data,
-                                                    out,
-                                                    QNetworkAccessManager::Operation::PostOperation,
-                                                    headers);
-  int a = 5;
+  auto result = NetworkFactory::performNetworkOperation(GMAIL_API_SEND_MESSAGE,
+                                                        DOWNLOAD_TIMEOUT,
+                                                        input_data,
+                                                        out,
+                                                        QNetworkAccessManager::Operation::PostOperation,
+                                                        headers);
+
+  if (result.first != QNetworkReply::NetworkError::NoError) {
+    if (!out.isEmpty()) {
+      QJsonDocument doc = QJsonDocument::fromJson(out);
+      auto msg = doc.object()["error"].toObject()["message"].toString();
+
+      throw ApplicationException(msg);
+    }
+    else {
+      throw ApplicationException(QString::fromUtf8(out));
+    }
+  }
+  else {
+    QJsonDocument doc = QJsonDocument::fromJson(out);
+    auto msg_id = doc.object()["id"].toString();
+
+    return msg_id;
+  }
 }
 
 void GmailNetworkFactory::initializeOauth() {
@@ -393,6 +415,92 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   return true;
 }
 
+QStringList GmailNetworkFactory::getAllRecipients() {
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
+
+  if (bearer.isEmpty()) {
+    throw ApplicationException(tr("not logged-in"));
+  }
+
+  QStringList recipients;
+  QList<QPair<QByteArray, QByteArray>> headers;
+
+  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                               m_oauth2->bearer().toLocal8Bit()));
+  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                               QString(GMAIL_CONTENT_TYPE_JSON).toLocal8Bit()));
+
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray msg_list_data;
+
+  // TODO: Cyklicky!!
+  auto list_res = NetworkFactory::performNetworkOperation(GMAIL_API_MSGS_LIST,
+                                                          timeout,
+                                                          QByteArray(),
+                                                          msg_list_data,
+                                                          QNetworkAccessManager::Operation::GetOperation,
+                                                          headers);
+
+  if (list_res.first != QNetworkReply::NetworkError::NoError) {
+    throw ApplicationException(tr("comm error when asking for recipients"));
+  }
+
+  QJsonDocument json_list = QJsonDocument::fromJson(msg_list_data);
+  QStringList message_ids;
+
+  for (const auto& msg_nod : json_list.object()["messages"].toArray()) {
+    message_ids.append(msg_nod.toObject()["id"].toString());
+  }
+
+  auto* multi = new QHttpMultiPart();
+
+  multi->setContentType(QHttpMultiPart::ContentType::MixedType);
+
+  for (const QString& msg : message_ids) {
+    QHttpPart part;
+
+    part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);
+    QString full_msg_endpoint = QString("GET /gmail/v1/users/me/messages/%1?metadataHeaders=From&metadataHeaders=To&format=metadata\r\n").arg(msg);
+
+    part.setBody(full_msg_endpoint.toUtf8());
+    multi->append(part);
+  }
+
+  QList<HttpResponse> output;
+
+  headers.removeLast();
+
+  NetworkResult res = NetworkFactory::performNetworkOperation(GMAIL_API_BATCH,
+                                                              timeout,
+                                                              multi,
+                                                              output,
+                                                              QNetworkAccessManager::Operation::PostOperation,
+                                                              headers);
+
+  if (res.first == QNetworkReply::NetworkError::NoError) {
+    // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
+    for (const HttpResponse& part : output) {
+      QJsonObject msg_doc = QJsonDocument::fromJson(part.body().toUtf8()).object();
+      auto headers = msg_doc["payload"].toObject()["headers"].toArray();
+
+      if (headers.size() >= 2) {
+        for (const auto& head : headers) {
+          auto val = head.toObject()["value"].toString();
+
+          if (!recipients.contains(val)) {
+            recipients.append(val);
+          }
+        }
+      }
+    }
+
+    return recipients;
+  }
+  else {
+    throw ApplicationException(tr("comm error when asking for recipients"));
+  }
+}
+
 bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite_messages,
                                                       const QString& feed_id,
                                                       QList<Message>& full_messages) {
@@ -477,81 +585,3 @@ QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_j
 
   return messages;
 }
-
-/*
-   RootItem* GmailNetworkFactory::decodeFeedCategoriesData(const QString& categories) {
-   RootItem* parent = new RootItem();
-   QJsonArray json = QJsonDocument::fromJson(categories.toUtf8()).object()["labels"].toArray();
-
-   QMap<QString, RootItem*> cats;
-   cats.insert(QString(), parent);
-
-   for (const QJsonValue& obj : json) {
-    auto label = obj.toObject();
-    QString label_id = label["id"].toString();
-    QString label_name = label["name"].toString();
-    QString label_type = label["type"].toString();
-
-    if (label_name.contains(QL1C('/'))) {
-      // We have nested labels.
-    }
-    else {
-      GmailFeed* feed = new GmailFeed();
-
-      feed->setTitle(label_name);
-      feed->setCustomId(label_id);
-
-      parent->appendChild(feed);
-    }
-
-
-    if (label_id.contains(QSL("/label/"))) {
-      // We have label (not "state").
-      Category* category = new Category();
-
-      category->setDescription(label["htmlUrl"].toString());
-      category->setTitle(label_id.mid(label_id.lastIndexOf(QL1C('/')) + 1));
-      category->setCustomId(label_id);
-
-      cats.insert(category->customId(), category);
-
-      // All categories in Nextcloud are top-level.
-      parent->appendChild(category);
-    }
-   }
-
-   json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
-
-   for (const QJsonValue& obj : json) {
-    auto subscription = obj.toObject();
-    QString id = subscription["id"].toString();
-    QString title = subscription["title"].toString();
-    QString url = subscription["htmlUrl"].toString();
-    QString parent_label;
-    QJsonArray categories = subscription["categories"].toArray();
-
-    for (const QJsonValue& cat : categories) {
-      QString potential_id = cat.toObject()["id"].toString();
-
-      if (potential_id.contains(QSL("/label/"))) {
-        parent_label = potential_id;
-        break;
-      }
-    }
-
-    // We have label (not "state").
-    GmailFeed* feed = new GmailFeed();
-
-    feed->setDescription(url);
-    feed->setUrl(url);
-    feed->setTitle(title);
-    feed->setCustomId(id);
-
-    if (cats.contains(parent_label)) {
-      cats[parent_label]->appendChild(feed);
-    }
-   }
-
-   return parent;
-   }
- */

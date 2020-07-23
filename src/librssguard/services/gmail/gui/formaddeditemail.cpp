@@ -22,6 +22,7 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent) : QD
 
   m_ui.m_btnAdder->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
   m_ui.m_btnAdder->setToolTip(tr("Add new recipient."));
+  m_ui.m_btnAdder->setFocusPolicy(Qt::FocusPolicy::NoFocus);
 
   connect(m_ui.m_btnAdder, &PlainToolButton::clicked, this, [=]() {
     addRecipientRow();
@@ -96,8 +97,11 @@ void FormAddEditEmail::onOkClicked() {
     msg["Reply-To"] = rec_repl.join(',').toStdString();
   }
 
-  msg["Subject"] = m_ui.m_txtSubject->text().toStdString();
+  msg["Subject"] = QString("=?utf-8?B?%1?=")
+                   .arg(QString(m_ui.m_txtSubject->text().toUtf8().toBase64(QByteArray::Base64Option::Base64UrlEncoding)))
+                   .toStdString();
   msg.set_plain(m_ui.m_txtMessage->toPlainText().toStdString());
+  msg.set_header("Content-Type", "text/plain; charset=utf-8");
 
   if (m_originalMessage == nullptr) {
     // Send completely new message.
@@ -122,6 +126,13 @@ void FormAddEditEmail::addRecipientRow(const QString& recipient) {
   auto* mail_rec = new EmailRecipientControl(recipient, this);
 
   connect(mail_rec, &EmailRecipientControl::removalRequested, this, &FormAddEditEmail::removeRecipientRow);
+
+  try {
+    QStringList rec = m_root->network()->getAllRecipients();
+
+    mail_rec->setPossibleRecipients(rec);
+  }
+  catch (const ApplicationException& ex) {}
 
   m_ui.m_layout->insertRow(m_ui.m_layout->count() - 5, mail_rec);
 }

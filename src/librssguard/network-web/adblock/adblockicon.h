@@ -1,4 +1,4 @@
-// This file is part of RSS Guard.
+// For license of this file, see <project-root-folder>/LICENSE.md.
 
 //
 // Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>

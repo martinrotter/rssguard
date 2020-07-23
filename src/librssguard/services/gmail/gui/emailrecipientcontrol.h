@@ -21,6 +21,8 @@ class EmailRecipientControl : public QWidget {
     QString recipientAddress() const;
     RecipientType recipientType() const;
 
+    void setPossibleRecipients(const QStringList& rec);
+
   signals:
     void removalRequested();
 

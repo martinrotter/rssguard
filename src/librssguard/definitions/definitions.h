@@ -14,7 +14,7 @@
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 
 #define ADBLOCK_ADBLOCKED_PAGE                "adblockedpage"
-#define ADBLOCK_HOWTO_FILTERS                 "http://adblockplus.org/en/filters"
+#define ADBLOCK_HOWTO_FILTERS                 "https://help.eyeo.com/en/adblockplus/how-to-write-filters"
 #define ADBLOCK_UPDATE_DAYS_INTERVAL          5
 #define ADBLOCK_ICON_ACTIVE                   "adblock"
 #define ADBLOCK_ICON_DISABLED                 "adblock-disabled"
@@ -78,6 +78,7 @@
 
 #define HTTP_HEADERS_ACCEPT         "Accept"
 #define HTTP_HEADERS_CONTENT_TYPE   "Content-Type"
+#define HTTP_HEADERS_CONTENT_LENGTH "Content-Length"
 #define HTTP_HEADERS_AUTHORIZATION  "Authorization"
 #define HTTP_HEADERS_USER_AGENT     "User-Agent"
 

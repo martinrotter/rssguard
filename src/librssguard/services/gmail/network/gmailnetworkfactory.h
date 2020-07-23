@@ -35,7 +35,11 @@ class GmailNetworkFactory : public QObject {
     int batchSize() const;
     void setBatchSize(int batch_size);
 
-    void sendEmail(const Mimesis::Message& msg);
+    // Sends e-mail, returns its ID.
+    QString sendEmail(const Mimesis::Message& msg);
+
+    // Returns all possible recipients.
+    QStringList getAllRecipients();
 
     Downloader* downloadAttachment(const QString& msg_id, const QString& attachment_id);
 
