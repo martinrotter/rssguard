@@ -444,6 +444,10 @@ Click here to open parent directory.</source>
         <source>Reply-to</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>E-mail address</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>Feed</name>
@@ -660,10 +664,6 @@ or this functionality is not implemented yet.</source>
         <translation>Ліцензії</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>Ліцензія GNU GPL ( стосується програмного коду RSS Guard )</translation>
-    </message>
-    <message>
         <source>GNU GPL License</source>
         <translation>Ліцензія GNU GPL</translation>
     </message>
@@ -731,6 +731,10 @@ or this functionality is not implemented yet.</source>
         <source>NOT portable</source>
         <translation>НЕ портативно</translation>
     </message>
+    <message>
+        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -750,14 +754,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>From</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Name and address of this e-mail message sender</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Contents of your e-mail message</source>
         <translation type="unfinished"/>
     </message>
@@ -767,6 +763,22 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new recipient.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of your message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>E-mail NOT sent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your e-mail message wasn&apos;t sent.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1026,15 +1038,11 @@ or this functionality is not implemented yet.</source>
         <translation>Введено значення.</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>НЕ ПОТРІБНО змінювати значення налаштувань за замовченням. Змінювати ці значення слід у тому випадку, коли ви є досвідченим користувачем і добре розумієте, що ви робите!</translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>Тест успішний. Можлийи потоврний запит для підключення.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1059,10 +1067,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Redirect URL</source>
         <translation>URL перенаправлення</translation>
-    </message>
-    <message>
-        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>НЕ ПОТРІБНО змінювати налаштування за замовченням. Змінювати ці значення слід у тому випадку, коли ви є досвідченим користувачем і добре розумієте, що ви робите!</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1137,7 +1141,13 @@ or this functionality is not implemented yet.</source>
         <translation>Введено значення.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Get my own Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2285,6 +2295,10 @@ or this functionality is not implemented yet.</source>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2850,6 +2864,18 @@ You can install it now.</source>
     <message>
         <source>Gmail: authorization denied</source>
         <translation>Відмовлено в авторизації Gmail</translation>
+    </message>
+    <message>
+        <source>you aren&apos;t logged in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>not logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>comm error when asking for recipients</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3469,6 +3495,10 @@ At least API level %1 is required.</source>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -445,6 +445,10 @@ Klik disini untuk membuka direktori induk.</translation>
         <source>Reply-to</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>E-mail address</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>Feed</name>
@@ -661,10 +665,6 @@ atau fungsi ini belum diimplementasikan.</translation>
         <translation>Lisensi</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>Lisensi GNU GPL (berlaku pada kode sumber RSS Guard)</translation>
-    </message>
-    <message>
         <source>GNU GPL License</source>
         <translation>Lisensi GNU GPL</translation>
     </message>
@@ -732,6 +732,10 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>NOT portable</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -751,14 +755,6 @@ atau fungsi ini belum diimplementasikan.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>From</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Name and address of this e-mail message sender</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Contents of your e-mail message</source>
         <translation type="unfinished"/>
     </message>
@@ -768,6 +764,22 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Add new recipient.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of your message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>E-mail NOT sent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your e-mail message wasn&apos;t sent.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1027,15 +1039,11 @@ atau fungsi ini belum diimplementasikan.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1059,10 +1067,6 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1138,7 +1142,13 @@ atau fungsi ini belum diimplementasikan.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Get my own Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2286,6 +2296,10 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2850,6 +2864,18 @@ You can install it now.</source>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>you aren&apos;t logged in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>not logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>comm error when asking for recipients</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3475,6 +3501,10 @@ version by clicking this popup notification.</source>
 
 Silahkan, memeriksa hal BARU yang termasuk
 di versi ini dengan meng-klik popup notifikasi ini.</translation>
+    </message>
+    <message>
+        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

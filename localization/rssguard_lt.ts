@@ -448,6 +448,10 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
         <source>Reply-to</source>
         <translation>Kam atsakyti</translation>
     </message>
+    <message>
+        <source>E-mail address</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>Feed</name>
@@ -664,10 +668,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Licencijos</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>GNU GPL licencija (pritaikoma RSS Guard pirminiam kodui)</translation>
-    </message>
-    <message>
         <source>GNU GPL License</source>
         <translation>GNU GPL licencija</translation>
     </message>
@@ -735,6 +735,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>NOT portable</source>
         <translation>NEPERKELIAMI</translation>
     </message>
+    <message>
+        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -754,14 +758,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Rašyti el. laišką</translation>
     </message>
     <message>
-        <source>From</source>
-        <translation>Nuo</translation>
-    </message>
-    <message>
-        <source>Name and address of this e-mail message sender</source>
-        <translation>Šio el. laiško siuntėjo vardas ir adresas</translation>
-    </message>
-    <message>
         <source>Contents of your e-mail message</source>
         <translation>Jūsų el. laiško turinys</translation>
     </message>
@@ -772,6 +768,22 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Add new recipient.</source>
         <translation>Pridėti naują gavėją.</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of your message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>E-mail NOT sent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your e-mail message wasn&apos;t sent.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1030,15 +1042,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Įvesta kažkokia reikšmė.</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>Iš anksto apibrėžtų nustatymų NEREIKIA keisti iš numatytųjų reikšmių. Keiskite šias reikšmes tik tuo atveju, jeigu esate patyręs naudotojas ir žinote ką darote!</translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>Išbandyta sėkmingai. Jūsų gali būti paprašyta prisijungti dar kartą.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1063,10 +1071,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Redirect URL</source>
         <translation>Peradresavimo URL</translation>
-    </message>
-    <message>
-        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>Šiuos nustatymus NEREIKIA keisti iš numatytųjų reikšmių. Keiskite šias reikšmes tik tuo atveju, jeigu esate patyręs naudotojas ir žinote ką darote!</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1141,7 +1145,13 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Įvesta kažkokia reikšmė.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Get my own Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2289,6 +2299,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2855,6 +2869,18 @@ Jūs dabar galite jį įdiegti.</translation>
     <message>
         <source>Gmail: authorization denied</source>
         <translation>Gmail: prieigos teisių suteikimas atmestas</translation>
+    </message>
+    <message>
+        <source>you aren&apos;t logged in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>not logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>comm error when asking for recipients</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3490,6 +3516,10 @@ version by clicking this popup notification.</source>
 
 Susipažinkite su NAUJOMIS šios
 versijos ypatybėmis, spusteldami šį pranešimą.</translation>
+    </message>
+    <message>
+        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

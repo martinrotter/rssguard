@@ -446,6 +446,10 @@ Clique para abrir a pasta de destino.</translation>
         <source>Reply-to</source>
         <translation>Responder</translation>
     </message>
+    <message>
+        <source>E-mail address</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>Feed</name>
@@ -664,10 +668,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Licenças</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>Licença GNU GPL License (aplica-se ao código fonte do RSS Guard)</translation>
-    </message>
-    <message>
         <source>GNU GPL License</source>
         <translation>Licença GNU GPL</translation>
     </message>
@@ -735,6 +735,10 @@ ou esta função ainda não foi implementada.</translation>
         <source>NOT portable</source>
         <translation>NÃO portátil</translation>
     </message>
+    <message>
+        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -754,14 +758,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Escrever mensagem de e-mail</translation>
     </message>
     <message>
-        <source>From</source>
-        <translation>De</translation>
-    </message>
-    <message>
-        <source>Name and address of this e-mail message sender</source>
-        <translation>Nome e endereço do remetente desta mensagem de email</translation>
-    </message>
-    <message>
         <source>Contents of your e-mail message</source>
         <translation>Conteúdo da sua mensagem de e-mail</translation>
     </message>
@@ -772,6 +768,22 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Add new recipient.</source>
         <translation>Adiciona novo destinatário.</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of your message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>E-mail NOT sent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your e-mail message wasn&apos;t sent.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1030,16 +1042,12 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Algum valor foi inserido.</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>Configurações predefinidas NÃO precisam ser alteradas dos seus valores padrão. Mude estes valores apenas de você for um usuário avançado e sabe o que está fazendo!</translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>Testado com sucesso. Você será solicitado para fazer login mais uma vez.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation>Você precisa usar &quot;%1&quot; como URL de redirecionamento. É importante deixar esta URL intacta, pois o %2 está aguardando na porta específica por tokens de serviço.</translation>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1063,10 +1071,6 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Redirect URL</source>
         <translation>URL de Redirecionamento</translation>
-    </message>
-    <message>
-        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>Estas configurações NÃO precisam ser alteradas dos seus valores padrão. Mude estes valores apenas de você for um usuário avançado e sabe o que está fazendo!</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1141,8 +1145,14 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Algum valor foi inserido.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation>Você precisa usar &quot;%1&quot; como URL de redirecionamento. É importante deixar esta URL intacta, pois o %2 está aguardando na porta específica por tokens de serviço.</translation>
+        <source>Get my own Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;Application ID&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2297,6 +2307,10 @@ ou esta função ainda não foi implementada.</translation>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
         <translation>O script não foi &apos;embelezado&apos;, a ferramenta &apos;clang-format&apos; está instalada?</translation>
     </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2863,6 +2877,18 @@ Você pode instalá-lo agora.</translation>
     <message>
         <source>Gmail: authorization denied</source>
         <translation>Gmail: autorização negada</translation>
+    </message>
+    <message>
+        <source>you aren&apos;t logged in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>not logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>comm error when asking for recipients</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3494,6 +3520,10 @@ version by clicking this popup notification.</source>
 
 Por favor, veja o NOVO conteúdo incluído nesta
 versão, clicando nesta notificação popup.</translation>
+    </message>
+    <message>
+        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

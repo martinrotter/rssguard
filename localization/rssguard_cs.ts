@@ -448,6 +448,10 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
         <source>Reply-to</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>E-mail address</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>Feed</name>
@@ -664,10 +668,6 @@ or this functionality is not implemented yet.</source>
         <translation>Licence</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>GNU GPL Licence (pro kód programu RSS Guard)</translation>
-    </message>
-    <message>
         <source>GNU GPL License</source>
         <translation>GNU GPL Licence</translation>
     </message>
@@ -735,6 +735,10 @@ or this functionality is not implemented yet.</source>
         <source>NOT portable</source>
         <translation>NEportable</translation>
     </message>
+    <message>
+        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -754,14 +758,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>From</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Name and address of this e-mail message sender</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Contents of your e-mail message</source>
         <translation type="unfinished"/>
     </message>
@@ -771,6 +767,22 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new recipient.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of your message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>E-mail NOT sent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your e-mail message wasn&apos;t sent.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1030,15 +1042,11 @@ or this functionality is not implemented yet.</source>
         <translation>Zadána nějaká hodnota.</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>Předdefinovaná nastavení měňte pouze pokud opravdu víte co děláte.</translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>Otestováno úspěšně.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1063,10 +1071,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Redirect URL</source>
         <translation>Přesměrovací URL</translation>
-    </message>
-    <message>
-        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>Tato nestavení NEMUSÍ být měněna z jejich výchozích hodnot. Měňte tyto hodnoty pouze, pokud jste pokročilý uživatel.</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1141,7 +1145,13 @@ or this functionality is not implemented yet.</source>
         <translation>Zadána nějaká hodnota.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Get my own Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2289,6 +2299,10 @@ or this functionality is not implemented yet.</source>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2852,6 +2866,18 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>you aren&apos;t logged in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>not logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>comm error when asking for recipients</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3488,6 +3514,10 @@ version by clicking this popup notification.</source>
 
 Prosím, zkontrolujte novinky kliknutím
 na tuto bublinu.</translation>
+    </message>
+    <message>
+        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

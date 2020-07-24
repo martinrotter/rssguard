@@ -445,6 +445,10 @@ Click here to open parent directory.</source>
         <source>Reply-to</source>
         <translation>回函地址</translation>
     </message>
+    <message>
+        <source>E-mail address</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>Feed</name>
@@ -663,10 +667,6 @@ or this functionality is not implemented yet.</source>
         <translation>授權書</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>GNU GPL 授權書 (適用於 RSS Guard 源碼)</translation>
-    </message>
-    <message>
         <source>GNU GPL License</source>
         <translation>GNU GPL 授權書</translation>
     </message>
@@ -734,6 +734,10 @@ or this functionality is not implemented yet.</source>
         <source>NOT portable</source>
         <translation>不可攜</translation>
     </message>
+    <message>
+        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -753,14 +757,6 @@ or this functionality is not implemented yet.</source>
         <translation>撰寫電子郵件訊息</translation>
     </message>
     <message>
-        <source>From</source>
-        <translation>從</translation>
-    </message>
-    <message>
-        <source>Name and address of this e-mail message sender</source>
-        <translation>此電子郵件訊息的寄送人的名稱與電郵址</translation>
-    </message>
-    <message>
         <source>Contents of your e-mail message</source>
         <translation>電子郵件訊息的內容</translation>
     </message>
@@ -771,6 +767,22 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Add new recipient.</source>
         <translation>新增收件人。</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of your message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>E-mail NOT sent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your e-mail message wasn&apos;t sent.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1029,16 +1041,12 @@ or this functionality is not implemented yet.</source>
         <translation>輸入了某值。</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>預給的設定值不一定要改動。只有進階使用與知道自己在做什麼，才修改這些值！</translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>成功測試。可能會敦促您再次登入。</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation>一定得用 &quot;%1&quot; 作為重導向 URL。維持 URL 不變很重要，因為 %2 正在指定的端埠等待服務的溝通碼。</translation>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1062,10 +1070,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Redirect URL</source>
         <translation>重導向 URL</translation>
-    </message>
-    <message>
-        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>預給的設定值不一定要改動。只有進階使用與知道自己在做什麼，才修改這些值！</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1140,8 +1144,14 @@ or this functionality is not implemented yet.</source>
         <translation>輸入了某值。</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation>一定得用 &quot;%1&quot; 作為重導向 URL。維持 URL 不變很重要，因為 %2 正在指定的端埠等待服務的溝通碼。</translation>
+        <source>Get my own Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;Application ID&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2294,6 +2304,10 @@ or this functionality is not implemented yet.</source>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
         <translation>隨譯即行碼尚未美化，有安裝 &apos;clang-format&apos; 嗎？</translation>
     </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2860,6 +2874,18 @@ You can install it now.</source>
     <message>
         <source>Gmail: authorization denied</source>
         <translation>Gmail: 不獲准</translation>
+    </message>
+    <message>
+        <source>you aren&apos;t logged in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>not logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>comm error when asking for recipients</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3489,6 +3515,10 @@ version by clicking this popup notification.</source>
 
 請點此彈出通知
 查閱此版的新鮮事。</translation>
+    </message>
+    <message>
+        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -445,6 +445,10 @@ Click here to open parent directory.</source>
         <source>Reply-to</source>
         <translation>回复</translation>
     </message>
+    <message>
+        <source>E-mail address</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>Feed</name>
@@ -660,10 +664,6 @@ or this functionality is not implemented yet.</source>
         <translation>许可证</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>GNU GPL 许可证（适用于 RSS Guard 源代码）</translation>
-    </message>
-    <message>
         <source>GNU GPL License</source>
         <translation>GNU GPL 许可证</translation>
     </message>
@@ -731,6 +731,10 @@ or this functionality is not implemented yet.</source>
         <source>NOT portable</source>
         <translation>不便携</translation>
     </message>
+    <message>
+        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -750,14 +754,6 @@ or this functionality is not implemented yet.</source>
         <translation>撰写邮件</translation>
     </message>
     <message>
-        <source>From</source>
-        <translation>来自</translation>
-    </message>
-    <message>
-        <source>Name and address of this e-mail message sender</source>
-        <translation>邮件发送者的姓名和地址</translation>
-    </message>
-    <message>
         <source>Contents of your e-mail message</source>
         <translation>电子邮件的内容</translation>
     </message>
@@ -768,6 +764,22 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Add new recipient.</source>
         <translation>添加收件人</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of your message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>E-mail NOT sent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your e-mail message wasn&apos;t sent.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1026,15 +1038,11 @@ or this functionality is not implemented yet.</source>
         <translation>已有输入值</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>通常不需要改动默认值。请只在你是高级用户，以及你知道自己在做什么时，才修改这些值。</translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>测试成功…你可能需要再次登录</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1059,10 +1067,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Redirect URL</source>
         <translation>重定向 URL</translation>
-    </message>
-    <message>
-        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>通常不需要改动默认值。请只在你是高级用户，以及你知道自己在做什么时，才修改这些值。</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1137,7 +1141,13 @@ or this functionality is not implemented yet.</source>
         <translation>已有输入值</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Get my own Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2286,6 +2296,10 @@ or this functionality is not implemented yet.</source>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2853,6 +2867,18 @@ You can install it now.</source>
     <message>
         <source>Gmail: authorization denied</source>
         <translation>Gmail：身份验证被拒绝</translation>
+    </message>
+    <message>
+        <source>you aren&apos;t logged in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>not logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>comm error when asking for recipients</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3478,6 +3504,10 @@ Tiny Tiny RSS 是一个开源的基于 Web 的 RSS/Atom 阅读器，允许你以
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -446,6 +446,10 @@ Klicka här för att öppna målmappen.</translation>
         <source>Reply-to</source>
         <translation>Svara till</translation>
     </message>
+    <message>
+        <source>E-mail address</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>Feed</name>
@@ -664,10 +668,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Licenser</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>GNU GPL Licens (gäller RSS Guards källkod)</translation>
-    </message>
-    <message>
         <source>GNU GPL License</source>
         <translation>GNU GPL Licens</translation>
     </message>
@@ -735,6 +735,10 @@ att funktionen inte är implementerad än.</translation>
         <source>NOT portable</source>
         <translation>INTE portabel</translation>
     </message>
+    <message>
+        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -754,14 +758,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Skriv e-postmeddelande</translation>
     </message>
     <message>
-        <source>From</source>
-        <translation>Från</translation>
-    </message>
-    <message>
-        <source>Name and address of this e-mail message sender</source>
-        <translation>Namn och adress för denna e-postsändare</translation>
-    </message>
-    <message>
         <source>Contents of your e-mail message</source>
         <translation>Innehåll i ditt e-postmeddelande</translation>
     </message>
@@ -772,6 +768,22 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Add new recipient.</source>
         <translation>Lägg till ny mottagare.</translation>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of your message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>E-mail NOT sent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your e-mail message wasn&apos;t sent.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1030,16 +1042,12 @@ att funktionen inte är implementerad än.</translation>
         <translation>Ett värde angavs.</translation>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>Fördefinierade inställningar BEHÖVER INTE ändras från standardinställning. Ändra dessa inställningar, endast om du räknar dig som avancerad användare och vet vad du gör!</translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>Testet lyckades. Du kan behöva logga in igen.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation>Du måste använda &quot;%1&quot; som vidarebefordrings-URL. Det är viktigt att lämna denna URL intakt, eftersom %2 lyssnar på specificerad port, efter tjänst-tokens.</translation>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1063,10 +1071,6 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Redirect URL</source>
         <translation>Omdirigera URL</translation>
-    </message>
-    <message>
-        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation>Dessa inställningar behöver INTE ändras från standardvärdena. Ändra dessa värden endast om du är avancerad användare och vet vad du gör!</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1141,8 +1145,14 @@ att funktionen inte är implementerad än.</translation>
         <translation>Ett värde angavs.</translation>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
-        <translation>Du måste använda &quot;%1&quot; som vidarebefordrings-URL. Det är viktigt att lämna denna URL intakt, eftersom %2 lyssnar på specificerad port, efter tjänst-tokens.</translation>
+        <source>Get my own Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;Application ID&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2297,6 +2307,10 @@ att funktionen inte är implementerad än.</translation>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
         <translation>Skriptet har inte förskönats, är &quot;clang-format&quot; installerat?</translation>
     </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2862,6 +2876,18 @@ Du kan installera det nu.</translation>
     <message>
         <source>Gmail: authorization denied</source>
         <translation>Gmail: Autentisering nekades</translation>
+    </message>
+    <message>
+        <source>you aren&apos;t logged in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>not logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>comm error when asking for recipients</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3493,6 +3519,10 @@ version by clicking this popup notification.</source>
 
 Kolla in NYA grejer i den här versionen 
 genom att klicka på denna popup-avisering.</translation>
+    </message>
+    <message>
+        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

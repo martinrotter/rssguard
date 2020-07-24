@@ -446,6 +446,10 @@ Fai clic qui per aprire la cartella genitrice.</translation>
         <source>Reply-to</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>E-mail address</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>Feed</name>
@@ -662,10 +666,6 @@ oppure questa funzionalità non è ancora implementata.</translation>
         <translation>Licenze</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation>Licenza GNU GPL (applicata al codice sorgente di RSS Guard)</translation>
-    </message>
-    <message>
         <source>GNU GPL License</source>
         <translation>Licenza GNU GPL</translation>
     </message>
@@ -733,6 +733,10 @@ oppure questa funzionalità non è ancora implementata.</translation>
         <source>NOT portable</source>
         <translation>NON portabile</translation>
     </message>
+    <message>
+        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -752,14 +756,6 @@ oppure questa funzionalità non è ancora implementata.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>From</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Name and address of this e-mail message sender</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Contents of your e-mail message</source>
         <translation type="unfinished"/>
     </message>
@@ -769,6 +765,22 @@ oppure questa funzionalità non è ancora implementata.</translation>
     </message>
     <message>
         <source>Add new recipient.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Subject</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of your message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>E-mail NOT sent</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your e-mail message wasn&apos;t sent.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1028,15 +1040,11 @@ oppure questa funzionalità non è ancora implementata.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Predefined settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1060,10 +1068,6 @@ oppure questa funzionalità non è ancora implementata.</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>These settings DO NOT have to be changed from their default values. Change these values only of you are advanced user and you know what you are doing!</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1139,7 +1143,13 @@ oppure questa funzionalità non è ancora implementata.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You must use &quot;%1&quot; as redirect URL. It is important to leave this URL intact, because %2 is waiting on specified port for service tokens.</source>
+        <source>Get my own Application ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2287,6 +2297,10 @@ oppure questa funzionalità non è ancora implementata.</translation>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormOwnCloudFeedDetails</name>
@@ -2852,6 +2866,18 @@ Ora lo puoi installare.</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>you aren&apos;t logged in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>not logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>comm error when asking for recipients</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3478,6 +3504,10 @@ version by clicking this popup notification.</source>
 
 Controlla la NUOVA roba inclusa in questa
 versione facendo clic su questa notifica a scomparsa.</translation>
+    </message>
+    <message>
+        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
