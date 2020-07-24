@@ -6,6 +6,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
+#include "network-web/webfactory.h"
 #include "services/inoreader/definitions.h"
 #include "services/inoreader/inoreaderserviceroot.h"
 
@@ -14,6 +15,11 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent)
   m_ui.setupUi(this);
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("inoreader")));
+
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
+  m_ui.m_lblInfo->setText(tr("Specified redirect URL must start with \"http://localhost\" and "
+                             "must be configured in your OAuth \"application\".\n\n"
+                             "It is highly recommended to create your own \"Application ID\"."));
 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("Not tested yet."),
@@ -35,6 +41,7 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent)
   connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditInoreaderAccount::testSetup);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditInoreaderAccount::onClickedOk);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditInoreaderAccount::onClickedCancel);
+  connect(m_ui.m_btnRegisterApi, &QPushButton::clicked, this, &FormEditInoreaderAccount::registerApi);
 
   m_ui.m_spinLimitMessages->setValue(INOREADER_DEFAULT_BATCH_SIZE);
   m_ui.m_spinLimitMessages->setMinimum(INOREADER_MIN_BATCH_SIZE);
@@ -165,6 +172,10 @@ void FormEditInoreaderAccount::execForEdit(InoreaderServiceRoot* existing_root) 
   m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
 
   exec();
+}
+
+void FormEditInoreaderAccount::registerApi() {
+  qApp->web()->openUrlInExternalBrowser(INOREADER_REG_API_URL);
 }
 
 void FormEditInoreaderAccount::checkOAuthValue(const QString& value) {

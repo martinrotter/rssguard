@@ -6,6 +6,7 @@
 #define INOREADER_OAUTH_SCOPE           "read write"
 #define INOREADER_OAUTH_TOKEN_URL       "https://www.inoreader.com/oauth2/token"
 #define INOREADER_OAUTH_AUTH_URL        "https://www.inoreader.com/oauth2/auth"
+#define INOREADER_REG_API_URL           "https://www.inoreader.com/developers/register-app"
 
 #define INOREADER_OAUTH_CLI_ID          "1000000604"
 #define INOREADER_OAUTH_CLI_KEY         "gsStoZ3aAoQJCgQxoFSuXkWI7Sly87yK"

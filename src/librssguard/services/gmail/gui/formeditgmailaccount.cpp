@@ -15,6 +15,10 @@ FormEditGmailAccount::FormEditGmailAccount(QWidget* parent)
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("gmail")));
 
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
+  m_ui.m_lblInfo->setText(tr("Specified redirect URL must start with \"http://localhost\" and "
+                             "must be configured in your OAuth \"application\"."));
+
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("Not tested yet."),
                                   tr("Not tested yet."));
