@@ -285,7 +285,7 @@ void OAuth2Service::logout() {
 
 void OAuth2Service::startRefreshTimer() {
   if (!refreshToken().isEmpty()) {
-    m_timerId = startTimer(1000 * 60 * 15, Qt::VeryCoarseTimer);
+    m_timerId = startTimer(1000 * 60 * 15, Qt::TimerType::VeryCoarseTimer);
   }
 }
 

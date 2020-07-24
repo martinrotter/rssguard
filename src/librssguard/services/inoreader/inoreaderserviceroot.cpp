@@ -13,7 +13,8 @@
 #include "services/inoreader/inoreaderfeed.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
-InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent) : ServiceRoot(parent), m_network(network) {
+InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent)
+  : ServiceRoot(parent), m_network(network) {
   if (network == nullptr) {
     m_network = new InoreaderNetworkFactory(this);
   }

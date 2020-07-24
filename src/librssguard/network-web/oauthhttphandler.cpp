@@ -19,23 +19,44 @@ OAuthHttpHandler::OAuthHttpHandler(QObject* parent) : QObject(parent) {
 
 OAuthHttpHandler::~OAuthHttpHandler() {
   if (m_httpServer.isListening()) {
+    qWarning("Redirection OAuth handler is listening. Stopping it now.");
     m_httpServer.close();
   }
 }
 
 void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
   QUrl url = QUrl::fromUserInput(full_uri);
+  QHostAddress listen_address;
 
-  m_listenAddress = QHostAddress(url.host());
+  if (url.host() == QL1S("localhost")) {
+    listen_address = QHostAddress(QHostAddress::SpecialAddress::LocalHost);
+  }
+  else {
+    listen_address = QHostAddress(url.host());
+  }
+
+  if (listen_address == m_listenAddress || m_listenPort == url.port()) {
+    return;
+  }
+
+  m_listenAddress = listen_address;
   m_listenPort = quint16(url.port());
   m_listenAddressPort = full_uri;
 
   if (m_httpServer.isListening()) {
+    qWarning("Redirection OAuth handler is listening. Stopping it now.");
     m_httpServer.close();
   }
 
   if (!m_httpServer.listen(m_listenAddress, m_listenPort)) {
-    qCritical("OAuth HTTP handler: Failed to start listening on port '%d'.", OAUTH_REDIRECT_URI_PORT);
+    qCritical("OAuth redirect handler FAILED TO START TO LISTEN on address '%s' and port '%u'.",
+              qPrintable(m_listenAddress.toString()),
+              m_listenPort);
+  }
+  else {
+    qDebug("OAuth redirect handler is listening on address '%s' and port '%u'.",
+           qPrintable(m_listenAddress.toString()),
+           m_listenPort);
   }
 }
 

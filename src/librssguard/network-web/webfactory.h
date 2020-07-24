@@ -31,8 +31,6 @@ class WebFactory : public QObject {
     QString escapeHtml(const QString& html);
     QString deEscapeHtml(const QString& text);
 
-    QString toSecondLevelDomain(const QUrl& url);
-
 #if defined (USE_WEBENGINE)
     QAction* engineSettingsAction();
 #endif
@@ -43,7 +41,6 @@ class WebFactory : public QObject {
     bool sendMessageViaEmail(const Message& message);
 
 #if defined (USE_WEBENGINE)
-
   private slots:
     void createMenu(QMenu* menu = nullptr);
     void webEngineSettingChanged(bool enabled);
