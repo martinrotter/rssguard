@@ -15,63 +15,6 @@ QMenu {
   border: 1px solid #3a4047;
 }
 
-QTreeView::branch:has-siblings:!adjoins-item  {
-  border-image: url(qss/dummy.png) 0;
-}
-
-QTreeView::branch:has-siblings:adjoins-item {
-  border-image: url(qss/dummy.png) 0;
-}
-
-QTreeView::branch:!has-children:!has-siblings:adjoins-item  {
-  border-image: url(qss/dummy.png) 0;
-}
-
-QTreeView::branch:has-children:!has-siblings:closed,
-QTreeView::branch:closed:has-children:has-siblings  {
-  border-image: none;
-  image: url(qss/branch-closed.png);
-}
-
-QTreeView::branch:open:has-children:!has-siblings,
-QTreeView::branch:open:has-children:has-siblings  {
-  border-image: none;
-  image: url(qss/branch-open.png);
-}
-
-QTreeView[hideTree="true"]::branch:!has-chlidren:hasSiblings {
-  border-image: none;
-  image: none;
-}
-
-QTreeView::branch {
-  background-color: rgb(39, 43, 48);
-}
-
-QTreeView::item {
-  padding: 1px 1px 1px 1px;
-  border: 1px transparent;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-}
-
-QTreeView::item:hover {
-  background-color: #1b8cbc;
-  border: 1px transparent;
-}
-
-QTreeView::item:selected {
-  border: 1px transparent;
-}
-
-QTreeView::item:selected:active{
-  background-color: #3e444c;
-}
-
-QTreeView::item:selected:!active {
-  background-color: #3e444c;
-}
-
 QStatusBar::item {
   border: none;
 }

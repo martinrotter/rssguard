@@ -84,6 +84,10 @@ namespace Feeds {
 
   VALUE(bool) ShowOnlyUnreadFeedsDef;
 
+  KEY ShowTreeBranches;
+
+  VALUE(bool) ShowTreeBranchesDef;
+
   KEY ListFont;
 }
 

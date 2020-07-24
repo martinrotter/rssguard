@@ -160,6 +160,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionClearSelectedItems;
   actions << m_ui->m_actionClearAllItems;
   actions << m_ui->m_actionShowOnlyUnreadItems;
+  actions << m_ui->m_actionShowTreeBranches;
   actions << m_ui->m_actionShowOnlyUnreadMessages;
   actions << m_ui->m_actionMarkSelectedMessagesAsRead;
   actions << m_ui->m_actionMarkSelectedMessagesAsUnread;
@@ -586,6 +587,8 @@ void FormMain::loadSize() {
   // Make sure that only unread feeds/messages are shown if user has that feature set on.
   m_ui->m_actionShowOnlyUnreadItems->setChecked(settings->value(GROUP(Feeds),
                                                                 SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
+  m_ui->m_actionShowTreeBranches->setChecked(settings->value(GROUP(Feeds),
+                                                             SETTING(Feeds::ShowTreeBranches)).toBool());
   m_ui->m_actionShowOnlyUnreadMessages->setChecked(settings->value(GROUP(Messages),
                                                                    SETTING(Messages::ShowOnlyUnreadMessages)).toBool());
 }
@@ -747,6 +750,8 @@ void FormMain::createConnections() {
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchMessageSplitterOrientation);
   connect(m_ui->m_actionShowOnlyUnreadItems, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadFeeds);
+  connect(m_ui->m_actionShowTreeBranches, &QAction::toggled,
+          tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowFeedTreeBranches);
   connect(m_ui->m_actionShowOnlyUnreadMessages, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadMessages);
   connect(m_ui->m_actionRestoreSelectedMessages, &QAction::triggered,

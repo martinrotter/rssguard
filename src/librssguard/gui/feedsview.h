@@ -17,19 +17,11 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
     explicit FeedsView(QWidget* parent = nullptr);
     virtual ~FeedsView();
 
-    // Fundamental accessors.
-    inline FeedsProxyModel* model() const {
-      return m_proxyModel;
-    }
-
-    inline FeedsModel* sourceModel() const {
-      return m_sourceModel;
-    }
+    FeedsProxyModel* model() const;
+    FeedsModel* sourceModel() const;
 
     void reloadFontSettings();
 
@@ -89,6 +81,7 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
     void openMessagesInNewspaperView(RootItem* root, const QList<Message>& messages);
 
   protected:
+    void drawBranches(QPainter* painter, const QRect& rect, const QModelIndex& index) const;
     void focusInEvent(QFocusEvent* event);
     void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
     void keyPressEvent(QKeyEvent* event);
@@ -131,5 +124,13 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
     FeedsModel* m_sourceModel;
     FeedsProxyModel* m_proxyModel;
 };
+
+inline FeedsProxyModel* FeedsView::model() const {
+  return m_proxyModel;
+}
+
+inline FeedsModel* FeedsView::sourceModel() const {
+  return m_sourceModel;
+}
 
 #endif // FEEDSVIEW_H

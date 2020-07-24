@@ -66,6 +66,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
 
     void toggleShowOnlyUnreadMessages();
     void toggleShowOnlyUnreadFeeds();
+    void toggleShowFeedTreeBranches();
 
   private slots:
     void displayMessage(const Message& message, RootItem* root);

@@ -189,6 +189,13 @@ void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
   }
 }
 
+void FeedMessageViewer::toggleShowFeedTreeBranches() {
+  const QAction* origin = qobject_cast<QAction*>(sender());
+
+  m_feedsView->setRootIsDecorated(origin->isChecked());
+  qApp->settings()->setValue(GROUP(Feeds), Feeds::ShowTreeBranches, origin->isChecked());
+}
+
 void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::EnableMessagePreview)).toBool()) {
     m_messagesBrowser->loadMessage(message, root);

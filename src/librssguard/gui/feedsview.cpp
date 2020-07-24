@@ -476,6 +476,19 @@ void FeedsView::switchVisibility() {
   setVisible(!isVisible());
 }
 
+void FeedsView::drawBranches(QPainter* painter, const QRect& rect, const QModelIndex& index) const {
+  if (!rootIsDecorated()) {
+    painter->save();
+    painter->setOpacity(0.0);
+  }
+
+  QTreeView::drawBranches(painter, rect, index);
+
+  if (!rootIsDecorated()) {
+    painter->restore();
+  }
+}
+
 void FeedsView::focusInEvent(QFocusEvent* event) {
   QTreeView::focusInEvent(event);
 
@@ -608,6 +621,7 @@ void FeedsView::setupAppearance() {
   setAnimated(true);
   setSortingEnabled(true);
   setItemsExpandable(true);
+  setAutoExpandDelay(0);
   setExpandsOnDoubleClick(true);
   setEditTriggers(QAbstractItemView::NoEditTriggers);
   setIndentation(FEEDS_VIEW_INDENTATION);

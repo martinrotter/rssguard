@@ -114,6 +114,7 @@
     <addaction name="m_actionDeleteSelectedItem"/>
     <addaction name="separator"/>
     <addaction name="m_actionShowOnlyUnreadItems"/>
+    <addaction name="m_actionShowTreeBranches"/>
     <addaction name="m_actionExpandCollapseItem"/>
     <addaction name="separator"/>
     <addaction name="m_actionSelectNextItem"/>
@@ -764,6 +765,14 @@
   <action name="m_actionMessageFilters">
    <property name="text">
     <string>Message &amp;filters</string>
+   </property>
+  </action>
+  <action name="m_actionShowTreeBranches">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Show tree branches</string>
    </property>
   </action>
  </widget>

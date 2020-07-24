@@ -63,6 +63,10 @@ DKEY Feeds::ShowOnlyUnreadFeeds = "show_only_unread_feeds";
 
 DVALUE(bool) Feeds::ShowOnlyUnreadFeedsDef = false;
 
+DKEY Feeds::ShowTreeBranches = "show_tree_branches";
+
+DVALUE(bool) Feeds::ShowTreeBranchesDef = true;
+
 DKEY Feeds::ListFont = "list_font";
 
 // Messages.
