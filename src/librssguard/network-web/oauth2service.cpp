@@ -37,6 +37,7 @@
 #include <QJsonObject>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QRandomGenerator>
 
 #include <cstdlib>
 #include <utility>
@@ -45,7 +46,7 @@ Q_GLOBAL_STATIC(OAuthHttpHandler, qz_silent_acmanager)
 
 OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, const QString& client_id,
                              const QString& client_secret, const QString& scope, QObject* parent)
-  : QObject(parent), m_id(QString::number(std::rand())), m_timerId(-1), m_redirectionHandler(new OAuthHttpHandler(this)) {
+  : QObject(parent), m_id(QString::number(QRandomGenerator::global()->generate())), m_timerId(-1), m_redirectionHandler(new OAuthHttpHandler(this)) {
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(token_url);
   m_authUrl = auth_url;

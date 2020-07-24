@@ -10,10 +10,9 @@
 
 #include <QDir>
 #include <QLocale>
+#include <QRandomGenerator64>
 #include <QString>
 #include <QStringList>
-
-#include <random>
 
 quint64 TextFactory::s_encryptionKey = 0x0;
 
@@ -163,10 +162,5 @@ quint64 TextFactory::initializeSecretEncryptionKey() {
 }
 
 quint64 TextFactory::generateSecretEncryptionKey() {
-  std::random_device rd;
-  std::mt19937 mt(rd());
-  std::uniform_int_distribution<quint64> dist(std::numeric_limits<quint64>().min() + 1000000UL,
-                                              std::numeric_limits<quint64>().max());
-
-  return dist(mt);
+  return QRandomGenerator64::global()->generate();
 }
