@@ -9,9 +9,8 @@
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailserviceroot.h"
 
-FormEditGmailAccount::FormEditGmailAccount(QWidget* parent) : QDialog(parent),
-  m_oauth(new OAuth2Service(GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
-                            QString(), QString(), GMAIL_OAUTH_SCOPE)), m_editableRoot(nullptr) {
+FormEditGmailAccount::FormEditGmailAccount(QWidget* parent)
+  : QDialog(parent), m_oauth(nullptr), m_editableRoot(nullptr) {
   m_ui.setupUi(this);
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("gmail")));
@@ -42,7 +41,6 @@ FormEditGmailAccount::FormEditGmailAccount(QWidget* parent) : QDialog(parent),
   m_ui.m_spinLimitMessages->setMaximum(GMAIL_MAX_BATCH_SIZE);
 
   checkUsername(m_ui.m_txtUsername->lineEdit()->text());
-  hookNetwork();
 }
 
 FormEditGmailAccount::~FormEditGmailAccount() = default;
@@ -140,9 +138,14 @@ void FormEditGmailAccount::hookNetwork() {
 GmailServiceRoot* FormEditGmailAccount::execForCreate() {
   setWindowTitle(tr("Add new Gmail account"));
 
+  m_oauth = new OAuth2Service(GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
+                              QString(), QString(), GMAIL_OAUTH_SCOPE, this);
+
+  hookNetwork();
+
   m_ui.m_txtAppId->lineEdit()->clear();
   m_ui.m_txtAppKey->lineEdit()->clear();
-  m_ui.m_txtRedirectUrl->lineEdit()->setText(OAUTH_REDIRECT_URI);
+  m_ui.m_txtRedirectUrl->lineEdit()->setText(m_oauth->redirectUrl());
 
   exec();
 
@@ -153,18 +156,13 @@ void FormEditGmailAccount::execForEdit(GmailServiceRoot* existing_root) {
   setWindowTitle(tr("Edit existing Gmail account"));
   m_editableRoot = existing_root;
 
-  // We copy settings from existing OAuth to our testing OAuth.
-  m_oauth->setClientId(existing_root->network()->oauth()->clientId());
-  m_oauth->setClientSecret(existing_root->network()->oauth()->clientSecret());
-  m_oauth->setRedirectUrl(existing_root->network()->oauth()->redirectUrl());
-  m_oauth->setRefreshToken(existing_root->network()->oauth()->refreshToken());
-  m_oauth->setAccessToken(existing_root->network()->oauth()->accessToken());
-  m_oauth->setTokensExpireIn(existing_root->network()->oauth()->tokensExpireIn());
+  m_oauth = m_editableRoot->network()->oauth();
+  hookNetwork();
 
   // Setup the GUI.
-  m_ui.m_txtAppId->lineEdit()->setText(existing_root->network()->oauth()->clientId());
-  m_ui.m_txtAppKey->lineEdit()->setText(existing_root->network()->oauth()->clientSecret());
-  m_ui.m_txtRedirectUrl->lineEdit()->setText(existing_root->network()->oauth()->redirectUrl());
+  m_ui.m_txtAppId->lineEdit()->setText(m_oauth->clientId());
+  m_ui.m_txtAppKey->lineEdit()->setText(m_oauth->clientSecret());
+  m_ui.m_txtRedirectUrl->lineEdit()->setText(m_oauth->redirectUrl());
 
   m_ui.m_txtUsername->lineEdit()->setText(existing_root->network()->username());
   m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());

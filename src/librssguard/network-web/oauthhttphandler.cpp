@@ -24,9 +24,14 @@ OAuthHttpHandler::~OAuthHttpHandler() {
   }
 }
 
+bool OAuthHttpHandler::isListening() const {
+  return m_httpServer.isListening();
+}
+
 void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
   QUrl url = QUrl::fromUserInput(full_uri);
   QHostAddress listen_address;
+  quint16 listen_port = quint16(url.port(80));
 
   if (url.host() == QL1S("localhost")) {
     listen_address = QHostAddress(QHostAddress::SpecialAddress::LocalHost);
@@ -35,12 +40,12 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
     listen_address = QHostAddress(url.host());
   }
 
-  if (listen_address == m_listenAddress || m_listenPort == url.port()) {
+  if (listen_address == m_listenAddress && m_listenPort == url.port()) {
     return;
   }
 
   m_listenAddress = listen_address;
-  m_listenPort = quint16(url.port());
+  m_listenPort = listen_port;
   m_listenAddressPort = full_uri;
 
   if (m_httpServer.isListening()) {

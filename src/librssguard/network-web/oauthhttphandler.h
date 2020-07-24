@@ -15,6 +15,8 @@ class OAuthHttpHandler : public QObject {
     explicit OAuthHttpHandler(QObject* parent = nullptr);
     virtual ~OAuthHttpHandler();
 
+    bool isListening() const;
+
     quint16 listenPort() const;
     QHostAddress listenAddress() const;
     QString listenAddressPort() const;
@@ -62,11 +64,9 @@ class OAuthHttpHandler : public QObject {
       quint16 m_port = 0;
       QByteArray m_fragment;
       QUrl m_url;
-
       QPair<quint8, quint8> m_version;
       QMap<QByteArray, QByteArray> m_headers;
     };
-
     QMap<QTcpSocket*, QHttpRequest> m_connectedClients;
     QTcpServer m_httpServer;
     QHostAddress m_listenAddress;

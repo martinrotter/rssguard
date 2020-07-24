@@ -1733,8 +1733,8 @@ QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(const QSqlDatabase& db, bo
       root->network()->setUsername(query.value(1).toString());
       root->network()->oauth()->setClientId(query.value(2).toString());
       root->network()->oauth()->setClientSecret(query.value(3).toString());
-      root->network()->oauth()->setRedirectUrl(query.value(4).toString());
       root->network()->oauth()->setRefreshToken(query.value(5).toString());
+      root->network()->oauth()->setRedirectUrl(query.value(4).toString());
       root->network()->setBatchSize(query.value(6).toInt());
       root->updateTitle();
       roots.append(root);
@@ -1804,8 +1804,8 @@ QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(const QSqlDatabase& db
       root->network()->setUsername(query.value(1).toString());
       root->network()->oauth()->setClientId(query.value(2).toString());
       root->network()->oauth()->setClientSecret(query.value(3).toString());
-      root->network()->oauth()->setRedirectUrl(query.value(4).toString());
       root->network()->oauth()->setRefreshToken(query.value(5).toString());
+      root->network()->oauth()->setRedirectUrl(query.value(4).toString());
       root->network()->setBatchSize(query.value(6).toInt());
       root->updateTitle();
       roots.append(root);

@@ -257,6 +257,11 @@ void OAuth2Service::setRefreshToken(const QString& refresh_token) {
 }
 
 bool OAuth2Service::login() {
+  if (!m_redirectionHandler->isListening()) {
+    qCritical("Cannot log-in because OAuth redirection handler is not listening.");
+    return false;
+  }
+
   bool did_token_expire = tokensExpireIn().isNull() || tokensExpireIn() < QDateTime::currentDateTime().addSecs(-120);
   bool does_token_exist = !refreshToken().isEmpty();
 
@@ -308,7 +313,7 @@ void OAuth2Service::retrieveAuthCode() {
                                                                     m_id);
 
   // We run login URL in external browser, response is caught by light HTTP server.
-  if (qApp->web()->openUrlInExternalBrowser(auth_url)) {
+  if (!qApp->web()->openUrlInExternalBrowser(auth_url)) {
     QInputDialog::getText(qApp->mainFormWidget(),
                           tr("Navigate to website"),
                           tr("To login, you need to navigate to this website:"),
