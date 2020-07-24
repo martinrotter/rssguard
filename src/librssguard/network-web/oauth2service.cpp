@@ -55,7 +55,7 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
   m_clientSecret = client_secret;
   m_scope = scope;
 
-  connect(&m_networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(tokenRequestFinished(QNetworkReply*)));
+  connect(&m_networkManager, &QNetworkAccessManager::finished, this, &OAuth2Service::tokenRequestFinished);
   connect(m_redirectionHandler, &OAuthHttpHandler::authGranted, [this](const QString& auth_code, const QString& id) {
     if (id.isEmpty() || id == m_id) {
       // We process this further only if handler (static singleton) responded to our original request.
