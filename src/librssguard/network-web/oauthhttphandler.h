@@ -12,15 +12,21 @@ class OAuthHttpHandler : public QObject {
   Q_OBJECT
 
   public:
-    explicit OAuthHttpHandler(QObject* parent = nullptr);
+    explicit OAuthHttpHandler(const QString& success_text, QObject* parent = nullptr);
     virtual ~OAuthHttpHandler();
 
     bool isListening() const;
 
+    // Returns listening portnumber.
     quint16 listenPort() const;
+
+    // Returns listening IP address, usually something like "127.0.0.1".
     QHostAddress listenAddress() const;
+
+    // Returns full URL string.
     QString listenAddressPort() const;
 
+    // Sets full URL string, for example "http://localhost:123456".
     void setListenAddressPort(const QString& full_uri);
 
   signals:
@@ -72,7 +78,7 @@ class OAuthHttpHandler : public QObject {
     QHostAddress m_listenAddress;
     quint16 m_listenPort;
     QString m_listenAddressPort;
-    QString m_text;
+    QString m_successText;
 };
 
 #endif // OAUTHHTTPHANDLER_H

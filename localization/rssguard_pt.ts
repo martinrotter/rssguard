@@ -448,7 +448,7 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message>
         <source>E-mail address</source>
-        <translation type="unfinished"/>
+        <translation>Endereço de e-mail</translation>
     </message>
 </context>
 <context>
@@ -737,7 +737,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
-        <translation type="unfinished"/>
+        <translation>Licença GNU GPL (aplica-se ao código fonte do RSS Guard e mimesis)</translation>
     </message>
 </context>
 <context>
@@ -771,19 +771,19 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Subject</source>
-        <translation type="unfinished"/>
+        <translation>Assunto</translation>
     </message>
     <message>
         <source>Title of your message</source>
-        <translation type="unfinished"/>
+        <translation>Título da sua mensagem</translation>
     </message>
     <message>
         <source>E-mail NOT sent</source>
-        <translation type="unfinished"/>
+        <translation>E-mail NÃO enviado</translation>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
-        <translation type="unfinished"/>
+        <translation>Sua mensagem de e-mail não foi enviada.</translation>
     </message>
 </context>
 <context>
@@ -1047,7 +1047,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>A URL de redirecionamento especificada deve começar com &quot;http://localhost&quot; e deve ser configurada no &quot;aplicativo&quot; OAuth.</translation>
     </message>
 </context>
 <context>
@@ -1146,13 +1146,15 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Get my own Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Obter minha própria ID de Aplicativo</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
 
 It is highly recommended to create your own &quot;Application ID&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>A URL de redirecionamento especificada deve começar com &quot;http://localhost&quot; e deve ser configurada no &quot;aplicativo&quot; OAuth.
+
+É altamente recomendado criar seu próprio &quot;ID de Aplicativo&quot;.</translation>
     </message>
 </context>
 <context>
@@ -2144,6 +2146,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <source>Message &amp;filters</source>
         <translation>&amp;Filtros de mensagem</translation>
     </message>
+    <message>
+        <source>&amp;Show tree branches</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -2309,7 +2315,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível salvar o novo filtro, erro: &quot;.</translation>
     </message>
 </context>
 <context>
@@ -2880,15 +2886,15 @@ Você pode instalá-lo agora.</translation>
     </message>
     <message>
         <source>you aren&apos;t logged in</source>
-        <translation type="unfinished"/>
+        <translation>você não está logado</translation>
     </message>
     <message>
         <source>not logged-in</source>
-        <translation type="unfinished"/>
+        <translation>não logado</translation>
     </message>
     <message>
         <source>comm error when asking for recipients</source>
-        <translation type="unfinished"/>
+        <translation>erro comm ao perguntar por destinatários</translation>
     </message>
 </context>
 <context>
@@ -3523,7 +3529,7 @@ versão, clicando nesta notificação popup.</translation>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível inserir o filtro de mensagens, porque o banco de dados atual não pode retornar o último ID da linha inserida.</translation>
     </message>
 </context>
 <context>

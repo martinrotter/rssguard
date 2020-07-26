@@ -448,7 +448,7 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message>
         <source>E-mail address</source>
-        <translation type="unfinished"/>
+        <translation>E-postadress</translation>
     </message>
 </context>
 <context>
@@ -737,7 +737,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
-        <translation type="unfinished"/>
+        <translation>GNU GPL Licens (gäller RSS Guard och mimesis källkod)</translation>
     </message>
 </context>
 <context>
@@ -771,19 +771,19 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Subject</source>
-        <translation type="unfinished"/>
+        <translation>Ämne</translation>
     </message>
     <message>
         <source>Title of your message</source>
-        <translation type="unfinished"/>
+        <translation>Meddelandetitel</translation>
     </message>
     <message>
         <source>E-mail NOT sent</source>
-        <translation type="unfinished"/>
+        <translation>E-postmeddelande INTE skickat</translation>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
-        <translation type="unfinished"/>
+        <translation>Ditt e-postmeddelande skickades inte.</translation>
     </message>
 </context>
 <context>
@@ -1047,7 +1047,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Angiven omdirigerings-URL måste börja med &quot;http://localhost&quot; och måste konfigureras i ditt &quot;OAuth-program&quot;.</translation>
     </message>
 </context>
 <context>
@@ -1146,13 +1146,15 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Get my own Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Skapa mitt eget applikations-ID</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
 
 It is highly recommended to create your own &quot;Application ID&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Angiven omdirigerings-URL måste börja med &quot;http://localhost&quot; och måste konfigureras i ditt &quot;OAuth-program&quot;.
+
+Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
 </context>
 <context>
@@ -2144,6 +2146,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <source>Message &amp;filters</source>
         <translation>Meddelande&amp;filter</translation>
     </message>
+    <message>
+        <source>&amp;Show tree branches</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -2309,7 +2315,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte spara nytt filter, fel: &quot;.</translation>
     </message>
 </context>
 <context>
@@ -2879,15 +2885,15 @@ Du kan installera det nu.</translation>
     </message>
     <message>
         <source>you aren&apos;t logged in</source>
-        <translation type="unfinished"/>
+        <translation>Du är inte inloggad</translation>
     </message>
     <message>
         <source>not logged-in</source>
-        <translation type="unfinished"/>
+        <translation>Inte inloggad</translation>
     </message>
     <message>
         <source>comm error when asking for recipients</source>
-        <translation type="unfinished"/>
+        <translation>comm-fel när mottagare efterfrågas</translation>
     </message>
 </context>
 <context>
@@ -3522,7 +3528,7 @@ genom att klicka på denna popup-avisering.</translation>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte infoga meddelandefilter eftersom den aktuella databasen inte kan returnera senast infogat rad-ID.</translation>
     </message>
 </context>
 <context>

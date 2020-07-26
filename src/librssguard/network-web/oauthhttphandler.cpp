@@ -10,9 +10,7 @@
 #include <QTcpSocket>
 #include <QUrlQuery>
 
-OAuthHttpHandler::OAuthHttpHandler(QObject* parent) : QObject(parent) {
-  m_text = tr("You can close this window now. Go back to %1").arg(APP_NAME);
-
+OAuthHttpHandler::OAuthHttpHandler(const QString& success_text, QObject* parent) : QObject(parent), m_successText(success_text) {
   connect(&m_httpServer, &QTcpServer::newConnection, this, &OAuthHttpHandler::clientConnected);
   setListenAddressPort(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(OAUTH_REDIRECT_URI_PORT));
 }
@@ -118,17 +116,17 @@ void OAuthHttpHandler::answerClient(QTcpSocket* socket, const QUrl& url) {
 
     handleRedirection(received_data);
 
-    const QByteArray html = QByteArrayLiteral("<html><head><title>") +
-                            qApp->applicationName().toUtf8() +
-                            QByteArrayLiteral("</title></head><body>") +
-                            m_text.toUtf8() +
-                            QByteArrayLiteral("</body></html>");
-    const QByteArray html_size = QString::number(html.size()).toUtf8();
+    const QString html = QSL("<html><head><title>") +
+                         qApp->applicationName() +
+                         QSL("</title></head><body>") +
+                         m_successText +
+                         QSL("</body></html>");
+    const QByteArray html_utf = html.toUtf8();
+    const QByteArray html_size = QString::number(html_utf.size()).toLocal8Bit();
     const QByteArray reply_message = QByteArrayLiteral("HTTP/1.0 200 OK \r\n"
-                                                       "Content-Type: text/html; "
-                                                       "charset=\"utf-8\"\r\n"
+                                                       "Content-Type: text/html; charset=\"utf-8\"\r\n"
                                                        "Content-Length: ") + html_size +
-                                     QByteArrayLiteral("\r\n\r\n") + html;
+                                     QByteArrayLiteral("\r\n\r\n") + html_utf;
 
     socket->write(reply_message);
   }

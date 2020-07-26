@@ -2143,6 +2143,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <source>Message &amp;filters</source>
         <translation>消息篩選器(&amp;F)</translation>
     </message>
+    <message>
+        <source>&amp;Show tree branches</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
