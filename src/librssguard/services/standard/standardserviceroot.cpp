@@ -27,15 +27,13 @@
 #include <QStack>
 
 StandardServiceRoot::StandardServiceRoot(RootItem* parent)
-  : ServiceRoot(parent),
-  m_actionExportFeeds(nullptr), m_actionImportFeeds(nullptr), m_actionFeedFetchMetadata(nullptr) {
+  : ServiceRoot(parent) {
   setTitle(qApp->system()->loggedInUser() + QSL(" (RSS/RDF/ATOM)"));
   setIcon(StandardServiceEntryPoint().icon());
   setDescription(tr("This is obligatory service account for standard RSS/RDF/ATOM feeds."));
 }
 
 StandardServiceRoot::~StandardServiceRoot() {
-  qDeleteAll(m_serviceMenu);
   qDeleteAll(m_feedContextMenu);
 }
 
@@ -176,13 +174,19 @@ void StandardServiceRoot::checkArgumentForFeedAdding(const QString& argument) {
 QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed* feed) {
   if (m_feedContextMenu.isEmpty()) {
     // Initialize.
-    m_actionFeedFetchMetadata = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("Fetch metadata"), nullptr);
-    m_feedContextMenu.append(m_actionFeedFetchMetadata);
+    auto* action_metadata = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")),
+                                        tr("Fetch metadata"),
+                                        this);
+
+    m_feedContextMenu.append(action_metadata);
+
+    connect(action_metadata, &QAction::triggered, this, [this]() {
+      m_feedForMetadata->fetchMetadataForItself();
+    });
   }
 
-  // Make connections.
-  disconnect(m_actionFeedFetchMetadata, &QAction::triggered, nullptr, nullptr);
-  connect(m_actionFeedFetchMetadata, &QAction::triggered, feed, &StandardFeed::fetchMetadataForItself);
+  m_feedForMetadata = feed;
+
   return m_feedContextMenu;
 }
 
@@ -306,12 +310,16 @@ void StandardServiceRoot::exportFeeds() {
 
 QList<QAction*> StandardServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
-    m_actionExportFeeds = new QAction(qApp->icons()->fromTheme("document-export"), tr("Export feeds"), this);
-    m_actionImportFeeds = new QAction(qApp->icons()->fromTheme("document-import"), tr("Import feeds"), this);
-    connect(m_actionExportFeeds, &QAction::triggered, this, &StandardServiceRoot::exportFeeds);
-    connect(m_actionImportFeeds, &QAction::triggered, this, &StandardServiceRoot::importFeeds);
-    m_serviceMenu.append(m_actionExportFeeds);
-    m_serviceMenu.append(m_actionImportFeeds);
+    ServiceRoot::serviceMenu();
+
+    auto* action_export_feeds = new QAction(qApp->icons()->fromTheme("document-export"), tr("Export feeds"), this);
+    auto* action_import_feeds = new QAction(qApp->icons()->fromTheme("document-import"), tr("Import feeds"), this);
+
+    connect(action_export_feeds, &QAction::triggered, this, &StandardServiceRoot::exportFeeds);
+    connect(action_import_feeds, &QAction::triggered, this, &StandardServiceRoot::importFeeds);
+
+    m_serviceMenu.append(action_export_feeds);
+    m_serviceMenu.append(action_import_feeds);
   }
 
   return m_serviceMenu;

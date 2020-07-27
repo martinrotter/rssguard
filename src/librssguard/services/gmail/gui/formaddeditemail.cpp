@@ -12,7 +12,8 @@
 #include "services/gmail/gui/emailrecipientcontrol.h"
 #include "services/gmail/network/gmailnetworkfactory.h"
 
-FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent) : QDialog(parent), m_root(root) {
+FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
+  : QDialog(parent), m_root(root), m_originalMessage(nullptr) {
   m_ui.setupUi(this);
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("mail-message-new")));
@@ -36,6 +37,14 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent) : QD
 
 void FormAddEditEmail::execForAdd() {
   addRecipientRow();
+  exec();
+}
+
+void FormAddEditEmail::execForReply(Message* original_message) {
+  m_originalMessage = original_message;
+
+  addRecipientRow(m_originalMessage->m_author);
+  m_ui.m_txtSubject->setText(QSL("Re:%1").arg(m_originalMessage->m_title));
   exec();
 }
 

@@ -72,8 +72,23 @@ QList<QAction*> ServiceRoot::contextMenu() {
   return serviceMenu();
 }
 
+QList<QAction*> ServiceRoot::contextMenuForMessages(const QList<Message*>& messages) {
+  Q_UNUSED(messages)
+  return {};
+}
+
 QList<QAction*> ServiceRoot::serviceMenu() {
-  return QList<QAction*>();
+  if (m_serviceMenu.isEmpty() && isSyncable()) {
+    m_actionSyncIn = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
+    connect(m_actionSyncIn, &QAction::triggered, this, &ServiceRoot::syncIn);
+    m_serviceMenu.append(m_actionSyncIn);
+  }
+
+  return m_serviceMenu;
+}
+
+bool ServiceRoot::isSyncable() const {
+  return false;
 }
 
 void ServiceRoot::start(bool freshly_activated) {

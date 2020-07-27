@@ -77,6 +77,7 @@ StandardServiceRoot* StandardFeed::serviceRoot() const {
 
 bool StandardFeed::editViaGui() {
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(serviceRoot(), qApp->mainFormWidget()));
+
   form_pointer.data()->addEditFeed(this, nullptr);
   return false;
 }
@@ -111,7 +112,7 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
 void StandardFeed::fetchMetadataForItself() {
   QPair<StandardFeed*, QNetworkReply::NetworkError> metadata = guessFeed(url(), username(), password());
 
-  if (metadata.first != nullptr && metadata.second == QNetworkReply::NoError) {
+  if (metadata.first != nullptr && metadata.second == QNetworkReply::NetworkError::NoError) {
     // Some properties are not updated when new metadata are fetched.
     metadata.first->setParent(parent());
     metadata.first->setUrl(url());
@@ -138,10 +139,11 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
                                                                           const QString& username,
                                                                           const QString& password) {
   QPair<StandardFeed*, QNetworkReply::NetworkError> result;
+
   result.first = nullptr;
   QByteArray feed_contents;
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << NetworkFactory::generateBasicAuthHeader(username, password);
 
   NetworkResult network_result = NetworkFactory::performNetworkOperation(url,
@@ -208,8 +210,8 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
 
     QDomElement root_element = xml_document.documentElement();
     QString root_tag_name = root_element.tagName();
-
     QList<QString> icon_possible_locations;
+
     icon_possible_locations.append(url);
 
     if (root_tag_name == QL1S("rdf:RDF")) {
@@ -308,8 +310,8 @@ bool StandardFeed::addItself(RootItem* parent) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   bool ok;
   int new_id = DatabaseQueries::addStandardFeed(database, parent->id(), parent->getParentServiceRoot()->accountId(), title(),
-                                        description(), creationDate(), icon(), encoding(), url(), passwordProtected(),
-                                        username(), password(), autoUpdateType(), autoUpdateInitialInterval(), type(), &ok);
+                                                description(), creationDate(), icon(), encoding(), url(), passwordProtected(),
+                                                username(), password(), autoUpdateType(), autoUpdateInitialInterval(), type(), &ok);
 
   if (!ok) {
     // Query failed.
@@ -329,12 +331,13 @@ bool StandardFeed::editItself(StandardFeed* new_feed_data) {
   RootItem* new_parent = new_feed_data->parent();
 
   if (!DatabaseQueries::editStandardFeed(database, new_parent->id(), original_feed->id(), new_feed_data->title(),
-                                 new_feed_data->description(), new_feed_data->icon(),
-                                 new_feed_data->encoding(), new_feed_data->url(), new_feed_data->passwordProtected(),
-                                 new_feed_data->username(), new_feed_data->password(),
-                                 new_feed_data->autoUpdateType(), new_feed_data->autoUpdateInitialInterval(),
-                                 new_feed_data->type())) {
+                                         new_feed_data->description(), new_feed_data->icon(),
+                                         new_feed_data->encoding(), new_feed_data->url(), new_feed_data->passwordProtected(),
+                                         new_feed_data->username(), new_feed_data->password(),
+                                         new_feed_data->autoUpdateType(), new_feed_data->autoUpdateInitialInterval(),
+                                         new_feed_data->type())) {
     // Persistent storage update failed, no way to continue now.
+    qWarning("Self-editing of standard feed failed.");
     return false;
   }
 
@@ -399,8 +402,8 @@ void StandardFeed::setEncoding(const QString& encoding) {
 QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-
   QList<QPair<QByteArray, QByteArray>> headers;
+
   headers << NetworkFactory::generateBasicAuthHeader(username(), password());
 
   m_networkError = NetworkFactory::performNetworkOperation(url(),

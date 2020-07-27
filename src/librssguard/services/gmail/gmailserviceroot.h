@@ -23,6 +23,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     GmailNetworkFactory* network() const;
 
     QList<QAction*> serviceMenu();
+    bool isSyncable() const;
     bool canBeEdited() const;
     bool editViaGui();
     bool canBeDeleted() const;
@@ -48,9 +49,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void loadFromDatabase();
 
   private:
-    QList<QAction*> m_serviceMenu;
     GmailNetworkFactory* m_network;
-
 };
 
 inline void GmailServiceRoot::setNetwork(GmailNetworkFactory* network) {

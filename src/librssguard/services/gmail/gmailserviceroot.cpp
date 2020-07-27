@@ -130,6 +130,8 @@ bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
 
 QList<QAction*> GmailServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
+    ServiceRoot::serviceMenu();
+
     QAction* act_new_email = new QAction(qApp->icons()->fromTheme(QSL("mail-message-new")), tr("Write new e-mail message"), this);
 
     connect(act_new_email, &QAction::triggered, this, &GmailServiceRoot::writeNewEmail);
@@ -137,6 +139,10 @@ QList<QAction*> GmailServiceRoot::serviceMenu() {
   }
 
   return m_serviceMenu;
+}
+
+bool GmailServiceRoot::isSyncable() const {
+  return true;
 }
 
 bool GmailServiceRoot::canBeEdited() const {

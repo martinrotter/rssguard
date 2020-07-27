@@ -23,7 +23,7 @@
 #include <QSqlTableModel>
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem* parent)
-  : ServiceRoot(parent), m_actionSyncIn(nullptr), m_network(new TtRssNetworkFactory()) {
+  : ServiceRoot(parent), m_network(new TtRssNetworkFactory()) {
   setIcon(TtRssServiceEntryPoint().icon());
 }
 
@@ -50,6 +50,10 @@ void TtRssServiceRoot::stop() {
 
 QString TtRssServiceRoot::code() const {
   return TtRssServiceEntryPoint().code();
+}
+
+bool TtRssServiceRoot::isSyncable() const {
+  return true;
 }
 
 bool TtRssServiceRoot::editViaGui() {
@@ -146,16 +150,6 @@ void TtRssServiceRoot::saveAllCachedData(bool async) {
                                 async);
     }
   }
-}
-
-QList<QAction*> TtRssServiceRoot::serviceMenu() {
-  if (m_serviceMenu.isEmpty()) {
-    m_actionSyncIn = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
-    connect(m_actionSyncIn, &QAction::triggered, this, &TtRssServiceRoot::syncIn);
-    m_serviceMenu.append(m_actionSyncIn);
-  }
-
-  return m_serviceMenu;
 }
 
 QString TtRssServiceRoot::additionalTooltip() const {

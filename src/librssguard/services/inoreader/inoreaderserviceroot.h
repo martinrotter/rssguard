@@ -20,6 +20,7 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void setNetwork(InoreaderNetworkFactory* network);
     InoreaderNetworkFactory* network() const;
 
+    bool isSyncable() const;
     bool canBeEdited() const;
     bool editViaGui();
     bool canBeDeleted() const;
@@ -43,10 +44,8 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
   private:
     void loadFromDatabase();
-    QList<QAction*> serviceMenu();
 
   private:
-    QList<QAction*> m_serviceMenu;
     InoreaderNetworkFactory* m_network;
 };
 
