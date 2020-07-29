@@ -35,7 +35,7 @@ class StandardFeed : public Feed {
 
     StandardServiceRoot* serviceRoot() const;
 
-    QList<QAction*> contextMenu();
+    QList<QAction*> contextMenuFeedsList();
 
     QString additionalTooltip() const;
 

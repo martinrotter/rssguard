@@ -18,7 +18,8 @@
 
 #include <QFileDialog>
 
-GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* parent) : ServiceRoot(parent), m_network(network) {
+GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* parent)
+  : ServiceRoot(parent), m_network(network), m_actionReply(nullptr) {
   if (network == nullptr) {
     m_network = new GmailNetworkFactory(this);
   }
@@ -34,6 +35,10 @@ GmailServiceRoot::~GmailServiceRoot() = default;
 
 void GmailServiceRoot::updateTitle() {
   setTitle(m_network->username() + QSL(" (Gmail)"));
+}
+
+void GmailServiceRoot::replyToEmail() {
+  FormAddEditEmail(this, qApp->mainFormWidget()).execForReply(&m_replyToMessage);
 }
 
 RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
@@ -125,6 +130,22 @@ bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
   }
   else {
     return false;
+  }
+}
+
+QList<QAction*> GmailServiceRoot::contextMenuMessagesList(const QList<Message>& messages) {
+  if (messages.size() == 1) {
+    if (m_actionReply == nullptr) {
+      m_actionReply = new QAction(qApp->icons()->fromTheme(QSL("mail-reply-sender")), tr("Reply"), this);
+
+      m_replyToMessage = messages.at(0);
+      connect(m_actionReply, &QAction::triggered, this, &GmailServiceRoot::replyToEmail);
+    }
+
+    return { m_actionReply };
+  }
+  else {
+    return {};
   }
 }
 

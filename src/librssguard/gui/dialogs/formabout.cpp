@@ -68,6 +68,13 @@ void FormAbout::loadLicenseAndInformation() {
     m_ui.m_txtLicenseBsd->setText(tr("License not found."));
   }
 
+  try {
+    m_ui.m_txtLicenseMit->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/COPYING_MIT")));
+  }
+  catch (...) {
+    m_ui.m_txtLicenseMit->setText(tr("License not found."));
+  }
+
   // Set other informative texts.
   m_ui.m_lblDesc->setText(tr("<b>%8</b><br>" "<b>Version:</b> %1 (built on %2/%3)<br>" "<b>Revision:</b> %4<br>" "<b>Build date:</b> %5<br>"
                                                                                                                  "<b>Qt:</b> %6 (compiled against %7)<br>").arg(

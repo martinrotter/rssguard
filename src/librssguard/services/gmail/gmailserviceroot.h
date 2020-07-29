@@ -22,6 +22,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void setNetwork(GmailNetworkFactory* network);
     GmailNetworkFactory* network() const;
 
+    QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
     QList<QAction*> serviceMenu();
     bool isSyncable() const;
     bool canBeEdited() const;
@@ -41,6 +42,9 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
   public slots:
     void updateTitle();
 
+  private slots:
+    void replyToEmail();
+
   protected:
     RootItem* obtainNewTreeForSyncIn() const;
 
@@ -50,6 +54,8 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
   private:
     GmailNetworkFactory* m_network;
+    QAction* m_actionReply;
+    Message m_replyToMessage;
 };
 
 inline void GmailServiceRoot::setNetwork(GmailNetworkFactory* network) {

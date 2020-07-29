@@ -46,7 +46,7 @@ void RecycleBin::updateCounts(bool update_total_count) {
   }
 }
 
-QList<QAction*> RecycleBin::contextMenu() {
+QList<QAction*> RecycleBin::contextMenuFeedsList() {
   if (m_contextMenu.isEmpty()) {
     QAction* restore_action = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")),
                                           tr("Restore recycle bin"),

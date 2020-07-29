@@ -53,9 +53,11 @@ class ServiceRoot : public RootItem {
     // NOTE: Caller does NOT take ownership of created menu!
     virtual QList<QAction*> addItemMenu();
 
-    // Returns actions to display as context menu.
-    virtual QList<QAction*> contextMenu();
-    virtual QList<QAction*> contextMenuForMessages(const QList<Message*>& messages);
+    // NOTE: Caller does NOT take ownership of created menu!
+    virtual QList<QAction*> contextMenuFeedsList();
+
+    // NOTE: Caller does NOT take ownership of created menu!
+    virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
 
     // Returns list of specific actions to be shown in main window menu
     // bar in sections "Services -> 'this service'".

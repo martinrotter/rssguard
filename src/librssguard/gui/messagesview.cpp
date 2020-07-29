@@ -2,6 +2,7 @@
 
 #include "gui/messagesview.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "gui/dialogs/formmain.h"
@@ -13,6 +14,7 @@
 #include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
+#include "services/abstract/serviceroot.h"
 
 #include <QFileIconProvider>
 #include <QKeyEvent>
@@ -213,11 +215,32 @@ void MessagesView::initializeContextMenu() {
 
   m_contextMenu->addMenu(menu);
   m_contextMenu->addActions(
-    QList<QAction*>() << qApp->mainForm()->m_ui->m_actionSendMessageViaEmail << qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread << qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages <<
-      qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
+    QList<QAction*>()
+      << qApp->mainForm()->m_ui->m_actionSendMessageViaEmail
+      << qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally
+      << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally
+      << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead
+      << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread
+      << qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages
+      << qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
 
-  if (m_sourceModel->loadedItem() != nullptr && m_sourceModel->loadedItem()->kind() == RootItemKind::Bin) {
-    m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessages);
+  if (m_sourceModel->loadedItem() != nullptr) {
+    if (m_sourceModel->loadedItem()->kind() == RootItemKind::Bin) {
+      m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessages);
+    }
+
+    QModelIndexList selected_indexes = selectionModel()->selectedRows();
+    const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+    auto rows = boolinq::from(mapped_indexes).select([](const QModelIndex& idx) {
+      return idx.row();
+    }).toStdList();
+    auto messages = m_sourceModel->messagesAt(QList<int>::fromStdList(rows));
+    auto extra_context_menu = m_sourceModel->loadedItem()->getParentServiceRoot()->contextMenuMessagesList(messages);
+
+    if (!extra_context_menu.isEmpty()) {
+      m_contextMenu->addSeparator();
+      m_contextMenu->addActions(extra_context_menu);
+    }
   }
 }
 

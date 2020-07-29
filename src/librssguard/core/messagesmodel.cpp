@@ -214,6 +214,16 @@ Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
   return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemNeverHasChildren;
 }
 
+QList<Message> MessagesModel::messagesAt(QList<int> row_indices) const {
+  QList<Message> msgs;
+
+  for (int idx : row_indices) {
+    msgs << messageAt(idx);
+  }
+
+  return msgs;
+}
+
 QVariant MessagesModel::data(int row, int column, int role) const {
   return data(index(row, column), role);
 }

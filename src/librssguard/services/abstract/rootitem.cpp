@@ -44,7 +44,7 @@ QString RootItem::additionalTooltip() const {
   return QString();
 }
 
-QList<QAction*> RootItem::contextMenu() {
+QList<QAction*> RootItem::contextMenuFeedsList() {
   return QList<QAction*>();
 }
 

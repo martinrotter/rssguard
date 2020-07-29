@@ -430,7 +430,7 @@ QMenu* FeedsView::initializeContextMenuBin(RootItem* clicked_item) {
     m_contextMenuBin->clear();
   }
 
-  QList<QAction*> specific_actions = clicked_item->contextMenu();
+  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
   m_contextMenuBin->addActions(QList<QAction*>() <<
                                qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
@@ -453,7 +453,7 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
     m_contextMenuService->clear();
   }
 
-  QList<QAction*> specific_actions = clicked_item->contextMenu();
+  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
   m_contextMenuService->addActions(QList<QAction*>() <<
                                    qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
@@ -511,7 +511,7 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
     m_contextMenuCategories->clear();
   }
 
-  QList<QAction*> specific_actions = clicked_item->contextMenu();
+  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
   m_contextMenuCategories->addActions(QList<QAction*>() <<
                                       qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
@@ -538,7 +538,7 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
     m_contextMenuFeeds->clear();
   }
 
-  QList<QAction*> specific_actions = clicked_item->contextMenu();
+  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
   m_contextMenuFeeds->addActions(QList<QAction*>() <<
                                  qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
@@ -565,7 +565,7 @@ QMenu* FeedsView::initializeContextMenuImportant(RootItem* clicked_item) {
     m_contextMenuImportant->clear();
   }
 
-  QList<QAction*> specific_actions = clicked_item->contextMenu();
+  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
   m_contextMenuImportant->addActions(QList<QAction*>() <<
                                      qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
@@ -598,7 +598,7 @@ QMenu* FeedsView::initializeContextMenuOtherItem(RootItem* clicked_item) {
     m_contextMenuOtherItems->clear();
   }
 
-  QList<QAction*> specific_actions = clicked_item->contextMenu();
+  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
   if (!specific_actions.isEmpty()) {
     m_contextMenuOtherItems->addSeparator();

@@ -51,7 +51,7 @@ StandardFeed::~StandardFeed() {
   qDebug("Destroying Feed instance.");
 }
 
-QList<QAction*> StandardFeed::contextMenu() {
+QList<QAction*> StandardFeed::contextMenuFeedsList() {
   return serviceRoot()->getContextMenuForFeed(this);
 }
 

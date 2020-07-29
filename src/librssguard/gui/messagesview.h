@@ -19,14 +19,8 @@ class MessagesView : public QTreeView {
     explicit MessagesView(QWidget* parent = nullptr);
     virtual ~MessagesView();
 
-    // Model accessors.
-    inline MessagesProxyModel* model() const {
-      return m_proxyModel;
-    }
-
-    inline MessagesModel* sourceModel() const {
-      return m_sourceModel;
-    }
+    MessagesProxyModel* model() const;
+    MessagesModel* sourceModel() const;
 
     void reloadFontSettings();
 
@@ -109,5 +103,13 @@ class MessagesView : public QTreeView {
     MessagesModel* m_sourceModel;
     bool m_columnsAdjusted;
 };
+
+inline MessagesProxyModel* MessagesView::model() const {
+  return m_proxyModel;
+}
+
+inline MessagesModel* MessagesView::sourceModel() const {
+  return m_sourceModel;
+}
 
 #endif // MESSAGESVIEW_H

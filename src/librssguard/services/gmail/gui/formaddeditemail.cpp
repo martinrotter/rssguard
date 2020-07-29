@@ -112,15 +112,8 @@ void FormAddEditEmail::onOkClicked() {
   msg.set_plain(m_ui.m_txtMessage->toPlainText().toStdString());
   msg.set_header("Content-Type", "text/plain; charset=utf-8");
 
-  if (m_originalMessage == nullptr) {
-    // Send completely new message.
-  }
-  else {
-    // TODO: Reply to existing message.
-  }
-
   try {
-    m_root->network()->sendEmail(msg);
+    m_root->network()->sendEmail(msg, m_originalMessage);
     accept();
   }
   catch (const ApplicationException& ex) {
@@ -141,7 +134,9 @@ void FormAddEditEmail::addRecipientRow(const QString& recipient) {
 
     mail_rec->setPossibleRecipients(rec);
   }
-  catch (const ApplicationException& ex) {}
+  catch (const ApplicationException& ex) {
+    qWarning("Failed to get recipients: '%s'.", qPrintable(ex.message()));
+  }
 
   m_ui.m_layout->insertRow(m_ui.m_layout->count() - 5, mail_rec);
 }

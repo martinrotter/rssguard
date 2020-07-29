@@ -44,6 +44,8 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     Qt::ItemFlags flags(const QModelIndex& index) const;
 
     // Returns message at given index.
+
+    QList<Message> messagesAt(QList<int> row_indices) const;
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
     RootItem::Importance messageImportance(int row_index) const;

@@ -14,7 +14,7 @@ class RecycleBin : public RootItem {
 
     QString additionalTooltip() const;
 
-    QList<QAction*> contextMenu();
+    QList<QAction*> contextMenuFeedsList();
     QList<Message> undeletedMessages() const;
 
     bool markAsReadUnread(ReadStatus status);

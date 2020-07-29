@@ -52,11 +52,29 @@ void GmailNetworkFactory::setBatchSize(int batch_size) {
   m_batchSize = batch_size;
 }
 
-QString GmailNetworkFactory::sendEmail(const Mimesis::Message& msg) {
+QString GmailNetworkFactory::sendEmail(Mimesis::Message msg, Message* reply_to_message) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
     throw ApplicationException(tr("you aren't logged in"));
+  }
+
+  if (reply_to_message != nullptr) {
+    // We need to obtain some extra information.
+
+    auto metadata = getMessageMetadata(reply_to_message->m_customId, {
+      QSL("References"),
+      QSL("Message-ID")
+    });
+
+    /*if (metadata.contains(QSL("References"))) {
+
+       }*/
+
+    if (metadata.contains(QSL("Message-ID"))) {
+      msg["References"] = metadata.value(QSL("Message-ID")).toString().toStdString();
+      msg["In-Reply-To"] = metadata.value(QSL("Message-ID")).toString().toStdString();
+    }
   }
 
   QString rfc_email = QString::fromStdString(msg.to_string());
@@ -498,6 +516,36 @@ QStringList GmailNetworkFactory::getAllRecipients() {
   }
   else {
     throw ApplicationException(tr("comm error when asking for recipients"));
+  }
+}
+
+QVariantMap GmailNetworkFactory::getMessageMetadata(const QString& msg_id, const QStringList& metadata) {
+  QString bearer = m_oauth2->bearer();
+
+  if (bearer.isEmpty()) {
+    throw ApplicationException(tr("you are not logged in"));
+  }
+
+  QList<QPair<QByteArray, QByteArray>> headers;
+  QByteArray output;
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                               bearer.toLocal8Bit()));
+
+  QString query = QString("%1/%2?format=metadata&metadataHeaders=%3").arg(GMAIL_API_MSGS_LIST,
+                                                                          msg_id,
+                                                                          metadata.join(QSL("&metadataHeaders=")));
+  NetworkResult res = NetworkFactory::performNetworkOperation(query,
+                                                              timeout,
+                                                              QByteArray(),
+                                                              output,
+                                                              QNetworkAccessManager::Operation::GetOperation,
+                                                              headers);
+
+  if (res.first == QNetworkReply::NetworkError::NoError) {}
+  else {
+    throw ApplicationException(tr("failed to get metadata"));
   }
 }
 

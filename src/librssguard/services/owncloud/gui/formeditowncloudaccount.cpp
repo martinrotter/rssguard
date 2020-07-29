@@ -107,7 +107,7 @@ void FormEditOwnCloudAccount::performTest() {
     if (!SystemFactory::isVersionEqualOrNewer(result.version(), OWNCLOUD_MIN_VERSION)) {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                        tr(
-                                         "Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.").arg(
+                                         "Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.").arg(
                                          result.version(),
                                          OWNCLOUD_MIN_VERSION),
                                        tr("Selected Nextcloud News server is running unsupported version."));

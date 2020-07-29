@@ -68,11 +68,11 @@ bool ServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
   return false;
 }
 
-QList<QAction*> ServiceRoot::contextMenu() {
+QList<QAction*> ServiceRoot::contextMenuFeedsList() {
   return serviceMenu();
 }
 
-QList<QAction*> ServiceRoot::contextMenuForMessages(const QList<Message*>& messages) {
+QList<QAction*> ServiceRoot::contextMenuMessagesList(const QList<Message>& messages) {
   Q_UNUSED(messages)
   return {};
 }
