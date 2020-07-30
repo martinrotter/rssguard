@@ -31,6 +31,7 @@ class FormAddEditEmail : public QDialog {
     void addRecipientRow(const QString& recipient = QString());
 
   private:
+    void closeEvent(QCloseEvent* event);
     QList<EmailRecipientControl*> recipientControls() const;
 
   private:
@@ -39,6 +40,7 @@ class FormAddEditEmail : public QDialog {
     Ui::FormAddEditEmail m_ui;
     QList<EmailRecipientControl*> m_recipientControls;
     Message* m_originalMessage;
+    QStringList m_possibleRecipients;
 };
 
 #endif // FORMADDEDITEMAIL_H

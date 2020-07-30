@@ -145,6 +145,7 @@ class DatabaseQueries {
                                    bool force_server_side_feed_update, bool download_only_unread_messages);
 
     // Gmail account.
+    static QStringList getAllRecipients(const QSqlDatabase& db, int account_id);
     static bool deleteGmailAccount(const QSqlDatabase& db, int account_id);
     static QList<ServiceRoot*> getGmailAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool overwriteGmailAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,

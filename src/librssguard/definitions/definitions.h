@@ -141,6 +141,26 @@
 #define APP_NO_THEME        ""
 #define APP_THEME_SUFFIX    ".png"
 
+#ifndef qDebugNN
+#define qDebugNN qDebug().noquote().nospace()
+#endif
+
+#ifndef qWarningNN
+#define qWarningNN qWarning().noquote().nospace()
+#endif
+
+#ifndef qCriticalNN
+#define qCriticalNN qCritical().noquote().nospace()
+#endif
+
+#ifndef qFatalNN
+#define qFatalNN qFatal().noquote().nospace()
+#endif
+
+#ifndef qInfoNN
+#define qInfoNN qInfo().noquote().nospace()
+#endif
+
 #ifndef QSL
 
 // Thin macro wrapper for literal strings.

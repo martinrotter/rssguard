@@ -1720,6 +1720,28 @@ bool DatabaseQueries::createTtRssAccount(const QSqlDatabase& db, int id_to_assig
   }
 }
 
+QStringList DatabaseQueries::getAllRecipients(const QSqlDatabase& db, int account_id) {
+  QSqlQuery query(db);
+  QStringList rec;
+
+  query.prepare(QSL("SELECT DISTINCT author "
+                    "FROM Messages "
+                    "WHERE account_id = :account_id AND author IS NOT NULL AND author != '' "
+                    "ORDER BY lower(author) ASC;"));
+  query.bindValue(QSL(":account_id"), account_id);
+
+  if (query.exec()) {
+    while (query.next()) {
+      rec.append(query.value(0).toString());
+    }
+  }
+  else {
+    qWarningNN << "Query for all recipients failed: '" << query.lastError().text() << "'.";
+  }
+
+  return rec;
+}
+
 QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
   QList<ServiceRoot*> roots;

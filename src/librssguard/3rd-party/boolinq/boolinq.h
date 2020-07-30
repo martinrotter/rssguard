@@ -64,7 +64,7 @@ namespace boolinq {
 
         void for_each(std::function<void(T)> apply) const
         {
-            return for_each_i([apply](T value, int index) { return apply(value); });
+            return for_each_i([apply](T value, int) { return apply(value); });
         }
 
         Linq<std::tuple<Linq<S, T>, int>, T> where_i(std::function<bool(T, int)> filter) const
@@ -87,7 +87,7 @@ namespace boolinq {
 
         Linq<std::tuple<Linq<S, T>, int>, T> where(std::function<bool(T)> filter) const
         {
-            return where_i([filter](T value, int index) { return filter(value); });
+            return where_i([filter](T value, int) { return filter(value); });
         }
 
         Linq<std::tuple<Linq<S, T>, int>, T> take(int count) const
@@ -296,13 +296,14 @@ namespace boolinq {
                     Linq<S, T> &linqCopy = std::get<1>(tuple);
                     std::unordered_set<_TKey> &set = std::get<2>(tuple);
 
-                    _TKey key = apply(linq.next());
-                    if (set.insert(key).second) {
-                        return std::make_pair(key, linqCopy.where([apply, key](T v){
-                            return apply(v) == key;
-                        }));
+                    while (true) {
+                        _TKey key = apply(linq.next());
+                        if (set.insert(key).second) {
+                            return std::make_pair(key, linqCopy.where([apply, key](T v){
+                                return apply(v) == key;
+                            }));
+                        }
                     }
-                    throw LinqEndException();
                 }
             );
         }

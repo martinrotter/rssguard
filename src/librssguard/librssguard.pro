@@ -417,6 +417,9 @@ else {
 SOURCES += $$files(3rd-party/mimesis/*.cpp, false)
 HEADERS  += $$files(3rd-party/mimesis/*.hpp, false)
 
+# Add boolinq.
+HEADERS  += $$files(3rd-party/boolinq/*.h, false)
+
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/gui \
                 $$PWD/gui/dialogs \

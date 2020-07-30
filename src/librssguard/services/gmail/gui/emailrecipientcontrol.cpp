@@ -61,5 +61,9 @@ void EmailRecipientControl::setPossibleRecipients(const QStringList& rec) {
 
   QCompleter* cmpl = new QCompleter(rec, m_txtRecipient);
 
+  cmpl->setFilterMode(Qt::MatchFlag::MatchContains);
+  cmpl->setCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
+  cmpl->setCompletionMode(QCompleter::CompletionMode::UnfilteredPopupCompletion);
+
   m_txtRecipient->setCompleter(cmpl);
 }

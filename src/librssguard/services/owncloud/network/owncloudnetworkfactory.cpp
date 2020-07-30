@@ -120,7 +120,7 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
                                                                         headers);
   OwnCloudStatusResponse status_response(QString::fromUtf8(result_raw));
 
-  qDebug().noquote().nospace() << "Raw status data is:" << result_raw;
+  qDebugNN << "Raw status data is:" << result_raw;
 
   if (network_reply.first != QNetworkReply::NoError) {
     qWarning("Nextcloud: Obtaining status info failed with error %d.", network_reply.first);
