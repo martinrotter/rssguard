@@ -22,13 +22,14 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void start(bool freshly_activated);
     void stop();
     QString code() const;
+
+    bool isSyncable() const;
     bool canBeEdited() const;
     bool canBeDeleted() const;
     bool editViaGui();
     bool deleteViaGui();
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
-    QList<QAction*> serviceMenu();
 
     QString additionalTooltip() const;
 
@@ -46,12 +47,8 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
   private:
     RootItem* obtainNewTreeForSyncIn() const;
-
     void loadFromDatabase();
 
-    QAction* m_actionSyncIn;
-
-    QList<QAction*> m_serviceMenu;
     TtRssNetworkFactory* m_network;
 };
 

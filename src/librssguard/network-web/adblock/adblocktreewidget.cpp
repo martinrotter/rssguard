@@ -30,7 +30,7 @@
 AdBlockTreeWidget::AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget* parent)
   : TreeWidget(parent), m_subscription(subscription), m_topItem(nullptr), m_itemChangingBlock(false) {
   setContextMenuPolicy(Qt::CustomContextMenu);
-  setDefaultItemShowMode(TreeWidget::ItemsExpanded);
+  setDefaultItemShowMode(TreeWidget::ItemShowMode::ItemsExpanded);
   setHeaderHidden(true);
   setAlternatingRowColors(true);
   setLayoutDirection(Qt::LeftToRight);

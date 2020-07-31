@@ -7,12 +7,18 @@
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/gmail/gmailserviceroot.h"
 #include "services/gmail/gui/emailrecipientcontrol.h"
 #include "services/gmail/network/gmailnetworkfactory.h"
 
-FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent) : QDialog(parent), m_root(root) {
+#include <QtConcurrent/QtConcurrentRun>
+
+#include <QCloseEvent>
+
+FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
+  : QDialog(parent), m_root(root), m_originalMessage(nullptr), m_possibleRecipients({}) {
   m_ui.setupUi(this);
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("mail-message-new")));
@@ -32,10 +38,26 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent) : QD
           &QPushButton::clicked,
           this,
           &FormAddEditEmail::onOkClicked);
+
+  QSqlDatabase db = qApp->database()->connection(metaObject()->className());
+
+  m_possibleRecipients = DatabaseQueries::getAllRecipients(db, m_root->accountId());
+
+  for (auto* rec: recipientControls()) {
+    rec->setPossibleRecipients(m_possibleRecipients);
+  }
 }
 
 void FormAddEditEmail::execForAdd() {
   addRecipientRow();
+  exec();
+}
+
+void FormAddEditEmail::execForReply(Message* original_message) {
+  m_originalMessage = original_message;
+
+  addRecipientRow(m_originalMessage->m_author);
+  m_ui.m_txtSubject->setText(QSL("Re: %1").arg(m_originalMessage->m_title));
   exec();
 }
 
@@ -103,15 +125,8 @@ void FormAddEditEmail::onOkClicked() {
   msg.set_plain(m_ui.m_txtMessage->toPlainText().toStdString());
   msg.set_header("Content-Type", "text/plain; charset=utf-8");
 
-  if (m_originalMessage == nullptr) {
-    // Send completely new message.
-  }
-  else {
-    // TODO: Reply to existing message.
-  }
-
   try {
-    m_root->network()->sendEmail(msg);
+    m_root->network()->sendEmail(msg, m_originalMessage);
     accept();
   }
   catch (const ApplicationException& ex) {
@@ -127,13 +142,7 @@ void FormAddEditEmail::addRecipientRow(const QString& recipient) {
 
   connect(mail_rec, &EmailRecipientControl::removalRequested, this, &FormAddEditEmail::removeRecipientRow);
 
-  try {
-    QStringList rec = m_root->network()->getAllRecipients();
-
-    mail_rec->setPossibleRecipients(rec);
-  }
-  catch (const ApplicationException& ex) {}
-
+  mail_rec->setPossibleRecipients(m_possibleRecipients);
   m_ui.m_layout->insertRow(m_ui.m_layout->count() - 5, mail_rec);
 }
 

@@ -77,7 +77,10 @@ void TabWidget::showDownloadManager() {
 
   // Download manager is not opened. Create tab with it.
   qApp->downloadManager()->setParent(this);
-  addTab(qApp->downloadManager(), qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("Downloads"), TabBar::DownloadManager);
+  addTab(qApp->downloadManager(),
+         qApp->icons()->fromTheme(QSL("emblem-downloads")),
+         tr("Downloads"),
+         TabBar::TabType::DownloadManager);
   setCurrentIndex(count() - 1);
 }
 
@@ -130,7 +133,7 @@ void TabWidget::createConnections() {
 void TabWidget::initializeTabs() {
   // Create widget for "Feeds" page and add it.
   m_feedMessageViewer = new FeedMessageViewer(this);
-  const int index_of_browser = addTab(m_feedMessageViewer, QIcon(), tr("Feeds"), TabBar::FeedReader);
+  const int index_of_browser = addTab(m_feedMessageViewer, QIcon(), tr("Feeds"), TabBar::TabType::FeedReader);
 
   setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
 }
@@ -140,18 +143,18 @@ void TabWidget::setupIcons() {
   // accordingly.
   for (int index = 0; index < count(); index++) {
     // Index 0 usually contains widget which displays feeds & messages.
-    if (tabBar()->tabType(index) == TabBar::FeedReader) {
+    if (tabBar()->tabType(index) == TabBar::TabType::FeedReader) {
       setTabIcon(index, qApp->icons()->fromTheme(QSL("application-rss+xml")));
     }
   }
 }
 
 bool TabWidget::closeTab(int index) {
-  if (tabBar()->tabType(index) == TabBar::Closable) {
+  if (tabBar()->tabType(index) == TabBar::TabType::Closable) {
     removeTab(index, true);
     return true;
   }
-  else if (tabBar()->tabType(index) == TabBar::DownloadManager) {
+  else if (tabBar()->tabType(index) == TabBar::TabType::DownloadManager) {
     removeTab(index, false);
     return true;
   }
@@ -198,7 +201,10 @@ int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) 
           m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageImportantById);
 #endif
 
-  int index = addTab(prev, qApp->icons()->fromTheme(QSL("format-justify-fill")), tr("Newspaper view"), TabBar::Closable);
+  int index = addTab(prev,
+                     qApp->icons()->fromTheme(QSL("format-justify-fill")),
+                     tr("Newspaper view"),
+                     TabBar::TabType::Closable);
 
   // NOTE: Do not bring "newspaper" tabs to front anymore.
   //setCurrentIndex(index);
@@ -236,13 +242,13 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
   if (move_after_current) {
     // Insert web browser after current tab.
     final_index = insertTab(currentIndex() + 1, browser, qApp->icons()->fromTheme(QSL("text-html")),
-                            browser_tab_name, TabBar::Closable);
+                            browser_tab_name, TabBar::TabType::Closable);
   }
   else {
     // Add new browser as the last tab.
     final_index = addTab(browser, qApp->icons()->fromTheme(QSL("text-html")),
                          browser_tab_name,
-                         TabBar::Closable);
+                         TabBar::TabType::Closable);
   }
 
   // Make connections.

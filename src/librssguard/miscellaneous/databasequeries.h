@@ -145,6 +145,7 @@ class DatabaseQueries {
                                    bool force_server_side_feed_update, bool download_only_unread_messages);
 
     // Gmail account.
+    static QStringList getAllRecipients(const QSqlDatabase& db, int account_id);
     static bool deleteGmailAccount(const QSqlDatabase& db, int account_id);
     static QList<ServiceRoot*> getGmailAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool overwriteGmailAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
@@ -182,10 +183,10 @@ inline void DatabaseQueries::fillFeedData(StandardFeed* feed, const QSqlRecord& 
   StandardFeed::Type type = static_cast<StandardFeed::Type>(sql_record.value(FDS_DB_TYPE_INDEX).toInt());
 
   switch (type) {
-    case StandardFeed::Atom10:
-    case StandardFeed::Rdf:
-    case StandardFeed::Rss0X:
-    case StandardFeed::Rss2X: {
+    case StandardFeed::Type::Atom10:
+    case StandardFeed::Type::Rdf:
+    case StandardFeed::Type::Rss0X:
+    case StandardFeed::Type::Rss2X: {
       feed->setType(type);
       break;
     }

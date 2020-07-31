@@ -36,10 +36,7 @@ class GmailNetworkFactory : public QObject {
     void setBatchSize(int batch_size);
 
     // Sends e-mail, returns its ID.
-    QString sendEmail(const Mimesis::Message& msg);
-
-    // Returns all possible recipients.
-    QStringList getAllRecipients();
+    QString sendEmail(Mimesis::Message msg, Message* reply_to_message = nullptr);
 
     Downloader* downloadAttachment(const QString& msg_id, const QString& attachment_id);
 
@@ -53,6 +50,7 @@ class GmailNetworkFactory : public QObject {
 
   private:
     bool fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id);
+    QMap<QString, QString> getMessageMetadata(const QString& msg_id, const QStringList& metadata);
     bool obtainAndDecodeFullMessages(const QList<Message>& lite_messages, const QString& feed_id, QList<Message>& full_messages);
     QList<Message> decodeLiteMessages(const QString& messages_json_data, const QString& stream_id, QString& next_page_token);
 

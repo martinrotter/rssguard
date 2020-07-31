@@ -22,33 +22,27 @@ class TabWidget : public QTabWidget {
   public:
 
     // Constructors and destructors.
-    explicit TabWidget(QWidget* parent = 0);
+    explicit TabWidget(QWidget* parent = nullptr);
     virtual ~TabWidget();
 
     // Manimulators for tabs.
     int addTab(TabContent* widget, const QString&,
-               const TabBar::TabType& type = TabBar::NonClosable);
+               const TabBar::TabType& type = TabBar::TabType::NonClosable);
     int addTab(TabContent* widget, const QIcon& icon,
-               const QString& label, const TabBar::TabType& type = TabBar::NonClosable);
+               const QString& label, const TabBar::TabType& type = TabBar::TabType::NonClosable);
     int insertTab(int index, QWidget* widget, const QString& label,
-                  const TabBar::TabType& type = TabBar::Closable);
+                  const TabBar::TabType& type = TabBar::TabType::Closable);
     int insertTab(int index, QWidget* widget, const QIcon& icon,
-                  const QString& label, const TabBar::TabType& type = TabBar::NonClosable);
+                  const QString& label, const TabBar::TabType& type = TabBar::TabType::NonClosable);
     void removeTab(int index, bool clear_from_memory);
 
     // Returns tab bar.
-    inline TabBar* tabBar() const {
-      return static_cast<TabBar*>(QTabWidget::tabBar());
-    }
+    TabBar* tabBar() const;
 
     // Returns the central widget of this tab.
-    inline TabContent* widget(int index) const {
-      return static_cast<TabContent*>(QTabWidget::widget(index));
-    }
+    TabContent* widget(int index) const;
 
-    inline TabContent* currentWidget() const {
-      return static_cast<TabContent*>(QTabWidget::currentWidget());
-    }
+    TabContent* currentWidget() const;
 
     // Initializes TabWidget with tabs, this includes initialization
     // of main "Feeds" widget.
@@ -58,21 +52,7 @@ class TabWidget : public QTabWidget {
     void setupIcons();
 
     // Accessor to feed/message viewer.
-    inline FeedMessageViewer* feedMessageViewer() const {
-      return m_feedMessageViewer;
-    }
-
-  protected:
-
-    // Creates necesary connections.
-    void createConnections();
-
-    // Sets up properties of custom corner button.
-    void setupMainMenuButton();
-
-    // Handlers of insertin/removing of tabs.
-    void tabInserted(int index);
-    void tabRemoved(int index);
+    FeedMessageViewer* feedMessageViewer() const;
 
   public slots:
 
@@ -117,10 +97,31 @@ class TabWidget : public QTabWidget {
 
   private:
     void indentTabText(int index);
+    void createConnections();
+    void setupMainMenuButton();
+
+    void tabInserted(int index);
+    void tabRemoved(int index);
 
     PlainToolButton* m_btnMainMenu;
     QMenu* m_menuMain;
     FeedMessageViewer* m_feedMessageViewer;
 };
+
+inline TabBar* TabWidget::tabBar() const {
+  return static_cast<TabBar*>(QTabWidget::tabBar());
+}
+
+inline TabContent* TabWidget::widget(int index) const {
+  return static_cast<TabContent*>(QTabWidget::widget(index));
+}
+
+inline TabContent* TabWidget::currentWidget() const {
+  return static_cast<TabContent*>(QTabWidget::currentWidget());
+}
+
+inline FeedMessageViewer* TabWidget::feedMessageViewer() const {
+  return m_feedMessageViewer;
+}
 
 #endif // TABWIDGET_H

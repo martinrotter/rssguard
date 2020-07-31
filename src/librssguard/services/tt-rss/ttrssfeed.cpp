@@ -79,7 +79,7 @@ QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
                                                                                  serviceRoot()->network()->downloadOnlyUnreadMessages());
 
     if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
-      setStatus(Feed::NetworkError);
+      setStatus(Feed::Status::NetworkError);
       *error_during_obtaining = true;
       serviceRoot()->itemChanged(QList<RootItem*>() << this);
       return QList<Message>();

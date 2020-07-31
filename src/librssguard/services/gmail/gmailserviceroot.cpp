@@ -18,7 +18,8 @@
 
 #include <QFileDialog>
 
-GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* parent) : ServiceRoot(parent), m_network(network) {
+GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* parent)
+  : ServiceRoot(parent), m_network(network), m_actionReply(nullptr) {
   if (network == nullptr) {
     m_network = new GmailNetworkFactory(this);
   }
@@ -34,6 +35,10 @@ GmailServiceRoot::~GmailServiceRoot() = default;
 
 void GmailServiceRoot::updateTitle() {
   setTitle(m_network->username() + QSL(" (Gmail)"));
+}
+
+void GmailServiceRoot::replyToEmail() {
+  FormAddEditEmail(this, qApp->mainFormWidget()).execForReply(&m_replyToMessage);
 }
 
 RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
@@ -128,8 +133,26 @@ bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
   }
 }
 
+QList<QAction*> GmailServiceRoot::contextMenuMessagesList(const QList<Message>& messages) {
+  if (messages.size() == 1) {
+    m_replyToMessage = messages.at(0);
+
+    if (m_actionReply == nullptr) {
+      m_actionReply = new QAction(qApp->icons()->fromTheme(QSL("mail-reply-sender")), tr("Reply to this message"), this);
+      connect(m_actionReply, &QAction::triggered, this, &GmailServiceRoot::replyToEmail);
+    }
+
+    return { m_actionReply };
+  }
+  else {
+    return {};
+  }
+}
+
 QList<QAction*> GmailServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
+    ServiceRoot::serviceMenu();
+
     QAction* act_new_email = new QAction(qApp->icons()->fromTheme(QSL("mail-message-new")), tr("Write new e-mail message"), this);
 
     connect(act_new_email, &QAction::triggered, this, &GmailServiceRoot::writeNewEmail);
@@ -137,6 +160,10 @@ QList<QAction*> GmailServiceRoot::serviceMenu() {
   }
 
   return m_serviceMenu;
+}
+
+bool GmailServiceRoot::isSyncable() const {
+  return true;
 }
 
 bool GmailServiceRoot::canBeEdited() const {

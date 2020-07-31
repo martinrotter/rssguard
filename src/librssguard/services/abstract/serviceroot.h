@@ -53,13 +53,19 @@ class ServiceRoot : public RootItem {
     // NOTE: Caller does NOT take ownership of created menu!
     virtual QList<QAction*> addItemMenu();
 
-    // Returns actions to display as context menu.
-    QList<QAction*> contextMenu();
+    // NOTE: Caller does NOT take ownership of created menu!
+    virtual QList<QAction*> contextMenuFeedsList();
+
+    // NOTE: Caller does NOT take ownership of created menu!
+    virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
 
     // Returns list of specific actions to be shown in main window menu
     // bar in sections "Services -> 'this service'".
     // NOTE: Caller does NOT take ownership of created menu!
     virtual QList<QAction*> serviceMenu();
+
+    // If plugin uses online synchronization, then returns true.
+    virtual bool isSyncable() const;
 
     // Start/stop services.
     // Start method is called when feed model gets initialized OR after user adds new service.
@@ -204,10 +210,12 @@ class ServiceRoot : public RootItem {
     virtual QMap<QString, QVariantMap> storeCustomFeedsData();
     virtual void restoreCustomFeedsData(const QMap<QString, QVariantMap>& data, const QHash<QString, Feed*>& feeds);
 
-  private:
+  protected:
     RecycleBin* m_recycleBin;
     ImportantNode* m_importantNode;
     int m_accountId;
+    QAction* m_actionSyncIn;
+    QList<QAction*> m_serviceMenu;
 };
 
 #endif // SERVICEROOT_H

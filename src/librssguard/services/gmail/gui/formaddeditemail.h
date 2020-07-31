@@ -23,6 +23,7 @@ class FormAddEditEmail : public QDialog {
 
   public slots:
     void execForAdd();
+    void execForReply(Message* original_message);
 
   private slots:
     void removeRecipientRow();
@@ -38,6 +39,7 @@ class FormAddEditEmail : public QDialog {
     Ui::FormAddEditEmail m_ui;
     QList<EmailRecipientControl*> m_recipientControls;
     Message* m_originalMessage;
+    QStringList m_possibleRecipients;
 };
 
 #endif // FORMADDEDITEMAIL_H

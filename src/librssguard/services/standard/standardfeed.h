@@ -20,7 +20,7 @@ class StandardFeed : public Feed {
   Q_OBJECT
 
   public:
-    enum Type {
+    enum class Type {
       Rss0X = 0,
       Rss2X = 1,
       Rdf = 2,      // Sometimes denoted as RSS 1.0.
@@ -35,7 +35,7 @@ class StandardFeed : public Feed {
 
     StandardServiceRoot* serviceRoot() const;
 
-    QList<QAction*> contextMenu();
+    QList<QAction*> contextMenuFeedsList();
 
     QString additionalTooltip() const;
 

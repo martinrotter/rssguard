@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>text/CHANGELOG</file>
         <file>text/COPYING_BSD</file>
+        <file>text/COPYING_MIT</file>
         <file>text/COPYING_GNU_GPL</file>
         <file>text/COPYING_GNU_GPL_HTML</file>
         

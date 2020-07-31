@@ -5,6 +5,7 @@
 #include "definitions/definitions.h"
 #include "gui/plaintoolbutton.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/templates.h"
 
 #include <QMouseEvent>
 #include <QStyle>
@@ -25,8 +26,8 @@ void TabBar::setTabType(int index, const TabBar::TabType& type) {
                                                                               this));
 
   switch (type) {
-    case TabBar::DownloadManager:
-    case TabBar::Closable: {
+    case TabBar::TabType::DownloadManager:
+    case TabBar::TabType::Closable: {
       auto* close_button = new PlainToolButton(this);
 
       close_button->setIcon(qApp->icons()->fromTheme(QSL("application-exit")));
@@ -45,7 +46,7 @@ void TabBar::setTabType(int index, const TabBar::TabType& type) {
       break;
   }
 
-  setTabData(index, QVariant(type));
+  setTabData(index, QVariant(int(type)));
 }
 
 void TabBar::closeTabViaButton() {
@@ -99,7 +100,7 @@ void TabBar::mousePressEvent(QMouseEvent* event) {
     // destination does not know the original event.
     if ((event->button() & Qt::MiddleButton) == Qt::MiddleButton &&
         qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseMiddleClick)).toBool()) {
-      if (tabType(tab_index) == TabBar::Closable || tabType(tab_index) == TabBar::DownloadManager) {
+      if (tabType(tab_index) == TabBar::TabType::Closable || tabType(tab_index) == TabBar::TabType::DownloadManager) {
         // This tab is closable, so we can close it.
         emit tabCloseRequested(tab_index);
       }
@@ -118,7 +119,7 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent* event) {
     // destination does not know the original event.
     if ((event->button() & Qt::LeftButton) == Qt::LeftButton &&
         qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseDoubleClick)).toBool()) {
-      if ((tabType(tab_index) & (TabBar::Closable | TabBar::DownloadManager)) > 0) {
+      if (int(tabType(tab_index) & (TabBar::TabType::Closable | TabBar::TabType::DownloadManager)) > 0) {
         // This tab is closable, so we can close it.
         emit tabCloseRequested(tab_index);
       }
@@ -127,4 +128,20 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent* event) {
   else {
     emit emptySpaceDoubleClicked();
   }
+}
+
+TabBar::TabType& operator&=(TabBar::TabType& a, TabBar::TabType b) {
+  return (TabBar::TabType&)((int&)a &= (int)b);
+}
+
+TabBar::TabType& operator|=(TabBar::TabType& a, TabBar::TabType b) {
+  return (TabBar::TabType&)((int&)a |= (int)b);
+}
+
+TabBar::TabType operator&(TabBar::TabType a, TabBar::TabType b) {
+  return (TabBar::TabType)((int)a & (int)b);
+}
+
+TabBar::TabType operator|(TabBar::TabType a, TabBar::TabType b) {
+  return (TabBar::TabType)((int)a | (int)b);
 }

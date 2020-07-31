@@ -11,11 +11,11 @@
 #include "services/abstract/serviceroot.h"
 
 Category::Category(RootItem* parent) : RootItem(parent) {
-  setKind(RootItemKind::Category);
+  setKind(RootItem::Kind::Category);
 }
 
 Category::Category(const Category& other) : RootItem(other) {
-  setKind(RootItemKind::Category);
+  setKind(RootItem::Kind::Category);
 }
 
 Category::Category(const QSqlRecord& record) : Category(nullptr) {
@@ -38,10 +38,10 @@ void Category::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
 
   for (RootItem* child : getSubTree()) {
-    if (child->kind() == RootItemKind::Feed) {
+    if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }
-    else if (child->kind() != RootItemKind::Category && child->kind() != RootItemKind::ServiceRoot) {
+    else if (child->kind() != RootItem::Kind::Category && child->kind() != RootItem::Kind::ServiceRoot) {
       child->updateCounts(including_total_count);
     }
   }

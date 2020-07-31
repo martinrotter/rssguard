@@ -143,14 +143,14 @@ void FormStandardImportExport::selectExportFile() {
 
   if (!selected_file.isEmpty()) {
     if (selected_filter == filter_opml20) {
-      m_conversionType = OPML20;
+      m_conversionType = ConversionType::OPML20;
 
       if (!selected_file.endsWith(QL1S(".opml"))) {
         selected_file += QL1S(".opml");
       }
     }
     else if (selected_filter == filter_txt_url_per_line) {
-      m_conversionType = TXTUrlPerLine;
+      m_conversionType = ConversionType::TxtUrlPerLine;
 
       if (!selected_file.endsWith(QL1S(".txt"))) {
         selected_file += QL1S(".txt");
@@ -178,10 +178,10 @@ void FormStandardImportExport::selectImportFile() {
 
   if (!selected_file.isEmpty()) {
     if (selected_filter == filter_opml20) {
-      m_conversionType = OPML20;
+      m_conversionType = ConversionType::OPML20;
     }
     else if (selected_filter == filter_txt_url_per_line) {
-      m_conversionType = TXTUrlPerLine;
+      m_conversionType = ConversionType::TxtUrlPerLine;
     }
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
@@ -213,11 +213,11 @@ void FormStandardImportExport::parseImportFile(const QString& file_name, bool fe
   }
 
   switch (m_conversionType) {
-    case OPML20:
+    case ConversionType::OPML20:
       m_model->importAsOPML20(input_data, fetch_metadata_online);
       break;
 
-    case TXTUrlPerLine:
+    case ConversionType::TxtUrlPerLine:
       m_model->importAsTxtURLPerLine(input_data, fetch_metadata_online);
       break;
 
@@ -246,11 +246,11 @@ void FormStandardImportExport::exportFeeds() {
   bool result_export = false;
 
   switch (m_conversionType) {
-    case OPML20:
+    case ConversionType::OPML20:
       result_export = m_model->exportToOMPL20(result_data);
       break;
 
-    case TXTUrlPerLine:
+    case ConversionType::TxtUrlPerLine:
       result_export = m_model->exportToTxtURLPerLine(result_data);
       break;
 

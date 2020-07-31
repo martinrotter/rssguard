@@ -18,13 +18,13 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     explicit OwnCloudServiceRoot(RootItem* parent = nullptr);
     virtual ~OwnCloudServiceRoot();
 
+    bool isSyncable() const;
     bool canBeEdited() const;
     bool canBeDeleted() const;
     bool editViaGui();
     bool deleteViaGui();
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
-    QList<QAction*> serviceMenu();
 
     void start(bool freshly_activated);
     void stop();
@@ -42,12 +42,8 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
   private:
     RootItem* obtainNewTreeForSyncIn() const;
-
     void loadFromDatabase();
 
-    QAction* m_actionSyncIn;
-
-    QList<QAction*> m_serviceMenu;
     OwnCloudNetworkFactory* m_network;
 };
 

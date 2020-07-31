@@ -26,11 +26,11 @@ FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   // means it should be more on top when sorting
   // in ascending order.
   m_priorities = {
-    RootItemKind::Kind::Category,
-    RootItemKind::Kind::Feed,
-    RootItemKind::Kind::Labels,
-    RootItemKind::Kind::Important,
-    RootItemKind::Kind::Bin
+    RootItem::Kind::Category,
+    RootItem::Kind::Feed,
+    RootItem::Kind::Labels,
+    RootItem::Kind::Important,
+    RootItem::Kind::Bin
   };
 }
 
@@ -218,7 +218,7 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
 
   const RootItem* item = m_sourceModel->itemForIndex(idx);
 
-  if (item->kind() != RootItemKind::Category && item->kind() != RootItemKind::Feed) {
+  if (item->kind() != RootItem::Kind::Category && item->kind() != RootItem::Kind::Feed) {
     // Some items are always visible.
     return true;
   }

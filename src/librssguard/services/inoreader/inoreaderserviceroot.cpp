@@ -82,6 +82,10 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
   }
 }
 
+bool InoreaderServiceRoot::isSyncable() const {
+  return true;
+}
+
 bool InoreaderServiceRoot::canBeEdited() const {
   return true;
 }
@@ -117,17 +121,6 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
 
 void InoreaderServiceRoot::stop() {
   saveCacheToFile(accountId());
-}
-
-QList<QAction*> InoreaderServiceRoot::serviceMenu() {
-  if (m_serviceMenu.isEmpty()) {
-    QAction* act_sync_in = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
-
-    connect(act_sync_in, &QAction::triggered, this, &InoreaderServiceRoot::syncIn);
-    m_serviceMenu.append(act_sync_in);
-  }
-
-  return m_serviceMenu;
 }
 
 QString InoreaderServiceRoot::code() const {

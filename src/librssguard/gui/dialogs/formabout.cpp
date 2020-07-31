@@ -25,7 +25,7 @@ FormAbout::~FormAbout() {
 }
 
 void FormAbout::loadSettingsAndPaths() {
-  if (qApp->settings()->type() == SettingsProperties::Portable) {
+  if (qApp->settings()->type() == SettingsProperties::SettingsType::Portable) {
     m_ui.m_txtPathsSettingsType->setText(tr("FULLY portable"));
   }
   else {
@@ -66,6 +66,13 @@ void FormAbout::loadLicenseAndInformation() {
   }
   catch (...) {
     m_ui.m_txtLicenseBsd->setText(tr("License not found."));
+  }
+
+  try {
+    m_ui.m_txtLicenseMit->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/COPYING_MIT")));
+  }
+  catch (...) {
+    m_ui.m_txtLicenseMit->setText(tr("License not found."));
   }
 
   // Set other informative texts.

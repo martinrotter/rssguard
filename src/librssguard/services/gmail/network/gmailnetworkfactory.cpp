@@ -52,11 +52,29 @@ void GmailNetworkFactory::setBatchSize(int batch_size) {
   m_batchSize = batch_size;
 }
 
-QString GmailNetworkFactory::sendEmail(const Mimesis::Message& msg) {
+QString GmailNetworkFactory::sendEmail(Mimesis::Message msg, Message* reply_to_message) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
-    throw ApplicationException(tr("you aren't logged in"));
+    //throw ApplicationException(tr("you aren't logged in"));
+  }
+
+  if (reply_to_message != nullptr) {
+    // We need to obtain some extra information.
+
+    auto metadata = getMessageMetadata(reply_to_message->m_customId, {
+      QSL("References"),
+      QSL("Message-ID")
+    });
+
+    /*if (metadata.contains(QSL("References"))) {
+
+       }*/
+
+    if (metadata.contains(QSL("Message-ID"))) {
+      msg["References"] = metadata.value(QSL("Message-ID")).toStdString();
+      msg["In-Reply-To"] = metadata.value(QSL("Message-ID")).toStdString();
+    }
   }
 
   QString rfc_email = QString::fromStdString(msg.to_string());
@@ -415,89 +433,45 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   return true;
 }
 
-QStringList GmailNetworkFactory::getAllRecipients() {
-  QString bearer = m_oauth2->bearer().toLocal8Bit();
+QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& msg_id, const QStringList& metadata) {
+  QString bearer = m_oauth2->bearer();
 
   if (bearer.isEmpty()) {
-    throw ApplicationException(tr("not logged-in"));
+    throw ApplicationException(tr("you are not logged in"));
   }
 
-  QStringList recipients;
   QList<QPair<QByteArray, QByteArray>> headers;
+  QByteArray output;
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
-                                               m_oauth2->bearer().toLocal8Bit()));
-  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
-                                               QString(GMAIL_CONTENT_TYPE_JSON).toLocal8Bit()));
+                                               bearer.toLocal8Bit()));
 
-  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QByteArray msg_list_data;
-
-  // TODO: Cyklicky!!
-  auto list_res = NetworkFactory::performNetworkOperation(GMAIL_API_MSGS_LIST,
-                                                          timeout,
-                                                          QByteArray(),
-                                                          msg_list_data,
-                                                          QNetworkAccessManager::Operation::GetOperation,
-                                                          headers);
-
-  if (list_res.first != QNetworkReply::NetworkError::NoError) {
-    throw ApplicationException(tr("comm error when asking for recipients"));
-  }
-
-  QJsonDocument json_list = QJsonDocument::fromJson(msg_list_data);
-  QStringList message_ids;
-
-  for (const auto& msg_nod : json_list.object()["messages"].toArray()) {
-    message_ids.append(msg_nod.toObject()["id"].toString());
-  }
-
-  auto* multi = new QHttpMultiPart();
-
-  multi->setContentType(QHttpMultiPart::ContentType::MixedType);
-
-  for (const QString& msg : message_ids) {
-    QHttpPart part;
-
-    part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);
-    QString full_msg_endpoint = QString("GET /gmail/v1/users/me/messages/%1?metadataHeaders=From&metadataHeaders=To&format=metadata\r\n").arg(msg);
-
-    part.setBody(full_msg_endpoint.toUtf8());
-    multi->append(part);
-  }
-
-  QList<HttpResponse> output;
-
-  headers.removeLast();
-
-  NetworkResult res = NetworkFactory::performNetworkOperation(GMAIL_API_BATCH,
+  QString query = QString("%1/%2?format=metadata&metadataHeaders=%3").arg(GMAIL_API_MSGS_LIST,
+                                                                          msg_id,
+                                                                          metadata.join(QSL("&metadataHeaders=")));
+  NetworkResult res = NetworkFactory::performNetworkOperation(query,
                                                               timeout,
-                                                              multi,
+                                                              QByteArray(),
                                                               output,
-                                                              QNetworkAccessManager::Operation::PostOperation,
+                                                              QNetworkAccessManager::Operation::GetOperation,
                                                               headers);
 
   if (res.first == QNetworkReply::NetworkError::NoError) {
-    // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
-    for (const HttpResponse& part : output) {
-      QJsonObject msg_doc = QJsonDocument::fromJson(part.body().toUtf8()).object();
-      auto headers = msg_doc["payload"].toObject()["headers"].toArray();
+    QJsonDocument doc = QJsonDocument::fromJson(output);
+    QMap<QString, QString> result;
+    auto headers = doc.object()["payload"].toObject()["headers"].toArray();
 
-      if (headers.size() >= 2) {
-        for (const auto& head : headers) {
-          auto val = head.toObject()["value"].toString();
+    for (const auto& header : headers) {
+      QJsonObject obj_header = header.toObject();
 
-          if (!recipients.contains(val)) {
-            recipients.append(val);
-          }
-        }
-      }
+      result.insert(obj_header["name"].toString(), obj_header["value"].toString());
     }
 
-    return recipients;
+    return result;
   }
   else {
-    throw ApplicationException(tr("comm error when asking for recipients"));
+    throw ApplicationException(tr("failed to get metadata"));
   }
 }
 

@@ -70,8 +70,8 @@ OwnCloudServiceRoot* OwnCloudFeed::serviceRoot() const {
 QList<Message> OwnCloudFeed::obtainNewMessages(bool* error_during_obtaining) {
   OwnCloudGetMessagesResponse messages = serviceRoot()->network()->getMessages(customNumericId());
 
-  if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
-    setStatus(Feed::NetworkError);
+  if (serviceRoot()->network()->lastError() != QNetworkReply::NetworkError::NoError) {
+    setStatus(Feed::Status::NetworkError);
     *error_during_obtaining = true;
     serviceRoot()->itemChanged(QList<RootItem*>() << this);
     return QList<Message>();

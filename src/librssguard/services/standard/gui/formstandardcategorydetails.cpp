@@ -70,10 +70,10 @@ int FormStandardCategoryDetails::addEditCategory(StandardCategory* input_categor
 
     // Load parent from suggested item.
     if (parent_to_select != nullptr) {
-      if (parent_to_select->kind() == RootItemKind::Category) {
+      if (parent_to_select->kind() == RootItem::Kind::Category) {
         m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
       }
-      else if (parent_to_select->kind() == RootItemKind::Feed) {
+      else if (parent_to_select->kind() == RootItem::Kind::Feed) {
         int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select->parent()));
 
         if (target_item >= 0) {

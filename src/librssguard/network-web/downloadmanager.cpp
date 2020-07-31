@@ -135,17 +135,14 @@ QString DownloadItem::saveFileName(const QString& directory) const {
   QString path;
 
   if (m_reply->hasRawHeader("Content-Disposition")) {
-    const QString value = QLatin1String(m_reply->rawHeader("Content-Disposition"));
-    const int pos = value.indexOf(QL1S("filename="));
+    QString value = QLatin1String(m_reply->rawHeader("Content-Disposition"));
+    QRegularExpression exp(".*filename=?\"([^\"]+)\"?");
+    QRegularExpressionMatch match = exp.match(value);
 
-    if (pos != -1) {
-      QString name = value.mid(pos + 9);
+    if (match.isValid()) {
+      QString name = match.captured(1);
 
-      if (name.startsWith(QL1C('"')) && name.endsWith(QL1C('"'))) {
-        name = name.mid(1, name.size() - 2);
-      }
-
-      path = name;
+      path = QUrl::fromPercentEncoding(name.toLocal8Bit());
     }
   }
 
@@ -427,7 +424,7 @@ void DownloadItem::updateInfoAndUrlLabel() {
 
 DownloadManager::DownloadManager(QWidget* parent) : TabContent(parent), m_ui(new Ui::DownloadManager),
   m_autoSaver(new AutoSaver(this)), m_model(new DownloadModel(this)),
-  m_networkManager(new SilentNetworkAccessManager(this)), m_iconProvider(nullptr), m_removePolicy(Never) {
+  m_networkManager(new SilentNetworkAccessManager(this)), m_iconProvider(nullptr), m_removePolicy(RemovePolicy::Never) {
   m_ui->setupUi(this);
   m_ui->m_viewDownloads->setShowGrid(false);
   m_ui->m_viewDownloads->verticalHeader()->hide();
@@ -585,7 +582,7 @@ void DownloadManager::updateRow(DownloadItem* item) {
   // a) It is not downloading and private browsing is enabled.
   // OR
   // b) Item is already downloaded and it should be remove from downloader list.
-  bool remove = item->downloadedSuccessfully() && removePolicy() == DownloadManager::OnSuccessfullDownload;
+  bool remove = item->downloadedSuccessfully() && removePolicy() == RemovePolicy::OnSuccessfullDownload;
 
   if (remove) {
     m_model->removeRow(row);
@@ -608,7 +605,7 @@ void DownloadManager::setRemovePolicy(RemovePolicy policy) {
 }
 
 void DownloadManager::save() const {
-  if (m_removePolicy == OnExit) {
+  if (m_removePolicy == RemovePolicy::OnExit) {
     // No saving.
     return;
   }

@@ -57,6 +57,8 @@ Application::Application(const QString& id, int& argc, char** argv)
   // Setup debug output system.
   qInstallMessageHandler(Debugging::debugHandler);
 
+  determineFirstRuns();
+
   //: Abbreviation of language, e.g. en.
   //: Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code.
   //: Examples: "cs", "en", "it", "cs_CZ", "en_GB", "en_US".
@@ -129,7 +131,7 @@ void Application::showPolls() const {
 }
 
 void Application::offerChanges() const {
-  if (isFirstRun() || isFirstRun(APP_VERSION)) {
+  if (isFirstRunCurrentVersion()) {
     qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
                                                     "version by clicking this popup notification.").arg(APP_LONG_NAME),
                          QSystemTrayIcon::NoIcon, nullptr, false, [] {
@@ -159,17 +161,11 @@ QList<QAction*> Application::userActions() {
 }
 
 bool Application::isFirstRun() const {
-  return settings()->value(GROUP(General), SETTING(General::FirstRun)).toBool();
+  return m_firstRunEver;
 }
 
-bool Application::isFirstRun(const QString& version) const {
-  if (version == APP_VERSION) {
-    // Check this only if checked version is equal to actual version.
-    return settings()->value(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, true).toBool();
-  }
-  else {
-    return false;
-  }
+bool Application::isFirstRunCurrentVersion() const {
+  return m_firstRunCurrentVersion;
 }
 
 WebFactory* Application::web() const {
@@ -192,12 +188,9 @@ DatabaseFactory* Application::database() {
   return m_database;
 }
 
-void Application::eliminateFirstRun() {
+void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), General::FirstRun, false);
-}
-
-void Application::eliminateFirstRun(const QString& version) {
-  settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, false);
+  settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, false);
 }
 
 void Application::setFeedReader(FeedReader* feed_reader) {
@@ -253,7 +246,7 @@ QString Application::userDataAppFolder() {
 }
 
 QString Application::userDataFolder() {
-  if (settings()->type() == SettingsProperties::Portable) {
+  if (settings()->type() == SettingsProperties::SettingsType::Portable) {
     return userDataAppFolder();
   }
   else {
@@ -447,9 +440,6 @@ void Application::onAboutToQuit() {
 
   m_quitLogicDone = true;
 
-  eliminateFirstRun();
-  eliminateFirstRun(APP_VERSION);
-
 #if defined(USE_WEBENGINE)
   AdBlockManager::instance()->save();
 #endif
@@ -526,4 +516,14 @@ void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
     qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::MessageIcon::NoIcon,
                          nullptr, false);
   }
+}
+
+void Application::determineFirstRuns() {
+  m_firstRunEver = settings()->value(GROUP(General),
+                                     SETTING(General::FirstRun)).toBool();
+  m_firstRunCurrentVersion = settings()->value(GROUP(General),
+                                               QString(General::FirstRun) + QL1C('_') + APP_VERSION,
+                                               true).toBool();
+
+  eliminateFirstRuns();
 }

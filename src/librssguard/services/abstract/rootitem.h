@@ -14,24 +14,6 @@ class Feed;
 class ServiceRoot;
 class QAction;
 
-namespace RootItemKind {
-  // Describes the kind of the item.
-  enum Kind {
-    Root = 1,
-    Bin = 2,
-    Feed = 4,
-    Category = 8,
-    ServiceRoot = 16,
-    Labels = 32,
-    Important = 64
-  };
-
-  inline Kind operator|(Kind a, Kind b) {
-    return static_cast<Kind>(static_cast<int>(a) | static_cast<int>(b));
-  }
-
-}
-
 // Represents ROOT item of FeedsModel.
 // NOTE: This class is derived to add functionality for
 // all other non-root items of FeedsModel.
@@ -39,16 +21,27 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
   Q_OBJECT
 
   public:
-    enum ReadStatus {
+    enum class ReadStatus {
       Unread = 0,
       Read = 1
     };
 
     // Holds statuses for messages
     // to be switched importance (starred).
-    enum Importance {
+    enum class Importance {
       NotImportant = 0,
       Important = 1
+    };
+
+    // Describes the kind of the item.
+    enum class Kind {
+      Root = 1,
+      Bin = 2,
+      Feed = 4,
+      Category = 8,
+      ServiceRoot = 16,
+      Labels = 32,
+      Important = 64
     };
 
     // Constructors and destructors.
@@ -63,7 +56,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // Returns list of specific actions which can be done with the item.
     // Do not include general actions here like actions: Mark as read, Update, ...
     // NOTE: Ownership of returned actions is not switched to caller, free them when needed.
-    virtual QList<QAction*> contextMenu();
+    virtual QList<QAction*> contextMenuFeedsList();
 
     // Can properties of this item be edited?
     virtual bool canBeEdited() const;
@@ -159,7 +152,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // Returns flat list of all items from subtree where this item is a root.
     // Returned list includes this item too.
     QList<RootItem*> getSubTree() const;
-    QList<RootItem*> getSubTree(RootItemKind::Kind kind_of_item) const;
+    QList<RootItem*> getSubTree(RootItem::Kind kind_of_item) const;
     QList<Category*> getSubTreeCategories() const;
 
     // Returns list of categories complemented by their own integer primary ID.
@@ -172,8 +165,8 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // Returns the service root node which is direct or indirect parent of current item.
     ServiceRoot* getParentServiceRoot() const;
 
-    RootItemKind::Kind kind() const;
-    void setKind(RootItemKind::Kind kind);
+    RootItem::Kind kind() const;
+    void setKind(RootItem::Kind kind);
 
     // Each item can have icon.
     QIcon icon() const;
@@ -208,7 +201,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     void setKeepOnTop(bool keep_on_top);
 
   private:
-    RootItemKind::Kind m_kind;
+    RootItem::Kind m_kind;
     int m_id;
     QString m_customId;
     QString m_title;
@@ -219,6 +212,9 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     QList<RootItem*> m_childItems;
     RootItem* m_parentItem;
 };
+
+RootItem::Kind operator|(RootItem::Kind a, RootItem::Kind b);
+RootItem::Kind operator&(RootItem::Kind a, RootItem::Kind b);
 
 QDataStream& operator<<(QDataStream& out, const RootItem::Importance& myObj);
 QDataStream& operator>>(QDataStream& in, RootItem::Importance& myObj);

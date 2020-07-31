@@ -22,7 +22,7 @@
 #include <QMouseEvent>
 
 TreeWidget::TreeWidget(QWidget* parent)
-  : QTreeWidget(parent), m_refreshAllItemsNeeded(true), m_showMode(ItemsCollapsed) {
+  : QTreeWidget(parent), m_refreshAllItemsNeeded(true), m_showMode(ItemShowMode::ItemsCollapsed) {
   connect(this, SIGNAL(itemChanged(QTreeWidgetItem*,int)), this, SLOT(sheduleRefresh()));
 }
 
@@ -123,7 +123,7 @@ void TreeWidget::filterString(const QString& string) {
     parentItem->setHidden(false);
 
     if (stringIsEmpty) {
-      parentItem->setExpanded(m_showMode == ItemsExpanded);
+      parentItem->setExpanded(m_showMode == ItemShowMode::ItemsExpanded);
     }
     else {
       parentItem->setExpanded(true);

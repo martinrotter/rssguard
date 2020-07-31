@@ -2,6 +2,7 @@
 
 #include "core/feedsmodel.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
 #include "miscellaneous/databasefactory.h"
@@ -68,7 +69,7 @@ QMimeData* FeedsModel::mimeData(const QModelIndexList& indexes) const {
 
     RootItem* item_for_index = itemForIndex(index);
 
-    if (item_for_index->kind() != RootItemKind::Root) {
+    if (item_for_index->kind() != RootItem::Kind::Root) {
       stream << quintptr(item_for_index);
     }
   }
@@ -291,10 +292,10 @@ void FeedsModel::reassignNodeToNewParent(RootItem* original_node, RootItem* new_
 }
 
 QList<ServiceRoot*>FeedsModel::serviceRoots() const {
-  QList<ServiceRoot*>roots;
+  QList<ServiceRoot*> roots;
 
   for (RootItem* root : m_rootItem->childItems()) {
-    if (root->kind() == RootItemKind::ServiceRoot) {
+    if (root->kind() == RootItem::Kind::ServiceRoot) {
       roots.append(root->toServiceRoot());
     }
   }
@@ -303,13 +304,9 @@ QList<ServiceRoot*>FeedsModel::serviceRoots() const {
 }
 
 bool FeedsModel::containsServiceRootFromEntryPoint(const ServiceEntryPoint* point) const {
-  for (const ServiceRoot* root : serviceRoots()) {
-    if (root->code() == point->code()) {
-      return true;
-    }
-  }
-
-  return false;
+  return boolinq::from(serviceRoots()).any([=](ServiceRoot* root) {
+    return root->code() == point->code();
+  });
 }
 
 StandardServiceRoot* FeedsModel::standardServiceRoot() const {
@@ -329,12 +326,12 @@ QList<Feed*>FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
 
   for (Feed* feed : m_rootItem->getSubTreeFeeds()) {
     switch (feed->autoUpdateType()) {
-      case Feed::DontAutoUpdate:
+      case Feed::AutoUpdateType::DontAutoUpdate:
 
         // Do not auto-update this feed ever.
         continue;
 
-      case Feed::DefaultAutoUpdate:
+      case Feed::AutoUpdateType::DefaultAutoUpdate:
 
         if (auto_update_now) {
           feeds_for_update.append(feed);
@@ -342,7 +339,7 @@ QList<Feed*>FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
 
         break;
 
-      case Feed::SpecificAutoUpdate:
+      case Feed::AutoUpdateType::SpecificAutoUpdate:
       default:
         int remaining_interval = feed->autoUpdateRemainingInterval();
 
@@ -383,7 +380,7 @@ RootItem* FeedsModel::itemForIndex(const QModelIndex& index) const {
 }
 
 QModelIndex FeedsModel::indexForItem(const RootItem* item) const {
-  if (item == nullptr || item->kind() == RootItemKind::Root) {
+  if (item == nullptr || item->kind() == RootItem::Kind::Root) {
 
     // Root item lies on invalid index.
     return QModelIndex();
@@ -391,7 +388,7 @@ QModelIndex FeedsModel::indexForItem(const RootItem* item) const {
 
   QStack<const RootItem*> chain;
 
-  while (item->kind() != RootItemKind::Root) {
+  while (item->kind() != RootItem::Kind::Root) {
     chain.push(item);
     item = item->parent();
   }
@@ -412,13 +409,9 @@ QModelIndex FeedsModel::indexForItem(const RootItem* item) const {
 }
 
 bool FeedsModel::hasAnyFeedNewMessages() const {
-  for (const Feed* feed : m_rootItem->getSubTreeFeeds()) {
-    if (feed->status() == Feed::NewMessages) {
-      return true;
-    }
-  }
-
-  return false;
+  return boolinq::from(m_rootItem->getSubTreeFeeds()).any([](const Feed* feed) {
+    return feed->status() == Feed::Status::NewMessages;
+  });
 }
 
 RootItem* FeedsModel::rootItem() const {
@@ -545,9 +538,7 @@ void FeedsModel::loadActivatedServiceAccounts() {
   }
 
   if (serviceRoots().isEmpty()) {
-    QTimer::singleShot(3000,
-                       qApp->mainForm(),
-                       []() {
+    QTimer::singleShot(3000, qApp->mainForm(), []() {
       qApp->mainForm()->showAddAccountDialog();
     });
   }

@@ -28,7 +28,10 @@ class TreeWidget : public QTreeWidget {
   public:
     explicit TreeWidget(QWidget* parent = 0);
 
-    enum ItemShowMode { ItemsCollapsed = 0, ItemsExpanded = 1 };
+    enum class ItemShowMode {
+      ItemsCollapsed = 0,
+      ItemsExpanded = 1
+    };
 
     ItemShowMode defaultItemShowMode() {
       return m_showMode;
@@ -69,7 +72,6 @@ class TreeWidget : public QTreeWidget {
     void iterateAllItems(QTreeWidgetItem* parent);
 
     bool m_refreshAllItemsNeeded;
-
     QList<QTreeWidgetItem*> m_allTreeItems;
     ItemShowMode m_showMode;
 };

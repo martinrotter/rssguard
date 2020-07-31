@@ -120,6 +120,8 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
                                                                         headers);
   OwnCloudStatusResponse status_response(QString::fromUtf8(result_raw));
 
+  qDebugNN << "Raw status data is:" << result_raw;
+
   if (network_reply.first != QNetworkReply::NoError) {
     qWarning("Nextcloud: Obtaining status info failed with error %d.", network_reply.first);
   }
@@ -329,7 +331,7 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
   QJsonArray ids;
   QString final_url;
 
-  if (status == RootItem::Read) {
+  if (status == RootItem::ReadStatus::Read) {
     final_url = m_fixedUrl + OWNCLOUD_API_PATH + "items/read/multiple";
   }
   else {
@@ -375,7 +377,7 @@ void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance
   QJsonArray ids;
   QString final_url;
 
-  if (importance == RootItem::Important) {
+  if (importance == RootItem::Importance::Important) {
     final_url = m_fixedUrl + OWNCLOUD_API_PATH + "items/star/multiple";
   }
   else {

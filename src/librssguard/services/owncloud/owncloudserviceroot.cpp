@@ -17,12 +17,16 @@
 #include "services/owncloud/owncloudserviceentrypoint.h"
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem* parent)
-  : ServiceRoot(parent), m_actionSyncIn(nullptr), m_network(new OwnCloudNetworkFactory()) {
+  : ServiceRoot(parent), m_network(new OwnCloudNetworkFactory()) {
   setIcon(OwnCloudServiceEntryPoint().icon());
 }
 
 OwnCloudServiceRoot::~OwnCloudServiceRoot() {
   delete m_network;
+}
+
+bool OwnCloudServiceRoot::isSyncable() const {
+  return true;
 }
 
 bool OwnCloudServiceRoot::canBeEdited() const {
@@ -57,16 +61,6 @@ bool OwnCloudServiceRoot::supportsFeedAdding() const {
 
 bool OwnCloudServiceRoot::supportsCategoryAdding() const {
   return false;
-}
-
-QList<QAction*> OwnCloudServiceRoot::serviceMenu() {
-  if (m_serviceMenu.isEmpty()) {
-    m_actionSyncIn = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
-    connect(m_actionSyncIn, &QAction::triggered, this, &OwnCloudServiceRoot::syncIn);
-    m_serviceMenu.append(m_actionSyncIn);
-  }
-
-  return m_serviceMenu;
 }
 
 void OwnCloudServiceRoot::start(bool freshly_activated) {

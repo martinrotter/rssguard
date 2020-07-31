@@ -5,11 +5,12 @@
 
 #include "services/abstract/serviceroot.h"
 
+#include "services/standard/standardfeed.h"
+
 #include <QCoreApplication>
 #include <QPair>
 
 class StandardCategory;
-class StandardFeed;
 class FeedsImportExportModel;
 class QMenu;
 
@@ -58,12 +59,8 @@ class StandardServiceRoot : public ServiceRoot {
     QString processFeedUrl(const QString& feed_url);
     void checkArgumentsForFeedAdding();
 
-    QAction* m_actionExportFeeds;
-    QAction* m_actionImportFeeds;
-
-    QList<QAction*> m_serviceMenu;
-    QList<QAction*> m_feedContextMenu;
-    QAction* m_actionFeedFetchMetadata;
+    QPointer<StandardFeed> m_feedForMetadata = {};
+    QList<QAction*> m_feedContextMenu = {};
 };
 
 #endif // STANDARDSERVICEROOT_H

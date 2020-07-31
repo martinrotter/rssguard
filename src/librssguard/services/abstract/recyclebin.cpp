@@ -13,7 +13,7 @@
 
 RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCount(0),
   m_unreadCount(0) {
-  setKind(RootItemKind::Bin);
+  setKind(RootItem::Kind::Bin);
   setId(ID_RECYCLE_BIN);
   setIcon(qApp->icons()->fromTheme(QSL("user-trash")));
   setTitle(tr("Recycle bin"));
@@ -46,7 +46,7 @@ void RecycleBin::updateCounts(bool update_total_count) {
   }
 }
 
-QList<QAction*> RecycleBin::contextMenu() {
+QList<QAction*> RecycleBin::contextMenuFeedsList() {
   if (m_contextMenu.isEmpty()) {
     QAction* restore_action = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")),
                                           tr("Restore recycle bin"),
@@ -84,7 +84,7 @@ bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   if (DatabaseQueries::markBinReadUnread(database, parent_root->accountId(), status)) {
     updateCounts(false);
     parent_root->itemChanged(QList<RootItem*>() << this);
-    parent_root->requestReloadMessageList(status == RootItem::Read);
+    parent_root->requestReloadMessageList(status == RootItem::ReadStatus::Read);
     return true;
   }
   else {

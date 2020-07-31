@@ -312,7 +312,7 @@ void FormMain::updateRecycleBinMenu() {
       no_action->setEnabled(false);
       root_menu->addAction(no_action);
     }
-    else if ((context_menu = bin->contextMenu()).isEmpty()) {
+    else if ((context_menu = bin->contextMenuFeedsList()).isEmpty()) {
       QAction* no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
                                        tr("No actions possible"),
                                        m_ui->m_menuRecycleBin);
@@ -391,7 +391,7 @@ void FormMain::updateMessageButtonsAvailability() {
   const bool one_message_selected = tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().size() == 1;
   const bool atleast_one_message_selected = !tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().isEmpty();
   const bool bin_loaded = tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem() != nullptr
-                          && tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem()->kind() == RootItemKind::Bin;
+                          && tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem()->kind() == RootItem::Kind::Bin;
 
   m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
   m_ui->m_actionRestoreSelectedMessages->setEnabled(atleast_one_message_selected && bin_loaded);
@@ -408,9 +408,9 @@ void FormMain::updateFeedButtonsAvailability() {
   const bool critical_action_running = qApp->feedUpdateLock()->isLocked();
   const RootItem* selected_item = tabWidget()->feedMessageViewer()->feedsView()->selectedItem();
   const bool anything_selected = selected_item != nullptr;
-  const bool feed_selected = anything_selected && selected_item->kind() == RootItemKind::Feed;
-  const bool category_selected = anything_selected && selected_item->kind() == RootItemKind::Category;
-  const bool service_selected = anything_selected && selected_item->kind() == RootItemKind::ServiceRoot;
+  const bool feed_selected = anything_selected && selected_item->kind() == RootItem::Kind::Feed;
+  const bool category_selected = anything_selected && selected_item->kind() == RootItem::Kind::Category;
+  const bool service_selected = anything_selected && selected_item->kind() == RootItem::Kind::ServiceRoot;
 
   m_ui->m_actionStopRunningItemsUpdate->setEnabled(is_update_running);
   m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);

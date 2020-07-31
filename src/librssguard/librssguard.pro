@@ -109,6 +109,7 @@ HEADERS += core/feeddownloader.h \
            miscellaneous/simplecrypt/simplecrypt.h \
            miscellaneous/skinfactory.h \
            miscellaneous/systemfactory.h \
+           miscellaneous/templates.h \
            miscellaneous/textfactory.h \
            network-web/basenetworkaccessmanager.h \
            network-web/downloader.h \
@@ -416,6 +417,9 @@ else {
 # Add mimesis.
 SOURCES += $$files(3rd-party/mimesis/*.cpp, false)
 HEADERS  += $$files(3rd-party/mimesis/*.hpp, false)
+
+# Add boolinq.
+HEADERS  += $$files(3rd-party/boolinq/*.h, false)
 
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/gui \

@@ -18,7 +18,9 @@ void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_m
   m_cacheSaveMutex->lock();
 
   QList<Message>& list_act = m_cachedStatesImportant[importance];
-  QList<Message>& list_other = m_cachedStatesImportant[importance == RootItem::Important ? RootItem::NotImportant : RootItem::Important];
+  QList<Message>& list_other = m_cachedStatesImportant[importance == RootItem::Importance::Important
+                               ? RootItem::Importance::NotImportant
+                               : RootItem::Importance::Important];
 
   // Store changes, they will be sent to server later.
   list_act.append(ids_of_messages);
@@ -45,7 +47,9 @@ void CacheForServiceRoot::addMessageStatesToCache(const QStringList& ids_of_mess
   m_cacheSaveMutex->lock();
 
   QStringList& list_act = m_cachedStatesRead[read];
-  QStringList& list_other = m_cachedStatesRead[read == RootItem::Read ? RootItem::Unread : RootItem::Read];
+  QStringList& list_other = m_cachedStatesRead[read == RootItem::ReadStatus::Read
+                            ? RootItem::ReadStatus::Unread
+                            : RootItem::ReadStatus::Read];
 
   // Store changes, they will be sent to server later.
   list_act.append(ids_of_messages);
@@ -134,9 +138,11 @@ QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<
 
   // Make copy of changes.
   QMap<RootItem::ReadStatus, QStringList> cached_data_read = m_cachedStatesRead;
+
   cached_data_read.detach();
 
   QMap<RootItem::Importance, QList<Message>> cached_data_imp = m_cachedStatesImportant;
+
   cached_data_imp.detach();
 
   clearCache();

@@ -18,7 +18,7 @@ class Feed : public RootItem {
   public:
 
     // Specifies the auto-update strategy for the feed.
-    enum AutoUpdateType {
+    enum class AutoUpdateType {
       DontAutoUpdate = 0,
       DefaultAutoUpdate = 1,
       SpecificAutoUpdate = 2
@@ -27,7 +27,7 @@ class Feed : public RootItem {
     // Specifies the actual "status" of the feed.
     // For example if it has new messages, error
     // occurred, and so on.
-    enum Status {
+    enum class Status {
       Normal = 0,
       NewMessages = 1,
       NetworkError = 2,

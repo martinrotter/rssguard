@@ -111,7 +111,7 @@ bool MessagesModel::setMessageImportantById(int id, RootItem::Importance importa
     int found_id = data(i, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
 
     if (found_id == id) {
-      bool set = setData(index(i, MSG_DB_IMPORTANT_INDEX), important);
+      bool set = setData(index(i, MSG_DB_IMPORTANT_INDEX), int(important));
 
       if (set) {
         emit dataChanged(index(i, 0), index(i, MSG_DB_CUSTOM_HASH_INDEX));
@@ -212,6 +212,16 @@ void MessagesModel::setupHeaderData() {
 Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
   Q_UNUSED(index)
   return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemNeverHasChildren;
+}
+
+QList<Message> MessagesModel::messagesAt(QList<int> row_indices) const {
+  QList<Message> msgs;
+
+  for (int idx : row_indices) {
+    msgs << messageAt(idx);
+  }
+
+  return msgs;
 }
 
 QVariant MessagesModel::data(int row, int column, int role) const {
@@ -337,7 +347,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 }
 
 bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
-  if (data(row_index, MSG_DB_READ_INDEX, Qt::EditRole).toInt() == read) {
+  if (data(row_index, MSG_DB_READ_INDEX, Qt::EditRole).toInt() == int(read)) {
     // Read status is the same is the one currently set.
     // In that case, no extra work is needed.
     return true;
@@ -351,7 +361,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
   }
 
   // Rewrite "visible" data in the model.
-  bool working_change = setData(index(row_index, MSG_DB_READ_INDEX), read);
+  bool working_change = setData(index(row_index, MSG_DB_READ_INDEX), int(read));
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
@@ -372,7 +382,7 @@ bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
     int found_id = data(i, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
 
     if (found_id == id) {
-      bool set = setData(index(i, MSG_DB_READ_INDEX), read);
+      bool set = setData(index(i, MSG_DB_READ_INDEX), int(read));
 
       if (set) {
         emit dataChanged(index(i, 0), index(i, MSG_DB_CUSTOM_HASH_INDEX));
@@ -388,8 +398,9 @@ bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
 bool MessagesModel::switchMessageImportance(int row_index) {
   const QModelIndex target_index = index(row_index, MSG_DB_IMPORTANT_INDEX);
   const RootItem::Importance current_importance = (RootItem::Importance) data(target_index, Qt::EditRole).toInt();
-  const RootItem::Importance next_importance = current_importance == RootItem::Important ?
-                                               RootItem::NotImportant : RootItem::Important;
+  const RootItem::Importance next_importance = current_importance == RootItem::Importance::Important
+                                               ? RootItem::Importance::NotImportant
+                                               : RootItem::Importance::Important;
   const Message message = messageAt(row_index);
   const QPair<Message, RootItem::Importance> pair(message, next_importance);
 
@@ -399,7 +410,7 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   }
 
   // Rewrite "visible" data in the model.
-  const bool working_change = setData(target_index, next_importance);
+  const bool working_change = setData(target_index, int(next_importance));
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
@@ -429,15 +440,15 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
 
     RootItem::Importance message_importance = messageImportance((message.row()));
 
-    message_states.append(QPair<Message, RootItem::Importance>(msg, message_importance == RootItem::Important ?
-                                                               RootItem::NotImportant :
-                                                               RootItem::Important));
+    message_states.append(QPair<Message, RootItem::Importance>(msg, message_importance == RootItem::Importance::Important
+                                                               ? RootItem::Importance::NotImportant
+                                                               : RootItem::Importance::Important));
     message_ids.append(QString::number(msg.m_id));
     QModelIndex idx_msg_imp = index(message.row(), MSG_DB_IMPORTANT_INDEX);
 
-    setData(idx_msg_imp, message_importance == RootItem::Important ?
-            (int) RootItem::NotImportant :
-            (int) RootItem::Important);
+    setData(idx_msg_imp, message_importance == RootItem::Importance::Important
+            ? int(RootItem::Importance::NotImportant)
+            : int(RootItem::Importance::Important));
   }
 
   reloadWholeLayout();
@@ -481,7 +492,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
 
   bool deleted;
 
-  if (m_selectedItem->kind() != RootItemKind::Bin) {
+  if (m_selectedItem->kind() != RootItem::Kind::Bin) {
     deleted = DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, true);
   }
   else {
