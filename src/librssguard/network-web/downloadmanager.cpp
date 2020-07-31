@@ -135,17 +135,14 @@ QString DownloadItem::saveFileName(const QString& directory) const {
   QString path;
 
   if (m_reply->hasRawHeader("Content-Disposition")) {
-    const QString value = QLatin1String(m_reply->rawHeader("Content-Disposition"));
-    const int pos = value.indexOf(QL1S("filename="));
+    QString value = QLatin1String(m_reply->rawHeader("Content-Disposition"));
+    QRegularExpression exp(".*filename=?\"([^\"]+)\"?");
+    QRegularExpressionMatch match = exp.match(value);
 
-    if (pos != -1) {
-      QString name = value.mid(pos + 9);
+    if (match.isValid()) {
+      QString name = match.captured(1);
 
-      if (name.startsWith(QL1C('"')) && name.endsWith(QL1C('"'))) {
-        name = name.mid(1, name.size() - 2);
-      }
-
-      path = name;
+      path = QUrl::fromPercentEncoding(name.toLocal8Bit());
     }
   }
 
