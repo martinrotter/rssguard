@@ -70,7 +70,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
       }
 
       switch (child_item->kind()) {
-        case RootItemKind::Category: {
+        case RootItem::Kind::Category: {
           QDomElement outline_category = opml_document.createElement(QSL("outline"));
 
           outline_category.setAttribute(QSL("text"), child_item->title());
@@ -82,7 +82,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
           break;
         }
 
-        case RootItemKind::Feed: {
+        case RootItem::Kind::Feed: {
           auto* child_feed = dynamic_cast<StandardFeed*>(child_item);
           QDomElement outline_feed = opml_document.createElement("outline");
 
@@ -95,16 +95,16 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
           outline_feed.setAttribute(QSL("rssguard:icon"), QString(qApp->icons()->toByteArray(child_feed->icon())));
 
           switch (child_feed->type()) {
-            case StandardFeed::Rss0X:
-            case StandardFeed::Rss2X:
+            case StandardFeed::Type::Rss0X:
+            case StandardFeed::Type::Rss2X:
               outline_feed.setAttribute(QSL("version"), QSL("RSS"));
               break;
 
-            case StandardFeed::Rdf:
+            case StandardFeed::Type::Rdf:
               outline_feed.setAttribute(QSL("version"), QSL("RSS1"));
               break;
 
-            case StandardFeed::Atom10:
+            case StandardFeed::Type::Atom10:
               outline_feed.setAttribute(QSL("version"), QSL("ATOM"));
               break;
 
@@ -200,13 +200,13 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
               new_feed->setIcon(feed_icon);
 
               if (feed_type == QL1S("RSS1")) {
-                new_feed->setType(StandardFeed::Rdf);
+                new_feed->setType(StandardFeed::Type::Rdf);
               }
               else if (feed_type == QL1S("ATOM")) {
-                new_feed->setType(StandardFeed::Atom10);
+                new_feed->setType(StandardFeed::Type::Atom10);
               }
               else {
-                new_feed->setType(StandardFeed::Rss2X);
+                new_feed->setType(StandardFeed::Type::Rss2X);
               }
 
               active_model_item->appendChild(new_feed);

@@ -427,7 +427,7 @@ void DownloadItem::updateInfoAndUrlLabel() {
 
 DownloadManager::DownloadManager(QWidget* parent) : TabContent(parent), m_ui(new Ui::DownloadManager),
   m_autoSaver(new AutoSaver(this)), m_model(new DownloadModel(this)),
-  m_networkManager(new SilentNetworkAccessManager(this)), m_iconProvider(nullptr), m_removePolicy(Never) {
+  m_networkManager(new SilentNetworkAccessManager(this)), m_iconProvider(nullptr), m_removePolicy(RemovePolicy::Never) {
   m_ui->setupUi(this);
   m_ui->m_viewDownloads->setShowGrid(false);
   m_ui->m_viewDownloads->verticalHeader()->hide();
@@ -585,7 +585,7 @@ void DownloadManager::updateRow(DownloadItem* item) {
   // a) It is not downloading and private browsing is enabled.
   // OR
   // b) Item is already downloaded and it should be remove from downloader list.
-  bool remove = item->downloadedSuccessfully() && removePolicy() == DownloadManager::OnSuccessfullDownload;
+  bool remove = item->downloadedSuccessfully() && removePolicy() == RemovePolicy::OnSuccessfullDownload;
 
   if (remove) {
     m_model->removeRow(row);
@@ -608,7 +608,7 @@ void DownloadManager::setRemovePolicy(RemovePolicy policy) {
 }
 
 void DownloadManager::save() const {
-  if (m_removePolicy == OnExit) {
+  if (m_removePolicy == RemovePolicy::OnExit) {
     // No saving.
     return;
   }

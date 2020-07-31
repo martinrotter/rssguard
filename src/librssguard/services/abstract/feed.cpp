@@ -17,10 +17,10 @@
 #include <QThread>
 
 Feed::Feed(RootItem* parent)
-  : RootItem(parent), m_url(QString()), m_status(Normal), m_autoUpdateType(DefaultAutoUpdate),
+  : RootItem(parent), m_url(QString()), m_status(Status::Normal), m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate),
   m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
   m_messageFilters(QList<QPointer<MessageFilter>>()) {
-  setKind(RootItemKind::Feed);
+  setKind(RootItem::Kind::Feed);
 }
 
 Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
@@ -43,7 +43,7 @@ Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
 }
 
 Feed::Feed(const Feed& other) : RootItem(other) {
-  setKind(RootItemKind::Feed);
+  setKind(RootItem::Kind::Feed);
 
   setCountOfAllMessages(other.countOfAllMessages());
   setCountOfUnreadMessages(other.countOfUnreadMessages());
@@ -67,13 +67,13 @@ QVariant Feed::data(int column, int role) const {
   switch (role) {
     case Qt::ForegroundRole:
       switch (status()) {
-        case NewMessages:
+        case Status::NewMessages:
           return QColor(Qt::blue);
 
-        case NetworkError:
-        case ParsingError:
-        case AuthError:
-        case OtherError:
+        case Status::NetworkError:
+        case Status::ParsingError:
+        case Status::AuthError:
+        case Status::OtherError:
           return QColor(Qt::red);
 
         default:
@@ -102,8 +102,8 @@ void Feed::setCountOfAllMessages(int count_all_messages) {
 }
 
 void Feed::setCountOfUnreadMessages(int count_unread_messages) {
-  if (status() == NewMessages && count_unread_messages < countOfUnreadMessages()) {
-    setStatus(Normal);
+  if (status() == Status::NewMessages && count_unread_messages < countOfUnreadMessages()) {
+    setStatus(Status::Normal);
   }
 
   m_unreadCount = count_unread_messages;
@@ -209,7 +209,7 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
     }
 
     if (ok) {
-      setStatus(updated_messages > 0 ? NewMessages : Normal);
+      setStatus(updated_messages > 0 ? Status::NewMessages : Status::Normal);
       updateCounts(true);
 
       if (getParentServiceRoot()->recycleBin() != nullptr && anything_updated) {
@@ -238,13 +238,13 @@ QString Feed::getAutoUpdateStatusDescription() const {
   QString auto_update_string;
 
   switch (autoUpdateType()) {
-    case DontAutoUpdate:
+    case AutoUpdateType::DontAutoUpdate:
 
       //: Describes feed auto-update status.
       auto_update_string = tr("does not use auto-update");
       break;
 
-    case DefaultAutoUpdate:
+    case AutoUpdateType::DefaultAutoUpdate:
 
       //: Describes feed auto-update status.
       auto_update_string = qApp->feedReader()->autoUpdateEnabled()
@@ -254,7 +254,7 @@ QString Feed::getAutoUpdateStatusDescription() const {
               : tr("uses global settings (global feed auto-updating is disabled)");
       break;
 
-    case SpecificAutoUpdate:
+    case AutoUpdateType::SpecificAutoUpdate:
     default:
 
       //: Describes feed auto-update status.

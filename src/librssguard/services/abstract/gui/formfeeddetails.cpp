@@ -59,10 +59,10 @@ int FormFeedDetails::addEditFeed(Feed* input_feed, RootItem* parent_to_select, c
     }
 
     if (parent_to_select != nullptr) {
-      if (parent_to_select->kind() == RootItemKind::Category) {
+      if (parent_to_select->kind() == RootItem::Kind::Category) {
         m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
       }
-      else if (parent_to_select->kind() == RootItemKind::Feed) {
+      else if (parent_to_select->kind() == RootItem::Kind::Feed) {
         int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select->parent()));
 
         if (target_item >= 0) {
@@ -153,8 +153,8 @@ void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
   Feed::AutoUpdateType auto_update_type = static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
 
   switch (auto_update_type) {
-    case Feed::DontAutoUpdate:
-    case Feed::DefaultAutoUpdate:
+    case Feed::AutoUpdateType::DontAutoUpdate:
+    case Feed::AutoUpdateType::DefaultAutoUpdate:
       m_ui->m_spinAutoUpdateInterval->setEnabled(false);
       break;
 
@@ -315,10 +315,10 @@ void FormFeedDetails::initialize() {
   m_ui->m_txtPassword->lineEdit()->setToolTip(tr("Set password to access the feed."));
 
   // Add standard feed types.
-  m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Atom10), QVariant::fromValue((int) StandardFeed::Atom10));
-  m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Rdf), QVariant::fromValue((int) StandardFeed::Rdf));
-  m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Rss0X), QVariant::fromValue((int) StandardFeed::Rss0X));
-  m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Rss2X), QVariant::fromValue((int) StandardFeed::Rss2X));
+  m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Atom10), QVariant::fromValue(int(StandardFeed::Type::Atom10)));
+  m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rdf), QVariant::fromValue(int(StandardFeed::Type::Rdf)));
+  m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss0X), QVariant::fromValue(int(StandardFeed::Type::Rss0X)));
+  m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss2X), QVariant::fromValue(int(StandardFeed::Type::Rss2X)));
 
   // Load available encodings.
   const QList<QByteArray> encodings = QTextCodec::availableCodecs();
@@ -358,9 +358,12 @@ void FormFeedDetails::initialize() {
 
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update using global interval"), QVariant::fromValue((int) Feed::DefaultAutoUpdate));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update every"), QVariant::fromValue((int) Feed::SpecificAutoUpdate));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Do not auto-update at all"), QVariant::fromValue((int) Feed::DontAutoUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update using global interval"),
+                                     QVariant::fromValue(int(Feed::AutoUpdateType::DefaultAutoUpdate)));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update every"),
+                                     QVariant::fromValue(int(Feed::AutoUpdateType::SpecificAutoUpdate)));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Do not auto-update at all"),
+                                     QVariant::fromValue(int(Feed::AutoUpdateType::DontAutoUpdate)));
 
   // Set tab order.
   setTabOrder(m_ui->m_cmbParentCategory, m_ui->m_cmbType);

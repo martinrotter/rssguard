@@ -156,19 +156,19 @@ bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
 
 void WebBrowser::receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change) {
   switch (change) {
-    case WebPage::MarkRead:
+    case WebPage::MessageStatusChange::MarkRead:
       markMessageAsRead(message_id, true);
       break;
 
-    case WebPage::MarkUnread:
+    case WebPage::MessageStatusChange::MarkUnread:
       markMessageAsRead(message_id, false);
       break;
 
-    case WebPage::MarkStarred:
+    case WebPage::MessageStatusChange::MarkStarred:
       switchMessageImportance(message_id, true);
       break;
 
-    case WebPage::MarkUnstarred:
+    case WebPage::MessageStatusChange::MarkUnstarred:
       switchMessageImportance(message_id, false);
       break;
 
@@ -265,16 +265,18 @@ void WebBrowser::markMessageAsRead(int id, bool read) {
 
     if (msg != nullptr && m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                                   QList<Message>() << *msg,
-                                                                                  read ? RootItem::Read : RootItem::Unread)) {
+                                                                                  read
+                                                                                  ? RootItem::ReadStatus::Read
+                                                                                  : RootItem::ReadStatus::Unread)) {
       DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName()),
                                               QStringList() << QString::number(msg->m_id),
-                                              read ? RootItem::Read : RootItem::Unread);
+                                              read ? RootItem::ReadStatus::Read : RootItem::ReadStatus::Unread);
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
                                                              QList<Message>() << *msg,
-                                                             read ? RootItem::Read : RootItem::Unread);
-      emit markMessageRead(msg->m_id, read ? RootItem::Read : RootItem::Unread);
+                                                             read ? RootItem::ReadStatus::Read : RootItem::ReadStatus::Unread);
+      emit markMessageRead(msg->m_id, read ? RootItem::ReadStatus::Read : RootItem::ReadStatus::Unread);
 
-      msg->m_isRead = read ? RootItem::Read : RootItem::Unread;
+      msg->m_isRead = read;
     }
   }
 }
@@ -283,23 +285,24 @@ void WebBrowser::switchMessageImportance(int id, bool checked) {
   if (!m_root.isNull()) {
     Message* msg = findMessage(id);
 
-    if (msg != nullptr && m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
-                                                                                          QList<ImportanceChange>() <<
-                                                                                          ImportanceChange(*msg,
-                                                                                                           msg
-                                                                                                           ->m_isImportant ?
-                                                                                                           RootItem
-                                                                                                           ::NotImportant :
-                                                                                                           RootItem
-                                                                                                           ::Important))) {
+    if (msg != nullptr &&
+        m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
+                                                                        QList<ImportanceChange>()
+                                                                        << ImportanceChange(*msg,
+                                                                                            msg->m_isImportant
+                                                                                            ? RootItem::Importance::NotImportant
+                                                                                            : RootItem::Importance::Important))) {
       DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName()),
                                                 QStringList() << QString::number(msg->m_id));
       m_root->getParentServiceRoot()->onAfterSwitchMessageImportance(m_root.data(),
-                                                                     QList<ImportanceChange>() << ImportanceChange(*msg,
-                                                                                                                   msg->m_isImportant ?
-                                                                                                                   RootItem::NotImportant :
-                                                                                                                   RootItem::Important));
-      emit markMessageImportant(msg->m_id, msg->m_isImportant ? RootItem::NotImportant : RootItem::Important);
+                                                                     QList<ImportanceChange>()
+                                                                     << ImportanceChange(*msg,
+                                                                                         msg->m_isImportant ?
+                                                                                         RootItem::Importance::NotImportant :
+                                                                                         RootItem::Importance::Important));
+      emit markMessageImportant(msg->m_id, msg->m_isImportant
+                                ? RootItem::Importance::NotImportant
+                                : RootItem::Importance::Important);
 
       msg->m_isImportant = checked;
     }

@@ -44,7 +44,7 @@ void AccountCheckModel::setRootItem(RootItem* root_item, bool delete_previous_ro
 void AccountCheckModel::checkAllItems() {
   if (m_rootItem != nullptr) {
     for (RootItem* root_child : m_rootItem->childItems()) {
-      if (root_child->kind() == RootItemKind::Feed || root_child->kind() == RootItemKind::Category) {
+      if (root_child->kind() == RootItem::Kind::Feed || root_child->kind() == RootItem::Kind::Category) {
         setItemChecked(root_child, Qt::Checked);
       }
     }
@@ -54,7 +54,7 @@ void AccountCheckModel::checkAllItems() {
 void AccountCheckModel::uncheckAllItems() {
   if (m_rootItem != nullptr) {
     for (RootItem* root_child : m_rootItem->childItems()) {
-      if (root_child->kind() == RootItemKind::Feed || root_child->kind() == RootItemKind::Category) {
+      if (root_child->kind() == RootItem::Kind::Feed || root_child->kind() == RootItem::Kind::Category) {
         setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
       }
     }
@@ -78,7 +78,7 @@ QModelIndex AccountCheckModel::index(int row, int column, const QModelIndex& par
 }
 
 QModelIndex AccountCheckModel::indexForItem(RootItem* item) const {
-  if (item == nullptr || item->kind() == RootItemKind::ServiceRoot || item->kind() == RootItemKind::Root) {
+  if (item == nullptr || item->kind() == RootItem::Kind::ServiceRoot || item->kind() == RootItem::Kind::Root) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
@@ -107,7 +107,7 @@ QModelIndex AccountCheckModel::indexForItem(RootItem* item) const {
         for (int i = 0; i < row_count; i++) {
           RootItem* possible_category = active_item->child(i);
 
-          if (possible_category->kind() == RootItemKind::Category) {
+          if (possible_category->kind() == RootItem::Kind::Category) {
             parents << index(i, 0, active_index);
           }
         }
@@ -180,10 +180,10 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
   }
   else if (role == Qt::DisplayRole) {
     switch (item->kind()) {
-      case RootItemKind::Category:
+      case RootItem::Kind::Category:
         return QVariant(item->data(index.column(), role).toString() + QSL(" ") + tr("(category)"));
 
-      case RootItemKind::Feed:
+      case RootItem::Kind::Feed:
         return QVariant(item->data(index.column(), role).toString() + QSL(" ") + tr("(feed)"));
 
       default:
@@ -261,8 +261,8 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
 }
 
 Qt::ItemFlags AccountCheckModel::flags(const QModelIndex& index) const {
-  if (!index.isValid() || (itemForIndex(index)->kind() != RootItemKind::Kind::Category &&
-                           itemForIndex(index)->kind() != RootItemKind::Kind::Feed)) {
+  if (!index.isValid() || (itemForIndex(index)->kind() != RootItem::Kind::Category &&
+                           itemForIndex(index)->kind() != RootItem::Kind::Feed)) {
     return Qt::NoItemFlags;
   }
 

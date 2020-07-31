@@ -2,6 +2,7 @@
 
 #include "services/abstract/rootitem.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/category.h"
@@ -12,7 +13,7 @@
 #include <QVariant>
 
 RootItem::RootItem(RootItem* parent_item)
-  : QObject(nullptr), m_kind(RootItemKind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QL1S("")),
+  : QObject(nullptr), m_kind(RootItem::Kind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QL1S("")),
   m_title(QString()), m_description(QString()), m_keepOnTop(false), m_parentItem(parent_item) {}
 
 RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
@@ -36,7 +37,7 @@ QString RootItem::hashCode() const {
 
   return
     QString::number(acc_id) + QL1S("-") +
-    QString::number(kind()) + QL1S("-") +
+    QString::number(int(kind())) + QL1S("-") +
     QString::number(id());
 }
 
@@ -88,7 +89,7 @@ bool RootItem::cleanMessages(bool clear_only_read) {
   bool result = true;
 
   for (RootItem* child : m_childItems) {
-    if (child->kind() != RootItemKind::Bin) {
+    if (child->kind() != RootItem::Kind::Bin) {
       result &= child->cleanMessages(clear_only_read);
     }
   }
@@ -173,10 +174,10 @@ QVariant RootItem::data(int column, int role) const {
         QIcon ico = icon();
 
         if (ico.isNull()) {
-          if (kind() == RootItemKind::Feed) {
+          if (kind() == RootItem::Kind::Feed) {
             return qApp->icons()->fromTheme(QSL("application-rss+xml"));
           }
-          else if (kind() == RootItemKind::Category) {
+          else if (kind() == RootItem::Kind::Category) {
             return qApp->icons()->fromTheme(QSL("folder"));
           }
         }
@@ -210,27 +211,15 @@ bool RootItem::performDragDropChange(RootItem* target_item) {
 }
 
 int RootItem::countOfUnreadMessages() const {
-  int total_count = 0;
-
-  for (RootItem* child_item : m_childItems) {
-    if (child_item->kind() != RootItemKind::Kind::Important) {
-      total_count += child_item->countOfUnreadMessages();
-    }
-  }
-
-  return total_count;
+  return boolinq::from(m_childItems).sum([](RootItem* it) {
+    return it->kind() == RootItem::Kind::Important ? 0 : it->countOfUnreadMessages();
+  });
 }
 
 int RootItem::countOfAllMessages() const {
-  int total_count = 0;
-
-  for (RootItem* child_item : m_childItems) {
-    if (child_item->kind() != RootItemKind::Kind::Important) {
-      total_count += child_item->countOfAllMessages();
-    }
-  }
-
-  return total_count;
+  return boolinq::from(m_childItems).sum([](RootItem* it) {
+    return it->kind() == RootItem::Kind::Important ? 0 : it->countOfAllMessages();
+  });
 }
 
 bool RootItem::isChildOf(const RootItem* root) const {
@@ -240,7 +229,7 @@ bool RootItem::isChildOf(const RootItem* root) const {
 
   const RootItem* this_item = this;
 
-  while (this_item->kind() != RootItemKind::Root) {
+  while (this_item->kind() != RootItem::Kind::Root) {
     if (root->childItems().contains(const_cast<RootItem* const>(this_item))) {
       return true;
     }
@@ -278,7 +267,7 @@ QList<RootItem*> RootItem::getSubTree() const {
   return children;
 }
 
-QList<RootItem*> RootItem::getSubTree(RootItemKind::Kind kind_of_item) const {
+QList<RootItem*> RootItem::getSubTree(RootItem::Kind kind_of_item) const {
   QList<RootItem*> children;
   QList<RootItem*> traversable_items;
 
@@ -288,7 +277,7 @@ QList<RootItem*> RootItem::getSubTree(RootItemKind::Kind kind_of_item) const {
   while (!traversable_items.isEmpty()) {
     RootItem* active_item = traversable_items.takeFirst();
 
-    if ((active_item->kind() & kind_of_item) > 0) {
+    if (int(active_item->kind() & kind_of_item) > 0) {
       children.append(active_item);
     }
 
@@ -308,7 +297,7 @@ QList<Category*> RootItem::getSubTreeCategories() const {
   while (!traversable_items.isEmpty()) {
     RootItem* active_item = traversable_items.takeFirst();
 
-    if (active_item->kind() == RootItemKind::Category) {
+    if (active_item->kind() == RootItem::Kind::Category) {
       children.append(active_item->toCategory());
     }
 
@@ -328,7 +317,7 @@ QHash<int, Category*> RootItem::getHashedSubTreeCategories() const {
   while (!traversable_items.isEmpty()) {
     RootItem* active_item = traversable_items.takeFirst();
 
-    if (active_item->kind() == RootItemKind::Category && !children.contains(active_item->id())) {
+    if (active_item->kind() == RootItem::Kind::Category && !children.contains(active_item->id())) {
       children.insert(active_item->id(), active_item->toCategory());
     }
 
@@ -348,7 +337,7 @@ QHash<QString, Feed*> RootItem::getHashedSubTreeFeeds() const {
   while (!traversable_items.isEmpty()) {
     RootItem* active_item = traversable_items.takeFirst();
 
-    if (active_item->kind() == RootItemKind::Feed && !children.contains(active_item->customId())) {
+    if (active_item->kind() == RootItem::Kind::Feed && !children.contains(active_item->customId())) {
       children.insert(active_item->customId(), active_item->toFeed());
     }
 
@@ -368,7 +357,7 @@ QList<Feed*> RootItem::getSubTreeFeeds() const {
   while (!traversable_items.isEmpty()) {
     RootItem* active_item = traversable_items.takeFirst();
 
-    if (active_item->kind() == RootItemKind::Feed) {
+    if (active_item->kind() == RootItem::Kind::Feed) {
       children.append(active_item->toFeed());
     }
 
@@ -381,8 +370,8 @@ QList<Feed*> RootItem::getSubTreeFeeds() const {
 ServiceRoot* RootItem::getParentServiceRoot() const {
   const RootItem* working_parent = this;
 
-  while (working_parent->kind() != RootItemKind::Root) {
-    if (working_parent->kind() == RootItemKind::ServiceRoot) {
+  while (working_parent->kind() != RootItem::Kind::Root) {
+    if (working_parent->kind() == RootItem::Kind::ServiceRoot) {
       return working_parent->toServiceRoot();
     }
     else {
@@ -393,11 +382,11 @@ ServiceRoot* RootItem::getParentServiceRoot() const {
   return nullptr;
 }
 
-RootItemKind::Kind RootItem::kind() const {
+RootItem::Kind RootItem::kind() const {
   return m_kind;
 }
 
-void RootItem::setKind(RootItemKind::Kind kind) {
+void RootItem::setKind(RootItem::Kind kind) {
   m_kind = kind;
 }
 
@@ -517,4 +506,12 @@ QDataStream& operator<<(QDataStream& out, const RootItem::Importance& myObj) {
   out << (int)myObj;
 
   return out;
+}
+
+RootItem::Kind operator|(RootItem::Kind a, RootItem::Kind b) {
+  return static_cast<RootItem::Kind>(static_cast<int>(a) | static_cast<int>(b));
+}
+
+RootItem::Kind operator&(RootItem::Kind a, RootItem::Kind b) {
+  return static_cast<RootItem::Kind>(static_cast<int>(a) & static_cast<int>(b));
 }

@@ -86,12 +86,12 @@ class TtRssUnsubscribeFeedResponse : public TtRssResponse {
 };
 
 namespace UpdateArticle {
-  enum Mode {
+  enum class Mode {
     SetToFalse = 0,
     SetToTrue = 1,
     Togggle = 2
   };
-  enum OperatingField {
+  enum class OperatingField {
     Starred = 0,
     Published = 1,
     Unread = 2

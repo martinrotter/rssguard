@@ -37,7 +37,7 @@ void FormTtRssFeedDetails::apply() {
     RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(
                                                 m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
     auto* root = qobject_cast<TtRssServiceRoot*>(parent->getParentServiceRoot());
-    const int category_id = parent->kind() == RootItemKind::ServiceRoot ?
+    const int category_id = parent->kind() == RootItem::Kind::ServiceRoot ?
                             0 :
                             parent->customId().toInt();
     const TtRssSubscribeToFeedResponse response = root->network()->subscribeToFeed(m_ui->m_txtUrl->lineEdit()->text(),

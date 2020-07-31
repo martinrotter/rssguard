@@ -11,7 +11,7 @@
 #include <QThread>
 
 ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
-  setKind(RootItemKind::Important);
+  setKind(RootItem::Kind::Important);
   setId(ID_IMPORTANT);
   setIcon(qApp->icons()->fromTheme(QSL("mail-mark-important")));
   setTitle(tr("Important messages"));
@@ -67,7 +67,7 @@ bool ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
   if (DatabaseQueries::markImportantMessagesReadUnread(database, service->accountId(), status)) {
     service->updateCounts(true);
     service->itemChanged(getSubTree());
-    service->requestReloadMessageList(status == RootItem::Read);
+    service->requestReloadMessageList(status == RootItem::ReadStatus::Read);
     return true;
   }
   else {

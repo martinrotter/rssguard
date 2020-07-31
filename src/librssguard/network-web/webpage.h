@@ -11,7 +11,7 @@ class WebPage : public QWebEnginePage {
   Q_OBJECT
 
   public:
-    enum MessageStatusChange {
+    enum class MessageStatusChange {
       MarkRead,
       MarkUnread,
       MarkStarred,

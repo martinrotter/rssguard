@@ -127,8 +127,10 @@ void TtRssServiceRoot::saveAllCachedData(bool async) {
 
     if (!ids.isEmpty()) {
       network()->updateArticles(ids,
-                                UpdateArticle::Unread,
-                                key == RootItem::Unread ? UpdateArticle::SetToTrue : UpdateArticle::SetToFalse,
+                                UpdateArticle::OperatingField::Unread,
+                                key == RootItem::ReadStatus::Unread
+                                ? UpdateArticle::Mode::SetToTrue
+                                : UpdateArticle::Mode::SetToFalse,
                                 async);
     }
   }
@@ -145,8 +147,10 @@ void TtRssServiceRoot::saveAllCachedData(bool async) {
       QStringList ids = customIDsOfMessages(messages);
 
       network()->updateArticles(ids,
-                                UpdateArticle::Starred,
-                                key == RootItem::Important ? UpdateArticle::SetToTrue : UpdateArticle::SetToFalse,
+                                UpdateArticle::OperatingField::Starred,
+                                key == RootItem::Importance::Important
+                                ? UpdateArticle::Mode::SetToTrue
+                                : UpdateArticle::Mode::SetToFalse,
                                 async);
     }
   }

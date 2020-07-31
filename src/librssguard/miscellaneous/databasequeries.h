@@ -183,10 +183,10 @@ inline void DatabaseQueries::fillFeedData(StandardFeed* feed, const QSqlRecord& 
   StandardFeed::Type type = static_cast<StandardFeed::Type>(sql_record.value(FDS_DB_TYPE_INDEX).toInt());
 
   switch (type) {
-    case StandardFeed::Atom10:
-    case StandardFeed::Rdf:
-    case StandardFeed::Rss0X:
-    case StandardFeed::Rss2X: {
+    case StandardFeed::Type::Atom10:
+    case StandardFeed::Type::Rdf:
+    case StandardFeed::Type::Rss0X:
+    case StandardFeed::Type::Rss2X: {
       feed->setType(type);
       break;
     }

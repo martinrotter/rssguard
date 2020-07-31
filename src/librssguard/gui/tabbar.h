@@ -12,7 +12,7 @@ class TabBar : public QTabBar {
   Q_OBJECT
 
   public:
-    enum TabType {
+    enum class TabType {
       FeedReader = 1,
       DownloadManager = 2,
       NonClosable = 4,
@@ -20,15 +20,12 @@ class TabBar : public QTabBar {
     };
 
     // Constructors.
-    explicit TabBar(QWidget* parent = 0);
+    explicit TabBar(QWidget* parent = nullptr);
     virtual ~TabBar();
 
     // Getter/setter for tab type.
     void setTabType(int index, const TabBar::TabType& type);
-
-    inline TabBar::TabType tabType(int index) const {
-      return static_cast<TabBar::TabType>(tabData(index).toInt());
-    }
+    TabBar::TabType tabType(int index) const;
 
   private slots:
 
@@ -47,5 +44,14 @@ class TabBar : public QTabBar {
     // Emmited if empty space on tab bar is double clicked.
     void emptySpaceDoubleClicked();
 };
+
+inline TabBar::TabType TabBar::tabType(int index) const {
+  return static_cast<TabBar::TabType>(tabData(index).toInt());
+}
+
+TabBar::TabType operator| (TabBar::TabType a, TabBar::TabType b);
+TabBar::TabType operator& (TabBar::TabType a, TabBar::TabType b);
+TabBar::TabType& operator|= (TabBar::TabType& a, TabBar::TabType b);
+TabBar::TabType& operator&= (TabBar::TabType& a, TabBar::TabType b);
 
 #endif // TABBAR_H

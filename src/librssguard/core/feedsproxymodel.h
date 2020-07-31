@@ -48,7 +48,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     const RootItem* m_selectedItem;
     bool m_showUnreadOnly;
     QList<QPair<int, QModelIndex>> m_hiddenIndices;
-    QList<RootItemKind::Kind> m_priorities;
+    QList<RootItem::Kind> m_priorities;
 };
 
 #endif // FEEDSPROXYMODEL_H

@@ -73,10 +73,10 @@ bool StandardCategory::removeItself() {
   // Remove all child items (feeds and categories)
   // from the database.
   for (RootItem* child : childItems()) {
-    if (child->kind() == RootItemKind::Category) {
+    if (child->kind() == RootItem::Kind::Category) {
       children_removed &= dynamic_cast<StandardCategory*>(child)->removeItself();
     }
-    else if (child->kind() == RootItemKind::Feed) {
+    else if (child->kind() == RootItem::Kind::Feed) {
       children_removed &= dynamic_cast<StandardFeed*>(child)->removeItself();
     }
   }

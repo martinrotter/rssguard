@@ -16,7 +16,7 @@
 
 ServiceRoot::ServiceRoot(RootItem* parent)
   : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)), m_accountId(NO_PARENT_CATEGORY) {
-  setKind(RootItemKind::ServiceRoot);
+  setKind(RootItem::Kind::ServiceRoot);
   setCreationDate(QDateTime::currentDateTime());
 }
 
@@ -47,7 +47,7 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   if (DatabaseQueries::markAccountReadUnread(database, accountId(), status)) {
     updateCounts(false);
     itemChanged(getSubTree());
-    requestReloadMessageList(status == RootItem::Read);
+    requestReloadMessageList(status == RootItem::ReadStatus::Read);
     return true;
   }
   else {
@@ -101,10 +101,10 @@ void ServiceRoot::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
 
   for (RootItem* child : getSubTree()) {
-    if (child->kind() == RootItemKind::Feed) {
+    if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }
-    else if (child->kind() != RootItemKind::Category && child->kind() != RootItemKind::ServiceRoot) {
+    else if (child->kind() != RootItem::Kind::Category && child->kind() != RootItem::Kind::ServiceRoot) {
       child->updateCounts(including_total_count);
     }
   }
@@ -154,7 +154,7 @@ void ServiceRoot::removeOldAccountFromDatabase(bool including_messages) {
 
 void ServiceRoot::cleanAllItemsFromModel() {
   for (RootItem* top_level_item : childItems()) {
-    if (top_level_item->kind() != RootItemKind::Bin && top_level_item->kind() != RootItemKind::Important) {
+    if (top_level_item->kind() != RootItem::Kind::Bin && top_level_item->kind() != RootItem::Kind::Important) {
       requestItemRemoval(top_level_item);
     }
   }
@@ -279,7 +279,7 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     QVariantMap feed_custom_data;
 
     feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInitialInterval());
-    feed_custom_data.insert(QSL("auto_update_type"), feed->autoUpdateType());
+    feed_custom_data.insert(QSL("auto_update_type"), int(feed->autoUpdateType()));
     feed_custom_data.insert(QSL("msg_filters"), QVariant::fromValue(feed->messageFilters()));
     custom_data.insert(feed->customId(), feed_custom_data);
   }
@@ -366,7 +366,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
     QStringList list;
 
     switch (item->kind()) {
-      case RootItemKind::Category: {
+      case RootItem::Kind::Category: {
         for (RootItem* child : item->childItems()) {
           list.append(customIDSOfMessagesForItem(child));
         }
@@ -374,28 +374,28 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
         return list;
       }
 
-      case RootItemKind::ServiceRoot: {
+      case RootItem::Kind::ServiceRoot: {
         QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromAccount(database, accountId());
         break;
       }
 
-      case RootItemKind::Bin: {
+      case RootItem::Kind::Bin: {
         QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromBin(database, accountId());
         break;
       }
 
-      case RootItemKind::Feed: {
+      case RootItem::Kind::Feed: {
         QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->customId(), accountId());
         break;
       }
 
-      case RootItemKind::Important: {
+      case RootItem::Kind::Important: {
         QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfImportantMessages(database, accountId());
@@ -430,7 +430,7 @@ bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus r
     }
 
     itemChanged(itemss);
-    requestReloadMessageList(read == RootItem::Read);
+    requestReloadMessageList(read == RootItem::ReadStatus::Read);
     return true;
   }
   else {
@@ -491,11 +491,11 @@ void ServiceRoot::setAccountId(int account_id) {
 }
 
 bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
-  if (item->kind() == RootItemKind::Bin) {
+  if (item->kind() == RootItem::Kind::Bin) {
     model->setFilter(QString("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
                      .arg(QString::number(accountId())));
   }
-  else if (item->kind() == RootItemKind::Kind::Important) {
+  else if (item->kind() == RootItem::Kind::Important) {
     model->setFilter(QString("Messages.is_important = 1 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
                      .arg(QString::number(accountId())));
   }
@@ -569,7 +569,7 @@ bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, const
     QList<Message> mark_unstarred_msgs;
 
     for (const ImportanceChange& pair : changes) {
-      if (pair.second == RootItem::Important) {
+      if (pair.second == RootItem::Importance::Important) {
         mark_starred_msgs.append(pair.first);
       }
       else {
@@ -578,11 +578,11 @@ bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, const
     }
 
     if (!mark_starred_msgs.isEmpty()) {
-      cache->addMessageStatesToCache(mark_starred_msgs, RootItem::Important);
+      cache->addMessageStatesToCache(mark_starred_msgs, RootItem::Importance::Important);
     }
 
     if (!mark_unstarred_msgs.isEmpty()) {
-      cache->addMessageStatesToCache(mark_unstarred_msgs, RootItem::NotImportant);
+      cache->addMessageStatesToCache(mark_unstarred_msgs, RootItem::Importance::NotImportant);
     }
   }
 

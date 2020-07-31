@@ -94,7 +94,7 @@ class DownloadManager : public TabContent {
   friend class DownloadModel;
 
   public:
-    enum RemovePolicy {
+    enum class RemovePolicy {
       Never,
       OnExit,
       OnSuccessfullDownload

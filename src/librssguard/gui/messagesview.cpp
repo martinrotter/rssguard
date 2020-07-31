@@ -225,7 +225,7 @@ void MessagesView::initializeContextMenu() {
       << qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
 
   if (m_sourceModel->loadedItem() != nullptr) {
-    if (m_sourceModel->loadedItem()->kind() == RootItemKind::Bin) {
+    if (m_sourceModel->loadedItem()->kind() == RootItem::Kind::Bin) {
       m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessages);
     }
 
@@ -308,7 +308,7 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
 
     // Set this message as read only if current item
     // wasn't changed by "mark selected messages unread" action.
-    m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::Read);
+    m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
     message.m_isRead = true;
 
     emit currentMessageChanged(message, m_sourceModel->loadedItem());
@@ -389,11 +389,11 @@ void MessagesView::sendSelectedMessageViaEmail() {
 }
 
 void MessagesView::markSelectedMessagesRead() {
-  setSelectedMessagesReadStatus(RootItem::Read);
+  setSelectedMessagesReadStatus(RootItem::ReadStatus::Read);
 }
 
 void MessagesView::markSelectedMessagesUnread() {
-  setSelectedMessagesReadStatus(RootItem::Unread);
+  setSelectedMessagesReadStatus(RootItem::ReadStatus::Unread);
 }
 
 void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {

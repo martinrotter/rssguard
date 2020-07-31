@@ -33,7 +33,7 @@ StandardFeed::StandardFeed(RootItem* parent_item)
   m_username = QString();
   m_password = QString();
   m_networkError = QNetworkReply::NoError;
-  m_type = Rss0X;
+  m_type = Type::Rss0X;
   m_encoding = QString();
 }
 
@@ -94,16 +94,16 @@ bool StandardFeed::deleteViaGui() {
 
 QString StandardFeed::typeToString(StandardFeed::Type type) {
   switch (type) {
-    case Atom10:
+    case Type::Atom10:
       return QSL("ATOM 1.0");
 
-    case Rdf:
+    case Type::Rdf:
       return QSL("RDF (RSS 1.0)");
 
-    case Rss0X:
+    case Type::Rss0X:
       return QSL("RSS 0.91/0.92/0.93");
 
-    case Rss2X:
+    case Type::Rss2X:
     default:
       return QSL("RSS 2.0/2.0.1");
   }
@@ -218,7 +218,7 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
       // We found RDF feed.
       QDomElement channel_element = root_element.namedItem(QSL("channel")).toElement();
 
-      result.first->setType(Rdf);
+      result.first->setType(Type::Rdf);
       result.first->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
       result.first->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
       QString source_link = channel_element.namedItem(QSL("link")).toElement().text();
@@ -232,10 +232,10 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
       QString rss_type = root_element.attribute("version", "2.0");
 
       if (rss_type == QL1S("0.91") || rss_type == QL1S("0.92") || rss_type == QL1S("0.93")) {
-        result.first->setType(Rss0X);
+        result.first->setType(Type::Rss0X);
       }
       else {
-        result.first->setType(Rss2X);
+        result.first->setType(Type::Rss2X);
       }
 
       QDomElement channel_element = root_element.namedItem(QSL("channel")).toElement();
@@ -250,7 +250,7 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
     }
     else if (root_tag_name == QL1S("feed")) {
       // We found ATOM feed.
-      result.first->setType(Atom10);
+      result.first->setType(Type::Atom10);
       result.first->setTitle(root_element.namedItem(QSL("title")).toElement().text());
       result.first->setDescription(root_element.namedItem(QSL("subtitle")).toElement().text());
       QString source_link = root_element.namedItem(QSL("link")).toElement().text();
@@ -415,7 +415,7 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
 
   if (m_networkError != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
-    setStatus(NetworkError);
+    setStatus(Status::NetworkError);
     *error_during_obtaining = true;
     return QList<Message>();
   }
@@ -441,16 +441,16 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
   QList<Message> messages;
 
   switch (type()) {
-    case StandardFeed::Rss0X:
-    case StandardFeed::Rss2X:
+    case StandardFeed::Type::Rss0X:
+    case StandardFeed::Type::Rss2X:
       messages = RssParser(formatted_feed_contents).messages();
       break;
 
-    case StandardFeed::Rdf:
+    case StandardFeed::Type::Rdf:
       messages = RdfParser().parseXmlData(formatted_feed_contents);
       break;
 
-    case StandardFeed::Atom10:
+    case StandardFeed::Type::Atom10:
       messages = AtomParser(formatted_feed_contents).messages();
 
     default:

@@ -109,6 +109,7 @@ HEADERS += core/feeddownloader.h \
            miscellaneous/simplecrypt/simplecrypt.h \
            miscellaneous/skinfactory.h \
            miscellaneous/systemfactory.h \
+           miscellaneous/templates.h \
            miscellaneous/textfactory.h \
            network-web/basenetworkaccessmanager.h \
            network-web/downloader.h \

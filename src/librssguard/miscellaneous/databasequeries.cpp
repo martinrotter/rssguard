@@ -37,7 +37,7 @@ bool DatabaseQueries::markImportantMessagesReadUnread(const QSqlDatabase& db, in
   q.setForwardOnly(true);
   q.prepare("UPDATE Messages SET is_read = :read "
             "WHERE is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
-  q.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
+  q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
   q.bindValue(QSL(":account_id"), account_id);
   return q.exec();
 }
@@ -47,7 +47,7 @@ bool DatabaseQueries::markMessagesReadUnread(const QSqlDatabase& db, const QStri
 
   q.setForwardOnly(true);
   return q.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);"))
-                .arg(ids.join(QSL(", ")), read == RootItem::Read ? QSL("1") : QSL("0")));
+                .arg(ids.join(QSL(", ")), read == RootItem::ReadStatus::Read ? QSL("1") : QSL("0")));
 }
 
 bool DatabaseQueries::markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance) {
@@ -73,7 +73,7 @@ bool DatabaseQueries::markFeedsReadUnread(const QSqlDatabase& db, const QStringL
   q.setForwardOnly(true);
   q.prepare(QString("UPDATE Messages SET is_read = :read "
                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;").arg(ids.join(QSL(", "))));
-  q.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
+  q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
   q.bindValue(QSL(":account_id"), account_id);
   return q.exec();
 }
@@ -84,7 +84,7 @@ bool DatabaseQueries::markBinReadUnread(const QSqlDatabase& db, int account_id, 
   q.setForwardOnly(true);
   q.prepare("UPDATE Messages SET is_read = :read "
             "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
-  q.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
+  q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
   q.bindValue(QSL(":account_id"), account_id);
   return q.exec();
 }
@@ -95,7 +95,7 @@ bool DatabaseQueries::markAccountReadUnread(const QSqlDatabase& db, int account_
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages SET is_read = :read WHERE is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
+  q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
   return q.exec();
 }
 
@@ -915,7 +915,7 @@ bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
 
   // Iterate all children.
   for (RootItem* child : tree_root->getSubTree()) {
-    if (child->kind() == RootItemKind::Category) {
+    if (child->kind() == RootItem::Kind::Category) {
       query_category.bindValue(QSL(":parent_id"), child->parent()->id());
       query_category.bindValue(QSL(":title"), child->title());
       query_category.bindValue(QSL(":account_id"), account_id);
@@ -928,7 +928,7 @@ bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
         return false;
       }
     }
-    else if (child->kind() == RootItemKind::Feed) {
+    else if (child->kind() == RootItem::Kind::Feed) {
       Feed* feed = child->toFeed();
 
       query_feed.bindValue(QSL(":title"), feed->title());
@@ -1400,7 +1400,7 @@ bool DatabaseQueries::editStandardFeed(const QSqlDatabase& db, int parent_id, in
 
   q.bindValue(QSL(":update_type"), int(auto_update_type));
   q.bindValue(QSL(":update_interval"), auto_update_interval);
-  q.bindValue(QSL(":type"), feed_format);
+  q.bindValue(QSL(":type"), int(feed_format));
   q.bindValue(QSL(":id"), feed_id);
 
   bool suc = q.exec();

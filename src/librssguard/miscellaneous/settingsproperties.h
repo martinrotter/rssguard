@@ -7,10 +7,11 @@
 
 // Describes characteristics of settings.
 struct SettingsProperties {
-  enum SettingsType {
+  enum class SettingsType {
     Portable,
     NonPortable
   };
+
   SettingsType m_type;
   QString m_baseDirectory;
   QString m_settingsSuffix;

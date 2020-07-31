@@ -146,10 +146,6 @@ void FormAddEditEmail::addRecipientRow(const QString& recipient) {
   m_ui.m_layout->insertRow(m_ui.m_layout->count() - 5, mail_rec);
 }
 
-void FormAddEditEmail::closeEvent(QCloseEvent* event) {
-  // event->ignore();
-}
-
 QList<EmailRecipientControl*> FormAddEditEmail::recipientControls() const {
   QList<EmailRecipientControl*> list;
 

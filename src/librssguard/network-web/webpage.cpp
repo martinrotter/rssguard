@@ -27,16 +27,16 @@ void WebPage::javaScriptAlert(const QUrl& securityOrigin, const QString& msg) {
     const QString& action = parts.at(1);
 
     if (action == QSL("read")) {
-      emit messageStatusChangeRequested(message_id, MarkRead);
+      emit messageStatusChangeRequested(message_id, MessageStatusChange::MarkRead);
     }
     else if (action == QSL("unread")) {
-      emit messageStatusChangeRequested(message_id, MarkUnread);
+      emit messageStatusChangeRequested(message_id, MessageStatusChange::MarkUnread);
     }
     else if (action == QSL("starred")) {
-      emit messageStatusChangeRequested(message_id, MarkStarred);
+      emit messageStatusChangeRequested(message_id, MessageStatusChange::MarkStarred);
     }
     else if (action == QSL("unstarred")) {
-      emit messageStatusChangeRequested(message_id, MarkUnstarred);
+      emit messageStatusChangeRequested(message_id, MessageStatusChange::MarkUnstarred);
     }
     else {
       QWebEnginePage::javaScriptAlert(securityOrigin, msg);

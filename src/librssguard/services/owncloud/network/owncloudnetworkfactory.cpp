@@ -331,7 +331,7 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
   QJsonArray ids;
   QString final_url;
 
-  if (status == RootItem::Read) {
+  if (status == RootItem::ReadStatus::Read) {
     final_url = m_fixedUrl + OWNCLOUD_API_PATH + "items/read/multiple";
   }
   else {
@@ -377,7 +377,7 @@ void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance
   QJsonArray ids;
   QString final_url;
 
-  if (importance == RootItem::Important) {
+  if (importance == RootItem::Importance::Important) {
     final_url = m_fixedUrl + OWNCLOUD_API_PATH + "items/star/multiple";
   }
   else {

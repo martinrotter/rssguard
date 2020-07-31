@@ -95,7 +95,7 @@ void FeedsView::saveAllExpandStates() {
 
 void FeedsView::saveExpandStates(RootItem* item) {
   Settings* settings = qApp->settings();
-  QList<RootItem*> items = item->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot);
+  QList<RootItem*> items = item->getSubTree(RootItem::Kind::Category | RootItem::Kind::ServiceRoot);
 
   // Iterate all categories and save their expand statuses.
   for (const RootItem* it : items) {
@@ -113,7 +113,7 @@ void FeedsView::loadAllExpandStates() {
   const Settings* settings = qApp->settings();
   QList<RootItem*> expandable_items;
 
-  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot));
+  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItem::Kind::Category | RootItem::Kind::ServiceRoot));
 
   // Iterate all categories and save their expand statuses.
   for (const RootItem* item : expandable_items) {
@@ -305,11 +305,11 @@ void FeedsView::markSelectedItemReadStatus(RootItem::ReadStatus read) {
 }
 
 void FeedsView::markSelectedItemRead() {
-  markSelectedItemReadStatus(RootItem::Read);
+  markSelectedItemReadStatus(RootItem::ReadStatus::Read);
 }
 
 void FeedsView::markSelectedItemUnread() {
-  markSelectedItemReadStatus(RootItem::Unread);
+  markSelectedItemReadStatus(RootItem::ReadStatus::Unread);
 }
 
 void FeedsView::markAllItemsReadStatus(RootItem::ReadStatus read) {
@@ -317,7 +317,7 @@ void FeedsView::markAllItemsReadStatus(RootItem::ReadStatus read) {
 }
 
 void FeedsView::markAllItemsRead() {
-  markAllItemsReadStatus(RootItem::Read);
+  markAllItemsReadStatus(RootItem::ReadStatus::Read);
 }
 
 void FeedsView::openSelectedItemsInNewspaperMode() {
@@ -660,21 +660,21 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
     const QModelIndex mapped_index = model()->mapToSource(clicked_index);
     RootItem* clicked_item = sourceModel()->itemForIndex(mapped_index);
 
-    if (clicked_item->kind() == RootItemKind::Category) {
+    if (clicked_item->kind() == RootItem::Kind::Category) {
       // Display context menu for categories.
       initializeContextMenuCategories(clicked_item)->exec(event->globalPos());
     }
-    else if (clicked_item->kind() == RootItemKind::Feed) {
+    else if (clicked_item->kind() == RootItem::Kind::Feed) {
       // Display context menu for feeds.
       initializeContextMenuFeeds(clicked_item)->exec(event->globalPos());
     }
-    else if (clicked_item->kind() == RootItemKind::Important) {
+    else if (clicked_item->kind() == RootItem::Kind::Important) {
       initializeContextMenuImportant(clicked_item)->exec(event->globalPos());
     }
-    else if (clicked_item->kind() == RootItemKind::Bin) {
+    else if (clicked_item->kind() == RootItem::Kind::Bin) {
       initializeContextMenuBin(clicked_item)->exec(event->globalPos());
     }
-    else if (clicked_item->kind() == RootItemKind::ServiceRoot) {
+    else if (clicked_item->kind() == RootItem::Kind::ServiceRoot) {
       initializeContextMenuService(clicked_item)->exec(event->globalPos());
     }
     else {
@@ -693,7 +693,7 @@ void FeedsView::mouseDoubleClickEvent(QMouseEvent* event) {
   if (idx.isValid()) {
     RootItem* item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
 
-    if (item->kind() == RootItemKind::Feed || item->kind() == RootItemKind::Bin) {
+    if (item->kind() == RootItem::Kind::Feed || item->kind() == RootItem::Kind::Bin) {
       const QList<Message> messages = m_sourceModel->messagesForItem(item);
 
       if (!messages.isEmpty()) {

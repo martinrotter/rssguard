@@ -270,7 +270,7 @@ DVALUE(QString) Downloads::TargetDirectoryDef = IOFactory::getSystemFolder(QStan
 
 DKEY Downloads::RemovePolicy = "remove_policy";
 
-DVALUE(int) Downloads::RemovePolicyDef = DownloadManager::Never;
+DVALUE(int) Downloads::RemovePolicyDef = int(DownloadManager::RemovePolicy::Never);
 
 DKEY Downloads::TargetExplicitDirectory = "target_explicit_directory";
 
@@ -436,7 +436,7 @@ Settings* Settings::setupSettings(QObject* parent) {
   new_settings = new Settings(properties.m_absoluteSettingsFileName, QSettings::IniFormat, properties.m_type, parent);
 
   // Check if portable settings are available.
-  if (properties.m_type == SettingsProperties::Portable) {
+  if (properties.m_type == SettingsProperties::SettingsType::Portable) {
     qDebug("Initializing settings in '%s' (portable way).", qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
   }
   else {
@@ -468,11 +468,11 @@ SettingsProperties Settings::determineProperties() {
 #endif
 
   if (will_we_use_portable_settings) {
-    properties.m_type = SettingsProperties::Portable;
+    properties.m_type = SettingsProperties::SettingsType::Portable;
     properties.m_baseDirectory = app_path;
   }
   else {
-    properties.m_type = SettingsProperties::NonPortable;
+    properties.m_type = SettingsProperties::SettingsType::NonPortable;
     properties.m_baseDirectory = home_path;
   }
 

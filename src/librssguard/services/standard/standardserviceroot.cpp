@@ -40,7 +40,7 @@ StandardServiceRoot::~StandardServiceRoot() {
 void StandardServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
 
-  if (freshly_activated && getSubTree(RootItemKind::Feed).isEmpty()) {
+  if (freshly_activated && getSubTree(RootItem::Kind::Feed).isEmpty()) {
     // In other words, if there are no feeds or categories added.
     if (MessageBox::show(qApp->mainFormWidget(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
                          tr("This new account does not include any feeds. You can now add default set of feeds."),
@@ -211,7 +211,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
         continue;
       }
 
-      if (source_item->kind() == RootItemKind::Category) {
+      if (source_item->kind() == RootItem::Kind::Category) {
         auto* source_category = dynamic_cast<StandardCategory*>(source_item);
         auto* new_category = new StandardCategory(*source_category);
         QString new_category_title = new_category->title();
@@ -235,7 +235,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
           RootItem* existing_category = nullptr;
 
           for (RootItem* child : target_parent->childItems()) {
-            if (child->kind() == RootItemKind::Category && child->title() == new_category_title) {
+            if (child->kind() == RootItem::Kind::Category && child->title() == new_category_title) {
               existing_category = child;
             }
           }
@@ -249,7 +249,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
           }
         }
       }
-      else if (source_item->kind() == RootItemKind::Feed) {
+      else if (source_item->kind() == RootItem::Kind::Feed) {
         auto* source_feed = dynamic_cast<StandardFeed*>(source_item);
         auto* new_feed = new StandardFeed(*source_feed);
 

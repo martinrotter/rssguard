@@ -55,7 +55,6 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     bool isAlreadyRunning();
 
     FeedReader* feedReader();
-
     void setFeedReader(FeedReader* feed_reader);
 
     // Globally accessible actions.
@@ -64,8 +63,8 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     // Check whether this application starts for the first time (ever).
     bool isFirstRun() const;
 
-    // Check whether GIVEN VERSION of the application starts for the first time.
-    bool isFirstRun(const QString& version) const;
+    // Check whether CURRENT VERSION of the application starts for the first time.
+    bool isFirstRunCurrentVersion() const;
 
     WebFactory* web() const;
     SystemFactory* system();
@@ -139,8 +138,8 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     void onFeedUpdatesFinished(const FeedDownloadResults& results);
 
   private:
-    void eliminateFirstRun();
-    void eliminateFirstRun(const QString& version);
+    void determineFirstRuns();
+    void eliminateFirstRuns();
 
 #if defined(USE_WEBENGINE)
     NetworkUrlInterceptor* m_urlInterceptor;
@@ -176,6 +175,8 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     DatabaseFactory* m_database;
     DownloadManager* m_downloadManager;
     bool m_shouldRestart;
+    bool m_firstRunEver;
+    bool m_firstRunCurrentVersion;
 };
 
 inline Application* Application::instance() {
