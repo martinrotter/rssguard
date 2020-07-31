@@ -258,11 +258,21 @@ void FormMessageFiltersManager::showFilter(MessageFilter* filter) {
     m_ui.m_txtTitle->clear();
     m_ui.m_txtScript->clear();
     m_ui.m_gbDetails->setEnabled(false);
+
+    m_ui.m_treeFeeds->setEnabled(false);
+    m_ui.m_btnCheckAll->setEnabled(false);
+    m_ui.m_btnUncheckAll->setEnabled(false);
+    m_ui.m_cmbAccounts->setEnabled(false);
   }
   else {
     m_ui.m_txtTitle->setText(filter->name());
     m_ui.m_txtScript->setPlainText(filter->script());
     m_ui.m_gbDetails->setEnabled(true);
+
+    m_ui.m_treeFeeds->setEnabled(true);
+    m_ui.m_btnCheckAll->setEnabled(true);
+    m_ui.m_btnUncheckAll->setEnabled(true);
+    m_ui.m_cmbAccounts->setEnabled(true);
   }
 
   // See message.
