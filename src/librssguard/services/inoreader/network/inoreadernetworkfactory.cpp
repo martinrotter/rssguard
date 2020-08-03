@@ -254,7 +254,6 @@ void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importanc
 
     // We send this batch.
     if (async) {
-
       NetworkFactory::performAsyncNetworkOperation(batch_final_url,
                                                    timeout,
                                                    QByteArray(),

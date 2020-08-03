@@ -53,16 +53,17 @@ class Message {
     // Is true if "created" date was obtained directly
     // from the feed, otherwise is false
     bool m_createdFromFeed = false;
-
-    friend inline bool operator==(const Message& lhs, const Message& rhs) {
-      return lhs.m_accountId == rhs.m_accountId && lhs.m_id == rhs.m_id;
-    }
-
-    friend inline bool operator!=(const Message& lhs, const Message& rhs) {
-      return !(lhs == rhs);
-    }
-
 };
+
+inline bool operator==(const Message& lhs, const Message& rhs) {
+  return lhs.m_accountId == rhs.m_accountId &&
+         ((lhs.m_id > 0 && rhs.m_id > 0 && lhs.m_id == rhs.m_id) ||
+          (!lhs.m_customId.isEmpty() && !rhs.m_customId.isEmpty() && lhs.m_customId == rhs.m_customId));
+}
+
+inline bool operator!=(const Message& lhs, const Message& rhs) {
+  return !(lhs == rhs);
+}
 
 // Serialize message state.
 // NOTE: This is used for persistent caching of message state changes.

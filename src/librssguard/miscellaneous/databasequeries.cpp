@@ -526,9 +526,6 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   }
 
   bool use_transactions = qApp->settings()->value(GROUP(Database), SETTING(Database::UseTransactions)).toBool();
-
-  // Does not make any difference, since each feed now has
-  // its own "custom ID" (standard feeds have their custom ID equal to primary key ID).
   int updated_messages = 0;
 
   // Prepare queries.
