@@ -739,6 +739,10 @@ att funktionen inte är implementerad än.</translation>
         <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
         <translation>GNU GPL Licens (gäller RSS Guard och mimesis källkod)</translation>
     </message>
+    <message>
+        <source>MIT License (applies to boolinq source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1280,10 +1284,6 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation>Redigera befintligt NextCloud News-konto</translation>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>Den valda NextCloud News-servern kör en version (%1) som inte stöds. Lägst version %2 är ett krav.</translation>
-    </message>
-    <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
         <translation>Den valda NextCloud News-servern kör en version som inte stöds.</translation>
     </message>
@@ -1298,6 +1298,10 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
         <translation>Nätverksfel! Har du angett korrekt NextCloud-slutpunkt och lösenord?</translation>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2148,7 +2152,7 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Visa trädgrenar</translation>
     </message>
 </context>
 <context>
@@ -2884,16 +2888,12 @@ Du kan installera det nu.</translation>
         <translation>Gmail: Autentisering nekades</translation>
     </message>
     <message>
-        <source>you aren&apos;t logged in</source>
-        <translation>Du är inte inloggad</translation>
+        <source>you are not logged in</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>not logged-in</source>
-        <translation>Inte inloggad</translation>
-    </message>
-    <message>
-        <source>comm error when asking for recipients</source>
-        <translation>comm-fel när mottagare efterfrågas</translation>
+        <source>failed to get metadata</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2935,6 +2935,10 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>Write new e-mail message</source>
         <translation>Skriv nytt e-postmeddelande</translation>
+    </message>
+    <message>
+        <source>Reply to this message</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2988,10 +2992,6 @@ Inloggningstoken upphör: %2</translation>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Synka i</translation>
-    </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
@@ -3419,9 +3419,6 @@ Inloggningstoken upphör: %2</translation>
         <source>To login, you need to navigate to this website:</source>
         <translation>Du måste gå till denna webbsida för att logga in:</translation>
     </message>
-</context>
-<context>
-    <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
         <translation>Du kan stänga det här fönstret nu. Gå tillbaka till %1</translation>
@@ -3429,10 +3426,6 @@ Inloggningstoken upphör: %2</translation>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Synka i</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>Kan inte lägga till objekt</translation>
@@ -3579,6 +3572,13 @@ genom att klicka på denna popup-avisering.</translation>
     <message>
         <source>Find next occurence</source>
         <translation>Sök nästa förekomst</translation>
+    </message>
+</context>
+<context>
+    <name>ServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation>Synka i</translation>
     </message>
 </context>
 <context>
@@ -4519,10 +4519,6 @@ Olästa nyheter: %2</translation>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Synka i</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>Kan inte lägga till objekt</translation>

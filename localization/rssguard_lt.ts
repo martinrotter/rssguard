@@ -739,6 +739,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>MIT License (applies to boolinq source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1278,10 +1282,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
         <translation type="unfinished"/>
     </message>
@@ -1295,6 +1295,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2875,15 +2879,11 @@ Jūs dabar galite jį įdiegti.</translation>
         <translation>Gmail: prieigos teisių suteikimas atmestas</translation>
     </message>
     <message>
-        <source>you aren&apos;t logged in</source>
+        <source>you are not logged in</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>not logged-in</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>comm error when asking for recipients</source>
+        <source>failed to get metadata</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2926,6 +2926,10 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <source>Write new e-mail message</source>
         <translation>Rašyti naują el. pašto žinutę</translation>
+    </message>
+    <message>
+        <source>Reply to this message</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2979,10 +2983,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Sinchronizuoti</translation>
-    </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
@@ -3410,9 +3410,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <source>To login, you need to navigate to this website:</source>
         <translation type="unfinished"/>
     </message>
-</context>
-<context>
-    <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
         <translation>Dabar, galite užverti šį langą. Grįžkite į %1</translation>
@@ -3420,10 +3417,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Sinchronizuoti</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>Nepavyksta pridėti elemento</translation>
@@ -3574,6 +3567,13 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     <message>
         <source>Find next occurence</source>
         <translation>Rasti kitą atitikmenį</translation>
+    </message>
+</context>
+<context>
+    <name>ServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation>Sinchronizuoti</translation>
     </message>
 </context>
 <context>
@@ -4513,10 +4513,6 @@ Neskaitytų naujienų: %2</translation>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Sinchronizuoti </translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>Nepavyksta pridėti elemento </translation>

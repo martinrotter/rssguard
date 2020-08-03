@@ -275,7 +275,7 @@
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Неизвестная ошибка: &apos;%1&apos;.</translation>
     </message>
 </context>
 <context>
@@ -736,6 +736,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>MIT License (applies to boolinq source code)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1277,10 +1281,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
         <translation type="unfinished"/>
     </message>
@@ -1294,6 +1294,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2141,7 +2145,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Message &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>Фильтры сообщений (&amp;F)</translation>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
@@ -2152,31 +2156,31 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <name>FormMessageFiltersManager</name>
     <message>
         <source>Message filters</source>
-        <translation type="unfinished"/>
+        <translation>Фильтры сообщений</translation>
     </message>
     <message>
         <source>Remove selected</source>
-        <translation type="unfinished"/>
+        <translation>Удалить выбранное</translation>
     </message>
     <message>
         <source>Add new</source>
-        <translation type="unfinished"/>
+        <translation>Добавить новый</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Аккаунт</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
-        <translation type="unfinished"/>
+        <translation>Все (&amp;C)</translation>
     </message>
     <message>
         <source>&amp;Uncheck all</source>
-        <translation type="unfinished"/>
+        <translation>Ничего (&amp;U)</translation>
     </message>
     <message>
         <source>Message filter details</source>
-        <translation type="unfinished"/>
+        <translation>Параметры фильтра сообщений</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2184,19 +2188,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Title of message filter</source>
-        <translation type="unfinished"/>
+        <translation>Заголовок фильтра сообщений</translation>
     </message>
     <message>
         <source>JavaScript code</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript код</translation>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
-        <translation type="unfinished"/>
+        <translation>Ваша логика фильтрации сообщений на основе JavaScript</translation>
     </message>
     <message>
         <source>Sample message</source>
-        <translation type="unfinished"/>
+        <translation>Пример сообщения</translation>
     </message>
     <message>
         <source>Read</source>
@@ -2224,23 +2228,23 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Script output</source>
-        <translation type="unfinished"/>
+        <translation>Вывод скрипта</translation>
     </message>
     <message>
         <source>&amp;Test!</source>
-        <translation type="unfinished"/>
+        <translation>Тест! (&amp;T)</translation>
     </message>
     <message>
         <source>&amp;Beautify!</source>
-        <translation type="unfinished"/>
+        <translation>Улучшить! (&amp;B)</translation>
     </message>
     <message>
         <source>Detailed &amp;help</source>
-        <translation type="unfinished"/>
+        <translation>Помощь (&amp;H)</translation>
     </message>
     <message>
         <source>New message filter</source>
-        <translation type="unfinished"/>
+        <translation>Новый фильтр сообщений</translation>
     </message>
     <message>
         <source>Message will be %1.
@@ -2268,11 +2272,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished"/>
+        <translation>да</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"/>
+        <translation>нет</translation>
     </message>
     <message>
         <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
@@ -2288,7 +2292,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
@@ -2296,7 +2300,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Beautifier was running for too long time</source>
-        <translation type="unfinished"/>
+        <translation>Улучшение кода работало слишком долго</translation>
     </message>
     <message>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
@@ -2874,15 +2878,11 @@ You can install it now.</source>
         <translation>Gmail: авторизация запрещена</translation>
     </message>
     <message>
-        <source>you aren&apos;t logged in</source>
+        <source>you are not logged in</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>not logged-in</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>comm error when asking for recipients</source>
+        <source>failed to get metadata</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2925,6 +2925,10 @@ Login tokens expiration: %2</source>
     <message>
         <source>Write new e-mail message</source>
         <translation>Написать новое сообщение e-mail</translation>
+    </message>
+    <message>
+        <source>Reply to this message</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2978,10 +2982,6 @@ Login tokens expiration: %2</source>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Синхронизация</translation>
-    </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
@@ -3410,9 +3410,6 @@ Login tokens expiration: %2</source>
         <source>To login, you need to navigate to this website:</source>
         <translation type="unfinished"/>
     </message>
-</context>
-<context>
-    <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
         <translation>Вы можете закрыть это окно сейчас. Вернуться к %1</translation>
@@ -3420,10 +3417,6 @@ Login tokens expiration: %2</source>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Синхронизация</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>Невозможно добавить пункт</translation>
@@ -3571,6 +3564,13 @@ version by clicking this popup notification.</source>
     <message>
         <source>Find next occurence</source>
         <translation>Найти следующее вхождение</translation>
+    </message>
+</context>
+<context>
+    <name>ServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation>Синхронизация</translation>
     </message>
 </context>
 <context>
@@ -4206,16 +4206,16 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"/>
+        <translation>Использовать монохромный значок</translation>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation>тема значков системы</translation>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"/>
+        <translation>тема без значков</translation>
     </message>
     <message>
         <source>Left mouse button double-click</source>
@@ -4510,10 +4510,6 @@ Unread news: %2</source>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Синхронизация</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>Невозможно добавить пункт</translation>

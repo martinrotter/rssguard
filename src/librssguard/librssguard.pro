@@ -426,9 +426,7 @@ INCLUDEPATH +=  $$PWD/. \
                 $$PWD/gui/dialogs \
                 $$PWD/dynamic-shortcuts
 
-TRANSLATIONS_WO_QT += $$files($$PWD/../../localization/rssguard_*.ts, false)
-
-TRANSLATIONS += $$TRANSLATIONS_WO_QT \
+TRANSLATIONS += $$files($$PWD/../../localization/rssguard_*.ts, false) \
                 $$files($$PWD/../../localization/qtbase_*.ts, false)
 
 load(uic)
@@ -438,7 +436,7 @@ TR_EXCLUDE += $(QTDIR)
 
 # Create new "make lupdate" target.
 lupdate.target = lupdate
-lupdate.commands = lupdate -no-obsolete -pro $$shell_quote($$shell_path($$PWD/librssguard.pro)) -ts $$TRANSLATIONS_WO_QT
+lupdate.commands = lupdate -no-obsolete -pro $$shell_quote($$shell_path($$PWD/librssguard.pro)) -ts $$shell_quote($$shell_path($$PWD/../../localization/rssguard_en.ts))
 
 QMAKE_EXTRA_TARGETS += lupdate
 

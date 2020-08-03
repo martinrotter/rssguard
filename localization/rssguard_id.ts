@@ -736,6 +736,10 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>MIT License (applies to boolinq source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1275,10 +1279,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
         <translation type="unfinished"/>
     </message>
@@ -1292,6 +1292,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2871,15 +2875,11 @@ You can install it now.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>you aren&apos;t logged in</source>
+        <source>you are not logged in</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>not logged-in</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>comm error when asking for recipients</source>
+        <source>failed to get metadata</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2920,6 +2920,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Write new e-mail message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reply to this message</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2974,10 +2978,6 @@ Login tokens expiration: %2</source>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Sinkronisasi di</translation>
-    </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
@@ -3404,9 +3404,6 @@ Login tokens expiration: %2</source>
         <source>To login, you need to navigate to this website:</source>
         <translation type="unfinished"/>
     </message>
-</context>
-<context>
-    <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
         <translation type="unfinished"/>
@@ -3414,10 +3411,6 @@ Login tokens expiration: %2</source>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Sinkronisasi di</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>Tidak dapat menambah item</translation>
@@ -3559,6 +3552,13 @@ di versi ini dengan meng-klik popup notifikasi ini.</translation>
     <message>
         <source>Find next occurence</source>
         <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>ServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation>Sinkronisasi di</translation>
     </message>
 </context>
 <context>
@@ -4495,10 +4495,6 @@ Berita belum terbaca:%2</translation>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Sinkronisasi di</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>Tidak dapat menambah item</translation>

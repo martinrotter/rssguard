@@ -739,6 +739,10 @@ ou esta função ainda não foi implementada.</translation>
         <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
         <translation>Licença GNU GPL (aplica-se ao código fonte do RSS Guard e mimesis)</translation>
     </message>
+    <message>
+        <source>MIT License (applies to boolinq source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1280,10 +1284,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Editar conta Nextcloud News existente</translation>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>O servidor Nextcloud News selecionado está executando uma versão não suportada (%1). Pelo menos a versão %2 é necessária.</translation>
-    </message>
-    <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
         <translation>O servidor Nextcloud News selecionado está executando uma versão não suportada.</translation>
     </message>
@@ -1298,6 +1298,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
         <translation>Erro de rede, você entrou o endpoint e senha correta do Nextcloud?</translation>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2148,7 +2152,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
-        <translation type="unfinished"/>
+        <translation>Mo&amp;strar ramificações da árvore</translation>
     </message>
 </context>
 <context>
@@ -2885,16 +2889,12 @@ Você pode instalá-lo agora.</translation>
         <translation>Gmail: autorização negada</translation>
     </message>
     <message>
-        <source>you aren&apos;t logged in</source>
-        <translation>você não está logado</translation>
+        <source>you are not logged in</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>not logged-in</source>
-        <translation>não logado</translation>
-    </message>
-    <message>
-        <source>comm error when asking for recipients</source>
-        <translation>erro comm ao perguntar por destinatários</translation>
+        <source>failed to get metadata</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2936,6 +2936,10 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <source>Write new e-mail message</source>
         <translation>Escrever nova mensagem de e-mail</translation>
+    </message>
+    <message>
+        <source>Reply to this message</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2989,10 +2993,6 @@ Expiração dos tokens de login: %2</translation>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Sincronizar em</translation>
-    </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
@@ -3420,9 +3420,6 @@ Expiração dos tokens de login: %2</translation>
         <source>To login, you need to navigate to this website:</source>
         <translation>Para fazer login, você precisa acessar este site:</translation>
     </message>
-</context>
-<context>
-    <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
         <translation>Você pode fechar esta janela agora. Voltar para %1</translation>
@@ -3430,10 +3427,6 @@ Expiração dos tokens de login: %2</translation>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Sincronizar em</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>Não é possível adicionar o item</translation>
@@ -3580,6 +3573,13 @@ versão, clicando nesta notificação popup.</translation>
     <message>
         <source>Find next occurence</source>
         <translation>Localizar próxima ocorrência</translation>
+    </message>
+</context>
+<context>
+    <name>ServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation>Sincronizar em</translation>
     </message>
 </context>
 <context>
@@ -4519,10 +4519,6 @@ Notícias não lidas: %2</translation>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>Sincronizar em</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>Não é possível adicionar o item</translation>

@@ -735,6 +735,10 @@ or this functionality is not implemented yet.</source>
         <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>MIT License (applies to boolinq source code)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1274,10 +1278,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
         <translation type="unfinished"/>
     </message>
@@ -1291,6 +1291,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2873,15 +2877,11 @@ You can install it now.</source>
         <translation>Gmail：身份验证被拒绝</translation>
     </message>
     <message>
-        <source>you aren&apos;t logged in</source>
+        <source>you are not logged in</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>not logged-in</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>comm error when asking for recipients</source>
+        <source>failed to get metadata</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2924,6 +2924,10 @@ Token 过期时间：%2</translation>
     <message>
         <source>Write new e-mail message</source>
         <translation>撰写新邮件</translation>
+    </message>
+    <message>
+        <source>Reply to this message</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2977,10 +2981,6 @@ Token 过期时间：%2</translation>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>同步</translation>
-    </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
@@ -3408,9 +3408,6 @@ Token 过期时间：%2</translation>
         <source>To login, you need to navigate to this website:</source>
         <translation type="unfinished"/>
     </message>
-</context>
-<context>
-    <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
         <translation>你现在可以关闭窗口，返回到 %1</translation>
@@ -3418,10 +3415,6 @@ Token 过期时间：%2</translation>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>同步</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>无法添加项目</translation>
@@ -3563,6 +3556,13 @@ version by clicking this popup notification.</source>
     <message>
         <source>Find next occurence</source>
         <translation>查找下一个</translation>
+    </message>
+</context>
+<context>
+    <name>ServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation>同步</translation>
     </message>
 </context>
 <context>
@@ -4503,10 +4503,6 @@ Unread news: %2</source>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>同步</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>无法添加项目</translation>

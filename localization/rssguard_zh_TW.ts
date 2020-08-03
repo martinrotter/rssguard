@@ -447,7 +447,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>E-mail address</source>
-        <translation type="unfinished"/>
+        <translation>電子郵件地址</translation>
     </message>
 </context>
 <context>
@@ -736,6 +736,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <translation>GNU GPL 授權證 (適用於 RSS Guard 與 mimesis source code)</translation>
+    </message>
+    <message>
+        <source>MIT License (applies to boolinq source code)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -770,19 +774,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Subject</source>
-        <translation type="unfinished"/>
+        <translation>主旨</translation>
     </message>
     <message>
         <source>Title of your message</source>
-        <translation type="unfinished"/>
+        <translation>你的訊息的標題</translation>
     </message>
     <message>
         <source>E-mail NOT sent</source>
-        <translation type="unfinished"/>
+        <translation>尚未寄出的電子郵件</translation>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
-        <translation type="unfinished"/>
+        <translation>你的電子郵件訊息未送出。</translation>
     </message>
 </context>
 <context>
@@ -1046,7 +1050,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>指定的重導向 URL 一定得始於 &quot;http://localhost&quot; 而且一定得在你的 OAuth &quot;應用程式&quot; 中設定。</translation>
     </message>
 </context>
 <context>
@@ -1145,13 +1149,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Get my own Application ID</source>
-        <translation type="unfinished"/>
+        <translation>獲取我自己的應用程式 ID</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
 
 It is highly recommended to create your own &quot;Application ID&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>指定的重導向 URL 一定得始於 &quot;http://localhost&quot; 而且一定得在您的 OAuth &quot;應用程式&quot; 中設定。
+
+高度推薦建立你自己的 &quot;應用程式 ID&quot;</translation>
     </message>
 </context>
 <context>
@@ -1277,10 +1283,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>編輯既有的 Nextcloud 新聞帳號</translation>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation>本程式不支援所選的 Nextcloud 新聞伺服器執行的版本 (%1)。至少要 %2 才有支援。</translation>
-    </message>
-    <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
         <translation>本程式不支援所選的 Nextcloud 新聞伺服器執行的版本。</translation>
     </message>
@@ -1295,6 +1297,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
         <translation>網路錯誤，有輸入正確的 Nextcloud 端點(endpoint)與密碼嗎？</translation>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2310,7 +2316,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>無法儲存新增的篩選器，錯誤為: &quot;。</translation>
     </message>
 </context>
 <context>
@@ -2880,15 +2886,11 @@ You can install it now.</source>
         <translation>Gmail: 不獲准</translation>
     </message>
     <message>
-        <source>you aren&apos;t logged in</source>
+        <source>you are not logged in</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>not logged-in</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>comm error when asking for recipients</source>
+        <source>failed to get metadata</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2931,6 +2933,10 @@ Login tokens expiration: %2</source>
     <message>
         <source>Write new e-mail message</source>
         <translation>撰寫電子郵件訊息</translation>
+    </message>
+    <message>
+        <source>Reply to this message</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2984,10 +2990,6 @@ Login tokens expiration: %2</source>
 </context>
 <context>
     <name>InoreaderServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>同步</translation>
-    </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
@@ -3415,9 +3417,6 @@ Login tokens expiration: %2</source>
         <source>To login, you need to navigate to this website:</source>
         <translation>登入，您需要瀏覽此網站: </translation>
     </message>
-</context>
-<context>
-    <name>OAuthHttpHandler</name>
     <message>
         <source>You can close this window now. Go back to %1</source>
         <translation>現在可以關閉此窗。回到 %1</translation>
@@ -3425,10 +3424,6 @@ Login tokens expiration: %2</source>
 </context>
 <context>
     <name>OwnCloudServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>同步</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>無法新增項目</translation>
@@ -3522,7 +3517,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
+        <translation>無法插入訊息篩選器，因為目前的資料庫無法傳回上次最後插入的行欄 ID。</translation>
     </message>
 </context>
 <context>
@@ -3573,6 +3568,13 @@ version by clicking this popup notification.</source>
     <message>
         <source>Find next occurence</source>
         <translation>找下一個</translation>
+    </message>
+</context>
+<context>
+    <name>ServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation>同步</translation>
     </message>
 </context>
 <context>
@@ -4513,10 +4515,6 @@ Unread news: %2</source>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
-    <message>
-        <source>Sync in</source>
-        <translation>同步</translation>
-    </message>
     <message>
         <source>Cannot add item</source>
         <translation>無法新增項目</translation>
