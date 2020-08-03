@@ -150,11 +150,11 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
 }
 
 void MessagePreviewer::markMessageAsRead() {
-  markMessageAsReadUnread(RootItem::Read);
+  markMessageAsReadUnread(RootItem::ReadStatus::Read);
 }
 
 void MessagePreviewer::markMessageAsUnread() {
-  markMessageAsReadUnread(RootItem::Unread);
+  markMessageAsReadUnread(RootItem::ReadStatus::Unread);
 }
 
 void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
@@ -168,7 +168,7 @@ void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
                                                              QList<Message>() << m_message,
                                                              read);
-      m_message.m_isRead = read == RootItem::Read;
+      m_message.m_isRead = read == RootItem::ReadStatus::Read;
       emit markMessageRead(m_message.m_id, read);
 
       updateButtons();
@@ -179,21 +179,23 @@ void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
 void MessagePreviewer::switchMessageImportance(bool checked) {
   if (!m_root.isNull()) {
     if (m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
-                                                                        QList<ImportanceChange>() << ImportanceChange(m_message,
-                                                                                                                      m_message.
-                                                                                                                      m_isImportant ?
-                                                                                                                      RootItem::NotImportant
-                                                                                                                                    :
-                                                                                                                      RootItem::Important)))
-    {
+                                                                        QList<ImportanceChange>()
+                                                                        << ImportanceChange(m_message,
+                                                                                            m_message.
+                                                                                            m_isImportant
+                                                                                            ? RootItem::Importance::NotImportant
+                                                                                            : RootItem::Importance::Important))) {
       DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName(), DatabaseFactory::DesiredType::FromSettings),
                                                 QStringList() << QString::number(m_message.m_id));
       m_root->getParentServiceRoot()->onAfterSwitchMessageImportance(m_root.data(),
-                                                                     QList<ImportanceChange>() << ImportanceChange(m_message,
-                                                                                                                   m_message.m_isImportant ?
-                                                                                                                   RootItem::NotImportant :
-                                                                                                                   RootItem::Important));
-      emit markMessageImportant(m_message.m_id, checked ? RootItem::Important : RootItem::NotImportant);
+                                                                     QList<ImportanceChange>()
+                                                                     << ImportanceChange(m_message,
+                                                                                         m_message.m_isImportant
+                                                                                         ? RootItem::Importance::NotImportant
+                                                                                         : RootItem::Importance::Important));
+      emit markMessageImportant(m_message.m_id, checked
+                                ? RootItem::Importance::Important
+                                : RootItem::Importance::NotImportant);
 
       m_message.m_isImportant = checked;
     }
