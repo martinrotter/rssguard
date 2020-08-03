@@ -95,9 +95,9 @@ void MessagePreviewer::createConnections() {
           this,
           &MessagePreviewer::switchMessageImportance);
   connect(m_ui.m_txtMessage,
-          static_cast<void (QTextBrowser::*)(const QString&)>(&QTextBrowser::highlighted),
-          [=](const QString& text) {
-    Q_UNUSED(text)
+          QOverload<const QUrl&>::of(&QTextBrowser::highlighted),
+          [=](const QUrl& url) {
+    Q_UNUSED(url)
     QToolTip::showText(QCursor::pos(), tr("Click this link to download it or open it with external browser."), this);
   });
 }
