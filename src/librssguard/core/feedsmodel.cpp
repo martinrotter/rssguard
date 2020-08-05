@@ -51,9 +51,7 @@ FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_itemHeig
 }
 
 FeedsModel::~FeedsModel() {
-  qDebug("Destroying FeedsModel instance.");
-
-  // Delete all model items.
+  qDebugNN << LOGSEC_FEEDMODEL << "Destroying FeedsModel instance.";
   delete m_rootItem;
 }
 
@@ -83,15 +81,15 @@ QStringList FeedsModel::mimeTypes() const {
   return QStringList() << QSL(MIME_TYPE_ITEM_POINTER);
 }
 
-bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column,
-                              const QModelIndex& parent) {
+bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row,
+                              int column, const QModelIndex& parent) {
   Q_UNUSED(row)
   Q_UNUSED(column)
 
-  if (action == Qt::IgnoreAction) {
+  if (action == Qt::DropAction::IgnoreAction) {
     return true;
   }
-  else if (action != Qt::MoveAction) {
+  else if (action != Qt::DropAction::MoveAction) {
     return false;
   }
 
@@ -124,7 +122,8 @@ bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int 
                              QSystemTrayIcon::Warning,
                              qApp->mainFormWidget(),
                              true);
-        qDebug("Dragged item cannot be dragged into different account. Cancelling drag-drop action.");
+        qDebugNN << LOGSEC_FEEDMODEL
+                 << "Dragged item cannot be dragged into different account. Cancelling drag-drop action.";
         return false;
       }
 
@@ -367,7 +366,8 @@ QList<Message> FeedsModel::messagesForItem(RootItem* item) const {
 }
 
 int FeedsModel::columnCount(const QModelIndex& parent) const {
-  Q_UNUSED(parent) return FEEDS_VIEW_COLUMN_COUNT;
+  Q_UNUSED(parent)
+  return FEEDS_VIEW_COLUMN_COUNT;
 }
 
 RootItem* FeedsModel::itemForIndex(const QModelIndex& index) const {
@@ -443,11 +443,17 @@ void FeedsModel::notifyWithCounts() {
 
 void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
   if (items.size() > RELOAD_MODEL_BORDER_NUM) {
-    qDebug("There is request to reload feed model for more than %d items, reloading model fully.", RELOAD_MODEL_BORDER_NUM);
+    qDebugNN << LOGSEC_FEEDMODEL
+             << "There is request to reload feed model for more than "
+             << RELOAD_MODEL_BORDER_NUM
+             << " items, reloading model fully.";
     reloadWholeLayout();
   }
   else {
-    qDebug("There is request to reload feed model, reloading the %d items individually.", items.size());
+    qDebugNN << LOGSEC_FEEDMODEL
+             << "There is request to reload feed model, reloading the "
+             << items.size()
+             << " items individually.";
 
     for (RootItem* item : items) {
       reloadChangedItem(item);
