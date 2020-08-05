@@ -27,7 +27,7 @@ FeedDownloader::~FeedDownloader() {
   m_mutex->tryLock();
   m_mutex->unlock();
   delete m_mutex;
-  qDebug("Destroying FeedDownloader instance.");
+  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Destroying FeedDownloader instance.";
 }
 
 bool FeedDownloader::isUpdateRunning() const {
@@ -39,7 +39,9 @@ void FeedDownloader::updateAvailableFeeds() {
     auto* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
 
     if (cache != nullptr) {
-      qDebug("Saving cache for feed with DB ID %d and title '%s'.", feed->id(), qPrintable(feed->title()));
+      qDebugNN << LOGSEC_FEEDDOWNLOADER
+               << "Saving cache for feed with DB ID '" << feed->id()
+               << "' and title '" << feed->title() << "'.";
       cache->saveAllCachedData(false);
     }
   }
@@ -132,11 +134,10 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
     QList<Message> read_msgs, important_msgs;
 
     for (int i = 0; i < msgs.size(); i++) {
-      tmr.restart();
-
       Message msg_backup(msgs[i]);
 
       // Attach live message object to wrapper.
+      tmr.restart();
       msg_obj.setMessage(&msgs[i]);
       qDebugNN << "Hooking message took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 

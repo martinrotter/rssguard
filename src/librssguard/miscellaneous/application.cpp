@@ -10,7 +10,6 @@
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/statusbar.h"
-#include "miscellaneous/debugging.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
@@ -55,8 +54,7 @@ Application::Application(const QString& id, int& argc, char** argv)
   m_database(new DatabaseFactory(this)), m_downloadManager(nullptr), m_shouldRestart(false) {
 
   // Setup debug output system.
-  qInstallMessageHandler(Debugging::debugHandler);
-
+  qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}\n"));
   determineFirstRuns();
 
   //: Abbreviation of language, e.g. en.
@@ -91,11 +89,6 @@ Application::Application(const QString& id, int& argc, char** argv)
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(QByteArray(APP_LOW_NAME),
                                                                new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
 #endif
-
-  if (arguments().contains(QL1S("-log"))) {
-    Debugging::instance()->setTargetFile(IOFactory::getSystemFolder(QStandardPaths::TempLocation) +
-                                         QDir::separator() + QL1S("rssguard.log"));
-  }
 
   m_webFactory->updateProxy();
 }

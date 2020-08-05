@@ -96,7 +96,6 @@ HEADERS += core/feeddownloader.h \
            miscellaneous/databasecleaner.h \
            miscellaneous/databasefactory.h \
            miscellaneous/databasequeries.h \
-           miscellaneous/debugging.h \
            miscellaneous/externaltool.h \
            miscellaneous/feedreader.h \
            miscellaneous/iconfactory.h \
@@ -243,7 +242,6 @@ SOURCES += core/feeddownloader.cpp \
            miscellaneous/databasecleaner.cpp \
            miscellaneous/databasefactory.cpp \
            miscellaneous/databasequeries.cpp \
-           miscellaneous/debugging.cpp \
            miscellaneous/externaltool.cpp \
            miscellaneous/feedreader.cpp \
            miscellaneous/iconfactory.cpp \

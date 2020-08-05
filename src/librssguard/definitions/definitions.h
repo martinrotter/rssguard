@@ -82,6 +82,8 @@
 #define HTTP_HEADERS_AUTHORIZATION  "Authorization"
 #define HTTP_HEADERS_USER_AGENT     "User-Agent"
 
+#define LOGSEC_FEEDDOWNLOADER       "feed-downloader: "
+
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f
 #define DEFAULT_ZOOM_FACTOR 1.0f
