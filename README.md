@@ -9,6 +9,10 @@ RSS Guard
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](https://github.com/martinrotter/rssguard/issues)
 [![License](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=360000)](https://github.com/martinrotter/rssguard/blob/master/LICENSE.md)
 
-RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.
+RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization with these services:
+* Tiny Tiny RSS,
+* Inoreader,
+* Nextcloud News,
+* Gmail API.
 
 Development builds can be downloaded [here for Windows](https://bintray.com/martinrotter/rssguard/Development/Windows) and [here for Linux/Mac](https://bintray.com/martinrotter/rssguard/Development/LinuxMacOs).
