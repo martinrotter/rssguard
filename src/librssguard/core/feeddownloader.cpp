@@ -55,10 +55,12 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
   QMutexLocker locker(m_mutex);
 
   if (feeds.isEmpty()) {
-    qDebug("No feeds to update in worker thread, aborting update.");
+    qDebugNN << LOGSEC_FEEDDOWNLOADER << "No feeds to update in worker thread, aborting update.";
   }
   else {
-    qDebug().nospace() << "Starting feed updates from worker in thread: \'" << QThread::currentThreadId() << "\'.";
+    qDebugNN << LOGSEC_FEEDDOWNLOADER
+             << "Starting feed updates from worker in thread: '"
+             << QThread::currentThreadId() << "'.";
     m_feeds = feeds;
     m_feedsOriginalCount = m_feeds.size();
     m_results.clear();
@@ -79,18 +81,19 @@ void FeedDownloader::stopRunningUpdate() {
 }
 
 void FeedDownloader::updateOneFeed(Feed* feed) {
-  qDebug().nospace() << "Downloading new messages for feed ID "
-                     << feed->customId() << " URL: " << feed->url() << " title: " << feed->title() << " in thread: \'"
-                     << QThread::currentThreadId() << "\'.";
+  qDebugNN << LOGSEC_FEEDDOWNLOADER
+           << "Downloading new messages for feed ID '"
+           << feed->customId() << "' URL: '" << feed->url() << "' title: '" << feed->title() << "' in thread: '"
+           << QThread::currentThreadId() << "'.";
 
   bool error_during_obtaining = false;
   int acc_id = feed->getParentServiceRoot()->accountId();
   QElapsedTimer tmr; tmr.start();
   QList<Message> msgs = feed->obtainNewMessages(&error_during_obtaining);
 
-  qDebugNN << "Downloaded " << msgs.size() << " messages for feed ID "
-           << feed->customId() << " URL: " << feed->url() << " title: " << feed->title() << " in thread: \'"
-           << QThread::currentThreadId() << "\'. Operation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
+  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded " << msgs.size() << " messages for feed ID '"
+           << feed->customId() << "' URL: '" << feed->url() << "' title: '" << feed->title() << "' in thread: '"
+           << QThread::currentThreadId() << "'. Operation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
   // Now, sanitize messages (tweak encoding etc.).
   for (auto& msg : msgs) {
@@ -129,7 +132,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
     filter_engine.installExtensions(QJSEngine::Extension::ConsoleExtension);
     filter_engine.globalObject().setProperty("msg", js_object);
 
-    qDebugNN << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
+    qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
     QList<Message> read_msgs, important_msgs;
 
@@ -139,7 +142,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
       // Attach live message object to wrapper.
       tmr.restart();
       msg_obj.setMessage(&msgs[i]);
-      qDebugNN << "Hooking message took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
+      qDebugNN << LOGSEC_FEEDDOWNLOADER << "Hooking message took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
       auto feed_filters = feed->messageFilters();
       bool msg_ignored = false;
@@ -148,7 +151,8 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
         QPointer<MessageFilter> filter = feed_filters.at(j);
 
         if (filter.isNull()) {
-          qWarning("Message filter was probably deleted, removing its pointer from list of filters.");
+          qCriticalNN << LOGSEC_FEEDDOWNLOADER
+                      << "Message filter was probably deleted, removing its pointer from list of filters.";
           feed_filters.removeAt(j--);
           continue;
         }
@@ -160,7 +164,8 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
         try {
           FilteringAction decision = msg_filter->filterMessage(&filter_engine);
 
-          qDebugNN << "Running filter script, it took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
+          qDebugNN << LOGSEC_FEEDDOWNLOADER
+                   << "Running filter script, it took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
           switch (decision) {
             case FilteringAction::Accept:
@@ -177,7 +182,10 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
           }
         }
         catch (const FilteringException& ex) {
-          qCritical("Error when evaluating filtering JS function: '%s'. Accepting message.", qPrintable(ex.message()));
+          qCriticalNN << LOGSEC_FEEDDOWNLOADER
+                      << "Error when evaluating filtering JS function: '"
+                      << ex.message()
+                      << "'. Accepting message.";
           continue;
         }
 
@@ -188,13 +196,13 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
       if (!msg_ignored) {
         if (!msg_backup.m_isRead && msgs[i].m_isRead) {
-          qDebugNN << "Message with custom ID: " << msg_backup.m_customId << " was marked as read by message scripts.";
+          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId << "' was marked as read by message scripts.";
 
           read_msgs << msgs[i];
         }
 
         if (!msg_backup.m_isImportant && msgs[i].m_isImportant) {
-          qDebugNN << "Message with custom ID: " << msg_backup.m_customId << " was marked as important by message scripts.";
+          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId << "' was marked as important by message scripts.";
 
           important_msgs << msgs[i];
         }
@@ -204,10 +212,12 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
     if (!read_msgs.isEmpty()) {
       // Now we push new read states to the service.
       if (feed->getParentServiceRoot()->onBeforeSetMessagesRead(feed, read_msgs, RootItem::ReadStatus::Read)) {
-        qDebugNN << "Notified services about messages marked as read by message filters.";
+        qDebugNN << LOGSEC_FEEDDOWNLOADER
+                 << "Notified services about messages marked as read by message filters.";
       }
       else {
-        qCriticalNN << "Notification of services about messages marked as read by message filters FAILED.";
+        qCriticalNN << LOGSEC_FEEDDOWNLOADER
+                    << "Notification of services about messages marked as read by message filters FAILED.";
       }
     }
 
@@ -219,10 +229,12 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
       }).toStdList());
 
       if (feed->getParentServiceRoot()->onBeforeSwitchMessageImportance(feed, chngs)) {
-        qDebugNN << "Notified services about messages marked as important by message filters.";
+        qDebugNN << LOGSEC_FEEDDOWNLOADER
+                 << "Notified services about messages marked as important by message filters.";
       }
       else {
-        qCriticalNN << "Notification of services about messages marked as important by message filters FAILED.";
+        qCriticalNN << LOGSEC_FEEDDOWNLOADER
+                    << "Notification of services about messages marked as important by message filters FAILED.";
       }
     }
   }
@@ -230,24 +242,29 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
   m_feedsUpdated++;
 
   // Now make sure, that messages are actually stored to SQL in a locked state.
-  qDebugNN << "Saving messages of feed ID "
-           << feed->customId() << " URL: " << feed->url() << " title: " << feed->title() << " in thread: \'"
-           << QThread::currentThreadId() << "\'.";
+  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Saving messages of feed ID '"
+           << feed->customId() << "' URL: '" << feed->url() << "' title: '" << feed->title() << "' in thread: '"
+           << QThread::currentThreadId() << "'.";
 
   int updated_messages = feed->updateMessages(msgs, error_during_obtaining);
 
-  qDebug("%d messages for feed %s stored in DB.", updated_messages, qPrintable(feed->customId()));
+  qDebugNN << LOGSEC_FEEDDOWNLOADER
+           << updated_messages << " messages for feed "
+           << feed->customId() << " stored in DB.";
 
   if (updated_messages > 0) {
     m_results.appendUpdatedFeed(QPair<QString, int>(feed->title(), updated_messages));
   }
 
-  qDebug("Made progress in feed updates, total feeds count %d/%d (id of feed is %d).", m_feedsUpdated, m_feedsOriginalCount, feed->id());
+  qDebugNN << LOGSEC_FEEDDOWNLOADER
+           << "Made progress in feed updates, total feeds count "
+           << m_feedsUpdated << "/" << m_feedsOriginalCount << " (id of feed is "
+           << feed->id() << ").";
   emit updateProgress(feed, m_feedsUpdated, m_feedsOriginalCount);
 }
 
 void FeedDownloader::finalizeUpdate() {
-  qDebug().nospace() << "Finished feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
+  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Finished feed updates in thread: '" << QThread::currentThreadId() << "'.";
   m_results.sort();
 
   // Update of feeds has finished.
