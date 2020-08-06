@@ -3,6 +3,7 @@
 #ifndef DEFINITIONS_H
 #define DEFINITIONS_H
 
+#include <QDebug>
 #include <QtGlobal>
 
 #define SERVICE_CODE_STD_RSS    "std-rss"
@@ -84,6 +85,7 @@
 
 #define LOGSEC_FEEDMODEL            "feed-model: "
 #define LOGSEC_FEEDDOWNLOADER       "feed-downloader: "
+#define LOGSEC_MESSAGEMODEL         "message-model: "
 
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f

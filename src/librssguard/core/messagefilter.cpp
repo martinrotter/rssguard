@@ -27,20 +27,19 @@ FilteringAction MessageFilter::filterMessage(QJSEngine* engine) {
   // of DuplicationAttributeCheck enumeration (see file core/message.h).
   //
   // Example filtering script might look like this:
+  //
+  //  function helper() {
+  //    if (msg.title.includes("A")) {
+  //      msg.isImportant = true;
+  //    }
+  //
+  //    return 1;
+  //  }
+  //
+  //  function filterMessage() {
+  //    return helper();
+  //  }
 
-  /*
-      function helper() {
-        if (msg.title.includes("A")) {
-          msg.isImportant = true;
-        }
-
-        return 1;
-      }
-
-      function filterMessage() {
-        return helper();
-      }
-   */
   QJSValue filter_func = engine->evaluate(m_script);
 
   if (filter_func.isError()) {

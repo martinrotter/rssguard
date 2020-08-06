@@ -35,7 +35,7 @@ FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
 }
 
 FeedsProxyModel::~FeedsProxyModel() {
-  qDebug("Destroying FeedsProxyModel instance");
+  qDebugNN << LOGSEC_FEEDMODEL << "Destroying FeedsProxyModel instance";
 }
 
 QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const QVariant& value, int hits, Qt::MatchFlags flags) const {
@@ -62,7 +62,7 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
       QVariant item_value = m_sourceModel->itemForIndex(mapped_idx)->title();
 
       // QVariant based matching.
-      if (match_type == Qt::MatchExactly) {
+      if (match_type == Qt::MatchFlag::MatchExactly) {
         if (value == item_value) {
           result.append(idx);
         }
@@ -78,9 +78,9 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
 
         switch (match_type) {
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-          case Qt::MatchRegularExpression:
+          case Qt::MatchFlag::MatchRegularExpression:
 #else
-          case Qt::MatchRegExp:
+          case Qt::MatchFlag::MatchRegExp:
 #endif
             if (QRegularExpression(entered_text,
                                    QRegularExpression::PatternOption::CaseInsensitiveOption |
@@ -90,7 +90,7 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
 
             break;
 
-          case Qt::MatchWildcard:
+          case Qt::MatchFlag::MatchWildcard:
             if (QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
                                    QRegularExpression::PatternOption::CaseInsensitiveOption |
                                    QRegularExpression::PatternOption::UseUnicodePropertiesOption).match(item_text).hasMatch()) {
@@ -99,28 +99,28 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
 
             break;
 
-          case Qt::MatchStartsWith:
+          case Qt::MatchFlag::MatchStartsWith:
             if (item_text.startsWith(entered_text, cs)) {
               result.append(idx);
             }
 
             break;
 
-          case Qt::MatchEndsWith:
+          case Qt::MatchFlag::MatchEndsWith:
             if (item_text.endsWith(entered_text, cs)) {
               result.append(idx);
             }
 
             break;
 
-          case Qt::MatchFixedString:
+          case Qt::MatchFlag::MatchFixedString:
             if (item_text.compare(entered_text, cs) == 0) {
               result.append(idx);
             }
 
             break;
 
-          case Qt::MatchContains:
+          case Qt::MatchFlag::MatchContains:
           default:
             if (item_text.contains(entered_text, cs)) {
               result.append(idx);

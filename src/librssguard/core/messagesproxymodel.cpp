@@ -26,7 +26,7 @@ MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* par
 }
 
 MessagesProxyModel::~MessagesProxyModel() {
-  qDebug("Destroying MessagesProxyModel instance.");
+  qDebugNN << LOGSEC_MESSAGEMODEL << "Destroying MessagesProxyModel instance.";
 }
 
 QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) {

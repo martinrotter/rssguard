@@ -4,6 +4,7 @@
 
 #include "miscellaneous/textfactory.h"
 
+#include <QDebug>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -146,7 +147,10 @@ void MessageObject::setMessage(Message* message) {
 
 bool MessageObject::isDuplicateWithAttribute(int attribute_check) const {
   if (attribute_check <= 0) {
-    qCritical("Bad DuplicationAttributeCheck value '%d' was passed from JS filter script.", attribute_check);
+    qCriticalNN << LOGSEC_MESSAGEMODEL
+                << "Bad DuplicationAttributeCheck value '"
+                << attribute_check
+                << "' was passed from JS filter script.";
     return true;
   }
 
@@ -198,13 +202,18 @@ bool MessageObject::isDuplicateWithAttribute(int attribute_check) const {
   if (q.exec() && q.next()) {
     if (q.record().value(0).toInt() > 0) {
       // Whoops, we have the "same" message in database.
-      qDebug("Message '%s' was identified as duplicate by filter script.", qPrintable(title()));
+      qDebugNN << LOGSEC_MESSAGEMODEL
+               << "Message '"
+               << title()
+               << "' was identified as duplicate by filter script.";
       return true;
     }
   }
   else if (q.lastError().isValid()) {
-    qWarning("Error when checking for duplicate messages via filtering system, error: '%s'.",
-             qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_MESSAGEMODEL
+               << "Error when checking for duplicate messages via filtering system, error: '"
+               << q.lastError().text()
+               << "'.";
   }
 
   return false;

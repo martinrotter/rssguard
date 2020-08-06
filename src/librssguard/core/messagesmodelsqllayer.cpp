@@ -56,7 +56,7 @@ void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order) {
     m_sortOrders.removeAt(existing);
   }
 
-  if (m_sortColumns.size() > MAX_MULTICOLUMN_SORT_STATES) {
+  if (m_sortColumns.size() >= MAX_MULTICOLUMN_SORT_STATES) {
     // We support only limited number of sort states
     // due to DB performance.
     m_sortColumns.removeAt(0);
@@ -73,7 +73,10 @@ void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order) {
     m_sortOrders.prepend(order);
   }
 
-  qDebug("Added sort state, select statement is now:\n'%s'", qPrintable(selectStatement()));
+  qDebugNN << LOGSEC_MESSAGEMODEL
+           << "Added sort state, select statement is now:\n'"
+           << selectStatement()
+           << "'";
 }
 
 void MessagesModelSqlLayer::setFilter(const QString& filter) {

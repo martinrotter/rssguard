@@ -27,7 +27,7 @@ MessagesModel::MessagesModel(QObject* parent)
 }
 
 MessagesModel::~MessagesModel() {
-  qDebug("Destroying MessagesModel instance.");
+  qDebugNN << LOGSEC_MESSAGEMODEL << "Destroying MessagesModel instance.";
 }
 
 void MessagesModel::setupIcons() {
@@ -37,8 +37,7 @@ void MessagesModel::setupIcons() {
   m_enclosuresIcon = qApp->icons()->fromTheme(QSL("mail-attachment"));
 }
 
-MessagesModelCache* MessagesModel::cache() const
-{
+MessagesModelCache* MessagesModel::cache() const {
   return m_cache;
 }
 
@@ -47,8 +46,8 @@ void MessagesModel::repopulate() {
   setQuery(selectStatement(), m_db);
 
   if (lastError().isValid()) {
-    qCritical() << "Error when setting new msg view query:" << lastError().text();
-    qCritical() << "Used SQL select statement:" << selectStatement();
+    qCriticalNN << LOGSEC_MESSAGEMODEL << "Error when setting new msg view query: '" << lastError().text() << "'.";
+    qCriticalNN << LOGSEC_MESSAGEMODEL << "Used SQL select statement: '" << selectStatement() << "'.";
   }
 
   while (canFetchMore()) {
@@ -94,10 +93,12 @@ void MessagesModel::loadMessages(RootItem* item) {
   else {
     if (!item->getParentServiceRoot()->loadMessagesForItem(item, this)) {
       setFilter(QSL(DEFAULT_SQL_MESSAGES_FILTER));
-      qWarning("Loading of messages from item '%s' failed.", qPrintable(item->title()));
+      qCriticalNN << LOGSEC_MESSAGEMODEL
+                  << "Loading of messages from item '"
+                  << item->title() << "' failed.";
       qApp->showGuiMessage(tr("Loading of messages from item '%1' failed.").arg(item->title()),
                            tr("Loading of messages failed, maybe messages could not be downloaded."),
-                           QSystemTrayIcon::Critical,
+                           QSystemTrayIcon::MessageIcon::Critical,
                            qApp->mainFormWidget(),
                            true);
     }
@@ -135,7 +136,7 @@ int MessagesModel::messageId(int row_index) const {
 }
 
 RootItem::Importance MessagesModel::messageImportance(int row_index) const {
-  return (RootItem::Importance) data(row_index, MSG_DB_IMPORTANT_INDEX, Qt::EditRole).toInt();
+  return RootItem::Importance(data(row_index, MSG_DB_IMPORTANT_INDEX, Qt::EditRole).toInt());
 }
 
 RootItem* MessagesModel::loadedItem() const {
@@ -414,7 +415,7 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
-    qDebug("Setting of new data to the model failed for message importance change.");
+    qDebugNN << LOGSEC_MESSAGEMODEL << "Setting of new data to the model failed for message importance change.";
     return false;
   }
 
