@@ -131,6 +131,8 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
     filter_engine.installExtensions(QJSEngine::Extension::ConsoleExtension);
     filter_engine.globalObject().setProperty("msg", js_object);
+    filter_engine.globalObject().setProperty("MSG_ACCEPT", int(FilteringAction::Accept));
+    filter_engine.globalObject().setProperty("MSG_IGNORE", int(FilteringAction::Ignore));
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
