@@ -3,7 +3,6 @@
 #include "dynamic-shortcuts/dynamicshortcutswidget.h"
 
 #include "definitions/definitions.h"
-#include "dynamic-shortcuts/shortcutbutton.h"
 #include "dynamic-shortcuts/shortcutcatcher.h"
 
 #include <QAction>
@@ -69,6 +68,7 @@ void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
     // Store information for re-initialization of shortcuts
     // of actions when widget gets "confirmed".
     QPair<QAction*, ShortcutCatcher*> new_binding;
+
     new_binding.first = action;
     new_binding.second = catcher;
     m_actionBindings << new_binding;

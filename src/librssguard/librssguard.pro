@@ -41,7 +41,6 @@ HEADERS += core/feeddownloader.h \
            definitions/definitions.h \
            dynamic-shortcuts/dynamicshortcuts.h \
            dynamic-shortcuts/dynamicshortcutswidget.h \
-           dynamic-shortcuts/shortcutbutton.h \
            dynamic-shortcuts/shortcutcatcher.h \
            exceptions/applicationexception.h \
            exceptions/filteringexception.h \
@@ -187,7 +186,6 @@ SOURCES += core/feeddownloader.cpp \
            core/messagesproxymodel.cpp \
            dynamic-shortcuts/dynamicshortcuts.cpp \
            dynamic-shortcuts/dynamicshortcutswidget.cpp \
-           dynamic-shortcuts/shortcutbutton.cpp \
            dynamic-shortcuts/shortcutcatcher.cpp \
            exceptions/applicationexception.cpp \
            exceptions/filteringexception.cpp \
