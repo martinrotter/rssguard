@@ -86,6 +86,8 @@
 #define LOGSEC_FEEDMODEL            "feed-model: "
 #define LOGSEC_FEEDDOWNLOADER       "feed-downloader: "
 #define LOGSEC_MESSAGEMODEL         "message-model: "
+#define LOGSEC_GUI                  "gui: "
+#define LOGSEC_CORE                 "core: "
 
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f

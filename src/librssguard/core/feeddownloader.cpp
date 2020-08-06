@@ -138,14 +138,15 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
     for (int i = 0; i < msgs.size(); i++) {
       Message msg_backup(msgs[i]);
+      Message* msg_orig = &msgs[i];
 
       // Attach live message object to wrapper.
       tmr.restart();
-      msg_obj.setMessage(&msgs[i]);
+      msg_obj.setMessage(msg_orig);
       qDebugNN << LOGSEC_FEEDDOWNLOADER << "Hooking message took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
       auto feed_filters = feed->messageFilters();
-      bool msg_ignored = false;
+      bool remove_msg = false;
 
       for (int j = 0; j < feed_filters.size(); j++) {
         QPointer<MessageFilter> filter = feed_filters.at(j);
@@ -176,8 +177,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
             case FilteringAction::Ignore:
 
               // Remove the message, we do not want it.
-              msgs.removeAt(i--);
-              msg_ignored = true;
+              remove_msg = true;
               break;
           }
         }
@@ -194,18 +194,20 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
         break;
       }
 
-      if (!msg_ignored) {
-        if (!msg_backup.m_isRead && msgs[i].m_isRead) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId << "' was marked as read by message scripts.";
+      if (!msg_backup.m_isRead && msg_orig->m_isRead) {
+        qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId << "' was marked as read by message scripts.";
 
-          read_msgs << msgs[i];
-        }
+        read_msgs << *msg_orig;
+      }
 
-        if (!msg_backup.m_isImportant && msgs[i].m_isImportant) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId << "' was marked as important by message scripts.";
+      if (!msg_backup.m_isImportant && msg_orig->m_isImportant) {
+        qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId << "' was marked as important by message scripts.";
 
-          important_msgs << msgs[i];
-        }
+        important_msgs << *msg_orig;
+      }
+
+      if (remove_msg) {
+        msgs.removeAt(i--);
       }
     }
 

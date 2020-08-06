@@ -33,6 +33,11 @@
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/standard/gui/formstandardimportexport.h"
 
+#if defined (USE_WEBENGINE)
+#include "network-web/adblock/adblockicon.h"
+#include "network-web/adblock/adblockmanager.h"
+#endif
+
 #include <QCloseEvent>
 #include <QDesktopWidget>
 #include <QFileDialog>
@@ -45,14 +50,9 @@
 #include <QScreen>
 #endif
 
-#if defined (USE_WEBENGINE)
-#include "network-web/adblock/adblockicon.h"
-#include "network-web/adblock/adblockmanager.h"
-#endif
-
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_trayMenu(nullptr), m_statusBar(nullptr) {
-  qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
+  qDebugNN << LOGSEC_GUI << "Creating main application form in thread: '" << QThread::currentThreadId() << "'.";
 
   m_ui->setupUi(this);
   qApp->setMainForm(this);
@@ -89,7 +89,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 }
 
 FormMain::~FormMain() {
-  qDebug("Destroying FormMain instance.");
+  qDebugNN << LOGSEC_GUI << "Destroying FormMain instance.";
 }
 
 QMenu* FormMain::trayMenu() const {
@@ -135,15 +135,12 @@ QList<QAction*> FormMain::allActions() const {
 
 #if !defined(Q_OS_MACOS)
   actions << m_ui->m_actionFullscreen;
+  actions << m_ui->m_actionSwitchMainMenu;
 #endif
 
   actions << m_ui->m_actionAboutGuard;
   actions << m_ui->m_actionSwitchFeedsList;
   actions << m_ui->m_actionSwitchMainWindow;
-
-#if !defined(Q_OS_MACOS)
-  actions << m_ui->m_actionSwitchMainMenu;
-#endif
 
   actions << m_ui->m_actionSwitchToolBars;
   actions << m_ui->m_actionSwitchListHeaders;
@@ -193,6 +190,7 @@ QList<QAction*> FormMain::allActions() const {
 
   actions << m_ui->m_actionTabsCloseAll;
   actions << m_ui->m_actionTabsCloseAllExceptCurrent;
+
   return actions;
 }
 
@@ -213,7 +211,8 @@ void FormMain::prepareMenus() {
     m_trayMenu->addSeparator();
     m_trayMenu->addAction(m_ui->m_actionSettings);
     m_trayMenu->addAction(m_ui->m_actionQuit);
-    qDebug("Creating tray icon menu.");
+
+    qDebugNN << LOGSEC_MESSAGEMODEL << "Creating tray icon menu.";
   }
 
 #if !defined(USE_WEBENGINE)
@@ -545,7 +544,7 @@ void FormMain::loadSize() {
   QScreen* scr = screen();
 
   if (scr == nullptr) {
-    qWarning("Cannot load dialog size, because no screens are detected.");
+    qWarningNN << LOGSEC_MESSAGEMODEL << "Cannot load dialog size, because no screens are detected.";
     return;
   }
 

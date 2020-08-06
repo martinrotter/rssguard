@@ -20,9 +20,7 @@ FormAbout::FormAbout(QWidget* parent) : QDialog(parent) {
   loadSettingsAndPaths();
 }
 
-FormAbout::~FormAbout() {
-  qDebug() << QSslSocket::sslLibraryVersionString();
-}
+FormAbout::~FormAbout() {}
 
 void FormAbout::loadSettingsAndPaths() {
   if (qApp->settings()->type() == SettingsProperties::SettingsType::Portable) {

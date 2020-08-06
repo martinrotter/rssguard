@@ -35,7 +35,7 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget* parent) : QDialo
 }
 
 FormBackupDatabaseSettings::~FormBackupDatabaseSettings() {
-  qDebug("Destroying FormBackupDatabaseSettings instance.");
+  qDebugNN << LOGSEC_GUI << "Destroying FormBackupDatabaseSettings instance.";
 }
 
 void FormBackupDatabaseSettings::performBackup() {

@@ -33,7 +33,7 @@ ShortcutCatcher::ShortcutCatcher(QWidget* parent)
   m_shortcutBox->setMinimumWidth(170);
   m_shortcutBox->setToolTip(tr("Click and hit new shortcut."));
 
-  // Add both buttons to the layout.
+  // Add all buttons to the layout.
   m_layout->addWidget(m_shortcutBox);
   m_layout->addWidget(m_btnReset);
   m_layout->addWidget(m_btnClear);

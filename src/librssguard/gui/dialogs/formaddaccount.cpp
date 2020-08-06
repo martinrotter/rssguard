@@ -29,7 +29,7 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, Fe
 }
 
 FormAddAccount::~FormAddAccount() {
-  qDebug("Destroying FormAddAccount instance.");
+  qDebugNN << LOGSEC_GUI << "Destroying FormAddAccount instance.";
 }
 
 void FormAddAccount::addSelectedAccount() {
@@ -41,7 +41,7 @@ void FormAddAccount::addSelectedAccount() {
     m_model->addServiceAccount(new_root, true);
   }
   else {
-    qWarning("Cannot create new account.");
+    qDebugNN << LOGSEC_CORE << "Cannot create new account.";
   }
 }
 
@@ -55,7 +55,7 @@ void FormAddAccount::loadEntryPoints() {
 
     if (entry_point->isSingleInstanceService() && m_model->containsServiceRootFromEntryPoint(entry_point)) {
       // Oops, this item cannot be added, it is single instance and is already added.
-      item->setFlags(Qt::NoItemFlags);
+      item->setFlags(Qt::ItemFlag::NoItemFlags);
       item->setToolTip(tr("This account can be added only once."));
     }
     else {
