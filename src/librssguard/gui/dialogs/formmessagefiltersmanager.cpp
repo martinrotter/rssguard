@@ -198,7 +198,6 @@ void FormMessageFiltersManager::testFilter() {
 
 void FormMessageFiltersManager::loadAccount(ServiceRoot* account) {
   m_feedsModel->setRootItem(account, false, true);
-  m_ui.m_treeFeeds->expandAll();
 }
 
 void FormMessageFiltersManager::loadFilterFeedAssignments(MessageFilter* filter, ServiceRoot* account) {
