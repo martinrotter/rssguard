@@ -95,6 +95,8 @@ enum class DuplicationAttributeCheck {
   SameDateCreated = 8,
 
   // Compare with all messages from the account not only with messages from same feed.
+  // Note that this value must be used via bitwise OR with other values,
+  // for example 2 | 4 | 16.
   AllFeedsSameAccount = 16
 };
 
