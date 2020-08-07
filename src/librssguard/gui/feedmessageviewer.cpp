@@ -64,7 +64,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget* parent) : TabContent(parent), m_to
 }
 
 FeedMessageViewer::~FeedMessageViewer() {
-  qDebug("Destroying FeedMessageViewer instance.");
+  qDebugNN << LOGSEC_GUI << "Destroying FeedMessageViewer instance.";
 }
 
 #if defined(USE_WEBENGINE)

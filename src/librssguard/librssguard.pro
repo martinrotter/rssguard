@@ -47,7 +47,6 @@ HEADERS += core/feeddownloader.h \
            exceptions/ioexception.h \
            gui/baselineedit.h \
            gui/basetoolbar.h \
-           gui/colorlabel.h \
            gui/comboboxwithstatus.h \
            gui/dialogs/formabout.h \
            gui/dialogs/formaddaccount.h \
@@ -192,7 +191,6 @@ SOURCES += core/feeddownloader.cpp \
            exceptions/ioexception.cpp \
            gui/baselineedit.cpp \
            gui/basetoolbar.cpp \
-           gui/colorlabel.cpp \
            gui/comboboxwithstatus.cpp \
            gui/dialogs/formabout.cpp \
            gui/dialogs/formaddaccount.cpp \

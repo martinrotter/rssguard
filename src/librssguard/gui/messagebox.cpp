@@ -36,16 +36,16 @@ void MessageBox::setCheckBox(QMessageBox* msg_box, const QString& text, bool* da
 
 QIcon MessageBox::iconForStatus(QMessageBox::Icon status) {
   switch (status) {
-    case QMessageBox::Information:
+    case QMessageBox::Icon::Information:
       return qApp->icons()->fromTheme(QSL("dialog-information"));
 
-    case QMessageBox::Warning:
+    case QMessageBox::Icon::Warning:
       return qApp->icons()->fromTheme(QSL("dialog-warning"));
 
-    case QMessageBox::Critical:
+    case QMessageBox::Icon::Critical:
       return qApp->icons()->fromTheme(QSL("dialog-error"));
 
-    case QMessageBox::Question:
+    case QMessageBox::Icon::Question:
       return qApp->icons()->fromTheme(QSL("dialog-question"));
 
     default:

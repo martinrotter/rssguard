@@ -17,7 +17,7 @@ TabBar::TabBar(QWidget* parent) : QTabBar(parent) {
 }
 
 TabBar::~TabBar() {
-  qDebug("Destroying TabBar instance.");
+  qDebugNN << LOGSEC_GUI << "Destroying TabBar instance.";
 }
 
 void TabBar::setTabType(int index, const TabBar::TabType& type) {

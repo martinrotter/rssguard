@@ -91,15 +91,18 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString& 
     QSqlQuery query(QSL("SELECT version();"), database);
 
     if (!query.lastError().isValid() && query.next()) {
-      qDebug("Checked MySQL database, version is '%s'.", qPrintable(query.value(0).toString()));
+      qDebugNN << LOGSEC_DB
+               << "Checked MySQL database, version is '"
+               << query.value(0).toString()
+               << "'.";
 
       // Connection succeeded, clean up the mess and return OK status.
       database.close();
-      return MySQLError::MySQLOk;
+      return MySQLError::Ok;
     }
     else {
       database.close();
-      return MySQLError::MySQLUnknownError;
+      return MySQLError::UnknownError;
     }
   }
   else if (database.lastError().isValid()) {
@@ -111,37 +114,36 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString& 
       return static_cast<MySQLError>(nat_int);
     }
     else {
-      qWarning("Failed to recognize MySQL error code: '%s'.", qPrintable(nat));
+      qWarningNN << LOGSEC_DB
+                 << "Failed to recognize MySQL error code: '"
+                 << nat
+                 << "'.";
 
-      return MySQLError::MySQLUnknownError;
+      return MySQLError::UnknownError;
     }
   }
   else {
-    return MySQLError::MySQLUnknownError;
+    return MySQLError::UnknownError;
   }
 }
 
 QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) const {
   switch (error_code) {
-    case MySQLError::MySQLOk:
+    case MySQLError::Ok:
       return tr("MySQL server works as expected.");
 
-    case MySQLError::MySQLUnknownDatabase:
+    case MySQLError::UnknownDatabase:
       return tr("Selected database does not exist (yet). It will be created. It's okay.");
 
-    case MySQLError::MySQLCantConnect:
-    case MySQLError::MySQLConnectionError:
-    case MySQLError::MySQLUnknownHost:
+    case MySQLError::CantConnect:
+    case MySQLError::ConnectionError:
+    case MySQLError::UnknownHost:
       return tr("No MySQL server is running in the target destination.");
 
-    case MySQLError::MySQLAccessDenied:
-
-      //: Access to MySQL server was denied.
+    case MySQLError::AccessDenied:
       return tr("Access denied. Invalid username or password used.");
 
     default:
-
-      //: Unknown MySQL error arised.
       return tr("Unknown error: '%1'.").arg(int(error_code));
   }
 }
@@ -167,14 +169,18 @@ void DatabaseFactory::finishRestoration() {
   const QString backup_database_file = m_sqliteDatabaseFilePath + QDir::separator() + BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE;
 
   if (QFile::exists(backup_database_file)) {
-    qWarning("Backup database file '%s' was detected. Restoring it.", qPrintable(QDir::toNativeSeparators(backup_database_file)));
+    qDebugNN << LOGSEC_DB
+             << "Backup database file '"
+             << QDir::toNativeSeparators(backup_database_file)
+             << "' was detected. Restoring it.";
 
     if (IOFactory::copyFile(backup_database_file, m_sqliteDatabaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE)) {
       QFile::remove(backup_database_file);
-      qDebug("Database file was restored successully.");
+      qDebugNN << LOGSEC_DB << "Database file was restored successully.";
     }
     else {
-      qCritical("Database file was NOT restored due to error when copying the file.");
+      qCriticalNN << LOGSEC_DB
+                  << "Database file was NOT restored due to error when copying the file.";
     }
   }
 }
@@ -190,7 +196,8 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
   database.setDatabaseName(QSL("file::memory:"));
 
   if (!database.open()) {
-    qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
+    qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'",
+           qPrintable(database.lastError().text()));
   }
   else {
     QSqlQuery query_db(database);
@@ -208,7 +215,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"));
 
     if (query_db.lastError().isValid()) {
-      qWarning("Error occurred. In-memory SQLite database is not initialized. Initializing now.");
+      qWarningNN << LOGSEC_DB << "Error occurred. In-memory SQLite database is not initialized. Initializing now.";
       QFile file_init(APP_SQL_PATH + QDir::separator() + APP_DB_SQLITE_INIT);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -231,17 +238,20 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
         query_db.exec(statement);
 
         if (query_db.lastError().isValid()) {
-          qFatal("In-memory SQLite database initialization failed. Initialization script '%s' is not correct.", APP_DB_SQLITE_INIT);
+          qFatal("In-memory SQLite database initialization failed. Initialization script '%s' is not correct.",
+                 APP_DB_SQLITE_INIT);
         }
       }
 
       database.commit();
-      qDebug("In-memory SQLite database backend should be ready now.");
+      qDebugNN << LOGSEC_DB << "In-memory SQLite database backend should be ready now.";
     }
     else {
       query_db.next();
-      qDebug("In-memory SQLite database connection seems to be established.");
-      qDebug("In-memory SQLite database has version '%s'.", qPrintable(query_db.value(0).toString()));
+      qDebugNN << LOGSEC_DB << "In-memory SQLite database connection seems to be established.";
+      qDebugNN << LOGSEC_DB << "In-memory SQLite database has version '"
+               << query_db.value(0).toString()
+               << "'.";
     }
 
     // Loading messages from file-based database.
@@ -267,7 +277,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
       copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
     }
 
-    qDebug("Copying data from file-based database into working in-memory database.");
+    qDebugNN << LOGSEC_DB << "Copying data from file-based database into working in-memory database.";
 
     // Detach database and finish.
     copy_contents.exec(QSL("DETACH 'storage'"));
@@ -322,7 +332,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString& c
 
     // Sample query which checks for existence of tables.
     if (!query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
-      qWarning("Error occurred. File-based SQLite database is not initialized. Initializing now.");
+      qWarningNN << LOGSEC_DB << "Error occurred. File-based SQLite database is not initialized. Initializing now.";
       QFile file_init(APP_SQL_PATH + QDir::separator() + APP_DB_SQLITE_INIT);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -352,7 +362,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString& c
 
       database.commit();
       query_db.finish();
-      qDebug("File-based SQLite database backend should be ready now.");
+      qDebugNN << LOGSEC_DB << "File-based SQLite database backend should be ready now.";
     }
     else {
       query_db.next();
@@ -362,9 +372,12 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString& c
 
       if (installed_db_schema.toInt() < QString(APP_DB_SCHEMA_VERSION).toInt()) {
         if (sqliteUpdateDatabaseSchema(database, installed_db_schema)) {
-          qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
-                 qPrintable(installed_db_schema),
-                 APP_DB_SCHEMA_VERSION);
+          qDebugNN << LOGSEC_DB
+                   << "Database schema was updated from '"
+                   << installed_db_schema
+                   << "' to '"
+                   << APP_DB_SCHEMA_VERSION
+                   << "' successully or it is already up to date.";
         }
         else {
           qFatal("Database schema was not updated from '%s' to '%s' successully.",
@@ -373,10 +386,16 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString& c
         }
       }
 
-      qDebug("File-based SQLite database connection '%s' to file '%s' seems to be established.",
-             qPrintable(connection_name),
-             qPrintable(QDir::toNativeSeparators(database.databaseName())));
-      qDebug("File-based SQLite database has version '%s'.", qPrintable(installed_db_schema));
+      qDebugNN << LOGSEC_DB
+               << "File-based SQLite database connection '"
+               << connection_name
+               << "' to file '"
+               << QDir::toNativeSeparators(database.databaseName())
+               << "' seems to be established.";
+      qDebugNN << LOGSEC_DB
+               << "File-based SQLite database has version '"
+               << installed_db_schema
+               << "'.";
     }
   }
 
@@ -395,7 +414,7 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(const QSqlDatabase& database, c
 
   // Now, it would be good to create backup of SQLite DB file.
   if (IOFactory::copyFile(sqliteDatabaseFilePath(), sqliteDatabaseFilePath() + ".bak")) {
-    qDebug("Creating backup of SQLite DB file.");
+    qDebugNN << LOGSEC_DB << "Creating backup of SQLite DB file.";
   }
   else {
     qFatal("Creation of backup SQLite DB file failed.");
@@ -433,7 +452,13 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(const QSqlDatabase& database, c
     }
 
     // Increment the version.
-    qDebug("Updating database schema: '%d' -> '%d'.", working_version, working_version + 1);
+    qDebugNN << LOGSEC_DB
+             << "Updating database schema: '"
+             << working_version
+             << "' -> '"
+             << working_version + 1
+             << "'.";
+
     working_version++;
   }
 
@@ -478,7 +503,13 @@ bool DatabaseFactory::mysqlUpdateDatabaseSchema(const QSqlDatabase& database,
     }
 
     // Increment the version.
-    qDebug("Updating database schema: '%d' -> '%d'.", working_version, working_version + 1);
+    qDebugNN << LOGSEC_DB
+             << "Updating database schema: '"
+             << working_version
+             << "' -> '"
+             << working_version + 1
+             << "'.";
+
     working_version++;
   }
 
@@ -522,7 +553,7 @@ QString DatabaseFactory::humanDriverName(const QString& driver_code) const {
 }
 
 void DatabaseFactory::removeConnection(const QString& connection_name) {
-  qDebug("Removing database connection '%s'.", qPrintable(connection_name));
+  qDebugNN << LOGSEC_DB << "Removing database connection '" << connection_name << "'.";
   QSqlDatabase::removeDatabase(connection_name);
 }
 
@@ -536,7 +567,7 @@ QString DatabaseFactory::obtainBeginTransactionSql() const {
 }
 
 void DatabaseFactory::sqliteSaveMemoryDatabase() {
-  qDebug("Saving in-memory working database back to persistent file-based storage.");
+  qDebugNN << LOGSEC_DB << "Saving in-memory working database back to persistent file-based storage.";
 
   QSqlDatabase database = sqliteConnection(QSL("SaveFromMemory"), DesiredType::StrictlyInMemory);
   QSqlDatabase file_database = sqliteConnection(QSL("SaveToFile"), DesiredType::StrictlyFileBased);
@@ -559,28 +590,37 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
 
   for (const QString& table : tables) {
     if (copy_contents.exec(QString(QSL("DELETE FROM storage.%1;")).arg(table))) {
-      qDebug("Cleaning old data from 'storage.%s'.", qPrintable(table));
+      qDebugNN << LOGSEC_DB << "Cleaning old data from 'storage." << table << "'.";
     }
     else {
-      qCritical("Failed to clean old data from 'storage.%s', error: '%s'.",
-                qPrintable(table), qPrintable(copy_contents.lastError().text()));
+      qCriticalNN << LOGSEC_DB << "Failed to clean old data from 'storage."
+                  << table << "', error: '"
+                  << copy_contents.lastError().text() << "'.";
     }
 
     if (copy_contents.exec(QString(QSL("INSERT INTO storage.%1 SELECT * FROM main.%1;")).arg(table))) {
-      qDebug("Copying new data into 'main.%s'.", qPrintable(table));
+      qDebugNN << LOGSEC_DB << "Copying new data into 'main."
+               << table << "'.";
     }
     else {
-      qCritical("Failed to copy new data to 'main.%s', error: '%s'.",
-                qPrintable(table), qPrintable(copy_contents.lastError().text()));
+      qCriticalNN << LOGSEC_DB
+                  << "Failed to copy new data to 'main."
+                  << table
+                  << "', error: '"
+                  << copy_contents.lastError().text()
+                  << "'.";
     }
   }
 
   // Detach database and finish.
   if (copy_contents.exec(QSL("DETACH 'storage'"))) {
-    qDebug("Detaching persistent SQLite file.");
+    qDebugNN << LOGSEC_DB << "Detaching persistent SQLite file.";
   }
   else {
-    qCritical("Failed to detach SQLite file, error: '%s'.", qPrintable(copy_contents.lastError().text()));
+    qCriticalNN << LOGSEC_DB
+                << "Failed to detach SQLite file, error: '"
+                << copy_contents.lastError().text()
+                << "'.";
   }
 
   copy_contents.finish();
@@ -592,7 +632,7 @@ void DatabaseFactory::determineDriver() {
   if (db_driver == APP_DB_MYSQL_DRIVER && QSqlDatabase::isDriverAvailable(APP_DB_SQLITE_DRIVER)) {
     // User wants to use MySQL and MySQL is actually available. Use it.
     m_activeDatabaseDriver = UsedDriver::MYSQL;
-    qDebug("Working database source was as MySQL database.");
+    qDebugNN << LOGSEC_DB << "Working database source was as MySQL database.";
   }
   else {
     // User wants to use SQLite, which is always available. Check if file-based
@@ -600,12 +640,12 @@ void DatabaseFactory::determineDriver() {
     if (qApp->settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool()) {
       // Use in-memory SQLite database.
       m_activeDatabaseDriver = UsedDriver::SQLITE_MEMORY;
-      qDebug("Working database source was determined as SQLite in-memory database.");
+      qDebugNN << LOGSEC_DB << "Working database source was determined as SQLite in-memory database.";
     }
     else {
       // Use strictly file-base SQLite database.
       m_activeDatabaseDriver = UsedDriver::SQLITE;
-      qDebug("Working database source was determined as SQLite file-based database.");
+      qDebugNN << LOGSEC_DB << "Working database source was determined as SQLite file-based database.";
     }
 
     sqliteAssemblyDatabaseFilePath();
@@ -625,7 +665,10 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString& connection_name) {
     QSqlDatabase database;
 
     if (QSqlDatabase::contains(connection_name)) {
-      qDebug("MySQL connection '%s' is already active.", qPrintable(connection_name));
+      qDebugNN << LOGSEC_DB
+               << "MySQL connection '"
+               << connection_name
+               << "' is already active.";
 
       // This database connection was added previously, no need to
       // setup its properties.
@@ -647,9 +690,12 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString& connection_name) {
              qPrintable(database.lastError().text()));
     }
     else {
-      qDebug("MySQL database connection '%s' to file '%s' seems to be established.",
-             qPrintable(connection_name),
-             qPrintable(QDir::toNativeSeparators(database.databaseName())));
+      qDebugNN << LOGSEC_DB
+               << "MySQL database connection '"
+               << connection_name
+               << "' to file '"
+               << QDir::toNativeSeparators(database.databaseName())
+               << "' seems to be established.";
     }
 
     return database;
@@ -667,7 +713,10 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
   database.setPassword(qApp->settings()->password(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
 
   if (!database.open()) {
-    qCritical("MySQL database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
+    qCriticalNN << LOGSEC_DB
+                << "MySQL database was NOT opened. Delivered error message: '"
+                << database.lastError().text()
+                << "'.";
 
     // Now, we will display error warning and return SQLite connection.
     // Also, we set the SQLite driver as active one.
@@ -686,7 +735,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
     if (!query_db.exec(QString("USE %1").arg(database_name))
         || !query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
       // If no "rssguard" database exists or schema version is wrong, then initialize it.
-      qWarning("Error occurred. MySQL database is not initialized. Initializing now.");
+      qWarningNN << LOGSEC_DB << "Error occurred. MySQL database is not initialized. Initializing now.";
       QFile file_init(APP_SQL_PATH + QDir::separator() + APP_DB_MYSQL_INIT);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -716,7 +765,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
       }
 
       database.commit();
-      qDebug("MySQL database backend should be ready now.");
+      qDebugNN << LOGSEC_DB << "MySQL database backend should be ready now.";
     }
     else {
       // Database was previously initialized. Now just check the schema version.

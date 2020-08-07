@@ -42,7 +42,7 @@ MessagesView::MessagesView(QWidget* parent) : QTreeView(parent), m_contextMenu(n
 }
 
 MessagesView::~MessagesView() {
-  qDebug("Destroying MessagesView instance.");
+  qDebugNN << LOGSEC_GUI << "Destroying MessagesView instance.";
 }
 
 void MessagesView::reloadFontSettings() {
@@ -128,7 +128,10 @@ void MessagesView::reloadSelections() {
 
   const QDateTime dt2 = QDateTime::currentDateTime();
 
-  qDebug("Reloading of msg selections took %lld miliseconds.", dt1.msecsTo(dt2));
+  qDebugNN << LOGSEC_GUI
+           << "Reloading of msg selections took "
+           << dt1.msecsTo(dt2)
+           << " miliseconds.";
 }
 
 void MessagesView::setupAppearance() {
@@ -163,7 +166,7 @@ void MessagesView::focusInEvent(QFocusEvent* event) {
 void MessagesView::keyPressEvent(QKeyEvent* event) {
   QTreeView::keyPressEvent(event);
 
-  if (event->key() == Qt::Key_Delete) {
+  if (event->key() == Qt::Key::Key_Delete) {
     deleteSelectedMessages();
   }
 }
@@ -248,7 +251,7 @@ void MessagesView::mousePressEvent(QMouseEvent* event) {
   QTreeView::mousePressEvent(event);
 
   switch (event->button()) {
-    case Qt::LeftButton: {
+    case Qt::MouseButton::LeftButton: {
       // Make sure that message importance is switched when user
       // clicks the "important" column.
       const QModelIndex clicked_index = indexAt(event->pos());
@@ -266,7 +269,7 @@ void MessagesView::mousePressEvent(QMouseEvent* event) {
       break;
     }
 
-    case Qt::MiddleButton: {
+    case Qt::MouseButton::MiddleButton: {
       // Make sure that message importance is switched when user
       // clicks the "important" column.
       const QModelIndex clicked_index = indexAt(event->pos());
@@ -297,11 +300,10 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
   const QModelIndex current_index = currentIndex();
   const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
 
-  qDebug("Current row changed - row [%d,%d] source [%d, %d].",
-         current_index.row(),
-         current_index.column(),
-         mapped_current_index.row(),
-         mapped_current_index.column());
+  qDebugNN << LOGSEC_GUI
+           << "Current row changed - proxy '"
+           << current_index << "', source '"
+           << mapped_current_index << "'.";
 
   if (mapped_current_index.isValid() && selected_rows.count() > 0) {
     Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row());

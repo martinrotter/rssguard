@@ -48,7 +48,7 @@ FeedsView::FeedsView(QWidget* parent)
 }
 
 FeedsView::~FeedsView() {
-  qDebug("Destroying FeedsView instance.");
+  qDebugNN << LOGSEC_GUI << "Destroying FeedsView instance.";
 }
 
 void FeedsView::reloadFontSettings() {

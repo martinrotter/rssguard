@@ -88,6 +88,7 @@
 #define LOGSEC_MESSAGEMODEL         "message-model: "
 #define LOGSEC_GUI                  "gui: "
 #define LOGSEC_CORE                 "core: "
+#define LOGSEC_DB                   "database: "
 
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f
@@ -158,10 +159,6 @@
 
 #ifndef qCriticalNN
 #define qCriticalNN qCritical().noquote().nospace()
-#endif
-
-#ifndef qFatalNN
-#define qFatalNN qFatal().noquote().nospace()
 #endif
 
 #ifndef qInfoNN

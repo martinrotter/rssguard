@@ -192,6 +192,11 @@ bool MessageObject::isDuplicateWithAttribute(int attribute_check) const {
 
   QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
 
+  qDebugNN << LOGSEC_MESSAGEMODEL
+           << "Query for MSG duplicate identification is: '"
+           << full_query
+           << "'.";
+
   q.setForwardOnly(true);
   q.prepare(full_query);
 

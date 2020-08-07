@@ -49,14 +49,15 @@ StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent), m_mutex(new Mutex(QM
 
 StatusBar::~StatusBar() {
   clear();
-  qDebug("Destroying StatusBar instance.");
+  qDebugNN << LOGSEC_GUI "Destroying StatusBar instance.";
 }
 
 QList<QAction*> StatusBar::availableActions() const {
   QList<QAction*> actions = qApp->userActions();
 
   // Now, add placeholder actions for custom stuff.
-  actions << m_barProgressDownloadAction << m_barProgressFeedsAction << m_lblProgressDownloadAction << m_lblProgressFeedsAction;
+  actions << m_barProgressDownloadAction << m_barProgressFeedsAction
+          << m_lblProgressDownloadAction << m_lblProgressFeedsAction;
 
   return actions;
 }

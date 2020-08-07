@@ -41,7 +41,7 @@ void NewspaperPreviewer::showMoreMessages() {
   else {
     qApp->showGuiMessage(tr("Cannot show more messages"),
                          tr("Cannot show more messages because parent feed was removed."),
-                         QSystemTrayIcon::Warning,
+                         QSystemTrayIcon::MessageIcon::Warning,
                          qApp->mainForm(), true);
   }
 }

@@ -33,7 +33,7 @@ TabWidget::TabWidget(QWidget* parent) : QTabWidget(parent), m_menuMain(nullptr) 
 }
 
 TabWidget::~TabWidget() {
-  qDebug("Destroying TabWidget instance.");
+  qDebugNN << LOGSEC_GUI << "Destroying TabWidget instance.";
 }
 
 void TabWidget::setupMainMenuButton() {

@@ -94,6 +94,7 @@ void FormUpdate::checkForUpdates() {
       }
     }
   });
+
   qApp->system()->checkForUpdates();
 }
 
@@ -133,12 +134,14 @@ void FormUpdate::saveUpdateFile(const QByteArray& file_contents) {
       m_readyToInstall = true;
     }
     else {
-      qDebug("Cannot save downloaded update file because target temporary file '%s' cannot be "
-             "opened for writing.", qPrintable(output_file_name));
+      qDebugNN << LOGSEC_GUI
+               << "Cannot save downloaded update file because target temporary file '"
+               << output_file_name
+               << "' cannot be opened for writing.";
     }
   }
   else {
-    qDebug("Cannot save downloaded update file because no TEMP directory is available.");
+    qDebugNN << LOGSEC_GUI << "Cannot save downloaded update file because no TEMP directory is available.";
   }
 }
 
@@ -167,10 +170,11 @@ void FormUpdate::loadAvailableFiles() {
 }
 
 void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, const QByteArray& contents) {
-  qDebug("Download of application update file was completed with code '%d'.", status);
+  qDebugNN << LOGSEC_GUI
+           << "Download of application update file was completed with code '" << status << "'.";
 
   switch (status) {
-    case QNetworkReply::NoError:
+    case QNetworkReply::NetworkError::NoError:
       saveUpdateFile(contents);
       m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Ok, tr("Downloaded successfully"),
                                   tr("Package was downloaded successfully.\nYou can install it now."));
@@ -200,7 +204,11 @@ void FormUpdate::startUpdate() {
 
   if (m_readyToInstall) {
     close();
-    qDebug("Preparing to launch external installer '%s'.", qPrintable(QDir::toNativeSeparators(m_updateFilePath)));
+    qDebugNN << LOGSEC_GUI
+             << "Preparing to launch external installer '"
+             << QDir::toNativeSeparators(m_updateFilePath)
+             << "'.";
+
 #if defined(Q_OS_WIN)
     HINSTANCE exec_result = ShellExecute(nullptr,
                                          nullptr,
@@ -210,7 +218,7 @@ void FormUpdate::startUpdate() {
                                          SW_NORMAL);
 
     if (exec_result <= HINSTANCE(32)) {
-      qDebug("External updater was not launched due to error.");
+      qDebugNN << LOGSEC_GUI << "External updater was not launched due to error.";
       qApp->showGuiMessage(tr("Cannot update application"),
                            tr("Cannot launch external updater. Update application manually."),
                            QSystemTrayIcon::Warning, this);
@@ -219,6 +227,7 @@ void FormUpdate::startUpdate() {
       qApp->quit();
     }
 #endif
+
   }
   else if (update_for_this_system) {
     updateProgress(0, 100);

@@ -43,7 +43,7 @@ FormSettings::FormSettings(QWidget& parent)
 }
 
 FormSettings::~FormSettings() {
-  qDebug("Destroying FormSettings distance.");
+  qDebugNN << LOGSEC_GUI << "Destroying FormSettings distance.";
 }
 
 void FormSettings::saveSettings() {

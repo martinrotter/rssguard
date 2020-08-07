@@ -17,7 +17,7 @@ BaseToolBar::BaseToolBar(const QString& title, QWidget* parent) : QToolBar(title
 }
 
 BaseToolBar::~BaseToolBar() {
-  qDebug("Destroying BaseToolBar instance.");
+  qDebugNN << LOGSEC_GUI << "Destroying BaseToolBar instance.";
 }
 
 void BaseBar::loadSavedActions() {

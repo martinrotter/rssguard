@@ -6,6 +6,8 @@
 #include <QDir>
 #include <QMetaObject>
 
+#include "definitions/definitions.h"
+
 #define AUTOSAVE_IN  (1000 * 3)  // seconds
 #define MAXWAIT      (1000 * 15) // seconds
 
@@ -15,10 +17,10 @@ AutoSaver::AutoSaver(QObject* parent) : QObject(parent) {
 
 AutoSaver::~AutoSaver() {
   if (m_timer.isActive()) {
-    qWarning("AutoSaver: still active when destroyed, changes not saved.");
+    qWarningNN << LOGSEC_CORE << "AutoSaver still active when destroyed, changes not saved.";
 
     if (parent() != nullptr && parent()->metaObject() != nullptr) {
-      qWarning("Should call saveIfNeccessary.");
+      qDebugNN << LOGSEC_CORE << "Should call saveIfNeccessary.";
     }
   }
 }
@@ -51,7 +53,7 @@ void AutoSaver::saveIfNeccessary() {
     m_firstChange.invalidate();
 
     if (!QMetaObject::invokeMethod(parent(), "save", Qt::DirectConnection)) {
-      qWarning("AutoSaver: error invoking slot save() on parent.");
+      qCriticalNN << LOGSEC_CORE << ("AutoSaver error invoking slot save() on parent.");
     }
   }
 }

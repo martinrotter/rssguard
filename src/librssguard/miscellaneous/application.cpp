@@ -94,7 +94,7 @@ Application::Application(const QString& id, int& argc, char** argv)
 }
 
 Application::~Application() {
-  qDebug("Destroying Application instance.");
+  qDebugNN << LOGSEC_CORE << "Destroying Application instance.";
 }
 
 void Application::reactOnForeignNotifications() {
@@ -104,11 +104,11 @@ void Application::reactOnForeignNotifications() {
 void Application::hideOrShowMainForm() {
   // Display main window.
   if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
-    qDebug("Hiding the main window when the application is starting.");
+    qDebugNN << LOGSEC_CORE << "Hiding the main window when the application is starting.";
     mainForm()->switchVisibility(true);
   }
   else {
-    qDebug("Showing the main window when the application is starting.");
+    qDebugNN << LOGSEC_CORE << "Showing the main window when the application is starting.";
     mainForm()->show();
   }
 }
@@ -322,7 +322,11 @@ void Application::restoreDatabaseSettings(bool restore_database, bool restore_se
 }
 
 void Application::processExecutionMessage(const QString& message) {
-  qDebug("Received '%s' execution message from another application instance.", qPrintable(message));
+  qDebugNN << LOGSEC_CORE
+           << "Received '"
+           << message
+           << "' execution message from another application instance.";
+
   const QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR);
 
   if (messages.contains(APP_QUIT_INSTANCE)) {
@@ -378,14 +382,14 @@ NetworkUrlInterceptor* Application::urlIinterceptor() {
 void Application::showTrayIcon() {
   // Display tray icon if it is enabled and available.
   if (SystemTrayIcon::isSystemTrayActivated()) {
-    qDebug("Showing tray icon.");
+    qDebugNN << LOGSEC_CORE << "Showing tray icon.";
     trayIcon()->show();
   }
 }
 
 void Application::deleteTrayIcon() {
   if (m_trayIcon != nullptr) {
-    qDebug("Disabling tray icon, deleting it and raising main application window.");
+    qDebugNN << LOGSEC_CORE << "Disabling tray icon, deleting it and raising main application window.";
     m_mainForm->display();
     delete m_trayIcon;
     m_trayIcon = nullptr;
@@ -406,28 +410,29 @@ void Application::showGuiMessage(const QString& title, const QString& message,
     MessageBox::show(parent, QMessageBox::Icon(message_type), title, message);
   }
   else {
-    qDebug("Silencing GUI message: '%s'.", qPrintable(message));
+    qDebugNN << LOGSEC_CORE << "Silencing GUI message: '" << message << "'.";
   }
 }
 
 void Application::onCommitData(QSessionManager& manager) {
-  qDebug("OS asked application to commit its data.");
+  qDebugNN << LOGSEC_CORE << "OS asked application to commit its data.";
 
   onAboutToQuit();
 
-  manager.setRestartHint(QSessionManager::RestartNever);
+  manager.setRestartHint(QSessionManager::RestartHint::RestartNever);
   manager.release();
 }
 
 void Application::onSaveState(QSessionManager& manager) {
-  qDebug("OS asked application to save its state.");
-  manager.setRestartHint(QSessionManager::RestartNever);
+  qDebugNN << LOGSEC_CORE << "OS asked application to save its state.";
+
+  manager.setRestartHint(QSessionManager::RestartHint::RestartNever);
   manager.release();
 }
 
 void Application::onAboutToQuit() {
   if (m_quitLogicDone) {
-    qWarning("On-close logic is already done.");
+    qWarningNN << LOGSEC_CORE << "On-close logic is already done.";
     return;
   }
 
@@ -441,7 +446,7 @@ void Application::onAboutToQuit() {
   const bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);
 
   processEvents();
-  qDebug("Cleaning up resources and saving application state.");
+  qDebugNN << LOGSEC_CORE << "Cleaning up resources and saving application state.";
 
 #if defined(Q_OS_WIN)
   system()->removeTrolltechJunkRegistryKeys();
@@ -449,7 +454,7 @@ void Application::onAboutToQuit() {
 
   if (locked_safely) {
     // Application obtained permission to close in a safe way.
-    qDebug("Close lock was obtained safely.");
+    qDebugNN << LOGSEC_CORE << "Close lock was obtained safely.";
 
     // We locked the lock to exit peacefully, unlock it to avoid warnings.
     feedUpdateLock()->unlock();
@@ -457,7 +462,7 @@ void Application::onAboutToQuit() {
   else {
     // Request for write lock timed-out. This means
     // that some critical action can be processed right now.
-    qDebug("Close lock timed-out.");
+    qWarningNN << LOGSEC_CORE << "Close lock timed-out.";
   }
 
   qApp->feedReader()->quit();
@@ -470,13 +475,13 @@ void Application::onAboutToQuit() {
   // Now, we can check if application should just quit or restart itself.
   if (m_shouldRestart) {
     finish();
-    qDebug("Killing local peer connection to allow another instance to start.");
+    qDebugNN << LOGSEC_CORE << "Killing local peer connection to allow another instance to start.";
 
     if (QProcess::startDetached(QDir::toNativeSeparators(applicationFilePath()), {})) {
-      qDebug("New application instance was started.");
+      qDebugNN << LOGSEC_CORE << "New application instance was started.";
     }
     else {
-      qWarning("New application instance was not started successfully.");
+      qCriticalNN << LOGSEC_CORE << "New application instance was not started successfully.";
     }
   }
 }

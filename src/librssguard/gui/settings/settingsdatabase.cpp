@@ -52,8 +52,8 @@ void SettingsDatabase::mysqlTestConnection() {
   const QString interpretation = qApp->database()->mysqlInterpretErrorCode(error_code);
 
   switch (error_code) {
-    case DatabaseFactory::MySQLError::MySQLOk:
-    case DatabaseFactory::MySQLError::MySQLUnknownDatabase:
+    case DatabaseFactory::MySQLError::Ok:
+    case DatabaseFactory::MySQLError::UnknownDatabase:
       m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::StatusType::Ok, interpretation, interpretation);
       break;
 
@@ -109,7 +109,10 @@ void SettingsDatabase::selectSqlBackend(int index) {
     m_ui->m_stackedDatabaseDriver->setCurrentIndex(1);
   }
   else {
-    qWarning("GUI for given database driver '%s' is not available.", qPrintable(selected_db_driver));
+    qWarningNN << LOGSEC_GUI
+               << "GUI for given database driver '"
+               << selected_db_driver
+               << "' is not available.";
   }
 }
 
