@@ -774,9 +774,12 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
 
       if (installed_db_schema < APP_DB_SCHEMA_VERSION) {
         if (mysqlUpdateDatabaseSchema(database, installed_db_schema, database_name)) {
-          qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
-                 qPrintable(installed_db_schema),
-                 APP_DB_SCHEMA_VERSION);
+          qDebugNN << LOGSEC_DB
+                   << "Database schema was updated from '"
+                   << installed_db_schema
+                   << "' to '"
+                   << APP_DB_SCHEMA_VERSION
+                   << "' successully or it is already up to date.";
         }
         else {
           qFatal("Database schema was not updated from '%s' to '%s' successully.",
@@ -814,7 +817,10 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
       QSqlDatabase database;
 
       if (QSqlDatabase::contains(connection_name)) {
-        qDebug("SQLite connection '%s' is already active.", qPrintable(connection_name));
+        qDebugNN << LOGSEC_DB
+                 << "SQLite connection '"
+                 << connection_name
+                 << "' is already active.";
 
         // This database connection was added previously, no need to
         // setup its properties.
@@ -831,7 +837,10 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
                qPrintable(database.lastError().text()));
       }
       else {
-        qDebug("In-memory SQLite database connection '%s' seems to be established.", qPrintable(connection_name));
+        qDebugNN << LOGSEC_DB
+                 << "In-memory SQLite database connection '"
+                 << connection_name
+                 << "' seems to be established.";
       }
 
       return database;
@@ -847,7 +856,10 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
       QSqlDatabase database;
 
       if (QSqlDatabase::contains(connection_name)) {
-        qDebug("SQLite connection '%s' is already active.", qPrintable(connection_name));
+        qDebugNN << LOGSEC_DB
+                 << "SQLite connection '"
+                 << connection_name
+                 << "' is already active.";
 
         // This database connection was added previously, no need to
         // setup its properties.
@@ -869,9 +881,12 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString& connection_name, D
                qPrintable(database.lastError().text()));
       }
       else {
-        qDebug("File-based SQLite database connection '%s' to file '%s' seems to be established.",
-               qPrintable(connection_name),
-               qPrintable(QDir::toNativeSeparators(database.databaseName())));
+        qDebugNN << LOGSEC_DB
+                 << "File-based SQLite database connection '"
+                 << connection_name
+                 << "' to file '"
+                 << QDir::toNativeSeparators(database.databaseName())
+                 << "' seems to be established.";
       }
 
       return database;

@@ -8,7 +8,7 @@
 
 class ExternalTool {
   public:
-    explicit ExternalTool();
+    explicit ExternalTool() = default;
     ExternalTool(const ExternalTool& other);
     explicit ExternalTool(QString executable, QStringList parameters);
 

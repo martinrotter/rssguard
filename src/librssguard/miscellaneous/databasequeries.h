@@ -169,7 +169,7 @@ class DatabaseQueries {
   private:
     static QString unnulifyString(const QString& str);
 
-    explicit DatabaseQueries();
+    explicit DatabaseQueries() = default;
 };
 
 template<typename T>

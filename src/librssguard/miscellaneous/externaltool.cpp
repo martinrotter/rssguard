@@ -16,11 +16,9 @@ void ExternalTool::sanitizeParameters() {
   m_parameters.removeAll(QString());
 }
 
-ExternalTool::ExternalTool() = default;
-
 ExternalTool::ExternalTool(const ExternalTool& other) : ExternalTool(other.executable(), other.parameters()) {}
 
-ExternalTool::ExternalTool(QString  executable, QStringList  parameters)
+ExternalTool::ExternalTool(QString executable, QStringList parameters)
   : m_executable(std::move(executable)), m_parameters(std::move(parameters)) {
   sanitizeParameters();
 }
@@ -54,7 +52,6 @@ ExternalTool ExternalTool::fromString(const QString& str) {
 
 QList<ExternalTool> ExternalTool::toolsFromSettings() {
   QStringList tools_encoded = qApp->settings()->value(GROUP(Browser), SETTING(Browser::ExternalTools)).toStringList();
-
   QList<ExternalTool> tools;
 
   for (const QString& tool_encoded : tools_encoded) {

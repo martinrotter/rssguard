@@ -56,7 +56,8 @@ bool DatabaseQueries::markMessageImportant(const QSqlDatabase& db, int id, RootI
   q.setForwardOnly(true);
 
   if (!q.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"))) {
-    qWarning("Query preparation failed for message importance switch.");
+    qWarningNN << LOGSEC_DB
+               << "Query preparation failed for message importance switch.";
     return false;
   }
 
@@ -564,7 +565,9 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                        "WHERE id = :id;");
 
   if (use_transactions && !query_begin_transaction.exec(qApp->database()->obtainBeginTransactionSql())) {
-    qCritical("Transaction start for message downloader failed: '%s'.", qPrintable(query_begin_transaction.lastError().text()));
+    qCriticalNN << LOGSEC_DB
+                << "Transaction start for message downloader failed: '"
+                << query_begin_transaction.lastError().text() << "'.";
     return updated_messages;
   }
 
@@ -600,8 +603,14 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       query_select_with_url.bindValue(QSL(":author"), unnulifyString(message.m_author));
       query_select_with_url.bindValue(QSL(":account_id"), account_id);
 
-      qDebug("Checking if message with title '%s', url '%s' and author '%s' is present in DB.",
-             qPrintable(message.m_title), qPrintable(message.m_url), qPrintable(message.m_author));
+      qDebugNN << LOGSEC_DB
+               << "Checking if message with title '"
+               << message.m_title
+               << "', url '"
+               << message.m_url
+               << "' and author '"
+               << message.m_author
+               << "' is present in DB.";
 
       if (query_select_with_url.exec() && query_select_with_url.next()) {
         id_existing_message = query_select_with_url.value(0).toInt();
@@ -611,10 +620,16 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         contents_existing_message = query_select_with_url.value(4).toString();
         feed_id_existing_message = query_select_with_url.value(5).toString();
 
-        qDebug("Message with these attributes is already present in DB and has DB ID %d.", id_existing_message);
+        qDebugNN << LOGSEC_DB
+                 << "Message with these attributes is already present in DB and has DB ID '"
+                 << id_existing_message
+                 << "'.";
       }
       else if (query_select_with_url.lastError().isValid()) {
-        qWarning("Failed to check for existing message in DB via URL: '%s'.", qPrintable(query_select_with_url.lastError().text()));
+        qWarningNN << LOGSEC_DB
+                   << "Failed to check for existing message in DB via URL: '"
+                   << query_select_with_url.lastError().text()
+                   << "'.";
       }
 
       query_select_with_url.finish();
@@ -625,7 +640,10 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       query_select_with_id.bindValue(QSL(":account_id"), account_id);
       query_select_with_id.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
 
-      qDebug("Checking if message with custom ID %s is present in DB.", qPrintable(message.m_customId));
+      qDebugNN << LOGSEC_DB
+               << "Checking if message with custom ID '"
+               << message.m_customId
+               << "' is present in DB.";
 
       if (query_select_with_id.exec() && query_select_with_id.next()) {
         id_existing_message = query_select_with_id.value(0).toInt();
@@ -635,11 +653,16 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         contents_existing_message = query_select_with_id.value(4).toString();
         feed_id_existing_message = query_select_with_id.value(5).toString();
 
-        qDebug("Message with custom ID %s is already present in DB and has DB ID %d.",
-               qPrintable(message.m_customId), id_existing_message);
+        qDebugNN << LOGSEC_DB
+                 << "Message with custom ID %s is already present in DB and has DB ID '"
+                 << id_existing_message
+                 << "'.";
       }
       else if (query_select_with_id.lastError().isValid()) {
-        qDebug("Failed to check for existing message in DB via ID: '%s'.", qPrintable(query_select_with_id.lastError().text()));
+        qWarningNN << LOGSEC_DB
+                   << "Failed to check for existing message in DB via ID: '"
+                   << query_select_with_id.lastError().text()
+                   << "'.";
       }
 
       query_select_with_id.finish();
@@ -673,14 +696,20 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         *any_message_changed = true;
 
         if (query_update.exec()) {
-          qDebug("Updating message with title '%s' url '%s' in DB.", qPrintable(message.m_title), qPrintable(message.m_url));
+          qDebugNN << LOGSEC_DB
+                   << "Updating message with title '"
+                   << message.m_title
+                   << "' url '"
+                   << message.m_url
+                   << "' in DB.";
 
           if (!message.m_isRead) {
             updated_messages++;
           }
         }
         else if (query_update.lastError().isValid()) {
-          qWarning("Failed to update message in DB: '%s'.", qPrintable(query_update.lastError().text()));
+          qWarningNN << LOGSEC_DB
+                     << "Failed to update message in DB: '" << query_update.lastError().text() << "'.";
         }
 
         query_update.finish();
@@ -704,12 +733,20 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
         updated_messages++;
 
-        qDebug("Adding new message with title '%s' url '%s' to DB.", qPrintable(message.m_title), qPrintable(message.m_url));
+        qDebugNN << LOGSEC_DB
+                 << "Adding new message with title '"
+                 << message.m_title
+                 << "' url '"
+                 << message.m_url
+                 << "' to DB.";
       }
       else if (query_insert.lastError().isValid()) {
-        qWarning("Failed to insert message to DB: '%s' - message title is '%s'.",
-                 qPrintable(query_insert.lastError().text()),
-                 qPrintable(message.m_title));
+        qWarningNN << LOGSEC_DB
+                   << "Failed to insert message to DB: '"
+                   << query_insert.lastError().text()
+                   << "' - message title is '"
+                   << message.m_title
+                   << "'.";
       }
 
       query_insert.finish();
@@ -721,11 +758,17 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   if (db.exec("UPDATE Messages "
               "SET custom_id = id "
               "WHERE custom_id IS NULL OR custom_id = '';").lastError().isValid()) {
-    qWarning("Failed to set custom ID for all messages: '%s'.", qPrintable(db.lastError().text()));
+    qWarningNN << LOGSEC_DB
+               << "Failed to set custom ID for all messages: '"
+               << db.lastError().text()
+               << "'.";
   }
 
   if (use_transactions && !db.commit()) {
-    qCritical("Transaction commit for message downloader failed: '%s'.", qPrintable(db.lastError().text()));
+    qCriticalNN << LOGSEC_DB
+                << "Transaction commit for message downloader failed: '"
+                << db.lastError().text()
+                << "'.";
     db.rollback();
 
     if (ok != nullptr) {
@@ -775,7 +818,10 @@ bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, int account_id) {
     query.bindValue(QSL(":account_id"), account_id);
 
     if (!query.exec()) {
-      qCritical("Removing of account from DB failed, this is critical: '%s'.", qPrintable(query.lastError().text()));
+      qCriticalNN << LOGSEC_DB
+                  << "Removing of account from DB failed, this is critical: '"
+                  << query.lastError().text()
+                  << "'.";
       return false;
     }
     else {
@@ -827,7 +873,10 @@ bool DatabaseQueries::cleanImportantMessages(const QSqlDatabase& db, bool clean_
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
-    qDebug("Cleaning of important messages failed: '%s'.", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_DB
+               << "Cleaning of important messages failed: '"
+               << q.lastError().text()
+               << "'.";
     return false;
   }
   else {
@@ -855,7 +904,10 @@ bool DatabaseQueries::cleanFeeds(const QSqlDatabase& db, const QStringList& ids,
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
-    qDebug("Cleaning of feeds failed: '%s'.", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_DB
+               << "Cleaning of feeds failed: '"
+               << q.lastError().text()
+               << "'.";
     return false;
   }
   else {
@@ -874,7 +926,10 @@ bool DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& 
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
-    qWarning("Removing of left over message filter assignments failed: '%s'.", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_DB
+               << "Removing of leftover message filter assignments failed: '"
+               << q.lastError().text()
+               << "'.";
     return false;
   }
   else {
@@ -891,7 +946,10 @@ bool DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
-    qWarning("Removing of left over messages failed: '%s'.", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_DB
+               << "Removing of leftover messages failed: '"
+               << q.lastError().text()
+               << "'.";
     return false;
   }
   else {
@@ -1065,7 +1123,10 @@ QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(const QSqlDatabase& db,
     }
   }
   else {
-    qWarning("OwnCloud: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
+    qWarningNN << LOGSEC_NEXTCLOUD
+               << "Getting list of activated accounts failed: '"
+               << query.lastError().text()
+               << "'.";
 
     if (ok != nullptr) {
       *ok = false;
@@ -1103,7 +1164,10 @@ QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(const QSqlDatabase& db, bo
     }
   }
   else {
-    qWarning("TT-RSS: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
+    qWarningNN << LOGSEC_TTRSS
+               << "Getting list of activated accounts failed: '"
+               << query.lastError().text()
+               << "'.";
 
     if (ok != nullptr) {
       *ok = false;
@@ -1143,7 +1207,10 @@ bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QSt
     return true;
   }
   else {
-    qWarning("Nextcloud: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
+    qWarningNN << LOGSEC_NEXTCLOUD
+               << "Updating account failed: '"
+               << query.lastError().text()
+               << "'.";
     return false;
   }
 }
@@ -1168,7 +1235,10 @@ bool DatabaseQueries::createOwnCloudAccount(const QSqlDatabase& db, int id_to_as
     return true;
   }
   else {
-    qWarning("Nextcloud: Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_NEXTCLOUD
+               << "Inserting of new account failed: '"
+               << q.lastError().text()
+               << "'.";
     return false;
   }
 }
@@ -1205,7 +1275,10 @@ int DatabaseQueries::createAccount(const QSqlDatabase& db, const QString& code, 
       *ok = false;
     }
 
-    qWarning("Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_DB
+               << "Inserting of new account failed: '"
+               << q.lastError().text()
+               << "'.";
     return 0;
   }
 }
@@ -1266,7 +1339,10 @@ int DatabaseQueries::addStandardCategory(const QSqlDatabase& db, int parent_id, 
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
-    qDebug("Failed to add category to database: '%s'.", qPrintable(q.lastError().text()));
+    qDebugNN << LOGSEC_DB
+             << "Failed to add category to database: '"
+             << q.lastError().text()
+             << "'.";
 
     if (ok != nullptr) {
       *ok = false;
@@ -1362,7 +1438,10 @@ int DatabaseQueries::addStandardFeed(const QSqlDatabase& db, int parent_id, int 
       *ok = false;
     }
 
-    qDebug("Failed to add feed to database: '%s'.", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_DB
+               << "Failed to add feed to database: '"
+               << q.lastError().text()
+               << "'.";
     return 0;
   }
 }
@@ -1403,7 +1482,10 @@ bool DatabaseQueries::editStandardFeed(const QSqlDatabase& db, int parent_id, in
   bool suc = q.exec();
 
   if (!suc) {
-    qCritical("There was error when editing feed: %s", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_DB
+               << "There was error when editing feed: '"
+               << q.lastError().text()
+               << "'.";
   }
 
   return suc;
@@ -1685,7 +1767,10 @@ bool DatabaseQueries::overwriteTtRssAccount(const QSqlDatabase& db, const QStrin
     return true;
   }
   else {
-    qWarning("TT-RSS: Updating account failed: '%s'.", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_TTRSS
+               << "Updating account failed: '"
+               << q.lastError().text()
+               << "'.";
     return false;
   }
 }
@@ -1712,7 +1797,10 @@ bool DatabaseQueries::createTtRssAccount(const QSqlDatabase& db, int id_to_assig
     return true;
   }
   else {
-    qWarning("TT-RSS: Saving of new account failed: '%s'.", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_TTRSS
+               << "Saving of new account failed: '"
+               << q.lastError().text()
+               << "'.";
     return false;
   }
 }
@@ -1733,7 +1821,7 @@ QStringList DatabaseQueries::getAllRecipients(const QSqlDatabase& db, int accoun
     }
   }
   else {
-    qWarningNN << "Query for all recipients failed: '" << query.lastError().text() << "'.";
+    qWarningNN << LOGSEC_GMAIL << "Query for all recipients failed: '" << query.lastError().text() << "'.";
   }
 
   return rec;
@@ -1764,7 +1852,10 @@ QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(const QSqlDatabase& db, bo
     }
   }
   else {
-    qWarning("Gmail: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
+    qWarningNN << LOGSEC_GMAIL
+               << "Getting list of activated accounts failed: '"
+               << query.lastError().text()
+               << "'.";
 
     if (ok != nullptr) {
       *ok = false;
@@ -1805,7 +1896,10 @@ bool DatabaseQueries::storeNewInoreaderTokens(const QSqlDatabase& db, const QStr
     return true;
   }
   else {
-    qWarning("Inoreader: Updating tokens in DB failed: '%s'.", qPrintable(query.lastError().text()));
+    qWarningNN << LOGSEC_INOREADER
+               << "Updating tokens in DB failed: '"
+               << query.lastError().text()
+               << "'.";
     return false;
   }
 }
@@ -1835,7 +1929,10 @@ QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(const QSqlDatabase& db
     }
   }
   else {
-    qWarning("Inoreader: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
+    qWarningNN << LOGSEC_INOREADER
+               << "Getting list of activated accounts failed: '"
+               << query.lastError().text()
+               << "'.";
 
     if (ok != nullptr) {
       *ok = false;
@@ -1866,7 +1963,10 @@ bool DatabaseQueries::overwriteGmailAccount(const QSqlDatabase& db, const QStrin
     return true;
   }
   else {
-    qWarning("Gmail: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
+    qWarningNN << LOGSEC_GMAIL
+               << "Updating account failed: '"
+               << query.lastError().text()
+               << "'.";
     return false;
   }
 }
@@ -1890,7 +1990,10 @@ bool DatabaseQueries::createGmailAccount(const QSqlDatabase& db, int id_to_assig
     return true;
   }
   else {
-    qWarning("Gmail: Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_GMAIL
+               << "Inserting of new account failed: '"
+               << q.lastError().text()
+               << "'.";
     return false;
   }
 }
@@ -1916,7 +2019,10 @@ bool DatabaseQueries::overwriteInoreaderAccount(const QSqlDatabase& db, const QS
     return true;
   }
   else {
-    qWarning("Inoreader: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
+    qWarningNN << LOGSEC_INOREADER
+               << "Updating account failed: '"
+               << query.lastError().text()
+               << "'.";
     return false;
   }
 }
@@ -1940,7 +2046,10 @@ bool DatabaseQueries::createInoreaderAccount(const QSqlDatabase& db, int id_to_a
     return true;
   }
   else {
-    qWarning("Inoreader: Inserting of new account failed: '%s'.", qPrintable(q.lastError().text()));
+    qWarningNN << LOGSEC_INOREADER
+               << "Inserting of new account failed: '"
+               << q.lastError().text()
+               << "'.";
     return false;
   }
 }
@@ -1948,5 +2057,3 @@ bool DatabaseQueries::createInoreaderAccount(const QSqlDatabase& db, int id_to_a
 QString DatabaseQueries::unnulifyString(const QString& str) {
   return str.isNull() ? "" : str;
 }
-
-DatabaseQueries::DatabaseQueries() = default;

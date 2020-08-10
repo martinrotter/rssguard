@@ -36,7 +36,8 @@ FeedReader::FeedReader(QObject* parent)
   asyncCacheSaveFinished();
 
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
-    qDebug("Requesting update for all feeds on application startup.");
+    qDebugNN << LOGSEC_CORE
+             << "Requesting update for all feeds on application startup.";
     QTimer::singleShot(qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateStartupDelay)).toDouble() * 1000,
                        this,
                        &FeedReader::updateAllFeeds);
@@ -44,7 +45,7 @@ FeedReader::FeedReader(QObject* parent)
 }
 
 FeedReader::~FeedReader() {
-  qDebug("Destroying FeedReader instance.");
+  qDebugNN << LOGSEC_CORE << "Destroying FeedReader instance.";
   qDeleteAll(m_feedServices);
   qDeleteAll(m_messageFilters);
 }
