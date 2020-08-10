@@ -3409,7 +3409,7 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
+        <translation>Puede cerrar esta ventana ahora. Vaya atrás a %1</translation>
     </message>
 </context>
 <context>
@@ -3566,7 +3566,7 @@ versión pulsando en esta notificación emergente..</translation>
     <name>ServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Sincronizar</translation>
     </message>
 </context>
 <context>

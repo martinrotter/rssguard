@@ -3407,7 +3407,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
+        <translation>Sie können dieses Fenster jetzt schließen. Gehen Sie zurück zu %1</translation>
     </message>
 </context>
 <context>
@@ -3561,7 +3561,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <name>ServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Synchronisieren</translation>
     </message>
 </context>
 <context>

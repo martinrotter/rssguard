@@ -673,7 +673,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation>BSD Licens (gäller to QtSingleApplication källkod)</translation>
+        <translation>BSD Licens (gäller QtSingleApplication källkod)</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
@@ -741,7 +741,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>MIT License (applies to boolinq source code)</source>
-        <translation type="unfinished"/>
+        <translation>MIT Licens (gäller booling källkod)</translation>
     </message>
 </context>
 <context>
@@ -1301,7 +1301,7 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Den valda NextCloud News-servern kör version %1 som inte stöds. Lägst version %2 krävs.</translation>
     </message>
 </context>
 <context>
@@ -2889,11 +2889,11 @@ Du kan installera det nu.</translation>
     </message>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>Du är inte inloggad</translation>
     </message>
     <message>
         <source>failed to get metadata</source>
-        <translation type="unfinished"/>
+        <translation>Kunde inte hämta metadata</translation>
     </message>
 </context>
 <context>
@@ -2938,7 +2938,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Reply to this message</source>
-        <translation type="unfinished"/>
+        <translation>Svara på det här meddelandet</translation>
     </message>
 </context>
 <context>

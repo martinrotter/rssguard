@@ -741,7 +741,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>MIT License (applies to boolinq source code)</source>
-        <translation type="unfinished"/>
+        <translation>Licença MIT (aplica-se ao código fonte boolinq)</translation>
     </message>
 </context>
 <context>
@@ -1301,7 +1301,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>O servidor Nextcloud News selecionado está executando uma versão não suportada (%1). Pelo menos a versão %2 é necessária.</translation>
     </message>
 </context>
 <context>
@@ -2890,11 +2890,11 @@ Você pode instalá-lo agora.</translation>
     </message>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>você não está logado</translation>
     </message>
     <message>
         <source>failed to get metadata</source>
-        <translation type="unfinished"/>
+        <translation>falha ao obter metadados</translation>
     </message>
 </context>
 <context>
@@ -2939,7 +2939,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Reply to this message</source>
-        <translation type="unfinished"/>
+        <translation>Responder esta mensagem</translation>
     </message>
 </context>
 <context>

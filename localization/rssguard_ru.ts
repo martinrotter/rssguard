@@ -230,7 +230,7 @@
     </message>
     <message>
         <source>Removing starred messages...</source>
-        <translation type="unfinished"/>
+        <translation>Удаление помеченных сообщений...</translation>
     </message>
     <message>
         <source>Starred messages purged...</source>
@@ -318,15 +318,15 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation>&amp;Попробовать снова</translation>
+        <translation>Попробовать снова (&amp;T)</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation>&amp;Остановить</translation>
+        <translation>Остановить (&amp;S)</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation>&amp;Открыть файл</translation>
+        <translation>Открыть файл (&amp;O)</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
@@ -354,7 +354,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation>Открыть &amp;директорию</translation>
+        <translation>Открыть директорию (&amp;D)</translation>
     </message>
     <message>
         <source>Cannot open file</source>
@@ -450,7 +450,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>E-mail address</source>
-        <translation type="unfinished"/>
+        <translation>E-mail адрес</translation>
     </message>
 </context>
 <context>
@@ -653,7 +653,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for important messages</source>
-        <translation type="unfinished"/>
+        <translation>Контекстное меню для важных сообщений</translation>
     </message>
 </context>
 <context>
@@ -736,7 +736,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
-        <translation type="unfinished"/>
+        <translation>GNU GPL License (применяется к исходному коду RSS Guard и mimesis)</translation>
     </message>
     <message>
         <source>MIT License (applies to boolinq source code)</source>
@@ -778,15 +778,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title of your message</source>
-        <translation type="unfinished"/>
+        <translation>Заголовок вашего сообщения</translation>
     </message>
     <message>
         <source>E-mail NOT sent</source>
-        <translation type="unfinished"/>
+        <translation>E-mail НЕ отправлен</translation>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
-        <translation type="unfinished"/>
+        <translation>Ваше сообщение электронной почты не было отправлено.</translation>
     </message>
 </context>
 <context>
@@ -849,7 +849,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Обзор каталога</translation>
+        <translation>Обзор каталога (&amp;S)</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
@@ -986,7 +986,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation>&amp;Логин</translation>
+        <translation>Логин (&amp;L)</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -1085,7 +1085,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation>&amp;Логин</translation>
+        <translation>Логин (&amp;L)</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -1258,15 +1258,15 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Скачать только непрочитанные сообщения</translation>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Пароль для вашей учетной записи Nextcloud</translation>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Имя пользователя для вашей учетной записи Nextcloud</translation>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
@@ -1469,7 +1469,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Скачать только непрочитанные сообщения</translation>
     </message>
 </context>
 <context>
@@ -1744,27 +1744,27 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Помощь</translation>
+        <translation>Помощь (&amp;H)</translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation>&amp;Вид</translation>
+        <translation>Вид (&amp;V)</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>&amp;Инструменты</translation>
+        <translation>Инструменты (&amp;T)</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation>&amp;Выход</translation>
+        <translation>Выход (&amp;Q)</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>&amp;Настройки</translation>
+        <translation>Настройки (&amp;S)</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation>&amp;Сообщения</translation>
+        <translation>Сообщения (&amp;M)</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
@@ -1804,7 +1804,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation>&amp;О приложении</translation>
+        <translation>О приложении (&amp;A)</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
@@ -1828,7 +1828,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation>Выбрать &amp;следующее сообщение</translation>
+        <translation>Выбрать следующее сообщение (&amp;N)</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
@@ -1844,7 +1844,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation>&amp;Список каналов</translation>
+        <translation>Список каналов (&amp;F)</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
@@ -2012,15 +2012,15 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>Каналы &amp;и категории</translation>
+        <translation>Каналы и категории (&amp;C)</translation>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation>&amp;Аккаунты</translation>
+        <translation>Аккаунты (&amp;A)</translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation>&amp;Добавить новый аккаунт</translation>
+        <translation>Добавить новый аккаунт (&amp;A)</translation>
     </message>
     <message>
         <source>Status bar</source>
@@ -2060,7 +2060,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation>Веб-браузер &amp;&amp; вкладки</translation>
+        <translation>Веб-браузер &amp; вкладки (&amp;W)</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
@@ -2129,19 +2129,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"/>
+        <translation>Копировать URL-адреса выбранных элементов (&amp;C)</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить выбранные сообщения как прочитанные (&amp;R)</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Пометить выбранные сообщения как непрочитанные (&amp;U)</translation>
     </message>
     <message>
         <source>Show only &amp;unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Показывать только непрочитанные сообщения (&amp;U)</translation>
     </message>
     <message>
         <source>Message &amp;filters</source>
@@ -2280,15 +2280,15 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Фильтр на основе JavaScript содержит ошибки: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Cannot find &apos;clang-format&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Не удается найти &apos;clang-format&apos;</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-        <translation type="unfinished"/>
+        <translation>Скрипт не был украшен, потому что инструмент &apos;clang-format&apos; не найден.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -2296,7 +2296,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-        <translation type="unfinished"/>
+        <translation>Скрипт не был украшен, потому что инструмент &apos;clang-format&apos; выдавал ошибку.</translation>
     </message>
     <message>
         <source>Beautifier was running for too long time</source>
@@ -2304,11 +2304,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-        <translation type="unfinished"/>
+        <translation>Скрипт не был улучшен, установлен &apos;clang-format&apos;?</translation>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно сохранить новый фильтр, ошибка: &apos;&apos;.</translation>
     </message>
 </context>
 <context>
@@ -2366,7 +2366,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Обзор каталога</translation>
+        <translation>Выберите каталог (&amp;S)</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
@@ -2928,7 +2928,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Reply to this message</source>
-        <translation type="unfinished"/>
+        <translation>Ответить на это сообщение</translation>
     </message>
 </context>
 <context>
@@ -2946,11 +2946,11 @@ Login tokens expiration: %2</source>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"/>
+        <translation>Важные сообщения</translation>
     </message>
     <message>
         <source>You can find all important messages here.</source>
-        <translation type="unfinished"/>
+        <translation>Вы можете найти все важные сообщения здесь.</translation>
     </message>
 </context>
 <context>
@@ -3597,7 +3597,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation>&amp;Обзор</translation>
+        <translation>Обзор (&amp;B)</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
@@ -3842,7 +3842,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation>&amp;Показать пароль</translation>
+        <translation>Показать пароль (&amp;S)</translation>
     </message>
     <message>
         <source>Working database</source>
@@ -3941,7 +3941,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation>&amp;Обзор</translation>
+        <translation>Обзор (&amp;B)</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
@@ -3956,7 +3956,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SettingsFeedsMessages</name>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation>Каналы &amp;и категории</translation>
+        <translation>Каналы и категории (&amp;C)</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
@@ -4004,7 +4004,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation>&amp;Изменить</translation>
+        <translation>Изменить (&amp;C)</translation>
     </message>
     <message>
         <source>Font preview</source>
@@ -4052,7 +4052,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Update all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Обновить все каналы при запуске приложения с начальной задержкой</translation>
     </message>
 </context>
 <context>
@@ -4082,7 +4082,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SettingsGui</name>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation>Иконки &amp;и темы</translation>
+        <translation>Иконки и темы (&amp;I)</translation>
     </message>
     <message>
         <source>Icon theme</source>
@@ -4090,7 +4090,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation>Панель уведомлений</translation>
+        <translation>Панель уведомлений (&amp;T)</translation>
     </message>
     <message>
         <source>Tray icon</source>
@@ -4219,7 +4219,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>Двойной щелчок левой кнопкой мыши</translation>
     </message>
 </context>
 <context>
@@ -4443,7 +4443,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source> and </source>
-        <translation>и</translation>
+        <translation> и </translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>

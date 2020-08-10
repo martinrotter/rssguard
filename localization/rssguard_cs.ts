@@ -3571,7 +3571,7 @@ na tuto bublinu.</translation>
     <name>ServiceRoot</name>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Synchronizovat</translation>
     </message>
 </context>
 <context>
