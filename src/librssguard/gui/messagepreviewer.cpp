@@ -267,6 +267,10 @@ QString MessagePreviewer::prepareHtmlForMessage(const Message& message) {
   }
 
   html += pictures_html;
+  html = html
+         .replace(QSL("\r\n"), QSL("\n"))
+         .replace(QL1C('\r'), QL1C('\n'))
+         .replace(QL1C('\n'), QSL("<br/>"));
 
   return html;
 }
