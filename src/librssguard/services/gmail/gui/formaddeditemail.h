@@ -28,7 +28,7 @@ class FormAddEditEmail : public QDialog {
   private slots:
     void removeRecipientRow();
     void onOkClicked();
-    void addRecipientRow(const QString& recipient = QString());
+    EmailRecipientControl* addRecipientRow(const QString& recipient = QString());
 
   private:
     QList<EmailRecipientControl*> recipientControls() const;

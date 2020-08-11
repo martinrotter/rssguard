@@ -49,7 +49,7 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
 }
 
 void FormAddEditEmail::execForAdd() {
-  addRecipientRow();
+  addRecipientRow()->setFocus();
   exec();
 }
 
@@ -58,6 +58,7 @@ void FormAddEditEmail::execForReply(Message* original_message) {
 
   addRecipientRow(m_originalMessage->m_author);
   m_ui.m_txtSubject->setText(QSL("Re: %1").arg(m_originalMessage->m_title));
+  m_ui.m_txtMessage->setFocus();
   exec();
 }
 
@@ -137,13 +138,15 @@ void FormAddEditEmail::onOkClicked() {
   }
 }
 
-void FormAddEditEmail::addRecipientRow(const QString& recipient) {
+EmailRecipientControl* FormAddEditEmail::addRecipientRow(const QString& recipient) {
   auto* mail_rec = new EmailRecipientControl(recipient, this);
 
   connect(mail_rec, &EmailRecipientControl::removalRequested, this, &FormAddEditEmail::removeRecipientRow);
 
   mail_rec->setPossibleRecipients(m_possibleRecipients);
   m_ui.m_layout->insertRow(m_ui.m_layout->count() - 5, mail_rec);
+
+  return mail_rec;
 }
 
 QList<EmailRecipientControl*> FormAddEditEmail::recipientControls() const {

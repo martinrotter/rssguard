@@ -23,8 +23,11 @@ EmailRecipientControl::EmailRecipientControl(const QString& recipient, QWidget* 
 
   m_cmbRecipientType->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   m_btnCloseMe->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+  m_txtRecipient->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
   m_txtRecipient->setPlaceholderText(tr("E-mail address"));
   m_txtRecipient->setText(recipient);
+
+  setFocusProxy(m_txtRecipient);
 
   m_btnCloseMe->setToolTip("Remove this recipient.");
   m_btnCloseMe->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
