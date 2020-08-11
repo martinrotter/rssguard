@@ -102,10 +102,10 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
     msg.m_author = msg.m_author.toUtf8();
     msg.m_accountId = acc_id;
 
-    // Sanitize title. Remove newlines etc.
-    msg.m_title = QUrl::fromPercentEncoding(msg.m_title.toUtf8())
+    // Sanitize title.
+    msg.m_title = msg.m_title
 
-                  // Replace all continuous white space.
+                  // Shrink consecutive whitespaces.
                   .replace(QRegularExpression(QSL("[\\s]{2,}")), QSL(" "))
 
                   // Remove all newlines and leading white space.
