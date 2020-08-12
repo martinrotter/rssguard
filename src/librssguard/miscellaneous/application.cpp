@@ -54,7 +54,7 @@ Application::Application(const QString& id, int& argc, char** argv)
   m_database(new DatabaseFactory(this)), m_downloadManager(nullptr), m_shouldRestart(false) {
 
   // Setup debug output system.
-  qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}\n"));
+  qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
   determineFirstRuns();
 
   //: Abbreviation of language, e.g. en.

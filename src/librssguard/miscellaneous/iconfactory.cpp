@@ -9,7 +9,7 @@
 IconFactory::IconFactory(QObject* parent) : QObject(parent) {}
 
 IconFactory::~IconFactory() {
-  qDebug("Destroying IconFactory instance.");
+  qDebugNN << LOGSEC_GUI << "Destroying IconFactory instance.";
 }
 
 QIcon IconFactory::fromByteArray(QByteArray array) {
@@ -53,10 +53,11 @@ QIcon IconFactory::miscIcon(const QString& name) {
 
 void IconFactory::setupSearchPaths() {
   QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << APP_THEME_PATH);
-  qDebug("Available icon theme paths: %s.",
-         qPrintable(QIcon::themeSearchPaths()
-                    .replaceInStrings(QRegularExpression(QSL("^|$")), QSL("\'"))
-                    .replaceInStrings(QRegularExpression(QSL("/")), QDir::separator()).join(QSL(", "))));
+  qDebugNN << LOGSEC_GUI
+           << "Available icon theme paths: "
+           << QIcon::themeSearchPaths()
+    .replaceInStrings(QRegularExpression(QSL("^|$")), QSL("\'"))
+    .replaceInStrings(QRegularExpression(QSL("/")), QDir::separator()).join(QSL(", "));
 }
 
 void IconFactory::setCurrentIconTheme(const QString& theme_name) {
@@ -68,7 +69,7 @@ void IconFactory::loadCurrentIconTheme() {
   const QString theme_name_from_settings = qApp->settings()->value(GROUP(GUI), SETTING(GUI::IconTheme)).toString();
 
   if (QIcon::themeName() == theme_name_from_settings) {
-    qDebug("Icon theme '%s' already loaded.", qPrintable(theme_name_from_settings));
+    qDebugNN << LOGSEC_GUI << "Icon theme '" << theme_name_from_settings << "' already loaded.";
     return;
   }
 
@@ -122,9 +123,9 @@ QStringList IconFactory::installedIconThemes() const {
 
     // Iterate all icon themes in this directory.
     for (const QFileInfo& icon_theme_path : icon_dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot |
-                                                                      QDir::Readable | QDir::CaseSensitive |
-                                                                      QDir::NoSymLinks,
-                                                                      QDir::Time)) {
+                                                                   QDir::Readable | QDir::CaseSensitive |
+                                                                   QDir::NoSymLinks,
+                                                                   QDir::Time)) {
       QDir icon_theme_dir = QDir(icon_theme_path.absoluteFilePath());
 
       if (icon_theme_dir.exists(filters_index.at(0))) {

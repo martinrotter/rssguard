@@ -9,7 +9,11 @@
 #include <QLocale>
 #include <QPointer>
 
+#if defined (USE_WEBENGINE)
+
+// WebEngine.
 DKEY WebEngineAttributes::ID = "web_engine_attributes";
+#endif
 
 // AdBlock.
 DKEY AdBlock::ID = "adblock";

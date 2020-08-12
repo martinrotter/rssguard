@@ -430,6 +430,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     msg.m_contents = backup_contents;
   }
 
+  msg.m_contents.replace(QSL("\r\n"), QSL("\n")).replace(QL1C('\r'), QL1C('\n')).replace(QL1C('\n'), QSL("<br/>"));
   return true;
 }
 

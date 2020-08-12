@@ -23,30 +23,44 @@ void Localization::loadActiveLanguage() {
   auto* app_translator = new QTranslator(qApp);
   QString desired_localization = desiredLanguage();
 
-  qDebug("Starting to load active localization. Desired localization is '%s'.", qPrintable(desired_localization));
+  qDebugNN << LOGSEC_CORE
+           << "Starting to load active localization. Desired localization is"
+           << QUOTE_W_SPACE_DOT(desired_localization);
 
   if (app_translator->load(QLocale(desired_localization), "rssguard", QSL("_"), APP_LANG_PATH)) {
     const QString real_loaded_locale = app_translator->translate("QObject", "LANG_ABBREV");
 
     Application::installTranslator(app_translator);
-    qDebug("Application localization '%s' loaded successfully, specifically sublocalization '%s' was loaded.",
-           qPrintable(desired_localization),
-           qPrintable(real_loaded_locale));
+    qDebugNN << LOGSEC_CORE
+             << "Application localization"
+             << QUOTE_W_SPACE(desired_localization)
+             << "loaded successfully, specifically sublocalization"
+             << QUOTE_W_SPACE(real_loaded_locale)
+             << "was loaded.";
     desired_localization = real_loaded_locale;
   }
   else {
-    qWarning("Application localization '%s' was not loaded. Loading '%s' instead.",
-             qPrintable(desired_localization),
-             DEFAULT_LOCALE);
+    qWarningNN << LOGSEC_CORE
+               << "Application localization"
+               << QUOTE_W_SPACE(desired_localization)
+               << "was not loaded. Loading"
+               << QUOTE_W_SPACE(DEFAULT_LOCALE)
+               << "instead.";
     desired_localization = DEFAULT_LOCALE;
   }
 
   if (qt_translator->load(QLocale(desired_localization), "qtbase", QSL("_"), APP_LANG_PATH)) {
     Application::installTranslator(qt_translator);
-    qDebug("Qt localization '%s' loaded successfully.", qPrintable(desired_localization));
+    qDebugNN << LOGSEC_CORE
+             << "Qt localization"
+             << QUOTE_W_SPACE(desired_localization)
+             << "loaded successfully.";
   }
   else {
-    qWarning("Qt localization '%s' was not loaded.", qPrintable(desired_localization));
+    qWarningNN << LOGSEC_CORE
+               << "Qt localization"
+               << QUOTE_W_SPACE(desired_localization)
+               << "WAS NOT loaded successfully.";
   }
 
   m_loadedLanguage = desired_localization;

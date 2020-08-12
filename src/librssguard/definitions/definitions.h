@@ -169,6 +169,9 @@
 #define qInfoNN qInfo().noquote().nospace()
 #endif
 
+#define QUOTE_W_SPACE_DOT(x) " '" << x << "'."
+#define QUOTE_W_SPACE(x) " '" << x << "' "
+
 #ifndef QSL
 
 // Thin macro wrapper for literal strings.

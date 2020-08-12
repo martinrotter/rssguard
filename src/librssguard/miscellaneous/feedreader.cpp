@@ -72,7 +72,7 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
   }
 
   if (m_feedDownloader == nullptr) {
-    qDebug("Creating FeedDownloader singleton.");
+    qDebugNN << LOGSEC_CORE << "Creating FeedDownloader singleton.";
 
     m_feedDownloaderThread = new QThread();
     m_feedDownloader = new FeedDownloader();
@@ -120,10 +120,12 @@ void FeedReader::updateAutoUpdateStatus() {
   if (!m_autoUpdateTimer->isActive()) {
     m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL);
     m_autoUpdateTimer->start();
-    qDebug("Auto-update timer started with interval %d.", m_autoUpdateTimer->interval());
+    qDebugNN << LOGSEC_CORE << "Auto-update timer started with interval "
+             << m_autoUpdateTimer->interval()
+             << " ms.";
   }
   else {
-    qDebug("Auto-update timer is already running.");
+    qDebugNN << LOGSEC_CORE << "Auto-update timer is already running.";
   }
 }
 
@@ -223,15 +225,15 @@ MessagesModel* FeedReader::messagesModel() const {
 
 void FeedReader::executeNextAutoUpdate() {
   if (qApp->mainFormWidget()->isActiveWindow() && m_globalAutoUpdateOnlyUnfocused) {
-    qDebug("Delaying scheduled feed auto-update for one minute since window is focused and updates"
-           "while focused are disabled by the user.");
+    qDebugNN << LOGSEC_CORE
+             << "Delaying scheduled feed auto-update for one minute since window is focused and updates while focused are disabled by the user.";
 
     // Cannot update, quit.
     return;
   }
 
   if (!qApp->feedUpdateLock()->tryLock()) {
-    qDebug("Delaying scheduled feed auto-updates for one minute due to another running update.");
+    qDebugNN << LOGSEC_CORE << "Delaying scheduled feed auto-updates for one minute due to another running update.";
 
     // Cannot update, quit.
     return;
@@ -244,7 +246,9 @@ void FeedReader::executeNextAutoUpdate() {
     m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
   }
 
-  qDebug("Starting auto-update event, pass %d/%d.", m_globalAutoUpdateRemainingInterval, m_globalAutoUpdateInitialInterval);
+  qDebugNN << LOGSEC_CORE
+           << "Starting auto-update event, pass "
+           << m_globalAutoUpdateRemainingInterval << "/" << m_globalAutoUpdateInitialInterval << ".";
 
   // Pass needed interval data and lets the model decide which feeds
   // should be updated in this pass.
@@ -280,10 +284,10 @@ void FeedReader::checkServicesForAsyncOperations() {
 }
 
 void FeedReader::asyncCacheSaveFinished() {
-  qDebug("I will start next check for cached service data in 60 seconds.");
+  qDebugNN << LOGSEC_CORE << "I will start next check for cached service data in 60 seconds.";
 
   QTimer::singleShot(60000, this, [&] {
-    qDebug("Starting next check for cached service data in NOW.");
+    qDebugNN << LOGSEC_CORE << "Saving cached metadata NOW.";
     checkServicesForAsyncOperations();
   });
 }
