@@ -191,22 +191,24 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Sta
       QList<Message> more_messages = decodeLiteMessages(messages_data, stream_id, next_page_token);
       QList<Message> full_messages;
 
-      // Now, we via batch HTTP request obtain full data for each message.
-      bool obtained = obtainAndDecodeFullMessages(more_messages, stream_id, full_messages);
+      if (!more_messages.isEmpty()) {
+        // Now, we via batch HTTP request obtain full data for each message.
+        bool obtained = obtainAndDecodeFullMessages(more_messages, stream_id, full_messages);
 
-      if (obtained) {
-        messages.append(full_messages);
+        if (obtained) {
+          messages.append(full_messages);
 
-        // New batch of messages was obtained, check if we have enough.
-        if (batchSize() > 0 && batchSize() <= messages.size()) {
-          // We have enough messages.
-          break;
+          // New batch of messages was obtained, check if we have enough.
+          if (batchSize() > 0 && batchSize() <= messages.size()) {
+            // We have enough messages.
+            break;
+          }
         }
-      }
-      else {
+        else {
 
-        error = Feed::Status::NetworkError;
-        return messages;
+          error = Feed::Status::NetworkError;
+          return messages;
+        }
       }
     }
     else {
