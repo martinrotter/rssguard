@@ -123,6 +123,10 @@ void Downloader::finished() {
       request.setUrl(redirection_url);
     }
 
+    qWarningNN << LOGSEC_NETWORK
+               << "We are redirecting URL request to:"
+               << QUOTE_W_SPACE_DOT(request.url());
+
     m_activeReply->deleteLater();
     m_activeReply = nullptr;
 
@@ -173,6 +177,12 @@ void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {
   }
 
   emit progress(bytes_received, bytes_total);
+}
+
+void Downloader::setCustomPropsToReply(QNetworkReply* reply) {
+  reply->setProperty("protected", m_targetProtected);
+  reply->setProperty("username", m_targetUsername);
+  reply->setProperty("password", m_targetPassword);
 }
 
 QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
@@ -231,9 +241,7 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
 void Downloader::runDeleteRequest(const QNetworkRequest& request) {
   m_timer->start();
   m_activeReply = m_downloadManager->deleteResource(request);
-  m_activeReply->setProperty("protected", m_targetProtected);
-  m_activeReply->setProperty("username", m_targetUsername);
-  m_activeReply->setProperty("password", m_targetPassword);
+  setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
@@ -241,9 +249,7 @@ void Downloader::runDeleteRequest(const QNetworkRequest& request) {
 void Downloader::runPutRequest(const QNetworkRequest& request, const QByteArray& data) {
   m_timer->start();
   m_activeReply = m_downloadManager->put(request, data);
-  m_activeReply->setProperty("protected", m_targetProtected);
-  m_activeReply->setProperty("username", m_targetUsername);
-  m_activeReply->setProperty("password", m_targetPassword);
+  setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
@@ -251,9 +257,7 @@ void Downloader::runPutRequest(const QNetworkRequest& request, const QByteArray&
 void Downloader::runPostRequest(const QNetworkRequest& request, QHttpMultiPart* multipart_data) {
   m_timer->start();
   m_activeReply = m_downloadManager->post(request, multipart_data);
-  m_activeReply->setProperty("protected", m_targetProtected);
-  m_activeReply->setProperty("username", m_targetUsername);
-  m_activeReply->setProperty("password", m_targetPassword);
+  setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
@@ -261,9 +265,7 @@ void Downloader::runPostRequest(const QNetworkRequest& request, QHttpMultiPart* 
 void Downloader::runPostRequest(const QNetworkRequest& request, const QByteArray& data) {
   m_timer->start();
   m_activeReply = m_downloadManager->post(request, data);
-  m_activeReply->setProperty("protected", m_targetProtected);
-  m_activeReply->setProperty("username", m_targetUsername);
-  m_activeReply->setProperty("password", m_targetPassword);
+  setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
@@ -271,10 +273,7 @@ void Downloader::runPostRequest(const QNetworkRequest& request, const QByteArray
 void Downloader::runGetRequest(const QNetworkRequest& request) {
   m_timer->start();
   m_activeReply = m_downloadManager->get(request);
-  m_activeReply->setProperty("protected", m_targetProtected);
-  m_activeReply->setProperty("username", m_targetUsername);
-  m_activeReply->setProperty("password", m_targetPassword);
-
+  setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }

@@ -112,11 +112,11 @@ void OAuth2Service::timerEvent(QTimerEvent* event) {
 
     if (window_about_expire < QDateTime::currentDateTime()) {
       // We try to refresh access token, because it probably expires soon.
-      qDebug("Refreshing automatically access token.");
+      qDebugNN << LOGSEC_OAUTH << "Refreshing automatically access token.";
       refreshAccessToken();
     }
     else {
-      qDebug("Access token is not expired yet.");
+      qDebugNN << LOGSEC_OAUTH << "Access token is not expired yet.";
     }
   }
 
@@ -145,6 +145,7 @@ void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
                                                  auth_code, m_tokenGrantType,
                                                  m_redirectionHandler->listenAddressPort());
 
+  qDebugNN << LOGSEC_OAUTH << "Posting data for access token retrieval:" << QUOTE_W_SPACE_DOT(content);
   m_networkManager.post(networkRequest, content.toUtf8());
 }
 
@@ -167,6 +168,7 @@ void OAuth2Service::refreshAccessToken(QString refresh_token) {
                        tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
                        QSystemTrayIcon::MessageIcon::Information);
 
+  qDebugNN << LOGSEC_OAUTH << "Posting data for access token refreshing:" << QUOTE_W_SPACE_DOT(content);
   m_networkManager.post(networkRequest, content.toUtf8());
 }
 
@@ -175,7 +177,7 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
   QJsonDocument json_document = QJsonDocument::fromJson(repl);
   QJsonObject root_obj = json_document.object();
 
-  qDebug() << "Token response:" << json_document.toJson();
+  qDebugNN << LOGSEC_OAUTH << "Token response:" << QUOTE_W_SPACE_DOT(json_document.toJson());
 
   if (network_reply->error() != QNetworkReply::NetworkError::NoError) {
     emit tokensRetrieveError(QString(), NetworkFactory::networkErrorText(network_reply->error()));
@@ -200,7 +202,9 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
       setRefreshToken(refresh_token);
     }
 
-    qDebug() << "Obtained refresh token" << refreshToken() << "- expires on date/time" << tokensExpireIn();
+    qDebugNN << LOGSEC_OAUTH
+             << "Obtained refresh token" << QUOTE_W_SPACE(refreshToken())
+             << "- expires on date/time" << QUOTE_W_SPACE_DOT(tokensExpireIn());
 
     emit tokensReceived(accessToken(), refreshToken(), expires);
   }
@@ -260,7 +264,8 @@ void OAuth2Service::setRefreshToken(const QString& refresh_token) {
 
 bool OAuth2Service::login() {
   if (!m_redirectionHandler->isListening()) {
-    qCritical("Cannot log-in because OAuth redirection handler is not listening.");
+    qCriticalNN << LOGSEC_OAUTH
+                << "Cannot log-in because OAuth redirection handler is not listening.";
     return false;
   }
 

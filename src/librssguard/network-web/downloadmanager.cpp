@@ -440,7 +440,7 @@ DownloadManager::DownloadManager(QWidget* parent) : TabContent(parent), m_ui(new
 DownloadManager::~DownloadManager() {
   m_autoSaver->changeOccurred();
   m_autoSaver->saveIfNeccessary();
-  qDebug("Destroying DownloadManager instance.");
+  qDebugNN << LOGSEC_NETWORK << "Destroying DownloadManager instance.";
 }
 
 int DownloadManager::activeDownloads() const {

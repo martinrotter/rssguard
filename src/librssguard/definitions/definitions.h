@@ -95,6 +95,7 @@
 #define LOGSEC_INOREADER            "inoreader: "
 #define LOGSEC_TTRSS                "tt-rss: "
 #define LOGSEC_GMAIL                "gmail: "
+#define LOGSEC_OAUTH                "oauth: "
 
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f

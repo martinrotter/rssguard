@@ -66,6 +66,7 @@ class Downloader : public QObject {
     void progressInternal(qint64 bytes_received, qint64 bytes_total);
 
   private:
+    void setCustomPropsToReply(QNetworkReply* reply);
     QList<HttpResponse> decodeMultipartAnswer(QNetworkReply* reply);
     void manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
                         const QByteArray& data, QHttpMultiPart* multipart_data,
