@@ -132,7 +132,7 @@
 #define APP_DB_SQLITE_FILE            "database.db"
 
 // Keep this in sync with schema versions declared in SQL initialization code.
-#define APP_DB_SCHEMA_VERSION         "15"
+#define APP_DB_SCHEMA_VERSION         "16"
 #define APP_DB_UPDATE_FILE_PATTERN    "db_update_%1_%2_%3.sql"
 #define APP_DB_COMMENT_SPLIT          "-- !\n"
 #define APP_DB_NAME_PLACEHOLDER       "##"

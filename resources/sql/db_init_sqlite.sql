@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '15');
+INSERT INTO Information VALUES (1, 'schema_version', '16');
 -- !
 CREATE TABLE IF NOT EXISTS Accounts (
   id              INTEGER     PRIMARY KEY,
@@ -135,5 +135,23 @@ CREATE TABLE IF NOT EXISTS MessageFiltersInFeeds (
   account_id            INTEGER     NOT NULL,
   
   FOREIGN KEY (filter) REFERENCES MessageFilters (id) ON DELETE CASCADE,
+  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
+);
+-- !
+CREATE TABLE IF NOT EXISTS Labels (
+  id                  INTEGER     PRIMARY KEY,
+  name                TEXT        NOT NULL CHECK (name != ''),
+  color               VARCHAR(7),
+  custom_id           TEXT,
+  account_id          INTEGER     NOT NULL,
+  
+  FOREIGN KEY (account_id) REFERENCES Accounts (id)
+);
+-- !
+CREATE TABLE IF NOT EXISTS LabelsInMessages (
+  label             TEXT        NOT NULL, /* Custom ID of label. */
+  message           TEXT        NOT NULL, /* Custom ID of message. */
+  account_id        INTEGER     NOT NULL,
+  
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
