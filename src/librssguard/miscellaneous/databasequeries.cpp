@@ -1874,6 +1874,27 @@ bool DatabaseQueries::deleteGmailAccount(const QSqlDatabase& db, int account_id)
   return q.exec();
 }
 
+bool DatabaseQueries::storeNewGmailTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id) {
+  QSqlQuery query(db);
+
+  query.prepare("UPDATE GmailAccounts "
+                "SET refresh_token = :refresh_token "
+                "WHERE id = :id;");
+  query.bindValue(QSL(":refresh_token"), refresh_token);
+  query.bindValue(QSL(":id"), account_id);
+
+  if (query.exec()) {
+    return true;
+  }
+  else {
+    qWarningNN << LOGSEC_GMAIL
+               << "Updating tokens in DB failed: '"
+               << query.lastError().text()
+               << "'.";
+    return false;
+  }
+}
+
 bool DatabaseQueries::deleteInoreaderAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 

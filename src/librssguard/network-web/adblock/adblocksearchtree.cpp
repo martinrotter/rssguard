@@ -20,6 +20,8 @@
 #include "network-web/adblock/adblockrule.h"
 #include "network-web/adblock/adblocksearchtree.h"
 
+#include "definitions/definitions.h"
+
 #include <QWebEngineUrlRequestInfo>
 
 AdBlockSearchTree::AdBlockSearchTree() : m_root(new Node) {}
@@ -42,7 +44,7 @@ bool AdBlockSearchTree::add(const AdBlockRule* rule) {
   int len = filter.size();
 
   if (len <= 0) {
-    qDebug("AdBlockSearchTree: Inserting rule with filter len <= 0!");
+    qWarningNN << LOGSEC_ADBLOCK << "Inserting rule with filter len <= 0!";
     return false;
   }
 

@@ -174,7 +174,9 @@ AdBlockSubscription* AdBlockManager::addSubscription(const QString& title, const
   QSaveFile file(filePath);
 
   if (!file.open(QFile::WriteOnly)) {
-    qWarning("Cannot save AdBlock subscription to file '%s'.", qPrintable(filePath));
+    qWarningNN << LOGSEC_ADBLOCK
+               << "Cannot save AdBlock subscription to file"
+               << QUOTE_W_SPACE_DOT(filePath);
     return nullptr;
   }
 
@@ -262,7 +264,9 @@ void AdBlockManager::load() {
     QUrl url = QUrl(textStream.readLine(1024).remove(QLatin1String("Url: ")));
 
     if (title.isEmpty() || !url.isValid()) {
-      qWarning("Invalid AdBlock subscription file '%s'.", qPrintable(absolutePath));
+      qWarningNN << LOGSEC_ADBLOCK
+                 << "Invalid AdBlock subscription file"
+                 << QUOTE_W_SPACE_DOT(absolutePath);
       continue;
     }
 

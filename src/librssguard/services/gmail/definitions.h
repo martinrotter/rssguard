@@ -12,7 +12,7 @@
 #define GMAIL_API_GET_ATTACHMENT    "https://www.googleapis.com/gmail/v1/users/me/messages/%1/attachments/%2"
 #define GMAIL_API_LABELS_LIST       "https://www.googleapis.com/gmail/v1/users/me/labels"
 #define GMAIL_API_MSGS_LIST         "https://www.googleapis.com/gmail/v1/users/me/messages"
-#define GMAIL_API_BATCH             "https://www.googleapis.com/batch"
+#define GMAIL_API_BATCH             "https://www.googleapis.com/batch/gmail/v1"
 
 #define GMAIL_ATTACHMENT_SEP      "####"
 

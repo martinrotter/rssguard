@@ -120,7 +120,7 @@ QString TextFactory::decrypt(const QString& text) {
 QString TextFactory::newline() {
 #if defined(Q_OS_WIN)
   return QSL("\r\n");
-#elif defined(Q_OS_MACOSOS)
+#elif defined(Q_OS_MACOS)
   return QSL("\r");
 #else
   return QSL("\n");
@@ -152,8 +152,10 @@ quint64 TextFactory::initializeSecretEncryptionKey() {
         IOFactory::writeFile(encryption_file_path, QString::number(s_encryptionKey).toLocal8Bit());
       }
       catch (ApplicationException& ex) {
-        qCritical("Failed to write newly generated encryption key to file, error '%s'. Now, your passwords won't be "
-                  "readable after you start this application again.", qPrintable(ex.message()));
+        qCriticalNN << LOGSEC_CORE
+                    << "Failed to write newly generated encryption key to file, error"
+                    << QUOTE_W_SPACE_DOT(ex.message())
+                    << " Now, your passwords won't be readable after you start this application again.";
       }
     }
   }

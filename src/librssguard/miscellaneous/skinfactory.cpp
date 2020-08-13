@@ -13,6 +13,7 @@ SkinFactory::SkinFactory(QObject* parent) : QObject(parent) {}
 
 void SkinFactory::loadCurrentSkin() {
   QList<QString> skin_names_to_try;
+
   skin_names_to_try.append(selectedSkinName());
   skin_names_to_try.append(APP_SKIN_DEFAULT);
   bool skin_parsed;
@@ -28,15 +29,15 @@ void SkinFactory::loadCurrentSkin() {
 
       // Set this 'Skin' object as active one.
       m_currentSkin = skin_data;
-      qDebug("Skin '%s' loaded.", qPrintable(skin_name));
+      qDebugNN << LOGSEC_GUI << "Skin" << QUOTE_W_SPACE(skin_name) << "loaded.";
       return;
     }
     else {
-      qWarning("Failed to load skin '%s'.", qPrintable(skin_name));
+      qWarningNN << LOGSEC_GUI << "Failed to load skin" << QUOTE_W_SPACE_DOT(skin_name);
     }
   }
 
-  qCritical("Failed to load selected or default skin. Quitting!");
+  qCriticalNN << LOGSEC_GUI << "Failed to load selected or default skin. Quitting!";
 }
 
 void SkinFactory::loadSkinFromData(const Skin& skin) {

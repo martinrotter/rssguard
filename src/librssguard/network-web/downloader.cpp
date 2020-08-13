@@ -19,7 +19,9 @@ Downloader::Downloader(QObject* parent)
   connect(m_timer, &QTimer::timeout, this, &Downloader::cancel);
 }
 
-Downloader::~Downloader() = default;
+Downloader::~Downloader() {
+  qDebugNN << LOGSEC_NETWORK << "Destroying Downloader instance.";
+}
 
 void Downloader::downloadFile(const QString& url, int timeout, bool protected_contents, const QString& username,
                               const QString& password) {
@@ -67,7 +69,9 @@ void Downloader::manipulateData(const QString& url,
   m_timer->setInterval(timeout);
 
   if (non_const_url.startsWith(URI_SCHEME_FEED)) {
-    qDebug("Replacing URI schemes for '%s'.", qPrintable(non_const_url));
+    qDebugNN << LOGSEC_NETWORK
+             << "Replacing URI schemes for"
+             << QUOTE_W_SPACE_DOT(non_const_url);
     request.setUrl(non_const_url.replace(QRegularExpression(QString('^') + URI_SCHEME_FEED), QString(URI_SCHEME_HTTP)));
   }
   else {

@@ -118,10 +118,11 @@ void GmailNetworkFactory::initializeOauth() {
   connect(m_oauth2, &OAuth2Service::authFailed, this, &GmailNetworkFactory::onAuthFailed);
   connect(m_oauth2, &OAuth2Service::tokensReceived, this, [this](QString access_token, QString refresh_token, int expires_in) {
     Q_UNUSED(expires_in)
+    Q_UNUSED(access_token)
 
-    if (m_service != nullptr && !access_token.isEmpty() && !refresh_token.isEmpty()) {
+    if (m_service != nullptr && !refresh_token.isEmpty()) {
       QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-      DatabaseQueries::storeNewInoreaderTokens(database, refresh_token, m_service->accountId());
+      DatabaseQueries::storeNewGmailTokens(database, refresh_token, m_service->accountId());
 
       qApp->showGuiMessage(tr("Logged in successfully"),
                            tr("Your login to Gmail was authorized."),

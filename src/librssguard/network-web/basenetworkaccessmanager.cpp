@@ -29,12 +29,18 @@ void BaseNetworkAccessManager::loadSettings() {
     setProxy(QNetworkProxy::applicationProxy());
   }
 
-  qDebug("Settings of BaseNetworkAccessManager loaded.");
+  qDebugNN << LOGSEC_NETWORK << "Settings of BaseNetworkAccessManager loaded.";
 }
 
 void BaseNetworkAccessManager::onSslErrors(QNetworkReply* reply, const QList<QSslError>& error) {
-  qWarning("Ignoring SSL errors for '%s': '%s' (code %d).", qPrintable(reply->url().toString()), qPrintable(reply->errorString()),
-           int(reply->error()));
+  qWarningNN << LOGSEC_NETWORK
+             << "Ignoring SSL errors for '"
+             << reply->url().toString()
+             << "':"
+             << QUOTE_W_SPACE(reply->errorString())
+             << "(code "
+             << reply->error()
+             << ").";
   reply->ignoreSslErrors(error);
 }
 
@@ -45,7 +51,7 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
 
   // This rapidly speeds up loading of web sites.
   // NOTE: https://en.wikipedia.org/wiki/HTTP_pipelining
-  new_request.setAttribute(QNetworkRequest::HttpPipeliningAllowedAttribute, true);
+  new_request.setAttribute(QNetworkRequest::Attribute::HttpPipeliningAllowedAttribute, true);
 
   // Setup custom user-agent.
   new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, QString(APP_USERAGENT).toLocal8Bit());

@@ -147,6 +147,7 @@ class DatabaseQueries {
     // Gmail account.
     static QStringList getAllRecipients(const QSqlDatabase& db, int account_id);
     static bool deleteGmailAccount(const QSqlDatabase& db, int account_id);
+    static bool storeNewGmailTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static QList<ServiceRoot*> getGmailAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool overwriteGmailAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
                                       const QString& app_key, const QString& redirect_url, const QString& refresh_token,

@@ -398,7 +398,7 @@ QString Settings::pathName() const {
 }
 
 QSettings::Status Settings::checkSettings() {
-  qDebug("Syncing settings.");
+  qDebugNN << LOGSEC_CORE << "Syncing settings.";
   sync();
   return status();
 }
@@ -414,14 +414,17 @@ void Settings::finishRestoration(const QString& desired_settings_file_path) {
                                        BACKUP_NAME_SETTINGS + BACKUP_SUFFIX_SETTINGS;
 
   if (QFile::exists(backup_settings_file)) {
-    qWarning("Backup settings file '%s' was detected. Restoring it.", qPrintable(QDir::toNativeSeparators(backup_settings_file)));
+    qWarningNN << LOGSEC_CORE
+               << "Backup settings file"
+               << QUOTE_W_SPACE(QDir::toNativeSeparators(backup_settings_file))
+               << "was detected. Restoring it.";
 
     if (IOFactory::copyFile(backup_settings_file, desired_settings_file_path)) {
       QFile::remove(backup_settings_file);
-      qDebug("Settings file was restored successully.");
+      qDebugNN << LOGSEC_CORE << "Settings file was restored successully.";
     }
     else {
-      qCritical("Settings file was NOT restored due to error when copying the file.");
+      qCriticalNN << LOGSEC_CORE << "Settings file was NOT restored due to error when copying the file.";
     }
   }
 }
@@ -441,11 +444,16 @@ Settings* Settings::setupSettings(QObject* parent) {
 
   // Check if portable settings are available.
   if (properties.m_type == SettingsProperties::SettingsType::Portable) {
-    qDebug("Initializing settings in '%s' (portable way).", qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
+    qDebugNN << LOGSEC_CORE
+             << "Initializing settings in"
+             << QUOTE_W_SPACE(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName))
+             << "(portable way).";
   }
   else {
-    qDebug("Initializing settings in '%s' (non-portable way).",
-           qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
+    qDebugNN << LOGSEC_CORE
+             << "Initializing settings in"
+             << QUOTE_W_SPACE(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName))
+             << "(non-portable way).";
   }
 
   return new_settings;

@@ -83,6 +83,8 @@
 #define HTTP_HEADERS_AUTHORIZATION  "Authorization"
 #define HTTP_HEADERS_USER_AGENT     "User-Agent"
 
+#define LOGSEC_NETWORK              "network: "
+#define LOGSEC_ADBLOCK              "adblock: "
 #define LOGSEC_FEEDMODEL            "feed-model: "
 #define LOGSEC_FEEDDOWNLOADER       "feed-downloader: "
 #define LOGSEC_MESSAGEMODEL         "message-model: "

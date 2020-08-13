@@ -19,8 +19,6 @@ class Downloader : public QObject {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
     explicit Downloader(QObject* parent = nullptr);
     virtual ~Downloader();
 
@@ -81,10 +79,8 @@ class Downloader : public QObject {
 
   private:
     QNetworkReply* m_activeReply;
-
     QScopedPointer<SilentNetworkAccessManager> m_downloadManager;
     QTimer* m_timer;
-
     QHash<QByteArray, QByteArray> m_customHeaders;
     QByteArray m_inputData;
     QHttpMultiPart* m_inputMultipartData;
@@ -94,7 +90,6 @@ class Downloader : public QObject {
 
     // Response data.
     QByteArray m_lastOutputData;
-
     QList<HttpResponse> m_lastOutputMultipartData;
 
     QNetworkReply::NetworkError m_lastOutputError;
