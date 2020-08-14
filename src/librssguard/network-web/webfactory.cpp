@@ -50,12 +50,12 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
     const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
     auto nice_args = arguments.arg(url);
 
-    qDebug("Arguments for external browser: '%s'.", qPrintable(nice_args));
+    qDebugNN << LOGSEC_NETWORK << "Arguments for external browser:" << QUOTE_W_SPACE_DOT(nice_args);
 
     const bool result = IOFactory::startProcessDetached(browser, {}, nice_args);
 
     if (!result) {
-      qDebug("External web browser call failed.");
+      qDebugNN << LOGSEC_NETWORK << "External web browser call failed.";
     }
 
     return result;
@@ -167,6 +167,7 @@ void WebFactory::createMenu(QMenu* menu) {
   actions << createEngineSettingsAction(tr("Error pages enabled"), QWebEngineSettings::ErrorPageEnabled);
   actions << createEngineSettingsAction(tr("Plugins enabled"), QWebEngineSettings::PluginsEnabled);
   actions << createEngineSettingsAction(tr("Fullscreen enabled"), QWebEngineSettings::FullScreenSupportEnabled);
+
 #if !defined(Q_OS_LINUX)
   actions << createEngineSettingsAction(tr("Screen capture enabled"), QWebEngineSettings::ScreenCaptureEnabled);
   actions << createEngineSettingsAction(tr("WebGL enabled"), QWebEngineSettings::WebGLEnabled);
@@ -175,6 +176,7 @@ void WebFactory::createMenu(QMenu* menu) {
   actions << createEngineSettingsAction(tr("Allow running insecure content"), QWebEngineSettings::AllowRunningInsecureContent);
   actions << createEngineSettingsAction(tr("Allow geolocation on insecure origins"), QWebEngineSettings::AllowGeolocationOnInsecureOrigins);
 #endif
+
   menu->addActions(actions);
 }
 

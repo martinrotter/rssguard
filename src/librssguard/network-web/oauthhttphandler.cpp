@@ -17,7 +17,7 @@ OAuthHttpHandler::OAuthHttpHandler(const QString& success_text, QObject* parent)
 
 OAuthHttpHandler::~OAuthHttpHandler() {
   if (m_httpServer.isListening()) {
-    qWarning("Redirection OAuth handler is listening. Stopping it now.");
+    qWarningNN << LOGSEC_OAUTH << "Redirection OAuth handler is listening. Stopping it now.";
     m_httpServer.close();
   }
 }
@@ -47,19 +47,23 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
   m_listenAddressPort = full_uri;
 
   if (m_httpServer.isListening()) {
-    qWarning("Redirection OAuth handler is listening. Stopping it now.");
+    qWarningNN << LOGSEC_OAUTH << "Redirection OAuth handler is listening. Stopping it now.";
     m_httpServer.close();
   }
 
   if (!m_httpServer.listen(m_listenAddress, m_listenPort)) {
-    qCritical("OAuth redirect handler FAILED TO START TO LISTEN on address '%s' and port '%u'.",
-              qPrintable(m_listenAddress.toString()),
-              m_listenPort);
+    qCriticalNN << LOGSEC_OAUTH
+                << "OAuth redirect handler FAILED TO START TO LISTEN on address"
+                << QUOTE_W_SPACE(m_listenAddress.toString())
+                << "and port"
+                << QUOTE_W_SPACE_DOT(m_listenPort);
   }
   else {
-    qDebug("OAuth redirect handler is listening on address '%s' and port '%u'.",
-           qPrintable(m_listenAddress.toString()),
-           m_listenPort);
+    qDebugNN << LOGSEC_OAUTH
+             << "OAuth redirect handler IS LISTENING on address"
+             << QUOTE_W_SPACE(m_listenAddress.toString())
+             << "and port"
+             << QUOTE_W_SPACE_DOT(m_listenPort);
   }
 }
 
@@ -85,15 +89,18 @@ void OAuthHttpHandler::handleRedirection(const QVariantMap& data) {
     const QString uri = data.value(QSL("error_uri")).toString();
     const QString description = data.value(QSL("error_description")).toString();
 
-    qWarning("OAuth HTTP handler: AuthenticationError: %s(%s): %s", qPrintable(error), qPrintable(uri), qPrintable(description));
+    qCriticalNN << LOGSEC_OAUTH
+                << "AuthenticationError: " << error << "(" << uri << "): " << description;
     emit authRejected(description, received_state);
   }
   else if (code.isEmpty()) {
-    qWarning("OAuth HTTP handler: AuthenticationError: Code not received");
-    emit authRejected(QSL("AuthenticationError: Code not received"), received_state);
+    qCriticalNN << LOGSEC_OAUTH
+                << "We did not receive authentication code.";
+    emit authRejected(QSL("Code not received"), received_state);
   }
   else if (received_state.isEmpty()) {
-    qWarning("OAuth HTTP handler: State not received");
+    qCriticalNN << LOGSEC_OAUTH
+                << "State not received.";
     emit authRejected(QSL("State not received"), received_state);
   }
   else {
@@ -103,7 +110,7 @@ void OAuthHttpHandler::handleRedirection(const QVariantMap& data) {
 
 void OAuthHttpHandler::answerClient(QTcpSocket* socket, const QUrl& url) {
   if (!url.path().remove(QL1C('/')).isEmpty()) {
-    qWarning("OAuth HTTP handler: Invalid request: %s", qPrintable(url.toString()));
+    qCriticalNN << LOGSEC_OAUTH << "Invalid request:" << QUOTE_W_SPACE_DOT(url.toString());
   }
   else {
     QVariantMap received_data;
@@ -145,25 +152,25 @@ void OAuthHttpHandler::readReceivedData(QTcpSocket* socket) {
 
   if (Q_LIKELY(request->m_state == QHttpRequest::State::ReadingMethod)) {
     if (Q_UNLIKELY(error = !request->readMethod(socket))) {
-      qWarning("OAuth HTTP handler: Invalid dethod");
+      qWarningNN << LOGSEC_OAUTH << "Invalid method.";
     }
   }
 
   if (Q_LIKELY(!error && request->m_state == QHttpRequest::State::ReadingUrl)) {
     if (Q_UNLIKELY(error = !request->readUrl(socket))) {
-      qWarning("OAuth HTTP handler: Invalid URL");
+      qWarningNN << LOGSEC_OAUTH << "Invalid URL.";
     }
   }
 
   if (Q_LIKELY(!error && request->m_state == QHttpRequest::State::ReadingStatus)) {
     if (Q_UNLIKELY(error = !request->readStatus(socket))) {
-      qWarning("OAuth HTTP handler: Invalid status");
+      qWarningNN << LOGSEC_OAUTH << "Invalid status.";
     }
   }
 
   if (Q_LIKELY(!error && request->m_state == QHttpRequest::State::ReadingHeader)) {
     if (Q_UNLIKELY(error = !request->readHeader(socket))) {
-      qWarning("OAuth HTTP handler: Invalid header");
+      qWarningNN << LOGSEC_OAUTH << "Invalid header.";
     }
   }
 
@@ -222,7 +229,7 @@ bool OAuthHttpHandler::QHttpRequest::readMethod(QTcpSocket* socket) {
       m_method = Method::Delete;
     }
     else {
-      qWarning("OAuth HTTP handler: Invalid operation %s", m_fragment.data());
+      qWarningNN << LOGSEC_OAUTH << "Invalid operation:" << QUOTE_W_SPACE_DOT(m_fragment.data());
     }
 
     m_state = State::ReadingUrl;
@@ -250,7 +257,7 @@ bool OAuthHttpHandler::QHttpRequest::readUrl(QTcpSocket* socket) {
 
   if (finished) {
     if (!m_fragment.startsWith("/")) {
-      qWarning("OAuth HTTP handler: Invalid URL path %s", m_fragment.constData());
+      qWarningNN << LOGSEC_OAUTH << "Invalid URL path" << QUOTE_W_SPACE_DOT(m_fragment);
       return false;
     }
 
@@ -258,7 +265,7 @@ bool OAuthHttpHandler::QHttpRequest::readUrl(QTcpSocket* socket) {
     m_state = State::ReadingStatus;
 
     if (!m_url.isValid()) {
-      qWarning("OAuth HTTP handler: Invalid URL %s", m_fragment.constData());
+      qWarningNN << LOGSEC_OAUTH << "Invalid URL" << QUOTE_W_SPACE_DOT(m_fragment);
       return false;
     }
 
@@ -283,7 +290,7 @@ bool OAuthHttpHandler::QHttpRequest::readStatus(QTcpSocket* socket) {
 
   if (finished) {
     if ((std::isdigit(m_fragment.at(m_fragment.size() - 3)) == 0) || (std::isdigit(m_fragment.at(m_fragment.size() - 1)) == 0)) {
-      qWarning("OAuth HTTP handler: Invalid version");
+      qWarningNN << LOGSEC_OAUTH << "Invalid version";
       return false;
     }
 

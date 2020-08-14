@@ -14,7 +14,7 @@ SilentNetworkAccessManager::SilentNetworkAccessManager(QObject* parent)
 }
 
 SilentNetworkAccessManager::~SilentNetworkAccessManager() {
-  qDebug("Destroying SilentNetworkAccessManager instance.");
+  qDebugNN << LOGSEC_NETWORK << "Destroying SilentNetworkAccessManager instance.";
 }
 
 void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply* reply, QAuthenticator* authenticator) {
@@ -23,12 +23,18 @@ void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply* reply, 
     authenticator->setUser(reply->property("username").toString());
     authenticator->setPassword(reply->property("password").toString());
     reply->setProperty("authentication-given", true);
-    qDebug("Item '%s' requested authentication and got it.", qPrintable(reply->url().toString()));
+    qDebugNN << LOGSEC_NETWORK
+             << "URL"
+             << QUOTE_W_SPACE(reply->url().toString())
+             << "requested authentication and got it.";
   }
   else {
     reply->setProperty("authentication-given", false);
 
     // Authentication is required but this feed does not contain it.
-    qWarning("Item '%s' requested authentication but username/password is not available.", qPrintable(reply->url().toString()));
+    qWarningNN << LOGSEC_NETWORK
+               << "Item"
+               << QUOTE_W_SPACE(reply->url().toString())
+               << "requested authentication but username/password is not available.";
   }
 }
