@@ -108,6 +108,8 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
         enc_url = enclosure.m_url;
       }
 
+      enc_url = QUrl::fromPercentEncoding(enc_url.toUtf8());
+
       enclosures += skin.m_enclosureMarkup.arg(enc_url,
                                                tr("Attachment"), enclosure.m_mimeType);
 

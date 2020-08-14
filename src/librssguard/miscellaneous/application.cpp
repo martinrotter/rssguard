@@ -83,7 +83,12 @@ Application::Application(const QString& id, int& argc, char** argv)
 
   connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
 
+#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
+  QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor(m_urlInterceptor);
+#else
   QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
+#endif
+
   m_urlInterceptor->loadSettings();
 
   QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(QByteArray(APP_LOW_NAME),
