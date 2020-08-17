@@ -14,7 +14,7 @@ class AccountCheckModel : public QAbstractItemModel {
 
   public:
     explicit AccountCheckModel(QObject* parent = nullptr);
-    virtual ~AccountCheckModel();
+    virtual ~AccountCheckModel() = default;
 
     QModelIndex index(int row, int column, const QModelIndex& parent) const;
     QModelIndex parent(const QModelIndex& child) const;

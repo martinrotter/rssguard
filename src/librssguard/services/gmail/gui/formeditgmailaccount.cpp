@@ -14,8 +14,8 @@ FormEditGmailAccount::FormEditGmailAccount(QWidget* parent)
   m_ui.setupUi(this);
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("gmail")));
-
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
+
   m_ui.m_lblInfo->setText(tr("Specified redirect URL must start with \"http://localhost\" and "
                              "must be configured in your OAuth \"application\"."));
 
@@ -104,12 +104,10 @@ void FormEditGmailAccount::onClickedCancel() {
 
 void FormEditGmailAccount::checkUsername(const QString& username) {
   if (username.isEmpty()) {
-    m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Error, tr("No username entered. \
-  "));
+    m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Error, tr("No username entered."));
   }
   else {
-    m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Ok, tr("Some username entered. \
-  "));
+    m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Ok, tr("Some username entered."));
   }
 }
 

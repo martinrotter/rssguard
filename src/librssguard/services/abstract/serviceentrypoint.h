@@ -13,7 +13,7 @@ class FeedsModel;
 // TOP LEVEL class which provides basic information about the "service"
 class ServiceEntryPoint {
   public:
-    virtual ~ServiceEntryPoint();
+    virtual ~ServiceEntryPoint() = default;
 
     // Creates new service root item, which is ready to be added
     // into the model. This method can for example display

@@ -39,8 +39,6 @@ FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
   onPasswordChanged(QString());
 }
 
-FormFeedDetails::~FormFeedDetails() = default;
-
 int FormFeedDetails::addEditFeed(Feed* input_feed, RootItem* parent_to_select, const QString& url) {
   // Load categories.
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
@@ -187,8 +185,6 @@ void FormFeedDetails::onLoadIconFromFile() {
 void FormFeedDetails::onUseDefaultIcon() {
   m_ui->m_btnIcon->setIcon(QIcon());
 }
-
-void FormFeedDetails::apply() {}
 
 void FormFeedDetails::guessFeed() {
   QPair<StandardFeed*, QNetworkReply::NetworkError> result = StandardFeed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),

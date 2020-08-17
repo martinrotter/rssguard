@@ -269,7 +269,6 @@ SOURCES += core/feeddownloader.cpp \
            services/abstract/importantnode.cpp \
            services/abstract/recyclebin.cpp \
            services/abstract/rootitem.cpp \
-           services/abstract/serviceentrypoint.cpp \
            services/abstract/serviceroot.cpp \
            services/gmail/gmailentrypoint.cpp \
            services/gmail/gmailfeed.cpp \

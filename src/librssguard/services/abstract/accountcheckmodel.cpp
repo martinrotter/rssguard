@@ -9,8 +9,6 @@
 AccountCheckModel::AccountCheckModel(QObject* parent)
   : QAbstractItemModel(parent), m_rootItem(nullptr), m_recursiveChange(false) {}
 
-AccountCheckModel::~AccountCheckModel() = default;
-
 RootItem* AccountCheckModel::itemForIndex(const QModelIndex& index) const {
   if (index.isValid() && index.model() == this) {
     return static_cast<RootItem*>(index.internalPointer());

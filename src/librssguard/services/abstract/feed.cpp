@@ -39,7 +39,9 @@ Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
   setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
 
-  qDebug("Custom ID of feed when loading from DB is '%s'.", qPrintable(customId()));
+  qDebugNN << LOGSEC_CORE
+           << "Custom ID of feed when loading from DB is"
+           << QUOTE_W_SPACE_DOT(customId());
 }
 
 Feed::Feed(const Feed& other) : RootItem(other) {
@@ -188,13 +190,16 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
   if (!error_during_obtaining) {
     bool is_main_thread = QThread::currentThread() == qApp->thread();
 
-    qDebug("Updating messages in DB. Main thread: '%s'.", qPrintable(is_main_thread ? "true" : "false"));
+    qDebugNN << LOGSEC_CORE
+             << "Updating messages in DB. Main thread:"
+             << QUOTE_W_SPACE_DOT(is_main_thread ? "true" : "false");
 
     bool anything_updated = false;
     bool ok = true;
 
     if (!messages.isEmpty()) {
-      qDebug("There are some messages to be updated/added to DB.");
+      qDebugNN << LOGSEC_CORE
+               << "There are some messages to be updated/added to DB.";
 
       QString custom_id = customId();
       int account_id = getParentServiceRoot()->accountId();
@@ -205,7 +210,8 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
       updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(), &anything_updated, &ok);
     }
     else {
-      qWarning("There are no messages for update.");
+      qDebugNN << LOGSEC_CORE
+               << "There are no messages for update.";
     }
 
     if (ok) {
@@ -224,7 +230,8 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
     }
   }
   else {
-    qCritical("There is indication that there was error during messages obtaining.");
+    qCriticalNN << LOGSEC_CORE
+                << "There is indication that there was error during messages obtaining.";
   }
 
   // Some messages were really added to DB, reload feed in model.

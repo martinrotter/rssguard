@@ -20,10 +20,8 @@ class FormFeedDetails : public QDialog {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
     explicit FormFeedDetails(ServiceRoot* service_root, QWidget* parent = nullptr);
-    virtual ~FormFeedDetails();
+    virtual ~FormFeedDetails() = default;
 
   public slots:
 
