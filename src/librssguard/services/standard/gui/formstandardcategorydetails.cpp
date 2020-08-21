@@ -34,7 +34,7 @@ FormStandardCategoryDetails::FormStandardCategoryDetails(StandardServiceRoot* se
 }
 
 FormStandardCategoryDetails::~FormStandardCategoryDetails() {
-  qDebug("Destroying FormCategoryDetails instance.");
+  qDebugNN << LOGSEC_GUI << "Destroying FormCategoryDetails instance.";
 }
 
 void FormStandardCategoryDetails::createConnections() {

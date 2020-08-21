@@ -21,10 +21,10 @@ bool OwnCloudFeed::canBeEdited() const {
 }
 
 bool OwnCloudFeed::editViaGui() {
-  QPointer<FormOwnCloudFeedDetails> form_pointer = new FormOwnCloudFeedDetails(serviceRoot(), qApp->mainFormWidget());
+  QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(serviceRoot(),
+                                                                                   qApp->mainFormWidget()));
 
-  form_pointer.data()->addEditFeed(this, nullptr);
-  delete form_pointer.data();
+  form_pointer->addEditFeed(this, nullptr);
   return false;
 }
 

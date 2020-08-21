@@ -67,7 +67,8 @@ QNetworkReply::NetworkError TtRssNetworkFactory::lastError() const {
 
 TtRssLoginResponse TtRssNetworkFactory::login() {
   if (!m_sessionId.isEmpty()) {
-    qDebug("TT-RSS: Session ID is not empty before login, logging out first.");
+    qWarningNN << LOGSEC_TTRSS
+               << "Session ID is not empty before login, logging out first.";
     logout();
   }
 
@@ -98,7 +99,9 @@ TtRssLoginResponse TtRssNetworkFactory::login() {
     m_lastLoginTime = QDateTime::currentDateTime();
   }
   else {
-    qWarning("TT-RSS: Login failed with error %d.", network_reply.first);
+    qWarningNN << LOGSEC_TTRSS
+               << "Login failed with error:"
+               << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -132,13 +135,16 @@ TtRssResponse TtRssNetworkFactory::logout() {
       m_sessionId.clear();
     }
     else {
-      qWarning("TT-RSS: Logout failed with error %d.", network_reply.first);
+      qWarningNN << LOGSEC_TTRSS
+                 << "Logout failed with error:"
+                 << QUOTE_W_SPACE_DOT(network_reply.first);
     }
 
     return TtRssResponse(QString::fromUtf8(result_raw));
   }
   else {
-    qWarning("TT-RSS: Cannot logout because session ID is empty.");
+    qWarningNN << LOGSEC_TTRSS
+               << "Cannot logout because session ID is empty.";
     m_lastError = QNetworkReply::NoError;
     return TtRssResponse();
   }
@@ -176,7 +182,9 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
   }
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("TT-RSS: getFeedTree failed with error %d.", network_reply.first);
+    qWarningNN << LOGSEC_TTRSS
+               << "getFeedTree failed with error:"
+               << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -226,7 +234,9 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
   //IOFactory::writeFile("aaa", result_raw);
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("TT-RSS: getHeadlines failed with error %d.", network_reply.first);
+    qWarningNN << LOGSEC_TTRSS
+               << "getHeadlines failed with error:"
+               << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
   m_lastError = network_reply.first;

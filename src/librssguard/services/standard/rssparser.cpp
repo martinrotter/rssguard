@@ -58,7 +58,10 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
 
   if (!elem_enclosure.isEmpty()) {
     new_message.m_enclosures.append(Enclosure(elem_enclosure, elem_enclosure_type));
-    qDebug("Found enclosure '%s' for the message.", qPrintable(elem_enclosure));
+    qDebugNN << LOGSEC_CORE
+             << "Found enclosure"
+             << QUOTE_W_SPACE(elem_enclosure)
+             << "for the message.";
   }
   else {
     new_message.m_enclosures.append(mrssGetEnclosures(msg_element));

@@ -35,8 +35,8 @@ QString OwnCloudServiceEntryPoint::code() const {
 }
 
 QString OwnCloudServiceEntryPoint::description() const {
-  return QObject::tr("The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.")
-         .arg(OWNCLOUD_API_VERSION);
+  return QObject::tr("The News app is an RSS/Atom feed aggregator. "
+                     "It is part of Nextcloud suite. This plugin implements %1 API.").arg(OWNCLOUD_API_VERSION);
 }
 
 QString OwnCloudServiceEntryPoint::author() const {

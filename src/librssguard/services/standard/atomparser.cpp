@@ -89,7 +89,10 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime cur
 
     if (attribute == QSL("enclosure")) {
       new_message.m_enclosures.append(Enclosure(link.attribute(QSL("href")), link.attribute(QSL("type"))));
-      qDebug("Found enclosure '%s' for the message.", qPrintable(new_message.m_enclosures.last().m_url));
+      qDebugNN << LOGSEC_CORE
+               << "Found enclosure"
+               << QUOTE_W_SPACE(new_message.m_enclosures.last().m_url)
+               << "for the message.";
     }
     else if (attribute.isEmpty() || attribute == QSL("alternate")) {
       last_link_alternate = link.attribute(QSL("href"));

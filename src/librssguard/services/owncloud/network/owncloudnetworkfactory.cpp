@@ -98,7 +98,9 @@ OwnCloudUserResponse OwnCloudNetworkFactory::userInfo() {
   OwnCloudUserResponse user_response(QString::fromUtf8(result_raw));
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("Nextcloud: Obtaining user info failed with error %d.", network_reply.first);
+    qCriticalNN << LOGSEC_NEXTCLOUD
+                << "Obtaining user info failed with error"
+                << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -120,10 +122,13 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
                                                                         headers);
   OwnCloudStatusResponse status_response(QString::fromUtf8(result_raw));
 
-  qDebugNN << "Raw status data is:" << result_raw;
+  qDebugNN << LOGSEC_NEXTCLOUD
+           << "Raw status data is:" << QUOTE_W_SPACE_DOT(result_raw);
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("Nextcloud: Obtaining status info failed with error %d.", network_reply.first);
+    qCriticalNN << LOGSEC_NEXTCLOUD
+                << "Obtaining status info failed with error"
+                << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -145,7 +150,9 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
                                                                         headers);
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("Nextcloud: Obtaining of categories failed with error %d.", network_reply.first);
+    qCriticalNN << LOGSEC_NEXTCLOUD
+                << "Obtaining of categories failed with error"
+                << QUOTE_W_SPACE_DOT(network_reply.first);
     m_lastError = network_reply.first;
     return OwnCloudGetFeedsCategoriesResponse();
   }
@@ -161,7 +168,9 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
                                                           headers);
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("Nextcloud: Obtaining of feeds failed with error %d.", network_reply.first);
+    qCriticalNN << LOGSEC_NEXTCLOUD
+                << "Obtaining of feeds failed with error"
+                << QUOTE_W_SPACE_DOT(network_reply.first);
     m_lastError = network_reply.first;
     return OwnCloudGetFeedsCategoriesResponse();
   }
@@ -189,7 +198,9 @@ bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id) {
   m_lastError = network_reply.first;
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("Nextcloud: Obtaining of categories failed with error %d.", network_reply.first);
+    qCriticalNN << LOGSEC_NEXTCLOUD
+                << "Obtaining of categories failed with error"
+                << QUOTE_W_SPACE_DOT(network_reply.first);
     return false;
   }
   else {
@@ -220,7 +231,9 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id) {
   m_lastError = network_reply.first;
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("Nextcloud: Creating of category failed with error %d.", network_reply.first);
+    qCriticalNN << LOGSEC_NEXTCLOUD
+                << "Creating of category failed with error"
+                << QUOTE_W_SPACE_DOT(network_reply.first);
     return false;
   }
   else {
@@ -251,7 +264,9 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, const QString& 
   m_lastError = network_reply.first;
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("Nextcloud: Renaming of feed failed with error %d.", network_reply.first);
+    qCriticalNN << LOGSEC_NEXTCLOUD
+                << "Renaming of feed failed with error"
+                << QUOTE_W_SPACE_DOT(network_reply.first);
     return false;
   }
   else {
@@ -283,7 +298,9 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
   OwnCloudGetMessagesResponse msgs_response(QString::fromUtf8(result_raw));
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("Nextcloud: Obtaining messages failed with error %d.", network_reply.first);
+    qCriticalNN << LOGSEC_NEXTCLOUD
+                << "Obtaining messages failed with error"
+                << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -320,7 +337,9 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
                                                                         headers);
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("Nextcloud: Feeds update failed with error %d.", network_reply.first);
+    qCriticalNN << LOGSEC_NEXTCLOUD
+                << "Feeds update failed with error"
+                << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
   return (m_lastError = network_reply.first);
@@ -588,8 +607,10 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
     if (feed->title().isEmpty()) {
       if (feed->url().isEmpty()) {
         // We cannot add feed which has no title and no url to RSS Guard!!!
-        qCritical("Skipping feed with custom ID '%s' from adding to RSS Guard because it has no title and url.",
-                  qPrintable(feed->customId()));
+        qCriticalNN << LOGSEC_NEXTCLOUD
+                    << "Skipping feed with custom ID"
+                    << QUOTE_W_SPACE(feed->customId())
+                    << "from adding to RSS Guard because it has no title and url.";
         continue;
       }
       else {
@@ -598,7 +619,9 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
     }
 
     cats.value(QString::number(item["folderId"].toInt()))->appendChild(feed);
-    qDebug("Custom ID of next fetched processed Nextcloud feed is '%s'.", qPrintable(feed->customId()));
+    qDebugNN << LOGSEC_NEXTCLOUD
+             << "Custom ID of next fetched processed feed is"
+             << QUOTE_W_SPACE_DOT(feed->customId());
   }
 
   return parent;

@@ -40,7 +40,7 @@ bool OwnCloudServiceRoot::canBeDeleted() const {
 bool OwnCloudServiceRoot::editViaGui() {
   QScopedPointer<FormEditOwnCloudAccount> form_pointer(new FormEditOwnCloudAccount(qApp->mainFormWidget()));
 
-  form_pointer.data()->execForEdit(this);
+  form_pointer->execForEdit(this);
   return true;
 }
 
@@ -170,7 +170,7 @@ void OwnCloudServiceRoot::addNewFeed(const QString& url) {
 
   QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(this, qApp->mainFormWidget()));
 
-  form_pointer.data()->addEditFeed(nullptr, this, url);
+  form_pointer->addEditFeed(nullptr, this, url);
   qApp->feedUpdateLock()->unlock();
 }
 

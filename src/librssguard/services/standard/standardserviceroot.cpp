@@ -78,7 +78,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
 }
 
 void StandardServiceRoot::stop() {
-  qDebug("Stopping StandardServiceRoot instance.");
+  qDebugNN << LOGSEC_CORE << "Stopping StandardServiceRoot instance.";
 }
 
 QString StandardServiceRoot::code() const {

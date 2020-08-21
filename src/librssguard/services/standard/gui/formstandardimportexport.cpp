@@ -103,6 +103,7 @@ void FormStandardImportExport::onParsingStarted() {
 void FormStandardImportExport::onParsingFinished(int count_failed, int count_succeeded, bool parsing_error) {
   Q_UNUSED(count_failed)
   Q_UNUSED(count_succeeded)
+
   m_ui->m_progressBar->setVisible(false);
   m_ui->m_progressBar->setValue(0);
   m_model->checkAllItems();

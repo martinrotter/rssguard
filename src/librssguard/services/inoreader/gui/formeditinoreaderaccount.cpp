@@ -15,8 +15,8 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent)
   m_ui.setupUi(this);
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->miscIcon(QSL("inoreader")));
-
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
+
   m_ui.m_lblInfo->setText(tr("Specified redirect URL must start with \"http://localhost\" and "
                              "must be configured in your OAuth \"application\".\n\n"
                              "It is highly recommended to create your own \"Application ID\"."));

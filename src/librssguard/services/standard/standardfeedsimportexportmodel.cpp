@@ -228,7 +228,8 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
           QIcon category_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
 
           if (category_title.isEmpty()) {
-            qWarning("Given OMPL file provided category without valid text attribute. Using fallback name.");
+            qWarningNN << LOGSEC_CORE
+                       << "Given OMPL file provided category without valid text attribute. Using fallback name.";
             category_title = child_element.attribute(QSL("title"));
 
             if (category_title.isEmpty()) {
@@ -311,7 +312,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
       qApp->processEvents();
     }
     else {
-      qWarning("Detected empty URL when parsing input TXT [one URL per line] data.");
+      qWarningNN << LOGSEC_CORE << "Detected empty URL when parsing input TXT [one URL per line] data.";
       failed++;
     }
 

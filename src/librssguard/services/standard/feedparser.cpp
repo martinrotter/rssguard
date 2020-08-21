@@ -16,7 +16,6 @@ FeedParser::~FeedParser() = default;
 
 QList<Message> FeedParser::messages() {
   QString feed_author = feedAuthor();
-
   QList<Message> messages;
   QDateTime current_time = QDateTime::currentDateTime();
 
@@ -38,7 +37,9 @@ QList<Message> FeedParser::messages() {
       messages.append(new_message);
     }
     catch (const ApplicationException& ex) {
-      qDebug() << ex.message();
+      qDebugNN << LOGSEC_CORE
+               << "Problem when extracting message: "
+               << ex.message();
     }
   }
 
@@ -47,7 +48,6 @@ QList<Message> FeedParser::messages() {
 
 QList<Enclosure> FeedParser::mrssGetEnclosures(const QDomElement& msg_element) const {
   QList<Enclosure> enclosures;
-
   auto content_list = msg_element.elementsByTagNameNS(m_mrssNamespace, "content");
 
   for (int i = 0; i < content_list.size(); i++) {
@@ -84,8 +84,8 @@ QStringList FeedParser::textsFromPath(const QDomElement& element, const QString&
                                       const QString& xml_path, bool only_first) const {
   QStringList paths = xml_path.split('/');
   QStringList result;
-
   QList<QDomElement> current_elements;
+
   current_elements.append(element);
 
   while (!paths.isEmpty()) {

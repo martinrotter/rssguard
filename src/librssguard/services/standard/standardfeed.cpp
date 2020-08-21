@@ -48,7 +48,7 @@ StandardFeed::StandardFeed(const StandardFeed& other)
 }
 
 StandardFeed::~StandardFeed() {
-  qDebug("Destroying Feed instance.");
+  qDebugNN << LOGSEC_CORE << "Destroying Feed instance.";
 }
 
 QList<QAction*> StandardFeed::contextMenuFeedsList() {
@@ -197,11 +197,10 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
                                  &error_msg,
                                  &error_line,
                                  &error_column)) {
-      qDebug("XML of feed '%s' is not valid and cannot be loaded. Error: '%s' "
-             "(line %d, column %d).",
-             qPrintable(url),
-             qPrintable(error_msg),
-             error_line, error_column);
+      qDebugNN << LOGSEC_CORE
+               << "XML of feed" << QUOTE_W_SPACE(url) << "is not valid and cannot be loaded. "
+               << "Error:" << QUOTE_W_SPACE(error_msg) << "(line " << error_line
+               << ", column " << error_column << ").";
       result.second = QNetworkReply::UnknownContentError;
 
       // XML is invalid, exit.
@@ -337,7 +336,8 @@ bool StandardFeed::editItself(StandardFeed* new_feed_data) {
                                          new_feed_data->autoUpdateType(), new_feed_data->autoUpdateInitialInterval(),
                                          new_feed_data->type())) {
     // Persistent storage update failed, no way to continue now.
-    qWarning("Self-editing of standard feed failed.");
+    qWarningNN << LOGSEC_CORE
+               << "Self-editing of standard feed failed.";
     return false;
   }
 
@@ -414,7 +414,11 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
                                                            headers).first;
 
   if (m_networkError != QNetworkReply::NoError) {
-    qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
+    qWarningNN << LOGSEC_CORE
+               << "Error"
+               << QUOTE_W_SPACE(m_networkError)
+               << "during fetching of new messages for feed"
+               << QUOTE_W_SPACE_DOT(url());
     setStatus(Status::NetworkError);
     *error_during_obtaining = true;
     return QList<Message>();
