@@ -45,7 +45,9 @@ void TtRssServiceRoot::stop() {
   saveCacheToFile(accountId());
 
   m_network->logout();
-  qDebug("Stopping Tiny Tiny RSS account, logging out with result '%d'.", (int) m_network->lastError());
+  qDebugNN << LOGSEC_TTRSS
+           << "Stopping Tiny Tiny RSS account, logging out with result"
+           << QUOTE_W_SPACE_DOT(m_network->lastError());
 }
 
 QString TtRssServiceRoot::code() const {
@@ -59,7 +61,7 @@ bool TtRssServiceRoot::isSyncable() const {
 bool TtRssServiceRoot::editViaGui() {
   QScopedPointer<FormEditTtRssAccount> form_pointer(new FormEditTtRssAccount(qApp->mainFormWidget()));
 
-  form_pointer.data()->execForEdit(this);
+  form_pointer->execForEdit(this);
   return true;
 }
 
@@ -99,7 +101,7 @@ void TtRssServiceRoot::addNewFeed(const QString& url) {
 
   QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, qApp->mainFormWidget()));
 
-  form_pointer.data()->addEditFeed(nullptr, this, url);
+  form_pointer->addEditFeed(nullptr, this, url);
   qApp->feedUpdateLock()->unlock();
 }
 

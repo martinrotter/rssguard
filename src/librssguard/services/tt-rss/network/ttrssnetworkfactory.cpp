@@ -231,8 +231,6 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
     result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
   }
 
-  //IOFactory::writeFile("aaa", result_raw);
-
   if (network_reply.first != QNetworkReply::NoError) {
     qWarningNN << LOGSEC_TTRSS
                << "getHeadlines failed with error:"
@@ -281,7 +279,9 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
   }
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("TT-RSS: updateArticle failed with error %d.", network_reply.first);
+    qWarningNN << LOGSEC_TTRSS
+               << "updateArticle failed with error"
+               << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -329,7 +329,9 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString&
   }
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("TT-RSS: updateArticle failed with error %d.", network_reply.first);
+    qWarningNN << LOGSEC_TTRSS
+               << "updateArticle failed with error"
+               << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -369,7 +371,9 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
   }
 
   if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("TT-RSS: getFeeds failed with error %d.", network_reply.first);
+    qWarningNN << LOGSEC_TTRSS
+               << "getFeeds failed with error"
+               << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
   m_lastError = network_reply.first;

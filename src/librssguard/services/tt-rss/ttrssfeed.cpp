@@ -48,7 +48,9 @@ bool TtRssFeed::deleteViaGui() {
     return true;
   }
   else {
-    qWarning("TT-RSS: Unsubscribing from feed failed, received JSON: '%s'", qPrintable(response.toString()));
+    qWarningNN << LOGSEC_TTRSS
+               << "Unsubscribing from feed failed, received JSON:"
+               << QUOTE_W_SPACE_DOT(response.toString());
     return false;
   }
 }

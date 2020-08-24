@@ -198,11 +198,11 @@
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation>Сжатие файла базы данных ...</translation>
+        <translation>Сжатие файла базы данных...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation>Файл базы данных сжат ...</translation>
+        <translation>Файл базы данных сжат...</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
@@ -210,11 +210,11 @@
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation>Прочитанные сообщения очищены ...</translation>
+        <translation>Прочитанные сообщения очищены...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation>Корзина очищена ...</translation>
+        <translation>Корзина очищена...</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
@@ -222,11 +222,11 @@
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation>Очистка корзины ...</translation>
+        <translation>Очистка корзины...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation>Старые сообщения очищены ...</translation>
+        <translation>Старые сообщения очищены...</translation>
     </message>
     <message>
         <source>Removing starred messages...</source>
@@ -234,7 +234,7 @@
     </message>
     <message>
         <source>Starred messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Помеченные сообщения удалены...</translation>
     </message>
 </context>
 <context>
@@ -458,7 +458,7 @@ Click here to open parent directory.</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>не использовать авто-обновление</translation>
+        <translation>не использовать автообновление</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-update)</source>
@@ -498,7 +498,9 @@ Click here to open parent directory.</source>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
-        <translation type="unfinished"/>
+        <translation>Статус автообновления: %1
+Активные фильтры сообщений: %2
+Статус: %3</translation>
     </message>
 </context>
 <context>
@@ -524,7 +526,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation>Запущено авто-обновление некоторых каналов</translation>
+        <translation>Запущено автообновление некоторых каналов</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
@@ -692,7 +694,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Changelog not found.</source>
-        <translation>Список изменений не найден</translation>
+        <translation>Список изменений не найден.</translation>
     </message>
     <message>
         <source>About %1</source>
@@ -774,7 +776,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Subject</source>
-        <translation type="unfinished"/>
+        <translation>Тема</translation>
     </message>
     <message>
         <source>Title of your message</source>
@@ -947,7 +949,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation>Загрузка вложения ...</translation>
+        <translation>Загрузка вложения...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
@@ -1034,7 +1036,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Edit existing Gmail account</source>
-        <translation>Изменить существующий аккаунт GMail</translation>
+        <translation>Изменить существующий аккаунт Gmail</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
@@ -1149,7 +1151,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Get my own Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Получить мой ID приложения</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
@@ -1270,15 +1272,15 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>URL вашего сервера Nextcloud, без API пути</translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Добавить новый аккаунт Nextcloud News</translation>
     </message>
     <message>
         <source>Edit existing Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Изменить существующий аккаунт Nextcloud News</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
@@ -1725,11 +1727,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation>Авто-обновление с использованием глобального интервала</translation>
+        <translation>Автообновление с использованием глобального интервала</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation>Авто-обновление каждые</translation>
+        <translation>Автообновление каждые</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
@@ -2254,11 +2256,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>ACCEPTED</source>
-        <translation type="unfinished"/>
+        <translation>ОДОБРЕНО</translation>
     </message>
     <message>
         <source>REJECTED</source>
-        <translation type="unfinished"/>
+        <translation>ОТКЛОНЕНО</translation>
     </message>
     <message>
         <source>Output (modified) message is:
@@ -2645,11 +2647,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation>Ошибка, файл не правильно сформирован. Выберите другой файл.</translation>
+        <translation>Ошибка, файл неправильно сформирован. Выберите другой файл.</translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation>Возникла ошибка. Файл не правильно сформирован. Выберите другой файл.</translation>
+        <translation>Возникла ошибка. Файл неправильно сформирован. Выберите другой файл.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
@@ -2681,7 +2683,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation>Получить онлайн метаданные</translation>
+        <translation>Получить онлайн-метаданные</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
@@ -2844,7 +2846,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно перейти к файлу установки. Загрузите новый файл установки вручную на сацте проекта.</translation>
     </message>
 </context>
 <context>
@@ -2879,11 +2881,11 @@ You can install it now.</source>
     </message>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>вы не вошли</translation>
     </message>
     <message>
         <source>failed to get metadata</source>
-        <translation type="unfinished"/>
+        <translation>не удалось получить метаданные</translation>
     </message>
 </context>
 <context>
@@ -3008,7 +3010,7 @@ Login tokens expiration: %2</source>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
-        <translation>Больше не показывай этот диалог.</translation>
+        <translation>Больше не показывать этот диалог.</translation>
     </message>
 </context>
 <context>
@@ -3333,7 +3335,7 @@ Login tokens expiration: %2</source>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation>прокси сервер не найден</translation>
+        <translation>прокси-сервер не найден</translation>
     </message>
     <message>
         <source>content not found</source>
@@ -3369,7 +3371,7 @@ Login tokens expiration: %2</source>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>Форма</translation>
     </message>
     <message numerus="yes">
         <source>Show more messages (%n remaining)</source>
@@ -3400,15 +3402,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>You have to login first</source>
-        <translation>Вы должны вначале войти</translation>
+        <translation>Вы должны сначала войти</translation>
     </message>
     <message>
         <source>Navigate to website</source>
-        <translation type="unfinished"/>
+        <translation>Перейти на веб-сайт</translation>
     </message>
     <message>
         <source>To login, you need to navigate to this website:</source>
-        <translation type="unfinished"/>
+        <translation>Чтобы войти, нужно перейти на этот веб-сайт:</translation>
     </message>
     <message>
         <source>You can close this window now. Go back to %1</source>
@@ -3654,7 +3656,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation>Хост или IP прокси сервера</translation>
+        <translation>Хост или IP прокси-сервера</translation>
     </message>
     <message>
         <source>Port</source>
@@ -3886,7 +3888,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation>Вы ещё не выполняли тест соединения</translation>
+        <translation>Вы ещё не выполняли тест соединения.</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
@@ -3964,7 +3966,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Only auto-update when application is unfocused</source>
-        <translation>Авто-обновление только когда не в фокусе</translation>
+        <translation>Автообновление только когда не в фокусе</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -4020,7 +4022,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation>Включить уведомление &quot;авто-обновление запущено&quot;</translation>
+        <translation>Включить уведомление &quot;автообновление запущено&quot;</translation>
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
@@ -4319,7 +4321,7 @@ Type: %3</source>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation>Этот аккаунт не содержит каналов. Вы можете добавить каналы по-умолчанию.</translation>
+        <translation>Этот аккаунт не содержит каналов. Вы можете добавить каналы по умолчанию.</translation>
     </message>
     <message>
         <source>Cannot add item</source>
@@ -4447,7 +4449,7 @@ Unread news: %2</source>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n секунда</numerusform><numerusform>%n секунды</numerusform><numerusform>%n секунды</numerusform><numerusform>%n секунд</numerusform></translation>
     </message>
 </context>
 <context>
@@ -4657,7 +4659,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation>Разрешить запуск небесопасного содержимого</translation>
+        <translation>Разрешить запуск небезопасного содержимого</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
@@ -4672,7 +4674,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Written by </source>
-        <translation>Написано</translation>
+        <translation>Написано </translation>
     </message>
     <message>
         <source>Newspaper view</source>
