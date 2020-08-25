@@ -27,7 +27,10 @@ class WebFactory : public QObject {
     // Strips "<....>" (HTML, XML) tags from given text.
     QString stripTags(QString text);
 
-    // HTML entity escaping.
+    // HTML entity unescaping. This method
+    // converts both HTML entity names and numbers to UTF-8 string.
+    // Example of entities are:
+    //   ∀ = &forall; (entity name), &#8704; (base-10 entity), &#x2200; (base-16 entity)
     QString unescapeHtml(const QString& html);
 
 #if defined (USE_WEBENGINE)
@@ -51,7 +54,7 @@ class WebFactory : public QObject {
   private:
     void generateUnescapes();
 
-    QMap<QString, char16_t> m_escapes;
+    QMap<QString, char16_t> m_htmlNamedEntities;
 
 #if defined (USE_WEBENGINE)
     QAction* m_engineSettings;

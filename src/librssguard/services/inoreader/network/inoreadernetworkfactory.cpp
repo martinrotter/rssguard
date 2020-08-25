@@ -316,8 +316,8 @@ QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_j
     auto message_obj = obj.toObject();
     Message message;
 
-    message.m_title = message_obj["title"].toString();
-    message.m_author = message_obj["author"].toString();
+    message.m_title = qApp->web()->unescapeHtml(message_obj["title"].toString());
+    message.m_author = qApp->web()->unescapeHtml(message_obj["author"].toString());
     message.m_created = QDateTime::fromSecsSinceEpoch(message_obj["published"].toInt(), Qt::UTC);
     message.m_createdFromFeed = true;
     message.m_customId = message_obj["id"].toString();
