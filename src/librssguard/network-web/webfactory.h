@@ -28,8 +28,7 @@ class WebFactory : public QObject {
     QString stripTags(QString text);
 
     // HTML entity escaping.
-    QString escapeHtml(const QString& html);
-    QString deEscapeHtml(const QString& text);
+    QString unescapeHtml(const QString& html);
 
 #if defined (USE_WEBENGINE)
     QAction* engineSettingsAction();
@@ -50,11 +49,9 @@ class WebFactory : public QObject {
 #endif
 
   private:
-    void generateEscapes();
-    void generateDeescapes();
+    void generateUnescapes();
 
-    QMap<QString, QString> m_escapes;
-    QMap<QString, QString> m_deEscapes;
+    QMap<QString, char16_t> m_escapes;
 
 #if defined (USE_WEBENGINE)
     QAction* m_engineSettings;

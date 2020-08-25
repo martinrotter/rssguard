@@ -46,13 +46,13 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
     }
     else {
       // Title is empty but description is not.
-      new_message.m_title = qApp->web()->stripTags(elem_description.simplified());
+      new_message.m_title = qApp->web()->unescapeHtml(qApp->web()->stripTags(elem_description.simplified()));
       new_message.m_contents = elem_description;
     }
   }
   else {
     // Title is really not empty, description does not matter.
-    new_message.m_title = qApp->web()->stripTags(elem_title);
+    new_message.m_title = qApp->web()->unescapeHtml(qApp->web()->stripTags(elem_title));
     new_message.m_contents = elem_description;
   }
 
@@ -101,6 +101,8 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
   if (new_message.m_author.isNull()) {
     new_message.m_author = "";
   }
+
+  new_message.m_author = qApp->web()->unescapeHtml(new_message.m_author);
 
   if (new_message.m_url.isNull()) {
     new_message.m_url = "";

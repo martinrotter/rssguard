@@ -60,9 +60,9 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime cur
   }
 
   // Title is not empty, description does not matter.
-  new_message.m_title = qApp->web()->stripTags(title);
+  new_message.m_title = qApp->web()->unescapeHtml(qApp->web()->stripTags(title));
   new_message.m_contents = summary;
-  new_message.m_author = qApp->web()->escapeHtml(messageAuthor(msg_element));
+  new_message.m_author = qApp->web()->unescapeHtml(messageAuthor(msg_element));
 
   QString updated = textsFromPath(msg_element, m_atomNamespace, QSL("updated"), true).join(QSL(", "));
 
