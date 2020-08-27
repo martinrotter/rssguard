@@ -28,7 +28,8 @@
 # Other information:
 #   - supports Windows, Linux, Mac OS X, Android,
 #   - Qt 5.9.0 or higher is required,
-#   - C++ 11 is required.
+#   - if you wish to make packages for Windows, then you must initialize all submodules within repository before compilation,
+#   - C++ 11/17 is required.
 #
 # Authors and contributors:
 #   - Martin Rotter (project leader).
