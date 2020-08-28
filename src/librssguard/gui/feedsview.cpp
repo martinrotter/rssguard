@@ -155,13 +155,13 @@ void FeedsView::sortByColumn(int column, Qt::SortOrder order) {
 }
 
 void FeedsView::addFeedIntoSelectedAccount() {
-  const RootItem* selected = selectedItem();
+  RootItem* selected = selectedItem();
 
   if (selected != nullptr) {
     ServiceRoot* root = selected->getParentServiceRoot();
 
     if (root->supportsFeedAdding()) {
-      root->addNewFeed();
+      root->addNewFeed(selected);
     }
     else {
       qApp->showGuiMessage(tr("Not supported"),

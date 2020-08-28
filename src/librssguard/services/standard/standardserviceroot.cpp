@@ -105,7 +105,7 @@ bool StandardServiceRoot::supportsCategoryAdding() const {
   return true;
 }
 
-void StandardServiceRoot::addNewFeed(const QString& url) {
+void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
@@ -118,9 +118,10 @@ void StandardServiceRoot::addNewFeed(const QString& url) {
     return;
   }
 
-  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this, qApp->mainFormWidget()));
+  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
+                                                                                   qApp->mainFormWidget()));
 
-  form_pointer.data()->addEditFeed(nullptr, nullptr, url);
+  form_pointer->addEditFeed(nullptr, selected_item, url);
   qApp->feedUpdateLock()->unlock();
 }
 
@@ -167,7 +168,7 @@ QString StandardServiceRoot::processFeedUrl(const QString& feed_url) {
 
 void StandardServiceRoot::checkArgumentForFeedAdding(const QString& argument) {
   if (argument.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
-    addNewFeed(processFeedUrl(argument));
+    addNewFeed(nullptr, processFeedUrl(argument));
   }
 }
 

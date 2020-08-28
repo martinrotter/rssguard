@@ -76,9 +76,10 @@ StandardServiceRoot* StandardFeed::serviceRoot() const {
 }
 
 bool StandardFeed::editViaGui() {
-  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(serviceRoot(), qApp->mainFormWidget()));
+  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(serviceRoot(),
+                                                                                   qApp->mainFormWidget()));
 
-  form_pointer.data()->addEditFeed(this, nullptr);
+  form_pointer->addEditFeed(this, this);
   return false;
 }
 

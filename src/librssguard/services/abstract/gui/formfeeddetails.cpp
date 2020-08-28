@@ -378,12 +378,12 @@ void FormFeedDetails::initialize() {
 }
 
 void FormFeedDetails::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
-  m_ui->m_cmbParentCategory->addItem(root_item->icon(),
+  m_ui->m_cmbParentCategory->addItem(root_item->fullIcon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));
 
   for (Category* category : categories) {
-    m_ui->m_cmbParentCategory->addItem(category->icon(),
+    m_ui->m_cmbParentCategory->addItem(category->fullIcon(),
                                        category->title(),
                                        QVariant::fromValue((void*) category));
   }

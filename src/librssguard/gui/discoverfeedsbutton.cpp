@@ -48,7 +48,7 @@ void DiscoverFeedsButton::linkTriggered(QAction* action) {
   ServiceRoot* root = static_cast<ServiceRoot*>(action->property("root").value<void*>());
 
   if (root->supportsFeedAdding()) {
-    root->addNewFeed(url);
+    root->addNewFeed(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->selectedItem(), url);
   }
   else {
     qApp->showGuiMessage(tr("Not supported"),

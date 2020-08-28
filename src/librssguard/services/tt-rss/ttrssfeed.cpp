@@ -31,7 +31,7 @@ bool TtRssFeed::canBeEdited() const {
 bool TtRssFeed::editViaGui() {
   QPointer<FormTtRssFeedDetails> form_pointer = new FormTtRssFeedDetails(serviceRoot(), qApp->mainFormWidget());
 
-  form_pointer.data()->addEditFeed(this, nullptr);
+  form_pointer.data()->addEditFeed(this, this);
   delete form_pointer.data();
   return false;
 }

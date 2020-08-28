@@ -42,8 +42,7 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void updateTitle();
 
   public slots:
-    void addNewFeed(const QString& url = QString());
-    void addNewCategory();
+    void addNewFeed(RootItem* selected_item, const QString& url = QString());
 
   private:
     RootItem* obtainNewTreeForSyncIn() const;

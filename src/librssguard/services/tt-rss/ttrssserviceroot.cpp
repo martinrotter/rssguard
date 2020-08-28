@@ -86,7 +86,9 @@ bool TtRssServiceRoot::supportsCategoryAdding() const {
   return false;
 }
 
-void TtRssServiceRoot::addNewFeed(const QString& url) {
+void TtRssServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
+  Q_UNUSED(selected_item)
+
   if (!qApp->feedUpdateLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
@@ -101,12 +103,8 @@ void TtRssServiceRoot::addNewFeed(const QString& url) {
 
   QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, qApp->mainFormWidget()));
 
-  form_pointer->addEditFeed(nullptr, this, url);
+  form_pointer->addEditFeed(nullptr, selected_item, url);
   qApp->feedUpdateLock()->unlock();
-}
-
-void TtRssServiceRoot::addNewCategory() {
-  // NOTE: Do nothing.
 }
 
 bool TtRssServiceRoot::canBeEdited() const {

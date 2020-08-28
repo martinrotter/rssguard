@@ -158,7 +158,7 @@ class ServiceRoot : public RootItem {
     virtual bool onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages);
 
   public slots:
-    virtual void addNewFeed(const QString& url = QString());
+    virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
     virtual void addNewCategory();
     virtual void syncIn();
 

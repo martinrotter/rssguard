@@ -4,7 +4,7 @@
 Added:
 ▪ Gmail plugin is now able to send e-mail messages and also reply to them.
 ▪ Branch arrows in feeds list can now be displayed.
-▪ Changes if read/important field in a message from a message filter are now synced
+▪ Changes of read/important field in a message from a message filter are now synced
   back to online services. (#258)
 ▪ Filterin mechanism now accepts constants named "MSG_ACCEPT" and "MSG_IGNORE"
   which can be used instead of hardcoded values "1" and "2".

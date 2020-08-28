@@ -155,7 +155,9 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
   }
 }
 
-void OwnCloudServiceRoot::addNewFeed(const QString& url) {
+void OwnCloudServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
+  Q_UNUSED(selected_item)
+
   if (!qApp->feedUpdateLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
@@ -170,11 +172,9 @@ void OwnCloudServiceRoot::addNewFeed(const QString& url) {
 
   QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(this, qApp->mainFormWidget()));
 
-  form_pointer->addEditFeed(nullptr, this, url);
+  form_pointer->addEditFeed(nullptr, selected_item, url);
   qApp->feedUpdateLock()->unlock();
 }
-
-void OwnCloudServiceRoot::addNewCategory() {}
 
 RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
   OwnCloudGetFeedsCategoriesResponse feed_cats_response = m_network->feedsCategories();

@@ -37,8 +37,7 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void saveAllCachedData(bool async = true);
 
   public slots:
-    void addNewFeed(const QString& url);
-    void addNewCategory();
+    void addNewFeed(RootItem* selected_item, const QString& url);
 
   private:
     RootItem* obtainNewTreeForSyncIn() const;

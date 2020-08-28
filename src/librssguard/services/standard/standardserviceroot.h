@@ -50,7 +50,7 @@ class StandardServiceRoot : public ServiceRoot {
     void checkArgumentForFeedAdding(const QString& argument);
 
   public slots:
-    void addNewFeed(const QString& url = QString());
+    void addNewFeed(RootItem* selected_item, const QString& url = QString());
     void addNewCategory();
     void importFeeds();
     void exportFeeds();

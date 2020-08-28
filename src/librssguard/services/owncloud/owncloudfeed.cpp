@@ -24,7 +24,7 @@ bool OwnCloudFeed::editViaGui() {
   QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(serviceRoot(),
                                                                                    qApp->mainFormWidget()));
 
-  form_pointer->addEditFeed(this, nullptr);
+  form_pointer->addEditFeed(this, this);
   return false;
 }
 

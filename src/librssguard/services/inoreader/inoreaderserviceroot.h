@@ -38,8 +38,6 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void saveAllCachedData(bool async = true);
 
   public slots:
-    void addNewFeed(const QString& url);
-    void addNewCategory();
     void updateTitle();
 
   private:

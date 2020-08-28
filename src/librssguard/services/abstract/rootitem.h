@@ -172,6 +172,10 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     QIcon icon() const;
     void setIcon(const QIcon& icon);
 
+    // Returns icon, even if item has "default" icon set, then
+    // this icon is extra loaded and returned.
+    QIcon fullIcon() const;
+
     // This ALWAYS represents primary column number/ID under which
     // the item is stored in DB.
     int id() const;

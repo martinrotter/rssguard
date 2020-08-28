@@ -266,7 +266,8 @@ void ServiceRoot::requestItemRemoval(RootItem* item) {
   emit itemRemovalRequested(item);
 }
 
-void ServiceRoot::addNewFeed(const QString& url) {
+void ServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
+  Q_UNUSED(selected_item)
   Q_UNUSED(url)
 }
 

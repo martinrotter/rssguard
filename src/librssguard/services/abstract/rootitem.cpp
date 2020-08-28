@@ -171,18 +171,7 @@ QVariant RootItem::data(int column, int role) const {
 
     case Qt::DecorationRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        QIcon ico = icon();
-
-        if (ico.isNull()) {
-          if (kind() == RootItem::Kind::Feed) {
-            return qApp->icons()->fromTheme(QSL("application-rss+xml"));
-          }
-          else if (kind() == RootItem::Kind::Category) {
-            return qApp->icons()->fromTheme(QSL("folder"));
-          }
-        }
-
-        return ico;
+        return fullIcon();
       }
       else {
         return QVariant();
@@ -396,6 +385,21 @@ QIcon RootItem::icon() const {
 
 void RootItem::setIcon(const QIcon& icon) {
   m_icon = icon;
+}
+
+QIcon RootItem::fullIcon() const {
+  QIcon ico = icon();
+
+  if (ico.isNull()) {
+    if (kind() == RootItem::Kind::Feed) {
+      return qApp->icons()->fromTheme(QSL("application-rss+xml"));
+    }
+    else if (kind() == RootItem::Kind::Category) {
+      return qApp->icons()->fromTheme(QSL("folder"));
+    }
+  }
+
+  return ico;
 }
 
 int RootItem::id() const {

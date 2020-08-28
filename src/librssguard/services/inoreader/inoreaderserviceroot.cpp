@@ -138,12 +138,6 @@ RootItem* InoreaderServiceRoot::obtainNewTreeForSyncIn() const {
   return m_network->feedsCategories(true);
 }
 
-void InoreaderServiceRoot::addNewFeed(const QString& url) {
-  Q_UNUSED(url)
-}
-
-void InoreaderServiceRoot::addNewCategory() {}
-
 void InoreaderServiceRoot::saveAllCachedData(bool async) {
   QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> msgCache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
