@@ -23,7 +23,8 @@
 #                   Default value is "false". If QtWebEngine is installed during compilation, then
 #                   value of this variable is tweaked automatically.
 #   PREFIX - specifies base folder to which files are copied during "make install"
-#            step, defaults to "$$OUT_PWD/usr" on Linux and to "$$OUT_PWD/app" on Windows.
+#            step, defaults to "$$OUT_PWD/usr" on Linux and to "$$OUT_PWD/app" on Windows. Behavior
+#            of this variable can be mimicked with $INSTALL_ROOT variable on Linux.
 #
 # Other information:
 #   - supports Windows, Linux, Mac OS X, Android,
