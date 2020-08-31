@@ -690,20 +690,14 @@
     <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionAddFeedIntoSelectedAccount">
+  <action name="m_actionAddFeedIntoSelectedItem">
    <property name="text">
-    <string>Add new feed into selected account</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
+    <string>Add new feed</string>
    </property>
   </action>
-  <action name="m_actionAddCategoryIntoSelectedAccount">
+  <action name="m_actionAddCategoryIntoSelectedItem">
    <property name="text">
-    <string>Add new category into selected account</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
+    <string>Add new category</string>
    </property>
   </action>
   <action name="m_actionStopRunningItemsUpdate">

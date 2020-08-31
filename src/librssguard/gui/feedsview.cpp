@@ -464,6 +464,21 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
                                    qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
                                    qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
 
+  auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();
+  auto feed_add = clicked_item->getParentServiceRoot()->supportsFeedAdding();
+
+  if (cat_add || feed_add) {
+    m_contextMenuService->addSeparator();
+  }
+
+  if (cat_add) {
+    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem);
+  }
+
+  if (feed_add) {
+    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
+  }
+
   if (!specific_actions.isEmpty()) {
     m_contextMenuService->addSeparator();
     m_contextMenuService->addActions(specific_actions);
@@ -522,6 +537,21 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
                                       qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
                                       qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
 
+  auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();
+  auto feed_add = clicked_item->getParentServiceRoot()->supportsFeedAdding();
+
+  if (cat_add || feed_add) {
+    m_contextMenuCategories->addSeparator();
+  }
+
+  if (cat_add) {
+    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem);
+  }
+
+  if (feed_add) {
+    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
+  }
+
   if (!specific_actions.isEmpty()) {
     m_contextMenuCategories->addSeparator();
     m_contextMenuCategories->addActions(specific_actions);
@@ -548,6 +578,21 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
                                  qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
                                  qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
                                  qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
+
+  auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();
+  auto feed_add = clicked_item->getParentServiceRoot()->supportsFeedAdding();
+
+  if (cat_add || feed_add) {
+    m_contextMenuFeeds->addSeparator();
+  }
+
+  if (cat_add) {
+    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem);
+  }
+
+  if (feed_add) {
+    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
+  }
 
   if (!specific_actions.isEmpty()) {
     m_contextMenuFeeds->addSeparator();

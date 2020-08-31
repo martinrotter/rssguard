@@ -174,8 +174,8 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionServiceEdit;
   actions << m_ui->m_actionServiceDelete;
   actions << m_ui->m_actionCleanupDatabase;
-  actions << m_ui->m_actionAddFeedIntoSelectedAccount;
-  actions << m_ui->m_actionAddCategoryIntoSelectedAccount;
+  actions << m_ui->m_actionAddFeedIntoSelectedItem;
+  actions << m_ui->m_actionAddCategoryIntoSelectedItem;
   actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
   actions << m_ui->m_actionSelectNextItem;
   actions << m_ui->m_actionSelectPreviousItem;
@@ -289,8 +289,8 @@ void FormMain::updateAddItemMenu() {
 
   if (!m_ui->m_menuAddItem->isEmpty()) {
     m_ui->m_menuAddItem->addSeparator();
-    m_ui->m_menuAddItem->addAction(m_ui->m_actionAddCategoryIntoSelectedAccount);
-    m_ui->m_menuAddItem->addAction(m_ui->m_actionAddFeedIntoSelectedAccount);
+    m_ui->m_menuAddItem->addAction(m_ui->m_actionAddCategoryIntoSelectedItem);
+    m_ui->m_menuAddItem->addAction(m_ui->m_actionAddFeedIntoSelectedItem);
   }
   else {
     m_ui->m_menuAddItem->addAction(m_ui->m_actionNoActions);
@@ -432,8 +432,8 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionExpandCollapseItem->setEnabled(anything_selected);
   m_ui->m_actionServiceDelete->setEnabled(service_selected);
   m_ui->m_actionServiceEdit->setEnabled(service_selected);
-  m_ui->m_actionAddFeedIntoSelectedAccount->setEnabled(anything_selected);
-  m_ui->m_actionAddCategoryIntoSelectedAccount->setEnabled(anything_selected);
+  m_ui->m_actionAddFeedIntoSelectedItem->setEnabled(anything_selected);
+  m_ui->m_actionAddCategoryIntoSelectedItem->setEnabled(anything_selected);
   m_ui->m_menuAddItem->setEnabled(!critical_action_running);
   m_ui->m_menuAccounts->setEnabled(!critical_action_running);
   m_ui->m_menuRecycleBin->setEnabled(!critical_action_running);
@@ -531,8 +531,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionServiceAdd->setIcon(icon_theme_factory->fromTheme(QSL("list-add")));
   m_ui->m_actionServiceEdit->setIcon(icon_theme_factory->fromTheme(QSL("document-edit")));
   m_ui->m_actionServiceDelete->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
-  m_ui->m_actionAddFeedIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("application-rss+xml")));
-  m_ui->m_actionAddCategoryIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("folder")));
+  m_ui->m_actionAddFeedIntoSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("application-rss+xml")));
+  m_ui->m_actionAddCategoryIntoSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("folder")));
   m_ui->m_actionMessageFilters->setIcon(icon_theme_factory->fromTheme(QSL("view-list-details")));
 
   // Tabs & web browser.
@@ -692,9 +692,9 @@ void FormMain::createConnections() {
   connect(qApp->feedReader(), &FeedReader::feedUpdatesFinished, this, &FormMain::onFeedUpdatesFinished);
 
   // Toolbar forwardings.
-  connect(m_ui->m_actionAddFeedIntoSelectedAccount, &QAction::triggered,
+  connect(m_ui->m_actionAddFeedIntoSelectedItem, &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::addFeedIntoSelectedAccount);
-  connect(m_ui->m_actionAddCategoryIntoSelectedAccount, &QAction::triggered,
+  connect(m_ui->m_actionAddCategoryIntoSelectedItem, &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::addCategoryIntoSelectedAccount);
   connect(m_ui->m_actionSwitchImportanceOfSelectedMessages,
           &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::switchSelectedMessagesImportance);
