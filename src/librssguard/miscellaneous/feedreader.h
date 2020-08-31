@@ -62,6 +62,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
 
   public slots:
     void updateAllFeeds();
+    void updateManuallyIntervaledFeeds();
     void stopRunningFeedUpdate();
     void quit();
 

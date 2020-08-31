@@ -165,6 +165,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionDeleteSelectedMessages;
   actions << m_ui->m_actionUpdateAllItems;
   actions << m_ui->m_actionUpdateSelectedItems;
+  actions << m_ui->m_actionUpdateSelectedItemsWithCustomTimers;
   actions << m_ui->m_actionStopRunningItemsUpdate;
   actions << m_ui->m_actionEditSelectedItem;
   actions << m_ui->m_actionCopyUrlSelectedFeed;
@@ -421,6 +422,7 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionMarkSelectedItemsAsRead->setEnabled(anything_selected);
   m_ui->m_actionMarkSelectedItemsAsUnread->setEnabled(anything_selected);
   m_ui->m_actionUpdateAllItems->setEnabled(!critical_action_running);
+  m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setEnabled(!critical_action_running);
   m_ui->m_actionUpdateSelectedItems->setEnabled(!critical_action_running && (feed_selected || category_selected || service_selected));
   m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(anything_selected);
   m_ui->m_actionExpandCollapseItem->setEnabled(anything_selected);
@@ -494,6 +496,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionStopRunningItemsUpdate->setIcon(icon_theme_factory->fromTheme(QSL("process-stop")));
   m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
   m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
+  m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
   m_ui->m_actionClearSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionClearAllItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
@@ -719,6 +722,8 @@ void FormMain::createConnections() {
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::updateSelectedItems);
   connect(m_ui->m_actionUpdateAllItems,
           &QAction::triggered, qApp->feedReader(), &FeedReader::updateAllFeeds);
+  connect(m_ui->m_actionUpdateSelectedItemsWithCustomTimers,
+          &QAction::triggered, qApp->feedReader(), &FeedReader::updateManuallyIntervaledFeeds);
   connect(m_ui->m_actionStopRunningItemsUpdate,
           &QAction::triggered, qApp->feedReader(), &FeedReader::stopRunningFeedUpdate);
   connect(m_ui->m_actionCopyUrlSelectedFeed,

@@ -356,6 +356,27 @@ QList<Feed*> RootItem::getSubTreeFeeds() const {
   return children;
 }
 
+QList<Feed*> RootItem::getSubTreeManuallyIntervaledFeeds() const {
+  QList<Feed*> children;
+  QList<RootItem*> traversable_items;
+
+  traversable_items.append(const_cast<RootItem* const>(this));
+
+  // Iterate all nested items.
+  while (!traversable_items.isEmpty()) {
+    RootItem* active_item = traversable_items.takeFirst();
+
+    if (active_item->kind() == RootItem::Kind::Feed &&
+        active_item->toFeed()->autoUpdateType() == Feed::AutoUpdateType::SpecificAutoUpdate) {
+      children.append(active_item->toFeed());
+    }
+
+    traversable_items.append(active_item->childItems());
+  }
+
+  return children;
+}
+
 ServiceRoot* RootItem::getParentServiceRoot() const {
   const RootItem* working_parent = this;
 

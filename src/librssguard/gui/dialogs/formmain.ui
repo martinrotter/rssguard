@@ -107,6 +107,7 @@
     </widget>
     <addaction name="m_actionUpdateAllItems"/>
     <addaction name="m_actionUpdateSelectedItems"/>
+    <addaction name="m_actionUpdateSelectedItemsWithCustomTimers"/>
     <addaction name="m_actionStopRunningItemsUpdate"/>
     <addaction name="separator"/>
     <addaction name="m_menuAddItem"/>
@@ -773,6 +774,11 @@
    </property>
    <property name="text">
     <string>&amp;Show tree branches</string>
+   </property>
+  </action>
+  <action name="m_actionUpdateSelectedItemsWithCustomTimers">
+   <property name="text">
+    <string>Update items with custom &amp;timers</string>
    </property>
   </action>
  </widget>

@@ -201,6 +201,10 @@ void FeedReader::updateAllFeeds() {
   updateFeeds(m_feedsModel->rootItem()->getSubTreeFeeds());
 }
 
+void FeedReader::updateManuallyIntervaledFeeds() {
+  updateFeeds(m_feedsModel->rootItem()->getSubTreeManuallyIntervaledFeeds());
+}
+
 void FeedReader::stopRunningFeedUpdate() {
   if (m_feedDownloader != nullptr) {
     m_feedDownloader->stopRunningUpdate();
