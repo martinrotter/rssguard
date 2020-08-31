@@ -276,7 +276,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
   return !some_feed_category_error;
 }
 
-void StandardServiceRoot::addNewCategory() {
+void StandardServiceRoot::addNewCategory(RootItem* selected_item) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
@@ -289,9 +289,10 @@ void StandardServiceRoot::addNewCategory() {
     return;
   }
 
-  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(this, qApp->mainFormWidget()));
+  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(this,
+                                                                                           qApp->mainFormWidget()));
 
-  form_pointer.data()->addEditCategory(nullptr, nullptr);
+  form_pointer->addEditCategory(nullptr, selected_item);
   qApp->feedUpdateLock()->unlock();
 }
 

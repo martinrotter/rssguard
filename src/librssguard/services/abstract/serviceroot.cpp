@@ -271,7 +271,7 @@ void ServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
   Q_UNUSED(url)
 }
 
-void ServiceRoot::addNewCategory() {}
+void ServiceRoot::addNewCategory(RootItem* selected_item) {}
 
 QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
   QMap<QString, QVariantMap> custom_data;

@@ -51,7 +51,7 @@ class StandardServiceRoot : public ServiceRoot {
 
   public slots:
     void addNewFeed(RootItem* selected_item, const QString& url = QString());
-    void addNewCategory();
+    void addNewCategory(RootItem* selected_item);
     void importFeeds();
     void exportFeeds();
 

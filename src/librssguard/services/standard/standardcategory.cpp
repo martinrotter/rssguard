@@ -52,8 +52,10 @@ bool StandardCategory::canBeDeleted() const {
 }
 
 bool StandardCategory::editViaGui() {
-  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(serviceRoot(), qApp->mainFormWidget()));
-  form_pointer.data()->addEditCategory(this, nullptr);
+  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(serviceRoot(),
+                                                                                           qApp->mainFormWidget()));
+
+  form_pointer->addEditCategory(this, nullptr);
   return false;
 }
 
@@ -96,7 +98,7 @@ bool StandardCategory::addItself(RootItem* parent) {
   // Now, add category to persistent storage.
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   int new_id = DatabaseQueries::addStandardCategory(database, parent->id(), parent->getParentServiceRoot()->accountId(),
-                                            title(), description(), creationDate(), icon());
+                                                    title(), description(), creationDate(), icon());
 
   if (new_id <= 0) {
     return false;
@@ -114,8 +116,8 @@ bool StandardCategory::editItself(StandardCategory* new_category_data) {
   RootItem* new_parent = new_category_data->parent();
 
   if (DatabaseQueries::editStandardCategory(database, new_parent->id(), original_category->id(),
-                                    new_category_data->title(), new_category_data->description(),
-                                    new_category_data->icon())) {
+                                            new_category_data->title(), new_category_data->description(),
+                                            new_category_data->icon())) {
     // Setup new model data for the original item.
     original_category->setDescription(new_category_data->description());
     original_category->setIcon(new_category_data->icon());

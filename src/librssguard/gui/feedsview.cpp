@@ -179,7 +179,7 @@ void FeedsView::addCategoryIntoSelectedAccount() {
     ServiceRoot* root = selected->getParentServiceRoot();
 
     if (root->supportsCategoryAdding()) {
-      root->addNewCategory();
+      root->addNewCategory(selectedItem());
     }
     else {
       qApp->showGuiMessage(tr("Not supported"),

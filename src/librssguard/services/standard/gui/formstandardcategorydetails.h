@@ -23,9 +23,7 @@ class FormStandardCategoryDetails : public QDialog {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
-    explicit FormStandardCategoryDetails(StandardServiceRoot* service_root, QWidget* parent = 0);
+    explicit FormStandardCategoryDetails(StandardServiceRoot* service_root, QWidget* parent = nullptr);
     virtual ~FormStandardCategoryDetails();
 
   public slots:

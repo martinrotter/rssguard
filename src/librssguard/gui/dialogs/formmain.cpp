@@ -258,7 +258,10 @@ void FormMain::updateAddItemMenu() {
                                                  m_ui->m_menuAddItem);
 
       root_menu->addAction(action_new_category);
-      connect(action_new_category, &QAction::triggered, activated_root, &ServiceRoot::addNewCategory);
+      connect(action_new_category, &QAction::triggered,
+              activated_root, [activated_root]() {
+        activated_root->addNewCategory(activated_root);
+      });
     }
 
     if (activated_root->supportsFeedAdding()) {
@@ -267,9 +270,10 @@ void FormMain::updateAddItemMenu() {
                                              m_ui->m_menuAddItem);
 
       root_menu->addAction(action_new_feed);
-
-      // NOTE: Because of default arguments.
-      connect(action_new_feed, SIGNAL(triggered(bool)), activated_root, SLOT(addNewFeed()));
+      connect(action_new_feed, &QAction::triggered,
+              activated_root, [activated_root]() {
+        activated_root->addNewFeed(activated_root);
+      });
     }
 
     if (!specific_root_actions.isEmpty()) {

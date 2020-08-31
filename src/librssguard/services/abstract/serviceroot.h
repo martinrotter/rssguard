@@ -159,7 +159,7 @@ class ServiceRoot : public RootItem {
 
   public slots:
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
-    virtual void addNewCategory();
+    virtual void addNewCategory(RootItem* selected_item);
     virtual void syncIn();
 
   protected:
