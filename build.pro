@@ -4,15 +4,16 @@
 #
 # This is RSS Guard compilation script for qmake.
 #
-# Usage:
-#   a) DEBUG build for testing. (out of source build type)
-#     cd ../build-dir
+# Usage (out of source build type, we have two side by side folders:
+# empty "build-dir" and RSS Guard repository "rssguard-dir"):
+#   a) DEBUG build for testing.
+#     cd build-dir
 #     qmake ../rssguard-dir/build.pro -r CONFIG+=debug PREFIX=./usr
 #     make
 #     make install
 #
-#   b) RELEASE build for production use. (out of source build type)
-#     cd ../build-dir
+#   b) RELEASE build for production use.
+#     cd build-dir
 #     qmake ../rssguard-dir/build.pro -r CONFIG+=release PREFIX=./usr
 #     make
 #     make install
@@ -24,7 +25,9 @@
 #                   value of this variable is tweaked automatically.
 #   PREFIX - specifies base folder to which files are copied during "make install"
 #            step, defaults to "$$OUT_PWD/usr" on Linux and to "$$OUT_PWD/app" on Windows. Behavior
-#            of this variable can be mimicked with $INSTALL_ROOT variable on Linux.
+#            of this variable can be mimicked with $INSTALL_ROOT variable on Linux. Note that
+#            RSS Guard's installation is automatically relocatable, in other words, no
+#            absolute OS-dependent paths are used.
 #
 # Other information:
 #   - supports Windows, Linux, Mac OS X, Android,

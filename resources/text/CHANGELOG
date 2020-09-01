@@ -1,3 +1,16 @@
+3.7.2
+—————
+
+Added:
+▪ Parent item/folder in add category/feed dialog is now correctly preselected according
+  to current feed's list selection. (#84)
+▪ Icons of parent item/folder are now correctly displayed in add feed/category dialogs.
+▪ Ability to update only feeds with custom auto-update policy set. (#88)
+▪ Enhanced feed's list context menus, now displays "Add feed/category here".
+
+Fixed/changed:
+▪ Fixed build on ARM machines.
+
 3.7.1
 —————
 
