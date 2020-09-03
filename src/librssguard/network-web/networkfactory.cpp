@@ -143,7 +143,13 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& u
   QNetworkReply::NetworkError network_result = QNetworkReply::UnknownNetworkError;
 
   for (const QString& url : urls) {
-    const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(QUrl(url).host());
+    QString host = QUrl(url).host();
+
+    if (host.startsWith(QSL("www."))) {
+      host = host.mid(4);
+    }
+
+    const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(host);
     QByteArray icon_data;
 
     network_result = performNetworkOperation(google_s2_with_url, timeout, QByteArray(), icon_data,
