@@ -36,7 +36,7 @@ class AdBlockIcon : public QAction {
   Q_OBJECT
 
   public:
-    explicit AdBlockIcon(AdBlockManager* parent = 0);
+    explicit AdBlockIcon(AdBlockManager* parent = nullptr);
     virtual ~AdBlockIcon();
 
     void popupBlocked(const QString& ruleString, const QUrl& url);
@@ -54,7 +54,6 @@ class AdBlockIcon : public QAction {
 
   private:
     AdBlockManager* m_manager;
-
     QVector<QPair<AdBlockRule*, QUrl>> m_blockedPopups;
     QTimer* m_flashTimer;
     int m_timerTicks;

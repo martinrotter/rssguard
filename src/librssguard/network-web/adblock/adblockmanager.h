@@ -68,6 +68,7 @@ class AdBlockManager : public QObject {
     bool removeSubscription(AdBlockSubscription* subscription);
 
     AdBlockCustomList* customList() const;
+
     inline AdBlockIcon* adBlockIcon() const {
       return m_adblockIcon;
     }
@@ -89,12 +90,10 @@ class AdBlockManager : public QObject {
     bool m_loaded;
     bool m_enabled;
     AdBlockIcon* m_adblockIcon;
-
     QList<AdBlockSubscription*> m_subscriptions;
     AdBlockMatcher* m_matcher;
     QStringList m_disabledRules;
     AdBlockUrlInterceptor* m_interceptor;
-
     QPointer<AdBlockDialog> m_adBlockDialog;
     QMutex m_mutex;
 };

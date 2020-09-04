@@ -228,6 +228,7 @@ void StatusBar::clear() {
 
       if (should_remove_widget) {
         widget->deleteLater();
+        act->setProperty("widget", QVariant());
       }
 
       if (should_remove_action) {

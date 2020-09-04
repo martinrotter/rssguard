@@ -19,7 +19,7 @@ class StatusBar : public QStatusBar, public BaseBar {
   Q_OBJECT
 
   public:
-    explicit StatusBar(QWidget* parent = 0);
+    explicit StatusBar(QWidget* parent = nullptr);
     virtual ~StatusBar();
 
     QList<QAction*> availableActions() const;
