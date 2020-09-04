@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <defs>
+  
+ </defs>
+ <path d="m 4 0 c -0.473 0 -1 0.527 -1 1 l 0 20 c 0 0.445 0.555 1 1 1 l 14 0 c 0.445 0 0.992 -0.555 1 -1 l 0 -15 -6 -6 z" style="fill:#e73144;fill-opacity:1"/>
+ <path d="m 14 6 5 5 0 -5 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 13 0 6 6 -5 0 c -0.445 0 -1 -0.555 -1 -1 z" style="fill:#fff;fill-opacity:0.392"/>
+ <path d="m 10 11 7 0 0 7 -7 0 m 0 -7" style="fill:#f9f9f9;fill-opacity:0.749;stroke:none;fill-rule:nonzero"/>
+ <path d="m 13 11 c 0.016 1.424 -0.742 2.746 -1.987 3.463 -1.245 0.716 -2.781 0.716 -4.03 0 -1.243 -0.716 -2 -2.039 -1.987 -3.463 -0.015 -1.424 0.744 -2.746 1.987 -3.463 1.245 -0.716 2.781 -0.716 4.03 0 1.245 0.716 2 2.039 1.987 3.463 m 0 0" style="fill:#f9f9f9;fill-opacity:0.749;stroke:none;fill-rule:nonzero"/>
+</svg>

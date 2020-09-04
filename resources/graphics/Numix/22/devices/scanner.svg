@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <rect width="20" height="14" x="1" y="4" style="fill:#4d4d4d;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="16" height="10" x="3" y="6" style="fill:#fffedb;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 5,14 10.5,0 0,-3.5 -3,1 L 10,9 8,12.5 6.5,11 Z" style="fill:#a6e3ff;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 15 2 6 2 0 14 -6 2 z" style="fill:#858585;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <circle cx="2" cy="15.5" r="0.5" style="fill:#e4db5c;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <circle r="0.5" cy="14" cx="2" style="fill:#858585;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <circle cx="2" cy="12.5" r="0.5" style="fill:#858585;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <circle cx="6" cy="9" r="1" style="fill:#f6e972;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 4 4 0 14 1 0 0 -14 -1 0" style="fill:#fff;opacity:0.3;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

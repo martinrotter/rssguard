@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <path d="m 4 0 c -0.473 0 -1 0.527 -1 1 l 0 20 c 0 0.445 0.555 1 1 1 l 14 0 c 0.445 0 0.992 -0.555 1 -1 l 0 -15 -6 -6 z" style="fill:#dcdcdc"/>
+ <path d="m 14 6 5 5 0 -5 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 13 0 6 6 -5 0 c -0.445 0 -1 -0.555 -1 -1 z" style="fill:#fff;fill-opacity:0.392"/>
+ <path d="m 8 13 0 1 l 8 0 0 -1 z" style="fill:#888"/>
+ <path d="m 8 15 0 1 8 0 0 -1 z" style="fill:#888"/>
+ <path d="m 8 17 0 1 8 0 0 -1 z" style="fill:#888"/>
+ <path d="m 8 9 0 1 8 0 0 -1 z" style="fill:#888"/>
+ <rect width="1" height="1" x="6" y="9" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="1" height="1" x="6" y="13" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="1" height="1" x="6" y="15" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="1" height="1" x="6" y="17" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path d="m 8 11 0 1 8 0 0 -1 z" style="fill:#888"/>
+ <rect width="1" height="1" x="6" y="11" style="fill:#888;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+</svg>

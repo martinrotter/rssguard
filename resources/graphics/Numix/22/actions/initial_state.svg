@@ -1,0 +1,10 @@
+<svg width="22" xmlns="http://www.w3.org/2000/svg" height="22" viewBox="0 0 22 22">
+<g transform="matrix(-1 0 0 1 22 0)">
+<path style="fill:#268bd2" d="M 1,1 1,21 14,11 z"/>
+<path style="fill-opacity:.1" d="M 1,1 1,21 14,11 z"/>
+<g style="fill:#268bd2">
+<path d="m 17,1 4,0 0,20 -4,0 z"/>
+<path d="M 8,1 8,21 21,11 z"/>
+</g>
+</g>
+</svg>

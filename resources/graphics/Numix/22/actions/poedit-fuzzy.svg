@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <g transform="matrix(1.25,0,0,1.25,1.0000002,0.99999993)" style="fill-rule:evenodd">
+  <path d="m 16 8 a 8 8 0 0 1 -16 0 8 8 0 1 1 16 0 z" style="fill:#dc322f"/>
+ </g>
+ <path d="m 8.931 7 c -1.269 -0.039 -2.537 0.662 -3.931 2.16 l 1.639 1.295 c 1.196 -1.285 1.871 -1.478 2.221 -1.467 0.35 0.011 0.801 0.292 1.449 0.789 0.648 0.497 1.491 1.209 2.761 1.248 1.269 0.039 2.537 -0.662 3.931 -2.16 l -1.639 -1.295 c -1.196 1.285 -1.871 1.478 -2.221 1.467 -0.35 -0.011 -0.801 -0.292 -1.449 -0.789 -0.648 -0.497 -1.491 -1.209 -2.761 -1.248 m 0 3.974 c -1.269 -0.039 -2.537 0.662 -3.931 2.16 l 1.639 1.293 c 1.196 -1.285 1.871 -1.478 2.221 -1.467 0.35 0.011 0.801 0.292 1.449 0.789 0.648 0.497 1.491 1.209 2.761 1.248 1.269 0.039 2.537 -0.662 3.931 -2.16 l -1.639 -1.293 c -1.196 1.285 -1.871 1.478 -2.221 1.467 -0.35 -0.011 -0.801 -0.292 -1.449 -0.789 -0.648 -0.497 -1.491 -1.209 -2.761 -1.248 z" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#fff;opacity:1;image-rendering:auto;fill-opacity:0.902;stroke:none;display:inline;color:#000;fill-rule:evenodd;color-rendering:auto;color-interpolation:sRGB"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <path d="m 4 0 c -0.473 0 -1 0.527 -1 1 l 0 20 c 0 0.445 0.555 1 1 1 l 14 0 c 0.445 0 0.992 -0.555 1 -1 l 0 -15 -6 -6 z" style="fill:#70c9dc;fill-opacity:1"/>
+ <path d="m 14 6 5 5 0 -5 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 13 0 6 6 -5 0 c -0.445 0 -1 -0.555 -1 -1 z" style="fill:#fff;fill-opacity:0.392"/>
+ <path d="m 8 8 c -1.105 0 -2 0.895 -2 2 0 1.105 0.895 2 2 2 1.105 0 2 -0.895 2 -2 c 0 -1.105 -0.895 -2 -2 -2 m -0.5 1.25 c 0.414 0 0.75 0.336 0.75 0.75 0 0.414 -0.336 0.75 -0.75 0.75 c -0.414 0 -0.75 -0.336 -0.75 -0.75 0 -0.414 0.336 -0.75 0.75 -0.75" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <path d="m 14 8 c -1.105 0 -2 0.895 -2 2 0 1.105 0.895 2 2 2 1.105 0 2 -0.895 2 -2 0 -1.105 -0.895 -2 -2 -2 z m -0.5 1.25 c 0.414 0 0.75 0.336 0.75 0.75 0 0.414 -0.336 0.75 -0.75 0.75 -0.414 0 -0.75 -0.336 -0.75 -0.75 0 -0.414 0.336 -0.75 0.75 -0.75 z" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <path d="m 11 12 c -0.552 0 -1 0.448 -1 1 l 2 0 c 0 -0.552 -0.448 -1 -1 -1 z m 1 1 c 0 0.552 -0.448 1 -1 1 -0.552 0 -1 -0.448 -1 -1 l -0.5 0 c -0.554 0 -1 0.446 -1 1 0 0.554 0.446 1 1 1 l 3 0 c 0.554 0 1 -0.446 1 -1 0 -0.554 -0.446 -1 -1 -1 z" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect width="1" height="3" x="10" y="14" rx="0.5" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect y="14" x="11" height="3" width="1" rx="0.5" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+</svg>

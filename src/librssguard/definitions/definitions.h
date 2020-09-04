@@ -41,7 +41,8 @@
 #define ICON_SIZE_SETTINGS                    16
 #define NO_PARENT_CATEGORY                    -1
 #define ID_RECYCLE_BIN                        -2
-#define ID_IMPORTANT                        -3
+#define ID_IMPORTANT                          -3
+#define ID_LABELS                             -4
 #define TRAY_ICON_BUBBLE_TIMEOUT              20000
 #define CLOSE_LOCK_TIMEOUT                    500
 #define DOWNLOAD_TIMEOUT                      30000
@@ -153,8 +154,8 @@
 #define APP_THEME_DEFAULT   "Faenza"
 #endif
 
-#define APP_NO_THEME        ""
-#define APP_THEME_SUFFIX    ".png"
+#define APP_LOCAL_THEME_FOLDER  "icons"
+#define APP_NO_THEME            ""
 
 #ifndef qDebugNN
 #define qDebugNN qDebug().noquote().nospace()

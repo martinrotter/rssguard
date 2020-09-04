@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <g>
+  <path d="m 5.924 4.252 c -0.539 0.022 -0.983 0.253 -1.289 0.485 -1.807 1.371 -3.385 7.089 -3.385 10.115 c 0 3.03 0.696 2.898 1.299 2.898 0.604 0 1.363 -0.415 2.026 -0.999 c 1.831 -1.612 2.675 -3.75 4.496 -3.75 l 3.858 0 c 1.821 0 2.664 2.138 4.496 3.75 0.663 0.584 1.422 0.999 2.026 0.999 0.604 0 1.299 0.129 1.299 -2.898 c 0 -3.03 -1.578 -8.744 -3.385 -10.115 -0.489 -0.371 -1.331 -0.74 -2.355 -0.253 -0.687 0.327 -1.301 0.517 -2.199 0.517 l -3.621 0 c -0.898 0 -1.512 -0.19 -2.199 -0.517 -0.384 -0.183 -0.743 -0.245 -1.066 -0.231" style="fill:#deddc9;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+  <ellipse ry="1.5" rx="1.5" cy="9" cx="6.5" style="fill:#3b3b3b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <ellipse ry="0.75" rx="0.75" cy="7.5" cx="16.25" style="fill:#df8003;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <ellipse ry="0.75" rx="0.75" cx="17.75" cy="9" style="fill:#e45146;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <ellipse ry="0.75" rx="0.75" cy="10.5" cx="16.25" style="fill:#68bf45;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <ellipse ry="0.75" rx="0.75" cx="14.75" cy="9" style="fill:#5b6dc1;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <ellipse ry="0.625" rx="0.625" cy="9" cx="11" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#3b3b3b;fill-rule:nonzero;stroke-linecap:round;stroke-linejoin:miter;stroke-width:0.2;stroke-dashoffset:0"/>
+  <ellipse ry="0.5" rx="0.5" cy="9" cx="9.5" style="fill:#3b3b3b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <ellipse ry="0.5" rx="0.5" cx="12.5" cy="9" style="fill:#3b3b3b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 16.08 4.252 c -0.025 -0.001 -0.051 0.003 -0.076 0.003 l 0 11.09 c 0.423 0.442 0.878 0.92 1.425 1.401 0.186 0.164 0.38 0.309 0.575 0.44 l 0 -11.785 c -0.207 -0.276 -0.42 -0.505 -0.636 -0.669 -0.306 -0.232 -0.748 -0.462 -1.288 -0.484" style="fill:#fff;opacity:0.4;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+</svg>

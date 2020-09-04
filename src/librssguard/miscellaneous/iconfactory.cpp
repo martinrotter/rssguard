@@ -2,6 +2,7 @@
 
 #include "miscellaneous/iconfactory.h"
 
+#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 
 #include <QBuffer>
@@ -52,7 +53,9 @@ QIcon IconFactory::miscIcon(const QString& name) {
 }
 
 void IconFactory::setupSearchPaths() {
-  QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << APP_THEME_PATH);
+  QIcon::setThemeSearchPaths(QIcon::themeSearchPaths()
+                             << APP_THEME_PATH
+                             << qApp->applicationDirPath() + QDir::separator() + APP_LOCAL_THEME_FOLDER);
   qDebugNN << LOGSEC_GUI
            << "Available icon theme paths: "
            << QIcon::themeSearchPaths()

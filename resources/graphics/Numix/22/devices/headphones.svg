@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <path d="m 10.877 2.504 c 0 0 -1.591 0.117 -2.652 0.516 c -1.061 0.398 -1.744 0.862 -3.182 1.922 -1.438 1.061 -0.754 1.265 -0.754 1.265 0.384 0.044 0.882 0.028 1.223 -0.205 0.435 -0.297 1.384 -1.06 2.182 -1.387 1 -0.411 2.097 -0.681 3.182 -0.681 c 1.085 0 2.178 0.27 3.182 0.681 0.798 0.326 1.747 1.09 2.182 1.387 0.341 0.233 0.839 0.249 1.223 0.205 0 0 0.684 -0.204 -0.754 -1.265 c -1.438 -1.061 -2.121 -1.524 -3.182 -1.922 -1.061 -0.398 -2.652 -0.516 -2.652 -0.516" style="fill:#89c86b;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <path transform="scale(-1,-1)" d="m -2.63 -10.859 a 8.37 8.37 0 0 1 -4.185 7.249 8.37 8.37 0 0 1 -8.37 0 8.37 8.37 0 0 1 -4.185 -7.249" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;fill-opacity:1;stroke:#515151;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:0.81;stroke-dashoffset:0"/>
+ <path d="m 2.225 10.859 0.135 1.62 0.81 0 -0.135 -1.62 z" style="fill:#89c86b;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="3.78" height="8.64" x="2.343" y="11.557" rx="1.08" transform="matrix(0.9961947,-0.08715574,0.08715574,0.9961947,0,0)" style="fill:#515151;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 2.36 12.479 0.612 6.993 0.538 -0.047 -0.047 -0.538 0.538 -0.047 -0.565 -6.455" style="fill:#515151;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect width="1.08" height="8.64" x="2.343" y="11.557" transform="matrix(0.9961947,-0.08715574,0.08715574,0.9961947,0,0)" style="fill:#89c86b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 19.775 10.859 -0.135 1.62 -0.81 0 0.135 -1.62 z" style="fill:#89c86b;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect rx="1.08" y="9.639" x="-19.573" height="8.64" width="3.78" transform="matrix(-0.99619438,-0.08715941,-0.08715207,0.99619502,0,0)" style="fill:#515151;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <path d="m 19.64 12.479 -0.612 6.993 -0.538 -0.047 l 0.047 -0.538 -0.538 -0.047 0.565 -6.455 z" style="fill:#515151;fill-opacity:1;stroke:none;fill-rule:evenodd"/>
+ <rect y="9.639" x="-19.573" height="8.64" width="1.08" transform="matrix(-0.99619438,-0.08715941,-0.08715207,0.99619502,0,0)" style="fill:#89c86b;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

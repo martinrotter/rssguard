@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <defs>
+  <linearGradient y2="23" x2="0" y1="-7" gradientTransform="matrix(0.5,0,0,0.5,-1.0000001,-0.99999993)" gradientUnits="userSpaceOnUse" id="linearGradient3048">
+   <stop style="stop-color:#839496;stop-opacity:1"/>
+   <stop offset="1" style="stop-color:#667678;stop-opacity:1"/>
+  </linearGradient>
+ </defs>
+ <path d="m 10 3 c -0.554 0 -1 0.446 -1 1 l 0 1.01 -1 0 c -0.554 0 -1 0.446 -1 1 l 0 11.992 c 0 0.554 0.446 1 1 1 l 6 0 c 0.554 0 1 -0.446 1 -1 l 0 -11.992 c 0 -0.554 -0.447 -1.028 -1 -1 l -1 0 0 -1.01 c 0 -0.554 -0.446 -1 -1 -1 z" style="fill:url(#linearGradient3048);fill-opacity:1;stroke:none"/>
+ <rect rx="1" y="5" x="7" height="14" width="8" style="fill:#6fa7ce;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="8" height="14" x="7" y="5" rx="1" style="fill:#6fa7ce;opacity:0.2;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="2" height="14" x="12" y="5" style="fill:#fff;opacity:0.2;fill-opacity:1;stroke:none"/>
+ <rect width="1" height="2" x="11" y="3" style="fill:#fff;opacity:0.2;fill-opacity:1;stroke:none"/>
+</svg>

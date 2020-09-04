@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <path d="m 4 0 c -0.473 0 -1 0.527 -1 1 l 0 20 c 0 0.445 0.555 1 1 1 l 14 0 c 0.445 0 0.992 -0.555 1 -1 l 0 -15 -6 -6 z" style="fill:#dc322f;fill-opacity:1"/>
+ <path d="m 14 6 5 5 0 -5 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 13 0 6 6 -5 0 c -0.445 0 -1 -0.555 -1 -1 z" style="fill:#fff;fill-opacity:0.392"/>
+ <path d="m 7 13 c -0.554 0 -1 0.446 -1 1 l 0 3 c 0 0.554 0.446 1 1 1 l 3 0 c 0.554 0 1 -0.446 1 -1 l 0 -3 c 0 -0.554 -0.446 -1 -1 -1 z m 2.717 1 0.533 0.539 -2.534 2.461 -1.066 -1.078 0.533 -0.541 0.533 0.541" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <path d="m 7 8 c -0.554 0 -1 0.446 -1 1 l 0 2 c 0 0.554 0.446 1 1 1 l 8 0 c 0.554 0 1 -0.446 1 -1 l 0 -2 c 0 -0.554 -0.446 -1 -1 -1 l -8 0 z m 0 1 l 5 0 l 0 2 l -5 0 l 0 -2 z m 6 0 l 2 0 l 0 2 l -2 0 l 0 -2 z" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+ <path d="M 13.5 13 A 2.5 2.5 0 0 0 11 15.5 A 2.5 2.5 0 0 0 13.5 18 A 2.5 2.5 0 0 0 16 15.5 A 2.5 2.5 0 0 0 13.5 13 z M 13.5 13.75 A 1.75 1.75 0 0 1 15.25 15.5 A 1.75 1.75 0 0 1 13.5 17.25 A 1.75 1.75 0 0 1 11.75 15.5 A 1.75 1.75 0 0 1 13.5 13.75 z M 13.5 14.5 A 1 1 0 0 0 12.5 15.5 A 1 1 0 0 0 13.5 16.5 A 1 1 0 0 0 14.5 15.5 A 1 1 0 0 0 13.5 14.5 z" style="fill:#fff;opacity:1;fill-opacity:1;stroke:none"/>
+</svg>

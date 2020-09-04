@@ -1,0 +1,11 @@
+<svg width="22" xmlns="http://www.w3.org/2000/svg" height="22" viewBox="0 0 22 22">
+<g transform="translate(-1 -1)">
+<path style="fill:#fff;fill-rule:evenodd" d="m 7,3 10,0 c 2,0 2,0 2,2 l 0,14 c 0,2 0,2 -2,2 L 7,21 C 5,21 5,21 5,19 L 5,5 C 5,3 5,3 7,3 z"/>
+</g>
+<g style="fill:#aaa;stroke:#aaa;stroke-linecap:round;stroke-width:2" transform="translate(-1 -2)">
+<path d="m 15,35 0,3 3,0" transform="scale(.5)"/>
+<path d="m 33,35 0,3 -3,0" transform="scale(.5)"/>
+<path d="m 30,14 3,0 0,3" transform="scale(.5)"/>
+<path d="m 15,17 0,-3 3,0" transform="scale(.5)"/>
+</g>
+</svg>

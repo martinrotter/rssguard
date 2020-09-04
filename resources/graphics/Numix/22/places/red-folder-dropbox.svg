@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <defs>
+  <radialGradient r="11" cy="19" cx="11" gradientTransform="matrix(1,0,0,0.09090909,0,17.272727)" gradientUnits="userSpaceOnUse" id="radialGradient3783">
+   <stop style="stop-color:#000;stop-opacity:1"/>
+   <stop offset="1" style="stop-color:#000;stop-opacity:0"/>
+  </radialGradient>
+ </defs>
+ <g transform="translate(0,-1030.3622)">
+  <path d="M 22 19 A 11 1 0 1 1 0 19 11 1 0 1 1 22 19 z" transform="matrix(1.1818182,0,0,1,-2,1031.3622)" style="fill:url(#radialGradient3783);opacity:0.25;fill-opacity:1;stroke:none"/>
+  <path d="m 0 1033.36 0 14 22 0 0 -7 -1 -6 -8 0 -1 -2 -11 0 c -0.5 0 -1 0.5 -1 1 z" style="fill:#d32f2f;fill-opacity:1;stroke:none"/>
+  <path d="m 1 1032.36 c -0.5 0 -1 0.5 -1 1 l 0 1 c 0 -0.5 0.5 -1 1 -1 l 10 0 1 2 9 0 0 6 0 -1 0 -6 -8 0 -1 -2 z" style="fill:#000;opacity:0.03;fill-opacity:1;stroke:none"/>
+  <rect width="10" height="4" x="2" y="1035.36" style="fill:#fffdf0;fill-opacity:1;stroke:none"/>
+  <path d="m 22 1035.43 0 14.933 -22 0 0 -14 11 0 1 -2 9 0 c 0.5 0 1 0.533 1 1.067 z" style="fill:#ef5350;fill-opacity:1;stroke:none"/>
+  <path d="m 0 1049.36 0 1 22 0 0 -1 z" style="fill:#000;opacity:0.15;fill-opacity:1;stroke:none"/>
+  <path d="m 12 1034.36 -1 2 -11 0 0 1 12 0 1 -2 8 0 c 0.5 0 1 0.5 1 1 l 0 -1 c 0 -0.5 -0.5 -1 -1 -1 z" style="fill:#000;opacity:0.03;fill-opacity:1;stroke:none"/>
+  <path d="m 8.5 1039.36 -2.5 1.929 2.5 1.607 -2.5 2.25 5 3.214 5 -3.214 -2.5 -2.25 2.5 -1.607 -2.5 -1.929 -2.5 1.929 z" style="fill:#ab3634;opacity:1;fill-opacity:1;color:#000"/>
+ </g>
+</svg>

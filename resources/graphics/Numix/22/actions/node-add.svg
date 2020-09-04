@@ -1,0 +1,12 @@
+
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+ <rect x="4" y="5.5" style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" height="11" width="1"/>
+ <rect x="4" y="-16.5" style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" height="11" width="1" transform="matrix(0 1 -1 0 0 0)"/>
+ <circle style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:round;stroke-width:1;stroke-dashoffset:0" cx="4" cy="4" r="1.5"/>
+ <rect x="17" y="5.5" style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" height="6.5" width="1"/>
+ <rect x="16.5" y="2.5" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" height="3" width="3"/>
+ <rect x="17" y="-12" style="fill:#3daee9;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" height="6.5" transform="matrix(0 1 -1 0 0 0)" width="1"/>
+ <rect x="2.5" y="16.5" style="stroke-dasharray:none;stroke-opacity:1;fill:none;opacity:1;stroke-miterlimit:4;stroke:#313131;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" height="3" width="3"/>
+ <path style="fill:#859900" d="m 22 16 -3 0 0 -3 -3 0 0 3 -3 0 0 3 3 0 0 3 3 0 0 -3 3 0 z"/>
+</svg>

@@ -55,7 +55,9 @@
     <file>./graphics/Faenza/categories/64/applications-internet.png</file>
     <file>./graphics/Faenza/categories/64/applications-office.png</file>
     <file>./graphics/Faenza/categories/64/applications-science.png</file>
+    <file>./graphics/Faenza/emblems/64/emblem-downloads.icon</file>
     <file>./graphics/Faenza/emblems/64/emblem-downloads.png</file>
+    <file>./graphics/Faenza/emblems/64/emblem-system.icon</file>
     <file>./graphics/Faenza/emblems/64/emblem-system.png</file>
     <file>./graphics/Faenza/index.theme</file>
     <file>./graphics/Faenza/mimetypes/64/application-rss+xml.png</file>
@@ -67,5 +69,74 @@
     <file>./graphics/Faenza/status/64/dialog-information.png</file>
     <file>./graphics/Faenza/status/64/dialog-question.png</file>
     <file>./graphics/Faenza/status/64/dialog-warning.png</file>
+    <file>./graphics/Numix/22/actions/application-exit.svg</file>
+    <file>./graphics/Numix/22/actions/back.svg</file>
+    <file>./graphics/Numix/22/actions/call-start.svg</file>
+    <file>./graphics/Numix/22/actions/dialog-no.svg</file>
+    <file>./graphics/Numix/22/actions/dialog-yes.svg</file>
+    <file>./graphics/Numix/22/actions/document-edit.svg</file>
+    <file>./graphics/Numix/22/actions/document-export.svg</file>
+    <file>./graphics/Numix/22/actions/document-import.svg</file>
+    <file>./graphics/Numix/22/actions/document-new.svg</file>
+    <file>./graphics/Numix/22/actions/document-open.svg</file>
+    <file>./graphics/Numix/22/actions/document-properties.svg</file>
+    <file>./graphics/Numix/22/actions/document-revert.svg</file>
+    <file>./graphics/Numix/22/actions/down.svg</file>
+    <file>./graphics/Numix/22/actions/edit-clear.svg</file>
+    <file>./graphics/Numix/22/actions/edit-copy.svg</file>
+    <file>./graphics/Numix/22/actions/format-indent-more.svg</file>
+    <file>./graphics/Numix/22/actions/format-justify-fill.svg</file>
+    <file>./graphics/Numix/22/actions/forward.svg</file>
+    <file>./graphics/Numix/22/actions/go-down.svg</file>
+    <file>./graphics/Numix/22/actions/go-home.svg</file>
+    <file>./graphics/Numix/22/actions/go-jump.svg</file>
+    <file>./graphics/Numix/22/actions/go-next.svg</file>
+    <file>./graphics/Numix/22/actions/go-previous.svg</file>
+    <file>./graphics/Numix/22/actions/go-up.svg</file>
+    <file>./graphics/Numix/22/actions/gtk-edit.svg</file>
+    <file>./graphics/Numix/22/actions/help-about.svg</file>
+    <file>./graphics/Numix/22/actions/help-contents.svg</file>
+    <file>./graphics/Numix/22/actions/insert-object.svg</file>
+    <file>./graphics/Numix/22/actions/list-add.svg</file>
+    <file>./graphics/Numix/22/actions/list-remove.svg</file>
+    <file>./graphics/Numix/22/actions/mail-attachment.svg</file>
+    <file>./graphics/Numix/22/actions/mail-mark-important.svg</file>
+    <file>./graphics/Numix/22/actions/mail-mark-junk.svg</file>
+    <file>./graphics/Numix/22/actions/mail-mark-read.svg</file>
+    <file>./graphics/Numix/22/actions/mail-mark-unread.svg</file>
+    <file>./graphics/Numix/22/actions/mail-message-new.svg</file>
+    <file>./graphics/Numix/22/actions/mail-reply-sender.svg</file>
+    <file>./graphics/Numix/22/actions/mail-send.svg</file>
+    <file>./graphics/Numix/22/actions/mail-sent.svg</file>
+    <file>./graphics/Numix/22/actions/media-playback-start.svg</file>
+    <file>./graphics/Numix/22/actions/process-stop.svg</file>
+    <file>./graphics/Numix/22/actions/reload.svg</file>
+    <file>./graphics/Numix/22/actions/system-search.svg</file>
+    <file>./graphics/Numix/22/actions/system-upgrade.svg</file>
+    <file>./graphics/Numix/22/actions/tab-new.svg</file>
+    <file>./graphics/Numix/22/actions/up.svg</file>
+    <file>./graphics/Numix/22/actions/view-fullscreen.svg</file>
+    <file>./graphics/Numix/22/actions/view-list-details.svg</file>
+    <file>./graphics/Numix/22/actions/view-refresh.svg</file>
+    <file>./graphics/Numix/22/actions/view-restore.svg</file>
+    <file>./graphics/Numix/22/actions/window-close.svg</file>
+    <file>./graphics/Numix/22/categories/applications-internet.svg</file>
+    <file>./graphics/Numix/22/categories/applications-office.svg</file>
+    <file>./graphics/Numix/22/categories/applications-science.svg</file>
+    <file>./graphics/Numix/22/categories/help-about.svg</file>
+    <file>./graphics/Numix/22/emblems/emblem-downloads.svg</file>
+    <file>./graphics/Numix/22/emblems/emblem-system.svg</file>
+    <file>./graphics/Numix/22/mimetypes/application-rss+xml.svg</file>
+    <file>./graphics/Numix/22/mimetypes/image-x-generic.svg</file>
+    <file>./graphics/Numix/22/mimetypes/text-html.svg</file>
+    <file>./graphics/Numix/22/places/folder.svg</file>
+    <file>./graphics/Numix/22/places/mail-inbox.svg</file>
+    <file>./graphics/Numix/22/places/mail-sent.svg</file>
+    <file>./graphics/Numix/22/places/user-trash.svg</file>
+    <file>./graphics/Numix/22/status/dialog-error.svg</file>
+    <file>./graphics/Numix/22/status/dialog-information.svg</file>
+    <file>./graphics/Numix/22/status/dialog-question.svg</file>
+    <file>./graphics/Numix/22/status/dialog-warning.svg</file>
+    <file>./graphics/Numix/index.theme</file>
   </qresource>
 </RCC>

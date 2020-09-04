@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <g>
+  <rect rx="0.5" y="15" x="2" height="3" width="13" style="fill:#a6b44a;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <rect rx="0.5" y="6" height="10" width="22" style="fill:#a6b44a;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <rect width="3" height="6" x="17" y="8" rx="0.5" style="fill:#073642;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <rect y="16" x="3" height="1" width="1" style="fill:#e0e22d;fill-opacity:1;stroke:none"/>
+  <rect y="6" x="18" height="10" width="2" style="fill:#fdf6e3;fill-opacity:0.309;stroke:none"/>
+  <rect width="1" height="1" x="5" y="16" style="fill:#e0e22d;fill-opacity:1;stroke:none"/>
+  <rect y="16" x="7" height="1" width="1" style="fill:#e0e22d;fill-opacity:1;stroke:none"/>
+  <rect width="1" height="1" x="9" y="16" style="fill:#e0e22d;fill-opacity:1;stroke:none"/>
+  <rect y="16" x="11" height="1" width="1" style="fill:#e0e22d;fill-opacity:1;stroke:none"/>
+  <rect width="1" height="1" x="13" y="16" style="fill:#e0e22d;fill-opacity:1;stroke:none"/>
+  <rect rx="0.5" y="8" x="2" height="6" width="3" style="fill:#073642;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <rect width="3" height="6" x="7" y="8" rx="0.5" style="fill:#073642;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <rect rx="0.5" y="8" x="12" height="6" width="3" style="fill:#073642;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+</svg>

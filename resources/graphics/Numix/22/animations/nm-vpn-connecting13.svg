@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <!-- imported from '../../status/22/nm-vpn-lock.svg' -->
+ <path d="m 19,13 c -1.108,0 -2,0.911 -2,2.031 L 17,16 c -0.554,0 -1,0.446 -1,1 l 0,3 c 0,0.554 0.446,1 1,1 l 4,0 c 0.554,0 1,-0.446 1,-1 l 0,-3 c 0,-0.554 -0.446,-1 -1,-1 l 0,-0.969 C 21,13.911 20.108,13 19,13 Z m 0,1 c 0.554,0 1,0.442 1,1 l 0,1 -2,0 0,-1 c 0,-0.558 0.446,-1 1,-1 z" style="fill:#ececec;fill-opacity:1"/>
+ <g>
+  <g transform="translate(-81.000208,-527.36047)">
+   <path d="m 101 533.48 c -2.601 -1.979 -5.69 -3.121 -9 -3.121 -3.31 0 -6.399 1.142 -9 3.121 l 9 12.879 z" style="fill:#ececec;opacity:0.4;mask:none;fill-opacity:1;color:#000"/>
+   <path d="m 94.25 543.14 c -0.65 -0.495 -1.422 -0.78 -2.25 -0.78 -0.828 0 -1.6 0.285 -2.25 0.78 l 2.25 3.22 z" style="fill:#ececec;opacity:1;mask:none;fill-opacity:1;color:#000"/>
+  </g>
+ </g>
+</svg>

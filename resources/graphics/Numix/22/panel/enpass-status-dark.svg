@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <g transform="matrix(0.42109437,0,0,0.4668132,7.3102687,4.9479719)">
+  <g transform="matrix(0.49988464,0,0,0.49988464,-37.411065,7.9950011)">
+   <!-- color: #004794 -->
+  </g>
+ </g>
+ <g transform="matrix(0.99531398,0,0,1.1033767,8.9426607,3.2713842)" style="stroke-dasharray:none;stroke-opacity:1;stroke-miterlimit:4;stroke:#000;stroke-width:1.431">
+  <g transform="matrix(0.49988464,0,0,0.49988464,-37.411065,7.9950011)" style="stroke-width:2.863">
+   <!-- color: #004794 -->
+  </g>
+ </g>
+ <path d="M 11 2 A 9 9 0 0 0 2 11 A 9 9 0 0 0 11 20 A 9 9 0 0 0 20 11 A 9 9 0 0 0 11 2 z M 10 6 L 12 6 C 13.662 6 15 7.338 15 9 C 15 10.309 14.165 11.407 13 11.818 L 13 17 L 9 17 L 9 11.818 C 7.835 11.407 7 10.309 7 9 C 7 7.338 8.338 6 10 6 z" style="fill:#353535;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

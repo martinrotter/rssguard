@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <path style="fill:#ececec;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" d="M 9,2 9,9 5.127,6.234 3.787,7.277 9,11 3.787,14.723 5.127,15.766 9,13 l 0,7 7.699,-5.5 -4.9,-3.5 4.9,-3.5 z M 11,5.428 13.9,7.5 11,9.572 Z m 0,7 2.9,2.072 -2.9,2.072 z"/>
+ <path style="fill:#ececec;fill-opacity:1;stroke:none;fill-rule:evenodd" d="m 18 8 -4 3 4 3 z"/>
+ <path style="fill:#ececec;fill-opacity:1;stroke:none;fill-rule:evenodd" d="m 3 8 4 3 -4 3 z"/>
+</svg>

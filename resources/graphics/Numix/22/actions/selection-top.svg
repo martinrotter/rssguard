@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <path d="m 10,20 0,-1 -8,0 0,1 z m 2,-4 0,-1 -10,0 0,1 z m -2,-4 0,-1 -8,0 0,1 z M 11,8 11,7 2,7 2,8 Z" style="fill:#888;fill-opacity:1;stroke:none;color:#4d4d4d"/>
+ <path d="m 16.5 20 0 -12" style="stroke-opacity:1;fill:none;stroke:#3a3a3a;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1"/>
+ <path d="m 19 11 -2.499 -3 -2.5 3" style="stroke-opacity:1;fill:none;stroke:#3a3a3a;stroke-linecap:round;stroke-linejoin:round;stroke-width:1"/>
+ <rect style="fill:#f9b13a;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" width="18" transform="matrix(-1 0 0 -1 0 0)" y="-4" height="2" x="-20"/>
+</svg>

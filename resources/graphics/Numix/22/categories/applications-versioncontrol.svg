@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 17.6 17.6">
+ <path d="m 3.728 3.6 10.143 0 c 0.071 0 0.128 0.057 0.128 0.128 l 0 10.143 c 0 0.071 -0.057 0.128 -0.128 0.128 l -10.143 0 c -0.071 0 -0.128 -0.057 -0.128 -0.128 l 0 -10.143 c 0 -0.071 0.057 -0.128 0.128 -0.128 z" style="stroke-dasharray:none;fill:none;stroke-miterlimit:4;stroke:#ca9a69;stroke-linecap:round;stroke-width:0.8"/>
+ <path d="m 4.4 3.6 0 10.4 l 0.267 0 0 -2 0.933 0 0 -0.267 -0.933 0 0 -1.333 0.933 0 0 -0.267 -0.933 0 0 -1.333 1.733 0 0 -0.267 -1.733 0 0 -1.333 1.733 0 0 -0.267 -1.733 0 0 -1.333 0.933 0 0 -0.267 -0.933 0 0 -1.734 z" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#ca9a69;opacity:1;image-rendering:auto;fill-opacity:0.6;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+ <rect width="0.8" height="0.8" x="6.4" y="4.8" rx="0.133" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="0.8" height="0.8" x="6.4" y="11.2" rx="0.133" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="4.8" height="0.8" x="8" y="4.8" rx="0.133" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="0.8" height="0.8" x="7.2" y="6.4" rx="0.133" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="0.8" height="0.8" x="7.2" y="8" rx="0.133" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="0.8" height="0.8" x="6.4" y="9.6" rx="0.133" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="4" height="0.8" x="8.8" y="6.4" rx="0.111" ry="0.133" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="4" height="0.8" x="8.8" y="8" rx="0.111" ry="0.133" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="4.8" height="0.8" x="8" y="9.6" rx="0.133" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ <rect width="4.8" height="0.8" x="8" y="11.2" rx="0.133" style="fill:#ca9a69;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+</svg>

@@ -23,7 +23,10 @@ echo_formatted_qrc() {
 discover_used_icons() {
   local ROOT_SRC_FOLDER="$(pwd)"
   local RESOURCES_FOLDER="$ROOT_SRC_FOLDER/../resources"
-  local INDEX_FILE="./graphics/Faenza/index.theme"
+  
+  local INDEX_FILE_1="./graphics/Faenza/index.theme"
+  local INDEX_FILE_2="./graphics/Numix/index.theme"
+  
   declare -a ICON_FILES
   #echo "Root src folder: \"$ROOT_SRC_FOLDER\"."
   
@@ -34,11 +37,12 @@ discover_used_icons() {
   
   for ICON_NAME in $ICON_NAMES; do
     # We find icon.
-    local ICON_FILE="$(find . -name "${ICON_NAME}.png")"
+    local ICON_FILE="$(find . -name "${ICON_NAME}.*")"
     ICON_FILES+=("$ICON_FILE")
   done
   
-  ICON_FILES+=("$INDEX_FILE")
+  ICON_FILES+=("$INDEX_FILE_1")
+  ICON_FILES+=("$INDEX_FILE_2")
   cd "$ROOT_SRC_FOLDER"
   echo_formatted_qrc ${ICON_FILES[@]}
 }

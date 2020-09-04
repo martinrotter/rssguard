@@ -1,0 +1,11 @@
+<svg width="22" xmlns="http://www.w3.org/2000/svg" height="22" viewBox="0 0 22 22">
+<g style="fill:#888" transform="translate(-1 -1)">
+<path d="M 17,5 17,7 5,7 5,5 z"/>
+<path d="m 19,13 0,2 -10,0 0,-2 z"/>
+<path d="M 15,9 15,11 5,11 5,9 z"/>
+<path d="m 19,17 0,2 -8,0 0,-2 z"/>
+</g>
+<g transform="translate(-1 -1)">
+<path style="fill:#dc322f" d="M 9,16 5,13 5,19 z"/>
+</g>
+</svg>

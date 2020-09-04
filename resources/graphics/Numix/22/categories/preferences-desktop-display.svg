@@ -1,0 +1,6 @@
+<!-- color: #71e9d2 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <g transform="matrix(0.50000368,0,0,0.50000368,-2.1332092e-4,-1.2500828)" style="fill:#c088c3;fill-opacity:1">
+  <path d="m 4 6.5 c -1 0 -2 1 -2 2 l 0 26 17 0 c 0 0 0 4 -3 6 l -3 0 0 2 18 0 0 -2 -3 0 c -3 -2 -3 -6 -3 -6 l 17 0 0 -26 c 0 -1 -1 -2 -2 -2 z m 0 2 36 0 0 20 -36 0 z m 14 22 8 0 0 2 -8 0 z" style="stroke:none;fill-rule:nonzero"/>
+ </g>
+</svg>

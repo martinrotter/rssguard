@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22 22">
+ <defs>
+  <path id="SVGCleanerId_0" d="m 14 12 20 0 c 1.105 0 2 0.895 2 2 l 0 20 c 0 1.105 -0.895 2 -2 2 l -20 0 c -1.105 0 -2 -0.895 -2 -2 l 0 -20 c 0 -1.105 0.895 -2 2 -2 m 0 0"/>
+ </defs>
+ <g transform="translate(2,2)">
+  <use height="22" width="22" xlink:href="#SVGCleanerId_0" transform="matrix(0.60416667,0,0,0.60416667,-3.5000001,-3.5000001)" style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#af8566;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2.483"/>
+  <use height="22" width="22" xlink:href="#SVGCleanerId_0" transform="matrix(0.58333333,0,0,0.58333333,-2.9999999,-2.9999999)" style="fill:#fff4ab;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 4 14 14 0 0 1 -14 0 z" style="fill:#e4d66a;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 4 11 14 0 0 1 -14 0" style="fill:#e4d66a;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 4 8 14 0 0 1 -14 0" style="fill:#e4d66a;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 8 4 1 0 0 14 -1 0" style="fill:#e6b2a9;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+ <g transform="translate(-2,-2)">
+  <use transform="matrix(0.60416667,0,0,0.60416667,-3.5000001,-3.5000001)" xlink:href="#SVGCleanerId_0" width="22" height="22" style="stroke-dasharray:none;stroke-opacity:1;fill:none;stroke-miterlimit:4;stroke:#af8566;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:2.483"/>
+  <use transform="matrix(0.58333333,0,0,0.58333333,-2.9999999,-2.9999999)" xlink:href="#SVGCleanerId_0" width="22" height="22" style="fill:#fff4ab;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 4 14 14 0 0 1 -14 0 z" style="fill:#e4d66a;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 4 11 14 0 0 1 -14 0" style="fill:#e4d66a;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 4 8 14 0 0 1 -14 0" style="fill:#e4d66a;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+  <path d="m 8 4 1 0 0 14 -1 0" style="fill:#e6b2a9;fill-opacity:1;stroke:none;fill-rule:nonzero"/>
+ </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <path d="m 10.51 8 0.98 0 c 1.469 0 1.509 1.53 1.509 1.53 l 0 1.314 c 0 0.499 -1 1.53 -1 1.53 l 0 0.657 2 1.094 l 0 0.875 l -6 0 0 -0.875 2 -1.094 0 -0.657 c 0 0 -1 -1.031 -1 -1.53 l 0 -1.314 c 0 0 0.041 -1.53 1.509 -1.53" style="fill:#4a8c9d"/>
+ <path d="m 11 2 c -4.967 0 -9 4.03 -9 8.999 0 4.967 4.03 9 9 9 4.967 0 9 -4.03 9 -9 0 -4.965 -4.03 -8.999 -9 -8.999 m 0 0.75 c 4.562 0 8.25 3.689 8.25 8.249 c 0 4.561 -3.688 8.251 -8.25 8.251 -4.562 0 -8.25 -3.689 -8.25 -8.251 0 -4.56 3.688 -8.249 8.25 -8.249" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#4a8c9d;opacity:1;image-rendering:auto;fill-opacity:1;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+ <path d="m 11 4.75 c -3.447 0 -6.25 2.803 -6.25 6.25 0 3.447 2.803 6.25 6.25 6.25 3.447 0 6.25 -2.803 6.25 -6.25 0 -3.447 -2.803 -6.25 -6.25 -6.25 z m 0 0.75 c 3.042 0 5.5 2.458 5.5 5.5 0 3.042 -2.458 5.5 -5.5 5.5 c -3.042 0 -5.5 -2.458 -5.5 -5.5 0 -3.042 2.458 -5.5 5.5 -5.5" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#4a8c9d;opacity:1;image-rendering:auto;fill-opacity:1;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+ <g transform="matrix(0.5,0,0,0.5,-0.9745763,-1.4067795)" style="fill:#4a8c9d">
+  <path d="m 14.418 21.434 c 0 0.992 -0.805 1.801 -1.801 1.801 -0.992 0 -1.801 -0.809 -1.801 -1.801 0 -0.996 0.809 -1.801 1.801 -1.801 0.996 0 1.801 0.805 1.801 1.801 z"/>
+  <path d="m 35.941 19.06 c 0 0.992 -0.805 1.801 -1.801 1.801 -0.992 0 -1.801 -0.809 -1.801 -1.801 0 -0.996 0.809 -1.801 1.801 -1.801 0.996 0 1.801 0.805 1.801 1.801 z"/>
+  <path d="m 26.27 7.684 c 0 0.996 -0.805 1.801 -1.801 1.801 -0.992 0 -1.797 -0.805 -1.797 -1.801 0 -0.996 0.805 -1.801 1.797 -1.801 0.996 0 1.801 0.805 1.801 1.801 z"/>
+  <path d="m 15.559 38.688 c 0 0.996 -0.809 1.801 -1.801 1.801 -0.996 0 -1.801 -0.805 -1.801 -1.801 0 -0.992 0.805 -1.801 1.801 -1.801 0.992 0 1.801 0.809 1.801 1.801 z"/>
+  <path d="m 35.09 39.445 c 0 0.996 -0.809 1.801 -1.801 1.801 -0.996 0 -1.801 -0.805 -1.801 -1.801 0 -0.992 0.805 -1.797 1.801 -1.797 0.992 0 1.801 0.805 1.801 1.797 z"/>
+ </g>
+</svg>

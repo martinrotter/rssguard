@@ -1,0 +1,11 @@
+<svg width="22" xmlns="http://www.w3.org/2000/svg" height="22" viewBox="0 0 22 22">
+<g style="fill-rule:evenodd" transform="translate(-3 -2)">
+<path style="fill:#aaa" d="M 7,3.001 15,3 c 2,0 2,0 2,2 l 0,12 c 0,2 0,2 -2,2 L 7,19 C 5,19 5,19 5,17 L 5,5.001 c 0,-2 0,-2 2,-2 z"/>
+<path style="fill:#fff" d="m 13,7.001 8,0 c 2,0 2,0 2,2 L 23,21 c 0,2 0,2 -2,2 l -8,0 c -2,0 -2,0 -2,-2 L 11,9.001 c 0,-2 0,-2 2,-2 z"/>
+</g>
+<g style="fill:#888" transform="translate(-1 -1)">
+<path d="m 11,9 0,2 8,0 0,-2 z"/>
+<path d="m 11,17 0,2 4,0 0,-2 z"/>
+<path d="m 11,13 0,2 8,0 0,-2 z"/>
+</g>
+</svg>

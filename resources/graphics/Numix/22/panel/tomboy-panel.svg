@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" viewBox="0 0 6.208889 6.208889" height="22">
+ <g style="fill:#ececec;fill-opacity:1">
+  <g transform="matrix(1.0001992,0,0,1,0.06982131,0.00110245)">
+   <path d="m 4.498 3 c -0.553 0.001 -1 0.451 -0.998 1 l 0 10.996 c -0.002 0.553 0.445 1 0.998 1 l 13.504 0 c 0.552 -0.002 0.998 -0.452 0.996 -1 l 0 -9.441 l -5.629 5.733 -3.919 1.258 0.857 -3.519 6.04 -6.03" transform="matrix(0.28216602,0,0,0.28222222,-0.0698074,-0.00110245)" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;opacity:1;image-rendering:auto;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+   <path d="m 0.918 4.516 0 0.564 c 0.001 0.155 0.126 0.281 0.282 0.281 l 3.811 0 c 0.155 -0.001 0.281 -0.126 0.281 -0.281 l 0 -0.564 c -0.001 0.155 -0.126 0.281 -0.281 0.281 l -0.283 0 -3.244 0 -0.283 0 c -0.155 0 -0.281 -0.126 -0.282 -0.281" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;opacity:1;image-rendering:auto;stroke:none;display:inline;color:#000;fill-rule:nonzero;color-rendering:auto;color-interpolation:sRGB"/>
+  </g>
+ </g>
+ <path d="m 19.98 1.113 c -0.226 0.01 -0.44 0.108 -0.596 0.271 l -7.99 7.982 l -0.795 2.033 l 2.033 -0.795 l 7.984 -7.99 c 0.572 -0.557 0.161 -1.526 -0.637 -1.502 z" transform="scale(0.28222222,0.28222222)" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#ececec;opacity:1;image-rendering:auto;fill-opacity:1;stroke:none;display:inline;color:#000;fill-rule:evenodd;color-rendering:auto;color-interpolation:sRGB"/>
+</svg>

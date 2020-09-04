@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <path d="m 4 0 c -0.473 0 -1 0.527 -1 1 l 0 20 c 0 0.445 0.555 1 1 1 l 14 0 c 0.445 0 0.992 -0.555 1 -1 l 0 -15 -6 -6 z" style="fill:#eb1b23;fill-opacity:1"/>
+ <path d="m 14 6 5 5 0 -5 z" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 13 0 6 6 -5 0 c -0.445 0 -1 -0.555 -1 -1 z" style="fill:#fff;fill-opacity:0.392"/>
+ <path d="m 13.11 7.357 c -0.285 -0.032 -0.513 -0.032 -0.723 0.009 -0.21 0.041 -0.404 0.141 -0.519 0.267 -0.115 0.126 -0.152 0.249 -0.17 0.309 -0.407 0.799 -0.887 1.592 -1.327 2.27 -0.543 0.805 -1.177 1.742 -1.507 2.497 -0.201 0.462 -0.418 1.018 -0.631 1.598 c -0.444 1.215 -0.843 2.429 -1.232 3.65 0.633 0.044 0.633 0.04 1.121 0.044 0.36 -0.66 0.956 -1.288 1.455 -1.747 0.863 -0.788 2.109 -1.594 3.299 -1.774 l 0.401 -0.06 c 0.022 -1.245 0.136 -2.592 0.751 -3.684 0.252 -0.454 0.604 -0.814 0.93 -1.226 0.084 -0.068 0.018 -0.148 0.027 -0.221 -0.243 -1.208 -1.068 -1.808 -1.85 -1.93 -0.008 0.001 -0.017 -0.002 -0.024 -0.003 z" mix-blend-mode="normal" isolation="auto" white-space="normal" solid-opacity="1" solid-color="#000000" style="visibility:visible;shape-rendering:auto;color-interpolation-filters:linearRGB;fill:#f3ffff;opacity:1;image-rendering:auto;fill-opacity:1;stroke:none;display:inline;color:#000;fill-rule:evenodd;color-rendering:auto;color-interpolation:sRGB"/>
+</svg>

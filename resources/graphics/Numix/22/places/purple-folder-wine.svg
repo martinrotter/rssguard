@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <defs>
+  <radialGradient r="11" cy="19" cx="11" gradientTransform="matrix(1,0,0,0.09090909,0,17.272727)" gradientUnits="userSpaceOnUse" id="radialGradient3783">
+   <stop style="stop-color:#000;stop-opacity:1"/>
+   <stop offset="1" style="stop-color:#000;stop-opacity:0"/>
+  </radialGradient>
+ </defs>
+ <g transform="translate(0,-1030.3622)">
+  <path d="m 22 19 c 0 0.552 -4.925 1 -11 1 -6.075 0 -11 -0.448 -11 -1 0 -0.552 4.925 -1 11 -1 6.075 0 11 0.448 11 1 z" transform="matrix(1.1818182,0,0,1,-2,1031.3622)" style="fill:url(#radialGradient3783);opacity:0.25;fill-opacity:1;stroke:none"/>
+  <path d="m 0 1033.36 0 14 22 0 0 -7 -1 -6 -8 0 -1 -2 -11 0 c -0.5 0 -1 0.5 -1 1 z" style="fill:#512da8;fill-opacity:1;stroke:none"/>
+  <path d="m 1 1032.36 c -0.5 0 -1 0.5 -1 1 l 0 1 c 0 -0.5 0.5 -1 1 -1 l 10 0 1 2 9 0 0 6 0 -1 0 -6 -8 0 -1 -2 z" style="fill:#000;opacity:0.03;fill-opacity:1;stroke:none"/>
+  <rect width="10" height="4" x="2" y="1035.36" style="fill:#fffdf0;fill-opacity:1;stroke:none"/>
+  <path d="m 22 1035.43 0 14.933 -22 0 0 -14 11 0 1 -2 9 0 c 0.5 0 1 0.533 1 1.067 z" style="fill:#7e57c2;fill-opacity:1;stroke:none"/>
+  <path d="m 0 1049.36 0 1 22 0 0 -1 z" style="fill:#000;opacity:0.15;fill-opacity:1;stroke:none"/>
+  <path d="m 12 1034.36 -1 2 -11 0 0 1 12 0 1 -2 8 0 c 0.5 0 1 0.5 1 1 l 0 -1 c 0 -0.5 -0.5 -1 -1 -1 z" style="fill:#000;opacity:0.03;fill-opacity:1;stroke:none"/>
+  <path d="m 14.874 1038.36 c -0.444 0.01 -0.881 0.272 -0.951 0.767 -0.112 0.792 0.727 0.495 1.399 0.495 0.671 0 0.895 1.287 0.727 1.98 -0.168 0.693 -1.952 2.33 -5.986 0.693 -3.321 -1.348 -4.979 0.447 -5.063 0.483 0.314 2.678 2.877 5.582 5.986 5.582 3.321 0 6.01 -3.199 6.01 -6.139 0 -0.338 -0.044 -0.67 -0.112 -0.99 -0.062 -0.162 -0.122 -0.323 -0.168 -0.47 -0.081 -0.264 -0.173 -0.486 -0.252 -0.693 -0.003 -0.01 0.003 -0.018 0 -0.024 -0.318 -0.625 -0.764 -1.19 -1.315 -1.659 -0.002 -0.01 -0.012 0.01 -0.014 0 -0.086 -0.019 -0.177 -0.026 -0.266 -0.024 z" style="fill:#54398d;opacity:1;fill-opacity:1;color:#000"/>
+  <path d="m 14 1041.36 c 0 0.552 -0.448 1 -1 1 -0.552 0 -1 -0.448 -1 -1 0 -0.552 0.448 -1 1 -1 0.552 0 1 0.448 1 1 z" style="fill:#54398d;opacity:1;fill-opacity:1;color:#000"/>
+  <path d="m 11 1038.86 c 0 0.276 -0.224 0.5 -0.5 0.5 -0.276 0 -0.5 -0.224 -0.5 -0.5 0 -0.276 0.224 -0.5 0.5 -0.5 0.276 0 0.5 0.224 0.5 0.5 z" style="fill:#54398d;opacity:1;fill-opacity:1;color:#000"/>
+ </g>
+</svg>

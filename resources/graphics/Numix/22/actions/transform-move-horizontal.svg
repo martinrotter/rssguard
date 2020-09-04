@@ -1,0 +1,9 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <g transform="matrix(0 1 -1 0 23 0)">
+  <rect style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:23.7;fill-opacity:1;stroke:#c3c3c3;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" width="6" x="4.5" y="13.5" height="8"/>
+  <rect style="stroke-dasharray:none;stroke-opacity:1;fill:#fff;opacity:1;stroke-miterlimit:23.7;fill-opacity:1;stroke:#888;fill-rule:nonzero;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1;stroke-dashoffset:0" width="6" x="4.5" y="2.5" height="8"/>
+  <path style="stroke-opacity:1;fill:none;stroke:#6c71c4;stroke-linecap:butt;stroke-linejoin:miter;stroke-width:1" d="m 15.5 18 0 -12"/>
+  <path style="fill:#6c71c4;fill-opacity:1;stroke:none;fill-rule:evenodd" d="m 13 8 2.501 -2.5 2.499 2.5 z"/>
+ </g>
+</svg>

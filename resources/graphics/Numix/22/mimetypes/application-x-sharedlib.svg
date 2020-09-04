@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <path d="m 4 0 c -0.473 0 -1 0.527 -1 1 l 0 20 c 0 0.445 0.555 1 1 1 l 14 0 c 0.445 0 0.992 -0.555 1 -1 l 0 -15 -6 -6" style="fill:#dcdcdc;fill-opacity:1"/>
+ <path d="m 14 6 5 5 0 -5" style="fill:#000;fill-opacity:0.196"/>
+ <path d="m 13 0 6 6 -5 0 c -0.445 0 -1 -0.555 -1 -1 z" style="fill:#fff;fill-opacity:0.392"/>
+ <g transform="matrix(0.40476189,0,0,0.40476189,-8.1904759,-4.7619043)" style="fill:#888;fill-opacity:1">
+  <path d="m 7 9 l 0 3 l 3 0 l 0 -3 l -3 0 z m 1 1 l 1 0 l 0 1 l -1 0 l 0 -1 z" transform="matrix(2.4705883,0,0,2.4705883,20.235294,11.764705)" style="visibility:visible;fill:#888;stroke:none;display:inline;color:#000;fill-rule:nonzero"/>
+ </g>
+ <g transform="matrix(0.40476189,0,0,0.40476189,-3.1904759,-0.76190414)" style="fill:#888;fill-opacity:1">
+  <path d="m 7 9 0 3 3 0 0 -3 -3 0 z m 1 1 1 0 0 1 -1 0 0 -1 z" transform="matrix(2.4705883,0,0,2.4705883,20.235294,11.764705)" style="visibility:visible;fill:#888;stroke:none;display:inline;color:#000;fill-rule:nonzero"/>
+ </g>
+ <g transform="matrix(0.40476189,0,0,0.40476189,-3.3809518,-4.5714283)" style="fill:#888;fill-opacity:1">
+  <path d="m 38 33.529 0 7.412 7.412 0 0 -7.412 z" style="visibility:visible;fill:#888;stroke:none;display:inline;color:#000;fill-rule:nonzero"/>
+ </g>
+ <g transform="matrix(0.40476189,0,0,0.40476189,-8.3809518,-0.57142827)" style="fill:#888;fill-opacity:1">
+  <path d="m 38 33.529 0 7.412 7.412 0 0 -7.412 z" style="visibility:visible;fill:#888;stroke:none;display:inline;color:#000;fill-rule:nonzero"/>
+ </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <defs>
+  <radialGradient id="radialGradient3766" cx="11" cy="19" r="11" gradientTransform="matrix(1,0,0,0.09090909,0,17.272727)" gradientUnits="userSpaceOnUse">
+   <stop style="stop-color:#000;stop-opacity:1"/>
+   <stop offset="1" style="stop-color:#000;stop-opacity:0"/>
+  </radialGradient>
+ </defs>
+ <g transform="translate(0,-1030.3622)">
+  <path d="m 22 19 c 0 0.552 -4.925 1 -11 1 -6.075 0 -11 -0.448 -11 -1 0 -0.552 4.925 -1 11 -1 6.075 0 11 0.448 11 1 z" transform="matrix(1.1818182,0,0,1,-2,1031.3622)" style="fill:url(#radialGradient3766);opacity:0.25;fill-opacity:1;stroke:none"/>
+  <path d="m 0 1033.36 0 14 22 0 0 -7 -1 -6 -8 0 -1 -2 -11 0 c -0.5 0 -1 0.5 -1 1 z" style="fill:replacecolour2;fill-opacity:1;stroke:none"/>
+  <path d="m 1 1032.36 c -0.5 0 -1 0.5 -1 1 l 0 1 c 0 -0.5 0.5 -1 1 -1 l 10 0 1 2 9 0 0 6 0 -1 0 -6 -8 0 -1 -2 z" style="fill:#000;opacity:0.03;fill-opacity:1;stroke:none"/>
+  <rect width="10" height="4" x="2" y="1035.36" style="fill:#fffdf0;fill-opacity:1;stroke:none"/>
+  <path d="m 22 1035.43 0 14.933 -22 0 0 -14 11 0 1 -2 9 0 c 0.5 0 1 0.533 1 1.067 z" style="fill:replacecolour1;fill-opacity:1;stroke:none"/>
+  <path d="m 0 1049.36 0 1 22 0 0 -1 z" style="fill:#000;opacity:0.15;fill-opacity:1;stroke:none"/>
+  <path d="m 12 1034.36 -1 2 -11 0 0 1 12 0 1 -2 8 0 c 0.5 0 1 0.5 1 1 l 0 -1 c 0 -0.5 -0.5 -1 -1 -1 z" style="fill:#000;opacity:0.03;fill-opacity:1;stroke:none"/>
+  <g style="fill:replacecolour3;opacity:1;fill-opacity:1">
+   <path d="m 9 1046.36 -2 1 c -2 1 -1 1 0 1 l 8 0 c 1 0 2 0 0 -1 l -2 -1 0 -1 -4 0 z" style="fill:replacecolour3;opacity:1;stroke:none"/>
+   <path transform="translate(0,1030.3622)" d="m 8 10 0 4 4 0 0 -4 z m 1 1 1 1 1 1 -2 0 z" style="fill:replacecolour3;stroke:none"/>
+   <path d="m 6 1038.36 c -0.554 0 -1 0.446 -1 1 l 0 6 c 0 0.554 0.446 1 1 1 l 10 0 c 0.554 0 1 -0.446 1 -1 l 0 -6 c 0 -0.554 -0.446 -1 -1 -1 z m 1 1 8 0 c 0.554 0 1 0.446 1 1 l 0 3.906 c 0 0.554 -0.446 1.094 -1 1.094 l -8 0 c -0.554 0 -1 -0.54 -1 -1.094 l 0 -3.906 c 0 -0.554 0.446 -1 1 -1 z" style="fill:replacecolour3;stroke:none"/>
+  </g>
+ </g>
+</svg>

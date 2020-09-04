@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <path d="m 20 12 a 9 9 0 0 1 -18 0 9 9 0 1 1 18 0 z" style="fill:#fff;fill-rule:evenodd"/>
+ <path d="m 11 2 c -5.512 0 -10 4.488 -10 10 0 5.512 4.488 10 10 10 5.512 0 10 -4.488 10 -10 0 -5.512 -4.488 -10 -10 -10 m 0 2 c 4.43 0 8 3.57 8 8 0 4.43 -3.57 8 -8 8 c -4.43 0 -8 -3.57 -8 -8 0 -4.43 3.57 -8 8 -8" style="fill:#aaa"/>
+ <path d="m 1.808 4.222 c -0.392 0.392 -0.392 1.022 0 1.414 0.471 0.471 0.943 0.943 1.414 1.414 c 1.179 -1.179 2.357 -2.357 3.536 -3.536 -0.471 -0.471 -0.943 -0.943 -1.414 -1.414 c -0.392 -0.392 -1.022 -0.392 -1.414 0 z" style="fill:#aaa;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect width="4" height="3" x="9" rx="1" style="fill:#aaa;opacity:1;fill-opacity:1;stroke:none"/>
+ <path d="m 20.19 4.222 c 0.392 0.392 0.392 1.022 0 1.414 -0.471 0.471 -0.943 0.943 -1.414 1.414 -1.179 -1.179 -2.357 -2.357 -3.536 -3.536 0.471 -0.471 0.943 -0.943 1.414 -1.414 0.392 -0.392 1.022 -0.392 1.414 0 z" style="fill:#aaa;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect width="3" height="8" x="7" y="8" style="fill:#268bd2;opacity:1;fill-opacity:1;stroke:none"/>
+ <rect y="8" x="12" height="8" width="3" style="fill:#268bd2;opacity:1;fill-opacity:1;stroke:none"/>
+</svg>

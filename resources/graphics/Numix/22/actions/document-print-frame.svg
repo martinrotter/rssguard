@@ -1,0 +1,9 @@
+<svg width="22" xmlns="http://www.w3.org/2000/svg" height="22" viewBox="0 0 22 22">
+<g style="fill-rule:evenodd" transform="matrix(1 0 0 .99976 -1 .00497)">
+<path style="fill:#aaa;fill-opacity:.94" d="m 8,1 8,0 c 2,0 2,-0.2 2,2 l 0,8 c 0,2 0,2 -2,2 L 8,13 C 6,13 6,13 6,11 L 6,3 C 6,1 6,1 8,1 z"/>
+<path style="fill:#ccc" d="m 4,7 16,0 c 2,0 2,0 2,2 l 0,6 c 0,2 0,2 -2,2 L 4,17 C 2,17 2,17 2,15 L 2,9 C 2,7 2,7 4,7 z"/>
+</g>
+<g transform="matrix(1 0 0 .99976 -1 .00497)">
+<path style="fill:#dc322f" d="m 6,11 12,0 0,10 -12,0 z"/>
+</g>
+</svg>

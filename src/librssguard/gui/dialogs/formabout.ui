@@ -92,7 +92,7 @@
       <locale language="English" country="UnitedStates"/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_tabInfo">
       <attribute name="title">
@@ -167,7 +167,7 @@ p, li { white-space: pre-wrap; }
            <bool>true</bool>
           </property>
           <attribute name="label">
-           <string>GNU GPL License (applies to RSS Guard and mimesis source code)</string>
+           <string>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</string>
           </attribute>
           <attribute name="toolTip">
            <string>GNU GPL License</string>
@@ -235,8 +235,8 @@ p, li { white-space: pre-wrap; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>685</width>
-            <height>157</height>
+            <width>98</width>
+            <height>69</height>
            </rect>
           </property>
           <attribute name="label">
@@ -301,6 +301,14 @@ p, li { white-space: pre-wrap; }
           </layout>
          </widget>
          <widget class="QWidget" name="page_MIT">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>98</width>
+            <height>69</height>
+           </rect>
+          </property>
           <attribute name="label">
            <string>MIT License (applies to boolinq source code)</string>
           </attribute>

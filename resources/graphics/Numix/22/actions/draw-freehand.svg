@@ -1,0 +1,10 @@
+<svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+ <g transform="matrix(0.8435 0.8435 -0.70808 0.70808 8.869 -7.113)">
+  <g transform="matrix(1.22226 -0.70567 0.70567 1.22226 -10.611 5.175)">
+   <path style="fill:#ff6f03;fill-opacity:1;stroke:none;fill-rule:nonzero" d="m 16.07 7.213 c 0 0 0.208 -0.893 -0.859 -1.509 -1.067 -0.616 -1.736 0.01 -1.736 0.01 l -5.449 9.437 -0.313 3.539 2.909 -2.041"/>
+   <path style="fill:#ffc13d;fill-opacity:1;stroke:none;fill-rule:nonzero" d="m 8.02 15.15 -0.313 3.539 2.909 -2.041"/>
+   <path style="fill:#2d2d2d;fill-opacity:1;stroke:none;fill-rule:nonzero" d="m 7.849 17.04 -0.142 1.65 1.362 -0.945"/>
+  </g>
+ </g>
+ <path style="fill:#2d2d2d;opacity:1;fill-opacity:1;stroke:none;fill-rule:nonzero" d="m 3 19 c 3.824 2.285 16.16 1.21 14.191 -5.885 -0.669 -2.416 5.602 -3.251 2.259 -0.391 1.278 7.642 -9.1 10.897 -16.45 6.275 z"/>
+</svg>

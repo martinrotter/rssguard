@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+ <rect width="8.75" height="18.754" x="6.625" y="1.621" rx="1.293" style="fill:#5aa9e1;fill-opacity:1;stroke:none"/>
+ <path d="m 8.5 19.12 5 -16.25 1.875 0 0 16.25 z" style="fill:#fdf6e3;fill-opacity:0.189;stroke:none"/>
+ <rect width="2.5" height="1.5" x="9.75" y="19" rx="0.75" style="fill:#002b36;fill-opacity:1;stroke:none"/>
+ <rect width="5" height="1.875" x="8.5" y="1.625" rx="0.625" style="fill:#002b36;fill-opacity:1;stroke:none"/>
+ <g transform="matrix(0.625,0,0,0.625,-4,-631.72637)" style="fill:#073642">
+  <path d="m 18.625 8 c -1.434 0 -2.625 1.159 -2.625 2.594 l 0 26.781 c 0 1.434 1.191 2.625 2.625 2.625 l 10.75 0 c 1.434 0 2.625 -1.191 2.625 -2.625 l 0 -26.781 c 0 -1.435 -1.191 -2.594 -2.625 -2.594 m -6.875 1.5 3 0 c 0.277 0 0.5 0.223 0.5 0.5 0 0.277 -0.223 0.5 -0.5 0.5 l -3 0 c -0.277 0 -0.5 -0.223 -0.5 -0.5 0 -0.277 0.223 -0.5 0.5 -0.5 z m -4.9 2.5 l 12.8 0 0 24 -12.8 0 z m 6.4 25 c 0.552 0 1 0.448 1 1 0 0.552 -0.448 1 -1 1 -0.552 0 -1 -0.448 -1 -1 0 -0.552 0.448 -1 1 -1 z" transform="translate(0,1004.3622)" style="color:#000"/>
+ </g>
+ <rect width="1.5" height="20" x="13.5" y="1" style="fill:#eee8d5;fill-opacity:0.149;stroke:none"/>
+</svg>
