@@ -249,7 +249,6 @@
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>Prieiga negalima. Panaudotas neteisingas naudotojo vardas ar slaptažodis.</translation>
     </message>
     <message>
@@ -274,7 +273,6 @@
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Nežinoma klaida: &quot;%1&quot;.</translation>
     </message>
 </context>
@@ -736,11 +734,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>NEPERKELIAMI</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <source>MIT License (applies to boolinq source code)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>MIT License (applies to boolinq source code)</source>
+        <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1006,14 +1004,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Prieiga suteikta.</translation>
     </message>
     <message>
-        <source>No username entered.   </source>
-        <translation>Neįvestas naudotojo vardas.   </translation>
-    </message>
-    <message>
-        <source>Some username entered.   </source>
-        <translation>Įvestas kažkoks naudotojo vardas.   </translation>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation>Jūs nesuteikėte prieigos.</translation>
     </message>
@@ -1052,6 +1042,14 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Neįvestas naudotojo vardas.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Įvestas kažkoks naudotojo vardas.</translation>
     </message>
 </context>
 <context>
@@ -2036,14 +2034,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>&amp;Ištrinti pasirinktą paskyrą</translation>
     </message>
     <message>
-        <source>Add new feed into selected account</source>
-        <translation>Pridėti naują kanalą į pasirinktą paskyrą</translation>
-    </message>
-    <message>
-        <source>Add new category into selected account</source>
-        <translation>Pridėti naują kategoriją į pasirinktą paskyrą</translation>
-    </message>
-    <message>
         <source>Add new category</source>
         <translation>Pridėti naują kategoriją</translation>
     </message>
@@ -2150,6 +2140,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Update items with custom &amp;timers</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2996,6 +2990,17 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <source>NOT logged-in</source>
         <translation>NEPRISIJUNGTA</translation>
+    </message>
+</context>
+<context>
+    <name>LabelsNode</name>
+    <message>
+        <source>Labels</source>
+        <translation>Etiketės</translation>
+    </message>
+    <message>
+        <source>You can see all your labels (tags) here.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

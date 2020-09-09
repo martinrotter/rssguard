@@ -249,7 +249,6 @@
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>存取被拒。用了無效的使用者名稱與密碼。</translation>
     </message>
     <message>
@@ -274,7 +273,6 @@
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>未知的錯誤: &apos;%1&apos;。</translation>
     </message>
 </context>
@@ -735,11 +733,11 @@ or this functionality is not implemented yet.</source>
         <translation>不可攜</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
-        <translation>GNU GPL 授權證 (適用於 RSS Guard 與 mimesis source code)</translation>
+        <source>MIT License (applies to boolinq source code)</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>MIT License (applies to boolinq source code)</source>
+        <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1005,14 +1003,6 @@ or this functionality is not implemented yet.</source>
         <translation>已准存取。</translation>
     </message>
     <message>
-        <source>No username entered.   </source>
-        <translation>未輸入使用者名稱。</translation>
-    </message>
-    <message>
-        <source>Some username entered.   </source>
-        <translation>已輸入某個使用者名稱。</translation>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation>您未准予存取。</translation>
     </message>
@@ -1051,6 +1041,14 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation>指定的重導向 URL 一定得始於 &quot;http://localhost&quot; 而且一定得在你的 OAuth &quot;應用程式&quot; 中設定。</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>未輸入使用者名稱。</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>已輸入某個使用者名稱。</translation>
     </message>
 </context>
 <context>
@@ -2037,14 +2035,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>刪除所選帳號(&amp;D)</translation>
     </message>
     <message>
-        <source>Add new feed into selected account</source>
-        <translation>新增新聞源到所選帳號</translation>
-    </message>
-    <message>
-        <source>Add new category into selected account</source>
-        <translation>新增分類到所選帳號</translation>
-    </message>
-    <message>
         <source>Add new category</source>
         <translation>新增分類</translation>
     </message>
@@ -2151,6 +2141,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Update items with custom &amp;timers</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3003,6 +2997,17 @@ Login tokens expiration: %2</source>
     <message>
         <source>NOT logged-in</source>
         <translation>未登入</translation>
+    </message>
+</context>
+<context>
+    <name>LabelsNode</name>
+    <message>
+        <source>Labels</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can see all your labels (tags) here.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

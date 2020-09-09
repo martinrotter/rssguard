@@ -249,7 +249,6 @@
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>Åtkomst nekad. Ogiltigt användarnamn eller lösenord.</translation>
     </message>
     <message>
@@ -274,7 +273,6 @@
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Okänt fel: &quot;%1&quot;</translation>
     </message>
 </context>
@@ -736,12 +734,12 @@ att funktionen inte är implementerad än.</translation>
         <translation>INTE portabel</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
-        <translation>GNU GPL Licens (gäller RSS Guard och mimesis källkod)</translation>
-    </message>
-    <message>
         <source>MIT License (applies to boolinq source code)</source>
         <translation>MIT Licens (gäller booling källkod)</translation>
+    </message>
+    <message>
+        <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1006,14 +1004,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Åtkomst beviljad.</translation>
     </message>
     <message>
-        <source>No username entered.   </source>
-        <translation>Inget användarnamn angivet.   </translation>
-    </message>
-    <message>
-        <source>Some username entered.   </source>
-        <translation>Användarnamn angivet.   </translation>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation>Du beviljade inte åtkomst.</translation>
     </message>
@@ -1052,6 +1042,14 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation>Angiven omdirigerings-URL måste börja med &quot;http://localhost&quot; och måste konfigureras i ditt &quot;OAuth-program&quot;.</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Inget användarnamn angivet.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Användarnamn angivet.</translation>
     </message>
 </context>
 <context>
@@ -2038,14 +2036,6 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation>&amp;Ta bort markerat konto</translation>
     </message>
     <message>
-        <source>Add new feed into selected account</source>
-        <translation>Lägg till nytt flöde i markerat konto</translation>
-    </message>
-    <message>
-        <source>Add new category into selected account</source>
-        <translation>Lägg till ny kategori i markerat konto</translation>
-    </message>
-    <message>
         <source>Add new category</source>
         <translation>Lägg till ny kategori</translation>
     </message>
@@ -2153,6 +2143,10 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     <message>
         <source>&amp;Show tree branches</source>
         <translation>&amp;Visa trädgrenar</translation>
+    </message>
+    <message>
+        <source>Update items with custom &amp;timers</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3005,6 +2999,17 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>NOT logged-in</source>
         <translation>INTE inloggad</translation>
+    </message>
+</context>
+<context>
+    <name>LabelsNode</name>
+    <message>
+        <source>Labels</source>
+        <translation>Etiketter</translation>
+    </message>
+    <message>
+        <source>You can see all your labels (tags) here.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

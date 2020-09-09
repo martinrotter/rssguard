@@ -103,7 +103,7 @@
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation>Отключить на % 1</translation>
+        <translation>Отключить на %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
@@ -249,7 +249,6 @@
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>Доступ запрещён. Неверное имя пользователя или пароль.</translation>
     </message>
     <message>
@@ -274,7 +273,6 @@
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Неизвестная ошибка: &apos;%1&apos;.</translation>
     </message>
 </context>
@@ -492,7 +490,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>использует глобальные настройки (автоматическое обновление отключено)</translation>
     </message>
     <message>
         <source>Auto-update status: %1
@@ -737,11 +735,11 @@ or this functionality is not implemented yet.</source>
         <translation>НЕ портативная</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
-        <translation>GNU GPL License (применяется к исходному коду RSS Guard и mimesis)</translation>
+        <source>MIT License (applies to boolinq source code)</source>
+        <translation>Лицензия MIT (применяется к исходному коду boolinq)</translation>
     </message>
     <message>
-        <source>MIT License (applies to boolinq source code)</source>
+        <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1007,14 +1005,6 @@ or this functionality is not implemented yet.</source>
         <translation>Доступ разрешен.</translation>
     </message>
     <message>
-        <source>No username entered.   </source>
-        <translation>Не введен логин.</translation>
-    </message>
-    <message>
-        <source>Some username entered.   </source>
-        <translation>Введен некоторый логин.</translation>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation>Отказано в доступе.</translation>
     </message>
@@ -1052,7 +1042,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Указанный URL-адрес перенаправления должен начинаться с  &quot;http://localhost&quot; и быть настроен в вашем &quot;приложении&quot; OAuth.</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Нет логина.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Введен некоторый логин.</translation>
     </message>
 </context>
 <context>
@@ -1157,7 +1155,9 @@ or this functionality is not implemented yet.</source>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
 
 It is highly recommended to create your own &quot;Application ID&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Указанный URL-адрес перенаправления должен начинаться с  &quot;http://localhost&quot; и быть настроен в вашем &quot;приложении&quot; OAuth.
+
+Настоятельно рекомендуется создать свой собственный &quot;ID приложения&quot;.</translation>
     </message>
 </context>
 <context>
@@ -1284,23 +1284,23 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранный сервер Nextcloud News работает на неподдерживаемой версии.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Сервер Nextcloud News в порядке, работает на версии %1, хотя требуется как минимум версия %2.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Сервер Nextcloud News в порядке.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка сети, вы ввели правильную конечную точку Nextcloud и пароль?</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Выбранный сервер Nextcloud News работает на неподдерживаемой версии %1. Требуется как минимум версия %2.</translation>
     </message>
 </context>
 <context>
@@ -1894,7 +1894,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation>Скачать (&amp;D)</translation>
+        <translation>Загрузки (&amp;D)</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
@@ -2037,14 +2037,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Удалить выбранный аккаунт (&amp;D)</translation>
     </message>
     <message>
-        <source>Add new feed into selected account</source>
-        <translation>Добавить новый канал в выбранный аккаунт</translation>
-    </message>
-    <message>
-        <source>Add new category into selected account</source>
-        <translation>Добавить новую категорию в выбранный аккаунт</translation>
-    </message>
-    <message>
         <source>Add new category</source>
         <translation>Добавить новую категорию</translation>
     </message>
@@ -2062,7 +2054,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
-        <translation>Веб-браузер &amp; вкладки (&amp;W)</translation>
+        <translation>Веб-браузер и вкладки (&amp;W)</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
@@ -2151,6 +2143,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
+        <translation>Отображать иерархию дерева (&amp;S)</translation>
+    </message>
+    <message>
+        <source>Update items with custom &amp;timers</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2252,7 +2248,9 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <source>Message will be %1.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>Сообщение будет %1.
+
+</translation>
     </message>
     <message>
         <source>ACCEPTED</source>
@@ -2270,7 +2268,13 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
   Is read/important = '%4/%5'
   Created on = '%6'
   Contents = &apos;%7&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Обработанное (измененное) сообщение:
+  Заголовок = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Автор = &apos;%3&apos;
+  Прочитано/важно = &apos;%4/%5&apos;
+  Создано = &apos;%6&apos;
+  Содержимое = &apos;%7&apos;</translation>
     </message>
     <message>
         <source>yes</source>
@@ -3000,6 +3004,17 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>LabelsNode</name>
+    <message>
+        <source>Labels</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can see all your labels (tags) here.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
@@ -3511,11 +3526,14 @@ Tiny Tiny RSS - это программа для чтения и агрегац�
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Добро пожаловать в %1.
+
+Пожалуйста, ознакомьтесь с ИЗМЕНЕНИЯМИ, включенными в эту
+версию, щелкнув на это всплывающее уведомление.</translation>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно вставить фильтр сообщений, поскольку текущая база данных не может вернуть идентификатор последней добавленной строки.</translation>
     </message>
 </context>
 <context>
@@ -3777,7 +3795,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation>Параметры, переданные в исполняемый файл</translation>
     </message>
 </context>
 <context>

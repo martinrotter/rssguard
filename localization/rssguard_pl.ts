@@ -249,7 +249,6 @@
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>Brak dostępu. Błędna nazwa użytkownika lub hasło.</translation>
     </message>
     <message>
@@ -274,7 +273,6 @@
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -736,11 +734,11 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <source>MIT License (applies to boolinq source code)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>MIT License (applies to boolinq source code)</source>
+        <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1006,14 +1004,6 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>No username entered.   </source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Some username entered.   </source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation type="unfinished"/>
     </message>
@@ -1051,6 +1041,14 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some username entered.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2036,14 +2034,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>&amp;Usuń wybrane konto</translation>
     </message>
     <message>
-        <source>Add new feed into selected account</source>
-        <translation>Dodaj nowy kanał do wybranego konta</translation>
-    </message>
-    <message>
-        <source>Add new category into selected account</source>
-        <translation>Dodaj nową kategorię do wybranego konta</translation>
-    </message>
-    <message>
         <source>Add new category</source>
         <translation>Dodaj nową kategorię</translation>
     </message>
@@ -2150,6 +2140,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Update items with custom &amp;timers</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2990,6 +2984,17 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>NOT logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>LabelsNode</name>
+    <message>
+        <source>Labels</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can see all your labels (tags) here.</source>
         <translation type="unfinished"/>
     </message>
 </context>

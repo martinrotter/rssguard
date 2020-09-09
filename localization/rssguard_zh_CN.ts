@@ -249,7 +249,6 @@
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>拒绝访问，用户名或密码无效</translation>
     </message>
     <message>
@@ -274,7 +273,6 @@
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -732,11 +730,11 @@ or this functionality is not implemented yet.</source>
         <translation>不便携</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <source>MIT License (applies to boolinq source code)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>MIT License (applies to boolinq source code)</source>
+        <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1002,14 +1000,6 @@ or this functionality is not implemented yet.</source>
         <translation>权限已获取</translation>
     </message>
     <message>
-        <source>No username entered.   </source>
-        <translation>未输入用户名</translation>
-    </message>
-    <message>
-        <source>Some username entered.   </source>
-        <translation>用户名已输入</translation>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation>未能获取权限</translation>
     </message>
@@ -1048,6 +1038,14 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>未输入用户名</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>用户名已输入</translation>
     </message>
 </context>
 <context>
@@ -2033,14 +2031,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>删除所选账户</translation>
     </message>
     <message>
-        <source>Add new feed into selected account</source>
-        <translation>添加新 Feed 到所选账户</translation>
-    </message>
-    <message>
-        <source>Add new category into selected account</source>
-        <translation>添加新分类到所选账户</translation>
-    </message>
-    <message>
         <source>Add new category</source>
         <translation>添加新分类</translation>
     </message>
@@ -2147,6 +2137,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Update items with custom &amp;timers</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2994,6 +2988,17 @@ Token 过期时间：%2</translation>
     <message>
         <source>NOT logged-in</source>
         <translation>未登录</translation>
+    </message>
+</context>
+<context>
+    <name>LabelsNode</name>
+    <message>
+        <source>Labels</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can see all your labels (tags) here.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

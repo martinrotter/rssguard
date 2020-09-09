@@ -249,7 +249,6 @@
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>Acesso negado. Nome de usuário ou senha incorreta.</translation>
     </message>
     <message>
@@ -274,7 +273,6 @@
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Erro desconhecido: &apos;%1&apos;.</translation>
     </message>
 </context>
@@ -736,12 +734,12 @@ ou esta função ainda não foi implementada.</translation>
         <translation>NÃO portátil</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
-        <translation>Licença GNU GPL (aplica-se ao código fonte do RSS Guard e mimesis)</translation>
-    </message>
-    <message>
         <source>MIT License (applies to boolinq source code)</source>
         <translation>Licença MIT (aplica-se ao código fonte boolinq)</translation>
+    </message>
+    <message>
+        <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1006,14 +1004,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Acesso garantido.</translation>
     </message>
     <message>
-        <source>No username entered.   </source>
-        <translation>Nenhum nome de usuário inserido.</translation>
-    </message>
-    <message>
-        <source>Some username entered.   </source>
-        <translation>Algum nome de usuário inserido.</translation>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation>O acesso não foi garantido.</translation>
     </message>
@@ -1052,6 +1042,14 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation>A URL de redirecionamento especificada deve começar com &quot;http://localhost&quot; e deve ser configurada no &quot;aplicativo&quot; OAuth.</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Nenhum nome de usuário inserido.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Algum nome de usuário inserido.</translation>
     </message>
 </context>
 <context>
@@ -2038,14 +2036,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>E&amp;xcluir conta selecionada</translation>
     </message>
     <message>
-        <source>Add new feed into selected account</source>
-        <translation>Adicionar novo feed na conta selecionada</translation>
-    </message>
-    <message>
-        <source>Add new category into selected account</source>
-        <translation>Adicionar nova categoria na conta selecionada</translation>
-    </message>
-    <message>
         <source>Add new category</source>
         <translation>Adicionar nova categoria</translation>
     </message>
@@ -2153,6 +2143,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>&amp;Show tree branches</source>
         <translation>Mo&amp;strar ramificações da árvore</translation>
+    </message>
+    <message>
+        <source>Update items with custom &amp;timers</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3006,6 +3000,17 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <source>NOT logged-in</source>
         <translation>NÃO logado</translation>
+    </message>
+</context>
+<context>
+    <name>LabelsNode</name>
+    <message>
+        <source>Labels</source>
+        <translation>Rótulos</translation>
+    </message>
+    <message>
+        <source>You can see all your labels (tags) here.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

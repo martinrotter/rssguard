@@ -249,7 +249,6 @@
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>Toegang geweigerd. Ongeldige gebruikersnaam of wachtwoord ingevoerd.</translation>
     </message>
     <message>
@@ -274,7 +273,6 @@
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -734,11 +732,11 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>NIET portable</translation>
     </message>
     <message>
-        <source>GNU GPL License (applies to RSS Guard and mimesis source code)</source>
+        <source>MIT License (applies to boolinq source code)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>MIT License (applies to boolinq source code)</source>
+        <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1004,14 +1002,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>No username entered.   </source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Some username entered.   </source>
-        <translation>Een gebruikersnaam invoeren.</translation>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation type="unfinished"/>
     </message>
@@ -1050,6 +1040,14 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Geen gebruikersnaam ingevoerd.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Een gebruikersnaam invoeren.</translation>
     </message>
 </context>
 <context>
@@ -2034,14 +2032,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>&amp;Verwijder geselecteerde account</translation>
     </message>
     <message>
-        <source>Add new feed into selected account</source>
-        <translation>Voeg nieuwe feed toe aan geselecteerde account</translation>
-    </message>
-    <message>
-        <source>Add new category into selected account</source>
-        <translation>Voeg nieuwe categorie toe aan geselecteerde account</translation>
-    </message>
-    <message>
         <source>Add new category</source>
         <translation>Voeg nieuwe categorie toe</translation>
     </message>
@@ -2148,6 +2138,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Update items with custom &amp;timers</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2991,6 +2985,17 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>NOT logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>LabelsNode</name>
+    <message>
+        <source>Labels</source>
+        <translation>Labels</translation>
+    </message>
+    <message>
+        <source>You can see all your labels (tags) here.</source>
         <translation type="unfinished"/>
     </message>
 </context>
