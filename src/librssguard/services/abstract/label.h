@@ -8,6 +8,8 @@
 #include <QColor>
 
 class Label : public RootItem {
+  Q_OBJECT
+
   public:
     explicit Label(RootItem* parent_item = nullptr);
 

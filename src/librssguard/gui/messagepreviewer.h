@@ -5,18 +5,16 @@
 
 #include <QWidget>
 
-#include "ui_messagepreviewer.h"
-
 #include "core/message.h"
 #include "services/abstract/rootitem.h"
 
 #include <QPointer>
 
-namespace Ui {
-  class MessagePreviewer;
-}
-
+class QGridLayout;
 class QToolBar;
+
+class MessageTextBrowser;
+class SearchTextWidget;
 
 class MessagePreviewer : public QWidget {
   Q_OBJECT
@@ -49,9 +47,10 @@ class MessagePreviewer : public QWidget {
     void updateButtons();
     QString prepareHtmlForMessage(const Message& message);
 
+    QGridLayout* m_layout;
     QToolBar* m_toolBar;
-
-    Ui::MessagePreviewer m_ui;
+    MessageTextBrowser* m_txtMessage;
+    SearchTextWidget* m_searchWidget;
     Message m_message;
     QStringList m_pictures;
     QPointer<RootItem> m_root;

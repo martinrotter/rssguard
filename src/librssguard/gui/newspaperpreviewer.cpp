@@ -27,7 +27,6 @@ void NewspaperPreviewer::showMoreMessages() {
       connect(prev, &MessagePreviewer::markMessageRead, this, &NewspaperPreviewer::markMessageRead);
       connect(prev, &MessagePreviewer::markMessageImportant, this, &NewspaperPreviewer::markMessageImportant);
 
-      margins.setRight(0);
       prev->layout()->setContentsMargins(margins);
       prev->setFixedHeight(300);
       prev->loadMessage(msg, m_root);

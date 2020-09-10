@@ -4,12 +4,17 @@
 
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
+#include "gui/searchtextwidget.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 
+#include "gui/messagetextbrowser.h"
+
+#include <QGridLayout>
 #include <QKeyEvent>
+#include <QPainter>
 #include <QScrollBar>
 #include <QToolBar>
 #include <QToolTip>
@@ -17,20 +22,20 @@
 void MessagePreviewer::createConnections() {
   installEventFilter(this);
 
-  connect(m_ui.m_searchWidget, &SearchTextWidget::cancelSearch, this, [this]() {
-    m_ui.m_txtMessage->textCursor().clearSelection();
-    m_ui.m_txtMessage->moveCursor(QTextCursor::MoveOperation::Left);
+  connect(m_searchWidget, &SearchTextWidget::cancelSearch, this, [this]() {
+    m_txtMessage->textCursor().clearSelection();
+    m_txtMessage->moveCursor(QTextCursor::MoveOperation::Left);
   });
-  connect(m_ui.m_searchWidget, &SearchTextWidget::searchForText, this, [this](const QString& text, bool backwards) {
+  connect(m_searchWidget, &SearchTextWidget::searchForText, this, [this](const QString& text, bool backwards) {
     if (backwards) {
-      m_ui.m_txtMessage->find(text, QTextDocument::FindFlag::FindBackward);
+      m_txtMessage->find(text, QTextDocument::FindFlag::FindBackward);
     }
     else {
-      m_ui.m_txtMessage->find(text);
+      m_txtMessage->find(text);
     }
   });
 
-  connect(m_ui.m_txtMessage, &QTextBrowser::anchorClicked, [=](const QUrl& url) {
+  connect(m_txtMessage, &QTextBrowser::anchorClicked, [=](const QUrl& url) {
     if (url.toString().startsWith(INTERNAL_URL_PASSATTACHMENT) &&
         m_root != nullptr &&
         m_root->getParentServiceRoot()->downloadAttachmentOnMyOwn(url)) {
@@ -94,7 +99,7 @@ void MessagePreviewer::createConnections() {
           &QAction::triggered,
           this,
           &MessagePreviewer::switchMessageImportance);
-  connect(m_ui.m_txtMessage,
+  connect(m_txtMessage,
           QOverload<const QUrl&>::of(&QTextBrowser::highlighted),
           [=](const QUrl& url) {
     Q_UNUSED(url)
@@ -102,16 +107,28 @@ void MessagePreviewer::createConnections() {
   });
 }
 
-MessagePreviewer::MessagePreviewer(QWidget* parent) : QWidget(parent) {
-  m_ui.setupUi(this);
-  m_ui.m_txtMessage->viewport()->setAutoFillBackground(true);
-  m_toolBar = new QToolBar(this);
+MessagePreviewer::MessagePreviewer(QWidget* parent)
+  : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)),
+  m_txtMessage(new MessageTextBrowser(this)), m_searchWidget(new SearchTextWidget(this)) {
+
+  m_txtMessage->setAutoFillBackground(true);
+  m_txtMessage->setFrameShape(QFrame::StyledPanel);
+  m_txtMessage->setFrameShadow(QFrame::Plain);
+  m_txtMessage->setTabChangesFocus(true);
+  m_txtMessage->setOpenLinks(false);
+  m_txtMessage->viewport()->setAutoFillBackground(true);
+
   m_toolBar->setOrientation(Qt::Vertical);
-  m_ui.m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
+
+  m_layout->setContentsMargins(3, 3, 3, 3);
+  m_layout->addWidget(m_txtMessage, 0, 1, 1, 1);
+  m_layout->addWidget(m_searchWidget, 1, 1, 1, 1);
+  m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
+
   createConnections();
 
   m_actionSwitchImportance->setCheckable(true);
-  m_ui.m_searchWidget->hide();
+  m_searchWidget->hide();
 
   reloadFontSettings();
   clear();
@@ -122,11 +139,11 @@ void MessagePreviewer::reloadFontSettings() {
   QFont fon;
 
   fon.fromString(settings->value(GROUP(Messages), SETTING(Messages::PreviewerFontStandard)).toString());
-  m_ui.m_txtMessage->setFont(fon);
+  m_txtMessage->setFont(fon);
 }
 
 void MessagePreviewer::clear() {
-  m_ui.m_txtMessage->clear();
+  m_txtMessage->clear();
   m_pictures.clear();
   hide();
 }
@@ -140,12 +157,12 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
   m_root = root;
 
   if (!m_root.isNull()) {
-    m_ui.m_searchWidget->hide();
+    m_searchWidget->hide();
     m_actionSwitchImportance->setChecked(m_message.m_isImportant);
-    m_ui.m_txtMessage->setHtml(prepareHtmlForMessage(m_message));
+    m_txtMessage->setHtml(prepareHtmlForMessage(m_message));
     updateButtons();
     show();
-    m_ui.m_txtMessage->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
+    m_txtMessage->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
   }
 }
 
@@ -209,9 +226,9 @@ bool MessagePreviewer::eventFilter(QObject* watched, QEvent* event) {
     auto* key_event = static_cast<QKeyEvent*>(event);
 
     if (key_event->matches(QKeySequence::StandardKey::Find)) {
-      m_ui.m_searchWidget->clear();
-      m_ui.m_searchWidget->show();
-      m_ui.m_searchWidget->setFocus();
+      m_searchWidget->clear();
+      m_searchWidget->show();
+      m_searchWidget->setFocus();
       return true;
     }
   }

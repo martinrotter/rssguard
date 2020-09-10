@@ -6,6 +6,8 @@
 #include "services/abstract/rootitem.h"
 
 class LabelsNode : public RootItem {
+  Q_OBJECT
+
   public:
     explicit LabelsNode(RootItem* parent_item = nullptr);
 };

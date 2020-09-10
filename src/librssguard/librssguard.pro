@@ -407,7 +407,7 @@ else {
              gui/messagetextbrowser.cpp \
              gui/newspaperpreviewer.cpp
 
-  FORMS += gui/messagepreviewer.ui \
+  FORMS += \
            gui/newspaperpreviewer.ui
 }
 
