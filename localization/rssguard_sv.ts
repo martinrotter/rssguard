@@ -739,7 +739,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
-        <translation type="unfinished"/>
+        <translation>GNU GPL Licens (gäller RSS Guard, Numix och mimesis källkod)</translation>
     </message>
 </context>
 <context>
@@ -2146,7 +2146,7 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
+        <translation>Uppdatera objekt med anpassade &amp;tidur</translation>
     </message>
 </context>
 <context>
@@ -3009,7 +3009,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>You can see all your labels (tags) here.</source>
-        <translation type="unfinished"/>
+        <translation>Du kan se alla dina etiketter (taggar) här.</translation>
     </message>
 </context>
 <context>

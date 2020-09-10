@@ -739,7 +739,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
-        <translation type="unfinished"/>
+        <translation>Licença GNU GPL (aplica-se ao código fonte do RSS Guard; mimesis e Numix)</translation>
     </message>
 </context>
 <context>
@@ -2146,7 +2146,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
+        <translation>Atualizar itens com &amp;temporizadores personalizados</translation>
     </message>
 </context>
 <context>
@@ -3010,7 +3010,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>You can see all your labels (tags) here.</source>
-        <translation type="unfinished"/>
+        <translation>Você pode ver todos os seus rótulos (tags) aqui.</translation>
     </message>
 </context>
 <context>

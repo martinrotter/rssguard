@@ -1045,11 +1045,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Nezadáno uživ. jméno.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Nějaké uživ. jméno zadáno.</translation>
     </message>
 </context>
 <context>
@@ -2994,7 +2994,7 @@ Tokeny vyprší: %2</translation>
     <name>LabelsNode</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Štítky</translation>
     </message>
     <message>
         <source>You can see all your labels (tags) here.</source>
