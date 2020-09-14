@@ -20,11 +20,19 @@ namespace Ui {
 
 class RootItem;
 
+#if defined(USE_WEBENGINE)
+class WebBrowser;
+#endif
+
 class NewspaperPreviewer : public TabContent {
   Q_OBJECT
 
   public:
     explicit NewspaperPreviewer(RootItem* root, QList<Message> messages, QWidget* parent = nullptr);
+
+#if defined(USE_WEBENGINE)
+    WebBrowser* webBrowser() const;
+#endif
 
   private slots:
     void showMoreMessages();

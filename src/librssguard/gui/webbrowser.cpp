@@ -57,7 +57,6 @@ void WebBrowser::createConnections() {
     m_searchWidget->setFocus();
   });
 
-  connect(m_webView, &WebViewer::messageStatusChangeRequested, this, &WebBrowser::receiveMessageStatusChangeRequest);
   connect(m_txtLocation, &LocationLineEdit::submitted,
           this, static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
   connect(m_webView, &WebViewer::urlChanged, this, &WebBrowser::updateUrl);
@@ -76,8 +75,6 @@ void WebBrowser::createConnections() {
 
 void WebBrowser::updateUrl(const QUrl& url) {
   m_txtLocation->setText(url.toString());
-
-  //setNavigationBarVisible(url_string != INTERNAL_URL_EMPTY && url_string != INTERNAL_URL_NEWSPAPER);
 }
 
 void WebBrowser::loadUrl(const QUrl& url) {
@@ -152,29 +149,6 @@ bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
   }
 
   return false;
-}
-
-void WebBrowser::receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change) {
-  switch (change) {
-    case WebPage::MessageStatusChange::MarkRead:
-      markMessageAsRead(message_id, true);
-      break;
-
-    case WebPage::MessageStatusChange::MarkUnread:
-      markMessageAsRead(message_id, false);
-      break;
-
-    case WebPage::MessageStatusChange::MarkStarred:
-      switchMessageImportance(message_id, true);
-      break;
-
-    case WebPage::MessageStatusChange::MarkUnstarred:
-      switchMessageImportance(message_id, false);
-      break;
-
-    default:
-      break;
-  }
 }
 
 void WebBrowser::onTitleChanged(const QString& new_title) {
@@ -257,56 +231,6 @@ void WebBrowser::onLoadingFinished(bool success) {
 
   m_loadingProgress->hide();
   m_loadingProgress->setValue(0);
-}
-
-void WebBrowser::markMessageAsRead(int id, bool read) {
-  if (!m_root.isNull()) {
-    Message* msg = findMessage(id);
-
-    if (msg != nullptr && m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
-                                                                                  QList<Message>() << *msg,
-                                                                                  read
-                                                                                  ? RootItem::ReadStatus::Read
-                                                                                  : RootItem::ReadStatus::Unread)) {
-      DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName()),
-                                              QStringList() << QString::number(msg->m_id),
-                                              read ? RootItem::ReadStatus::Read : RootItem::ReadStatus::Unread);
-      m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
-                                                             QList<Message>() << *msg,
-                                                             read ? RootItem::ReadStatus::Read : RootItem::ReadStatus::Unread);
-      emit markMessageRead(msg->m_id, read ? RootItem::ReadStatus::Read : RootItem::ReadStatus::Unread);
-
-      msg->m_isRead = read;
-    }
-  }
-}
-
-void WebBrowser::switchMessageImportance(int id, bool checked) {
-  if (!m_root.isNull()) {
-    Message* msg = findMessage(id);
-
-    if (msg != nullptr &&
-        m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
-                                                                        QList<ImportanceChange>()
-                                                                        << ImportanceChange(*msg,
-                                                                                            msg->m_isImportant
-                                                                                            ? RootItem::Importance::NotImportant
-                                                                                            : RootItem::Importance::Important))) {
-      DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName()),
-                                                QStringList() << QString::number(msg->m_id));
-      m_root->getParentServiceRoot()->onAfterSwitchMessageImportance(m_root.data(),
-                                                                     QList<ImportanceChange>()
-                                                                     << ImportanceChange(*msg,
-                                                                                         msg->m_isImportant ?
-                                                                                         RootItem::Importance::NotImportant :
-                                                                                         RootItem::Importance::Important));
-      emit markMessageImportant(msg->m_id, msg->m_isImportant
-                                ? RootItem::Importance::NotImportant
-                                : RootItem::Importance::Important);
-
-      msg->m_isImportant = checked;
-    }
-  }
 }
 
 Message* WebBrowser::findMessage(int id) {

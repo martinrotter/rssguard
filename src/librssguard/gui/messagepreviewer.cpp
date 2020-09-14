@@ -10,7 +10,11 @@
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 
+#if defined (USE_WEBENGINE)
+#include "gui/webbrowser.h"
+#else
 #include "gui/messagetextbrowser.h"
+#endif
 
 #include <QGridLayout>
 #include <QKeyEvent>
@@ -22,6 +26,8 @@
 void MessagePreviewer::createConnections() {
   installEventFilter(this);
 
+#if defined (USE_WEBENGINE)
+#else
   connect(m_searchWidget, &SearchTextWidget::cancelSearch, this, [this]() {
     m_txtMessage->textCursor().clearSelection();
     m_txtMessage->moveCursor(QTextCursor::MoveOperation::Left);
@@ -87,6 +93,14 @@ void MessagePreviewer::createConnections() {
                        tr("Selected hyperlink is invalid."));
     }
   });
+  connect(m_txtMessage,
+          QOverload<const QUrl&>::of(&QTextBrowser::highlighted),
+          [=](const QUrl& url) {
+    Q_UNUSED(url)
+    QToolTip::showText(QCursor::pos(), tr("Click this link to download it or open it with external browser."), this);
+  });
+#endif
+
   connect(m_actionMarkRead = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-read"), tr("Mark message as read")),
           &QAction::triggered,
           this,
@@ -99,52 +113,52 @@ void MessagePreviewer::createConnections() {
           &QAction::triggered,
           this,
           &MessagePreviewer::switchMessageImportance);
-  connect(m_txtMessage,
-          QOverload<const QUrl&>::of(&QTextBrowser::highlighted),
-          [=](const QUrl& url) {
-    Q_UNUSED(url)
-    QToolTip::showText(QCursor::pos(), tr("Click this link to download it or open it with external browser."), this);
-  });
 }
 
 MessagePreviewer::MessagePreviewer(QWidget* parent)
-  : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)),
-  m_txtMessage(new MessageTextBrowser(this)), m_searchWidget(new SearchTextWidget(this)) {
-
-  m_txtMessage->setAutoFillBackground(true);
-  m_txtMessage->setFrameShape(QFrame::StyledPanel);
-  m_txtMessage->setFrameShadow(QFrame::Plain);
-  m_txtMessage->setTabChangesFocus(true);
-  m_txtMessage->setOpenLinks(false);
-  m_txtMessage->viewport()->setAutoFillBackground(true);
+  : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)) {
+#if defined (USE_WEBENGINE)
+  m_txtMessage = new WebBrowser(this);
+#else
+  m_txtMessage = new MessageTextBrowser(this);
+  m_searchWidget = new SearchTextWidget(this);
+#endif
 
   m_toolBar->setOrientation(Qt::Vertical);
-
   m_layout->setContentsMargins(3, 3, 3, 3);
   m_layout->addWidget(m_txtMessage, 0, 1, 1, 1);
+
+#if !defined (USE_WEBENGINE)
   m_layout->addWidget(m_searchWidget, 1, 1, 1, 1);
+#endif
+
   m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
 
   createConnections();
-
   m_actionSwitchImportance->setCheckable(true);
-  m_searchWidget->hide();
 
+#if defined (USE_WEBENGINE)
+#else
+  m_searchWidget->hide();
+#endif
   reloadFontSettings();
   clear();
 }
 
 void MessagePreviewer::reloadFontSettings() {
-  const Settings* settings = qApp->settings();
-  QFont fon;
-
-  fon.fromString(settings->value(GROUP(Messages), SETTING(Messages::PreviewerFontStandard)).toString());
-  m_txtMessage->setFont(fon);
+  m_txtMessage->reloadFontSettings();
 }
+
+#if defined (USE_WEBENGINE)
+
+WebBrowser* MessagePreviewer::webBrowser() const {
+  return m_txtMessage;
+}
+
+#endif
 
 void MessagePreviewer::clear() {
   m_txtMessage->clear();
-  m_pictures.clear();
   hide();
 }
 
@@ -157,12 +171,15 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
   m_root = root;
 
   if (!m_root.isNull()) {
-    m_searchWidget->hide();
-    m_actionSwitchImportance->setChecked(m_message.m_isImportant);
-    m_txtMessage->setHtml(prepareHtmlForMessage(m_message));
     updateButtons();
     show();
+    m_actionSwitchImportance->setChecked(m_message.m_isImportant);
+    m_txtMessage->loadMessage(message, root);
+
+#if !defined (USE_WEBENGINE)
+    m_searchWidget->hide();
     m_txtMessage->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
+#endif
   }
 }
 
@@ -222,16 +239,19 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
 bool MessagePreviewer::eventFilter(QObject* watched, QEvent* event) {
   Q_UNUSED(watched)
 
+#if !defined (USE_WEBENGINE)
   if (event->type() == QEvent::Type::KeyPress) {
     auto* key_event = static_cast<QKeyEvent*>(event);
 
     if (key_event->matches(QKeySequence::StandardKey::Find)) {
+
       m_searchWidget->clear();
       m_searchWidget->show();
       m_searchWidget->setFocus();
       return true;
     }
   }
+#endif
 
   return false;
 }
@@ -239,55 +259,4 @@ bool MessagePreviewer::eventFilter(QObject* watched, QEvent* event) {
 void MessagePreviewer::updateButtons() {
   m_actionMarkRead->setEnabled(!m_message.m_isRead);
   m_actionMarkUnread->setEnabled(m_message.m_isRead);
-}
-
-QString MessagePreviewer::prepareHtmlForMessage(const Message& message) {
-  QString html = QString("<h2 align=\"center\">%1</h2>").arg(message.m_title);
-
-  if (!message.m_url.isEmpty()) {
-    html += QString("[url] <a href=\"%1\">%1</a><br/>").arg(message.m_url);
-  }
-
-  for (const Enclosure& enc : message.m_enclosures) {
-    QString enc_url;
-
-    if (!enc.m_url.contains(QRegularExpression(QSL("^(http|ftp|\\/)")))) {
-      enc_url = QString(INTERNAL_URL_PASSATTACHMENT) + QL1S("/?") + enc.m_url;
-    }
-    else {
-      enc_url = enc.m_url;
-    }
-
-    html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(enc_url, enc.m_mimeType);
-  }
-
-  QRegularExpression imgTagRegex("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
-                                 QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                 QRegularExpression::PatternOption::InvertedGreedinessOption);
-  QRegularExpressionMatchIterator i = imgTagRegex.globalMatch(message.m_contents);
-  QString pictures_html;
-
-  while (i.hasNext()) {
-    QRegularExpressionMatch match = i.next();
-
-    m_pictures.append(match.captured(1));
-    pictures_html += QString("<br/>[%1] <a href=\"%2\">%2</a>").arg(tr("image"), match.captured(1));
-  }
-
-  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayImagePlaceholders)).toBool()) {
-    html += message.m_contents;
-  }
-  else {
-    QString cnts = message.m_contents;
-
-    html += cnts.replace(imgTagRegex, QString());
-  }
-
-  html += pictures_html;
-  html = html
-         .replace(QSL("\r\n"), QSL("\n"))
-         .replace(QL1C('\r'), QL1C('\n'))
-         .replace(QL1C('\n'), QSL("<br/>"));
-
-  return html;
 }

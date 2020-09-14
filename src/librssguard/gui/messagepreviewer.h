@@ -13,8 +13,12 @@
 class QGridLayout;
 class QToolBar;
 
+#if defined (USE_WEBENGINE)
+class WebBrowser;
+#else
 class MessageTextBrowser;
 class SearchTextWidget;
+#endif
 
 class MessagePreviewer : public QWidget {
   Q_OBJECT
@@ -23,6 +27,10 @@ class MessagePreviewer : public QWidget {
     explicit MessagePreviewer(QWidget* parent = nullptr);
 
     void reloadFontSettings();
+
+#if defined (USE_WEBENGINE)
+    WebBrowser* webBrowser() const;
+#endif
 
   public slots:
     void clear();
@@ -45,14 +53,18 @@ class MessagePreviewer : public QWidget {
   private:
     void createConnections();
     void updateButtons();
-    QString prepareHtmlForMessage(const Message& message);
 
     QGridLayout* m_layout;
     QToolBar* m_toolBar;
+
+#if defined (USE_WEBENGINE)
+    WebBrowser* m_txtMessage;
+#else
     MessageTextBrowser* m_txtMessage;
     SearchTextWidget* m_searchWidget;
+#endif
+
     Message m_message;
-    QStringList m_pictures;
     QPointer<RootItem> m_root;
     QAction* m_actionMarkRead;
     QAction* m_actionMarkUnread;

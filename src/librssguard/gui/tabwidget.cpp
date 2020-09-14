@@ -3,23 +3,21 @@
 #include "gui/tabwidget.h"
 
 #include "definitions/definitions.h"
+#include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "gui/messagesview.h"
+#include "gui/newspaperpreviewer.h"
+#include "gui/plaintoolbutton.h"
 #include "gui/tabbar.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
-
-#include "gui/dialogs/formmain.h"
-#include "gui/plaintoolbutton.h"
+#include "network-web/webfactory.h"
 
 #if defined(USE_WEBENGINE)
 #include "gui/webbrowser.h"
-#else
-#include "gui/newspaperpreviewer.h"
-#include "network-web/webfactory.h"
 #endif
 
 #include <QMenu>
@@ -185,21 +183,12 @@ void TabWidget::closeAllTabs() {
 }
 
 int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) {
-#if defined(USE_WEBENGINE)
-  WebBrowser* prev = new WebBrowser(this);
-
-  connect(prev, &WebBrowser::markMessageRead,
-          m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageReadById);
-  connect(prev, &WebBrowser::markMessageImportant,
-          m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageImportantById);
-#else
   NewspaperPreviewer* prev = new NewspaperPreviewer(root, messages, this);
 
   connect(prev, &NewspaperPreviewer::markMessageRead,
           m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageReadById);
   connect(prev, &NewspaperPreviewer::markMessageImportant,
           m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageImportantById);
-#endif
 
   int index = addTab(prev,
                      qApp->icons()->fromTheme(QSL("format-justify-fill")),
@@ -208,10 +197,6 @@ int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) 
 
   // NOTE: Do not bring "newspaper" tabs to front anymore.
   //setCurrentIndex(index);
-
-#if defined(USE_WEBENGINE)
-  prev->loadMessages(messages, root);
-#endif
 
   return index;
 }

@@ -11,10 +11,9 @@
 
 #if defined(USE_WEBENGINE)
 class WebBrowser;
-#else
-class MessagePreviewer;
 #endif
 
+class MessagePreviewer;
 class MessagesView;
 class MessagesToolBar;
 class FeedsToolBar;
@@ -91,12 +90,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     FeedsView* m_feedsView;
     QWidget* m_feedsWidget;
     QWidget* m_messagesWidget;
-
-#if defined(USE_WEBENGINE)
-    WebBrowser* m_messagesBrowser;
-#else
     MessagePreviewer* m_messagesBrowser;
-#endif
 };
 
 #endif // FEEDMESSAGEVIEWER_H

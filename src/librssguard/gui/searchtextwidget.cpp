@@ -10,6 +10,7 @@
 SearchTextWidget::SearchTextWidget(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
   setFocusProxy(m_ui.m_txtSearch);
+  setFixedHeight(28);
 
   m_ui.m_btnClear->setIcon(qApp->icons()->fromTheme(QSL("edit-clear")));
   m_ui.m_btnSearchBackward->setIcon(qApp->icons()->fromTheme(QSL("back")));

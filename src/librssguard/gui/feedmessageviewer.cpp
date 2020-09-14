@@ -5,9 +5,13 @@
 #include "core/feeddownloader.h"
 #include "core/feedsproxymodel.h"
 #include "core/messagesproxymodel.h"
+#include "exceptions/applicationexception.h"
+#include "gui/dialogs/formdatabasecleanup.h"
+#include "gui/dialogs/formmain.h"
 #include "gui/feedstoolbar.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
+#include "gui/messagepreviewer.h"
 #include "gui/messagestoolbar.h"
 #include "gui/messagesview.h"
 #include "gui/statusbar.h"
@@ -23,14 +27,8 @@
 #include "services/standard/standardfeedsimportexportmodel.h"
 #include "services/standard/standardserviceroot.h"
 
-#include "exceptions/applicationexception.h"
-#include "gui/dialogs/formdatabasecleanup.h"
-#include "gui/dialogs/formmain.h"
-
 #if defined(USE_WEBENGINE)
 #include "gui/webbrowser.h"
-#else
-#include "gui/messagepreviewer.h"
 #endif
 
 #include <QAction>
@@ -49,13 +47,7 @@
 FeedMessageViewer::FeedMessageViewer(QWidget* parent) : TabContent(parent), m_toolBarsEnabled(true), m_listHeadersEnabled(true),
   m_toolBarFeeds(new FeedsToolBar(tr("Toolbar for feeds"), this)), m_toolBarMessages(new MessagesToolBar(tr("Toolbar for messages"), this)),
   m_messagesView(new MessagesView(this)), m_feedsView(new FeedsView(this)),
-
-#if defined(USE_WEBENGINE)
-  m_messagesBrowser(new WebBrowser(this)) {
-#else
   m_messagesBrowser(new MessagePreviewer(this)) {
-#endif
-
   initialize();
   initializeViews();
 
@@ -70,7 +62,7 @@ FeedMessageViewer::~FeedMessageViewer() {
 #if defined(USE_WEBENGINE)
 
 WebBrowser* FeedMessageViewer::webBrowser() const {
-  return m_messagesBrowser;
+  return m_messagesBrowser->webBrowser();
 }
 
 #endif
@@ -210,16 +202,10 @@ void FeedMessageViewer::createConnections() {
   connect(m_toolBarMessages, &MessagesToolBar::messageSearchPatternChanged, m_messagesView, &MessagesView::searchMessages);
   connect(m_toolBarMessages, &MessagesToolBar::messageFilterChanged, m_messagesView, &MessagesView::filterMessages);
 
-#if defined(USE_WEBENGINE)
-  connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &WebBrowser::clear);
-  connect(m_messagesBrowser, &WebBrowser::markMessageRead, m_messagesView->sourceModel(), &MessagesModel::setMessageReadById);
-  connect(m_messagesBrowser, &WebBrowser::markMessageImportant, m_messagesView->sourceModel(), &MessagesModel::setMessageImportantById);
-#else
   connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &MessagePreviewer::clear);
   connect(m_messagesBrowser, &MessagePreviewer::markMessageRead, m_messagesView->sourceModel(), &MessagesModel::setMessageReadById);
   connect(m_messagesBrowser, &MessagePreviewer::markMessageImportant,
           m_messagesView->sourceModel(), &MessagesModel::setMessageImportantById);
-#endif
 
   connect(m_messagesView, &MessagesView::currentMessageChanged, this, &FeedMessageViewer::displayMessage);
 

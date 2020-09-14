@@ -15,11 +15,19 @@ NewspaperPreviewer::NewspaperPreviewer(RootItem* root, QList<Message> messages, 
   showMoreMessages();
 }
 
+#if defined(USE_WEBENGINE)
+
+WebBrowser* NewspaperPreviewer::webBrowser() const {
+  return nullptr;
+}
+
+#endif
+
 void NewspaperPreviewer::showMoreMessages() {
   if (!m_root.isNull()) {
     int current_scroll = m_ui->scrollArea->verticalScrollBar()->value();
 
-    for (int i = 0; i < 10 && !m_messages.isEmpty(); i++) {
+    for (int i = 0; i < 5 && !m_messages.isEmpty(); i++) {
       Message msg = m_messages.takeFirst();
       auto* prev = new MessagePreviewer(this);
       QMargins margins = prev->layout()->contentsMargins();
@@ -28,7 +36,8 @@ void NewspaperPreviewer::showMoreMessages() {
       connect(prev, &MessagePreviewer::markMessageImportant, this, &NewspaperPreviewer::markMessageImportant);
 
       prev->layout()->setContentsMargins(margins);
-      prev->setFixedHeight(300);
+
+      prev->setFixedHeight(200);
       prev->loadMessage(msg, m_root);
       m_ui->m_layout->insertWidget(m_ui->m_layout->count() - 2, prev);
     }

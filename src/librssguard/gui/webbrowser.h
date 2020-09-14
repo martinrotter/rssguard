@@ -31,13 +31,8 @@ class WebBrowser : public TabContent {
     explicit WebBrowser(QWidget* parent = nullptr);
     virtual ~WebBrowser();
 
-    WebBrowser* webBrowser() const {
-      return const_cast<WebBrowser*>(this);
-    }
-
-    WebViewer* viewer() const {
-      return m_webView;
-    }
+    WebBrowser* webBrowser() const;
+    WebViewer* viewer() const;
 
     void reloadFontSettings();
 
@@ -51,11 +46,7 @@ class WebBrowser : public TabContent {
     void loadUrl(const QUrl& url);
     void loadMessages(const QList<Message>& messages, RootItem* root);
     void loadMessage(const Message& message, RootItem* root);
-
-    // Switches visibility of navigation bar.
-    inline void setNavigationBarVisible(bool visible) {
-      m_toolBar->setVisible(visible);
-    }
+    void setNavigationBarVisible(bool visible);
 
   protected:
     bool eventFilter(QObject* watched, QEvent* event);
@@ -66,9 +57,6 @@ class WebBrowser : public TabContent {
     void onLoadingStarted();
     void onLoadingProgress(int progress);
     void onLoadingFinished(bool success);
-
-    void receiveMessageStatusChangeRequest(int message_id, WebPage::MessageStatusChange change);
-
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
 
@@ -77,15 +65,10 @@ class WebBrowser : public TabContent {
     void iconChanged(int index, const QIcon& icon);
     void titleChanged(int index, const QString& title);
 
-    void markMessageRead(int id, RootItem::ReadStatus read);
-    void markMessageImportant(int id, RootItem::Importance important);
-
   private:
     void initializeLayout();
     Message* findMessage(int id);
 
-    void markMessageAsRead(int id, bool read);
-    void switchMessageImportance(int id, bool checked);
     void createConnections();
 
     QVBoxLayout* m_layout;
@@ -102,5 +85,17 @@ class WebBrowser : public TabContent {
     QList<Message> m_messages;
     QPointer<RootItem> m_root;
 };
+
+inline WebBrowser* WebBrowser::webBrowser() const {
+  return const_cast<WebBrowser*>(this);
+}
+
+inline WebViewer* WebBrowser::viewer() const {
+  return m_webView;
+}
+
+inline void WebBrowser::setNavigationBarVisible(bool visible) {
+  m_toolBar->setVisible(visible);
+}
 
 #endif // WEBBROWSER_H

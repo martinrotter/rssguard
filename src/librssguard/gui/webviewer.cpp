@@ -131,10 +131,7 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
                                 message.m_contents,
                                 QLocale().toString(message.m_created, QLocale::FormatType::ShortFormat),
                                 enclosures,
-                                message.m_isRead ? "mark-unread" : "mark-read",
-                                message.m_isImportant ? "mark-unstarred" : "mark-starred",
-                                QString::number(message.m_id))
-                           .arg(enclosure_images));
+                                enclosure_images));
   }
 
   m_root = root;

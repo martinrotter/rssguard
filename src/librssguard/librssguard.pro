@@ -174,7 +174,9 @@ HEADERS += core/feeddownloader.h \
            services/gmail/gui/formdownloadattachment.h \
            services/gmail/gui/formaddeditemail.h \
            gui/searchtextwidget.h \
-           network-web/oauthhttphandler.h
+           network-web/oauthhttphandler.h \
+           gui/messagepreviewer.h \
+           gui/newspaperpreviewer.h
 
 SOURCES += core/feeddownloader.cpp \
            core/feedsmodel.cpp \
@@ -313,7 +315,9 @@ SOURCES += core/feeddownloader.cpp \
            services/gmail/gui/formdownloadattachment.cpp \
            services/gmail/gui/formaddeditemail.cpp \
            gui/searchtextwidget.cpp \
-           network-web/oauthhttphandler.cpp
+           network-web/oauthhttphandler.cpp \
+           gui/messagepreviewer.cpp \
+           gui/newspaperpreviewer.cpp
 
 mac {
   OBJECTIVE_SOURCES += miscellaneous/disablewindowtabbing.mm
@@ -348,7 +352,8 @@ FORMS += gui/dialogs/formabout.ui \
          services/tt-rss/gui/formeditttrssaccount.ui \
          services/gmail/gui/formdownloadattachment.ui \
          services/gmail/gui/formaddeditemail.ui \
-         gui/searchtextwidget.ui
+         gui/searchtextwidget.ui \
+         gui/newspaperpreviewer.ui
 
 equals(USE_WEBENGINE, true) {
   HEADERS += gui/locationlineedit.h \
@@ -399,16 +404,8 @@ equals(USE_WEBENGINE, true) {
            network-web/adblock/adblockdialog.ui
 }
 else {
-  HEADERS += gui/messagepreviewer.h \
-             gui/messagetextbrowser.h \
-             gui/newspaperpreviewer.h
-
-  SOURCES += gui/messagepreviewer.cpp \
-             gui/messagetextbrowser.cpp \
-             gui/newspaperpreviewer.cpp
-
-  FORMS += \
-           gui/newspaperpreviewer.ui
+  HEADERS += gui/messagetextbrowser.h
+  SOURCES += gui/messagetextbrowser.cpp
 }
 
 # Add mimesis.
