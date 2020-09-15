@@ -404,8 +404,10 @@ equals(USE_WEBENGINE, true) {
            network-web/adblock/adblockdialog.ui
 }
 else {
-  HEADERS += gui/messagetextbrowser.h
-  SOURCES += gui/messagetextbrowser.cpp
+  HEADERS += gui/messagetextbrowser.h \
+             gui/messagebrowser.h
+  SOURCES += gui/messagetextbrowser.cpp \
+             gui/messagebrowser.cpp
 }
 
 # Add mimesis.

@@ -43,7 +43,7 @@ WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
 void WebBrowser::createConnections() {
   installEventFilter(this);
 
-  connect(m_searchWidget, &SearchTextWidget::cancelSearch, this, [this]() {
+  connect(m_searchWidget, &SearchTextWidget::searchCancelled, this, [this]() {
     m_webView->findText(QString());
   });
   connect(m_searchWidget, &SearchTextWidget::searchForText, this, [this](const QString& text, bool backwards) {

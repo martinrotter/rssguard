@@ -34,9 +34,9 @@ class WebBrowser : public TabContent {
     WebBrowser* webBrowser() const;
     WebViewer* viewer() const;
 
+  public slots:
     void reloadFontSettings();
 
-  public slots:
     void increaseZoom();
     void decreaseZoom();
     void resetZoom();

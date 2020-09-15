@@ -33,6 +33,12 @@ void SearchTextWidget::clear() {
   m_ui.m_txtSearch->clear();
 }
 
+void SearchTextWidget::cancelSearch() {
+  emit searchCancelled();
+
+  hide();
+}
+
 void SearchTextWidget::onTextChanged(const QString& text) {
   m_ui.m_btnSearchBackward->setDisabled(text.isEmpty());
   m_ui.m_btnSearchForward->setDisabled(text.isEmpty());
@@ -42,15 +48,13 @@ void SearchTextWidget::onTextChanged(const QString& text) {
     emit searchForText(text, false);
   }
   else {
-    emit cancelSearch();
+    emit searchCancelled();
   }
 }
 
 void SearchTextWidget::keyPressEvent(QKeyEvent* event) {
   if (event->key() == Qt::Key::Key_Escape) {
-    emit cancelSearch();
-
-    hide();
+    cancelSearch();
   }
 }
 

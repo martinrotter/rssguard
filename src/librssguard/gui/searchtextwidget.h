@@ -19,6 +19,7 @@ class SearchTextWidget : public QWidget {
 
   public slots:
     void clear();
+    void cancelSearch();
 
   private slots:
     void onTextChanged(const QString& text);
@@ -29,7 +30,7 @@ class SearchTextWidget : public QWidget {
 
   signals:
     void searchForText(QString text, bool search_backwards);
-    void cancelSearch();
+    void searchCancelled();
 
   private:
     Ui::SearchTextWidget m_ui;

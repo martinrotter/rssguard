@@ -16,8 +16,7 @@ class QToolBar;
 #if defined (USE_WEBENGINE)
 class WebBrowser;
 #else
-class MessageTextBrowser;
-class SearchTextWidget;
+class MessageBrowser;
 #endif
 
 class MessagePreviewer : public QWidget {
@@ -44,7 +43,6 @@ class MessagePreviewer : public QWidget {
     void switchMessageImportance(bool checked);
 
   protected:
-    bool eventFilter(QObject* watched, QEvent* event);
 
   signals:
     void markMessageRead(int id, RootItem::ReadStatus read);
@@ -60,8 +58,7 @@ class MessagePreviewer : public QWidget {
 #if defined (USE_WEBENGINE)
     WebBrowser* m_txtMessage;
 #else
-    MessageTextBrowser* m_txtMessage;
-    SearchTextWidget* m_searchWidget;
+    MessageBrowser* m_txtMessage;
 #endif
 
     Message m_message;
