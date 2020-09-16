@@ -37,7 +37,7 @@ void NewspaperPreviewer::showMoreMessages() {
 
       prev->layout()->setContentsMargins(margins);
 
-      prev->setFixedHeight(200);
+      prev->setFixedHeight(300);
       prev->loadMessage(msg, m_root);
       m_ui->m_layout->insertWidget(m_ui->m_layout->count() - 2, prev);
     }
