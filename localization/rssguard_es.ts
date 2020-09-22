@@ -64,7 +64,7 @@
     </message>
     <message>
         <source>Remove rule</source>
-        <translation>Eliminar regla</translation>
+        <translation>Borrar regla</translation>
     </message>
     <message>
         <source>Add subscription</source>
@@ -72,11 +72,11 @@
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation>Eliminar suscripción</translation>
+        <translation>Borrar suscripción</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation>Actualizar suscripción</translation>
+        <translation>Actualizar suscripciones</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
@@ -136,7 +136,7 @@
     </message>
     <message>
         <source>Remove rule</source>
-        <translation>Eliminar regla</translation>
+        <translation>Borrar regla</translation>
     </message>
     <message>
         <source>Add custom rule</source>
@@ -230,11 +230,11 @@
     </message>
     <message>
         <source>Removing starred messages...</source>
-        <translation type="unfinished"/>
+        <translation>Borrar mensajes destacados...</translation>
     </message>
     <message>
         <source>Starred messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Mensajes destacados depurados...</translation>
     </message>
 </context>
 <context>
@@ -273,7 +273,7 @@
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Error desconocido: &apos;%1&apos;.</translation>
     </message>
 </context>
 <context>
@@ -446,7 +446,7 @@ Pulse aquí para abrir la carpeta principal</translation>
     </message>
     <message>
         <source>E-mail address</source>
-        <translation type="unfinished"/>
+        <translation>Dirección de correo electrónico</translation>
     </message>
 </context>
 <context>
@@ -488,13 +488,15 @@ Pulse aquí para abrir la carpeta principal</translation>
     </message>
     <message>
         <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>utiliza la configuración general  (la actualización automática general de fuentes está deshabilitada)</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
-        <translation type="unfinished"/>
+        <translation>Estado de la actualización automática: %1
+Filtros activos: %2
+Estado: %3</translation>
     </message>
 </context>
 <context>
@@ -580,7 +582,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation>Menú contextual del espacio en blanco</translation>
+        <translation>Menú contextual para el espacio en blanco</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
@@ -650,7 +652,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Context menu for important messages</source>
-        <translation type="unfinished"/>
+        <translation>Menú contextual para mensajes importantes</translation>
     </message>
 </context>
 <context>
@@ -733,11 +735,11 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>MIT License (applies to boolinq source code)</source>
-        <translation type="unfinished"/>
+        <translation>Licencia MIT (válida para el código fuente booleano)</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
-        <translation type="unfinished"/>
+        <translation>Licencia GPL de GNU (válida para RSS Guard; mimesis; códigos fuente Numix)</translation>
     </message>
 </context>
 <context>
@@ -771,19 +773,19 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Subject</source>
-        <translation type="unfinished"/>
+        <translation>Asunto</translation>
     </message>
     <message>
         <source>Title of your message</source>
-        <translation type="unfinished"/>
+        <translation>Título de su mensaje</translation>
     </message>
     <message>
         <source>E-mail NOT sent</source>
-        <translation type="unfinished"/>
+        <translation>Correo electrónico NO enviado</translation>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
-        <translation type="unfinished"/>
+        <translation>Su mensaje de correo electrónico no fue enviado.</translation>
     </message>
 </context>
 <context>
@@ -1039,7 +1041,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>La URL de redirección especificada debe comenzar con &quot;http://localhost&quot; y debe estar configurada en su &quot;aplicación&quot; OAuth.</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -1146,13 +1148,15 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Get my own Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Obtener mi propia ID de la aplicación</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
 
 It is highly recommended to create your own &quot;Application ID&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>La URL de redirección especificada debe comenzar con &quot;http://localhost&quot; y debe estar configurada en su &quot;aplicación&quot; OAuth.
+
+Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translation>
     </message>
 </context>
 <context>
@@ -1255,47 +1259,47 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Descargar solo mensajes no leídos</translation>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña para su cuenta Nextcloud</translation>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario para su cuenta Nextcloud</translation>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL de su servidor Nextcloud, sin ninguna ruta API</translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Añadir nueva cuenta de Noticias Nextcloud</translation>
     </message>
     <message>
         <source>Edit existing Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Editar cuenta existente de Noticias Nextcloud</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>El servidor de Noticias Nextcloud seleccionado está ejecutando una versión no aceptada.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>El servidor de Noticias Nextcloud está bien, está ejecutando la versión %1, en tanto que requiere mínimo la versión %2.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>El servidor de Noticias Nextcloud está bien.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Error de conexión, ¿ha ingresado correctamente el punto final y la contraseña de Nextcloud?</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>El servidor de Noticias Nextcloud seleccionado está ejecutando la versión no aceptada %1. Se requiere mínimo la versión %2.</translation>
     </message>
 </context>
 <context>
@@ -1466,7 +1470,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Descargar solo mensajes no leídos</translation>
     </message>
 </context>
 <context>
@@ -1545,7 +1549,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation>Recuperar los metadatos</translation>
+        <translation>Recuperar metadatos</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -1945,7 +1949,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation>Marca todos los mensajes en todos los elementos leídos. Esto no tiene en cuenta los filtros de mensajes.</translation>
+        <translation>Marca todos los mensajes en todos los elementos leídos. No se toman en cuenta los filtros de mensajes.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
@@ -2122,58 +2126,58 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Marcar mensajes seleccionados como &amp;leídos</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Marcar mensajes seleccionados como &amp;no leídos</translation>
     </message>
     <message>
         <source>Show only &amp;unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar solo &amp;mensajes no leídos</translation>
     </message>
     <message>
         <source>Message &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Filtros de mensaje</translation>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Mostrar ramas del árbol</translation>
     </message>
     <message>
         <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
+        <translation>Actualizar elementos según &amp;temporizadores personalizados</translation>
     </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
     <message>
         <source>Message filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtros de mensajes</translation>
     </message>
     <message>
         <source>Remove selected</source>
-        <translation type="unfinished"/>
+        <translation>Borrar seleccionados</translation>
     </message>
     <message>
         <source>Add new</source>
-        <translation type="unfinished"/>
+        <translation>Añadir nueva</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Cuenta</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Marcar todo</translation>
     </message>
     <message>
         <source>&amp;Uncheck all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Desmarcar todo</translation>
     </message>
     <message>
         <source>Message filter details</source>
-        <translation type="unfinished"/>
+        <translation>Descripción del filtro de mensaje</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2181,19 +2185,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Title of message filter</source>
-        <translation type="unfinished"/>
+        <translation>Título del filtro de mensaje</translation>
     </message>
     <message>
         <source>JavaScript code</source>
-        <translation type="unfinished"/>
+        <translation>Código JavaScript</translation>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
-        <translation type="unfinished"/>
+        <translation>Su lógica de filtrado de mensajes basada en JavaScript</translation>
     </message>
     <message>
         <source>Sample message</source>
-        <translation type="unfinished"/>
+        <translation>Modelo de mensaje </translation>
     </message>
     <message>
         <source>Read</source>
@@ -2221,37 +2225,39 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Script output</source>
-        <translation type="unfinished"/>
+        <translation>Salida de la secuencia de comandos</translation>
     </message>
     <message>
         <source>&amp;Test!</source>
-        <translation type="unfinished"/>
+        <translation>&amp;¡Probar!</translation>
     </message>
     <message>
         <source>&amp;Beautify!</source>
-        <translation type="unfinished"/>
+        <translation>&amp;¡Embellecer!</translation>
     </message>
     <message>
         <source>Detailed &amp;help</source>
-        <translation type="unfinished"/>
+        <translation> &amp;Ayuda detallada</translation>
     </message>
     <message>
         <source>New message filter</source>
-        <translation type="unfinished"/>
+        <translation>Nuevo filtro de mensaje</translation>
     </message>
     <message>
         <source>Message will be %1.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>El mensaje será %1.
+
+</translation>
     </message>
     <message>
         <source>ACCEPTED</source>
-        <translation type="unfinished"/>
+        <translation>ACEPTADO</translation>
     </message>
     <message>
         <source>REJECTED</source>
-        <translation type="unfinished"/>
+        <translation>RECHAZADO</translation>
     </message>
     <message>
         <source>Output (modified) message is:
@@ -2261,47 +2267,53 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
   Is read/important = '%4/%5'
   Created on = '%6'
   Contents = &apos;%7&apos;</source>
-        <translation type="unfinished"/>
+        <translation>El mensaje de salida (modificado) es:
+  Título = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Autor = &apos;%3&apos;
+  Leído/Importante = &apos;%4/%5&apos;
+  Creado en = &apos;%6&apos;
+  Contenido = &apos;%7&apos;</translation>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished"/>
+        <translation>si</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"/>
+        <translation>no</translation>
     </message>
     <message>
         <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>El filtro basado en JavaScript presenta estos errores: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Cannot find &apos;clang-format&apos;</source>
-        <translation type="unfinished"/>
+        <translation>No es posible encontrar el &apos;clang-format&apos;</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-        <translation type="unfinished"/>
+        <translation>La secuencia de comandos no fue embellecida, debido a que no se encontró la herramienta &apos;clang-format&apos;.</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Error</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-        <translation type="unfinished"/>
+        <translation>La secuencia de comandos no fue embellecida, debido a que la herramienta &apos;clang-format&apos; arrojo error.</translation>
     </message>
     <message>
         <source>Beautifier was running for too long time</source>
-        <translation type="unfinished"/>
+        <translation>El embellecedor se ejecutó por demasiado tiempo</translation>
     </message>
     <message>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-        <translation type="unfinished"/>
+        <translation>La secuencia de comandos no fue embellecida, ¿ya está instalada &apos;clang-format&apos;?</translation>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>No es posible guardar el nuevo filtro, error: &apos;&apos;.</translation>
     </message>
 </context>
 <context>
@@ -2836,7 +2848,7 @@ Puede instalarlo ahora.</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation>No es posible explorar hasta el instalador. Descargue manualmente un nuevo instalador en el sitio web del proyecto.</translation>
     </message>
 </context>
 <context>
@@ -2871,11 +2883,11 @@ Puede instalarlo ahora.</translation>
     </message>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>no ha iniciado sesión</translation>
     </message>
     <message>
         <source>failed to get metadata</source>
-        <translation type="unfinished"/>
+        <translation>no se consiguieron metadatos</translation>
     </message>
 </context>
 <context>
@@ -2920,7 +2932,7 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>Reply to this message</source>
-        <translation type="unfinished"/>
+        <translation>Responder este mensaje</translation>
     </message>
 </context>
 <context>
@@ -2938,11 +2950,11 @@ Expiración de testigos de ingreso: %2</translation>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"/>
+        <translation>Mensajes importantes</translation>
     </message>
     <message>
         <source>You can find all important messages here.</source>
-        <translation type="unfinished"/>
+        <translation>Puede encontrar todos los mensajes importantes aquí.</translation>
     </message>
 </context>
 <context>
@@ -2997,7 +3009,7 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>You can see all your labels (tags) here.</source>
-        <translation type="unfinished"/>
+        <translation>Puede ver todas sus etiquetas (marcas) aquí.</translation>
     </message>
 </context>
 <context>
@@ -3406,11 +3418,11 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>Navigate to website</source>
-        <translation type="unfinished"/>
+        <translation>Explorar el sitio web</translation>
     </message>
     <message>
         <source>To login, you need to navigate to this website:</source>
-        <translation type="unfinished"/>
+        <translation>Para iniciar sesión, necesita explorar esta página:</translation>
     </message>
     <message>
         <source>You can close this window now. Go back to %1</source>
@@ -3514,7 +3526,7 @@ versión pulsando en esta notificación emergente..</translation>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
+        <translation>No es posible insertar filtro de mensaje, debido a que la actual base de datos no puede reenviar la ID de la última fila insertada.</translation>
     </message>
 </context>
 <context>
@@ -3776,7 +3788,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation>Parámetros entregados al ejecutable</translation>
     </message>
 </context>
 <context>
@@ -4053,7 +4065,7 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Update all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Actualizar todas las fuentes al arrancar la aplicación con un retardo inicial de</translation>
     </message>
 </context>
 <context>
@@ -4220,7 +4232,7 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>Doble clic con el botón izquierdo del ratón</translation>
     </message>
 </context>
 <context>
@@ -4448,7 +4460,7 @@ Noticias no leídas: %2</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n segundo(s)</numerusform><numerusform>%n segundo(s)</numerusform></translation>
     </message>
 </context>
 <context>

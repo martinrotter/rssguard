@@ -187,7 +187,7 @@
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>未启用标准 RSS/ATOM 帐户，无法添加 Feed。</translation>
+        <translation>未启用标准 RSS/ATOM 账户，无法添加 Feed。</translation>
     </message>
     <message>
         <source>New messages downloaded</source>
@@ -261,7 +261,7 @@
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>所选数据库不存在，但是没关系，它将被创建。</translation>
+        <translation>所选数据库（尚）不存在，即将创建此数据库。</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
@@ -294,7 +294,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation>被指定的帐户不支持添加 Feed。</translation>
+        <translation>被指定的账户不支持添加 Feed。</translation>
     </message>
 </context>
 <context>
@@ -597,7 +597,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation>尚未支持编辑所选项目。</translation>
+        <translation>（尚）未支持编辑所选项目。</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
@@ -634,11 +634,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation>所选帐户不支持添加新订阅。</translation>
+        <translation>所选账户不支持添加新订阅。</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation>所选帐户不支持添加新分类。</translation>
+        <translation>所选账户不支持添加新分类。</translation>
     </message>
     <message>
         <source>Context menu for recycle bins</source>
@@ -733,11 +733,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>MIT License (applies to boolinq source code)</source>
-        <translation type="unfinished"/>
+        <translation>MIT 协议（适用于 booling 库的源代码）</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
-        <translation type="unfinished"/>
+        <translation>GNU GPL 协议（适用于 RSS Guard、mimesis 和 Numix 的源代码）</translation>
     </message>
 </context>
 <context>
@@ -748,7 +748,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation>此帐户只能被添加一次。</translation>
+        <translation>此账户只能被添加一次。</translation>
     </message>
 </context>
 <context>
@@ -1269,7 +1269,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>指向你的 Nextcloud 服务器的 URL，不带任何 API 路径</translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
@@ -1281,15 +1281,15 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>此 Nextcloud News 服务器所运行的版本不受支持。</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud News 服务器可用，正在运行版本 %1，至少需要版本 %2。</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation>Nextcloud News 服务器正常。</translation>
+        <translation>Nextcloud News 服务器可用。</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
@@ -1297,7 +1297,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>此 Nextcloud News 服务器正在运行的版本为 %1，已不受支持。至少需要版本 %2。</translation>
     </message>
 </context>
 <context>
@@ -1356,11 +1356,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation>TT-RSS 帐号密码</translation>
+        <translation>TT-RSS 账户密码</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation>TT-RSS 帐号用户名</translation>
+        <translation>TT-RSS 账户用户名</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
@@ -1396,19 +1396,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>当前 Tiny Tiny RSS 服务器的 API 版本为 %1，已不受支持，至少需要 %2。</translation>
+        <translation>此 Tiny Tiny RSS 服务器的 API 版本为 %1，已不受支持，至少需要 %2。</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>当前 Tiny Tiny RSS 服务器的 API 版本过久，已不受支持。</translation>
+        <translation>此 Tiny Tiny RSS 服务器的 API 版本过久，已不受支持。</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Tiny Tiny RSS 服务器正常，当前 API 版本 %1，所需最低版本 %2。</translation>
+        <translation>Tiny Tiny RSS 服务器可用，当前 API 版本 %1，所需最低版本 %2。</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS 服务器正常。</translation>
+        <translation>Tiny Tiny RSS 服务器可用。</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -2140,11 +2140,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
-        <translation type="unfinished"/>
+        <translation>切换分类展开/收起按钮 (&amp;S)</translation>
     </message>
     <message>
         <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
+        <translation>使用自定义时间间隔更新项目 (&amp;T)</translation>
     </message>
 </context>
 <context>
@@ -2163,7 +2163,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Account</source>
-        <translation>账号</translation>
+        <translation>账户</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
@@ -2283,7 +2283,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript 过滤器包含错误：&apos;%1&apos;。</translation>
     </message>
     <message>
         <source>Cannot find &apos;clang-format&apos;</source>
@@ -2291,7 +2291,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-        <translation type="unfinished"/>
+        <translation>脚本未被美化，因为找不到 &apos;clang-format&apos; 工具。</translation>
     </message>
     <message>
         <source>Error</source>
@@ -2299,19 +2299,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-        <translation type="unfinished"/>
+        <translation>脚本未被美化，因为 &apos;clang-format&apos; 工具抛出了错误。</translation>
     </message>
     <message>
         <source>Beautifier was running for too long time</source>
-        <translation type="unfinished"/>
+        <translation>美化时间过长</translation>
     </message>
     <message>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-        <translation type="unfinished"/>
+        <translation>脚本未被美化，&apos;clang-format&apos; 是否已正确安装？</translation>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>无法保存新过滤器，错误：</translation>
     </message>
 </context>
 <context>
@@ -3519,7 +3519,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
+        <translation>无法插入消息过滤器，因为当前数据库无法返回上次插入的行的 ID。</translation>
     </message>
 </context>
 <context>
