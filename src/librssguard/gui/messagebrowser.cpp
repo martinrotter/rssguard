@@ -192,3 +192,11 @@ void MessageBrowser::loadMessage(const Message& message, RootItem* root) {
   m_txtBrowser->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
   m_searchWidget->hide();
 }
+
+double MessageBrowser::verticalScrollBarPosition() const {
+  return m_txtBrowser->verticalScrollBar()->value();
+}
+
+void MessageBrowser::setVerticalScrollBarPosition(double pos) {
+  m_txtBrowser->verticalScrollBar()->setValue(pos);
+}

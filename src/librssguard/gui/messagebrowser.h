@@ -22,7 +22,10 @@ class MessageBrowser : public QWidget {
   public:
     explicit MessageBrowser(QWidget* parent = nullptr);
 
+    double verticalScrollBarPosition() const;
+
   public slots:
+    void setVerticalScrollBarPosition(double pos);
     void clear();
     void reloadFontSettings();
     void loadMessage(const Message& message, RootItem* root);

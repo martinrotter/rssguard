@@ -77,6 +77,7 @@ class MessagesView : public QTreeView {
     // Notify others about message selections.
     void currentMessageChanged(const Message& message, RootItem* root);
     void currentMessageRemoved();
+    void willReselectSameMessage();
 
   private:
     void sort(int column, Qt::SortOrder order, bool repopulate_data, bool change_header, bool emit_changed_from_header);

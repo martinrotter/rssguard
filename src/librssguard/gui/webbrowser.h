@@ -34,7 +34,10 @@ class WebBrowser : public TabContent {
     WebBrowser* webBrowser() const;
     WebViewer* viewer() const;
 
+    double verticalScrollBarPosition() const;
+
   public slots:
+    void setVerticalScrollBarPosition(double pos);
     void reloadFontSettings();
 
     void increaseZoom();

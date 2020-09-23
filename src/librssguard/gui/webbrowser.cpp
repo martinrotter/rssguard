@@ -88,13 +88,33 @@ WebBrowser::~WebBrowser() {
   delete m_layout;
 }
 
+double WebBrowser::verticalScrollBarPosition() const {
+  double position;
+  QEventLoop loop;
+
+  viewer()->page()->runJavaScript(QSL("window.pageYOffset;"), [&position, &loop](const QVariant& val) {
+    position = val.toDouble();
+    loop.exit();
+  });
+  loop.exec();
+
+  return position;
+}
+
+void WebBrowser::setVerticalScrollBarPosition(double pos) {
+  viewer()->page()->runJavaScript(QSL("window.scrollTo(0, %1);").arg(pos));
+}
+
 void WebBrowser::reloadFontSettings() {
   QFont fon;
 
   fon.fromString(qApp->settings()->value(GROUP(Messages),
                                          SETTING(Messages::PreviewerFontStandard)).toString());
-  QWebEngineSettings::globalSettings()->setFontFamily(QWebEngineSettings::StandardFont, fon.family());
-  QWebEngineSettings::globalSettings()->setFontSize(QWebEngineSettings::DefaultFontSize, fon.pointSize());
+
+  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::StandardFont, fon.family());
+  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::SerifFont, fon.family());
+  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::SansSerifFont, fon.family());
+  QWebEngineSettings::defaultSettings()->setFontSize(QWebEngineSettings::DefaultFontSize, fon.pointSize());
 }
 
 void WebBrowser::increaseZoom() {

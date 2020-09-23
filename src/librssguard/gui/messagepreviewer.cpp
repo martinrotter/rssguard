@@ -12,6 +12,7 @@
 
 #if defined (USE_WEBENGINE)
 #include "gui/webbrowser.h"
+#include "gui/webviewer.h"
 #else
 #include "gui/messagebrowser.h"
 #endif
@@ -41,7 +42,7 @@ void MessagePreviewer::createConnections() {
 }
 
 MessagePreviewer::MessagePreviewer(QWidget* parent)
-  : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)) {
+  : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)), m_verticalScrollBarPosition(0.0) {
 #if defined (USE_WEBENGINE)
   m_txtMessage = new WebBrowser(this);
 #else
@@ -75,6 +76,10 @@ WebBrowser* MessagePreviewer::webBrowser() const {
 void MessagePreviewer::clear() {
   m_txtMessage->clear();
   hide();
+
+  m_verticalScrollBarPosition = 0.0;
+  m_root.clear();
+  m_message = Message();
 }
 
 void MessagePreviewer::hideToolbar() {
@@ -82,6 +87,10 @@ void MessagePreviewer::hideToolbar() {
 }
 
 void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
+  m_verticalScrollBarPosition = m_txtMessage->verticalScrollBarPosition();
+
+  bool same_message = message.m_id == m_message.m_id && m_root == root;
+
   m_message = message;
   m_root = root;
 
@@ -90,6 +99,10 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
     show();
     m_actionSwitchImportance->setChecked(m_message.m_isImportant);
     m_txtMessage->loadMessage(message, root);
+
+    if (same_message) {
+      m_txtMessage->setVerticalScrollBarPosition(m_verticalScrollBarPosition);
+    }
   }
 }
 
