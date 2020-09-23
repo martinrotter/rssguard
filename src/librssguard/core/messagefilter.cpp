@@ -5,8 +5,6 @@
 #include "core/message.h"
 #include "exceptions/filteringexception.h"
 
-#include <QJSEngine>
-
 MessageFilter::MessageFilter(int id, QObject* parent) : QObject(parent), m_id(id) {}
 
 FilteringAction MessageFilter::filterMessage(QJSEngine* engine) {
@@ -79,6 +77,12 @@ QString MessageFilter::script() const {
 
 void MessageFilter::setScript(const QString& script) {
   m_script = script;
+}
+
+void MessageFilter::initializeFilteringEngine(QJSEngine& engine) {
+  engine.installExtensions(QJSEngine::Extension::ConsoleExtension);
+  engine.globalObject().setProperty("MSG_ACCEPT", int(FilteringAction::Accept));
+  engine.globalObject().setProperty("MSG_IGNORE", int(FilteringAction::Ignore));
 }
 
 void MessageFilter::setId(int id) {

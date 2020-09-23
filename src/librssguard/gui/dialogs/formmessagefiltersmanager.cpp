@@ -147,6 +147,9 @@ void FormMessageFiltersManager::loadFilter() {
 void FormMessageFiltersManager::testFilter() {
   // Perform per-message filtering.
   QJSEngine filter_engine;
+
+  MessageFilter::initializeFilteringEngine(filter_engine);
+
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   // Create JavaScript communication wrapper for the message.
@@ -155,10 +158,7 @@ void FormMessageFiltersManager::testFilter() {
   // Register the wrapper.
   auto js_object = filter_engine.newQObject(&msg_obj);
 
-  filter_engine.installExtensions(QJSEngine::Extension::ConsoleExtension);
   filter_engine.globalObject().setProperty("msg", js_object);
-  filter_engine.globalObject().setProperty("MSG_ACCEPT", int(FilteringAction::Accept));
-  filter_engine.globalObject().setProperty("MSG_IGNORE", int(FilteringAction::Ignore));
 
   Message msg = testingMessage();
 

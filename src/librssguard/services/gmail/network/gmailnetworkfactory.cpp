@@ -97,9 +97,9 @@ QString GmailNetworkFactory::sendEmail(Mimesis::Message msg, Message* reply_to_m
   if (result.first != QNetworkReply::NetworkError::NoError) {
     if (!out.isEmpty()) {
       QJsonDocument doc = QJsonDocument::fromJson(out);
-      auto msg = doc.object()["error"].toObject()["message"].toString();
+      auto json_message = doc.object()["error"].toObject()["message"].toString();
 
-      throw ApplicationException(msg);
+      throw ApplicationException(json_message);
     }
     else {
       throw ApplicationException(QString::fromUtf8(out));
@@ -464,9 +464,9 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
   if (res.first == QNetworkReply::NetworkError::NoError) {
     QJsonDocument doc = QJsonDocument::fromJson(output);
     QMap<QString, QString> result;
-    auto headers = doc.object()["payload"].toObject()["headers"].toArray();
+    auto json_headers = doc.object()["payload"].toObject()["headers"].toArray();
 
-    for (const auto& header : headers) {
+    for (const auto& header : json_headers) {
       QJsonObject obj_header = header.toObject();
 
       result.insert(obj_header["name"].toString(), obj_header["value"].toString());
