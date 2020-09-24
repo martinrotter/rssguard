@@ -150,7 +150,7 @@ QString MessageBrowser::prepareHtmlForMessage(const Message& message) {
   html = html
          .replace(QSL("\r\n"), QSL("\n"))
          .replace(QL1C('\r'), QL1C('\n'))
-         .replace(QL1C('\n'), QSL("<br/>"));
+         .remove(QL1C('\n'));
 
   return html;
 }
@@ -182,7 +182,7 @@ void MessageBrowser::reloadFontSettings() {
   QFont fon;
 
   fon.fromString(settings->value(GROUP(Messages), SETTING(Messages::PreviewerFontStandard)).toString());
-  setFont(fon);
+  m_txtBrowser->setFont(fon);
 }
 
 void MessageBrowser::loadMessage(const Message& message, RootItem* root) {
