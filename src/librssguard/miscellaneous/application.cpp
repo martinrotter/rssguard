@@ -193,9 +193,6 @@ void Application::eliminateFirstRuns() {
 
 void Application::setFeedReader(FeedReader* feed_reader) {
   m_feedReader = feed_reader;
-
-  connect(m_feedReader, &FeedReader::feedUpdatesStarted, this, &Application::onFeedUpdatesStarted);
-  connect(m_feedReader, &FeedReader::feedUpdatesProgress, this, &Application::onFeedUpdatesProgress);
   connect(m_feedReader, &FeedReader::feedUpdatesFinished, this, &Application::onFeedUpdatesFinished);
 }
 
@@ -504,14 +501,6 @@ void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
 }
 
 #endif
-
-void Application::onFeedUpdatesStarted() {}
-
-void Application::onFeedUpdatesProgress(const Feed* feed, int current, int total) {
-  Q_UNUSED(feed)
-  Q_UNUSED(current)
-  Q_UNUSED(total)
-}
 
 void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   if (!results.updatedFeeds().isEmpty()) {

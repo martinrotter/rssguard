@@ -5,7 +5,7 @@
 
 #include "services/abstract/accountcheckmodel.h"
 
-class FeedsImportExportModel : public AccountCheckModel {
+class FeedsImportExportModel : public AccountCheckSortedModel {
   Q_OBJECT
 
   public:

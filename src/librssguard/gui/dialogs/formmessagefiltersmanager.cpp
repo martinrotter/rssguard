@@ -18,7 +18,7 @@
 #include "services/abstract/feed.h"
 
 FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const QList<ServiceRoot*>& accounts, QWidget* parent)
-  : QDialog(parent), m_feedsModel(new AccountCheckModel(this)), m_rootItem(new RootItem()),
+  : QDialog(parent), m_feedsModel(new AccountCheckSortedModel(this)), m_rootItem(new RootItem()),
   m_accounts(accounts), m_reader(reader), m_loadingFilter(false) {
   m_ui.setupUi(this);
 
@@ -51,10 +51,10 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
   connect(m_ui.m_cmbAccounts, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
           &FormMessageFiltersManager::onAccountChanged);
-  connect(m_ui.m_btnCheckAll, &QPushButton::clicked, m_feedsModel, &AccountCheckModel::checkAllItems);
-  connect(m_ui.m_btnUncheckAll, &QPushButton::clicked, m_feedsModel, &AccountCheckModel::uncheckAllItems);
-  connect(m_feedsModel, &AccountCheckModel::checkStateChanged, this,
-          &FormMessageFiltersManager::onFeedChecked);
+  connect(m_ui.m_btnCheckAll, &QPushButton::clicked, m_feedsModel->sourceModel(), &AccountCheckModel::checkAllItems);
+  connect(m_ui.m_btnUncheckAll, &QPushButton::clicked, m_feedsModel->sourceModel(), &AccountCheckModel::uncheckAllItems);
+  connect(m_feedsModel->sourceModel(), &AccountCheckModel::checkStateChanged,
+          this, &FormMessageFiltersManager::onFeedChecked);
 
   initializeTestingMessage();
   loadFilters();
@@ -211,7 +211,7 @@ void FormMessageFiltersManager::loadFilterFeedAssignments(MessageFilter* filter,
 
   for (auto* feed : account->getSubTreeFeeds()) {
     if (feed->messageFilters().contains(filter)) {
-      m_feedsModel->setItemChecked(feed, Qt::CheckState::Checked);
+      m_feedsModel->sourceModel()->setItemChecked(feed, Qt::CheckState::Checked);
     }
   }
 

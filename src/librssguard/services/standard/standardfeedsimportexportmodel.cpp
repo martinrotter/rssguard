@@ -16,13 +16,13 @@
 #include <QStack>
 
 FeedsImportExportModel::FeedsImportExportModel(QObject* parent)
-  : AccountCheckModel(parent), m_mode(Mode::Import) {}
+  : AccountCheckSortedModel(parent), m_mode(Mode::Import) {}
 
 FeedsImportExportModel::~FeedsImportExportModel() {
-  if (m_rootItem != nullptr && m_mode == Mode::Import) {
+  if (sourceModel() != nullptr && sourceModel()->rootItem() != nullptr && m_mode == Mode::Import) {
     // Delete all model items, but only if we are in import mode. Export mode shares
     // root item with main feed model, thus cannot be deleted from memory now.
-    delete m_rootItem;
+    delete sourceModel()->rootItem();
   }
 }
 
@@ -54,7 +54,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
   QDomElement elem_opml_body = opml_document.createElement(QSL("body"));
   QStack<RootItem*> items_to_process;
 
-  items_to_process.push(m_rootItem);
+  items_to_process.push(sourceModel()->rootItem());
   QStack<QDomElement> elements_to_use;
 
   elements_to_use.push(elem_opml_body);
@@ -65,7 +65,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
     RootItem* active_item = items_to_process.pop();
 
     for (RootItem* child_item : active_item->childItems()) {
-      if (!isItemChecked(child_item)) {
+      if (!sourceModel()->isItemChecked(child_item)) {
         continue;
       }
 
@@ -259,12 +259,13 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
   emit layoutAboutToBeChanged();
 
   setRootItem(root_item);
+
   emit layoutChanged();
   emit parsingFinished(failed, succeded, false);
 }
 
 bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray& result) {
-  for (const Feed* const feed : m_rootItem->getSubTreeFeeds()) {
+  for (const Feed* const feed : sourceModel()->rootItem()->getSubTreeFeeds()) {
     result += feed->url() + QL1S("\n");
   }
 

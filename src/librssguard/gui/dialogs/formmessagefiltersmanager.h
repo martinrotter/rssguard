@@ -9,7 +9,7 @@
 
 #include "ui_formmessagefiltersmanager.h"
 
-class AccountCheckModel;
+class AccountCheckSortedModel;
 class MessageFilter;
 class FeedReader;
 
@@ -51,7 +51,7 @@ class FormMessageFiltersManager : public QDialog {
 
   private:
     Ui::FormMessageFiltersManager m_ui;
-    AccountCheckModel* m_feedsModel;
+    AccountCheckSortedModel* m_feedsModel;
     RootItem* m_rootItem;
     QList<ServiceRoot*> m_accounts;
     FeedReader* m_reader;

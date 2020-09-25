@@ -197,7 +197,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
   original_parents.push(target_root_node);
   QStack<RootItem*> new_parents;
 
-  new_parents.push(model->rootItem());
+  new_parents.push(model->sourceModel()->rootItem());
   bool some_feed_category_error = false;
 
   // Iterate all new items we would like to merge into current model.
@@ -206,7 +206,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
     RootItem* source_parent = new_parents.pop();
 
     for (RootItem* source_item : source_parent->childItems()) {
-      if (!model->isItemChecked(source_item)) {
+      if (!model->sourceModel()->isItemChecked(source_item)) {
         // We can skip this item, because it is not checked and should not be imported.
         // NOTE: All descendants are thus skipped too.
         continue;

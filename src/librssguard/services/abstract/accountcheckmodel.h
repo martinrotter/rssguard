@@ -4,6 +4,7 @@
 #define ACCOUNTCHECKMODEL_H
 
 #include <QAbstractItemModel>
+#include <QSortFilterProxyModel>
 
 #include "services/abstract/rootitem.h"
 
@@ -52,6 +53,28 @@ class AccountCheckModel : public QAbstractItemModel {
   private:
     QHash<RootItem*, Qt::CheckState> m_checkStates;
     bool m_recursiveChange;
+};
+
+class AccountCheckSortedModel : public QSortFilterProxyModel {
+  Q_OBJECT
+
+  public:
+    explicit AccountCheckSortedModel(QObject* parent = nullptr);
+    virtual ~AccountCheckSortedModel() = default;
+
+    AccountCheckModel* sourceModel() const;
+    void setRootItem(RootItem* root_item, bool delete_previous_root = true, bool with_layout_change = false);
+
+  public slots:
+    void checkAllItems();
+    void uncheckAllItems();
+
+  protected:
+    virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
+    virtual bool lessThan(const QModelIndex& source_left, const QModelIndex& source_right) const;
+
+  private:
+    AccountCheckModel* m_sourceModel;
 };
 
 #endif // ACCOUNTCHECKMODEL_H

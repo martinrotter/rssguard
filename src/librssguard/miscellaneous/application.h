@@ -133,8 +133,6 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     void downloadRequested(QWebEngineDownloadItem* download_item);
 #endif
 
-    void onFeedUpdatesStarted();
-    void onFeedUpdatesProgress(const Feed* feed, int current, int total);
     void onFeedUpdatesFinished(const FeedDownloadResults& results);
 
   private:
