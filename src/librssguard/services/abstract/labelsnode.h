@@ -13,6 +13,9 @@ class LabelsNode : public RootItem {
 
     virtual QList<QAction*> contextMenuFeedsList();
 
+  public slots:
+    void createLabel();
+
   private:
     QAction* m_actLabelNew;
 };

@@ -2,6 +2,7 @@
 
 #include "services/abstract/labelsnode.h"
 
+#include "gui/dialogs/formaddeditlabel.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/serviceroot.h"
@@ -19,9 +20,17 @@ QList<QAction*> LabelsNode::contextMenuFeedsList() {
   if (m_actLabelNew == nullptr) {
     // Initialize it all.
     m_actLabelNew = new QAction(qApp->icons()->fromTheme("tag-new"), tr("New label"), this);
+
+    connect(m_actLabelNew, &QAction::triggered, this, &LabelsNode::createLabel);
   }
 
   return QList<QAction*> {
     m_actLabelNew
   };
+}
+
+void LabelsNode::createLabel() {
+  FormAddEditLabel frm(qApp->mainFormWidget());
+
+  frm.execForAdd();
 }

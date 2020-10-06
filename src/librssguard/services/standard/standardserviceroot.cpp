@@ -142,6 +142,7 @@ void StandardServiceRoot::loadFromDatabase() {
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
   appendChild(importantNode());
+  appendChild(new LabelsNode(this));
   updateCounts(true);
 }
 

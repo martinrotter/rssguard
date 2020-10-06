@@ -47,9 +47,11 @@ HEADERS += core/feeddownloader.h \
            exceptions/ioexception.h \
            gui/baselineedit.h \
            gui/basetoolbar.h \
+           gui/colortoolbutton.h \
            gui/comboboxwithstatus.h \
            gui/dialogs/formabout.h \
            gui/dialogs/formaddaccount.h \
+           gui/dialogs/formaddeditlabel.h \
            gui/dialogs/formbackupdatabasesettings.h \
            gui/dialogs/formdatabasecleanup.h \
            gui/dialogs/formmain.h \
@@ -195,9 +197,11 @@ SOURCES += core/feeddownloader.cpp \
            exceptions/ioexception.cpp \
            gui/baselineedit.cpp \
            gui/basetoolbar.cpp \
+           gui/colortoolbutton.cpp \
            gui/comboboxwithstatus.cpp \
            gui/dialogs/formabout.cpp \
            gui/dialogs/formaddaccount.cpp \
+           gui/dialogs/formaddeditlabel.cpp \
            gui/dialogs/formbackupdatabasesettings.cpp \
            gui/dialogs/formdatabasecleanup.cpp \
            gui/dialogs/formmain.cpp \
@@ -325,6 +329,7 @@ mac {
 
 FORMS += gui/dialogs/formabout.ui \
          gui/dialogs/formaddaccount.ui \
+         gui/dialogs/formaddeditlabel.ui \
          gui/dialogs/formbackupdatabasesettings.ui \
          gui/dialogs/formdatabasecleanup.ui \
          gui/dialogs/formmain.ui \

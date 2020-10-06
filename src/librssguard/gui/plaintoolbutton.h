@@ -21,8 +21,6 @@ class PlainToolButton : public QToolButton {
     void reactOnSenderActionChange();
 
   protected:
-
-    // Custom look.
     void paintEvent(QPaintEvent* e);
 
   private:
