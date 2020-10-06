@@ -164,8 +164,7 @@ class ServiceRoot : public RootItem {
 
   protected:
 
-    // This method should obtain new tree of feed/messages/etc to perform
-    // sync in.
+    // This method should obtain new tree of feed/categories/whatever to perform sync in.
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
     // Removes all messages/categories/feeds which are

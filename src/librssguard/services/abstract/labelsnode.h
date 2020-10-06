@@ -10,6 +10,11 @@ class LabelsNode : public RootItem {
 
   public:
     explicit LabelsNode(RootItem* parent_item = nullptr);
+
+    virtual QList<QAction*> contextMenuFeedsList();
+
+  private:
+    QAction* m_actLabelNew;
 };
 
 #endif // LABELSNODE_H

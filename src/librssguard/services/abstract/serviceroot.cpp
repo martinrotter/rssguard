@@ -196,24 +196,24 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
 }
 
 void ServiceRoot::storeNewFeedTree(RootItem* root) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  DatabaseQueries::storeAccountTree(qApp->database()->connection(metaObject()->className()), root, accountId());
 
-  if (DatabaseQueries::storeAccountTree(database, root, accountId())) {
-    RecycleBin* bin = recycleBin();
+  /*if (DatabaseQueries::storeAccountTree(database, root, accountId())) {
+     RecycleBin* bin = recycleBin();
 
-    if (bin != nullptr && !childItems().contains(bin)) {
+     if (bin != nullptr && !childItems().contains(bin)) {
       // As the last item, add recycle bin, which is needed.
       appendChild(bin);
       bin->updateCounts(true);
-    }
+     }
 
-    ImportantNode* imp = importantNode();
+     ImportantNode* imp = importantNode();
 
-    if (imp != nullptr && !childItems().contains(imp)) {
+     if (imp != nullptr && !childItems().contains(imp)) {
       appendChild(imp);
       imp->updateCounts(true);
-    }
-  }
+     }
+     }*/
 }
 
 void ServiceRoot::removeLeftOverMessages() {
@@ -271,7 +271,9 @@ void ServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
   Q_UNUSED(url)
 }
 
-void ServiceRoot::addNewCategory(RootItem* selected_item) {}
+void ServiceRoot::addNewCategory(RootItem* selected_item) {
+  Q_UNUSED(selected_item)
+}
 
 QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
   QMap<QString, QVariantMap> custom_data;

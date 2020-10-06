@@ -99,48 +99,20 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
 
-    inline RootItem* parent() const {
-      return m_parentItem;
-    }
-
-    inline void setParent(RootItem* parent_item) {
-      m_parentItem = parent_item;
-    }
-
-    inline RootItem* child(int row) {
-      return m_childItems.value(row);
-    }
-
-    inline int childCount() const {
-      return m_childItems.size();
-    }
-
-    inline void appendChild(RootItem* child) {
-      if (child != nullptr) {
-        m_childItems.append(child);
-        child->setParent(this);
-      }
-    }
+    RootItem* parent() const;
+    void setParent(RootItem* parent_item);
 
     // Access to children.
-    inline QList<RootItem*> childItems() const {
-      return m_childItems;
-    }
-
-    // Removes all children from this item.
-    // NOTE: Children are NOT freed from the memory.
-    inline void clearChildren() {
-      m_childItems.clear();
-    }
-
-    inline void setChildItems(const QList<RootItem*>& child_items) {
-      m_childItems = child_items;
-    }
+    RootItem* child(int row);
+    int childCount() const;
+    void appendChild(RootItem* child);
+    QList<RootItem*> childItems() const;
+    void clearChildren();
+    void setChildItems(const QList<RootItem*>& child_items);
 
     // Removes particular child at given index.
     // NOTE: Child is NOT freed from the memory.
     bool removeChild(int index);
-
     bool removeChild(RootItem* child);
 
     // Checks whether "this" object is child (direct or indirect)
@@ -218,6 +190,41 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     QList<RootItem*> m_childItems;
     RootItem* m_parentItem;
 };
+
+inline RootItem* RootItem::parent() const {
+  return m_parentItem;
+}
+
+inline void RootItem::setParent(RootItem* parent_item) {
+  m_parentItem = parent_item;
+}
+
+inline RootItem* RootItem::child(int row) {
+  return m_childItems.value(row);
+}
+
+inline int RootItem::childCount() const {
+  return m_childItems.size();
+}
+
+inline void RootItem::appendChild(RootItem* child) {
+  if (child != nullptr) {
+    m_childItems.append(child);
+    child->setParent(this);
+  }
+}
+
+inline QList<RootItem*> RootItem::childItems() const {
+  return m_childItems;
+}
+
+inline void RootItem::clearChildren() {
+  m_childItems.clear();
+}
+
+inline void RootItem::setChildItems(const QList<RootItem*>& child_items) {
+  m_childItems = child_items;
+}
 
 RootItem::Kind operator|(RootItem::Kind a, RootItem::Kind b);
 RootItem::Kind operator&(RootItem::Kind a, RootItem::Kind b);
