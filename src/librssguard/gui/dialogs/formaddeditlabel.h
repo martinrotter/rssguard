@@ -18,13 +18,12 @@ class FormAddEditLabel : public QDialog {
 
   public:
     explicit FormAddEditLabel(QWidget* parent = nullptr);
-    ~FormAddEditLabel();
 
   public slots:
     Label* execForAdd();
 
   private:
-    Ui::FormAddEditLabel* ui;
+    Ui::FormAddEditLabel m_ui;
 };
 
 #endif // FORMADDEDITLABEL_H

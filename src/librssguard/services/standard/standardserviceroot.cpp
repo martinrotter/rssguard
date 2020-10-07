@@ -143,6 +143,9 @@ void StandardServiceRoot::loadFromDatabase() {
   appendChild(recycleBin());
   appendChild(importantNode());
   appendChild(new LabelsNode(this));
+
+  // TODO: Load all labels and append.
+
   updateCounts(true);
 }
 

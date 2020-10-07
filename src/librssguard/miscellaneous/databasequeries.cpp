@@ -31,6 +31,25 @@
 #include <QUrl>
 #include <QVariant>
 
+bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int account_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("INSERT INTO Labels (name, color, custom_id, account_id) "
+            "VALUES (:name, :color, :custom_id, :account_id);");
+  q.bindValue(QSL(":name"), label->title());
+  q.bindValue(QSL(":color"), label->color().name());
+  q.bindValue(QSL(":custom_id"), label->customId());
+  q.bindValue(QSL(":account_id"), account_id);
+  auto res = q.exec();
+
+  if (res && q.lastInsertId().isValid()) {
+    label->setId(q.lastInsertId().toInt());
+  }
+
+  return res;
+}
+
 bool DatabaseQueries::markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 

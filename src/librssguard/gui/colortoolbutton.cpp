@@ -5,6 +5,7 @@
 #include <QColorDialog>
 #include <QPainter>
 #include <QPainterPath>
+#include <QRandomGenerator>
 
 ColorToolButton::ColorToolButton(QWidget* parent) : QToolButton(parent), m_color(Qt::GlobalColor::black) {
   connect(this, &ColorToolButton::clicked, this, [this]() {
@@ -29,6 +30,14 @@ void ColorToolButton::setColor(const QColor& color) {
   repaint();
 }
 
+void ColorToolButton::setRandomColor() {
+  auto rnd_color = QRandomGenerator::global()->bounded(0xFFFFFF);
+  auto rnd_color_name = QString("#%1").arg(QString::number(rnd_color, 16));
+
+  setColor(rnd_color_name);
+  emit colorChanged(rnd_color_name);
+}
+
 void ColorToolButton::paintEvent(QPaintEvent* e) {
   Q_UNUSED(e)
   QPainter p(this);
@@ -46,6 +55,5 @@ void ColorToolButton::paintEvent(QPaintEvent* e) {
   QPainterPath path;
 
   path.addRoundedRect(QRectF(rect), 3, 3);
-
   p.fillPath(path, m_color);
 }

@@ -7,6 +7,7 @@
 
 #include "core/messagefilter.h"
 #include "services/abstract/category.h"
+#include "services/abstract/label.h"
 #include "services/abstract/serviceroot.h"
 #include "services/standard/standardfeed.h"
 
@@ -16,6 +17,9 @@
 
 class DatabaseQueries {
   public:
+
+    // Label operators.
+    static bool createLabel(const QSqlDatabase& db, Label* label, int account_id);
 
     // Message operators.
     static bool markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);

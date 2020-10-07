@@ -502,6 +502,18 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     model->setFilter(QString("Messages.is_important = 1 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
                      .arg(QString::number(accountId())));
   }
+  else if (item->kind() == RootItem::Kind::Label) {
+    // Show messages with particular label.
+    model->setFilter(QString("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
+                             "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id AND label = %2) > 0")
+                     .arg(QString::number(accountId()), QString::number(item->id())));
+  }
+  else if (item->kind() == RootItem::Kind::Labels) {
+    // Show messages with any label.
+    model->setFilter(QString("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
+                             "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id) > 0")
+                     .arg(QString::number(accountId())));
+  }
   else {
     QList<Feed*> children = item->getSubTreeFeeds();
     QString filter_clause = textualFeedIds(children).join(QSL(", "));

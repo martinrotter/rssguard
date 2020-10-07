@@ -14,6 +14,9 @@ class ColorToolButton : public QToolButton  {
     QColor color() const;
     void setColor(const QColor& color);
 
+  public slots:
+    void setRandomColor();
+
   signals:
     void colorChanged(const QColor& new_color);
 

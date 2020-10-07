@@ -4,6 +4,8 @@
 
 #include "gui/dialogs/formaddeditlabel.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/databasefactory.h"
+#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/serviceroot.h"
 
@@ -31,6 +33,13 @@ QList<QAction*> LabelsNode::contextMenuFeedsList() {
 
 void LabelsNode::createLabel() {
   FormAddEditLabel frm(qApp->mainFormWidget());
+  Label* new_lbl = frm.execForAdd();
 
-  frm.execForAdd();
+  if (new_lbl != nullptr) {
+    QSqlDatabase db = qApp->database()->connection(metaObject()->className());
+
+    DatabaseQueries::createLabel(db, new_lbl, getParentServiceRoot()->accountId());
+
+    getParentServiceRoot()->requestItemReassignment(new_lbl, this);
+  }
 }

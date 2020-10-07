@@ -11,11 +11,16 @@ class Label : public RootItem {
   Q_OBJECT
 
   public:
+    explicit Label(const QString& name, const QColor& color, RootItem* parent_item = nullptr);
     explicit Label(RootItem* parent_item = nullptr);
 
+    QColor color() const;
+    void setColor(const QColor& color);
+
+    static QIcon generateIcon(const QColor& color);
+
   private:
-    QString m_name;
-    QColor m_backColor;
+    QColor m_color;
 };
 
 #endif // LABEL_H
