@@ -46,6 +46,7 @@
     <file>./graphics/Faenza/actions/64/system-search.png</file>
     <file>./graphics/Faenza/actions/64/system-upgrade.png</file>
     <file>./graphics/Faenza/actions/64/tab-new.png</file>
+    <file>./graphics/Faenza/actions/64/tag-new.png</file>
     <file>./graphics/Faenza/actions/64/up.png</file>
     <file>./graphics/Faenza/actions/64/view-fullscreen.png</file>
     <file>./graphics/Faenza/actions/64/view-list-details.png</file>
@@ -114,6 +115,9 @@
     <file>./graphics/Numix/22/actions/system-search.svg</file>
     <file>./graphics/Numix/22/actions/system-upgrade.svg</file>
     <file>./graphics/Numix/22/actions/tab-new.svg</file>
+    <file>./graphics/Numix/22/actions/tag-folder.svg</file>
+    <file>./graphics/Numix/22/actions/tag-new.svg</file>
+    <file>./graphics/Numix/22/actions/tag-properties.svg</file>
     <file>./graphics/Numix/22/actions/up.svg</file>
     <file>./graphics/Numix/22/actions/view-fullscreen.svg</file>
     <file>./graphics/Numix/22/actions/view-list-details.svg</file>

@@ -29,7 +29,8 @@
 
 FeedsView::FeedsView(QWidget* parent)
   : QTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
-  m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuEmptySpace(nullptr), m_contextMenuOtherItems(nullptr) {
+  m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuEmptySpace(nullptr), m_contextMenuOtherItems(nullptr),
+  m_contextMenuLabel(nullptr) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -656,6 +657,28 @@ QMenu* FeedsView::initializeContextMenuOtherItem(RootItem* clicked_item) {
   return m_contextMenuOtherItems;
 }
 
+QMenu* FeedsView::initializeContextMenuLabel(RootItem* clicked_item) {
+  if (m_contextMenuLabel == nullptr) {
+    m_contextMenuLabel = new QMenu(tr("Context menu for label"), this);
+  }
+  else {
+    m_contextMenuLabel->clear();
+  }
+
+  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
+
+  if (!specific_actions.isEmpty()) {
+    m_contextMenuLabel->addSeparator();
+    m_contextMenuLabel->addActions(specific_actions);
+  }
+  else {
+    m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionEditSelectedItem);
+    m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
+  }
+
+  return m_contextMenuLabel;
+}
+
 void FeedsView::setupAppearance() {
   // Setup column resize strategies.
   header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::Stretch);
@@ -721,6 +744,9 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
     }
     else if (clicked_item->kind() == RootItem::Kind::ServiceRoot) {
       initializeContextMenuService(clicked_item)->exec(event->globalPos());
+    }
+    else if (clicked_item->kind() == RootItem::Kind::Label) {
+      initializeContextMenuLabel(clicked_item)->exec(event->globalPos());
     }
     else {
       initializeContextMenuOtherItem(clicked_item)->exec(event->globalPos());

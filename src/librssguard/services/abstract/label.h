@@ -17,6 +17,10 @@ class Label : public RootItem {
     QColor color() const;
     void setColor(const QColor& color);
 
+    virtual bool canBeEdited() const;
+    virtual bool editViaGui();
+    virtual bool canBeDeleted() const;
+    virtual bool deleteViaGui();
     static QIcon generateIcon(const QColor& color);
 
   private:

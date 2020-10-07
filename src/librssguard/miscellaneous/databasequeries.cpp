@@ -54,6 +54,42 @@ QList<Label*> DatabaseQueries::getLabels(const QSqlDatabase& db, int account_id)
   return labels;
 }
 
+bool DatabaseQueries::updateLabel(const QSqlDatabase& db, Label* label) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("UPDATE Labels SET name = :name, color = :color "
+            "WHERE id = :id AND account_id = :account_id;");
+  q.bindValue(QSL(":name"), label->title());
+  q.bindValue(QSL(":color"), label->color().name());
+  q.bindValue(QSL(":id"), label->id());
+  q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
+
+  return q.exec();
+}
+
+bool DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
+  // NOTE: All dependecies are done via SQL foreign cascaded keys, so no
+  // extra removals are needed.
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("DELETE FROM Labels WHERE id = :id AND account_id = :account_id;");
+  q.bindValue(QSL(":id"), label->id());
+  q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
+
+  if (q.exec()) {
+    q.prepare("DELETE FROM LabelsInMessages WHERE label = :custom_id AND account_id = :account_id;");
+    q.bindValue(QSL(":custom_id"), label->customId());
+    q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
+
+    return q.exec();
+  }
+  else {
+    return false;
+  }
+}
+
 bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int account_id) {
   QSqlQuery q(db);
 
@@ -70,7 +106,10 @@ bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
     label->setId(q.lastInsertId().toInt());
   }
 
-  return res;
+  // Fixup missing custom IDs.
+  q.prepare("UPDATE Labels SET custom_id = id WHERE custom_id IS NULL OR custom_id = '';");
+
+  return q.exec() && res;
 }
 
 bool DatabaseQueries::markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {

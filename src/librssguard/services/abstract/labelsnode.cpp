@@ -12,7 +12,7 @@
 LabelsNode::LabelsNode(const QList<Label*>& labels, RootItem* parent_item) : RootItem(parent_item), m_actLabelNew(nullptr) {
   setKind(RootItem::Kind::Labels);
   setId(ID_LABELS);
-  setIcon(qApp->icons()->fromTheme(QSL("mail-mark-important")));
+  setIcon(qApp->icons()->fromTheme(QSL("tag-folder")));
   setTitle(tr("Labels"));
   setDescription(tr("You can see all your labels (tags) here."));
   setCreationDate(QDateTime::currentDateTime());
@@ -25,7 +25,7 @@ LabelsNode::LabelsNode(const QList<Label*>& labels, RootItem* parent_item) : Roo
 QList<QAction*> LabelsNode::contextMenuFeedsList() {
   if (m_actLabelNew == nullptr) {
     // Initialize it all.
-    m_actLabelNew = new QAction(qApp->icons()->fromTheme("tag-new"), tr("New label"), this);
+    m_actLabelNew = new QAction(qApp->icons()->fromTheme(QSL("tag-new")), tr("New label"), this);
 
     connect(m_actLabelNew, &QAction::triggered, this, &LabelsNode::createLabel);
   }

@@ -506,7 +506,7 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     // Show messages with particular label.
     model->setFilter(QString("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
                              "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id AND label = %2) > 0")
-                     .arg(QString::number(accountId()), QString::number(item->id())));
+                     .arg(QString::number(accountId()), item->customId()));
   }
   else if (item->kind() == RootItem::Kind::Labels) {
     // Show messages with any label.

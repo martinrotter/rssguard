@@ -20,6 +20,8 @@ class DatabaseQueries {
 
     // Label operators.
     static QList<Label*> getLabels(const QSqlDatabase& db, int account_id);
+    static bool updateLabel(const QSqlDatabase& db, Label* label);
+    static bool deleteLabel(const QSqlDatabase& db, Label* label);
     static bool createLabel(const QSqlDatabase& db, Label* label, int account_id);
 
     // Message operators.

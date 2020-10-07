@@ -21,9 +21,11 @@ class FormAddEditLabel : public QDialog {
 
   public slots:
     Label* execForAdd();
+    bool execForEdit(Label* lbl);
 
   private:
     Ui::FormAddEditLabel m_ui;
+    Label* m_editableLabel;
 };
 
 #endif // FORMADDEDITLABEL_H

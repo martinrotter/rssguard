@@ -110,6 +110,7 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
     QMenu* initializeContextMenuImportant(RootItem* clicked_item);
     QMenu* initializeContextMenuEmptySpace();
     QMenu* initializeContextMenuOtherItem(RootItem* clicked_item);
+    QMenu* initializeContextMenuLabel(RootItem* clicked_item);
 
     void setupAppearance();
     void saveExpandStates(RootItem* item);
@@ -121,6 +122,7 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
     QMenu* m_contextMenuImportant;
     QMenu* m_contextMenuEmptySpace;
     QMenu* m_contextMenuOtherItems;
+    QMenu* m_contextMenuLabel;
     FeedsModel* m_sourceModel;
     FeedsProxyModel* m_proxyModel;
 };

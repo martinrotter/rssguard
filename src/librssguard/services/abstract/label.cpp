@@ -2,6 +2,12 @@
 
 #include "services/abstract/label.h"
 
+#include "gui/dialogs/formaddeditlabel.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/databasefactory.h"
+#include "miscellaneous/databasequeries.h"
+#include "services/abstract/serviceroot.h"
+
 #include <QPainter>
 #include <QPainterPath>
 
@@ -21,6 +27,39 @@ QColor Label::color() const {
 void Label::setColor(const QColor& color) {
   setIcon(generateIcon(color));
   m_color = color;
+}
+
+bool Label::canBeEdited() const {
+  return true;
+}
+
+bool Label::editViaGui() {
+  FormAddEditLabel form(qApp->mainFormWidget());
+
+  if (form.execForEdit(this)) {
+    QSqlDatabase db = qApp->database()->connection(metaObject()->className());
+
+    return DatabaseQueries::updateLabel(db, this);
+  }
+  else {
+    return false;
+  }
+}
+
+bool Label::canBeDeleted() const {
+  return true;
+}
+
+bool Label::deleteViaGui() {
+  QSqlDatabase db = qApp->database()->connection(metaObject()->className());
+
+  if (DatabaseQueries::deleteLabel(db, this)) {
+    getParentServiceRoot()->requestItemRemoval(this);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 QIcon Label::generateIcon(const QColor& color) {

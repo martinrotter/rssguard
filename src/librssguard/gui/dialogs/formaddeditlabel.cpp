@@ -7,7 +7,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/label.h"
 
-FormAddEditLabel::FormAddEditLabel(QWidget* parent) : QDialog(parent) {
+FormAddEditLabel::FormAddEditLabel(QWidget* parent) : QDialog(parent), m_editableLabel(nullptr) {
   m_ui.setupUi(this);
   m_ui.m_txtName->lineEdit()->setPlaceholderText(tr("Name for your label"));
 
@@ -26,16 +26,35 @@ FormAddEditLabel::FormAddEditLabel(QWidget* parent) : QDialog(parent) {
 }
 
 Label* FormAddEditLabel::execForAdd() {
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("tag-properties")), tr("Create new label"));
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("tag-new")), tr("Create new label"));
   m_ui.m_btnColor->setRandomColor();
 
   auto exit_code = exec();
-  auto xxx = m_ui.m_btnColor->color().name();
 
   if (exit_code == QDialog::DialogCode::Accepted) {
     return new Label(m_ui.m_txtName->lineEdit()->text(), m_ui.m_btnColor->color());
   }
   else {
     return nullptr;
+  }
+}
+
+bool FormAddEditLabel::execForEdit(Label* lbl) {
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("tag-properties")), tr("Edit label '%1'").arg(lbl->title()));
+
+  m_editableLabel = lbl;
+  m_ui.m_btnColor->setColor(lbl->color());
+  m_ui.m_txtName->lineEdit()->setText(lbl->title());
+
+  auto exit_code = exec();
+
+  if (exit_code == QDialog::DialogCode::Accepted) {
+    // TODO: Place server-side changes perhaps to here?
+    m_editableLabel->setColor(m_ui.m_btnColor->color());
+    m_editableLabel->setTitle(m_ui.m_txtName->lineEdit()->text());
+    return true;
+  }
+  else {
+    return false;
   }
 }
