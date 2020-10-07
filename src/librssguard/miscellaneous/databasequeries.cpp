@@ -31,6 +31,29 @@
 #include <QUrl>
 #include <QVariant>
 
+QList<Label*> DatabaseQueries::getLabels(const QSqlDatabase& db, int account_id) {
+  QList<Label*> labels;
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("SELECT * FROM Labels WHERE account_id = :account_id;");
+
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (q.exec()) {
+    while (q.next()) {
+      Label* lbl = new Label(q.value(QSL("name")).toString(), QColor(q.value(QSL("color")).toString()));
+
+      lbl->setId(q.value(QSL("id")).toInt());
+      lbl->setCustomId(q.value(QSL("custom_id")).toString());
+
+      labels << lbl;
+    }
+  }
+
+  return labels;
+}
+
 bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int account_id) {
   QSqlQuery q(db);
 

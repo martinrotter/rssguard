@@ -9,13 +9,17 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/serviceroot.h"
 
-LabelsNode::LabelsNode(RootItem* parent_item) : RootItem(parent_item), m_actLabelNew(nullptr) {
+LabelsNode::LabelsNode(const QList<Label*>& labels, RootItem* parent_item) : RootItem(parent_item), m_actLabelNew(nullptr) {
   setKind(RootItem::Kind::Labels);
   setId(ID_LABELS);
   setIcon(qApp->icons()->fromTheme(QSL("mail-mark-important")));
   setTitle(tr("Labels"));
   setDescription(tr("You can see all your labels (tags) here."));
   setCreationDate(QDateTime::currentDateTime());
+
+  for (Label* lbl : labels) {
+    appendChild(lbl);
+  }
 }
 
 QList<QAction*> LabelsNode::contextMenuFeedsList() {

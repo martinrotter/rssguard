@@ -5,7 +5,7 @@
 #include <QPainter>
 #include <QPainterPath>
 
-Label::Label(const QString& name, const QColor& color, RootItem* parent_item) : RootItem(parent_item) {
+Label::Label(const QString& name, const QColor& color, RootItem* parent_item) : Label(parent_item) {
   setColor(color);
   setTitle(name);
 }

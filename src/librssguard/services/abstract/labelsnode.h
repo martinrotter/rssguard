@@ -5,11 +5,13 @@
 
 #include "services/abstract/rootitem.h"
 
+#include "services/abstract/label.h"
+
 class LabelsNode : public RootItem {
   Q_OBJECT
 
   public:
-    explicit LabelsNode(RootItem* parent_item = nullptr);
+    explicit LabelsNode(const QList<Label*>& labels, RootItem* parent_item = nullptr);
 
     virtual QList<QAction*> contextMenuFeedsList();
 

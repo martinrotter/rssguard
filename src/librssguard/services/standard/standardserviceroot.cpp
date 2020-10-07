@@ -142,9 +142,7 @@ void StandardServiceRoot::loadFromDatabase() {
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
   appendChild(importantNode());
-  appendChild(new LabelsNode(this));
-
-  // TODO: Load all labels and append.
+  appendChild(new LabelsNode(DatabaseQueries::getLabels(database, accountId()), this));
 
   updateCounts(true);
 }
