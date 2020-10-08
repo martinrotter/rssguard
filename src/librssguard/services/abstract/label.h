@@ -17,14 +17,22 @@ class Label : public RootItem {
     QColor color() const;
     void setColor(const QColor& color);
 
+    void setCountOfAllMessages(int totalCount);
+    void setCountOfUnreadMessages(int unreadCount);
+
+    virtual int countOfAllMessages() const;
+    virtual int countOfUnreadMessages() const;
     virtual bool canBeEdited() const;
     virtual bool editViaGui();
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
+    virtual void updateCounts(bool including_total_count);
     static QIcon generateIcon(const QColor& color);
 
   private:
     QColor m_color;
+    int m_totalCount{};
+    int m_unreadCount{};
 };
 
 #endif // LABEL_H

@@ -49,7 +49,7 @@ MessagePreviewer::MessagePreviewer(QWidget* parent)
   m_txtMessage = new MessageBrowser(this);
 #endif
 
-  m_toolBar->setOrientation(Qt::Vertical);
+  m_toolBar->setOrientation(Qt::Orientation::Vertical);
   m_layout->setContentsMargins(3, 3, 3, 3);
   m_layout->addWidget(m_txtMessage, 0, 1, 1, 1);
   m_layout->addWidget(m_toolBar, 0, 0, -1, 1);

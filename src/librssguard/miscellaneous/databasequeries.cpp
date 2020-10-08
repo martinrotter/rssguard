@@ -396,6 +396,49 @@ int DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, const QStri
   }
 }
 
+int DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id, bool only_total_counts, bool* ok) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+
+  if (only_total_counts) {
+    q.prepare("SELECT COUNT(*) FROM Messages "
+              "INNER JOIN LabelsInMessages "
+              "ON "
+              "  Messages.is_pdeleted = 0 AND Messages.is_deleted = 0 AND "
+              "  LabelsInMessages.account_id = :account_id AND LabelsInMessages.account_id = Messages.account_id AND "
+              "  LabelsInMessages.label = :label AND LabelsInMessages.message = Messages.custom_id;");
+  }
+  else {
+    q.prepare("SELECT COUNT(*) FROM Messages "
+              "INNER JOIN LabelsInMessages "
+              "ON "
+              "  Messages.is_pdeleted = 0 AND Messages.is_deleted = 0 AND Messages.is_read = 0 AND "
+              "  LabelsInMessages.account_id = :account_id AND LabelsInMessages.account_id = Messages.account_id AND "
+              "  LabelsInMessages.label = :label AND LabelsInMessages.message = Messages.custom_id;");
+  }
+
+  q.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":label"), label->customId());
+
+  if (q.exec() && q.next()) {
+    if (ok != nullptr) {
+      *ok = true;
+    }
+
+    return q.value(0).toInt();
+  }
+  else {
+    auto aa = q.lastError().text();
+
+    if (ok != nullptr) {
+      *ok = false;
+    }
+
+    return 0;
+  }
+}
+
 int DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int account_id, bool only_total_counts, bool* ok) {
   QSqlQuery q(db);
 

@@ -52,6 +52,8 @@ class DatabaseQueries {
                                                                      bool only_total_counts, bool* ok = nullptr);
     static int getMessageCountsForFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id,
                                        bool only_total_counts, bool* ok = nullptr);
+    static int getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id,
+                                        bool only_total_counts, bool* ok = nullptr);
     static int getImportantMessageCounts(const QSqlDatabase& db, int account_id,
                                          bool only_total_counts, bool* ok = nullptr);
     static int getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool including_total_counts, bool* ok = nullptr);

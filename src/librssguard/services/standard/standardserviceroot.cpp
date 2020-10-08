@@ -142,7 +142,11 @@ void StandardServiceRoot::loadFromDatabase() {
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
   appendChild(importantNode());
-  appendChild(new LabelsNode(DatabaseQueries::getLabels(database, accountId()), this));
+
+  auto* labelss = new LabelsNode(DatabaseQueries::getLabels(database, accountId()), this);
+
+  appendChild(labelss);
+  requestItemExpand({ labelss }, true);
 
   updateCounts(true);
 }

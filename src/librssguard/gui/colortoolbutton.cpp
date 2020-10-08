@@ -8,6 +8,8 @@
 #include <QRandomGenerator>
 
 ColorToolButton::ColorToolButton(QWidget* parent) : QToolButton(parent), m_color(Qt::GlobalColor::black) {
+  setToolTip(tr("Click me to change color!"));
+
   connect(this, &ColorToolButton::clicked, this, [this]() {
     auto new_color = QColorDialog::getColor(m_color, parentWidget(), tr("Select new color"),
                                             QColorDialog::ColorDialogOption::DontUseNativeDialog |

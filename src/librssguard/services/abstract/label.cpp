@@ -29,6 +29,14 @@ void Label::setColor(const QColor& color) {
   m_color = color;
 }
 
+int Label::countOfUnreadMessages() const {
+  return m_unreadCount;
+}
+
+int Label::countOfAllMessages() const {
+  return m_totalCount;
+}
+
 bool Label::canBeEdited() const {
   return true;
 }
@@ -62,6 +70,17 @@ bool Label::deleteViaGui() {
   }
 }
 
+void Label::updateCounts(bool including_total_count) {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  int account_id = getParentServiceRoot()->accountId();
+
+  if (including_total_count) {
+    setCountOfAllMessages(DatabaseQueries::getMessageCountsForLabel(database, this, account_id, true));
+  }
+
+  setCountOfUnreadMessages(DatabaseQueries::getMessageCountsForLabel(database, this, account_id, false));
+}
+
 QIcon Label::generateIcon(const QColor& color) {
   QPixmap pxm(64, 64);
 
@@ -70,8 +89,16 @@ QIcon Label::generateIcon(const QColor& color) {
   QPainter paint(&pxm);
   QPainterPath path;
 
-  path.addRoundedRect(QRectF(pxm.rect()), 10, 10);
+  path.addRoundedRect(QRectF(pxm.rect()), 16, 16);
   paint.fillPath(path, color);
 
   return pxm;
+}
+
+void Label::setCountOfAllMessages(int totalCount) {
+  m_totalCount = totalCount;
+}
+
+void Label::setCountOfUnreadMessages(int unreadCount) {
+  m_unreadCount = unreadCount;
 }
