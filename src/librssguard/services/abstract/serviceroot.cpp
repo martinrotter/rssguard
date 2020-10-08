@@ -12,10 +12,12 @@
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/importantnode.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 
 ServiceRoot::ServiceRoot(RootItem* parent)
-  : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)), m_accountId(NO_PARENT_CATEGORY) {
+  : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
+  m_labelsNode(new LabelsNode(this)), m_accountId(NO_PARENT_CATEGORY) {
   setKind(RootItem::Kind::ServiceRoot);
   setCreationDate(QDateTime::currentDateTime());
 }
@@ -312,6 +314,10 @@ ImportantNode* ServiceRoot::importantNode() const {
   return m_importantNode;
 }
 
+LabelsNode* ServiceRoot::labelsNode() const {
+  return m_labelsNode;
+}
+
 void ServiceRoot::setRecycleBin(RecycleBin* recycle_bin) {
   m_recycleBin = recycle_bin;
 }
@@ -354,6 +360,22 @@ void ServiceRoot::syncIn() {
 
   setIcon(original_icon);
   itemChanged(getSubTree());
+}
+
+void ServiceRoot::performInitialAssembly(const Assignment& categories, const Assignment& feeds, const QList<Label*>& labels) {
+  // All data are now obtained, lets create the hierarchy.
+  assembleCategories(categories);
+  assembleFeeds(feeds);
+
+  // As the last item, add recycle bin, which is needed.
+  appendChild(recycleBin());
+  appendChild(importantNode());
+  appendChild(labelsNode());
+
+  labelsNode()->loadLabels(labels);
+  requestItemExpand({ labelsNode() }, true);
+
+  updateCounts(true);
 }
 
 RootItem* ServiceRoot::obtainNewTreeForSyncIn() const {

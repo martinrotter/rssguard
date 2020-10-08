@@ -134,21 +134,9 @@ void StandardServiceRoot::loadFromDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories<StandardCategory>(database, accountId());
   Assignment feeds = DatabaseQueries::getFeeds<StandardFeed>(database, qApp->feedReader()->messageFilters(), accountId());
+  auto labels = DatabaseQueries::getLabels(database, accountId());
 
-  // All data are now obtained, lets create the hierarchy.
-  assembleCategories(categories);
-  assembleFeeds(feeds);
-
-  // As the last item, add recycle bin, which is needed.
-  appendChild(recycleBin());
-  appendChild(importantNode());
-
-  auto* labelss = new LabelsNode(DatabaseQueries::getLabels(database, accountId()), this);
-
-  appendChild(labelss);
-  requestItemExpand({ labelss }, true);
-
-  updateCounts(true);
+  performInitialAssembly(categories, feeds, labels);
 }
 
 void StandardServiceRoot::checkArgumentsForFeedAdding() {

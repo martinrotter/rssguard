@@ -36,15 +36,9 @@ void InoreaderServiceRoot::loadFromDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
   Assignment feeds = DatabaseQueries::getFeeds<InoreaderFeed>(database, qApp->feedReader()->messageFilters(), accountId());
+  auto labels = DatabaseQueries::getLabels(database, accountId());
 
-  // All data are now obtained, lets create the hierarchy.
-  assembleCategories(categories);
-  assembleFeeds(feeds);
-
-  // As the last item, add recycle bin, which is needed.
-  appendChild(recycleBin());
-  appendChild(importantNode());
-  updateCounts(true);
+  performInitialAssembly(categories, feeds, labels);
 }
 
 void InoreaderServiceRoot::saveAccountDataToDatabase() {
@@ -111,7 +105,7 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
   loadCacheFromFile(accountId());
 
-  if (childCount() <= 2) {
+  if (childCount() <= 3) {
     syncIn();
   }
   else {

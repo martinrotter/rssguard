@@ -12,6 +12,8 @@
 class FeedsModel;
 class RecycleBin;
 class ImportantNode;
+class LabelsNode;
+class Label;
 class QAction;
 class MessagesModel;
 
@@ -39,6 +41,7 @@ class ServiceRoot : public RootItem {
     void setRecycleBin(RecycleBin* recycle_bin);
 
     virtual ImportantNode* importantNode() const;
+    virtual LabelsNode* labelsNode() const;
     virtual bool downloadAttachmentOnMyOwn(const QUrl& url) const;
 
     QList<Message> undeletedMessages() const;
@@ -163,6 +166,7 @@ class ServiceRoot : public RootItem {
     virtual void syncIn();
 
   protected:
+    void performInitialAssembly(const Assignment& categories, const Assignment& feeds, const QList<Label*>& labels);
 
     // This method should obtain new tree of feed/categories/whatever to perform sync in.
     virtual RootItem* obtainNewTreeForSyncIn() const;
@@ -212,6 +216,7 @@ class ServiceRoot : public RootItem {
   protected:
     RecycleBin* m_recycleBin;
     ImportantNode* m_importantNode;
+    LabelsNode* m_labelsNode;
     int m_accountId;
     QAction* m_actionSyncIn;
     QList<QAction*> m_serviceMenu;

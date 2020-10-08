@@ -9,14 +9,16 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/serviceroot.h"
 
-LabelsNode::LabelsNode(const QList<Label*>& labels, RootItem* parent_item) : RootItem(parent_item), m_actLabelNew(nullptr) {
+LabelsNode::LabelsNode(RootItem* parent_item) : RootItem(parent_item), m_actLabelNew(nullptr) {
   setKind(RootItem::Kind::Labels);
   setId(ID_LABELS);
   setIcon(qApp->icons()->fromTheme(QSL("tag-folder")));
   setTitle(tr("Labels"));
   setDescription(tr("You can see all your labels (tags) here."));
   setCreationDate(QDateTime::currentDateTime());
+}
 
+void LabelsNode::loadLabels(const QList<Label*>& labels) {
   for (Label* lbl : labels) {
     appendChild(lbl);
   }

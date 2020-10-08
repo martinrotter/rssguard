@@ -63,20 +63,15 @@ void GmailServiceRoot::loadFromDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
   Assignment feeds = DatabaseQueries::getFeeds<GmailFeed>(database, qApp->feedReader()->messageFilters(), accountId());
+  auto labels = DatabaseQueries::getLabels(database, accountId());
 
-  // All data are now obtained, lets create the hierarchy.
-  assembleCategories(categories);
-  assembleFeeds(feeds);
+  performInitialAssembly(categories, feeds, labels);
 
   for (RootItem* feed : childItems()) {
     if (feed->customId() == QL1S("INBOX")) {
       feed->setKeepOnTop(true);
     }
   }
-
-  appendChild(recycleBin());
-  appendChild(importantNode());
-  updateCounts(true);
 }
 
 void GmailServiceRoot::saveAccountDataToDatabase() {
@@ -191,7 +186,7 @@ void GmailServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
   loadCacheFromFile(accountId());
 
-  if (childCount() <= 2) {
+  if (childCount() <= 3) {
     syncIn();
   }
 

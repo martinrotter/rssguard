@@ -68,7 +68,7 @@ void OwnCloudServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
   loadCacheFromFile(accountId());
 
-  if (childCount() <= 2) {
+  if (childCount() <= 3) {
     syncIn();
   }
 }
@@ -191,13 +191,7 @@ void OwnCloudServiceRoot::loadFromDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
   Assignment feeds = DatabaseQueries::getFeeds<OwnCloudFeed>(database, qApp->feedReader()->messageFilters(), accountId());
+  auto labels = DatabaseQueries::getLabels(database, accountId());
 
-  // All data are now obtained, lets create the hierarchy.
-  assembleCategories(categories);
-  assembleFeeds(feeds);
-
-  // As the last item, add recycle bin, which is needed.
-  appendChild(recycleBin());
-  appendChild(importantNode());
-  updateCounts(true);
+  performInitialAssembly(categories, feeds, labels);
 }
