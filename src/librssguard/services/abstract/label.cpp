@@ -87,10 +87,10 @@ QIcon Label::generateIcon(const QColor& color) {
   pxm.fill(Qt::GlobalColor::transparent);
 
   QPainter paint(&pxm);
-  QPainterPath path;
 
-  path.addRoundedRect(QRectF(pxm.rect()), 16, 16);
-  paint.fillPath(path, color);
+  paint.setBrush(color);
+  paint.setPen(Qt::GlobalColor::transparent);
+  paint.drawEllipse(pxm.rect().marginsRemoved(QMargins(2, 2, 2, 2)));
 
   return pxm;
 }

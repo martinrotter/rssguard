@@ -4,10 +4,13 @@
 
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
+#include "gui/plaintoolbutton.h"
 #include "gui/searchtextwidget.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
 #include "network-web/webfactory.h"
+#include "services/abstract/label.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
 
 #if defined (USE_WEBENGINE)
@@ -17,6 +20,7 @@
 #include "gui/messagebrowser.h"
 #endif
 
+#include <QCheckBox>
 #include <QGridLayout>
 #include <QKeyEvent>
 #include <QPainter>
@@ -42,7 +46,8 @@ void MessagePreviewer::createConnections() {
 }
 
 MessagePreviewer::MessagePreviewer(QWidget* parent)
-  : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)), m_verticalScrollBarPosition(0.0) {
+  : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)), m_verticalScrollBarPosition(0.0),
+  m_separator(nullptr), m_btnLabels(QList<QPair<QToolButton*, QAction*>>()) {
 #if defined (USE_WEBENGINE)
   m_txtMessage = new WebBrowser(this);
 #else
@@ -74,6 +79,7 @@ WebBrowser* MessagePreviewer::webBrowser() const {
 #endif
 
 void MessagePreviewer::clear() {
+  updateLabels(true);
   m_txtMessage->clear();
   hide();
 
@@ -96,6 +102,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
 
   if (!m_root.isNull()) {
     updateButtons();
+    updateLabels(false);
     show();
     m_actionSwitchImportance->setChecked(m_message.m_isImportant);
     m_txtMessage->loadMessage(message, root);
@@ -103,6 +110,8 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
     if (same_message) {
       m_txtMessage->setVerticalScrollBarPosition(m_verticalScrollBarPosition);
     }
+
+    auto labels = m_root->getParentServiceRoot()->labelsNode()->labels();
   }
 }
 
@@ -162,4 +171,44 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
 void MessagePreviewer::updateButtons() {
   m_actionMarkRead->setEnabled(!m_message.m_isRead);
   m_actionMarkUnread->setEnabled(m_message.m_isRead);
+}
+
+void MessagePreviewer::updateLabels(bool only_clear) {
+  for (auto& lbl : m_btnLabels) {
+    m_toolBar->removeAction(lbl.second);
+    lbl.second->deleteLater();
+    lbl.first->deleteLater();
+  }
+
+  m_btnLabels.clear();
+
+  if (m_separator != nullptr) {
+    m_toolBar->removeAction(m_separator);
+  }
+
+  if (only_clear) {
+    return;
+  }
+
+  if (m_root.data() != nullptr) {
+    m_separator = m_toolBar->addSeparator();
+
+    for (auto* label : m_root.data()->getParentServiceRoot()->labelsNode()->labels()) {
+      QToolButton* btn_label = new QToolButton(this);
+
+      btn_label->setCheckable(true);
+      btn_label->setIcon(Label::generateIcon(label->color()));
+      btn_label->setAutoRaise(false);
+      btn_label->setText(label->title());
+      btn_label->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
+
+      QAction* act_label = m_toolBar->addWidget(btn_label);
+
+      connect(act_label, &QAction::triggered, this, []() {
+        int a = 5;
+      });
+
+      m_btnLabels.append(QPair<QToolButton*, QAction*>(btn_label, act_label));
+    }
+  }
 }

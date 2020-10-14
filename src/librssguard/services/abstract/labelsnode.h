@@ -13,6 +13,7 @@ class LabelsNode : public RootItem {
   public:
     explicit LabelsNode(RootItem* parent_item = nullptr);
 
+    QList<Label*> labels() const;
     void loadLabels(const QList<Label*>& labels);
 
     virtual QList<QAction*> contextMenuFeedsList();

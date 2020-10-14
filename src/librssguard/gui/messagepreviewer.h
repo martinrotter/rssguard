@@ -10,6 +10,7 @@
 
 #include <QPointer>
 
+class QToolButton;
 class QGridLayout;
 class QToolBar;
 
@@ -51,6 +52,7 @@ class MessagePreviewer : public QWidget {
   private:
     void createConnections();
     void updateButtons();
+    void updateLabels(bool only_clear);
 
     QGridLayout* m_layout;
     QToolBar* m_toolBar;
@@ -67,6 +69,8 @@ class MessagePreviewer : public QWidget {
     QAction* m_actionMarkRead;
     QAction* m_actionMarkUnread;
     QAction* m_actionSwitchImportance;
+    QAction* m_separator;
+    QList<QPair<QToolButton*, QAction*>> m_btnLabels;
 };
 
 #endif // MESSAGEPREVIEWER_H

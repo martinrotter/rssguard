@@ -9,6 +9,8 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/serviceroot.h"
 
+#include "3rd-party/boolinq/boolinq.h"
+
 LabelsNode::LabelsNode(RootItem* parent_item) : RootItem(parent_item), m_actLabelNew(nullptr) {
   setKind(RootItem::Kind::Labels);
   setId(ID_LABELS);
@@ -22,6 +24,12 @@ void LabelsNode::loadLabels(const QList<Label*>& labels) {
   for (Label* lbl : labels) {
     appendChild(lbl);
   }
+}
+
+QList<Label*> LabelsNode::labels() const {
+  return QList<Label*>::fromStdList(boolinq::from(childItems()).select([](RootItem* it) {
+    return static_cast<Label*>(it);
+  }).toStdList());
 }
 
 QList<QAction*> LabelsNode::contextMenuFeedsList() {
