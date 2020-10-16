@@ -15,6 +15,7 @@
 #include "services/abstract/recyclebin.h"
 #include "services/standard/atomparser.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
+#include "services/standard/jsonparser.h"
 #include "services/standard/rdfparser.h"
 #include "services/standard/rssparser.h"
 #include "services/standard/standardserviceroot.h"
@@ -22,6 +23,8 @@
 #include <QDomDocument>
 #include <QDomElement>
 #include <QDomNode>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QPointer>
 #include <QTextCodec>
 #include <QVariant>
@@ -104,6 +107,9 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
     case Type::Rss0X:
       return QSL("RSS 0.91/0.92/0.93");
 
+    case Type::Json:
+      return QSL("JSON 1.0/1.1");
+
     case Type::Rss2X:
     default:
       return QSL("RSS 2.0/2.0.1");
@@ -162,107 +168,130 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
       result.first = new StandardFeed();
     }
 
-    // Feed XML was obtained, now we need to try to guess
-    // its encoding before we can read further data.
-    QString xml_schema_encoding;
-    QString xml_contents_encoded;
-    QString enc = QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""),
-                                     QRegularExpression::PatternOption::CaseInsensitiveOption).match(feed_contents).captured(1);
-
-    if (!enc.isEmpty()) {
-      // Some "encoding" attribute was found get the encoding
-      // out of it.
-      xml_schema_encoding = enc;
-    }
-
-    QTextCodec* custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
-
-    if (custom_codec != nullptr) {
-      // Feed encoding was probably guessed.
-      xml_contents_encoded = custom_codec->toUnicode(feed_contents);
-      result.first->setEncoding(xml_schema_encoding);
-    }
-    else {
-      // Feed encoding probably not guessed, set it as
-      // default.
-      xml_contents_encoded = feed_contents;
-      result.first->setEncoding(DEFAULT_FEED_ENCODING);
-    }
-
-    // Feed XML was obtained, guess it now.
-    QDomDocument xml_document;
-    QString error_msg;
-    int error_line, error_column;
-
-    if (!xml_document.setContent(xml_contents_encoded,
-                                 &error_msg,
-                                 &error_line,
-                                 &error_column)) {
-      qDebugNN << LOGSEC_CORE
-               << "XML of feed" << QUOTE_W_SPACE(url) << "is not valid and cannot be loaded. "
-               << "Error:" << QUOTE_W_SPACE(error_msg) << "(line " << error_line
-               << ", column " << error_column << ").";
-      result.second = QNetworkReply::UnknownContentError;
-
-      // XML is invalid, exit.
-      return result;
-    }
-
-    QDomElement root_element = xml_document.documentElement();
-    QString root_tag_name = root_element.tagName();
     QList<QString> icon_possible_locations;
 
     icon_possible_locations.append(url);
 
-    if (root_tag_name == QL1S("rdf:RDF")) {
-      // We found RDF feed.
-      QDomElement channel_element = root_element.namedItem(QSL("channel")).toElement();
+    if (network_result.second.toString().contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive)) {
+      // We have JSON feed.
+      result.first->setEncoding(DEFAULT_FEED_ENCODING);
+      result.first->setType(Type::Json);
 
-      result.first->setType(Type::Rdf);
-      result.first->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
-      result.first->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
-      QString source_link = channel_element.namedItem(QSL("link")).toElement().text();
+      QJsonDocument json = QJsonDocument::fromJson(feed_contents);
 
-      if (!source_link.isEmpty()) {
-        icon_possible_locations.prepend(source_link);
-      }
-    }
-    else if (root_tag_name == QL1S("rss")) {
-      // We found RSS 0.91/0.92/0.93/2.0/2.0.1 feed.
-      QString rss_type = root_element.attribute("version", "2.0");
+      result.first->setTitle(json.object()["title"].toString());
+      result.first->setDescription(json.object()["description"].toString());
 
-      if (rss_type == QL1S("0.91") || rss_type == QL1S("0.92") || rss_type == QL1S("0.93")) {
-        result.first->setType(Type::Rss0X);
-      }
-      else {
-        result.first->setType(Type::Rss2X);
+      auto icon = json.object()["icon"].toString();
+
+      if (icon.isEmpty()) {
+        icon = json.object()["favicon"].toString();
       }
 
-      QDomElement channel_element = root_element.namedItem(QSL("channel")).toElement();
-
-      result.first->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
-      result.first->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
-      QString source_link = channel_element.namedItem(QSL("link")).toElement().text();
-
-      if (!source_link.isEmpty()) {
-        icon_possible_locations.prepend(source_link);
-      }
-    }
-    else if (root_tag_name == QL1S("feed")) {
-      // We found ATOM feed.
-      result.first->setType(Type::Atom10);
-      result.first->setTitle(root_element.namedItem(QSL("title")).toElement().text());
-      result.first->setDescription(root_element.namedItem(QSL("subtitle")).toElement().text());
-      QString source_link = root_element.namedItem(QSL("link")).toElement().text();
-
-      if (!source_link.isEmpty()) {
-        icon_possible_locations.prepend(source_link);
+      if (!icon.isEmpty()) {
+        icon_possible_locations.prepend(icon);
       }
     }
     else {
-      // File was downloaded and it really was XML file
-      // but feed format was NOT recognized.
-      result.second = QNetworkReply::UnknownContentError;
+      // Feed XML was obtained, now we need to try to guess
+      // its encoding before we can read further data.
+      QString xml_schema_encoding;
+      QString xml_contents_encoded;
+      QString enc = QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""),
+                                       QRegularExpression::PatternOption::CaseInsensitiveOption).match(feed_contents).captured(1);
+
+      if (!enc.isEmpty()) {
+        // Some "encoding" attribute was found get the encoding
+        // out of it.
+        xml_schema_encoding = enc;
+      }
+
+      QTextCodec* custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
+
+      if (custom_codec != nullptr) {
+        // Feed encoding was probably guessed.
+        xml_contents_encoded = custom_codec->toUnicode(feed_contents);
+        result.first->setEncoding(xml_schema_encoding);
+      }
+      else {
+        // Feed encoding probably not guessed, set it as
+        // default.
+        xml_contents_encoded = feed_contents;
+        result.first->setEncoding(DEFAULT_FEED_ENCODING);
+      }
+
+      // Feed XML was obtained, guess it now.
+      QDomDocument xml_document;
+      QString error_msg;
+      int error_line, error_column;
+
+      if (!xml_document.setContent(xml_contents_encoded,
+                                   &error_msg,
+                                   &error_line,
+                                   &error_column)) {
+        qDebugNN << LOGSEC_CORE
+                 << "XML of feed" << QUOTE_W_SPACE(url) << "is not valid and cannot be loaded. "
+                 << "Error:" << QUOTE_W_SPACE(error_msg) << "(line " << error_line
+                 << ", column " << error_column << ").";
+        result.second = QNetworkReply::UnknownContentError;
+
+        // XML is invalid, exit.
+        return result;
+      }
+
+      QDomElement root_element = xml_document.documentElement();
+      QString root_tag_name = root_element.tagName();
+
+      if (root_tag_name == QL1S("rdf:RDF")) {
+        // We found RDF feed.
+        QDomElement channel_element = root_element.namedItem(QSL("channel")).toElement();
+
+        result.first->setType(Type::Rdf);
+        result.first->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
+        result.first->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
+        QString source_link = channel_element.namedItem(QSL("link")).toElement().text();
+
+        if (!source_link.isEmpty()) {
+          icon_possible_locations.prepend(source_link);
+        }
+      }
+      else if (root_tag_name == QL1S("rss")) {
+        // We found RSS 0.91/0.92/0.93/2.0/2.0.1 feed.
+        QString rss_type = root_element.attribute("version", "2.0");
+
+        if (rss_type == QL1S("0.91") || rss_type == QL1S("0.92") || rss_type == QL1S("0.93")) {
+          result.first->setType(Type::Rss0X);
+        }
+        else {
+          result.first->setType(Type::Rss2X);
+        }
+
+        QDomElement channel_element = root_element.namedItem(QSL("channel")).toElement();
+
+        result.first->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
+        result.first->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
+        QString source_link = channel_element.namedItem(QSL("link")).toElement().text();
+
+        if (!source_link.isEmpty()) {
+          icon_possible_locations.prepend(source_link);
+        }
+      }
+      else if (root_tag_name == QL1S("feed")) {
+        // We found ATOM feed.
+        result.first->setType(Type::Atom10);
+        result.first->setTitle(root_element.namedItem(QSL("title")).toElement().text());
+        result.first->setDescription(root_element.namedItem(QSL("subtitle")).toElement().text());
+        QString source_link = root_element.namedItem(QSL("link")).toElement().text();
+
+        if (!source_link.isEmpty()) {
+          icon_possible_locations.prepend(source_link);
+        }
+      }
+      else {
+        // File was downloaded and it really was XML file
+        // but feed format was NOT recognized.
+        result.second = QNetworkReply::UnknownContentError;
+      }
     }
 
     // Try to obtain icon.
@@ -280,7 +309,7 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
 }
 
 Qt::ItemFlags StandardFeed::additionalFlags() const {
-  return Qt::ItemIsDragEnabled;
+  return Qt::ItemFlag::ItemIsDragEnabled;
 }
 
 bool StandardFeed::performDragDropChange(RootItem* target_item) {
@@ -457,6 +486,11 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
 
     case StandardFeed::Type::Atom10:
       messages = AtomParser(formatted_feed_contents).messages();
+      break;
+
+    case StandardFeed::Type::Json:
+      messages = JsonParser(formatted_feed_contents).messages();
+      break;
 
     default:
       break;

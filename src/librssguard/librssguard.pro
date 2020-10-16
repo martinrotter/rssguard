@@ -158,6 +158,7 @@ HEADERS += core/feeddownloader.h \
            services/standard/gui/formstandardcategorydetails.h \
            services/standard/gui/formstandardfeeddetails.h \
            services/standard/gui/formstandardimportexport.h \
+           services/standard/jsonparser.h \
            services/standard/rdfparser.h \
            services/standard/rssparser.h \
            services/standard/standardcategory.h \
@@ -302,6 +303,7 @@ SOURCES += core/feeddownloader.cpp \
            services/standard/gui/formstandardcategorydetails.cpp \
            services/standard/gui/formstandardfeeddetails.cpp \
            services/standard/gui/formstandardimportexport.cpp \
+           services/standard/jsonparser.cpp \
            services/standard/rdfparser.cpp \
            services/standard/rssparser.cpp \
            services/standard/standardcategory.cpp \

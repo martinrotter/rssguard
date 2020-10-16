@@ -315,6 +315,7 @@ void FormFeedDetails::initialize() {
   m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rdf), QVariant::fromValue(int(StandardFeed::Type::Rdf)));
   m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss0X), QVariant::fromValue(int(StandardFeed::Type::Rss0X)));
   m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss2X), QVariant::fromValue(int(StandardFeed::Type::Rss2X)));
+  m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Json), QVariant::fromValue(int(StandardFeed::Type::Json)));
 
   // Load available encodings.
   const QList<QByteArray> encodings = QTextCodec::availableCodecs();

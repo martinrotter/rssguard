@@ -62,15 +62,19 @@ void DiscoverFeedsButton::fillMenu() {
   menu()->clear();
 
   for (const ServiceRoot* root : qApp->feedReader()->feedsModel()->serviceRoots()) {
-    QMenu* root_menu = menu()->addMenu(root->icon(), root->title());
+    if (root->supportsFeedAdding()) {
+      QMenu* root_menu = menu()->addMenu(root->icon(), root->title());
 
-    for (const QString& url : m_addresses) {
-      if (root->supportsFeedAdding()) {
+      for (const QString& url : m_addresses) {
         QAction* url_action = root_menu->addAction(root->icon(), url);
 
         url_action->setProperty("url", url);
         url_action->setProperty("root", QVariant::fromValue((void*) root));
       }
     }
+  }
+
+  if (menu()->isEmpty()) {
+    menu()->addAction(tr("Feeds were detected, but no suitable accounts are configured."))->setEnabled(false);
   }
 }

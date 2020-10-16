@@ -24,7 +24,8 @@ class StandardFeed : public Feed {
       Rss0X = 0,
       Rss2X = 1,
       Rdf = 2,      // Sometimes denoted as RSS 1.0.
-      Atom10 = 3
+      Atom10 = 3,
+      Json = 4
     };
 
     // Constructors and destructors.

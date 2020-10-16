@@ -8,6 +8,7 @@
 
 #include "core/message.h"
 
+// Base class for all XML-based feed parsers.
 class FeedParser {
   public:
     explicit FeedParser(QString data);

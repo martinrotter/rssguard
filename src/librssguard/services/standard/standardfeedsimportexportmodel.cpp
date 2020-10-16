@@ -108,6 +108,10 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
               outline_feed.setAttribute(QSL("version"), QSL("ATOM"));
               break;
 
+            case StandardFeed::Type::Json:
+              outline_feed.setAttribute(QSL("version"), QSL("JSON"));
+              break;
+
             default:
               break;
           }
@@ -201,6 +205,9 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
 
               if (feed_type == QL1S("RSS1")) {
                 new_feed->setType(StandardFeed::Type::Rdf);
+              }
+              else if (feed_type == QL1S("JSON")) {
+                new_feed->setType(StandardFeed::Type::Json);
               }
               else if (feed_type == QL1S("ATOM")) {
                 new_feed->setType(StandardFeed::Type::Atom10);

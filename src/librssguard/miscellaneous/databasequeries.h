@@ -196,7 +196,8 @@ inline void DatabaseQueries::fillFeedData(StandardFeed* feed, const QSqlRecord& 
     case StandardFeed::Type::Atom10:
     case StandardFeed::Type::Rdf:
     case StandardFeed::Type::Rss0X:
-    case StandardFeed::Type::Rss2X: {
+    case StandardFeed::Type::Rss2X:
+    case StandardFeed::Type::Json: {
       feed->setType(type);
       break;
     }
