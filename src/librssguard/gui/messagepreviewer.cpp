@@ -47,7 +47,7 @@ void MessagePreviewer::createConnections() {
 
 MessagePreviewer::MessagePreviewer(QWidget* parent)
   : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)), m_verticalScrollBarPosition(0.0),
-  m_separator(nullptr), m_btnLabels(QList<QPair<QToolButton*, QAction*>>()) {
+  m_separator(nullptr), m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
 #if defined (USE_WEBENGINE)
   m_txtMessage = new WebBrowser(this);
 #else
@@ -112,6 +112,21 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
     }
 
     auto labels = m_root->getParentServiceRoot()->labelsNode()->labels();
+  }
+}
+
+void MessagePreviewer::switchLabel(bool assign) {
+  auto lbl = qobject_cast<LabelButton*>(sender())->label();
+
+  if (lbl == nullptr) {
+    return;
+  }
+
+  if (assign) {
+    lbl->assignToMessage(m_message);
+  }
+  else {
+    lbl->deassignFromMessage(m_message);
   }
 }
 
@@ -192,23 +207,34 @@ void MessagePreviewer::updateLabels(bool only_clear) {
 
   if (m_root.data() != nullptr) {
     m_separator = m_toolBar->addSeparator();
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
     for (auto* label : m_root.data()->getParentServiceRoot()->labelsNode()->labels()) {
-      QToolButton* btn_label = new QToolButton(this);
+      LabelButton* btn_label = new LabelButton(this);
 
+      btn_label->setLabel(label);
       btn_label->setCheckable(true);
       btn_label->setIcon(Label::generateIcon(label->color()));
       btn_label->setAutoRaise(false);
       btn_label->setText(label->title());
       btn_label->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
+      btn_label->setChecked(DatabaseQueries::isLabelAssignedToMessage(database, label, m_message));
 
       QAction* act_label = m_toolBar->addWidget(btn_label);
 
-      connect(act_label, &QAction::triggered, this, []() {
-        int a = 5;
-      });
+      connect(btn_label, &QToolButton::toggled, this, &MessagePreviewer::switchLabel);
 
-      m_btnLabels.append(QPair<QToolButton*, QAction*>(btn_label, act_label));
+      m_btnLabels.append({ btn_label, act_label });
     }
   }
+}
+
+LabelButton::LabelButton(QWidget* parent) : QToolButton(parent), m_label(nullptr) {}
+
+Label* LabelButton::label() const {
+  return m_label.data();
+}
+
+void LabelButton::setLabel(Label* label) {
+  m_label = label;
 }

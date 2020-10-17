@@ -31,6 +31,55 @@
 #include <QUrl>
 #include <QVariant>
 
+bool DatabaseQueries::isLabelAssignedToMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("SELECT COUNT(*) FROM LabelsInMessages WHERE label = :label AND message = :message AND account_id = :account_id;");
+  q.bindValue(QSL(":label"), label->customId());
+  q.bindValue(QSL(":message"), msg.m_customId);
+  q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
+
+  q.exec() && q.next();
+
+  return q.record().value(0).toInt() > 0;
+}
+
+bool DatabaseQueries::deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("DELETE FROM LabelsInMessages WHERE label = :label AND message = :message AND account_id = :account_id;");
+  q.bindValue(QSL(":label"), label->customId());
+  q.bindValue(QSL(":message"), msg.m_customId);
+  q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
+
+  return q.exec();
+}
+
+bool DatabaseQueries::assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("DELETE FROM LabelsInMessages WHERE label = :label AND message = :message AND account_id = :account_id;");
+  q.bindValue(QSL(":label"), label->customId());
+  q.bindValue(QSL(":message"), msg.m_customId);
+  q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
+
+  auto succ = q.exec();
+
+  if (succ) {
+    q.prepare("INSERT INTO LabelsInMessages (label, message, account_id) VALUES (:label, :message, :account_id);");
+    q.bindValue(QSL(":label"), label->customId());
+    q.bindValue(QSL(":message"), msg.m_customId);
+    q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
+
+    succ = q.exec();
+  }
+
+  return succ;
+}
+
 QList<Label*> DatabaseQueries::getLabels(const QSqlDatabase& db, int account_id) {
   QList<Label*> labels;
   QSqlQuery q(db);
@@ -104,6 +153,10 @@ bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
 
   if (res && q.lastInsertId().isValid()) {
     label->setId(q.lastInsertId().toInt());
+
+    // NOTE: This custom ID in this object will be probably
+    // overwritten in online-synchronized labels.
+    label->setCustomId(QString::number(label->id()));
   }
 
   // Fixup missing custom IDs.

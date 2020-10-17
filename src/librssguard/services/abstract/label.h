@@ -29,6 +29,10 @@ class Label : public RootItem {
     virtual void updateCounts(bool including_total_count);
     static QIcon generateIcon(const QColor& color);
 
+  public slots:
+    void assignToMessage(const Message& msg);
+    void deassignFromMessage(const Message& msg);
+
   private:
     QColor m_color;
     int m_totalCount{};

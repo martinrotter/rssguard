@@ -95,6 +95,24 @@ QIcon Label::generateIcon(const QColor& color) {
   return pxm;
 }
 
+void Label::assignToMessage(const Message& msg) {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  DatabaseQueries::assignLabelToMessage(database, this, msg);
+
+  updateCounts(true);
+  getParentServiceRoot()->itemChanged({ this });
+}
+
+void Label::deassignFromMessage(const Message& msg) {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  DatabaseQueries::deassignLabelFromMessage(database, this, msg);
+
+  updateCounts(true);
+  getParentServiceRoot()->itemChanged({ this });
+}
+
 void Label::setCountOfAllMessages(int totalCount) {
   m_totalCount = totalCount;
 }
