@@ -10,6 +10,7 @@
 
 #include <QPainter>
 #include <QPainterPath>
+#include <QThread>
 
 Label::Label(const QString& name, const QColor& color, RootItem* parent_item) : Label(parent_item) {
   setColor(color);
@@ -71,7 +72,10 @@ bool Label::deleteViaGui() {
 }
 
 void Label::updateCounts(bool including_total_count) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  bool is_main_thread = QThread::currentThread() == qApp->thread();
+  QSqlDatabase database = is_main_thread ?
+                          qApp->database()->connection(metaObject()->className()) :
+                          qApp->database()->connection(QSL("feed_upd"));
   int account_id = getParentServiceRoot()->accountId();
 
   if (including_total_count) {

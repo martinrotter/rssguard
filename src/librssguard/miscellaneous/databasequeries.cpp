@@ -80,6 +80,35 @@ bool DatabaseQueries::assignLabelToMessage(const QSqlDatabase& db, Label* label,
   return succ;
 }
 
+bool DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM LabelsInMessages WHERE message = :message AND account_id = :account_id"));
+  q.bindValue(QSL(":account_id"), msg.m_accountId);
+  q.bindValue(QSL(":message"), msg.m_customId.isEmpty() ? QString::number(msg.m_id) : msg.m_customId);
+
+  auto succ = q.exec();
+
+  if (!succ) {
+    return false;
+  }
+
+  q.prepare(QSL("INSERT INTO LabelsInMessages (message, label, account_id) VALUES (:message, :label, :account_id);"));
+
+  for (const Label* label : labels) {
+    q.bindValue(QSL(":account_id"), msg.m_accountId);
+    q.bindValue(QSL(":message"), msg.m_customId.isEmpty() ? QString::number(msg.m_id) : msg.m_customId);
+    q.bindValue(QSL(":label"), label->customId());
+
+    if (!q.exec()) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 QList<Label*> DatabaseQueries::getLabels(const QSqlDatabase& db, int account_id) {
   QList<Label*> labels;
   QSqlQuery q(db);
@@ -912,6 +941,10 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
         updated_messages++;
 
+        if (query_insert.lastInsertId().isValid()) {
+          id_existing_message = query_insert.lastInsertId().toInt();
+        }
+
         qDebugNN << LOGSEC_DB
                  << "Adding new message with title '"
                  << message.m_title
@@ -929,6 +962,25 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       }
 
       query_insert.finish();
+    }
+
+    // Update labels assigned to message.
+    if (!message.m_assignedLabels.isEmpty()) {
+      // NOTE: This message provides list of its labels from remote
+      // source, which means they must replace local labels.
+      if (!message.m_customId.isEmpty()) {
+        setLabelsForMessage(db, message.m_assignedLabels, message);
+      }
+      else if (id_existing_message >= 0) {
+        message.m_id = id_existing_message;
+        setLabelsForMessage(db, message.m_assignedLabels, message);
+      }
+      else {
+        qWarningNN << LOGSEC_DB
+                   << "Cannot set labels for message"
+                   << QUOTE_W_SPACE(message.m_title)
+                   << "because we don't have ID or custom ID.";
+      }
     }
   }
 

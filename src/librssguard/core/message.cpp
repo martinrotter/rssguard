@@ -3,6 +3,7 @@
 #include "core/message.h"
 
 #include "miscellaneous/textfactory.h"
+#include "services/abstract/label.h"
 
 #include <QDebug>
 #include <QSqlDatabase>
@@ -61,6 +62,7 @@ Message::Message() {
   m_enclosures = QList<Enclosure>();
   m_accountId = m_id = 0;
   m_isRead = m_isImportant = false;
+  m_assignedLabels = QList<Label*>();
 }
 
 Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {

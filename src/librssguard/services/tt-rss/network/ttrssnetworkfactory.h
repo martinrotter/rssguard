@@ -59,12 +59,14 @@ class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
     RootItem* feedsCategories(bool obtain_icons, QString base_address = QString()) const;
 };
 
+class ServiceRoot;
+
 class TtRssGetHeadlinesResponse : public TtRssResponse {
   public:
     explicit TtRssGetHeadlinesResponse(const QString& raw_content = QString());
     virtual ~TtRssGetHeadlinesResponse();
 
-    QList<Message> messages() const;
+    QList<Message> messages(ServiceRoot* root) const;
 };
 
 class TtRssUpdateArticleResponse : public TtRssResponse {

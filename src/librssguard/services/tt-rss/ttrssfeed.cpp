@@ -87,7 +87,7 @@ QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
       return QList<Message>();
     }
     else {
-      QList<Message> new_messages = headlines.messages();
+      QList<Message> new_messages = headlines.messages(getParentServiceRoot());
 
       messages.append(new_messages);
       newly_added_messages = new_messages.size();

@@ -22,6 +22,7 @@ class DatabaseQueries {
     static bool isLabelAssignedToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static bool deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static bool assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
+    static bool setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
     static QList<Label*> getLabels(const QSqlDatabase& db, int account_id);
     static bool updateLabel(const QSqlDatabase& db, Label* label);
     static bool deleteLabel(const QSqlDatabase& db, Label* label);

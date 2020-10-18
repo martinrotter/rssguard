@@ -11,6 +11,7 @@
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/importantnode.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 
@@ -226,6 +227,11 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
       if (getParentServiceRoot()->importantNode() != nullptr && anything_updated) {
         getParentServiceRoot()->importantNode()->updateCounts(true);
         items_to_update.append(getParentServiceRoot()->importantNode());
+      }
+
+      if (getParentServiceRoot()->labelsNode() != nullptr) {
+        getParentServiceRoot()->labelsNode()->updateCounts(true);
+        items_to_update.append(getParentServiceRoot()->labelsNode());
       }
     }
   }

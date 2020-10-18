@@ -28,6 +28,8 @@ class Enclosures {
     static QString encodeEnclosuresToString(const QList<Enclosure>& enclosures);
 };
 
+class Label;
+
 // Represents single message.
 class Message {
   public:
@@ -51,6 +53,9 @@ class Message {
     bool m_isRead;
     bool m_isImportant;
     QList<Enclosure> m_enclosures;
+
+    // List of custom IDs of labels assigned to this message.
+    QList<Label*> m_assignedLabels;
 
     // Is true if "created" date was obtained directly
     // from the feed, otherwise is false

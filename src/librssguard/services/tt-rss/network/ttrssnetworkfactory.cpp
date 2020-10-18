@@ -2,6 +2,7 @@
 
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -9,7 +10,9 @@
 #include "network-web/networkfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/rootitem.h"
+#include "services/abstract/serviceroot.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssfeed.h"
 
@@ -626,7 +629,7 @@ TtRssGetHeadlinesResponse::TtRssGetHeadlinesResponse(const QString& raw_content)
 
 TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() = default;
 
-QList<Message> TtRssGetHeadlinesResponse::messages() const {
+QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
   QList<Message> messages;
 
   for (const QJsonValue& item : m_rawContent["content"].toArray()) {
@@ -637,6 +640,23 @@ QList<Message> TtRssGetHeadlinesResponse::messages() const {
     message.m_isRead = !mapped["unread"].toBool();
     message.m_isImportant = mapped["marked"].toBool();
     message.m_contents = mapped["content"].toString();
+
+    auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
+
+    for (const QJsonValue& lbl_val : mapped["labels"].toArray()) {
+      QString lbl_custom_id = QString::number(lbl_val.toArray().at(0).toInt());
+      Label* label = boolinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([lbl_custom_id](Label* lbl) {
+        return lbl->customId() == lbl_custom_id;
+      });
+
+      if (label != nullptr) {
+        message.m_assignedLabels.append(label);
+      }
+      else {
+        qWarningNN << LOGSEC_TTRSS << "Label with custom ID" << QUOTE_W_SPACE(lbl_custom_id)
+                   << "was not found. Maybe you need to perform sync-in to download it from server.";
+      }
+    }
 
     // Multiply by 1000 because Tiny Tiny RSS API does not include miliseconds in Unix
     // date/time number.
