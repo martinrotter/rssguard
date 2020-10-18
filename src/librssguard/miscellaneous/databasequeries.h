@@ -47,6 +47,11 @@ class DatabaseQueries {
     static bool purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id);
     static bool purgeLeftoverMessages(const QSqlDatabase& db, int account_id);
 
+    // Purges message/label assignments where source message or label does not exist.
+    // If account ID smaller than 0 is passed, then do this for all accounts.
+    static bool purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id = -1);
+    static bool purgeLabelsAndLabelAssignments(const QSqlDatabase& db, int account_id);
+
     // Counts of unread/all messages.
     static QMap<QString, QPair<int, int>> getMessageCountsForCategory(const QSqlDatabase& db, const QString& custom_id,
                                                                       int account_id, bool only_total_counts,

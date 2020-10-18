@@ -7,6 +7,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/label.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 
@@ -14,7 +15,7 @@
 
 RootItem::RootItem(RootItem* parent_item)
   : QObject(nullptr), m_kind(RootItem::Kind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QL1S("")),
-  m_title(QString()), m_description(QString()), m_keepOnTop(false), m_parentItem(parent_item) {}
+  m_title(QString()), m_description(QString()), m_keepOnTop(false), m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
 
 RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setTitle(other.title());
@@ -477,6 +478,10 @@ Category* RootItem::toCategory() const {
 
 Feed* RootItem::toFeed() const {
   return dynamic_cast<Feed*>(const_cast<RootItem*>(this));
+}
+
+Label* RootItem::toLabel() const {
+  return dynamic_cast<Label*>(const_cast<RootItem*>(this));
 }
 
 ServiceRoot* RootItem::toServiceRoot() const {

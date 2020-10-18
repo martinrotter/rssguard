@@ -152,7 +152,7 @@ void MessagesView::setupAppearance() {
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
   header()->setCascadingSectionResizes(false);
-  header()->setStretchLastSection(true);
+  header()->setStretchLastSection(false);
 }
 
 void MessagesView::focusInEvent(QFocusEvent* event) {

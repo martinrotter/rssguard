@@ -10,6 +10,7 @@
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/importantnode.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/formeditttrssaccount.h"
@@ -36,7 +37,7 @@ void TtRssServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
   loadCacheFromFile(accountId());
 
-  if (childCount() <= 2) {
+  if (childCount() <= 3) {
     syncIn();
   }
 }
@@ -222,10 +223,17 @@ void TtRssServiceRoot::updateTitle() {
 }
 
 RootItem* TtRssServiceRoot::obtainNewTreeForSyncIn() const {
-  TtRssGetFeedsCategoriesResponse feed_cats_response = m_network->getFeedsCategories();
+  TtRssGetFeedsCategoriesResponse feed_cats = m_network->getFeedsCategories();
+  TtRssGetLabelsResponse labels = m_network->getLabels();
 
   if (m_network->lastError() == QNetworkReply::NoError) {
-    return feed_cats_response.feedsCategories(true, m_network->url());
+    auto* tree = feed_cats.feedsCategories(true, m_network->url());
+    auto* lblroot = new LabelsNode(tree);
+
+    lblroot->setChildItems(labels.labels());
+    tree->appendChild(lblroot);
+
+    return tree;
   }
   else {
     return nullptr;

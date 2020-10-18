@@ -141,8 +141,8 @@ void ServiceRoot::updateCounts(bool including_total_count) {
 
 void ServiceRoot::completelyRemoveAllData() {
   // Purge old data from SQL and clean all model items.
-  removeOldAccountFromDatabase(true);
   cleanAllItemsFromModel();
+  removeOldAccountFromDatabase(true);
   updateCounts(true);
   itemChanged(QList<RootItem*>() << this);
   requestReloadMessageList(true);
@@ -156,8 +156,16 @@ void ServiceRoot::removeOldAccountFromDatabase(bool including_messages) {
 
 void ServiceRoot::cleanAllItemsFromModel() {
   for (RootItem* top_level_item : childItems()) {
-    if (top_level_item->kind() != RootItem::Kind::Bin && top_level_item->kind() != RootItem::Kind::Important) {
+    if (top_level_item->kind() != RootItem::Kind::Bin &&
+        top_level_item->kind() != RootItem::Kind::Important &&
+        top_level_item->kind() != RootItem::Kind::Labels) {
       requestItemRemoval(top_level_item);
+    }
+  }
+
+  if (labelsNode() != nullptr) {
+    for (RootItem* lbl : labelsNode()->childItems()) {
+      requestItemRemoval(lbl);
     }
   }
 }
@@ -199,23 +207,6 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
 
 void ServiceRoot::storeNewFeedTree(RootItem* root) {
   DatabaseQueries::storeAccountTree(qApp->database()->connection(metaObject()->className()), root, accountId());
-
-  /*if (DatabaseQueries::storeAccountTree(database, root, accountId())) {
-     RecycleBin* bin = recycleBin();
-
-     if (bin != nullptr && !childItems().contains(bin)) {
-      // As the last item, add recycle bin, which is needed.
-      appendChild(bin);
-      bin->updateCounts(true);
-     }
-
-     ImportantNode* imp = importantNode();
-
-     if (imp != nullptr && !childItems().contains(imp)) {
-      appendChild(imp);
-      imp->updateCounts(true);
-     }
-     }*/
 }
 
 void ServiceRoot::removeLeftOverMessages() {
@@ -228,6 +219,12 @@ void ServiceRoot::removeLeftOverMessageFilterAssignments() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   DatabaseQueries::purgeLeftoverMessageFilterAssignments(database, accountId());
+}
+
+void ServiceRoot::removeLeftOverMessageLabelAssignments() {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  DatabaseQueries::purgeLeftoverLabelAssignments(database, accountId());
 }
 
 QList<Message> ServiceRoot::undeletedMessages() const {
@@ -345,10 +342,22 @@ void ServiceRoot::syncIn() {
     // so remove left over messages and filter assignments.
     removeLeftOverMessages();
     removeLeftOverMessageFilterAssignments();
+    removeLeftOverMessageLabelAssignments();
 
     for (RootItem* top_level_item : new_tree->childItems()) {
-      top_level_item->setParent(nullptr);
-      requestItemReassignment(top_level_item, this);
+      if (top_level_item->kind() != Kind::Labels) {
+        top_level_item->setParent(nullptr);
+        requestItemReassignment(top_level_item, this);
+      }
+      else {
+        // It seems that some labels got synced-in.
+        if (labelsNode() != nullptr) {
+          for (RootItem* new_lbl : top_level_item->childItems()) {
+            new_lbl->setParent(nullptr);
+            requestItemReassignment(new_lbl, labelsNode());
+          }
+        }
+      }
     }
 
     new_tree->clearChildren();

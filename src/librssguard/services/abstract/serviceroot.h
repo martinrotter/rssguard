@@ -191,6 +191,11 @@ class ServiceRoot : public RootItem {
     // from another machine and then performs sync-in on this machine.
     void removeLeftOverMessageFilterAssignments();
 
+    // Removes all labels/message assignments which are
+    // assigned to non-existing messages or which are
+    // assigned from non-existing labels.
+    void removeLeftOverMessageLabelAssignments();
+
     QStringList textualFeedUrls(const QList<Feed*>& feeds) const;
     QStringList textualFeedIds(const QList<Feed*>& feeds) const;
     QStringList customIDsOfMessages(const QList<ImportanceChange>& changes);

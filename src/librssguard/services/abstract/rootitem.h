@@ -11,6 +11,7 @@
 
 class Category;
 class Feed;
+class Label;
 class ServiceRoot;
 class QAction;
 
@@ -173,6 +174,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // Converters
     Category* toCategory() const;
     Feed* toFeed() const;
+    Label* toLabel() const;
     ServiceRoot* toServiceRoot() const;
 
     bool keepOnTop() const;

@@ -8,6 +8,7 @@
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/category.h"
+#include "services/abstract/label.h"
 #include "services/abstract/rootitem.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssfeed.h"
@@ -148,6 +149,47 @@ TtRssResponse TtRssNetworkFactory::logout() {
     m_lastError = QNetworkReply::NoError;
     return TtRssResponse();
   }
+}
+
+TtRssGetLabelsResponse TtRssNetworkFactory::getLabels() {
+  QJsonObject json;
+
+  json["op"] = QSL("getLabels");
+  json["sid"] = m_sessionId;
+
+  const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray result_raw;
+  QList<QPair<QByteArray, QByteArray>> headers;
+
+  headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
+  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+
+  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout,
+                                                                        QJsonDocument(json).toJson(QJsonDocument::Compact),
+                                                                        result_raw,
+                                                                        QNetworkAccessManager::PostOperation,
+                                                                        headers);
+  TtRssGetLabelsResponse result(QString::fromUtf8(result_raw));
+
+  if (result.isNotLoggedIn()) {
+    // We are not logged in.
+    login();
+    json["sid"] = m_sessionId;
+    network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
+                                                            result_raw,
+                                                            QNetworkAccessManager::PostOperation,
+                                                            headers);
+    result = TtRssGetLabelsResponse(QString::fromUtf8(result_raw));
+  }
+
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarningNN << LOGSEC_TTRSS
+               << "getLabels failed with error:"
+               << QUOTE_W_SPACE_DOT(network_reply.first);
+  }
+
+  m_lastError = network_reply.first;
+  return result;
 }
 
 TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
@@ -497,6 +539,7 @@ bool TtRssResponse::hasError() const {
 TtRssGetFeedsCategoriesResponse::TtRssGetFeedsCategoriesResponse(const QString& raw_content) : TtRssResponse(raw_content) {}
 
 TtRssGetFeedsCategoriesResponse::~TtRssGetFeedsCategoriesResponse() = default;
+
 RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QString base_address) const {
   auto* parent = new RootItem();
 
@@ -674,4 +717,20 @@ QString TtRssUnsubscribeFeedResponse::code() const {
   }
 
   return QString();
+}
+
+TtRssGetLabelsResponse::TtRssGetLabelsResponse(const QString& raw_content) : TtRssResponse(raw_content) {}
+
+QList<RootItem*> TtRssGetLabelsResponse::labels() const {
+  QList<RootItem*> labels;
+
+  for (const QJsonValue& lbl_val : m_rawContent["content"].toArray()) {
+    QJsonObject lbl_obj = lbl_val.toObject();
+    Label* lbl = new Label(lbl_obj["caption"].toString(), QColor(lbl_obj["fg_color"].toString()));
+
+    lbl->setCustomId(QString::number(lbl_obj["id"].toInt()));
+    labels.append(lbl);
+  }
+
+  return labels;
 }

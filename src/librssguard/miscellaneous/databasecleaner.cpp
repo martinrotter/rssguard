@@ -60,6 +60,8 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders& which_data) {
     emit purgeProgress(progress, tr("Starred messages purged..."));
   }
 
+  result &= DatabaseQueries::purgeLeftoverLabelAssignments(database);
+
   if (which_data.m_shrinkDatabase) {
     progress += difference;
     emit purgeProgress(progress, tr("Shrinking database file..."));

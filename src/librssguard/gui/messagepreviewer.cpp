@@ -205,7 +205,7 @@ void MessagePreviewer::updateLabels(bool only_clear) {
     return;
   }
 
-  if (m_root.data() != nullptr) {
+  if (m_root.data() != nullptr && m_root.data()->getParentServiceRoot()->labelsNode()->labels().size() > 0) {
     m_separator = m_toolBar->addSeparator();
     QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
@@ -216,7 +216,7 @@ void MessagePreviewer::updateLabels(bool only_clear) {
       btn_label->setCheckable(true);
       btn_label->setIcon(Label::generateIcon(label->color()));
       btn_label->setAutoRaise(false);
-      btn_label->setText(label->title());
+      btn_label->setText(QSL(" ") + label->title());
       btn_label->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
       btn_label->setChecked(DatabaseQueries::isLabelAssignedToMessage(database, label, m_message));
 

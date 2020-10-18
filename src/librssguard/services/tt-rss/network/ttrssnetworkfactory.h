@@ -11,8 +11,8 @@
 #include <QString>
 
 class RootItem;
-
 class TtRssFeed;
+class Label;
 
 class TtRssResponse {
   public:
@@ -39,6 +39,13 @@ class TtRssLoginResponse : public TtRssResponse {
 
     int apiLevel() const;
     QString sessionId() const;
+};
+
+class TtRssGetLabelsResponse : public TtRssResponse {
+  public:
+    explicit TtRssGetLabelsResponse(const QString& raw_content = QString());
+
+    QList<RootItem*> labels() const;
 };
 
 class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
@@ -138,6 +145,9 @@ class TtRssNetworkFactory {
 
     // Logs user out.
     TtRssResponse logout();
+
+    // Gets list of labels from the server.
+    TtRssGetLabelsResponse getLabels();
 
     // Gets feeds from the server.
     TtRssGetFeedsCategoriesResponse getFeedsCategories();

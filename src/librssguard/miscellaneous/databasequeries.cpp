@@ -156,7 +156,9 @@ bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
 
     // NOTE: This custom ID in this object will be probably
     // overwritten in online-synchronized labels.
-    label->setCustomId(QString::number(label->id()));
+    if (label->customId().isEmpty()) {
+      label->setCustomId(QString::number(label->id()));
+    }
   }
 
   // Fixup missing custom IDs.
@@ -988,7 +990,9 @@ bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, int account_id) {
           << QSL("DELETE FROM Feeds WHERE account_id = :account_id;")
           << QSL("DELETE FROM Categories WHERE account_id = :account_id;")
           << QSL("DELETE FROM MessageFiltersInFeeds WHERE account_id = :account_id;")
-          << QSL("DELETE FROM Accounts WHERE id = :account_id;");
+          << QSL("DELETE FROM Accounts WHERE id = :account_id;")
+          << QSL("DELETE FROM LabelsInMessages WHERE account_id = :account_id;")
+          << QSL("DELETE FROM Labels WHERE account_id = :account_id;");
 
   for (const QString& q : queries) {
     query.prepare(q);
@@ -1026,6 +1030,17 @@ bool DatabaseQueries::deleteAccountData(const QSqlDatabase& db, int account_id, 
   result &= q.exec();
 
   q.prepare(QSL("DELETE FROM Categories WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+  result &= q.exec();
+
+  if (delete_messages_too) {
+    // If we delete message, make sure to delete message/label assignments too.
+    q.prepare(QSL("DELETE FROM LabelsInMessages WHERE account_id = :account_id;"));
+    q.bindValue(QSL(":account_id"), account_id);
+    result &= q.exec();
+  }
+
+  q.prepare(QSL("DELETE FROM Labels WHERE account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
   result &= q.exec();
 
@@ -1118,8 +1133,8 @@ bool DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(
-    QSL("DELETE FROM Messages WHERE account_id = :account_id AND feed NOT IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id);"));
+  q.prepare(QSL("DELETE FROM Messages "
+                "WHERE account_id = :account_id AND feed NOT IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id);"));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
@@ -1132,6 +1147,52 @@ bool DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
   else {
     return true;
   }
+}
+
+bool DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id) {
+  QSqlQuery q(db);
+  bool succ = false;
+
+  if (account_id <= 0) {
+    succ = q.exec(QSL("DELETE FROM LabelsInMessages "
+                      "WHERE NOT EXISTS (SELECT * FROM Messages WHERE Messages.account_id = LabelsInMessages.account_id AND Messages.custom_id = LabelsInMessages.message);"))
+           &&
+           q.exec(QSL("DELETE FROM LabelsInMessages "
+                      "WHERE NOT EXISTS (SELECT * FROM Labels WHERE Labels.account_id = LabelsInMessages.account_id AND Labels.custom_id = LabelsInMessages.label);"));
+  }
+  else {
+    q.prepare(QSL("DELETE FROM LabelsInMessages "
+                  "WHERE account_id = :account_id AND "
+                  "      (message NOT IN (SELECT custom_id FROM Messages WHERE account_id = :account_id) OR "
+                  "       label NOT IN (SELECT custom_id FROM Labels WHERE account_id = :account_id));"));
+    q.bindValue(QSL(":account_id"), account_id);
+    succ = q.exec();
+  }
+
+  if (!succ) {
+    auto xx = q.lastError().text();
+
+    qWarningNN << LOGSEC_DB
+               << "Removing of leftover label assignments failed: '"
+               << q.lastError().text()
+               << "'.";
+  }
+
+  return succ;
+}
+
+bool DatabaseQueries::purgeLabelsAndLabelAssignments(const QSqlDatabase& db, int account_id) {
+  QSqlQuery q(db);
+
+  q.prepare(QSL("DELETE FROM LabelsInMessages WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+  auto succ = q.exec();
+
+  q.prepare(QSL("DELETE FROM Labels WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+  succ &= q.exec();
+
+  return succ;
 }
 
 bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id) {
@@ -1177,6 +1238,16 @@ bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
       }
       else {
         return false;
+      }
+    }
+    else if (child->kind() == RootItem::Kind::Labels) {
+      // Add all labels.
+      for (RootItem* lbl : child->childItems()) {
+        Label* label = lbl->toLabel();
+
+        if (!createLabel(db, label, account_id)) {
+          return false;
+        }
       }
     }
   }
