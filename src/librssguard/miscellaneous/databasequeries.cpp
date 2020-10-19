@@ -1116,6 +1116,45 @@ bool DatabaseQueries::deleteAccountData(const QSqlDatabase& db, int account_id, 
   return result;
 }
 
+bool DatabaseQueries::cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+
+  if (clean_read_only) {
+    q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
+                  "WHERE "
+                  "    is_deleted = 0 AND "
+                  "    is_pdeleted = 0 AND "
+                  "    is_read = 1 AND "
+                  "    account_id = :account_id AND "
+                  "    EXISTS (SELECT * FROM LabelsInMessages WHERE LabelsInMessages.label = :label AND Messages.account_id = LabelsInMessages.account_id AND Messages.custom_id = LabelsInMessages.message);"));
+  }
+  else {
+    q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
+                  "WHERE "
+                  "    is_deleted = 0 AND "
+                  "    is_pdeleted = 0 AND "
+                  "    account_id = :account_id AND "
+                  "    EXISTS (SELECT * FROM LabelsInMessages WHERE LabelsInMessages.label = :label AND Messages.account_id = LabelsInMessages.account_id AND Messages.custom_id = LabelsInMessages.message);"));
+  }
+
+  q.bindValue(QSL(":deleted"), 1);
+  q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
+  q.bindValue(QSL(":label"), label->customId());
+
+  if (!q.exec()) {
+    qWarningNN << LOGSEC_DB
+               << "Cleaning of labelled messages failed: '"
+               << q.lastError().text()
+               << "'.";
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
 bool DatabaseQueries::cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id) {
   QSqlQuery q(db);
 

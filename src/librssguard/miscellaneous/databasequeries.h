@@ -93,6 +93,7 @@ class DatabaseQueries {
                               int account_id, const QString& url, bool* any_message_changed, bool* ok = nullptr);
     static bool deleteAccount(const QSqlDatabase& db, int account_id);
     static bool deleteAccountData(const QSqlDatabase& db, int account_id, bool delete_messages_too);
+    static bool cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label);
     static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static bool cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
     static bool storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id);

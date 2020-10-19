@@ -20,6 +20,7 @@ class Label : public RootItem {
     void setCountOfAllMessages(int totalCount);
     void setCountOfUnreadMessages(int unreadCount);
 
+    virtual bool cleanMessages(bool clear_only_read);
     virtual bool markAsReadUnread(ReadStatus status);
     virtual int countOfAllMessages() const;
     virtual int countOfUnreadMessages() const;

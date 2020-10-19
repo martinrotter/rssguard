@@ -7,6 +7,7 @@
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/databasequeries.h"
 #include "services/abstract/cacheforserviceroot.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QPainter>
@@ -124,6 +125,21 @@ void Label::setCountOfAllMessages(int totalCount) {
 
 void Label::setCountOfUnreadMessages(int unreadCount) {
   m_unreadCount = unreadCount;
+}
+
+bool Label::cleanMessages(bool clear_only_read) {
+  ServiceRoot* service = getParentServiceRoot();
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  if (DatabaseQueries::cleanLabelledMessages(database, clear_only_read, this)) {
+    service->updateCounts(true);
+    service->itemChanged(service->getSubTree());
+    service->requestReloadMessageList(true);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 bool Label::markAsReadUnread(RootItem::ReadStatus status) {
