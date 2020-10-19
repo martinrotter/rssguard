@@ -106,7 +106,9 @@ void ServiceRoot::updateCounts(bool including_total_count) {
     if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }
-    else if (child->kind() != RootItem::Kind::Category && child->kind() != RootItem::Kind::ServiceRoot) {
+    else if (child->kind() != RootItem::Kind::Labels &&
+             child->kind() != RootItem::Kind::Category &&
+             child->kind() != RootItem::Kind::ServiceRoot) {
       child->updateCounts(including_total_count);
     }
   }
@@ -400,12 +402,20 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
     QStringList list;
 
     switch (item->kind()) {
+      case RootItem::Kind::Labels:
       case RootItem::Kind::Category: {
         for (RootItem* child : item->childItems()) {
           list.append(customIDSOfMessagesForItem(child));
         }
 
         return list;
+      }
+
+      case RootItem::Kind::Label: {
+        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+        list = DatabaseQueries::customIdsOfMessagesFromLabel(database, item->toLabel());
+        break;
       }
 
       case RootItem::Kind::ServiceRoot: {

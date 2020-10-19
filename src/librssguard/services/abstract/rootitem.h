@@ -86,6 +86,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // This method should "clean" all messages it contains.
     // What "clean" means? It means delete messages -> move them to recycle bin
     // or eventually remove them completely if there is no recycle bin functionality.
+    //
     // If this method is called on "recycle bin" instance of your
     // service account, it should "empty" the recycle bin.
     virtual bool cleanMessages(bool clear_only_read);

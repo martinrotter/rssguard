@@ -196,6 +196,23 @@ bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
   return q.exec() && res;
 }
 
+bool DatabaseQueries::markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("UPDATE Messages SET is_read = :read "
+            "WHERE "
+            "    is_deleted = 0 AND "
+            "    is_pdeleted = 0 AND "
+            "    account_id = :account_id AND "
+            "    EXISTS (SELECT * FROM LabelsInMessages WHERE LabelsInMessages.label = :label AND Messages.account_id = LabelsInMessages.account_id AND Messages.custom_id = LabelsInMessages.message);");
+  q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
+  q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
+  q.bindValue(QSL(":label"), label->customId());
+
+  return q.exec();
+}
+
 bool DatabaseQueries::markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 
@@ -1314,6 +1331,34 @@ QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
+
+  if (ok != nullptr) {
+    *ok = q.exec();
+  }
+  else {
+    q.exec();
+  }
+
+  while (q.next()) {
+    ids.append(q.value(0).toString());
+  }
+
+  return ids;
+}
+
+QStringList DatabaseQueries::customIdsOfMessagesFromLabel(const QSqlDatabase& db, Label* label, bool* ok) {
+  QSqlQuery q(db);
+  QStringList ids;
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT custom_id FROM Messages "
+                "WHERE "
+                "    is_deleted = 0 AND "
+                "    is_pdeleted = 0 AND "
+                "    account_id = :account_id AND "
+                "    EXISTS (SELECT * FROM LabelsInMessages WHERE LabelsInMessages.label = :label AND Messages.account_id = LabelsInMessages.account_id AND Messages.custom_id = LabelsInMessages.message);"));
+  q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
+  q.bindValue(QSL(":label"), label->customId());
 
   if (ok != nullptr) {
     *ok = q.exec();

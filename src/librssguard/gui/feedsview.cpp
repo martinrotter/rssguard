@@ -673,6 +673,8 @@ QMenu* FeedsView::initializeContextMenuLabel(RootItem* clicked_item) {
   }
   else {
     m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionEditSelectedItem);
+    m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead);
+    m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
     m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
   }
 

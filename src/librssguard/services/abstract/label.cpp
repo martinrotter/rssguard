@@ -6,6 +6,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/databasequeries.h"
+#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QPainter>
@@ -123,4 +124,25 @@ void Label::setCountOfAllMessages(int totalCount) {
 
 void Label::setCountOfUnreadMessages(int unreadCount) {
   m_unreadCount = unreadCount;
+}
+
+bool Label::markAsReadUnread(RootItem::ReadStatus status) {
+  ServiceRoot* service = getParentServiceRoot();
+  auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
+
+  if (cache != nullptr) {
+    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this), status);
+  }
+
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  if (DatabaseQueries::markLabelledMessagesReadUnread(database, this, status)) {
+    service->updateCounts(true);
+    service->itemChanged(getSubTree());
+    service->requestReloadMessageList(status == RootItem::ReadStatus::Read);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
