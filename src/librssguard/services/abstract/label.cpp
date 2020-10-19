@@ -153,8 +153,8 @@ bool Label::markAsReadUnread(RootItem::ReadStatus status) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::markLabelledMessagesReadUnread(database, this, status)) {
-    service->updateCounts(true);
-    service->itemChanged(getSubTree());
+    service->updateCounts(false);
+    service->itemChanged(service->getSubTree());
     service->requestReloadMessageList(status == RootItem::ReadStatus::Read);
     return true;
   }

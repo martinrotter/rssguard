@@ -45,7 +45,7 @@ bool ImportantNode::cleanMessages(bool clean_read_only) {
 
   if (DatabaseQueries::cleanImportantMessages(database, clean_read_only, service->accountId())) {
     service->updateCounts(true);
-    service->itemChanged(getSubTree());
+    service->itemChanged(service->getSubTree());
     service->requestReloadMessageList(true);
     return true;
   }
@@ -65,8 +65,8 @@ bool ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::markImportantMessagesReadUnread(database, service->accountId(), status)) {
-    service->updateCounts(true);
-    service->itemChanged(getSubTree());
+    service->updateCounts(false);
+    service->itemChanged(service->getSubTree());
     service->requestReloadMessageList(status == RootItem::ReadStatus::Read);
     return true;
   }

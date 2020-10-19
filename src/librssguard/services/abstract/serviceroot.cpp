@@ -176,30 +176,9 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::cleanFeeds(database, textualFeedIds(items), clean_read_only, accountId())) {
-    // Messages are cleared, now inform model about need to reload data.
-    QList<RootItem*> itemss;
-
-    for (Feed* feed : items) {
-      feed->updateCounts(true);
-      itemss.append(feed);
-    }
-
-    RecycleBin* bin = recycleBin();
-
-    if (bin != nullptr) {
-      bin->updateCounts(true);
-      itemss.append(bin);
-    }
-
-    ImportantNode* imp = importantNode();
-
-    if (imp != nullptr) {
-      imp->updateCounts(true);
-      itemss << imp;
-    }
-
-    itemChanged(itemss);
-    requestReloadMessageList(true);
+    getParentServiceRoot()->updateCounts(true);
+    getParentServiceRoot()->itemChanged(getParentServiceRoot()->getSubTree());
+    getParentServiceRoot()->requestReloadMessageList(true);
     return true;
   }
   else {
@@ -459,22 +438,9 @@ bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus r
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
-    QList<RootItem*> itemss;
-
-    for (Feed* feed : items) {
-      feed->updateCounts(false);
-      itemss.append(feed);
-    }
-
-    ImportantNode* imp = importantNode();
-
-    if (imp != nullptr) {
-      imp->updateCounts(true);
-      itemss << imp;
-    }
-
-    itemChanged(itemss);
-    requestReloadMessageList(read == RootItem::ReadStatus::Read);
+    getParentServiceRoot()->updateCounts(false);
+    getParentServiceRoot()->itemChanged(getParentServiceRoot()->getSubTree());
+    getParentServiceRoot()->requestReloadMessageList(read == RootItem::ReadStatus::Read);
     return true;
   }
   else {
