@@ -556,27 +556,12 @@ bool ServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item, const QList<M
 }
 
 bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, RootItem::ReadStatus read) {
+  Q_UNUSED(selected_item)
   Q_UNUSED(messages)
   Q_UNUSED(read)
 
-  QList<RootItem*> items_to_reload;
-  ImportantNode* imp = importantNode();
-
-  if (imp == selected_item) {
-    updateCounts(true);
-    items_to_reload << getSubTree();
-  }
-  else {
-    selected_item->updateCounts(false);
-    items_to_reload << selected_item;
-  }
-
-  if (imp != nullptr && imp != selected_item) {
-    imp->updateCounts(true);
-    items_to_reload << imp;
-  }
-
-  itemChanged(items_to_reload);
+  updateCounts(true);
+  itemChanged(getSubTree());
   return true;
 }
 
@@ -615,15 +600,8 @@ bool ServiceRoot::onAfterSwitchMessageImportance(RootItem* selected_item, const 
   Q_UNUSED(selected_item)
   Q_UNUSED(changes)
 
-  QList<RootItem*> items_to_reload;
-  ImportantNode* imp = importantNode();
-
-  if (imp != nullptr) {
-    imp->updateCounts(true);
-    items_to_reload << imp;
-  }
-
-  itemChanged(items_to_reload);
+  updateCounts(false);
+  itemChanged(getSubTree());
   return true;
 }
 
@@ -634,40 +612,25 @@ bool ServiceRoot::onBeforeMessagesDelete(RootItem* selected_item, const QList<Me
 }
 
 bool ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages) {
+  Q_UNUSED(selected_item)
   Q_UNUSED(messages)
 
-  QList<RootItem*> items_to_reload;
-
-  selected_item->updateCounts(true);
-  items_to_reload << selected_item;
-
-  RecycleBin* bin = recycleBin();
-
-  if (bin != nullptr && bin != selected_item) {
-    bin->updateCounts(true);
-    items_to_reload << bin;
-  }
-
-  ImportantNode* imp = importantNode();
-
-  if (imp != nullptr && imp != selected_item) {
-    imp->updateCounts(true);
-    items_to_reload << imp;
-  }
-
-  itemChanged(items_to_reload);
+  updateCounts(true);
+  itemChanged(getSubTree());
   return true;
 }
 
 bool ServiceRoot::onBeforeMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {
   Q_UNUSED(selected_item)
   Q_UNUSED(messages)
+
   return true;
 }
 
 bool ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {
   Q_UNUSED(selected_item)
   Q_UNUSED(messages)
+
   updateCounts(true);
   itemChanged(getSubTree());
   return true;
