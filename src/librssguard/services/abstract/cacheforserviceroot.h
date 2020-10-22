@@ -11,11 +11,18 @@
 
 class QMutex;
 
+struct CacheSnapshot {
+  QMap<QString, QStringList> m_cachedLabelAssignments;
+  QMap<QString, QStringList> m_cachedLabelDeassignments;
+  QMap<RootItem::ReadStatus, QStringList> m_cachedStatesRead;
+  QMap<RootItem::Importance, QList<Message>> m_cachedStatesImportant;
+};
+
 class CacheForServiceRoot {
   public:
     explicit CacheForServiceRoot();
 
-    void addMessageStatesToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign);
+    void addLabelsAssignmentsToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign);
     void addMessageStatesToCache(const QList<Message>& ids_of_messages, RootItem::Importance importance);
     void addMessageStatesToCache(const QStringList& ids_of_messages, RootItem::ReadStatus read);
 
@@ -27,7 +34,7 @@ class CacheForServiceRoot {
     virtual void saveAllCachedData(bool async = true) = 0;
 
   protected:
-    QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> takeMessageCache();
+    CacheSnapshot takeMessageCache();
 
     QScopedPointer<QMutex> m_cacheSaveMutex;
 

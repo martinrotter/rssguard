@@ -12,20 +12,32 @@
 
 CacheForServiceRoot::CacheForServiceRoot() : m_cacheSaveMutex(new QMutex(QMutex::NonRecursive)) {}
 
-void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign) {
+void CacheForServiceRoot::addLabelsAssignmentsToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign) {
   auto custom_ids = lbl->getParentServiceRoot()->customIDsOfMessages(ids_of_messages);
 
   if (assign) {
-    m_cachedLabelAssignments[lbl->customId()].append(custom_ids);
-    m_cachedLabelAssignments[lbl->customId()].removeDuplicates();
-
-    // Remove the same messages from "deassign" list.
-    auto deassign = m_cachedLabelDeassignments[lbl->customId()];
-    auto list = boolinq::from(deassign.begin(), deassign.end()).where([custom_ids](const QString& id) {
-      return !custom_ids.contains(id);
-    }).toStdList();
-
-    m_cachedLabelDeassignments[lbl->customId()] = FROM_STD_LIST(QStringList, list);
+    for (const QString& custom_id : custom_ids) {
+      if (m_cachedLabelDeassignments[lbl->customId()].contains(custom_id)) {
+        // We want to assign this ID but it was marked for deassignment, remove from deassignment.
+        m_cachedLabelDeassignments[lbl->customId()].removeAll(custom_id);
+      }
+      else {
+        m_cachedLabelAssignments[lbl->customId()].append(custom_id);
+        m_cachedLabelAssignments[lbl->customId()].removeDuplicates();
+      }
+    }
+  }
+  else {
+    for (const QString& custom_id : custom_ids) {
+      if (m_cachedLabelAssignments[lbl->customId()].contains(custom_id)) {
+        // We want to deassign this ID but it was marked for assignment, remove from assignment.
+        m_cachedLabelAssignments[lbl->customId()].removeAll(custom_id);
+      }
+      else {
+        m_cachedLabelDeassignments[lbl->customId()].append(custom_id);
+        m_cachedLabelDeassignments[lbl->customId()].removeDuplicates();
+      }
+    }
   }
 }
 
@@ -108,6 +120,8 @@ void CacheForServiceRoot::saveCacheToFile(int acc_id) {
 void CacheForServiceRoot::clearCache() {
   m_cachedStatesRead.clear();
   m_cachedStatesImportant.clear();
+  m_cachedLabelAssignments.clear();
+  m_cachedLabelDeassignments.clear();
 }
 
 void CacheForServiceRoot::loadCacheFromFile(int acc_id) {
@@ -132,25 +146,34 @@ void CacheForServiceRoot::loadCacheFromFile(int acc_id) {
   }
 }
 
-QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> CacheForServiceRoot::takeMessageCache() {
+CacheSnapshot CacheForServiceRoot::takeMessageCache() {
   QMutexLocker lck(m_cacheSaveMutex.data());
 
   if (isEmpty()) {
-    return QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>>();
+    return CacheSnapshot();
   }
 
   // Make copy of changes.
-  QMap<RootItem::ReadStatus, QStringList> cached_data_read = m_cachedStatesRead;
+  auto cached_data_read = m_cachedStatesRead;
+  auto cached_data_imp = m_cachedStatesImportant;
+  auto cached_ass_lbl = m_cachedLabelAssignments;
+  auto cached_deass_lbl = m_cachedLabelDeassignments;
 
   cached_data_read.detach();
-
-  QMap<RootItem::Importance, QList<Message>> cached_data_imp = m_cachedStatesImportant;
-
   cached_data_imp.detach();
+  cached_ass_lbl.detach();
+  cached_deass_lbl.detach();
 
   clearCache();
 
-  return QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>>(cached_data_read, cached_data_imp);
+  CacheSnapshot c;
+
+  c.m_cachedLabelAssignments = cached_ass_lbl;
+  c.m_cachedLabelDeassignments = cached_deass_lbl;
+  c.m_cachedStatesImportant = cached_data_imp;
+  c.m_cachedStatesRead = cached_data_read;
+
+  return c;
 }
 
 bool CacheForServiceRoot::isEmpty() const {

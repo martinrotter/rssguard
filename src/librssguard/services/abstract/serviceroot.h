@@ -123,6 +123,12 @@ class ServiceRoot : public RootItem {
     // by the user from message list.
     virtual bool onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages);
 
+    // Called BEFORE some labels are assigned/deassigned from/to messages.
+    virtual bool onBeforeLabelMessageAssignmentChanged(const QList<Label*> labels, const QList<Message>& messages, bool assign);
+
+    // Called AFTER some labels are assigned/deassigned from/to messages.
+    virtual bool onAfterLabelMessageAssignmentChanged(const QList<Label*> labels, const QList<Message>& messages, bool assign);
+
     // Called BEFORE the list of messages is about to be restored from recycle bin
     // by the user from message list.
     // Selected item is naturally recycle bin.

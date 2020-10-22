@@ -2,6 +2,7 @@
 
 #include "services/abstract/serviceroot.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "core/feedsmodel.h"
 #include "core/messagesmodel.h"
 #include "miscellaneous/application.h"
@@ -613,6 +614,34 @@ bool ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Mes
 
   updateCounts(true);
   itemChanged(getSubTree());
+  return true;
+}
+
+bool ServiceRoot::onBeforeLabelMessageAssignmentChanged(const QList<Label*> labels, const QList<Message>& messages, bool assign) {
+  auto cache = dynamic_cast<CacheForServiceRoot*>(this);
+
+  if (cache != nullptr) {
+    boolinq::from(labels).for_each([cache, messages, assign](Label* lbl) {
+      cache->addLabelsAssignmentsToCache(messages, lbl, assign);
+    });
+  }
+
+  return true;
+}
+
+bool ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*> labels, const QList<Message>& messages, bool assign) {
+  Q_UNUSED(messages)
+  Q_UNUSED(assign)
+
+  boolinq::from(labels).for_each([](Label* lbl) {
+    lbl->updateCounts(true);
+  });
+
+  auto list = boolinq::from(labels).select([](Label* lbl) {
+    return static_cast<RootItem*>(lbl);
+  }).toStdList();
+
+  getParentServiceRoot()->itemChanged(FROM_STD_LIST(QList<RootItem*>, list));
   return true;
 }
 

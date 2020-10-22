@@ -86,8 +86,8 @@ OwnCloudNetworkFactory* OwnCloudServiceRoot::network() const {
 }
 
 void OwnCloudServiceRoot::saveAllCachedData(bool async) {
-  QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> msgCache = takeMessageCache();
-  QMapIterator<RootItem::ReadStatus, QStringList> i(msgCache.first);
+  auto msg_cache = takeMessageCache();
+  QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
   // Save the actual data read/unread.
   while (i.hasNext()) {
@@ -100,7 +100,7 @@ void OwnCloudServiceRoot::saveAllCachedData(bool async) {
     }
   }
 
-  QMapIterator<RootItem::Importance, QList<Message>> j(msgCache.second);
+  QMapIterator<RootItem::Importance, QList<Message>> j(msg_cache.m_cachedStatesImportant);
 
   // Save the actual data important/not important.
   while (j.hasNext()) {
