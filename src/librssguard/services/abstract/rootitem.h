@@ -226,7 +226,11 @@ inline void RootItem::clearChildren() {
 }
 
 inline void RootItem::setChildItems(const QList<RootItem*>& child_items) {
-  m_childItems = child_items;
+  clearChildren();
+
+  for (RootItem* ch : child_items) {
+    appendChild(ch);
+  }
 }
 
 RootItem::Kind operator|(RootItem::Kind a, RootItem::Kind b);

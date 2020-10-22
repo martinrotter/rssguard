@@ -7,6 +7,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
 #include "services/abstract/importantnode.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/inoreader/gui/formeditinoreaderaccount.h"
 #include "services/inoreader/inoreaderentrypoint.h"
@@ -129,7 +130,22 @@ QString InoreaderServiceRoot::additionalTooltip() const {
 }
 
 RootItem* InoreaderServiceRoot::obtainNewTreeForSyncIn() const {
-  return m_network->feedsCategories(true);
+  auto tree = m_network->feedsCategories(true);
+
+  if (tree->childCount() > 1) {
+    auto* lblroot = new LabelsNode(tree);
+    auto labels = m_network->getLabels();
+
+    lblroot->setChildItems(labels);
+    tree->appendChild(lblroot);
+
+    return tree;
+  }
+  else {
+    return nullptr;
+  }
+
+  return tree;
 }
 
 void InoreaderServiceRoot::saveAllCachedData(bool async) {

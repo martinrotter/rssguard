@@ -104,20 +104,20 @@ QIcon Label::generateIcon(const QColor& color) {
 void Label::assignToMessage(const Message& msg) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, true)) {
+  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({ this }, { msg }, true)) {
     DatabaseQueries::assignLabelToMessage(database, this, msg);
 
-    getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
+    getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({ this }, { msg }, true);
   }
 }
 
 void Label::deassignFromMessage(const Message& msg) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, false)) {
+  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({ this }, { msg }, false)) {
     DatabaseQueries::deassignLabelFromMessage(database, this, msg);
 
-    getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
+    getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({ this }, { msg }, false);
   }
 }
 

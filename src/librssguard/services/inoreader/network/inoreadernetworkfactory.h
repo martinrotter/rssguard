@@ -38,6 +38,8 @@ class InoreaderNetworkFactory : public QObject {
     // Returned items do not have primary IDs assigned.
     RootItem* feedsCategories(bool obtain_icons);
 
+    QList<RootItem*> getLabels();
+
     QList<Message> messages(const QString& stream_id, Feed::Status& error);
     void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async = true);
     void markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids, bool async = true);

@@ -23,7 +23,7 @@
 #define INOREADER_STATE_IMPORTANT       "state/com.google/starred"
 
 #define INOREADER_API_FEED_CONTENTS     "https://www.inoreader.com/reader/api/0/stream/contents"
-#define INOREADER_API_LIST_LABELS       "https://www.inoreader.com/reader/api/0/tag/list"
+#define INOREADER_API_LIST_LABELS       "https://www.inoreader.com/reader/api/0/tag/list?types=1"
 #define INOREADER_API_LIST_FEEDS        "https://www.inoreader.com/reader/api/0/subscription/list"
 #define INOREADER_API_EDIT_TAG          "https://www.inoreader.com/reader/api/0/edit-tag"
 

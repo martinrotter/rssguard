@@ -19,6 +19,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QRandomGenerator>
 #include <QRegularExpression>
 #include <QUrl>
 
@@ -103,6 +104,52 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
   QString feed_data = downloader.lastOutputData();
 
   return decodeFeedCategoriesData(category_data, feed_data, obtain_icons);
+}
+
+QList<RootItem*> InoreaderNetworkFactory::getLabels() {
+  QList<RootItem*> lbls;
+  Downloader downloader;
+  QEventLoop loop;
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
+
+  if (bearer.isEmpty()) {
+    return lbls;
+  }
+
+  downloader.appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
+
+  // We need to quit event loop when the download finishes.
+  connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
+  downloader.downloadFile(INOREADER_API_LIST_LABELS, qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
+  loop.exec();
+
+  QString lbls_data = downloader.lastOutputData();
+  QJsonDocument json_lbls = QJsonDocument::fromJson(lbls_data.toUtf8());
+
+  for (const QJsonValue& lbl_val : json_lbls.object()["tags"].toArray()) {
+    QJsonObject lbl_obj = lbl_val.toObject();
+
+    if (lbl_obj["type"] == QL1S("tag")) {
+      QString name_id = lbl_obj["id"].toString();
+      QString id = QRegularExpression("user\\/(\\d+)\\/").match(name_id).captured(1);
+      QString plain_name = QRegularExpression(".+\\/([^\\/]+)").match(name_id).captured(1);
+      quint32 color = 0;
+
+      for (const QChar chr : name_id) {
+        color += chr.unicode();
+      }
+
+      color = QRandomGenerator(color).bounded(double(0xFFFFFF)) - 1;
+
+      auto color_name = QSL("#%1").arg(color, 6, 16);
+      auto* new_lbl = new Label(plain_name, QColor(color_name));
+
+      new_lbl->setCustomId(name_id);
+      lbls.append(new_lbl);
+    }
+  }
+
+  return lbls;
 }
 
 QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, Feed::Status& error) {
@@ -376,9 +423,10 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
 
   for (const QJsonValue& obj : json) {
     auto label = obj.toObject();
-    QString label_id = label["id"].toString();
 
-    if (label_id.contains(QSL("/label/"))) {
+    if (label["type"].toString() == QL1S("folder")) {
+      QString label_id = label["id"].toString();
+
       // We have label (not "state").
       auto* category = new Category();
 
