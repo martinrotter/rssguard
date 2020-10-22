@@ -155,6 +155,19 @@ void TtRssServiceRoot::saveAllCachedData(bool async) {
                                 async);
     }
   }
+
+  QMapIterator<QString, QStringList> k(msg_cache.m_cachedLabelAssignments);
+
+  // Assign label for these messages.
+  while (k.hasNext()) {
+    k.next();
+    auto label_custom_id = k.key();
+    QStringList messages = k.value();
+
+    if (!messages.isEmpty()) {
+      network()->setArticleLabel(messages, label_custom_id, true);
+    }
+  }
 }
 
 QString TtRssServiceRoot::additionalTooltip() const {

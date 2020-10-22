@@ -159,6 +159,8 @@ class TtRssNetworkFactory {
                                            bool show_content, bool include_attachments,
                                            bool sanitize, bool unread_only);
 
+    TtRssResponse setArticleLabel(const QStringList& article_ids, const QString& label_custom_id, bool assign);
+
     TtRssUpdateArticleResponse updateArticles(const QStringList& ids, UpdateArticle::OperatingField field,
                                               UpdateArticle::Mode mode, bool async = true);
 

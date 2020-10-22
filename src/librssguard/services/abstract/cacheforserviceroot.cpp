@@ -39,6 +39,10 @@ void CacheForServiceRoot::addLabelsAssignmentsToCache(const QList<Message>& ids_
       }
     }
   }
+
+  auto xx = m_cachedLabelAssignments.values();
+  auto xxx = m_cachedLabelDeassignments.values();
+  int a = 5;
 }
 
 void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_messages, RootItem::Importance importance) {

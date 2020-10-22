@@ -286,6 +286,50 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
   return result;
 }
 
+TtRssResponse TtRssNetworkFactory::setArticleLabel(const QStringList& article_ids, const QString& label_custom_id, bool assign) {
+  QJsonObject json;
+
+  json["op"] = QSL("setArticleLabel");
+  json["sid"] = m_sessionId;
+  json["article_ids"] = article_ids.join(QSL(","));
+  json["label_id"] = label_custom_id.toInt();
+  json["assign"] = assign;
+
+  const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray result_raw;
+  QList<QPair<QByteArray, QByteArray>> headers;
+
+  headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
+  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+
+  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout,
+                                                                        QJsonDocument(json).toJson(QJsonDocument::Compact),
+                                                                        result_raw,
+                                                                        QNetworkAccessManager::PostOperation,
+                                                                        headers);
+  TtRssResponse result(QString::fromUtf8(result_raw));
+
+  if (result.isNotLoggedIn()) {
+    // We are not logged in.
+    login();
+    json["sid"] = m_sessionId;
+    network_reply = NetworkFactory::performNetworkOperation(m_fullUrl, timeout, QJsonDocument(json).toJson(QJsonDocument::Compact),
+                                                            result_raw,
+                                                            QNetworkAccessManager::PostOperation,
+                                                            headers);
+    result = TtRssResponse(QString::fromUtf8(result_raw));
+  }
+
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarningNN << LOGSEC_TTRSS
+               << "setArticleLabel failed with error"
+               << QUOTE_W_SPACE_DOT(network_reply.first);
+  }
+
+  m_lastError = network_reply.first;
+  return result;
+}
+
 TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList& ids,
                                                                UpdateArticle::OperatingField field,
                                                                UpdateArticle::Mode mode, bool async) {
@@ -298,6 +342,7 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
   json["article_ids"] = ids.join(QSL(","));
   json["mode"] = (int) mode;
   json["field"] = (int) field;
+
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
