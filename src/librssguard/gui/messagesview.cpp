@@ -237,7 +237,7 @@ void MessagesView::initializeContextMenu() {
     auto rows = boolinq::from(mapped_indexes).select([](const QModelIndex& idx) {
       return idx.row();
     }).toStdList();
-    auto messages = m_sourceModel->messagesAt(QList<int>::fromStdList(rows));
+    auto messages = m_sourceModel->messagesAt(FROM_STD_LIST(QList<int>, rows));
     auto extra_context_menu = m_sourceModel->loadedItem()->getParentServiceRoot()->contextMenuMessagesList(messages);
 
     if (!extra_context_menu.isEmpty()) {

@@ -27,9 +27,11 @@ void LabelsNode::loadLabels(const QList<Label*>& labels) {
 }
 
 QList<Label*> LabelsNode::labels() const {
-  return QList<Label*>::fromStdList(boolinq::from(childItems()).select([](RootItem* it) {
+  auto list = boolinq::from(childItems()).select([](RootItem* it) {
     return static_cast<Label*>(it);
-  }).toStdList());
+  }).toStdList();
+
+  return FROM_STD_LIST(QList<Label*>, list);
 }
 
 QList<QAction*> LabelsNode::contextMenuFeedsList() {

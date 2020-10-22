@@ -9,13 +9,13 @@
 #include <QPair>
 #include <QStringList>
 
-class Mutex;
+class QMutex;
 
 class CacheForServiceRoot {
   public:
     explicit CacheForServiceRoot();
-    virtual ~CacheForServiceRoot();
 
+    void addMessageStatesToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign);
     void addMessageStatesToCache(const QList<Message>& ids_of_messages, RootItem::Importance importance);
     void addMessageStatesToCache(const QStringList& ids_of_messages, RootItem::ReadStatus read);
 
@@ -29,9 +29,20 @@ class CacheForServiceRoot {
   protected:
     QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> takeMessageCache();
 
-    Mutex* m_cacheSaveMutex;
+    QScopedPointer<QMutex> m_cacheSaveMutex;
 
+    // Map where key is label's custom ID and value is list of message custom IDs
+    // which we want to assign to the label.
+    QMap<QString, QStringList> m_cachedLabelAssignments;
+
+    // Map where key is label's custom ID and value is list of message custom IDs
+    // which we want to remove from the label assignment.
+    QMap<QString, QStringList> m_cachedLabelDeassignments;
+
+    // Map of cached read/unread changes.
     QMap<RootItem::ReadStatus, QStringList> m_cachedStatesRead;
+
+    // Map of cached important/unimportant changes.
     QMap<RootItem::Importance, QList<Message>> m_cachedStatesImportant;
 
   private:

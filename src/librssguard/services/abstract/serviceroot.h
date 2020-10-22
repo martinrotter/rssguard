@@ -32,19 +32,15 @@ class ServiceRoot : public RootItem {
     explicit ServiceRoot(RootItem* parent = nullptr);
     virtual ~ServiceRoot();
 
-    void updateCounts(bool including_total_count);
-    bool deleteViaGui();
-    bool markAsReadUnread(ReadStatus status);
-
+    // These methods bellow are part of "interface".
+    virtual void updateCounts(bool including_total_count);
+    virtual bool deleteViaGui();
+    virtual bool markAsReadUnread(ReadStatus status);
     virtual RecycleBin* recycleBin() const;
-
-    void setRecycleBin(RecycleBin* recycle_bin);
-
     virtual ImportantNode* importantNode() const;
     virtual LabelsNode* labelsNode() const;
     virtual bool downloadAttachmentOnMyOwn(const QUrl& url) const;
-
-    QList<Message> undeletedMessages() const;
+    virtual QList<Message> undeletedMessages() const;
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
 
@@ -53,13 +49,13 @@ class ServiceRoot : public RootItem {
     //  a) Add new feed
     //  b) Add new category
     //  c) ...
-    // NOTE: Caller does NOT take ownership of created menu!
+    // NOTE: Caller does NOT take ownership of created menu/actions!
     virtual QList<QAction*> addItemMenu();
 
-    // NOTE: Caller does NOT take ownership of created menu!
+    // NOTE: Caller does NOT take ownership of created menu/actions!
     virtual QList<QAction*> contextMenuFeedsList();
 
-    // NOTE: Caller does NOT take ownership of created menu!
+    // NOTE: Caller does NOT take ownership of created menu/actions!
     virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
 
     // Returns list of specific actions to be shown in main window menu
@@ -67,7 +63,7 @@ class ServiceRoot : public RootItem {
     // NOTE: Caller does NOT take ownership of created menu!
     virtual QList<QAction*> serviceMenu();
 
-    // If plugin uses online synchronization, then returns true.
+    // If plugin uses online synchronization of feeds/labels/etc, then returns true.
     virtual bool isSyncable() const;
 
     // Start/stop services.
@@ -79,29 +75,6 @@ class ServiceRoot : public RootItem {
     // user explicitly deletes existing service instance.
     virtual void start(bool freshly_activated);
     virtual void stop();
-
-    // Account ID corresponds with DB attribute Accounts (id).
-    int accountId() const;
-    void setAccountId(int account_id);
-
-    // Returns the UNIQUE code of the given service.
-    // NOTE: Keep in sync with ServiceEntryRoot::code().
-    virtual QString code() const = 0;
-
-    // Removes all/read only messages from given underlying feeds.
-    bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
-
-    void completelyRemoveAllData();
-    QStringList customIDSOfMessagesForItem(RootItem* item);
-    bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
-
-    // Obvious methods to wrap signals.
-    void itemChanged(const QList<RootItem*>& items);
-    void requestReloadMessageList(bool mark_selected_messages_read);
-    void requestItemExpand(const QList<RootItem*>& items, bool expand);
-    void requestItemExpandStateSave(RootItem* subtree_root);
-    void requestItemReassignment(RootItem* item, RootItem* new_parent);
-    void requestItemRemoval(RootItem* item);
 
     // This method should prepare messages for given "item" (download them maybe?)
     // into predefined "Messages" table
@@ -160,6 +133,43 @@ class ServiceRoot : public RootItem {
     // Selected item is naturally recycle bin.
     virtual bool onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages);
 
+    // Returns the UNIQUE code of the given service.
+    // NOTE: Keep in sync with ServiceEntryRoot::code().
+    virtual QString code() const = 0;
+
+  // These are not part of "interface".
+
+  public:
+
+    // Account ID corresponds with DB attribute Accounts (id).
+    int accountId() const;
+    void setAccountId(int account_id);
+
+    // Removes all data associated with this account from DB
+    // and from model.
+    void completelyRemoveAllData();
+
+    // Removes all/read only messages from given underlying feeds.
+    bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
+
+    // Marks all messages from feeds read/unread.
+    bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
+
+    // Obvious methods to wrap signals.
+    void itemChanged(const QList<RootItem*>& items);
+    void requestReloadMessageList(bool mark_selected_messages_read);
+    void requestItemExpand(const QList<RootItem*>& items, bool expand);
+    void requestItemExpandStateSave(RootItem* subtree_root);
+    void requestItemReassignment(RootItem* item, RootItem* new_parent);
+    void requestItemRemoval(RootItem* item);
+
+    // Some message/feed attribute selectors.
+    QStringList textualFeedUrls(const QList<Feed*>& feeds) const;
+    QStringList textualFeedIds(const QList<Feed*>& feeds) const;
+    QStringList customIDsOfMessages(const QList<ImportanceChange>& changes);
+    QStringList customIDsOfMessages(const QList<Message>& messages);
+    QStringList customIDSOfMessagesForItem(RootItem* item);
+
   public slots:
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
     virtual void addNewCategory(RootItem* selected_item);
@@ -195,11 +205,6 @@ class ServiceRoot : public RootItem {
     // assigned to non-existing messages or which are
     // assigned from non-existing labels.
     void removeLeftOverMessageLabelAssignments();
-
-    QStringList textualFeedUrls(const QList<Feed*>& feeds) const;
-    QStringList textualFeedIds(const QList<Feed*>& feeds) const;
-    QStringList customIDsOfMessages(const QList<ImportanceChange>& changes);
-    QStringList customIDsOfMessages(const QList<Message>& messages);
 
     // Takes lists of feeds/categories and assembles them into the tree structure.
     void assembleCategories(Assignment categories);

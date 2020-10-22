@@ -226,10 +226,10 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
     if (!important_msgs.isEmpty()) {
       // Now we push new read states to the service.
-      QList<ImportanceChange> chngs = QList<ImportanceChange>::fromStdList(
-        boolinq::from(important_msgs).select([](const Message& msg) {
+      auto list = boolinq::from(important_msgs).select([](const Message& msg) {
         return ImportanceChange(msg, RootItem::Importance::Important);
-      }).toStdList());
+      }).toStdList();
+      QList<ImportanceChange> chngs = FROM_STD_LIST(QList<ImportanceChange>, list);
 
       if (feed->getParentServiceRoot()->onBeforeSwitchMessageImportance(feed, chngs)) {
         qDebugNN << LOGSEC_FEEDDOWNLOADER

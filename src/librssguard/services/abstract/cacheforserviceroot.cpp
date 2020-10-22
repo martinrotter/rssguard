@@ -2,21 +2,35 @@
 
 #include "services/abstract/cacheforserviceroot.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/mutex.h"
+#include "services/abstract/label.h"
 
 #include <QDir>
 #include <QSet>
 
-CacheForServiceRoot::CacheForServiceRoot() : m_cacheSaveMutex(new Mutex(QMutex::NonRecursive, nullptr)) {}
+CacheForServiceRoot::CacheForServiceRoot() : m_cacheSaveMutex(new QMutex(QMutex::NonRecursive)) {}
 
-CacheForServiceRoot::~CacheForServiceRoot() {
-  m_cacheSaveMutex->deleteLater();
+void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign) {
+  auto custom_ids = lbl->getParentServiceRoot()->customIDsOfMessages(ids_of_messages);
+
+  if (assign) {
+    m_cachedLabelAssignments[lbl->customId()].append(custom_ids);
+    m_cachedLabelAssignments[lbl->customId()].removeDuplicates();
+
+    // Remove the same messages from "deassign" list.
+    auto deassign = m_cachedLabelDeassignments[lbl->customId()];
+    auto list = boolinq::from(deassign.begin(), deassign.end()).where([custom_ids](const QString& id) {
+      return !custom_ids.contains(id);
+    }).toStdList();
+
+    m_cachedLabelDeassignments[lbl->customId()] = FROM_STD_LIST(QStringList, list);
+  }
 }
 
 void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_messages, RootItem::Importance importance) {
-  m_cacheSaveMutex->lock();
-
+  QMutexLocker lck(m_cacheSaveMutex.data());
   QList<Message>& list_act = m_cachedStatesImportant[importance];
   QList<Message>& list_other = m_cachedStatesImportant[importance == RootItem::Importance::Important
                                ? RootItem::Importance::NotImportant
@@ -39,13 +53,10 @@ void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_m
   list_act.append(set_act.values());
   list_other.clear();
   list_other.append(set_other.values());
-
-  m_cacheSaveMutex->unlock();
 }
 
 void CacheForServiceRoot::addMessageStatesToCache(const QStringList& ids_of_messages, RootItem::ReadStatus read) {
-  m_cacheSaveMutex->lock();
-
+  QMutexLocker lck(m_cacheSaveMutex.data());
   QStringList& list_act = m_cachedStatesRead[read];
   QStringList& list_other = m_cachedStatesRead[read == RootItem::ReadStatus::Read
                             ? RootItem::ReadStatus::Unread
@@ -68,12 +79,10 @@ void CacheForServiceRoot::addMessageStatesToCache(const QStringList& ids_of_mess
   list_act.append(set_act.values());
   list_other.clear();
   list_other.append(set_other.values());
-
-  m_cacheSaveMutex->unlock();
 }
 
 void CacheForServiceRoot::saveCacheToFile(int acc_id) {
-  m_cacheSaveMutex->lock();
+  QMutexLocker lck(m_cacheSaveMutex.data());
 
   // Save to file.
   const QString file_cache = qApp->userDataFolder() + QDir::separator() + QString::number(acc_id) + "-cached-msgs.dat";
@@ -87,15 +96,13 @@ void CacheForServiceRoot::saveCacheToFile(int acc_id) {
     if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
       QDataStream stream(&file);
 
-      stream << m_cachedStatesImportant << m_cachedStatesRead;
+      stream << m_cachedStatesImportant << m_cachedStatesRead << m_cachedLabelAssignments << m_cachedLabelDeassignments;
       file.flush();
       file.close();
     }
 
     clearCache();
   }
-
-  m_cacheSaveMutex->unlock();
 }
 
 void CacheForServiceRoot::clearCache() {
@@ -104,7 +111,8 @@ void CacheForServiceRoot::clearCache() {
 }
 
 void CacheForServiceRoot::loadCacheFromFile(int acc_id) {
-  m_cacheSaveMutex->lock();
+  QMutexLocker lck(m_cacheSaveMutex.data());
+
   clearCache();
 
   // Load from file.
@@ -115,24 +123,19 @@ void CacheForServiceRoot::loadCacheFromFile(int acc_id) {
     if (file.open(QIODevice::ReadOnly)) {
       QDataStream stream(&file);
 
-      stream >> m_cachedStatesImportant >> m_cachedStatesRead;
+      stream >> m_cachedStatesImportant >> m_cachedStatesRead >> m_cachedLabelAssignments >> m_cachedLabelDeassignments;
       file.flush();
       file.close();
     }
 
     file.remove();
   }
-
-  m_cacheSaveMutex->unlock();
 }
 
 QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>> CacheForServiceRoot::takeMessageCache() {
-  m_cacheSaveMutex->lock();
+  QMutexLocker lck(m_cacheSaveMutex.data());
 
   if (isEmpty()) {
-    // No cached changes.
-    m_cacheSaveMutex->unlock();
-
     return QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>>();
   }
 
@@ -146,11 +149,11 @@ QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<
   cached_data_imp.detach();
 
   clearCache();
-  m_cacheSaveMutex->unlock();
 
   return QPair<QMap<RootItem::ReadStatus, QStringList>, QMap<RootItem::Importance, QList<Message>>>(cached_data_read, cached_data_imp);
 }
 
 bool CacheForServiceRoot::isEmpty() const {
-  return m_cachedStatesRead.isEmpty() && m_cachedStatesImportant.isEmpty();
+  return m_cachedStatesRead.isEmpty() && m_cachedStatesImportant.isEmpty() &&
+         m_cachedLabelAssignments.isEmpty() && m_cachedLabelDeassignments.isEmpty();
 }

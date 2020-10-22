@@ -6,6 +6,9 @@
 #include <QDebug>
 #include <QtGlobal>
 
+//
+// Constants.
+//
 #define SERVICE_CODE_STD_RSS    "std-rss"
 #define SERVICE_CODE_TT_RSS     "tt-rss"
 #define SERVICE_CODE_OWNCLOUD   "owncloud"
@@ -157,49 +160,6 @@
 #define APP_LOCAL_THEME_FOLDER  "icons"
 #define APP_NO_THEME            ""
 
-#ifndef qDebugNN
-#define qDebugNN qDebug().noquote().nospace()
-#endif
-
-#ifndef qWarningNN
-#define qWarningNN qWarning().noquote().nospace()
-#endif
-
-#ifndef qCriticalNN
-#define qCriticalNN qCritical().noquote().nospace()
-#endif
-
-#ifndef qInfoNN
-#define qInfoNN qInfo().noquote().nospace()
-#endif
-
-#define QUOTE_W_SPACE_DOT(x) " '" << (x) << "'."
-#define QUOTE_W_SPACE(x) " '" << (x) << "' "
-#define QUOTE_NO_SPACE(x) "'" << (x) << "'"
-
-#ifndef QSL
-
-// Thin macro wrapper for literal strings.
-// They are much more memory efficient and faster.
-// Use it for all literals except for two cases:
-//  a) Methods which take QLatin1String (use QLatin1String for literal argument too),
-//  b) Construction of empty literals "", use QString() instead of QStringLiteral("").
-#define QSL(x) QStringLiteral(x)
-#endif
-
-#ifndef QL1S
-
-// Macro for latin strings. Latin strings are
-// faster than QStrings created from literals.
-#define QL1S(x) QLatin1String(x)
-#endif
-
-#ifndef QL1C
-
-// Macro for latin chars.
-#define QL1C(x) QLatin1Char(x)
-#endif
-
 // Indexes of columns as they are DEFINED IN THE TABLE for MESSAGES.
 #define MSG_DB_ID_INDEX                 0
 #define MSG_DB_READ_INDEX               1
@@ -283,6 +243,58 @@
 #define APP_DESKTOP_ENTRY_FILE "com.github.rssguard.desktop"
 
 #define APP_DESKTOP_ENTRY_PATH QSL(":/desktop")
+#endif
+
+//
+// Source code specific enhancements.
+//
+#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
+#define FROM_STD_LIST(x, y) (x(y.begin(), y.end()))
+#else
+#define FROM_STD_LIST(x, y) (x::fromStdList(y))
+#endif
+
+#ifndef qDebugNN
+#define qDebugNN qDebug().noquote().nospace()
+#endif
+
+#ifndef qWarningNN
+#define qWarningNN qWarning().noquote().nospace()
+#endif
+
+#ifndef qCriticalNN
+#define qCriticalNN qCritical().noquote().nospace()
+#endif
+
+#ifndef qInfoNN
+#define qInfoNN qInfo().noquote().nospace()
+#endif
+
+#define QUOTE_W_SPACE_DOT(x) " '" << (x) << "'."
+#define QUOTE_W_SPACE(x) " '" << (x) << "' "
+#define QUOTE_NO_SPACE(x) "'" << (x) << "'"
+
+#ifndef QSL
+
+// Thin macro wrapper for literal strings.
+// They are much more memory efficient and faster.
+// Use it for all literals except for two cases:
+//  a) Methods which take QLatin1String (use QLatin1String for literal argument too),
+//  b) Construction of empty literals "", use QString() instead of QStringLiteral("").
+#define QSL(x) QStringLiteral(x)
+#endif
+
+#ifndef QL1S
+
+// Macro for latin strings. Latin strings are
+// faster than QStrings created from literals.
+#define QL1S(x) QLatin1String(x)
+#endif
+
+#ifndef QL1C
+
+// Macro for latin chars.
+#define QL1C(x) QLatin1Char(x)
 #endif
 
 #endif // DEFINITIONS_H

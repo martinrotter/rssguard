@@ -296,10 +296,6 @@ LabelsNode* ServiceRoot::labelsNode() const {
   return m_labelsNode;
 }
 
-void ServiceRoot::setRecycleBin(RecycleBin* recycle_bin) {
-  m_recycleBin = recycle_bin;
-}
-
 void ServiceRoot::syncIn() {
   QIcon original_icon = icon();
 
