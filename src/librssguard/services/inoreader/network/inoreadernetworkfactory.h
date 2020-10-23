@@ -41,8 +41,11 @@ class InoreaderNetworkFactory : public QObject {
     QList<RootItem*> getLabels();
 
     QList<Message> messages(ServiceRoot* root, const QString& stream_id, Feed::Status& error);
-    void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async = true);
-    void markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids, bool async = true);
+
+    void editLabels(const QString& state, bool assign, const QStringList& msg_custom_ids, bool async = true);
+
+    void markMessagesRead(RootItem::ReadStatus status, const QStringList& msg_custom_ids, bool async = true);
+    void markMessagesStarred(RootItem::Importance importance, const QStringList& msg_custom_ids, bool async = true);
 
   private slots:
     void onTokensError(const QString& error, const QString& error_description);

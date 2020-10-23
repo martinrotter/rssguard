@@ -181,6 +181,32 @@ void InoreaderServiceRoot::saveAllCachedData(bool async) {
       network()->markMessagesStarred(key, custom_ids, async);
     }
   }
+
+  QMapIterator<QString, QStringList> k(msg_cache.m_cachedLabelAssignments);
+
+  // Assign label for these messages.
+  while (k.hasNext()) {
+    k.next();
+    auto label_custom_id = k.key();
+    QStringList messages = k.value();
+
+    if (!messages.isEmpty()) {
+      network()->editLabels(label_custom_id, true, messages, async);
+    }
+  }
+
+  QMapIterator<QString, QStringList> l(msg_cache.m_cachedLabelDeassignments);
+
+  // Remove label from these messages.
+  while (l.hasNext()) {
+    l.next();
+    auto label_custom_id = l.key();
+    QStringList messages = l.value();
+
+    if (!messages.isEmpty()) {
+      network()->editLabels(label_custom_id, false, messages, async);
+    }
+  }
 }
 
 bool InoreaderServiceRoot::canBeDeleted() const {

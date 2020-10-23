@@ -22,6 +22,10 @@
 #define INOREADER_STATE_READ            "state/com.google/read"
 #define INOREADER_STATE_IMPORTANT       "state/com.google/starred"
 
+#define INOREADER_FULL_STATE_READING_LIST    "user/-/state/com.google/reading-list"
+#define INOREADER_FULL_STATE_READ            "user/-/state/com.google/read"
+#define INOREADER_FULL_STATE_IMPORTANT       "user/-/state/com.google/starred"
+
 #define INOREADER_API_FEED_CONTENTS     "https://www.inoreader.com/reader/api/0/stream/contents"
 #define INOREADER_API_LIST_LABELS       "https://www.inoreader.com/reader/api/0/tag/list?types=1"
 #define INOREADER_API_LIST_FEEDS        "https://www.inoreader.com/reader/api/0/subscription/list"
