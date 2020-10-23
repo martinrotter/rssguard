@@ -17,7 +17,7 @@ InoreaderServiceRoot* InoreaderFeed::serviceRoot() const {
 
 QList<Message> InoreaderFeed::obtainNewMessages(bool* error_during_obtaining) {
   Feed::Status error = Feed::Status::Normal;
-  QList<Message> messages = serviceRoot()->network()->messages(customId(), error);
+  QList<Message> messages = serviceRoot()->network()->messages(getParentServiceRoot(), customId(), error);
 
   setStatus(error);
 

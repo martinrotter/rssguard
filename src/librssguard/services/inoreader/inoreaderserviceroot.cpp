@@ -132,7 +132,7 @@ QString InoreaderServiceRoot::additionalTooltip() const {
 RootItem* InoreaderServiceRoot::obtainNewTreeForSyncIn() const {
   auto tree = m_network->feedsCategories(true);
 
-  if (tree->childCount() > 1) {
+  if (tree != nullptr && tree->childCount() > 1) {
     auto* lblroot = new LabelsNode(tree);
     auto labels = m_network->getLabels();
 

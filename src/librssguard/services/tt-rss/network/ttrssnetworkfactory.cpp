@@ -676,6 +676,7 @@ TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() = default;
 
 QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
   QList<Message> messages;
+  auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
 
   for (const QJsonValue& item : m_rawContent["content"].toArray()) {
     QJsonObject mapped = item.toObject();
@@ -685,8 +686,6 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
     message.m_isRead = !mapped["unread"].toBool();
     message.m_isImportant = mapped["marked"].toBool();
     message.m_contents = mapped["content"].toString();
-
-    auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
 
     for (const QJsonValue& lbl_val : mapped["labels"].toArray()) {
       QString lbl_custom_id = QString::number(lbl_val.toArray().at(0).toInt());

@@ -2,6 +2,7 @@
 
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
@@ -12,6 +13,7 @@
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
+#include "services/abstract/labelsnode.h"
 #include "services/inoreader/definitions.h"
 #include "services/inoreader/inoreaderfeed.h"
 #include "services/inoreader/inoreaderserviceroot.h"
@@ -152,7 +154,7 @@ QList<RootItem*> InoreaderNetworkFactory::getLabels() {
   return lbls;
 }
 
-QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, Feed::Status& error) {
+QList<Message> InoreaderNetworkFactory::messages(ServiceRoot* root, const QString& stream_id, Feed::Status& error) {
   Downloader downloader;
   QEventLoop loop;
   QString target_url = INOREADER_API_FEED_CONTENTS;
@@ -188,7 +190,7 @@ QList<Message> InoreaderNetworkFactory::messages(const QString& stream_id, Feed:
     QString messages_data = downloader.lastOutputData();
 
     error = Feed::Status::Normal;
-    return decodeMessages(messages_data, stream_id);
+    return decodeMessages(root, messages_data, stream_id);
   }
 }
 
@@ -353,9 +355,10 @@ void InoreaderNetworkFactory::onAuthFailed() {
   });
 }
 
-QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_json_data, const QString& stream_id) {
+QList<Message> InoreaderNetworkFactory::decodeMessages(ServiceRoot* root, const QString& messages_json_data, const QString& stream_id) {
   QList<Message> messages;
   QJsonArray json = QJsonDocument::fromJson(messages_json_data.toUtf8()).object()["items"].toArray();
+  auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
 
   messages.reserve(json.count());
 
@@ -402,6 +405,16 @@ QList<Message> InoreaderNetworkFactory::decodeMessages(const QString& messages_j
       }
       else if (category.contains(INOREADER_STATE_IMPORTANT)) {
         message.m_isImportant = category.contains(INOREADER_STATE_IMPORTANT);
+      }
+      else if (category.contains(QSL("label"))) {
+        Label* label = boolinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([category](Label* lbl) {
+          return lbl->customId() == category;
+        });
+
+        if (label != nullptr) {
+          // We found live Label object for our assigned label.
+          message.m_assignedLabels.append(label);
+        }
       }
     }
 

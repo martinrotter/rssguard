@@ -40,7 +40,7 @@ class InoreaderNetworkFactory : public QObject {
 
     QList<RootItem*> getLabels();
 
-    QList<Message> messages(const QString& stream_id, Feed::Status& error);
+    QList<Message> messages(ServiceRoot* root, const QString& stream_id, Feed::Status& error);
     void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async = true);
     void markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids, bool async = true);
 
@@ -49,7 +49,7 @@ class InoreaderNetworkFactory : public QObject {
     void onAuthFailed();
 
   private:
-    QList<Message> decodeMessages(const QString& messages_json_data, const QString& stream_id);
+    QList<Message> decodeMessages(ServiceRoot* root, const QString& messages_json_data, const QString& stream_id);
     RootItem* decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons);
 
     void initializeOauth();

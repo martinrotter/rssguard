@@ -509,7 +509,7 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   else if (item->kind() == RootItem::Kind::Label) {
     // Show messages with particular label.
     model->setFilter(QString("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
-                             "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id AND label = %2) > 0")
+                             "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id AND label = '%2') > 0")
                      .arg(QString::number(accountId()), item->customId()));
   }
   else if (item->kind() == RootItem::Kind::Labels) {
@@ -534,7 +534,8 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
 
     QString urls = textualFeedUrls(children).join(QSL(", "));
 
-    qDebug("Displaying messages from feeds IDs: %s and URLs: %s.", qPrintable(filter_clause), qPrintable(urls));
+    qDebugNN << "Displaying messages from feeds IDs:" << QUOTE_W_SPACE(filter_clause)
+             << "and URLs:" << QUOTE_W_SPACE_DOT(urls);
   }
 
   return true;
