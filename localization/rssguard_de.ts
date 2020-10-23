@@ -195,6 +195,17 @@
     </message>
 </context>
 <context>
+    <name>ColorToolButton</name>
+    <message>
+        <source>Click me to change color!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select new color</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -296,6 +307,10 @@ Diese Webseite enhält %n Feeds.</numerusform></translation>
     <message>
         <source>Given account does not support adding feeds.</source>
         <translation>Zum genannten Konto können keine Feeds hinzugefügt werden.</translation>
+    </message>
+    <message>
+        <source>Feeds were detected, but no suitable accounts are configured.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -650,6 +665,10 @@ or this functionality is not implemented yet.</source>
         <source>Context menu for important messages</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Context menu for label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -781,6 +800,41 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAddEditLabel</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <source>Name for your label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Label&apos;s name cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Perfect!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hot stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Create new label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit label &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2997,6 +3051,10 @@ Ablauf des Login tokens: %2</translation>
         <source>You can see all your labels (tags) here.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>New label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
@@ -3013,7 +3071,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
         <translation>Sie haben auf einen Link geklickt. Der zugehörige Inhalt kann heruntergeladen oder in einem externen Browser angezeigt werden.</translation>
@@ -3031,6 +3089,10 @@ Ablauf des Login tokens: %2</translation>
         <translation>Herunterladen</translation>
     </message>
     <message>
+        <source>Always open links in external browser.</source>
+        <translation>Links immer im externem Browser öffnen.</translation>
+    </message>
+    <message>
         <source>Incorrect link</source>
         <translation>Fehlerhafter Link</translation>
     </message>
@@ -3038,6 +3100,17 @@ Ablauf des Login tokens: %2</translation>
         <source>Selected hyperlink is invalid.</source>
         <translation>Der ausgewählte Hyperlink ist fehlerhaft</translation>
     </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation>Diesen Link klicken zum Herunterladen oder Öffnen in externem Browser.</translation>
+    </message>
+    <message>
+        <source>image</source>
+        <translation>Graphik</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
         <translation>Nachricht als gelesen markieren</translation>
@@ -3049,18 +3122,6 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <source>Switch message importance</source>
         <translation>Einstufung der Wichtigkeit modifizieren</translation>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation>Diesen Link klicken zum Herunterladen oder Öffnen in externem Browser.</translation>
-    </message>
-    <message>
-        <source>image</source>
-        <translation>Graphik</translation>
-    </message>
-    <message>
-        <source>Always open links in external browser.</source>
-        <translation>Links immer im externem Browser öffnen.</translation>
     </message>
 </context>
 <context>

@@ -195,6 +195,17 @@
     </message>
 </context>
 <context>
+    <name>ColorToolButton</name>
+    <message>
+        <source>Click me to change color!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select new color</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -295,6 +306,10 @@ Situs web ini mengandung %n feed.</numerusform></translation>
     <message>
         <source>Given account does not support adding feeds.</source>
         <translation>Akun yang diberikan tidak mendukung penambahan feed.</translation>
+    </message>
+    <message>
+        <source>Feeds were detected, but no suitable accounts are configured.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -651,6 +666,10 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>Context menu for important messages</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Context menu for label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -782,6 +801,41 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAddEditLabel</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Name for your label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Label&apos;s name cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Perfect!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hot stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Create new label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit label &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2996,6 +3050,10 @@ Login tokens expiration: %2</source>
         <source>You can see all your labels (tags) here.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>New label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
@@ -3012,7 +3070,7 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
         <translation>Anda meng-klik beberapa tautan. Anda dapat mengunduh konten tautan atau membukanya di peramban web eksternal.</translation>
@@ -3030,6 +3088,10 @@ Login tokens expiration: %2</source>
         <translation>Unduh</translation>
     </message>
     <message>
+        <source>Always open links in external browser.</source>
+        <translation>Selalu buka tautan di peramban eksternal.</translation>
+    </message>
+    <message>
         <source>Incorrect link</source>
         <translation>Tautan salah</translation>
     </message>
@@ -3037,6 +3099,17 @@ Login tokens expiration: %2</source>
         <source>Selected hyperlink is invalid.</source>
         <translation>Hiperlink yang dipilih tidak sah.</translation>
     </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation>Klik tautan ini untuk mengunduh ini atau membukanya dengan peramban eksternal.</translation>
+    </message>
+    <message>
+        <source>image</source>
+        <translation>gambar</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
         <translation>Tandai pesan sebagai terbaca</translation>
@@ -3048,18 +3121,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Switch message importance</source>
         <translation>Ganti pentingnya pesan</translation>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation>Klik tautan ini untuk mengunduh ini atau membukanya dengan peramban eksternal.</translation>
-    </message>
-    <message>
-        <source>image</source>
-        <translation>gambar</translation>
-    </message>
-    <message>
-        <source>Always open links in external browser.</source>
-        <translation>Selalu buka tautan di peramban eksternal.</translation>
     </message>
 </context>
 <context>

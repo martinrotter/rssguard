@@ -195,6 +195,17 @@
     </message>
 </context>
 <context>
+    <name>ColorToolButton</name>
+    <message>
+        <source>Click me to change color!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select new color</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -295,6 +306,10 @@ This website contains %n feed(s).</source>
     <message>
         <source>Given account does not support adding feeds.</source>
         <translation>被指定的账户不支持添加 Feed。</translation>
+    </message>
+    <message>
+        <source>Feeds were detected, but no suitable accounts are configured.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -652,6 +667,10 @@ or this functionality is not implemented yet.</source>
         <source>Context menu for important messages</source>
         <translation>重要消息的上下文菜单</translation>
     </message>
+    <message>
+        <source>Context menu for label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -784,6 +803,41 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
         <translation>您的邮件未被发送。</translation>
+    </message>
+</context>
+<context>
+    <name>FormAddEditLabel</name>
+    <message>
+        <source>Dialog</source>
+        <translation>对话框</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation>…</translation>
+    </message>
+    <message>
+        <source>Name for your label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Label&apos;s name cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Perfect!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hot stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Create new label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit label &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3007,6 +3061,10 @@ Token 过期时间：%2</translation>
         <source>You can see all your labels (tags) here.</source>
         <translation>您可以在这里看到所有的标签（Tag）。</translation>
     </message>
+    <message>
+        <source>New label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
@@ -3023,7 +3081,7 @@ Token 过期时间：%2</translation>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
         <translation>你点击了某个链接，你可以下载链接内容或在外部浏览器打开。</translation>
@@ -3041,6 +3099,10 @@ Token 过期时间：%2</translation>
         <translation>下载</translation>
     </message>
     <message>
+        <source>Always open links in external browser.</source>
+        <translation>总是在外部浏览器中打开链接。</translation>
+    </message>
+    <message>
         <source>Incorrect link</source>
         <translation>错误的链接</translation>
     </message>
@@ -3048,6 +3110,17 @@ Token 过期时间：%2</translation>
         <source>Selected hyperlink is invalid.</source>
         <translation>所选链接无效。</translation>
     </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation>点击此链接以下载或者在外部浏览器打开。</translation>
+    </message>
+    <message>
+        <source>image</source>
+        <translation>图片</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
         <translation>将消息设为已读</translation>
@@ -3059,18 +3132,6 @@ Token 过期时间：%2</translation>
     <message>
         <source>Switch message importance</source>
         <translation>切换消息重要性</translation>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation>点击此链接以下载或者在外部浏览器打开。</translation>
-    </message>
-    <message>
-        <source>image</source>
-        <translation>图片</translation>
-    </message>
-    <message>
-        <source>Always open links in external browser.</source>
-        <translation>总是在外部浏览器中打开链接。</translation>
     </message>
 </context>
 <context>

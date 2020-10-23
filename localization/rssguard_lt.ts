@@ -195,6 +195,17 @@
     </message>
 </context>
 <context>
+    <name>ColorToolButton</name>
+    <message>
+        <source>Click me to change color!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select new color</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -298,6 +309,10 @@ This website contains %n feed(s).</source>
     <message>
         <source>Given account does not support adding feeds.</source>
         <translation>Duotoji paskyra nepalaiko kanalų pridėjimo.</translation>
+    </message>
+    <message>
+        <source>Feeds were detected, but no suitable accounts are configured.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -654,6 +669,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Context menu for important messages</source>
         <translation>Svarbių žinučių kontekstinis meniu</translation>
     </message>
+    <message>
+        <source>Context menu for label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -785,6 +804,41 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAddEditLabel</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialogas</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <source>Name for your label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Label&apos;s name cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Perfect!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hot stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Create new label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit label &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3002,6 +3056,10 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <source>You can see all your labels (tags) here.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>New label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
@@ -3018,7 +3076,7 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
         <translation>Jūs spustelėjote kažkokią nuorodą. Jūs galite atsisiųsti nuorodos turinį arba atverti ją išorinėje saityno naršyklėje.</translation>
@@ -3036,6 +3094,10 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>Atsisiųsti</translation>
     </message>
     <message>
+        <source>Always open links in external browser.</source>
+        <translation>Visada atverti nuorodas išorinėje naršyklėje.</translation>
+    </message>
+    <message>
         <source>Incorrect link</source>
         <translation>Neteisinga nuoroda</translation>
     </message>
@@ -3043,6 +3105,17 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <source>Selected hyperlink is invalid.</source>
         <translation>Pasirinktas saitas yra neteisingas.</translation>
     </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation>Spustelėkite šią nuorodą, kad ją atsisiųstumėte arba atvertumėte, naudojant išorinę naršyklę.</translation>
+    </message>
+    <message>
+        <source>image</source>
+        <translation>paveikslas</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
         <translation>Žymėti žinutę kaip skaitytą</translation>
@@ -3054,18 +3127,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <source>Switch message importance</source>
         <translation>Perjungti žinutės svarbą</translation>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation>Spustelėkite šią nuorodą, kad ją atsisiųstumėte arba atvertumėte, naudojant išorinę naršyklę.</translation>
-    </message>
-    <message>
-        <source>image</source>
-        <translation>paveikslas</translation>
-    </message>
-    <message>
-        <source>Always open links in external browser.</source>
-        <translation>Visada atverti nuorodas išorinėje naršyklėje.</translation>
     </message>
 </context>
 <context>

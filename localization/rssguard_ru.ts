@@ -195,6 +195,17 @@
     </message>
 </context>
 <context>
+    <name>ColorToolButton</name>
+    <message>
+        <source>Click me to change color!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select new color</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -298,6 +309,10 @@ This website contains %n feed(s).</source>
     <message>
         <source>Given account does not support adding feeds.</source>
         <translation>Данный аккаунт не поддерживает добавление каналов.</translation>
+    </message>
+    <message>
+        <source>Feeds were detected, but no suitable accounts are configured.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -655,6 +670,10 @@ or this functionality is not implemented yet.</source>
         <source>Context menu for important messages</source>
         <translation>Контекстное меню для важных сообщений</translation>
     </message>
+    <message>
+        <source>Context menu for label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -740,7 +759,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
-        <translation type="unfinished"/>
+        <translation>GNU GPL License (применяется к исходному коду RSS Guard, mimesis и Numix)</translation>
     </message>
 </context>
 <context>
@@ -787,6 +806,41 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
         <translation>Ваше сообщение электронной почты не было отправлено.</translation>
+    </message>
+</context>
+<context>
+    <name>FormAddEditLabel</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Диалог</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <source>Name for your label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Label&apos;s name cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Perfect!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hot stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Create new label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit label &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2147,7 +2201,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
+        <translation>Обновить элементы с помощью настраиваемых таймеров (&amp;T)</translation>
     </message>
 </context>
 <context>
@@ -3013,6 +3067,10 @@ Login tokens expiration: %2</source>
         <source>You can see all your labels (tags) here.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>New label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
@@ -3029,7 +3087,7 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
         <translation>Вы нажали какую-то ссылку. Вы можете скачать содержимое ссылки или открыть ее во внешнем веб-браузере.</translation>
@@ -3047,6 +3105,10 @@ Login tokens expiration: %2</source>
         <translation>Загрузка</translation>
     </message>
     <message>
+        <source>Always open links in external browser.</source>
+        <translation>Всегда открывайте ссылки во внешнем браузере.</translation>
+    </message>
+    <message>
         <source>Incorrect link</source>
         <translation>Неверная ссылка</translation>
     </message>
@@ -3054,6 +3116,17 @@ Login tokens expiration: %2</source>
         <source>Selected hyperlink is invalid.</source>
         <translation>Выбранная гиперссылка недействительна.</translation>
     </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation>Нажмите на эту ссылку, чтобы скачать ее или открыть с помощью внешнего браузера.</translation>
+    </message>
+    <message>
+        <source>image</source>
+        <translation>изображение</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
         <translation>Пометить сообщение как прочитанное</translation>
@@ -3065,18 +3138,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Switch message importance</source>
         <translation>Переключить важность сообщения</translation>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation>Нажмите на эту ссылку, чтобы скачать ее или открыть с помощью внешнего браузера.</translation>
-    </message>
-    <message>
-        <source>image</source>
-        <translation>изображение</translation>
-    </message>
-    <message>
-        <source>Always open links in external browser.</source>
-        <translation>Всегда открывайте ссылки во внешнем браузере.</translation>
     </message>
 </context>
 <context>

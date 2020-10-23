@@ -195,6 +195,17 @@
     </message>
 </context>
 <context>
+    <name>ColorToolButton</name>
+    <message>
+        <source>Click me to change color!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select new color</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -296,6 +307,10 @@ Questo sito web contiene %n fonti.</numerusform></translation>
     <message>
         <source>Given account does not support adding feeds.</source>
         <translation>L&apos;account in questione non supporta l&apos;aggiunta di fonti.</translation>
+    </message>
+    <message>
+        <source>Feeds were detected, but no suitable accounts are configured.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -652,6 +667,10 @@ oppure questa funzionalità non è ancora implementata.</translation>
         <source>Context menu for important messages</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Context menu for label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -783,6 +802,41 @@ oppure questa funzionalità non è ancora implementata.</translation>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAddEditLabel</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Name for your label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Label&apos;s name cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Perfect!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hot stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Create new label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit label &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2998,6 +3052,10 @@ Login tokens expiration: %2</source>
         <source>You can see all your labels (tags) here.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>New label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
@@ -3014,7 +3072,7 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
         <translation>Hai fatto clic su un collegamento. Puoi scaricare il contenuto del collegamento oppure aprirlo in un browser web esterno.</translation>
@@ -3032,6 +3090,10 @@ Login tokens expiration: %2</source>
         <translation>Scarica</translation>
     </message>
     <message>
+        <source>Always open links in external browser.</source>
+        <translation>Apri sempre collegamenti in browser esterno.</translation>
+    </message>
+    <message>
         <source>Incorrect link</source>
         <translation>Collegamento non valido</translation>
     </message>
@@ -3039,6 +3101,17 @@ Login tokens expiration: %2</source>
         <source>Selected hyperlink is invalid.</source>
         <translation>Il collegamento ipertestuale non è valido.</translation>
     </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation>Fai clic su questo collegamento per scaricarlo o aprirlo con un browser esterno.</translation>
+    </message>
+    <message>
+        <source>image</source>
+        <translation>immagine</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
         <translation>Marca messaggio come letto</translation>
@@ -3050,18 +3123,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Switch message importance</source>
         <translation>Commuta importanza messaggio</translation>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation>Fai clic su questo collegamento per scaricarlo o aprirlo con un browser esterno.</translation>
-    </message>
-    <message>
-        <source>image</source>
-        <translation>immagine</translation>
-    </message>
-    <message>
-        <source>Always open links in external browser.</source>
-        <translation>Apri sempre collegamenti in browser esterno.</translation>
     </message>
 </context>
 <context>

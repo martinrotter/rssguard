@@ -139,14 +139,14 @@ void MessagesView::setupAppearance() {
   setUniformRowHeights(true);
   setAcceptDrops(false);
   setDragEnabled(false);
-  setDragDropMode(QAbstractItemView::NoDragDrop);
+  setDragDropMode(QAbstractItemView::DragDropMode::NoDragDrop);
   setExpandsOnDoubleClick(false);
   setRootIsDecorated(false);
-  setEditTriggers(QAbstractItemView::NoEditTriggers);
+  setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
   setItemsExpandable(false);
   setSortingEnabled(true);
   setAllColumnsShowFocus(false);
-  setSelectionMode(QAbstractItemView::ExtendedSelection);
+  setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
 
   setItemDelegate(new StyledItemDelegateWithoutFocus(this));
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);

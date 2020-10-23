@@ -195,6 +195,17 @@
     </message>
 </context>
 <context>
+    <name>ColorToolButton</name>
+    <message>
+        <source>Click me to change color!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select new color</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -294,6 +305,10 @@ This website contains %n feed(s).</source>
     <message>
         <source>Given account does not support adding feeds.</source>
         <translation>Den givne konto understøtter ikke tilføjelse af nye feeds.</translation>
+    </message>
+    <message>
+        <source>Feeds were detected, but no suitable accounts are configured.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -649,6 +664,10 @@ or this functionality is not implemented yet.</source>
         <source>Context menu for important messages</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Context menu for label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -780,6 +799,41 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAddEditLabel</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <source>Name for your label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Label&apos;s name cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Perfect!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hot stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Create new label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit label &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2990,6 +3044,10 @@ Login tokens expiration: %2</source>
         <source>You can see all your labels (tags) here.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>New label</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
@@ -3006,7 +3064,7 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
-    <name>MessagePreviewer</name>
+    <name>MessageBrowser</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
         <translation type="unfinished"/>
@@ -3024,6 +3082,10 @@ Login tokens expiration: %2</source>
         <translation>Hent</translation>
     </message>
     <message>
+        <source>Always open links in external browser.</source>
+        <translation>Åben altid henvisninger i ekstern netlæser.</translation>
+    </message>
+    <message>
         <source>Incorrect link</source>
         <translation type="unfinished"/>
     </message>
@@ -3031,6 +3093,17 @@ Login tokens expiration: %2</source>
         <source>Selected hyperlink is invalid.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Click this link to download it or open it with external browser.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>image</source>
+        <translation>billede</translation>
+    </message>
+</context>
+<context>
+    <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
         <translation>Markér meddelelse som læst</translation>
@@ -3042,18 +3115,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Switch message importance</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>image</source>
-        <translation>billede</translation>
-    </message>
-    <message>
-        <source>Always open links in external browser.</source>
-        <translation>Åben altid henvisninger i ekstern netlæser.</translation>
     </message>
 </context>
 <context>
