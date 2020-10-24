@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '16');
+INSERT INTO Information VALUES (1, 'schema_version', '17');
 -- !
 CREATE TABLE IF NOT EXISTS Accounts (
   id              INTEGER     PRIMARY KEY,
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS Messages (
 );
 -- !
 CREATE TABLE IF NOT EXISTS MessageFilters (
-  id                  INTEGER     PRIMARY KEY,
+  id                  INTEGER     AUTO_INCREMENT PRIMARY KEY,
   name                TEXT        NOT NULL CHECK (name != ''),
   script              TEXT        NOT NULL CHECK (script != '')
 );
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS MessageFiltersInFeeds (
 );
 -- !
 CREATE TABLE IF NOT EXISTS Labels (
-  id                  INTEGER     PRIMARY KEY,
+  id                  INTEGER     AUTO_INCREMENT PRIMARY KEY,
   name                TEXT        NOT NULL CHECK (name != ''),
   color               VARCHAR(7),
   custom_id           TEXT,
