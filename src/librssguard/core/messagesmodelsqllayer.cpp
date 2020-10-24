@@ -72,11 +72,6 @@ void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order) {
     m_sortColumns.prepend(column);
     m_sortOrders.prepend(order);
   }
-
-  qDebugNN << LOGSEC_MESSAGEMODEL
-           << "Added sort state, select statement is now:\n'"
-           << selectStatement()
-           << "'";
 }
 
 void MessagesModelSqlLayer::setFilter(const QString& filter) {

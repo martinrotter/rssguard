@@ -144,8 +144,6 @@ RootItem* InoreaderServiceRoot::obtainNewTreeForSyncIn() const {
   else {
     return nullptr;
   }
-
-  return tree;
 }
 
 void InoreaderServiceRoot::saveAllCachedData(bool async) {

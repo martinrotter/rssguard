@@ -42,12 +42,13 @@ class Feed : public RootItem {
     explicit Feed(const Feed& other);
     virtual ~Feed();
 
-    QList<Message> undeletedMessages() const;
-
-    QString additionalTooltip() const;
-
-    int countOfAllMessages() const;
-    int countOfUnreadMessages() const;
+    virtual QList<Message> undeletedMessages() const;
+    virtual QString additionalTooltip() const;
+    virtual bool markAsReadUnread(ReadStatus status);
+    virtual bool cleanMessages(bool clean_read_only);
+    virtual QList<Message> obtainNewMessages(bool* error_during_obtaining) = 0;
+    virtual int countOfAllMessages() const;
+    virtual int countOfUnreadMessages() const;
 
     void setCountOfAllMessages(int count_all_messages);
     void setCountOfUnreadMessages(int count_unread_messages);
@@ -74,14 +75,10 @@ class Feed : public RootItem {
     void setMessageFilters(const QList<QPointer<MessageFilter>>& messageFilters);
     void removeMessageFilter(MessageFilter* filter);
 
-    bool markAsReadUnread(ReadStatus status);
-    bool cleanMessages(bool clean_read_only);
-
-    virtual QList<Message> obtainNewMessages(bool* error_during_obtaining) = 0;
+    int updateMessages(const QList<Message>& messages, bool error_during_obtaining);
 
   public slots:
-    void updateCounts(bool including_total_count);
-    int updateMessages(const QList<Message>& messages, bool error_during_obtaining);
+    virtual void updateCounts(bool including_total_count);
 
   protected:
     QString getAutoUpdateStatusDescription() const;

@@ -53,6 +53,10 @@ void MessagesModel::repopulate() {
   while (canFetchMore()) {
     fetchMore();
   }
+
+  qDebugNN << LOGSEC_MESSAGEMODEL
+           << "Repopulated model, SQL statement is now:\n"
+           << QUOTE_W_SPACE_DOT(selectStatement());
 }
 
 bool MessagesModel::setData(const QModelIndex& index, const QVariant& value, int role) {

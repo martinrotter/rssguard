@@ -26,6 +26,12 @@ void LabelsNode::loadLabels(const QList<Label*>& labels) {
   }
 }
 
+QList<Message> LabelsNode::undeletedMessages() const {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  return DatabaseQueries::getUndeletedLabelledMessages(database, getParentServiceRoot()->accountId());
+}
+
 QList<Label*> LabelsNode::labels() const {
   auto list = boolinq::from(childItems()).select([](RootItem* it) {
     return static_cast<Label*>(it);

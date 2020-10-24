@@ -29,6 +29,7 @@ class Label : public RootItem {
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
     virtual void updateCounts(bool including_total_count);
+    virtual QList<Message> undeletedMessages() const;
     static QIcon generateIcon(const QColor& color);
 
   public slots:

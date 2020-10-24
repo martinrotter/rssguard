@@ -69,13 +69,11 @@ class DatabaseQueries {
     static int getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool including_total_counts, bool* ok = nullptr);
 
     // Get messages (for newspaper view for example).
-    static QList<Message> getUndeletedImportantMessages(const QSqlDatabase& db,
-                                                        int account_id,
-                                                        bool* ok = nullptr);
-    static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db,
-                                                      const QString& feed_custom_id,
-                                                      int account_id,
-                                                      bool* ok = nullptr);
+    static QList<Message> getUndeletedMessagesWithLabel(const QSqlDatabase& db, const Label* label, bool* ok = nullptr);
+    static QList<Message> getUndeletedLabelledMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static QList<Message> getUndeletedImportantMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db, const QString& feed_custom_id,
+                                                      int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 

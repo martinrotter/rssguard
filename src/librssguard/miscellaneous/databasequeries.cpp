@@ -604,6 +604,81 @@ int DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, int account_
   }
 }
 
+QList<Message> DatabaseQueries::getUndeletedMessagesWithLabel(const QSqlDatabase& db, const Label* label, bool* ok) {
+  QList<Message> messages;
+  QSqlQuery q(db);
+
+  q.prepare(QSL(
+              "SELECT Messages.id, Messages.is_read, Messages.is_deleted, Messages.is_important, Feeds.title, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.contents, Messages.is_pdeleted, Messages.enclosures, Messages.account_id, Messages.custom_id, Messages.custom_hash, Messages.feed, CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures "
+              "FROM Messages "
+              "INNER JOIN Feeds "
+              "ON Messages.feed = Feeds.custom_id AND Messages.account_id = :account_id AND Messages.account_id = Feeds.account_id "
+              "INNER JOIN LabelsInMessages "
+              "ON "
+              "  Messages.is_pdeleted = 0 AND Messages.is_deleted = 0 AND "
+              "  LabelsInMessages.account_id = :account_id AND LabelsInMessages.account_id = Messages.account_id AND "
+              "  LabelsInMessages.label = :label AND LabelsInMessages.message = Messages.custom_id;"));
+  q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
+  q.bindValue(QSL(":label"), label->customId());
+
+  if (q.exec()) {
+    while (q.next()) {
+      bool decoded;
+      Message message = Message::fromSqlRecord(q.record(), &decoded);
+
+      if (decoded) {
+        messages.append(message);
+      }
+    }
+
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  return messages;
+}
+
+QList<Message> DatabaseQueries::getUndeletedLabelledMessages(const QSqlDatabase& db, int account_id, bool* ok) {
+  QList<Message> messages;
+  QSqlQuery q(db);
+
+  q.prepare(QSL(
+              "SELECT Messages.id, Messages.is_read, Messages.is_deleted, Messages.is_important, Feeds.title, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.contents, Messages.is_pdeleted, Messages.enclosures, Messages.account_id, Messages.custom_id, Messages.custom_hash, Messages.feed, CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures "
+              "FROM Messages "
+              "LEFT JOIN Feeds "
+              "ON Messages.feed = Feeds.custom_id AND Messages.account_id = Feeds.account_id "
+              "WHERE Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = :account_id AND (SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = :account_id AND message = Messages.custom_id) > 0;"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (q.exec()) {
+    while (q.next()) {
+      bool decoded;
+      Message message = Message::fromSqlRecord(q.record(), &decoded);
+
+      if (decoded) {
+        messages.append(message);
+      }
+    }
+
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  return messages;
+}
+
 QList<Message> DatabaseQueries::getUndeletedImportantMessages(const QSqlDatabase& db, int account_id, bool* ok) {
   QList<Message> messages;
   QSqlQuery q(db);
@@ -637,8 +712,8 @@ QList<Message> DatabaseQueries::getUndeletedImportantMessages(const QSqlDatabase
   return messages;
 }
 
-QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id,
-                                                            bool* ok) {
+QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& db, const QString& feed_custom_id,
+                                                            int account_id, bool* ok) {
   QList<Message> messages;
   QSqlQuery q(db);
 

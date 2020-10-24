@@ -84,7 +84,7 @@ QList<Message> RootItem::undeletedMessages() const {
   QList<Message> messages;
 
   for (RootItem* child : m_childItems) {
-    if (child->kind() != RootItem::Kind::Bin) {
+    if (child->kind() != Kind::Bin && child->kind() != Kind::Labels && child->kind() != Kind::Label) {
       messages.append(child->undeletedMessages());
     }
   }

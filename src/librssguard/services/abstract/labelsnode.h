@@ -16,6 +16,7 @@ class LabelsNode : public RootItem {
     QList<Label*> labels() const;
     void loadLabels(const QList<Label*>& labels);
 
+    virtual QList<Message> undeletedMessages() const;
     virtual QList<QAction*> contextMenuFeedsList();
 
   public slots:

@@ -87,6 +87,12 @@ void Label::updateCounts(bool including_total_count) {
   setCountOfUnreadMessages(DatabaseQueries::getMessageCountsForLabel(database, this, account_id, false));
 }
 
+QList<Message> Label::undeletedMessages() const {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  return DatabaseQueries::getUndeletedMessagesWithLabel(database, this);
+}
+
 QIcon Label::generateIcon(const QColor& color) {
   QPixmap pxm(64, 64);
 
