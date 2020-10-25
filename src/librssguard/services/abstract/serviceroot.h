@@ -29,6 +29,13 @@ class ServiceRoot : public RootItem {
   Q_OBJECT
 
   public:
+    enum class LabelOperation {
+      Adding = 1,
+      Editing = 2,
+      Deleting = 4
+    };
+
+  public:
     explicit ServiceRoot(RootItem* parent = nullptr);
     virtual ~ServiceRoot();
 
@@ -43,6 +50,7 @@ class ServiceRoot : public RootItem {
     virtual QList<Message> undeletedMessages() const;
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
+    virtual LabelOperation supportedLabelOperations() const;
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
@@ -237,5 +245,8 @@ class ServiceRoot : public RootItem {
     QAction* m_actionSyncIn;
     QList<QAction*> m_serviceMenu;
 };
+
+ServiceRoot::LabelOperation operator|(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs);
+ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs);
 
 #endif // SERVICEROOT_H

@@ -3077,39 +3077,39 @@ Tokeny vyprší: %2</translation>
     <name>MessageBrowser</name>
     <message>
         <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-        <translation type="unfinished"/>
+        <translation>Klikli jste na odkaz. Můžete stáhnout obsah odkazu nebo ho otevřít v externím webovém prohlížeči.</translation>
     </message>
     <message>
         <source>What action do you want to take?</source>
-        <translation type="unfinished"/>
+        <translation>Co chcete dělat?</translation>
     </message>
     <message>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Otevřít v externím webovém prohlížeči</translation>
     </message>
     <message>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Stáhnout</translation>
     </message>
     <message>
         <source>Always open links in external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Vždy otevírat odkazy v ext. prohlížeči.</translation>
     </message>
     <message>
         <source>Incorrect link</source>
-        <translation type="unfinished"/>
+        <translation>Špatný odkaz</translation>
     </message>
     <message>
         <source>Selected hyperlink is invalid.</source>
-        <translation type="unfinished"/>
+        <translation>Vybraný odkaz je neplatný</translation>
     </message>
     <message>
         <source>Click this link to download it or open it with external browser.</source>
-        <translation type="unfinished"/>
+        <translation>Klikněte na tento odkaz pro stáhnutí jeho obsahu nebo pro jeho otevření v externím webovém prohlížeči.</translation>
     </message>
     <message>
         <source>image</source>
-        <translation type="unfinished"/>
+        <translation>obrázek</translation>
     </message>
 </context>
 <context>

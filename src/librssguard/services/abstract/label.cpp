@@ -41,7 +41,8 @@ int Label::countOfAllMessages() const {
 }
 
 bool Label::canBeEdited() const {
-  return true;
+  return (getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Editing) ==
+         ServiceRoot::LabelOperation::Editing;
 }
 
 bool Label::editViaGui() {
@@ -58,7 +59,8 @@ bool Label::editViaGui() {
 }
 
 bool Label::canBeDeleted() const {
-  return true;
+  return (getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Deleting) ==
+         ServiceRoot::LabelOperation::Deleting;
 }
 
 bool Label::deleteViaGui() {

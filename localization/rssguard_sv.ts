@@ -198,11 +198,11 @@
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
-        <translation type="unfinished"/>
+        <translation>Klicka för att ändra färg</translation>
     </message>
     <message>
         <source>Select new color</source>
-        <translation type="unfinished"/>
+        <translation>Välj ny färg</translation>
     </message>
 </context>
 <context>
@@ -310,7 +310,7 @@ Denna webbsida innehåller %n flöden.</numerusform></translation>
     </message>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
-        <translation type="unfinished"/>
+        <translation>Flöden har identifierats, men inget passande konto är konfigurerat.</translation>
     </message>
 </context>
 <context>
@@ -671,7 +671,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Context menu for label</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmeny för etikett</translation>
     </message>
 </context>
 <context>
@@ -819,27 +819,27 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Name for your label</source>
-        <translation type="unfinished"/>
+        <translation>Etikettnamn</translation>
     </message>
     <message>
         <source>Label&apos;s name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Etikettnamnet kan inte lämnas tomt.</translation>
     </message>
     <message>
         <source>Perfect!</source>
-        <translation type="unfinished"/>
+        <translation>Perfekt!</translation>
     </message>
     <message>
         <source>Hot stuff</source>
-        <translation type="unfinished"/>
+        <translation>Hett material</translation>
     </message>
     <message>
         <source>Create new label</source>
-        <translation type="unfinished"/>
+        <translation>Skapa ny etikett</translation>
     </message>
     <message>
         <source>Edit label &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Redigera etiketten &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -3067,7 +3067,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>New label</source>
-        <translation type="unfinished"/>
+        <translation>Ny etikett</translation>
     </message>
 </context>
 <context>

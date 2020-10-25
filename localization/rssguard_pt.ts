@@ -198,11 +198,11 @@
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
-        <translation type="unfinished"/>
+        <translation>Clique aqui para mudar a cor!</translation>
     </message>
     <message>
         <source>Select new color</source>
-        <translation type="unfinished"/>
+        <translation>Selecione a nova cor</translation>
     </message>
 </context>
 <context>
@@ -310,7 +310,7 @@ Este site contêm %n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
-        <translation type="unfinished"/>
+        <translation>Feeds foram detectados, mas nenhuma conta adequada foi configurada.</translation>
     </message>
 </context>
 <context>
@@ -671,7 +671,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Context menu for label</source>
-        <translation type="unfinished"/>
+        <translation>Menu de contexto para etiqueta</translation>
     </message>
 </context>
 <context>
@@ -819,27 +819,27 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Name for your label</source>
-        <translation type="unfinished"/>
+        <translation>Nome para a sua etiqueta</translation>
     </message>
     <message>
         <source>Label&apos;s name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>O nome da etiqueta não pode estar vazio.</translation>
     </message>
     <message>
         <source>Perfect!</source>
-        <translation type="unfinished"/>
+        <translation>Perfeito!</translation>
     </message>
     <message>
         <source>Hot stuff</source>
-        <translation type="unfinished"/>
+        <translation>Conteúdo em alta</translation>
     </message>
     <message>
         <source>Create new label</source>
-        <translation type="unfinished"/>
+        <translation>Criar nova etiqueta</translation>
     </message>
     <message>
         <source>Edit label &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Editar etiqueta &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -3068,7 +3068,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>New label</source>
-        <translation type="unfinished"/>
+        <translation>Nova etiqueta</translation>
     </message>
 </context>
 <context>

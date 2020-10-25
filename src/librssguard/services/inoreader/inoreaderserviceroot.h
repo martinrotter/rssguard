@@ -20,25 +20,24 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void setNetwork(InoreaderNetworkFactory* network);
     InoreaderNetworkFactory* network() const;
 
-    bool isSyncable() const;
-    bool canBeEdited() const;
-    bool editViaGui();
-    bool canBeDeleted() const;
-    bool deleteViaGui();
-    bool supportsFeedAdding() const;
-    bool supportsCategoryAdding() const;
-    void start(bool freshly_activated);
-    void stop();
-    QString code() const;
+    virtual LabelOperation supportedLabelOperations() const;
+    virtual bool isSyncable() const;
+    virtual bool canBeEdited() const;
+    virtual bool editViaGui();
+    virtual bool canBeDeleted() const;
+    virtual bool deleteViaGui();
+    virtual bool supportsFeedAdding() const;
+    virtual bool supportsCategoryAdding() const;
+    virtual void start(bool freshly_activated);
+    virtual void stop();
+    virtual QString code() const;
+    virtual QString additionalTooltip() const;
+    virtual void saveAllCachedData(bool async = true);
 
-    QString additionalTooltip() const;
-
-    RootItem* obtainNewTreeForSyncIn() const;
-
-    void saveAllCachedData(bool async = true);
-
-  public slots:
     void updateTitle();
+
+  protected:
+    virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
     void loadFromDatabase();

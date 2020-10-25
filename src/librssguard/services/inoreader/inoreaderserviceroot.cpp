@@ -77,6 +77,10 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
   }
 }
 
+ServiceRoot::LabelOperation InoreaderServiceRoot::supportedLabelOperations() const {
+  return ServiceRoot::LabelOperation(0);
+}
+
 bool InoreaderServiceRoot::isSyncable() const {
   return true;
 }

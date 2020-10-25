@@ -17,36 +17,32 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     void saveAccountDataToDatabase();
 
-    bool downloadAttachmentOnMyOwn(const QUrl& url) const;
-
     void setNetwork(GmailNetworkFactory* network);
     GmailNetworkFactory* network() const;
 
-    QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
-    QList<QAction*> serviceMenu();
-    bool isSyncable() const;
-    bool canBeEdited() const;
-    bool editViaGui();
-    bool canBeDeleted() const;
-    bool deleteViaGui();
-    bool supportsFeedAdding() const;
-    bool supportsCategoryAdding() const;
-    void start(bool freshly_activated);
-    void stop();
-    QString code() const;
+    virtual bool downloadAttachmentOnMyOwn(const QUrl& url) const;
+    virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
+    virtual QList<QAction*> serviceMenu();
+    virtual bool isSyncable() const;
+    virtual bool canBeEdited() const;
+    virtual bool editViaGui();
+    virtual bool canBeDeleted() const;
+    virtual bool deleteViaGui();
+    virtual bool supportsFeedAdding() const;
+    virtual bool supportsCategoryAdding() const;
+    virtual void start(bool freshly_activated);
+    virtual void stop();
+    virtual QString code() const;
+    virtual QString additionalTooltip() const;
+    virtual void saveAllCachedData(bool async = true);
 
-    QString additionalTooltip() const;
-
-    void saveAllCachedData(bool async = true);
-
-  public slots:
     void updateTitle();
 
   private slots:
     void replyToEmail();
 
   protected:
-    RootItem* obtainNewTreeForSyncIn() const;
+    virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
     void writeNewEmail();

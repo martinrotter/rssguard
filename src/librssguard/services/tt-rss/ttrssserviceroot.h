@@ -19,21 +19,19 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     explicit TtRssServiceRoot(RootItem* parent = nullptr);
     virtual ~TtRssServiceRoot();
 
-    void start(bool freshly_activated);
-    void stop();
-    QString code() const;
-
-    bool isSyncable() const;
-    bool canBeEdited() const;
-    bool canBeDeleted() const;
-    bool editViaGui();
-    bool deleteViaGui();
-    bool supportsFeedAdding() const;
-    bool supportsCategoryAdding() const;
-
-    QString additionalTooltip() const;
-
-    void saveAllCachedData(bool async = true);
+    virtual LabelOperation supportedLabelOperations() const;
+    virtual void start(bool freshly_activated);
+    virtual void stop();
+    virtual QString code() const;
+    virtual bool isSyncable() const;
+    virtual bool canBeEdited() const;
+    virtual bool canBeDeleted() const;
+    virtual bool editViaGui();
+    virtual bool deleteViaGui();
+    virtual bool supportsFeedAdding() const;
+    virtual bool supportsCategoryAdding() const;
+    virtual QString additionalTooltip() const;
+    virtual void saveAllCachedData(bool async = true);
 
     // Access to network.
     TtRssNetworkFactory* network() const;
@@ -42,10 +40,12 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void updateTitle();
 
   public slots:
-    void addNewFeed(RootItem* selected_item, const QString& url = QString());
+    virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
+
+  protected:
+    virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
-    RootItem* obtainNewTreeForSyncIn() const;
     void loadFromDatabase();
 
     TtRssNetworkFactory* m_network;

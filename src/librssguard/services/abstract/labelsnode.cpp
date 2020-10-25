@@ -54,14 +54,23 @@ QList<QAction*> LabelsNode::contextMenuFeedsList() {
 }
 
 void LabelsNode::createLabel() {
-  FormAddEditLabel frm(qApp->mainFormWidget());
-  Label* new_lbl = frm.execForAdd();
+  if ((getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Adding) == ServiceRoot::LabelOperation::Adding) {
+    FormAddEditLabel frm(qApp->mainFormWidget());
+    Label* new_lbl = frm.execForAdd();
 
-  if (new_lbl != nullptr) {
-    QSqlDatabase db = qApp->database()->connection(metaObject()->className());
+    if (new_lbl != nullptr) {
+      QSqlDatabase db = qApp->database()->connection(metaObject()->className());
 
-    DatabaseQueries::createLabel(db, new_lbl, getParentServiceRoot()->accountId());
+      DatabaseQueries::createLabel(db, new_lbl, getParentServiceRoot()->accountId());
 
-    getParentServiceRoot()->requestItemReassignment(new_lbl, this);
+      getParentServiceRoot()->requestItemReassignment(new_lbl, this);
+    }
+  }
+  else {
+    qApp->showGuiMessage(tr("This account does not allow you to create labels."),
+                         tr("Not allowed"),
+                         QSystemTrayIcon::MessageIcon::Critical,
+                         qApp->mainFormWidget(),
+                         true);
   }
 }

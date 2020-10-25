@@ -32,6 +32,10 @@ TtRssServiceRoot::~TtRssServiceRoot() {
   delete m_network;
 }
 
+ServiceRoot::LabelOperation TtRssServiceRoot::supportedLabelOperations() const {
+  return ServiceRoot::LabelOperation(0);
+}
+
 void TtRssServiceRoot::start(bool freshly_activated) {
   Q_UNUSED(freshly_activated)
   loadFromDatabase();

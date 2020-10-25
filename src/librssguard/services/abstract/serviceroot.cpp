@@ -223,6 +223,10 @@ bool ServiceRoot::supportsCategoryAdding() const {
   return false;
 }
 
+ServiceRoot::LabelOperation ServiceRoot::supportedLabelOperations() const {
+  return LabelOperation::Adding | LabelOperation::Editing | LabelOperation::Deleting;
+}
+
 void ServiceRoot::itemChanged(const QList<RootItem*>& items) {
   emit dataChanged(items);
 }
@@ -702,4 +706,12 @@ void ServiceRoot::assembleCategories(Assignment categories) {
       }
     }
   }
+}
+
+ServiceRoot::LabelOperation operator|(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs) {
+  return static_cast<ServiceRoot::LabelOperation>(static_cast<char>(lhs) | static_cast<char>(rhs));
+}
+
+ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs) {
+  return static_cast<ServiceRoot::LabelOperation>(static_cast<char>(lhs) & static_cast<char>(rhs));
 }

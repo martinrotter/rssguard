@@ -39,8 +39,10 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
   public slots:
     void addNewFeed(RootItem* selected_item, const QString& url);
 
+  protected:
+    virtual RootItem* obtainNewTreeForSyncIn() const;
+
   private:
-    RootItem* obtainNewTreeForSyncIn() const;
     void loadFromDatabase();
 
     OwnCloudNetworkFactory* m_network;
