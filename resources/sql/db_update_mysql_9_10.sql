@@ -1,3 +1,5 @@
+USE ##;
+-- !
 CREATE TABLE IF NOT EXISTS InoreaderAccounts (
   id              INTEGER,
   username        TEXT        NOT NULL,

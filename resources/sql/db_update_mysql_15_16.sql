@@ -1,3 +1,5 @@
+USE ##;
+-- !
 CREATE TABLE IF NOT EXISTS Labels (
   id                  INTEGER     PRIMARY KEY,
   name                TEXT        NOT NULL CHECK (name != ''),

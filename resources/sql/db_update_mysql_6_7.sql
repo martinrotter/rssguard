@@ -3,18 +3,18 @@ ALTER DATABASE ##
 CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 -- !
-USE ##
+USE ##;
 -- !
-ALTER TABLE messages
+ALTER TABLE Messages
 CONVERT TO CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 -- !
-ALTER TABLE messages
+ALTER TABLE Messages
 CHANGE title title TEXT
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 -- !
-ALTER TABLE messages
+ALTER TABLE Messages
 CHANGE contents contents TEXT
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;

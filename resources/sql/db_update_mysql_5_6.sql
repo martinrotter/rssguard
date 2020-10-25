@@ -1,3 +1,5 @@
+USE ##;
+-- !
 ALTER TABLE Messages
 ADD COLUMN custom_hash  TEXT;
 -- !

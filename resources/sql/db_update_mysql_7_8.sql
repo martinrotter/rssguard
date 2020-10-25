@@ -1,3 +1,5 @@
+USE ##;
+-- !
 CREATE TABLE IF NOT EXISTS Labels (
   id              INTEGER     AUTO_INCREMENT PRIMARY KEY,
   account_id      INTEGER     NOT NULL,

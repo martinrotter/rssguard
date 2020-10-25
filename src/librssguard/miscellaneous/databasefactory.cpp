@@ -498,6 +498,8 @@ bool DatabaseFactory::mysqlUpdateDatabaseSchema(const QSqlDatabase& database,
       QSqlQuery query = database.exec(statement.replace(APP_DB_NAME_PLACEHOLDER, db_name));
 
       if (query.lastError().isValid()) {
+        auto xx = query.lastError().text();
+
         qFatal("Query for updating database schema failed: '%s'.", qPrintable(query.lastError().text()));
       }
     }
@@ -772,7 +774,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString& connection_
       query_db.next();
       const QString installed_db_schema = query_db.value(0).toString();
 
-      if (installed_db_schema < APP_DB_SCHEMA_VERSION) {
+      if (installed_db_schema.toInt() < QString(APP_DB_SCHEMA_VERSION).toInt()) {
         if (mysqlUpdateDatabaseSchema(database, installed_db_schema, database_name)) {
           qDebugNN << LOGSEC_DB
                    << "Database schema was updated from '"

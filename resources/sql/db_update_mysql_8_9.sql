@@ -1,3 +1,5 @@
+USE ##;
+-- !
 ALTER TABLE OwnCloudAccounts
 ADD COLUMN msg_limit INTEGER NOT NULL DEFAULT -1 CHECK (msg_limit >= -1);
 -- !

@@ -1,3 +1,5 @@
+USE ##;
+-- !
 CREATE TABLE Accounts (
   id              INTEGER     PRIMARY KEY,
   type            TEXT        NOT NULL

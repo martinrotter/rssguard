@@ -1,3 +1,5 @@
+USE ##;
+-- !
 CREATE TABLE IF NOT EXISTS OwnCloudAccounts (
   id              INTEGER,
   username        TEXT        NOT NULL,
