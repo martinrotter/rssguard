@@ -26,8 +26,11 @@ DEFINES *= RSSGUARD_DLLSPEC=Q_DECL_EXPORT
 CONFIG += unversioned_libname unversioned_soname skip_target_version_ext
 
 RESOURCES += ../../resources/sql.qrc \
-             ../../resources/rssguard.qrc \
-             ../../resources/icons.qrc
+             ../../resources/rssguard.qrc
+
+!unix {
+  RESOURCES += ../../resources/icons.qrc
+}
 
 HEADERS += core/feeddownloader.h \
            core/feedsmodel.h \

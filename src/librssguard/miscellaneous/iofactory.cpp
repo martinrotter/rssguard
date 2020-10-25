@@ -80,10 +80,11 @@ bool IOFactory::startProcessDetached(const QString& program, const QStringList& 
 
 #if defined(Q_OS_WIN) || defined(Q_CLANG_QDOC)
   process.setNativeArguments(native_arguments);
+#else
+  Q_UNUSED(native_arguments)
 #endif
 
   process.setWorkingDirectory(working_directory);
-
   return process.startDetached(nullptr);
 }
 
