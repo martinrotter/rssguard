@@ -21,6 +21,8 @@ class QAction;
 class RSSGUARD_DLLSPEC RootItem : public QObject {
   Q_OBJECT
 
+  Q_PROPERTY(QString title READ title)
+
   public:
     enum class ReadStatus {
       Unread = 0,

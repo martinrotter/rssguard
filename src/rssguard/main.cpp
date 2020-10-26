@@ -6,6 +6,7 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "miscellaneous/application.h"
+#include "services/abstract/label.h"
 
 #if defined (Q_OS_MACOS)
 extern void disableWindowTabbing();
@@ -58,6 +59,8 @@ int main(int argc, char* argv[]) {
   // Register needed metatypes.
   qRegisterMetaType<QList<Message>>("QList<Message>");
   qRegisterMetaType<QList<RootItem*>>("QList<RootItem*>");
+  qRegisterMetaType<QList<Label*>>("QList<Label*>");
+  qRegisterMetaType<Label*>("Label*");
 
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.

@@ -7,8 +7,11 @@
 
 #include <QColor>
 
-class Label : public RootItem {
+class RSSGUARD_DLLSPEC Label : public RootItem {
   Q_OBJECT
+
+  Q_PROPERTY(QString customId READ customId)
+  Q_PROPERTY(QColor color READ color)
 
   public:
     explicit Label(const QString& name, const QColor& color, RootItem* parent_item = nullptr);

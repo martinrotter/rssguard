@@ -165,31 +165,31 @@ bool MessageObject::isDuplicateWithAttribute(int attribute_check) const {
   // Now we construct the query according to parameter.
   if ((attrs& DuplicationAttributeCheck::SameTitle) == DuplicationAttributeCheck::SameTitle) {
     where_clauses.append(QSL("title = :title"));
-    bind_values.append({":title", title()});
+    bind_values.append({ ":title", title() });
   }
 
   if ((attrs& DuplicationAttributeCheck::SameUrl) == DuplicationAttributeCheck::SameUrl) {
     where_clauses.append(QSL("url = :url"));
-    bind_values.append({":url", url()});
+    bind_values.append({ ":url", url() });
   }
 
   if ((attrs& DuplicationAttributeCheck::SameAuthor) == DuplicationAttributeCheck::SameAuthor) {
     where_clauses.append(QSL("author = :author"));
-    bind_values.append({":author", author()});
+    bind_values.append({ ":author", author() });
   }
 
   if ((attrs& DuplicationAttributeCheck::SameDateCreated) == DuplicationAttributeCheck::SameDateCreated) {
     where_clauses.append(QSL("date_created = :date_created"));
-    bind_values.append({":date_created", created().toMSecsSinceEpoch()});
+    bind_values.append({ ":date_created", created().toMSecsSinceEpoch() });
   }
 
   where_clauses.append(QSL("account_id = :account_id"));
-  bind_values.append({":account_id", accountId()});
+  bind_values.append({ ":account_id", accountId() });
 
   if ((attrs& DuplicationAttributeCheck::AllFeedsSameAccount) != DuplicationAttributeCheck::AllFeedsSameAccount) {
     // Limit to current feed.
     where_clauses.append(QSL("feed = :feed"));
-    bind_values.append({":feed", feedCustomId()});
+    bind_values.append({ ":feed", feedCustomId() });
   }
 
   QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
@@ -288,4 +288,8 @@ QString MessageObject::feedCustomId() const {
 
 int MessageObject::accountId() const {
   return m_accountId;
+}
+
+QList<Label*> MessageObject::assignedLabels() const {
+  return m_message->m_assignedLabels;
 }

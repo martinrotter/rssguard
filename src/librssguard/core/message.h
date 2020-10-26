@@ -118,6 +118,7 @@ inline DuplicationAttributeCheck operator&(DuplicationAttributeCheck lhs, Duplic
 class MessageObject : public QObject {
   Q_OBJECT
 
+  Q_PROPERTY(QList<Label*> assignedLabels READ assignedLabels)
   Q_PROPERTY(QString feedCustomId READ feedCustomId)
   Q_PROPERTY(int accountId READ accountId)
   Q_PROPERTY(QString title READ title WRITE setTitle)
@@ -137,6 +138,8 @@ class MessageObject : public QObject {
     // Parameter "attribute_check" is DuplicationAttributeCheck enum
     // value casted to int.
     Q_INVOKABLE bool isDuplicateWithAttribute(int attribute_check) const;
+
+    QList<Label*> assignedLabels() const;
 
     // Generic Message's properties bindings.
     QString feedCustomId() const;
