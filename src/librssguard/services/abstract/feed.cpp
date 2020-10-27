@@ -71,13 +71,13 @@ QVariant Feed::data(int column, int role) const {
     case Qt::ForegroundRole:
       switch (status()) {
         case Status::NewMessages:
-          return QColor(Qt::blue);
+          return qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight];
 
         case Status::NetworkError:
         case Status::ParsingError:
         case Status::AuthError:
         case Status::OtherError:
-          return QColor(Qt::red);
+          return qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Error];
 
         default:
           return QVariant();

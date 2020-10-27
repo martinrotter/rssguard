@@ -12,7 +12,8 @@
 
 struct RSSGUARD_DLLSPEC Skin {
   enum class PaletteColors {
-    Highlight = 1
+    Highlight = 1,
+    Error = 2
   };
 
   QString m_baseName;
@@ -26,7 +27,6 @@ struct RSSGUARD_DLLSPEC Skin {
   QString m_enclosureImageMarkup;
   QString m_layoutMarkup;
   QString m_enclosureMarkup;
-
   QHash<Skin::PaletteColors, QColor> m_colorPalette;
 };
 

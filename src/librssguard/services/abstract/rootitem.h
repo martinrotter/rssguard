@@ -21,6 +21,7 @@ class QAction;
 class RSSGUARD_DLLSPEC RootItem : public QObject {
   Q_OBJECT
 
+  // Added for message filtering with labels.
   Q_PROPERTY(QString title READ title)
 
   public:

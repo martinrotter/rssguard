@@ -10,6 +10,7 @@
 class RSSGUARD_DLLSPEC Label : public RootItem {
   Q_OBJECT
 
+  // Added for message filtering with labels.
   Q_PROPERTY(QString customId READ customId)
   Q_PROPERTY(QColor color READ color)
 
