@@ -642,7 +642,7 @@ QList<Message>OwnCloudGetMessagesResponse::messages() const {
     msg.m_contents = message_map["body"].toString();
     msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].toDouble() * 1000);
     msg.m_createdFromFeed = true;
-    msg.m_customId = QString::number(message_map["id"].toInt());
+    msg.m_customId = message_map["id"].isString() ? message_map["id"].toString() : QString::number(message_map["id"].toInt());
     msg.m_customHash = message_map["guidHash"].toString();
 
     QString enclosure_link = message_map["enclosureLink"].toString();
