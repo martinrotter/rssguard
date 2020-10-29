@@ -67,6 +67,7 @@ HEADERS += core/feeddownloader.h \
            gui/feedstoolbar.h \
            gui/feedsview.h \
            gui/guiutilities.h \
+           gui/labelsmenu.h \
            gui/labelwithstatus.h \
            gui/lineeditwithstatus.h \
            gui/messagebox.h \
@@ -218,6 +219,7 @@ SOURCES += core/feeddownloader.cpp \
            gui/feedstoolbar.cpp \
            gui/feedsview.cpp \
            gui/guiutilities.cpp \
+           gui/labelsmenu.cpp \
            gui/labelwithstatus.cpp \
            gui/lineeditwithstatus.cpp \
            gui/messagebox.cpp \

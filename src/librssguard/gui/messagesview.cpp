@@ -6,6 +6,7 @@
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "gui/dialogs/formmain.h"
+#include "gui/labelsmenu.h"
 #include "gui/messagebox.h"
 #include "gui/styleditemdelegatewithoutfocus.h"
 #include "gui/treeviewcolumnsmenu.h"
@@ -14,6 +15,7 @@
 #include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QFileIconProvider>
@@ -192,31 +194,51 @@ void MessagesView::initializeContextMenu() {
   }
 
   m_contextMenu->clear();
+  QList<Message> selected_messages;
 
+  if (m_sourceModel->loadedItem() != nullptr) {
+    QModelIndexList selected_indexes = selectionModel()->selectedRows();
+    const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+    auto rows = boolinq::from(mapped_indexes).select([](const QModelIndex& idx) {
+      return idx.row();
+    }).toStdList();
+
+    selected_messages = m_sourceModel->messagesAt(FROM_STD_LIST(QList<int>, rows));
+  }
+
+  // External tools.
   QFileIconProvider icon_provider;
-  QMenu* menu = new QMenu(tr("Open with external tool"), m_contextMenu);
+  QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), m_contextMenu);
 
-  menu->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
+  menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 
   for (const ExternalTool& tool : ExternalTool::toolsFromSettings()) {
-    QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu);
+    QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
 
     act_tool->setIcon(icon_provider.icon(tool.executable()));
     act_tool->setToolTip(tool.executable());
     act_tool->setData(QVariant::fromValue(tool));
-    menu->addAction(act_tool);
+    menu_ext_tools->addAction(act_tool);
 
     connect(act_tool, &QAction::triggered, this, &MessagesView::openSelectedMessagesWithExternalTool);
   }
 
-  if (menu->actions().isEmpty()) {
+  if (menu_ext_tools->actions().isEmpty()) {
     QAction* act_not_tools = new QAction("No external tools activated");
 
     act_not_tools->setEnabled(false);
-    menu->addAction(act_not_tools);
+    menu_ext_tools->addAction(act_not_tools);
   }
 
-  m_contextMenu->addMenu(menu);
+  // Labels.
+  auto labels = m_sourceModel->loadedItem() != nullptr
+                                               ? m_sourceModel->loadedItem()->getParentServiceRoot()->labelsNode()->labels()
+                                               : QList<Label*>();
+  LabelsMenu* menu_labels = new LabelsMenu(selected_messages, labels, m_contextMenu);
+
+  // Rest.
+  m_contextMenu->addMenu(menu_ext_tools);
+  m_contextMenu->addMenu(menu_labels);
   m_contextMenu->addActions(
     QList<QAction*>()
       << qApp->mainForm()->m_ui->m_actionSendMessageViaEmail
@@ -232,13 +254,7 @@ void MessagesView::initializeContextMenu() {
       m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessages);
     }
 
-    QModelIndexList selected_indexes = selectionModel()->selectedRows();
-    const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
-    auto rows = boolinq::from(mapped_indexes).select([](const QModelIndex& idx) {
-      return idx.row();
-    }).toStdList();
-    auto messages = m_sourceModel->messagesAt(FROM_STD_LIST(QList<int>, rows));
-    auto extra_context_menu = m_sourceModel->loadedItem()->getParentServiceRoot()->contextMenuMessagesList(messages);
+    auto extra_context_menu = m_sourceModel->loadedItem()->getParentServiceRoot()->contextMenuMessagesList(selected_messages);
 
     if (!extra_context_menu.isEmpty()) {
       m_contextMenu->addSeparator();
