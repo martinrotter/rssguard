@@ -236,6 +236,17 @@ void MessagesView::initializeContextMenu() {
                                                : QList<Label*>();
   LabelsMenu* menu_labels = new LabelsMenu(selected_messages, labels, m_contextMenu);
 
+  connect(menu_labels, &LabelsMenu::labelsChanged, this, [this]() {
+    QModelIndex current_index = selectionModel()->currentIndex();
+
+    if (current_index.isValid()) {
+      emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()), m_sourceModel->loadedItem());
+    }
+    else {
+      emit currentMessageRemoved();
+    }
+  });
+
   // Rest.
   m_contextMenu->addMenu(menu_ext_tools);
   m_contextMenu->addMenu(menu_labels);

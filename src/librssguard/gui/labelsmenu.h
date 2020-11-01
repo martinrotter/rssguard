@@ -3,14 +3,11 @@
 #ifndef LABELSMENU_H
 #define LABELSMENU_H
 
-#include <QMenu>
-#include <QWidgetAction>
+#include "gui/nonclosablemenu.h"
 
 #include "services/abstract/label.h"
 
-class QCheckBox;
-
-class LabelsMenu : public QMenu {
+class LabelsMenu : public NonClosableMenu {
   Q_OBJECT
 
   public:
@@ -19,22 +16,30 @@ class LabelsMenu : public QMenu {
   protected:
     virtual void keyPressEvent(QKeyEvent* event);
     virtual void mousePressEvent(QMouseEvent* event);
-    virtual void mouseReleaseEvent(QMouseEvent* event);
+
+  signals:
+    void labelsChanged();
+
+  private slots:
+    void changeLabelAssignment(Qt::CheckState state);
 
   private:
-    void addLabelAction(const Label* label, Qt::CheckState state);
+    void addLabelAction(Label* label, Qt::CheckState state);
+
+  private:
+    QList<Message> m_messages;
 };
 
 class LabelAction : public QAction {
   Q_OBJECT
 
   public:
-    explicit LabelAction(const Label* label, QWidget* parent_widget, QObject* parent);
+    explicit LabelAction(Label* label, QWidget* parent_widget, QObject* parent);
 
     Qt::CheckState checkState() const;
     void setCheckState(Qt::CheckState state);
 
-    const Label* label() const;
+    Label* label() const;
 
   public slots:
     void toggle();
@@ -46,7 +51,7 @@ class LabelAction : public QAction {
     void updateActionForState();
 
   private:
-    const Label* m_label;
+    Label* m_label;
     QWidget* m_parentWidget;
     Qt::CheckState m_checkState;
 };

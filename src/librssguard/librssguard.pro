@@ -74,6 +74,7 @@ HEADERS += core/feeddownloader.h \
            gui/messagessearchlineedit.h \
            gui/messagestoolbar.h \
            gui/messagesview.h \
+           gui/nonclosablemenu.h \
            gui/plaintoolbutton.h \
            gui/settings/settingsbrowsermail.h \
            gui/settings/settingsdatabase.h \
@@ -226,6 +227,7 @@ SOURCES += core/feeddownloader.cpp \
            gui/messagessearchlineedit.cpp \
            gui/messagestoolbar.cpp \
            gui/messagesview.cpp \
+           gui/nonclosablemenu.cpp \
            gui/plaintoolbutton.cpp \
            gui/settings/settingsbrowsermail.cpp \
            gui/settings/settingsdatabase.cpp \

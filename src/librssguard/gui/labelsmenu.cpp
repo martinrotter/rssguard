@@ -11,9 +11,9 @@
 #include <QKeyEvent>
 #include <QPainter>
 
-LabelsMenu::LabelsMenu(const QList<Message>& messages, const QList<Label*>& labels, QWidget* parent) : QMenu(parent) {
+LabelsMenu::LabelsMenu(const QList<Message>& messages, const QList<Label*>& labels, QWidget* parent)
+  : NonClosableMenu(tr("Labels"), parent), m_messages(messages) {
   setIcon(qApp->icons()->fromTheme(QSL("tag-folder")));
-  setTitle(tr("Labels"));
 
   if (labels.isEmpty()) {
     QAction* act_not_labels = new QAction("No labels found");
@@ -52,9 +52,8 @@ void LabelsMenu::keyPressEvent(QKeyEvent* event) {
   if (act != nullptr && event->key() == Qt::Key::Key_Space) {
     act->toggle();
   }
-  else {
-    QMenu::keyPressEvent(event);
-  }
+
+  NonClosableMenu::keyPressEvent(event);
 }
 
 void LabelsMenu::mousePressEvent(QMouseEvent* event) {
@@ -63,23 +62,41 @@ void LabelsMenu::mousePressEvent(QMouseEvent* event) {
   if (act != nullptr) {
     act->toggle();
   }
-  else {
-    QMenu::mousePressEvent(event);
+
+  NonClosableMenu::mousePressEvent(event);
+}
+
+void LabelsMenu::changeLabelAssignment(Qt::CheckState state) {
+  LabelAction* origin = qobject_cast<LabelAction*>(sender());
+
+  if (origin != nullptr) {
+    if (state == Qt::CheckState::Checked) {
+      // Assign this label to selected messages.
+      for (const auto& msg : m_messages) {
+        origin->label()->assignToMessage(msg);
+      }
+    }
+    else if (state == Qt::CheckState::Unchecked) {
+      // Remove label from selected messages.
+      for (const auto& msg : m_messages) {
+        origin->label()->deassignFromMessage(msg);
+      }
+    }
   }
+
+  emit labelsChanged();
 }
 
-void LabelsMenu::mouseReleaseEvent(QMouseEvent* event) {
-  Q_UNUSED(event)
-}
-
-void LabelsMenu::addLabelAction(const Label* label, Qt::CheckState state) {
+void LabelsMenu::addLabelAction(Label* label, Qt::CheckState state) {
   auto* act = new LabelAction(label, this, this);
 
   act->setCheckState(state);
   addAction(act);
+
+  connect(act, &LabelAction::checkStateChanged, this, &LabelsMenu::changeLabelAssignment);
 }
 
-LabelAction::LabelAction(const Label* label, QWidget* parent_widget, QObject* parent)
+LabelAction::LabelAction(Label* label, QWidget* parent_widget, QObject* parent)
   : QAction(parent), m_label(label), m_parentWidget(parent_widget), m_checkState(Qt::CheckState::Unchecked) {
   setText(label->title());
   setIconVisibleInMenu(true);
@@ -100,7 +117,7 @@ void LabelAction::setCheckState(Qt::CheckState state) {
   }
 }
 
-const Label* LabelAction::label() const {
+Label* LabelAction::label() const {
   return m_label;
 }
 
