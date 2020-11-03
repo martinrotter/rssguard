@@ -183,7 +183,8 @@ void TabWidget::closeAllTabs() {
 }
 
 int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) {
-  NewspaperPreviewer* prev = new NewspaperPreviewer(root, messages, this);
+  int msg_height = height() - tabBar()->height() - 50;
+  NewspaperPreviewer* prev = new NewspaperPreviewer(msg_height, root, messages, this);
 
   connect(prev, &NewspaperPreviewer::markMessageRead,
           m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageReadById);

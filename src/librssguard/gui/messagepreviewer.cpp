@@ -105,13 +105,11 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
     updateLabels(false);
     show();
     m_actionSwitchImportance->setChecked(m_message.m_isImportant);
-    m_txtMessage->loadMessage(message, root);
+    m_txtMessage->loadMessage(message, m_root);
 
     if (same_message) {
       m_txtMessage->setVerticalScrollBarPosition(m_verticalScrollBarPosition);
     }
-
-    auto labels = m_root->getParentServiceRoot()->labelsNode()->labels();
   }
 }
 

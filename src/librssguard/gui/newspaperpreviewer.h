@@ -28,13 +28,13 @@ class NewspaperPreviewer : public TabContent {
   Q_OBJECT
 
   public:
-    explicit NewspaperPreviewer(RootItem* root, QList<Message> messages, QWidget* parent = nullptr);
+    explicit NewspaperPreviewer(int msg_height, RootItem* root, QList<Message> messages, QWidget* parent = nullptr);
 
 #if defined(USE_WEBENGINE)
     WebBrowser* webBrowser() const;
 #endif
 
-  private slots:
+  public slots:
     void showMoreMessages();
 
   signals:
@@ -42,6 +42,7 @@ class NewspaperPreviewer : public TabContent {
     void markMessageImportant(int id, RootItem::Importance important);
 
   private:
+    int m_msgHeight;
     QScopedPointer<Ui::NewspaperPreviewer> m_ui;
     QPointer<RootItem> m_root;
     QList<Message> m_messages;

@@ -8,8 +8,8 @@
 
 #include <QScrollBar>
 
-NewspaperPreviewer::NewspaperPreviewer(RootItem* root, QList<Message> messages, QWidget* parent)
-  : TabContent(parent), m_ui(new Ui::NewspaperPreviewer), m_root(root), m_messages(std::move(messages)) {
+NewspaperPreviewer::NewspaperPreviewer(int msg_height, RootItem* root, QList<Message> messages, QWidget* parent)
+  : TabContent(parent), m_msgHeight(msg_height), m_ui(new Ui::NewspaperPreviewer), m_root(root), m_messages(std::move(messages)) {
   m_ui->setupUi(this);
   connect(m_ui->m_btnShowMoreMessages, &QPushButton::clicked, this, &NewspaperPreviewer::showMoreMessages);
   showMoreMessages();
@@ -37,9 +37,9 @@ void NewspaperPreviewer::showMoreMessages() {
 
       prev->layout()->setContentsMargins(margins);
 
-      prev->setFixedHeight(300);
-      prev->loadMessage(msg, m_root);
-      m_ui->m_layout->insertWidget(m_ui->m_layout->count() - 2, prev);
+      prev->setFixedHeight(m_msgHeight);
+      prev->loadMessage(msg, m_root.data());
+      m_ui->m_layout->insertWidget(m_ui->m_layout->count() - 1, prev);
     }
 
     m_ui->m_btnShowMoreMessages->setText(tr("Show more messages (%n remaining)", "", m_messages.size()));
