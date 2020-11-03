@@ -42,7 +42,7 @@ class LabelAction : public QAction {
     Label* label() const;
 
   public slots:
-    void toggle();
+    void toggleCheckState();
 
   signals:
     void checkStateChanged(Qt::CheckState state);

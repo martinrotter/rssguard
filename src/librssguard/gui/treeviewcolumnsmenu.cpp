@@ -4,7 +4,7 @@
 
 #include <QHeaderView>
 
-TreeViewColumnsMenu::TreeViewColumnsMenu(QHeaderView* parent) : QMenu(parent) {
+TreeViewColumnsMenu::TreeViewColumnsMenu(QHeaderView* parent) : NonClosableMenu(parent) {
   connect(this, &TreeViewColumnsMenu::aboutToShow, this, &TreeViewColumnsMenu::prepareMenu);
 }
 
@@ -17,6 +17,7 @@ void TreeViewColumnsMenu::prepareMenu() {
     act->setData(i);
     act->setCheckable(true);
     act->setChecked(!header_view->isSectionHidden(i));
+
     connect(act, &QAction::toggled, this, &TreeViewColumnsMenu::actionTriggered);
   }
 }

@@ -3,11 +3,11 @@
 #ifndef TREEVIEWCOLUMNSMENU_H
 #define TREEVIEWCOLUMNSMENU_H
 
-#include <QMenu>
+#include "gui/nonclosablemenu.h"
 
 class QHeaderView;
 
-class TreeViewColumnsMenu : public QMenu {
+class TreeViewColumnsMenu : public NonClosableMenu {
   public:
     explicit TreeViewColumnsMenu(QHeaderView* parent);
 
