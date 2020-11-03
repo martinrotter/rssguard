@@ -17,6 +17,7 @@
 #include "miscellaneous/systemfactory.h"
 #include "network-web/downloadmanager.h"
 
+#include <QCommandLineParser>
 #include <QList>
 
 #include <functional>
@@ -66,6 +67,7 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     // Check whether CURRENT VERSION of the application starts for the first time.
     bool isFirstRunCurrentVersion() const;
 
+    QCommandLineParser* cmdParser();
     WebFactory* web() const;
     SystemFactory* system();
     SkinFactory* skins();
@@ -116,6 +118,11 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     // Returns pointer to "GOD" application singleton.
     static Application* instance();
 
+    // Custom debug/console log handler.
+    static void performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg);
+
+  //static QString s_customLogFile;
+
   public slots:
 
     // Restarts the application.
@@ -138,6 +145,10 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
   private:
     void determineFirstRuns();
     void eliminateFirstRuns();
+    void parseCmdArguments();
+
+  private:
+    QCommandLineParser m_cmdParser;
 
 #if defined(USE_WEBENGINE)
     NetworkUrlInterceptor* m_urlInterceptor;

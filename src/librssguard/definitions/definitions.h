@@ -270,6 +270,7 @@
 #define qInfoNN qInfo().noquote().nospace()
 #endif
 
+#define NONQUOTE_W_SPACE_DOT(x) " " << (x) << "."
 #define QUOTE_W_SPACE_DOT(x) " '" << (x) << "'."
 #define QUOTE_W_SPACE(x) " '" << (x) << "' "
 #define QUOTE_NO_SPACE(x) "'" << (x) << "'"

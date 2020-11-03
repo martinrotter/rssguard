@@ -77,23 +77,23 @@ void IconFactory::loadCurrentIconTheme() {
   }
 
   // Display list of installed themes.
-  qDebug("Installed icon themes are: %s.",
-         qPrintable(QStringList(installed_themes)
-                    .replaceInStrings(QRegularExpression(QSL("^|$")), QSL("\'"))
-                    .replaceInStrings(QRegularExpression(QSL("^\\'$")), QSL("\'\'")).join(QSL(", "))));
+  qDebugNN << LOGSEC_GUI << "Installed icon themes are: %s.",
+    qPrintable(QStringList(installed_themes)
+               .replaceInStrings(QRegularExpression(QSL("^|$")), QSL("\'"))
+               .replaceInStrings(QRegularExpression(QSL("^\\'$")), QSL("\'\'")).join(QSL(", ")));
 
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.
 #if defined(Q_OS_LINUX)
     if (theme_name_from_settings.isEmpty()) {
-      qDebug("Loading default system icon theme.");
+      qDebugNN << LOGSEC_GUI << "Loading default system icon theme.";
     }
     else {
-      qDebug("Loading icon theme '%s'.", qPrintable(theme_name_from_settings));
+      qDebugNN << LOGSEC_GUI << "Loading icon theme" << QUOTE_W_SPACE_DOT(theme_name_from_settings);
       QIcon::setThemeName(theme_name_from_settings);
     }
 #else
-    qDebug("Loading icon theme '%s'.", qPrintable(theme_name_from_settings));
+    qDebugNN << LOGSEC_GUI << "Loading icon theme" << QUOTE_W_SPACE_DOT(theme_name_from_settings);
     QIcon::setThemeName(theme_name_from_settings);
 #endif
   }
@@ -101,11 +101,13 @@ void IconFactory::loadCurrentIconTheme() {
     // Desired icon theme is not currently available.
     // Activate "default" or "no" icon theme instead.
 #if defined(Q_OS_LINUX)
-    qWarning("Icon theme '%s' cannot be loaded. Activating \"system default\" icon theme.",
-             qPrintable(theme_name_from_settings));
+    qWarningNN << "Icon theme"
+               << QUOTE_W_SPACE(theme_name_from_settings)
+               << "cannot be loaded because it is not installed. Activating \"no\" icon theme.";
 #else
-    qWarning("Icon theme '%s' cannot be loaded because it is not installed. Activating \"no\" icon theme.",
-             qPrintable(theme_name_from_settings));
+    qWarningNN << "Icon theme"
+               << QUOTE_W_SPACE(theme_name_from_settings)
+               << "cannot be loaded because it is not installed. Activating \"no\" icon theme.";
     QIcon::setThemeName(APP_NO_THEME);
 #endif
   }

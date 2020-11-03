@@ -21,6 +21,8 @@
 #include "services/standard/standardserviceroot.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
+#include <iostream>
+
 #include <QProcess>
 #include <QSessionManager>
 
@@ -53,8 +55,10 @@ Application::Application(const QString& id, int& argc, char** argv)
   m_localization(new Localization(this)), m_icons(new IconFactory(this)),
   m_database(new DatabaseFactory(this)), m_downloadManager(nullptr), m_shouldRestart(false) {
 
+  parseCmdArguments();
+
   // Setup debug output system.
-  qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
+  qInstallMessageHandler(performLogging);
   determineFirstRuns();
 
   //: Abbreviation of language, e.g. en.
@@ -100,6 +104,33 @@ Application::Application(const QString& id, int& argc, char** argv)
 
 Application::~Application() {
   qDebugNN << LOGSEC_CORE << "Destroying Application instance.";
+}
+
+QString s_customLogFile = QString();
+
+void Application::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg) {
+#ifndef QT_NO_DEBUG_OUTPUT
+  QString console_message = qFormatLogMessage(type, context, msg);
+  std::wcout << console_message.toStdWString() << std::endl;
+
+  if (!s_customLogFile.isEmpty()) {
+    QFile log_file(s_customLogFile);
+
+    if (log_file.open(QFile::OpenModeFlag::Append | QFile::OpenModeFlag::Unbuffered)) {
+      log_file.write(console_message.toUtf8());
+      log_file.write(QSL("\r\n").toUtf8());
+      log_file.close();
+    }
+  }
+
+  if (type == QtMsgType::QtFatalMsg) {
+    qApp->exit(EXIT_FAILURE);
+  }
+#else
+  Q_UNUSED(type)
+  Q_UNUSED(context)
+  Q_UNUSED(msg)
+#endif
 }
 
 void Application::reactOnForeignNotifications() {
@@ -164,6 +195,10 @@ bool Application::isFirstRun() const {
 
 bool Application::isFirstRunCurrentVersion() const {
   return m_firstRunCurrentVersion;
+}
+
+QCommandLineParser* Application::cmdParser() {
+  return &m_cmdParser;
 }
 
 WebFactory* Application::web() const {
@@ -518,4 +553,17 @@ void Application::determineFirstRuns() {
                                                true).toBool();
 
   eliminateFirstRuns();
+}
+
+void Application::parseCmdArguments() {
+  QCommandLineOption log_file(QStringList() << "l" << "log", "Write application debug log to file.", "log-file");
+
+  m_cmdParser.addOption(log_file);
+  m_cmdParser.addHelpOption();
+  m_cmdParser.addVersionOption();
+  m_cmdParser.setApplicationDescription(APP_NAME);
+
+  m_cmdParser.process(*this);
+
+  s_customLogFile = m_cmdParser.value(QSL("l"));
 }

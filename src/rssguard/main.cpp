@@ -14,16 +14,7 @@ extern void disableWindowTabbing();
 #endif
 
 int main(int argc, char* argv[]) {
-  for (int i = 0; i < argc; i++) {
-    const QString str = QString::fromLocal8Bit(argv[i]);
-
-    if (str == "-h") {
-      qDebug("Usage: rssguard [OPTIONS]\n\n"
-             "Option\t\tMeaning\n"
-             "-h\t\tDisplays this help.");
-      return EXIT_SUCCESS;
-    }
-  }
+  qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
 
   QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
   QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -43,12 +34,12 @@ int main(int argc, char* argv[]) {
   // Instantiate base application object.
   Application application(APP_LOW_NAME, argc, argv);
 
-  qDebug("Starting %s.", qPrintable(QSL(APP_LONG_NAME)));
-  qDebug("Instantiated Application class.");
+  qDebugNN << LOGSEC_CORE << "Starting" << NONQUOTE_W_SPACE_DOT(APP_LONG_NAME);
+  qDebugNN << LOGSEC_CORE << "Instantiated class " << QUOTE_W_SPACE_DOT(application.metaObject()->className());
 
   // Check if another instance is running.
   if (application.isAlreadyRunning()) {
-    qWarning("Another instance of the application is already running. Notifying it.");
+    qWarningNN << LOGSEC_CORE << "Another instance of the application is already running. Notifying it.";
     return EXIT_FAILURE;
   }
 
