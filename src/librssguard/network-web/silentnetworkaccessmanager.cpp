@@ -31,7 +31,7 @@ void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply* reply, 
   else {
     reply->setProperty("authentication-given", false);
 
-    // Authentication is required but this feed does not contain it.
+    // Authentication is required but this item does not contain it.
     qWarningNN << LOGSEC_NETWORK
                << "Item"
                << QUOTE_W_SPACE(reply->url().toString())
