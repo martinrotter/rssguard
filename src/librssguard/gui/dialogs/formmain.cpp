@@ -150,6 +150,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionTabsPrevious;
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
   actions << m_ui->m_actionOpenSelectedMessagesInternally;
+  actions << m_ui->m_actionAlternateColorsInLists;
   actions << m_ui->m_actionMessagePreviewEnabled;
   actions << m_ui->m_actionMarkAllItemsRead;
   actions << m_ui->m_actionMarkSelectedItemsAsRead;
@@ -590,13 +591,15 @@ void FormMain::loadSize() {
   m_ui->m_actionSwitchListHeaders->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ListHeadersVisible)).toBool());
   m_ui->m_actionSwitchStatusBar->setChecked(settings->value(GROUP(GUI), SETTING(GUI::StatusBarVisible)).toBool());
 
-  // Make sure that only unread feeds/messages are shown if user has that feature set on.
+  // Other startup GUI-related settings.
   m_ui->m_actionShowOnlyUnreadItems->setChecked(settings->value(GROUP(Feeds),
                                                                 SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
   m_ui->m_actionShowTreeBranches->setChecked(settings->value(GROUP(Feeds),
                                                              SETTING(Feeds::ShowTreeBranches)).toBool());
   m_ui->m_actionShowOnlyUnreadMessages->setChecked(settings->value(GROUP(Messages),
                                                                    SETTING(Messages::ShowOnlyUnreadMessages)).toBool());
+  m_ui->m_actionAlternateColorsInLists->setChecked(settings->value(GROUP(GUI),
+                                                                   SETTING(GUI::AlternateRowColorsInLists)).toBool());
 }
 
 void FormMain::saveSize() {
@@ -760,6 +763,8 @@ void FormMain::createConnections() {
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadFeeds);
   connect(m_ui->m_actionShowTreeBranches, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowFeedTreeBranches);
+  connect(m_ui->m_actionAlternateColorsInLists, &QAction::toggled,
+          tabWidget()->feedMessageViewer(), &FeedMessageViewer::alternateRowColorsInLists);
   connect(m_ui->m_actionShowOnlyUnreadMessages, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadMessages);
   connect(m_ui->m_actionRestoreSelectedMessages, &QAction::triggered,

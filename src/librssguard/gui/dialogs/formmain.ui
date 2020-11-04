@@ -84,6 +84,7 @@
     </widget>
     <addaction name="m_menuShowHide"/>
     <addaction name="m_actionFullscreen"/>
+    <addaction name="m_actionAlternateColorsInLists"/>
     <addaction name="m_actionSwitchMainWindow"/>
     <addaction name="m_actionSwitchMessageListOrientation"/>
    </widget>
@@ -773,6 +774,14 @@
   <action name="m_actionUpdateSelectedItemsWithCustomTimers">
    <property name="text">
     <string>Update items with custom &amp;timers</string>
+   </property>
+  </action>
+  <action name="m_actionAlternateColorsInLists">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Alternate row colors in lists</string>
    </property>
   </action>
  </widget>

@@ -34,60 +34,49 @@ namespace WebEngineAttributes {
 
 namespace AdBlock {
   KEY ID;
-  KEY AdBlockEnabled;
 
+  KEY AdBlockEnabled;
   VALUE(bool) AdBlockEnabledDef;
 
   KEY DisabledRules;
-
   VALUE(QStringList) DisabledRulesDef;
 
   KEY LastUpdatedOn;
-
   VALUE(QDateTime) LastUpdatedOnDef;
 }
 
 // Feeds.
 namespace Feeds {
   KEY ID;
-  KEY UpdateTimeout;
 
+  KEY UpdateTimeout;
   VALUE(int) UpdateTimeoutDef;
 
   KEY EnableAutoUpdateNotification;
-
   VALUE(bool) EnableAutoUpdateNotificationDef;
 
   KEY CountFormat;
-
   VALUE(char*) CountFormatDef;
 
   KEY AutoUpdateInterval;
-
   VALUE(int) AutoUpdateIntervalDef;
 
   KEY AutoUpdateEnabled;
-
   VALUE(bool) AutoUpdateEnabledDef;
 
   KEY AutoUpdateOnlyUnfocused;
-
   VALUE(bool) AutoUpdateOnlyUnfocusedDef;
 
   KEY FeedsUpdateOnStartup;
-
   VALUE(bool) FeedsUpdateOnStartupDef;
 
   KEY FeedsUpdateStartupDelay;
-
   VALUE(double) FeedsUpdateStartupDelayDef;
 
   KEY ShowOnlyUnreadFeeds;
-
   VALUE(bool) ShowOnlyUnreadFeedsDef;
 
   KEY ShowTreeBranches;
-
   VALUE(bool) ShowTreeBranchesDef;
 
   KEY ListFont;
@@ -96,26 +85,22 @@ namespace Feeds {
 // Messages.
 namespace Messages {
   KEY ID;
-  KEY MessageHeadImageHeight;
 
+  KEY MessageHeadImageHeight;
   VALUE(int) MessageHeadImageHeightDef;
 
   KEY EnableMessagePreview;
-
   VALUE(bool) EnableMessagePreviewDef;
 
 #if !defined (USE_WEBENGINE)
   KEY DisplayImagePlaceholders;
-
   VALUE(bool) DisplayImagePlaceholdersDef;
 #endif
 
   KEY Zoom;
-
   VALUE(qreal) ZoomDef;
 
   KEY UseCustomDate;
-
   VALUE(bool) UseCustomDateDef;
 
   KEY CustomDateFormat;
@@ -139,126 +124,101 @@ namespace Messages {
 // GUI.
 namespace GUI {
   KEY ID;
-  KEY MessageViewState;
 
+  KEY MessageViewState;
   VALUE(QString) MessageViewStateDef;
 
   KEY SplitterFeeds;
-
   VALUE(char*) SplitterFeedsDef;
 
   KEY SplitterMessages;
-
   VALUE(char*) SplitterMessagesDef;
 
   KEY ToolbarStyle;
-
   VALUE(Qt::ToolButtonStyle) ToolbarStyleDef;
 
   KEY FeedsToolbarActions;
-
   VALUE(char*) FeedsToolbarActionsDef;
 
   KEY StatusbarActions;
-
   VALUE(char*) StatusbarActionsDef;
 
   KEY MainWindowInitialSize;
   KEY MainWindowInitialPosition;
-  KEY IsMainWindowMaximizedBeforeFullscreen;
 
+  KEY IsMainWindowMaximizedBeforeFullscreen;
   VALUE(bool) IsMainWindowMaximizedBeforeFullscreenDef;
 
   KEY MainWindowStartsFullscreen;
-
   VALUE(bool) MainWindowStartsFullscreenDef;
 
   KEY MainWindowStartsHidden;
-
   VALUE(bool) MainWindowStartsHiddenDef;
 
   KEY MainWindowStartsMaximized;
-
   VALUE(bool) MainWindowStartsMaximizedDef;
 
   KEY MainMenuVisible;
-
   VALUE(bool) MainMenuVisibleDef;
 
   KEY ToolbarsVisible;
-
   VALUE(bool) ToolbarsVisibleDef;
 
   KEY ListHeadersVisible;
-
   VALUE(bool) ListHeadersVisibleDef;
 
   KEY StatusBarVisible;
-
   VALUE(bool) StatusBarVisibleDef;
 
   KEY HideMainWindowWhenMinimized;
-
   VALUE(bool) HideMainWindowWhenMinimizedDef;
 
-  KEY UseTrayIcon;
+  KEY AlternateRowColorsInLists;
+  VALUE(bool) AlternateRowColorsInListsDef;
 
+  KEY UseTrayIcon;
   VALUE(bool) UseTrayIconDef;
 
   KEY MonochromeTrayIcon;
-
   VALUE(bool) MonochromeTrayIconDef;
 
   KEY EnableNotifications;
-
   VALUE(bool) EnableNotificationsDef;
 
   KEY TabCloseMiddleClick;
-
   VALUE(bool) TabCloseMiddleClickDef;
 
   KEY TabCloseDoubleClick;
-
   VALUE(bool) TabCloseDoubleClickDef;
 
   KEY TabNewDoubleClick;
-
   VALUE(bool) TabNewDoubleClickDef;
 
   KEY HideTabBarIfOnlyOneTab;
-
   VALUE(bool) HideTabBarIfOnlyOneTabDef;
 
   KEY MessagesToolbarDefaultButtons;
-
   VALUE(char*) MessagesToolbarDefaultButtonsDef;
 
   KEY DefaultSortColumnFeeds;
-
   VALUE(int) DefaultSortColumnFeedsDef;
 
   KEY HeightRowMessages;
-
   VALUE(int) HeightRowMessagesDef;
 
   KEY HeightRowFeeds;
-
   VALUE(int) HeightRowFeedsDef;
 
   KEY DefaultSortOrderFeeds;
-
   VALUE(Qt::SortOrder) DefaultSortOrderFeedsDef;
 
   KEY IconTheme;
-
   VALUE(char*) IconThemeDef;
 
   KEY Skin;
-
   VALUE(char*) SkinDef;
 
   KEY Style;
-
   VALUE(char*) StyleDef;
 }
 
