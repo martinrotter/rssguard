@@ -50,7 +50,7 @@ void LabelsMenu::keyPressEvent(QKeyEvent* event) {
   LabelAction* act = qobject_cast<LabelAction*>(activeAction());
 
   if (act != nullptr && event->key() == Qt::Key::Key_Space) {
-    act->toggle();
+    act->toggleCheckState();
   }
 
   NonClosableMenu::keyPressEvent(event);
@@ -60,10 +60,11 @@ void LabelsMenu::mousePressEvent(QMouseEvent* event) {
   LabelAction* act = qobject_cast<LabelAction*>(activeAction());
 
   if (act != nullptr) {
-    act->toggle();
+    act->toggleCheckState();
   }
-
-  NonClosableMenu::mousePressEvent(event);
+  else {
+    NonClosableMenu::mousePressEvent(event);
+  }
 }
 
 void LabelsMenu::changeLabelAssignment(Qt::CheckState state) {
@@ -121,7 +122,7 @@ Label* LabelAction::label() const {
   return m_label;
 }
 
-void LabelAction::toggle() {
+void LabelAction::toggleCheckState() {
   if (m_checkState == Qt::CheckState::Unchecked) {
     setCheckState(Qt::CheckState::Checked);
   }
