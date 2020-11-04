@@ -37,7 +37,7 @@
         <x>0</x>
         <y>0</y>
         <width>360</width>
-        <height>213</height>
+        <height>216</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="m_layout">
@@ -77,7 +77,7 @@
        <number>3</number>
       </property>
       <property name="topMargin">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="rightMargin">
        <number>3</number>

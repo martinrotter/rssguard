@@ -45,14 +45,21 @@ void MessagePreviewer::createConnections() {
           &MessagePreviewer::switchMessageImportance);
 }
 
-MessagePreviewer::MessagePreviewer(QWidget* parent)
+MessagePreviewer::MessagePreviewer(bool should_resize_to_fit, QWidget* parent)
   : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)), m_verticalScrollBarPosition(0.0),
   m_separator(nullptr), m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
 #if defined (USE_WEBENGINE)
   m_txtMessage = new WebBrowser(this);
+
+  if (should_resize_to_fit) {
+    m_txtMessage->setFixedHeight(parent->parentWidget()->height());
+  }
 #else
-  m_txtMessage = new MessageBrowser(this);
+  m_txtMessage = new MessageBrowser(should_resize_to_fit, this);
 #endif
+
+  // NOTE: To make sure that if we have many labels and short message
+  m_toolBar->setSizePolicy(m_toolBar->sizePolicy().horizontalPolicy(), QSizePolicy::Policy::MinimumExpanding);
 
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
   m_layout->setContentsMargins(3, 3, 3, 3);

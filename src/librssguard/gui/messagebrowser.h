@@ -20,7 +20,7 @@ class MessageBrowser : public QWidget {
   Q_OBJECT
 
   public:
-    explicit MessageBrowser(QWidget* parent = nullptr);
+    explicit MessageBrowser(bool should_resize_to_fit, QWidget* parent = nullptr);
 
     double verticalScrollBarPosition() const;
 

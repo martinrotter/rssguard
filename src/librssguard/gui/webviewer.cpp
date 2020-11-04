@@ -20,7 +20,6 @@
 WebViewer::WebViewer(QWidget* parent) : QWebEngineView(parent), m_root(nullptr) {
   WebPage* page = new WebPage(this);
 
-  connect(page, &WebPage::messageStatusChangeRequested, this, &WebViewer::messageStatusChangeRequested);
   setPage(page);
   resetWebPageZoom();
 }
@@ -190,7 +189,6 @@ QWebEngineView* WebViewer::createWindow(QWebEnginePage::WebWindowType type) {
 
 void WebViewer::wheelEvent(QWheelEvent* event) {
   QWebEngineView::wheelEvent(event);
-
 }
 
 bool WebViewer::eventFilter(QObject* object, QEvent* event) {

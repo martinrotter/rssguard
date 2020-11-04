@@ -11,6 +11,7 @@
 NewspaperPreviewer::NewspaperPreviewer(int msg_height, RootItem* root, QList<Message> messages, QWidget* parent)
   : TabContent(parent), m_msgHeight(msg_height), m_ui(new Ui::NewspaperPreviewer), m_root(root), m_messages(std::move(messages)) {
   m_ui->setupUi(this);
+  m_ui->m_btnShowMoreMessages->setIcon(qApp->icons()->fromTheme(QSL("view-refresh")));
   connect(m_ui->m_btnShowMoreMessages, &QPushButton::clicked, this, &NewspaperPreviewer::showMoreMessages);
   showMoreMessages();
 }
@@ -29,17 +30,16 @@ void NewspaperPreviewer::showMoreMessages() {
 
     for (int i = 0; i < 5 && !m_messages.isEmpty(); i++) {
       Message msg = m_messages.takeFirst();
-      auto* prev = new MessagePreviewer(this);
+      auto* prev = new MessagePreviewer(true, this);
       QMargins margins = prev->layout()->contentsMargins();
+
+      prev->setContentsMargins(margins);
 
       connect(prev, &MessagePreviewer::markMessageRead, this, &NewspaperPreviewer::markMessageRead);
       connect(prev, &MessagePreviewer::markMessageImportant, this, &NewspaperPreviewer::markMessageImportant);
 
-      prev->layout()->setContentsMargins(margins);
-
-      prev->setFixedHeight(m_msgHeight);
-      prev->loadMessage(msg, m_root.data());
       m_ui->m_layout->insertWidget(m_ui->m_layout->count() - 1, prev);
+      prev->loadMessage(msg, m_root.data());
     }
 
     m_ui->m_btnShowMoreMessages->setText(tr("Show more messages (%n remaining)", "", m_messages.size()));

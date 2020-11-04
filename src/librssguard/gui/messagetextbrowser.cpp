@@ -37,7 +37,20 @@ QVariant MessageTextBrowser::loadResource(int type, const QUrl& name) {
   }
 }
 
-void MessageTextBrowser::wheelEvent(QWheelEvent* e) {
-  QTextBrowser::wheelEvent(e);
+QSize MessageTextBrowser::sizeHint() const {
+  auto doc_size = document()->size().toSize();
+
+  doc_size.setHeight(doc_size.height() + contentsMargins().top() + contentsMargins().bottom());
+  return doc_size;
+}
+
+void MessageTextBrowser::wheelEvent(QWheelEvent* event) {
+  QTextBrowser::wheelEvent(event);
   qApp->settings()->setValue(GROUP(Messages), Messages::PreviewerFontStandard, font().toString());
+}
+
+void MessageTextBrowser::resizeEvent(QResizeEvent* event) {
+  // Notify parents about changed geometry.
+  updateGeometry();
+  QTextBrowser::resizeEvent(event);
 }

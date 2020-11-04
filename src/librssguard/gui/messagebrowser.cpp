@@ -16,12 +16,16 @@
 #include <QToolTip>
 #include <QVBoxLayout>
 
-MessageBrowser::MessageBrowser(QWidget* parent)
+MessageBrowser::MessageBrowser(bool should_resize_to_fit, QWidget* parent)
   : QWidget(parent), m_txtBrowser(new MessageTextBrowser(this)), m_searchWidget(new SearchTextWidget(this)),
   m_layout(new QVBoxLayout(this)) {
   m_layout->setContentsMargins(3, 3, 3, 3);
   m_layout->addWidget(m_txtBrowser, 1);
   m_layout->addWidget(m_searchWidget);
+
+  if (should_resize_to_fit) {
+    m_txtBrowser->setSizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::MinimumExpanding);
+  }
 
   connect(m_searchWidget, &SearchTextWidget::searchCancelled, this, [this]() {
     m_txtBrowser->textCursor().clearSelection();

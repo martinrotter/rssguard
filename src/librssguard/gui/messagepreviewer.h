@@ -37,7 +37,7 @@ class MessagePreviewer : public QWidget {
   Q_OBJECT
 
   public:
-    explicit MessagePreviewer(QWidget* parent = nullptr);
+    explicit MessagePreviewer(bool should_resize_to_fit, QWidget* parent = nullptr);
 
     void reloadFontSettings();
 

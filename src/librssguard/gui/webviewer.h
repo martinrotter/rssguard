@@ -14,21 +14,16 @@ class WebViewer : public QWebEngineView {
   Q_OBJECT
 
   public:
-    explicit WebViewer(QWidget* parent = 0);
+    explicit WebViewer(QWidget* parent = nullptr);
 
     bool canIncreaseZoom();
     bool canDecreaseZoom();
 
-    inline QString messageContents() {
-      return m_messageContents;
-    }
-
+    QString messageContents();
     WebPage* page() const;
     RootItem* root() const;
 
   public slots:
-
-    // Page zoom modifiers.
     bool increaseWebPageZoom();
     bool decreaseWebPageZoom();
     bool resetWebPageZoom();
@@ -38,19 +33,19 @@ class WebViewer : public QWebEngineView {
     void clear();
 
   protected:
-    void contextMenuEvent(QContextMenuEvent* event);
-    QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
-
-    void wheelEvent(QWheelEvent* event);
-    bool event(QEvent* event);
-    bool eventFilter(QObject* object, QEvent* event);
-
-  signals:
-    void messageStatusChangeRequested(int message_id, WebPage::MessageStatusChange change);
+    virtual QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
+    virtual void contextMenuEvent(QContextMenuEvent* event);
+    virtual void wheelEvent(QWheelEvent* event);
+    virtual bool event(QEvent* event);
+    virtual bool eventFilter(QObject* object, QEvent* event);
 
   private:
     RootItem* m_root;
     QString m_messageContents;
 };
+
+inline QString WebViewer::messageContents() {
+  return m_messageContents;
+}
 
 #endif // WEBVIEWER_H

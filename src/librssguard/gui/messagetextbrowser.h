@@ -14,10 +14,12 @@ class MessageTextBrowser : public QTextBrowser {
     explicit MessageTextBrowser(QWidget* parent = nullptr);
     virtual ~MessageTextBrowser() = default;
 
-    QVariant loadResource(int type, const QUrl& name);
+    virtual QVariant loadResource(int type, const QUrl& name);
+    virtual QSize sizeHint() const;
 
   protected:
-    void wheelEvent(QWheelEvent* e);
+    virtual void wheelEvent(QWheelEvent* event);
+    virtual void resizeEvent (QResizeEvent* event);
 
   private:
     QPixmap m_imagePlaceholder;

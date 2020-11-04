@@ -15,6 +15,7 @@
 
 #include <QKeyEvent>
 #include <QScrollBar>
+#include <QTimer>
 #include <QToolBar>
 #include <QToolTip>
 #include <QWebEngineSettings>
@@ -251,6 +252,7 @@ void WebBrowser::onLoadingFinished(bool success) {
 
   m_loadingProgress->hide();
   m_loadingProgress->setValue(0);
+
 }
 
 Message* WebBrowser::findMessage(int id) {

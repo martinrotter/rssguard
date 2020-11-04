@@ -11,23 +11,12 @@ class WebPage : public QWebEnginePage {
   Q_OBJECT
 
   public:
-    enum class MessageStatusChange {
-      MarkRead,
-      MarkUnread,
-      MarkStarred,
-      MarkUnstarred
-    };
-
     explicit WebPage(QObject* parent = nullptr);
 
     WebViewer* view() const;
 
   protected:
-    void javaScriptAlert(const QUrl& securityOrigin, const QString& msg);
     bool acceptNavigationRequest(const QUrl& url, NavigationType type, bool isMainFrame);
-
-  signals:
-    void messageStatusChangeRequested(int message_id, WebPage::MessageStatusChange change);
 };
 
 #endif // WEBPAGE_H

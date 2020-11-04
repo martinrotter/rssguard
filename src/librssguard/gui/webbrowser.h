@@ -35,11 +35,10 @@ class WebBrowser : public TabContent {
     WebViewer* viewer() const;
 
     double verticalScrollBarPosition() const;
+    void setVerticalScrollBarPosition(double pos);
 
   public slots:
-    void setVerticalScrollBarPosition(double pos);
     void reloadFontSettings();
-
     void increaseZoom();
     void decreaseZoom();
     void resetZoom();
@@ -52,7 +51,7 @@ class WebBrowser : public TabContent {
     void setNavigationBarVisible(bool visible);
 
   protected:
-    bool eventFilter(QObject* watched, QEvent* event);
+    virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
     void updateUrl(const QUrl& url);
@@ -70,10 +69,11 @@ class WebBrowser : public TabContent {
 
   private:
     void initializeLayout();
-    Message* findMessage(int id);
-
     void createConnections();
 
+    Message* findMessage(int id);
+
+  private:
     QVBoxLayout* m_layout;
     QToolBar* m_toolBar;
     WebViewer* m_webView;
