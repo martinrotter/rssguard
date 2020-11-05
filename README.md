@@ -16,3 +16,5 @@ RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed us
 * [Gmail API](https://developers.google.com/gmail/api).
 
 Development builds can be downloaded [here for Windows](https://bintray.com/martinrotter/rssguard/Development/Windows) and [here for Linux/Mac](https://bintray.com/martinrotter/rssguard/Development/LinuxMacOs).
+
+Documentation is [here](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md).
