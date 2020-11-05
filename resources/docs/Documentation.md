@@ -160,8 +160,6 @@ MariaDB (MySQL) backend is there for users, who want to store their data in a ce
 
 For database-related configuration see `Settings -> Data storage` dialog.
 
-Advanced users might 
-
 # Misc
 Here you can find some useful insights into RSS Guard's modus operandi.
 
