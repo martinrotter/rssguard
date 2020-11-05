@@ -14,7 +14,7 @@
     * [Downloading new messages](#downloading-new-messages)
     * [Generating debug log file](#generating-debug-log-file)
 
-![RSS Guard](images/rssguard.png){:width="64px"}
+<img src="images/rssguard.png" width="64px">
 
 # Foreword
 First, let me say, that you can contact RSS Guard's lead developer via [e-mail](mailto:rotter.martinos@gmail.com) or just submit a ticket here in the repository.
@@ -169,7 +169,7 @@ Here you can find some useful insights into RSS Guard's modus operandi.
 ## Cleaning database
 Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with thousands of messages.
 
-![`Cleanup database` dialog](images/cleanup-db.png)
+<img src="images/cleanup-db.png">
 
 ## Portable user data
 RSS Guard checks "config directory" (this is `C:\Users\<user>\AppData\Local` directory on Windows) for existence of file:
