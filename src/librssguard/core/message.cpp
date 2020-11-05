@@ -6,10 +6,14 @@
 #include "services/abstract/label.h"
 
 #include <QDebug>
+#include <QFlags>
+#include <QRegularExpression>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QUrl>
 #include <QVariant>
+#include <QVector>
 
 Enclosure::Enclosure(QString url, QString mime) : m_url(std::move(url)), m_mimeType(std::move(mime)) {}
 
@@ -63,6 +67,21 @@ Message::Message() {
   m_accountId = m_id = 0;
   m_isRead = m_isImportant = false;
   m_assignedLabels = QList<Label*>();
+}
+
+void Message::sanitize() {
+  // Also, make sure that HTML encoding, encoding of special characters, etc., is fixed.
+  m_contents = QUrl::fromPercentEncoding(m_contents.toUtf8());
+  m_author = m_author.toUtf8();
+
+  // Sanitize title.
+  m_title = m_title
+
+            // Shrink consecutive whitespaces.
+            .replace(QRegularExpression(QSL("[\\s\\u202F\\u00A0]{2,}")), QSL(" "))
+
+            // Remove all newlines and leading white space.
+            .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
 }
 
 Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {

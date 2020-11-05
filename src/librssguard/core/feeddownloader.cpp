@@ -97,19 +97,8 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
   // Now, sanitize messages (tweak encoding etc.).
   for (auto& msg : msgs) {
-    // Also, make sure that HTML encoding, encoding of special characters, etc., is fixed.
-    msg.m_contents = QUrl::fromPercentEncoding(msg.m_contents.toUtf8());
-    msg.m_author = msg.m_author.toUtf8();
     msg.m_accountId = acc_id;
-
-    // Sanitize title.
-    msg.m_title = msg.m_title
-
-                  // Shrink consecutive whitespaces.
-                  .replace(QRegularExpression(QSL("[\\s]{2,}")), QSL(" "))
-
-                  // Remove all newlines and leading white space.
-                  .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
+    msg.sanitize();
   }
 
   if (!feed->messageFilters().isEmpty()) {
