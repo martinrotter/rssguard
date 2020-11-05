@@ -7,6 +7,7 @@
 * [Features](#features)
     * [List of main features](#list-of-main-features)
     * [Message filtering](#message-filtering)
+    * [Database backends](#database-backends)
 * [Misc](#misc)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
@@ -148,21 +149,32 @@ The dialog is accessible from menu `Messages -> Message filters` and is the cent
 ### Performance
 Note that evaluations of JavaScript expressions are NOT that fast. They are much slower than native `C++` code, but well-optimized scripts usually take only several miliseconds to finish for each message.
 
+## Database backends
+RSS Guard offers switchable database backends which hold your data. At this point, two backends are available:
+* MariaDB,
+* SQLite (default).
+
+SQLite backend is very simple to use, no further configuration is needed and all your data are stored in single file `<user-data-root-path>\database\local\database.ini`. Check `About RSS Guard -> Resources` dialog to find more info on significant paths used. This backend offers "in-memory" database option, which automatically copies all your data into RAM when app starts and then works solely with that RAM data, which makes RSS Guard incredibily fast. Data is also stored back to database file when app exits. Note that this option should be used very rarely because RSS Guard should be fast enought with classic SQLite persistent DB files.
+
+MariaDB (MySQL) backend is there for users, who want to store their data in a centralized way. You can have single server in your (local) network and use multiple RSS Guard instances to access the data. MySQL will also work much better if you prefer to have zillions of feeds and messages stored.
+
+For database-related configuration see `Settings -> Data storage` dialog.
+
+Advanced users might 
+
 # Misc
 Here you can find some useful insights into RSS Guard's modus operandi.
 
 ## Portable user data
-RSS Guard checks "home directory" (this is `C:\Users\<user>\` directory on Windows) for existence of file:
+RSS Guard checks "config directory" (this is `C:\Users\<user>\AppData\Local` directory on Windows) for existence of file:
 ```
-.rssguard\data\config\config.ini
+RSS Guard\data\config\config.ini
 ```
 If that file exists, then RSS Guard will use the file (this is called _non-portable **FALLBACK** settings_). If this file is not found, then application will check if its root path (folder, in which RSS Guard executable is installed) is writable, and if it is, it will store settings in it, in subfolder:
 ```
 data\config\config.ini
 ```
-This is _fully-portable mode_.
-
-Otherwise, standard "config" folder is used. Check `About RSS Guard` dialog to find more info on significant paths used.
+This is _fully-portable mode_. Check `About RSS Guard -> Resources` dialog to find more info on significant paths used.
 
 ## Downloading new messages
 Here is the rough workflow which is done when you hit `Feeds & categories -> Update all items` or `Feeds & categories -> Update selected items`. At that point of time this happens:
