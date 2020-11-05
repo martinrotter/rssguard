@@ -9,6 +9,7 @@
     * [Message filtering](#message-filtering)
     * [Database backends](#database-backends)
 * [Misc](#misc)
+    * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
     * [Generating debug log file](#generating-debug-log-file)
@@ -162,6 +163,11 @@ For database-related configuration see `Settings -> Data storage` dialog.
 
 # Misc
 Here you can find some useful insights into RSS Guard's modus operandi.
+
+## Cleaning database
+Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with thousands of messages.
+
+![`Cleanup database` dialog](images/cleanup-db.png)
 
 ## Portable user data
 RSS Guard checks "config directory" (this is `C:\Users\<user>\AppData\Local` directory on Windows) for existence of file:
