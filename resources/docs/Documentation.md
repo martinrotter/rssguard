@@ -14,6 +14,8 @@
     * [Downloading new messages](#downloading-new-messages)
     * [Generating debug log file](#generating-debug-log-file)
 
+![RSS Guard](images/rssguard.png){:width="64px"}
+
 # Foreword
 First, let me say, that you can contact RSS Guard's lead developer via [e-mail](mailto:rotter.martinos@gmail.com) or just submit a ticket here in the repository.
 
