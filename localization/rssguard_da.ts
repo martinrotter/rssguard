@@ -2195,6 +2195,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <source>Update items with custom &amp;timers</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Alternate row colors in lists</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -3035,6 +3039,13 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>LabelsMenu</name>
+    <message>
+        <source>Labels</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>LabelsNode</name>
     <message>
         <source>Labels</source>
@@ -3046,6 +3057,14 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>New label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This account does not allow you to create labels.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not allowed</source>
         <translation type="unfinished"/>
     </message>
 </context>

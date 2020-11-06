@@ -2202,6 +2202,10 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
         <source>Update items with custom &amp;timers</source>
         <translation>Actualizar elementos según &amp;temporizadores personalizados</translation>
     </message>
+    <message>
+        <source>Alternate row colors in lists</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -3056,6 +3060,13 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
 </context>
 <context>
+    <name>LabelsMenu</name>
+    <message>
+        <source>Labels</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>LabelsNode</name>
     <message>
         <source>Labels</source>
@@ -3067,6 +3078,14 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>New label</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This account does not allow you to create labels.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not allowed</source>
         <translation type="unfinished"/>
     </message>
 </context>

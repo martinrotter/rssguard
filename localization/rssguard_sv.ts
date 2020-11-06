@@ -2202,6 +2202,10 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <source>Update items with custom &amp;timers</source>
         <translation>Uppdatera objekt med anpassade &amp;tidur</translation>
     </message>
+    <message>
+        <source>Alternate row colors in lists</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -3056,6 +3060,13 @@ Inloggningstoken upphör: %2</translation>
     </message>
 </context>
 <context>
+    <name>LabelsMenu</name>
+    <message>
+        <source>Labels</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>LabelsNode</name>
     <message>
         <source>Labels</source>
@@ -3068,6 +3079,14 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>New label</source>
         <translation>Ny etikett</translation>
+    </message>
+    <message>
+        <source>This account does not allow you to create labels.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not allowed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
