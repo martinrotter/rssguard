@@ -7,6 +7,7 @@
 * [Features](#features)
     * [List of main features](#list-of-main-features)
     * [Web-based and lite app variants](#web-based-and-lite-app-variants)
+    * [Supported feed formats and online feed services](#supported-feed-formats-and-online-feed-services)
     * [Message filtering](#message-filtering)
     * [Database backends](#database-backends)
 * [Misc](#misc)
@@ -101,8 +102,21 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 RSS Guard is distributed in two variants:
 * **Standard package with WebEngine-based bundled message viewer**: This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption. Also, installation packages are relatively big.
 <img src="images/webengine-view.png" width="80%">
+
 * **Lite package with simple text-based message viewer**: This variant displays message in much simpler and more lightweight text-based component. Layout and formatting of displayed message is simplified, no big external web viewers are used, which results in much smaller installation packages, much smaller memory footprint and increased privacy of the user, because many web resources are not downloaded by default like pictures, JavaScript and so on. This variant of RSS Guard is meant for advanced users and can faster GUI response in some use-cases.
 <img src="images/nonwebengine-view.png" width="80%">
+
+## Supported feed formats and online feed services
+RSS Guard is modular application which supports plugins. It offers well-maintained and relatively stable [plugin API](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/services/abstract/serviceentrypoint.h) which can be used to add support for various online feed services, extend a way feeds are processed or add totally new functionality to RSS Guard. At this point RSS Guard offers these plugins which are bundled in all installation packages and some of their features are described in detail in this documentation:
+* Standard `RSS/RDF/ATOM/JSON` plugin: This is the core plugin of RSS Guard which allows you to user the app like normal standalone feed reader with great features everyone would expect, including `OPML` files export and import or feed metadata fetching.
+* [Tiny Tiny RSS](https://tt-rss.org) plugin: Adds ability to synchronize messages with TT-RSS instances, either self-hosted or via 3rd-party external service.
+* [Inoreader](https://www.inoreader.com) plugin: Adds ability to synchronize messages with Inoreader. All you need to do is create free account on their website and start rocking.
+* [Nextcloud News](https://apps.nextcloud.com/apps/news) plugin: Nextcloud News is a Nextcloud app which adds feed reader abilities into your Nextcloud instances. Nextcloud is nearly perfect self-hosted artifact synchronization platform.
+* [Gmail](https://www.google.com/gmail) plugin: Yes, you are reading it right. RSS Guard can be used as very lightweight and simple e-mail client. This plugins uses [Gmail API](https://developers.google.com/gmail/api) and offers even e-mail sending.
+
+All plugins share almost all core RSS Guard's features, including labels, recycle bins or newspaper view. They are implemented in a very transparent way, making it easy to maintain them or add new ones.
+
+If there is interest in other plugins, you might write one yourself or if many people are interested then I might write it for you, even commercially if we make proper arrangements.
 
 ## Message filtering
 RSS Guard supports _automagic_ message filtering. The filtering system is automatically triggered when new messages for each feed are downloaded. User can write scripts which perform filtering decisions. [**JavaScript with ECMA standard**](http://www.ecma-international.org/publications/standards/Ecma-262.htm) is supported.
