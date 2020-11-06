@@ -6,6 +6,7 @@
     * [Localizations](#localizations)
 * [Features](#features)
     * [List of main features](#list-of-main-features)
+    * [Web-based and lite app variants](#web-based-and-lite-app-variants)
     * [Message filtering](#message-filtering)
     * [Database backends](#database-backends)
 * [Misc](#misc)
@@ -95,6 +96,13 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * desktop integration via tray icon,
     * localizations to some languages,
     * ability to tweak columns in displayed list of messages.
+
+## Web-based and lite app variants
+RSS Guard is distributed in two variants:
+* **Standard package with WebEngine-based bundled message viewer**: This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption. Also, installation packages are relatively big.
+<img src="images/webengine-view.png" width="80%">
+* **Lite package with simple text-based message viewer**: This variant displays message in much simpler and more lightweight text-based component. Layout and formatting of displayed message is simplified, no big external web viewers are used, which results in much smaller installation packages, much smaller memory footprint and increased privacy of the user, because many web resources are not downloaded by default like pictures, JavaScript and so on. This variant of RSS Guard is meant for advanced users and can faster GUI response in some use-cases.
+<img src="images/nonwebengine-view.png" width="80%">
 
 ## Message filtering
 RSS Guard supports _automagic_ message filtering. The filtering system is automatically triggered when new messages for each feed are downloaded. User can write scripts which perform filtering decisions. [**JavaScript with ECMA standard**](http://www.ecma-international.org/publications/standards/Ecma-262.htm) is supported.
