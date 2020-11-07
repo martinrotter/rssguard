@@ -3059,7 +3059,7 @@ Token 过期时间：%2</translation>
     <name>LabelsMenu</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>标签</translation>
     </message>
 </context>
 <context>
@@ -3557,10 +3557,6 @@ Tiny Tiny RSS 是一个基于 Web 的开源 RSS/Atom 阅读器，允许你以近
 至少需要 API 级别 %1。</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>标准的在线 Feed (RSS/RDF/ATOM)</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>此服务提供与标准在线 RSS/RDF/ATOM Feed 和博客的集成。</translation>
     </message>
@@ -3600,6 +3596,10 @@ version by clicking this popup notification.</source>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
         <translation>无法插入消息过滤器，因为当前数据库无法返回上次插入的行的 ID。</translation>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

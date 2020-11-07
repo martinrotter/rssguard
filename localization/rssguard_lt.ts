@@ -202,7 +202,7 @@
     </message>
     <message>
         <source>Select new color</source>
-        <translation type="unfinished"/>
+        <translation>Pasirinkti naują spalvą</translation>
     </message>
 </context>
 <context>
@@ -835,7 +835,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Create new label</source>
-        <translation type="unfinished"/>
+        <translation>Sukurti naują etiketę</translation>
     </message>
     <message>
         <source>Edit label &apos;%1&apos;</source>
@@ -2325,11 +2325,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished"/>
+        <translation>taip</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"/>
+        <translation>ne</translation>
     </message>
     <message>
         <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
@@ -2936,7 +2936,7 @@ Jūs dabar galite jį įdiegti.</translation>
     </message>
     <message>
         <source>failed to get metadata</source>
-        <translation type="unfinished"/>
+        <translation>nepavyko gauti metaduomenų</translation>
     </message>
 </context>
 <context>
@@ -3054,7 +3054,7 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <name>LabelsMenu</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Etiketės</translation>
     </message>
 </context>
 <context>
@@ -3069,15 +3069,15 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
     <message>
         <source>New label</source>
-        <translation type="unfinished"/>
+        <translation>Nauja etiketė</translation>
     </message>
     <message>
         <source>This account does not allow you to create labels.</source>
-        <translation type="unfinished"/>
+        <translation>Ši paskyra neleidžia jums kurti etikečių.</translation>
     </message>
     <message>
         <source>Not allowed</source>
-        <translation type="unfinished"/>
+        <translation>Neleidžiama</translation>
     </message>
 </context>
 <context>
@@ -3558,10 +3558,6 @@ Tiny Tiny RSS yra atvirojo kodo saitynu pagrįsta naujienų kanalų (RSS/Atom) s
 Reikalingas bent API lygis %1.</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Standartiniai internetiniai kanalai (RSS/RDF/ATOM)</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Ši paslauga siūlo integraciją su standartiniais internetiniais RSS/RDF/ATOM kanalais ir tinklalaidėmis.</translation>
     </message>
@@ -3601,6 +3597,10 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation type="unfinished"/>
     </message>
 </context>

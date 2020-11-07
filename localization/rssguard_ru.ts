@@ -3570,10 +3570,6 @@ Tiny Tiny RSS - это программа для чтения и агрегац�
 Требуется как минимум уровень API %1.</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Стандартные онлайн-каналы (RSS/RDF/ATOM)</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Этот сервис предлагает интеграцию со стандартными онлайн-каналами RSS/RDF/ATOM и подкастами.</translation>
     </message>
@@ -3614,6 +3610,10 @@ version by clicking this popup notification.</source>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
         <translation>Невозможно вставить фильтр сообщений, поскольку текущая база данных не может вернуть идентификатор последней добавленной строки.</translation>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -2204,7 +2204,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
-        <translation type="unfinished"/>
+        <translation>Cores de linha alternadas nas listas</translation>
     </message>
 </context>
 <context>
@@ -3064,7 +3064,7 @@ Expiração dos tokens de login: %2</translation>
     <name>LabelsMenu</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Rótulos</translation>
     </message>
 </context>
 <context>
@@ -3083,11 +3083,11 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>This account does not allow you to create labels.</source>
-        <translation type="unfinished"/>
+        <translation>Esta conta não permite que você crie rótulos.</translation>
     </message>
     <message>
         <source>Not allowed</source>
-        <translation type="unfinished"/>
+        <translation>Não permitido</translation>
     </message>
 </context>
 <context>
@@ -3564,10 +3564,6 @@ O Tiny Tiny RSS é um leitor e agregador de feeds de notícias (RSS/Atom) basead
 Pelo menos o API nível %1 é necessário.</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Feeds online padrão (RSS/RDF/ATOM)</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Este serviço oferece integração com feeds online padrão RSS/RDF/ATOM e podcasts.</translation>
     </message>
@@ -3608,6 +3604,10 @@ versão, clicando nesta notificação popup.</translation>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
         <translation>Não é possível inserir o filtro de mensagens, porque o banco de dados atual não pode retornar o último ID da linha inserida.</translation>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
+        <translation>Feeds online padrão (RSS/ATOM/JSON)</translation>
     </message>
 </context>
 <context>

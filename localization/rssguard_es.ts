@@ -3063,7 +3063,7 @@ Expiración de testigos de ingreso: %2</translation>
     <name>LabelsMenu</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Etiquetas</translation>
     </message>
 </context>
 <context>
@@ -3563,10 +3563,6 @@ Tiny Tiny RSS es un lector o agregador de código abierto para fuentes de notici
 Se necesita como mínimo una API de nivel %1.</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Fuentes estándar (RSS/RDF/ATOM) en línea</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Este servicio ofrece la integración con fuentes y con trasmisiones estándar RSS/RDF/ATOM en línea</translation>
     </message>
@@ -3607,6 +3603,10 @@ versión pulsando en esta notificación emergente..</translation>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
         <translation>No es posible insertar filtro de mensaje, debido a que la actual base de datos no puede reenviar la ID de la última fila insertada.</translation>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

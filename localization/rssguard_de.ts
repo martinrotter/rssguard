@@ -3546,10 +3546,6 @@ Die Ansicht erfolgt standardmäßig per Browser, wobei eine Nutzeroberfläche ä
 Das API muss mindestens in Stufe %1 verfügbar sein.</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Feeds gem. RSS, RDF oder Atom Standard</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Dieser Dienst ermöglicht den Zugriff auf die üblichen Feeds gem. den Standards RSS, RDF und Atom.</translation>
     </message>
@@ -3589,6 +3585,10 @@ durch Klicken auf diese Benachrichtigung.</translation>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation type="unfinished"/>
     </message>
 </context>

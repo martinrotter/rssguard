@@ -3543,10 +3543,6 @@ Tiny Tiny RSS merupakan pengumpul dan pembaca feed berita (RSS/Atom) berbasis we
 Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Feed online standar (RSS/RDF/ATOM)</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Layanan ini menawarkan integrasi dengan feed online RSS/RDF/ATOM standar dan podcast.</translation>
     </message>
@@ -3586,6 +3582,10 @@ di versi ini dengan meng-klik popup notifikasi ini.</translation>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation type="unfinished"/>
     </message>
 </context>

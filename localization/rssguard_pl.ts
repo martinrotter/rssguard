@@ -3553,10 +3553,6 @@ Tiny Tiny RSS to open source-owy internetowy czytnik kanałów (RSS/Atom) i agre
 Minimalny wymagany poziom API to %1.</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Standardowe kanały online (RSS/RDF/ATOM)</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Ta usługa oferuje integrację ze standardowymi kanałami on-line RSS/RDF/Atom i podcastów.</translation>
     </message>
@@ -3596,6 +3592,10 @@ tej wersji, klikając na to powiadomienie.</translation>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation type="unfinished"/>
     </message>
 </context>

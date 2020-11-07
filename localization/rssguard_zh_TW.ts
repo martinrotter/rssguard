@@ -3559,10 +3559,6 @@ Tiny Tiny RSS 是一個開源的基於網站 的 RSS/Atom 新聞源消息閱讀�
 至少需要 API 版本級別 %1。</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>標準線上新聞源 (RSS/RDF/ATOM)</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>此服務整合標準線上 RSS/RDF/ATOM 新聞源和廣播進來。</translation>
     </message>
@@ -3603,6 +3599,10 @@ version by clicking this popup notification.</source>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
         <translation>無法插入訊息篩選器，因為目前的資料庫無法傳回上次最後插入的行欄 ID。</translation>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

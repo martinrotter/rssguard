@@ -3538,10 +3538,6 @@ Tiny Tiny RSS er en open source netbaseret nyhedsfeed (RSS/Atom) læser, lavet t
 Mindst API niveau %1 er påkrævet.</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Standard online feeds (RSS/RDF/ATOM)</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Denne tjeneste integrerer standard RSS/RDF/ATOM feeds og podcasts.</translation>
     </message>
@@ -3578,6 +3574,10 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation type="unfinished"/>
     </message>
 </context>

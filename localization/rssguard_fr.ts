@@ -3537,10 +3537,6 @@ At least API level %1 is required.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation type="unfinished"/>
     </message>
@@ -3577,6 +3573,10 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation type="unfinished"/>
     </message>
 </context>

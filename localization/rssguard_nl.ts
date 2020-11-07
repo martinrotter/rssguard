@@ -3050,7 +3050,7 @@ Login tokens expiration: %2</source>
     <name>LabelsMenu</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Labels</translation>
     </message>
 </context>
 <context>
@@ -3550,10 +3550,6 @@ Tiny Tiny RSS is een open source web-based nieuws-feed (RSS / Atom) lezer en agg
 Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Standaard online feeds (RSS/RDF/ATOM)</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Deze service biedt integratie met standaard online RSS/RDF/Atom-feeds en podcasts.</translation>
     </message>
@@ -3593,6 +3589,10 @@ door te clicken op deze popup melding.</translation>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation type="unfinished"/>
     </message>
 </context>

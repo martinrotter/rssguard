@@ -3063,7 +3063,7 @@ Inloggningstoken upphör: %2</translation>
     <name>LabelsMenu</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Etiketter</translation>
     </message>
 </context>
 <context>
@@ -3563,10 +3563,6 @@ Tiny Tiny RSS är en öppen källkods, webbaserad flödesläsare (RSS/Atom) och 
 Minst API-nivå %1 krävs.</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Standardflöden online (RSS/RDF/ATOM)</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Denna tjänst erbjuder integration med standard RSS/RDF/ATOM-flöden och poddar.</translation>
     </message>
@@ -3607,6 +3603,10 @@ genom att klicka på denna popup-avisering.</translation>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
         <translation>Kan inte infoga meddelandefilter eftersom den aktuella databasen inte kan returnera senast infogat rad-ID.</translation>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

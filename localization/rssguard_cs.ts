@@ -3052,7 +3052,7 @@ Tokeny vyprší: %2</translation>
     <name>LabelsMenu</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Štítky</translation>
     </message>
 </context>
 <context>
@@ -3556,10 +3556,6 @@ Tiny Tiny RSS je open source čtečka kanálů založená na webových technolog
 Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/RDF/ATOM)</source>
-        <translation>Standardní online kanály (RSS/RDF/ATOM)</translation>
-    </message>
-    <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
         <translation>Tento účet nabízí integraci se standardními RSS/RDF/ATOM kanály.</translation>
     </message>
@@ -3599,6 +3595,10 @@ na tuto bublinu.</translation>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation type="unfinished"/>
     </message>
 </context>
