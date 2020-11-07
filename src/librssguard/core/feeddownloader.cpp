@@ -95,6 +95,10 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
            << feed->customId() << "' URL: '" << feed->url() << "' title: '" << feed->title() << "' in thread: '"
            << QThread::currentThreadId() << "'. Operation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
+  msgs = QList<Message>::fromStdList(boolinq::from(msgs).where([](const Message& msg) {
+    return msg.m_title.contains("Essential PHP");
+  }).toStdList());
+
   // Now, sanitize messages (tweak encoding etc.).
   for (auto& msg : msgs) {
     msg.m_accountId = acc_id;

@@ -116,7 +116,18 @@ RSS Guard is modular application which supports plugins. It offers well-maintain
 
 All plugins share almost all core RSS Guard's features, including labels, recycle bins or newspaper view. They are implemented in a very transparent way, making it easy to maintain them or add new ones.
 
+Usually, plugins have some exclusive functionality, for example Gmail plugin allows user to send e-mail messages. This extra functionality is always accessible via plugin's context menu and also via main menu.
+<img src="images/gmail-context-menu.png" width="80%">
+
 If there is interest in other plugins, you might write one yourself or if many people are interested then I might write it for you, even commercially if we make proper arrangements.
+
+### Features found exclusively in `standard RSS` plugin
+Standard plugin in RSS Guard offers some features which are specific to it. Of course it supports all news syndication formats which are nowadays used:
+* RSS 0.90, 0.91, 0.92, 1.0 (also know as *RDF*), 2.0.
+* ATOM 1.0,
+* [JSON](https://www.jsonfeed.org).
+
+Standard plugin offers some extra features like export/import of OPML 2.0 files or fetching feed metadata.
 
 ## Message filtering
 RSS Guard supports _automagic_ message filtering. The filtering system is automatically triggered when new messages for each feed are downloaded. User can write scripts which perform filtering decisions. [**JavaScript with ECMA standard**](http://www.ecma-international.org/publications/standards/Ecma-262.htm) is supported.
