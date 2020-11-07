@@ -134,7 +134,7 @@ OPML files can be exported/imported in simple dialog.
 
 <img src="images/im-ex-feeds.png" width="80%">
 
-<img src="images/im-ex-feeds-dialog.png" width="80%">
+<img src="images/im-ex-feeds-dialog.png">
 
 You just select output file (in case of OPML export), check desired feeds and hit `Export to file`.
 
