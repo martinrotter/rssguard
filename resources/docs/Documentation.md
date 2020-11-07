@@ -10,6 +10,7 @@
     * [Supported feed formats and online feed services](#supported-feed-formats-and-online-feed-services)
     * [Message filtering](#message-filtering)
     * [Database backends](#database-backends)
+    * [Gmail](#gmail)
 * [Misc](#misc)
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
@@ -204,13 +205,19 @@ MariaDB (MySQL) backend is there for users, who want to store their data in a ce
 
 For database-related configuration see `Settings -> Data storage` dialog.
 
+## Gmail
+RSS Guard includes Gmail plugin, which allows users to receive and send (!!!) e-mail messages. Plugin uses [Gmail API](https://developers.google.com/gmail/api) and offers some e-mail client-like features:
+* Sending e-mail messages.
+<img src="images/gmail-new-email.png">
+
+* You can also reply to existing messages.
+* Plugin is able to suggest recipient's e-mail.
+
 # Misc
 Here you can find some useful insights into RSS Guard's modus operandi.
 
 ## Cleaning database
 Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with thousands of messages.
-
-<img src="images/cleanup-db.png">
 
 ## Portable user data
 RSS Guard checks "config directory" (this is `C:\Users\<user>\AppData\Local` directory on Windows) for existence of file:
