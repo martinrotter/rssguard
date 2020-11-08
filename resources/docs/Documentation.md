@@ -62,42 +62,42 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * Inoreader (RSS Guard 3.5.0+),
     * Gmail with e-mail sending (RSS Guard 3.7.1+).
 * core:
-    * support for all feed formats (RSS/RDF/ATOM/JSON),
-    * full support of podcasts (RSS/ATOM/JSON),
-    * import/export of feeds to/from OPML 2.0,
-    * possibility of using custom 3rd-party feed synchronization services,
-    * feed metadata fetching including icons,
-    * simple internal Chromium-based web viewer (or alternative version with simpler and much more lightweight internal viewer),
-    * scriptable [message filtering](#message-filtering),
-    * downloader with own tab and support for up to 6 parallel downloads,
-    * ability to cleanup internal message database with various options,
-    * enhanced feed auto-updating with separate time intervals,
-    * "portable" mode support with clever auto-detection,
-    * feed categorization,
-    * feed authentication (BASIC),
-    * handles tons of messages & feeds,
-    * ability to backup/restore database or settings,
-    * fully-featured recycle bin,
-    * multiple data backend support,
+    * Support for all feed formats (RSS/RDF/ATOM/JSON),
+    * Full support of podcasts (RSS/ATOM/JSON),
+    * Import/export of feeds to/from OPML 2.0,
+    * Possibility of using custom 3rd-party feed synchronization services,
+    * Feed metadata fetching including icons,
+    * Simple internal Chromium-based web viewer (or alternative version with simpler and much more lightweight internal viewer),
+    * Scriptable [message filtering](#message-filtering),
+    * Downloader with own tab and support for up to 6 parallel downloads,
+    * Ability to cleanup internal message database with various options,
+    * Enhanced feed auto-updating with separate time intervals,
+    * "Portable" mode support with clever auto-detection,
+    * Feed categorization,
+    * Feed authentication (BASIC),
+    * Handles tons of messages & feeds,
+    * Ability to backup/restore database or settings,
+    * Fully-featured recycle bin,
+    * Multiple data backend support,
         * SQLite (in-memory DBs too),
         * MySQL.
-    * ability to specify target database by its name (MySQL backend),
-    * support for `feed://` URI scheme.
-* user interface:
-    * message list filter with regular expressions,
-    * drap-n-drop for feed list,
-    * able to show unread feeds/messages only,
-    * can be controlled via keyboard,
-    * fully adjustable toolbars (changeable buttons and style),
-    * hideable main menu, toolbars and list headers,
-    * bundled icon themes (Numix & Papirus),
-    * fully skinnable user interface + ability to create your own skins,
-    * newspaper view,
-    * tabbed interface,
-    * ability to hide list of feeds/categories,
-    * desktop integration via tray icon,
-    * localizations to some languages,
-    * ability to tweak columns in displayed list of messages.
+    * Ability to specify target database by its name (MySQL backend),
+    * Support for `feed://` URI scheme.
+* User interface:
+    * Message list filter with regular expressions,
+    * Drag-n-drop for feed list,
+    * Able to show unread feeds/messages only,
+    * Can be controlled via keyboard,
+    * Fully adjustable toolbars (changeable buttons and style),
+    * Hideable main menu, toolbars and list headers,
+    * Bundled icon themes (Numix & Papirus),
+    * Fully skinnable user interface + ability to create your own skins,
+    * Newspaper view,
+    * Tabbed interface,
+    * Ability to hide list of feeds/categories,
+    * Desktop integration via tray icon,
+    * Localizations to some languages,
+    * Ability to tweak columns in displayed list of messages.
 
 ## Web-based and lite app variants
 RSS Guard is distributed in two variants:
@@ -192,14 +192,14 @@ The dialog is accessible from menu `Messages -> Message filters` and is the cent
 * debug your script against sample `MessageObject` instance.
 
 ### Performance
-Note that evaluations of JavaScript expressions are NOT that fast. They are much slower than native `C++` code, but well-optimized scripts usually take only several miliseconds to finish for each message.
+Note that evaluations of JavaScript expressions are NOT that fast. They are much slower than native `C++` code, but well-optimized scripts usually take only several milliseconds to finish for each message.
 
 ## Database backends
 RSS Guard offers switchable database backends which hold your data. At this point, two backends are available:
 * MariaDB,
 * SQLite (default).
 
-SQLite backend is very simple to use, no further configuration is needed and all your data are stored in single file `<user-data-root-path>\database\local\database.ini`. Check `About RSS Guard -> Resources` dialog to find more info on significant paths used. This backend offers "in-memory" database option, which automatically copies all your data into RAM when app starts and then works solely with that RAM data, which makes RSS Guard incredibily fast. Data is also stored back to database file when app exits. Note that this option should be used very rarely because RSS Guard should be fast enought with classic SQLite persistent DB files.
+SQLite backend is very simple to use, no further configuration is needed and all your data are stored in single file `<user-data-root-path>\database\local\database.ini`. Check `About RSS Guard -> Resources` dialog to find more info on significant paths used. This backend offers "in-memory" database option, which automatically copies all your data into RAM when app starts and then works solely with that RAM data, which makes RSS Guard incredibly fast. Data is also stored back to database file when app exits. Note that this option should be used very rarely because RSS Guard should be fast enough with classic SQLite persistent DB files.
 
 MariaDB (MySQL) backend is there for users, who want to store their data in a centralized way. You can have single server in your (local) network and use multiple RSS Guard instances to access the data. MySQL will also work much better if you prefer to have zillions of feeds and messages stored.
 
