@@ -203,7 +203,7 @@ SQLite backend is very simple to use, no further configuration is needed and all
 
 MariaDB (MySQL) backend is there for users, who want to store their data in a centralized way. You can have single server in your (local) network and use multiple RSS Guard instances to access the data. MySQL will also work much better if you prefer to have zillions of feeds and messages stored.
 
-For database-related configuration see `Settings -> Data storage` dialog.
+For more information please refer to the [database backends](database-backends.md) document.
 
 ## Gmail
 RSS Guard includes Gmail plugin, which allows users to receive and send (!!!) e-mail messages. Plugin uses [Gmail API](https://developers.google.com/gmail/api) and offers some e-mail client-like features:

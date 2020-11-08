@@ -18,7 +18,7 @@ The SQLite database engine is the one enabled by default as it provides a solid,
 
 File locations:
 
-- Windows, installed: `%%APPDATA%\database\local\database.db`
+- Windows, installed: `%%APPDATA%%\database\local\database.db`
 - Windows, portable: `.\data\database\local\database.db`
 - Linux: `~/.config/RSS Guard/database/local/database.db`
 - MacOS: 
