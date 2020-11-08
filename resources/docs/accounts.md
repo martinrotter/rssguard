@@ -17,7 +17,7 @@ Before using this integration API access _must_ be enabled in Tiny Tiny RSS pref
     - Force execution of server-side update when updating feeds from RSS Guard: This forces tt-rss to refresh all the feeds stored on the server. Depending on how many system resources are available to the server application this _will_ cause you issues.
     - Username
     - Password
-    - If the server requires HTTP authenttication enter that information. Only Basic HTTP Authentication is supported.
+    - If the server requires HTTP authentication enter that information. Only Basic HTTP Authentication is supported.
 3. **Test** the connection before proceeding. If there are issues you will see an error message appear.
 4. Click **OK**.
 
@@ -58,7 +58,7 @@ The minimum supported version of Nextcloud News is 6.0.5; any version of Nextclo
 
 ## Standard online feeds (RSS/RDF/ATOM)
 
-This account type lets RSS Guard function as a stand-alone RSS client. It saves feeds and their state to the database and does not sync it with any external servers or applications. This _can_ be useful if you wish to sync the entire RSS Guard database if you do not plan on using any of the available integrations. Be aware the database can grow to huge sizes and you will see increased network traffic as your sycing application will have to keep up with the manipulation of feeds within RSS Guard itself.
+This account type lets RSS Guard function as a stand-alone RSS client. It saves feeds and their state to the database and does not sync it with any external servers or applications. This _can_ be useful if you wish to sync the entire RSS Guard database if you do not plan on using any of the available integrations. Be aware the database can grow to huge sizes and you will see increased network traffic as your syncing application will have to keep up with the manipulation of feeds within RSS Guard itself.
 
 1. Go to **Accounts → Add New Account**. Select Standard online feeds (RSS/RDF/ATOM)
 2. You will be given the option to load a default set of feeds. If you select **Yes** the following folders and feeds will be created:
