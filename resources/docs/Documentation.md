@@ -11,6 +11,7 @@
     * [Message filtering](#message-filtering)
     * [Database backends](#database-backends)
     * [Gmail](#gmail)
+    * [GUI tweaking](#gui-tweaking)
 * [Misc](#misc)
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
@@ -85,13 +86,13 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * support for `feed://` URI scheme.
 * user interface:
     * message list filter with regular expressions,
-    * drap-n-drop for feed list,
+    * drag-n-drop for feed list,
     * able to show unread feeds/messages only,
     * can be controlled via keyboard,
     * fully adjustable toolbars (changeable buttons and style),
     * hideable main menu, toolbars and list headers,
     * bundled icon themes (Numix & Papirus),
-    * fully skinnable user interface + ability to create your own skins,
+    * fully skinable user interface + ability to create your own skins,
     * newspaper view,
     * tabbed interface,
     * ability to hide list of feeds/categories,
@@ -161,7 +162,11 @@ Each message is accessible in your script via global variable named `msg` of typ
 
 RSS Guard 3.8.0+ offers also read-only list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. Each `Label` in the array offers these properties: `title` (title of the label), `color` (color of the label) and `customId` (account-specific ID of the label).
 
-Passed message also offers special function `MessageObject.isDuplicateWithAttribute(DuplicationAttributeCheck)` which allows you to perform runtime check for existence of the message in RSS Guard's database. The parameter is integer value from enumeration [`DuplicationAttributeCheck`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L91) and specifies how exactly you want to determine if given message is "duplicate".
+Passed message also offers special function
+```js
+MessageObject.isDuplicateWithAttribute(DuplicationAttributeCheck)
+```
+which allows you to perform runtime check for existence of the message in RSS Guard's database. The parameter is integer value from enumeration [`DuplicationAttributeCheck`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L91) and specifies how exactly you want to determine if given message is "duplicate".
 
 For example if you want to check if there is already another message with same author in database, then you call `msg.isDuplicateWithAttribute(4)`. Enumeration even supports "flags" approach, thus you can combine multiple checks via bitwise `OR` operation in single call, for example like this: `msg.isDuplicateWithAttribute(4 | 16)`.
 
@@ -178,6 +183,7 @@ function filterMessage() {
   }
 }
 ```
+
 Replace all dogs with cats!
 ```js
 function filterMessage() {
@@ -194,14 +200,18 @@ The dialog is accessible from menu `Messages -> Message filters` and is the cent
 * debug your script against sample `MessageObject` instance.
 
 ### Performance
-Note that evaluations of JavaScript expressions are NOT that fast. They are much slower than native `C++` code, but well-optimized scripts usually take only several miliseconds to finish for each message.
+Note that evaluations of JavaScript expressions are NOT that fast. They are much slower than native `C++` code, but well-optimized scripts usually take only several milliseconds to finish for each message.
 
 ## Database backends
 RSS Guard offers switchable database backends which hold your data. At this point, two backends are available:
 * MariaDB,
 * SQLite (default).
 
-SQLite backend is very simple to use, no further configuration is needed and all your data are stored in single file `<user-data-root-path>\database\local\database.ini`. Check `About RSS Guard -> Resources` dialog to find more info on significant paths used. This backend offers "in-memory" database option, which automatically copies all your data into RAM when app starts and then works solely with that RAM data, which makes RSS Guard incredibily fast. Data is also stored back to database file when app exits. Note that this option should be used very rarely because RSS Guard should be fast enought with classic SQLite persistent DB files.
+SQLite backend is very simple to use, no further configuration is needed and all your data are stored in single file
+```
+<user-data-root-path>\database\local\database.ini
+```
+Check `About RSS Guard -> Resources` dialog to find more info on significant paths used. This backend offers "in-memory" database option, which automatically copies all your data into RAM when app starts and then works solely with that RAM data, which makes RSS Guard incredibily fast. Data is also stored back to database file when app exits. Note that this option should be used very rarely because RSS Guard should be fast enought with classic SQLite persistent DB files.
 
 MariaDB (MySQL) backend is there for users, who want to store their data in a centralized way. You can have single server in your (local) network and use multiple RSS Guard instances to access the data. MySQL will also work much better if you prefer to have zillions of feeds and messages stored.
 
@@ -214,7 +224,22 @@ RSS Guard includes Gmail plugin, which allows users to receive and send (!!!) e-
 <img src="images/gmail-new-email.png">
 
 * You can also reply to existing messages.
-* Plugin is able to suggest recipient's e-mail.
+* Plugin is able to suggest recipient's e-mail. Suggestable addresses are read from e-mail messages which are already stored in RSS Guard's database. Therefore you have to have some e-mails fetched in order to have this feature working.
+
+## GUI tweaking
+RSS Guard's GUI is very customizable. You can, for example, hide many GUI elements.
+
+<img src="images/gui-hiding.png" width="80%">
+
+For example, you can hide menu, toolbars, status bar and even list headers to achieve very minimal main window layout.
+
+If you hide main menu, then small `home` icon will appear in left-top corner of main application window. 
+
+<img src="images/gui-hiding-all.png" width="80%">
+
+Many people have very widescreen monitors nowadays and RSS Guard offers you horizontal layout for this use case, placing message previewer on the right side of message list.
+
+<img src="images/gui-layout-orientation.png" width="80%">
 
 # Misc
 Here you can find some useful insights into RSS Guard's modus operandi.
