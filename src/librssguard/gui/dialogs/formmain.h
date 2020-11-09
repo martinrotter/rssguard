@@ -68,7 +68,7 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     // Displays various dialogs.
     void backupDatabaseSettings();
     void restoreDatabaseSettings();
-    void showWiki();
+    void showDocs();
     void showDbCleanupAssistant();
     void reportABug();
     void donate();

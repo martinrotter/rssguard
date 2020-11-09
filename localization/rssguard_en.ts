@@ -1951,10 +1951,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>&amp;Feed/message list headers</translation>
     </message>
     <message>
-        <source>Display &amp;wiki</source>
-        <translation>Display &amp;wiki</translation>
-    </message>
-    <message>
         <source>&amp;Restore database/settings</source>
         <translation>&amp;Restore database/settings</translation>
     </message>
@@ -2225,6 +2221,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display &amp;documentation</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

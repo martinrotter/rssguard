@@ -64,7 +64,7 @@
     </property>
     <addaction name="m_actionCheckForUpdates"/>
     <addaction name="m_actionReportBug"/>
-    <addaction name="m_actionDisplayWiki"/>
+    <addaction name="m_actionDisplayDocs"/>
     <addaction name="m_actionDonate"/>
     <addaction name="m_actionAboutGuard"/>
    </widget>
@@ -538,9 +538,9 @@
     <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionDisplayWiki">
+  <action name="m_actionDisplayDocs">
    <property name="text">
-    <string>Display &amp;wiki</string>
+    <string>Display &amp;documentation</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>

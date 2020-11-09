@@ -102,9 +102,11 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 ## Web-based and lite app variants
 RSS Guard is distributed in two variants:
 * **Standard package with WebEngine-based bundled message viewer**: This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption. Also, installation packages are relatively big.
+
 <img src="images/webengine-view.png" width="80%">
 
 * **Lite package with simple text-based message viewer**: This variant displays message in much simpler and more lightweight text-based component. Layout and formatting of displayed message is simplified, no big external web viewers are used, which results in much smaller installation packages, much smaller memory footprint and increased privacy of the user, because many web resources are not downloaded by default like pictures, JavaScript and so on. This variant of RSS Guard is meant for advanced users and can faster GUI response in some use-cases.
+
 <img src="images/nonwebengine-view.png" width="80%">
 
 ## Supported feed formats and online feed services
@@ -118,6 +120,7 @@ RSS Guard is modular application which supports plugins. It offers well-maintain
 All plugins share almost all core RSS Guard's features, including labels, recycle bins, podcasts fetching or newspaper view. They are implemented in a very transparent way, making it easy to maintain them or add new ones.
 
 Usually, plugins have some exclusive functionality, for example Gmail plugin allows user to send e-mail messages. This extra functionality is always accessible via plugin's context menu and also via main menu.
+
 <img src="images/gmail-context-menu.png" width="80%">
 
 If there is interest in other plugins, you might write one yourself or if many people are interested then I might write it for you, even commercially if we make proper arrangements.
@@ -133,7 +136,6 @@ Standard plugin offers some extra features like export/import of OPML 2.0 files 
 OPML files can be exported/imported in simple dialog.
 
 <img src="images/im-ex-feeds.png" width="80%">
-
 <img src="images/im-ex-feeds-dialog.png">
 
 You just select output file (in case of OPML export), check desired feeds and hit `Export to file`.
@@ -208,6 +210,7 @@ For database-related configuration see `Settings -> Data storage` dialog.
 ## Gmail
 RSS Guard includes Gmail plugin, which allows users to receive and send (!!!) e-mail messages. Plugin uses [Gmail API](https://developers.google.com/gmail/api) and offers some e-mail client-like features:
 * Sending e-mail messages.
+
 <img src="images/gmail-new-email.png">
 
 * You can also reply to existing messages.

@@ -483,7 +483,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
   m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
   m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme(QSL("applications-office")));
-  m_ui->m_actionDisplayWiki->setIcon(icon_theme_factory->fromTheme(QSL("applications-science")));
+  m_ui->m_actionDisplayDocs->setIcon(icon_theme_factory->fromTheme(QSL("applications-science")));
 
   // View.
   m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
@@ -671,7 +671,7 @@ void FormMain::createConnections() {
   });
   connect(m_ui->m_actionReportBug, &QAction::triggered, this, &FormMain::reportABug);
   connect(m_ui->m_actionDonate, &QAction::triggered, this, &FormMain::donate);
-  connect(m_ui->m_actionDisplayWiki, &QAction::triggered, this, &FormMain::showWiki);
+  connect(m_ui->m_actionDisplayDocs, &QAction::triggered, this, &FormMain::showDocs);
 
   connect(m_ui->m_actionMessagePreviewEnabled, &QAction::toggled, this, [](bool enabled) {
     qApp->settings()->setValue(GROUP(Messages), Messages::EnableMessagePreview, enabled);
@@ -813,8 +813,8 @@ void FormMain::changeEvent(QEvent* event) {
   QMainWindow::changeEvent(event);
 }
 
-void FormMain::showWiki() {
-  if (!qApp->web()->openUrlInExternalBrowser(APP_URL_WIKI)) {
+void FormMain::showDocs() {
+  if (!qApp->web()->openUrlInExternalBrowser(APP_URL_DOCUMENTATION)) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
                          QSystemTrayIcon::Warning, this, true);
