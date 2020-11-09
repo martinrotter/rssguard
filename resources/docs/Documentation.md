@@ -12,6 +12,8 @@
     * [Message filtering](Message-filters.md)
     * [Database backends](#database-backends)
     * [Gmail](#gmail)
+    * [Labels](Labels.md)
+    * [Downloading files](#downloading-files)
     * [GUI tweaking](#gui-tweaking)
 * [Miscellaneous](#miscellaneous)
     * [Cleaning database](#cleaning-database)
@@ -141,6 +143,9 @@ RSS Guard includes Gmail plugin, which allows users to receive and send (!!!) e-
 * You can also reply to existing messages.
 * Plugin is able to suggest recipient's e-mail. Suggestable addresses are read from e-mail messages which are already stored in RSS Guard's database. Therefore you have to have some e-mails fetched in order to have this feature working.
 
+## Downloading files
+TODO
+
 ## GUI tweaking
 RSS Guard's GUI is very customizable. You can, for example, hide many GUI elements.
 
@@ -162,6 +167,8 @@ Here you can find some useful insights into RSS Guard's modus operandi.
 ## Cleaning database
 Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with thousands of messages.
 
+<img src="images/cleanup-db.png" width="80%">
+
 ## Portable user data
 RSS Guard checks "config directory" (this is `C:\Users\<user>\AppData\Local` directory on Windows) for existence of file:
 ```
@@ -172,6 +179,8 @@ If that file exists, then RSS Guard will use the file (this is called _non-porta
 data\config\config.ini
 ```
 This is _fully-portable mode_. Check `About RSS Guard -> Resources` dialog to find more info on significant paths used.
+
+RSS Guard on Linux, Android or Mac OS automatically uses non-portable user data location, so that it is in line with [XDG](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) standard.
 
 ## Downloading new messages
 Here is the rough workflow which is done when you hit `Feeds & categories -> Update all items` or `Feeds & categories -> Update selected items`. At that point of time this happens:
