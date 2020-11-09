@@ -1,9 +1,10 @@
 # (WIP!!!) ToC
+* [Downloads](#downloads)
 * [Foreword](#foreword)
-    * [Philosophy](#philosophy)
-    * [Versioning](#versioning)
-    * [Reporting bugs](#reporting-bugs)
-    * [Localizations](#localizations)
+* [Philosophy](#philosophy)
+* [Versioning](#versioning)
+* [Reporting bugs](#reporting-bugs)
+* [Localizations](#localizations)
 * [Features](#features)
     * [List of main features](#list-of-main-features)
     * [Web-based and lite app variants](#web-based-and-lite-app-variants)
@@ -11,13 +12,20 @@
     * [Message filtering](#message-filtering)
     * [Database backends](#database-backends)
     * [Gmail](#gmail)
-* [Misc](#misc)
+* [Miscelaneous](#misc)
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
     * [Generating debug log file](#generating-debug-log-file)
 
 <img src="images/rssguard.png" width="64px">
+
+# Downloads
+
+- [Stable Releases](https://github.com/martinrotter/rssguard/releases)
+- Development builds:
+    - [Windows](https://bintray.com/martinrotter/rssguard/Development/Windows#files)
+    - [Linux and MacOS](https://bintray.com/martinrotter/rssguard/Development/LinuxMacOs#files)
 
 # Foreword
 First, let me say, that you can contact RSS Guard's lead developer via [e-mail](mailto:rotter.martinos@gmail.com) or just submit a ticket here in the repository.
@@ -56,12 +64,12 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 * Android (buildable and running).
 
 ## List of main features
-* **support for online feed synchronization via plugins**,
-    * Tiny Tiny RSS (RSS Guard 3.0.0+),
-    * Nextcloud News (RSS Guard 3.1.0+),
-    * Inoreader (RSS Guard 3.5.0+),
-    * Gmail with e-mail sending (RSS Guard 3.7.1+).
-* core:
+* **Support for online feed synchronization via plugins**,
+    * Tiny Tiny RSS (RSS Guard 3.0.0+)
+    * Nextcloud News (RSS Guard 3.1.0+)
+    * Inoreader (RSS Guard 3.5.0+)
+    * Gmail with e-mail sending (RSS Guard 3.7.1+)
+* Core:
     * Support for all feed formats (RSS/RDF/ATOM/JSON),
     * Full support of podcasts (RSS/ATOM/JSON),
     * Import/export of feeds to/from OPML 2.0,
@@ -101,18 +109,29 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 
 ## Web-based and lite app variants
 RSS Guard is distributed in two variants:
-* **Standard package with WebEngine-based bundled message viewer**: This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption. Also, installation packages are relatively big.
+
+### Standard package with WebEngine-based bundled message viewer
+
+This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption. Also, installation packages are relatively big.
+
 <img src="images/webengine-view.png" width="80%">
 
-* **Lite package with simple text-based message viewer**: This variant displays message in much simpler and more lightweight text-based component. Layout and formatting of displayed message is simplified, no big external web viewers are used, which results in much smaller installation packages, much smaller memory footprint and increased privacy of the user, because many web resources are not downloaded by default like pictures, JavaScript and so on. This variant of RSS Guard is meant for advanced users and can faster GUI response in some use-cases.
+### Lite package with simple text-based message viewer
+
+This variant displays message in a much simpler and more lightweight text-based format. Layout and formatting of displayed message is simplified with no external web viewers are used; This results in a much smaller installation packages, much smaller memory footprint, and increased privacy of the user as many web resources are not downloaded by default like pictures, JavaScript and so on.
+
+This variant of RSS Guard is meant for advanced users and can faster GUI response in some use-cases.
+
 <img src="images/nonwebengine-view.png" width="80%">
 
+If you're not sure which version to use, **use the Standard WebEngine package**. Download links for stable releases are available [here](https://github.com/martinrotter/rssguard/releases). If you wish to use a development build you can find [Windows](https://bintray.com/martinrotter/rssguard/Development/Windows#files) and [Linux/MacOS](https://bintray.com/martinrotter/rssguard/Development/LinuxMacOs#files) downloads available.
+
 ## Supported feed formats and online feed services
-RSS Guard is modular application which supports plugins. It offers well-maintained and relatively stable [plugin API](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/services/abstract/serviceentrypoint.h) which can be used to add support for various online feed services, extend a way feeds are processed or add totally new functionality to RSS Guard. At this point RSS Guard offers these plugins which are bundled in all installation packages and some of their features are described in detail in this documentation:
+RSS Guard is a modular application which supports plugins. It offers well-maintained and relatively stable [plugin API](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/services/abstract/serviceentrypoint.h) which can be used to add support for various online feed services, extend a way feeds are processed or add totally new functionality to RSS Guard. At this point RSS Guard offers these plugins which are bundled in all installation packages and some of their features are described in detail in this documentation:
 * Standard `RSS/RDF/ATOM/JSON` plugin: This is the core plugin of RSS Guard which allows you to user the app like normal standalone feed reader with great features everyone would expect, including `OPML` files export and import or feed metadata fetching. Also podcasts are supported.
 * [Tiny Tiny RSS](https://tt-rss.org) plugin: Adds ability to synchronize messages with TT-RSS instances, either self-hosted or via 3rd-party external service.
 * [Inoreader](https://www.inoreader.com) plugin: Adds ability to synchronize messages with Inoreader. All you need to do is create free account on their website and start rocking.
-* [Nextcloud News](https://apps.nextcloud.com/apps/news) plugin: Nextcloud News is a Nextcloud app which adds feed reader abilities into your Nextcloud instances. Nextcloud is nearly perfect self-hosted artifact synchronization platform.
+* [Nextcloud News](https://apps.nextcloud.com/apps/news) plugin: Nextcloud News is a Nextcloud app which adds feed reader abilities into your Nextcloud instances.
 * [Gmail](https://www.google.com/gmail) plugin: Yes, you are reading it right. RSS Guard can be used as very lightweight and simple e-mail client. This plugins uses [Gmail API](https://developers.google.com/gmail/api) and offers even e-mail sending.
 
 All plugins share almost all core RSS Guard's features, including labels, recycle bins, podcasts fetching or newspaper view. They are implemented in a very transparent way, making it easy to maintain them or add new ones. For more information on how to configure them please refer to the [Accounts](accounts.md) help document.
@@ -141,55 +160,7 @@ You just select output file (in case of OPML export), check desired feeds and hi
 ## Message filtering
 RSS Guard supports _automagic_ message filtering. The filtering system is automatically triggered when new messages for each feed are downloaded. User can write scripts which perform filtering decisions. [**JavaScript with ECMA standard**](http://www.ecma-international.org/publications/standards/Ecma-262.htm) is supported.
 
-### Message downloading/filtering workflow
-```
-foreach (feed in feeds_to_update) do
-  messages = download_messages(feed)
-  filtered_messages = filter_messages(messages)
-  
-  save_messages_to_database(filtered_messages)
-```
-As you can see, RSS Guard processes all feeds scheduled for message downloading one by one; downloading new messages, feeding them to filtering system and then saving all approved messages to RSS Guard's database.
-
-### Writing message filter
-
-Message filter consists of arbitrary JavaScript code which must provide function with prototype `function filterMessage() { }`. This function must be fast and must return integer values which belong to enumeration [`FilteringAction`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L83). For example, your function must return `2` to block the message which is subsequently NOT saved into database. For easier usage, RSS Guard 3.7.1+ offers named variables for this, which are called `MSG_ACCEPT` and `MSG_IGNORE`.
-
-Each message is accessible in your script via global variable named `msg` of type [`MessageObject`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L118). Some properties are writable, thus allowing you to change contents of the message before it is written to DB. You can mark message important, parse its description or perhaps change author name!!!
-
-RSS Guard 3.8.0+ offers also read-only list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. Each `Label` in the array offers these properties: `title` (title of the label), `color` (color of the label) and `customId` (account-specific ID of the label).
-
-Passed message also offers special function `MessageObject.isDuplicateWithAttribute(DuplicationAttributeCheck)` which allows you to perform runtime check for existence of the message in RSS Guard's database. The parameter is integer value from enumeration [`DuplicationAttributeCheck`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L91) and specifies how exactly you want to determine if given message is "duplicate".
-
-For example if you want to check if there is already another message with same author in database, then you call `msg.isDuplicateWithAttribute(4)`. Enumeration even supports "flags" approach, thus you can combine multiple checks via bitwise `OR` operation in single call, for example like this: `msg.isDuplicateWithAttribute(4 | 16)`.
-
-### Examples
-Accept only messages from "Bob" while also marking them important.
-```js
-function filterMessage() {
-  if (msg.author == "Bob") {
-    msg.isImportant = true;
-    return MSG_ACCEPT;
-  }
-  else {
-    return MSG_IGNORE;
-  }
-}
-```
-Replace all dogs with cats!
-```js
-function filterMessage() {
-  msg.title = msg.title.replace("dogs", "cats");
-  return MSG_ACCEPT;
-}
-```
-### `Message filters` dialog
-The dialog is accessible from menu `Messages -> Message filters` and is the central place for message filters management within RSS Guard. It allows you to:
-* add or remove message filters,
-* assign filter to whatever feeds (across all accounts) you want,
-* rename filters and write their `JavaScript`-based scripts,
-* reformat source code of script with `clang-format` tool (which is preinstalled on Windows version of RSS Guard),
-* debug your script against sample `MessageObject` instance.
+For more detailed information please refer to the [message filtering document](message-filter.md).
 
 ### Performance
 Note that evaluations of JavaScript expressions are NOT that fast. They are much slower than native `C++` code, but well-optimized scripts usually take only several milliseconds to finish for each message.
