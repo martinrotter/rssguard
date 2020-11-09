@@ -1929,10 +1929,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>新聞源/消息清單欄首(&amp;F)</translation>
     </message>
     <message>
-        <source>Display &amp;wiki</source>
-        <translation>顯示 &amp;wiki</translation>
-    </message>
-    <message>
         <source>&amp;Restore database/settings</source>
         <translation>儲存資料庫/設定(&amp;R)</translation>
     </message>
@@ -2203,6 +2199,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display &amp;documentation</source>
         <translation type="unfinished"/>
     </message>
 </context>

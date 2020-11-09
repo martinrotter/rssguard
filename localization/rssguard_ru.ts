@@ -1931,10 +1931,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Заголовки списка каналов/сообщений (&amp;F)</translation>
     </message>
     <message>
-        <source>Display &amp;wiki</source>
-        <translation>Перейти в вики (&amp;W)</translation>
-    </message>
-    <message>
         <source>&amp;Restore database/settings</source>
         <translation>Восстановить базу данных/настройки (&amp;R)</translation>
     </message>
@@ -2205,6 +2201,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display &amp;documentation</source>
         <translation type="unfinished"/>
     </message>
 </context>

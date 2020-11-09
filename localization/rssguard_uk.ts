@@ -1924,10 +1924,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Перелік заголовків потоків/повідомлень</translation>
     </message>
     <message>
-        <source>Display &amp;wiki</source>
-        <translation>Показати wiki</translation>
-    </message>
-    <message>
         <source>&amp;Restore database/settings</source>
         <translation>Відновити базу/налаштування</translation>
     </message>
@@ -2198,6 +2194,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display &amp;documentation</source>
         <translation type="unfinished"/>
     </message>
 </context>

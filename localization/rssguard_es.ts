@@ -1930,10 +1930,6 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
         <translation>&amp;Encabezados de la lista de fuentes/mensajes</translation>
     </message>
     <message>
-        <source>Display &amp;wiki</source>
-        <translation>Mostrar &amp;wiki</translation>
-    </message>
-    <message>
         <source>&amp;Restore database/settings</source>
         <translation>&amp;Restaurar base de datos/configuración</translation>
     </message>
@@ -2204,6 +2200,10 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     </message>
     <message>
         <source>Alternate row colors in lists</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display &amp;documentation</source>
         <translation type="unfinished"/>
     </message>
 </context>

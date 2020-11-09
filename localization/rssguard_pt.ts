@@ -1930,10 +1930,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Cabeçalhos da lista de &amp;feeds/mensagens</translation>
     </message>
     <message>
-        <source>Display &amp;wiki</source>
-        <translation>Exibir &amp;wiki</translation>
-    </message>
-    <message>
         <source>&amp;Restore database/settings</source>
         <translation>&amp;Restaurar banco de dados/configurações</translation>
     </message>
@@ -2205,6 +2201,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>Alternate row colors in lists</source>
         <translation>Cores de linha alternadas nas listas</translation>
+    </message>
+    <message>
+        <source>Display &amp;documentation</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

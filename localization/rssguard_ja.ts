@@ -1922,10 +1922,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>フィードとメッセージ一覧のヘッダー(&amp;F)</translation>
     </message>
     <message>
-        <source>Display &amp;wiki</source>
-        <translation>Wikiを表示(&amp;w)</translation>
-    </message>
-    <message>
         <source>&amp;Restore database/settings</source>
         <translation>データベースと設定の復元(&amp;R)</translation>
     </message>
@@ -2196,6 +2192,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display &amp;documentation</source>
         <translation type="unfinished"/>
     </message>
 </context>

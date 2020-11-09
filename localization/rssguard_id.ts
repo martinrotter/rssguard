@@ -1925,10 +1925,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Daftar tajuk &amp;feed/pesan</translation>
     </message>
     <message>
-        <source>Display &amp;wiki</source>
-        <translation>Tampilkan &amp;wiki</translation>
-    </message>
-    <message>
         <source>&amp;Restore database/settings</source>
         <translation>&amp;Pulihkan database/pengaturan</translation>
     </message>
@@ -2199,6 +2195,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display &amp;documentation</source>
         <translation type="unfinished"/>
     </message>
 </context>

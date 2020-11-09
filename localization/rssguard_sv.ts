@@ -1930,10 +1930,6 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation>&amp;Kolumnrubriker</translation>
     </message>
     <message>
-        <source>Display &amp;wiki</source>
-        <translation>Visa &amp;wiki</translation>
-    </message>
-    <message>
         <source>&amp;Restore database/settings</source>
         <translation>&amp;Återställ databas/inställningar</translation>
     </message>
@@ -2204,6 +2200,10 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
+        <translation>Växla radfärger i listan</translation>
+    </message>
+    <message>
+        <source>Display &amp;documentation</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3082,11 +3082,11 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>This account does not allow you to create labels.</source>
-        <translation type="unfinished"/>
+        <translation>Detta konto tillåter inte att du skapar etiketter.</translation>
     </message>
     <message>
         <source>Not allowed</source>
-        <translation type="unfinished"/>
+        <translation>Ej tillåtet</translation>
     </message>
 </context>
 <context>
@@ -3606,7 +3606,7 @@ genom att klicka på denna popup-avisering.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
-        <translation type="unfinished"/>
+        <translation>Standard online-flöden (RSS/ATOM/JSON)</translation>
     </message>
 </context>
 <context>
