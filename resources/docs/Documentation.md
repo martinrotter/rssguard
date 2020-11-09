@@ -14,6 +14,7 @@
     * [Gmail](#gmail)
     * [Labels](Labels.md)
     * [Downloading files](#downloading-files)
+    * [AdBlock](#adblock)
     * [GUI tweaking](#gui-tweaking)
 * [Miscellaneous](#miscellaneous)
     * [Command line interface](#cli)
@@ -145,7 +146,20 @@ RSS Guard includes Gmail plugin, which allows users to receive and send (!!!) e-
 * Plugin is able to suggest recipient's e-mail. Suggestable addresses are read from e-mail messages which are already stored in RSS Guard's database. Therefore you have to have some e-mails fetched in order to have this feature working.
 
 ## Downloading files
-TODO
+RSS Guard offers simple embedded file downloader.
+
+<img src="images/downloader-window.png" width="80%">
+
+You can right click on any item in embedded web browser and hit `Save as` button. RSS Guard will then automatically display downloader and will download your file. This feature works in both RSS Guard [variants](#web-based-and-lite-app-variants).
+
+<img src="images/downloader-view.png" width="80%">
+
+You can download up to 6 files simultaneously.
+
+## AdBlock
+[Web-based variant](#web-based-and-lite-app-variants) of RSS Guard offers ad-blocking functionality too.
+
+You can find its settings in `Web browser & tabs` section of main menu.
 
 ## GUI tweaking
 RSS Guard's GUI is very customizable. You can, for example, hide many GUI elements.
