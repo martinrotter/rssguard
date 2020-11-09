@@ -113,7 +113,7 @@ void FormMessageFiltersManager::addNewFilter() {
   }
   catch (const ApplicationException& ex) {
     MessageBox::show(this, QMessageBox::Icon::Critical, tr("Error"),
-                     tr("Cannot save new filter, error: ''.").arg(ex.message()));
+                     tr("Cannot save new filter, error: '%1'.").arg(ex.message()));
   }
 }
 
@@ -293,7 +293,7 @@ void FormMessageFiltersManager::beautifyScript() {
   QProcess proc_clang_format(this);
 
   proc_clang_format.setInputChannelMode(QProcess::InputChannelMode::ManagedInputChannel);
-  proc_clang_format.setArguments({"--assume-filename=script.js", "--style=Chromium"});
+  proc_clang_format.setArguments({ "--assume-filename=script.js", "--style=Chromium" });
 
 #if defined (Q_OS_WIN)
   proc_clang_format.setProgram(qApp->applicationDirPath() + QDir::separator() +
