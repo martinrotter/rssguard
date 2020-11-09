@@ -1,6 +1,14 @@
 # Message filtering
 
+The dialog is accessible from menu **Messages → Message filters** and is the central place for message filters management within RSS Guard. It allows you to:
+* Add or remove message filters,
+* Assign filter to whatever feeds (across all accounts) you want,
+* Rename filters and write their `JavaScript`-based scripts,
+* Reformat source code of script with `clang-format` tool (which is preinstalled on Windows version of RSS Guard),
+* Debug your script against sample `MessageObject` instance.
+
 ## Message downloading/filtering workflow
+
 ```
 foreach (feed in feeds_to_update) do
   messages = download_messages(feed)
@@ -8,15 +16,15 @@ foreach (feed in feeds_to_update) do
   
   save_messages_to_database(filtered_messages)
 ```
-As you can see, RSS Guard processes all feeds scheduled for message downloading one by one; downloading new messages, feeding them to filtering system and then saving all approved messages to RSS Guard's database.
+RSS Guard processes all feeds scheduled for downloading one by one; downloading new messages for each one of them, then feeding the messages into the filtering system. Once all of this is done _approved_ messages are saved to the database.
 
-## Writing message filter
+## Writing a message filter
 
-Message filter consists of arbitrary JavaScript code which must provide function with prototype `function filterMessage() { }`. This function must be fast and must return integer values which belong to enumeration [`FilteringAction`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L83). For example, your function must return `2` to block the message which is subsequently NOT saved into database. For easier usage, RSS Guard 3.7.1+ offers named variables for this, which are called `MSG_ACCEPT` and `MSG_IGNORE`.
+A message filter consists of arbitrary JavaScript code which must provide function with prototype `function filterMessage() { }`. This function must be fast and must return integer values which belong to enumeration [`FilteringAction`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L83). For example, your function must return `2` to block the message which is subsequently NOT saved into database. For easier usage, RSS Guard 3.7.1+ offers named variables for this, which are called `MSG_ACCEPT` and `MSG_IGNORE`.
 
-Each message is accessible in your script via global variable named `msg` of type [`MessageObject`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L118). Some properties are writable, thus allowing you to change contents of the message before it is written to DB. You can mark message important, parse its description or perhaps change author name!!!
+Each message is accessible in your script via global variable named `msg` of type [`MessageObject`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L118). Some properties are writable, thus allowing you to change contents of the message before it is written to DB. You can mark a message important, parse its description or perhaps change author name!!!
 
-RSS Guard 3.8.0+ offers also read-only list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. Each `Label` in the array offers these properties: `title` (title of the label), `color` (color of the label) and `customId` (account-specific ID of the label).
+Starting with version 3.8.0 RSS Guard also offers read-only list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. Each `Label` in the array offers these properties: `title` (title of the label), `color` (color of the label) and `customId` (account-specific ID of the label).
 
 Passed message also offers special function `MessageObject.isDuplicateWithAttribute(DuplicationAttributeCheck)` which allows you to perform runtime check for existence of the message in RSS Guard's database. The parameter is integer value from enumeration [`DuplicationAttributeCheck`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L91) and specifies how exactly you want to determine if given message is "duplicate".
 
@@ -42,12 +50,3 @@ function filterMessage() {
   return MSG_ACCEPT;
 }
 ```
-## `Message filters` dialog
-The dialog is accessible from menu `Messages → Message filters` and is the central place for message filters management within RSS Guard. It allows you to:
-* Add or remove message filters,
-* Assign filter to whatever feeds (across all accounts) you want,
-* Rename filters and write their `JavaScript`-based scripts,
-* Reformat source code of script with `clang-format` tool (which is preinstalled on Windows version of RSS Guard),
-* Debug your script against sample `MessageObject` instance.
-
-
