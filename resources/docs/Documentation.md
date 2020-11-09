@@ -127,7 +127,7 @@ If there is interest in other plugins, you might write one yourself or if many p
 
 ### Features found exclusively in `standard RSS` plugin
 Standard plugin in RSS Guard offers some features which are specific to it. Of course it supports all news syndication formats which are nowadays used:
-* RSS 0.90, 0.91, 0.92, 1.0 (also know as *RDF*), 2.0.
+* RSS 0.90, 0.91, 0.92, 1.0 (also known as *RDF*), 2.0.
 * ATOM 1.0,
 * [JSON](https://www.jsonfeed.org).
 
