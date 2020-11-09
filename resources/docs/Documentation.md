@@ -1,18 +1,19 @@
 # Documentation
-* [Foreword](#foreword)
+* [Introduction](#introduction)
+    * [Downloads](Downloads.md)
     * [Philosophy](#philosophy)
     * [Versioning](#versioning)
     * [Reporting bugs](#reporting-bugs)
     * [Localizations](#localizations)
+    * [Web-based and lite app variants](#web-based-and-lite-app-variants)
 * [Features](#features)
     * [List of main features](#list-of-main-features)
-    * [Web-based and lite app variants](#web-based-and-lite-app-variants)
     * [Supported feed formats and online feed services](Feed-formats.md)
     * [Message filtering](Message-filters.md)
     * [Database backends](#database-backends)
     * [Gmail](#gmail)
     * [GUI tweaking](#gui-tweaking)
-* [Misc](#misc)
+* [Miscellaneous](#miscellaneous)
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
@@ -20,7 +21,7 @@
 
 <img src="images/rssguard.png" width="64px">
 
-# Foreword
+# Introduction
 First, let me say, that you can contact RSS Guard's lead developer via [e-mail](mailto:rotter.martinos@gmail.com) or just submit a ticket here in the repository.
 
 I am glad to accept any kind of donations, see ♥ **Sponsor** button on the top of this page. **I say "thank you" for all your support, my donators.** Also, I personally send "thank you" to all contributors (translators, source code contributors, issue reporters) and users.
@@ -38,7 +39,9 @@ RSS Guard uses [semantic versioning](https://semver.org/). The versioning scheme
 * `Z` indicates that there are newly fixed bugs or small features introduced.
 
 ## Reporting bugs
-Please, report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible.
+Please report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible, along with steps taken leading up to the issue occurring.
+
+It is a good idea to read [this](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html) before reporting the bug; it will save time and effort for everyone if all the required information is provided from the get-go.
 
 ## Localizations
 RSS Guard currently includes [many localizations](http://www.transifex.com/projects/p/rssguard).
@@ -49,6 +52,18 @@ If you are interested in creating translations for RSS Guard, then do this:
 2. [Login](http://www.transifex.com/signin) (you can use social networks to login) and work on existing translations. If no translation team for your country/language exists, then ask for creating of localization team via the website.
 
 **All translators commit themselves to keep their translations up-to-date. If some translations are not updated by their authors regularly and only small number of strings is translated, then those translations along with their teams will be eventually REMOVED from the project!!! At least 50% of strings must be translated for translation to being added to project.**
+
+## Web-based and lite app variants
+RSS Guard is distributed in two variants:
+* **Standard package with WebEngine-based bundled message viewer**: This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption. Also, installation packages are relatively big.
+
+<img src="images/webengine-view.png" width="80%">
+
+* **Lite package with simple text-based message viewer**: This variant displays message in much simpler and more lightweight text-based component. Layout and formatting of displayed message is simplified, no big external web viewers are used, which results in much smaller installation packages, much smaller memory footprint and increased privacy of the user, because many web resources are not downloaded by default like pictures, JavaScript and so on. This variant of RSS Guard is meant for advanced users and offers faster GUI response in some use-cases.
+
+<img src="images/nonwebengine-view.png" width="80%">
+
+If you're not sure which version to use, **use the WebEngine-based RSS Guard**.
 
 # Features
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF/ATOM/JSON. RSS Guard is developed on top of the [Qt library](http://qt-project.org) and it supports these operating systems:
@@ -102,16 +117,6 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * localizations to some languages,
     * ability to tweak columns in displayed list of messages.
 
-## Web-based and lite app variants
-RSS Guard is distributed in two variants:
-* **Standard package with WebEngine-based bundled message viewer**: This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption. Also, installation packages are relatively big.
-
-<img src="images/webengine-view.png" width="80%">
-
-* **Lite package with simple text-based message viewer**: This variant displays message in much simpler and more lightweight text-based component. Layout and formatting of displayed message is simplified, no big external web viewers are used, which results in much smaller installation packages, much smaller memory footprint and increased privacy of the user, because many web resources are not downloaded by default like pictures, JavaScript and so on. This variant of RSS Guard is meant for advanced users and can faster GUI response in some use-cases.
-
-<img src="images/nonwebengine-view.png" width="80%">
-
 ## Database backends
 RSS Guard offers switchable database backends which hold your data. At this point, two backends are available:
 * MariaDB,
@@ -151,7 +156,7 @@ Many people have very widescreen monitors nowadays and RSS Guard offers you hori
 
 <img src="images/gui-layout-orientation.png" width="80%">
 
-# Misc
+# Miscellaneous
 Here you can find some useful insights into RSS Guard's modus operandi.
 
 ## Cleaning database

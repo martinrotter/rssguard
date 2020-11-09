@@ -198,11 +198,11 @@
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
-        <translation type="unfinished"/>
+        <translation>Změnit barvu!</translation>
     </message>
     <message>
         <source>Select new color</source>
-        <translation type="unfinished"/>
+        <translation>Vybrat novou barvu</translation>
     </message>
 </context>
 <context>
@@ -241,11 +241,11 @@
     </message>
     <message>
         <source>Removing starred messages...</source>
-        <translation type="unfinished"/>
+        <translation>Mažu důležité zprávy...</translation>
     </message>
     <message>
         <source>Starred messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Důležité zprávy smazány...</translation>
     </message>
 </context>
 <context>
@@ -284,7 +284,7 @@
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Neznámá chyba: &apos;%1&apos;.</translation>
     </message>
 </context>
 <context>
@@ -312,7 +312,7 @@ Tato stránka obsahuje %n kanálů.</numerusform></translation>
     </message>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
-        <translation type="unfinished"/>
+        <translation>Byly detekovány kanály, ale není aktivován žádný účet.</translation>
     </message>
 </context>
 <context>
@@ -447,23 +447,23 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     <name>EmailRecipientControl</name>
     <message>
         <source>To</source>
-        <translation type="unfinished"/>
+        <translation>Komu</translation>
     </message>
     <message>
         <source>Cc</source>
-        <translation type="unfinished"/>
+        <translation>Kopie</translation>
     </message>
     <message>
         <source>Bcc</source>
-        <translation type="unfinished"/>
+        <translation>Slepá kopie</translation>
     </message>
     <message>
         <source>Reply-to</source>
-        <translation type="unfinished"/>
+        <translation>Odpovědět komu</translation>
     </message>
     <message>
         <source>E-mail address</source>
-        <translation type="unfinished"/>
+        <translation>E-mailová adresa</translation>
     </message>
 </context>
 <context>
@@ -505,13 +505,15 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message>
         <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>používá globální nastavení (globální automatická aktualizace kanálů není povolena)</translation>
     </message>
     <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
-        <translation type="unfinished"/>
+        <translation>Automatické aktualizace: %1
+Počet aktivních filtrů zpráv: %2
+Stav: %3</translation>
     </message>
 </context>
 <context>
@@ -667,11 +669,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for important messages</source>
-        <translation type="unfinished"/>
+        <translation>Kontextové menu pro důležité zprávy</translation>
     </message>
     <message>
         <source>Context menu for label</source>
-        <translation type="unfinished"/>
+        <translation>Kontextové menu pro štítek</translation>
     </message>
 </context>
 <context>
@@ -754,11 +756,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>MIT License (applies to boolinq source code)</source>
-        <translation type="unfinished"/>
+        <translation>MIT License (týká se zdrojového kódu komponenty boolinq)</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
-        <translation type="unfinished"/>
+        <translation>GNU GPL License (RSS Guard; mimesis; Numix)</translation>
     </message>
 </context>
 <context>
@@ -776,35 +778,35 @@ or this functionality is not implemented yet.</source>
     <name>FormAddEditEmail</name>
     <message>
         <source>Write e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Napsat e-mailovou zprávu</translation>
     </message>
     <message>
         <source>Contents of your e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Tělo e-mailové zprávy</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="unfinished"/>
+        <translation>...</translation>
     </message>
     <message>
         <source>Add new recipient.</source>
-        <translation type="unfinished"/>
+        <translation>Přidat adresáta.</translation>
     </message>
     <message>
         <source>Subject</source>
-        <translation type="unfinished"/>
+        <translation>Předmět</translation>
     </message>
     <message>
         <source>Title of your message</source>
-        <translation type="unfinished"/>
+        <translation>Nadpis zprávy</translation>
     </message>
     <message>
         <source>E-mail NOT sent</source>
-        <translation type="unfinished"/>
+        <translation>E-mail NEodeslán</translation>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
-        <translation type="unfinished"/>
+        <translation>Váš e-mail nebyl odeslán.</translation>
     </message>
 </context>
 <context>
@@ -815,31 +817,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>...</source>
-        <translation type="unfinished"/>
+        <translation>...</translation>
     </message>
     <message>
         <source>Name for your label</source>
-        <translation type="unfinished"/>
+        <translation>Jméno štítku</translation>
     </message>
     <message>
         <source>Label&apos;s name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Jméno štítku nemůže být prázdné.</translation>
     </message>
     <message>
         <source>Perfect!</source>
-        <translation type="unfinished"/>
+        <translation>Skvěle!</translation>
     </message>
     <message>
         <source>Hot stuff</source>
-        <translation type="unfinished"/>
+        <translation>Dobrej matroš</translation>
     </message>
     <message>
         <source>Create new label</source>
-        <translation type="unfinished"/>
+        <translation>Vytvořit nový štítek</translation>
     </message>
     <message>
         <source>Edit label &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Upravit štítek &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -1095,7 +1097,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Přesměrovávací URL musí být nastaveno na řetězec začínající na &quot;http://localhost&quot;.</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -1202,13 +1204,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Get my own Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Získat vlastní Application ID</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
 
 It is highly recommended to create your own &quot;Application ID&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Dané přesměrovávací URL musí začínat na &quot;http://localhost&quot; a mělo by odpovídat nastavení vaší OAuth &quot;aplikace&quot;.
+
+Založení vlastního &quot;Application ID&quot; se vysoce doporučuje.</translation>
     </message>
 </context>
 <context>
@@ -1311,47 +1315,47 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Stahovat pouze nepřečtené zprávy</translation>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Heslo pro váš Nextcloud účet</translation>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno pro váš Nextcloud účet</translation>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>URL vaší Nextcloud instance, bez API cest</translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Přidat nový účet pro Nextcloud News</translation>
     </message>
     <message>
         <source>Edit existing Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Upravit stávající účet Nextcloud News</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Tento server pro Nextcloud News běží na nepodporované verzi Nextcloudu.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Server Nextcloud News je v pořádku, běží na verzi %1, přičemž minimální vyžadovaná verze je %2.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Server je v pořádku.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Síťová chyba, máte zadáno správné uživatelské jméno a heslo. Je URL k vašemu serveru správně?</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Server Nextcloud News běží na nepodporované verzi %1, přičemž minimální vyžadovaná verze je %2.</translation>
     </message>
 </context>
 <context>
@@ -1522,7 +1526,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Stahovat pouze nepřečtené zprávy</translation>
     </message>
 </context>
 <context>
@@ -2170,70 +2174,70 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Kopírovat URL adresy vybraných položek</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Označit vybrané zprávy jako &amp;přečtené</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Označit vybrané zprávy jako &amp;nepřečtené</translation>
     </message>
     <message>
         <source>Show only &amp;unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit pouze &amp;nepřečtené zprávy</translation>
     </message>
     <message>
         <source>Message &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Filtry zpráv</translation>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit &amp;stromové šipky</translation>
     </message>
     <message>
         <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
+        <translation>Aktualizovat položky s aktivními filtry zpráv</translation>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
-        <translation type="unfinished"/>
+        <translation>Alternovat barvy pozadí položek v seznamech</translation>
     </message>
     <message>
         <source>Display &amp;documentation</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit &amp;dokumentaci</translation>
     </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
     <message>
         <source>Message filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtry zpráv</translation>
     </message>
     <message>
         <source>Remove selected</source>
-        <translation type="unfinished"/>
+        <translation>Smazat vybrané</translation>
     </message>
     <message>
         <source>Add new</source>
-        <translation type="unfinished"/>
+        <translation>Přidat nový</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Účet</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Zaškrtnout vše</translation>
     </message>
     <message>
         <source>&amp;Uncheck all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Odškrtnout vše</translation>
     </message>
     <message>
         <source>Message filter details</source>
-        <translation type="unfinished"/>
+        <translation>Detaily filtru</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2241,19 +2245,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Title of message filter</source>
-        <translation type="unfinished"/>
+        <translation>Název filtru</translation>
     </message>
     <message>
         <source>JavaScript code</source>
-        <translation type="unfinished"/>
+        <translation>Kód JavaScript</translation>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
-        <translation type="unfinished"/>
+        <translation>Sem umístěte JavaScript kód vašeho filtru</translation>
     </message>
     <message>
         <source>Sample message</source>
-        <translation type="unfinished"/>
+        <translation>Ukázková zpráva</translation>
     </message>
     <message>
         <source>Read</source>
@@ -2281,37 +2285,39 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Script output</source>
-        <translation type="unfinished"/>
+        <translation>Výstup skriptu</translation>
     </message>
     <message>
         <source>&amp;Test!</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Otestovat!</translation>
     </message>
     <message>
         <source>&amp;Beautify!</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Zkrášlit!</translation>
     </message>
     <message>
         <source>Detailed &amp;help</source>
-        <translation type="unfinished"/>
+        <translation>Detailní &amp;návod</translation>
     </message>
     <message>
         <source>New message filter</source>
-        <translation type="unfinished"/>
+        <translation>Nový filtr zpráv</translation>
     </message>
     <message>
         <source>Message will be %1.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>Zpráva bude %1.
+
+</translation>
     </message>
     <message>
         <source>ACCEPTED</source>
-        <translation type="unfinished"/>
+        <translation>PŘIJATA</translation>
     </message>
     <message>
         <source>REJECTED</source>
-        <translation type="unfinished"/>
+        <translation>ZAMÍTNUTA</translation>
     </message>
     <message>
         <source>Output (modified) message is:
@@ -2321,43 +2327,49 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
   Is read/important = '%4/%5'
   Created on = '%6'
   Contents = &apos;%7&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Výstupní zpráva je:
+  Nadpis = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Autor = &apos;%3&apos;
+  Je přečtená/důležitá = &apos;%4/%5&apos;
+  Vytvořena = &apos;%6&apos;
+  Tělo = &apos;%7&apos;</translation>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished"/>
+        <translation>ano</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"/>
+        <translation>ne</translation>
     </message>
     <message>
         <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>JavaScriptový kód filtru obsahuje chybu: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Cannot find &apos;clang-format&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Nelze najít utilitu &apos;clang-format&apos;</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-        <translation type="unfinished"/>
+        <translation>Skript nebyl zkrášlen, protože není nainstalovaná utilita &apos;clang-format&apos;.</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Chyba</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-        <translation type="unfinished"/>
+        <translation>Skript nebyl zkrášlen, protože utilita &apos;clang-format&apos; vrátila chybu.</translation>
     </message>
     <message>
         <source>Beautifier was running for too long time</source>
-        <translation type="unfinished"/>
+        <translation>Zkrášlovač běžel moc dlouho.</translation>
     </message>
     <message>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-        <translation type="unfinished"/>
+        <translation>Skript nebyl zkrášlen, je &apos;clang-format&apos; nainstalován?</translation>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;&apos;.</source>
@@ -2895,7 +2907,7 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
+        <translation>Nelze přejít k instalačnímu souboru. Stáhněte instalační soubor ručně na stránkách projektu.</translation>
     </message>
 </context>
 <context>
@@ -2906,7 +2918,7 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message>
         <source>Your login to Gmail was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup na Gmail byl povolen.</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -2918,23 +2930,23 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message>
         <source>No subject</source>
-        <translation type="unfinished"/>
+        <translation>Bez předmětu</translation>
     </message>
     <message>
         <source>Gmail: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: chyba autentizace</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: přístup odepřen</translation>
     </message>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>nejste přihlášen</translation>
     </message>
     <message>
         <source>failed to get metadata</source>
-        <translation type="unfinished"/>
+        <translation>chyba při stažení metadat</translation>
     </message>
 </context>
 <context>
@@ -2953,7 +2965,7 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message>
         <source>Spam</source>
-        <translation type="unfinished"/>
+        <translation>Odpad</translation>
     </message>
     <message>
         <source>Authentication status: %1
@@ -2975,11 +2987,11 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>Write new e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Nová e-mailová zpráva</translation>
     </message>
     <message>
         <source>Reply to this message</source>
-        <translation type="unfinished"/>
+        <translation>Odpovědět e-mailem</translation>
     </message>
 </context>
 <context>
@@ -2997,11 +3009,11 @@ Tokeny vyprší: %2</translation>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"/>
+        <translation>Důležité zprávy</translation>
     </message>
     <message>
         <source>You can find all important messages here.</source>
-        <translation type="unfinished"/>
+        <translation>Zde najdete všechny zprávy označené jako důležité.</translation>
     </message>
 </context>
 <context>
@@ -3063,19 +3075,19 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>You can see all your labels (tags) here.</source>
-        <translation type="unfinished"/>
+        <translation>Zde najdete všechny štítky.</translation>
     </message>
     <message>
         <source>New label</source>
-        <translation type="unfinished"/>
+        <translation>Nový štítek</translation>
     </message>
     <message>
         <source>This account does not allow you to create labels.</source>
-        <translation type="unfinished"/>
+        <translation>Tento účet neumožňuje vytváření štítků.</translation>
     </message>
     <message>
         <source>Not allowed</source>
-        <translation type="unfinished"/>
+        <translation>Nepovoleno</translation>
     </message>
 </context>
 <context>
@@ -3483,19 +3495,19 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>You have to login first</source>
-        <translation type="unfinished"/>
+        <translation>Je třeba se nejdříve přihlásit.</translation>
     </message>
     <message>
         <source>Navigate to website</source>
-        <translation type="unfinished"/>
+        <translation>Přejít na web</translation>
     </message>
     <message>
         <source>To login, you need to navigate to this website:</source>
-        <translation type="unfinished"/>
+        <translation>Pro přihlášení přejděte na tento web:</translation>
     </message>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
+        <translation>Toto okno můžete nyní zavřít a přejděte do aplikace %1</translation>
     </message>
 </context>
 <context>
@@ -3581,7 +3593,7 @@ Je vyžadování verze API minimálně %1.</translation>
     </message>
     <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
-        <translation type="unfinished"/>
+        <translation>Posílání a přijímaní e-mailů přes Gmail.</translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3595,11 +3607,11 @@ na tuto bublinu.</translation>
     </message>
     <message>
         <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
+        <translation>Nelze vložit filtr zpráv, protože databáze neumí vrátit ID.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
-        <translation type="unfinished"/>
+        <translation>Standardní kanály (RSS/ATOM/JSON)</translation>
     </message>
 </context>
 <context>
@@ -3637,7 +3649,7 @@ na tuto bublinu.</translation>
     <name>SearchTextWidget</name>
     <message>
         <source>Clear searched phrase</source>
-        <translation type="unfinished"/>
+        <translation>Smazat hledanou frázi</translation>
     </message>
     <message>
         <source>Seach text</source>
@@ -3645,11 +3657,11 @@ na tuto bublinu.</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>Najít předchozí výskyt</translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation>Najít další výskyt</translation>
     </message>
 </context>
 <context>
@@ -3861,7 +3873,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation>Parametry předávané programu</translation>
     </message>
 </context>
 <context>
@@ -4050,7 +4062,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>Only auto-update when application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation>Automaticky aktualizovat kanály, jen pokud aplikace není na popředí</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -4118,27 +4130,27 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>Feed list font</source>
-        <translation type="unfinished"/>
+        <translation>Písmo seznamu kanálů</translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"/>
+        <translation>Na pozicích obrázků zobrazovat zástupné symboly</translation>
     </message>
     <message>
         <source>Message list font</source>
-        <translation type="unfinished"/>
+        <translation>Písmo seznamu zpráv</translation>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"/>
+        <translation>Písmo zabudovaného zobrazovače zpráv</translation>
     </message>
     <message>
         <source>Select new font</source>
-        <translation type="unfinished"/>
+        <translation>Vybrat písmo</translation>
     </message>
     <message>
         <source>Update all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Při startu aplikace aktualizovat všechny kanály s úvodní prodlevou</translation>
     </message>
 </context>
 <context>
@@ -4292,20 +4304,20 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"/>
+        <translation>Černobílá stavová ikona</translation>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation>systémové téma ikon</translation>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"/>
+        <translation>žádné téma ikon</translation>
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>Dvojitý klik levého tlačítka myši</translation>
     </message>
 </context>
 <context>
@@ -4371,7 +4383,10 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
 Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation type="unfinished"/>
+        <translation>
+Síťový stav: %1
+Kódování: %2
+Typ: %3</translation>
     </message>
 </context>
 <context>
@@ -4530,7 +4545,7 @@ Nepřečtené zprávy: %2</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n vteřina</numerusform><numerusform>%n vteřiny</numerusform><numerusform>%n vteřin</numerusform><numerusform>%n vteřin</numerusform></translation>
     </message>
 </context>
 <context>
@@ -4767,7 +4782,7 @@ Poslední čas přihlášení: %4</translation>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Otevřít odkaz v externím prohlížeči</translation>
     </message>
 </context>
 </TS>

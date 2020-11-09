@@ -2204,7 +2204,7 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Display &amp;documentation</source>
-        <translation type="unfinished"/>
+        <translation>Visa &amp;dokumentation</translation>
     </message>
 </context>
 <context>
