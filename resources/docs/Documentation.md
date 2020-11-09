@@ -16,6 +16,7 @@
     * [Downloading files](#downloading-files)
     * [GUI tweaking](#gui-tweaking)
 * [Miscellaneous](#miscellaneous)
+    * [Command line interface](#cli)
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
@@ -163,6 +164,19 @@ Many people have very widescreen monitors nowadays and RSS Guard offers you hori
 
 # Miscellaneous
 Here you can find some useful insights into RSS Guard's modus operandi.
+
+## CLI
+RSS Guard offers CLI (command line interface). For overview if its features, run `rssguard --help` in your terminal. You will see the overview of the interface.
+
+```
+RSS Guard
+
+Options:
+  -l, --log <log-file>  Write application debug log to file.
+  -?, -h, --help        Displays help on commandline options.
+  --help-all            Displays help including Qt specific options.
+  -v, --version         Displays version information.
+```
 
 ## Cleaning database
 Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with thousands of messages.
