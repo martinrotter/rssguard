@@ -5,9 +5,9 @@
 * [Versioning](#versioning)
 * [Reporting bugs](#reporting-bugs)
 * [Localizations](#localizations)
+* [Web-based and lite app variants](#web-based-and-lite-app-variants)
 * [Features](#features)
     * [List of main features](#list-of-main-features)
-    * [Web-based and lite app variants](#web-based-and-lite-app-variants)
     * [Supported feed formats and online feed services](#supported-feed-formats-and-online-feed-services)
     * [Message filtering](#message-filtering)
     * [Database backends](#database-backends)
@@ -43,7 +43,9 @@ RSS Guard uses [semantic versioning](https://semver.org/). The versioning scheme
 * `Z` indicates that there are newly fixed bugs or small features introduced.
 
 ## Reporting bugs
-Please, report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible.
+Please report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible, along with steps taken leading up to the issue occurring.
+
+It is a good idea to read [this](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html) before reporting the bug; it will save time and effort for everyone if all the required information is provided from the get-go.
 
 ## Localizations
 RSS Guard currently includes [many localizations](http://www.transifex.com/projects/p/rssguard).
@@ -54,6 +56,25 @@ If you are interested in creating translations for RSS Guard, then do this:
 2. [Login](http://www.transifex.com/signin) (you can use social networks to login) and work on existing translations. If no translation team for your country/language exists, then ask for creating of localization team via the website.
 
 **All translators commit themselves to keep their translations up-to-date. If some translations are not updated by their authors regularly and only small number of strings is translated, then those translations along with their teams will be eventually REMOVED from the project!!! At least 50% of strings must be translated for translation to being added to project.**
+
+## Web-based and lite app variants
+RSS Guard is distributed in two variants:
+
+### Standard package with WebEngine-based bundled message viewer
+
+This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption. Also, installation packages are relatively big.
+
+<img src="images/webengine-view.png" width="80%">
+
+### Lite package with simple text-based message viewer
+
+This variant displays message in a much simpler and more lightweight text-based format. Layout and formatting of displayed message is simplified with no external web viewers are used; This results in a much smaller installation packages, much smaller memory footprint, and increased privacy of the user as many web resources are not downloaded by default like pictures, JavaScript and so on.
+
+This variant of RSS Guard is meant for advanced users and can faster GUI response in some use-cases.
+
+<img src="images/nonwebengine-view.png" width="80%">
+
+If you're not sure which version to use, **use the Standard WebEngine package**. Download links for stable releases are available [here](https://github.com/martinrotter/rssguard/releases). If you wish to use a development build you can find [Windows](https://bintray.com/martinrotter/rssguard/Development/Windows#files) and [Linux/MacOS](https://bintray.com/martinrotter/rssguard/Development/LinuxMacOs#files) downloads available.
 
 # Features
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF/ATOM/JSON. RSS Guard is developed on top of the [Qt library](http://qt-project.org) and it supports these operating systems:
@@ -107,25 +128,6 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * Localizations to some languages,
     * Ability to tweak columns in displayed list of messages.
 
-## Web-based and lite app variants
-RSS Guard is distributed in two variants:
-
-### Standard package with WebEngine-based bundled message viewer
-
-This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption. Also, installation packages are relatively big.
-
-<img src="images/webengine-view.png" width="80%">
-
-### Lite package with simple text-based message viewer
-
-This variant displays message in a much simpler and more lightweight text-based format. Layout and formatting of displayed message is simplified with no external web viewers are used; This results in a much smaller installation packages, much smaller memory footprint, and increased privacy of the user as many web resources are not downloaded by default like pictures, JavaScript and so on.
-
-This variant of RSS Guard is meant for advanced users and can faster GUI response in some use-cases.
-
-<img src="images/nonwebengine-view.png" width="80%">
-
-If you're not sure which version to use, **use the Standard WebEngine package**. Download links for stable releases are available [here](https://github.com/martinrotter/rssguard/releases). If you wish to use a development build you can find [Windows](https://bintray.com/martinrotter/rssguard/Development/Windows#files) and [Linux/MacOS](https://bintray.com/martinrotter/rssguard/Development/LinuxMacOs#files) downloads available.
-
 ## Supported feed formats and online feed services
 RSS Guard is a modular application which supports plugins. It offers well-maintained and relatively stable [plugin API](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/services/abstract/serviceentrypoint.h) which can be used to add support for various online feed services, extend a way feeds are processed or add totally new functionality to RSS Guard. At this point RSS Guard offers these plugins which are bundled in all installation packages and some of their features are described in detail in this documentation:
 * Standard `RSS/RDF/ATOM/JSON` plugin: This is the core plugin of RSS Guard which allows you to user the app like normal standalone feed reader with great features everyone would expect, including `OPML` files export and import or feed metadata fetching. Also podcasts are supported.
@@ -137,6 +139,7 @@ RSS Guard is a modular application which supports plugins. It offers well-mainta
 All plugins share almost all core RSS Guard's features, including labels, recycle bins, podcasts fetching or newspaper view. They are implemented in a very transparent way, making it easy to maintain them or add new ones. For more information on how to configure them please refer to the [Accounts](accounts.md) help document.
 
 Usually, plugins have some exclusive functionality, for example Gmail plugin allows user to send e-mail messages. This extra functionality is always accessible via plugin's context menu and also via main menu.
+
 <img src="images/gmail-context-menu.png" width="80%">
 
 If there is interest in other plugins, you might write one yourself or if many people are interested then I might write it for you, even commercially if we make proper arrangements.
@@ -147,15 +150,28 @@ Standard plugin in RSS Guard offers some features which are specific to it. Of c
 * ATOM 1.0,
 * [JSON](https://www.jsonfeed.org).
 
-Standard plugin offers some extra features like export/import of OPML 2.0 files or fetching feed metadata.
+Standard plugin offers some extra features like export/import of OPML 2.0 files or fetching feed metadata:
 
-OPML files can be exported/imported in simple dialog.
+### Import and export feeds
 
-<img src="images/im-ex-feeds.png" width="80%">
+RSS Guard supports [OPML](https://en.wikipedia.org/wiki/OPML) files as its standard method of importing and exporting feeds.
 
-<img src="images/im-ex-feeds-dialog.png">
+#### Import feeds
 
-You just select output file (in case of OPML export), check desired feeds and hit `Export to file`.
+1. Add a new [account](accounts.md) if one does not exist already.
+2. Go to **Accounts** and select the desired account. You can also right-click the account in the Feed List pane and select **Import feeds**.
+3. Click **Select file** to open a file browser window and navigate to your OPML file.
+4. You will be given the option to fetch all feed metadata. Depending on how many feeds are being imported and the number of messages in each feed the process might take some time. Network bandwidth and latency also have an effect on this process.
+4. The **Root node** refers to the category the feeds will be imported into in the event you have already created one for the current account— in this case "category" is synoymous with a _folder_.
+5. You can select which feeds to import or leave out from the process.
+6. Click **Import from file** to finish the process. Should there be any errors a message will appear.
+
+#### Export feeds
+
+1. Go to **Accounts** and select the desired account. You can also right-click the account in the Feed List pane and select **Export feeds**.
+2. Click **Select file** to open a file browser window and select a location and name for the OPML file to be created.
+3. Select which feeds to export
+4. Click **Export to file** to finish the process. Should there be any errors a message will appear.
 
 ## Message filtering
 RSS Guard supports _automagic_ message filtering. The filtering system is automatically triggered when new messages for each feed are downloaded. User can write scripts which perform filtering decisions. [**JavaScript with ECMA standard**](http://www.ecma-international.org/publications/standards/Ecma-262.htm) is supported.
@@ -170,15 +186,16 @@ RSS Guard offers switchable database backends which hold your data. At this poin
 * MariaDB,
 * SQLite (default).
 
-SQLite backend is very simple to use, no further configuration is needed and all your data are stored in single file `<user-data-root-path>\database\local\database.ini`. Check `About RSS Guard -> Resources` dialog to find more info on significant paths used. This backend offers "in-memory" database option, which automatically copies all your data into RAM when app starts and then works solely with that RAM data, which makes RSS Guard incredibly fast. Data is also stored back to database file when app exits. Note that this option should be used very rarely because RSS Guard should be fast enough with classic SQLite persistent DB files.
+SQLite backend is the default database engine used and configuration is needed to use it. It storeds all data in a single file (Check `About RSS Guard → Resources` to find its location). 
 
-MariaDB (MySQL) backend is there for users, who want to store their data in a centralized way. You can have single server in your (local) network and use multiple RSS Guard instances to access the data. MySQL will also work much better if you prefer to have zillions of feeds and messages stored.
+MariaDB (MySQL) backend is there for users who want to store their data in a centralized way or require more power for the organization and storage of of hundreds of feeds. You can use a single server across separate RSS Guard instances on multiple systems.
 
 For more information please refer to the [database backends](database-backends.md) document.
 
 ## Gmail
 RSS Guard includes Gmail plugin, which allows users to receive and send (!!!) e-mail messages. Plugin uses [Gmail API](https://developers.google.com/gmail/api) and offers some e-mail client-like features:
 * Sending e-mail messages.
+
 <img src="images/gmail-new-email.png">
 
 * You can also reply to existing messages.
