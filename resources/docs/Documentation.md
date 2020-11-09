@@ -1,4 +1,4 @@
-# (WIP!!!) ToC
+# Documentation
 * [Foreword](#foreword)
     * [Philosophy](#philosophy)
     * [Versioning](#versioning)
