@@ -167,7 +167,7 @@ Here you can find some useful insights into RSS Guard's modus operandi.
 ## Cleaning database
 Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with thousands of messages.
 
-<img src="images/cleanup-db.png" width="80%">
+<img src="images/cleanup-db.png">
 
 ## Portable user data
 RSS Guard checks "config directory" (this is `C:\Users\<user>\AppData\Local` directory on Windows) for existence of file:
