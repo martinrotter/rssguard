@@ -2,9 +2,38 @@
 —————
 
 Added:
-▪ 
+▪ Support for labels:
+    ▪ Labels are even synchronizable for Inoreader and TT-RSS.
+    ▪ Each message can have assigned multiple labels.
+    ▪ Feed's view now offers "Labels" folder with handy per-label filtering.
+    ▪ Labels assigned in message are now even available in message filtering.
+    ▪ You can assign arbitrary color to each of your labels.
+▪ New bundled icon theme - Numix (https://numixproject.github.io) (Windows only).
+▪ Numix is now default icon theme.
+▪ Built-in web-base message viewer now uses mini.css (https://minicss.org) instead of Bootstrap. This will make viewing of messages quite faster while being more lightweight.
+▪ Message body now has "auto" reading direction - enhances support for RTL messages.
+▪ JSON feeds (https://www.jsonfeed.org) are now supported.
+▪ Added basic CLI interface, run "rssguard --help" to see its API overview.
+▪ Message view header context menu now uses non-closable menu for column show/hide operations.
+▪ Background color of rows in feed/message list can now be alternated.
+▪ Message titles are now properly sanitized before messages are processed by message filters.
+▪ There is a new documentation (https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#documentation) (WIP)
 
 Fixed/changed:
+▪ Correct icons are now downloaded when fetching metadata for RSS/ATOM/JSON feeds.
+▪ Fixed crash when clearing contents of statusbar.
+▪ Translations synchronized.
+▪ Message previwers were completely overhauled to support displaying of (active) labels.
+▪ Codebase of web-based and text-based message previwers was unified, they now share all common code.
+▪ Some fixes for message filtering mechanism.
+▪ Scroll position within message viewer is now remembered if message gets reloaded.
+▪ Text-based message viewer now handles newlines better.
+▪ Fixed OPML export/import for some feeds/categories which could be skipped due to various specific errors.
+▪ Synchronization logic for "feeds" is now more universal, resulting in better behavior when running "Sync in" actions.
+▪ Obsolete Qt-related code removed/replaced.
+▪ Source code does not use hardcoded GUI colors anymore. They are fetched from active skin instead, making some texts more readable and GUI more consistent.
+▪ Fixed various MySQL-related problems and errors which rendered MySQL DB backend unusable for many users.
+▪ Icon themes are not bundled on Linux anymore, RSS Guard fully relies on system-wide themes now.
 ▪ Big thanks to ttrss.info for providing Tiny Tiny RSS account for testing.
 
 3.7.2

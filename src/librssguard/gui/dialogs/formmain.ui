@@ -72,7 +72,7 @@
     <property name="title">
      <string>&amp;View</string>
     </property>
-    <widget class="QMenu" name="m_menuShowHide">
+    <widget class="NonClosableMenu" name="m_menuShowHide">
      <property name="title">
       <string>Show/hide</string>
      </property>
@@ -791,6 +791,11 @@
    <extends>QTabWidget</extends>
    <header>tabwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>NonClosableMenu</class>
+   <extends>QMenu</extends>
+   <header>nonclosablemenu.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

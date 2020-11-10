@@ -650,6 +650,8 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionRestart, &QAction::triggered, qApp, &Application::restart);
 
   // Menu "View" connections.
+  connect(m_ui->m_actionSwitchFeedsList, &QAction::toggled,
+          tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchFeedComponentVisibility);
   connect(m_ui->m_actionFullscreen, &QAction::toggled, this, &FormMain::switchFullscreenMode);
   connect(m_ui->m_actionSwitchMainMenu, &QAction::toggled, m_ui->m_menuBar, &QMenuBar::setVisible);
   connect(m_ui->m_actionSwitchMainWindow, &QAction::triggered, this, &FormMain::switchVisibility);
@@ -741,8 +743,6 @@ void FormMain::createConnections() {
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::openSelectedItemsInNewspaperMode);
   connect(m_ui->m_actionDeleteSelectedItem,
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::deleteSelectedItem);
-  connect(m_ui->m_actionSwitchFeedsList, &QAction::triggered,
-          tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchFeedComponentVisibility);
   connect(m_ui->m_actionSelectNextItem,
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::selectNextItem);
   connect(m_ui->m_actionSwitchToolBars, &QAction::toggled,
