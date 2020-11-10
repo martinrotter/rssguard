@@ -528,8 +528,8 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& messages, 
         if (msgs.contains(msg_id)) {
           Message& msg = messages[msgs.value(msg_id)];
 
-          if (fillFullMessage(msg, msg_doc, feed_id)) {
-            // TODO: report error;
+          if (!fillFullMessage(msg, msg_doc, feed_id)) {
+            qWarningNN << "Failed to get full message for custom ID:" << QUOTE_W_SPACE_DOT(msg.m_customId);
           }
         }
       }

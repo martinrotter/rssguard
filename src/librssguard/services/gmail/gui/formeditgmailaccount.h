@@ -27,6 +27,7 @@ class FormEditGmailAccount : public QDialog {
     void execForEdit(GmailServiceRoot* existing_root);
 
   private slots:
+    void registerApi();
     void testSetup();
     void onClickedOk();
     void onClickedCancel();

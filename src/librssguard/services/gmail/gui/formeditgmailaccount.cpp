@@ -6,6 +6,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
+#include "network-web/webfactory.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailserviceroot.h"
 
@@ -39,6 +40,7 @@ FormEditGmailAccount::FormEditGmailAccount(QWidget* parent)
   connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditGmailAccount::testSetup);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormEditGmailAccount::onClickedOk);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormEditGmailAccount::onClickedCancel);
+  connect(m_ui.m_btnRegisterApi, &QPushButton::clicked, this, &FormEditGmailAccount::registerApi);
 
   m_ui.m_spinLimitMessages->setValue(GMAIL_DEFAULT_BATCH_SIZE);
   m_ui.m_spinLimitMessages->setMinimum(GMAIL_MIN_BATCH_SIZE);
@@ -170,6 +172,10 @@ void FormEditGmailAccount::execForEdit(GmailServiceRoot* existing_root) {
   m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
 
   exec();
+}
+
+void FormEditGmailAccount::registerApi() {
+  qApp->web()->openUrlInExternalBrowser(GMAIL_REG_API_URL);
 }
 
 void FormEditGmailAccount::checkOAuthValue(const QString& value) {

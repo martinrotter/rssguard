@@ -73,6 +73,13 @@
         </property>
        </widget>
       </item>
+      <item row="4" column="0">
+       <widget class="QPushButton" name="m_btnRegisterApi">
+        <property name="text">
+         <string>Get my credentials</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -154,19 +161,20 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LabelWithStatus</class>
-   <extends>QWidget</extends>
-   <header>labelwithstatus.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>m_btnRegisterApi</tabstop>
   <tabstop>m_spinLimitMessages</tabstop>
   <tabstop>m_btnTestSetup</tabstop>
  </tabstops>
