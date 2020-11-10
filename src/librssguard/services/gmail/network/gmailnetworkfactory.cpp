@@ -189,14 +189,13 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Sta
       // We parse this chunk.
       QString messages_data = downloader.lastOutputData();
       QList<Message> more_messages = decodeLiteMessages(messages_data, stream_id, next_page_token);
-      QList<Message> full_messages;
 
       if (!more_messages.isEmpty()) {
         // Now, we via batch HTTP request obtain full data for each message.
-        bool obtained = obtainAndDecodeFullMessages(more_messages, stream_id, full_messages);
+        bool obtained = obtainAndDecodeFullMessages(more_messages, stream_id);
 
         if (obtained) {
-          messages.append(full_messages);
+          messages.append(more_messages);
 
           // New batch of messages was obtained, check if we have enough.
           if (batchSize() > 0 && batchSize() <= messages.size()) {
@@ -479,67 +478,69 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
   }
 }
 
-bool GmailNetworkFactory::obtainAndDecodeFullMessages(const QList<Message>& lite_messages,
-                                                      const QString& feed_id,
-                                                      QList<Message>& full_messages) {
-  auto* multi = new QHttpMultiPart();
-
-  multi->setContentType(QHttpMultiPart::ContentType::MixedType);
-
-  QHash<QString, Message> msgs;
-
-  for (const Message& msg : lite_messages) {
-    QHttpPart part;
-
-    part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);
-    QString full_msg_endpoint = QString("GET /gmail/v1/users/me/messages/%1\r\n").arg(msg.m_customId);
-
-    part.setBody(full_msg_endpoint.toUtf8());
-    multi->append(part);
-    msgs.insert(msg.m_customId, msg);
-  }
-
+bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& messages, const QString& feed_id) {
+  QHash<QString, int> msgs;
+  int next_message = 0;
   QString bearer = m_oauth2->bearer();
 
   if (bearer.isEmpty()) {
     return false;
   }
 
-  QList<QPair<QByteArray, QByteArray>> headers;
-  QList<HttpResponse> output;
-  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  do {
+    auto* multi = new QHttpMultiPart();
 
-  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
-                                               bearer.toLocal8Bit()));
+    multi->setContentType(QHttpMultiPart::ContentType::MixedType);
 
-  NetworkResult res = NetworkFactory::performNetworkOperation(GMAIL_API_BATCH,
-                                                              timeout,
-                                                              multi,
-                                                              output,
-                                                              QNetworkAccessManager::Operation::PostOperation,
-                                                              headers);
+    for (int window = next_message + 100; next_message < window && next_message < messages.size(); next_message++ ) {
+      Message msg = messages[next_message];
+      QHttpPart part;
 
-  if (res.first == QNetworkReply::NetworkError::NoError) {
-    // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
-    for (const HttpResponse& part : output) {
-      auto xx = part.body();
-      QJsonObject msg_doc = QJsonDocument::fromJson(part.body().toUtf8()).object();
-      QString msg_id = msg_doc["id"].toString();
+      part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);
+      QString full_msg_endpoint = QString("GET /gmail/v1/users/me/messages/%1\r\n").arg(msg.m_customId);
 
-      if (msgs.contains(msg_id)) {
-        Message& msg = msgs[msg_id];
+      part.setBody(full_msg_endpoint.toUtf8());
+      multi->append(part);
+      msgs.insert(msg.m_customId, next_message);
+    }
 
-        if (fillFullMessage(msg, msg_doc, feed_id)) {
-          full_messages.append(msg);
+    QList<QPair<QByteArray, QByteArray>> headers;
+    QList<HttpResponse> output;
+    int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+    headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                                 bearer.toLocal8Bit()));
+
+    NetworkResult res = NetworkFactory::performNetworkOperation(GMAIL_API_BATCH,
+                                                                timeout,
+                                                                multi,
+                                                                output,
+                                                                QNetworkAccessManager::Operation::PostOperation,
+                                                                headers);
+
+    if (res.first == QNetworkReply::NetworkError::NoError) {
+      // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
+      for (const HttpResponse& part : output) {
+        auto xx = part.body();
+        QJsonObject msg_doc = QJsonDocument::fromJson(part.body().toUtf8()).object();
+        QString msg_id = msg_doc["id"].toString();
+
+        if (msgs.contains(msg_id)) {
+          Message& msg = messages[msgs.value(msg_id)];
+
+          if (fillFullMessage(msg, msg_doc, feed_id)) {
+            // TODO: report error;
+          }
         }
       }
     }
+    else {
+      return false;
+    }
+  }
+  while (next_message < messages.size());
 
-    return true;
-  }
-  else {
-    return false;
-  }
+  return true;
 }
 
 QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data,
