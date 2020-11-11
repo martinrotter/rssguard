@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>413</width>
+    <width>418</width>
     <height>206</height>
    </rect>
   </property>
@@ -18,9 +18,6 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Ico</string>
      </property>
     </widget>
    </item>
@@ -81,7 +78,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QToolButton" name="m_btnTryAgain">
+    <widget class="QPushButton" name="m_btnTryAgain">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -91,21 +88,21 @@
     </widget>
    </item>
    <item>
-    <widget class="QToolButton" name="m_btnStopDownload">
+    <widget class="QPushButton" name="m_btnStopDownload">
      <property name="text">
       <string>&amp;Stop</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QToolButton" name="m_btnOpenFile">
+    <widget class="QPushButton" name="m_btnOpenFile">
      <property name="text">
       <string>&amp;Open file</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QToolButton" name="m_btnOpenFolder">
+    <widget class="QPushButton" name="m_btnOpenFolder">
      <property name="text">
       <string>Open &amp;directory</string>
      </property>

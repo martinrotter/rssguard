@@ -31,10 +31,15 @@ DownloadItem::DownloadItem(QNetworkReply* reply, QWidget* parent) : QWidget(pare
   m_ui->m_btnTryAgain->hide();
   m_requestFileName = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool();
 
-  connect(m_ui->m_btnStopDownload, &QToolButton::clicked, this, &DownloadItem::stop);
-  connect(m_ui->m_btnOpenFile, &QToolButton::clicked, this, &DownloadItem::openFile);
-  connect(m_ui->m_btnTryAgain, &QToolButton::clicked, this, &DownloadItem::tryAgain);
-  connect(m_ui->m_btnOpenFolder, &QToolButton::clicked, this, &DownloadItem::openFolder);
+  m_ui->m_btnTryAgain->setIcon(qApp->icons()->fromTheme(QSL("view-refresh")));
+  m_ui->m_btnOpenFile->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
+  m_ui->m_btnOpenFolder->setIcon(qApp->icons()->fromTheme(QSL("folder")));
+  m_ui->m_btnStopDownload->setIcon(qApp->icons()->fromTheme(QSL("process-stop")));
+
+  connect(m_ui->m_btnStopDownload, &QPushButton::clicked, this, &DownloadItem::stop);
+  connect(m_ui->m_btnOpenFile, &QPushButton::clicked, this, &DownloadItem::openFile);
+  connect(m_ui->m_btnTryAgain, &QPushButton::clicked, this, &DownloadItem::tryAgain);
+  connect(m_ui->m_btnOpenFolder, &QPushButton::clicked, this, &DownloadItem::openFolder);
   init();
 }
 
@@ -432,6 +437,9 @@ DownloadManager::DownloadManager(QWidget* parent) : TabContent(parent), m_ui(new
   m_ui->m_viewDownloads->setAlternatingRowColors(true);
   m_ui->m_viewDownloads->horizontalHeader()->setStretchLastSection(true);
   m_ui->m_viewDownloads->setModel(m_model);
+
+  m_ui->m_btnCleanup->setIcon(qApp->icons()->fromTheme(QSL("edit-clear")));
+
   setDownloadDirectory(qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetDirectory)).toString());
   connect(m_ui->m_btnCleanup, &QPushButton::clicked, this, &DownloadManager::cleanup);
   load();

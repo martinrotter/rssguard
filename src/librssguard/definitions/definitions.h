@@ -81,6 +81,9 @@
 #define EXTERNAL_TOOL_SEPARATOR               "###"
 #define EXTERNAL_TOOL_PARAM_SEPARATOR         "|||"
 
+#define CLI_LOG_SHORT     "l"
+#define CLI_LOG_LONG      "log"
+
 #define HTTP_HEADERS_ACCEPT         "Accept"
 #define HTTP_HEADERS_CONTENT_TYPE   "Content-Type"
 #define HTTP_HEADERS_CONTENT_LENGTH "Content-Length"

@@ -49,11 +49,17 @@ Application::Application(const QString& id, int& argc, char** argv)
 
   m_feedReader(nullptr),
   m_quitLogicDone(false),
-  m_updateFeedsLock(new Mutex()), m_mainForm(nullptr),
-  m_trayIcon(nullptr), m_settings(Settings::setupSettings(this)), m_webFactory(new WebFactory(this)),
-  m_system(new SystemFactory(this)), m_skins(new SkinFactory(this)),
-  m_localization(new Localization(this)), m_icons(new IconFactory(this)),
-  m_database(new DatabaseFactory(this)), m_downloadManager(nullptr), m_shouldRestart(false) {
+  m_updateFeedsLock(new Mutex()),
+  m_mainForm(nullptr),
+  m_trayIcon(nullptr),
+  m_settings(Settings::setupSettings(this)),
+  m_webFactory(new WebFactory(this)),
+  m_system(new SystemFactory(this)),
+  m_skins(new SkinFactory(this)),
+  m_localization(new Localization(this)),
+  m_icons(new IconFactory(this)),
+  m_database(new DatabaseFactory(this)),
+  m_downloadManager(nullptr), m_shouldRestart(false) {
 
   parseCmdArguments();
 
@@ -556,7 +562,8 @@ void Application::determineFirstRuns() {
 }
 
 void Application::parseCmdArguments() {
-  QCommandLineOption log_file(QStringList() << "l" << "log", "Write application debug log to file.", "log-file");
+  QCommandLineOption log_file(QStringList() << CLI_LOG_SHORT << CLI_LOG_LONG,
+                              "Write application debug log to file.", "log-file");
 
   m_cmdParser.addOption(log_file);
   m_cmdParser.addHelpOption();
@@ -565,5 +572,5 @@ void Application::parseCmdArguments() {
 
   m_cmdParser.process(*this);
 
-  s_customLogFile = m_cmdParser.value(QSL("l"));
+  s_customLogFile = m_cmdParser.value(CLI_LOG_SHORT);
 }
