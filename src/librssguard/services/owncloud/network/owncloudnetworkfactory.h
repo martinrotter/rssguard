@@ -25,17 +25,6 @@ class OwnCloudResponse {
     bool m_emptyString;
 };
 
-class OwnCloudUserResponse : public OwnCloudResponse {
-  public:
-    explicit OwnCloudUserResponse(const QString& raw_content = QString());
-    virtual ~OwnCloudUserResponse();
-
-    QString userId() const;
-    QString displayName() const;
-    QDateTime lastLoginTime() const;
-    QIcon avatar() const;
-};
-
 class OwnCloudGetMessagesResponse : public OwnCloudResponse {
   public:
     explicit OwnCloudGetMessagesResponse(const QString& raw_content = QString());
@@ -87,15 +76,9 @@ class OwnCloudNetworkFactory {
     QString authPassword() const;
     void setAuthPassword(const QString& auth_password);
 
-    QString userId() const;
-    void setUserId(const QString& userId);
-
     QNetworkReply::NetworkError lastError() const;
 
     // Operations.
-
-    // Get user info.
-    OwnCloudUserResponse userInfo();
 
     // Get version info.
     OwnCloudStatusResponse status();
@@ -144,7 +127,6 @@ class OwnCloudNetworkFactory {
     QString m_urlFeedsUpdate;
     QString m_urlDeleteFeed;
     QString m_urlRenameFeed;
-    QString m_userId;
 };
 
 #endif // OWNCLOUDNETWORKFACTORY_H

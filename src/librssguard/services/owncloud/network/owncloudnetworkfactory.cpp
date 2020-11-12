@@ -22,7 +22,7 @@ OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   m_authUsername(QString()), m_authPassword(QString()), m_batchSize(OWNCLOUD_UNLIMITED_BATCH_SIZE), m_urlUser(QString()), m_urlStatus(
     QString()),
   m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()), m_urlFeedsUpdate(QString()),
-  m_urlDeleteFeed(QString()), m_urlRenameFeed(QString()), m_userId(QString()) {}
+  m_urlDeleteFeed(QString()), m_urlRenameFeed(QString()) {}
 
 OwnCloudNetworkFactory::~OwnCloudNetworkFactory() = default;
 
@@ -49,7 +49,6 @@ void OwnCloudNetworkFactory::setUrl(const QString& url) {
   m_urlFeedsUpdate = m_fixedUrl + OWNCLOUD_API_PATH + "feeds/update?userId=%1&feedId=%2";
   m_urlDeleteFeed = m_fixedUrl + OWNCLOUD_API_PATH + "feeds/%1";
   m_urlRenameFeed = m_fixedUrl + OWNCLOUD_API_PATH + "feeds/%1/rename";
-  setUserId(QString());
 }
 
 bool OwnCloudNetworkFactory::forceServerSideUpdate() const {
@@ -66,7 +65,6 @@ QString OwnCloudNetworkFactory::authUsername() const {
 
 void OwnCloudNetworkFactory::setAuthUsername(const QString& auth_username) {
   m_authUsername = auth_username;
-  setUserId(QString());
 }
 
 QString OwnCloudNetworkFactory::authPassword() const {
@@ -75,36 +73,10 @@ QString OwnCloudNetworkFactory::authPassword() const {
 
 void OwnCloudNetworkFactory::setAuthPassword(const QString& auth_password) {
   m_authPassword = auth_password;
-  setUserId(QString());
 }
 
 QNetworkReply::NetworkError OwnCloudNetworkFactory::lastError() const {
   return m_lastError;
-}
-
-OwnCloudUserResponse OwnCloudNetworkFactory::userInfo() {
-  QByteArray result_raw;
-  QList<QPair<QByteArray, QByteArray>> headers;
-
-  headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
-
-  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_urlUser,
-                                                                        qApp->settings()->value(GROUP(Feeds),
-                                                                                                SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                                        QByteArray(), result_raw,
-                                                                        QNetworkAccessManager::GetOperation,
-                                                                        headers);
-  OwnCloudUserResponse user_response(QString::fromUtf8(result_raw));
-
-  if (network_reply.first != QNetworkReply::NoError) {
-    qCriticalNN << LOGSEC_NEXTCLOUD
-                << "Obtaining user info failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.first);
-  }
-
-  m_lastError = network_reply.first;
-  return user_response;
 }
 
 OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
@@ -308,19 +280,6 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
 }
 
 QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_id) {
-  if (userId().isEmpty()) {
-    // We need to get user ID first.
-    OwnCloudUserResponse info = userInfo();
-
-    if (lastError() != QNetworkReply::NoError) {
-      return lastError();
-    }
-    else {
-      // We have new user ID, set it up.
-      setUserId(info.userId());
-    }
-  }
-
   // Now, we can trigger the update.
   QByteArray raw_output;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -328,7 +287,7 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
-  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_urlFeedsUpdate.arg(userId(),
+  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_urlFeedsUpdate.arg(authUsername(),
                                                                                              QString::number(feed_id)),
                                                                         qApp->settings()->value(GROUP(Feeds),
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
@@ -455,14 +414,6 @@ void OwnCloudNetworkFactory::setDownloadOnlyUnreadMessages(bool dowload_only_unr
   m_downloadOnlyUnreadMessages = dowload_only_unread_messages;
 }
 
-QString OwnCloudNetworkFactory::userId() const {
-  return m_userId;
-}
-
-void OwnCloudNetworkFactory::setUserId(const QString& userId) {
-  m_userId = userId;
-}
-
 OwnCloudResponse::OwnCloudResponse(const QString& raw_content) {
   m_rawContent = QJsonDocument::fromJson(raw_content.toUtf8()).object();
   m_emptyString = raw_content.isEmpty();
@@ -476,51 +427,6 @@ bool OwnCloudResponse::isLoaded() const {
 
 QString OwnCloudResponse::toString() const {
   return QJsonDocument(m_rawContent).toJson(QJsonDocument::Compact);
-}
-
-OwnCloudUserResponse::OwnCloudUserResponse(const QString& raw_content) : OwnCloudResponse(raw_content) {}
-
-OwnCloudUserResponse::~OwnCloudUserResponse() = default;
-
-QString OwnCloudUserResponse::displayName() const {
-  if (isLoaded()) {
-    return m_rawContent["displayName"].toString();
-  }
-  else {
-    return QString();
-  }
-}
-
-QString OwnCloudUserResponse::userId() const {
-  if (isLoaded()) {
-    return m_rawContent["userId"].toString();
-  }
-  else {
-    return QString();
-  }
-}
-
-QDateTime OwnCloudUserResponse::lastLoginTime() const {
-  if (isLoaded()) {
-    return QDateTime::fromMSecsSinceEpoch(m_rawContent["lastLoginTimestamp"].toDouble());
-  }
-  else {
-    return QDateTime();
-  }
-}
-
-QIcon OwnCloudUserResponse::avatar() const {
-  if (isLoaded()) {
-    QString image_data = m_rawContent["avatar"].toObject()["data"].toString();
-    QByteArray decoded_data = QByteArray::fromBase64(image_data.toLocal8Bit());
-    QPixmap image;
-
-    if (image.loadFromData(decoded_data)) {
-      return QIcon(image);
-    }
-  }
-
-  return QIcon();
 }
 
 OwnCloudStatusResponse::OwnCloudStatusResponse(const QString& raw_content) : OwnCloudResponse(raw_content) {}
