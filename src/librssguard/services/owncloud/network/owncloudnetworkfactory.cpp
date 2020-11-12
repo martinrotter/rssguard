@@ -184,7 +184,15 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id) {
   QJsonObject json;
 
   json["url"] = url;
-  json["folderId"] = parent_id;
+
+  auto nextcloud_version = status().version();
+
+  if (SystemFactory::isVersionEqualOrNewer(nextcloud_version, QSL("15.1.0"))) {
+    json["folderId"] = parent_id == 0 ? QJsonValue::Null : parent_id;
+  }
+  else {
+    json["folderId"] = parent_id;
+  }
 
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -461,7 +469,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
   auto* parent = new RootItem();
   QMap<QString, RootItem*> cats;
 
-  // Top-level feed have "folderId" set to "0".
+  // Top-level feed have "folderId" set to "0" or JSON "null" value.
   cats.insert(QSL("0"), parent);
 
   // Process categories first, then process feeds.
@@ -524,6 +532,8 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
       }
     }
 
+    // NOTE: Starting with News 15.1.0, top-level feeds do not have parent folder ID 0, but JSON "null".
+    // Luckily, if folder ID is not convertible to int, then default 0 value is returned.
     cats.value(QString::number(item["folderId"].toInt()))->appendChild(feed);
     qDebugNN << LOGSEC_NEXTCLOUD
              << "Custom ID of next fetched processed feed is"

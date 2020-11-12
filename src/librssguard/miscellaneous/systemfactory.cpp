@@ -247,7 +247,7 @@ bool SystemFactory::isVersionNewer(const QString& new_version, const QString& ba
     const int new_number = new_version_tkn.takeFirst().toInt();
 
     if (new_number > base_number) {
-      // New version is indeed higher thatn current version.
+      // New version is indeed higher that current version.
       return true;
     }
     else if (new_number < base_number) {
@@ -277,7 +277,7 @@ bool SystemFactory::isVersionEqualOrNewer(const QString& new_version, const QStr
 bool SystemFactory::openFolderFile(const QString& file_path) {
 #if defined(Q_OS_WIN)
   return QProcess::startDetached(QSL("explorer.exe"),
-                                 { "/select,", QDir::toNativeSeparators(file_path)});
+                                 { "/select,", QDir::toNativeSeparators(file_path) });
 #else
   const QString folder = QDir::toNativeSeparators(QFileInfo(file_path).absoluteDir().absolutePath());
 

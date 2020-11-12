@@ -54,7 +54,7 @@ void FormOwnCloudFeedDetails::apply() {
   else {
     const RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(
                                                       m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-    const int category_id = parent->kind() == RootItem::Kind::ServiceRoot ? 0 : parent->customId().toInt();
+    const int category_id = parent->kind() == RootItem::Kind::ServiceRoot ? 0 : parent->customNumericId();
     const bool response = qobject_cast<OwnCloudServiceRoot*>(m_serviceRoot)->network()->createFeed(m_ui->m_txtUrl->lineEdit()->text(),
                                                                                                    category_id);
 
