@@ -70,10 +70,6 @@ Message::Message() {
 }
 
 void Message::sanitize() {
-  // Also, make sure that HTML encoding, encoding of special characters, etc., is fixed.
-  m_contents = QUrl::fromPercentEncoding(m_contents.toUtf8());
-  m_author = m_author.toUtf8();
-
   // Sanitize title.
   m_title = m_title
 
