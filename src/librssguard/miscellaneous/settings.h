@@ -79,6 +79,9 @@ namespace Feeds {
   KEY ShowTreeBranches;
   VALUE(bool) ShowTreeBranchesDef;
 
+  KEY AutoExpandOnSelection;
+  VALUE(bool) AutoExpandOnSelectionDef;
+
   KEY ListFont;
 }
 

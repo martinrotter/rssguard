@@ -159,6 +159,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionClearAllItems;
   actions << m_ui->m_actionShowOnlyUnreadItems;
   actions << m_ui->m_actionShowTreeBranches;
+  actions << m_ui->m_actionAutoExpandItemsWhenSelected;
   actions << m_ui->m_actionShowOnlyUnreadMessages;
   actions << m_ui->m_actionMarkSelectedMessagesAsRead;
   actions << m_ui->m_actionMarkSelectedMessagesAsUnread;
@@ -596,6 +597,8 @@ void FormMain::loadSize() {
                                                                 SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
   m_ui->m_actionShowTreeBranches->setChecked(settings->value(GROUP(Feeds),
                                                              SETTING(Feeds::ShowTreeBranches)).toBool());
+  m_ui->m_actionAutoExpandItemsWhenSelected->setChecked(settings->value(GROUP(Feeds),
+                                                                        SETTING(Feeds::AutoExpandOnSelection)).toBool());
   m_ui->m_actionShowOnlyUnreadMessages->setChecked(settings->value(GROUP(Messages),
                                                                    SETTING(Messages::ShowOnlyUnreadMessages)).toBool());
   m_ui->m_actionAlternateColorsInLists->setChecked(settings->value(GROUP(GUI),
@@ -763,6 +766,8 @@ void FormMain::createConnections() {
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadFeeds);
   connect(m_ui->m_actionShowTreeBranches, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowFeedTreeBranches);
+  connect(m_ui->m_actionAutoExpandItemsWhenSelected, &QAction::toggled,
+          tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleItemsAutoExpandingOnSelection);
   connect(m_ui->m_actionAlternateColorsInLists, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::alternateRowColorsInLists);
   connect(m_ui->m_actionShowOnlyUnreadMessages, &QAction::toggled,

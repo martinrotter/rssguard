@@ -116,6 +116,7 @@
     <addaction name="m_actionDeleteSelectedItem"/>
     <addaction name="separator"/>
     <addaction name="m_actionShowOnlyUnreadItems"/>
+    <addaction name="m_actionAutoExpandItemsWhenSelected"/>
     <addaction name="m_actionShowTreeBranches"/>
     <addaction name="m_actionExpandCollapseItem"/>
     <addaction name="separator"/>
@@ -782,6 +783,14 @@
    </property>
    <property name="text">
     <string>Alternate row colors in lists</string>
+   </property>
+  </action>
+  <action name="m_actionAutoExpandItemsWhenSelected">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Automatically &amp;expand items when selected</string>
    </property>
   </action>
  </widget>

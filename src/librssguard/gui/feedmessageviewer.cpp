@@ -188,6 +188,12 @@ void FeedMessageViewer::toggleShowFeedTreeBranches() {
   qApp->settings()->setValue(GROUP(Feeds), Feeds::ShowTreeBranches, origin->isChecked());
 }
 
+void FeedMessageViewer::toggleItemsAutoExpandingOnSelection() {
+  const QAction* origin = qobject_cast<QAction*>(sender());
+
+  qApp->settings()->setValue(GROUP(Feeds), Feeds::AutoExpandOnSelection, origin->isChecked());
+}
+
 void FeedMessageViewer::alternateRowColorsInLists() {
   const QAction* origin = qobject_cast<QAction*>(sender());
 
