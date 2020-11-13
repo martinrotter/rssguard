@@ -124,26 +124,26 @@ void SystemTrayIcon::setNumber(int number, bool any_new_message) {
     // Numbers with more than 2 digits won't be readable, display
     // infinity symbol in that case.
     if (number > 999) {
-      m_font.setPixelSize(100);
+      m_font.setPixelSize(background.width() * 0.78);
       tray_painter.setFont(m_font);
-      tray_painter.drawText(QRect(0, 0, 128, 128), Qt::AlignVCenter | Qt::AlignCenter, QChar(8734));
+      tray_painter.drawText(background.rect(), Qt::AlignVCenter | Qt::AlignCenter, QChar(8734));
     }
     else {
       // Smaller number if it has 3 digits.
       if (number > 99) {
-        m_font.setPixelSize(55);
+        m_font.setPixelSize(background.width() * 0.43);
       }
       else if (number > 9) {
-        m_font.setPixelSize(80);
+        m_font.setPixelSize(background.width() * 0.56);
       }
 
       // Bigger number if it has just one digit.
       else {
-        m_font.setPixelSize(100);
+        m_font.setPixelSize(background.width() * 0.78);
       }
 
       tray_painter.setFont(m_font);
-      tray_painter.drawText(QRect(0, 0, 128, 128),
+      tray_painter.drawText(background.rect(),
                             Qt::AlignmentFlag::AlignVCenter | Qt::AlignmentFlag::AlignCenter,
                             QString::number(number));
     }
