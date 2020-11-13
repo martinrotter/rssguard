@@ -435,7 +435,6 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << NetworkFactory::generateBasicAuthHeader(username(), password());
-
   m_networkError = NetworkFactory::performNetworkOperation(url(),
                                                            download_timeout,
                                                            QByteArray(),
