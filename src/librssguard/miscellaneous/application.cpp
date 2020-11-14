@@ -557,7 +557,10 @@ void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
 
 void Application::setupCustomDataFolder(const QString& data_folder) {
   if (!QDir().mkpath(data_folder)) {
-    qCriticalNN << "Failed to create custom data path" << QUOTE_W_SPACE(data_folder) << "thus falling back to standard setup.";
+    qCriticalNN << LOGSEC_CORE
+                << "Failed to create custom data path"
+                << QUOTE_W_SPACE(data_folder)
+                << "thus falling back to standard setup.";
     m_customDataFolder = QString();
     return;
   }
@@ -585,8 +588,10 @@ void Application::parseCmdArguments() {
   QCommandLineOption custom_data_folder(QStringList() << CLI_DAT_SHORT << CLI_DAT_LONG,
                                         "Use custom folder for user data and disable single instance application mode.",
                                         "user-data-folder");
+  QCommandLineOption disable_singleinstance(QStringList() << CLI_SIN_SHORT << CLI_SIN_LONG,
+                                            "Allow running of multiple application instances.");
 
-  m_cmdParser.addOptions({ log_file, custom_data_folder });
+  m_cmdParser.addOptions({ log_file, custom_data_folder, disable_singleinstance });
   m_cmdParser.addHelpOption();
   m_cmdParser.addVersionOption();
   m_cmdParser.setApplicationDescription(APP_NAME);
@@ -598,13 +603,19 @@ void Application::parseCmdArguments() {
   if (!m_cmdParser.value(CLI_DAT_SHORT).isEmpty()) {
     auto data_folder = QDir::toNativeSeparators(m_cmdParser.value(CLI_DAT_SHORT));
 
-    qDebugNN << "User wants to use custom directory for user data (and disable single instance mode):"
+    qDebugNN << LOGSEC_CORE
+             << "User wants to use custom directory for user data (and disable single instance mode):"
              << QUOTE_W_SPACE_DOT(data_folder);
 
     setupCustomDataFolder(data_folder);
   }
   else {
     m_allowMultipleInstances = false;
+  }
+
+  if (m_cmdParser.isSet(CLI_SIN_SHORT)) {
+    m_allowMultipleInstances = true;
+    qDebugNN << LOGSEC_CORE << "Explicitly allowing this instance to run.";
   }
 }
 
