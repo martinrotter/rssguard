@@ -27,15 +27,15 @@ class MessagesToolBar : public BaseToolBar {
     // Implementation of BaseToolBar interface.
     QList<QAction*> availableActions() const;
 
-    QList<QAction*> changeableActions() const;
-    void saveChangeableActions(const QStringList& actions);
+    QList<QAction*> activatedActions() const;
+    void saveAndSetActions(const QStringList& actions);
 
     // Loads actions as specified by external actions list.
     // NOTE: This is used primarily for reloading actions
     // when they are changed from settings.
     void loadSpecificActions(const QList<QAction*>& actions, bool initial_load = false);
 
-    QList<QAction*> getSpecificActions(const QStringList& actions);
+    QList<QAction*> convertActions(const QStringList& actions);
 
     QStringList defaultActions() const;
     QStringList savedActions() const;

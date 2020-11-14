@@ -20,16 +20,16 @@ QList<QAction*> FeedsToolBar::availableActions() const {
   return qApp->userActions();
 }
 
-QList<QAction*> FeedsToolBar::changeableActions() const {
+QList<QAction*> FeedsToolBar::activatedActions() const {
   return actions();
 }
 
-void FeedsToolBar::saveChangeableActions(const QStringList& actions) {
+void FeedsToolBar::saveAndSetActions(const QStringList& actions) {
   qApp->settings()->setValue(GROUP(GUI), GUI::FeedsToolbarActions, actions.join(QSL(",")));
-  loadSpecificActions(getSpecificActions(actions));
+  loadSpecificActions(convertActions(actions));
 }
 
-QList<QAction*> FeedsToolBar::getSpecificActions(const QStringList& actions) {
+QList<QAction*> FeedsToolBar::convertActions(const QStringList& actions) {
   QList<QAction*> available_actions = availableActions();
   QList<QAction*> spec_actions;
 

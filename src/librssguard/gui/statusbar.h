@@ -8,12 +8,8 @@
 #include "gui/basetoolbar.h"
 
 class QProgressBar;
-
-class PlainToolButton;
-
 class QLabel;
-
-class Mutex;
+class PlainToolButton;
 
 class StatusBar : public QStatusBar, public BaseBar {
   Q_OBJECT
@@ -23,11 +19,11 @@ class StatusBar : public QStatusBar, public BaseBar {
     virtual ~StatusBar();
 
     QList<QAction*> availableActions() const;
-    QList<QAction*> changeableActions() const;
-    void saveChangeableActions(const QStringList& actions);
+    QList<QAction*> activatedActions() const;
+    void saveAndSetActions(const QStringList& actions);
     QStringList defaultActions() const;
     QStringList savedActions() const;
-    QList<QAction*> getSpecificActions(const QStringList& actions);
+    QList<QAction*> convertActions(const QStringList& actions);
     void loadSpecificActions(const QList<QAction*>& actions, bool initial_load = false);
 
   public slots:
@@ -43,7 +39,6 @@ class StatusBar : public QStatusBar, public BaseBar {
   private:
     void clear();
 
-    Mutex* m_mutex;
     QProgressBar* m_barProgressFeeds;
     QAction* m_barProgressFeedsAction;
     QLabel* m_lblProgressFeeds;

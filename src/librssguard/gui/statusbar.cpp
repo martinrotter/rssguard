@@ -12,7 +12,7 @@
 #include <QProgressBar>
 #include <QToolButton>
 
-StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent), m_mutex(new Mutex(QMutex::NonRecursive, this)) {
+StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent) {
   setSizeGripEnabled(false);
   setContentsMargins(2, 0, 2, 2);
 
@@ -21,28 +21,36 @@ StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent), m_mutex(new Mutex(QM
   m_barProgressFeeds->setFixedWidth(100);
   m_barProgressFeeds->setVisible(false);
   m_barProgressFeeds->setObjectName(QSL("m_barProgressFeeds"));
+
   m_barProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Feed update progress bar"), this);
   m_barProgressFeedsAction->setObjectName(QSL("m_barProgressFeedsAction"));
+
   m_lblProgressFeeds = new QLabel(this);
   m_lblProgressFeeds->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
   m_lblProgressFeeds->setVisible(false);
   m_lblProgressFeeds->setObjectName(QSL("m_lblProgressFeeds"));
+
   m_lblProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Feed update label"), this);
   m_lblProgressFeedsAction->setObjectName(QSL("m_lblProgressFeedsAction"));
+
   m_barProgressDownload = new QProgressBar(this);
   m_barProgressDownload->setTextVisible(true);
   m_barProgressDownload->setFixedWidth(100);
   m_barProgressDownload->setVisible(false);
   m_barProgressDownload->setObjectName(QSL("m_barProgressDownload"));
+
   m_barProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("File download progress bar"), this);
   m_barProgressDownloadAction->setObjectName(QSL("m_barProgressDownloadAction"));
+
   m_lblProgressDownload = new QLabel(this);
   m_lblProgressDownload->setText("Downloading files in background");
   m_lblProgressDownload->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
   m_lblProgressDownload->setVisible(false);
   m_lblProgressDownload->setObjectName(QSL("m_lblProgressDownload"));
+
   m_lblProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("File download label"), this);
   m_lblProgressDownloadAction->setObjectName(QSL("m_lblProgressDownloadAction"));
+
   m_lblProgressDownload->installEventFilter(this);
   m_barProgressDownload->installEventFilter(this);
 }
@@ -62,15 +70,13 @@ QList<QAction*> StatusBar::availableActions() const {
   return actions;
 }
 
-QList<QAction*> StatusBar::changeableActions() const {
+QList<QAction*> StatusBar::activatedActions() const {
   return actions();
 }
 
-void StatusBar::saveChangeableActions(const QStringList& actions) {
-  QMutexLocker locker(*m_mutex);
-
+void StatusBar::saveAndSetActions(const QStringList& actions) {
   qApp->settings()->setValue(GROUP(GUI), GUI::StatusbarActions, actions.join(QSL(",")));
-  loadSpecificActions(getSpecificActions(actions));
+  loadSpecificActions(convertActions(actions));
 }
 
 QStringList StatusBar::defaultActions() const {
@@ -92,7 +98,7 @@ QStringList StatusBar::savedActions() const {
 #endif
 }
 
-QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
+QList<QAction*> StatusBar::convertActions(const QStringList& actions) {
   bool progress_visible = this->actions().contains(m_barProgressFeedsAction) && m_lblProgressFeeds->isVisible() &&
                           m_barProgressFeeds->isVisible();
   QList<QAction*> available_actions = availableActions();
@@ -127,19 +133,17 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
     }
     else {
       if (action_name == SEPARATOR_ACTION_NAME) {
-        QLabel* lbl = new QLabel(QString::fromUtf8("•"));
+        QLabel* lbl = new QLabel(QString::fromUtf8("•"), this);
 
         widget_to_add = lbl;
         action_to_add = new QAction(this);
         action_to_add->setSeparator(true);
-        action_to_add->setProperty("should_remove_action", true);
       }
       else if (action_name == SPACER_ACTION_NAME) {
-        QLabel* lbl = new QLabel(QSL("\t\t"));
+        QLabel* lbl = new QLabel(QSL("\t\t"), this);
 
         widget_to_add = lbl;
         action_to_add = new QAction(this);
-        action_to_add->setProperty("should_remove_action", true);
         action_to_add->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
         action_to_add->setProperty("type", SPACER_ACTION_NAME);
         action_to_add->setProperty("name", tr("Toolbar spacer"));
@@ -158,10 +162,6 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
         action_to_add = nullptr;
         widget_to_add = nullptr;
       }
-
-      if (action_to_add != nullptr) {
-        action_to_add->setProperty("should_remove_widget", true);
-      }
     }
 
     if (action_to_add != nullptr && widget_to_add != nullptr) {
@@ -174,38 +174,25 @@ QList<QAction*> StatusBar::getSpecificActions(const QStringList& actions) {
 }
 
 void StatusBar::loadSpecificActions(const QList<QAction*>& actions, bool initial_load) {
-  for (QAction* act : this->actions()) {
-    QWidget* widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
-
-    if (widget != nullptr) {
-      removeWidget(widget);
-    }
-  }
-
-  if (!initial_load) {
-    removeWidget(m_barProgressDownload);
-    removeWidget(m_barProgressFeeds);
-    removeWidget(m_lblProgressDownload);
-    removeWidget(m_lblProgressFeeds);
-  }
-
   clear();
 
-  for (QAction* act : actions) {
-    QWidget* widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
+  if (initial_load) {
+    for (QAction* act : actions) {
+      QWidget* widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
 
-    addAction(act);
+      addAction(act);
 
-    // And also add widget.
-    if (widget != nullptr) {
-      addPermanentWidget(widget);
+      // And also add widget.
+      if (widget != nullptr) {
+        addPermanentWidget(widget);
+      }
     }
   }
 }
 
 bool StatusBar::eventFilter(QObject* watched, QEvent* event) {
   if (watched == m_lblProgressDownload || watched == m_barProgressDownload) {
-    if (event->type() == QEvent::MouseButtonPress) {
+    if (event->type() == QEvent::Type::MouseButtonPress) {
       qApp->mainForm()->tabWidget()->showDownloadManager();
     }
   }
@@ -217,24 +204,13 @@ void StatusBar::clear() {
   while (!actions().isEmpty()) {
     QAction* act = actions().at(0);
     QWidget* widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
-    bool should_remove_widget = act->property("should_remove_widget").isValid();
-    bool should_remove_action = act->property("should_remove_action").isValid();
-
-    removeAction(act);
 
     if (widget != nullptr) {
       removeWidget(widget);
       widget->setVisible(false);
-
-      if (should_remove_widget) {
-        widget->deleteLater();
-        act->setProperty("widget", QVariant());
-      }
-
-      if (should_remove_action) {
-        act->deleteLater();
-      }
     }
+
+    removeAction(act);
   }
 }
 

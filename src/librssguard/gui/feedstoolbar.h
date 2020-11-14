@@ -12,10 +12,10 @@ class FeedsToolBar : public BaseToolBar {
     explicit FeedsToolBar(const QString& title, QWidget* parent = nullptr);
 
     QList<QAction*> availableActions() const;
-    QList<QAction*> changeableActions() const;
-    void saveChangeableActions(const QStringList& actions);
+    QList<QAction*> activatedActions() const;
+    void saveAndSetActions(const QStringList& actions);
 
-    QList<QAction*> getSpecificActions(const QStringList& actions);
+    QList<QAction*> convertActions(const QStringList& actions);
     void loadSpecificActions(const QList<QAction*>& actions, bool initial_load = false);
 
     QStringList defaultActions() const;

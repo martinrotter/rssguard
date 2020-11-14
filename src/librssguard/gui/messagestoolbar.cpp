@@ -26,21 +26,21 @@ QList<QAction*> MessagesToolBar::availableActions() const {
   return available_actions;
 }
 
-QList<QAction*> MessagesToolBar::changeableActions() const {
+QList<QAction*> MessagesToolBar::activatedActions() const {
   return actions();
 }
 
-void MessagesToolBar::saveChangeableActions(const QStringList& actions) {
+void MessagesToolBar::saveAndSetActions(const QStringList& actions) {
   qApp->settings()->setValue(GROUP(GUI), GUI::MessagesToolbarDefaultButtons, actions.join(QSL(",")));
-  loadSpecificActions(getSpecificActions(actions));
+  loadSpecificActions(convertActions(actions));
 
   // If user hidden search messages box, then remove the filter.
-  if (!changeableActions().contains(m_actionSearchMessages)) {
+  if (!activatedActions().contains(m_actionSearchMessages)) {
     m_txtSearchMessages->clear();
   }
 }
 
-QList<QAction*> MessagesToolBar::getSpecificActions(const QStringList& actions) {
+QList<QAction*> MessagesToolBar::convertActions(const QStringList& actions) {
   QList<QAction*> available_actions = availableActions();
   QList<QAction*> spec_actions;
 

@@ -38,8 +38,9 @@ ToolBarEditor::ToolBarEditor(QWidget* parent)
 void ToolBarEditor::loadFromToolBar(BaseBar* tool_bar) {
   m_toolBar = tool_bar;
 
-  QList<QAction*> activated_actions = m_toolBar->changeableActions();
+  QList<QAction*> activated_actions = m_toolBar->activatedActions();
   QList<QAction*> available_actions = m_toolBar->availableActions();
+
   loadEditor(activated_actions, available_actions);
 }
 
@@ -50,12 +51,12 @@ void ToolBarEditor::saveToolBar() {
     action_names.append(m_ui->m_listActivatedActions->item(i)->data(Qt::UserRole).toString());
   }
 
-  m_toolBar->saveChangeableActions(action_names);
+  m_toolBar->saveAndSetActions(action_names);
 }
 
 void ToolBarEditor::resetToolBar() {
   if (m_toolBar != nullptr) {
-    loadEditor(m_toolBar->getSpecificActions(m_toolBar->defaultActions()), m_toolBar->availableActions());
+    loadEditor(m_toolBar->convertActions(m_toolBar->defaultActions()), m_toolBar->availableActions());
   }
 }
 
