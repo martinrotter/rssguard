@@ -4,3 +4,7 @@
 
 FilteringException::FilteringException(QJSValue::ErrorType js_error, QString message)
   : ApplicationException(message), m_errorType(js_error) {}
+
+QJSValue::ErrorType FilteringException::errorType() const {
+  return m_errorType;
+}

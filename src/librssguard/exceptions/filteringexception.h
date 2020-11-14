@@ -11,6 +11,8 @@ class FilteringException : public ApplicationException {
   public:
     explicit FilteringException(QJSValue::ErrorType js_error, QString message = QString());
 
+    QJSValue::ErrorType errorType() const;
+
   private:
     QJSValue::ErrorType m_errorType;
 };
