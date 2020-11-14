@@ -41,27 +41,26 @@
 #endif
 
 Application::Application(const QString& id, int& argc, char** argv)
-  : QtSingleApplication(id, argc, argv),
+  : QtSingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
+  parseCmdArguments();
 
 #if defined(USE_WEBENGINE)
-  m_urlInterceptor(new NetworkUrlInterceptor(this)),
+  m_urlInterceptor = new NetworkUrlInterceptor(this);
 #endif
 
-  m_feedReader(nullptr),
-  m_quitLogicDone(false),
-  m_updateFeedsLock(new Mutex()),
-  m_mainForm(nullptr),
-  m_trayIcon(nullptr),
-  m_settings(Settings::setupSettings(this)),
-  m_webFactory(new WebFactory(this)),
-  m_system(new SystemFactory(this)),
-  m_skins(new SkinFactory(this)),
-  m_localization(new Localization(this)),
-  m_icons(new IconFactory(this)),
-  m_database(new DatabaseFactory(this)),
-  m_downloadManager(nullptr), m_shouldRestart(false) {
-
-  parseCmdArguments();
+  m_feedReader = nullptr;
+  m_quitLogicDone = false;
+  m_mainForm = nullptr;
+  m_trayIcon = nullptr;
+  m_settings = Settings::setupSettings(this);
+  m_webFactory = new WebFactory(this);
+  m_system = new SystemFactory(this);
+  m_skins = new SkinFactory(this);
+  m_localization = new Localization(this);
+  m_icons = new IconFactory(this);
+  m_database = new DatabaseFactory(this);
+  m_downloadManager = nullptr;
+  m_shouldRestart = false;
 
   // Setup debug output system.
   qInstallMessageHandler(performLogging);
@@ -176,7 +175,9 @@ void Application::offerChanges() const {
 }
 
 bool Application::isAlreadyRunning() {
-  return sendMessage((QStringList() << APP_IS_RUNNING << Application::arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR));
+  return m_allowMultipleInstances
+      ? false
+      : sendMessage((QStringList() << APP_IS_RUNNING << Application::arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR));
 }
 
 FeedReader* Application::feedReader() {
@@ -271,18 +272,21 @@ void Application::setMainForm(FormMain* main_form) {
   m_mainForm = main_form;
 }
 
-QString Application::configFolder() {
+QString Application::configFolder() const {
   return IOFactory::getSystemFolder(QStandardPaths::GenericConfigLocation);
 }
 
-QString Application::userDataAppFolder() {
+QString Application::userDataAppFolder() const {
   // In "app" folder, we would like to separate all user data into own subfolder,
   // therefore stick to "data" folder in this mode.
   return applicationDirPath() + QDir::separator() + QSL("data");
 }
 
 QString Application::userDataFolder() {
-  if (settings()->type() == SettingsProperties::SettingsType::Portable) {
+  if (settings()->type() == SettingsProperties::SettingsType::Custom) {
+    return customDataFolder();
+  }
+  else if (settings()->type() == SettingsProperties::SettingsType::Portable) {
     return userDataAppFolder();
   }
   else {
@@ -290,7 +294,7 @@ QString Application::userDataFolder() {
   }
 }
 
-QString Application::userDataHomeFolder() {
+QString Application::userDataHomeFolder() const {
   // Fallback folder.
   const QString home_folder = homeFolder() + QDir::separator() + QSL(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
 
@@ -306,15 +310,15 @@ QString Application::userDataHomeFolder() {
   }
 }
 
-QString Application::tempFolder() {
+QString Application::tempFolder() const {
   return IOFactory::getSystemFolder(QStandardPaths::TempLocation);
 }
 
-QString Application::documentsFolder() {
+QString Application::documentsFolder() const {
   return IOFactory::getSystemFolder(QStandardPaths::DocumentsLocation);
 }
 
-QString Application::homeFolder() {
+QString Application::homeFolder() const {
 #if defined (Q_OS_ANDROID)
   return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation);
 #else
@@ -551,6 +555,20 @@ void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   }
 }
 
+void Application::setupCustomDataFolder(const QString& data_folder) {
+  if (!QDir().mkpath(data_folder)) {
+    qCriticalNN << "Failed to create custom data path" << QUOTE_W_SPACE(data_folder) << "thus falling back to standard setup.";
+    m_customDataFolder = QString();
+    return;
+  }
+
+  // Disable single instance mode.
+  m_allowMultipleInstances = true;
+
+  // Save custom data folder.
+  m_customDataFolder = data_folder;
+}
+
 void Application::determineFirstRuns() {
   m_firstRunEver = settings()->value(GROUP(General),
                                      SETTING(General::FirstRun)).toBool();
@@ -564,8 +582,11 @@ void Application::determineFirstRuns() {
 void Application::parseCmdArguments() {
   QCommandLineOption log_file(QStringList() << CLI_LOG_SHORT << CLI_LOG_LONG,
                               "Write application debug log to file.", "log-file");
+  QCommandLineOption custom_data_folder(QStringList() << CLI_DAT_SHORT << CLI_DAT_LONG,
+                                        "Use custom folder for user data and disable single instance application mode.",
+                                        "user-data-folder");
 
-  m_cmdParser.addOption(log_file);
+  m_cmdParser.addOptions({ log_file, custom_data_folder });
   m_cmdParser.addHelpOption();
   m_cmdParser.addVersionOption();
   m_cmdParser.setApplicationDescription(APP_NAME);
@@ -573,4 +594,20 @@ void Application::parseCmdArguments() {
   m_cmdParser.process(*this);
 
   s_customLogFile = m_cmdParser.value(CLI_LOG_SHORT);
+
+  if (!m_cmdParser.value(CLI_DAT_SHORT).isEmpty()) {
+    auto data_folder = QDir::toNativeSeparators(m_cmdParser.value(CLI_DAT_SHORT));
+
+    qDebugNN << "User wants to use custom directory for user data (and disable single instance mode):"
+             << QUOTE_W_SPACE_DOT(data_folder);
+
+    setupCustomDataFolder(data_folder);
+  }
+  else {
+    m_allowMultipleInstances = false;
+  }
+}
+
+QString Application::customDataFolder() const {
+  return m_customDataFolder;
 }

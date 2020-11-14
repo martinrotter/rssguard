@@ -83,6 +83,8 @@
 
 #define CLI_LOG_SHORT     "l"
 #define CLI_LOG_LONG      "log"
+#define CLI_DAT_SHORT     "d"
+#define CLI_DAT_LONG      "data"
 
 #define HTTP_HEADERS_ACCEPT         "Accept"
 #define HTTP_HEADERS_CONTENT_TYPE   "Content-Type"

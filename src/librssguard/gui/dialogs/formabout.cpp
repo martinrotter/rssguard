@@ -26,6 +26,9 @@ void FormAbout::loadSettingsAndPaths() {
   if (qApp->settings()->type() == SettingsProperties::SettingsType::Portable) {
     m_ui.m_txtPathsSettingsType->setText(tr("FULLY portable"));
   }
+  else if (qApp->settings()->type() == SettingsProperties::SettingsType::Custom) {
+    m_ui.m_txtPathsSettingsType->setText(tr("CUSTOM"));
+  }
   else {
     m_ui.m_txtPathsSettingsType->setText(tr("NOT portable"));
   }

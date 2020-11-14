@@ -9,7 +9,8 @@
 struct SettingsProperties {
   enum class SettingsType {
     Portable,
-    NonPortable
+    NonPortable,
+    Custom
   };
 
   SettingsType m_type;

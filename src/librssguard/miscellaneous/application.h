@@ -85,14 +85,15 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     NetworkUrlInterceptor* urlIinterceptor();
 #endif
 
-    QString tempFolder();
-    QString documentsFolder();
-    QString homeFolder();
-    QString configFolder();
+    QString tempFolder() const;
+    QString documentsFolder() const;
+    QString homeFolder() const;
+    QString configFolder() const;
 
     // These return user ready folders.
-    QString userDataAppFolder();
-    QString userDataHomeFolder();
+    QString userDataAppFolder() const;
+    QString userDataHomeFolder() const;
+    QString customDataFolder() const;
 
     // Returns the base folder to which store user data, the "data" folder.
     // NOTE: Use this to get correct path under which store user data.
@@ -143,6 +144,7 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     void onFeedUpdatesFinished(const FeedDownloadResults& results);
 
   private:
+    void setupCustomDataFolder(const QString& data_folder);
     void determineFirstRuns();
     void eliminateFirstRuns();
     void parseCmdArguments();
@@ -186,6 +188,8 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     bool m_shouldRestart;
     bool m_firstRunEver;
     bool m_firstRunCurrentVersion;
+    QString m_customDataFolder;
+    bool m_allowMultipleInstances;
 };
 
 inline Application* Application::instance() {

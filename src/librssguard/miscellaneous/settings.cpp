@@ -372,12 +372,17 @@ Settings* Settings::setupSettings(QObject* parent) {
   // Portable settings are available, use them.
   new_settings = new Settings(properties.m_absoluteSettingsFileName, QSettings::IniFormat, properties.m_type, parent);
 
-  // Check if portable settings are available.
   if (properties.m_type == SettingsProperties::SettingsType::Portable) {
     qDebugNN << LOGSEC_CORE
              << "Initializing settings in"
              << QUOTE_W_SPACE(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName))
              << "(portable way).";
+  }
+  else if (properties.m_type == SettingsProperties::SettingsType::Custom) {
+    qDebugNN << LOGSEC_CORE
+             << "Initializing settings in"
+             << QUOTE_W_SPACE(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName))
+             << "(custom way).";
   }
   else {
     qDebugNN << LOGSEC_CORE
@@ -395,27 +400,35 @@ SettingsProperties Settings::determineProperties() {
   properties.m_settingsSuffix = QDir::separator() + QSL(APP_CFG_PATH) + QDir::separator() + QSL(APP_CFG_FILE);
   const QString app_path = qApp->userDataAppFolder();
   const QString home_path = qApp->userDataHomeFolder();
+  const QString custom_path = qApp->customDataFolder();
 
-  // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
-  // settings was not initialized before.
-#if defined (Q_OS_LINUX) || defined (Q_OS_ANDROID) || defined (Q_OS_MACOSOS)
-  // DO NOT use portable settings for Linux, it is really not used on that platform.
-  const bool will_we_use_portable_settings = false;
-#else
-  const QString exe_path = qApp->applicationDirPath();
-  const QString home_path_file = home_path + properties.m_settingsSuffix;
-  const bool portable_settings_available = IOFactory::isFolderWritable(exe_path);
-  const bool non_portable_settings_exist = QFile::exists(home_path_file);
-  const bool will_we_use_portable_settings = portable_settings_available && !non_portable_settings_exist;
-#endif
-
-  if (will_we_use_portable_settings) {
-    properties.m_type = SettingsProperties::SettingsType::Portable;
-    properties.m_baseDirectory = app_path;
+  if (!custom_path.isEmpty()) {
+    // User wants to have his user data in custom folder, okay.
+    properties.m_type = SettingsProperties::SettingsType::Custom;
+    properties.m_baseDirectory = custom_path;
   }
   else {
-    properties.m_type = SettingsProperties::SettingsType::NonPortable;
-    properties.m_baseDirectory = home_path;
+    // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
+    // settings was not initialized before.
+#if defined (Q_OS_LINUX) || defined (Q_OS_ANDROID) || defined (Q_OS_MACOSOS)
+    // DO NOT use portable settings for Linux, it is really not used on that platform.
+    const bool will_we_use_portable_settings = false;
+#else
+    const QString exe_path = qApp->applicationDirPath();
+    const QString home_path_file = home_path + properties.m_settingsSuffix;
+    const bool portable_settings_available = IOFactory::isFolderWritable(exe_path);
+    const bool non_portable_settings_exist = QFile::exists(home_path_file);
+    const bool will_we_use_portable_settings = portable_settings_available && !non_portable_settings_exist;
+#endif
+
+    if (will_we_use_portable_settings) {
+      properties.m_type = SettingsProperties::SettingsType::Portable;
+      properties.m_baseDirectory = QDir::toNativeSeparators(app_path);
+    }
+    else {
+      properties.m_type = SettingsProperties::SettingsType::NonPortable;
+      properties.m_baseDirectory = QDir::toNativeSeparators(home_path);
+    }
   }
 
   properties.m_absoluteSettingsFileName = properties.m_baseDirectory + properties.m_settingsSuffix;
