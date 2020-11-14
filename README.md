@@ -15,6 +15,8 @@ RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed us
 * [Nextcloud News](https://apps.nextcloud.com/apps/news),
 * [Gmail API](https://developers.google.com/gmail/api).
 
+Application icon was kindly contributed by Siddharth Yadav - @Siddharth_yd (Instagram), illustrationdesignsid@gmail.com (e-mail).
+
 Development builds can be downloaded [here for Windows](https://bintray.com/martinrotter/rssguard/Development/Windows) and [here for Linux/Mac](https://bintray.com/martinrotter/rssguard/Development/LinuxMacOs).
 
 Documentation is [here](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md).

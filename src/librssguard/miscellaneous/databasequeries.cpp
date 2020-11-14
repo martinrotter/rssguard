@@ -888,9 +888,9 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     }
 
     int id_existing_message = -1;
-    qint64 date_existing_message;
-    bool is_read_existing_message;
-    bool is_important_existing_message;
+    qint64 date_existing_message = 0;
+    bool is_read_existing_message = false;
+    bool is_important_existing_message = false;
     QString contents_existing_message;
     QString feed_id_existing_message;
 
@@ -973,19 +973,22 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       // Message is already in the DB.
       //
       // Now, we update it if at least one of next conditions is true:
-      //   1) Message has custom ID AND (its date OR read status OR starred status are changed).
+      //   1) Message has custom ID AND (its date OR read status OR starred status are changed or message
+      //      was moved from one feed to another - this can particularly happen in Gmail feeds).
+      //
       //   2) Message has its date fetched from feed AND its date is different from date in DB and contents is changed.
       if (/* 1 */ (!message.m_customId.isEmpty() && (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
                                                      message.m_isRead != is_read_existing_message ||
                                                      message.m_isImportant != is_important_existing_message ||
-                                                     message.m_feedId != feed_id_existing_message)) ||
+                                                     message.m_feedId != feed_id_existing_message ||
+                                                     message.m_contents != contents_existing_message)) ||
 
           /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message
                    && message.m_contents != contents_existing_message)) {
         // Message exists, it is changed, update it.
         query_update.bindValue(QSL(":title"), unnulifyString(message.m_title));
-        query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
-        query_update.bindValue(QSL(":is_important"), (int) message.m_isImportant);
+        query_update.bindValue(QSL(":is_read"), int(message.m_isRead));
+        query_update.bindValue(QSL(":is_important"), int(message.m_isImportant));
         query_update.bindValue(QSL(":url"), unnulifyString(message.m_url));
         query_update.bindValue(QSL(":author"), unnulifyString(message.m_author));
         query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
@@ -1019,8 +1022,8 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       // Message with this URL is not fetched in this feed yet.
       query_insert.bindValue(QSL(":feed"), unnulifyString(feed_custom_id));
       query_insert.bindValue(QSL(":title"), unnulifyString(message.m_title));
-      query_insert.bindValue(QSL(":is_read"), (int) message.m_isRead);
-      query_insert.bindValue(QSL(":is_important"), (int) message.m_isImportant);
+      query_insert.bindValue(QSL(":is_read"), int(message.m_isRead));
+      query_insert.bindValue(QSL(":is_important"), int(message.m_isImportant));
       query_insert.bindValue(QSL(":url"), unnulifyString( message.m_url));
       query_insert.bindValue(QSL(":author"), unnulifyString(message.m_author));
       query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());

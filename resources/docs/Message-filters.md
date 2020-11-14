@@ -48,6 +48,19 @@ function filterMessage() {
   return MSG_ACCEPT;
 }
 ```
+
+Make sure that your receive only one message with particular URL and all other messages with same URL are subsequently ignored.
+```js
+function filterMessage() {
+  if (msg.isDuplicateWithAttribute(2)) {
+    return MSG_IGNORE;
+  }
+  else {
+    return MSG_ACCEPT;
+  }
+}
+```
+
 ## `Message filters` dialog
 The dialog is accessible from menu `Messages -> Message filters` and is the central place for message filters management within RSS Guard. It allows you to:
 * add or remove message filters,

@@ -60,6 +60,9 @@ DVALUE(bool) Feeds::ShowOnlyUnreadFeedsDef = false;
 DKEY Feeds::ShowTreeBranches = "show_tree_branches";
 DVALUE(bool) Feeds::ShowTreeBranchesDef = true;
 
+DKEY Feeds::AutoExpandOnSelection = "auto_expand_on_selection";
+DVALUE(bool) Feeds::AutoExpandOnSelectionDef = false;
+
 DKEY Feeds::ListFont = "list_font";
 
 // Messages.
