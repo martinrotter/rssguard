@@ -1,4 +1,4 @@
-RSS Guard
+![AppVeyor](https://github.com/martinrotter/rssguard/blob/master/resources/graphics/rssguard.png?raw=true) RSS Guard
 =========
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/martinrotter/rssguard.svg?maxAge=360)](https://ci.appveyor.com/project/martinrotter/rssguard)
@@ -14,6 +14,8 @@ RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed us
 * [Inoreader](https://www.inoreader.com),
 * [Nextcloud News](https://apps.nextcloud.com/apps/news),
 * [Gmail API](https://developers.google.com/gmail/api).
+
+### [Downloads](https://github.com/martinrotter/rssguard/releases)
 
 Application icon was kindly contributed by Siddharth Yadav - @Siddharth_yd (Instagram), illustrationdesignsid@gmail.com (e-mail).
 
