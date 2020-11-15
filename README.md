@@ -9,13 +9,13 @@ RSS Guard
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](https://github.com/martinrotter/rssguard/issues)
 [![License](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=360000)](https://github.com/martinrotter/rssguard/blob/master/LICENSE.md)
 
+### [Downloads](https://github.com/martinrotter/rssguard/releases)
+
 RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization with these services:
 * [Tiny Tiny RSS](https://tt-rss.org),
 * [Inoreader](https://www.inoreader.com),
 * [Nextcloud News](https://apps.nextcloud.com/apps/news),
 * [Gmail API](https://developers.google.com/gmail/api).
-
-### [Downloads](https://github.com/martinrotter/rssguard/releases)
 
 Application icon was kindly contributed by Siddharth Yadav - @Siddharth_yd (Instagram), illustrationdesignsid@gmail.com (e-mail).
 
