@@ -1,4 +1,4 @@
-![AppVeyor](https://github.com/martinrotter/rssguard/blob/master/resources/graphics/rssguard.png?raw=true) RSS Guard
+RSS Guard
 =========
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/martinrotter/rssguard.svg?maxAge=360)](https://ci.appveyor.com/project/martinrotter/rssguard)
