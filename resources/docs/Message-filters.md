@@ -13,11 +13,17 @@ As you can see, RSS Guard processes all feeds scheduled for message downloading 
 
 ## Writing message filter
 
-Message filter consists of arbitrary JavaScript code which must provide function with prototype `function filterMessage() { }`. This function must be fast and must return integer values which belong to enumeration [`FilteringAction`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L83). For example, your function must return `2` to block the message which is subsequently NOT saved into database. For easier usage, RSS Guard 3.7.1+ offers named variables for this, which are called `MSG_ACCEPT` and `MSG_IGNORE`.
+Message filter consists of arbitrary JavaScript code which must provide function with prototype
 
-Each message is accessible in your script via global variable named `msg` of type [`MessageObject`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L118). Some properties are writable, thus allowing you to change contents of the message before it is written to DB. You can mark message important, parse its description or perhaps change author name!!!
+```js
+function filterMessage() { }
+```
 
-RSS Guard 3.8.0+ offers also read-only list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. Each `Label` in the array offers these properties: `title` (title of the label), `color` (color of the label) and `customId` (account-specific ID of the label).
+This function must be fast and must return integer values which belong to enumeration [`FilteringAction`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L83). For example, your function must return `2` to block the message which is subsequently NOT saved into database. For easier usage, RSS Guard 3.7.1+ offers named variables for this, which are called `MSG_ACCEPT` and `MSG_IGNORE`.
+
+Each message is accessible in your script via global variable named `msg` of type [`MessageObject`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L118). Some properties are writable, allowing you to change contents of the message before it is written to DB. You can mark message important, parse its description or perhaps change author name or even assign some label to it!!!
+
+RSS Guard 3.8.0+ offers also list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. Each `Label` in the array offers these properties: `title` (title of the label), `color` (color of the label) and `customId` (account-specific ID of the label). If you change assigned labels to the message, then the change will be eventually synchronized back to server if respective plugin supports it.
 
 Passed message also offers special function
 ```js
@@ -26,6 +32,35 @@ MessageObject.isDuplicateWithAttribute(DuplicationAttributeCheck)
 which allows you to perform runtime check for existence of the message in RSS Guard's database. The parameter is integer value from enumeration [`DuplicationAttributeCheck`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L91) and specifies how exactly you want to determine if given message is "duplicate".
 
 For example if you want to check if there is already another message with same author in database, then you call `msg.isDuplicateWithAttribute(4)`. Enumeration even supports "flags" approach, thus you can combine multiple checks via bitwise `OR` operation in single call, for example like this: `msg.isDuplicateWithAttribute(4 | 16)`.
+
+## API reference
+Here is the reference of methods and properties of some types available in your filtering scipts.
+
+### `MessageObject`
+
+| Property/method | Description |
+|---|---|
+| `array<Label> assignedLabels` | `READ-ONLY` List of labels assigned to the message. |
+| `array<Label> availableLabels` | `READ-ONLY` List of labels which are currently available and can be assigned to the message. Available in RSS Guard 3.8.1+. |
+| `String feedCustomId` | `READ-ONLY` Service-specific ID of the feed which this message belongs to. |
+| `Number accountId` | `READ-ONLY` RSS Guard's ID of the account activated in the program. This property is highly advanced and you probably do not need to use it at all. |
+| `String title` | Title of the message. |
+| `String url` | URL of the message. |
+| `String author` | Author of the message. |
+| `String contents` | Contents of the message. |
+| `Date created` | Date/time of the message. |
+| `Boolean isRead` | Is message read? |
+| `Boolean isImportant` | Is message important? |
+| `Boolean isDuplicateWithAttribute(Integer)` | Allows you to test if this particular message is already stored in RSS Guard's DB. |
+| `Boolean assignLabel(String)` | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. |
+| `Boolean deassignLabel(String)` | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. |
+
+### `Label`
+| Property/method | Description |
+|---|---|
+| `String title` | `READ-ONLY` Label title. |
+| `String customId` | `READ-ONLY` Service-specific ID of this label. This ID is used as unique identifier for the label and is particularly useful if you want to (de)assign label to/from message. |
+| `color color` | `READ-ONLY` Label color. Note that type `color` has its documentation [here](https://doc.qt.io/qt-5/qml-color.html). |
 
 ## Examples
 Accept only messages from "Bob" while also marking them important.
@@ -45,6 +80,32 @@ Replace all dogs with cats!
 ```js
 function filterMessage() {
   msg.title = msg.title.replace("dogs", "cats");
+  return MSG_ACCEPT;
+}
+```
+
+Write details of available labels and assign the first label to the message.
+```js
+function filterMessage() {
+  console.log('Number of assigned labels ' + msg.assignedLabels.length);
+  console.log('Number of available labels ' + msg.availableLabels.length);
+
+  var i;
+  for (i = 0; i < msg.availableLabels.length; i++) {
+    var lbl = msg.availableLabels[i];
+
+    console.log('Available label:');
+    console.log('  Title: \'' + lbl.title + '\' ID: \'' + lbl.customId + '\'');
+  }
+
+  if (msg.availableLabels.length > 0) {
+    console.log('Assigning first label to message...');
+    msg.assignLabel(msg.availableLabels[0].customId);
+
+    console.log('Number of assigned labels ' + msg.assignedLabels.length);
+  }
+
+  console.log();
   return MSG_ACCEPT;
 }
 ```
