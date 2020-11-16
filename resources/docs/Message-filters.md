@@ -40,8 +40,8 @@ Here is the reference of methods and properties of some types available in your 
 
 | Property/method | Description |
 |---|---|
-| `array<Label> assignedLabels` | `READ-ONLY` List of labels assigned to the message. |
-| `array<Label> availableLabels` | `READ-ONLY` List of labels which are currently available and can be assigned to the message. Available in RSS Guard 3.8.1+. |
+| `Array<Label> assignedLabels` | `READ-ONLY` List of labels assigned to the message. |
+| `Array<Label> availableLabels` | `READ-ONLY` List of labels which are currently available and can be assigned to the message. Available in RSS Guard 3.8.1+. |
 | `String feedCustomId` | `READ-ONLY` Service-specific ID of the feed which this message belongs to. |
 | `Number accountId` | `READ-ONLY` RSS Guard's ID of the account activated in the program. This property is highly advanced and you probably do not need to use it at all. |
 | `String title` | Title of the message. |
@@ -52,8 +52,8 @@ Here is the reference of methods and properties of some types available in your 
 | `Boolean isRead` | Is message read? |
 | `Boolean isImportant` | Is message important? |
 | `Boolean isDuplicateWithAttribute(Integer)` | Allows you to test if this particular message is already stored in RSS Guard's DB. |
-| `Boolean assignLabel(String)` | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. |
-| `Boolean deassignLabel(String)` | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. |
+| `Boolean assignLabel(String)` | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. Available in RSS Guard 3.8.1+. |
+| `Boolean deassignLabel(String)` | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. Available in RSS Guard 3.8.1+. |
 
 ### `Label`
 | Property/method | Description |
