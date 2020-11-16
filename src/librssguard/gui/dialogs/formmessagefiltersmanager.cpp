@@ -153,7 +153,7 @@ void FormMessageFiltersManager::testFilter() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   // Create JavaScript communication wrapper for the message.
-  MessageObject msg_obj(&database, QString::number(NO_PARENT_CATEGORY), NO_PARENT_CATEGORY);
+  MessageObject msg_obj(&database, QString::number(NO_PARENT_CATEGORY), NO_PARENT_CATEGORY, {});
 
   // Register the wrapper.
   auto js_object = filter_engine.newQObject(&msg_obj);

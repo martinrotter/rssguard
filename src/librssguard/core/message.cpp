@@ -2,6 +2,7 @@
 
 #include "core/message.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/label.h"
 
@@ -158,8 +159,11 @@ uint qHash(const Message& key) {
   return (uint(key.m_accountId) * 10000) + uint(key.m_id);
 }
 
-MessageObject::MessageObject(QSqlDatabase* db, const QString& feed_custom_id, int account_id, QObject* parent)
-  : QObject(parent), m_db(db), m_feedCustomId(feed_custom_id), m_accountId(account_id), m_message(nullptr) {}
+MessageObject::MessageObject(QSqlDatabase* db, const QString& feed_custom_id,
+                             int account_id, QList<Label*> available_labels,
+                             QObject* parent)
+  : QObject(parent), m_db(db), m_feedCustomId(feed_custom_id), m_accountId(account_id), m_message(nullptr),
+  m_availableLabels(available_labels) {}
 
 void MessageObject::setMessage(Message* message) {
   m_message = message;
@@ -244,6 +248,37 @@ bool MessageObject::isDuplicateWithAttribute(int attribute_check) const {
   return false;
 }
 
+bool MessageObject::assignLabel(QString label_custom_id) const {
+  Label* lbl = boolinq::from(m_availableLabels).firstOrDefault([label_custom_id](Label* lbl) {
+    return lbl->customId() == label_custom_id;
+  });
+
+  if (lbl != nullptr) {
+    if (!m_message->m_assignedLabels.contains(lbl)) {
+      m_message->m_assignedLabels.append(lbl);
+    }
+
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool MessageObject::deassignLabel(QString label_custom_id) const {
+  Label* lbl = boolinq::from(m_message->m_assignedLabels).firstOrDefault([label_custom_id](Label* lbl) {
+    return lbl->customId() == label_custom_id;
+  });
+
+  if (lbl != nullptr) {
+    m_message->m_assignedLabels.removeAll(lbl);
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 QString MessageObject::title() const {
   return m_message->m_title;
 }
@@ -310,4 +345,8 @@ int MessageObject::accountId() const {
 
 QList<Label*> MessageObject::assignedLabels() const {
   return m_message->m_assignedLabels;
+}
+
+QList<Label*> MessageObject::availableLabels() const {
+  return m_availableLabels;
 }

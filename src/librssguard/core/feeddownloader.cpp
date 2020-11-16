@@ -9,6 +9,7 @@
 #include "miscellaneous/application.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/labelsnode.h"
 
 #include <QDebug>
 #include <QJSEngine>
@@ -115,7 +116,10 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
     MessageFilter::initializeFilteringEngine(filter_engine);
 
     // Create JavaScript communication wrapper for the message.
-    MessageObject msg_obj(&database, feed->customId(), feed->getParentServiceRoot()->accountId());
+    MessageObject msg_obj(&database,
+                          feed->customId(),
+                          feed->getParentServiceRoot()->accountId(),
+                          feed->getParentServiceRoot()->labelsNode()->labels());
 
     // Register the wrapper.
     auto js_object = filter_engine.newQObject(&msg_obj);
@@ -194,6 +198,30 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
         qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId << "' was marked as important by message scripts.";
 
         important_msgs << *msg_orig;
+      }
+
+      // Process changed labels.
+      for (Label* lbl : msg_backup.m_assignedLabels) {
+        if (!msg_orig->m_assignedLabels.contains(lbl)) {
+          // Label is not there anymore, it was deassigned.
+          lbl->deassignFromMessage(*msg_orig);
+
+          qDebugNN << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
+                   << "was DEASSIGNED from message" << QUOTE_W_SPACE(msg_orig->m_customId)
+                   << "by message filter(s).";
+        }
+      }
+
+      for (Label* lbl : msg_orig->m_assignedLabels) {
+        if (!msg_backup.m_assignedLabels.contains(lbl)) {
+          // Label is in new message, but is not in old message, it
+          // was newly assigned.
+          lbl->assignToMessage(*msg_orig);
+
+          qDebugNN << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
+                   << "was ASSIGNED to message" << QUOTE_W_SPACE(msg_orig->m_customId)
+                   << "by message filter(s).";
+        }
       }
 
       if (remove_msg) {

@@ -121,6 +121,7 @@ class MessageObject : public QObject {
   Q_OBJECT
 
   Q_PROPERTY(QList<Label*> assignedLabels READ assignedLabels)
+  Q_PROPERTY(QList<Label*> availableLabels READ availableLabels)
   Q_PROPERTY(QString feedCustomId READ feedCustomId)
   Q_PROPERTY(int accountId READ accountId)
   Q_PROPERTY(QString title READ title WRITE setTitle)
@@ -132,7 +133,9 @@ class MessageObject : public QObject {
   Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
 
   public:
-    explicit MessageObject(QSqlDatabase* db, const QString& feed_custom_id, int account_id, QObject* parent = nullptr);
+    explicit MessageObject(QSqlDatabase* db, const QString& feed_custom_id,
+                           int account_id, QList<Label*> available_labels,
+                           QObject* parent = nullptr);
 
     void setMessage(Message* message);
 
@@ -141,7 +144,17 @@ class MessageObject : public QObject {
     // value casted to int.
     Q_INVOKABLE bool isDuplicateWithAttribute(int attribute_check) const;
 
+    // Adds given label to list of assigned labels to this message.
+    // Returns true if label was assigned now or if the message already has it assigned.
+    Q_INVOKABLE bool assignLabel(QString label_custom_id) const;
+
+    // Removes given label from list of assigned labels of this message.
+    // Returns true if label was now removed or if it is not assigned to the message at all.
+    Q_INVOKABLE bool deassignLabel(QString label_custom_id) const;
+
+    // Returns list of assigned and available messages.
     QList<Label*> assignedLabels() const;
+    QList<Label*> availableLabels() const;
 
     // Generic Message's properties bindings.
     QString feedCustomId() const;
@@ -173,6 +186,7 @@ class MessageObject : public QObject {
     QString m_feedCustomId;
     int m_accountId;
     Message* m_message;
+    QList<Label*> m_availableLabels;
 };
 
 #endif // MESSAGE_H
