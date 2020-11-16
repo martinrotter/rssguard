@@ -198,11 +198,11 @@
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
-        <translation type="unfinished"/>
+        <translation>Нажмите здесь, чтобы изменить цвет!</translation>
     </message>
     <message>
         <source>Select new color</source>
-        <translation type="unfinished"/>
+        <translation>Выбор нового цвета</translation>
     </message>
 </context>
 <context>
@@ -312,7 +312,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
-        <translation type="unfinished"/>
+        <translation>Каналы обнаружены, но подходящие учетные записи не настроены.</translation>
     </message>
 </context>
 <context>
@@ -672,7 +672,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for label</source>
-        <translation type="unfinished"/>
+        <translation>Контекстное меню для меток</translation>
     </message>
 </context>
 <context>
@@ -820,27 +820,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Name for your label</source>
-        <translation type="unfinished"/>
+        <translation>Название новой метки</translation>
     </message>
     <message>
         <source>Label&apos;s name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Название метки не может быть пустым.</translation>
     </message>
     <message>
         <source>Perfect!</source>
-        <translation type="unfinished"/>
+        <translation>Отлично!</translation>
     </message>
     <message>
         <source>Hot stuff</source>
-        <translation type="unfinished"/>
+        <translation>Новая метка</translation>
     </message>
     <message>
         <source>Create new label</source>
-        <translation type="unfinished"/>
+        <translation>Создать новую метку</translation>
     </message>
     <message>
         <source>Edit label &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Изменить метку &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -2201,11 +2201,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
-        <translation type="unfinished"/>
+        <translation>Чередовать цвет фона строк в списках</translation>
     </message>
     <message>
         <source>Display &amp;documentation</source>
-        <translation type="unfinished"/>
+        <translation>Показать документацию (&amp;D)</translation>
     </message>
 </context>
 <context>
@@ -3065,30 +3065,30 @@ Login tokens expiration: %2</source>
     <name>LabelsMenu</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Метки</translation>
     </message>
 </context>
 <context>
     <name>LabelsNode</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Метки</translation>
     </message>
     <message>
         <source>You can see all your labels (tags) here.</source>
-        <translation type="unfinished"/>
+        <translation>Вы можете увидеть все метки (теги) здесь.</translation>
     </message>
     <message>
         <source>New label</source>
-        <translation type="unfinished"/>
+        <translation>Новая метка</translation>
     </message>
     <message>
         <source>This account does not allow you to create labels.</source>
-        <translation type="unfinished"/>
+        <translation>Эта учетная запись не позволяет создавать метки.</translation>
     </message>
     <message>
         <source>Not allowed</source>
-        <translation type="unfinished"/>
+        <translation>Не допускается</translation>
     </message>
 </context>
 <context>
@@ -3613,7 +3613,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
-        <translation type="unfinished"/>
+        <translation>Стандартные онлайн-каналы (RSS/ATOM/JSON)</translation>
     </message>
 </context>
 <context>

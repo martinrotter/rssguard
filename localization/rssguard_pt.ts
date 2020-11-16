@@ -2204,7 +2204,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Display &amp;documentation</source>
-        <translation type="unfinished"/>
+        <translation>Exibir &amp;documentação</translation>
     </message>
 </context>
 <context>
