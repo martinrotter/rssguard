@@ -70,6 +70,10 @@ QString WebFactory::stripTags(QString text) {
 }
 
 QString WebFactory::unescapeHtml(const QString& html) {
+  if (html.isEmpty()) {
+    return html;
+  }
+
   if (m_htmlNamedEntities.isEmpty()) {
     generateUnescapes();
   }

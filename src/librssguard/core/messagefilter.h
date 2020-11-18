@@ -27,7 +27,7 @@ class MessageFilter : public QObject {
     QString script() const;
     void setScript(const QString& script);
 
-    static void initializeFilteringEngine(QJSEngine& engine);
+    static void initializeFilteringEngine(QJSEngine& engine, MessageObject* message_wrapper);
 
   private:
     int m_id;

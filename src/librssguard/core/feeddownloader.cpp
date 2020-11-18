@@ -113,18 +113,13 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
     // Perform per-message filtering.
     QJSEngine filter_engine;
 
-    MessageFilter::initializeFilteringEngine(filter_engine);
-
     // Create JavaScript communication wrapper for the message.
     MessageObject msg_obj(&database,
                           feed->customId(),
                           feed->getParentServiceRoot()->accountId(),
                           feed->getParentServiceRoot()->labelsNode()->labels());
 
-    // Register the wrapper.
-    auto js_object = filter_engine.newQObject(&msg_obj);
-
-    filter_engine.globalObject().setProperty("msg", js_object);
+    MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
