@@ -148,7 +148,12 @@ void FormMessageFiltersManager::testFilter() {
   // Perform per-message filtering.
   QJSEngine filter_engine;
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  MessageObject msg_obj(&database, QString::number(NO_PARENT_CATEGORY), NO_PARENT_CATEGORY, {});
+  MessageObject msg_obj(&database,
+                        QString::number(NO_PARENT_CATEGORY),
+                        selectedAccount() != nullptr
+                                             ? selectedAccount()->accountId()
+                                             : NO_PARENT_CATEGORY,
+                        {});
   auto* fltr = selectedFilter();
   Message msg = testingMessage();
 
@@ -157,11 +162,11 @@ void FormMessageFiltersManager::testFilter() {
   msg_obj.setMessage(&msg);
 
   try {
-    FilteringAction decision = fltr->filterMessage(&filter_engine);
+    MessageObject::FilteringAction decision = fltr->filterMessage(&filter_engine);
 
-    m_ui.m_txtErrors->setTextColor(decision == FilteringAction::Accept ? Qt::GlobalColor::darkGreen : Qt::GlobalColor::red);
+    m_ui.m_txtErrors->setTextColor(decision == MessageObject::FilteringAction::Accept ? Qt::GlobalColor::darkGreen : Qt::GlobalColor::red);
 
-    QString answer = tr("Message will be %1.\n\n").arg(decision == FilteringAction::Accept
+    QString answer = tr("Message will be %1.\n\n").arg(decision == MessageObject::FilteringAction::Accept
                                                        ? tr("ACCEPTED")
                                                        : tr("REJECTED"));
 
@@ -341,6 +346,7 @@ void FormMessageFiltersManager::initializeTestingMessage() {
 Message FormMessageFiltersManager::testingMessage() const {
   Message msg;
 
+  msg.m_feedId = NO_PARENT_CATEGORY;
   msg.m_url = m_ui.m_txtSampleUrl->text();
   msg.m_title = m_ui.m_txtSampleTitle->text();
   msg.m_author = m_ui.m_txtSampleAuthor->text();

@@ -169,38 +169,29 @@ void MessageObject::setMessage(Message* message) {
   m_message = message;
 }
 
-bool MessageObject::isDuplicateWithAttribute(int attribute_check) const {
-  if (attribute_check <= 0) {
-    qCriticalNN << LOGSEC_MESSAGEMODEL
-                << "Bad DuplicationAttributeCheck value '"
-                << attribute_check
-                << "' was passed from JS filter script.";
-    return true;
-  }
-
+bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicationAttributeCheck attribute_check) const {
   // Check database according to duplication attribute_check.
-  DuplicationAttributeCheck attrs = static_cast<DuplicationAttributeCheck>(attribute_check);
   QSqlQuery q(*m_db);
   QStringList where_clauses;
   QList<QPair<QString, QVariant>> bind_values;
 
   // Now we construct the query according to parameter.
-  if ((attrs& DuplicationAttributeCheck::SameTitle) == DuplicationAttributeCheck::SameTitle) {
+  if ((attribute_check& DuplicationAttributeCheck::SameTitle) == DuplicationAttributeCheck::SameTitle) {
     where_clauses.append(QSL("title = :title"));
     bind_values.append({ ":title", title() });
   }
 
-  if ((attrs& DuplicationAttributeCheck::SameUrl) == DuplicationAttributeCheck::SameUrl) {
+  if ((attribute_check& DuplicationAttributeCheck::SameUrl) == DuplicationAttributeCheck::SameUrl) {
     where_clauses.append(QSL("url = :url"));
     bind_values.append({ ":url", url() });
   }
 
-  if ((attrs& DuplicationAttributeCheck::SameAuthor) == DuplicationAttributeCheck::SameAuthor) {
+  if ((attribute_check& DuplicationAttributeCheck::SameAuthor) == DuplicationAttributeCheck::SameAuthor) {
     where_clauses.append(QSL("author = :author"));
     bind_values.append({ ":author", author() });
   }
 
-  if ((attrs& DuplicationAttributeCheck::SameDateCreated) == DuplicationAttributeCheck::SameDateCreated) {
+  if ((attribute_check& DuplicationAttributeCheck::SameDateCreated) == DuplicationAttributeCheck::SameDateCreated) {
     where_clauses.append(QSL("date_created = :date_created"));
     bind_values.append({ ":date_created", created().toMSecsSinceEpoch() });
   }
@@ -208,7 +199,7 @@ bool MessageObject::isDuplicateWithAttribute(int attribute_check) const {
   where_clauses.append(QSL("account_id = :account_id"));
   bind_values.append({ ":account_id", accountId() });
 
-  if ((attrs& DuplicationAttributeCheck::AllFeedsSameAccount) != DuplicationAttributeCheck::AllFeedsSameAccount) {
+  if ((attribute_check& DuplicationAttributeCheck::AllFeedsSameAccount) != DuplicationAttributeCheck::AllFeedsSameAccount) {
     // Limit to current feed.
     where_clauses.append(QSL("feed = :feed"));
     bind_values.append({ ":feed", feedCustomId() });

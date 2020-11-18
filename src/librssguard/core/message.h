@@ -82,41 +82,6 @@ QDataStream& operator>>(QDataStream& in, Message& myObj);
 uint qHash(const Message& key, uint seed);
 uint qHash(const Message& key);
 
-enum class FilteringAction {
-  // Message is normally accepted and stored in DB.
-  Accept = 1,
-
-  // Message is ignored and now stored in DB.
-  Ignore = 2
-};
-
-enum class DuplicationAttributeCheck {
-  // Message with same title in DB.
-  SameTitle = 1,
-
-  // Message with same URL in DB.
-  SameUrl = 2,
-
-  // Message with same author in DB.
-  SameAuthor = 4,
-
-  // Messages with same creation date in DB.
-  SameDateCreated = 8,
-
-  // Compare with all messages from the account not only with messages from same feed.
-  // Note that this value must be used via bitwise OR with other values,
-  // for example 2 | 4 | 16.
-  AllFeedsSameAccount = 16
-};
-
-inline DuplicationAttributeCheck operator|(DuplicationAttributeCheck lhs, DuplicationAttributeCheck rhs) {
-  return static_cast<DuplicationAttributeCheck>(int(lhs) | int(rhs));
-}
-
-inline DuplicationAttributeCheck operator&(DuplicationAttributeCheck lhs, DuplicationAttributeCheck rhs) {
-  return static_cast<DuplicationAttributeCheck>(int(lhs) & int(rhs));
-}
-
 class MessageObject : public QObject {
   Q_OBJECT
 
@@ -133,6 +98,37 @@ class MessageObject : public QObject {
   Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
 
   public:
+    enum class FilteringAction {
+      // Message is normally accepted and stored in DB.
+      Accept = 1,
+
+      // Message is ignored and now stored in DB.
+      Ignore = 2
+    };
+
+    Q_ENUM(FilteringAction)
+
+    enum class DuplicationAttributeCheck {
+      // Message with same title in DB.
+      SameTitle = 1,
+
+      // Message with same URL in DB.
+      SameUrl = 2,
+
+      // Message with same author in DB.
+      SameAuthor = 4,
+
+      // Messages with same creation date in DB.
+      SameDateCreated = 8,
+
+      // Compare with all messages from the account not only with messages from same feed.
+      // Note that this value must be used via bitwise OR with other values,
+      // for example 2 | 4 | 16.
+      AllFeedsSameAccount = 16
+    };
+
+    Q_ENUM(DuplicationAttributeCheck)
+
     explicit MessageObject(QSqlDatabase* db, const QString& feed_custom_id,
                            int account_id, QList<Label*> available_labels,
                            QObject* parent = nullptr);
@@ -142,7 +138,7 @@ class MessageObject : public QObject {
     // Check if message is duplicate with another messages in DB.
     // Parameter "attribute_check" is DuplicationAttributeCheck enum
     // value casted to int.
-    Q_INVOKABLE bool isDuplicateWithAttribute(int attribute_check) const;
+    Q_INVOKABLE bool isDuplicateWithAttribute(DuplicationAttributeCheck attribute_check) const;
 
     // Adds given label to list of assigned labels to this message.
     // Returns true if label was assigned now or if the message already has it assigned.
@@ -188,5 +184,15 @@ class MessageObject : public QObject {
     Message* m_message;
     QList<Label*> m_availableLabels;
 };
+
+inline MessageObject::DuplicationAttributeCheck operator|(MessageObject::DuplicationAttributeCheck lhs,
+                                                          MessageObject::DuplicationAttributeCheck rhs) {
+  return static_cast<MessageObject::DuplicationAttributeCheck>(int(lhs) | int(rhs));
+}
+
+inline MessageObject::DuplicationAttributeCheck operator&(MessageObject::DuplicationAttributeCheck lhs,
+                                                          MessageObject::DuplicationAttributeCheck rhs) {
+  return static_cast<MessageObject::DuplicationAttributeCheck>(int(lhs) & int(rhs));
+}
 
 #endif // MESSAGE_H

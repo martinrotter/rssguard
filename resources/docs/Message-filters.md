@@ -19,9 +19,9 @@ Message filter consists of arbitrary JavaScript code which must provide function
 function filterMessage() { }
 ```
 
-This function must be fast and must return integer values which belong to enumeration [`FilteringAction`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L83). For example, your function must return `2` to block the message which is subsequently NOT saved into database. For easier usage, RSS Guard 3.7.1+ offers named variables for this, which are called `MSG_ACCEPT` and `MSG_IGNORE`.
+This function must be fast and must return values which belong to enumeration `FilteringAction` from this [file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h). You can you either direct numerical value of each enumerant, for example `2` or you can use self-descriptive enumerant name, for example `MessageObject.Ignore`. Named enumerants are supported in RSS Guard 3.8.1+. RSS Guard 3.7.1+ also offers names `MSG_ACCEPT` and `MSG_IGNORE` as aliases for `MessageObject.Accept` and `MessageObject.Ignore`.
 
-Each message is accessible in your script via global variable named `msg` of type [`MessageObject`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L118). Some properties are writable, allowing you to change contents of the message before it is written to DB. You can mark message important, parse its description or perhaps change author name or even assign some label to it!!!
+Each message is accessible in your script via global variable named `msg` of type `MessageObject`, see this [file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h) for the declaration. Some properties are writable, allowing you to change contents of the message before it is written to DB. You can mark message important, parse its description or perhaps change author name or even assign some label to it!!!
 
 RSS Guard 3.8.0+ offers also list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. Each `Label` in the array offers these properties: `title` (title of the label), `color` (color of the label) and `customId` (account-specific ID of the label). If you change assigned labels to the message, then the change will be eventually synchronized back to server if respective plugin supports it.
 
@@ -29,9 +29,10 @@ Passed message also offers special function
 ```js
 MessageObject.isDuplicateWithAttribute(DuplicationAttributeCheck)
 ```
-which allows you to perform runtime check for existence of the message in RSS Guard's database. The parameter is integer value from enumeration [`DuplicationAttributeCheck`](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h#L91) and specifies how exactly you want to determine if given message is "duplicate".
 
-For example if you want to check if there is already another message with same author in database, then you call `msg.isDuplicateWithAttribute(4)`. Enumeration even supports "flags" approach, thus you can combine multiple checks via bitwise `OR` operation in single call, for example like this: `msg.isDuplicateWithAttribute(4 | 16)`.
+which allows you to perform runtime check for existence of the message in RSS Guard's database. The parameter is integer value from enumeration `DuplicationAttributeCheck` from this [file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h) and specifies how exactly you want to determine if given message is "duplicate". Again, you can use direct integer value or enumerant name.
+
+For example if you want to check if there is already another message with same author in database, then you call `msg.isDuplicateWithAttribute(MessageObject.SameAuthor)`. Enumeration even supports "flags" approach, thus you can combine multiple checks via bitwise `OR` operation in single call, for example like this: `msg.isDuplicateWithAttribute(MessageObject.SameAuthor | MessageObject.SameUrl)`.
 
 ## API reference
 Here is the reference of methods and properties of some types available in your filtering scipts.
@@ -51,7 +52,7 @@ Here is the reference of methods and properties of some types available in your 
 | `Date created` | Date/time of the message. |
 | `Boolean isRead` | Is message read? |
 | `Boolean isImportant` | Is message important? |
-| `Boolean isDuplicateWithAttribute(Integer)` | Allows you to test if this particular message is already stored in RSS Guard's DB. |
+| `Boolean isDuplicateWithAttribute(DuplicationAttributeCheck)` | Allows you to test if this particular message is already stored in RSS Guard's DB. |
 | `Boolean assignLabel(String)` | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. Available in RSS Guard 3.8.1+. |
 | `Boolean deassignLabel(String)` | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. Available in RSS Guard 3.8.1+. |
 
@@ -68,10 +69,10 @@ Accept only messages from "Bob" while also marking them important.
 function filterMessage() {
   if (msg.author == "Bob") {
     msg.isImportant = true;
-    return MSG_ACCEPT;
+    return MessageObject.Accept;
   }
   else {
-    return MSG_IGNORE;
+    return MessageObject.Ignore;
   }
 }
 ```
@@ -80,7 +81,7 @@ Replace all dogs with cats!
 ```js
 function filterMessage() {
   msg.title = msg.title.replace("dogs", "cats");
-  return MSG_ACCEPT;
+  return MessageObject.Accept;
 }
 ```
 
@@ -106,18 +107,18 @@ function filterMessage() {
   }
 
   console.log();
-  return MSG_ACCEPT;
+  return MessageObject.Accept;
 }
 ```
 
 Make sure that your receive only one message with particular URL and all other messages with same URL are subsequently ignored.
 ```js
 function filterMessage() {
-  if (msg.isDuplicateWithAttribute(2)) {
-    return MSG_IGNORE;
+  if (msg.isDuplicateWithAttribute(MessageObject.SameUrl)) {
+    return MessageObject.Ignore;
   }
   else {
-    return MSG_ACCEPT;
+    return MessageObject.Accept;
   }
 }
 ```
