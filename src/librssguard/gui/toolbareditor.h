@@ -17,8 +17,6 @@ class ToolBarEditor : public QWidget {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
     explicit ToolBarEditor(QWidget* parent = nullptr);
 
     // Toolbar operations.
@@ -29,7 +27,7 @@ class ToolBarEditor : public QWidget {
     QListWidget* availableItemsWidget() const;
 
   protected:
-    bool eventFilter(QObject* object, QEvent* event);
+    virtual bool eventFilter(QObject* object, QEvent* event);
 
   private slots:
     void updateActionsAvailability();

@@ -99,7 +99,8 @@ QStringList StatusBar::savedActions() const {
 }
 
 QList<QAction*> StatusBar::convertActions(const QStringList& actions) {
-  bool progress_visible = this->actions().contains(m_barProgressFeedsAction) && m_lblProgressFeeds->isVisible() &&
+  bool progress_visible = this->actions().contains(m_barProgressFeedsAction) &&
+                          m_lblProgressFeeds->isVisible() &&
                           m_barProgressFeeds->isVisible();
   QList<QAction*> available_actions = availableActions();
   QList<QAction*> spec_actions;
@@ -165,7 +166,7 @@ QList<QAction*> StatusBar::convertActions(const QStringList& actions) {
     }
 
     if (action_to_add != nullptr && widget_to_add != nullptr) {
-      action_to_add->setProperty("widget", QVariant::fromValue((void*) widget_to_add));
+      action_to_add->setProperty("widget", QVariant::fromValue(widget_to_add));
       spec_actions.append(action_to_add);
     }
   }
@@ -174,11 +175,11 @@ QList<QAction*> StatusBar::convertActions(const QStringList& actions) {
 }
 
 void StatusBar::loadSpecificActions(const QList<QAction*>& actions, bool initial_load) {
-  clear();
-
   if (initial_load) {
+    clear();
+
     for (QAction* act : actions) {
-      QWidget* widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
+      QWidget* widget = act->property("widget").isValid() ? qvariant_cast<QWidget*>(act->property("widget")) : nullptr;
 
       addAction(act);
 
@@ -207,6 +208,8 @@ void StatusBar::clear() {
 
     if (widget != nullptr) {
       removeWidget(widget);
+
+      widget->setParent(qApp->mainFormWidget());
       widget->setVisible(false);
     }
 
