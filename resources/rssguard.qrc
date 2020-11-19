@@ -27,6 +27,7 @@
         <file>graphics/misc/flags/de.png</file>
         <file>graphics/misc/flags/en.png</file>
         <file>graphics/misc/flags/es.png</file>
+        <file>graphics/misc/flags/fi.png</file>
         <file>graphics/misc/flags/fr.png</file>
         <file>graphics/misc/flags/gl.png</file>
         <file>graphics/misc/flags/he.png</file>
@@ -69,6 +70,7 @@
         <file>../localization/rssguard_de.qm</file>
         <file>../localization/rssguard_en.qm</file>
         <file>../localization/rssguard_es.qm</file>
+        <file>../localization/rssguard_fi.qm</file>
         <file>../localization/rssguard_fr.qm</file>
         <file>../localization/rssguard_gl.qm</file>
         <file>../localization/rssguard_he.qm</file>
@@ -89,6 +91,7 @@
         <file>../localization/qtbase_da.qm</file>
         <file>../localization/qtbase_de.qm</file>
         <file>../localization/qtbase_es.qm</file>
+        <file>../localization/qtbase_fi.qm</file>
         <file>../localization/qtbase_fr.qm</file>
         <file>../localization/qtbase_it.qm</file>
         <file>../localization/qtbase_ja.qm</file>

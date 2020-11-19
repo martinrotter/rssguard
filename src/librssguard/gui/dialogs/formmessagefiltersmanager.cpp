@@ -147,31 +147,26 @@ void FormMessageFiltersManager::loadFilter() {
 void FormMessageFiltersManager::testFilter() {
   // Perform per-message filtering.
   QJSEngine filter_engine;
-
-  MessageFilter::initializeFilteringEngine(filter_engine);
-
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  // Create JavaScript communication wrapper for the message.
-  MessageObject msg_obj(&database, QString::number(NO_PARENT_CATEGORY), NO_PARENT_CATEGORY);
-
-  // Register the wrapper.
-  auto js_object = filter_engine.newQObject(&msg_obj);
-
-  filter_engine.globalObject().setProperty("msg", js_object);
-
+  MessageObject msg_obj(&database,
+                        QString::number(NO_PARENT_CATEGORY),
+                        selectedAccount() != nullptr
+                                             ? selectedAccount()->accountId()
+                                             : NO_PARENT_CATEGORY,
+                        {});
+  auto* fltr = selectedFilter();
   Message msg = testingMessage();
+
+  MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
 
   msg_obj.setMessage(&msg);
 
-  auto* fltr = selectedFilter();
-
   try {
-    FilteringAction decision = fltr->filterMessage(&filter_engine);
+    MessageObject::FilteringAction decision = fltr->filterMessage(&filter_engine);
 
-    m_ui.m_txtErrors->setTextColor(decision == FilteringAction::Accept ? Qt::GlobalColor::darkGreen : Qt::GlobalColor::red);
+    m_ui.m_txtErrors->setTextColor(decision == MessageObject::FilteringAction::Accept ? Qt::GlobalColor::darkGreen : Qt::GlobalColor::red);
 
-    QString answer = tr("Message will be %1.\n\n").arg(decision == FilteringAction::Accept
+    QString answer = tr("Message will be %1.\n\n").arg(decision == MessageObject::FilteringAction::Accept
                                                        ? tr("ACCEPTED")
                                                        : tr("REJECTED"));
 
@@ -351,6 +346,7 @@ void FormMessageFiltersManager::initializeTestingMessage() {
 Message FormMessageFiltersManager::testingMessage() const {
   Message msg;
 
+  msg.m_feedId = NO_PARENT_CATEGORY;
   msg.m_url = m_ui.m_txtSampleUrl->text();
   msg.m_title = m_ui.m_txtSampleTitle->text();
   msg.m_author = m_ui.m_txtSampleAuthor->text();

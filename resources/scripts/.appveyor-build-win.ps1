@@ -1,50 +1,30 @@
-# List startup folder.
-$old_pwd=$pwd.Path
-$ssl_bin = "C:\OpenSSL-v111-Win64\bin"
-$mysql_dir = "C:\Program Files\MySQL\MySQL Server 5.7"
+$old_pwd = $pwd.Path
 
-ls "$ssl_bin"
-ls "$mysql_dir\lib"
-ls
-
-echo "qmake args are: '$env:qmake_args'."
-
-# Setup env path with qmake.
-$env:PATH = "$env:QTDIR\bin;" + $env:PATH
-
-# Build MySQL Qt plugin.
-$qt_ver = "$env:QTVER"
-$qt_rev = "$env:QTREV"
-$qtbase_url = "https://download.qt.io/archive/qt/$qt_ver/$qt_ver.$qt_rev/submodules/qtbase-everywhere-src-$qt_ver.$qt_rev.zip"
-$output = "qt.zip"
-
-mkdir "build-mysql"
-cd "build-mysql"
-
-echo "Building MySQL Qt plugin, downloading Qt '$qt_ver.$qt_rev'."
+# Get Qt.
+$qt_version = "5.15.1"
+$qt_stub = "qt-$qt_version-dynamic-msvc2019-x86_64"
+$qt_link = "https://github.com/martinrotter/qt5-minimalistic-builds/releases/download/$qt_version/$qt_stub.7z"
+$qt_output = "qt.7z"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-Invoke-WebRequest -Uri $qtbase_url -OutFile $output
+Invoke-WebRequest -Uri $qt_link -OutFile $qt_output
+& ".\resources\scripts\7za\7za.exe" x $qt_output
 
-& "..\resources\scripts\7za\7za.exe" x $output
+$qt_path = (Resolve-Path $qt_stub).Path
+$qt_qmake = "$qt_path\bin\qmake.exe"
 
-$qt_mysql_dir = "./qtbase-everywhere-src-$qt_ver.$qt_rev/src/plugins/sqldrivers"
-$mysql_d_rev = $mysql_dir.Replace('\', '/')
-
-cd "$qt_mysql_dir"
-
-qmake.exe -- MYSQL_INCDIR="$mysql_d_rev/include" MYSQL_LIBDIR="$mysql_d_rev/lib"
-nmake.exe sub-mysql
-
-Copy-Item -Path ".\plugins\sqldrivers\qsqlmysql.dll" -Destination "$old_pwd\build-mysql"
-
+cd "$qt_stub\bin\"
+& ".\qtbinpatcher.exe"
 cd "$old_pwd"
-ls "build-mysql"
+
+$env:PATH = "$qt_path\bin\;" + $env:PATH
 
 # Build RSS Guard itself.
+echo "qmake args are: '$env:qmake_args'."
+
 mkdir "rssguard-build"
 cd "rssguard-build"
-qmake.exe ..\build.pro "$env:qmake_args"
+& "$qt_qmake" "..\build.pro" "$env:qmake_args"
 nmake.exe
 
 cd "src\rssguard"
@@ -56,12 +36,11 @@ windeployqt.exe --verbose 1 --compiler-runtime --no-translations --release rssgu
 cd ".."
 
 # Copy OpenSSL.
-Copy-Item -Path "$ssl_bin\libcrypto*.dll" -Destination ".\app\"
-Copy-Item -Path "$ssl_bin\libssl*.dll" -Destination ".\app\"
+Copy-Item -Path "$qt_path\bin\libcrypto*.dll" -Destination ".\app\"
+Copy-Item -Path "$qt_path\bin\libssl*.dll" -Destination ".\app\"
 
 # Copy MySQL Qt plugin.
-Copy-Item -Path "$mysql_dir\lib\libmysql.dll" -Destination ".\app\"
-Copy-Item -Path "$old_pwd\build-mysql\qsqlmysql.dll" -Destination ".\app\sqldrivers\"
+Copy-Item -Path "$qt_path\bin\libmariadb.dll" -Destination ".\app\"
 
 nmake.exe windows_all
 cd "$old_pwd"

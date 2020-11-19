@@ -16,7 +16,7 @@ class MessageFilter : public QObject {
   public:
     explicit MessageFilter(int id = -1, QObject* parent = nullptr);
 
-    FilteringAction filterMessage(QJSEngine* engine);
+    MessageObject::FilteringAction filterMessage(QJSEngine* engine);
 
     int id() const;
     void setId(int id);
@@ -27,7 +27,7 @@ class MessageFilter : public QObject {
     QString script() const;
     void setScript(const QString& script);
 
-    static void initializeFilteringEngine(QJSEngine& engine);
+    static void initializeFilteringEngine(QJSEngine& engine, MessageObject* message_wrapper);
 
   private:
     int m_id;

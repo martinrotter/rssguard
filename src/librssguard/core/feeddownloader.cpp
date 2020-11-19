@@ -9,6 +9,7 @@
 #include "miscellaneous/application.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/labelsnode.h"
 
 #include <QDebug>
 #include <QJSEngine>
@@ -112,15 +113,13 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
     // Perform per-message filtering.
     QJSEngine filter_engine;
 
-    MessageFilter::initializeFilteringEngine(filter_engine);
-
     // Create JavaScript communication wrapper for the message.
-    MessageObject msg_obj(&database, feed->customId(), feed->getParentServiceRoot()->accountId());
+    MessageObject msg_obj(&database,
+                          feed->customId(),
+                          feed->getParentServiceRoot()->accountId(),
+                          feed->getParentServiceRoot()->labelsNode()->labels());
 
-    // Register the wrapper.
-    auto js_object = filter_engine.newQObject(&msg_obj);
-
-    filter_engine.globalObject().setProperty("msg", js_object);
+    MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
@@ -153,18 +152,18 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
         tmr.restart();
 
         try {
-          FilteringAction decision = msg_filter->filterMessage(&filter_engine);
+          MessageObject::FilteringAction decision = msg_filter->filterMessage(&filter_engine);
 
           qDebugNN << LOGSEC_FEEDDOWNLOADER
                    << "Running filter script, it took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
           switch (decision) {
-            case FilteringAction::Accept:
+            case MessageObject::FilteringAction::Accept:
 
               // Message is normally accepted, it could be tweaked by the filter.
               continue;
 
-            case FilteringAction::Ignore:
+            case MessageObject::FilteringAction::Ignore:
 
               // Remove the message, we do not want it.
               remove_msg = true;
@@ -194,6 +193,30 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
         qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId << "' was marked as important by message scripts.";
 
         important_msgs << *msg_orig;
+      }
+
+      // Process changed labels.
+      for (Label* lbl : msg_backup.m_assignedLabels) {
+        if (!msg_orig->m_assignedLabels.contains(lbl)) {
+          // Label is not there anymore, it was deassigned.
+          lbl->deassignFromMessage(*msg_orig);
+
+          qDebugNN << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
+                   << "was DEASSIGNED from message" << QUOTE_W_SPACE(msg_orig->m_customId)
+                   << "by message filter(s).";
+        }
+      }
+
+      for (Label* lbl : msg_orig->m_assignedLabels) {
+        if (!msg_backup.m_assignedLabels.contains(lbl)) {
+          // Label is in new message, but is not in old message, it
+          // was newly assigned.
+          lbl->assignToMessage(*msg_orig);
+
+          qDebugNN << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
+                   << "was ASSIGNED to message" << QUOTE_W_SPACE(msg_orig->m_customId)
+                   << "by message filter(s).";
+        }
       }
 
       if (remove_msg) {

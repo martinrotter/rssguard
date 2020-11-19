@@ -7,7 +7,7 @@
 
 MessageFilter::MessageFilter(int id, QObject* parent) : QObject(parent), m_id(id) {}
 
-FilteringAction MessageFilter::filterMessage(QJSEngine* engine) {
+MessageObject::FilteringAction MessageFilter::filterMessage(QJSEngine* engine) {
   // NOTE: Filter is represented by JavaScript code, each filter must define
   // function with "filterMessage()" prototype. There is a global "msg" object
   // representing "message" available.
@@ -56,7 +56,7 @@ FilteringAction MessageFilter::filterMessage(QJSEngine* engine) {
     throw FilteringException(error, message);
   }
 
-  return FilteringAction(filter_output.toInt());
+  return MessageObject::FilteringAction(filter_output.toInt());
 }
 
 int MessageFilter::id() const {
@@ -79,10 +79,17 @@ void MessageFilter::setScript(const QString& script) {
   m_script = script;
 }
 
-void MessageFilter::initializeFilteringEngine(QJSEngine& engine) {
+void MessageFilter::initializeFilteringEngine(QJSEngine& engine, MessageObject* message_wrapper) {
   engine.installExtensions(QJSEngine::Extension::ConsoleExtension);
-  engine.globalObject().setProperty("MSG_ACCEPT", int(FilteringAction::Accept));
-  engine.globalObject().setProperty("MSG_IGNORE", int(FilteringAction::Ignore));
+  engine.globalObject().setProperty("MSG_ACCEPT", int(MessageObject::FilteringAction::Accept));
+  engine.globalObject().setProperty("MSG_IGNORE", int(MessageObject::FilteringAction::Ignore));
+
+  // Register the wrapper.
+  auto js_object = engine.newQObject(message_wrapper);
+  auto js_meta_object = engine.newQMetaObject(&message_wrapper->staticMetaObject);
+
+  engine.globalObject().setProperty("msg", js_object);
+  engine.globalObject().setProperty(message_wrapper->staticMetaObject.className(), js_meta_object);
 }
 
 void MessageFilter::setId(int id) {

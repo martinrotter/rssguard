@@ -116,7 +116,7 @@ QString s_customLogFile = QString();
 void Application::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg) {
 #ifndef QT_NO_DEBUG_OUTPUT
   QString console_message = qFormatLogMessage(type, context, msg);
-  std::wcout << console_message.toStdWString() << std::endl;
+  std::cout << console_message.toStdString() << std::endl;
 
   if (!s_customLogFile.isEmpty()) {
     QFile log_file(s_customLogFile);
@@ -584,7 +584,8 @@ void Application::determineFirstRuns() {
 
 void Application::parseCmdArguments() {
   QCommandLineOption log_file(QStringList() << CLI_LOG_SHORT << CLI_LOG_LONG,
-                              "Write application debug log to file.", "log-file");
+                              "Write application debug log to file. Note that logging to file may slow application down.",
+                              "log-file");
   QCommandLineOption custom_data_folder(QStringList() << CLI_DAT_SHORT << CLI_DAT_LONG,
                                         "Use custom folder for user data and disable single instance application mode.",
                                         "user-data-folder");

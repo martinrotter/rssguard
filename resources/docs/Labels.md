@@ -16,3 +16,5 @@ You can easily (de)assign label to messages in message viewer.
 <img src="images/label-assign.png" width="80%">
 
 Note that (de)assignments of labels to messages are synchronized back to supported servers in regular intervals.
+
+Also, [message filters](Message-filters.md) can assign or remove labels to/from messages.

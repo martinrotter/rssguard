@@ -110,7 +110,10 @@ QIcon Label::generateIcon(const QColor& color) {
 }
 
 void Label::assignToMessage(const Message& msg) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  bool is_main_thread = QThread::currentThread() == qApp->thread();
+  QSqlDatabase database = is_main_thread ?
+                          qApp->database()->connection(metaObject()->className()) :
+                          qApp->database()->connection(QSL("feed_upd"));
 
   if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({ this }, { msg }, true)) {
     DatabaseQueries::assignLabelToMessage(database, this, msg);
@@ -120,7 +123,10 @@ void Label::assignToMessage(const Message& msg) {
 }
 
 void Label::deassignFromMessage(const Message& msg) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  bool is_main_thread = QThread::currentThread() == qApp->thread();
+  QSqlDatabase database = is_main_thread ?
+                          qApp->database()->connection(metaObject()->className()) :
+                          qApp->database()->connection(QSL("feed_upd"));
 
   if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({ this }, { msg }, false)) {
     DatabaseQueries::deassignLabelFromMessage(database, this, msg);
