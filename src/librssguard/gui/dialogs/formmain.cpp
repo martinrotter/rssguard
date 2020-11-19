@@ -659,6 +659,9 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionSwitchMainMenu, &QAction::toggled, m_ui->m_menuBar, &QMenuBar::setVisible);
   connect(m_ui->m_actionSwitchMainWindow, &QAction::triggered, this, &FormMain::switchVisibility);
   connect(m_ui->m_actionSwitchStatusBar, &QAction::toggled, statusBar(), &StatusBar::setVisible);
+  connect(m_ui->m_actionMessagePreviewEnabled, &QAction::toggled, this, [](bool enabled) {
+    qApp->settings()->setValue(GROUP(Messages), Messages::EnableMessagePreview, enabled);
+  });
 
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, &QAction::triggered, this, [this]() {
@@ -677,10 +680,6 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionReportBug, &QAction::triggered, this, &FormMain::reportABug);
   connect(m_ui->m_actionDonate, &QAction::triggered, this, &FormMain::donate);
   connect(m_ui->m_actionDisplayDocs, &QAction::triggered, this, &FormMain::showDocs);
-
-  connect(m_ui->m_actionMessagePreviewEnabled, &QAction::toggled, this, [](bool enabled) {
-    qApp->settings()->setValue(GROUP(Messages), Messages::EnableMessagePreview, enabled);
-  });
 
   // Tab widget connections.
   connect(m_ui->m_actionTabsNext, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::gotoNextTab);
