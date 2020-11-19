@@ -76,7 +76,7 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
   private:
 
     // Event handler reimplementations.
-    void changeEvent(QEvent* event);
+    virtual void changeEvent(QEvent* event);
 
     // Creates all needed menus and sets them up.
     void prepareMenus();
