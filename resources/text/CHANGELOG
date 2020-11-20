@@ -2,15 +2,28 @@
 —————
 
 Added:
+▪ RSS Guard on Windows now uses more minimal Qt libraries and this makes installation packages 20% smaller.
 ▪ New applications icons. Contributed by Siddharth Yadav:
     ▪ @Siddharth_yd (Instagram)
     ▪ illustrationdesignsid@gmail.com (e-mail)
-▪ 
-▪ 
+▪ Added some documentation related to message filters and some other parts of the application:
+    https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#documentation
+▪ Added icons to buttons in bundled downloader.
+▪ Add switchable action to automatically expand categories when selected.
+▪ Added basic CLI with some basic options, run "rssguard.exe --help" to see them.
+▪ Ability to run multiple instance of RSS Guard at the same time, can be activated via CLI.
+▪ Ability to specify custom user data folder, can be activated via CLI.
+▪ Finnish translation.
+▪ Greatly enhanced user experience for authors of message filters. See the documentation: enums for accepting/rejecting of messages are now directly calleable via their names.
 
 Fixed/changed:
-▪ 
-▪ 
+▪ Handles separating feeds list, messages list and message viewer has now better color in default skin.
+▪ Now only titles of messages are sanitized before they are passed to message filters. Message content is left intact.
+▪ Nextcloud News: Do not use obsolete API endpints. (#292)
+▪ Nextcloud News: Support newest API breaking changes regarding "parent categories". (#293)
+▪ Partially fixed behavior of statusbar, which did not respect new settings for order of its buttons.
+▪ Use "cout" instead of "wcout" for debugging outputs.
+▪ Do not escape empty strings when sanitizing messages.
 
 3.8.0
 —————
