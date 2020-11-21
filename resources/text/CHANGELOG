@@ -1,3 +1,12 @@
+3.8.2
+—————
+
+Fixed/changed:
+▪ Fixed "reset" notification signal when editing toolbars in settings.
+▪ Fixed Windows build of RSS Guard which was mistakenly using DEBUG libraries.
+
+SORRY GUYS!!!
+
 3.8.1
 —————
 
