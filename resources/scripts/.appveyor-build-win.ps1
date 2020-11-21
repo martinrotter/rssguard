@@ -24,7 +24,7 @@ echo "qmake args are: '$env:qmake_args'."
 
 mkdir "rssguard-build"
 cd "rssguard-build"
-& "$qt_qmake" "..\build.pro" "$env:qmake_args"
+& "$qt_qmake" "..\build.pro" "-r" "$env:qmake_args" "CONFIG-=debug" "CONFIG-=debug_and_release" "CONFIG*=release"
 nmake.exe
 
 cd "src\rssguard"
