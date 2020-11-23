@@ -8,8 +8,8 @@
 #include <QPair>
 
 #include "core/message.h"
+#include "services/abstract/feed.h"
 
-class Feed;
 class MessageFilter;
 class QMutex;
 

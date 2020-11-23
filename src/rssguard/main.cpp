@@ -16,8 +16,10 @@ extern void disableWindowTabbing();
 int main(int argc, char* argv[]) {
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
 
-  QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#if QT_VERSION_MAJOR <= 5
+  QApplication::setAttribute(Qt::ApplicationAttribute::AA_UseHighDpiPixmaps);
+  QApplication::setAttribute(Qt::ApplicationAttribute::AA_EnableHighDpiScaling);
+#endif
 
 #if defined (Q_OS_LINUX)
   QApplication::setDesktopFileName(APP_DESKTOP_ENTRY_FILE);

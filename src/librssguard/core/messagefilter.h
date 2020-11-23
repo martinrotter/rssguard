@@ -6,6 +6,7 @@
 #include <QObject>
 
 #include "core/message.h"
+#include "core/messageobject.h"
 
 #include <QJSEngine>
 
