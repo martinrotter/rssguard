@@ -31,6 +31,7 @@
 #include <QCryptographicHash>
 #include <QDataStream>
 #include <QDateTime>
+#include <QIODevice>
 #include <QRandomGenerator>
 #include <QtDebug>
 #include <QtGlobal>

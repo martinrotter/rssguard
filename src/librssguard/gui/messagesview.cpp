@@ -568,7 +568,11 @@ void MessagesView::selectNextUnreadItem() {
 }
 
 void MessagesView::searchMessages(const QString& pattern) {
+#if QT_VERSION_MAJOR <= 5
   m_proxyModel->setFilterRegExp(pattern);
+#else
+  m_proxyModel->setFilterRegularExpression(pattern);
+#endif
 
   if (selectionModel()->selectedRows().isEmpty()) {
     emit currentMessageRemoved();

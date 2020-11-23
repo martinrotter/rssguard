@@ -10,7 +10,7 @@
 #include <QDir>
 #include <QSet>
 
-CacheForServiceRoot::CacheForServiceRoot() : m_cacheSaveMutex(new QMutex(QMutex::NonRecursive)) {}
+CacheForServiceRoot::CacheForServiceRoot() : m_cacheSaveMutex(new QMutex()) {}
 
 void CacheForServiceRoot::addLabelsAssignmentsToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign) {
   auto custom_ids = lbl->getParentServiceRoot()->customIDsOfMessages(ids_of_messages);

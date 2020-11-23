@@ -8,7 +8,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/standard/standardserviceentrypoint.h"
 
-#include <QDesktopWidget>
 #include <QDialogButtonBox>
 #include <QListWidget>
 #include <QSize>

@@ -4,7 +4,12 @@
 #define STYLEDITEMDELEGATEWITHOUTFOCUS_H
 
 #include <QStyledItemDelegate>
+
+#if QT_VERSION_MAJOR <= 5
 #include <QStyleOptionViewItemV4>
+#else
+#include <QStyleOptionViewItem>
+#endif
 
 class StyledItemDelegateWithoutFocus : public QStyledItemDelegate {
   Q_OBJECT

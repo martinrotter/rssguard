@@ -10,9 +10,7 @@ class Mutex : public QObject {
   Q_OBJECT
 
   public:
-
-    // Constructors.
-    explicit Mutex(QMutex::RecursionMode mode = QMutex::NonRecursive, QObject* parent = 0);
+    explicit Mutex(QObject* parent = nullptr);
     virtual ~Mutex();
 
     // Main methods.

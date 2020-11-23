@@ -352,7 +352,7 @@ namespace Mimesis {
     return unquote(str.substr(start, end - start));
   }
 
-  static const string ending[2] = {"\n", "\r\n"};
+  static const string ending[2] = { "\n", "\r\n" };
 
   Part::Part() :
     headers(),
@@ -805,7 +805,7 @@ namespace Mimesis {
     QLocale loc("C");
     QDateTime dat;
 
-    dat.fromTime_t(date.time_since_epoch().count());
+    dat.setSecsSinceEpoch(date.time_since_epoch().count());
 
     return loc.toString(dat, "ddd, MM MMM yyyy HH:mm:ss t").toStdString();
 

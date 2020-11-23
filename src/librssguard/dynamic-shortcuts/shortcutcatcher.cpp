@@ -12,7 +12,11 @@ ShortcutCatcher::ShortcutCatcher(QWidget* parent)
   : QWidget(parent), m_isRecording(false), m_numKey(0), m_modifierKeys(0U) {
   // Setup layout of the control
   m_layout = new QHBoxLayout(this);
+
+#if QT_VERSION_MAJOR <= 5
   m_layout->setMargin(0);
+#endif
+
   m_layout->setSpacing(1);
 
   // Create reset button.

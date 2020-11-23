@@ -4,7 +4,7 @@
 
 #include "definitions/definitions.h"
 
-Mutex::Mutex(QMutex::RecursionMode mode, QObject* parent) : QObject(parent), m_mutex(new QMutex(mode)), m_isLocked(false) {}
+Mutex::Mutex(QObject* parent) : QObject(parent), m_mutex(new QMutex()), m_isLocked(false) {}
 
 Mutex::~Mutex() {
   qDebugNN << LOGSEC_CORE << ("Destroying Mutex instance.");

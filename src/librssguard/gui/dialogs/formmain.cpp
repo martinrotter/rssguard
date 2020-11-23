@@ -39,7 +39,6 @@
 #endif
 
 #include <QCloseEvent>
-#include <QDesktopWidget>
 #include <QFileDialog>
 #include <QRect>
 #include <QScopedPointer>

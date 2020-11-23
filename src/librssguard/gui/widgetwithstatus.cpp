@@ -19,7 +19,10 @@ WidgetWithStatus::WidgetWithStatus(QWidget* parent)
   m_iconOk = qApp->icons()->fromTheme(QSL("dialog-yes"));
 
   // Set layout properties.
+#if QT_VERSION_MAJOR <= 5
   m_layout->setMargin(0);
+#endif
+
   setLayout(m_layout);
   setStatus(StatusType::Information, QString());
 }
