@@ -13,10 +13,7 @@ ShortcutCatcher::ShortcutCatcher(QWidget* parent)
   // Setup layout of the control
   m_layout = new QHBoxLayout(this);
 
-#if QT_VERSION_MAJOR <= 5
-  m_layout->setMargin(0);
-#endif
-
+  m_layout->setContentsMargins({});
   m_layout->setSpacing(1);
 
   // Create reset button.

@@ -23,11 +23,7 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("mail-message-new")));
 
-#if QT_VERSION_MAJOR <= 5
-  m_ui.m_layoutAdder->setMargin(0);
-#endif
-
-  m_ui.m_layoutAdder->setContentsMargins(0, 0, 0, 0);
+  m_ui.m_layoutAdder->setContentsMargins({});
 
   m_ui.m_btnAdder->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
   m_ui.m_btnAdder->setToolTip(tr("Add new recipient."));

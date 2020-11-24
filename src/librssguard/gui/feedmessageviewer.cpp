@@ -259,11 +259,9 @@ void FeedMessageViewer::initializeViews() {
   auto* message_layout = new QVBoxLayout(m_messagesWidget);
 
   // Set layout properties.
-#if QT_VERSION_MAJOR <= 5
-  central_layout->setMargin(0);
-  feed_layout->setMargin(0);
-  message_layout->setMargin(0);
-#endif
+  central_layout->setContentsMargins({});
+  feed_layout->setContentsMargins({});
+  message_layout->setContentsMargins({});
 
   central_layout->setSpacing(0);
   feed_layout->setSpacing(0);

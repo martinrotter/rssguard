@@ -19,11 +19,7 @@ EmailRecipientControl::EmailRecipientControl(const QString& recipient, QWidget* 
   lay->addWidget(m_txtRecipient = new QLineEdit(this), 1);
   lay->addWidget(m_btnCloseMe = new PlainToolButton(this));
 
-#if QT_VERSION_MAJOR <= 5
-  lay->setMargin(0);
-#endif
-
-  lay->setContentsMargins(0, 0, 0, 0);
+  lay->setContentsMargins({});
 
   m_cmbRecipientType->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   m_btnCloseMe->setFocusPolicy(Qt::FocusPolicy::NoFocus);

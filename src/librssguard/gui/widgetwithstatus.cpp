@@ -19,12 +19,10 @@ WidgetWithStatus::WidgetWithStatus(QWidget* parent)
   m_iconOk = qApp->icons()->fromTheme(QSL("dialog-yes"));
 
   // Set layout properties.
-#if QT_VERSION_MAJOR <= 5
-  m_layout->setMargin(0);
-#endif
+  m_layout->setContentsMargins({});
 
   setLayout(m_layout);
-  setStatus(StatusType::Information, QString());
+  setStatus(StatusType::Information, {});
 }
 
 void WidgetWithStatus::setStatus(WidgetWithStatus::StatusType status, const QString& tooltip_text) {
