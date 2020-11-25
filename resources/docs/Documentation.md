@@ -74,7 +74,7 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 
 * Windows Vista and newer,
 * GNU/Linux,
-* Mac OS X,
+* Mac OS X (users have to compile themselves),
 * Android (buildable and running).
 
 ## List of main features
