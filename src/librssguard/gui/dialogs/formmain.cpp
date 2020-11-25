@@ -47,6 +47,8 @@
 
 #if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
 #include <QScreen>
+#else
+#include <QDesktopWidget>
 #endif
 
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
