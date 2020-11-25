@@ -6,7 +6,7 @@ Official downloads are available [here](https://github.com/martinrotter/rssguard
 
 **As of RSS Guard 3.8.3 version, WebEngine-based binaries are no longer automatically published for Mac OS X, because Homebrew's Qt package contains errors which make automatic deployment of WebEngine libraries very difficult.**
 
-**Therefore only "lite" (non-web-engine) variant of is distributed now and if you need WebEngine-based variant, then you need to compile yourself and I strongly suggest you to use official Qt Mac OS X distribution.**
+**Therefore only "lite" (non-webengine) variant of application is distributed now and if you need WebEngine-based variant, then you need to compile yourself and I strongly suggest you to use official Qt Mac OS X distribution.**
 
 [![RSS Guard in Instalki](http://www.instalki.pl/img/buttons/en/download_dark.png)](http://www.instalki.pl/programy/download/Windows/czytniki_RSS/RSS_Guard.html)
 
