@@ -28,7 +28,7 @@ CONFIG += unversioned_libname unversioned_soname skip_target_version_ext
 RESOURCES += ../../resources/sql.qrc \
              ../../resources/rssguard.qrc
 
-!unix {
+mac|win32 {
   RESOURCES += ../../resources/icons.qrc
 }
 
