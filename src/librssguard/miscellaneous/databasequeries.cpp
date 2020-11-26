@@ -1954,16 +1954,27 @@ bool DatabaseQueries::editStandardFeed(const QSqlDatabase& db, int parent_id, in
 }
 
 bool DatabaseQueries::editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::AutoUpdateType auto_update_type,
-                                   int auto_update_interval) {
+                                   int auto_update_interval, bool is_protected, const QString& username,
+                                   const QString& password) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare("UPDATE Feeds "
-            "SET update_type = :update_type, update_interval = :update_interval "
+            "SET update_type = :update_type, update_interval = :update_interval, protected = :protected, username = :username, password = :password "
             "WHERE id = :id;");
   q.bindValue(QSL(":update_type"), (int) auto_update_type);
   q.bindValue(QSL(":update_interval"), auto_update_interval);
   q.bindValue(QSL(":id"), feed_id);
+  q.bindValue(QSL(":protected"), is_protected ? 1 : 0);
+  q.bindValue(QSL(":username"), username);
+
+  if (password.isEmpty()) {
+    q.bindValue(QSL(":password"), password);
+  }
+  else {
+    q.bindValue(QSL(":password"), TextFactory::encrypt(password));
+  }
+
   return q.exec();
 }
 

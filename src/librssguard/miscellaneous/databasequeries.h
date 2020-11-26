@@ -96,7 +96,9 @@ class DatabaseQueries {
     static bool cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
     static bool storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id);
     static bool editBaseFeed(const QSqlDatabase& db, int feed_id,
-                             Feed::AutoUpdateType auto_update_type, int auto_update_interval);
+                             Feed::AutoUpdateType auto_update_type, int auto_update_interval,
+                             bool is_protected, const QString& username,
+                             const QString& password);
 
     template<typename T>
     static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
@@ -200,18 +202,8 @@ void DatabaseQueries::fillFeedData(T* feed, const QSqlRecord& sql_record) {
 
 template<>
 inline void DatabaseQueries::fillFeedData(StandardFeed* feed, const QSqlRecord& sql_record) {
-  StandardFeed::Type type = static_cast<StandardFeed::Type>(sql_record.value(FDS_DB_TYPE_INDEX).toInt());
-
-  switch (type) {
-    case StandardFeed::Type::Atom10:
-    case StandardFeed::Type::Rdf:
-    case StandardFeed::Type::Rss0X:
-    case StandardFeed::Type::Rss2X:
-    case StandardFeed::Type::Json: {
-      feed->setType(type);
-      break;
-    }
-  }
+  Q_UNUSED(feed)
+  Q_UNUSED(sql_record)
 }
 
 template<typename T>

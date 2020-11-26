@@ -46,6 +46,16 @@ Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
   setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
 
+  setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
+  setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
+
+  if (record.value(FDS_DB_PASSWORD_INDEX).toString().isEmpty()) {
+    setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
+  }
+  else {
+    setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
+  }
+
   qDebugNN << LOGSEC_CORE
            << "Custom ID of feed when loading from DB is"
            << QUOTE_W_SPACE_DOT(customId());
@@ -160,9 +170,14 @@ bool Feed::editViaGui() {
 bool Feed::editItself(Feed* new_feed_data) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  // TODO: aby editbasefeed editoval i http/basic autentizační data.
   if (DatabaseQueries::editBaseFeed(database, id(), new_feed_data->autoUpdateType(),
-                                    new_feed_data->autoUpdateInitialInterval())) {
+                                    new_feed_data->autoUpdateInitialInterval(),
+                                    new_feed_data->passwordProtected(),
+                                    new_feed_data->username(),
+                                    new_feed_data->password())) {
+    setPasswordProtected(new_feed_data->passwordProtected());
+    setUsername(new_feed_data->username());
+    setPassword(new_feed_data->password());
     setAutoUpdateType(new_feed_data->autoUpdateType());
     setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
     return true;
@@ -234,6 +249,8 @@ bool Feed::cleanMessages(bool clean_read_only) {
 }
 
 QList<Message> Feed::obtainNewMessages(bool* error_during_obtaining) {
+  Q_UNUSED(error_during_obtaining)
+
   return {};
 }
 

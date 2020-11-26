@@ -27,6 +27,7 @@ class FormFeedDetails : public QDialog {
     int editBaseFeed(Feed* input_feed);
 
   protected slots:
+    void activateTab(int index);
     void insertCustomTab(QWidget* custom_tab, const QString& title, int index);
 
     // Applies changes.

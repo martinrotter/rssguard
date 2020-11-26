@@ -18,6 +18,7 @@
 FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root, QWidget* parent)
   : FormFeedDetails(service_root, parent), m_standardFeedDetails(new StandardFeedDetails(this)) {
   insertCustomTab(m_standardFeedDetails, tr("General"), 0);
+  activateTab(0);
 
   m_standardFeedDetails->ui->m_txtTitle->lineEdit()->setPlaceholderText(tr("Feed title"));
   m_standardFeedDetails->ui->m_txtTitle->lineEdit()->setToolTip(tr("Set title for your feed."));

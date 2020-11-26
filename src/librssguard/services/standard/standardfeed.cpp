@@ -474,17 +474,19 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
 
 StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(record) {
   setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
-  setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
-  setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
 
-  if (record.value(FDS_DB_PASSWORD_INDEX).toString().isEmpty()) {
-    setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
-  }
-  else {
-    setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
+  StandardFeed::Type type = static_cast<StandardFeed::Type>(record.value(FDS_DB_TYPE_INDEX).toInt());
+
+  switch (type) {
+    case StandardFeed::Type::Atom10:
+    case StandardFeed::Type::Rdf:
+    case StandardFeed::Type::Rss0X:
+    case StandardFeed::Type::Rss2X:
+    case StandardFeed::Type::Json: {
+      setType(type);
+      break;
+    }
   }
 
-  setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
-  setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
   m_networkError = QNetworkReply::NoError;
 }
