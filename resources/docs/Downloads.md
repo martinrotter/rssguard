@@ -2,11 +2,7 @@
 See here to know where to download prebuilt versions of RSS Guard.
 
 ## Official downloads
-Official downloads are available [here](https://github.com/martinrotter/rssguard/releases). Windows `exe/7zip` packages are published automatically when new RSS Guard version is released. Also `AppImage` packages for Linux are automatically build.
-
-**As of RSS Guard 3.8.3 version, WebEngine-based binaries are no longer automatically published for Mac OS X, because Homebrew's Qt package contains errors which make automatic deployment of WebEngine libraries very difficult.**
-
-**Therefore only "lite" (non-webengine) variant of application is distributed now and if you need WebEngine-based variant, then you need to compile yourself and I strongly suggest you to use official Qt Mac OS X distribution.**
+Official downloads are available [here](https://github.com/martinrotter/rssguard/releases). Windows `exe/7zip` packages are published automatically when new RSS Guard version is released. Also `AppImage` packages for Linux and `dmg` packages for Mac OS X are automatically build.
 
 [![RSS Guard in Instalki](http://www.instalki.pl/img/buttons/en/download_dark.png)](http://www.instalki.pl/programy/download/Windows/czytniki_RSS/RSS_Guard.html)
 

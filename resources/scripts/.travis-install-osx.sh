@@ -48,5 +48,4 @@ else
 fi
 
 mv "$dmgname" "$dmgnewname"
-
 ls
