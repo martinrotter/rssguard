@@ -10,6 +10,7 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
+#include "services/abstract/gui/formfeeddetails.h"
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
@@ -21,6 +22,11 @@ Feed::Feed(RootItem* parent)
   : RootItem(parent), m_url(QString()), m_status(Status::Normal), m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate),
   m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
   m_messageFilters(QList<QPointer<MessageFilter>>()) {
+
+  m_passwordProtected = false;
+  m_username = QString();
+  m_password = QString();
+
   setKind(RootItem::Kind::Feed);
 }
 
@@ -56,6 +62,10 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
   setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
   setMessageFilters(other.messageFilters());
+
+  setPasswordProtected(other.passwordProtected());
+  setUsername(other.username());
+  setPassword(other.password());
 }
 
 Feed::~Feed() = default;
@@ -64,6 +74,30 @@ QList<Message> Feed::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesForFeed(database, customId(), getParentServiceRoot()->accountId());
+}
+
+bool Feed::passwordProtected() const {
+  return m_passwordProtected;
+}
+
+void Feed::setPasswordProtected(bool passwordProtected) {
+  m_passwordProtected = passwordProtected;
+}
+
+QString Feed::username() const {
+  return m_username;
+}
+
+void Feed::setUsername(const QString& username) {
+  m_username = username;
+}
+
+QString Feed::password() const {
+  return m_password;
+}
+
+void Feed::setPassword(const QString& password) {
+  m_password = password;
 }
 
 QVariant Feed::data(int column, int role) const {
@@ -110,6 +144,32 @@ void Feed::setCountOfUnreadMessages(int count_unread_messages) {
   }
 
   m_unreadCount = count_unread_messages;
+}
+
+bool Feed::canBeEdited() const {
+  return true;
+}
+
+bool Feed::editViaGui() {
+  QScopedPointer<FormFeedDetails> form_pointer(new FormFeedDetails(getParentServiceRoot(), qApp->mainFormWidget()));
+
+  form_pointer->editBaseFeed(this);
+  return false;
+}
+
+bool Feed::editItself(Feed* new_feed_data) {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  // TODO: aby editbasefeed editoval i http/basic autentizační data.
+  if (DatabaseQueries::editBaseFeed(database, id(), new_feed_data->autoUpdateType(),
+                                    new_feed_data->autoUpdateInitialInterval())) {
+    setAutoUpdateType(new_feed_data->autoUpdateType());
+    setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 void Feed::setAutoUpdateInitialInterval(int auto_update_interval) {
@@ -171,6 +231,10 @@ void Feed::updateCounts(bool including_total_count) {
 
 bool Feed::cleanMessages(bool clean_read_only) {
   return getParentServiceRoot()->cleanFeeds(QList<Feed*>() << this, clean_read_only);
+}
+
+QList<Message> Feed::obtainNewMessages(bool* error_during_obtaining) {
+  return {};
 }
 
 bool Feed::markAsReadUnread(RootItem::ReadStatus status) {

@@ -46,12 +46,17 @@ class Feed : public RootItem {
     virtual QString additionalTooltip() const;
     virtual bool markAsReadUnread(ReadStatus status);
     virtual bool cleanMessages(bool clean_read_only);
-    virtual QList<Message> obtainNewMessages(bool* error_during_obtaining) = 0;
+    virtual QList<Message> obtainNewMessages(bool* error_during_obtaining);
     virtual int countOfAllMessages() const;
     virtual int countOfUnreadMessages() const;
 
     void setCountOfAllMessages(int count_all_messages);
     void setCountOfUnreadMessages(int count_unread_messages);
+
+    bool canBeEdited() const;
+    bool editViaGui();
+
+    bool editItself(Feed* new_feed_data);
 
     QVariant data(int column, int role) const;
 
@@ -69,6 +74,15 @@ class Feed : public RootItem {
 
     QString url() const;
     void setUrl(const QString& url);
+
+    bool passwordProtected() const;
+    void setPasswordProtected(bool passwordProtected);
+
+    QString username() const;
+    void setUsername(const QString& username);
+
+    QString password() const;
+    void setPassword(const QString& password);
 
     void appendMessageFilter(MessageFilter* filter);
     QList<QPointer<MessageFilter>> messageFilters() const;
@@ -93,6 +107,9 @@ class Feed : public RootItem {
     int m_totalCount{};
     int m_unreadCount{};
     QList<QPointer<MessageFilter>> m_messageFilters;
+    bool m_passwordProtected{};
+    QString m_username;
+    QString m_password;
 };
 
 Q_DECLARE_METATYPE(Feed::AutoUpdateType)

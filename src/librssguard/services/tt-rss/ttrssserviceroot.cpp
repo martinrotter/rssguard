@@ -14,7 +14,6 @@
 #include "services/abstract/recyclebin.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/formeditttrssaccount.h"
-#include "services/tt-rss/gui/formttrssfeeddetails.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
@@ -84,32 +83,11 @@ bool TtRssServiceRoot::deleteViaGui() {
 }
 
 bool TtRssServiceRoot::supportsFeedAdding() const {
-  return true;
+  return false;
 }
 
 bool TtRssServiceRoot::supportsCategoryAdding() const {
   return false;
-}
-
-void TtRssServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
-  Q_UNUSED(selected_item)
-
-  if (!qApp->feedUpdateLock()->tryLock()) {
-    // Lock was not obtained because
-    // it is used probably by feed updater or application
-    // is quitting.
-    qApp->showGuiMessage(tr("Cannot add item"),
-                         tr("Cannot add feed because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
-
-    // Thus, cannot delete and quit the method.
-    return;
-  }
-
-  QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, qApp->mainFormWidget()));
-
-  form_pointer->addEditFeed(nullptr, selected_item, url);
-  qApp->feedUpdateLock()->unlock();
 }
 
 bool TtRssServiceRoot::canBeEdited() const {

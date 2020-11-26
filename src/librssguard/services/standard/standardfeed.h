@@ -57,12 +57,7 @@ class StandardFeed : public Feed {
     // Other getters/setters.
     Type type() const;
     void setType(Type type);
-    bool passwordProtected() const;
-    void setPasswordProtected(bool passwordProtected);
-    QString username() const;
-    void setUsername(const QString& username);
-    QString password() const;
-    void setPassword(const QString& password);
+
     QString encoding() const;
     void setEncoding(const QString& encoding);
 
@@ -86,9 +81,6 @@ class StandardFeed : public Feed {
     void fetchMetadataForItself();
 
   private:
-    bool m_passwordProtected{};
-    QString m_username;
-    QString m_password;
     Type m_type;
 
     QNetworkReply::NetworkError m_networkError;

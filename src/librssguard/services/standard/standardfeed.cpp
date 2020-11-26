@@ -32,9 +32,6 @@
 
 StandardFeed::StandardFeed(RootItem* parent_item)
   : Feed(parent_item) {
-  m_passwordProtected = false;
-  m_username = QString();
-  m_password = QString();
   m_networkError = QNetworkReply::NoError;
   m_type = Type::Rss0X;
   m_encoding = QString();
@@ -42,16 +39,13 @@ StandardFeed::StandardFeed(RootItem* parent_item)
 
 StandardFeed::StandardFeed(const StandardFeed& other)
   : Feed(other) {
-  m_passwordProtected = other.passwordProtected();
-  m_username = other.username();
-  m_password = other.password();
   m_networkError = other.networkError();
   m_type = other.type();
   m_encoding = other.encoding();
 }
 
 StandardFeed::~StandardFeed() {
-  qDebugNN << LOGSEC_CORE << "Destroying Feed instance.";
+  qDebugNN << LOGSEC_CORE << "Destroying StandardFeed instance.";
 }
 
 QList<QAction*> StandardFeed::contextMenuFeedsList() {
@@ -395,30 +389,6 @@ StandardFeed::Type StandardFeed::type() const {
 
 void StandardFeed::setType(StandardFeed::Type type) {
   m_type = type;
-}
-
-bool StandardFeed::passwordProtected() const {
-  return m_passwordProtected;
-}
-
-void StandardFeed::setPasswordProtected(bool passwordProtected) {
-  m_passwordProtected = passwordProtected;
-}
-
-QString StandardFeed::username() const {
-  return m_username;
-}
-
-void StandardFeed::setUsername(const QString& username) {
-  m_username = username;
-}
-
-QString StandardFeed::password() const {
-  return m_password;
-}
-
-void StandardFeed::setPassword(const QString& password) {
-  m_password = password;
 }
 
 QString StandardFeed::encoding() const {

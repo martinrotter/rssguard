@@ -11,7 +11,6 @@
 #include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/owncloud/gui/formeditowncloudaccount.h"
-#include "services/owncloud/gui/formowncloudfeeddetails.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudfeed.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
@@ -56,7 +55,7 @@ bool OwnCloudServiceRoot::deleteViaGui() {
 }
 
 bool OwnCloudServiceRoot::supportsFeedAdding() const {
-  return true;
+  return false;
 }
 
 bool OwnCloudServiceRoot::supportsCategoryAdding() const {
@@ -153,27 +152,6 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
       }
     }
   }
-}
-
-void OwnCloudServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
-  Q_UNUSED(selected_item)
-
-  if (!qApp->feedUpdateLock()->tryLock()) {
-    // Lock was not obtained because
-    // it is used probably by feed updater or application
-    // is quitting.
-    qApp->showGuiMessage(tr("Cannot add item"),
-                         tr("Cannot add feed because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
-
-    // Thus, cannot delete and quit the method.
-    return;
-  }
-
-  QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(this, qApp->mainFormWidget()));
-
-  form_pointer->addEditFeed(nullptr, selected_item, url);
-  qApp->feedUpdateLock()->unlock();
 }
 
 RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {

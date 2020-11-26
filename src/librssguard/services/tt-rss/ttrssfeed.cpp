@@ -8,7 +8,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/tt-rss/definitions.h"
-#include "services/tt-rss/gui/formttrssfeeddetails.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
@@ -22,18 +21,6 @@ TtRssFeed::~TtRssFeed() = default;
 
 TtRssServiceRoot* TtRssFeed::serviceRoot() const {
   return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
-}
-
-bool TtRssFeed::canBeEdited() const {
-  return true;
-}
-
-bool TtRssFeed::editViaGui() {
-  QPointer<FormTtRssFeedDetails> form_pointer = new FormTtRssFeedDetails(serviceRoot(), qApp->mainFormWidget());
-
-  form_pointer.data()->addEditFeed(this, this);
-  delete form_pointer.data();
-  return false;
 }
 
 bool TtRssFeed::canBeDeleted() const {
@@ -51,20 +38,6 @@ bool TtRssFeed::deleteViaGui() {
     qWarningNN << LOGSEC_TTRSS
                << "Unsubscribing from feed failed, received JSON:"
                << QUOTE_W_SPACE_DOT(response.toString());
-    return false;
-  }
-}
-
-bool TtRssFeed::editItself(TtRssFeed* new_feed_data) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (DatabaseQueries::editBaseFeed(database, id(), new_feed_data->autoUpdateType(),
-                                    new_feed_data->autoUpdateInitialInterval())) {
-    setAutoUpdateType(new_feed_data->autoUpdateType());
-    setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
-    return true;
-  }
-  else {
     return false;
   }
 }

@@ -95,8 +95,8 @@ class DatabaseQueries {
     static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static bool cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
     static bool storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id);
-    static bool editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::AutoUpdateType auto_update_type,
-                             int auto_update_interval);
+    static bool editBaseFeed(const QSqlDatabase& db, int feed_id,
+                             Feed::AutoUpdateType auto_update_type, int auto_update_interval);
 
     template<typename T>
     static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);

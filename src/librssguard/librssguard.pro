@@ -154,7 +154,6 @@ HEADERS += core/feeddownloader.h \
            services/inoreader/network/inoreadernetworkfactory.h \
            services/owncloud/definitions.h \
            services/owncloud/gui/formeditowncloudaccount.h \
-           services/owncloud/gui/formowncloudfeeddetails.h \
            services/owncloud/network/owncloudnetworkfactory.h \
            services/owncloud/owncloudfeed.h \
            services/owncloud/owncloudserviceentrypoint.h \
@@ -164,6 +163,7 @@ HEADERS += core/feeddownloader.h \
            services/standard/gui/formstandardcategorydetails.h \
            services/standard/gui/formstandardfeeddetails.h \
            services/standard/gui/formstandardimportexport.h \
+           services/standard/gui/standardfeeddetails.h \
            services/standard/jsonparser.h \
            services/standard/rdfparser.h \
            services/standard/rssparser.h \
@@ -174,7 +174,6 @@ HEADERS += core/feeddownloader.h \
            services/standard/standardserviceroot.h \
            services/tt-rss/definitions.h \
            services/tt-rss/gui/formeditttrssaccount.h \
-           services/tt-rss/gui/formttrssfeeddetails.h \
            services/tt-rss/network/ttrssnetworkfactory.h \
            services/tt-rss/ttrssfeed.h \
            services/tt-rss/ttrssserviceentrypoint.h \
@@ -302,7 +301,6 @@ SOURCES += core/feeddownloader.cpp \
            services/inoreader/inoreaderserviceroot.cpp \
            services/inoreader/network/inoreadernetworkfactory.cpp \
            services/owncloud/gui/formeditowncloudaccount.cpp \
-           services/owncloud/gui/formowncloudfeeddetails.cpp \
            services/owncloud/network/owncloudnetworkfactory.cpp \
            services/owncloud/owncloudfeed.cpp \
            services/owncloud/owncloudserviceentrypoint.cpp \
@@ -312,6 +310,7 @@ SOURCES += core/feeddownloader.cpp \
            services/standard/gui/formstandardcategorydetails.cpp \
            services/standard/gui/formstandardfeeddetails.cpp \
            services/standard/gui/formstandardimportexport.cpp \
+           services/standard/gui/standardfeeddetails.cpp \
            services/standard/jsonparser.cpp \
            services/standard/rdfparser.cpp \
            services/standard/rssparser.cpp \
@@ -321,7 +320,6 @@ SOURCES += core/feeddownloader.cpp \
            services/standard/standardserviceentrypoint.cpp \
            services/standard/standardserviceroot.cpp \
            services/tt-rss/gui/formeditttrssaccount.cpp \
-           services/tt-rss/gui/formttrssfeeddetails.cpp \
            services/tt-rss/network/ttrssnetworkfactory.cpp \
            services/tt-rss/ttrssfeed.cpp \
            services/tt-rss/ttrssserviceentrypoint.cpp \
@@ -365,6 +363,7 @@ FORMS += gui/dialogs/formabout.ui \
          services/owncloud/gui/formeditowncloudaccount.ui \
          services/standard/gui/formstandardcategorydetails.ui \
          services/standard/gui/formstandardimportexport.ui \
+         services/standard/gui/standardfeeddetails.ui \
          services/tt-rss/gui/formeditttrssaccount.ui \
          services/gmail/gui/formdownloadattachment.ui \
          services/gmail/gui/formaddeditemail.ui \

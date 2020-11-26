@@ -4,7 +4,6 @@
 
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
-#include "services/owncloud/gui/formowncloudfeeddetails.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudserviceroot.h"
 
@@ -15,18 +14,6 @@ OwnCloudFeed::OwnCloudFeed(RootItem* parent) : Feed(parent) {}
 OwnCloudFeed::OwnCloudFeed(const QSqlRecord& record) : Feed(record) {}
 
 OwnCloudFeed::~OwnCloudFeed() = default;
-
-bool OwnCloudFeed::canBeEdited() const {
-  return true;
-}
-
-bool OwnCloudFeed::editViaGui() {
-  QScopedPointer<FormOwnCloudFeedDetails> form_pointer(new FormOwnCloudFeedDetails(serviceRoot(),
-                                                                                   qApp->mainFormWidget()));
-
-  form_pointer->addEditFeed(this, this);
-  return false;
-}
 
 bool OwnCloudFeed::canBeDeleted() const {
   return true;
@@ -39,21 +26,6 @@ bool OwnCloudFeed::deleteViaGui() {
   }
   else {
     return false;
-  }
-}
-
-bool OwnCloudFeed::editItself(OwnCloudFeed* new_feed_data) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (!DatabaseQueries::editBaseFeed(database, id(), new_feed_data->autoUpdateType(),
-                                     new_feed_data->autoUpdateInitialInterval())) {
-    // Persistent storage update failed, no way to continue now.
-    return false;
-  }
-  else {
-    setAutoUpdateType(new_feed_data->autoUpdateType());
-    setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
-    return true;
   }
 }
 

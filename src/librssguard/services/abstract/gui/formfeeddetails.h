@@ -24,32 +24,20 @@ class FormFeedDetails : public QDialog {
     virtual ~FormFeedDetails() = default;
 
   public slots:
-
-    // Executes add/edit standard feed dialog.
-    int addEditFeed(Feed* input_feed, RootItem* parent_to_select, const QString& url = QString());
+    int editBaseFeed(Feed* input_feed);
 
   protected slots:
+    void insertCustomTab(QWidget* custom_tab, const QString& title, int index);
 
     // Applies changes.
     // NOTE: This must be reimplemented in subclasses. Also this
     // base implementation must be called first.
-    virtual void apply() = 0;
+    virtual void apply();
 
-    void guessFeed();
-    void guessIconOnly();
-
-    // Trigerred when title/description/url/username/password changes.
-    void onTitleChanged(const QString& new_title);
-    void onDescriptionChanged(const QString& new_description);
-    void onUrlChanged(const QString& new_url);
     void onUsernameChanged(const QString& new_username);
     void onPasswordChanged(const QString& new_password);
     void onAuthenticationSwitched();
     void onAutoUpdateTypeChanged(int new_index);
-
-    // Icon selectors.
-    void onLoadIconFromFile();
-    void onUseDefaultIcon();
 
   protected:
 
@@ -64,17 +52,10 @@ class FormFeedDetails : public QDialog {
     // Initializes the dialog.
     void initialize();
 
-    // Loads categories into the dialog from the model.
-    void loadCategories(const QList<Category*>& categories, RootItem* root_item);
-
   protected:
     QScopedPointer<Ui::FormFeedDetails> m_ui;
     Feed* m_editableFeed;
     ServiceRoot* m_serviceRoot;
-    QMenu* m_iconMenu{};
-    QAction* m_actionLoadIconFromFile{};
-    QAction* m_actionUseDefaultIcon{};
-    QAction* m_actionFetchIcon{};
 };
 
 #endif // FORMFEEDDETAILS_H

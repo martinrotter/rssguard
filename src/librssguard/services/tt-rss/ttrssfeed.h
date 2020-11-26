@@ -19,12 +19,9 @@ class TtRssFeed : public Feed {
 
     TtRssServiceRoot* serviceRoot() const;
 
-    bool canBeEdited() const;
-    bool editViaGui();
     bool canBeDeleted() const;
     bool deleteViaGui();
 
-    bool editItself(TtRssFeed* new_feed_data);
     bool removeItself();
 
     QList<Message> obtainNewMessages(bool* error_during_obtaining);

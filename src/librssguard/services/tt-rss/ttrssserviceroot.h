@@ -39,9 +39,6 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void saveAccountDataToDatabase();
     void updateTitle();
 
-  public slots:
-    virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
-
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
