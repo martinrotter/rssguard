@@ -22,6 +22,7 @@ class StandardFeedDetails : public QWidget {
   private slots:
     void guessIconOnly(const QString& url, const QString& username, const QString& password);
     void guessFeed(const QString& url, const QString& username, const QString& password);
+
     void onTitleChanged(const QString& new_title);
     void onDescriptionChanged(const QString& new_description);
     void onUrlChanged(const QString& new_url);

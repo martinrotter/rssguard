@@ -185,19 +185,19 @@ void StandardFeedDetails::onLoadIconFromFile() {
   QFileDialog dialog(this, tr("Select icon file for the feed"),
                      qApp->homeFolder(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
 
-  dialog.setFileMode(QFileDialog::ExistingFile);
+  dialog.setFileMode(QFileDialog::FileMode::ExistingFile);
   dialog.setWindowIcon(qApp->icons()->fromTheme(QSL("image-x-generic")));
-  dialog.setOptions(QFileDialog::DontUseNativeDialog | QFileDialog::ReadOnly);
-  dialog.setViewMode(QFileDialog::Detail);
-  dialog.setLabelText(QFileDialog::Accept, tr("Select icon"));
-  dialog.setLabelText(QFileDialog::Reject, tr("Cancel"));
+  dialog.setOptions(QFileDialog::Option::DontUseNativeDialog | QFileDialog::Option::ReadOnly);
+  dialog.setViewMode(QFileDialog::ViewMode::Detail);
+  dialog.setLabelText(QFileDialog::DialogLabel::Accept, tr("Select icon"));
+  dialog.setLabelText(QFileDialog::DialogLabel::Reject, tr("Cancel"));
 
   //: Label for field with icon file name textbox for selection dialog.
-  dialog.setLabelText(QFileDialog::LookIn, tr("Look in:"));
-  dialog.setLabelText(QFileDialog::FileName, tr("Icon name:"));
-  dialog.setLabelText(QFileDialog::FileType, tr("Icon type:"));
+  dialog.setLabelText(QFileDialog::DialogLabel::LookIn, tr("Look in:"));
+  dialog.setLabelText(QFileDialog::DialogLabel::FileName, tr("Icon name:"));
+  dialog.setLabelText(QFileDialog::DialogLabel::FileType, tr("Icon type:"));
 
-  if (dialog.exec() == QDialog::Accepted) {
+  if (dialog.exec() == QDialog::DialogCode::Accepted) {
     ui.m_btnIcon->setIcon(QIcon(dialog.selectedFiles().value(0)));
   }
 }
@@ -218,11 +218,10 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
 
   if (parent_to_select != nullptr) {
     if (parent_to_select->kind() == RootItem::Kind::Category) {
-      ui.m_cmbParentCategory->setCurrentIndex(ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)
-                                                                                                   parent_to_select)));
+      ui.m_cmbParentCategory->setCurrentIndex(ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select)));
     }
     else if (parent_to_select->kind() == RootItem::Kind::Feed) {
-      int target_item = ui.m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select->parent()));
+      int target_item = ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select->parent()));
 
       if (target_item >= 0) {
         ui.m_cmbParentCategory->setCurrentIndex(target_item);
@@ -247,18 +246,15 @@ void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
   ui.m_btnIcon->setIcon(feed->icon());
   ui.m_txtUrl->lineEdit()->setText(feed->url());
   ui.m_cmbType->setCurrentIndex(ui.m_cmbType->findData(QVariant::fromValue(int(feed->type()))));
-  ui.m_cmbEncoding->setCurrentIndex(ui.m_cmbEncoding->findData(feed->encoding(), Qt::DisplayRole,
-                                                               Qt::MatchFixedString));
+  ui.m_cmbEncoding->setCurrentIndex(ui.m_cmbEncoding->findData(feed->encoding(),
+                                                               Qt::ItemDataRole::DisplayRole,
+                                                               Qt::MatchFlag::MatchFixedString));
 }
 
 void StandardFeedDetails::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
-  ui.m_cmbParentCategory->addItem(root_item->fullIcon(),
-                                  root_item->title(),
-                                  QVariant::fromValue((void*) root_item));
+  ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue((void*) root_item));
 
   for (Category* category : categories) {
-    ui.m_cmbParentCategory->addItem(category->fullIcon(),
-                                    category->title(),
-                                    QVariant::fromValue((void*) category));
+    ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue((void*) category));
   }
 }
