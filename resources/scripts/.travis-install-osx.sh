@@ -8,7 +8,9 @@ QTBIN="$QTPATH/$QTVERSION/clang_64/bin"
 echo "Qt bin directory is: $QTBIN"
 echo "Qt will be installed to: $QTPATH"
 
-aqt install -O "$QTPATH" 5.15.2 mac desktop clang_64 -m qtwebengine
+7z
+
+aqt install -E 7z -O "$QTPATH" 5.15.2 mac desktop clang_64 -m qtwebengine
 
 export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/clang_64/plugins"
 export PATH="$QTBIN:$PATH"
