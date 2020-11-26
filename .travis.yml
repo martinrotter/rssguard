@@ -4,6 +4,7 @@ dist: xenial
 os:
 - linux
 - osx
+- windows
 env:
 - USE_WEBENGINE=false
 - USE_WEBENGINE=true

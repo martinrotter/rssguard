@@ -14,7 +14,7 @@ if test "$TRAVIS_OS_NAME" = "osx"; then
   brew link --force gnu-sed
 
   pip3 install aqtinstall
-else
+elif test "$TRAVIS_OS_NAME" = "linux"; then
   # Linux.
   sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   sudo add-apt-repository ppa:beineri/opt-qt-5.14.2-xenial -y
@@ -27,4 +27,6 @@ else
   sudo update-alternatives --remove-all g++
   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50
   sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50
+else
+  echo "windowssss"
 fi
