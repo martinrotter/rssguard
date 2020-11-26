@@ -4,7 +4,6 @@ dist: xenial
 os:
 - linux
 - osx
-- windows
 env:
 - USE_WEBENGINE=false
 - USE_WEBENGINE=true
@@ -40,6 +39,4 @@ script:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./resources/scripts/.travis-install-linux.sh
   ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./resources/scripts/.travis-install-osx.sh
-  ; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ./resources/scripts/.travis-install-windows.sh
   ; fi
