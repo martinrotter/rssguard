@@ -41,3 +41,5 @@ script:
   ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./resources/scripts/.travis-install-osx.sh
   ; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ./resources/scripts/.travis-install-windows.sh
+  ; fi

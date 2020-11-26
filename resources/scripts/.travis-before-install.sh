@@ -28,5 +28,14 @@ elif test "$TRAVIS_OS_NAME" = "linux"; then
   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50
   sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50
 else
-  echo "windowssss"
+  git submodule update --init --recursive --remote
+  qt_version="5.15.1"
+  qt_stub="qt-$qt_version-dynamic-msvc2019-x86_64"
+  qt_link="https://github.com/martinrotter/qt5-minimalistic-builds/releases/download/$qt_version/$qt_stub.7z"
+  qt_output="qt.7z"
+  
+  curl -L $qt_link --output $qt_output
+  "./resources/scripts/7za/7za.exe" x $qt_output
+  qt_bin=$(dirname $(readlink -f $(find ./ -name "qmake.exe")))
+  export PATH="$qt_bin:$PATH"
 fi
