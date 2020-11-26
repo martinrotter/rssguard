@@ -13,7 +13,7 @@ if test "$TRAVIS_OS_NAME" = "osx"; then
   brew install gnu-sed
   brew link --force gnu-sed
 
-  pip install aqtinstall
+  pip3 install aqtinstall
 else
   # Linux.
   sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
