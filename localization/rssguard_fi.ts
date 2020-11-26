@@ -252,7 +252,7 @@
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>MySQL-palvelin toimii kuten pitääkin.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
@@ -272,7 +272,7 @@
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>Valittua tietokantaa ei ole vielä olemassa. Se luodaan. Kaikki kunnossa.</translation>
     </message>
     <message>
         <source>MySQL database not available</source>
@@ -304,7 +304,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Määritetty tili ei tue syötteiden lisäämistä.</translation>
     </message>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
@@ -388,7 +388,8 @@ This website contains %n feed(s).</source>
     <message>
         <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation type="unfinished"/>
+        <translation>Tiedosto &apos;%1&apos; on ladattu.
+Napsauta tästä avataksesi sen ylätason kansion.</translation>
     </message>
     <message>
         <source>URL: %1</source>
@@ -400,7 +401,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation type="unfinished"/>
+        <translation>Paikallisen tiedoston valinta peruttiin.</translation>
     </message>
 </context>
 <context>
@@ -684,7 +685,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation type="unfinished"/>
+        <translation>BSD-lisenssi (sovelletaan QtSingleApplicationin lähdekoodiin)</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
@@ -752,7 +753,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
-        <translation type="unfinished"/>
+        <translation>GNU GPL -lisenssi (sovelletaan RSS Guardiin, mimesisiin ja Numixin lähdekoodeihin)</translation>
     </message>
 </context>
 <context>
@@ -813,11 +814,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Name for your label</source>
-        <translation type="unfinished"/>
+        <translation>Nimikkeen nimi</translation>
     </message>
     <message>
         <source>Label&apos;s name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Nimikkeen nimi ei voi olla tyhjä.</translation>
     </message>
     <message>
         <source>Perfect!</source>
@@ -829,11 +830,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Create new label</source>
-        <translation type="unfinished"/>
+        <translation>Luo uusi nimike</translation>
     </message>
     <message>
         <source>Edit label &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Muokkaa nimikettä &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -904,7 +905,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation type="unfinished"/>
+        <translation>Valitse kohdekansio</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
@@ -963,7 +964,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation type="unfinished"/>
+        <translation>Siivouksen asetukset (kaikki merkityt tietueet poistetaan täysin tietokannasta)</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
@@ -1025,7 +1026,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -1037,11 +1038,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Ei vielä testattu.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjälle näkyvä käyttäjätunnus</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1124,7 +1125,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -1136,11 +1137,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Ei vielä testattu.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjälle näkyvä käyttäjätunnus</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1317,7 +1318,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud-palvelimen URL-osoite, älä sisällytä API-polkua</translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
@@ -1329,7 +1330,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Valittu Nextcloud News -palvelin käyttää ei-tuettua versiota.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
@@ -1337,7 +1338,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud News -palvelin on kunnossa.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
@@ -1456,7 +1457,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS -palvelin on kunnossa.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -1535,7 +1536,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Valitse standardisyötteen tyyppi.</translation>
     </message>
     <message>
         <source>Encoding</source>
@@ -1543,7 +1544,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Valitse standardisyötteen merkistö. Jos olet epävarma merkistöstä, valitse &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Auto-update</source>
@@ -1607,11 +1608,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen nimi on OK.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen nimi on liian lyhyt.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
@@ -1619,15 +1620,15 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvaus on OK.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite on OK.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite on tyhjä.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
@@ -1684,7 +1685,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen ja kuvakkeen metatiedot noudettu.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
@@ -1692,7 +1693,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen tai kuvakkeen metatietoja ei noudettu.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
@@ -1708,11 +1709,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvakkeen metatiedot noudettu.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvakkeen metatietoja ei noudettu.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
@@ -1768,7 +1769,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Metatietoja ei ole vielä noudettu.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
@@ -1776,7 +1777,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Automaattinen päivitys</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
@@ -1995,7 +1996,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Näytä valitut tietueet lehtinäkymässä</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
@@ -2031,7 +2032,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation type="unfinished"/>
+        <translation>Ei mahdollisia toimintoja</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
@@ -2091,7 +2092,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation type="unfinished"/>
+        <translation>Toiminnot eivät ole mahdollisia</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
@@ -2123,7 +2124,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
+        <translation>Tietokantaa ei voi siivota, koska toinen kriittinen toiminto on käynnissä.</translation>
     </message>
     <message>
         <source>Feed update started</source>
@@ -2184,11 +2185,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Näytä puuhaarat</translation>
     </message>
     <message>
         <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
+        <translation>Päivitä tietueet, joilla on mukautetut &amp;ajastimet</translation>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
@@ -2279,7 +2280,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Test!</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testaa!</translation>
     </message>
     <message>
         <source>&amp;Beautify!</source>
@@ -2355,7 +2356,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Uutta suodatinta ei voi tallentaa. Virhe: &apos;&apos;.</translation>
     </message>
 </context>
 <context>
@@ -2366,7 +2367,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Syöte lisättiin, toteutetaan synkronointi nyt.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -2449,11 +2450,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
-        <translation type="unfinished"/>
+        <translation>Jotkin asetukset on muutettu ja muutokset menetetään</translation>
     </message>
     <message>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-        <translation type="unfinished"/>
+        <translation>Jotkin asetukset on muutettu, ja vastaamalla Ei menetät nämä muutokset.</translation>
     </message>
     <message>
         <source>Do you really want to close this dialog without saving any settings?</source>
@@ -2463,7 +2464,9 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation type="unfinished"/>
+        <translation>Jotkin kriittiset asetukset muutettiin ja muutokset toteutetaan kun sovellus käynnistyy uudelleen. 
+
+Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
@@ -2522,11 +2525,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Luokan nimi on OK.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Luokan nimi on liian lyhyt.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
@@ -2534,11 +2537,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvaus on OK.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Valitse kuvaketiedosto luokalle</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
@@ -2579,7 +2582,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Aseta kuvaus luokalle.</translation>
     </message>
     <message>
         <source>Icon selection</source>
@@ -2689,11 +2692,11 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
+        <translation>Virhe, tiedosto ei ole muotoiltu oikein. Valitse toinen tiedosto.</translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
+        <translation>Tapahtui virhe. Tiedosto ei ole muotoiltu oikein. Valitse toinen tiedosto.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
@@ -2752,7 +2755,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Syöte lisättiin, toteutetaan synkronointi nyt.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -2882,7 +2885,8 @@ on mahdollista ladata.</translation>
     <message>
         <source>Package was downloaded successfully.
 You can install it now.</source>
-        <translation type="unfinished"/>
+        <translation>Paketti ladattiin onnistuneesti.
+Voit asentaa sen nyt.</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
@@ -2893,7 +2897,7 @@ You can install it now.</source>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Kirjauduttu onnistuneesti</translation>
     </message>
     <message>
         <source>Your login to Gmail was authorized.</source>
@@ -2987,18 +2991,18 @@ Login tokens expiration: %2</source>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"/>
+        <translation>Tärkeät viestit</translation>
     </message>
     <message>
         <source>You can find all important messages here.</source>
-        <translation type="unfinished"/>
+        <translation>Löydät kaikki tärkeät viestit täältä.</translation>
     </message>
 </context>
 <context>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Kirjauduttu onnistuneesti</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
@@ -3006,7 +3010,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: tunnistusvirhe</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -3041,14 +3045,14 @@ Login tokens expiration: %2</source>
     <name>LabelsMenu</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Nimikkeet</translation>
     </message>
 </context>
 <context>
     <name>LabelsNode</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Nimikkeet</translation>
     </message>
     <message>
         <source>You can see all your labels (tags) here.</source>
@@ -3056,7 +3060,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>New label</source>
-        <translation type="unfinished"/>
+        <translation>Uusi nimike</translation>
     </message>
     <message>
         <source>This account does not allow you to create labels.</source>
@@ -3132,7 +3136,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Switch message importance</source>
-        <translation type="unfinished"/>
+        <translation>Vaihda viestin tärkeysastetta</translation>
     </message>
 </context>
 <context>
@@ -3223,7 +3227,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>Onko viesti poistetty pysyvästi roskakorista?</translation>
     </message>
     <message>
         <source>Attachments</source>
@@ -3337,23 +3341,23 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Ongelma käynnistäessä erillistä sähköpostisovellusta</translation>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Erillistä sähköpostisovellusta ei voitu käynnistää.</translation>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Avaa erillisellä työkalulla</translation>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation type="unfinished"/>
+        <translation>Erillistä työkalua ei voi suorittaa</translation>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Erillistä työkalua &apos;%1&apos; ei voitu käynnistää.</translation>
     </message>
 </context>
 <context>
@@ -3371,7 +3375,7 @@ Login tokens expiration: %2</source>
     <message>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>yhteys torjuttu</translation>
     </message>
     <message>
         <source>connection timed out</source>
@@ -3386,7 +3390,7 @@ Login tokens expiration: %2</source>
     <message>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>välityspalvelimen yhteys torjuttu</translation>
     </message>
     <message>
         <source>temporary failure</source>
@@ -3425,7 +3429,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation type="unfinished"/>
+        <translation>pääsy sisältöön estettiin</translation>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
@@ -3434,7 +3438,7 @@ Login tokens expiration: %2</source>
     <message>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>tuntematon sisältö</translation>
     </message>
 </context>
 <context>
@@ -3460,11 +3464,11 @@ Login tokens expiration: %2</source>
     <name>OAuth2Service</name>
     <message>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation>Napsauta tästä kirjautuaksesi.</translation>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation type="unfinished"/>
+        <translation>Kirjaudutaan OAuth 2.0:n avulla...</translation>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
@@ -3472,7 +3476,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>You have to login first</source>
-        <translation type="unfinished"/>
+        <translation>Sinun tulee sisäänkirjautua ensin</translation>
     </message>
     <message>
         <source>Navigate to website</source>
@@ -3512,7 +3516,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"/>
+        <translation>rotter.martinos@gmail.com</translation>
     </message>
     <message numerus="yes">
         <source>
@@ -3677,15 +3681,15 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Käytä erillistä sähköpostisovellusta</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"/>
+        <translation>Sähköpostisovelluksen suoritustiedosto</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Sähköpostisovelluksen suoritustiedosto</translation>
     </message>
     <message>
         <source>Select client</source>
@@ -3753,15 +3757,15 @@ version by clicking this popup notification.</source>
 File filter for external e-mail selection dialog.
 ----------
 File filter for external tool selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Suoritustiedostot (*)</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation type="unfinished"/>
+        <translation>Suoritustiedostot (*.*)</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"/>
+        <translation>Valitse sähköpostisovelluksen suoritustiedosto</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
@@ -3793,7 +3797,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open links from simple internal text browser in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Avaa aina linkit yksinkertaisesta sisäisestä tekstiselaimesta erilliseen verkkoselaimeen</translation>
     </message>
     <message>
         <source>External tools</source>
@@ -3805,15 +3809,15 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Add external tool</source>
-        <translation type="unfinished"/>
+        <translation>Lisää erillinen työkalu</translation>
     </message>
     <message>
         <source>Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>Poista valittu erillinen työkalu</translation>
     </message>
     <message>
         <source>Executable</source>
-        <translation type="unfinished"/>
+        <translation>Suoritustiedosto</translation>
     </message>
     <message>
         <source>Parameters</source>
@@ -3821,11 +3825,11 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Select external tool</source>
-        <translation type="unfinished"/>
+        <translation>Valitse erillinen työkalu</translation>
     </message>
     <message>
         <source>Enter parameters</source>
-        <translation type="unfinished"/>
+        <translation>Kirjoita parametrit</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
@@ -3833,7 +3837,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation>Suoritustiedostot välitettävät parametrit</translation>
     </message>
 </context>
 <context>
@@ -3962,30 +3966,30 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Use DB transactions when storing downloaded messages</source>
-        <translation type="unfinished"/>
+        <translation>Käytä tietokannan transaktioita ladattujen viestien talletukseen</translation>
     </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
     <message>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"/>
+        <translation>Avaa lataustenhallinta kun uusi lataus aloitetaan</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation type="unfinished"/>
+        <translation>Kohdekansio ladattaville tiedostoille</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"/>
+        <translation>Kysy jokaisen ladattavan tiedoston kohdalla</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation type="unfinished"/>
+        <translation>Tallenna kaikki ladatut tiedostot sijaintiin</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"/>
+        <translation>Kohdekansio johon kaikki ladattavat tiedostot tallennetaan</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
@@ -4008,15 +4012,15 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Kaikkien syötteiden automaattinen päivitysväli</translation>
     </message>
     <message>
         <source>Only auto-update when application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation>Päivitä automaattisesti vain kun sovellus ei ole kohdistettuna</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen yhteyden aikakatkaisu</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
@@ -4028,7 +4032,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="unfinished"/>
+        <translation>Viestien määrän muoto syötelistassa</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
@@ -4048,7 +4052,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"/>
+        <translation>Käytä mukautettua päiväyksen muotoa (ohittaa aktiivisen maa-asetuston muodon)</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
@@ -4068,7 +4072,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation type="unfinished"/>
+        <translation>Käytä &quot;automaattinen päivitys alkoi&quot;-ilmoitusta</translation>
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
@@ -4092,7 +4096,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"/>
+        <translation>Sisäisen tekstiselaimen fontti</translation>
     </message>
     <message>
         <source>Select new font</source>
@@ -4100,7 +4104,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Update all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Päivitä kaikki syötteet sovelluksen käynnistyksestä viiveellä</translation>
     </message>
 </context>
 <context>
@@ -4154,7 +4158,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <translation>Käytä ponnahdusviestejä työkaluvihjeille</translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -4162,11 +4166,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"/>
+        <translation>Avaa uusia välilehtiä hiiren vasemman painikkeen tuplanapsautuksella välilehtipalkissa</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"/>
+        <translation>Piilota välilehtipalkki, jos vain yksi välilehti on näkyvissä</translation>
     </message>
     <message>
         <source>Close tabs with</source>
@@ -4174,7 +4178,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"/>
+        <translation>Hiiren keskinäppäimen napautus</translation>
     </message>
     <message>
         <source>Toolbars</source>
@@ -4198,7 +4202,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"/>
+        <translation>Valitse muokattava työkalupalkki</translation>
     </message>
     <message>
         <source>Name</source>
@@ -4218,7 +4222,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation type="unfinished"/>
+        <translation>(Ilmoitusalueen kuvake ei ole käytettävissä.)</translation>
     </message>
     <message>
         <source>Icon only</source>
@@ -4254,12 +4258,12 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"/>
+        <translation>Käytä mustavalkoista kuvaketta</translation>
     </message>
     <message>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation>järjestelmän kuvaketeema</translation>
     </message>
     <message>
         <source>no icon theme</source>
@@ -4267,7 +4271,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"/>
+        <translation>Vasemman hiirenpainikkeen kaksoisnapsautus</translation>
     </message>
 </context>
 <context>
@@ -4322,18 +4326,21 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="unfinished"/>
+        <translation>Metatietoja ei noudettu</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Metatietoja ei noudettu, syy: %1.</translation>
     </message>
     <message>
         <source>
 Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation type="unfinished"/>
+        <translation>
+Verkon tila: %1
+Merkistö: %2
+Tyyppi: %3</translation>
     </message>
 </context>
 <context>
@@ -4506,7 +4513,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation type="unfinished"/>
+        <translation>Lisää erotin</translation>
     </message>
     <message>
         <source>Insert spacer</source>
@@ -4522,23 +4529,23 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Move action up</source>
-        <translation type="unfinished"/>
+        <translation>Siirrä toiminto ylös</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation type="unfinished"/>
+        <translation>Siirrä toiminto alas</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation type="unfinished"/>
+        <translation>Lisää valittu toiminto</translation>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation type="unfinished"/>
+        <translation>Poista valittu toiminto</translation>
     </message>
     <message>
         <source>Delete all actions</source>
-        <translation type="unfinished"/>
+        <translation>Poista kaikki toiminnot</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
@@ -4618,7 +4625,7 @@ Last login on: %4</source>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"/>
+        <translation>Web-moottorin asetukset</translation>
     </message>
     <message>
         <source>Auto-load images</source>
@@ -4638,7 +4645,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"/>
+        <translation>Hyperlinkit voivat saada kohdistuksen</translation>
     </message>
     <message>
         <source>Local storage enabled</source>
@@ -4658,7 +4665,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"/>
+        <translation>Paikallisella sisällöllä on pääsy paikallisiin tiedostoihin</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
@@ -4670,7 +4677,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"/>
+        <translation>Virhesivut käytössä</translation>
     </message>
     <message>
         <source>Plugins enabled</source>
@@ -4702,7 +4709,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"/>
+        <translation>Salli geopaikannus turvattomista alkuperistä</translation>
     </message>
 </context>
 <context>

@@ -14,11 +14,11 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Tambah langganan</translation>
     </message>
     <message>
         <source>Use predefined subscription</source>
-        <translation type="unfinished"/>
+        <translation>Gunakan langganan yang dikenal</translation>
     </message>
     <message>
         <source>Title</source>
@@ -26,7 +26,7 @@
     </message>
     <message>
         <source>Title of subscription</source>
-        <translation type="unfinished"/>
+        <translation>Judul langganan</translation>
     </message>
     <message>
         <source>URL</source>
@@ -34,7 +34,7 @@
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"/>
+        <translation>URL penuh untuk berkas langganan daring</translation>
     </message>
 </context>
 <context>
@@ -68,64 +68,64 @@
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"/>
+        <translation>Tambah langganan</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"/>
+        <translation>Hapus langganan</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"/>
+        <translation>Perbarui langganan</translation>
     </message>
     <message>
         <source>Learn about writing rules...</source>
-        <translation type="unfinished"/>
+        <translation>Belajar mengenai penulisan aturan...</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>AdBlock lets you block unwanted content on web pages</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock mempersilahkan anda menghalangi konten yang tak dikehendaki pada halaman web</translation>
     </message>
     <message>
         <source>Blocked popup window</source>
-        <translation type="unfinished"/>
+        <translation>Halangi jendela popup</translation>
     </message>
     <message>
         <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock menghalangi jendela popup yang tak dikehendaki.</translation>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation type="unfinished"/>
+        <translation>Tampilkan &amp;pengaturan AdBlock</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"/>
+        <translation>Matikan pada %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"/>
+        <translation>Matikan hanya pada halaman ini</translation>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"/>
+        <translation>Apakah anda ingin menambahkan langganan  &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
         <source>Add AdBlock subscription</source>
-        <translation type="unfinished"/>
+        <translation>Tambah langganan AdBlock</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat memuat langganan!</translation>
     </message>
 </context>
 <context>
@@ -144,15 +144,15 @@
     </message>
     <message>
         <source>Please write your rule here:</source>
-        <translation type="unfinished"/>
+        <translation>Silahkan menuliskan aturan anda disini:</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (diperbarui baru-baru ini)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (eror: %2)</translation>
     </message>
 </context>
 <context>
@@ -198,11 +198,11 @@
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
-        <translation type="unfinished"/>
+        <translation>Klik saya untuk mengubah warna!</translation>
     </message>
     <message>
         <source>Select new color</source>
-        <translation type="unfinished"/>
+        <translation>Pilih warna baru</translation>
     </message>
 </context>
 <context>
@@ -241,11 +241,11 @@
     </message>
     <message>
         <source>Removing starred messages...</source>
-        <translation type="unfinished"/>
+        <translation>Menghapus pesan yang telah ditandai bintang...</translation>
     </message>
     <message>
         <source>Starred messages purged...</source>
-        <translation type="unfinished"/>
+        <translation>Pesan yang telah ditandai bintang dibersihkan...</translation>
     </message>
 </context>
 <context>
@@ -260,7 +260,7 @@
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <translation>Akses ditolak. Username atau password yang digunakan tidak benar.</translation>
+        <translation>Akses ditolak. Nama pengguna atau kata sandi yang digunakan tidak benar.</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
@@ -284,7 +284,7 @@
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Eror tak dikenal:  &apos;%1&apos;.</translation>
     </message>
 </context>
 <context>
@@ -309,7 +309,7 @@ Situs web ini mengandung %n feed.</numerusform></translation>
     </message>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
-        <translation type="unfinished"/>
+        <translation>Feed terdeteksi, namun tak ada akun yang cocok yang terkonfigurasi.</translation>
     </message>
 </context>
 <context>
@@ -444,23 +444,23 @@ Klik disini untuk membuka direktori induk.</translation>
     <name>EmailRecipientControl</name>
     <message>
         <source>To</source>
-        <translation type="unfinished"/>
+        <translation>Ke</translation>
     </message>
     <message>
         <source>Cc</source>
-        <translation type="unfinished"/>
+        <translation>Tembusan</translation>
     </message>
     <message>
         <source>Bcc</source>
-        <translation type="unfinished"/>
+        <translation>Tembusan samar</translation>
     </message>
     <message>
         <source>Reply-to</source>
-        <translation type="unfinished"/>
+        <translation>Balas ke</translation>
     </message>
     <message>
         <source>E-mail address</source>
-        <translation type="unfinished"/>
+        <translation>Alamat surel</translation>
     </message>
 </context>
 <context>
@@ -545,7 +545,7 @@ Status: %3</source>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
-        <translation>Kategori</translation>
+        <translation>Kategori </translation>
     </message>
 </context>
 <context>
@@ -773,58 +773,58 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormAddEditEmail</name>
     <message>
         <source>Write e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Tulis pesan surel</translation>
     </message>
     <message>
         <source>Contents of your e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Konten dari pesan surel anda</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="unfinished"/>
+        <translation>...</translation>
     </message>
     <message>
         <source>Add new recipient.</source>
-        <translation type="unfinished"/>
+        <translation>Tambah penerima baru.</translation>
     </message>
     <message>
         <source>Subject</source>
-        <translation type="unfinished"/>
+        <translation>Subjek</translation>
     </message>
     <message>
         <source>Title of your message</source>
-        <translation type="unfinished"/>
+        <translation>Judul dari pesan anda</translation>
     </message>
     <message>
         <source>E-mail NOT sent</source>
-        <translation type="unfinished"/>
+        <translation>Surel tidak terkirim</translation>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
-        <translation type="unfinished"/>
+        <translation>Alamat surel anda tidak terkirim.</translation>
     </message>
 </context>
 <context>
     <name>FormAddEditLabel</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialog</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="unfinished"/>
+        <translation>...</translation>
     </message>
     <message>
         <source>Name for your label</source>
-        <translation type="unfinished"/>
+        <translation>Nama dari label anda</translation>
     </message>
     <message>
         <source>Label&apos;s name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Nama label tidak dapat kosong.</translation>
     </message>
     <message>
         <source>Perfect!</source>
-        <translation type="unfinished"/>
+        <translation>Sempurna!</translation>
     </message>
     <message>
         <source>Hot stuff</source>
@@ -832,11 +832,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Create new label</source>
-        <translation type="unfinished"/>
+        <translation>Buat label baru</translation>
     </message>
     <message>
         <source>Edit label &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Sunting label &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -993,15 +993,15 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormDownloadAttachment</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialog</translation>
     </message>
     <message>
         <source>Downloading attachment...</source>
-        <translation type="unfinished"/>
+        <translation>Mengunduh lampiran...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
-        <translation type="unfinished"/>
+        <translation>Terunduh: %1 kB</translation>
     </message>
 </context>
 <context>
@@ -1028,7 +1028,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Hanya mengunduh X pesan terbaru per feed</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -1036,15 +1036,15 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Log masuk</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation>Belum teruji</translation>
+        <translation>Belum teruji.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna yang terlihat</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1052,43 +1052,43 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Akses diterima.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Anda tidak diberikan ijin akses.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Ada eror ketika pengujian.</translation>
     </message>
     <message>
         <source>There is error. %1 </source>
-        <translation type="unfinished"/>
+        <translation>Ada eror. %1 </translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Akses anda disetujui.</translation>
     </message>
     <message>
         <source>Add new Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>Tambah akun Gmail baru</translation>
     </message>
     <message>
         <source>Edit existing Gmail account</source>
-        <translation type="unfinished"/>
+        <translation>Sunting akun Gmail yang ada</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Nilai kosong dimasukkan.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa nilai dimasukkan.</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Pengujian berhasil. Anda mungkin disarankan untuk log masuk sekali lagi.</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
@@ -1096,11 +1096,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Tak ada nama pengguna dimasukkan.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa nama pengguna dimasukkan.</translation>
     </message>
 </context>
 <context>
@@ -1127,7 +1127,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Hanya mengunduh X pesan terbaru per feed</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -1135,15 +1135,15 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Log masuk</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation>Belum teruji</translation>
+        <translation>Belum teruji.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna yang terlihat</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1151,51 +1151,51 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Akses diterima.</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Tak ada nama pengguna dimasukkan.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa nama pengguna dimasukkan.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Anda tidak diberikan ijin akses.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Ada eror ketika pengujian.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Ada eror. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Pengujian berhasil. Anda mungkin disarankan untuk log masuk sekali lagi.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Akses anda disetujui.</translation>
     </message>
     <message>
         <source>Add new Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Tambah akun Inoreader baru</translation>
     </message>
     <message>
         <source>Edit existing Inoreader account</source>
-        <translation type="unfinished"/>
+        <translation>Sunting akun Inoreader yang ada</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Nilai kosong dimasukkan.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa nilai dimasukkan.</translation>
     </message>
     <message>
         <source>Get my own Application ID</source>
@@ -1288,11 +1288,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Batas jumlah dari pesan terunduh per feed</translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation type="unfinished"/>
+        <translation> = tak terbatas</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
@@ -1300,7 +1300,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= tak terbatas</translation>
     </message>
     <message>
         <source>messages</source>
@@ -1308,39 +1308,39 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Mengunduh hanya pesan belum terbaca</translation>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Kata sandi untuk akun Nextcloud anda</translation>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna untuk akun Nextcloud anda</translation>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>URL ke server Nextcloud anda, tanpa jalur API apapun</translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Tambah akun baru Nextcloud News</translation>
     </message>
     <message>
         <source>Edit existing Nextcloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Sunting akun Nextcloud News yang ada</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Server Nextcloud News terpilih menjalankan versi yang tak didukung.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Server Nextcloud News baik-baik saja, berjalan dengan versi %1, sedangkan setidaknya versi %2 dibutuhkan.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Server Nextcloud News baik-baik saja.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
@@ -1348,7 +1348,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Server Nextcloud News terpilih menjalankan versi yang tak didukung. %1. Setidaknya versi %2 dibutuhkan.</translation>
     </message>
 </context>
 <context>
@@ -1519,7 +1519,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Mengunduh hanya pesan belum terbaca</translation>
     </message>
 </context>
 <context>
@@ -1763,7 +1763,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Gunakan ikon bawaan dari tema ikon</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -2147,51 +2147,51 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Jalankan ulang</translation>
     </message>
     <message>
         <source>Go to &amp;next tab</source>
-        <translation type="unfinished"/>
+        <translation>Ke tab sela&amp;njutnya</translation>
     </message>
     <message>
         <source>Go to &amp;previous tab</source>
-        <translation type="unfinished"/>
+        <translation>Ke tab se&amp;belumnya</translation>
     </message>
     <message>
         <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nyalakan pratinjau pesan</translation>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Donasi...</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Salin URL dari item terpilih</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Tandai pesan terpilih sebagai &amp;terbaca</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Tandai pesan terpilih sebagai &amp;belum terbaca</translation>
     </message>
     <message>
         <source>Show only &amp;unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Tampilkan hanya pesan &amp;belum terbaca</translation>
     </message>
     <message>
         <source>Message &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Penyaring pesan</translation>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Tampilkan cabang pohon</translation>
     </message>
     <message>
         <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
+        <translation>Perbarui item dengan pengatur &amp;waktu tersuai</translation>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
@@ -2199,38 +2199,38 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Display &amp;documentation</source>
-        <translation type="unfinished"/>
+        <translation>Tampilkan &amp;dokumentasi</translation>
     </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
     <message>
         <source>Message filters</source>
-        <translation type="unfinished"/>
+        <translation>Penyaring pesan</translation>
     </message>
     <message>
         <source>Remove selected</source>
-        <translation type="unfinished"/>
+        <translation>Hapus yang terpilih</translation>
     </message>
     <message>
         <source>Add new</source>
-        <translation type="unfinished"/>
+        <translation>Tambahkan yang baru</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"/>
+        <translation>Akun</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Tandai semua</translation>
     </message>
     <message>
         <source>&amp;Uncheck all</source>
-        <translation type="unfinished"/>
+        <translation>Tidak tandai sem&amp;ua</translation>
     </message>
     <message>
         <source>Message filter details</source>
-        <translation type="unfinished"/>
+        <translation>Detil penyaring pesan</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2238,19 +2238,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Title of message filter</source>
-        <translation type="unfinished"/>
+        <translation>Judul dari penyaring pesan</translation>
     </message>
     <message>
         <source>JavaScript code</source>
-        <translation type="unfinished"/>
+        <translation>Kode JavaScript</translation>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
-        <translation type="unfinished"/>
+        <translation>Logika penyaring pesan anda yang berbasis JavaScript</translation>
     </message>
     <message>
         <source>Sample message</source>
-        <translation type="unfinished"/>
+        <translation>Contoh pesan</translation>
     </message>
     <message>
         <source>Read</source>
@@ -2278,37 +2278,39 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Script output</source>
-        <translation type="unfinished"/>
+        <translation>Keluaran skrip</translation>
     </message>
     <message>
         <source>&amp;Test!</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Uji!</translation>
     </message>
     <message>
         <source>&amp;Beautify!</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Percantik!</translation>
     </message>
     <message>
         <source>Detailed &amp;help</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Bantuan yang didetilkan</translation>
     </message>
     <message>
         <source>New message filter</source>
-        <translation type="unfinished"/>
+        <translation>Penyaring pesan baru</translation>
     </message>
     <message>
         <source>Message will be %1.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>Pesan akan menjadi %1.
+
+</translation>
     </message>
     <message>
         <source>ACCEPTED</source>
-        <translation type="unfinished"/>
+        <translation>DITERIMA</translation>
     </message>
     <message>
         <source>REJECTED</source>
-        <translation type="unfinished"/>
+        <translation>DITOLAK</translation>
     </message>
     <message>
         <source>Output (modified) message is:
@@ -2322,43 +2324,43 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished"/>
+        <translation>ya</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"/>
+        <translation>tidak</translation>
     </message>
     <message>
         <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Penyaring berbasis JavaScript mengandung eror: &quot;%1&apos;.</translation>
     </message>
     <message>
         <source>Cannot find &apos;clang-format&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menemukan &apos;clang-format&apos;</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-        <translation type="unfinished"/>
+        <translation>Skrip tidak dipercantik, dikarenakan alat &apos;clang-format&apos; tidak ditemukan.</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Eror</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-        <translation type="unfinished"/>
+        <translation>Skrip tidak dipercantik, dikarenakan alat &apos;clang-format&apos; melempar eror.</translation>
     </message>
     <message>
         <source>Beautifier was running for too long time</source>
-        <translation type="unfinished"/>
+        <translation>Pemercantik berjalan terlalu lama</translation>
     </message>
     <message>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-        <translation type="unfinished"/>
+        <translation>Skrip tidak dipercantik, apakah &apos;clang-format&apos; dipasang?</translation>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menyimpan penyaring baru, eror: &quot;.</translation>
     </message>
 </context>
 <context>
@@ -2432,7 +2434,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"/>
+        <translation>Jalankan ulang</translation>
     </message>
 </context>
 <context>
@@ -2473,7 +2475,7 @@ Anda harus me-restart secara manual.</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"/>
+        <translation>Apakah anda ingin menjalankan ulang sekarang?</translation>
     </message>
 </context>
 <context>
@@ -2597,7 +2599,7 @@ Anda harus me-restart secara manual.</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Gunakan ikon bawaan dari tema ikon</translation>
     </message>
 </context>
 <context>
@@ -2743,11 +2745,11 @@ Anda harus me-restart secara manual.</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ekspor ke berkas</translation>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Impor dari berkas</translation>
     </message>
 </context>
 <context>
@@ -2900,83 +2902,84 @@ You can install it now.</source>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Telah berhasil log masuk</translation>
     </message>
     <message>
         <source>Your login to Gmail was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Log masuk anda ke Gmail disahkan.</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klik ini untuk log masuk kembali. Eror adalah: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klik ini untuk log masuk kembali.</translation>
     </message>
     <message>
         <source>No subject</source>
-        <translation type="unfinished"/>
+        <translation>Tanpa subjek</translation>
     </message>
     <message>
         <source>Gmail: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: pengesahan eror</translation>
     </message>
     <message>
         <source>Gmail: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Gmail: pengesahan ditolak</translation>
     </message>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>anda belum log masuk</translation>
     </message>
     <message>
         <source>failed to get metadata</source>
-        <translation type="unfinished"/>
+        <translation>gagal mendapatkan metadata</translation>
     </message>
 </context>
 <context>
     <name>GmailServiceRoot</name>
     <message>
         <source>Inbox</source>
-        <translation type="unfinished"/>
+        <translation>Kotak Masuk</translation>
     </message>
     <message>
         <source>Sent</source>
-        <translation type="unfinished"/>
+        <translation>Terkirim</translation>
     </message>
     <message>
         <source>Drafts</source>
-        <translation type="unfinished"/>
+        <translation>Draf</translation>
     </message>
     <message>
         <source>Spam</source>
-        <translation type="unfinished"/>
+        <translation>Spam</translation>
     </message>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Status pengesahan: %1
+Waktu berakhir log masuk: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>telah log masuk</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>BELUM log masuk</translation>
     </message>
     <message>
         <source>Select attachment destination file</source>
-        <translation type="unfinished"/>
+        <translation>Pilih lampiran berkas tujuan</translation>
     </message>
     <message>
         <source>Write new e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Tulis pesan surel baru</translation>
     </message>
     <message>
         <source>Reply to this message</source>
-        <translation type="unfinished"/>
+        <translation>Balas ke pesan ini</translation>
     </message>
 </context>
 <context>
@@ -2994,38 +2997,38 @@ Login tokens expiration: %2</source>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"/>
+        <translation>Pesan penting</translation>
     </message>
     <message>
         <source>You can find all important messages here.</source>
-        <translation type="unfinished"/>
+        <translation>Anda dapat menemukan semua pesan penting disini.</translation>
     </message>
 </context>
 <context>
     <name>InoreaderNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Telah berhasil log masuk</translation>
     </message>
     <message>
         <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Log masuk anda ke Inoreader disahkan.</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: pengesahan eror</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klik ini untuk log masuk kembali. Eror adalah: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: pengesahan ditolak</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klik ini untuk log masuk kembali.</translation>
     </message>
 </context>
 <context>
@@ -3033,45 +3036,46 @@ Login tokens expiration: %2</source>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Status pengesahan: %1
+Waktu berakhir log masuk: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>telah log masuk</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>BELUM log masuk</translation>
     </message>
 </context>
 <context>
     <name>LabelsMenu</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Label</translation>
     </message>
 </context>
 <context>
     <name>LabelsNode</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Label</translation>
     </message>
     <message>
         <source>You can see all your labels (tags) here.</source>
-        <translation type="unfinished"/>
+        <translation>Anda dapat melihat semua label (tag) disini.</translation>
     </message>
     <message>
         <source>New label</source>
-        <translation type="unfinished"/>
+        <translation>Label baru</translation>
     </message>
     <message>
         <source>This account does not allow you to create labels.</source>
-        <translation type="unfinished"/>
+        <translation>Akun ini tidak megijinkan anda untuk membuat label.</translation>
     </message>
     <message>
         <source>Not allowed</source>
-        <translation type="unfinished"/>
+        <translation>Tidak diijinkan</translation>
     </message>
 </context>
 <context>
@@ -3352,15 +3356,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Buka dengan alat eksternal</translation>
     </message>
     <message>
         <source>Cannot run external tool</source>
-        <translation type="unfinished"/>
+        <translation>Tidak dapat menjalankan alat eksternal</translation>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
-        <translation type="unfinished"/>
+        <translation>Alat eksternal &apos;%1&apos; tidak dapat dijalankan.</translation>
     </message>
 </context>
 <context>
@@ -3467,31 +3471,31 @@ Login tokens expiration: %2</source>
     <name>OAuth2Service</name>
     <message>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation>Klik ini untuk log masuk.</translation>
     </message>
     <message>
         <source>Logging in via OAuth 2.0...</source>
-        <translation type="unfinished"/>
+        <translation>Log masuk dengan OAuth 2.0...</translation>
     </message>
     <message>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Segarkan bukti log masuk untuk &apos;%1&apos;...</translation>
     </message>
     <message>
         <source>You have to login first</source>
-        <translation type="unfinished"/>
+        <translation>Anda harus log masuk terlebih dulu</translation>
     </message>
     <message>
         <source>Navigate to website</source>
-        <translation type="unfinished"/>
+        <translation>Navigasi ke situs web</translation>
     </message>
     <message>
         <source>To login, you need to navigate to this website:</source>
-        <translation type="unfinished"/>
+        <translation>Untuk log masuk, anda perlu navigasi ke situs web ini:</translation>
     </message>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
+        <translation>Anda dapat tutup jendela ini. Kembali ke %1</translation>
     </message>
 </context>
 <context>
@@ -3519,13 +3523,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <translation type="unfinished"/>
+        <translation>LANG_EMAIL</translation>
     </message>
     <message numerus="yes">
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>+ %n feed lain.</numerusform></translation>
+        <translation><numerusform>
+
++ %n feed lain.</numerusform></translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
@@ -3624,19 +3630,19 @@ di versi ini dengan meng-klik popup notifikasi ini.</translation>
     <name>SearchTextWidget</name>
     <message>
         <source>Clear searched phrase</source>
-        <translation type="unfinished"/>
+        <translation>Bersihkan frasa pencarian</translation>
     </message>
     <message>
         <source>Seach text</source>
-        <translation type="unfinished"/>
+        <translation>Cari teks</translation>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>Temukan kejadian sebelumnya</translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation>Temukan kejadian setelahnya</translation>
     </message>
 </context>
 <context>
@@ -4105,7 +4111,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Feed list font</source>
-        <translation type="unfinished"/>
+        <translation>Fon daftar feed</translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
@@ -4113,15 +4119,15 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Message list font</source>
-        <translation type="unfinished"/>
+        <translation>Fon daftar pesan</translation>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"/>
+        <translation>Fon perambah pesan internal</translation>
     </message>
     <message>
         <source>Select new font</source>
-        <translation type="unfinished"/>
+        <translation>Pilih fon baru</translation>
     </message>
     <message>
         <source>Update all feeds on application startup with initial delay of</source>
@@ -4144,7 +4150,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation>(tidak didukung di platform ini)</translation>
+        <translation> (tidak didukung di platform ini)</translation>
     </message>
     <message>
         <source>General</source>
@@ -4336,7 +4342,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     <name>SkinFactory</name>
     <message>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Halaman ini dihalangi oleh AdBlock</translation>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
@@ -4447,7 +4453,7 @@ Type: %3</source>
     </message>
     <message>
         <source> bytes</source>
-        <translation type="unfinished"/>
+        <translation> byte</translation>
     </message>
 </context>
 <context>
@@ -4517,7 +4523,7 @@ Berita belum terbaca:%2</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n detik</numerusform></translation>
     </message>
 </context>
 <context>
@@ -4544,7 +4550,7 @@ Berita belum terbaca:%2</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Pengatur jarak bilah alat</translation>
+        <translation>Pengatur jarak</translation>
     </message>
     <message>
         <source>Move action up</source>
@@ -4568,7 +4574,7 @@ Berita belum terbaca:%2</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
-        <translation type="unfinished"/>
+        <translation>Set ulang bilah alat</translation>
     </message>
 </context>
 <context>
@@ -4593,7 +4599,10 @@ Berita belum terbaca:%2</translation>
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna: %1
+Server: %2
+Eror terakhir: %3
+Log masuk terakhir pada: %4</translation>
     </message>
 </context>
 <context>
@@ -4739,7 +4748,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Written by </source>
-        <translation>Ditulis oleh</translation>
+        <translation>Ditulis oleh </translation>
     </message>
     <message>
         <source>Newspaper view</source>
@@ -4751,7 +4760,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Buka tautan di perambah ekstenal</translation>
     </message>
 </context>
 </TS>
