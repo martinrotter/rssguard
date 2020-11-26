@@ -7,10 +7,6 @@ os:
 env:
 - USE_WEBENGINE=false
 - USE_WEBENGINE=true
-jobs:
-  exclude:
-  - os: osx
-    env: USE_WEBENGINE=true
 compiler:
 - gcc
 notifications:

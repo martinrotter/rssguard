@@ -7,13 +7,13 @@ if test "$TRAVIS_OS_NAME" = "osx"; then
   brew update
   brew install p7zip
   brew link --force p7zip
-  brew install qt5
-  brew link --force qt5
   brew install curl
   brew link --force curl
   brew uninstall gnu-sed
   brew install gnu-sed
   brew link --force gnu-sed
+
+  pip install aqtinstall
 else
   # Linux.
   sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
