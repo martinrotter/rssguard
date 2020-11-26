@@ -5,8 +5,8 @@ git fetch --tags
 if test "$TRAVIS_OS_NAME" = "osx"; then
   # Mac OS X.
   brew update
-  brew install p7zip
-  brew link --force p7zip
+#  brew install p7zip
+#  brew link --force p7zip
   brew install curl
   brew link --force curl
   brew uninstall gnu-sed
