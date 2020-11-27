@@ -1,17 +1,13 @@
 #!/bin/bash
 
-ls -lha
-
-# Setup Qt build environment.
 source /opt/qt514/bin/qt514-env.sh
-mkdir rssguard-build && cd rssguard-build
 
 # Build application.
-#lrelease -compress ../rssguard.pro
+mkdir rssguard-build && cd rssguard-build
 qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make
 make install
-cd src/rssguard
+cd "src/rssguard"
 
 # Obtain linuxdeployqt.
 wget -c https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
@@ -44,5 +40,4 @@ else
 fi
 
 mv "$imagename" "$imagenewname"
-
 ls

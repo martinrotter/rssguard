@@ -1,27 +1,10 @@
 #!/bin/sh
 
-# Install Qt.
-QTPATH="$(pwd)/Qt"
-QTVERSION="5.15.2"
-QTBIN="$QTPATH/$QTVERSION/clang_64/bin"
-
-echo "Qt bin directory is: $QTBIN"
-echo "Qt will be installed to: $QTPATH"
-
-aqt install -O "$QTPATH" 5.15.2 mac desktop clang_64 -m qtwebengine
-
-export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/clang_64/plugins"
-export PATH="$QTBIN:$PATH"
-
-qmake --version
-
 # Build application.
 mkdir rssguard-build && cd rssguard-build
 qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
 make
 make install
-
-# Make DMG image.
 cd "src/rssguard"
 
 # Fix .dylib linking.
