@@ -459,12 +459,12 @@ void FormMain::switchVisibility(bool force_hide) {
 
 void FormMain::display() {
   // Make sure window is not minimized.
-  setWindowState(windowState() & ~Qt::WindowMinimized);
+  setWindowState(windowState() & ~Qt::WindowMinimized& ~Qt::WindowActive);
 
   // Display the window and make sure it is raised on top.
   show();
-  activateWindow();
   raise();
+  activateWindow();
 
   // Raise alert event. Check the documentation for more info on this.
   Application::alert(this);

@@ -8,6 +8,10 @@
 #include "miscellaneous/application.h"
 #include "services/abstract/label.h"
 
+#ifdef Q_OS_WIN
+#include <QtPlatformHeaders/QWindowsWindowFunctions>
+#endif
+
 #if defined (Q_OS_MACOS)
 extern void disableWindowTabbing();
 
@@ -68,6 +72,10 @@ int main(int argc, char* argv[]) {
   Application::setWindowIcon(QIcon(APP_ICON_PATH));
 
   qApp->reactOnForeignNotifications();
+
+#ifdef Q_OS_WIN
+  QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
+#endif
 
   FormMain main_window;
 

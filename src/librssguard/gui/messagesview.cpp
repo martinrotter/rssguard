@@ -392,6 +392,10 @@ void MessagesView::openSelectedSourceMessagesExternally() {
   if (!selectionModel()->selectedRows().isEmpty()) {
     QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
   }
+
+  QTimer::singleShot(1000, this, []() {
+    qApp->mainForm()->display();
+  });
 }
 
 void MessagesView::openSelectedMessagesInternally() {
