@@ -28,8 +28,8 @@ install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dyli
 install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" "rssguard"
 
 otool -L "RSS Guard.app/Contents/MacOS/rssguard"
-
-make dmg
+macdeployqt "./RSS Guard.app" -dmg
+#make dmg
 
 # Rename DMG.
 set -- *.dmg

@@ -89,7 +89,7 @@ void AdBlockSubscription::loadSubscription(const QStringList& disabledRules) {
   QFile file(m_filePath);
 
   if (!file.exists()) {
-    QTimer::singleShot(0, this, SLOT(updateSubscription()));
+    QTimer::singleShot(0, this, &AdBlockSubscription::updateSubscription);
     return;
   }
 
@@ -98,7 +98,7 @@ void AdBlockSubscription::loadSubscription(const QStringList& disabledRules) {
                << "Unable to open adblock file"
                << QUOTE_W_SPACE(m_filePath)
                << "for reading.";
-    QTimer::singleShot(0, this, SLOT(updateSubscription()));
+    QTimer::singleShot(0, this, &AdBlockSubscription::updateSubscription);
     return;
   }
 
@@ -115,7 +115,7 @@ void AdBlockSubscription::loadSubscription(const QStringList& disabledRules) {
     qWarningNN << LOGSEC_ADBLOCK
                << "Invalid format of AdBlock file"
                << QUOTE_W_SPACE_DOT(m_filePath);
-    QTimer::singleShot(0, this, SLOT(updateSubscription()));
+    QTimer::singleShot(0, this, &AdBlockSubscription::updateSubscription);
     return;
   }
 
@@ -133,7 +133,7 @@ void AdBlockSubscription::loadSubscription(const QStringList& disabledRules) {
 
   // Initial update.
   if (m_rules.isEmpty() && !m_updated) {
-    QTimer::singleShot(0, this, SLOT(updateSubscription()));
+    QTimer::singleShot(0, this, &AdBlockSubscription::updateSubscription);
   }
 }
 

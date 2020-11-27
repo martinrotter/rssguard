@@ -390,7 +390,7 @@ void MessagesView::openSelectedSourceMessagesExternally() {
 
   // Finally, mark opened messages as read.
   if (!selectionModel()->selectedRows().isEmpty()) {
-    QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
+    QTimer::singleShot(0, this, &MessagesView::markSelectedMessagesRead);
   }
 
   QTimer::singleShot(1000, this, []() {

@@ -133,8 +133,8 @@ void MessagesToolBar::initializeHighlighter() {
   m_actionMessageHighlighter->setIcon(m_btnMessageHighlighter->icon());
   m_actionMessageHighlighter->setProperty("type", HIGHLIGHTER_ACTION_NAME);
   m_actionMessageHighlighter->setProperty("name", tr("Message highlighter"));
-  connect(m_menuMessageHighlighter, SIGNAL(triggered(QAction*)),
-          this, SLOT(handleMessageHighlighterChange(QAction*)));
+
+  connect(m_menuMessageHighlighter, &QMenu::triggered, this, &MessagesToolBar::handleMessageHighlighterChange);
 }
 
 QStringList MessagesToolBar::defaultActions() const {

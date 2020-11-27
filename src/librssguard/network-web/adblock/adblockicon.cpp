@@ -38,8 +38,11 @@ AdBlockIcon::AdBlockIcon(AdBlockManager* parent)
   setText(QSL("AdBlock"));
   setMenu(new QMenu());
   setIcon(m_enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
-  connect(m_manager, SIGNAL(enabledChanged(bool)), this, SLOT(setEnabled(bool)));
-  connect(menu(), SIGNAL(aboutToShow()), this, SLOT(createMenu()));
+
+  connect(m_manager, &AdBlockManager::enabledChanged, this, &AdBlockIcon::setEnabled);
+  connect(menu(), &QMenu::aboutToShow, this, [this]() {
+    createMenu();
+  });
   connect(this, &QAction::triggered, m_manager, &AdBlockManager::showDialog);
 }
 
@@ -64,6 +67,7 @@ void AdBlockIcon::popupBlocked(const QString& ruleString, const QUrl& url) {
   }
 
   QPair<AdBlockRule*, QUrl> pair;
+
   pair.first = new AdBlockRule(filter, subscription);
   pair.second = url;
   m_blockedPopups.append(pair);
@@ -96,7 +100,7 @@ void AdBlockIcon::createMenu(QMenu* menu) {
   WebPage* page = qApp->mainForm()->tabWidget()->currentWidget()->webBrowser()->viewer()->page();
   const QUrl pageUrl = page->url();
 
-  menu->addAction(tr("Show AdBlock &settings"), m_manager, SLOT(showDialog()));
+  menu->addAction(tr("Show AdBlock &settings"), m_manager, &AdBlockManager::showDialog);
   menu->addSeparator();
 
   if (!pageUrl.host().isEmpty() && m_enabled && m_manager->canRunOnScheme(pageUrl.scheme())) {
@@ -108,12 +112,12 @@ void AdBlockIcon::createMenu(QMenu* menu) {
     act->setCheckable(true);
     act->setChecked(customList->containsFilter(hostFilter));
     act->setData(hostFilter);
-    connect(act, SIGNAL(triggered()), this, SLOT(toggleCustomFilter()));
+    connect(act, &QAction::triggered, this, &AdBlockIcon::toggleCustomFilter);
     act = menu->addAction(tr("Disable only on this page"));
     act->setCheckable(true);
     act->setChecked(customList->containsFilter(pageFilter));
     act->setData(pageFilter);
-    connect(act, SIGNAL(triggered()), this, SLOT(toggleCustomFilter()));
+    connect(act, &QAction::triggered, this, &AdBlockIcon::toggleCustomFilter);
     menu->addSeparator();
   }
 }
@@ -164,7 +168,7 @@ void AdBlockIcon::animateIcon() {
 void AdBlockIcon::stopAnimation() {
   m_timerTicks = 0;
   m_flashTimer->stop();
-  disconnect(m_flashTimer, SIGNAL(timeout()), this, SLOT(animateIcon()));
+  disconnect(m_flashTimer, &QTimer::timeout, this, &AdBlockIcon::animateIcon);
   setEnabled(m_enabled);
 }
 

@@ -285,11 +285,11 @@ void AdBlockManager::load() {
   // Load all subscriptions.
   for (AdBlockSubscription* subscription : m_subscriptions) {
     subscription->loadSubscription(m_disabledRules);
-    connect(subscription, SIGNAL(subscriptionChanged()), this, SLOT(updateMatcher()));
+    connect(subscription, &AdBlockSubscription::subscriptionChanged, this, &AdBlockManager::updateMatcher);
   }
 
   if (lastUpdate.addDays(ADBLOCK_UPDATE_DAYS_INTERVAL) < QDateTime::currentDateTime()) {
-    QTimer::singleShot(1000 * 60, this, SLOT(updateAllSubscriptions()));
+    QTimer::singleShot(1000 * 60, this, &AdBlockManager::updateAllSubscriptions);
   }
 
   m_matcher->update();

@@ -39,13 +39,15 @@ FormStandardCategoryDetails::~FormStandardCategoryDetails() {
 
 void FormStandardCategoryDetails::createConnections() {
   // General connections.
-  connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(apply()));
-  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onTitleChanged(QString)));
-  connect(m_ui->m_txtDescription->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onDescriptionChanged(QString)));
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormStandardCategoryDetails::apply);
+  connect(m_ui->m_txtTitle->lineEdit(), &BaseLineEdit::textChanged,
+          this, &FormStandardCategoryDetails::onTitleChanged);
+  connect(m_ui->m_txtDescription->lineEdit(), &BaseLineEdit::textChanged,
+          this, &FormStandardCategoryDetails::onDescriptionChanged);
 
   // Icon connections.
-  connect(m_actionLoadIconFromFile, SIGNAL(triggered()), this, SLOT(onLoadIconFromFile()));
-  connect(m_actionUseDefaultIcon, SIGNAL(triggered()), this, SLOT(onUseDefaultIcon()));
+  connect(m_actionLoadIconFromFile, &QAction::triggered, this, &FormStandardCategoryDetails::onLoadIconFromFile);
+  connect(m_actionUseDefaultIcon, &QAction::triggered, this, &FormStandardCategoryDetails::onUseDefaultIcon);
 }
 
 void FormStandardCategoryDetails::setEditableCategory(StandardCategory* editable_category) {

@@ -24,3 +24,4 @@
 *.autosave
 *.user*
 localization/*qm
+*.TMP

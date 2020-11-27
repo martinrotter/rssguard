@@ -805,7 +805,9 @@ void FormMain::changeEvent(QEvent* event) {
           SystemTrayIcon::isSystemTrayActivated() &&
           qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool()) {
         event->ignore();
-        QTimer::singleShot(CHANGE_EVENT_DELAY, this, SLOT(switchVisibility()));
+        QTimer::singleShot(CHANGE_EVENT_DELAY, this, [this]() {
+          switchVisibility();
+        });
       }
 
       break;

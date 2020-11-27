@@ -23,7 +23,7 @@
 
 TreeWidget::TreeWidget(QWidget* parent)
   : QTreeWidget(parent), m_refreshAllItemsNeeded(true), m_showMode(ItemShowMode::ItemsCollapsed) {
-  connect(this, SIGNAL(itemChanged(QTreeWidgetItem*,int)), this, SLOT(sheduleRefresh()));
+  connect(this, &TreeWidget::itemChanged, this, &TreeWidget::sheduleRefresh);
 }
 
 void TreeWidget::clear() {

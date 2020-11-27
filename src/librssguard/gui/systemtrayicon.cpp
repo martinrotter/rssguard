@@ -16,7 +16,7 @@ TrayIconMenu::TrayIconMenu(const QString& title, QWidget* parent) : QMenu(title,
 
 bool TrayIconMenu::event(QEvent* event) {
   if (event->type() == QEvent::Show && Application::activeModalWidget() != nullptr) {
-    QTimer::singleShot(0, this, SLOT(hide()));
+    QTimer::singleShot(0, this, &TrayIconMenu::hide);
     qApp->showGuiMessage(QSL(APP_LONG_NAME),
                          tr("Close opened modal dialogs first."),
                          QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
@@ -93,7 +93,7 @@ void SystemTrayIcon::show() {
 #else
   // Delay avoids race conditions and tray icon is properly displayed.
   qDebugNN << LOGSEC_GUI << "Showing tray icon with 1000 ms delay.";
-  QTimer::singleShot(1000, this, SLOT(showPrivate()));
+  QTimer::singleShot(1000, this, &SystemTrayIcon::showPrivate);
 #endif
 }
 

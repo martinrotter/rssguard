@@ -35,10 +35,11 @@ AdBlockTreeWidget::AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget*
   setAlternatingRowColors(true);
   setLayoutDirection(Qt::LeftToRight);
   setIndentation(5);
-  connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequested(QPoint)));
-  connect(this, SIGNAL(itemChanged(QTreeWidgetItem*,int)), this, SLOT(itemChanged(QTreeWidgetItem*)));
-  connect(m_subscription, SIGNAL(subscriptionUpdated()), this, SLOT(subscriptionUpdated()));
-  connect(m_subscription, SIGNAL(subscriptionError(QString)), this, SLOT(subscriptionError(QString)));
+
+  connect(this, &AdBlockTreeWidget::customContextMenuRequested, this, &AdBlockTreeWidget::contextMenuRequested);
+  connect(this, &AdBlockTreeWidget::itemChanged, this, &AdBlockTreeWidget::itemChanged);
+  connect(m_subscription, &AdBlockSubscription::subscriptionUpdated, this, &AdBlockTreeWidget::subscriptionUpdated);
+  connect(m_subscription, &AdBlockSubscription::subscriptionError, this, &AdBlockTreeWidget::subscriptionError);
 }
 
 AdBlockSubscription* AdBlockTreeWidget::subscription() const {
@@ -76,9 +77,9 @@ void AdBlockTreeWidget::contextMenuRequested(const QPoint& pos) {
 
   QMenu menu;
 
-  menu.addAction(tr("Add rule"), this, SLOT(addRule()));
+  menu.addAction(tr("Add rule"), this, &AdBlockTreeWidget::addRule);
   menu.addSeparator();
-  QAction* deleteAction = menu.addAction(tr("Remove rule"), this, SLOT(removeRule()));
+  QAction* deleteAction = menu.addAction(tr("Remove rule"), this, &AdBlockTreeWidget::removeRule);
 
   if (item->parent() == nullptr) {
     deleteAction->setDisabled(true);

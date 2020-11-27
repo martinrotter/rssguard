@@ -160,5 +160,5 @@ void AdBlockDialog::load() {
   }
 
   m_loaded = true;
-  QTimer::singleShot(50, this, SLOT(loadSubscriptions()));
+  QTimer::singleShot(50, this, &AdBlockDialog::loadSubscriptions);
 }
