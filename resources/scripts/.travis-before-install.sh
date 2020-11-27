@@ -5,21 +5,6 @@ git fetch --tags
 if test "$TRAVIS_OS_NAME" = "osx"; then
   # Mac OS X.
   pip3 install aqtinstall
-  
-  # Install Qt.
-  QTPATH="$(pwd)/Qt"
-  QTVERSION="5.15.2"
-  QTBIN="$QTPATH/$QTVERSION/clang_64/bin"
-
-  echo "Qt bin directory is: $QTBIN"
-  echo "Qt will be installed to: $QTPATH"
-
-  aqt install -O "$QTPATH" 5.15.2 mac desktop clang_64 -m qtwebengine
-
-  export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/clang_64/plugins"
-  export PATH="$QTBIN:$PATH"
-
-  qmake --version
 elif test "$TRAVIS_OS_NAME" = "linux"; then
   # Linux.
   sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
