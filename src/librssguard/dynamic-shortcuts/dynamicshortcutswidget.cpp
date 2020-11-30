@@ -53,13 +53,6 @@ void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
   });
   int row_id = 0;
 
-  // FIXME: Maybe separate actions into "categories". Each category will start with label.
-  // I will assign each QAaction a property called "category" with some enum value.
-  // Like:
-  //  File, FeedsCategories, Messages, Tools, WebBrowser, Help
-  // This will be setup in FormMain::allActions().
-  // Then here I will process actions into categories.
-
   for (QAction* action : actions) {
     // Create shortcut catcher for this action and set default shortcut.
     auto* catcher = new ShortcutCatcher(this);

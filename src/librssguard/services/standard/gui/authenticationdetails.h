@@ -21,7 +21,7 @@ class AuthenticationDetails : public QWidget {
     void onAuthenticationSwitched();
 
   private:
-    Ui::AuthenticationDetails ui;
+    Ui::AuthenticationDetails m_ui;
 };
 
 #endif // AUTHENTICATIONDETAILS_H

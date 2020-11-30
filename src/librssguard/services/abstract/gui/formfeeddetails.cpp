@@ -5,6 +5,7 @@
 #include "core/feedsmodel.h"
 #include "definitions/definitions.h"
 #include "gui/baselineedit.h"
+#include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
 #include "miscellaneous/iconfactory.h"
@@ -22,17 +23,13 @@
 #include <QTextCodec>
 
 FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
-  : QDialog(parent),
-  m_editableFeed(nullptr),
-  m_serviceRoot(service_root) {
+  : QDialog(parent), m_editableFeed(nullptr), m_serviceRoot(service_root) {
   initialize();
   createConnections();
 }
 
 int FormFeedDetails::editBaseFeed(Feed* input_feed) {
   setEditableFeed(input_feed);
-
-  // Run the dialog.
   return QDialog::exec();
 }
 
@@ -53,9 +50,6 @@ void FormFeedDetails::apply() {
   new_feed.setAutoUpdateInitialInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
 
   if (m_editableFeed != nullptr) {
-    // NOTE: Co s tim?
-    //new_feed->setParent(m_editableFeed->parent());
-
     // Edit the feed.
     bool edited = m_editableFeed->editItself(&new_feed);
 
@@ -92,7 +86,7 @@ void FormFeedDetails::createConnections() {
 }
 
 void FormFeedDetails::setEditableFeed(Feed* editable_feed) {
-  setWindowTitle(tr("Edit feed '%1'").arg(editable_feed->title()));
+  setWindowTitle(tr("Edit '%1'").arg(editable_feed->title()));
 
   m_editableFeed = editable_feed;
 
@@ -105,8 +99,7 @@ void FormFeedDetails::initialize() {
   m_ui->setupUi(this);
 
   // Set flags and attributes.
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("application-rss+xml")));
 
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);

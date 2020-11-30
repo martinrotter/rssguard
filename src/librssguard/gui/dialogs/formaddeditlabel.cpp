@@ -49,7 +49,6 @@ bool FormAddEditLabel::execForEdit(Label* lbl) {
   auto exit_code = exec();
 
   if (exit_code == QDialog::DialogCode::Accepted) {
-    // TODO: Place server-side changes perhaps to here?
     m_editableLabel->setColor(m_ui.m_btnColor->color());
     m_editableLabel->setTitle(m_ui.m_txtName->lineEdit()->text());
     return true;

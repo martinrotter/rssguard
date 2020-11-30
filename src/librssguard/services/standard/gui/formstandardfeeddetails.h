@@ -7,6 +7,7 @@
 
 class StandardFeedDetails;
 class AuthenticationDetails;
+class StandardFeed;
 
 class FormStandardFeedDetails : public FormFeedDetails {
   Q_OBJECT
@@ -15,7 +16,7 @@ class FormStandardFeedDetails : public FormFeedDetails {
     explicit FormStandardFeedDetails(ServiceRoot* service_root, QWidget* parent = nullptr);
 
   public slots:
-    int addEditFeed(Feed* input_feed, RootItem* parent_to_select, const QString& url = QString());
+    int addEditFeed(StandardFeed* input_feed, RootItem* parent_to_select, const QString& url = QString());
 
   private slots:
     void guessFeed();

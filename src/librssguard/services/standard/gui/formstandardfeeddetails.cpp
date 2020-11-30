@@ -25,7 +25,7 @@ FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root, QWid
   connect(m_standardFeedDetails->m_actionFetchIcon, &QAction::triggered, this, &FormStandardFeedDetails::guessIconOnly);
 }
 
-int FormStandardFeedDetails::addEditFeed(Feed* input_feed, RootItem* parent_to_select, const QString& url) {
+int FormStandardFeedDetails::addEditFeed(StandardFeed* input_feed, RootItem* parent_to_select, const QString& url) {
   // Load categories.
   m_standardFeedDetails->loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 
@@ -44,14 +44,14 @@ int FormStandardFeedDetails::addEditFeed(Feed* input_feed, RootItem* parent_to_s
 
 void FormStandardFeedDetails::guessFeed() {
   m_standardFeedDetails->guessFeed(m_standardFeedDetails->ui.m_txtUrl->lineEdit()->text(),
-                                   m_authDetails->ui.m_txtUsername->lineEdit()->text(),
-                                   m_authDetails->ui.m_txtPassword->lineEdit()->text());
+                                   m_authDetails->m_ui.m_txtUsername->lineEdit()->text(),
+                                   m_authDetails->m_ui.m_txtPassword->lineEdit()->text());
 }
 
 void FormStandardFeedDetails::guessIconOnly() {
   m_standardFeedDetails->guessIconOnly(m_standardFeedDetails->ui.m_txtUrl->lineEdit()->text(),
-                                       m_authDetails->ui.m_txtUsername->lineEdit()->text(),
-                                       m_authDetails->ui.m_txtPassword->lineEdit()->text());
+                                       m_authDetails->m_ui.m_txtUsername->lineEdit()->text(),
+                                       m_authDetails->m_ui.m_txtPassword->lineEdit()->text());
 }
 
 void FormStandardFeedDetails::apply() {
@@ -71,9 +71,9 @@ void FormStandardFeedDetails::apply() {
   new_feed->setEncoding(m_standardFeedDetails->ui.m_cmbEncoding->currentText());
   new_feed->setType(type);
   new_feed->setUrl(m_standardFeedDetails->ui.m_txtUrl->lineEdit()->text());
-  new_feed->setPasswordProtected(m_authDetails->ui.m_gbAuthentication->isChecked());
-  new_feed->setUsername(m_authDetails->ui.m_txtUsername->lineEdit()->text());
-  new_feed->setPassword(m_authDetails->ui.m_txtPassword->lineEdit()->text());
+  new_feed->setPasswordProtected(m_authDetails->m_ui.m_gbAuthentication->isChecked());
+  new_feed->setUsername(m_authDetails->m_ui.m_txtUsername->lineEdit()->text());
+  new_feed->setPassword(m_authDetails->m_ui.m_txtPassword->lineEdit()->text());
   new_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
                                                                   m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
   new_feed->setAutoUpdateInitialInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
@@ -115,7 +115,7 @@ void FormStandardFeedDetails::setEditableFeed(Feed* editable_feed) {
   FormFeedDetails::setEditableFeed(editable_feed);
 
   m_standardFeedDetails->setExistingFeed(qobject_cast<StandardFeed*>(editable_feed));
-  m_authDetails->ui.m_gbAuthentication->setChecked(editable_feed->passwordProtected());
-  m_authDetails->ui.m_txtUsername->lineEdit()->setText(editable_feed->username());
-  m_authDetails->ui.m_txtPassword->lineEdit()->setText(editable_feed->password());
+  m_authDetails->m_ui.m_gbAuthentication->setChecked(editable_feed->passwordProtected());
+  m_authDetails->m_ui.m_txtUsername->lineEdit()->setText(editable_feed->username());
+  m_authDetails->m_ui.m_txtPassword->lineEdit()->setText(editable_feed->password());
 }
