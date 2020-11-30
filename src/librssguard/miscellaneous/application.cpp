@@ -159,9 +159,9 @@ void Application::loadDynamicShortcuts() {
 }
 
 void Application::showPolls() const {
-  /*if (isFirstRun(APP_VERSION)) {
-     web()->openUrlInExternalBrowser(QSL("https://forms.gle/GXw1gNksRZDfSccL7"));
-     }*/
+  if (isFirstRunCurrentVersion()) {
+    web()->openUrlInExternalBrowser(QSL("https://forms.gle/Son3h3xg2ZtCmi9K8"));
+  }
 }
 
 void Application::offerChanges() const {

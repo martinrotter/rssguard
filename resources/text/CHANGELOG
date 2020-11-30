@@ -1,3 +1,17 @@
+3.8.3
+—————
+
+Added:
+▪ Initial Qt 6 support.
+▪ When you run "open source article externally" action, then RSS Guard window
+  regains focus again.
+
+Fixed/changed:
+▪ Finally fixed DMG packages for Mac OS X which should now bundle
+  all Qt libraries correctly.
+▪ Bundle application icons on Mac OS X.
+▪ Fixed URL not passed to custom external web browser.
+
 3.8.2
 —————
 
