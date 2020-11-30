@@ -160,6 +160,7 @@ HEADERS += core/feeddownloader.h \
            services/owncloud/owncloudserviceroot.h \
            services/standard/atomparser.h \
            services/standard/feedparser.h \
+           services/standard/gui/authenticationdetails.h \
            services/standard/gui/formstandardcategorydetails.h \
            services/standard/gui/formstandardfeeddetails.h \
            services/standard/gui/formstandardimportexport.h \
@@ -307,6 +308,7 @@ SOURCES += core/feeddownloader.cpp \
            services/owncloud/owncloudserviceroot.cpp \
            services/standard/atomparser.cpp \
            services/standard/feedparser.cpp \
+           services/standard/gui/authenticationdetails.cpp \
            services/standard/gui/formstandardcategorydetails.cpp \
            services/standard/gui/formstandardfeeddetails.cpp \
            services/standard/gui/formstandardimportexport.cpp \
@@ -361,6 +363,7 @@ FORMS += gui/dialogs/formabout.ui \
          services/gmail/gui/formeditgmailaccount.ui \
          services/inoreader/gui/formeditinoreaderaccount.ui \
          services/owncloud/gui/formeditowncloudaccount.ui \
+         services/standard/gui/authenticationdetails.ui \
          services/standard/gui/formstandardcategorydetails.ui \
          services/standard/gui/formstandardimportexport.ui \
          services/standard/gui/standardfeeddetails.ui \

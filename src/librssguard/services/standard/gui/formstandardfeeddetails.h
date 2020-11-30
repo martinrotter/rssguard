@@ -6,6 +6,7 @@
 #include "services/abstract/gui/formfeeddetails.h"
 
 class StandardFeedDetails;
+class AuthenticationDetails;
 
 class FormStandardFeedDetails : public FormFeedDetails {
   Q_OBJECT
@@ -27,6 +28,7 @@ class FormStandardFeedDetails : public FormFeedDetails {
 
   private:
     StandardFeedDetails* m_standardFeedDetails;
+    AuthenticationDetails* m_authDetails;
 };
 
 #endif // FORMSSFEEDDETAILS_H

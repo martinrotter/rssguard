@@ -35,9 +35,6 @@ class FormFeedDetails : public QDialog {
     // base implementation must be called first.
     virtual void apply();
 
-    void onUsernameChanged(const QString& new_username);
-    void onPasswordChanged(const QString& new_password);
-    void onAuthenticationSwitched();
     void onAutoUpdateTypeChanged(int new_index);
 
   protected:
