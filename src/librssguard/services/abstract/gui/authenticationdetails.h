@@ -7,10 +7,8 @@
 
 #include "ui_authenticationdetails.h"
 
-class AuthenticationDetails : public QWidget {
+class AuthenticationDetails : public QWidget, public Ui::AuthenticationDetails {
   Q_OBJECT
-
-  friend class FormStandardFeedDetails;
 
   public:
     explicit AuthenticationDetails(QWidget* parent = nullptr);
@@ -19,9 +17,6 @@ class AuthenticationDetails : public QWidget {
     void onUsernameChanged(const QString& new_username);
     void onPasswordChanged(const QString& new_password);
     void onAuthenticationSwitched();
-
-  private:
-    Ui::AuthenticationDetails m_ui;
 };
 
 #endif // AUTHENTICATIONDETAILS_H

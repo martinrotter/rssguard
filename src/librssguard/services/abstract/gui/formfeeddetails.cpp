@@ -37,6 +37,10 @@ void FormFeedDetails::activateTab(int index) {
   m_ui->m_tabWidget->setCurrentIndex(index);
 }
 
+void FormFeedDetails::clearTabs() {
+  m_ui->m_tabWidget->clear();
+}
+
 void FormFeedDetails::insertCustomTab(QWidget* custom_tab, const QString& title, int index) {
   m_ui->m_tabWidget->insertTab(index, custom_tab, title);
 }

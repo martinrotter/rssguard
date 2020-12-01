@@ -113,9 +113,8 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
     // is quitting.
     qApp->showGuiMessage(tr("Cannot add item"),
                          tr("Cannot add feed because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
+                         QSystemTrayIcon::MessageIcon::Warning, qApp->mainFormWidget(), true);
 
-    // Thus, cannot delete and quit the method.
     return;
   }
 
