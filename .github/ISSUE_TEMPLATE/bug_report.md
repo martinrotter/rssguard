@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: ''
 labels: ''
-assignees: 'martinrotter'
+assignees: martinrotter
 ---
 <!---
 Dear RSS Guard contributor, please RESPECT this template. Also, you might be
