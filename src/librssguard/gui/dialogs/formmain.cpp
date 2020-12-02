@@ -58,6 +58,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   m_ui->setupUi(this);
   qApp->setMainForm(this);
 
+  setWindowIcon(qApp->desktopAwareIcon());
   setWindowTitle(APP_LONG_NAME);
 
 #if defined (USE_WEBENGINE)

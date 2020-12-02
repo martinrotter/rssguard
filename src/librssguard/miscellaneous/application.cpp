@@ -426,6 +426,17 @@ NetworkUrlInterceptor* Application::urlIinterceptor() {
 
 #endif
 
+QIcon Application::desktopAwareIcon() const {
+  auto from_theme = m_icons->fromTheme(APP_LOW_NAME);
+
+  if (!from_theme.isNull()) {
+    return from_theme;
+  }
+  else {
+    return QIcon(APP_ICON_PATH);
+  }
+}
+
 void Application::showTrayIcon() {
   // Display tray icon if it is enabled and available.
   if (SystemTrayIcon::isSystemTrayActivated()) {

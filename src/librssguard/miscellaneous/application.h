@@ -85,6 +85,8 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     NetworkUrlInterceptor* urlIinterceptor();
 #endif
 
+    QIcon desktopAwareIcon() const;
+
     QString tempFolder() const;
     QString documentsFolder() const;
     QString homeFolder() const;

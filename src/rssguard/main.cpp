@@ -69,7 +69,7 @@ int main(int argc, char* argv[]) {
   Application::setApplicationName(APP_NAME);
   Application::setApplicationVersion(APP_VERSION);
   Application::setOrganizationDomain(APP_URL);
-  Application::setWindowIcon(QIcon(APP_ICON_PATH));
+  Application::setWindowIcon(qApp->desktopAwareIcon());
 
   qApp->reactOnForeignNotifications();
 
