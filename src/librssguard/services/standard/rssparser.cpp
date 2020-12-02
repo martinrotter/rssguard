@@ -34,8 +34,23 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
   QString elem_enclosure = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("url"));
   QString elem_enclosure_type = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 
+  new_message.m_url = msg_element.namedItem(QSL("link")).toElement().text();
+
+  if (new_message.m_url.isEmpty() && !new_message.m_enclosures.isEmpty()) {
+    new_message.m_url = new_message.m_enclosures.first().m_url;
+  }
+
+  if (new_message.m_url.isEmpty()) {
+    // Try to get "href" attribute.
+    new_message.m_url = msg_element.namedItem(QSL("link")).toElement().attribute(QSL("href"));
+  }
+
   if (elem_description.isEmpty()) {
     elem_description = msg_element.namedItem(QSL("description")).toElement().text();
+  }
+
+  if (elem_description.isEmpty()) {
+    elem_description = new_message.m_url;
   }
 
   // Now we obtained maximum of information for title & description.
@@ -65,18 +80,6 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
   }
   else {
     new_message.m_enclosures.append(mrssGetEnclosures(msg_element));
-  }
-
-  // Deal with link and author.
-  new_message.m_url = msg_element.namedItem(QSL("link")).toElement().text();
-
-  if (new_message.m_url.isEmpty() && !new_message.m_enclosures.isEmpty()) {
-    new_message.m_url = new_message.m_enclosures.first().m_url;
-  }
-
-  if (new_message.m_url.isEmpty()) {
-    // Try to get "href" attribute.
-    new_message.m_url = msg_element.namedItem(QSL("link")).toElement().attribute(QSL("href"));
   }
 
   new_message.m_author = msg_element.namedItem(QSL("author")).toElement().text();
