@@ -4,35 +4,34 @@ about: Create a report to help us improve
 title: ''
 labels: ''
 assignees: ''
-
 ---
+<!---
+Dear RSS Guard contributor, please RESPECT this template. Also, you might be
+interested in reading this: http://www.chiark.greenend.org.uk/~sgtatham/bugs.html
+-->
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+#### Brief description of the issue.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+<!--- Write your description here. Remove this line, pls. -->
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+#### How to reproduce the bug?
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+1. 
+2. 
+3. 
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+#### What was the expected result?
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+<!--- Write expected results of above reproduction steps here. Remove this line, pls. -->
 
-**Additional context**
-Add any other context about the problem here.
+#### What actually happened?
+
+<!--- Write the actual result here. Remove this line, pls. -->
+
+#### Other information
+
+* OS:
+* Desktop Environment:
+* RSS Guard version:
+
+<!--- Write any other supplementary information here. Remove this line, pls. -->
