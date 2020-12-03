@@ -264,6 +264,13 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
 
         result.first->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
         result.first->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
+
+        QString icon_link = channel_element.namedItem(QSL("image")).toElement().text();
+
+        if (!icon_link.isEmpty()) {
+          icon_possible_locations.prepend(icon_link);
+        }
+
         QString source_link = channel_element.namedItem(QSL("link")).toElement().text();
 
         if (!source_link.isEmpty()) {
@@ -275,6 +282,19 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
         result.first->setType(Type::Atom10);
         result.first->setTitle(root_element.namedItem(QSL("title")).toElement().text());
         result.first->setDescription(root_element.namedItem(QSL("subtitle")).toElement().text());
+
+        QString icon_link = root_element.namedItem(QSL("icon")).toElement().text();
+
+        if (!icon_link.isEmpty()) {
+          icon_possible_locations.prepend(icon_link);
+        }
+
+        QString logo_link = root_element.namedItem(QSL("logo")).toElement().text();
+
+        if (!logo_link.isEmpty()) {
+          icon_possible_locations.prepend(logo_link);
+        }
+
         QString source_link = root_element.namedItem(QSL("link")).toElement().text();
 
         if (!source_link.isEmpty()) {
