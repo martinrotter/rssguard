@@ -198,11 +198,11 @@
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
-        <translation type="unfinished"/>
+        <translation>¡Pulsa sobre mí para cambiar color!</translation>
     </message>
     <message>
         <source>Select new color</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar nuevo color</translation>
     </message>
 </context>
 <context>
@@ -310,7 +310,7 @@ Este sitio web contiene %n fuente(s).</numerusform></translation>
     </message>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
-        <translation type="unfinished"/>
+        <translation>Se detectaron fuentes, pero no hay cuentas aptas configuradas</translation>
     </message>
 </context>
 <context>
@@ -671,7 +671,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Context menu for label</source>
-        <translation type="unfinished"/>
+        <translation>Menú desplegable para etiqueta</translation>
     </message>
 </context>
 <context>
@@ -819,27 +819,27 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Name for your label</source>
-        <translation type="unfinished"/>
+        <translation>Asigne nombre a su etiqueta</translation>
     </message>
     <message>
         <source>Label&apos;s name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>El nombre de la etiqueta no puede estar en blanco.</translation>
     </message>
     <message>
         <source>Perfect!</source>
-        <translation type="unfinished"/>
+        <translation>¡Perfecto!</translation>
     </message>
     <message>
         <source>Hot stuff</source>
-        <translation type="unfinished"/>
+        <translation>Material importante</translation>
     </message>
     <message>
         <source>Create new label</source>
-        <translation type="unfinished"/>
+        <translation>Crear nueva etiqueta</translation>
     </message>
     <message>
         <source>Edit label &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Editar etiqueta &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -2200,11 +2200,11 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     </message>
     <message>
         <source>Alternate row colors in lists</source>
-        <translation type="unfinished"/>
+        <translation>Alternar colores de filas en los listados</translation>
     </message>
     <message>
         <source>Display &amp;documentation</source>
-        <translation type="unfinished"/>
+        <translation>Presentación &amp;documentación</translation>
     </message>
 </context>
 <context>
@@ -3078,15 +3078,15 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>New label</source>
-        <translation type="unfinished"/>
+        <translation>Nueva etiqueta</translation>
     </message>
     <message>
         <source>This account does not allow you to create labels.</source>
-        <translation type="unfinished"/>
+        <translation>Esta cuenta no permite crear etiquetas.</translation>
     </message>
     <message>
         <source>Not allowed</source>
-        <translation type="unfinished"/>
+        <translation>No está permitido</translation>
     </message>
 </context>
 <context>
@@ -3606,7 +3606,7 @@ versión pulsando en esta notificación emergente..</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
-        <translation type="unfinished"/>
+        <translation>Fuentes estándar en línea (RSS/ATOM/JSON)</translation>
     </message>
 </context>
 <context>
