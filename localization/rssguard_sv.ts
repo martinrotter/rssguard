@@ -1317,43 +1317,43 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation>Lösenord för ditt NextCloud-konto</translation>
+        <translation>Lösenord för ditt Nextcloud-konto</translation>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation>Användarnamn för ditt NextCloud-konto</translation>
+        <translation>Användarnamn för ditt Nextcloud-konto</translation>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation>URL för din NextCloud-server, utan API-sökväg</translation>
+        <translation>URL för din Nextcloud-server, utan API-sökväg</translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
-        <translation>Lägg till nytt NextCloud News-konto</translation>
+        <translation>Lägg till nytt Nextcloud News-konto</translation>
     </message>
     <message>
         <source>Edit existing Nextcloud News account</source>
-        <translation>Redigera befintligt NextCloud News-konto</translation>
+        <translation>Redigera befintligt Nextcloud News-konto</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation>Den valda NextCloud News-servern kör en version som inte stöds.</translation>
+        <translation>Den valda Nextcloud News-servern kör en version som inte stöds.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>NextClouds nyhetsserver fungerar med version %1, då minst version %2 krävs.</translation>
+        <translation>Nextclouds nyhetsserver fungerar med version %1, då minst version %2 krävs.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation>NextClouds nyhetsserver är okay.</translation>
+        <translation>Nextclouds nyhetsserver är okay.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation>Nätverksfel! Har du angett korrekt NextCloud-slutpunkt och lösenord?</translation>
+        <translation>Nätverksfel! Har du angett korrekt Nextcloud-slutpunkt och lösenord?</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
-        <translation>Den valda NextCloud News-servern kör version %1 som inte stöds. Lägst version %2 krävs.</translation>
+        <translation>Den valda Nextcloud News-servern kör version %1 som inte stöds. Lägst version %2 krävs.</translation>
     </message>
 </context>
 <context>

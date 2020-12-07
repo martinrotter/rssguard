@@ -1327,11 +1327,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
-        <translation>添加新 NextCloud News 账户</translation>
+        <translation>添加新 Nextcloud News 账户</translation>
     </message>
     <message>
         <source>Edit existing Nextcloud News account</source>
-        <translation>编辑现有的 NextCloud News 账户</translation>
+        <translation>编辑现有的 Nextcloud News 账户</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
