@@ -17,8 +17,6 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
   friend class FeedsView;
 
   public:
-
-    // Constructors and destructors.
     explicit FormMain(QWidget* parent = nullptr, Qt::WindowFlags f = Qt::WindowType::Widget);
     virtual ~FormMain();
 
@@ -73,18 +71,14 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     void reportABug();
     void donate();
 
-  private:
-
-    // Event handler reimplementations.
+  protected:
     virtual void changeEvent(QEvent* event);
+    virtual void closeEvent(QCloseEvent* event);
+    virtual void hideEvent(QHideEvent* event);
 
-    // Creates all needed menus and sets them up.
+  private:
     void prepareMenus();
-
-    // Creates needed connections for this window.
     void createConnections();
-
-    // Sets up proper icons for this widget.
     void setupIcons();
 
     QScopedPointer<Ui::FormMain> m_ui;

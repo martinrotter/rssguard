@@ -379,6 +379,7 @@ void FormMain::updateAccountsMenu() {
 
 void FormMain::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   Q_UNUSED(results)
+
   statusBar()->clearProgressFeeds();
   tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
 }
@@ -819,6 +820,18 @@ void FormMain::changeEvent(QEvent* event) {
   }
 
   QMainWindow::changeEvent(event);
+}
+
+void FormMain::closeEvent(QCloseEvent* event) {
+  QMainWindow::closeEvent(event);
+
+  qDebugNN << LOGSEC_GUI << "Main window's close event";
+}
+
+void FormMain::hideEvent(QHideEvent* event) {
+  QMainWindow::hideEvent(event);
+
+  qDebugNN << LOGSEC_GUI << "Main window's hide event";
 }
 
 void FormMain::showDocs() {
