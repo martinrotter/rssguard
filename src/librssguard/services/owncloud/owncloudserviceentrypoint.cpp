@@ -27,7 +27,7 @@ bool OwnCloudServiceEntryPoint::isSingleInstanceService() const {
 }
 
 QString OwnCloudServiceEntryPoint::name() const {
-  return QSL("NextCloud News");
+  return QSL("Nextcloud News");
 }
 
 QString OwnCloudServiceEntryPoint::code() const {
