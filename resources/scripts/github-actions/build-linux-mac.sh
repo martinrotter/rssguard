@@ -10,3 +10,5 @@ else
   echo "We are building for Mac OS X."
   is_linux=false
 fi
+
+echo "OS: $os; qmake args: $qmake_args"
