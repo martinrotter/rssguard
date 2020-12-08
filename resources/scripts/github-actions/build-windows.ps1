@@ -37,7 +37,6 @@ nmake.exe install
 
 cd "app"
 windeployqt.exe --verbose 1 --compiler-runtime --no-translations --release rssguard.exe librssguard.dll
-
 cd ".."
 
 # Copy OpenSSL.

@@ -29,3 +29,15 @@ jobs:
           submodules: true
       - name: Prepare environment and compile application
         run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}"
+      - name: Release assets
+        uses: softprops/action-gh-release@v1
+        with:
+          prerelease: true
+          tag_name: "devbuild"
+          files: |
+            .\rssguard-build\src\rssguard\*win64.exe
+            .\rssguard-build\src\rssguard\*win64.zip
+            ./rssguard-build/src/rssguard/rss*.AppImage
+            ./rssguard-build/src/rssguard/rss*.dmg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
