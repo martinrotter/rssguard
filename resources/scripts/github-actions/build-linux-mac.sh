@@ -22,4 +22,18 @@ if [ $is_linux = true ]; then
   sudo apt-get -y install gcc-7 g++-7 qt515tools qt515base qt515webengine
 else
   pip3 install aqtinstall
+  
+  QTPATH="$(pwd)/Qt"
+  QTVERSION="5.15.2"
+  QTBIN="$QTPATH/$QTVERSION/clang_64/bin"
+
+  echo "Qt bin directory is: $QTBIN"
+  echo "Qt will be installed to: $QTPATH"
+
+  aqt install -O "$QTPATH" 5.15.2 mac desktop clang_64 -m qtwebengine
+
+  export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/clang_64/plugins"
+  export PATH="$QTBIN:$PATH"
+
+  qmake --version
 fi
