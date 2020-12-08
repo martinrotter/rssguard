@@ -17,6 +17,4 @@ RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed us
 
 Application icon was kindly contributed by Siddharth Yadav - @Siddharth_yd (Instagram), illustrationdesignsid@gmail.com (e-mail).
 
-Development builds can be downloaded [here](https://github.com/martinrotter/rssguard/releases/tag/devbuild).
-
-Documentation is [here](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md).
+Development builds can be downloaded [here](https://github.com/martinrotter/rssguard/releases/tag/devbuild). Documentation is [here](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md).
