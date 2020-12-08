@@ -20,3 +20,26 @@ $qt_path = (Resolve-Path $qt_stub).Path
 $qt_qmake = "$qt_path\bin\qmake.exe"
 
 $env:PATH = "$qt_path\bin\;" + $env:PATH
+
+mkdir "rssguard-build"
+cd "rssguard-build"
+& "$qt_qmake" "..\build.pro" "-r" "USE_WEBENGINE=$webengine" "CONFIG-=debug" "CONFIG-=debug_and_release" "CONFIG*=release"
+nmake.exe
+
+cd "src\rssguard"
+nmake.exe install
+
+cd "app"
+windeployqt.exe --verbose 1 --compiler-runtime --no-translations --release rssguard.exe librssguard.dll
+
+cd ".."
+
+# Copy OpenSSL.
+Copy-Item -Path "$qt_path\bin\libcrypto*.dll" -Destination ".\app\"
+Copy-Item -Path "$qt_path\bin\libssl*.dll" -Destination ".\app\"
+
+# Copy MySQL Qt plugin.
+Copy-Item -Path "$qt_path\bin\libmariadb.dll" -Destination ".\app\"
+
+nmake.exe windows_all
+ls
