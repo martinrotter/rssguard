@@ -7,7 +7,9 @@ echo "OS: $os; WebEngine: $webengine"
 $old_pwd = $pwd.Path
 
 # Prepare environment.
-cmd.exe /k "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat" `& powershell
+Install-Module Pscx -Scope CurrentUser -AllowClobber -Force
+Install-Module VSSetup -Scope CurrentUser -AllowClobber -Force
+Import-VisualStudioVars
 
 # Get Qt.
 $qt_version = "5.15.1"
