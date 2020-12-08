@@ -25,6 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           submodules: true
       - name: Prepare environment and compile application
         run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}"
