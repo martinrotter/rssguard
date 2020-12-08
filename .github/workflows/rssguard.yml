@@ -35,7 +35,6 @@ jobs:
           prerelease: true
           name: "Development builds"
           tag_name: "devbuild"
-          body: "You can download RSS Guard development builds below. Latest dev. build was compiled from: $GITHUB_SHA"
           files: |
             .\rssguard-build\src\rssguard\*win64.exe
             .\rssguard-build\src\rssguard\*win64.zip
