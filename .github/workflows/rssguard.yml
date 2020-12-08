@@ -22,5 +22,6 @@ jobs:
           - os: macos-10.15
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
     steps:
+      - uses: actions/checkout@v2
       - name: Compile app
         run: ${{ matrix.script_name }}
