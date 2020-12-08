@@ -9,7 +9,7 @@ $old_pwd = $pwd.Path
 # Prepare environment.
 Install-Module Pscx -Scope CurrentUser -AllowClobber -Force
 Install-Module VSSetup -Scope CurrentUser -AllowClobber -Force
-Import-VisualStudioVars
+Import-VisualStudioVars -Architecture x64
 
 # Get Qt.
 $qt_version = "5.15.1"
