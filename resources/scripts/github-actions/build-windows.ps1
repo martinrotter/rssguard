@@ -1,1 +1,1 @@
-echo "testttt $args[0]"
+echo "testttt $args[0] $args[1]"

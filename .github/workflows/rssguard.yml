@@ -25,4 +25,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Compile app
-        run: ${{ matrix.script_name }} ${{ matrix.qmake_args }}
+        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.qmake_args }}"
