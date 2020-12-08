@@ -1,0 +1,26 @@
+---
+name: rssguard
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build-rssguard:
+    name: "Build RSS Guard on ${{ matrix.os }}"
+    runs-on: "${{ matrix.os }}"
+    strategy:
+      matrix:
+        os: [windows-2019, ubuntu-16.04, macos-10.15]
+        include:
+          - os: windows-2019
+            script_name: .\resources\scripts\github-actions\build-windows.ps1
+          - os: ubuntu-16.04
+            script_name: .\resources\scripts\github-actions\build-linux-mac.sh
+          - os: macos-10.15
+            script_name: .\resources\scripts\github-actions\build-linux-mac.sh
+    steps:
+      - name: Compile app
+        run: ${{ matrix.script_name }}
