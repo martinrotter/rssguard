@@ -14,6 +14,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2019, ubuntu-16.04, macos-10.15]
+        qmake_args: ["USE_WEBENGINE=true"]
         include:
           - os: windows-2019
             script_name: .\resources\scripts\github-actions\build-windows.ps1
@@ -24,4 +25,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Compile app
-        run: ${{ matrix.script_name }}
+        run: ${{ matrix.script_name }} ${{ matrix.qmake_args }}
