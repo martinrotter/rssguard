@@ -9,12 +9,12 @@ on:
 
 jobs:
   build-rssguard:
-    name: "rssguard; ${{ matrix.os }}; ${{ matrix.qmake_args }}"
+    name: "${{ matrix.os }}; webengine = ${{ matrix.use_webengine }}"
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
         os: [windows-2019, ubuntu-16.04, macos-10.15]
-        qmake_args: ["USE_WEBENGINE=true"]
+        use_webengine: ["true", "false"]
         include:
           - os: windows-2019
             script_name: .\resources\scripts\github-actions\build-windows.ps1
@@ -27,4 +27,4 @@ jobs:
         with:
           submodules: true
       - name: Prepare environment and compile application
-        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.qmake_args }}"
+        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}"

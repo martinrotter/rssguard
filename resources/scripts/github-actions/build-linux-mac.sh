@@ -1,7 +1,7 @@
 #!/bin/bash
 
 os="$1"
-qmake_args="$2"
+webengine="$2"
 
 if [[ "$os" == *"ubuntu"* ]]; then
   echo "We are building for GNU/Linux on Ubuntu."
@@ -11,7 +11,7 @@ else
   is_linux=false
 fi
 
-echo "OS: $os; qmake args: $qmake_args"
+echo "OS: $os; WebEngine: $webengine"
 
 # Prepare environment.
 if [ $is_linux = true ]; then
@@ -43,13 +43,13 @@ fi
 # Build application and package it.
 if [ $is_linux = true ]; then
   mkdir rssguard-build && cd rssguard-build
-  qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
+  qmake .. "USE_WEBENGINE=$webengine"
   make
   make install
   cd "src/rssguard"
 else
   mkdir rssguard-build && cd rssguard-build
-  qmake .. "$qmake_args"
+  qmake .. "USE_WEBENGINE=$webengine"
   make
   make install
   cd "src/rssguard"
