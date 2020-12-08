@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-rssguard:
-    name: "Build RSS Guard on ${{ matrix.os }}"
+    name: "Build RSS Guard on ${{ matrix.os }} with ${{ matrix.qmake_args }}"
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
@@ -24,5 +24,7 @@ jobs:
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
     steps:
       - uses: actions/checkout@v2
-      - name: Compile app
+        with:
+          submodules: true
+      - name: Prepare environment and compile application
         run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.qmake_args }}"
