@@ -9,7 +9,7 @@ Official downloads are available [here](https://github.com/martinrotter/rssguard
 ![RSS Guard is 100% clean.](http://www.softpedia.com/_img/softpedia_100_free.png)
 
 ## Development builds
-Development builds can be downloaded [here for Windows](https://bintray.com/martinrotter/rssguard/Development/Windows) and [here for Linux or Mac OS](https://bintray.com/martinrotter/rssguard/Development/LinuxMacOs).
+Development builds can be downloaded [here](https://github.com/martinrotter/rssguard/releases/tag/devbuild).
 
 ## Installation packages naming
 **Windows builds** of RSS Guard are generated automatically by the tool called AppVeyor. These builds have auto-generated names. In RSS Guard [downloads page](https://github.com/martinrotter/rssguard/releases) you can see filenames like:
@@ -25,4 +25,4 @@ The structure of these filenames is quite trivial and easily understandable for 
  * `<platform>` = `win32` (This is the target platform which the application can run on.),
  * `<fileformat>` = `exe` (This is self-explanatory.).
 
-Note that same file naming scheme is used for auto-generated builds for Linux and Mac OS.
+Note that same file naming scheme for development builds might be little different. Specifically, `<version>` field is omitted.

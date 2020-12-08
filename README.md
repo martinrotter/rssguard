@@ -1,8 +1,6 @@
 RSS Guard
 =========
 
-[![AppVeyor](https://img.shields.io/appveyor/ci/martinrotter/rssguard.svg?maxAge=360)](https://ci.appveyor.com/project/martinrotter/rssguard)
-[![Travis CI](https://img.shields.io/travis/martinrotter/rssguard.svg?maxAge=360)](https://travis-ci.org/martinrotter/rssguard)
 [![Total downloads](https://img.shields.io/github/downloads/martinrotter/rssguard/total.svg?maxAge=360)](http://www.somsubhra.com/github-release-stats/?username=martinrotter&repository=rssguard&search=0)
 [![Version](https://img.shields.io/github/release/martinrotter/rssguard.svg?maxAge=360)](https://raw.githubusercontent.com/martinrotter/rssguard/master/resources/text/CHANGELOG)
 [![Packaging status](https://repology.org/badge/tiny-repos/rssguard.svg)](https://repology.org/project/rssguard/versions)
@@ -19,6 +17,6 @@ RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed us
 
 Application icon was kindly contributed by Siddharth Yadav - @Siddharth_yd (Instagram), illustrationdesignsid@gmail.com (e-mail).
 
-Development builds can be downloaded [here for Windows](https://bintray.com/martinrotter/rssguard/Development/Windows) and [here for Linux/Mac](https://bintray.com/martinrotter/rssguard/Development/LinuxMacOs).
+Development builds can be downloaded [here](https://github.com/martinrotter/rssguard/releases/tag/devbuild).
 
 Documentation is [here](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md).
