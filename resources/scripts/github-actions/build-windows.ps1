@@ -1,1 +1,4 @@
-echo "testttt $args[0] $args[1]"
+os = $args[0]
+qmake_args = $args[1]
+
+echo "We are building for GNU/Linux on Ubuntu."
