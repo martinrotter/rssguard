@@ -21,6 +21,10 @@ $qt_qmake = "$qt_path\bin\qmake.exe"
 
 $env:PATH = "$qt_path\bin\;" + $env:PATH
 
+# Prepare environment.
+& "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+
+# Build application.
 mkdir "rssguard-build"
 cd "rssguard-build"
 & "$qt_qmake" "..\build.pro" "-r" "USE_WEBENGINE=$webengine" "CONFIG-=debug" "CONFIG-=debug_and_release" "CONFIG*=release"
