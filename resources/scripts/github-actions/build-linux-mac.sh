@@ -20,6 +20,8 @@ if [ $is_linux = true ]; then
 
   sudo apt-get update
   sudo apt-get -y install gcc-7 g++-7 qt515tools qt515base qt515webengine
+  
+  source /opt/qt515/bin/qt515-env.sh
 else
   pip3 install aqtinstall
   
@@ -36,4 +38,41 @@ else
   export PATH="$QTBIN:$PATH"
 
   qmake --version
+fi
+
+# Build application and package it.
+if [ $is_linux = true ]; then
+  mkdir rssguard-build && cd rssguard-build
+  qmake .. "USE_WEBENGINE=$USE_WEBENGINE"
+  make
+  make install
+  cd "src/rssguard"
+else
+  mkdir rssguard-build && cd rssguard-build
+  qmake .. "$qmake_args"
+  make
+  make install
+  cd "src/rssguard"
+
+  # Fix .dylib linking.
+  install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" "RSS Guard.app/Contents/MacOS/rssguard"
+  install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" "rssguard"
+
+  otool -L "RSS Guard.app/Contents/MacOS/rssguard"
+  macdeployqt "./RSS Guard.app" -dmg
+
+  # Rename DMG.
+  set -- *.dmg
+  
+  dmgname="$1"
+  git_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+  git_revision=$(git rev-parse --short HEAD)
+
+  #if [ "$USE_WEBENGINE" = true ]; then
+  #  dmgnewname="rssguard-${git_tag}-${git_revision}-mac64.dmg"
+  #else
+  #  dmgnewname="rssguard-${git_tag}-${git_revision}-nowebengine-mac64.dmg"
+  #fi
+
+  #mv "$dmgname" "$dmgnewname"
 fi

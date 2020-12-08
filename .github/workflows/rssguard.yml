@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-rssguard:
-    name: "Build RSS Guard on ${{ matrix.os }} with ${{ matrix.qmake_args }}"
+    name: "rssguard; ${{ matrix.os }}; ${{ matrix.qmake_args }}"
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
