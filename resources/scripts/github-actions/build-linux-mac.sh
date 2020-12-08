@@ -3,6 +3,7 @@
 os="$1"
 webengine="$2"
 
+# Determine OS.
 if [[ "$os" == *"ubuntu"* ]]; then
   echo "We are building for GNU/Linux on Ubuntu."
   is_linux=true
@@ -20,6 +21,12 @@ if [ $is_linux = true ]; then
 
   sudo apt-get update
   sudo apt-get -y install gcc-7 g++-7 qt515tools qt515base qt515webengine
+  sudo apt-get -y install openssl libssl-dev libgl1-mesa-dev 
+
+  sudo update-alternatives --remove-all gcc 
+  sudo update-alternatives --remove-all g++
+  sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50
+  sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50
   
   source /opt/qt515/bin/qt515-env.sh
 else
@@ -41,19 +48,41 @@ else
 fi
 
 # Build application and package it.
-if [ $is_linux = true ]; then
-  mkdir rssguard-build && cd rssguard-build
-  qmake .. "USE_WEBENGINE=$webengine"
-  make
-  make install
-  cd "src/rssguard"
-else
-  mkdir rssguard-build && cd rssguard-build
-  qmake .. "USE_WEBENGINE=$webengine"
-  make
-  make install
-  cd "src/rssguard"
+git_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+git_revision=$(git rev-parse --short HEAD)
 
+mkdir rssguard-build && cd rssguard-build
+qmake .. "USE_WEBENGINE=$webengine"
+make
+make install
+cd "src/rssguard"
+  
+if [ $is_linux = true ]; then
+  # Obtain linuxdeployqt.
+  wget -c https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+  chmod a+x linuxdeployqt-continuous-x86_64.AppImage 
+
+  # Create AppImage.
+  unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations
+
+  if [[ "$webengine" == "true" ]]; then
+    # Copy some NSS3 files to prevent WebEngine crashes.
+    cp /usr/lib/x86_64-linux-gnu/nss/* ./AppDir/usr/lib/ -v
+  fi
+
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -appimage -no-translations
+
+  # Rename AppImaage.
+  set -- R*.AppImage
+  imagename="$1"
+  
+  if [[ "$webengine" == "true" ]]; then
+    imagenewname="rssguard-${git_tag}-${git_revision}-linux64.AppImage"
+  else
+    imagenewname="rssguard-${git_tag}-${git_revision}-nowebengine-linux64.AppImage"
+  fi
+else
   # Fix .dylib linking.
   install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" "RSS Guard.app/Contents/MacOS/rssguard"
   install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" "rssguard"
@@ -63,16 +92,14 @@ else
 
   # Rename DMG.
   set -- *.dmg
-  
-  dmgname="$1"
-  git_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
-  git_revision=$(git rev-parse --short HEAD)
+  imagename="$1"
 
-  #if [ "$USE_WEBENGINE" = true ]; then
-  #  dmgnewname="rssguard-${git_tag}-${git_revision}-mac64.dmg"
-  #else
-  #  dmgnewname="rssguard-${git_tag}-${git_revision}-nowebengine-mac64.dmg"
-  #fi
-
-  #mv "$dmgname" "$dmgnewname"
+  if [[ "$webengine" == "true" ]]; then
+    imagenewname="rssguard-${git_tag}-${git_revision}-mac64.dmg"
+  else
+    imagenewname="rssguard-${git_tag}-${git_revision}-nowebengine-mac64.dmg"
+  fi
 fi
+
+mv "$imagename" "$imagenewname"
+ls
