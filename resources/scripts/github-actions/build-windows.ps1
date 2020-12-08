@@ -6,6 +6,9 @@ echo "OS: $os; WebEngine: $webengine"
 
 $old_pwd = $pwd.Path
 
+# Prepare environment.
+cmd.exe /k "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat" `& powershell
+
 # Get Qt.
 $qt_version = "5.15.1"
 $qt_stub = "qt-$qt_version-dynamic-msvc2019-x86_64"
@@ -20,9 +23,6 @@ $qt_path = (Resolve-Path $qt_stub).Path
 $qt_qmake = "$qt_path\bin\qmake.exe"
 
 $env:PATH = "$qt_path\bin\;" + $env:PATH
-
-# Prepare environment.
-& "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
 
 # Build application.
 mkdir "rssguard-build"
