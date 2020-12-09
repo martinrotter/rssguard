@@ -53,7 +53,7 @@ jobs:
           files: |
             .\rssguard-build\src\rssguard\rssguard-*win64.exe
             .\rssguard-build\src\rssguard\rssguard-*win64.7z
-            ./rssguard-build/src/rssguard/rssguard-*mac64.AppImage
-            ./rssguard-build/src/rssguard/rssguard-*linux64.dmg
+            ./rssguard-build/src/rssguard/rssguard-*mac64.dmg
+            ./rssguard-build/src/rssguard/rssguard-*linux64.AppImage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
