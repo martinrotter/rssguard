@@ -25,6 +25,7 @@ jobs:
     steps:
       - name: Delete old development binaries
         uses: mknejp/delete-release-assets@v1
+        if: strategy.job-index == 0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: devbuild
