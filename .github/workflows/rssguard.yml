@@ -23,13 +23,26 @@ jobs:
           - os: macos-10.15
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
     steps:
+      - name: Delete old development binaries
+        uses: mknejp/delete-release-assets@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: devbuild
+          assets: | 
+            *.AppImage
+            *.dmg
+            *.exe
+            *.7z
+          
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
           submodules: true
+          
       - name: Prepare environment and compile application
         run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}"
-      - name: Release assets
+        
+      - name: Release development binaries
         uses: softprops/action-gh-release@v1
         with:
           prerelease: true
