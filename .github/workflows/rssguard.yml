@@ -58,3 +58,16 @@ jobs:
             ./rssguard-build/src/rssguard/rssguard-*linux64.AppImage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Release stable binaries
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          prerelease: false
+          files: |
+            .\rssguard-build\src\rssguard\rssguard-*win64.exe
+            .\rssguard-build\src\rssguard\rssguard-*win64.7z
+            ./rssguard-build/src/rssguard/rssguard-*mac64.dmg
+            ./rssguard-build/src/rssguard/rssguard-*linux64.AppImage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
