@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<skin version="0.04">
+<skin version="0.05">
   <author>
     <name>Martin Rotter</name>
     <email>rotter.martinos@gmail.com</email>
@@ -7,5 +7,6 @@
   <palette>
     <color key="1">#7ae2ff</color>
     <color key="2">#f08f84</color>
+    <color key="3">#77dd77</color>
   </palette>
 </skin>

@@ -1,0 +1,132 @@
+// For license of this file, see <project-root-folder>/LICENSE.md.
+
+#include "core/messagesforfiltersmodel.h"
+
+#include "core/messagefilter.h"
+#include "definitions/definitions.h"
+#include "exceptions/filteringexception.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/skinfactory.h"
+
+MessagesForFiltersModel::MessagesForFiltersModel(QObject* parent) : QAbstractTableModel(parent) {
+  m_headerData << tr("Read") << tr("Important") << tr("Title")
+               << tr("URL") << tr("Author") << tr("Created on");
+}
+
+void MessagesForFiltersModel::setMessages(const QList<Message>& messages) {
+  m_filteringDecisions.clear();
+  m_messages = messages;
+
+  emit layoutAboutToBeChanged();
+  emit layoutChanged();
+}
+
+int MessagesForFiltersModel::rowCount(const QModelIndex& parent) const {
+  Q_UNUSED(parent)
+  return m_messages.size();
+}
+
+int MessagesForFiltersModel::columnCount(const QModelIndex& parent) const {
+  Q_UNUSED(parent)
+  return m_headerData.size();
+}
+
+QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const {
+  auto msg = messageForRow(index.row());
+
+  switch (role) {
+    case Qt::ItemDataRole::BackgroundRole: {
+      if (m_filteringDecisions.contains(index.row())) {
+        switch (m_filteringDecisions.value(index.row())) {
+          case MessageObject::FilteringAction::Accept:
+            return qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Allright];
+
+          case MessageObject::FilteringAction::Ignore:
+            return qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Error];
+        }
+      }
+
+      break;
+    }
+
+    case Qt::ItemDataRole::DisplayRole: {
+      switch (index.column()) {
+        case MFM_MODEL_ISREAD:
+          return msg.m_isRead;
+
+        case MFM_MODEL_ISIMPORTANT:
+          return msg.m_isImportant;
+
+        case MFM_MODEL_TITLE:
+          return msg.m_title;
+
+        case MFM_MODEL_URL:
+          return msg.m_url;
+
+        case MFM_MODEL_AUTHOR:
+          return msg.m_author;
+
+        case MFM_MODEL_CREATED:
+          return msg.m_created;
+      }
+
+      break;
+    }
+  }
+
+  return QVariant();
+}
+
+QVariant MessagesForFiltersModel::headerData(int section, Qt::Orientation orientation, int role) const {
+  Q_UNUSED(orientation)
+
+  switch (role) {
+    case Qt::ItemDataRole::DisplayRole:
+      if (section >=0 && section < m_headerData.size()) {
+        return m_headerData.at(section);
+      }
+
+      break;
+  }
+
+  return QVariant();
+}
+
+Qt::ItemFlags MessagesForFiltersModel::flags(const QModelIndex& index) const {
+  Q_UNUSED(index)
+  return Qt::ItemFlag::ItemIsEnabled | Qt::ItemFlag::ItemIsSelectable;
+}
+
+int MessagesForFiltersModel::messagesCount() const {
+  return m_messages.size();
+}
+
+void MessagesForFiltersModel::testFilter(MessageFilter* filter, QJSEngine* engine, MessageObject* msg_proxy) {
+  m_filteringDecisions.clear();
+
+  for (int i = 0; i < m_messages.size(); i++) {
+    Message* msg = messageForRow(i);
+
+    msg_proxy->setMessage(msg);
+
+    try {
+      MessageObject::FilteringAction decision = filter->filterMessage(engine);
+
+      m_filteringDecisions.insert(i, decision);
+    }
+    catch (const FilteringException& ex) {
+      throw ex;
+    }
+  }
+
+  emit layoutAboutToBeChanged();
+  emit layoutChanged();
+}
+
+Message* MessagesForFiltersModel::messageForRow(int row) {
+  return &m_messages[row];
+}
+
+Message MessagesForFiltersModel::messageForRow(int row) const {
+  return m_messages[row];
+}

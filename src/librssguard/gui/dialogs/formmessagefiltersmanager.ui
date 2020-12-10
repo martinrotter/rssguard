@@ -6,386 +6,407 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>845</width>
-    <height>644</height>
+    <width>1229</width>
+    <height>546</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Message filters</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="0" column="0">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="2">
-      <widget class="QPushButton" name="m_btnRemoveSelected">
-       <property name="text">
-        <string>Remove selected</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="m_btnAddNew">
-       <property name="text">
-        <string>Add new</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="0" column="0" colspan="3">
-      <widget class="QListWidget" name="m_listFilters">
-       <property name="uniformItemSizes">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="1">
-    <layout class="QFormLayout" name="formLayout_3">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>Account</string>
-       </property>
-       <property name="buddy">
-        <cstring>m_cmbAccounts</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="m_cmbAccounts"/>
-     </item>
-     <item row="1" column="0" colspan="2">
-      <layout class="QHBoxLayout" name="horizontalLayout_5">
-       <item>
-        <widget class="QTreeView" name="m_treeFeeds">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>150</height>
-          </size>
-         </property>
-         <property name="uniformRowHeights">
-          <bool>true</bool>
-         </property>
-         <attribute name="headerVisible">
-          <bool>false</bool>
-         </attribute>
-        </widget>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="handleWidth">
+      <number>1</number>
+     </property>
+     <property name="childrenCollapsible">
+      <bool>false</bool>
+     </property>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,2" columnstretch="2,3">
+       <item row="0" column="1">
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="2" column="0">
           <widget class="QPushButton" name="m_btnCheckAll">
            <property name="text">
             <string>&amp;Check all</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="2" column="2">
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="0" colspan="3">
+          <widget class="QTreeView" name="m_treeFeeds">
+           <property name="uniformRowHeights">
+            <bool>true</bool>
+           </property>
+           <attribute name="headerVisible">
+            <bool>false</bool>
+           </attribute>
+          </widget>
+         </item>
+         <item row="2" column="1">
           <widget class="QPushButton" name="m_btnUncheckAll">
            <property name="text">
             <string>&amp;Uncheck all</string>
            </property>
           </widget>
          </item>
-         <item>
-          <spacer name="verticalSpacer">
+         <item row="0" column="0" colspan="3">
+          <widget class="QComboBox" name="m_cmbAccounts"/>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="0">
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="1" column="2">
+          <widget class="QPushButton" name="m_btnRemoveSelected">
+           <property name="text">
+            <string>Remove selected</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="m_btnAddNew">
+           <property name="text">
+            <string>&amp;New filter</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <spacer name="horizontalSpacer">
            <property name="orientation">
-            <enum>Qt::Vertical</enum>
+            <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>20</width>
-             <height>40</height>
+             <width>40</width>
+             <height>20</height>
             </size>
            </property>
           </spacer>
          </item>
+         <item row="0" column="0" colspan="3">
+          <widget class="QListWidget" name="m_listFilters">
+           <property name="uniformItemSizes">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QGroupBox" name="m_gbDetails">
+         <property name="title">
+          <string>Message filter details</string>
+         </property>
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Title</string>
+            </property>
+            <property name="buddy">
+             <cstring>m_txtTitle</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="m_txtTitle">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="placeholderText">
+             <string>Title of message filter</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>JavaScript code</string>
+            </property>
+            <property name="buddy">
+             <cstring>m_txtScript</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPlainTextEdit" name="m_txtScript">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="placeholderText">
+             <string>Your JavaScript-based message filtering logic</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QPushButton" name="m_btnTest">
+              <property name="text">
+               <string>&amp;Test</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="m_btnRunOnMessages">
+              <property name="text">
+               <string>Process checked feeds</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="m_btnBeautify">
+              <property name="text">
+               <string>&amp;Beautify</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="m_btnDetailedHelp">
+              <property name="text">
+               <string>Detailed &amp;help</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
       </layout>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QGroupBox" name="m_gbDetails">
-     <property name="title">
-      <string>Message filter details</string>
-     </property>
-     <layout class="QFormLayout" name="formLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Title</string>
+     </widget>
+     <widget class="QTabWidget" name="m_twMessages">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="m_tabExistingMessages">
+       <attribute name="title">
+        <string>Existing messages</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <property name="leftMargin">
+         <number>0</number>
         </property>
-        <property name="buddy">
-         <cstring>m_txtTitle</cstring>
+        <property name="topMargin">
+         <number>0</number>
         </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLineEdit" name="m_txtTitle">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>300</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="placeholderText">
-           <string>Title of message filter</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>JavaScript code</string>
+        <property name="rightMargin">
+         <number>0</number>
         </property>
-        <property name="buddy">
-         <cstring>m_txtScript</cstring>
+        <property name="bottomMargin">
+         <number>0</number>
         </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
-         <widget class="QPlainTextEdit" name="m_txtScript">
-          <property name="placeholderText">
-           <string>Your JavaScript-based message filtering logic</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTabWidget" name="m_tcMessage">
-          <property name="currentIndex">
+         <widget class="QTreeView" name="m_treeExistingMessages">
+          <property name="indentation">
            <number>0</number>
           </property>
-          <widget class="QWidget" name="m_tabSample">
-           <attribute name="title">
-            <string>Sample message</string>
-           </attribute>
-           <layout class="QFormLayout" name="formLayout_2">
-            <property name="leftMargin">
-             <number>3</number>
-            </property>
-            <property name="topMargin">
-             <number>3</number>
-            </property>
-            <property name="rightMargin">
-             <number>3</number>
-            </property>
-            <property name="bottomMargin">
-             <number>3</number>
-            </property>
-            <item row="0" column="0" colspan="2">
-             <layout class="QHBoxLayout" name="horizontalLayout_4">
-              <item>
-               <widget class="QCheckBox" name="m_cbSampleRead">
-                <property name="text">
-                 <string>Read</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QCheckBox" name="m_cbSampleImportant">
-                <property name="text">
-                 <string>Important</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_4">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_4">
-              <property name="text">
-               <string>Title</string>
-              </property>
-              <property name="buddy">
-               <cstring>m_txtSampleTitle</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLineEdit" name="m_txtSampleTitle"/>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_6">
-              <property name="text">
-               <string>URL</string>
-              </property>
-              <property name="buddy">
-               <cstring>m_txtSampleUrl</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLineEdit" name="m_txtSampleUrl"/>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="label_7">
-              <property name="text">
-               <string>Author</string>
-              </property>
-              <property name="buddy">
-               <cstring>m_txtSampleAuthor</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QLineEdit" name="m_txtSampleAuthor"/>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_8">
-              <property name="text">
-               <string>Created on</string>
-              </property>
-              <property name="buddy">
-               <cstring>m_txtSampleCreatedOn</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QLineEdit" name="m_txtSampleCreatedOn"/>
-            </item>
-            <item row="5" column="0">
-             <widget class="QLabel" name="label_5">
-              <property name="text">
-               <string>Contents</string>
-              </property>
-              <property name="buddy">
-               <cstring>m_txtSampleContents</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="1">
-             <widget class="QPlainTextEdit" name="m_txtSampleContents"/>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="m_tabScriptOutput">
-           <attribute name="title">
-            <string>Script output</string>
-           </attribute>
-           <layout class="QHBoxLayout" name="horizontalLayout_6">
-            <property name="leftMargin">
-             <number>3</number>
-            </property>
-            <property name="topMargin">
-             <number>3</number>
-            </property>
-            <property name="rightMargin">
-             <number>3</number>
-            </property>
-            <property name="bottomMargin">
-             <number>3</number>
-            </property>
-            <item>
-             <widget class="QTextEdit" name="m_txtErrors">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>1</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
+          <property name="uniformRowHeights">
+           <bool>true</bool>
+          </property>
+          <property name="itemsExpandable">
+           <bool>false</bool>
+          </property>
          </widget>
         </item>
        </layout>
-      </item>
-      <item row="2" column="1">
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QPushButton" name="m_btnTest">
+      </widget>
+      <widget class="QWidget" name="m_tabSampleMessage">
+       <attribute name="title">
+        <string>Sample message</string>
+       </attribute>
+       <layout class="QFormLayout" name="formLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>&amp;Test!</string>
+           <string>Title</string>
+          </property>
+          <property name="buddy">
+           <cstring>m_txtSampleTitle</cstring>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="m_btnBeautify">
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="m_txtSampleTitle"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_6">
           <property name="text">
-           <string>&amp;Beautify!</string>
+           <string>URL</string>
+          </property>
+          <property name="buddy">
+           <cstring>m_txtSampleUrl</cstring>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="m_btnDetailedHelp">
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="m_txtSampleUrl"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_7">
           <property name="text">
-           <string>Detailed &amp;help</string>
+           <string>Author</string>
+          </property>
+          <property name="buddy">
+           <cstring>m_txtSampleAuthor</cstring>
           </property>
          </widget>
         </item>
-        <item>
-         <spacer name="horizontalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="m_txtSampleAuthor"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Created on</string>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
+          <property name="buddy">
+           <cstring>m_txtSampleCreatedOn</cstring>
           </property>
-         </spacer>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="m_txtSampleCreatedOn"/>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Contents</string>
+          </property>
+          <property name="buddy">
+           <cstring>m_txtSampleContents</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QPlainTextEdit" name="m_txtSampleContents"/>
+        </item>
+        <item row="0" column="0" colspan="2">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QCheckBox" name="m_cbSampleRead">
+            <property name="text">
+             <string>Read</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="m_cbSampleImportant">
+            <property name="text">
+             <string>Important</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
        </layout>
-      </item>
-     </layout>
+      </widget>
+      <widget class="QWidget" name="m_tabOutput">
+       <attribute name="title">
+        <string>Script output</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QTextEdit" name="m_txtErrors">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item>
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -411,17 +432,11 @@
   <tabstop>m_txtTitle</tabstop>
   <tabstop>m_txtScript</tabstop>
   <tabstop>m_btnTest</tabstop>
+  <tabstop>m_btnRunOnMessages</tabstop>
   <tabstop>m_btnBeautify</tabstop>
   <tabstop>m_btnDetailedHelp</tabstop>
-  <tabstop>m_tcMessage</tabstop>
-  <tabstop>m_cbSampleRead</tabstop>
-  <tabstop>m_cbSampleImportant</tabstop>
-  <tabstop>m_txtSampleTitle</tabstop>
-  <tabstop>m_txtSampleUrl</tabstop>
-  <tabstop>m_txtSampleAuthor</tabstop>
-  <tabstop>m_txtSampleCreatedOn</tabstop>
-  <tabstop>m_txtSampleContents</tabstop>
-  <tabstop>m_txtErrors</tabstop>
+  <tabstop>m_twMessages</tabstop>
+  <tabstop>m_treeExistingMessages</tabstop>
  </tabstops>
  <resources/>
  <connections>

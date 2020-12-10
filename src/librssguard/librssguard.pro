@@ -38,6 +38,7 @@ HEADERS += core/feeddownloader.h \
            core/message.h \
            core/messagefilter.h \
            core/messageobject.h \
+           core/messagesforfiltersmodel.h \
            core/messagesmodel.h \
            core/messagesmodelcache.h \
            core/messagesmodelsqllayer.h \
@@ -195,6 +196,7 @@ SOURCES += core/feeddownloader.cpp \
            core/message.cpp \
            core/messagefilter.cpp \
            core/messageobject.cpp \
+           core/messagesforfiltersmodel.cpp \
            core/messagesmodel.cpp \
            core/messagesmodelcache.cpp \
            core/messagesmodelsqllayer.cpp \

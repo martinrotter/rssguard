@@ -12,6 +12,7 @@
 class AccountCheckSortedModel;
 class MessageFilter;
 class FeedReader;
+class MessagesForFiltersModel;
 
 class FormMessageFiltersManager : public QDialog {
   Q_OBJECT
@@ -30,6 +31,7 @@ class FormMessageFiltersManager : public QDialog {
     void loadFilter();
     void loadFilters();
     void testFilter();
+    void displayMessagesOfFeed();
 
     // Load feeds/categories tree.
     void loadAccount(ServiceRoot* account);
@@ -56,6 +58,7 @@ class FormMessageFiltersManager : public QDialog {
     QList<ServiceRoot*> m_accounts;
     FeedReader* m_reader;
     bool m_loadingFilter;
+    MessagesForFiltersModel* m_msgModel;
 };
 
 #endif // FORMMESSAGEFILTERSMANAGER_H

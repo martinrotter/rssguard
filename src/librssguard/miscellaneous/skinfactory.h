@@ -13,7 +13,8 @@
 struct RSSGUARD_DLLSPEC Skin {
   enum class PaletteColors {
     Highlight = 1,
-    Error = 2
+    Error = 2,
+    Allright = 3
   };
 
   QString m_baseName;
