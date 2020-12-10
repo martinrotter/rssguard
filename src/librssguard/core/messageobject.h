@@ -21,14 +21,18 @@ class MessageObject : public QObject {
   Q_PROPERTY(QDateTime created READ created WRITE setCreated)
   Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
   Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
+  Q_PROPERTY(bool alreadyStored READ alreadyStored)
 
   public:
     enum class FilteringAction {
-      // Message is normally accepted and stored in DB.
+      // Message is normally accepted and stored in DB or updated.
       Accept = 1,
 
-      // Message is ignored and now stored in DB.
-      Ignore = 2
+      // Message is ignored and will not be stored in DB but is not purge if it already exists.
+      Ignore = 2,
+
+      // Message is purged from DB if it already exists.
+      Purge = 4
     };
 
     Q_ENUM(FilteringAction)
@@ -76,6 +80,8 @@ class MessageObject : public QObject {
     // Returns list of assigned and available messages.
     QList<Label*> assignedLabels() const;
     QList<Label*> availableLabels() const;
+
+    bool alreadyStored() const;
 
     // Generic Message's properties bindings.
     QString feedCustomId() const;

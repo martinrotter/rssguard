@@ -190,3 +190,7 @@ QList<Label*> MessageObject::assignedLabels() const {
 QList<Label*> MessageObject::availableLabels() const {
   return m_availableLabels;
 }
+
+bool MessageObject::alreadyStored() const {
+  return m_message->m_id > 0;
+}
