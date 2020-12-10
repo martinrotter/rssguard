@@ -53,6 +53,7 @@ class RSSGUARD_DLLSPEC Message {
     QString m_customHash;
     bool m_isRead;
     bool m_isImportant;
+    bool m_isDeleted;
     QList<Enclosure> m_enclosures;
 
     // List of custom IDs of labels assigned to this message.
@@ -75,8 +76,8 @@ inline bool operator!=(const Message& lhs, const Message& rhs) {
 
 // Serialize message state.
 // NOTE: This is used for persistent caching of message state changes.
-RSSGUARD_DLLSPEC QDataStream& operator<<(QDataStream& out, const Message& myObj);
-RSSGUARD_DLLSPEC QDataStream& operator>>(QDataStream& in, Message& myObj);
+RSSGUARD_DLLSPEC QDataStream& operator<<(QDataStream& out, const Message& my_obj);
+RSSGUARD_DLLSPEC QDataStream& operator>>(QDataStream& in, Message& my_obj);
 
 uint qHash(const Message& key, uint seed);
 uint qHash(const Message& key);

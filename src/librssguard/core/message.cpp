@@ -66,7 +66,7 @@ Message::Message() {
   m_title = m_url = m_author = m_contents = m_feedId = m_customId = m_customHash = "";
   m_enclosures = QList<Enclosure>();
   m_accountId = m_id = 0;
-  m_isRead = m_isImportant = false;
+  m_isRead = m_isImportant = m_isDeleted = false;
   m_assignedLabels = QList<Label*>();
 }
 
@@ -98,6 +98,7 @@ Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
   message.m_id = record.value(MSG_DB_ID_INDEX).toInt();
   message.m_isRead = record.value(MSG_DB_READ_INDEX).toBool();
   message.m_isImportant = record.value(MSG_DB_IMPORTANT_INDEX).toBool();
+  message.m_isDeleted = record.value(MSG_DB_DELETED_INDEX).toBool();
   message.m_feedId = record.value(MSG_DB_FEED_CUSTOM_ID_INDEX).toString();
   message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();
   message.m_url = record.value(MSG_DB_URL_INDEX).toString();
@@ -116,19 +117,20 @@ Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
   return message;
 }
 
-QDataStream& operator<<(QDataStream& out, const Message& myObj) {
-  out << myObj.m_accountId
-      << myObj.m_customHash
-      << myObj.m_customId
-      << myObj.m_feedId
-      << myObj.m_id
-      << myObj.m_isImportant
-      << myObj.m_isRead;
+QDataStream& operator<<(QDataStream& out, const Message& my_obj) {
+  out << my_obj.m_accountId
+      << my_obj.m_customHash
+      << my_obj.m_customId
+      << my_obj.m_feedId
+      << my_obj.m_id
+      << my_obj.m_isImportant
+      << my_obj.m_isRead
+      << my_obj.m_isDeleted;
 
   return out;
 }
 
-QDataStream& operator>>(QDataStream& in, Message& myObj) {
+QDataStream& operator>>(QDataStream& in, Message& my_obj) {
   int accountId;
   QString customHash;
   QString customId;
@@ -136,16 +138,18 @@ QDataStream& operator>>(QDataStream& in, Message& myObj) {
   int id;
   bool isImportant;
   bool isRead;
+  bool isDeleted;
 
-  in >> accountId >> customHash >> customId >> feedId >> id >> isImportant >> isRead;
+  in >> accountId >> customHash >> customId >> feedId >> id >> isImportant >> isRead >> isDeleted;
 
-  myObj.m_accountId = accountId;
-  myObj.m_customHash = customHash;
-  myObj.m_customId = customId;
-  myObj.m_feedId = feedId;
-  myObj.m_id = id;
-  myObj.m_isImportant = isImportant;
-  myObj.m_isRead = isRead;
+  my_obj.m_accountId = accountId;
+  my_obj.m_customHash = customHash;
+  my_obj.m_customId = customId;
+  my_obj.m_feedId = feedId;
+  my_obj.m_id = id;
+  my_obj.m_isImportant = isImportant;
+  my_obj.m_isRead = isRead;
+  my_obj.m_isDeleted = isDeleted;
 
   return in;
 }

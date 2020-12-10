@@ -17,6 +17,7 @@
 #include "network-web/webfactory.h"
 #include "services/abstract/accountcheckmodel.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/labelsnode.h"
 
 FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const QList<ServiceRoot*>& accounts, QWidget* parent)
   : QDialog(parent), m_feedsModel(new AccountCheckSortedModel(this)), m_rootItem(new RootItem()),
@@ -72,6 +73,8 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
           this, &FormMessageFiltersManager::onFeedChecked);
   connect(m_ui.m_treeFeeds->selectionModel(), &QItemSelectionModel::selectionChanged,
           this, &FormMessageFiltersManager::displayMessagesOfFeed);
+  connect(m_ui.m_btnRunOnMessages, &QPushButton::clicked,
+          this, &FormMessageFiltersManager::processCheckedFeeds);
 
   initializeTestingMessage();
   loadFilters();
@@ -165,14 +168,17 @@ void FormMessageFiltersManager::testFilter() {
   m_ui.m_txtErrors->clear();
 
   // Perform per-message filtering.
+  auto* selected_fd_cat = selectedCategoryFeed();
   QJSEngine filter_engine;
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   MessageObject msg_obj(&database,
-                        QString::number(NO_PARENT_CATEGORY),
+                        selected_fd_cat->kind() == RootItem::Kind::Feed
+                        ? selected_fd_cat->customId()
+                        : QString::number(NO_PARENT_CATEGORY),
                         selectedAccount() != nullptr
                                              ? selectedAccount()->accountId()
                                              : NO_PARENT_CATEGORY,
-                        {});
+                        selected_fd_cat->getParentServiceRoot()->labelsNode()->labels());
   auto* fltr = selectedFilter();
 
   MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
@@ -227,13 +233,52 @@ void FormMessageFiltersManager::testFilter() {
 }
 
 void FormMessageFiltersManager::displayMessagesOfFeed() {
-  auto* item = m_feedsModel->sourceModel()->itemForIndex(m_feedsModel->mapToSource(m_ui.m_treeFeeds->currentIndex()));
+  auto* item = selectedCategoryFeed();
 
   if (item != nullptr) {
     m_msgModel->setMessages(item->undeletedMessages());
   }
   else {
     m_msgModel->setMessages({});
+  }
+}
+
+void FormMessageFiltersManager::processCheckedFeeds() {
+  QList<RootItem*> checked = m_feedsModel->sourceModel()->checkedItems();
+  auto* fltr = selectedFilter();
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  for (const RootItem* it : checked) {
+    if (it->kind() == RootItem::Kind::Feed) {
+      QJSEngine filter_engine;
+      MessageObject msg_obj(&database,
+                            QString(),
+                            selectedAccount() != nullptr ? selectedAccount()->accountId() : NO_PARENT_CATEGORY,
+                            it->getParentServiceRoot()->labelsNode()->labels());
+
+      MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
+
+      // We process messages of the feed.
+      QList<Message> msgs = it->undeletedMessages();
+
+      for (int i = 0; i < msgs.size(); i++) {
+        Message& msg = msgs[i];
+
+        // TODO: create backup of msg and forward changes to
+        // caching mechanisms if needed.
+
+        MessageObject::FilteringAction result = fltr->filterMessage(&filter_engine);
+
+        if (result == MessageObject::FilteringAction::Purge) {
+          // TODO: Purge the message completely.
+          msgs.removeAt(i--);
+        }
+
+        // Message will be processed/update via SQL layer.
+      }
+
+      int updated_in_db = it->toFeed()->updateMessages(msgs, false);
+    }
   }
 }
 
@@ -393,6 +438,10 @@ void FormMessageFiltersManager::initializeTestingMessage() {
                                              "<p>WWF's goal is to: <q>Build a future where people live in harmony "
                                              "with nature.</q></p>"));
   m_ui.m_txtSampleCreatedOn->setText(QString::number(QDateTime::currentDateTimeUtc().toMSecsSinceEpoch()));
+}
+
+RootItem* FormMessageFiltersManager::selectedCategoryFeed() const {
+  return m_feedsModel->sourceModel()->itemForIndex(m_feedsModel->mapToSource(m_ui.m_treeFeeds->currentIndex()));
 }
 
 Message FormMessageFiltersManager::testingMessage() const {

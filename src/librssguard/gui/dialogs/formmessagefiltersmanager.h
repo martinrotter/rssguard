@@ -32,6 +32,7 @@ class FormMessageFiltersManager : public QDialog {
     void loadFilters();
     void testFilter();
     void displayMessagesOfFeed();
+    void processCheckedFeeds();
 
     // Load feeds/categories tree.
     void loadAccount(ServiceRoot* account);
@@ -49,6 +50,8 @@ class FormMessageFiltersManager : public QDialog {
     void loadAccounts();
     void beautifyScript();
     void initializeTestingMessage();
+
+    RootItem* selectedCategoryFeed() const;
     Message testingMessage() const;
 
   private:

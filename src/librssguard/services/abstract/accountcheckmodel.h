@@ -25,7 +25,9 @@ class AccountCheckModel : public QAbstractItemModel {
     bool setData(const QModelIndex& index, const QVariant& value, int role);
     Qt::ItemFlags flags(const QModelIndex& index) const;
 
-    bool isItemChecked(RootItem* item);
+    QList<RootItem*> checkedItems() const;
+
+    bool isItemChecked(RootItem* item) const;
     bool setItemChecked(RootItem* item, Qt::CheckState check);
 
     // Returns feed/category which lies at the specified index or

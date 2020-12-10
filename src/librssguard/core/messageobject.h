@@ -21,6 +21,7 @@ class MessageObject : public QObject {
   Q_PROPERTY(QDateTime created READ created WRITE setCreated)
   Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
   Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
+  Q_PROPERTY(bool isDeleted READ isDeleted WRITE setIsDeleted)
   Q_PROPERTY(bool alreadyStored READ alreadyStored)
 
   public:
@@ -107,6 +108,9 @@ class MessageObject : public QObject {
 
     bool isImportant() const;
     void setIsImportant(bool is_important);
+
+    bool isDeleted() const;
+    void setIsDeleted(bool is_deleted);
 
   private:
     QSqlDatabase* m_db;

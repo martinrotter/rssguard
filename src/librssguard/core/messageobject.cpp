@@ -175,6 +175,14 @@ void MessageObject::setIsImportant(bool is_important) {
   m_message->m_isImportant = is_important;
 }
 
+bool MessageObject::isDeleted() const {
+  return m_message->m_isDeleted;
+}
+
+void MessageObject::setIsDeleted(bool is_deleted) {
+  m_message->m_isDeleted = is_deleted;
+}
+
 QString MessageObject::feedCustomId() const {
   return m_feedCustomId;
 }
