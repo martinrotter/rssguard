@@ -291,10 +291,15 @@ QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray& updates_file
 
   for (QJsonValueRef i : document) {
     QJsonObject release = i.toObject();
+
+    if (release["tag_name"].toString() == QSL("devbuild")) {
+      continue;
+    }
+
     UpdateInfo update;
 
-    update.m_date = QDateTime::fromString(release["published_at"].toString(), QSL("yyyy-MM-ddTHH:mm:ssZ"));
     update.m_availableVersion = release["tag_name"].toString();
+    update.m_date = QDateTime::fromString(release["published_at"].toString(), QSL("yyyy-MM-ddTHH:mm:ssZ"));
     update.m_changes = release["body"].toString();
     QJsonArray assets = release["assets"].toArray();
 

@@ -43,9 +43,9 @@ else
 
   export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/clang_64/plugins"
   export PATH="$QTBIN:$PATH"
-
-  qmake --version
 fi
+
+qmake --version
 
 # Build application and package it.
 git_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
