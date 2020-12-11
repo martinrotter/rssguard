@@ -58,10 +58,12 @@ MessagePreviewer::MessagePreviewer(bool should_resize_to_fit, QWidget* parent)
   m_txtMessage = new MessageBrowser(should_resize_to_fit, this);
 #endif
 
+  m_toolBar->setOrientation(Qt::Orientation::Vertical);
+
   // NOTE: To make sure that if we have many labels and short message
+  // that whole toolbar is visible.
   m_toolBar->setSizePolicy(m_toolBar->sizePolicy().horizontalPolicy(), QSizePolicy::Policy::MinimumExpanding);
 
-  m_toolBar->setOrientation(Qt::Orientation::Vertical);
   m_layout->setContentsMargins(3, 3, 3, 3);
   m_layout->addWidget(m_txtMessage, 0, 1, 1, 1);
   m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
@@ -210,7 +212,7 @@ void MessagePreviewer::updateLabels(bool only_clear) {
     return;
   }
 
-  if (m_root.data() != nullptr && m_root.data()->getParentServiceRoot()->labelsNode()->labels().size() > 0) {
+  if (m_root.data() != nullptr && !m_root.data()->getParentServiceRoot()->labelsNode()->labels().isEmpty()) {
     m_separator = m_toolBar->addSeparator();
     QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 

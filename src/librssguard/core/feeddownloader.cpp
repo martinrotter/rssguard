@@ -159,12 +159,11 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
           switch (decision) {
             case MessageObject::FilteringAction::Accept:
-
               // Message is normally accepted, it could be tweaked by the filter.
               continue;
 
             case MessageObject::FilteringAction::Ignore:
-
+            default:
               // Remove the message, we do not want it.
               remove_msg = true;
               break;
@@ -201,7 +200,8 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
           // Label is not there anymore, it was deassigned.
           lbl->deassignFromMessage(*msg_orig);
 
-          qDebugNN << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
+          qDebugNN << LOGSEC_FEEDDOWNLOADER
+                   << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
                    << "was DEASSIGNED from message" << QUOTE_W_SPACE(msg_orig->m_customId)
                    << "by message filter(s).";
         }
@@ -213,7 +213,8 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
           // was newly assigned.
           lbl->assignToMessage(*msg_orig);
 
-          qDebugNN << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
+          qDebugNN << LOGSEC_FEEDDOWNLOADER
+                   << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
                    << "was ASSIGNED to message" << QUOTE_W_SPACE(msg_orig->m_customId)
                    << "by message filter(s).";
         }

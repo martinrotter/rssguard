@@ -2,6 +2,7 @@
 
 #include "miscellaneous/databasequeries.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -126,6 +127,36 @@ QList<Label*> DatabaseQueries::getLabels(const QSqlDatabase& db, int account_id)
       lbl->setCustomId(q.value(QSL("custom_id")).toString());
 
       labels << lbl;
+    }
+  }
+
+  return labels;
+}
+
+QList<Label*> DatabaseQueries::getLabelsForMessage(const QSqlDatabase& db,
+                                                   const Message& msg,
+                                                   const QList<Label*> installed_labels) {
+  QList<Label*> labels;
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("SELECT DISTINCT label FROM LabelsInMessages WHERE message = :message AND account_id = :account_id;");
+
+  q.bindValue(QSL(":account_id"), msg.m_accountId);
+  q.bindValue(QSL(":message"), msg.m_customId);
+
+  if (q.exec()) {
+    auto iter = boolinq::from(installed_labels);
+
+    while (q.next()) {
+      auto lbl_id = q.value(0).toString();
+      Label* candidate_label = iter.firstOrDefault([&](const Label* lbl) {
+        return lbl->customId() == lbl_id;
+      });
+
+      if (candidate_label != nullptr) {
+        labels << candidate_label;
+      }
     }
   }
 
