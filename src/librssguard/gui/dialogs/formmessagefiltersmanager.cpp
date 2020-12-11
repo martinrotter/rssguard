@@ -6,12 +6,14 @@
 
 #include "gui/dialogs/formmessagefiltersmanager.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "core/messagefilter.h"
 #include "core/messagesforfiltersmodel.h"
 #include "exceptions/filteringexception.h"
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
@@ -248,33 +250,113 @@ void FormMessageFiltersManager::processCheckedFeeds() {
   auto* fltr = selectedFilter();
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  for (const RootItem* it : checked) {
+  for (RootItem* it : checked) {
     if (it->kind() == RootItem::Kind::Feed) {
       QJSEngine filter_engine;
       MessageObject msg_obj(&database,
-                            QString(),
-                            selectedAccount() != nullptr ? selectedAccount()->accountId() : NO_PARENT_CATEGORY,
+                            it->customId(),
+                            selectedAccount()->accountId(),
                             it->getParentServiceRoot()->labelsNode()->labels());
 
       MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
 
       // We process messages of the feed.
       QList<Message> msgs = it->undeletedMessages();
+      QList<Message> read_msgs, important_msgs;
 
       for (int i = 0; i < msgs.size(); i++) {
-        Message& msg = msgs[i];
+        auto labels_in_message = DatabaseQueries::getLabelsForMessage(database, msgs[i], msg_obj.availableLabels());
 
-        // TODO: create backup of msg and forward changes to
-        // caching mechanisms if needed.
+        // Create backup of message.
+        Message* msg = &msgs[i]; msg->m_assignedLabels = labels_in_message;
+        Message msg_backup(*msg);
+
+        msg_obj.setMessage(msg);
 
         MessageObject::FilteringAction result = fltr->filterMessage(&filter_engine);
+        bool remove_from_list = false;
 
         if (result == MessageObject::FilteringAction::Purge) {
+          remove_from_list = true;
+
           // TODO: Purge the message completely.
-          msgs.removeAt(i--);
+          // DatabaseQueries::purgeMessage(msg_id);
+        }
+        else if (result == MessageObject::FilteringAction::Ignore) {
+          remove_from_list = true;
         }
 
-        // Message will be processed/update via SQL layer.
+        if (!msg_backup.m_isRead && msg->m_isRead) {
+          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId << "' was marked as read by message scripts.";
+
+          read_msgs << *msg;
+        }
+
+        if (!msg_backup.m_isImportant && msg->m_isImportant) {
+          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId << "' was marked as important by message scripts.";
+
+          important_msgs << *msg;
+        }
+
+        // Process changed labels.
+        for (Label* lbl : msg_backup.m_assignedLabels) {
+          if (!msg->m_assignedLabels.contains(lbl)) {
+            // Label is not there anymore, it was deassigned.
+            lbl->deassignFromMessage(*msg);
+
+            qDebugNN << LOGSEC_FEEDDOWNLOADER
+                     << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
+                     << "was DEASSIGNED from message" << QUOTE_W_SPACE(msg->m_customId)
+                     << "by message filter(s).";
+          }
+        }
+
+        for (Label* lbl : msg->m_assignedLabels) {
+          if (!msg_backup.m_assignedLabels.contains(lbl)) {
+            // Label is in new message, but is not in old message, it
+            // was newly assigned.
+            lbl->assignToMessage(*msg);
+
+            qDebugNN << LOGSEC_FEEDDOWNLOADER
+                     << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
+                     << "was ASSIGNED to message" << QUOTE_W_SPACE(msg->m_customId)
+                     << "by message filter(s).";
+          }
+        }
+
+        if (remove_from_list) {
+          // Do not update message.
+          msgs.removeAt(i--);
+        }
+      }
+
+      if (!read_msgs.isEmpty()) {
+        // Now we push new read states to the service.
+        if (it->getParentServiceRoot()->onBeforeSetMessagesRead(it, read_msgs, RootItem::ReadStatus::Read)) {
+          qDebugNN << LOGSEC_FEEDDOWNLOADER
+                   << "Notified services about messages marked as read by message filters.";
+        }
+        else {
+          qCriticalNN << LOGSEC_FEEDDOWNLOADER
+                      << "Notification of services about messages marked as read by message filters FAILED.";
+        }
+      }
+
+      if (!important_msgs.isEmpty()) {
+        // Now we push new read states to the service.
+        auto list = boolinq::from(important_msgs).select([](const Message& msg) {
+          return ImportanceChange(msg, RootItem::Importance::Important);
+        }).toStdList();
+        QList<ImportanceChange> chngs = FROM_STD_LIST(QList<ImportanceChange>, list);
+
+        if (it->getParentServiceRoot()->onBeforeSwitchMessageImportance(it, chngs)) {
+          qDebugNN << LOGSEC_FEEDDOWNLOADER
+                   << "Notified services about messages marked as important by message filters.";
+        }
+        else {
+          qCriticalNN << LOGSEC_FEEDDOWNLOADER
+                      << "Notification of services about messages marked as important by message filters FAILED.";
+        }
       }
 
       int updated_in_db = it->toFeed()->updateMessages(msgs, false);

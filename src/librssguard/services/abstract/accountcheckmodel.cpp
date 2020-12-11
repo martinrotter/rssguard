@@ -276,10 +276,11 @@ Qt::ItemFlags AccountCheckModel::flags(const QModelIndex& index) const {
 
 QList<RootItem*> AccountCheckModel::checkedItems() const {
   auto keys = m_checkStates.keys();
-
-  return FROM_STD_LIST(QList<RootItem*>, boolinq::from(keys).where([&](const auto& key) {
+  auto res = boolinq::from(keys).where([&](const auto& key) {
     return m_checkStates.value(key) == Qt::CheckState::Checked;
-  }).toStdList());
+  }).toStdList();
+
+  return FROM_STD_LIST(QList<RootItem*>, res);
 }
 
 bool AccountCheckModel::isItemChecked(RootItem* item) const {

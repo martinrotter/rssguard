@@ -29,7 +29,7 @@ class MessageObject : public QObject {
       // Message is normally accepted and stored in DB or updated.
       Accept = 1,
 
-      // Message is ignored and will not be stored in DB but is not purge if it already exists.
+      // Message is ignored and will not be stored in DB but is not purged if it already exists.
       Ignore = 2,
 
       // Message is purged from DB if it already exists.

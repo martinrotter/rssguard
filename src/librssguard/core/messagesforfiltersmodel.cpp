@@ -42,7 +42,11 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
             return qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Allright];
 
           case MessageObject::FilteringAction::Ignore:
+          case MessageObject::FilteringAction::Purge:
             return qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Error];
+
+          default:
+            break;
         }
       }
 
