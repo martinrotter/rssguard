@@ -280,8 +280,9 @@ void FormMessageFiltersManager::processCheckedFeeds() {
         if (result == MessageObject::FilteringAction::Purge) {
           remove_from_list = true;
 
-          // TODO: Purge the message completely.
-          // DatabaseQueries::purgeMessage(msg_id);
+          // Purge the message completely and remove leftovers.
+          DatabaseQueries::purgeMessage(database, msg->m_id);
+          DatabaseQueries::purgeLeftoverLabelAssignments(database, msg->m_accountId);
         }
         else if (result == MessageObject::FilteringAction::Ignore) {
           remove_from_list = true;

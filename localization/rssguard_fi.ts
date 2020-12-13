@@ -206,15 +206,15 @@
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Vaatii HTTP-tunnistautumisen</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Salasana</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
@@ -230,7 +230,7 @@
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus on tyhjä.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
@@ -238,7 +238,7 @@
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Salasana on tyhjä.</translation>
     </message>
 </context>
 <context>
@@ -1599,11 +1599,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="unfinished"/>
+        <translation>Syötettä ei voi muokata</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Syötettä ei muokattu virheen takia.</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
@@ -2438,7 +2438,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Yleiset</translation>
     </message>
     <message>
         <source>Network</source>
@@ -2446,7 +2446,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Lisää uusi syöte</translation>
     </message>
 </context>
 <context>
@@ -2600,7 +2600,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Yleiset</translation>
     </message>
     <message>
         <source>Network</source>
@@ -2608,7 +2608,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Lisää uusi syöte</translation>
     </message>
 </context>
 <context>
@@ -3000,19 +3000,19 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Otsikko</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Tekijä</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"/>
+        <translation>Luontiaika</translation>
     </message>
 </context>
 <context>
@@ -4216,7 +4216,7 @@ Tyyppi: %3</translation>
     </message>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Ylätason luokka</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4224,151 +4224,151 @@ Tyyppi: %3</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Tyyppi</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Valitse standardisyötteen tyyppi.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>Merkistö</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Valitse standardisyötteen merkistö. Jos olet epävarma merkistöstä, valitse &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Otsikko</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Kuvaus</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Hae metatiedot</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>Hae nyt</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Kuvake</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Valitse kuvake syötteelle.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen otsikko</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Aseta otsikko syötteelle.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen kuvaus</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Aseta kuvaus syötteelle.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen koko URL-osoite sisältäen skeeman</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Aseta URL-osoite syötteelle.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Kuvakkeen valinta</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Lataa kuvake tiedostosta...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Käytä kuvaketeeman oletuskuvaketta</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>Nouda kuvake syötteestä</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Metatietoja ei ole vielä noudettu.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvake noudettu onnistuneesti.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvakkeen metatiedot noudettu.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Tulos: %1.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvakkeen metatietoja ei noudettu.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Virhe: %1.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvaketta ei noudettu.</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Kaikki metatiedot noudettu onnistuneesti.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen ja kuvakkeen metatiedot noudettu.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen tai kuvakkeen metatietoja ei noudettu.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metatietoja ei noudettu.</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen nimi on OK.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen nimi on liian lyhyt.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvaus on tyhjä.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvaus on OK.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite on OK.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
@@ -4376,7 +4376,7 @@ Tyyppi: %3</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite on tyhjä.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
@@ -4384,15 +4384,15 @@ Tyyppi: %3</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Kuvat (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Valitse kuvake</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Peruuta</translation>
     </message>
     <message>
         <source>Look in:</source>
@@ -4401,11 +4401,11 @@ Tyyppi: %3</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Kuvakkeen nimi:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Kuvakkeen tyyppi:</translation>
     </message>
 </context>
 <context>
@@ -4632,7 +4632,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Ylätason luokka</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4640,7 +4640,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite</translation>
     </message>
     <message>
         <source>Full feed URL including scheme</source>
@@ -4652,7 +4652,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite on OK.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
@@ -4660,7 +4660,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite on tyhjä.</translation>
     </message>
 </context>
 <context>

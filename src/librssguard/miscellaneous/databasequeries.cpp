@@ -346,6 +346,16 @@ bool DatabaseQueries::restoreBin(const QSqlDatabase& db, int account_id) {
   return q.exec();
 }
 
+bool DatabaseQueries::purgeMessage(const QSqlDatabase& db, int message_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("DELETE FROM Messages WHERE id = :id;");
+  q.bindValue(QSL(":id"), message_id);
+
+  return q.exec();
+}
+
 bool DatabaseQueries::purgeImportantMessages(const QSqlDatabase& db) {
   QSqlQuery q(db);
 
@@ -895,8 +905,8 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   // Used to insert new messages.
   query_insert.setForwardOnly(true);
   query_insert.prepare("INSERT INTO Messages "
-                       "(feed, title, is_read, is_important, url, author, date_created, contents, enclosures, custom_id, custom_hash, account_id) "
-                       "VALUES (:feed, :title, :is_read, :is_important, is_deleted = :is_deleted, :url, :author, :date_created, :contents, :enclosures, :custom_id, :custom_hash, :account_id);");
+                       "(feed, title, is_read, is_important, is_deleted, url, author, date_created, contents, enclosures, custom_id, custom_hash, account_id) "
+                       "VALUES (:feed, :title, :is_read, :is_important, :is_deleted, :url, :author, :date_created, :contents, :enclosures, :custom_id, :custom_hash, :account_id);");
 
   // Used to update existing messages.
   query_update.setForwardOnly(true);

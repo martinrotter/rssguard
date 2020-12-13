@@ -805,7 +805,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>CUSTOM</source>
-        <translation type="unfinished"/>
+        <translation>PERSONALIZADO</translation>
     </message>
 </context>
 <context>
@@ -1154,7 +1154,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Get my credentials</source>
-        <translation type="unfinished"/>
+        <translation>Obter minhas credenciais</translation>
     </message>
 </context>
 <context>
@@ -1602,7 +1602,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Auto-updating</source>
-        <translation type="unfinished"/>
+        <translation>Atualização automática</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
@@ -1614,7 +1614,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Editar &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -2034,7 +2034,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
-        <translation type="unfinished"/>
+        <translation>Automaticamente &amp;expandir itens quando selecionados </translation>
     </message>
 </context>
 <context>
@@ -2181,37 +2181,39 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;New filter</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Novo filtro</translation>
     </message>
     <message>
         <source>&amp;Test</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testar</translation>
     </message>
     <message>
         <source>Process checked feeds</source>
-        <translation type="unfinished"/>
+        <translation>Processar feeds amarcados</translation>
     </message>
     <message>
         <source>&amp;Beautify</source>
-        <translation type="unfinished"/>
+        <translation>Em&amp;belezar</translation>
     </message>
     <message>
         <source>Existing messages</source>
-        <translation type="unfinished"/>
+        <translation>Mensagens existentes</translation>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível salvar o novo filtro, erro: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>EXISTING messages filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>Erro de filtragem de mensagens EXISTENTES: &apos;%1&apos;.
+</translation>
     </message>
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>Erro de filtragem de mensagens de AMOSTRA: &apos;%1&apos;.
+</translation>
     </message>
 </context>
 <context>
@@ -2458,7 +2460,7 @@ Você precisa reiniciar manualmente.</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Rede</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -2620,7 +2622,7 @@ Você precisa reiniciar manualmente.</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Rede</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -3015,7 +3017,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>In recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Na Lixeira</translation>
     </message>
     <message>
         <source>Title</source>
@@ -4687,11 +4689,11 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>Full feed URL including scheme</source>
-        <translation type="unfinished"/>
+        <translation>URL completo do feed incluindo esquema</translation>
     </message>
     <message>
         <source>Provide URL for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Forneça o URL do seu feed.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>

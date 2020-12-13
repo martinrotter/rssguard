@@ -198,47 +198,47 @@
     <name>AuthenticationDetails</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulario</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Algunas fuentes necesitan autentificación, incluidas las fuentes GMail. Se admiten los sistemas de autentificación BASIC, NTLM-2 y DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Requiere autentificación por HTTP</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Asignar nombre de usuario para acceder a la fuente.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Asignar contraseña para acceder a la fuente.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>El nombre de usuario es válido o no se necesita.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>El campo del nombre de usuario está vacío.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>La contraseña es válida o no se necesita.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>El campo de la contraseña está vacío.</translation>
     </message>
 </context>
 <context>
@@ -1606,11 +1606,11 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="unfinished"/>
+        <translation>No es posible editar la fuente</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"/>
+        <translation>No se editó la fuente debido a un error.</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
@@ -2453,7 +2453,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>General</translation>
     </message>
     <message>
         <source>Network</source>
@@ -2461,7 +2461,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Añadir nueva fuente</translation>
     </message>
 </context>
 <context>
@@ -2615,7 +2615,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>General</translation>
     </message>
     <message>
         <source>Network</source>
@@ -2623,7 +2623,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Añadir nueva fuente</translation>
     </message>
 </context>
 <context>
@@ -3006,11 +3006,11 @@ Expiración de testigos de ingreso: %2</translation>
     <name>MessagesForFiltersModel</name>
     <message>
         <source>Read</source>
-        <translation type="unfinished"/>
+        <translation>Leído</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation type="unfinished"/>
+        <translation>Importante</translation>
     </message>
     <message>
         <source>In recycle bin</source>
@@ -3018,19 +3018,19 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Título</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"/>
+        <translation>Creado en</translation>
     </message>
 </context>
 <context>
@@ -4253,200 +4253,200 @@ Clase: %3</translation>
     <name>StandardFeedDetails</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulario</translation>
     </message>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Categoría principal</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar elemento principal para su fuente.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Tipo</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Seccionar tipo de fuente estándar.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>Codificación</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar la codificación para la fuente estándar. Si tiene dudas sobre la codificación, entonces seleccione la codificación &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Descripción</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Recuperar metadatos</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>Recuperarlo ahora</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Icono</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar icono para su fuente.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Título de la fuente</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Asignar título a su fuente.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Descripción de la fuente</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Asignar descripción a su fuente.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL completa de la fuente incluido su esquema</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Asignar dirección URL a su fuente.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Selección del icono</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Cargando icono desde el archivo...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Utilizar icono predeterminado del tema de iconos</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>Recuperar iconos de la fuente.</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>No se han recuperado metadatos hasta ahora.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Se recuperaron los iconos satisfactoriamente.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Se recuperaron los metadatos de los iconos.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Resultado: %1.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>No se recuperaron los metadatos de los iconos.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Error: %1.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>No se recuperaron los iconos.</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Todos los metadatos se recuperaron satisfactoriamente.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Se recuperaron los metadatos de las fuentes y de los iconos.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>No se recuperaron los metadatos de las fuentes o de los iconos.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>No se recuperaron los metadatos.</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>El nombre de la fuente es válido.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>El nombre de la fuente es muy corto.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>El campo de la descripción está vacío.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>La descripción es válida.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>La dirección URL es válida.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>La dirección URL no cumple con el patrón estándar. ¿Su dirección URL comienza con el prefijo &quot;http://&quot; o &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>El campo de la dirección URL está vacío.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar archivo de icono para la fuente</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Imágenes (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar icono</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Examinar:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Nombre del icono:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Tipo de icono:</translation>
     </message>
 </context>
 <context>
@@ -4670,19 +4670,19 @@ Noticias no leídas: %2</translation>
     <name>TtRssFeedDetails</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulario</translation>
     </message>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Categoría principal</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar elemento principal para su fuente.</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL</translation>
     </message>
     <message>
         <source>Full feed URL including scheme</source>
@@ -4694,15 +4694,15 @@ Noticias no leídas: %2</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>La dirección URL es válida.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>La dirección URL no cumple con el patrón estándar. ¿Su dirección URL comienza con el prefijo &quot;http://&quot; o &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>El campo de la dirección URL está vacío.</translation>
     </message>
 </context>
 <context>

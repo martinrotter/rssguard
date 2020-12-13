@@ -202,43 +202,43 @@
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Nogle feeds kræver godkendelse, inklusiv GMail feeds. BASIC, NTLM-2 og DIGEST-MD5 godkendelse er understøttet.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Kræver HTTP-godkendelse</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Indstil brugernavn for at få adgang til feedet.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Indstil adgangskode for at få adgang til feedet.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn er OK eller ikke nødvendigt.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn ikke angivet.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord er OK eller ikke nødvendigt.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeordet er tomt.</translation>
     </message>
 </context>
 <context>
@@ -1599,11 +1599,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke redigere feed</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed blev ikke redigeret på grund af en fejl.</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
@@ -2438,7 +2438,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Generelt</translation>
     </message>
     <message>
         <source>Network</source>
@@ -2446,7 +2446,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj nyt feed</translation>
     </message>
 </context>
 <context>
@@ -2600,7 +2600,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"/>
+        <translation>Generelt</translation>
     </message>
     <message>
         <source>Network</source>
@@ -2608,7 +2608,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj nyt feed</translation>
     </message>
 </context>
 <context>
@@ -2985,11 +2985,11 @@ Login tokens expiration: %2</source>
     <name>MessagesForFiltersModel</name>
     <message>
         <source>Read</source>
-        <translation type="unfinished"/>
+        <translation>Læst</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation type="unfinished"/>
+        <translation>Vigtigt</translation>
     </message>
     <message>
         <source>In recycle bin</source>
@@ -2997,19 +2997,19 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Udvikler</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"/>
+        <translation>Oprettet den</translation>
     </message>
 </context>
 <context>
@@ -4214,7 +4214,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Forældrekategori</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4222,7 +4222,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Type</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
@@ -4230,7 +4230,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>Kodning</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
@@ -4238,47 +4238,47 @@ Type: %3</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Beskrivelse</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Hent metadata</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>Hent nu</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Ikon</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikon til feed.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Feedtitel</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Sæt feedtitel</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Feedbeskrivelse</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Angiv  beskrivelse for dit feed.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
@@ -4294,23 +4294,23 @@ Type: %3</source>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Indlæs et ikon fra en fil...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Brug standardikonet fra ikontemaet</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>Hent ikon fra feed</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Indtil videre er der ikke hentet noget metadata.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Ikon hentet succesfuldt.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
@@ -4318,7 +4318,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Resultat: %1.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
@@ -4326,11 +4326,11 @@ Type: %3</source>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Fejl: %1.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen ikoner hentet</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
@@ -4338,7 +4338,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Feed og ikon metadata hentet.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
@@ -4346,23 +4346,23 @@ Type: %3</source>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen metadata hentet.</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Feed navn er i orden.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Feednavn er for kort.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen beskrivelse.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Beskrivelsen er OK.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
@@ -4378,32 +4378,32 @@ Type: %3</source>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikonfil for dette feed</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Billeder (*. Bmp *. Jpg *. Jpeg *. Png *. SVG *. TGA)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuller</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Kig i:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Ikonnavn:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Ikontype:</translation>
     </message>
 </context>
 <context>
@@ -4631,7 +4631,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Forældrekategori</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4639,7 +4639,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Full feed URL including scheme</source>

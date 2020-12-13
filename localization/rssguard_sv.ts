@@ -805,7 +805,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>CUSTOM</source>
-        <translation type="unfinished"/>
+        <translation>ANPASSAT</translation>
     </message>
 </context>
 <context>
@@ -1154,7 +1154,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Get my credentials</source>
-        <translation type="unfinished"/>
+        <translation>Hämta mina inloggningsuppgifter</translation>
     </message>
 </context>
 <context>
@@ -1602,7 +1602,7 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Auto-updating</source>
-        <translation type="unfinished"/>
+        <translation>Automatisk uppdatering</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
@@ -1614,7 +1614,7 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Redigera &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -2034,7 +2034,7 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
-        <translation type="unfinished"/>
+        <translation>Expandera automatiskt objekt vid markering</translation>
     </message>
 </context>
 <context>
@@ -2181,37 +2181,39 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>&amp;New filter</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nytt filter</translation>
     </message>
     <message>
         <source>&amp;Test</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testa</translation>
     </message>
     <message>
         <source>Process checked feeds</source>
-        <translation type="unfinished"/>
+        <translation>Bearbeta markerade flöden</translation>
     </message>
     <message>
         <source>&amp;Beautify</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Försköna</translation>
     </message>
     <message>
         <source>Existing messages</source>
-        <translation type="unfinished"/>
+        <translation>Befintliga meddelanden</translation>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte spara nytt filter, fel: &quot;%1&quot;</translation>
     </message>
     <message>
         <source>EXISTING messages filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>Filtreringsfel för BEFINTLIGA meddelande: &quot;%1&quot;
+</translation>
     </message>
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>Filtreringsfel för EXEMPEL-meddelande: &quot;%1&quot;
+</translation>
     </message>
 </context>
 <context>
@@ -2458,7 +2460,7 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Nätverk</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -2620,7 +2622,7 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Nätverk</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -3014,7 +3016,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>In recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>I papperskorgen</translation>
     </message>
     <message>
         <source>Title</source>
@@ -4687,11 +4689,11 @@ Olästa nyheter: %2</translation>
     </message>
     <message>
         <source>Full feed URL including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Fullständig flödes-URL inkluderingsscema</translation>
     </message>
     <message>
         <source>Provide URL for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Ange URL för ditt flöde.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>

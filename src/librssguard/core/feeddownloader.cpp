@@ -163,6 +163,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
               continue;
 
             case MessageObject::FilteringAction::Ignore:
+            case MessageObject::FilteringAction::Purge:
             default:
               // Remove the message, we do not want it.
               remove_msg = true;

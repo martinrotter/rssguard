@@ -43,6 +43,7 @@ class DatabaseQueries {
     static bool restoreBin(const QSqlDatabase& db, int account_id);
 
     // Purge database.
+    static bool purgeMessage(const QSqlDatabase& db, int message_id);
     static bool purgeImportantMessages(const QSqlDatabase& db);
     static bool purgeReadMessages(const QSqlDatabase& db);
     static bool purgeOldMessages(const QSqlDatabase& db, int older_than_days);
