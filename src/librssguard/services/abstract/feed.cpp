@@ -265,7 +265,7 @@ bool Feed::markAsReadUnread(RootItem::ReadStatus status) {
   return service->markFeedsReadUnread(QList<Feed*>() << this, status);
 }
 
-int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtaining) {
+int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtaining, bool force_update) {
   QList<RootItem*> items_to_update;
   int updated_messages = 0;
 
@@ -289,7 +289,8 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
                               qApp->database()->connection(metaObject()->className()) :
                               qApp->database()->connection(QSL("feed_upd"));
 
-      updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id, url(), &anything_updated, &ok);
+      updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id,
+                                                         url(), force_update, &anything_updated, &ok);
     }
     else {
       qDebugNN << LOGSEC_CORE

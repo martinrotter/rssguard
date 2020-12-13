@@ -849,6 +849,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                                     const QString& feed_custom_id,
                                     int account_id,
                                     const QString& url,
+                                    bool force_update,
                                     bool* any_message_changed,
                                     bool* ok) {
   if (messages.isEmpty()) {
@@ -862,6 +863,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
   // Prepare queries.
   QSqlQuery query_select_with_url(db);
+  QSqlQuery query_select_with_custom_id(db);
   QSqlQuery query_select_with_id(db);
   QSqlQuery query_update(db);
   QSqlQuery query_insert(db);
@@ -879,20 +881,27 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
   // When we have custom ID of the message, we can check directly for existence
   // of that particular message.
+  query_select_with_custom_id.setForwardOnly(true);
+  query_select_with_custom_id.prepare("SELECT id, date_created, is_read, is_important, contents, feed FROM Messages "
+                                      "WHERE custom_id = :custom_id AND account_id = :account_id;");
+
+  // In some case, messages are already stored in the DB and they all have primary DB ID.
+  // This is particularly the case when user runs some message filter manually on existing messages
+  // of some feed.
   query_select_with_id.setForwardOnly(true);
-  query_select_with_id.prepare("SELECT id, date_created, is_read, is_important, contents, feed FROM Messages "
-                               "WHERE custom_id = :custom_id AND account_id = :account_id;");
+  query_select_with_id.prepare("SELECT date_created, is_read, is_important, contents, feed FROM Messages "
+                               "WHERE id = :id AND account_id = :account_id;");
 
   // Used to insert new messages.
   query_insert.setForwardOnly(true);
   query_insert.prepare("INSERT INTO Messages "
                        "(feed, title, is_read, is_important, url, author, date_created, contents, enclosures, custom_id, custom_hash, account_id) "
-                       "VALUES (:feed, :title, :is_read, :is_important, :url, :author, :date_created, :contents, :enclosures, :custom_id, :custom_hash, :account_id);");
+                       "VALUES (:feed, :title, :is_read, :is_important, is_deleted = :is_deleted, :url, :author, :date_created, :contents, :enclosures, :custom_id, :custom_hash, :account_id);");
 
   // Used to update existing messages.
   query_update.setForwardOnly(true);
   query_update.prepare("UPDATE Messages "
-                       "SET title = :title, is_read = :is_read, is_important = :is_important, url = :url, author = :author, date_created = :date_created, contents = :contents, enclosures = :enclosures, feed = :feed "
+                       "SET title = :title, is_read = :is_read, is_important = :is_important, is_deleted = :is_deleted, url = :url, author = :author, date_created = :date_created, contents = :contents, enclosures = :enclosures, feed = :feed "
                        "WHERE id = :id;");
 
   if (use_transactions && !query_begin_transaction.exec(qApp->database()->obtainBeginTransactionSql())) {
@@ -925,7 +934,40 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     QString contents_existing_message;
     QString feed_id_existing_message;
 
-    if (message.m_customId.isEmpty()) {
+    if (message.m_id > 0) {
+      // We recognize directly existing message.
+      // NOTE: Particular for manual message filter execution.
+      query_select_with_id.bindValue(QSL(":id"), message.m_id);
+      query_select_with_id.bindValue(QSL(":account_id"), account_id);
+
+      qDebugNN << LOGSEC_DB
+               << "Checking if message with primary ID"
+               << QUOTE_W_SPACE(message.m_id)
+               << "is present in DB.";
+
+      if (query_select_with_id.exec() && query_select_with_id.next()) {
+        id_existing_message = message.m_id;
+        date_existing_message = query_select_with_id.value(0).value<qint64>();
+        is_read_existing_message = query_select_with_id.value(1).toBool();
+        is_important_existing_message = query_select_with_id.value(2).toBool();
+        contents_existing_message = query_select_with_id.value(3).toString();
+        feed_id_existing_message = query_select_with_id.value(4).toString();
+
+        qDebugNN << LOGSEC_DB
+                 << "Message with these attributes is already present in DB and has DB ID '"
+                 << id_existing_message
+                 << "'.";
+      }
+      else if (query_select_with_id.lastError().isValid()) {
+        qWarningNN << LOGSEC_DB
+                   << "Failed to check for existing message in DB via primary ID: '"
+                   << query_select_with_id.lastError().text()
+                   << "'.";
+      }
+
+      query_select_with_id.finish();
+    }
+    else if (message.m_customId.isEmpty()) {
       // We need to recognize existing messages according URL & AUTHOR & TITLE.
       // NOTE: This particularly concerns messages from standard account.
       query_select_with_url.bindValue(QSL(":feed"), unnulifyString(feed_custom_id));
@@ -968,35 +1010,35 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
     else {
       // We can recognize existing messages via their custom ID.
       // NOTE: This concerns messages from custom accounts, like TT-RSS or Nextcloud News.
-      query_select_with_id.bindValue(QSL(":account_id"), account_id);
-      query_select_with_id.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
+      query_select_with_custom_id.bindValue(QSL(":account_id"), account_id);
+      query_select_with_custom_id.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
 
       qDebugNN << LOGSEC_DB
                << "Checking if message with custom ID '"
                << message.m_customId
                << "' is present in DB.";
 
-      if (query_select_with_id.exec() && query_select_with_id.next()) {
-        id_existing_message = query_select_with_id.value(0).toInt();
-        date_existing_message = query_select_with_id.value(1).value<qint64>();
-        is_read_existing_message = query_select_with_id.value(2).toBool();
-        is_important_existing_message = query_select_with_id.value(3).toBool();
-        contents_existing_message = query_select_with_id.value(4).toString();
-        feed_id_existing_message = query_select_with_id.value(5).toString();
+      if (query_select_with_custom_id.exec() && query_select_with_custom_id.next()) {
+        id_existing_message = query_select_with_custom_id.value(0).toInt();
+        date_existing_message = query_select_with_custom_id.value(1).value<qint64>();
+        is_read_existing_message = query_select_with_custom_id.value(2).toBool();
+        is_important_existing_message = query_select_with_custom_id.value(3).toBool();
+        contents_existing_message = query_select_with_custom_id.value(4).toString();
+        feed_id_existing_message = query_select_with_custom_id.value(5).toString();
 
         qDebugNN << LOGSEC_DB
                  << "Message with custom ID %s is already present in DB and has DB ID '"
                  << id_existing_message
                  << "'.";
       }
-      else if (query_select_with_id.lastError().isValid()) {
+      else if (query_select_with_custom_id.lastError().isValid()) {
         qWarningNN << LOGSEC_DB
                    << "Failed to check for existing message in DB via ID: '"
-                   << query_select_with_id.lastError().text()
+                   << query_select_with_custom_id.lastError().text()
                    << "'.";
       }
 
-      query_select_with_id.finish();
+      query_select_with_custom_id.finish();
     }
 
     // Now, check if this message is already in the DB.
@@ -1008,6 +1050,9 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       //      was moved from one feed to another - this can particularly happen in Gmail feeds).
       //
       //   2) Message has its date fetched from feed AND its date is different from date in DB and contents is changed.
+      //
+      //   3) Message update is force, we want to overwrite message as some arbitrary atribute was changed,
+      //      this particularly happens when manual message filter execution happens.
       if (/* 1 */ (!message.m_customId.isEmpty() && (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
                                                      message.m_isRead != is_read_existing_message ||
                                                      message.m_isImportant != is_important_existing_message ||
@@ -1015,11 +1060,14 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                                                      message.m_contents != contents_existing_message)) ||
 
           /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message
-                   && message.m_contents != contents_existing_message)) {
+                   && message.m_contents != contents_existing_message) ||
+
+          /* 3 */ force_update) {
         // Message exists, it is changed, update it.
         query_update.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_update.bindValue(QSL(":is_read"), int(message.m_isRead));
         query_update.bindValue(QSL(":is_important"), int(message.m_isImportant));
+        query_update.bindValue(QSL(":is_deleted"), int(message.m_isDeleted));
         query_update.bindValue(QSL(":url"), unnulifyString(message.m_url));
         query_update.bindValue(QSL(":author"), unnulifyString(message.m_author));
         query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
@@ -1027,15 +1075,16 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
         query_update.bindValue(QSL(":feed"), unnulifyString(feed_id_existing_message));
         query_update.bindValue(QSL(":id"), id_existing_message);
+
         *any_message_changed = true;
 
         if (query_update.exec()) {
           qDebugNN << LOGSEC_DB
-                   << "Updating message with title '"
-                   << message.m_title
-                   << "' url '"
-                   << message.m_url
-                   << "' in DB.";
+                   << "Updating message with title"
+                   << QUOTE_W_SPACE(message.m_title)
+                   << "url"
+                   << QUOTE_W_SPACE(message.m_url)
+                   << "in DB.";
 
           if (!message.m_isRead) {
             updated_messages++;
@@ -1055,6 +1104,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       query_insert.bindValue(QSL(":title"), unnulifyString(message.m_title));
       query_insert.bindValue(QSL(":is_read"), int(message.m_isRead));
       query_insert.bindValue(QSL(":is_important"), int(message.m_isImportant));
+      query_insert.bindValue(QSL(":is_deleted"), int(message.m_isDeleted));
       query_insert.bindValue(QSL(":url"), unnulifyString( message.m_url));
       query_insert.bindValue(QSL(":author"), unnulifyString(message.m_author));
       query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());

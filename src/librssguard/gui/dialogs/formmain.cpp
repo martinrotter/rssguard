@@ -780,8 +780,10 @@ void FormMain::createConnections() {
           tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), &FeedsModel::restoreAllBins);
   connect(m_ui->m_actionEmptyAllRecycleBins, &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), &FeedsModel::emptyAllBins);
-  connect(m_ui->m_actionMessageFilters, &QAction::triggered,
-          qApp->feedReader(), &FeedReader::showMessageFiltersManager);
+  connect(m_ui->m_actionMessageFilters, &QAction::triggered, this, [this]() {
+    qApp->feedReader()->showMessageFiltersManager();
+    tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
+  });
 }
 
 void FormMain::backupDatabaseSettings() {

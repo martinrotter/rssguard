@@ -195,6 +195,53 @@
     </message>
 </context>
 <context>
+    <name>AuthenticationDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>表單</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>包括 Gmail 新聞源在內的一些新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 認證架構。</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation>需要 HTTP 認證</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>使用者名稱</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>密碼</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>設定讀取新聞源的使用者名稱。</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>設定讀取新聞源的密碼。</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>使用者名稱無問題或不必要。</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>缺使用者名稱。</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>密碼無問題或不必要。</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>缺密碼。</translation>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -314,10 +361,6 @@ This website contains %n feed(s).</source>
 </context>
 <context>
     <name>DownloadItem</name>
-    <message>
-        <source>Ico</source>
-        <translation>圖示</translation>
-    </message>
     <message>
         <source>Filename</source>
         <translation>檔名</translation>
@@ -759,6 +802,10 @@ or this functionality is not implemented yet.</source>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>CUSTOM</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1103,6 +1150,10 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Some username entered.</source>
         <translation>已輸入某個使用者名稱。</translation>
+    </message>
+    <message>
+        <source>Get my credentials</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1529,253 +1580,12 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Parent category</source>
-        <translation>上級分類</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation>為新聞源選擇上層項目。</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>類型</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation>選擇標準新聞源的類型。</translation>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation>編碼</translation>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>選擇標準新聞源的編碼。如不確定，就選 &quot;UTF-8&quot;。</translation>
-    </message>
-    <message>
         <source>Auto-update</source>
         <translation>自動更新</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
         <translation>為此新聞源選擇自動更新的策略。預設自動更新的策略意謂，新聞源會以應用程式設定中設定的時間間格自動更新。</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>標題</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>描述</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation>立即取得</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>圖示</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation>為新聞源選擇圖示。</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>包括 Gmail 新聞源在內的一些新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 認證架構。</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>需要 HTTP 認證</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>使用者名稱</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>密碼</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>取得屬性資料</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>新增新聞源</translation>
-    </message>
-    <message>
-        <source>Edit feed &apos;%1&apos;</source>
-        <translation>編輯新聞源 &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation>新聞源名稱名稱無問題。</translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation>新聞源名稱太短。</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>缺描述。</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>描述無問題。</translation>
-    </message>
-    <message>
-        <source>The URL is ok.</source>
-        <translation>URL 無問題。</translation>
-    </message>
-    <message>
-        <source>The URL is empty.</source>
-        <translation>缺 URL。</translation>
-    </message>
-    <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>URL 不合標準，請確認是否以 &quot;http://&quot; 或 &quot;https://&quot; 起始？</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>使用者名稱無問題或不必要。</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>缺使用者名稱。</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>密碼無問題或不必要。</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>缺密碼。</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>為新聞源選擇圖示檔</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>圖像 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>選擇圖示</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>於此目錄找: </translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>圖示名稱:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>圖示類型:</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>成功取得全部屬性資料。</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>取得新聞源與圖示的屬性資料。</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>結果: %1。</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation>未取得新聞源或圖示的屬性資料。</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>錯誤: %1。</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>未取得屬性資料。</translation>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation>成功取得圖示。</translation>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation>取得圖示的屬性資料。</translation>
-    </message>
-    <message>
-        <source>Icon metadata not fetched.</source>
-        <translation>未取得圖示的屬性資料。</translation>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation>未取得圖示。</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>新聞源標題</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>為新聞源定標題。</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>新聞源描述</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>為新聞源定描述。</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>包括通訊協定(scheme)在內的完整新聞源 URL</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>為新聞源定 URL。</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>設定讀取新聞源的使用者名稱。</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>設定讀取新聞源的密碼。</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>圖示選擇</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>從檔案載入圖示…</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation>使用圖示主題的預設圖示</translation>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation>從新聞源取得圖示</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>屬性資料迄未取得。</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
@@ -1788,6 +1598,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>Do not auto-update at all</source>
         <translation>不自動更新</translation>
+    </message>
+    <message>
+        <source>Auto-updating</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation>無法編輯新聞源</translation>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation>出錯，無法編輯新聞源。</translation>
+    </message>
+    <message>
+        <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2205,6 +2031,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <source>Display &amp;documentation</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -2215,14 +2045,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>Remove selected</source>
         <translation>移除所選</translation>
-    </message>
-    <message>
-        <source>Add new</source>
-        <translation>新增</translation>
-    </message>
-    <message>
-        <source>Account</source>
-        <translation>帳號</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
@@ -2285,14 +2107,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>隨譯即行碼之輸出</translation>
     </message>
     <message>
-        <source>&amp;Test!</source>
-        <translation>測試！(&amp;T)</translation>
-    </message>
-    <message>
-        <source>&amp;Beautify!</source>
-        <translation>美化！(&amp;B)</translation>
-    </message>
-    <message>
         <source>Detailed &amp;help</source>
         <translation>詳細的說明(&amp;H)</translation>
     </message>
@@ -2339,10 +2153,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>否</translation>
     </message>
     <message>
-        <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation>使用 JavaScript 的篩選器含有錯誤: &apos;%1&apos;。</translation>
-    </message>
-    <message>
         <source>Cannot find &apos;clang-format&apos;</source>
         <translation>找不到 &apos;clang-format&apos;</translation>
     </message>
@@ -2367,27 +2177,38 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>隨譯即行碼尚未美化，有安裝 &apos;clang-format&apos; 嗎？</translation>
     </message>
     <message>
-        <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation>無法儲存新增的篩選器，錯誤為: &quot;。</translation>
-    </message>
-</context>
-<context>
-    <name>FormOwnCloudFeedDetails</name>
-    <message>
-        <source>Feed added</source>
-        <translation>已新增新聞源</translation>
+        <source>&amp;New filter</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>已新增新聞源，同步中。</translation>
+        <source>&amp;Test</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot add feed</source>
-        <translation>無法新增新聞源</translation>
+        <source>Process checked feeds</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was not added due to error.</source>
-        <translation>出錯，無法新增新聞源。</translation>
+        <source>&amp;Beautify</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Existing messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>EXISTING messages filtering error: '%1'.
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>SAMPLE message filtering error: '%1'.
+</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2628,6 +2449,18 @@ You have to restart manually.</source>
         <source>Feed was not edited due to error.</source>
         <translation>出錯，無法編輯新聞源。</translation>
     </message>
+    <message>
+        <source>General</source>
+        <translation>一般</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>新增新聞源</translation>
+    </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
@@ -2777,6 +2610,18 @@ You have to restart manually.</source>
     <message>
         <source>Feed was not added due to error.</source>
         <translation>出錯，無法新增新聞源。</translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation>一般</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>新增新聞源</translation>
     </message>
 </context>
 <context>
@@ -3156,6 +3001,37 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>MessagesForFiltersModel</name>
+    <message>
+        <source>Read</source>
+        <translation>已讀</translation>
+    </message>
+    <message>
+        <source>Important</source>
+        <translation>重要</translation>
+    </message>
+    <message>
+        <source>In recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>標題</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation>作者</translation>
+    </message>
+    <message>
+        <source>Created on</source>
+        <translation>建立時間</translation>
+    </message>
+</context>
+<context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
@@ -3505,17 +3381,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>You can close this window now. Go back to %1</source>
         <translation>現在可以關閉此窗。回到 %1</translation>
-    </message>
-</context>
-<context>
-    <name>OwnCloudServiceRoot</name>
-    <message>
-        <source>Cannot add item</source>
-        <translation>無法新增項目</translation>
-    </message>
-    <message>
-        <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>無法新增項目，因為另一重要動作執行中。</translation>
     </message>
 </context>
 <context>
@@ -4382,6 +4247,206 @@ Type: %3</source>
     </message>
 </context>
 <context>
+    <name>StandardFeedDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>表單</translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>上級分類</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>為新聞源選擇上層項目。</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>類型</translation>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation>選擇標準新聞源的類型。</translation>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation>編碼</translation>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation>選擇標準新聞源的編碼。如不確定，就選 &quot;UTF-8&quot;。</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>標題</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>描述</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation>取得屬性資料</translation>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation>立即取得</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>圖示</translation>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation>為新聞源選擇圖示。</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>新聞源標題</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>為新聞源定標題。</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>新聞源描述</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>為新聞源定描述。</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>包括通訊協定(scheme)在內的完整新聞源 URL</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>為新聞源定 URL。</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>圖示選擇</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>從檔案載入圖示…</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation>使用圖示主題的預設圖示</translation>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation>從新聞源取得圖示</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>屬性資料迄未取得。</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation>成功取得圖示。</translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation>取得圖示的屬性資料。</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>結果: %1。</translation>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation>未取得圖示的屬性資料。</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>錯誤: %1。</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation>未取得圖示。</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>成功取得全部屬性資料。</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>取得新聞源與圖示的屬性資料。</translation>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation>未取得新聞源或圖示的屬性資料。</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>未取得屬性資料。</translation>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation>新聞源名稱名稱無問題。</translation>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation>新聞源名稱太短。</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>缺描述。</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>描述無問題。</translation>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation>URL 無問題。</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>URL 不合標準，請確認是否以 &quot;http://&quot; 或 &quot;https://&quot; 起始？</translation>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation>缺 URL。</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>為新聞源選擇圖示檔</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>圖像 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>選擇圖示</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>於此目錄找: </translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>圖示名稱:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>圖示類型:</translation>
+    </message>
+</context>
+<context>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
@@ -4599,6 +4664,45 @@ Unread news: %2</source>
     </message>
 </context>
 <context>
+    <name>TtRssFeedDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>表單</translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>上級分類</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>為新聞源選擇上層項目。</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Full feed URL including scheme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Provide URL for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation>URL 無問題。</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>URL 不合標準，請確認是否以 &quot;http://&quot; 或 &quot;https://&quot; 起始？</translation>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation>缺 URL。</translation>
+    </message>
+</context>
+<context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Cannot add item</source>
@@ -4756,10 +4860,6 @@ Last login on: %4</source>
 </context>
 <context>
     <name>WebViewer</name>
-    <message>
-        <source>Attachment</source>
-        <translation>附件</translation>
-    </message>
     <message>
         <source>Written by </source>
         <translation>作者: </translation>

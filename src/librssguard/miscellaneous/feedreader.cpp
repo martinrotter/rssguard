@@ -103,6 +103,8 @@ void FeedReader::showMessageFiltersManager() {
                                     qApp->mainFormWidget());
 
   manager.exec();
+
+  m_messagesModel->reloadWholeLayout();
 }
 
 void FeedReader::updateAutoUpdateStatus() {

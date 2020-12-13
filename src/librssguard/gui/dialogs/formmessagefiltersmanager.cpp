@@ -48,6 +48,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
 
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_ISREAD, QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_ISIMPORTANT, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_ISDELETED, QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_AUTHOR, QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_CREATED, QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_TITLE, QHeaderView::ResizeMode::Interactive);
@@ -359,7 +360,9 @@ void FormMessageFiltersManager::processCheckedFeeds() {
         }
       }
 
-      int updated_in_db = it->toFeed()->updateMessages(msgs, false);
+      // Update messages in DB and reload selection.
+      it->toFeed()->updateMessages(msgs, false, true);
+      displayMessagesOfFeed();
     }
   }
 }

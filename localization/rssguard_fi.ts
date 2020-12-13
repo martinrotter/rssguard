@@ -195,6 +195,53 @@
     </message>
 </context>
 <context>
+    <name>AuthenticationDetails</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -313,10 +360,6 @@ This website contains %n feed(s).</source>
 </context>
 <context>
     <name>DownloadItem</name>
-    <message>
-        <source>Ico</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Filename</source>
         <translation>Tiedostonimi</translation>
@@ -755,6 +798,10 @@ or this functionality is not implemented yet.</source>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
         <translation>GNU GPL -lisenssi (sovelletaan RSS Guardiin, mimesisiin ja Numixin lähdekoodeihin)</translation>
     </message>
+    <message>
+        <source>CUSTOM</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1098,6 +1145,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some username entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Get my credentials</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1523,253 +1574,12 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Parent category</source>
-        <translation>Ylätason luokka</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Tyyppi</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation>Valitse standardisyötteen tyyppi.</translation>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation>Merkistö</translation>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Valitse standardisyötteen merkistö. Jos olet epävarma merkistöstä, valitse &quot;UTF-8&quot;.</translation>
-    </message>
-    <message>
         <source>Auto-update</source>
         <translation>Automaattinen päivitys</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Otsikko</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Kuvaus</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>Osoite</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation>Hae nyt</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Kuvake</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation>Valitse kuvake syötteelle.</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>Vaatii HTTP-tunnistautumisen</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Käyttäjätunnus</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Salasana</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>Hae metatiedot</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Lisää uusi syöte</translation>
-    </message>
-    <message>
-        <source>Edit feed &apos;%1&apos;</source>
-        <translation>Muokkaa syötettä &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation>Syötteen nimi on OK.</translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation>Syötteen nimi on liian lyhyt.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Kuvaus on tyhjä.</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Kuvaus on OK.</translation>
-    </message>
-    <message>
-        <source>The URL is ok.</source>
-        <translation>URL-osoite on OK.</translation>
-    </message>
-    <message>
-        <source>The URL is empty.</source>
-        <translation>URL-osoite on tyhjä.</translation>
-    </message>
-    <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Käyttäjätunnus on tyhjä.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Salasana on tyhjä.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Kuvat (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Valitse kuvake</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Peruuta</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Kuvakkeen nimi:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Kuvakkeen tyyppi:</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>Kaikki metatiedot noudettu onnistuneesti.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Syötteen ja kuvakkeen metatiedot noudettu.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Tulos: %1.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation>Syötteen tai kuvakkeen metatietoja ei noudettu.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Virhe: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Metatietoja ei noudettu.</translation>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation>Kuvake noudettu onnistuneesti.</translation>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation>Kuvakkeen metatiedot noudettu.</translation>
-    </message>
-    <message>
-        <source>Icon metadata not fetched.</source>
-        <translation>Kuvakkeen metatietoja ei noudettu.</translation>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation>Kuvaketta ei noudettu.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Syötteen otsikko</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Aseta otsikko syötteelle.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Syötteen kuvaus</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Aseta kuvaus syötteelle.</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Syötteen koko URL-osoite sisältäen skeeman</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Aseta URL-osoite syötteelle.</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Kuvakkeen valinta</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Lataa kuvake tiedostosta...</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation>Käytä kuvaketeeman oletuskuvaketta</translation>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation>Nouda kuvake syötteestä</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Metatietoja ei ole vielä noudettu.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
@@ -1782,6 +1592,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>Do not auto-update at all</source>
         <translation>Ei automaattista päivitystä</translation>
+    </message>
+    <message>
+        <source>Auto-updating</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2199,6 +2025,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <source>Display &amp;documentation</source>
         <translation>Näytä &amp;dokumentaatio</translation>
     </message>
+    <message>
+        <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -2209,14 +2039,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>Remove selected</source>
         <translation>Poista valittu</translation>
-    </message>
-    <message>
-        <source>Add new</source>
-        <translation>Lisää uusi</translation>
-    </message>
-    <message>
-        <source>Account</source>
-        <translation>Tili</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
@@ -2279,14 +2101,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Test!</source>
-        <translation>&amp;Testaa!</translation>
-    </message>
-    <message>
-        <source>&amp;Beautify!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Detailed &amp;help</source>
         <translation type="unfinished"/>
     </message>
@@ -2327,10 +2141,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>ei</translation>
     </message>
     <message>
-        <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Cannot find &apos;clang-format&apos;</source>
         <translation type="unfinished"/>
     </message>
@@ -2355,27 +2165,38 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation>Uutta suodatinta ei voi tallentaa. Virhe: &apos;&apos;.</translation>
-    </message>
-</context>
-<context>
-    <name>FormOwnCloudFeedDetails</name>
-    <message>
-        <source>Feed added</source>
-        <translation>Syöte lisätty</translation>
+        <source>&amp;New filter</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>Syöte lisättiin, toteutetaan synkronointi nyt.</translation>
+        <source>&amp;Test</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot add feed</source>
-        <translation>Syötettä ei voi lisätä</translation>
+        <source>Process checked feeds</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Syötettä ei lisätty virheen takia.</translation>
+        <source>&amp;Beautify</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Existing messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>EXISTING messages filtering error: '%1'.
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>SAMPLE message filtering error: '%1'.
+</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2615,6 +2436,18 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
         <source>Feed was not edited due to error.</source>
         <translation>Syötettä ei muokattu virheen takia.</translation>
     </message>
+    <message>
+        <source>General</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
@@ -2764,6 +2597,18 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     <message>
         <source>Feed was not added due to error.</source>
         <translation>Syötettä ei lisätty virheen takia.</translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3140,6 +2985,37 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>MessagesForFiltersModel</name>
+    <message>
+        <source>Read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Important</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>In recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Created on</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
@@ -3488,17 +3364,6 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>OwnCloudServiceRoot</name>
-    <message>
-        <source>Cannot add item</source>
-        <translation>Tietuetta ei voi lisätä</translation>
-    </message>
-    <message>
-        <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4344,6 +4209,206 @@ Tyyppi: %3</translation>
     </message>
 </context>
 <context>
+    <name>StandardFeedDetails</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
@@ -4560,6 +4625,45 @@ Unread news: %2</source>
     </message>
 </context>
 <context>
+    <name>TtRssFeedDetails</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed URL including scheme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Provide URL for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Cannot add item</source>
@@ -4714,10 +4818,6 @@ Last login on: %4</source>
 </context>
 <context>
     <name>WebViewer</name>
-    <message>
-        <source>Attachment</source>
-        <translation>Liite</translation>
-    </message>
     <message>
         <source>Written by </source>
         <translation>Kirjoittanut</translation>

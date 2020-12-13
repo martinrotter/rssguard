@@ -195,6 +195,53 @@
     </message>
 </context>
 <context>
+    <name>AuthenticationDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation>Kräver HTTP-autentisering</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Användarnamn</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Lösenord</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Ange användarnamn för att få åtkomst till flödet.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Ange lösenord för att få åtkomst till flödet.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Användarnamnet är OK, eller behövs inte.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Användarnamn saknas.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Lösenordet är ok, eller behövs inte.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Lösenord saknas.</translation>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -315,10 +362,6 @@ Denna webbsida innehåller %n flöden.</numerusform></translation>
 </context>
 <context>
     <name>DownloadItem</name>
-    <message>
-        <source>Ico</source>
-        <translation>Ikon</translation>
-    </message>
     <message>
         <source>Filename</source>
         <translation>Filnamn</translation>
@@ -760,6 +803,10 @@ att funktionen inte är implementerad än.</translation>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
         <translation>GNU GPL Licens (gäller RSS Guard, Numix och mimesis källkod)</translation>
     </message>
+    <message>
+        <source>CUSTOM</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1104,6 +1151,10 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Some username entered.</source>
         <translation>Användarnamn angivet.</translation>
+    </message>
+    <message>
+        <source>Get my credentials</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1530,253 +1581,12 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Parent category</source>
-        <translation>Överordnad kategori</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation>Välj övergripande objekt för ditt flöde.</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Typ</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation>Välj flödestyp.</translation>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation>Kodning</translation>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Välj flödeskodning. Välj &quot;UTF-8&quot; om du är osäker på kodningen.</translation>
-    </message>
-    <message>
         <source>Auto-update</source>
         <translation>Autouppdatering</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
         <translation>Välj uppdateringsstrategi för flödet. Standard autouppdatering, innebär att flödet kommer att uppdateras med tidsintervall angivna i programinställningarna.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Beskrivning</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation>Hämta nu</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Ikon</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation>Välj ikon för flödet.</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>Kräver HTTP-autentisering</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Användarnamn</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Lösenord</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>Hämta metadata</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Lägg till nytt flöde</translation>
-    </message>
-    <message>
-        <source>Edit feed &apos;%1&apos;</source>
-        <translation>Redigera flödet &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation>Flödesnamnet är ok.</translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation>Flödesnamnet är för kort.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Beskrivning saknas.</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Beskrivningen är ok.</translation>
-    </message>
-    <message>
-        <source>The URL is ok.</source>
-        <translation>URL:en är OK.</translation>
-    </message>
-    <message>
-        <source>The URL is empty.</source>
-        <translation>URL saknas.</translation>
-    </message>
-    <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Användarnamnet är OK, eller behövs inte.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Användarnamn saknas.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Lösenordet är ok, eller behövs inte.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Lösenord saknas.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Välj ikonfil för flödet</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Välj ikon</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Avbryt</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Sök i:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Ikonnamn:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Ikontyp:</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>All metadata hämtades korrekt.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Flödes- och ikonmetadata hämtad.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Resultat: %1.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation>Flödes- eller ikonmetadata inte hämtad.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Fel: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Ingen metadata hämtades.</translation>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation>Ikon hämtades.</translation>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation>Ikonmetadata hämtad.</translation>
-    </message>
-    <message>
-        <source>Icon metadata not fetched.</source>
-        <translation>Ikonmetadata inte hämtad.</translation>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation>Ikon hämtades inte.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Flödesnamn</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Ange flödets namn.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Flödesbeskrivning</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Beskriv flödet.</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Flödets fullständiga URL inklusive schema</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Ange flödets URL.</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>Ange användarnamn för att få åtkomst till flödet.</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>Ange lösenord för att få åtkomst till flödet.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Ikonval</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Hämta ikon från fil...</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation>Använd standardikon från ikontemat</translation>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation>Hämta ikon från flödet</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Ingen metadata hämtad.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
@@ -1789,6 +1599,22 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     <message>
         <source>Do not auto-update at all</source>
         <translation>Uppdatera inte automatiskt</translation>
+    </message>
+    <message>
+        <source>Auto-updating</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation>Kan inte redigera flödet</translation>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation>Flödet redigerades inte, på grund av något fel.</translation>
+    </message>
+    <message>
+        <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2206,6 +2032,10 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <source>Display &amp;documentation</source>
         <translation>Visa &amp;dokumentation</translation>
     </message>
+    <message>
+        <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -2216,14 +2046,6 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     <message>
         <source>Remove selected</source>
         <translation>Ta bort markerat</translation>
-    </message>
-    <message>
-        <source>Add new</source>
-        <translation>Lägg till nytt</translation>
-    </message>
-    <message>
-        <source>Account</source>
-        <translation>Konto</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
@@ -2286,14 +2108,6 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation>Skriptutdata</translation>
     </message>
     <message>
-        <source>&amp;Test!</source>
-        <translation>&amp;Testa!</translation>
-    </message>
-    <message>
-        <source>&amp;Beautify!</source>
-        <translation>&amp;Försköna!</translation>
-    </message>
-    <message>
         <source>Detailed &amp;help</source>
         <translation>Detaljerad &amp;hjälp</translation>
     </message>
@@ -2342,10 +2156,6 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation>nej</translation>
     </message>
     <message>
-        <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation>JavaScript-baserat filter innehåller fel: &apos;%1&apos;.</translation>
-    </message>
-    <message>
         <source>Cannot find &apos;clang-format&apos;</source>
         <translation>Kan inte hitta &quot;clang-format&quot;</translation>
     </message>
@@ -2370,27 +2180,38 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation>Skriptet har inte förskönats, är &quot;clang-format&quot; installerat?</translation>
     </message>
     <message>
-        <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation>Kan inte spara nytt filter, fel: &quot;.</translation>
-    </message>
-</context>
-<context>
-    <name>FormOwnCloudFeedDetails</name>
-    <message>
-        <source>Feed added</source>
-        <translation>Flöde tillagt</translation>
+        <source>&amp;New filter</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>Flöde tillagt. Synkroniseras nu.</translation>
+        <source>&amp;Test</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flöde</translation>
+        <source>Process checked feeds</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Flödet lades inte till, på grund av ett fel.</translation>
+        <source>&amp;Beautify</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Existing messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>EXISTING messages filtering error: '%1'.
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>SAMPLE message filtering error: '%1'.
+</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2631,6 +2452,18 @@ Du måste starta om manuellt.</translation>
         <source>Feed was not edited due to error.</source>
         <translation>Flödet redigerades inte, på grund av något fel.</translation>
     </message>
+    <message>
+        <source>General</source>
+        <translation>Allmänt</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Lägg till nytt flöde</translation>
+    </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
@@ -2780,6 +2613,18 @@ Du måste starta om manuellt.</translation>
     <message>
         <source>Feed was not added due to error.</source>
         <translation>Flödet lades inte till, på grund av ett fel.</translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation>Allmänt</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Lägg till nytt flöde</translation>
     </message>
 </context>
 <context>
@@ -3158,6 +3003,37 @@ Inloggningstoken upphör: %2</translation>
     </message>
 </context>
 <context>
+    <name>MessagesForFiltersModel</name>
+    <message>
+        <source>Read</source>
+        <translation>Läst</translation>
+    </message>
+    <message>
+        <source>Important</source>
+        <translation>Viktigt</translation>
+    </message>
+    <message>
+        <source>In recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Titel</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation>Författare</translation>
+    </message>
+    <message>
+        <source>Created on</source>
+        <translation>Skapad</translation>
+    </message>
+</context>
+<context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
@@ -3507,17 +3383,6 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>You can close this window now. Go back to %1</source>
         <translation>Du kan stänga det här fönstret nu. Gå tillbaka till %1</translation>
-    </message>
-</context>
-<context>
-    <name>OwnCloudServiceRoot</name>
-    <message>
-        <source>Cannot add item</source>
-        <translation>Kan inte lägga till objekt</translation>
-    </message>
-    <message>
-        <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
 </context>
 <context>
@@ -4386,6 +4251,206 @@ Typ: %3</translation>
     </message>
 </context>
 <context>
+    <name>StandardFeedDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>Överordnad kategori</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Välj övergripande objekt för ditt flöde.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation>Välj flödestyp.</translation>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation>Kodning</translation>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation>Välj flödeskodning. Välj &quot;UTF-8&quot; om du är osäker på kodningen.</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Titel</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Beskrivning</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation>Hämta metadata</translation>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation>Hämta nu</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Ikon</translation>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation>Välj ikon för flödet.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Flödesnamn</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Ange flödets namn.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Flödesbeskrivning</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Beskriv flödet.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Flödets fullständiga URL inklusive schema</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Ange flödets URL.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Ikonval</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Hämta ikon från fil...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation>Använd standardikon från ikontemat</translation>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation>Hämta ikon från flödet</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Ingen metadata hämtad.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation>Ikon hämtades.</translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation>Ikonmetadata hämtad.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Resultat: %1.</translation>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation>Ikonmetadata inte hämtad.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Fel: %1.</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation>Ikon hämtades inte.</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>All metadata hämtades korrekt.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Flödes- och ikonmetadata hämtad.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation>Flödes- eller ikonmetadata inte hämtad.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Ingen metadata hämtades.</translation>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation>Flödesnamnet är ok.</translation>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation>Flödesnamnet är för kort.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Beskrivning saknas.</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>Beskrivningen är ok.</translation>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation>URL:en är OK.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation>URL saknas.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Välj ikonfil för flödet</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Välj ikon</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Avbryt</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Sök i:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Ikonnamn:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Ikontyp:</translation>
+    </message>
+</context>
+<context>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
@@ -4603,6 +4668,45 @@ Olästa nyheter: %2</translation>
     </message>
 </context>
 <context>
+    <name>TtRssFeedDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>Överordnad kategori</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Välj övergripande objekt för ditt flöde.</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Full feed URL including scheme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Provide URL for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation>URL:en är OK.</translation>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation>URL saknas.</translation>
+    </message>
+</context>
+<context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Cannot add item</source>
@@ -4760,10 +4864,6 @@ Senaste inloggning: %4</translation>
 </context>
 <context>
     <name>WebViewer</name>
-    <message>
-        <source>Attachment</source>
-        <translation>Bilaga</translation>
-    </message>
     <message>
         <source>Written by </source>
         <translation>Skriven av </translation>

@@ -195,6 +195,53 @@
     </message>
 </context>
 <context>
+    <name>AuthenticationDetails</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Certain flux requière une authentification, incluant les flux GMail. Les schémas d&apos;authentification BASIC, NTLM-2 et DIGEST-MD5 sont supportés.</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Nom d&apos;utilisateur</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Mot de passe</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Définir le nom d&apos;utilisateur pour accéder au flux.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Définir le mot de passe pour accéder au flux.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Le nom d&apos;utilisateur est correct ou non nécessaire.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Le nom d&apos;utilisateur est vide.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Le mot de passe  est correct ou non nécessaire.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Le mot de passe est vide.</translation>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -315,10 +362,6 @@ Ce site propose %n flux.</numerusform></translation>
 </context>
 <context>
     <name>DownloadItem</name>
-    <message>
-        <source>Ico</source>
-        <translation>Ico</translation>
-    </message>
     <message>
         <source>Filename</source>
         <translation>Nom de fichier</translation>
@@ -758,6 +801,10 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>CUSTOM</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1101,6 +1148,10 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Get my credentials</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1526,253 +1577,12 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Parent category</source>
-        <translation>Catégorie parente</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation>Sélectionner l&apos;article parent pour votre flux.</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation>Sélectionner un type pour le flux standard.</translation>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation>Encodage</translation>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Sélectionner un encodage pour le flux standard. Si vous n&apos;êtes pas sûr à propos de l&apos;encodage, sélectionner alors l&apos;encodage &quot;UTF-8&quot;.</translation>
-    </message>
-    <message>
         <source>Auto-update</source>
         <translation>Mise à jour automatique</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
         <translation>Sélectionner la stratégie des mises à jour automatique pour ce flux. Par défaut, cette stratégie signifie que le flux sera mis à jour par intervalle de temps défini dans les paramètres de l&apos;application.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titre</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Description</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation>Le chercher maintenant</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Icône</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation>Sélectionner un icône pour votre flux.</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Certain flux requière une authentification, incluant les flux GMail. Les schémas d&apos;authentification BASIC, NTLM-2 et DIGEST-MD5 sont supportés.</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Nom d&apos;utilisateur</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Mot de passe</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>Chercher les métadonnées</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Ajouter un nouveau flux</translation>
-    </message>
-    <message>
-        <source>Edit feed &apos;%1&apos;</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation>Le nom du flux est correct.</translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation>Le nom du flux est trop court.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>La description est vide.</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The URL is ok.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The URL is empty.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Le nom d&apos;utilisateur est correct ou non nécessaire.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Le nom d&apos;utilisateur est vide.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Le mot de passe  est correct ou non nécessaire.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Le mot de passe est vide.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Sélectionner un icône pour le flux</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Sélectionner l&apos;icône</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Annuler</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Rechercher dans :</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Nom de l&apos;icône :</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Type d&apos;icône :</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>Tout les méta-datas ont été extraites avec succès.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Flux et icône extraits.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Résultat : %1.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Erreur : %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Aucune méta-donnée extraite.</translation>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Titre du flux</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Définir un titre pour votre flux.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Description du flux</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Définir une description pour votre flux.</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>URL du flux complet incluant le préfixe</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Définir l&apos;URL pour votre flux.</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>Définir le nom d&apos;utilisateur pour accéder au flux.</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>Définir le mot de passe pour accéder au flux.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Sélection de l&apos;icône</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Charger l&apos;icône depuis un fichier...</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Pas de métadonnées trouvé aussi loin.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
@@ -1785,6 +1595,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>Do not auto-update at all</source>
         <translation>Ne pas mettre tout à jour automatiquement</translation>
+    </message>
+    <message>
+        <source>Auto-updating</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation>Impossible d&apos;éditer le flux</translation>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation>Le flux n&apos;a pas été édité dû à une erreur.</translation>
+    </message>
+    <message>
+        <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2202,6 +2028,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <source>Display &amp;documentation</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -2211,14 +2041,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Remove selected</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add new</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Account</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2282,14 +2104,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Test!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Beautify!</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Detailed &amp;help</source>
         <translation type="unfinished"/>
     </message>
@@ -2330,10 +2144,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>JavaScript-based filter contains errors: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Cannot find &apos;clang-format&apos;</source>
         <translation type="unfinished"/>
     </message>
@@ -2358,27 +2168,38 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot save new filter, error: &apos;&apos;.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>FormOwnCloudFeedDetails</name>
-    <message>
-        <source>Feed added</source>
+        <source>&amp;New filter</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
+        <source>&amp;Test</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot add feed</source>
-        <translation>Impossible d&apos;ajouter le flux</translation>
+        <source>Process checked feeds</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Le flux n&apos;a pas été ajouté dû à une erreur.</translation>
+        <source>&amp;Beautify</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Existing messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save new filter, error: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>EXISTING messages filtering error: '%1'.
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>SAMPLE message filtering error: '%1'.
+</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2616,6 +2437,18 @@ You have to restart manually.</source>
         <source>Feed was not edited due to error.</source>
         <translation>Le flux n&apos;a pas été édité dû à une erreur.</translation>
     </message>
+    <message>
+        <source>General</source>
+        <translation>Général</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Ajouter un nouveau flux</translation>
+    </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
@@ -2765,6 +2598,18 @@ You have to restart manually.</source>
     <message>
         <source>Feed was not added due to error.</source>
         <translation>Le flux n&apos;a pas été ajouté dû à une erreur.</translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation>Général</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Ajouter un nouveau flux</translation>
     </message>
 </context>
 <context>
@@ -3140,6 +2985,37 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>MessagesForFiltersModel</name>
+    <message>
+        <source>Read</source>
+        <translation>Lire</translation>
+    </message>
+    <message>
+        <source>Important</source>
+        <translation>Important</translation>
+    </message>
+    <message>
+        <source>In recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Titre</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation>Auteur</translation>
+    </message>
+    <message>
+        <source>Created on</source>
+        <translation>Crée sur</translation>
+    </message>
+</context>
+<context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
@@ -3488,17 +3364,6 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>You can close this window now. Go back to %1</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>OwnCloudServiceRoot</name>
-    <message>
-        <source>Cannot add item</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4351,6 +4216,206 @@ Type: %3</source>
     </message>
 </context>
 <context>
+    <name>StandardFeedDetails</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>Catégorie parente</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Sélectionner l&apos;article parent pour votre flux.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation>Sélectionner un type pour le flux standard.</translation>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation>Encodage</translation>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation>Sélectionner un encodage pour le flux standard. Si vous n&apos;êtes pas sûr à propos de l&apos;encodage, sélectionner alors l&apos;encodage &quot;UTF-8&quot;.</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Titre</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Description</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation>Chercher les métadonnées</translation>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation>Le chercher maintenant</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Icône</translation>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation>Sélectionner un icône pour votre flux.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Titre du flux</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Définir un titre pour votre flux.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Description du flux</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Définir une description pour votre flux.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>URL du flux complet incluant le préfixe</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Définir l&apos;URL pour votre flux.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Sélection de l&apos;icône</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Charger l&apos;icône depuis un fichier...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Pas de métadonnées trouvé aussi loin.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Résultat : %1.</translation>
+    </message>
+    <message>
+        <source>Icon metadata not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Erreur : %1.</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>Tout les méta-datas ont été extraites avec succès.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Flux et icône extraits.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metadata not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Aucune méta-donnée extraite.</translation>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation>Le nom du flux est correct.</translation>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation>Le nom du flux est trop court.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>La description est vide.</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Sélectionner un icône pour le flux</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Sélectionner l&apos;icône</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Annuler</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Rechercher dans :</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Nom de l&apos;icône :</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Type d&apos;icône :</translation>
+    </message>
+</context>
+<context>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
@@ -4567,6 +4632,45 @@ Unread news: %2</source>
     </message>
 </context>
 <context>
+    <name>TtRssFeedDetails</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>Catégorie parente</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Sélectionner l&apos;article parent pour votre flux.</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Full feed URL including scheme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Provide URL for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Cannot add item</source>
@@ -4721,10 +4825,6 @@ Last login on: %4</source>
 </context>
 <context>
     <name>WebViewer</name>
-    <message>
-        <source>Attachment</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Written by </source>
         <translation>Écrit par</translation>

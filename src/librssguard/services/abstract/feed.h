@@ -89,7 +89,7 @@ class Feed : public RootItem {
     void setMessageFilters(const QList<QPointer<MessageFilter>>& messageFilters);
     void removeMessageFilter(MessageFilter* filter);
 
-    int updateMessages(const QList<Message>& messages, bool error_during_obtaining);
+    int updateMessages(const QList<Message>& messages, bool error_during_obtaining, bool force_update = false);
 
   public slots:
     virtual void updateCounts(bool including_total_count);

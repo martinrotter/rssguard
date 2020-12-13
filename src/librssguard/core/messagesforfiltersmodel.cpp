@@ -9,7 +9,7 @@
 #include "miscellaneous/skinfactory.h"
 
 MessagesForFiltersModel::MessagesForFiltersModel(QObject* parent) : QAbstractTableModel(parent) {
-  m_headerData << tr("Read") << tr("Important") << tr("Title")
+  m_headerData << tr("Read") << tr("Important") << tr("In recycle bin") << tr("Title")
                << tr("URL") << tr("Author") << tr("Created on");
 }
 
@@ -60,6 +60,9 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
 
         case MFM_MODEL_ISIMPORTANT:
           return msg.m_isImportant;
+
+        case MFM_MODEL_ISDELETED:
+          return msg.m_isDeleted;
 
         case MFM_MODEL_TITLE:
           return msg.m_title;
