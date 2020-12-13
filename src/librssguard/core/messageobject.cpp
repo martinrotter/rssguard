@@ -199,6 +199,6 @@ QList<Label*> MessageObject::availableLabels() const {
   return m_availableLabels;
 }
 
-bool MessageObject::alreadyStored() const {
+bool MessageObject::alreadyStoredInDb() const {
   return m_message->m_id > 0;
 }

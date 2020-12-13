@@ -22,7 +22,7 @@ class MessageObject : public QObject {
   Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
   Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
   Q_PROPERTY(bool isDeleted READ isDeleted WRITE setIsDeleted)
-  Q_PROPERTY(bool alreadyStored READ alreadyStored)
+  Q_PROPERTY(bool alreadyStoredInDb READ alreadyStoredInDb)
 
   public:
     enum class FilteringAction {
@@ -82,7 +82,7 @@ class MessageObject : public QObject {
     QList<Label*> assignedLabels() const;
     QList<Label*> availableLabels() const;
 
-    bool alreadyStored() const;
+    bool alreadyStoredInDb() const;
 
     // Generic Message's properties bindings.
     QString feedCustomId() const;
