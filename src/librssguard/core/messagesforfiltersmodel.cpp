@@ -131,9 +131,19 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, QJSEngine* engin
 }
 
 Message* MessagesForFiltersModel::messageForRow(int row) {
-  return &m_messages[row];
+  if (row >= 0 && row < m_messages.size()) {
+    return &m_messages[row];
+  }
+  else {
+    return nullptr;
+  }
 }
 
 Message MessagesForFiltersModel::messageForRow(int row) const {
-  return m_messages[row];
+  if (row >= 0 && row < m_messages.size()) {
+    return m_messages[row];
+  }
+  else {
+    return Message();
+  }
 }

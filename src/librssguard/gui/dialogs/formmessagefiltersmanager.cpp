@@ -45,6 +45,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
   m_ui.m_btnRunOnMessages->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start")));
   m_ui.m_btnDetailedHelp->setIcon(qApp->icons()->fromTheme(QSL("help-contents")));
   m_ui.m_txtScript->setFont(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont));
+  m_ui.m_treeExistingMessages->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
 
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_ISREAD, QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_ISIMPORTANT, QHeaderView::ResizeMode::ResizeToContents);
@@ -59,8 +60,9 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
   });
   connect(m_ui.m_listFilters, &QListWidget::currentRowChanged,
           this, &FormMessageFiltersManager::loadFilter);
-  connect(m_ui.m_btnAddNew, &QPushButton::clicked,
-          this, &FormMessageFiltersManager::addNewFilter);
+  connect(m_ui.m_btnAddNew, &QPushButton::clicked, this, [this]() {
+    addNewFilter();
+  });
   connect(m_ui.m_btnRemoveSelected, &QPushButton::clicked,
           this, &FormMessageFiltersManager::removeSelectedFilter);
   connect(m_ui.m_txtTitle, &QLineEdit::textChanged, this, &FormMessageFiltersManager::saveSelectedFilter);
@@ -78,6 +80,8 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
           this, &FormMessageFiltersManager::displayMessagesOfFeed);
   connect(m_ui.m_btnRunOnMessages, &QPushButton::clicked,
           this, &FormMessageFiltersManager::processCheckedFeeds);
+  connect(m_ui.m_treeExistingMessages, &QTreeView::customContextMenuRequested,
+          this, &FormMessageFiltersManager::showMessageContextMenu);
 
   initializeTestingMessage();
   loadFilters();
@@ -104,6 +108,42 @@ ServiceRoot* FormMessageFiltersManager::selectedAccount() const {
   return dat.isNull() ? nullptr : dat.value<ServiceRoot*>();
 }
 
+void FormMessageFiltersManager::filterMessagesLikeThis(const Message& msg) {
+  QString filter_script = QSL("function filterMessage() {\n"
+                              "  // Adjust the condition to suit your needs.\n"
+                              "  var is_message_same =\n"
+                              "    msg.isRead == %1 &&\n"
+                              "    msg.isImportant == %2 &&\n"
+                              "    msg.title == '%3' &&\n"
+                              "    msg.url == '%4';\n"
+                              "\n"
+                              "  if (is_message_same) {\n"
+                              "    return MessageObject.Accept;\n"
+                              "  }\n"
+                              "  else {\n"
+                              "    return MessageObject.Ignore;\n"
+                              "  }\n"
+                              "}").arg(QString::number(int(msg.m_isRead)),
+                                       QString::number(int(msg.m_isImportant)),
+                                       msg.m_title,
+                                       msg.m_url);
+
+  addNewFilter(filter_script);
+}
+
+void FormMessageFiltersManager::showMessageContextMenu(const QPoint& pos) {
+  Message* msg = m_msgModel->messageForRow(m_ui.m_treeExistingMessages->indexAt(pos).row());
+
+  if (msg != nullptr) {
+    QMenu menu(tr("Context menu"), m_ui.m_treeExistingMessages);
+
+    menu.addAction(tr("Filter messages like this"), this, [=]() {
+      filterMessagesLikeThis(*msg);
+    });
+    menu.exec(m_ui.m_treeExistingMessages->mapToGlobal(pos));
+  }
+}
+
 void FormMessageFiltersManager::removeSelectedFilter() {
   auto* fltr = selectedFilter();
 
@@ -123,11 +163,13 @@ void FormMessageFiltersManager::loadFilters() {
   }
 }
 
-void FormMessageFiltersManager::addNewFilter() {
+void FormMessageFiltersManager::addNewFilter(const QString& filter_script) {
   try {
     auto* fltr = m_reader->addMessageFilter(
       tr("New message filter"),
-      QSL("function filterMessage() { return MessageObject.Accept; }"));
+      filter_script.isEmpty()
+                   ? QSL("function filterMessage() { return MessageObject.Accept; }")
+                   : filter_script);
     auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
 
     it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<MessageFilter*>(fltr));

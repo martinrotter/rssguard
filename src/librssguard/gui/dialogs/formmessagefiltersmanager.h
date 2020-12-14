@@ -25,8 +25,10 @@ class FormMessageFiltersManager : public QDialog {
     ServiceRoot* selectedAccount() const;
 
   private slots:
+    void filterMessagesLikeThis(const Message& msg);
+    void showMessageContextMenu(const QPoint& pos);
     void removeSelectedFilter();
-    void addNewFilter();
+    void addNewFilter(const QString& filter_script = QString());
     void saveSelectedFilter();
     void loadFilter();
     void loadFilters();
