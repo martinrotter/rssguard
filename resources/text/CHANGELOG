@@ -1,3 +1,19 @@
+3.8.4
+—————
+
+Added:
+▪ Dialog for message filters management now allows you to:
+    ▪ Preview your message filter by running it against COPIES of stored messages. (#266)
+    ▪ Run your message filter against ORIGINALS of already stored messages. (#261)
+    ▪ Create message filters based on single message data. (#278)
+
+Fixed/changed:
+▪ "Edit feed" dialog was rewritten and made modular so that it fits better all plugins. (#287)
+▪ Users now can tweak auto-update policies for feeds of all account types. (#287)
+▪ Tweaked logic of loading feed's messages to make it all work with some broken feeds (Vimeo). (#309)
+▪ RSS Guard now prefers to use desktop environment's icon on Linux.
+▪ Make loading of feed's icons work better. (#310)
+
 3.8.3
 —————
 
