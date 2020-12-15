@@ -465,8 +465,6 @@ void MessagesView::deleteSelectedMessages() {
 
   if (current_index.isValid()) {
     setCurrentIndex(current_index);
-
-    emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()), m_sourceModel->loadedItem());
   }
   else {
     emit currentMessageRemoved();

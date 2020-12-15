@@ -102,9 +102,14 @@ void MessagePreviewer::hideToolbar() {
 }
 
 void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
-  m_verticalScrollBarPosition = m_txtMessage->verticalScrollBarPosition();
-
   bool same_message = message.m_id == m_message.m_id && m_root == root;
+
+  if (same_message) {
+    m_verticalScrollBarPosition = m_txtMessage->verticalScrollBarPosition();
+  }
+  else {
+    m_verticalScrollBarPosition = 0.0;
+  }
 
   m_message = message;
   m_root = root;
