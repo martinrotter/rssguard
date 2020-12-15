@@ -99,7 +99,7 @@ QString MessagesModelSqlLayer::orderByClause() const {
     for (int i = 0; i < m_sortColumns.size(); i++) {
       QString field_name(m_orderByNames[m_sortColumns[i]]);
 
-      sorts.append(field_name + (m_sortOrders[i] == Qt::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
+      sorts.append(QSL("LOWER(%1)").arg(field_name) + (m_sortOrders[i] == Qt::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
     }
 
     return QL1S(" ORDER BY ") + sorts.join(QSL(", "));
