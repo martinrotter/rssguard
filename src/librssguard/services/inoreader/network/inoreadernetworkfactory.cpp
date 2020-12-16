@@ -224,10 +224,8 @@ void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, cons
     trimmed_ids.append(QString("i=") + simplified_id);
   }
 
-  QStringList working_subset;
+  QStringList working_subset; working_subset.reserve(std::min(200, trimmed_ids.size()));
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-
-  working_subset.reserve(trimmed_ids.size() > 200 ? 200 : trimmed_ids.size());
 
   // Now, we perform messages update in batches (max 200 messages per batch).
   while (!trimmed_ids.isEmpty()) {
