@@ -39,7 +39,7 @@ ServiceRoot::LabelOperation TtRssServiceRoot::supportedLabelOperations() const {
 void TtRssServiceRoot::start(bool freshly_activated) {
   Q_UNUSED(freshly_activated)
   loadFromDatabase();
-  loadCacheFromFile(accountId());
+  loadCacheFromFile();
 
   if (childCount() <= 3) {
     syncIn();
@@ -47,8 +47,6 @@ void TtRssServiceRoot::start(bool freshly_activated) {
 }
 
 void TtRssServiceRoot::stop() {
-  saveCacheToFile(accountId());
-
   m_network->logout();
   qDebugNN << LOGSEC_TTRSS
            << "Stopping Tiny Tiny RSS account, logging out with result"
@@ -130,12 +128,16 @@ void TtRssServiceRoot::saveAllCachedData(bool async) {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      network()->updateArticles(ids,
-                                UpdateArticle::OperatingField::Unread,
-                                key == RootItem::ReadStatus::Unread
-                                ? UpdateArticle::Mode::SetToTrue
-                                : UpdateArticle::Mode::SetToFalse,
-                                async);
+      auto res = network()->updateArticles(ids,
+                                           UpdateArticle::OperatingField::Unread,
+                                           key == RootItem::ReadStatus::Unread
+                                           ? UpdateArticle::Mode::SetToTrue
+                                           : UpdateArticle::Mode::SetToFalse,
+                                           async);
+
+      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+        addMessageStatesToCache(ids, key);
+      }
     }
   }
 
@@ -149,13 +151,16 @@ void TtRssServiceRoot::saveAllCachedData(bool async) {
 
     if (!messages.isEmpty()) {
       QStringList ids = customIDsOfMessages(messages);
+      auto res = network()->updateArticles(ids,
+                                           UpdateArticle::OperatingField::Starred,
+                                           key == RootItem::Importance::Important
+                                           ? UpdateArticle::Mode::SetToTrue
+                                           : UpdateArticle::Mode::SetToFalse,
+                                           async);
 
-      network()->updateArticles(ids,
-                                UpdateArticle::OperatingField::Starred,
-                                key == RootItem::Importance::Important
-                                ? UpdateArticle::Mode::SetToTrue
-                                : UpdateArticle::Mode::SetToFalse,
-                                async);
+      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+        addMessageStatesToCache(messages, key);
+      }
     }
   }
 
@@ -168,7 +173,11 @@ void TtRssServiceRoot::saveAllCachedData(bool async) {
     QStringList messages = k.value();
 
     if (!messages.isEmpty()) {
-      network()->setArticleLabel(messages, label_custom_id, true);
+      auto res = network()->setArticleLabel(messages, label_custom_id, true);
+
+      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+        addLabelsAssignmentsToCache(messages, label_custom_id, true);
+      }
     }
   }
 
@@ -181,7 +190,11 @@ void TtRssServiceRoot::saveAllCachedData(bool async) {
     QStringList messages = l.value();
 
     if (!messages.isEmpty()) {
-      network()->setArticleLabel(messages, label_custom_id, false);
+      auto res = network()->setArticleLabel(messages, label_custom_id, false);
+
+      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+        addLabelsAssignmentsToCache(messages, label_custom_id, false);
+      }
     }
   }
 }

@@ -184,17 +184,14 @@ void GmailServiceRoot::start(bool freshly_activated) {
   Q_UNUSED(freshly_activated)
 
   loadFromDatabase();
-  loadCacheFromFile(accountId());
+  loadCacheFromFile();
 
   if (childCount() <= 3) {
     syncIn();
   }
-
-  m_network->oauth()->login();
-}
-
-void GmailServiceRoot::stop() {
-  saveCacheToFile(accountId());
+  else {
+    m_network->oauth()->login();
+  }
 }
 
 QString GmailServiceRoot::code() const {

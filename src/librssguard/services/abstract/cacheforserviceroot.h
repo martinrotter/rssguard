@@ -22,20 +22,29 @@ class CacheForServiceRoot {
   public:
     explicit CacheForServiceRoot();
 
+    virtual void saveAllCachedData(bool async = true) = 0;
+
+    void addLabelsAssignmentsToCache(const QStringList& ids_of_messages, const QString& lbl_custom_id, bool assign);
     void addLabelsAssignmentsToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign);
     void addMessageStatesToCache(const QList<Message>& ids_of_messages, RootItem::Importance importance);
     void addMessageStatesToCache(const QStringList& ids_of_messages, RootItem::ReadStatus read);
 
-    // Persistently saves/loads cached changes to/from file.
-    // NOTE: The whole cache is cleared after save is done and before load is done.
-    void saveCacheToFile(int acc_id);
-    void loadCacheFromFile(int acc_id);
-
-    virtual void saveAllCachedData(bool async = true) = 0;
+    void loadCacheFromFile();
+    void setUniqueId(int unique_id);
 
   protected:
+
+    // Returns all cached data and clears the cache.
+    // NOTE: If returned data are not successfuly passed back to
+    // server then caller needs to re-add the data back to cache.
     CacheSnapshot takeMessageCache();
 
+  private:
+    bool isEmpty() const;
+    void clearCache();
+    void saveCacheToFile();
+
+    int m_uniqueId;
     QScopedPointer<QMutex> m_cacheSaveMutex;
 
     // Map where key is label's custom ID and value is list of message custom IDs
@@ -51,10 +60,6 @@ class CacheForServiceRoot {
 
     // Map of cached important/unimportant changes.
     QMap<RootItem::Importance, QList<Message>> m_cachedStatesImportant;
-
-  private:
-    bool isEmpty() const;
-    void clearCache();
 };
 
 #endif // CACHEFORSERVICEROOT_H

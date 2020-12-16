@@ -499,6 +499,12 @@ int ServiceRoot::accountId() const {
 
 void ServiceRoot::setAccountId(int account_id) {
   m_accountId = account_id;
+
+  auto* cache = dynamic_cast<CacheForServiceRoot*>(this);
+
+  if (cache != nullptr) {
+    cache->setUniqueId(account_id);
+  }
 }
 
 bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {

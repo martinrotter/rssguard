@@ -108,7 +108,7 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
   Q_UNUSED(freshly_activated)
 
   loadFromDatabase();
-  loadCacheFromFile(accountId());
+  loadCacheFromFile();
 
   if (childCount() <= 3) {
     syncIn();
@@ -116,10 +116,6 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
   else {
     m_network->oauth()->login();
   }
-}
-
-void InoreaderServiceRoot::stop() {
-  saveCacheToFile(accountId());
 }
 
 QString InoreaderServiceRoot::code() const {

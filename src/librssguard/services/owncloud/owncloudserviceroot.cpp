@@ -65,15 +65,11 @@ bool OwnCloudServiceRoot::supportsCategoryAdding() const {
 void OwnCloudServiceRoot::start(bool freshly_activated) {
   Q_UNUSED(freshly_activated)
   loadFromDatabase();
-  loadCacheFromFile(accountId());
+  loadCacheFromFile();
 
   if (childCount() <= 3) {
     syncIn();
   }
-}
-
-void OwnCloudServiceRoot::stop() {
-  saveCacheToFile(accountId());
 }
 
 QString OwnCloudServiceRoot::code() const {

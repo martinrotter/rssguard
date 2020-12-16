@@ -332,7 +332,8 @@ TtRssResponse TtRssNetworkFactory::setArticleLabel(const QStringList& article_id
 
 TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList& ids,
                                                                UpdateArticle::OperatingField field,
-                                                               UpdateArticle::Mode mode, bool async) {
+                                                               UpdateArticle::Mode mode,
+                                                               bool async) {
   Q_UNUSED(async)
 
   QJsonObject json;
@@ -515,6 +516,7 @@ TtRssResponse::TtRssResponse(const QString& raw_content) {
 }
 
 TtRssResponse::~TtRssResponse() = default;
+
 bool TtRssResponse::isLoaded() const {
   return !m_rawContent.isEmpty();
 }

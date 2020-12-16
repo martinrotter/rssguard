@@ -18,23 +18,21 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     explicit OwnCloudServiceRoot(RootItem* parent = nullptr);
     virtual ~OwnCloudServiceRoot();
 
-    bool isSyncable() const;
-    bool canBeEdited() const;
-    bool canBeDeleted() const;
-    bool editViaGui();
-    bool deleteViaGui();
-    bool supportsFeedAdding() const;
-    bool supportsCategoryAdding() const;
+    virtual bool isSyncable() const;
+    virtual bool canBeEdited() const;
+    virtual bool canBeDeleted() const;
+    virtual bool editViaGui();
+    virtual bool deleteViaGui();
+    virtual bool supportsFeedAdding() const;
+    virtual bool supportsCategoryAdding() const;
+    virtual void start(bool freshly_activated);
+    virtual QString code() const;
+    virtual void saveAllCachedData(bool async = true);
 
-    void start(bool freshly_activated);
-    void stop();
-    QString code() const;
     OwnCloudNetworkFactory* network() const;
 
     void updateTitle();
     void saveAccountDataToDatabase();
-
-    void saveAllCachedData(bool async = true);
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;

@@ -10,35 +10,43 @@
 #include <QDir>
 #include <QSet>
 
-CacheForServiceRoot::CacheForServiceRoot() : m_cacheSaveMutex(new QMutex()) {}
+CacheForServiceRoot::CacheForServiceRoot() : m_uniqueId(NO_PARENT_CATEGORY), m_cacheSaveMutex(new QMutex()) {}
 
-void CacheForServiceRoot::addLabelsAssignmentsToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign) {
-  auto custom_ids = lbl->getParentServiceRoot()->customIDsOfMessages(ids_of_messages);
-
+void CacheForServiceRoot::addLabelsAssignmentsToCache(const QStringList& ids_of_messages,
+                                                      const QString& lbl_custom_id,
+                                                      bool assign) {
   if (assign) {
-    for (const QString& custom_id : custom_ids) {
-      if (m_cachedLabelDeassignments[lbl->customId()].contains(custom_id)) {
+    for (const QString& custom_id : ids_of_messages) {
+      if (m_cachedLabelDeassignments[lbl_custom_id].contains(custom_id)) {
         // We want to assign this ID but it was marked for deassignment, remove from deassignment.
-        m_cachedLabelDeassignments[lbl->customId()].removeAll(custom_id);
+        m_cachedLabelDeassignments[lbl_custom_id].removeAll(custom_id);
       }
       else {
-        m_cachedLabelAssignments[lbl->customId()].append(custom_id);
-        m_cachedLabelAssignments[lbl->customId()].removeDuplicates();
+        m_cachedLabelAssignments[lbl_custom_id].append(custom_id);
+        m_cachedLabelAssignments[lbl_custom_id].removeDuplicates();
       }
     }
   }
   else {
-    for (const QString& custom_id : custom_ids) {
-      if (m_cachedLabelAssignments[lbl->customId()].contains(custom_id)) {
+    for (const QString& custom_id : ids_of_messages) {
+      if (m_cachedLabelAssignments[lbl_custom_id].contains(custom_id)) {
         // We want to deassign this ID but it was marked for assignment, remove from assignment.
-        m_cachedLabelAssignments[lbl->customId()].removeAll(custom_id);
+        m_cachedLabelAssignments[lbl_custom_id].removeAll(custom_id);
       }
       else {
-        m_cachedLabelDeassignments[lbl->customId()].append(custom_id);
-        m_cachedLabelDeassignments[lbl->customId()].removeDuplicates();
+        m_cachedLabelDeassignments[lbl_custom_id].append(custom_id);
+        m_cachedLabelDeassignments[lbl_custom_id].removeDuplicates();
       }
     }
   }
+
+  saveCacheToFile();
+}
+
+void CacheForServiceRoot::addLabelsAssignmentsToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign) {
+  auto custom_ids = lbl->getParentServiceRoot()->customIDsOfMessages(ids_of_messages);
+
+  addLabelsAssignmentsToCache(custom_ids, lbl->customId(), assign);
 }
 
 void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_messages, RootItem::Importance importance) {
@@ -65,6 +73,8 @@ void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_m
   list_act.append(set_act.values());
   list_other.clear();
   list_other.append(set_other.values());
+
+  saveCacheToFile();
 }
 
 void CacheForServiceRoot::addMessageStatesToCache(const QStringList& ids_of_messages, RootItem::ReadStatus read) {
@@ -91,13 +101,13 @@ void CacheForServiceRoot::addMessageStatesToCache(const QStringList& ids_of_mess
   list_act.append(set_act.values());
   list_other.clear();
   list_other.append(set_other.values());
+
+  saveCacheToFile();
 }
 
-void CacheForServiceRoot::saveCacheToFile(int acc_id) {
-  QMutexLocker lck(m_cacheSaveMutex.data());
-
+void CacheForServiceRoot::saveCacheToFile() {
   // Save to file.
-  const QString file_cache = qApp->userDataFolder() + QDir::separator() + QString::number(acc_id) + "-cached-msgs.dat";
+  const QString file_cache = qApp->userDataFolder() + QDir::separator() + QString::number(m_uniqueId) + "-cached-msgs.dat";
 
   if (isEmpty()) {
     QFile::remove(file_cache);
@@ -112,8 +122,6 @@ void CacheForServiceRoot::saveCacheToFile(int acc_id) {
       file.flush();
       file.close();
     }
-
-    clearCache();
   }
 }
 
@@ -124,26 +132,27 @@ void CacheForServiceRoot::clearCache() {
   m_cachedLabelDeassignments.clear();
 }
 
-void CacheForServiceRoot::loadCacheFromFile(int acc_id) {
+void CacheForServiceRoot::loadCacheFromFile() {
   QMutexLocker lck(m_cacheSaveMutex.data());
 
   clearCache();
 
   // Load from file.
-  const QString file_cache = qApp->userDataFolder() + QDir::separator() + QString::number(acc_id) + "-cached-msgs.dat";
+  const QString file_cache = qApp->userDataFolder() + QDir::separator() + QString::number(m_uniqueId) + "-cached-msgs.dat";
   QFile file(file_cache);
 
   if (file.exists()) {
-    if (file.open(QIODevice::ReadOnly)) {
+    if (file.open(QIODevice::OpenModeFlag::ReadOnly)) {
       QDataStream stream(&file);
 
       stream >> m_cachedStatesImportant >> m_cachedStatesRead >> m_cachedLabelAssignments >> m_cachedLabelDeassignments;
-      file.flush();
       file.close();
     }
-
-    file.remove();
   }
+}
+
+void CacheForServiceRoot::setUniqueId(int unique_id) {
+  m_uniqueId = unique_id;
 }
 
 CacheSnapshot CacheForServiceRoot::takeMessageCache() {
@@ -165,6 +174,7 @@ CacheSnapshot CacheForServiceRoot::takeMessageCache() {
   cached_deass_lbl.detach();
 
   clearCache();
+  saveCacheToFile();
 
   CacheSnapshot c;
 
