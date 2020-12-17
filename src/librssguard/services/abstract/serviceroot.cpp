@@ -83,7 +83,7 @@ QList<QAction*> ServiceRoot::contextMenuMessagesList(const QList<Message>& messa
 QList<QAction*> ServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
     if (isSyncable()) {
-      auto* act_sync_tree = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
+      auto* act_sync_tree = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Synchronize folders && other items"), this);
 
       connect(act_sync_tree, &QAction::triggered, this, &ServiceRoot::syncIn);
       m_serviceMenu.append(act_sync_tree);

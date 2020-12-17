@@ -64,7 +64,7 @@ void FormTtRssFeedDetails::apply() {
       // Feed was added online.
       accept();
       qApp->showGuiMessage(tr("Feed added"),
-                           tr("Feed was added, triggering sync in now."),
+                           tr("Feed was added, obtaining new tree of feeds now."),
                            QSystemTrayIcon::MessageIcon::Information);
       QTimer::singleShot(300, root, &TtRssServiceRoot::syncIn);
     }

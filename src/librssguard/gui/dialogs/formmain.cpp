@@ -503,9 +503,9 @@ void FormMain::setupIcons() {
   // Feeds/messages.
   m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("list-add")));
   m_ui->m_actionStopRunningItemsUpdate->setIcon(icon_theme_factory->fromTheme(QSL("process-stop")));
-  m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
-  m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
-  m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
+  m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("download")));
+  m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("download")));
+  m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setIcon(icon_theme_factory->fromTheme(QSL("download")));
   m_ui->m_actionClearSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionClearAllItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
