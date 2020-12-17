@@ -81,10 +81,25 @@ QList<QAction*> ServiceRoot::contextMenuMessagesList(const QList<Message>& messa
 }
 
 QList<QAction*> ServiceRoot::serviceMenu() {
-  if (m_serviceMenu.isEmpty() && isSyncable()) {
-    m_actionSyncIn = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
-    connect(m_actionSyncIn, &QAction::triggered, this, &ServiceRoot::syncIn);
-    m_serviceMenu.append(m_actionSyncIn);
+  if (m_serviceMenu.isEmpty()) {
+    if (isSyncable()) {
+      auto* act_sync_tree = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Sync in"), this);
+
+      connect(act_sync_tree, &QAction::triggered, this, &ServiceRoot::syncIn);
+      m_serviceMenu.append(act_sync_tree);
+
+      auto* cache = toCache();
+
+      if (cache != nullptr) {
+        auto* act_sync_cache = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Synchronize message cache"), this);
+
+        connect(act_sync_cache, &QAction::triggered, this, [cache]() {
+          cache->saveAllCachedData();
+        });
+
+        m_serviceMenu.append(act_sync_cache);
+      }
+    }
   }
 
   return m_serviceMenu;

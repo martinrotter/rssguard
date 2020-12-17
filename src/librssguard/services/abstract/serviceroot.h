@@ -244,7 +244,6 @@ class ServiceRoot : public RootItem {
     ImportantNode* m_importantNode;
     LabelsNode* m_labelsNode;
     int m_accountId;
-    QAction* m_actionSyncIn;
     QList<QAction*> m_serviceMenu;
 };
 

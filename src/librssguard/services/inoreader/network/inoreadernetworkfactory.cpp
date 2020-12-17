@@ -220,8 +220,10 @@ void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, cons
 
   for (const QString& id : msg_custom_ids) {
     QString simplified_id = regex_short_id.match(id).captured();
+    auto numeric_id = simplified_id.toLongLong(nullptr, 16);
+    QString decimal_id = QString::number(numeric_id);
 
-    trimmed_ids.append(QString("i=") + simplified_id);
+    trimmed_ids.append(QString("i=") + decimal_id);
   }
 
   QStringList working_subset; working_subset.reserve(std::min(200, trimmed_ids.size()));
@@ -230,7 +232,7 @@ void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, cons
   // Now, we perform messages update in batches (max 200 messages per batch).
   while (!trimmed_ids.isEmpty()) {
     // We take 200 IDs.
-    for (int i = 0; i < 200 && !trimmed_ids.isEmpty(); i++) {
+    for (int i = 0; i < 50 && !trimmed_ids.isEmpty(); i++) {
       working_subset.append(trimmed_ids.takeFirst());
     }
 
