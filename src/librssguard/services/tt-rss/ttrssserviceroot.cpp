@@ -117,7 +117,7 @@ bool TtRssServiceRoot::canBeDeleted() const {
   return true;
 }
 
-void TtRssServiceRoot::saveAllCachedData(bool async) {
+void TtRssServiceRoot::saveAllCachedData() {
   auto msg_cache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
@@ -133,7 +133,7 @@ void TtRssServiceRoot::saveAllCachedData(bool async) {
                                            key == RootItem::ReadStatus::Unread
                                            ? UpdateArticle::Mode::SetToTrue
                                            : UpdateArticle::Mode::SetToFalse,
-                                           async);
+                                           false);
 
       if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
         addMessageStatesToCache(ids, key);
@@ -156,7 +156,7 @@ void TtRssServiceRoot::saveAllCachedData(bool async) {
                                            key == RootItem::Importance::Important
                                            ? UpdateArticle::Mode::SetToTrue
                                            : UpdateArticle::Mode::SetToFalse,
-                                           async);
+                                           false);
 
       if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
         addMessageStatesToCache(messages, key);

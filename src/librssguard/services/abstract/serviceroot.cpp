@@ -672,6 +672,10 @@ bool ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const 
   return true;
 }
 
+CacheForServiceRoot* ServiceRoot::toCache() const {
+  return dynamic_cast<CacheForServiceRoot*>(const_cast<ServiceRoot*>(this));
+}
+
 void ServiceRoot::assembleFeeds(Assignment feeds) {
   QHash<int, Category*> categories = getHashedSubTreeCategories();
 

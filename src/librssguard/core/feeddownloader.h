@@ -8,6 +8,7 @@
 #include <QPair>
 
 #include "core/message.h"
+#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 
 class MessageFilter;
@@ -39,12 +40,15 @@ class FeedDownloader : public QObject {
     virtual ~FeedDownloader();
 
     bool isUpdateRunning() const;
+    bool isCacheSynchronizationRunning() const;
 
   public slots:
+    void synchronizeAccountCaches(const QList<CacheForServiceRoot*>& caches);
     void updateFeeds(const QList<Feed*>& feeds);
     void stopRunningUpdate();
 
   signals:
+    void cachesSynchronized();
     void updateStarted();
     void updateFinished(FeedDownloadResults updated_feeds);
     void updateProgress(const Feed* feed, int current, int total);
@@ -54,7 +58,9 @@ class FeedDownloader : public QObject {
     void updateAvailableFeeds();
     void finalizeUpdate();
 
-    QList<Feed*> m_feeds;
+    bool m_isCacheSynchronizationRunning;
+    bool m_stopCacheSynchronization;
+    QList<Feed*> m_feeds = {};
     QMutex* m_mutex;
     FeedDownloadResults m_results;
     int m_feedsUpdated;

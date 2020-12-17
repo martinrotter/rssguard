@@ -31,7 +31,7 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual void start(bool freshly_activated);
     virtual QString code() const;
     virtual QString additionalTooltip() const;
-    virtual void saveAllCachedData(bool async = true);
+    virtual void saveAllCachedData();
 
     void updateTitle();
 

@@ -16,6 +16,7 @@ class LabelsNode;
 class Label;
 class QAction;
 class MessagesModel;
+class CacheForServiceRoot;
 
 // Car here represents ID (int, primary key) of the item.
 typedef QList<QPair<int, RootItem*>> Assignment;
@@ -151,7 +152,8 @@ class ServiceRoot : public RootItem {
     // NOTE: Keep in sync with ServiceEntryRoot::code().
     virtual QString code() const = 0;
 
-  // These are not part of "interface".
+    // These are not part of "interface".
+    CacheForServiceRoot* toCache() const;
 
   public:
 

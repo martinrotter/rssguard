@@ -14,6 +14,8 @@
 #include "services/inoreader/inoreaderfeed.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
+#include <QThread>
+
 InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent)
   : ServiceRoot(parent), m_network(network) {
   if (network == nullptr) {
@@ -146,7 +148,7 @@ RootItem* InoreaderServiceRoot::obtainNewTreeForSyncIn() const {
   }
 }
 
-void InoreaderServiceRoot::saveAllCachedData(bool async) {
+void InoreaderServiceRoot::saveAllCachedData() {
   auto msg_cache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
@@ -157,7 +159,7 @@ void InoreaderServiceRoot::saveAllCachedData(bool async) {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      network()->markMessagesRead(key, ids, async);
+      network()->markMessagesRead(key, ids, false);
     }
   }
 
@@ -176,7 +178,7 @@ void InoreaderServiceRoot::saveAllCachedData(bool async) {
         custom_ids.append(msg.m_customId);
       }
 
-      network()->markMessagesStarred(key, custom_ids, async);
+      network()->markMessagesStarred(key, custom_ids, false);
     }
   }
 
@@ -189,7 +191,7 @@ void InoreaderServiceRoot::saveAllCachedData(bool async) {
     QStringList messages = k.value();
 
     if (!messages.isEmpty()) {
-      network()->editLabels(label_custom_id, true, messages, async);
+      network()->editLabels(label_custom_id, true, messages, false);
     }
   }
 
@@ -202,7 +204,7 @@ void InoreaderServiceRoot::saveAllCachedData(bool async) {
     QStringList messages = l.value();
 
     if (!messages.isEmpty()) {
-      network()->editLabels(label_custom_id, false, messages, async);
+      network()->editLabels(label_custom_id, false, messages, false);
     }
   }
 }

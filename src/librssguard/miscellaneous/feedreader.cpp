@@ -2,6 +2,7 @@
 
 #include "miscellaneous/feedreader.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "core/feeddownloader.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
@@ -33,7 +34,6 @@ FeedReader::FeedReader(QObject* parent)
 
   connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
   updateAutoUpdateStatus();
-  asyncCacheSaveFinished();
 
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebugNN << LOGSEC_CORE
@@ -66,11 +66,28 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
 void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(tr("Cannot update all items"),
-                         tr("You cannot update all items because another critical operation is ongoing."),
+                         tr("You cannot update items "
+                            "because another critical operation is ongoing."),
                          QSystemTrayIcon::MessageIcon::Warning, qApp->mainFormWidget(), true);
     return;
   }
 
+  initializeFeedDownloader();
+
+  QMetaObject::invokeMethod(m_feedDownloader, "updateFeeds",
+                            Qt::ConnectionType::QueuedConnection,
+                            Q_ARG(QList<Feed*>, feeds));
+}
+
+void FeedReader::synchronizeMessageData(const QList<CacheForServiceRoot*>& caches) {
+  initializeFeedDownloader();
+
+  QMetaObject::invokeMethod(m_feedDownloader, "synchronizeAccountCaches",
+                            Qt::ConnectionType::QueuedConnection,
+                            Q_ARG(QList<CacheForServiceRoot*>, caches));
+}
+
+void FeedReader::initializeFeedDownloader() {
   if (m_feedDownloader == nullptr) {
     qDebugNN << LOGSEC_CORE << "Creating FeedDownloader singleton.";
 
@@ -79,6 +96,7 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
 
     // Downloader setup.
     qRegisterMetaType<QList<Feed*>>("QList<Feed*>");
+    qRegisterMetaType<QList<CacheForServiceRoot*>>("QList<CacheForServiceRoot*>");
 
     m_feedDownloader->moveToThread(m_feedDownloaderThread);
 
@@ -91,10 +109,6 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
 
     m_feedDownloaderThread->start();
   }
-
-  QMetaObject::invokeMethod(m_feedDownloader, "updateFeeds",
-                            Qt::ConnectionType::QueuedConnection,
-                            Q_ARG(QList<Feed*>, feeds));
 }
 
 void FeedReader::showMessageFiltersManager() {
@@ -230,16 +244,39 @@ MessagesModel* FeedReader::messagesModel() const {
 }
 
 void FeedReader::executeNextAutoUpdate() {
-  if (qApp->mainFormWidget()->isActiveWindow() && m_globalAutoUpdateOnlyUnfocused) {
+  bool disable_update_with_window = qApp->mainFormWidget()->isActiveWindow() && m_globalAutoUpdateOnlyUnfocused;
+  auto roots = qApp->feedReader()->feedsModel()->serviceRoots();
+  std::list<CacheForServiceRoot*> full_caches = boolinq::from(roots)
+                                                .select([](ServiceRoot* root) -> CacheForServiceRoot* {
+    auto* cache = root->toCache();
+
+    if (cache != nullptr) {
+      return cache;
+    }
+    else {
+      return nullptr;
+    }
+  })
+                                                .where([](CacheForServiceRoot* cache) {
+    return !cache->isEmpty();
+  }).toStdList();
+
+  // Skip this round of auto-updating, but only if user disabled it when main window is active
+  // and there are no caches to synchronize.
+  if (disable_update_with_window && full_caches.empty()) {
     qDebugNN << LOGSEC_CORE
-             << "Delaying scheduled feed auto-update for one minute since window is focused and updates while focused are disabled by the user.";
+             << "Delaying scheduled feed auto-update for one minute since window "
+             << "is focused and updates while focused are disabled by the "
+             << "user and all account caches are empty.";
 
     // Cannot update, quit.
     return;
   }
 
   if (!qApp->feedUpdateLock()->tryLock()) {
-    qDebugNN << LOGSEC_CORE << "Delaying scheduled feed auto-updates for one minute due to another running update.";
+    qDebugNN << LOGSEC_CORE
+             << "Delaying scheduled feed auto-updates and message state synchronization for "
+             << "one minute due to another running update.";
 
     // Cannot update, quit.
     return;
@@ -253,49 +290,35 @@ void FeedReader::executeNextAutoUpdate() {
   }
 
   qDebugNN << LOGSEC_CORE
-           << "Starting auto-update event, pass "
-           << m_globalAutoUpdateRemainingInterval << "/" << m_globalAutoUpdateInitialInterval << ".";
+           << "Starting auto-update event, remaining "
+           << m_globalAutoUpdateRemainingInterval << "minutes out of "
+           << m_globalAutoUpdateInitialInterval << "total minutes to next global feed update.";
+
+  qApp->feedUpdateLock()->unlock();
+
+  // Resynchronize caches.
+  if (!full_caches.empty()) {
+    QList<CacheForServiceRoot*> caches = FROM_STD_LIST(QList<CacheForServiceRoot*>, full_caches);
+
+    synchronizeMessageData(caches);
+  }
 
   // Pass needed interval data and lets the model decide which feeds
   // should be updated in this pass.
   QList<Feed*> feeds_for_update = m_feedsModel->feedsForScheduledUpdate(m_globalAutoUpdateEnabled &&
                                                                         m_globalAutoUpdateRemainingInterval == 0);
 
-  qApp->feedUpdateLock()->unlock();
-
   if (!feeds_for_update.isEmpty()) {
     // Request update for given feeds.
     updateFeeds(feeds_for_update);
 
-    // NOTE: OSD/bubble informing about performing
-    // of scheduled update can be shown now.
+    // NOTE: OSD/bubble informing about performing of scheduled update can be shown now.
     if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableAutoUpdateNotification)).toBool()) {
       qApp->showGuiMessage(tr("Starting auto-update of some feeds"),
                            tr("I will auto-update %n feed(s).", nullptr, feeds_for_update.size()),
-                           QSystemTrayIcon::Information);
+                           QSystemTrayIcon::MessageIcon::Information);
     }
   }
-}
-
-void FeedReader::checkServicesForAsyncOperations() {
-  for (ServiceRoot* service : m_feedsModel->serviceRoots()) {
-    auto cache = dynamic_cast<CacheForServiceRoot*>(service);
-
-    if (cache != nullptr) {
-      cache->saveAllCachedData();
-    }
-  }
-
-  asyncCacheSaveFinished();
-}
-
-void FeedReader::asyncCacheSaveFinished() {
-  qDebugNN << LOGSEC_CORE << "I will start next check for cached service data in 60 seconds.";
-
-  QTimer::singleShot(60000, this, [&] {
-    qDebugNN << LOGSEC_CORE << "Saving cached metadata NOW.";
-    checkServicesForAsyncOperations();
-  });
 }
 
 QList<MessageFilter*> FeedReader::messageFilters() const {
@@ -311,9 +334,10 @@ void FeedReader::quit() {
   if (m_feedDownloader != nullptr) {
     m_feedDownloader->stopRunningUpdate();
 
-    if (m_feedDownloader->isUpdateRunning()) {
+    if (m_feedDownloader->isUpdateRunning() || m_feedDownloader->isCacheSynchronizationRunning()) {
       QEventLoop loop(this);
 
+      connect(m_feedDownloader, &FeedDownloader::cachesSynchronized, &loop, &QEventLoop::quit);
       connect(m_feedDownloader, &FeedDownloader::updateFinished, &loop, &QEventLoop::quit);
       loop.exec();
     }

@@ -27,7 +27,7 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual bool supportsCategoryAdding() const;
     virtual void start(bool freshly_activated);
     virtual QString code() const;
-    virtual void saveAllCachedData(bool async = true);
+    virtual void saveAllCachedData();
 
     OwnCloudNetworkFactory* network() const;
 
