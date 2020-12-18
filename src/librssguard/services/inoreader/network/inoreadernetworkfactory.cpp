@@ -194,7 +194,7 @@ QList<Message> InoreaderNetworkFactory::messages(ServiceRoot* root, const QStrin
   }
 }
 
-void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, const QStringList& msg_custom_ids, bool async) {
+void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, const QStringList& msg_custom_ids) {
   QString target_url = INOREADER_API_EDIT_TAG;
 
   if (assign) {
@@ -219,11 +219,7 @@ void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, cons
   QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
 
   for (const QString& id : msg_custom_ids) {
-    QString simplified_id = regex_short_id.match(id).captured();
-    auto numeric_id = simplified_id.toLongLong(nullptr, 16);
-    QString decimal_id = QString::number(numeric_id);
-
-    trimmed_ids.append(QString("i=") + decimal_id);
+    trimmed_ids.append(QString("i=") + id);
   }
 
   QStringList working_subset; working_subset.reserve(std::min(200, trimmed_ids.size()));
@@ -231,7 +227,7 @@ void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, cons
 
   // Now, we perform messages update in batches (max 200 messages per batch).
   while (!trimmed_ids.isEmpty()) {
-    // We take 200 IDs.
+    // We take 50 IDs.
     for (int i = 0; i < 50 && !trimmed_ids.isEmpty(); i++) {
       working_subset.append(trimmed_ids.takeFirst());
     }
@@ -239,35 +235,26 @@ void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, cons
     QString batch_final_url = target_url + working_subset.join(QL1C('&'));
 
     // We send this batch.
-    if (async) {
-      NetworkFactory::performAsyncNetworkOperation(batch_final_url,
-                                                   timeout,
-                                                   QByteArray(),
-                                                   QNetworkAccessManager::Operation::GetOperation,
-                                                   headers);
-    }
-    else {
-      QByteArray output;
+    QByteArray output;
 
-      NetworkFactory::performNetworkOperation(batch_final_url,
-                                              timeout,
-                                              QByteArray(),
-                                              output,
-                                              QNetworkAccessManager::Operation::GetOperation,
-                                              headers);
-    }
+    NetworkFactory::performNetworkOperation(batch_final_url,
+                                            timeout,
+                                            QByteArray(),
+                                            output,
+                                            QNetworkAccessManager::Operation::GetOperation,
+                                            headers);
 
     // Cleanup for next batch.
     working_subset.clear();
   }
 }
 
-void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& msg_custom_ids, bool async) {
-  editLabels(INOREADER_FULL_STATE_READ, status == RootItem::ReadStatus::Read, msg_custom_ids, async);
+void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& msg_custom_ids) {
+  editLabels(INOREADER_FULL_STATE_READ, status == RootItem::ReadStatus::Read, msg_custom_ids);
 }
 
-void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& msg_custom_ids, bool async) {
-  editLabels(INOREADER_FULL_STATE_IMPORTANT, importance == RootItem::Importance::Important, msg_custom_ids, async);
+void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& msg_custom_ids) {
+  editLabels(INOREADER_FULL_STATE_IMPORTANT, importance == RootItem::Importance::Important, msg_custom_ids);
 }
 
 void InoreaderNetworkFactory::onTokensError(const QString& error, const QString& error_description) {

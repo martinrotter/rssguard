@@ -312,7 +312,7 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
   return (m_lastError = network_reply.first);
 }
 
-void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async) {
+void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids) {
   QJsonObject json;
   QJsonArray ids;
   QString final_url;
@@ -335,30 +335,20 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
-  if (async) {
-    NetworkFactory::performAsyncNetworkOperation(final_url,
-                                                 qApp->settings()->value(GROUP(Feeds),
-                                                                         SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                 QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                 QNetworkAccessManager::PutOperation,
-                                                 headers);
-  }
-  else {
-    QByteArray output;
+  QByteArray output;
 
-    NetworkFactory::performNetworkOperation(final_url,
-                                            qApp->settings()->value(GROUP(Feeds),
-                                                                    SETTING(Feeds::UpdateTimeout)).toInt(),
-                                            QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                            output,
-                                            QNetworkAccessManager::PutOperation,
-                                            headers);
-  }
+  NetworkFactory::performNetworkOperation(final_url,
+                                          qApp->settings()->value(GROUP(Feeds),
+                                                                  SETTING(Feeds::UpdateTimeout)).toInt(),
+                                          QJsonDocument(json).toJson(QJsonDocument::Compact),
+                                          output,
+                                          QNetworkAccessManager::PutOperation,
+                                          headers);
 }
 
 void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance,
                                                  const QStringList& feed_ids,
-                                                 const QStringList& guid_hashes, bool async) {
+                                                 const QStringList& guid_hashes) {
   QJsonObject json;
   QJsonArray ids;
   QString final_url;
@@ -385,25 +375,15 @@ void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
   headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
 
-  if (async) {
-    NetworkFactory::performAsyncNetworkOperation(final_url,
-                                                 qApp->settings()->value(GROUP(Feeds),
-                                                                         SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                 QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                                 QNetworkAccessManager::PutOperation,
-                                                 headers);
-  }
-  else {
-    QByteArray output;
+  QByteArray output;
 
-    NetworkFactory::performNetworkOperation(final_url,
-                                            qApp->settings()->value(GROUP(Feeds),
-                                                                    SETTING(Feeds::UpdateTimeout)).toInt(),
-                                            QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                            output,
-                                            QNetworkAccessManager::PutOperation,
-                                            headers);
-  }
+  NetworkFactory::performNetworkOperation(final_url,
+                                          qApp->settings()->value(GROUP(Feeds),
+                                                                  SETTING(Feeds::UpdateTimeout)).toInt(),
+                                          QJsonDocument(json).toJson(QJsonDocument::Compact),
+                                          output,
+                                          QNetworkAccessManager::PutOperation,
+                                          headers);
 }
 
 int OwnCloudNetworkFactory::batchSize() const {

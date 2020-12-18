@@ -34,6 +34,7 @@ FeedReader::FeedReader(QObject* parent)
 
   connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
   updateAutoUpdateStatus();
+  initializeFeedDownloader();
 
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebugNN << LOGSEC_CORE
@@ -72,16 +73,12 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
     return;
   }
 
-  initializeFeedDownloader();
-
   QMetaObject::invokeMethod(m_feedDownloader, "updateFeeds",
                             Qt::ConnectionType::QueuedConnection,
                             Q_ARG(QList<Feed*>, feeds));
 }
 
 void FeedReader::synchronizeMessageData(const QList<CacheForServiceRoot*>& caches) {
-  initializeFeedDownloader();
-
   QMetaObject::invokeMethod(m_feedDownloader, "synchronizeAccountCaches",
                             Qt::ConnectionType::QueuedConnection,
                             Q_ARG(QList<CacheForServiceRoot*>, caches));
@@ -91,8 +88,8 @@ void FeedReader::initializeFeedDownloader() {
   if (m_feedDownloader == nullptr) {
     qDebugNN << LOGSEC_CORE << "Creating FeedDownloader singleton.";
 
-    m_feedDownloaderThread = new QThread();
     m_feedDownloader = new FeedDownloader();
+    m_feedDownloaderThread = new QThread();
 
     // Downloader setup.
     qRegisterMetaType<QList<Feed*>>("QList<Feed*>");

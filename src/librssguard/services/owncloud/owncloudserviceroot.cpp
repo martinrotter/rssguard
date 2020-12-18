@@ -91,7 +91,7 @@ void OwnCloudServiceRoot::saveAllCachedData() {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      network()->markMessagesRead(key, ids, false);
+      network()->markMessagesRead(key, ids);
     }
   }
 
@@ -111,7 +111,7 @@ void OwnCloudServiceRoot::saveAllCachedData() {
         guid_hashes.append(msg.m_customHash);
       }
 
-      network()->markMessagesStarred(key, feed_ids, guid_hashes, false);
+      network()->markMessagesStarred(key, feed_ids, guid_hashes);
     }
   }
 }

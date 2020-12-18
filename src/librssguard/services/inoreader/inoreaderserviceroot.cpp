@@ -159,7 +159,7 @@ void InoreaderServiceRoot::saveAllCachedData() {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      network()->markMessagesRead(key, ids, false);
+      network()->markMessagesRead(key, ids);
     }
   }
 
@@ -178,7 +178,7 @@ void InoreaderServiceRoot::saveAllCachedData() {
         custom_ids.append(msg.m_customId);
       }
 
-      network()->markMessagesStarred(key, custom_ids, false);
+      network()->markMessagesStarred(key, custom_ids);
     }
   }
 
@@ -191,7 +191,7 @@ void InoreaderServiceRoot::saveAllCachedData() {
     QStringList messages = k.value();
 
     if (!messages.isEmpty()) {
-      network()->editLabels(label_custom_id, true, messages, false);
+      network()->editLabels(label_custom_id, true, messages);
     }
   }
 
@@ -204,7 +204,7 @@ void InoreaderServiceRoot::saveAllCachedData() {
     QStringList messages = l.value();
 
     if (!messages.isEmpty()) {
-      network()->editLabels(label_custom_id, false, messages, false);
+      network()->editLabels(label_custom_id, false, messages);
     }
   }
 }

@@ -161,8 +161,9 @@ class TtRssNetworkFactory {
 
     TtRssResponse setArticleLabel(const QStringList& article_ids, const QString& label_custom_id, bool assign);
 
-    TtRssUpdateArticleResponse updateArticles(const QStringList& ids, UpdateArticle::OperatingField field,
-                                              UpdateArticle::Mode mode, bool async = true);
+    TtRssUpdateArticleResponse updateArticles(const QStringList& ids,
+                                              UpdateArticle::OperatingField field,
+                                              UpdateArticle::Mode mode);
 
     TtRssSubscribeToFeedResponse subscribeToFeed(const QString& url, int category_id, bool protectd = false,
                                                  const QString& username = QString(), const QString& password = QString());

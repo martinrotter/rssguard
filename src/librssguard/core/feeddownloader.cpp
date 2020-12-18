@@ -76,10 +76,9 @@ void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>&
     }
   }
 
+  m_isCacheSynchronizationRunning = false;
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "All caches synchronized.";
   emit cachesSynchronized();
-
-  m_isCacheSynchronizationRunning = false;
 }
 
 void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {

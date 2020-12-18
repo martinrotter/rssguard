@@ -220,7 +220,7 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Sta
   return messages;
 }
 
-void GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids, bool async) {
+void GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
@@ -252,28 +252,17 @@ void GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QS
   param_obj["ids"] = QJsonArray::fromStringList(custom_ids);
 
   QJsonDocument param_doc(param_obj);
+  QByteArray output;
 
-  // We send this batch.
-  if (async) {
-    NetworkFactory::performAsyncNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
-                                                 timeout,
-                                                 param_doc.toJson(QJsonDocument::JsonFormat::Compact),
-                                                 QNetworkAccessManager::Operation::PostOperation,
-                                                 headers);
-  }
-  else {
-    QByteArray output;
-
-    NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
-                                            timeout,
-                                            param_doc.toJson(QJsonDocument::JsonFormat::Compact),
-                                            output,
-                                            QNetworkAccessManager::Operation::PostOperation,
-                                            headers);
-  }
+  NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+                                          timeout,
+                                          param_doc.toJson(QJsonDocument::JsonFormat::Compact),
+                                          output,
+                                          QNetworkAccessManager::Operation::PostOperation,
+                                          headers);
 }
 
-void GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids, bool async) {
+void GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
@@ -305,25 +294,14 @@ void GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance, c
   param_obj["ids"] = QJsonArray::fromStringList(custom_ids);
 
   QJsonDocument param_doc(param_obj);
+  QByteArray output;
 
-  // We send this batch.
-  if (async) {
-    NetworkFactory::performAsyncNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
-                                                 timeout,
-                                                 param_doc.toJson(QJsonDocument::JsonFormat::Compact),
-                                                 QNetworkAccessManager::Operation::PostOperation,
-                                                 headers);
-  }
-  else {
-    QByteArray output;
-
-    NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
-                                            timeout,
-                                            param_doc.toJson(QJsonDocument::JsonFormat::Compact),
-                                            output,
-                                            QNetworkAccessManager::Operation::PostOperation,
-                                            headers);
-  }
+  NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+                                          timeout,
+                                          param_doc.toJson(QJsonDocument::JsonFormat::Compact),
+                                          output,
+                                          QNetworkAccessManager::Operation::PostOperation,
+                                          headers);
 }
 
 void GmailNetworkFactory::onTokensError(const QString& error, const QString& error_description) {

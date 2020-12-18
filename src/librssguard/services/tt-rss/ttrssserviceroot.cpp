@@ -132,8 +132,7 @@ void TtRssServiceRoot::saveAllCachedData() {
                                            UpdateArticle::OperatingField::Unread,
                                            key == RootItem::ReadStatus::Unread
                                            ? UpdateArticle::Mode::SetToTrue
-                                           : UpdateArticle::Mode::SetToFalse,
-                                           false);
+                                           : UpdateArticle::Mode::SetToFalse);
 
       if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
         addMessageStatesToCache(ids, key);
@@ -155,8 +154,7 @@ void TtRssServiceRoot::saveAllCachedData() {
                                            UpdateArticle::OperatingField::Starred,
                                            key == RootItem::Importance::Important
                                            ? UpdateArticle::Mode::SetToTrue
-                                           : UpdateArticle::Mode::SetToFalse,
-                                           false);
+                                           : UpdateArticle::Mode::SetToFalse);
 
       if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
         addMessageStatesToCache(messages, key);

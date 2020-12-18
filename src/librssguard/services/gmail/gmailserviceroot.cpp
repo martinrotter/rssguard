@@ -216,7 +216,7 @@ void GmailServiceRoot::saveAllCachedData() {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      network()->markMessagesRead(key, ids, false);
+      network()->markMessagesRead(key, ids);
     }
   }
 
@@ -235,7 +235,7 @@ void GmailServiceRoot::saveAllCachedData() {
         custom_ids.append(msg.m_customId);
       }
 
-      network()->markMessagesStarred(key, custom_ids, false);
+      network()->markMessagesStarred(key, custom_ids);
     }
   }
 }
