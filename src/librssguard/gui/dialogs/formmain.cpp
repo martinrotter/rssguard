@@ -150,6 +150,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSwitchMessageListOrientation;
   actions << m_ui->m_actionTabsNext;
   actions << m_ui->m_actionTabsPrevious;
+  actions << m_ui->m_actionSendMessageViaEmail;
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
   actions << m_ui->m_actionOpenSelectedMessagesInternally;
   actions << m_ui->m_actionAlternateColorsInLists;
