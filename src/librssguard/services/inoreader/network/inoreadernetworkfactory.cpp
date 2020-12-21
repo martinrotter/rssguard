@@ -194,7 +194,8 @@ QList<Message> InoreaderNetworkFactory::messages(ServiceRoot* root, const QStrin
   }
 }
 
-void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, const QStringList& msg_custom_ids) {
+QNetworkReply::NetworkError InoreaderNetworkFactory::editLabels(const QString& state, bool assign,
+                                                                const QStringList& msg_custom_ids) {
   QString target_url = INOREADER_API_EDIT_TAG;
 
   if (assign) {
@@ -207,7 +208,7 @@ void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, cons
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
-    return;
+    return QNetworkReply::NetworkError::AuthenticationRequiredError;
   }
 
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -222,7 +223,7 @@ void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, cons
     trimmed_ids.append(QString("i=") + id);
   }
 
-  QStringList working_subset; working_subset.reserve(std::min(200, trimmed_ids.size()));
+  QStringList working_subset; working_subset.reserve(std::min(50, trimmed_ids.size()));
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   // Now, we perform messages update in batches (max 200 messages per batch).
@@ -236,25 +237,30 @@ void InoreaderNetworkFactory::editLabels(const QString& state, bool assign, cons
 
     // We send this batch.
     QByteArray output;
+    auto result = NetworkFactory::performNetworkOperation(batch_final_url,
+                                                          timeout,
+                                                          QByteArray(),
+                                                          output,
+                                                          QNetworkAccessManager::Operation::GetOperation,
+                                                          headers);
 
-    NetworkFactory::performNetworkOperation(batch_final_url,
-                                            timeout,
-                                            QByteArray(),
-                                            output,
-                                            QNetworkAccessManager::Operation::GetOperation,
-                                            headers);
+    if (result.first != QNetworkReply::NetworkError::NoError) {
+      return result.first;
+    }
 
     // Cleanup for next batch.
     working_subset.clear();
   }
+
+  return QNetworkReply::NetworkError::NoError;
 }
 
-void InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& msg_custom_ids) {
-  editLabels(INOREADER_FULL_STATE_READ, status == RootItem::ReadStatus::Read, msg_custom_ids);
+QNetworkReply::NetworkError InoreaderNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& msg_custom_ids) {
+  return editLabels(INOREADER_FULL_STATE_READ, status == RootItem::ReadStatus::Read, msg_custom_ids);
 }
 
-void InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& msg_custom_ids) {
-  editLabels(INOREADER_FULL_STATE_IMPORTANT, importance == RootItem::Importance::Important, msg_custom_ids);
+QNetworkReply::NetworkError InoreaderNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& msg_custom_ids) {
+  return editLabels(INOREADER_FULL_STATE_IMPORTANT, importance == RootItem::Importance::Important, msg_custom_ids);
 }
 
 void InoreaderNetworkFactory::onTokensError(const QString& error, const QString& error_description) {

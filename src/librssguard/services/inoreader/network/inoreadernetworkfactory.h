@@ -42,10 +42,10 @@ class InoreaderNetworkFactory : public QObject {
 
     QList<Message> messages(ServiceRoot* root, const QString& stream_id, Feed::Status& error);
 
-    void editLabels(const QString& state, bool assign, const QStringList& msg_custom_ids);
+    QNetworkReply::NetworkError editLabels(const QString& state, bool assign, const QStringList& msg_custom_ids);
 
-    void markMessagesRead(RootItem::ReadStatus status, const QStringList& msg_custom_ids);
-    void markMessagesStarred(RootItem::Importance importance, const QStringList& msg_custom_ids);
+    QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status, const QStringList& msg_custom_ids);
+    QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance, const QStringList& msg_custom_ids);
 
   private slots:
     void onTokensError(const QString& error, const QString& error_description);

@@ -159,7 +159,9 @@ void InoreaderServiceRoot::saveAllCachedData() {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      network()->markMessagesRead(key, ids);
+      if (network()->markMessagesRead(key, ids) != QNetworkReply::NetworkError::NoError) {
+        addMessageStatesToCache(ids, key);
+      }
     }
   }
 
@@ -178,7 +180,9 @@ void InoreaderServiceRoot::saveAllCachedData() {
         custom_ids.append(msg.m_customId);
       }
 
-      network()->markMessagesStarred(key, custom_ids);
+      if (network()->markMessagesStarred(key, custom_ids) != QNetworkReply::NetworkError::NoError) {
+        addMessageStatesToCache(messages, key);
+      }
     }
   }
 
@@ -191,7 +195,9 @@ void InoreaderServiceRoot::saveAllCachedData() {
     QStringList messages = k.value();
 
     if (!messages.isEmpty()) {
-      network()->editLabels(label_custom_id, true, messages);
+      if (network()->editLabels(label_custom_id, true, messages) != QNetworkReply::NetworkError::NoError) {
+        addLabelsAssignmentsToCache(messages, label_custom_id, true);
+      }
     }
   }
 
@@ -204,7 +210,9 @@ void InoreaderServiceRoot::saveAllCachedData() {
     QStringList messages = l.value();
 
     if (!messages.isEmpty()) {
-      network()->editLabels(label_custom_id, false, messages);
+      if (network()->editLabels(label_custom_id, false, messages) != QNetworkReply::NetworkError::NoError) {
+        addLabelsAssignmentsToCache(messages, label_custom_id, false);
+      }
     }
   }
 }

@@ -216,7 +216,9 @@ void GmailServiceRoot::saveAllCachedData() {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      network()->markMessagesRead(key, ids);
+      if (network()->markMessagesRead(key, ids) != QNetworkReply::NetworkError::NoError) {
+        addMessageStatesToCache(ids, key);
+      }
     }
   }
 
@@ -235,7 +237,9 @@ void GmailServiceRoot::saveAllCachedData() {
         custom_ids.append(msg.m_customId);
       }
 
-      network()->markMessagesStarred(key, custom_ids);
+      if (network()->markMessagesStarred(key, custom_ids) != QNetworkReply::NetworkError::NoError) {
+        addMessageStatesToCache(messages, key);
+      }
     }
   }
 }

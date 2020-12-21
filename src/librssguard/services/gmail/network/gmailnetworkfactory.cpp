@@ -220,11 +220,12 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Sta
   return messages;
 }
 
-void GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids) {
+QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status,
+                                                                  const QStringList& custom_ids) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
-    return;
+    return QNetworkReply::NetworkError::AuthenticationRequiredError;
   }
 
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -254,19 +255,20 @@ void GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QS
   QJsonDocument param_doc(param_obj);
   QByteArray output;
 
-  NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
-                                          timeout,
-                                          param_doc.toJson(QJsonDocument::JsonFormat::Compact),
-                                          output,
-                                          QNetworkAccessManager::Operation::PostOperation,
-                                          headers);
+  return NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+                                                 timeout,
+                                                 param_doc.toJson(QJsonDocument::JsonFormat::Compact),
+                                                 output,
+                                                 QNetworkAccessManager::Operation::PostOperation,
+                                                 headers).first;
 }
 
-void GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids) {
+QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance,
+                                                                     const QStringList& custom_ids) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
-    return;
+    return QNetworkReply::NetworkError::AuthenticationRequiredError;
   }
 
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -296,12 +298,12 @@ void GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance, c
   QJsonDocument param_doc(param_obj);
   QByteArray output;
 
-  NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
-                                          timeout,
-                                          param_doc.toJson(QJsonDocument::JsonFormat::Compact),
-                                          output,
-                                          QNetworkAccessManager::Operation::PostOperation,
-                                          headers);
+  return NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+                                                 timeout,
+                                                 param_doc.toJson(QJsonDocument::JsonFormat::Compact),
+                                                 output,
+                                                 QNetworkAccessManager::Operation::PostOperation,
+                                                 headers).first;
 }
 
 void GmailNetworkFactory::onTokensError(const QString& error, const QString& error_description) {
