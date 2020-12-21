@@ -510,21 +510,6 @@ Klik hier om de bovenliggende map te openen.</translation>
 <context>
     <name>Feed</name>
     <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>maakt geen gebruik van automatisch bijwerken</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses global settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruikt de globale instellingen (%n minuut tot aan de volgende automatische update)</numerusform><numerusform>gebruikt de globale instellingen (%n minuten tot aan de volgende automatische update)</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruikt specifieke instellingen (%n minuut tot aan volgende automatische update)</numerusform><numerusform>gebruikt specifieke instellingen (%n minuten tot aan volgende automatische update)</numerusform></translation>
-    </message>
-    <message>
         <source>no errors</source>
         <translation>geen fouten</translation>
     </message>
@@ -545,14 +530,29 @@ Klik hier om de bovenliggende map te openen.</translation>
         <translation>onverwachte fout</translation>
     </message>
     <message>
-        <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-downloading of messages</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>uses global settings (global auto-downloading of messages is disabled)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -573,16 +573,16 @@ Status: %3</source>
         <translation>Kan niet alle items bijwerken</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>Bezig met starten van automatisch bijwerken van sommige feeds</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Er wordt %n feed automatisch bijgewerkt.</numerusform><numerusform>Er worden %n feeds automatisch bijgewerkt.</numerusform></translation>
+        <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>You cannot update items because another critical operation is ongoing.</source>
+        <source>Starting auto-download of some feeds&apos; messages</source>
         <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-download new messages for %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -855,10 +855,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
 <context>
     <name>FormAddEditLabel</name>
     <message>
-        <source>Dialog</source>
-        <translation>Dialoog</translation>
-    </message>
-    <message>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -1039,10 +1035,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
 </context>
 <context>
     <name>FormDownloadAttachment</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Dialoog</translation>
-    </message>
     <message>
         <source>Downloading attachment...</source>
         <translation>Download aanhangsel</translation>
@@ -1577,30 +1569,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Auto-update</source>
-        <translation>Automatische-update</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Automatisch bijwerken met behulp van globale interval</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Automatisch bijwerken elke</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Niet automatisch bijwerken </translation>
-    </message>
-    <message>
-        <source>Auto-updating</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Cannot edit feed</source>
         <translation>Kan feed niet bewerken</translation>
     </message>
@@ -1610,6 +1578,26 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not download messages at all</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2029,7 +2017,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download messages for items with &amp;custom auto-update policy</source>
+        <source>Download messages for items with &amp;custom auto-download policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3917,14 +3905,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>Feeds &amp;&amp; categorieën</translation>
     </message>
     <message>
-        <source>Auto-update all feeds every</source>
-        <translation>Alle feeds automatisch bijwerken elke</translation>
-    </message>
-    <message>
-        <source>Only auto-update when application is unfocused</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Feed connection timeout</source>
         <translation>Feed verbindings time-out</translation>
     </message>
@@ -3977,10 +3957,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>Hoogte van afbeelding lijst</translation>
     </message>
     <message>
-        <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Height or rows in feed list (-1 = default height)</source>
         <translation type="unfinished"/>
     </message>
@@ -4009,7 +3985,19 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Update all feeds on application startup with initial delay of</source>
+        <source>Download messages for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable &quot;auto-download started&quot; notification</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only auto-download messages when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-download messages for all feeds every</source>
         <translation type="unfinished"/>
     </message>
 </context>

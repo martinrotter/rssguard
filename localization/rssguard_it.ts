@@ -510,21 +510,6 @@ Fai clic qui per aprire la cartella genitrice.</translation>
 <context>
     <name>Feed</name>
     <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>non utilizza l&apos;auto-aggiornamento</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses global settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>usa impostazioni globali (%n minuto al prossimo auto-aggiornamento)</numerusform><numerusform>usa impostazioni globali (%n minuti al prossimo auto-aggiornamento)</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>usa impostazioni specifiche (%n minuto al prossimo aggiornamento automatico)</numerusform><numerusform>usa impostazioni specifiche (%n minuti al prossimo aggiornamento automatico)</numerusform></translation>
-    </message>
-    <message>
         <source>no errors</source>
         <translation>nessun errore</translation>
     </message>
@@ -545,14 +530,29 @@ Fai clic qui per aprire la cartella genitrice.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-downloading of messages</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>uses global settings (global auto-downloading of messages is disabled)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -573,16 +573,16 @@ Status: %3</source>
         <translation>Impossibile aggiornare tutti gli elementi</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>Avviamento auto-aggiornamento di alcune fonti</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Verrà auto-aggiornato %n feed.</numerusform><numerusform>Verranno auto-aggiornati %n feed.</numerusform></translation>
+        <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>You cannot update items because another critical operation is ongoing.</source>
+        <source>Starting auto-download of some feeds&apos; messages</source>
         <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-download new messages for %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -855,10 +855,6 @@ oppure questa funzionalità non è ancora implementata.</translation>
 <context>
     <name>FormAddEditLabel</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>...</source>
         <translation type="unfinished"/>
     </message>
@@ -1039,10 +1035,6 @@ oppure questa funzionalità non è ancora implementata.</translation>
 </context>
 <context>
     <name>FormDownloadAttachment</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Downloading attachment...</source>
         <translation type="unfinished"/>
@@ -1577,30 +1569,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Auto-update</source>
-        <translation>Auto-aggiorna </translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Seleziona la strategia di auto-aggiornamento per questa fonte. La strategia di auto-aggiornamento di default significa che la fonte verrà aggiornata ad intervalli di tempo scelti nelle impostazioni dell&apos;applicazione.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Auto-aggiorna usando l&apos;intervallo globale</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Auto-aggiorna ogni</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Non auto-aggiornare per niente</translation>
-    </message>
-    <message>
-        <source>Auto-updating</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Cannot edit feed</source>
         <translation>Impossibile modificare fonte</translation>
     </message>
@@ -1610,6 +1578,26 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not download messages at all</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2029,7 +2017,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download messages for items with &amp;custom auto-update policy</source>
+        <source>Download messages for items with &amp;custom auto-download policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3912,14 +3900,6 @@ Gli autori di questa applicazione NON sono responsabili per la perdita di dati.<
         <translation>Fonti &amp;&amp; categorie</translation>
     </message>
     <message>
-        <source>Auto-update all feeds every</source>
-        <translation>Auto-aggiorna tutte le fonti ogni</translation>
-    </message>
-    <message>
-        <source>Only auto-update when application is unfocused</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Feed connection timeout</source>
         <translation>Scadenza connessione fonte</translation>
     </message>
@@ -3972,10 +3952,6 @@ Gli autori di questa applicazione NON sono responsabili per la perdita di dati.<
         <translation>Altezza immagini allegate</translation>
     </message>
     <message>
-        <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation>Abilita notifica &quot;auto-aggiornamento avviato&quot;</translation>
-    </message>
-    <message>
         <source>Height or rows in feed list (-1 = default height)</source>
         <translation type="unfinished"/>
     </message>
@@ -4004,7 +3980,19 @@ Gli autori di questa applicazione NON sono responsabili per la perdita di dati.<
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Update all feeds on application startup with initial delay of</source>
+        <source>Download messages for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable &quot;auto-download started&quot; notification</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only auto-download messages when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-download messages for all feeds every</source>
         <translation type="unfinished"/>
     </message>
 </context>

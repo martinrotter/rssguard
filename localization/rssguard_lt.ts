@@ -512,21 +512,6 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
 <context>
     <name>Feed</name>
     <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>nenaudoja automatinio atnaujinimo</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses global settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>naudoja visuotinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja visuotinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>naudoja specifinius nustatymus (%n minutė iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minutės iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform><numerusform>naudoja specifinius nustatymus (%n minučių iki kito automatinio atnaujinimo)</numerusform></translation>
-    </message>
-    <message>
         <source>no errors</source>
         <translation>klaidų nėra</translation>
     </message>
@@ -547,14 +532,29 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
         <translation>nenurodyta klaida</translation>
     </message>
     <message>
-        <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-downloading of messages</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>uses global settings (global auto-downloading of messages is disabled)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -575,16 +575,16 @@ Status: %3</source>
         <translation>Nepavyksta atnaujinti visų elementų</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>Pradedamas kai kurių kanalų automatinis atnaujinimas</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Aš automatiškai atnaujinsiu %n kanalą.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalus.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform><numerusform>Aš automatiškai atnaujinsiu %n kanalų.</numerusform></translation>
+        <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>You cannot update items because another critical operation is ongoing.</source>
+        <source>Starting auto-download of some feeds&apos; messages</source>
         <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-download new messages for %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -857,10 +857,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
 <context>
     <name>FormAddEditLabel</name>
     <message>
-        <source>Dialog</source>
-        <translation>Dialogas</translation>
-    </message>
-    <message>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -1041,10 +1037,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
 </context>
 <context>
     <name>FormDownloadAttachment</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Dialogas</translation>
-    </message>
     <message>
         <source>Downloading attachment...</source>
         <translation>Atsiunčiamas priedas...</translation>
@@ -1579,30 +1571,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Auto-update</source>
-        <translation>Automatinis atnaujinimas</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Pasirinkite šio kanalo automatinio atnaujinimo strategiją. Numatytoji automatinio atnaujinimo strategija reiškia, kad kanalas bus atnaujinamas programos nustatymuose nustatytais laiko intervalais.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Automatiškai atnaujinti, naudojant visuotinį intervalą</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Automatiškai atnaujinti kas</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Neatnaujinti automatiškai</translation>
-    </message>
-    <message>
-        <source>Auto-updating</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Cannot edit feed</source>
         <translation>Nepavyksta redaguoti kanalo</translation>
     </message>
@@ -1612,6 +1580,26 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not download messages at all</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2031,7 +2019,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download messages for items with &amp;custom auto-update policy</source>
+        <source>Download messages for items with &amp;custom auto-download policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3924,14 +3912,6 @@ Vilkaduobės:
         <translation>Kanalai ir kategorijos</translation>
     </message>
     <message>
-        <source>Auto-update all feeds every</source>
-        <translation>Automatiškai atnaujinti visus kanalus kas</translation>
-    </message>
-    <message>
-        <source>Only auto-update when application is unfocused</source>
-        <translation>Automatiškai atnaujinti tik tada, kai programa nėra sufokusuota</translation>
-    </message>
-    <message>
         <source>Feed connection timeout</source>
         <translation>Prisijungimui prie kanalo skirtas laikas</translation>
     </message>
@@ -3984,10 +3964,6 @@ Vilkaduobės:
         <translation>Paveikslų priedų aukštis</translation>
     </message>
     <message>
-        <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation>Įjungti &quot;automatinis atnaujinimas pradėtas&quot; pranešimą</translation>
-    </message>
-    <message>
         <source>Height or rows in feed list (-1 = default height)</source>
         <translation>Eilučių aukštis kanalų sąraše (-1 = numatytasis aukštis)</translation>
     </message>
@@ -4016,8 +3992,20 @@ Vilkaduobės:
         <translation>Pasirinkti naują šriftą</translation>
     </message>
     <message>
-        <source>Update all feeds on application startup with initial delay of</source>
-        <translation>Paleidus programą atnaujinti visus kanalus uždelsus</translation>
+        <source>Download messages for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable &quot;auto-download started&quot; notification</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only auto-download messages when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-download messages for all feeds every</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

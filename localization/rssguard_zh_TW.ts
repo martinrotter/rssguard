@@ -509,21 +509,6 @@ Click here to open parent directory.</source>
 <context>
     <name>Feed</name>
     <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>不自動更新</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses global settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>使用全局設定 (每 %n 分鍾自動更新)</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>使用指定設定 (每 %n 分鍾自動更新)</numerusform></translation>
-    </message>
-    <message>
         <source>no errors</source>
         <translation>無錯誤</translation>
     </message>
@@ -544,16 +529,31 @@ Click here to open parent directory.</source>
         <translation>無法檢別的錯誤</translation>
     </message>
     <message>
-        <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation>使用全局設定 (全局新聞源自動更新已停用)</translation>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
         <translation>自動更新之狀態: %1
 使用中的篩選器: %2
 狀態: %3</translation>
+    </message>
+    <message>
+        <source>does not use auto-downloading of messages</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>uses global settings (global auto-downloading of messages is disabled)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -574,16 +574,16 @@ Status: %3</source>
         <translation>無法更新全部項目</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>開始自動更新一些新聞源。</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>將自動更新 %n 新聞源。</numerusform></translation>
+        <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>You cannot update items because another critical operation is ongoing.</source>
+        <source>Starting auto-download of some feeds&apos; messages</source>
         <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-download new messages for %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -856,10 +856,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormAddEditLabel</name>
     <message>
-        <source>Dialog</source>
-        <translation>對話框</translation>
-    </message>
-    <message>
         <source>...</source>
         <translation>…</translation>
     </message>
@@ -1040,10 +1036,6 @@ or this functionality is not implemented yet.</source>
 </context>
 <context>
     <name>FormDownloadAttachment</name>
-    <message>
-        <source>Dialog</source>
-        <translation>對話框</translation>
-    </message>
     <message>
         <source>Downloading attachment...</source>
         <translation>下載附件中…</translation>
@@ -1580,30 +1572,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Auto-update</source>
-        <translation>自動更新</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>為此新聞源選擇自動更新的策略。預設自動更新的策略意謂，新聞源會以應用程式設定中設定的時間間格自動更新。</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>使用全局間隔自動更新</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>自動更新每</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>不自動更新</translation>
-    </message>
-    <message>
-        <source>Auto-updating</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Cannot edit feed</source>
         <translation>無法編輯新聞源</translation>
     </message>
@@ -1613,6 +1581,26 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not download messages at all</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2032,7 +2020,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download messages for items with &amp;custom auto-update policy</source>
+        <source>Download messages for items with &amp;custom auto-download policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3926,14 +3914,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>新聞源 &amp;&amp; 分類</translation>
     </message>
     <message>
-        <source>Auto-update all feeds every</source>
-        <translation>自動更新全部新聞源，每</translation>
-    </message>
-    <message>
-        <source>Only auto-update when application is unfocused</source>
-        <translation>只在本程式於背景運作時自動更新</translation>
-    </message>
-    <message>
         <source>Feed connection timeout</source>
         <translation>新聞源連線逾時時間</translation>
     </message>
@@ -3986,10 +3966,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>圖像附件的高度</translation>
     </message>
     <message>
-        <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation>啟用「開始自動更新」通知</translation>
-    </message>
-    <message>
         <source>Height or rows in feed list (-1 = default height)</source>
         <translation>新聞源清單的行高 (-1 = 預設高度)</translation>
     </message>
@@ -4018,8 +3994,20 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>選擇新字型</translation>
     </message>
     <message>
-        <source>Update all feeds on application startup with initial delay of</source>
-        <translation>於應用程式啟動時更新全部新聞源，但先等待</translation>
+        <source>Download messages for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable &quot;auto-download started&quot; notification</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only auto-download messages when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-download messages for all feeds every</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

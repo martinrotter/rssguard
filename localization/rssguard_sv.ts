@@ -510,21 +510,6 @@ Klicka här för att öppna målmappen.</translation>
 <context>
     <name>Feed</name>
     <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>uppdateras inte automatiskt</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses global settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder global inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder globala inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifik inställning (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
-    </message>
-    <message>
         <source>no errors</source>
         <translation>Inga fel</translation>
     </message>
@@ -545,16 +530,31 @@ Klicka här för att öppna målmappen.</translation>
         <translation>ospecificerat fel</translation>
     </message>
     <message>
-        <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation>använder globala inställningar (automatisk global flödesuppdatering inaktiverad)</translation>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
         <translation>Status för automatisk uppdatering: %1
 Aktiva meddelandefilter: %2
 Status: %3</translation>
+    </message>
+    <message>
+        <source>does not use auto-downloading of messages</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>uses global settings (global auto-downloading of messages is disabled)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -575,16 +575,16 @@ Status: %3</translation>
         <translation>Kan inte uppdatera alla objekt</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>Uppdaterar flöden automatiskt</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
+        <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>You cannot update items because another critical operation is ongoing.</source>
+        <source>Starting auto-download of some feeds&apos; messages</source>
         <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-download new messages for %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -857,10 +857,6 @@ att funktionen inte är implementerad än.</translation>
 <context>
     <name>FormAddEditLabel</name>
     <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
-    <message>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -1041,10 +1037,6 @@ att funktionen inte är implementerad än.</translation>
 </context>
 <context>
     <name>FormDownloadAttachment</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
     <message>
         <source>Downloading attachment...</source>
         <translation>Laddar ner bilaga...</translation>
@@ -1581,30 +1573,6 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Auto-update</source>
-        <translation>Autouppdatering</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Välj uppdateringsstrategi för flödet. Standard autouppdatering, innebär att flödet kommer att uppdateras med tidsintervall angivna i programinställningarna.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Autouppdatering med globala intervall</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Uppdatera automatiskt varje</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Uppdatera inte automatiskt</translation>
-    </message>
-    <message>
-        <source>Auto-updating</source>
-        <translation>Automatisk uppdatering</translation>
-    </message>
-    <message>
         <source>Cannot edit feed</source>
         <translation>Kan inte redigera flödet</translation>
     </message>
@@ -1615,6 +1583,26 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     <message>
         <source>Edit &apos;%1&apos;</source>
         <translation>Redigera &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>Auto-downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not download messages at all</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2033,7 +2021,7 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download messages for items with &amp;custom auto-update policy</source>
+        <source>Download messages for items with &amp;custom auto-download policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3932,14 +3920,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Flöden &amp;&amp; kategorier</translation>
     </message>
     <message>
-        <source>Auto-update all feeds every</source>
-        <translation>Auto-uppdatera alla flöden varje</translation>
-    </message>
-    <message>
-        <source>Only auto-update when application is unfocused</source>
-        <translation>Uppdatera bara när programmet inte är i fokus</translation>
-    </message>
-    <message>
         <source>Feed connection timeout</source>
         <translation>Anslutnings-timeout för flöden</translation>
     </message>
@@ -3992,10 +3972,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Höjd på bildbilagor</translation>
     </message>
     <message>
-        <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation>Aktivera avisering för &quot;Automatisk uppdatering startad&quot;</translation>
-    </message>
-    <message>
         <source>Height or rows in feed list (-1 = default height)</source>
         <translation>Höjd eller rader i flödeslistan (-1 = standardhöjd)</translation>
     </message>
@@ -4024,8 +4000,20 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Välj nytt teckensnitt</translation>
     </message>
     <message>
-        <source>Update all feeds on application startup with initial delay of</source>
-        <translation>Uppdatera alla flöden vid programstart, med en inledande fördröjning på</translation>
+        <source>Download messages for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable &quot;auto-download started&quot; notification</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only auto-download messages when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-download messages for all feeds every</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

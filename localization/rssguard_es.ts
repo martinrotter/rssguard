@@ -30,7 +30,7 @@
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL </translation>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
@@ -202,7 +202,7 @@
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Algunas fuentes requieren autentificación, incluidas las fuentes GMail. Se admiten los sistemas de autentificación BASIC, NTLM-2 y DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -210,11 +210,11 @@
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
@@ -510,21 +510,6 @@ Pulse aquí para abrir la carpeta principal</translation>
 <context>
     <name>Feed</name>
     <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>no utiliza la actualización automática</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses global settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>utilice configuración general (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración general (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>utilice configuración específica (%n minuto() para la siguiente actualización automática)</numerusform><numerusform>utiliza la configuración específica (%n minuto(s) para la siguiente actualización automática)</numerusform></translation>
-    </message>
-    <message>
         <source>no errors</source>
         <translation>sin errores</translation>
     </message>
@@ -545,16 +530,31 @@ Pulse aquí para abrir la carpeta principal</translation>
         <translation>error no especificado</translation>
     </message>
     <message>
-        <source>uses global settings (global feed auto-updating is disabled)</source>
-        <translation>utiliza la configuración general  (la actualización automática general de fuentes está deshabilitada)</translation>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
         <translation>Estado de la actualización automática: %1
 Filtros activos: %2
 Estado: %3</translation>
+    </message>
+    <message>
+        <source>does not use auto-downloading of messages</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>uses global settings (global auto-downloading of messages is disabled)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -575,16 +575,16 @@ Estado: %3</translation>
         <translation>No es posible actualizar todos los elementos</translation>
     </message>
     <message>
-        <source>Starting auto-update of some feeds</source>
-        <translation>Iniciando la actualización automática de algunas fuentes</translation>
-    </message>
-    <message numerus="yes">
-        <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Voy a realizar la actualización automática de %n fuente().</numerusform><numerusform>Voy a realizar la actualización automática de %n fuente(s).</numerusform></translation>
+        <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>You cannot update items because another critical operation is ongoing.</source>
+        <source>Starting auto-download of some feeds&apos; messages</source>
         <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-download new messages for %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -857,10 +857,6 @@ o debido a que esta función aún no está implementada.</translation>
 <context>
     <name>FormAddEditLabel</name>
     <message>
-        <source>Dialog</source>
-        <translation>Diálogo</translation>
-    </message>
-    <message>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -1042,10 +1038,6 @@ o debido a que esta función aún no está implementada.</translation>
 <context>
     <name>FormDownloadAttachment</name>
     <message>
-        <source>Dialog</source>
-        <translation>Diálogo</translation>
-    </message>
-    <message>
         <source>Downloading attachment...</source>
         <translation>Descargando archivo adjunto...</translation>
     </message>
@@ -1058,7 +1050,7 @@ o debido a que esta función aún no está implementada.</translation>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -1161,7 +1153,7 @@ o debido a que esta función aún no está implementada.</translation>
     <name>FormEditInoreaderAccount</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -1411,11 +1403,11 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     <name>FormEditTtRssAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL </translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Algunas fuentes requieren autentificación, incluidas las fuentes GMail. Se admiten los sistemas de autentificación BASIC, NTLM-2 y DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -1423,11 +1415,11 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <source>Show password</source>
@@ -1581,30 +1573,6 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Auto-update</source>
-        <translation>Actualización automática</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Seleccionar estrategia de actualización automática para esta fuente. La estrategia de actualización automática predeterminada hace que el canal se actualice a los intervalos de tiempo determinados en la configuración de la aplicación.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Actualización automática según el intervalo general</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Actualización automática cada</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>No realizar ninguna actualización automática</translation>
-    </message>
-    <message>
-        <source>Auto-updating</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Cannot edit feed</source>
         <translation>No es posible editar la fuente</translation>
     </message>
@@ -1614,6 +1582,26 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not download messages at all</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2033,7 +2021,7 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download messages for items with &amp;custom auto-update policy</source>
+        <source>Download messages for items with &amp;custom auto-download policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2089,7 +2077,7 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL </translation>
     </message>
     <message>
         <source>Author</source>
@@ -3030,7 +3018,7 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL </translation>
     </message>
     <message>
         <source>Author</source>
@@ -3632,7 +3620,7 @@ versión pulsando en esta notificación emergente..</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
@@ -3640,7 +3628,7 @@ versión pulsando en esta notificación emergente..</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
@@ -3796,11 +3784,11 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Contraseña</translation>
     </message>
     <message>
         <source>Test setup</source>
@@ -3929,14 +3917,6 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
         <translation>Fuentes &amp;&amp; categorías</translation>
     </message>
     <message>
-        <source>Auto-update all feeds every</source>
-        <translation>Actualización automática de todas las fuentes cada</translation>
-    </message>
-    <message>
-        <source>Only auto-update when application is unfocused</source>
-        <translation>Solamente actualizar automáticamente cuando la aplicación está fuera de foco</translation>
-    </message>
-    <message>
         <source>Feed connection timeout</source>
         <translation>Tiempo de espera de conexión de la fuente</translation>
     </message>
@@ -3989,10 +3969,6 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
         <translation>Tamaño de las imágenes adjuntas</translation>
     </message>
     <message>
-        <source>Enable &quot;auto-update started&quot; notification</source>
-        <translation>Habilitar notificación “actualización automática iniciada“</translation>
-    </message>
-    <message>
         <source>Height or rows in feed list (-1 = default height)</source>
         <translation>Altura o filas en la lista de fuentes (-1 = altura predeterminada)</translation>
     </message>
@@ -4021,8 +3997,20 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
         <translation>Seleccionar nuevo tipo de letra</translation>
     </message>
     <message>
-        <source>Update all feeds on application startup with initial delay of</source>
-        <translation>Actualizar todas las fuentes al arrancar la aplicación con un retardo inicial de</translation>
+        <source>Download messages for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable &quot;auto-download started&quot; notification</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only auto-download messages when application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-download messages for all feeds every</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4301,7 +4289,7 @@ Clase: %3</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL </translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -4694,7 +4682,7 @@ Noticias no leídas: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Dirección URL </translation>
     </message>
     <message>
         <source>Full feed URL including scheme</source>
