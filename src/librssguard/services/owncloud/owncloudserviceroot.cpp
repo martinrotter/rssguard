@@ -91,7 +91,11 @@ void OwnCloudServiceRoot::saveAllCachedData() {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      network()->markMessagesRead(key, ids);
+      auto res = network()->markMessagesRead(key, ids);
+
+      if (res.first != QNetworkReply::NetworkError::NoError) {
+        addMessageStatesToCache(ids, key);
+      }
     }
   }
 
@@ -111,7 +115,11 @@ void OwnCloudServiceRoot::saveAllCachedData() {
         guid_hashes.append(msg.m_customHash);
       }
 
-      network()->markMessagesStarred(key, feed_ids, guid_hashes);
+      auto res = network()->markMessagesStarred(key, feed_ids, guid_hashes);
+
+      if (res.first != QNetworkReply::NetworkError::NoError) {
+        addMessageStatesToCache(messages, key);
+      }
     }
   }
 }
@@ -153,7 +161,7 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
 RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
   OwnCloudGetFeedsCategoriesResponse feed_cats_response = m_network->feedsCategories();
 
-  if (m_network->lastError() == QNetworkReply::NoError) {
+  if (feed_cats_response.networkError() == QNetworkReply::NetworkError::NoError) {
     return feed_cats_response.feedsCategories(true);
   }
   else {

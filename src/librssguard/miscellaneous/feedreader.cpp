@@ -283,7 +283,7 @@ void FeedReader::executeNextAutoUpdate() {
   // then we need to restore it.
   if (m_globalAutoUpdateEnabled && --m_globalAutoUpdateRemainingInterval < 0) {
     // We should start next auto-update interval.
-    m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
+    m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval - 1;
   }
 
   qDebugNN << LOGSEC_CORE

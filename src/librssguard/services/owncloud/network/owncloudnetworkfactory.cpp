@@ -75,10 +75,6 @@ void OwnCloudNetworkFactory::setAuthPassword(const QString& auth_password) {
   m_authPassword = auth_password;
 }
 
-QNetworkReply::NetworkError OwnCloudNetworkFactory::lastError() const {
-  return m_lastError;
-}
-
 OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -92,7 +88,7 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
                                                                         QByteArray(), result_raw,
                                                                         QNetworkAccessManager::GetOperation,
                                                                         headers);
-  OwnCloudStatusResponse status_response(QString::fromUtf8(result_raw));
+  OwnCloudStatusResponse status_response(network_reply.first, QString::fromUtf8(result_raw));
 
   qDebugNN << LOGSEC_NEXTCLOUD
            << "Raw status data is:" << QUOTE_W_SPACE_DOT(result_raw);
@@ -103,7 +99,6 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
                 << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
-  m_lastError = network_reply.first;
   return status_response;
 }
 
@@ -125,8 +120,7 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
     qCriticalNN << LOGSEC_NEXTCLOUD
                 << "Obtaining of categories failed with error"
                 << QUOTE_W_SPACE_DOT(network_reply.first);
-    m_lastError = network_reply.first;
-    return OwnCloudGetFeedsCategoriesResponse();
+    return OwnCloudGetFeedsCategoriesResponse(network_reply.first);
   }
 
   QString content_categories = QString::fromUtf8(result_raw);
@@ -143,14 +137,12 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
     qCriticalNN << LOGSEC_NEXTCLOUD
                 << "Obtaining of feeds failed with error"
                 << QUOTE_W_SPACE_DOT(network_reply.first);
-    m_lastError = network_reply.first;
-    return OwnCloudGetFeedsCategoriesResponse();
+    return OwnCloudGetFeedsCategoriesResponse(network_reply.first);
   }
 
   QString content_feeds = QString::fromUtf8(result_raw);
 
-  m_lastError = network_reply.first;
-  return OwnCloudGetFeedsCategoriesResponse(content_categories, content_feeds);
+  return OwnCloudGetFeedsCategoriesResponse(network_reply.first, content_categories, content_feeds);
 }
 
 bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id) {
@@ -166,8 +158,6 @@ bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id) {
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
                                                                         QByteArray(), raw_output, QNetworkAccessManager::DeleteOperation,
                                                                         headers);
-
-  m_lastError = network_reply.first;
 
   if (network_reply.first != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
@@ -208,8 +198,6 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id) {
                                                                         QNetworkAccessManager::PostOperation,
                                                                         headers);
 
-  m_lastError = network_reply.first;
-
   if (network_reply.first != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
                 << "Creating of category failed with error"
@@ -240,8 +228,6 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, const QString& 
     result_raw,
     QNetworkAccessManager::PutOperation,
     headers);
-
-  m_lastError = network_reply.first;
 
   if (network_reply.first != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
@@ -275,7 +261,7 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
                                                                         QByteArray(), result_raw,
                                                                         QNetworkAccessManager::GetOperation,
                                                                         headers);
-  OwnCloudGetMessagesResponse msgs_response(QString::fromUtf8(result_raw));
+  OwnCloudGetMessagesResponse msgs_response(network_reply.first, QString::fromUtf8(result_raw));
 
   if (network_reply.first != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
@@ -283,7 +269,6 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
                 << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
-  m_lastError = network_reply.first;
   return msgs_response;
 }
 
@@ -309,10 +294,10 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
                 << QUOTE_W_SPACE_DOT(network_reply.first);
   }
 
-  return (m_lastError = network_reply.first);
+  return network_reply.first;
 }
 
-void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids) {
+NetworkResult OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids) {
   QJsonObject json;
   QJsonArray ids;
   QString final_url;
@@ -337,18 +322,18 @@ void OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const
 
   QByteArray output;
 
-  NetworkFactory::performNetworkOperation(final_url,
-                                          qApp->settings()->value(GROUP(Feeds),
-                                                                  SETTING(Feeds::UpdateTimeout)).toInt(),
-                                          QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                          output,
-                                          QNetworkAccessManager::PutOperation,
-                                          headers);
+  return NetworkFactory::performNetworkOperation(final_url,
+                                                 qApp->settings()->value(GROUP(Feeds),
+                                                                         SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                 QJsonDocument(json).toJson(QJsonDocument::Compact),
+                                                 output,
+                                                 QNetworkAccessManager::PutOperation,
+                                                 headers);
 }
 
-void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance,
-                                                 const QStringList& feed_ids,
-                                                 const QStringList& guid_hashes) {
+NetworkResult OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance,
+                                                          const QStringList& feed_ids,
+                                                          const QStringList& guid_hashes) {
   QJsonObject json;
   QJsonArray ids;
   QString final_url;
@@ -377,13 +362,13 @@ void OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance
 
   QByteArray output;
 
-  NetworkFactory::performNetworkOperation(final_url,
-                                          qApp->settings()->value(GROUP(Feeds),
-                                                                  SETTING(Feeds::UpdateTimeout)).toInt(),
-                                          QJsonDocument(json).toJson(QJsonDocument::Compact),
-                                          output,
-                                          QNetworkAccessManager::PutOperation,
-                                          headers);
+  return NetworkFactory::performNetworkOperation(final_url,
+                                                 qApp->settings()->value(GROUP(Feeds),
+                                                                         SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                 QJsonDocument(json).toJson(QJsonDocument::Compact),
+                                                 output,
+                                                 QNetworkAccessManager::PutOperation,
+                                                 headers);
 }
 
 int OwnCloudNetworkFactory::batchSize() const {
@@ -402,10 +387,9 @@ void OwnCloudNetworkFactory::setDownloadOnlyUnreadMessages(bool dowload_only_unr
   m_downloadOnlyUnreadMessages = dowload_only_unread_messages;
 }
 
-OwnCloudResponse::OwnCloudResponse(const QString& raw_content) {
-  m_rawContent = QJsonDocument::fromJson(raw_content.toUtf8()).object();
-  m_emptyString = raw_content.isEmpty();
-}
+OwnCloudResponse::OwnCloudResponse(QNetworkReply::NetworkError response, const QString& raw_content) :
+  m_networkError(response), m_rawContent(QJsonDocument::fromJson(raw_content.toUtf8()).object()),
+  m_emptyString(raw_content.isEmpty()) {}
 
 OwnCloudResponse::~OwnCloudResponse() = default;
 
@@ -417,7 +401,12 @@ QString OwnCloudResponse::toString() const {
   return QJsonDocument(m_rawContent).toJson(QJsonDocument::Compact);
 }
 
-OwnCloudStatusResponse::OwnCloudStatusResponse(const QString& raw_content) : OwnCloudResponse(raw_content) {}
+QNetworkReply::NetworkError OwnCloudResponse::networkError() const {
+  return m_networkError;
+}
+
+OwnCloudStatusResponse::OwnCloudStatusResponse(QNetworkReply::NetworkError response, const QString& raw_content)
+  : OwnCloudResponse(response, raw_content) {}
 
 OwnCloudStatusResponse::~OwnCloudStatusResponse() = default;
 
@@ -439,9 +428,10 @@ bool OwnCloudStatusResponse::misconfiguredCron() const {
   }
 }
 
-OwnCloudGetFeedsCategoriesResponse::OwnCloudGetFeedsCategoriesResponse(QString raw_categories,
+OwnCloudGetFeedsCategoriesResponse::OwnCloudGetFeedsCategoriesResponse(QNetworkReply::NetworkError response,
+                                                                       QString raw_categories,
                                                                        QString raw_feeds)
-  : m_contentCategories(std::move(raw_categories)), m_contentFeeds(std::move(raw_feeds)) {}
+  : OwnCloudResponse(response), m_contentCategories(std::move(raw_categories)), m_contentFeeds(std::move(raw_feeds)) {}
 
 OwnCloudGetFeedsCategoriesResponse::~OwnCloudGetFeedsCategoriesResponse() = default;
 
@@ -523,7 +513,8 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
   return parent;
 }
 
-OwnCloudGetMessagesResponse::OwnCloudGetMessagesResponse(const QString& raw_content) : OwnCloudResponse(raw_content) {}
+OwnCloudGetMessagesResponse::OwnCloudGetMessagesResponse(QNetworkReply::NetworkError response, const QString& raw_content)
+  : OwnCloudResponse(response, raw_content) {}
 
 OwnCloudGetMessagesResponse::~OwnCloudGetMessagesResponse() = default;
 
@@ -551,7 +542,7 @@ QList<Message>OwnCloudGetMessagesResponse::messages() const {
       msg.m_enclosures.append(enclosure);
     }
 
-    msg.m_feedId = QString::number(message_map["feedId"].toInt());
+    msg.m_feedId = message_map["feedId"].toString();
     msg.m_isImportant = message_map["starred"].toBool();
     msg.m_isRead = !message_map["unread"].toBool();
     msg.m_title = message_map["title"].toString();

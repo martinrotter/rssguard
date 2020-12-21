@@ -4,6 +4,7 @@
 #define OWNCLOUDNETWORKFACTORY_H
 
 #include "core/message.h"
+#include "network-web/networkfactory.h"
 #include "services/abstract/rootitem.h"
 
 #include <QDateTime>
@@ -14,20 +15,22 @@
 
 class OwnCloudResponse {
   public:
-    explicit OwnCloudResponse(const QString& raw_content = QString());
+    explicit OwnCloudResponse(QNetworkReply::NetworkError response, const QString& raw_content = QString());
     virtual ~OwnCloudResponse();
 
     bool isLoaded() const;
     QString toString() const;
+    QNetworkReply::NetworkError networkError() const;
 
   protected:
+    QNetworkReply::NetworkError m_networkError;
     QJsonObject m_rawContent;
     bool m_emptyString;
 };
 
 class OwnCloudGetMessagesResponse : public OwnCloudResponse {
   public:
-    explicit OwnCloudGetMessagesResponse(const QString& raw_content = QString());
+    explicit OwnCloudGetMessagesResponse(QNetworkReply::NetworkError response, const QString& raw_content = QString());
     virtual ~OwnCloudGetMessagesResponse();
 
     QList<Message> messages() const;
@@ -35,7 +38,7 @@ class OwnCloudGetMessagesResponse : public OwnCloudResponse {
 
 class OwnCloudStatusResponse : public OwnCloudResponse {
   public:
-    explicit OwnCloudStatusResponse(const QString& raw_content = QString());
+    explicit OwnCloudStatusResponse(QNetworkReply::NetworkError response, const QString& raw_content = QString());
     virtual ~OwnCloudStatusResponse();
 
     QString version() const;
@@ -44,9 +47,9 @@ class OwnCloudStatusResponse : public OwnCloudResponse {
 
 class RootItem;
 
-class OwnCloudGetFeedsCategoriesResponse {
+class OwnCloudGetFeedsCategoriesResponse : public OwnCloudResponse {
   public:
-    explicit OwnCloudGetFeedsCategoriesResponse(QString raw_categories = QString(), QString raw_feeds = QString());
+    explicit OwnCloudGetFeedsCategoriesResponse(QNetworkReply::NetworkError response, QString raw_categories = QString(), QString raw_feeds = QString());
     virtual ~OwnCloudGetFeedsCategoriesResponse();
 
     // Returns tree of feeds/categories.
@@ -76,8 +79,6 @@ class OwnCloudNetworkFactory {
     QString authPassword() const;
     void setAuthPassword(const QString& auth_password);
 
-    QNetworkReply::NetworkError lastError() const;
-
     // Operations.
 
     // Get version info.
@@ -96,8 +97,8 @@ class OwnCloudNetworkFactory {
 
     // Misc methods.
     QNetworkReply::NetworkError triggerFeedUpdate(int feed_id);
-    void markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids);
-    void markMessagesStarred(RootItem::Importance importance, const QStringList& feed_ids, const QStringList& guid_hashes);
+    NetworkResult markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids);
+    NetworkResult markMessagesStarred(RootItem::Importance importance, const QStringList& feed_ids, const QStringList& guid_hashes);
 
     // Gets/sets the amount of messages to obtain during single feed update.
     int batchSize() const;
@@ -113,8 +114,6 @@ class OwnCloudNetworkFactory {
     bool m_forceServerSideUpdate;
     QString m_authUsername;
     QString m_authPassword;
-
-    QNetworkReply::NetworkError m_lastError;
     int m_batchSize;
 
     // Endpoints.

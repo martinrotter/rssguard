@@ -1037,7 +1037,9 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         feed_id_existing_message = query_select_with_custom_id.value(5).toString();
 
         qDebugNN << LOGSEC_DB
-                 << "Message with custom ID %s is already present in DB and has DB ID '"
+                 << "Message with custom ID"
+                 << QUOTE_W_SPACE(message.m_customId)
+                 << "is already present in DB and has DB ID '"
                  << id_existing_message
                  << "'.";
       }
