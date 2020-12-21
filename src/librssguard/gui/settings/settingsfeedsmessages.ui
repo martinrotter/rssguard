@@ -38,7 +38,7 @@
          <item>
           <widget class="QCheckBox" name="m_checkUpdateAllFeedsOnStartup">
            <property name="text">
-            <string>Update all feeds on application startup with initial delay of</string>
+            <string>Download messages for all feeds on application startup with initial delay of</string>
            </property>
           </widget>
          </item>
@@ -66,14 +66,14 @@
        <item row="1" column="0">
         <widget class="QCheckBox" name="m_checkAutoUpdateNotification">
          <property name="text">
-          <string>Enable &quot;auto-update started&quot; notification</string>
+          <string>Enable &quot;auto-download started&quot; notification</string>
          </property>
         </widget>
        </item>
        <item row="3" column="0">
         <widget class="QCheckBox" name="m_checkAutoUpdateOnlyUnfocused">
          <property name="text">
-          <string>Only auto-update when application is unfocused</string>
+          <string>Only auto-download messages when application is unfocused</string>
          </property>
         </widget>
        </item>
@@ -189,7 +189,7 @@
          <item>
           <widget class="QCheckBox" name="m_checkAutoUpdate">
            <property name="text">
-            <string>Auto-update all feeds every</string>
+            <string>Auto-download messages for all feeds every</string>
            </property>
           </widget>
          </item>

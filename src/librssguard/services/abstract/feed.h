@@ -17,7 +17,7 @@ class Feed : public RootItem {
 
   public:
 
-    // Specifies the auto-update strategy for the feed.
+    // Specifies the auto-download strategy for the feed.
     enum class AutoUpdateType {
       DontAutoUpdate = 0,
       DefaultAutoUpdate = 1,

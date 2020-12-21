@@ -48,7 +48,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     // True if feed update is running right now.
     bool isFeedUpdateRunning() const;
 
-    // Resets global auto-update intervals according to settings
+    // Resets global auto-download intervals according to settings
     // and starts/stop the timer as needed.
     void updateAutoUpdateStatus();
 

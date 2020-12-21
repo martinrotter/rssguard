@@ -67,7 +67,7 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
 void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(tr("Cannot update all items"),
-                         tr("You cannot update items "
+                         tr("You cannot download new messages for your items "
                             "because another critical operation is ongoing."),
                          QSystemTrayIcon::MessageIcon::Warning, qApp->mainFormWidget(), true);
     return;
@@ -133,12 +133,12 @@ void FeedReader::updateAutoUpdateStatus() {
   if (!m_autoUpdateTimer->isActive()) {
     m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL);
     m_autoUpdateTimer->start();
-    qDebugNN << LOGSEC_CORE << "Auto-update timer started with interval "
+    qDebugNN << LOGSEC_CORE << "Auto-download timer started with interval "
              << m_autoUpdateTimer->interval()
              << " ms.";
   }
   else {
-    qDebugNN << LOGSEC_CORE << "Auto-update timer is already running.";
+    qDebugNN << LOGSEC_CORE << "Auto-download timer is already running.";
   }
 }
 
@@ -262,7 +262,7 @@ void FeedReader::executeNextAutoUpdate() {
   // and there are no caches to synchronize.
   if (disable_update_with_window && full_caches.empty()) {
     qDebugNN << LOGSEC_CORE
-             << "Delaying scheduled feed auto-update for one minute since window "
+             << "Delaying scheduled feed auto-download for one minute since window "
              << "is focused and updates while focused are disabled by the "
              << "user and all account caches are empty.";
 
@@ -272,7 +272,7 @@ void FeedReader::executeNextAutoUpdate() {
 
   if (!qApp->feedUpdateLock()->tryLock()) {
     qDebugNN << LOGSEC_CORE
-             << "Delaying scheduled feed auto-updates and message state synchronization for "
+             << "Delaying scheduled feed auto-downloads and message state synchronization for "
              << "one minute due to another running update.";
 
     // Cannot update, quit.
@@ -287,7 +287,7 @@ void FeedReader::executeNextAutoUpdate() {
   }
 
   qDebugNN << LOGSEC_CORE
-           << "Starting auto-update event, remaining "
+           << "Starting auto-download event, remaining "
            << m_globalAutoUpdateRemainingInterval << " minutes out of "
            << m_globalAutoUpdateInitialInterval << " total minutes to next global feed update.";
 
@@ -311,8 +311,8 @@ void FeedReader::executeNextAutoUpdate() {
 
     // NOTE: OSD/bubble informing about performing of scheduled update can be shown now.
     if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableAutoUpdateNotification)).toBool()) {
-      qApp->showGuiMessage(tr("Starting auto-update of some feeds"),
-                           tr("I will auto-update %n feed(s).", nullptr, feeds_for_update.size()),
+      qApp->showGuiMessage(tr("Starting auto-download of some feeds' messages"),
+                           tr("I will auto-download new messages for %n feed(s).", nullptr, feeds_for_update.size()),
                            QSystemTrayIcon::MessageIcon::Information);
     }
   }

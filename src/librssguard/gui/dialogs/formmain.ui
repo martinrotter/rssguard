@@ -774,7 +774,7 @@
   </action>
   <action name="m_actionUpdateSelectedItemsWithCustomTimers">
    <property name="text">
-    <string>Download messages for items with &amp;custom auto-update policy</string>
+    <string>Download messages for items with &amp;custom auto-download policy</string>
    </property>
   </action>
   <action name="m_actionAlternateColorsInLists">

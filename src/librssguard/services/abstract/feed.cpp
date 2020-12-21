@@ -336,24 +336,24 @@ QString Feed::getAutoUpdateStatusDescription() const {
     case AutoUpdateType::DontAutoUpdate:
 
       //: Describes feed auto-update status.
-      auto_update_string = tr("does not use auto-update");
+      auto_update_string = tr("does not use auto-downloading of messages");
       break;
 
     case AutoUpdateType::DefaultAutoUpdate:
 
       //: Describes feed auto-update status.
       auto_update_string = qApp->feedReader()->autoUpdateEnabled()
-              ? tr("uses global settings (%n minute(s) to next auto-update)",
+              ? tr("uses global settings (%n minute(s) to next auto-download of messages)",
                    nullptr,
                    qApp->feedReader()->autoUpdateRemainingInterval())
-              : tr("uses global settings (global feed auto-updating is disabled)");
+              : tr("uses global settings (global auto-downloading of messages is disabled)");
       break;
 
     case AutoUpdateType::SpecificAutoUpdate:
     default:
 
       //: Describes feed auto-update status.
-      auto_update_string = tr("uses specific settings (%n minute(s) to next auto-update)", nullptr, autoUpdateRemainingInterval());
+      auto_update_string = tr("uses specific settings (%n minute(s) to next auto-downloading of new messages)", nullptr, autoUpdateRemainingInterval());
       break;
   }
 
