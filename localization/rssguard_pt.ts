@@ -30,7 +30,7 @@
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
@@ -575,16 +575,16 @@ Status: %3</translation>
         <translation>Não é possível atualizar todos os itens</translation>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Você não pode atualizar todos os itens pois outra operação crítica está em andamento.</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>Iniciando atualização automática de alguns feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation><numerusform>%n feeds serão atualizados automaticamente.</numerusform><numerusform>%n feeds serão atualizados automaticamente.</numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1411,7 +1411,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1784,14 +1784,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Adicionar &amp;novo item</translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation>Atualizar &amp;todos os itens</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation>Atualizar itens &amp;selecionados</translation>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation>&amp;Editar item selecionado</translation>
     </message>
@@ -1920,10 +1912,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Adicionar novo feed</translation>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation>Parar atualização</translation>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation>Nenhuma ação possível</translation>
     </message>
@@ -2021,10 +2009,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Mo&amp;strar ramificações da árvore</translation>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation>Atualizar itens com &amp;temporizadores personalizados</translation>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation>Cores de linha alternadas nas listas</translation>
     </message>
@@ -2035,6 +2019,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>Automatically &amp;expand items when selected</source>
         <translation>Automaticamente &amp;expandir itens quando selecionados </translation>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2089,7 +2089,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Author</source>
@@ -2214,6 +2214,14 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
 </source>
         <translation>Erro de filtragem de mensagens de AMOSTRA: &apos;%1&apos;.
 </translation>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2605,10 +2613,6 @@ Você precisa reiniciar manualmente.</translation>
         <translation>Feed adicionado</translation>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>O feed foi adicionado, sincronizando agora.</translation>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>Não foi possível adicionar o feed</translation>
     </message>
@@ -2627,6 +2631,10 @@ Você precisa reiniciar manualmente.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Adicionar novo feed</translation>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3025,7 +3033,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Author</source>
@@ -3530,8 +3538,12 @@ versão, clicando nesta notificação popup.</translation>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
-        <translation>Sincronizar em</translation>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4292,7 +4304,7 @@ Tipo: %3</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -4685,7 +4697,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation>URL </translation>
     </message>
     <message>
         <source>Full feed URL including scheme</source>

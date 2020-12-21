@@ -573,16 +573,16 @@ Status: %3</source>
         <translation>Impossibile aggiornare tutti gli elementi</translation>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Non puoi aggiornare tutti gli elementi perché un&apos;altra operazione critica è in corso.</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>Avviamento auto-aggiornamento di alcune fonti</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation><numerusform>Verrà auto-aggiornato %n feed.</numerusform><numerusform>Verranno auto-aggiornati %n feed.</numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1780,14 +1780,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Aggiungi &amp;nuovo elemento</translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation>Aggiorna &amp;tutti gli elementi</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation>Aggiorna elementi &amp;selezionati</translation>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation>&amp;Modifica elemento selezionato</translation>
     </message>
@@ -1916,10 +1908,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Aggiungi nuova fonte</translation>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation>Interrompi aggiornamento in corso</translation>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation>Nessuna azione possibile</translation>
     </message>
@@ -2017,10 +2005,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation type="unfinished"/>
     </message>
@@ -2030,6 +2014,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2199,6 +2199,14 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2591,10 +2599,6 @@ Dovrai riavviare manualmente.</translation>
         <translation>Fonte aggiunta</translation>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>La fonte è stata aggiunta, sincronizzazione in corso.</translation>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>Impossibile aggiungere fonte</translation>
     </message>
@@ -2613,6 +2617,10 @@ Dovrai riavviare manualmente.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Aggiungi nuova fonte</translation>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3510,8 +3518,12 @@ versione facendo clic su questa notifica a scomparsa.</translation>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
-        <translation>Sincronizza</translation>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

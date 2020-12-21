@@ -255,7 +255,7 @@ void FeedReader::executeNextAutoUpdate() {
     }
   })
                                                 .where([](CacheForServiceRoot* cache) {
-    return !cache->isEmpty();
+    return cache != nullptr && !cache->isEmpty();
   }).toStdList();
 
   // Skip this round of auto-updating, but only if user disabled it when main window is active
@@ -288,8 +288,8 @@ void FeedReader::executeNextAutoUpdate() {
 
   qDebugNN << LOGSEC_CORE
            << "Starting auto-update event, remaining "
-           << m_globalAutoUpdateRemainingInterval << "minutes out of "
-           << m_globalAutoUpdateInitialInterval << "total minutes to next global feed update.";
+           << m_globalAutoUpdateRemainingInterval << " minutes out of "
+           << m_globalAutoUpdateInitialInterval << " total minutes to next global feed update.";
 
   qApp->feedUpdateLock()->unlock();
 

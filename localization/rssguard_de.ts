@@ -30,7 +30,7 @@
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
@@ -202,7 +202,7 @@
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Bestimmte Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -210,11 +210,11 @@
     </message>
     <message>
         <source>Username</source>
-        <translation>Benutzername</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Passwort</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set username to access the feed.</source>
@@ -572,16 +572,16 @@ Status: %3</source>
         <translation>Kann nicht alle Einträge aktualisieren</translation>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Aufgrund einer anderen laufenden Aktion können nicht alle Einträge aktualisiert werden.</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>Beginne mit automatischer Aktualisierung einiger Feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation><numerusform>1 Feed wird automatisch aktualisiert.</numerusform><numerusform>%n Feeds werden automatisch aktualisiert.</numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1054,7 +1054,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation>Benutzername</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -1157,7 +1157,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditInoreaderAccount</name>
     <message>
         <source>Username</source>
-        <translation>Benutzername</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -1405,11 +1405,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Bestimmte Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication</source>
@@ -1417,11 +1417,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation>Benutzername</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Passwort</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show password</source>
@@ -1778,14 +1778,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Neuen &amp;Eintrag hinzufügen</translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation>&amp;Alle Einträge aktualisieren</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation>Ausge&amp;wählte Einträge aktualisieren</translation>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation>Ausgewählten Eintrag &amp;bearbeiten</translation>
     </message>
@@ -1914,10 +1906,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Neuen Feed hinzufügen</translation>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation>Aktualisierung beenden</translation>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation>Keine Aktionen möglich</translation>
     </message>
@@ -2015,10 +2003,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation type="unfinished"/>
     </message>
@@ -2028,6 +2012,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2083,7 +2083,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Author</source>
@@ -2197,6 +2197,14 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2589,10 +2597,6 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
         <translation>Feed wurde hinzugefügt</translation>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>Feed wurde hinzugefügt, Synchronisation wird ausgelöst.</translation>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>Kann Feed nicht hinzufügen</translation>
     </message>
@@ -2611,6 +2615,10 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Neuen Feed hinzufügen</translation>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3008,7 +3016,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Author</source>
@@ -3510,8 +3518,12 @@ durch Klicken auf diese Benachrichtigung.</translation>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
-        <translation>Synchronisieren</translation>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3603,7 +3615,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Benutzername</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
@@ -3611,7 +3623,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Passwort</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
@@ -3768,11 +3780,11 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Username</source>
-        <translation>Benutzername</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Passwort</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Test setup</source>
@@ -4273,7 +4285,7 @@ Typ: %3</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -4666,7 +4678,7 @@ Ungelesene Nachrichten: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Full feed URL including scheme</source>

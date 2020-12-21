@@ -572,16 +572,16 @@ Status: %3</source>
         <translation>Tidak dapat memperbarui semua item</translation>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Anda tidak dapat memperbarui semua item karena operasi genting lain sedang berlangsung.</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>Memulai pembaruan otomatis beberapa feed</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation><numerusform>Saya akan dengan otomatis memperbarui %n feed.</numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1779,14 +1779,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>&amp;Tambah item baru</translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation>Per&amp;barui semua item</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation>Perba&amp;rui item yang dipilih</translation>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation>&amp;Sunting item yang dipilih</translation>
     </message>
@@ -1915,10 +1907,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Tambah feed baru</translation>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation>Hentikan pembaruan yang berjalan</translation>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation>Tidak ada aksi yang mungkin</translation>
     </message>
@@ -2016,10 +2004,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>&amp;Tampilkan cabang pohon</translation>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation>Perbarui item dengan pengatur &amp;waktu tersuai</translation>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation type="unfinished"/>
     </message>
@@ -2029,6 +2013,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2200,6 +2200,14 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2592,10 +2600,6 @@ Anda harus me-restart secara manual.</translation>
         <translation>Feed ditambahkan</translation>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>Feed ditambahkan, memicu sinkronisasi sekarang.</translation>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>Tidak dapat menambah feed</translation>
     </message>
@@ -2614,6 +2618,10 @@ Anda harus me-restart secara manual.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Tambah feed baru</translation>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3513,8 +3521,12 @@ di versi ini dengan meng-klik popup notifikasi ini.</translation>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
-        <translation>Sinkronisasi di</translation>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

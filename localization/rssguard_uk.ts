@@ -571,16 +571,16 @@ Status: %3</source>
         <translation>Неможливо оновити всі елементи</translation>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Неможливо оновити всі елементи, тому що триває інша важлива операція.</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>Почати автоматичне оновлення деяких елементів</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1778,14 +1778,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Додати новий елемент</translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation>Оновити усі елементи</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation>Оновити обрані елементи</translation>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation>Редагувати елемент</translation>
     </message>
@@ -1914,10 +1906,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Додати новий потік</translation>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation>Зупинити оновлення</translation>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation>Дії недоступні</translation>
     </message>
@@ -2015,10 +2003,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation type="unfinished"/>
     </message>
@@ -2028,6 +2012,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2197,6 +2197,14 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2589,10 +2597,6 @@ You have to restart manually.</source>
         <translation>Потік додано</translation>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>Потік додано, виконується сінхронізація</translation>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>Неможливо додати підписку</translation>
     </message>
@@ -2611,6 +2615,10 @@ You have to restart manually.</source>
     <message>
         <source>Add new feed</source>
         <translation>Додати новий потік</translation>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3502,8 +3510,12 @@ version by clicking this popup notification.</source>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
-        <translation>Синхронізувати в</translation>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

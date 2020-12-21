@@ -210,11 +210,11 @@
     </message>
     <message>
         <source>Username</source>
-        <translation>שם משתמש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>סיסמה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set username to access the feed.</source>
@@ -570,16 +570,16 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1052,7 +1052,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation>שם משתמש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -1155,7 +1155,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditInoreaderAccount</name>
     <message>
         <source>Username</source>
-        <translation>שם משתמש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -1415,11 +1415,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation>שם משתמש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>סיסמה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show password</source>
@@ -1776,14 +1776,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation type="unfinished"/>
     </message>
@@ -1912,10 +1904,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation type="unfinished"/>
     </message>
@@ -2013,10 +2001,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation type="unfinished"/>
     </message>
@@ -2026,6 +2010,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2195,6 +2195,14 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2584,10 +2592,6 @@ You have to restart manually.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation type="unfinished"/>
     </message>
@@ -2605,6 +2609,10 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Add new feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3492,7 +3500,11 @@ version by clicking this popup notification.</source>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3583,7 +3595,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation>שם משתמש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
@@ -3591,7 +3603,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Password</source>
-        <translation>סיסמה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
@@ -3737,11 +3749,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation>שם משתמש</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>סיסמה</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Test setup</source>

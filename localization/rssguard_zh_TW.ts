@@ -202,7 +202,7 @@
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>包括 Gmail 新聞源在內的一些新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 認證架構。</translation>
+        <translation>某些新聞源，包括 Gmail 新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 的認證架構。</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -574,16 +574,16 @@ Status: %3</source>
         <translation>無法更新全部項目</translation>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>無法更新全部項目，因為另一重要動作執行中。</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>開始自動更新一些新聞源。</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation><numerusform>將自動更新 %n 新聞源。</numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1414,7 +1414,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>一些新聞源，包括 Gmail 新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 認證架構。</translation>
+        <translation>某些新聞源，包括 Gmail 新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 的認證架構。</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -1783,14 +1783,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>新增項目(&amp;N)</translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation>更新全部項目(&amp;A)</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation>更新所選項目(&amp;S)</translation>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation>編輯所選項目(&amp;E)</translation>
     </message>
@@ -1919,10 +1911,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>新增新聞源</translation>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation>停止正在進行的更新</translation>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation>不可能做動作</translation>
     </message>
@@ -2020,10 +2008,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation type="unfinished"/>
     </message>
@@ -2033,6 +2017,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2208,6 +2208,14 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2600,10 +2608,6 @@ You have to restart manually.</source>
         <translation>已新增新聞源</translation>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>已新增新聞源，同步中。</translation>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>無法新增新聞源</translation>
     </message>
@@ -2622,6 +2626,10 @@ You have to restart manually.</source>
     <message>
         <source>Add new feed</source>
         <translation>新增新聞源</translation>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3523,8 +3531,12 @@ version by clicking this popup notification.</source>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
-        <translation>同步</translation>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

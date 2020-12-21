@@ -202,7 +202,7 @@
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds. BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -573,16 +573,16 @@ Status: %3</source>
         <translation>Kan niet alle items bijwerken</translation>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Je kunt niet alle items bijwerken omdat er een andere kritieke operatie wordt uitgevoerd.</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>Bezig met starten van automatisch bijwerken van sommige feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation><numerusform>Er wordt %n feed automatisch bijgewerkt.</numerusform><numerusform>Er worden %n feeds automatisch bijgewerkt.</numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1411,7 +1411,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds. BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -1780,14 +1780,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Voeg &amp;nieuw item toe</translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation>&amp;Alle items bijwerken</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation>&amp;Geselecteerde items bijwerken</translation>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation>&amp;Bewerk geselecteerde item</translation>
     </message>
@@ -1916,10 +1908,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Voeg nieuw feed toe</translation>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation>Stop met updaten</translation>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation>Acties niet mogelijk</translation>
     </message>
@@ -2017,10 +2005,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation type="unfinished"/>
     </message>
@@ -2030,6 +2014,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2199,6 +2199,14 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2591,10 +2599,6 @@ Je moet handmatig herstarten.</translation>
         <translation>Feed toegevoegd</translation>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>Feed is toegvoegd, activeer sync nu.</translation>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>Kan geen feed toevoegen</translation>
     </message>
@@ -2613,6 +2617,10 @@ Je moet handmatig herstarten.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Voeg nieuw feed toe</translation>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3514,8 +3522,12 @@ door te clicken op deze popup melding.</translation>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
-        <translation>Sync in</translation>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

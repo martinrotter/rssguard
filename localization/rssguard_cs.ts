@@ -30,7 +30,7 @@
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
@@ -202,7 +202,7 @@
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -210,11 +210,11 @@
     </message>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Heslo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set username to access the feed.</source>
@@ -577,16 +577,16 @@ Stav: %3</translation>
         <translation>Nelze aktualizovat všechny položky</translation>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Nelze obnovit všechny soubory protože právě probíhá jiná důležitá operace.</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>Zahajování automatického obnovení některých kanálů</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1060,7 +1060,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -1163,7 +1163,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditInoreaderAccount</name>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -1413,11 +1413,11 @@ Založení vlastního &quot;Application ID&quot; se vysoce doporučuje.</transla
     <name>FormEditTtRssAccount</name>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication</source>
@@ -1425,11 +1425,11 @@ Založení vlastního &quot;Application ID&quot; se vysoce doporučuje.</transla
     </message>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Heslo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show password</source>
@@ -1786,14 +1786,6 @@ Založení vlastního &quot;Application ID&quot; se vysoce doporučuje.</transla
         <translation>Přidat &amp;novou položku</translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation>Aktualizov&amp;at všechny položky</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation>Aktualizovat v&amp;ybrané položky</translation>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation>Upravit &amp;vybranou položku</translation>
     </message>
@@ -1922,10 +1914,6 @@ Založení vlastního &quot;Application ID&quot; se vysoce doporučuje.</transla
         <translation>Přidat nový kanál</translation>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation>Zastavit probíhající aktualizaci kanálů</translation>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation>Žádná možná akce</translation>
     </message>
@@ -2023,10 +2011,6 @@ Založení vlastního &quot;Application ID&quot; se vysoce doporučuje.</transla
         <translation>Zobrazit &amp;stromové šipky</translation>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation>Aktualizovat položky s aktivními filtry zpráv</translation>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation>Alternovat barvy pozadí položek v seznamech</translation>
     </message>
@@ -2036,6 +2020,22 @@ Založení vlastního &quot;Application ID&quot; se vysoce doporučuje.</transla
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2091,7 +2091,7 @@ Založení vlastního &quot;Application ID&quot; se vysoce doporučuje.</transla
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Author</source>
@@ -2213,6 +2213,14 @@ Založení vlastního &quot;Application ID&quot; se vysoce doporučuje.</transla
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2605,10 +2613,6 @@ Musíte restartovat manuálně.</translation>
         <translation>Kanál přidán</translation>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>Kanál přidán, spouštím synchronizaci celého účtu.</translation>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>Nelze přidat kanál</translation>
     </message>
@@ -2627,6 +2631,10 @@ Musíte restartovat manuálně.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Přidat nový kanál</translation>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3023,7 +3031,7 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Author</source>
@@ -3532,8 +3540,12 @@ na tuto bublinu.</translation>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
-        <translation>Synchronizovat</translation>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3625,7 +3637,7 @@ na tuto bublinu.</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
@@ -3633,7 +3645,7 @@ na tuto bublinu.</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Heslo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
@@ -3789,11 +3801,11 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>Username</source>
-        <translation>Uživatelské jméno</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Heslo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Test setup</source>
@@ -4294,7 +4306,7 @@ Typ: %3</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -4687,7 +4699,7 @@ Nepřečtené zprávy: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Full feed URL including scheme</source>

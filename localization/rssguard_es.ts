@@ -30,7 +30,7 @@
     </message>
     <message>
         <source>URL</source>
-        <translation>Dirección URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
@@ -202,7 +202,7 @@
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Algunas fuentes necesitan autentificación, incluidas las fuentes GMail. Se admiten los sistemas de autentificación BASIC, NTLM-2 y DIGEST-MD5.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -210,11 +210,11 @@
     </message>
     <message>
         <source>Username</source>
-        <translation>Nombre de usuario</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Contraseña</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Set username to access the feed.</source>
@@ -575,16 +575,16 @@ Estado: %3</translation>
         <translation>No es posible actualizar todos los elementos</translation>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>No puede actualizar todos los elementos debido a que otra operación crítica está en ejecución.</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>Iniciando la actualización automática de algunas fuentes</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation><numerusform>Voy a realizar la actualización automática de %n fuente().</numerusform><numerusform>Voy a realizar la actualización automática de %n fuente(s).</numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1058,7 +1058,7 @@ o debido a que esta función aún no está implementada.</translation>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Username</source>
-        <translation>Nombre de usuario</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -1161,7 +1161,7 @@ o debido a que esta función aún no está implementada.</translation>
     <name>FormEditInoreaderAccount</name>
     <message>
         <source>Username</source>
-        <translation>Nombre de usuario</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -1411,11 +1411,11 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     <name>FormEditTtRssAccount</name>
     <message>
         <source>URL</source>
-        <translation>Dirección URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Algunas fuentes necesitan autentificación, incluidas las fuentes GMail. Se admiten los sistemas de autentificación BASIC, NTLM-2 y DIGEST-MD5.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Authentication</source>
@@ -1423,11 +1423,11 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     </message>
     <message>
         <source>Username</source>
-        <translation>Nombre de usuario</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Contraseña</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show password</source>
@@ -1784,14 +1784,6 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
         <translation>Añadir &amp;nuevo elemento</translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation>Actualizar &amp;todos los elementos</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation>Actualizar &amp;elementos seleccionados</translation>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation>&amp;Editar elemento seleccionado</translation>
     </message>
@@ -1920,10 +1912,6 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
         <translation>Añadir nueva fuente</translation>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation>Detener actualización en ejecución</translation>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation>Sin acciones posibles</translation>
     </message>
@@ -2021,10 +2009,6 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
         <translation>&amp;Mostrar ramas del árbol</translation>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation>Actualizar elementos según &amp;temporizadores personalizados</translation>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation>Alternar colores de filas en los listados</translation>
     </message>
@@ -2034,6 +2018,22 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2089,7 +2089,7 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     </message>
     <message>
         <source>URL</source>
-        <translation>Dirección URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Author</source>
@@ -2211,6 +2211,14 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2602,10 +2610,6 @@ La aplicación tiene que reiniciarla manualmente.</translation>
         <translation>Fuente añadida</translation>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>Se añadió la fuente, activando ahora la sincronización</translation>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>No es posible añadir la fuente</translation>
     </message>
@@ -2624,6 +2628,10 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Añadir nueva fuente</translation>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3022,7 +3030,7 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>Dirección URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Author</source>
@@ -3527,8 +3535,12 @@ versión pulsando en esta notificación emergente..</translation>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
-        <translation>Sincronizar</translation>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3620,7 +3632,7 @@ versión pulsando en esta notificación emergente..</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation>Nombre de usuario</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
@@ -3628,7 +3640,7 @@ versión pulsando en esta notificación emergente..</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Contraseña</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
@@ -3784,11 +3796,11 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Username</source>
-        <translation>Nombre de usuario</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Contraseña</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Test setup</source>
@@ -4289,7 +4301,7 @@ Clase: %3</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>Dirección URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -4682,7 +4694,7 @@ Noticias no leídas: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>Dirección URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Full feed URL including scheme</source>

@@ -202,7 +202,7 @@
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
+        <translation>Vissa flöden kräver autentisering. Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -575,16 +575,16 @@ Status: %3</translation>
         <translation>Kan inte uppdatera alla objekt</translation>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation>Du kan inte uppdatera alla poster eftersom en annan kritisk operation pågår.</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>Uppdaterar flöden automatiskt</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1415,7 +1415,7 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
+        <translation>Vissa flöden kräver autentisering. Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -1784,14 +1784,6 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation>Lägg till &amp;nytt objekt</translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation>Uppdatera &amp;alla objekt</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation>Uppdatera &amp;markerade objekt</translation>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation>&amp;Redigera markerade objekt</translation>
     </message>
@@ -1920,10 +1912,6 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation>Lägg till nytt flöde</translation>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation>Avbryt uppdatering</translation>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation>Inga åtgärder möjliga</translation>
     </message>
@@ -2021,10 +2009,6 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation>&amp;Visa trädgrenar</translation>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation>Uppdatera objekt med anpassade &amp;tidur</translation>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation>Växla radfärger i listan</translation>
     </message>
@@ -2035,6 +2019,22 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     <message>
         <source>Automatically &amp;expand items when selected</source>
         <translation>Expandera automatiskt objekt vid markering</translation>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2214,6 +2214,14 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
 </source>
         <translation>Filtreringsfel för EXEMPEL-meddelande: &quot;%1&quot;
 </translation>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2605,10 +2613,6 @@ Du måste starta om manuellt.</translation>
         <translation>Flöde tillagt</translation>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation>Flöde tillagt. Synkroniseras nu.</translation>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>Kan inte lägga till flöde</translation>
     </message>
@@ -2627,6 +2631,10 @@ Du måste starta om manuellt.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Lägg till nytt flöde</translation>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3529,8 +3537,12 @@ genom att klicka på denna popup-avisering.</translation>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
-        <translation>Synka i</translation>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -30,7 +30,7 @@
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
@@ -570,16 +570,16 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You cannot update all items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>You cannot update items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1403,7 +1403,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1776,14 +1776,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>新しいアイテムを追加(&amp;n)</translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation>全てのアイテムを更新(&amp;a)</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation>選択したアイテムを更新(&amp;s)</translation>
-    </message>
-    <message>
         <source>&amp;Edit selected item</source>
         <translation>選択したアイテムを編集(&amp;E)</translation>
     </message>
@@ -1912,10 +1904,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>新しいフィードを追加</translation>
     </message>
     <message>
-        <source>Stop running update</source>
-        <translation>実行中の更新を停止</translation>
-    </message>
-    <message>
         <source>No actions possible</source>
         <translation type="unfinished"/>
     </message>
@@ -2013,10 +2001,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Update items with custom &amp;timers</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation type="unfinished"/>
     </message>
@@ -2026,6 +2010,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Download all new messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing downloading of messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download messages for items with &amp;custom auto-update policy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2081,7 +2081,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Author</source>
@@ -2195,6 +2195,14 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2584,10 +2592,6 @@ You have to restart manually.</source>
         <translation>フィードが追加されました</translation>
     </message>
     <message>
-        <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Cannot add feed</source>
         <translation>フィードを追加できません</translation>
     </message>
@@ -2606,6 +2610,10 @@ You have to restart manually.</source>
     <message>
         <source>Add new feed</source>
         <translation>新しいフィードを追加</translation>
+    </message>
+    <message>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2998,7 +3006,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Author</source>
@@ -3492,7 +3500,11 @@ version by clicking this popup notification.</source>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <source>Sync in</source>
+        <source>Synchronize folders &amp;&amp; other items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Synchronize message cache</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4239,7 +4251,7 @@ Type: %3</source>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -4631,7 +4643,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Full feed URL including scheme</source>
