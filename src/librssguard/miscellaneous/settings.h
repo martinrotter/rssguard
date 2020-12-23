@@ -185,6 +185,9 @@ namespace GUI {
   KEY MonochromeTrayIcon;
   VALUE(bool) MonochromeTrayIconDef;
 
+  KEY UnreadNumbersInTrayIcon;
+  VALUE(bool) UnreadNumbersInTrayIconDef;
+
   KEY EnableNotifications;
   VALUE(bool) EnableNotificationsDef;
 

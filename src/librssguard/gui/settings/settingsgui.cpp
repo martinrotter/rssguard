@@ -2,6 +2,7 @@
 
 #include "gui/settings/settingsgui.h"
 
+#include "core/feedsmodel.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedstoolbar.h"
@@ -43,6 +44,7 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   connect(m_ui->m_checkEnableNotifications, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHidden, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkMonochromeIcons, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkCountUnreadMessages, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHideWhenMinimized, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHideTabBarIfOneTabVisible, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkCloseTabsDoubleClick, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
@@ -117,6 +119,7 @@ void SettingsGui::loadSettings() {
   }
 
   m_ui->m_checkMonochromeIcons->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool());
+  m_ui->m_checkCountUnreadMessages->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool());
 
   // Mark active theme.
   if (current_theme == QL1S(APP_NO_THEME)) {
@@ -215,8 +218,12 @@ void SettingsGui::saveSettings() {
     settings()->setValue(GROUP(GUI), GUI::MonochromeTrayIcon, m_ui->m_checkMonochromeIcons->isChecked());
   }
 
+  settings()->setValue(GROUP(GUI), GUI::UnreadNumbersInTrayIcon, m_ui->m_checkCountUnreadMessages->isChecked());
   settings()->setValue(GROUP(GUI), GUI::MainWindowStartsHidden, m_ui->m_checkHidden->isChecked());
   settings()->setValue(GROUP(GUI), GUI::HideMainWindowWhenMinimized, m_ui->m_checkHideWhenMinimized->isChecked());
+
+  // Make sure that number of unread messages is shown in tray icon as requested.
+  qApp->feedReader()->feedsModel()->notifyWithCounts();
 
   // Save notifications.
   settings()->setValue(GROUP(GUI), GUI::EnableNotifications, m_ui->m_checkEnableNotifications->isChecked());

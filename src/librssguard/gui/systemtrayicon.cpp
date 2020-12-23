@@ -100,7 +100,8 @@ void SystemTrayIcon::show() {
 void SystemTrayIcon::setNumber(int number, bool any_new_message) {
   Q_UNUSED(any_new_message)
 
-  if (number <= 0) {
+  if (number <= 0 || !qApp->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool()) {
+    // Either no unread messages or numbers in tray icon are disabled.
     setToolTip(QSL(APP_LONG_NAME));
     QSystemTrayIcon::setIcon(QIcon(m_normalIcon));
   }

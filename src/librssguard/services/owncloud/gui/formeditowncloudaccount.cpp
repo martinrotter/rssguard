@@ -111,18 +111,12 @@ void FormEditOwnCloudAccount::performTest() {
   else if (result.isLoaded()) {
     if (!SystemFactory::isVersionEqualOrNewer(result.version(), OWNCLOUD_MIN_VERSION)) {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr(
-                                         "Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.").arg(
-                                         result.version(),
-                                         OWNCLOUD_MIN_VERSION),
+                                       tr("Installed version: %1, required at least: %2.").arg(result.version(), OWNCLOUD_MIN_VERSION),
                                        tr("Selected Nextcloud News server is running unsupported version."));
     }
     else {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                       tr(
-                                         "Nextcloud News server is okay, running with version %1, while at least version %2 is required.").arg(
-                                         result.version(),
-                                         OWNCLOUD_MIN_VERSION),
+                                       tr("Installed version: %1, required at least: %2.").arg(result.version(), OWNCLOUD_MIN_VERSION),
                                        tr("Nextcloud News server is okay."));
     }
   }

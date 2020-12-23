@@ -134,28 +134,14 @@ void FormEditTtRssAccount::performTest() {
     }
     else if (result.apiLevel() < TTRSS_MINIMAL_API_LEVEL) {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr(
-                                         "Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.").arg(
-                                         QString::number(
-                                           result
-                                           .
-                                           apiLevel()),
-                                         QString
-                                         ::
-                                         number(TTRSS_MINIMAL_API_LEVEL)),
+                                       tr("Installed version: %1, required at least: %2.").arg(QString::number(result.apiLevel()),
+                                                                                               QString::number(TTRSS_MINIMAL_API_LEVEL)),
                                        tr("Selected Tiny Tiny RSS server is running unsupported version of API."));
     }
     else {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                       tr(
-                                         "Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.").arg(
-                                         QString::number(
-                                           result
-                                           .
-                                           apiLevel()),
-                                         QString
-                                         ::
-                                         number(TTRSS_MINIMAL_API_LEVEL)),
+                                       tr("Installed version: %1, required at least: %2.").arg(QString::number(result.apiLevel()),
+                                                                                               QString::number(TTRSS_MINIMAL_API_LEVEL)),
                                        tr("Tiny Tiny RSS server is okay."));
     }
   }
