@@ -2055,7 +2055,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>JavaScript code</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript kodas</translation>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
@@ -2773,7 +2773,7 @@ Jūs dabar galite jį įdiegti.</translation>
     </message>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>jūs nesate prisijungę</translation>
     </message>
     <message>
         <source>failed to get metadata</source>

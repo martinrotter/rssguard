@@ -540,21 +540,21 @@ Status: %3</translation>
     <message>
         <source>does not use auto-downloading of messages</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>não usa o download automático de mensagens</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>usa configurações globais (%n minuto(s) para próximo download automático de mensagens)</numerusform><numerusform>usa configurações globais (%n minuto(s) para próximo download automático de mensagens)</numerusform></translation>
     </message>
     <message>
         <source>uses global settings (global auto-downloading of messages is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>usa configurações globais (download automático de mensagens global está desativado)</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>usa configurações específicas (%n minuto(s) para próximo download automático de mensagens)</numerusform><numerusform>usa configurações específicas (%n minuto(s) para próximo download automático de mensagens)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -576,15 +576,15 @@ Status: %3</translation>
     </message>
     <message>
         <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Você não pode baixar novas mensagens para seus itens pois outra operação crítica está em andamento.</translation>
     </message>
     <message>
         <source>Starting auto-download of some feeds&apos; messages</source>
-        <translation type="unfinished"/>
+        <translation>Iniciando download automático de algumas mensagens de feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-download new messages for %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Eu irei fazer o download automático de novas mensagens para %n feed(s).</numerusform><numerusform>Eu irei fazer o download automático de novas mensagens para %n feed(s).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -1586,23 +1586,23 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Auto-downloading of messages</source>
-        <translation type="unfinished"/>
+        <translation>Download automático de mensagens</translation>
     </message>
     <message>
         <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Selecione a estratégia de download automático para este feed. A estratégia padrão de download automático significa que novas mensagens deste feed serão baixadas em intervalos de tempo definidos nas configurações do aplicativo.</translation>
     </message>
     <message>
         <source>Download messages using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Baixar mensagens usando intervalo global</translation>
     </message>
     <message>
         <source>Download messages every</source>
-        <translation type="unfinished"/>
+        <translation>Baixar mensagens a cada</translation>
     </message>
     <message>
         <source>Do not download messages at all</source>
-        <translation type="unfinished"/>
+        <translation>Não baixar mensagens de uma vez</translation>
     </message>
 </context>
 <context>
@@ -2010,19 +2010,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Download all new messages</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Baixar todas as novas mensagens</translation>
     </message>
     <message>
         <source>Download messages for &amp;selected items</source>
-        <translation type="unfinished"/>
+        <translation>Baixar mensagens para itens &amp;selecionados</translation>
     </message>
     <message>
         <source>Stop ongoing downloading of messages</source>
-        <translation type="unfinished"/>
+        <translation>Interromper download de mensagens em andamento</translation>
     </message>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
-        <translation type="unfinished"/>
+        <translation>Baixar mensagens para itens com &amp;política personalizada de download automático</translation>
     </message>
 </context>
 <context>
@@ -2205,11 +2205,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Context menu</source>
-        <translation type="unfinished"/>
+        <translation>Menu de contexto</translation>
     </message>
     <message>
         <source>Filter messages like this</source>
-        <translation type="unfinished"/>
+        <translation>Filtrar mensagens como esta</translation>
     </message>
 </context>
 <context>
@@ -2622,7 +2622,7 @@ Você precisa reiniciar manualmente.</translation>
     </message>
     <message>
         <source>Feed was added, obtaining new tree of feeds now.</source>
-        <translation type="unfinished"/>
+        <translation>O feed foi adicionado, obtendo nova árvore de feeds agora.</translation>
     </message>
 </context>
 <context>
@@ -3527,11 +3527,11 @@ versão, clicando nesta notificação popup.</translation>
     <name>ServiceRoot</name>
     <message>
         <source>Synchronize folders &amp;&amp; other items</source>
-        <translation type="unfinished"/>
+        <translation>Sincronizar pastas &amp;&amp; outros itens</translation>
     </message>
     <message>
         <source>Synchronize message cache</source>
-        <translation type="unfinished"/>
+        <translation>Sincronizar cache de mensagens</translation>
     </message>
 </context>
 <context>
@@ -4001,19 +4001,19 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Download messages for all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Baixar mensagens para todos os feeds ao iniciar o aplicativo com atraso inicial de</translation>
     </message>
     <message>
         <source>Enable &quot;auto-download started&quot; notification</source>
-        <translation type="unfinished"/>
+        <translation>Ativar notificação &quot;download automático iniciado&quot;</translation>
     </message>
     <message>
         <source>Only auto-download messages when application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation>Somente baixar mensagens automaticamente quando o aplicativo não está em foco</translation>
     </message>
     <message>
         <source>Auto-download messages for all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Baixar mensagens automaticamente para todos os feeds a cada</translation>
     </message>
 </context>
 <context>

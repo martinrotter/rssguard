@@ -857,11 +857,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Name for your label</source>
-        <translation type="unfinished"/>
+        <translation>Navn til mærkat</translation>
     </message>
     <message>
         <source>Label&apos;s name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Mærkatnavn kan ikke være tomt.</translation>
     </message>
     <message>
         <source>Perfect!</source>
@@ -873,11 +873,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Create new label</source>
-        <translation type="unfinished"/>
+        <translation>Opret ny mærkat</translation>
     </message>
     <message>
         <source>Edit label &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Rediger mærkat &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -1081,7 +1081,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Brugersynligt brugernavn</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1184,7 +1184,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Brugersynligt brugernavn </translation>
     </message>
     <message>
         <source>You are already logged in.</source>
@@ -1240,7 +1240,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Get my own Application ID</source>
-        <translation type="unfinished"/>
+        <translation>Få mit eget ProgramID</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
@@ -1381,7 +1381,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud Nyhedsserver er okay.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>

@@ -540,21 +540,21 @@ Status: %3</translation>
     <message>
         <source>does not use auto-downloading of messages</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>använder inte automatisk nerladdning av meddelanden</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>använder övergripande inställningar (%n minut till nästa automatiska nerladdning av meddelanden)</numerusform><numerusform>använder övergripande inställningar (%n minuter till nästa automatiska nerladdning av meddelanden)</numerusform></translation>
     </message>
     <message>
         <source>uses global settings (global auto-downloading of messages is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>använder övergripande inställningar (övergripande automatisk nerladdning av meddelanden avaktiverat)</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>använder specifika inställningar (%n minut till nästa automatiska nerladdning av nya meddelanden)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska nerladdning av nya meddelanden)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -576,15 +576,15 @@ Status: %3</translation>
     </message>
     <message>
         <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Du kan inte ladda ner nya meddelanden för dina objekt, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>Starting auto-download of some feeds&apos; messages</source>
-        <translation type="unfinished"/>
+        <translation>Startar automatisk nerladdning av några flödes meddelanden</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-download new messages for %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Jag kommer att automatiskt ladda ner nya meddelanden för %n flöde.</numerusform><numerusform>Jag kommer att automatiskt ladda ner nya meddelanden för %n flöden.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -1586,23 +1586,23 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Auto-downloading of messages</source>
-        <translation type="unfinished"/>
+        <translation>Automatisk nerladdning av meddelanden</translation>
     </message>
     <message>
         <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Välj strategi för automatisk nerladdning av meddelanden i det här flödet. Standardstrategi för automatisk nerladdning, innebär att nya meddelanden i det här flödet kommer att laddas ner med tidsintervall angivna i programinställningarna.</translation>
     </message>
     <message>
         <source>Download messages using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Ladda ner meddelanden med övergripande intervallinställning</translation>
     </message>
     <message>
         <source>Download messages every</source>
-        <translation type="unfinished"/>
+        <translation>Ladda ner meddelanden varje</translation>
     </message>
     <message>
         <source>Do not download messages at all</source>
-        <translation type="unfinished"/>
+        <translation>Ladda inte ner meddelanden över huvud taget</translation>
     </message>
 </context>
 <context>
@@ -2010,19 +2010,19 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>&amp;Download all new messages</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ladda ner alla nya meddelanden</translation>
     </message>
     <message>
         <source>Download messages for &amp;selected items</source>
-        <translation type="unfinished"/>
+        <translation>Ladda ner meddelanden för &amp;markerade objekt</translation>
     </message>
     <message>
         <source>Stop ongoing downloading of messages</source>
-        <translation type="unfinished"/>
+        <translation>Stoppa pågående nerladdning av meddelanden</translation>
     </message>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
-        <translation type="unfinished"/>
+        <translation>Ladda ner meddelanden från objekt med &amp;anpassad policy för automatisk nerladdning</translation>
     </message>
 </context>
 <context>
@@ -2205,11 +2205,11 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Context menu</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmeny</translation>
     </message>
     <message>
         <source>Filter messages like this</source>
-        <translation type="unfinished"/>
+        <translation>Filtrera meddelanden som detta</translation>
     </message>
 </context>
 <context>
@@ -2622,7 +2622,7 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Feed was added, obtaining new tree of feeds now.</source>
-        <translation type="unfinished"/>
+        <translation>Flöde lades till, erhåller nytt flödesträd nu.</translation>
     </message>
 </context>
 <context>
@@ -3526,11 +3526,11 @@ genom att klicka på denna popup-avisering.</translation>
     <name>ServiceRoot</name>
     <message>
         <source>Synchronize folders &amp;&amp; other items</source>
-        <translation type="unfinished"/>
+        <translation>Synkronisera mappar &amp;&amp; andra objekt</translation>
     </message>
     <message>
         <source>Synchronize message cache</source>
-        <translation type="unfinished"/>
+        <translation>Synkronisera meddelande-cache</translation>
     </message>
 </context>
 <context>
@@ -4001,19 +4001,19 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Download messages for all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Ladda ner meddelande från alla flöden vid programstart, med en inledande fördröjning på</translation>
     </message>
     <message>
         <source>Enable &quot;auto-download started&quot; notification</source>
-        <translation type="unfinished"/>
+        <translation>Aktivera avisering för &quot;Automatisk nerladdning startad&quot;</translation>
     </message>
     <message>
         <source>Only auto-download messages when application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation>Ladda bara ner automatiskt när programmet inte är i fokus</translation>
     </message>
     <message>
         <source>Auto-download messages for all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Ladda ner meddelanden automatiskt för alla flöden varje</translation>
     </message>
 </context>
 <context>

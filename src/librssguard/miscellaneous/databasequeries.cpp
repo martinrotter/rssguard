@@ -1094,7 +1094,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
           qDebugNN << LOGSEC_DB
                    << "Updating message with title"
                    << QUOTE_W_SPACE(message.m_title)
-                   << "url"
+                   << "URL"
                    << QUOTE_W_SPACE(message.m_url)
                    << "in DB.";
 

@@ -19,7 +19,7 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, Fe
   GuiUtilities::applyResponsiveDialogResize(*this);
 
   // Set flags and attributes.
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-new")));
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("list-add")));
 
   connect(m_ui->m_listEntryPoints, &QListWidget::itemDoubleClicked, this, &FormAddAccount::addSelectedAccount);
   connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormAddAccount::addSelectedAccount);
