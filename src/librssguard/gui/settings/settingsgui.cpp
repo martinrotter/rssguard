@@ -55,7 +55,7 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   connect(m_ui->m_editorMessagesToolbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_editorStatusbar, &ToolBarEditor::setupChanged, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_editorStatusbar, &ToolBarEditor::setupChanged, this, &SettingsGui::requireRestart);
-  connect(m_ui->m_listStyles, &QListWidget::currentItemChanged, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_cmbStyles, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_cmbSelectToolBar, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), m_ui->m_stackedToolbars,
           &QStackedWidget::setCurrentIndex);
 }
@@ -156,14 +156,14 @@ void SettingsGui::loadSettings() {
 
   // Load styles.
   for (const QString& style_name : QStyleFactory::keys()) {
-    m_ui->m_listStyles->addItem(style_name);
+    m_ui->m_cmbStyles->addItem(style_name);
   }
 
-  QList<QListWidgetItem*> items = m_ui->m_listStyles->findItems(settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString(),
-                                                                Qt::MatchFixedString);
+  int item_style = m_ui->m_cmbStyles->findText(settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString(),
+                                               Qt::MatchFlag::MatchFixedString);
 
-  if (!items.isEmpty()) {
-    m_ui->m_listStyles->setCurrentItem(items.at(0));
+  if (item_style >= 0) {
+    m_ui->m_cmbStyles->setCurrentIndex(item_style);
   }
 
   // Load tab settings.
@@ -243,8 +243,8 @@ void SettingsGui::saveSettings() {
   }
 
   // Set new style.
-  if (!m_ui->m_listStyles->selectedItems().isEmpty()) {
-    const QString new_style = m_ui->m_listStyles->currentItem()->text();
+  if (m_ui->m_cmbStyles->currentIndex() >= 0) {
+    const QString new_style = m_ui->m_cmbStyles->currentText();
     const QString old_style = qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString();
 
     if (old_style != new_style) {

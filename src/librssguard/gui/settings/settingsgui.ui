@@ -87,15 +87,18 @@
              <property name="text">
               <string>Style</string>
              </property>
+             <property name="buddy">
+              <cstring>m_cmbStyles</cstring>
+             </property>
             </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QListWidget" name="m_listStyles"/>
            </item>
            <item row="2" column="0">
             <widget class="QLabel" name="m_lblSkin">
              <property name="text">
               <string>Skin</string>
+             </property>
+             <property name="buddy">
+              <cstring>m_treeSkins</cstring>
              </property>
             </widget>
            </item>
@@ -128,6 +131,22 @@
               </property>
              </column>
             </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="m_cmbStyles"/>
+           </item>
+           <item row="3" column="0" colspan="2">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
            </item>
           </layout>
          </widget>
@@ -337,12 +356,18 @@
          <property name="text">
           <string>Toolbar button style</string>
          </property>
+         <property name="buddy">
+          <cstring>m_cmbToolbarButtonStyle</cstring>
+         </property>
         </widget>
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label_10">
          <property name="text">
           <string>Select toolbar to edit</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_cmbSelectToolBar</cstring>
          </property>
         </widget>
        </item>
@@ -364,7 +389,7 @@
   <tabstop>m_tabUi</tabstop>
   <tabstop>m_scrollIconSkins</tabstop>
   <tabstop>m_cmbIconTheme</tabstop>
-  <tabstop>m_listStyles</tabstop>
+  <tabstop>m_cmbStyles</tabstop>
   <tabstop>m_treeSkins</tabstop>
   <tabstop>m_grpTray</tabstop>
   <tabstop>m_checkMonochromeIcons</tabstop>

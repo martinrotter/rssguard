@@ -1071,8 +1071,8 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                                                      message.m_feedId != feed_id_existing_message ||
                                                      message.m_contents != contents_existing_message)) ||
 
-          /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message
-                   && message.m_contents != contents_existing_message) ||
+          /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message &&
+                   message.m_contents != contents_existing_message) ||
 
           /* 3 */ force_update) {
         // Message exists, it is changed, update it.
