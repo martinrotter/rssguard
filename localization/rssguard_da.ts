@@ -30,7 +30,7 @@
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse</translation>
     </message>
     <message>
         <source>Absolute URL to online subscription file</source>
@@ -610,7 +610,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke udføre træk&amp;slip operation</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -636,7 +636,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation type="unfinished"/>
+        <translation>Genvejsmenu for fri plads</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
@@ -705,11 +705,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for important messages</source>
-        <translation type="unfinished"/>
+        <translation>Genvejsmenu for vigtige meddelelser</translation>
     </message>
     <message>
         <source>Context menu for label</source>
-        <translation type="unfinished"/>
+        <translation>Genvejsmenu for etiketter</translation>
     </message>
 </context>
 <context>
@@ -1061,7 +1061,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Omdiriger webadresse</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1141,7 +1141,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Get my credentials</source>
-        <translation type="unfinished"/>
+        <translation>Få mine legitimationsoplysninger</translation>
     </message>
 </context>
 <context>
@@ -1164,7 +1164,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Omdiriger webadresse</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -1253,7 +1253,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
@@ -1321,7 +1321,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse kan ikke være tom.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
@@ -1329,7 +1329,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Begræns antal af hentede meddelelser per feed</translation>
     </message>
     <message>
         <source> = unlimited</source>
@@ -1361,7 +1361,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>Webadressen på din Nextcloudserver, uden API-sti</translation>
     </message>
     <message>
         <source>Add new Nextcloud News account</source>
@@ -1385,7 +1385,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Netværksfejl, har du indført den rigtige slutsti og kodeord til Nextcloud?</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
@@ -1396,7 +1396,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1548,7 +1548,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse kan ikke være tom.</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
@@ -1575,7 +1575,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Rediger &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Auto-downloading of messages</source>
@@ -1838,7 +1838,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation type="unfinished"/>
+        <translation>Ingen mulige handlinger</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
@@ -1894,7 +1894,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>No actions possible</source>
-        <translation type="unfinished"/>
+        <translation>Ingen mulige handlinger</translation>
     </message>
     <message>
         <source>Web browser &amp;&amp; tabs</source>
@@ -2026,7 +2026,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Remove selected</source>
-        <translation type="unfinished"/>
+        <translation>Fjern valgte</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
@@ -2070,7 +2070,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse</translation>
     </message>
     <message>
         <source>Author</source>
@@ -2122,11 +2122,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>yes</source>
-        <translation type="unfinished"/>
+        <translation>ja</translation>
     </message>
     <message>
         <source>no</source>
-        <translation type="unfinished"/>
+        <translation>nej</translation>
     </message>
     <message>
         <source>Cannot find &apos;clang-format&apos;</source>
@@ -2138,7 +2138,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Fejl</translation>
     </message>
     <message>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
@@ -2154,11 +2154,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;New filter</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nyt filter</translation>
     </message>
     <message>
         <source>&amp;Test</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Test</translation>
     </message>
     <message>
         <source>Process checked feeds</source>
@@ -2438,7 +2438,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Netværk</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -2596,7 +2596,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Netværk</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -2707,7 +2707,7 @@ downloaded.</source>
     </message>
     <message>
         <source>Download selected update</source>
-        <translation type="unfinished"/>
+        <translation>Hent valgte opdatering</translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
@@ -2719,7 +2719,7 @@ downloaded.</source>
     </message>
     <message>
         <source>Available update files</source>
-        <translation type="unfinished"/>
+        <translation>Tilgængelige opdateringsfiler</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.
@@ -2811,7 +2811,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Reply to this message</source>
-        <translation type="unfinished"/>
+        <translation>Svar på denne meddelelse</translation>
     </message>
 </context>
 <context>
@@ -2829,7 +2829,7 @@ Login tokens expiration: %2</source>
     <name>ImportantNode</name>
     <message>
         <source>Important messages</source>
-        <translation type="unfinished"/>
+        <translation>Vigtige meddelelser</translation>
     </message>
     <message>
         <source>You can find all important messages here.</source>
@@ -2883,14 +2883,14 @@ Login tokens expiration: %2</source>
     <name>LabelsMenu</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Etiketter</translation>
     </message>
 </context>
 <context>
     <name>LabelsNode</name>
     <message>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Etiketter</translation>
     </message>
     <message>
         <source>You can see all your labels (tags) here.</source>
@@ -2898,7 +2898,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>New label</source>
-        <translation type="unfinished"/>
+        <translation>Ny etiket</translation>
     </message>
     <message>
         <source>This account does not allow you to create labels.</source>
@@ -2906,7 +2906,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Not allowed</source>
-        <translation type="unfinished"/>
+        <translation>Ikke tilladt</translation>
     </message>
 </context>
 <context>
@@ -2989,7 +2989,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>In recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>I skraldespand</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2997,7 +2997,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse</translation>
     </message>
     <message>
         <source>Author</source>
@@ -3863,7 +3863,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"/>
+        <translation>Vælg bibliotek til hentede filer</translation>
     </message>
     <message>
         <source>Downloads</source>
@@ -4124,7 +4124,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"/>
+        <translation>Brug et sort/hvidt ikon</translation>
     </message>
     <message>
         <source>system icon theme</source>
@@ -4133,7 +4133,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"/>
+        <translation>intet ikon-tema</translation>
     </message>
     <message>
         <source>Left mouse button double-click</source>
@@ -4246,7 +4246,7 @@ Type: %3</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -4286,7 +4286,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Angiv webadressen på dit feed.</translation>
     </message>
     <message>
         <source>Icon selection</source>
@@ -4366,7 +4366,7 @@ Type: %3</source>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Webadressen er OK.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
@@ -4374,7 +4374,7 @@ Type: %3</source>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse er tom.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
@@ -4639,7 +4639,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse</translation>
     </message>
     <message>
         <source>Full feed URL including scheme</source>
@@ -4651,7 +4651,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Webadressen er OK.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
@@ -4659,7 +4659,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Webadressen er tom.</translation>
     </message>
 </context>
 <context>
