@@ -233,6 +233,10 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedsView->sourceModel(), &FeedsModel::reloadMessageListRequested, m_messagesView, &MessagesView::reloadSelections);
 }
 
+MessagePreviewer* FeedMessageViewer::messagesBrowser() const {
+  return m_messagesBrowser;
+}
+
 void FeedMessageViewer::initialize() {
   // Initialize/populate toolbars.
   m_toolBarFeeds->setFloatable(false);

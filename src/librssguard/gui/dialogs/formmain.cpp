@@ -14,6 +14,7 @@
 #include "gui/feedstoolbar.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
+#include "gui/messagepreviewer.h"
 #include "gui/messagestoolbar.h"
 #include "gui/messagesview.h"
 #include "gui/plaintoolbutton.h"
@@ -146,6 +147,7 @@ QList<QAction*> FormMain::allActions() const {
 
   actions << m_ui->m_actionSwitchToolBars;
   actions << m_ui->m_actionSwitchListHeaders;
+  actions << m_ui->m_actionSwitchMessageViewerToolbars;
   actions << m_ui->m_actionSwitchStatusBar;
   actions << m_ui->m_actionSwitchMessageListOrientation;
   actions << m_ui->m_actionTabsNext;
@@ -497,6 +499,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
   m_ui->m_actionSwitchToolBars->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
   m_ui->m_actionSwitchListHeaders->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
+  m_ui->m_actionSwitchMessageViewerToolbars->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
   m_ui->m_actionSwitchStatusBar->setIcon(icon_theme_factory->fromTheme(QSL("dialog-information")));
   m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
   m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
@@ -594,6 +597,7 @@ void FormMain::loadSize() {
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
   m_ui->m_actionSwitchToolBars->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ToolbarsVisible)).toBool());
   m_ui->m_actionSwitchListHeaders->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ListHeadersVisible)).toBool());
+  m_ui->m_actionSwitchMessageViewerToolbars->setChecked(settings->value(GROUP(GUI), SETTING(GUI::MessageViewerToolbarsVisible)).toBool());
   m_ui->m_actionSwitchStatusBar->setChecked(settings->value(GROUP(GUI), SETTING(GUI::StatusBarVisible)).toBool());
 
   // Other startup GUI-related settings.
@@ -755,6 +759,8 @@ void FormMain::createConnections() {
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::setToolBarsEnabled);
   connect(m_ui->m_actionSwitchListHeaders, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::setListHeadersEnabled);
+  connect(m_ui->m_actionSwitchMessageViewerToolbars, &QAction::toggled,
+          tabWidget()->feedMessageViewer()->messagesBrowser(), &MessagePreviewer::setToolbarsVisible);
   connect(m_ui->m_actionSelectPreviousItem,
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::selectPreviousItem);
   connect(m_ui->m_actionSelectNextMessage,

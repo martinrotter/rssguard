@@ -46,6 +46,7 @@ class MessagePreviewer : public QWidget {
 #endif
 
   public slots:
+    void setToolbarsVisible(bool visible);
     void clear();
     void hideToolbar();
     void loadMessage(const Message& message, RootItem* root);

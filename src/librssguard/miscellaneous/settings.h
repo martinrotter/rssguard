@@ -170,6 +170,9 @@ namespace GUI {
   KEY ListHeadersVisible;
   VALUE(bool) ListHeadersVisibleDef;
 
+  KEY MessageViewerToolbarsVisible;
+  VALUE(bool) MessageViewerToolbarsVisibleDef;
+
   KEY StatusBarVisible;
   VALUE(bool) StatusBarVisibleDef;
 

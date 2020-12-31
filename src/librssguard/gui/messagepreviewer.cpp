@@ -79,6 +79,16 @@ void MessagePreviewer::reloadFontSettings() {
   m_txtMessage->reloadFontSettings();
 }
 
+void MessagePreviewer::setToolbarsVisible(bool visible) {
+  m_toolBar->setVisible(visible);
+
+#if defined (USE_WEBENGINE)
+  m_txtMessage->setNavigationBarVisible(visible);
+#endif
+
+  qApp->settings()->setValue(GROUP(GUI), GUI::MessageViewerToolbarsVisible, visible);
+}
+
 #if defined (USE_WEBENGINE)
 
 WebBrowser* MessagePreviewer::webBrowser() const {

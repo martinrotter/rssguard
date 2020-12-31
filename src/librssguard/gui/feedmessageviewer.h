@@ -39,6 +39,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     MessagesView* messagesView() const;
     MessagesToolBar* messagesToolBar() const;
     FeedsToolBar* feedsToolBar() const;
+    MessagePreviewer* messagesBrowser() const;
 
     bool areToolBarsEnabled() const;
     bool areListHeadersEnabled() const;

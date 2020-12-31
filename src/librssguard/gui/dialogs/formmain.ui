@@ -81,6 +81,7 @@
      <addaction name="m_actionSwitchToolBars"/>
      <addaction name="m_actionSwitchListHeaders"/>
      <addaction name="m_actionSwitchStatusBar"/>
+     <addaction name="m_actionSwitchMessageViewerToolbars"/>
     </widget>
     <addaction name="m_menuShowHide"/>
     <addaction name="m_actionFullscreen"/>
@@ -791,6 +792,17 @@
    </property>
    <property name="text">
     <string>Automatically &amp;expand items when selected</string>
+   </property>
+  </action>
+  <action name="m_actionSwitchMessageViewerToolbars">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Message viewer toolbars</string>
    </property>
   </action>
  </widget>
