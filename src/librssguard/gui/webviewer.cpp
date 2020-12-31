@@ -110,7 +110,7 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
       enc_url = QUrl::fromPercentEncoding(enc_url.toUtf8());
 
       enclosures += skin.m_enclosureMarkup.arg(enc_url,
-                                               QSL("📎"), enclosure.m_mimeType);
+                                               QSL("&#129527;"), enclosure.m_mimeType);
 
       if (enclosure.m_mimeType.startsWith(QSL("image/"))) {
         // Add thumbnail image.
