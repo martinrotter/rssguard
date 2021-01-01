@@ -41,7 +41,7 @@ class GmailNetworkFactory : public QObject {
     Downloader* downloadAttachment(const QString& msg_id, const QString& attachment_id);
 
     QList<Message> messages(const QString& stream_id, Feed::Status& error);
-    QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids);
+    QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status, QStringList custom_ids);
     QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids);
 
   private slots:

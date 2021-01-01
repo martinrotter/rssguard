@@ -220,8 +220,7 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id, Feed::Sta
   return messages;
 }
 
-QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status,
-                                                                  const QStringList& custom_ids) {
+QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status, QStringList custom_ids) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
@@ -250,21 +249,31 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::Read
 
   param_obj["addLabelIds"] = param_add;
   param_obj["removeLabelIds"] = param_remove;
-  param_obj["ids"] = QJsonArray::fromStringList(custom_ids);
 
-  QJsonDocument param_doc(param_obj);
-  QByteArray output;
+  // We need to operate withing allowed batches.
+  for (int i = 0; i < custom_ids.size(); i += GMAIL_MAX_BATCH_SIZE) {
+    auto batch = custom_ids.mid(i, GMAIL_MAX_BATCH_SIZE);
 
-  return NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
-                                                 timeout,
-                                                 param_doc.toJson(QJsonDocument::JsonFormat::Compact),
-                                                 output,
-                                                 QNetworkAccessManager::Operation::PostOperation,
-                                                 headers).first;
+    param_obj["ids"] = QJsonArray::fromStringList(batch);
+
+    QJsonDocument param_doc(param_obj);
+    QByteArray output;
+    auto result = NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+                                                          timeout,
+                                                          param_doc.toJson(QJsonDocument::JsonFormat::Compact),
+                                                          output,
+                                                          QNetworkAccessManager::Operation::PostOperation,
+                                                          headers).first;
+
+    if (result != QNetworkReply::NetworkError::NoError) {
+      return result;
+    }
+  }
+
+  return QNetworkReply::NetworkError::NoError;
 }
 
-QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance,
-                                                                     const QStringList& custom_ids) {
+QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList& custom_ids) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
@@ -293,17 +302,28 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::I
 
   param_obj["addLabelIds"] = param_add;
   param_obj["removeLabelIds"] = param_remove;
-  param_obj["ids"] = QJsonArray::fromStringList(custom_ids);
 
-  QJsonDocument param_doc(param_obj);
-  QByteArray output;
+  // We need to operate withing allowed batches.
+  for (int i = 0; i < custom_ids.size(); i += GMAIL_MAX_BATCH_SIZE) {
+    auto batch = custom_ids.mid(i, GMAIL_MAX_BATCH_SIZE);
 
-  return NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
-                                                 timeout,
-                                                 param_doc.toJson(QJsonDocument::JsonFormat::Compact),
-                                                 output,
-                                                 QNetworkAccessManager::Operation::PostOperation,
-                                                 headers).first;
+    param_obj["ids"] = QJsonArray::fromStringList(batch);
+
+    QJsonDocument param_doc(param_obj);
+    QByteArray output;
+    auto result = NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+                                                          timeout,
+                                                          param_doc.toJson(QJsonDocument::JsonFormat::Compact),
+                                                          output,
+                                                          QNetworkAccessManager::Operation::PostOperation,
+                                                          headers).first;
+
+    if (result != QNetworkReply::NetworkError::NoError) {
+      return result;
+    }
+  }
+
+  return QNetworkReply::NetworkError::NoError;
 }
 
 void GmailNetworkFactory::onTokensError(const QString& error, const QString& error_description) {

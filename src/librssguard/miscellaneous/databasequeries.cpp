@@ -1539,7 +1539,7 @@ QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& 
   QStringList ids;
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
+  q.prepare(QSL("SELECT custom_id FROM Messages WHERE is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (ok != nullptr) {
