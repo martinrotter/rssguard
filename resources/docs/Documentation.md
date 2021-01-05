@@ -162,11 +162,11 @@ You can download up to 6 files simultaneously.
 You can find its settings in `Web browser & tabs` section of main menu.
 
 ## GUI tweaking
-RSS Guard's GUI is very customizable. You can, for example, hide many GUI elements.
+RSS Guard's GUI is very customizable. You can, for example, hide many GUI elements. There are even people who use RSS Guard on mobile devices powered by Linux like PinePhone or Librem devices.
 
 <img src="images/gui-hiding.png" width="80%">
 
-For example, you can hide menu, toolbars, status bar and even list headers to achieve very minimal main window layout.
+For example, you can hide menu, various toolbars, statusbar and even list headers to achieve very minimal main window layout.
 
 If you hide main menu, then small `home` icon will appear in left-top corner of main application window. 
 
@@ -180,16 +180,21 @@ Many people have very widescreen monitors nowadays and RSS Guard offers you hori
 Here you can find some useful insights into RSS Guard's modus operandi.
 
 ## CLI
-RSS Guard offers CLI (command line interface). For overview if its features, run `rssguard --help` in your terminal. You will see the overview of the interface.
+RSS Guard offers CLI (command line interface). For overview of its features, run `rssguard --help` in your terminal. You will see the overview of the interface.
 
 ```
 RSS Guard
 
 Options:
-  -l, --log <log-file>  Write application debug log to file.
-  -?, -h, --help        Displays help on commandline options.
-  --help-all            Displays help including Qt specific options.
-  -v, --version         Displays version information.
+  -l, --log <log-file>           Write application debug log to file. Note that
+                                 logging to file may slow application down.
+  -d, --data <user-data-folder>  Use custom folder for user data and disable
+                                 single instance application mode.
+  -s, --no-single-instance       Allow running of multiple application
+                                 instances.
+  -?, -h, --help                 Displays help on commandline options.
+  --help-all                     Displays help including Qt specific options.
+  -v, --version                  Displays version information.
 ```
 
 ## Cleaning database
@@ -224,17 +229,8 @@ Here is the rough workflow which is done when you hit `Feeds & categories -> Upd
 If you run into problems with RSS Guard and you need your problems fixed, you should provide log file from the time when problem occurred. RSS Guard writes all important information to standard output, which is usually calling terminal.
 
 To redirect debug output of RSS Guard to log file, do this:
-
-* Windows
-  1. You need to open command line, run `CTRL + R` and write `cmd`.
-  2. Navigate to your RSS Guard installation folder, `cd C:\Programs\rssguard\`. This is the folder which contains `rssguard.exe`.
-  3. Enter `.\rssguard.exe --log '.\log.txt'`. RSS Guard will now start. You can of course specify arbitrary file where to store log and its location must be writable. The `--log` syntax is supported starting from RSS Guard 3.8.0. Older versions do not support capturing debug output.
-  4. Now try to simulate your problem.
-  5. Attach generated `log.txt` file to your bug report.
-
-* Linux
-  1. You need to open command line, run terminal emulator.
-  2. Navigate to your RSS Guard installation folder, `cd /my/root/rssguard'. This step is not usually needed.
-  3. Enter `rssguard > /home/<user>/log.txt 2>&1`. RSS Guard will now start.
-  4. Now try to simulate your problem.
-  5. Attach generated `log.txt` file to your bug report.
+1. Open command line.
+2. Navigate to your RSS Guard installation folder.
+3. Enter `rssguard.exe --log 'log.txt'`. RSS Guard will now start. You can of course specify arbitrary file where to store log and its location must be writable.
+4. Now try to simulate your problem.
+5. Attach generated `log.txt` file to your bug report.

@@ -25,6 +25,6 @@ Standard plugin offers some extra features like export/import of OPML 2.0 files 
 OPML files can be exported/imported in simple dialog.
 
 <img src="images/im-ex-feeds.png" width="80%">
-<img src="images/im-ex-feeds-dialog.png">
+<img src="images/im-ex-feeds-dialog.png" width="50%">
 
 You just select output file (in case of OPML export), check desired feeds and hit `Export to file`.
