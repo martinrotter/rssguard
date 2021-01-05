@@ -14,23 +14,17 @@
 #include <QNetworkReply>
 
 class AutoSaver;
-
 class DownloadModel;
-
 class QFileIconProvider;
-
 class QMimeData;
 
 class DownloadItem : public QWidget {
   Q_OBJECT
 
-  // Friends of this class.
   friend class DownloadManager;
   friend class DownloadModel;
 
   public:
-
-    // Constructors.
     explicit DownloadItem(QNetworkReply* reply = 0, QWidget* parent = nullptr);
     virtual ~DownloadItem();
 
@@ -81,7 +75,6 @@ class DownloadItem : public QWidget {
 };
 
 #if defined(USE_WEBENGINE)
-
 class WebBrowser;
 #endif
 
@@ -106,9 +99,7 @@ class DownloadManager : public TabContent {
     virtual ~DownloadManager();
 
 #if defined(USE_WEBENGINE)
-    WebBrowser* webBrowser() const {
-      return nullptr;
-    }
+    virtual WebBrowser* webBrowser() const;
 #endif
 
     SilentNetworkAccessManager* networkManager() const;
@@ -160,6 +151,13 @@ class DownloadManager : public TabContent {
     QString m_downloadDirectory;
 };
 
+#if defined(USE_WEBENGINE)
+inline WebBrowser* DownloadManager::webBrowser() const {
+  return nullptr;
+}
+
+#endif
+
 class DownloadModel : public QAbstractListModel {
   Q_OBJECT
 
@@ -168,11 +166,11 @@ class DownloadModel : public QAbstractListModel {
   public:
     explicit DownloadModel(DownloadManager* download_manager, QObject* parent = nullptr);
 
-    QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
-    int rowCount(const QModelIndex& parent = QModelIndex()) const;
-    bool removeRows(int row, int count, const QModelIndex& parent = QModelIndex());
-    Qt::ItemFlags flags(const QModelIndex& index) const;
-    QMimeData* mimeData(const QModelIndexList& indexes) const;
+    virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+    virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+    virtual bool removeRows(int row, int count, const QModelIndex& parent = QModelIndex());
+    virtual Qt::ItemFlags flags(const QModelIndex& index) const;
+    virtual QMimeData* mimeData(const QModelIndexList& indexes) const;
 
   private:
     DownloadManager* m_downloadManager;

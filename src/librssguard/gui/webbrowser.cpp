@@ -9,6 +9,7 @@
 #include "gui/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
+#include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
@@ -31,7 +32,10 @@ WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
   m_actionBack(m_webView->pageAction(QWebEnginePage::Back)),
   m_actionForward(m_webView->pageAction(QWebEnginePage::Forward)),
   m_actionReload(m_webView->pageAction(QWebEnginePage::Reload)),
-  m_actionStop(m_webView->pageAction(QWebEnginePage::Stop)) {
+  m_actionStop(m_webView->pageAction(QWebEnginePage::Stop)),
+  m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
+                                          tr("Open this website in system web browser"),
+                                          this)) {
   // Initialize the components and layout.
   initializeLayout();
   setFocusProxy(m_txtLocation);
@@ -57,6 +61,8 @@ void WebBrowser::createConnections() {
 
     m_searchWidget->setFocus();
   });
+
+  connect(m_actionOpenInSystemBrowser, &QAction::triggered, this, &WebBrowser::openCurrentSiteInSystemBrowser);
 
   connect(m_txtLocation, &LocationLineEdit::submitted,
           this, static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
@@ -172,6 +178,22 @@ bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
   return false;
 }
 
+void WebBrowser::openCurrentSiteInSystemBrowser() {
+  auto url = m_webView->url();
+
+  if (!url.isValid() || url.host().contains(APP_LOW_NAME)) {
+    return;
+  }
+
+  if (!qApp->web()->openUrlInExternalBrowser(url.toString())) {
+    qApp->showGuiMessage(tr("Failed to open URL in web browser"),
+                         tr("URL '%1' could not be opened in system's web browser.").arg(url.toString()),
+                         QSystemTrayIcon::MessageIcon::Critical,
+                         qApp->mainFormWidget(),
+                         true);
+  }
+}
+
 void WebBrowser::onTitleChanged(const QString& new_title) {
   if (new_title.isEmpty()) {
     //: Webbrowser tab title when no title is available.
@@ -189,19 +211,16 @@ void WebBrowser::onIconChanged(const QIcon& icon) {
 void WebBrowser::initializeLayout() {
   m_toolBar->setFloatable(false);
   m_toolBar->setMovable(false);
-  m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
+  m_toolBar->setAllowedAreas(Qt::ToolBarArea::TopToolBarArea);
 
   // Modify action texts.
   m_actionBack->setText(tr("Back"));
-  m_actionBack->setToolTip(tr("Go back."));
   m_actionForward->setText(tr("Forward"));
-  m_actionForward->setToolTip(tr("Go forward."));
   m_actionReload->setText(tr("Reload"));
-  m_actionReload->setToolTip(tr("Reload current web page."));
   m_actionStop->setText(tr("Stop"));
-  m_actionStop->setToolTip(tr("Stop web page loading."));
   QWidgetAction* act_discover = new QWidgetAction(this);
 
+  m_actionOpenInSystemBrowser->setEnabled(false);
   act_discover->setDefaultWidget(m_btnDiscoverFeeds);
 
   // Add needed actions into toolbar.
@@ -209,6 +228,7 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(m_actionForward);
   m_toolBar->addAction(m_actionReload);
   m_toolBar->addAction(m_actionStop);
+  m_toolBar->addAction(m_actionOpenInSystemBrowser);
   m_toolBar->addAction(act_discover);
   m_toolBar->addWidget(m_txtLocation);
   m_loadingProgress = new QProgressBar(this);
@@ -232,6 +252,7 @@ void WebBrowser::initializeLayout() {
 void WebBrowser::onLoadingStarted() {
   m_btnDiscoverFeeds->clearFeedAddresses();
   m_loadingProgress->show();
+  m_actionOpenInSystemBrowser->setEnabled(false);
 }
 
 void WebBrowser::onLoadingProgress(int progress) {
@@ -240,6 +261,12 @@ void WebBrowser::onLoadingProgress(int progress) {
 
 void WebBrowser::onLoadingFinished(bool success) {
   if (success) {
+    auto url = m_webView->url();
+
+    if (url.isValid() && !url.host().contains(APP_LOW_NAME)) {
+      m_actionOpenInSystemBrowser->setEnabled(true);
+    }
+
     // Let's check if there are any feeds defined on the web and eventually
     // display "Add feeds" button.
     m_webView->page()->toHtml([this](const QString& result) {
@@ -252,7 +279,6 @@ void WebBrowser::onLoadingFinished(bool success) {
 
   m_loadingProgress->hide();
   m_loadingProgress->setValue(0);
-
 }
 
 Message* WebBrowser::findMessage(int id) {

@@ -31,7 +31,8 @@ class WebBrowser : public TabContent {
     explicit WebBrowser(QWidget* parent = nullptr);
     virtual ~WebBrowser();
 
-    WebBrowser* webBrowser() const;
+    virtual WebBrowser* webBrowser() const;
+
     WebViewer* viewer() const;
 
     double verticalScrollBarPosition() const;
@@ -54,8 +55,8 @@ class WebBrowser : public TabContent {
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
+    void openCurrentSiteInSystemBrowser();
     void updateUrl(const QUrl& url);
-
     void onLoadingStarted();
     void onLoadingProgress(int progress);
     void onLoadingFinished(bool success);
@@ -85,6 +86,7 @@ class WebBrowser : public TabContent {
     QAction* m_actionForward;
     QAction* m_actionReload;
     QAction* m_actionStop;
+    QAction* m_actionOpenInSystemBrowser;
     QList<Message> m_messages;
     QPointer<RootItem> m_root;
 };

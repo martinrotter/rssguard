@@ -31,7 +31,7 @@ class NewspaperPreviewer : public TabContent {
     explicit NewspaperPreviewer(int msg_height, RootItem* root, QList<Message> messages, QWidget* parent = nullptr);
 
 #if defined(USE_WEBENGINE)
-    WebBrowser* webBrowser() const;
+    virtual WebBrowser* webBrowser() const;
 #endif
 
   public slots:

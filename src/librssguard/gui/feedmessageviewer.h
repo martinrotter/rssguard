@@ -32,7 +32,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     virtual ~FeedMessageViewer();
 
 #if defined(USE_WEBENGINE)
-    WebBrowser* webBrowser() const;
+    virtual WebBrowser* webBrowser() const;
 #endif
 
     FeedsView* feedsView() const;

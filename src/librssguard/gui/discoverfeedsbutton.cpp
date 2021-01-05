@@ -29,8 +29,8 @@ void DiscoverFeedsButton::clearFeedAddresses() {
 void DiscoverFeedsButton::setFeedAddresses(const QStringList& addresses) {
   setEnabled(!addresses.isEmpty());
   setToolTip(addresses.isEmpty() ?
-             tr("This website does not contain any feeds.") :
-             tr("Click me to add feeds from this website.\nThis website contains %n feed(s).", 0, addresses.size()));
+             tr("This website does not contain any feeds") :
+             tr("Add one of %n feed(s)", 0, addresses.size()));
 
   if (menu() == nullptr) {
     // Initialize the menu.

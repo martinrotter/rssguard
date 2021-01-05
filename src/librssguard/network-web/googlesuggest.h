@@ -47,10 +47,10 @@ class GoogleSuggest : public QObject {
   public:
     explicit GoogleSuggest(LocationLineEdit* editor, QObject* parent = nullptr);
 
-    bool eventFilter(QObject* object, QEvent* event);
-    void showCompletion(const QStringList& choices);
+    virtual bool eventFilter(QObject* object, QEvent* event);
 
   public slots:
+    void showCompletion(const QStringList& choices);
     void doneCompletion();
     void preventSuggest();
     void autoSuggest();

@@ -23,7 +23,6 @@ class TabContent : public QWidget {
     virtual void setIndex(int index);
 
 #if defined(USE_WEBENGINE)
-
     // Obtains instance contained in this TabContent or nullptr.
     // This can be used for obtaining the menu from the instance and so on.
     virtual WebBrowser* webBrowser() const = 0;
