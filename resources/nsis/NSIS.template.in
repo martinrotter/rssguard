@@ -26,7 +26,6 @@
 
 ; Name and file.
 Name "${APP_NAME} portable"
-OutFile "${OUTPUT_FILE}"
 
 ; Set custom branding text.
 BrandingText "${APP_NAME}"

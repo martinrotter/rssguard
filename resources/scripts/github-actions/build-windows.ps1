@@ -4,6 +4,9 @@ $webengine = $args[1]
 echo "We are building for MS Windows."
 echo "OS: $os; WebEngine: $webengine"
 
+$git_revlist = git rev-list --tags --max-count=1
+$git_tag = git describe --tags $git_revlist
+$git_revision = git rev-parse --short HEAD
 $old_pwd = $pwd.Path
 
 # Prepare environment.
@@ -46,5 +49,17 @@ Copy-Item -Path "$qt_path\bin\libssl*.dll" -Destination ".\app\"
 # Copy MySQL Qt plugin.
 Copy-Item -Path "$qt_path\bin\libmariadb.dll" -Destination ".\app\"
 
-nmake.exe windows_all
+if ($webengine = "true") {
+  $packagebase = "rssguard-${git_tag}-${git_revision}-win64"
+}
+else {
+  $packagebase = "rssguard-${git_tag}-${git_revision}-nowebengine-win64"
+}
+
+# Create 7zip package.
+& "$old_pwd\resources\scripts\7za\7za.exe" a -t7z -mx=9 -mfb=273 -ms -md=31 -myx=9 -mtm=- -mmt -mmtf -md=1536m -mmf=bt3 -mmc=10000 -mpb=0 -mlc=0 "$packagebase.7z" ".\app\*"
+
+# Create NSIS installation package.
+& "$old_pwd\resources\scripts\nsis\makensis.exe" "/XOutFile $packagebase.exe" ".\NSIS.template.in"
+
 ls
