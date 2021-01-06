@@ -56,6 +56,7 @@ SEDREPLACE = "s|@APP_VERSION@|$$APP_VERSION|g; s|@APP_WIN_ARCH@|$$APP_WIN_ARCH|g
 message($$MSG_PREFIX: Sed replace string: \"$$SEDREPLACE\".)
 
 system(echo \"$$shell_path($$shell_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.in))\")
+
 system($$shell_path($$shell_quote($$PWD/../../resources/scripts/sed/sed.exe)) -e \"$$SEDREPLACE\" $$shell_path($$shell_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.in)) > $$shell_path($$shell_quote($$OUT_PWD/NSIS.definitions.nsh)))
 system(xcopy /Y $$shell_path($$shell_quote($$PWD/../../resources/nsis/NSIS.template.in)) $$shell_path($$shell_quote($$OUT_PWD/)))
 
