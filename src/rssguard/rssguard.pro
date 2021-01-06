@@ -59,6 +59,7 @@ FULLSEDCMD = "$$shell_path($$shell_quote($$PWD/../../resources/scripts/sed/sed.e
 message($$MSG_PREFIX: Full sed command: $$FULLSEDCMD)
 
 system($$FULLSEDCMD)
+
 system(move \"$$system_path($$system_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.out))\" \"$$system_path($$system_quote($$OUT_PWD\NSIS.definitions.nsh))\")
 system(xcopy /Y $$shell_path($$shell_quote($$PWD/../../resources/nsis/NSIS.template.in)) $$shell_path($$shell_quote($$OUT_PWD/)))
 
