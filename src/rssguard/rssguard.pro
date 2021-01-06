@@ -54,8 +54,7 @@ unix: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard
 SEDREPLACE = "s|@APP_VERSION@|$$APP_VERSION|g; s|@APP_WIN_ARCH@|$$APP_WIN_ARCH|g; s|@APP_REVISION@|$$APP_REVISION|g; s|@APP_NAME@|$$APP_NAME|g; s|@APP_LOW_NAME@|$$APP_LOW_NAME|g; s|@EXE_NAME@|$${APP_LOW_NAME}.exe|g; s|@PWD@|$$replace(PWD, /, \\\\)|g; s|@OUT_PWD@|$$replace(OUT_PWD, /, \\\\)|g"
 message($$MSG_PREFIX: Sed replace string: \"$$SEDREPLACE\".)
 
-#  > $$shell_path($$shell_quote($$OUT_PWD/NSIS.definitions.nsh))
-system($$shell_path($$shell_quote($$PWD/../../resources/scripts/sed/sed.exe)) -e \"$$SEDREPLACE\" $$shell_path($$shell_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.in)))
+system($$shell_path($$shell_quote($$PWD/../../resources/scripts/sed/sed.exe)) -e \"$$SEDREPLACE\" $$system_path($$system_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.in)) > $$system_path($$system_quote($$OUT_PWD/NSIS.definitions.nsh)))
 system(xcopy /Y $$shell_path($$shell_quote($$PWD/../../resources/nsis/NSIS.template.in)) $$shell_path($$shell_quote($$OUT_PWD/)))
 
 include(../../pri/install.pri)
