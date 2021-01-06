@@ -49,7 +49,7 @@ Copy-Item -Path "$qt_path\bin\libssl*.dll" -Destination ".\app\"
 # Copy MySQL Qt plugin.
 Copy-Item -Path "$qt_path\bin\libmariadb.dll" -Destination ".\app\"
 
-if ($webengine = "true") {
+if ($webengine -eq "true") {
   $packagebase = "rssguard-${git_tag}-${git_revision}-win64"
 }
 else {
@@ -57,7 +57,7 @@ else {
 }
 
 # Create 7zip package.
-& "$old_pwd\resources\scripts\7za\7za.exe" a -t7z -mx=9 -mfb=273 -ms -md=31 -myx=9 -mtm=- -mmt -mmtf -md=1536m -mmf=bt3 -mmc=10000 -mpb=0 -mlc=0 "$packagebase.7z" ".\app\*"
+& "$old_pwd\resources\scripts\7za\7za.exe" a -t7z -mmt -mx9 "$packagebase.7z" ".\app\*"
 
 # Create NSIS installation package.
 & "$old_pwd\resources\scripts\nsis\makensis.exe" "/XOutFile $packagebase.exe" ".\NSIS.template.in"
