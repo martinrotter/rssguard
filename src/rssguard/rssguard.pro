@@ -55,11 +55,11 @@ SEDREPLACE = "s|@APP_VERSION@|$$APP_VERSION|g; s|@APP_WIN_ARCH@|$$APP_WIN_ARCH|g
 message($$MSG_PREFIX: Sed replace string: \"$$SEDREPLACE\")
 
 #  > \"$$system_path($$system_quote($$OUT_PWD\NSIS.definitions.nsh))\"
-FULLSEDCMD = "$$shell_path($$shell_quote($$PWD/../../resources/scripts/sed/sed.exe)) -e \"$$SEDREPLACE\" \"$$system_path($$system_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.in))\" > \"$$system_path($$system_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.in))\""
+FULLSEDCMD = "$$shell_path($$shell_quote($$PWD/../../resources/scripts/sed/sed.exe)) -e \"$$SEDREPLACE\" \"$$system_path($$system_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.in))\" > \"$$system_path($$system_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.out))\""
 message($$MSG_PREFIX: Full sed command: $$FULLSEDCMD)
 
 system($$FULLSEDCMD)
-system(move \"$$system_path($$system_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.in))\" \"$$system_path($$system_quote($$OUT_PWD\NSIS.definitions.nsh))\")
+system(move \"$$system_path($$system_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.out))\" \"$$system_path($$system_quote($$OUT_PWD\NSIS.definitions.nsh))\")
 system(xcopy /Y $$shell_path($$shell_quote($$PWD/../../resources/nsis/NSIS.template.in)) $$shell_path($$shell_quote($$OUT_PWD/)))
 
 include(../../pri/install.pri)
