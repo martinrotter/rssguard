@@ -74,8 +74,11 @@ Application::Application(const QString& id, int& argc, char** argv)
 #endif
 
   m_webFactory->updateProxy();
+
+#if defined(USE_WEBENGINE)
   m_webFactory->urlIinterceptor()->load();
   m_webFactory->adBlock()->load(true);
+#endif
 }
 
 Application::~Application() {
