@@ -107,19 +107,21 @@ void AdBlockIcon::createMenu(QMenu* menu) {
 
   if (!pageUrl.host().isEmpty() && m_enabled && m_manager->canRunOnScheme(pageUrl.scheme())) {
     const QString host = page->url().host().contains(QLatin1String("www.")) ? pageUrl.host().mid(4) : pageUrl.host();
-    const QString hostFilter = QString("@@||%1^$document").arg(host);
-    const QString pageFilter = QString("@@|%1|$document").arg(pageUrl.toString());
+    const QString host_filter = QString("@@||%1^$document").arg(host);
+    const QString page_filter = QString("@@|%1|$document").arg(pageUrl.toString());
     QAction* act = menu->addAction(tr("Disable on %1").arg(host));
 
     act->setCheckable(true);
-    act->setChecked(customList->containsFilter(hostFilter));
-    act->setData(hostFilter);
+    act->setChecked(customList->containsFilter(host_filter));
+    act->setData(host_filter);
     connect(act, &QAction::triggered, this, &AdBlockIcon::toggleCustomFilter);
+
     act = menu->addAction(tr("Disable only on this page"));
     act->setCheckable(true);
-    act->setChecked(customList->containsFilter(pageFilter));
-    act->setData(pageFilter);
+    act->setChecked(customList->containsFilter(page_filter));
+    act->setData(page_filter);
     connect(act, &QAction::triggered, this, &AdBlockIcon::toggleCustomFilter);
+
     menu->addSeparator();
   }
 }
@@ -139,20 +141,20 @@ void AdBlockIcon::toggleCustomFilter() {
   }
 
   const QString filter = action->data().toString();
-  AdBlockCustomList* customList = m_manager->customList();
+  AdBlockCustomList* custom_list = m_manager->customList();
 
-  if (customList->containsFilter(filter)) {
-    customList->removeFilter(filter);
+  if (custom_list->containsFilter(filter)) {
+    custom_list->removeFilter(filter);
   }
   else {
-    auto* rule = new AdBlockRule(filter, customList);
+    auto* rule = new AdBlockRule(filter, custom_list);
 
-    customList->addRule(rule);
+    custom_list->addRule(rule);
   }
 }
 
 void AdBlockIcon::animateIcon() {
-  ++m_timerTicks;
+  m_timerTicks++;
 
   if (m_timerTicks > 10) {
     stopAnimation();

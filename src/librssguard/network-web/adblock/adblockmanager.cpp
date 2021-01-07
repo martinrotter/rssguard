@@ -76,11 +76,13 @@ bool AdBlockManager::block(QWebEngineUrlRequestInfo& request) {
   if (blockedRule != nullptr) {
     if (request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame) {
       QUrlQuery query;
-      QUrl url(QSL("rssguard:adblockedpage"));
+      QUrl url(QSL("%1://%2").arg(APP_LOW_NAME, ADBLOCK_ADBLOCKED_PAGE));
 
       query.addQueryItem(QSL("rule"), blockedRule->filter());
       query.addQueryItem(QSL("subscription"), blockedRule->subscription()->title());
       url.setQuery(query);
+
+      res = true;
       request.redirect(url);
     }
     else {
