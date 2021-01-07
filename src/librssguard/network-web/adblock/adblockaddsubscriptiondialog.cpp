@@ -20,11 +20,9 @@
 #include "network-web/adblock/adblockaddsubscriptiondialog.h"
 
 #include "definitions/definitions.h"
+#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-
-#include <QCheckBox>
-#include <QComboBox>
 
 AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
   : QDialog(parent), m_ui(new Ui::AdBlockAddSubscriptionDialog) {
@@ -55,13 +53,15 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
     m_ui->m_cmbPresets->addItem(subscription.m_title);
   }
 
-  connect(m_ui->m_cmbPresets, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
-          &AdBlockAddSubscriptionDialog::indexChanged);
-  connect(m_ui->m_cbUsePredefined, &QCheckBox::toggled, this, &AdBlockAddSubscriptionDialog::presetsEnabledChanged);
+  connect(m_ui->m_cmbPresets, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this, &AdBlockAddSubscriptionDialog::indexChanged);
+  connect(m_ui->m_cbUsePredefined, &QCheckBox::toggled, this,
+          &AdBlockAddSubscriptionDialog::presetsEnabledChanged);
+
   m_ui->m_cbUsePredefined->setChecked(true);
-  indexChanged(0);
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-  setWindowIcon(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE));
+  GuiUtilities::applyDialogProperties(*this,
+                                      qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE),
+                                      tr("Add subscription"));
 }
 
 QString AdBlockAddSubscriptionDialog::title() const {
@@ -89,12 +89,15 @@ void AdBlockAddSubscriptionDialog::indexChanged(int index) {
 void AdBlockAddSubscriptionDialog::presetsEnabledChanged(bool enabled) {
   m_ui->m_txtTitle->setEnabled(!enabled);
   m_ui->m_txtUrl->setEnabled(!enabled);
+  m_ui->m_cmbPresets->setEnabled(enabled);
 
   if (!enabled) {
-    // Presets are disabled, clear txts.
     m_ui->m_txtTitle->clear();
     m_ui->m_txtUrl->clear();
     m_ui->m_txtTitle->setFocus();
+  }
+  else {
+    indexChanged(m_ui->m_cmbPresets->currentIndex());
   }
 }
 

@@ -6,12 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>557</width>
+    <width>440</width>
     <height>145</height>
    </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Add subscription</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <item row="0" column="1">
@@ -69,16 +66,6 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
    <item row="3" column="0" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
@@ -92,6 +79,16 @@
      </property>
     </spacer>
    </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QDialogButtonBox" name="m_buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
@@ -103,7 +100,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>m_buttonBox</sender>
    <signal>accepted()</signal>
    <receiver>AdBlockAddSubscriptionDialog</receiver>
    <slot>accept()</slot>
@@ -119,7 +116,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>m_buttonBox</sender>
    <signal>rejected()</signal>
    <receiver>AdBlockAddSubscriptionDialog</receiver>
    <slot>reject()</slot>

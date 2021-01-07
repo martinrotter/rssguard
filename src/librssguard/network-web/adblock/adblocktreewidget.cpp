@@ -36,7 +36,7 @@ AdBlockTreeWidget::AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget*
   setLayoutDirection(Qt::LeftToRight);
   setIndentation(5);
 
-  connect(this, &AdBlockTreeWidget::customContextMenuRequested, this, &AdBlockTreeWidget::contextMenuRequested);
+  connect(this, &QWidget::customContextMenuRequested, this, &AdBlockTreeWidget::contextMenuRequested);
   connect(this, &AdBlockTreeWidget::itemChanged, this, &AdBlockTreeWidget::itemChanged);
   connect(m_subscription, &AdBlockSubscription::subscriptionUpdated, this, &AdBlockTreeWidget::subscriptionUpdated);
   connect(m_subscription, &AdBlockSubscription::subscriptionError, this, &AdBlockTreeWidget::subscriptionError);
