@@ -31,7 +31,6 @@ class AdBlockMatcher;
 class AdBlockCustomList;
 class AdBlockSubscription;
 class AdBlockRule;
-class AdBlockDialog;
 class AdBlockUrlInterceptor;
 class AdBlockIcon;
 
@@ -39,11 +38,17 @@ class AdBlockManager : public QObject {
   Q_OBJECT
 
   public:
-    explicit AdBlockManager(QObject* parent = 0);
+    explicit AdBlockManager(QObject* parent = nullptr);
     virtual ~AdBlockManager();
 
-    void load();
+    // If "initial_load" is true, then we want to explicitly turn off
+    // Adblock if it is running or turn on when not running.
+    // if "initial_load" is true, then we want to forcefully perform
+    // initial loading of Adblock.
+    void load(bool initial_load);
     void save();
+
+    bool block(QWebEngineUrlRequestInfo& request);
 
     bool isEnabled() const;
     bool canRunOnScheme(const QString& scheme) const;
@@ -52,41 +57,33 @@ class AdBlockManager : public QObject {
     QString elementHidingRulesForDomain(const QUrl& url) const;
 
     AdBlockSubscription* subscriptionByName(const QString& name) const;
-
     QList<AdBlockSubscription*> subscriptions() const;
-
-    bool block(QWebEngineUrlRequestInfo& request);
 
     QStringList disabledRules() const;
     void addDisabledRule(const QString& filter);
     void removeDisabledRule(const QString& filter);
 
     bool addSubscriptionFromUrl(const QUrl& url);
-
     AdBlockSubscription* addSubscription(const QString& title, const QString& url);
-
     bool removeSubscription(AdBlockSubscription* subscription);
 
     AdBlockCustomList* customList() const;
-
-    inline AdBlockIcon* adBlockIcon() const {
-      return m_adblockIcon;
-    }
+    AdBlockIcon* adBlockIcon() const;
 
     static QString storedListsPath();
-    static AdBlockManager* instance();
-
-  signals:
-    void enabledChanged(bool enabled);
 
   public slots:
-    void setEnabled(bool enabled);
     void updateMatcher();
     void updateAllSubscriptions();
     void showDialog();
 
+  signals:
+    void enabledChanged(bool enabled);
+
   private:
     inline bool canBeBlocked(const QUrl& url) const;
+
+  private:
     bool m_loaded;
     bool m_enabled;
     AdBlockIcon* m_adblockIcon;
@@ -94,8 +91,11 @@ class AdBlockManager : public QObject {
     AdBlockMatcher* m_matcher;
     QStringList m_disabledRules;
     AdBlockUrlInterceptor* m_interceptor;
-    QPointer<AdBlockDialog> m_adBlockDialog;
     QMutex m_mutex;
 };
+
+inline AdBlockIcon* AdBlockManager::adBlockIcon() const {
+  return m_adblockIcon;
+}
 
 #endif // ADBLOCKMANAGER_H

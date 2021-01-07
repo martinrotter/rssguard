@@ -33,7 +33,7 @@ class AdBlockAddSubscriptionDialog : public QDialog {
   Q_OBJECT
 
   public:
-    explicit AdBlockAddSubscriptionDialog(QWidget* parent = 0);
+    explicit AdBlockAddSubscriptionDialog(QWidget* parent = nullptr);
     virtual ~AdBlockAddSubscriptionDialog();
 
     QString title() const;
@@ -44,21 +44,15 @@ class AdBlockAddSubscriptionDialog : public QDialog {
     void presetsEnabledChanged(bool enabled);
 
   private:
-    Ui::AdBlockAddSubscriptionDialog* m_ui;
-
     struct Subscription {
       QString m_title;
       QString m_url;
 
-      Subscription() {}
-
-      Subscription(const QString& t, const QString& u) {
-        m_title = t;
-        m_url = u;
-      }
-
+      explicit Subscription();
+      explicit Subscription(const QString& title, const QString& url);
     };
 
+    Ui::AdBlockAddSubscriptionDialog* m_ui;
     QVector<Subscription> m_knownSubscriptions;
 };
 

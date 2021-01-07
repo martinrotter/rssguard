@@ -36,7 +36,7 @@ void RssGuardSchemeHandler::requestStarted(QWebEngineUrlRequestJob* job) {
   QByteArray data = targetData(job->requestUrl());
 
   if (data.isEmpty()) {
-    job->fail(QWebEngineUrlRequestJob::UrlNotFound);
+    job->fail(QWebEngineUrlRequestJob::Error::UrlNotFound);
   }
   else {
     auto* buf = new QBuffer(job);

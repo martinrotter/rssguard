@@ -104,3 +104,10 @@ void AdBlockAddSubscriptionDialog::presetsEnabledChanged(bool enabled) {
 AdBlockAddSubscriptionDialog::~AdBlockAddSubscriptionDialog() {
   delete m_ui;
 }
+
+AdBlockAddSubscriptionDialog::Subscription::Subscription() {}
+
+AdBlockAddSubscriptionDialog::Subscription::Subscription(const QString& title, const QString& url) {
+  m_title = title;
+  m_url = url;
+}

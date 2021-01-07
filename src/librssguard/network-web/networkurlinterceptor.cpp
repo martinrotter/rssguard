@@ -48,6 +48,6 @@ void NetworkUrlInterceptor::removeUrlInterceptor(UrlInterceptor* interceptor) {
   m_interceptors.removeOne(interceptor);
 }
 
-void NetworkUrlInterceptor::loadSettings() {
+void NetworkUrlInterceptor::load() {
   m_sendDNT = qApp->settings()->value(GROUP(Browser), SETTING(Browser::SendDNT)).toBool();
 }

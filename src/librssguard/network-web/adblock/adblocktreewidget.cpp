@@ -37,7 +37,7 @@ AdBlockTreeWidget::AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget*
   setIndentation(5);
 
   connect(this, &QWidget::customContextMenuRequested, this, &AdBlockTreeWidget::contextMenuRequested);
-  connect(this, &AdBlockTreeWidget::itemChanged, this, &AdBlockTreeWidget::itemChanged);
+  connect(this, &QTreeWidget::itemChanged, this, &AdBlockTreeWidget::itemChanged);
   connect(m_subscription, &AdBlockSubscription::subscriptionUpdated, this, &AdBlockTreeWidget::subscriptionUpdated);
   connect(m_subscription, &AdBlockSubscription::subscriptionError, this, &AdBlockTreeWidget::subscriptionError);
 }
@@ -193,20 +193,23 @@ void AdBlockTreeWidget::adjustItemFeatures(QTreeWidgetItem* item, const AdBlockR
       item->setCheckState(0, Qt::Unchecked);
       item->setFont(0, font);
     }
-
-    return;
   }
+  else {
+    item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+    item->setCheckState(0, Qt::Checked);
 
-  item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
-  item->setCheckState(0, Qt::Checked);
-
-  if (rule->isException()) {
-    item->setForeground(0, QColor(Qt::darkGreen));
-    item->setFont(0, QFont());
-  }
-  else if (rule->isCssRule()) {
-    item->setForeground(0, QColor(Qt::darkBlue));
-    item->setFont(0, QFont());
+    if (rule->isException()) {
+      item->setForeground(0, QColor(Qt::darkGreen));
+      item->setFont(0, QFont());
+    }
+    else if (rule->isCssRule()) {
+      item->setForeground(0, QColor(Qt::darkBlue));
+      item->setFont(0, QFont());
+    }
+    else {
+      item->setForeground(0, QColor(Qt::black));
+      item->setFont(0, QFont());
+    }
   }
 }
 

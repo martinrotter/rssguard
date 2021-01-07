@@ -15,6 +15,8 @@
 
 #if defined (USE_WEBENGINE)
 class QMenu;
+class AdBlockManager;
+class NetworkUrlInterceptor;
 #endif
 
 class WebFactory : public QObject {
@@ -35,6 +37,8 @@ class WebFactory : public QObject {
 
 #if defined (USE_WEBENGINE)
     QAction* engineSettingsAction();
+    AdBlockManager* adBlock();
+    NetworkUrlInterceptor* urlIinterceptor();
 #endif
 
   public slots:
@@ -54,11 +58,14 @@ class WebFactory : public QObject {
   private:
     void generateUnescapes();
 
-    QMap<QString, char16_t> m_htmlNamedEntities;
-
-#if defined (USE_WEBENGINE)
+  private:
+#if defined(USE_WEBENGINE)
+    AdBlockManager * m_adBlock;
+    NetworkUrlInterceptor* m_urlInterceptor;
     QAction* m_engineSettings;
 #endif
+
+    QMap<QString, char16_t> m_htmlNamedEntities;
 };
 
 #endif // WEBFACTORY_H

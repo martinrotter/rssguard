@@ -13,9 +13,6 @@
     <height>424</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>AdBlock configuration</string>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QCheckBox" name="m_cbEnable">

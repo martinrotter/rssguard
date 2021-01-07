@@ -30,23 +30,14 @@
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/networkurlinterceptor.h"
-#include "network-web/rssguardschemehandler.h"
-#include "network-web/urlinterceptor.h"
 
 #include <QWebEngineDownloadItem>
 #include <QWebEngineProfile>
-#include <QWebEngineScript>
-#include <QWebEngineScriptCollection>
-#include <QWebEngineUrlScheme>
 #endif
 
 Application::Application(const QString& id, int& argc, char** argv)
   : QtSingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
   parseCmdArguments();
-
-#if defined(USE_WEBENGINE)
-  m_urlInterceptor = new NetworkUrlInterceptor(this);
-#endif
 
   m_feedReader = nullptr;
   m_quitLogicDone = false;
@@ -79,32 +70,12 @@ Application::Application(const QString& id, int& argc, char** argv)
   connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
 
 #if defined(USE_WEBENGINE)
-  QWebEngineUrlScheme url_scheme(QByteArray(APP_LOW_NAME));
-
-  url_scheme.setDefaultPort(QWebEngineUrlScheme::SpecialPort::PortUnspecified);
-  url_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
-  url_scheme.setFlags(QWebEngineUrlScheme::Flag::LocalScheme |
-                      QWebEngineUrlScheme::Flag::LocalAccessAllowed |
-                      QWebEngineUrlScheme::Flag::ServiceWorkersAllowed |
-                      QWebEngineUrlScheme::Flag::ContentSecurityPolicyIgnored);
-
-  QWebEngineUrlScheme::registerScheme(url_scheme);
-
   connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
-
-#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
-  QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor(m_urlInterceptor);
-#else
-  QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
-#endif
-
-  m_urlInterceptor->loadSettings();
-
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(QByteArray(APP_LOW_NAME),
-                                                               new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
 #endif
 
   m_webFactory->updateProxy();
+  m_webFactory->urlIinterceptor()->load();
+  m_webFactory->adBlock()->load(true);
 }
 
 Application::~Application() {
@@ -189,7 +160,7 @@ QList<QAction*> Application::userActions() {
     m_userActions = m_mainForm->allActions();
 
 #if defined(USE_WEBENGINE)
-    m_userActions.append(AdBlockManager::instance()->adBlockIcon());
+    m_userActions.append(m_webFactory->adBlock()->adBlockIcon());
 #endif
   }
 
@@ -419,13 +390,6 @@ SystemTrayIcon* Application::trayIcon() {
   return m_trayIcon;
 }
 
-#if defined(USE_WEBENGINE)
-NetworkUrlInterceptor* Application::urlIinterceptor() {
-  return m_urlInterceptor;
-}
-
-#endif
-
 QIcon Application::desktopAwareIcon() const {
   auto from_theme = m_icons->fromTheme(APP_LOW_NAME);
 
@@ -497,7 +461,7 @@ void Application::onAboutToQuit() {
   m_quitLogicDone = true;
 
 #if defined(USE_WEBENGINE)
-  AdBlockManager::instance()->save();
+  m_webFactory->adBlock()->save();
 #endif
 
   // Make sure that we obtain close lock BEFORE even trying to quit the application.

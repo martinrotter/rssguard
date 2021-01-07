@@ -63,7 +63,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   setWindowTitle(APP_LONG_NAME);
 
 #if defined (USE_WEBENGINE)
-  m_ui->m_menuWebBrowserTabs->addAction(AdBlockManager::instance()->adBlockIcon());
+  m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->adBlock()->adBlockIcon());
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());
 #endif
 

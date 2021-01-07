@@ -166,7 +166,7 @@ void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
     });
   }
 
-  menu->addAction(AdBlockManager::instance()->adBlockIcon());
+  menu->addAction(qApp->web()->adBlock()->adBlockIcon());
   menu->addAction(qApp->web()->engineSettingsAction());
 
   const QPoint pos = event->globalPos();

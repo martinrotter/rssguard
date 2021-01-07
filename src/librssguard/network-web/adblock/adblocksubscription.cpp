@@ -54,6 +54,7 @@
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblocksearchtree.h"
 #include "network-web/silentnetworkaccessmanager.h"
+#include "network-web/webfactory.h"
 
 #include <QDir>
 #include <QFile>
@@ -172,7 +173,7 @@ void AdBlockSubscription::subscriptionDownloaded() {
     return;
   }
 
-  loadSubscription(AdBlockManager::instance()->disabledRules());
+  loadSubscription(qApp->web()->adBlock()->disabledRules());
   emit subscriptionUpdated();
   emit subscriptionChanged();
 }
@@ -214,7 +215,7 @@ const AdBlockRule* AdBlockSubscription::enableRule(int offset) {
     AdBlockRule* rule = m_rules[offset];
 
     rule->setEnabled(true);
-    AdBlockManager::instance()->removeDisabledRule(rule->filter());
+    qApp->web()->adBlock()->removeDisabledRule(rule->filter());
     emit subscriptionChanged();
 
     return rule;
@@ -232,7 +233,7 @@ const AdBlockRule* AdBlockSubscription::disableRule(int offset) {
   AdBlockRule* rule = m_rules[offset];
 
   rule->setEnabled(false);
-  AdBlockManager::instance()->addDisabledRule(rule->filter());
+  qApp->web()->adBlock()->addDisabledRule(rule->filter());
   emit subscriptionChanged();
 
   return rule;
@@ -383,7 +384,7 @@ bool AdBlockCustomList::removeRule(int offset) {
   m_rules.remove(offset);
   emit subscriptionChanged();
 
-  AdBlockManager::instance()->removeDisabledRule(filter);
+  qApp->web()->adBlock()->removeDisabledRule(filter);
   delete rule;
   return true;
 }

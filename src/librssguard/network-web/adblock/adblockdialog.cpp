@@ -25,6 +25,7 @@
 #include "network-web/adblock/adblocktreewidget.h"
 
 #include "definitions/definitions.h"
+#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
@@ -35,13 +36,15 @@
 #include <QTimer>
 
 AdBlockDialog::AdBlockDialog(QWidget* parent)
-  : QDialog(parent), m_manager(AdBlockManager::instance()), m_currentTreeWidget(nullptr), m_currentSubscription(nullptr),
+  : QDialog(parent), m_manager(qApp->web()->adBlock()), m_currentTreeWidget(nullptr), m_currentSubscription(nullptr),
   m_loaded(false), m_ui(new Ui::AdBlockDialog) {
   m_ui->setupUi(this);
   m_ui->m_cbEnable->setChecked(m_manager->isEnabled());
-  setAttribute(Qt::WA_DeleteOnClose);
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-  setWindowIcon(qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE));
+
+  GuiUtilities::applyDialogProperties(*this,
+                                      qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE),
+                                      tr("AdBlock configuration"));
+
   QPushButton* btn_options = m_ui->m_buttonBox->addButton(QDialogButtonBox::FirstButton);
 
   btn_options->setText(tr("Options"));
@@ -55,11 +58,14 @@ AdBlockDialog::AdBlockDialog(QWidget* parent)
   menu->addAction(tr("Update subscriptions"), m_manager, &AdBlockManager::updateAllSubscriptions);
   menu->addSeparator();
   menu->addAction(tr("Learn about writing rules..."), this, &AdBlockDialog::learnAboutRules);
+
   btn_options->setMenu(menu);
+
   connect(menu, &QMenu::aboutToShow, this, &AdBlockDialog::aboutToShowMenu);
   connect(m_ui->m_cbEnable, &QCheckBox::toggled, this, &AdBlockDialog::enableAdBlock);
   connect(m_ui->m_tabSubscriptions, &QTabWidget::currentChanged, this, &AdBlockDialog::currentChanged);
   connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &AdBlockDialog::close);
+
   load();
   m_ui->m_buttonBox->setFocus();
 }
@@ -69,10 +75,10 @@ void AdBlockDialog::showRule(const AdBlockRule* rule) const {
 
   if (subscription != nullptr) {
     for (int i = 0; i < m_ui->m_tabSubscriptions->count(); ++i) {
-      auto* treeWidget = qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabSubscriptions->widget(i));
+      auto* tree_widget = qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabSubscriptions->widget(i));
 
-      if (subscription == treeWidget->subscription()) {
-        treeWidget->showRule(rule);
+      if (subscription == tree_widget->subscription()) {
+        tree_widget->showRule(rule);
         m_ui->m_tabSubscriptions->setCurrentIndex(i);
         break;
       }
@@ -120,7 +126,7 @@ void AdBlockDialog::currentChanged(int index) {
 }
 
 void AdBlockDialog::enableAdBlock(bool state) {
-  m_manager->setEnabled(state);
+  m_manager->load(false);
 
   if (state) {
     load();
@@ -142,9 +148,9 @@ void AdBlockDialog::learnAboutRules() {
 
 void AdBlockDialog::loadSubscriptions() {
   for (int i = 0; i < m_ui->m_tabSubscriptions->count(); ++i) {
-    auto* treeWidget = qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabSubscriptions->widget(i));
+    auto* tree_widget = qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabSubscriptions->widget(i));
 
-    treeWidget->refresh();
+    tree_widget->refresh();
   }
 }
 

@@ -43,7 +43,7 @@ class AdBlockIcon : public QAction {
 
   public slots:
     void setEnabled(bool enabled);
-    void createMenu(QMenu* menu = 0);
+    void createMenu(QMenu* menu = nullptr);
 
   private slots:
     void showMenu(const QPoint& pos);

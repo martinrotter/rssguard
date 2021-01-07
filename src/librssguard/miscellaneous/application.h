@@ -36,10 +36,6 @@ class Mutex;
 class QWebEngineDownloadItem;
 class WebFactory;
 
-#if defined(USE_WEBENGINE)
-class NetworkUrlInterceptor;
-#endif
-
 class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
   Q_OBJECT
 
@@ -81,10 +77,6 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     QWidget* mainFormWidget();
     SystemTrayIcon* trayIcon();
 
-#if defined(USE_WEBENGINE)
-    NetworkUrlInterceptor* urlIinterceptor();
-#endif
-
     QIcon desktopAwareIcon() const;
 
     QString tempFolder() const;
@@ -124,8 +116,6 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     // Custom debug/console log handler.
     static void performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg);
 
-  //static QString s_customLogFile;
-
   public slots:
 
     // Restarts the application.
@@ -153,11 +143,6 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
 
   private:
     QCommandLineParser m_cmdParser;
-
-#if defined(USE_WEBENGINE)
-    NetworkUrlInterceptor* m_urlInterceptor;
-#endif
-
     FeedReader* m_feedReader;
 
     bool m_quitLogicDone;

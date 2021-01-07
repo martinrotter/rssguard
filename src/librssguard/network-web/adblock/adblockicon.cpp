@@ -33,17 +33,18 @@
 #include <QTimer>
 
 AdBlockIcon::AdBlockIcon(AdBlockManager* parent)
-  : QAction(parent), m_manager(parent), m_flashTimer(nullptr), m_timerTicks(0), m_enabled(m_manager->isEnabled()) {
+  : QAction(parent), m_manager(parent), m_flashTimer(nullptr), m_timerTicks(0) {
   setToolTip(tr("AdBlock lets you block unwanted content on web pages"));
   setText(QSL("AdBlock"));
   setMenu(new QMenu());
-  setIcon(m_enabled ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE) : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
 
   connect(m_manager, &AdBlockManager::enabledChanged, this, &AdBlockIcon::setEnabled);
   connect(menu(), &QMenu::aboutToShow, this, [this]() {
     createMenu();
   });
   connect(this, &QAction::triggered, m_manager, &AdBlockManager::showDialog);
+
+  setEnabled(m_manager->isEnabled());
 }
 
 AdBlockIcon::~AdBlockIcon() {
@@ -83,6 +84,7 @@ void AdBlockIcon::popupBlocked(const QString& ruleString, const QUrl& url) {
 
   m_flashTimer->setInterval(500);
   m_flashTimer->start();
+
   connect(m_flashTimer, &QTimer::timeout, this, &AdBlockIcon::animateIcon);
 }
 

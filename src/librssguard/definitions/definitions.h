@@ -19,7 +19,7 @@
 
 #define ADBLOCK_ADBLOCKED_PAGE                "adblockedpage"
 #define ADBLOCK_HOWTO_FILTERS                 "https://help.eyeo.com/en/adblockplus/how-to-write-filters"
-#define ADBLOCK_UPDATE_DAYS_INTERVAL          5
+#define ADBLOCK_UPDATE_DAYS_INTERVAL          14
 #define ADBLOCK_ICON_ACTIVE                   "adblock"
 #define ADBLOCK_ICON_DISABLED                 "adblock-disabled"
 #define IS_IN_ARRAY(offset, array)            ((offset >= 0) && (offset < array.count()))
