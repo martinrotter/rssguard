@@ -51,6 +51,8 @@ class AdBlockDialog : public QDialog {
     void learnAboutRules();
 
     void loadSubscriptions();
+
+  private:
     void load();
 
   private:

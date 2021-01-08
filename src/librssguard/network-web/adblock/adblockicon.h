@@ -22,15 +22,8 @@
 
 #include <QAction>
 
-#include "network-web/adblock/adblockrule.h"
-
 class QMenu;
-class QUrl;
-class QAction;
-class QTimer;
-
 class AdBlockManager;
-class BrowserWindow;
 
 class AdBlockIcon : public QAction {
   Q_OBJECT
@@ -39,25 +32,18 @@ class AdBlockIcon : public QAction {
     explicit AdBlockIcon(AdBlockManager* parent = nullptr);
     virtual ~AdBlockIcon();
 
-    void popupBlocked(const QString& ruleString, const QUrl& url);
-
   public slots:
     void setEnabled(bool enabled);
-    void createMenu(QMenu* menu = nullptr);
 
   private slots:
     void showMenu(const QPoint& pos);
     void toggleCustomFilter();
 
-    void animateIcon();
-    void stopAnimation();
+  private:
+    void createMenu(QMenu* menu = nullptr);
 
   private:
     AdBlockManager* m_manager;
-    QVector<QPair<AdBlockRule*, QUrl>> m_blockedPopups;
-    QTimer* m_flashTimer;
-    int m_timerTicks;
-    bool m_enabled;
 };
 
 #endif // ADBLOCKICON_H
