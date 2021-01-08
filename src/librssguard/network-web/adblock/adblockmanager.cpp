@@ -88,39 +88,6 @@ void AdBlockManager::removeDisabledRule(const QString& filter) {
   m_disabledRules.removeOne(filter);
 }
 
-bool AdBlockManager::addSubscriptionFromUrl(const QUrl& url) {
-  const QList<QPair<QString, QString>> queryItems = QUrlQuery(url).queryItems(QUrl::FullyDecoded);
-  QString subscriptionTitle;
-  QString subscriptionUrl;
-
-  for (int i = 0; i < queryItems.count(); ++i) {
-    QPair<QString, QString> pair = queryItems.at(i);
-
-    if (pair.first == QL1S("location")) {
-      subscriptionUrl = pair.second;
-    }
-    else if (pair.first == QL1S("title")) {
-      subscriptionTitle = pair.second;
-    }
-  }
-
-  if (subscriptionTitle.isEmpty() || subscriptionUrl.isEmpty()) {
-    return false;
-  }
-
-  const QString message = tr("Do you want to add <b>%1</b> subscription?").arg(subscriptionTitle);
-
-  QMessageBox::StandardButton result = QMessageBox::question(nullptr, tr("Add AdBlock subscription"), message,
-                                                             QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
-
-  if (result == QMessageBox::StandardButton::Yes) {
-    qApp->web()->adBlock()->addSubscription(subscriptionTitle, subscriptionUrl);
-    qApp->web()->adBlock()->showDialog();
-  }
-
-  return true;
-}
-
 AdBlockSubscription* AdBlockManager::addSubscription(const QString& title, const QString& url) {
   if (title.isEmpty() || url.isEmpty()) {
     return nullptr;
@@ -303,8 +270,7 @@ bool AdBlockManager::isEnabled() const {
 
 bool AdBlockManager::canRunOnScheme(const QString& scheme) const {
   return !(scheme == QSL("file") || scheme == QSL("qrc") ||
-           scheme == QSL("data") || scheme == QSL("abp") ||
-           scheme  == QSL(APP_LOW_NAME));
+           scheme == QSL("data") || scheme == QSL("abp"));
 }
 
 bool AdBlockManager::canBeBlocked(const QUrl& url) const {
@@ -344,16 +310,6 @@ QString AdBlockManager::generateJsForElementHiding(const QString& css) const {
   style.replace(QL1S("\n"), QL1S("\\n"));
 
   return source.arg(style);
-}
-
-AdBlockSubscription* AdBlockManager::subscriptionByName(const QString& name) const {
-  for (AdBlockSubscription* subscription : m_subscriptions) {
-    if (subscription->title() == name) {
-      return subscription;
-    }
-  }
-
-  return nullptr;
 }
 
 void AdBlockManager::showDialog() {

@@ -48,9 +48,11 @@ class AdBlockTreeWidget : public TreeWidget {
     void subscriptionUpdated();
     void subscriptionError(const QString& message);
 
+  protected:
+    virtual void keyPressEvent(QKeyEvent* event);
+
   private:
     void adjustItemFeatures(QTreeWidgetItem* item, const AdBlockRule* rule);
-    void keyPressEvent(QKeyEvent* event);
 
     AdBlockSubscription* m_subscription;
     QTreeWidgetItem* m_topItem;

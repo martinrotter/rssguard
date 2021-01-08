@@ -61,7 +61,7 @@ class AdBlockSubscription : public QObject {
   Q_OBJECT
 
   public:
-    explicit AdBlockSubscription(QString  title, QObject* parent = 0);
+    explicit AdBlockSubscription(QString title, QObject* parent = nullptr);
     virtual ~AdBlockSubscription();
 
     QString title() const;
@@ -72,14 +72,14 @@ class AdBlockSubscription : public QObject {
     QUrl url() const;
     void setUrl(const QUrl& url);
 
-    virtual void loadSubscription(const QStringList& disabledRules);
-    virtual void saveSubscription();
     const AdBlockRule* rule(int offset) const;
 
     QVector<AdBlockRule*> allRules() const;
 
     const AdBlockRule* enableRule(int offset);
     const AdBlockRule* disableRule(int offset);
+    virtual void loadSubscription(const QStringList& disabledRules);
+    virtual void saveSubscription();
     virtual bool canEditRules() const;
     virtual bool canBeRemoved() const;
     virtual int addRule(AdBlockRule* rule);
@@ -99,8 +99,9 @@ class AdBlockSubscription : public QObject {
 
   protected:
     virtual bool saveDownloadedData(const QByteArray& data);
-    QNetworkReply* m_reply;
 
+  protected:
+    QNetworkReply* m_reply;
     QVector<AdBlockRule*> m_rules;
 
   private:

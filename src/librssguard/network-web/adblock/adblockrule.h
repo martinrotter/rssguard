@@ -64,8 +64,8 @@ class AdBlockRule {
     virtual ~AdBlockRule() = default;
 
     AdBlockRule* copy() const;
-    AdBlockSubscription* subscription() const;
 
+    AdBlockSubscription* subscription() const;
     void setSubscription(AdBlockSubscription* subscription);
 
     QString filter() const;
@@ -135,10 +135,10 @@ class AdBlockRule {
 
     Q_DECLARE_FLAGS(RuleOptions, RuleOption)
 
-    inline bool hasOption(const RuleOption& opt) const;
-    inline bool hasException(const RuleOption& opt) const;
-    inline void setOption(const RuleOption& opt);
-    inline void setException(const RuleOption& opt, bool on);
+    bool hasOption(const RuleOption& opt) const;
+    bool hasException(const RuleOption& opt) const;
+    void setOption(const RuleOption& opt);
+    void setException(const RuleOption& opt, bool on);
 
     void parseFilter();
     void parseDomains(const QString& domains, const QChar& separator);
@@ -173,5 +173,23 @@ class AdBlockRule {
     friend class AdBlockSearchTree;
     friend class AdBlockSubscription;
 };
+
+inline bool AdBlockRule::hasOption(const AdBlockRule::RuleOption& opt) const {
+  return (m_options & opt) != 0;
+}
+
+inline bool AdBlockRule::hasException(const AdBlockRule::RuleOption& opt) const {
+  return (m_exceptions & opt) != 0;
+}
+
+inline void AdBlockRule::setOption(const AdBlockRule::RuleOption& opt) {
+  m_options |= opt;
+}
+
+inline void AdBlockRule::setException(const AdBlockRule::RuleOption& opt, bool on) {
+  if (on) {
+    m_exceptions |= opt;
+  }
+}
 
 #endif // ADBLOCKRULE_H

@@ -46,6 +46,8 @@ class AdBlockManager : public QObject {
     // if "initial_load" is true, then we want to forcefully perform
     // initial loading of Adblock.
     void load(bool initial_load);
+
+    // Save all subscriptions to file(s).
     void save();
 
     // General method for adblocking. Returns pointer to rule if request should
@@ -57,17 +59,14 @@ class AdBlockManager : public QObject {
 
     QString elementHidingRules(const QUrl& url) const;
     QString elementHidingRulesForDomain(const QUrl& url) const;
-
     QString generateJsForElementHiding(const QString& css) const;
 
-    AdBlockSubscription* subscriptionByName(const QString& name) const;
     QList<AdBlockSubscription*> subscriptions() const;
 
     QStringList disabledRules() const;
     void addDisabledRule(const QString& filter);
     void removeDisabledRule(const QString& filter);
 
-    bool addSubscriptionFromUrl(const QUrl& url);
     AdBlockSubscription* addSubscription(const QString& title, const QString& url);
     bool removeSubscription(AdBlockSubscription* subscription);
 

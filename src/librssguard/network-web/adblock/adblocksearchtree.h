@@ -38,12 +38,11 @@ class AdBlockSearchTree {
 
   private:
     struct Node {
+      Node() : c(0), rule(0) {}
+
       QChar c;
       const AdBlockRule* rule;
       QHash<QChar, Node*> children;
-
-      Node() : c(0), rule(0) { }
-
     };
 
     const AdBlockRule* prefixSearch(const AdblockRequestInfo& request, const QString& domain,

@@ -738,21 +738,3 @@ QStringList AdBlockRule::parseRegExpFilter(const QString& filter) const {
   list.removeDuplicates();
   return list;
 }
-
-bool AdBlockRule::hasOption(const AdBlockRule::RuleOption& opt) const {
-  return (m_options & opt) != 0;
-}
-
-bool AdBlockRule::hasException(const AdBlockRule::RuleOption& opt) const {
-  return (m_exceptions & opt) != 0;
-}
-
-void AdBlockRule::setOption(const AdBlockRule::RuleOption& opt) {
-  m_options |= opt;
-}
-
-void AdBlockRule::setException(const AdBlockRule::RuleOption& opt, bool on) {
-  if (on) {
-    m_exceptions |= opt;
-  }
-}
