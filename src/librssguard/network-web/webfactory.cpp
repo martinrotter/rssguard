@@ -13,7 +13,6 @@
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/networkurlinterceptor.h"
-#include "network-web/rssguardschemehandler.h"
 #include "network-web/urlinterceptor.h"
 
 #include <QWebEngineDownloadItem>
@@ -32,25 +31,11 @@ WebFactory::WebFactory(QObject* parent)
 #endif
 
 #if defined(USE_WEBENGINE)
-  QWebEngineUrlScheme url_scheme(QByteArray(APP_LOW_NAME));
-
-  url_scheme.setDefaultPort(QWebEngineUrlScheme::SpecialPort::PortUnspecified);
-  url_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
-  url_scheme.setFlags(QWebEngineUrlScheme::Flag::LocalScheme |
-                      QWebEngineUrlScheme::Flag::LocalAccessAllowed |
-                      QWebEngineUrlScheme::Flag::ServiceWorkersAllowed |
-                      QWebEngineUrlScheme::Flag::ContentSecurityPolicyIgnored);
-
-  QWebEngineUrlScheme::registerScheme(url_scheme);
-
 #if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
   QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor(m_urlInterceptor);
 #else
   QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
 #endif
-
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler(QByteArray(APP_LOW_NAME),
-                                                               new RssGuardSchemeHandler(QWebEngineProfile::defaultProfile()));
 #endif
 }
 

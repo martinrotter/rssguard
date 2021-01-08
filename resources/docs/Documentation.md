@@ -157,7 +157,7 @@ You can right click on any item in embedded web browser and hit `Save as` button
 You can download up to 6 files simultaneously.
 
 ## AdBlock
-[Web-based variant](#web-based-and-lite-app-variants) of RSS Guard offers ad-blocking functionality. AdBlock uses standard AdBlock-Plus-like scripts, thus allowing you to use EasyList etc. AdBlock supports element hiding rules and site-wide blocking.
+[Web-based variant](#web-based-and-lite-app-variants) of RSS Guard offers ad-blocking functionality. AdBlock uses standard AdBlock-Plus-like scripts, thus allowing you to use EasyList etc. AdBlock supports all fundamental features of AdBlock-Plus format, including element hiding rules and site-wide blocking.
 
 You can find its settings in `Web browser & tabs` section of main menu.
 

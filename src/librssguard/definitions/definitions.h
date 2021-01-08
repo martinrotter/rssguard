@@ -17,7 +17,6 @@
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 
-#define ADBLOCK_ADBLOCKED_PAGE                "adblockedpage"
 #define ADBLOCK_HOWTO_FILTERS                 "https://help.eyeo.com/en/adblockplus/how-to-write-filters"
 #define ADBLOCK_UPDATE_DAYS_INTERVAL          14
 #define ADBLOCK_ICON_ACTIVE                   "adblock"
@@ -116,6 +115,7 @@
 
 #define INTERNAL_URL_MESSAGE                  "http://rssguard.message"
 #define INTERNAL_URL_BLANK                    "http://rssguard.blank"
+#define INTERNAL_URL_ADBLOCKED                "http://rssguard.adblocked"
 #define INTERNAL_URL_MESSAGE_HOST             "rssguard.message"
 #define INTERNAL_URL_BLANK_HOST               "rssguard.blank"
 #define INTERNAL_URL_PASSATTACHMENT           "http://rssguard.passattachment"

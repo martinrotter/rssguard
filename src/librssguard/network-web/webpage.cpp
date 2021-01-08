@@ -61,14 +61,8 @@ bool WebPage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool
 
     if (adblock_rule != nullptr) {
       // This website is entirely blocked.
-      QUrlQuery query;
-      QUrl new_url(QSL("%1:///%2/").arg(APP_LOW_NAME, ADBLOCK_ADBLOCKED_PAGE));
-
-      query.addQueryItem(QSL("rule"), adblock_rule->filter());
-      query.addQueryItem(QSL("subscription"), adblock_rule->subscription()->title());
-      new_url.setQuery(query);
-
-      setUrl(new_url);
+      setHtml(qApp->skins()->adBlockedPage(adblock_rule->subscription()->title(), adblock_rule->filter()),
+              QUrl::fromUserInput(INTERNAL_URL_ADBLOCKED));
       return false;
     }
   }
