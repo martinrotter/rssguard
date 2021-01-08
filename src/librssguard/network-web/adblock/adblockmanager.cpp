@@ -329,6 +329,23 @@ QString AdBlockManager::elementHidingRulesForDomain(const QUrl& url) const {
   }
 }
 
+QString AdBlockManager::generateJsForElementHiding(const QString& css) const {
+  QString source = QL1S("(function() {"
+                        "var head = document.getElementsByTagName('head')[0];"
+                        "if (!head) return;"
+                        "var css = document.createElement('style');"
+                        "css.setAttribute('type', 'text/css');"
+                        "css.appendChild(document.createTextNode('%1'));"
+                        "head.appendChild(css);"
+                        "})()");
+  QString style = css;
+
+  style.replace(QL1S("'"), QL1S("\\'"));
+  style.replace(QL1S("\n"), QL1S("\\n"));
+
+  return source.arg(style);
+}
+
 AdBlockSubscription* AdBlockManager::subscriptionByName(const QString& name) const {
   for (AdBlockSubscription* subscription : m_subscriptions) {
     if (subscription->title() == name) {

@@ -58,6 +58,8 @@ class AdBlockManager : public QObject {
     QString elementHidingRules(const QUrl& url) const;
     QString elementHidingRulesForDomain(const QUrl& url) const;
 
+    QString generateJsForElementHiding(const QString& css) const;
+
     AdBlockSubscription* subscriptionByName(const QString& name) const;
     QList<AdBlockSubscription*> subscriptions() const;
 

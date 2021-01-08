@@ -704,7 +704,7 @@ void ServiceRoot::assembleFeeds(Assignment feeds) {
       categories.value(feed.first)->appendChild(feed.second);
     }
     else {
-      qWarning("Feed '%s' is loose, skipping it.", qPrintable(feed.second->title()));
+      qWarningNN << LOGSEC_CORE << "Feed" << QUOTE_W_SPACE(feed.second->title()) << "is loose, skipping it.";
     }
   }
 }

@@ -17,19 +17,46 @@
 #include <QStringList>
 #include <QUrl>
 #include <QUrlQuery>
+#include <QWebEngineScript>
 
 WebPage::WebPage(QObject* parent) : QWebEnginePage(parent) {
   setBackgroundColor(Qt::transparent);
+
+  connect(this, &QWebEnginePage::loadFinished, this, &WebPage::hideUnwantedElements);
 }
 
 WebViewer* WebPage::view() const {
   return qobject_cast<WebViewer*>(QWebEnginePage::view());
 }
 
-bool WebPage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool isMainFrame) {
+void WebPage::hideUnwantedElements() {
+  if (!qApp->web()->adBlock()->isEnabled()) {
+    return;
+  }
+
+  auto css = qApp->web()->adBlock()->elementHidingRules(url());
+
+  if (!css.isEmpty()) {
+    auto js = qApp->web()->adBlock()->generateJsForElementHiding(css);
+
+    runJavaScript(js);
+    qDebugNN << LOGSEC_JS << "Running global JS for element hiding rules.";
+  }
+
+  css = qApp->web()->adBlock()->elementHidingRulesForDomain(url());
+
+  if (!css.isEmpty()) {
+    auto js = qApp->web()->adBlock()->generateJsForElementHiding(css);
+
+    runJavaScript(js);
+    qDebugNN << LOGSEC_JS << "Running domain-specific JS for element hiding rules.";
+  }
+}
+
+bool WebPage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool is_main_frame) {
   const RootItem* root = view()->root();
 
-  if (isMainFrame) {
+  if (is_main_frame) {
     auto* adblock_rule = qApp->web()->adBlock()->block(AdblockRequestInfo(url));
 
     if (adblock_rule != nullptr) {
@@ -57,6 +84,13 @@ bool WebPage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool
     return true;
   }
   else {
-    return QWebEnginePage::acceptNavigationRequest(url, type, isMainFrame);
+    return QWebEnginePage::acceptNavigationRequest(url, type, is_main_frame);
   }
+}
+
+void WebPage::javaScriptConsoleMessage(JavaScriptConsoleMessageLevel level, const QString& message,
+                                       int line_number, const QString& source_id) {
+  Q_UNUSED(level)
+
+  qWarningNN << LOGSEC_JS << message << QSL(" (source: %1:%2)").arg(source_id, QString::number(line_number));
 }

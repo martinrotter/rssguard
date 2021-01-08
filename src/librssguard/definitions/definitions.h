@@ -99,6 +99,7 @@
 #define LOGSEC_FEEDMODEL            "feed-model: "
 #define LOGSEC_FEEDDOWNLOADER       "feed-downloader: "
 #define LOGSEC_MESSAGEMODEL         "message-model: "
+#define LOGSEC_JS                   "javascript: "
 #define LOGSEC_GUI                  "gui: "
 #define LOGSEC_CORE                 "core: "
 #define LOGSEC_DB                   "database: "

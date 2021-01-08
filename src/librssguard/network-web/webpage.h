@@ -15,8 +15,13 @@ class WebPage : public QWebEnginePage {
 
     WebViewer* view() const;
 
+  private slots:
+    void hideUnwantedElements();
+
   protected:
-    bool acceptNavigationRequest(const QUrl& url, NavigationType type, bool isMainFrame);
+    virtual bool acceptNavigationRequest(const QUrl& url, NavigationType type, bool is_main_frame);
+    virtual void javaScriptConsoleMessage(JavaScriptConsoleMessageLevel level, const QString& message,
+                                          int line_number, const QString& source_id);
 };
 
 #endif // WEBPAGE_H
