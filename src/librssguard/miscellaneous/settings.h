@@ -112,6 +112,9 @@ namespace Messages {
   KEY ClearReadOnExit;
   VALUE(bool) ClearReadOnExitDef;
 
+  KEY BringAppToFrontAfterMessageOpenedExternally;
+  VALUE(bool) BringAppToFrontAfterMessageOpenedExternallyDef;
+
   KEY KeepCursorInCenter;
   VALUE(bool) KeepCursorInCenterDef;
 

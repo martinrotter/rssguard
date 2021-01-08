@@ -91,6 +91,9 @@ DVALUE(char*) Messages::CustomDateFormatDef = "";
 DKEY Messages::ClearReadOnExit = "clear_read_on_exit";
 DVALUE(bool) Messages::ClearReadOnExitDef = false;
 
+DKEY Messages::BringAppToFrontAfterMessageOpenedExternally = "bring_app_to_front_after_msg_opened";
+DVALUE(bool) Messages::BringAppToFrontAfterMessageOpenedExternallyDef = true;
+
 DKEY Messages::KeepCursorInCenter = "keep_cursor_center";
 DVALUE(bool) Messages::KeepCursorInCenterDef = false;
 

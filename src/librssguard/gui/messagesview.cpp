@@ -393,9 +393,11 @@ void MessagesView::openSelectedSourceMessagesExternally() {
     QTimer::singleShot(0, this, &MessagesView::markSelectedMessagesRead);
   }
 
-  QTimer::singleShot(1000, this, []() {
-    qApp->mainForm()->display();
-  });
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool()) {
+    QTimer::singleShot(1000, this, []() {
+      qApp->mainForm()->display();
+    });
+  }
 }
 
 void MessagesView::openSelectedMessagesInternally() {

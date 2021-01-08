@@ -43,6 +43,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkMessagesDateTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkRemoveReadMessagesOnExit, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkBringToForegroundAfterMsgOpened, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkUpdateAllFeedsOnStartup, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinAutoUpdateInterval, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
@@ -123,6 +124,8 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_spinHeightRowsMessages->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt());
   m_ui->m_spinHeightRowsFeeds->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt());
 
+  m_ui->m_checkBringToForegroundAfterMsgOpened->setChecked(settings()->value(GROUP(Messages),
+                                                                             SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool());
   m_ui->m_checkAutoUpdateNotification->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::EnableAutoUpdateNotification)).toBool());
   m_ui->m_checkKeppMessagesInTheMiddle->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool());
   m_ui->m_checkRemoveReadMessagesOnExit->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool());
@@ -179,6 +182,8 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(GUI), GUI::HeightRowMessages, m_ui->m_spinHeightRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowFeeds, m_ui->m_spinHeightRowsFeeds->value());
 
+  settings()->setValue(GROUP(Messages), Messages::BringAppToFrontAfterMessageOpenedExternally,
+                       m_ui->m_checkBringToForegroundAfterMsgOpened->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::EnableAutoUpdateNotification, m_ui->m_checkAutoUpdateNotification->isChecked());
   settings()->setValue(GROUP(Messages), Messages::KeepCursorInCenter, m_ui->m_checkKeppMessagesInTheMiddle->isChecked());
   settings()->setValue(GROUP(Messages), Messages::ClearReadOnExit, m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
