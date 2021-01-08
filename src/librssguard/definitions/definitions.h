@@ -25,7 +25,7 @@
 #define IS_IN_ARRAY(offset, array)            ((offset >= 0) && (offset < array.count()))
 #define ADBLOCK_CUSTOMLIST_NAME               "customlist.txt"
 #define ADBLOCK_LISTS_SUBDIRECTORY            "adblock"
-#define ADBLOCK_EASYLIST_URL                  "https://easylist-downloads.adblockplus.org/easylist.txt"
+#define ADBLOCK_EASYLIST_URL                  "https://easylist.to/easylist/easylist.txt"
 #define DEFAULT_SQL_MESSAGES_FILTER           "0 > 1"
 #define MAX_MULTICOLUMN_SORT_STATES           3
 #define ENCLOSURES_OUTER_SEPARATOR            '#'

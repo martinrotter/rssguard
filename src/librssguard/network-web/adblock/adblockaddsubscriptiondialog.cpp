@@ -27,27 +27,15 @@
 AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
   : QDialog(parent), m_ui(new Ui::AdBlockAddSubscriptionDialog) {
   m_ui->setupUi(this);
-  m_knownSubscriptions << Subscription(QSL("EasyList (English)"), ADBLOCK_EASYLIST_URL)
-                       << Subscription(QSL("BSI Lista Polska (Polish)"), QSL("http://www.bsi.info.pl/filtrABP.txt"))
-                       << Subscription(QSL("EasyList Germany (German"), QSL("https://easylist.to/easylistgermany/easylistgermany.txt"))
-                       << Subscription(QSL("EasyList Czech and Slovak (Czech)"),
-                  QSL("https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt"))
-                       << Subscription(QSL("dutchblock (Dutch)"), QSL("http://groenewoudt.net/dutchblock/list.txt"))
-                       << Subscription(QSL("Filtros Nauscopicos (Spanish)"), QSL("http://abp.mozilla-hispano.org/nauscopio/filtros.txt"))
-                       << Subscription(QSL("IsraelList (Hebrew)"), QSL("http://secure.fanboy.co.nz/israelilist/IsraelList.txt"))
-                       << Subscription(QSL("NLBlock (Dutch)"), QSL("http://www.verzijlbergh.com/adblock/nlblock.txt"))
-                       << Subscription(QSL("Peter Lowe's list (English)"),
-                  QSL("http://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&mimetype=plaintext"))
-                       << Subscription(QSL("PLgeneral (Polish)"), QSL("http://www.niecko.pl/adblock/adblock.txt"))
-                       << Subscription(QSL("Schacks Adblock Plus liste (Danish)"), QSL("http://adblock.schack.dk/block.txt"))
-                       << Subscription(QSL("Xfiles (Italian)"), QSL("http://mozilla.gfsolone.com/filtri.txt"))
-                       << Subscription(QSL("EasyPrivacy (English)"), QSL("http://easylist-downloads.adblockplus.org/easyprivacy.txt"))
-                       << Subscription(QSL("RU Adlist (Russian)"), QSL("https://easylist-downloads.adblockplus.org/advblock.txt"))
-                       << Subscription(QSL("ABPindo (Indonesian)"),
-                  QSL("https://raw.githubusercontent.com/heradhis/indonesianadblockrules/master/subscriptions/abpindo.txt"))
-                       << Subscription(QSL("Easylist China (Chinese)"), QSL("https://easylist-downloads.adblockplus.org/easylistchina.txt"))
-                       << Subscription(QSL("Anti-Adblock Killer"),
-                  QSL("https://raw.githubusercontent.com/reek/anti-adblock-killer/master/anti-adblock-killer-filters.txt"));
+  m_knownSubscriptions
+    << Subscription(QSL("EasyList"),
+                    QSL(ADBLOCK_EASYLIST_URL))
+    << Subscription(QSL("EasyPrivacy"),
+                  QSL("https://easylist.to/easylist/easyprivacy.txt"))
+    << Subscription(QSL("EasyPrivacy Tracking Protection List"),
+                  QSL("https://easylist-downloads.adblockplus.org/easyprivacy.tpl"))
+    << Subscription(QSL("Adblock Warning Removal List"),
+                  QSL("https://easylist-downloads.adblockplus.org/antiadblockfilters.txt"));
 
   for (const Subscription& subscription : m_knownSubscriptions) {
     m_ui->m_cmbPresets->addItem(subscription.m_title);

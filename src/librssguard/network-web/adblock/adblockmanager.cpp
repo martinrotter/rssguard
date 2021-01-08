@@ -59,7 +59,7 @@ const AdBlockRule* AdBlockManager::block(const AdblockRequestInfo& request) {
   QMutexLocker locker(&m_mutex);
 
   if (!isEnabled()) {
-    return false;
+    return nullptr;
   }
 
   const QString url_string = request.requestUrl().toEncoded().toLower();
