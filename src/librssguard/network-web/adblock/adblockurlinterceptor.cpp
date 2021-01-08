@@ -19,11 +19,17 @@
 
 #include "network-web/adblock/adblockurlinterceptor.h"
 
+#include "definitions/definitions.h"
 #include "network-web/adblock/adblockmanager.h"
+#include "network-web/adblock/adblockrequestinfo.h"
 
 AdBlockUrlInterceptor::AdBlockUrlInterceptor(AdBlockManager* manager)
   : UrlInterceptor(manager), m_manager(manager) {}
 
 void AdBlockUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo& info) {
-  m_manager->block(info);
+  if (m_manager->block(AdblockRequestInfo(info)) != nullptr) {
+    info.block(true);
+
+    qWarning() << LOGSEC_ADBLOCK << "Blocked request:" << QUOTE_W_SPACE_DOT(info.requestUrl().toString());
+  }
 }

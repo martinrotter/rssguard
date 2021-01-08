@@ -49,6 +49,7 @@
 #include "network-web/adblock/adblockrule.h"
 
 #include "definitions/definitions.h"
+#include "network-web/adblock/adblockrequestinfo.h"
 #include "network-web/adblock/adblocksubscription.h"
 
 #include <QRegularExpression>
@@ -56,7 +57,6 @@
 #include <QStringList>
 #include <QUrl>
 #include <QWebEnginePage>
-#include <QWebEngineUrlRequestInfo>
 
 static QString toSecondLevelDomain(const QUrl& url) {
   const QString topLevelDomain = url.topLevelDomain();
@@ -178,12 +178,14 @@ bool AdBlockRule::urlMatch(const QUrl& url) const {
   }
 }
 
-bool AdBlockRule::networkMatch(const QWebEngineUrlRequestInfo& request, const QString& domain, const QString& encodedUrl) const {
+bool AdBlockRule::networkMatch(const AdblockRequestInfo& request,
+                               const QString& domain,
+                               const QString& encoded_url) const {
   if (m_type == CssRule || !m_isEnabled || m_isInternalDisabled) {
     return false;
   }
 
-  bool matched = stringMatch(domain, encodedUrl);
+  bool matched = stringMatch(domain, encoded_url);
 
   if (matched) {
     // Check domain restrictions.
@@ -277,7 +279,7 @@ bool AdBlockRule::matchDomain(const QString& domain) const {
   return false;
 }
 
-bool AdBlockRule::matchThirdParty(const QWebEngineUrlRequestInfo& request) const {
+bool AdBlockRule::matchThirdParty(const AdblockRequestInfo& request) const {
   // Third-party matching should be performed on second-level domains.
   const QString firstPartyHost = toSecondLevelDomain(request.firstPartyUrl());
   const QString host = toSecondLevelDomain(request.requestUrl());
@@ -286,43 +288,43 @@ bool AdBlockRule::matchThirdParty(const QWebEngineUrlRequestInfo& request) const
   return hasException(ThirdPartyOption) ? !match : match;
 }
 
-bool AdBlockRule::matchObject(const QWebEngineUrlRequestInfo& request) const {
+bool AdBlockRule::matchObject(const AdblockRequestInfo& request) const {
   bool match = request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeObject;
 
   return hasException(ObjectOption) ? !match : match;
 }
 
-bool AdBlockRule::matchSubdocument(const QWebEngineUrlRequestInfo& request) const {
+bool AdBlockRule::matchSubdocument(const AdblockRequestInfo& request) const {
   bool match = request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeSubFrame;
 
   return hasException(SubdocumentOption) ? !match : match;
 }
 
-bool AdBlockRule::matchXmlHttpRequest(const QWebEngineUrlRequestInfo& request) const {
+bool AdBlockRule::matchXmlHttpRequest(const AdblockRequestInfo& request) const {
   bool match = request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeXhr;
 
   return hasException(XMLHttpRequestOption) ? !match : match;
 }
 
-bool AdBlockRule::matchImage(const QWebEngineUrlRequestInfo& request) const {
+bool AdBlockRule::matchImage(const AdblockRequestInfo& request) const {
   bool match = request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeImage;
 
   return hasException(ImageOption) ? !match : match;
 }
 
-bool AdBlockRule::matchScript(const QWebEngineUrlRequestInfo& request) const {
+bool AdBlockRule::matchScript(const AdblockRequestInfo& request) const {
   bool match = request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeScript;
 
   return hasException(ScriptOption) ? !match : match;
 }
 
-bool AdBlockRule::matchStyleSheet(const QWebEngineUrlRequestInfo& request) const {
+bool AdBlockRule::matchStyleSheet(const AdblockRequestInfo& request) const {
   bool match = request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeStylesheet;
 
   return hasException(StyleSheetOption) ? !match : match;
 }
 
-bool AdBlockRule::matchObjectSubrequest(const QWebEngineUrlRequestInfo& request) const {
+bool AdBlockRule::matchObjectSubrequest(const AdblockRequestInfo& request) const {
   bool match = request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeSubResource;
 
   return hasException(ObjectSubrequestOption) ? !match : match;

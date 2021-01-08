@@ -27,7 +27,7 @@
 #include <QObject>
 #include <QVector>
 
-class QWebEngineUrlRequestInfo;
+class AdblockRequestInfo;
 class AdBlockManager;
 
 class AdBlockMatcher : public QObject {
@@ -37,7 +37,7 @@ class AdBlockMatcher : public QObject {
     explicit AdBlockMatcher(AdBlockManager* manager);
     virtual ~AdBlockMatcher();
 
-    const AdBlockRule* match(const QWebEngineUrlRequestInfo& request, const QString& urlDomain, const QString& urlString) const;
+    const AdBlockRule* match(const AdblockRequestInfo& request, const QString& urlDomain, const QString& urlString) const;
 
     bool adBlockDisabledForUrl(const QUrl& url) const;
     bool elemHideDisabledForUrl(const QUrl& url) const;
@@ -51,14 +51,12 @@ class AdBlockMatcher : public QObject {
 
   private:
     AdBlockManager* m_manager;
-
     QVector<AdBlockRule*> m_createdRules;
     QVector<const AdBlockRule*> m_networkExceptionRules;
     QVector<const AdBlockRule*> m_networkBlockRules;
     QVector<const AdBlockRule*> m_domainRestrictedCssRules;
     QVector<const AdBlockRule*> m_documentRules;
     QVector<const AdBlockRule*> m_elemhideRules;
-
     QString m_elementHidingRules;
     AdBlockSearchTree m_networkBlockTree;
     AdBlockSearchTree m_networkExceptionTree;

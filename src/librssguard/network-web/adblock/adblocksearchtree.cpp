@@ -17,12 +17,11 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "network-web/adblock/adblockrule.h"
 #include "network-web/adblock/adblocksearchtree.h"
 
 #include "definitions/definitions.h"
-
-#include <QWebEngineUrlRequestInfo>
+#include "network-web/adblock/adblockrequestinfo.h"
+#include "network-web/adblock/adblockrule.h"
 
 AdBlockSearchTree::AdBlockSearchTree() : m_root(new Node) {}
 
@@ -67,7 +66,9 @@ bool AdBlockSearchTree::add(const AdBlockRule* rule) {
   return true;
 }
 
-const AdBlockRule* AdBlockSearchTree::find(const QWebEngineUrlRequestInfo& request, const QString& domain, const QString& urlString) const {
+const AdBlockRule* AdBlockSearchTree::find(const AdblockRequestInfo& request,
+                                           const QString& domain,
+                                           const QString& urlString) const {
   int len = urlString.size();
 
   if (len <= 0) {
@@ -85,8 +86,9 @@ const AdBlockRule* AdBlockSearchTree::find(const QWebEngineUrlRequestInfo& reque
   return nullptr;
 }
 
-const AdBlockRule* AdBlockSearchTree::prefixSearch(const QWebEngineUrlRequestInfo& request, const QString& domain,
-                                                   const QString& urlString, const QString& choppedUrlString, int len) const {
+const AdBlockRule* AdBlockSearchTree::prefixSearch(const AdblockRequestInfo& request, const QString& domain,
+                                                   const QString& urlString, const QString& choppedUrlString,
+                                                   int len) const {
   if (len <= 0) {
     return nullptr;
   }

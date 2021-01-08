@@ -39,7 +39,7 @@ class NetworkUrlInterceptor : public QWebEngineUrlRequestInterceptor {
 
   private:
     QList<UrlInterceptor*> m_interceptors;
-    bool m_sendDNT;
+    bool m_sendDnt;
 };
 
 #endif // NETWORKURLINTERCEPTOR_H

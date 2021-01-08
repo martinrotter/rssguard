@@ -408,6 +408,7 @@ equals(USE_WEBENGINE, true) {
              network-web/adblock/adblocksubscription.h \
              network-web/adblock/adblocktreewidget.h \
              network-web/adblock/adblockurlinterceptor.h \
+             network-web/adblock/adblockrequestinfo.h \
              network-web/urlinterceptor.h \
              network-web/networkurlinterceptor.h \
              gui/treewidget.h
@@ -422,6 +423,7 @@ equals(USE_WEBENGINE, true) {
              network-web/adblock/adblocksubscription.cpp \
              network-web/adblock/adblocktreewidget.cpp \
              network-web/adblock/adblockurlinterceptor.cpp \
+             network-web/adblock/adblockrequestinfo.cpp \
              network-web/networkurlinterceptor.cpp \
              gui/treewidget.cpp
 

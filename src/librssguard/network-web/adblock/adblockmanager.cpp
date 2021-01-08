@@ -24,6 +24,7 @@
 #include "network-web/adblock/adblockdialog.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmatcher.h"
+#include "network-web/adblock/adblockrequestinfo.h"
 #include "network-web/adblock/adblocksubscription.h"
 #include "network-web/adblock/adblockurlinterceptor.h"
 #include "network-web/networkurlinterceptor.h"
@@ -38,7 +39,6 @@
 #include <QTimer>
 #include <QUrlQuery>
 #include <QWebEngineProfile>
-#include <QWebEngineUrlRequestInfo>
 
 AdBlockManager::AdBlockManager(QObject* parent)
   : QObject(parent), m_loaded(false), m_enabled(false), m_matcher(new AdBlockMatcher(this)),
@@ -55,43 +55,25 @@ QList<AdBlockSubscription*> AdBlockManager::subscriptions() const {
   return m_subscriptions;
 }
 
-bool AdBlockManager::block(QWebEngineUrlRequestInfo& request) {
+const AdBlockRule* AdBlockManager::block(const AdblockRequestInfo& request) {
   QMutexLocker locker(&m_mutex);
 
   if (!isEnabled()) {
     return false;
   }
 
-  const QString urlString = request.requestUrl().toEncoded().toLower();
-  const QString urlDomain = request.requestUrl().host().toLower();
-  const QString urlScheme = request.requestUrl().scheme().toLower();
+  const QString url_string = request.requestUrl().toEncoded().toLower();
+  const QString url_domain = request.requestUrl().host().toLower();
+  const QString url_scheme = request.requestUrl().scheme().toLower();
 
-  if (!canRunOnScheme(urlScheme) || !canBeBlocked(request.firstPartyUrl())) {
-    return false;
+  if (!canRunOnScheme(url_scheme) || !canBeBlocked(request.firstPartyUrl())) {
+    return nullptr;
   }
+  else {
+    const AdBlockRule* blocked_rule = m_matcher->match(request, url_domain, url_string);
 
-  bool res = false;
-  const AdBlockRule* blockedRule = m_matcher->match(request, urlDomain, urlString);
-
-  if (blockedRule != nullptr) {
-    if (request.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame) {
-      QUrlQuery query;
-      QUrl url(QSL("%1://%2").arg(APP_LOW_NAME, ADBLOCK_ADBLOCKED_PAGE));
-
-      query.addQueryItem(QSL("rule"), blockedRule->filter());
-      query.addQueryItem(QSL("subscription"), blockedRule->subscription()->title());
-      url.setQuery(query);
-
-      res = true;
-      request.redirect(url);
-    }
-    else {
-      res = true;
-      request.block(true);
-    }
+    return blocked_rule;
   }
-
-  return res;
 }
 
 QStringList AdBlockManager::disabledRules() const {

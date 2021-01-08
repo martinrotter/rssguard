@@ -23,7 +23,7 @@
 #include <QChar>
 #include <QHash>
 
-class QWebEngineUrlRequestInfo;
+class AdblockRequestInfo;
 class AdBlockRule;
 
 class AdBlockSearchTree {
@@ -34,20 +34,21 @@ class AdBlockSearchTree {
     void clear();
 
     bool add(const AdBlockRule* rule);
-    const AdBlockRule* find(const QWebEngineUrlRequestInfo& request, const QString& domain, const QString& urlString) const;
+    const AdBlockRule* find(const AdblockRequestInfo& request, const QString& domain, const QString& urlString) const;
 
   private:
     struct Node {
       QChar c;
       const AdBlockRule* rule;
-
       QHash<QChar, Node*> children;
 
       Node() : c(0), rule(0) { }
 
     };
-    const AdBlockRule* prefixSearch(const QWebEngineUrlRequestInfo& request, const QString& domain,
-                                    const QString& urlString, const QString& choppedUrlString, int len) const;
+
+    const AdBlockRule* prefixSearch(const AdblockRequestInfo& request, const QString& domain,
+                                    const QString& urlString, const QString& choppedUrlString,
+                                    int len) const;
 
     void deleteNode(Node* node);
 

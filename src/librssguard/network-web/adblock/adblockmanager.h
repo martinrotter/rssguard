@@ -26,7 +26,7 @@
 #include <QStringList>
 
 class QUrl;
-class QWebEngineUrlRequestInfo;
+class AdblockRequestInfo;
 class AdBlockMatcher;
 class AdBlockCustomList;
 class AdBlockSubscription;
@@ -48,7 +48,9 @@ class AdBlockManager : public QObject {
     void load(bool initial_load);
     void save();
 
-    bool block(QWebEngineUrlRequestInfo& request);
+    // General method for adblocking. Returns pointer to rule if request should
+    // be blocked.
+    const AdBlockRule* block(const AdblockRequestInfo& request);
 
     bool isEnabled() const;
     bool canRunOnScheme(const QString& scheme) const;
