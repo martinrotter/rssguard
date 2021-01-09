@@ -1,0 +1,35 @@
+// For license of this file, see <project-root-folder>/LICENSE.md.
+
+#ifndef TTRSSACCOUNTDETAILS_H
+#define TTRSSACCOUNTDETAILS_H
+
+#include <QWidget>
+
+#include "ui_ttrssaccountdetails.h"
+
+class TtRssServiceRoot;
+
+class TtRssAccountDetails : public QWidget {
+  Q_OBJECT
+
+  friend class FormEditTtRssAccount;
+
+  public:
+    explicit TtRssAccountDetails(QWidget* parent = nullptr);
+
+  private slots:
+    void displayPassword(bool display);
+    void displayHttpPassword(bool display);
+    void performTest();
+
+    void onUsernameChanged();
+    void onPasswordChanged();
+    void onHttpUsernameChanged();
+    void onHttpPasswordChanged();
+    void onUrlChanged();
+
+  private:
+    Ui::TtRssAccountDetails m_ui;
+};
+
+#endif // TTRSSACCOUNTDETAILS_H

@@ -132,6 +132,7 @@ HEADERS += core/feeddownloader.h \
            services/abstract/cacheforserviceroot.h \
            services/abstract/category.h \
            services/abstract/feed.h \
+           services/abstract/gui/formaccountdetails.h \
            services/abstract/gui/formfeeddetails.h \
            services/abstract/importantnode.h \
            services/abstract/label.h \
@@ -177,6 +178,7 @@ HEADERS += core/feeddownloader.h \
            services/tt-rss/definitions.h \
            services/tt-rss/gui/formeditttrssaccount.h \
            services/tt-rss/gui/formttrssfeeddetails.h \
+           services/tt-rss/gui/ttrssaccountdetails.h \
            services/tt-rss/gui/ttrssfeeddetails.h \
            services/tt-rss/network/ttrssnetworkfactory.h \
            services/tt-rss/ttrssfeed.h \
@@ -287,6 +289,7 @@ SOURCES += core/feeddownloader.cpp \
            services/abstract/cacheforserviceroot.cpp \
            services/abstract/category.cpp \
            services/abstract/feed.cpp \
+           services/abstract/gui/formaccountdetails.cpp \
            services/abstract/gui/formfeeddetails.cpp \
            services/abstract/importantnode.cpp \
            services/abstract/label.cpp \
@@ -327,6 +330,7 @@ SOURCES += core/feeddownloader.cpp \
            services/standard/standardserviceroot.cpp \
            services/tt-rss/gui/formeditttrssaccount.cpp \
            services/tt-rss/gui/formttrssfeeddetails.cpp \
+           services/tt-rss/gui/ttrssaccountdetails.cpp \
            services/tt-rss/gui/ttrssfeeddetails.cpp \
            services/tt-rss/network/ttrssnetworkfactory.cpp \
            services/tt-rss/ttrssfeed.cpp \
@@ -365,6 +369,7 @@ FORMS += gui/dialogs/formabout.ui \
          gui/toolbareditor.ui \
          network-web/downloaditem.ui \
          network-web/downloadmanager.ui \
+         services/abstract/gui/formaccountdetails.ui \
          services/abstract/gui/formfeeddetails.ui \
          services/gmail/gui/formeditgmailaccount.ui \
          services/inoreader/gui/formeditinoreaderaccount.ui \
@@ -373,11 +378,11 @@ FORMS += gui/dialogs/formabout.ui \
          services/standard/gui/formstandardcategorydetails.ui \
          services/standard/gui/formstandardimportexport.ui \
          services/standard/gui/standardfeeddetails.ui \
-         services/tt-rss/gui/formeditttrssaccount.ui \
          services/gmail/gui/formdownloadattachment.ui \
          services/gmail/gui/formaddeditemail.ui \
          gui/searchtextwidget.ui \
          gui/newspaperpreviewer.ui \
+         services/tt-rss/gui/ttrssaccountdetails.ui \
          services/tt-rss/gui/ttrssfeeddetails.ui
 
 equals(USE_WEBENGINE, true) {

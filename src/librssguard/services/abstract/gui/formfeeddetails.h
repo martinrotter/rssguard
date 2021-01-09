@@ -29,26 +29,25 @@ class FormFeedDetails : public QDialog {
   protected slots:
     void activateTab(int index);
     void clearTabs();
-    void insertCustomTab(QWidget* custom_tab, const QString& title, int index);
 
     // Applies changes.
     // NOTE: This must be reimplemented in subclasses. Also this
     // base implementation must be called first.
     virtual void apply();
 
-    void onAutoUpdateTypeChanged(int new_index);
-
   protected:
+    void insertCustomTab(QWidget* custom_tab, const QString& title, int index);
 
     // Sets the feed which will be edited.
     // NOTE: This must be reimplemented in subclasses. Also this
     // base implementation must be called first.
     void virtual setEditableFeed(Feed* editable_feed);
 
-    // Creates needed connections.
-    void createConnections();
+  private slots:
+    void onAutoUpdateTypeChanged(int new_index);
 
-    // Initializes the dialog.
+  private:
+    void createConnections();
     void initialize();
 
   protected:

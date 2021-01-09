@@ -64,7 +64,7 @@ bool TtRssServiceRoot::isSyncable() const {
 bool TtRssServiceRoot::editViaGui() {
   QScopedPointer<FormEditTtRssAccount> form_pointer(new FormEditTtRssAccount(qApp->mainFormWidget()));
 
-  form_pointer->execForEdit(this);
+  form_pointer->addEditAccount(this);
   return true;
 }
 

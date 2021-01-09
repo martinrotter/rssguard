@@ -3,45 +3,31 @@
 #ifndef FORMEDITACCOUNT_H
 #define FORMEDITACCOUNT_H
 
-#include <QDialog>
+#include "services/abstract/gui/formaccountdetails.h"
 
-#include "ui_formeditttrssaccount.h"
-
-namespace Ui {
-  class FormEditTtRssAccount;
-}
-
+class RootItem;
 class TtRssServiceRoot;
+class TtRssAccountDetails;
 
-class FormEditTtRssAccount : public QDialog {
+class FormEditTtRssAccount : public FormAccountDetails {
   Q_OBJECT
 
   public:
-    explicit FormEditTtRssAccount(QWidget* parent = 0);
-    virtual ~FormEditTtRssAccount();
+    explicit FormEditTtRssAccount(QWidget* parent = nullptr);
 
-    TtRssServiceRoot* execForCreate();
+    TtRssServiceRoot* addEditAccount(TtRssServiceRoot* account_to_edit = nullptr);
 
-    void execForEdit(TtRssServiceRoot* existing_root);
+  protected slots:
+    virtual void apply();
 
-  private slots:
-    void displayPassword(bool display);
-    void displayHttpPassword(bool display);
-    void performTest();
-    void onClickedOk();
-    void onClickedCancel();
-
-    void onUsernameChanged();
-    void onPasswordChanged();
-    void onHttpUsernameChanged();
-    void onHttpPasswordChanged();
-    void onUrlChanged();
-    void checkOkButton();
+  protected:
+    virtual void setEditableAccount(ServiceRoot* editable_account);
 
   private:
-    QScopedPointer<Ui::FormEditTtRssAccount> m_ui;
-    TtRssServiceRoot* m_editableRoot;
-    QPushButton* m_btnOk;
+    TtRssServiceRoot* ttRssAccount() const;
+
+  private:
+    TtRssAccountDetails* m_details;
 };
 
 #endif // FORMEDITACCOUNT_H

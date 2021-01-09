@@ -39,7 +39,7 @@ QString TtRssServiceEntryPoint::code() const {
 ServiceRoot* TtRssServiceEntryPoint::createNewRoot() const {
   FormEditTtRssAccount form_acc(qApp->mainFormWidget());
 
-  return form_acc.execForCreate();
+  return form_acc.addEditAccount();
 }
 
 QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() const {

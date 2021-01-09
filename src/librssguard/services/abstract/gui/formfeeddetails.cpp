@@ -83,7 +83,6 @@ void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
 }
 
 void FormFeedDetails::createConnections() {
-  // General connections.
   connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormFeedDetails::apply);
   connect(m_ui->m_cmbAutoUpdateType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &FormFeedDetails::onAutoUpdateTypeChanged);
