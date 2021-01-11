@@ -90,14 +90,6 @@
         <translation>AdBlock lader dig blokere for uønsket indhold på hjemmesider</translation>
     </message>
     <message>
-        <source>Blocked popup window</source>
-        <translation>Blokér popup-vinduer</translation>
-    </message>
-    <message>
-        <source>AdBlock blocked unwanted popup window.</source>
-        <translation>AdBlock blokerer uønskede popup vinduer</translation>
-    </message>
-    <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Vis AdBlock ind&amp;stillinger</translation>
     </message>
@@ -108,17 +100,6 @@
     <message>
         <source>Disable only on this page</source>
         <translation>Deaktivér kun på denne side.</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockManager</name>
-    <message>
-        <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation>Vil du tilføje &lt;b&gt;%1&lt;/b&gt; abonnement?</translation>
-    </message>
-    <message>
-        <source>Add AdBlock subscription</source>
-        <translation>Tilføj AdBlockabonnement</translation>
     </message>
 </context>
 <context>
@@ -337,15 +318,6 @@
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>Denne hjemmeside indeholder ingen feeds.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message>
         <source>Not supported</source>
         <translation>Uunderstøttet</translation>
     </message>
@@ -356,6 +328,14 @@ This website contains %n feed(s).</source>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This website does not contain any feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Add one of %n feed(s)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -800,6 +780,13 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>CUSTOM</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAccountDetails</name>
+    <message>
+        <source>Edit account &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1376,10 +1363,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Valgte Nextcloud Nyhedsserver kører en ikke supporteret version.</translation>
     </message>
     <message>
-        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Nextcloud News server is okay.</source>
         <translation>Nextcloud Nyhedsserver er okay.</translation>
     </message>
@@ -1388,179 +1371,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Netværksfejl, har du indført den rigtige slutsti og kodeord til Nextcloud?</translation>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
+        <source>Installed version: %1, required at least: %2.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
-        <source>URL</source>
-        <translation>Webadresse</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <source>Server setup</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Authentication</source>
-        <translation>Godkendelse</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Brugernavn</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Adgangskode</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Vis adgangskode</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>Kræver HTTP-godkendelse</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation>&amp;Test opsætning</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <source>Add new TT-RSS account</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation>Bemærk at mindst API version %1 er påkrævet.</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation>Brugernavn til HTTP-godkendelse</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation>Adgangskode til HTTP-godkendelse</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation>Kodeord til din TT-RSS-konto</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation>Brugernavn til din TT-RSS konto</translation>
-    </message>
-    <message>
-        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation>Endnu ikke testet.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation>Tilføj ny Tiny Tiny RSS konto</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Rediger eksisterende Tiny Tiny RSS konto</translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation>API-adgang på valgte server er ikke aktiveret.</translation>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation>Indtastede legitimationsoplysninger er forkerte.</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation>Der opstod en anden fejl, kontakt udviklerne.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Valgte Tiny Tiny RSS server bruger en ikke understøttet version af API (%1). Der kræves mindst version %2.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Den valgte Tiny Tiny RSS server kører en ikke understøttet version.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Tiny Tiny RSS server er okay. Den kører med API niveau %1, mens der mindst kræves et API niveau på %2.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS server er okay.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netværksfejl: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Netværksfejl, har du indtastet korrekt Tiny Tiny RSS-adresse og adgangskode?</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation>Brugernavn skal udfyldes.</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation>Brugernavn er okay.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation>Kodeord kan ikke være tomt.</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation>Kodeord er okay.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Brugernavn er OK eller ikke nødvendigt.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Brugernavn ikke angivet.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Kodeord er OK eller ikke nødvendigt.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Kodeordet er tomt.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation>Webadresse kan ikke være tom.</translation>
-    </message>
-    <message>
-        <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation>URL er okay.</translation>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
-        <translation>Hent kun ulæste meddelelser</translation>
     </message>
 </context>
 <context>
@@ -1983,7 +1806,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Message &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>Meddelelses&amp;filtre</translation>
     </message>
     <message>
         <source>&amp;Show tree branches</source>
@@ -1995,7 +1818,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Display &amp;documentation</source>
-        <translation type="unfinished"/>
+        <translation>Vis &amp;dokumentation</translation>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
@@ -2003,11 +1826,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Download all new messages</source>
-        <translation type="unfinished"/>
+        <translation>Hent alle ny med&amp;delelser</translation>
     </message>
     <message>
         <source>Download messages for &amp;selected items</source>
-        <translation type="unfinished"/>
+        <translation>Hent meddelel&amp;ser for valgte elementer</translation>
     </message>
     <message>
         <source>Stop ongoing downloading of messages</source>
@@ -2015,6 +1838,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3359,6 +3186,10 @@ Login tokens expiration: %2</source>
         <source>You can close this window now. Go back to %1</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3972,6 +3803,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Auto-download messages for all feeds every</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Bring application window to front once message is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4137,6 +3972,10 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Left mouse button double-click</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display count of unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4624,6 +4463,169 @@ Ulæste nyheder: %2</translation>
     </message>
 </context>
 <context>
+    <name>TtRssAccountDetails</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Hent kun ulæste meddelelser</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Godkendelse</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Brugernavn</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Adgangskode</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Vis adgangskode</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation>Kræver HTTP-godkendelse</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>&amp;Test opsætning</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>Webadresse</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation>Bemærk at mindst API version %1 er påkrævet.</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation>Brugernavn til HTTP-godkendelse</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation>Adgangskode til HTTP-godkendelse</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation>Kodeord til din TT-RSS-konto</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation>Brugernavn til din TT-RSS konto</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Endnu ikke testet.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation>API-adgang på valgte server er ikke aktiveret.</translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation>Indtastede legitimationsoplysninger er forkerte.</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation>Der opstod en anden fejl, kontakt udviklerne.</translation>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation>Den valgte Tiny Tiny RSS server kører en ikke understøttet version.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation>Tiny Tiny RSS server er okay.</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Netværksfejl: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation>Netværksfejl, har du indtastet korrekt Tiny Tiny RSS-adresse og adgangskode?</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Brugernavn skal udfyldes.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>Brugernavn er okay.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>Kodeord kan ikke være tomt.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>Kodeord er okay.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Brugernavn er OK eller ikke nødvendigt.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Brugernavn ikke angivet.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Kodeord er OK eller ikke nødvendigt.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Kodeordet er tomt.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>Webadresse kan ikke være tom.</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation>Webadresse skal IKKE ende med &quot;/api/&quot;.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>URL er okay.</translation>
+    </message>
+</context>
+<context>
     <name>TtRssFeedDetails</name>
     <message>
         <source>Form</source>
@@ -4699,32 +4701,28 @@ Sidst logget på: %4</translation>
         <translation>Tilbage</translation>
     </message>
     <message>
-        <source>Go back.</source>
-        <translation>Go tilbage.</translation>
-    </message>
-    <message>
         <source>Forward</source>
         <translation>Frem</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Go frem</translation>
     </message>
     <message>
         <source>Reload</source>
         <translation>Genindlæs</translation>
     </message>
     <message>
-        <source>Reload current web page.</source>
-        <translation>Genindlæs nuværende hjemmeside.</translation>
-    </message>
-    <message>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <source>Stop web page loading.</source>
-        <translation>Stop indlæsning af hjemmeside.</translation>
+        <source>Open this website in system web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Failed to open URL in web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

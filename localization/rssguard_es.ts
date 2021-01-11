@@ -90,14 +90,6 @@
         <translation>AdBlock te permite bloquear contenido no deseado de páginas web</translation>
     </message>
     <message>
-        <source>Blocked popup window</source>
-        <translation>Bloqueada ventana emergente</translation>
-    </message>
-    <message>
-        <source>AdBlock blocked unwanted popup window.</source>
-        <translation>AdBlock bloqueó la ventana emergente no deseada</translation>
-    </message>
-    <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Mostrar los ajustes de AdBlock</translation>
     </message>
@@ -108,17 +100,6 @@
     <message>
         <source>Disable only on this page</source>
         <translation>Inhabilitar en esta página</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockManager</name>
-    <message>
-        <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation>¿Quieres agregar &lt;b&gt;%1&lt;/b&gt; suscripción?</translation>
-    </message>
-    <message>
-        <source>Add AdBlock subscription</source>
-        <translation>Añadir suscripción de AdBlock</translation>
     </message>
 </context>
 <context>
@@ -337,17 +318,6 @@
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>Este sitio web no contiene ninguna fuente.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation><numerusform>Pulse aquí para añadir la fuente de este sitio web.
-Este sitio web contiene %n fuente().</numerusform><numerusform>Pulse aquí para añadir las fuentes de este sitio web.
-Este sitio web contiene %n fuente(s).</numerusform></translation>
-    </message>
-    <message>
         <source>Not supported</source>
         <translation>No admitido</translation>
     </message>
@@ -358,6 +328,14 @@ Este sitio web contiene %n fuente(s).</numerusform></translation>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
         <translation>Se detectaron fuentes, pero no hay cuentas aptas configuradas</translation>
+    </message>
+    <message>
+        <source>This website does not contain any feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Add one of %n feed(s)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -805,6 +783,13 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>CUSTOM</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAccountDetails</name>
+    <message>
+        <source>Edit account &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1383,10 +1368,6 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
         <translation>El servidor de Noticias Nextcloud seleccionado está ejecutando una versión no aceptada.</translation>
     </message>
     <message>
-        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>El servidor de Noticias Nextcloud está bien, está ejecutando la versión %1, en tanto que requiere mínimo la versión %2.</translation>
-    </message>
-    <message>
         <source>Nextcloud News server is okay.</source>
         <translation>El servidor de Noticias Nextcloud está bien.</translation>
     </message>
@@ -1395,179 +1376,19 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
         <translation>Error de conexión, ¿ha ingresado correctamente el punto final y la contraseña de Nextcloud?</translation>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
-        <translation>El servidor de Noticias Nextcloud seleccionado está ejecutando la versión no aceptada %1. Se requiere mínimo la versión %2.</translation>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
-        <source>URL</source>
-        <translation>Dirección URL </translation>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Algunas fuentes requieren autentificación, incluidas las fuentes GMail. Se admiten los sistemas de autentificación BASIC, NTLM-2 y DIGEST-MD5.</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation>Autentificación</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Nombre de usuario</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Contraseña</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Mostrar contraseña</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>Requiere autentificación por HTTP</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation>&amp;Configuración de prueba</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Cuando se actualizan las fuentes desde RSS Guard se fuerza la actualización del lado del servidor.</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Al dejar activada esta opción hace que las actualizaciones de las fuentes sean probablemente mucho más lentas y que puedan interrumpirse frecuentemente.</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation>Tenga en cuenta que se requiere como mínimo una API de nivel %1.</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation>Autentificación de nombre de usuario por HTTP</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation>Autentificación de contraseña por HTTP</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation>Contraseña para su cuenta TT-RSS</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation>Nombre de usuario para su cuenta TT-RSS</translation>
-    </message>
-    <message>
-        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation>Dirección URL de su instancia TT-RSS SIN la secuencia &quot;/api/&quot; al final</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation>No se ha hecho ninguna prueba todavía.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation>Se muestran aquí los resultados de la prueba de conexión.</translation>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation>Añadir nueva cuenta Tiny Tiny RSS</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Editar la cuenta Tiny Tiny RSS actual</translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation>El acceso a la API en el servidor seleccionado no está habilitado.</translation>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation>Las credenciales ingresadas son incorrectas.</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation>Se presentó otro error, contacte a los desarrolladores.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>El servidor Tiny Tiny RSS seleccionado está ejecutando una versión no admitida de la API (%1). Se necesita como mínimo una API de nivel %2.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>El servidor Tiny Tiny RSS seleccionado está ejecutando una versión no admitida de la API.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>El servidor Tiny Tiny RSS es válido, se está ejecutando con una API de nivel %1 aun cuando se necesita como mínimo una API de nivel %2</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation>El servidor Tiny Tiny RSS es válido.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation>Error de red: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Error de red, ¿Ha ingresado correctamente el punto final y la contraseña de la API de Tiny Tiny RSS?</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Error sin especificar, ¿Ingresó la dirección URL correcta?</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation>El campo del nombre de usuario no puede estar vacío. </translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation>El nombre de usuario es válido.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation>El campo de la contraseña no puede estar vacío. </translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation>La contraseña es válida.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>El nombre de usuario es válido o no se necesita.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>El campo del nombre de usuario está vacío.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>La contraseña es válida o no se necesita.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>El campo de la contraseña está vacío.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation>El campo de la dirección URL no puede estar vacío.</translation>
-    </message>
-    <message>
-        <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation>La dirección URL NO debe terminar con la secuencia &quot;/api/&quot;.</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation>La dirección URL es válida.</translation>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
-        <translation>Descargar solo mensajes no leídos</translation>
+        <source>Add new TT-RSS account</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2022,6 +1843,10 @@ Es muy recomendable crear su propia &quot;ID de la Aplicación&quot;.</translati
     </message>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3380,6 +3205,10 @@ Expiración de testigos de ingreso: %2</translation>
         <source>You can close this window now. Go back to %1</source>
         <translation>Puede cerrar esta ventana ahora. Vaya atrás a %1</translation>
     </message>
+    <message>
+        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4012,6 +3841,10 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
         <source>Auto-download messages for all feeds every</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Bring application window to front once message is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4178,6 +4011,10 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     <message>
         <source>Left mouse button double-click</source>
         <translation>Doble clic con el botón izquierdo del ratón</translation>
+    </message>
+    <message>
+        <source>Display count of unread messages</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4667,6 +4504,169 @@ Noticias no leídas: %2</translation>
     </message>
 </context>
 <context>
+    <name>TtRssAccountDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>Formulario</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Descargar solo mensajes no leídos</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation>Cuando se actualizan las fuentes desde RSS Guard se fuerza la actualización del lado del servidor.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Algunas fuentes requieren autentificación, incluidas las fuentes GMail. Se admiten los sistemas de autentificación BASIC, NTLM-2 y DIGEST-MD5.</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Autentificación</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Nombre de usuario</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Contraseña</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Mostrar contraseña</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation>Requiere autentificación por HTTP</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>&amp;Configuración de prueba</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>Dirección URL </translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation>Al dejar activada esta opción hace que las actualizaciones de las fuentes sean probablemente mucho más lentas y que puedan interrumpirse frecuentemente.</translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation>Tenga en cuenta que se requiere como mínimo una API de nivel %1.</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation>Autentificación de nombre de usuario por HTTP</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation>Autentificación de contraseña por HTTP</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation>Contraseña para su cuenta TT-RSS</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation>Nombre de usuario para su cuenta TT-RSS</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation>Dirección URL de su instancia TT-RSS SIN la secuencia &quot;/api/&quot; al final</translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>No se ha hecho ninguna prueba todavía.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Se muestran aquí los resultados de la prueba de conexión.</translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation>El acceso a la API en el servidor seleccionado no está habilitado.</translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation>Las credenciales ingresadas son incorrectas.</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation>Se presentó otro error, contacte a los desarrolladores.</translation>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation>El servidor Tiny Tiny RSS seleccionado está ejecutando una versión no admitida de la API.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation>El servidor Tiny Tiny RSS es válido.</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Error de red: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation>Error de red, ¿Ha ingresado correctamente el punto final y la contraseña de la API de Tiny Tiny RSS?</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation>Error sin especificar, ¿Ingresó la dirección URL correcta?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>El campo del nombre de usuario no puede estar vacío. </translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>El nombre de usuario es válido.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>El campo de la contraseña no puede estar vacío. </translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>La contraseña es válida.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>El nombre de usuario es válido o no se necesita.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>El campo del nombre de usuario está vacío.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>La contraseña es válida o no se necesita.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>El campo de la contraseña está vacío.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>El campo de la dirección URL no puede estar vacío.</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation>La dirección URL NO debe terminar con la secuencia &quot;/api/&quot;.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>La dirección URL es válida.</translation>
+    </message>
+</context>
+<context>
     <name>TtRssFeedDetails</name>
     <message>
         <source>Form</source>
@@ -4742,32 +4742,28 @@ Ultimo inicio de sesión: %4</translation>
         <translation>Anterior</translation>
     </message>
     <message>
-        <source>Go back.</source>
-        <translation>Regresar.</translation>
-    </message>
-    <message>
         <source>Forward</source>
         <translation>Siguiente</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Avanzar.</translation>
     </message>
     <message>
         <source>Reload</source>
         <translation>Recargar</translation>
     </message>
     <message>
-        <source>Reload current web page.</source>
-        <translation>Recargar página actual</translation>
-    </message>
-    <message>
         <source>Stop</source>
         <translation>Detener</translation>
     </message>
     <message>
-        <source>Stop web page loading.</source>
-        <translation>Detener la carga de la página.</translation>
+        <source>Open this website in system web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Failed to open URL in web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

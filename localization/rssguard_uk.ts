@@ -90,14 +90,6 @@
         <translation>AdBlock доозволяє блокувати небажаний контент на web сторінках</translation>
     </message>
     <message>
-        <source>Blocked popup window</source>
-        <translation>Заблоковано спливаючі вікна</translation>
-    </message>
-    <message>
-        <source>AdBlock blocked unwanted popup window.</source>
-        <translation>AdBlock заблокував небажані спдиваючі вікна</translation>
-    </message>
-    <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Показати налаштування AdBlock</translation>
     </message>
@@ -108,17 +100,6 @@
     <message>
         <source>Disable only on this page</source>
         <translation>Відключити тільки на цій сторінці</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockManager</name>
-    <message>
-        <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation>Додати підписку &lt;b&gt;%1&lt;/b&gt;?</translation>
-    </message>
-    <message>
-        <source>Add AdBlock subscription</source>
-        <translation>Додати підписку AdBlock</translation>
     </message>
 </context>
 <context>
@@ -337,15 +318,6 @@
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>На цьому сайті немає потоків</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message>
         <source>Not supported</source>
         <translation>Не підтримується</translation>
     </message>
@@ -356,6 +328,14 @@ This website contains %n feed(s).</source>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This website does not contain any feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Add one of %n feed(s)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -801,6 +781,13 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>CUSTOM</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAccountDetails</name>
+    <message>
+        <source>Edit account &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1377,10 +1364,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Nextcloud News server is okay.</source>
         <translation type="unfinished"/>
     </message>
@@ -1389,178 +1372,18 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
+        <source>Installed version: %1, required at least: %2.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
-        <source>URL</source>
-        <translation>URL</translation>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Деякі потоки потребують аутентифікації, включаючи потоки GMail. Підтримуються BASIC, NTLM-2 та DIGEST-MD5 схеми аутентифікації.</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation>Аутентифікація</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Ім’я користувача</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Пароль</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Показати пароль</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>Потребує HTTP аутентифікації</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation>Протестувати налаштування</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Примусово запускати оновлення на боці серверу під час оновлення потоків з RSS Guard.</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Активація цієї опцїї може викликати набагато повільніше виконання оновлення потоків і часто може призводити до перевищення строків очікування відповіді.</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation>Майте на увазі, що версія API має бути не нижче за %1.</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation>Ім&apos;я користувача для HTTP аутентифікації</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation>Пароль користувача для HTTP аутентифікації</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation>Пароль для облікового запису TT-RSS</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation>Обліковий запис TT-RSS</translation>
-    </message>
-    <message>
-        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation>URL вашого інстансу TT-RSS, БЕЗ кінцевої строки &quot;/api/&quot;</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation>Тестування ще не виконувалось</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation>Результат перевірки підключення.</translation>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation>Додати новий обліковий запис Tiny Tiny RSS</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Редагувати обліковий запис Tiny Tiny RSS</translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation>API доступ на обраному сервері не активовано.</translation>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation>Надані облікові дані не є вірними</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation>Виникла інша помилка, зв&apos;яжіться з розробниками</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Обраний Tiny Tiny RSS сервер використовує версію API (%1), що не підтримується. Необхіний рівень API має бути не нижчим за %2.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Обраний Tiny Tiny RSS сервер використовує версію API, що не підтримується.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Обраний Tiny Tiny RSS сервер використовує версію API (%1), тоді як рівень API має бути не нижчим за %2.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation>З Tiny Tiny RSS сервером все гаразд.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation>Мережева помилка: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Мережева помилка. Чи вірно ви вказали Tiny Tiny RSS API ендпоінт та пароль?</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Невідома помилка, чи вірно вказано URL?</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation>Ім&apos;я користувача не може бути пустим</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation>Ім&apos;я користувача принято</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation>Пароль не може бути пустим</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation>Пароль принято</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Ім&apos;я користувача вірне або не потрібне.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Пусте ім&apos;я користувача</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Пароль вірний, або він не потрібен.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Пустий пароль</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation>URL не може бути пустим.</translation>
-    </message>
-    <message>
-        <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation>URL НЕ ПОВИНЕН закінчуватись на &quot;/api/&quot;.</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation>URL принято</translation>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
+        <source>Add new TT-RSS account</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2016,6 +1839,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3366,6 +3193,10 @@ Login tokens expiration: %2</translation>
         <source>You can close this window now. Go back to %1</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3975,6 +3806,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Auto-download messages for all feeds every</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Bring application window to front once message is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4140,6 +3975,10 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Left mouse button double-click</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display count of unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4627,6 +4466,169 @@ Unread news: %2</source>
     </message>
 </context>
 <context>
+    <name>TtRssAccountDetails</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation>Примусово запускати оновлення на боці серверу під час оновлення потоків з RSS Guard.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Деякі потоки потребують аутентифікації, включаючи потоки GMail. Підтримуються BASIC, NTLM-2 та DIGEST-MD5 схеми аутентифікації.</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Аутентифікація</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Ім’я користувача</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Пароль</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Показати пароль</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation>Потребує HTTP аутентифікації</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>Протестувати налаштування</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation>Активація цієї опцїї може викликати набагато повільніше виконання оновлення потоків і часто може призводити до перевищення строків очікування відповіді.</translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation>Майте на увазі, що версія API має бути не нижче за %1.</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation>Ім&apos;я користувача для HTTP аутентифікації</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation>Пароль користувача для HTTP аутентифікації</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation>Пароль для облікового запису TT-RSS</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation>Обліковий запис TT-RSS</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation>URL вашого інстансу TT-RSS, БЕЗ кінцевої строки &quot;/api/&quot;</translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Тестування ще не виконувалось</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Результат перевірки підключення.</translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation>API доступ на обраному сервері не активовано.</translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation>Надані облікові дані не є вірними</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation>Виникла інша помилка, зв&apos;яжіться з розробниками</translation>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation>Обраний Tiny Tiny RSS сервер використовує версію API, що не підтримується.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation>З Tiny Tiny RSS сервером все гаразд.</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Мережева помилка: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation>Мережева помилка. Чи вірно ви вказали Tiny Tiny RSS API ендпоінт та пароль?</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation>Невідома помилка, чи вірно вказано URL?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Ім&apos;я користувача не може бути пустим</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>Ім&apos;я користувача принято</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>Пароль не може бути пустим</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>Пароль принято</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Ім&apos;я користувача вірне, або воно не потрібне.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Пусте ім&apos;я користувача</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Пароль вірний, або він не потрібен.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Пустий пароль</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>URL не може бути пустим.</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation>URL НЕ ПОВИНЕН закінчуватись на &quot;/api/&quot;.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>URL принято</translation>
+    </message>
+</context>
+<context>
     <name>TtRssFeedDetails</name>
     <message>
         <source>Form</source>
@@ -4702,32 +4704,28 @@ Last login on: %4</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <source>Go back.</source>
-        <translation>Перейти назад.</translation>
-    </message>
-    <message>
         <source>Forward</source>
         <translation>Вперед</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Перейти вперед.</translation>
     </message>
     <message>
         <source>Reload</source>
         <translation>Перезавантажити</translation>
     </message>
     <message>
-        <source>Reload current web page.</source>
-        <translation>Перезавнтажити поточну web сторінку</translation>
-    </message>
-    <message>
         <source>Stop</source>
         <translation>Стоп</translation>
     </message>
     <message>
-        <source>Stop web page loading.</source>
-        <translation>Зупинити завантаження web сторінки.</translation>
+        <source>Open this website in system web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Failed to open URL in web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -92,14 +92,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Blocked popup window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Show AdBlock &amp;settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -109,17 +101,6 @@
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockManager</name>
-    <message>
-        <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add AdBlock subscription</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -339,19 +320,6 @@
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>This website does not contain any feeds.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation type="unfinished">
-            <numerusform>Click me to add feeds from this website.
-This website contains one other feed(s).</numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
         <source>Not supported</source>
         <translation>Not supported</translation>
     </message>
@@ -362,6 +330,17 @@ This website contains one other feed(s).</numerusform>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This website does not contain any feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Add one of %n feed(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -825,6 +804,13 @@ or this functionality is not implemented yet.</translation>
     </message>
     <message>
         <source>CUSTOM</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormAccountDetails</name>
+    <message>
+        <source>Edit account &apos;%1&apos;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1404,10 +1390,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nextcloud News server is okay.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1416,178 +1398,18 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
+        <source>Installed version: %1, required at least: %2.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
-        <source>URL</source>
-        <translation type="unfinished">URL </translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported. </translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation type="unfinished">Authentication</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation type="unfinished">Username </translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="unfinished">Password </translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation type="unfinished">Show password </translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation type="unfinished">Requires HTTP authentication</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation type="unfinished">&amp;Test setup </translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished">Force execution of server-side update when updating feeds from RSS Guard.</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished">Leaving this option on causes that updates of feeds will be probably much slower and may time-out often. </translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation type="unfinished">Note that at least API level %1 is required.</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation type="unfinished">HTTP authentication username</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation type="unfinished">HTTP authentication password</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation type="unfinished">Password for your TT-RSS account</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation type="unfinished">Username for your TT-RSS account</translation>
-    </message>
-    <message>
-        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <source>Server setup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No test done yet.</source>
-        <translation type="unfinished">No test done yet.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished">Here, results of connection test are shown.</translation>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation type="unfinished">Add new Tiny Tiny RSS account</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="unfinished">Edit existing Tiny Tiny RSS account</translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished">API access on selected server is not enabled.</translation>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation type="unfinished">Entered credentials are incorrect.</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished">Other error occurred, contact developers.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished">Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="unfinished">Selected Tiny Tiny RSS server is running unsupported version of API.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished">Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="unfinished">Tiny Tiny RSS server is okay.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished">Network error: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="unfinished">Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished">Unspecified error, did you enter correct URL?</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation type="unfinished">Username cannot be empty.</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation type="unfinished">Username is okay.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation type="unfinished">Password cannot be empty.</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation type="unfinished">Password is okay.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished">Username is ok or it is not needed.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation type="unfinished">Username is empty.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished">Password is ok or it is not needed.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation type="unfinished">Password is empty.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation type="unfinished">URL cannot be empty.</translation>
-    </message>
-    <message>
-        <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation type="unfinished">URL is okay.</translation>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
+        <source>Add new TT-RSS account</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2043,6 +1865,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message viewer toolbars</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3391,6 +3217,10 @@ Login tokens expiration: %2</source>
         <source>You can close this window now. Go back to %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4025,6 +3855,10 @@ Authors of this application are NOT responsible for lost data.</translation>
         <source>Auto-download messages for all feeds every</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Bring application window to front once message is opened in external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4190,6 +4024,10 @@ Authors of this application are NOT responsible for lost data.</translation>
     </message>
     <message>
         <source>Left mouse button double-click</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display count of unread messages</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4686,6 +4524,169 @@ Unread news: %2</translation>
     </message>
 </context>
 <context>
+    <name>TtRssAccountDetails</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation type="unfinished">Force execution of server-side update when updating feeds from RSS Guard.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported. </translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation type="unfinished">Authentication</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Username </translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Password </translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation type="unfinished">Show password </translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished">Requires HTTP authentication</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation type="unfinished">&amp;Test setup </translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished">URL </translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation type="unfinished">Leaving this option on causes that updates of feeds will be probably much slower and may time-out often. </translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation type="unfinished">Note that at least API level %1 is required.</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation type="unfinished">HTTP authentication username</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation type="unfinished">HTTP authentication password</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation type="unfinished">Password for your TT-RSS account</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation type="unfinished">Username for your TT-RSS account</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation type="unfinished">No test done yet.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished">Here, results of connection test are shown.</translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation type="unfinished">API access on selected server is not enabled.</translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation type="unfinished">Entered credentials are incorrect.</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation type="unfinished">Other error occurred, contact developers.</translation>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation type="unfinished">Selected Tiny Tiny RSS server is running unsupported version of API.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation type="unfinished">Tiny Tiny RSS server is okay.</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation type="unfinished">Network error: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation type="unfinished">Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation type="unfinished">Unspecified error, did you enter correct URL?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished">Username cannot be empty.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished">Username is okay.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished">Password cannot be empty.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished">Password is okay.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished">Username is ok or it is not needed.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Username is empty.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished">Password is ok or it is not needed.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished">Password is empty.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation type="unfinished">URL cannot be empty.</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation type="unfinished">URL is okay.</translation>
+    </message>
+</context>
+<context>
     <name>TtRssFeedDetails</name>
     <message>
         <source>Form</source>
@@ -4758,32 +4759,28 @@ Last login on: %4</source>
         <translation>Back</translation>
     </message>
     <message>
-        <source>Go back.</source>
-        <translation>Go back.</translation>
-    </message>
-    <message>
         <source>Forward</source>
         <translation>Forward</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Go forward.</translation>
     </message>
     <message>
         <source>Reload</source>
         <translation>Reload</translation>
     </message>
     <message>
-        <source>Reload current web page.</source>
-        <translation>Reload current web page. </translation>
-    </message>
-    <message>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <source>Stop web page loading.</source>
-        <translation>Stop web page loading.</translation>
+        <source>Open this website in system web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to open URL in web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

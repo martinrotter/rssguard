@@ -90,14 +90,6 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Blocked popup window</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>AdBlock blocked unwanted popup window.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Show AdBlock &amp;settings</source>
         <translation type="unfinished"/>
     </message>
@@ -107,17 +99,6 @@
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>AdBlockManager</name>
-    <message>
-        <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add AdBlock subscription</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -337,17 +318,6 @@
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>Questo sito web non contiene alcun feed.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation><numerusform>Fai clic qui per aggiungere fonti da questo sito web.
-Questo sito web contiene %n fonte.</numerusform><numerusform>Fai clic qui per aggiungere fonti da questo sito web.
-Questo sito web contiene %n fonti.</numerusform></translation>
-    </message>
-    <message>
         <source>Not supported</source>
         <translation>Non supportato</translation>
     </message>
@@ -358,6 +328,14 @@ Questo sito web contiene %n fonti.</numerusform></translation>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This website does not contain any feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Add one of %n feed(s)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -803,6 +781,13 @@ oppure questa funzionalità non è ancora implementata.</translation>
     </message>
     <message>
         <source>CUSTOM</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAccountDetails</name>
+    <message>
+        <source>Edit account &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1379,10 +1364,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Nextcloud News server is okay.</source>
         <translation type="unfinished"/>
     </message>
@@ -1391,178 +1372,18 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
+        <source>Installed version: %1, required at least: %2.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
-        <source>URL</source>
-        <translation>URL</translation>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Alcune fonti richiedono autenticazione, tra cui quelle GMail. Sono supportati gli schemi di autenticazione BASIC, NTLM 2 e DIGEST-MD5.</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation>Autenticazione</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Nome utente</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Password</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Mostra password</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>Richiede autenticazione HTTP</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation>&amp;Prova impostazioni</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Forza esclusione aggiornamento lato server durante aggiornamento fonti da RSS Guard</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Lasciare questa opzione attiva causerà che l&apos;aggiornamento delle fonti sarà probabilmente molto più lento e potrà scadere più spesso.</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation>Nota che è richiesta almeno una API livello %1.</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation>Nome utente autenticazione HTTP</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation>Password autenticazione HTTP</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation>Password account TT-RSS</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation>Nome utente account TT-RSS</translation>
-    </message>
-    <message>
-        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation>URL dell&apos;istanza TT-RSS SENZA la stringa &quot;/api/&quot; in coda</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation>Nessun test ancora effettuato.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation>Ecco qui i risultati del test di connessione.</translation>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation>Aggiungi un nuovo account Tiny Tiny RSS</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Modifica account Tiny Tiny RSS esistente</translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation>Accesso API sul server selezionato non abilitato.</translation>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation>Le credenziali inserite non sono esatte.</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation>Si è verificato un altro errore, contatta gli sviluppatori.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Il server Tiny Tiny RSS selezionato usa una versione non supportata della API (%1). È richiesta almeno una API livello %2.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Il server Tiny Tiny RSS usa una versione non supportata della API.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Il server Tiny Tiny RSS va bene, usa una API livello %1, mentre è richiesta almeno una API livello %2.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Il server Tiny Tiny RSS va bene.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation>Errore di rete: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Errore di rete, hai inserito terminatore API e password di Tiny Tiny RSS corretti?</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Errore non specificato, hai inserito la URL corretta?</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation>Il nome utente non può essere vuoto.</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation>Il nome utente va bene.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation>La password non può essere vuota.</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation>La password va bene.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Il nome utente va bene o non è necessario.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Nome utente vuoto.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>La password va bene o non è necessaria.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>La password è vuota.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation>La URL non può essere vuota.</translation>
-    </message>
-    <message>
-        <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation>La URL non dovrebbe terminare con &quot;/api/&quot;.</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation>La URL va bene.</translation>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
+        <source>Add new TT-RSS account</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2018,6 +1839,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3367,6 +3192,10 @@ Login tokens expiration: %2</source>
         <source>You can close this window now. Go back to %1</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3995,6 +3824,10 @@ Gli autori di questa applicazione NON sono responsabili per la perdita di dati.<
         <source>Auto-download messages for all feeds every</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Bring application window to front once message is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4160,6 +3993,10 @@ Gli autori di questa applicazione NON sono responsabili per la perdita di dati.<
     </message>
     <message>
         <source>Left mouse button double-click</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display count of unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4647,6 +4484,169 @@ Notizie non lette: %2</translation>
     </message>
 </context>
 <context>
+    <name>TtRssAccountDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>Modulo</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation>Forza esclusione aggiornamento lato server durante aggiornamento fonti da RSS Guard</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Alcune fonti richiedono autenticazione, tra cui quelle GMail. Sono supportati gli schemi di autenticazione BASIC, NTLM 2 e DIGEST-MD5.</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Autenticazione</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Nome utente</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Password</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Mostra password</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation>Richiede autenticazione HTTP</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>&amp;Prova impostazioni</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation>Lasciare questa opzione attiva causerà che l&apos;aggiornamento delle fonti sarà probabilmente molto più lento e potrà scadere più spesso.</translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation>Nota che è richiesta almeno una API livello %1.</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation>Nome utente autenticazione HTTP</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation>Password autenticazione HTTP</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation>Password account TT-RSS</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation>Nome utente account TT-RSS</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation>URL dell&apos;istanza TT-RSS SENZA la stringa &quot;/api/&quot; in coda</translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Nessun test ancora effettuato.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Ecco qui i risultati del test di connessione.</translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation>Accesso API sul server selezionato non abilitato.</translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation>Le credenziali inserite non sono esatte.</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation>Si è verificato un altro errore, contatta gli sviluppatori.</translation>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation>Il server Tiny Tiny RSS usa una versione non supportata della API.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation>Il server Tiny Tiny RSS va bene.</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Errore di rete: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation>Errore di rete, hai inserito terminatore API e password di Tiny Tiny RSS corretti?</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation>Errore non specificato, hai inserito la URL corretta?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Il nome utente non può essere vuoto.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>Il nome utente va bene.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>La password non può essere vuota.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>La password va bene.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Il nome utente va bene o non è necessario.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Nome utente vuoto.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>La password va bene o non è necessaria.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>La password è vuota.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>La URL non può essere vuota.</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation>La URL non dovrebbe terminare con &quot;/api/&quot;.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>La URL va bene.</translation>
+    </message>
+</context>
+<context>
     <name>TtRssFeedDetails</name>
     <message>
         <source>Form</source>
@@ -4719,32 +4719,28 @@ Last login on: %4</source>
         <translation>Indietro</translation>
     </message>
     <message>
-        <source>Go back.</source>
-        <translation>Torna indietro.</translation>
-    </message>
-    <message>
         <source>Forward</source>
         <translation>Avanti</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Vai avanti.</translation>
     </message>
     <message>
         <source>Reload</source>
         <translation>Ricarica</translation>
     </message>
     <message>
-        <source>Reload current web page.</source>
-        <translation>Ricarica pagina web attuale.</translation>
-    </message>
-    <message>
         <source>Stop</source>
         <translation>Ferma</translation>
     </message>
     <message>
-        <source>Stop web page loading.</source>
-        <translation>Ferma caricamento pagina web.</translation>
+        <source>Open this website in system web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Failed to open URL in web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

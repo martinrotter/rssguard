@@ -90,14 +90,6 @@
         <translation>AdBlock låter dig blockera oönskat innehåll på webbsidor</translation>
     </message>
     <message>
-        <source>Blocked popup window</source>
-        <translation>Blockerade popup-fönster</translation>
-    </message>
-    <message>
-        <source>AdBlock blocked unwanted popup window.</source>
-        <translation>AdBlock blockerade oönskat popup-fönster.</translation>
-    </message>
-    <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Visa AdBlock-&amp;inställningar</translation>
     </message>
@@ -108,17 +100,6 @@
     <message>
         <source>Disable only on this page</source>
         <translation>Inaktivera endast på denna sida</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockManager</name>
-    <message>
-        <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation>Vill du prenumerera på &lt;b&gt;%1&lt;/b&gt;?</translation>
-    </message>
-    <message>
-        <source>Add AdBlock subscription</source>
-        <translation>Lägg till AdBlock-prenumeration</translation>
     </message>
 </context>
 <context>
@@ -337,17 +318,6 @@
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>Webbsidan innehåller inga flöden.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller ett annat flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %n flöden.</numerusform></translation>
-    </message>
-    <message>
         <source>Not supported</source>
         <translation>Stöds ej</translation>
     </message>
@@ -358,6 +328,14 @@ Denna webbsida innehåller %n flöden.</numerusform></translation>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
         <translation>Flöden har identifierats, men inget passande konto är konfigurerat.</translation>
+    </message>
+    <message>
+        <source>This website does not contain any feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Add one of %n feed(s)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -806,6 +784,13 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>CUSTOM</source>
         <translation>ANPASSAT</translation>
+    </message>
+</context>
+<context>
+    <name>FormAccountDetails</name>
+    <message>
+        <source>Edit account &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1383,10 +1368,6 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation>Den valda Nextcloud News-servern kör en version som inte stöds.</translation>
     </message>
     <message>
-        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>Nextclouds nyhetsserver fungerar med version %1, då minst version %2 krävs.</translation>
-    </message>
-    <message>
         <source>Nextcloud News server is okay.</source>
         <translation>Nextclouds nyhetsserver är okay.</translation>
     </message>
@@ -1395,179 +1376,19 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
         <translation>Nätverksfel! Har du angett korrekt Nextcloud-slutpunkt och lösenord?</translation>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
-        <translation>Den valda Nextcloud News-servern kör version %1 som inte stöds. Lägst version %2 krävs.</translation>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
-        <source>URL</source>
-        <translation>URL</translation>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Vissa flöden kräver autentisering. Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation>Autentisering</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Användarnamn</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Lösenord</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Visa lösenord</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>Kräver HTTP-autentisering</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation>&amp;Testa inställning</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Tvinga serveruppdatering när flöden uppdateras från RSS-Guard</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation>Notera att API-nivå %1 är miniminivå.</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation>Användarnamn för HTTP-autentisering</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation>Lösenord för HTTP-autentisering</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation>Lösenord för ditt TT RSS-konto</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation>Användarnamn för ditt TT RSS-konto</translation>
-    </message>
-    <message>
-        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation>URL för din TT-RSS-instans UTAN vidhängande API-sträng</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation>Inget test utfört ännu.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation>Här visas resultat av anslutningstest.</translation>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation>Lägg till nytt Tiny Tiny RSS-konto</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Redigera befintligt Tiny Tiny RSS-konto</translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation>API-åtkomst är inte aktiverad på den valda servern.</translation>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation>Inloggningsuppgifter är felaktiga.</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation>Annat fel uppstod! Kontakta utvecklaren.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Den valda Tiny Tiny RSS-servern kör en API-version (%1) som inte stöds. Minst API-nivå %2 krävs.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Den valda Tiny Tiny RSS-servern kör en API-version som inte stöds.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Tiny Tiny RSS-servern är okay. Den kör API-nivå %1 och minimikravet är nivå %2.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS-servern är okay.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation>Nätverksfel: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Nätverksfel! Har du angett korrekt Tiny Tiny RSS API-slutpunkt och lösenord?</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Ospecificerat fel! Angav du korrekt URL?</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation>Användarnamn saknas.</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation>Användarnamn okay.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation>Lösenord saknas.</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation>Lösenord okay.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Användarnamnet är OK, eller behövs inte.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Användarnamn saknas.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Lösenordet är OK, eller behövs inte.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Lösenord saknas.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation>URL saknas.</translation>
-    </message>
-    <message>
-        <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation>URL:en skall INTE sluta med &quot;/api/&quot;.</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation>URL okay.</translation>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
-        <translation>Ladda bara ner olästa meddelanden.</translation>
+        <source>Add new TT-RSS account</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2023,6 +1844,10 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
         <translation>Ladda ner meddelanden från objekt med &amp;anpassad policy för automatisk nerladdning</translation>
+    </message>
+    <message>
+        <source>Message viewer toolbars</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3382,6 +3207,10 @@ Inloggningstoken upphör: %2</translation>
         <source>You can close this window now. Go back to %1</source>
         <translation>Du kan stänga det här fönstret nu. Gå tillbaka till %1</translation>
     </message>
+    <message>
+        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4015,6 +3844,10 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <source>Auto-download messages for all feeds every</source>
         <translation>Ladda ner meddelanden automatiskt för alla flöden varje</translation>
     </message>
+    <message>
+        <source>Bring application window to front once message is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4181,6 +4014,10 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>Left mouse button double-click</source>
         <translation>Dubbelklick på vänster musknapp</translation>
+    </message>
+    <message>
+        <source>Display count of unread messages</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4670,6 +4507,169 @@ Olästa nyheter: %2</translation>
     </message>
 </context>
 <context>
+    <name>TtRssAccountDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Ladda bara ner olästa meddelanden.</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation>Tvinga serveruppdatering när flöden uppdateras från RSS-Guard</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Vissa flöden kräver autentisering. Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Autentisering</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Användarnamn</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Lösenord</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Visa lösenord</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation>Kräver HTTP-autentisering</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>&amp;Testa inställning</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation>Notera att API-nivå %1 är miniminivå.</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation>Användarnamn för HTTP-autentisering</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation>Lösenord för HTTP-autentisering</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation>Lösenord för ditt TT RSS-konto</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation>Användarnamn för ditt TT RSS-konto</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation>URL för din TT-RSS-instans UTAN vidhängande API-sträng</translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Inget test utfört ännu.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Här visas resultat av anslutningstest.</translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation>API-åtkomst är inte aktiverad på den valda servern.</translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation>Inloggningsuppgifter är felaktiga.</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation>Annat fel uppstod! Kontakta utvecklaren.</translation>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation>Den valda Tiny Tiny RSS-servern kör en API-version som inte stöds.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation>Tiny Tiny RSS-servern är okay.</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Nätverksfel: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation>Nätverksfel! Har du angett korrekt Tiny Tiny RSS API-slutpunkt och lösenord?</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation>Ospecificerat fel! Angav du korrekt URL?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Användarnamn saknas.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>Användarnamn okay.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>Lösenord saknas.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>Lösenord okay.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Användarnamnet är OK, eller behövs inte.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Användarnamn saknas.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Lösenordet är ok, eller behövs inte.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Lösenord saknas.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>URL saknas.</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation>URL:en skall INTE sluta med &quot;/api/&quot;.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>URL okay.</translation>
+    </message>
+</context>
+<context>
     <name>TtRssFeedDetails</name>
     <message>
         <source>Form</source>
@@ -4745,32 +4745,28 @@ Senaste inloggning: %4</translation>
         <translation>Tillbaka</translation>
     </message>
     <message>
-        <source>Go back.</source>
-        <translation>Gå tillbaka.</translation>
-    </message>
-    <message>
         <source>Forward</source>
         <translation>Framåt</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Gå framåt.</translation>
     </message>
     <message>
         <source>Reload</source>
         <translation>Uppdatera</translation>
     </message>
     <message>
-        <source>Reload current web page.</source>
-        <translation>Läs in aktuell webbsida igen.</translation>
-    </message>
-    <message>
         <source>Stop</source>
         <translation>Stopp</translation>
     </message>
     <message>
-        <source>Stop web page loading.</source>
-        <translation>Stoppa inläsning av webbsidan.</translation>
+        <source>Open this website in system web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Failed to open URL in web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

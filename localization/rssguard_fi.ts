@@ -90,14 +90,6 @@
         <translation>AdBlock-mainoseston avulla voit estää ei-haluttua sisältöä verkkosivuilla</translation>
     </message>
     <message>
-        <source>Blocked popup window</source>
-        <translation>Ponnahdusikkuna estetty</translation>
-    </message>
-    <message>
-        <source>AdBlock blocked unwanted popup window.</source>
-        <translation>AdBlock-mainosesto esti ei-halutun ponnahdusikkunan.</translation>
-    </message>
-    <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Näytä &amp;AdBlock-asetukset</translation>
     </message>
@@ -108,17 +100,6 @@
     <message>
         <source>Disable only on this page</source>
         <translation>Poista käytöstä vain tällä sivulla</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockManager</name>
-    <message>
-        <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation>Haluatko lisätä tilauksen &lt;b&gt;%1&lt;/b&gt;?</translation>
-    </message>
-    <message>
-        <source>Add AdBlock subscription</source>
-        <translation>Lisää AdBlock-tilaus</translation>
     </message>
 </context>
 <context>
@@ -337,15 +318,6 @@
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>Tämä sivusto ei sisällä syötteitä.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message>
         <source>Not supported</source>
         <translation>Ei tuettu</translation>
     </message>
@@ -356,6 +328,14 @@ This website contains %n feed(s).</source>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This website does not contain any feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Add one of %n feed(s)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -390,7 +370,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation type="unfinished"/>
+        <translation> Latauskansiota ei voitu luoda</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
@@ -398,11 +378,11 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation type="unfinished"/>
+        <translation>%1/%2 (%3 per sekunti) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation type="unfinished"/>
+        <translation>%1/%2 - lataus valmistui</translation>
     </message>
     <message>
         <source>Open &amp;directory</source>
@@ -800,6 +780,13 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>CUSTOM</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAccountDetails</name>
+    <message>
+        <source>Edit account &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1376,10 +1363,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Valittu Nextcloud News -palvelin käyttää ei-tuettua versiota.</translation>
     </message>
     <message>
-        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Nextcloud News server is okay.</source>
         <translation>Nextcloud News -palvelin on kunnossa.</translation>
     </message>
@@ -1388,179 +1371,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
+        <source>Installed version: %1, required at least: %2.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
-        <source>URL</source>
-        <translation>URL-osoite</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <source>Server setup</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Authentication</source>
-        <translation>Tunnistautuminen</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Käyttäjätunnus</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Salasana</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Näytä salasana</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>Vaatii HTTP-tunnistautumisen</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation>&amp;Testaa asetukset</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <source>Add new TT-RSS account</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation>Huomioi että API-tason tulee olla vähintään %1.</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation>HTTP-tunnistautumisen käyttäjätunnus</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation>HTTP-tunnistautumisen salasana</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation>Salasana TT-RSS-tilille</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation>Käyttäjätunnus TT-RSS-tilille</translation>
-    </message>
-    <message>
-        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation>Testiä ei ole vielä tehty.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation>Tässä näytetään yhteystestin tulokset.</translation>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation>Lisää uusi Tiny Tiny RSS -tili</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Muokkaa olemassa olevaa Tiny Tiny RSS -tiliä</translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation>Annetut kirjautumistiedot olivat virheelliset.</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS -palvelin on kunnossa.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation>Verkkovirhe: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation>Käyttäjätunnus ei voi olla tyhjä.</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation>Salasana ei voi olla tyhjä.</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Käyttäjätunnus on tyhjä.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Salasana on tyhjä.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation>URL-osoite ei voi olla tyhjä.</translation>
-    </message>
-    <message>
-        <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
-        <translation>Lataa vain lukemattomat viestit</translation>
     </message>
 </context>
 <context>
@@ -1595,7 +1418,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Do not download messages at all</source>
-        <translation type="unfinished"/>
+        <translation>Älä lataa viestejä lainkaan</translation>
     </message>
 </context>
 <context>
@@ -2003,18 +1826,22 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Download all new messages</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Lataa kaikki uudet viestit</translation>
     </message>
     <message>
         <source>Download messages for &amp;selected items</source>
-        <translation type="unfinished"/>
+        <translation>Lataa viestit &amp;valituille tietueille</translation>
     </message>
     <message>
         <source>Stop ongoing downloading of messages</source>
-        <translation type="unfinished"/>
+        <translation>Pysäytä viestien lataaminen</translation>
     </message>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
+        <translation>Lataa viestit tietuille, joilla on &amp;mukautettu automaattilatauksen käytäntö</translation>
+    </message>
+    <message>
+        <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2438,7 +2265,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Verkko</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -2596,7 +2423,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Verkko</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -3362,6 +3189,10 @@ Login tokens expiration: %2</source>
         <source>You can close this window now. Go back to %1</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3971,6 +3802,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Auto-download messages for all feeds every</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Bring application window to front once message is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4137,6 +3972,10 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Left mouse button double-click</source>
         <translation>Vasemman hiirenpainikkeen kaksoisnapsautus</translation>
+    </message>
+    <message>
+        <source>Display count of unread messages</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4625,6 +4464,169 @@ Unread news: %2</source>
     </message>
 </context>
 <context>
+    <name>TtRssAccountDetails</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Lataa vain lukemattomat viestit</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Tunnistautuminen</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Käyttäjätunnus</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Salasana</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Näytä salasana</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation>Vaatii HTTP-tunnistautumisen</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>&amp;Testaa asetukset</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL-osoite</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation>Huomioi että API-tason tulee olla vähintään %1.</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation>HTTP-tunnistautumisen käyttäjätunnus</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation>HTTP-tunnistautumisen salasana</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation>Salasana TT-RSS-tilille</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation>Käyttäjätunnus TT-RSS-tilille</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Testiä ei ole vielä tehty.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Tässä näytetään yhteystestin tulokset.</translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation>Annetut kirjautumistiedot olivat virheelliset.</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation>Tiny Tiny RSS -palvelin on kunnossa.</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Verkkovirhe: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Käyttäjätunnus ei voi olla tyhjä.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>Salasana ei voi olla tyhjä.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Käyttäjätunnus on tyhjä.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Salasana on tyhjä.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>URL-osoite ei voi olla tyhjä.</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>TtRssFeedDetails</name>
     <message>
         <source>Form</source>
@@ -4697,32 +4699,28 @@ Last login on: %4</source>
         <translation>Taaksepäin</translation>
     </message>
     <message>
-        <source>Go back.</source>
-        <translation>Siirry taaksepäin.</translation>
-    </message>
-    <message>
         <source>Forward</source>
         <translation>Eteenpäin</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Siirry eteenpäin.</translation>
     </message>
     <message>
         <source>Reload</source>
         <translation>Lataa uudelleen</translation>
     </message>
     <message>
-        <source>Reload current web page.</source>
-        <translation>Lataa nykyinen verkkosivu uudelleen.</translation>
-    </message>
-    <message>
         <source>Stop</source>
         <translation>Pysäytä</translation>
     </message>
     <message>
-        <source>Stop web page loading.</source>
-        <translation>Pysäytä verkkosivun lataaminen.</translation>
+        <source>Open this website in system web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Failed to open URL in web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

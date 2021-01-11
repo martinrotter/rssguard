@@ -90,14 +90,6 @@
         <translation>AdBlock mempersilahkan anda menghalangi konten yang tak dikehendaki pada halaman web</translation>
     </message>
     <message>
-        <source>Blocked popup window</source>
-        <translation>Halangi jendela popup</translation>
-    </message>
-    <message>
-        <source>AdBlock blocked unwanted popup window.</source>
-        <translation>AdBlock menghalangi jendela popup yang tak dikehendaki.</translation>
-    </message>
-    <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Tampilkan &amp;pengaturan AdBlock</translation>
     </message>
@@ -108,17 +100,6 @@
     <message>
         <source>Disable only on this page</source>
         <translation>Matikan hanya pada halaman ini</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockManager</name>
-    <message>
-        <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation>Apakah anda ingin menambahkan langganan  &lt;b&gt;%1&lt;/b&gt;?</translation>
-    </message>
-    <message>
-        <source>Add AdBlock subscription</source>
-        <translation>Tambah langganan AdBlock</translation>
     </message>
 </context>
 <context>
@@ -337,16 +318,6 @@
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>Situs web ini tidak mengandung feed satupun.</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation><numerusform>Klik saya untuk menambah feed dari situs web ini.
-Situs web ini mengandung %n feed.</numerusform></translation>
-    </message>
-    <message>
         <source>Not supported</source>
         <translation>Tidak didukung</translation>
     </message>
@@ -357,6 +328,14 @@ Situs web ini mengandung %n feed.</numerusform></translation>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
         <translation>Feed terdeteksi, namun tak ada akun yang cocok yang terkonfigurasi.</translation>
+    </message>
+    <message>
+        <source>This website does not contain any feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Add one of %n feed(s)</source>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -802,6 +781,13 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>CUSTOM</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAccountDetails</name>
+    <message>
+        <source>Edit account &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1378,10 +1364,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>Server Nextcloud News terpilih menjalankan versi yang tak didukung.</translation>
     </message>
     <message>
-        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>Server Nextcloud News baik-baik saja, berjalan dengan versi %1, sedangkan setidaknya versi %2 dibutuhkan.</translation>
-    </message>
-    <message>
         <source>Nextcloud News server is okay.</source>
         <translation>Server Nextcloud News baik-baik saja.</translation>
     </message>
@@ -1390,179 +1372,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
-        <translation>Server Nextcloud News terpilih menjalankan versi yang tak didukung. %1. Setidaknya versi %2 dibutuhkan.</translation>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
-        <source>URL</source>
-        <translation>URL</translation>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Beberapa feed butuh autentikasi, termasuk feed GMail. Skema autentikasi BASIC, NTLM-2 and DIGEST-MD5 didukung.</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation>Autentikasi</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Nama pengguna</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Kata sandi</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Tampilkan kata sandi</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>Membutuhkan autentikasi HTTP</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation>&amp;Tes setelan</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Eksekusi paksa pembaruan dari sisi server ketika memperbarui feed dari RSS Guard</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Membiarkan pilihan ini menyala menyebabkan pembaruan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation>Perhatikan bahwa setidaknya API level %1 dibutuhkan.</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation>Autentikasi HTTP nama pengguna</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation>Autentikasi HTTP kata sandi</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation>Kata sandi untuk akun TT-RSS anda</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation>Nama pengguna untuk akun TT-RSS anda</translation>
-    </message>
-    <message>
-        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation>URL dari instansi TT-RSS anda tanpa mengikuti rangkaian &quot;/api/&quot;</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation>Belum ada tes yang dilakukan.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation>Tambah akun Tiny Tiny RSS baru</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>Sunting akun Tiny Tiny RSS yang ada</translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation>Akses API pada server yang dipilih tidak diaktifkan.</translation>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation>Kredensial masukkan salah.</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation>Eror lain terjadi, hubungi pengembang.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>Server Tiny Tiny RSS yang dipilih menjalankan versi API (%1) yang tidak didukung. Setidaknya API level %2 dibutuhkan.</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>Server Tiny Tiny RSS yang dipilih menjalankan versi API yang tidak didukung.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Server Tiny Tiny RSS ok, berjalan dengan API level %1, walau setidaknya API level %2 dibutuhkan.</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Server Tiny Tiny RSS ok.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation>Eror jaringan: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>Eror jaringan, sudahkan anda memasukkan endpoint API Tiny Tiny RSS and kata sandi yang benar?</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Eror tidak ditentukan, apakah anda memasukkan URL yang benar?</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation>Nama pengguna tidak dapat kosong.</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation>Nama pengguna ok.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation>Kata sandi tidak dapat kosong.</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation>Kata sandi ok.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Nama pengguna ok atau ini tidak diperlukan.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Nama pengguna kosong.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Kata sandi ok atau ini tidak diperlukan.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Kata sandi kosong.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation>URL tidak dapat kosong.</translation>
-    </message>
-    <message>
-        <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation>URL jangan diakhiri dengan &quot;/api/&quot;.</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation>URL ok.</translation>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
-        <translation>Mengunduh hanya pesan belum terbaca</translation>
+        <source>Add new TT-RSS account</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2017,6 +1839,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3369,6 +3195,10 @@ Waktu berakhir log masuk: %2</translation>
         <source>You can close this window now. Go back to %1</source>
         <translation>Anda dapat tutup jendela ini. Kembali ke %1</translation>
     </message>
+    <message>
+        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3998,6 +3828,10 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
         <source>Auto-download messages for all feeds every</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Bring application window to front once message is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4163,6 +3997,10 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Left mouse button double-click</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display count of unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4650,6 +4488,169 @@ Berita belum terbaca:%2</translation>
     </message>
 </context>
 <context>
+    <name>TtRssAccountDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>Formulir</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Mengunduh hanya pesan belum terbaca</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation>Eksekusi paksa pembaruan dari sisi server ketika memperbarui feed dari RSS Guard</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Beberapa feed butuh autentikasi, termasuk feed GMail. Skema autentikasi BASIC, NTLM-2 and DIGEST-MD5 didukung.</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Autentikasi</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Nama pengguna</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Kata sandi</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Tampilkan kata sandi</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation>Membutuhkan autentikasi HTTP</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>&amp;Tes setelan</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation>Membiarkan pilihan ini menyala menyebabkan pembaruan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation>Perhatikan bahwa setidaknya API level %1 dibutuhkan.</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation>Autentikasi HTTP nama pengguna</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation>Autentikasi HTTP kata sandi</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation>Kata sandi untuk akun TT-RSS anda</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation>Nama pengguna untuk akun TT-RSS anda</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation>URL dari instansi TT-RSS anda tanpa mengikuti rangkaian &quot;/api/&quot;</translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Belum ada tes yang dilakukan.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation>Akses API pada server yang dipilih tidak diaktifkan.</translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation>Kredensial masukkan salah.</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation>Eror lain terjadi, hubungi pengembang.</translation>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation>Server Tiny Tiny RSS yang dipilih menjalankan versi API yang tidak didukung.</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation>Server Tiny Tiny RSS ok.</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Eror jaringan: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation>Eror jaringan, sudahkan anda memasukkan endpoint API Tiny Tiny RSS and kata sandi yang benar?</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation>Eror tidak ditentukan, apakah anda memasukkan URL yang benar?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Nama pengguna tidak dapat kosong.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>Nama pengguna ok.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>Kata sandi tidak dapat kosong.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>Kata sandi ok.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Nama pengguna ok atau ini tidak diperlukan.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Nama pengguna kosong.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Kata sandi ok atau ini tidak diperlukan.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Kata sandi kosong.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>URL tidak dapat kosong.</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation>URL jangan diakhiri dengan &quot;/api/&quot;.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>URL ok.</translation>
+    </message>
+</context>
+<context>
     <name>TtRssFeedDetails</name>
     <message>
         <source>Form</source>
@@ -4725,32 +4726,28 @@ Log masuk terakhir pada: %4</translation>
         <translation>Kembali</translation>
     </message>
     <message>
-        <source>Go back.</source>
-        <translation>Kembali.</translation>
-    </message>
-    <message>
         <source>Forward</source>
         <translation>Maju</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>Maju.</translation>
     </message>
     <message>
         <source>Reload</source>
         <translation>Muat ulang</translation>
     </message>
     <message>
-        <source>Reload current web page.</source>
-        <translation>Muat ulang halaman web ini.</translation>
-    </message>
-    <message>
         <source>Stop</source>
         <translation>Hentikan</translation>
     </message>
     <message>
-        <source>Stop web page loading.</source>
-        <translation>Hentikan pemuatan halaman web.</translation>
+        <source>Open this website in system web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Failed to open URL in web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

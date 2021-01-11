@@ -90,14 +90,6 @@
         <translation>AdBlock 讓您封鎖不想要的網頁內容</translation>
     </message>
     <message>
-        <source>Blocked popup window</source>
-        <translation>封鎖的彈出窗</translation>
-    </message>
-    <message>
-        <source>AdBlock blocked unwanted popup window.</source>
-        <translation>AdBlock 封鎖不想要的彈出窗。</translation>
-    </message>
-    <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>顯示 AdBlock 設定(&amp;S)</translation>
     </message>
@@ -108,17 +100,6 @@
     <message>
         <source>Disable only on this page</source>
         <translation>僅於此頁停用</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockManager</name>
-    <message>
-        <source>Do you want to add &lt;b&gt;%1&lt;/b&gt; subscription?</source>
-        <translation>想新增 &lt;b&gt;%1&lt;/b&gt; 訂閱？</translation>
-    </message>
-    <message>
-        <source>Add AdBlock subscription</source>
-        <translation>加入 AdBlock 訂閱</translation>
     </message>
 </context>
 <context>
@@ -337,16 +318,6 @@
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>This website does not contain any feeds.</source>
-        <translation>此網站不含新聞源</translation>
-    </message>
-    <message numerus="yes">
-        <source>Click me to add feeds from this website.
-This website contains %n feed(s).</source>
-        <translation><numerusform>點我以從此網站加入新聞源。
-此網站含 %n 新聞源。</numerusform></translation>
-    </message>
-    <message>
         <source>Not supported</source>
         <translation>不支援</translation>
     </message>
@@ -357,6 +328,14 @@ This website contains %n feed(s).</source>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This website does not contain any feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>Add one of %n feed(s)</source>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -804,6 +783,13 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>CUSTOM</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAccountDetails</name>
+    <message>
+        <source>Edit account &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1382,10 +1368,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>本程式不支援所選的 Nextcloud 新聞伺服器執行的版本。</translation>
     </message>
     <message>
-        <source>Nextcloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation>Nextcloud 新聞伺服器無問題，執行 %1 版；不過本程式最低需 %2 版。</translation>
-    </message>
-    <message>
         <source>Nextcloud News server is okay.</source>
         <translation>Nextcloud 新聞伺服器無問題。</translation>
     </message>
@@ -1394,179 +1376,19 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
         <translation>網路錯誤，有輸入正確的 Nextcloud 端點(endpoint)與密碼嗎？</translation>
     </message>
     <message>
-        <source>Selected Nextcloud News server is running unsupported version %1. At least version %2 is required.</source>
+        <source>Installed version: %1, required at least: %2.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
-        <source>URL</source>
-        <translation>URL</translation>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>某些新聞源，包括 Gmail 新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 的認證架構。</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation>身份認證</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>使用者名稱</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>密碼</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>顯示密碼</translation>
-    </message>
-    <message>
-        <source>Requires HTTP authentication</source>
-        <translation>需要 HTTP 身份認證</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation>測試設定(&amp;T)</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>RSS Guard 更新新聞源時，也強制執行伺服器端更新</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>啟用此選項，可能會使新聞源更新變較慢而且常逾時。</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation>注意，至少要的 API 版本級別為 %1。</translation>
-    </message>
-    <message>
-        <source>HTTP authentication username</source>
-        <translation>HTTP 認證使用者名稱</translation>
-    </message>
-    <message>
-        <source>HTTP authentication password</source>
-        <translation>HTTP 認證密碼</translation>
-    </message>
-    <message>
-        <source>Password for your TT-RSS account</source>
-        <translation>TT-RSS 帳號密碼</translation>
-    </message>
-    <message>
-        <source>Username for your TT-RSS account</source>
-        <translation>TT-RSS 帳號使用者名稱</translation>
-    </message>
-    <message>
-        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation>TT-RSS 實例的URL，不包括末尾的 &quot;/api/&quot;</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation>尚未測試過。</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation>此處顯示連線測試的結果。</translation>
-    </message>
-    <message>
-        <source>Add new Tiny Tiny RSS account</source>
-        <translation>新增 Tiny Tiny RSS 帳號</translation>
-    </message>
-    <message>
-        <source>Edit existing Tiny Tiny RSS account</source>
-        <translation>編輯既有的 Tiny Tiny RSS 帳號</translation>
-    </message>
-    <message>
-        <source>API access on selected server is not enabled.</source>
-        <translation>所選服務器未啟用 API 存取。</translation>
-    </message>
-    <message>
-        <source>Entered credentials are incorrect.</source>
-        <translation>輸入的網域、帳號、密碼(credentials)錯誤。</translation>
-    </message>
-    <message>
-        <source>Other error occurred, contact developers.</source>
-        <translation>發生其他錯誤，請聯繫開發人員。</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation>本程式不支援所選的 Tiny Tiny RSS 伺服器執行的 API 版本 (%1)。至少要 %2 API 版本級別才有支援。</translation>
-    </message>
-    <message>
-        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation>本程式不支援所選的 Tiny Tiny RSS 伺服器執行的 API 版本 (%1)。</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation>Tiny Tiny RSS 伺服器無問題，執行 %1 API 版本級別；不過本程式最低需 %2 版級。</translation>
-    </message>
-    <message>
-        <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Tiny Tiny RSS 伺服器無問題。</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation>網路錯誤: &apos;%&apos;。</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation>網絡錯誤，輸入的 Tiny Tiny RSS API 網路終端點網址(endpoint)和密碼是否正確？</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation>無法檢別的錯誤，是否輸入了正確的 URL？</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation>不可缺使用者名稱。</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation>使用者名稱無問題。</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation>一定得設密碼。</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation>密碼無問題。</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>用戶名無問題或不必要。</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>缺使用者名稱。</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>密碼無問題或不必要。</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>缺密碼。</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation>不可缺 URL。</translation>
-    </message>
-    <message>
-        <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation>URL 不應以 &quot;/api/&quot; 結尾</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation>URL 無問題。</translation>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
-        <translation>只下載未讀消息</translation>
+        <source>Add new TT-RSS account</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2021,6 +1843,10 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3378,6 +3204,10 @@ Login tokens expiration: %2</source>
         <source>You can close this window now. Go back to %1</source>
         <translation>現在可以關閉此窗。回到 %1</translation>
     </message>
+    <message>
+        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -4009,6 +3839,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Auto-download messages for all feeds every</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Bring application window to front once message is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4175,6 +4009,10 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Left mouse button double-click</source>
         <translation>雙點鼠左鍵</translation>
+    </message>
+    <message>
+        <source>Display count of unread messages</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4664,6 +4502,169 @@ Unread news: %2</source>
     </message>
 </context>
 <context>
+    <name>TtRssAccountDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>表單</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>只下載未讀消息</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation>RSS Guard 更新新聞源時，也強制執行伺服器端更新</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>某些新聞源，包括 Gmail 新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 的認證架構。</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>認證</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>使用者名稱</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>密碼</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>顯示密碼</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation>需要 HTTP 認證</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>測試設定(&amp;T)</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation>啟用此選項，可能會使新聞源更新變較慢而且常逾時。</translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation>注意，至少要的 API 版本級別為 %1。</translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation>HTTP 認證使用者名稱</translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation>HTTP 認證密碼</translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation>TT-RSS 帳號密碼</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation>TT-RSS 帳號使用者名稱</translation>
+    </message>
+    <message>
+        <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
+        <translation>TT-RSS 實例的URL，不包括末尾的 &quot;/api/&quot;</translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>尚未測試過。</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>此處顯示連線測試的結果。</translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation>所選服務器未啟用 API 存取。</translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation>輸入的網域、帳號、密碼(credentials)錯誤。</translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation>發生其他錯誤，請聯繫開發人員。</translation>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation>本程式不支援所選的 Tiny Tiny RSS 伺服器執行的 API 版本 (%1)。</translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation>Tiny Tiny RSS 伺服器無問題。</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>網路錯誤: &apos;%&apos;。</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation>網絡錯誤，輸入的 Tiny Tiny RSS API 網路終端點網址(endpoint)和密碼是否正確？</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation>無法檢別的錯誤，是否輸入了正確的 URL？</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>不可缺使用者名稱。</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>使用者名稱無問題。</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>不可缺密碼。</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>密碼無問題。</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>使用者名稱無問題或不必要。</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>缺使用者名稱。</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>密碼無問題或不必要。</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>缺密碼。</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>不可缺 URL。</translation>
+    </message>
+    <message>
+        <source>URL should NOT end with &quot;/api/&quot;.</source>
+        <translation>URL 不應以 &quot;/api/&quot; 結尾</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>URL 無問題。</translation>
+    </message>
+</context>
+<context>
     <name>TtRssFeedDetails</name>
     <message>
         <source>Form</source>
@@ -4739,32 +4740,28 @@ Last login on: %4</source>
         <translation>退回</translation>
     </message>
     <message>
-        <source>Go back.</source>
-        <translation>退回。</translation>
-    </message>
-    <message>
         <source>Forward</source>
         <translation>向前</translation>
-    </message>
-    <message>
-        <source>Go forward.</source>
-        <translation>向前。</translation>
     </message>
     <message>
         <source>Reload</source>
         <translation>重新載入</translation>
     </message>
     <message>
-        <source>Reload current web page.</source>
-        <translation>重新載入目前網頁。</translation>
-    </message>
-    <message>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
     <message>
-        <source>Stop web page loading.</source>
-        <translation>停止網頁載入。</translation>
+        <source>Open this website in system web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Failed to open URL in web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
