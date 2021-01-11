@@ -205,7 +205,7 @@ QString GmailServiceRoot::additionalTooltip() const {
                                                network()->oauth()->tokensExpireIn().toString() : QSL("-"));
 }
 
-void GmailServiceRoot::saveAllCachedData() {
+void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
   auto msg_cache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
@@ -216,7 +216,7 @@ void GmailServiceRoot::saveAllCachedData() {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      if (network()->markMessagesRead(key, ids) != QNetworkReply::NetworkError::NoError) {
+      if (network()->markMessagesRead(key, ids) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
         addMessageStatesToCache(ids, key);
       }
     }
@@ -237,7 +237,7 @@ void GmailServiceRoot::saveAllCachedData() {
         custom_ids.append(msg.m_customId);
       }
 
-      if (network()->markMessagesStarred(key, custom_ids) != QNetworkReply::NetworkError::NoError) {
+      if (network()->markMessagesStarred(key, custom_ids) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
         addMessageStatesToCache(messages, key);
       }
     }

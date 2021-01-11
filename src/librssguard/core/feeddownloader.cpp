@@ -44,7 +44,7 @@ void FeedDownloader::updateAvailableFeeds() {
       qDebugNN << LOGSEC_FEEDDOWNLOADER
                << "Saving cache for feed with DB ID '" << feed->id()
                << "' and title '" << feed->title() << "'.";
-      cache->saveAllCachedData();
+      cache->saveAllCachedData(false);
     }
 
     if (m_stopCacheSynchronization) {
@@ -66,7 +66,7 @@ void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>&
   for (CacheForServiceRoot* cache : caches) {
     qDebugNN << LOGSEC_FEEDDOWNLOADER
              << "Synchronizing cache back to server on thread" << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
-    cache->saveAllCachedData();
+    cache->saveAllCachedData(false);
 
     if (m_stopCacheSynchronization) {
       qWarningNN << LOGSEC_FEEDDOWNLOADER << "Aborting cache synchronization.";

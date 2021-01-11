@@ -148,7 +148,7 @@ RootItem* InoreaderServiceRoot::obtainNewTreeForSyncIn() const {
   }
 }
 
-void InoreaderServiceRoot::saveAllCachedData() {
+void InoreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
   auto msg_cache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
@@ -159,7 +159,7 @@ void InoreaderServiceRoot::saveAllCachedData() {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      if (network()->markMessagesRead(key, ids) != QNetworkReply::NetworkError::NoError) {
+      if (network()->markMessagesRead(key, ids) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
         addMessageStatesToCache(ids, key);
       }
     }
@@ -180,7 +180,7 @@ void InoreaderServiceRoot::saveAllCachedData() {
         custom_ids.append(msg.m_customId);
       }
 
-      if (network()->markMessagesStarred(key, custom_ids) != QNetworkReply::NetworkError::NoError) {
+      if (network()->markMessagesStarred(key, custom_ids) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
         addMessageStatesToCache(messages, key);
       }
     }
@@ -195,7 +195,7 @@ void InoreaderServiceRoot::saveAllCachedData() {
     QStringList messages = k.value();
 
     if (!messages.isEmpty()) {
-      if (network()->editLabels(label_custom_id, true, messages) != QNetworkReply::NetworkError::NoError) {
+      if (network()->editLabels(label_custom_id, true, messages) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
         addLabelsAssignmentsToCache(messages, label_custom_id, true);
       }
     }
@@ -210,7 +210,7 @@ void InoreaderServiceRoot::saveAllCachedData() {
     QStringList messages = l.value();
 
     if (!messages.isEmpty()) {
-      if (network()->editLabels(label_custom_id, false, messages) != QNetworkReply::NetworkError::NoError) {
+      if (network()->editLabels(label_custom_id, false, messages) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
         addLabelsAssignmentsToCache(messages, label_custom_id, false);
       }
     }

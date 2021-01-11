@@ -80,7 +80,7 @@ OwnCloudNetworkFactory* OwnCloudServiceRoot::network() const {
   return m_network;
 }
 
-void OwnCloudServiceRoot::saveAllCachedData() {
+void OwnCloudServiceRoot::saveAllCachedData(bool ignore_errors) {
   auto msg_cache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
@@ -93,7 +93,7 @@ void OwnCloudServiceRoot::saveAllCachedData() {
     if (!ids.isEmpty()) {
       auto res = network()->markMessagesRead(key, ids);
 
-      if (res.first != QNetworkReply::NetworkError::NoError) {
+      if (!ignore_errors && res.first != QNetworkReply::NetworkError::NoError) {
         addMessageStatesToCache(ids, key);
       }
     }
@@ -117,7 +117,7 @@ void OwnCloudServiceRoot::saveAllCachedData() {
 
       auto res = network()->markMessagesStarred(key, feed_ids, guid_hashes);
 
-      if (res.first != QNetworkReply::NetworkError::NoError) {
+      if (!ignore_errors && res.first != QNetworkReply::NetworkError::NoError) {
         addMessageStatesToCache(messages, key);
       }
     }

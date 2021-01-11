@@ -28,6 +28,8 @@ TtRssServiceRoot* FormEditTtRssAccount::addEditAccount(TtRssServiceRoot* account
 }
 
 void FormEditTtRssAccount::apply() {
+  FormAccountDetails::apply();
+
   bool editing_account = true;
 
   if (m_account == nullptr) {

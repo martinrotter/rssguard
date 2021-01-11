@@ -117,7 +117,7 @@ bool TtRssServiceRoot::canBeDeleted() const {
   return true;
 }
 
-void TtRssServiceRoot::saveAllCachedData() {
+void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
   auto msg_cache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
@@ -134,7 +134,7 @@ void TtRssServiceRoot::saveAllCachedData() {
                                            ? UpdateArticle::Mode::SetToTrue
                                            : UpdateArticle::Mode::SetToFalse);
 
-      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+      if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
         addMessageStatesToCache(ids, key);
       }
     }
@@ -156,7 +156,7 @@ void TtRssServiceRoot::saveAllCachedData() {
                                            ? UpdateArticle::Mode::SetToTrue
                                            : UpdateArticle::Mode::SetToFalse);
 
-      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+      if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
         addMessageStatesToCache(messages, key);
       }
     }
@@ -173,7 +173,7 @@ void TtRssServiceRoot::saveAllCachedData() {
     if (!messages.isEmpty()) {
       auto res = network()->setArticleLabel(messages, label_custom_id, true);
 
-      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+      if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
         addLabelsAssignmentsToCache(messages, label_custom_id, true);
       }
     }
@@ -190,7 +190,7 @@ void TtRssServiceRoot::saveAllCachedData() {
     if (!messages.isEmpty()) {
       auto res = network()->setArticleLabel(messages, label_custom_id, false);
 
-      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+      if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
         addLabelsAssignmentsToCache(messages, label_custom_id, false);
       }
     }

@@ -16,7 +16,17 @@ FormAccountDetails::FormAccountDetails(const QIcon& icon, QWidget* parent) : QDi
   createConnections();
 }
 
-void FormAccountDetails::apply() {}
+void FormAccountDetails::apply() {
+  if (m_account != nullptr) {
+    // Perform last-time operations before account is changed.
+    auto* cached_account = dynamic_cast<CacheForServiceRoot*>(m_account);
+
+    if (cached_account != nullptr) {
+      qWarningNN << LOGSEC_CORE << "Last-time account cache saving before account gets changed.";
+      cached_account->saveAllCachedData(true);
+    }
+  }
+}
 
 void FormAccountDetails::insertCustomTab(QWidget* custom_tab, const QString& title, int index) {
   m_ui.m_tabWidget->insertTab(index, custom_tab, title);

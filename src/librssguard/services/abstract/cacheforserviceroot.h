@@ -22,7 +22,7 @@ class CacheForServiceRoot {
   public:
     explicit CacheForServiceRoot();
 
-    virtual void saveAllCachedData() = 0;
+    virtual void saveAllCachedData(bool ignore_errors) = 0;
 
     void addLabelsAssignmentsToCache(const QStringList& ids_of_messages, const QString& lbl_custom_id, bool assign);
     void addLabelsAssignmentsToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign);
