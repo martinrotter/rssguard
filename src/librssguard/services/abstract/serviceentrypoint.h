@@ -28,11 +28,6 @@ class ServiceEntryPoint {
     // to the global feed model.
     virtual QList<ServiceRoot*> initializeSubtree() const = 0;
 
-    // Can this service account be added just once?
-    // NOTE: This is true particularly for "standard" service
-    // which operates with normal RSS/ATOM feeds.
-    virtual bool isSingleInstanceService() const = 0;
-
     // Human readable service name, for example "TT-RSS".
     virtual QString name() const = 0;
 

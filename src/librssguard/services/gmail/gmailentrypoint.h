@@ -7,15 +7,13 @@
 
 class GmailEntryPoint : public ServiceEntryPoint {
   public:
-    ServiceRoot* createNewRoot() const;
-
-    QList<ServiceRoot*> initializeSubtree() const;
-    bool isSingleInstanceService() const;
-    QString name() const;
-    QString code() const;
-    QString description() const;
-    QString author() const;
-    QIcon icon() const;
+    virtual ServiceRoot* createNewRoot() const;
+    virtual QList<ServiceRoot*> initializeSubtree() const;
+    virtual QString name() const;
+    virtual QString code() const;
+    virtual QString description() const;
+    virtual QString author() const;
+    virtual QIcon icon() const;
 };
 
 #endif // GMAILENTRYPOINT_H

@@ -7,10 +7,6 @@
 #include "miscellaneous/databasequeries.h"
 #include "services/standard/standardserviceroot.h"
 
-bool StandardServiceEntryPoint::isSingleInstanceService() const {
-  return true;
-}
-
 QString StandardServiceEntryPoint::name() const {
   return QObject::tr("Standard online feeds (RSS/ATOM/JSON)");
 }

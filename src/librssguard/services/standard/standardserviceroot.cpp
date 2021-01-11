@@ -146,7 +146,7 @@ void StandardServiceRoot::checkArgumentsForFeedAdding() {
 
 QString StandardServiceRoot::processFeedUrl(const QString& feed_url) {
   if (feed_url.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
-    QString without_feed_prefix = feed_url.mid(5);
+    QString without_feed_prefix = feed_url.mid(QSL(URI_SCHEME_FEED_SHORT).size());
 
     if (without_feed_prefix.startsWith(QL1S("https:")) || without_feed_prefix.startsWith(QL1S("http:"))) {
       return without_feed_prefix;

@@ -10,6 +10,7 @@
 #include "services/abstract/serviceroot.h"
 #include "services/standard/gui/standardfeeddetails.h"
 #include "services/standard/standardfeed.h"
+#include "services/standard/standardserviceroot.h"
 
 #include <QFileDialog>
 #include <QTextCodec>
@@ -32,7 +33,10 @@ int FormStandardFeedDetails::addEditFeed(StandardFeed* input_feed, RootItem* par
   if (input_feed == nullptr) {
     // User is adding new feed.
     setWindowTitle(tr("Add new feed"));
-    m_standardFeedDetails->prepareForNewFeed(parent_to_select, url);
+
+    auto processed_url = qobject_cast<StandardServiceRoot*>(m_serviceRoot)->processFeedUrl(url);
+
+    m_standardFeedDetails->prepareForNewFeed(parent_to_select, processed_url);
   }
   else {
     setEditableFeed(input_feed);

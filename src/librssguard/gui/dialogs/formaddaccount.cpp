@@ -52,14 +52,7 @@ void FormAddAccount::loadEntryPoints() {
   for (const ServiceEntryPoint* entry_point : m_entryPoints) {
     QListWidgetItem* item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
 
-    if (entry_point->isSingleInstanceService() && m_model->containsServiceRootFromEntryPoint(entry_point)) {
-      // Oops, this item cannot be added, it is single instance and is already added.
-      item->setFlags(Qt::ItemFlag::NoItemFlags);
-      item->setToolTip(tr("This account can be added only once."));
-    }
-    else {
-      item->setToolTip(entry_point->description());
-    }
+    item->setToolTip(entry_point->description());
   }
 
   m_ui->m_listEntryPoints->setCurrentRow(m_entryPoints.size() - 1);

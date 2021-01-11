@@ -302,24 +302,6 @@ QList<ServiceRoot*>FeedsModel::serviceRoots() const {
   return roots;
 }
 
-bool FeedsModel::containsServiceRootFromEntryPoint(const ServiceEntryPoint* point) const {
-  return boolinq::from(serviceRoots()).any([=](ServiceRoot* root) {
-    return root->code() == point->code();
-  });
-}
-
-StandardServiceRoot* FeedsModel::standardServiceRoot() const {
-  for (ServiceRoot* root : serviceRoots()) {
-    StandardServiceRoot* std_service_root;
-
-    if ((std_service_root = dynamic_cast<StandardServiceRoot*>(root)) != nullptr) {
-      return std_service_root;
-    }
-  }
-
-  return nullptr;
-}
-
 QList<Feed*>FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   QList<Feed*>feeds_for_update;
 

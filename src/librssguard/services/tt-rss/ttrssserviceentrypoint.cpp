@@ -9,10 +9,6 @@
 #include "services/tt-rss/gui/formeditttrssaccount.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
-bool TtRssServiceEntryPoint::isSingleInstanceService() const {
-  return false;
-}
-
 QString TtRssServiceEntryPoint::name() const {
   return QSL("Tiny Tiny RSS");
 }

@@ -47,12 +47,6 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     // the model root item.
     QList<ServiceRoot*> serviceRoots() const;
 
-    // Determines if there is any account activated from given entry point.
-    bool containsServiceRootFromEntryPoint(const ServiceEntryPoint* point) const;
-
-    // Direct and the only global accessor to standard service root.
-    StandardServiceRoot* standardServiceRoot() const;
-
     // Returns the list of feeds which should be updated
     // according to auto-update schedule.
     // Variable "auto_update_now" is true, when global timeout

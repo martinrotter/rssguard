@@ -25,10 +25,6 @@ QList<ServiceRoot*> InoreaderEntryPoint::initializeSubtree() const {
   return DatabaseQueries::getInoreaderAccounts(database);
 }
 
-bool InoreaderEntryPoint::isSingleInstanceService() const {
-  return false;
-}
-
 QString InoreaderEntryPoint::name() const {
   return QSL("Inoreader");
 }

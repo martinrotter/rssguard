@@ -22,10 +22,6 @@ QList<ServiceRoot*> OwnCloudServiceEntryPoint::initializeSubtree() const {
   return DatabaseQueries::getOwnCloudAccounts(database);
 }
 
-bool OwnCloudServiceEntryPoint::isSingleInstanceService() const {
-  return false;
-}
-
 QString OwnCloudServiceEntryPoint::name() const {
   return QSL("Nextcloud News");
 }

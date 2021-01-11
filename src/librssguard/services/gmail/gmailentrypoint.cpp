@@ -24,10 +24,6 @@ QList<ServiceRoot*> GmailEntryPoint::initializeSubtree() const {
   return DatabaseQueries::getGmailAccounts(database);
 }
 
-bool GmailEntryPoint::isSingleInstanceService() const {
-  return false;
-}
-
 QString GmailEntryPoint::name() const {
   return QSL("Gmail");
 }

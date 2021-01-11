@@ -2,6 +2,7 @@
 
 #include "miscellaneous/application.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/formabout.h"
@@ -361,10 +362,12 @@ void Application::processExecutionMessage(const QString& message) {
       }
       else if (msg.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
         // Application was running, and someone wants to add new feed.
-        StandardServiceRoot* root = qApp->feedReader()->feedsModel()->standardServiceRoot();
+        ServiceRoot* rt = boolinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
+          return root->supportsFeedAdding();
+        });
 
-        if (root != nullptr) {
-          root->checkArgumentForFeedAdding(msg);
+        if (rt != nullptr) {
+          rt->addNewFeed(nullptr, msg);
         }
         else {
           showGuiMessage(tr("Cannot add feed"),
