@@ -24,9 +24,6 @@ class FormEditTtRssAccount : public FormAccountDetails {
     virtual void setEditableAccount(ServiceRoot* editable_account);
 
   private:
-    TtRssServiceRoot* ttRssAccount() const;
-
-  private:
     TtRssAccountDetails* m_details;
 };
 

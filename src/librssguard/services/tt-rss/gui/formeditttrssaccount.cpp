@@ -24,7 +24,7 @@ TtRssServiceRoot* FormEditTtRssAccount::addEditAccount(TtRssServiceRoot* account
   }
 
   exec();
-  return ttRssAccount();
+  return account<TtRssServiceRoot>();
 }
 
 void FormEditTtRssAccount::apply() {
@@ -39,22 +39,22 @@ void FormEditTtRssAccount::apply() {
     editing_account = false;
   }
 
-  ttRssAccount()->network()->setUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
-  ttRssAccount()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
-  ttRssAccount()->network()->setPassword(m_details->m_ui.m_txtPassword->lineEdit()->text());
-  ttRssAccount()->network()->setAuthIsUsed(m_details->m_ui.m_gbHttpAuthentication->isChecked());
-  ttRssAccount()->network()->setAuthUsername(m_details->m_ui.m_txtHttpUsername->lineEdit()->text());
-  ttRssAccount()->network()->setAuthPassword(m_details->m_ui.m_txtHttpPassword->lineEdit()->text());
-  ttRssAccount()->network()->setForceServerSideUpdate(m_details->m_ui.m_checkServerSideUpdate->isChecked());
-  ttRssAccount()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
+  account<TtRssServiceRoot>()->network()->setUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
+  account<TtRssServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
+  account<TtRssServiceRoot>()->network()->setPassword(m_details->m_ui.m_txtPassword->lineEdit()->text());
+  account<TtRssServiceRoot>()->network()->setAuthIsUsed(m_details->m_ui.m_gbHttpAuthentication->isChecked());
+  account<TtRssServiceRoot>()->network()->setAuthUsername(m_details->m_ui.m_txtHttpUsername->lineEdit()->text());
+  account<TtRssServiceRoot>()->network()->setAuthPassword(m_details->m_ui.m_txtHttpPassword->lineEdit()->text());
+  account<TtRssServiceRoot>()->network()->setForceServerSideUpdate(m_details->m_ui.m_checkServerSideUpdate->isChecked());
+  account<TtRssServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
 
-  ttRssAccount()->saveAccountDataToDatabase();
+  account<TtRssServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
   if (editing_account) {
-    ttRssAccount()->network()->logout();
-    ttRssAccount()->completelyRemoveAllData();
-    ttRssAccount()->syncIn();
+    account<TtRssServiceRoot>()->network()->logout();
+    account<TtRssServiceRoot>()->completelyRemoveAllData();
+    account<TtRssServiceRoot>()->syncIn();
   }
 }
 
@@ -71,8 +71,4 @@ void FormEditTtRssAccount::setEditableAccount(ServiceRoot* editable_account) {
   m_details->m_ui.m_txtUrl->lineEdit()->setText(existing_root->network()->url());
   m_details->m_ui.m_checkServerSideUpdate->setChecked(existing_root->network()->forceServerSideUpdate());
   m_details->m_ui.m_checkDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
-}
-
-TtRssServiceRoot* FormEditTtRssAccount::ttRssAccount() const {
-  return qobject_cast<TtRssServiceRoot*>(m_account);
 }

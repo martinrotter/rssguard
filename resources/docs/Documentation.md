@@ -234,3 +234,5 @@ To redirect debug output of RSS Guard to log file, do this:
 3. Enter `rssguard.exe --log 'log.txt'`. RSS Guard will now start. You can of course specify arbitrary file where to store log and its location must be writable.
 4. Now try to simulate your problem.
 5. Attach generated `log.txt` file to your bug report.
+
+On Windows, there are some problems if you want to see debug output of a GUI program, because Windows does not support "dual" applications. You can, however, display application's debug console output with PowerShell, specifically for RSS Guard like this: `.\rssguard.exe | Out-Default`. Just run this stuff when you are in RSS Guard's folder and you should see console output directly in your PowerShell window.

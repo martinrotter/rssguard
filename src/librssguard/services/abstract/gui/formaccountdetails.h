@@ -15,6 +15,9 @@ class FormAccountDetails : public QDialog {
   public:
     explicit FormAccountDetails(const QIcon& icon, QWidget* parent = nullptr);
 
+    template<class T>
+    T* account() const;
+
   protected slots:
 
     // Applies changes.
@@ -39,5 +42,10 @@ class FormAccountDetails : public QDialog {
     Ui::FormAccountDetails m_ui;
     ServiceRoot* m_account;
 };
+
+template<class T>
+inline T* FormAccountDetails::account() const {
+  return qobject_cast<T*>(m_account);
+}
 
 #endif // FORMACCOUNTDETAILS_H
