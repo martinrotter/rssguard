@@ -7,7 +7,7 @@
     </message>
     <message>
         <source>(feed)</source>
-        <translation>(zdroj)</translation>
+        <translation>(kanál)</translation>
     </message>
 </context>
 <context>
@@ -331,11 +331,11 @@
     </message>
     <message>
         <source>This website does not contain any feeds</source>
-        <translation type="unfinished"/>
+        <translation>Tento web neobsahuje kanály</translation>
     </message>
     <message numerus="yes">
         <source>Add one of %n feed(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Přidat %n kanál</numerusform><numerusform>Přidat %n kanály</numerusform><numerusform>Přidat %n kanálů</numerusform><numerusform>Přidat %n kanálů</numerusform></translation>
     </message>
 </context>
 <context>
@@ -523,16 +523,16 @@ Stav: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>dle globálního nastavení (%n minuta do dalšího automatického stažení zpráv)</numerusform><numerusform>dle globálního nastavení (%n minuty do dalšího automatického stažení zpráv)</numerusform><numerusform>dle globálního nastavení (%n minut do dalšího automatického stažení zpráv)</numerusform><numerusform>dle globálního nastavení (%n minut do dalšího automatického stažení zpráv)</numerusform></translation>
     </message>
     <message>
         <source>uses global settings (global auto-downloading of messages is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>dle globálního nastavení (globální automatické stahování zpráv je zakázáno)</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>specifické nastavení (%n minuta do dalšího automatického stažení zpráv)</numerusform><numerusform>specifické nastavení (%n minuty do dalšího automatického stažení zpráv)</numerusform><numerusform>specifické nastavení (%n minut do dalšího automatického stažení zpráv)</numerusform><numerusform>specifické nastavení (%n minut do dalšího automatického stažení zpráv)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -554,11 +554,11 @@ Stav: %3</translation>
     </message>
     <message>
         <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Nelze stáhnout nové zprávy, protože právě běží jiná kritická operace.</translation>
     </message>
     <message>
         <source>Starting auto-download of some feeds&apos; messages</source>
-        <translation type="unfinished"/>
+        <translation>Spouštím stahování zpráv pro některé kanály.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-download new messages for %n feed(s).</source>
@@ -790,7 +790,7 @@ or this functionality is not implemented yet.</source>
     <name>FormAccountDetails</name>
     <message>
         <source>Edit account &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Updavit účet &apos;%1&apos;</translation>
     </message>
 </context>
 <context>

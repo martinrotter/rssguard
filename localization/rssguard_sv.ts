@@ -331,11 +331,11 @@
     </message>
     <message>
         <source>This website does not contain any feeds</source>
-        <translation type="unfinished"/>
+        <translation>Denna webbsida innehåller inga flöden</translation>
     </message>
     <message numerus="yes">
         <source>Add one of %n feed(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Lägg till ett av %n flöde</numerusform><numerusform>Lägg till ett av %n flöden</numerusform></translation>
     </message>
 </context>
 <context>
@@ -790,7 +790,7 @@ att funktionen inte är implementerad än.</translation>
     <name>FormAccountDetails</name>
     <message>
         <source>Edit account &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Redigera konto &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -1377,18 +1377,18 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Installed version: %1, required at least: %2.</source>
-        <translation type="unfinished"/>
+        <translation>Installerad version: %1, minsta krav: %2.</translation>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>Server setup</source>
-        <translation type="unfinished"/>
+        <translation>Serverinställning</translation>
     </message>
     <message>
         <source>Add new TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till nytt TT-RSS-konto</translation>
     </message>
 </context>
 <context>
@@ -1847,7 +1847,7 @@ Det rekommenderas starkt att du skapar ditt eget applikations-ID.</translation>
     </message>
     <message>
         <source>Message viewer toolbars</source>
-        <translation type="unfinished"/>
+        <translation>Verktygsfält i meddelandeläsare</translation>
     </message>
 </context>
 <context>
@@ -3209,7 +3209,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
-        <translation type="unfinished"/>
+        <translation>Kunde inte starta OAuth vidarebefordringslyssnare. Dina rättigheter kanske inte är höga nog.</translation>
     </message>
 </context>
 <context>
@@ -3846,7 +3846,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Bring application window to front once message is opened in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Flytta programfönstret längst fram när meddelande öppnats i extern webbläsare</translation>
     </message>
 </context>
 <context>
@@ -4017,7 +4017,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Display count of unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Visa räkneverk för olästa meddelanden</translation>
     </message>
 </context>
 <context>
@@ -4602,7 +4602,7 @@ Olästa nyheter: %2</translation>
     </message>
     <message>
         <source>Installed version: %1, required at least: %2.</source>
-        <translation type="unfinished"/>
+        <translation>Installerad version: %1, minsta krav: %2.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
@@ -4758,15 +4758,15 @@ Senaste inloggning: %4</translation>
     </message>
     <message>
         <source>Open this website in system web browser</source>
-        <translation type="unfinished"/>
+        <translation>Öppna denna webbsida i systemets webbläsare</translation>
     </message>
     <message>
         <source>Failed to open URL in web browser</source>
-        <translation type="unfinished"/>
+        <translation>Kunde inte öppna URL i webbläsaren</translation>
     </message>
     <message>
         <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
-        <translation type="unfinished"/>
+        <translation>URL:en &quot;%1&quot; kunde inte öppnas i systemets webbläsare.</translation>
     </message>
 </context>
 <context>
