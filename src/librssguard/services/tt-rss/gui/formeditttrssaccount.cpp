@@ -12,6 +12,8 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
   : FormAccountDetails(qApp->icons()->miscIcon(QSL("tt-rss")), parent), m_details(new TtRssAccountDetails(this)) {
   insertCustomTab(m_details, tr("Server setup"), 0);
   activateTab(0);
+
+  m_details->m_ui.m_txtUrl->setFocus();
 }
 
 TtRssServiceRoot* FormEditTtRssAccount::addEditAccount(TtRssServiceRoot* account_to_edit) {

@@ -3,42 +3,27 @@
 #ifndef FORMEDITOWNCLOUDACCOUNT_H
 #define FORMEDITOWNCLOUDACCOUNT_H
 
-#include <QDialog>
+#include "services/abstract/gui/formaccountdetails.h"
 
-#include "ui_formeditowncloudaccount.h"
-
-namespace Ui {
-  class FormEditAccount;
-}
-
+class OwnCloudAccountDetails;
 class OwnCloudServiceRoot;
 
-class FormEditOwnCloudAccount : public QDialog {
+class FormEditOwnCloudAccount : public FormAccountDetails {
   Q_OBJECT
 
   public:
-    explicit FormEditOwnCloudAccount(QWidget* parent = 0);
-    virtual ~FormEditOwnCloudAccount();
+    explicit FormEditOwnCloudAccount(QWidget* parent = nullptr);
 
-    OwnCloudServiceRoot* execForCreate();
+    OwnCloudServiceRoot* addEditAccount(OwnCloudServiceRoot* account_to_edit = nullptr);
 
-    void execForEdit(OwnCloudServiceRoot* existing_root);
+  protected slots:
+    virtual void apply();
 
-  private slots:
-    void displayPassword(bool display);
-    void performTest();
-    void onClickedOk();
-    void onClickedCancel();
-
-    void onUsernameChanged();
-    void onPasswordChanged();
-    void onUrlChanged();
-    void checkOkButton();
+  protected:
+    virtual void setEditableAccount(ServiceRoot* editable_account);
 
   private:
-    QScopedPointer<Ui::FormEditOwnCloudAccount> m_ui;
-    OwnCloudServiceRoot* m_editableRoot;
-    QPushButton* m_btnOk;
+    OwnCloudAccountDetails* m_details;
 };
 
 #endif // FORMEDITOWNCLOUDACCOUNT_H

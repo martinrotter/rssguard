@@ -39,7 +39,7 @@ bool OwnCloudServiceRoot::canBeDeleted() const {
 bool OwnCloudServiceRoot::editViaGui() {
   QScopedPointer<FormEditOwnCloudAccount> form_pointer(new FormEditOwnCloudAccount(qApp->mainFormWidget()));
 
-  form_pointer->execForEdit(this);
+  form_pointer->addEditAccount(this);
   return true;
 }
 
