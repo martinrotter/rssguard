@@ -331,11 +331,11 @@
     </message>
     <message>
         <source>This website does not contain any feeds</source>
-        <translation type="unfinished"/>
+        <translation>Этот сайт не содержит каналов</translation>
     </message>
     <message numerus="yes">
         <source>Add one of %n feed(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Добавить один из %n канала(ов)</numerusform><numerusform>Добавить один из %n канала(ов)</numerusform><numerusform>Добавить один из %n канала(ов)</numerusform><numerusform>Добавить один из %n канала(ов)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -518,21 +518,21 @@ Status: %3</source>
     <message>
         <source>does not use auto-downloading of messages</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>не использует автозагрузку сообщений</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>использует глобальные настройки (%n минут(а) до следующей автоматической загрузки сообщений)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующей автоматической загрузки сообщений)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующей автоматической загрузки сообщений)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующей автоматической загрузки сообщений)</numerusform></translation>
     </message>
     <message>
         <source>uses global settings (global auto-downloading of messages is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>использует глобальные настройки (автоматическая загрузка сообщений отключена)</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>использует определенные настройки (%n минут(а) до следующей автоматической загрузки новых сообщений)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующей автоматической загрузки новых сообщений)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующей автоматической загрузки новых сообщений)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующей автоматической загрузки новых сообщений)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -554,15 +554,15 @@ Status: %3</source>
     </message>
     <message>
         <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Нельзя загрузить новые сообщения, потому что выполняется другая важная операция.</translation>
     </message>
     <message>
         <source>Starting auto-download of some feeds&apos; messages</source>
-        <translation type="unfinished"/>
+        <translation>Запущено автоматическая загрузка сообщений некоторых каналов</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-download new messages for %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Я буду автоматически загружать новые сообщения для %n канала(ов).</numerusform><numerusform>Я буду автоматически загружать новые сообщения для %n канала(ов).</numerusform><numerusform>Я буду автоматически загружать новые сообщения для %n канала(ов).</numerusform><numerusform>Я буду автоматически загружать новые сообщения для %n канала(ов).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -782,14 +782,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>CUSTOM</source>
-        <translation type="unfinished"/>
+        <translation>Пользовательский</translation>
     </message>
 </context>
 <context>
     <name>FormAccountDetails</name>
     <message>
         <source>Edit account &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Изменить аккаунт &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -1130,7 +1130,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Get my credentials</source>
-        <translation type="unfinished"/>
+        <translation>Получить учетные данные</translation>
     </message>
 </context>
 <context>
@@ -1376,18 +1376,18 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Installed version: %1, required at least: %2.</source>
-        <translation type="unfinished"/>
+        <translation>Установленная версия: %1, требуется как минимум: %2.</translation>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>Server setup</source>
-        <translation type="unfinished"/>
+        <translation>Настройка сервера</translation>
     </message>
     <message>
         <source>Add new TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Добавить новый TT-RSS аккаунт</translation>
     </message>
 </context>
 <context>
@@ -1402,27 +1402,27 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Редактировать &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Auto-downloading of messages</source>
-        <translation type="unfinished"/>
+        <translation>Автозагрузка сообщений</translation>
     </message>
     <message>
         <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
+        <translation>Выберите стратегию автоматического обновления для этого канала. Стратегия автоматического обновления по умолчанию означает, что канал будет обновляться через интервалы времени, установленные в настройках приложения.</translation>
     </message>
     <message>
         <source>Download messages using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Скачивать сообщения с использованием глобального интервала</translation>
     </message>
     <message>
         <source>Download messages every</source>
-        <translation type="unfinished"/>
+        <translation>Скачивать сообщения каждые</translation>
     </message>
     <message>
         <source>Do not download messages at all</source>
-        <translation type="unfinished"/>
+        <translation>Не скачивать сообщения вообще</translation>
     </message>
 </context>
 <context>
@@ -1826,27 +1826,27 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Automatically &amp;expand items when selected</source>
-        <translation type="unfinished"/>
+        <translation>Автоматически разворачивать элементы при выборе (&amp;E)</translation>
     </message>
     <message>
         <source>&amp;Download all new messages</source>
-        <translation type="unfinished"/>
+        <translation>Скачать все новые сообщения (&amp;D)</translation>
     </message>
     <message>
         <source>Download messages for &amp;selected items</source>
-        <translation type="unfinished"/>
+        <translation>Скачать сообщения для выбранных элементов (&amp;S)</translation>
     </message>
     <message>
         <source>Stop ongoing downloading of messages</source>
-        <translation type="unfinished"/>
+        <translation>Остановить текущую загрузку сообщений</translation>
     </message>
     <message>
         <source>Download messages for items with &amp;custom auto-download policy</source>
-        <translation type="unfinished"/>
+        <translation>Загрузить сообщения для элементов с настроенной политикой автозагрузки (&amp;C)</translation>
     </message>
     <message>
         <source>Message viewer toolbars</source>
-        <translation type="unfinished"/>
+        <translation>Панели инструментов средства просмотра сообщений</translation>
     </message>
 </context>
 <context>
@@ -1993,11 +1993,11 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;New filter</source>
-        <translation type="unfinished"/>
+        <translation>Новый фильтр (&amp;N)</translation>
     </message>
     <message>
         <source>&amp;Test</source>
-        <translation type="unfinished"/>
+        <translation>Тест (&amp;T)</translation>
     </message>
     <message>
         <source>Process checked feeds</source>
@@ -2005,33 +2005,35 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>&amp;Beautify</source>
-        <translation type="unfinished"/>
+        <translation>Улучшить (&amp;B)</translation>
     </message>
     <message>
         <source>Existing messages</source>
-        <translation type="unfinished"/>
+        <translation>Существующие сообщения</translation>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно сохранить новый фильтр, ошибка: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>EXISTING messages filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>Ошибка фильтрации СУЩЕСТВУЮЩИХ сообщений: &apos;%1&apos;.
+</translation>
     </message>
     <message>
         <source>SAMPLE message filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>Ошибка фильтрации сообщения из ПРИМЕРА: &apos;%1&apos;.
+</translation>
     </message>
     <message>
         <source>Context menu</source>
-        <translation type="unfinished"/>
+        <translation>Контекстное меню</translation>
     </message>
     <message>
         <source>Filter messages like this</source>
-        <translation type="unfinished"/>
+        <translation>Фильтровать сообщения подобные этому</translation>
     </message>
 </context>
 <context>
@@ -2278,7 +2280,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Сеть</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -2436,7 +2438,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Сеть</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -2444,7 +2446,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Feed was added, obtaining new tree of feeds now.</source>
-        <translation type="unfinished"/>
+        <translation>Канал был добавлен, теперь получено новое дерево каналов.</translation>
     </message>
 </context>
 <context>
@@ -2835,7 +2837,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>In recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>В корзине</translation>
     </message>
     <message>
         <source>Title</source>
@@ -3208,7 +3210,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось запустить OAuth Redirect Listener. Возможно, у вас не хватает прав.</translation>
     </message>
 </context>
 <context>
@@ -3358,11 +3360,11 @@ version by clicking this popup notification.</source>
     <name>ServiceRoot</name>
     <message>
         <source>Synchronize folders &amp;&amp; other items</source>
-        <translation type="unfinished"/>
+        <translation>Синхронизация папок и других элементов</translation>
     </message>
     <message>
         <source>Synchronize message cache</source>
-        <translation type="unfinished"/>
+        <translation>Синхронизация кеша сообщений</translation>
     </message>
 </context>
 <context>
@@ -3832,23 +3834,23 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Download messages for all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Загружать сообщения для всех каналов при запуске приложения с начальной задержкой</translation>
     </message>
     <message>
         <source>Enable &quot;auto-download started&quot; notification</source>
-        <translation type="unfinished"/>
+        <translation>Включить уведомление &quot;автозагрузка началась&quot;</translation>
     </message>
     <message>
         <source>Only auto-download messages when application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation>Только автозагрузка сообщений, когда приложение не в фокусе</translation>
     </message>
     <message>
         <source>Auto-download messages for all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Автоматическая загрузка сообщений для всех каналов каждые</translation>
     </message>
     <message>
         <source>Bring application window to front once message is opened in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Вывести окно приложения на передний план после открытия сообщения во внешнем веб-браузере</translation>
     </message>
 </context>
 <context>
@@ -4019,7 +4021,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Display count of unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Отображать количество непрочитанных сообщений</translation>
     </message>
 </context>
 <context>
@@ -4604,7 +4606,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Installed version: %1, required at least: %2.</source>
-        <translation type="unfinished"/>
+        <translation>Установленная версия: %1, требуется как минимум: %2.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
@@ -4691,11 +4693,11 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Full feed URL including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Полный URL канала, включая схему</translation>
     </message>
     <message>
         <source>Provide URL for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Укажите URL-адрес для вашего канала.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
@@ -4760,15 +4762,15 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open this website in system web browser</source>
-        <translation type="unfinished"/>
+        <translation>Открыть этот сайт в системном браузере</translation>
     </message>
     <message>
         <source>Failed to open URL in web browser</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось открыть URL-адрес в веб-браузере</translation>
     </message>
     <message>
         <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
-        <translation type="unfinished"/>
+        <translation>URL-адрес &apos;%1&apos; не может быть открыт в веб-браузере системы.</translation>
     </message>
 </context>
 <context>
