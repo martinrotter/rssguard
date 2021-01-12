@@ -150,6 +150,7 @@ HEADERS += core/feeddownloader.h \
            services/gmail/network/gmailnetworkfactory.h \
            services/inoreader/definitions.h \
            services/inoreader/gui/formeditinoreaderaccount.h \
+           services/inoreader/gui/inoreaderaccountdetails.h \
            services/inoreader/inoreaderentrypoint.h \
            services/inoreader/inoreaderfeed.h \
            services/inoreader/inoreaderserviceroot.h \
@@ -305,6 +306,7 @@ SOURCES += core/feeddownloader.cpp \
            services/gmail/gui/formeditgmailaccount.cpp \
            services/gmail/network/gmailnetworkfactory.cpp \
            services/inoreader/gui/formeditinoreaderaccount.cpp \
+           services/inoreader/gui/inoreaderaccountdetails.cpp \
            services/inoreader/inoreaderentrypoint.cpp \
            services/inoreader/inoreaderfeed.cpp \
            services/inoreader/inoreaderserviceroot.cpp \
@@ -376,6 +378,7 @@ FORMS += gui/dialogs/formabout.ui \
          services/gmail/gui/formeditgmailaccount.ui \
          services/inoreader/gui/formeditinoreaderaccount.ui \
          services/abstract/gui/authenticationdetails.ui \
+         services/inoreader/gui/inoreaderaccountdetails.ui \
          services/owncloud/gui/owncloudaccountdetails.ui \
          services/standard/gui/formstandardcategorydetails.ui \
          services/standard/gui/formstandardimportexport.ui \

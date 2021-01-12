@@ -10,9 +10,6 @@
     <height>373</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
   <layout class="QFormLayout" name="formLayout">
    <item row="2" column="0" colspan="2">
     <widget class="QCheckBox" name="m_checkDownloadOnlyUnreadMessages">
