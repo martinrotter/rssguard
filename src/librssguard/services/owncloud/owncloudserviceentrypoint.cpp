@@ -13,7 +13,7 @@
 ServiceRoot* OwnCloudServiceEntryPoint::createNewRoot() const {
   FormEditOwnCloudAccount form_acc(qApp->mainFormWidget());
 
-  return form_acc.addEditAccount();
+  return form_acc.addEditAccount<OwnCloudServiceRoot>();
 }
 
 QList<ServiceRoot*> OwnCloudServiceEntryPoint::initializeSubtree() const {

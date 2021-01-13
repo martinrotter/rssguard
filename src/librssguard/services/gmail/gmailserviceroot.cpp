@@ -168,7 +168,7 @@ bool GmailServiceRoot::canBeEdited() const {
 bool GmailServiceRoot::editViaGui() {
   FormEditGmailAccount form_pointer(qApp->mainFormWidget());
 
-  form_pointer.execForEdit(this);
+  form_pointer.addEditAccount(this);
   return true;
 }
 

@@ -1,27 +1,23 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/inoreader/gui/inoreaderaccountdetails.h"
+#include "services/gmail/gui/gmailaccountdetails.h"
 
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"
-#include "services/inoreader/definitions.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
+#include "services/gmail/definitions.h"
+#include "services/gmail/network/gmailnetworkfactory.h"
 
-InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
-  : QWidget(parent), m_oauth(new OAuth2Service(INOREADER_OAUTH_AUTH_URL, INOREADER_OAUTH_TOKEN_URL,
-                                               INOREADER_OAUTH_CLI_ID, INOREADER_OAUTH_CLI_KEY,
-                                               INOREADER_OAUTH_SCOPE, this)) {
+GmailAccountDetails::GmailAccountDetails(QWidget* parent)
+  : QWidget(parent), m_oauth(new OAuth2Service(GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
+                                               QString(), QString(), GMAIL_OAUTH_SCOPE, this)) {
   m_ui.setupUi(this);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
 
   m_ui.m_lblInfo->setText(tr("Specified redirect URL must start with \"http://localhost\" and "
-                             "must be configured in your OAuth \"application\".\n\n"
-                             "It is highly recommended to create your own \"App ID\". "
-                             "Because predefined one may be limited due to usage quotas if used by "
-                             "too many users simultaneously."));
+                             "must be configured in your OAuth \"application\"."));
 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("Not tested yet."),
@@ -35,27 +31,27 @@ InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
   setTabOrder(m_ui.m_txtRedirectUrl, m_ui.m_spinLimitMessages);
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_btnTestSetup);
 
-  connect(m_ui.m_txtAppId->lineEdit(), &BaseLineEdit::textChanged, this, &InoreaderAccountDetails::checkOAuthValue);
-  connect(m_ui.m_txtAppKey->lineEdit(), &BaseLineEdit::textChanged, this, &InoreaderAccountDetails::checkOAuthValue);
-  connect(m_ui.m_txtRedirectUrl->lineEdit(), &BaseLineEdit::textChanged, this, &InoreaderAccountDetails::checkOAuthValue);
-  connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &InoreaderAccountDetails::checkUsername);
-  connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &InoreaderAccountDetails::testSetup);
-  connect(m_ui.m_btnRegisterApi, &QPushButton::clicked, this, &InoreaderAccountDetails::registerApi);
+  connect(m_ui.m_txtAppId->lineEdit(), &BaseLineEdit::textChanged, this, &GmailAccountDetails::checkOAuthValue);
+  connect(m_ui.m_txtAppKey->lineEdit(), &BaseLineEdit::textChanged, this, &GmailAccountDetails::checkOAuthValue);
+  connect(m_ui.m_txtRedirectUrl->lineEdit(), &BaseLineEdit::textChanged, this, &GmailAccountDetails::checkOAuthValue);
+  connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &GmailAccountDetails::checkUsername);
+  connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &GmailAccountDetails::testSetup);
+  connect(m_ui.m_btnRegisterApi, &QPushButton::clicked, this, &GmailAccountDetails::registerApi);
 
-  m_ui.m_spinLimitMessages->setValue(INOREADER_DEFAULT_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMinimum(INOREADER_MIN_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMaximum(INOREADER_MAX_BATCH_SIZE);
+  m_ui.m_spinLimitMessages->setValue(GMAIL_DEFAULT_BATCH_SIZE);
+  m_ui.m_spinLimitMessages->setMinimum(GMAIL_MIN_BATCH_SIZE);
+  m_ui.m_spinLimitMessages->setMaximum(GMAIL_MAX_BATCH_SIZE);
 
   checkUsername(m_ui.m_txtUsername->lineEdit()->text());
 
-  m_ui.m_txtAppId->lineEdit()->setText(INOREADER_OAUTH_CLI_ID);
-  m_ui.m_txtAppKey->lineEdit()->setText(INOREADER_OAUTH_CLI_KEY);
-  m_ui.m_txtRedirectUrl->lineEdit()->setText(OAUTH_REDIRECT_URI);
+  m_ui.m_txtAppId->lineEdit()->clear();
+  m_ui.m_txtAppKey->lineEdit()->clear();
+  m_ui.m_txtRedirectUrl->lineEdit()->setText(m_oauth->redirectUrl());
 
   hookNetwork();
 }
 
-void InoreaderAccountDetails::testSetup() {
+void GmailAccountDetails::testSetup() {
   if (m_oauth->clientId() != m_ui.m_txtAppId->lineEdit()->text() ||
       m_oauth->clientSecret() != m_ui.m_txtAppKey->lineEdit()->text() ||
       m_oauth->redirectUrl() != m_ui.m_txtRedirectUrl->lineEdit()->text()) {
@@ -74,7 +70,7 @@ void InoreaderAccountDetails::testSetup() {
   }
 }
 
-void InoreaderAccountDetails::checkUsername(const QString& username) {
+void GmailAccountDetails::checkUsername(const QString& username) {
   if (username.isEmpty()) {
     m_ui.m_txtUsername->setStatus(WidgetWithStatus::StatusType::Error, tr("No username entered."));
   }
@@ -83,37 +79,37 @@ void InoreaderAccountDetails::checkUsername(const QString& username) {
   }
 }
 
-void InoreaderAccountDetails::onAuthFailed() {
+void GmailAccountDetails::onAuthFailed() {
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                   tr("You did not grant access."),
                                   tr("There was error during testing."));
 }
 
-void InoreaderAccountDetails::onAuthError(const QString& error, const QString& detailed_description) {
+void GmailAccountDetails::onAuthError(const QString& error, const QString& detailed_description) {
   Q_UNUSED(error)
 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                  tr("There is error. %1").arg(detailed_description),
+                                  tr("There is error. %1 ").arg(detailed_description),
                                   tr("There was error during testing."));
 }
 
-void InoreaderAccountDetails::onAuthGranted() {
+void GmailAccountDetails::onAuthGranted() {
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                   tr("Tested successfully. You may be prompted to login once more."),
                                   tr("Your access was approved."));
 }
 
-void InoreaderAccountDetails::hookNetwork() {
-  connect(m_oauth, &OAuth2Service::tokensReceived, this, &InoreaderAccountDetails::onAuthGranted);
-  connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &InoreaderAccountDetails::onAuthError);
-  connect(m_oauth, &OAuth2Service::authFailed, this, &InoreaderAccountDetails::onAuthFailed);
+void GmailAccountDetails::hookNetwork() {
+  connect(m_oauth, &OAuth2Service::tokensReceived, this, &GmailAccountDetails::onAuthGranted);
+  connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &GmailAccountDetails::onAuthError);
+  connect(m_oauth, &OAuth2Service::authFailed, this, &GmailAccountDetails::onAuthFailed);
 }
 
-void InoreaderAccountDetails::registerApi() {
-  qApp->web()->openUrlInExternalBrowser(INOREADER_REG_API_URL);
+void GmailAccountDetails::registerApi() {
+  qApp->web()->openUrlInExternalBrowser(GMAIL_REG_API_URL);
 }
 
-void InoreaderAccountDetails::checkOAuthValue(const QString& value) {
+void GmailAccountDetails::checkOAuthValue(const QString& value) {
   auto* line_edit = qobject_cast<LineEditWithStatus*>(sender()->parent());
 
   if (line_edit != nullptr) {

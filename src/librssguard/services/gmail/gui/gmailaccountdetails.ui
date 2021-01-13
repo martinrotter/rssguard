@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FormEditGmailAccount</class>
- <widget class="QDialog" name="FormEditGmailAccount">
+ <class>GmailAccountDetails</class>
+ <widget class="QWidget" name="GmailAccountDetails">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>542</width>
-    <height>363</height>
+    <width>431</width>
+    <height>258</height>
    </rect>
   </property>
-  <layout class="QFormLayout" name="formLayout">
+  <layout class="QFormLayout" name="formLayout_4">
    <item row="0" column="0">
     <widget class="QLabel" name="m_lblUsername">
      <property name="text">
@@ -23,14 +23,20 @@
    </item>
    <item row="1" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>1</verstretch>
+      </sizepolicy>
+     </property>
      <property name="title">
       <string>OAuth 2.0 settings</string>
      </property>
-     <layout class="QFormLayout" name="formLayout_4">
+     <layout class="QFormLayout" name="formLayout">
       <item row="0" column="0">
        <widget class="QLabel" name="m_lblUsername_2">
         <property name="text">
-         <string>Application ID</string>
+         <string>Client ID</string>
         </property>
         <property name="buddy">
          <cstring>m_txtAppId</cstring>
@@ -43,7 +49,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="m_lblUsername_3">
         <property name="text">
-         <string>Application key</string>
+         <string>Client secret</string>
         </property>
         <property name="buddy">
          <cstring>m_txtAppKey</cstring>
@@ -66,17 +72,43 @@
       <item row="2" column="1">
        <widget class="LineEditWithStatus" name="m_txtRedirectUrl" native="true"/>
       </item>
+      <item row="4" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="m_btnRegisterApi">
+          <property name="text">
+           <string>Get my credentials</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
       <item row="3" column="0" colspan="2">
        <widget class="QLabel" name="m_lblInfo">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
         <property name="wordWrap">
          <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QPushButton" name="m_btnRegisterApi">
-        <property name="text">
-         <string>Get my credentials</string>
         </property>
        </widget>
       </item>
@@ -121,28 +153,12 @@
      </item>
      <item row="0" column="1">
       <widget class="LabelWithStatus" name="m_lblTestResult" native="true">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>1</verstretch>
-        </sizepolicy>
-       </property>
        <property name="layoutDirection">
         <enum>Qt::RightToLeft</enum>
        </property>
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="5" column="0" colspan="2">
-    <widget class="QDialogButtonBox" name="m_buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
    </item>
    <item row="4" column="0" colspan="2">
     <spacer name="verticalSpacer">
@@ -151,8 +167,8 @@
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>20</width>
-       <height>40</height>
+       <width>410</width>
+       <height>0</height>
       </size>
      </property>
     </spacer>
@@ -173,44 +189,6 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <tabstops>
-  <tabstop>m_btnRegisterApi</tabstop>
-  <tabstop>m_spinLimitMessages</tabstop>
-  <tabstop>m_btnTestSetup</tabstop>
- </tabstops>
  <resources/>
- <connections>
-  <connection>
-   <sender>m_buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>FormEditGmailAccount</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>FormEditGmailAccount</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

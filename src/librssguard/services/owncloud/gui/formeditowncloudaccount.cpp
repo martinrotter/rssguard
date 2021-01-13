@@ -18,19 +18,6 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
   m_details->m_ui.m_txtUrl->setFocus();
 }
 
-OwnCloudServiceRoot* FormEditOwnCloudAccount::addEditAccount(OwnCloudServiceRoot* account_to_edit) {
-  if (account_to_edit == nullptr) {
-    // User is adding new TT-RSS account.
-    setWindowTitle(tr("Add new Nextcloud News account"));
-  }
-  else {
-    setEditableAccount(account_to_edit);
-  }
-
-  exec();
-  return account<OwnCloudServiceRoot>();
-}
-
 void FormEditOwnCloudAccount::apply() {
   FormAccountDetails::apply();
 

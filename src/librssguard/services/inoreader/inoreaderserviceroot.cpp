@@ -94,7 +94,7 @@ bool InoreaderServiceRoot::canBeEdited() const {
 bool InoreaderServiceRoot::editViaGui() {
   FormEditInoreaderAccount form_pointer(qApp->mainFormWidget());
 
-  form_pointer.execForEdit(this);
+  form_pointer.addEditAccount(this);
   return true;
 }
 
