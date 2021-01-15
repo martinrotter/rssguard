@@ -15,7 +15,7 @@ Install-Module VSSetup -Scope CurrentUser -AllowClobber -Force
 Import-VisualStudioVars -Architecture x64
 
 # Get Qt.
-$qt_version = "5.15.1"
+$qt_version = "5.15.2"
 $qt_stub = "qt-$qt_version-dynamic-msvc2019-x86_64"
 $qt_link = "https://github.com/martinrotter/qt5-minimalistic-builds/releases/download/$qt_version/$qt_stub.7z"
 $qt_output = "qt.7z"
