@@ -1,25 +1,25 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#ifndef INOREADERACCOUNTDETAILS_H
-#define INOREADERACCOUNTDETAILS_H
+#ifndef GMAILACCOUNTDETAILS_H
+#define GMAILACCOUNTDETAILS_H
 
 #include <QWidget>
 
-#include "ui_inoreaderaccountdetails.h"
+#include "ui_gmailaccountdetails.h"
 
 class OAuth2Service;
 
-class InoreaderAccountDetails : public QWidget {
+class GmailAccountDetails : public QWidget {
   Q_OBJECT
 
-  friend class FormEditInoreaderAccount;
+  friend class FormEditGmailAccount;
 
   public:
-    explicit InoreaderAccountDetails(QWidget* parent = nullptr);
+    explicit GmailAccountDetails(QWidget* parent = nullptr);
 
   private slots:
     void registerApi();
-    void testSetup();;
+    void testSetup();
     void checkOAuthValue(const QString& value);
     void checkUsername(const QString& username);
     void onAuthFailed();
@@ -30,8 +30,8 @@ class InoreaderAccountDetails : public QWidget {
     void hookNetwork();
 
   private:
-    Ui::InoreaderAccountDetails m_ui;
+    Ui::GmailAccountDetails m_ui;
     OAuth2Service* m_oauth;
 };
 
-#endif // INOREADERACCOUNTDETAILS_H
+#endif // GMAILACCOUNTDETAILS_H

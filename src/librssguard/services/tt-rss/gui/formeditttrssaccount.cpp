@@ -16,19 +16,6 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
   m_details->m_ui.m_txtUrl->setFocus();
 }
 
-TtRssServiceRoot* FormEditTtRssAccount::addEditAccount(TtRssServiceRoot* account_to_edit) {
-  if (account_to_edit == nullptr) {
-    // User is adding new TT-RSS account.
-    setWindowTitle(tr("Add new TT-RSS account"));
-  }
-  else {
-    setEditableAccount(account_to_edit);
-  }
-
-  exec();
-  return account<TtRssServiceRoot>();
-}
-
 void FormEditTtRssAccount::apply() {
   FormAccountDetails::apply();
 

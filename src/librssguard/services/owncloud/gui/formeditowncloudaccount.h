@@ -14,8 +14,6 @@ class FormEditOwnCloudAccount : public FormAccountDetails {
   public:
     explicit FormEditOwnCloudAccount(QWidget* parent = nullptr);
 
-    OwnCloudServiceRoot* addEditAccount(OwnCloudServiceRoot* account_to_edit = nullptr);
-
   protected slots:
     virtual void apply();
 

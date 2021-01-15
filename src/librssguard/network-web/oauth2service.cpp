@@ -46,7 +46,7 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
                              const QString& client_secret, const QString& scope, QObject* parent)
   : QObject(parent),
   m_id(QString::number(QRandomGenerator::global()->generate())), m_timerId(-1),
-  m_redirectionHandler(new OAuthHttpHandler(tr("You can close this window now. Go back to %1").arg(APP_NAME),
+  m_redirectionHandler(new OAuthHttpHandler(tr("You can close this window now. Go back to %1.").arg(APP_NAME),
                                             this)) {
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(token_url);

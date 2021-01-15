@@ -3,46 +3,25 @@
 #ifndef FORMEDITINOREADERACCOUNT_H
 #define FORMEDITINOREADERACCOUNT_H
 
-#include <QDialog>
-
-#include "ui_formeditinoreaderaccount.h"
-
-#include "services/inoreader/network/inoreadernetworkfactory.h"
-
-namespace Ui {
-  class FormEditInoreaderAccount;
-}
+#include "services/abstract/gui/formaccountdetails.h"
 
 class InoreaderServiceRoot;
+class InoreaderAccountDetails;
 
-class FormEditInoreaderAccount : public QDialog {
+class FormEditInoreaderAccount : public FormAccountDetails {
   Q_OBJECT
 
   public:
     explicit FormEditInoreaderAccount(QWidget* parent = nullptr);
-    virtual ~FormEditInoreaderAccount();
 
-    InoreaderServiceRoot* execForCreate();
+  protected slots:
+    virtual void apply();
 
-    void execForEdit(InoreaderServiceRoot* existing_root);
-
-  private slots:
-    void registerApi();
-    void testSetup();
-    void onClickedOk();
-    void onClickedCancel();
-    void checkOAuthValue(const QString& value);
-    void checkUsername(const QString& username);
-    void onAuthFailed();
-    void onAuthError(const QString& error, const QString& detailed_description);
-    void onAuthGranted();
+  protected:
+    virtual void setEditableAccount(ServiceRoot* editable_account);
 
   private:
-    void hookNetwork();
-
-    Ui::FormEditInoreaderAccount m_ui;
-    OAuth2Service* m_oauth;
-    InoreaderServiceRoot* m_editableRoot;
+    InoreaderAccountDetails* m_details;
 };
 
 #endif // FORMEDITINOREADERACCOUNT_H

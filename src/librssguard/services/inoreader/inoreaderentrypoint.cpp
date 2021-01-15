@@ -16,7 +16,7 @@
 ServiceRoot* InoreaderEntryPoint::createNewRoot() const {
   FormEditInoreaderAccount form_acc(qApp->mainFormWidget());
 
-  return form_acc.execForCreate();
+  return form_acc.addEditAccount<InoreaderServiceRoot>();
 }
 
 QList<ServiceRoot*> InoreaderEntryPoint::initializeSubtree() const {

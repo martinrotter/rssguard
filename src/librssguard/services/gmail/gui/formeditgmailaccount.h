@@ -3,46 +3,27 @@
 #ifndef FORMEDITINOREADERACCOUNT_H
 #define FORMEDITINOREADERACCOUNT_H
 
-#include <QDialog>
-
-#include "ui_formeditgmailaccount.h"
+#include "services/abstract/gui/formaccountdetails.h"
 
 #include "services/gmail/network/gmailnetworkfactory.h"
 
-namespace Ui {
-  class FormEditGmailAccount;
-}
-
 class GmailServiceRoot;
+class GmailAccountDetails;
 
-class FormEditGmailAccount : public QDialog {
+class FormEditGmailAccount : public FormAccountDetails {
   Q_OBJECT
 
   public:
     explicit FormEditGmailAccount(QWidget* parent = nullptr);
-    virtual ~FormEditGmailAccount();
 
-    GmailServiceRoot* execForCreate();
+  protected slots:
+    virtual void apply();
 
-    void execForEdit(GmailServiceRoot* existing_root);
-
-  private slots:
-    void registerApi();
-    void testSetup();
-    void onClickedOk();
-    void onClickedCancel();
-    void checkOAuthValue(const QString& value);
-    void checkUsername(const QString& username);
-    void onAuthFailed();
-    void onAuthError(const QString& error, const QString& detailed_description);
-    void onAuthGranted();
+  protected:
+    virtual void setEditableAccount(ServiceRoot* editable_account);
 
   private:
-    void hookNetwork();
-
-    Ui::FormEditGmailAccount m_ui;
-    OAuth2Service* m_oauth;
-    GmailServiceRoot* m_editableRoot;
+    GmailAccountDetails* m_details;
 };
 
 #endif // FORMEDITINOREADERACCOUNT_H

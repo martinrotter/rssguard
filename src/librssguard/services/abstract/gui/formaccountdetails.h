@@ -16,6 +16,9 @@ class FormAccountDetails : public QDialog {
     explicit FormAccountDetails(const QIcon& icon, QWidget* parent = nullptr);
 
     template<class T>
+    T* addEditAccount(T* account_to_edit = nullptr);
+
+    template<class T>
     T* account() const;
 
   protected slots:
@@ -42,6 +45,19 @@ class FormAccountDetails : public QDialog {
     Ui::FormAccountDetails m_ui;
     ServiceRoot* m_account;
 };
+
+template<class T>
+inline T* FormAccountDetails::addEditAccount(T* account_to_edit) {
+  if (account_to_edit == nullptr) {
+    setWindowTitle(tr("Add new account"));
+  }
+  else {
+    setEditableAccount(static_cast<ServiceRoot*>(account_to_edit));
+  }
+
+  exec();
+  return account<T>();
+}
 
 template<class T>
 inline T* FormAccountDetails::account() const {

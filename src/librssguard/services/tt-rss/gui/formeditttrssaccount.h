@@ -15,8 +15,6 @@ class FormEditTtRssAccount : public FormAccountDetails {
   public:
     explicit FormEditTtRssAccount(QWidget* parent = nullptr);
 
-    TtRssServiceRoot* addEditAccount(TtRssServiceRoot* account_to_edit = nullptr);
-
   protected slots:
     virtual void apply();
 

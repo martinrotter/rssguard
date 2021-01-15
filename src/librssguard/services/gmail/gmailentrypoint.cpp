@@ -15,7 +15,7 @@
 ServiceRoot* GmailEntryPoint::createNewRoot() const {
   FormEditGmailAccount form_acc(qApp->mainFormWidget());
 
-  return form_acc.execForCreate();
+  return form_acc.addEditAccount<GmailServiceRoot>();
 }
 
 QList<ServiceRoot*> GmailEntryPoint::initializeSubtree() const {
