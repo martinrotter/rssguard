@@ -31,7 +31,7 @@ ServiceRoot* StandardServiceEntryPoint::createNewRoot() const {
   // Switch DB.
   QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"));
   bool ok;
-  int new_id = DatabaseQueries::createAccount(database, code(), &ok);
+  int new_id = DatabaseQueries::createBaseAccount(database, code(), &ok);
 
   if (ok) {
     auto* root = new StandardServiceRoot();

@@ -91,7 +91,7 @@ void GmailServiceRoot::saveAccountDataToDatabase() {
   }
   else {
     bool saved;
-    int id_to_assign = DatabaseQueries::createAccount(database, code(), &saved);
+    int id_to_assign = DatabaseQueries::createBaseAccount(database, code(), &saved);
 
     if (saved) {
       if (DatabaseQueries::createGmailAccount(database, id_to_assign,

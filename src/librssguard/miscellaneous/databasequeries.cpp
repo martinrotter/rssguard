@@ -1798,7 +1798,7 @@ bool DatabaseQueries::createOwnCloudAccount(const QSqlDatabase& db, int id_to_as
   }
 }
 
-int DatabaseQueries::createAccount(const QSqlDatabase& db, const QString& code, bool* ok) {
+int DatabaseQueries::createBaseAccount(const QSqlDatabase& db, const QString& code, bool* ok) {
   QSqlQuery q(db);
 
   // First obtain the ID, which can be assigned to this new account.
@@ -1836,6 +1836,13 @@ int DatabaseQueries::createAccount(const QSqlDatabase& db, const QString& code, 
                << "'.";
     return 0;
   }
+}
+
+void DatabaseQueries::editBaseAccount(const QSqlDatabase& db, ServiceRoot* account, bool* ok) {
+  Q_UNUSED(account)
+  Q_UNUSED(ok)
+
+  // TODO: edit proxy etc
 }
 
 bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id) {

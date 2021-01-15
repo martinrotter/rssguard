@@ -61,7 +61,7 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
   }
   else {
     bool saved;
-    int id_to_assign = DatabaseQueries::createAccount(database, code(), &saved);
+    int id_to_assign = DatabaseQueries::createBaseAccount(database, code(), &saved);
 
     if (saved) {
       if (DatabaseQueries::createInoreaderAccount(database, id_to_assign,

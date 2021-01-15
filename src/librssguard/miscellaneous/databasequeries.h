@@ -88,7 +88,8 @@ class DatabaseQueries {
                                                    bool* ok = nullptr);
 
     // Common account methods.
-    static int createAccount(const QSqlDatabase& db, const QString& code, bool* ok = nullptr);
+    static int createBaseAccount(const QSqlDatabase& db, const QString& code, bool* ok = nullptr);
+    static void editBaseAccount(const QSqlDatabase& db, ServiceRoot* account, bool* ok = nullptr);
     static int updateMessages(QSqlDatabase db, const QList<Message>& messages, const QString& feed_custom_id,
                               int account_id, const QString& url, bool force_update, bool* any_message_changed, bool* ok = nullptr);
     static bool deleteAccount(const QSqlDatabase& db, int account_id);

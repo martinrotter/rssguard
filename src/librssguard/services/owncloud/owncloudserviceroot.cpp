@@ -142,7 +142,7 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
   }
   else {
     bool saved;
-    int id_to_assign = DatabaseQueries::createAccount(database, code(), &saved);
+    int id_to_assign = DatabaseQueries::createBaseAccount(database, code(), &saved);
 
     if (saved) {
       if (DatabaseQueries::createOwnCloudAccount(database, id_to_assign, m_network->authUsername(),
