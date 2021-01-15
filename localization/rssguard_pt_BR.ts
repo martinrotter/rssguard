@@ -2549,7 +2549,7 @@ que pode ser baixada.</translation>
     </message>
     <message>
         <source>Available files</source>
-        <translation>Arquivos idisponíveis</translation>
+        <translation>Arquivos indisponíveis</translation>
     </message>
     <message>
         <source>Download selected update</source>
@@ -3594,7 +3594,17 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"/>
+        <translation>O uso do banco de dados ativo na memória possui várias vantagens e desvantagens. Certifique-se de estar familiarizado com estes antes de ativar esse recurso. Vantagens:
+&lt;ul&gt;
+&lt;li&gt;maior velocidade na manipulação de feeds/mensagens (especialmente com milhares de mensagens exibidas),&lt;/li&gt;
+&lt;li&gt;todo o banco de dados armazenado na RAM, assim seu disco rígido não trabalho tanto.&lt;/li&gt;
+&lt;/ul&gt;
+Desvantagens:
+&lt;ul&gt;
+&lt;li&gt;se o aplicativo travar, as alterações feitas na última sessão serão perdidas,&lt;/li&gt;
+&lt;li&gt;a inicialização e encerramento do aplicativo pode demorar um pouco mais (máx. 2 segundos).&lt;/li&gt;
+&lt;/ul&gt;
+Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</translation>
     </message>
     <message>
         <source>Hostname</source>
@@ -3618,7 +3628,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"/>
+        <translation>Note que a velocidade do servidor MySQL usado e a latência da conexão influenciam FORTEMENTE no desempenho final deste aplicativo. Usar conexões lentas ao banco de dados ocasionam um desempenho ruim ao navegar por feeds ou mensagens.</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
@@ -3744,7 +3754,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation>Tempo limite de conexão é o intervalo de tempo que é reservado para baixar novas mensagens para o feed. Se este intervalo de tempo esgostar, então o processo de download será abortado.</translation>
+        <translation>Tempo limite de conexão é o intervalo de tempo que é reservado para baixar novas mensagens para o feed. Se este intervalo de tempo esgotar, então o processo de download será abortado.</translation>
     </message>
     <message>
         <source> ms</source>
@@ -3756,7 +3766,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"/>
+        <translation>Entre o formato da contagem de mensagens exibido próximo a cada feed/categoria na lista de feeds. Use as strings &quot;%all&quot; e &quot;%unread&quot;, que são marcadores para a contagem atual das mensagens no total (ou não lidas).</translation>
     </message>
     <message>
         <source>Messages</source>
@@ -3764,15 +3774,15 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation type="unfinished"/>
+        <translation>Remover todas as mensagens lidas de todos os feeds ao sair do aplicativo</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"/>
+        <translation>Manter seleção de mensagem no meio da lista de mensagens</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"/>
+        <translation>Usar formato de data/hora personalizado (substitui o formato ativo carregado)</translation>
     </message>
     <message>
         <source>&amp;Change font</source>
@@ -3792,51 +3802,51 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Altura ou linhas na lista de feeds (-1 = altura padrão)</translation>
     </message>
     <message>
         <source>Height or rows in message list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Altura ou linhas na lista de mensagens (-1 = altura padrão)</translation>
     </message>
     <message>
         <source>Feed list font</source>
-        <translation type="unfinished"/>
+        <translation>Fonte da lista de feeds</translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar espaços reservados para indicar local das imagens</translation>
     </message>
     <message>
         <source>Message list font</source>
-        <translation type="unfinished"/>
+        <translation>Fonte da lista de mensagens</translation>
     </message>
     <message>
         <source>Internal message browser font</source>
-        <translation type="unfinished"/>
+        <translation>Fonte do navegador de mensagens interno</translation>
     </message>
     <message>
         <source>Select new font</source>
-        <translation type="unfinished"/>
+        <translation>Selecione a nova fonte</translation>
     </message>
     <message>
         <source>Download messages for all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Baixar mensagens de todos os feeds ao iniciar o aplicativo com atraso inicial de</translation>
     </message>
     <message>
         <source>Enable &quot;auto-download started&quot; notification</source>
-        <translation type="unfinished"/>
+        <translation>Habilitar notificação &quot;download automático iniciado&quot;</translation>
     </message>
     <message>
         <source>Only auto-download messages when application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation>Somente baixar mensagens automaticamente quando o aplicativo está em segundo plano</translation>
     </message>
     <message>
         <source>Auto-download messages for all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Baixar mensagens automaticamente para todos os feeds a cada</translation>
     </message>
     <message>
         <source>Bring application window to front once message is opened in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Trazer janela do aplicativo para frente assim que a mensagem é aberta no navegador externo</translation>
     </message>
 </context>
 <context>
@@ -3847,7 +3857,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation>Verifcar por atualizações ao iniciar o aplicativo</translation>
+        <translation>Verificar por atualizações ao iniciar o aplicativo</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
@@ -3855,7 +3865,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation>(não suportado nesta plataforma)</translation>
+        <translation> (não suportado nesta plataforma)</translation>
     </message>
     <message>
         <source>General</source>
@@ -4055,7 +4065,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Bloqueado pelo conjunto: &quot;%1&quot;&lt;br/&gt;Bloqueado pelo filtro: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -4073,7 +4083,10 @@ Authors of this application are NOT responsible for lost data.</source>
 Network status: %1
 Encoding: %2
 Type: %3</source>
-        <translation type="unfinished"/>
+        <translation>
+Status da rede: %1
+Codificação: %2
+Tipo: %3</translation>
     </message>
 </context>
 <context>
@@ -4096,15 +4109,15 @@ Type: %3</source>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Seleciona o tipo de feed padrão.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"/>
+        <translation>Codificação</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Selecione a codificação padrão do feed. Se não tiver certeza da codificação, então selecione a codificação &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Title</source>
@@ -4116,7 +4129,7 @@ Type: %3</source>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL </translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -4124,7 +4137,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"/>
+        <translation>Obter agora</translation>
     </message>
     <message>
         <source>Icon</source>
@@ -4132,31 +4145,31 @@ Type: %3</source>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Selecione o ícone para o seu feed.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Título do feed</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Defina o título para o seu feed.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Descrição do feed</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Defina a descrição para o seu feed.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
+        <translation>URL completo do feed incluindo esquema</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Defina o URL para o seu feed.</translation>
     </message>
     <message>
         <source>Icon selection</source>
@@ -4172,59 +4185,59 @@ Type: %3</source>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>Obter ícone do feed</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Nenhum metadado obtido até o momento.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Ícone obtido com sucesso.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadados do ícone obtidos.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Resultado: %1.</translation>
     </message>
     <message>
         <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadados do ícone não obtidos.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Erro: %1.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Nenhum ícone obtido.</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Todos os metadados obtidos com sucesso.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadados do feed e ícone obtidos.</translation>
     </message>
     <message>
         <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadados do feed e ícone não obtidos.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Nenhum metadado obtido.</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>O nome do feed está correto.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>O nome do feed é muito curto.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
@@ -4236,19 +4249,19 @@ Type: %3</source>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>O URL está correto.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>O URL não atende ao padrão. O seu URL deve iniciar com prefixo. &quot;http://&quot; ou &quot;https://&quot;.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>O URL está vazio.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Selecione o ícone para o seu feed</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
@@ -4308,11 +4321,11 @@ Type: %3</source>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar o item</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar o feed pois outra operação crítica está em andamento.</translation>
     </message>
     <message>
         <source>Cannot add category</source>
@@ -4320,34 +4333,34 @@ Type: %3</source>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar a categoria pois outra operação crítica está em andamento.</translation>
     </message>
     <message>
         <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Importado com sucesso, mas alguns feeds/categorias não foram importados devido a um erro.</translation>
     </message>
     <message>
         <source>Import was completely successful.</source>
-        <translation type="unfinished"/>
+        <translation>A importação foi concluída com sucesso.</translation>
     </message>
 </context>
 <context>
     <name>StatusBar</name>
     <message>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Barra de progresso da atualização de feeds</translation>
     </message>
     <message>
         <source>Feed update label</source>
-        <translation type="unfinished"/>
+        <translation>Rótulo da atualização de feeds</translation>
     </message>
     <message>
         <source>File download progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Barra de progresso do download de arquivos</translation>
     </message>
     <message>
         <source>File download label</source>
-        <translation type="unfinished"/>
+        <translation>Rótulo do download de arquivos</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
@@ -4362,7 +4375,7 @@ Type: %3</source>
     </message>
     <message>
         <source> bytes</source>
-        <translation type="unfinished"/>
+        <translation> bytes</translation>
     </message>
 </context>
 <context>
@@ -4420,19 +4433,19 @@ Notícias não lidas: %2</translation>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n hora</numerusform><numerusform>%n horas</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n minuto</numerusform><numerusform>%n minutos</numerusform></translation>
     </message>
     <message>
         <source> and </source>
-        <translation type="unfinished"/>
+        <translation> e </translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n segundo</numerusform><numerusform>%n segundos</numerusform></translation>
     </message>
 </context>
 <context>
@@ -4483,7 +4496,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
-        <translation type="unfinished"/>
+        <translation>Redefinir barra de ferramentas</translation>
     </message>
 </context>
 <context>
@@ -4537,7 +4550,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL </translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
@@ -4565,7 +4578,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>URL da sua instância TT-RSS SEM string &quot;/api/&quot; à direita</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -4649,7 +4662,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>O URL NÃO deve terminar com &quot;/api/&quot;.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
@@ -4672,45 +4685,48 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation>URL </translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Full feed URL including scheme</source>
-        <translation type="unfinished"/>
+        <translation>URL completo do feed incluindo esquema</translation>
     </message>
     <message>
         <source>Provide URL for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Forneça o URL para o seu feed.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>O URL está correto.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>O URL não atende ao padrão. O seu URL deve iniciar com prefixo. &quot;http://&quot; ou &quot;https://&quot;.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>O URL está vazio.</translation>
     </message>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar o item</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar o feed pois outra operação crítica está em andamento.</translation>
     </message>
     <message>
         <source>Username: %1
 Server: %2
 Last error: %3
 Last login on: %4</source>
-        <translation type="unfinished"/>
+        <translation>Nome de usuário: %1
+Servidor: %2
+Último erro: %3
+Último login em: %4</translation>
     </message>
 </context>
 <context>
@@ -4742,106 +4758,106 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open this website in system web browser</source>
-        <translation type="unfinished"/>
+        <translation>Abrir este site no navegador do sistema</translation>
     </message>
     <message>
         <source>Failed to open URL in web browser</source>
-        <translation type="unfinished"/>
+        <translation>Falha ao abrir o URL no navegador</translation>
     </message>
     <message>
         <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
-        <translation type="unfinished"/>
+        <translation>O URL &apos;%1&apos; não pôde ser aberto no navegador do sistema.</translation>
     </message>
 </context>
 <context>
     <name>WebFactory</name>
     <message>
         <source>Web engine settings</source>
-        <translation type="unfinished"/>
+        <translation>Configurações do mecanismo web</translation>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"/>
+        <translation>Autocarregar imagens</translation>
     </message>
     <message>
         <source>JS enabled</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript habilitado</translation>
     </message>
     <message>
         <source>JS can open popup windows</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript pode abrir janelas popup</translation>
     </message>
     <message>
         <source>JS can access clipboard</source>
-        <translation type="unfinished"/>
+        <translation>JavaScript pode acessar a área de transferência</translation>
     </message>
     <message>
         <source>Hyperlinks can get focus</source>
-        <translation type="unfinished"/>
+        <translation>Hyperlinks podem obter foco</translation>
     </message>
     <message>
         <source>Local storage enabled</source>
-        <translation type="unfinished"/>
+        <translation>Armazenamento local habilitado</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"/>
+        <translation>Conteúdo local pode acessar URLs remotos</translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Auditoria XSS habilitada</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
-        <translation type="unfinished"/>
+        <translation>Navegação espacial habilitada</translation>
     </message>
     <message>
         <source>Local content can access local files</source>
-        <translation type="unfinished"/>
+        <translation>Conteúdo local pode acessar arquivos locais</translation>
     </message>
     <message>
         <source>Hyperlink auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>Auditoria de hyperlink habilitada</translation>
     </message>
     <message>
         <source>Animate scrolling</source>
-        <translation type="unfinished"/>
+        <translation>Animar rolagem</translation>
     </message>
     <message>
         <source>Error pages enabled</source>
-        <translation type="unfinished"/>
+        <translation>Páginas de erro habilitadas</translation>
     </message>
     <message>
         <source>Plugins enabled</source>
-        <translation type="unfinished"/>
+        <translation>Plugins habilitados</translation>
     </message>
     <message>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"/>
+        <translation>Tela cheia habilitada</translation>
     </message>
     <message>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"/>
+        <translation>Captura de tela habilitada</translation>
     </message>
     <message>
         <source>WebGL enabled</source>
-        <translation type="unfinished"/>
+        <translation>WebGL habilitado</translation>
     </message>
     <message>
         <source>Accelerate 2D canvas</source>
-        <translation type="unfinished"/>
+        <translation>Acelerar canvas 2D</translation>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"/>
+        <translation>Imprimir fundos de elementos</translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
-        <translation type="unfinished"/>
+        <translation>Permitir a execução de conteúdo não seguro</translation>
     </message>
     <message>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"/>
+        <translation>Permitir geolocalização de origens inseguras</translation>
     </message>
 </context>
 <context>
