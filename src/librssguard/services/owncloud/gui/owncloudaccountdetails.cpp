@@ -33,8 +33,8 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
     }
   });
 
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessages, false);
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblServerSideUpdateInformation, false);
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessages, true);
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblServerSideUpdateInformation, true);
 
   connect(m_ui.m_checkShowPassword, &QCheckBox::toggled, this, &OwnCloudAccountDetails::displayPassword);
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onPasswordChanged);

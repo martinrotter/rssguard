@@ -23,8 +23,8 @@ TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
 
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblDescription, false);
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblServerSideUpdateInformation, false);
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblDescription, true);
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblServerSideUpdateInformation, true);
 
   setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_checkDownloadOnlyUnreadMessages);
   setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_checkServerSideUpdate);
