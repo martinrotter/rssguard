@@ -14,12 +14,14 @@ Install-Module Pscx -Scope CurrentUser -AllowClobber -Force
 Install-Module VSSetup -Scope CurrentUser -AllowClobber -Force
 Import-VisualStudioVars -Architecture x64
 
-$AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
+$AllProtocols = [System.Net.SecurityProtocolType]'Tls11,Tls12'
 [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
 
 Invoke-WebRequest -Uri "https://downloads.mariadb.org/f/mariadb-10.5.8/winx64-packages/mariadb-10.5.8-winx64.zip/from/https%3A//mirror.vpsfree.cz/mariadb/?serve" -OutFile "maria"
 
 Invoke-WebRequest -Uri "https://github.com/qt/qtbase/archive/5.15.2.zip" -OutFile "qt"
+
+ls
 
 # Get Qt.
 $qt_version = "5.15.2"
