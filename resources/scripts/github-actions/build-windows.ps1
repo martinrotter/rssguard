@@ -16,27 +16,33 @@ Import-VisualStudioVars -Architecture x64
 
 $AllProtocols = [System.Net.SecurityProtocolType]'Tls11,Tls12'
 [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
+$ProgressPreference = 'SilentlyContinue'
 
-Invoke-WebRequest -Uri "https://downloads.mariadb.org/f/mariadb-10.5.8/winx64-packages/mariadb-10.5.8-winx64.zip/from/https%3A//mirror.vpsfree.cz/mariadb/?serve" -OutFile "maria"
-
-Invoke-WebRequest -Uri "https://github.com/qt/qtbase/archive/5.15.2.zip" -OutFile "qt"
-
-ls
-
-# Get Qt.
+# Get and prepare needed dependencies.
 $qt_version = "5.15.2"
-$qt_stub = "qt-$qt_version-dynamic-msvc2019-x86_64"
-$qt_link = "https://github.com/martinrotter/qt5-minimalistic-builds/releases/download/$qt_version/$qt_stub.7z"
-$qt_output = "qt.7z"
+$qt_link = "https://github.com/qt/qtbase/archive/$qt_version.zip"
+$qt_output = "qt.zip"
 
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-Invoke-WebRequest -Uri $qt_link -OutFile $qt_output
+$maria_version = "10.5.8"
+$maria_link = "https://downloads.mariadb.org/f/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip/from/https%3A//mirror.vpsfree.cz/mariadb/?serve"
+$maria_output = "maria.zip"
+
+Invoke-WebRequest -Uri "$qt_link" -OutFile "$qt_output"
+Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
+
 & ".\resources\scripts\7za\7za.exe" x $qt_output
+& ".\resources\scripts\7za\7za.exe" x $maria_output
 
-$qt_path = (Resolve-Path $qt_stub).Path
+# Download Qt itself.
+$qt_path = "$old_pwd\QtBin"
+pip3 install aqtinstall
+aqt install -O "$qt_path" "$qt_version" "windows" "desktop" "win64_msvc2019_64"-m "qtwebengine" 
+
 $qt_qmake = "$qt_path\bin\qmake.exe"
-
 $env:PATH = "$qt_path\bin\;" + $env:PATH
+
+# Build dependencies.
+....
 
 # Build application.
 mkdir "rssguard-build"
