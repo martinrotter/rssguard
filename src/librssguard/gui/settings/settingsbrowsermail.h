@@ -6,7 +6,10 @@
 #include "gui/settings/settingspanel.h"
 
 #include "miscellaneous/externaltool.h"
+
 #include "ui_settingsbrowsermail.h"
+
+class NetworkProxyDetails;
 
 class SettingsBrowserMail : public SettingsPanel {
   Q_OBJECT
@@ -26,13 +29,12 @@ class SettingsBrowserMail : public SettingsPanel {
     void selectBrowserExecutable();
     void changeDefaultEmailArguments(int index);
     void selectEmailExecutable();
-    void displayProxyPassword(int state);
-    void onProxyTypeChanged(int index);
 
   private:
     QList<ExternalTool> externalTools() const;
     void setExternalTools(const QList<ExternalTool>& list);
 
+    NetworkProxyDetails* m_proxyDetails;
     Ui::SettingsBrowserMail* m_ui;
 };
 

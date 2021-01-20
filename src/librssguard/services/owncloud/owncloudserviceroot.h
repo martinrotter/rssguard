@@ -32,7 +32,7 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     OwnCloudNetworkFactory* network() const;
 
     void updateTitle();
-    void saveAccountDataToDatabase();
+    void saveAccountDataToDatabase(bool creating_new);
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;

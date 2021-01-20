@@ -211,10 +211,10 @@ TtRssNetworkFactory* TtRssServiceRoot::network() const {
   return m_network;
 }
 
-void TtRssServiceRoot::saveAccountDataToDatabase() {
+void TtRssServiceRoot::saveAccountDataToDatabase(bool creating_new) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  if (accountId() != NO_PARENT_CATEGORY) {
+  if (!creating_new) {
     // We are overwritting previously saved data.
     if (DatabaseQueries::overwriteTtRssAccount(database, m_network->username(), m_network->password(),
                                                m_network->authIsUsed(), m_network->authUsername(),
@@ -226,19 +226,12 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
     }
   }
   else {
-    bool saved;
-    int id_to_assign = DatabaseQueries::createBaseAccount(database, code(), &saved);
-
-    if (saved) {
-      if (DatabaseQueries::createTtRssAccount(database, id_to_assign, m_network->username(),
-                                              m_network->password(), m_network->authIsUsed(),
-                                              m_network->authUsername(), m_network->authPassword(),
-                                              m_network->url(), m_network->forceServerSideUpdate(),
-                                              m_network->downloadOnlyUnreadMessages())) {
-        setId(id_to_assign);
-        setAccountId(id_to_assign);
-        updateTitle();
-      }
+    if (DatabaseQueries::createTtRssAccount(database, accountId(), m_network->username(),
+                                            m_network->password(), m_network->authIsUsed(),
+                                            m_network->authUsername(), m_network->authPassword(),
+                                            m_network->url(), m_network->forceServerSideUpdate(),
+                                            m_network->downloadOnlyUnreadMessages())) {
+      updateTitle();
     }
   }
 }

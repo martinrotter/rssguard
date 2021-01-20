@@ -98,6 +98,7 @@ HEADERS += core/feeddownloader.h \
            gui/toolbareditor.h \
            gui/treeviewcolumnsmenu.h \
            gui/widgetwithstatus.h \
+           gui/networkproxydetails.h \
            miscellaneous/application.h \
            miscellaneous/autosaver.h \
            miscellaneous/databasecleaner.h \
@@ -166,6 +167,7 @@ HEADERS += core/feeddownloader.h \
            services/standard/atomparser.h \
            services/standard/feedparser.h \
            services/abstract/gui/authenticationdetails.h \
+           services/standard/gui/formeditstandardaccount.h \
            services/standard/gui/formstandardcategorydetails.h \
            services/standard/gui/formstandardfeeddetails.h \
            services/standard/gui/formstandardimportexport.h \
@@ -260,6 +262,7 @@ SOURCES += core/feeddownloader.cpp \
            gui/toolbareditor.cpp \
            gui/treeviewcolumnsmenu.cpp \
            gui/widgetwithstatus.cpp \
+           gui/networkproxydetails.cpp \
            miscellaneous/application.cpp \
            miscellaneous/autosaver.cpp \
            miscellaneous/databasecleaner.cpp \
@@ -322,6 +325,7 @@ SOURCES += core/feeddownloader.cpp \
            services/standard/atomparser.cpp \
            services/standard/feedparser.cpp \
            services/abstract/gui/authenticationdetails.cpp \
+           services/standard/gui/formeditstandardaccount.cpp \
            services/standard/gui/formstandardcategorydetails.cpp \
            services/standard/gui/formstandardfeeddetails.cpp \
            services/standard/gui/formstandardimportexport.cpp \
@@ -373,6 +377,7 @@ FORMS += gui/dialogs/formabout.ui \
          gui/settings/settingslocalization.ui \
          gui/settings/settingsshortcuts.ui \
          gui/toolbareditor.ui \
+         gui/networkproxydetails.ui \
          network-web/downloaditem.ui \
          network-web/downloadmanager.ui \
          services/abstract/gui/formaccountdetails.ui \

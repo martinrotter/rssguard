@@ -14,6 +14,7 @@
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
+#include "services/standard/gui/formeditstandardaccount.h"
 #include "services/standard/gui/formstandardcategorydetails.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/gui/formstandardimportexport.h"
@@ -87,10 +88,17 @@ QString StandardServiceRoot::code() const {
 }
 
 bool StandardServiceRoot::canBeEdited() const {
-  return false;
+  return true;
 }
 
 bool StandardServiceRoot::canBeDeleted() const {
+  return true;
+}
+
+bool StandardServiceRoot::editViaGui() {
+  FormEditStandardAccount form_pointer(qApp->mainFormWidget());
+
+  form_pointer.addEditAccount(this);
   return true;
 }
 

@@ -12,10 +12,10 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
   Q_OBJECT
 
   public:
-    explicit GmailServiceRoot(GmailNetworkFactory* network, RootItem* parent = nullptr);
+    explicit GmailServiceRoot(RootItem* parent = nullptr);
     virtual ~GmailServiceRoot();
 
-    void saveAccountDataToDatabase();
+    void saveAccountDataToDatabase(bool creating_new);
 
     void setNetwork(GmailNetworkFactory* network);
     GmailNetworkFactory* network() const;

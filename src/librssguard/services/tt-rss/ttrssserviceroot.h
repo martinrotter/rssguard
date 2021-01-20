@@ -37,7 +37,7 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     // Access to network.
     TtRssNetworkFactory* network() const;
 
-    void saveAccountDataToDatabase();
+    void saveAccountDataToDatabase(bool creating_new);
     void updateTitle();
 
   protected:

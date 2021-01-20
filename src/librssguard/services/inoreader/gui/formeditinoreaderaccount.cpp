@@ -21,16 +21,7 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent)
 }
 
 void FormEditInoreaderAccount::apply() {
-  FormAccountDetails::apply();
-
-  bool editing_account = true;
-
-  if (m_account == nullptr) {
-    // We want to confirm newly created account.
-    // So save new account into DB, setup its properties.
-    m_account = new InoreaderServiceRoot(nullptr);
-    editing_account = false;
-  }
+  bool editing_account = !applyInternal<InoreaderServiceRoot>();
 
   // We copy credentials from testing OAuth to live OAuth.
   account<InoreaderServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
@@ -43,7 +34,8 @@ void FormEditInoreaderAccount::apply() {
 
   account<InoreaderServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<InoreaderServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
-  account<InoreaderServiceRoot>()->saveAccountDataToDatabase();
+
+  account<InoreaderServiceRoot>()->saveAccountDataToDatabase(!editing_account);
   accept();
 
   if (editing_account) {

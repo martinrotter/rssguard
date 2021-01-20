@@ -128,10 +128,10 @@ void OwnCloudServiceRoot::updateTitle() {
   setTitle(m_network->authUsername() + QSL(" (Nextcloud News)"));
 }
 
-void OwnCloudServiceRoot::saveAccountDataToDatabase() {
+void OwnCloudServiceRoot::saveAccountDataToDatabase(bool creating_new) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  if (accountId() != NO_PARENT_CATEGORY) {
+  if (!creating_new) {
     if (DatabaseQueries::overwriteOwnCloudAccount(database, m_network->authUsername(),
                                                   m_network->authPassword(), m_network->url(),
                                                   m_network->forceServerSideUpdate(), m_network->batchSize(),
@@ -141,19 +141,12 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
     }
   }
   else {
-    bool saved;
-    int id_to_assign = DatabaseQueries::createBaseAccount(database, code(), &saved);
-
-    if (saved) {
-      if (DatabaseQueries::createOwnCloudAccount(database, id_to_assign, m_network->authUsername(),
-                                                 m_network->authPassword(), m_network->url(),
-                                                 m_network->forceServerSideUpdate(),
-                                                 m_network->downloadOnlyUnreadMessages(),
-                                                 m_network->batchSize())) {
-        setId(id_to_assign);
-        setAccountId(id_to_assign);
-        updateTitle();
-      }
+    if (DatabaseQueries::createOwnCloudAccount(database, accountId(), m_network->authUsername(),
+                                               m_network->authPassword(), m_network->url(),
+                                               m_network->forceServerSideUpdate(),
+                                               m_network->downloadOnlyUnreadMessages(),
+                                               m_network->batchSize())) {
+      updateTitle();
     }
   }
 }

@@ -3,6 +3,7 @@
 #include "gui/settings/settingsbrowsermail.h"
 
 #include "gui/guiutilities.h"
+#include "gui/networkproxydetails.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "network-web/silentnetworkaccessmanager.h"
@@ -13,12 +14,13 @@
 #include <QNetworkProxy>
 
 SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(new Ui::SettingsBrowserMail) {
+  : SettingsPanel(settings, parent), m_proxyDetails(new NetworkProxyDetails(this)), m_ui(new Ui::SettingsBrowserMail) {
   m_ui->setupUi(this);
+
+  m_ui->m_tabBrowserProxy->addTab(m_proxyDetails, tr("Network proxy"));
 
   GuiUtilities::setLabelAsNotice(*m_ui->label, false);
   GuiUtilities::setLabelAsNotice(*m_ui->m_lblExternalEmailInfo, false);
-  GuiUtilities::setLabelAsNotice(*m_ui->m_lblProxyInfo, false);
   GuiUtilities::setLabelAsNotice(*m_ui->m_lblToolInfo, false);
 
 #if defined(USE_WEBENGINE)
@@ -30,12 +32,12 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
   m_ui->m_listTools->setHeaderLabels(QStringList() << tr("Executable") << tr("Parameters"));
   m_ui->m_listTools->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
 
-  connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+  connect(m_proxyDetails->m_ui.m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsBrowserMail::dirtifySettings);
-  connect(m_ui->m_txtProxyHost, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_ui->m_txtProxyPassword, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_ui->m_txtProxyUsername, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_ui->m_spinProxyPort, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this,
+  connect(m_proxyDetails->m_ui.m_txtProxyHost, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_proxyDetails->m_ui.m_txtProxyPassword, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_proxyDetails->m_ui.m_txtProxyUsername, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_proxyDetails->m_ui.m_spinProxyPort, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this,
           &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_grpCustomExternalBrowser, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_grpCustomExternalEmail, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
@@ -43,9 +45,6 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
   connect(m_ui->m_txtExternalBrowserExecutable, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtExternalEmailArguments, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtExternalEmailExecutable, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
-          &SettingsBrowserMail::onProxyTypeChanged);
-  connect(m_ui->m_checkShowPassword, &QCheckBox::stateChanged, this, &SettingsBrowserMail::displayProxyPassword);
   connect(m_ui->m_cmbExternalBrowserPreset, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsBrowserMail::changeDefaultBrowserArguments);
   connect(m_ui->m_btnExternalBrowserExecutable, &QPushButton::clicked, this, &SettingsBrowserMail::selectBrowserExecutable);
@@ -88,31 +87,6 @@ void SettingsBrowserMail::selectBrowserExecutable() {
   if (!executable_file.isEmpty()) {
     m_ui->m_txtExternalBrowserExecutable->setText(QDir::toNativeSeparators(executable_file));
   }
-}
-
-void SettingsBrowserMail::displayProxyPassword(int state) {
-  if (state == Qt::Checked) {
-    m_ui->m_txtProxyPassword->setEchoMode(QLineEdit::Normal);
-  }
-  else {
-    m_ui->m_txtProxyPassword->setEchoMode(QLineEdit::PasswordEchoOnEdit);
-  }
-}
-
-void SettingsBrowserMail::onProxyTypeChanged(int index) {
-  const QNetworkProxy::ProxyType selected_type = static_cast<QNetworkProxy::ProxyType>(m_ui->m_cmbProxyType->itemData(index).toInt());
-  const bool is_proxy_selected = selected_type != QNetworkProxy::NoProxy && selected_type != QNetworkProxy::DefaultProxy;
-
-  m_ui->m_txtProxyHost->setEnabled(is_proxy_selected);
-  m_ui->m_txtProxyPassword->setEnabled(is_proxy_selected);
-  m_ui->m_txtProxyUsername->setEnabled(is_proxy_selected);
-  m_ui->m_spinProxyPort->setEnabled(is_proxy_selected);
-  m_ui->m_checkShowPassword->setEnabled(is_proxy_selected);
-  m_ui->m_lblProxyHost->setEnabled(is_proxy_selected);
-  m_ui->m_lblProxyInfo->setEnabled(is_proxy_selected);
-  m_ui->m_lblProxyPassword->setEnabled(is_proxy_selected);
-  m_ui->m_lblProxyPort->setEnabled(is_proxy_selected);
-  m_ui->m_lblProxyUsername->setEnabled(is_proxy_selected);
 }
 
 QList<ExternalTool> SettingsBrowserMail::externalTools() const {
@@ -181,19 +155,15 @@ void SettingsBrowserMail::loadSettings() {
                                                                 SETTING(Browser::CustomExternalEmailExecutable)).toString());
   m_ui->m_txtExternalEmailArguments->setText(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString());
   m_ui->m_grpCustomExternalEmail->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool());
-  m_ui->m_cmbProxyType->addItem(tr("No proxy"), QNetworkProxy::NoProxy);
-  m_ui->m_cmbProxyType->addItem(tr("System proxy"), QNetworkProxy::DefaultProxy);
-  m_ui->m_cmbProxyType->addItem(tr("Socks5"), QNetworkProxy::Socks5Proxy);
-  m_ui->m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::HttpProxy);
 
   // Load the settings.
   QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(settings()->value(GROUP(Proxy),
                                                                                                          SETTING(Proxy::Type)).toInt());
-  m_ui->m_cmbProxyType->setCurrentIndex(m_ui->m_cmbProxyType->findData(selected_proxy_type));
-  m_ui->m_txtProxyHost->setText(settings()->value(GROUP(Proxy), SETTING(Proxy::Host)).toString());
-  m_ui->m_txtProxyUsername->setText(settings()->value(GROUP(Proxy), SETTING(Proxy::Username)).toString());
-  m_ui->m_txtProxyPassword->setText(settings()->password(GROUP(Proxy), SETTING(Proxy::Password)).toString());
-  m_ui->m_spinProxyPort->setValue(settings()->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt());
+  m_proxyDetails->m_ui.m_cmbProxyType->setCurrentIndex(m_proxyDetails->m_ui.m_cmbProxyType->findData(selected_proxy_type));
+  m_proxyDetails->m_ui.m_txtProxyHost->setText(settings()->value(GROUP(Proxy), SETTING(Proxy::Host)).toString());
+  m_proxyDetails->m_ui.m_txtProxyUsername->setText(settings()->value(GROUP(Proxy), SETTING(Proxy::Username)).toString());
+  m_proxyDetails->m_ui.m_txtProxyPassword->setText(settings()->password(GROUP(Proxy), SETTING(Proxy::Password)).toString());
+  m_proxyDetails->m_ui.m_spinProxyPort->setValue(settings()->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt());
 
   setExternalTools(ExternalTool::toolsFromSettings());
   onEndLoadSettings();
@@ -215,11 +185,11 @@ void SettingsBrowserMail::saveSettings() {
   settings()->setValue(GROUP(Browser), Browser::CustomExternalEmailExecutable, m_ui->m_txtExternalEmailExecutable->text());
   settings()->setValue(GROUP(Browser), Browser::CustomExternalEmailArguments, m_ui->m_txtExternalEmailArguments->text());
   settings()->setValue(GROUP(Browser), Browser::CustomExternalEmailEnabled, m_ui->m_grpCustomExternalEmail->isChecked());
-  settings()->setValue(GROUP(Proxy), Proxy::Type, m_ui->m_cmbProxyType->itemData(m_ui->m_cmbProxyType->currentIndex()));
-  settings()->setValue(GROUP(Proxy), Proxy::Host, m_ui->m_txtProxyHost->text());
-  settings()->setValue(GROUP(Proxy), Proxy::Username, m_ui->m_txtProxyUsername->text());
-  settings()->setPassword(GROUP(Proxy), Proxy::Password, m_ui->m_txtProxyPassword->text());
-  settings()->setValue(GROUP(Proxy), Proxy::Port, m_ui->m_spinProxyPort->value());
+  settings()->setValue(GROUP(Proxy), Proxy::Type, m_proxyDetails->m_ui.m_cmbProxyType->itemData(m_proxyDetails->m_ui.m_cmbProxyType->currentIndex()));
+  settings()->setValue(GROUP(Proxy), Proxy::Host, m_proxyDetails->m_ui.m_txtProxyHost->text());
+  settings()->setValue(GROUP(Proxy), Proxy::Username, m_proxyDetails->m_ui.m_txtProxyUsername->text());
+  settings()->setPassword(GROUP(Proxy), Proxy::Password, m_proxyDetails->m_ui.m_txtProxyPassword->text());
+  settings()->setValue(GROUP(Proxy), Proxy::Port, m_proxyDetails->m_ui.m_spinProxyPort->value());
 
   auto tools = externalTools();
 

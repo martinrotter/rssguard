@@ -29,6 +29,7 @@ class StandardServiceRoot : public ServiceRoot {
 
     bool canBeEdited() const;
     bool canBeDeleted() const;
+    bool editViaGui();
     bool deleteViaGui();
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;

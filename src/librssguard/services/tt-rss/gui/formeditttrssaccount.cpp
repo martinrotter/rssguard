@@ -17,16 +17,7 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
 }
 
 void FormEditTtRssAccount::apply() {
-  FormAccountDetails::apply();
-
-  bool editing_account = true;
-
-  if (m_account == nullptr) {
-    // We want to confirm newly created account.
-    // So save new account into DB, setup its properties.
-    m_account = new TtRssServiceRoot();
-    editing_account = false;
-  }
+  bool editing_account = !applyInternal<TtRssServiceRoot>();
 
   account<TtRssServiceRoot>()->network()->setUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
   account<TtRssServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
@@ -37,7 +28,7 @@ void FormEditTtRssAccount::apply() {
   account<TtRssServiceRoot>()->network()->setForceServerSideUpdate(m_details->m_ui.m_checkServerSideUpdate->isChecked());
   account<TtRssServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
 
-  account<TtRssServiceRoot>()->saveAccountDataToDatabase();
+  account<TtRssServiceRoot>()->saveAccountDataToDatabase(!editing_account);
   accept();
 
   if (editing_account) {

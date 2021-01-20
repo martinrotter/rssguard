@@ -18,15 +18,8 @@
 
 #include <QFileDialog>
 
-GmailServiceRoot::GmailServiceRoot(GmailNetworkFactory* network, RootItem* parent)
-  : ServiceRoot(parent), m_network(network), m_actionReply(nullptr) {
-  if (network == nullptr) {
-    m_network = new GmailNetworkFactory(this);
-  }
-  else {
-    m_network->setParent(this);
-  }
-
+GmailServiceRoot::GmailServiceRoot(RootItem* parent)
+  : ServiceRoot(parent), m_network(new GmailNetworkFactory(this)), m_actionReply(nullptr) {
   m_network->setService(this);
   setIcon(GmailEntryPoint().icon());
 }
@@ -74,10 +67,10 @@ void GmailServiceRoot::loadFromDatabase() {
   }
 }
 
-void GmailServiceRoot::saveAccountDataToDatabase() {
+void GmailServiceRoot::saveAccountDataToDatabase(bool creating_new) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  if (accountId() != NO_PARENT_CATEGORY) {
+  if (!creating_new) {
     if (DatabaseQueries::overwriteGmailAccount(database, m_network->username(),
                                                m_network->oauth()->clientId(),
                                                m_network->oauth()->clientSecret(),
@@ -90,21 +83,15 @@ void GmailServiceRoot::saveAccountDataToDatabase() {
     }
   }
   else {
-    bool saved;
-    int id_to_assign = DatabaseQueries::createBaseAccount(database, code(), &saved);
-
-    if (saved) {
-      if (DatabaseQueries::createGmailAccount(database, id_to_assign,
-                                              m_network->username(),
-                                              m_network->oauth()->clientId(),
-                                              m_network->oauth()->clientSecret(),
-                                              m_network->oauth()->redirectUrl(),
-                                              m_network->oauth()->refreshToken(),
-                                              m_network->batchSize())) {
-        setId(id_to_assign);
-        setAccountId(id_to_assign);
-        updateTitle();
-      }
+    if (DatabaseQueries::createGmailAccount(database,
+                                            accountId(),
+                                            m_network->username(),
+                                            m_network->oauth()->clientId(),
+                                            m_network->oauth()->clientSecret(),
+                                            m_network->oauth()->redirectUrl(),
+                                            m_network->oauth()->refreshToken(),
+                                            m_network->batchSize())) {
+      updateTitle();
     }
   }
 }

@@ -16,15 +16,8 @@
 
 #include <QThread>
 
-InoreaderServiceRoot::InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent)
-  : ServiceRoot(parent), m_network(network) {
-  if (network == nullptr) {
-    m_network = new InoreaderNetworkFactory(this);
-  }
-  else {
-    m_network->setParent(this);
-  }
-
+InoreaderServiceRoot::InoreaderServiceRoot(RootItem* parent)
+  : ServiceRoot(parent), m_network(new InoreaderNetworkFactory(this)) {
   m_network->setService(this);
   setIcon(InoreaderEntryPoint().icon());
 }
@@ -44,10 +37,10 @@ void InoreaderServiceRoot::loadFromDatabase() {
   performInitialAssembly(categories, feeds, labels);
 }
 
-void InoreaderServiceRoot::saveAccountDataToDatabase() {
+void InoreaderServiceRoot::saveAccountDataToDatabase(bool creating_new) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  if (accountId() != NO_PARENT_CATEGORY) {
+  if (!creating_new) {
     if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->userName(),
                                                    m_network->oauth()->clientId(),
                                                    m_network->oauth()->clientSecret(),
@@ -60,21 +53,15 @@ void InoreaderServiceRoot::saveAccountDataToDatabase() {
     }
   }
   else {
-    bool saved;
-    int id_to_assign = DatabaseQueries::createBaseAccount(database, code(), &saved);
-
-    if (saved) {
-      if (DatabaseQueries::createInoreaderAccount(database, id_to_assign,
-                                                  m_network->userName(),
-                                                  m_network->oauth()->clientId(),
-                                                  m_network->oauth()->clientSecret(),
-                                                  m_network->oauth()->redirectUrl(),
-                                                  m_network->oauth()->refreshToken(),
-                                                  m_network->batchSize())) {
-        setId(id_to_assign);
-        setAccountId(id_to_assign);
-        updateTitle();
-      }
+    if (DatabaseQueries::createInoreaderAccount(database,
+                                                accountId(),
+                                                m_network->userName(),
+                                                m_network->oauth()->clientId(),
+                                                m_network->oauth()->clientSecret(),
+                                                m_network->oauth()->redirectUrl(),
+                                                m_network->oauth()->refreshToken(),
+                                                m_network->batchSize())) {
+      updateTitle();
     }
   }
 }

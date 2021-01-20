@@ -12,10 +12,10 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
   Q_OBJECT
 
   public:
-    explicit InoreaderServiceRoot(InoreaderNetworkFactory* network, RootItem* parent = nullptr);
+    explicit InoreaderServiceRoot(RootItem* parent = nullptr);
     virtual ~InoreaderServiceRoot();
 
-    void saveAccountDataToDatabase();
+    void saveAccountDataToDatabase(bool creating_new);
 
     void setNetwork(InoreaderNetworkFactory* network);
     InoreaderNetworkFactory* network() const;

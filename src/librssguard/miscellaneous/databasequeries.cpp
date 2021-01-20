@@ -1841,6 +1841,7 @@ int DatabaseQueries::createBaseAccount(const QSqlDatabase& db, const QString& co
 void DatabaseQueries::editBaseAccount(const QSqlDatabase& db, ServiceRoot* account, bool* ok) {
   Q_UNUSED(account)
   Q_UNUSED(ok)
+  Q_UNUSED(db)
 
   // TODO: edit proxy etc
 }
@@ -2406,7 +2407,7 @@ QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(const QSqlDatabase& db, bo
 
   if (query.exec("SELECT * FROM GmailAccounts;")) {
     while (query.next()) {
-      auto* root = new GmailServiceRoot(nullptr);
+      auto* root = new GmailServiceRoot();
 
       root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
@@ -2504,7 +2505,7 @@ QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(const QSqlDatabase& db
 
   if (query.exec("SELECT * FROM InoreaderAccounts;")) {
     while (query.next()) {
-      auto* root = new InoreaderServiceRoot(nullptr);
+      auto* root = new InoreaderServiceRoot();
 
       root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
