@@ -11,9 +11,6 @@ class FormEditStandardAccount : public FormAccountDetails {
 
   protected slots:
     virtual void apply();
-
-  protected:
-    virtual void setEditableAccount(ServiceRoot* editable_account);
 };
 
 #endif // FORMEDITSTANDARDACCOUNT_H

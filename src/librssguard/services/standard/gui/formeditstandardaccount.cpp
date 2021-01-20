@@ -15,7 +15,3 @@ void FormEditStandardAccount::apply() {
   applyInternal<StandardServiceRoot>();
   accept();
 }
-
-void FormEditStandardAccount::setEditableAccount(ServiceRoot* editable_account) {
-  FormAccountDetails::setEditableAccount(editable_account);
-}
