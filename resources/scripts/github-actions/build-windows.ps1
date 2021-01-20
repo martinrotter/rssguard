@@ -51,6 +51,7 @@ $qt_sqldrivers_path = "$old_pwd\qtbase-$qt_version\src\plugins\sqldrivers"
 
 cd "$qt_sqldrivers_path"
 & $qt_qmake -- MYSQL_INCDIR="$maria_path\include\mysql" MYSQL_LIBDIR="$maria_path\lib"
+nmake.exe sub-mysql
 cd "$old_pwd"
 
 # Build application.
