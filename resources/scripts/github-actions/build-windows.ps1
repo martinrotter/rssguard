@@ -34,15 +34,24 @@ Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
 & ".\resources\scripts\7za\7za.exe" x $maria_output
 
 # Download Qt itself.
-$qt_path = "$old_pwd\QtBin"
+$qt_path = "$old_pwd\qt"
 pip3 install aqtinstall
-aqt install -O "$qt_path" "$qt_version" "windows" "desktop" "win64_msvc2019_64"-m "qtwebengine" 
+aqt install -b "https://mirrors.ocf.berkeley.edu/qt/" -O "$qt_path" "$qt_version" "windows" "desktop" "win64_msvc2019_64"-m "qtwebengine" 
 
-$qt_qmake = "$qt_path\bin\qmake.exe"
-$env:PATH = "$qt_path\bin\;" + $env:PATH
+$qt_qmake = "$qt_path\$qt_version\msvc2019_64\bin\qmake.exe"
+$env:PATH = "$qt_path\$qt_version\msvc2019_64\bin\;" + $env:PATH
+
+# Download openssl.
+aqt tool -b "https://mirrors.ocf.berkeley.edu/qt/" -O "$qt_path" windows tools_openssl_x64 1.1.1 qt.tools.openssl.win_x64
+$openssl_base_path = "$qt_path\Tools\OpenSSL\Win_x64"
 
 # Build dependencies.
-....
+$maria_path = "$old_pwd\mariadb-$maria_version-winx64"
+$qt_sqldrivers_path = "$old_pwd\qtbase-$qt_version\src\plugins\sqldrivers"
+
+cd "$qt_sqldrivers_path"
+& $qt_qmake -- MYSQL_INCDIR="$maria_path\include\mysql" MYSQL_LIBDIR="$maria_path\lib"
+cd "$old_pwd"
 
 # Build application.
 mkdir "rssguard-build"
@@ -58,11 +67,12 @@ windeployqt.exe --verbose 1 --compiler-runtime --no-translations --release rssgu
 cd ".."
 
 # Copy OpenSSL.
-Copy-Item -Path "$qt_path\bin\libcrypto*.dll" -Destination ".\app\"
-Copy-Item -Path "$qt_path\bin\libssl*.dll" -Destination ".\app\"
+Copy-Item -Path "$openssl_base_path\bin\libcrypto*.dll" -Destination ".\app\"
+Copy-Item -Path "$openssl_base_path\bin\libssl*.dll" -Destination ".\app\"
 
-# Copy MySQL Qt plugin.
-Copy-Item -Path "$qt_path\bin\libmariadb.dll" -Destination ".\app\"
+# Copy MySQL.
+Copy-Item -Path "$maria_path\lib\libmariadb.dll" -Destination ".\app\"
+Copy-Item -Path "$qt_sqldrivers_path\plugins\sqldrivers\qsqlmysql.dll" -Destination ".\app\sqldrivers\" -Force
 
 if ($webengine -eq "true") {
   $packagebase = "rssguard-${git_tag}-${git_revision}-win64"

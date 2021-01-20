@@ -28,7 +28,7 @@
    <item row="4" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Limit number of downloaded messages per feed</string>
+      <string>Only download newest X messages per feed</string>
      </property>
      <property name="buddy">
       <cstring>m_spinLimitMessages</cstring>
