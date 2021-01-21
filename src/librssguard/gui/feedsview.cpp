@@ -167,7 +167,7 @@ void FeedsView::addFeedIntoSelectedAccount() {
     else {
       qApp->showGuiMessage(tr("Not supported"),
                            tr("Selected account does not support adding of new feeds."),
-                           QSystemTrayIcon::Warning,
+                           QSystemTrayIcon::MessageIcon::Warning,
                            qApp->mainFormWidget(), true);
     }
   }
@@ -185,7 +185,7 @@ void FeedsView::addCategoryIntoSelectedAccount() {
     else {
       qApp->showGuiMessage(tr("Not supported"),
                            tr("Selected account does not support adding of new categories."),
-                           QSystemTrayIcon::Warning,
+                           QSystemTrayIcon::MessageIcon::Warning,
                            qApp->mainFormWidget(), true);
     }
   }
@@ -235,7 +235,7 @@ void FeedsView::editSelectedItem() {
   else {
     qApp->showGuiMessage(tr("Cannot edit item"),
                          tr("Selected item cannot be edited, this is not (yet?) supported."),
-                         QSystemTrayIcon::Warning,
+                         QSystemTrayIcon::MessageIcon::Warning,
                          qApp->mainFormWidget(),
                          true);
   }
@@ -269,11 +269,12 @@ void FeedsView::deleteSelectedItem() {
     if (selected_item->canBeDeleted()) {
       // Ask user first.
       if (MessageBox::show(qApp->mainFormWidget(),
-                           QMessageBox::Question,
+                           QMessageBox::Icon::Question,
                            tr("Deleting \"%1\"").arg(selected_item->title()),
                            tr("You are about to completely delete item \"%1\".").arg(selected_item->title()),
                            tr("Are you sure?"),
-                           QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No) {
+                           QString(), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                           QMessageBox::StandardButton::Yes) == QMessageBox::StandardButton::No) {
         // User refused.
         qApp->feedUpdateLock()->unlock();
         return;
@@ -283,7 +284,7 @@ void FeedsView::deleteSelectedItem() {
       if (!selected_item->deleteViaGui()) {
         qApp->showGuiMessage(tr("Cannot delete \"%1\"").arg(selected_item->title()),
                              tr("This item cannot be deleted because something critically failed. Submit bug report."),
-                             QSystemTrayIcon::Critical,
+                             QSystemTrayIcon::MessageIcon::Critical,
                              qApp->mainFormWidget(),
                              true);
       }
@@ -291,7 +292,7 @@ void FeedsView::deleteSelectedItem() {
     else {
       qApp->showGuiMessage(tr("Cannot delete \"%1\"").arg(selected_item->title()),
                            tr("This item cannot be deleted, because it does not support it\nor this functionality is not implemented yet."),
-                           QSystemTrayIcon::Critical,
+                           QSystemTrayIcon::MessageIcon::Critical,
                            qApp->mainFormWidget(),
                            true);
     }

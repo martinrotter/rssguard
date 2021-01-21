@@ -80,7 +80,7 @@ QMessageBox::StandardButton MessageBox::show(QWidget* parent,
 
   // Display it.
   if (msg_box.exec() == -1) {
-    return QMessageBox::Cancel;
+    return QMessageBox::StandardButton::Cancel;
   }
   else {
     return msg_box.standardButton(msg_box.clickedButton());

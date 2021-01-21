@@ -31,7 +31,7 @@ void Downloader::downloadFile(const QString& url, int timeout, bool protected_co
 
 void Downloader::uploadFile(const QString& url, const QByteArray& data, int timeout,
                             bool protected_contents, const QString& username, const QString& password) {
-  manipulateData(url, QNetworkAccessManager::PostOperation, data, timeout, protected_contents, username, password);
+  manipulateData(url, QNetworkAccessManager::Operation::PostOperation, data, timeout, protected_contents, username, password);
 }
 
 void Downloader::manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
@@ -82,7 +82,7 @@ void Downloader::manipulateData(const QString& url,
   m_targetUsername = username;
   m_targetPassword = password;
 
-  if (operation == QNetworkAccessManager::PostOperation) {
+  if (operation == QNetworkAccessManager::Operation::PostOperation) {
     if (m_inputMultipartData == nullptr) {
       runPostRequest(request, m_inputData);
     }
@@ -133,7 +133,7 @@ void Downloader::finished() {
     if (reply_operation == QNetworkAccessManager::GetOperation) {
       runGetRequest(request);
     }
-    else if (reply_operation == QNetworkAccessManager::PostOperation) {
+    else if (reply_operation == QNetworkAccessManager::Operation::PostOperation) {
       if (m_inputMultipartData == nullptr) {
         runPostRequest(request, m_inputData);
       }

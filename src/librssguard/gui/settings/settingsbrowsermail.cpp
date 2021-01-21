@@ -220,7 +220,7 @@ void SettingsBrowserMail::addExternalTool() {
                                                tr("Enter parameters"),
                                                tr(
                                                  "Enter (optional) parameters separated by single space to send to executable when opening URLs."),
-                                               QLineEdit::Normal,
+                                               QLineEdit::EchoMode::Normal,
                                                QString(),
                                                &ok);
 

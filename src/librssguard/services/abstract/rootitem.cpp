@@ -186,7 +186,7 @@ QVariant RootItem::data(int column, int role) const {
 
     case Qt::TextAlignmentRole:
       if (column == FDS_MODEL_COUNTS_INDEX) {
-        return Qt::AlignCenter;
+        return Qt::AlignmentFlag::AlignCenter;
       }
       else {
         return QVariant();
@@ -198,7 +198,7 @@ QVariant RootItem::data(int column, int role) const {
 }
 
 Qt::ItemFlags RootItem::additionalFlags() const {
-  return Qt::NoItemFlags;
+  return Qt::ItemFlag::NoItemFlags;
 }
 
 bool RootItem::performDragDropChange(RootItem* target_item) {

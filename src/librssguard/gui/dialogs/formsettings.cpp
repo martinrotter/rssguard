@@ -71,7 +71,7 @@ void FormSettings::applySettings() {
     const QStringList changed_settings_description = panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")),
                                                                                          QString::fromUtf8(" • "));
     const QMessageBox::StandardButton clicked_button = MessageBox::show(this,
-                                                                        QMessageBox::Question,
+                                                                        QMessageBox::Icon::Question,
                                                                         tr("Critical settings were changed"),
                                                                         tr(
                                                                           "Some critical settings were changed and will be applied after the application gets restarted. "
@@ -79,7 +79,9 @@ void FormSettings::applySettings() {
                                                                         tr("Do you want to restart now?"),
                                                                         tr("Changed categories of settings:\n%1.").arg(
                                                                           changed_settings_description.join(QSL(",\n"))),
-                                                                        QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+                                                                        QMessageBox::StandardButton::Yes |
+                                                                        QMessageBox::StandardButton::No,
+                                                                        QMessageBox::StandardButton::Yes);
 
     if (clicked_button == QMessageBox::Yes) {
       qApp->restart();
@@ -106,13 +108,14 @@ void FormSettings::cancelSettings() {
                                                                                      QString::fromUtf8(" • "));
 
     if (MessageBox::show(this,
-                         QMessageBox::Critical,
+                         QMessageBox::Icon::Critical,
                          tr("Some settings are changed and will be lost"),
                          tr("Some settings were changed and by cancelling this dialog, you would lose these changes."),
                          tr("Do you really want to close this dialog without saving any settings?"),
                          tr("Changed categories of settings:\n%1.").arg(changed_settings_description.join(QSL(",\n"))),
-                         QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) ==
-        QMessageBox::Yes) {
+                         QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                         QMessageBox::StandardButton::Yes) ==
+        QMessageBox::StandardButton::Yes) {
       reject();
     }
   }

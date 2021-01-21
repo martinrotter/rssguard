@@ -21,7 +21,7 @@ TabBar::~TabBar() {
 }
 
 void TabBar::setTabType(int index, const TabBar::TabType& type) {
-  const auto button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
+  const auto button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::StyleHint::SH_TabBar_CloseButtonPosition,
                                                                               nullptr,
                                                                               this));
 
@@ -51,7 +51,7 @@ void TabBar::setTabType(int index, const TabBar::TabType& type) {
 
 void TabBar::closeTabViaButton() {
   const auto* close_button = qobject_cast<QAbstractButton*>(sender());
-  const auto button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
+  const auto button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::StyleHint::SH_TabBar_CloseButtonPosition,
                                                                               nullptr,
                                                                               this));
 

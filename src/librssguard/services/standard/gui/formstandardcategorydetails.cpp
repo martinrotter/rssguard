@@ -113,7 +113,7 @@ void FormStandardCategoryDetails::apply() {
       delete new_category;
       qApp->showGuiMessage(tr("Cannot add category"),
                            tr("Category was not added due to error."),
-                           QSystemTrayIcon::Critical,
+                           QSystemTrayIcon::MessageIcon::Critical,
                            qApp->mainFormWidget(), true);
     }
   }

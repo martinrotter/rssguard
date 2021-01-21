@@ -32,7 +32,7 @@
 
 StandardFeed::StandardFeed(RootItem* parent_item)
   : Feed(parent_item) {
-  m_networkError = QNetworkReply::NoError;
+  m_networkError = QNetworkReply::NetworkError::NoError;
   m_type = Type::Rss0X;
   m_encoding = QString();
 }
@@ -155,7 +155,7 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
                                                                                                  SETTING(Feeds::UpdateTimeout)).toInt(),
                                                                          QByteArray(),
                                                                          feed_contents,
-                                                                         QNetworkAccessManager::GetOperation,
+                                                                         QNetworkAccessManager::Operation::GetOperation,
                                                                          headers,
                                                                          false,
                                                                          {},
@@ -234,7 +234,7 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
                  << "XML of feed" << QUOTE_W_SPACE(url) << "is not valid and cannot be loaded. "
                  << "Error:" << QUOTE_W_SPACE(error_msg) << "(line " << error_line
                  << ", column " << error_column << ").";
-        result.second = QNetworkReply::UnknownContentError;
+        result.second = QNetworkReply::NetworkError::UnknownContentError;
 
         // XML is invalid, exit.
         return result;
@@ -311,7 +311,7 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
       else {
         // File was downloaded and it really was XML file
         // but feed format was NOT recognized.
-        result.second = QNetworkReply::UnknownContentError;
+        result.second = QNetworkReply::NetworkError::UnknownContentError;
       }
     }
 
@@ -437,14 +437,14 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
                                                            download_timeout,
                                                            QByteArray(),
                                                            feed_contents,
-                                                           QNetworkAccessManager::GetOperation,
+                                                           QNetworkAccessManager::Operation::GetOperation,
                                                            headers,
                                                            false,
                                                            {},
                                                            {},
                                                            getParentServiceRoot()->networkProxy()).first;
 
-  if (m_networkError != QNetworkReply::NoError) {
+  if (m_networkError != QNetworkReply::NetworkError::NoError) {
     qWarningNN << LOGSEC_CORE
                << "Error"
                << QUOTE_W_SPACE(m_networkError)

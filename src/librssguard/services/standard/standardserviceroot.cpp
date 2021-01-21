@@ -134,7 +134,7 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
 }
 
 Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
-  return Qt::ItemIsDropEnabled;
+  return Qt::ItemFlag::ItemIsDropEnabled;
 }
 
 void StandardServiceRoot::loadFromDatabase() {

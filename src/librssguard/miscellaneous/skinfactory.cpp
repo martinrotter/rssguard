@@ -165,15 +165,15 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
 QList<Skin> SkinFactory::installedSkins() const {
   QList<Skin> skins;
   bool skin_load_ok;
-  QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Dirs |
-                                                               QDir::NoDotAndDotDot |
-                                                               QDir::NoSymLinks |
-                                                               QDir::Readable);
+  QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Filter::Dirs |
+                                                               QDir::Filter::NoDotAndDotDot |
+                                                               QDir::Filter::NoSymLinks |
+                                                               QDir::Filter::Readable);
 
-  skin_directories.append(QDir(customSkinBaseFolder()).entryList(QDir::Dirs |
-                                                                 QDir::NoDotAndDotDot |
-                                                                 QDir::NoSymLinks |
-                                                                 QDir::Readable));
+  skin_directories.append(QDir(customSkinBaseFolder()).entryList(QDir::Filter::Dirs |
+                                                                 QDir::Filter::NoDotAndDotDot |
+                                                                 QDir::Filter::NoSymLinks |
+                                                                 QDir::Filter::Readable));
 
   for (const QString& base_directory : skin_directories) {
     const Skin skin_info = skinInfo(base_directory, &skin_load_ok);

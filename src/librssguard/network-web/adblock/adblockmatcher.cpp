@@ -184,7 +184,7 @@ void AdBlockMatcher::update() {
 
     AdBlockRule* copiedRule = originalRule->copy();
 
-    copiedRule->m_options |= AdBlockRule::DomainRestrictedOption;
+    copiedRule->m_options |= AdBlockRule::RuleOption::DomainRestrictedOption;
     copiedRule->m_blockedDomains.append(rule->m_allowedDomains);
     cssRulesHash[rule->cssSelector()] = copiedRule;
     m_createdRules.append(copiedRule);

@@ -187,16 +187,17 @@ void FormStandardImportExport::selectImportFile() {
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
     QMessageBox::StandardButton answer = MessageBox::show(this,
-                                                          QMessageBox::Warning,
+                                                          QMessageBox::Icon::Warning,
                                                           tr("Get online metadata"),
                                                           tr("Metadata for your feeds can be fetched online. Note that the action "
                                                              "could take several minutes, depending on number of feeds."),
                                                           tr("Do you want to fetch feed metadata online?"),
                                                           QString(),
-                                                          QMessageBox::Yes | QMessageBox::No,
-                                                          QMessageBox::Yes);
+                                                          QMessageBox::StandardButton::Yes |
+                                                          QMessageBox::StandardButton::No,
+                                                          QMessageBox::StandardButton::Yes);
 
-    parseImportFile(selected_file, answer == QMessageBox::Yes);
+    parseImportFile(selected_file, answer == QMessageBox::StandardButton::Yes);
   }
 }
 

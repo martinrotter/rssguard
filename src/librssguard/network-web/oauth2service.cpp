@@ -77,7 +77,7 @@ QString OAuth2Service::bearer() {
   if (!isFullyLoggedIn()) {
     qApp->showGuiMessage(tr("You have to login first"),
                          tr("Click here to login."),
-                         QSystemTrayIcon::Critical,
+                         QSystemTrayIcon::MessageIcon::Critical,
                          nullptr, false,
                          [this]() {
       login();

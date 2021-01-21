@@ -927,11 +927,11 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       message.m_url = QString(URI_SCHEME_HTTP) + message.m_url.mid(2);
     }
     else if (message.m_url.startsWith(QL1S("/"))) {
-      QString new_message_url = QUrl(url).toString(QUrl::RemoveUserInfo |
-                                                   QUrl::RemovePath |
-                                                   QUrl::RemoveQuery |
-                                                   QUrl::RemoveFilename |
-                                                   QUrl::StripTrailingSlash);
+      QString new_message_url = QUrl(url).toString(QUrl::UrlFormattingOption::RemoveUserInfo |
+                                                   QUrl::UrlFormattingOption::RemovePath |
+                                                   QUrl::UrlFormattingOption::RemoveQuery |
+                                                   QUrl::UrlFormattingOption::RemoveFilename |
+                                                   QUrl::UrlFormattingOption::StripTrailingSlash);
 
       new_message_url += message.m_url;
       message.m_url = new_message_url;

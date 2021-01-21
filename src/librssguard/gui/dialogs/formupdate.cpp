@@ -240,7 +240,7 @@ void FormUpdate::startUpdate() {
     if (!qApp->web()->openUrlInExternalBrowser(url_file)) {
       qApp->showGuiMessage(tr("Cannot update application"),
                            tr("Cannot navigate to installation file. Download new installation file manually on project website."),
-                           QSystemTrayIcon::Warning,
+                           QSystemTrayIcon::MessageIcon::Warning,
                            this, true);
     }
   }

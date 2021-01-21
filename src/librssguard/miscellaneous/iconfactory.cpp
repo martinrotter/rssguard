@@ -127,10 +127,10 @@ QStringList IconFactory::installedIconThemes() const {
     const QDir icon_dir(icon_path);
 
     // Iterate all icon themes in this directory.
-    for (const QFileInfo& icon_theme_path : icon_dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot |
-                                                                   QDir::Readable | QDir::CaseSensitive |
-                                                                   QDir::NoSymLinks,
-                                                                   QDir::Time)) {
+    for (const QFileInfo& icon_theme_path : icon_dir.entryInfoList(QDir::Filter::Dirs | QDir::Filter::NoDotAndDotDot |
+                                                                   QDir::Filter::Readable | QDir::Filter::CaseSensitive |
+                                                                   QDir::Filter::NoSymLinks,
+                                                                   QDir::SortFlag::Time)) {
       QDir icon_theme_dir = QDir(icon_theme_path.absoluteFilePath());
 
       if (icon_theme_dir.exists(filters_index.at(0))) {

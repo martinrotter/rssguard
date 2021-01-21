@@ -203,7 +203,7 @@ void DownloadItem::openFolder() {
   if (m_output.exists()) {
     if (!SystemFactory::openFolderFile(m_output.fileName())) {
       MessageBox::show(this,
-                       QMessageBox::Warning,
+                       QMessageBox::Icon::Warning,
                        tr("Cannot open directory"),
                        tr("Cannot open output directory. Open it manually."),
                        QString(),
@@ -413,7 +413,7 @@ void DownloadItem::finished() {
     qApp->showGuiMessage(tr("Download finished"),
                          tr("File '%1' is downloaded.\nClick here to open parent directory.").arg(QDir::toNativeSeparators(
                                                                                                     m_output.fileName())),
-                         QSystemTrayIcon::Information,
+                         QSystemTrayIcon::MessageIcon::Information,
                          nullptr,
                          false,
                          [this] {
@@ -781,14 +781,14 @@ bool DownloadModel::removeRows(int row, int count, const QModelIndex& parent) {
 
 Qt::ItemFlags DownloadModel::flags(const QModelIndex& index) const {
   if (index.row() < 0 || index.row() >= rowCount(index.parent())) {
-    return Qt::NoItemFlags;
+    return Qt::ItemFlag::NoItemFlags;
   }
 
   Qt::ItemFlags default_flags = QAbstractListModel::flags(index);
   DownloadItem* item = m_downloadManager->m_downloads.at(index.row());
 
   if (item->downloadedSuccessfully()) {
-    return default_flags | Qt::ItemIsDragEnabled;
+    return default_flags | Qt::ItemFlag::ItemIsDragEnabled;
   }
 
   return default_flags;

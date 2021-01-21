@@ -268,7 +268,7 @@ void InoreaderNetworkFactory::onTokensError(const QString& error, const QString&
 
   qApp->showGuiMessage(tr("Inoreader: authentication error"),
                        tr("Click this to login again. Error is: '%1'").arg(error_description),
-                       QSystemTrayIcon::Critical,
+                       QSystemTrayIcon::MessageIcon::Critical,
                        nullptr, false,
                        [this]() {
     m_oauth2->setAccessToken(QString());
@@ -280,7 +280,7 @@ void InoreaderNetworkFactory::onTokensError(const QString& error, const QString&
 void InoreaderNetworkFactory::onAuthFailed() {
   qApp->showGuiMessage(tr("Inoreader: authorization denied"),
                        tr("Click this to login again."),
-                       QSystemTrayIcon::Critical,
+                       QSystemTrayIcon::MessageIcon::Critical,
                        nullptr, false,
                        [this]() {
     m_oauth2->login();

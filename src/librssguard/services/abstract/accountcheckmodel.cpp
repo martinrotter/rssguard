@@ -262,13 +262,13 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
 Qt::ItemFlags AccountCheckModel::flags(const QModelIndex& index) const {
   if (!index.isValid() || (itemForIndex(index)->kind() != RootItem::Kind::Category &&
                            itemForIndex(index)->kind() != RootItem::Kind::Feed)) {
-    return Qt::NoItemFlags;
+    return Qt::ItemFlag::NoItemFlags;
   }
 
-  Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+  Qt::ItemFlags flags = Qt::ItemFlag::ItemIsEnabled | Qt::ItemFlag::ItemIsSelectable;
 
   if (index.column() == 0) {
-    flags |= Qt::ItemIsUserCheckable;
+    flags |= Qt::ItemFlag::ItemIsUserCheckable;
   }
 
   return flags;

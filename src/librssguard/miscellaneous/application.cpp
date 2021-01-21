@@ -143,7 +143,7 @@ void Application::offerChanges() const {
   if (isFirstRunCurrentVersion()) {
     qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
                                                     "version by clicking this popup notification.").arg(APP_LONG_NAME),
-                         QSystemTrayIcon::NoIcon, nullptr, false, [] {
+                         QSystemTrayIcon::MessageIcon::NoIcon, nullptr, false, [] {
       FormAbout(qApp->mainForm()).exec();
     });
   }
