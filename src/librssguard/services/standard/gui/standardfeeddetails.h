@@ -7,6 +7,8 @@
 
 #include "ui_standardfeeddetails.h"
 
+#include <QNetworkProxy>
+
 class Category;
 class RootItem;
 class StandardFeed;
@@ -20,8 +22,14 @@ class StandardFeedDetails : public QWidget {
     explicit StandardFeedDetails(QWidget* parent = nullptr);
 
   private slots:
-    void guessIconOnly(const QString& url, const QString& username, const QString& password);
-    void guessFeed(const QString& url, const QString& username, const QString& password);
+    void guessIconOnly(const QString& url,
+                       const QString& username,
+                       const QString& password,
+                       const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
+    void guessFeed(const QString& url,
+                   const QString& username,
+                   const QString& password,
+                   const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
 
     void onTitleChanged(const QString& new_title);
     void onDescriptionChanged(const QString& new_description);

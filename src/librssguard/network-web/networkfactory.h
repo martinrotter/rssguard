@@ -7,6 +7,7 @@
 
 #include <QCoreApplication>
 #include <QHttpPart>
+#include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QPair>
 #include <QVariant>
@@ -50,7 +51,8 @@ class NetworkFactory {
                                                              QByteArray>> additional_headers = QList<QPair<QByteArray, QByteArray>>(),
                                                  bool protected_contents = false,
                                                  const QString& username = QString(),
-                                                 const QString& password = QString());
+                                                 const QString& password = QString(),
+                                                 const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
     static NetworkResult performNetworkOperation(const QString& url, int timeout,
                                                  QHttpMultiPart* input_data,
                                                  QList<HttpResponse>& output,
@@ -59,7 +61,8 @@ class NetworkFactory {
                                                              QByteArray>> additional_headers = QList<QPair<QByteArray, QByteArray>>(),
                                                  bool protected_contents = false,
                                                  const QString& username = QString(),
-                                                 const QString& password = QString());
+                                                 const QString& password = QString(),
+                                                 const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
 };
 
 #endif // NETWORKFACTORY_H

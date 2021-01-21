@@ -9,6 +9,7 @@
 #include "network-web/httpresponse.h"
 
 #include <QHttpMultiPart>
+#include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QSslError>
 
@@ -27,6 +28,8 @@ class Downloader : public QObject {
     QNetworkReply::NetworkError lastOutputError() const;
     QList<HttpResponse> lastOutputMultipartData() const;
     QVariant lastContentType() const;
+
+    void setProxy(const QNetworkProxy& proxy);
 
   public slots:
     void cancel();

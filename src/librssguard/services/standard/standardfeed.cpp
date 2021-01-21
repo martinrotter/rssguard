@@ -111,7 +111,10 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
 }
 
 void StandardFeed::fetchMetadataForItself() {
-  QPair<StandardFeed*, QNetworkReply::NetworkError> metadata = guessFeed(url(), username(), password());
+  QPair<StandardFeed*, QNetworkReply::NetworkError> metadata = guessFeed(url(),
+                                                                         username(),
+                                                                         password(),
+                                                                         getParentServiceRoot()->networkProxy());
 
   if (metadata.first != nullptr && metadata.second == QNetworkReply::NetworkError::NoError) {
     // Some properties are not updated when new metadata are fetched.
@@ -138,7 +141,8 @@ void StandardFeed::fetchMetadataForItself() {
 
 QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const QString& url,
                                                                           const QString& username,
-                                                                          const QString& password) {
+                                                                          const QString& password,
+                                                                          const QNetworkProxy& custom_proxy) {
   QPair<StandardFeed*, QNetworkReply::NetworkError> result;
 
   result.first = nullptr;
@@ -146,14 +150,17 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << NetworkFactory::generateBasicAuthHeader(username, password);
-
   NetworkResult network_result = NetworkFactory::performNetworkOperation(url,
                                                                          qApp->settings()->value(GROUP(Feeds),
                                                                                                  SETTING(Feeds::UpdateTimeout)).toInt(),
                                                                          QByteArray(),
                                                                          feed_contents,
                                                                          QNetworkAccessManager::GetOperation,
-                                                                         headers);
+                                                                         headers,
+                                                                         false,
+                                                                         {},
+                                                                         {},
+                                                                         custom_proxy);
 
   result.second = network_result.first;
 
@@ -430,7 +437,11 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
                                                            QByteArray(),
                                                            feed_contents,
                                                            QNetworkAccessManager::GetOperation,
-                                                           headers).first;
+                                                           headers,
+                                                           false,
+                                                           {},
+                                                           {},
+                                                           getParentServiceRoot()->networkProxy()).first;
 
   if (m_networkError != QNetworkReply::NoError) {
     qWarningNN << LOGSEC_CORE

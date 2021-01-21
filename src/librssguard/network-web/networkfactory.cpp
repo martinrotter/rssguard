@@ -208,7 +208,8 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int ti
                                                       QByteArray& output, QNetworkAccessManager::Operation operation,
                                                       QList<QPair<QByteArray, QByteArray>> additional_headers,
                                                       bool protected_contents,
-                                                      const QString& username, const QString& password) {
+                                                      const QString& username, const QString& password,
+                                                      const QNetworkProxy& custom_proxy) {
   Downloader downloader;
   QEventLoop loop;
   NetworkResult result;
@@ -220,6 +221,10 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int ti
     if (!header.first.isEmpty()) {
       downloader.appendRawHeader(header.first, header.second);
     }
+  }
+
+  if (custom_proxy.type() != QNetworkProxy::ProxyType::DefaultProxy) {
+    downloader.setProxy(custom_proxy);
   }
 
   downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
@@ -239,7 +244,8 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       QList<QPair<QByteArray, QByteArray>> additional_headers,
                                                       bool protected_contents,
                                                       const QString& username,
-                                                      const QString& password) {
+                                                      const QString& password,
+                                                      const QNetworkProxy& custom_proxy) {
   Downloader downloader;
   QEventLoop loop;
   NetworkResult result;
@@ -251,6 +257,10 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
     if (!header.first.isEmpty()) {
       downloader.appendRawHeader(header.first, header.second);
     }
+  }
+
+  if (custom_proxy.type() != QNetworkProxy::ProxyType::DefaultProxy) {
+    downloader.setProxy(custom_proxy);
   }
 
   downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);

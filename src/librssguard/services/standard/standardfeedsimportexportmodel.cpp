@@ -152,6 +152,12 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
   int completed = 0, total = 0, succeded = 0, failed = 0;
   auto* root_item = new StandardServiceRoot();
   QStack<RootItem*> model_items;
+  QNetworkProxy custom_proxy;
+
+  if (sourceModel()->rootItem() != nullptr &&
+      sourceModel()->rootItem()->getParentServiceRoot() != nullptr) {
+    custom_proxy = sourceModel()->rootItem()->getParentServiceRoot()->networkProxy();
+  }
 
   model_items.push(root_item);
   QStack<QDomElement> elements_to_process;
@@ -182,7 +188,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
             QPair<StandardFeed*, QNetworkReply::NetworkError> guessed;
 
             if (fetch_metadata_online &&
-                (guessed = StandardFeed::guessFeed(feed_url)).second == QNetworkReply::NoError) {
+                (guessed = StandardFeed::guessFeed(feed_url, {}, {}, custom_proxy)).second == QNetworkReply::NoError) {
               // We should obtain fresh metadata from online feed source.
               guessed.first->setUrl(feed_url);
               active_model_item->appendChild(guessed.first);
@@ -287,6 +293,13 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
   emit layoutChanged();
   int completed = 0, succeded = 0, failed = 0;
   auto* root_item = new StandardServiceRoot();
+  QNetworkProxy custom_proxy;
+
+  if (sourceModel()->rootItem() != nullptr &&
+      sourceModel()->rootItem()->getParentServiceRoot() != nullptr) {
+    custom_proxy = sourceModel()->rootItem()->getParentServiceRoot()->networkProxy();
+  }
+
   QList<QByteArray> urls = data.split('\n');
 
   for (const QByteArray& url : urls) {
@@ -294,7 +307,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
       QPair<StandardFeed*, QNetworkReply::NetworkError> guessed;
 
       if (fetch_metadata_online &&
-          (guessed = StandardFeed::guessFeed(url)).second == QNetworkReply::NoError) {
+          (guessed = StandardFeed::guessFeed(url, {}, {}, custom_proxy)).second == QNetworkReply::NoError) {
         guessed.first->setUrl(url);
         root_item->appendChild(guessed.first);
         succeded++;

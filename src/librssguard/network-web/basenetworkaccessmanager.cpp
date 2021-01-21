@@ -21,9 +21,9 @@ void BaseNetworkAccessManager::loadSettings() {
                                                                                                                      SETTING(Proxy::Type)).
                                                                                              toInt());
 
-  if (selected_proxy_type == QNetworkProxy::NoProxy) {
+  if (selected_proxy_type == QNetworkProxy::ProxyType::NoProxy) {
     // No extra setting is needed, set new proxy and exit this method.
-    setProxy(QNetworkProxy::NoProxy);
+    setProxy(QNetworkProxy::ProxyType::NoProxy);
   }
   else {
     setProxy(QNetworkProxy::applicationProxy());

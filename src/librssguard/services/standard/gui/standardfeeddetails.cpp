@@ -78,8 +78,12 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   onUrlChanged(QString());
 }
 
-void StandardFeedDetails::guessIconOnly(const QString& url, const QString& username, const QString& password) {
-  QPair<StandardFeed*, QNetworkReply::NetworkError> result = StandardFeed::guessFeed(url, username, password);
+void StandardFeedDetails::guessIconOnly(const QString& url, const QString& username,
+                                        const QString& password, const QNetworkProxy& custom_proxy) {
+  QPair<StandardFeed*, QNetworkReply::NetworkError> result = StandardFeed::guessFeed(url,
+                                                                                     username,
+                                                                                     password,
+                                                                                     custom_proxy);
 
   if (result.first != nullptr) {
     // Icon or whole feed was guessed.
@@ -107,8 +111,12 @@ void StandardFeedDetails::guessIconOnly(const QString& url, const QString& usern
   }
 }
 
-void StandardFeedDetails::guessFeed(const QString& url, const QString& username, const QString& password) {
-  QPair<StandardFeed*, QNetworkReply::NetworkError> result = StandardFeed::guessFeed(url, username, password);
+void StandardFeedDetails::guessFeed(const QString& url, const QString& username,
+                                    const QString& password, const QNetworkProxy& custom_proxy) {
+  QPair<StandardFeed*, QNetworkReply::NetworkError> result = StandardFeed::guessFeed(url,
+                                                                                     username,
+                                                                                     password,
+                                                                                     custom_proxy);
 
   if (result.first != nullptr) {
     // Icon or whole feed was guessed.

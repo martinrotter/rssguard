@@ -16,6 +16,8 @@ FormAccountDetails::FormAccountDetails(const QIcon& icon, QWidget* parent)
                                       ? qApp->icons()->fromTheme(QSL("emblem-system"))
                                       : icon);
   createConnections();
+
+  m_proxyDetails->setProxy(QNetworkProxy());
 }
 
 void FormAccountDetails::insertCustomTab(QWidget* custom_tab, const QString& title, int index) {

@@ -8,6 +8,7 @@
 #include <QCoreApplication>
 #include <QDateTime>
 #include <QMetaType>
+#include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QPair>
 #include <QSqlRecord>
@@ -72,7 +73,8 @@ class StandardFeed : public Feed {
     // or NULL feed.
     static QPair<StandardFeed*, QNetworkReply::NetworkError> guessFeed(const QString& url,
                                                                        const QString& username = QString(),
-                                                                       const QString& password = QString());
+                                                                       const QString& password = QString(),
+                                                                       const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);

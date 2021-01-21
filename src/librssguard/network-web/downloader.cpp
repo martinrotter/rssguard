@@ -282,6 +282,12 @@ QVariant Downloader::lastContentType() const {
   return m_lastContentType;
 }
 
+void Downloader::setProxy(const QNetworkProxy& proxy) {
+  qWarningNN << LOGSEC_NETWORK << "Setting custom proxy:" << QUOTE_W_SPACE_DOT(proxy.hostName());
+
+  m_downloadManager->setProxy(proxy);
+}
+
 void Downloader::cancel() {
   if (m_activeReply != nullptr) {
     // Download action timed-out, too slow connection or target is not reachable.
