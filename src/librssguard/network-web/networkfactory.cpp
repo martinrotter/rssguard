@@ -139,16 +139,24 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
   }
 }
 
-QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& urls, int timeout, QIcon& output) {
+QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& urls, int timeout, QIcon& output, const QNetworkProxy& custom_proxy) {
   QNetworkReply::NetworkError network_result = QNetworkReply::UnknownNetworkError;
 
   for (const QString& url : urls) {
     QByteArray icon_data;
 
-    network_result = performNetworkOperation(url, timeout, QByteArray(), icon_data,
-                                             QNetworkAccessManager::GetOperation).first;
+    network_result = performNetworkOperation(url,
+                                             timeout,
+                                             QByteArray(),
+                                             icon_data,
+                                             QNetworkAccessManager::GetOperation,
+                                             {},
+                                             false,
+                                             {},
+                                             {},
+                                             custom_proxy).first;
 
-    if (network_result == QNetworkReply::NoError) {
+    if (network_result == QNetworkReply::NetworkError::NoError) {
       QPixmap icon_pixmap;
 
       icon_pixmap.loadFromData(icon_data);
@@ -167,8 +175,16 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& u
 
     const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(host);
 
-    network_result = performNetworkOperation(google_s2_with_url, timeout, QByteArray(), icon_data,
-                                             QNetworkAccessManager::GetOperation).first;
+    network_result = performNetworkOperation(google_s2_with_url,
+                                             timeout,
+                                             QByteArray(),
+                                             icon_data,
+                                             QNetworkAccessManager::GetOperation,
+                                             {},
+                                             false,
+                                             {},
+                                             {},
+                                             custom_proxy).first;
 
     if (network_result == QNetworkReply::NoError) {
       QPixmap icon_pixmap;

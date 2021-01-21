@@ -320,7 +320,8 @@ QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const 
 
     if ((result.second = NetworkFactory::downloadIcon(icon_possible_locations,
                                                       DOWNLOAD_TIMEOUT,
-                                                      icon_data)) == QNetworkReply::NoError) {
+                                                      icon_data,
+                                                      custom_proxy)) == QNetworkReply::NoError) {
       // Icon for feed was downloaded and is stored now in _icon_data.
       result.first->setIcon(icon_data);
     }
