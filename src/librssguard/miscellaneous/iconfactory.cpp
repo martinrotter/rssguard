@@ -77,10 +77,10 @@ void IconFactory::loadCurrentIconTheme() {
   }
 
   // Display list of installed themes.
-  qDebugNN << LOGSEC_GUI << "Installed icon themes are: %s.",
-    qPrintable(QStringList(installed_themes)
-               .replaceInStrings(QRegularExpression(QSL("^|$")), QSL("\'"))
-               .replaceInStrings(QRegularExpression(QSL("^\\'$")), QSL("\'\'")).join(QSL(", ")));
+  qDebugNN << LOGSEC_GUI << "Installed icon themes are: "
+           << QStringList(installed_themes)
+    .replaceInStrings(QRegularExpression(QSL("^|$")), QSL("\'"))
+    .replaceInStrings(QRegularExpression(QSL("^\\'$")), QSL("\'\'")).join(QSL(", "));
 
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.

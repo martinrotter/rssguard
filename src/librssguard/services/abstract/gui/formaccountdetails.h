@@ -76,7 +76,8 @@ inline bool FormAccountDetails::applyInternal() {
   if (m_account == nullptr) {
     m_account = new T();
     m_account->setAccountId(DatabaseQueries::createBaseAccount(database, m_account->code()));
-    m_account->setId(m_account->accountId());
+
+    //m_account->setId(m_account->accountId());
   }
 
   // NOTE: We edit account common attributes here directly.

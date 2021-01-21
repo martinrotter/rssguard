@@ -12,11 +12,16 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '17');
+INSERT INTO Information VALUES (1, 'schema_version', '18');
 -- !
 CREATE TABLE IF NOT EXISTS Accounts (
-  id              INTEGER     PRIMARY KEY,
-  type            TEXT        NOT NULL
+  id              INTEGER     AUTO_INCREMENT PRIMARY KEY,
+  type            TEXT        NOT NULL CHECK (type != ''),
+  proxy_type      INTEGER     NOT NULL DEFAULT 0 CHECK (proxy_type >= 0),
+  proxy_host      TEXT,
+  proxy_port      INTEGER,
+  proxy_username  TEXT,
+  proxy_password  TEXT
 );
 -- !
 CREATE TABLE IF NOT EXISTS TtRssAccounts (
