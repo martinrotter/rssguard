@@ -7,6 +7,7 @@
 
 #include "core/message.h"
 
+#include <QNetworkProxy>
 #include <QPair>
 
 class FeedsModel;
@@ -161,6 +162,9 @@ class ServiceRoot : public RootItem {
     int accountId() const;
     void setAccountId(int account_id);
 
+    QNetworkProxy networkProxy() const;
+    void setNetworkProxy(const QNetworkProxy& network_proxy);
+
     // Removes all data associated with this account from DB
     // and from model.
     void completelyRemoveAllData();
@@ -245,6 +249,7 @@ class ServiceRoot : public RootItem {
     LabelsNode* m_labelsNode;
     int m_accountId;
     QList<QAction*> m_serviceMenu;
+    QNetworkProxy m_networkProxy;
 };
 
 ServiceRoot::LabelOperation operator|(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs);

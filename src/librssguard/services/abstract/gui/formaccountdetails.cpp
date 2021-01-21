@@ -3,7 +3,6 @@
 #include "services/abstract/gui/formaccountdetails.h"
 
 #include "gui/guiutilities.h"
-#include "gui/networkproxydetails.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/serviceroot.h"
@@ -34,6 +33,10 @@ void FormAccountDetails::clearTabs() {
 void FormAccountDetails::setEditableAccount(ServiceRoot* editable_account) {
   setWindowTitle(tr("Edit account '%1'").arg(editable_account->title()));
   m_account = editable_account;
+
+  if (m_account != nullptr) {
+    m_proxyDetails->setProxy(m_account->networkProxy());
+  }
 }
 
 void FormAccountDetails::createConnections() {

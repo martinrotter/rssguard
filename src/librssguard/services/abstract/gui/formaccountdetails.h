@@ -7,12 +7,12 @@
 
 #include "ui_formaccountdetails.h"
 
+#include "gui/networkproxydetails.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/databasequeries.h"
 
 class ServiceRoot;
-class NetworkProxyDetails;
 
 class FormAccountDetails : public QDialog {
   Q_OBJECT
@@ -79,6 +79,8 @@ inline bool FormAccountDetails::applyInternal() {
 
     //m_account->setId(m_account->accountId());
   }
+
+  m_account->setNetworkProxy(m_proxyDetails->proxy());
 
   // NOTE: We edit account common attributes here directly.
   DatabaseQueries::editBaseAccount(database, m_account);

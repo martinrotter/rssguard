@@ -1652,6 +1652,29 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
   return ids;
 }
 
+void DatabaseQueries::fillBaseAccountData(const QSqlDatabase& db, ServiceRoot* account, bool* ok) {
+  QSqlQuery query(db);
+
+  query.prepare(QSL("SELECT * FROM Accounts WHERE id = :id;"));
+  query.bindValue(QSL(":id"), account->accountId());
+
+  bool res = query.exec() && query.next();
+
+  if (res) {
+    QNetworkProxy proxy(QNetworkProxy::ProxyType(query.value(QSL("proxy_type")).toInt()),
+                        query.value(QSL("proxy_host")).toString(),
+                        query.value(QSL("proxy_port")).toInt(),
+                        query.value(QSL("proxy_username")).toString(),
+                        TextFactory::decrypt(query.value(QSL("proxy_password")).toString()));
+
+    account->setNetworkProxy(proxy);
+  }
+
+  if (ok != nullptr) {
+    *ok = res;
+  }
+}
+
 QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
   QList<ServiceRoot*> roots;
@@ -1668,8 +1691,10 @@ QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(const QSqlDatabase& db,
       root->network()->setForceServerSideUpdate(query.value(4).toBool());
       root->network()->setBatchSize(query.value(5).toInt());
       root->network()->setDownloadOnlyUnreadMessages(query.value(6).toBool());
-
       root->updateTitle();
+
+      fillBaseAccountData(db, root);
+
       roots.append(root);
     }
 
@@ -1709,8 +1734,10 @@ QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(const QSqlDatabase& db, bo
       root->network()->setUrl(query.value(6).toString());
       root->network()->setForceServerSideUpdate(query.value(7).toBool());
       root->network()->setDownloadOnlyUnreadMessages(query.value(8).toBool());
-
       root->updateTitle();
+
+      fillBaseAccountData(db, root);
+
       roots.append(root);
     }
 
@@ -1839,11 +1866,27 @@ int DatabaseQueries::createBaseAccount(const QSqlDatabase& db, const QString& co
 }
 
 void DatabaseQueries::editBaseAccount(const QSqlDatabase& db, ServiceRoot* account, bool* ok) {
-  Q_UNUSED(account)
-  Q_UNUSED(ok)
-  Q_UNUSED(db)
+  auto proxy = account->networkProxy();
+  QSqlQuery q(db);
 
-  // TODO: edit proxy etc
+  q.setForwardOnly(true);
+
+  q.prepare(QSL("UPDATE Accounts "
+                "SET proxy_type = :proxy_type, proxy_host = :proxy_host, proxy_port = :proxy_port, "
+                "    proxy_username = :proxy_username, proxy_password = :proxy_password "
+                "WHERE id = :id"));
+  q.bindValue(QSL(":proxy_type"), proxy.type());
+  q.bindValue(QSL(":proxy_host"), proxy.hostName());
+  q.bindValue(QSL(":proxy_port"), proxy.port());
+  q.bindValue(QSL(":proxy_username"), proxy.user());
+  q.bindValue(QSL(":proxy_password"), TextFactory::encrypt(proxy.password()));
+  q.bindValue(QSL(":id"), account->accountId());
+
+  bool res = q.exec();
+
+  if (ok != nullptr) {
+    *ok = res;
+  }
 }
 
 bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id) {
@@ -2289,6 +2332,9 @@ QList<ServiceRoot*> DatabaseQueries::getStandardAccounts(const QSqlDatabase& db,
       auto* root = new StandardServiceRoot();
 
       root->setAccountId(q.value(0).toInt());
+
+      fillBaseAccountData(db, root);
+
       roots.append(root);
     }
 
@@ -2418,6 +2464,9 @@ QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(const QSqlDatabase& db, bo
       root->network()->oauth()->setRedirectUrl(query.value(4).toString());
       root->network()->setBatchSize(query.value(6).toInt());
       root->updateTitle();
+
+      fillBaseAccountData(db, root);
+
       roots.append(root);
     }
 
@@ -2516,6 +2565,9 @@ QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(const QSqlDatabase& db
       root->network()->oauth()->setRedirectUrl(query.value(4).toString());
       root->network()->setBatchSize(query.value(6).toInt());
       root->updateTitle();
+
+      fillBaseAccountData(db, root);
+
       roots.append(root);
     }
 

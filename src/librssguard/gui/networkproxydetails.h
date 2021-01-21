@@ -7,17 +7,25 @@
 
 #include "ui_networkproxydetails.h"
 
+#include <QNetworkProxy>
+
 class NetworkProxyDetails : public QWidget {
   Q_OBJECT
 
   public:
     explicit NetworkProxyDetails(QWidget* parent = nullptr);
 
+    QNetworkProxy proxy() const;
+    void setProxy(const QNetworkProxy& proxy);
+
+  signals:
+    void changed();
+
   private slots:
     void displayProxyPassword(int state);
     void onProxyTypeChanged(int index);
 
-  public:
+  private:
     Ui::NetworkProxyDetails m_ui;
 };
 

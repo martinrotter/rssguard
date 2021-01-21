@@ -20,6 +20,32 @@ NetworkProxyDetails::NetworkProxyDetails(QWidget* parent) : QWidget(parent) {
   m_ui.m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::ProxyType::HttpProxy);
 
   displayProxyPassword(Qt::CheckState::Unchecked);
+
+  connect(m_ui.m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+          &NetworkProxyDetails::changed);
+  connect(m_ui.m_txtProxyHost, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
+  connect(m_ui.m_txtProxyPassword, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
+  connect(m_ui.m_txtProxyUsername, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
+  connect(m_ui.m_spinProxyPort, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this,
+          &NetworkProxyDetails::changed);
+}
+
+QNetworkProxy NetworkProxyDetails::proxy() const {
+  QNetworkProxy proxy(static_cast<QNetworkProxy::ProxyType>(m_ui.m_cmbProxyType->currentData().toInt()),
+                      m_ui.m_txtProxyHost->text(),
+                      m_ui.m_spinProxyPort->value(),
+                      m_ui.m_txtProxyUsername->text(),
+                      m_ui.m_txtProxyPassword->text());
+
+  return proxy;
+}
+
+void NetworkProxyDetails::setProxy(const QNetworkProxy& proxy) {
+  m_ui.m_cmbProxyType->setCurrentIndex(m_ui.m_cmbProxyType->findData(proxy.type()));
+  m_ui.m_txtProxyHost->setText(proxy.hostName());
+  m_ui.m_spinProxyPort->setValue(proxy.port());
+  m_ui.m_txtProxyUsername->setText(proxy.user());
+  m_ui.m_txtProxyPassword->setText(proxy.password());
 }
 
 void NetworkProxyDetails::displayProxyPassword(int state) {
@@ -27,13 +53,14 @@ void NetworkProxyDetails::displayProxyPassword(int state) {
     m_ui.m_txtProxyPassword->setEchoMode(QLineEdit::EchoMode::Normal);
   }
   else {
-    m_ui.m_txtProxyPassword->setEchoMode(QLineEdit::EchoMode::PasswordEchoOnEdit);
+    m_ui.m_txtProxyPassword->setEchoMode(QLineEdit::EchoMode::Password);
   }
 }
 
 void NetworkProxyDetails::onProxyTypeChanged(int index) {
   const QNetworkProxy::ProxyType selected_type = static_cast<QNetworkProxy::ProxyType>(m_ui.m_cmbProxyType->itemData(index).toInt());
-  const bool is_proxy_selected = selected_type != QNetworkProxy::NoProxy && selected_type != QNetworkProxy::DefaultProxy;
+  const bool is_proxy_selected = selected_type != QNetworkProxy::ProxyType::NoProxy &&
+                                 selected_type != QNetworkProxy::ProxyType::DefaultProxy;
 
   m_ui.m_proxyDetails->setEnabled(is_proxy_selected);
 }

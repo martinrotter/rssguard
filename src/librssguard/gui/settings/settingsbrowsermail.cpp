@@ -32,13 +32,7 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
   m_ui->m_listTools->setHeaderLabels(QStringList() << tr("Executable") << tr("Parameters"));
   m_ui->m_listTools->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
 
-  connect(m_proxyDetails->m_ui.m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
-          &SettingsBrowserMail::dirtifySettings);
-  connect(m_proxyDetails->m_ui.m_txtProxyHost, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_proxyDetails->m_ui.m_txtProxyPassword, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_proxyDetails->m_ui.m_txtProxyUsername, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_proxyDetails->m_ui.m_spinProxyPort, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this,
-          &SettingsBrowserMail::dirtifySettings);
+  connect(m_proxyDetails, &NetworkProxyDetails::changed, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_grpCustomExternalBrowser, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_grpCustomExternalEmail, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtExternalBrowserArguments, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
@@ -159,11 +153,12 @@ void SettingsBrowserMail::loadSettings() {
   // Load the settings.
   QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(settings()->value(GROUP(Proxy),
                                                                                                          SETTING(Proxy::Type)).toInt());
-  m_proxyDetails->m_ui.m_cmbProxyType->setCurrentIndex(m_proxyDetails->m_ui.m_cmbProxyType->findData(selected_proxy_type));
-  m_proxyDetails->m_ui.m_txtProxyHost->setText(settings()->value(GROUP(Proxy), SETTING(Proxy::Host)).toString());
-  m_proxyDetails->m_ui.m_txtProxyUsername->setText(settings()->value(GROUP(Proxy), SETTING(Proxy::Username)).toString());
-  m_proxyDetails->m_ui.m_txtProxyPassword->setText(settings()->password(GROUP(Proxy), SETTING(Proxy::Password)).toString());
-  m_proxyDetails->m_ui.m_spinProxyPort->setValue(settings()->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt());
+
+  m_proxyDetails->setProxy(QNetworkProxy(selected_proxy_type,
+                                         settings()->value(GROUP(Proxy), SETTING(Proxy::Host)).toString(),
+                                         settings()->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt(),
+                                         settings()->value(GROUP(Proxy), SETTING(Proxy::Username)).toString(),
+                                         settings()->password(GROUP(Proxy), SETTING(Proxy::Password)).toString()));
 
   setExternalTools(ExternalTool::toolsFromSettings());
   onEndLoadSettings();
@@ -185,11 +180,14 @@ void SettingsBrowserMail::saveSettings() {
   settings()->setValue(GROUP(Browser), Browser::CustomExternalEmailExecutable, m_ui->m_txtExternalEmailExecutable->text());
   settings()->setValue(GROUP(Browser), Browser::CustomExternalEmailArguments, m_ui->m_txtExternalEmailArguments->text());
   settings()->setValue(GROUP(Browser), Browser::CustomExternalEmailEnabled, m_ui->m_grpCustomExternalEmail->isChecked());
-  settings()->setValue(GROUP(Proxy), Proxy::Type, m_proxyDetails->m_ui.m_cmbProxyType->itemData(m_proxyDetails->m_ui.m_cmbProxyType->currentIndex()));
-  settings()->setValue(GROUP(Proxy), Proxy::Host, m_proxyDetails->m_ui.m_txtProxyHost->text());
-  settings()->setValue(GROUP(Proxy), Proxy::Username, m_proxyDetails->m_ui.m_txtProxyUsername->text());
-  settings()->setPassword(GROUP(Proxy), Proxy::Password, m_proxyDetails->m_ui.m_txtProxyPassword->text());
-  settings()->setValue(GROUP(Proxy), Proxy::Port, m_proxyDetails->m_ui.m_spinProxyPort->value());
+
+  auto proxy = m_proxyDetails->proxy();
+
+  settings()->setValue(GROUP(Proxy), Proxy::Type, int(proxy.type()));
+  settings()->setValue(GROUP(Proxy), Proxy::Host, proxy.hostName());
+  settings()->setValue(GROUP(Proxy), Proxy::Username, proxy.user());
+  settings()->setPassword(GROUP(Proxy), Proxy::Password, proxy.password());
+  settings()->setValue(GROUP(Proxy), Proxy::Port, proxy.port());
 
   auto tools = externalTools();
 

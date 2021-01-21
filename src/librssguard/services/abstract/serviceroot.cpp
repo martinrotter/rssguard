@@ -308,6 +308,14 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
   }
 }
 
+QNetworkProxy ServiceRoot::networkProxy() const {
+  return m_networkProxy;
+}
+
+void ServiceRoot::setNetworkProxy(const QNetworkProxy& network_proxy) {
+  m_networkProxy = network_proxy;
+}
+
 ImportantNode* ServiceRoot::importantNode() const {
   return m_importantNode;
 }

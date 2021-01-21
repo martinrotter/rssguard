@@ -518,7 +518,7 @@ void FeedsModel::loadActivatedServiceAccounts() {
   // Iterate all globally available feed "service plugins".
   for (const ServiceEntryPoint* entry_point : qApp->feedReader()->feedServices()) {
     // Load all stored root nodes from the entry point and add those to the model.
-    QList<ServiceRoot*>roots = entry_point->initializeSubtree();
+    QList<ServiceRoot*> roots = entry_point->initializeSubtree();
 
     for (ServiceRoot* root : roots) {
       addServiceAccount(root, false);
