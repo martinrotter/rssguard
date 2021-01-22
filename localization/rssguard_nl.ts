@@ -790,16 +790,16 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <source>Edit account &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Network proxy</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
         <translation>Account toevoegen</translation>
-    </message>
-    <message>
-        <source>This account can be added only once.</source>
-        <translation>Dit account kan slechts eenmaal worden toegevoegd.</translation>
     </message>
 </context>
 <context>
@@ -1032,347 +1032,21 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
 <context>
     <name>FormEditGmailAccount</name>
     <message>
-        <source>Username</source>
-        <translation>Gebruikersnaam</translation>
-    </message>
-    <message>
-        <source>OAuth 2.0 settings</source>
-        <translation>QAuth 2.0 instellingen</translation>
-    </message>
-    <message>
-        <source>Application ID</source>
-        <translation>Rssguard ID</translation>
-    </message>
-    <message>
-        <source>Application key</source>
-        <translation>Rssguard sleutel</translation>
-    </message>
-    <message>
-        <source>Redirect URL</source>
-        <translation>URL doorsturen</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Download alleen de nieuwste X berichten  van een feed</translation>
-    </message>
-    <message>
-        <source> message(s)</source>
-        <translation>bericht(en)</translation>
-    </message>
-    <message>
-        <source>&amp;Login</source>
-        <translation>&amp;Inloggen</translation>
-    </message>
-    <message>
-        <source>Not tested yet.</source>
-        <translation>Nog niet getest.</translation>
-    </message>
-    <message>
-        <source>User-visible username</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Je bent al ingelogd.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You did not grant access.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>There was error during testing.</source>
-        <translation>Er was een fout tijdens het testen. </translation>
-    </message>
-    <message>
-        <source>There is error. %1 </source>
-        <translation>Er is een fout. %1</translation>
-    </message>
-    <message>
-        <source>Your access was approved.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add new Gmail account</source>
-        <translation>Voeg nieuw Gmail account toe</translation>
-    </message>
-    <message>
-        <source>Edit existing Gmail account</source>
-        <translation>Bewerk bestaande Gmail account</translation>
-    </message>
-    <message>
-        <source>Empty value is entered.</source>
-        <translation>Een lege waarde is ingevoerd.</translation>
-    </message>
-    <message>
-        <source>Some value is entered.</source>
-        <translation>Een waarde is ingevoerd.</translation>
-    </message>
-    <message>
-        <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>No username entered.</source>
-        <translation>Geen gebruikersnaam ingevoerd.</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>Een gebruikersnaam invoeren.</translation>
-    </message>
-    <message>
-        <source>Get my credentials</source>
+        <source>Server setup</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Username</source>
-        <translation>Gebruikersnaam</translation>
-    </message>
-    <message>
-        <source>OAuth 2.0 settings</source>
-        <translation>QAuth 2.0 instellingen</translation>
-    </message>
-    <message>
-        <source>Application ID</source>
-        <translation>Rssguard ID</translation>
-    </message>
-    <message>
-        <source>Application key</source>
-        <translation>Rssguard sleutel</translation>
-    </message>
-    <message>
-        <source>Redirect URL</source>
-        <translation>URL doorsturen</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Download alleen de nieuwste X berichten  van een feed</translation>
-    </message>
-    <message>
-        <source> message(s)</source>
-        <translation>bericht(en)</translation>
-    </message>
-    <message>
-        <source>&amp;Login</source>
-        <translation>&amp;Inloggen</translation>
-    </message>
-    <message>
-        <source>Not tested yet.</source>
-        <translation>Nog niet getest.</translation>
-    </message>
-    <message>
-        <source>User-visible username</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Je bent al ingelogd.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>No username entered.</source>
-        <translation>Geen gebruikersnaam ingevoerd.</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>Een gebruikersnaam invoeren.</translation>
-    </message>
-    <message>
-        <source>You did not grant access.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>There was error during testing.</source>
-        <translation>Er was een fout tijdens het testen. </translation>
-    </message>
-    <message>
-        <source>There is error. %1</source>
-        <translation>Er is een fout. %1</translation>
-    </message>
-    <message>
-        <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Your access was approved.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add new Inoreader account</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Edit existing Inoreader account</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Empty value is entered.</source>
-        <translation>Een lege waarde is ingevoerd.</translation>
-    </message>
-    <message>
-        <source>Some value is entered.</source>
-        <translation>Een waarde is ingevoerd.</translation>
-    </message>
-    <message>
-        <source>Get my own Application ID</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
-
-It is highly recommended to create your own &quot;Application ID&quot;.</source>
+        <source>Server setup</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditOwnCloudAccount</name>
     <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds. BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation>Verificatie</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Gebruikersnaam</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Paswoord</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Toon paswoord</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation>&amp;Test instelling</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation>Nog geen test uitgevoerd.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation>Hier, worden resultaten van verbinding getoond.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netwerk fout: &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Onbekende fout, heb je de URL correct ingevoerd?</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation>Gebruikersnaam kan niet leeg zijn.</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation>Gebruikersnaam is goed.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation>Paswoord kan niet leeg zijn.</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation>Paswoord is ok.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation>Url mag niet leeg zijn.</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation>Url is goed.</translation>
-    </message>
-    <message>
-        <source>Limit number of downloaded messages per feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source> = unlimited</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>= unlimited</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>Berichten</translation>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add new Nextcloud News account</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Edit existing Nextcloud News account</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Installed version: %1, required at least: %2.</source>
+        <source>Server setup</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1380,10 +1054,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>Server setup</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add new TT-RSS account</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2565,6 +2235,101 @@ Installeer het nu.</translation>
     </message>
 </context>
 <context>
+    <name>GmailAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>QAuth 2.0 instellingen</translation>
+    </message>
+    <message>
+        <source>Client ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Client secret</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>URL doorsturen</translation>
+    </message>
+    <message>
+        <source>Get my credentials</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Download alleen de nieuwste X berichten  van een feed</translation>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation>bericht(en)</translation>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>&amp;Inloggen</translation>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation>Nog niet getest.</translation>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation>Je bent al ingelogd.</translation>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Geen gebruikersnaam ingevoerd.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Een gebruikersnaam invoeren.</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>Er was een fout tijdens het testen. </translation>
+    </message>
+    <message>
+        <source>There is error. %1 </source>
+        <translation>Er is een fout. %1</translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>Een lege waarde is ingevoerd.</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>Een waarde is ingevoerd.</translation>
+    </message>
+</context>
+<context>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
@@ -2667,6 +2432,103 @@ Login tokens expiration: %2</source>
     <message>
         <source>You can find all important messages here.</source>
         <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>InoreaderAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>QAuth 2.0 instellingen</translation>
+    </message>
+    <message>
+        <source>App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>App key</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>URL doorsturen</translation>
+    </message>
+    <message>
+        <source>Get my own App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation>bericht(en)</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Download alleen de nieuwste X berichten  van een feed</translation>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>&amp;Inloggen</translation>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;App ID&quot;. Because predefined one may be limited due to usage quotas if used by too many users simultaneously.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation>Nog niet getest.</translation>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation>Je bent al ingelogd.</translation>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Geen gebruikersnaam ingevoerd.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Een gebruikersnaam invoeren.</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>Er was een fout tijdens het testen. </translation>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation>Er is een fout. %1</translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>Een lege waarde is ingevoerd.</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>Een waarde is ingevoerd.</translation>
     </message>
 </context>
 <context>
@@ -3144,6 +3006,70 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>NetworkProxyDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <extracomment>Proxy server type.</extracomment>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <source>Host</source>
+        <translation>Host</translation>
+    </message>
+    <message>
+        <source>Hostname or IP of your proxy server</source>
+        <translation>Hostnaam of ip van je proxy server</translation>
+    </message>
+    <message>
+        <source>Port</source>
+        <translation>Poort</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>Your username for proxy server authentication</source>
+        <translation>Je gebruikersnaam voor proxy server verificatie</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Paswoord</translation>
+    </message>
+    <message>
+        <source>Your password for proxy server authentication</source>
+        <translation>Je paswoord voor proxy server verificatie</translation>
+    </message>
+    <message>
+        <source>Display password</source>
+        <translation>Toon paswoord</translation>
+    </message>
+    <message>
+        <source>Note that these settings are applied only on newly established connections.</source>
+        <translation>Merk op dat deze instellingen alleen worden  toegepast op nieuw tot stand gebrachte verbindingen.</translation>
+    </message>
+    <message>
+        <source>No proxy</source>
+        <translation>Geen proxy</translation>
+    </message>
+    <message>
+        <source>System proxy</source>
+        <translation>Systeem proxy</translation>
+    </message>
+    <message>
+        <source>Socks5</source>
+        <translation>Socks5</translation>
+    </message>
+    <message>
+        <source>Http</source>
+        <translation>Http</translation>
+    </message>
+</context>
+<context>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
@@ -3189,12 +3115,143 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can close this window now. Go back to %1</source>
+        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <source>You can close this window now. Go back to %1.</source>
         <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>OwnCloudAccountDetails</name>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Download alleen de nieuwste X berichten  van een feed</translation>
+    </message>
+    <message>
+        <source> = unlimited</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds. BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Verificatie</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Paswoord</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Toon paswoord</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>&amp;Test instelling</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation>Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
+    </message>
+    <message>
+        <source>Password for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your Nextcloud account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL of your Nextcloud server, without any API path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Nog geen test uitgevoerd.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Hier, worden resultaten van verbinding getoond.</translation>
+    </message>
+    <message>
+        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>= unlimited</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>Berichten</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Netwerk fout: &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation>Onbekende fout, heb je de URL correct ingevoerd?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Gebruikersnaam kan niet leeg zijn.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>Gebruikersnaam is goed.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>Paswoord kan niet leeg zijn.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>Paswoord is ok.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>Url mag niet leeg zijn.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>Url is goed.</translation>
     </message>
 </context>
 <context>
@@ -3414,51 +3471,6 @@ door te clicken op deze popup melding.</translation>
  • %2 - body van geselecteerde bericht.</translation>
     </message>
     <message>
-        <source>Proxy</source>
-        <translation>Proxy</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <extracomment>Proxy server type.</extracomment>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <source>Host</source>
-        <translation>Host</translation>
-    </message>
-    <message>
-        <source>Hostname or IP of your proxy server</source>
-        <translation>Hostnaam of ip van je proxy server</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation>Poort</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Gebruikersnaam</translation>
-    </message>
-    <message>
-        <source>Your username for proxy server authentication</source>
-        <translation>Je gebruikersnaam voor proxy server verificatie</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Paswoord</translation>
-    </message>
-    <message>
-        <source>Your password for proxy server authentication</source>
-        <translation>Je paswoord voor proxy server verificatie</translation>
-    </message>
-    <message>
-        <source>Display password</source>
-        <translation>Toon paswoord</translation>
-    </message>
-    <message>
-        <source>Note that these settings are applied only on newly established connections.</source>
-        <translation>Merk op dat deze instellingen alleen worden  toegepast op nieuw tot stand gebrachte verbindingen.</translation>
-    </message>
-    <message>
         <source>Select web browser executable</source>
         <translation>Selecteer exe bestand voor browser</translation>
     </message>
@@ -3486,22 +3498,6 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Mozilla Thunderbird</source>
         <translation>Mozilla Thunderbird</translation>
-    </message>
-    <message>
-        <source>No proxy</source>
-        <translation>Geen proxy</translation>
-    </message>
-    <message>
-        <source>System proxy</source>
-        <translation>Systeem proxy</translation>
-    </message>
-    <message>
-        <source>Socks5</source>
-        <translation>Socks5</translation>
-    </message>
-    <message>
-        <source>Http</source>
-        <translation>Http</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
@@ -3549,6 +3545,10 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Parameters passed to executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network proxy</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4371,6 +4371,13 @@ Ongelezen nieuws: %2</translation>
     </message>
 </context>
 <context>
+    <name>T</name>
+    <message>
+        <source>Add new account</source>
+        <translation>Account toevoegen</translation>
+    </message>
+</context>
+<context>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
@@ -4492,10 +4499,6 @@ Ongelezen nieuws: %2</translation>
 <context>
     <name>TtRssAccountDetails</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Download only unread messages</source>
         <translation type="unfinished"/>
     </message>
@@ -4538,10 +4541,6 @@ Ongelezen nieuws: %2</translation>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
         <translation>Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation>Merk op dat tenminste een API-niveau is vereist van %1.</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>

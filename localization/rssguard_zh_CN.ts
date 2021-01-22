@@ -791,16 +791,16 @@ or this functionality is not implemented yet.</source>
         <source>Edit account &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Network proxy</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
         <translation>添加新账户</translation>
-    </message>
-    <message>
-        <source>This account can be added only once.</source>
-        <translation>此账户只能被添加一次。</translation>
     </message>
 </context>
 <context>
@@ -1033,349 +1033,21 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormEditGmailAccount</name>
     <message>
-        <source>Username</source>
-        <translation>用户名</translation>
-    </message>
-    <message>
-        <source>OAuth 2.0 settings</source>
-        <translation>OAuth 2.0 设置</translation>
-    </message>
-    <message>
-        <source>Application ID</source>
-        <translation>客户端 ID</translation>
-    </message>
-    <message>
-        <source>Application key</source>
-        <translation>客户端密钥</translation>
-    </message>
-    <message>
-        <source>Redirect URL</source>
-        <translation>重定向 URL</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>每个 Feed 仅下载最近 X 条消息</translation>
-    </message>
-    <message>
-        <source> message(s)</source>
-        <translation> 条消息</translation>
-    </message>
-    <message>
-        <source>&amp;Login</source>
-        <translation>登录 (&amp;L)</translation>
-    </message>
-    <message>
-        <source>Not tested yet.</source>
-        <translation>尚未测试。</translation>
-    </message>
-    <message>
-        <source>User-visible username</source>
-        <translation>显示的用户名</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>您已登录。</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>未能获取权限。</translation>
-    </message>
-    <message>
-        <source>You did not grant access.</source>
-        <translation>未能获取权限。</translation>
-    </message>
-    <message>
-        <source>There was error during testing.</source>
-        <translation>测试时发生了错误。</translation>
-    </message>
-    <message>
-        <source>There is error. %1 </source>
-        <translation>错误如下：%1 </translation>
-    </message>
-    <message>
-        <source>Your access was approved.</source>
-        <translation>权限申请已被批准。</translation>
-    </message>
-    <message>
-        <source>Add new Gmail account</source>
-        <translation>添加 Gmail 账户</translation>
-    </message>
-    <message>
-        <source>Edit existing Gmail account</source>
-        <translation>编辑已有的 Gmail 账户</translation>
-    </message>
-    <message>
-        <source>Empty value is entered.</source>
-        <translation>未输入。</translation>
-    </message>
-    <message>
-        <source>Some value is entered.</source>
-        <translation>已输入。</translation>
-    </message>
-    <message>
-        <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation>测试成功。你可能需要再次登录。</translation>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation>被指定的重定向链接必须以 &quot;http://localhost&quot; 开头，并在 OAuth 的“应用”设置正确中配置。</translation>
-    </message>
-    <message>
-        <source>No username entered.</source>
-        <translation>用户名未输入。</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>用户名已输入。</translation>
-    </message>
-    <message>
-        <source>Get my credentials</source>
+        <source>Server setup</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Username</source>
-        <translation>用户名</translation>
-    </message>
-    <message>
-        <source>OAuth 2.0 settings</source>
-        <translation>OAuth 2.0 设置</translation>
-    </message>
-    <message>
-        <source>Application ID</source>
-        <translation>客户端 ID</translation>
-    </message>
-    <message>
-        <source>Application key</source>
-        <translation>客户端密钥</translation>
-    </message>
-    <message>
-        <source>Redirect URL</source>
-        <translation>重定向 URL</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>每个 Feed 仅下载最近 X 条消息</translation>
-    </message>
-    <message>
-        <source> message(s)</source>
-        <translation> 条消息</translation>
-    </message>
-    <message>
-        <source>&amp;Login</source>
-        <translation>登录 (&amp;L)</translation>
-    </message>
-    <message>
-        <source>Not tested yet.</source>
-        <translation>尚未测试。</translation>
-    </message>
-    <message>
-        <source>User-visible username</source>
-        <translation>显示的用户名</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>您已登录。</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>权限已获取。</translation>
-    </message>
-    <message>
-        <source>No username entered.</source>
-        <translation>用户名未输入。</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>用户名已输入。</translation>
-    </message>
-    <message>
-        <source>You did not grant access.</source>
-        <translation>未能获取权限。</translation>
-    </message>
-    <message>
-        <source>There was error during testing.</source>
-        <translation>测试时发生了错误。</translation>
-    </message>
-    <message>
-        <source>There is error. %1</source>
-        <translation>错误如下：%1</translation>
-    </message>
-    <message>
-        <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation>测试成功。你可能需要再次登录。</translation>
-    </message>
-    <message>
-        <source>Your access was approved.</source>
-        <translation>权限申请已被批准。</translation>
-    </message>
-    <message>
-        <source>Add new Inoreader account</source>
-        <translation>添加 Inoreader 账户</translation>
-    </message>
-    <message>
-        <source>Edit existing Inoreader account</source>
-        <translation>编辑已有的 Inoreader 账户</translation>
-    </message>
-    <message>
-        <source>Empty value is entered.</source>
-        <translation>未输入。</translation>
-    </message>
-    <message>
-        <source>Some value is entered.</source>
-        <translation>已输入。</translation>
-    </message>
-    <message>
-        <source>Get my own Application ID</source>
-        <translation>获取我的应用 ID</translation>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
-
-It is highly recommended to create your own &quot;Application ID&quot;.</source>
-        <translation>被指定的重定向链接必须以 &quot;http://localhost&quot; 开头，并在 OAuth 的“应用”设置正确中配置。
-
-强烈建议创建自己的“应用 ID”。</translation>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FormEditOwnCloudAccount</name>
     <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>RSS Guard 更新 Feed 时强制服务端进行更新</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>某些 Feed，例如 Gmail Feed，需要身份认证，我们支持 BASIC, NTLM-2 和 DIGEST-MD5 认证方式。</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation>身份认证</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>用户名</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>密码</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>显示密码</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation>测试设置 (&amp;T)</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>启用此选项可能会使更新变慢或经常超时。</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation>尚未测试。</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation>此处为连接测试的结果。</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation>网络错误：&apos;%1&apos;。</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation>未知错误，请确认你是否输入了正确的 URL？</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation>用户名不能为空。</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation>用户名可用。</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation>密码不能为空。</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation>密码可用。</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation>URL 不能为空。</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation>URL 可用。</translation>
-    </message>
-    <message>
-        <source>Limit number of downloaded messages per feed</source>
-        <translation>限制每个 Feed 下载的消息数</translation>
-    </message>
-    <message>
-        <source> = unlimited</source>
-        <translation> = 不限</translation>
-    </message>
-    <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation>限制每个 Feed 下载的消息数会使更新 Feed 更快，但是，如果 Feed 包含大量消息，超出限制的消息可能被忽略。</translation>
-    </message>
-    <message>
-        <source>= unlimited</source>
-        <translation>= 不限</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>条消息</translation>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
-        <translation>仅下载未读消息</translation>
-    </message>
-    <message>
-        <source>Password for your Nextcloud account</source>
-        <translation>Nextcloud 账户密码</translation>
-    </message>
-    <message>
-        <source>Username for your Nextcloud account</source>
-        <translation>Nextcloud 账户用户名</translation>
-    </message>
-    <message>
-        <source>URL of your Nextcloud server, without any API path</source>
-        <translation>指向你的 Nextcloud 服务器的 URL，不带任何 API 路径</translation>
-    </message>
-    <message>
-        <source>Add new Nextcloud News account</source>
-        <translation>添加新 Nextcloud News 账户</translation>
-    </message>
-    <message>
-        <source>Edit existing Nextcloud News account</source>
-        <translation>编辑现有的 Nextcloud News 账户</translation>
-    </message>
-    <message>
-        <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation>此 Nextcloud News 服务器所运行的版本不受支持。</translation>
-    </message>
-    <message>
-        <source>Nextcloud News server is okay.</source>
-        <translation>Nextcloud News 服务器可用。</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation>网络错误，你是否输入了正确的 Nextcloud 节点与密码？</translation>
-    </message>
-    <message>
-        <source>Installed version: %1, required at least: %2.</source>
+        <source>Server setup</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1383,10 +1055,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>Server setup</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add new TT-RSS account</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2573,6 +2241,101 @@ You can install it now.</source>
     </message>
 </context>
 <context>
+    <name>GmailAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>OAuth 2.0 设置</translation>
+    </message>
+    <message>
+        <source>Client ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Client secret</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>重定向 URL</translation>
+    </message>
+    <message>
+        <source>Get my credentials</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>每个 Feed 仅下载最近 X 条消息</translation>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation> 条消息</translation>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>登录 (&amp;L)</translation>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
+        <translation>被指定的重定向链接必须以 &quot;http://localhost&quot; 开头，并在 OAuth 的“应用”设置正确中配置。</translation>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation>尚未测试。</translation>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation>显示的用户名</translation>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation>您已登录。</translation>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation>未能获取权限。</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>用户名未输入。</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>用户名已输入。</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>未能获取权限。</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>测试时发生了错误。</translation>
+    </message>
+    <message>
+        <source>There is error. %1 </source>
+        <translation>错误如下：%1 </translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>测试成功。你可能需要再次登录。</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>权限申请已被批准。</translation>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>未输入。</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>已输入。</translation>
+    </message>
+</context>
+<context>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
@@ -2676,6 +2439,103 @@ Token 过期时间：%2</translation>
     <message>
         <source>You can find all important messages here.</source>
         <translation>您可以在这里找到所有重要消息。</translation>
+    </message>
+</context>
+<context>
+    <name>InoreaderAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>OAuth 2.0 设置</translation>
+    </message>
+    <message>
+        <source>App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>App key</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>重定向 URL</translation>
+    </message>
+    <message>
+        <source>Get my own App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation> 条消息</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>每个 Feed 仅下载最近 X 条消息</translation>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>登录 (&amp;L)</translation>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;App ID&quot;. Because predefined one may be limited due to usage quotas if used by too many users simultaneously.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation>尚未测试。</translation>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation>显示的用户名</translation>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation>您已登录。</translation>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation>未能获取权限。</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>用户名未输入。</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>用户名已输入。</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>未能获取权限。</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>测试时发生了错误。</translation>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation>错误如下：%1</translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>测试成功。你可能需要再次登录。</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>权限申请已被批准。</translation>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>未输入。</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>已输入。</translation>
     </message>
 </context>
 <context>
@@ -3154,6 +3014,70 @@ Token 过期时间：%2</translation>
     </message>
 </context>
 <context>
+    <name>NetworkProxyDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>表单</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <extracomment>Proxy server type.</extracomment>
+        <translation>类型</translation>
+    </message>
+    <message>
+        <source>Host</source>
+        <translation>主机</translation>
+    </message>
+    <message>
+        <source>Hostname or IP of your proxy server</source>
+        <translation>代理服务器的主机名或 IP</translation>
+    </message>
+    <message>
+        <source>Port</source>
+        <translation>端口</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <source>Your username for proxy server authentication</source>
+        <translation>代理服务器认证所需的用户名</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <source>Your password for proxy server authentication</source>
+        <translation>代理服务器认证所需的密码</translation>
+    </message>
+    <message>
+        <source>Display password</source>
+        <translation>显示密码</translation>
+    </message>
+    <message>
+        <source>Note that these settings are applied only on newly established connections.</source>
+        <translation>注意，这些设置只对新建立的连接有效。</translation>
+    </message>
+    <message>
+        <source>No proxy</source>
+        <translation>无代理</translation>
+    </message>
+    <message>
+        <source>System proxy</source>
+        <translation>系统代理</translation>
+    </message>
+    <message>
+        <source>Socks5</source>
+        <translation>Socks5</translation>
+    </message>
+    <message>
+        <source>Http</source>
+        <translation>HTTP</translation>
+    </message>
+</context>
+<context>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
@@ -3199,12 +3123,143 @@ Token 过期时间：%2</translation>
         <translation>若要登录，您必须导航至此网站：</translation>
     </message>
     <message>
-        <source>You can close this window now. Go back to %1</source>
-        <translation>你现在可以关闭窗口，返回到 %1</translation>
-    </message>
-    <message>
         <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can close this window now. Go back to %1.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>OwnCloudAccountDetails</name>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>仅下载未读消息</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation>RSS Guard 更新 Feed 时强制服务端进行更新</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>每个 Feed 仅下载最近 X 条消息</translation>
+    </message>
+    <message>
+        <source> = unlimited</source>
+        <translation> = 不限</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>某些 Feed，例如 Gmail Feed，需要身份认证，我们支持 BASIC, NTLM-2 和 DIGEST-MD5 认证方式。</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>身份认证</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>显示密码</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>测试设置 (&amp;T)</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation>启用此选项可能会使更新变慢或经常超时。</translation>
+    </message>
+    <message>
+        <source>Password for your Nextcloud account</source>
+        <translation>Nextcloud 账户密码</translation>
+    </message>
+    <message>
+        <source>Username for your Nextcloud account</source>
+        <translation>Nextcloud 账户用户名</translation>
+    </message>
+    <message>
+        <source>URL of your Nextcloud server, without any API path</source>
+        <translation>指向你的 Nextcloud 服务器的 URL，不带任何 API 路径</translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>尚未测试。</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>此处为连接测试的结果。</translation>
+    </message>
+    <message>
+        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
+        <translation>限制每个 Feed 下载的消息数会使更新 Feed 更快，但是，如果 Feed 包含大量消息，超出限制的消息可能被忽略。</translation>
+    </message>
+    <message>
+        <source>= unlimited</source>
+        <translation>= 不限</translation>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>条消息</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>网络错误：&apos;%1&apos;。</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation>网络错误，你是否输入了正确的 Nextcloud 节点与密码？</translation>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version.</source>
+        <translation>此 Nextcloud News 服务器所运行的版本不受支持。</translation>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay.</source>
+        <translation>Nextcloud News 服务器可用。</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation>未知错误，请确认你是否输入了正确的 URL？</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>用户名不能为空。</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>用户名可用。</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>密码不能为空。</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>密码可用。</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>URL 不能为空。</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>URL 可用。</translation>
     </message>
 </context>
 <context>
@@ -3421,51 +3476,6 @@ version by clicking this popup notification.</source>
  • %2 - 所选消息的内容。</translation>
     </message>
     <message>
-        <source>Proxy</source>
-        <translation>代理</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <extracomment>Proxy server type.</extracomment>
-        <translation>类型</translation>
-    </message>
-    <message>
-        <source>Host</source>
-        <translation>主机</translation>
-    </message>
-    <message>
-        <source>Hostname or IP of your proxy server</source>
-        <translation>代理服务器的主机名或 IP</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation>端口</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>用户名</translation>
-    </message>
-    <message>
-        <source>Your username for proxy server authentication</source>
-        <translation>代理服务器认证所需的用户名</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>密码</translation>
-    </message>
-    <message>
-        <source>Your password for proxy server authentication</source>
-        <translation>代理服务器认证所需的密码</translation>
-    </message>
-    <message>
-        <source>Display password</source>
-        <translation>显示密码</translation>
-    </message>
-    <message>
-        <source>Note that these settings are applied only on newly established connections.</source>
-        <translation>注意，这些设置只对新建立的连接有效。</translation>
-    </message>
-    <message>
         <source>Select web browser executable</source>
         <translation>选择浏览器的可执行文件</translation>
     </message>
@@ -3493,22 +3503,6 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Mozilla Thunderbird</source>
         <translation>Mozilla Thunderbird</translation>
-    </message>
-    <message>
-        <source>No proxy</source>
-        <translation>无代理</translation>
-    </message>
-    <message>
-        <source>System proxy</source>
-        <translation>系统代理</translation>
-    </message>
-    <message>
-        <source>Socks5</source>
-        <translation>Socks5</translation>
-    </message>
-    <message>
-        <source>Http</source>
-        <translation>HTTP</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
@@ -3557,6 +3551,10 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Parameters passed to executable</source>
         <translation>要传递给可执行文件的参数</translation>
+    </message>
+    <message>
+        <source>Network proxy</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4380,6 +4378,13 @@ Unread news: %2</source>
     </message>
 </context>
 <context>
+    <name>T</name>
+    <message>
+        <source>Add new account</source>
+        <translation>添加新账户</translation>
+    </message>
+</context>
+<context>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
@@ -4501,10 +4506,6 @@ Unread news: %2</source>
 <context>
     <name>TtRssAccountDetails</name>
     <message>
-        <source>Form</source>
-        <translation>表单</translation>
-    </message>
-    <message>
         <source>Download only unread messages</source>
         <translation>仅下载未读消息</translation>
     </message>
@@ -4547,10 +4548,6 @@ Unread news: %2</source>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
         <translation>启用此选项可能会使更新变慢或经常超时。</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation>注意，API 版本应至少为 %1。</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>

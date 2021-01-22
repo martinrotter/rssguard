@@ -791,16 +791,16 @@ or this functionality is not implemented yet.</source>
         <source>Edit account &apos;%1&apos;</source>
         <translation>Изменить аккаунт &apos;%1&apos;</translation>
     </message>
+    <message>
+        <source>Network proxy</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
         <translation>Добавить новый аккаунт</translation>
-    </message>
-    <message>
-        <source>This account can be added only once.</source>
-        <translation>Этот аккаунт может быть добавлен только один раз.</translation>
     </message>
 </context>
 <context>
@@ -1033,350 +1033,22 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormEditGmailAccount</name>
     <message>
-        <source>Username</source>
-        <translation>Логин</translation>
-    </message>
-    <message>
-        <source>OAuth 2.0 settings</source>
-        <translation>Настройки OAuth 2.0</translation>
-    </message>
-    <message>
-        <source>Application ID</source>
-        <translation>ID приложения</translation>
-    </message>
-    <message>
-        <source>Application key</source>
-        <translation>Ключ приложения</translation>
-    </message>
-    <message>
-        <source>Redirect URL</source>
-        <translation>Redirect URL</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Загружать только Х новейших сообщений для канала</translation>
-    </message>
-    <message>
-        <source> message(s)</source>
-        <translation>сообщение(я)</translation>
-    </message>
-    <message>
-        <source>&amp;Login</source>
-        <translation>Логин (&amp;L)</translation>
-    </message>
-    <message>
-        <source>Not tested yet.</source>
-        <translation>Ещё не протестировано.</translation>
-    </message>
-    <message>
-        <source>User-visible username</source>
-        <translation>Имя пользователя, видное для всех</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Вход уже совершен.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>Доступ разрешен.</translation>
-    </message>
-    <message>
-        <source>You did not grant access.</source>
-        <translation>Отказано в доступе.</translation>
-    </message>
-    <message>
-        <source>There was error during testing.</source>
-        <translation>Произошла ошибка во время тестирования.</translation>
-    </message>
-    <message>
-        <source>There is error. %1 </source>
-        <translation>Произошла ошибка. %1 </translation>
-    </message>
-    <message>
-        <source>Your access was approved.</source>
-        <translation>Ваш доступ одобрен.</translation>
-    </message>
-    <message>
-        <source>Add new Gmail account</source>
-        <translation>Добавить новый аккаунт Gmail</translation>
-    </message>
-    <message>
-        <source>Edit existing Gmail account</source>
-        <translation>Изменить существующий аккаунт Gmail</translation>
-    </message>
-    <message>
-        <source>Empty value is entered.</source>
-        <translation>Введено пустое значение.</translation>
-    </message>
-    <message>
-        <source>Some value is entered.</source>
-        <translation>Введено некоторое значение.</translation>
-    </message>
-    <message>
-        <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation>Протестировано успешно. Вам могут предложить войти ещё раз.</translation>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation>Указанный URL-адрес перенаправления должен начинаться с  &quot;http://localhost&quot; и быть настроен в вашем &quot;приложении&quot; OAuth.</translation>
-    </message>
-    <message>
-        <source>No username entered.</source>
-        <translation>Нет логина.</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>Введен некоторый логин.</translation>
-    </message>
-    <message>
-        <source>Get my credentials</source>
-        <translation>Получить учетные данные</translation>
+        <source>Server setup</source>
+        <translation>Настройка сервера</translation>
     </message>
 </context>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
-        <source>Username</source>
-        <translation>Логин</translation>
-    </message>
-    <message>
-        <source>OAuth 2.0 settings</source>
-        <translation>Настройки Oauth 2.0</translation>
-    </message>
-    <message>
-        <source>Application ID</source>
-        <translation>ID приложения</translation>
-    </message>
-    <message>
-        <source>Application key</source>
-        <translation>Ключ приложения</translation>
-    </message>
-    <message>
-        <source>Redirect URL</source>
-        <translation>Redirect URL</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Загружать только Х новейших сообщений для канала</translation>
-    </message>
-    <message>
-        <source> message(s)</source>
-        <translation>сообщение(я)</translation>
-    </message>
-    <message>
-        <source>&amp;Login</source>
-        <translation>Логин (&amp;L)</translation>
-    </message>
-    <message>
-        <source>Not tested yet.</source>
-        <translation>Ещё не протестировано.</translation>
-    </message>
-    <message>
-        <source>User-visible username</source>
-        <translation>Имя пользователя, видное для всех</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Вход уже совершен.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>Доступ разрешен.</translation>
-    </message>
-    <message>
-        <source>No username entered.</source>
-        <translation>Нет логина.</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>Введен некоторый логин.</translation>
-    </message>
-    <message>
-        <source>You did not grant access.</source>
-        <translation>Отказано в доступе.</translation>
-    </message>
-    <message>
-        <source>There was error during testing.</source>
-        <translation>Произошла ошибка во время тестирования.</translation>
-    </message>
-    <message>
-        <source>There is error. %1</source>
-        <translation>Существует ошибка. %1</translation>
-    </message>
-    <message>
-        <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation>Протестировано успешно. Вам могут предложить войти ещё раз.</translation>
-    </message>
-    <message>
-        <source>Your access was approved.</source>
-        <translation>Ваш доступ одобрен.</translation>
-    </message>
-    <message>
-        <source>Add new Inoreader account</source>
-        <translation>Добавить новую учетную запись Inoreader</translation>
-    </message>
-    <message>
-        <source>Edit existing Inoreader account</source>
-        <translation>Изменить учетную запись Inoreader</translation>
-    </message>
-    <message>
-        <source>Empty value is entered.</source>
-        <translation>Введено пустое значение.</translation>
-    </message>
-    <message>
-        <source>Some value is entered.</source>
-        <translation>Введено некоторое значение.</translation>
-    </message>
-    <message>
-        <source>Get my own Application ID</source>
-        <translation>Получить мой ID приложения</translation>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
-
-It is highly recommended to create your own &quot;Application ID&quot;.</source>
-        <translation>Указанный URL-адрес перенаправления должен начинаться с  &quot;http://localhost&quot; и быть настроен в вашем &quot;приложении&quot; OAuth.
-
-Настоятельно рекомендуется создать свой собственный &quot;ID приложения&quot;.</translation>
+        <source>Server setup</source>
+        <translation>Настройка сервера</translation>
     </message>
 </context>
 <context>
     <name>FormEditOwnCloudAccount</name>
     <message>
-        <source>URL</source>
-        <translation>URL </translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Принудительное выполнение обновления на стороне сервера при обновлении каналов из RSS Guard.</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Некоторые каналы требуют аутентификации, включая каналы GMail. Поддерживаются схемы проверки подлинности BASIC, NTLM-2 и DIGEST-MD5.</translation>
-    </message>
-    <message>
-        <source>Authentication</source>
-        <translation>Аутентификация</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Логин</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Пароль</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Показать пароль</translation>
-    </message>
-    <message>
-        <source>&amp;Test setup</source>
-        <translation>Настройка теста (&amp;T)</translation>
-    </message>
-    <message>
-        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation>Если оставить этот параметр, обновления каналов будут, вероятно, намного медленнее и могут часто прерываться.</translation>
-    </message>
-    <message>
-        <source>No test done yet.</source>
-        <translation>Тест еще не сделан.</translation>
-    </message>
-    <message>
-        <source>Here, results of connection test are shown.</source>
-        <translation>Здесь показаны результаты проверки соединения.</translation>
-    </message>
-    <message>
-        <source>Network error: &apos;%1&apos;.</source>
-        <translation>Ошибка сети: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-        <source>Unspecified error, did you enter correct URL?</source>
-        <translation>Нетипичная ошибка, вы ввели правильный URL?</translation>
-    </message>
-    <message>
-        <source>Username cannot be empty.</source>
-        <translation>Логин не может быть пустым.</translation>
-    </message>
-    <message>
-        <source>Username is okay.</source>
-        <translation>Имя пользователя в порядке.</translation>
-    </message>
-    <message>
-        <source>Password cannot be empty.</source>
-        <translation>Пароль не может быть пустым.</translation>
-    </message>
-    <message>
-        <source>Password is okay.</source>
-        <translation>Пароль в порядке.</translation>
-    </message>
-    <message>
-        <source>URL cannot be empty.</source>
-        <translation>URL не может быть пустым.</translation>
-    </message>
-    <message>
-        <source>URL is okay.</source>
-        <translation>URL в порядке.</translation>
-    </message>
-    <message>
-        <source>Limit number of downloaded messages per feed</source>
-        <translation>Ограничить количество загружаемых сообщений на канал</translation>
-    </message>
-    <message>
-        <source> = unlimited</source>
-        <translation> = не ограниченно</translation>
-    </message>
-    <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation>Ограничение количества загружаемых сообщений для одного канала ускоряет обновление каналов, но если ваш канал содержит большее количество сообщений, чем указанное ограничение, некоторые сообщения могут не загрузиться во время обновления канала.</translation>
-    </message>
-    <message>
-        <source>= unlimited</source>
-        <translation>= не ограниченно</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>сообщения</translation>
-    </message>
-    <message>
-        <source>Download only unread messages</source>
-        <translation>Скачать только непрочитанные сообщения</translation>
-    </message>
-    <message>
-        <source>Password for your Nextcloud account</source>
-        <translation>Пароль для вашей учетной записи Nextcloud</translation>
-    </message>
-    <message>
-        <source>Username for your Nextcloud account</source>
-        <translation>Имя пользователя для вашей учетной записи Nextcloud</translation>
-    </message>
-    <message>
-        <source>URL of your Nextcloud server, without any API path</source>
-        <translation>URL вашего сервера Nextcloud, без API пути</translation>
-    </message>
-    <message>
-        <source>Add new Nextcloud News account</source>
-        <translation>Добавить новый аккаунт Nextcloud News</translation>
-    </message>
-    <message>
-        <source>Edit existing Nextcloud News account</source>
-        <translation>Изменить существующий аккаунт Nextcloud News</translation>
-    </message>
-    <message>
-        <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation>Выбранный сервер Nextcloud News работает на неподдерживаемой версии.</translation>
-    </message>
-    <message>
-        <source>Nextcloud News server is okay.</source>
-        <translation>Сервер Nextcloud News в порядке.</translation>
-    </message>
-    <message>
-        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation>Ошибка сети, вы ввели правильную конечную точку Nextcloud и пароль?</translation>
-    </message>
-    <message>
-        <source>Installed version: %1, required at least: %2.</source>
-        <translation>Установленная версия: %1, требуется как минимум: %2.</translation>
+        <source>Server setup</source>
+        <translation>Настройка сервера</translation>
     </message>
 </context>
 <context>
@@ -1384,10 +1056,6 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     <message>
         <source>Server setup</source>
         <translation>Настройка сервера</translation>
-    </message>
-    <message>
-        <source>Add new TT-RSS account</source>
-        <translation>Добавить новый TT-RSS аккаунт</translation>
     </message>
 </context>
 <context>
@@ -2001,7 +1669,7 @@ It is highly recommended to create your own &quot;Application ID&quot;.</source>
     </message>
     <message>
         <source>Process checked feeds</source>
-        <translation type="unfinished"/>
+        <translation>Тест по сообщениям</translation>
     </message>
     <message>
         <source>&amp;Beautify</source>
@@ -2578,6 +2246,101 @@ You can install it now.</source>
     </message>
 </context>
 <context>
+    <name>GmailAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>Логин</translation>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>Настройки OAuth 2.0</translation>
+    </message>
+    <message>
+        <source>Client ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Client secret</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>Redirect URL</translation>
+    </message>
+    <message>
+        <source>Get my credentials</source>
+        <translation>Получить учетные данные</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Загружать только Х новейших сообщений для канала</translation>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation>сообщение(я)</translation>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>Логин (&amp;L)</translation>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
+        <translation>Указанный URL-адрес перенаправления должен начинаться с  &quot;http://localhost&quot; и быть настроен в вашем &quot;приложении&quot; OAuth.</translation>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation>Ещё не протестировано.</translation>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation>Имя пользователя, видное для всех</translation>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation>Вход уже совершен.</translation>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation>Доступ разрешен.</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Нет логина.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Введен некоторый логин.</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>Отказано в доступе.</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>Произошла ошибка во время тестирования.</translation>
+    </message>
+    <message>
+        <source>There is error. %1 </source>
+        <translation>Произошла ошибка. %1 </translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>Протестировано успешно. Вам могут предложить войти ещё раз.</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>Ваш доступ одобрен.</translation>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>Введено пустое значение.</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>Введено некоторое значение.</translation>
+    </message>
+</context>
+<context>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Logged in successfully</source>
@@ -2681,6 +2444,103 @@ Login tokens expiration: %2</source>
     <message>
         <source>You can find all important messages here.</source>
         <translation>Вы можете найти все важные сообщения здесь.</translation>
+    </message>
+</context>
+<context>
+    <name>InoreaderAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>Логин</translation>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>Настройки OAuth 2.0</translation>
+    </message>
+    <message>
+        <source>App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>App key</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>Redirect URL</translation>
+    </message>
+    <message>
+        <source>Get my own App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation>сообщение(я)</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Загружать только Х новейших сообщений для канала</translation>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>Логин (&amp;L)</translation>
+    </message>
+    <message>
+        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
+
+It is highly recommended to create your own &quot;App ID&quot;. Because predefined one may be limited due to usage quotas if used by too many users simultaneously.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation>Ещё не протестировано.</translation>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation>Имя пользователя, видное для всех</translation>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation>Вход уже совершен.</translation>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation>Доступ разрешен.</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Нет логина.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Введен некоторый логин.</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>Отказано в доступе.</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>Произошла ошибка во время тестирования.</translation>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation>Существует ошибка. %1</translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>Протестировано успешно. Вам могут предложить войти ещё раз.</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>Ваш доступ одобрен.</translation>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>Введено пустое значение.</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>Введено некоторое значение.</translation>
     </message>
 </context>
 <context>
@@ -3160,6 +3020,70 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>NetworkProxyDetails</name>
+    <message>
+        <source>Form</source>
+        <translation>Форма</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <extracomment>Proxy server type.</extracomment>
+        <translation>Тип</translation>
+    </message>
+    <message>
+        <source>Host</source>
+        <translation>Хост</translation>
+    </message>
+    <message>
+        <source>Hostname or IP of your proxy server</source>
+        <translation>Хост или IP прокси-сервера</translation>
+    </message>
+    <message>
+        <source>Port</source>
+        <translation>Порт</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Логин</translation>
+    </message>
+    <message>
+        <source>Your username for proxy server authentication</source>
+        <translation>Ваше имя пользователя для аутентификации прокси-сервера</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Пароль</translation>
+    </message>
+    <message>
+        <source>Your password for proxy server authentication</source>
+        <translation>Ваш пароль для аутентификации прокси-сервера</translation>
+    </message>
+    <message>
+        <source>Display password</source>
+        <translation>Отобразить пароль</translation>
+    </message>
+    <message>
+        <source>Note that these settings are applied only on newly established connections.</source>
+        <translation>Обратите внимание, что эти настройки применяются только на вновь созданных соединений.</translation>
+    </message>
+    <message>
+        <source>No proxy</source>
+        <translation>Без прокси</translation>
+    </message>
+    <message>
+        <source>System proxy</source>
+        <translation>Прокси из настроек IE</translation>
+    </message>
+    <message>
+        <source>Socks5</source>
+        <translation>Socks5</translation>
+    </message>
+    <message>
+        <source>Http</source>
+        <translation>HTTP</translation>
+    </message>
+</context>
+<context>
     <name>NewspaperPreviewer</name>
     <message>
         <source>Form</source>
@@ -3205,12 +3129,143 @@ Login tokens expiration: %2</source>
         <translation>Чтобы войти, нужно перейти на этот веб-сайт:</translation>
     </message>
     <message>
-        <source>You can close this window now. Go back to %1</source>
-        <translation>Вы можете закрыть это окно сейчас. Вернуться к %1</translation>
-    </message>
-    <message>
         <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
         <translation>Не удалось запустить OAuth Redirect Listener. Возможно, у вас не хватает прав.</translation>
+    </message>
+    <message>
+        <source>You can close this window now. Go back to %1.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>OwnCloudAccountDetails</name>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Скачать только непрочитанные сообщения</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation>Принудительное выполнение обновления на стороне сервера при обновлении каналов из RSS Guard.</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Загружать только Х новейших сообщений для канала</translation>
+    </message>
+    <message>
+        <source> = unlimited</source>
+        <translation> = не ограниченно</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL </translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Некоторые каналы требуют аутентификации, включая каналы GMail. Поддерживаются схемы проверки подлинности BASIC, NTLM-2 и DIGEST-MD5.</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Аутентификация</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Логин</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Пароль</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Показать пароль</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>Настройка теста (&amp;T)</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation>Если оставить этот параметр, обновления каналов будут, вероятно, намного медленнее и могут часто прерываться.</translation>
+    </message>
+    <message>
+        <source>Password for your Nextcloud account</source>
+        <translation>Пароль для вашей учетной записи Nextcloud</translation>
+    </message>
+    <message>
+        <source>Username for your Nextcloud account</source>
+        <translation>Имя пользователя для вашей учетной записи Nextcloud</translation>
+    </message>
+    <message>
+        <source>URL of your Nextcloud server, without any API path</source>
+        <translation>URL вашего сервера Nextcloud, без API пути</translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Тест еще не сделан.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Здесь показаны результаты проверки соединения.</translation>
+    </message>
+    <message>
+        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
+        <translation>Ограничение количества загружаемых сообщений для одного канала ускоряет обновление каналов, но если ваш канал содержит большее количество сообщений, чем указанное ограничение, некоторые сообщения могут не загрузиться во время обновления канала.</translation>
+    </message>
+    <message>
+        <source>= unlimited</source>
+        <translation>= не ограниченно</translation>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>сообщения</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Ошибка сети: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation>Ошибка сети, вы ввели правильную конечную точку Nextcloud и пароль?</translation>
+    </message>
+    <message>
+        <source>Installed version: %1, required at least: %2.</source>
+        <translation>Установленная версия: %1, требуется как минимум: %2.</translation>
+    </message>
+    <message>
+        <source>Selected Nextcloud News server is running unsupported version.</source>
+        <translation>Выбранный сервер Nextcloud News работает на неподдерживаемой версии.</translation>
+    </message>
+    <message>
+        <source>Nextcloud News server is okay.</source>
+        <translation>Сервер Nextcloud News в порядке.</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation>Нетипичная ошибка, вы ввели правильный URL?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Логин не может быть пустым.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>Имя пользователя в порядке.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>Пароль не может быть пустым.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>Пароль в порядке.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>URL не может быть пустым.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>URL в порядке.</translation>
     </message>
 </context>
 <context>
@@ -3434,51 +3489,6 @@ version by clicking this popup notification.</source>
 • %2 - тело выбранного сообщения.</translation>
     </message>
     <message>
-        <source>Proxy</source>
-        <translation>Прокси</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <extracomment>Proxy server type.</extracomment>
-        <translation>Тип</translation>
-    </message>
-    <message>
-        <source>Host</source>
-        <translation>Хост</translation>
-    </message>
-    <message>
-        <source>Hostname or IP of your proxy server</source>
-        <translation>Хост или IP прокси-сервера</translation>
-    </message>
-    <message>
-        <source>Port</source>
-        <translation>Порт</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Логин</translation>
-    </message>
-    <message>
-        <source>Your username for proxy server authentication</source>
-        <translation>Ваше имя пользователя для аутентификации прокси-сервера</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Пароль</translation>
-    </message>
-    <message>
-        <source>Your password for proxy server authentication</source>
-        <translation>Ваш пароль для аутентификации прокси-сервера</translation>
-    </message>
-    <message>
-        <source>Display password</source>
-        <translation>Отобразить пароль</translation>
-    </message>
-    <message>
-        <source>Note that these settings are applied only on newly established connections.</source>
-        <translation>Обратите внимание, что эти настройки применяются только на вновь созданных соединений.</translation>
-    </message>
-    <message>
         <source>Select web browser executable</source>
         <translation>Выберите веб-браузер</translation>
     </message>
@@ -3506,22 +3516,6 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Mozilla Thunderbird</source>
         <translation>Mozilla Thunderbird</translation>
-    </message>
-    <message>
-        <source>No proxy</source>
-        <translation>Без прокси</translation>
-    </message>
-    <message>
-        <source>System proxy</source>
-        <translation>Прокси из настроек IE</translation>
-    </message>
-    <message>
-        <source>Socks5</source>
-        <translation>Socks5</translation>
-    </message>
-    <message>
-        <source>Http</source>
-        <translation>HTTP</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
@@ -3570,6 +3564,10 @@ File filter for external tool selection dialog.</extracomment>
     <message>
         <source>Parameters passed to executable</source>
         <translation>Параметры, переданные в исполняемый файл</translation>
+    </message>
+    <message>
+        <source>Network proxy</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4392,6 +4390,13 @@ Unread news: %2</source>
     </message>
 </context>
 <context>
+    <name>T</name>
+    <message>
+        <source>Add new account</source>
+        <translation>Добавить новый аккаунт</translation>
+    </message>
+</context>
+<context>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
@@ -4513,10 +4518,6 @@ Unread news: %2</source>
 <context>
     <name>TtRssAccountDetails</name>
     <message>
-        <source>Form</source>
-        <translation>Форма</translation>
-    </message>
-    <message>
         <source>Download only unread messages</source>
         <translation>Скачать только непрочитанные сообщения</translation>
     </message>
@@ -4559,10 +4560,6 @@ Unread news: %2</source>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
         <translation>Если оставить этот параметр, обновления каналов будут, вероятно, намного медленнее и могут часто прерываться.</translation>
-    </message>
-    <message>
-        <source>Note that at least API level %1 is required.</source>
-        <translation>Обратите внимание, что требуется как минимум уровень API %1.</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
