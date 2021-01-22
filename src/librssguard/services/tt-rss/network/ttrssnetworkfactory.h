@@ -100,17 +100,18 @@ namespace UpdateArticle {
     SetToTrue = 1,
     Togggle = 2
   };
+
   enum class OperatingField {
     Starred = 0,
     Published = 1,
     Unread = 2
   };
+
 }
 
 class TtRssNetworkFactory {
   public:
     explicit TtRssNetworkFactory();
-    virtual ~TtRssNetworkFactory() = default;
 
     QString url() const;
     void setUrl(const QString& url);
@@ -143,32 +144,36 @@ class TtRssNetworkFactory {
     // Operations.
 
     // Logs user in.
-    TtRssLoginResponse login();
+    TtRssLoginResponse login(const QNetworkProxy& proxy);
 
     // Logs user out.
-    TtRssResponse logout();
+    TtRssResponse logout(const QNetworkProxy& proxy);
 
     // Gets list of labels from the server.
-    TtRssGetLabelsResponse getLabels();
+    TtRssGetLabelsResponse getLabels(const QNetworkProxy& proxy);
 
     // Gets feeds from the server.
-    TtRssGetFeedsCategoriesResponse getFeedsCategories();
+    TtRssGetFeedsCategoriesResponse getFeedsCategories(const QNetworkProxy& proxy);
 
     // Gets headlines (messages) from the server.
     TtRssGetHeadlinesResponse getHeadlines(int feed_id, int limit, int skip,
                                            bool show_content, bool include_attachments,
-                                           bool sanitize, bool unread_only);
+                                           bool sanitize, bool unread_only,
+                                           const QNetworkProxy& proxy);
 
-    TtRssResponse setArticleLabel(const QStringList& article_ids, const QString& label_custom_id, bool assign);
+    TtRssResponse setArticleLabel(const QStringList& article_ids, const QString& label_custom_id,
+                                  bool assign, const QNetworkProxy& proxy);
 
     TtRssUpdateArticleResponse updateArticles(const QStringList& ids,
                                               UpdateArticle::OperatingField field,
-                                              UpdateArticle::Mode mode);
+                                              UpdateArticle::Mode mode,
+                                              const QNetworkProxy& proxy);
 
-    TtRssSubscribeToFeedResponse subscribeToFeed(const QString& url, int category_id, bool protectd = false,
-                                                 const QString& username = QString(), const QString& password = QString());
+    TtRssSubscribeToFeedResponse subscribeToFeed(const QString& url, int category_id, const QNetworkProxy& proxy,
+                                                 bool protectd = false, const QString& username = QString(),
+                                                 const QString& password = QString());
 
-    TtRssUnsubscribeFeedResponse unsubscribeFeed(int feed_id);
+    TtRssUnsubscribeFeedResponse unsubscribeFeed(int feed_id, const QNetworkProxy& proxy);
 
   private:
     QString m_bareUrl;

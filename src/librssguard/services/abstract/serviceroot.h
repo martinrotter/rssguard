@@ -153,10 +153,8 @@ class ServiceRoot : public RootItem {
     // NOTE: Keep in sync with ServiceEntryRoot::code().
     virtual QString code() const = 0;
 
-    // These are not part of "interface".
-    CacheForServiceRoot* toCache() const;
-
   public:
+    CacheForServiceRoot* toCache() const;
 
     // Account ID corresponds with DB attribute Accounts (id).
     int accountId() const;
@@ -231,6 +229,7 @@ class ServiceRoot : public RootItem {
     void assembleFeeds(Assignment feeds);
 
   signals:
+    void proxyChanged(QNetworkProxy proxy);
     void dataChanged(QList<RootItem*> items);
     void reloadMessageListRequested(bool mark_selected_messages_read);
     void itemExpandRequested(QList<RootItem*> items, bool expand);

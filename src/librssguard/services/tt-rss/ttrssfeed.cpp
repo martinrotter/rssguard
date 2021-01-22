@@ -28,7 +28,8 @@ bool TtRssFeed::canBeDeleted() const {
 }
 
 bool TtRssFeed::deleteViaGui() {
-  TtRssUnsubscribeFeedResponse response = serviceRoot()->network()->unsubscribeFeed(customId().toInt());
+  TtRssUnsubscribeFeedResponse response = serviceRoot()->network()->unsubscribeFeed(customNumericId(),
+                                                                                    getParentServiceRoot()->networkProxy());
 
   if (response.code() == UFF_OK && removeItself()) {
     serviceRoot()->requestItemRemoval(this);
@@ -51,7 +52,8 @@ QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
   do {
     TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId().toInt(), limit, skip,
                                                                                  true, true, false,
-                                                                                 serviceRoot()->network()->downloadOnlyUnreadMessages());
+                                                                                 serviceRoot()->network()->downloadOnlyUnreadMessages(),
+                                                                                 getParentServiceRoot()->networkProxy());
 
     if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
       setStatus(Feed::Status::NetworkError);

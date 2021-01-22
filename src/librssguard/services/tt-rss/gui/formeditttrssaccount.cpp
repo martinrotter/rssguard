@@ -13,6 +13,7 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
   insertCustomTab(m_details, tr("Server setup"), 0);
   activateTab(0);
 
+  connect(m_details->m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditTtRssAccount::performTest);
   m_details->m_ui.m_txtUrl->setFocus();
 }
 
@@ -32,7 +33,7 @@ void FormEditTtRssAccount::apply() {
   accept();
 
   if (editing_account) {
-    account<TtRssServiceRoot>()->network()->logout();
+    account<TtRssServiceRoot>()->network()->logout(m_account->networkProxy());
     account<TtRssServiceRoot>()->completelyRemoveAllData();
     account<TtRssServiceRoot>()->syncIn();
   }
@@ -51,4 +52,8 @@ void FormEditTtRssAccount::setEditableAccount(ServiceRoot* editable_account) {
   m_details->m_ui.m_txtUrl->lineEdit()->setText(existing_root->network()->url());
   m_details->m_ui.m_checkServerSideUpdate->setChecked(existing_root->network()->forceServerSideUpdate());
   m_details->m_ui.m_checkDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
+}
+
+void FormEditTtRssAccount::performTest() {
+  m_details->performTest(m_proxyDetails->proxy());
 }

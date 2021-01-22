@@ -37,15 +37,6 @@ class NetworkFactory {
                                                     int timeout,
                                                     QIcon& output,
                                                     const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
-    static Downloader* performAsyncNetworkOperation(const QString& url,
-                                                    int timeout,
-                                                    const QByteArray& input_data,
-                                                    QNetworkAccessManager::Operation operation,
-                                                    QList<QPair<QByteArray,
-                                                                QByteArray>> additional_headers = QList<QPair<QByteArray, QByteArray>>(),
-                                                    bool protected_contents = false,
-                                                    const QString& username = QString(),
-                                                    const QString& password = QString());
     static NetworkResult performNetworkOperation(const QString& url, int timeout,
                                                  const QByteArray& input_data,
                                                  QByteArray& output,

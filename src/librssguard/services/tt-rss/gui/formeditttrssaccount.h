@@ -21,6 +21,9 @@ class FormEditTtRssAccount : public FormAccountDetails {
   protected:
     virtual void setEditableAccount(ServiceRoot* editable_account);
 
+  private slots:
+    void performTest();
+
   private:
     TtRssAccountDetails* m_details;
 };

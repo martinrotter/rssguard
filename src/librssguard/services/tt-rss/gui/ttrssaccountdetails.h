@@ -7,6 +7,8 @@
 
 #include "ui_ttrssaccountdetails.h"
 
+#include <QNetworkProxy>
+
 class TtRssServiceRoot;
 
 class TtRssAccountDetails : public QWidget {
@@ -20,7 +22,7 @@ class TtRssAccountDetails : public QWidget {
   private slots:
     void displayPassword(bool display);
     void displayHttpPassword(bool display);
-    void performTest();
+    void performTest(const QNetworkProxy& proxy);
 
     void onUsernameChanged();
     void onPasswordChanged();

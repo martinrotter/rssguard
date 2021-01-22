@@ -201,25 +201,6 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& u
   return network_result;
 }
 
-Downloader* NetworkFactory::performAsyncNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
-                                                         QNetworkAccessManager::Operation operation,
-                                                         QList<QPair<QByteArray, QByteArray>> additional_headers,
-                                                         bool protected_contents, const QString& username,
-                                                         const QString& password) {
-  auto* downloader = new Downloader();
-
-  QObject::connect(downloader, &Downloader::completed, downloader, &Downloader::deleteLater);
-
-  for (const auto& header : additional_headers) {
-    if (!header.first.isEmpty()) {
-      downloader->appendRawHeader(header.first, header.second);
-    }
-  }
-
-  downloader->manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
-  return downloader;
-}
-
 NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
                                                       QByteArray& output, QNetworkAccessManager::Operation operation,
                                                       QList<QPair<QByteArray, QByteArray>> additional_headers,

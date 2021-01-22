@@ -56,6 +56,7 @@ void FormTtRssFeedDetails::apply() {
                             parent->customId().toInt();
     const TtRssSubscribeToFeedResponse response = root->network()->subscribeToFeed(m_feedDetails->ui.m_txtUrl->lineEdit()->text(),
                                                                                    category_id,
+                                                                                   m_serviceRoot->networkProxy(),
                                                                                    m_authDetails->m_gbAuthentication->isChecked(),
                                                                                    m_authDetails->m_txtUsername->lineEdit()->text(),
                                                                                    m_authDetails->m_txtPassword->lineEdit()->text());

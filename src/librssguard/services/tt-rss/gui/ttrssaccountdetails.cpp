@@ -41,7 +41,6 @@ TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
   connect(m_ui.m_txtHttpPassword->lineEdit(), &BaseLineEdit::textChanged, this, &TtRssAccountDetails::onHttpPasswordChanged);
   connect(m_ui.m_txtHttpUsername->lineEdit(), &BaseLineEdit::textChanged, this, &TtRssAccountDetails::onHttpUsernameChanged);
   connect(m_ui.m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &TtRssAccountDetails::onUrlChanged);
-  connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &TtRssAccountDetails::performTest);
   connect(m_ui.m_gbHttpAuthentication, &QGroupBox::toggled, this, &TtRssAccountDetails::onHttpPasswordChanged);
   connect(m_ui.m_gbHttpAuthentication, &QGroupBox::toggled, this, &TtRssAccountDetails::onHttpUsernameChanged);
   connect(m_ui.m_checkShowHttpPassword, &QCheckBox::toggled, this, &TtRssAccountDetails::displayHttpPassword);
@@ -63,7 +62,7 @@ void TtRssAccountDetails::displayHttpPassword(bool display) {
   m_ui.m_txtHttpPassword->lineEdit()->setEchoMode(display ? QLineEdit::Normal : QLineEdit::Password);
 }
 
-void TtRssAccountDetails::performTest() {
+void TtRssAccountDetails::performTest(const QNetworkProxy& proxy) {
   TtRssNetworkFactory factory;
 
   factory.setUsername(m_ui.m_txtUsername->lineEdit()->text());
@@ -74,7 +73,7 @@ void TtRssAccountDetails::performTest() {
   factory.setAuthPassword(m_ui.m_txtHttpPassword->lineEdit()->text());
   factory.setForceServerSideUpdate(m_ui.m_checkServerSideUpdate->isChecked());
 
-  TtRssLoginResponse result = factory.login();
+  TtRssLoginResponse result = factory.login(proxy);
 
   if (result.isLoaded()) {
     if (result.hasError()) {

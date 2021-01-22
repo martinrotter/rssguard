@@ -314,6 +314,8 @@ QNetworkProxy ServiceRoot::networkProxy() const {
 
 void ServiceRoot::setNetworkProxy(const QNetworkProxy& network_proxy) {
   m_networkProxy = network_proxy;
+
+  emit proxyChanged(network_proxy);
 }
 
 ImportantNode* ServiceRoot::importantNode() const {
