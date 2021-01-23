@@ -14,3 +14,4 @@ Comment[de]=Qt Feedreader mit großem Funktionsumfang bei geringem Ressourcenbed
 Icon=rssguard
 Terminal=false
 Categories=Qt;Network;News;
+StartupWMClass=rssguard
