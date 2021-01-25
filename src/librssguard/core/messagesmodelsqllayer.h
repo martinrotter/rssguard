@@ -23,6 +23,8 @@ class MessagesModelSqlLayer {
     QString selectStatement() const;
     QString formatFields() const;
 
+    bool isColumnNumeric(int column_id) const;
+
     QSqlDatabase m_db;
 
   private:
@@ -34,6 +36,7 @@ class MessagesModelSqlLayer {
     QMap<int, QString> m_fieldNames;
     QMap<int, QString> m_orderByNames;
     QList<int> m_sortColumns;
+    QList<int> m_numericColumns;
     QList<Qt::SortOrder> m_sortOrders;
 };
 

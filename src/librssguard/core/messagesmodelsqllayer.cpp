@@ -5,7 +5,9 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 
-MessagesModelSqlLayer::MessagesModelSqlLayer() : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)) {
+MessagesModelSqlLayer::MessagesModelSqlLayer()
+  : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)), m_fieldNames({}), m_orderByNames({}),
+  m_sortColumns({}), m_numericColumns({}), m_sortOrders({}) {
   m_db = qApp->database()->connection(QSL("MessagesModel"));
 
   // Used in <x>: SELECT <x1>, <x2> FROM ....;
@@ -45,6 +47,9 @@ MessagesModelSqlLayer::MessagesModelSqlLayer() : m_filter(QSL(DEFAULT_SQL_MESSAG
   m_orderByNames[MSG_DB_CUSTOM_HASH_INDEX] = "Messages.custom_hash";
   m_orderByNames[MSG_DB_FEED_CUSTOM_ID_INDEX] = "Messages.feed";
   m_orderByNames[MSG_DB_HAS_ENCLOSURES] = "has_enclosures";
+
+  m_numericColumns << MSG_DB_ID_INDEX << MSG_DB_READ_INDEX << MSG_DB_DELETED_INDEX << MSG_DB_PDELETED_INDEX
+                   << MSG_DB_IMPORTANT_INDEX << MSG_DB_ACCOUNT_ID_INDEX << MSG_DB_DCREATED_INDEX;
 }
 
 void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order) {
@@ -82,6 +87,10 @@ QString MessagesModelSqlLayer::formatFields() const {
   return m_fieldNames.values().join(QSL(", "));
 }
 
+bool MessagesModelSqlLayer::isColumnNumeric(int column_id) const {
+  return m_numericColumns.contains(column_id);
+}
+
 QString MessagesModelSqlLayer::selectStatement() const {
   return QL1S("SELECT ") + formatFields() + QL1C(' ') +
          QL1S("FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id AND Messages.account_id = Feeds.account_id "
@@ -98,8 +107,12 @@ QString MessagesModelSqlLayer::orderByClause() const {
 
     for (int i = 0; i < m_sortColumns.size(); i++) {
       QString field_name(m_orderByNames[m_sortColumns[i]]);
+      QString order_sql = isColumnNumeric(m_sortColumns[i])
+                          ? QSL("%1")
+                          : QSL("LOWER(%1)");
 
-      sorts.append(QSL("LOWER(%1)").arg(field_name) + (m_sortOrders[i] == Qt::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
+      sorts.append(order_sql.arg(field_name) +
+                   (m_sortOrders[i] == Qt::SortOrder::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
     }
 
     return QL1S(" ORDER BY ") + sorts.join(QSL(", "));
