@@ -55,6 +55,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
 
     void setupFonts();
     void updateDateFormat();
+    void updateFeedIconsDisplay();
     void reloadWholeLayout();
 
     // SINGLE message manipulators.
@@ -99,6 +100,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     QIcon m_unreadIcon;
     QIcon m_enclosuresIcon;
     int m_itemHeight;
+    bool m_displayFeedIcons;
 };
 
 Q_DECLARE_METATYPE(MessagesModel::MessageHighlighter)

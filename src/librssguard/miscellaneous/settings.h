@@ -112,6 +112,9 @@ namespace Messages {
   KEY ClearReadOnExit;
   VALUE(bool) ClearReadOnExitDef;
 
+  KEY DisplayFeedIconsInList;
+  VALUE(bool) DisplayFeedIconsInListDef;
+
   KEY BringAppToFrontAfterMessageOpenedExternally;
   VALUE(bool) BringAppToFrontAfterMessageOpenedExternallyDef;
 

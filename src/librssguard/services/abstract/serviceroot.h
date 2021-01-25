@@ -167,6 +167,8 @@ class ServiceRoot : public RootItem {
     // and from model.
     void completelyRemoveAllData();
 
+    QIcon feedIconForMessage(const QString& feed_custom_id) const;
+
     // Removes all/read only messages from given underlying feeds.
     bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
 

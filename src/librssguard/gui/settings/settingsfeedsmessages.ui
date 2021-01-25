@@ -266,21 +266,21 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="3" column="0">
         <widget class="QCheckBox" name="m_checkBringToForegroundAfterMsgOpened">
          <property name="text">
           <string>Bring application window to front once message is opened in external web browser</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="4" column="0">
         <widget class="QCheckBox" name="m_checkKeppMessagesInTheMiddle">
          <property name="text">
           <string>Keep message selection in the middle of the message list viewport</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="5" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLabel" name="label_2">
@@ -304,7 +304,7 @@
          </item>
         </layout>
        </item>
-       <item row="5" column="0">
+       <item row="6" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QLabel" name="label">
@@ -328,7 +328,7 @@
          </item>
         </layout>
        </item>
-       <item row="6" column="0">
+       <item row="7" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_10">
          <item>
           <widget class="QCheckBox" name="m_checkMessagesDateTimeFormat">
@@ -348,7 +348,7 @@
          </item>
         </layout>
        </item>
-       <item row="7" column="0">
+       <item row="8" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QGroupBox" name="groupBox_5">
@@ -404,7 +404,7 @@
          </item>
         </layout>
        </item>
-       <item row="8" column="0" colspan="2">
+       <item row="9" column="0" colspan="2">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -416,6 +416,13 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="m_checkDisplayFeedIcons">
+         <property name="text">
+          <string>Display real icons of feeds in list of messages instead of read/unread icons</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -444,6 +451,7 @@
   <tabstop>m_cmbCountsFeedList</tabstop>
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
   <tabstop>m_checkDisplayPlaceholders</tabstop>
+  <tabstop>m_checkDisplayFeedIcons</tabstop>
   <tabstop>m_checkBringToForegroundAfterMsgOpened</tabstop>
   <tabstop>m_checkKeppMessagesInTheMiddle</tabstop>
   <tabstop>m_spinHeightRowsMessages</tabstop>

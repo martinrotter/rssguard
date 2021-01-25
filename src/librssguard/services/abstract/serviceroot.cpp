@@ -166,6 +166,20 @@ void ServiceRoot::completelyRemoveAllData() {
   requestReloadMessageList(true);
 }
 
+QIcon ServiceRoot::feedIconForMessage(const QString& feed_custom_id) const {
+  QString low_id = feed_custom_id.toLower();
+  RootItem* found_item = getItemFromSubTree([low_id](const RootItem* it) {
+    return it->kind() == RootItem::Kind::Feed && it->customId().toLower() == low_id;
+  });
+
+  if (found_item != nullptr) {
+    return found_item->icon();
+  }
+  else {
+    return QIcon();
+  }
+}
+
 void ServiceRoot::removeOldAccountFromDatabase(bool including_messages) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
