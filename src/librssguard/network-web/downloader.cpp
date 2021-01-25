@@ -104,71 +104,30 @@ void Downloader::manipulateData(const QString& url,
 void Downloader::finished() {
   auto* reply = qobject_cast<QNetworkReply*>(sender());
 
-  QNetworkAccessManager::Operation reply_operation = reply->operation();
-
   m_timer->stop();
 
   // In this phase, some part of downloading process is completed.
   const QUrl redirection_url = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
 
-  if (redirection_url.isValid()) {
-    // Communication indicates that HTTP redirection is needed.
-    // Setup redirection URL and download again.
-    QNetworkRequest request = reply->request();
-
-    if (redirection_url.host().isEmpty()) {
-      request.setUrl(QUrl(reply->request().url().scheme() + QSL("://") + reply->request().url().host() + redirection_url.toString()));
-    }
-    else {
-      request.setUrl(redirection_url);
-    }
-
-    qWarningNN << LOGSEC_NETWORK
-               << "We are redirecting URL request to:"
-               << QUOTE_W_SPACE_DOT(request.url());
-
-    m_activeReply->deleteLater();
-    m_activeReply = nullptr;
-
-    if (reply_operation == QNetworkAccessManager::GetOperation) {
-      runGetRequest(request);
-    }
-    else if (reply_operation == QNetworkAccessManager::Operation::PostOperation) {
-      if (m_inputMultipartData == nullptr) {
-        runPostRequest(request, m_inputData);
-      }
-      else {
-        runPostRequest(request, m_inputMultipartData);
-      }
-    }
-    else if (reply_operation == QNetworkAccessManager::PutOperation) {
-      runPutRequest(request, m_inputData);
-    }
-    else if (reply_operation == QNetworkAccessManager::DeleteOperation) {
-      runDeleteRequest(request);
-    }
+  // No redirection is indicated. Final file is obtained in our "reply" object.
+  // Read the data into output buffer.
+  if (m_inputMultipartData == nullptr) {
+    m_lastOutputData = reply->readAll();
   }
   else {
-    // No redirection is indicated. Final file is obtained in our "reply" object.
-    // Read the data into output buffer.
-    if (m_inputMultipartData == nullptr) {
-      m_lastOutputData = reply->readAll();
-    }
-    else {
-      m_lastOutputMultipartData = decodeMultipartAnswer(reply);
-    }
-
-    m_lastContentType = reply->header(QNetworkRequest::ContentTypeHeader);
-    m_lastOutputError = reply->error();
-    m_activeReply->deleteLater();
-    m_activeReply = nullptr;
-
-    if (m_inputMultipartData != nullptr) {
-      m_inputMultipartData->deleteLater();
-    }
-
-    emit completed(m_lastOutputError, m_lastOutputData);
+    m_lastOutputMultipartData = decodeMultipartAnswer(reply);
   }
+
+  m_lastContentType = reply->header(QNetworkRequest::ContentTypeHeader);
+  m_lastOutputError = reply->error();
+  m_activeReply->deleteLater();
+  m_activeReply = nullptr;
+
+  if (m_inputMultipartData != nullptr) {
+    m_inputMultipartData->deleteLater();
+  }
+
+  emit completed(m_lastOutputError, m_lastOutputData);
 }
 
 void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {

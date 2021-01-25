@@ -49,11 +49,18 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
                                                        QIODevice* outgoingData) {
   QNetworkRequest new_request = request;
 
-  // This rapidly speeds up loading of web sites.
-  // NOTE: https://en.wikipedia.org/wiki/HTTP_pipelining
   new_request.setAttribute(QNetworkRequest::Attribute::HttpPipeliningAllowedAttribute, true);
+
+#if QT_VERSION >= 0x050900
+  new_request.setAttribute(QNetworkRequest::Attribute::RedirectPolicyAttribute,
+                           QNetworkRequest::RedirectPolicy::NoLessSafeRedirectPolicy);
+#elif QT_VERSION >= 0x050600
+  new_request.setAttribute(QNetworkRequest::Attribute::FollowRedirectsAttribute, true);
+#endif
 
   // Setup custom user-agent.
   new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, QString(APP_USERAGENT).toLocal8Bit());
-  return QNetworkAccessManager::createRequest(op, new_request, outgoingData);
+
+  auto reply = QNetworkAccessManager::createRequest(op, new_request, outgoingData);
+  return reply;
 }
