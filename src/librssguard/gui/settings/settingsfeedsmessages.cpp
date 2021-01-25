@@ -42,6 +42,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_checkAutoUpdateOnlyUnfocused, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkMessagesDateTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkMessagesDateTimeFormat, &QCheckBox::toggled, m_ui->m_cmbMessagesDateTimeFormat, &QComboBox::setEnabled);
   connect(m_ui->m_checkRemoveReadMessagesOnExit, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkBringToForegroundAfterMsgOpened, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkUpdateAllFeedsOnStartup, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
