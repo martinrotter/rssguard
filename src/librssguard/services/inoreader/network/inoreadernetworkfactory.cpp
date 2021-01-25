@@ -75,58 +75,67 @@ void InoreaderNetworkFactory::setUsername(const QString& username) {
 }
 
 RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
-  Downloader downloader;
-  QEventLoop loop;
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
     return nullptr;
   }
 
-  downloader.appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
+  QByteArray output_labels;
+  auto result_labels = NetworkFactory::performNetworkOperation(INOREADER_API_LIST_LABELS,
+                                                               qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                               {},
+                                                               output_labels,
+                                                               QNetworkAccessManager::Operation::GetOperation,
+                                                               { { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                                                 bearer.toLocal8Bit() } },
+                                                               false,
+                                                               {},
+                                                               {});
 
-  // We need to quit event loop when the download finishes.
-  connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
-  downloader.downloadFile(INOREADER_API_LIST_LABELS, qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
-  loop.exec();
-
-  if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
+  if (result_labels.first != QNetworkReply::NetworkError::NoError) {
     return nullptr;
   }
 
-  QString category_data = downloader.lastOutputData();
+  QByteArray output_feeds;
+  auto result_feeds = NetworkFactory::performNetworkOperation(INOREADER_API_LIST_FEEDS,
+                                                              qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                              {},
+                                                              output_feeds,
+                                                              QNetworkAccessManager::Operation::GetOperation,
+                                                              { { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                                                bearer.toLocal8Bit() } },
+                                                              false,
+                                                              {},
+                                                              {});
 
-  downloader.manipulateData(INOREADER_API_LIST_FEEDS, QNetworkAccessManager::Operation::GetOperation);
-  loop.exec();
-
-  if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
+  if (result_feeds.first != QNetworkReply::NetworkError::NoError) {
     return nullptr;
   }
 
-  QString feed_data = downloader.lastOutputData();
-
-  return decodeFeedCategoriesData(category_data, feed_data, obtain_icons);
+  return decodeFeedCategoriesData(output_labels, output_feeds, obtain_icons);
 }
 
 QList<RootItem*> InoreaderNetworkFactory::getLabels() {
   QList<RootItem*> lbls;
-  Downloader downloader;
-  QEventLoop loop;
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
     return lbls;
   }
 
-  downloader.appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
-
-  // We need to quit event loop when the download finishes.
-  connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
-  downloader.downloadFile(INOREADER_API_LIST_LABELS, qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
-  loop.exec();
-
-  QString lbls_data = downloader.lastOutputData();
-  QJsonDocument json_lbls = QJsonDocument::fromJson(lbls_data.toUtf8());
+  QByteArray output;
+  auto result = NetworkFactory::performNetworkOperation(INOREADER_API_LIST_LABELS,
+                                                        qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                        {},
+                                                        output,
+                                                        QNetworkAccessManager::Operation::GetOperation,
+                                                        { { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                                          bearer.toLocal8Bit() } },
+                                                        false,
+                                                        {},
+                                                        {});
+  QJsonDocument json_lbls = QJsonDocument::fromJson(output);
 
   for (const QJsonValue& lbl_val : json_lbls.object()["tags"].toArray()) {
     QJsonObject lbl_obj = lbl_val.toObject();
@@ -155,8 +164,6 @@ QList<RootItem*> InoreaderNetworkFactory::getLabels() {
 }
 
 QList<Message> InoreaderNetworkFactory::messages(ServiceRoot* root, const QString& stream_id, Feed::Status& error) {
-  Downloader downloader;
-  QEventLoop loop;
   QString target_url = INOREADER_API_FEED_CONTENTS;
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
@@ -170,27 +177,31 @@ QList<Message> InoreaderNetworkFactory::messages(ServiceRoot* root, const QStrin
   }
 
   target_url += QSL("/") + QUrl::toPercentEncoding(stream_id) + QString("?n=%1").arg(batchSize());
-  downloader.appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
 
-  // We need to quit event loop when the download finishes.
-  connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
-  downloader.downloadFile(target_url, qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
-  loop.exec();
+  QByteArray output_msgs;
+  auto result = NetworkFactory::performNetworkOperation(target_url,
+                                                        qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                        {},
+                                                        output_msgs,
+                                                        QNetworkAccessManager::Operation::GetOperation,
+                                                        { { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                                          bearer.toLocal8Bit() } },
+                                                        false,
+                                                        {},
+                                                        {});
 
-  if (downloader.lastOutputError() != QNetworkReply::NetworkError::NoError) {
+  if (result.first != QNetworkReply::NetworkError::NoError) {
     qCriticalNN << LOGSEC_INOREADER
                 << "Cannot download messages for "
                 << QUOTE_NO_SPACE(stream_id)
                 << ", network error:"
-                << QUOTE_W_SPACE_DOT(downloader.lastOutputError());
+                << QUOTE_W_SPACE_DOT(result.first);
     error = Feed::Status::NetworkError;
     return QList<Message>();
   }
   else {
-    QString messages_data = downloader.lastOutputData();
-
     error = Feed::Status::Normal;
-    return decodeMessages(root, messages_data, stream_id);
+    return decodeMessages(root, output_msgs, stream_id);
   }
 }
 
