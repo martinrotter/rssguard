@@ -58,6 +58,8 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   new_request.setAttribute(QNetworkRequest::Attribute::FollowRedirectsAttribute, true);
 #endif
 
+  new_request.setRawHeader(QSL("Cookie").toLocal8Bit(), QSL("JSESSIONID= ").toLocal8Bit());
+
   // Setup custom user-agent.
   new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, QString(APP_USERAGENT).toLocal8Bit());
 
