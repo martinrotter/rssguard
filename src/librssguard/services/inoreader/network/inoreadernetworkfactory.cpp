@@ -91,7 +91,8 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
                                                                  bearer.toLocal8Bit() } },
                                                                false,
                                                                {},
-                                                               {});
+                                                               {},
+                                                               m_service->networkProxy());
 
   if (result_labels.first != QNetworkReply::NetworkError::NoError) {
     return nullptr;
@@ -107,7 +108,8 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
                                                                 bearer.toLocal8Bit() } },
                                                               false,
                                                               {},
-                                                              {});
+                                                              {},
+                                                              m_service->networkProxy());
 
   if (result_feeds.first != QNetworkReply::NetworkError::NoError) {
     return nullptr;
@@ -134,7 +136,8 @@ QList<RootItem*> InoreaderNetworkFactory::getLabels() {
                                                           bearer.toLocal8Bit() } },
                                                         false,
                                                         {},
-                                                        {});
+                                                        {},
+                                                        m_service->networkProxy());
   QJsonDocument json_lbls = QJsonDocument::fromJson(output);
 
   for (const QJsonValue& lbl_val : json_lbls.object()["tags"].toArray()) {
@@ -188,7 +191,8 @@ QList<Message> InoreaderNetworkFactory::messages(ServiceRoot* root, const QStrin
                                                           bearer.toLocal8Bit() } },
                                                         false,
                                                         {},
-                                                        {});
+                                                        {},
+                                                        m_service->networkProxy());
 
   if (result.first != QNetworkReply::NetworkError::NoError) {
     qCriticalNN << LOGSEC_INOREADER
@@ -250,10 +254,14 @@ QNetworkReply::NetworkError InoreaderNetworkFactory::editLabels(const QString& s
     QByteArray output;
     auto result = NetworkFactory::performNetworkOperation(batch_final_url,
                                                           timeout,
-                                                          QByteArray(),
+                                                          {},
                                                           output,
                                                           QNetworkAccessManager::Operation::GetOperation,
-                                                          headers);
+                                                          headers,
+                                                          false,
+                                                          {},
+                                                          {},
+                                                          m_service->networkProxy());
 
     if (result.first != QNetworkReply::NetworkError::NoError) {
       return result.first;
