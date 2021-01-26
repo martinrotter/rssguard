@@ -79,33 +79,40 @@ class OwnCloudNetworkFactory {
     QString authPassword() const;
     void setAuthPassword(const QString& auth_password);
 
-    // Operations.
-
-    // Get version info.
-    OwnCloudStatusResponse status();
-
-    // Get feeds & categories (used for sync-in).
-    OwnCloudGetFeedsCategoriesResponse feedsCategories();
-
-    // Feed operations.
-    bool deleteFeed(const QString& feed_id);
-    bool createFeed(const QString& url, int parent_id);
-    bool renameFeed(const QString& new_name, const QString& custom_feed_id);
-
-    // Get messages for given feed.
-    OwnCloudGetMessagesResponse getMessages(int feed_id);
-
-    // Misc methods.
-    QNetworkReply::NetworkError triggerFeedUpdate(int feed_id);
-    NetworkResult markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids);
-    NetworkResult markMessagesStarred(RootItem::Importance importance, const QStringList& feed_ids, const QStringList& guid_hashes);
-
     // Gets/sets the amount of messages to obtain during single feed update.
     int batchSize() const;
     void setBatchSize(int batch_size);
 
     bool downloadOnlyUnreadMessages() const;
     void setDownloadOnlyUnreadMessages(bool dowload_only_unread_messages);
+
+    // Operations.
+
+    // Get version info.
+    OwnCloudStatusResponse status(const QNetworkProxy& custom_proxy);
+
+    // Get feeds & categories (used for sync-in).
+    OwnCloudGetFeedsCategoriesResponse feedsCategories(const QNetworkProxy& custom_proxy);
+
+    // Feed operations.
+    bool deleteFeed(const QString& feed_id, const QNetworkProxy& custom_proxy);
+    bool createFeed(const QString& url, int parent_id, const QNetworkProxy& custom_proxy);
+    bool renameFeed(const QString& new_name, const QString& custom_feed_id, const QNetworkProxy& custom_proxy);
+
+    // Get messages for given feed.
+    OwnCloudGetMessagesResponse getMessages(int feed_id, const QNetworkProxy& custom_proxy);
+
+    // Misc methods.
+    QNetworkReply::NetworkError triggerFeedUpdate(int feed_id, const QNetworkProxy& custom_proxy);
+
+    NetworkResult markMessagesRead(RootItem::ReadStatus status,
+                                   const QStringList& custom_ids,
+                                   const QNetworkProxy& custom_proxy);
+
+    NetworkResult markMessagesStarred(RootItem::Importance importance,
+                                      const QStringList& feed_ids,
+                                      const QStringList& guid_hashes,
+                                      const QNetworkProxy& custom_proxy);
 
   private:
     QString m_url;

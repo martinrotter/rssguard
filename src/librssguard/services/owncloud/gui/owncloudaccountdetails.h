@@ -7,6 +7,8 @@
 
 #include "ui_owncloudaccountdetails.h"
 
+#include <QNetworkProxy>
+
 class OwnCloudAccountDetails : public QWidget {
   Q_OBJECT
 
@@ -17,7 +19,7 @@ class OwnCloudAccountDetails : public QWidget {
 
   private slots:
     void displayPassword(bool display);
-    void performTest();
+    void performTest(const QNetworkProxy& custom_proxy);
     void onUsernameChanged();
     void onPasswordChanged();
     void onUrlChanged();

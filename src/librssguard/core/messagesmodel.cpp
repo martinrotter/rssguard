@@ -339,7 +339,12 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           QString feed_custom_id = dta.toString();
           auto acc = m_selectedItem->getParentServiceRoot()->feedIconForMessage(feed_custom_id);
 
-          return acc;
+          if (acc.isNull()) {
+            return qApp->icons()->fromTheme(QSL("application-rss+xml"));
+          }
+          else {
+            return acc;
+          }
         }
         else {
           QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);

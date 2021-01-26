@@ -14,8 +14,6 @@
 #include <QTextDocument>
 #include <QTimer>
 
-NetworkFactory::NetworkFactory() = default;
-
 QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html) {
   QStringList feeds;
   QRegularExpression rx(FEED_REGEX_MATCHER, QRegularExpression::PatternOption::CaseInsensitiveOption);

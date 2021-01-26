@@ -15,6 +15,8 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
   insertCustomTab(m_details, tr("Server setup"), 0);
   activateTab(0);
 
+  connect(m_details->m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditOwnCloudAccount::performTest);
+
   m_details->m_ui.m_txtUrl->setFocus();
 }
 
@@ -48,4 +50,8 @@ void FormEditOwnCloudAccount::setEditableAccount(ServiceRoot* editable_account) 
   m_details->m_ui.m_checkDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
   m_details->m_ui.m_checkServerSideUpdate->setChecked(existing_root->network()->forceServerSideUpdate());
   m_details->m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
+}
+
+void FormEditOwnCloudAccount::performTest() {
+  m_details->performTest(m_proxyDetails->proxy());
 }

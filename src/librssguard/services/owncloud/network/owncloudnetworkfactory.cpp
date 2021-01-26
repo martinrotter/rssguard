@@ -19,10 +19,9 @@
 
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   : m_url(QString()), m_fixedUrl(QString()), m_downloadOnlyUnreadMessages(false), m_forceServerSideUpdate(false),
-  m_authUsername(QString()), m_authPassword(QString()), m_batchSize(OWNCLOUD_UNLIMITED_BATCH_SIZE), m_urlUser(QString()), m_urlStatus(
-    QString()),
-  m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()), m_urlFeedsUpdate(QString()),
-  m_urlDeleteFeed(QString()), m_urlRenameFeed(QString()) {}
+  m_authUsername(QString()), m_authPassword(QString()), m_batchSize(OWNCLOUD_UNLIMITED_BATCH_SIZE), m_urlUser(QString()),
+  m_urlStatus(QString()), m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()),
+  m_urlFeedsUpdate(QString()), m_urlDeleteFeed(QString()), m_urlRenameFeed(QString()) {}
 
 OwnCloudNetworkFactory::~OwnCloudNetworkFactory() = default;
 
@@ -75,7 +74,7 @@ void OwnCloudNetworkFactory::setAuthPassword(const QString& auth_password) {
   m_authPassword = auth_password;
 }
 
-OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
+OwnCloudStatusResponse OwnCloudNetworkFactory::status(const QNetworkProxy& custom_proxy) {
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -85,9 +84,14 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_urlStatus,
                                                                         qApp->settings()->value(GROUP(Feeds),
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                                        QByteArray(), result_raw,
+                                                                        QByteArray(),
+                                                                        result_raw,
                                                                         QNetworkAccessManager::Operation::GetOperation,
-                                                                        headers);
+                                                                        headers,
+                                                                        false,
+                                                                        {},
+                                                                        {},
+                                                                        custom_proxy);
   OwnCloudStatusResponse status_response(network_reply.first, QString::fromUtf8(result_raw));
 
   qDebugNN << LOGSEC_NEXTCLOUD
@@ -102,7 +106,7 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
   return status_response;
 }
 
-OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
+OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories(const QNetworkProxy& custom_proxy) {
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -112,9 +116,14 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_urlFolders,
                                                                         qApp->settings()->value(GROUP(Feeds),
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                                        QByteArray(), result_raw,
+                                                                        QByteArray(),
+                                                                        result_raw,
                                                                         QNetworkAccessManager::Operation::GetOperation,
-                                                                        headers);
+                                                                        headers,
+                                                                        false,
+                                                                        {},
+                                                                        {},
+                                                                        custom_proxy);
 
   if (network_reply.first != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
@@ -129,9 +138,14 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
   network_reply = NetworkFactory::performNetworkOperation(m_urlFeeds,
                                                           qApp->settings()->value(GROUP(Feeds),
                                                                                   SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                          QByteArray(), result_raw,
+                                                          QByteArray(),
+                                                          result_raw,
                                                           QNetworkAccessManager::Operation::GetOperation,
-                                                          headers);
+                                                          headers,
+                                                          false,
+                                                          {},
+                                                          {},
+                                                          custom_proxy);
 
   if (network_reply.first != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
@@ -145,7 +159,7 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
   return OwnCloudGetFeedsCategoriesResponse(network_reply.first, content_categories, content_feeds);
 }
 
-bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id) {
+bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id, const QNetworkProxy& custom_proxy) {
   QString final_url = m_urlDeleteFeed.arg(feed_id);
   QByteArray raw_output;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -159,7 +173,11 @@ bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id) {
                                                                         QByteArray(),
                                                                         raw_output,
                                                                         QNetworkAccessManager::Operation::DeleteOperation,
-                                                                        headers);
+                                                                        headers,
+                                                                        false,
+                                                                        {},
+                                                                        {},
+                                                                        custom_proxy);
 
   if (network_reply.first != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
@@ -172,12 +190,12 @@ bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id) {
   }
 }
 
-bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id) {
+bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id, const QNetworkProxy& custom_proxy) {
   QJsonObject json;
 
   json["url"] = url;
 
-  auto nextcloud_version = status().version();
+  auto nextcloud_version = status(custom_proxy).version();
 
   if (SystemFactory::isVersionEqualOrNewer(nextcloud_version, QSL("15.1.0"))) {
     json["folderId"] = parent_id == 0 ? QJsonValue(QJsonValue::Type::Null) : parent_id;
@@ -198,7 +216,11 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id) {
                                                                         QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
                                                                         result_raw,
                                                                         QNetworkAccessManager::Operation::PostOperation,
-                                                                        headers);
+                                                                        headers,
+                                                                        false,
+                                                                        {},
+                                                                        {},
+                                                                        custom_proxy);
 
   if (network_reply.first != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
@@ -211,7 +233,9 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id) {
   }
 }
 
-bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, const QString& custom_feed_id) {
+bool OwnCloudNetworkFactory::renameFeed(const QString& new_name,
+                                        const QString& custom_feed_id,
+                                        const QNetworkProxy& custom_proxy) {
   QString final_url = m_urlRenameFeed.arg(custom_feed_id);
   QByteArray result_raw;
   QJsonObject json;
@@ -229,7 +253,11 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, const QString& 
     QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
     result_raw,
     QNetworkAccessManager::PutOperation,
-    headers);
+    headers,
+    false,
+    {},
+    {},
+    custom_proxy);
 
   if (network_reply.first != QNetworkReply::NetworkError::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
@@ -242,9 +270,9 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name, const QString& 
   }
 }
 
-OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
+OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id, const QNetworkProxy& custom_proxy) {
   if (forceServerSideUpdate()) {
-    triggerFeedUpdate(feed_id);
+    triggerFeedUpdate(feed_id, custom_proxy);
   }
 
   QString final_url = m_urlMessages.arg(QString::number(feed_id),
@@ -260,9 +288,14 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
   NetworkResult network_reply = NetworkFactory::performNetworkOperation(final_url,
                                                                         qApp->settings()->value(GROUP(Feeds),
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                                        QByteArray(), result_raw,
+                                                                        QByteArray(),
+                                                                        result_raw,
                                                                         QNetworkAccessManager::Operation::GetOperation,
-                                                                        headers);
+                                                                        headers,
+                                                                        false,
+                                                                        {},
+                                                                        {},
+                                                                        custom_proxy);
   OwnCloudGetMessagesResponse msgs_response(network_reply.first, QString::fromUtf8(result_raw));
 
   if (network_reply.first != QNetworkReply::NoError) {
@@ -274,7 +307,7 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
   return msgs_response;
 }
 
-QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_id) {
+QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_id, const QNetworkProxy& custom_proxy) {
   // Now, we can trigger the update.
   QByteArray raw_output;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -286,9 +319,14 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
                                                                                              QString::number(feed_id)),
                                                                         qApp->settings()->value(GROUP(Feeds),
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
-                                                                        QByteArray(), raw_output,
+                                                                        QByteArray(),
+                                                                        raw_output,
                                                                         QNetworkAccessManager::Operation::GetOperation,
-                                                                        headers);
+                                                                        headers,
+                                                                        false,
+                                                                        {},
+                                                                        {},
+                                                                        custom_proxy);
 
   if (network_reply.first != QNetworkReply::NetworkError::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
@@ -299,7 +337,9 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
   return network_reply.first;
 }
 
-NetworkResult OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status, const QStringList& custom_ids) {
+NetworkResult OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status,
+                                                       const QStringList& custom_ids,
+                                                       const QNetworkProxy& custom_proxy) {
   QJsonObject json;
   QJsonArray ids;
   QString final_url;
@@ -330,12 +370,17 @@ NetworkResult OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus stat
                                                  QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
                                                  output,
                                                  QNetworkAccessManager::Operation::PutOperation,
-                                                 headers);
+                                                 headers,
+                                                 false,
+                                                 {},
+                                                 {},
+                                                 custom_proxy);
 }
 
 NetworkResult OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance,
                                                           const QStringList& feed_ids,
-                                                          const QStringList& guid_hashes) {
+                                                          const QStringList& guid_hashes,
+                                                          const QNetworkProxy& custom_proxy) {
   QJsonObject json;
   QJsonArray ids;
   QString final_url;
@@ -370,7 +415,11 @@ NetworkResult OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance i
                                                  QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
                                                  output,
                                                  QNetworkAccessManager::Operation::PutOperation,
-                                                 headers);
+                                                 headers,
+                                                 false,
+                                                 {},
+                                                 {},
+                                                 custom_proxy);
 }
 
 int OwnCloudNetworkFactory::batchSize() const {

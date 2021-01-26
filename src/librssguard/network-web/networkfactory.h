@@ -20,9 +20,7 @@ class NetworkFactory {
   Q_DECLARE_TR_FUNCTIONS(NetworkFactory)
 
   private:
-
-    // Constructor.
-    explicit NetworkFactory();
+    explicit NetworkFactory() = default;
 
   public:
     static QStringList extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html);

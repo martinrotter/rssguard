@@ -20,7 +20,7 @@ bool OwnCloudFeed::canBeDeleted() const {
 }
 
 bool OwnCloudFeed::deleteViaGui() {
-  if (serviceRoot()->network()->deleteFeed(customId()) && removeItself()) {
+  if (serviceRoot()->network()->deleteFeed(customId(), getParentServiceRoot()->networkProxy()) && removeItself()) {
     serviceRoot()->requestItemRemoval(this);
     return true;
   }
@@ -40,7 +40,8 @@ OwnCloudServiceRoot* OwnCloudFeed::serviceRoot() const {
 }
 
 QList<Message> OwnCloudFeed::obtainNewMessages(bool* error_during_obtaining) {
-  OwnCloudGetMessagesResponse messages = serviceRoot()->network()->getMessages(customNumericId());
+  OwnCloudGetMessagesResponse messages = serviceRoot()->network()->getMessages(customNumericId(),
+                                                                               getParentServiceRoot()->networkProxy());
 
   if (messages.networkError() != QNetworkReply::NetworkError::NoError) {
     setStatus(Feed::Status::NetworkError);

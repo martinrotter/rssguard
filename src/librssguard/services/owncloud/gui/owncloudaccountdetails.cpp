@@ -40,7 +40,6 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onPasswordChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onUsernameChanged);
   connect(m_ui.m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onUrlChanged);
-  connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &OwnCloudAccountDetails::performTest);
 
   setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_checkDownloadOnlyUnreadMessages);
   setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_checkServerSideUpdate);
@@ -60,7 +59,7 @@ void OwnCloudAccountDetails::displayPassword(bool display) {
   m_ui.m_txtPassword->lineEdit()->setEchoMode(display ? QLineEdit::Normal : QLineEdit::Password);
 }
 
-void OwnCloudAccountDetails::performTest() {
+void OwnCloudAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
   OwnCloudNetworkFactory factory;
 
   factory.setAuthUsername(m_ui.m_txtUsername->lineEdit()->text());
@@ -68,7 +67,7 @@ void OwnCloudAccountDetails::performTest() {
   factory.setUrl(m_ui.m_txtUrl->lineEdit()->text());
   factory.setForceServerSideUpdate(m_ui.m_checkServerSideUpdate->isChecked());
 
-  OwnCloudStatusResponse result = factory.status();
+  OwnCloudStatusResponse result = factory.status(custom_proxy);
 
   if (result.networkError() != QNetworkReply::NetworkError::NoError) {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,

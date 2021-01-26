@@ -20,6 +20,9 @@ class FormEditOwnCloudAccount : public FormAccountDetails {
   protected:
     virtual void setEditableAccount(ServiceRoot* editable_account);
 
+  private slots:
+    void performTest();
+
   private:
     OwnCloudAccountDetails* m_details;
 };

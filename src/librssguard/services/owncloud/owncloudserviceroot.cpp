@@ -91,7 +91,7 @@ void OwnCloudServiceRoot::saveAllCachedData(bool ignore_errors) {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      auto res = network()->markMessagesRead(key, ids);
+      auto res = network()->markMessagesRead(key, ids, networkProxy());
 
       if (!ignore_errors && res.first != QNetworkReply::NetworkError::NoError) {
         addMessageStatesToCache(ids, key);
@@ -115,7 +115,7 @@ void OwnCloudServiceRoot::saveAllCachedData(bool ignore_errors) {
         guid_hashes.append(msg.m_customHash);
       }
 
-      auto res = network()->markMessagesStarred(key, feed_ids, guid_hashes);
+      auto res = network()->markMessagesStarred(key, feed_ids, guid_hashes, networkProxy());
 
       if (!ignore_errors && res.first != QNetworkReply::NetworkError::NoError) {
         addMessageStatesToCache(messages, key);
@@ -152,7 +152,7 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase(bool creating_new) {
 }
 
 RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
-  OwnCloudGetFeedsCategoriesResponse feed_cats_response = m_network->feedsCategories();
+  OwnCloudGetFeedsCategoriesResponse feed_cats_response = m_network->feedsCategories(networkProxy());
 
   if (feed_cats_response.networkError() == QNetworkReply::NetworkError::NoError) {
     return feed_cats_response.feedsCategories(true);
