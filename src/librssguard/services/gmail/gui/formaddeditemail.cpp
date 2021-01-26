@@ -126,7 +126,7 @@ void FormAddEditEmail::onOkClicked() {
   msg.set_header("Content-Type", "text/plain; charset=utf-8");
 
   try {
-    m_root->network()->sendEmail(msg, m_originalMessage);
+    m_root->network()->sendEmail(msg, m_root->networkProxy(), m_originalMessage);
     accept();
   }
   catch (const ApplicationException& ex) {

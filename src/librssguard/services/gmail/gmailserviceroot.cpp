@@ -104,7 +104,7 @@ bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
                                               qApp->homeFolder() + QDir::separator() + parts.at(0));
 
   if (!file.isEmpty() && parts.size() == 3) {
-    Downloader* down = network()->downloadAttachment(parts.at(1), parts.at(2));
+    Downloader* down = network()->downloadAttachment(parts.at(1), parts.at(2), networkProxy());
     FormDownloadAttachment form(file, down, qApp->mainFormWidget());
 
     form.exec();
@@ -203,7 +203,9 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      if (network()->markMessagesRead(key, ids) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
+      if (network()->markMessagesRead(key, ids, networkProxy()) !=
+          QNetworkReply::NetworkError::NoError &&
+          !ignore_errors) {
         addMessageStatesToCache(ids, key);
       }
     }
@@ -224,7 +226,9 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
         custom_ids.append(msg.m_customId);
       }
 
-      if (network()->markMessagesStarred(key, custom_ids) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
+      if (network()->markMessagesStarred(key, custom_ids, networkProxy()) !=
+          QNetworkReply::NetworkError::NoError &&
+          !ignore_errors) {
         addMessageStatesToCache(messages, key);
       }
     }

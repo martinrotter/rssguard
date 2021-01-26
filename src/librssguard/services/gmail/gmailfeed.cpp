@@ -38,7 +38,7 @@ GmailServiceRoot* GmailFeed::serviceRoot() const {
 
 QList<Message> GmailFeed::obtainNewMessages(bool* error_during_obtaining) {
   Feed::Status error = Feed::Status::Normal;
-  QList<Message> messages = serviceRoot()->network()->messages(customId(), error);
+  QList<Message> messages = serviceRoot()->network()->messages(customId(), error, getParentServiceRoot()->networkProxy());
 
   setStatus(error);
 
