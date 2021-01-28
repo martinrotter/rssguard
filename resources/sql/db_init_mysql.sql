@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '18');
+INSERT INTO Information VALUES (1, 'schema_version', '19');
 -- !
 CREATE TABLE IF NOT EXISTS Accounts (
   id              INTEGER     AUTO_INCREMENT PRIMARY KEY,
@@ -70,6 +70,17 @@ CREATE TABLE IF NOT EXISTS GmailAccounts (
   redirect_url    TEXT,
   refresh_token   TEXT,
   msg_limit       INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
+  
+  FOREIGN KEY (id) REFERENCES Accounts (id)
+);
+-- !
+CREATE TABLE IF NOT EXISTS GoogleReaderApiAccounts (
+  id                  INTEGER,
+  type                INTEGER     NOT NULL CHECK (type >= 1),
+  username            TEXT        NOT NULL,
+  password            TEXT,
+  url                 TEXT        NOT NULL,
+  msg_limit           INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
   
   FOREIGN KEY (id) REFERENCES Accounts (id)
 );
