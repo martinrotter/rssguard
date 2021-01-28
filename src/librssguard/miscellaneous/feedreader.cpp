@@ -15,6 +15,7 @@
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 #include "services/gmail/gmailentrypoint.h"
+#include "services/greader/greaderentrypoint.h"
 #include "services/inoreader/inoreaderentrypoint.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/standard/standardserviceentrypoint.h"
@@ -55,6 +56,7 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
   if (m_feedServices.isEmpty()) {
     // NOTE: All installed services create their entry points here.
     m_feedServices.append(new GmailEntryPoint());
+    m_feedServices.append(new GreaderEntryPoint());
     m_feedServices.append(new InoreaderEntryPoint());
     m_feedServices.append(new OwnCloudServiceEntryPoint());
     m_feedServices.append(new StandardServiceEntryPoint());

@@ -73,11 +73,9 @@ inline bool FormAccountDetails::applyInternal() {
   QSqlDatabase database = qApp->database()->connection(QSL("FormAccountDetails"));
   bool creating = m_account == nullptr;
 
-  if (m_account == nullptr) {
+  if (creating) {
     m_account = new T();
     m_account->setAccountId(DatabaseQueries::createBaseAccount(database, m_account->code()));
-
-    //m_account->setId(m_account->accountId());
   }
 
   m_account->setNetworkProxy(m_proxyDetails->proxy());

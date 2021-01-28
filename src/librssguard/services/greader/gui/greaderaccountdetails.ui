@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GreaderAccountDetails</class>
+ <widget class="QWidget" name="GreaderAccountDetails">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>430</width>
+    <height>390</height>
+   </rect>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Service</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="m_cmbService"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="m_lblTitle">
+     <property name="text">
+      <string>URL</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_txtUrl</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="LineEditWithStatus" name="m_txtUrl" native="true"/>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Only download newest X messages per feed</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_spinLimitMessages</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="m_spinLimitMessages">
+       <property name="suffix">
+        <string> = unlimited</string>
+       </property>
+       <property name="minimum">
+        <number>-1</number>
+       </property>
+       <property name="maximum">
+        <number>1000</number>
+       </property>
+       <property name="value">
+        <number>-1</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QLabel" name="m_lblLimitMessages">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QGroupBox" name="m_gbAuthentication">
+     <property name="toolTip">
+      <string>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</string>
+     </property>
+     <property name="title">
+      <string>Authentication</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Username</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_txtUsername</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Password</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_txtPassword</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="LineEditWithStatus" name="m_txtPassword" native="true"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="LineEditWithStatus" name="m_txtUsername" native="true"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QCheckBox" name="m_checkShowPassword">
+        <property name="text">
+         <string>Show password</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="m_btnTestSetup">
+       <property name="text">
+        <string>&amp;Test setup</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="LabelWithStatus" name="m_lblTestResult" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="9" column="0" colspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>409</width>
+       <height>60</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LineEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>lineeditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>m_spinLimitMessages</tabstop>
+  <tabstop>m_checkShowPassword</tabstop>
+  <tabstop>m_btnTestSetup</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

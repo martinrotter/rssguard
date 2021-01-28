@@ -12,6 +12,7 @@
 #define SERVICE_CODE_STD_RSS    "std-rss"
 #define SERVICE_CODE_TT_RSS     "tt-rss"
 #define SERVICE_CODE_OWNCLOUD   "owncloud"
+#define SERVICE_CODE_GREADER    "greader"
 #define SERVICE_CODE_INOREADER  "inoreader"
 #define SERVICE_CODE_GMAIL      "gmail"
 
@@ -103,6 +104,7 @@
 #define LOGSEC_CORE                 "core: "
 #define LOGSEC_DB                   "database: "
 #define LOGSEC_NEXTCLOUD            "nextcloud: "
+#define LOGSEC_GREADER              "greader: "
 #define LOGSEC_INOREADER            "inoreader: "
 #define LOGSEC_TTRSS                "tt-rss: "
 #define LOGSEC_GMAIL                "gmail: "

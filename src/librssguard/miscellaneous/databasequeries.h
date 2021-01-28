@@ -9,6 +9,7 @@
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
 #include "services/abstract/serviceroot.h"
+#include "services/greader/greaderserviceroot.h"
 #include "services/standard/standardfeed.h"
 
 #include <QMultiMap>
@@ -147,14 +148,22 @@ class DatabaseQueries {
     template<typename T>
     static void fillFeedData(T* feed, const QSqlRecord& sql_record);
 
+    // Greader account.
+    static QList<ServiceRoot*> getGreaderAccounts(const QSqlDatabase& db, bool* ok = nullptr);
+    static bool createGreaderAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
+                                     const QString& password, GreaderServiceRoot::Service service,
+                                     const QString& url, int batch_size);
+    static bool overwriteGreaderAccount(const QSqlDatabase& db, const QString& username, const QString& password,
+                                        const QString& url, int batch_size, int account_id);
+
     // Nextcloud account.
     static QList<ServiceRoot*> getOwnCloudAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool deleteOwnCloudAccount(const QSqlDatabase& db, int account_id);
     static bool overwriteOwnCloudAccount(const QSqlDatabase& db, const QString& username, const QString& password,
                                          const QString& url, bool force_server_side_feed_update, int batch_size,
                                          bool download_only_unread_messages, int account_id);
-    static bool createOwnCloudAccount(const QSqlDatabase& db, int id_to_assign, const QString& username, const QString& password,
-                                      const QString& url, bool force_server_side_feed_update,
+    static bool createOwnCloudAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
+                                      const QString& password, const QString& url, bool force_server_side_feed_update,
                                       bool download_only_unread_messages, int batch_size);
 
     // TT-RSS acccount.

@@ -13,6 +13,9 @@
 #include "services/gmail/gmailfeed.h"
 #include "services/gmail/gmailserviceroot.h"
 #include "services/gmail/network/gmailnetworkfactory.h"
+#include "services/greader/definitions.h"
+#include "services/greader/greadernetwork.h"
+#include "services/greader/greaderserviceroot.h"
 #include "services/inoreader/definitions.h"
 #include "services/inoreader/inoreaderfeed.h"
 #include "services/inoreader/inoreaderserviceroot.h"
@@ -1675,6 +1678,46 @@ void DatabaseQueries::fillBaseAccountData(const QSqlDatabase& db, ServiceRoot* a
   }
 }
 
+QList<ServiceRoot*> DatabaseQueries::getGreaderAccounts(const QSqlDatabase& db, bool* ok) {
+  QSqlQuery query(db);
+  QList<ServiceRoot*> roots;
+
+  if (query.exec("SELECT * FROM GoogleReaderApiAccounts;")) {
+    while (query.next()) {
+      auto* root = new GreaderServiceRoot();
+
+      root->setId(query.value(0).toInt());
+      root->setAccountId(query.value(0).toInt());
+      root->network()->setService(GreaderServiceRoot::Service(query.value(1).toInt()));
+      root->network()->setUsername(query.value(2).toString());
+      root->network()->setPassword(TextFactory::decrypt(query.value(3).toString()));
+      root->network()->setBaseUrl(query.value(4).toString());
+      root->network()->setBatchSize(query.value(5).toInt());
+      root->updateTitle();
+
+      fillBaseAccountData(db, root);
+
+      roots.append(root);
+    }
+
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    qWarningNN << LOGSEC_GREADER
+               << "Getting list of activated accounts failed: '"
+               << query.lastError().text()
+               << "'.";
+
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  return roots;
+}
+
 QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
   QList<ServiceRoot*> roots;
@@ -1768,6 +1811,32 @@ bool DatabaseQueries::deleteOwnCloudAccount(const QSqlDatabase& db, int account_
   return q.exec();
 }
 
+bool DatabaseQueries::overwriteGreaderAccount(const QSqlDatabase& db, const QString& username, const QString& password,
+                                              const QString& url, int batch_size, int account_id) {
+  QSqlQuery query(db);
+
+  query.prepare("UPDATE GoogleReaderApiAccounts "
+                "SET username = :username, password = :password, url = :url, "
+                "msg_limit = :msg_limit "
+                "WHERE id = :id;");
+  query.bindValue(QSL(":username"), username);
+  query.bindValue(QSL(":password"), TextFactory::encrypt(password));
+  query.bindValue(QSL(":url"), url);
+  query.bindValue(QSL(":id"), account_id);
+  query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? GREADER_UNLIMITED_BATCH_SIZE : batch_size);
+
+  if (query.exec()) {
+    return true;
+  }
+  else {
+    qWarningNN << LOGSEC_GREADER
+               << "Updating account failed: '"
+               << query.lastError().text()
+               << "'.";
+    return false;
+  }
+}
+
 bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QString& username, const QString& password,
                                                const QString& url, bool force_server_side_feed_update, int batch_size,
                                                bool download_only_unread_messages, int account_id) {
@@ -1792,6 +1861,32 @@ bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QSt
     qWarningNN << LOGSEC_NEXTCLOUD
                << "Updating account failed: '"
                << query.lastError().text()
+               << "'.";
+    return false;
+  }
+}
+
+bool DatabaseQueries::createGreaderAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
+                                           const QString& password, GreaderServiceRoot::Service service,
+                                           const QString& url, int batch_size) {
+  QSqlQuery q(db);
+
+  q.prepare("INSERT INTO GoogleReaderApiAccounts (id, type, username, password, url, msg_limit) "
+            "VALUES (:id, :service, :username, :password, :url, :msg_limit);");
+  q.bindValue(QSL(":id"), id_to_assign);
+  q.bindValue(QSL(":username"), username);
+  q.bindValue(QSL(":service"), int(service));
+  q.bindValue(QSL(":password"), TextFactory::encrypt(password));
+  q.bindValue(QSL(":url"), url);
+  q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? GREADER_UNLIMITED_BATCH_SIZE : batch_size);
+
+  if (q.exec()) {
+    return true;
+  }
+  else {
+    qWarningNN << LOGSEC_GREADER
+               << "Inserting of new account failed: '"
+               << q.lastError().text()
                << "'.";
     return false;
   }

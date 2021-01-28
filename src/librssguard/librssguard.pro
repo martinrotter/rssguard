@@ -150,6 +150,13 @@ HEADERS += core/feeddownloader.h \
            services/gmail/gui/formeditgmailaccount.h \
            services/gmail/gui/gmailaccountdetails.h \
            services/gmail/network/gmailnetworkfactory.h \
+           services/greader/definitions.h \
+           services/greader/greaderentrypoint.h \
+           services/greader/greaderfeed.h \
+           services/greader/greadernetwork.h \
+           services/greader/greaderserviceroot.h \
+           services/greader/gui/formeditgreaderaccount.h \
+           services/greader/gui/greaderaccountdetails.h \
            services/inoreader/definitions.h \
            services/inoreader/gui/formeditinoreaderaccount.h \
            services/inoreader/gui/inoreaderaccountdetails.h \
@@ -310,6 +317,12 @@ SOURCES += core/feeddownloader.cpp \
            services/gmail/gui/formeditgmailaccount.cpp \
            services/gmail/gui/gmailaccountdetails.cpp \
            services/gmail/network/gmailnetworkfactory.cpp \
+           services/greader/greaderentrypoint.cpp \
+           services/greader/greaderfeed.cpp \
+           services/greader/greadernetwork.cpp \
+           services/greader/greaderserviceroot.cpp \
+           services/greader/gui/formeditgreaderaccount.cpp \
+           services/greader/gui/greaderaccountdetails.cpp \
            services/inoreader/gui/formeditinoreaderaccount.cpp \
            services/inoreader/gui/inoreaderaccountdetails.cpp \
            services/inoreader/inoreaderentrypoint.cpp \
@@ -384,6 +397,7 @@ FORMS += gui/dialogs/formabout.ui \
          services/abstract/gui/formfeeddetails.ui \
          services/abstract/gui/authenticationdetails.ui \
          services/gmail/gui/gmailaccountdetails.ui \
+         services/greader/gui/greaderaccountdetails.ui \
          services/inoreader/gui/inoreaderaccountdetails.ui \
          services/owncloud/gui/owncloudaccountdetails.ui \
          services/standard/gui/formstandardcategorydetails.ui \
