@@ -76,18 +76,19 @@ void GreaderAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
   factory.setUsername(m_ui.m_txtUsername->lineEdit()->text());
   factory.setPassword(m_ui.m_txtPassword->lineEdit()->text());
   factory.setBaseUrl(m_ui.m_txtUrl->lineEdit()->text());
+  factory.setService(service());
 
-  NetworkResult result = factory.status(custom_proxy);
+  auto result = factory.clientLogin(custom_proxy);
 
-  if (result.first != QNetworkReply::NetworkError::NoError) {
+  if (result != QNetworkReply::NetworkError::NoError) {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(result.first)),
+                                    tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(result)),
                                     tr("Network error, have you entered correct Nextcloud endpoint and password?"));
   }
   else {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("Unspecified error, did you enter correct URL?"),
-                                    tr("Unspecified error, did you enter correct URL?"));
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                    tr("You are good to go!"),
+                                    tr("Yeah."));
   }
 }
 

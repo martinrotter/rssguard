@@ -13,12 +13,17 @@ class GreaderNetwork : public QObject {
   Q_OBJECT
 
   public:
+    enum class Operations {
+      ClientLogin
+    };
+
     explicit GreaderNetwork(QObject* parent = nullptr);
 
     // Network operations.
     QList<Message> messages(ServiceRoot* root, const QString& stream_id, Feed::Status& error);
 
-    NetworkResult status(const QNetworkProxy& custom_proxy) const;
+    // Performs client login, if successful, then saves SID, LSID and Auth.
+    QNetworkReply::NetworkError clientLogin(const QNetworkProxy& proxy);
 
     // Metadata.
     GreaderServiceRoot::Service service() const;
@@ -37,6 +42,10 @@ class GreaderNetwork : public QObject {
 
     int batchSize() const;
     void setBatchSize(int batch_size);
+
+  private:
+    QString sanitizedBaseUrl() const;
+    QString generateFullUrl(Operations operation) const;
 
   private:
     GreaderServiceRoot::Service m_service;
