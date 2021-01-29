@@ -179,18 +179,42 @@ RootItem* GreaderNetwork::categoriesFeedsLabelsTree(bool obtain_icons, const QNe
     return nullptr;
   }
 
-  auto root = decodeTagsSubscriptions(output_labels, output_feeds, obtain_icons);
-
-  return root;
+  return decodeTagsSubscriptions(output_labels, output_feeds, obtain_icons, proxy);
 }
 
-RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, const QString& feeds, bool obtain_icons) {
+RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, const QString& feeds,
+                                                  bool obtain_icons, const QNetworkProxy& proxy) {
   auto* parent = new RootItem();
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QJsonArray json = QJsonDocument::fromJson(categories.toUtf8()).object()["tags"].toArray();
   QMap<QString, RootItem*> cats;
   QList<RootItem*> lbls;
+  QJsonArray json;
 
+  if (m_service == GreaderServiceRoot::Service::Bazqux) {
+    // We need to process subscription list first and extract categories.
+    json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
+
+    for (const QJsonValue& feed : json) {
+      auto subscription = feed.toObject();
+
+      for (const QJsonValue& cat : subscription["categories"].toArray()) {
+        auto cat_obj = cat.toObject();
+        auto cat_id = simplifyStreamId(cat_obj["id"].toString());
+
+        if (!cats.contains(cat_id)) {
+          auto* category = new Category();
+
+          category->setTitle(cat_id.mid(cat_id.lastIndexOf(QL1C('/')) + 1));
+          category->setCustomId(cat_id);
+
+          cats.insert(category->customId(), category);
+          parent->appendChild(category);
+        }
+      }
+    }
+  }
+
+  json = QJsonDocument::fromJson(categories.toUtf8()).object()["tags"].toArray();
   cats.insert(QString(), parent);
 
   for (const QJsonValue& obj : json) {
@@ -218,6 +242,19 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
       new_lbl->setCustomId(label_id);
       lbls.append(new_lbl);
     }
+    else if (m_service == GreaderServiceRoot::Service::Bazqux &&
+             label_id.contains(QSL("/label/"))) {
+      label_id = simplifyStreamId(label_id);
+
+      if (!cats.contains(label_id)) {
+        // This stream is not a category, it is label, bitches!
+        QString plain_name = QRegularExpression(".+\\/([^\\/]+)").match(label_id).captured(1);
+        auto* new_lbl = new Label(plain_name, TextFactory::generateColorFromText(label_id));
+
+        new_lbl->setCustomId(label_id);
+        lbls.append(new_lbl);
+      }
+    }
   }
 
   json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
@@ -230,11 +267,15 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     QString parent_label;
     QJsonArray assigned_categories = subscription["categories"].toArray();
 
+    if (id.startsWith(TOR_SPONSORED_STREAM_ID)) {
+      continue;
+    }
+
     for (const QJsonValue& cat : assigned_categories) {
       QString potential_id = cat.toObject()["id"].toString();
 
       if (potential_id.contains(QSL("/label/"))) {
-        parent_label = potential_id;
+        parent_label = m_service == GreaderServiceRoot::Service::Bazqux ? simplifyStreamId(potential_id) : potential_id;
         break;
       }
     }
@@ -248,7 +289,9 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     feed->setCustomId(id);
 
     if (obtain_icons) {
-      QString icon_url = subscription["iconUrl"].toString();
+      QString icon_url = subscription.contains(QSL("iconUrl"))
+                         ? subscription["iconUrl"].toString()
+                         : subscription["htmlUrl"].toString();
 
       if (!icon_url.isEmpty()) {
         QByteArray icon_data;
@@ -257,15 +300,13 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
           icon_url = QUrl(baseUrl()).scheme() + QSL(":") + icon_url;
         }
 
-        if (NetworkFactory::performNetworkOperation(icon_url, timeout,
-                                                    {}, icon_data,
-                                                    QNetworkAccessManager::Operation::GetOperation).first ==
-            QNetworkReply::NetworkError::NoError) {
-          // Icon downloaded, set it up.
-          QPixmap icon_pixmap;
+        QIcon icon;
 
-          icon_pixmap.loadFromData(icon_data);
-          feed->setIcon(QIcon(icon_pixmap));
+        if (NetworkFactory::downloadIcon({ icon_url },
+                                         timeout,
+                                         icon,
+                                         proxy) == QNetworkReply::NetworkError::NoError) {
+          feed->setIcon(icon);
         }
       }
     }
@@ -378,7 +419,7 @@ QString GreaderNetwork::serviceToString(GreaderServiceRoot::Service service) {
       return QSL("Bazqux");
 
     case GreaderServiceRoot::Service::TheOldReader:
-      return QSL("TheOldReader");
+      return QSL("The Old Reader");
 
     default:
       return tr("Unknown service");
@@ -406,6 +447,10 @@ bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::Netw
   }
 
   return true;
+}
+
+QString GreaderNetwork::simplifyStreamId(const QString& stream_id) const {
+  return QString(stream_id).replace(QRegularExpression("\\/\\d+\\/"), QSL("/-/"));
 }
 
 QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,

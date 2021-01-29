@@ -142,6 +142,20 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
 void GreaderServiceRoot::updateTitle() {
   setTitle(QString("%1 (%2)").arg(m_network->username(),
                                   m_network->serviceToString(m_network->service())));
+
+  switch (m_network->service()) {
+    case Service::TheOldReader:
+      setIcon(qApp->icons()->miscIcon(QSL("theoldreader")));
+      break;
+
+    case Service::FreshRss:
+      setIcon(qApp->icons()->miscIcon(QSL("freshrss")));
+      break;
+
+    default:
+      setIcon(GreaderEntryPoint().icon());
+      break;
+  }
 }
 
 void GreaderServiceRoot::saveAccountDataToDatabase(bool creating_new) {

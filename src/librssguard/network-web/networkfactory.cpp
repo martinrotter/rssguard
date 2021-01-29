@@ -137,8 +137,9 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
   }
 }
 
-QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& urls, int timeout, QIcon& output, const QNetworkProxy& custom_proxy) {
-  QNetworkReply::NetworkError network_result = QNetworkReply::UnknownNetworkError;
+QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& urls, int timeout,
+                                                         QIcon& output, const QNetworkProxy& custom_proxy) {
+  QNetworkReply::NetworkError network_result = QNetworkReply::NetworkError::UnknownNetworkError;
 
   for (const QString& url : urls) {
     QByteArray icon_data;

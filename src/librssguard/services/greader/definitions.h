@@ -23,6 +23,9 @@
 #define GREADER_API_EDIT_TAG_BATCH      200
 #define GREADER_API_ANY_LABEL           "user/-/label"
 
+// The Old Reader.
+#define TOR_SPONSORED_STREAM_ID   "tor/sponsored"
+
 // FreshRSS.
 #define FRESHRSS_BASE_URL_PATH    "api/greader.php/"
 

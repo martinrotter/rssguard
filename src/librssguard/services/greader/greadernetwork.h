@@ -70,8 +70,9 @@ class GreaderNetwork : public QObject {
     // Make sure we are logged in and if we are not, return error.
     bool ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output = nullptr);
 
+    QString simplifyStreamId(const QString& stream_id) const;
     QList<Message> decodeStreamContents(ServiceRoot* root, const QString& stream_json_data, const QString& stream_id);
-    RootItem* decodeTagsSubscriptions(const QString& categories, const QString& feeds, bool obtain_icons);
+    RootItem* decodeTagsSubscriptions(const QString& categories, const QString& feeds, bool obtain_icons, const QNetworkProxy& proxy);
     QString sanitizedBaseUrl() const;
     QString generateFullUrl(Operations operation) const;
 
