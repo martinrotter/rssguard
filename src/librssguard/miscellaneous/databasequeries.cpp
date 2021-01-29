@@ -1485,8 +1485,8 @@ bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
   query_feed.setForwardOnly(true);
   query_category.prepare("INSERT INTO Categories (parent_id, title, account_id, custom_id) "
                          "VALUES (:parent_id, :title, :account_id, :custom_id);");
-  query_feed.prepare("INSERT INTO Feeds (title, icon, category, protected, update_type, update_interval, account_id, custom_id) "
-                     "VALUES (:title, :icon, :category, :protected, :update_type, :update_interval, :account_id, :custom_id);");
+  query_feed.prepare("INSERT INTO Feeds (title, icon, url, category, protected, update_type, update_interval, account_id, custom_id) "
+                     "VALUES (:title, :icon, :url, :category, :protected, :update_type, :update_interval, :account_id, :custom_id);");
 
   // Iterate all children.
   for (RootItem* child : tree_root->getSubTree()) {
@@ -1508,9 +1508,10 @@ bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
 
       query_feed.bindValue(QSL(":title"), feed->title());
       query_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
+      query_feed.bindValue(QSL(":url"), feed->url());
       query_feed.bindValue(QSL(":category"), feed->parent()->id());
       query_feed.bindValue(QSL(":protected"), 0);
-      query_feed.bindValue(QSL(":update_type"), (int) feed->autoUpdateType());
+      query_feed.bindValue(QSL(":update_type"), int(feed->autoUpdateType()));
       query_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
       query_feed.bindValue(QSL(":account_id"), account_id);
       query_feed.bindValue(QSL(":custom_id"), feed->customId());

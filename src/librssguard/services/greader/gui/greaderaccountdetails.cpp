@@ -14,14 +14,13 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) 
   for (auto serv : { GreaderServiceRoot::Service::FreshRss,
                      GreaderServiceRoot::Service::Bazqux,
                      GreaderServiceRoot::Service::TheOldReader }) {
-    m_ui.m_cmbService->addItem(GreaderNetwork::serviceToString(serv),
-                               QVariant::fromValue(serv));
+    m_ui.m_cmbService->addItem(GreaderNetwork::serviceToString(serv), QVariant::fromValue(serv));
   }
 
   m_ui.m_lblTestResult->label()->setWordWrap(true);
-  m_ui.m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your Nextcloud account"));
-  m_ui.m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your Nextcloud account"));
-  m_ui.m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your Nextcloud server, without any API path"));
+  m_ui.m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your account"));
+  m_ui.m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your account"));
+  m_ui.m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your server, without any service-specific path"));
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
@@ -77,6 +76,7 @@ void GreaderAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
   factory.setPassword(m_ui.m_txtPassword->lineEdit()->text());
   factory.setBaseUrl(m_ui.m_txtUrl->lineEdit()->text());
   factory.setService(service());
+  factory.clearCredentials();
 
   auto result = factory.clientLogin(custom_proxy);
 

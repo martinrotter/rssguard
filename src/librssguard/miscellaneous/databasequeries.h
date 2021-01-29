@@ -255,8 +255,10 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
 }
 
 template<typename T>
-Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db, const QList<MessageFilter*>& global_filters,
-                                     int account_id, bool* ok) {
+Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
+                                     const QList<MessageFilter*>& global_filters,
+                                     int account_id,
+                                     bool* ok) {
   Assignment feeds;
 
   // All categories are now loaded.

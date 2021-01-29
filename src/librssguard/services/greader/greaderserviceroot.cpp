@@ -131,16 +131,7 @@ void GreaderServiceRoot::saveAccountDataToDatabase(bool creating_new) {
 }
 
 RootItem* GreaderServiceRoot::obtainNewTreeForSyncIn() const {
-  return nullptr;
-
-  /*OwnCloudGetFeedsCategoriesResponse feed_cats_response = m_network->feedsCategories(networkProxy());
-
-     if (feed_cats_response.networkError() == QNetworkReply::NetworkError::NoError) {
-     return feed_cats_response.feedsCategories(true);
-     }
-     else {
-     return nullptr;
-     }*/
+  return m_network->categoriesFeedsLabelsTree(true, networkProxy());
 }
 
 void GreaderServiceRoot::loadFromDatabase() {

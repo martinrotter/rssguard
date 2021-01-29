@@ -145,18 +145,8 @@ QList<RootItem*> InoreaderNetworkFactory::getLabels() {
 
     if (lbl_obj["type"] == QL1S("tag")) {
       QString name_id = lbl_obj["id"].toString();
-      QString id = QRegularExpression("user\\/(\\d+)\\/").match(name_id).captured(1);
       QString plain_name = QRegularExpression(".+\\/([^\\/]+)").match(name_id).captured(1);
-      quint32 color = 0;
-
-      for (const QChar chr : name_id) {
-        color += chr.unicode();
-      }
-
-      color = QRandomGenerator(color).bounded(double(0xFFFFFF)) - 1;
-
-      auto color_name = QSL("#%1").arg(color, 6, 16);
-      auto* new_lbl = new Label(plain_name, QColor(color_name));
+      auto* new_lbl = new Label(plain_name, TextFactory::generateColorFromText(name_id));
 
       new_lbl->setCustomId(name_id);
       lbls.append(new_lbl);

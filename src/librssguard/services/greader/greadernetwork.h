@@ -14,18 +14,24 @@ class GreaderNetwork : public QObject {
 
   public:
     enum class Operations {
-      ClientLogin
+      ClientLogin,
+      TagList,
+      SubscriptionList,
+      StreamContents
     };
 
     explicit GreaderNetwork(QObject* parent = nullptr);
 
-    // Network operations.
-    QList<Message> messages(ServiceRoot* root, const QString& stream_id, Feed::Status& error);
+    // Stream contents for a feed/label/etc.
+    QList<Message> streamContents(ServiceRoot* root, const QString& stream_id, Feed::Status& error);
+
+    // Downloads and structures full tree for sync-in.
+    RootItem* categoriesFeedsLabelsTree(bool obtain_icons, const QNetworkProxy& proxy);
 
     // Performs client login, if successful, then saves SID, LSID and Auth.
     QNetworkReply::NetworkError clientLogin(const QNetworkProxy& proxy);
 
-    // Metadata.
+    // Getters/setters.
     GreaderServiceRoot::Service service() const;
     void setService(const GreaderServiceRoot::Service& service);
 
@@ -38,12 +44,20 @@ class GreaderNetwork : public QObject {
     QString baseUrl() const;
     void setBaseUrl(const QString& base_url);
 
-    static QString serviceToString(GreaderServiceRoot::Service service);
-
     int batchSize() const;
     void setBatchSize(int batch_size);
 
+    void clearCredentials();
+
+    static QString serviceToString(GreaderServiceRoot::Service service);
+
   private:
+    QPair<QByteArray, QByteArray> authHeader() const;
+
+    // Make sure we are logged in and if we are not, return error.
+    bool ensureLogin(const QNetworkProxy& proxy);
+
+    RootItem* decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons);
     QString sanitizedBaseUrl() const;
     QString generateFullUrl(Operations operation) const;
 
@@ -53,6 +67,8 @@ class GreaderNetwork : public QObject {
     QString m_password;
     QString m_baseUrl;
     int m_batchSize;
+    QString m_authSid;
+    QString m_authAuth;
 };
 
 #endif // GREADERNETWORK_H

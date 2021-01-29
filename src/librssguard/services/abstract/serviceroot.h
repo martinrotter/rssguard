@@ -19,7 +19,7 @@ class QAction;
 class MessagesModel;
 class CacheForServiceRoot;
 
-// Car here represents ID (int, primary key) of the item.
+// First item here represents ID (int, primary key) of the item.
 typedef QList<QPair<int, RootItem*>> Assignment;
 typedef QPair<int, RootItem*> AssignmentItem;
 typedef QPair<Message, RootItem::Importance> ImportanceChange;
