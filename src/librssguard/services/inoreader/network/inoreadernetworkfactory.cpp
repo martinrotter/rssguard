@@ -222,7 +222,6 @@ QNetworkReply::NetworkError InoreaderNetworkFactory::editLabels(const QString& s
                                                m_oauth2->bearer().toLocal8Bit()));
 
   QStringList trimmed_ids;
-  QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
 
   for (const QString& id : msg_custom_ids) {
     trimmed_ids.append(QString("i=") + id);

@@ -17,10 +17,22 @@ class GreaderNetwork : public QObject {
       ClientLogin,
       TagList,
       SubscriptionList,
-      StreamContents
+      StreamContents,
+      EditTag
     };
 
     explicit GreaderNetwork(QObject* parent = nullptr);
+
+    QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status,
+                                                 const QStringList& msg_custom_ids,
+                                                 const QNetworkProxy& proxy);
+    QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance,
+                                                    const QStringList& msg_custom_ids,
+                                                    const QNetworkProxy& proxy);
+
+    // Assign/deassign tags to/from message(s).
+    QNetworkReply::NetworkError editLabels(const QString& state, bool assign,
+                                           const QStringList& msg_custom_ids, const QNetworkProxy& proxy);
 
     // Stream contents for a feed/label/etc.
     QList<Message> streamContents(ServiceRoot* root, const QString& stream_id,
@@ -56,7 +68,7 @@ class GreaderNetwork : public QObject {
     QPair<QByteArray, QByteArray> authHeader() const;
 
     // Make sure we are logged in and if we are not, return error.
-    bool ensureLogin(const QNetworkProxy& proxy);
+    bool ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output = nullptr);
 
     QList<Message> decodeStreamContents(ServiceRoot* root, const QString& stream_json_data, const QString& stream_id);
     RootItem* decodeTagsSubscriptions(const QString& categories, const QString& feeds, bool obtain_icons);

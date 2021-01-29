@@ -61,48 +61,75 @@ QString GreaderServiceRoot::code() const {
 
 void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
   auto msg_cache = takeMessageCache();
+  QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
-  /*
-     QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
+  // Save the actual data read/unread.
+  while (i.hasNext()) {
+    i.next();
+    auto key = i.key();
+    QStringList ids = i.value();
 
-     // Save the actual data read/unread.
-     while (i.hasNext()) {
-     i.next();
-     auto key = i.key();
-     QStringList ids = i.value();
-
-     if (!ids.isEmpty()) {
-      auto res = network()->markMessagesRead(key, ids, networkProxy());
-
-      if (!ignore_errors && res.first != QNetworkReply::NetworkError::NoError) {
+    if (!ids.isEmpty()) {
+      if (network()->markMessagesRead(key, ids, networkProxy()) != QNetworkReply::NetworkError::NoError &&
+          !ignore_errors) {
         addMessageStatesToCache(ids, key);
       }
-     }
-     }
+    }
+  }
 
-     QMapIterator<RootItem::Importance, QList<Message>> j(msg_cache.m_cachedStatesImportant);
+  QMapIterator<RootItem::Importance, QList<Message>> j(msg_cache.m_cachedStatesImportant);
 
-     // Save the actual data important/not important.
-     while (j.hasNext()) {
-     j.next();
-     auto key = j.key();
-     QList<Message> messages = j.value();
+  // Save the actual data important/not important.
+  while (j.hasNext()) {
+    j.next();
+    auto key = j.key();
+    QList<Message> messages = j.value();
 
-     if (!messages.isEmpty()) {
-      QStringList feed_ids, guid_hashes;
+    if (!messages.isEmpty()) {
+      QStringList custom_ids;
 
       for (const Message& msg : messages) {
-        feed_ids.append(msg.m_feedId);
-        guid_hashes.append(msg.m_customHash);
+        custom_ids.append(msg.m_customId);
       }
 
-      auto res = network()->markMessagesStarred(key, feed_ids, guid_hashes, networkProxy());
-
-      if (!ignore_errors && res.first != QNetworkReply::NetworkError::NoError) {
+      if (network()->markMessagesStarred(key, custom_ids, networkProxy()) != QNetworkReply::NetworkError::NoError &&
+          !ignore_errors) {
         addMessageStatesToCache(messages, key);
       }
-     }
-     }*/
+    }
+  }
+
+  QMapIterator<QString, QStringList> k(msg_cache.m_cachedLabelAssignments);
+
+  // Assign label for these messages.
+  while (k.hasNext()) {
+    k.next();
+    auto label_custom_id = k.key();
+    QStringList messages = k.value();
+
+    if (!messages.isEmpty()) {
+      if (network()->editLabels(label_custom_id, true, messages, networkProxy()) != QNetworkReply::NetworkError::NoError &&
+          !ignore_errors) {
+        addLabelsAssignmentsToCache(messages, label_custom_id, true);
+      }
+    }
+  }
+
+  QMapIterator<QString, QStringList> l(msg_cache.m_cachedLabelDeassignments);
+
+  // Remove label from these messages.
+  while (l.hasNext()) {
+    l.next();
+    auto label_custom_id = l.key();
+    QStringList messages = l.value();
+
+    if (!messages.isEmpty()) {
+      if (network()->editLabels(label_custom_id, false, messages, networkProxy()) != QNetworkReply::NetworkError::NoError &&
+          !ignore_errors) {
+        addLabelsAssignmentsToCache(messages, label_custom_id, false);
+      }
+    }
+  }
 }
 
 void GreaderServiceRoot::updateTitle() {

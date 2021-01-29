@@ -22,6 +22,84 @@ GreaderNetwork::GreaderNetwork(QObject* parent)
   clearCredentials();
 }
 
+QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
+                                                       bool assign,
+                                                       const QStringList& msg_custom_ids,
+                                                       const QNetworkProxy& proxy) {
+  QString full_url = generateFullUrl(Operations::EditTag);
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  QNetworkReply::NetworkError network_err;
+
+  if (!ensureLogin(proxy, &network_err)) {
+    return network_err;
+  }
+
+  QStringList trimmed_ids;
+  QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
+
+  for (const QString& id : msg_custom_ids) {
+    trimmed_ids.append(QString("i=") + id);
+  }
+
+  QStringList working_subset; working_subset.reserve(std::min(GREADER_API_EDIT_TAG_BATCH, trimmed_ids.size()));
+
+  // Now, we perform messages update in batches (max X messages per batch).
+  while (!trimmed_ids.isEmpty()) {
+    // We take X IDs.
+    for (int i = 0; i < GREADER_API_EDIT_TAG_BATCH && !trimmed_ids.isEmpty(); i++) {
+      working_subset.append(trimmed_ids.takeFirst());
+    }
+
+    QString args;
+
+    if (assign) {
+      args = QString("a=") + state + "&";
+    }
+    else {
+      args = QString("r=") + state + "&";
+    }
+
+    args += working_subset.join(QL1C('&'));
+
+    // We send this batch.
+    QByteArray output;
+    auto result_edit = NetworkFactory::performNetworkOperation(full_url,
+                                                               timeout,
+                                                               args.toUtf8(),
+                                                               output,
+                                                               QNetworkAccessManager::Operation::PostOperation,
+                                                               { authHeader(),
+                                                                 { QSL("Content-Type").toLocal8Bit(),
+                                                                   QSL("application/x-www-form-urlencoded").toLocal8Bit() } },
+                                                               false,
+                                                               {},
+                                                               {},
+                                                               proxy);
+
+    if (result_edit.first != QNetworkReply::NetworkError::NoError) {
+      return result_edit.first;
+    }
+
+    // Cleanup for next batch.
+    working_subset.clear();
+  }
+
+  return QNetworkReply::NetworkError::NoError;
+}
+
+QNetworkReply::NetworkError GreaderNetwork::markMessagesRead(RootItem::ReadStatus status,
+                                                             const QStringList& msg_custom_ids,
+                                                             const QNetworkProxy& proxy) {
+  return editLabels(GREADER_API_FULL_STATE_READ, status == RootItem::ReadStatus::Read, msg_custom_ids, proxy);
+}
+
+QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Importance importance,
+                                                                const QStringList& msg_custom_ids,
+                                                                const QNetworkProxy& proxy) {
+  return editLabels(GREADER_API_FULL_STATE_IMPORTANT, importance == RootItem::Importance::Important, msg_custom_ids, proxy);
+}
+
 QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& stream_id,
                                               Feed::Status& error, const QNetworkProxy& proxy) {
   QString full_url = generateFullUrl(Operations::StreamContents).arg(stream_id,
@@ -307,9 +385,13 @@ QPair<QByteArray, QByteArray> GreaderNetwork::authHeader() const {
   return { QSL("Authorization").toLocal8Bit(), QSL("GoogleLogin auth=%1").arg(m_authAuth).toLocal8Bit() };
 }
 
-bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy) {
+bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output) {
   if (m_authSid.isEmpty()) {
     auto login = clientLogin(proxy);
+
+    if (output != nullptr) {
+      *output = login;
+    }
 
     if (login != QNetworkReply::NetworkError::NoError) {
       qCriticalNN << LOGSEC_GREADER
@@ -440,5 +522,8 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
 
     case Operations::StreamContents:
       return sanitizedBaseUrl() + GREADER_API_STREAM_CONTENTS;
+
+    case Operations::EditTag:
+      return sanitizedBaseUrl() + GREADER_API_EDIT_TAG;
   }
 }
