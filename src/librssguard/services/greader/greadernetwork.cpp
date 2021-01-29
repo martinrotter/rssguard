@@ -199,7 +199,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
 
       for (const QJsonValue& cat : subscription["categories"].toArray()) {
         auto cat_obj = cat.toObject();
-        auto cat_id = simplifyStreamId(cat_obj["id"].toString());
+        auto cat_id = cat_obj["id"].toString();
 
         if (!cats.contains(cat_id)) {
           auto* category = new Category();
@@ -244,8 +244,6 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     }
     else if (m_service == GreaderServiceRoot::Service::Bazqux &&
              label_id.contains(QSL("/label/"))) {
-      label_id = simplifyStreamId(label_id);
-
       if (!cats.contains(label_id)) {
         // This stream is not a category, it is label, bitches!
         QString plain_name = QRegularExpression(".+\\/([^\\/]+)").match(label_id).captured(1);
@@ -275,7 +273,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
       QString potential_id = cat.toObject()["id"].toString();
 
       if (potential_id.contains(QSL("/label/"))) {
-        parent_label = m_service == GreaderServiceRoot::Service::Bazqux ? simplifyStreamId(potential_id) : potential_id;
+        parent_label = potential_id;
         break;
       }
     }
