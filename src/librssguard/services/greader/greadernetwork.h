@@ -23,7 +23,8 @@ class GreaderNetwork : public QObject {
     explicit GreaderNetwork(QObject* parent = nullptr);
 
     // Stream contents for a feed/label/etc.
-    QList<Message> streamContents(ServiceRoot* root, const QString& stream_id, Feed::Status& error);
+    QList<Message> streamContents(ServiceRoot* root, const QString& stream_id,
+                                  Feed::Status& error, const QNetworkProxy& proxy);
 
     // Downloads and structures full tree for sync-in.
     RootItem* categoriesFeedsLabelsTree(bool obtain_icons, const QNetworkProxy& proxy);
@@ -57,7 +58,8 @@ class GreaderNetwork : public QObject {
     // Make sure we are logged in and if we are not, return error.
     bool ensureLogin(const QNetworkProxy& proxy);
 
-    RootItem* decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons);
+    QList<Message> decodeStreamContents(ServiceRoot* root, const QString& stream_json_data, const QString& stream_id);
+    RootItem* decodeTagsSubscriptions(const QString& categories, const QString& feeds, bool obtain_icons);
     QString sanitizedBaseUrl() const;
     QString generateFullUrl(Operations operation) const;
 

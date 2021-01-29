@@ -2,8 +2,10 @@
 
 #include "services/greader/greadernetwork.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
+#include "network-web/webfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
@@ -20,19 +22,22 @@ GreaderNetwork::GreaderNetwork(QObject* parent)
   clearCredentials();
 }
 
-QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& stream_id, Feed::Status& error) {
-  QString full_url = generateFullUrl(Operations::StreamContents).arg(stream_id, batchSize());
+QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& stream_id,
+                                              Feed::Status& error, const QNetworkProxy& proxy) {
+  QString full_url = generateFullUrl(Operations::StreamContents).arg(stream_id,
+                                                                     QString::number(batchSize()));
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   if (!ensureLogin(proxy)) {
-    return nullptr;
+    error = Feed::Status::AuthError;
+    return {};
   }
 
-  QByteArray output_labels;
-  auto result_labels = NetworkFactory::performNetworkOperation(full_url,
+  QByteArray output_stream;
+  auto result_stream = NetworkFactory::performNetworkOperation(full_url,
                                                                timeout,
                                                                {},
-                                                               output_labels,
+                                                               output_stream,
                                                                QNetworkAccessManager::Operation::GetOperation,
                                                                { authHeader() },
                                                                false,
@@ -40,7 +45,19 @@ QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& 
                                                                {},
                                                                proxy);
 
-  return {};
+  if (result_stream.first != QNetworkReply::NetworkError::NoError) {
+    qCriticalNN << LOGSEC_GREADER
+                << "Cannot download messages for "
+                << QUOTE_NO_SPACE(stream_id)
+                << ", network error:"
+                << QUOTE_W_SPACE_DOT(result_stream.first);
+    error = Feed::Status::NetworkError;
+    return {};
+  }
+  else {
+    error = Feed::Status::Normal;
+    return decodeStreamContents(root, output_stream, stream_id);
+  }
 }
 
 RootItem* GreaderNetwork::categoriesFeedsLabelsTree(bool obtain_icons, const QNetworkProxy& proxy) {
@@ -84,12 +101,12 @@ RootItem* GreaderNetwork::categoriesFeedsLabelsTree(bool obtain_icons, const QNe
     return nullptr;
   }
 
-  auto root = decodeFeedCategoriesData(output_labels, output_feeds, obtain_icons);
+  auto root = decodeTagsSubscriptions(output_labels, output_feeds, obtain_icons);
 
   return root;
 }
 
-RootItem* GreaderNetwork::decodeFeedCategoriesData(const QString& categories, const QString& feeds, bool obtain_icons) {
+RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, const QString& feeds, bool obtain_icons) {
   auto* parent = new RootItem();
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QJsonArray json = QJsonDocument::fromJson(categories.toUtf8()).object()["tags"].toArray();
@@ -305,6 +322,80 @@ bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy) {
   return true;
 }
 
+QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
+                                                    const QString& stream_json_data,
+                                                    const QString& stream_id) {
+  QList<Message> messages;
+  QJsonArray json = QJsonDocument::fromJson(stream_json_data.toUtf8()).object()["items"].toArray();
+  auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
+
+  messages.reserve(json.count());
+
+  for (const QJsonValue& obj : json) {
+    auto message_obj = obj.toObject();
+    Message message;
+
+    message.m_title = qApp->web()->unescapeHtml(message_obj["title"].toString());
+    message.m_author = qApp->web()->unescapeHtml(message_obj["author"].toString());
+    message.m_created = QDateTime::fromSecsSinceEpoch(message_obj["published"].toInt(), Qt::UTC);
+    message.m_createdFromFeed = true;
+    message.m_customId = message_obj["id"].toString();
+
+    auto alternates = message_obj["alternate"].toArray();
+    auto enclosures = message_obj["enclosure"].toArray();
+    auto categories = message_obj["categories"].toArray();
+
+    for (const QJsonValue& alt : alternates) {
+      auto alt_obj = alt.toObject();
+      QString mime = alt_obj["type"].toString();
+      QString href = alt_obj["href"].toString();
+
+      if (mime.isEmpty() || mime == QL1S("text/html")) {
+        message.m_url = href;
+      }
+      else {
+        message.m_enclosures.append(Enclosure(href, mime));
+      }
+    }
+
+    for (const QJsonValue& enc : enclosures) {
+      auto enc_obj = enc.toObject();
+      QString mime = enc_obj["type"].toString();
+      QString href = enc_obj["href"].toString();
+
+      message.m_enclosures.append(Enclosure(href, mime));
+    }
+
+    for (const QJsonValue& cat : categories) {
+      QString category = cat.toString();
+
+      if (category.contains(GREADER_API_STATE_READ)) {
+        message.m_isRead = !category.contains(GREADER_API_STATE_READING_LIST);
+      }
+      else if (category.contains(GREADER_API_STATE_IMPORTANT)) {
+        message.m_isImportant = category.contains(GREADER_API_STATE_IMPORTANT);
+      }
+      else if (category.contains(QSL("label"))) {
+        Label* label = boolinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([category](Label* lbl) {
+          return lbl->customId() == category;
+        });
+
+        if (label != nullptr) {
+          // We found live Label object for our assigned label.
+          message.m_assignedLabels.append(label);
+        }
+      }
+    }
+
+    message.m_contents = message_obj["summary"].toObject()["content"].toString();
+    message.m_feedId = stream_id;
+
+    messages.append(message);
+  }
+
+  return messages;
+}
+
 int GreaderNetwork::batchSize() const {
   return m_batchSize;
 }
@@ -346,5 +437,8 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
 
     case Operations::SubscriptionList:
       return sanitizedBaseUrl() + GREADER_API_SUBSCRIPTION_LIST;
+
+    case Operations::StreamContents:
+      return sanitizedBaseUrl() + GREADER_API_STREAM_CONTENTS;
   }
 }

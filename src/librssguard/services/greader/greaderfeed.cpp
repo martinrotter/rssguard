@@ -17,7 +17,10 @@ GreaderServiceRoot* GreaderFeed::serviceRoot() const {
 
 QList<Message> GreaderFeed::obtainNewMessages(bool* error_during_obtaining) {
   Feed::Status error = Feed::Status::Normal;
-  QList<Message> messages = serviceRoot()->network()->messages(getParentServiceRoot(), customId(), error);
+  QList<Message> messages = serviceRoot()->network()->streamContents(getParentServiceRoot(),
+                                                                     customId(),
+                                                                     error,
+                                                                     getParentServiceRoot()->networkProxy());
 
   setStatus(error);
 

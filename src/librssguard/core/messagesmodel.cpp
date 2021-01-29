@@ -242,7 +242,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
   // This message is not in cache, return real data from live query.
   switch (role) {
     // Human readable data for viewing.
-    case Qt::DisplayRole: {
+    case Qt::ItemDataRole::DisplayRole: {
       int index_column = idx.column();
 
       if (index_column == MSG_DB_DCREATED_INDEX) {
@@ -276,10 +276,10 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
     }
 
-    case Qt::EditRole:
+    case Qt::ItemDataRole::EditRole:
       return m_cache->containsData(idx.row()) ? m_cache->data(idx) : QSqlQueryModel::data(idx, role);
 
-    case Qt::FontRole: {
+    case Qt::ItemDataRole::FontRole: {
       QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
       QVariant data_read = data(idx_read, Qt::EditRole);
       const bool is_bin = qobject_cast<RecycleBin*>(loadedItem()) != nullptr;
@@ -306,7 +306,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
     }
 
-    case Qt::ForegroundRole:
+    case Qt::ItemDataRole::ForegroundRole:
       switch (m_messageHighlighter) {
         case MessageHighlighter::HighlightImportant: {
           QModelIndex idx_important = index(idx.row(), MSG_DB_IMPORTANT_INDEX);
@@ -327,7 +327,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           return QVariant();
       }
 
-    case Qt::DecorationRole: {
+    case Qt::ItemDataRole::DecorationRole: {
       const int index_column = idx.column();
 
       if (index_column == MSG_DB_READ_INDEX) {
