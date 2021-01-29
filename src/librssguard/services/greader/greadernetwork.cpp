@@ -195,9 +195,11 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
 
   for (const QJsonValue& obj : json) {
     auto label = obj.toObject();
+    QString label_id = label["id"].toString();
 
-    if (label["type"].toString() == QL1S("folder")) {
-      QString label_id = label["id"].toString();
+    if ((label["type"].toString() == QL1S("folder")) ||
+        (m_service == GreaderServiceRoot::Service::TheOldReader &&
+         label_id.startsWith(GREADER_API_ANY_LABEL))) {
 
       // We have label (not "state").
       auto* category = new Category();
@@ -210,11 +212,10 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
       parent->appendChild(category);
     }
     else if (label["type"] == QL1S("tag")) {
-      QString name_id = label["id"].toString();
-      QString plain_name = QRegularExpression(".+\\/([^\\/]+)").match(name_id).captured(1);
-      auto* new_lbl = new Label(plain_name, TextFactory::generateColorFromText(name_id));
+      QString plain_name = QRegularExpression(".+\\/([^\\/]+)").match(label_id).captured(1);
+      auto* new_lbl = new Label(plain_name, TextFactory::generateColorFromText(label_id));
 
-      new_lbl->setCustomId(name_id);
+      new_lbl->setCustomId(label_id);
       lbls.append(new_lbl);
     }
   }
@@ -252,6 +253,10 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
       if (!icon_url.isEmpty()) {
         QByteArray icon_data;
 
+        if (icon_url.startsWith(QSL("//"))) {
+          icon_url = QSL("https:") + icon_url;
+        }
+
         if (NetworkFactory::performNetworkOperation(icon_url, timeout,
                                                     {}, icon_data,
                                                     QNetworkAccessManager::Operation::GetOperation).first ==
@@ -282,11 +287,12 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
   QString full_url = generateFullUrl(Operations::ClientLogin);
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray output;
+  QByteArray args = QSL("Email=%1&Passwd=%2").arg(username(), password()).toUtf8();
   auto network_result = NetworkFactory::performNetworkOperation(full_url,
                                                                 timeout,
-                                                                {},
+                                                                args,
                                                                 output,
-                                                                QNetworkAccessManager::Operation::GetOperation,
+                                                                QNetworkAccessManager::Operation::PostOperation,
                                                                 {},
                                                                 false,
                                                                 {},
@@ -322,10 +328,8 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
       m_authAuth = QString();
     }
 
-    if (m_authAuth.isEmpty() ||
-        (service() == GreaderServiceRoot::Service::FreshRss && m_authSid.isEmpty())) {
+    if (m_authAuth.isEmpty()) {
       clearCredentials();
-
       return QNetworkReply::NetworkError::InternalServerError;
     }
   }
@@ -512,7 +516,7 @@ QString GreaderNetwork::sanitizedBaseUrl() const {
 QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) const {
   switch (operation) {
     case Operations::ClientLogin:
-      return sanitizedBaseUrl() + QSL(GREADER_API_CLIENT_LOGIN).arg(username(), password());
+      return sanitizedBaseUrl() + GREADER_API_CLIENT_LOGIN;
 
     case Operations::TagList:
       return sanitizedBaseUrl() + GREADER_API_TAG_LIST;
@@ -525,5 +529,8 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
 
     case Operations::EditTag:
       return sanitizedBaseUrl() + GREADER_API_EDIT_TAG;
+
+    default:
+      return sanitizedBaseUrl();
   }
 }
