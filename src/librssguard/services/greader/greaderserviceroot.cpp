@@ -42,7 +42,14 @@ bool GreaderServiceRoot::editViaGui() {
 }
 
 bool GreaderServiceRoot::deleteViaGui() {
-  return false;
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  if (DatabaseQueries::deleteGreaderAccount(database, accountId())) {
+    return ServiceRoot::deleteViaGui();
+  }
+  else {
+    return false;
+  }
 }
 
 void GreaderServiceRoot::start(bool freshly_activated) {

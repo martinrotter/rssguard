@@ -2447,6 +2447,15 @@ QList<ServiceRoot*> DatabaseQueries::getStandardAccounts(const QSqlDatabase& db,
   return roots;
 }
 
+bool DatabaseQueries::deleteGreaderAccount(const QSqlDatabase& db, int account_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM GoogleReaderApiAccounts WHERE id = :id;"));
+  q.bindValue(QSL(":id"), account_id);
+  return q.exec();
+}
+
 bool DatabaseQueries::deleteTtRssAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 

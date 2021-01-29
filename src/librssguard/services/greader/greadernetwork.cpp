@@ -254,7 +254,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
         QByteArray icon_data;
 
         if (icon_url.startsWith(QSL("//"))) {
-          icon_url = QSL("https:") + icon_url;
+          icon_url = QUrl(baseUrl()).scheme() + QSL(":") + icon_url;
         }
 
         if (NetworkFactory::performNetworkOperation(icon_url, timeout,

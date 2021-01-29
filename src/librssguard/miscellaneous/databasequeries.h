@@ -149,6 +149,7 @@ class DatabaseQueries {
     static void fillFeedData(T* feed, const QSqlRecord& sql_record);
 
     // Greader account.
+    static bool deleteGreaderAccount(const QSqlDatabase& db, int account_id);
     static QList<ServiceRoot*> getGreaderAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool createGreaderAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
                                      const QString& password, GreaderServiceRoot::Service service,
