@@ -139,7 +139,7 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
   }
 }
 
-void GreaderServiceRoot::updateTitle() {
+void GreaderServiceRoot::updateTitleIcon() {
   setTitle(QString("%1 (%2)").arg(m_network->username(),
                                   m_network->serviceToString(m_network->service())));
 
@@ -150,6 +150,10 @@ void GreaderServiceRoot::updateTitle() {
 
     case Service::FreshRss:
       setIcon(qApp->icons()->miscIcon(QSL("freshrss")));
+      break;
+
+    case Service::Bazqux:
+      setIcon(qApp->icons()->miscIcon(QSL("bazqux")));
       break;
 
     default:
@@ -165,7 +169,7 @@ void GreaderServiceRoot::saveAccountDataToDatabase(bool creating_new) {
     if (DatabaseQueries::overwriteGreaderAccount(database, m_network->username(),
                                                  m_network->password(), m_network->baseUrl(),
                                                  m_network->batchSize(), accountId())) {
-      updateTitle();
+      updateTitleIcon();
       itemChanged(QList<RootItem*>() << this);
     }
   }
@@ -173,7 +177,7 @@ void GreaderServiceRoot::saveAccountDataToDatabase(bool creating_new) {
     if (DatabaseQueries::createGreaderAccount(database, accountId(), m_network->username(),
                                               m_network->password(), m_network->service(),
                                               m_network->baseUrl(), m_network->batchSize())) {
-      updateTitle();
+      updateTitleIcon();
     }
   }
 }

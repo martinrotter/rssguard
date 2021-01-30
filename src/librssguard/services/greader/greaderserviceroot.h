@@ -35,7 +35,7 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void setNetwork(GreaderNetwork* network);
     GreaderNetwork* network() const;
 
-    void updateTitle();
+    void updateTitleIcon();
     void saveAccountDataToDatabase(bool creating_new);
 
   protected:

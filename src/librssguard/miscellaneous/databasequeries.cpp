@@ -1694,7 +1694,7 @@ QList<ServiceRoot*> DatabaseQueries::getGreaderAccounts(const QSqlDatabase& db, 
       root->network()->setPassword(TextFactory::decrypt(query.value(3).toString()));
       root->network()->setBaseUrl(query.value(4).toString());
       root->network()->setBatchSize(query.value(5).toInt());
-      root->updateTitle();
+      root->updateTitleIcon();
 
       fillBaseAccountData(db, root);
 

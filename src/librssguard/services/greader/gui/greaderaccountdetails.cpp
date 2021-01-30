@@ -11,8 +11,8 @@
 GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
 
-  for (auto serv : { GreaderServiceRoot::Service::FreshRss,
-                     GreaderServiceRoot::Service::Bazqux,
+  for (auto serv : { GreaderServiceRoot::Service::Bazqux,
+                     GreaderServiceRoot::Service::FreshRss,
                      GreaderServiceRoot::Service::TheOldReader }) {
     m_ui.m_cmbService->addItem(GreaderNetwork::serviceToString(serv), QVariant::fromValue(serv));
   }
@@ -24,9 +24,10 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
-  m_ui.m_lblLimitMessages->setText(
-    tr("Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains "
-       "bigger number of messages than specified limit, then some messages might not be downloaded during feed update."));
+  m_ui.m_lblLimitMessages->setText(tr("Limiting number of downloaded messages per feed makes updating of "
+                                      "feeds faster, but if your feed contains bigger number of messages "
+                                      "than specified limit, then some older messages might not be "
+                                      "downloaded during feed update."));
 
   connect(m_ui.m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, [=](int value) {
     if (value <= 0) {

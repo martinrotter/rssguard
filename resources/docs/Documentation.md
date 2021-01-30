@@ -11,6 +11,7 @@
     * [Supported feed formats and online feed services](Feed-formats.md)
     * [Message filtering](Message-filters.md)
     * [Database backends](#database-backends)
+    * [Google Reader API](#google-reader-api)
     * [Gmail](#gmail)
     * [Labels](Labels.md)
     * [Downloading files](#downloading-files)
@@ -83,10 +84,14 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * Nextcloud News (RSS Guard 3.1.0+),
     * Inoreader (RSS Guard 3.5.0+),
     * Gmail with e-mail sending (RSS Guard 3.7.1+).
+    * FreshRSS (RSS Guard 3.9.0+),
+    * The Old Reader (RSS Guard 3.9.0+),
+    * Bazqux (RSS Guard 3.9.0+).
 * core:
     * support for all feed formats (RSS/RDF/ATOM/JSON),
     * full support of podcasts (RSS/ATOM/JSON),
     * import/export of feeds to/from OPML 2.0,
+    * universal plugin for online services with [Google Reader API](#google-reader-api),
     * possibility of using custom 3rd-party feed synchronization services,
     * feed metadata fetching including icons,
     * simple internal Chromium-based web viewer (or alternative version with simpler and much more lightweight internal viewer),
@@ -136,6 +141,19 @@ Check `About RSS Guard -> Resources` dialog to find more info on significant pat
 MariaDB (MySQL) backend is there for users, who want to store their data in a centralized way. You can have single server in your network and use multiple RSS Guard instances to access the data. MySQL will also work much better if you prefer to have zillions of feeds and messages stored.
 
 For database-related configuration see `Settings -> Data storage` dialog.
+
+## Google Reader API
+Starting with RSS Guard 3.9.0, there is a new plugin which offers synchronization with services using Google Reader API. Plugin was so far tested with FreshRSS, The Old Reader and Bazqux. All Google Reader API enabled services should work.
+
+Note that Inoreader has its own separate plugin, because it uses OAuth as authentication method, therefore it is cleaner to have separate plugin.
+
+Google Reader API integration in RSS Guard offers a way to set custom service endpoint even if you select service which is not self-hosted such as Bazqux, providing all users with greater flexibility and freedom.
+
+<img src="images/greader-api-settings.png">
+
+Note that even when all Google Reader API enabled services should follow the API, there are still some minor differences, primarily because Google Reader API has no strict documentation to follow and some services do not offer some features.
+
+For example The Old Reader does not seem to offer tags/labels functionality, therefore tags/labels in RSS Guard are not synchronized, but you can still use offline labels.
 
 ## Gmail
 RSS Guard includes Gmail plugin, which allows users to receive and send (!!!) e-mail messages. Plugin uses [Gmail API](https://developers.google.com/gmail/api) and offers some e-mail client-like features:
