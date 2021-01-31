@@ -62,9 +62,6 @@
            <layout class="QHBoxLayout" name="horizontalLayout_10">
             <item>
              <widget class="QLineEdit" name="m_txtExternalBrowserExecutable">
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
               <property name="placeholderText">
                <string>Executable file of web browser</string>
               </property>
