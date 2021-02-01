@@ -64,6 +64,10 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
 }
 
 bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
+  qDebugNN << LOGSEC_NETWORK
+           << "We are trying to open URL:"
+           << QUOTE_W_SPACE_DOT(url);
+
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool()) {
     const QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
     const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
