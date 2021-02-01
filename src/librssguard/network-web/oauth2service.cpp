@@ -267,7 +267,7 @@ bool OAuth2Service::login() {
     qCriticalNN << LOGSEC_OAUTH
                 << "Cannot log-in because OAuth redirection handler is not listening.";
 
-    emit tokensRetrieveError(QString(), tr("Failed to starting OAuth "
+    emit tokensRetrieveError(QString(), tr("Failed to start OAuth "
                                            "redirection listener. Maybe your "
                                            "rights are not high enough."));
 

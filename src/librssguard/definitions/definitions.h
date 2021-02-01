@@ -57,7 +57,7 @@
 #define ELLIPSIS_LENGTH                       3
 #define MIN_CATEGORY_NAME_LENGTH              1
 #define DEFAULT_AUTO_UPDATE_INTERVAL          15
-#define OAUTH_REDIRECT_URI_PORT               13377
+#define OAUTH_REDIRECT_URI_PORT               14488
 #define OAUTH_REDIRECT_URI                    "http://localhost"
 #define AUTO_UPDATE_INTERVAL                  60000
 #define STARTUP_UPDATE_DELAY                  15.0 // In seconds.
