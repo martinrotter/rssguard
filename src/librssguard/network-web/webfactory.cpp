@@ -15,7 +15,6 @@
 #include "network-web/networkurlinterceptor.h"
 #include "network-web/urlinterceptor.h"
 
-#include <QUrl>
 #include <QWebEngineDownloadItem>
 #include <QWebEngineProfile>
 #include <QWebEngineScript>
@@ -65,18 +64,10 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
 }
 
 bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
-  QString new_url = QUrl::toPercentEncoding(url);
-
-  qDebugNN << LOGSEC_NETWORK
-           << "We are trying to open URL:"
-           << QUOTE_W_SPACE(url)
-           << "in external browser. Encoded URL is"
-           << QUOTE_W_SPACE_DOT(new_url);
-
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool()) {
     const QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
     const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
-    auto nice_args = arguments.arg(new_url);
+    auto nice_args = arguments.arg(url);
 
     qDebugNN << LOGSEC_NETWORK << "Arguments for external browser:" << QUOTE_W_SPACE_DOT(nice_args);
 
