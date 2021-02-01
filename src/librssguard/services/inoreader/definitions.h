@@ -17,6 +17,7 @@
 #define INOREADER_DEFAULT_BATCH_SIZE    100
 #define INOREADER_MAX_BATCH_SIZE        999
 #define INOREADER_MIN_BATCH_SIZE        20
+#define INOREADER_API_EDIT_TAG_BATCH    50
 
 #define INOREADER_STATE_READING_LIST    "state/com.google/reading-list"
 #define INOREADER_STATE_READ            "state/com.google/read"

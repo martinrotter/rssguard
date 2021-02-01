@@ -227,13 +227,13 @@ QNetworkReply::NetworkError InoreaderNetworkFactory::editLabels(const QString& s
     trimmed_ids.append(QString("i=") + id);
   }
 
-  QStringList working_subset; working_subset.reserve(std::min(50, trimmed_ids.size()));
+  QStringList working_subset; working_subset.reserve(std::min(INOREADER_API_EDIT_TAG_BATCH, trimmed_ids.size()));
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-  // Now, we perform messages update in batches (max 200 messages per batch).
+  // Now, we perform messages update in batches (max XX messages per batch).
   while (!trimmed_ids.isEmpty()) {
-    // We take 50 IDs.
-    for (int i = 0; i < 50 && !trimmed_ids.isEmpty(); i++) {
+    // We take XX IDs.
+    for (int i = 0; i < INOREADER_API_EDIT_TAG_BATCH && !trimmed_ids.isEmpty(); i++) {
       working_subset.append(trimmed_ids.takeFirst());
     }
 

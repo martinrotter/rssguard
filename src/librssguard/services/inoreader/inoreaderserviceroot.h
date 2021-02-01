@@ -17,7 +17,6 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     void saveAccountDataToDatabase(bool creating_new);
 
-    void setNetwork(InoreaderNetworkFactory* network);
     InoreaderNetworkFactory* network() const;
 
     virtual LabelOperation supportedLabelOperations() const;
@@ -44,10 +43,6 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
   private:
     InoreaderNetworkFactory* m_network;
 };
-
-inline void InoreaderServiceRoot::setNetwork(InoreaderNetworkFactory* network) {
-  m_network = network;
-}
 
 inline InoreaderNetworkFactory* InoreaderServiceRoot::network() const {
   return m_network;
