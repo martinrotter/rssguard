@@ -18,6 +18,17 @@ quint64 TextFactory::s_encryptionKey = 0x0;
 
 TextFactory::TextFactory() = default;
 
+QString TextFactory::extractUsernameFromEmail(const QString& email_address) {
+  const int zav = email_address.indexOf('@');
+
+  if (zav >= 0) {
+    return email_address.mid(0, zav);
+  }
+  else {
+    return email_address;
+  }
+}
+
 QColor TextFactory::generateColorFromText(const QString& text) {
   quint32 color = 0;
 

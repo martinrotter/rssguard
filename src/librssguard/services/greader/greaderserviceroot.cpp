@@ -20,8 +20,6 @@ GreaderServiceRoot::GreaderServiceRoot(RootItem* parent)
   setIcon(GreaderEntryPoint().icon());
 }
 
-GreaderServiceRoot::~GreaderServiceRoot() {}
-
 bool GreaderServiceRoot::isSyncable() const {
   return true;
 }
@@ -106,41 +104,44 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
     }
   }
 
-  QMapIterator<QString, QStringList> k(msg_cache.m_cachedLabelAssignments);
+  if (m_network->service() != Service::TheOldReader) {
+    // The Old Reader does not support labels.
+    QMapIterator<QString, QStringList> k(msg_cache.m_cachedLabelAssignments);
 
-  // Assign label for these messages.
-  while (k.hasNext()) {
-    k.next();
-    auto label_custom_id = k.key();
-    QStringList messages = k.value();
+    // Assign label for these messages.
+    while (k.hasNext()) {
+      k.next();
+      auto label_custom_id = k.key();
+      QStringList messages = k.value();
 
-    if (!messages.isEmpty()) {
-      if (network()->editLabels(label_custom_id, true, messages, networkProxy()) != QNetworkReply::NetworkError::NoError &&
-          !ignore_errors) {
-        addLabelsAssignmentsToCache(messages, label_custom_id, true);
+      if (!messages.isEmpty()) {
+        if (network()->editLabels(label_custom_id, true, messages, networkProxy()) != QNetworkReply::NetworkError::NoError &&
+            !ignore_errors) {
+          addLabelsAssignmentsToCache(messages, label_custom_id, true);
+        }
       }
     }
-  }
 
-  QMapIterator<QString, QStringList> l(msg_cache.m_cachedLabelDeassignments);
+    QMapIterator<QString, QStringList> l(msg_cache.m_cachedLabelDeassignments);
 
-  // Remove label from these messages.
-  while (l.hasNext()) {
-    l.next();
-    auto label_custom_id = l.key();
-    QStringList messages = l.value();
+    // Remove label from these messages.
+    while (l.hasNext()) {
+      l.next();
+      auto label_custom_id = l.key();
+      QStringList messages = l.value();
 
-    if (!messages.isEmpty()) {
-      if (network()->editLabels(label_custom_id, false, messages, networkProxy()) != QNetworkReply::NetworkError::NoError &&
-          !ignore_errors) {
-        addLabelsAssignmentsToCache(messages, label_custom_id, false);
+      if (!messages.isEmpty()) {
+        if (network()->editLabels(label_custom_id, false, messages, networkProxy()) != QNetworkReply::NetworkError::NoError &&
+            !ignore_errors) {
+          addLabelsAssignmentsToCache(messages, label_custom_id, false);
+        }
       }
     }
   }
 }
 
 void GreaderServiceRoot::updateTitleIcon() {
-  setTitle(QString("%1 (%2)").arg(m_network->username(),
+  setTitle(QString("%1 (%2)").arg(TextFactory::extractUsernameFromEmail(m_network->username()),
                                   m_network->serviceToString(m_network->service())));
 
   switch (m_network->service()) {

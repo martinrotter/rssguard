@@ -15,6 +15,7 @@ class TextFactory {
     TextFactory();
 
   public:
+    static QString extractUsernameFromEmail(const QString& email_address);
     static QColor generateColorFromText(const QString& text);
     static int stringHeight(const QString& string, const QFontMetrics& metrics);
     static int stringWidth(const QString& string, const QFontMetrics& metrics);

@@ -13,7 +13,6 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
   public:
     explicit GmailServiceRoot(RootItem* parent = nullptr);
-    virtual ~GmailServiceRoot();
 
     void saveAccountDataToDatabase(bool creating_new);
 

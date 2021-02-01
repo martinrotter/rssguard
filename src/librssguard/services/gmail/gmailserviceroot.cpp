@@ -24,10 +24,8 @@ GmailServiceRoot::GmailServiceRoot(RootItem* parent)
   setIcon(GmailEntryPoint().icon());
 }
 
-GmailServiceRoot::~GmailServiceRoot() = default;
-
 void GmailServiceRoot::updateTitle() {
-  setTitle(m_network->username() + QSL(" (Gmail)"));
+  setTitle(TextFactory::extractUsernameFromEmail(m_network->username()) + QSL(" (Gmail)"));
 }
 
 void GmailServiceRoot::replyToEmail() {

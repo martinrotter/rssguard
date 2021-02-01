@@ -6,8 +6,6 @@
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 
-#include <QMap>
-
 class GreaderNetwork;
 
 class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
@@ -21,7 +19,6 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     };
 
     explicit GreaderServiceRoot(RootItem* parent = nullptr);
-    virtual ~GreaderServiceRoot();
 
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
@@ -32,7 +29,6 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString code() const;
     virtual void saveAllCachedData(bool ignore_errors);
 
-    void setNetwork(GreaderNetwork* network);
     GreaderNetwork* network() const;
 
     void updateTitleIcon();
@@ -49,10 +45,6 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 };
 
 Q_DECLARE_METATYPE(GreaderServiceRoot::Service)
-
-inline void GreaderServiceRoot::setNetwork(GreaderNetwork* network) {
-  m_network = network;
-}
 
 inline GreaderNetwork* GreaderServiceRoot::network() const {
   return m_network;

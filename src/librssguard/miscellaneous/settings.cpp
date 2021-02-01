@@ -316,7 +316,7 @@ DKEY Browser::CustomExternalBrowserExecutable = "external_browser_executable";
 DVALUE(QString) Browser::CustomExternalBrowserExecutableDef = QString();
 
 DKEY Browser::CustomExternalBrowserArguments = "external_browser_arguments";
-DVALUE(char*) Browser::CustomExternalBrowserArgumentsDef = "%1";
+DVALUE(char*) Browser::CustomExternalBrowserArgumentsDef = "\"%1\"";
 
 DKEY Browser::CustomExternalEmailEnabled = "custom_external_email";
 DVALUE(bool) Browser::CustomExternalEmailEnabledDef = false;
