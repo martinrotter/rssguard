@@ -35,6 +35,7 @@ class StandardFeedDetails : public QWidget {
     void onTitleChanged(const QString& new_title);
     void onDescriptionChanged(const QString& new_description);
     void onUrlChanged(const QString& new_url);
+    void onPostProcessScriptChanged(const QString& new_pp);
     void onLoadIconFromFile();
     void onUseDefaultIcon();
 

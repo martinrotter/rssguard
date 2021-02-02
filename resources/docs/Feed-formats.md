@@ -61,4 +61,6 @@ Also, working directory of process executing the script is set to RSS Guard's us
 
 After your source feed data are downloaded either via URL or custom script, you can optionally post-process the data with one more custom script, which will take raw source data as input and must produce processed feed data to **standard output** while printing all error messages to **error output**.
 
-Formatting of post-process script execution line is the same as above.
+Typical post-processing filter might do things like advanced CSS formatting of feed file entries, removing some ads etc.
+
+Format of post-process script execution line is the same as above.

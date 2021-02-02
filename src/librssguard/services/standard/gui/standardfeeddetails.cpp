@@ -85,6 +85,7 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
     onUrlChanged(m_ui.m_txtSource->lineEdit()->text());
   });
   connect(m_ui.m_txtSource->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onUrlChanged);
+  connect(m_ui.m_txtPostProcessScript->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onPostProcessScriptChanged);
   connect(m_actionLoadIconFromFile, &QAction::triggered, this, &StandardFeedDetails::onLoadIconFromFile);
   connect(m_actionUseDefaultIcon, &QAction::triggered, this, &StandardFeedDetails::onUseDefaultIcon);
 
@@ -100,9 +101,10 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblScriptInfo, false);
 
-  onTitleChanged(QString());
-  onDescriptionChanged(QString());
-  onUrlChanged(QString());
+  onTitleChanged({});
+  onDescriptionChanged({});
+  onUrlChanged({});
+  onPostProcessScriptChanged({});
 }
 
 void StandardFeedDetails::guessIconOnly(const QString& url, const QString& username,
@@ -219,7 +221,7 @@ void StandardFeedDetails::onUrlChanged(const QString& new_url) {
       m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
     }
     else if (!new_url.simplified().isEmpty()) {
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Warning,
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error,
                                   tr("The source needs to include \"#\" separator."));
     }
     else {
@@ -228,6 +230,19 @@ void StandardFeedDetails::onUrlChanged(const QString& new_url) {
   }
   else {
     m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
+  }
+}
+
+void StandardFeedDetails::onPostProcessScriptChanged(const QString& new_pp) {
+  if (QRegularExpression(SCRIPT_SOURCE_TYPE_REGEXP).match(new_pp).hasMatch()) {
+    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
+  }
+  else if (!new_pp.simplified().isEmpty()) {
+    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Error,
+                                           tr("The source needs to include \"#\" separator."));
+  }
+  else {
+    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is empty."));
   }
 }
 

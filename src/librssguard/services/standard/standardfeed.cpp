@@ -4,6 +4,7 @@
 
 #include "core/feedsmodel.h"
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "miscellaneous/databasequeries.h"
@@ -563,15 +564,14 @@ QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, 
   process.setWorkingDirectory(qApp->userDataFolder());
   process.setProgram(prepared_query.first);
 
-//#if defined(Q_OS_WIN) || defined(Q_CLANG_QDOC)
-//  process.setNativeArguments(prepared_query.second);
-//#else
+#if defined(Q_OS_WIN)
+  process.setNativeArguments(prepared_query.second);
+#else
   process.setArguments({ prepared_query.second });
-
-//#endif
+#endif
 
   if (!process.open() || process.error() == QProcess::ProcessError::FailedToStart) {
-    return "";
+    throw ApplicationException(QSL("process failed to start"));
   }
 
   if (process.waitForFinished(run_timeout)) {
@@ -581,7 +581,15 @@ QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, 
   }
   else {
     process.kill();
-    return "";
+
+    auto raw_error = process.readAllStandardError();
+
+    if (raw_error.simplified().isEmpty()) {
+      throw ApplicationException(QSL("process failed to finish properly"));
+    }
+    else {
+      throw ApplicationException(QString(raw_error));
+    }
   }
 }
 

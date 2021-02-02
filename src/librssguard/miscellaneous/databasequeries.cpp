@@ -2107,7 +2107,7 @@ int DatabaseQueries::addStandardFeed(const QSqlDatabase& db, int parent_id, int 
   q.bindValue(QSL(":encoding"), encoding);
   q.bindValue(QSL(":url"), url);
   q.bindValue(QSL(":source_type"), int(source_type));
-  q.bindValue(QSL(":post_process"), post_process_script);
+  q.bindValue(QSL(":post_process"), post_process_script.simplified());
   q.bindValue(QSL(":protected"), is_protected ? 1 : 0);
   q.bindValue(QSL(":username"), username);
   q.bindValue(QSL(":account_id"), account_id);
@@ -2171,7 +2171,7 @@ bool DatabaseQueries::editStandardFeed(const QSqlDatabase& db, int parent_id, in
   q.bindValue(QSL(":encoding"), encoding);
   q.bindValue(QSL(":url"), url);
   q.bindValue(QSL(":source_type"), int(source_type));
-  q.bindValue(QSL(":post_process"), post_process_script);
+  q.bindValue(QSL(":post_process"), post_process_script.simplified());
   q.bindValue(QSL(":protected"), is_protected ? 1 : 0);
   q.bindValue(QSL(":username"), username);
 
