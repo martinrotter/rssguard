@@ -80,6 +80,7 @@ class StandardFeed : public Feed {
 
     static QPair<QString, QString> prepareExecutionLine(const QString& execution_line);
     static QString generateFeedFileWithScript(const QString& execution_line, int run_timeout);
+    static QString postProcessFeedFileWithScript(const QString& execution_line, const QString raw_feed_data, int run_timeout);
 
     // Tries to guess feed hidden under given URL
     // and uses given credentials.

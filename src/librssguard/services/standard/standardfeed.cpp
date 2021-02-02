@@ -474,6 +474,11 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   if (sourceType() == SourceType::Url) {
+    qDebugNN << LOGSEC_CORE
+             << "Downloading URL"
+             << QUOTE_W_SPACE(url())
+             << "to obtain feed data.";
+
     QByteArray feed_contents;
     QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -516,8 +521,45 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
     }
   }
   else {
+    qDebugNN << LOGSEC_CORE
+             << "Running custom script"
+             << QUOTE_W_SPACE(url())
+             << "to obtain feed data.";
+
     // Use script to generate feed file.
-    formatted_feed_contents = generateFeedFileWithScript(url(), download_timeout);
+    try {
+      formatted_feed_contents = generateFeedFileWithScript(url(), download_timeout);
+    }
+    catch (const ApplicationException& ex) {
+      qCriticalNN << LOGSEC_CORE
+                  << "Custom script for generating feed file failed:"
+                  << QUOTE_W_SPACE_DOT(ex.message());
+
+      setStatus(Status::OtherError);
+      *error_during_obtaining = true;
+      return {};
+    }
+  }
+
+  if (!postProcessScript().simplified().isEmpty()) {
+    qDebugNN << LOGSEC_CORE
+             << "Post-processing obtained feed data with custom script"
+             << QUOTE_W_SPACE_DOT(postProcessScript());
+
+    try {
+      formatted_feed_contents = postProcessFeedFileWithScript(postProcessScript(),
+                                                              formatted_feed_contents,
+                                                              download_timeout);
+    }
+    catch (const ApplicationException& ex) {
+      qCriticalNN << LOGSEC_CORE
+                  << "Post-processing script failed:"
+                  << QUOTE_W_SPACE_DOT(ex.message());
+
+      setStatus(Status::OtherError);
+      *error_during_obtaining = true;
+      return {};
+    }
   }
 
   // Feed data are downloaded and encoded.
@@ -573,6 +615,46 @@ QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, 
   if (!process.open() || process.error() == QProcess::ProcessError::FailedToStart) {
     throw ApplicationException(QSL("process failed to start"));
   }
+
+  if (process.waitForFinished(run_timeout)) {
+    auto raw_output = process.readAllStandardOutput();
+
+    return raw_output;
+  }
+  else {
+    process.kill();
+
+    auto raw_error = process.readAllStandardError();
+
+    if (raw_error.simplified().isEmpty()) {
+      throw ApplicationException(QSL("process failed to finish properly"));
+    }
+    else {
+      throw ApplicationException(QString(raw_error));
+    }
+  }
+}
+
+QString StandardFeed::postProcessFeedFileWithScript(const QString& execution_line, const QString raw_feed_data, int run_timeout) {
+  auto prepared_query = prepareExecutionLine(execution_line);
+  QProcess process;
+
+  process.setInputChannelMode(QProcess::InputChannelMode::ManagedInputChannel);
+  process.setWorkingDirectory(qApp->userDataFolder());
+  process.setProgram(prepared_query.first);
+
+#if defined(Q_OS_WIN)
+  process.setNativeArguments(prepared_query.second);
+#else
+  process.setArguments({ prepared_query.second });
+#endif
+
+  if (!process.open() || process.error() == QProcess::ProcessError::FailedToStart) {
+    throw ApplicationException(QSL("process failed to start"));
+  }
+
+  process.write(raw_feed_data.toUtf8());
+  process.closeWriteChannel();
 
   if (process.waitForFinished(run_timeout)) {
     auto raw_output = process.readAllStandardOutput();

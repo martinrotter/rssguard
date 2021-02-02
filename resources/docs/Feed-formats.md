@@ -37,7 +37,7 @@ RSS Guard 3.9.0+ offers extra advanced features which were inspired by [Liferea]
 
 You can select source type of each feed. If you select `URL`, then RSS Guard simply downloads feed file from given location.
 
-However, if you choose `Script` option, then you cannot provide URL of your feed and you rely on custom script to obtain your script and provide its contents to **standard output**. Resulting data written to standard output **MUST** be valid feed file, for example RSS or ATOM XML file.
+However, if you choose `Script` option, then you cannot provide URL of your feed and you rely on custom script to obtain your script and provide its contents to **standard output**. Resulting data written to standard output should be valid feed file, for example RSS or ATOM XML file.
 
 <img src="images/scrape-source-type.png" width="50%">
 
@@ -59,8 +59,12 @@ RSS Guard offers placeholder `%data%` which is automatically replaced with full 
 
 Also, working directory of process executing the script is set to RSS Guard's user data folder.
 
-After your source feed data are downloaded either via URL or custom script, you can optionally post-process the data with one more custom script, which will take raw source data as input and must produce processed feed data to **standard output** while printing all error messages to **error output**.
-
-Typical post-processing filter might do things like advanced CSS formatting of feed file entries, removing some ads etc.
+After your source feed data are downloaded either via URL or custom script, you can optionally post-process the data with one more custom script, which will take **raw source data as input** and must produce processed valid feed data to **standard output** while printing all error messages to **error output**.
 
 Format of post-process script execution line is the same as above.
+
+Typical post-processing filter might do things like advanced CSS formatting of feed file entries, removing some ads or simply pretty-printing XML data:
+
+| Command | Explanation |
+|---------|-------------|
+| `bash.exe#-c "xmllint --format -"` | Pretty-print input XML feed data. |
