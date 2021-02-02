@@ -63,6 +63,8 @@ After your source feed data are downloaded either via URL or custom script, you 
 
 Format of post-process script execution line is the same as above.
 
+<img src="images/scrape-post.png" width="50%">
+
 Typical post-processing filter might do things like advanced CSS formatting of feed file entries, removing some ads or simply pretty-printing XML data:
 
 | Command | Explanation |

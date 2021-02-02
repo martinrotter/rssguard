@@ -682,6 +682,7 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
 StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(record) {
   setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
   setSourceType(SourceType(record.value(FDS_DB_SOURCE_TYPE_INDEX).toInt()));
+  setPostProcessScript(record.value(FDS_DB_POST_PROCESS).toString());
 
   StandardFeed::Type type = static_cast<StandardFeed::Type>(record.value(FDS_DB_TYPE_INDEX).toInt());
 
