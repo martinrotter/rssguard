@@ -558,7 +558,31 @@ QPair<QString, QString> StandardFeed::prepareExecutionLine(const QString& execut
 
 QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, int run_timeout) {
   auto prepared_query = prepareExecutionLine(execution_line);
+  QProcess process;
 
+  process.setWorkingDirectory(qApp->userDataFolder());
+  process.setProgram(prepared_query.first);
+
+//#if defined(Q_OS_WIN) || defined(Q_CLANG_QDOC)
+//  process.setNativeArguments(prepared_query.second);
+//#else
+  process.setArguments({ prepared_query.second });
+
+//#endif
+
+  if (!process.open() || process.error() == QProcess::ProcessError::FailedToStart) {
+    return "";
+  }
+
+  if (process.waitForFinished(run_timeout)) {
+    auto raw_output = process.readAllStandardOutput();
+
+    return raw_output;
+  }
+  else {
+    process.kill();
+    return "";
+  }
 }
 
 QNetworkReply::NetworkError StandardFeed::networkError() const {
