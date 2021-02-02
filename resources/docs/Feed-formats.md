@@ -43,18 +43,22 @@ However, if you choose `Script` option, then you cannot provide URL of your feed
 
 Any errors in your script must be written to **error output**.
 
-Note that you must provide full execution line to your custom script, including interpreter binary path and name. Some examples of valid execution lines are:
-
+Note that you must provide full execution line to your custom script, including interpreter binary path and name and all that must be written in special format `<interpreter>#<arguments>`. The `#` character is there to separate interpreter from its arguments. Interpreter must be provided in all cases, arguments do not have to be. For example `bash.exe#` is valid execution line, as well as `bash#-C "cat feed.atom"`. Some examples of valid and tested execution lines are:
+ 
 | Command | Explanation |
 |---------|-------------|
-| `bash -c "curl 'https://github.com/martinrotter.atom'"` | Downloads ATOM feed file with Bash and Curl. |
-| `Powershell "Invoke-WebRequest 'https://github.com/martinrotter.atom' | Select-Object -ExpandProperty Content"` | Downloads ATOM feed file with Powershell. |
-| `php tweeper.php https://twitter.com/NSACareers` | Downloads RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git/). Tweeper is utility which is able to produce RSS feed from Twitter. |
+| `bash#-c "curl 'https://github.com/martinrotter.atom'"` | Downloads ATOM feed file with Bash and Curl. |
+| `Powershell#"Invoke-WebRequest 'https://github.com/martinrotter.atom' | Select-Object -ExpandProperty Content"` | Downloads ATOM feed file with Powershell. |
+| `php#tweeper.php https://twitter.com/NSACareers` | Downloads RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git/). Tweeper is utility which is able to produce RSS feed from Twitter. |
 
 <img src="images/scrape-source.png" width="50%">
 
 Note that the above examples are cross-platform and you can use the exact same command on Windows, Linux or Mac OS X, if your operating system is properly configured.
 
-RSS Guard offers placeholder `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data). You can, therefore, use something like this as source script line: `bash %data%/scripts/download-feed.sh`.
+RSS Guard offers placeholder `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data). You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
 
 Also, working directory of process executing the script is set to RSS Guard's user data folder.
+
+After your source feed data are downloaded either via URL or custom script, you can optionally post-process the data with one more custom script, which will take raw source data as input and must produce processed feed data to **standard output** while printing all error messages to **error output**.
+
+Formatting of post-process script execution line is the same as above.
