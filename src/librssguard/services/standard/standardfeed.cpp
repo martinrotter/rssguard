@@ -26,6 +26,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QPointer>
+#include <QProcess>
 #include <QTextCodec>
 #include <QVariant>
 #include <QXmlStreamReader>
@@ -468,47 +469,54 @@ void StandardFeed::setEncoding(const QString& encoding) {
 }
 
 QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
-  QByteArray feed_contents;
-  int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QList<QPair<QByteArray, QByteArray>> headers;
-
-  headers << NetworkFactory::generateBasicAuthHeader(username(), password());
-  m_networkError = NetworkFactory::performNetworkOperation(url(),
-                                                           download_timeout,
-                                                           QByteArray(),
-                                                           feed_contents,
-                                                           QNetworkAccessManager::Operation::GetOperation,
-                                                           headers,
-                                                           false,
-                                                           {},
-                                                           {},
-                                                           getParentServiceRoot()->networkProxy()).first;
-
-  if (m_networkError != QNetworkReply::NetworkError::NoError) {
-    qWarningNN << LOGSEC_CORE
-               << "Error"
-               << QUOTE_W_SPACE(m_networkError)
-               << "during fetching of new messages for feed"
-               << QUOTE_W_SPACE_DOT(url());
-    setStatus(Status::NetworkError);
-    *error_during_obtaining = true;
-    return QList<Message>();
-  }
-  else {
-    *error_during_obtaining = false;
-  }
-
-  // Encode downloaded data for further parsing.
-  QTextCodec* codec = QTextCodec::codecForName(encoding().toLocal8Bit());
   QString formatted_feed_contents;
+  int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-  if (codec == nullptr) {
-    // No suitable codec for this encoding was found.
-    // Use non-converted data.
-    formatted_feed_contents = feed_contents;
+  if (sourceType() == SourceType::Url) {
+    QByteArray feed_contents;
+    QList<QPair<QByteArray, QByteArray>> headers;
+
+    headers << NetworkFactory::generateBasicAuthHeader(username(), password());
+    m_networkError = NetworkFactory::performNetworkOperation(url(),
+                                                             download_timeout,
+                                                             QByteArray(),
+                                                             feed_contents,
+                                                             QNetworkAccessManager::Operation::GetOperation,
+                                                             headers,
+                                                             false,
+                                                             {},
+                                                             {},
+                                                             getParentServiceRoot()->networkProxy()).first;
+
+    if (m_networkError != QNetworkReply::NetworkError::NoError) {
+      qWarningNN << LOGSEC_CORE
+                 << "Error"
+                 << QUOTE_W_SPACE(m_networkError)
+                 << "during fetching of new messages for feed"
+                 << QUOTE_W_SPACE_DOT(url());
+      setStatus(Status::NetworkError);
+      *error_during_obtaining = true;
+      return QList<Message>();
+    }
+    else {
+      *error_during_obtaining = false;
+    }
+
+    // Encode downloaded data for further parsing.
+    QTextCodec* codec = QTextCodec::codecForName(encoding().toLocal8Bit());
+
+    if (codec == nullptr) {
+      // No suitable codec for this encoding was found.
+      // Use non-converted data.
+      formatted_feed_contents = feed_contents;
+    }
+    else {
+      formatted_feed_contents = codec->toUnicode(feed_contents);
+    }
   }
   else {
-    formatted_feed_contents = codec->toUnicode(feed_contents);
+    // Use script to generate feed file.
+    formatted_feed_contents = generateFeedFileWithScript(url(), download_timeout);
   }
 
   // Feed data are downloaded and encoded.
@@ -538,6 +546,19 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
   }
 
   return messages;
+}
+
+QPair<QString, QString> StandardFeed::prepareExecutionLine(const QString& execution_line) {
+  auto split_exec = execution_line.split('#', Qt::SplitBehaviorFlags::KeepEmptyParts);
+  auto user_data_folder = qApp->userDataFolder();
+
+  return { split_exec[0].replace(EXECUTION_LINE_USER_DATA_PLACEHOLDER, user_data_folder),
+           split_exec[1].replace(EXECUTION_LINE_USER_DATA_PLACEHOLDER, user_data_folder) };
+}
+
+QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, int run_timeout) {
+  auto prepared_query = prepareExecutionLine(execution_line);
+
 }
 
 QNetworkReply::NetworkError StandardFeed::networkError() const {

@@ -81,6 +81,7 @@
 #define RELOAD_MODEL_BORDER_NUM               10
 #define EXTERNAL_TOOL_SEPARATOR               "###"
 #define EXTERNAL_TOOL_PARAM_SEPARATOR         "|||"
+#define EXECUTION_LINE_USER_DATA_PLACEHOLDER  "%data%"
 
 #define CLI_LOG_SHORT     "l"
 #define CLI_LOG_LONG      "log"

@@ -78,6 +78,9 @@ class StandardFeed : public Feed {
 
     QList<Message> obtainNewMessages(bool* error_during_obtaining);
 
+    static QPair<QString, QString> prepareExecutionLine(const QString& execution_line);
+    static QString generateFeedFileWithScript(const QString& execution_line, int run_timeout);
+
     // Tries to guess feed hidden under given URL
     // and uses given credentials.
     // Returns pointer to guessed feed (if at least partially
