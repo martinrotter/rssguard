@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '19');
+INSERT INTO Information VALUES (1, 'schema_version', '20');
 -- !
 CREATE TABLE IF NOT EXISTS Accounts (
   id              INTEGER     PRIMARY KEY,
@@ -104,7 +104,9 @@ CREATE TABLE IF NOT EXISTS Feeds (
   icon            BLOB,
   category        INTEGER     NOT NULL CHECK (category >= -1),
   encoding        TEXT,
+  source_type     INTEGER,
   url             TEXT,
+  post_process    TEXT,
   protected       INTEGER(1)  NOT NULL CHECK (protected >= 0 AND protected <= 1),
   username        TEXT,
   password        TEXT,

@@ -21,6 +21,12 @@ class StandardFeed : public Feed {
   Q_OBJECT
 
   public:
+    enum class SourceType {
+      Url = 0,
+      Script = 1,
+      LocalFile = 2
+    };
+
     enum class Type {
       Rss0X = 0,
       Rss2X = 1,
@@ -59,6 +65,9 @@ class StandardFeed : public Feed {
     Type type() const;
     void setType(Type type);
 
+    SourceType sourceType() const;
+    void setSourceType(const SourceType& source_type);
+
     QString encoding() const;
     void setEncoding(const QString& encoding);
 
@@ -83,6 +92,7 @@ class StandardFeed : public Feed {
     void fetchMetadataForItself();
 
   private:
+    SourceType m_sourceType;
     Type m_type;
 
     QNetworkReply::NetworkError m_networkError;

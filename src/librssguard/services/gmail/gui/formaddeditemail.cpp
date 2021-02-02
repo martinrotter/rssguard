@@ -123,7 +123,7 @@ void FormAddEditEmail::onOkClicked() {
                    .arg(QString(m_ui.m_txtSubject->text().toUtf8().toBase64(QByteArray::Base64Option::Base64UrlEncoding)))
                    .toStdString();
   msg.set_plain(m_ui.m_txtMessage->toPlainText().toStdString());
-  msg.set_header("Content-Type", "text/plain; charset=utf-8");
+  msg.set_header(HTTP_HEADERS_CONTENT_TYPE, "text/plain; charset=utf-8");
 
   try {
     m_root->network()->sendEmail(msg, m_root->networkProxy(), m_originalMessage);

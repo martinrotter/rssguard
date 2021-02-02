@@ -70,7 +70,7 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
                                                                output,
                                                                QNetworkAccessManager::Operation::PostOperation,
                                                                { authHeader(),
-                                                                 { QSL("Content-Type").toLocal8Bit(),
+                                                                 { QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
                                                                    QSL("application/x-www-form-urlencoded").toLocal8Bit() } },
                                                                false,
                                                                {},
@@ -425,7 +425,7 @@ QString GreaderNetwork::serviceToString(GreaderServiceRoot::Service service) {
 }
 
 QPair<QByteArray, QByteArray> GreaderNetwork::authHeader() const {
-  return { QSL("Authorization").toLocal8Bit(), QSL("GoogleLogin auth=%1").arg(m_authAuth).toLocal8Bit() };
+  return { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), QSL("GoogleLogin auth=%1").arg(m_authAuth).toLocal8Bit() };
 }
 
 bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output) {

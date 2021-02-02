@@ -34,6 +34,7 @@ StandardFeed::StandardFeed(RootItem* parent_item)
   : Feed(parent_item) {
   m_networkError = QNetworkReply::NetworkError::NoError;
   m_type = Type::Rss0X;
+  m_sourceType = SourceType::Url;
   m_encoding = QString();
 }
 
@@ -41,6 +42,7 @@ StandardFeed::StandardFeed(const StandardFeed& other)
   : Feed(other) {
   m_networkError = other.networkError();
   m_type = other.type();
+  m_sourceType = other.sourceType();
   m_encoding = other.encoding();
 }
 
@@ -137,6 +139,14 @@ void StandardFeed::fetchMetadataForItself() {
                          tr("Metadata was not fetched because: %1.").arg(NetworkFactory::networkErrorText(metadata.second)),
                          QSystemTrayIcon::Critical);
   }
+}
+
+StandardFeed::SourceType StandardFeed::sourceType() const {
+  return m_sourceType;
+}
+
+void StandardFeed::setSourceType(const SourceType& source_type) {
+  m_sourceType = source_type;
 }
 
 QPair<StandardFeed*, QNetworkReply::NetworkError> StandardFeed::guessFeed(const QString& url,
@@ -406,6 +416,7 @@ bool StandardFeed::editItself(StandardFeed* new_feed_data) {
   original_feed->setAutoUpdateType(new_feed_data->autoUpdateType());
   original_feed->setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
   original_feed->setType(new_feed_data->type());
+  original_feed->setSourceType(new_feed_data->sourceType());
 
   // Editing is done.
   return true;
@@ -506,6 +517,7 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
 
 StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(record) {
   setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
+  setSourceType(SourceType(record.value(FDS_DB_SOURCE_TYPE_INDEX).toInt()));
 
   StandardFeed::Type type = static_cast<StandardFeed::Type>(record.value(FDS_DB_TYPE_INDEX).toInt());
 
@@ -520,5 +532,5 @@ StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(record) {
     }
   }
 
-  m_networkError = QNetworkReply::NoError;
+  m_networkError = QNetworkReply::NetworkError::NoError;
 }
