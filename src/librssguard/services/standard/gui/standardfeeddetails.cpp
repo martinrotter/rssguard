@@ -2,33 +2,44 @@
 
 #include "services/standard/gui/standardfeeddetails.h"
 
+#include "gui/guiutilities.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/category.h"
-#include "services/standard/standardfeed.h"
 
 #include <QClipboard>
 #include <QFileDialog>
 #include <QMenu>
 #include <QMimeData>
+#include <QtGlobal>
 #include <QTextCodec>
 
 StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
-  ui.setupUi(this);
+  m_ui.setupUi(this);
 
-  ui.m_txtTitle->lineEdit()->setPlaceholderText(tr("Feed title"));
-  ui.m_txtTitle->lineEdit()->setToolTip(tr("Set title for your feed."));
-  ui.m_txtDescription->lineEdit()->setPlaceholderText(tr("Feed description"));
-  ui.m_txtDescription->lineEdit()->setToolTip(tr("Set description for your feed."));
-  ui.m_txtUrl->lineEdit()->setPlaceholderText(tr("Full feed url including scheme"));
-  ui.m_txtUrl->lineEdit()->setToolTip(tr("Set url for your feed."));
+  m_ui.m_txtTitle->lineEdit()->setPlaceholderText(tr("Feed title"));
+  m_ui.m_txtTitle->lineEdit()->setToolTip(tr("Set title for your feed."));
+  m_ui.m_txtDescription->lineEdit()->setPlaceholderText(tr("Feed description"));
+  m_ui.m_txtDescription->lineEdit()->setToolTip(tr("Set description for your feed."));
+  m_ui.m_txtSource->lineEdit()->setPlaceholderText(tr("Full feed source identifier"));
+  m_ui.m_txtSource->lineEdit()->setToolTip(tr("Full feed source identifier which can be URL."));
+  m_ui.m_txtPostProcessScript->lineEdit()->setPlaceholderText(tr("Full command to execute"));
+  m_ui.m_txtPostProcessScript->lineEdit()->setToolTip(tr("You can enter full command including interpreter here."));
+
+  // Add source types.
+  m_ui.m_cmbSourceType->addItem(StandardFeed::sourceTypeToString(StandardFeed::SourceType::Url),
+                                QVariant::fromValue(StandardFeed::SourceType::Url));
+  m_ui.m_cmbSourceType->addItem(StandardFeed::sourceTypeToString(StandardFeed::SourceType::Script),
+                                QVariant::fromValue(StandardFeed::SourceType::Script));
+  m_ui.m_txtPostProcessScript->setStatus(WidgetWithStatus::StatusType::Ok,
+                                         tr("Here you can enter script executaion line, including interpreter."));
 
   // Add standard feed types.
-  ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Atom10), QVariant::fromValue(int(StandardFeed::Type::Atom10)));
-  ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rdf), QVariant::fromValue(int(StandardFeed::Type::Rdf)));
-  ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss0X), QVariant::fromValue(int(StandardFeed::Type::Rss0X)));
-  ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss2X), QVariant::fromValue(int(StandardFeed::Type::Rss2X)));
-  ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Json), QVariant::fromValue(int(StandardFeed::Type::Json)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Atom10), QVariant::fromValue(int(StandardFeed::Type::Atom10)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rdf), QVariant::fromValue(int(StandardFeed::Type::Rdf)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss0X), QVariant::fromValue(int(StandardFeed::Type::Rss0X)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss2X), QVariant::fromValue(int(StandardFeed::Type::Rss2X)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Json), QVariant::fromValue(int(StandardFeed::Type::Json)));
 
   // Load available encodings.
   const QList<QByteArray> encodings = QTextCodec::availableCodecs();
@@ -43,7 +54,7 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
     return lhs.toLower() < rhs.toLower();
   });
 
-  ui.m_cmbEncoding->addItems(encoded_encodings);
+  m_ui.m_cmbEncoding->addItems(encoded_encodings);
 
   // Setup menu & actions for icon selection.
   m_iconMenu = new QMenu(tr("Icon selection"), this);
@@ -59,19 +70,35 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   m_iconMenu->addAction(m_actionFetchIcon);
   m_iconMenu->addAction(m_actionLoadIconFromFile);
   m_iconMenu->addAction(m_actionUseDefaultIcon);
-  ui.m_btnIcon->setMenu(m_iconMenu);
-  ui.m_txtUrl->lineEdit()->setFocus(Qt::TabFocusReason);
+  m_ui.m_btnIcon->setMenu(m_iconMenu);
+  m_ui.m_txtSource->lineEdit()->setFocus(Qt::TabFocusReason);
 
   // Set feed metadata fetch label.
-  ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Information,
-                                   tr("No metadata fetched so far."),
-                                   tr("No metadata fetched so far."));
+  m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Information,
+                                     tr("No metadata fetched so far."),
+                                     tr("No metadata fetched so far."));
 
-  connect(ui.m_txtTitle->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onTitleChanged);
-  connect(ui.m_txtDescription->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onDescriptionChanged);
-  connect(ui.m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onUrlChanged);
+  connect(m_ui.m_txtTitle->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onTitleChanged);
+  connect(m_ui.m_txtDescription->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onDescriptionChanged);
+  connect(m_ui.m_cmbSourceType, QOverload<int>::of(&QComboBox::currentIndexChanged),
+          this, [this]() {
+    onUrlChanged(m_ui.m_txtSource->lineEdit()->text());
+  });
+  connect(m_ui.m_txtSource->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onUrlChanged);
   connect(m_actionLoadIconFromFile, &QAction::triggered, this, &StandardFeedDetails::onLoadIconFromFile);
   connect(m_actionUseDefaultIcon, &QAction::triggered, this, &StandardFeedDetails::onUseDefaultIcon);
+
+  setTabOrder(m_ui.m_cmbParentCategory, m_ui.m_cmbType);
+  setTabOrder(m_ui.m_cmbType, m_ui.m_cmbEncoding);
+  setTabOrder(m_ui.m_cmbEncoding, m_ui.m_txtTitle->lineEdit());
+  setTabOrder(m_ui.m_txtTitle->lineEdit(), m_ui.m_txtDescription->lineEdit());
+  setTabOrder(m_ui.m_txtDescription->lineEdit(), m_ui.m_cmbSourceType);
+  setTabOrder(m_ui.m_cmbSourceType, m_ui.m_txtSource->lineEdit());
+  setTabOrder(m_ui.m_txtSource->lineEdit(), m_ui.m_txtPostProcessScript->lineEdit());
+  setTabOrder(m_ui.m_txtPostProcessScript->lineEdit(), m_ui.m_btnFetchMetadata);
+  setTabOrder(m_ui.m_btnFetchMetadata, m_ui.m_btnIcon);
+
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblScriptInfo, false);
 
   onTitleChanged(QString());
   onDescriptionChanged(QString());
@@ -87,17 +114,17 @@ void StandardFeedDetails::guessIconOnly(const QString& url, const QString& usern
 
   if (result.first != nullptr) {
     // Icon or whole feed was guessed.
-    ui.m_btnIcon->setIcon(result.first->icon());
+    m_ui.m_btnIcon->setIcon(result.first->icon());
 
     if (result.second == QNetworkReply::NoError) {
-      ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
-                                       tr("Icon fetched successfully."),
-                                       tr("Icon metadata fetched."));
+      m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
+                                         tr("Icon fetched successfully."),
+                                         tr("Icon metadata fetched."));
     }
     else {
-      ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Warning,
-                                       tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
-                                       tr("Icon metadata not fetched."));
+      m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Warning,
+                                         tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                         tr("Icon metadata not fetched."));
     }
 
     // Remove temporary feed object.
@@ -105,9 +132,9 @@ void StandardFeedDetails::guessIconOnly(const QString& url, const QString& usern
   }
   else {
     // No feed guessed, even no icon available.
-    ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                     tr("Error: %1.").arg(NetworkFactory::networkErrorText(result.second)),
-                                     tr("No icon fetched."));
+    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
+                                       tr("Error: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                       tr("No icon fetched."));
   }
 }
 
@@ -120,28 +147,28 @@ void StandardFeedDetails::guessFeed(const QString& url, const QString& username,
 
   if (result.first != nullptr) {
     // Icon or whole feed was guessed.
-    ui.m_btnIcon->setIcon(result.first->icon());
-    ui.m_txtTitle->lineEdit()->setText(result.first->title());
-    ui.m_txtDescription->lineEdit()->setText(result.first->description());
-    ui.m_cmbType->setCurrentIndex(ui.m_cmbType->findData(QVariant::fromValue((int) result.first->type())));
-    int encoding_index = ui.m_cmbEncoding->findText(result.first->encoding(), Qt::MatchFixedString);
+    m_ui.m_btnIcon->setIcon(result.first->icon());
+    m_ui.m_txtTitle->lineEdit()->setText(result.first->title());
+    m_ui.m_txtDescription->lineEdit()->setText(result.first->description());
+    m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue((int) result.first->type())));
+    int encoding_index = m_ui.m_cmbEncoding->findText(result.first->encoding(), Qt::MatchFixedString);
 
     if (encoding_index >= 0) {
-      ui.m_cmbEncoding->setCurrentIndex(encoding_index);
+      m_ui.m_cmbEncoding->setCurrentIndex(encoding_index);
     }
     else {
-      ui.m_cmbEncoding->setCurrentIndex(ui.m_cmbEncoding->findText(DEFAULT_FEED_ENCODING, Qt::MatchFixedString));
+      m_ui.m_cmbEncoding->setCurrentIndex(m_ui.m_cmbEncoding->findText(DEFAULT_FEED_ENCODING, Qt::MatchFixedString));
     }
 
     if (result.second == QNetworkReply::NoError) {
-      ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
-                                       tr("All metadata fetched successfully."),
-                                       tr("Feed and icon metadata fetched."));
+      m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
+                                         tr("All metadata fetched successfully."),
+                                         tr("Feed and icon metadata fetched."));
     }
     else {
-      ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Warning,
-                                       tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
-                                       tr("Feed or icon metadata not fetched."));
+      m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Warning,
+                                         tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                         tr("Feed or icon metadata not fetched."));
     }
 
     // Remove temporary feed object.
@@ -149,43 +176,58 @@ void StandardFeedDetails::guessFeed(const QString& url, const QString& username,
   }
   else {
     // No feed guessed, even no icon available.
-    ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                     tr("Error: %1.").arg(NetworkFactory::networkErrorText(result.second)),
-                                     tr("No metadata fetched."));
+    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
+                                       tr("Error: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                       tr("No metadata fetched."));
   }
 }
 
 void StandardFeedDetails::onTitleChanged(const QString& new_title) {
   if (new_title.simplified().size() >= MIN_CATEGORY_NAME_LENGTH) {
-    ui.m_txtTitle->setStatus(LineEditWithStatus::StatusType::Ok, tr("Feed name is ok."));
+    m_ui.m_txtTitle->setStatus(LineEditWithStatus::StatusType::Ok, tr("Feed name is ok."));
   }
   else {
-    ui.m_txtTitle->setStatus(LineEditWithStatus::StatusType::Error, tr("Feed name is too short."));
+    m_ui.m_txtTitle->setStatus(LineEditWithStatus::StatusType::Error, tr("Feed name is too short."));
   }
 }
 
 void StandardFeedDetails::onDescriptionChanged(const QString& new_description) {
   if (new_description.simplified().isEmpty()) {
-    ui.m_txtDescription->setStatus(LineEditWithStatus::StatusType::Warning, tr("Description is empty."));
+    m_ui.m_txtDescription->setStatus(LineEditWithStatus::StatusType::Warning, tr("Description is empty."));
   }
   else {
-    ui.m_txtDescription->setStatus(LineEditWithStatus::StatusType::Ok, tr("The description is ok."));
+    m_ui.m_txtDescription->setStatus(LineEditWithStatus::StatusType::Ok, tr("The description is ok."));
   }
 }
 
 void StandardFeedDetails::onUrlChanged(const QString& new_url) {
-  if (QRegularExpression(URL_REGEXP).match(new_url).hasMatch()) {
-    // New url is well-formed.
-    ui.m_txtUrl->setStatus(LineEditWithStatus::StatusType::Ok, tr("The URL is ok."));
+  if (sourceType() == StandardFeed::SourceType::Url) {
+    if (QRegularExpression(URL_REGEXP).match(new_url).hasMatch()) {
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The URL is ok."));
+    }
+    else if (!new_url.simplified().isEmpty()) {
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Warning,
+                                  tr("The URL does not meet standard pattern. "
+                                     "Does your URL start with \"http://\" or \"https://\" prefix."));
+    }
+    else {
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("The URL is empty."));
+    }
   }
-  else if (!new_url.simplified().isEmpty()) {
-    // New url is not well-formed but is not empty on the other hand.
-    ui.m_txtUrl->setStatus(LineEditWithStatus::StatusType::Warning,
-                           tr(R"(The URL does not meet standard pattern. Does your URL start with "http://" or "https://" prefix.)"));
+  else if (sourceType() == StandardFeed::SourceType::Script) {
+    if (QRegularExpression(SCRIPT_SOURCE_TYPE_REGEXP).match(new_url).hasMatch()) {
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
+    }
+    else if (!new_url.simplified().isEmpty()) {
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Warning,
+                                  tr("The source needs to include \"#\" separator."));
+    }
+    else {
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("The source is empty."));
+    }
   }
   else {
-    // New url is empty.
-    ui.m_txtUrl->setStatus(LineEditWithStatus::StatusType::Error, tr("The URL is empty."));
+    m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
   }
 }
 
@@ -206,63 +248,69 @@ void StandardFeedDetails::onLoadIconFromFile() {
   dialog.setLabelText(QFileDialog::DialogLabel::FileType, tr("Icon type:"));
 
   if (dialog.exec() == QDialog::DialogCode::Accepted) {
-    ui.m_btnIcon->setIcon(QIcon(dialog.selectedFiles().value(0)));
+    m_ui.m_btnIcon->setIcon(QIcon(dialog.selectedFiles().value(0)));
   }
 }
 
 void StandardFeedDetails::onUseDefaultIcon() {
-  ui.m_btnIcon->setIcon(QIcon());
+  m_ui.m_btnIcon->setIcon(QIcon());
+}
+
+StandardFeed::SourceType StandardFeedDetails::sourceType() const {
+  return m_ui.m_cmbSourceType->currentData().value<StandardFeed::SourceType>();
 }
 
 void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QString& url) {
   // Make sure that "default" icon is used as the default option for new
   // feed.
   m_actionUseDefaultIcon->trigger();
-  int default_encoding_index = ui.m_cmbEncoding->findText(DEFAULT_FEED_ENCODING);
+  int default_encoding_index = m_ui.m_cmbEncoding->findText(DEFAULT_FEED_ENCODING);
 
   if (default_encoding_index >= 0) {
-    ui.m_cmbEncoding->setCurrentIndex(default_encoding_index);
+    m_ui.m_cmbEncoding->setCurrentIndex(default_encoding_index);
   }
 
   if (parent_to_select != nullptr) {
     if (parent_to_select->kind() == RootItem::Kind::Category) {
-      ui.m_cmbParentCategory->setCurrentIndex(ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select)));
+      m_ui.m_cmbParentCategory->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select)));
     }
     else if (parent_to_select->kind() == RootItem::Kind::Feed) {
-      int target_item = ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select->parent()));
+      int target_item = m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select->parent()));
 
       if (target_item >= 0) {
-        ui.m_cmbParentCategory->setCurrentIndex(target_item);
+        m_ui.m_cmbParentCategory->setCurrentIndex(target_item);
       }
     }
   }
 
   if (!url.isEmpty()) {
-    ui.m_txtUrl->lineEdit()->setText(url);
+    m_ui.m_txtSource->lineEdit()->setText(url);
   }
   else if (Application::clipboard()->mimeData()->hasText()) {
-    ui.m_txtUrl->lineEdit()->setText(Application::clipboard()->text());
+    m_ui.m_txtSource->lineEdit()->setText(Application::clipboard()->text());
   }
 
-  ui.m_txtUrl->setFocus();
+  m_ui.m_txtSource->setFocus();
 }
 
 void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
-  ui.m_cmbParentCategory->setCurrentIndex(ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)feed->parent())));
-  ui.m_txtTitle->lineEdit()->setText(feed->title());
-  ui.m_txtDescription->lineEdit()->setText(feed->description());
-  ui.m_btnIcon->setIcon(feed->icon());
-  ui.m_txtUrl->lineEdit()->setText(feed->url());
-  ui.m_cmbType->setCurrentIndex(ui.m_cmbType->findData(QVariant::fromValue(int(feed->type()))));
-  ui.m_cmbEncoding->setCurrentIndex(ui.m_cmbEncoding->findData(feed->encoding(),
-                                                               Qt::ItemDataRole::DisplayRole,
-                                                               Qt::MatchFlag::MatchFixedString));
+  m_ui.m_cmbSourceType->setCurrentIndex(m_ui.m_cmbSourceType->findData(QVariant::fromValue(feed->sourceType())));
+  m_ui.m_cmbParentCategory->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)feed->parent())));
+  m_ui.m_txtTitle->lineEdit()->setText(feed->title());
+  m_ui.m_txtDescription->lineEdit()->setText(feed->description());
+  m_ui.m_btnIcon->setIcon(feed->icon());
+  m_ui.m_txtSource->lineEdit()->setText(feed->url());
+  m_ui.m_txtPostProcessScript->lineEdit()->setText(feed->postProcessScript());
+  m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue(int(feed->type()))));
+  m_ui.m_cmbEncoding->setCurrentIndex(m_ui.m_cmbEncoding->findData(feed->encoding(),
+                                                                   Qt::ItemDataRole::DisplayRole,
+                                                                   Qt::MatchFlag::MatchFixedString));
 }
 
 void StandardFeedDetails::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
-  ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue((void*) root_item));
+  m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue((void*) root_item));
 
   for (Category* category : categories) {
-    ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue((void*) category));
+    m_ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue((void*) category));
   }
 }

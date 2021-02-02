@@ -35,13 +35,14 @@ StandardFeed::StandardFeed(RootItem* parent_item)
   m_networkError = QNetworkReply::NetworkError::NoError;
   m_type = Type::Rss0X;
   m_sourceType = SourceType::Url;
-  m_encoding = QString();
+  m_encoding = m_postProcessScript = QString();
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other)
   : Feed(other) {
   m_networkError = other.networkError();
   m_type = other.type();
+  m_postProcessScript = other.postProcessScript();
   m_sourceType = other.sourceType();
   m_encoding = other.encoding();
 }
@@ -112,6 +113,22 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
   }
 }
 
+QString StandardFeed::sourceTypeToString(StandardFeed::SourceType type) {
+  switch (type) {
+    case StandardFeed::SourceType::Url:
+      return QSL("URL");
+
+    case StandardFeed::SourceType::Script:
+      return tr("Script");
+
+    case StandardFeed::SourceType::LocalFile:
+      return tr("Local file");
+
+    default:
+      return tr("Unknown");
+  }
+}
+
 void StandardFeed::fetchMetadataForItself() {
   QPair<StandardFeed*, QNetworkReply::NetworkError> metadata = guessFeed(url(),
                                                                          username(),
@@ -139,6 +156,14 @@ void StandardFeed::fetchMetadataForItself() {
                          tr("Metadata was not fetched because: %1.").arg(NetworkFactory::networkErrorText(metadata.second)),
                          QSystemTrayIcon::Critical);
   }
+}
+
+QString StandardFeed::postProcessScript() const {
+  return m_postProcessScript;
+}
+
+void StandardFeed::setPostProcessScript(const QString& post_process_script) {
+  m_postProcessScript = post_process_script;
 }
 
 StandardFeed::SourceType StandardFeed::sourceType() const {
@@ -370,9 +395,11 @@ bool StandardFeed::addItself(RootItem* parent) {
   // Now, add feed to persistent storage.
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   bool ok;
-  int new_id = DatabaseQueries::addStandardFeed(database, parent->id(), parent->getParentServiceRoot()->accountId(), title(),
-                                                description(), creationDate(), icon(), encoding(), url(), passwordProtected(),
-                                                username(), password(), autoUpdateType(), autoUpdateInitialInterval(), type(), &ok);
+  int new_id = DatabaseQueries::addStandardFeed(database, parent->id(), parent->getParentServiceRoot()->accountId(),
+                                                title(), description(), creationDate(), icon(), encoding(), url(),
+                                                passwordProtected(), username(), password(), autoUpdateType(),
+                                                autoUpdateInitialInterval(), sourceType(), postProcessScript(),
+                                                type(), &ok);
 
   if (!ok) {
     // Query failed.
@@ -396,6 +423,7 @@ bool StandardFeed::editItself(StandardFeed* new_feed_data) {
                                          new_feed_data->encoding(), new_feed_data->url(), new_feed_data->passwordProtected(),
                                          new_feed_data->username(), new_feed_data->password(),
                                          new_feed_data->autoUpdateType(), new_feed_data->autoUpdateInitialInterval(),
+                                         new_feed_data->sourceType(), new_feed_data->postProcessScript(),
                                          new_feed_data->type())) {
     // Persistent storage update failed, no way to continue now.
     qWarningNN << LOGSEC_CORE
@@ -417,6 +445,7 @@ bool StandardFeed::editItself(StandardFeed* new_feed_data) {
   original_feed->setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
   original_feed->setType(new_feed_data->type());
   original_feed->setSourceType(new_feed_data->sourceType());
+  original_feed->setPostProcessScript(new_feed_data->postProcessScript());
 
   // Editing is done.
   return true;

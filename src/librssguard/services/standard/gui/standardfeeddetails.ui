@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>429</width>
-    <height>260</height>
+    <height>321</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -103,17 +103,31 @@
    <item row="5" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>URL</string>
+      <string>Source</string>
      </property>
      <property name="buddy">
-      <cstring>m_txtUrl</cstring>
+      <cstring>m_txtSource</cstring>
      </property>
     </widget>
    </item>
    <item row="5" column="1">
-    <widget class="LineEditWithStatus" name="m_txtUrl" native="true"/>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QComboBox" name="m_cmbSourceType"/>
+     </item>
+     <item>
+      <widget class="LineEditWithStatus" name="m_txtSource" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="6" column="0">
+   <item row="8" column="0">
     <widget class="QLabel" name="label_7">
      <property name="text">
       <string>Fetch metadata</string>
@@ -123,7 +137,7 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
+   <item row="8" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QPushButton" name="m_btnFetchMetadata">
@@ -147,7 +161,7 @@
      </item>
     </layout>
    </item>
-   <item row="7" column="0">
+   <item row="9" column="0">
     <widget class="QLabel" name="m_lblIcon">
      <property name="text">
       <string>Icon</string>
@@ -157,7 +171,7 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="1">
+   <item row="9" column="1">
     <widget class="QToolButton" name="m_btnIcon">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -194,6 +208,29 @@
      </property>
     </widget>
    </item>
+   <item row="6" column="1">
+    <widget class="LineEditWithStatus" name="m_txtPostProcessScript" native="true"/>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Post-process script</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QLabel" name="m_lblScriptInfo">
+     <property name="text">
+      <string>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -210,13 +247,6 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <tabstops>
-  <tabstop>m_cmbParentCategory</tabstop>
-  <tabstop>m_cmbType</tabstop>
-  <tabstop>m_cmbEncoding</tabstop>
-  <tabstop>m_btnFetchMetadata</tabstop>
-  <tabstop>m_btnIcon</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

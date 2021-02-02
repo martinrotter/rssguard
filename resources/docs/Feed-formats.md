@@ -4,6 +4,7 @@ RSS Guard is a modular application which supports plugins. It offers well-mainta
 * [Tiny Tiny RSS](https://tt-rss.org) plugin: Adds ability to synchronize messages with TT-RSS instances, either self-hosted or via 3rd-party external service.
 * [Inoreader](https://www.inoreader.com) plugin: Adds ability to synchronize messages with Inoreader. All you need to do is create free account on their website and start rocking.
 * [Nextcloud News](https://apps.nextcloud.com/apps/news) plugin: Nextcloud News is a Nextcloud app which adds feed reader abilities into your Nextcloud instances.
+* Google Reader API plugin: This plugin was added in RSS Guard 3.9.0 and offers two-way synchronization with services which implement Google Reader API. At this point, plugin was tested and works with Bazqux, The Old Reader and FreshRSS.
 * [Gmail](https://www.google.com/gmail) plugin: Yes, you are reading it right. RSS Guard can be used as very lightweight and simple e-mail client. This plugins uses [Gmail API](https://developers.google.com/gmail/api) and offers even e-mail sending.
 
 All plugins share almost all core RSS Guard's features, including labels, recycle bins, podcasts fetching or newspaper view. They are implemented in a very transparent way, making it easy to maintain them or add new ones.
@@ -28,3 +29,32 @@ OPML files can be exported/imported in simple dialog.
 <img src="images/im-ex-feeds-dialog.png" width="50%">
 
 You just select output file (in case of OPML export), check desired feeds and hit `Export to file`.
+
+### Websites scraping and other related advanced features
+RSS Guard 3.9.0+ offers extra advanced features which were inspired by [Liferea](https://lzone.de/liferea/).
+
+**Only proceed if you consider yourself as power user and you know you are doing!**
+
+You can select source type of each feed. If you select `URL`, then RSS Guard simply downloads feed file from given location.
+
+However, if you choose `Script` option, then you cannot provide URL of your feed and you rely on custom script to obtain your script and provide its contents to **standard output**. Resulting data written to standard output **MUST** be valid feed file, for example RSS or ATOM XML file.
+
+<img src="images/scrape-source-type.png" width="50%">
+
+Any errors in your script must be written to **error output**.
+
+Note that you must provide full execution line to your custom script, including interpreter binary path and name. Some examples of valid execution lines are:
+
+| Command | Explanation |
+|---------|-------------|
+| `bash -c "curl 'https://github.com/martinrotter.atom'"` | Downloads ATOM feed file with Bash and Curl. |
+| `Powershell "Invoke-WebRequest 'https://github.com/martinrotter.atom' | Select-Object -ExpandProperty Content"` | Downloads ATOM feed file with Powershell. |
+| `php tweeper.php https://twitter.com/NSACareers` | Downloads RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git/). Tweeper is utility which is able to produce RSS feed from Twitter. |
+
+<img src="images/scrape-source.png" width="50%">
+
+Note that the above examples are cross-platform and you can use the exact same command on Windows, Linux or Mac OS X, if your operating system is properly configured.
+
+RSS Guard offers placeholder `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data). You can, therefore, use something like this as source script line: `bash %data%/scripts/download-feed.sh`.
+
+Also, working directory of process executing the script is set to RSS Guard's user data folder.

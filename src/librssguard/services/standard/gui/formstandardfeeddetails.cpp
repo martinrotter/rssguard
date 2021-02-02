@@ -22,7 +22,7 @@ FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root, QWid
   insertCustomTab(m_authDetails, tr("Network"), 2);
   activateTab(0);
 
-  connect(m_standardFeedDetails->ui.m_btnFetchMetadata, &QPushButton::clicked, this, &FormStandardFeedDetails::guessFeed);
+  connect(m_standardFeedDetails->m_ui.m_btnFetchMetadata, &QPushButton::clicked, this, &FormStandardFeedDetails::guessFeed);
   connect(m_standardFeedDetails->m_actionFetchIcon, &QAction::triggered, this, &FormStandardFeedDetails::guessIconOnly);
 }
 
@@ -47,34 +47,36 @@ int FormStandardFeedDetails::addEditFeed(StandardFeed* input_feed, RootItem* par
 }
 
 void FormStandardFeedDetails::guessFeed() {
-  m_standardFeedDetails->guessFeed(m_standardFeedDetails->ui.m_txtUrl->lineEdit()->text(),
+  m_standardFeedDetails->guessFeed(m_standardFeedDetails->m_ui.m_txtSource->lineEdit()->text(),
                                    m_authDetails->m_txtUsername->lineEdit()->text(),
                                    m_authDetails->m_txtPassword->lineEdit()->text());
 }
 
 void FormStandardFeedDetails::guessIconOnly() {
-  m_standardFeedDetails->guessIconOnly(m_standardFeedDetails->ui.m_txtUrl->lineEdit()->text(),
+  m_standardFeedDetails->guessIconOnly(m_standardFeedDetails->m_ui.m_txtSource->lineEdit()->text(),
                                        m_authDetails->m_txtUsername->lineEdit()->text(),
                                        m_authDetails->m_txtPassword->lineEdit()->text());
 }
 
 void FormStandardFeedDetails::apply() {
   RootItem* parent =
-    static_cast<RootItem*>(m_standardFeedDetails->ui.m_cmbParentCategory->itemData(
-                             m_standardFeedDetails->ui.m_cmbParentCategory->currentIndex()).value<void*>());
+    static_cast<RootItem*>(m_standardFeedDetails->m_ui.m_cmbParentCategory->itemData(
+                             m_standardFeedDetails->m_ui.m_cmbParentCategory->currentIndex()).value<void*>());
 
   StandardFeed::Type type =
-    static_cast<StandardFeed::Type>(m_standardFeedDetails->ui.m_cmbType->itemData(m_standardFeedDetails->ui.m_cmbType->currentIndex()).value<int>());
+    static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType->itemData(m_standardFeedDetails->m_ui.m_cmbType->currentIndex()).value<int>());
   auto* new_feed = new StandardFeed();
 
   // Setup data for new_feed.
-  new_feed->setTitle(m_standardFeedDetails->ui.m_txtTitle->lineEdit()->text());
+  new_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text());
   new_feed->setCreationDate(QDateTime::currentDateTime());
-  new_feed->setDescription(m_standardFeedDetails->ui.m_txtDescription->lineEdit()->text());
-  new_feed->setIcon(m_standardFeedDetails->ui.m_btnIcon->icon());
-  new_feed->setEncoding(m_standardFeedDetails->ui.m_cmbEncoding->currentText());
+  new_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
+  new_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());
+  new_feed->setEncoding(m_standardFeedDetails->m_ui.m_cmbEncoding->currentText());
   new_feed->setType(type);
-  new_feed->setUrl(m_standardFeedDetails->ui.m_txtUrl->lineEdit()->text());
+  new_feed->setSourceType(m_standardFeedDetails->sourceType());
+  new_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->lineEdit()->text());
+  new_feed->setUrl(m_standardFeedDetails->m_ui.m_txtSource->lineEdit()->text());
   new_feed->setPasswordProtected(m_authDetails->m_gbAuthentication->isChecked());
   new_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
   new_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());

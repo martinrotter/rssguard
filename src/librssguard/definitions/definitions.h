@@ -39,6 +39,7 @@
 #define MSG_FILTERING_HELP                    "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Message-filters.md#message-filtering"
 #define DEFAULT_FEED_TYPE                     "RSS"
 #define URL_REGEXP "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
+#define SCRIPT_SOURCE_TYPE_REGEXP             "^.+#.*$"
 #define TEXT_TITLE_LIMIT                      30
 #define RESELECT_MESSAGE_THRESSHOLD           500
 #define ICON_SIZE_SETTINGS                    16

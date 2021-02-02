@@ -2089,15 +2089,16 @@ int DatabaseQueries::addStandardFeed(const QSqlDatabase& db, int parent_id, int 
                                      const QString& description, const QDateTime& creation_date, const QIcon& icon,
                                      const QString& encoding, const QString& url, bool is_protected,
                                      const QString& username, const QString& password,
-                                     Feed::AutoUpdateType auto_update_type,
-                                     int auto_update_interval, StandardFeed::Type feed_format, bool* ok) {
+                                     Feed::AutoUpdateType auto_update_type, int auto_update_interval,
+                                     StandardFeed::SourceType source_type, const QString& post_process_script,
+                                     StandardFeed::Type feed_format, bool* ok) {
   QSqlQuery q(db);
 
   qDebug() << "Adding feed with title '" << title.toUtf8() << "' to DB.";
   q.setForwardOnly(true);
   q.prepare("INSERT INTO Feeds "
-            "(title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_interval, type, account_id) "
-            "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :update_type, :update_interval, :type, :account_id);");
+            "(title, description, date_created, icon, category, encoding, url, source_type, post_process, protected, username, password, update_type, update_interval, type, account_id) "
+            "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :source_type, :post_process, :protected, :username, :password, :update_type, :update_interval, :type, :account_id);");
   q.bindValue(QSL(":title"), title.toUtf8());
   q.bindValue(QSL(":description"), description.toUtf8());
   q.bindValue(QSL(":date_created"), creation_date.toMSecsSinceEpoch());
@@ -2105,6 +2106,8 @@ int DatabaseQueries::addStandardFeed(const QSqlDatabase& db, int parent_id, int 
   q.bindValue(QSL(":category"), parent_id);
   q.bindValue(QSL(":encoding"), encoding);
   q.bindValue(QSL(":url"), url);
+  q.bindValue(QSL(":source_type"), int(source_type));
+  q.bindValue(QSL(":post_process"), post_process_script);
   q.bindValue(QSL(":protected"), is_protected ? 1 : 0);
   q.bindValue(QSL(":username"), username);
   q.bindValue(QSL(":account_id"), account_id);
@@ -2153,12 +2156,13 @@ bool DatabaseQueries::editStandardFeed(const QSqlDatabase& db, int parent_id, in
                                        const QString& encoding, const QString& url, bool is_protected,
                                        const QString& username, const QString& password,
                                        Feed::AutoUpdateType auto_update_type,
-                                       int auto_update_interval, StandardFeed::Type feed_format) {
+                                       int auto_update_interval, StandardFeed::SourceType source_type,
+                                       const QString& post_process_script, StandardFeed::Type feed_format) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare("UPDATE Feeds "
-            "SET title = :title, description = :description, icon = :icon, category = :category, encoding = :encoding, url = :url, protected = :protected, username = :username, password = :password, update_type = :update_type, update_interval = :update_interval, type = :type "
+            "SET title = :title, description = :description, icon = :icon, category = :category, encoding = :encoding, url = :url, source_type = :source_type, post_process = :post_process, protected = :protected, username = :username, password = :password, update_type = :update_type, update_interval = :update_interval, type = :type "
             "WHERE id = :id;");
   q.bindValue(QSL(":title"), title);
   q.bindValue(QSL(":description"), description);
@@ -2166,6 +2170,8 @@ bool DatabaseQueries::editStandardFeed(const QSqlDatabase& db, int parent_id, in
   q.bindValue(QSL(":category"), parent_id);
   q.bindValue(QSL(":encoding"), encoding);
   q.bindValue(QSL(":url"), url);
+  q.bindValue(QSL(":source_type"), int(source_type));
+  q.bindValue(QSL(":post_process"), post_process_script);
   q.bindValue(QSL(":protected"), is_protected ? 1 : 0);
   q.bindValue(QSL(":username"), username);
 

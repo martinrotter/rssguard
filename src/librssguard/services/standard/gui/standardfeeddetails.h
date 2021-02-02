@@ -7,11 +7,12 @@
 
 #include "ui_standardfeeddetails.h"
 
+#include "services/standard/standardfeed.h"
+
 #include <QNetworkProxy>
 
 class Category;
 class RootItem;
-class StandardFeed;
 
 class StandardFeedDetails : public QWidget {
   Q_OBJECT
@@ -37,13 +38,15 @@ class StandardFeedDetails : public QWidget {
     void onLoadIconFromFile();
     void onUseDefaultIcon();
 
+    StandardFeed::SourceType sourceType() const;
+
   private:
     void prepareForNewFeed(RootItem* parent_to_select, const QString& url);
     void setExistingFeed(StandardFeed* feed);
     void loadCategories(const QList<Category*>& categories, RootItem* root_item);
 
   private:
-    Ui::StandardFeedDetails ui;
+    Ui::StandardFeedDetails m_ui;
     QMenu* m_iconMenu{};
     QAction* m_actionLoadIconFromFile{};
     QAction* m_actionUseDefaultIcon{};

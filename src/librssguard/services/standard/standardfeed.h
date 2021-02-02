@@ -71,6 +71,9 @@ class StandardFeed : public Feed {
     QString encoding() const;
     void setEncoding(const QString& encoding);
 
+    QString postProcessScript() const;
+    void setPostProcessScript(const QString& post_process_script);
+
     QNetworkReply::NetworkError networkError() const;
 
     QList<Message> obtainNewMessages(bool* error_during_obtaining);
@@ -87,6 +90,7 @@ class StandardFeed : public Feed {
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);
+    static QString sourceTypeToString(SourceType type);
 
   public slots:
     void fetchMetadataForItself();
@@ -94,11 +98,13 @@ class StandardFeed : public Feed {
   private:
     SourceType m_sourceType;
     Type m_type;
+    QString m_postProcessScript;
 
     QNetworkReply::NetworkError m_networkError;
     QString m_encoding;
 };
 
+Q_DECLARE_METATYPE(StandardFeed::SourceType)
 Q_DECLARE_METATYPE(StandardFeed::Type)
 
 #endif // FEEDSMODELFEED_H

@@ -136,13 +136,15 @@ class DatabaseQueries {
                                const QString& description, const QDateTime& creation_date, const QIcon& icon,
                                const QString& encoding, const QString& url, bool is_protected,
                                const QString& username, const QString& password,
-                               Feed::AutoUpdateType auto_update_type,
-                               int auto_update_interval, StandardFeed::Type feed_format, bool* ok = nullptr);
+                               Feed::AutoUpdateType auto_update_type, int auto_update_interval,
+                               StandardFeed::SourceType source_type, const QString& post_process_script,
+                               StandardFeed::Type feed_format, bool* ok = nullptr);
     static bool editStandardFeed(const QSqlDatabase& db, int parent_id, int feed_id, const QString& title,
                                  const QString& description, const QIcon& icon,
                                  const QString& encoding, const QString& url, bool is_protected,
                                  const QString& username, const QString& password, Feed::AutoUpdateType auto_update_type,
-                                 int auto_update_interval, StandardFeed::Type feed_format);
+                                 int auto_update_interval, StandardFeed::SourceType source_type,
+                                 const QString& post_process_script, StandardFeed::Type feed_format);
     static QList<ServiceRoot*> getStandardAccounts(const QSqlDatabase& db, bool* ok = nullptr);
 
     template<typename T>
