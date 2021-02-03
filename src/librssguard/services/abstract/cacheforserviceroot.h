@@ -6,10 +6,9 @@
 #include "services/abstract/serviceroot.h"
 
 #include <QMap>
+#include <QMutex>
 #include <QPair>
 #include <QStringList>
-
-class QMutex;
 
 struct CacheSnapshot {
   QMap<QString, QStringList> m_cachedLabelAssignments;
