@@ -54,6 +54,8 @@ You can select source type of each feed. If you select `URL`, then RSS Guard sim
 
 However, if you choose `Script` option, then you cannot provide URL of your feed and you rely on custom script to obtain your script and provide its contents to **standard output**. Resulting data written to standard output should be valid feed file, for example RSS or ATOM XML file.
 
+`Fetch ut now` button also works with `Script` option. Therefore, if your source script and (optional) post-process script in cooperation deliver a valid feed file to the output, then all important metadata, like title or icon of the feed, can be automagically discovered.
+
 <img src="images/scrape-source-type.png" width="50%">
 
 Any errors in your script must be written to **error output**.
@@ -66,7 +68,7 @@ Interpreter must be provided in all cases, arguments do not have to be. For exam
 |---------|-------------|
 | `bash#-c "curl 'https://github.com/martinrotter.atom'"` | Downloads ATOM feed file with Bash and Curl. |
 | `Powershell#"Invoke-WebRequest 'https://github.com/martinrotter.atom' | Select-Object -ExpandProperty Content"` | Downloads ATOM feed file with Powershell. |
-| `php#tweeper.php -v 0 https://twitter.com/NSACareers` | Downloads RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git/). Tweeper is utility which is able to produce RSS feed from Twitter. |
+| `php#tweeper.php -v 0 https://twitter.com/NSACareers` | Scrape Twitter RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git). Tweeper is utility which is able to produce RSS feed from Twitter and other similar social platforms. |
 
 <img src="images/scrape-source.png" width="50%">
 
@@ -86,4 +88,4 @@ Typical post-processing filter might do things like advanced CSS formatting of f
 
 | Command | Explanation |
 |---------|-------------|
-| `bash.exe#-c "xmllint --format -"` | Pretty-print input XML feed data. |
+| `bash#-c "xmllint --format -"` | Pretty-print input XML feed data. |

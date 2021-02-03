@@ -94,6 +94,7 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * universal plugin for online services with [Google Reader API](#google-reader-api),
     * possibility of using custom 3rd-party feed synchronization services,
     * feed metadata fetching including icons,
+    * support for [scraping websites](Feed-formats.md#websites-scraping-and-related-advanced-features) which do not offer RSS/ATOM feeds and other related advanced features,
     * simple internal Chromium-based web viewer (or alternative version with simpler and much more lightweight internal viewer),
     * scriptable [message filtering](#message-filtering),
     * downloader with own tab and support for up to 6 parallel downloads,
