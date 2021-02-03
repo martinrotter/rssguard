@@ -168,8 +168,9 @@ void GreaderServiceRoot::saveAccountDataToDatabase(bool creating_new) {
 
   if (!creating_new) {
     if (DatabaseQueries::overwriteGreaderAccount(database, m_network->username(),
-                                                 m_network->password(), m_network->baseUrl(),
-                                                 m_network->batchSize(), accountId())) {
+                                                 m_network->password(), m_network->service(),
+                                                 m_network->baseUrl(), m_network->batchSize(),
+                                                 accountId())) {
       updateTitleIcon();
       itemChanged(QList<RootItem*>() << this);
     }

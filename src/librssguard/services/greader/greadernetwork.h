@@ -18,7 +18,8 @@ class GreaderNetwork : public QObject {
       TagList,
       SubscriptionList,
       StreamContents,
-      EditTag
+      EditTag,
+      Token
     };
 
     explicit GreaderNetwork(QObject* parent = nullptr);
@@ -84,6 +85,7 @@ class GreaderNetwork : public QObject {
     int m_batchSize;
     QString m_authSid;
     QString m_authAuth;
+    QString m_authToken;
 };
 
 #endif // GREADERNETWORK_H

@@ -157,7 +157,8 @@ class DatabaseQueries {
                                      const QString& password, GreaderServiceRoot::Service service,
                                      const QString& url, int batch_size);
     static bool overwriteGreaderAccount(const QSqlDatabase& db, const QString& username, const QString& password,
-                                        const QString& url, int batch_size, int account_id);
+                                        GreaderServiceRoot::Service service, const QString& url, int batch_size,
+                                        int account_id);
 
     // Nextcloud account.
     static QList<ServiceRoot*> getOwnCloudAccounts(const QSqlDatabase& db, bool* ok = nullptr);

@@ -62,6 +62,10 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
 
     args += working_subset.join(QL1C('&'));
 
+    if (m_service == GreaderServiceRoot::Service::Reedah) {
+      args += QSL("&T=%1").arg(m_authToken);
+    }
+
     // We send this batch.
     QByteArray output;
     auto result_edit = NetworkFactory::performNetworkOperation(full_url,
@@ -103,7 +107,9 @@ QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Import
 QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& stream_id,
                                               Feed::Status& error, const QNetworkProxy& proxy) {
   QString full_url = generateFullUrl(Operations::StreamContents).arg(stream_id,
-                                                                     QString::number(batchSize()));
+                                                                     QString::number(batchSize() <= 0
+                                                                                     ? 2000000
+                                                                                     : batchSize()));
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   if (!ensureLogin(proxy)) {
@@ -190,7 +196,8 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
   QList<RootItem*> lbls;
   QJsonArray json;
 
-  if (m_service == GreaderServiceRoot::Service::Bazqux) {
+  if (m_service == GreaderServiceRoot::Service::Bazqux ||
+      m_service == GreaderServiceRoot::Service::Reedah) {
     // We need to process subscription list first and extract categories.
     json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
 
@@ -223,9 +230,9 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
 
     if ((label["type"].toString() == QL1S("folder")) ||
         (m_service == GreaderServiceRoot::Service::TheOldReader &&
-         label_id.startsWith(GREADER_API_ANY_LABEL))) {
+         label_id.contains(QSL("/label/")))) {
 
-      // We have label (not "state").
+      // We have category (not "state" or "tag" or "label").
       auto* category = new Category();
 
       category->setDescription(label["htmlUrl"].toString());
@@ -242,7 +249,8 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
       new_lbl->setCustomId(label_id);
       lbls.append(new_lbl);
     }
-    else if (m_service == GreaderServiceRoot::Service::Bazqux &&
+    else if ((m_service == GreaderServiceRoot::Service::Bazqux ||
+              m_service == GreaderServiceRoot::Service::Reedah) &&
              label_id.contains(QSL("/label/"))) {
       if (!cats.contains(label_id)) {
         // This stream is not a category, it is label, bitches!
@@ -357,7 +365,7 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
       }
     }
 
-    QRegularExpression exp("^(unused|none|null)$");
+    QRegularExpression exp("^(NA|unused|none|null)$");
 
     if (exp.match(m_authSid).hasMatch()) {
       m_authSid = QString();
@@ -370,6 +378,29 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
     if (m_authAuth.isEmpty()) {
       clearCredentials();
       return QNetworkReply::NetworkError::InternalServerError;
+    }
+
+    if (m_service == GreaderServiceRoot::Service::Reedah) {
+      // We need "T=" token for editing.
+      full_url = generateFullUrl(Operations::Token);
+
+      network_result = NetworkFactory::performNetworkOperation(full_url,
+                                                               timeout,
+                                                               args,
+                                                               output,
+                                                               QNetworkAccessManager::Operation::GetOperation,
+                                                               { authHeader() },
+                                                               false,
+                                                               {},
+                                                               {},
+                                                               proxy);
+
+      if (network_result.first == QNetworkReply::NetworkError::NoError) {
+        m_authToken = output;
+      }
+      else {
+        clearCredentials();
+      }
     }
   }
 
@@ -416,11 +447,14 @@ QString GreaderNetwork::serviceToString(GreaderServiceRoot::Service service) {
     case GreaderServiceRoot::Service::Bazqux:
       return QSL("Bazqux");
 
+    case GreaderServiceRoot::Service::Reedah:
+      return QSL("Reedah");
+
     case GreaderServiceRoot::Service::TheOldReader:
       return QSL("The Old Reader");
 
     default:
-      return tr("Unknown service");
+      return tr("Other services");
   }
 }
 
@@ -534,7 +568,7 @@ void GreaderNetwork::setBatchSize(int batch_size) {
 }
 
 void GreaderNetwork::clearCredentials() {
-  m_authAuth = m_authSid = QString();
+  m_authAuth = m_authSid = m_authToken = QString();
 }
 
 QString GreaderNetwork::sanitizedBaseUrl() const {
@@ -560,6 +594,9 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
   switch (operation) {
     case Operations::ClientLogin:
       return sanitizedBaseUrl() + GREADER_API_CLIENT_LOGIN;
+
+    case Operations::Token:
+      return sanitizedBaseUrl() + GREADER_API_TOKEN;
 
     case Operations::TagList:
       return sanitizedBaseUrl() + GREADER_API_TAG_LIST;

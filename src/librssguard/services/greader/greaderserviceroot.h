@@ -15,7 +15,9 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     enum class Service {
       FreshRss = 1,
       TheOldReader = 2,
-      Bazqux = 4
+      Bazqux = 4,
+      Reedah = 8,
+      Other = 1024
     };
 
     explicit GreaderServiceRoot(RootItem* parent = nullptr);

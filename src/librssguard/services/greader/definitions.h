@@ -18,10 +18,10 @@
 #define GREADER_API_SUBSCRIPTION_LIST   "reader/api/0/subscription/list?output=json"
 #define GREADER_API_STREAM_CONTENTS     "reader/api/0/stream/contents/%1?output=json&n=%2"
 #define GREADER_API_EDIT_TAG            "reader/api/0/edit-tag"
+#define GREADER_API_TOKEN               "reader/api/0/token"
 
 // Misc.
 #define GREADER_API_EDIT_TAG_BATCH      200
-#define GREADER_API_ANY_LABEL           "user/-/label"
 
 // The Old Reader.
 #define TOR_SPONSORED_STREAM_ID   "tor/sponsored"

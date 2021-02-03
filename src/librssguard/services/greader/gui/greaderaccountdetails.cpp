@@ -13,7 +13,9 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) 
 
   for (auto serv : { GreaderServiceRoot::Service::Bazqux,
                      GreaderServiceRoot::Service::FreshRss,
-                     GreaderServiceRoot::Service::TheOldReader }) {
+                     GreaderServiceRoot::Service::Reedah,
+                     GreaderServiceRoot::Service::TheOldReader,
+                     GreaderServiceRoot::Service::Other }) {
     m_ui.m_cmbService->addItem(GreaderNetwork::serviceToString(serv), QVariant::fromValue(serv));
   }
 

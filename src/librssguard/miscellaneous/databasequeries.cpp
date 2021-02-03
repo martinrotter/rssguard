@@ -1812,32 +1812,6 @@ bool DatabaseQueries::deleteOwnCloudAccount(const QSqlDatabase& db, int account_
   return q.exec();
 }
 
-bool DatabaseQueries::overwriteGreaderAccount(const QSqlDatabase& db, const QString& username, const QString& password,
-                                              const QString& url, int batch_size, int account_id) {
-  QSqlQuery query(db);
-
-  query.prepare("UPDATE GoogleReaderApiAccounts "
-                "SET username = :username, password = :password, url = :url, "
-                "msg_limit = :msg_limit "
-                "WHERE id = :id;");
-  query.bindValue(QSL(":username"), username);
-  query.bindValue(QSL(":password"), TextFactory::encrypt(password));
-  query.bindValue(QSL(":url"), url);
-  query.bindValue(QSL(":id"), account_id);
-  query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? GREADER_UNLIMITED_BATCH_SIZE : batch_size);
-
-  if (query.exec()) {
-    return true;
-  }
-  else {
-    qWarningNN << LOGSEC_GREADER
-               << "Updating account failed: '"
-               << query.lastError().text()
-               << "'.";
-    return false;
-  }
-}
-
 bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QString& username, const QString& password,
                                                const QString& url, bool force_server_side_feed_update, int batch_size,
                                                bool download_only_unread_messages, int account_id) {
@@ -1888,6 +1862,33 @@ bool DatabaseQueries::createGreaderAccount(const QSqlDatabase& db, int id_to_ass
     qWarningNN << LOGSEC_GREADER
                << "Inserting of new account failed: '"
                << q.lastError().text()
+               << "'.";
+    return false;
+  }
+}
+
+bool DatabaseQueries::overwriteGreaderAccount(const QSqlDatabase& db, const QString& username, const QString& password,
+                                              GreaderServiceRoot::Service service, const QString& url,
+                                              int batch_size, int account_id) {
+  QSqlQuery query(db);
+
+  query.prepare("UPDATE GoogleReaderApiAccounts "
+                "SET username = :username, password = :password, url = :url, type = :service, msg_limit = :msg_limit "
+                "WHERE id = :id;");
+  query.bindValue(QSL(":username"), username);
+  query.bindValue(QSL(":password"), TextFactory::encrypt(password));
+  query.bindValue(QSL(":url"), url);
+  query.bindValue(QSL(":service"), int(service));
+  query.bindValue(QSL(":id"), account_id);
+  query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? GREADER_UNLIMITED_BATCH_SIZE : batch_size);
+
+  if (query.exec()) {
+    return true;
+  }
+  else {
+    qWarningNN << LOGSEC_GREADER
+               << "Updating account failed: '"
+               << query.lastError().text()
                << "'.";
     return false;
   }
