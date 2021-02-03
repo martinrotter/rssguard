@@ -7,3 +7,7 @@ ApplicationException::ApplicationException(QString message) : m_message(std::mov
 QString ApplicationException::message() const {
   return m_message;
 }
+
+void ApplicationException::setMessage(const QString& message) {
+  m_message = message;
+}

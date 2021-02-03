@@ -23,11 +23,15 @@ class StandardFeedDetails : public QWidget {
     explicit StandardFeedDetails(QWidget* parent = nullptr);
 
   private slots:
-    void guessIconOnly(const QString& url,
+    void guessIconOnly(StandardFeed::SourceType source_type,
+                       const QString& source,
+                       const QString& post_process_script,
                        const QString& username,
                        const QString& password,
                        const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
-    void guessFeed(const QString& url,
+    void guessFeed(StandardFeed::SourceType source_type,
+                   const QString& source,
+                   const QString& post_process_script,
                    const QString& username,
                    const QString& password,
                    const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);

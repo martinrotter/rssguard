@@ -107,53 +107,63 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   onPostProcessScriptChanged({});
 }
 
-void StandardFeedDetails::guessIconOnly(const QString& url, const QString& username,
+void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type, const QString& source,
+                                        const QString& post_process_script, const QString& username,
                                         const QString& password, const QNetworkProxy& custom_proxy) {
-  QPair<StandardFeed*, QNetworkReply::NetworkError> result = StandardFeed::guessFeed(url,
-                                                                                     username,
-                                                                                     password,
-                                                                                     custom_proxy);
+  bool result;
+  StandardFeed* metadata = StandardFeed::guessFeed(source_type,
+                                                   source,
+                                                   post_process_script,
+                                                   &result,
+                                                   username,
+                                                   password,
+                                                   custom_proxy);
 
-  if (result.first != nullptr) {
+  if (metadata != nullptr) {
     // Icon or whole feed was guessed.
-    m_ui.m_btnIcon->setIcon(result.first->icon());
+    m_ui.m_btnIcon->setIcon(metadata->icon());
 
-    if (result.second == QNetworkReply::NoError) {
+    if (result) {
       m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
                                          tr("Icon fetched successfully."),
                                          tr("Icon metadata fetched."));
     }
     else {
       m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Warning,
-                                         tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                         tr("Icon metadata not fetched."),
                                          tr("Icon metadata not fetched."));
     }
 
     // Remove temporary feed object.
-    delete result.first;
+    delete metadata;
   }
   else {
     // No feed guessed, even no icon available.
     m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr("Error: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                       tr("No icon fetched."),
                                        tr("No icon fetched."));
   }
 }
 
-void StandardFeedDetails::guessFeed(const QString& url, const QString& username,
+void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type, const QString& source,
+                                    const QString& post_process_script, const QString& username,
                                     const QString& password, const QNetworkProxy& custom_proxy) {
-  QPair<StandardFeed*, QNetworkReply::NetworkError> result = StandardFeed::guessFeed(url,
-                                                                                     username,
-                                                                                     password,
-                                                                                     custom_proxy);
+  bool result;
+  StandardFeed* metadata = StandardFeed::guessFeed(source_type,
+                                                   source,
+                                                   post_process_script,
+                                                   &result,
+                                                   username,
+                                                   password,
+                                                   custom_proxy);
 
-  if (result.first != nullptr) {
+  if (metadata != nullptr) {
     // Icon or whole feed was guessed.
-    m_ui.m_btnIcon->setIcon(result.first->icon());
-    m_ui.m_txtTitle->lineEdit()->setText(result.first->title());
-    m_ui.m_txtDescription->lineEdit()->setText(result.first->description());
-    m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue((int) result.first->type())));
-    int encoding_index = m_ui.m_cmbEncoding->findText(result.first->encoding(), Qt::MatchFixedString);
+    m_ui.m_btnIcon->setIcon(metadata->icon());
+    m_ui.m_txtTitle->lineEdit()->setText(metadata->title());
+    m_ui.m_txtDescription->lineEdit()->setText(metadata->description());
+    m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue((int) metadata->type())));
+    int encoding_index = m_ui.m_cmbEncoding->findText(metadata->encoding(), Qt::MatchFlag::MatchFixedString);
 
     if (encoding_index >= 0) {
       m_ui.m_cmbEncoding->setCurrentIndex(encoding_index);
@@ -162,24 +172,24 @@ void StandardFeedDetails::guessFeed(const QString& url, const QString& username,
       m_ui.m_cmbEncoding->setCurrentIndex(m_ui.m_cmbEncoding->findText(DEFAULT_FEED_ENCODING, Qt::MatchFixedString));
     }
 
-    if (result.second == QNetworkReply::NoError) {
+    if (result) {
       m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
                                          tr("All metadata fetched successfully."),
                                          tr("Feed and icon metadata fetched."));
     }
     else {
       m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Warning,
-                                         tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                         tr("Feed or icon metadata not fetched."),
                                          tr("Feed or icon metadata not fetched."));
     }
 
     // Remove temporary feed object.
-    delete result.first;
+    delete metadata;
   }
   else {
     // No feed guessed, even no icon available.
     m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr("Error: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                       tr("No metadata fetched."),
                                        tr("No metadata fetched."));
   }
 }

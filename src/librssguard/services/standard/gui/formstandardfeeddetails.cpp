@@ -47,13 +47,17 @@ int FormStandardFeedDetails::addEditFeed(StandardFeed* input_feed, RootItem* par
 }
 
 void FormStandardFeedDetails::guessFeed() {
-  m_standardFeedDetails->guessFeed(m_standardFeedDetails->m_ui.m_txtSource->lineEdit()->text(),
+  m_standardFeedDetails->guessFeed(m_standardFeedDetails->sourceType(),
+                                   m_standardFeedDetails->m_ui.m_txtSource->lineEdit()->text(),
+                                   m_standardFeedDetails->m_ui.m_txtPostProcessScript->lineEdit()->text(),
                                    m_authDetails->m_txtUsername->lineEdit()->text(),
                                    m_authDetails->m_txtPassword->lineEdit()->text());
 }
 
 void FormStandardFeedDetails::guessIconOnly() {
-  m_standardFeedDetails->guessIconOnly(m_standardFeedDetails->m_ui.m_txtSource->lineEdit()->text(),
+  m_standardFeedDetails->guessIconOnly(m_standardFeedDetails->sourceType(),
+                                       m_standardFeedDetails->m_ui.m_txtSource->lineEdit()->text(),
+                                       m_standardFeedDetails->m_ui.m_txtPostProcessScript->lineEdit()->text(),
                                        m_authDetails->m_txtUsername->lineEdit()->text(),
                                        m_authDetails->m_txtPassword->lineEdit()->text());
 }

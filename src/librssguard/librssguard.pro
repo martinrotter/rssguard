@@ -50,6 +50,7 @@ HEADERS += core/feeddownloader.h \
            exceptions/applicationexception.h \
            exceptions/filteringexception.h \
            exceptions/ioexception.h \
+           exceptions/scriptexception.h \
            gui/baselineedit.h \
            gui/basetoolbar.h \
            gui/colortoolbutton.h \
@@ -221,6 +222,7 @@ SOURCES += core/feeddownloader.cpp \
            exceptions/applicationexception.cpp \
            exceptions/filteringexception.cpp \
            exceptions/ioexception.cpp \
+           exceptions/scriptexception.cpp \
            gui/baselineedit.cpp \
            gui/basetoolbar.cpp \
            gui/colortoolbutton.cpp \

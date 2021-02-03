@@ -11,6 +11,9 @@ class ApplicationException {
 
     QString message() const;
 
+  protected:
+    void setMessage(const QString& message);
+
   private:
     QString m_message;
 };

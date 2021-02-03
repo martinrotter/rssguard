@@ -87,10 +87,13 @@ class StandardFeed : public Feed {
     // Returns pointer to guessed feed (if at least partially
     // guessed) and retrieved error/status code from network layer
     // or NULL feed.
-    static QPair<StandardFeed*, QNetworkReply::NetworkError> guessFeed(const QString& url,
-                                                                       const QString& username = QString(),
-                                                                       const QString& password = QString(),
-                                                                       const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
+    static StandardFeed* guessFeed(SourceType source_type,
+                                   const QString& url,
+                                   const QString& post_process_script,
+                                   bool* result,
+                                   const QString& username = QString(),
+                                   const QString& password = QString(),
+                                   const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);
@@ -98,6 +101,10 @@ class StandardFeed : public Feed {
 
   public slots:
     void fetchMetadataForItself();
+
+  private:
+    static QString runScriptProcess(const QPair<QString, QString>& cmd_args, const QString& working_directory,
+                                    int run_timeout, bool provide_input, const QString& input = {});
 
   private:
     SourceType m_sourceType;
