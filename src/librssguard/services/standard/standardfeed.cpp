@@ -29,6 +29,7 @@
 #include <QJsonObject>
 #include <QPointer>
 #include <QProcess>
+#include <QProcessEnvironment>
 #include <QTextCodec>
 #include <QVariant>
 #include <QXmlStreamReader>
@@ -677,6 +678,7 @@ QString StandardFeed::runScriptProcess(const QPair<QString, QString>& cmd_args, 
     process.setInputChannelMode(QProcess::InputChannelMode::ManagedInputChannel);
   }
 
+  process.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
   process.setProcessChannelMode(QProcess::ProcessChannelMode::SeparateChannels);
   process.setWorkingDirectory(working_directory);
   process.setProgram(cmd_args.first);

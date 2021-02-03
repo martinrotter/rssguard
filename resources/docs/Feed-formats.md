@@ -67,7 +67,7 @@ Interpreter must be provided in all cases, arguments do not have to be. For exam
 | Command | Explanation |
 |---------|-------------|
 | `bash#-c "curl 'https://github.com/martinrotter.atom'"` | Downloads ATOM feed file with Bash and Curl. |
-| `Powershell#"Invoke-WebRequest 'https://github.com/martinrotter.atom' | Select-Object -ExpandProperty Content"` | Downloads ATOM feed file with Powershell. |
+| `Powershell#"Invoke-WebRequest 'https://github.com/martinrotter.atom' \| Select-Object -ExpandProperty Content"` | Downloads ATOM feed file with Powershell. |
 | `php#tweeper.php -v 0 https://twitter.com/NSACareers` | Scrape Twitter RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git). Tweeper is utility which is able to produce RSS feed from Twitter and other similar social platforms. |
 
 <img src="images/scrape-source.png" width="50%">
