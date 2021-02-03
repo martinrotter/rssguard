@@ -46,15 +46,15 @@ You just select output file (in case of OPML export), check desired feeds and hi
 
 ### Websites scraping and related advanced features
 
-> **Only proceed if you consider yourself as power user and you know you are doing!**
+> **Only proceed if you consider yourself to be a power user and you know what you are doing!**
 
 RSS Guard 3.9.0+ offers extra advanced features which are inspired by [Liferea](https://lzone.de/liferea/).
 
-You can select source type of each feed. If you select `URL`, then RSS Guard simply downloads feed file from given location.
+You can select source type of each feed. If you select `URL`, then RSS Guard simply downloads feed file from given location and behave like everyone would expect.
 
-However, if you choose `Script` option, then you cannot provide URL of your feed and you rely on custom script to obtain your script and provide its contents to **standard output**. Resulting data written to standard output should be valid feed file, for example RSS or ATOM XML file.
+However, if you choose `Script` option, then you cannot provide URL of your feed and you rely on custom script to generate feed file and provide its contents to **standard output**. Resulting data written to standard output should be valid feed file, for example RSS or ATOM XML file.
 
-`Fetch ut now` button also works with `Script` option. Therefore, if your source script and (optional) post-process script in cooperation deliver a valid feed file to the output, then all important metadata, like title or icon of the feed, can be automagically discovered.
+`Fetch it now` button also works with `Script` option. Therefore, if your source script and (optional) post-process script in cooperation deliver a valid feed file to the output, then all important metadata, like title or icon of the feed, can be automagically discovered.
 
 <img src="images/scrape-source-type.png" width="50%">
 
