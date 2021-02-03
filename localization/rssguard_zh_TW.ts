@@ -1039,6 +1039,13 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormEditGreaderAccount</name>
+    <message>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormEditInoreaderAccount</name>
     <message>
         <source>Server setup</source>
@@ -2422,6 +2429,128 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>GreaderAccountDetails</name>
+    <message>
+        <source>Service</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>每個新聞源僅下載最近 X 條消息</translation>
+    </message>
+    <message>
+        <source> = unlimited</source>
+        <translation>= 不限</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>某些新聞源，包括 Gmail 新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 的認證架構。</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>認證</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>使用者名稱</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>密碼</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>顯示密碼</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>測試設定(&amp;T)</translation>
+    </message>
+    <message>
+        <source>Password for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL of your server, without any service-specific path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>尚未測試過。</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>此處顯示連線測試的結果。</translation>
+    </message>
+    <message>
+        <source>Limiting number of downloaded messages per feed makes updating of feeds faster, but if your feed contains bigger number of messages than specified limit, then some older messages might not be downloaded during feed update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>= unlimited</source>
+        <translation>= 不限</translation>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>消息</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>網路錯誤: &apos;%&apos;。</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation>網路錯誤，有輸入正確的 Nextcloud 端點(endpoint)與密碼嗎？</translation>
+    </message>
+    <message>
+        <source>You are good to go!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Yeah.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>不可缺使用者名稱。</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>使用者名稱無問題。</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>不可缺密碼。</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>密碼無問題。</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>不可缺 URL。</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>URL 無問題。</translation>
+    </message>
+</context>
+<context>
+    <name>GreaderNetwork</name>
+    <message>
+        <source>Unknown service</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
@@ -3125,11 +3254,11 @@ Login tokens expiration: %2</source>
         <translation>登入，您需要瀏覽此網站: </translation>
     </message>
     <message>
-        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <source>You can close this window now. Go back to %1.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can close this window now. Go back to %1.</source>
+        <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3350,6 +3479,10 @@ version by clicking this popup notification.</source>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3380,6 +3513,29 @@ version by clicking this popup notification.</source>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n 未讀訊息。</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>ScriptException</name>
+    <message>
+        <source>script line is not well-formed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script threw an error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script&apos;s interpreter was not found</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script execution took too long</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>unknown error</source>
+        <translation> 未知的錯誤</translation>
     </message>
 </context>
 <context>
@@ -3841,6 +3997,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Bring application window to front once message is opened in external web browser</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4068,10 +4228,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>屬性資料未抓到</translation>
     </message>
     <message>
-        <source>Metadata was not fetched because: %1.</source>
-        <translation>屬性資料未抓到，因為: %1。</translation>
-    </message>
-    <message>
         <source>
 Network status: %1
 Encoding: %2
@@ -4080,6 +4236,22 @@ Type: %3</source>
 網路狀態: %1
 編碼: %2
 類型: %3</translation>
+    </message>
+    <message>
+        <source>Script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Local file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata was not fetched.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4121,10 +4293,6 @@ Type: %3</source>
         <translation>描述</translation>
     </message>
     <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
         <source>Fetch metadata</source>
         <translation>取得屬性資料</translation>
     </message>
@@ -4157,14 +4325,6 @@ Type: %3</source>
         <translation>為新聞源定描述。</translation>
     </message>
     <message>
-        <source>Full feed url including scheme</source>
-        <translation>包括通訊協定(scheme)在內的完整新聞源 URL</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>為新聞源定 URL。</translation>
-    </message>
-    <message>
         <source>Icon selection</source>
         <translation>圖示選擇</translation>
     </message>
@@ -4193,16 +4353,8 @@ Type: %3</source>
         <translation>取得圖示的屬性資料。</translation>
     </message>
     <message>
-        <source>Result: %1.</source>
-        <translation>結果: %1。</translation>
-    </message>
-    <message>
         <source>Icon metadata not fetched.</source>
         <translation>未取得圖示的屬性資料。</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>錯誤: %1。</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
@@ -4280,6 +4432,50 @@ Type: %3</source>
     <message>
         <source>Icon type:</source>
         <translation>圖示類型:</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Post-process script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed source identifier</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed source identifier which can be URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full command to execute</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can enter full command including interpreter here.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Here you can enter script executaion line, including interpreter.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source needs to include &quot;#&quot; separator.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source is empty.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -794,7 +794,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Network proxy</source>
-        <translation type="unfinished"/>
+        <translation>Nätverksproxy</translation>
     </message>
 </context>
 <context>
@@ -1033,6 +1033,13 @@ att funktionen inte är implementerad än.</translation>
 </context>
 <context>
     <name>FormEditGmailAccount</name>
+    <message>
+        <source>Server setup</source>
+        <translation>Serverinställning</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditGreaderAccount</name>
     <message>
         <source>Server setup</source>
         <translation>Serverinställning</translation>
@@ -2257,11 +2264,11 @@ Du kan installera det nu.</translation>
     </message>
     <message>
         <source>Client ID</source>
-        <translation type="unfinished"/>
+        <translation>Klient-ID</translation>
     </message>
     <message>
         <source>Client secret</source>
-        <translation type="unfinished"/>
+        <translation>Klienthemlighet</translation>
     </message>
     <message>
         <source>Redirect URL</source>
@@ -2425,6 +2432,128 @@ Inloggningstoken upphör: %2</translation>
     </message>
 </context>
 <context>
+    <name>GreaderAccountDetails</name>
+    <message>
+        <source>Service</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Ladda endast ner X nyaste meddelanden per flöde</translation>
+    </message>
+    <message>
+        <source> = unlimited</source>
+        <translation> = obegränsat</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Vissa flöden kräver autentisering. Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Autentisering</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Användarnamn</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Lösenord</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Visa lösenord</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>&amp;Testa inställning</translation>
+    </message>
+    <message>
+        <source>Password for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL of your server, without any service-specific path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Inget test utfört ännu.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Här visas resultat av anslutningstest.</translation>
+    </message>
+    <message>
+        <source>Limiting number of downloaded messages per feed makes updating of feeds faster, but if your feed contains bigger number of messages than specified limit, then some older messages might not be downloaded during feed update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>= unlimited</source>
+        <translation>= obegränsat</translation>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>meddelanden</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Nätverksfel: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation>Nätverksfel! Har du angett korrekt Nextcloud-slutpunkt och lösenord?</translation>
+    </message>
+    <message>
+        <source>You are good to go!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Yeah.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Användarnamn saknas.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>Användarnamn okay.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>Lösenord saknas.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>Lösenord okay.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>URL saknas.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>URL okay.</translation>
+    </message>
+</context>
+<context>
+    <name>GreaderNetwork</name>
+    <message>
+        <source>Unknown service</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
@@ -2458,11 +2587,11 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>App ID</source>
-        <translation type="unfinished"/>
+        <translation>Program-ID</translation>
     </message>
     <message>
         <source>App key</source>
-        <translation type="unfinished"/>
+        <translation>Programnyckel</translation>
     </message>
     <message>
         <source>Redirect URL</source>
@@ -2470,7 +2599,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Get my own App ID</source>
-        <translation type="unfinished"/>
+        <translation>Hämta mitt eget program-ID</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -2488,7 +2617,9 @@ Inloggningstoken upphör: %2</translation>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
 
 It is highly recommended to create your own &quot;App ID&quot;. Because predefined one may be limited due to usage quotas if used by too many users simultaneously.</source>
-        <translation type="unfinished"/>
+        <translation>Angiven omdirigerings-URL måste börja med &quot;http://localhost&quot; och måste konfigureras i ditt &quot;OAuth-program&quot;.
+
+Det rekommenderas starkt att du skapar ditt eget program-ID, eftersom det fördefinierade kan vara begränsat på grund av användningskvoter, om det används av alltför många användare samtidigt.</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -3128,11 +3259,11 @@ Inloggningstoken upphör: %2</translation>
         <translation>Du måste gå till denna webbsida för att logga in:</translation>
     </message>
     <message>
-        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
-        <translation>Kunde inte starta OAuth vidarebefordringslyssnare. Dina rättigheter kanske inte är höga nog.</translation>
+        <source>You can close this window now. Go back to %1.</source>
+        <translation>Du kan stänga det här fönstret nu. Gå tillbaka till %1.</translation>
     </message>
     <message>
-        <source>You can close this window now. Go back to %1.</source>
+        <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3355,6 +3486,10 @@ genom att klicka på denna popup-avisering.</translation>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation>Standard online-flöden (RSS/ATOM/JSON)</translation>
     </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3385,6 +3520,29 @@ genom att klicka på denna popup-avisering.</translation>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>ScriptException</name>
+    <message>
+        <source>script line is not well-formed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script threw an error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script&apos;s interpreter was not found</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script execution took too long</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>unknown error</source>
+        <translation>Okänt fel</translation>
     </message>
 </context>
 <context>
@@ -3562,7 +3720,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Network proxy</source>
-        <translation type="unfinished"/>
+        <translation>Nätverksproxy</translation>
     </message>
 </context>
 <context>
@@ -3846,6 +4004,10 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <source>Bring application window to front once message is opened in external web browser</source>
         <translation>Flytta programfönstret längst fram när meddelande öppnats i extern webbläsare</translation>
     </message>
+    <message>
+        <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4073,10 +4235,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Metadata hämtades inte</translation>
     </message>
     <message>
-        <source>Metadata was not fetched because: %1.</source>
-        <translation>Metadata hämtades inte på grund av: %1.</translation>
-    </message>
-    <message>
         <source>
 Network status: %1
 Encoding: %2
@@ -4085,6 +4243,22 @@ Type: %3</source>
 Nätverksstatus: %1
 Kodning: %2
 Typ: %3</translation>
+    </message>
+    <message>
+        <source>Script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Local file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata was not fetched.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4126,10 +4300,6 @@ Typ: %3</translation>
         <translation>Beskrivning</translation>
     </message>
     <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
         <source>Fetch metadata</source>
         <translation>Hämta metadata</translation>
     </message>
@@ -4162,14 +4332,6 @@ Typ: %3</translation>
         <translation>Beskriv flödet.</translation>
     </message>
     <message>
-        <source>Full feed url including scheme</source>
-        <translation>Flödets fullständiga URL inklusive schema</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Ange flödets URL.</translation>
-    </message>
-    <message>
         <source>Icon selection</source>
         <translation>Ikonval</translation>
     </message>
@@ -4198,16 +4360,8 @@ Typ: %3</translation>
         <translation>Ikonmetadata hämtad.</translation>
     </message>
     <message>
-        <source>Result: %1.</source>
-        <translation>Resultat: %1.</translation>
-    </message>
-    <message>
         <source>Icon metadata not fetched.</source>
         <translation>Ikonmetadata inte hämtad.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Fel: %1.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
@@ -4285,6 +4439,50 @@ Typ: %3</translation>
     <message>
         <source>Icon type:</source>
         <translation>Ikontyp:</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Post-process script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed source identifier</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed source identifier which can be URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full command to execute</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can enter full command including interpreter here.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Here you can enter script executaion line, including interpreter.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source needs to include &quot;#&quot; separator.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source is empty.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

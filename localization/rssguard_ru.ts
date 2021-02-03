@@ -793,7 +793,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Network proxy</source>
-        <translation type="unfinished"/>
+        <translation>Сетевой прокси</translation>
     </message>
 </context>
 <context>
@@ -1032,6 +1032,13 @@ or this functionality is not implemented yet.</source>
 </context>
 <context>
     <name>FormEditGmailAccount</name>
+    <message>
+        <source>Server setup</source>
+        <translation>Настройка сервера</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditGreaderAccount</name>
     <message>
         <source>Server setup</source>
         <translation>Настройка сервера</translation>
@@ -2257,11 +2264,11 @@ You can install it now.</source>
     </message>
     <message>
         <source>Client ID</source>
-        <translation type="unfinished"/>
+        <translation>Идентификатор клиента</translation>
     </message>
     <message>
         <source>Client secret</source>
-        <translation type="unfinished"/>
+        <translation>Секрет клиента</translation>
     </message>
     <message>
         <source>Redirect URL</source>
@@ -2425,6 +2432,128 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>GreaderAccountDetails</name>
+    <message>
+        <source>Service</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL </translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Загружать только Х новейших сообщений для канала</translation>
+    </message>
+    <message>
+        <source> = unlimited</source>
+        <translation> = не ограниченно</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Некоторые каналы требуют аутентификации, включая каналы GMail. Поддерживаются схемы проверки подлинности BASIC, NTLM-2 и DIGEST-MD5.</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Аутентификация</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Логин</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Пароль</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Показать пароль</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>Настройка теста (&amp;T)</translation>
+    </message>
+    <message>
+        <source>Password for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL of your server, without any service-specific path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Тест еще не сделан.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Здесь показаны результаты проверки соединения.</translation>
+    </message>
+    <message>
+        <source>Limiting number of downloaded messages per feed makes updating of feeds faster, but if your feed contains bigger number of messages than specified limit, then some older messages might not be downloaded during feed update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>= unlimited</source>
+        <translation>= не ограниченно</translation>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>сообщения</translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Ошибка сети: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation>Ошибка сети, вы ввели правильную конечную точку Nextcloud и пароль?</translation>
+    </message>
+    <message>
+        <source>You are good to go!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Yeah.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Логин не может быть пустым.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>Имя пользователя в порядке.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>Пароль не может быть пустым.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation>Пароль в порядке.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>URL не может быть пустым.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation>URL в порядке.</translation>
+    </message>
+</context>
+<context>
+    <name>GreaderNetwork</name>
+    <message>
+        <source>Unknown service</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
@@ -2458,11 +2587,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>App ID</source>
-        <translation type="unfinished"/>
+        <translation>Идентификатор приложения</translation>
     </message>
     <message>
         <source>App key</source>
-        <translation type="unfinished"/>
+        <translation>Ключ приложения</translation>
     </message>
     <message>
         <source>Redirect URL</source>
@@ -2470,7 +2599,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Get my own App ID</source>
-        <translation type="unfinished"/>
+        <translation>Получить собственный идентификатор приложения</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -2488,7 +2617,9 @@ Login tokens expiration: %2</source>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
 
 It is highly recommended to create your own &quot;App ID&quot;. Because predefined one may be limited due to usage quotas if used by too many users simultaneously.</source>
-        <translation type="unfinished"/>
+        <translation>Указанный URL-адрес перенаправления должен начинаться с «http://localhost» и должен быть настроен в вашем «приложении» OAuth.
+
+Настоятельно рекомендуется создать свой собственный «Идентификатор приложения». Поскольку предопределенный вариант может быть ограничен из-за квот использования, если используется слишком большим количеством пользователей одновременно.</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -3129,11 +3260,11 @@ Login tokens expiration: %2</source>
         <translation>Чтобы войти, нужно перейти на этот веб-сайт:</translation>
     </message>
     <message>
-        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
-        <translation>Не удалось запустить OAuth Redirect Listener. Возможно, у вас не хватает прав.</translation>
+        <source>You can close this window now. Go back to %1.</source>
+        <translation>Вы можете закрыть это окно сейчас. Вернуться к %1.</translation>
     </message>
     <message>
-        <source>You can close this window now. Go back to %1.</source>
+        <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3360,6 +3491,10 @@ version by clicking this popup notification.</source>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation>Стандартные онлайн-каналы (RSS/ATOM/JSON)</translation>
     </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3390,6 +3525,29 @@ version by clicking this popup notification.</source>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform><numerusform>%n непрочитанное(ых) сообщение(й)</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>ScriptException</name>
+    <message>
+        <source>script line is not well-formed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script threw an error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script&apos;s interpreter was not found</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script execution took too long</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>unknown error</source>
+        <translation>неизвестная ошибка</translation>
     </message>
 </context>
 <context>
@@ -3567,7 +3725,7 @@ File filter for external tool selection dialog.</extracomment>
     </message>
     <message>
         <source>Network proxy</source>
-        <translation type="unfinished"/>
+        <translation>Сетевой прокси</translation>
     </message>
 </context>
 <context>
@@ -3850,6 +4008,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Bring application window to front once message is opened in external web browser</source>
         <translation>Вывести окно приложения на передний план после открытия сообщения во внешнем веб-браузере</translation>
     </message>
+    <message>
+        <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4077,10 +4239,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Метаданные не получены</translation>
     </message>
     <message>
-        <source>Metadata was not fetched because: %1.</source>
-        <translation>Метаданные не получены, потому что: %1.</translation>
-    </message>
-    <message>
         <source>
 Network status: %1
 Encoding: %2
@@ -4089,6 +4247,22 @@ Type: %3</source>
 Статус сети: %1
 Кодирование: %2
 Тип: %3</translation>
+    </message>
+    <message>
+        <source>Script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Local file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata was not fetched.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4130,10 +4304,6 @@ Type: %3</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <source>URL</source>
-        <translation>URL </translation>
-    </message>
-    <message>
         <source>Fetch metadata</source>
         <translation>Получить метаданные</translation>
     </message>
@@ -4166,14 +4336,6 @@ Type: %3</source>
         <translation>Задайте описание для вашего канала.</translation>
     </message>
     <message>
-        <source>Full feed url including scheme</source>
-        <translation>Полный URL канала, включая схему</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Установите URL для вашего канала.</translation>
-    </message>
-    <message>
         <source>Icon selection</source>
         <translation>Выбор иконки</translation>
     </message>
@@ -4202,16 +4364,8 @@ Type: %3</source>
         <translation>Получены метаданные иконки.</translation>
     </message>
     <message>
-        <source>Result: %1.</source>
-        <translation>Результат: %1.</translation>
-    </message>
-    <message>
         <source>Icon metadata not fetched.</source>
         <translation>Метаданные иконки не получены.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Ошибка: %1.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
@@ -4289,6 +4443,50 @@ Type: %3</source>
     <message>
         <source>Icon type:</source>
         <translation>Тип иконки:</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Post-process script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed source identifier</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed source identifier which can be URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full command to execute</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can enter full command including interpreter here.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Here you can enter script executaion line, including interpreter.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source needs to include &quot;#&quot; separator.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source is empty.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

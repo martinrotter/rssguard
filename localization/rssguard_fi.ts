@@ -1036,6 +1036,13 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormEditGreaderAccount</name>
+    <message>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormEditInoreaderAccount</name>
     <message>
         <source>Server setup</source>
@@ -2235,11 +2242,11 @@ Voit asentaa sen nyt.</translation>
     <name>GmailAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 -asetukset</translation>
     </message>
     <message>
         <source>Client ID</source>
@@ -2251,7 +2258,7 @@ Voit asentaa sen nyt.</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Uudelleenohjauksen URL-osoite</translation>
     </message>
     <message>
         <source>Get my credentials</source>
@@ -2259,7 +2266,7 @@ Voit asentaa sen nyt.</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -2267,7 +2274,7 @@ Voit asentaa sen nyt.</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Kirjaudu</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
@@ -2275,15 +2282,15 @@ Voit asentaa sen nyt.</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Ei vielä testattu.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjälle näkyvä käyttäjätunnus</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Olet jo sisäänkirjautuneena.</translation>
     </message>
     <message>
         <source>Access granted.</source>
@@ -2303,11 +2310,11 @@ Voit asentaa sen nyt.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Testauksen aikana tapahtui virhe.</translation>
     </message>
     <message>
         <source>There is error. %1 </source>
-        <translation type="unfinished"/>
+        <translation>Ilmeni virhe. %1 </translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
@@ -2410,6 +2417,128 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>GreaderAccountDetails</name>
+    <message>
+        <source>Service</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL-osoite</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
+    </message>
+    <message>
+        <source> = unlimited</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation>Tunnistautuminen</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Käyttäjätunnus</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Salasana</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation>Näytä salasana</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation>&amp;Testaa asetukset</translation>
+    </message>
+    <message>
+        <source>Password for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL of your server, without any service-specific path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Testiä ei ole vielä tehty.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Tässä näytetään yhteystestin tulokset.</translation>
+    </message>
+    <message>
+        <source>Limiting number of downloaded messages per feed makes updating of feeds faster, but if your feed contains bigger number of messages than specified limit, then some older messages might not be downloaded during feed update.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>= unlimited</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation>Verkkovirhe: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are good to go!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Yeah.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Käyttäjätunnus ei voi olla tyhjä.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation>Salasana ei voi olla tyhjä.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation>URL-osoite ei voi olla tyhjä.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>GreaderNetwork</name>
+    <message>
+        <source>Unknown service</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
@@ -2435,11 +2564,11 @@ Login tokens expiration: %2</source>
     <name>InoreaderAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 -asetukset</translation>
     </message>
     <message>
         <source>App ID</source>
@@ -2451,7 +2580,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Uudelleenohjauksen URL-osoite</translation>
     </message>
     <message>
         <source>Get my own App ID</source>
@@ -2463,11 +2592,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Kirjaudu</translation>
     </message>
     <message>
         <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
@@ -2477,15 +2606,15 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Ei vielä testattu.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjälle näkyvä käyttäjätunnus</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Olet jo sisäänkirjautuneena.</translation>
     </message>
     <message>
         <source>Access granted.</source>
@@ -2505,11 +2634,11 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Testauksen aikana tapahtui virhe.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Ilmeni virhe. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
@@ -3011,11 +3140,11 @@ Login tokens expiration: %2</source>
     <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Tyyppi</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation type="unfinished"/>
+        <translation>Palvelin</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
@@ -3023,11 +3152,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"/>
+        <translation>Portti</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
@@ -3035,7 +3164,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Salasana</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
@@ -3043,7 +3172,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Display password</source>
-        <translation type="unfinished"/>
+        <translation>Näytä salasana</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
@@ -3051,19 +3180,19 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="unfinished"/>
+        <translation>Ei välityspalvelinta</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation type="unfinished"/>
+        <translation>Järjestelmän välityspalvelin</translation>
     </message>
     <message>
         <source>Socks5</source>
-        <translation type="unfinished"/>
+        <translation>Socks5</translation>
     </message>
     <message>
         <source>Http</source>
-        <translation type="unfinished"/>
+        <translation>Http</translation>
     </message>
 </context>
 <context>
@@ -3112,11 +3241,11 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Failed to starting OAuth redirection listener. Maybe your rights are not high enough.</source>
+        <source>You can close this window now. Go back to %1.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can close this window now. Go back to %1.</source>
+        <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3124,7 +3253,7 @@ Login tokens expiration: %2</source>
     <name>OwnCloudAccountDetails</name>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat viestit</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
@@ -3132,7 +3261,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
     </message>
     <message>
         <source> = unlimited</source>
@@ -3140,7 +3269,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -3148,23 +3277,23 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Tunnistautuminen</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Salasana</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>Näytä salasana</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testaa asetukset</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
@@ -3172,23 +3301,23 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud-tilin salasana</translation>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud-tilin käyttäjätunnus</translation>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud-palvelimen URL-osoite, älä sisällytä API-polkua</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Testiä ei ole vielä tehty.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Tässä näytetään yhteystestin tulokset.</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
@@ -3204,7 +3333,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Verkkovirhe: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
@@ -3216,11 +3345,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Valittu Nextcloud News -palvelin käyttää ei-tuettua versiota.</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud News -palvelin on kunnossa.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -3228,7 +3357,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus ei voi olla tyhjä.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
@@ -3236,7 +3365,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Salasana ei voi olla tyhjä.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
@@ -3244,7 +3373,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite ei voi olla tyhjä.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
@@ -3328,6 +3457,10 @@ version by clicking this popup notification.</source>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation>Standardi verkkosyöte (RSS/ATOM/JSON)</translation>
     </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3358,6 +3491,29 @@ version by clicking this popup notification.</source>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>ScriptException</name>
+    <message>
+        <source>script line is not well-formed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script threw an error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script&apos;s interpreter was not found</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>script execution took too long</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>unknown error</source>
+        <translation>tuntematon virhe</translation>
     </message>
 </context>
 <context>
@@ -3806,6 +3962,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Bring application window to front once message is opened in external web browser</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4033,10 +4193,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Metatietoja ei noudettu</translation>
     </message>
     <message>
-        <source>Metadata was not fetched because: %1.</source>
-        <translation>Metatietoja ei noudettu, syy: %1.</translation>
-    </message>
-    <message>
         <source>
 Network status: %1
 Encoding: %2
@@ -4045,6 +4201,22 @@ Type: %3</source>
 Verkon tila: %1
 Merkistö: %2
 Tyyppi: %3</translation>
+    </message>
+    <message>
+        <source>Script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Local file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata was not fetched.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4086,10 +4258,6 @@ Tyyppi: %3</translation>
         <translation>Kuvaus</translation>
     </message>
     <message>
-        <source>URL</source>
-        <translation>URL-osoite</translation>
-    </message>
-    <message>
         <source>Fetch metadata</source>
         <translation>Hae metatiedot</translation>
     </message>
@@ -4122,14 +4290,6 @@ Tyyppi: %3</translation>
         <translation>Aseta kuvaus syötteelle.</translation>
     </message>
     <message>
-        <source>Full feed url including scheme</source>
-        <translation>Syötteen koko URL-osoite sisältäen skeeman</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Aseta URL-osoite syötteelle.</translation>
-    </message>
-    <message>
         <source>Icon selection</source>
         <translation>Kuvakkeen valinta</translation>
     </message>
@@ -4158,16 +4318,8 @@ Tyyppi: %3</translation>
         <translation>Kuvakkeen metatiedot noudettu.</translation>
     </message>
     <message>
-        <source>Result: %1.</source>
-        <translation>Tulos: %1.</translation>
-    </message>
-    <message>
         <source>Icon metadata not fetched.</source>
         <translation>Kuvakkeen metatietoja ei noudettu.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Virhe: %1.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
@@ -4245,6 +4397,50 @@ Tyyppi: %3</translation>
     <message>
         <source>Icon type:</source>
         <translation>Kuvakkeen tyyppi:</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Post-process script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed source identifier</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed source identifier which can be URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full command to execute</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can enter full command including interpreter here.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Here you can enter script executaion line, including interpreter.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source needs to include &quot;#&quot; separator.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The source is empty.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4348,7 +4544,7 @@ Unread news: %2</source>
     <name>T</name>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Lisää uusi tili</translation>
     </message>
 </context>
 <context>
