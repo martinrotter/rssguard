@@ -2436,7 +2436,7 @@ Expiração dos tokens de login: %2</translation>
     <name>GreaderAccountDetails</name>
     <message>
         <source>Service</source>
-        <translation type="unfinished"/>
+        <translation>Serviço</translation>
     </message>
     <message>
         <source>URL</source>
@@ -2476,15 +2476,15 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Password for your account</source>
-        <translation type="unfinished"/>
+        <translation>Senha para a sua conta</translation>
     </message>
     <message>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Nome de usuário para a sua conta</translation>
     </message>
     <message>
         <source>URL of your server, without any service-specific path</source>
-        <translation type="unfinished"/>
+        <translation>URL do seu servidor, sem nenhum caminho específico de serviço</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -2496,7 +2496,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster, but if your feed contains bigger number of messages than specified limit, then some older messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation>Limitar o número de mensagens baixadas por feed torna a atualização dos feeds mais rápida, mas se o seu feed contiver um número maior de mensagens do que o limite especificado, algumas mensagens podem não ser baixadas durante a atualização do feed.</translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -2516,11 +2516,11 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>You are good to go!</source>
-        <translation type="unfinished"/>
+        <translation>Tudo pronto para continuar!</translation>
     </message>
     <message>
         <source>Yeah.</source>
-        <translation type="unfinished"/>
+        <translation>Legal</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -2551,7 +2551,7 @@ Expiração dos tokens de login: %2</translation>
     <name>GreaderNetwork</name>
     <message>
         <source>Unknown service</source>
-        <translation type="unfinished"/>
+        <translation>Serviço desconhecido</translation>
     </message>
 </context>
 <context>
@@ -3265,7 +3265,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
-        <translation type="unfinished"/>
+        <translation>Falha ao iniciar escuta de redirecionamento OAuth. Talvez você não possua direitos suficientes.</translation>
     </message>
 </context>
 <context>
@@ -3489,7 +3489,7 @@ versão, clicando nesta notificação popup.</translation>
     </message>
     <message>
         <source>Google Reader API is used by many online RSS readers. This is here to support</source>
-        <translation type="unfinished"/>
+        <translation>O API do Google Reader é usado por muitos leitores de RSS online. Isto está aqui para oferecer suporte</translation>
     </message>
 </context>
 <context>
@@ -3527,19 +3527,19 @@ versão, clicando nesta notificação popup.</translation>
     <name>ScriptException</name>
     <message>
         <source>script line is not well-formed</source>
-        <translation type="unfinished"/>
+        <translation>a linha do script não está bem formada</translation>
     </message>
     <message>
         <source>script threw an error</source>
-        <translation type="unfinished"/>
+        <translation>o script gerou um erro</translation>
     </message>
     <message>
         <source>script&apos;s interpreter was not found</source>
-        <translation type="unfinished"/>
+        <translation>o intérprete do script não foi encontrado</translation>
     </message>
     <message>
         <source>script execution took too long</source>
-        <translation type="unfinished"/>
+        <translation>a execução do script demorou tempo demais</translation>
     </message>
     <message>
         <source>unknown error</source>
@@ -4006,7 +4006,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar ícones reais dos feeds na lista de mensagens em vez dos ícones de lido/não lido</translation>
     </message>
 </context>
 <context>
@@ -4246,19 +4246,19 @@ Tipo: %3</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation type="unfinished"/>
+        <translation>Script</translation>
     </message>
     <message>
         <source>Local file</source>
-        <translation type="unfinished"/>
+        <translation>Arquivo local</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Desconhecido</translation>
     </message>
     <message>
         <source>Metadata was not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Os metadados não foram obtidos.</translation>
     </message>
 </context>
 <context>
@@ -4442,47 +4442,47 @@ Tipo: %3</translation>
     </message>
     <message>
         <source>Source</source>
-        <translation type="unfinished"/>
+        <translation>Origem</translation>
     </message>
     <message>
         <source>Post-process script</source>
-        <translation type="unfinished"/>
+        <translation>Script de pós-processamento</translation>
     </message>
     <message>
         <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-        <translation type="unfinished"/>
+        <translation>Você pode usar o URL como fonte de seu feed ou pode produzir seu feed com um script personalizado. Além disso, você pode pós-processar os dados de feed gerados com outro script, se desejar. Estes são recursos avançados e certifique-se de ler a documentação antes de usá-los.</translation>
     </message>
     <message>
         <source>Full feed source identifier</source>
-        <translation type="unfinished"/>
+        <translation>Identificador completo de origem de feed</translation>
     </message>
     <message>
         <source>Full feed source identifier which can be URL.</source>
-        <translation type="unfinished"/>
+        <translation>Identificador completo de origem de feed que pode ser o URL.</translation>
     </message>
     <message>
         <source>Full command to execute</source>
-        <translation type="unfinished"/>
+        <translation>Comando completo para executar</translation>
     </message>
     <message>
         <source>You can enter full command including interpreter here.</source>
-        <translation type="unfinished"/>
+        <translation>Você pode entrar aqui o comando completo incluindo o interpretador.</translation>
     </message>
     <message>
         <source>Here you can enter script executaion line, including interpreter.</source>
-        <translation type="unfinished"/>
+        <translation>Aqui você pode inserir a linha de execução do script, incluindo o interpretador.</translation>
     </message>
     <message>
         <source>The source is ok.</source>
-        <translation type="unfinished"/>
+        <translation>A origem está correta.</translation>
     </message>
     <message>
         <source>The source needs to include &quot;#&quot; separator.</source>
-        <translation type="unfinished"/>
+        <translation>A origem precisa incluir o separador &quot;#&quot;.</translation>
     </message>
     <message>
         <source>The source is empty.</source>
-        <translation type="unfinished"/>
+        <translation>A origem está vazia.</translation>
     </message>
 </context>
 <context>

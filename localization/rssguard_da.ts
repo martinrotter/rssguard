@@ -2421,15 +2421,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Hent kun de seneste X meddelelser per feed</translation>
     </message>
     <message>
         <source> = unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= ubegrænset</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -2437,23 +2437,23 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Godkendelse</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Adgangskode</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>Vis adgangskode</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Test opsætning</translation>
     </message>
     <message>
         <source>Password for your account</source>
@@ -2469,7 +2469,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Endnu ikke testet.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
@@ -2481,19 +2481,19 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= ubegrænset</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>meddelelser</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Netværksfejl: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Netværksfejl, har du indført den rigtige slutsti og kodeord til Nextcloud?</translation>
     </message>
     <message>
         <source>You are good to go!</source>
@@ -2505,27 +2505,27 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn skal udfyldes.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn er okay.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord kan ikke være tomt.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord er okay.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse kan ikke være tom.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL er okay.</translation>
     </message>
 </context>
 <context>
@@ -3514,7 +3514,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>unknown error</source>
-        <translation type="unfinished"/>
+        <translation>ukendt fejl</translation>
     </message>
 </context>
 <context>

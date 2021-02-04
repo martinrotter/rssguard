@@ -2475,15 +2475,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Password for your account</source>
-        <translation type="unfinished"/>
+        <translation>Пароль для вашей учетной записи</translation>
     </message>
     <message>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Имя пользователя для вашей учетной записи</translation>
     </message>
     <message>
         <source>URL of your server, without any service-specific path</source>
-        <translation type="unfinished"/>
+        <translation>URL вашего сервера, без указания пути к конкретной службе</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -2495,7 +2495,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster, but if your feed contains bigger number of messages than specified limit, then some older messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation>Ограничение количества загружаемых сообщений для одного канала ускоряет обновление каналов, но если ваш канал содержит большее количество сообщений, чем указанное ограничение, некоторые старые сообщения могут не загрузиться во время обновления канала.</translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -2550,7 +2550,7 @@ Login tokens expiration: %2</source>
     <name>GreaderNetwork</name>
     <message>
         <source>Unknown service</source>
-        <translation type="unfinished"/>
+        <translation>Неизвестный сервис</translation>
     </message>
 </context>
 <context>
@@ -3265,7 +3265,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось запустить OAuth redirect listener. Возможно, у вас не хватает прав.</translation>
     </message>
 </context>
 <context>
@@ -4250,11 +4250,11 @@ Type: %3</source>
     </message>
     <message>
         <source>Script</source>
-        <translation type="unfinished"/>
+        <translation>Скрипт</translation>
     </message>
     <message>
         <source>Local file</source>
-        <translation type="unfinished"/>
+        <translation>Локальный файл</translation>
     </message>
     <message>
         <source>Unknown</source>
