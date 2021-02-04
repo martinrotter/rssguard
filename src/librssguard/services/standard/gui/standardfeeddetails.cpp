@@ -235,8 +235,8 @@ void StandardFeedDetails::onUrlChanged(const QString& new_url) {
       m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
     }
     else if (!new_url.simplified().isEmpty()) {
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error,
-                                  tr("The source needs to include \"#\" separator."));
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Warning,
+                                  tr("The source does not seem to use \"#\" separator for arguments."));
     }
     else {
       m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("The source is empty."));
@@ -249,14 +249,14 @@ void StandardFeedDetails::onUrlChanged(const QString& new_url) {
 
 void StandardFeedDetails::onPostProcessScriptChanged(const QString& new_pp) {
   if (QRegularExpression(SCRIPT_SOURCE_TYPE_REGEXP).match(new_pp).hasMatch()) {
-    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
+    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("Command is ok."));
   }
   else if (!new_pp.simplified().isEmpty()) {
-    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Error,
-                                           tr("The source needs to include \"#\" separator."));
+    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Warning,
+                                           tr("Command not seem to use \"#\" separator for arguments."));
   }
   else {
-    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is empty."));
+    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("Command is empty."));
   }
 }
 

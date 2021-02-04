@@ -16,6 +16,7 @@ RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed us
 * [Gmail API](https://developers.google.com/gmail/api),
 * [FreshRSS](https://freshrss.org),
 * [The Old Reader](https://theoldreader.com),
-* [Bazqux](https://bazqux.com).
+* [Bazqux](https://bazqux.com),
+* [Reedah](http://reedah.com).
 
 Application icon was kindly contributed by Siddharth Yadav - @Siddharth_yd (Instagram), illustrationdesignsid@gmail.com (e-mail). Flag icons were provided by [IconDrawer](http://www.icondrawer.com).
