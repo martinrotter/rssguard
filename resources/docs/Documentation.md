@@ -3,6 +3,7 @@
     * [Downloads](Downloads.md)
     * [Philosophy](#philosophy)
     * [Versioning](#versioning)
+    * [How to contribute](#how-to-contribute)
     * [Reporting bugs](#reporting-bugs)
     * [Localizations](#localizations)
     * [Web-based and lite app variants](#web-based-and-lite-app-variants)
@@ -34,7 +35,7 @@ I am glad to accept any kind of donations, see ♥ **Sponsor** button on the top
 Note that some more elaborate parts of this documentation are placed in separate files for practical purposes.
 
 ## Philosophy
-RSS Guard tends to be independent software. It's free, it's open-source. RSS Guard accepts donations but only as a way of saying "thank you for RSS Guard".
+RSS Guard tends to be independent software. It's free, it's open-source.
 
 ## Versioning
 RSS Guard uses [semantic versioning](https://semver.org/). The versioning scheme is `X.Y.Z`, where:
@@ -42,6 +43,16 @@ RSS Guard uses [semantic versioning](https://semver.org/). The versioning scheme
 * `X` marks major release version. This number will change very rarely and indicates critical new changes breaking backward compatibility.
 * `Y` indicates that there is new major feature available.
 * `Z` indicates that there are newly fixed bugs or small features introduced.
+
+## How to contribute
+RSS Guard is open source application with free GNU GPLv3 license. Everyone willing to contribute is welcomed. You can contribute in many ways by:
+* fixing bugs and requesting PRs (pull requests),
+* [localizing](#localizations) to other languages,
+* supporting author with [donations](https://github.com/sponsors/martinrotter),
+* spreading the word,
+* reporting discovered [bugs](#reporting-bugs).
+
+If you decide to contribute code, then please try to follow the style and formatting of existing source code. Also, I use [uncrustify](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/uncrustify/uncrustify.cfg) to format source code.
 
 ## Reporting bugs
 Please report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible, along with steps taken leading up to the issue occurring.

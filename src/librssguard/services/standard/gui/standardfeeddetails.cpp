@@ -21,10 +21,10 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   m_ui.m_txtTitle->lineEdit()->setToolTip(tr("Set title for your feed."));
   m_ui.m_txtDescription->lineEdit()->setPlaceholderText(tr("Feed description"));
   m_ui.m_txtDescription->lineEdit()->setToolTip(tr("Set description for your feed."));
-  m_ui.m_txtSource->lineEdit()->setPlaceholderText(tr("Full feed source identifier"));
-  m_ui.m_txtSource->lineEdit()->setToolTip(tr("Full feed source identifier which can be URL."));
-  m_ui.m_txtPostProcessScript->lineEdit()->setPlaceholderText(tr("Full command to execute"));
-  m_ui.m_txtPostProcessScript->lineEdit()->setToolTip(tr("You can enter full command including interpreter here."));
+  m_ui.m_txtSource->textEdit()->setPlaceholderText(tr("Full feed source identifier"));
+  m_ui.m_txtSource->textEdit()->setToolTip(tr("Full feed source identifier which can be URL."));
+  m_ui.m_txtPostProcessScript->textEdit()->setPlaceholderText(tr("Full command to execute"));
+  m_ui.m_txtPostProcessScript->textEdit()->setToolTip(tr("You can enter full command including interpreter here."));
 
   // Add source types.
   m_ui.m_cmbSourceType->addItem(StandardFeed::sourceTypeToString(StandardFeed::SourceType::Url),
@@ -71,7 +71,7 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   m_iconMenu->addAction(m_actionLoadIconFromFile);
   m_iconMenu->addAction(m_actionUseDefaultIcon);
   m_ui.m_btnIcon->setMenu(m_iconMenu);
-  m_ui.m_txtSource->lineEdit()->setFocus(Qt::TabFocusReason);
+  m_ui.m_txtSource->textEdit()->setFocus(Qt::FocusReason::TabFocusReason);
 
   // Set feed metadata fetch label.
   m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Information,
@@ -82,10 +82,14 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   connect(m_ui.m_txtDescription->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onDescriptionChanged);
   connect(m_ui.m_cmbSourceType, QOverload<int>::of(&QComboBox::currentIndexChanged),
           this, [this]() {
-    onUrlChanged(m_ui.m_txtSource->lineEdit()->text());
+    onUrlChanged(m_ui.m_txtSource->textEdit()->toPlainText());
   });
-  connect(m_ui.m_txtSource->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onUrlChanged);
-  connect(m_ui.m_txtPostProcessScript->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onPostProcessScriptChanged);
+  connect(m_ui.m_txtSource->textEdit(), &QPlainTextEdit::textChanged, this, [this]() {
+    onUrlChanged(m_ui.m_txtSource->textEdit()->toPlainText());
+  });
+  connect(m_ui.m_txtPostProcessScript->textEdit(), &QPlainTextEdit::textChanged, this, [this]() {
+    onPostProcessScriptChanged(m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
+  });
   connect(m_actionLoadIconFromFile, &QAction::triggered, this, &StandardFeedDetails::onLoadIconFromFile);
   connect(m_actionUseDefaultIcon, &QAction::triggered, this, &StandardFeedDetails::onUseDefaultIcon);
 
@@ -94,9 +98,9 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   setTabOrder(m_ui.m_cmbEncoding, m_ui.m_txtTitle->lineEdit());
   setTabOrder(m_ui.m_txtTitle->lineEdit(), m_ui.m_txtDescription->lineEdit());
   setTabOrder(m_ui.m_txtDescription->lineEdit(), m_ui.m_cmbSourceType);
-  setTabOrder(m_ui.m_cmbSourceType, m_ui.m_txtSource->lineEdit());
-  setTabOrder(m_ui.m_txtSource->lineEdit(), m_ui.m_txtPostProcessScript->lineEdit());
-  setTabOrder(m_ui.m_txtPostProcessScript->lineEdit(), m_ui.m_btnFetchMetadata);
+  setTabOrder(m_ui.m_cmbSourceType, m_ui.m_txtSource->textEdit());
+  setTabOrder(m_ui.m_txtSource->textEdit(), m_ui.m_txtPostProcessScript->textEdit());
+  setTabOrder(m_ui.m_txtPostProcessScript->textEdit(), m_ui.m_btnFetchMetadata);
   setTabOrder(m_ui.m_btnFetchMetadata, m_ui.m_btnIcon);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblScriptInfo, false);
@@ -309,10 +313,10 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
   }
 
   if (!url.isEmpty()) {
-    m_ui.m_txtSource->lineEdit()->setText(url);
+    m_ui.m_txtSource->textEdit()->setPlainText(url);
   }
   else if (Application::clipboard()->mimeData()->hasText()) {
-    m_ui.m_txtSource->lineEdit()->setText(Application::clipboard()->text());
+    m_ui.m_txtSource->textEdit()->setPlainText(Application::clipboard()->text());
   }
 
   m_ui.m_txtSource->setFocus();
@@ -324,8 +328,8 @@ void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
   m_ui.m_txtTitle->lineEdit()->setText(feed->title());
   m_ui.m_txtDescription->lineEdit()->setText(feed->description());
   m_ui.m_btnIcon->setIcon(feed->icon());
-  m_ui.m_txtSource->lineEdit()->setText(feed->url());
-  m_ui.m_txtPostProcessScript->lineEdit()->setText(feed->postProcessScript());
+  m_ui.m_txtSource->textEdit()->setPlainText(feed->url());
+  m_ui.m_txtPostProcessScript->textEdit()->setPlainText(feed->postProcessScript());
   m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue(int(feed->type()))));
   m_ui.m_cmbEncoding->setCurrentIndex(m_ui.m_cmbEncoding->findData(feed->encoding(),
                                                                    Qt::ItemDataRole::DisplayRole,

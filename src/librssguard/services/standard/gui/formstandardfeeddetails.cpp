@@ -48,16 +48,16 @@ int FormStandardFeedDetails::addEditFeed(StandardFeed* input_feed, RootItem* par
 
 void FormStandardFeedDetails::guessFeed() {
   m_standardFeedDetails->guessFeed(m_standardFeedDetails->sourceType(),
-                                   m_standardFeedDetails->m_ui.m_txtSource->lineEdit()->text(),
-                                   m_standardFeedDetails->m_ui.m_txtPostProcessScript->lineEdit()->text(),
+                                   m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText(),
+                                   m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
                                    m_authDetails->m_txtUsername->lineEdit()->text(),
                                    m_authDetails->m_txtPassword->lineEdit()->text());
 }
 
 void FormStandardFeedDetails::guessIconOnly() {
   m_standardFeedDetails->guessIconOnly(m_standardFeedDetails->sourceType(),
-                                       m_standardFeedDetails->m_ui.m_txtSource->lineEdit()->text(),
-                                       m_standardFeedDetails->m_ui.m_txtPostProcessScript->lineEdit()->text(),
+                                       m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText(),
+                                       m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
                                        m_authDetails->m_txtUsername->lineEdit()->text(),
                                        m_authDetails->m_txtPassword->lineEdit()->text());
 }
@@ -79,8 +79,8 @@ void FormStandardFeedDetails::apply() {
   new_feed->setEncoding(m_standardFeedDetails->m_ui.m_cmbEncoding->currentText());
   new_feed->setType(type);
   new_feed->setSourceType(m_standardFeedDetails->sourceType());
-  new_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->lineEdit()->text());
-  new_feed->setUrl(m_standardFeedDetails->m_ui.m_txtSource->lineEdit()->text());
+  new_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
+  new_feed->setUrl(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
   new_feed->setPasswordProtected(m_authDetails->m_gbAuthentication->isChecked());
   new_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
   new_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());

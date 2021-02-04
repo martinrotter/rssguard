@@ -21,3 +21,18 @@ LineEditWithStatus::LineEditWithStatus(QWidget* parent)
   m_layout->addWidget(m_wdgInput);
   m_layout->addWidget(m_btnStatus);
 }
+
+TextEditWithStatus::TextEditWithStatus(QWidget* parent)
+  : WidgetWithStatus(parent) {
+  m_wdgInput = new QPlainTextEdit(this);
+  setFocusProxy(m_wdgInput);
+
+  // Set correct size for the tool button.
+  const int txt_input_height = QLineEdit().sizeHint().height();
+
+  m_btnStatus->setFixedSize(txt_input_height, txt_input_height);
+
+  // Compose the layout.
+  m_layout->addWidget(m_wdgInput);
+  m_layout->addWidget(m_btnStatus);
+}

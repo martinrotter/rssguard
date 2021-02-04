@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>429</width>
-    <height>321</height>
+    <width>400</width>
+    <height>460</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -111,23 +111,61 @@
     </widget>
    </item>
    <item row="5" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QComboBox" name="m_cmbSourceType"/>
-     </item>
-     <item>
-      <widget class="LineEditWithStatus" name="m_txtSource" native="true">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>1</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QComboBox" name="m_cmbSourceType"/>
    </item>
-   <item row="8" column="0">
+   <item row="6" column="1">
+    <widget class="TextEditWithStatus" name="m_txtSource" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>50</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Post-process script</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="TextEditWithStatus" name="m_txtPostProcessScript" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>50</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <widget class="QLabel" name="m_lblScriptInfo">
+     <property name="text">
+      <string>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
     <widget class="QLabel" name="label_7">
      <property name="text">
       <string>Fetch metadata</string>
@@ -137,7 +175,7 @@
      </property>
     </widget>
    </item>
-   <item row="8" column="1">
+   <item row="9" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QPushButton" name="m_btnFetchMetadata">
@@ -161,7 +199,7 @@
      </item>
     </layout>
    </item>
-   <item row="9" column="0">
+   <item row="10" column="0">
     <widget class="QLabel" name="m_lblIcon">
      <property name="text">
       <string>Icon</string>
@@ -171,7 +209,7 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="1">
+   <item row="10" column="1">
     <widget class="QToolButton" name="m_btnIcon">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -208,28 +246,18 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
-    <widget class="LineEditWithStatus" name="m_txtPostProcessScript" native="true"/>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Post-process script</string>
+   <item row="11" column="0" colspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-    </widget>
-   </item>
-   <item row="7" column="0" colspan="2">
-    <widget class="QLabel" name="m_lblScriptInfo">
-     <property name="text">
-      <string>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</string>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
+    </spacer>
    </item>
   </layout>
  </widget>
@@ -242,6 +270,12 @@
   </customwidget>
   <customwidget>
    <class>LineEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>lineeditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TextEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
    <container>1</container>
