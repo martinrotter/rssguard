@@ -657,20 +657,19 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
   return messages;
 }
 
-QPair<QString, QString> StandardFeed::prepareExecutionLine(const QString& execution_line) {
+QStringList StandardFeed::prepareExecutionLine(const QString& execution_line) {
   auto split_exec = execution_line.split('#', Qt::SplitBehaviorFlags::KeepEmptyParts);
 
-  if (split_exec.size() != 2) {
+  if (split_exec.size() <= 1) {
     throw ScriptException(ScriptException::Reason::ExecutionLineInvalid);
   }
 
   auto user_data_folder = qApp->userDataFolder();
 
-  return { split_exec[0].replace(EXECUTION_LINE_USER_DATA_PLACEHOLDER, user_data_folder),
-           split_exec[1].replace(EXECUTION_LINE_USER_DATA_PLACEHOLDER, user_data_folder) };
+  return split_exec.replaceInStrings(EXECUTION_LINE_USER_DATA_PLACEHOLDER, user_data_folder);
 }
 
-QString StandardFeed::runScriptProcess(const QPair<QString, QString>& cmd_args, const QString& working_directory,
+QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QString& working_directory,
                                        int run_timeout, bool provide_input, const QString& input) {
   QProcess process;
 
@@ -681,13 +680,8 @@ QString StandardFeed::runScriptProcess(const QPair<QString, QString>& cmd_args, 
   process.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
   process.setProcessChannelMode(QProcess::ProcessChannelMode::SeparateChannels);
   process.setWorkingDirectory(working_directory);
-  process.setProgram(cmd_args.first);
-
-#if defined(Q_OS_WIN)
-  process.setNativeArguments(cmd_args.second);
-#else
-  process.setArguments({ cmd_args.second });
-#endif
+  process.setProgram(cmd_args.at(0));
+  process.setArguments(cmd_args.mid(1));
 
   if (!process.open()) {
     switch (process.error()) {

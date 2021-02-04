@@ -60,15 +60,15 @@ However, if you choose `Script` option, then you cannot provide URL of your feed
 
 Any errors in your script must be written to **error output**.
 
-Note that you must provide full execution line to your custom script, including interpreter binary path and name and all that must be written in special format `<interpreter>#<arguments>`. The `#` character is there to separate interpreter from its arguments.
+Note that you must provide full execution line to your custom script, including interpreter binary path and name and all that must be written in special format `<interpreter>#<argument1>#<argument2>#....`. The `#` character is there to separate interpreter and individual arguments.
 
-Interpreter must be provided in all cases, arguments do not have to be. For example `bash.exe#` is valid execution line, as well as `bash#-C "cat feed.atom"`. Note the difference in interpreter's binary name suffix. Some examples of valid and tested execution lines are:
+Interpreter must be provided in all cases, arguments do not have to be. For example `bash.exe#` is valid execution line, as well as `bash#-c#cat feed.atom`. Note the difference in interpreter's binary name suffix. Also be very carefuly about arguments quoting. Some examples of valid and tested execution lines are:
  
 | Command | Explanation |
 |---------|-------------|
-| `bash#-c "curl 'https://github.com/martinrotter.atom'"` | Downloads ATOM feed file with Bash and Curl. |
-| `Powershell#"Invoke-WebRequest 'https://github.com/martinrotter.atom' \| Select-Object -ExpandProperty Content"` | Downloads ATOM feed file with Powershell. |
-| `php#tweeper.php -v 0 https://twitter.com/NSACareers` | Scrape Twitter RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git). Tweeper is utility which is able to produce RSS feed from Twitter and other similar social platforms. |
+| `bash#-c#"curl https://github.com/martinrotter.atom"` | Downloads ATOM feed file with Bash and Curl. |
+| `Powershell#Invoke-WebRequest 'https://github.com/martinrotter.atom' \| Select-Object -ExpandProperty Content` | Downloads ATOM feed file with Powershell. |
+| `php#tweeper.php#-v#0#https://twitter.com/NSACareers` | Scrape Twitter RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git). Tweeper is utility which is able to produce RSS feed from Twitter and other similar social platforms. |
 
 <img src="images/scrape-source.png" width="50%">
 
@@ -88,4 +88,4 @@ Typical post-processing filter might do things like advanced CSS formatting of f
 
 | Command | Explanation |
 |---------|-------------|
-| `bash#-c "xmllint --format -"` | Pretty-print input XML feed data. |
+| `bash#-c#xmllint --format -` | Pretty-print input XML feed data. |

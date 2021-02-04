@@ -78,7 +78,7 @@ class StandardFeed : public Feed {
 
     QList<Message> obtainNewMessages(bool* error_during_obtaining);
 
-    static QPair<QString, QString> prepareExecutionLine(const QString& execution_line);
+    static QStringList prepareExecutionLine(const QString& execution_line);
     static QString generateFeedFileWithScript(const QString& execution_line, int run_timeout);
     static QString postProcessFeedFileWithScript(const QString& execution_line, const QString raw_feed_data, int run_timeout);
 
@@ -103,7 +103,7 @@ class StandardFeed : public Feed {
     void fetchMetadataForItself();
 
   private:
-    static QString runScriptProcess(const QPair<QString, QString>& cmd_args, const QString& working_directory,
+    static QString runScriptProcess(const QStringList& cmd_args, const QString& working_directory,
                                     int run_timeout, bool provide_input, const QString& input = {});
 
   private:
