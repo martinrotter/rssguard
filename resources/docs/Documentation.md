@@ -97,7 +97,8 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * Gmail with e-mail sending (RSS Guard 3.7.1+).
     * FreshRSS (RSS Guard 3.9.0+),
     * The Old Reader (RSS Guard 3.9.0+),
-    * Bazqux (RSS Guard 3.9.0+).
+    * Bazqux (RSS Guard 3.9.0+),
+    * Reedah (RSS Guard 3.9.0+).
 * core:
     * support for all feed formats (RSS/RDF/ATOM/JSON),
     * full support of podcasts (RSS/ATOM/JSON),
