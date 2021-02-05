@@ -261,7 +261,8 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
 
   StandardFeed* feed = nullptr;
 
-  if (content_type.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive)) {
+  if (content_type.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive) ||
+      feed_contents.startsWith('{')) {
     feed = new StandardFeed();
 
     // We have JSON feed.
@@ -693,8 +694,15 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QStrin
     process.closeWriteChannel();
   }
 
-  if (process.waitForFinished(run_timeout)) {
+  if (process.waitForFinished(run_timeout) && process.exitStatus() == QProcess::ExitStatus::NormalExit) {
     auto raw_output = process.readAllStandardOutput();
+    auto raw_error = process.readAllStandardError();
+
+    if (!raw_error.simplified().isEmpty()) {
+      qWarningNN << LOGSEC_CORE
+                 << "Received error output from custom script even if it reported that it exited normally:"
+                 << QUOTE_W_SPACE_DOT(raw_error);
+    }
 
     return raw_output;
   }
