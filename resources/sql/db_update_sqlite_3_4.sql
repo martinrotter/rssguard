@@ -65,7 +65,7 @@ CREATE TABLE Feeds (
   username        TEXT,
   password        TEXT,
   update_type     INTEGER(1)  NOT NULL CHECK (update_type >= 0),
-  update_interval INTEGER     NOT NULL CHECK (update_interval >= 5) DEFAULT 15,
+  update_interval INTEGER     NOT NULL CHECK (update_interval >= 1) DEFAULT 15,
   type            INTEGER,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,

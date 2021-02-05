@@ -6,7 +6,7 @@
 
 TimeSpinBox::TimeSpinBox(QWidget* parent) : QDoubleSpinBox(parent) {
   setAccelerated(true);
-  setMinimum(3.0);
+  setMinimum(1.0);
   setMaximum(10000000.0);
   setMode(TimeSpinBox::Mode::HoursMinutes);
 }
