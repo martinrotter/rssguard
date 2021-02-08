@@ -50,7 +50,9 @@ InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
 
   m_ui.m_txtAppId->lineEdit()->setText(INOREADER_OAUTH_CLI_ID);
   m_ui.m_txtAppKey->lineEdit()->setText(INOREADER_OAUTH_CLI_KEY);
-  m_ui.m_txtRedirectUrl->lineEdit()->setText(m_oauth->redirectUrl());
+  m_ui.m_txtRedirectUrl->lineEdit()->setText(QString(OAUTH_REDIRECT_URI) +
+                                             QL1C(':') +
+                                             QString::number(OAUTH_REDIRECT_URI_PORT));
 
   hookNetwork();
 }
