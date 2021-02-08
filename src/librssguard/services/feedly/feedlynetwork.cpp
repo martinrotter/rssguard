@@ -68,6 +68,8 @@ QString FeedlyNetwork::profile(const QNetworkProxy& network_proxy) {
                                                           {},
                                                           {},
                                                           network_proxy);
+
+    return output_msgs;
   }
 }
 
@@ -136,6 +138,16 @@ void FeedlyNetwork::onTokensReceived(const QString& access_token, const QString&
   }
 }
 
+OAuth2Service* FeedlyNetwork::oauth() const {
+  return m_oauth;
+}
+
+void FeedlyNetwork::setOauth(OAuth2Service* oauth) {
+  m_oauth = oauth;
+}
+
+#endif
+
 QString FeedlyNetwork::fullUrl(FeedlyNetwork::Service service) const {
   switch (service) {
     case FeedlyNetwork::Service::Profile:
@@ -156,16 +168,6 @@ QString FeedlyNetwork::bearer() const {
 QPair<QByteArray, QByteArray> FeedlyNetwork::bearerHeader(const QString& bearer) const {
   return { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit() };
 }
-
-OAuth2Service* FeedlyNetwork::oauth() const {
-  return m_oauth;
-}
-
-void FeedlyNetwork::setOauth(OAuth2Service* oauth) {
-  m_oauth = oauth;
-}
-
-#endif
 
 void FeedlyNetwork::setService(FeedlyServiceRoot* service) {
   m_service = service;
