@@ -10,7 +10,8 @@
 #include <QTcpSocket>
 #include <QUrlQuery>
 
-OAuthHttpHandler::OAuthHttpHandler(const QString& success_text, QObject* parent) : QObject(parent), m_successText(success_text) {
+OAuthHttpHandler::OAuthHttpHandler(const QString& success_text, QObject* parent)
+  : QObject(parent), m_successText(success_text) {
   connect(&m_httpServer, &QTcpServer::newConnection, this, &OAuthHttpHandler::clientConnected);
   setListenAddressPort(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(OAUTH_REDIRECT_URI_PORT));
 }

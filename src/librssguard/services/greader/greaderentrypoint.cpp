@@ -32,7 +32,7 @@ QString GreaderEntryPoint::code() const {
 
 QString GreaderEntryPoint::description() const {
   return QObject::tr("Google Reader API is used by many online RSS readers. This is here to support") +
-         QSL(" FreshRSS, Bazqux, TheOldReader.");
+         QSL(" FreshRSS, Bazqux, TheOldReader, Reedah, ...");
 }
 
 QString GreaderEntryPoint::author() const {

@@ -34,3 +34,17 @@ isEmpty(USE_WEBENGINE) {
     ##message($$MSG_PREFIX: WebEngine component is probably NOT installed, disabling it.)
   }
 }
+
+isEmpty(FEEDLY_CLIENT_ID)|isEmpty(FEEDLY_CLIENT_SECRET) {
+  FEEDLY_OFFICIAL_SUPPORT = false
+
+  message($$MSG_PREFIX: Feedly client ID/secret variables are not set. Disabling official support.)
+}
+else {
+  FEEDLY_OFFICIAL_SUPPORT = true
+  DEFINES *= FEEDLY_OFFICIAL_SUPPORT
+  DEFINES *= FEEDLY_CLIENT_ID='"\\\"$$FEEDLY_CLIENT_ID\\\""'
+  DEFINES *= FEEDLY_CLIENT_SECRET='"\\\"$$FEEDLY_CLIENT_SECRET\\\""'
+
+  message($$MSG_PREFIX: Enabling official Feedly support.)
+}

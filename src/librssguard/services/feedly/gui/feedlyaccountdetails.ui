@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FeedlyAccountDetails</class>
+ <widget class="QWidget" name="FeedlyAccountDetails">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>421</width>
+    <height>235</height>
+   </rect>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="m_lblUsername">
+     <property name="text">
+      <string>Username</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="LineEditWithStatus" name="m_txtUsername" native="true"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="m_lblUsername_2">
+     <property name="text">
+      <string>Developer access token</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="m_btnGetToken">
+       <property name="text">
+        <string>Get token</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="LineEditWithStatus" name="m_txtDeveloperAccessToken" native="true"/>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="m_lblInfo">
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <layout class="QFormLayout" name="formLayout_3">
+     <item row="0" column="1">
+      <widget class="QSpinBox" name="m_spinLimitMessages">
+       <property name="maximumSize">
+        <size>
+         <width>140</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="suffix">
+        <string> message(s)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Only download newest X messages per feed</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_spinLimitMessages</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>400</width>
+       <height>86</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="m_btnTestSetup">
+       <property name="text">
+        <string>&amp;Login</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="LabelWithStatus" name="m_lblTestResult" native="true">
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LineEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>lineeditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -143,6 +143,13 @@ HEADERS += core/feeddownloader.h \
            services/abstract/rootitem.h \
            services/abstract/serviceentrypoint.h \
            services/abstract/serviceroot.h \
+           services/feedly/definitions.h \
+           services/feedly/feedlyentrypoint.h \
+           services/feedly/feedlyfeed.h \
+           services/feedly/feedlynetwork.h \
+           services/feedly/feedlyserviceroot.h \
+           services/feedly/gui/feedlyaccountdetails.h \
+           services/feedly/gui/formeditfeedlyaccount.h \
            services/gmail/definitions.h \
            services/gmail/gmailentrypoint.h \
            services/gmail/gmailfeed.h \
@@ -312,6 +319,12 @@ SOURCES += core/feeddownloader.cpp \
            services/abstract/recyclebin.cpp \
            services/abstract/rootitem.cpp \
            services/abstract/serviceroot.cpp \
+           services/feedly/feedlyentrypoint.cpp \
+           services/feedly/feedlyfeed.cpp \
+           services/feedly/feedlynetwork.cpp \
+           services/feedly/feedlyserviceroot.cpp \
+           services/feedly/gui/feedlyaccountdetails.cpp \
+           services/feedly/gui/formeditfeedlyaccount.cpp \
            services/gmail/gmailentrypoint.cpp \
            services/gmail/gmailfeed.cpp \
            services/gmail/gmailserviceroot.cpp \
@@ -398,6 +411,7 @@ FORMS += gui/dialogs/formabout.ui \
          services/abstract/gui/formaccountdetails.ui \
          services/abstract/gui/formfeeddetails.ui \
          services/abstract/gui/authenticationdetails.ui \
+         services/feedly/gui/feedlyaccountdetails.ui \
          services/gmail/gui/gmailaccountdetails.ui \
          services/greader/gui/greaderaccountdetails.ui \
          services/inoreader/gui/inoreaderaccountdetails.ui \
