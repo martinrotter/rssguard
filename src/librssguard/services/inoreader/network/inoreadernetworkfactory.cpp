@@ -28,7 +28,7 @@
 InoreaderNetworkFactory::InoreaderNetworkFactory(QObject* parent) : QObject(parent),
   m_service(nullptr), m_username(QString()), m_batchSize(INOREADER_DEFAULT_BATCH_SIZE),
   m_oauth2(new OAuth2Service(INOREADER_OAUTH_AUTH_URL, INOREADER_OAUTH_TOKEN_URL,
-                             INOREADER_OAUTH_CLI_ID, INOREADER_OAUTH_CLI_KEY, INOREADER_OAUTH_SCOPE, this)) {
+                             {}, {}, INOREADER_OAUTH_SCOPE, this)) {
   initializeOauth();
 }
 
@@ -443,4 +443,8 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
   }
 
   return parent;
+}
+
+void InoreaderNetworkFactory::setOauth(OAuth2Service* oauth) {
+  m_oauth2 = oauth;
 }

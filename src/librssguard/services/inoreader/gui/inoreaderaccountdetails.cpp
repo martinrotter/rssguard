@@ -11,8 +11,7 @@
 
 InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
   : QWidget(parent), m_oauth(new OAuth2Service(INOREADER_OAUTH_AUTH_URL, INOREADER_OAUTH_TOKEN_URL,
-                                               INOREADER_OAUTH_CLI_ID, INOREADER_OAUTH_CLI_KEY,
-                                               INOREADER_OAUTH_SCOPE, this)) {
+                                               {}, {}, INOREADER_OAUTH_SCOPE, this)) {
   m_ui.setupUi(this);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
@@ -58,13 +57,7 @@ InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
 }
 
 void InoreaderAccountDetails::testSetup() {
-  if (m_oauth->clientId() != m_ui.m_txtAppId->lineEdit()->text() ||
-      m_oauth->clientSecret() != m_ui.m_txtAppKey->lineEdit()->text() ||
-      m_oauth->redirectUrl() != m_ui.m_txtRedirectUrl->lineEdit()->text()) {
-    // User changed some important settings. Log out.
-    m_oauth->logout();
-  }
-
+  m_oauth->logout();
   m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
   m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
   m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());

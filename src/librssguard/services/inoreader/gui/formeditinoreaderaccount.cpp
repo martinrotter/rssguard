@@ -23,10 +23,11 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent)
 void FormEditInoreaderAccount::apply() {
   bool editing_account = !applyInternal<InoreaderServiceRoot>();
 
-  // We copy credentials from testing OAuth to live OAuth.
-  account<InoreaderServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
-  account<InoreaderServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
-  account<InoreaderServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
+  if (!editing_account) {
+    // We are creating new account.
+    m_details->m_oauth->setParent(account<InoreaderServiceRoot>()->network());
+    account<InoreaderServiceRoot>()->network()->setOauth(m_details->m_oauth);
+  }
 
   account<InoreaderServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
   account<InoreaderServiceRoot>()->network()->oauth()->setClientSecret(m_details->m_ui.m_txtAppKey->lineEdit()->text());
@@ -48,6 +49,8 @@ void FormEditInoreaderAccount::setEditableAccount(ServiceRoot* editable_account)
   FormAccountDetails::setEditableAccount(editable_account);
 
   if (m_details->m_oauth != nullptr) {
+    // Remove OAuth meant for new account.
+    // We are load existing account and we will use its OAuth.
     m_details->m_oauth->logout();
     m_details->m_oauth->deleteLater();
   }

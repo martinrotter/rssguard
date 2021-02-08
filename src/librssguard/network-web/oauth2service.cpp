@@ -297,6 +297,8 @@ void OAuth2Service::logout() {
   setTokensExpireIn(QDateTime());
   setAccessToken(QString());
   setRefreshToken(QString());
+
+  m_redirectionHandler->stop();
 }
 
 void OAuth2Service::startRefreshTimer() {

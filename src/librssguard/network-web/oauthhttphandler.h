@@ -17,6 +17,9 @@ class OAuthHttpHandler : public QObject {
 
     bool isListening() const;
 
+    // Stops server and clear all connections.
+    void stop();
+
     // Returns listening portnumber.
     quint16 listenPort() const;
 

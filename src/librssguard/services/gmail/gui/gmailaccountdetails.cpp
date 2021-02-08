@@ -11,7 +11,7 @@
 
 GmailAccountDetails::GmailAccountDetails(QWidget* parent)
   : QWidget(parent), m_oauth(new OAuth2Service(GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
-                                               QString(), QString(), GMAIL_OAUTH_SCOPE, this)) {
+                                               {}, {}, GMAIL_OAUTH_SCOPE, this)) {
   m_ui.setupUi(this);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);

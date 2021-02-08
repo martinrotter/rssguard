@@ -92,6 +92,7 @@ class OAuth2Service : public QObject {
     // NOTE: This can be called ONLY on main GUI thread,
     // because widgets may be displayed.
     bool login();
+
     void logout();
 
   private slots:
