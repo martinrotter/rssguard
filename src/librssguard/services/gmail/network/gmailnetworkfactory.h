@@ -27,6 +27,7 @@ class GmailNetworkFactory : public QObject {
     void setService(GmailServiceRoot* service);
 
     OAuth2Service* oauth() const;
+    void setOauth(OAuth2Service* oauth);
 
     QString username() const;
     void setUsername(const QString& username);
@@ -61,8 +62,6 @@ class GmailNetworkFactory : public QObject {
                                      const QString& feed_id,
                                      const QNetworkProxy& custom_proxy);
     QList<Message> decodeLiteMessages(const QString& messages_json_data, const QString& stream_id, QString& next_page_token);
-
-    //RootItem* decodeFeedCategoriesData(const QString& categories);
 
     void initializeOauth();
 

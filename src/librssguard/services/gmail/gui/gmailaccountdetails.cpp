@@ -42,10 +42,10 @@ GmailAccountDetails::GmailAccountDetails(QWidget* parent)
   m_ui.m_spinLimitMessages->setMinimum(GMAIL_MIN_BATCH_SIZE);
   m_ui.m_spinLimitMessages->setMaximum(GMAIL_MAX_BATCH_SIZE);
 
-  checkUsername(m_ui.m_txtUsername->lineEdit()->text());
+  emit m_ui.m_txtUsername->lineEdit()->textChanged(m_ui.m_txtUsername->lineEdit()->text());
+  emit m_ui.m_txtAppId->lineEdit()->textChanged(m_ui.m_txtAppId->lineEdit()->text());
+  emit m_ui.m_txtAppKey->lineEdit()->textChanged(m_ui.m_txtAppKey->lineEdit()->text());
 
-  m_ui.m_txtAppId->lineEdit()->clear();
-  m_ui.m_txtAppKey->lineEdit()->clear();
   m_ui.m_txtRedirectUrl->lineEdit()->setText(QString(OAUTH_REDIRECT_URI) +
                                              QL1C(':') +
                                              QString::number(OAUTH_REDIRECT_URI_PORT));
@@ -54,13 +54,7 @@ GmailAccountDetails::GmailAccountDetails(QWidget* parent)
 }
 
 void GmailAccountDetails::testSetup() {
-  if (m_oauth->clientId() != m_ui.m_txtAppId->lineEdit()->text() ||
-      m_oauth->clientSecret() != m_ui.m_txtAppKey->lineEdit()->text() ||
-      m_oauth->redirectUrl() != m_ui.m_txtRedirectUrl->lineEdit()->text()) {
-    // User changed some important settings. Log out.
-    m_oauth->logout();
-  }
-
+  m_oauth->logout();
   m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
   m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
   m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());

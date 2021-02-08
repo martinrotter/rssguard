@@ -24,9 +24,13 @@ void FormEditInoreaderAccount::apply() {
   bool editing_account = !applyInternal<InoreaderServiceRoot>();
 
   if (!editing_account) {
-    // We are creating new account.
-    m_details->m_oauth->setParent(account<InoreaderServiceRoot>()->network());
-    account<InoreaderServiceRoot>()->network()->setOauth(m_details->m_oauth);
+    // We transfer refresh token to avoid the need to login once more,
+    // then we delete testing OAuth service.
+    account<InoreaderServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
+    account<InoreaderServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
+    account<InoreaderServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
+    m_details->m_oauth->logout();
+    m_details->m_oauth->deleteLater();
   }
 
   account<InoreaderServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
@@ -49,8 +53,7 @@ void FormEditInoreaderAccount::setEditableAccount(ServiceRoot* editable_account)
   FormAccountDetails::setEditableAccount(editable_account);
 
   if (m_details->m_oauth != nullptr) {
-    // Remove OAuth meant for new account.
-    // We are load existing account and we will use its OAuth.
+    // We will use live OAuth service for testing.
     m_details->m_oauth->logout();
     m_details->m_oauth->deleteLater();
   }

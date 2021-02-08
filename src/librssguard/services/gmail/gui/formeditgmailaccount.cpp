@@ -22,10 +22,15 @@ FormEditGmailAccount::FormEditGmailAccount(QWidget* parent)
 void FormEditGmailAccount::apply() {
   bool editing_account = !applyInternal<GmailServiceRoot>();
 
-  // We copy credentials from testing OAuth to live OAuth.
-  account<GmailServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
-  account<GmailServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
-  account<GmailServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
+  if (!editing_account) {
+    // We transfer refresh token to avoid the need to login once more,
+    // then we delete testing OAuth service.
+    account<GmailServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
+    account<GmailServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
+    account<GmailServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
+    m_details->m_oauth->logout();
+    m_details->m_oauth->deleteLater();
+  }
 
   account<GmailServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
   account<GmailServiceRoot>()->network()->oauth()->setClientSecret(m_details->m_ui.m_txtAppKey->lineEdit()->text());
@@ -47,6 +52,7 @@ void FormEditGmailAccount::setEditableAccount(ServiceRoot* editable_account) {
   FormAccountDetails::setEditableAccount(editable_account);
 
   if (m_details->m_oauth != nullptr) {
+    // We will use live OAuth service for testing.
     m_details->m_oauth->logout();
     m_details->m_oauth->deleteLater();
   }

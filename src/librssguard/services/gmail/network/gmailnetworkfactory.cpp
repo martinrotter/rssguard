@@ -135,6 +135,10 @@ void GmailNetworkFactory::initializeOauth() {
   });
 }
 
+void GmailNetworkFactory::setOauth(OAuth2Service* oauth) {
+  m_oauth2 = oauth;
+}
+
 void GmailNetworkFactory::setUsername(const QString& username) {
   m_username = username;
 }

@@ -31,6 +31,9 @@ class InoreaderAccountDetails : public QWidget {
 
   private:
     Ui::InoreaderAccountDetails m_ui;
+
+    // Testing OAuth service. Only for testing. Resulting tokens
+    //
     OAuth2Service* m_oauth;
 };
 

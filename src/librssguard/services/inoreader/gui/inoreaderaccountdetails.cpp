@@ -45,7 +45,7 @@ InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
   m_ui.m_spinLimitMessages->setMinimum(INOREADER_MIN_BATCH_SIZE);
   m_ui.m_spinLimitMessages->setMaximum(INOREADER_MAX_BATCH_SIZE);
 
-  checkUsername(m_ui.m_txtUsername->lineEdit()->text());
+  emit m_ui.m_txtUsername->lineEdit()->textChanged(m_ui.m_txtUsername->lineEdit()->text());
 
   m_ui.m_txtAppId->lineEdit()->setText(INOREADER_OAUTH_CLI_ID);
   m_ui.m_txtAppKey->lineEdit()->setText(INOREADER_OAUTH_CLI_KEY);
