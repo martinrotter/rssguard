@@ -20,6 +20,10 @@ class FeedlyNetwork : public QObject {
   public:
     explicit FeedlyNetwork(QObject* parent = nullptr);
 
+    // API operations.
+    QString profile(const QNetworkProxy& network_proxy);
+
+    // Getters and setters.
     QString username() const;
     void setUsername(const QString& username);
 
@@ -40,6 +44,15 @@ class FeedlyNetwork : public QObject {
     void onAuthFailed();
     void onTokensReceived(const QString& access_token, const QString& refresh_token, int expires_in);
 #endif
+
+  private:
+    enum class Service {
+      Profile
+    };
+
+    QString fullUrl(Service service) const;
+    QString bearer() const;
+    QPair<QByteArray, QByteArray> bearerHeader(const QString& bearer) const;
 
   private:
     FeedlyServiceRoot* m_service;

@@ -35,12 +35,40 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
   m_developerAccessToken(QString()), m_batchSize(FEEDLY_UNLIMITED_BATCH_SIZE) {
 
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
-  m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT));
+  //m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT));
 
   connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &FeedlyNetwork::onTokensError);
   connect(m_oauth, &OAuth2Service::authFailed, this, &FeedlyNetwork::onAuthFailed);
   connect(m_oauth, &OAuth2Service::tokensReceived, this, &FeedlyNetwork::onTokensReceived);
 #endif
+}
+
+QString FeedlyNetwork::profile(const QNetworkProxy& network_proxy) {
+  QString bear = bearer();
+
+  if (bear.isEmpty()) {
+    qCriticalNN << LOGSEC_FEEDLY
+                << "Cannot obtain profile information, because bearer is empty.";
+    return {};
+  }
+  else {
+    QString target_url = fullUrl(Service::Profile);
+    int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+    QByteArray output_msgs;
+
+    // This method uses proxy via parameter,
+    // not via "m_service" field.
+    auto result = NetworkFactory::performNetworkOperation(target_url,
+                                                          timeout,
+                                                          {},
+                                                          output_msgs,
+                                                          QNetworkAccessManager::Operation::GetOperation,
+                                                          { bearerHeader(bear) },
+                                                          false,
+                                                          {},
+                                                          {},
+                                                          network_proxy);
+  }
 }
 
 QString FeedlyNetwork::username() const {
@@ -106,6 +134,27 @@ void FeedlyNetwork::onTokensReceived(const QString& access_token, const QString&
                          tr("Your login to Feedly was authorized."),
                          QSystemTrayIcon::MessageIcon::Information);
   }
+}
+
+QString FeedlyNetwork::fullUrl(FeedlyNetwork::Service service) const {
+  switch (service) {
+    case FeedlyNetwork::Service::Profile:
+      return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_PROFILE;
+  }
+}
+
+QString FeedlyNetwork::bearer() const {
+#if defined (FEEDLY_OFFICIAL_SUPPORT)
+  if (m_developerAccessToken.simplified().isEmpty()) {
+    return m_oauth->bearer().toLocal8Bit();
+  }
+#endif
+
+  return QString("Bearer %1").arg(m_developerAccessToken);
+}
+
+QPair<QByteArray, QByteArray> FeedlyNetwork::bearerHeader(const QString& bearer) const {
+  return { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit() };
 }
 
 OAuth2Service* FeedlyNetwork::oauth() const {

@@ -109,6 +109,7 @@
 #define LOGSEC_NEXTCLOUD            "nextcloud: "
 #define LOGSEC_GREADER              "greader: "
 #define LOGSEC_INOREADER            "inoreader: "
+#define LOGSEC_FEEDLY               "feedly: "
 #define LOGSEC_TTRSS                "tt-rss: "
 #define LOGSEC_GMAIL                "gmail: "
 #define LOGSEC_OAUTH                "oauth: "

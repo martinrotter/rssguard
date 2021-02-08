@@ -18,9 +18,11 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
   m_oauth = new OAuth2Service(QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_AUTH,
                               QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TOKEN,
-                              "dontknow",
-                              "dontknow",
-                              FEEDLY_API_SCOPE, this),
+                              FEEDLY_CLIENT_ID,
+                              FEEDLY_CLIENT_SECRET,
+                              FEEDLY_API_SCOPE, this);
+
+  m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT));
 #endif
 
   m_ui.setupUi(this);
@@ -107,21 +109,34 @@ void FeedlyAccountDetails::onAuthGranted() {
 
 void FeedlyAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
-  m_oauth->logout();
+  if (m_ui.m_txtDeveloperAccessToken->lineEdit()->text().simplified().isEmpty()) {
+    m_oauth->logout();
 
-  if (m_oauth->login()) {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                    tr("You are already logged in."),
-                                    tr("Access granted."));
+    if (m_oauth->login()) {
+      m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                      tr("You are already logged in."),
+                                      tr("Access granted."));
+    }
+
+    return;
   }
-#else
+#endif
+
   FeedlyNetwork factory;
 
   factory.setUsername(m_ui.m_txtUsername->lineEdit()->text());
   factory.setDeveloperAccessToken(m_ui.m_txtDeveloperAccessToken->lineEdit()->text());
 
-  // TODO: todo
-#endif
+  if (!factory.profile(custom_proxy).isEmpty()) {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                    tr("Login was successful."),
+                                    tr("Access granted."));
+  }
+  else {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                    tr("Make sure your \"development access token\" is correct and your internet works."),
+                                    tr("Some problems."));
+  }
 }
 
 void FeedlyAccountDetails::onUsernameChanged() {

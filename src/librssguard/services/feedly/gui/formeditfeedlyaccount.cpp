@@ -15,7 +15,7 @@
 #endif
 
 FormEditFeedlyAccount::FormEditFeedlyAccount(QWidget* parent)
-  : FormAccountDetails(qApp->icons()->miscIcon(QSL("google")), parent), m_details(new FeedlyAccountDetails(this)) {
+  : FormAccountDetails(qApp->icons()->miscIcon(QSL("feedly")), parent), m_details(new FeedlyAccountDetails(this)) {
   insertCustomTab(m_details, tr("Service setup"), 0);
   activateTab(0);
 

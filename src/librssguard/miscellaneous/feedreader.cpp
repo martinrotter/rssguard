@@ -56,7 +56,10 @@ FeedReader::~FeedReader() {
 QList<ServiceEntryPoint*> FeedReader::feedServices() {
   if (m_feedServices.isEmpty()) {
     // NOTE: All installed services create their entry points here.
+#if defined (DEBUG)
     m_feedServices.append(new FeedlyEntryPoint());
+#endif
+
     m_feedServices.append(new GmailEntryPoint());
     m_feedServices.append(new GreaderEntryPoint());
     m_feedServices.append(new InoreaderEntryPoint());
