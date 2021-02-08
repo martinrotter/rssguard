@@ -13,7 +13,9 @@
 OAuthHttpHandler::OAuthHttpHandler(const QString& success_text, QObject* parent)
   : QObject(parent), m_listenAddress(QHostAddress()), m_listenPort(0), m_successText(success_text) {
   connect(&m_httpServer, &QTcpServer::newConnection, this, &OAuthHttpHandler::clientConnected);
-  setListenAddressPort(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(OAUTH_REDIRECT_URI_PORT));
+
+  // NOTE: We do not want to start handler immediately, sometimes
+  // we want to start it later, perhaps when correct redirect URL/port comes in.
 }
 
 OAuthHttpHandler::~OAuthHttpHandler() {
@@ -39,13 +41,12 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
     listen_address = QHostAddress(url.host());
   }
 
-  if (listen_address == m_listenAddress && m_listenPort == url.port()) {
+  if (listen_address == m_listenAddress &&
+      m_listenPort == url.port() &&
+      m_httpServer.isListening()) {
+    // NOTE: We do not need to change listener's settings or re-start it.
     return;
   }
-
-  m_listenAddress = listen_address;
-  m_listenPort = listen_port;
-  m_listenAddressPort = full_uri;
 
   if (m_httpServer.isListening()) {
     qWarningNN << LOGSEC_OAUTH << "Redirection OAuth handler is listening. Stopping it now.";
@@ -60,6 +61,10 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
                 << QUOTE_W_SPACE_DOT(m_listenPort);
   }
   else {
+    m_listenAddress = listen_address;
+    m_listenPort = listen_port;
+    m_listenAddressPort = full_uri;
+
     qDebugNN << LOGSEC_OAUTH
              << "OAuth redirect handler IS LISTENING on address"
              << QUOTE_W_SPACE(m_listenAddress.toString())
