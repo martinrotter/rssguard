@@ -91,12 +91,7 @@ void Application::performLogging(QtMsgType type, const QMessageLogContext& conte
 #ifndef QT_NO_DEBUG_OUTPUT
   QString console_message = qFormatLogMessage(type, context, msg);
 
-  if (type == QtMsgType::QtCriticalMsg || type == QtMsgType::QtFatalMsg || type == QtMsgType::QtWarningMsg) {
-    std::cerr << console_message.toStdString() << std::endl;
-  }
-  else {
-    std::cout << console_message.toStdString() << std::endl;
-  }
+  std::cerr << console_message.toStdString() << std::endl;
 
   if (!s_customLogFile.isEmpty()) {
     QFile log_file(s_customLogFile);
