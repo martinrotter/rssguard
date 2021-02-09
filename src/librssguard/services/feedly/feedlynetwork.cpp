@@ -27,15 +27,15 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
   m_oauth(new OAuth2Service(QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_AUTH,
                             QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TOKEN,
-                            "dontknow",
-                            "dontknow",
+                            FEEDLY_CLIENT_ID,
+                            FEEDLY_CLIENT_ID,
                             FEEDLY_API_SCOPE, this)),
 #endif
   m_username(QString()),
   m_developerAccessToken(QString()), m_batchSize(FEEDLY_UNLIMITED_BATCH_SIZE) {
 
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
-  //m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT));
+  m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT));
 
   connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &FeedlyNetwork::onTokensError);
   connect(m_oauth, &OAuth2Service::authFailed, this, &FeedlyNetwork::onAuthFailed);

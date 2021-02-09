@@ -150,6 +150,20 @@ class DatabaseQueries {
     template<typename T>
     static void fillFeedData(T* feed, const QSqlRecord& sql_record);
 
+    // Feedly account.
+    static bool createFeedlyAccount(const QSqlDatabase& db,
+                                    const QString& username,
+                                    const QString& developer_access_token,
+                                    const QString& refresh_token,
+                                    int batch_size,
+                                    int id_to_assign);
+    static bool overwriteFeedlyAccount(const QSqlDatabase& db,
+                                       const QString& username,
+                                       const QString& developer_access_token,
+                                       const QString& refresh_token,
+                                       int batch_size,
+                                       int id_to_assign);
+
     // Greader account.
     static bool deleteGreaderAccount(const QSqlDatabase& db, int account_id);
     static QList<ServiceRoot*> getGreaderAccounts(const QSqlDatabase& db, bool* ok = nullptr);

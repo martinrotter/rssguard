@@ -32,8 +32,11 @@ class InoreaderAccountDetails : public QWidget {
   private:
     Ui::InoreaderAccountDetails m_ui;
 
-    // Testing OAuth service. Only for testing. Resulting tokens
-    //
+    // Testing OAuth service. This object is not ever copied
+    // to new living account instance, instead only its properties
+    // like tokens are copied.
+    // If editing existing account, then the pointer points
+    // directly to existing OAuth from the account.
     OAuth2Service* m_oauth;
 };
 

@@ -9,6 +9,7 @@
 #include "miscellaneous/textfactory.h"
 #include "network-web/oauth2service.h"
 #include "services/abstract/category.h"
+#include "services/feedly/definitions.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailfeed.h"
 #include "services/gmail/gmailserviceroot.h"
@@ -1839,6 +1840,36 @@ bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QSt
                << "'.";
     return false;
   }
+}
+
+bool DatabaseQueries::createFeedlyAccount(const QSqlDatabase& db, const QString& username,
+                                          const QString& developer_access_token, const QString& refresh_token,
+                                          int batch_size, int id_to_assign) {
+  QSqlQuery q(db);
+
+  q.prepare("INSERT INTO FeedlyAccounts (id, username, developer_access_token, refresh_token, msg_limit) "
+            "VALUES (:id, :service, :username, :developer_access_token, :refresh_token, :msg_limit);");
+  q.bindValue(QSL(":id"), id_to_assign);
+  q.bindValue(QSL(":username"), username);
+  q.bindValue(QSL(":developer_access_token"), developer_access_token);
+  q.bindValue(QSL(":refresh_token"), refresh_token);
+  q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? FEEDLY_UNLIMITED_BATCH_SIZE : batch_size);
+
+  if (q.exec()) {
+    return true;
+  }
+  else {
+    qWarningNN << LOGSEC_FEEDLY
+               << "Inserting of new account failed:"
+               << QUOTE_W_SPACE_DOT(q.lastError().text());
+    return false;
+  }
+}
+
+bool DatabaseQueries::overwriteFeedlyAccount(const QSqlDatabase& db, const QString& username,
+                                             const QString& developer_access_token, const QString& refresh_token,
+                                             int batch_size, int id_to_assign) {
+  return {};
 }
 
 bool DatabaseQueries::createGreaderAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,

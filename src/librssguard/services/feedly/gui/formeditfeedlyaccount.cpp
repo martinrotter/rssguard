@@ -27,10 +27,15 @@ void FormEditFeedlyAccount::apply() {
   bool editing_account = !applyInternal<FeedlyServiceRoot>();
 
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
-  // We copy credentials from testing OAuth to live OAuth.
-  account<FeedlyServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
-  account<FeedlyServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
-  account<FeedlyServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
+  if (!editing_account) {
+    // We transfer refresh token to avoid the need to login once more,
+    // then we delete testing OAuth service.
+    account<FeedlyServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
+    account<FeedlyServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
+    account<FeedlyServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
+    m_details->m_oauth->logout();
+    m_details->m_oauth->deleteLater();
+  }
 #endif
 
   account<FeedlyServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
@@ -49,16 +54,20 @@ void FormEditFeedlyAccount::apply() {
 void FormEditFeedlyAccount::setEditableAccount(ServiceRoot* editable_account) {
   FormAccountDetails::setEditableAccount(editable_account);
 
-  FeedlyServiceRoot* existing_root = account<FeedlyServiceRoot>();
-
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
+  if (m_details->m_oauth != nullptr) {
+    // We will use live OAuth service for testing.
+    m_details->m_oauth->logout();
+    m_details->m_oauth->deleteLater();
+  }
+
   m_details->m_oauth = account<FeedlyServiceRoot>()->network()->oauth();
   m_details->hookNetwork();
 #endif
 
-  m_details->m_ui.m_txtUsername->lineEdit()->setText(existing_root->network()->username());
-  m_details->m_ui.m_txtDeveloperAccessToken->lineEdit()->setText(existing_root->network()->developerAccessToken());
-  m_details->m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
+  m_details->m_ui.m_txtUsername->lineEdit()->setText(account<FeedlyServiceRoot>()->network()->username());
+  m_details->m_ui.m_txtDeveloperAccessToken->lineEdit()->setText(account<FeedlyServiceRoot>()->network()->developerAccessToken());
+  m_details->m_ui.m_spinLimitMessages->setValue(account<FeedlyServiceRoot>()->network()->batchSize());
 }
 
 void FormEditFeedlyAccount::performTest() {

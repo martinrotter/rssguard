@@ -15,6 +15,10 @@
 #include "services/feedly/feedlynetwork.h"
 #include "services/feedly/gui/formeditfeedlyaccount.h"
 
+#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#include "network-web/oauth2service.h"
+#endif
+
 FeedlyServiceRoot::FeedlyServiceRoot(RootItem* parent)
   : ServiceRoot(parent), m_network(new FeedlyNetwork(this)) {
   setIcon(FeedlyEntryPoint().icon());
@@ -76,23 +80,35 @@ void FeedlyServiceRoot::updateTitle() {
 void FeedlyServiceRoot::saveAccountDataToDatabase(bool creating_new) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  /*
-     if (!creating_new) {
-     if (DatabaseQueries::overwriteGreaderAccount(database, m_network->username(),
-                                                 m_network->password(), m_network->service(),
-                                                 m_network->baseUrl(), m_network->batchSize(),
-                                                 accountId())) {
+  if (!creating_new) {
+    if (DatabaseQueries::overwriteFeedlyAccount(database,
+                                                m_network->username(),
+                                                m_network->developerAccessToken(),
+#if defined (FEEDLY_OFFICIAL_SUPPORT)
+                                                m_network->oauth()->refreshToken(),
+#else
+                                                {},
+#endif
+                                                m_network->batchSize(),
+                                                accountId())) {
       updateTitle();
       itemChanged(QList<RootItem*>() << this);
-     }
-     }
-     else {
-     if (DatabaseQueries::createGreaderAccount(database, accountId(), m_network->username(),
-                                              m_network->password(), m_network->service(),
-                                              m_network->baseUrl(), m_network->batchSize())) {
+    }
+  }
+  else {
+    if (DatabaseQueries::createFeedlyAccount(database,
+                                             m_network->username(),
+                                             m_network->developerAccessToken(),
+#if defined (FEEDLY_OFFICIAL_SUPPORT)
+                                             m_network->oauth()->refreshToken(),
+#else
+                                             {},
+#endif
+                                             m_network->batchSize(),
+                                             accountId())) {
       updateTitle();
-     }
-     }*/
+    }
+  }
 }
 
 RootItem* FeedlyServiceRoot::obtainNewTreeForSyncIn() const {
