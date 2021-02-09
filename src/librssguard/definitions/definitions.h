@@ -90,6 +90,8 @@
 #define CLI_DAT_LONG      "data"
 #define CLI_SIN_SHORT     "s"
 #define CLI_SIN_LONG      "no-single-instance"
+#define CLI_NDEBUG_SHORT  "n"
+#define CLI_NDEBUG_LONG   "no-debug-output"
 
 #define HTTP_HEADERS_ACCEPT         "Accept"
 #define HTTP_HEADERS_CONTENT_TYPE   "Content-Type"

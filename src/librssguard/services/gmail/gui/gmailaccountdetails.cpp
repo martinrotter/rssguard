@@ -96,7 +96,7 @@ void GmailAccountDetails::onAuthGranted() {
 }
 
 void GmailAccountDetails::hookNetwork() {
-  connect(m_oauth, &OAuth2Service::tokensReceived, this, &GmailAccountDetails::onAuthGranted);
+  connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &GmailAccountDetails::onAuthGranted);
   connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &GmailAccountDetails::onAuthError);
   connect(m_oauth, &OAuth2Service::authFailed, this, &GmailAccountDetails::onAuthFailed);
 }

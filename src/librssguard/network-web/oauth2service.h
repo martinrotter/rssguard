@@ -71,7 +71,7 @@ class OAuth2Service : public QObject {
     void setId(const QString& id);
 
   signals:
-    void tokensReceived(QString access_token, QString refresh_token, int expires_in);
+    void tokensRetrieved(QString access_token, QString refresh_token, int expires_in);
     void tokensRetrieveError(QString error, QString error_description);
 
     // User failed to authenticate or rejected it.
@@ -80,7 +80,7 @@ class OAuth2Service : public QObject {
   public slots:
     void retrieveAuthCode();
     void retrieveAccessToken(const QString& auth_code);
-    void refreshAccessToken(QString refresh_token = QString());
+    void refreshAccessToken(const QString& refresh_token = QString());
 
     // Performs login if needed. If some refresh token is set, then
     // the initial "auth" step is skipped and attempt to refresh
@@ -93,6 +93,7 @@ class OAuth2Service : public QObject {
     // because widgets may be displayed.
     bool login();
 
+    // Removes all state data and stops redirection handler.
     void logout();
 
   private slots:

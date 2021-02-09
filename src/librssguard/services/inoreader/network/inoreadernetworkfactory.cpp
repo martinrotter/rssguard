@@ -55,7 +55,7 @@ void InoreaderNetworkFactory::setBatchSize(int batch_size) {
 void InoreaderNetworkFactory::initializeOauth() {
   connect(m_oauth2, &OAuth2Service::tokensRetrieveError, this, &InoreaderNetworkFactory::onTokensError);
   connect(m_oauth2, &OAuth2Service::authFailed, this, &InoreaderNetworkFactory::onAuthFailed);
-  connect(m_oauth2, &OAuth2Service::tokensReceived, this, [this](QString access_token, QString refresh_token, int expires_in) {
+  connect(m_oauth2, &OAuth2Service::tokensRetrieved, this, [this](QString access_token, QString refresh_token, int expires_in) {
     Q_UNUSED(expires_in)
     Q_UNUSED(access_token)
 

@@ -86,12 +86,15 @@ Application::~Application() {
 }
 
 QString s_customLogFile = QString();
+bool s_disableDebug = false;
 
 void Application::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg) {
 #ifndef QT_NO_DEBUG_OUTPUT
   QString console_message = qFormatLogMessage(type, context, msg);
 
-  std::cerr << console_message.toStdString() << std::endl;
+  if (!s_disableDebug) {
+    std::cerr << console_message.toStdString() << std::endl;
+  }
 
   if (!s_customLogFile.isEmpty()) {
     QFile log_file(s_customLogFile);
@@ -572,8 +575,10 @@ void Application::parseCmdArguments() {
                                         "user-data-folder");
   QCommandLineOption disable_singleinstance(QStringList() << CLI_SIN_SHORT << CLI_SIN_LONG,
                                             "Allow running of multiple application instances.");
+  QCommandLineOption disable_debug(QStringList() << CLI_NDEBUG_SHORT << CLI_NDEBUG_LONG,
+                                   "Completely disable stdout/stderr outputs.");
 
-  m_cmdParser.addOptions({ log_file, custom_data_folder, disable_singleinstance });
+  m_cmdParser.addOptions({ log_file, custom_data_folder, disable_singleinstance, disable_debug });
   m_cmdParser.addHelpOption();
   m_cmdParser.addVersionOption();
   m_cmdParser.setApplicationDescription(APP_NAME);
@@ -598,6 +603,11 @@ void Application::parseCmdArguments() {
   if (m_cmdParser.isSet(CLI_SIN_SHORT)) {
     m_allowMultipleInstances = true;
     qDebugNN << LOGSEC_CORE << "Explicitly allowing this instance to run.";
+  }
+
+  if (m_cmdParser.isSet(CLI_NDEBUG_SHORT)) {
+    s_disableDebug = true;
+    qDebugNN << LOGSEC_CORE << "Disabling any stdout/stderr outputs.";
   }
 }
 

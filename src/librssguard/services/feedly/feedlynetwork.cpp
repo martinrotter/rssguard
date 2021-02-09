@@ -39,7 +39,7 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
 
   connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &FeedlyNetwork::onTokensError);
   connect(m_oauth, &OAuth2Service::authFailed, this, &FeedlyNetwork::onAuthFailed);
-  connect(m_oauth, &OAuth2Service::tokensReceived, this, &FeedlyNetwork::onTokensReceived);
+  connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &FeedlyNetwork::ontokensRetrieved);
 #endif
 }
 
@@ -123,7 +123,7 @@ void FeedlyNetwork::onAuthFailed() {
   });
 }
 
-void FeedlyNetwork::onTokensReceived(const QString& access_token, const QString& refresh_token, int expires_in) {
+void FeedlyNetwork::ontokensRetrieved(const QString& access_token, const QString& refresh_token, int expires_in) {
   Q_UNUSED(expires_in)
   Q_UNUSED(access_token)
 

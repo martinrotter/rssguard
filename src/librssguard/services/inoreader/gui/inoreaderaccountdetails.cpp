@@ -99,7 +99,7 @@ void InoreaderAccountDetails::onAuthGranted() {
 }
 
 void InoreaderAccountDetails::hookNetwork() {
-  connect(m_oauth, &OAuth2Service::tokensReceived, this, &InoreaderAccountDetails::onAuthGranted);
+  connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &InoreaderAccountDetails::onAuthGranted);
   connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &InoreaderAccountDetails::onAuthError);
   connect(m_oauth, &OAuth2Service::authFailed, this, &InoreaderAccountDetails::onAuthFailed);
 }

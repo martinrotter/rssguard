@@ -148,11 +148,8 @@ void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
   m_networkManager.post(networkRequest, content.toUtf8());
 }
 
-void OAuth2Service::refreshAccessToken(QString refresh_token) {
-  if (refresh_token.isEmpty()) {
-    refresh_token = refreshToken();
-  }
-
+void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
+  auto real_refresh_token = refresh_token.isEmpty() ? refreshToken() : refresh_token;
   QNetworkRequest networkRequest;
 
   networkRequest.setUrl(m_tokenUrl);
@@ -161,7 +158,7 @@ void OAuth2Service::refreshAccessToken(QString refresh_token) {
   QString content = QString("client_id=%1&"
                             "client_secret=%2&"
                             "refresh_token=%3&"
-                            "grant_type=%4").arg(m_clientId, m_clientSecret, refresh_token, QSL("refresh_token"));
+                            "grant_type=%4").arg(m_clientId, m_clientSecret, real_refresh_token, QSL("refresh_token"));
 
   qApp->showGuiMessage(tr("Logging in via OAuth 2.0..."),
                        tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
@@ -205,7 +202,7 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
              << "Obtained refresh token" << QUOTE_W_SPACE(refreshToken())
              << "- expires on date/time" << QUOTE_W_SPACE_DOT(tokensExpireIn());
 
-    emit tokensReceived(accessToken(), refreshToken(), expires);
+    emit tokensRetrieved(accessToken(), refreshToken(), expires);
   }
 
   network_reply->deleteLater();

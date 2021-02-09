@@ -42,7 +42,7 @@ class FeedlyNetwork : public QObject {
   private slots:
     void onTokensError(const QString& error, const QString& error_description);
     void onAuthFailed();
-    void onTokensReceived(const QString& access_token, const QString& refresh_token, int expires_in);
+    void ontokensRetrieved(const QString& access_token, const QString& refresh_token, int expires_in);
 #endif
 
   private:

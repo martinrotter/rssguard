@@ -80,7 +80,7 @@ void FeedlyAccountDetails::getDeveloperAccessToken() {
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
 
 void FeedlyAccountDetails::hookNetwork() {
-  connect(m_oauth, &OAuth2Service::tokensReceived, this, &FeedlyAccountDetails::onAuthGranted);
+  connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &FeedlyAccountDetails::onAuthGranted);
   connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &FeedlyAccountDetails::onAuthError);
   connect(m_oauth, &OAuth2Service::authFailed, this, &FeedlyAccountDetails::onAuthFailed);
 }
