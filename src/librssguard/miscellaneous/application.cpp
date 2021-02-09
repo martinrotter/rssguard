@@ -39,6 +39,7 @@
 Application::Application(const QString& id, int& argc, char** argv)
   : QtSingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
   parseCmdArguments();
+  qInstallMessageHandler(performLogging);
 
   m_feedReader = nullptr;
   m_quitLogicDone = false;
@@ -54,8 +55,6 @@ Application::Application(const QString& id, int& argc, char** argv)
   m_downloadManager = nullptr;
   m_shouldRestart = false;
 
-  // Setup debug output system.
-  qInstallMessageHandler(performLogging);
   determineFirstRuns();
 
   //: Abbreviation of language, e.g. en.
@@ -91,7 +90,13 @@ QString s_customLogFile = QString();
 void Application::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg) {
 #ifndef QT_NO_DEBUG_OUTPUT
   QString console_message = qFormatLogMessage(type, context, msg);
-  std::cout << console_message.toStdString() << std::endl;
+
+  if (type == QtMsgType::QtCriticalMsg || type == QtMsgType::QtFatalMsg || type == QtMsgType::QtWarningMsg) {
+    std::cerr << console_message.toStdString() << std::endl;
+  }
+  else {
+    std::cout << console_message.toStdString() << std::endl;
+  }
 
   if (!s_customLogFile.isEmpty()) {
     QFile log_file(s_customLogFile);
