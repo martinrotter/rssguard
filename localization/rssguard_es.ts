@@ -566,6 +566,144 @@ Estado: %3</translation>
     </message>
 </context>
 <context>
+    <name>FeedlyAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>Nombre de usuario</translation>
+    </message>
+    <message>
+        <source>Developer access token</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Get token</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation> mensaje(s)</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Sólo descargar X mensajes más nuevos por fuente</translation>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>&amp;Acceder</translation>
+    </message>
+    <message>
+        <source>Username for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>No se ha hecho ninguna prueba todavía.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Se muestran aquí los resultados de la prueba de conexión.</translation>
+    </message>
+    <message>
+        <source>Your %1 build has official Feedly support. You do not have to use &quot;developer acess token&quot;. You can therefore leave corresponding field empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>= unlimited</source>
+        <translation>= sin límite</translation>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>mensajes</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>No concedió el acceso.</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>Hubo un error durante la prueba.</translation>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation>Hay un error. %1 </translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>Probado con éxito. Puede que se le pida que se registre una vez más.</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>Su acceso fue aprobado.</translation>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation>Ha iniciado sesión.</translation>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation>Acceso concedido.</translation>
+    </message>
+    <message>
+        <source>Login was successful.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some problems.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>El campo del nombre de usuario no puede estar vacío. </translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>El nombre de usuario es válido.</translation>
+    </message>
+    <message>
+        <source>Access token is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Access token is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FeedlyNetwork</name>
+    <message>
+        <source>Feedly: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation>Pulse aquí para iniciar sesión nuevamente. El error es: &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Feedly: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation>Pulse aquí para iniciar sesión nuevamente. </translation>
+    </message>
+    <message>
+        <source>Logged in successfully</source>
+        <translation>Sesión iniciada exitosamente.</translation>
+    </message>
+    <message>
+        <source>Your login to Feedly was authorized.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
@@ -1029,6 +1167,13 @@ o debido a que esta función aún no está implementada.</translation>
     <message>
         <source>Downloaded: %1 kB</source>
         <translation>Descargado: %1 kB</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditFeedlyAccount</name>
+    <message>
+        <source>Service setup</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2547,7 +2692,7 @@ Expiración de testigos de ingreso: %2</translation>
 <context>
     <name>GreaderNetwork</name>
     <message>
-        <source>Unknown service</source>
+        <source>Other services</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3484,6 +3629,10 @@ versión pulsando en esta notificación emergente..</translation>
     </message>
     <message>
         <source>Google Reader API is used by many online RSS readers. This is here to support</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4472,11 +4621,23 @@ Clase: %3</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>The source needs to include &quot;#&quot; separator.</source>
+        <source>The source is empty.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>The source is empty.</source>
+        <source>The source does not seem to use &quot;#&quot; separator for arguments.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Command is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Command not seem to use &quot;#&quot; separator for arguments.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Command is empty.</source>
         <translation type="unfinished"/>
     </message>
 </context>

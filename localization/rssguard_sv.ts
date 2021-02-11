@@ -566,6 +566,144 @@ Status: %3</translation>
     </message>
 </context>
 <context>
+    <name>FeedlyAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>Användarnamn</translation>
+    </message>
+    <message>
+        <source>Developer access token</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Get token</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation> meddelande(n)</translation>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Ladda endast ner X nyaste meddelanden per flöde</translation>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>&amp;Logga in</translation>
+    </message>
+    <message>
+        <source>Username for your account</source>
+        <translation>Användarnamn för ditt konto</translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation>Inget test utfört ännu.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation>Här visas resultat av anslutningstest.</translation>
+    </message>
+    <message>
+        <source>Your %1 build has official Feedly support. You do not have to use &quot;developer acess token&quot;. You can therefore leave corresponding field empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>= unlimited</source>
+        <translation>= obegränsat</translation>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>meddelanden</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>Du beviljade inte åtkomst.</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>Fel uppstod vid testning.</translation>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation>Fel. %1</translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>Testet lyckades. Du kan behöva logga in igen.</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>Åtkomst beviljades.</translation>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation>Du är redan inloggad.</translation>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation>Åtkomst beviljad.</translation>
+    </message>
+    <message>
+        <source>Login was successful.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some problems.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation>Användarnamn saknas.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation>Användarnamn okay.</translation>
+    </message>
+    <message>
+        <source>Access token is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Access token is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FeedlyNetwork</name>
+    <message>
+        <source>Feedly: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation>Klicka här för att logga in igen. Felet är: &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>Feedly: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation>Klicka här för att logga in igen.</translation>
+    </message>
+    <message>
+        <source>Logged in successfully</source>
+        <translation>Inloggad</translation>
+    </message>
+    <message>
+        <source>Your login to Feedly was authorized.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
@@ -1029,6 +1167,13 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Downloaded: %1 kB</source>
         <translation>Nerladdat: %1 kB</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditFeedlyAccount</name>
+    <message>
+        <source>Service setup</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2435,7 +2580,7 @@ Inloggningstoken upphör: %2</translation>
     <name>GreaderAccountDetails</name>
     <message>
         <source>Service</source>
-        <translation type="unfinished"/>
+        <translation>Tjänst</translation>
     </message>
     <message>
         <source>URL</source>
@@ -2475,15 +2620,15 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Password for your account</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord för ditt konto</translation>
     </message>
     <message>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn för ditt konto</translation>
     </message>
     <message>
         <source>URL of your server, without any service-specific path</source>
-        <translation type="unfinished"/>
+        <translation>URL för din server, utan serverspecifik sökväg</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -2495,7 +2640,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster, but if your feed contains bigger number of messages than specified limit, then some older messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
+        <translation>Begränsning av antalet nerladdade meddelanden per flöde gör flödesuppdateringen snabbare, men om ditt flöde innehåller ett större antal meddelanden än specificerad begränsning, kanske en del äldre meddelanden inte laddas ner under flödesuppdateringen.</translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -2515,11 +2660,11 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>You are good to go!</source>
-        <translation type="unfinished"/>
+        <translation>Då kör vi!</translation>
     </message>
     <message>
         <source>Yeah.</source>
-        <translation type="unfinished"/>
+        <translation>Ja.</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -2549,7 +2694,7 @@ Inloggningstoken upphör: %2</translation>
 <context>
     <name>GreaderNetwork</name>
     <message>
-        <source>Unknown service</source>
+        <source>Other services</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3264,7 +3409,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
-        <translation type="unfinished"/>
+        <translation>Kunde inte starta OAuth vidarebefordringslyssnare. Dina rättigheter kanske inte är höga nog.</translation>
     </message>
 </context>
 <context>
@@ -3488,6 +3633,10 @@ genom att klicka på denna popup-avisering.</translation>
     </message>
     <message>
         <source>Google Reader API is used by many online RSS readers. This is here to support</source>
+        <translation>Google Reader API används av många RSS-läsare. Detta är här för att stödja</translation>
+    </message>
+    <message>
+        <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3526,19 +3675,19 @@ genom att klicka på denna popup-avisering.</translation>
     <name>ScriptException</name>
     <message>
         <source>script line is not well-formed</source>
-        <translation type="unfinished"/>
+        <translation>skriptraden är inte väl formaterad</translation>
     </message>
     <message>
         <source>script threw an error</source>
-        <translation type="unfinished"/>
+        <translation>skriptet rapporterade ett fel</translation>
     </message>
     <message>
         <source>script&apos;s interpreter was not found</source>
-        <translation type="unfinished"/>
+        <translation>skriptets tolk hittades inte</translation>
     </message>
     <message>
         <source>script execution took too long</source>
-        <translation type="unfinished"/>
+        <translation>skriptexekvering tog för lång tid</translation>
     </message>
     <message>
         <source>unknown error</source>
@@ -4006,7 +4155,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
-        <translation type="unfinished"/>
+        <translation>Visa riktiga ikoner för flödet i listan över meddelanden i stället för läst-/oläst-ikoner</translation>
     </message>
 </context>
 <context>
@@ -4246,19 +4395,19 @@ Typ: %3</translation>
     </message>
     <message>
         <source>Script</source>
-        <translation type="unfinished"/>
+        <translation>Skript</translation>
     </message>
     <message>
         <source>Local file</source>
-        <translation type="unfinished"/>
+        <translation>Lokal fil</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Okänd</translation>
     </message>
     <message>
         <source>Metadata was not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata hämtades inte.</translation>
     </message>
 </context>
 <context>
@@ -4442,46 +4591,58 @@ Typ: %3</translation>
     </message>
     <message>
         <source>Source</source>
-        <translation type="unfinished"/>
+        <translation>Källa</translation>
     </message>
     <message>
         <source>Post-process script</source>
-        <translation type="unfinished"/>
+        <translation>Efterbearbetningsskript</translation>
     </message>
     <message>
         <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-        <translation type="unfinished"/>
+        <translation>Du kan använda en URL som källa till ditt flöde eller så kan du producera ditt flöde med ett anpassat skript. Du kan också efterbearbeta genererad flödesdata med ännu ett skript om du vill. Det här är avancerade funktioner så se till att läsa dokumentationen innan du använder dem.</translation>
     </message>
     <message>
         <source>Full feed source identifier</source>
-        <translation type="unfinished"/>
+        <translation>Fullständig källidentifierare</translation>
     </message>
     <message>
         <source>Full feed source identifier which can be URL.</source>
-        <translation type="unfinished"/>
+        <translation>Fullständig källidentifierare, som kan vara en URL.</translation>
     </message>
     <message>
         <source>Full command to execute</source>
-        <translation type="unfinished"/>
+        <translation>Fullständigt kommando att köra</translation>
     </message>
     <message>
         <source>You can enter full command including interpreter here.</source>
-        <translation type="unfinished"/>
+        <translation>Du kan ange fullständigt kommando inklusive tolk här.</translation>
     </message>
     <message>
         <source>Here you can enter script executaion line, including interpreter.</source>
-        <translation type="unfinished"/>
+        <translation>Här kan du ange skriptexekveringsrad, inklusive tolk.</translation>
     </message>
     <message>
         <source>The source is ok.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The source needs to include &quot;#&quot; separator.</source>
-        <translation type="unfinished"/>
+        <translation>Källan är OK.</translation>
     </message>
     <message>
         <source>The source is empty.</source>
+        <translation>Källan är tom.</translation>
+    </message>
+    <message>
+        <source>The source does not seem to use &quot;#&quot; separator for arguments.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Command is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Command not seem to use &quot;#&quot; separator for arguments.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Command is empty.</source>
         <translation type="unfinished"/>
     </message>
 </context>

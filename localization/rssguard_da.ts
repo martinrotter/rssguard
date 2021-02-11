@@ -183,7 +183,7 @@
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Nogle feeds kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -564,6 +564,144 @@ Status: %3</source>
     </message>
 </context>
 <context>
+    <name>FeedlyAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Developer access token</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Get token</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> message(s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your %1 build has official Feedly support. You do not have to use &quot;developer acess token&quot;. You can therefore leave corresponding field empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>= unlimited</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are already logged in.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Access granted.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Login was successful.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some problems.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Access token is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Access token is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FeedlyNetwork</name>
+    <message>
+        <source>Feedly: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feedly: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Logged in successfully</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your login to Feedly was authorized.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
@@ -787,7 +925,7 @@ or this functionality is not implemented yet.</source>
     <name>FormAccountDetails</name>
     <message>
         <source>Edit account &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Rediger  konto &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Network proxy</source>
@@ -1029,38 +1167,45 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormEditFeedlyAccount</name>
+    <message>
+        <source>Service setup</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormEditGmailAccount</name>
     <message>
         <source>Server setup</source>
-        <translation type="unfinished"/>
+        <translation>Serverindstillinger</translation>
     </message>
 </context>
 <context>
     <name>FormEditGreaderAccount</name>
     <message>
         <source>Server setup</source>
-        <translation type="unfinished"/>
+        <translation>Serverindstillinger</translation>
     </message>
 </context>
 <context>
     <name>FormEditInoreaderAccount</name>
     <message>
         <source>Server setup</source>
-        <translation type="unfinished"/>
+        <translation>Serverindstillinger</translation>
     </message>
 </context>
 <context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>Server setup</source>
-        <translation type="unfinished"/>
+        <translation>Serverindstillinger</translation>
     </message>
 </context>
 <context>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>Server setup</source>
-        <translation type="unfinished"/>
+        <translation>Serverindstillinger</translation>
     </message>
 </context>
 <context>
@@ -1091,11 +1236,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Download messages every</source>
-        <translation type="unfinished"/>
+        <translation>Hent meddelelser hvert</translation>
     </message>
     <message>
         <source>Do not download messages at all</source>
-        <translation type="unfinished"/>
+        <translation>Hent ingen meddelelser</translation>
     </message>
 </context>
 <context>
@@ -1158,7 +1303,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation type="unfinished"/>
+        <translation>Gemmer eller viser listen af feeds/kategorier.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
@@ -1182,7 +1327,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>Åben valgte kildeartikel i &amp;ekstern netlæser</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
@@ -2433,7 +2578,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Nogle feeds kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -2531,7 +2676,7 @@ Login tokens expiration: %2</source>
 <context>
     <name>GreaderNetwork</name>
     <message>
-        <source>Unknown service</source>
+        <source>Other services</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3270,7 +3415,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Nogle feeds kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -3460,6 +3605,10 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Google Reader API is used by many online RSS readers. This is here to support</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4433,11 +4582,23 @@ Type: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>The source needs to include &quot;#&quot; separator.</source>
+        <source>The source is empty.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>The source is empty.</source>
+        <source>The source does not seem to use &quot;#&quot; separator for arguments.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Command is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Command not seem to use &quot;#&quot; separator for arguments.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Command is empty.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4677,7 +4838,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Nogle feeds kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
     </message>
     <message>
         <source>Authentication</source>
