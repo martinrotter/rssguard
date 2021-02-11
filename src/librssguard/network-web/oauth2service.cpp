@@ -290,12 +290,14 @@ bool OAuth2Service::login() {
   }
 }
 
-void OAuth2Service::logout() {
+void OAuth2Service::logout(bool stop_redirection_handler) {
   setTokensExpireIn(QDateTime());
   setAccessToken(QString());
   setRefreshToken(QString());
 
-  m_redirectionHandler->stop();
+  if (stop_redirection_handler) {
+    m_redirectionHandler->stop();
+  }
 }
 
 void OAuth2Service::startRefreshTimer() {

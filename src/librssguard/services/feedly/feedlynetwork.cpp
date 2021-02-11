@@ -152,6 +152,9 @@ QString FeedlyNetwork::fullUrl(FeedlyNetwork::Service service) const {
   switch (service) {
     case FeedlyNetwork::Service::Profile:
       return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_PROFILE;
+
+    default:
+      return FEEDLY_API_URL_BASE;
   }
 }
 

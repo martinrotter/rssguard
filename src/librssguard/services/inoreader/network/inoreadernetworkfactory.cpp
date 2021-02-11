@@ -40,7 +40,7 @@ OAuth2Service* InoreaderNetworkFactory::oauth() const {
   return m_oauth2;
 }
 
-QString InoreaderNetworkFactory::userName() const {
+QString InoreaderNetworkFactory::username() const {
   return m_username;
 }
 

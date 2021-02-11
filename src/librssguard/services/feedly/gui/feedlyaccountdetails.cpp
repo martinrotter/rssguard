@@ -110,7 +110,7 @@ void FeedlyAccountDetails::onAuthGranted() {
 void FeedlyAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
   if (m_ui.m_txtDeveloperAccessToken->lineEdit()->text().simplified().isEmpty()) {
-    m_oauth->logout();
+    m_oauth->logout(false);
 
     if (m_oauth->login()) {
       m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,

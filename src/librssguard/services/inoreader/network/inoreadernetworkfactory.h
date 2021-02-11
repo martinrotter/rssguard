@@ -27,7 +27,7 @@ class InoreaderNetworkFactory : public QObject {
     OAuth2Service* oauth() const;
     void setOauth(OAuth2Service* oauth);
 
-    QString userName() const;
+    QString username() const;
     void setUsername(const QString& username);
 
     // Gets/sets the amount of messages to obtain during single feed update.

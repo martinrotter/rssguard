@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '20');
+INSERT INTO Information VALUES (1, 'schema_version', '21');
 -- !
 CREATE TABLE IF NOT EXISTS Accounts (
   id              INTEGER     AUTO_INCREMENT PRIMARY KEY,
@@ -81,6 +81,16 @@ CREATE TABLE IF NOT EXISTS GoogleReaderApiAccounts (
   password            TEXT,
   url                 TEXT        NOT NULL,
   msg_limit           INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
+  
+  FOREIGN KEY (id) REFERENCES Accounts (id)
+);
+-- !
+CREATE TABLE IF NOT EXISTS FeedlyAccounts (
+  id                        INTEGER,
+  username                  TEXT        NOT NULL,
+  developer_access_token    TEXT,
+  refresh_token             TEXT,
+  msg_limit                 INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
   
   FOREIGN KEY (id) REFERENCES Accounts (id)
 );

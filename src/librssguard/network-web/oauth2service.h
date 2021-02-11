@@ -94,7 +94,7 @@ class OAuth2Service : public QObject {
     bool login();
 
     // Removes all state data and stops redirection handler.
-    void logout();
+    void logout(bool stop_redirection_handler = true);
 
   private slots:
     void startRefreshTimer();

@@ -453,11 +453,10 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(const QSqlDatabase& database, c
 
     // Increment the version.
     qDebugNN << LOGSEC_DB
-             << "Updating database schema: '"
-             << working_version
-             << "' -> '"
-             << working_version + 1
-             << "'.";
+             << "Updating database schema:"
+             << QUOTE_W_SPACE(working_version)
+             << "->"
+             << QUOTE_W_SPACE_DOT(working_version + 1);
 
     working_version++;
   }

@@ -35,6 +35,9 @@ void FormEditFeedlyAccount::apply() {
     account<FeedlyServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
     m_details->m_oauth->logout();
     m_details->m_oauth->deleteLater();
+
+    // Force live OAuth object to re-start it's
+    account<FeedlyServiceRoot>()->network()->oauth()->setRedirectUrl(account<FeedlyServiceRoot>()->network()->oauth()->redirectUrl());
   }
 #endif
 

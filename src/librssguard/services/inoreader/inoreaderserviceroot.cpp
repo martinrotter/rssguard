@@ -25,7 +25,7 @@ InoreaderServiceRoot::InoreaderServiceRoot(RootItem* parent)
 InoreaderServiceRoot::~InoreaderServiceRoot() = default;
 
 void InoreaderServiceRoot::updateTitle() {
-  setTitle(m_network->userName() + QSL(" (Inoreader)"));
+  setTitle(TextFactory::extractUsernameFromEmail(m_network->username()) + QSL(" (Inoreader)"));
 }
 
 void InoreaderServiceRoot::loadFromDatabase() {
@@ -41,7 +41,7 @@ void InoreaderServiceRoot::saveAccountDataToDatabase(bool creating_new) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   if (!creating_new) {
-    if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->userName(),
+    if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->username(),
                                                    m_network->oauth()->clientId(),
                                                    m_network->oauth()->clientSecret(),
                                                    m_network->oauth()->redirectUrl(),
@@ -55,7 +55,7 @@ void InoreaderServiceRoot::saveAccountDataToDatabase(bool creating_new) {
   else {
     if (DatabaseQueries::createInoreaderAccount(database,
                                                 accountId(),
-                                                m_network->userName(),
+                                                m_network->username(),
                                                 m_network->oauth()->clientId(),
                                                 m_network->oauth()->clientSecret(),
                                                 m_network->oauth()->redirectUrl(),
