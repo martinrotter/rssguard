@@ -573,11 +573,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>Developer access token</source>
-        <translation type="unfinished"/>
+        <translation>Token de acesso do desenvolvedor</translation>
     </message>
     <message>
         <source>Get token</source>
-        <translation type="unfinished"/>
+        <translation>Obter token</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -605,11 +605,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>Your %1 build has official Feedly support. You do not have to use &quot;developer acess token&quot;. You can therefore leave corresponding field empty.</source>
-        <translation type="unfinished"/>
+        <translation>A sua versão do %1 possui suporte oficial ao Feedly. Você não precisa usar &quot;token de acesso ao desenvolvedor&quot;. Você pode deixar o campo correspondente em branco.</translation>
     </message>
     <message>
         <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-        <translation type="unfinished"/>
+        <translation>O seu %1 não oferece suporte oficial ao Feedly, então você precisa autorizar via código de autorização especial chamado &quot;token de acesso ao desenvolvedor&quot;. Estes tokens são geralmente válidos por 1 mês e permitem somente 250 chamadas de API por dia.</translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -649,15 +649,15 @@ Status: %3</translation>
     </message>
     <message>
         <source>Login was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Login bem sucedido.</translation>
     </message>
     <message>
         <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
-        <translation type="unfinished"/>
+        <translation>Veja se o seu &quot;token de acesso do desenvolvedor&quot; está correto e a sua Internet está funcionando.</translation>
     </message>
     <message>
         <source>Some problems.</source>
-        <translation type="unfinished"/>
+        <translation>Mesmos problemas.</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -669,18 +669,18 @@ Status: %3</translation>
     </message>
     <message>
         <source>Access token is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Token de acesso vazio.</translation>
     </message>
     <message>
         <source>Access token is okay.</source>
-        <translation type="unfinished"/>
+        <translation>O token de acesso está correto.</translation>
     </message>
 </context>
 <context>
     <name>FeedlyNetwork</name>
     <message>
         <source>Feedly: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: erro de autenticação</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -688,7 +688,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>Feedly: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: autorização negada</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -700,7 +700,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>Your login to Feedly was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Seu login no Feedly foi autorizado</translation>
     </message>
 </context>
 <context>
@@ -1173,7 +1173,7 @@ ou esta função ainda não foi implementada.</translation>
     <name>FormEditFeedlyAccount</name>
     <message>
         <source>Service setup</source>
-        <translation type="unfinished"/>
+        <translation>Configurar serviço</translation>
     </message>
 </context>
 <context>
@@ -2696,7 +2696,7 @@ Expiração dos tokens de login: %2</translation>
     <name>GreaderNetwork</name>
     <message>
         <source>Other services</source>
-        <translation type="unfinished"/>
+        <translation>Outros serviços</translation>
     </message>
 </context>
 <context>
@@ -3638,7 +3638,7 @@ versão, clicando nesta notificação popup.</translation>
     </message>
     <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-        <translation type="unfinished"/>
+        <translation>Fique por dentro dos tópicos e tendências de seu interesse, sem sobrecarregar. O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacidade os tópicos e tendências que são importantes para você.</translation>
     </message>
 </context>
 <context>
@@ -4631,19 +4631,19 @@ Tipo: %3</translation>
     </message>
     <message>
         <source>The source does not seem to use &quot;#&quot; separator for arguments.</source>
-        <translation type="unfinished"/>
+        <translation>A fonte parece não usar o separador &quot;#&quot; para argumentos.</translation>
     </message>
     <message>
         <source>Command is ok.</source>
-        <translation type="unfinished"/>
+        <translation>O comando está correto.</translation>
     </message>
     <message>
         <source>Command not seem to use &quot;#&quot; separator for arguments.</source>
-        <translation type="unfinished"/>
+        <translation>O comando parece não usar o separador &quot;#&quot; para argumentos.</translation>
     </message>
     <message>
         <source>Command is empty.</source>
-        <translation type="unfinished"/>
+        <translation>O comando está vazio.</translation>
     </message>
 </context>
 <context>

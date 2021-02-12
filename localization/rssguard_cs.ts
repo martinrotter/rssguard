@@ -569,7 +569,7 @@ Stav: %3</translation>
     <name>FeedlyAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>Developer access token</source>
@@ -581,15 +581,15 @@ Stav: %3</translation>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation> zpráv</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Stahovat pouze X nejnovějších zpráv z kanálu</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Přihlásit se</translation>
     </message>
     <message>
         <source>Username for your account</source>
@@ -597,11 +597,11 @@ Stav: %3</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Žádný test zatím neproveden.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Zde jsou zobrazeny výsledky testu spojení.</translation>
     </message>
     <message>
         <source>Your %1 build has official Feedly support. You do not have to use &quot;developer acess token&quot;. You can therefore leave corresponding field empty.</source>
@@ -613,39 +613,39 @@ Stav: %3</translation>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= neomezeno</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>zpráv</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup NEpovolen.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Byla chyba během testování.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Máme chybu: %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Otestováno úspěšně.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup byl povolen.</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Již jste přihlášen.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup povolen.</translation>
     </message>
     <message>
         <source>Login was successful.</source>
@@ -661,11 +661,11 @@ Stav: %3</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Login nemůže být prázdný.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Login je v pořádku.</translation>
     </message>
     <message>
         <source>Access token is empty.</source>
@@ -684,7 +684,7 @@ Stav: %3</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Pro opětovné přihlášení klikněte zde.</translation>
     </message>
     <message>
         <source>Feedly: authorization denied</source>
@@ -692,11 +692,11 @@ Stav: %3</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klikně sem pro opětovné přihlášení.</translation>
     </message>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Přihlášeno úspěšně.</translation>
     </message>
     <message>
         <source>Your login to Feedly was authorized.</source>

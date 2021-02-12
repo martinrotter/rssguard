@@ -566,7 +566,7 @@ Status: %3</source>
     <name>FeedlyAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Developer access token</source>
@@ -578,15 +578,15 @@ Status: %3</source>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation>Nachricht(en)</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Nur die neuesten X messages pro Feed herunterladen</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Login</translation>
     </message>
     <message>
         <source>Username for your account</source>
@@ -594,11 +594,11 @@ Status: %3</source>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Einstellungen wurden noch nicht getestet.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Anzeige der Ergebnisse des Verbindungstests.</translation>
     </message>
     <message>
         <source>Your %1 build has official Feedly support. You do not have to use &quot;developer acess token&quot;. You can therefore leave corresponding field empty.</source>
@@ -610,39 +610,39 @@ Status: %3</source>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= unbegrenzt</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>Nachrichten</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Sie haben keinen Zugang gewährt.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist während des Tests aufgetreten.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist aufgetreten. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Test erfolgreich. Sie könnten zu einem erneuten Einloggen aufgefordert werden.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Ihr Zugang wurde genehmigt.</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Sie sind bereits angemeldet.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Zugang gewährt.</translation>
     </message>
     <message>
         <source>Login was successful.</source>
@@ -658,11 +658,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername darf nicht leer sein.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername ist in Ordnung.</translation>
     </message>
     <message>
         <source>Access token is empty.</source>
@@ -681,7 +681,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klicken Sie hier um sich wieder anzumelden. Der Fehler ist: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Feedly: authorization denied</source>
@@ -689,11 +689,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Drücken Sie hier um sich neu anzumelden.</translation>
     </message>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Erfolgreich eingeloggt</translation>
     </message>
     <message>
         <source>Your login to Feedly was authorized.</source>

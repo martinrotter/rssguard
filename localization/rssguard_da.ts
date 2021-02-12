@@ -567,7 +567,7 @@ Status: %3</source>
     <name>FeedlyAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn</translation>
     </message>
     <message>
         <source>Developer access token</source>
@@ -579,15 +579,15 @@ Status: %3</source>
     </message>
     <message>
         <source> message(s)</source>
-        <translation type="unfinished"/>
+        <translation>meddelelse(r)</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Hent kun de seneste X meddelelser per feed</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Log på</translation>
     </message>
     <message>
         <source>Username for your account</source>
@@ -595,7 +595,7 @@ Status: %3</source>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Endnu ikke testet.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
@@ -611,39 +611,39 @@ Status: %3</source>
     </message>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= ubegrænset</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>meddelelser</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Du har ikke givet adgang.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Der opstod en fejl under test.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Dette er fejl. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Testet med succes. Du bliver muligvis bedt om at logge ind igen.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Du har fået adgang.</translation>
     </message>
     <message>
         <source>You are already logged in.</source>
-        <translation type="unfinished"/>
+        <translation>Du er allerede logget på.</translation>
     </message>
     <message>
         <source>Access granted.</source>
-        <translation type="unfinished"/>
+        <translation>Adgang givet.</translation>
     </message>
     <message>
         <source>Login was successful.</source>
@@ -659,11 +659,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn skal udfyldes.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn er okay.</translation>
     </message>
     <message>
         <source>Access token is empty.</source>
@@ -694,7 +694,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Logged in successfully</source>
-        <translation type="unfinished"/>
+        <translation>Logget ind med succes</translation>
     </message>
     <message>
         <source>Your login to Feedly was authorized.</source>
