@@ -6,6 +6,7 @@
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
 
+#include "miscellaneous/databasequeries.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
@@ -39,7 +40,7 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
 
   connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &FeedlyNetwork::onTokensError);
   connect(m_oauth, &OAuth2Service::authFailed, this, &FeedlyNetwork::onAuthFailed);
-  connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &FeedlyNetwork::ontokensRetrieved);
+  connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &FeedlyNetwork::onTokensRetrieved);
 #endif
 }
 
@@ -107,8 +108,7 @@ void FeedlyNetwork::onTokensError(const QString& error, const QString& error_des
                        QSystemTrayIcon::MessageIcon::Critical,
                        nullptr, false,
                        [this]() {
-    m_oauth->setAccessToken({});
-    m_oauth->setRefreshToken({});
+    m_oauth->logout(false);
     m_oauth->login();
   });
 }
@@ -119,19 +119,19 @@ void FeedlyNetwork::onAuthFailed() {
                        QSystemTrayIcon::MessageIcon::Critical,
                        nullptr, false,
                        [this]() {
+    m_oauth->logout(false);
     m_oauth->login();
   });
 }
 
-void FeedlyNetwork::ontokensRetrieved(const QString& access_token, const QString& refresh_token, int expires_in) {
+void FeedlyNetwork::onTokensRetrieved(const QString& access_token, const QString& refresh_token, int expires_in) {
   Q_UNUSED(expires_in)
   Q_UNUSED(access_token)
 
   if (m_service != nullptr && !refresh_token.isEmpty()) {
     QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-    //DatabaseQueries::storeNewInoreaderTokens(database, refresh_token, m_service->accountId());
-
+    DatabaseQueries::storeNewOauthTokens(database, QSL("FeedlyAccounts"), refresh_token, m_service->accountId());
     qApp->showGuiMessage(tr("Logged in successfully"),
                          tr("Your login to Feedly was authorized."),
                          QSystemTrayIcon::MessageIcon::Information);

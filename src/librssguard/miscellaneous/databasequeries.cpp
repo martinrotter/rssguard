@@ -10,6 +10,8 @@
 #include "network-web/oauth2service.h"
 #include "services/abstract/category.h"
 #include "services/feedly/definitions.h"
+#include "services/feedly/feedlynetwork.h"
+#include "services/feedly/feedlyserviceroot.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailfeed.h"
 #include "services/gmail/gmailserviceroot.h"
@@ -1848,7 +1850,7 @@ bool DatabaseQueries::createFeedlyAccount(const QSqlDatabase& db, const QString&
   QSqlQuery q(db);
 
   q.prepare("INSERT INTO FeedlyAccounts (id, username, developer_access_token, refresh_token, msg_limit) "
-            "VALUES (:id, :service, :username, :developer_access_token, :refresh_token, :msg_limit);");
+            "VALUES (:id, :username, :developer_access_token, :refresh_token, :msg_limit);");
   q.bindValue(QSL(":id"), id_to_assign);
   q.bindValue(QSL(":username"), username);
   q.bindValue(QSL(":developer_access_token"), developer_access_token);
@@ -2590,6 +2592,45 @@ QStringList DatabaseQueries::getAllRecipients(const QSqlDatabase& db, int accoun
   return rec;
 }
 
+QList<ServiceRoot*> DatabaseQueries::getFeedlyAccounts(const QSqlDatabase& db, bool* ok) {
+  QSqlQuery query(db);
+  QList<ServiceRoot*> roots;
+
+  if (query.exec("SELECT * FROM FeedlyAccounts;")) {
+    while (query.next()) {
+      auto* root = new FeedlyServiceRoot();
+
+      root->setId(query.value(0).toInt());
+      root->setAccountId(query.value(0).toInt());
+      root->network()->setUsername(query.value(1).toString());
+      root->network()->setDeveloperAccessToken(query.value(2).toString());
+      root->network()->oauth()->setRefreshToken(query.value(3).toString());
+      root->network()->setBatchSize(query.value(4).toInt());
+      root->updateTitle();
+
+      fillBaseAccountData(db, root);
+
+      roots.append(root);
+    }
+
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    qWarningNN << LOGSEC_GMAIL
+               << "Getting list of activated accounts failed: '"
+               << query.lastError().text()
+               << "'.";
+
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  return roots;
+}
+
 QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(const QSqlDatabase& db, bool* ok) {
   QSqlQuery query(db);
   QList<ServiceRoot*> roots;
@@ -2640,27 +2681,6 @@ bool DatabaseQueries::deleteGmailAccount(const QSqlDatabase& db, int account_id)
   return q.exec();
 }
 
-bool DatabaseQueries::storeNewGmailTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id) {
-  QSqlQuery query(db);
-
-  query.prepare("UPDATE GmailAccounts "
-                "SET refresh_token = :refresh_token "
-                "WHERE id = :id;");
-  query.bindValue(QSL(":refresh_token"), refresh_token);
-  query.bindValue(QSL(":id"), account_id);
-
-  if (query.exec()) {
-    return true;
-  }
-  else {
-    qWarningNN << LOGSEC_GMAIL
-               << "Updating tokens in DB failed: '"
-               << query.lastError().text()
-               << "'.";
-    return false;
-  }
-}
-
 bool DatabaseQueries::deleteInoreaderAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
@@ -2670,23 +2690,22 @@ bool DatabaseQueries::deleteInoreaderAccount(const QSqlDatabase& db, int account
   return q.exec();
 }
 
-bool DatabaseQueries::storeNewInoreaderTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id) {
+bool DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db, const QString& table_name,
+                                          const QString& refresh_token, int account_id) {
   QSqlQuery query(db);
 
-  query.prepare("UPDATE InoreaderAccounts "
-                "SET refresh_token = :refresh_token "
-                "WHERE id = :id;");
+  query.prepare(QSL("UPDATE %1 "
+                    "SET refresh_token = :refresh_token "
+                    "WHERE id = :id;").arg(table_name));
   query.bindValue(QSL(":refresh_token"), refresh_token);
   query.bindValue(QSL(":id"), account_id);
 
   if (query.exec()) {
+    qDebugNN << LOGSEC_DB << "Stored new refresh token into table" << QUOTE_W_SPACE_DOT(table_name);
     return true;
   }
   else {
-    qWarningNN << LOGSEC_INOREADER
-               << "Updating tokens in DB failed: '"
-               << query.lastError().text()
-               << "'.";
+    qWarningNN << LOGSEC_DB << "Updating tokens in DB failed:" << QUOTE_W_SPACE_DOT(query.lastError().text());
     return false;
   }
 }

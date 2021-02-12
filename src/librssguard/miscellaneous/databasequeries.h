@@ -89,6 +89,8 @@ class DatabaseQueries {
                                                    bool* ok = nullptr);
 
     // Common account methods.
+    static bool storeNewOauthTokens(const QSqlDatabase& db, const QString& table_name,
+                                    const QString& refresh_token, int account_id);
     static void fillBaseAccountData(const QSqlDatabase& db, ServiceRoot* account, bool* ok = nullptr);
     static int createBaseAccount(const QSqlDatabase& db, const QString& code, bool* ok = nullptr);
     static void editBaseAccount(const QSqlDatabase& db, ServiceRoot* account, bool* ok = nullptr);
@@ -151,6 +153,7 @@ class DatabaseQueries {
     static void fillFeedData(T* feed, const QSqlRecord& sql_record);
 
     // Feedly account.
+    static QList<ServiceRoot*> getFeedlyAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool createFeedlyAccount(const QSqlDatabase& db,
                                     const QString& username,
                                     const QString& developer_access_token,
@@ -199,7 +202,6 @@ class DatabaseQueries {
     // Gmail account.
     static QStringList getAllRecipients(const QSqlDatabase& db, int account_id);
     static bool deleteGmailAccount(const QSqlDatabase& db, int account_id);
-    static bool storeNewGmailTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static QList<ServiceRoot*> getGmailAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool overwriteGmailAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
                                       const QString& app_key, const QString& redirect_url, const QString& refresh_token,
@@ -210,7 +212,6 @@ class DatabaseQueries {
 
     // Inoreader account.
     static bool deleteInoreaderAccount(const QSqlDatabase& db, int account_id);
-    static bool storeNewInoreaderTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static QList<ServiceRoot*> getInoreaderAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool overwriteInoreaderAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
                                           const QString& app_key, const QString& redirect_url, const QString& refresh_token,

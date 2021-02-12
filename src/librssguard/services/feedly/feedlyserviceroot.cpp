@@ -66,7 +66,7 @@ void FeedlyServiceRoot::start(bool freshly_activated) {
 }
 
 QString FeedlyServiceRoot::code() const {
-  return FeedlyServiceRoot().code();
+  return FeedlyEntryPoint().code();
 }
 
 void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {

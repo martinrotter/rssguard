@@ -36,8 +36,10 @@ void FormEditFeedlyAccount::apply() {
     m_details->m_oauth->logout();
     m_details->m_oauth->deleteLater();
 
-    // Force live OAuth object to re-start it's
-    account<FeedlyServiceRoot>()->network()->oauth()->setRedirectUrl(account<FeedlyServiceRoot>()->network()->oauth()->redirectUrl());
+    // Force live OAuth object to re-start it's redirection handler.
+    account<FeedlyServiceRoot>()->network()->oauth()->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +
+                                                                     QL1C(':') +
+                                                                     QString::number(FEEDLY_API_REDIRECT_URI_PORT));
   }
 #endif
 

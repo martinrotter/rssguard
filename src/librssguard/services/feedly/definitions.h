@@ -2,6 +2,8 @@
 #define FEEDLY_DEFINITIONS_H
 
 #define FEEDLY_UNLIMITED_BATCH_SIZE       -1
+#define FEEDLY_MAX_BATCH_SIZE             999
+
 #define FEEDLY_GENERATE_DAT               "https://feedly.com/v3/auth/dev"
 
 #define FEEDLY_API_REDIRECT_URI_PORT      8080
