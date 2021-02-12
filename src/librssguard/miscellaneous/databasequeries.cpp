@@ -1846,12 +1846,12 @@ bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QSt
 
 bool DatabaseQueries::createFeedlyAccount(const QSqlDatabase& db, const QString& username,
                                           const QString& developer_access_token, const QString& refresh_token,
-                                          int batch_size, int id_to_assign) {
+                                          int batch_size, int account_id) {
   QSqlQuery q(db);
 
   q.prepare("INSERT INTO FeedlyAccounts (id, username, developer_access_token, refresh_token, msg_limit) "
             "VALUES (:id, :username, :developer_access_token, :refresh_token, :msg_limit);");
-  q.bindValue(QSL(":id"), id_to_assign);
+  q.bindValue(QSL(":id"), account_id);
   q.bindValue(QSL(":username"), username);
   q.bindValue(QSL(":developer_access_token"), developer_access_token);
   q.bindValue(QSL(":refresh_token"), refresh_token);
@@ -1870,8 +1870,26 @@ bool DatabaseQueries::createFeedlyAccount(const QSqlDatabase& db, const QString&
 
 bool DatabaseQueries::overwriteFeedlyAccount(const QSqlDatabase& db, const QString& username,
                                              const QString& developer_access_token, const QString& refresh_token,
-                                             int batch_size, int id_to_assign) {
-  return {};
+                                             int batch_size, int account_id) {
+  QSqlQuery query(db);
+
+  query.prepare("UPDATE FeedlyAccounts "
+                "SET username = :username, developer_access_token = :developer_access_token, "
+                "refresh_token = :refresh_token, msg_limit = :msg_limit "
+                "WHERE id = :id;");
+  query.bindValue(QSL(":id"), account_id);
+  query.bindValue(QSL(":username"), username);
+  query.bindValue(QSL(":developer_access_token"), developer_access_token);
+  query.bindValue(QSL(":refresh_token"), refresh_token);
+  query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? FEEDLY_UNLIMITED_BATCH_SIZE : batch_size);
+
+  if (query.exec()) {
+    return true;
+  }
+  else {
+    qCriticalNN << LOGSEC_FEEDLY << "Updating account failed:" << QUOTE_W_SPACE_DOT(query.lastError().text());
+    return false;
+  }
 }
 
 bool DatabaseQueries::createGreaderAccount(const QSqlDatabase& db, int id_to_assign, const QString& username,
@@ -2604,7 +2622,11 @@ QList<ServiceRoot*> DatabaseQueries::getFeedlyAccounts(const QSqlDatabase& db, b
       root->setAccountId(query.value(0).toInt());
       root->network()->setUsername(query.value(1).toString());
       root->network()->setDeveloperAccessToken(query.value(2).toString());
+
+#if defined (FEEDLY_OFFICIAL_SUPPORT)
       root->network()->oauth()->setRefreshToken(query.value(3).toString());
+#endif
+
       root->network()->setBatchSize(query.value(4).toInt());
       root->updateTitle();
 

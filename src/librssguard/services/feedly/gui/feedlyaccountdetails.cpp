@@ -3,6 +3,7 @@
 #include "services/feedly/gui/feedlyaccountdetails.h"
 
 #include "definitions/definitions.h"
+#include "exceptions/networkexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/systemfactory.h"
@@ -13,6 +14,8 @@
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
 #include "network-web/oauth2service.h"
 #endif
+
+#include <QVariantHash>
 
 FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
@@ -131,14 +134,15 @@ void FeedlyAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
   factory.setUsername(m_ui.m_txtUsername->lineEdit()->text());
   factory.setDeveloperAccessToken(m_ui.m_txtDeveloperAccessToken->lineEdit()->text());
 
-  if (!factory.profile(custom_proxy).isEmpty()) {
+  try {
+    m_ui.m_txtUsername->lineEdit()->setText(factory.profile(custom_proxy)["email"].toString());
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                     tr("Login was successful."),
                                     tr("Access granted."));
   }
-  else {
+  catch (const NetworkException& ex) {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("Make sure your \"development access token\" is correct and your internet works."),
+                                    tr("Error: '%1'").arg(ex.message()),
                                     tr("Some problems."));
   }
 }

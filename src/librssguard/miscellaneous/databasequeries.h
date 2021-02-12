@@ -159,13 +159,13 @@ class DatabaseQueries {
                                     const QString& developer_access_token,
                                     const QString& refresh_token,
                                     int batch_size,
-                                    int id_to_assign);
+                                    int account_id);
     static bool overwriteFeedlyAccount(const QSqlDatabase& db,
                                        const QString& username,
                                        const QString& developer_access_token,
                                        const QString& refresh_token,
                                        int batch_size,
-                                       int id_to_assign);
+                                       int account_id);
 
     // Greader account.
     static bool deleteGreaderAccount(const QSqlDatabase& db, int account_id);

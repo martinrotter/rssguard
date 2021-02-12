@@ -3,10 +3,10 @@
 #include "services/feedly/feedlynetwork.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
-#include "network-web/networkfactory.h"
-
 #include "miscellaneous/databasequeries.h"
+#include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
@@ -44,34 +44,45 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
 #endif
 }
 
-QString FeedlyNetwork::profile(const QNetworkProxy& network_proxy) {
+RootItem* FeedlyNetwork::personalCollections(bool obtain_icons, const QNetworkProxy& proxy) {
   QString bear = bearer();
 
   if (bear.isEmpty()) {
-    qCriticalNN << LOGSEC_FEEDLY
-                << "Cannot obtain profile information, because bearer is empty.";
-    return {};
+    qCriticalNN << LOGSEC_FEEDLY << "Cannot obtain personal collections, because bearer is empty.";
+    throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
   }
-  else {
-    QString target_url = fullUrl(Service::Profile);
-    int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-    QByteArray output_msgs;
+}
 
-    // This method uses proxy via parameter,
-    // not via "m_service" field.
-    auto result = NetworkFactory::performNetworkOperation(target_url,
-                                                          timeout,
-                                                          {},
-                                                          output_msgs,
-                                                          QNetworkAccessManager::Operation::GetOperation,
-                                                          { bearerHeader(bear) },
-                                                          false,
-                                                          {},
-                                                          {},
-                                                          network_proxy);
+QVariantHash FeedlyNetwork::profile(const QNetworkProxy& network_proxy) {
+  QString bear = bearer();
 
-    return output_msgs;
+  if (bear.isEmpty()) {
+    qCriticalNN << LOGSEC_FEEDLY << "Cannot obtain profile information, because bearer is empty.";
+    throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
   }
+
+  QString target_url = fullUrl(Service::Profile);
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray output_msgs;
+
+  // This method uses proxy via parameter,
+  // not via "m_service" field.
+  auto result = NetworkFactory::performNetworkOperation(target_url,
+                                                        timeout,
+                                                        {},
+                                                        output_msgs,
+                                                        QNetworkAccessManager::Operation::GetOperation,
+                                                        { bearerHeader(bear) },
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        network_proxy);
+
+  if (result.first != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result.first);
+  }
+
+  return QJsonDocument::fromJson(output_msgs).object().toVariantHash();
 }
 
 QString FeedlyNetwork::username() const {

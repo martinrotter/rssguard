@@ -21,7 +21,7 @@ class FeedlyNetwork : public QObject {
     explicit FeedlyNetwork(QObject* parent = nullptr);
 
     // API operations.
-    QString profile(const QNetworkProxy& network_proxy);
+    QVariantHash profile(const QNetworkProxy& network_proxy);
 
     // Getters and setters.
     QString username() const;
