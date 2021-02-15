@@ -18,5 +18,6 @@
 #define FEEDLY_API_URL_AUTH       "auth/auth"
 #define FEEDLY_API_URL_TOKEN      "auth/token"
 #define FEEDLY_API_URL_PROFILE    "profile"
+#define FEEDLY_API_URL_COLLETIONS "collections"
 
 #endif // FEEDLY_DEFINITIONS_H

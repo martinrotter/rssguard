@@ -44,13 +44,64 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
 #endif
 }
 
-RootItem* FeedlyNetwork::personalCollections(bool obtain_icons, const QNetworkProxy& proxy) {
+RootItem* FeedlyNetwork::collections(bool obtain_icons) {
   QString bear = bearer();
 
   if (bear.isEmpty()) {
     qCriticalNN << LOGSEC_FEEDLY << "Cannot obtain personal collections, because bearer is empty.";
     throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
   }
+
+  QString target_url = fullUrl(Service::Collections);
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray output_msgs;
+  auto result = NetworkFactory::performNetworkOperation(target_url,
+                                                        timeout,
+                                                        {},
+                                                        output_msgs,
+                                                        QNetworkAccessManager::Operation::GetOperation,
+                                                        { bearerHeader(bear) },
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        m_service->networkProxy());
+
+  if (result.first != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result.first);
+  }
+
+  return decodeCollections(output_msgs);
+}
+
+RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json, bool obtain_url) const {
+  QJsonDocument doc = QJsonDocument::fromJson(json);
+  auto* parent = new RootItem();
+  QList<QString> used_feeds;
+
+  for (const QJsonValue& cat : doc.array()) {
+    QJsonObject cat_obj = cat.toObject();
+    auto* category = new Category(parent);
+
+    category->setTitle(cat_obj["label"].toString());
+    category->setCustomId(cat_obj["id"].toString());
+
+    for (const QJsonValue& fee : cat["feeds"].toArray()) {
+      QJsonObject fee_obj = fee.toObject();
+      auto* feed = new FeedlyFeed(category);
+
+      feed->setTitle(fee_obj["title"].toString());
+      feed->setDescription(fee_obj["description"].toString());
+      feed->setCustomId(fee_obj["id"].toString());
+
+      if (obtain_url) {
+        // TODO: TODO
+      }
+    }
+
+    parent->appendChild(category);
+  }
+
+  return parent;
 }
 
 QVariantHash FeedlyNetwork::profile(const QNetworkProxy& network_proxy) {
@@ -161,8 +212,11 @@ void FeedlyNetwork::setOauth(OAuth2Service* oauth) {
 
 QString FeedlyNetwork::fullUrl(FeedlyNetwork::Service service) const {
   switch (service) {
-    case FeedlyNetwork::Service::Profile:
+    case Service::Profile:
       return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_PROFILE;
+
+    case Service::Collections:
+      return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_COLLETIONS;
 
     default:
       return FEEDLY_API_URL_BASE;

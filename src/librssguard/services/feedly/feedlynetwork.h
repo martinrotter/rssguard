@@ -23,6 +23,8 @@ class FeedlyNetwork : public QObject {
     // API operations.
     QVariantHash profile(const QNetworkProxy& network_proxy);
 
+    RootItem* collections(bool obtain_icons);
+
     // Getters and setters.
     QString username() const;
     void setUsername(const QString& username);
@@ -47,11 +49,13 @@ class FeedlyNetwork : public QObject {
 
   private:
     enum class Service {
-      Profile
+      Profile,
+      Collections
     };
 
     QString fullUrl(Service service) const;
     QString bearer() const;
+    RootItem* decodeCollections(const QByteArray& json, bool obtain_url) const;
     QPair<QByteArray, QByteArray> bearerHeader(const QString& bearer) const;
 
   private:
