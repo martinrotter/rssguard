@@ -142,14 +142,14 @@ QVariantHash FeedlyNetwork::profile(const QNetworkProxy& network_proxy) {
 
   QString target_url = fullUrl(Service::Profile);
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QByteArray output_msgs;
+  QByteArray output;
 
   // This method uses proxy via parameter,
   // not via "m_service" field.
   auto result = NetworkFactory::performNetworkOperation(target_url,
                                                         timeout,
                                                         {},
-                                                        output_msgs,
+                                                        output,
                                                         QNetworkAccessManager::Operation::GetOperation,
                                                         { bearerHeader(bear) },
                                                         false,
@@ -161,10 +161,35 @@ QVariantHash FeedlyNetwork::profile(const QNetworkProxy& network_proxy) {
     throw NetworkException(result.first);
   }
 
-  return QJsonDocument::fromJson(output_msgs).object().toVariantHash();
+  return QJsonDocument::fromJson(output).object().toVariantHash();
 }
 
 QList<RootItem*> FeedlyNetwork::tags() {
+  QString bear = bearer();
+
+  if (bear.isEmpty()) {
+    qCriticalNN << LOGSEC_FEEDLY << "Cannot obtain tags, because bearer is empty.";
+    throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
+  }
+
+  QString target_url = fullUrl(Service::Tags);
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray output;
+  auto result = NetworkFactory::performNetworkOperation(target_url,
+                                                        timeout,
+                                                        {},
+                                                        output,
+                                                        QNetworkAccessManager::Operation::GetOperation,
+                                                        { bearerHeader(bear) },
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        m_service->networkProxy());
+
+  if (result.first != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result.first);
+  }
+
   return {};
 }
 
@@ -249,6 +274,9 @@ QString FeedlyNetwork::fullUrl(FeedlyNetwork::Service service) const {
 
     case Service::Collections:
       return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_COLLETIONS;
+
+    case Service::Tags:
+      return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TAGS;
 
     default:
       return FEEDLY_API_URL_BASE;

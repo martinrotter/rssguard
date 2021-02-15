@@ -50,7 +50,8 @@ class FeedlyNetwork : public QObject {
   private:
     enum class Service {
       Profile,
-      Collections
+      Collections,
+      Tags
     };
 
     QString fullUrl(Service service) const;

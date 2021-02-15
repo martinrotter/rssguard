@@ -19,5 +19,6 @@
 #define FEEDLY_API_URL_TOKEN      "auth/token"
 #define FEEDLY_API_URL_PROFILE    "profile"
 #define FEEDLY_API_URL_COLLETIONS "collections"
+#define FEEDLY_API_URL_TAGS       "tags"
 
 #endif // FEEDLY_DEFINITIONS_H
