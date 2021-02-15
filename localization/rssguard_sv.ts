@@ -573,11 +573,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>Developer access token</source>
-        <translation type="unfinished"/>
+        <translation>Åtkomst-token för utvecklare</translation>
     </message>
     <message>
         <source>Get token</source>
-        <translation type="unfinished"/>
+        <translation>Hämta token</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -605,11 +605,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>Your %1 build has official Feedly support. You do not have to use &quot;developer acess token&quot;. You can therefore leave corresponding field empty.</source>
-        <translation type="unfinished"/>
+        <translation>Din %1 har officiellt Feedly-stöd. Du behöver inte använda &quot;Åtkomst-token för utvecklare&quot;. Du kan därför lämna motsvarande fält tomt.</translation>
     </message>
     <message>
         <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-        <translation type="unfinished"/>
+        <translation>Din %1 har inte officiellt Feedly-stöd. Därför måste du använda en speciell auktoriseringskod kallad &quot;Åtkomst-token för utvecklare&quot;. Dessa token är vanligtvis giltiga i endast en månad och tillåter bara 250 API-anrop per dag.</translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -649,15 +649,15 @@ Status: %3</translation>
     </message>
     <message>
         <source>Login was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Inloggning slutförd</translation>
     </message>
     <message>
         <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
-        <translation type="unfinished"/>
+        <translation>Tillse att din &quot;Åtkomst-token för utvecklare&quot; är korrekt och att din internetuppkoppling fungerar.</translation>
     </message>
     <message>
         <source>Some problems.</source>
-        <translation type="unfinished"/>
+        <translation>Lite problem.</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -669,18 +669,18 @@ Status: %3</translation>
     </message>
     <message>
         <source>Access token is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Åtkomst-token saknas.</translation>
     </message>
     <message>
         <source>Access token is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Åtkomst-token är OK.</translation>
     </message>
 </context>
 <context>
     <name>FeedlyNetwork</name>
     <message>
         <source>Feedly: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: Autentiseringsfel</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -688,7 +688,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>Feedly: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: Autentisering nekad</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -700,7 +700,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>Your login to Feedly was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Din inloggning till Feedly godkändes.</translation>
     </message>
 </context>
 <context>
@@ -1173,7 +1173,7 @@ att funktionen inte är implementerad än.</translation>
     <name>FormEditFeedlyAccount</name>
     <message>
         <source>Service setup</source>
-        <translation type="unfinished"/>
+        <translation>Tjänstinställning</translation>
     </message>
 </context>
 <context>
@@ -2695,7 +2695,7 @@ Inloggningstoken upphör: %2</translation>
     <name>GreaderNetwork</name>
     <message>
         <source>Other services</source>
-        <translation type="unfinished"/>
+        <translation>Andra tjänster</translation>
     </message>
 </context>
 <context>
@@ -3637,7 +3637,7 @@ genom att klicka på denna popup-avisering.</translation>
     </message>
     <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-        <translation type="unfinished"/>
+        <translation>Håll koll på de ämnen och trender du bryr dig om, utan att överdriva. Feedly är ett säkert utrymme där du privat kan organisera och utforska de ämnen och trender som är viktiga för dig.</translation>
     </message>
 </context>
 <context>
@@ -4631,19 +4631,19 @@ Typ: %3</translation>
     </message>
     <message>
         <source>The source does not seem to use &quot;#&quot; separator for arguments.</source>
-        <translation type="unfinished"/>
+        <translation>Källan verkar inte använda &quot;#&quot; som separator för argument.</translation>
     </message>
     <message>
         <source>Command is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Kommandot är OK.</translation>
     </message>
     <message>
         <source>Command not seem to use &quot;#&quot; separator for arguments.</source>
-        <translation type="unfinished"/>
+        <translation>Kommandot verkar inte använda &quot;#&quot; som separator för argument.</translation>
     </message>
     <message>
         <source>Command is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kommano saknas.</translation>
     </message>
 </context>
 <context>

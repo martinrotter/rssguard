@@ -573,11 +573,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Developer access token</source>
-        <translation type="unfinished"/>
+        <translation>Токен доступа разработчика</translation>
     </message>
     <message>
         <source>Get token</source>
-        <translation type="unfinished"/>
+        <translation>Получить токен</translation>
     </message>
     <message>
         <source> message(s)</source>
@@ -605,11 +605,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Your %1 build has official Feedly support. You do not have to use &quot;developer acess token&quot;. You can therefore leave corresponding field empty.</source>
-        <translation type="unfinished"/>
+        <translation>У вашей сборки %1 есть официальная поддержка Feedly. Вам не обязательно использовать «токен доступа разработчика». Поэтому вы можете оставить соответствующее поле пустым.</translation>
     </message>
     <message>
         <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-        <translation type="unfinished"/>
+        <translation>%1 не предлагает официальную поддержку Feedly, поэтому вы должны авторизоваться с помощью специального кода авторизации, который называется «токен доступа разработчика». Эти токены обычно действительны только в течение 1 месяца и допускают только 250 вызовов API в день.</translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -649,15 +649,15 @@ Status: %3</source>
     </message>
     <message>
         <source>Login was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Вход прошел успешно.</translation>
     </message>
     <message>
         <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
-        <translation type="unfinished"/>
+        <translation>Убедитесь, что ваш «токен доступа разработки» правильный и нет проблем с Интернет-сетью.</translation>
     </message>
     <message>
         <source>Some problems.</source>
-        <translation type="unfinished"/>
+        <translation>Некоторые проблемы.</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -669,18 +669,18 @@ Status: %3</source>
     </message>
     <message>
         <source>Access token is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Токен доступа пуст.</translation>
     </message>
     <message>
         <source>Access token is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Токен доступа в порядке.</translation>
     </message>
 </context>
 <context>
     <name>FeedlyNetwork</name>
     <message>
         <source>Feedly: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: ошибка аутентификации</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -688,7 +688,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Feedly: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: авторизация отклонена</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -700,7 +700,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Your login to Feedly was authorized.</source>
-        <translation type="unfinished"/>
+        <translation>Ваш логин в Feedly был авторизован.</translation>
     </message>
 </context>
 <context>

@@ -142,11 +142,15 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& u
   QNetworkReply::NetworkError network_result = QNetworkReply::NetworkError::UnknownNetworkError;
 
   for (const QString& url : urls) {
+    if (url.isEmpty()) {
+      continue;
+    }
+
     QByteArray icon_data;
 
     network_result = performNetworkOperation(url,
                                              timeout,
-                                             QByteArray(),
+                                             {},
                                              icon_data,
                                              QNetworkAccessManager::Operation::GetOperation,
                                              {},

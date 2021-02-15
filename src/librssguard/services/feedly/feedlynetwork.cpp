@@ -70,10 +70,11 @@ RootItem* FeedlyNetwork::collections(bool obtain_icons) {
     throw NetworkException(result.first);
   }
 
-  return decodeCollections(output_msgs);
+  return decodeCollections(output_msgs, obtain_icons, m_service->networkProxy(), timeout);
 }
 
-RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json, bool obtain_url) const {
+RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json, bool obtain_icons,
+                                           const QNetworkProxy& proxy, int timeout) const {
   QJsonDocument doc = QJsonDocument::fromJson(json);
   auto* parent = new RootItem();
   QList<QString> used_feeds;
@@ -87,18 +88,45 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json, bool obtain_u
 
     for (const QJsonValue& fee : cat["feeds"].toArray()) {
       QJsonObject fee_obj = fee.toObject();
+
+      if (used_feeds.contains(fee_obj["id"].toString())) {
+        qWarningNN << LOGSEC_FEEDLY
+                   << "Feed"
+                   << QUOTE_W_SPACE(fee_obj["id"].toString())
+                   << "is already decoded and cannot be placed under several categories.";
+        continue;
+      }
+
       auto* feed = new FeedlyFeed(category);
 
       feed->setTitle(fee_obj["title"].toString());
       feed->setDescription(fee_obj["description"].toString());
       feed->setCustomId(fee_obj["id"].toString());
 
-      if (obtain_url) {
-        // TODO: TODO
+      if (obtain_icons) {
+        QIcon icon;
+        auto result = NetworkFactory::downloadIcon({ fee_obj["iconUrl"].toString(),
+                                                     fee_obj["logo"].toString(),
+                                                     fee_obj["website"].toString() },
+                                                   timeout,
+                                                   icon,
+                                                   proxy);
+
+        if (result == QNetworkReply::NetworkError::NoError && !icon.isNull()) {
+          feed->setIcon(icon);
+        }
       }
+
+      used_feeds.append(feed->customId());
+      category->appendChild(feed);
     }
 
-    parent->appendChild(category);
+    if (category->childCount() == 0) {
+      delete category;
+    }
+    else {
+      parent->appendChild(category);
+    }
   }
 
   return parent;
@@ -134,6 +162,10 @@ QVariantHash FeedlyNetwork::profile(const QNetworkProxy& network_proxy) {
   }
 
   return QJsonDocument::fromJson(output_msgs).object().toVariantHash();
+}
+
+QList<RootItem*> FeedlyNetwork::tags() {
+  return {};
 }
 
 QString FeedlyNetwork::username() const {

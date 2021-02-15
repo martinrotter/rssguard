@@ -9,6 +9,7 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/importantnode.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/feedly/feedlyentrypoint.h"
 #include "services/feedly/feedlyfeed.h"
@@ -112,9 +113,14 @@ void FeedlyServiceRoot::saveAccountDataToDatabase(bool creating_new) {
 }
 
 RootItem* FeedlyServiceRoot::obtainNewTreeForSyncIn() const {
-  return nullptr;
+  auto tree = m_network->collections(true);
+  auto* lblroot = new LabelsNode(tree);
+  auto labels = m_network->tags();
 
-  //return m_network->categoriesFeedsLabelsTree(true, networkProxy());
+  lblroot->setChildItems(labels);
+  tree->appendChild(lblroot);
+
+  return tree;
 }
 
 void FeedlyServiceRoot::loadFromDatabase() {
