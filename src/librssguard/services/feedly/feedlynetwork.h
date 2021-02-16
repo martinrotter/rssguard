@@ -61,7 +61,7 @@ class FeedlyNetwork : public QObject {
 
     QString fullUrl(Service service) const;
     QString bearer() const;
-    QList<Message> decodeStreamContents(const QByteArray& stream_contents) const;
+    QList<Message> decodeStreamContents(const QByteArray& stream_contents, QString& continuation) const;
     RootItem* decodeCollections(const QByteArray& json, bool obtain_icons, const QNetworkProxy& proxy, int timeout = 0) const;
     QPair<QByteArray, QByteArray> bearerHeader(const QString& bearer) const;
 

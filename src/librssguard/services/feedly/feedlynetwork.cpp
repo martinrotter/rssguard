@@ -83,7 +83,7 @@ QList<Message> FeedlyNetwork::streamContents(const QString& stream_id) {
                                                           {},
                                                           m_service->networkProxy());
 
-    messages += decodeStreamContents(output);
+    messages += decodeStreamContents(output, continuation);
 
   }
   while (!continuation.isEmpty());
@@ -91,8 +91,28 @@ QList<Message> FeedlyNetwork::streamContents(const QString& stream_id) {
   return messages;
 }
 
-QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_contents) const {
-  return {};
+QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_contents, QString& continuation) const {
+  QList<Message> messages;
+  QJsonDocument json = QJsonDocument::fromJson(stream_contents);
+
+  continuation = json.object()["continuation"].toString();
+
+  for (const QJsonValue& entry : json.object()["items"].toArray()) {
+    const QJsonObject& entry_obj = entry.toObject();
+    Message message;
+
+    message.m_title = entry_obj["title"].toString();
+    message.m_author = entry_obj["author"].toString();
+    message.m_contents = entry_obj["content"].toObject()["content"].toString();
+    message.m_createdFromFeed = true;
+    message.m_created = QDateTime::fromMSecsSinceEpoch(entry_obj["published"].toVariant().toLongLong(),
+                                                       Qt::TimeSpec::UTC);
+    message.m_customId = entry_obj["id"].toString();
+
+    messages.append(message);
+  }
+
+  return messages;
 }
 
 RootItem* FeedlyNetwork::collections(bool obtain_icons) {
