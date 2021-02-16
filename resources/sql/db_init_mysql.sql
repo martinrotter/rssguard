@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS FeedlyAccounts (
   developer_access_token    TEXT,
   refresh_token             TEXT,
   msg_limit                 INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
+  update_only_unread        INTEGER(1)  NOT NULL DEFAULT 0 CHECK (update_only_unread >= 0 AND update_only_unread <= 1),
   
   FOREIGN KEY (id) REFERENCES Accounts (id)
 );

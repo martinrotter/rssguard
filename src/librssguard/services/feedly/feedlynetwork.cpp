@@ -33,7 +33,7 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
                             FEEDLY_API_SCOPE, this)),
 #endif
   m_username(QString()),
-  m_developerAccessToken(QString()), m_batchSize(FEEDLY_UNLIMITED_BATCH_SIZE) {
+  m_developerAccessToken(QString()), m_batchSize(FEEDLY_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false) {
 
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
   m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT));
@@ -42,6 +42,57 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
   connect(m_oauth, &OAuth2Service::authFailed, this, &FeedlyNetwork::onAuthFailed);
   connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &FeedlyNetwork::onTokensRetrieved);
 #endif
+}
+
+QList<Message> FeedlyNetwork::streamContents(const QString& stream_id) {
+  QString bear = bearer();
+
+  if (bear.isEmpty()) {
+    qCriticalNN << LOGSEC_FEEDLY << "Cannot obtain personal collections, because bearer is empty.";
+    throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
+  }
+
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray output;
+  QString continuation;
+  QList<Message> messages;
+
+  // We download in batches.
+  do {
+    QString target_url = fullUrl(Service::StreamContents).arg(QString(QUrl::toPercentEncoding(stream_id)));
+
+    if (m_downloadOnlyUnreadMessages) {
+      target_url += QSL("&unreadOnly=true");
+    }
+
+    if (!continuation.isEmpty()) {
+      target_url += QSL("&continuation=%1").arg(continuation);
+    }
+    else if (m_batchSize > 0) {
+      target_url += QSL("&count=%2").arg(QString::number(m_batchSize));
+    }
+
+    auto result = NetworkFactory::performNetworkOperation(target_url,
+                                                          timeout,
+                                                          {},
+                                                          output,
+                                                          QNetworkAccessManager::Operation::GetOperation,
+                                                          { bearerHeader(bear) },
+                                                          false,
+                                                          {},
+                                                          {},
+                                                          m_service->networkProxy());
+
+    messages += decodeStreamContents(output);
+
+  }
+  while (!continuation.isEmpty());
+
+  return messages;
+}
+
+QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_contents) const {
+  return {};
 }
 
 RootItem* FeedlyNetwork::collections(bool obtain_icons) {
@@ -54,11 +105,11 @@ RootItem* FeedlyNetwork::collections(bool obtain_icons) {
 
   QString target_url = fullUrl(Service::Collections);
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QByteArray output_msgs;
+  QByteArray output;
   auto result = NetworkFactory::performNetworkOperation(target_url,
                                                         timeout,
                                                         {},
-                                                        output_msgs,
+                                                        output,
                                                         QNetworkAccessManager::Operation::GetOperation,
                                                         { bearerHeader(bear) },
                                                         false,
@@ -70,7 +121,7 @@ RootItem* FeedlyNetwork::collections(bool obtain_icons) {
     throw NetworkException(result.first);
   }
 
-  return decodeCollections(output_msgs, obtain_icons, m_service->networkProxy(), timeout);
+  return decodeCollections(output, obtain_icons, m_service->networkProxy(), timeout);
 }
 
 RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json, bool obtain_icons,
@@ -190,7 +241,20 @@ QList<RootItem*> FeedlyNetwork::tags() {
     throw NetworkException(result.first);
   }
 
-  return {};
+  QJsonDocument json = QJsonDocument::fromJson(output);
+  QList<RootItem*> lbls;
+
+  for (const QJsonValue& tag : json.array()) {
+    const QJsonObject& tag_obj = tag.toObject();
+    QString name_id = tag_obj["id"].toString();
+    QString plain_name = tag_obj["label"].toString();
+    auto* new_lbl = new Label(plain_name, TextFactory::generateColorFromText(name_id));
+
+    new_lbl->setCustomId(name_id);
+    lbls.append(new_lbl);
+  }
+
+  return lbls;
 }
 
 QString FeedlyNetwork::username() const {
@@ -278,6 +342,9 @@ QString FeedlyNetwork::fullUrl(FeedlyNetwork::Service service) const {
     case Service::Tags:
       return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TAGS;
 
+    case Service::StreamContents:
+      return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_STREAM_CONTENTS;
+
     default:
       return FEEDLY_API_URL_BASE;
   }
@@ -295,6 +362,14 @@ QString FeedlyNetwork::bearer() const {
 
 QPair<QByteArray, QByteArray> FeedlyNetwork::bearerHeader(const QString& bearer) const {
   return { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit() };
+}
+
+bool FeedlyNetwork::downloadOnlyUnreadMessages() const {
+  return m_downloadOnlyUnreadMessages;
+}
+
+void FeedlyNetwork::setDownloadOnlyUnreadMessages(bool download_only_unread_messages) {
+  m_downloadOnlyUnreadMessages = download_only_unread_messages;
 }
 
 void FeedlyNetwork::setService(FeedlyServiceRoot* service) {

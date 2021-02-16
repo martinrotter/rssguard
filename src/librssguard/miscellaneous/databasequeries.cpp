@@ -1846,16 +1846,18 @@ bool DatabaseQueries::overwriteOwnCloudAccount(const QSqlDatabase& db, const QSt
 
 bool DatabaseQueries::createFeedlyAccount(const QSqlDatabase& db, const QString& username,
                                           const QString& developer_access_token, const QString& refresh_token,
-                                          int batch_size, int account_id) {
+                                          int batch_size, bool download_only_unread_messages,
+                                          int account_id) {
   QSqlQuery q(db);
 
-  q.prepare("INSERT INTO FeedlyAccounts (id, username, developer_access_token, refresh_token, msg_limit) "
-            "VALUES (:id, :username, :developer_access_token, :refresh_token, :msg_limit);");
+  q.prepare("INSERT INTO FeedlyAccounts (id, username, developer_access_token, refresh_token, msg_limit, update_only_unread) "
+            "VALUES (:id, :username, :developer_access_token, :refresh_token, :msg_limit, :update_only_unread);");
   q.bindValue(QSL(":id"), account_id);
   q.bindValue(QSL(":username"), username);
   q.bindValue(QSL(":developer_access_token"), developer_access_token);
   q.bindValue(QSL(":refresh_token"), refresh_token);
   q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? FEEDLY_UNLIMITED_BATCH_SIZE : batch_size);
+  q.bindValue(QSL(":update_only_unread"), download_only_unread_messages ? 1 : 0);
 
   if (q.exec()) {
     return true;
@@ -1870,18 +1872,21 @@ bool DatabaseQueries::createFeedlyAccount(const QSqlDatabase& db, const QString&
 
 bool DatabaseQueries::overwriteFeedlyAccount(const QSqlDatabase& db, const QString& username,
                                              const QString& developer_access_token, const QString& refresh_token,
-                                             int batch_size, int account_id) {
+                                             int batch_size, bool download_only_unread_messages,
+                                             int account_id) {
   QSqlQuery query(db);
 
   query.prepare("UPDATE FeedlyAccounts "
                 "SET username = :username, developer_access_token = :developer_access_token, "
-                "refresh_token = :refresh_token, msg_limit = :msg_limit "
+                "refresh_token = :refresh_token, msg_limit = :msg_limit, "
+                "update_only_unread = :update_only_unread "
                 "WHERE id = :id;");
   query.bindValue(QSL(":id"), account_id);
   query.bindValue(QSL(":username"), username);
   query.bindValue(QSL(":developer_access_token"), developer_access_token);
   query.bindValue(QSL(":refresh_token"), refresh_token);
   query.bindValue(QSL(":msg_limit"), batch_size <= 0 ? FEEDLY_UNLIMITED_BATCH_SIZE : batch_size);
+  query.bindValue(QSL(":update_only_unread"), download_only_unread_messages ? 1 : 0);
 
   if (query.exec()) {
     return true;
@@ -2628,6 +2633,7 @@ QList<ServiceRoot*> DatabaseQueries::getFeedlyAccounts(const QSqlDatabase& db, b
 #endif
 
       root->network()->setBatchSize(query.value(4).toInt());
+      root->network()->setDownloadOnlyUnreadMessages(query.value(5).toBool());
       root->updateTitle();
 
       fillBaseAccountData(db, root);

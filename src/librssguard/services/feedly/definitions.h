@@ -2,7 +2,8 @@
 #define FEEDLY_DEFINITIONS_H
 
 #define FEEDLY_UNLIMITED_BATCH_SIZE       -1
-#define FEEDLY_MAX_BATCH_SIZE             999
+#define FEEDLY_DEFAULT_BATCH_SIZE         20
+#define FEEDLY_MAX_BATCH_SIZE             500
 
 #define FEEDLY_GENERATE_DAT               "https://feedly.com/v3/auth/dev"
 
@@ -15,10 +16,11 @@
 #define FEEDLY_API_URL_BASE       "https://cloud.feedly.com/v3/"
 #endif
 
-#define FEEDLY_API_URL_AUTH       "auth/auth"
-#define FEEDLY_API_URL_TOKEN      "auth/token"
-#define FEEDLY_API_URL_PROFILE    "profile"
-#define FEEDLY_API_URL_COLLETIONS "collections"
-#define FEEDLY_API_URL_TAGS       "tags"
+#define FEEDLY_API_URL_AUTH             "auth/auth"
+#define FEEDLY_API_URL_TOKEN            "auth/token"
+#define FEEDLY_API_URL_PROFILE          "profile"
+#define FEEDLY_API_URL_COLLETIONS       "collections"
+#define FEEDLY_API_URL_TAGS             "tags"
+#define FEEDLY_API_URL_STREAM_CONTENTS  "streams/contents?streamId=%1"
 
 #endif // FEEDLY_DEFINITIONS_H

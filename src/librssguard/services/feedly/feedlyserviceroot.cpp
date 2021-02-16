@@ -3,6 +3,8 @@
 #include "services/feedly/feedlyserviceroot.h"
 
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
+#include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
@@ -91,6 +93,7 @@ void FeedlyServiceRoot::saveAccountDataToDatabase(bool creating_new) {
                                                 {},
 #endif
                                                 m_network->batchSize(),
+                                                m_network->downloadOnlyUnreadMessages(),
                                                 accountId())) {
       updateTitle();
       itemChanged(QList<RootItem*>() << this);
@@ -106,6 +109,7 @@ void FeedlyServiceRoot::saveAccountDataToDatabase(bool creating_new) {
                                              {},
 #endif
                                              m_network->batchSize(),
+                                             m_network->downloadOnlyUnreadMessages(),
                                              accountId())) {
       updateTitle();
     }
@@ -113,14 +117,22 @@ void FeedlyServiceRoot::saveAccountDataToDatabase(bool creating_new) {
 }
 
 RootItem* FeedlyServiceRoot::obtainNewTreeForSyncIn() const {
-  auto tree = m_network->collections(true);
-  auto* lblroot = new LabelsNode(tree);
-  auto labels = m_network->tags();
+  try {
+    auto tree = m_network->collections(true);
+    auto* lblroot = new LabelsNode(tree);
+    auto labels = m_network->tags();
 
-  lblroot->setChildItems(labels);
-  tree->appendChild(lblroot);
+    lblroot->setChildItems(labels);
+    tree->appendChild(lblroot);
 
-  return tree;
+    return tree;
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_FEEDLY
+                << "Failed to obtain new sync-in tree:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+    return nullptr;
+  }
 }
 
 void FeedlyServiceRoot::loadFromDatabase() {

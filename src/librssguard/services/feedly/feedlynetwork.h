@@ -21,6 +21,7 @@ class FeedlyNetwork : public QObject {
     explicit FeedlyNetwork(QObject* parent = nullptr);
 
     // API operations.
+    QList<Message> streamContents(const QString& stream_id);
     QVariantHash profile(const QNetworkProxy& network_proxy);
     QList<RootItem*> tags();
     RootItem* collections(bool obtain_icons);
@@ -31,6 +32,9 @@ class FeedlyNetwork : public QObject {
 
     QString developerAccessToken() const;
     void setDeveloperAccessToken(const QString& dev_acc_token);
+
+    bool downloadOnlyUnreadMessages() const;
+    void setDownloadOnlyUnreadMessages(bool download_only_unread_messages);
 
     int batchSize() const;
     void setBatchSize(int batch_size);
@@ -51,11 +55,13 @@ class FeedlyNetwork : public QObject {
     enum class Service {
       Profile,
       Collections,
-      Tags
+      Tags,
+      StreamContents
     };
 
     QString fullUrl(Service service) const;
     QString bearer() const;
+    QList<Message> decodeStreamContents(const QByteArray& stream_contents) const;
     RootItem* decodeCollections(const QByteArray& json, bool obtain_icons, const QNetworkProxy& proxy, int timeout = 0) const;
     QPair<QByteArray, QByteArray> bearerHeader(const QString& bearer) const;
 
@@ -69,6 +75,7 @@ class FeedlyNetwork : public QObject {
     QString m_username;
     QString m_developerAccessToken;
     int m_batchSize;
+    bool m_downloadOnlyUnreadMessages;
 };
 
 #endif // FEEDLYNETWORK_H

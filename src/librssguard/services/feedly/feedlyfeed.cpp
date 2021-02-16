@@ -16,20 +16,14 @@ FeedlyServiceRoot* FeedlyFeed::serviceRoot() const {
 }
 
 QList<Message> FeedlyFeed::obtainNewMessages(bool* error_during_obtaining) {
-  return {};
+  Feed::Status error = Feed::Status::Normal;
+  QList<Message> messages = serviceRoot()->network()->streamContents(customId());
 
-  /*
-     Feed::Status error = Feed::Status::Normal;
-     QList<Message> messages = serviceRoot()->network()->streamContents(getParentServiceRoot(),
-                                                                     customId(),
-                                                                     error,
-                                                                     getParentServiceRoot()->networkProxy());
+  setStatus(error);
 
-     setStatus(error);
+  if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
+    *error_during_obtaining = true;
+  }
 
-     if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
-   * error_during_obtaining = true;
-     }
-
-     return messages;*/
+  return messages;
 }

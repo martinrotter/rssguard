@@ -44,6 +44,7 @@ void FormEditFeedlyAccount::apply() {
 #endif
 
   account<FeedlyServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
+  account<FeedlyServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
   account<FeedlyServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
   account<FeedlyServiceRoot>()->network()->setDeveloperAccessToken(m_details->m_ui.m_txtDeveloperAccessToken->lineEdit()->text());
 
@@ -72,6 +73,7 @@ void FormEditFeedlyAccount::setEditableAccount(ServiceRoot* editable_account) {
 
   m_details->m_ui.m_txtUsername->lineEdit()->setText(account<FeedlyServiceRoot>()->network()->username());
   m_details->m_ui.m_txtDeveloperAccessToken->lineEdit()->setText(account<FeedlyServiceRoot>()->network()->developerAccessToken());
+  m_details->m_ui.m_checkDownloadOnlyUnreadMessages->setChecked(account<FeedlyServiceRoot>()->network()->downloadOnlyUnreadMessages());
   m_details->m_ui.m_spinLimitMessages->setValue(account<FeedlyServiceRoot>()->network()->batchSize());
 }
 

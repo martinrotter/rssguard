@@ -159,12 +159,14 @@ class DatabaseQueries {
                                     const QString& developer_access_token,
                                     const QString& refresh_token,
                                     int batch_size,
+                                    bool download_only_unread_messages,
                                     int account_id);
     static bool overwriteFeedlyAccount(const QSqlDatabase& db,
                                        const QString& username,
                                        const QString& developer_access_token,
                                        const QString& refresh_token,
                                        int batch_size,
+                                       bool download_only_unread_messages,
                                        int account_id);
 
     // Greader account.

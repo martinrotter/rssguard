@@ -65,11 +65,12 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
 
   m_ui.m_spinLimitMessages->setMinimum(FEEDLY_UNLIMITED_BATCH_SIZE);
   m_ui.m_spinLimitMessages->setMaximum(FEEDLY_MAX_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setValue(FEEDLY_UNLIMITED_BATCH_SIZE);
+  m_ui.m_spinLimitMessages->setValue(FEEDLY_DEFAULT_BATCH_SIZE);
 
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_btnGetToken);
   setTabOrder(m_ui.m_btnGetToken, m_ui.m_txtDeveloperAccessToken->lineEdit());
-  setTabOrder(m_ui.m_txtDeveloperAccessToken->lineEdit(), m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_txtDeveloperAccessToken->lineEdit(), m_ui.m_checkDownloadOnlyUnreadMessages);
+  setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_spinLimitMessages);
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_btnTestSetup);
 
   onDeveloperAccessTokenChanged();
@@ -116,9 +117,9 @@ void FeedlyAccountDetails::onAuthGranted() {
 
 void FeedlyAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
-  if (m_ui.m_txtDeveloperAccessToken->lineEdit()->text().simplified().isEmpty()) {
-    m_oauth->logout(false);
+  m_oauth->logout(false);
 
+  if (m_ui.m_txtDeveloperAccessToken->lineEdit()->text().simplified().isEmpty()) {
     if (m_oauth->login()) {
       m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                       tr("You are already logged in."),
