@@ -2,6 +2,7 @@
 
 #include "services/feedly/feedlyfeed.h"
 
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/feedly/feedlynetwork.h"
@@ -16,14 +17,23 @@ FeedlyServiceRoot* FeedlyFeed::serviceRoot() const {
 }
 
 QList<Message> FeedlyFeed::obtainNewMessages(bool* error_during_obtaining) {
-  Feed::Status error = Feed::Status::Normal;
-  QList<Message> messages = serviceRoot()->network()->streamContents(customId());
+  try {
+    QList<Message> messages = serviceRoot()->network()->streamContents(customId());
 
-  setStatus(error);
-
-  if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
-    *error_during_obtaining = true;
+    setStatus(Feed::Status::Normal);
+    *error_during_obtaining = false;
+    return messages;;
   }
+  catch (const ApplicationException& ex) {
+    setStatus(Feed::Status::NetworkError);
+    *error_during_obtaining = true;
 
-  return messages;
+    qCriticalNN << LOGSEC_FEEDLY
+                << "Problem"
+                << QUOTE_W_SPACE(ex.message())
+                << "when obtaining messages for feed"
+                << QUOTE_W_SPACE_DOT(customId());
+
+    return {};
+  }
 }

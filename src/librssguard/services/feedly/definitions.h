@@ -4,6 +4,7 @@
 #define FEEDLY_UNLIMITED_BATCH_SIZE       -1
 #define FEEDLY_DEFAULT_BATCH_SIZE         20
 #define FEEDLY_MAX_BATCH_SIZE             500
+#define FEEDLX_MAX_TOTAL_SIZE             5000
 
 #define FEEDLY_GENERATE_DAT               "https://feedly.com/v3/auth/dev"
 
@@ -15,6 +16,9 @@
 #else
 #define FEEDLY_API_URL_BASE       "https://cloud.feedly.com/v3/"
 #endif
+
+#define FEEDLY_API_SYSTEM_TAG_READ      "global.read"
+#define FEEDLY_API_SYSTEM_TAG_SAVED     "global.saved"
 
 #define FEEDLY_API_URL_AUTH             "auth/auth"
 #define FEEDLY_API_URL_TOKEN            "auth/token"

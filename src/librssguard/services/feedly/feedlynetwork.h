@@ -74,7 +74,11 @@ class FeedlyNetwork : public QObject {
 
     QString m_username;
     QString m_developerAccessToken;
+
+    // Only download N newest messages per feed.
     int m_batchSize;
+
+    // Only download unread messages.
     bool m_downloadOnlyUnreadMessages;
 };
 

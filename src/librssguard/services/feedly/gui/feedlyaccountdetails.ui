@@ -79,7 +79,7 @@
      </item>
     </layout>
    </item>
-   <item row="6" column="0" colspan="2">
+   <item row="7" column="0" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -92,7 +92,7 @@
      </property>
     </spacer>
    </item>
-   <item row="5" column="0" colspan="2">
+   <item row="6" column="0" colspan="2">
     <layout class="QFormLayout" name="formLayout_2">
      <item row="0" column="0">
       <widget class="QPushButton" name="m_btnTestSetup">
@@ -114,6 +114,19 @@
     <widget class="QCheckBox" name="m_checkDownloadOnlyUnreadMessages">
      <property name="text">
       <string>Download only unread messages</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="QLabel" name="m_lblLimitMessagesInfo">
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

@@ -3,6 +3,7 @@
 #include "services/feedly/feedlynetwork.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "3rd-party/boolinq/boolinq.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
@@ -68,8 +69,14 @@ QList<Message> FeedlyNetwork::streamContents(const QString& stream_id) {
     if (!continuation.isEmpty()) {
       target_url += QSL("&continuation=%1").arg(continuation);
     }
-    else if (m_batchSize > 0) {
-      target_url += QSL("&count=%2").arg(QString::number(m_batchSize));
+
+    if (m_batchSize > 0) {
+      target_url += QSL("&count=%1").arg(QString::number(m_batchSize));
+    }
+    else {
+      // User wants to download all messages. Make sure we use large batches
+      // to limit network requests.
+      target_url += QSL("&count=%1").arg(QString::number(FEEDLY_MAX_BATCH_SIZE));
     }
 
     auto result = NetworkFactory::performNetworkOperation(target_url,
@@ -83,10 +90,15 @@ QList<Message> FeedlyNetwork::streamContents(const QString& stream_id) {
                                                           {},
                                                           m_service->networkProxy());
 
-    messages += decodeStreamContents(output, continuation);
+    if (result.first != QNetworkReply::NetworkError::NoError) {
+      throw NetworkException(result.first);
+    }
 
+    messages += decodeStreamContents(output, continuation);
   }
-  while (!continuation.isEmpty());
+  while (!continuation.isEmpty() &&
+         (m_batchSize <= 0 || messages.size() < m_batchSize) &&
+         messages.size() <= FEEDLX_MAX_TOTAL_SIZE);
 
   return messages;
 }
@@ -94,6 +106,7 @@ QList<Message> FeedlyNetwork::streamContents(const QString& stream_id) {
 QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_contents, QString& continuation) const {
   QList<Message> messages;
   QJsonDocument json = QJsonDocument::fromJson(stream_contents);
+  auto active_labels = m_service->labelsNode() != nullptr ? m_service->labelsNode()->labels() : QList<Label*>();
 
   continuation = json.object()["continuation"].toString();
 
@@ -104,10 +117,47 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
     message.m_title = entry_obj["title"].toString();
     message.m_author = entry_obj["author"].toString();
     message.m_contents = entry_obj["content"].toObject()["content"].toString();
+
+    if (message.m_contents.isEmpty()) {
+      message.m_contents = entry_obj["summary"].toObject()["content"].toString();
+    }
+
     message.m_createdFromFeed = true;
     message.m_created = QDateTime::fromMSecsSinceEpoch(entry_obj["published"].toVariant().toLongLong(),
                                                        Qt::TimeSpec::UTC);
     message.m_customId = entry_obj["id"].toString();
+    message.m_isRead = !entry_obj["unread"].toBool();
+    message.m_url = entry_obj["canonicalUrl"].toString();
+
+    if (message.m_url.isEmpty()) {
+      message.m_url = entry_obj["canonical"].toObject()["href"].toString();
+    }
+
+    for (const QJsonValue& tag : entry_obj["tags"].toArray()) {
+      const QJsonObject& tag_obj = tag.toObject();
+      const QString& tag_id = tag_obj["id"].toString();
+
+      if (tag_id.endsWith(FEEDLY_API_SYSTEM_TAG_SAVED)) {
+        message.m_isImportant = true;
+      }
+      else if (tag_id.endsWith(FEEDLY_API_SYSTEM_TAG_READ)) {
+        // NOTE: We don't do anything with "global read" tag.
+      }
+      else {
+        Label* label = boolinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([tag_id](Label* lbl) {
+          return lbl->customId() == tag_id;
+        });
+
+        if (label != nullptr) {
+          message.m_assignedLabels.append(label);
+        }
+        else {
+          qCriticalNN << LOGSEC_FEEDLY
+                      << "Failed to find live Label object for tag"
+                      << QUOTE_W_SPACE_DOT(tag_id);
+        }
+      }
+    }
 
     messages.append(message);
   }
@@ -267,6 +317,12 @@ QList<RootItem*> FeedlyNetwork::tags() {
   for (const QJsonValue& tag : json.array()) {
     const QJsonObject& tag_obj = tag.toObject();
     QString name_id = tag_obj["id"].toString();
+
+    if (name_id.endsWith(FEEDLY_API_SYSTEM_TAG_READ) ||
+        name_id.endsWith(FEEDLY_API_SYSTEM_TAG_SAVED)) {
+      continue;
+    }
+
     QString plain_name = tag_obj["label"].toString();
     auto* new_lbl = new Label(plain_name, TextFactory::generateColorFromText(name_id));
 

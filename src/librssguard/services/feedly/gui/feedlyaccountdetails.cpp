@@ -47,6 +47,10 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
                              "each day.").arg(APP_NAME));
 #endif
 
+  m_ui.m_lblLimitMessagesInfo->setText(tr("Be very careful about downloading too many messages, because "
+                                          "Feedly automagically caches ALL messages of a feed forever so you might "
+                                          "end with thousands of messages you will never read anyway."));
+
   connect(m_ui.m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, [=](int value) {
     if (value <= 0) {
       m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
@@ -57,6 +61,7 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
   });
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessagesInfo, true);
 
   connect(m_ui.m_btnGetToken, &QPushButton::clicked, this, &FeedlyAccountDetails::getDeveloperAccessToken);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FeedlyAccountDetails::onUsernameChanged);
