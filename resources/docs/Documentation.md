@@ -14,6 +14,7 @@
     * [Database backends](#database-backends)
     * [Google Reader API](#google-reader-api)
     * [Gmail](#gmail)
+    * [Feedly](#feedly)
     * [Labels](Labels.md)
     * [Downloading files](#downloading-files)
     * [AdBlock](#adblock)
@@ -176,6 +177,19 @@ RSS Guard includes Gmail plugin, which allows users to receive and send (!!!) e-
 
 * You can also reply to existing messages.
 * Plugin is able to suggest recipient's e-mail. Suggestable addresses are read from e-mail messages which are already stored in RSS Guard's database. Therefore you have to have some e-mails fetched in order to have this feature working.
+
+## Feedly
+RSS Guard 3.9.0+ offers [Feedly](https://feedly.com) plugin. Note that there are some specifics when using the plugin.
+
+Some official builds of RSS Guard might include official Feedly support and will provide almost unlimited API quotas and ability to just login with your username and password.
+
+Sadly, some builds of RSS Guard do not have embedded production Feedly API keys and thus no official support from Feedly, therefore you must use something called `developer access token` to be able to use the plugin. See below image and notice the `Get token` button which will lead you to Feedly authentication page where you can generate the token.
+
+<img src="images/feedly-details.png">
+
+There are two big downsides of using `developer access token`:
+* It expires after one month and must be renewed.
+* It only allows maximum of 250 API calls per day.
 
 ## Downloading files
 RSS Guard offers simple embedded file downloader.
