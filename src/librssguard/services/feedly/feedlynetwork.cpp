@@ -133,6 +133,17 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
       message.m_url = entry_obj["canonical"].toObject()["href"].toString();
     }
 
+    for (const QJsonValue& enc : entry_obj["enclosure"].toArray()) {
+      const QJsonObject& enc_obj = enc.toObject();
+      const QString& enc_href = enc_obj["href"].toString();
+
+      if (!boolinq::from(message.m_enclosures).any([enc_href](const Enclosure& existing_enclosure) {
+        return existing_enclosure.m_url == enc_href;
+      })) {
+        message.m_enclosures.append(Enclosure(enc_href, enc_obj["type"].toString()));
+      }
+    }
+
     for (const QJsonValue& tag : entry_obj["tags"].toArray()) {
       const QJsonObject& tag_obj = tag.toObject();
       const QString& tag_id = tag_obj["id"].toString();
