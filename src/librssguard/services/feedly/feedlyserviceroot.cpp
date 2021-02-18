@@ -190,6 +190,10 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
   }
 }
 
+ServiceRoot::LabelOperation FeedlyServiceRoot::supportedLabelOperations() const {
+  return LabelOperation(0);
+}
+
 void FeedlyServiceRoot::updateTitle() {
   setTitle(QString("%1 (Feedly)").arg(TextFactory::extractUsernameFromEmail(m_network->username())));
 }

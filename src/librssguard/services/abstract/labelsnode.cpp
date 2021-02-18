@@ -54,7 +54,8 @@ QList<QAction*> LabelsNode::contextMenuFeedsList() {
 }
 
 void LabelsNode::createLabel() {
-  if ((getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Adding) == ServiceRoot::LabelOperation::Adding) {
+  if ((getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Adding) ==
+      ServiceRoot::LabelOperation::Adding) {
     FormAddEditLabel frm(qApp->mainFormWidget());
     Label* new_lbl = frm.execForAdd();
 

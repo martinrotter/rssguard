@@ -22,6 +22,7 @@ class FeedlyServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual void start(bool freshly_activated);
     virtual QString code() const;
     virtual void saveAllCachedData(bool ignore_errors);
+    virtual LabelOperation supportedLabelOperations() const;
 
     FeedlyNetwork* network() const;
 

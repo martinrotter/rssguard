@@ -140,6 +140,10 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
   }
 }
 
+ServiceRoot::LabelOperation GreaderServiceRoot::supportedLabelOperations() const {
+  return LabelOperation(0);
+}
+
 void GreaderServiceRoot::updateTitleIcon() {
   setTitle(QString("%1 (%2)").arg(TextFactory::extractUsernameFromEmail(m_network->username()),
                                   m_network->serviceToString(m_network->service())));
