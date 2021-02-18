@@ -13,6 +13,7 @@
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
+#include "services/feedly/definitions.h"
 #include "services/feedly/feedlyentrypoint.h"
 #include "services/feedly/feedlyfeed.h"
 #include "services/feedly/feedlynetwork.h"
@@ -74,6 +75,99 @@ QString FeedlyServiceRoot::code() const {
 
 void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
   auto msg_cache = takeMessageCache();
+  QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
+
+  // Save the actual data read/unread.
+  while (i.hasNext()) {
+    i.next();
+    auto key = i.key();
+    QStringList ids = i.value();
+
+    if (!ids.isEmpty()) {
+      try {
+        network()->markers(key == RootItem::ReadStatus::Read
+                           ? FEEDLY_MARKERS_READ
+                           : FEEDLY_MARKERS_UNREAD, ids);
+      }
+      catch (const NetworkException& net_ex) {
+        qCriticalNN << LOGSEC_FEEDLY
+                    << "Failed to synchronize read/unread state with error:"
+                    << QUOTE_W_SPACE(net_ex.message())
+                    << "and HTTP code"
+                    << QUOTE_W_SPACE_DOT(net_ex.networkError());
+
+        if (!ignore_errors) {
+          addMessageStatesToCache(ids, key);
+        }
+      }
+    }
+  }
+
+  QMapIterator<RootItem::Importance, QList<Message>> j(msg_cache.m_cachedStatesImportant);
+
+  // Save the actual data important/not important.
+  while (j.hasNext()) {
+    j.next();
+    auto key = j.key();
+    QList<Message> messages = j.value();
+
+    if (!messages.isEmpty()) {
+      QStringList ids;
+
+      for (const Message& msg : messages) {
+        ids.append(msg.m_customId);
+      }
+
+      try {
+        network()->markers(key == RootItem::Importance::Important
+                           ? FEEDLY_MARKERS_IMPORTANT
+                           : FEEDLY_MARKERS_UNIMPORTANT, ids);
+      }
+      catch (const NetworkException& net_ex) {
+        qCriticalNN << LOGSEC_FEEDLY
+                    << "Failed to synchronize important/unimportant state with error:"
+                    << QUOTE_W_SPACE(net_ex.message())
+                    << "and HTTP code"
+                    << QUOTE_W_SPACE_DOT(net_ex.networkError());
+
+        if (!ignore_errors) {
+          addMessageStatesToCache(messages, key);
+        }
+      }
+    }
+  }
+
+  /*
+     QMapIterator<QString, QStringList> k(msg_cache.m_cachedLabelAssignments);
+
+     // Assign label for these messages.
+     while (k.hasNext()) {
+     k.next();
+     auto label_custom_id = k.key();
+     QStringList messages = k.value();
+
+     if (!messages.isEmpty()) {
+      if (network()->editLabels(label_custom_id, true, messages) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
+        addLabelsAssignmentsToCache(messages, label_custom_id, true);
+      }
+     }
+     }
+
+     QMapIterator<QString, QStringList> l(msg_cache.m_cachedLabelDeassignments);
+
+     // Remove label from these messages.
+     while (l.hasNext()) {
+     l.next();
+     auto label_custom_id = l.key();
+     QStringList messages = l.value();
+
+     if (!messages.isEmpty()) {
+      if (network()->editLabels(label_custom_id, false, messages) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
+        addLabelsAssignmentsToCache(messages, label_custom_id, false);
+      }
+     }
+     }
+   */
 }
 
 void FeedlyServiceRoot::updateTitle() {

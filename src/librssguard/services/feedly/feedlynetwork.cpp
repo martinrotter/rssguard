@@ -45,6 +45,45 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
 #endif
 }
 
+void FeedlyNetwork::markers(const QString& action, const QStringList& msg_custom_ids) {
+  if (msg_custom_ids.isEmpty()) {
+    return;
+  }
+
+  QString bear = bearer();
+
+  if (bear.isEmpty()) {
+    qCriticalNN << LOGSEC_FEEDLY << "Cannot mark entries, because bearer is empty.";
+    throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
+  }
+
+  QString target_url = fullUrl(Service::Markers);
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray output;
+  QJsonObject input;
+
+  input["action"] = action;
+  input["type"] = QSL("entries");
+  input["entryIds"] = QJsonArray::fromStringList(msg_custom_ids);
+
+  QByteArray input_data = QJsonDocument(input).toJson(QJsonDocument::JsonFormat::Compact);
+  auto result = NetworkFactory::performNetworkOperation(target_url,
+                                                        timeout,
+                                                        input_data,
+                                                        output,
+                                                        QNetworkAccessManager::Operation::PostOperation,
+                                                        { bearerHeader(bear),
+                                                          { "Content-Type", "application/json" } },
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        m_service->networkProxy());
+
+  if (result.first != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result.first, output);
+  }
+}
+
 QList<Message> FeedlyNetwork::streamContents(const QString& stream_id) {
   QString bear = bearer();
 
@@ -91,7 +130,7 @@ QList<Message> FeedlyNetwork::streamContents(const QString& stream_id) {
                                                           m_service->networkProxy());
 
     if (result.first != QNetworkReply::NetworkError::NoError) {
-      throw NetworkException(result.first);
+      throw NetworkException(result.first, output);
     }
 
     messages += decodeStreamContents(output, continuation);
@@ -199,7 +238,7 @@ RootItem* FeedlyNetwork::collections(bool obtain_icons) {
                                                         m_service->networkProxy());
 
   if (result.first != QNetworkReply::NetworkError::NoError) {
-    throw NetworkException(result.first);
+    throw NetworkException(result.first, output);
   }
 
   return decodeCollections(output, obtain_icons, m_service->networkProxy(), timeout);
@@ -290,7 +329,7 @@ QVariantHash FeedlyNetwork::profile(const QNetworkProxy& network_proxy) {
                                                         network_proxy);
 
   if (result.first != QNetworkReply::NetworkError::NoError) {
-    throw NetworkException(result.first);
+    throw NetworkException(result.first, output);
   }
 
   return QJsonDocument::fromJson(output).object().toVariantHash();
@@ -319,7 +358,7 @@ QList<RootItem*> FeedlyNetwork::tags() {
                                                         m_service->networkProxy());
 
   if (result.first != QNetworkReply::NetworkError::NoError) {
-    throw NetworkException(result.first);
+    throw NetworkException(result.first, output);
   }
 
   QJsonDocument json = QJsonDocument::fromJson(output);
@@ -431,6 +470,9 @@ QString FeedlyNetwork::fullUrl(FeedlyNetwork::Service service) const {
 
     case Service::StreamContents:
       return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_STREAM_CONTENTS;
+
+    case Service::Markers:
+      return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_MARKERS;
 
     default:
       return FEEDLY_API_URL_BASE;

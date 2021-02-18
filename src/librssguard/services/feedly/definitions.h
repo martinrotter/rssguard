@@ -20,11 +20,17 @@
 #define FEEDLY_API_SYSTEM_TAG_READ      "global.read"
 #define FEEDLY_API_SYSTEM_TAG_SAVED     "global.saved"
 
+#define FEEDLY_MARKERS_READ             "markAsRead"
+#define FEEDLY_MARKERS_UNREAD           "keepUnread"
+#define FEEDLY_MARKERS_IMPORTANT        "markAsSaved"
+#define FEEDLY_MARKERS_UNIMPORTANT      "markAsUnsaved"
+
 #define FEEDLY_API_URL_AUTH             "auth/auth"
 #define FEEDLY_API_URL_TOKEN            "auth/token"
 #define FEEDLY_API_URL_PROFILE          "profile"
 #define FEEDLY_API_URL_COLLETIONS       "collections"
 #define FEEDLY_API_URL_TAGS             "tags"
 #define FEEDLY_API_URL_STREAM_CONTENTS  "streams/contents?streamId=%1"
+#define FEEDLY_API_URL_MARKERS          "markers"
 
 #endif // FEEDLY_DEFINITIONS_H

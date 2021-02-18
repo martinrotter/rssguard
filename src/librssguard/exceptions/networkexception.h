@@ -9,7 +9,7 @@
 
 class NetworkException : public ApplicationException {
   public:
-    explicit NetworkException(QNetworkReply::NetworkError error);
+    explicit NetworkException(QNetworkReply::NetworkError error, const QString& message = QString());
 
     QNetworkReply::NetworkError networkError() const;
 
