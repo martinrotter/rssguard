@@ -137,37 +137,57 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
     }
   }
 
-  /*
-     QMapIterator<QString, QStringList> k(msg_cache.m_cachedLabelAssignments);
+  QMapIterator<QString, QStringList> k(msg_cache.m_cachedLabelAssignments);
 
-     // Assign label for these messages.
-     while (k.hasNext()) {
-     k.next();
-     auto label_custom_id = k.key();
-     QStringList messages = k.value();
+  // Assign label for these messages.
+  while (k.hasNext()) {
+    k.next();
+    auto label_custom_id = k.key();
+    QStringList messages = k.value();
 
-     if (!messages.isEmpty()) {
-      if (network()->editLabels(label_custom_id, true, messages) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
-        addLabelsAssignmentsToCache(messages, label_custom_id, true);
+    if (!messages.isEmpty()) {
+      try {
+        network()->tagEntries(label_custom_id, messages);
       }
-     }
-     }
+      catch (const NetworkException& net_ex) {
+        qCriticalNN << LOGSEC_FEEDLY
+                    << "Failed to synchronize tag assignments with error:"
+                    << QUOTE_W_SPACE(net_ex.message())
+                    << "and HTTP code"
+                    << QUOTE_W_SPACE_DOT(net_ex.networkError());
 
-     QMapIterator<QString, QStringList> l(msg_cache.m_cachedLabelDeassignments);
-
-     // Remove label from these messages.
-     while (l.hasNext()) {
-     l.next();
-     auto label_custom_id = l.key();
-     QStringList messages = l.value();
-
-     if (!messages.isEmpty()) {
-      if (network()->editLabels(label_custom_id, false, messages) != QNetworkReply::NetworkError::NoError && !ignore_errors) {
-        addLabelsAssignmentsToCache(messages, label_custom_id, false);
+        if (!ignore_errors) {
+          addLabelsAssignmentsToCache(messages, label_custom_id, true);
+        }
       }
-     }
-     }
-   */
+    }
+  }
+
+  QMapIterator<QString, QStringList> l(msg_cache.m_cachedLabelDeassignments);
+
+  // Remove label from these messages.
+  while (l.hasNext()) {
+    l.next();
+    auto label_custom_id = l.key();
+    QStringList messages = l.value();
+
+    if (!messages.isEmpty()) {
+      try {
+        network()->untagEntries(label_custom_id, messages);
+      }
+      catch (const NetworkException& net_ex) {
+        qCriticalNN << LOGSEC_FEEDLY
+                    << "Failed to synchronize tag DEassignments with error:"
+                    << QUOTE_W_SPACE(net_ex.message())
+                    << "and HTTP code"
+                    << QUOTE_W_SPACE_DOT(net_ex.networkError());
+
+        if (!ignore_errors) {
+          addLabelsAssignmentsToCache(messages, label_custom_id, false);
+        }
+      }
+    }
+  }
 }
 
 void FeedlyServiceRoot::updateTitle() {

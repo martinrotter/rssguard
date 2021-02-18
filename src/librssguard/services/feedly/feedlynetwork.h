@@ -21,6 +21,8 @@ class FeedlyNetwork : public QObject {
     explicit FeedlyNetwork(QObject* parent = nullptr);
 
     // API operations.
+    void untagEntries(const QString& tag_id, const QStringList& msg_custom_ids);
+    void tagEntries(const QString& tag_id, const QStringList& msg_custom_ids);
     void markers(const QString& action, const QStringList& msg_custom_ids);
     QList<Message> streamContents(const QString& stream_id);
     QVariantHash profile(const QNetworkProxy& network_proxy);
@@ -58,7 +60,8 @@ class FeedlyNetwork : public QObject {
       Collections,
       Tags,
       StreamContents,
-      Markers
+      Markers,
+      TagEntries
     };
 
     QString fullUrl(Service service) const;

@@ -45,6 +45,89 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
 #endif
 }
 
+void FeedlyNetwork::untagEntries(const QString& tag_id, const QStringList& msg_custom_ids) {
+  if (msg_custom_ids.isEmpty()) {
+    return;
+  }
+
+  QString bear = bearer();
+
+  if (bear.isEmpty()) {
+    qCriticalNN << LOGSEC_FEEDLY << "Cannot untag entries, because bearer is empty.";
+    throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
+  }
+
+  QString target_url = fullUrl(Service::TagEntries) +
+                       QSL("/%1/").arg(QString(QUrl::toPercentEncoding(tag_id)));
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray output;
+  int i = 0;
+
+  do {
+    auto msg_batch = msg_custom_ids.mid(i, FEEDLY_UNTAG_BATCH_SIZE);
+
+    i += FEEDLY_UNTAG_BATCH_SIZE;
+
+    auto ids = boolinq::from(msg_batch).select([](const QString& msg_id) {
+      return QString(QUrl::toPercentEncoding(msg_id));
+    }).toStdList();
+    QString final_url = target_url + FROM_STD_LIST(QStringList, ids).join(',');
+    auto result = NetworkFactory::performNetworkOperation(final_url,
+                                                          timeout,
+                                                          {},
+                                                          output,
+                                                          QNetworkAccessManager::Operation::DeleteOperation,
+                                                          { bearerHeader(bear) },
+                                                          false,
+                                                          {},
+                                                          {},
+                                                          m_service->networkProxy());
+
+    if (result.first != QNetworkReply::NetworkError::NoError) {
+      throw NetworkException(result.first, output);
+    }
+  }
+  while (i < msg_custom_ids.size());
+}
+
+void FeedlyNetwork::tagEntries(const QString& tag_id, const QStringList& msg_custom_ids) {
+  if (msg_custom_ids.isEmpty()) {
+    return;
+  }
+
+  QString bear = bearer();
+
+  if (bear.isEmpty()) {
+    qCriticalNN << LOGSEC_FEEDLY << "Cannot tag entries, because bearer is empty.";
+    throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
+  }
+
+  QString target_url = fullUrl(Service::TagEntries) + QSL("/%1").arg(QString(QUrl::toPercentEncoding(tag_id)));
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray output;
+  QByteArray input_data;
+  QJsonObject input;
+
+  input["entryIds"] = QJsonArray::fromStringList(msg_custom_ids);
+  input_data = QJsonDocument(input).toJson(QJsonDocument::JsonFormat::Compact);
+
+  auto result = NetworkFactory::performNetworkOperation(target_url,
+                                                        timeout,
+                                                        input_data,
+                                                        output,
+                                                        QNetworkAccessManager::Operation::PutOperation,
+                                                        { bearerHeader(bear),
+                                                          { "Content-Type", "application/json" } },
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        m_service->networkProxy());
+
+  if (result.first != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result.first, output);
+  }
+}
+
 void FeedlyNetwork::markers(const QString& action, const QStringList& msg_custom_ids) {
   if (msg_custom_ids.isEmpty()) {
     return;
@@ -137,7 +220,7 @@ QList<Message> FeedlyNetwork::streamContents(const QString& stream_id) {
   }
   while (!continuation.isEmpty() &&
          (m_batchSize <= 0 || messages.size() < m_batchSize) &&
-         messages.size() <= FEEDLX_MAX_TOTAL_SIZE);
+         messages.size() <= FEEDLY_MAX_TOTAL_SIZE);
 
   return messages;
 }
@@ -466,6 +549,7 @@ QString FeedlyNetwork::fullUrl(FeedlyNetwork::Service service) const {
       return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_COLLETIONS;
 
     case Service::Tags:
+    case Service::TagEntries:
       return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TAGS;
 
     case Service::StreamContents:

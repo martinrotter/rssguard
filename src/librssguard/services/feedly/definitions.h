@@ -4,7 +4,8 @@
 #define FEEDLY_UNLIMITED_BATCH_SIZE       -1
 #define FEEDLY_DEFAULT_BATCH_SIZE         20
 #define FEEDLY_MAX_BATCH_SIZE             500
-#define FEEDLX_MAX_TOTAL_SIZE             5000
+#define FEEDLY_MAX_TOTAL_SIZE             5000
+#define FEEDLY_UNTAG_BATCH_SIZE           100
 
 #define FEEDLY_GENERATE_DAT               "https://feedly.com/v3/auth/dev"
 
