@@ -5,6 +5,7 @@ RSS Guard is a modular application which supports plugins. It offers well-mainta
 * [Inoreader](https://www.inoreader.com) plugin: Adds ability to synchronize messages with Inoreader. All you need to do is create free account on their website and start rocking.
 * [Nextcloud News](https://apps.nextcloud.com/apps/news) plugin: Nextcloud News is a Nextcloud app which adds feed reader abilities into your Nextcloud instances.
 * [Google Reader API](https://rss-sync.github.io/Open-Reader-API/resources/#unofficial-google-reader-documentation) plugin: This plugin was added in RSS Guard 3.9.0 and offers two-way synchronization with services which implement Google Reader API. At this point, plugin was tested and works with Bazqux, The Old Reader and FreshRSS.
+* [Feedly](https://feedly.com) plugin: Provides synchronization with Feedly and supports both official productions keys mode as well as `developer access token` mode.
 * [Gmail](https://www.google.com/gmail) plugin: Yes, you are reading it right. RSS Guard can be used as very lightweight and simple e-mail client. This plugins uses [Gmail API](https://developers.google.com/gmail/api) and offers even e-mail sending.
 
 > All plugins share almost all core RSS Guard's features, including labels, recycle bins, podcasts fetching or newspaper view. They are implemented in a very transparent way, making it easy to maintain them or add new ones.
