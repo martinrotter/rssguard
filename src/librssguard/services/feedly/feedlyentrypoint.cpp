@@ -23,7 +23,7 @@ QList<ServiceRoot*> FeedlyEntryPoint::initializeSubtree() const {
 }
 
 QString FeedlyEntryPoint::name() const {
-  return QSL("Feedly (WIP)");
+  return QSL("Feedly");
 }
 
 QString FeedlyEntryPoint::code() const {
