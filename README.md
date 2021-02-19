@@ -20,4 +20,6 @@ RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed us
 * [Reedah](http://reedah.com),
 * [Feedly](https://feedly.com).
 
+![RSS Guard](resources\docs\images\rssguard.gif)
+
 Application icon was kindly contributed by Siddharth Yadav - @Siddharth_yd (Instagram), illustrationdesignsid@gmail.com (e-mail). Flag icons were provided by [IconDrawer](http://www.icondrawer.com).
