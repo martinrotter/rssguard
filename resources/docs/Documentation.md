@@ -6,6 +6,7 @@
     * [How to contribute](#how-to-contribute)
     * [Reporting bugs](#reporting-bugs)
     * [Localizations](#localizations)
+    * [Videos](#videos)
     * [Web-based and lite app variants](#web-based-and-lite-app-variants)
 * [Features](#features)
     * [List of main features](#list-of-main-features)
@@ -69,6 +70,11 @@ If you are interested in creating translations for RSS Guard, then do this:
 2. [Login](http://www.transifex.com/signin) (you can use social networks to login) and work on existing translations. If no translation team for your country/language exists, then ask for creating of localization team via the website.
 
 **All translators commit themselves to keep their translations up-to-date. If some translations are not updated by their authors regularly and only small number of strings is translated, then those translations along with their teams will be eventually REMOVED from the project!!! At least 50% of strings must be translated for translation to being added to project.**
+
+## Videos
+Here you can see some videos to see RSS Guard in action:
+* [Short RSS Guard sample](videos/rssguard.gif).
+* [Hiding GUI elements](videos/hiding-gui.gif).
 
 ## Web-based and lite app variants
 RSS Guard is distributed in two variants:
