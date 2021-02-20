@@ -143,6 +143,15 @@ function filterMessage() {
 }
 ```
 
+Remove "ads" from messages received from Inoreader. Method simply removes `div` which contains the advertisement.
+```js
+function filterMessage() {
+  msg.contents = msg.contents.replace(/<div>\s*Ads[\S\s]+Remove<\/a>[\S\s]+adv\/www\/delivery[\S\s]+?<\/div>/im, '');
+
+  return MessageObject.Accept;
+}
+```
+
 ## `Message filters` dialog
 The dialog is accessible from menu `Messages -> Message filters` and is the central place for message filters management within RSS Guard. It allows you to:
 * add or remove message filters,
