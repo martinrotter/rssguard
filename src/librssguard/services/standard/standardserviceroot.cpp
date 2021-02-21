@@ -30,7 +30,7 @@
 
 StandardServiceRoot::StandardServiceRoot(RootItem* parent)
   : ServiceRoot(parent) {
-  setTitle(qApp->system()->loggedInUser() + QSL(" (RSS/RDF/ATOM)"));
+  setTitle(qApp->system()->loggedInUser() + QSL(" (RSS/ATOM/JSON)"));
   setIcon(StandardServiceEntryPoint().icon());
   setDescription(tr("This is obligatory service account for standard RSS/RDF/ATOM feeds."));
 }
