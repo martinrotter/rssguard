@@ -91,7 +91,7 @@ If you're not sure which version to use, **use the WebEngine-based RSS Guard**.
 # Features
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF/ATOM/JSON. RSS Guard is developed on top of the [Qt library](http://qt-project.org) and it supports these operating systems:
 
-* Windows Vista and newer,
+* Windows,
 * GNU/Linux,
 * Mac OS X,
 * Android (prebuilt binaries N/A at this point).
@@ -105,7 +105,8 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * FreshRSS (RSS Guard 3.9.0+),
     * The Old Reader (RSS Guard 3.9.0+),
     * Bazqux (RSS Guard 3.9.0+),
-    * Reedah (RSS Guard 3.9.0+).
+    * Reedah (RSS Guard 3.9.0+),
+    * Feedly (RSS Guard 3.9.0+).
 * core:
     * support for all feed formats (RSS/RDF/ATOM/JSON),
     * full support of podcasts (RSS/ATOM/JSON),
