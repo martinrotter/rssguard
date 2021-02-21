@@ -1,4 +1,9 @@
-CONFIG *= c++1z warn_on resources_big
+CONFIG *= c++1z warn_on
+
+!os2 {
+  CONFIG *= resources_big
+}
+
 CONFIG -=  debug_and_release
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
 VERSION = $$APP_VERSION
