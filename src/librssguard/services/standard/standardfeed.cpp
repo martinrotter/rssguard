@@ -659,7 +659,12 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
 }
 
 QStringList StandardFeed::prepareExecutionLine(const QString& execution_line) {
-  auto split_exec = execution_line.split('#', Qt::SplitBehaviorFlags::SkipEmptyParts);
+  auto split_exec = execution_line.split('#',
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                         Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                         QString::SplitBehavior::SkipEmptyParts);
+#endif
   auto user_data_folder = qApp->userDataFolder();
 
   return split_exec.replaceInStrings(EXECUTION_LINE_USER_DATA_PLACEHOLDER, user_data_folder);

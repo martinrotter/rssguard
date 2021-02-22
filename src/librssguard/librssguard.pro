@@ -511,8 +511,8 @@ QMAKE_EXTRA_TARGETS += lupdate
 
 # Make sure QM translations are nerated.
 qtPrepareTool(LRELEASE, lrelease) {
-  message($$MSG_PREFIX: Running: \"$$LRELEASE\" -compress librssguard.pro)
-  system($$LRELEASE -compress librssguard.pro)
+  message($$MSG_PREFIX: Running: \"$$LRELEASE\" -compress $$shell_quote($$shell_path($$PWD/librssguard.pro)))
+  system($$LRELEASE -compress $$shell_quote($$shell_path($$PWD/librssguard.pro)))
 }
 
 mac {
