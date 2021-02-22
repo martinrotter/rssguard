@@ -13,13 +13,6 @@ APP_TYPE    = "core library"
 include(../../pri/vars.pri)
 include(../../pri/defs.pri)
 
-os2 {
- LRELEASE = "lrelease-qt5"
-}
-else {
- LRELEASE = "lrelease"
-}
-
 message($$MSG_PREFIX: Shadow copy build directory \"$$OUT_PWD\".)
 message($$MSG_PREFIX: $$APP_NAME version is: \"$$APP_VERSION\".)
 message($$MSG_PREFIX: Detected Qt version: \"$$QT_VERSION\".)
@@ -516,9 +509,11 @@ lupdate.commands = lupdate -no-obsolete -pro $$shell_quote($$shell_path($$PWD/li
 
 QMAKE_EXTRA_TARGETS += lupdate
 
-# Make sure QM translations are generated.
-message($$MSG_PREFIX: Running: \"$$LRELEASE\" -compress $$shell_quote($$shell_path($$PWD/librssguard.pro)))
-system($$LRELEASE -compress $$shell_quote($$shell_path($$PWD/librssguard.pro)))
+# Make sure QM translations are nerated.
+qtPrepareTool(LRELEASE, lrelease) {
+  message($$MSG_PREFIX: Running: \"$$LRELEASE\" -compress librssguard.pro)
+  system($$LRELEASE -compress librssguard.pro)
+}
 
 mac {
   IDENTIFIER = $$APP_REVERSE_NAME
