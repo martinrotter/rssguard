@@ -1,5 +1,43 @@
+3.9.0
+-----
+
+Added:
+* Feedly support. (#105)
+  https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#feedly
+* Google Reader API support, tested with many services like The Old Reader, Bazqux, Reedah, FreshRSS. (#349)
+  https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#google-reader-api
+* Liferea-like Website scraping and feed post-processing. (#265)
+  https://github.com/martinrotter/rssguard/blob/master/resources/docs/Feed-formats.md#websites-scraping-and-related-advanced-features
+* Internal web browser now offers a button which opens loaded webpage in external web browser. (#320)
+* Per account proxy support. (#334)
+* Display feed's icon in "is read" message list column. This is switchable in settings. (#346)
+* User now can sort via "id" column in a numeric way in message list. (#348)
+* Minimum interval for feed auto-updates is now 1 minute, not 3 minutes like before. (#355)
+* Added some new localizations, "pt_BR" and others. Thank you, translators, for your hard work.
+
+Fixed/changed:
+* This CHANGELOG is now written in Markdown.
+* Simplified "account" dialogs.
+* Properly disable adding/editing/deleting of synchronized tags/labels on some accounts.
+* RSS Guard can now be added to "favorites" on Linux/Gnome. (#340)
+* Remove "feed auto-update started" notification.
+* Some improvements of network behavior in Inoreader plugin.
+* OAuth listeners now has default post "14488".
+* Fix some deployment issues on Windows. (#337)
+* Follow HTTP/301 redirection more properly for some feeds. (#341)
+* Fixed some weird behaviors of OAuth listener.
+* All dirty account's not synchronized data are now synchronized when editing account. 
+* All console output now sent to "std:err". Also new "-n" switch to disable all console outputs.
+* Some refactorings for deployment process, build packages now have all names according to RSS Guard installers naming convention.
+* Some major refinements for AdBlock which now has:
+    * fixed of adding of custom rules,
+    * better UX in some dialogs,
+    * fully working site-wide blocking with proper error pages,
+    * working element hiding rules,
+    * removed some redundant and obsolete code.
+
 3.8.4
-—————
+-----
 
 Added:
 * Dialog for message filters management now allows you to:
@@ -20,7 +58,7 @@ Fixed/changed:
 * Cached message states are now far more reliably pushed back to server. (#325)
 
 3.8.3
-—————
+-----
 
 Added:
 * Initial Qt 6 support.
@@ -34,7 +72,7 @@ Fixed/changed:
 * Fixed URL not passed to custom external web browser.
 
 3.8.2
-—————
+-----
 
 Fixed/changed:
 * Fixed "reset" notification signal when editing toolbars in settings.
@@ -43,7 +81,7 @@ Fixed/changed:
 SORRY GUYS!!!
 
 3.8.1
-—————
+-----
 
 Added:
 * RSS Guard on Windows now uses more minimal Qt libraries and this makes installation packages 20% smaller.
@@ -70,7 +108,7 @@ Fixed/changed:
 * Do not escape empty strings when sanitizing messages.
 
 3.8.0
-—————
+-----
 
 Added:
 * Support for labels:
@@ -108,7 +146,7 @@ Fixed/changed:
 * Big thanks to ttrss.info for providing Tiny Tiny RSS account for testing.
 
 3.7.2
-—————
+-----
 
 Added:
 * Parent item/folder in add category/feed dialog is now correctly preselected according
@@ -121,7 +159,7 @@ Fixed/changed:
 * Fixed build on ARM machines.
 
 3.7.1
-—————
+-----
 
 Added:
 * Gmail plugin is now able to send e-mail messages and also reply to them.
@@ -144,7 +182,7 @@ Fixed/changed:
 * C++ 11 code base refactorings.
 
 3.7.0
-—————
+-----
 
 Added:
 * Fully scriptable MESSAGE FILTERING:
@@ -178,7 +216,7 @@ Fixed/changed:
 * Fixed errors in internal SQL code when displaying empty message list.
 
 3.6.3
-—————
+-----
 
 Fixed/changed:
 * Fixed some compiler warnings.
@@ -186,13 +224,13 @@ Fixed/changed:
 * Some localizations now have more precise country codes. Localizations were also synced.
 
 3.6.2
-—————
+-----
 
 Fixed/changed:
 * Added correct @executable_path to librssguard.dylib to make .dmg bundles running more correctly on Mac OS X.
 
 3.6.1
-—————
+-----
 
 Added:
 * Development binaries now available on Bintray - https://bintray.com/martinrotter/rssguard/Development#files
@@ -203,7 +241,7 @@ Fixed/changed:
 * Completely overhauled Appveyor/Travis build scripts which are now more reliable.
 
 3.6.0
-—————
+-----
 
 Added:
 * UK, GL translation and some other localizations.
@@ -230,7 +268,7 @@ Fixed/changed:
 * Many fixes for build scripts for dev builds.
 
 3.5.9
-—————
+-----
 
 Added:
 * Font in message and feed lists is now changeable, including its size. (#187)
@@ -239,7 +277,7 @@ Fixed:
 * Broken backward compatibility to Qt 5.7.
 
 3.5.8
-—————
+-----
 
 Added:
 * Image placeholders can now be completely disabled in "nowebengine" RSS Guard variant. (#205)
@@ -258,7 +296,7 @@ Fixed:
 * I hope, that appveyor/travis CI are now fixed as well.
 
 3.5.7
-—————
+-----
 
 Added:
 * "Default" icons of feeds/categories are now NOT directly stored in RSS Guard DB and they are dynamically loaded from active icon theme instead. (#200)
@@ -280,7 +318,7 @@ Changed:
 * Enhanced behavior of "Select next/previous item" in feed's list.
 
 3.5.6
-—————
+-----
 
 Fixed:
 * Some minor stuff fixes.
@@ -290,7 +328,7 @@ Fixed:
 * Missing obligatory attribute in OPML 2.0 files. (bug #166)
 
 3.5.5
-—————
+-----
 
 Added:
 * Internal message web viewer (and also lighter message text viewer) now support (#63) text searching. How to use:
@@ -305,14 +343,14 @@ Fixed:
 * Displaying correct update files. (#155)
 
 3.5.4
-—————
+-----
 
 Fixed:
 * First item in itemviews is now selected when focus is gained. (#142)
 * Some feed files do not have URLs of messages properly sanitized. Strip "\n" and "\t" from URls. (bug #154)
 
 3.5.1
-—————
+-----
 
 Added:
 * Font size of message/feed list can now be changed. (#145)
@@ -320,7 +358,7 @@ Added:
 * All cached online service data are synchronously saved when any feed is updated.
 
 3.5.0
-—————
+-----
 
 POLLS: https://goo.gl/forms/7bJNr33Ii22Q1c3k2
 
@@ -338,7 +376,7 @@ Fixed:
 * Fixed build on some Unit-like operating systems.
 
 3.4.2
-—————
+-----
 
 Added:
 * All (well, almost all) web-engine attributes can be disabled/enabled, including JS/plugins. (#57)
@@ -349,7 +387,7 @@ Added:
 * Binaries are now compiled on x64-only mode for Windows!!!
 
 3.4.1
-—————
+-----
 
 Added:
 * Toolbar editor can reset toolbars.
@@ -378,7 +416,7 @@ Fixed:
 * Crash in TT-RSS plugin on application exit, when TT-RSS user needed to be logged out.
 
 3.4.0
-—————
+-----
 
 Added:
 * New icons (CC 3.0 BY) inspired by the work of Dave Gandy.
@@ -391,13 +429,13 @@ Changed:
 * Localizations are now placed in "translations" subfolder instead of "l10n" subfolder. (issue #75)
 
 3.3.8
-—————
+-----
 
 Fixed:
 * Percent HTML encoding is now decoded when messages are downloaded. (bug #83)
 
 3.3.6
-—————
+-----
 
 Added:
 * User now can place custom user skins in user "data" folder. (issue #81) See "About" dialog for the exact path.
@@ -415,7 +453,7 @@ Fixed:
 * Partially fixed problem with incorrect number of downloaded messages being reported. (bug #70)
 
 3.3.5
-—————
+-----
 
 Added:
 * Qt "styles" are now configurable via settings and not hardcoded in "skin" files. Default "style" is now "Fusion" and can be changed to anything else in settings.
@@ -427,7 +465,7 @@ Fixed:
 * Fixed problem with updating states of messages in Nextcloud. Remove and re-add your account to fix the problem!! (bug #59)
 
 3.3.4
-—————
+-----
 
 Added:
 * Development builds are now automatically compiled for Windows and Mac OS X. See https://github.com/martinrotter/rssguard/tree/build-artifacts for links and more information.
@@ -443,7 +481,7 @@ Fixed:
 * RSS Guard crashed when switching msg status during feed updates. (bug #41)
 
 3.3.3
-—————
+-----
 
 Added:
 * Message viewer now displays thumbnails of image message attachments. (issue #39)
@@ -459,7 +497,7 @@ Changed:
 * MariaDB binary DLL file updated to 10.1.16 (Windows only).
 
 3.3.2
-—————
+-----
 
 Changed:
 * Feed updating/message downloading logic is now a bit simpler. Message downloading is still parallelized but final storing into DB is not. It is now queued. This slows down the proces only a bit, but gives more reliability.
@@ -473,7 +511,7 @@ Fixed:
 You can see more verbose list of fixed stuff here: https://github.com/martinrotter/rssguard/milestone/2?closed=1
 
 3.3.1
-—————
+-----
 
 Changed:
 * Changed couple of icons. (bug #12)
@@ -485,7 +523,7 @@ Fixed:
 * Fixed minimum allowed length of category/feed titles. (bug #17)
 
 3.3.0
-—————
+-----
 
 Added:
 * Internal message viewer is now based on QtWebEngine module which is based on Chromium project. This speeds up viewing of messages and supports newest HTML 5 or CSS 3 features. Note that this does not mean that fully featured internal web browser will come back. It will not! Only SIMPLIFIED internal web browser is now added. New message viewer is also better for viewing messages in newspaper mode.
@@ -509,20 +547,20 @@ Fixed:
 * OPML exporter now generates valid XML with all xmlns correctly filled.
 
 3.2.4
-—————
+-----
 
 Fixed:
 * Auto-update interval/type is now persistent across sync-in for TT-RSS/ownCloud.
 
 3.2.3
-—————
+-----
 
 Changed:
 * Some minor tweaks for default icon theme loading.
 
 
 3.2.2
-—————
+-----
 
 Added:
 * RSS Guard now supports system-wide icon themes and on Windows -> built-in Faenza theme was tweaked.
@@ -533,7 +571,7 @@ Fixed:
 * Fixed problem with message counts.
 
 3.2.1
-—————
+-----
 
 Added:
 * Internal message previewer now introduces list of images contained in message contents of displayed message.
@@ -545,7 +583,7 @@ Changed:
 * Internal message viewer now displays title as part of main HTML view.
 
 3.2.0
-—————
+-----
 
 Main:
 * Internal web browser was REMOVED. This is because old Qt WebKit web component will be removed from Qt and new Qt component for web viewing is based on Chromium, which is fucking joke. Some people hate Chromium because of many (technocal, philosophical, etical) reasons. Moreover, it lacks some useful features and is memory hungry. It is also very buggy in Qt now. Therefore now internal web browser is gone. Message preview component now uses much lighter solution and still can display certain HTML subset. RSS Guard was tweaked to be more friendly to external web browser. Double-clicking any message results in it being opened via external web browser.
@@ -574,7 +612,7 @@ Changed:
 * Custom notification popup window is now removed, it was buggy on Windows 10. Windows 10 offers good built-in alternative. On Linux, we rely on D-Bus notifications.
 
 3.1.0
-—————
+-----
 
 Added:
 * NEW ACCOUNT PLUGIN: OwnCloud News API 1.2 is now supported. Note that the support in this version is experimental and relatively basic. So far only syncing of feeds/messages is supported. Feed/category adding/removing is not yet supported yet. The OwnCloud plugin will be enhanced in future RSS Guard versions.
@@ -601,7 +639,7 @@ Changed:
 * TT-RSS plugin can now restore messages from local recycle bin.
 
 3.0.2
-—————
+-----
 
 Added:
 * Import of OPML/TXT files now allows to fetch feed metadata from online feed source.
@@ -626,7 +664,7 @@ Fixed:
 * Fixed problem with reloading feeds with newly downloaded messages when read-only-visible feeds filter is activated. (bug #139)
 
 3.0.1
-—————
+-----
 
 Added:
 * Background color of notifications is now changeable. (issue #134)
@@ -639,7 +677,7 @@ Fixed:
 * Problem with adding/editing TT-RSS accounts. (bug #137)
 
 3.0.0
-—————
+-----
 
 Added:
 * Brand new Tiny Tiny RSS plugin.
