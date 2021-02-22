@@ -22,7 +22,7 @@
     * [GUI tweaking](#gui-tweaking)
 * [Miscellaneous](#miscellaneous)
     * [Command line interface](#cli)
-    * [OS/2](#cli)
+    * [OS/2](#os2)
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
