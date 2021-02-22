@@ -9,11 +9,7 @@ include(../../pri/vars.pri)
 isEmpty(PREFIX) {
   message($$MSG_PREFIX: PREFIX variable is not set. This might indicate error.)
 
-  win32 {
-    PREFIX = $$OUT_PWD/app
-  }
-
-  android {
+  win32|os2|android {
     PREFIX = $$OUT_PWD/app
   }
 
@@ -52,7 +48,7 @@ unix: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard
 
 win32 {
   # Prepare files for NSIS.
-  SEDREPLACE = "| ForEach-Object { $_ -replace '@APP_VERSION@', '$$APP_VERSION' -replace '@APP_WIN_ARCH@', '$$APP_WIN_ARCH' -replace '@APP_REVISION@', '$$APP_REVISION' -replace '@APP_NAME@', '$$APP_NAME' -replace '@APP_LOW_NAME@', '$$APP_LOW_NAME' -replace '@EXE_NAME@', '$${APP_LOW_NAME}.exe' -replace '@PWD@', '$$replace(PWD, /, \\\\)' -replace '@OUT_PWD@', '$$replace(OUT_PWD, /, \\\\)' }"
+  SEDREPLACE = "| ForEach-Object { $_ -replace '@APP_VERSION@', '$$APP_VERSION' -replace '@APP_REVISION@', '$$APP_REVISION' -replace '@APP_NAME@', '$$APP_NAME' -replace '@APP_LOW_NAME@', '$$APP_LOW_NAME' -replace '@EXE_NAME@', '$${APP_LOW_NAME}.exe' -replace '@PWD@', '$$replace(PWD, /, \\\\)' -replace '@OUT_PWD@', '$$replace(OUT_PWD, /, \\\\)' }"
   message($$MSG_PREFIX: Sed replace string: \"$$SEDREPLACE\")
 
   FULLSEDCMD = "powershell -Command \"cat $$shell_path($$shell_quote($$PWD/../../resources/nsis/NSIS.definitions.nsh.in)) $$SEDREPLACE | Out-File $$shell_path($$shell_quote($$OUT_PWD/NSIS.definitions.nsh))\""

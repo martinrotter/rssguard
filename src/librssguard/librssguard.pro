@@ -13,6 +13,10 @@ APP_TYPE    = "core library"
 include(../../pri/vars.pri)
 include(../../pri/defs.pri)
 
+os2 {
+ LRELEASE = "lrelease-qt5"
+}
+
 message($$MSG_PREFIX: Shadow copy build directory \"$$OUT_PWD\".)
 message($$MSG_PREFIX: $$APP_NAME version is: \"$$APP_VERSION\".)
 message($$MSG_PREFIX: Detected Qt version: \"$$QT_VERSION\".)
