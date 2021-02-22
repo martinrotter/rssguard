@@ -31,6 +31,19 @@ win32 {
   INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard)
 }
 
+# Install all files on OS/2.
+os2 {
+  target.path = $$PREFIX
+
+  lib.files = $$OUT_PWD/../librssguard/librssguard.dll $$OUT_PWD/../librssguard/librssguard.lib
+  lib.path = $$PREFIX
+  lib.CONFIG = no_check_exist
+
+  INSTALLS += target lib
+
+  INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard)
+}
+
 # Install all files on Linux.
 unix:!mac:!android {
   target.path = $$PREFIX/bin
