@@ -516,9 +516,9 @@ lupdate.commands = lupdate -no-obsolete -pro $$shell_quote($$shell_path($$PWD/li
 
 QMAKE_EXTRA_TARGETS += lupdate
 
-# Make sure QM translations are nerated.
-message($$MSG_PREFIX: Running: \"$$LRELEASE\" -compress librssguard.pro)
-system($$LRELEASE -compress librssguard.pro)
+# Make sure QM translations are generated.
+message($$MSG_PREFIX: Running: \"$$LRELEASE\" -compress $$shell_quote($$shell_path($$PWD/librssguard.pro)))
+system($$LRELEASE -compress $$shell_quote($$shell_path($$PWD/librssguard.pro)))
 
 mac {
   IDENTIFIER = $$APP_REVERSE_NAME
