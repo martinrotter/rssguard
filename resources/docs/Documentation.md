@@ -252,7 +252,7 @@ Options:
 ```
 
 ## OS/2
-RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to make sure you have all dependencies installed:
+RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to make sure that your OS/2 distro is up-to-date and you have all dependencies installed:
 * `os2-base`,
 * all `gcc-*` packages,
 * `libc` and `libcx` up-to-date,
@@ -260,6 +260,13 @@ RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to
 * `ash`,
 * `binutils`,
 * all relevant `qt5-*` packages.
+
+After your dependecies are installed, then you can compile via standard `qmake -> make -> make install` steps and package with
+
+```
+7z.exe a -t7z -mmt -mx9 "rssguard.7z" "<build-folder\src\rssguard\app\*"
+```
+command.
 
 ## Cleaning database
 Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with tens of thousands of messages.
