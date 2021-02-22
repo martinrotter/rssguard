@@ -35,7 +35,7 @@ win32 {
 os2 {
   target.path = $$PREFIX
 
-  lib.files = $$OUT_PWD/../librssguard/librssguard.dll $$OUT_PWD/../librssguard/librssguard.lib
+  lib.files = $$OUT_PWD/../librssguard/rssguard.dll $$OUT_PWD/../librssguard/rssguard.lib
   lib.path = $$PREFIX
   lib.CONFIG = no_check_exist
 

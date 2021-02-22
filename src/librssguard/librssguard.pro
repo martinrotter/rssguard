@@ -1,6 +1,6 @@
 TEMPLATE = lib
 
-unix|mac {
+unix|mac|os2 {
   TARGET = rssguard
 }
 else {
