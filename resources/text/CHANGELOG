@@ -10,6 +10,7 @@ Added:
   https://github.com/martinrotter/rssguard/blob/master/resources/docs/Feed-formats.md#websites-scraping-and-related-advanced-features
 * Internal web browser now offers a button which opens loaded webpage in external web browser. (#320)
 * Per account proxy support. (#334)
+* RSS Guard ported to OS/2 (ArcaOS, eComStation).
 * Display feed's icon in "is read" message list column. This is switchable in settings. (#346)
 * User now can sort via "id" column in a numeric way in message list. (#348)
 * Minimum interval for feed auto-updates is now 1 minute, not 3 minutes like before. (#355)
