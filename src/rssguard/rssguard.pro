@@ -45,7 +45,7 @@ DEPENDPATH += $$PWD/../librssguard
 
 win32: LIBS += -L$$OUT_PWD/../librssguard/ -llibrssguard
 unix: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard
-os2: LIBS += -L$$OUT_PWD/../librssguard/ -rssguard
+os2: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard
 
 win32 {
   # Prepare files for NSIS.
