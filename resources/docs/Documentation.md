@@ -22,6 +22,7 @@
     * [GUI tweaking](#gui-tweaking)
 * [Miscellaneous](#miscellaneous)
     * [Command line interface](#cli)
+    * [OS/2](#cli)
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
@@ -249,6 +250,16 @@ Options:
   --help-all                     Displays help including Qt specific options.
   -v, --version                  Displays version information.
 ```
+
+## OS/2
+RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to make sure you have all dependencies installed:
+* `os2-base`,
+* all `gcc-*` packages,
+* `libc` and `libcx` up-to-date,
+* `kbuild-make`,
+* `ash`,
+* `binutils`,
+* all relevant `qt5-*` packages.
 
 ## Cleaning database
 Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with tens of thousands of messages.
