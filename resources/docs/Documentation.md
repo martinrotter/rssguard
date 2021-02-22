@@ -95,6 +95,7 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 * Windows,
 * GNU/Linux,
 * Mac OS X,
+* OS/2 (ArcaOS, eComStation),
 * Android (prebuilt binaries N/A at this point).
 
 ## List of main features
