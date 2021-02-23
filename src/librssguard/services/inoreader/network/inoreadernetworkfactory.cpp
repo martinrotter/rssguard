@@ -63,9 +63,6 @@ void InoreaderNetworkFactory::initializeOauth() {
       QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
       DatabaseQueries::storeNewOauthTokens(database, QSL("InoreaderAccounts"), refresh_token, m_service->accountId());
-      qApp->showGuiMessage(tr("Logged in successfully"),
-                           tr("Your login to Inoreader was authorized."),
-                           QSystemTrayIcon::MessageIcon::Information);
     }
   });
 }

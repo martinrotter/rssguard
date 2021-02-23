@@ -128,9 +128,6 @@ void GmailNetworkFactory::initializeOauth() {
       QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
       DatabaseQueries::storeNewOauthTokens(database, QSL("GmailAccounts"), refresh_token, m_service->accountId());
-      qApp->showGuiMessage(tr("Logged in successfully"),
-                           tr("Your login to Gmail was authorized."),
-                           QSystemTrayIcon::MessageIcon::Information);
     }
   });
 }

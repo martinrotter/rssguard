@@ -524,9 +524,6 @@ void FeedlyNetwork::onTokensRetrieved(const QString& access_token, const QString
     QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
     DatabaseQueries::storeNewOauthTokens(database, QSL("FeedlyAccounts"), refresh_token, m_service->accountId());
-    qApp->showGuiMessage(tr("Logged in successfully"),
-                         tr("Your login to Feedly was authorized."),
-                         QSystemTrayIcon::MessageIcon::Information);
   }
 }
 
