@@ -56,7 +56,9 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
                 << "OAuth redirect handler FAILED TO START TO LISTEN on address"
                 << QUOTE_W_SPACE(listen_address.toString())
                 << "and port"
-                << QUOTE_W_SPACE_DOT(listen_port);
+                << QUOTE_W_SPACE(listen_port)
+                << "with error"
+                << QUOTE_W_SPACE_DOT(m_httpServer.errorString());
   }
   else {
     m_listenAddress = listen_address;
