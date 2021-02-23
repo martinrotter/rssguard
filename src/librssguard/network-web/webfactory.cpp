@@ -71,8 +71,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool()) {
     const QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
     const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
-    const QString escaped_url = QUrl::toPercentEncoding(url);
-    auto nice_args = arguments.arg(escaped_url);
+    auto nice_args = arguments.arg(url);
 
     qDebugNN << LOGSEC_NETWORK << "Arguments for external browser:" << QUOTE_W_SPACE_DOT(nice_args);
 
