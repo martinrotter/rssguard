@@ -33,8 +33,6 @@ void FormEditInoreaderAccount::apply() {
     account<InoreaderServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
     m_details->m_oauth->logout(true);
     m_details->m_oauth->deleteLater();
-
-    QThread::currentThread()->msleep(300);
   }
 
   account<InoreaderServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
