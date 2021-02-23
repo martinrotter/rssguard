@@ -28,7 +28,7 @@ void FormEditGmailAccount::apply() {
     account<GmailServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
     account<GmailServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
     account<GmailServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
-    m_details->m_oauth->logout();
+    m_details->m_oauth->logout(true);
     m_details->m_oauth->deleteLater();
   }
 
@@ -53,7 +53,7 @@ void FormEditGmailAccount::setEditableAccount(ServiceRoot* editable_account) {
 
   if (m_details->m_oauth != nullptr) {
     // We will use live OAuth service for testing.
-    m_details->m_oauth->logout();
+    m_details->m_oauth->logout(true);
     m_details->m_oauth->deleteLater();
   }
 

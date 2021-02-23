@@ -54,8 +54,9 @@ void FormEditInoreaderAccount::setEditableAccount(ServiceRoot* editable_account)
 
   if (m_details->m_oauth != nullptr) {
     // We will use live OAuth service for testing.
-    m_details->m_oauth->logout();
-    m_details->m_oauth->deleteLater();
+    m_details->m_oauth->logout(true);
+    delete m_details->m_oauth;
+    m_details->m_oauth = nullptr;
   }
 
   m_details->m_oauth = account<InoreaderServiceRoot>()->network()->oauth();

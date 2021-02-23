@@ -41,7 +41,7 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
     listen_address = QHostAddress(url.host());
   }
 
-  if (listen_address == m_listenAddress && url.port() == m_listenPort && m_httpServer.isListening()) {
+  if (listen_address == m_listenAddress && listen_port == m_listenPort && m_httpServer.isListening()) {
     // NOTE: We do not need to change listener's settings or re-start it.
     return;
   }
@@ -54,9 +54,9 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
   if (!m_httpServer.listen(listen_address, listen_port)) {
     qCriticalNN << LOGSEC_OAUTH
                 << "OAuth redirect handler FAILED TO START TO LISTEN on address"
-                << QUOTE_W_SPACE(m_listenAddress.toString())
+                << QUOTE_W_SPACE(listen_address.toString())
                 << "and port"
-                << QUOTE_W_SPACE_DOT(m_listenPort);
+                << QUOTE_W_SPACE_DOT(listen_port);
   }
   else {
     m_listenAddress = listen_address;

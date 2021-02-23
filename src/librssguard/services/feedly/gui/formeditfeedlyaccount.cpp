@@ -33,7 +33,7 @@ void FormEditFeedlyAccount::apply() {
     account<FeedlyServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
     account<FeedlyServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
     account<FeedlyServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
-    m_details->m_oauth->logout();
+    m_details->m_oauth->logout(true);
     m_details->m_oauth->deleteLater();
 
     // Force live OAuth object to re-start it's redirection handler.
@@ -63,7 +63,7 @@ void FormEditFeedlyAccount::setEditableAccount(ServiceRoot* editable_account) {
 #if defined (FEEDLY_OFFICIAL_SUPPORT)
   if (m_details->m_oauth != nullptr) {
     // We will use live OAuth service for testing.
-    m_details->m_oauth->logout();
+    m_details->m_oauth->logout(true);
     m_details->m_oauth->deleteLater();
   }
 
