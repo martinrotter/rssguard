@@ -38,6 +38,7 @@ class OAuth2Service : public QObject {
     explicit OAuth2Service(const QString& auth_url, const QString& token_url,
                            const QString& client_id, const QString& client_secret,
                            const QString& scope, QObject* parent = nullptr);
+    virtual ~OAuth2Service();
 
     // Returns bearer HTTP header value.
     // NOTE: If on working thread, then call this only if isFullyLoggedIn()

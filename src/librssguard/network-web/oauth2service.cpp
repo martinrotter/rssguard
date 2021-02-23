@@ -72,6 +72,10 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
   });
 }
 
+OAuth2Service::~OAuth2Service() {
+  qDebugNN << LOGSEC_OAUTH << "Destroying OAuth2Service instance.";
+}
+
 QString OAuth2Service::bearer() {
   if (!isFullyLoggedIn()) {
     qApp->showGuiMessage(tr("You have to login first"),

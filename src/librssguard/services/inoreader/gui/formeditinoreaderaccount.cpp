@@ -12,6 +12,8 @@
 #include "services/inoreader/inoreaderserviceroot.h"
 #include "services/inoreader/network/inoreadernetworkfactory.h"
 
+#include <QThread>
+
 FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent)
   : FormAccountDetails(qApp->icons()->miscIcon(QSL("inoreader")), parent), m_details(new InoreaderAccountDetails(this)) {
   insertCustomTab(m_details, tr("Server setup"), 0);
@@ -31,6 +33,8 @@ void FormEditInoreaderAccount::apply() {
     account<InoreaderServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
     m_details->m_oauth->logout(true);
     m_details->m_oauth->deleteLater();
+
+    QThread::currentThread()->msleep(300);
   }
 
   account<InoreaderServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
