@@ -295,6 +295,8 @@ void OAuth2Service::logout(bool stop_redirection_handler) {
   setAccessToken(QString());
   setRefreshToken(QString());
 
+  qDebugNN << LOGSEC_OAUTH << "Clearing tokens.";
+
   if (stop_redirection_handler) {
     m_redirectionHandler->stop();
   }

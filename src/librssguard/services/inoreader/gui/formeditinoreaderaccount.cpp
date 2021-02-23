@@ -29,7 +29,7 @@ void FormEditInoreaderAccount::apply() {
     account<InoreaderServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
     account<InoreaderServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
     account<InoreaderServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
-    m_details->m_oauth->logout();
+    m_details->m_oauth->logout(true);
     m_details->m_oauth->deleteLater();
   }
 

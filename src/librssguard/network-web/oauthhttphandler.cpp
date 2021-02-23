@@ -342,4 +342,6 @@ void OAuthHttpHandler::stop() {
   m_listenAddress = QHostAddress();
   m_listenPort = 0;
   m_listenAddressPort = QString();
+
+  qDebugNN << LOGSEC_OAUTH << "Stopped redirection handler.";
 }
