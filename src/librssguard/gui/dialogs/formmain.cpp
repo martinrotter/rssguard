@@ -844,11 +844,7 @@ void FormMain::hideEvent(QHideEvent* event) {
 }
 
 void FormMain::showDocs() {
-  if (!qApp->web()->openUrlInExternalBrowser(APP_URL_DOCUMENTATION)) {
-    qApp->showGuiMessage(tr("Cannot open external browser"),
-                         tr("Cannot open external browser. Navigate to application website manually."),
-                         QSystemTrayIcon::Warning, this, true);
-  }
+  qApp->web()->openUrlInExternalBrowser(APP_URL_DOCUMENTATION);
 }
 
 void FormMain::showAddAccountDialog() {
@@ -860,17 +856,9 @@ void FormMain::showAddAccountDialog() {
 }
 
 void FormMain::reportABug() {
-  if (!qApp->web()->openUrlInExternalBrowser(QSL(APP_URL_ISSUES_NEW))) {
-    qApp->showGuiMessage(tr("Cannot open external browser"),
-                         tr("Cannot open external browser. Navigate to application website manually."),
-                         QSystemTrayIcon::Warning, this, true);
-  }
+  qApp->web()->openUrlInExternalBrowser(QSL(APP_URL_ISSUES_NEW));
 }
 
 void FormMain::donate() {
-  if (!qApp->web()->openUrlInExternalBrowser(QSL(APP_DONATE_URL))) {
-    qApp->showGuiMessage(tr("Cannot open external browser"),
-                         tr("Cannot open external browser. Navigate to application website manually."),
-                         QSystemTrayIcon::Warning, this, true);
-  }
+  qApp->web()->openUrlInExternalBrowser(QSL(APP_DONATE_URL));
 }

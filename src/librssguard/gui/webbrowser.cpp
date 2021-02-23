@@ -185,13 +185,7 @@ void WebBrowser::openCurrentSiteInSystemBrowser() {
     return;
   }
 
-  if (!qApp->web()->openUrlInExternalBrowser(url.toString())) {
-    qApp->showGuiMessage(tr("Failed to open URL in web browser"),
-                         tr("URL '%1' could not be opened in system's web browser.").arg(url.toString()),
-                         QSystemTrayIcon::MessageIcon::Critical,
-                         qApp->mainFormWidget(),
-                         true);
-  }
+  qApp->web()->openUrlInExternalBrowser(url.toString());
 }
 
 void WebBrowser::onTitleChanged(const QString& new_title) {

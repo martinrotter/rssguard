@@ -332,13 +332,5 @@ void OAuth2Service::retrieveAuthCode() {
                                                                     m_id);
 
   // We run login URL in external browser, response is caught by light HTTP server.
-  if (!qApp->web()->openUrlInExternalBrowser(auth_url)) {
-    MessageBox::show(qApp->mainFormWidget(),
-                     QMessageBox::Icon::Question,
-                     tr("Navigate to website"),
-                     tr("To login, you need to navigate to the below website."),
-                     {},
-                     auth_url,
-                     QMessageBox::StandardButton::Ok);
-  }
+  qApp->web()->openUrlInExternalBrowser(auth_url);
 }

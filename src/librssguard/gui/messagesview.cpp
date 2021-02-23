@@ -380,12 +380,7 @@ void MessagesView::openSelectedSourceMessagesExternally() {
                    .m_url
                    .replace(QRegularExpression("[\\t\\n]"), QString());
 
-    if (!qApp->web()->openUrlInExternalBrowser(link)) {
-      qApp->showGuiMessage(tr("Problem with starting external web browser"),
-                           tr("External web browser could not be started."),
-                           QSystemTrayIcon::Critical);
-      return;
-    }
+    qApp->web()->openUrlInExternalBrowser(link);
   }
 
   // Finally, mark opened messages as read.
