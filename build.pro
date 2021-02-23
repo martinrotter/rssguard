@@ -28,15 +28,20 @@
 #            of this variable can be mimicked with $INSTALL_ROOT variable on Linux. Note that
 #            RSS Guard's installation is automatically relocatable, in other words, no
 #            absolute OS-dependent paths are used.
+#   FEEDLY_CLIENT_ID - official production client ID obtained from Feedly when setting up application
+#                      partnership.
+#   FEEDLY_CLIENT_SECRET - official production client SECRET obtained from Feedly when setting up application
+#                          partnership.
 #
 # Other information:
-#   - supports Windows, Linux, Mac OS X, Android,
+#   - supports Windows, Linux, Mac OS X, OS/2, Android,
 #   - Qt 5.9.0 or higher is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules within repository before compilation,
 #   - C++ 11/17 is required.
 #
 # Authors and contributors:
-#   - Martin Rotter (project leader).
+#   - Martin Rotter (project leader),
+#   - Elbert Pol (OS/2-related contributions).
 #
 #################################################################
 
