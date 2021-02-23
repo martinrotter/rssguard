@@ -153,6 +153,7 @@ class DatabaseQueries {
     static void fillFeedData(T* feed, const QSqlRecord& sql_record);
 
     // Feedly account.
+    static bool deleteFeedlyAccount(const QSqlDatabase& db, int account_id);
     static QList<ServiceRoot*> getFeedlyAccounts(const QSqlDatabase& db, bool* ok = nullptr);
     static bool createFeedlyAccount(const QSqlDatabase& db,
                                     const QString& username,

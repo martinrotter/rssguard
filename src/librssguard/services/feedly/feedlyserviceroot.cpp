@@ -51,7 +51,7 @@ bool FeedlyServiceRoot::editViaGui() {
 bool FeedlyServiceRoot::deleteViaGui() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  if (DatabaseQueries::deleteGreaderAccount(database, accountId())) {
+  if (DatabaseQueries::deleteFeedlyAccount(database, accountId())) {
     return ServiceRoot::deleteViaGui();
   }
   else {

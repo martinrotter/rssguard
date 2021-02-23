@@ -25,6 +25,7 @@
 #include "network-web/oauth2service.h"
 
 #include "definitions/definitions.h"
+#include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
 #include "network-web/oauthhttphandler.h"
@@ -331,11 +332,13 @@ void OAuth2Service::retrieveAuthCode() {
                                                                     m_id);
 
   // We run login URL in external browser, response is caught by light HTTP server.
-  if (!qApp->web()->openUrlInExternalBrowser(auth_url)) {
-    QInputDialog::getText(qApp->mainFormWidget(),
-                          tr("Navigate to website"),
-                          tr("To login, you need to navigate to this website:"),
-                          QLineEdit::EchoMode::Normal,
-                          auth_url);
+  if (qApp->web()->openUrlInExternalBrowser(auth_url)) {
+    MessageBox::show(qApp->mainFormWidget(),
+                     QMessageBox::Icon::Question,
+                     tr("Navigate to website"),
+                     tr("To login, you need to navigate to the below website."),
+                     {},
+                     auth_url,
+                     QMessageBox::StandardButton::Ok);
   }
 }
