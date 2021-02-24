@@ -3,10 +3,8 @@ name: rssguard
 
 on:
   push:
-    branches: ["master"]
+    branches: ["master", "version-4"]
     tags: ["*"]
-  pull_request:
-    branches: ["master"]
 
 jobs:
   build-rssguard:
