@@ -16,8 +16,15 @@ GmailAccountDetails::GmailAccountDetails(QWidget* parent)
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
 
-  m_ui.m_lblInfo->setText(tr("Specified redirect URL must start with \"http://localhost\" and "
-                             "must be configured in your OAuth \"application\"."));
+#if defined(GMAIL_OFFICIAL_SUPPORT)
+  m_ui.m_lblInfo->setText(tr("There are some preconfigured OAuth tokens so you do not have to fill in your "
+                             "client ID/secret, but it is strongly recommended to obtain your "
+                             "own as it preconfigured tokens have limited global usage quota. If you wash "
+                             "to use preconfigured tokens, simply leave those fields empty and make sure "
+                             "to leave default value of redirect URL."));
+#else
+  m_ui.m_lblInfo->setText(tr("You have to fill in your client ID/secret and also fill in correct redirect URL."));
+#endif
 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("Not tested yet."),
@@ -55,8 +62,21 @@ GmailAccountDetails::GmailAccountDetails(QWidget* parent)
 
 void GmailAccountDetails::testSetup() {
   m_oauth->logout();
+
+#if defined(GMAIL_OFFICIAL_SUPPORT)
+  if (m_ui.m_txtAppId->lineEdit()->text().isEmpty() || m_ui.m_txtAppKey->lineEdit()->text().isEmpty()) {
+    m_oauth->setClientId(TextFactory::decrypt(GMAIL_CLIENT_ID, OAUTH_DECRYPTION_KEY));
+    m_oauth->setClientSecret(TextFactory::decrypt(GMAIL_CLIENT_ID, OAUTH_DECRYPTION_KEY));
+  }
+  else {
+#endif
   m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
   m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
+
+#if defined(GMAIL_OFFICIAL_SUPPORT)
+}
+#endif
+
   m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());
 
   if (m_oauth->login()) {
@@ -85,7 +105,7 @@ void GmailAccountDetails::onAuthError(const QString& error, const QString& detai
   Q_UNUSED(error)
 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                  tr("There is error. %1 ").arg(detailed_description),
+                                  tr("There is error: %1").arg(detailed_description),
                                   tr("There was error during testing."));
 }
 
@@ -110,7 +130,11 @@ void GmailAccountDetails::checkOAuthValue(const QString& value) {
 
   if (line_edit != nullptr) {
     if (value.isEmpty()) {
+#if defined(GMAIL_OFFICIAL_SUPPORT)
+      line_edit->setStatus(WidgetWithStatus::StatusType::Ok, tr("Preconfigured client ID/secret will be used."));
+#else
       line_edit->setStatus(WidgetWithStatus::StatusType::Error, tr("Empty value is entered."));
+#endif
     }
     else {
       line_edit->setStatus(WidgetWithStatus::StatusType::Ok, tr("Some value is entered."));
