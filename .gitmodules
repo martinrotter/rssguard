@@ -7,6 +7,3 @@
 [submodule "resources/scripts/nsis"]
 	path = resources/scripts/nsis
 	url = https://github.com/martinrotter/nsis.git
-[submodule "resources/scripts/sed"]
-	path = resources/scripts/sed
-	url = https://github.com/martinrotter/sed.git
