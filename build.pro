@@ -28,10 +28,8 @@
 #            of this variable can be mimicked with $INSTALL_ROOT variable on Linux. Note that
 #            RSS Guard's installation is automatically relocatable, in other words, no
 #            absolute OS-dependent paths are used.
-#   FEEDLY_CLIENT_ID - official production client ID obtained from Feedly when setting up application
-#                      partnership.
-#   FEEDLY_CLIENT_SECRET - official production client SECRET obtained from Feedly when setting up application
-#                          partnership.
+#   {FEEDLY,GMAIL,INOREADER}_CLIENT_ID - preconfigured OAuth cliend ID.
+#   {FEEDLY,GMAIL,INOREADER}_CLIENT_SECRET - preconfigured OAuth cliend SECRET.
 #
 # Other information:
 #   - supports Windows, Linux, Mac OS X, OS/2, Android,
