@@ -46,7 +46,6 @@ else {
   message($$MSG_PREFIX: Enabling official Feedly support.)
 }
 
-
 isEmpty(GMAIL_CLIENT_ID)|isEmpty(GMAIL_CLIENT_SECRET) {
   GMAIL_OFFICIAL_SUPPORT = false
 
