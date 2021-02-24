@@ -19,6 +19,7 @@ Added:
 Fixed/changed:
 * This CHANGELOG is now written in Markdown.
 * Simplified "account" dialogs.
+* Use DuckDuckGo online favicon source as fallback when fetching feed icons. (#363)
 * Properly disable adding/editing/deleting of synchronized tags/labels on some accounts.
 * RSS Guard can now be added to "favorites" on Linux/Gnome. (#340)
 * Remove "feed auto-update started" notification.
@@ -29,7 +30,7 @@ Fixed/changed:
 * Fixed some weird behaviors of OAuth listener.
 * All dirty account's not synchronized data are now synchronized when editing account. 
 * All console output now sent to "std:err". Also new "-n" switch to disable all console outputs.
-* Some refactorings for deployment process, build packages now have all names according to RSS Guard installers naming convention.
+* Some refactoring for deployment process, build packages now have all names according to RSS Guard installers naming convention.
 * Some major refinements for AdBlock which now has:
     * fixed of adding of custom rules,
     * better UX in some dialogs,
