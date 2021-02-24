@@ -133,12 +133,12 @@ QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
   return QDateTime::fromMSecsSinceEpoch(milis_from_epoch, Qt::TimeSpec::UTC);
 }
 
-QString TextFactory::encrypt(const QString& text) {
-  return SimpleCrypt(initializeSecretEncryptionKey()).encryptToString(text);
+QString TextFactory::encrypt(const QString& text, quint64 key) {
+  return SimpleCrypt(key == 0 ? initializeSecretEncryptionKey() : key).encryptToString(text);
 }
 
-QString TextFactory::decrypt(const QString& text) {
-  return SimpleCrypt(initializeSecretEncryptionKey()).decryptToString(text);
+QString TextFactory::decrypt(const QString& text, quint64 key) {
+  return SimpleCrypt(key == 0 ? initializeSecretEncryptionKey() : key).decryptToString(text);
 }
 
 QString TextFactory::newline() {

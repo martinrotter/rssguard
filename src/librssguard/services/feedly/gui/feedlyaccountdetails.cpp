@@ -11,14 +11,14 @@
 #include "services/feedly/definitions.h"
 #include "services/feedly/feedlynetwork.h"
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 #include "network-web/oauth2service.h"
 #endif
 
 #include <QVariantHash>
 
 FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_oauth = new OAuth2Service(QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_AUTH,
                               QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TOKEN,
                               FEEDLY_CLIENT_ID,
@@ -37,7 +37,7 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_ui.m_lblInfo->setText(tr("Your %1 build has official Feedly support. You do not have to use \"developer acess "
                              "token\". You can therefore leave corresponding field empty.").arg(APP_NAME));
 #else
