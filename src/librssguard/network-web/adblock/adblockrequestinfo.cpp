@@ -44,14 +44,6 @@ void AdblockRequestInfo::setFirstPartyUrl(const QUrl& firstPartyUrl) {
   m_firstPartyUrl = firstPartyUrl;
 }
 
-QUrl AdblockRequestInfo::initiator() const {
-  return m_initiator;
-}
-
-void AdblockRequestInfo::setInitiator(const QUrl& initiator) {
-  m_initiator = initiator;
-}
-
 QByteArray AdblockRequestInfo::requestMethod() const {
   return m_requestMethod;
 }
@@ -62,7 +54,6 @@ void AdblockRequestInfo::setRequestMethod(const QByteArray& requestMethod) {
 
 void AdblockRequestInfo::initialize(const QWebEngineUrlRequestInfo& webengine_info) {
   setFirstPartyUrl(webengine_info.firstPartyUrl());
-  setInitiator(webengine_info.initiator());
   setNavigationType(webengine_info.navigationType());
   setRequestMethod(webengine_info.requestMethod());
   setRequestUrl(webengine_info.requestUrl());
@@ -71,7 +62,6 @@ void AdblockRequestInfo::initialize(const QWebEngineUrlRequestInfo& webengine_in
 
 void AdblockRequestInfo::initialize(const QUrl& url) {
   setFirstPartyUrl(url);
-  setInitiator(url);
   setNavigationType(QWebEngineUrlRequestInfo::NavigationType::NavigationTypeTyped);
   setRequestMethod(QSL("GET").toLocal8Bit());
   setRequestUrl(url);

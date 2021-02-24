@@ -22,9 +22,6 @@ class AdblockRequestInfo {
     QUrl firstPartyUrl() const;
     void setFirstPartyUrl(const QUrl& firstPartyUrl);
 
-    QUrl initiator() const;
-    void setInitiator(const QUrl& initiator);
-
     QByteArray requestMethod() const;
     void setRequestMethod(const QByteArray& requestMethod);
 
