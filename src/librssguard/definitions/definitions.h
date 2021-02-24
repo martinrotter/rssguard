@@ -19,6 +19,7 @@
 
 #define ARGUMENTS_LIST_SEPARATOR  "\n"
 
+#define OAUTH_DECRYPTION_KEY                  11451167756100761335ul
 #define ADBLOCK_HOWTO_FILTERS                 "https://help.eyeo.com/en/adblockplus/how-to-write-filters"
 #define ADBLOCK_UPDATE_DAYS_INTERVAL          14
 #define ADBLOCK_ICON_ACTIVE                   "adblock"
