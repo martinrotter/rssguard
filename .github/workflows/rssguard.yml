@@ -43,6 +43,8 @@ jobs:
           
       - name: Prepare environment and compile application
         run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}"
+        env:
+          GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
         
       - name: Release development binaries
         uses: softprops/action-gh-release@v1
