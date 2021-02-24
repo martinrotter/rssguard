@@ -1,8 +1,5 @@
 #!/bin/bash
 
-xxx="$GMAIL_CLIENT_ID"
-echo "gmail test $xxx"
-
 os="$1"
 webengine="$2"
 
