@@ -176,9 +176,9 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& u
       host = host.mid(4);
     }
 
-    const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(host);
+    const QString ddg_icon_service = QString("https://external-content.duckduckgo.com/ip3/%1.ico").arg(host);
 
-    network_result = performNetworkOperation(google_s2_with_url,
+    network_result = performNetworkOperation(ddg_icon_service,
                                              timeout,
                                              QByteArray(),
                                              icon_data,
@@ -189,7 +189,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& u
                                              {},
                                              custom_proxy).first;
 
-    if (network_result == QNetworkReply::NoError) {
+    if (network_result == QNetworkReply::NetworkError::NoError) {
       QPixmap icon_pixmap;
 
       icon_pixmap.loadFromData(icon_data);
