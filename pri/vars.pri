@@ -4,7 +4,7 @@ APP_REVERSE_NAME              = "com.github.rssguard"
 APP_LOW_H_NAME                = ".rssguard"
 APP_AUTHOR                    = "Martin Rotter"
 APP_COPYRIGHT                 = "(C) 2011-2021 $$APP_AUTHOR"
-APP_VERSION                   = "3.9.2"
+APP_VERSION                   = "4.0.0"
 APP_LONG_NAME                 = "$$APP_NAME $$APP_VERSION"
 APP_EMAIL                     = "rotter.martinos@gmail.com"
 APP_URL                       = "https://github.com/martinrotter/rssguard"
@@ -26,11 +26,9 @@ isEmpty(USE_WEBENGINE) {
 
   qtHaveModule(webenginewidgets) {
     USE_WEBENGINE = true
-    ##message($$MSG_PREFIX: WebEngine component IS installed, enabling it.)
   }
   else {
     USE_WEBENGINE = false
-    ##message($$MSG_PREFIX: WebEngine component is probably NOT installed, disabling it.)
   }
 }
 
@@ -46,4 +44,33 @@ else {
   DEFINES *= FEEDLY_CLIENT_SECRET='"\\\"$$FEEDLY_CLIENT_SECRET\\\""'
 
   message($$MSG_PREFIX: Enabling official Feedly support.)
+}
+
+
+isEmpty(GMAIL_CLIENT_ID)|isEmpty(GMAIL_CLIENT_SECRET) {
+  GMAIL_OFFICIAL_SUPPORT = false
+
+  message($$MSG_PREFIX: Gmail client ID/secret variables are not set.)
+}
+else {
+  GMAIL_OFFICIAL_SUPPORT = true
+  DEFINES *= GMAIL_OFFICIAL_SUPPORT
+  DEFINES *= GMAIL_CLIENT_ID='"\\\"$$GMAIL_CLIENT_ID\\\""'
+  DEFINES *= GMAIL_CLIENT_SECRET='"\\\"$$GMAIL_CLIENT_SECRET\\\""'
+
+  message($$MSG_PREFIX: Enabling official Gmail support.)
+}
+
+isEmpty(INOREADER_CLIENT_ID)|isEmpty(INOREADER_CLIENT_SECRET) {
+  INOREADER_OFFICIAL_SUPPORT = false
+
+  message($$MSG_PREFIX: Inoreader client ID/secret variables are not set.)
+}
+else {
+  INOREADER_OFFICIAL_SUPPORT = true
+  DEFINES *= INOREADER_OFFICIAL_SUPPORT
+  DEFINES *= INOREADER_CLIENT_ID='"\\\"$$INOREADER_CLIENT_ID\\\""'
+  DEFINES *= INOREADER_CLIENT_SECRET='"\\\"$$INOREADER_CLIENT_SECRET\\\""'
+
+  message($$MSG_PREFIX: Enabling official Inoreader support.)
 }
