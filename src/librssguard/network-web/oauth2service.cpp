@@ -48,7 +48,7 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
   : QObject(parent),
   m_id(QString::number(QRandomGenerator::global()->generate())), m_timerId(-1),
   m_redirectionHandler(new OAuthHttpHandler(tr("You can close this window now. Go back to %1.").arg(APP_NAME), this)),
-  m_functorOnLogin({}) {
+  m_functorOnLogin(std::function<void()>()) {
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(token_url);
   m_authUrl = auth_url;
@@ -230,7 +230,10 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
              << "Obtained refresh token" << QUOTE_W_SPACE(refreshToken())
              << "- expires on date/time" << QUOTE_W_SPACE_DOT(tokensExpireIn());
 
-    m_functorOnLogin();
+    if (m_functorOnLogin != nullptr) {
+      m_functorOnLogin();
+    }
+
     emit tokensRetrieved(accessToken(), refreshToken(), expires);
   }
 
@@ -300,7 +303,7 @@ void OAuth2Service::setRefreshToken(const QString& refresh_token) {
 }
 
 bool OAuth2Service::login(const std::function<void()>& functor_when_logged_in) {
-  m_functorOnLogin = {};
+  m_functorOnLogin = functor_when_logged_in;
 
   if (!m_redirectionHandler->isListening()) {
     qCriticalNN << LOGSEC_OAUTH
@@ -315,8 +318,6 @@ bool OAuth2Service::login(const std::function<void()>& functor_when_logged_in) {
 
   bool did_token_expire = tokensExpireIn().isNull() || tokensExpireIn() < QDateTime::currentDateTime().addSecs(-120);
   bool does_token_exist = !refreshToken().isEmpty();
-
-  m_functorOnLogin = functor_when_logged_in;
 
   // We refresh current tokens only if:
   //   1. We have some existing refresh token.
