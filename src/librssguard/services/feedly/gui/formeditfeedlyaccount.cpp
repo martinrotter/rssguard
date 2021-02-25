@@ -24,10 +24,10 @@ FormEditFeedlyAccount::FormEditFeedlyAccount(QWidget* parent)
 }
 
 void FormEditFeedlyAccount::apply() {
-  bool editing_account = !applyInternal<FeedlyServiceRoot>();
+  FormAccountDetails::apply();
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
-  if (!editing_account) {
+  if (!m_creatingNew) {
     // We transfer refresh token to avoid the need to login once more,
     // then we delete testing OAuth service.
     account<FeedlyServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
@@ -48,17 +48,17 @@ void FormEditFeedlyAccount::apply() {
   account<FeedlyServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
   account<FeedlyServiceRoot>()->network()->setDeveloperAccessToken(m_details->m_ui.m_txtDeveloperAccessToken->lineEdit()->text());
 
-  account<FeedlyServiceRoot>()->saveAccountDataToDatabase(!editing_account);
+  account<FeedlyServiceRoot>()->saveAccountDataToDatabase(m_creatingNew);
   accept();
 
-  if (editing_account) {
+  if (!m_creatingNew) {
     account<FeedlyServiceRoot>()->completelyRemoveAllData();
     account<FeedlyServiceRoot>()->syncIn();
   }
 }
 
-void FormEditFeedlyAccount::setEditableAccount(ServiceRoot* editable_account) {
-  FormAccountDetails::setEditableAccount(editable_account);
+void FormEditFeedlyAccount::loadAccountData() {
+  FormAccountDetails::loadAccountData();
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
   if (m_details->m_oauth != nullptr) {

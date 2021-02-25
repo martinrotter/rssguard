@@ -23,9 +23,9 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent)
 }
 
 void FormEditInoreaderAccount::apply() {
-  bool editing_account = !applyInternal<InoreaderServiceRoot>();
+  FormAccountDetails::apply();
 
-  if (!editing_account) {
+  if (m_creatingNew) {
     // We transfer refresh token to avoid the need to login once more,
     // then we delete testing OAuth service.
     account<InoreaderServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
@@ -42,17 +42,17 @@ void FormEditInoreaderAccount::apply() {
   account<InoreaderServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<InoreaderServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
 
-  account<InoreaderServiceRoot>()->saveAccountDataToDatabase(!editing_account);
+  account<InoreaderServiceRoot>()->saveAccountDataToDatabase(m_creatingNew);
   accept();
 
-  if (editing_account) {
+  if (!m_creatingNew) {
     account<InoreaderServiceRoot>()->completelyRemoveAllData();
     account<InoreaderServiceRoot>()->syncIn();
   }
 }
 
-void FormEditInoreaderAccount::setEditableAccount(ServiceRoot* editable_account) {
-  FormAccountDetails::setEditableAccount(editable_account);
+void FormEditInoreaderAccount::loadAccountData() {
+  FormAccountDetails::loadAccountData();
 
   if (m_details->m_oauth != nullptr) {
     // We will use live OAuth service for testing.

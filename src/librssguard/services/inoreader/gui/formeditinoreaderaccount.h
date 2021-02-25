@@ -18,7 +18,7 @@ class FormEditInoreaderAccount : public FormAccountDetails {
     virtual void apply();
 
   protected:
-    virtual void setEditableAccount(ServiceRoot* editable_account);
+    virtual void loadAccountData();
 
   private:
     InoreaderAccountDetails* m_details;

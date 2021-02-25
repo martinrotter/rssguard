@@ -21,7 +21,7 @@ FormEditGreaderAccount::FormEditGreaderAccount(QWidget* parent)
 }
 
 void FormEditGreaderAccount::apply() {
-  bool editing_account = !applyInternal<GreaderServiceRoot>();
+  FormAccountDetails::apply();
 
   account<GreaderServiceRoot>()->network()->setBaseUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
   account<GreaderServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
@@ -29,17 +29,17 @@ void FormEditGreaderAccount::apply() {
   account<GreaderServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
   account<GreaderServiceRoot>()->network()->setService(m_details->service());
 
-  account<GreaderServiceRoot>()->saveAccountDataToDatabase(!editing_account);
+  account<GreaderServiceRoot>()->saveAccountDataToDatabase(m_creatingNew);
   accept();
 
-  if (editing_account) {
+  if (!m_creatingNew) {
     account<GreaderServiceRoot>()->completelyRemoveAllData();
     account<GreaderServiceRoot>()->syncIn();
   }
 }
 
-void FormEditGreaderAccount::setEditableAccount(ServiceRoot* editable_account) {
-  FormAccountDetails::setEditableAccount(editable_account);
+void FormEditGreaderAccount::loadAccountData() {
+  FormAccountDetails::loadAccountData();
 
   GreaderServiceRoot* existing_root = account<GreaderServiceRoot>();
 

@@ -481,6 +481,7 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
   connect(root, &ServiceRoot::reloadMessageListRequested, this, &FeedsModel::reloadMessageListRequested);
   connect(root, &ServiceRoot::itemExpandRequested, this, &FeedsModel::itemExpandRequested);
   connect(root, &ServiceRoot::itemExpandStateSaveRequested, this, &FeedsModel::itemExpandStateSaveRequested);
+
   root->start(freshly_activated);
 
   return true;

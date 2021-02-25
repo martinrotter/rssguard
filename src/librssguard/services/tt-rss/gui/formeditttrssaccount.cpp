@@ -18,7 +18,7 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
 }
 
 void FormEditTtRssAccount::apply() {
-  bool editing_account = !applyInternal<TtRssServiceRoot>();
+  FormAccountDetails::apply();
 
   account<TtRssServiceRoot>()->network()->setUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
   account<TtRssServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
@@ -29,20 +29,20 @@ void FormEditTtRssAccount::apply() {
   account<TtRssServiceRoot>()->network()->setForceServerSideUpdate(m_details->m_ui.m_checkServerSideUpdate->isChecked());
   account<TtRssServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
 
-  account<TtRssServiceRoot>()->saveAccountDataToDatabase(!editing_account);
+  account<TtRssServiceRoot>()->saveAccountDataToDatabase(m_creatingNew);
   accept();
 
-  if (editing_account) {
+  if (!m_creatingNew) {
     account<TtRssServiceRoot>()->network()->logout(m_account->networkProxy());
     account<TtRssServiceRoot>()->completelyRemoveAllData();
     account<TtRssServiceRoot>()->syncIn();
   }
 }
 
-void FormEditTtRssAccount::setEditableAccount(ServiceRoot* editable_account) {
-  FormAccountDetails::setEditableAccount(editable_account);
+void FormEditTtRssAccount::loadAccountData() {
+  FormAccountDetails::loadAccountData();
 
-  TtRssServiceRoot* existing_root = qobject_cast<TtRssServiceRoot*>(editable_account);
+  TtRssServiceRoot* existing_root = account<TtRssServiceRoot>();
 
   m_details->m_ui.m_gbHttpAuthentication->setChecked(existing_root->network()->authIsUsed());
   m_details->m_ui.m_txtHttpPassword->lineEdit()->setText(existing_root->network()->authPassword());

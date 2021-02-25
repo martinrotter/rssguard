@@ -21,7 +21,7 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
 }
 
 void FormEditOwnCloudAccount::apply() {
-  bool editing_account = !applyInternal<OwnCloudServiceRoot>();
+  FormAccountDetails::apply();
 
   account<OwnCloudServiceRoot>()->network()->setUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
   account<OwnCloudServiceRoot>()->network()->setAuthUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
@@ -30,17 +30,17 @@ void FormEditOwnCloudAccount::apply() {
   account<OwnCloudServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
   account<OwnCloudServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
 
-  account<OwnCloudServiceRoot>()->saveAccountDataToDatabase(!editing_account);
+  account<OwnCloudServiceRoot>()->saveAccountDataToDatabase(m_creatingNew);
   accept();
 
-  if (editing_account) {
+  if (!m_creatingNew) {
     account<OwnCloudServiceRoot>()->completelyRemoveAllData();
     account<OwnCloudServiceRoot>()->syncIn();
   }
 }
 
-void FormEditOwnCloudAccount::setEditableAccount(ServiceRoot* editable_account) {
-  FormAccountDetails::setEditableAccount(editable_account);
+void FormEditOwnCloudAccount::loadAccountData() {
+  FormAccountDetails::loadAccountData();
 
   OwnCloudServiceRoot* existing_root = account<OwnCloudServiceRoot>();
 
