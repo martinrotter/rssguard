@@ -14,6 +14,7 @@
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
+#include "services/standard/definitions.h"
 #include "services/standard/gui/formeditstandardaccount.h"
 #include "services/standard/gui/formstandardcategorydetails.h"
 #include "services/standard/gui/formstandardfeeddetails.h"

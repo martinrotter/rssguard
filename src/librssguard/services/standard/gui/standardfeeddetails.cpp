@@ -6,6 +6,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/category.h"
+#include "services/standard/definitions.h"
 
 #include <QClipboard>
 #include <QFileDialog>

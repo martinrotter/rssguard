@@ -11,6 +11,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/rootitem.h"
+#include "services/standard/definitions.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardserviceroot.h"
 

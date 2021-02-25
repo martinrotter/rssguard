@@ -1,47 +1,7 @@
 <RCC>
   <qresource prefix="/">
     <file>sql/db_init_mysql.sql</file>   
-    <file>sql/db_update_mysql_1_2.sql</file>
-    <file>sql/db_update_mysql_2_3.sql</file>
-    <file>sql/db_update_mysql_3_4.sql</file>
-    <file>sql/db_update_mysql_4_5.sql</file>
-    <file>sql/db_update_mysql_5_6.sql</file>
-    <file>sql/db_update_mysql_6_7.sql</file>
-    <file>sql/db_update_mysql_7_8.sql</file>
-    <file>sql/db_update_mysql_8_9.sql</file>
-    <file>sql/db_update_mysql_9_10.sql</file>
-    <file>sql/db_update_mysql_10_11.sql</file>
-    <file>sql/db_update_mysql_11_12.sql</file>
-    <file>sql/db_update_mysql_12_13.sql</file>
-    <file>sql/db_update_mysql_13_14.sql</file>
-    <file>sql/db_update_mysql_14_15.sql</file>
-    <file>sql/db_update_mysql_15_16.sql</file>
-    <file>sql/db_update_mysql_16_17.sql</file>
-    <file>sql/db_update_mysql_17_18.sql</file>
-    <file>sql/db_update_mysql_18_19.sql</file>
-    <file>sql/db_update_mysql_19_20.sql</file>
-    <file>sql/db_update_mysql_20_21.sql</file>
 
     <file>sql/db_init_sqlite.sql</file>
-    <file>sql/db_update_sqlite_1_2.sql</file>
-    <file>sql/db_update_sqlite_2_3.sql</file>
-    <file>sql/db_update_sqlite_3_4.sql</file>
-    <file>sql/db_update_sqlite_4_5.sql</file>
-    <file>sql/db_update_sqlite_5_6.sql</file>
-    <file>sql/db_update_sqlite_6_7.sql</file>
-    <file>sql/db_update_sqlite_7_8.sql</file>
-    <file>sql/db_update_sqlite_8_9.sql</file>
-    <file>sql/db_update_sqlite_9_10.sql</file>
-    <file>sql/db_update_sqlite_10_11.sql</file>
-    <file>sql/db_update_sqlite_11_12.sql</file>
-    <file>sql/db_update_sqlite_12_13.sql</file>
-    <file>sql/db_update_sqlite_13_14.sql</file>
-    <file>sql/db_update_sqlite_14_15.sql</file>
-    <file>sql/db_update_sqlite_15_16.sql</file>
-    <file>sql/db_update_sqlite_16_17.sql</file>
-    <file>sql/db_update_sqlite_17_18.sql</file>
-    <file>sql/db_update_sqlite_18_19.sql</file>
-    <file>sql/db_update_sqlite_19_20.sql</file>
-    <file>sql/db_update_sqlite_20_21.sql</file>
   </qresource>
 </RCC>
