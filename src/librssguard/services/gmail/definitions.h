@@ -18,7 +18,7 @@
 
 #define GMAIL_ATTACHMENT_SEP      "####"
 
-#define GMAIL_DEFAULT_BATCH_SIZE  50
+#define GMAIL_DEFAULT_BATCH_SIZE  100
 #define GMAIL_MAX_BATCH_SIZE      999
 #define GMAIL_MIN_BATCH_SIZE      20
 
