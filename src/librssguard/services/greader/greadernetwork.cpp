@@ -18,7 +18,7 @@
 
 GreaderNetwork::GreaderNetwork(QObject* parent)
   : QObject(parent), m_service(GreaderServiceRoot::Service::FreshRss), m_username(QString()), m_password(QString()),
-  m_baseUrl(QString()), m_batchSize(GREADER_UNLIMITED_BATCH_SIZE) {
+  m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE) {
   clearCredentials();
 }
 

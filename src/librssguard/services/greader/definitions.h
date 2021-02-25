@@ -2,6 +2,7 @@
 #define GREADER_DEFINITIONS_H
 
 #define GREADER_UNLIMITED_BATCH_SIZE       -1
+#define GREADER_DEFAULT_BATCH_SIZE         100
 
 // States.
 #define GREADER_API_STATE_READING_LIST    "state/com.google/reading-list"

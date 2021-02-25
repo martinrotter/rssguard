@@ -104,6 +104,9 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
       syncIn();
     });
   }
+  else {
+    m_network->oauth()->login();
+  }
 }
 
 QString InoreaderServiceRoot::code() const {
