@@ -26,7 +26,7 @@
 #define DEFAULT_VALUE(x) x ## Def
 #define GROUP(x) x::ID
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 namespace WebEngineAttributes {
   KEY ID;
 }

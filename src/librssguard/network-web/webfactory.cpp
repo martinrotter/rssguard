@@ -25,7 +25,7 @@
 
 WebFactory::WebFactory(QObject* parent)
   : QObject(parent) {
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
   m_engineSettings = nullptr;
   m_adBlock = new AdBlockManager(this);
   m_urlInterceptor = new NetworkUrlInterceptor(this);
@@ -41,7 +41,7 @@ WebFactory::WebFactory(QObject* parent)
 }
 
 WebFactory::~WebFactory() {
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
   if (m_engineSettings != nullptr && m_engineSettings->menu() != nullptr) {
     m_engineSettings->menu()->deleteLater();
   }
@@ -222,7 +222,7 @@ void WebFactory::updateProxy() {
   }
 }
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 AdBlockManager* WebFactory::adBlock() {
   return m_adBlock;
 }

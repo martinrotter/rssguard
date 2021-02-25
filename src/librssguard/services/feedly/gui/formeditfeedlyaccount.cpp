@@ -10,7 +10,7 @@
 #include "services/feedly/feedlyserviceroot.h"
 #include "services/feedly/gui/feedlyaccountdetails.h"
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 #include "network-web/oauth2service.h"
 #endif
 
@@ -26,7 +26,7 @@ FormEditFeedlyAccount::FormEditFeedlyAccount(QWidget* parent)
 void FormEditFeedlyAccount::apply() {
   bool editing_account = !applyInternal<FeedlyServiceRoot>();
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   if (!editing_account) {
     // We transfer refresh token to avoid the need to login once more,
     // then we delete testing OAuth service.
@@ -60,7 +60,7 @@ void FormEditFeedlyAccount::apply() {
 void FormEditFeedlyAccount::setEditableAccount(ServiceRoot* editable_account) {
   FormAccountDetails::setEditableAccount(editable_account);
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   if (m_details->m_oauth != nullptr) {
     // We will use live OAuth service for testing.
     m_details->m_oauth->logout(true);

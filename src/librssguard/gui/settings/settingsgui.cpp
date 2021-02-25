@@ -84,14 +84,11 @@ void SettingsGui::loadSettings() {
   onBeginLoadSettings();
 
   // Load settings of tray icon.
-  if (SystemTrayIcon::isSystemTrayAvailable()) {
-    m_ui->m_grpTray->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool());
-  }
+  m_ui->m_grpTray->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool());
 
-  // Tray icon is not supported on this machine.
-  else {
-    m_ui->m_grpTray->setTitle(m_ui->m_grpTray->title() + QL1C(' ') + tr("(Tray icon is not available.)"));
-    m_ui->m_grpTray->setChecked(false);
+  if (!SystemTrayIcon::isSystemTrayAreaAvailable()) {
+    m_ui->m_grpTray->setTitle(m_ui->m_grpTray->title() + QL1C(' ') + tr("(Your OS does not support tray icons at the moment.)"));
+    m_ui->m_grpTray->setEnabled(false);
   }
 
   m_ui->m_checkHidden->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool());
@@ -200,7 +197,7 @@ void SettingsGui::saveSettings() {
                        m_ui->m_cmbToolbarButtonStyle->itemData(m_ui->m_cmbToolbarButtonStyle->currentIndex()));
 
   // Save tray icon.
-  if (SystemTrayIcon::isSystemTrayAvailable()) {
+  if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
     settings()->setValue(GROUP(GUI), GUI::UseTrayIcon, m_ui->m_grpTray->isChecked());
 
     if (m_ui->m_grpTray->isChecked()) {

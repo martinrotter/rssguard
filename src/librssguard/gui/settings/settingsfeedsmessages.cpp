@@ -25,7 +25,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   initializeMessageDateFormats();
   GuiUtilities::setLabelAsNotice(*m_ui->label_9, false);
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
   m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_checkDisplayPlaceholders);
   m_ui->m_checkDisplayPlaceholders->hide();
 #else

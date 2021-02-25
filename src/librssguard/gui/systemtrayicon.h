@@ -46,12 +46,11 @@ class SystemTrayIcon : public QSystemTrayIcon {
     void showMessage(const QString& title, const QString& message, MessageIcon icon = Information,
                      int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT, std::function<void()> functor = nullptr);
 
-    // Returns true if tray icon CAN be constructed on this machine.
-    static bool isSystemTrayAvailable();
+    // Returns true if tray area is available and icon can be displayed.
+    static bool isSystemTrayAreaAvailable();
 
-    // Returns true if tray icon CAN be costructed and IS enabled in
-    // application settings.
-    static bool isSystemTrayActivated();
+    // Returns true if user wants to have tray icon displayed.
+    static bool isSystemTrayDesired();
 
     // Determines whether balloon tips are enabled or not on tray icons.
     static bool areNotificationsEnabled();

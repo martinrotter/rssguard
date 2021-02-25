@@ -34,7 +34,7 @@
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/standard/gui/formstandardimportexport.h"
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
 #endif
@@ -62,7 +62,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   setWindowIcon(qApp->desktopAwareIcon());
   setWindowTitle(APP_LONG_NAME);
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->adBlock()->adBlockIcon());
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());
 #endif
@@ -204,7 +204,7 @@ QList<QAction*> FormMain::allActions() const {
 
 void FormMain::prepareMenus() {
   // Setup menu for tray icon.
-  if (SystemTrayIcon::isSystemTrayAvailable()) {
+  if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
 #if defined(Q_OS_WIN)
     m_trayMenu = new TrayIconMenu(APP_NAME, this);
 #else
@@ -449,7 +449,7 @@ void FormMain::updateFeedButtonsAvailability() {
 
 void FormMain::switchVisibility(bool force_hide) {
   if (force_hide || isVisible()) {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
+    if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
       hide();
     }
     else {
@@ -813,7 +813,8 @@ void FormMain::changeEvent(QEvent* event) {
   switch (event->type()) {
     case QEvent::WindowStateChange: {
       if ((windowState() & Qt::WindowState::WindowMinimized) == Qt::WindowState::WindowMinimized &&
-          SystemTrayIcon::isSystemTrayActivated() &&
+          SystemTrayIcon::isSystemTrayDesired() &&
+          SystemTrayIcon::isSystemTrayAreaAvailable() &&
           qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool()) {
         event->ignore();
         QTimer::singleShot(CHANGE_EVENT_DELAY, this, [this]() {

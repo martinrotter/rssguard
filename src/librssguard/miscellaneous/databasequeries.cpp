@@ -2637,7 +2637,7 @@ QList<ServiceRoot*> DatabaseQueries::getFeedlyAccounts(const QSqlDatabase& db, b
       root->network()->setUsername(query.value(1).toString());
       root->network()->setDeveloperAccessToken(query.value(2).toString());
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
       root->network()->oauth()->setRefreshToken(query.value(3).toString());
 #endif
 

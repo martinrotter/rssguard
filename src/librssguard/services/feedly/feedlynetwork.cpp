@@ -16,7 +16,7 @@
 #include "services/feedly/feedlyfeed.h"
 #include "services/feedly/feedlyserviceroot.h"
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 #include "network-web/oauth2service.h"
 #endif
 
@@ -26,7 +26,7 @@
 
 FeedlyNetwork::FeedlyNetwork(QObject* parent)
   : QObject(parent), m_service(nullptr),
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_oauth(new OAuth2Service(QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_AUTH,
                             QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TOKEN,
                             FEEDLY_CLIENT_ID,
@@ -36,7 +36,7 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
   m_username(QString()),
   m_developerAccessToken(QString()), m_batchSize(FEEDLY_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false) {
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT));
 
   connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &FeedlyNetwork::onTokensError);
@@ -490,7 +490,7 @@ void FeedlyNetwork::setBatchSize(int batch_size) {
   m_batchSize = batch_size;
 }
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 
 void FeedlyNetwork::onTokensError(const QString& error, const QString& error_description) {
   Q_UNUSED(error)
@@ -561,7 +561,7 @@ QString FeedlyNetwork::fullUrl(FeedlyNetwork::Service service) const {
 }
 
 QString FeedlyNetwork::bearer() const {
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   if (m_developerAccessToken.simplified().isEmpty()) {
     return m_oauth->bearer().toLocal8Bit();
   }

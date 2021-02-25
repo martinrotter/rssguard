@@ -9,11 +9,11 @@
 
 #include <QMap>
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 #include <QWebEngineSettings>
 #endif
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 class QMenu;
 class AdBlockManager;
 class NetworkUrlInterceptor;
@@ -35,7 +35,7 @@ class WebFactory : public QObject {
     //   ∀ = &forall; (entity name), &#8704; (base-10 entity), &#x2200; (base-16 entity)
     QString unescapeHtml(const QString& html);
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
     QAction* engineSettingsAction();
     AdBlockManager* adBlock();
     NetworkUrlInterceptor* urlIinterceptor();
@@ -46,7 +46,7 @@ class WebFactory : public QObject {
     bool openUrlInExternalBrowser(const QString& url) const;
     bool sendMessageViaEmail(const Message& message);
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
   private slots:
     void createMenu(QMenu* menu = nullptr);
     void webEngineSettingChanged(bool enabled);
