@@ -66,7 +66,7 @@ void GmailAccountDetails::testSetup() {
 #if defined(GMAIL_OFFICIAL_SUPPORT)
   if (m_ui.m_txtAppId->lineEdit()->text().isEmpty() || m_ui.m_txtAppKey->lineEdit()->text().isEmpty()) {
     m_oauth->setClientId(TextFactory::decrypt(GMAIL_CLIENT_ID, OAUTH_DECRYPTION_KEY));
-    m_oauth->setClientSecret(TextFactory::decrypt(GMAIL_CLIENT_ID, OAUTH_DECRYPTION_KEY));
+    m_oauth->setClientSecret(TextFactory::decrypt(GMAIL_CLIENT_SECRET, OAUTH_DECRYPTION_KEY));
   }
   else {
 #endif
