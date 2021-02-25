@@ -25,16 +25,13 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent)
 void FormEditInoreaderAccount::apply() {
   FormAccountDetails::apply();
 
-  if (m_creatingNew) {
-    // We transfer refresh token to avoid the need to login once more,
-    // then we delete testing OAuth service.
-    account<InoreaderServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
-    account<InoreaderServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
-    account<InoreaderServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
-    m_details->m_oauth->logout(true);
-    m_details->m_oauth->deleteLater();
+  if (!m_creatingNew) {
+    // Disable "Cancel" button because all changes made to
+    // existing account are always saved anyway.
+    m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel)->setVisible(false);
   }
 
+  account<InoreaderServiceRoot>()->network()->oauth()->logout(false);
   account<InoreaderServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
   account<InoreaderServiceRoot>()->network()->oauth()->setClientSecret(m_details->m_ui.m_txtAppKey->lineEdit()->text());
   account<InoreaderServiceRoot>()->network()->oauth()->setRedirectUrl(m_details->m_ui.m_txtRedirectUrl->lineEdit()->text());
@@ -47,18 +44,17 @@ void FormEditInoreaderAccount::apply() {
 
   if (!m_creatingNew) {
     account<InoreaderServiceRoot>()->completelyRemoveAllData();
-    account<InoreaderServiceRoot>()->syncIn();
+    account<InoreaderServiceRoot>()->start(true);
   }
 }
 
 void FormEditInoreaderAccount::loadAccountData() {
   FormAccountDetails::loadAccountData();
 
-  if (m_details->m_oauth != nullptr) {
-    // We will use live OAuth service for testing.
-    m_details->m_oauth->logout(true);
-    delete m_details->m_oauth;
-    m_details->m_oauth = nullptr;
+  if (!m_creatingNew) {
+    // Disable "Cancel" button because all changes made to
+    // existing account are always saved anyway.
+    m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel)->setVisible(false);
   }
 
   m_details->m_oauth = account<InoreaderServiceRoot>()->network()->oauth();

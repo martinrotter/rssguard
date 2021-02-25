@@ -47,7 +47,8 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
                              const QString& client_secret, const QString& scope, QObject* parent)
   : QObject(parent),
   m_id(QString::number(QRandomGenerator::global()->generate())), m_timerId(-1),
-  m_redirectionHandler(new OAuthHttpHandler(tr("You can close this window now. Go back to %1.").arg(APP_NAME), this)) {
+  m_redirectionHandler(new OAuthHttpHandler(tr("You can close this window now. Go back to %1.").arg(APP_NAME), this)),
+  m_functorOnLogin({}) {
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(token_url);
   m_authUrl = auth_url;
@@ -229,6 +230,7 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
              << "Obtained refresh token" << QUOTE_W_SPACE(refreshToken())
              << "- expires on date/time" << QUOTE_W_SPACE_DOT(tokensExpireIn());
 
+    m_functorOnLogin();
     emit tokensRetrieved(accessToken(), refreshToken(), expires);
   }
 
@@ -297,7 +299,9 @@ void OAuth2Service::setRefreshToken(const QString& refresh_token) {
   startRefreshTimer();
 }
 
-bool OAuth2Service::login() {
+bool OAuth2Service::login(const std::function<void()>& functor_when_logged_in) {
+  m_functorOnLogin = {};
+
   if (!m_redirectionHandler->isListening()) {
     qCriticalNN << LOGSEC_OAUTH
                 << "Cannot log-in because OAuth redirection handler is not listening.";
@@ -312,6 +316,8 @@ bool OAuth2Service::login() {
   bool did_token_expire = tokensExpireIn().isNull() || tokensExpireIn() < QDateTime::currentDateTime().addSecs(-120);
   bool does_token_exist = !refreshToken().isEmpty();
 
+  m_functorOnLogin = functor_when_logged_in;
+
   // We refresh current tokens only if:
   //   1. We have some existing refresh token.
   //   AND
@@ -325,6 +331,7 @@ bool OAuth2Service::login() {
     return false;
   }
   else {
+    functor_when_logged_in();
     return true;
   }
 }

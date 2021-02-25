@@ -35,7 +35,7 @@ void FormEditOwnCloudAccount::apply() {
 
   if (!m_creatingNew) {
     account<OwnCloudServiceRoot>()->completelyRemoveAllData();
-    account<OwnCloudServiceRoot>()->syncIn();
+    account<OwnCloudServiceRoot>()->start(true);
   }
 }
 
