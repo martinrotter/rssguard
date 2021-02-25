@@ -99,7 +99,7 @@ class OAuth2Service : public QObject {
     //
     // Returns true, if user is already logged in (final state).
     // Returns false, if user is NOT logged in (asynchronous flow).
-    bool login(const std::function<void()>& functor_when_logged_in = {});
+    bool login(const std::function<void()>& functor_when_logged_in = std::function<void()>());
 
     // Removes all state data and stops redirection handler.
     void logout(bool stop_redirection_handler = true);
