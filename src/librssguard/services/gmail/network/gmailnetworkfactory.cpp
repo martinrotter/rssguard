@@ -118,6 +118,15 @@ QString GmailNetworkFactory::sendEmail(Mimesis::Message msg, const QNetworkProxy
 }
 
 void GmailNetworkFactory::initializeOauth() {
+#if defined(GMAIL_OFFICIAL_SUPPORT)
+  m_oauth2->setClientSecretId(TextFactory::decrypt(GMAIL_CLIENT_ID, OAUTH_DECRYPTION_KEY));
+  m_oauth2->setClientSecretSecret(TextFactory::decrypt(GMAIL_CLIENT_SECRET, OAUTH_DECRYPTION_KEY));
+#endif
+
+  m_oauth2->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +
+                           QL1C(':') +
+                           QString::number(OAUTH_REDIRECT_URI_PORT));
+
   connect(m_oauth2, &OAuth2Service::tokensRetrieveError, this, &GmailNetworkFactory::onTokensError);
   connect(m_oauth2, &OAuth2Service::authFailed, this, &GmailNetworkFactory::onAuthFailed);
   connect(m_oauth2, &OAuth2Service::tokensRetrieved, this, [this](QString access_token, QString refresh_token, int expires_in) {

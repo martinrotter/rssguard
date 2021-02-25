@@ -166,17 +166,16 @@ bool GmailServiceRoot::supportsCategoryAdding() const {
 }
 
 void GmailServiceRoot::start(bool freshly_activated) {
-  Q_UNUSED(freshly_activated)
+  if (!freshly_activated) {
+    loadFromDatabase();
+    loadCacheFromFile();
+  }
 
-  loadFromDatabase();
-  loadCacheFromFile();
-
-  if (childCount() <= 3) {
+  if (getSubTreeFeeds().isEmpty()) {
     syncIn();
   }
-  else {
-    m_network->oauth()->login();
-  }
+
+  m_network->oauth()->login();
 }
 
 QString GmailServiceRoot::code() const {
@@ -185,7 +184,9 @@ QString GmailServiceRoot::code() const {
 
 QString GmailServiceRoot::additionalTooltip() const {
   return tr("Authentication status: %1\n"
-            "Login tokens expiration: %2").arg(network()->oauth()->isFullyLoggedIn() ? tr("logged-in") : tr("NOT logged-in"),
+            "Login tokens expiration: %2").arg(network()->oauth()->isFullyLoggedIn()
+                                               ? tr("logged-in")
+                                               : tr("NOT logged-in"),
                                                network()->oauth()->tokensExpireIn().isValid() ?
                                                network()->oauth()->tokensExpireIn().toString() : QSL("-"));
 }

@@ -12,6 +12,6 @@ FormEditStandardAccount::FormEditStandardAccount(QWidget* parent)
   : FormAccountDetails(qApp->icons()->fromTheme(QSL("rssguard")), parent) {}
 
 void FormEditStandardAccount::apply() {
-  applyInternal<StandardServiceRoot>();
+  FormAccountDetails::apply();
   accept();
 }

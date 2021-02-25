@@ -10,8 +10,7 @@
 #include "services/gmail/network/gmailnetworkfactory.h"
 
 GmailAccountDetails::GmailAccountDetails(QWidget* parent)
-  : QWidget(parent), m_oauth(new OAuth2Service(GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
-                                               {}, {}, GMAIL_OAUTH_SCOPE, this)) {
+  : QWidget(parent), m_oauth(nullptr) {
   m_ui.setupUi(this);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
@@ -52,10 +51,7 @@ GmailAccountDetails::GmailAccountDetails(QWidget* parent)
   emit m_ui.m_txtUsername->lineEdit()->textChanged(m_ui.m_txtUsername->lineEdit()->text());
   emit m_ui.m_txtAppId->lineEdit()->textChanged(m_ui.m_txtAppId->lineEdit()->text());
   emit m_ui.m_txtAppKey->lineEdit()->textChanged(m_ui.m_txtAppKey->lineEdit()->text());
-
-  m_ui.m_txtRedirectUrl->lineEdit()->setText(QString(OAUTH_REDIRECT_URI) +
-                                             QL1C(':') +
-                                             QString::number(OAUTH_REDIRECT_URI_PORT));
+  emit m_ui.m_txtRedirectUrl->lineEdit()->textChanged(m_ui.m_txtAppKey->lineEdit()->text());
 
   hookNetwork();
 }
