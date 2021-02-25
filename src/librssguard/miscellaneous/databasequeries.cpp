@@ -2798,8 +2798,24 @@ bool DatabaseQueries::overwriteGmailAccount(const QSqlDatabase& db, const QStrin
                 "redirect_url = :redirect_url, refresh_token = :refresh_token , msg_limit = :msg_limit "
                 "WHERE id = :id;");
   query.bindValue(QSL(":username"), username);
+
+#if defined(GMAIL_OFFICIAL_SUPPORT)
+  const QString official_app_id = TextFactory::decrypt(GMAIL_CLIENT_ID, OAUTH_DECRYPTION_KEY);
+  const QString official_app_key = TextFactory::decrypt(GMAIL_CLIENT_SECRET, OAUTH_DECRYPTION_KEY);
+
+  if (official_app_id == app_id) {
+    query.bindValue(QSL(":app_id"), {});
+    query.bindValue(QSL(":app_key"), {});
+  }
+  else {
+    query.bindValue(QSL(":app_id"), app_id);
+    query.bindValue(QSL(":app_key"), app_key);
+  }
+#else
   query.bindValue(QSL(":app_id"), app_id);
   query.bindValue(QSL(":app_key"), app_key);
+#endif
+
   query.bindValue(QSL(":redirect_url"), redirect_url);
   query.bindValue(QSL(":refresh_token"), refresh_token);
   query.bindValue(QSL(":id"), account_id);
@@ -2826,8 +2842,24 @@ bool DatabaseQueries::createGmailAccount(const QSqlDatabase& db, int id_to_assig
             "VALUES (:id, :username, :app_id, :app_key, :redirect_url, :refresh_token, :msg_limit);");
   q.bindValue(QSL(":id"), id_to_assign);
   q.bindValue(QSL(":username"), username);
+
+#if defined(GMAIL_OFFICIAL_SUPPORT)
+  const QString official_app_id = TextFactory::decrypt(GMAIL_CLIENT_ID, OAUTH_DECRYPTION_KEY);
+  const QString official_app_key = TextFactory::decrypt(GMAIL_CLIENT_SECRET, OAUTH_DECRYPTION_KEY);
+
+  if (official_app_id == app_id) {
+    q.bindValue(QSL(":app_id"), {});
+    q.bindValue(QSL(":app_key"), {});
+  }
+  else {
+    q.bindValue(QSL(":app_id"), app_id);
+    q.bindValue(QSL(":app_key"), app_key);
+  }
+#else
   q.bindValue(QSL(":app_id"), app_id);
   q.bindValue(QSL(":app_key"), app_key);
+#endif
+
   q.bindValue(QSL(":redirect_url"), redirect_url);
   q.bindValue(QSL(":refresh_token"), refresh_token);
   q.bindValue(QSL(":msg_limit"), batch_size <= 0 ? GMAIL_DEFAULT_BATCH_SIZE : batch_size);

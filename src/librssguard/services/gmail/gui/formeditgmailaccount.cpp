@@ -32,8 +32,23 @@ void FormEditGmailAccount::apply() {
     m_details->m_oauth->deleteLater();
   }
 
+#if defined(GMAIL_OFFICIAL_SUPPORT)
+  if (m_details->m_ui.m_txtAppId->lineEdit()->text().isEmpty() ||
+      m_details->m_ui.m_txtAppKey->lineEdit()->text().isEmpty()) {
+    account<GmailServiceRoot>()->network()->oauth()->setClientId(TextFactory::decrypt(GMAIL_CLIENT_ID,
+                                                                                      OAUTH_DECRYPTION_KEY));
+    account<GmailServiceRoot>()->network()->oauth()->setClientSecret(TextFactory::decrypt(GMAIL_CLIENT_SECRET,
+                                                                                          OAUTH_DECRYPTION_KEY));
+  }
+  else {
+#endif
   account<GmailServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
   account<GmailServiceRoot>()->network()->oauth()->setClientSecret(m_details->m_ui.m_txtAppKey->lineEdit()->text());
+
+#if defined(GMAIL_OFFICIAL_SUPPORT)
+}
+#endif
+
   account<GmailServiceRoot>()->network()->oauth()->setRedirectUrl(m_details->m_ui.m_txtRedirectUrl->lineEdit()->text());
 
   account<GmailServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
