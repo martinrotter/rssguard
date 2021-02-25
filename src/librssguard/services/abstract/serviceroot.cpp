@@ -390,6 +390,7 @@ void ServiceRoot::syncIn() {
 
   setIcon(original_icon);
   itemChanged(getSubTree());
+  requestItemExpand({ this }, true);
 }
 
 void ServiceRoot::performInitialAssembly(const Assignment& categories, const Assignment& feeds, const QList<Label*>& labels) {

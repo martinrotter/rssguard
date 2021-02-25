@@ -53,6 +53,15 @@ void InoreaderNetworkFactory::setBatchSize(int batch_size) {
 }
 
 void InoreaderNetworkFactory::initializeOauth() {
+#if defined(INOREADER_OFFICIAL_SUPPORT)
+  m_oauth2->setClientSecretId(TextFactory::decrypt(INOREADER_CLIENT_ID, OAUTH_DECRYPTION_KEY));
+  m_oauth2->setClientSecretSecret(TextFactory::decrypt(INOREADER_CLIENT_SECRET, OAUTH_DECRYPTION_KEY));
+#endif
+
+  m_oauth2->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +
+                           QL1C(':') +
+                           QString::number(OAUTH_REDIRECT_URI_PORT));
+
   connect(m_oauth2, &OAuth2Service::tokensRetrieveError, this, &InoreaderNetworkFactory::onTokensError);
   connect(m_oauth2, &OAuth2Service::authFailed, this, &InoreaderNetworkFactory::onAuthFailed);
   connect(m_oauth2, &OAuth2Service::tokensRetrieved, this, [this](QString access_token, QString refresh_token, int expires_in) {

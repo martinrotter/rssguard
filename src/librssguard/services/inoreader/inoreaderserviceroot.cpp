@@ -94,16 +94,15 @@ bool InoreaderServiceRoot::supportsCategoryAdding() const {
 }
 
 void InoreaderServiceRoot::start(bool freshly_activated) {
-  Q_UNUSED(freshly_activated)
-
-  loadFromDatabase();
-  loadCacheFromFile();
-
-  if (childCount() <= 3) {
-    syncIn();
+  if (!freshly_activated) {
+    loadFromDatabase();
+    loadCacheFromFile();
   }
-  else {
-    m_network->oauth()->login();
+
+  if (getSubTreeFeeds().isEmpty()) {
+    m_network->oauth()->login([this]() {
+      syncIn();
+    });
   }
 }
 

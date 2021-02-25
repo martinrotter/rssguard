@@ -37,11 +37,12 @@ ServiceRoot::LabelOperation TtRssServiceRoot::supportedLabelOperations() const {
 }
 
 void TtRssServiceRoot::start(bool freshly_activated) {
-  Q_UNUSED(freshly_activated)
-  loadFromDatabase();
-  loadCacheFromFile();
+  if (!freshly_activated) {
+    loadFromDatabase();
+    loadCacheFromFile();
+  }
 
-  if (childCount() <= 3) {
+  if (getSubTreeFeeds().isEmpty()) {
     syncIn();
   }
 }

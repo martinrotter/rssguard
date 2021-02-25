@@ -8,9 +8,6 @@
 #define INOREADER_OAUTH_AUTH_URL        "https://www.inoreader.com/oauth2/auth"
 #define INOREADER_REG_API_URL           "https://www.inoreader.com/developers/register-app"
 
-#define INOREADER_OAUTH_CLI_ID          "999999019"
-#define INOREADER_OAUTH_CLI_KEY         "k4bkOJ5Jj1erc52tmniluKtU6lZdNoZc"
-
 #define INOREADER_REFRESH_TOKEN_KEY     "refresh_token"
 #define INOREADER_ACCESS_TOKEN_KEY      "access_token"
 

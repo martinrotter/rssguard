@@ -34,7 +34,7 @@ void FormEditGreaderAccount::apply() {
 
   if (!m_creatingNew) {
     account<GreaderServiceRoot>()->completelyRemoveAllData();
-    account<GreaderServiceRoot>()->syncIn();
+    account<GreaderServiceRoot>()->start(true);
   }
 }
 

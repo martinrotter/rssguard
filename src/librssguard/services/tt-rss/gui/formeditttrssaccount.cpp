@@ -20,6 +20,7 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
 void FormEditTtRssAccount::apply() {
   FormAccountDetails::apply();
 
+  account<TtRssServiceRoot>()->network()->logout(m_account->networkProxy());
   account<TtRssServiceRoot>()->network()->setUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
   account<TtRssServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<TtRssServiceRoot>()->network()->setPassword(m_details->m_ui.m_txtPassword->lineEdit()->text());
@@ -33,9 +34,8 @@ void FormEditTtRssAccount::apply() {
   accept();
 
   if (!m_creatingNew) {
-    account<TtRssServiceRoot>()->network()->logout(m_account->networkProxy());
     account<TtRssServiceRoot>()->completelyRemoveAllData();
-    account<TtRssServiceRoot>()->syncIn();
+    account<TtRssServiceRoot>()->start(true);
   }
 }
 

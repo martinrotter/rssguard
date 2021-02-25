@@ -22,12 +22,6 @@ FormEditGmailAccount::FormEditGmailAccount(QWidget* parent)
 void FormEditGmailAccount::apply() {
   FormAccountDetails::apply();
 
-  if (!m_creatingNew) {
-    // Disable "Cancel" button because all changes made to
-    // existing account are always saved anyway.
-    m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel)->setVisible(false);
-  }
-
   // Make sure that the data copied from GUI are used for brand new login.
   account<GmailServiceRoot>()->network()->oauth()->logout(false);
   account<GmailServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
@@ -42,15 +36,18 @@ void FormEditGmailAccount::apply() {
 
   if (!m_creatingNew) {
     account<GmailServiceRoot>()->completelyRemoveAllData();
-
-    // Account data are erased, it is similar to situation
-    // where we start the account after it was freshly added.
     account<GmailServiceRoot>()->start(true);
   }
 }
 
 void FormEditGmailAccount::loadAccountData() {
   FormAccountDetails::loadAccountData();
+
+  if (!m_creatingNew) {
+    // Disable "Cancel" button because all changes made to
+    // existing account are always saved anyway.
+    m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel)->setVisible(false);
+  }
 
   m_details->m_oauth = account<GmailServiceRoot>()->network()->oauth();
   m_details->hookNetwork();
