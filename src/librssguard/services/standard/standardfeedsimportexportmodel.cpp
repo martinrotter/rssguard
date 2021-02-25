@@ -5,6 +5,7 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "services/standard/definitions.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardserviceroot.h"

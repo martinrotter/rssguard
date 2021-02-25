@@ -1,1 +1,0 @@
-UPDATE Information SET inf_value = '12' WHERE inf_key = 'schema_version';

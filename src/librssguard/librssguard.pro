@@ -181,6 +181,7 @@ HEADERS += core/feeddownloader.h \
            services/owncloud/owncloudserviceentrypoint.h \
            services/owncloud/owncloudserviceroot.h \
            services/standard/atomparser.h \
+           services/standard/definitions.h \
            services/standard/feedparser.h \
            services/abstract/gui/authenticationdetails.h \
            services/standard/gui/formeditstandardaccount.h \

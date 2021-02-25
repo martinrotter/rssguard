@@ -16,6 +16,7 @@
 #include "network-web/networkfactory.h"
 #include "services/abstract/recyclebin.h"
 #include "services/standard/atomparser.h"
+#include "services/standard/definitions.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/jsonparser.h"
 #include "services/standard/rdfparser.h"

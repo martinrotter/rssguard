@@ -37,7 +37,7 @@ bool FeedDownloader::isUpdateRunning() const {
 }
 
 void FeedDownloader::updateAvailableFeeds() {
-  for (const Feed* feed : m_feeds) {
+  for (const Feed* feed : qAsConst(m_feeds)) {
     auto* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
 
     if (cache != nullptr) {

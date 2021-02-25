@@ -1,6 +1,0 @@
-USE ##;
--- !
-ALTER TABLE TtRssAccounts
-ADD COLUMN update_only_unread INTEGER(1) NOT NULL DEFAULT 0 CHECK (update_only_unread >= 0 AND update_only_unread <= 1);
--- !
-UPDATE Information SET inf_value = '13' WHERE inf_key = 'schema_version';
