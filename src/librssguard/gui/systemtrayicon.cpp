@@ -80,6 +80,7 @@ void SystemTrayIcon::showPrivate() {
 
   // Display the tray icon.
   QSystemTrayIcon::show();
+  setVisible(true);
   emit shown();
 
   qDebugNN << LOGSEC_GUI << "Tray icon displayed.";
