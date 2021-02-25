@@ -81,7 +81,7 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
   onDeveloperAccessTokenChanged();
   onUsernameChanged();
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   hookNetwork();
 #endif
 }
@@ -90,7 +90,7 @@ void FeedlyAccountDetails::getDeveloperAccessToken() {
   qApp->web()->openUrlInExternalBrowser(FEEDLY_GENERATE_DAT);
 }
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 
 void FeedlyAccountDetails::hookNetwork() {
   connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &FeedlyAccountDetails::onAuthGranted);
@@ -121,7 +121,7 @@ void FeedlyAccountDetails::onAuthGranted() {
 #endif
 
 void FeedlyAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_oauth->logout(false);
 
   if (m_ui.m_txtDeveloperAccessToken->lineEdit()->text().simplified().isEmpty()) {
@@ -168,7 +168,7 @@ void FeedlyAccountDetails::onDeveloperAccessTokenChanged() {
   const QString token = m_ui.m_txtDeveloperAccessToken->lineEdit()->text();
 
   if (token.isEmpty()) {
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
     WidgetWithStatus::StatusType stat = WidgetWithStatus::StatusType::Ok;
 #else
     WidgetWithStatus::StatusType stat = WidgetWithStatus::StatusType::Error;

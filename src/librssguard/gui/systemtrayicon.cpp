@@ -60,12 +60,12 @@ void SystemTrayIcon::onActivated(QSystemTrayIcon::ActivationReason reason) {
   }
 }
 
-bool SystemTrayIcon::isSystemTrayAvailable() {
+bool SystemTrayIcon::isSystemTrayAreaAvailable() {
   return QSystemTrayIcon::isSystemTrayAvailable() && QSystemTrayIcon::supportsMessages();
 }
 
-bool SystemTrayIcon::isSystemTrayActivated() {
-  return SystemTrayIcon::isSystemTrayAvailable() && qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool();
+bool SystemTrayIcon::isSystemTrayDesired() {
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool();
 }
 
 bool SystemTrayIcon::areNotificationsEnabled() {
@@ -92,8 +92,8 @@ void SystemTrayIcon::show() {
   showPrivate();
 #else
   // Delay avoids race conditions and tray icon is properly displayed.
-  qDebugNN << LOGSEC_GUI << "Showing tray icon with 1000 ms delay.";
-  QTimer::singleShot(1000, this, &SystemTrayIcon::showPrivate);
+  qDebugNN << LOGSEC_GUI << "Showing tray icon with 3000 ms delay.";
+  QTimer::singleShot(3000, this, &SystemTrayIcon::showPrivate);
 #endif
 }
 

@@ -515,7 +515,7 @@ void FormMessageFiltersManager::beautifyScript() {
   proc_clang_format.setInputChannelMode(QProcess::InputChannelMode::ManagedInputChannel);
   proc_clang_format.setArguments({ "--assume-filename=script.js", "--style=Chromium" });
 
-#if defined (Q_OS_WIN)
+#if defined(Q_OS_WIN)
   proc_clang_format.setProgram(qApp->applicationDirPath() + QDir::separator() +
                                QSL("clang-format") + QDir::separator() +
                                QSL("clang-format.exe"));

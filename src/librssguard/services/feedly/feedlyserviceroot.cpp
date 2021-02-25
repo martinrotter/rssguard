@@ -19,7 +19,7 @@
 #include "services/feedly/feedlynetwork.h"
 #include "services/feedly/gui/formeditfeedlyaccount.h"
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 #include "network-web/oauth2service.h"
 #endif
 
@@ -205,7 +205,7 @@ void FeedlyServiceRoot::saveAccountDataToDatabase(bool creating_new) {
     if (DatabaseQueries::overwriteFeedlyAccount(database,
                                                 m_network->username(),
                                                 m_network->developerAccessToken(),
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
                                                 m_network->oauth()->refreshToken(),
 #else
                                                 {},
@@ -221,7 +221,7 @@ void FeedlyServiceRoot::saveAccountDataToDatabase(bool creating_new) {
     if (DatabaseQueries::createFeedlyAccount(database,
                                              m_network->username(),
                                              m_network->developerAccessToken(),
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
                                              m_network->oauth()->refreshToken(),
 #else
                                              {},

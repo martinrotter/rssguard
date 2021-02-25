@@ -13,7 +13,7 @@
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 #include "gui/webbrowser.h"
 #include "gui/webviewer.h"
 #else
@@ -48,7 +48,7 @@ void MessagePreviewer::createConnections() {
 MessagePreviewer::MessagePreviewer(bool should_resize_to_fit, QWidget* parent)
   : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)), m_verticalScrollBarPosition(0.0),
   m_separator(nullptr), m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
   m_txtMessage = new WebBrowser(this);
 
   if (should_resize_to_fit) {
@@ -82,14 +82,14 @@ void MessagePreviewer::reloadFontSettings() {
 void MessagePreviewer::setToolbarsVisible(bool visible) {
   m_toolBar->setVisible(visible);
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
   m_txtMessage->setNavigationBarVisible(visible);
 #endif
 
   qApp->settings()->setValue(GROUP(GUI), GUI::MessageViewerToolbarsVisible, visible);
 }
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 
 WebBrowser* MessagePreviewer::webBrowser() const {
   return m_txtMessage;

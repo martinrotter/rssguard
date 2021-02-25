@@ -8,7 +8,7 @@
 #include "network-web/networkfactory.h"
 #include "services/abstract/feed.h"
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 class OAuth2Service;
 #endif
 
@@ -44,7 +44,7 @@ class FeedlyNetwork : public QObject {
 
     void setService(FeedlyServiceRoot* service);
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
     OAuth2Service* oauth() const;
     void setOauth(OAuth2Service* oauth);
 
@@ -73,7 +73,7 @@ class FeedlyNetwork : public QObject {
   private:
     FeedlyServiceRoot* m_service;
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
     OAuth2Service* m_oauth;
 #endif
 
