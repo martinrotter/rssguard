@@ -30,7 +30,7 @@ void FormEditTtRssAccount::apply() {
   account<TtRssServiceRoot>()->network()->setForceServerSideUpdate(m_details->m_ui.m_checkServerSideUpdate->isChecked());
   account<TtRssServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
 
-  account<TtRssServiceRoot>()->saveAccountDataToDatabase(m_creatingNew);
+  account<TtRssServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
   if (!m_creatingNew) {

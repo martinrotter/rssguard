@@ -21,7 +21,7 @@ ServiceRoot* GmailEntryPoint::createNewRoot() const {
 QList<ServiceRoot*> GmailEntryPoint::initializeSubtree() const {
   QSqlDatabase database = qApp->database()->connection(QSL("GmailEntryPoint"));
 
-  return DatabaseQueries::getGmailAccounts(database);
+  return DatabaseQueries::getAccounts<GmailServiceRoot>(database, code());
 }
 
 QString GmailEntryPoint::name() const {

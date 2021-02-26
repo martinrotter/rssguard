@@ -38,5 +38,5 @@ QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
   // Check DB if standard account is enabled.
   QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"));
 
-  return DatabaseQueries::getStandardAccounts(database);
+  return DatabaseQueries::getAccounts<StandardServiceRoot>(database, code());
 }
