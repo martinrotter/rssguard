@@ -44,6 +44,7 @@ HEADERS += core/feeddownloader.h \
            core/messagesmodelsqllayer.h \
            core/messagesproxymodel.h \
            definitions/definitions.h \
+           definitions/typedefs.h \
            dynamic-shortcuts/dynamicshortcuts.h \
            dynamic-shortcuts/dynamicshortcutswidget.h \
            dynamic-shortcuts/shortcutcatcher.h \

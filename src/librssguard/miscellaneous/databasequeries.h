@@ -6,16 +6,17 @@
 #include "services/abstract/rootitem.h"
 
 #include "core/messagefilter.h"
+#include "definitions/typedefs.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
-#include "services/abstract/serviceroot.h"
-#include "services/greader/greaderserviceroot.h"
 #include "services/standard/standardfeed.h"
 
 #include <QMultiMap>
 #include <QSqlError>
 #include <QSqlQuery>
+
+class ServiceRoot;
 
 class DatabaseQueries {
   public:

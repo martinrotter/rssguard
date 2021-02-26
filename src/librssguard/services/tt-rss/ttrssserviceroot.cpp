@@ -38,7 +38,7 @@ ServiceRoot::LabelOperation TtRssServiceRoot::supportedLabelOperations() const {
 
 void TtRssServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    loadFromDatabase();
+    loadFromDatabase<Category, TtRssFeed>();
     loadCacheFromFile();
   }
 
@@ -204,15 +204,6 @@ QString TtRssServiceRoot::additionalTooltip() const {
 
 TtRssNetworkFactory* TtRssServiceRoot::network() const {
   return m_network;
-}
-
-void TtRssServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<TtRssFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
-
-  performInitialAssembly(categories, feeds, labels);
 }
 
 void TtRssServiceRoot::updateTitle() {

@@ -28,9 +28,7 @@ class StandardServiceRoot : public ServiceRoot {
     QString code() const;
 
     bool canBeEdited() const;
-    bool canBeDeleted() const;
     bool editViaGui();
-    bool deleteViaGui();
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
 

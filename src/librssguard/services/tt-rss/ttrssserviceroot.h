@@ -75,8 +75,6 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
-    void loadFromDatabase();
-
     TtRssNetworkFactory* m_network;
 };
 

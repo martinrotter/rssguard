@@ -6,6 +6,8 @@
 #include "services/abstract/rootitem.h"
 
 #include "core/message.h"
+#include "definitions/typedefs.h"
+#include "miscellaneous/databasequeries.h"
 
 #include <QNetworkProxy>
 #include <QPair>
@@ -18,11 +20,6 @@ class Label;
 class QAction;
 class MessagesModel;
 class CacheForServiceRoot;
-
-// First item here represents ID (int, primary key) of the item.
-typedef QList<QPair<int, RootItem*>> Assignment;
-typedef QPair<int, RootItem*> AssignmentItem;
-typedef QPair<Message, RootItem::Importance> ImportanceChange;
 
 struct CustomDatabaseEntry {
   public:
@@ -64,6 +61,9 @@ class ServiceRoot : public RootItem {
     virtual LabelOperation supportedLabelOperations() const;
     virtual QList<CustomDatabaseEntry> customDatabaseAttributes() const;
     virtual void saveAccountDataToDatabase();
+
+    template<typename Categ, typename Feed>
+    void loadFromDatabase();
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
@@ -255,6 +255,11 @@ class ServiceRoot : public RootItem {
     virtual QMap<QString, QVariantMap> storeCustomFeedsData();
     virtual void restoreCustomFeedsData(const QMap<QString, QVariantMap>& data, const QHash<QString, Feed*>& feeds);
 
+    // Helper methods to keep "application.h" inclusion
+    // out of this file.
+    QSqlDatabase internalDatabase() const;
+    QList<MessageFilter*> internalFilters() const;
+
   protected:
     RecycleBin* m_recycleBin;
     ImportantNode* m_importantNode;
@@ -266,5 +271,16 @@ class ServiceRoot : public RootItem {
 
 ServiceRoot::LabelOperation operator|(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs);
 ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs);
+
+template<typename Categ, typename Fee>
+void ServiceRoot::loadFromDatabase() {
+
+  QSqlDatabase database = internalDatabase();
+  Assignment categories = DatabaseQueries::getCategories<Categ>(database, accountId());
+  Assignment feeds = DatabaseQueries::getFeeds<Fee>(database, internalFilters(), accountId());
+  auto labels = DatabaseQueries::getLabels(database, accountId());
+
+  performInitialAssembly(categories, feeds, labels);
+}
 
 #endif // SERVICEROOT_H
