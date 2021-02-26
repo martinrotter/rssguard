@@ -1172,7 +1172,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditFeedlyAccount</name>
     <message>
         <source>Service setup</source>
-        <translation type="unfinished"/>
+        <translation>Сервисные настройки</translation>
     </message>
 </context>
 <context>
@@ -2580,7 +2580,7 @@ Login tokens expiration: %2</source>
     <name>GreaderAccountDetails</name>
     <message>
         <source>Service</source>
-        <translation type="unfinished"/>
+        <translation>Сервис</translation>
     </message>
     <message>
         <source>URL</source>
@@ -2660,11 +2660,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>You are good to go!</source>
-        <translation type="unfinished"/>
+        <translation>Готово!</translation>
     </message>
     <message>
         <source>Yeah.</source>
-        <translation type="unfinished"/>
+        <translation>Да.</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -2695,7 +2695,7 @@ Login tokens expiration: %2</source>
     <name>GreaderNetwork</name>
     <message>
         <source>Other services</source>
-        <translation type="unfinished"/>
+        <translation>Другие сервисы</translation>
     </message>
 </context>
 <context>
@@ -3638,11 +3638,11 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Google Reader API is used by many online RSS readers. This is here to support</source>
-        <translation type="unfinished"/>
+        <translation>Google Reader API используется многими онлайн-ридерами RSS. Доступна поддержка для</translation>
     </message>
     <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-        <translation type="unfinished"/>
+        <translation>Будьте в курсе интересующих вас тем и тенденций, не отвлекаясь. Feedly - это безопасное пространство, где вы можете в частном порядке организовывать и исследовать важные для вас темы и тенденции.</translation>
     </message>
 </context>
 <context>
@@ -3680,19 +3680,19 @@ version by clicking this popup notification.</source>
     <name>ScriptException</name>
     <message>
         <source>script line is not well-formed</source>
-        <translation type="unfinished"/>
+        <translation>строка скрипта сформирована неправильно</translation>
     </message>
     <message>
         <source>script threw an error</source>
-        <translation type="unfinished"/>
+        <translation>скрипт выдал ошибку</translation>
     </message>
     <message>
         <source>script&apos;s interpreter was not found</source>
-        <translation type="unfinished"/>
+        <translation>интерпретатор скрипта не найден</translation>
     </message>
     <message>
         <source>script execution took too long</source>
-        <translation type="unfinished"/>
+        <translation>выполнение скрипта заняло слишком много времени</translation>
     </message>
     <message>
         <source>unknown error</source>
@@ -4159,7 +4159,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
-        <translation type="unfinished"/>
+        <translation>Отображение реальных значков каналов в списке сообщений вместо значков прочитано/не прочитано</translation>
     </message>
 </context>
 <context>
@@ -4407,11 +4407,11 @@ Type: %3</source>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Неизвестно</translation>
     </message>
     <message>
         <source>Metadata was not fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Метаданные не были получены.</translation>
     </message>
 </context>
 <context>
@@ -4595,59 +4595,59 @@ Type: %3</source>
     </message>
     <message>
         <source>Source</source>
-        <translation type="unfinished"/>
+        <translation>Источник</translation>
     </message>
     <message>
         <source>Post-process script</source>
-        <translation type="unfinished"/>
+        <translation>Скрипт пост-обработки</translation>
     </message>
     <message>
         <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-        <translation type="unfinished"/>
+        <translation>Вы можете использовать URL-адрес в качестве источника своего канала или создать свой канал с помощью собственного скрипта. Кроме того, вы можете постобработать сгенерированные данные канала с помощью еще одного скрипта, если хотите. Это расширенные функции, и перед их использованием обязательно прочтите документацию.</translation>
     </message>
     <message>
         <source>Full feed source identifier</source>
-        <translation type="unfinished"/>
+        <translation>Полный идентификатор источника канала</translation>
     </message>
     <message>
         <source>Full feed source identifier which can be URL.</source>
-        <translation type="unfinished"/>
+        <translation>Полный идентификатор источника канала, который может быть URL-адресом.</translation>
     </message>
     <message>
         <source>Full command to execute</source>
-        <translation type="unfinished"/>
+        <translation>Полная команда для выполнения</translation>
     </message>
     <message>
         <source>You can enter full command including interpreter here.</source>
-        <translation type="unfinished"/>
+        <translation>Здесь вы можете ввести полную команду, включая интерпретатор.</translation>
     </message>
     <message>
         <source>Here you can enter script executaion line, including interpreter.</source>
-        <translation type="unfinished"/>
+        <translation>Здесь вы можете ввести строку выполнения скрипта, включая интерпретатор.</translation>
     </message>
     <message>
         <source>The source is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Источник подходит.</translation>
     </message>
     <message>
         <source>The source is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Источник пуст.</translation>
     </message>
     <message>
         <source>The source does not seem to use &quot;#&quot; separator for arguments.</source>
-        <translation type="unfinished"/>
+        <translation>Источник не использует разделитель &quot;#&quot; для аргументов.</translation>
     </message>
     <message>
         <source>Command is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Команда в порядке.</translation>
     </message>
     <message>
         <source>Command not seem to use &quot;#&quot; separator for arguments.</source>
-        <translation type="unfinished"/>
+        <translation>Команда не использует разделитель &quot;#&quot; для аргументов.</translation>
     </message>
     <message>
         <source>Command is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Команда пуста.</translation>
     </message>
 </context>
 <context>
