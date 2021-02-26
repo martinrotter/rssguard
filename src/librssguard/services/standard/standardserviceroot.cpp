@@ -43,7 +43,7 @@ StandardServiceRoot::~StandardServiceRoot() {
 void StandardServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
 
-  if (freshly_activated && getSubTree(RootItem::Kind::Feed).isEmpty()) {
+  if (freshly_activated && getSubTreeFeeds().isEmpty()) {
     // In other words, if there are no feeds or categories added.
     if (MessageBox::show(qApp->mainFormWidget(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
                          tr("This new account does not include any feeds. You can now add default set of feeds."),
@@ -92,19 +92,11 @@ bool StandardServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool StandardServiceRoot::canBeDeleted() const {
-  return true;
-}
-
 bool StandardServiceRoot::editViaGui() {
   FormEditStandardAccount form_pointer(qApp->mainFormWidget());
 
   form_pointer.addEditAccount(this);
   return true;
-}
-
-bool StandardServiceRoot::deleteViaGui() {
-  return ServiceRoot::deleteViaGui();
 }
 
 bool StandardServiceRoot::supportsFeedAdding() const {
