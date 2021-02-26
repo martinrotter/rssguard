@@ -254,13 +254,13 @@ void Application::setMainForm(FormMain* main_form) {
 }
 
 QString Application::configFolder() const {
-  return IOFactory::getSystemFolder(QStandardPaths::GenericConfigLocation);
+  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::GenericConfigLocation);
 }
 
 QString Application::userDataAppFolder() const {
   // In "app" folder, we would like to separate all user data into own subfolder,
   // therefore stick to "data" folder in this mode.
-  return applicationDirPath() + QDir::separator() + QSL("data");
+  return applicationDirPath() + QDir::separator() + QSL("data4");
 }
 
 QString Application::userDataFolder() {
@@ -276,34 +276,26 @@ QString Application::userDataFolder() {
 }
 
 QString Application::userDataHomeFolder() const {
-  // Fallback folder.
-  const QString home_folder = homeFolder() + QDir::separator() + QSL(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
-
-  if (QDir().exists(home_folder)) {
-    return home_folder;
-  }
-  else {
 #if defined(Q_OS_ANDROID)
-    return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME);
+  return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME) + QSL(" 4");
 #else
-    return configFolder() + QDir::separator() + QSL(APP_NAME);
+  return configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" 4");
 #endif
-  }
 }
 
 QString Application::tempFolder() const {
-  return IOFactory::getSystemFolder(QStandardPaths::TempLocation);
+  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation);
 }
 
 QString Application::documentsFolder() const {
-  return IOFactory::getSystemFolder(QStandardPaths::DocumentsLocation);
+  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::DocumentsLocation);
 }
 
 QString Application::homeFolder() const {
 #if defined(Q_OS_ANDROID)
-  return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation);
+  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::GenericDataLocation);
 #else
-  return IOFactory::getSystemFolder(QStandardPaths::HomeLocation);
+  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::HomeLocation);
 #endif
 }
 
