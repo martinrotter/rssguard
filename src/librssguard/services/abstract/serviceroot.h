@@ -51,6 +51,7 @@ class ServiceRoot : public RootItem {
 
     // These methods bellow are part of "interface".
     virtual void updateCounts(bool including_total_count);
+    virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
     virtual bool markAsReadUnread(ReadStatus status);
     virtual RecycleBin* recycleBin() const;
@@ -62,6 +63,7 @@ class ServiceRoot : public RootItem {
     virtual bool supportsCategoryAdding() const;
     virtual LabelOperation supportedLabelOperations() const;
     virtual QList<CustomDatabaseEntry> customDatabaseAttributes() const;
+    virtual void saveAccountDataToDatabase();
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:

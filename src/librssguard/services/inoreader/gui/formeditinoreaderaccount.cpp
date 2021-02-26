@@ -39,7 +39,7 @@ void FormEditInoreaderAccount::apply() {
   account<InoreaderServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<InoreaderServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
 
-  account<InoreaderServiceRoot>()->saveAccountDataToDatabase(m_creatingNew);
+  account<InoreaderServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
   if (!m_creatingNew) {

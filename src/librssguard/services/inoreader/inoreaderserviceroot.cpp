@@ -37,35 +37,6 @@ void InoreaderServiceRoot::loadFromDatabase() {
   performInitialAssembly(categories, feeds, labels);
 }
 
-void InoreaderServiceRoot::saveAccountDataToDatabase(bool creating_new) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (!creating_new) {
-    if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->username(),
-                                                   m_network->oauth()->clientId(),
-                                                   m_network->oauth()->clientSecret(),
-                                                   m_network->oauth()->redirectUrl(),
-                                                   m_network->oauth()->refreshToken(),
-                                                   m_network->batchSize(),
-                                                   accountId())) {
-      updateTitle();
-      itemChanged(QList<RootItem*>() << this);
-    }
-  }
-  else {
-    if (DatabaseQueries::createInoreaderAccount(database,
-                                                accountId(),
-                                                m_network->username(),
-                                                m_network->oauth()->clientId(),
-                                                m_network->oauth()->clientSecret(),
-                                                m_network->oauth()->redirectUrl(),
-                                                m_network->oauth()->refreshToken(),
-                                                m_network->batchSize())) {
-      updateTitle();
-    }
-  }
-}
-
 ServiceRoot::LabelOperation InoreaderServiceRoot::supportedLabelOperations() const {
   return ServiceRoot::LabelOperation(0);
 }
@@ -98,6 +69,8 @@ void InoreaderServiceRoot::start(bool freshly_activated) {
     loadFromDatabase();
     loadCacheFromFile();
   }
+
+  updateTitle();
 
   if (getSubTreeFeeds().isEmpty()) {
     m_network->oauth()->login([this]() {
@@ -203,20 +176,5 @@ void InoreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
         addLabelsAssignmentsToCache(messages, label_custom_id, false);
       }
     }
-  }
-}
-
-bool InoreaderServiceRoot::canBeDeleted() const {
-  return true;
-}
-
-bool InoreaderServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (DatabaseQueries::deleteInoreaderAccount(database, accountId())) {
-    return ServiceRoot::deleteViaGui();
-  }
-  else {
-    return false;
   }
 }

@@ -31,7 +31,7 @@ void FormEditGmailAccount::apply() {
   account<GmailServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<GmailServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
 
-  account<GmailServiceRoot>()->saveAccountDataToDatabase(m_creatingNew);
+  account<GmailServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
   if (!m_creatingNew) {

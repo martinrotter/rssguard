@@ -37,10 +37,6 @@ bool FeedlyServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool FeedlyServiceRoot::canBeDeleted() const {
-  return true;
-}
-
 bool FeedlyServiceRoot::editViaGui() {
   FormEditFeedlyAccount form_pointer(qApp->mainFormWidget());
 
@@ -48,23 +44,15 @@ bool FeedlyServiceRoot::editViaGui() {
   return true;
 }
 
-bool FeedlyServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (DatabaseQueries::deleteFeedlyAccount(database, accountId())) {
-    return ServiceRoot::deleteViaGui();
-  }
-  else {
-    return false;
-  }
-}
-
 void FeedlyServiceRoot::start(bool freshly_activated) {
-  Q_UNUSED(freshly_activated)
-  loadFromDatabase();
-  loadCacheFromFile();
+  if (!freshly_activated) {
+    loadFromDatabase();
+    loadCacheFromFile();
+  }
 
-  if (childCount() <= 3) {
+  updateTitle();
+
+  if (getSubTreeFeeds().isEmpty()) {
     syncIn();
   }
 }
@@ -196,42 +184,6 @@ ServiceRoot::LabelOperation FeedlyServiceRoot::supportedLabelOperations() const 
 
 void FeedlyServiceRoot::updateTitle() {
   setTitle(QString("%1 (Feedly)").arg(TextFactory::extractUsernameFromEmail(m_network->username())));
-}
-
-void FeedlyServiceRoot::saveAccountDataToDatabase(bool creating_new) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (!creating_new) {
-    if (DatabaseQueries::overwriteFeedlyAccount(database,
-                                                m_network->username(),
-                                                m_network->developerAccessToken(),
-#if defined(FEEDLY_OFFICIAL_SUPPORT)
-                                                m_network->oauth()->refreshToken(),
-#else
-                                                {},
-#endif
-                                                m_network->batchSize(),
-                                                m_network->downloadOnlyUnreadMessages(),
-                                                accountId())) {
-      updateTitle();
-      itemChanged(QList<RootItem*>() << this);
-    }
-  }
-  else {
-    if (DatabaseQueries::createFeedlyAccount(database,
-                                             m_network->username(),
-                                             m_network->developerAccessToken(),
-#if defined(FEEDLY_OFFICIAL_SUPPORT)
-                                             m_network->oauth()->refreshToken(),
-#else
-                                             {},
-#endif
-                                             m_network->batchSize(),
-                                             m_network->downloadOnlyUnreadMessages(),
-                                             accountId())) {
-      updateTitle();
-    }
-  }
 }
 
 RootItem* FeedlyServiceRoot::obtainNewTreeForSyncIn() const {

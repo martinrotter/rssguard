@@ -186,8 +186,8 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
           QString feed_url = child_element.attribute(QSL("xmlUrl"));
 
           if (!feed_url.isEmpty()) {
-            StandardFeed* guessed;
-            bool result;
+            StandardFeed* guessed = nullptr;
+            bool result = false;
 
             if (fetch_metadata_online &&
                 (guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
@@ -310,8 +310,8 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
 
   for (const QByteArray& url : urls) {
     if (!url.isEmpty()) {
-      StandardFeed* guessed;
-      bool result;
+      StandardFeed* guessed = nullptr;
+      bool result = false;
 
       if (fetch_metadata_online &&
           (guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,

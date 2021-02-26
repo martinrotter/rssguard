@@ -71,19 +71,6 @@ bool TtRssServiceRoot::editViaGui() {
   return true;
 }
 
-bool TtRssServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  // Remove extra entry in "Tiny Tiny RSS accounts list" and then delete
-  // all the categories/feeds and messages.
-  if (DatabaseQueries::deleteTtRssAccount(database, accountId())) {
-    return ServiceRoot::deleteViaGui();
-  }
-  else {
-    return false;
-  }
-}
-
 bool TtRssServiceRoot::supportsFeedAdding() const {
   return true;
 }
@@ -113,10 +100,6 @@ void TtRssServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
 }
 
 bool TtRssServiceRoot::canBeEdited() const {
-  return true;
-}
-
-bool TtRssServiceRoot::canBeDeleted() const {
   return true;
 }
 
@@ -221,12 +204,6 @@ QString TtRssServiceRoot::additionalTooltip() const {
 
 TtRssNetworkFactory* TtRssServiceRoot::network() const {
   return m_network;
-}
-
-void TtRssServiceRoot::saveAccountDataToDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  DatabaseQueries::createOverwriteAccount(database, this);
 }
 
 void TtRssServiceRoot::loadFromDatabase() {

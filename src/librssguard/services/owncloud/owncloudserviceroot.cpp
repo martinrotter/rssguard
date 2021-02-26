@@ -32,26 +32,11 @@ bool OwnCloudServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool OwnCloudServiceRoot::canBeDeleted() const {
-  return true;
-}
-
 bool OwnCloudServiceRoot::editViaGui() {
   QScopedPointer<FormEditOwnCloudAccount> form_pointer(new FormEditOwnCloudAccount(qApp->mainFormWidget()));
 
   form_pointer->addEditAccount(this);
   return true;
-}
-
-bool OwnCloudServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (DatabaseQueries::deleteOwnCloudAccount(database, accountId())) {
-    return ServiceRoot::deleteViaGui();
-  }
-  else {
-    return false;
-  }
 }
 
 bool OwnCloudServiceRoot::supportsFeedAdding() const {
@@ -67,6 +52,8 @@ void OwnCloudServiceRoot::start(bool freshly_activated) {
     loadFromDatabase();
     loadCacheFromFile();
   }
+
+  updateTitle();
 
   if (getSubTreeFeeds().isEmpty()) {
     syncIn();
@@ -127,29 +114,6 @@ void OwnCloudServiceRoot::saveAllCachedData(bool ignore_errors) {
 
 void OwnCloudServiceRoot::updateTitle() {
   setTitle(m_network->authUsername() + QSL(" (Nextcloud News)"));
-}
-
-void OwnCloudServiceRoot::saveAccountDataToDatabase(bool creating_new) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (!creating_new) {
-    if (DatabaseQueries::overwriteOwnCloudAccount(database, m_network->authUsername(),
-                                                  m_network->authPassword(), m_network->url(),
-                                                  m_network->forceServerSideUpdate(), m_network->batchSize(),
-                                                  m_network->downloadOnlyUnreadMessages(), accountId())) {
-      updateTitle();
-      itemChanged(QList<RootItem*>() << this);
-    }
-  }
-  else {
-    if (DatabaseQueries::createOwnCloudAccount(database, accountId(), m_network->authUsername(),
-                                               m_network->authPassword(), m_network->url(),
-                                               m_network->forceServerSideUpdate(),
-                                               m_network->downloadOnlyUnreadMessages(),
-                                               m_network->batchSize())) {
-      updateTitle();
-    }
-  }
 }
 
 RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {

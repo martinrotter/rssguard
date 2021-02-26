@@ -30,7 +30,7 @@ void FormEditOwnCloudAccount::apply() {
   account<OwnCloudServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
   account<OwnCloudServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
 
-  account<OwnCloudServiceRoot>()->saveAccountDataToDatabase(m_creatingNew);
+  account<OwnCloudServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
   if (!m_creatingNew) {

@@ -20,9 +20,7 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
-    virtual bool canBeDeleted() const;
     virtual bool editViaGui();
-    virtual bool deleteViaGui();
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual void start(bool freshly_activated);
@@ -32,7 +30,6 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     OwnCloudNetworkFactory* network() const;
 
     void updateTitle();
-    void saveAccountDataToDatabase(bool creating_new);
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;

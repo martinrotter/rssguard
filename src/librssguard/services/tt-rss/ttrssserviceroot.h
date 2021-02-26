@@ -33,9 +33,7 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString code() const;
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
-    virtual bool canBeDeleted() const;
     virtual bool editViaGui();
-    virtual bool deleteViaGui();
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
@@ -46,7 +44,6 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     // Access to network.
     TtRssNetworkFactory* network() const;
 
-    void saveAccountDataToDatabase();
     void updateTitle();
 
     // Support for dynamic DB attributes.
