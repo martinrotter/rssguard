@@ -21,14 +21,16 @@ FormAccountDetails::FormAccountDetails(const QIcon& icon, QWidget* parent)
 void FormAccountDetails::apply() {
   QSqlDatabase database = qApp->database()->connection(QSL("FormAccountDetails"));
 
-  if (m_creatingNew) {
-    m_account->setAccountId(DatabaseQueries::createBaseAccount(database, m_account->code()));
-  }
+  /*
+     if (m_creatingNew) {
+     m_account->setAccountId(DatabaseQueries::createBaseAccount(database, m_account->code()));
+     }
+   */
 
   m_account->setNetworkProxy(m_proxyDetails->proxy());
 
   // NOTE: We edit account common attributes here directly.
-  DatabaseQueries::editBaseAccount(database, m_account);
+  //DatabaseQueries::editBaseAccount(database, m_account);
 }
 
 void FormAccountDetails::insertCustomTab(QWidget* custom_tab, const QString& title, int index) {

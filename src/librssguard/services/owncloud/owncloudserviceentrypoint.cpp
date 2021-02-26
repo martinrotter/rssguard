@@ -19,7 +19,7 @@ ServiceRoot* OwnCloudServiceEntryPoint::createNewRoot() const {
 QList<ServiceRoot*> OwnCloudServiceEntryPoint::initializeSubtree() const {
   QSqlDatabase database = qApp->database()->connection(QSL("OwnCloudServiceEntryPoint"));
 
-  return DatabaseQueries::getOwnCloudAccounts(database);
+  return DatabaseQueries::getAccounts<OwnCloudServiceRoot>(database, code());
 }
 
 QString OwnCloudServiceEntryPoint::name() const {

@@ -256,6 +256,10 @@ ServiceRoot::LabelOperation ServiceRoot::supportedLabelOperations() const {
   return LabelOperation::Adding | LabelOperation::Editing | LabelOperation::Deleting;
 }
 
+QList<CustomDatabaseEntry> ServiceRoot::customDatabaseAttributes() const {
+  return {};
+}
+
 void ServiceRoot::itemChanged(const QList<RootItem*>& items) {
   emit dataChanged(items);
 }
@@ -393,7 +397,9 @@ void ServiceRoot::syncIn() {
   requestItemExpand({ this }, true);
 }
 
-void ServiceRoot::performInitialAssembly(const Assignment& categories, const Assignment& feeds, const QList<Label*>& labels) {
+void ServiceRoot::performInitialAssembly(const Assignment& categories,
+                                         const Assignment& feeds,
+                                         const QList<Label*>& labels) {
   // All data are now obtained, lets create the hierarchy.
   assembleCategories(categories);
   assembleFeeds(feeds);
@@ -401,10 +407,12 @@ void ServiceRoot::performInitialAssembly(const Assignment& categories, const Ass
   // As the last item, add recycle bin, which is needed.
   appendChild(recycleBin());
   appendChild(importantNode());
-  appendChild(labelsNode());
 
-  labelsNode()->loadLabels(labels);
-  requestItemExpand({ labelsNode() }, true);
+  if (labelsNode() != nullptr) {
+    appendChild(labelsNode());
+    labelsNode()->loadLabels(labels);
+    requestItemExpand({ labelsNode() }, true);
+  }
 
   updateCounts(true);
 }

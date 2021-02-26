@@ -24,6 +24,14 @@ typedef QList<QPair<int, RootItem*>> Assignment;
 typedef QPair<int, RootItem*> AssignmentItem;
 typedef QPair<Message, RootItem::Importance> ImportanceChange;
 
+struct CustomDatabaseEntry {
+  public:
+    CustomDatabaseEntry(const QString& name, bool encrypted = false) : m_name(name), m_encrypted(encrypted) {}
+
+    QString m_name;
+    bool m_encrypted;
+};
+
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
 // service like service account username/password etc.
@@ -53,6 +61,7 @@ class ServiceRoot : public RootItem {
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual LabelOperation supportedLabelOperations() const;
+    virtual QList<CustomDatabaseEntry> customDatabaseAttributes() const;
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:

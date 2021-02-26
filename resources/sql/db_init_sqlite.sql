@@ -1,100 +1,44 @@
-DROP TABLE IF EXISTS Information;
--- !
-CREATE TABLE IF NOT EXISTS Information (
-  id              INTEGER     PRIMARY KEY,
-  inf_key         TEXT        NOT NULL,
-  inf_value       TEXT        NOT NULL
+CREATE TABLE Information (
+  inf_key         TEXT        NOT NULL UNIQUE CHECK (inf_key != ''),
+  inf_value       TEXT
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '1');
+INSERT INTO Information VALUES ('schema_version', '1');
 -- !
-CREATE TABLE IF NOT EXISTS Accounts (
+CREATE TABLE Accounts (
   id              INTEGER     PRIMARY KEY,
-  type            TEXT        NOT NULL CHECK (type != ''),
-  proxy_type      INTEGER     NOT NULL CHECK (proxy_type >= 0) DEFAULT 0,
+  type            TEXT        NOT NULL CHECK (type != ''), /* ID of the account type. Each account defines its own, for example 'ttrss'. */
+  proxy_type      INTEGER     NOT NULL DEFAULT 0 CHECK (proxy_type >= 0),
   proxy_host      TEXT,
   proxy_port      INTEGER,
   proxy_username  TEXT,
-  proxy_password  TEXT
+  proxy_password  TEXT,
+  /* Custom attributes dynamically mapped to actual account data fields. */
+  custom_data_1   TEXT,
+  custom_data_2   TEXT,
+  custom_data_3   TEXT,
+  custom_data_4   TEXT,
+  custom_data_5   TEXT,
+  custom_data_6   TEXT,
+  custom_data_7   TEXT,
+  custom_data_8   TEXT,
+  custom_data_9   TEXT,
+  custom_data_10  TEXT,
+  custom_data_11  TEXT,
+  custom_data_12  TEXT,
+  custom_data_13  TEXT,
+  custom_data_14  TEXT,
+  custom_data_15  TEXT,
+  custom_data_16  TEXT,
+  custom_data_17  TEXT,
+  custom_data_18  TEXT,
+  custom_data_19  TEXT,
+  custom_data_20  TEXT
 );
 -- !
-CREATE TABLE IF NOT EXISTS TtRssAccounts (
-  id                  INTEGER,
-  username            TEXT        NOT NULL,
-  password            TEXT,
-  auth_protected      INTEGER(1)  NOT NULL CHECK (auth_protected >= 0 AND auth_protected <= 1) DEFAULT 0,
-  auth_username       TEXT,
-  auth_password       TEXT,
-  url                 TEXT        NOT NULL,
-  force_update        INTEGER(1)  NOT NULL CHECK (force_update >= 0 AND force_update <= 1) DEFAULT 0,
-  update_only_unread  INTEGER(1)  NOT NULL CHECK (update_only_unread >= 0 AND update_only_unread <= 1) DEFAULT 0,
-  
-  FOREIGN KEY (id) REFERENCES Accounts (id)
-);
--- !
-CREATE TABLE IF NOT EXISTS OwnCloudAccounts (
-  id                  INTEGER,
-  username            TEXT        NOT NULL,
-  password            TEXT,
-  url                 TEXT        NOT NULL,
-  force_update        INTEGER(1)  NOT NULL CHECK (force_update >= 0 AND force_update <= 1) DEFAULT 0,
-  msg_limit           INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
-  update_only_unread  INTEGER(1)  NOT NULL CHECK (update_only_unread >= 0 AND update_only_unread <= 1) DEFAULT 0,
-  
-  FOREIGN KEY (id) REFERENCES Accounts (id)
-);
--- !
-CREATE TABLE IF NOT EXISTS InoreaderAccounts (
-  id              INTEGER,
-  username        TEXT        NOT NULL,
-  app_id          TEXT,
-  app_key         TEXT,
-  redirect_url    TEXT,
-  refresh_token   TEXT,
-  msg_limit       INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
-  
-  FOREIGN KEY (id) REFERENCES Accounts (id)
-);
--- !
-CREATE TABLE IF NOT EXISTS GmailAccounts (
-  id              INTEGER,
-  username        TEXT        NOT NULL,
-  app_id          TEXT,
-  app_key         TEXT,
-  redirect_url    TEXT,
-  refresh_token   TEXT,
-  msg_limit       INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
-  
-  FOREIGN KEY (id) REFERENCES Accounts (id)
-);
--- !
-CREATE TABLE IF NOT EXISTS GoogleReaderApiAccounts (
-  id                  INTEGER,
-  type                INTEGER     NOT NULL CHECK (type >= 1),
-  username            TEXT        NOT NULL,
-  password            TEXT,
-  url                 TEXT        NOT NULL,
-  msg_limit           INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
-  
-  FOREIGN KEY (id) REFERENCES Accounts (id)
-);
--- !
-CREATE TABLE IF NOT EXISTS FeedlyAccounts (
-  id                        INTEGER,
-  username                  TEXT        NOT NULL,
-  developer_access_token    TEXT,
-  refresh_token             TEXT,
-  msg_limit                 INTEGER     NOT NULL DEFAULT -1 CHECK (msg_limit >= -1),
-  update_only_unread        INTEGER(1)  NOT NULL DEFAULT 0 CHECK (update_only_unread >= 0 AND update_only_unread <= 1),
-  
-  FOREIGN KEY (id) REFERENCES Accounts (id)
-);
--- !
-DROP TABLE IF EXISTS Categories;
--- !
-CREATE TABLE IF NOT EXISTS Categories (
+CREATE TABLE Categories (
   id              INTEGER     PRIMARY KEY,
-  parent_id       INTEGER     NOT NULL,
+  parent_id       INTEGER     NOT NULL CHECK (parent_id >= -1), /* Root categories contain -1 here. */
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
   date_created    INTEGER,
@@ -105,15 +49,13 @@ CREATE TABLE IF NOT EXISTS Categories (
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
 -- !
-DROP TABLE IF EXISTS Feeds;
--- !
-CREATE TABLE IF NOT EXISTS Feeds (
+CREATE TABLE Feeds (
   id              INTEGER     PRIMARY KEY,
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
   date_created    INTEGER,
   icon            BLOB,
-  category        INTEGER     NOT NULL CHECK (category >= -1),
+  category        INTEGER     NOT NULL CHECK (category >= -1), /* Root feeds contain -1 here. */
   encoding        TEXT,
   source_type     INTEGER,
   url             TEXT,
@@ -122,7 +64,7 @@ CREATE TABLE IF NOT EXISTS Feeds (
   username        TEXT,
   password        TEXT,
   update_type     INTEGER(1)  NOT NULL CHECK (update_type >= 0),
-  update_interval INTEGER     NOT NULL CHECK (update_interval >= 1) DEFAULT 15,
+  update_interval INTEGER     NOT NULL DEFAULT 15 CHECK (update_interval >= 1),
   type            INTEGER,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
@@ -130,20 +72,18 @@ CREATE TABLE IF NOT EXISTS Feeds (
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
 -- !
-DROP TABLE IF EXISTS Messages;
--- !
-CREATE TABLE IF NOT EXISTS Messages (
+CREATE TABLE Messages (
   id              INTEGER     PRIMARY KEY,
-  is_read         INTEGER(1)  NOT NULL CHECK (is_read >= 0 AND is_read <= 1) DEFAULT 0,
-  is_deleted      INTEGER(1)  NOT NULL CHECK (is_deleted >= 0 AND is_deleted <= 1) DEFAULT 0,
-  is_important    INTEGER(1)  NOT NULL CHECK (is_important >= 0 AND is_important <= 1) DEFAULT 0,
+  is_read         INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),
+  is_deleted      INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),
+  is_important    INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),
   feed            TEXT        NOT NULL,
   title           TEXT        NOT NULL CHECK (title != ''),
   url             TEXT,
   author          TEXT,
   date_created    INTEGER     NOT NULL CHECK (date_created != 0),
   contents        TEXT,
-  is_pdeleted     INTEGER(1)  NOT NULL CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1) DEFAULT 0,
+  is_pdeleted     INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
   enclosures      TEXT,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
@@ -152,13 +92,13 @@ CREATE TABLE IF NOT EXISTS Messages (
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
 -- !
-CREATE TABLE IF NOT EXISTS MessageFilters (
+CREATE TABLE MessageFilters (
   id                  INTEGER     PRIMARY KEY,
   name                TEXT        NOT NULL CHECK (name != ''),
   script              TEXT        NOT NULL CHECK (script != '')
 );
 -- !
-CREATE TABLE IF NOT EXISTS MessageFiltersInFeeds (
+CREATE TABLE MessageFiltersInFeeds (
   filter                INTEGER     NOT NULL,
   feed_custom_id        TEXT        NOT NULL,
   account_id            INTEGER     NOT NULL,
@@ -167,7 +107,7 @@ CREATE TABLE IF NOT EXISTS MessageFiltersInFeeds (
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
 -- !
-CREATE TABLE IF NOT EXISTS Labels (
+CREATE TABLE Labels (
   id                  INTEGER     PRIMARY KEY,
   name                TEXT        NOT NULL CHECK (name != ''),
   color               VARCHAR(7),
@@ -177,7 +117,7 @@ CREATE TABLE IF NOT EXISTS Labels (
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
 -- !
-CREATE TABLE IF NOT EXISTS LabelsInMessages (
+CREATE TABLE LabelsInMessages (
   label             TEXT        NOT NULL, /* Custom ID of label. */
   message           TEXT        NOT NULL, /* Custom ID of message. */
   account_id        INTEGER     NOT NULL,

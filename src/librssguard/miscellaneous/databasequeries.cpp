@@ -6,7 +6,6 @@
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/textfactory.h"
 #include "network-web/oauth2service.h"
 #include "services/abstract/category.h"
 #include "services/feedly/definitions.h"
@@ -1682,130 +1681,6 @@ void DatabaseQueries::fillBaseAccountData(const QSqlDatabase& db, ServiceRoot* a
   }
 }
 
-QList<ServiceRoot*> DatabaseQueries::getGreaderAccounts(const QSqlDatabase& db, bool* ok) {
-  QSqlQuery query(db);
-  QList<ServiceRoot*> roots;
-
-  if (query.exec("SELECT * FROM GoogleReaderApiAccounts;")) {
-    while (query.next()) {
-      auto* root = new GreaderServiceRoot();
-
-      root->setId(query.value(0).toInt());
-      root->setAccountId(query.value(0).toInt());
-      root->network()->setService(GreaderServiceRoot::Service(query.value(1).toInt()));
-      root->network()->setUsername(query.value(2).toString());
-      root->network()->setPassword(TextFactory::decrypt(query.value(3).toString()));
-      root->network()->setBaseUrl(query.value(4).toString());
-      root->network()->setBatchSize(query.value(5).toInt());
-      root->updateTitleIcon();
-
-      fillBaseAccountData(db, root);
-
-      roots.append(root);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    qWarningNN << LOGSEC_GREADER
-               << "Getting list of activated accounts failed: '"
-               << query.lastError().text()
-               << "'.";
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return roots;
-}
-
-QList<ServiceRoot*> DatabaseQueries::getOwnCloudAccounts(const QSqlDatabase& db, bool* ok) {
-  QSqlQuery query(db);
-  QList<ServiceRoot*> roots;
-
-  if (query.exec("SELECT * FROM OwnCloudAccounts;")) {
-    while (query.next()) {
-      auto* root = new OwnCloudServiceRoot();
-
-      root->setId(query.value(0).toInt());
-      root->setAccountId(query.value(0).toInt());
-      root->network()->setAuthUsername(query.value(1).toString());
-      root->network()->setAuthPassword(TextFactory::decrypt(query.value(2).toString()));
-      root->network()->setUrl(query.value(3).toString());
-      root->network()->setForceServerSideUpdate(query.value(4).toBool());
-      root->network()->setBatchSize(query.value(5).toInt());
-      root->network()->setDownloadOnlyUnreadMessages(query.value(6).toBool());
-      root->updateTitle();
-
-      fillBaseAccountData(db, root);
-
-      roots.append(root);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    qWarningNN << LOGSEC_NEXTCLOUD
-               << "Getting list of activated accounts failed: '"
-               << query.lastError().text()
-               << "'.";
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return roots;
-}
-
-QList<ServiceRoot*> DatabaseQueries::getTtRssAccounts(const QSqlDatabase& db, bool* ok) {
-  QSqlQuery query(db);
-  QList<ServiceRoot*> roots;
-
-  if (query.exec("SELECT * FROM TtRssAccounts;")) {
-    while (query.next()) {
-      auto* root = new TtRssServiceRoot();
-
-      root->setId(query.value(0).toInt());
-      root->setAccountId(query.value(0).toInt());
-      root->network()->setUsername(query.value(1).toString());
-      root->network()->setPassword(TextFactory::decrypt(query.value(2).toString()));
-      root->network()->setAuthIsUsed(query.value(3).toBool());
-      root->network()->setAuthUsername(query.value(4).toString());
-      root->network()->setAuthPassword(TextFactory::decrypt(query.value(5).toString()));
-      root->network()->setUrl(query.value(6).toString());
-      root->network()->setForceServerSideUpdate(query.value(7).toBool());
-      root->network()->setDownloadOnlyUnreadMessages(query.value(8).toBool());
-      root->updateTitle();
-
-      fillBaseAccountData(db, root);
-
-      roots.append(root);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    qWarningNN << LOGSEC_TTRSS
-               << "Getting list of activated accounts failed: '"
-               << query.lastError().text()
-               << "'.";
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return roots;
-}
-
 bool DatabaseQueries::deleteOwnCloudAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
@@ -1975,6 +1850,63 @@ bool DatabaseQueries::createOwnCloudAccount(const QSqlDatabase& db, int id_to_as
                << q.lastError().text()
                << "'.";
     return false;
+  }
+}
+
+void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account) {
+  QSqlQuery q(db);
+
+  if (account->accountId() <= 0) {
+    // We need to insert account first.
+    q.prepare(QSL("INSERT INTO Accounts (type) VALUES (:type);"));
+    q.bindValue(QSL(":type"), account->code());
+
+    if (!q.exec()) {
+      throw ApplicationException(q.lastError().text());
+    }
+    else {
+      account->setId(q.lastInsertId().toInt());
+      account->setAccountId(account->id());
+    }
+  }
+
+  // Now we construct the SQL update query.
+  auto proxy = account->networkProxy();
+  QString sql_statement = QSL("UPDATE Accounts "
+                              "SET proxy_type = :proxy_type, proxy_host = :proxy_host, proxy_port = :proxy_port, "
+                              "    proxy_username = :proxy_username, proxy_password = :proxy_password%1 "
+                              "WHERE id = :id");
+  auto custom_attributes = account->customDatabaseAttributes();
+  QStringList custom_sql_clauses;
+
+  for (int i = 0; i < custom_attributes.size(); i++) {
+    QString target_data = account->property(custom_attributes.at(i).m_name.toLocal8Bit()).toString();
+
+    if (custom_attributes.at(i).m_encrypted) {
+      target_data = TextFactory::encrypt(target_data);
+    }
+
+    custom_sql_clauses.append(QSL("custom_data_%1 = '%2'").arg(QString::number(i + 1),
+                                                               target_data));
+  }
+
+  if (!custom_sql_clauses.isEmpty()) {
+    sql_statement = sql_statement.arg(QSL(", ") + custom_sql_clauses.join(QSL(", ")));
+  }
+  else {
+    sql_statement = sql_statement.arg(QString());
+  }
+
+  q.prepare(sql_statement);
+  q.bindValue(QSL(":proxy_type"), proxy.type());
+  q.bindValue(QSL(":proxy_host"), proxy.hostName());
+  q.bindValue(QSL(":proxy_port"), proxy.port());
+  q.bindValue(QSL(":proxy_username"), proxy.user());
+  q.bindValue(QSL(":proxy_password"), TextFactory::encrypt(proxy.password()));
+  q.bindValue(QSL(":id"), account->accountId());
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
   }
 }
 
@@ -2478,38 +2410,6 @@ void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db, const 
   }
 }
 
-QList<ServiceRoot*> DatabaseQueries::getStandardAccounts(const QSqlDatabase& db, bool* ok) {
-  QSqlQuery q(db);
-  QList<ServiceRoot*> roots;
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT id FROM Accounts WHERE type = :type;"));
-  q.bindValue(QSL(":type"), SERVICE_CODE_STD_RSS);
-
-  if (q.exec()) {
-    while (q.next()) {
-      auto* root = new StandardServiceRoot();
-
-      root->setAccountId(q.value(0).toInt());
-
-      fillBaseAccountData(db, root);
-
-      roots.append(root);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return roots;
-}
-
 bool DatabaseQueries::deleteFeedlyAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
@@ -2624,91 +2524,6 @@ QStringList DatabaseQueries::getAllRecipients(const QSqlDatabase& db, int accoun
   return rec;
 }
 
-QList<ServiceRoot*> DatabaseQueries::getFeedlyAccounts(const QSqlDatabase& db, bool* ok) {
-  QSqlQuery query(db);
-  QList<ServiceRoot*> roots;
-
-  if (query.exec("SELECT * FROM FeedlyAccounts;")) {
-    while (query.next()) {
-      auto* root = new FeedlyServiceRoot();
-
-      root->setId(query.value(0).toInt());
-      root->setAccountId(query.value(0).toInt());
-      root->network()->setUsername(query.value(1).toString());
-      root->network()->setDeveloperAccessToken(query.value(2).toString());
-
-#if defined(FEEDLY_OFFICIAL_SUPPORT)
-      root->network()->oauth()->setRefreshToken(query.value(3).toString());
-#endif
-
-      root->network()->setBatchSize(query.value(4).toInt());
-      root->network()->setDownloadOnlyUnreadMessages(query.value(5).toBool());
-      root->updateTitle();
-
-      fillBaseAccountData(db, root);
-
-      roots.append(root);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    qWarningNN << LOGSEC_GMAIL
-               << "Getting list of activated accounts failed: '"
-               << query.lastError().text()
-               << "'.";
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return roots;
-}
-
-QList<ServiceRoot*> DatabaseQueries::getGmailAccounts(const QSqlDatabase& db, bool* ok) {
-  QSqlQuery query(db);
-  QList<ServiceRoot*> roots;
-
-  if (query.exec("SELECT * FROM GmailAccounts;")) {
-    while (query.next()) {
-      auto* root = new GmailServiceRoot();
-
-      root->setId(query.value(0).toInt());
-      root->setAccountId(query.value(0).toInt());
-      root->network()->setUsername(query.value(1).toString());
-      root->network()->oauth()->setClientId(query.value(2).toString());
-      root->network()->oauth()->setClientSecret(query.value(3).toString());
-      root->network()->oauth()->setRefreshToken(query.value(5).toString());
-      root->network()->oauth()->setRedirectUrl(query.value(4).toString());
-      root->network()->setBatchSize(query.value(6).toInt());
-      root->updateTitle();
-
-      fillBaseAccountData(db, root);
-
-      roots.append(root);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    qWarningNN << LOGSEC_GMAIL
-               << "Getting list of activated accounts failed: '"
-               << query.lastError().text()
-               << "'.";
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return roots;
-}
-
 bool DatabaseQueries::deleteGmailAccount(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
@@ -2745,47 +2560,6 @@ bool DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db, const QString&
     qWarningNN << LOGSEC_DB << "Updating tokens in DB failed:" << QUOTE_W_SPACE_DOT(query.lastError().text());
     return false;
   }
-}
-
-QList<ServiceRoot*> DatabaseQueries::getInoreaderAccounts(const QSqlDatabase& db, bool* ok) {
-  QSqlQuery query(db);
-  QList<ServiceRoot*> roots;
-
-  if (query.exec("SELECT * FROM InoreaderAccounts;")) {
-    while (query.next()) {
-      auto* root = new InoreaderServiceRoot();
-
-      root->setId(query.value(0).toInt());
-      root->setAccountId(query.value(0).toInt());
-      root->network()->setUsername(query.value(1).toString());
-      root->network()->oauth()->setClientId(query.value(2).toString());
-      root->network()->oauth()->setClientSecret(query.value(3).toString());
-      root->network()->oauth()->setRefreshToken(query.value(5).toString());
-      root->network()->oauth()->setRedirectUrl(query.value(4).toString());
-      root->network()->setBatchSize(query.value(6).toInt());
-      root->updateTitle();
-
-      fillBaseAccountData(db, root);
-
-      roots.append(root);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    qWarningNN << LOGSEC_INOREADER
-               << "Getting list of activated accounts failed: '"
-               << query.lastError().text()
-               << "'.";
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return roots;
 }
 
 bool DatabaseQueries::overwriteGmailAccount(const QSqlDatabase& db, const QString& username, const QString& app_id,
