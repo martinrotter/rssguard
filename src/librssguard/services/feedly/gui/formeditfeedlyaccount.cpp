@@ -48,7 +48,7 @@ void FormEditFeedlyAccount::apply() {
   account<FeedlyServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
   account<FeedlyServiceRoot>()->network()->setDeveloperAccessToken(m_details->m_ui.m_txtDeveloperAccessToken->lineEdit()->text());
 
-  account<FeedlyServiceRoot>()->saveAccountDataToDatabase(m_creatingNew);
+  account<FeedlyServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
   if (!m_creatingNew) {

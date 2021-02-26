@@ -65,35 +65,6 @@ void GmailServiceRoot::loadFromDatabase() {
   }
 }
 
-void GmailServiceRoot::saveAccountDataToDatabase(bool creating_new) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (!creating_new) {
-    if (DatabaseQueries::overwriteGmailAccount(database, m_network->username(),
-                                               m_network->oauth()->clientId(),
-                                               m_network->oauth()->clientSecret(),
-                                               m_network->oauth()->redirectUrl(),
-                                               m_network->oauth()->refreshToken(),
-                                               m_network->batchSize(),
-                                               accountId())) {
-      updateTitle();
-      itemChanged(QList<RootItem*>() << this);
-    }
-  }
-  else {
-    if (DatabaseQueries::createGmailAccount(database,
-                                            accountId(),
-                                            m_network->username(),
-                                            m_network->oauth()->clientId(),
-                                            m_network->oauth()->clientSecret(),
-                                            m_network->oauth()->redirectUrl(),
-                                            m_network->oauth()->refreshToken(),
-                                            m_network->batchSize())) {
-      updateTitle();
-    }
-  }
-}
-
 bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
   QString str_url = url.toString();
   QString attachment_id = str_url.mid(str_url.indexOf(QL1C('?')) + 1);
@@ -171,6 +142,8 @@ void GmailServiceRoot::start(bool freshly_activated) {
     loadCacheFromFile();
   }
 
+  updateTitle();
+
   if (getSubTreeFeeds().isEmpty()) {
     syncIn();
   }
@@ -231,20 +204,5 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
         addMessageStatesToCache(messages, key);
       }
     }
-  }
-}
-
-bool GmailServiceRoot::canBeDeleted() const {
-  return true;
-}
-
-bool GmailServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (DatabaseQueries::deleteGmailAccount(database, accountId())) {
-    return ServiceRoot::deleteViaGui();
-  }
-  else {
-    return false;
   }
 }

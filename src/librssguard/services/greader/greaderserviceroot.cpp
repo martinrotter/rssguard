@@ -28,10 +28,6 @@ bool GreaderServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool GreaderServiceRoot::canBeDeleted() const {
-  return true;
-}
-
 bool GreaderServiceRoot::editViaGui() {
   FormEditGreaderAccount form_pointer(qApp->mainFormWidget());
 
@@ -39,23 +35,13 @@ bool GreaderServiceRoot::editViaGui() {
   return true;
 }
 
-bool GreaderServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (DatabaseQueries::deleteGreaderAccount(database, accountId())) {
-    return ServiceRoot::deleteViaGui();
-  }
-  else {
-    return false;
-  }
-}
-
 void GreaderServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
     loadFromDatabase();
     loadCacheFromFile();
-
   }
+
+  updateTitleIcon();
 
   if (getSubTreeFeeds().isEmpty()) {
     syncIn();
@@ -166,27 +152,6 @@ void GreaderServiceRoot::updateTitleIcon() {
     default:
       setIcon(GreaderEntryPoint().icon());
       break;
-  }
-}
-
-void GreaderServiceRoot::saveAccountDataToDatabase(bool creating_new) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (!creating_new) {
-    if (DatabaseQueries::overwriteGreaderAccount(database, m_network->username(),
-                                                 m_network->password(), m_network->service(),
-                                                 m_network->baseUrl(), m_network->batchSize(),
-                                                 accountId())) {
-      updateTitleIcon();
-      itemChanged(QList<RootItem*>() << this);
-    }
-  }
-  else {
-    if (DatabaseQueries::createGreaderAccount(database, accountId(), m_network->username(),
-                                              m_network->password(), m_network->service(),
-                                              m_network->baseUrl(), m_network->batchSize())) {
-      updateTitleIcon();
-    }
   }
 }
 

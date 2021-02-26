@@ -16,9 +16,7 @@ class FeedlyServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
-    virtual bool canBeDeleted() const;
     virtual bool editViaGui();
-    virtual bool deleteViaGui();
     virtual void start(bool freshly_activated);
     virtual QString code() const;
     virtual void saveAllCachedData(bool ignore_errors);
@@ -27,7 +25,6 @@ class FeedlyServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     FeedlyNetwork* network() const;
 
     void updateTitle();
-    void saveAccountDataToDatabase(bool creating_new);
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;

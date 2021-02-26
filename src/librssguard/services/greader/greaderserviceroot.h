@@ -24,9 +24,7 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
-    virtual bool canBeDeleted() const;
     virtual bool editViaGui();
-    virtual bool deleteViaGui();
     virtual void start(bool freshly_activated);
     virtual QString code() const;
     virtual void saveAllCachedData(bool ignore_errors);
@@ -35,7 +33,6 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     GreaderNetwork* network() const;
 
     void updateTitleIcon();
-    void saveAccountDataToDatabase(bool creating_new);
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;

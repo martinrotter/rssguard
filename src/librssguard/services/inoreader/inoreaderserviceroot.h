@@ -15,16 +15,12 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     explicit InoreaderServiceRoot(RootItem* parent = nullptr);
     virtual ~InoreaderServiceRoot();
 
-    void saveAccountDataToDatabase(bool creating_new);
-
     InoreaderNetworkFactory* network() const;
 
     virtual LabelOperation supportedLabelOperations() const;
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
     virtual bool editViaGui();
-    virtual bool canBeDeleted() const;
-    virtual bool deleteViaGui();
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual void start(bool freshly_activated);

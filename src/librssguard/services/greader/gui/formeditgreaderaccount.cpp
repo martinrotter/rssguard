@@ -29,7 +29,7 @@ void FormEditGreaderAccount::apply() {
   account<GreaderServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
   account<GreaderServiceRoot>()->network()->setService(m_details->service());
 
-  account<GreaderServiceRoot>()->saveAccountDataToDatabase(m_creatingNew);
+  account<GreaderServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
   if (!m_creatingNew) {

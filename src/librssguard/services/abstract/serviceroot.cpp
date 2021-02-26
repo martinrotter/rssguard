@@ -157,6 +157,10 @@ void ServiceRoot::updateCounts(bool including_total_count) {
   }
 }
 
+bool ServiceRoot::canBeDeleted() const {
+  return true;
+}
+
 void ServiceRoot::completelyRemoveAllData() {
   // Purge old data from SQL and clean all model items.
   cleanAllItemsFromModel();
@@ -258,6 +262,12 @@ ServiceRoot::LabelOperation ServiceRoot::supportedLabelOperations() const {
 
 QList<CustomDatabaseEntry> ServiceRoot::customDatabaseAttributes() const {
   return {};
+}
+
+void ServiceRoot::saveAccountDataToDatabase() {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+  DatabaseQueries::createOverwriteAccount(database, this);
 }
 
 void ServiceRoot::itemChanged(const QList<RootItem*>& items) {
