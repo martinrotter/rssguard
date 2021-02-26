@@ -30,9 +30,6 @@ class FeedlyServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
-    void loadFromDatabase();
-
-  private:
     FeedlyNetwork* m_network;
 };
 

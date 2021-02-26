@@ -50,21 +50,6 @@ void GmailServiceRoot::writeNewEmail() {
   FormAddEditEmail(this, qApp->mainFormWidget()).execForAdd();
 }
 
-void GmailServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<GmailFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
-
-  performInitialAssembly(categories, feeds, labels);
-
-  for (RootItem* feed : childItems()) {
-    if (feed->customId() == QL1S("INBOX")) {
-      feed->setKeepOnTop(true);
-    }
-  }
-}
-
 bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
   QString str_url = url.toString();
   QString attachment_id = str_url.mid(str_url.indexOf(QL1C('?')) + 1);
@@ -138,7 +123,7 @@ bool GmailServiceRoot::supportsCategoryAdding() const {
 
 void GmailServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    loadFromDatabase();
+    DatabaseQueries::loadFromDatabase<Category, GmailFeed>(this);
     loadCacheFromFile();
   }
 
@@ -146,6 +131,12 @@ void GmailServiceRoot::start(bool freshly_activated) {
 
   if (getSubTreeFeeds().isEmpty()) {
     syncIn();
+  }
+
+  for (RootItem* feed : childItems()) {
+    if (feed->customId() == QL1S("INBOX")) {
+      feed->setKeepOnTop(true);
+    }
   }
 
   m_network->oauth()->login();

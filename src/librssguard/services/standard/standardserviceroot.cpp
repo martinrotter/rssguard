@@ -41,7 +41,7 @@ StandardServiceRoot::~StandardServiceRoot() {
 }
 
 void StandardServiceRoot::start(bool freshly_activated) {
-  loadFromDatabase();
+  DatabaseQueries::loadFromDatabase<StandardCategory, StandardFeed>(this);
 
   if (freshly_activated && getSubTreeFeeds().isEmpty()) {
     // In other words, if there are no feeds or categories added.
@@ -128,15 +128,6 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
 
 Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
   return Qt::ItemFlag::ItemIsDropEnabled;
-}
-
-void StandardServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<StandardCategory>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<StandardFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
-
-  performInitialAssembly(categories, feeds, labels);
 }
 
 void StandardServiceRoot::checkArgumentsForFeedAdding() {

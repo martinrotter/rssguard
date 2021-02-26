@@ -40,7 +40,6 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
   private:
     void writeNewEmail();
-    void loadFromDatabase();
 
   private:
     GmailNetworkFactory* m_network;

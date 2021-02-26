@@ -46,7 +46,6 @@ class StandardServiceRoot : public ServiceRoot {
     bool mergeImportExportModel(FeedsImportExportModel* model, RootItem* target_root_node, QString& output_message);
 
     QString processFeedUrl(const QString& feed_url);
-    void loadFromDatabase();
     void checkArgumentForFeedAdding(const QString& argument);
 
   public slots:

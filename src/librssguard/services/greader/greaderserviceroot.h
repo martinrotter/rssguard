@@ -38,9 +38,6 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
-    void loadFromDatabase();
-
-  private:
     GreaderNetwork* m_network;
 };
 

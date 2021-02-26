@@ -49,7 +49,7 @@ bool OwnCloudServiceRoot::supportsCategoryAdding() const {
 
 void OwnCloudServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    loadFromDatabase();
+    DatabaseQueries::loadFromDatabase<Category, OwnCloudFeed>(this);
     loadCacheFromFile();
   }
 
@@ -125,13 +125,4 @@ RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
   else {
     return nullptr;
   }
-}
-
-void OwnCloudServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<OwnCloudFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
-
-  performInitialAssembly(categories, feeds, labels);
 }
