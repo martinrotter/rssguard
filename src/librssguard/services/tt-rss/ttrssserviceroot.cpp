@@ -38,7 +38,7 @@ ServiceRoot::LabelOperation TtRssServiceRoot::supportedLabelOperations() const {
 
 void TtRssServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    loadFromDatabase<Category, TtRssFeed>();
+    DatabaseQueries::loadFromDatabase<Category, TtRssFeed>(this);
     loadCacheFromFile();
   }
 

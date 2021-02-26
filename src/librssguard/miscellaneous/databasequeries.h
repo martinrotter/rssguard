@@ -92,6 +92,9 @@ class DatabaseQueries {
     // Common account methods.
     template<typename T>
     static QList<ServiceRoot*> getAccounts(const QSqlDatabase& db, const QString& code, bool* ok = nullptr);
+
+    template<typename Categ, typename Fee>
+    static void loadFromDatabase(ServiceRoot* root);
     static bool storeNewOauthTokens(const QSqlDatabase& db, const QString& table_name,
                                     const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
@@ -318,6 +321,16 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
   }
 
   return feeds;
+}
+
+template<typename Categ, typename Fee>
+void DatabaseQueries::loadFromDatabase(ServiceRoot* root) {
+  QSqlDatabase database = root->internalDatabase();
+  Assignment categories = DatabaseQueries::getCategories<Categ>(database, root->accountId());
+  Assignment feeds = DatabaseQueries::getFeeds<Fee>(database, root->internalFilters(), root->accountId());
+  auto labels = DatabaseQueries::getLabels(database, root->accountId());
+
+  root->performInitialAssembly(categories, feeds, labels);
 }
 
 #endif // DATABASEQUERIES_H
