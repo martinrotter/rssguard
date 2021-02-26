@@ -1,7 +1,7 @@
 APP_NAME                      = "RSS Guard"
 APP_LOW_NAME                  = "rssguard"
 APP_REVERSE_NAME              = "com.github.rssguard"
-APP_LOW_H_NAME                = ".rssguard4"
+APP_LOW_H_NAME                = ".rssguard"
 APP_AUTHOR                    = "Martin Rotter"
 APP_COPYRIGHT                 = "(C) 2011-2021 $$APP_AUTHOR"
 APP_VERSION                   = "4.0.0"
