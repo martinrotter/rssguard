@@ -10,13 +10,12 @@
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
+#include "services/abstract/serviceroot.h"
 #include "services/standard/standardfeed.h"
 
 #include <QMultiMap>
 #include <QSqlError>
 #include <QSqlQuery>
-
-class ServiceRoot;
 
 class DatabaseQueries {
   public:
