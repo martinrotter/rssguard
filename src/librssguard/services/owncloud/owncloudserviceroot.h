@@ -35,8 +35,6 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
-    void loadFromDatabase();
-
     OwnCloudNetworkFactory* m_network;
 };
 

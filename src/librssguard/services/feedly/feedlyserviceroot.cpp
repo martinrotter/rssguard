@@ -46,7 +46,7 @@ bool FeedlyServiceRoot::editViaGui() {
 
 void FeedlyServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    loadFromDatabase();
+    DatabaseQueries::loadFromDatabase<Category, FeedlyFeed>(this);
     loadCacheFromFile();
   }
 
@@ -203,13 +203,4 @@ RootItem* FeedlyServiceRoot::obtainNewTreeForSyncIn() const {
                 << QUOTE_W_SPACE_DOT(ex.message());
     return nullptr;
   }
-}
-
-void FeedlyServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<FeedlyFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
-
-  performInitialAssembly(categories, feeds, labels);
 }

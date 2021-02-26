@@ -200,11 +200,6 @@ class ServiceRoot : public RootItem {
 
     void performInitialAssembly(const Assignment& categories, const Assignment& feeds, const QList<Label*>& labels);
 
-    // Helper methods to keep "application.h" inclusion
-    // out of this file.
-    QSqlDatabase internalDatabase() const;
-    QList<MessageFilter*> internalFilters() const;
-
   public slots:
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
     virtual void addNewCategory(RootItem* selected_item);

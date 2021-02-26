@@ -37,7 +37,7 @@ bool GreaderServiceRoot::editViaGui() {
 
 void GreaderServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    loadFromDatabase();
+    DatabaseQueries::loadFromDatabase<Category, GreaderFeed>(this);
     loadCacheFromFile();
   }
 
@@ -157,13 +157,4 @@ void GreaderServiceRoot::updateTitleIcon() {
 
 RootItem* GreaderServiceRoot::obtainNewTreeForSyncIn() const {
   return m_network->categoriesFeedsLabelsTree(true, networkProxy());
-}
-
-void GreaderServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<GreaderFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
-
-  performInitialAssembly(categories, feeds, labels);
 }

@@ -336,14 +336,6 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
   }
 }
 
-QSqlDatabase ServiceRoot::internalDatabase() const {
-  return qApp->database()->connection(metaObject()->className());
-}
-
-QList<MessageFilter*> ServiceRoot::internalFilters() const {
-  return qApp->feedReader()->messageFilters();
-}
-
 QNetworkProxy ServiceRoot::networkProxy() const {
   return m_networkProxy;
 }

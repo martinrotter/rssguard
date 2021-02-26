@@ -28,15 +28,6 @@ void InoreaderServiceRoot::updateTitle() {
   setTitle(TextFactory::extractUsernameFromEmail(m_network->username()) + QSL(" (Inoreader)"));
 }
 
-void InoreaderServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<InoreaderFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
-
-  performInitialAssembly(categories, feeds, labels);
-}
-
 ServiceRoot::LabelOperation InoreaderServiceRoot::supportedLabelOperations() const {
   return ServiceRoot::LabelOperation(0);
 }
@@ -66,7 +57,7 @@ bool InoreaderServiceRoot::supportsCategoryAdding() const {
 
 void InoreaderServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    loadFromDatabase();
+    DatabaseQueries::loadFromDatabase<Category, InoreaderFeed>(this);
     loadCacheFromFile();
   }
 

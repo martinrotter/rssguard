@@ -7,6 +7,7 @@
 
 #include "core/messagefilter.h"
 #include "definitions/typedefs.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
@@ -325,9 +326,9 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
 
 template<typename Categ, typename Fee>
 void DatabaseQueries::loadFromDatabase(ServiceRoot* root) {
-  QSqlDatabase database = root->internalDatabase();
+  QSqlDatabase database = qApp->database()->connection(root->metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories<Categ>(database, root->accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<Fee>(database, root->internalFilters(), root->accountId());
+  Assignment feeds = DatabaseQueries::getFeeds<Fee>(database, qApp->feedReader()->messageFilters(), root->accountId());
   auto labels = DatabaseQueries::getLabels(database, root->accountId());
 
   root->performInitialAssembly(categories, feeds, labels);
