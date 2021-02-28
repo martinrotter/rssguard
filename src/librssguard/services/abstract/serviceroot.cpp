@@ -260,14 +260,18 @@ ServiceRoot::LabelOperation ServiceRoot::supportedLabelOperations() const {
   return LabelOperation::Adding | LabelOperation::Editing | LabelOperation::Deleting;
 }
 
-QList<CustomDatabaseEntry> ServiceRoot::customDatabaseAttributes() const {
-  return {};
-}
-
 void ServiceRoot::saveAccountDataToDatabase() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   DatabaseQueries::createOverwriteAccount(database, this);
+}
+
+QVariantHash ServiceRoot::customDatabaseData() const {
+  return {};
+}
+
+void ServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+  Q_UNUSED(data)
 }
 
 void ServiceRoot::itemChanged(const QList<RootItem*>& items) {

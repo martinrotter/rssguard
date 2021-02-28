@@ -9,6 +9,7 @@
 #include "core/messagefilter.h"
 #include "definitions/typedefs.h"
 
+#include <QJsonDocument>
 #include <QNetworkProxy>
 #include <QPair>
 
@@ -59,8 +60,9 @@ class ServiceRoot : public RootItem {
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual LabelOperation supportedLabelOperations() const;
-    virtual QList<CustomDatabaseEntry> customDatabaseAttributes() const;
     virtual void saveAccountDataToDatabase();
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& json) const;
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:

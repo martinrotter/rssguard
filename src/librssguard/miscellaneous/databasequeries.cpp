@@ -1677,38 +1677,21 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
 
   // Now we construct the SQL update query.
   auto proxy = account->networkProxy();
-  QString sql_statement = QSL("UPDATE Accounts "
-                              "SET proxy_type = :proxy_type, proxy_host = :proxy_host, proxy_port = :proxy_port, "
-                              "    proxy_username = :proxy_username, proxy_password = :proxy_password%1 "
-                              "WHERE id = :id");
-  auto custom_attributes = account->customDatabaseAttributes();
-  QStringList custom_sql_clauses;
 
-  for (int i = 0; i < custom_attributes.size(); i++) {
-    QString target_data = account->property(custom_attributes.at(i).m_name.toLocal8Bit()).toString();
-
-    if (custom_attributes.at(i).m_encrypted) {
-      target_data = TextFactory::encrypt(target_data);
-    }
-
-    custom_sql_clauses.append(QSL("custom_data_%1 = '%2'").arg(QString::number(i + 1),
-                                                               target_data));
-  }
-
-  if (!custom_sql_clauses.isEmpty()) {
-    sql_statement = sql_statement.arg(QSL(", ") + custom_sql_clauses.join(QSL(", ")));
-  }
-  else {
-    sql_statement = sql_statement.arg(QString());
-  }
-
-  q.prepare(sql_statement);
+  q.prepare(QSL("UPDATE Accounts "
+                "SET proxy_type = :proxy_type, proxy_host = :proxy_host, proxy_port = :proxy_port, "
+                "    proxy_username = :proxy_username, proxy_password = :proxy_password, "
+                "    custom_data = :custom_data "
+                "WHERE id = :id"));
   q.bindValue(QSL(":proxy_type"), proxy.type());
   q.bindValue(QSL(":proxy_host"), proxy.hostName());
   q.bindValue(QSL(":proxy_port"), proxy.port());
   q.bindValue(QSL(":proxy_username"), proxy.user());
   q.bindValue(QSL(":proxy_password"), TextFactory::encrypt(proxy.password()));
   q.bindValue(QSL(":id"), account->accountId());
+
+  q.bindValue(QSL(":custom_data"),
+              QString::fromUtf8(QJsonDocument::fromVariant(account->customDatabaseData()).toJson(QJsonDocument::JsonFormat::Indented)));
 
   if (!q.exec()) {
     throw ApplicationException(q.lastError().text());

@@ -13,27 +13,8 @@ CREATE TABLE Accounts (
   proxy_port      INTEGER,
   proxy_username  TEXT,
   proxy_password  TEXT,
-  /* Custom attributes dynamically mapped to actual account data fields. */
-  custom_data_1   TEXT,
-  custom_data_2   TEXT,
-  custom_data_3   TEXT,
-  custom_data_4   TEXT,
-  custom_data_5   TEXT,
-  custom_data_6   TEXT,
-  custom_data_7   TEXT,
-  custom_data_8   TEXT,
-  custom_data_9   TEXT,
-  custom_data_10  TEXT,
-  custom_data_11  TEXT,
-  custom_data_12  TEXT,
-  custom_data_13  TEXT,
-  custom_data_14  TEXT,
-  custom_data_15  TEXT,
-  custom_data_16  TEXT,
-  custom_data_17  TEXT,
-  custom_data_18  TEXT,
-  custom_data_19  TEXT,
-  custom_data_20  TEXT
+  /* Custom column for (serialized) custom account-specific data. */
+  custom_data   TEXT
 );
 -- !
 CREATE TABLE Categories (

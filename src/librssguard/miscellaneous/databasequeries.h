@@ -14,6 +14,8 @@
 #include "services/abstract/serviceroot.h"
 #include "services/standard/standardfeed.h"
 
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QMultiMap>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -197,20 +199,7 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const Q
                           TextFactory::decrypt(query.value(QSL("proxy_password")).toString()));
 
       root->setNetworkProxy(proxy);
-
-      // Load account-specific custom data.
-      auto custom_attributes = root->customDatabaseAttributes();
-
-      for (int i = 0; i < custom_attributes.size(); i++) {
-        const QString target_db_attribute = QSL("custom_data_%1").arg(QString::number(i + 1));
-        QString target_data = query.value(target_db_attribute).toString();
-
-        if (custom_attributes.at(i).m_encrypted) {
-          target_data = TextFactory::decrypt(target_data);
-        }
-
-        root->setProperty(custom_attributes.at(i).m_name.toLocal8Bit(), target_data);
-      }
+      root->setCustomDatabaseData(QJsonDocument::fromJson(query.value(QSL("custom_data")).toString().toUtf8()).object().toVariantHash());
 
       roots.append(root);
     }
