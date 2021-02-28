@@ -185,11 +185,30 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
   }
 }
 
-QList<CustomDatabaseEntry> TtRssServiceRoot::customDatabaseAttributes() const {
-  return {
-    { QSL("username") }, { QSL("password"), true }, { QSL("auth_protected") }, { QSL("auth_username") },
-    { QSL("auth_password"), true }, { QSL("url") }, { QSL("force_update") }, { QSL("download_only_unread") }
-  };
+QVariantHash TtRssServiceRoot::customDatabaseData() const {
+  QVariantHash data;
+
+  data["username"] = m_network->username();
+  data["password"] = TextFactory::encrypt(m_network->password());
+  data["auth_protected"] = m_network->authIsUsed();
+  data["auth_username"] = m_network->authUsername();
+  data["auth_password"] = TextFactory::encrypt(m_network->authPassword());
+  data["url"] = m_network->url();
+  data["force_update"] = m_network->forceServerSideUpdate();
+  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
+
+  return data;
+}
+
+void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+  m_network->setUsername( data["username"].toString());
+  m_network->setPassword(TextFactory::decrypt(data["password"].toString()));
+  m_network->setAuthIsUsed(data["auth_protected"].toBool());
+  m_network->setAuthUsername(data["auth_username"].toString());
+  m_network->setAuthPassword(TextFactory::decrypt(data["auth_password"].toString()));
+  m_network->setUrl(data["url"].toString());
+  m_network->setForceServerSideUpdate(data["force_update"].toBool());
+  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
 QString TtRssServiceRoot::additionalTooltip() const {
@@ -214,70 +233,6 @@ void TtRssServiceRoot::updateTitle() {
   }
 
   setTitle(TextFactory::extractUsernameFromEmail(m_network->username()) + QSL(" (Tiny Tiny RSS)"));
-}
-
-QString TtRssServiceRoot::username() const {
-  return m_network->username();
-}
-
-void TtRssServiceRoot::setUsername(const QString& username) {
-  m_network->setUsername(username);
-}
-
-QString TtRssServiceRoot::password() const {
-  return m_network->password();
-}
-
-void TtRssServiceRoot::setPassword(const QString& password) {
-  m_network->setPassword(password);
-}
-
-bool TtRssServiceRoot::authProtected() const {
-  return m_network->authIsUsed();
-}
-
-void TtRssServiceRoot::setAuthProtected(bool auth_protected) {
-  m_network->setAuthIsUsed(auth_protected);
-}
-
-QString TtRssServiceRoot::authUsername() const {
-  return m_network->authUsername();
-}
-
-void TtRssServiceRoot::setAuthUsername(const QString& auth_username) {
-  m_network->setAuthUsername(auth_username);
-}
-
-QString TtRssServiceRoot::authPassword() const {
-  return m_network->authPassword();
-}
-
-void TtRssServiceRoot::setAuthPassword(const QString& auth_password) {
-  m_network->setAuthPassword(auth_password);
-}
-
-QString TtRssServiceRoot::url() const {
-  return m_network->url();
-}
-
-void TtRssServiceRoot::setUrl(const QString& url) {
-  m_network->setUrl(url);
-}
-
-bool TtRssServiceRoot::forceUpdate() const {
-  return m_network->forceServerSideUpdate();
-}
-
-void TtRssServiceRoot::setForceUpdate(bool force_update) {
-  m_network->setForceServerSideUpdate(force_update);
-}
-
-bool TtRssServiceRoot::downloadOnlyUnread() const {
-  return m_network->downloadOnlyUnreadMessages();
-}
-
-void TtRssServiceRoot::setDownloadOnlyUnread(bool download_only_unread) {
-  m_network->setDownloadOnlyUnreadMessages(download_only_unread);
 }
 
 RootItem* TtRssServiceRoot::obtainNewTreeForSyncIn() const {
