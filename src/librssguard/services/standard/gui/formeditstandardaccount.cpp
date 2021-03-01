@@ -13,5 +13,7 @@ FormEditStandardAccount::FormEditStandardAccount(QWidget* parent)
 
 void FormEditStandardAccount::apply() {
   FormAccountDetails::apply();
+
+  m_account->saveAccountDataToDatabase();
   accept();
 }

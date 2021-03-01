@@ -189,8 +189,8 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const Q
       ServiceRoot* root = new T();
 
       // Load common data.
-      root->setId(query.value(QSL("id")).toInt());
-      root->setAccountId(root->id());
+      //root->setId(query.value(QSL("id")).toInt());
+      root->setAccountId(query.value(QSL("id")).toInt());
 
       QNetworkProxy proxy(QNetworkProxy::ProxyType(query.value(QSL("proxy_type")).toInt()),
                           query.value(QSL("proxy_host")).toString(),

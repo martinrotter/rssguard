@@ -1670,8 +1670,8 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
       throw ApplicationException(q.lastError().text());
     }
     else {
-      account->setId(q.lastInsertId().toInt());
-      account->setAccountId(account->id());
+      //account->setId(q.lastInsertId().toInt());
+      account->setAccountId(q.lastInsertId().toInt());
     }
   }
 
@@ -1690,8 +1690,14 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
   q.bindValue(QSL(":proxy_password"), TextFactory::encrypt(proxy.password()));
   q.bindValue(QSL(":id"), account->accountId());
 
-  q.bindValue(QSL(":custom_data"),
-              QString::fromUtf8(QJsonDocument::fromVariant(account->customDatabaseData()).toJson(QJsonDocument::JsonFormat::Indented)));
+  auto custom_data = account->customDatabaseData();
+  QString serialized_custom_data;
+
+  if (!custom_data.isEmpty()) {
+    serialized_custom_data = QString::fromUtf8(QJsonDocument::fromVariant(custom_data).toJson(QJsonDocument::JsonFormat::Indented));
+  }
+
+  q.bindValue(QSL(":custom_data"), serialized_custom_data);
 
   if (!q.exec()) {
     throw ApplicationException(q.lastError().text());
