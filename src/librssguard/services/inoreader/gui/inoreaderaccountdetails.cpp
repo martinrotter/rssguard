@@ -7,7 +7,7 @@
 #include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"
 #include "services/inoreader/definitions.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
+#include "services/inoreader/inoreadernetworkfactory.h"
 
 InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
   : QWidget(parent), m_oauth(nullptr) {

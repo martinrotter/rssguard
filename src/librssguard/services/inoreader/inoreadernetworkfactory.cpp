@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/inoreader/network/inoreadernetworkfactory.h"
+#include "services/inoreader/inoreadernetworkfactory.h"
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"

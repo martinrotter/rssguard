@@ -7,7 +7,7 @@
 #include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"
 #include "services/gmail/definitions.h"
-#include "services/gmail/network/gmailnetworkfactory.h"
+#include "services/gmail/gmailnetworkfactory.h"
 
 GmailAccountDetails::GmailAccountDetails(QWidget* parent)
   : QWidget(parent), m_oauth(nullptr) {

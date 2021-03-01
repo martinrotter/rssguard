@@ -15,8 +15,8 @@
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/formeditttrssaccount.h"
 #include "services/tt-rss/gui/formttrssfeeddetails.h"
-#include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssfeed.h"
+#include "services/tt-rss/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
 #include <QClipboard>

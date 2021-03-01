@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/gmail/network/gmailnetworkfactory.h"
+#include "services/gmail/gmailnetworkfactory.h"
 
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"

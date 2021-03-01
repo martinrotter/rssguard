@@ -76,11 +76,15 @@ HEADERS += core/feeddownloader.h \
            gui/labelwithstatus.h \
            gui/lineeditwithstatus.h \
            gui/messagebox.h \
+           gui/messagepreviewer.h \
            gui/messagessearchlineedit.h \
            gui/messagestoolbar.h \
            gui/messagesview.h \
+           gui/networkproxydetails.h \
+           gui/newspaperpreviewer.h \
            gui/nonclosablemenu.h \
            gui/plaintoolbutton.h \
+           gui/searchtextwidget.h \
            gui/settings/settingsbrowsermail.h \
            gui/settings/settingsdatabase.h \
            gui/settings/settingsdownloads.h \
@@ -101,7 +105,6 @@ HEADERS += core/feeddownloader.h \
            gui/toolbareditor.h \
            gui/treeviewcolumnsmenu.h \
            gui/widgetwithstatus.h \
-           gui/networkproxydetails.h \
            miscellaneous/application.h \
            miscellaneous/autosaver.h \
            miscellaneous/databasecleaner.h \
@@ -124,8 +127,10 @@ HEADERS += core/feeddownloader.h \
            network-web/basenetworkaccessmanager.h \
            network-web/downloader.h \
            network-web/downloadmanager.h \
+           network-web/httpresponse.h \
            network-web/networkfactory.h \
            network-web/oauth2service.h \
+           network-web/oauthhttphandler.h \
            network-web/silentnetworkaccessmanager.h \
            network-web/webfactory.h \
            qtsingleapplication/qtlocalpeer.h \
@@ -136,6 +141,7 @@ HEADERS += core/feeddownloader.h \
            services/abstract/cacheforserviceroot.h \
            services/abstract/category.h \
            services/abstract/feed.h \
+           services/abstract/gui/authenticationdetails.h \
            services/abstract/gui/formaccountdetails.h \
            services/abstract/gui/formfeeddetails.h \
            services/abstract/importantnode.h \
@@ -155,11 +161,13 @@ HEADERS += core/feeddownloader.h \
            services/gmail/definitions.h \
            services/gmail/gmailentrypoint.h \
            services/gmail/gmailfeed.h \
+           services/gmail/gmailnetworkfactory.h \
            services/gmail/gmailserviceroot.h \
            services/gmail/gui/emailrecipientcontrol.h \
+           services/gmail/gui/formaddeditemail.h \
+           services/gmail/gui/formdownloadattachment.h \
            services/gmail/gui/formeditgmailaccount.h \
            services/gmail/gui/gmailaccountdetails.h \
-           services/gmail/network/gmailnetworkfactory.h \
            services/greader/definitions.h \
            services/greader/greaderentrypoint.h \
            services/greader/greaderfeed.h \
@@ -172,19 +180,18 @@ HEADERS += core/feeddownloader.h \
            services/inoreader/gui/inoreaderaccountdetails.h \
            services/inoreader/inoreaderentrypoint.h \
            services/inoreader/inoreaderfeed.h \
+           services/inoreader/inoreadernetworkfactory.h \
            services/inoreader/inoreaderserviceroot.h \
-           services/inoreader/network/inoreadernetworkfactory.h \
            services/owncloud/definitions.h \
            services/owncloud/gui/formeditowncloudaccount.h \
            services/owncloud/gui/owncloudaccountdetails.h \
-           services/owncloud/network/owncloudnetworkfactory.h \
            services/owncloud/owncloudfeed.h \
+           services/owncloud/owncloudnetworkfactory.h \
            services/owncloud/owncloudserviceentrypoint.h \
            services/owncloud/owncloudserviceroot.h \
            services/standard/atomparser.h \
            services/standard/definitions.h \
            services/standard/feedparser.h \
-           services/abstract/gui/authenticationdetails.h \
            services/standard/gui/formeditstandardaccount.h \
            services/standard/gui/formstandardcategorydetails.h \
            services/standard/gui/formstandardfeeddetails.h \
@@ -203,17 +210,10 @@ HEADERS += core/feeddownloader.h \
            services/tt-rss/gui/formttrssfeeddetails.h \
            services/tt-rss/gui/ttrssaccountdetails.h \
            services/tt-rss/gui/ttrssfeeddetails.h \
-           services/tt-rss/network/ttrssnetworkfactory.h \
            services/tt-rss/ttrssfeed.h \
+           services/tt-rss/ttrssnetworkfactory.h \
            services/tt-rss/ttrssserviceentrypoint.h \
-           services/tt-rss/ttrssserviceroot.h \
-           network-web/httpresponse.h \
-           services/gmail/gui/formdownloadattachment.h \
-           services/gmail/gui/formaddeditemail.h \
-           gui/searchtextwidget.h \
-           network-web/oauthhttphandler.h \
-           gui/messagepreviewer.h \
-           gui/newspaperpreviewer.h
+           services/tt-rss/ttrssserviceroot.h
 
 SOURCES += core/feeddownloader.cpp \
            core/feedsmodel.cpp \
@@ -257,11 +257,15 @@ SOURCES += core/feeddownloader.cpp \
            gui/labelwithstatus.cpp \
            gui/lineeditwithstatus.cpp \
            gui/messagebox.cpp \
+           gui/messagepreviewer.cpp \
            gui/messagessearchlineedit.cpp \
            gui/messagestoolbar.cpp \
            gui/messagesview.cpp \
+           gui/networkproxydetails.cpp \
+           gui/newspaperpreviewer.cpp \
            gui/nonclosablemenu.cpp \
            gui/plaintoolbutton.cpp \
+           gui/searchtextwidget.cpp \
            gui/settings/settingsbrowsermail.cpp \
            gui/settings/settingsdatabase.cpp \
            gui/settings/settingsdownloads.cpp \
@@ -282,7 +286,6 @@ SOURCES += core/feeddownloader.cpp \
            gui/toolbareditor.cpp \
            gui/treeviewcolumnsmenu.cpp \
            gui/widgetwithstatus.cpp \
-           gui/networkproxydetails.cpp \
            miscellaneous/application.cpp \
            miscellaneous/autosaver.cpp \
            miscellaneous/databasecleaner.cpp \
@@ -303,8 +306,10 @@ SOURCES += core/feeddownloader.cpp \
            network-web/basenetworkaccessmanager.cpp \
            network-web/downloader.cpp \
            network-web/downloadmanager.cpp \
+           network-web/httpresponse.cpp \
            network-web/networkfactory.cpp \
            network-web/oauth2service.cpp \
+           network-web/oauthhttphandler.cpp \
            network-web/silentnetworkaccessmanager.cpp \
            network-web/webfactory.cpp \
            qtsingleapplication/qtlocalpeer.cpp \
@@ -315,6 +320,7 @@ SOURCES += core/feeddownloader.cpp \
            services/abstract/cacheforserviceroot.cpp \
            services/abstract/category.cpp \
            services/abstract/feed.cpp \
+           services/abstract/gui/authenticationdetails.cpp \
            services/abstract/gui/formaccountdetails.cpp \
            services/abstract/gui/formfeeddetails.cpp \
            services/abstract/importantnode.cpp \
@@ -331,11 +337,13 @@ SOURCES += core/feeddownloader.cpp \
            services/feedly/gui/formeditfeedlyaccount.cpp \
            services/gmail/gmailentrypoint.cpp \
            services/gmail/gmailfeed.cpp \
+           services/gmail/gmailnetworkfactory.cpp \
            services/gmail/gmailserviceroot.cpp \
            services/gmail/gui/emailrecipientcontrol.cpp \
+           services/gmail/gui/formaddeditemail.cpp \
+           services/gmail/gui/formdownloadattachment.cpp \
            services/gmail/gui/formeditgmailaccount.cpp \
            services/gmail/gui/gmailaccountdetails.cpp \
-           services/gmail/network/gmailnetworkfactory.cpp \
            services/greader/greaderentrypoint.cpp \
            services/greader/greaderfeed.cpp \
            services/greader/greadernetwork.cpp \
@@ -346,17 +354,16 @@ SOURCES += core/feeddownloader.cpp \
            services/inoreader/gui/inoreaderaccountdetails.cpp \
            services/inoreader/inoreaderentrypoint.cpp \
            services/inoreader/inoreaderfeed.cpp \
+           services/inoreader/inoreadernetworkfactory.cpp \
            services/inoreader/inoreaderserviceroot.cpp \
-           services/inoreader/network/inoreadernetworkfactory.cpp \
            services/owncloud/gui/formeditowncloudaccount.cpp \
            services/owncloud/gui/owncloudaccountdetails.cpp \
-           services/owncloud/network/owncloudnetworkfactory.cpp \
            services/owncloud/owncloudfeed.cpp \
+           services/owncloud/owncloudnetworkfactory.cpp \
            services/owncloud/owncloudserviceentrypoint.cpp \
            services/owncloud/owncloudserviceroot.cpp \
            services/standard/atomparser.cpp \
            services/standard/feedparser.cpp \
-           services/abstract/gui/authenticationdetails.cpp \
            services/standard/gui/formeditstandardaccount.cpp \
            services/standard/gui/formstandardcategorydetails.cpp \
            services/standard/gui/formstandardfeeddetails.cpp \
@@ -374,17 +381,10 @@ SOURCES += core/feeddownloader.cpp \
            services/tt-rss/gui/formttrssfeeddetails.cpp \
            services/tt-rss/gui/ttrssaccountdetails.cpp \
            services/tt-rss/gui/ttrssfeeddetails.cpp \
-           services/tt-rss/network/ttrssnetworkfactory.cpp \
            services/tt-rss/ttrssfeed.cpp \
+           services/tt-rss/ttrssnetworkfactory.cpp \
            services/tt-rss/ttrssserviceentrypoint.cpp \
-           services/tt-rss/ttrssserviceroot.cpp \
-           network-web/httpresponse.cpp \
-           services/gmail/gui/formdownloadattachment.cpp \
-           services/gmail/gui/formaddeditemail.cpp \
-           gui/searchtextwidget.cpp \
-           network-web/oauthhttphandler.cpp \
-           gui/messagepreviewer.cpp \
-           gui/newspaperpreviewer.cpp
+           services/tt-rss/ttrssserviceroot.cpp
 
 mac {
   OBJECTIVE_SOURCES += miscellaneous/disablewindowtabbing.mm
@@ -400,6 +400,9 @@ FORMS += gui/dialogs/formabout.ui \
          gui/dialogs/formrestoredatabasesettings.ui \
          gui/dialogs/formsettings.ui \
          gui/dialogs/formupdate.ui \
+         gui/networkproxydetails.ui \
+         gui/newspaperpreviewer.ui \
+         gui/searchtextwidget.ui \
          gui/settings/settingsbrowsermail.ui \
          gui/settings/settingsdatabase.ui \
          gui/settings/settingsdownloads.ui \
@@ -409,13 +412,14 @@ FORMS += gui/dialogs/formabout.ui \
          gui/settings/settingslocalization.ui \
          gui/settings/settingsshortcuts.ui \
          gui/toolbareditor.ui \
-         gui/networkproxydetails.ui \
          network-web/downloaditem.ui \
          network-web/downloadmanager.ui \
+         services/abstract/gui/authenticationdetails.ui \
          services/abstract/gui/formaccountdetails.ui \
          services/abstract/gui/formfeeddetails.ui \
-         services/abstract/gui/authenticationdetails.ui \
          services/feedly/gui/feedlyaccountdetails.ui \
+         services/gmail/gui/formaddeditemail.ui \
+         services/gmail/gui/formdownloadattachment.ui \
          services/gmail/gui/gmailaccountdetails.ui \
          services/greader/gui/greaderaccountdetails.ui \
          services/inoreader/gui/inoreaderaccountdetails.ui \
@@ -423,12 +427,9 @@ FORMS += gui/dialogs/formabout.ui \
          services/standard/gui/formstandardcategorydetails.ui \
          services/standard/gui/formstandardimportexport.ui \
          services/standard/gui/standardfeeddetails.ui \
-         services/gmail/gui/formdownloadattachment.ui \
-         services/gmail/gui/formaddeditemail.ui \
-         gui/searchtextwidget.ui \
-         gui/newspaperpreviewer.ui \
          services/tt-rss/gui/ttrssaccountdetails.ui \
          services/tt-rss/gui/ttrssfeeddetails.ui
+
 
 equals(USE_WEBENGINE, true) {
   HEADERS += gui/locationlineedit.h \

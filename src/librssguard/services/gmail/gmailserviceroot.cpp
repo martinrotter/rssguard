@@ -11,10 +11,10 @@
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailentrypoint.h"
 #include "services/gmail/gmailfeed.h"
+#include "services/gmail/gmailnetworkfactory.h"
 #include "services/gmail/gui/formaddeditemail.h"
 #include "services/gmail/gui/formdownloadattachment.h"
 #include "services/gmail/gui/formeditgmailaccount.h"
-#include "services/gmail/network/gmailnetworkfactory.h"
 
 #include <QFileDialog>
 

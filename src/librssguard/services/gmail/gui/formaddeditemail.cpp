@@ -9,9 +9,9 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
+#include "services/gmail/gmailnetworkfactory.h"
 #include "services/gmail/gmailserviceroot.h"
 #include "services/gmail/gui/emailrecipientcontrol.h"
-#include "services/gmail/network/gmailnetworkfactory.h"
 
 #include <QtConcurrent/QtConcurrentRun>
 

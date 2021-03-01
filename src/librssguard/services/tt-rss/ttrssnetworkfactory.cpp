@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/tt-rss/network/ttrssnetworkfactory.h"
+#include "services/tt-rss/ttrssnetworkfactory.h"
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"

@@ -5,7 +5,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/ttrssaccountdetails.h"
-#include "services/tt-rss/network/ttrssnetworkfactory.h"
+#include "services/tt-rss/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
 FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)

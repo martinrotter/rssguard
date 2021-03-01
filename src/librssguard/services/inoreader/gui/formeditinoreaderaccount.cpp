@@ -9,8 +9,8 @@
 #include "network-web/webfactory.h"
 #include "services/inoreader/definitions.h"
 #include "services/inoreader/gui/inoreaderaccountdetails.h"
+#include "services/inoreader/inoreadernetworkfactory.h"
 #include "services/inoreader/inoreaderserviceroot.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
 
 #include <QThread>
 

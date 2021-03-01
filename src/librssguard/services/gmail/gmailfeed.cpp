@@ -5,8 +5,8 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/gmail/definitions.h"
+#include "services/gmail/gmailnetworkfactory.h"
 #include "services/gmail/gmailserviceroot.h"
-#include "services/gmail/network/gmailnetworkfactory.h"
 
 GmailFeed::GmailFeed(RootItem* parent) : Feed(parent) {}
 
