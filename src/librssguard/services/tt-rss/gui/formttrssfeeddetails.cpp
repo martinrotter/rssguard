@@ -7,8 +7,8 @@
 #include "services/abstract/gui/authenticationdetails.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/ttrssfeeddetails.h"
-#include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssfeed.h"
+#include "services/tt-rss/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
 #include <QClipboard>

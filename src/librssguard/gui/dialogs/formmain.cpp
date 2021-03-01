@@ -31,7 +31,7 @@
 #include "network-web/webfactory.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "services/owncloud/owncloudnetworkfactory.h"
 #include "services/standard/gui/formstandardimportexport.h"
 
 #if defined(USE_WEBENGINE)

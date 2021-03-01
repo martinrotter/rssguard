@@ -8,8 +8,8 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/inoreader/definitions.h"
 #include "services/inoreader/gui/formeditinoreaderaccount.h"
+#include "services/inoreader/inoreadernetworkfactory.h"
 #include "services/inoreader/inoreaderserviceroot.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
 
 #include <QMessageBox>
 

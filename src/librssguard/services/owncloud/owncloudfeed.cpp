@@ -4,7 +4,7 @@
 
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "services/owncloud/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudserviceroot.h"
 
 #include <QPointer>

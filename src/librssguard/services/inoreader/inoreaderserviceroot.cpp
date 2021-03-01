@@ -12,7 +12,7 @@
 #include "services/inoreader/gui/formeditinoreaderaccount.h"
 #include "services/inoreader/inoreaderentrypoint.h"
 #include "services/inoreader/inoreaderfeed.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
+#include "services/inoreader/inoreadernetworkfactory.h"
 
 #include <QThread>
 

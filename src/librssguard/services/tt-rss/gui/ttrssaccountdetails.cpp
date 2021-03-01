@@ -5,7 +5,7 @@
 #include "gui/guiutilities.h"
 #include "network-web/networkfactory.h"
 #include "services/tt-rss/definitions.h"
-#include "services/tt-rss/network/ttrssnetworkfactory.h"
+#include "services/tt-rss/ttrssnetworkfactory.h"
 
 TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);

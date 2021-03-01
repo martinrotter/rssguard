@@ -6,7 +6,7 @@
 #include "gui/guiutilities.h"
 #include "miscellaneous/systemfactory.h"
 #include "services/owncloud/definitions.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "services/owncloud/owncloudnetworkfactory.h"
 
 OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);

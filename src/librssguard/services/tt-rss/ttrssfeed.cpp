@@ -8,7 +8,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/tt-rss/definitions.h"
-#include "services/tt-rss/network/ttrssnetworkfactory.h"
+#include "services/tt-rss/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
 #include <QPointer>

@@ -4,8 +4,8 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "services/inoreader/inoreadernetworkfactory.h"
 #include "services/inoreader/inoreaderserviceroot.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
 
 InoreaderFeed::InoreaderFeed(RootItem* parent) : Feed(parent) {}
 

@@ -11,8 +11,8 @@
 #include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/owncloud/gui/formeditowncloudaccount.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudfeed.h"
+#include "services/owncloud/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem* parent)

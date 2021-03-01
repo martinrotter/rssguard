@@ -7,7 +7,7 @@
 #include "network-web/networkfactory.h"
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/gui/owncloudaccountdetails.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "services/owncloud/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudserviceroot.h"
 
 FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
