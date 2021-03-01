@@ -45,6 +45,9 @@ jobs:
         run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}"
         env:
           GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+          INOREADER_CLIENT_ID: ${{ secrets.INOREADER_CLIENT_ID }}
+          INOREADER_CLIENT_SECRET: ${{ secrets.INOREADER_CLIENT_SECRET }}
         
       - name: Release development binaries
         uses: softprops/action-gh-release@v1
