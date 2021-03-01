@@ -2187,6 +2187,9 @@ bool DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db,
   query.bindValue(QSL(":id"), account_id);
 
   if (!query.exec() || !query.next()) {
+    qWarningNN << LOGSEC_OAUTH
+               << "Cannot fetch custom data column for storing of OAuth tokens, because of error:"
+               << QUOTE_W_SPACE_DOT(query.lastError().text());
     return false;
   }
 
@@ -2200,6 +2203,9 @@ bool DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db,
   query.bindValue(QSL(":id"), account_id);
 
   if (!query.exec()) {
+    qWarningNN << LOGSEC_OAUTH
+               << "Cannot store OAuth tokens, because of error:"
+               << QUOTE_W_SPACE_DOT(query.lastError().text());
     return false;
   }
   else {

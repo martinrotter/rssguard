@@ -21,6 +21,8 @@ ServiceRoot::ServiceRoot(RootItem* parent)
   m_labelsNode(new LabelsNode(this)), m_accountId(NO_PARENT_CATEGORY), m_networkProxy(QNetworkProxy()) {
   setKind(RootItem::Kind::ServiceRoot);
   setCreationDate(QDateTime::currentDateTime());
+
+  appendCommonNodes();
 }
 
 ServiceRoot::~ServiceRoot() = default;
@@ -202,6 +204,22 @@ void ServiceRoot::cleanAllItemsFromModel() {
   if (labelsNode() != nullptr) {
     for (RootItem* lbl : labelsNode()->childItems()) {
       requestItemRemoval(lbl);
+    }
+  }
+}
+
+void ServiceRoot::appendCommonNodes() {
+  if (recycleBin() != nullptr && !childItems().contains(recycleBin())) {
+    appendChild(recycleBin());
+  }
+
+  if (importantNode() != nullptr && !childItems().contains(importantNode())) {
+    appendChild(importantNode());
+  }
+
+  if (labelsNode() != nullptr) {
+    if (!childItems().contains(labelsNode())) {
+      appendChild(labelsNode());
     }
   }
 }
@@ -408,26 +426,15 @@ void ServiceRoot::syncIn() {
 
   setIcon(original_icon);
   itemChanged(getSubTree());
-  requestItemExpand({ this }, true);
+  requestItemExpand(getSubTree(), true);
 }
 
 void ServiceRoot::performInitialAssembly(const Assignment& categories,
                                          const Assignment& feeds,
                                          const QList<Label*>& labels) {
-  // All data are now obtained, lets create the hierarchy.
   assembleCategories(categories);
   assembleFeeds(feeds);
-
-  // As the last item, add recycle bin, which is needed.
-  appendChild(recycleBin());
-  appendChild(importantNode());
-
-  if (labelsNode() != nullptr) {
-    appendChild(labelsNode());
-    labelsNode()->loadLabels(labels);
-    requestItemExpand({ labelsNode() }, true);
-  }
-
+  labelsNode()->loadLabels(labels);
   updateCounts(true);
 }
 

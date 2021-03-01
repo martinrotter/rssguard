@@ -3,10 +3,11 @@
 #ifndef INOREADER_DEFINITIONS_H
 #define INOREADER_DEFINITIONS_H
 
-#define INOREADER_OAUTH_SCOPE           "read write"
-#define INOREADER_OAUTH_TOKEN_URL       "https://www.inoreader.com/oauth2/token"
-#define INOREADER_OAUTH_AUTH_URL        "https://www.inoreader.com/oauth2/auth"
-#define INOREADER_REG_API_URL           "https://www.inoreader.com/developers/register-app"
+#define INOREADER_OAUTH_REDIRECT_URI_PORT   14488
+#define INOREADER_OAUTH_SCOPE               "read write"
+#define INOREADER_OAUTH_TOKEN_URL           "https://www.inoreader.com/oauth2/token"
+#define INOREADER_OAUTH_AUTH_URL            "https://www.inoreader.com/oauth2/auth"
+#define INOREADER_REG_API_URL               "https://www.inoreader.com/developers/register-app"
 
 #define INOREADER_REFRESH_TOKEN_KEY     "refresh_token"
 #define INOREADER_ACCESS_TOKEN_KEY      "access_token"

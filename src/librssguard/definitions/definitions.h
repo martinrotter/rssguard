@@ -23,7 +23,6 @@
 #define ADBLOCK_EASYLIST_URL                  "https://easylist.to/easylist/easylist.txt"
 
 #define OAUTH_DECRYPTION_KEY                  11451167756100761335ul
-#define OAUTH_REDIRECT_URI_PORT               14488
 #define OAUTH_REDIRECT_URI                    "http://localhost"
 
 #define ENCLOSURES_OUTER_SEPARATOR            '#'

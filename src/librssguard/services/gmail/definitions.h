@@ -3,9 +3,10 @@
 #ifndef GMAIL_DEFINITIONS_H
 #define GMAIL_DEFINITIONS_H
 
-#define GMAIL_OAUTH_AUTH_URL      "https://accounts.google.com/o/oauth2/auth"
-#define GMAIL_OAUTH_TOKEN_URL     "https://accounts.google.com/o/oauth2/token"
-#define GMAIL_OAUTH_SCOPE         "https://mail.google.com/"
+#define GMAIL_OAUTH_REDIRECT_URI_PORT   14499
+#define GMAIL_OAUTH_AUTH_URL            "https://accounts.google.com/o/oauth2/auth"
+#define GMAIL_OAUTH_TOKEN_URL           "https://accounts.google.com/o/oauth2/token"
+#define GMAIL_OAUTH_SCOPE               "https://mail.google.com/"
 
 #define GMAIL_REG_API_URL         "https://console.developers.google.com/apis/credentials"
 
