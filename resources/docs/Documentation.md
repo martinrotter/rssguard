@@ -8,6 +8,7 @@
     * [Localizations](#localizations)
     * [Videos](#videos)
     * [Web-based and lite app variants](#web-based-and-lite-app-variants)
+    * [RSS Guard 3 vs. RSS Guard 4](#RSS-Guard-3-vs.-RSS-Guard-4)
 * [Features](#features)
     * [List of main features](#list-of-main-features)
     * [Supported feed formats and online feed services](Feed-formats.md)
@@ -22,7 +23,7 @@
     * [GUI tweaking](#gui-tweaking)
 * [Miscellaneous](#miscellaneous)
     * [Command line interface](#cli)
-    * [OS/2](#os2)
+    * [How to build](#how-to-build)
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
@@ -79,7 +80,7 @@ Here you can see some videos to see RSS Guard in action:
 
 ## Web-based and lite app variants
 RSS Guard is distributed in two variants:
-* **Standard package with WebEngine-based bundled message viewer**: This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption. Also, installation packages are relatively big.
+* **Standard package with WebEngine-based bundled message viewer**: This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption too much. Also, installation packages are relatively big.
 
 <img src="images/webengine-view.png" width="80%">
 
@@ -88,6 +89,11 @@ RSS Guard is distributed in two variants:
 <img src="images/nonwebengine-view.png" width="80%">
 
 If you're not sure which version to use, **use the WebEngine-based RSS Guard**.
+
+## RSS Guard 3 vs. RSS Guard 4
+RSS Guard 4 is **NOT** backwards compatible with previous editions of the application!!! It stores settings in slightly different [folder](#portable-user-data) to not overwrite user data from previous versions.
+
+RSS Guard 4.x contains numerous enhancements and many of them are hidden under the hood and they make application easier to maintain, easier to improve and easier to use.
 
 # Features
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF/ATOM/JSON. RSS Guard is developed on top of the [Qt library](http://qt-project.org) and it supports these operating systems:
@@ -166,7 +172,7 @@ MariaDB (MySQL) backend is there for users, who want to store their data in a ce
 For database-related configuration see `Settings -> Data storage` dialog.
 
 ## Google Reader API
-Starting with RSS Guard 3.9.0, there is a new plugin which offers synchronization with services using Google Reader API. Plugin was so far tested with FreshRSS, The Old Reader and Bazqux. All Google Reader API enabled services should work.
+Starting with RSS Guard 3.9.0, there is a new plugin which offers synchronization with services using Google Reader API. Plugin was so far tested with FreshRSS, Reedah, The Old Reader and Bazqux. All Google Reader API enabled services should work.
 
 Note that Inoreader has its own separate plugin, because it uses OAuth as authentication method, therefore it is cleaner to have separate plugin.
 
@@ -197,8 +203,8 @@ Sadly, some builds of RSS Guard do not have embedded production Feedly API keys 
 <img src="images/feedly-details.png">
 
 There are two big downsides of using `developer access token`:
-* It expires after one month and must be renewed.
-* It only allows maximum of 250 API calls per day.
+* It expires after one month and must be manually renewed.
+* It allows maximum of 250 API calls per day.
 
 ## Downloading files
 RSS Guard offers simple embedded file downloader.
@@ -252,8 +258,11 @@ Options:
   -v, --version                  Displays version information.
 ```
 
-## OS/2
-RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to make sure that your OS/2 distro is up-to-date and you have all dependencies installed:
+## How to build
+RSS Guard is C++ application and all common build instructions can be found in top of [project file](https://github.com/martinrotter/rssguard/blob/master/build.pro).
+
+### OS/2-specifics
+RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to make sure that your OS/2 distribution is up-to-date and you have all dependencies installed:
 * `os2-base`,
 * all `gcc-*` packages,
 * `libc` and `libcx` up-to-date,
@@ -262,11 +271,14 @@ RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to
 * `binutils`,
 * all relevant `qt5-*` packages.
 
+Make sure you really have all development dependencies installed as OS/2 is known to thro erratic errors if you miss some important compile-time dependency.
+
 After your dependecies are installed, then you can compile via standard `qmake -> make -> make install` steps and package with
 
 ```
 7z.exe a -t7z -mmt -mx9 "rssguard.7z" "<build-folder\src\rssguard\app\*"
 ```
+
 command.
 
 ## Cleaning database
@@ -277,11 +289,11 @@ Your RSS Guard's database can grow really big over time, therefore you might nee
 ## Portable user data
 RSS Guard checks "config directory" (this is `C:\Users\<user>\AppData\Local` directory on Windows) for existence of file:
 ```
-RSS Guard\data\config\config.ini
+RSS Guard 4\data\config\config.ini
 ```
 If that file exists, then RSS Guard will use the file (this is called _non-portable **FALLBACK** settings_). If this file is not found, then application will check if its root path (folder, in which RSS Guard executable is installed) is writable, and if it is, it will store settings in it, in subfolder:
 ```
-data\config\config.ini
+data4\config\config.ini
 ```
 This is _fully-portable mode_. Check `About RSS Guard -> Resources` dialog to find more info on significant paths used.
 

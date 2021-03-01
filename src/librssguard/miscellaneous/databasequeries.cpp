@@ -1703,17 +1703,6 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
 bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id) {
   QSqlQuery q(db);
 
-  q.setForwardOnly(true);
-
-  // Remove all messages and other data from this feed.
-  q.prepare(QSL("DELETE FROM MessageFiltersInFeeds WHERE feed_custom_id = :feed AND account_id = :account_id;"));
-  q.bindValue(QSL(":feed"), feed_custom_id);
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (!q.exec()) {
-    return false;
-  }
-
   q.prepare(QSL("DELETE FROM Messages WHERE feed = :feed AND account_id = :account_id;"));
   q.bindValue(QSL(":feed"), feed_custom_id);
   q.bindValue(QSL(":account_id"), account_id);
@@ -1726,10 +1715,13 @@ bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, int feed_custom_id, int
   q.prepare(QSL("DELETE FROM Feeds WHERE custom_id = :feed AND account_id = :account_id;"));
   q.bindValue(QSL(":feed"), feed_custom_id);
   q.bindValue(QSL(":account_id"), account_id);
-  return q.exec();
+
+  return q.exec() &&
+         purgeLeftoverMessageFilterAssignments(db, account_id) &&
+         purgeLeftoverLabelAssignments(db, account_id);
 }
 
-bool DatabaseQueries::deleteStandardCategory(const QSqlDatabase& db, int id) {
+bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
   QSqlQuery q(db);
 
   // Remove this category from database.
@@ -1914,16 +1906,16 @@ bool DatabaseQueries::editStandardFeed(const QSqlDatabase& db, int parent_id, in
   return suc;
 }
 
-bool DatabaseQueries::editBaseFeed(const QSqlDatabase& db, int feed_id, Feed::AutoUpdateType auto_update_type,
-                                   int auto_update_interval, bool is_protected, const QString& username,
-                                   const QString& password) {
+bool DatabaseQueries::editFeed(const QSqlDatabase& db, int feed_id, Feed::AutoUpdateType auto_update_type,
+                               int auto_update_interval, bool is_protected, const QString& username,
+                               const QString& password) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare("UPDATE Feeds "
             "SET update_type = :update_type, update_interval = :update_interval, protected = :protected, username = :username, password = :password "
             "WHERE id = :id;");
-  q.bindValue(QSL(":update_type"), (int) auto_update_type);
+  q.bindValue(QSL(":update_type"), int(auto_update_type));
   q.bindValue(QSL(":update_interval"), auto_update_interval);
   q.bindValue(QSL(":id"), feed_id);
   q.bindValue(QSL(":protected"), is_protected ? 1 : 0);
