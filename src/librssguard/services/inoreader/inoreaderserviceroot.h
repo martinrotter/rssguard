@@ -27,11 +27,14 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString code() const;
     virtual QString additionalTooltip() const;
     virtual void saveAllCachedData(bool ignore_errors);
-
-    void updateTitle();
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data) const;
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
+
+  private:
+    void updateTitle();
 
   private:
     InoreaderNetworkFactory* m_network;

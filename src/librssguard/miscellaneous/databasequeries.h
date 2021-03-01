@@ -23,6 +23,10 @@
 class DatabaseQueries {
   public:
 
+    // Custom data serializers.
+    static QString serializeCustomData(const QVariantHash& data);
+    static QVariantHash deserializeCustomData(const QString& data);
+
     // Label operators.
     static bool isLabelAssignedToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static bool deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
@@ -98,8 +102,7 @@ class DatabaseQueries {
 
     template<typename Categ, typename Fee>
     static void loadFromDatabase(ServiceRoot* root);
-    static bool storeNewOauthTokens(const QSqlDatabase& db, const QString& table_name,
-                                    const QString& refresh_token, int account_id);
+    static bool storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
     static int updateMessages(QSqlDatabase db, const QList<Message>& messages, const QString& feed_custom_id,
                               int account_id, const QString& url, bool force_update, bool* any_message_changed, bool* ok = nullptr);
@@ -199,7 +202,7 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const Q
                           TextFactory::decrypt(query.value(QSL("proxy_password")).toString()));
 
       root->setNetworkProxy(proxy);
-      root->setCustomDatabaseData(QJsonDocument::fromJson(query.value(QSL("custom_data")).toString().toUtf8()).object().toVariantHash());
+      root->setCustomDatabaseData(deserializeCustomData(query.value(QSL("custom_data")).toString()));
 
       roots.append(root);
     }

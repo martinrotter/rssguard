@@ -50,6 +50,28 @@ void GmailServiceRoot::writeNewEmail() {
   FormAddEditEmail(this, qApp->mainFormWidget()).execForAdd();
 }
 
+QVariantHash GmailServiceRoot::customDatabaseData() const {
+  QVariantHash data;
+
+  data["username"] = m_network->username();
+  data["batch_size"] = m_network->batchSize();
+  data["client_id"] = m_network->oauth()->clientId();
+  data["client_secret"] = m_network->oauth()->clientSecret();
+  data["refresh_token"] = m_network->oauth()->refreshToken();
+  data["redirect_uri"] = m_network->oauth()->redirectUrl();
+
+  return data;
+}
+
+void GmailServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+  m_network->setUsername(data["username"].toString());
+  m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->oauth()->setClientId(data["client_id"].toString());
+  m_network->oauth()->setClientSecret(data["client_secret"].toString());
+  m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
+  m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString());
+}
+
 bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
   QString str_url = url.toString();
   QString attachment_id = str_url.mid(str_url.indexOf(QL1C('?')) + 1);

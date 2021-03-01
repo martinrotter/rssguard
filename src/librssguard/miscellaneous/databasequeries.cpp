@@ -37,6 +37,27 @@
 #include <QUrl>
 #include <QVariant>
 
+QString DatabaseQueries::serializeCustomData(const QVariantHash& data) {
+  if (!data.isEmpty()) {
+    return QString::fromUtf8(QJsonDocument::fromVariant(data).toJson(QJsonDocument::JsonFormat::Indented));
+  }
+  else {
+    return QString();
+  }
+}
+
+QVariantHash DatabaseQueries::deserializeCustomData(const QString& data) {
+  if (data.isEmpty()) {
+    return QVariantHash();
+  }
+  else {
+    auto json = QJsonDocument::fromJson(data.toUtf8());
+    auto json_obj = json.object();
+
+    return json.object().toVariantHash();
+  }
+}
+
 bool DatabaseQueries::isLabelAssignedToMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
   QSqlQuery q(db);
 
@@ -1691,11 +1712,7 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
   q.bindValue(QSL(":id"), account->accountId());
 
   auto custom_data = account->customDatabaseData();
-  QString serialized_custom_data;
-
-  if (!custom_data.isEmpty()) {
-    serialized_custom_data = QString::fromUtf8(QJsonDocument::fromVariant(custom_data).toJson(QJsonDocument::JsonFormat::Indented));
-  }
+  QString serialized_custom_data = serializeCustomData(custom_data);
 
   q.bindValue(QSL(":custom_data"), serialized_custom_data);
 
@@ -2162,25 +2179,31 @@ QStringList DatabaseQueries::getAllRecipients(const QSqlDatabase& db, int accoun
   return rec;
 }
 
-bool DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db, const QString& table_name,
+bool DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db,
                                           const QString& refresh_token, int account_id) {
   QSqlQuery query(db);
 
-  // TODO:, není funkční
-
-  query.prepare(QSL("UPDATE %1 "
-                    "SET refresh_token = :refresh_token "
-                    "WHERE id = :id;").arg(table_name));
-  query.bindValue(QSL(":refresh_token"), refresh_token);
+  query.prepare(QSL("SELECT custom_data FROM Accounts WHERE id = :id;"));
   query.bindValue(QSL(":id"), account_id);
 
-  if (query.exec()) {
-    qDebugNN << LOGSEC_DB << "Stored new refresh token into table" << QUOTE_W_SPACE_DOT(table_name);
-    return true;
+  if (!query.exec() || !query.next()) {
+    return false;
+  }
+
+  QVariantHash custom_data = deserializeCustomData(query.value(0).toString());
+
+  custom_data["refresh_token"] = refresh_token;
+
+  query.clear();
+  query.prepare(QSL("UPDATE Accounts SET custom_data = :custom_data WHERE id = :id;"));
+  query.bindValue(QSL(":custom_data"), serializeCustomData(custom_data));
+  query.bindValue(QSL(":id"), account_id);
+
+  if (!query.exec()) {
+    return false;
   }
   else {
-    qWarningNN << LOGSEC_DB << "Updating tokens in DB failed:" << QUOTE_W_SPACE_DOT(query.lastError().text());
-    return false;
+    return true;
   }
 }
 

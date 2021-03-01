@@ -44,6 +44,34 @@ bool FeedlyServiceRoot::editViaGui() {
   return true;
 }
 
+QVariantHash FeedlyServiceRoot::customDatabaseData() const {
+  QVariantHash data;
+
+  data["username"] = m_network->username();
+  data["dat"] = m_network->developerAccessToken();
+
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
+  data["refresh_token"] = m_network->oauth()->refreshToken();
+#endif
+
+  data["batch_size"] = m_network->batchSize();
+  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
+
+  return data;
+}
+
+void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+  m_network->setUsername(data["username"].toString());
+  m_network->setDeveloperAccessToken(data["dat"].toString());
+
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
+  m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
+#endif
+
+  m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
+}
+
 void FeedlyServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
     DatabaseQueries::loadFromDatabase<Category, FeedlyFeed>(this);

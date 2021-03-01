@@ -29,17 +29,18 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString code() const;
     virtual QString additionalTooltip() const;
     virtual void saveAllCachedData(bool ignore_errors);
-
-    void updateTitle();
-
-  private slots:
-    void replyToEmail();
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data) const;
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
-  private:
+  private slots:
+    void replyToEmail();
     void writeNewEmail();
+
+  private:
+    void updateTitle();
 
   private:
     GmailNetworkFactory* m_network;

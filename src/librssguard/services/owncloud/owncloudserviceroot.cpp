@@ -126,3 +126,25 @@ RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
     return nullptr;
   }
 }
+
+QVariantHash OwnCloudServiceRoot::customDatabaseData() const {
+  QVariantHash data;
+
+  data["auth_username"] = m_network->authUsername();
+  data["auth_password"] = TextFactory::encrypt(m_network->authPassword());
+  data["url"] = m_network->url();
+  data["force_update"] = m_network->forceServerSideUpdate();
+  data["batch_size"] = m_network->batchSize();
+  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
+
+  return data;
+}
+
+void OwnCloudServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+  m_network->setAuthUsername(data["auth_username"].toString());
+  m_network->setAuthPassword(TextFactory::decrypt(data["auth_password"].toString()));
+  m_network->setUrl(data["url"].toString());
+  m_network->setForceServerSideUpdate(data["force_update"].toBool());
+  m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
+}

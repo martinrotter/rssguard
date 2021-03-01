@@ -32,6 +32,28 @@ ServiceRoot::LabelOperation InoreaderServiceRoot::supportedLabelOperations() con
   return ServiceRoot::LabelOperation(0);
 }
 
+QVariantHash InoreaderServiceRoot::customDatabaseData() const {
+  QVariantHash data;
+
+  data["username"] = m_network->username();
+  data["batch_size"] = m_network->batchSize();
+  data["client_id"] = m_network->oauth()->clientId();
+  data["client_secret"] = m_network->oauth()->clientSecret();
+  data["refresh_token"] = m_network->oauth()->refreshToken();
+  data["redirect_uri"] = m_network->oauth()->redirectUrl();
+
+  return data;
+}
+
+void InoreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+  m_network->setUsername(data["username"].toString());
+  m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->oauth()->setClientId(data["client_id"].toString());
+  m_network->oauth()->setClientSecret(data["client_secret"].toString());
+  m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
+  m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString());
+}
+
 bool InoreaderServiceRoot::isSyncable() const {
   return true;
 }

@@ -22,14 +22,6 @@ class QAction;
 class MessagesModel;
 class CacheForServiceRoot;
 
-struct CustomDatabaseEntry {
-  public:
-    CustomDatabaseEntry(const QString& name, bool encrypted = false) : m_name(name), m_encrypted(encrypted) {}
-
-    QString m_name;
-    bool m_encrypted;
-};
-
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
 // service like service account username/password etc.
