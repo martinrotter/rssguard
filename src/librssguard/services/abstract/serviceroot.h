@@ -209,6 +209,7 @@ class ServiceRoot : public RootItem {
     void removeOldAccountFromDatabase(bool including_messages);
     void storeNewFeedTree(RootItem* root);
     void cleanAllItemsFromModel();
+    void appendCommonNodes();
 
     // Removes messages which do not belong to any
     // existing feed.

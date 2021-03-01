@@ -60,7 +60,7 @@ void InoreaderNetworkFactory::initializeOauth() {
 
   m_oauth2->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +
                            QL1C(':') +
-                           QString::number(OAUTH_REDIRECT_URI_PORT));
+                           QString::number(INOREADER_OAUTH_REDIRECT_URI_PORT));
 
   connect(m_oauth2, &OAuth2Service::tokensRetrieveError, this, &InoreaderNetworkFactory::onTokensError);
   connect(m_oauth2, &OAuth2Service::authFailed, this, &InoreaderNetworkFactory::onAuthFailed);
@@ -68,7 +68,7 @@ void InoreaderNetworkFactory::initializeOauth() {
     Q_UNUSED(expires_in)
     Q_UNUSED(access_token)
 
-    if (m_service != nullptr && !refresh_token.isEmpty()) {
+    if (m_service != nullptr && m_service->accountId() > 0 && !refresh_token.isEmpty()) {
       QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
       DatabaseQueries::storeNewOauthTokens(database, refresh_token, m_service->accountId());
