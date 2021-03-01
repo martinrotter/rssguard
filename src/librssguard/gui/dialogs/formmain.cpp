@@ -231,6 +231,11 @@ void FormMain::prepareMenus() {
   m_ui->m_actionSwitchMainMenu->setVisible(false);
   m_ui->m_actionFullscreen->setVisible(false);
 #endif
+
+  if (QSysInfo::currentCpuArchitecture().contains(QSL("arm"), Qt::CaseSensitivity::CaseInsensitive)) {
+    qWarningNN << LOGSEC_GUI << "Disabling native menu bar.";
+    m_ui->m_menuBar->setNativeMenuBar(false);
+  }
 }
 
 void FormMain::switchFullscreenMode() {
