@@ -28,7 +28,7 @@ FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
   createConnections();
 }
 
-int FormFeedDetails::editBaseFeed(Feed* input_feed) {
+int FormFeedDetails::editFeed(Feed* input_feed) {
   setEditableFeed(input_feed);
   return QDialog::exec();
 }

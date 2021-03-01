@@ -171,14 +171,14 @@ bool Feed::canBeEdited() const {
 bool Feed::editViaGui() {
   QScopedPointer<FormFeedDetails> form_pointer(new FormFeedDetails(getParentServiceRoot(), qApp->mainFormWidget()));
 
-  form_pointer->editBaseFeed(this);
+  form_pointer->editFeed(this);
   return false;
 }
 
 bool Feed::editItself(Feed* new_feed_data) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  if (DatabaseQueries::editBaseFeed(database, id(), new_feed_data->autoUpdateType(),
+  if (DatabaseQueries::editFeed(database, id(), new_feed_data->autoUpdateType(),
                                     new_feed_data->autoUpdateInitialInterval(),
                                     new_feed_data->passwordProtected(),
                                     new_feed_data->username(),

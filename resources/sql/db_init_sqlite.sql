@@ -27,7 +27,7 @@ CREATE TABLE Categories (
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
   
-  FOREIGN KEY (account_id) REFERENCES Accounts (id)
+  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
 -- !
 CREATE TABLE Feeds (
@@ -43,7 +43,7 @@ CREATE TABLE Feeds (
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
   
-  FOREIGN KEY (account_id) REFERENCES Accounts (id)
+  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
 -- !
 CREATE TABLE Messages (
@@ -63,7 +63,7 @@ CREATE TABLE Messages (
   custom_id       TEXT,
   custom_hash     TEXT,
   
-  FOREIGN KEY (account_id) REFERENCES Accounts (id)
+  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
 -- !
 CREATE TABLE MessageFilters (
@@ -88,7 +88,7 @@ CREATE TABLE Labels (
   custom_id           TEXT,
   account_id          INTEGER     NOT NULL,
   
-  FOREIGN KEY (account_id) REFERENCES Accounts (id)
+  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
 -- !
 CREATE TABLE LabelsInMessages (

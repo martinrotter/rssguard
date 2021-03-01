@@ -24,7 +24,7 @@ class FormFeedDetails : public QDialog {
     virtual ~FormFeedDetails() = default;
 
   public slots:
-    int editBaseFeed(Feed* input_feed);
+    int editFeed(Feed* input_feed);
 
   protected slots:
     void activateTab(int index);
