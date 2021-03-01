@@ -53,6 +53,9 @@ class StandardFeed : public Feed {
     bool editViaGui();
     bool deleteViaGui();
 
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
+
     // Obtains data related to this feed.
     Qt::ItemFlags additionalFlags() const;
     bool performDragDropChange(RootItem* target_item);
@@ -66,7 +69,7 @@ class StandardFeed : public Feed {
     void setType(Type type);
 
     SourceType sourceType() const;
-    void setSourceType(const SourceType& source_type);
+    void setSourceType(SourceType source_type);
 
     QString encoding() const;
     void setEncoding(const QString& encoding);

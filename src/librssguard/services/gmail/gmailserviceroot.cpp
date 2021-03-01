@@ -63,7 +63,7 @@ QVariantHash GmailServiceRoot::customDatabaseData() const {
   return data;
 }
 
-void GmailServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+void GmailServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setUsername(data["username"].toString());
   m_network->setBatchSize(data["batch_size"].toInt());
   m_network->oauth()->setClientId(data["client_id"].toString());

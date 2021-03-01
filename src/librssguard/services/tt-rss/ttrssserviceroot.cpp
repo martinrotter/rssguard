@@ -200,7 +200,7 @@ QVariantHash TtRssServiceRoot::customDatabaseData() const {
   return data;
 }
 
-void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setUsername( data["username"].toString());
   m_network->setPassword(TextFactory::decrypt(data["password"].toString()));
   m_network->setAuthIsUsed(data["auth_protected"].toBool());

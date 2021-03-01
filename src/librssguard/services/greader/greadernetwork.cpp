@@ -292,7 +292,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     auto* feed = new GreaderFeed();
 
     feed->setDescription(url);
-    feed->setUrl(url);
+    feed->setSource(url);
     feed->setTitle(title);
     feed->setCustomId(id);
 

@@ -45,7 +45,7 @@ QVariantHash InoreaderServiceRoot::customDatabaseData() const {
   return data;
 }
 
-void InoreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+void InoreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setUsername(data["username"].toString());
   m_network->setBatchSize(data["batch_size"].toInt());
   m_network->oauth()->setClientId(data["client_id"].toString());

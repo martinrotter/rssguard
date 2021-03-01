@@ -1510,7 +1510,7 @@ bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
 
       query_feed.bindValue(QSL(":title"), feed->title());
       query_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
-      query_feed.bindValue(QSL(":url"), feed->url());
+      query_feed.bindValue(QSL(":url"), feed->source());
       query_feed.bindValue(QSL(":category"), feed->parent()->id());
       query_feed.bindValue(QSL(":protected"), 0);
       query_feed.bindValue(QSL(":update_type"), int(feed->autoUpdateType()));

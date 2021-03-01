@@ -98,6 +98,30 @@ bool StandardFeed::deleteViaGui() {
   }
 }
 
+QVariantHash StandardFeed::customDatabaseData() const {
+  QVariantHash data;
+
+  data["source_type"] = int(sourceType());
+  data["type"] = int(type());
+  data["encoding"] = encoding();
+  data["post_process"] = postProcessScript();
+  data["protected"] = passwordProtected();
+  data["username"] = username();
+  data["password"] = TextFactory::encrypt(password());
+
+  return data;
+}
+
+void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
+  setSourceType(SourceType(data["source_type"].toInt()));
+  setType(Type(data["type"].toInt()));
+  setEncoding(data["encoding"].toString());
+  setPostProcessScript(data["post_process"].toString());
+  setPasswordProtected(data["protected"].toBool());
+  setUsername(data["username"].toString());
+  setPassword(TextFactory::decrypt(data["password"].toString()));
+}
+
 QString StandardFeed::typeToString(StandardFeed::Type type) {
   switch (type) {
     case Type::Atom10:
@@ -137,7 +161,7 @@ QString StandardFeed::sourceTypeToString(StandardFeed::SourceType type) {
 void StandardFeed::fetchMetadataForItself() {
   bool result;
   StandardFeed* metadata = guessFeed(sourceType(),
-                                     url(),
+                                     source(),
                                      postProcessScript(),
                                      &result,
                                      username(),
@@ -147,7 +171,7 @@ void StandardFeed::fetchMetadataForItself() {
   if (metadata != nullptr && result) {
     // Some properties are not updated when new metadata are fetched.
     metadata->setParent(parent());
-    metadata->setUrl(url());
+    metadata->setSource(source());
     metadata->setPasswordProtected(passwordProtected());
     metadata->setUsername(username());
     metadata->setPassword(password());
@@ -181,7 +205,7 @@ StandardFeed::SourceType StandardFeed::sourceType() const {
   return m_sourceType;
 }
 
-void StandardFeed::setSourceType(const SourceType& source_type) {
+void StandardFeed::setSourceType(SourceType source_type) {
   m_sourceType = source_type;
 }
 
@@ -478,7 +502,7 @@ bool StandardFeed::addItself(RootItem* parent) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   bool ok;
   int new_id = DatabaseQueries::addStandardFeed(database, parent->id(), parent->getParentServiceRoot()->accountId(),
-                                                title(), description(), creationDate(), icon(), encoding(), url(),
+                                                title(), description(), creationDate(), icon(), encoding(), source(),
                                                 passwordProtected(), username(), password(), autoUpdateType(),
                                                 autoUpdateInitialInterval(), sourceType(), postProcessScript(),
                                                 type(), &ok);
@@ -502,7 +526,7 @@ bool StandardFeed::editItself(StandardFeed* new_feed_data) {
 
   if (!DatabaseQueries::editStandardFeed(database, new_parent->id(), original_feed->id(), new_feed_data->title(),
                                          new_feed_data->description(), new_feed_data->icon(),
-                                         new_feed_data->encoding(), new_feed_data->url(), new_feed_data->passwordProtected(),
+                                         new_feed_data->encoding(), new_feed_data->source(), new_feed_data->passwordProtected(),
                                          new_feed_data->username(), new_feed_data->password(),
                                          new_feed_data->autoUpdateType(), new_feed_data->autoUpdateInitialInterval(),
                                          new_feed_data->sourceType(), new_feed_data->postProcessScript(),
@@ -519,7 +543,7 @@ bool StandardFeed::editItself(StandardFeed* new_feed_data) {
   original_feed->setIcon(new_feed_data->icon());
   original_feed->setEncoding(new_feed_data->encoding());
   original_feed->setDescription(new_feed_data->description());
-  original_feed->setUrl(new_feed_data->url());
+  original_feed->setSource(new_feed_data->source());
   original_feed->setPasswordProtected(new_feed_data->passwordProtected());
   original_feed->setUsername(new_feed_data->username());
   original_feed->setPassword(new_feed_data->password());
@@ -556,14 +580,14 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
   if (sourceType() == SourceType::Url) {
     qDebugNN << LOGSEC_CORE
              << "Downloading URL"
-             << QUOTE_W_SPACE(url())
+             << QUOTE_W_SPACE(source())
              << "to obtain feed data.";
 
     QByteArray feed_contents;
     QList<QPair<QByteArray, QByteArray>> headers;
 
     headers << NetworkFactory::generateBasicAuthHeader(username(), password());
-    m_networkError = NetworkFactory::performNetworkOperation(url(),
+    m_networkError = NetworkFactory::performNetworkOperation(source(),
                                                              download_timeout,
                                                              QByteArray(),
                                                              feed_contents,
@@ -579,7 +603,7 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
                  << "Error"
                  << QUOTE_W_SPACE(m_networkError)
                  << "during fetching of new messages for feed"
-                 << QUOTE_W_SPACE_DOT(url());
+                 << QUOTE_W_SPACE_DOT(source());
       setStatus(Status::NetworkError);
       *error_during_obtaining = true;
       return QList<Message>();
@@ -603,12 +627,12 @@ QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
   else {
     qDebugNN << LOGSEC_CORE
              << "Running custom script"
-             << QUOTE_W_SPACE(url())
+             << QUOTE_W_SPACE(source())
              << "to obtain feed data.";
 
     // Use script to generate feed file.
     try {
-      formatted_feed_contents = generateFeedFileWithScript(url(), download_timeout);
+      formatted_feed_contents = generateFeedFileWithScript(source(), download_timeout);
     }
     catch (const ScriptException& ex) {
       qCriticalNN << LOGSEC_CORE

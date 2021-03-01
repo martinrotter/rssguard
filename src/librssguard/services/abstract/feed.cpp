@@ -19,7 +19,7 @@
 #include <QThread>
 
 Feed::Feed(RootItem* parent)
-  : RootItem(parent), m_url(QString()), m_status(Status::Normal), m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate),
+  : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate),
   m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
   m_messageFilters(QList<QPointer<MessageFilter>>()) {
 
@@ -33,7 +33,7 @@ Feed::Feed(RootItem* parent)
 Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
-  setUrl(record.value(FDS_DB_URL_INDEX).toString());
+  setSource(record.value(FDS_DB_URL_INDEX).toString());
   setCustomId(record.value(FDS_DB_CUSTOM_ID_INDEX).toString());
 
   if (customId().isEmpty()) {
@@ -66,7 +66,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
 
   setCountOfAllMessages(other.countOfAllMessages());
   setCountOfUnreadMessages(other.countOfUnreadMessages());
-  setUrl(other.url());
+  setSource(other.source());
   setStatus(other.status());
   setAutoUpdateType(other.autoUpdateType());
   setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
@@ -144,6 +144,14 @@ int Feed::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
+QVariantHash Feed::customDatabaseData() const {
+  return {};
+}
+
+void Feed::setCustomDatabaseData(const QVariantHash& data) {
+  Q_UNUSED(data)
+}
+
 void Feed::setCountOfAllMessages(int count_all_messages) {
   m_totalCount = count_all_messages;
 }
@@ -218,12 +226,12 @@ void Feed::setStatus(const Feed::Status& status) {
   m_status = status;
 }
 
-QString Feed::url() const {
-  return m_url;
+QString Feed::source() const {
+  return m_source;
 }
 
-void Feed::setUrl(const QString& url) {
-  m_url = url;
+void Feed::setSource(const QString& source) {
+  m_source = source;
 }
 
 void Feed::appendMessageFilter(MessageFilter* filter) {
@@ -290,7 +298,7 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
                               qApp->database()->connection(QSL("feed_upd"));
 
       updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id,
-                                                         url(), force_update, &anything_updated, &ok);
+                                                         source(), force_update, &anything_updated, &ok);
     }
     else {
       qDebugNN << LOGSEC_CORE

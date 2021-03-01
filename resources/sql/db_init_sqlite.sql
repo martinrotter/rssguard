@@ -37,16 +37,9 @@ CREATE TABLE Feeds (
   date_created    INTEGER,
   icon            BLOB,
   category        INTEGER     NOT NULL CHECK (category >= -1), /* Root feeds contain -1 here. */
-  encoding        TEXT,
-  source_type     INTEGER,
-  url             TEXT,
-  post_process    TEXT,
-  protected       INTEGER(1)  NOT NULL CHECK (protected >= 0 AND protected <= 1),
-  username        TEXT,
-  password        TEXT,
+  source          TEXT,
   update_type     INTEGER(1)  NOT NULL CHECK (update_type >= 0),
   update_interval INTEGER     NOT NULL DEFAULT 15 CHECK (update_interval >= 1),
-  type            INTEGER,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
   

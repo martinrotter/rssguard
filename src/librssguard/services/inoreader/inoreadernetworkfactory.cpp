@@ -421,7 +421,7 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
     auto* feed = new InoreaderFeed();
 
     feed->setDescription(url);
-    feed->setUrl(url);
+    feed->setSource(url);
     feed->setTitle(title);
     feed->setCustomId(id);
 

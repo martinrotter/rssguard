@@ -27,7 +27,7 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString code() const;
     virtual void saveAllCachedData(bool ignore_errors);
     virtual QVariantHash customDatabaseData() const;
-    virtual void setCustomDatabaseData(const QVariantHash& data) const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
 
     OwnCloudNetworkFactory* network() const;
 
