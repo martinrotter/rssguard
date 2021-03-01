@@ -32,7 +32,7 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString additionalTooltip() const;
     virtual void saveAllCachedData(bool ignore_errors);
     virtual QVariantHash customDatabaseData() const;
-    virtual void setCustomDatabaseData(const QVariantHash& data) const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
 
     // Access to network.
     TtRssNetworkFactory* network() const;

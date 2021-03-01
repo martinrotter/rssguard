@@ -28,7 +28,7 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString additionalTooltip() const;
     virtual void saveAllCachedData(bool ignore_errors);
     virtual QVariantHash customDatabaseData() const;
-    virtual void setCustomDatabaseData(const QVariantHash& data) const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;

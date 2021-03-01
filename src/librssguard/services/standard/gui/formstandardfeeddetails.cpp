@@ -80,7 +80,7 @@ void FormStandardFeedDetails::apply() {
   new_feed->setType(type);
   new_feed->setSourceType(m_standardFeedDetails->sourceType());
   new_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
-  new_feed->setUrl(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
+  new_feed->setSource(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
   new_feed->setPasswordProtected(m_authDetails->m_gbAuthentication->isChecked());
   new_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
   new_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());

@@ -60,7 +60,7 @@ QVariantHash FeedlyServiceRoot::customDatabaseData() const {
   return data;
 }
 
-void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setUsername(data["username"].toString());
   m_network->setDeveloperAccessToken(data["dat"].toString());
 

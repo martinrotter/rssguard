@@ -329,7 +329,7 @@ void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
   m_ui.m_txtTitle->lineEdit()->setText(feed->title());
   m_ui.m_txtDescription->lineEdit()->setText(feed->description());
   m_ui.m_btnIcon->setIcon(feed->icon());
-  m_ui.m_txtSource->textEdit()->setPlainText(feed->url());
+  m_ui.m_txtSource->textEdit()->setPlainText(feed->source());
   m_ui.m_txtPostProcessScript->textEdit()->setPlainText(feed->postProcessScript());
   m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue(int(feed->type()))));
   m_ui.m_cmbEncoding->setCurrentIndex(m_ui.m_cmbEncoding->findData(feed->encoding(),

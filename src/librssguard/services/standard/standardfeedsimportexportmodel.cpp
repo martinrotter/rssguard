@@ -89,7 +89,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
 
           outline_feed.setAttribute(QSL("type"), QSL("rss"));
           outline_feed.setAttribute(QSL("text"), child_feed->title());
-          outline_feed.setAttribute(QSL("xmlUrl"), child_feed->url());
+          outline_feed.setAttribute(QSL("xmlUrl"), child_feed->source());
           outline_feed.setAttribute(QSL("description"), child_feed->description());
           outline_feed.setAttribute(QSL("encoding"), child_feed->encoding());
           outline_feed.setAttribute(QSL("title"), child_feed->title());
@@ -196,7 +196,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
                                                    custom_proxy)) != nullptr &&
                 result) {
               // We should obtain fresh metadata from online feed source.
-              guessed->setUrl(feed_url);
+              guessed->setSource(feed_url);
               active_model_item->appendChild(guessed);
               succeded++;
             }
@@ -211,7 +211,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
               new_feed->setTitle(feed_title);
               new_feed->setDescription(feed_description);
               new_feed->setEncoding(feed_encoding);
-              new_feed->setUrl(feed_url);
+              new_feed->setSource(feed_url);
               new_feed->setCreationDate(QDateTime::currentDateTime());
               new_feed->setIcon(feed_icon);
 
@@ -285,7 +285,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
 
 bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray& result) {
   for (const Feed* const feed : sourceModel()->rootItem()->getSubTreeFeeds()) {
-    result += feed->url() + QL1S("\n");
+    result += feed->source() + QL1S("\n");
   }
 
   return true;
@@ -318,14 +318,14 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
                                              url, {}, &result, {}, {},
                                              custom_proxy)) != nullptr &&
           result) {
-        guessed->setUrl(url);
+        guessed->setSource(url);
         root_item->appendChild(guessed);
         succeded++;
       }
       else {
         auto* feed = new StandardFeed();
 
-        feed->setUrl(url);
+        feed->setSource(url);
         feed->setTitle(url);
         feed->setCreationDate(QDateTime::currentDateTime());
         feed->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));

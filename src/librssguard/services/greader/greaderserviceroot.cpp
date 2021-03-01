@@ -47,7 +47,7 @@ QVariantHash GreaderServiceRoot::customDatabaseData() const {
   return data;
 }
 
-void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setService(GreaderServiceRoot::Service(data["service"].toInt()));
   m_network->setUsername(data["username"].toString());
   TextFactory::decrypt(data["password"].toString());

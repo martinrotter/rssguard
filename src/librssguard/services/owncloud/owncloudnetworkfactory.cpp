@@ -531,16 +531,16 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
     }
 
     feed->setCustomId(QString::number(item["id"].toInt()));
-    feed->setUrl(item["url"].toString());
+    feed->setSource(item["url"].toString());
 
-    if (feed->url().isEmpty()) {
-      feed->setUrl(item["link"].toString());
+    if (feed->source().isEmpty()) {
+      feed->setSource(item["link"].toString());
     }
 
     feed->setTitle(item["title"].toString());
 
     if (feed->title().isEmpty()) {
-      if (feed->url().isEmpty()) {
+      if (feed->source().isEmpty()) {
         // We cannot add feed which has no title and no url to RSS Guard!!!
         qCriticalNN << LOGSEC_NEXTCLOUD
                     << "Skipping feed with custom ID"
@@ -549,7 +549,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
         continue;
       }
       else {
-        feed->setTitle(feed->url());
+        feed->setTitle(feed->source());
       }
     }
 

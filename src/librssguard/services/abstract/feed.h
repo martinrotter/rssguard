@@ -49,6 +49,8 @@ class Feed : public RootItem {
     virtual QList<Message> obtainNewMessages(bool* error_during_obtaining);
     virtual int countOfAllMessages() const;
     virtual int countOfUnreadMessages() const;
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
 
     void setCountOfAllMessages(int count_all_messages);
     void setCountOfUnreadMessages(int count_unread_messages);
@@ -72,8 +74,8 @@ class Feed : public RootItem {
     Status status() const;
     void setStatus(const Status& status);
 
-    QString url() const;
-    void setUrl(const QString& url);
+    QString source() const;
+    void setSource(const QString& source);
 
     bool passwordProtected() const;
     void setPasswordProtected(bool passwordProtected);
@@ -99,7 +101,7 @@ class Feed : public RootItem {
     QString getStatusDescription() const;
 
   private:
-    QString m_url;
+    QString m_source;
     Status m_status;
     AutoUpdateType m_autoUpdateType;
     int m_autoUpdateInitialInterval{};

@@ -288,7 +288,7 @@ QVariantHash ServiceRoot::customDatabaseData() const {
   return {};
 }
 
-void ServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+void ServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   Q_UNUSED(data)
 }
 
@@ -524,7 +524,7 @@ QStringList ServiceRoot::textualFeedUrls(const QList<Feed*>& feeds) const {
   stringy_urls.reserve(feeds.size());
 
   for (const Feed* feed : feeds) {
-    stringy_urls.append(!feed->url().isEmpty() ? feed->url() : QL1S("no-url"));
+    stringy_urls.append(!feed->source().isEmpty() ? feed->source() : QL1S("no-url"));
   }
 
   return stringy_urls;

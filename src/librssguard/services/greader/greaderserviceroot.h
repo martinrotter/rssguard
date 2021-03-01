@@ -30,7 +30,7 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual void saveAllCachedData(bool ignore_errors);
     virtual LabelOperation supportedLabelOperations() const;
     virtual QVariantHash customDatabaseData() const;
-    virtual void setCustomDatabaseData(const QVariantHash& data) const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
 
     GreaderNetwork* network() const;
 

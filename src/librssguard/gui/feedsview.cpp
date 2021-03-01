@@ -133,8 +133,8 @@ void FeedsView::copyUrlOfSelectedFeeds() const {
   QStringList urls;
 
   for (const auto* feed : feeds) {
-    if (!feed->url().isEmpty()) {
-      urls << feed->url();
+    if (!feed->source().isEmpty()) {
+      urls << feed->source();
     }
   }
 

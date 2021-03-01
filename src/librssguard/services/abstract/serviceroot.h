@@ -54,7 +54,7 @@ class ServiceRoot : public RootItem {
     virtual LabelOperation supportedLabelOperations() const;
     virtual void saveAccountDataToDatabase();
     virtual QVariantHash customDatabaseData() const;
-    virtual void setCustomDatabaseData(const QVariantHash& json) const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:

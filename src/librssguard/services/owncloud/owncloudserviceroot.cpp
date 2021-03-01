@@ -140,7 +140,7 @@ QVariantHash OwnCloudServiceRoot::customDatabaseData() const {
   return data;
 }
 
-void OwnCloudServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+void OwnCloudServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setAuthUsername(data["auth_username"].toString());
   m_network->setAuthPassword(TextFactory::decrypt(data["auth_password"].toString()));
   m_network->setUrl(data["url"].toString());

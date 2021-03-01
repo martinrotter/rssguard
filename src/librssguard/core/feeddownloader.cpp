@@ -114,7 +114,7 @@ void FeedDownloader::stopRunningUpdate() {
 void FeedDownloader::updateOneFeed(Feed* feed) {
   qDebugNN << LOGSEC_FEEDDOWNLOADER
            << "Downloading new messages for feed ID '"
-           << feed->customId() << "' URL: '" << feed->url() << "' title: '" << feed->title() << "' in thread: '"
+           << feed->customId() << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"
            << QThread::currentThreadId() << "'.";
 
   bool error_during_obtaining = false;
@@ -123,7 +123,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
   QList<Message> msgs = feed->obtainNewMessages(&error_during_obtaining);
 
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded " << msgs.size() << " messages for feed ID '"
-           << feed->customId() << "' URL: '" << feed->url() << "' title: '" << feed->title() << "' in thread: '"
+           << feed->customId() << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"
            << QThread::currentThreadId() << "'. Operation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
   // Now, sanitize messages (tweak encoding etc.).
@@ -290,7 +290,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
   // Now make sure, that messages are actually stored to SQL in a locked state.
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Saving messages of feed ID '"
-           << feed->customId() << "' URL: '" << feed->url() << "' title: '" << feed->title() << "' in thread: '"
+           << feed->customId() << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"
            << QThread::currentThreadId() << "'.";
 
   int updated_messages = feed->updateMessages(msgs, error_during_obtaining);
