@@ -26,13 +26,16 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual void start(bool freshly_activated);
     virtual QString code() const;
     virtual void saveAllCachedData(bool ignore_errors);
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data) const;
 
     OwnCloudNetworkFactory* network() const;
 
-    void updateTitle();
-
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
+
+  private:
+    void updateTitle();
 
   private:
     OwnCloudNetworkFactory* m_network;

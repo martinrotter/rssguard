@@ -21,13 +21,16 @@ class FeedlyServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString code() const;
     virtual void saveAllCachedData(bool ignore_errors);
     virtual LabelOperation supportedLabelOperations() const;
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data) const;
 
     FeedlyNetwork* network() const;
 
-    void updateTitle();
-
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
+
+  private:
+    void updateTitle();
 
   private:
     FeedlyNetwork* m_network;

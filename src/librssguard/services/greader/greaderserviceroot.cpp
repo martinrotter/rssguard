@@ -35,6 +35,26 @@ bool GreaderServiceRoot::editViaGui() {
   return true;
 }
 
+QVariantHash GreaderServiceRoot::customDatabaseData() const {
+  QVariantHash data;
+
+  data["service"] = int(m_network->service());
+  data["username"] = m_network->username();
+  data["password"] = TextFactory::encrypt(m_network->password());
+  data["url"] = m_network->baseUrl();
+  data["batch_size"] = m_network->batchSize();
+
+  return data;
+}
+
+void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) const {
+  m_network->setService(GreaderServiceRoot::Service(data["service"].toInt()));
+  m_network->setUsername(data["username"].toString());
+  TextFactory::decrypt(data["password"].toString());
+  m_network->setBaseUrl(data["url"].toString());
+  m_network->setBatchSize(data["batch_size"].toInt());
+}
+
 void GreaderServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
     DatabaseQueries::loadFromDatabase<Category, GreaderFeed>(this);
