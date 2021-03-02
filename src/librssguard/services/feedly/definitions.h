@@ -9,7 +9,7 @@
 
 #define FEEDLY_GENERATE_DAT               "https://feedly.com/v3/auth/dev"
 
-#define FEEDLY_API_REDIRECT_URI_PORT      8080
+#define FEEDLY_API_REDIRECT_URI_PORT      14466
 #define FEEDLY_API_SCOPE                  "https://cloud.feedly.com/subscriptions"
 
 //#define FEEDLY_API_URL_BASE       "https://sandbox7.feedly.com/v3/"

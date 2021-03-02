@@ -359,9 +359,9 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json, bool obtain_i
 
       if (obtain_icons) {
         QIcon icon;
-        auto result = NetworkFactory::downloadIcon({ fee_obj["iconUrl"].toString(),
-                                                     fee_obj["logo"].toString(),
-                                                     fee_obj["website"].toString() },
+        auto result = NetworkFactory::downloadIcon({ { fee_obj["iconUrl"].toString(), true },
+                                                     { fee_obj["website"].toString(), false },
+                                                     { fee_obj["logo"].toString(), true } },
                                                    timeout,
                                                    icon,
                                                    proxy);

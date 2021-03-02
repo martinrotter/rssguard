@@ -194,7 +194,6 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
   auto timeout = qApp->settings()->value(GROUP(Feeds),
                                          SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray feed_contents;
-  QList<QString> icon_possible_locations;
   QString content_type;
 
   if (source_type == StandardFeed::SourceType::Url) {
@@ -216,8 +215,6 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
       *result = false;
       return nullptr;
     }
-
-    icon_possible_locations.append(source);
   }
   else {
     qDebugNN << LOGSEC_CORE
@@ -261,6 +258,15 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
 
   StandardFeed* feed = nullptr;
 
+  // Now we need to obtain list of URLs of icons.
+  // Priority of links:
+  //   1. Links of "homepage" obtained from feed files which will be processed via DuckDuckGo.
+  //   2. Direct links of "favicon", "icon", "logo" obtained from feed files which will be downloaded directly.
+  //   3. Link of the feed file itself which will be processed via DuckDuckGo.
+  // The "bool" if true means that the URL is direct and download directly, if false then
+  // only use its domain and download via DuckDuckGo.
+  QList<QPair<QString, bool>> icon_possible_locations;
+
   if (content_type.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive) ||
       feed_contents.startsWith('{')) {
     feed = new StandardFeed();
@@ -274,14 +280,21 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     feed->setTitle(json.object()["title"].toString());
     feed->setDescription(json.object()["description"].toString());
 
-    auto icon = json.object()["icon"].toString();
+    auto home_page = json.object()["home_page_url"].toString();
+
+    if (!home_page.isEmpty()) {
+      icon_possible_locations.prepend({ home_page, false });
+    }
+
+    auto icon = json.object()["favicon"].toString();
 
     if (icon.isEmpty()) {
-      icon = json.object()["favicon"].toString();
+      icon = json.object()["icon"].toString();
     }
 
     if (!icon.isEmpty()) {
-      icon_possible_locations.prepend(icon);
+      // Low priority, download directly.
+      icon_possible_locations.append({ icon, true });
     }
   }
   else {
@@ -347,10 +360,10 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
       feed->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
       feed->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
 
-      QString source_link = channel_element.namedItem(QSL("link")).toElement().text();
+      QString home_page = channel_element.namedItem(QSL("link")).toElement().text();
 
-      if (!source_link.isEmpty()) {
-        icon_possible_locations.prepend(source_link);
+      if (!home_page.isEmpty()) {
+        icon_possible_locations.prepend({ home_page, false });
       }
     }
     else if (root_tag_name == QL1S("rss")) {
@@ -370,19 +383,19 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
       feed->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
 
       QString icon_link = channel_element.namedItem(QSL("image")).toElement().text();
-      QString icon_url_link = channel_element.namedItem(QSL("image")).namedItem(QSL("url")).toElement().text();
+      QString icon_url_link = channel_element.namedItem(QSL("image")).toElement().attribute(QSL("url"));
 
       if (!icon_url_link.isEmpty()) {
-        icon_possible_locations.prepend(icon_url_link);
+        icon_possible_locations.append({ icon_url_link, true });
       }
       else if (!icon_link.isEmpty()) {
-        icon_possible_locations.prepend(icon_link);
+        icon_possible_locations.append({ icon_link, true });
       }
 
-      QString source_link = channel_element.namedItem(QSL("link")).toElement().text();
+      QString home_page = channel_element.namedItem(QSL("link")).toElement().text();
 
-      if (!source_link.isEmpty()) {
-        icon_possible_locations.append(source_link);
+      if (!home_page.isEmpty()) {
+        icon_possible_locations.prepend({ home_page, false });
       }
     }
     else if (root_tag_name == QL1S("feed")) {
@@ -394,19 +407,13 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
       QString icon_link = root_element.namedItem(QSL("icon")).toElement().text();
 
       if (!icon_link.isEmpty()) {
-        icon_possible_locations.prepend(icon_link);
+        icon_possible_locations.append({ icon_link, true });
       }
 
-      QString logo_link = root_element.namedItem(QSL("logo")).toElement().text();
+      QString home_page = root_element.namedItem(QSL("link")).toElement().attribute(QSL("href"));
 
-      if (!logo_link.isEmpty()) {
-        icon_possible_locations.prepend(logo_link);
-      }
-
-      QString source_link = root_element.namedItem(QSL("link")).toElement().text();
-
-      if (!source_link.isEmpty()) {
-        icon_possible_locations.prepend(source_link);
+      if (!home_page.isEmpty()) {
+        icon_possible_locations.prepend({ home_page, false });
       }
     }
     else {
