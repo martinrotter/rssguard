@@ -120,9 +120,11 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
   }
 
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
+                                                                                   selected_item,
+                                                                                   url,
                                                                                    qApp->mainFormWidget()));
 
-  form_pointer->addEditFeed(nullptr, selected_item, url);
+  form_pointer->addEditFeed<StandardFeed>();
   qApp->feedUpdateLock()->unlock();
 }
 
@@ -239,15 +241,13 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
       else if (source_item->kind() == RootItem::Kind::Feed) {
         auto* source_feed = dynamic_cast<StandardFeed*>(source_item);
         auto* new_feed = new StandardFeed(*source_feed);
+        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-        // Append this feed and end this iteration.
-        if (new_feed->addItself(target_parent)) {
-          requestItemReassignment(new_feed, target_parent);
-        }
-        else {
-          delete new_feed;
-          some_feed_category_error = true;
-        }
+        DatabaseQueries::createOverwriteFeed(database,
+                                             new_feed,
+                                             target_root_node->getParentServiceRoot()->accountId(),
+                                             target_parent->id());
+        requestItemReassignment(new_feed, target_parent);
       }
     }
   }

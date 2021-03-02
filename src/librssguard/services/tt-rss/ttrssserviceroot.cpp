@@ -93,9 +93,9 @@ void TtRssServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
     return;
   }
 
-  QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, qApp->mainFormWidget()));
+  QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, selected_item, url, qApp->mainFormWidget()));
 
-  form_pointer->addFeed(selected_item, url);
+  form_pointer->addEditFeed<TtRssFeed>();
   qApp->feedUpdateLock()->unlock();
 }
 

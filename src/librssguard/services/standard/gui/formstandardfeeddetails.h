@@ -13,10 +13,8 @@ class FormStandardFeedDetails : public FormFeedDetails {
   Q_OBJECT
 
   public:
-    explicit FormStandardFeedDetails(ServiceRoot* service_root, QWidget* parent = nullptr);
-
-  public slots:
-    int addEditFeed(StandardFeed* input_feed, RootItem* parent_to_select, const QString& url = QString());
+    explicit FormStandardFeedDetails(ServiceRoot* service_root, RootItem* parent_to_select = nullptr,
+                                     const QString& url = QString(), QWidget* parent = nullptr);
 
   private slots:
     void guessFeed();
@@ -25,11 +23,13 @@ class FormStandardFeedDetails : public FormFeedDetails {
     virtual void apply();
 
   private:
-    virtual void setEditableFeed(Feed* editable_feed);
+    virtual void loadFeedData();
 
   private:
     StandardFeedDetails* m_standardFeedDetails;
     AuthenticationDetails* m_authDetails;
+    RootItem* m_parentToSelect;
+    QString m_urlToProcess;
 };
 
 #endif // FORMSSFEEDDETAILS_H

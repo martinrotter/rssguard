@@ -112,10 +112,6 @@ class DatabaseQueries {
     static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static bool cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
     static bool storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id);
-    static bool editFeed(const QSqlDatabase& db, int feed_id,
-                         Feed::AutoUpdateType auto_update_type, int auto_update_interval,
-                         bool is_protected, const QString& username,
-                         const QString& password);
 
     template<typename T>
     static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
@@ -136,27 +132,16 @@ class DatabaseQueries {
     static void updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter, bool* ok = nullptr);
     static void removeMessageFilterFromFeed(const QSqlDatabase& db, const QString& feed_custom_id, int filter_id,
                                             int account_id, bool* ok = nullptr);
+    static void createOverwriteFeed(const QSqlDatabase& db, Feed* feed, int account_id, int parent_id);
     static bool deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id);
     static bool deleteCategory(const QSqlDatabase& db, int id);
 
     // Standard account.
-    static int addStandardCategory(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
-                                   const QString& description, const QDateTime& creation_date, const QIcon& icon, bool* ok = nullptr);
-    static bool editStandardCategory(const QSqlDatabase& db, int parent_id, int category_id,
-                                     const QString& title, const QString& description, const QIcon& icon);
-    static int addStandardFeed(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
-                               const QString& description, const QDateTime& creation_date, const QIcon& icon,
-                               const QString& encoding, const QString& url, bool is_protected,
-                               const QString& username, const QString& password,
-                               Feed::AutoUpdateType auto_update_type, int auto_update_interval,
-                               StandardFeed::SourceType source_type, const QString& post_process_script,
-                               StandardFeed::Type feed_format, bool* ok = nullptr);
-    static bool editStandardFeed(const QSqlDatabase& db, int parent_id, int feed_id, const QString& title,
-                                 const QString& description, const QIcon& icon,
-                                 const QString& encoding, const QString& url, bool is_protected,
-                                 const QString& username, const QString& password, Feed::AutoUpdateType auto_update_type,
-                                 int auto_update_interval, StandardFeed::SourceType source_type,
-                                 const QString& post_process_script, StandardFeed::Type feed_format);
+    static int addCategory(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
+                           const QString& description, const QDateTime& creation_date, const QIcon& icon,
+                           bool* ok = nullptr);
+    static bool editCategory(const QSqlDatabase& db, int parent_id, int category_id,
+                             const QString& title, const QString& description, const QIcon& icon);
 
     template<typename T>
     static void fillFeedData(T* feed, const QSqlRecord& sql_record);

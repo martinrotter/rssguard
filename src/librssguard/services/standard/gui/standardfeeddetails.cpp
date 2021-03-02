@@ -311,6 +311,9 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
         m_ui.m_cmbParentCategory->setCurrentIndex(target_item);
       }
     }
+    else {
+      m_ui.m_cmbParentCategory->setCurrentIndex(0);
+    }
   }
 
   if (!url.isEmpty()) {
