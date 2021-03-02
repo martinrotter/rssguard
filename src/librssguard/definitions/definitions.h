@@ -176,20 +176,20 @@
 // Indexes of columns as they are DEFINED IN THE TABLE for MESSAGES.
 #define MSG_DB_ID_INDEX                 0
 #define MSG_DB_READ_INDEX               1
-#define MSG_DB_DELETED_INDEX            2
-#define MSG_DB_IMPORTANT_INDEX          3
-#define MSG_DB_FEED_TITLE_INDEX         4
-#define MSG_DB_TITLE_INDEX              5
-#define MSG_DB_URL_INDEX                6
-#define MSG_DB_AUTHOR_INDEX             7
-#define MSG_DB_DCREATED_INDEX           8
-#define MSG_DB_CONTENTS_INDEX           9
-#define MSG_DB_PDELETED_INDEX           10
+#define MSG_DB_IMPORTANT_INDEX          2
+#define MSG_DB_DELETED_INDEX            3
+#define MSG_DB_PDELETED_INDEX           4
+#define MSG_DB_FEED_CUSTOM_ID_INDEX     5
+#define MSG_DB_TITLE_INDEX              6
+#define MSG_DB_URL_INDEX                7
+#define MSG_DB_AUTHOR_INDEX             8
+#define MSG_DB_DCREATED_INDEX           9
+#define MSG_DB_CONTENTS_INDEX           10
 #define MSG_DB_ENCLOSURES_INDEX         11
 #define MSG_DB_ACCOUNT_ID_INDEX         12
 #define MSG_DB_CUSTOM_ID_INDEX          13
 #define MSG_DB_CUSTOM_HASH_INDEX        14
-#define MSG_DB_FEED_CUSTOM_ID_INDEX     15
+#define MSG_DB_FEED_TITLE_INDEX         15
 #define MSG_DB_HAS_ENCLOSURES           16
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
@@ -209,18 +209,12 @@
 #define FDS_DB_DCREATED_INDEX         3
 #define FDS_DB_ICON_INDEX             4
 #define FDS_DB_CATEGORY_INDEX         5
-#define FDS_DB_ENCODING_INDEX         6
-#define FDS_DB_SOURCE_TYPE_INDEX      7
-#define FDS_DB_URL_INDEX              8
-#define FDS_DB_POST_PROCESS           9
-#define FDS_DB_PROTECTED_INDEX        10
-#define FDS_DB_USERNAME_INDEX         11
-#define FDS_DB_PASSWORD_INDEX         12
-#define FDS_DB_UPDATE_TYPE_INDEX      13
-#define FDS_DB_UPDATE_INTERVAL_INDEX  14
-#define FDS_DB_TYPE_INDEX             15
-#define FDS_DB_ACCOUNT_ID_INDEX       16
-#define FDS_DB_CUSTOM_ID_INDEX        17
+#define FDS_DB_SOURCE_INDEX           6
+#define FDS_DB_UPDATE_TYPE_INDEX      7
+#define FDS_DB_UPDATE_INTERVAL_INDEX  8
+#define FDS_DB_ACCOUNT_ID_INDEX       9
+#define FDS_DB_CUSTOM_ID_INDEX        10
+#define FDS_DB_CUSTOM_DATA_INDEX      11
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX           0

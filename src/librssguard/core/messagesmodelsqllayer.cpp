@@ -13,39 +13,39 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   // Used in <x>: SELECT <x1>, <x2> FROM ....;
   m_fieldNames[MSG_DB_ID_INDEX] = "Messages.id";
   m_fieldNames[MSG_DB_READ_INDEX] = "Messages.is_read";
-  m_fieldNames[MSG_DB_DELETED_INDEX] = "Messages.is_deleted";
   m_fieldNames[MSG_DB_IMPORTANT_INDEX] = "Messages.is_important";
-  m_fieldNames[MSG_DB_FEED_TITLE_INDEX] = "Feeds.title";
+  m_fieldNames[MSG_DB_DELETED_INDEX] = "Messages.is_deleted";
+  m_fieldNames[MSG_DB_PDELETED_INDEX] = "Messages.is_pdeleted";
+  m_fieldNames[MSG_DB_FEED_CUSTOM_ID_INDEX] = "Messages.feed";
   m_fieldNames[MSG_DB_TITLE_INDEX] = "Messages.title";
   m_fieldNames[MSG_DB_URL_INDEX] = "Messages.url";
   m_fieldNames[MSG_DB_AUTHOR_INDEX] = "Messages.author";
   m_fieldNames[MSG_DB_DCREATED_INDEX] = "Messages.date_created";
   m_fieldNames[MSG_DB_CONTENTS_INDEX] = "Messages.contents";
-  m_fieldNames[MSG_DB_PDELETED_INDEX] = "Messages.is_pdeleted";
   m_fieldNames[MSG_DB_ENCLOSURES_INDEX] = "Messages.enclosures";
   m_fieldNames[MSG_DB_ACCOUNT_ID_INDEX] = "Messages.account_id";
   m_fieldNames[MSG_DB_CUSTOM_ID_INDEX] = "Messages.custom_id";
   m_fieldNames[MSG_DB_CUSTOM_HASH_INDEX] = "Messages.custom_hash";
-  m_fieldNames[MSG_DB_FEED_CUSTOM_ID_INDEX] = "Messages.feed";
+  m_fieldNames[MSG_DB_FEED_TITLE_INDEX] = "Feeds.title";
   m_fieldNames[MSG_DB_HAS_ENCLOSURES] = "CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures";
 
   // Used in <x>: SELECT ... FROM ... ORDER BY <x1> DESC, <x2> ASC;
   m_orderByNames[MSG_DB_ID_INDEX] = "Messages.id";
   m_orderByNames[MSG_DB_READ_INDEX] = "Messages.is_read";
-  m_orderByNames[MSG_DB_DELETED_INDEX] = "Messages.is_deleted";
   m_orderByNames[MSG_DB_IMPORTANT_INDEX] = "Messages.is_important";
-  m_orderByNames[MSG_DB_FEED_TITLE_INDEX] = "Feeds.title";
+  m_orderByNames[MSG_DB_PDELETED_INDEX] = "Messages.is_pdeleted";
+  m_orderByNames[MSG_DB_DELETED_INDEX] = "Messages.is_deleted";
+  m_orderByNames[MSG_DB_FEED_CUSTOM_ID_INDEX] = "Messages.feed";
   m_orderByNames[MSG_DB_TITLE_INDEX] = "Messages.title";
   m_orderByNames[MSG_DB_URL_INDEX] = "Messages.url";
   m_orderByNames[MSG_DB_AUTHOR_INDEX] = "Messages.author";
   m_orderByNames[MSG_DB_DCREATED_INDEX] = "Messages.date_created";
   m_orderByNames[MSG_DB_CONTENTS_INDEX] = "Messages.contents";
-  m_orderByNames[MSG_DB_PDELETED_INDEX] = "Messages.is_pdeleted";
   m_orderByNames[MSG_DB_ENCLOSURES_INDEX] = "Messages.enclosures";
   m_orderByNames[MSG_DB_ACCOUNT_ID_INDEX] = "Messages.account_id";
   m_orderByNames[MSG_DB_CUSTOM_ID_INDEX] = "Messages.custom_id";
   m_orderByNames[MSG_DB_CUSTOM_HASH_INDEX] = "Messages.custom_hash";
-  m_orderByNames[MSG_DB_FEED_CUSTOM_ID_INDEX] = "Messages.feed";
+  m_orderByNames[MSG_DB_FEED_TITLE_INDEX] = "Feeds.title";
   m_orderByNames[MSG_DB_HAS_ENCLOSURES] = "has_enclosures";
 
   m_numericColumns << MSG_DB_ID_INDEX << MSG_DB_READ_INDEX << MSG_DB_DELETED_INDEX << MSG_DB_PDELETED_INDEX

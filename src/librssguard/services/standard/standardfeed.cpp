@@ -59,6 +59,10 @@ StandardFeed::StandardFeed(const StandardFeed& other)
   m_password = other.password();
 }
 
+StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(record) {
+  m_networkError = QNetworkReply::NetworkError::NoError;
+}
+
 StandardFeed::~StandardFeed() {
   qDebugNN << LOGSEC_CORE << "Destroying StandardFeed instance.";
 }
@@ -739,35 +743,4 @@ QString StandardFeed::postProcessFeedFileWithScript(const QString& execution_lin
 
 QNetworkReply::NetworkError StandardFeed::networkError() const {
   return m_networkError;
-}
-
-StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(record) {
-  setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
-  setSourceType(SourceType(record.value(FDS_DB_SOURCE_TYPE_INDEX).toInt()));
-  setPostProcessScript(record.value(FDS_DB_POST_PROCESS).toString());
-
-  setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
-  setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
-
-  if (record.value(FDS_DB_PASSWORD_INDEX).toString().isEmpty()) {
-    setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
-  }
-  else {
-    setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
-  }
-
-  StandardFeed::Type type = static_cast<StandardFeed::Type>(record.value(FDS_DB_TYPE_INDEX).toInt());
-
-  switch (type) {
-    case StandardFeed::Type::Atom10:
-    case StandardFeed::Type::Rdf:
-    case StandardFeed::Type::Rss0X:
-    case StandardFeed::Type::Rss2X:
-    case StandardFeed::Type::Json: {
-      setType(type);
-      break;
-    }
-  }
-
-  m_networkError = QNetworkReply::NetworkError::NoError;
 }

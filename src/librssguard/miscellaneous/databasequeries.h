@@ -12,7 +12,6 @@
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
 #include "services/abstract/serviceroot.h"
-#include "services/standard/standardfeed.h"
 
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -112,6 +111,10 @@ class DatabaseQueries {
     static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static bool cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
     static bool storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id);
+    static void createOverwriteFeed(const QSqlDatabase& db, Feed* feed, int account_id, int parent_id);
+    static void createOverwriteCategory(const QSqlDatabase& db, Category* category, int account_id, int parent_id);
+    static bool deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id);
+    static bool deleteCategory(const QSqlDatabase& db, int id);
 
     template<typename T>
     static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
@@ -132,19 +135,6 @@ class DatabaseQueries {
     static void updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter, bool* ok = nullptr);
     static void removeMessageFilterFromFeed(const QSqlDatabase& db, const QString& feed_custom_id, int filter_id,
                                             int account_id, bool* ok = nullptr);
-    static void createOverwriteFeed(const QSqlDatabase& db, Feed* feed, int account_id, int parent_id);
-    static bool deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id);
-    static bool deleteCategory(const QSqlDatabase& db, int id);
-
-    // Standard account.
-    static int addCategory(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
-                           const QString& description, const QDateTime& creation_date, const QIcon& icon,
-                           bool* ok = nullptr);
-    static bool editCategory(const QSqlDatabase& db, int parent_id, int category_id,
-                             const QString& title, const QString& description, const QIcon& icon);
-
-    template<typename T>
-    static void fillFeedData(T* feed, const QSqlRecord& sql_record);
 
     // Gmail account.
     static QStringList getAllRecipients(const QSqlDatabase& db, int account_id);
@@ -154,18 +144,6 @@ class DatabaseQueries {
 
     explicit DatabaseQueries() = default;
 };
-
-template<typename T>
-void DatabaseQueries::fillFeedData(T* feed, const QSqlRecord& sql_record) {
-  Q_UNUSED(feed)
-  Q_UNUSED(sql_record)
-}
-
-template<>
-inline void DatabaseQueries::fillFeedData(StandardFeed* feed, const QSqlRecord& sql_record) {
-  Q_UNUSED(feed)
-  Q_UNUSED(sql_record)
-}
 
 template<typename T>
 QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const QString& code, bool* ok) {
@@ -281,6 +259,9 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
 
     Feed* feed = new T(query.record());
 
+    // Load custom data.
+    feed->setCustomDatabaseData(deserializeCustomData(query.value(QSL("custom_data")).toString()));
+
     if (filters_in_feeds.contains(feed->customId())) {
       auto all_filters_for_this_feed = filters_in_feeds.values(feed->customId());
 
@@ -290,8 +271,6 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
         }
       }
     }
-
-    fillFeedData<T>(static_cast<T*>(feed), query.record());
 
     pair.second = feed;
 

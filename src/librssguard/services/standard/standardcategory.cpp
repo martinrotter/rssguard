@@ -10,7 +10,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
-#include "services/standard/gui/formstandardcategorydetails.h"
+#include "services/abstract/gui/formcategorydetails.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardserviceroot.h"
 
@@ -27,20 +27,11 @@ Qt::ItemFlags StandardCategory::additionalFlags() const {
 }
 
 bool StandardCategory::performDragDropChange(RootItem* target_item) {
-  auto* category_new = new StandardCategory(*this);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  category_new->clearChildren();
-  category_new->setParent(target_item);
-
-  if (editItself(category_new)) {
-    serviceRoot()->requestItemReassignment(this, target_item);
-    delete category_new;
-    return true;
-  }
-  else {
-    delete category_new;
-    return false;
-  }
+  DatabaseQueries::createOverwriteCategory(database, this, getParentServiceRoot()->accountId(), target_item->id());
+  serviceRoot()->requestItemReassignment(this, target_item);
+  return true;
 }
 
 bool StandardCategory::canBeEdited() const {
@@ -52,10 +43,11 @@ bool StandardCategory::canBeDeleted() const {
 }
 
 bool StandardCategory::editViaGui() {
-  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(serviceRoot(),
-                                                                                           qApp->mainFormWidget()));
+  QScopedPointer<FormCategoryDetails> form_pointer(new FormCategoryDetails(serviceRoot(),
+                                                                           nullptr,
+                                                                           qApp->mainFormWidget()));
 
-  form_pointer->addEditCategory(this, nullptr);
+  form_pointer->addEditCategory(this);
   return false;
 }
 
@@ -88,43 +80,6 @@ bool StandardCategory::removeItself() {
     QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
     return DatabaseQueries::deleteCategory(database, id());
-  }
-  else {
-    return false;
-  }
-}
-
-bool StandardCategory::addItself(RootItem* parent) {
-  // Now, add category to persistent storage.
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  int new_id = DatabaseQueries::addCategory(database, parent->id(), parent->getParentServiceRoot()->accountId(),
-                                                    title(), description(), creationDate(), icon());
-
-  if (new_id <= 0) {
-    return false;
-  }
-  else {
-    setId(new_id);
-    setCustomId(QString::number(new_id));
-    return true;
-  }
-}
-
-bool StandardCategory::editItself(StandardCategory* new_category_data) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  StandardCategory* original_category = this;
-  RootItem* new_parent = new_category_data->parent();
-
-  if (DatabaseQueries::editCategory(database, new_parent->id(), original_category->id(),
-                                            new_category_data->title(), new_category_data->description(),
-                                            new_category_data->icon())) {
-    // Setup new model data for the original item.
-    original_category->setDescription(new_category_data->description());
-    original_category->setIcon(new_category_data->icon());
-    original_category->setTitle(new_category_data->title());
-
-    // Editing is done.
-    return true;
   }
   else {
     return false;

@@ -11,12 +11,12 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
+#include "services/abstract/gui/formcategorydetails.h"
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/standard/definitions.h"
 #include "services/standard/gui/formeditstandardaccount.h"
-#include "services/standard/gui/formstandardcategorydetails.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/gui/formstandardimportexport.h"
 #include "services/standard/standardcategory.h"
@@ -208,16 +208,16 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
         // Add category to model.
         new_category->clearChildren();
 
-        if (new_category->addItself(target_parent)) {
+        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+        try {
+          DatabaseQueries::createOverwriteCategory(database,
+                                                   new_category,
+                                                   target_root_node->getParentServiceRoot()->accountId(),
+                                                   target_parent->id());
           requestItemReassignment(new_category, target_parent);
-
-          // Process all children of this category.
-          original_parents.push(new_category);
-          new_parents.push(source_category);
         }
-        else {
-          delete new_category;
-
+        catch (ApplicationException& ex) {
           // Add category failed, but this can mean that the same category (with same title)
           // already exists. If such a category exists in current parent, then find it and
           // add descendants to it.
@@ -275,10 +275,11 @@ void StandardServiceRoot::addNewCategory(RootItem* selected_item) {
     return;
   }
 
-  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(this,
-                                                                                           qApp->mainFormWidget()));
+  QScopedPointer<FormCategoryDetails> form_pointer(new FormCategoryDetails(this,
+                                                                           selected_item,
+                                                                           qApp->mainFormWidget()));
 
-  form_pointer->addEditCategory(nullptr, selected_item);
+  form_pointer->addEditCategory<StandardCategory>();
   qApp->feedUpdateLock()->unlock();
 }
 

@@ -28,7 +28,7 @@ Feed::Feed(RootItem* parent)
 Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
-  setSource(record.value(FDS_DB_URL_INDEX).toString());
+  setSource(record.value(FDS_DB_SOURCE_INDEX).toString());
   setCustomId(record.value(FDS_DB_CUSTOM_ID_INDEX).toString());
 
   if (customId().isEmpty()) {

@@ -1668,6 +1668,41 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
   return ids;
 }
 
+void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* category, int account_id, int parent_id) {
+  QSqlQuery q(db);
+
+  if (category->id() <= 0) {
+    // We need to insert category first.
+    q.prepare(QSL("INSERT INTO "
+                  "Categories (parent_id, title, date_created, account_id) "
+                  "VALUES (0, 'new', 0, %1);").arg(QString::number(account_id)));
+
+    if (!q.exec()) {
+      throw ApplicationException(q.lastError().text());
+    }
+    else {
+      category->setId(q.lastInsertId().toInt());
+    }
+  }
+
+  q.prepare("UPDATE Categories "
+            "SET parent_id = :parent_id, title = :title, description = :description, date_created = :date_created, "
+            "    icon = :icon, account_id = :account_id, custom_id = :custom_id "
+            "WHERE id = :id;");
+  q.bindValue(QSL(":parent_id"), parent_id);
+  q.bindValue(QSL(":title"), category->title());
+  q.bindValue(QSL(":description"), category->description());
+  q.bindValue(QSL(":date_created"), category->creationDate().toMSecsSinceEpoch());
+  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(category->icon()));
+  q.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":custom_id"), category->customId());
+  q.bindValue(QSL(":id"), category->id());
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
 void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, int account_id, int parent_id) {
   QSqlQuery q(db);
 
@@ -1675,7 +1710,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
     // We need to insert feed first.
     q.prepare(QSL("INSERT INTO "
                   "Feeds (title, date_created, category, update_type, update_interval, account_id, custom_id) "
-                  "VALUES ('new', 0, 0, 0, 1, 0, 'new');"));
+                  "VALUES ('new', 0, 0, 0, 1, %1, 'new');").arg(QString::number(account_id)));
 
     if (!q.exec()) {
       throw ApplicationException(q.lastError().text());
@@ -1783,67 +1818,6 @@ bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM Categories WHERE id = :category;"));
   q.bindValue(QSL(":category"), id);
-  return q.exec();
-}
-
-int DatabaseQueries::addCategory(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
-                                 const QString& description, const QDateTime& creation_date, const QIcon& icon,
-                                 bool* ok) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare("INSERT INTO Categories "
-            "(parent_id, title, description, date_created, icon, account_id) "
-            "VALUES (:parent_id, :title, :description, :date_created, :icon, :account_id);");
-  q.bindValue(QSL(":parent_id"), parent_id);
-  q.bindValue(QSL(":title"), title);
-  q.bindValue(QSL(":description"), description);
-  q.bindValue(QSL(":date_created"), creation_date.toMSecsSinceEpoch());
-  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (!q.exec()) {
-    qDebugNN << LOGSEC_DB
-             << "Failed to add category to database: '"
-             << q.lastError().text()
-             << "'.";
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-
-    // Query failed.
-    return 0;
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = true;
-    }
-
-    int new_id = q.lastInsertId().toInt();
-
-    // Now set custom ID in the DB.
-    q.prepare(QSL("UPDATE Categories SET custom_id = :custom_id WHERE id = :id;"));
-    q.bindValue(QSL(":custom_id"), QString::number(new_id));
-    q.bindValue(QSL(":id"), new_id);
-    q.exec();
-    return new_id;
-  }
-}
-
-bool DatabaseQueries::editCategory(const QSqlDatabase& db, int parent_id, int category_id,
-                                   const QString& title, const QString& description, const QIcon& icon) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare("UPDATE Categories "
-            "SET title = :title, description = :description, icon = :icon, parent_id = :parent_id "
-            "WHERE id = :id;");
-  q.bindValue(QSL(":title"), title);
-  q.bindValue(QSL(":description"), description);
-  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon));
-  q.bindValue(QSL(":parent_id"), parent_id);
-  q.bindValue(QSL(":id"), category_id);
   return q.exec();
 }
 

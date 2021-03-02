@@ -633,6 +633,8 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_DB_CUSTOM_ID_INDEX);
     hideColumn(MSG_DB_CUSTOM_HASH_INDEX);
     hideColumn(MSG_DB_FEED_CUSTOM_ID_INDEX);
+    hideColumn(MSG_DB_FEED_TITLE_INDEX);
+    hideColumn(MSG_DB_HAS_ENCLOSURES);
   }
 }
 
