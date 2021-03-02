@@ -177,11 +177,13 @@ void MessagesModel::setupHeaderData() {
 
     /*: Tooltip for "read" column in msg list.*/ tr("Read") <<
 
-    /*: Tooltip for "deleted" column in msg list.*/ tr("Deleted") <<
-
     /*: Tooltip for "important" column in msg list.*/ tr("Important") <<
 
-    /*: Tooltip for name of feed for message.*/ tr("Feed") <<
+    /*: Tooltip for "deleted" column in msg list.*/ tr("Deleted") <<
+
+    /*: Tooltip for "pdeleted" column in msg list.*/ tr("Permanently deleted") <<
+
+    /*: Tooltip for custom ID of feed of message.*/ tr("Feed ID") <<
 
     /*: Tooltip for title of message.*/ tr("Title") <<
 
@@ -193,8 +195,6 @@ void MessagesModel::setupHeaderData() {
 
     /*: Tooltip for contents of message.*/ tr("Contents") <<
 
-    /*: Tooltip for "pdeleted" column in msg list.*/ tr("Permanently deleted") <<
-
     /*: Tooltip for attachments of message.*/ tr("Attachments") <<
 
     /*: Tooltip for account ID of message.*/ tr("Account ID") <<
@@ -203,7 +203,7 @@ void MessagesModel::setupHeaderData() {
 
     /*: Tooltip for custom hash string of message.*/ tr("Custom hash") <<
 
-    /*: Tooltip for custom ID of feed of message.*/ tr("Feed ID") <<
+    /*: Tooltip for name of feed for message.*/ tr("Feed") <<
 
     /*: Tooltip for indication of presence of enclosures.*/ tr("Has enclosures");
 

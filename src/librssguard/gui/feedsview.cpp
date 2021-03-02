@@ -13,9 +13,9 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/systemfactory.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/gui/formcategorydetails.h"
 #include "services/abstract/rootitem.h"
 #include "services/abstract/serviceroot.h"
-#include "services/standard/gui/formstandardcategorydetails.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 

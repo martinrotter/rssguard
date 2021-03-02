@@ -35,8 +35,6 @@ class StandardCategory : public Category {
     bool editViaGui();
     bool deleteViaGui();
 
-    bool addItself(RootItem* parent);
-    bool editItself(StandardCategory* new_category_data);
     bool removeItself();
 };
 

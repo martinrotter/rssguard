@@ -17,7 +17,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent) : QDialog(parent), m_u
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("edit-clear")));
 
   connect(m_ui->m_spinDays, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &FormDatabaseCleanup::updateDaysSuffix);
-  connect(m_ui->m_btnBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &FormDatabaseCleanup::startPurging);
+  connect(m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Ok), &QPushButton::clicked, this, &FormDatabaseCleanup::startPurging);
   connect(this, &FormDatabaseCleanup::purgeRequested, &m_cleaner, &DatabaseCleaner::purgeDatabaseData);
   connect(&m_cleaner, &DatabaseCleaner::purgeStarted, this, &FormDatabaseCleanup::onPurgeStarted);
   connect(&m_cleaner, &DatabaseCleaner::purgeProgress, this, &FormDatabaseCleanup::onPurgeProgress);

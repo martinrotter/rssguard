@@ -200,7 +200,7 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type, const 
 }
 
 void StandardFeedDetails::onTitleChanged(const QString& new_title) {
-  if (new_title.simplified().size() >= MIN_CATEGORY_NAME_LENGTH) {
+  if (!new_title.simplified().isEmpty()) {
     m_ui.m_txtTitle->setStatus(LineEditWithStatus::StatusType::Ok, tr("Feed name is ok."));
   }
   else {

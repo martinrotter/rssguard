@@ -143,6 +143,7 @@ HEADERS += core/feeddownloader.h \
            services/abstract/feed.h \
            services/abstract/gui/authenticationdetails.h \
            services/abstract/gui/formaccountdetails.h \
+           services/abstract/gui/formcategorydetails.h \
            services/abstract/gui/formfeeddetails.h \
            services/abstract/importantnode.h \
            services/abstract/label.h \
@@ -193,7 +194,6 @@ HEADERS += core/feeddownloader.h \
            services/standard/definitions.h \
            services/standard/feedparser.h \
            services/standard/gui/formeditstandardaccount.h \
-           services/standard/gui/formstandardcategorydetails.h \
            services/standard/gui/formstandardfeeddetails.h \
            services/standard/gui/formstandardimportexport.h \
            services/standard/gui/standardfeeddetails.h \
@@ -322,6 +322,7 @@ SOURCES += core/feeddownloader.cpp \
            services/abstract/feed.cpp \
            services/abstract/gui/authenticationdetails.cpp \
            services/abstract/gui/formaccountdetails.cpp \
+           services/abstract/gui/formcategorydetails.cpp \
            services/abstract/gui/formfeeddetails.cpp \
            services/abstract/importantnode.cpp \
            services/abstract/label.cpp \
@@ -365,7 +366,6 @@ SOURCES += core/feeddownloader.cpp \
            services/standard/atomparser.cpp \
            services/standard/feedparser.cpp \
            services/standard/gui/formeditstandardaccount.cpp \
-           services/standard/gui/formstandardcategorydetails.cpp \
            services/standard/gui/formstandardfeeddetails.cpp \
            services/standard/gui/formstandardimportexport.cpp \
            services/standard/gui/standardfeeddetails.cpp \
@@ -416,6 +416,7 @@ FORMS += gui/dialogs/formabout.ui \
          network-web/downloadmanager.ui \
          services/abstract/gui/authenticationdetails.ui \
          services/abstract/gui/formaccountdetails.ui \
+         services/abstract/gui/formcategorydetails.ui \
          services/abstract/gui/formfeeddetails.ui \
          services/feedly/gui/feedlyaccountdetails.ui \
          services/gmail/gui/formaddeditemail.ui \
@@ -424,7 +425,6 @@ FORMS += gui/dialogs/formabout.ui \
          services/greader/gui/greaderaccountdetails.ui \
          services/inoreader/gui/inoreaderaccountdetails.ui \
          services/owncloud/gui/owncloudaccountdetails.ui \
-         services/standard/gui/formstandardcategorydetails.ui \
          services/standard/gui/formstandardimportexport.ui \
          services/standard/gui/standardfeeddetails.ui \
          services/tt-rss/gui/ttrssaccountdetails.ui \

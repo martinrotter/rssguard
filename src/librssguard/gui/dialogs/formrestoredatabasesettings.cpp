@@ -25,7 +25,7 @@ FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDia
   });
   connect(m_ui.m_groupDatabase, &QGroupBox::toggled, this, &FormRestoreDatabaseSettings::checkOkButton);
   connect(m_ui.m_groupSettings, &QGroupBox::toggled, this, &FormRestoreDatabaseSettings::checkOkButton);
-  connect(m_ui.m_buttonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked,
+  connect(m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok), &QPushButton::clicked,
           this, &FormRestoreDatabaseSettings::performRestoration);
   selectFolder(qApp->documentsFolder());
 }
@@ -35,7 +35,7 @@ FormRestoreDatabaseSettings::~FormRestoreDatabaseSettings() {
 }
 
 void FormRestoreDatabaseSettings::performRestoration() {
-  m_ui.m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+  m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);
 
   try {
     qApp->restoreDatabaseSettings(m_ui.m_groupDatabase->isChecked(),
@@ -56,7 +56,7 @@ void FormRestoreDatabaseSettings::performRestoration() {
 
 void FormRestoreDatabaseSettings::checkOkButton() {
   m_btnRestart->setEnabled(false);
-  m_ui.m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!m_ui.m_lblSelectFolder->label()->text().isEmpty() &&
+  m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(!m_ui.m_lblSelectFolder->label()->text().isEmpty() &&
                                                              ((m_ui.m_groupDatabase->isChecked() &&
                                                                m_ui.m_listDatabase->currentRow() >= 0) ||
                                                               (m_ui.m_groupSettings->isChecked() &&

@@ -54,7 +54,7 @@ CREATE TABLE Messages (
   is_important    INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),
   is_deleted      INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),
   is_pdeleted     INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
-  feed_custom_id  TEXT        NOT NULL, /* Points to Feeds/custom_id. */
+  feed            TEXT        NOT NULL, /* Points to Feeds/custom_id. */
   title           TEXT        NOT NULL CHECK (title != ''),
   url             TEXT,
   author          TEXT,
