@@ -47,11 +47,10 @@ class StandardFeed : public Feed {
 
     QString additionalTooltip() const;
 
-    bool canBeEdited() const;
     bool canBeDeleted() const;
+    bool deleteViaGui();
 
     bool editViaGui();
-    bool deleteViaGui();
 
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
@@ -60,8 +59,6 @@ class StandardFeed : public Feed {
     Qt::ItemFlags additionalFlags() const;
     bool performDragDropChange(RootItem* target_item);
 
-    bool addItself(RootItem* parent);
-    bool editItself(StandardFeed* new_feed_data);
     bool removeItself();
 
     // Other getters/setters.
@@ -76,6 +73,15 @@ class StandardFeed : public Feed {
 
     QString postProcessScript() const;
     void setPostProcessScript(const QString& post_process_script);
+
+    bool passwordProtected() const;
+    void setPasswordProtected(bool passwordProtected);
+
+    QString username() const;
+    void setUsername(const QString& username);
+
+    QString password() const;
+    void setPassword(const QString& password);
 
     QNetworkReply::NetworkError networkError() const;
 
@@ -113,9 +119,11 @@ class StandardFeed : public Feed {
     SourceType m_sourceType;
     Type m_type;
     QString m_postProcessScript;
-
     QNetworkReply::NetworkError m_networkError;
     QString m_encoding;
+    bool m_passwordProtected{};
+    QString m_username;
+    QString m_password;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)

@@ -22,7 +22,7 @@ CREATE TABLE Categories (
   parent_id       INTEGER     NOT NULL CHECK (parent_id >= -1), /* Root categories contain -1 here. */
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
-  date_created    INTEGER,
+  date_created    INTEGER     NOT NULL CHECK (date_created >= 0),
   icon            BLOB,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
@@ -34,14 +34,16 @@ CREATE TABLE Feeds (
   id              INTEGER     PRIMARY KEY,
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
-  date_created    INTEGER,
+  date_created    INTEGER     NOT NULL CHECK (date_created >= 0),
   icon            BLOB,
   category        INTEGER     NOT NULL CHECK (category >= -1), /* Root feeds contain -1 here. */
   source          TEXT,
   update_type     INTEGER(1)  NOT NULL CHECK (update_type >= 0),
   update_interval INTEGER     NOT NULL DEFAULT 15 CHECK (update_interval >= 1),
   account_id      INTEGER     NOT NULL,
-  custom_id       TEXT,
+  custom_id       TEXT        NOT NULL CHECK (custom_id != ''), /* Custom ID cannot be empty, it must contain either service-specific ID, or Feeds/id. */
+  /* Custom column for (serialized) custom account-specific data. */
+  custom_data     TEXT,
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
@@ -49,15 +51,15 @@ CREATE TABLE Feeds (
 CREATE TABLE Messages (
   id              INTEGER     PRIMARY KEY,
   is_read         INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),
-  is_deleted      INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),
   is_important    INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),
-  feed            TEXT        NOT NULL,
+  is_deleted      INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),
+  is_pdeleted     INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
+  feed_custom_id  TEXT        NOT NULL, /* Points to Feeds/custom_id. */
   title           TEXT        NOT NULL CHECK (title != ''),
   url             TEXT,
   author          TEXT,
-  date_created    INTEGER     NOT NULL CHECK (date_created != 0),
+  date_created    INTEGER     NOT NULL CHECK (date_created >= 0),
   contents        TEXT,
-  is_pdeleted     INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
   enclosures      TEXT,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
@@ -74,7 +76,7 @@ CREATE TABLE MessageFilters (
 -- !
 CREATE TABLE MessageFiltersInFeeds (
   filter                INTEGER     NOT NULL,
-  feed_custom_id        TEXT        NOT NULL,
+  feed_custom_id        TEXT        NOT NULL,  /* Points to Feeds/custom_id. */
   account_id            INTEGER     NOT NULL,
   
   FOREIGN KEY (filter) REFERENCES MessageFilters (id) ON DELETE CASCADE,

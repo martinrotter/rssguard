@@ -162,7 +162,7 @@ void FeedsView::addFeedIntoSelectedAccount() {
     ServiceRoot* root = selected->getParentServiceRoot();
 
     if (root->supportsFeedAdding()) {
-      root->addNewFeed(selected);
+      root->addNewFeed(selected, QGuiApplication::clipboard()->text(QClipboard::Mode::Clipboard));
     }
     else {
       qApp->showGuiMessage(tr("Not supported"),

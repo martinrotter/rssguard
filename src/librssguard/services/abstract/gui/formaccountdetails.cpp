@@ -19,8 +19,6 @@ FormAccountDetails::FormAccountDetails(const QIcon& icon, QWidget* parent)
 }
 
 void FormAccountDetails::apply() {
-  QSqlDatabase database = qApp->database()->connection(QSL("FormAccountDetails"));
-
   m_account->setNetworkProxy(m_proxyDetails->proxy());
 }
 

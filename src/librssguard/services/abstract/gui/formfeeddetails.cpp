@@ -8,6 +8,7 @@
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
+#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
@@ -23,14 +24,9 @@
 #include <QTextCodec>
 
 FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
-  : QDialog(parent), m_editableFeed(nullptr), m_serviceRoot(service_root) {
+  : QDialog(parent), m_feed(nullptr), m_serviceRoot(service_root) {
   initialize();
   createConnections();
-}
-
-int FormFeedDetails::editFeed(Feed* input_feed) {
-  setEditableFeed(input_feed);
-  return QDialog::exec();
 }
 
 void FormFeedDetails::activateTab(int index) {
@@ -46,26 +42,10 @@ void FormFeedDetails::insertCustomTab(QWidget* custom_tab, const QString& title,
 }
 
 void FormFeedDetails::apply() {
-  Feed new_feed;
-
-  // Setup data for new_feed.
-  new_feed.setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
-                                                                 m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
-  new_feed.setAutoUpdateInitialInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
-
-  if (m_editableFeed != nullptr) {
-    // Edit the feed.
-    bool edited = m_editableFeed->editItself(&new_feed);
-
-    if (edited) {
-      accept();
-    }
-    else {
-      qApp->showGuiMessage(tr("Cannot edit feed"),
-                           tr("Feed was not edited due to error."),
-                           QSystemTrayIcon::MessageIcon::Critical, this, true);
-    }
-  }
+  // Setup common data for the feed.
+  m_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
+                                                                m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
+  m_feed->setAutoUpdateInitialInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
 }
 
 void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
@@ -88,13 +68,16 @@ void FormFeedDetails::createConnections() {
           &FormFeedDetails::onAutoUpdateTypeChanged);
 }
 
-void FormFeedDetails::setEditableFeed(Feed* editable_feed) {
-  setWindowTitle(tr("Edit '%1'").arg(editable_feed->title()));
+void FormFeedDetails::loadFeedData() {
+  if (m_creatingNew) {
+    setWindowTitle(tr("Add new feed"));
+  }
+  else {
+    setWindowTitle(tr("Edit '%1'").arg(m_feed->title()));
+  }
 
-  m_editableFeed = editable_feed;
-
-  m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue((int) editable_feed->autoUpdateType())));
-  m_ui->m_spinAutoUpdateInterval->setValue(editable_feed->autoUpdateInitialInterval());
+  m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(m_feed->autoUpdateType()))));
+  m_ui->m_spinAutoUpdateInterval->setValue(m_feed->autoUpdateInitialInterval());
 }
 
 void FormFeedDetails::initialize() {

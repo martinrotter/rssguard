@@ -22,11 +22,6 @@ Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate),
   m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
   m_messageFilters(QList<QPointer<MessageFilter>>()) {
-
-  m_passwordProtected = false;
-  m_username = QString();
-  m_password = QString();
-
   setKind(RootItem::Kind::Feed);
 }
 
@@ -46,16 +41,6 @@ Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
   setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
 
-  setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
-  setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
-
-  if (record.value(FDS_DB_PASSWORD_INDEX).toString().isEmpty()) {
-    setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
-  }
-  else {
-    setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
-  }
-
   qDebugNN << LOGSEC_CORE
            << "Custom ID of feed when loading from DB is"
            << QUOTE_W_SPACE_DOT(customId());
@@ -72,10 +57,6 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
   setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
   setMessageFilters(other.messageFilters());
-
-  setPasswordProtected(other.passwordProtected());
-  setUsername(other.username());
-  setPassword(other.password());
 }
 
 Feed::~Feed() = default;
@@ -84,30 +65,6 @@ QList<Message> Feed::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesForFeed(database, customId(), getParentServiceRoot()->accountId());
-}
-
-bool Feed::passwordProtected() const {
-  return m_passwordProtected;
-}
-
-void Feed::setPasswordProtected(bool passwordProtected) {
-  m_passwordProtected = passwordProtected;
-}
-
-QString Feed::username() const {
-  return m_username;
-}
-
-void Feed::setUsername(const QString& username) {
-  m_username = username;
-}
-
-QString Feed::password() const {
-  return m_password;
-}
-
-void Feed::setPassword(const QString& password) {
-  m_password = password;
 }
 
 QVariant Feed::data(int column, int role) const {
@@ -171,28 +128,8 @@ bool Feed::canBeEdited() const {
 bool Feed::editViaGui() {
   QScopedPointer<FormFeedDetails> form_pointer(new FormFeedDetails(getParentServiceRoot(), qApp->mainFormWidget()));
 
-  form_pointer->editFeed(this);
+  form_pointer->addEditFeed(this);
   return false;
-}
-
-bool Feed::editItself(Feed* new_feed_data) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (DatabaseQueries::editFeed(database, id(), new_feed_data->autoUpdateType(),
-                                    new_feed_data->autoUpdateInitialInterval(),
-                                    new_feed_data->passwordProtected(),
-                                    new_feed_data->username(),
-                                    new_feed_data->password())) {
-    setPasswordProtected(new_feed_data->passwordProtected());
-    setUsername(new_feed_data->username());
-    setPassword(new_feed_data->password());
-    setAutoUpdateType(new_feed_data->autoUpdateType());
-    setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
-    return true;
-  }
-  else {
-    return false;
-  }
 }
 
 void Feed::setAutoUpdateInitialInterval(int auto_update_interval) {

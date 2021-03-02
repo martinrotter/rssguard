@@ -41,6 +41,10 @@ StandardFeed::StandardFeed(RootItem* parent_item)
   m_type = Type::Rss0X;
   m_sourceType = SourceType::Url;
   m_encoding = m_postProcessScript = QString();
+
+  m_passwordProtected = false;
+  m_username = QString();
+  m_password = QString();
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other)
@@ -50,6 +54,9 @@ StandardFeed::StandardFeed(const StandardFeed& other)
   m_postProcessScript = other.postProcessScript();
   m_sourceType = other.sourceType();
   m_encoding = other.encoding();
+  m_passwordProtected = other.passwordProtected();
+  m_username = other.username();
+  m_password = other.password();
 }
 
 StandardFeed::~StandardFeed() {
@@ -68,10 +75,6 @@ QString StandardFeed::additionalTooltip() const {
                                                         StandardFeed::typeToString(type()));
 }
 
-bool StandardFeed::canBeEdited() const {
-  return true;
-}
-
 bool StandardFeed::canBeDeleted() const {
   return true;
 }
@@ -82,9 +85,11 @@ StandardServiceRoot* StandardFeed::serviceRoot() const {
 
 bool StandardFeed::editViaGui() {
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(serviceRoot(),
+                                                                                   nullptr,
+                                                                                   {},
                                                                                    qApp->mainFormWidget()));
 
-  form_pointer->addEditFeed(this, this);
+  form_pointer->addEditFeed(this);
   return false;
 }
 
@@ -96,6 +101,30 @@ bool StandardFeed::deleteViaGui() {
   else {
     return false;
   }
+}
+
+bool StandardFeed::passwordProtected() const {
+  return m_passwordProtected;
+}
+
+void StandardFeed::setPasswordProtected(bool passwordProtected) {
+  m_passwordProtected = passwordProtected;
+}
+
+QString StandardFeed::username() const {
+  return m_username;
+}
+
+void StandardFeed::setUsername(const QString& username) {
+  m_username = username;
+}
+
+QString StandardFeed::password() const {
+  return m_password;
+}
+
+void StandardFeed::setPassword(const QString& password) {
+  m_password = password;
 }
 
 QVariantHash StandardFeed::customDatabaseData() const {
@@ -169,18 +198,17 @@ void StandardFeed::fetchMetadataForItself() {
                                      getParentServiceRoot()->networkProxy());
 
   if (metadata != nullptr && result) {
-    // Some properties are not updated when new metadata are fetched.
-    metadata->setParent(parent());
-    metadata->setSource(source());
-    metadata->setPasswordProtected(passwordProtected());
-    metadata->setUsername(username());
-    metadata->setPassword(password());
-    metadata->setAutoUpdateType(autoUpdateType());
-    metadata->setAutoUpdateInitialInterval(autoUpdateInitialInterval());
-    metadata->setPostProcessScript(postProcessScript());
-    metadata->setSourceType(sourceType());
-    editItself(metadata);
+    // Copy metadata to our object.
+    setTitle(metadata->title());
+    setDescription(metadata->description());
+    setType(metadata->type());
+    setEncoding(metadata->encoding());
+    setIcon(metadata->icon());
     delete metadata;
+
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+
+    DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), parent()->id());
 
     // Notify the model about fact, that it needs to reload new information about
     // this item, particularly the icon.
@@ -476,85 +504,17 @@ Qt::ItemFlags StandardFeed::additionalFlags() const {
 }
 
 bool StandardFeed::performDragDropChange(RootItem* target_item) {
-  auto* feed_new = new StandardFeed(*this);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
-  feed_new->setParent(target_item);
-
-  if (editItself(feed_new)) {
-    serviceRoot()->requestItemReassignment(this, target_item);
-    delete feed_new;
-    return true;
-  }
-  else {
-    delete feed_new;
-    return false;
-  }
+  DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), target_item->id());
+  serviceRoot()->requestItemReassignment(this, target_item);
+  return true;
 }
 
 bool StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, customId().toInt(), getParentServiceRoot()->accountId());
-}
-
-bool StandardFeed::addItself(RootItem* parent) {
-  // Now, add feed to persistent storage.
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  bool ok;
-  int new_id = DatabaseQueries::addStandardFeed(database, parent->id(), parent->getParentServiceRoot()->accountId(),
-                                                title(), description(), creationDate(), icon(), encoding(), source(),
-                                                passwordProtected(), username(), password(), autoUpdateType(),
-                                                autoUpdateInitialInterval(), sourceType(), postProcessScript(),
-                                                type(), &ok);
-
-  if (!ok) {
-    // Query failed.
-    return false;
-  }
-  else {
-    // New feed was added, fetch is primary id from the database.
-    setId(new_id);
-    setCustomId(QString::number(new_id));
-    return true;
-  }
-}
-
-bool StandardFeed::editItself(StandardFeed* new_feed_data) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  StandardFeed* original_feed = this;
-  RootItem* new_parent = new_feed_data->parent();
-
-  if (!DatabaseQueries::editStandardFeed(database, new_parent->id(), original_feed->id(), new_feed_data->title(),
-                                         new_feed_data->description(), new_feed_data->icon(),
-                                         new_feed_data->encoding(), new_feed_data->source(), new_feed_data->passwordProtected(),
-                                         new_feed_data->username(), new_feed_data->password(),
-                                         new_feed_data->autoUpdateType(), new_feed_data->autoUpdateInitialInterval(),
-                                         new_feed_data->sourceType(), new_feed_data->postProcessScript(),
-                                         new_feed_data->type())) {
-    // Persistent storage update failed, no way to continue now.
-    qWarningNN << LOGSEC_CORE
-               << "Self-editing of standard feed failed.";
-    return false;
-  }
-
-  // Setup new model data for the original item.
-  original_feed->setTitle(new_feed_data->title());
-  original_feed->setDescription(new_feed_data->description());
-  original_feed->setIcon(new_feed_data->icon());
-  original_feed->setEncoding(new_feed_data->encoding());
-  original_feed->setDescription(new_feed_data->description());
-  original_feed->setSource(new_feed_data->source());
-  original_feed->setPasswordProtected(new_feed_data->passwordProtected());
-  original_feed->setUsername(new_feed_data->username());
-  original_feed->setPassword(new_feed_data->password());
-  original_feed->setAutoUpdateType(new_feed_data->autoUpdateType());
-  original_feed->setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
-  original_feed->setType(new_feed_data->type());
-  original_feed->setSourceType(new_feed_data->sourceType());
-  original_feed->setPostProcessScript(new_feed_data->postProcessScript());
-
-  // Editing is done.
-  return true;
 }
 
 StandardFeed::Type StandardFeed::type() const {
@@ -785,6 +745,16 @@ StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(record) {
   setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
   setSourceType(SourceType(record.value(FDS_DB_SOURCE_TYPE_INDEX).toInt()));
   setPostProcessScript(record.value(FDS_DB_POST_PROCESS).toString());
+
+  setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
+  setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
+
+  if (record.value(FDS_DB_PASSWORD_INDEX).toString().isEmpty()) {
+    setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
+  }
+  else {
+    setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
+  }
 
   StandardFeed::Type type = static_cast<StandardFeed::Type>(record.value(FDS_DB_TYPE_INDEX).toInt());
 

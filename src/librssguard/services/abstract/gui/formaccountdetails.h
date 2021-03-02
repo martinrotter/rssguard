@@ -29,8 +29,8 @@ class FormAccountDetails : public QDialog {
   protected slots:
 
     // Applies changes.
-    // NOTE: This must be reimplemented in subclasses. Also, every
-    // subclass must call applyInternal() method as first statement.
+    // NOTE: This must be reimplemented in subclasses. Also this base
+    // implementation must be called first.
     virtual void apply();
 
   protected:

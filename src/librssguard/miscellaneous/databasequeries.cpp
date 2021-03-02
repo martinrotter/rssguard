@@ -1483,47 +1483,57 @@ bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
   QSqlQuery query_category(db);
   QSqlQuery query_feed(db);
 
-  query_category.setForwardOnly(true);
-  query_feed.setForwardOnly(true);
-  query_category.prepare("INSERT INTO Categories (parent_id, title, account_id, custom_id) "
+  // TODO: use createOvewriteAccount and createOverwriteFeed
+
+/*
+   query_category.setForwardOnly(true);
+   query_feed.setForwardOnly(true);
+   query_category.prepare("INSERT INTO Categories (parent_id, title, account_id, custom_id) "
                          "VALUES (:parent_id, :title, :account_id, :custom_id);");
-  query_feed.prepare("INSERT INTO Feeds (title, icon, url, category, protected, update_type, update_interval, account_id, custom_id) "
+   query_feed.prepare("INSERT INTO Feeds (title, icon, url, category, protected, update_type, update_interval, account_id, custom_id) "
                      "VALUES (:title, :icon, :url, :category, :protected, :update_type, :update_interval, :account_id, :custom_id);");
+ */
 
   // Iterate all children.
   for (RootItem* child : tree_root->getSubTree()) {
     if (child->kind() == RootItem::Kind::Category) {
-      query_category.bindValue(QSL(":parent_id"), child->parent()->id());
-      query_category.bindValue(QSL(":title"), child->title());
-      query_category.bindValue(QSL(":account_id"), account_id);
-      query_category.bindValue(QSL(":custom_id"), child->customId());
+      /*
+         query_category.bindValue(QSL(":parent_id"), child->parent()->id());
+         query_category.bindValue(QSL(":title"), child->title());
+         query_category.bindValue(QSL(":account_id"), account_id);
+         query_category.bindValue(QSL(":custom_id"), child->customId());
 
-      if (query_category.exec()) {
-        child->setId(query_category.lastInsertId().toInt());
-      }
-      else {
-        return false;
-      }
+         if (query_category.exec()) {
+         child->setId(query_category.lastInsertId().toInt());
+         }
+         else {
+         return false;
+         }
+       */
     }
     else if (child->kind() == RootItem::Kind::Feed) {
-      Feed* feed = child->toFeed();
+      createOverwriteFeed(db, child->toFeed(), account_id, child->parent()->id());
 
-      query_feed.bindValue(QSL(":title"), feed->title());
-      query_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
-      query_feed.bindValue(QSL(":url"), feed->source());
-      query_feed.bindValue(QSL(":category"), feed->parent()->id());
-      query_feed.bindValue(QSL(":protected"), 0);
-      query_feed.bindValue(QSL(":update_type"), int(feed->autoUpdateType()));
-      query_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
-      query_feed.bindValue(QSL(":account_id"), account_id);
-      query_feed.bindValue(QSL(":custom_id"), feed->customId());
+      /*
+         Feed* feed = child->toFeed();
 
-      if (query_feed.exec()) {
-        feed->setId(query_feed.lastInsertId().toInt());
-      }
-      else {
-        return false;
-      }
+         query_feed.bindValue(QSL(":title"), feed->title());
+         query_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
+         query_feed.bindValue(QSL(":url"), feed->source());
+         query_feed.bindValue(QSL(":category"), feed->parent()->id());
+         query_feed.bindValue(QSL(":protected"), 0);
+         query_feed.bindValue(QSL(":update_type"), int(feed->autoUpdateType()));
+         query_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
+         query_feed.bindValue(QSL(":account_id"), account_id);
+         query_feed.bindValue(QSL(":custom_id"), feed->customId());
+
+         if (query_feed.exec()) {
+         feed->setId(query_feed.lastInsertId().toInt());
+         }
+         else {
+         return false;
+         }
+       */
     }
     else if (child->kind() == RootItem::Kind::Labels) {
       // Add all labels.
@@ -1658,6 +1668,51 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
   return ids;
 }
 
+void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, int account_id, int parent_id) {
+  QSqlQuery q(db);
+
+  if (feed->id() <= 0) {
+    // We need to insert feed first.
+    q.prepare(QSL("INSERT INTO "
+                  "Feeds (title, date_created, category, update_type, update_interval, account_id, custom_id) "
+                  "VALUES ('new', 0, 0, 0, 1, 0, 'new');"));
+
+    if (!q.exec()) {
+      throw ApplicationException(q.lastError().text());
+    }
+    else {
+      feed->setId(q.lastInsertId().toInt());
+    }
+  }
+
+  q.prepare("UPDATE Feeds "
+            "SET title = :title, description = :description, date_created = :date_created, "
+            "    icon = :icon, category = :category, source = :source, update_type = :update_type, "
+            "    update_interval = :update_interval, account_id = :account_id, "
+            "    custom_id = :custom_id, custom_data = :custom_data "
+            "WHERE id = :id;");
+  q.bindValue(QSL(":title"), feed->title());
+  q.bindValue(QSL(":description"), feed->description());
+  q.bindValue(QSL(":date_created"), feed->creationDate().toMSecsSinceEpoch());
+  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
+  q.bindValue(QSL(":category"), parent_id);
+  q.bindValue(QSL(":source"), feed->source());
+  q.bindValue(QSL(":update_type"), int(feed->autoUpdateType()));
+  q.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
+  q.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":custom_id"), feed->customId().isEmpty() ? QString::number(feed->id()) : feed->customId());
+  q.bindValue(QSL(":id"), feed->id());
+
+  auto custom_data = feed->customDatabaseData();
+  QString serialized_custom_data = serializeCustomData(custom_data);
+
+  q.bindValue(QSL(":custom_data"), serialized_custom_data);
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
 void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account) {
   QSqlQuery q(db);
 
@@ -1731,9 +1786,9 @@ bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
   return q.exec();
 }
 
-int DatabaseQueries::addStandardCategory(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
-                                         const QString& description, const QDateTime& creation_date, const QIcon& icon,
-                                         bool* ok) {
+int DatabaseQueries::addCategory(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
+                                 const QString& description, const QDateTime& creation_date, const QIcon& icon,
+                                 bool* ok) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1776,8 +1831,8 @@ int DatabaseQueries::addStandardCategory(const QSqlDatabase& db, int parent_id, 
   }
 }
 
-bool DatabaseQueries::editStandardCategory(const QSqlDatabase& db, int parent_id, int category_id,
-                                           const QString& title, const QString& description, const QIcon& icon) {
+bool DatabaseQueries::editCategory(const QSqlDatabase& db, int parent_id, int category_id,
+                                   const QString& title, const QString& description, const QIcon& icon) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1789,145 +1844,6 @@ bool DatabaseQueries::editStandardCategory(const QSqlDatabase& db, int parent_id
   q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon));
   q.bindValue(QSL(":parent_id"), parent_id);
   q.bindValue(QSL(":id"), category_id);
-  return q.exec();
-}
-
-int DatabaseQueries::addStandardFeed(const QSqlDatabase& db, int parent_id, int account_id, const QString& title,
-                                     const QString& description, const QDateTime& creation_date, const QIcon& icon,
-                                     const QString& encoding, const QString& url, bool is_protected,
-                                     const QString& username, const QString& password,
-                                     Feed::AutoUpdateType auto_update_type, int auto_update_interval,
-                                     StandardFeed::SourceType source_type, const QString& post_process_script,
-                                     StandardFeed::Type feed_format, bool* ok) {
-  QSqlQuery q(db);
-
-  qDebug() << "Adding feed with title '" << title.toUtf8() << "' to DB.";
-  q.setForwardOnly(true);
-  q.prepare("INSERT INTO Feeds "
-            "(title, description, date_created, icon, category, encoding, url, source_type, post_process, protected, username, password, update_type, update_interval, type, account_id) "
-            "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :source_type, :post_process, :protected, :username, :password, :update_type, :update_interval, :type, :account_id);");
-  q.bindValue(QSL(":title"), title.toUtf8());
-  q.bindValue(QSL(":description"), description.toUtf8());
-  q.bindValue(QSL(":date_created"), creation_date.toMSecsSinceEpoch());
-  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon));
-  q.bindValue(QSL(":category"), parent_id);
-  q.bindValue(QSL(":encoding"), encoding);
-  q.bindValue(QSL(":url"), url);
-  q.bindValue(QSL(":source_type"), int(source_type));
-  q.bindValue(QSL(":post_process"), post_process_script.simplified());
-  q.bindValue(QSL(":protected"), is_protected ? 1 : 0);
-  q.bindValue(QSL(":username"), username);
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (password.isEmpty()) {
-    q.bindValue(QSL(":password"), password);
-  }
-  else {
-    q.bindValue(QSL(":password"), TextFactory::encrypt(password));
-  }
-
-  q.bindValue(QSL(":update_type"), int(auto_update_type));
-  q.bindValue(QSL(":update_interval"), auto_update_interval);
-  q.bindValue(QSL(":type"), int(feed_format));
-
-  if (q.exec()) {
-    int new_id = q.lastInsertId().toInt();
-
-    // Now set custom ID in the DB.
-    q.prepare(QSL("UPDATE Feeds SET custom_id = :custom_id WHERE id = :id;"));
-    q.bindValue(QSL(":custom_id"), QString::number(new_id));
-    q.bindValue(QSL(":id"), new_id);
-    q.exec();
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-
-    return new_id;
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-
-    qWarningNN << LOGSEC_DB
-               << "Failed to add feed to database: '"
-               << q.lastError().text()
-               << "'.";
-    return 0;
-  }
-}
-
-bool DatabaseQueries::editStandardFeed(const QSqlDatabase& db, int parent_id, int feed_id, const QString& title,
-                                       const QString& description, const QIcon& icon,
-                                       const QString& encoding, const QString& url, bool is_protected,
-                                       const QString& username, const QString& password,
-                                       Feed::AutoUpdateType auto_update_type,
-                                       int auto_update_interval, StandardFeed::SourceType source_type,
-                                       const QString& post_process_script, StandardFeed::Type feed_format) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare("UPDATE Feeds "
-            "SET title = :title, description = :description, icon = :icon, category = :category, encoding = :encoding, url = :url, source_type = :source_type, post_process = :post_process, protected = :protected, username = :username, password = :password, update_type = :update_type, update_interval = :update_interval, type = :type "
-            "WHERE id = :id;");
-  q.bindValue(QSL(":title"), title);
-  q.bindValue(QSL(":description"), description);
-  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon));
-  q.bindValue(QSL(":category"), parent_id);
-  q.bindValue(QSL(":encoding"), encoding);
-  q.bindValue(QSL(":url"), url);
-  q.bindValue(QSL(":source_type"), int(source_type));
-  q.bindValue(QSL(":post_process"), post_process_script.simplified());
-  q.bindValue(QSL(":protected"), is_protected ? 1 : 0);
-  q.bindValue(QSL(":username"), username);
-
-  if (password.isEmpty()) {
-    q.bindValue(QSL(":password"), password);
-  }
-  else {
-    q.bindValue(QSL(":password"), TextFactory::encrypt(password));
-  }
-
-  q.bindValue(QSL(":update_type"), int(auto_update_type));
-  q.bindValue(QSL(":update_interval"), auto_update_interval);
-  q.bindValue(QSL(":type"), int(feed_format));
-  q.bindValue(QSL(":id"), feed_id);
-
-  bool suc = q.exec();
-
-  if (!suc) {
-    qWarningNN << LOGSEC_DB
-               << "There was error when editing feed: '"
-               << q.lastError().text()
-               << "'.";
-  }
-
-  return suc;
-}
-
-bool DatabaseQueries::editFeed(const QSqlDatabase& db, int feed_id, Feed::AutoUpdateType auto_update_type,
-                               int auto_update_interval, bool is_protected, const QString& username,
-                               const QString& password) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare("UPDATE Feeds "
-            "SET update_type = :update_type, update_interval = :update_interval, protected = :protected, username = :username, password = :password "
-            "WHERE id = :id;");
-  q.bindValue(QSL(":update_type"), int(auto_update_type));
-  q.bindValue(QSL(":update_interval"), auto_update_interval);
-  q.bindValue(QSL(":id"), feed_id);
-  q.bindValue(QSL(":protected"), is_protected ? 1 : 0);
-  q.bindValue(QSL(":username"), username);
-
-  if (password.isEmpty()) {
-    q.bindValue(QSL(":password"), password);
-  }
-  else {
-    q.bindValue(QSL(":password"), TextFactory::encrypt(password));
-  }
-
   return q.exec();
 }
 

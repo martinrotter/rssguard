@@ -97,7 +97,7 @@ bool StandardCategory::removeItself() {
 bool StandardCategory::addItself(RootItem* parent) {
   // Now, add category to persistent storage.
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  int new_id = DatabaseQueries::addStandardCategory(database, parent->id(), parent->getParentServiceRoot()->accountId(),
+  int new_id = DatabaseQueries::addCategory(database, parent->id(), parent->getParentServiceRoot()->accountId(),
                                                     title(), description(), creationDate(), icon());
 
   if (new_id <= 0) {
@@ -115,7 +115,7 @@ bool StandardCategory::editItself(StandardCategory* new_category_data) {
   StandardCategory* original_category = this;
   RootItem* new_parent = new_category_data->parent();
 
-  if (DatabaseQueries::editStandardCategory(database, new_parent->id(), original_category->id(),
+  if (DatabaseQueries::editCategory(database, new_parent->id(), original_category->id(),
                                             new_category_data->title(), new_category_data->description(),
                                             new_category_data->icon())) {
     // Setup new model data for the original item.

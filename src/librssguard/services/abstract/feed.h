@@ -58,8 +58,6 @@ class Feed : public RootItem {
     bool canBeEdited() const;
     bool editViaGui();
 
-    bool editItself(Feed* new_feed_data);
-
     QVariant data(int column, int role) const;
 
     int autoUpdateInitialInterval() const;
@@ -76,15 +74,6 @@ class Feed : public RootItem {
 
     QString source() const;
     void setSource(const QString& source);
-
-    bool passwordProtected() const;
-    void setPasswordProtected(bool passwordProtected);
-
-    QString username() const;
-    void setUsername(const QString& username);
-
-    QString password() const;
-    void setPassword(const QString& password);
 
     void appendMessageFilter(MessageFilter* filter);
     QList<QPointer<MessageFilter>> messageFilters() const;
@@ -109,9 +98,6 @@ class Feed : public RootItem {
     int m_totalCount{};
     int m_unreadCount{};
     QList<QPointer<MessageFilter>> m_messageFilters;
-    bool m_passwordProtected{};
-    QString m_username;
-    QString m_password;
 };
 
 Q_DECLARE_METATYPE(Feed::AutoUpdateType)

@@ -15,34 +15,14 @@
 #include <QMimeData>
 #include <QTimer>
 
-FormTtRssFeedDetails::FormTtRssFeedDetails(ServiceRoot* service_root, QWidget* parent)
+FormTtRssFeedDetails::FormTtRssFeedDetails(ServiceRoot* service_root, RootItem* parent_to_select,
+                                           const QString& url, QWidget* parent)
   : FormFeedDetails(service_root, parent), m_feedDetails(new TtRssFeedDetails(this)),
-  m_authDetails(new AuthenticationDetails(this)) {}
-
-int FormTtRssFeedDetails::addFeed(RootItem* parent_to_select, const QString& url) {
-  clearTabs();
-  insertCustomTab(m_feedDetails, tr("General"), 0);
-  insertCustomTab(m_authDetails, tr("Network"), 1);
-  activateTab(0);
-
-  setWindowTitle(tr("Add new feed"));
-  m_feedDetails->loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot, parent_to_select);
-
-  if (!url.isEmpty()) {
-    m_feedDetails->ui.m_txtUrl->lineEdit()->setText(url);
-  }
-  else if (Application::clipboard()->mimeData()->hasText()) {
-    m_feedDetails->ui.m_txtUrl->lineEdit()->setText(Application::clipboard()->text());
-  }
-
-  m_feedDetails->ui.m_txtUrl->lineEdit()->selectAll();
-  m_feedDetails->ui.m_txtUrl->setFocus();
-
-  return exec();
-}
+  m_authDetails(new AuthenticationDetails(this)), m_parentToSelect(parent_to_select),
+  m_urlToProcess(url) {}
 
 void FormTtRssFeedDetails::apply() {
-  if (m_editableFeed != nullptr) {
+  if (!m_creatingNew) {
     // NOTE: We can only edit base properties, therefore
     // base method is fine.
     FormFeedDetails::apply();
@@ -76,5 +56,27 @@ void FormTtRssFeedDetails::apply() {
                            qApp->mainFormWidget(),
                            true);
     }
+  }
+}
+
+void FormTtRssFeedDetails::loadFeedData() {
+  FormFeedDetails::loadFeedData();
+
+  if (m_creatingNew) {
+    insertCustomTab(m_feedDetails, tr("General"), 0);
+    insertCustomTab(m_authDetails, tr("Network"), 1);
+    activateTab(0);
+
+    m_feedDetails->loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot, m_parentToSelect);
+
+    if (!m_urlToProcess.isEmpty()) {
+      m_feedDetails->ui.m_txtUrl->lineEdit()->setText(m_urlToProcess);
+    }
+    else if (Application::clipboard()->mimeData()->hasText()) {
+      m_feedDetails->ui.m_txtUrl->lineEdit()->setText(Application::clipboard()->text());
+    }
+
+    m_feedDetails->ui.m_txtUrl->lineEdit()->selectAll();
+    m_feedDetails->ui.m_txtUrl->setFocus();
   }
 }
