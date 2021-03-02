@@ -451,6 +451,11 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     }
   }
 
+  if (source_type == SourceType::Url && icon_possible_locations.isEmpty()) {
+    // We have no source for feed icon, we use the URL of the feed file itself.
+    icon_possible_locations.append({ source, false });
+  }
+
   // Try to obtain icon.
   QIcon icon_data;
 
