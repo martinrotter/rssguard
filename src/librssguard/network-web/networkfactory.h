@@ -31,7 +31,7 @@ class NetworkFactory {
 
     // Performs SYNCHRONOUS download if favicon for the site,
     // given URL belongs to.
-    static QNetworkReply::NetworkError downloadIcon(const QList<QString>& urls,
+    static QNetworkReply::NetworkError downloadIcon(const QList<QPair<QString, bool>>& urls,
                                                     int timeout,
                                                     QIcon& output,
                                                     const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);

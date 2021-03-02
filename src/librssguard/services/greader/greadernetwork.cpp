@@ -308,7 +308,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
 
         QIcon icon;
 
-        if (NetworkFactory::downloadIcon({ icon_url },
+        if (NetworkFactory::downloadIcon({ { icon_url, true } },
                                          timeout,
                                          icon,
                                          proxy) == QNetworkReply::NetworkError::NoError) {

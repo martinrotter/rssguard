@@ -137,66 +137,71 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
   }
 }
 
-QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString>& urls, int timeout,
+QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QString, bool>>& urls, int timeout,
                                                          QIcon& output, const QNetworkProxy& custom_proxy) {
   QNetworkReply::NetworkError network_result = QNetworkReply::NetworkError::UnknownNetworkError;
 
-  for (const QString& url : urls) {
-    if (url.isEmpty()) {
+  for (const auto& url : urls) {
+    if (url.first.isEmpty()) {
       continue;
     }
 
     QByteArray icon_data;
 
-    network_result = performNetworkOperation(url,
-                                             timeout,
-                                             {},
-                                             icon_data,
-                                             QNetworkAccessManager::Operation::GetOperation,
-                                             {},
-                                             false,
-                                             {},
-                                             {},
-                                             custom_proxy).first;
+    if (url.second) {
+      // Download directly.
+      network_result = performNetworkOperation(url.first,
+                                               timeout,
+                                               {},
+                                               icon_data,
+                                               QNetworkAccessManager::Operation::GetOperation,
+                                               {},
+                                               false,
+                                               {},
+                                               {},
+                                               custom_proxy).first;
 
-    if (network_result == QNetworkReply::NetworkError::NoError) {
-      QPixmap icon_pixmap;
+      if (network_result == QNetworkReply::NetworkError::NoError) {
+        QPixmap icon_pixmap;
 
-      icon_pixmap.loadFromData(icon_data);
-      output = QIcon(icon_pixmap);
+        icon_pixmap.loadFromData(icon_data);
+        output = QIcon(icon_pixmap);
 
-      if (!output.isNull()) {
-        break;
+        if (!output.isNull()) {
+          break;
+        }
       }
     }
+    else {
+      // Use favicon fetching service.
+      QString host = QUrl(url.first).host();
 
-    QString host = QUrl(url).host();
+      if (host.startsWith(QSL("www."))) {
+        host = host.mid(4);
+      }
 
-    if (host.startsWith(QSL("www."))) {
-      host = host.mid(4);
-    }
+      const QString ddg_icon_service = QString("https://external-content.duckduckgo.com/ip3/%1.ico").arg(host);
 
-    const QString ddg_icon_service = QString("https://external-content.duckduckgo.com/ip3/%1.ico").arg(host);
+      network_result = performNetworkOperation(ddg_icon_service,
+                                               timeout,
+                                               QByteArray(),
+                                               icon_data,
+                                               QNetworkAccessManager::Operation::GetOperation,
+                                               {},
+                                               false,
+                                               {},
+                                               {},
+                                               custom_proxy).first;
 
-    network_result = performNetworkOperation(ddg_icon_service,
-                                             timeout,
-                                             QByteArray(),
-                                             icon_data,
-                                             QNetworkAccessManager::Operation::GetOperation,
-                                             {},
-                                             false,
-                                             {},
-                                             {},
-                                             custom_proxy).first;
+      if (network_result == QNetworkReply::NetworkError::NoError) {
+        QPixmap icon_pixmap;
 
-    if (network_result == QNetworkReply::NetworkError::NoError) {
-      QPixmap icon_pixmap;
+        icon_pixmap.loadFromData(icon_data);
+        output = QIcon(icon_pixmap);
 
-      icon_pixmap.loadFromData(icon_data);
-      output = QIcon(icon_pixmap);
-
-      if (!output.isNull()) {
-        break;
+        if (!output.isNull()) {
+          break;
+        }
       }
     }
   }
