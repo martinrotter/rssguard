@@ -8,6 +8,7 @@
 #include "core/messagefilter.h"
 #include "definitions/typedefs.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
@@ -217,7 +218,22 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
     AssignmentItem pair;
 
     pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = new T(query_categories.record());
+    pair.second = new T();
+
+    auto* cat = static_cast<Category*>(pair.second);
+
+    cat->setId(query_categories.value(CAT_DB_ID_INDEX).toInt());
+    cat->setCustomId(query_categories.value(CAT_DB_CUSTOM_ID_INDEX).toString());
+
+    if (cat->customId().isEmpty()) {
+      cat->setCustomId(QString::number(cat->id()));
+    }
+
+    cat->setTitle(query_categories.value(CAT_DB_TITLE_INDEX).toString());
+    cat->setDescription(query_categories.value(CAT_DB_DESCRIPTION_INDEX).toString());
+    cat->setCreationDate(TextFactory::parseDateTime(query_categories.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
+    cat->setIcon(qApp->icons()->fromByteArray(query_categories.value(CAT_DB_ICON_INDEX).toByteArray()));
+
     categories << pair;
   }
 
@@ -257,7 +273,27 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
 
     pair.first = query.value(FDS_DB_CATEGORY_INDEX).toInt();
 
-    Feed* feed = new T(query.record());
+    Feed* feed = new T();
+
+    // Load common data.
+    feed->setTitle(query.value(FDS_DB_TITLE_INDEX).toString());
+    feed->setId(query.value(FDS_DB_ID_INDEX).toInt());
+    feed->setSource(query.value(FDS_DB_SOURCE_INDEX).toString());
+    feed->setCustomId(query.value(FDS_DB_CUSTOM_ID_INDEX).toString());
+
+    if (feed->customId().isEmpty()) {
+      feed->setCustomId(QString::number(feed->id()));
+    }
+
+    feed->setDescription(QString::fromUtf8(query.value(FDS_DB_DESCRIPTION_INDEX).toByteArray()));
+    feed->setCreationDate(TextFactory::parseDateTime(query.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
+    feed->setIcon(qApp->icons()->fromByteArray(query.value(FDS_DB_ICON_INDEX).toByteArray()));
+    feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(query.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
+    feed->setAutoUpdateInitialInterval(query.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
+
+    qDebugNN << LOGSEC_CORE
+             << "Custom ID of feed when loading from DB is"
+             << QUOTE_W_SPACE_DOT(feed->customId());
 
     // Load custom data.
     feed->setCustomDatabaseData(deserializeCustomData(query.value(QSL("custom_data")).toString()));

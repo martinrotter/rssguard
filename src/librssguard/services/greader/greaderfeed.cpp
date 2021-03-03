@@ -9,8 +9,6 @@
 
 GreaderFeed::GreaderFeed(RootItem* parent) : Feed(parent) {}
 
-GreaderFeed::GreaderFeed(const QSqlRecord& record) : Feed(record) {}
-
 GreaderServiceRoot* GreaderFeed::serviceRoot() const {
   return qobject_cast<GreaderServiceRoot*>(getParentServiceRoot());
 }

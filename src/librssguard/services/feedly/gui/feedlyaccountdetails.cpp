@@ -125,12 +125,7 @@ void FeedlyAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
   m_oauth->logout(false);
 
   if (m_ui.m_txtDeveloperAccessToken->lineEdit()->text().simplified().isEmpty()) {
-    if (m_oauth->login()) {
-      m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                      tr("You are already logged in."),
-                                      tr("Access granted."));
-    }
-
+    m_oauth->login();
     return;
   }
 #endif

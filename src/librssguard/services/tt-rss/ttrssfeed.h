@@ -5,8 +5,6 @@
 
 #include "services/abstract/feed.h"
 
-#include <QSqlRecord>
-
 class TtRssServiceRoot;
 
 class TtRssFeed : public Feed {
@@ -14,17 +12,15 @@ class TtRssFeed : public Feed {
 
   public:
     explicit TtRssFeed(RootItem* parent = nullptr);
-    explicit TtRssFeed(const QSqlRecord& record);
-    virtual ~TtRssFeed();
 
     TtRssServiceRoot* serviceRoot() const;
 
-    bool canBeDeleted() const;
-    bool deleteViaGui();
+    virtual bool canBeDeleted() const;
+    virtual bool deleteViaGui();
+    virtual QList<Message> obtainNewMessages(bool* error_during_obtaining);
 
+  private:
     bool removeItself();
-
-    QList<Message> obtainNewMessages(bool* error_during_obtaining);
 };
 
 #endif // TTRSSFEED_H

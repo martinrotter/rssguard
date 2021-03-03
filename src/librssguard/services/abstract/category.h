@@ -11,8 +11,6 @@ class Category : public RootItem {
   public:
     explicit Category(RootItem* parent = nullptr);
     explicit Category(const Category& other);
-    explicit Category(const QSqlRecord& record);
-    virtual ~Category();
 
     void updateCounts(bool including_total_count);
     bool cleanMessages(bool clean_read_only);

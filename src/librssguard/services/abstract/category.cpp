@@ -18,22 +18,6 @@ Category::Category(const Category& other) : RootItem(other) {
   setKind(RootItem::Kind::Category);
 }
 
-Category::Category(const QSqlRecord& record) : Category(nullptr) {
-  setId(record.value(CAT_DB_ID_INDEX).toInt());
-  setCustomId(record.value(CAT_DB_CUSTOM_ID_INDEX).toString());
-
-  if (customId().isEmpty()) {
-    setCustomId(QString::number(id()));
-  }
-
-  setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
-  setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
-  setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
-  setIcon(qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
-}
-
-Category::~Category() = default;
-
 void Category::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
 
@@ -52,7 +36,6 @@ void Category::updateCounts(bool including_total_count) {
 
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
   bool ok;
-
   QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForCategory(database,
                                                                                        customId(),
                                                                                        getParentServiceRoot()->accountId(),

@@ -25,12 +25,6 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent)
 void FormEditInoreaderAccount::apply() {
   FormAccountDetails::apply();
 
-  if (!m_creatingNew) {
-    // Disable "Cancel" button because all changes made to
-    // existing account are always saved anyway.
-    m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel)->setVisible(false);
-  }
-
   account<InoreaderServiceRoot>()->network()->oauth()->logout(false);
   account<InoreaderServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
   account<InoreaderServiceRoot>()->network()->oauth()->setClientSecret(m_details->m_ui.m_txtAppKey->lineEdit()->text());
@@ -50,12 +44,6 @@ void FormEditInoreaderAccount::apply() {
 
 void FormEditInoreaderAccount::loadAccountData() {
   FormAccountDetails::loadAccountData();
-
-  if (!m_creatingNew) {
-    // Disable "Cancel" button because all changes made to
-    // existing account are always saved anyway.
-    m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel)->setVisible(false);
-  }
 
   m_details->m_oauth = account<InoreaderServiceRoot>()->network()->oauth();
   m_details->hookNetwork();

@@ -59,14 +59,6 @@ StandardFeed::StandardFeed(const StandardFeed& other)
   m_password = other.password();
 }
 
-StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(record) {
-  m_networkError = QNetworkReply::NetworkError::NoError;
-}
-
-StandardFeed::~StandardFeed() {
-  qDebugNN << LOGSEC_CORE << "Destroying StandardFeed instance.";
-}
-
 QList<QAction*> StandardFeed::contextMenuFeedsList() {
   return serviceRoot()->getContextMenuForFeed(this);
 }

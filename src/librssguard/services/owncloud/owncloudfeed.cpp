@@ -11,10 +11,6 @@
 
 OwnCloudFeed::OwnCloudFeed(RootItem* parent) : Feed(parent) {}
 
-OwnCloudFeed::OwnCloudFeed(const QSqlRecord& record) : Feed(record) {}
-
-OwnCloudFeed::~OwnCloudFeed() = default;
-
 bool OwnCloudFeed::canBeDeleted() const {
   return true;
 }

@@ -38,9 +38,7 @@ class Feed : public RootItem {
 
     // Constructors.
     explicit Feed(RootItem* parent = nullptr);
-    explicit Feed(const QSqlRecord& record);
     explicit Feed(const Feed& other);
-    virtual ~Feed();
 
     virtual QList<Message> undeletedMessages() const;
     virtual QString additionalTooltip() const;

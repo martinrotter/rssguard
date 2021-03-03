@@ -10,8 +10,6 @@
 
 FeedlyFeed::FeedlyFeed(RootItem* parent) : Feed(parent) {}
 
-FeedlyFeed::FeedlyFeed(const QSqlRecord& record) : Feed(record) {}
-
 FeedlyServiceRoot* FeedlyFeed::serviceRoot() const {
   return qobject_cast<FeedlyServiceRoot*>(getParentServiceRoot());
 }

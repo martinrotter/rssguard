@@ -43,12 +43,6 @@ void FormEditGmailAccount::apply() {
 void FormEditGmailAccount::loadAccountData() {
   FormAccountDetails::loadAccountData();
 
-  if (!m_creatingNew) {
-    // Disable "Cancel" button because all changes made to
-    // existing account are always saved anyway.
-    m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel)->setVisible(false);
-  }
-
   m_details->m_oauth = account<GmailServiceRoot>()->network()->oauth();
   m_details->hookNetwork();
 

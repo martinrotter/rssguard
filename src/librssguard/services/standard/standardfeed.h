@@ -11,7 +11,6 @@
 #include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QPair>
-#include <QSqlRecord>
 
 class StandardServiceRoot;
 
@@ -39,8 +38,6 @@ class StandardFeed : public Feed {
 
     explicit StandardFeed(RootItem* parent_item = nullptr);
     explicit StandardFeed(const StandardFeed& other);
-    explicit StandardFeed(const QSqlRecord& record);
-    virtual ~StandardFeed();
 
     QList<QAction*> contextMenuFeedsList();
     QString additionalTooltip() const;

@@ -36,11 +36,9 @@ class GmailNetworkFactory : public QObject {
     int batchSize() const;
     void setBatchSize(int batch_size);
 
-    // Sends e-mail, returns its ID.
+    // API methods.
     QString sendEmail(Mimesis::Message msg, const QNetworkProxy& custom_proxy, Message* reply_to_message = nullptr);
-
     Downloader* downloadAttachment(const QString& msg_id, const QString& attachment_id, const QNetworkProxy& custom_proxy);
-
     QList<Message> messages(const QString& stream_id, Feed::Status& error, const QNetworkProxy& custom_proxy);
     QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status,
                                                  QStringList custom_ids,
