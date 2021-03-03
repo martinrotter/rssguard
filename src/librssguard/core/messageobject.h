@@ -19,6 +19,7 @@ class MessageObject : public QObject {
   Q_PROPERTY(QString author READ author WRITE setAuthor)
   Q_PROPERTY(QString contents READ contents WRITE setContents)
   Q_PROPERTY(QDateTime created READ created WRITE setCreated)
+  Q_PROPERTY(double score READ score WRITE setScore)
   Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
   Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
   Q_PROPERTY(bool isDeleted READ isDeleted WRITE setIsDeleted)
@@ -111,6 +112,9 @@ class MessageObject : public QObject {
 
     bool isDeleted() const;
     void setIsDeleted(bool is_deleted);
+
+    double score() const;
+    void setScore(double score);
 
   private:
     QSqlDatabase* m_db;

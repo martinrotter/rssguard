@@ -54,6 +54,7 @@ class RSSGUARD_DLLSPEC Message {
     bool m_isRead;
     bool m_isImportant;
     bool m_isDeleted;
+    double m_score;
     QList<Enclosure> m_enclosures;
 
     // List of custom IDs of labels assigned to this message.

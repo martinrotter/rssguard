@@ -14,7 +14,7 @@ CREATE TABLE Accounts (
   proxy_username  TEXT,
   proxy_password  TEXT,
   /* Custom column for (serialized) custom account-specific data. */
-  custom_data   TEXT
+  custom_data     TEXT
 );
 -- !
 CREATE TABLE Categories (
@@ -61,6 +61,7 @@ CREATE TABLE Messages (
   date_created    INTEGER     NOT NULL CHECK (date_created >= 0),
   contents        TEXT,
   enclosures      TEXT,
+  score           REAL        NOT NULL DEFAULT 0.0 CHECK (score >= 0.0 AND score <= 100.0),
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
   custom_hash     TEXT,
