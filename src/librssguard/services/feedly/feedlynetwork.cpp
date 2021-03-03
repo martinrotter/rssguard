@@ -13,7 +13,6 @@
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
 #include "services/feedly/definitions.h"
-#include "services/feedly/feedlyfeed.h"
 #include "services/feedly/feedlyserviceroot.h"
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
@@ -351,7 +350,7 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json, bool obtain_i
         continue;
       }
 
-      auto* feed = new FeedlyFeed(category);
+      auto* feed = new Feed(category);
 
       feed->setTitle(fee_obj["title"].toString());
       feed->setDescription(fee_obj["description"].toString());

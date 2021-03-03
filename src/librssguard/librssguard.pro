@@ -154,14 +154,12 @@ HEADERS += core/feeddownloader.h \
            services/abstract/serviceroot.h \
            services/feedly/definitions.h \
            services/feedly/feedlyentrypoint.h \
-           services/feedly/feedlyfeed.h \
            services/feedly/feedlynetwork.h \
            services/feedly/feedlyserviceroot.h \
            services/feedly/gui/feedlyaccountdetails.h \
            services/feedly/gui/formeditfeedlyaccount.h \
            services/gmail/definitions.h \
            services/gmail/gmailentrypoint.h \
-           services/gmail/gmailfeed.h \
            services/gmail/gmailnetworkfactory.h \
            services/gmail/gmailserviceroot.h \
            services/gmail/gui/emailrecipientcontrol.h \
@@ -171,7 +169,6 @@ HEADERS += core/feeddownloader.h \
            services/gmail/gui/gmailaccountdetails.h \
            services/greader/definitions.h \
            services/greader/greaderentrypoint.h \
-           services/greader/greaderfeed.h \
            services/greader/greadernetwork.h \
            services/greader/greaderserviceroot.h \
            services/greader/gui/formeditgreaderaccount.h \
@@ -180,7 +177,6 @@ HEADERS += core/feeddownloader.h \
            services/inoreader/gui/formeditinoreaderaccount.h \
            services/inoreader/gui/inoreaderaccountdetails.h \
            services/inoreader/inoreaderentrypoint.h \
-           services/inoreader/inoreaderfeed.h \
            services/inoreader/inoreadernetworkfactory.h \
            services/inoreader/inoreaderserviceroot.h \
            services/owncloud/definitions.h \
@@ -331,13 +327,11 @@ SOURCES += core/feeddownloader.cpp \
            services/abstract/rootitem.cpp \
            services/abstract/serviceroot.cpp \
            services/feedly/feedlyentrypoint.cpp \
-           services/feedly/feedlyfeed.cpp \
            services/feedly/feedlynetwork.cpp \
            services/feedly/feedlyserviceroot.cpp \
            services/feedly/gui/feedlyaccountdetails.cpp \
            services/feedly/gui/formeditfeedlyaccount.cpp \
            services/gmail/gmailentrypoint.cpp \
-           services/gmail/gmailfeed.cpp \
            services/gmail/gmailnetworkfactory.cpp \
            services/gmail/gmailserviceroot.cpp \
            services/gmail/gui/emailrecipientcontrol.cpp \
@@ -346,7 +340,6 @@ SOURCES += core/feeddownloader.cpp \
            services/gmail/gui/formeditgmailaccount.cpp \
            services/gmail/gui/gmailaccountdetails.cpp \
            services/greader/greaderentrypoint.cpp \
-           services/greader/greaderfeed.cpp \
            services/greader/greadernetwork.cpp \
            services/greader/greaderserviceroot.cpp \
            services/greader/gui/formeditgreaderaccount.cpp \
@@ -354,7 +347,6 @@ SOURCES += core/feeddownloader.cpp \
            services/inoreader/gui/formeditinoreaderaccount.cpp \
            services/inoreader/gui/inoreaderaccountdetails.cpp \
            services/inoreader/inoreaderentrypoint.cpp \
-           services/inoreader/inoreaderfeed.cpp \
            services/inoreader/inoreadernetworkfactory.cpp \
            services/inoreader/inoreaderserviceroot.cpp \
            services/owncloud/gui/formeditowncloudaccount.cpp \

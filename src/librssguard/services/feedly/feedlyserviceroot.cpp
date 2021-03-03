@@ -15,7 +15,6 @@
 #include "services/abstract/recyclebin.h"
 #include "services/feedly/definitions.h"
 #include "services/feedly/feedlyentrypoint.h"
-#include "services/feedly/feedlyfeed.h"
 #include "services/feedly/feedlynetwork.h"
 #include "services/feedly/gui/formeditfeedlyaccount.h"
 
@@ -72,9 +71,34 @@ void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
+QList<Message> FeedlyServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> messages;
+
+  for (Feed* feed : feeds) {
+    try {
+      messages << m_network->streamContents(feed->customId());
+
+      feed->setStatus(Feed::Status::Normal);
+      *error_during_obtaining = false;
+    }
+    catch (const ApplicationException& ex) {
+      feed->setStatus(Feed::Status::NetworkError);
+      *error_during_obtaining = true;
+
+      qCriticalNN << LOGSEC_FEEDLY
+                  << "Problem"
+                  << QUOTE_W_SPACE(ex.message())
+                  << "when obtaining messages for feed"
+                  << QUOTE_W_SPACE_DOT(customId());
+    }
+  }
+
+  return messages;
+}
+
 void FeedlyServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadFromDatabase<Category, FeedlyFeed>(this);
+    DatabaseQueries::loadFromDatabase<Category, Feed>(this);
     loadCacheFromFile();
   }
 

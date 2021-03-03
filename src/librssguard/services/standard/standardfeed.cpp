@@ -208,7 +208,7 @@ void StandardFeed::fetchMetadataForItself() {
 
     // Notify the model about fact, that it needs to reload new information about
     // this item, particularly the icon.
-    serviceRoot()->itemChanged(QList<RootItem*>() << this);
+    serviceRoot()->itemChanged({ this });
   }
   else {
     qApp->showGuiMessage(tr("Metadata not fetched"),
@@ -529,128 +529,6 @@ void StandardFeed::setEncoding(const QString& encoding) {
   m_encoding = encoding;
 }
 
-QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
-  QString formatted_feed_contents;
-  int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-
-  if (sourceType() == SourceType::Url) {
-    qDebugNN << LOGSEC_CORE
-             << "Downloading URL"
-             << QUOTE_W_SPACE(source())
-             << "to obtain feed data.";
-
-    QByteArray feed_contents;
-    QList<QPair<QByteArray, QByteArray>> headers;
-
-    headers << NetworkFactory::generateBasicAuthHeader(username(), password());
-    m_networkError = NetworkFactory::performNetworkOperation(source(),
-                                                             download_timeout,
-                                                             QByteArray(),
-                                                             feed_contents,
-                                                             QNetworkAccessManager::Operation::GetOperation,
-                                                             headers,
-                                                             false,
-                                                             {},
-                                                             {},
-                                                             getParentServiceRoot()->networkProxy()).first;
-
-    if (m_networkError != QNetworkReply::NetworkError::NoError) {
-      qWarningNN << LOGSEC_CORE
-                 << "Error"
-                 << QUOTE_W_SPACE(m_networkError)
-                 << "during fetching of new messages for feed"
-                 << QUOTE_W_SPACE_DOT(source());
-      setStatus(Status::NetworkError);
-      *error_during_obtaining = true;
-      return QList<Message>();
-    }
-    else {
-      *error_during_obtaining = false;
-    }
-
-    // Encode downloaded data for further parsing.
-    QTextCodec* codec = QTextCodec::codecForName(encoding().toLocal8Bit());
-
-    if (codec == nullptr) {
-      // No suitable codec for this encoding was found.
-      // Use non-converted data.
-      formatted_feed_contents = feed_contents;
-    }
-    else {
-      formatted_feed_contents = codec->toUnicode(feed_contents);
-    }
-  }
-  else {
-    qDebugNN << LOGSEC_CORE
-             << "Running custom script"
-             << QUOTE_W_SPACE(source())
-             << "to obtain feed data.";
-
-    // Use script to generate feed file.
-    try {
-      formatted_feed_contents = generateFeedFileWithScript(source(), download_timeout);
-    }
-    catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_CORE
-                  << "Custom script for generating feed file failed:"
-                  << QUOTE_W_SPACE_DOT(ex.message());
-
-      setStatus(Status::OtherError);
-      *error_during_obtaining = true;
-      return {};
-    }
-  }
-
-  if (!postProcessScript().simplified().isEmpty()) {
-    qDebugNN << LOGSEC_CORE
-             << "Post-processing obtained feed data with custom script"
-             << QUOTE_W_SPACE_DOT(postProcessScript());
-
-    try {
-      formatted_feed_contents = postProcessFeedFileWithScript(postProcessScript(),
-                                                              formatted_feed_contents,
-                                                              download_timeout);
-    }
-    catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_CORE
-                  << "Post-processing script for feed file failed:"
-                  << QUOTE_W_SPACE_DOT(ex.message());
-
-      setStatus(Status::OtherError);
-      *error_during_obtaining = true;
-      return {};
-    }
-  }
-
-  // Feed data are downloaded and encoded.
-  // Parse data and obtain messages.
-  QList<Message> messages;
-
-  switch (type()) {
-    case StandardFeed::Type::Rss0X:
-    case StandardFeed::Type::Rss2X:
-      messages = RssParser(formatted_feed_contents).messages();
-      break;
-
-    case StandardFeed::Type::Rdf:
-      messages = RdfParser().parseXmlData(formatted_feed_contents);
-      break;
-
-    case StandardFeed::Type::Atom10:
-      messages = AtomParser(formatted_feed_contents).messages();
-      break;
-
-    case StandardFeed::Type::Json:
-      messages = JsonParser(formatted_feed_contents).messages();
-      break;
-
-    default:
-      break;
-  }
-
-  return messages;
-}
-
 QStringList StandardFeed::prepareExecutionLine(const QString& execution_line) {
   auto split_exec = execution_line.split('#',
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
@@ -717,6 +595,10 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QStrin
         throw ScriptException(ScriptException::Reason::InterpreterError, raw_error);
     }
   }
+}
+
+void StandardFeed::setNetworkError(const QNetworkReply::NetworkError& network_error) {
+  m_networkError = network_error;
 }
 
 QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, int run_timeout) {

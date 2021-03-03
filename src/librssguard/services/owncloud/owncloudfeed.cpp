@@ -35,19 +35,3 @@ bool OwnCloudFeed::removeItself() {
 OwnCloudServiceRoot* OwnCloudFeed::serviceRoot() const {
   return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
 }
-
-QList<Message> OwnCloudFeed::obtainNewMessages(bool* error_during_obtaining) {
-  OwnCloudGetMessagesResponse messages = serviceRoot()->network()->getMessages(customNumericId(),
-                                                                               getParentServiceRoot()->networkProxy());
-
-  if (messages.networkError() != QNetworkReply::NetworkError::NoError) {
-    setStatus(Feed::Status::NetworkError);
-    *error_during_obtaining = true;
-    serviceRoot()->itemChanged(QList<RootItem*>() << this);
-    return QList<Message>();
-  }
-  else {
-    *error_during_obtaining = false;
-    return messages.messages();
-  }
-}

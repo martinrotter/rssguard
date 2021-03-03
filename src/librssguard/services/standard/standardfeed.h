@@ -77,8 +77,7 @@ class StandardFeed : public Feed {
     void setPassword(const QString& password);
 
     QNetworkReply::NetworkError networkError() const;
-
-    QList<Message> obtainNewMessages(bool* error_during_obtaining);
+    void setNetworkError(const QNetworkReply::NetworkError& network_error);
 
     // Tries to guess feed hidden under given URL
     // and uses given credentials.
@@ -97,13 +96,7 @@ class StandardFeed : public Feed {
     static QString typeToString(Type type);
     static QString sourceTypeToString(SourceType type);
 
-  public slots:
-    void fetchMetadataForItself();
-
-  private:
-    StandardServiceRoot* serviceRoot() const;
-    bool removeItself();
-
+    // Scraping + post+processing.
     static QStringList prepareExecutionLine(const QString& execution_line);
     static QString generateFeedFileWithScript(const QString& execution_line, int run_timeout);
     static QString postProcessFeedFileWithScript(const QString& execution_line,
@@ -111,6 +104,13 @@ class StandardFeed : public Feed {
                                                  int run_timeout);
     static QString runScriptProcess(const QStringList& cmd_args, const QString& working_directory,
                                     int run_timeout, bool provide_input, const QString& input = {});
+
+  public slots:
+    void fetchMetadataForItself();
+
+  private:
+    StandardServiceRoot* serviceRoot() const;
+    bool removeItself();
 
   private:
     SourceType m_sourceType;

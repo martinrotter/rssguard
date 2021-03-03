@@ -11,7 +11,6 @@
 #include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/greader/greaderentrypoint.h"
-#include "services/greader/greaderfeed.h"
 #include "services/greader/greadernetwork.h"
 #include "services/greader/gui/formeditgreaderaccount.h"
 
@@ -55,9 +54,26 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setBatchSize(data["batch_size"].toInt());
 }
 
+QList<Message> GreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> messages;
+
+  for (Feed* feed : feeds) {
+    Feed::Status error = Feed::Status::Normal;
+
+    messages << network()->streamContents(this, feed->customId(), error, networkProxy());
+    feed->setStatus(error);
+
+    if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
+      *error_during_obtaining = true;
+    }
+  }
+
+  return messages;
+}
+
 void GreaderServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadFromDatabase<Category, GreaderFeed>(this);
+    DatabaseQueries::loadFromDatabase<Category, Feed>(this);
     loadCacheFromFile();
   }
 

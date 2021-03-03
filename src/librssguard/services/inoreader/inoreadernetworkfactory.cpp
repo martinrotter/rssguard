@@ -15,7 +15,6 @@
 #include "services/abstract/category.h"
 #include "services/abstract/labelsnode.h"
 #include "services/inoreader/definitions.h"
-#include "services/inoreader/inoreaderfeed.h"
 #include "services/inoreader/inoreaderserviceroot.h"
 
 #include <QJsonArray>
@@ -418,7 +417,7 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
     }
 
     // We have label (not "state").
-    auto* feed = new InoreaderFeed();
+    auto* feed = new Feed();
 
     feed->setDescription(url);
     feed->setSource(url);

@@ -11,7 +11,6 @@
 #include "services/abstract/recyclebin.h"
 #include "services/inoreader/gui/formeditinoreaderaccount.h"
 #include "services/inoreader/inoreaderentrypoint.h"
-#include "services/inoreader/inoreaderfeed.h"
 #include "services/inoreader/inoreadernetworkfactory.h"
 
 #include <QThread>
@@ -54,6 +53,23 @@ void InoreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString());
 }
 
+QList<Message> InoreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> messages;
+
+  for (Feed* feed : feeds) {
+    Feed::Status error = Feed::Status::Normal;
+
+    messages << network()->messages(this, feed->customId(), error);
+    feed->setStatus(error);
+
+    if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
+      *error_during_obtaining = true;
+    }
+  }
+
+  return messages;
+}
+
 bool InoreaderServiceRoot::isSyncable() const {
   return true;
 }
@@ -79,7 +95,7 @@ bool InoreaderServiceRoot::supportsCategoryAdding() const {
 
 void InoreaderServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadFromDatabase<Category, InoreaderFeed>(this);
+    DatabaseQueries::loadFromDatabase<Category, Feed>(this);
     loadCacheFromFile();
   }
 

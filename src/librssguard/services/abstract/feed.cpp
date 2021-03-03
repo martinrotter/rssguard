@@ -25,6 +25,12 @@ Feed::Feed(RootItem* parent)
   setKind(RootItem::Kind::Feed);
 }
 
+Feed::Feed(const QString& title, const QString& custom_id, const QIcon& icon, RootItem* parent) : Feed(parent) {
+  setTitle(title);
+  setCustomId(custom_id);
+  setIcon(icon);
+}
+
 Feed::Feed(const Feed& other) : RootItem(other) {
   setKind(RootItem::Kind::Feed);
 
@@ -168,12 +174,6 @@ void Feed::updateCounts(bool including_total_count) {
 
 bool Feed::cleanMessages(bool clean_read_only) {
   return getParentServiceRoot()->cleanFeeds(QList<Feed*>() << this, clean_read_only);
-}
-
-QList<Message> Feed::obtainNewMessages(bool* error_during_obtaining) {
-  Q_UNUSED(error_during_obtaining)
-
-  return {};
 }
 
 bool Feed::markAsReadUnread(RootItem::ReadStatus status) {

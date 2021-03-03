@@ -13,13 +13,11 @@ class TtRssFeed : public Feed {
   public:
     explicit TtRssFeed(RootItem* parent = nullptr);
 
-    TtRssServiceRoot* serviceRoot() const;
-
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
-    virtual QList<Message> obtainNewMessages(bool* error_during_obtaining);
 
   private:
+    TtRssServiceRoot* serviceRoot() const;
     bool removeItself();
 };
 

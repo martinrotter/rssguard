@@ -88,6 +88,9 @@ class ServiceRoot : public RootItem {
     virtual void start(bool freshly_activated);
     virtual void stop();
 
+    // Obtains list of messages.
+    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) = 0;
+
     // This method should prepare messages for given "item" (download them maybe?)
     // into predefined "Messages" table
     // and then use method QSqlTableModel::setFilter(....).

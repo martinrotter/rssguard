@@ -39,38 +39,6 @@ bool TtRssFeed::deleteViaGui() {
   }
 }
 
-QList<Message> TtRssFeed::obtainNewMessages(bool* error_during_obtaining) {
-  QList<Message> messages;
-  int newly_added_messages = 0;
-  int limit = TTRSS_MAX_MESSAGES;
-  int skip = 0;
-
-  do {
-    TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId().toInt(), limit, skip,
-                                                                                 true, true, false,
-                                                                                 serviceRoot()->network()->downloadOnlyUnreadMessages(),
-                                                                                 getParentServiceRoot()->networkProxy());
-
-    if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
-      setStatus(Feed::Status::NetworkError);
-      *error_during_obtaining = true;
-      serviceRoot()->itemChanged(QList<RootItem*>() << this);
-      return QList<Message>();
-    }
-    else {
-      QList<Message> new_messages = headlines.messages(getParentServiceRoot());
-
-      messages.append(new_messages);
-      newly_added_messages = new_messages.size();
-      skip += newly_added_messages;
-    }
-  }
-  while (newly_added_messages > 0);
-
-  *error_during_obtaining = false;
-  return messages;
-}
-
 bool TtRssFeed::removeItself() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());
 
