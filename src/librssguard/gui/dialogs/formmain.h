@@ -39,16 +39,9 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     void saveSize();
 
   public slots:
-
-    // Displays window on top or switches its visibility.
     void display();
-
-    // Switches visibility of main window.
     void switchVisibility(bool force_hide = false);
-
-    // Turns on/off fullscreen mode
     void switchFullscreenMode();
-
     void showAddAccountDialog();
 
   private slots:
