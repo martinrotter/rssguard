@@ -20,6 +20,8 @@ class StandardServiceRoot;
 class StandardFeed : public Feed {
   Q_OBJECT
 
+  friend class StandardCategory;
+
   public:
     enum class SourceType {
       Url = 0,
@@ -35,16 +37,12 @@ class StandardFeed : public Feed {
       Json = 4
     };
 
-    // Constructors and destructors.
     explicit StandardFeed(RootItem* parent_item = nullptr);
     explicit StandardFeed(const StandardFeed& other);
     explicit StandardFeed(const QSqlRecord& record);
     virtual ~StandardFeed();
 
-    StandardServiceRoot* serviceRoot() const;
-
     QList<QAction*> contextMenuFeedsList();
-
     QString additionalTooltip() const;
 
     bool canBeDeleted() const;
@@ -58,8 +56,6 @@ class StandardFeed : public Feed {
     // Obtains data related to this feed.
     Qt::ItemFlags additionalFlags() const;
     bool performDragDropChange(RootItem* target_item);
-
-    bool removeItself();
 
     // Other getters/setters.
     Type type() const;
@@ -87,15 +83,11 @@ class StandardFeed : public Feed {
 
     QList<Message> obtainNewMessages(bool* error_during_obtaining);
 
-    static QStringList prepareExecutionLine(const QString& execution_line);
-    static QString generateFeedFileWithScript(const QString& execution_line, int run_timeout);
-    static QString postProcessFeedFileWithScript(const QString& execution_line, const QString raw_feed_data, int run_timeout);
-
     // Tries to guess feed hidden under given URL
     // and uses given credentials.
     // Returns pointer to guessed feed (if at least partially
     // guessed) and retrieved error/status code from network layer
-    // or NULL feed.
+    // or nullptr feed.
     static StandardFeed* guessFeed(SourceType source_type,
                                    const QString& url,
                                    const QString& post_process_script,
@@ -112,6 +104,14 @@ class StandardFeed : public Feed {
     void fetchMetadataForItself();
 
   private:
+    StandardServiceRoot* serviceRoot() const;
+    bool removeItself();
+
+    static QStringList prepareExecutionLine(const QString& execution_line);
+    static QString generateFeedFileWithScript(const QString& execution_line, int run_timeout);
+    static QString postProcessFeedFileWithScript(const QString& execution_line,
+                                                 const QString raw_feed_data,
+                                                 int run_timeout);
     static QString runScriptProcess(const QStringList& cmd_args, const QString& working_directory,
                                     int run_timeout, bool provide_input, const QString& input = {});
 

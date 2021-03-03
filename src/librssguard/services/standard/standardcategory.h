@@ -5,15 +5,10 @@
 
 #include "services/abstract/category.h"
 
-#include <QCoreApplication>
 #include <QSqlRecord>
 
-class FeedsModel;
 class StandardServiceRoot;
 
-// Base class for all categories contained in FeedsModel.
-// NOTE: This class should be derived to create PARTICULAR category types.
-// NOTE: This class should not be instantiated directly.
 class StandardCategory : public Category {
   Q_OBJECT
 
@@ -25,16 +20,14 @@ class StandardCategory : public Category {
 
     StandardServiceRoot* serviceRoot() const;
 
-    // Returns the actual data representation of standard category.
-    Qt::ItemFlags additionalFlags() const;
-    bool performDragDropChange(RootItem* target_item);
+    virtual Qt::ItemFlags additionalFlags() const;
+    virtual bool performDragDropChange(RootItem* target_item);
+    virtual bool canBeEdited() const;
+    virtual bool editViaGui();
+    virtual bool canBeDeleted() const;
+    virtual bool deleteViaGui();
 
-    bool canBeEdited() const;
-    bool canBeDeleted() const;
-
-    bool editViaGui();
-    bool deleteViaGui();
-
+  private:
     bool removeItself();
 };
 
