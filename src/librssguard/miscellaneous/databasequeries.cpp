@@ -1483,57 +1483,13 @@ bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
   QSqlQuery query_category(db);
   QSqlQuery query_feed(db);
 
-  // TODO: use createOvewriteAccount and createOverwriteFeed
-
-/*
-   query_category.setForwardOnly(true);
-   query_feed.setForwardOnly(true);
-   query_category.prepare("INSERT INTO Categories (parent_id, title, account_id, custom_id) "
-                         "VALUES (:parent_id, :title, :account_id, :custom_id);");
-   query_feed.prepare("INSERT INTO Feeds (title, icon, url, category, protected, update_type, update_interval, account_id, custom_id) "
-                     "VALUES (:title, :icon, :url, :category, :protected, :update_type, :update_interval, :account_id, :custom_id);");
- */
-
   // Iterate all children.
   for (RootItem* child : tree_root->getSubTree()) {
     if (child->kind() == RootItem::Kind::Category) {
-      /*
-         query_category.bindValue(QSL(":parent_id"), child->parent()->id());
-         query_category.bindValue(QSL(":title"), child->title());
-         query_category.bindValue(QSL(":account_id"), account_id);
-         query_category.bindValue(QSL(":custom_id"), child->customId());
-
-         if (query_category.exec()) {
-         child->setId(query_category.lastInsertId().toInt());
-         }
-         else {
-         return false;
-         }
-       */
+      createOverwriteCategory(db, child->toCategory(), account_id, child->parent()->id());
     }
     else if (child->kind() == RootItem::Kind::Feed) {
       createOverwriteFeed(db, child->toFeed(), account_id, child->parent()->id());
-
-      /*
-         Feed* feed = child->toFeed();
-
-         query_feed.bindValue(QSL(":title"), feed->title());
-         query_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
-         query_feed.bindValue(QSL(":url"), feed->source());
-         query_feed.bindValue(QSL(":category"), feed->parent()->id());
-         query_feed.bindValue(QSL(":protected"), 0);
-         query_feed.bindValue(QSL(":update_type"), int(feed->autoUpdateType()));
-         query_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
-         query_feed.bindValue(QSL(":account_id"), account_id);
-         query_feed.bindValue(QSL(":custom_id"), feed->customId());
-
-         if (query_feed.exec()) {
-         feed->setId(query_feed.lastInsertId().toInt());
-         }
-         else {
-         return false;
-         }
-       */
     }
     else if (child->kind() == RootItem::Kind::Labels) {
       // Add all labels.

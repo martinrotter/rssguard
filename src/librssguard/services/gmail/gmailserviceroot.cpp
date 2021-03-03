@@ -10,7 +10,6 @@
 #include "services/abstract/recyclebin.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailentrypoint.h"
-#include "services/gmail/gmailfeed.h"
 #include "services/gmail/gmailnetworkfactory.h"
 #include "services/gmail/gui/formaddeditemail.h"
 #include "services/gmail/gui/formdownloadattachment.h"
@@ -34,14 +33,14 @@ void GmailServiceRoot::replyToEmail() {
 
 RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
   auto* root = new RootItem();
-  GmailFeed* inbox = new GmailFeed(tr("Inbox"), QSL(GMAIL_SYSTEM_LABEL_INBOX), qApp->icons()->fromTheme(QSL("mail-inbox")), root);
+  Feed* inbox = new Feed(tr("Inbox"), QSL(GMAIL_SYSTEM_LABEL_INBOX), qApp->icons()->fromTheme(QSL("mail-inbox")), root);
 
   inbox->setKeepOnTop(true);
 
   root->appendChild(inbox);
-  root->appendChild(new GmailFeed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root));
-  root->appendChild(new GmailFeed(tr("Drafts"), QSL(GMAIL_SYSTEM_LABEL_DRAFT), qApp->icons()->fromTheme(QSL("gtk-edit")), root));
-  root->appendChild(new GmailFeed(tr("Spam"), QSL(GMAIL_SYSTEM_LABEL_SPAM), qApp->icons()->fromTheme(QSL("mail-mark-junk")), root));
+  root->appendChild(new Feed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root));
+  root->appendChild(new Feed(tr("Drafts"), QSL(GMAIL_SYSTEM_LABEL_DRAFT), qApp->icons()->fromTheme(QSL("gtk-edit")), root));
+  root->appendChild(new Feed(tr("Spam"), QSL(GMAIL_SYSTEM_LABEL_SPAM), qApp->icons()->fromTheme(QSL("mail-mark-junk")), root));
 
   return root;
 }
@@ -70,6 +69,25 @@ void GmailServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->oauth()->setClientSecret(data["client_secret"].toString());
   m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
   m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString());
+}
+
+QList<Message> GmailServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> messages;
+
+  for (Feed* feed : feeds) {
+    Feed::Status error = Feed::Status::Normal;
+
+    messages << network()->messages(feed->customId(), error, networkProxy());
+    feed->setStatus(error);
+
+    if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError || error == Feed::Status::ParsingError) {
+      *error_during_obtaining = true;
+    }
+
+    return messages;
+  }
+
+  return messages;
 }
 
 bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
@@ -145,7 +163,7 @@ bool GmailServiceRoot::supportsCategoryAdding() const {
 
 void GmailServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadFromDatabase<Category, GmailFeed>(this);
+    DatabaseQueries::loadFromDatabase<Category, Feed>(this);
     loadCacheFromFile();
   }
 

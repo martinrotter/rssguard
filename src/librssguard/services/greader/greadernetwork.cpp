@@ -10,7 +10,6 @@
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
 #include "services/greader/definitions.h"
-#include "services/greader/greaderfeed.h"
 
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -289,7 +288,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     }
 
     // We have label (not "state").
-    auto* feed = new GreaderFeed();
+    auto* feed = new Feed();
 
     feed->setDescription(url);
     feed->setSource(url);

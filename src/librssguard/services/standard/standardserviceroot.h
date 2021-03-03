@@ -34,6 +34,8 @@ class StandardServiceRoot : public ServiceRoot {
 
     Qt::ItemFlags additionalFlags() const;
 
+    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining);
+
     // Returns menu to be shown in "Services -> service" menu.
     QList<QAction*> serviceMenu();
 

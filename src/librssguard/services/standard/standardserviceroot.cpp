@@ -5,20 +5,26 @@
 #include "core/feedsmodel.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "exceptions/scriptexception.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
+#include "network-web/networkfactory.h"
 #include "services/abstract/gui/formcategorydetails.h"
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
+#include "services/standard/atomparser.h"
 #include "services/standard/definitions.h"
 #include "services/standard/gui/formeditstandardaccount.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/gui/formstandardimportexport.h"
+#include "services/standard/jsonparser.h"
+#include "services/standard/rdfparser.h"
+#include "services/standard/rssparser.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
@@ -28,6 +34,7 @@
 #include <QClipboard>
 #include <QSqlTableModel>
 #include <QStack>
+#include <QTextCodec>
 
 StandardServiceRoot::StandardServiceRoot(RootItem* parent)
   : ServiceRoot(parent) {
@@ -130,6 +137,135 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
 
 Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
   return Qt::ItemFlag::ItemIsDropEnabled;
+}
+
+QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> msgs;
+
+  for (Feed* f : feeds) {
+    StandardFeed* feed = static_cast<StandardFeed*>(f);
+    QString formatted_feed_contents;
+    int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+    if (feed->sourceType() == StandardFeed::SourceType::Url) {
+      qDebugNN << LOGSEC_CORE
+               << "Downloading URL"
+               << QUOTE_W_SPACE(feed->source())
+               << "to obtain feed data.";
+
+      QByteArray feed_contents;
+      QList<QPair<QByteArray, QByteArray>> headers;
+
+      headers << NetworkFactory::generateBasicAuthHeader(feed->username(), feed->password());
+      feed->setNetworkError(NetworkFactory::performNetworkOperation(feed->source(),
+                                                                    download_timeout,
+                                                                    {},
+                                                                    feed_contents,
+                                                                    QNetworkAccessManager::Operation::GetOperation,
+                                                                    headers,
+                                                                    false,
+                                                                    {},
+                                                                    {},
+                                                                    networkProxy()).first);
+
+      if (feed->networkError() != QNetworkReply::NetworkError::NoError) {
+        qWarningNN << LOGSEC_CORE
+                   << "Error"
+                   << QUOTE_W_SPACE(feed->networkError())
+                   << "during fetching of new messages for feed"
+                   << QUOTE_W_SPACE_DOT(feed->source());
+        feed->setStatus(StandardFeed::Status::NetworkError);
+        *error_during_obtaining = true;
+        continue;
+      }
+      else {
+        *error_during_obtaining = false;
+      }
+
+      // Encode downloaded data for further parsing.
+      QTextCodec* codec = QTextCodec::codecForName(feed->encoding().toLocal8Bit());
+
+      if (codec == nullptr) {
+        // No suitable codec for this encoding was found.
+        // Use non-converted data.
+        formatted_feed_contents = feed_contents;
+      }
+      else {
+        formatted_feed_contents = codec->toUnicode(feed_contents);
+      }
+    }
+    else {
+      qDebugNN << LOGSEC_CORE
+               << "Running custom script"
+               << QUOTE_W_SPACE(feed->source())
+               << "to obtain feed data.";
+
+      // Use script to generate feed file.
+      try {
+        formatted_feed_contents = StandardFeed::generateFeedFileWithScript(feed->source(), download_timeout);
+      }
+      catch (const ScriptException& ex) {
+        qCriticalNN << LOGSEC_CORE
+                    << "Custom script for generating feed file failed:"
+                    << QUOTE_W_SPACE_DOT(ex.message());
+
+        feed->setStatus(Feed::Status::OtherError);
+        *error_during_obtaining = true;
+        continue;
+      }
+    }
+
+    if (!feed->postProcessScript().simplified().isEmpty()) {
+      qDebugNN << LOGSEC_CORE
+               << "We will process feed data with post-process script"
+               << QUOTE_W_SPACE_DOT(feed->postProcessScript());
+
+      try {
+        formatted_feed_contents = StandardFeed::postProcessFeedFileWithScript(feed->postProcessScript(),
+                                                                              formatted_feed_contents,
+                                                                              download_timeout);
+      }
+      catch (const ScriptException& ex) {
+        qCriticalNN << LOGSEC_CORE
+                    << "Post-processing script for feed file failed:"
+                    << QUOTE_W_SPACE_DOT(ex.message());
+
+        feed->setStatus(Feed::Status::OtherError);
+        *error_during_obtaining = true;
+        continue;
+      }
+    }
+
+    // Feed data are downloaded and encoded.
+    // Parse data and obtain messages.
+    QList<Message> messages;
+
+    switch (feed->type()) {
+      case StandardFeed::Type::Rss0X:
+      case StandardFeed::Type::Rss2X:
+        messages = RssParser(formatted_feed_contents).messages();
+        break;
+
+      case StandardFeed::Type::Rdf:
+        messages = RdfParser().parseXmlData(formatted_feed_contents);
+        break;
+
+      case StandardFeed::Type::Atom10:
+        messages = AtomParser(formatted_feed_contents).messages();
+        break;
+
+      case StandardFeed::Type::Json:
+        messages = JsonParser(formatted_feed_contents).messages();
+        break;
+
+      default:
+        break;
+    }
+
+    msgs << messages;
+  }
+
+  return msgs;
 }
 
 void StandardServiceRoot::checkArgumentsForFeedAdding() {

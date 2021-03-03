@@ -120,7 +120,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
   bool error_during_obtaining = false;
   int acc_id = feed->getParentServiceRoot()->accountId();
   QElapsedTimer tmr; tmr.start();
-  QList<Message> msgs = feed->obtainNewMessages(&error_during_obtaining);
+  QList<Message> msgs = feed->getParentServiceRoot()->obtainNewMessages({ feed }, &error_during_obtaining);
 
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded " << msgs.size() << " messages for feed ID '"
            << feed->customId() << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"

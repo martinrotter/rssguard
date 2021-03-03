@@ -211,6 +211,40 @@ void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
+QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> messages;
+
+  for (Feed* feed : feeds) {
+    int newly_added_messages = 0;
+    int limit = TTRSS_MAX_MESSAGES;
+    int skip = 0;
+
+    do {
+      TtRssGetHeadlinesResponse headlines = network()->getHeadlines(customId().toInt(), limit, skip,
+                                                                    true, true, false,
+                                                                    network()->downloadOnlyUnreadMessages(),
+                                                                    networkProxy());
+
+      if (network()->lastError() != QNetworkReply::NetworkError::NoError) {
+        feed->setStatus(Feed::Status::NetworkError);
+        *error_during_obtaining = true;
+        itemChanged(QList<RootItem*>() << this);
+        continue;
+      }
+      else {
+        QList<Message> new_messages = headlines.messages(getParentServiceRoot());
+
+        messages << new_messages;
+        newly_added_messages = new_messages.size();
+        skip += newly_added_messages;
+      }
+    }
+    while (newly_added_messages > 0);
+  }
+
+  return messages;
+}
+
 QString TtRssServiceRoot::additionalTooltip() const {
   return tr("Username: %1\nServer: %2\n"
             "Last error: %3\nLast login on: %4").arg(m_network->username(),

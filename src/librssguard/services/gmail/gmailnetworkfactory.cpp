@@ -15,7 +15,6 @@
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
 #include "services/gmail/definitions.h"
-#include "services/gmail/gmailfeed.h"
 #include "services/gmail/gmailserviceroot.h"
 
 #include <QHttpMultiPart>

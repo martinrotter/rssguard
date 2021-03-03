@@ -36,15 +36,14 @@ class Feed : public RootItem {
       OtherError = 5
     };
 
-    // Constructors.
     explicit Feed(RootItem* parent = nullptr);
     explicit Feed(const Feed& other);
+    explicit Feed(const QString& title, const QString& custom_id, const QIcon& icon, RootItem* parent = nullptr);
 
     virtual QList<Message> undeletedMessages() const;
     virtual QString additionalTooltip() const;
     virtual bool markAsReadUnread(ReadStatus status);
     virtual bool cleanMessages(bool clean_read_only);
-    virtual QList<Message> obtainNewMessages(bool* error_during_obtaining);
     virtual int countOfAllMessages() const;
     virtual int countOfUnreadMessages() const;
     virtual QVariantHash customDatabaseData() const;

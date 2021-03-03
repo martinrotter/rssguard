@@ -148,3 +148,22 @@ void OwnCloudServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setBatchSize(data["batch_size"].toInt());
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
+
+QList<Message> OwnCloudServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> msgs;
+
+  for (Feed* feed : feeds) {
+    OwnCloudGetMessagesResponse messages = network()->getMessages(customNumericId(), networkProxy());
+
+    if (messages.networkError() != QNetworkReply::NetworkError::NoError) {
+      feed->setStatus(Feed::Status::NetworkError);
+      *error_during_obtaining = true;
+    }
+    else {
+      *error_during_obtaining = false;
+      msgs << messages.messages();
+    }
+  }
+
+  return msgs;
+}
