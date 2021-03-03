@@ -16,22 +16,6 @@ GmailFeed::GmailFeed(const QString& title, const QString& custom_id, const QIcon
   setIcon(icon);
 }
 
-GmailFeed::GmailFeed(const QSqlRecord& record) : Feed(record) {
-  // Fixup icons to make them trully dynamic.
-  if (customId() == QSL(GMAIL_SYSTEM_LABEL_SENT)) {
-    setIcon(qApp->icons()->fromTheme(QSL("mail-sent")));
-  }
-  else if (customId() == QSL(GMAIL_SYSTEM_LABEL_DRAFT)) {
-    setIcon(qApp->icons()->fromTheme(QSL("gtk-edit")));
-  }
-  else if (customId() == QSL(GMAIL_SYSTEM_LABEL_SPAM)) {
-    setIcon(qApp->icons()->fromTheme(QSL("mail-mark-junk")));
-  }
-  else if (customId() == QSL(GMAIL_SYSTEM_LABEL_INBOX)) {
-    setIcon(qApp->icons()->fromTheme(QSL("mail-inbox")));
-  }
-}
-
 GmailServiceRoot* GmailFeed::serviceRoot() const {
   return qobject_cast<GmailServiceRoot*>(getParentServiceRoot());
 }

@@ -22,7 +22,7 @@ CREATE TABLE Categories (
   parent_id       INTEGER     NOT NULL CHECK (parent_id >= -1), /* Root categories contain -1 here. */
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
-  date_created    INTEGER     NOT NULL CHECK (date_created >= 0),
+  date_created    INTEGER,
   icon            BLOB,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
@@ -34,7 +34,7 @@ CREATE TABLE Feeds (
   id              INTEGER     PRIMARY KEY,
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
-  date_created    INTEGER     NOT NULL CHECK (date_created >= 0),
+  date_created    INTEGER,
   icon            BLOB,
   category        INTEGER     NOT NULL CHECK (category >= -1), /* Root feeds contain -1 here. */
   source          TEXT,

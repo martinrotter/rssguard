@@ -11,10 +11,10 @@ class GmailFeed : public Feed {
   public:
     explicit GmailFeed(RootItem* parent = nullptr);
     explicit GmailFeed(const QString& title, const QString& custom_id, const QIcon& icon, RootItem* parent = nullptr);
-    explicit GmailFeed(const QSqlRecord& record);
 
     GmailServiceRoot* serviceRoot() const;
-    QList<Message> obtainNewMessages(bool* error_during_obtaining);
+
+    virtual QList<Message> obtainNewMessages(bool* error_during_obtaining);
 };
 
 #endif // GMAILFEED_H

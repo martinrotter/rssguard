@@ -85,5 +85,3 @@ bool StandardCategory::removeItself() {
     return false;
   }
 }
-
-StandardCategory::StandardCategory(const QSqlRecord& record) : Category(record) {}

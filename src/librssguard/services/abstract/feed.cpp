@@ -25,27 +25,6 @@ Feed::Feed(RootItem* parent)
   setKind(RootItem::Kind::Feed);
 }
 
-Feed::Feed(const QSqlRecord& record) : Feed(nullptr) {
-  setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
-  setId(record.value(FDS_DB_ID_INDEX).toInt());
-  setSource(record.value(FDS_DB_SOURCE_INDEX).toString());
-  setCustomId(record.value(FDS_DB_CUSTOM_ID_INDEX).toString());
-
-  if (customId().isEmpty()) {
-    setCustomId(QString::number(id()));
-  }
-
-  setDescription(QString::fromUtf8(record.value(FDS_DB_DESCRIPTION_INDEX).toByteArray()));
-  setCreationDate(TextFactory::parseDateTime(record.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
-  setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
-  setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
-  setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
-
-  qDebugNN << LOGSEC_CORE
-           << "Custom ID of feed when loading from DB is"
-           << QUOTE_W_SPACE_DOT(customId());
-}
-
 Feed::Feed(const Feed& other) : RootItem(other) {
   setKind(RootItem::Kind::Feed);
 
@@ -58,8 +37,6 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
   setMessageFilters(other.messageFilters());
 }
-
-Feed::~Feed() = default;
 
 QList<Message> Feed::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className());

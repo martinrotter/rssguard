@@ -7,7 +7,6 @@
 #include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"
 #include "services/gmail/definitions.h"
-#include "services/gmail/gmailnetworkfactory.h"
 
 GmailAccountDetails::GmailAccountDetails(QWidget* parent)
   : QWidget(parent), m_oauth(nullptr) {
@@ -62,11 +61,7 @@ void GmailAccountDetails::testSetup() {
   m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
   m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());
 
-  if (m_oauth->login()) {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                    tr("You are already logged in."),
-                                    tr("Access granted."));
-  }
+  m_oauth->login();
 }
 
 void GmailAccountDetails::checkUsername(const QString& username) {

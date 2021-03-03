@@ -1744,6 +1744,8 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":custom_data"), serialized_custom_data);
 
   if (!q.exec()) {
+    auto xx = q.lastError().text();
+
     throw ApplicationException(q.lastError().text());
   }
 }
