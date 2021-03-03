@@ -22,6 +22,7 @@ RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setId(other.id());
   setCustomId(other.customId());
   setIcon(other.icon());
+  setKeepOnTop(other.keepOnTop());
 
   // NOTE: We do not need to clone childs, because that would mean that
   // either source or target item tree would get corrupted.

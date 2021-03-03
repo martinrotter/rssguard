@@ -183,6 +183,14 @@ void MessageObject::setIsDeleted(bool is_deleted) {
   m_message->m_isDeleted = is_deleted;
 }
 
+double MessageObject::score() const {
+  return m_message->m_score;
+}
+
+void MessageObject::setScore(double score) {
+  m_message->m_score = score;
+}
+
 QString MessageObject::feedCustomId() const {
   if (m_feedCustomId.isEmpty() || m_feedCustomId == QString::number(NO_PARENT_CATEGORY)) {
     return m_message->m_feedId;

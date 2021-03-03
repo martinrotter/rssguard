@@ -197,6 +197,8 @@ void MessagesModel::setupHeaderData() {
 
     /*: Tooltip for attachments of message.*/ tr("Attachments") <<
 
+    /*: Tooltip for score of message.*/ tr("Score") <<
+
     /*: Tooltip for account ID of message.*/ tr("Account ID") <<
 
     /*: Tooltip for custom ID of message.*/ tr("Custom ID") <<

@@ -352,6 +352,9 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
                                                    target_root_node->getParentServiceRoot()->accountId(),
                                                    target_parent->id());
           requestItemReassignment(new_category, target_parent);
+
+          original_parents.push(new_category);
+          new_parents.push(source_category);
         }
         catch (ApplicationException& ex) {
           // Add category failed, but this can mean that the same category (with same title)

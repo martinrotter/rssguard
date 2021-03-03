@@ -629,6 +629,7 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_DB_CONTENTS_INDEX);
     hideColumn(MSG_DB_PDELETED_INDEX);
     hideColumn(MSG_DB_ENCLOSURES_INDEX);
+    hideColumn(MSG_DB_SCORE_INDEX);
     hideColumn(MSG_DB_ACCOUNT_ID_INDEX);
     hideColumn(MSG_DB_CUSTOM_ID_INDEX);
     hideColumn(MSG_DB_CUSTOM_HASH_INDEX);

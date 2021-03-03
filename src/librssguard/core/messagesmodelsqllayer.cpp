@@ -23,6 +23,7 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_fieldNames[MSG_DB_DCREATED_INDEX] = "Messages.date_created";
   m_fieldNames[MSG_DB_CONTENTS_INDEX] = "Messages.contents";
   m_fieldNames[MSG_DB_ENCLOSURES_INDEX] = "Messages.enclosures";
+  m_fieldNames[MSG_DB_SCORE_INDEX] = "Messages.score";
   m_fieldNames[MSG_DB_ACCOUNT_ID_INDEX] = "Messages.account_id";
   m_fieldNames[MSG_DB_CUSTOM_ID_INDEX] = "Messages.custom_id";
   m_fieldNames[MSG_DB_CUSTOM_HASH_INDEX] = "Messages.custom_hash";
@@ -42,6 +43,7 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_orderByNames[MSG_DB_DCREATED_INDEX] = "Messages.date_created";
   m_orderByNames[MSG_DB_CONTENTS_INDEX] = "Messages.contents";
   m_orderByNames[MSG_DB_ENCLOSURES_INDEX] = "Messages.enclosures";
+  m_orderByNames[MSG_DB_SCORE_INDEX] = "Messages.score";
   m_orderByNames[MSG_DB_ACCOUNT_ID_INDEX] = "Messages.account_id";
   m_orderByNames[MSG_DB_CUSTOM_ID_INDEX] = "Messages.custom_id";
   m_orderByNames[MSG_DB_CUSTOM_HASH_INDEX] = "Messages.custom_hash";
@@ -49,7 +51,8 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_orderByNames[MSG_DB_HAS_ENCLOSURES] = "has_enclosures";
 
   m_numericColumns << MSG_DB_ID_INDEX << MSG_DB_READ_INDEX << MSG_DB_DELETED_INDEX << MSG_DB_PDELETED_INDEX
-                   << MSG_DB_IMPORTANT_INDEX << MSG_DB_ACCOUNT_ID_INDEX << MSG_DB_DCREATED_INDEX;
+                   << MSG_DB_IMPORTANT_INDEX << MSG_DB_ACCOUNT_ID_INDEX << MSG_DB_DCREATED_INDEX
+                   << MSG_DB_SCORE_INDEX;
 }
 
 void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order) {

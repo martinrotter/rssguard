@@ -910,13 +910,13 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
   // Used to insert new messages.
   query_insert.setForwardOnly(true);
   query_insert.prepare("INSERT INTO Messages "
-                       "(feed, title, is_read, is_important, is_deleted, url, author, date_created, contents, enclosures, custom_id, custom_hash, account_id) "
-                       "VALUES (:feed, :title, :is_read, :is_important, :is_deleted, :url, :author, :date_created, :contents, :enclosures, :custom_id, :custom_hash, :account_id);");
+                       "(feed, title, is_read, is_important, is_deleted, url, author, score, date_created, contents, enclosures, custom_id, custom_hash, account_id) "
+                       "VALUES (:feed, :title, :is_read, :is_important, :is_deleted, :url, :author, :score, :date_created, :contents, :enclosures, :custom_id, :custom_hash, :account_id);");
 
   // Used to update existing messages.
   query_update.setForwardOnly(true);
   query_update.prepare("UPDATE Messages "
-                       "SET title = :title, is_read = :is_read, is_important = :is_important, is_deleted = :is_deleted, url = :url, author = :author, date_created = :date_created, contents = :contents, enclosures = :enclosures, feed = :feed "
+                       "SET title = :title, is_read = :is_read, is_important = :is_important, is_deleted = :is_deleted, url = :url, author = :author, score = :score, date_created = :date_created, contents = :contents, enclosures = :enclosures, feed = :feed "
                        "WHERE id = :id;");
 
   if (use_transactions && !query_begin_transaction.exec(qApp->database()->obtainBeginTransactionSql())) {
@@ -1091,6 +1091,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         query_update.bindValue(QSL(":contents"), unnulifyString(message.m_contents));
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
         query_update.bindValue(QSL(":feed"), unnulifyString(feed_id_existing_message));
+        query_update.bindValue(QSL(":score"), message.m_score);
         query_update.bindValue(QSL(":id"), id_existing_message);
 
         *any_message_changed = true;
@@ -1129,6 +1130,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
       query_insert.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
       query_insert.bindValue(QSL(":custom_hash"), unnulifyString(message.m_customHash));
+      query_insert.bindValue(QSL(":score"), message.m_score);
       query_insert.bindValue(QSL(":account_id"), account_id);
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
@@ -1673,6 +1675,10 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
     }
     else {
       feed->setId(q.lastInsertId().toInt());
+
+      if (feed->customId().isEmpty()) {
+        feed->setCustomId(QString::number(feed->id()));
+      }
     }
   }
 
@@ -1691,7 +1697,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":update_type"), int(feed->autoUpdateType()));
   q.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
   q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":custom_id"), feed->customId().isEmpty() ? QString::number(feed->id()) : feed->customId());
+  q.bindValue(QSL(":custom_id"), feed->customId());
   q.bindValue(QSL(":id"), feed->id());
 
   auto custom_data = feed->customDatabaseData();
