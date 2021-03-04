@@ -19,6 +19,7 @@ class FormStandardFeedDetails : public FormFeedDetails {
   private slots:
     void guessFeed();
     void guessIconOnly();
+    void onTitleChanged(const QString& title);
 
     virtual void apply();
 
