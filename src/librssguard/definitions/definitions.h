@@ -229,6 +229,7 @@
 #define MFM_MODEL_URL           4
 #define MFM_MODEL_AUTHOR        5
 #define MFM_MODEL_CREATED       6
+#define MFM_MODEL_SCORE         7
 
 #if defined(Q_OS_LINUX)
 #define OS_ID   "Linux"

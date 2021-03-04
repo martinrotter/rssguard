@@ -49,6 +49,7 @@ Here is the reference of methods and properties of some types available in your 
 | `String url` | URL of the message. |
 | `String author` | Author of the message. |
 | `String contents` | Contents of the message. |
+| `Number score` | Arbitrary number in range <0.0, 100.0>. You can use this number to order messages in a custom fashion as this attribute also has its own column in messages list. |
 | `Date created` | Date/time of the message. |
 | `Boolean isRead` | Is message read? |
 | `Boolean isImportant` | Is message important? |
