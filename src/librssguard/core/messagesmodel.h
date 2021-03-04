@@ -85,6 +85,9 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     void setupHeaderData();
     void setupIcons();
 
+    static QIcon generateIconForScore(double score);
+
+  private:
     MessagesModelCache* m_cache;
     MessageHighlighter m_messageHighlighter;
     QString m_customDateFormat;

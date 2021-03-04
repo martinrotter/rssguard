@@ -76,7 +76,11 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
 
           outline_category.setAttribute(QSL("text"), child_item->title());
           outline_category.setAttribute(QSL("description"), child_item->description());
-          outline_category.setAttribute(QSL("rssguard:icon"), QString(qApp->icons()->toByteArray(child_item->icon())));
+
+          if (!child_item->icon().isNull()) {
+            outline_category.setAttributeNS(APP_URL, QSL("rssguard:icon"), QString(qApp->icons()->toByteArray(child_item->icon())));
+          }
+
           active_element.appendChild(outline_category);
           items_to_process.push(child_item);
           elements_to_use.push(outline_category);
@@ -93,7 +97,13 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
           outline_feed.setAttribute(QSL("description"), child_feed->description());
           outline_feed.setAttribute(QSL("encoding"), child_feed->encoding());
           outline_feed.setAttribute(QSL("title"), child_feed->title());
-          outline_feed.setAttribute(QSL("rssguard:icon"), QString(qApp->icons()->toByteArray(child_feed->icon())));
+
+          outline_feed.setAttributeNS(APP_URL, QSL("rssguard:xmlUrlType"), QString::number(int(child_feed->sourceType())));
+          outline_feed.setAttributeNS(APP_URL, QSL("rssguard:postProcess"), child_feed->postProcessScript());
+
+          if (!child_feed->icon().isNull()) {
+            outline_feed.setAttributeNS(APP_URL, QSL("rssguard:icon"), QString(qApp->icons()->toByteArray(child_feed->icon())));
+          }
 
           switch (child_feed->type()) {
             case StandardFeed::Type::Rss0X:
@@ -205,7 +215,9 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
               QString feed_encoding = child_element.attribute(QSL("encoding"), DEFAULT_FEED_ENCODING);
               QString feed_type = child_element.attribute(QSL("version"), DEFAULT_FEED_TYPE).toUpper();
               QString feed_description = child_element.attribute(QSL("description"));
-              QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
+              QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attributeNS(APP_URL, QSL("icon")).toLocal8Bit());
+              QString source_type = child_element.attributeNS(APP_URL, QSL("xmlUrlType"));
+              QString post_process = child_element.attributeNS(APP_URL, QSL("postProcess"));
               auto* new_feed = new StandardFeed(active_model_item);
 
               new_feed->setTitle(feed_title);
@@ -213,7 +225,10 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
               new_feed->setEncoding(feed_encoding);
               new_feed->setSource(feed_url);
               new_feed->setCreationDate(QDateTime::currentDateTime());
-              new_feed->setIcon(feed_icon);
+
+              if (!feed_icon.isNull()) {
+                new_feed->setIcon(feed_icon);
+              }
 
               if (feed_type == QL1S("RSS1")) {
                 new_feed->setType(StandardFeed::Type::Rdf);
@@ -244,7 +259,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
           // Add category and continue.
           QString category_title = child_element.attribute(QSL("text"));
           QString category_description = child_element.attribute(QSL("description"));
-          QIcon category_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
+          QIcon category_icon = qApp->icons()->fromByteArray(child_element.attributeNS(APP_URL, QSL("icon")).toLocal8Bit());
 
           if (category_title.isEmpty()) {
             qWarningNN << LOGSEC_CORE
@@ -259,7 +274,11 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
           auto* new_category = new StandardCategory(active_model_item);
 
           new_category->setTitle(category_title);
-          new_category->setIcon(category_icon);
+
+          if (!category_icon.isNull()) {
+            new_category->setIcon(category_icon);
+          }
+
           new_category->setCreationDate(QDateTime::currentDateTime());
           new_category->setDescription(category_description);
           active_model_item->appendChild(new_category);

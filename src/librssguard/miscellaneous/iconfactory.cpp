@@ -14,6 +14,10 @@ IconFactory::~IconFactory() {
 }
 
 QIcon IconFactory::fromByteArray(QByteArray array) {
+  if (array.isEmpty()) {
+    return {};
+  }
+
   array = QByteArray::fromBase64(array);
   QIcon icon;
   QBuffer buffer(&array);
