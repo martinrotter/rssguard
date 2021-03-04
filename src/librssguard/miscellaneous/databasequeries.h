@@ -22,6 +22,7 @@
 
 class DatabaseQueries {
   public:
+    static QMap<int, QString> messageTableAttributes(bool only_msg_table);
 
     // Custom data serializers.
     static QString serializeCustomData(const QVariantHash& data);
@@ -32,7 +33,7 @@ class DatabaseQueries {
     static bool deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static bool assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static bool setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
-    static QList<Label*> getLabels(const QSqlDatabase& db, int account_id);
+    static QList<Label*> getLabelsForAccount(const QSqlDatabase& db, int account_id);
     static QList<Label*> getLabelsForMessage(const QSqlDatabase& db, const Message& msg, const QList<Label*> installed_labels);
     static bool updateLabel(const QSqlDatabase& db, Label* label);
     static bool deleteLabel(const QSqlDatabase& db, Label* label);
@@ -61,8 +62,8 @@ class DatabaseQueries {
     static bool purgeLeftoverMessages(const QSqlDatabase& db, int account_id);
 
     // Purges message/label assignments where source message or label does not exist.
-    // If account ID smaller than 0 is passed, then do this for all accounts.
-    static bool purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id = -1);
+    // If account ID smaller than 1 is passed, then do this for all accounts.
+    static bool purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id = 0);
     static bool purgeLabelsAndLabelAssignments(const QSqlDatabase& db, int account_id);
 
     // Counts of unread/all messages.
@@ -321,7 +322,7 @@ void DatabaseQueries::loadFromDatabase(ServiceRoot* root) {
   QSqlDatabase database = qApp->database()->connection(root->metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories<Categ>(database, root->accountId());
   Assignment feeds = DatabaseQueries::getFeeds<Fee>(database, qApp->feedReader()->messageFilters(), root->accountId());
-  auto labels = DatabaseQueries::getLabels(database, root->accountId());
+  auto labels = DatabaseQueries::getLabelsForAccount(database, root->accountId());
 
   root->performInitialAssembly(categories, feeds, labels);
 }

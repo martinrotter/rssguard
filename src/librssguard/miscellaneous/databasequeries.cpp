@@ -8,13 +8,35 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
 #include "services/abstract/category.h"
-#include "services/standard/standardcategory.h"
-#include "services/standard/standardfeed.h"
-#include "services/standard/standardserviceroot.h"
 
 #include <QSqlDriver>
 #include <QUrl>
 #include <QVariant>
+
+QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table) {
+  QMap<int, QString> field_names;
+
+  field_names[MSG_DB_ID_INDEX] = "Messages.id";
+  field_names[MSG_DB_READ_INDEX] = "Messages.is_read";
+  field_names[MSG_DB_IMPORTANT_INDEX] = "Messages.is_important";
+  field_names[MSG_DB_DELETED_INDEX] = "Messages.is_deleted";
+  field_names[MSG_DB_PDELETED_INDEX] = "Messages.is_pdeleted";
+  field_names[MSG_DB_FEED_CUSTOM_ID_INDEX] = "Messages.feed";
+  field_names[MSG_DB_TITLE_INDEX] = "Messages.title";
+  field_names[MSG_DB_URL_INDEX] = "Messages.url";
+  field_names[MSG_DB_AUTHOR_INDEX] = "Messages.author";
+  field_names[MSG_DB_DCREATED_INDEX] = "Messages.date_created";
+  field_names[MSG_DB_CONTENTS_INDEX] = "Messages.contents";
+  field_names[MSG_DB_ENCLOSURES_INDEX] = "Messages.enclosures";
+  field_names[MSG_DB_SCORE_INDEX] = "Messages.score";
+  field_names[MSG_DB_ACCOUNT_ID_INDEX] = "Messages.account_id";
+  field_names[MSG_DB_CUSTOM_ID_INDEX] = "Messages.custom_id";
+  field_names[MSG_DB_CUSTOM_HASH_INDEX] = "Messages.custom_hash";
+  field_names[MSG_DB_FEED_TITLE_INDEX] = only_msg_table ? "Messages.feed" : "Feeds.title";
+  field_names[MSG_DB_HAS_ENCLOSURES] = "CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures";
+
+  return field_names;
+}
 
 QString DatabaseQueries::serializeCustomData(const QVariantHash& data) {
   if (!data.isEmpty()) {
@@ -115,7 +137,7 @@ bool DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<La
   return true;
 }
 
-QList<Label*> DatabaseQueries::getLabels(const QSqlDatabase& db, int account_id) {
+QList<Label*> DatabaseQueries::getLabelsForAccount(const QSqlDatabase& db, int account_id) {
   QList<Label*> labels;
   QSqlQuery q(db);
 
@@ -654,16 +676,16 @@ QList<Message> DatabaseQueries::getUndeletedMessagesWithLabel(const QSqlDatabase
   QList<Message> messages;
   QSqlQuery q(db);
 
-  q.prepare(QSL(
-              "SELECT Messages.id, Messages.is_read, Messages.is_deleted, Messages.is_important, Feeds.title, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.contents, Messages.is_pdeleted, Messages.enclosures, Messages.account_id, Messages.custom_id, Messages.custom_hash, Messages.feed, CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures "
-              "FROM Messages "
-              "INNER JOIN Feeds "
-              "ON Messages.feed = Feeds.custom_id AND Messages.account_id = :account_id AND Messages.account_id = Feeds.account_id "
-              "INNER JOIN LabelsInMessages "
-              "ON "
-              "  Messages.is_pdeleted = 0 AND Messages.is_deleted = 0 AND "
-              "  LabelsInMessages.account_id = :account_id AND LabelsInMessages.account_id = Messages.account_id AND "
-              "  LabelsInMessages.label = :label AND LabelsInMessages.message = Messages.custom_id;"));
+  q.prepare(QSL("SELECT %1 "
+                "FROM Messages "
+                "INNER JOIN Feeds "
+                "ON Messages.feed = Feeds.custom_id AND Messages.account_id = :account_id AND Messages.account_id = Feeds.account_id "
+                "INNER JOIN LabelsInMessages "
+                "ON "
+                "  Messages.is_pdeleted = 0 AND Messages.is_deleted = 0 AND "
+                "  LabelsInMessages.account_id = :account_id AND LabelsInMessages.account_id = Messages.account_id AND "
+                "  LabelsInMessages.label = :label AND "
+                "  LabelsInMessages.message = Messages.custom_id;").arg(messageTableAttributes(true).values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
   q.bindValue(QSL(":label"), label->customId());
 
@@ -694,12 +716,14 @@ QList<Message> DatabaseQueries::getUndeletedLabelledMessages(const QSqlDatabase&
   QList<Message> messages;
   QSqlQuery q(db);
 
-  q.prepare(QSL(
-              "SELECT Messages.id, Messages.is_read, Messages.is_deleted, Messages.is_important, Feeds.title, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.contents, Messages.is_pdeleted, Messages.enclosures, Messages.account_id, Messages.custom_id, Messages.custom_hash, Messages.feed, CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures "
-              "FROM Messages "
-              "LEFT JOIN Feeds "
-              "ON Messages.feed = Feeds.custom_id AND Messages.account_id = Feeds.account_id "
-              "WHERE Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = :account_id AND (SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = :account_id AND message = Messages.custom_id) > 0;"));
+  q.prepare(QSL("SELECT %1 "
+                "FROM Messages "
+                "LEFT JOIN Feeds "
+                "ON Messages.feed = Feeds.custom_id AND Messages.account_id = Feeds.account_id "
+                "WHERE Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = :account_id AND "
+                "      (SELECT COUNT(*) FROM LabelsInMessages "
+                "       WHERE account_id = :account_id AND "
+                "             message = Messages.custom_id) > 0;").arg(messageTableAttributes(true).values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -730,9 +754,10 @@ QList<Message> DatabaseQueries::getUndeletedImportantMessages(const QSqlDatabase
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare("SELECT id, is_read, is_deleted, is_important, custom_id, title, url, author, date_created, contents, is_pdeleted, enclosures, account_id, custom_id, custom_hash, feed, CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures "
-            "FROM Messages "
-            "WHERE is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
+  q.prepare(QSL("SELECT %1 "
+                "FROM Messages "
+                "WHERE is_important = 1 AND is_deleted = 0 AND "
+                "      is_pdeleted = 0 AND account_id = :account_id;").arg(messageTableAttributes(true).values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -764,9 +789,10 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& 
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare("SELECT id, is_read, is_deleted, is_important, custom_id, title, url, author, date_created, contents, is_pdeleted, enclosures, account_id, custom_id, custom_hash, feed, CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures "
-            "FROM Messages "
-            "WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;");
+  q.prepare(QSL("SELECT %1 "
+                "FROM Messages "
+                "WHERE is_deleted = 0 AND is_pdeleted = 0 AND "
+                "      feed = :feed AND account_id = :account_id;").arg(messageTableAttributes(true).values().join(QSL(", "))));
   q.bindValue(QSL(":feed"), feed_custom_id);
   q.bindValue(QSL(":account_id"), account_id);
 
@@ -798,9 +824,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForBin(const QSqlDatabase& d
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare("SELECT id, is_read, is_deleted, is_important, custom_id, title, url, author, date_created, contents, is_pdeleted, enclosures, account_id, custom_id, custom_hash, feed, CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures "
-            "FROM Messages "
-            "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
+  q.prepare(QSL("SELECT %1 "
+                "FROM Messages "
+                "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;").arg(messageTableAttributes(true).values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -831,9 +857,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare("SELECT id, is_read, is_deleted, is_important, custom_id, title, url, author, date_created, contents, is_pdeleted, enclosures, account_id, custom_id, custom_hash, feed, CASE WHEN length(Messages.enclosures) > 10 THEN 'true' ELSE 'false' END AS has_enclosures "
-            "FROM Messages "
-            "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
+  q.prepare(QSL("SELECT %1 "
+                "FROM Messages "
+                "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;").arg(messageTableAttributes(true).values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -851,6 +877,8 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
     }
   }
   else {
+    auto aa = q.lastError().text();
+
     if (ok != nullptr) {
       *ok = false;
     }
