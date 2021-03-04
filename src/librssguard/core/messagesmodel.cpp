@@ -13,6 +13,8 @@
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 
+#include <QPainter>
+#include <QPainterPath>
 #include <QSqlError>
 #include <QSqlField>
 
@@ -36,6 +38,37 @@ void MessagesModel::setupIcons() {
   m_readIcon = qApp->icons()->fromTheme(QSL("mail-mark-read"));
   m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
   m_enclosuresIcon = qApp->icons()->fromTheme(QSL("mail-attachment"));
+}
+
+QIcon MessagesModel::generateIconForScore(double score) {
+  QPixmap pix(64, 64);
+  QPainter paint(&pix);
+
+  paint.setRenderHint(QPainter::RenderHint::Antialiasing);
+
+  int level = std::min(MSG_SCORE_MAX, std::max(MSG_SCORE_MIN, int(std::floor(score / 10.0))));
+  QPainterPath path;
+
+  path.addRoundedRect(QRectF(2, 2, 60, 60), 5, 5);
+
+  QPen pen(Qt::GlobalColor::black, 2);
+
+  paint.setPen(pen);
+  paint.fillPath(path, Qt::GlobalColor::white);
+  paint.drawPath(path);
+
+  path.clear();
+  paint.setPen(Qt::GlobalColor::transparent);
+
+  int bar_height = 6 * level;
+
+  // TODO: pokračovat tady, optimalizovat voláni vytváření těch ikon, skrýt text
+  // a zobrazit jen ikony, barva od červené do zelené
+
+  path.addRoundedRect(QRectF(2, 64 - bar_height - 2, 60, bar_height), 5, 5);
+  paint.fillPath(path, Qt::GlobalColor::green);
+
+  return pix;
 }
 
 MessagesModelCache* MessagesModel::cache() const {
@@ -281,6 +314,19 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     case Qt::ItemDataRole::EditRole:
       return m_cache->containsData(idx.row()) ? m_cache->data(idx) : QSqlQueryModel::data(idx, role);
 
+    case Qt::ItemDataRole::ToolTipRole: {
+      if (idx.column() == MSG_DB_SCORE_INDEX) {
+        QVariant dta = m_cache->containsData(idx.row())
+                         ? m_cache->data(idx)
+                         : QSqlQueryModel::data(idx);
+
+        return dta.toString();
+      }
+      else {
+        return QVariant();
+      }
+    }
+
     case Qt::ItemDataRole::FontRole: {
       QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
       QVariant data_read = data(idx_read, Qt::EditRole);
@@ -366,6 +412,11 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         QVariant dta = QSqlQueryModel::data(idx_important);
 
         return dta.toBool() ? m_enclosuresIcon : QVariant();
+      }
+      else if (index_column == MSG_DB_SCORE_INDEX) {
+        QVariant dta = QSqlQueryModel::data(idx);
+
+        return generateIconForScore(dta.toDouble());
       }
       else {
         return QVariant();
