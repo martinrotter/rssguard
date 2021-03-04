@@ -1,6 +1,12 @@
-# Sample file: https://api.github.com/repos/<user>/<repo>/releases
+# Use this script as "post-process" script, let RSS Guard download
+# the "releases" file itself.
+# 
+# This script expects one command line argument:
+#   true -> ignore prereleases
+#   false -> include prereleases 
 #
-# File is downloaded and we expect its contents via stdin.
+# Sample input file whose contents must be provided as stdin: https://api.github.com/repos/<user>/<repo>/releases
+#
 # This script produces JSON feed.
 
 import re
