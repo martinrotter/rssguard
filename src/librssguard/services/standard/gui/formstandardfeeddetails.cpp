@@ -26,6 +26,10 @@ FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root, Root
 
   connect(m_standardFeedDetails->m_ui.m_btnFetchMetadata, &QPushButton::clicked, this, &FormStandardFeedDetails::guessFeed);
   connect(m_standardFeedDetails->m_actionFetchIcon, &QAction::triggered, this, &FormStandardFeedDetails::guessIconOnly);
+  connect(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit(), &QLineEdit::textChanged,
+          this, &FormStandardFeedDetails::onTitleChanged);
+
+  onTitleChanged(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text());
 }
 
 void FormStandardFeedDetails::guessFeed() {
@@ -42,6 +46,10 @@ void FormStandardFeedDetails::guessIconOnly() {
                                        m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
                                        m_authDetails->m_txtUsername->lineEdit()->text(),
                                        m_authDetails->m_txtPassword->lineEdit()->text());
+}
+
+void FormStandardFeedDetails::onTitleChanged(const QString& title) {
+  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(!title.simplified().isEmpty());
 }
 
 void FormStandardFeedDetails::apply() {

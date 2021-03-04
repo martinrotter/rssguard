@@ -24,15 +24,17 @@ items = list()
 
 for rel in json_data:
   if rel['prerelease'] and leave_out_prereleases:
-    continue
+    continue 
 
-  article_url = json.dumps(rel['url'])
-  article_title = json.dumps(rel['tag_name'])
+  article_author = json.dumps(rel["author"]["login"])
+  article_url = json.dumps(rel["html_url"])
+  article_title = json.dumps(rel["tag_name"])
   article_time = json.dumps(datetime.strptime(rel["published_at"], "%Y-%m-%dT%H:%M:%SZ").isoformat())
-  items.append("{{\"title\": {title}, \"content_html\": {html}, \"url\": {url}, \"date_published\": {date}}}".format(title=article_title,
-                                                                                                                     html=article_title,
-                                                                                                                     url=article_url,
-                                                                                                                     date=article_time))
+  items.append("{{\"title\": {title}, \"authors\": [{{\"name\": {author}}}], \"content_html\": {html}, \"url\": {url}, \"date_published\": {date}}}".format(title=article_title,
+                                                                                                                                                            html=article_title,
+                                                                                                                                                            url=article_url,
+                                                                                                                                                            date=article_time,
+                                                                                                                                                            author=article_author))
 
 json_feed = json_feed.format(title = "Releases", items = ", ".join(items))
 print(json_feed)
