@@ -107,12 +107,12 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 
 ## List of main features
 * **support for online feed synchronization via plugins**,
-    * Tiny Tiny RSS (RSS Guard 3.0.0+),
-    * Nextcloud News (RSS Guard 3.1.0+),
-    * Inoreader (RSS Guard 3.5.0+),
-    * Gmail with e-mail sending (RSS Guard 3.7.1+).
-    * Google Reader API (FreshRSS, The Old Reader, Bazqux, Reedah and others) (RSS Guard 3.9.0+),
-    * Feedly (RSS Guard 3.9.0+).
+    * Tiny Tiny RSS,
+    * Nextcloud News,
+    * Inoreader,
+    * Gmail.
+    * Google Reader API (FreshRSS, The Old Reader, Bazqux, Reedah and others),
+    * Feedly.
 * core:
     * support for all feed formats (RSS/RDF/ATOM/JSON),
     * full support of podcasts (RSS/ATOM/JSON),
