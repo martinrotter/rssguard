@@ -184,7 +184,12 @@ void MessageObject::setIsDeleted(bool is_deleted) {
 }
 
 QString MessageObject::feedCustomId() const {
-  return m_feedCustomId;
+  if (m_feedCustomId.isEmpty() || m_feedCustomId == QString::number(NO_PARENT_CATEGORY)) {
+    return m_message->m_feedId;
+  }
+  else {
+    return m_feedCustomId;
+  }
 }
 
 int MessageObject::accountId() const {
