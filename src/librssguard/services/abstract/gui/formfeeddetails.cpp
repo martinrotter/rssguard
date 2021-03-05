@@ -8,7 +8,7 @@
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"

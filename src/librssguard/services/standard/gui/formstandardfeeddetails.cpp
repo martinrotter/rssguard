@@ -3,7 +3,7 @@
 #include "services/standard/gui/formstandardfeeddetails.h"
 
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/category.h"
@@ -79,7 +79,7 @@ void FormStandardFeedDetails::apply() {
   std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
   std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), parent->id());
   m_serviceRoot->requestItemReassignment(m_feed, parent);

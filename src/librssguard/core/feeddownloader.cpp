@@ -137,8 +137,8 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
     bool is_main_thread = QThread::currentThread() == qApp->thread();
     QSqlDatabase database = is_main_thread ?
-                            qApp->database()->connection(metaObject()->className()) :
-                            qApp->database()->connection(QSL("feed_upd"));
+                            qApp->database()->driver()->connection(metaObject()->className()) :
+                            qApp->database()->driver()->connection(QSL("feed_upd"));
 
     // Perform per-message filtering.
     QJSEngine filter_engine;

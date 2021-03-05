@@ -2,12 +2,12 @@
 
 #include "gui/messagepreviewer.h"
 
+#include "database/databasequeries.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/plaintoolbutton.h"
 #include "gui/searchtextwidget.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
@@ -165,7 +165,8 @@ void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
     if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
                                                                 QList<Message>() << m_message,
                                                                 read)) {
-      DatabaseQueries::markMessagesReadUnread(qApp->database()->connection(objectName(), DatabaseFactory::DesiredType::FromSettings),
+      DatabaseQueries::markMessagesReadUnread(qApp->database()->driver()->connection(objectName(),
+                                                                                     DatabaseDriver::DesiredStorageType::FromSettings),
                                               QStringList() << QString::number(m_message.m_id),
                                               read);
       m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
@@ -188,7 +189,7 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
                                                                                             m_isImportant
                                                                                             ? RootItem::Importance::NotImportant
                                                                                             : RootItem::Importance::Important))) {
-      DatabaseQueries::switchMessagesImportance(qApp->database()->connection(objectName(), DatabaseFactory::DesiredType::FromSettings),
+      DatabaseQueries::switchMessagesImportance(qApp->database()->driver()->connection(objectName(), DatabaseDriver::DesiredStorageType::FromSettings),
                                                 QStringList() << QString::number(m_message.m_id));
       m_root->getParentServiceRoot()->onAfterSwitchMessageImportance(m_root.data(),
                                                                      QList<ImportanceChange>()
@@ -229,7 +230,7 @@ void MessagePreviewer::updateLabels(bool only_clear) {
 
   if (m_root.data() != nullptr && !m_root.data()->getParentServiceRoot()->labelsNode()->labels().isEmpty()) {
     m_separator = m_toolBar->addSeparator();
-    QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
     for (auto* label : m_root.data()->getParentServiceRoot()->labelsNode()->labels()) {
       LabelButton* btn_label = new LabelButton(this);

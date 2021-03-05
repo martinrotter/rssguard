@@ -2,9 +2,9 @@
 
 #include "gui/dialogs/formdatabasecleanup.h"
 
+#include "database/databasefactory.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QCloseEvent>
@@ -95,12 +95,10 @@ void FormDatabaseCleanup::onPurgeFinished(bool finished) {
 }
 
 void FormDatabaseCleanup::loadDatabaseInfo() {
-  qint64 file_size = qApp->database()->getDatabaseFileSize();
-  qint64 data_size = qApp->database()->getDatabaseDataSize();
-  QString file_size_str = file_size > 0 ? QString::number(file_size / 1000000.0) + QL1S(" MB") : tr("unknown");
+  qint64 data_size = qApp->database()->driver()->databaseDataSize();
   QString data_size_str = data_size > 0 ? QString::number(data_size / 1000000.0) + QL1S(" MB") : tr("unknown");
 
-  m_ui->m_txtFileSize->setText(tr("file: %1, data: %2").arg(file_size_str, data_size_str));
-  m_ui->m_txtDatabaseType->setText(qApp->database()->humanDriverName(qApp->database()->activeDatabaseDriver()));
+  m_ui->m_txtFileSize->setText(data_size_str);
+  m_ui->m_txtDatabaseType->setText(qApp->database()->driver()->humanDriverType());
   m_ui->m_checkShrink->setChecked(m_ui->m_checkShrink->isEnabled());
 }

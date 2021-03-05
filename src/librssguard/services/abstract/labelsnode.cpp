@@ -4,8 +4,8 @@
 
 #include "gui/dialogs/formaddeditlabel.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasefactory.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasefactory.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/serviceroot.h"
 
@@ -27,7 +27,7 @@ void LabelsNode::loadLabels(const QList<Label*>& labels) {
 }
 
 QList<Message> LabelsNode::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedLabelledMessages(database, getParentServiceRoot()->accountId());
 }
@@ -60,7 +60,7 @@ void LabelsNode::createLabel() {
     Label* new_lbl = frm.execForAdd();
 
     if (new_lbl != nullptr) {
-      QSqlDatabase db = qApp->database()->connection(metaObject()->className());
+      QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
       DatabaseQueries::createLabel(db, new_lbl, getParentServiceRoot()->accountId());
 

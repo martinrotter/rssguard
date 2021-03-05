@@ -8,7 +8,7 @@
 #include "exceptions/scriptexception.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
@@ -344,7 +344,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
         // Add category to model.
         new_category->clearChildren();
 
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         try {
           DatabaseQueries::createOverwriteCategory(database,
@@ -380,7 +380,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
       else if (source_item->kind() == RootItem::Kind::Feed) {
         auto* source_feed = dynamic_cast<StandardFeed*>(source_item);
         auto* new_feed = new StandardFeed(*source_feed);
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         DatabaseQueries::createOverwriteFeed(database,
                                              new_feed,

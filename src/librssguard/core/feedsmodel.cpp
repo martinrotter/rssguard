@@ -5,7 +5,7 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
-#include "miscellaneous/databasefactory.h"
+#include "database/databasefactory.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"

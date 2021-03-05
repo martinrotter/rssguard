@@ -7,7 +7,7 @@
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/gmail/gmailnetworkfactory.h"
 #include "services/gmail/gmailserviceroot.h"
@@ -38,7 +38,7 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
           this,
           &FormAddEditEmail::onOkClicked);
 
-  QSqlDatabase db = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
   m_possibleRecipients = DatabaseQueries::getAllRecipients(db, m_root->accountId());
 

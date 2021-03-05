@@ -319,7 +319,7 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
 
 template<typename Categ, typename Fee>
 void DatabaseQueries::loadFromDatabase(ServiceRoot* root) {
-  QSqlDatabase database = qApp->database()->connection(root->metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(root->metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories<Categ>(database, root->accountId());
   Assignment feeds = DatabaseQueries::getFeeds<Fee>(database, qApp->feedReader()->messageFilters(), root->accountId());
   auto labels = DatabaseQueries::getLabelsForAccount(database, root->accountId());

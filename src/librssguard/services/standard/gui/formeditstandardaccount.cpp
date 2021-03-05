@@ -3,8 +3,8 @@
 #include "services/standard/gui/formeditstandardaccount.h"
 
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasefactory.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasefactory.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/standard/standardserviceroot.h"
 

@@ -6,7 +6,7 @@
 #include "core/feedsmodel.h"
 #include "core/messagesmodel.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
@@ -28,7 +28,7 @@ ServiceRoot::ServiceRoot(RootItem* parent)
 ServiceRoot::~ServiceRoot() = default;
 
 bool ServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::deleteAccount(database, accountId())) {
     stop();
@@ -47,7 +47,7 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
     cache->addMessageStatesToCache(customIDSOfMessagesForItem(this), status);
   }
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::markAccountReadUnread(database, accountId(), status)) {
     updateCounts(false);
@@ -135,7 +135,7 @@ void ServiceRoot::updateCounts(bool including_total_count) {
     return;
   }
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   bool ok;
   QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
 
@@ -187,7 +187,7 @@ QIcon ServiceRoot::feedIconForMessage(const QString& feed_custom_id) const {
 }
 
 void ServiceRoot::removeOldAccountFromDatabase(bool including_messages) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::deleteAccountData(database, accountId(), including_messages);
 }
@@ -225,7 +225,7 @@ void ServiceRoot::appendCommonNodes() {
 }
 
 bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::cleanFeeds(database, textualFeedIds(items), clean_read_only, accountId())) {
     getParentServiceRoot()->updateCounts(true);
@@ -239,29 +239,29 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
 }
 
 void ServiceRoot::storeNewFeedTree(RootItem* root) {
-  DatabaseQueries::storeAccountTree(qApp->database()->connection(metaObject()->className()), root, accountId());
+  DatabaseQueries::storeAccountTree(qApp->database()->driver()->connection(metaObject()->className()), root, accountId());
 }
 
 void ServiceRoot::removeLeftOverMessages() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::purgeLeftoverMessages(database, accountId());
 }
 
 void ServiceRoot::removeLeftOverMessageFilterAssignments() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::purgeLeftoverMessageFilterAssignments(database, accountId());
 }
 
 void ServiceRoot::removeLeftOverMessageLabelAssignments() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::purgeLeftoverLabelAssignments(database, accountId());
 }
 
 QList<Message> ServiceRoot::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesForAccount(database, accountId());
 }
@@ -279,7 +279,7 @@ ServiceRoot::LabelOperation ServiceRoot::supportedLabelOperations() const {
 }
 
 void ServiceRoot::saveAccountDataToDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::createOverwriteAccount(database, this);
 }
@@ -461,35 +461,35 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
       }
 
       case RootItem::Kind::Label: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromLabel(database, item->toLabel());
         break;
       }
 
       case RootItem::Kind::ServiceRoot: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromAccount(database, accountId());
         break;
       }
 
       case RootItem::Kind::Bin: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromBin(database, accountId());
         break;
       }
 
       case RootItem::Kind::Feed: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->customId(), accountId());
         break;
       }
 
       case RootItem::Kind::Important: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfImportantMessages(database, accountId());
         break;
@@ -505,7 +505,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
 }
 
 bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus read) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
     getParentServiceRoot()->updateCounts(false);

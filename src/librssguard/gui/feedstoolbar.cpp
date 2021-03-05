@@ -81,7 +81,7 @@ QStringList FeedsToolBar::defaultActions() const {
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
                                                     Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                    QString::SkipEmptyParts);
+                                                    QString::SplitBehavior::SkipEmptyParts);
 #endif
 }
 
@@ -91,6 +91,6 @@ QStringList FeedsToolBar::savedActions() const {
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
                                                                                      Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                                                     QString::SkipEmptyParts);
+                                                                                     QString::SplitBehavior::SkipEmptyParts);
 #endif
 }

@@ -4,7 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/tt-rss/definitions.h"
@@ -40,7 +40,7 @@ bool TtRssFeed::deleteViaGui() {
 }
 
 bool TtRssFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, customId().toInt(), serviceRoot()->accountId());
 }

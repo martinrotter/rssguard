@@ -22,7 +22,7 @@
 #include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasefactory.h"
+#include "database/databasefactory.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"

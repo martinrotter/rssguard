@@ -8,7 +8,7 @@
 #include "exceptions/scriptexception.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/simplecrypt/simplecrypt.h"
@@ -202,7 +202,7 @@ void StandardFeed::fetchMetadataForItself() {
     setIcon(metadata->icon());
     delete metadata;
 
-    QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
     DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), parent()->id());
 
@@ -500,7 +500,7 @@ Qt::ItemFlags StandardFeed::additionalFlags() const {
 }
 
 bool StandardFeed::performDragDropChange(RootItem* target_item) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), target_item->id());
   serviceRoot()->requestItemReassignment(this, target_item);
@@ -508,7 +508,7 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
 }
 
 bool StandardFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, customId().toInt(), getParentServiceRoot()->accountId());
 }

@@ -9,8 +9,8 @@
 
 #include "gui/networkproxydetails.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasefactory.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasefactory.h"
+#include "database/databasequeries.h"
 
 class ServiceRoot;
 

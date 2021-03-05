@@ -13,7 +13,7 @@
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
@@ -216,7 +216,7 @@ void FormMessageFiltersManager::testFilter() {
   // Perform per-message filtering.
   auto* selected_fd_cat = selectedCategoryFeed();
   QJSEngine filter_engine;
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   MessageObject msg_obj(&database,
                         selected_fd_cat->kind() == RootItem::Kind::Feed
                         ? selected_fd_cat->customId()
@@ -292,7 +292,7 @@ void FormMessageFiltersManager::displayMessagesOfFeed() {
 void FormMessageFiltersManager::processCheckedFeeds() {
   QList<RootItem*> checked = m_feedsModel->sourceModel()->checkedItems();
   auto* fltr = selectedFilter();
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   for (RootItem* it : checked) {
     if (it->kind() == RootItem::Kind::Feed) {

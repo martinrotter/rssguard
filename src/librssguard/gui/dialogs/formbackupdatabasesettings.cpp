@@ -28,8 +28,7 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget* parent) : QDialo
                                              QDateTime::currentDateTime().toString(QSL("yyyyMMddHHmm")));
   m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
 
-  if (qApp->database()->activeDatabaseDriver() != DatabaseFactory::UsedDriver::SQLITE &&
-      qApp->database()->activeDatabaseDriver() != DatabaseFactory::UsedDriver::SQLITE_MEMORY) {
+  if (qApp->database()->activeDatabaseDriver() != DatabaseDriver::DriverType::SQLite) {
     m_ui->m_checkBackupDatabase->setDisabled(true);
   }
 }
@@ -77,7 +76,7 @@ void FormBackupDatabaseSettings::checkBackupNames(const QString& name) {
 
 void FormBackupDatabaseSettings::checkOkButton() {
   m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setDisabled(m_ui->m_txtBackupName->lineEdit()->text().simplified().isEmpty() ||
-                                                               m_ui->m_lblSelectFolder->label()->text().simplified().isEmpty() ||
-                                                               (!m_ui->m_checkBackupDatabase->isChecked() &&
-                                                                !m_ui->m_checkBackupSettings->isChecked()));
+                                                                               m_ui->m_lblSelectFolder->label()->text().simplified().isEmpty() ||
+                                                                               (!m_ui->m_checkBackupDatabase->isChecked() &&
+                                                                                !m_ui->m_checkBackupSettings->isChecked()));
 }

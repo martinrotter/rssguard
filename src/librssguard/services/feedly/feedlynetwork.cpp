@@ -6,7 +6,7 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
@@ -520,7 +520,7 @@ void FeedlyNetwork::onTokensRetrieved(const QString& access_token, const QString
   Q_UNUSED(access_token)
 
   if (m_service != nullptr && !refresh_token.isEmpty()) {
-    QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
     DatabaseQueries::storeNewOauthTokens(database, refresh_token, m_service->accountId());
   }
