@@ -614,13 +614,14 @@ void MessagesView::adjustColumns() {
 
     // Setup column resize strategies.
     for (int i = 0; i < header()->count(); i++) {
-      header()->setSectionResizeMode(i, QHeaderView::Interactive);
+      header()->setSectionResizeMode(i, QHeaderView::ResizeMode::Interactive);
     }
 
-    header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Stretch);
-    header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
-    header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
-    header()->setSectionResizeMode(MSG_DB_HAS_ENCLOSURES, QHeaderView::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
+    header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeMode::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeMode::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_SCORE_INDEX, QHeaderView::ResizeMode::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_HAS_ENCLOSURES, QHeaderView::ResizeMode::ResizeToContents);
 
     // Hide columns.
     hideColumn(MSG_DB_ID_INDEX);
