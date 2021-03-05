@@ -3,6 +3,7 @@
 #include "gui/settings/settingsdatabase.h"
 
 #include "database/databasefactory.h"
+#include "database/mariadbdriver.h"
 #include "definitions/definitions.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
@@ -44,27 +45,24 @@ SettingsDatabase::~SettingsDatabase() {
 }
 
 void SettingsDatabase::mysqlTestConnection() {
-  // TODO: TODO
+  MariaDbDriver* driv = static_cast<MariaDbDriver*>(qApp->database()->driver());
+  const MariaDbDriver::MariaDbError error_code = driv->testConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
+                                                                      m_ui->m_spinMysqlPort->value(),
+                                                                      m_ui->m_txtMysqlDatabase->lineEdit()->text(),
+                                                                      m_ui->m_txtMysqlUsername->lineEdit()->text(),
+                                                                      m_ui->m_txtMysqlPassword->lineEdit()->text());
+  const QString interpretation = driv->interpretErrorCode(error_code);
 
-  /*
-     const DatabaseFactory::MySQLError error_code = qApp->database()->driver()->mysqlTestConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
-                                                                                       m_ui->m_spinMysqlPort->value(),
-                                                                                       m_ui->m_txtMysqlDatabase->lineEdit()->text(),
-                                                                                       m_ui->m_txtMysqlUsername->lineEdit()->text(),
-                                                                                       m_ui->m_txtMysqlPassword->lineEdit()->text());
-     const QString interpretation = qApp->database()->driver()->mysqlInterpretErrorCode(error_code);
-
-     switch (error_code) {
-     case DatabaseFactory::MySQLError::Ok:
-     case DatabaseFactory::MySQLError::UnknownDatabase:
+  switch (error_code) {
+    case MariaDbDriver::MariaDbError::Ok:
+    case MariaDbDriver::MariaDbError::UnknownDatabase:
       m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::StatusType::Ok, interpretation, interpretation);
       break;
 
-     default:
+    default:
       m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::StatusType::Error, interpretation, interpretation);
       break;
-     }
-   */
+  }
 }
 
 void SettingsDatabase::onMysqlHostnameChanged(const QString& new_hostname) {

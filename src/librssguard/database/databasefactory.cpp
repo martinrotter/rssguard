@@ -3,6 +3,7 @@
 #include "database/databasefactory.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "database/mariadbdriver.h"
 #include "database/sqlitedriver.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
@@ -19,28 +20,6 @@ DatabaseFactory::DatabaseFactory(QObject* parent)
   determineDriver();
 }
 
-/*else if (m_activeDatabaseDriver == DatabaseDriver::UsedDriver::MYSQL) {
-   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className(),
-                                                       DatabaseDriver::DesiredType::FromSettings);
-   QSqlQuery query(database);
-
-   query.prepare("SELECT Round(Sum(data_length + index_length), 1) "
-                "FROM information_schema.tables "
-                "WHERE table_schema = :db "
-                "GROUP BY table_schema;");
-   query.bindValue(QSL(":db"), database.databaseName());
-
-   if (query.exec() && query.next()) {
-    return query.value(0).value<qint64>();
-   }
-   else {
-    return 0;
-   }
-   }
-   else {
-   return 0;
-   }*/
-
 void DatabaseFactory::removeConnection(const QString& connection_name) {
   qDebugNN << LOGSEC_DB << "Removing database connection '" << connection_name << "'.";
   QSqlDatabase::removeDatabase(connection_name);
@@ -52,7 +31,7 @@ void DatabaseFactory::determineDriver() {
   };
 
   if (QSqlDatabase::isDriverAvailable(APP_DB_MYSQL_DRIVER)) {
-    //m_allDbDrivers.append(new MariaDbDriver(this));
+    m_allDbDrivers.append(new MariaDbDriver(this));
   }
 
   const QString db_driver = qApp->settings()->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString();
