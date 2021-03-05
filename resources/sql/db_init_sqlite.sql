@@ -6,7 +6,7 @@ CREATE TABLE Information (
 INSERT INTO Information VALUES ('schema_version', '1');
 -- !
 CREATE TABLE Accounts (
-  id              INTEGER     PRIMARY KEY,
+  id              $$,
   type            TEXT        NOT NULL CHECK (type != ''), /* ID of the account type. Each account defines its own, for example 'ttrss'. */
   proxy_type      INTEGER     NOT NULL DEFAULT 0 CHECK (proxy_type >= 0),
   proxy_host      TEXT,
@@ -18,7 +18,7 @@ CREATE TABLE Accounts (
 );
 -- !
 CREATE TABLE Categories (
-  id              INTEGER     PRIMARY KEY,
+  id              $$,
   parent_id       INTEGER     NOT NULL CHECK (parent_id >= -1), /* Root categories contain -1 here. */
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
@@ -31,7 +31,7 @@ CREATE TABLE Categories (
 );
 -- !
 CREATE TABLE Feeds (
-  id              INTEGER     PRIMARY KEY,
+  id              $$,
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
   date_created    INTEGER,
@@ -49,7 +49,7 @@ CREATE TABLE Feeds (
 );
 -- !
 CREATE TABLE Messages (
-  id              INTEGER     PRIMARY KEY,
+  id              $$,
   is_read         INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),
   is_important    INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),
   is_deleted      INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),
@@ -70,7 +70,7 @@ CREATE TABLE Messages (
 );
 -- !
 CREATE TABLE MessageFilters (
-  id                  INTEGER     PRIMARY KEY,
+  id                  $$,
   name                TEXT        NOT NULL CHECK (name != ''),
   script              TEXT        NOT NULL CHECK (script != '')
 );
@@ -85,7 +85,7 @@ CREATE TABLE MessageFiltersInFeeds (
 );
 -- !
 CREATE TABLE Labels (
-  id                  INTEGER     PRIMARY KEY,
+  id                  $$,
   name                TEXT        NOT NULL CHECK (name != ''),
   color               VARCHAR(7),
   custom_id           TEXT,

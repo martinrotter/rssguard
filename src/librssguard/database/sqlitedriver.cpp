@@ -490,3 +490,7 @@ void SqliteDriver::backupDatabase(const QString& backup_folder, const QString& b
     throw ApplicationException(tr("Database file not copied to output directory successfully."));
   }
 }
+
+QString SqliteDriver::autoIncrementPrimaryKey() const {
+  return QSL("INTEGER PRIMARY KEY");
+}
