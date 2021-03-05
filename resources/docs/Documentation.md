@@ -8,13 +8,14 @@
     * [Localizations](#localizations)
     * [Videos](#videos)
     * [Web-based and lite app variants](#web-based-and-lite-app-variants)
-    * [RSS Guard 3 vs. RSS Guard 4](#RSS-Guard-3-vs.-RSS-Guard-4)
+    * [RSS Guard 3 vs. RSS Guard 4](#rss-guard-3-vs.-rss-guard-4)
 * [Features](#features)
     * [List of main features](#list-of-main-features)
     * [Supported feed formats and online feed services](Feed-formats.md)
     * [Message filtering](Message-filters.md)
     * [Database backends](#database-backends)
     * [Google Reader API](#google-reader-api)
+    * [Websites scraping](#websites-scraping)
     * [Gmail](#gmail)
     * [Feedly](#feedly)
     * [Labels](Labels.md)
@@ -110,10 +111,7 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * Nextcloud News (RSS Guard 3.1.0+),
     * Inoreader (RSS Guard 3.5.0+),
     * Gmail with e-mail sending (RSS Guard 3.7.1+).
-    * FreshRSS (RSS Guard 3.9.0+),
-    * The Old Reader (RSS Guard 3.9.0+),
-    * Bazqux (RSS Guard 3.9.0+),
-    * Reedah (RSS Guard 3.9.0+),
+    * Google Reader API (FreshRSS, The Old Reader, Bazqux, Reedah and others) (RSS Guard 3.9.0+),
     * Feedly (RSS Guard 3.9.0+).
 * core:
     * support for all feed formats (RSS/RDF/ATOM/JSON),
@@ -122,7 +120,7 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * universal plugin for online services with [Google Reader API](#google-reader-api),
     * possibility of using custom 3rd-party feed synchronization services,
     * feed metadata fetching including icons,
-    * support for [scraping websites](Feed-formats.md#websites-scraping-and-related-advanced-features) which do not offer RSS/ATOM feeds and other related advanced features,
+    * support for [scraping websites](#websites-scraping) which do not offer RSS/ATOM feeds and other related advanced features,
     * simple internal Chromium-based web viewer (or alternative version with simpler and much more lightweight internal viewer),
     * scriptable [message filtering](#message-filtering),
     * downloader with own tab and support for up to 6 parallel downloads,
@@ -137,8 +135,8 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * fully-featured recycle bin,
     * multiple data backend support,
         * SQLite,
-        * MySQL.
-    * ability to specify target database by its name (MySQL backend),
+        * MariaDB.
+    * ability to specify target database by its name (MariaDB backend),
     * support for `feed://` URI scheme.
 * user interface:
     * message list filter with regular expressions,
@@ -184,8 +182,58 @@ Note that even when all Google Reader API enabled services should follow the API
 
 For example The Old Reader does not seem to offer tags/labels functionality, therefore tags/labels in RSS Guard are not synchronized, but you can still use offline labels.
 
+## Websites scraping
+
+> **Only proceed if you consider yourself to be a power user and you know what you are doing!**
+
+RSS Guard 3.9.0+ offers extra advanced features which are inspired by [Liferea](https://lzone.de/liferea/).
+
+You can select source type of each feed. If you select `URL`, then RSS Guard simply downloads feed file from given location and behave like everyone would expect.
+
+However, if you choose `Script` option, then you cannot provide URL of your feed and you rely on custom script to generate feed file and provide its contents to **standard output**. Resulting data written to standard output should be valid feed file, for example RSS or ATOM XML file.
+
+`Fetch it now` button also works with `Script` option. Therefore, if your source script and (optional) post-process script in cooperation deliver a valid feed file to the output, then all important metadata, like title or icon of the feed, can be automagically discovered.
+
+<img src="images/scrape-source-type.png" width="50%">
+
+Any errors in your script must be written to **error output**.
+
+Note that you must provide full execution line to your custom script, including interpreter binary path and name and all that must be written in special format `<interpreter>#<argument1>#<argument2>#....`. The `#` character is there to separate interpreter and individual arguments. I had to select some character as separator because simply using space ` ` is not that easy as it might sound, because sometimes space could be a part of an argument sometimes argument separator etc.
+
+Interpreter must be provided in all cases, arguments do not have to be. For example `bash.exe#` is valid execution line, as well as `bash#-c#cat feed.atom`. Note the difference in interpreter's binary name suffix. Also be very carefully about arguments quoting. Some examples of valid and tested execution lines are:
+ 
+| Command | Explanation |
+|---------|-------------|
+| `bash#-c#curl https://github.com/martinrotter.atom` | Downloads ATOM feed file with Bash and Curl. |
+| `Powershell#Invoke-WebRequest 'https://github.com/martinrotter.atom' \| Select-Object -ExpandProperty Content` | Downloads ATOM feed file with Powershell. |
+| `php#tweeper.php#-v#0#https://twitter.com/NSACareers` | Scrape Twitter RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git). Tweeper is utility which is able to produce RSS feed from Twitter and other similar social platforms. |
+
+<img src="images/scrape-source.png" width="50%">
+
+Note that the above examples are cross-platform and you can use the exact same command on Windows, Linux or Mac OS X, if your operating system is properly configured.
+
+RSS Guard offers placeholder `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data). You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
+
+Also, working directory of process executing the script is set to RSS Guard's user data folder.
+
+There are some examples of website scrapers [here](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers), most of the are written in Python 3, thus their execution line is `python#script.py`.
+
+After your source feed data are downloaded either via URL or custom script, you can optionally post-process the data with one more custom script, which will take **raw source data as input** and must produce processed valid feed data to **standard output** while printing all error messages to **error output**.
+
+Format of post-process script execution line is the same as above.
+
+<img src="images/scrape-post.png" width="50%">
+
+Typical post-processing filter might do things like advanced CSS formatting or filtering of feed file entries or removing ads:
+
+| Command | Explanation |
+|---------|-------------|
+| `bash#-c#xmllint --format -` | Pretty-print input XML feed data. |
+
+It's completely up to you if you decide to only use script as `Source` of the script or separate your custom functionality between `Source` script and `Post-process` script. Sometimes you might need different `Source` scripts for different online sources and the same `Post-process` script and vice versa.
+
 ## Gmail
-RSS Guard includes Gmail plugin, which allows users to receive and send (!!!) e-mail messages. Plugin uses [Gmail API](https://developers.google.com/gmail/api) and offers some e-mail client-like features:
+RSS Guard includes Gmail plugin, which allows users to receive and send e-mail messages in a very simple fashion. Plugin uses [Gmail API](https://developers.google.com/gmail/api) and offers some e-mail client-like features:
 * Sending e-mail messages.
 
 <img src="images/gmail-new-email.png">

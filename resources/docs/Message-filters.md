@@ -6,7 +6,6 @@ RSS Guard supports _automagic_ message filtering. The filtering system is automa
 foreach (feed in feeds_to_update) do
   messages = download_messages(feed)
   filtered_messages = filter_messages(messages)
-  
   save_messages_to_database(filtered_messages)
 ```
 As you can see, RSS Guard processes all feeds scheduled for message downloading one by one; downloading new messages, feeding them to filtering system and then saving all approved messages to RSS Guard's database.
@@ -19,18 +18,18 @@ Message filter consists of arbitrary JavaScript code which must provide function
 function filterMessage() { }
 ```
 
-This function must be fast and must return values which belong to enumeration `FilteringAction` from this [file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h). You can you either direct numerical value of each enumerant, for example `2` or you can use self-descriptive enumerant name, for example `MessageObject.Ignore`. Named enumerants are supported in RSS Guard 3.8.1+. RSS Guard 3.7.1+ also offers names `MSG_ACCEPT` and `MSG_IGNORE` as aliases for `MessageObject.Accept` and `MessageObject.Ignore`.
+This function must be fast and must return values which belong to enumeration `FilteringAction` from this [file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h). You can you use either direct numerical value of each enumerant, for example `2` or you can use self-descriptive enumerant name, for example `MessageObject.Ignore`. There are also names `MSG_ACCEPT` and `MSG_IGNORE` as aliases for `MessageObject.Accept` and `MessageObject.Ignore`.
 
-Each message is accessible in your script via global variable named `msg` of type `MessageObject`, see this [file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h) for the declaration. Some properties are writable, allowing you to change contents of the message before it is written to DB. You can mark message important, parse its description or perhaps change author name or even assign some label to it!!!
+Each message is accessible in your script via global variable named `msg` of type `MessageObject`, see this [file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) for the declaration. Some properties are writable, allowing you to change contents of the message before it is written to DB. You can mark message important, parse its description or perhaps change author name or even assign some label to it!!!
 
-RSS Guard 3.8.0+ offers also list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. Each `Label` in the array offers these properties: `title` (title of the label), `color` (color of the label) and `customId` (account-specific ID of the label). If you change assigned labels to the message, then the change will be eventually synchronized back to server if respective plugin supports it.
+RSS Guard also offers list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. If you change assigned labels to the message, then the change will be eventually synchronized back to server if respective plugin supports it.
 
 Passed message also offers special function
 ```js
 MessageObject.isDuplicateWithAttribute(DuplicationAttributeCheck)
 ```
 
-which allows you to perform runtime check for existence of the message in RSS Guard's database. The parameter is integer value from enumeration `DuplicationAttributeCheck` from this [file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/message.h) and specifies how exactly you want to determine if given message is "duplicate". Again, you can use direct integer value or enumerant name.
+which allows you to perform runtime check for existence of the message in RSS Guard's database. The parameter is integer value from enumeration `DuplicationAttributeCheck` from this [file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) and specifies how exactly you want to determine if given message is "duplicate". Again, you can use direct integer values or enumerant names.
 
 For example if you want to check if there is already another message with same author in database, then you call `msg.isDuplicateWithAttribute(MessageObject.SameAuthor)`. Enumeration even supports "flags" approach, thus you can combine multiple checks via bitwise `OR` operation in single call, for example like this: `msg.isDuplicateWithAttribute(MessageObject.SameAuthor | MessageObject.SameUrl)`.
 
@@ -49,7 +48,7 @@ Here is the reference of methods and properties of some types available in your 
 | `String url` | URL of the message. |
 | `String author` | Author of the message. |
 | `String contents` | Contents of the message. |
-| `Number score` | Arbitrary number in range <0.0, 100.0>. You can use this number to order messages in a custom fashion as this attribute also has its own column in messages list. |
+| `Number score` | Arbitrary number in range <0.0, 100.0>. You can use this number to sort messages in a custom fashion as this attribute also has its own column in messages list. |
 | `Date created` | Date/time of the message. |
 | `Boolean isRead` | Is message read? |
 | `Boolean isImportant` | Is message important? |
@@ -57,7 +56,7 @@ Here is the reference of methods and properties of some types available in your 
 | `Boolean isDuplicateWithAttribute(DuplicationAttributeCheck)` | Allows you to test if this particular message is already stored in RSS Guard's DB. |
 | `Boolean assignLabel(String)` | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. Available in RSS Guard 3.8.1+. |
 | `Boolean deassignLabel(String)` | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. Available in RSS Guard 3.8.1+. |
-| `Boolean alreadyStoredInDb` | `READ-ONLY` Returns true if this message is already stored in DB. This function is the way to check if the filter is being run automatically for newly downloaded messages or manually for already existing messages. Available in RSS Guard 3.8.4+. |
+| `Boolean alreadyStoredInDb` | `READ-ONLY` Returns true if this message is already stored in DB. This function is the way to check if the filter is being run automatically for newly downloaded messages or manually for already existing messages.
 
 ### `Label` class
 | Property/method | Description |
