@@ -39,8 +39,8 @@
 #define ID_IMPORTANT                          -3
 #define ID_LABELS                             -4
 
-#define MSG_SCORE_MAX   100
-#define MSG_SCORE_MIN   0
+#define MSG_SCORE_MAX   100.0
+#define MSG_SCORE_MIN   0.0
 
 #define ARGUMENTS_LIST_SEPARATOR              "\n"
 #define IS_IN_ARRAY(offset, array)            ((offset >= 0) && (offset < array.count()))

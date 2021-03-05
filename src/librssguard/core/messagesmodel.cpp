@@ -38,6 +38,10 @@ void MessagesModel::setupIcons() {
   m_readIcon = qApp->icons()->fromTheme(QSL("mail-mark-read"));
   m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
   m_enclosuresIcon = qApp->icons()->fromTheme(QSL("mail-attachment"));
+
+  for (double i = MSG_SCORE_MIN; i <= MSG_SCORE_MAX; i += 10.0) {
+    m_scoreIcons.append(generateIconForScore(i));
+  }
 }
 
 QIcon MessagesModel::generateIconForScore(double score) {
@@ -46,7 +50,7 @@ QIcon MessagesModel::generateIconForScore(double score) {
 
   paint.setRenderHint(QPainter::RenderHint::Antialiasing);
 
-  int level = std::min(MSG_SCORE_MAX, std::max(MSG_SCORE_MIN, int(std::floor(score / 10.0))));
+  int level = std::min(MSG_SCORE_MAX, std::max(MSG_SCORE_MIN, std::floor(score / 10.0)));
   QPainterPath path;
 
   path.addRoundedRect(QRectF(2, 2, 60, 60), 5, 5);
@@ -62,11 +66,8 @@ QIcon MessagesModel::generateIconForScore(double score) {
 
   int bar_height = 6 * level;
 
-  // TODO: pokračovat tady, optimalizovat voláni vytváření těch ikon, skrýt text
-  // a zobrazit jen ikony, barva od červené do zelené
-
   path.addRoundedRect(QRectF(2, 64 - bar_height - 2, 60, bar_height), 5, 5);
-  paint.fillPath(path, Qt::GlobalColor::green);
+  paint.fillPath(path, QColor::fromHsv(int(score), 200, 230));
 
   return pix;
 }
@@ -242,16 +243,25 @@ void MessagesModel::setupHeaderData() {
 
     /*: Tooltip for indication of presence of enclosures.*/ tr("Has enclosures");
 
-  m_tooltipData <<
-    tr("Id of the message.") << tr("Is message read?") <<
-    tr("Is message deleted?") << tr("Is message important?") <<
-    tr("Id of feed which this message belongs to.") <<
-    tr("Title of the message.") << tr("Url of the message.") <<
-    tr("Author of the message.") << tr("Creation date of the message.") <<
-    tr("Contents of the message.") << tr("Is message permanently deleted from recycle bin?") <<
-    tr("List of attachments.") << tr("Account ID of the message.") << tr("Custom ID of the message") <<
-    tr("Custom hash of the message.") << tr("Custom ID of feed of the message.") <<
-    tr("Indication of enclosures presence within the message.");
+  m_tooltipData
+    << tr("ID of the message.")
+    << tr("Is message read?")
+    << tr("Is message important?")
+    << tr("Is message deleted?")
+    << tr("Is message permanently deleted from recycle bin?")
+    << tr("ID of feed which this message belongs to.")
+    << tr("Title of the message.")
+    << tr("Url of the message.")
+    << tr("Author of the message.")
+    << tr("Creation date of the message.")
+    << tr("Contents of the message.")
+    << tr("List of attachments.")
+    << tr("Score of the message.")
+    << tr("Account ID of the message.")
+    << tr("Custom ID of the message")
+    << tr("Custom hash of the message.")
+    << tr("Custom ID of feed of the message.")
+    << tr("Indication of enclosures presence within the message.");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
@@ -303,7 +313,8 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
       else if (index_column != MSG_DB_IMPORTANT_INDEX &&
                index_column != MSG_DB_READ_INDEX &&
-               index_column != MSG_DB_HAS_ENCLOSURES) {
+               index_column != MSG_DB_HAS_ENCLOSURES &&
+               index_column != MSG_DB_SCORE_INDEX) {
         return QSqlQueryModel::data(idx, role);
       }
       else {
@@ -415,8 +426,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
       else if (index_column == MSG_DB_SCORE_INDEX) {
         QVariant dta = QSqlQueryModel::data(idx);
+        int level = std::min(MSG_SCORE_MAX, std::max(MSG_SCORE_MIN, std::floor(dta.toDouble() / 10.0)));
 
-        return generateIconForScore(dta.toDouble());
+        return m_scoreIcons.at(level);
       }
       else {
         return QVariant();
@@ -652,7 +664,10 @@ QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int
 
       // Display textual headers for all columns except "read" and
       // "important" and "has enclosures" columns.
-      if (section != MSG_DB_READ_INDEX && section != MSG_DB_IMPORTANT_INDEX && section != MSG_DB_HAS_ENCLOSURES) {
+      if (section != MSG_DB_READ_INDEX &&
+          section != MSG_DB_IMPORTANT_INDEX &&
+          section != MSG_DB_SCORE_INDEX &&
+          section != MSG_DB_HAS_ENCLOSURES) {
         return m_headerData.at(section);
       }
       else {
@@ -676,6 +691,9 @@ QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int
 
         case MSG_DB_IMPORTANT_INDEX:
           return m_favoriteIcon;
+
+        case MSG_DB_SCORE_INDEX:
+          return m_scoreIcons.at(5);
 
         default:
           return QVariant();
