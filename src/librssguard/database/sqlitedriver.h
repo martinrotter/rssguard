@@ -20,6 +20,7 @@ class SqliteDriver : public DatabaseDriver {
     virtual QString humanDriverType() const;
     virtual QString qtDriverCode() const;
     virtual void backupDatabase(const QString& backup_folder, const QString& backup_name);
+    virtual QString autoIncrementPrimaryKey() const;
 
   private:
     QSqlDatabase initializeInMemoryDatabase();

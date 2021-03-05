@@ -47,5 +47,6 @@ QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
   }
 
   statements.replaceInStrings(APP_DB_NAME_PLACEHOLDER, database_name);
+  statements.replaceInStrings(APP_DB_AUTO_INC_PRIM_KEY_PLACEHOLDER, autoIncrementPrimaryKey());
   return statements;
 }
