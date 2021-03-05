@@ -47,6 +47,7 @@ HEADERS += core/feeddownloader.h \
            database/databasedriver.h \
            database/databasefactory.h \
            database/databasequeries.h \
+           database/mariadbdriver.h \
            database/sqlitedriver.h \
            definitions/definitions.h \
            definitions/typedefs.h \
@@ -228,6 +229,7 @@ SOURCES += core/feeddownloader.cpp \
            database/databasedriver.cpp \
            database/databasefactory.cpp \
            database/databasequeries.cpp \
+           database/mariadbdriver.cpp \
            database/sqlitedriver.cpp \
            dynamic-shortcuts/dynamicshortcuts.cpp \
            dynamic-shortcuts/dynamicshortcutswidget.cpp \

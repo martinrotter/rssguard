@@ -13,19 +13,6 @@ class DatabaseFactory : public QObject {
   Q_OBJECT
 
   public:
-
-    // Describes possible MySQL-specific errors.
-    enum class MySQLError {
-      Ok = 0,
-      UnknownError = 1,
-      AccessDenied = 1045,
-      UnknownDatabase = 1049,
-      ConnectionError = 2002,
-      CantConnect = 2003,
-      UnknownHost = 2005
-    };
-
-    // Constructor.
     explicit DatabaseFactory(QObject* parent = nullptr);
 
     // Removes connection.
