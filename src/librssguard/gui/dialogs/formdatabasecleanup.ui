@@ -99,7 +99,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="m_lblFileSize">
         <property name="text">
-         <string>Database file size</string>
+         <string>Total data size</string>
         </property>
         <property name="buddy">
          <cstring>m_txtFileSize</cstring>

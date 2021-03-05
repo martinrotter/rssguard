@@ -20,8 +20,6 @@ class DatabaseCleaner : public QObject {
   Q_OBJECT
 
   public:
-
-    // Constructors.
     explicit DatabaseCleaner(QObject* parent = nullptr);
     virtual ~DatabaseCleaner() = default;
 

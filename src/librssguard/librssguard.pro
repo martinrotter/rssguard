@@ -43,6 +43,11 @@ HEADERS += core/feeddownloader.h \
            core/messagesmodelcache.h \
            core/messagesmodelsqllayer.h \
            core/messagesproxymodel.h \
+           database/databasecleaner.h \
+           database/databasedriver.h \
+           database/databasefactory.h \
+           database/databasequeries.h \
+           database/sqlitedriver.h \
            definitions/definitions.h \
            definitions/typedefs.h \
            dynamic-shortcuts/dynamicshortcuts.h \
@@ -107,9 +112,6 @@ HEADERS += core/feeddownloader.h \
            gui/widgetwithstatus.h \
            miscellaneous/application.h \
            miscellaneous/autosaver.h \
-           miscellaneous/databasecleaner.h \
-           miscellaneous/databasefactory.h \
-           miscellaneous/databasequeries.h \
            miscellaneous/externaltool.h \
            miscellaneous/feedreader.h \
            miscellaneous/iconfactory.h \
@@ -222,6 +224,11 @@ SOURCES += core/feeddownloader.cpp \
            core/messagesmodelcache.cpp \
            core/messagesmodelsqllayer.cpp \
            core/messagesproxymodel.cpp \
+           database/databasecleaner.cpp \
+           database/databasedriver.cpp \
+           database/databasefactory.cpp \
+           database/databasequeries.cpp \
+           database/sqlitedriver.cpp \
            dynamic-shortcuts/dynamicshortcuts.cpp \
            dynamic-shortcuts/dynamicshortcutswidget.cpp \
            dynamic-shortcuts/shortcutcatcher.cpp \
@@ -284,9 +291,6 @@ SOURCES += core/feeddownloader.cpp \
            gui/widgetwithstatus.cpp \
            miscellaneous/application.cpp \
            miscellaneous/autosaver.cpp \
-           miscellaneous/databasecleaner.cpp \
-           miscellaneous/databasefactory.cpp \
-           miscellaneous/databasequeries.cpp \
            miscellaneous/externaltool.cpp \
            miscellaneous/feedreader.cpp \
            miscellaneous/iconfactory.cpp \

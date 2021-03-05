@@ -1,9 +1,9 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "miscellaneous/databasecleaner.h"
+#include "database/databasecleaner.h"
 
+#include "database/databasequeries.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 
 #include <QDebug>
 #include <QThread>
@@ -18,7 +18,7 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders& which_data) {
   bool result = true;
   const int difference = 99 / 12;
   int progress = 0;
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (which_data.m_removeReadMessages) {
     progress += difference;
@@ -67,7 +67,7 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders& which_data) {
     emit purgeProgress(progress, tr("Shrinking database file..."));
 
     // Call driver-specific vacuuming function.
-    result &= qApp->database()->vacuumDatabase();
+    result &= qApp->database()->driver()->vacuumDatabase();
     progress += difference;
     emit purgeProgress(progress, tr("Database file shrinked..."));
   }

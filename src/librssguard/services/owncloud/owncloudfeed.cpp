@@ -2,7 +2,7 @@
 
 #include "services/owncloud/owncloudfeed.h"
 
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/owncloud/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudserviceroot.h"
@@ -27,7 +27,7 @@ bool OwnCloudFeed::deleteViaGui() {
 }
 
 bool OwnCloudFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, customId().toInt(), serviceRoot()->accountId());
 }

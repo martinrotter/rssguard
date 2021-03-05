@@ -7,7 +7,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "network-web/networkfactory.h"
 #include "network-web/oauth2service.h"
 #include "network-web/silentnetworkaccessmanager.h"
@@ -68,7 +68,7 @@ void InoreaderNetworkFactory::initializeOauth() {
     Q_UNUSED(access_token)
 
     if (m_service != nullptr && m_service->accountId() > 0 && !refresh_token.isEmpty()) {
-      QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+      QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
       DatabaseQueries::storeNewOauthTokens(database, refresh_token, m_service->accountId());
     }

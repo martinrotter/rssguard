@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "exceptions/applicationexception.h"
@@ -947,10 +947,10 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                        "SET title = :title, is_read = :is_read, is_important = :is_important, is_deleted = :is_deleted, url = :url, author = :author, score = :score, date_created = :date_created, contents = :contents, enclosures = :enclosures, feed = :feed "
                        "WHERE id = :id;");
 
-  if (use_transactions && !query_begin_transaction.exec(qApp->database()->obtainBeginTransactionSql())) {
+  if (use_transactions && !db.transaction()) {
     qCriticalNN << LOGSEC_DB
-                << "Transaction start for message downloader failed: '"
-                << query_begin_transaction.lastError().text() << "'.";
+                << "Transaction start for message downloader failed:"
+                << QUOTE_W_SPACE_DOT(query_begin_transaction.lastError().text());
     return updated_messages;
   }
 
@@ -1220,9 +1220,8 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
   if (use_transactions && !db.commit()) {
     qCriticalNN << LOGSEC_DB
-                << "Transaction commit for message downloader failed: '"
-                << db.lastError().text()
-                << "'.";
+                << "Transaction commit for message downloader failed:"
+                << QUOTE_W_SPACE_DOT(db.lastError().text());
     db.rollback();
 
     if (ok != nullptr) {

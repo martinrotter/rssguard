@@ -6,9 +6,9 @@
 #include "qtsingleapplication/qtsingleapplication.h"
 
 #include "core/feeddownloader.h"
+#include "database/databasefactory.h"
 #include "definitions/definitions.h"
 #include "gui/systemtrayicon.h"
-#include "miscellaneous/databasefactory.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/localization.h"

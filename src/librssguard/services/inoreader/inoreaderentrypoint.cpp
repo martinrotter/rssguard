@@ -4,7 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/inoreader/definitions.h"
 #include "services/inoreader/gui/formeditinoreaderaccount.h"
@@ -20,7 +20,7 @@ ServiceRoot* InoreaderEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> InoreaderEntryPoint::initializeSubtree() const {
-  QSqlDatabase database = qApp->database()->connection(QSL("InoreaderEntryPoint"));
+  QSqlDatabase database = qApp->database()->driver()->connection(QSL("InoreaderEntryPoint"));
 
   return DatabaseQueries::getAccounts<InoreaderServiceRoot>(database, code());
 }

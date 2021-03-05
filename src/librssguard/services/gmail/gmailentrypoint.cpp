@@ -4,7 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailserviceroot.h"
@@ -19,7 +19,7 @@ ServiceRoot* GmailEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> GmailEntryPoint::initializeSubtree() const {
-  QSqlDatabase database = qApp->database()->connection(QSL("GmailEntryPoint"));
+  QSqlDatabase database = qApp->database()->driver()->connection(QSL("GmailEntryPoint"));
 
   return DatabaseQueries::getAccounts<GmailServiceRoot>(database, code());
 }

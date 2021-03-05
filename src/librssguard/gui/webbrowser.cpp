@@ -8,7 +8,7 @@
 #include "gui/searchtextwidget.h"
 #include "gui/webviewer.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"

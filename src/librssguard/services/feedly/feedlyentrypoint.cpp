@@ -4,7 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/feedly/definitions.h"
 #include "services/feedly/feedlyserviceroot.h"
@@ -17,7 +17,7 @@ ServiceRoot* FeedlyEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> FeedlyEntryPoint::initializeSubtree() const {
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedlyEntryPoint"));
+  QSqlDatabase database = qApp->database()->driver()->connection(QSL("FeedlyEntryPoint"));
 
   return DatabaseQueries::getAccounts<FeedlyServiceRoot>(database, code());
 }

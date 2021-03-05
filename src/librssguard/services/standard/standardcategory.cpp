@@ -6,7 +6,7 @@
 #include "definitions/definitions.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
@@ -27,7 +27,7 @@ Qt::ItemFlags StandardCategory::additionalFlags() const {
 }
 
 bool StandardCategory::performDragDropChange(RootItem* target_item) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::createOverwriteCategory(database, this, getParentServiceRoot()->accountId(), target_item->id());
   serviceRoot()->requestItemReassignment(this, target_item);
@@ -77,7 +77,7 @@ bool StandardCategory::removeItself() {
 
   if (children_removed) {
     // Children are removed, remove this standard category too.
-    QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
     return DatabaseQueries::deleteCategory(database, id());
   }

@@ -3,7 +3,7 @@
 #include "services/abstract/recyclebin.h"
 
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
@@ -36,8 +36,8 @@ int RecycleBin::countOfAllMessages() const {
 void RecycleBin::updateCounts(bool update_total_count) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
   QSqlDatabase database = is_main_thread ?
-                          qApp->database()->connection(metaObject()->className()) :
-                          qApp->database()->connection(QSL("feed_upd"));
+                          qApp->database()->driver()->connection(metaObject()->className()) :
+                          qApp->database()->driver()->connection(QSL("feed_upd"));
 
   m_unreadCount = DatabaseQueries::getMessageCountsForBin(database, getParentServiceRoot()->accountId(), false);
 
@@ -67,13 +67,13 @@ QList<QAction*> RecycleBin::contextMenuFeedsList() {
 
 QList<Message> RecycleBin::undeletedMessages() const {
   const int account_id = getParentServiceRoot()->accountId();
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesForBin(database, account_id);
 }
 
 bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   ServiceRoot* parent_root = getParentServiceRoot();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(parent_root);
 
@@ -93,7 +93,7 @@ bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
 }
 
 bool RecycleBin::cleanMessages(bool clear_only_read) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   ServiceRoot* parent_root = getParentServiceRoot();
 
   if (DatabaseQueries::purgeMessagesFromBin(database, clear_only_read, parent_root->accountId())) {
@@ -112,7 +112,7 @@ bool RecycleBin::empty() {
 }
 
 bool RecycleBin::restore() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   ServiceRoot* parent_root = getParentServiceRoot();
 
   if (DatabaseQueries::restoreBin(database, parent_root->accountId())) {

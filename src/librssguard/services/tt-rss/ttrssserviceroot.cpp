@@ -3,7 +3,7 @@
 #include "services/tt-rss/ttrssserviceroot.h"
 
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"

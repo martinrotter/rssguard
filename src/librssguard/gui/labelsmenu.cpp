@@ -4,7 +4,7 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QCheckBox>
@@ -22,7 +22,7 @@ LabelsMenu::LabelsMenu(const QList<Message>& messages, const QList<Label*>& labe
     addAction(act_not_labels);
   }
   else {
-    QSqlDatabase db = qApp->database()->connection(metaObject()->className());
+    QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
     for (Label* label: boolinq::from(labels).orderBy([](const Label* label) {
       return label->title().toLower();

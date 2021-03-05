@@ -2,14 +2,14 @@
 
 #include "core/messagesmodelsqllayer.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 
 MessagesModelSqlLayer::MessagesModelSqlLayer()
   : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)), m_fieldNames({}), m_orderByNames({}),
   m_sortColumns({}), m_numericColumns({}), m_sortOrders({}) {
-  m_db = qApp->database()->connection(QSL("MessagesModel"));
+  m_db = qApp->database()->driver()->connection(QSL("MessagesModel"));
 
   // Used in <x>: SELECT <x1>, <x2> FROM ....;
   m_fieldNames = DatabaseQueries::messageTableAttributes(false);

@@ -4,7 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/greader/definitions.h"
 #include "services/greader/greaderserviceroot.h"
@@ -17,7 +17,7 @@ ServiceRoot* GreaderEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> GreaderEntryPoint::initializeSubtree() const {
-  QSqlDatabase database = qApp->database()->connection(QSL("GreaderEntryPoint"));
+  QSqlDatabase database = qApp->database()->driver()->connection(QSL("GreaderEntryPoint"));
 
   return DatabaseQueries::getAccounts<GreaderServiceRoot>(database, code());
 }

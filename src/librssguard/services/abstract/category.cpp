@@ -3,7 +3,7 @@
 #include "services/abstract/category.h"
 
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
@@ -34,7 +34,7 @@ void Category::updateCounts(bool including_total_count) {
     return;
   }
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   bool ok;
   QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForCategory(database,
                                                                                        customId(),

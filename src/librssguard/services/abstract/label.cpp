@@ -4,8 +4,8 @@
 
 #include "gui/dialogs/formaddeditlabel.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasefactory.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasefactory.h"
+#include "database/databasequeries.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
@@ -49,7 +49,7 @@ bool Label::editViaGui() {
   FormAddEditLabel form(qApp->mainFormWidget());
 
   if (form.execForEdit(this)) {
-    QSqlDatabase db = qApp->database()->connection(metaObject()->className());
+    QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
     return DatabaseQueries::updateLabel(db, this);
   }
@@ -64,7 +64,7 @@ bool Label::canBeDeleted() const {
 }
 
 bool Label::deleteViaGui() {
-  QSqlDatabase db = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::deleteLabel(db, this)) {
     getParentServiceRoot()->requestItemRemoval(this);
@@ -78,8 +78,8 @@ bool Label::deleteViaGui() {
 void Label::updateCounts(bool including_total_count) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
   QSqlDatabase database = is_main_thread ?
-                          qApp->database()->connection(metaObject()->className()) :
-                          qApp->database()->connection(QSL("feed_upd"));
+                          qApp->database()->driver()->connection(metaObject()->className()) :
+                          qApp->database()->driver()->connection(QSL("feed_upd"));
   int account_id = getParentServiceRoot()->accountId();
 
   if (including_total_count) {
@@ -90,7 +90,7 @@ void Label::updateCounts(bool including_total_count) {
 }
 
 QList<Message> Label::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesWithLabel(database, this);
 }
@@ -112,8 +112,8 @@ QIcon Label::generateIcon(const QColor& color) {
 void Label::assignToMessage(const Message& msg) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
   QSqlDatabase database = is_main_thread ?
-                          qApp->database()->connection(metaObject()->className()) :
-                          qApp->database()->connection(QSL("feed_upd"));
+                          qApp->database()->driver()->connection(metaObject()->className()) :
+                          qApp->database()->driver()->connection(QSL("feed_upd"));
 
   if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({ this }, { msg }, true)) {
     DatabaseQueries::assignLabelToMessage(database, this, msg);
@@ -125,8 +125,8 @@ void Label::assignToMessage(const Message& msg) {
 void Label::deassignFromMessage(const Message& msg) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
   QSqlDatabase database = is_main_thread ?
-                          qApp->database()->connection(metaObject()->className()) :
-                          qApp->database()->connection(QSL("feed_upd"));
+                          qApp->database()->driver()->connection(metaObject()->className()) :
+                          qApp->database()->driver()->connection(QSL("feed_upd"));
 
   if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({ this }, { msg }, false)) {
     DatabaseQueries::deassignLabelFromMessage(database, this, msg);
@@ -145,7 +145,7 @@ void Label::setCountOfUnreadMessages(int unreadCount) {
 
 bool Label::cleanMessages(bool clear_only_read) {
   ServiceRoot* service = getParentServiceRoot();
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::cleanLabelledMessages(database, clear_only_read, this)) {
     service->updateCounts(true);
@@ -166,7 +166,7 @@ bool Label::markAsReadUnread(RootItem::ReadStatus status) {
     cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this), status);
   }
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::markLabelledMessagesReadUnread(database, this, status)) {
     service->updateCounts(false);

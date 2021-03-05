@@ -4,7 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
@@ -45,7 +45,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
 }
 
 QList<Message> Feed::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesForFeed(database, customId(), getParentServiceRoot()->accountId());
 }
@@ -161,8 +161,8 @@ void Feed::appendMessageFilter(MessageFilter* filter) {
 void Feed::updateCounts(bool including_total_count) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
   QSqlDatabase database = is_main_thread ?
-                          qApp->database()->connection(metaObject()->className()) :
-                          qApp->database()->connection(QSL("feed_upd"));
+                          qApp->database()->driver()->connection(metaObject()->className()) :
+                          qApp->database()->driver()->connection(QSL("feed_upd"));
   int account_id = getParentServiceRoot()->accountId();
 
   if (including_total_count) {
@@ -208,8 +208,8 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
       QString custom_id = customId();
       int account_id = getParentServiceRoot()->accountId();
       QSqlDatabase database = is_main_thread ?
-                              qApp->database()->connection(metaObject()->className()) :
-                              qApp->database()->connection(QSL("feed_upd"));
+                              qApp->database()->driver()->connection(metaObject()->className()) :
+                              qApp->database()->driver()->connection(QSL("feed_upd"));
 
       updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id,
                                                          source(), force_update, &anything_updated, &ok);

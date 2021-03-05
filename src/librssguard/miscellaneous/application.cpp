@@ -313,23 +313,17 @@ void Application::backupDatabaseSettings(bool backup_database, bool backup_setti
     }
   }
 
-  if (backup_database &&
-      (database()->activeDatabaseDriver() == DatabaseFactory::UsedDriver::SQLITE ||
-       database()->activeDatabaseDriver() == DatabaseFactory::UsedDriver::SQLITE_MEMORY)) {
+  if (backup_database) {
     // We need to save the database first.
-    database()->saveDatabase();
-
-    if (!IOFactory::copyFile(database()->sqliteDatabaseFilePath(),
-                             target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_DATABASE)) {
-      throw ApplicationException(tr("Database file not copied to output directory successfully."));
-    }
+    database()->driver()->saveDatabase();
+    database()->driver()->backupDatabase(target_path, backup_name);
   }
 }
 
 void Application::restoreDatabaseSettings(bool restore_database, bool restore_settings,
                                           const QString& source_database_file_path, const QString& source_settings_file_path) {
   if (restore_database) {
-    if (!qApp->database()->initiateRestoration(source_database_file_path)) {
+    if (!qApp->database()->driver()->initiateRestoration(source_database_file_path)) {
       throw ApplicationException(tr("Database restoration was not initiated. Make sure that output directory is writable."));
     }
   }
@@ -501,7 +495,7 @@ void Application::onAboutToQuit() {
   }
 
   qApp->feedReader()->quit();
-  database()->saveDatabase();
+  database()->driver()->saveDatabase();
 
   if (mainForm() != nullptr) {
     mainForm()->saveSize();

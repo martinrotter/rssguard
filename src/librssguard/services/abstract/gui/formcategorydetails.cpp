@@ -8,7 +8,7 @@
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/rootitem.h"
@@ -91,7 +91,7 @@ void FormCategoryDetails::apply() {
   m_category->setDescription(m_ui->m_txtDescription->lineEdit()->text());
   m_category->setIcon(m_ui->m_btnIcon->icon());
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::createOverwriteCategory(database, m_category, m_serviceRoot->accountId(), parent->id());
   m_serviceRoot->requestItemReassignment(m_category, parent);
