@@ -2,11 +2,11 @@
 
 #include "services/feedly/feedlyserviceroot.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
@@ -105,8 +105,16 @@ void FeedlyServiceRoot::start(bool freshly_activated) {
   updateTitle();
 
   if (getSubTreeFeeds().isEmpty()) {
-    syncIn();
+    m_network->oauth()->login([this]() {
+      syncIn();
+    });
   }
+
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
+  else {
+    m_network->oauth()->login();
+  }
+#endif
 }
 
 QString FeedlyServiceRoot::code() const {
