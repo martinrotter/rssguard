@@ -19,13 +19,7 @@
 
 FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
-  m_oauth = new OAuth2Service(QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_AUTH,
-                              QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TOKEN,
-                              FEEDLY_CLIENT_ID,
-                              FEEDLY_CLIENT_SECRET,
-                              FEEDLY_API_SCOPE, this);
-
-  m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT));
+  m_oauth = nullptr;
 #endif
 
   m_ui.setupUi(this);

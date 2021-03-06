@@ -4,9 +4,9 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "3rd-party/boolinq/boolinq.h"
+#include "database/databasequeries.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
@@ -28,8 +28,8 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_oauth(new OAuth2Service(QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_AUTH,
                             QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TOKEN,
-                            FEEDLY_CLIENT_ID,
-                            FEEDLY_CLIENT_ID,
+                            TextFactory::decrypt(FEEDLY_CLIENT_ID, OAUTH_DECRYPTION_KEY),
+                            TextFactory::decrypt(FEEDLY_CLIENT_SECRET, OAUTH_DECRYPTION_KEY),
                             FEEDLY_API_SCOPE, this)),
 #endif
   m_username(QString()),
