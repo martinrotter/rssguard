@@ -1,19 +1,4 @@
-; This file is part of RSS Guard.
-;
-; Copyright (C) 2011-2021 by Martin Rotter <rotter.martinos@gmail.com>
-;
-; RSS Guard is free software: you can redistribute it and/or modify
-; it under the terms of the GNU General Public License as published by
-; the Free Software Foundation, either version 3 of the License, or
-; (at your option) any later version.
-;
-; RSS Guard is distributed in the hope that it will be useful,
-; but WITHOUT ANY WARRANTY; without even the implied warranty of
-; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-; GNU General Public License for more details.
-;
-; You should have received a copy of the GNU General Public License
-; along with RSS Guard. If not, see <http:;www.gnu.org/licenses/>.
+; For license of this file, see <project-root-folder>/LICENSE.md.
 
 ;--------------------------------
 ; Unicode baby.
@@ -28,7 +13,7 @@ Unicode True
 ; Basic values definitions.
 
 ; Name and file.
-Name "${APP_NAME} portable"
+Name "${APP_NAME}"
 
 ; Set custom branding text.
 BrandingText "${APP_NAME}"
@@ -37,7 +22,7 @@ BrandingText "${APP_NAME}"
 SetCompressor /SOLID /FINAL lzma
 
 ; Default installation folder.
-InstallDir "$PROGRAMFILES\${APP_NAME}"
+InstallDir "C:\${APP_NAME}"
 InstallDirRegKey HKCU "Software\${APP_NAME}" "Install Directory"
 
 ; Require administrator access.
@@ -131,10 +116,9 @@ ${IfThen} $9 < 6 ${|} MessageBox mb_iconstop `ExecWaitJob "${_exec}" failed!` ${
 
 ; Installer sections.
 Section "!Core" Core
-  IfFileExists $INSTDIR\Uninstall.exe +1 NotInstalled
-  MessageBox MB_OK|MB_ICONEXCLAMATION "${APP_NAME} is already installed. $\n$\nClick 'OK' to automatically uninstall it, installer will then automatically continue with current installation." IDOK Uninstall
+  IfFileExists $INSTDIR\Uninstall.exe Uninstall NotInstalled
   
-Uninstall:  
+Uninstall:
   !insertmacro ExecWaitJob '"$INSTDIR\Uninstall.exe /S"'
 
 NotInstalled:
@@ -142,12 +126,23 @@ NotInstalled:
   
   ; Install core application files.
   File /r "${BINARY_TREE}\"
-  
+
+  ; Install MSVCRT libraries.
+  ExecWait '"$INSTDIR\vc_redist.x64.exe" /install /passive /quiet'
+  Delete "$INSTDIR\vc_redist.x64.exe"
+
   ; Store installation folder.
   WriteRegStr HKCU "Software\${APP_NAME}" "Install Directory" $INSTDIR
   
   ; Create uninstaller.
   WriteUninstaller "$INSTDIR\Uninstall.exe"
+
+  ; Add to Add/Remove programs.
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "DisplayName" "${APP_NAME}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "DisplayIcon" "$INSTDIR\${EXE_NAME}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "DisplayVersion" "${APP_VERSION}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
 SectionEnd
 
 Section "Desktop Icon" DesktopIcon
@@ -174,23 +169,19 @@ LangString DESC_StartMenuShortcuts ${LANG_ENGLISH} "Start Menu Shortcuts for ${A
 Section "Uninstall"
   ; Here remove all files, but skip "data" folder.
   Push "$INSTDIR"
-  Push "data"
+  Push "data4"
   Call un.RmDirsButOne
   
-  ; Remove uninstaller.
+  ; Remove top-level files.
   Delete "$INSTDIR\*"
    
-  ; Remove rest of installed files.
-  ; Custom files are left intact.
+  ; Remove directory itself if empty.
   RMDir "$INSTDIR"
     
-  Delete "$SMPROGRAMS\${APP_NAME}\${APP_NAME}.lnk"
-  Delete "$SMPROGRAMS\${APP_NAME}\Uninstall.lnk"
-  RMDir "$SMPROGRAMS\${APP_NAME}"
-  
+  RMDir /r "$SMPROGRAMS\${APP_NAME}"  
   Delete "$DESKTOP\${APP_NAME}.lnk"
-
-  DeleteRegKey /ifempty HKCU "Software\${APP_NAME}"
+  DeleteRegKey HKCU "Software\${APP_NAME}"
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}"
 SectionEnd
 
 ;--------------------------------
