@@ -105,9 +105,13 @@ void FeedlyServiceRoot::start(bool freshly_activated) {
   updateTitle();
 
   if (getSubTreeFeeds().isEmpty()) {
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
     m_network->oauth()->login([this]() {
       syncIn();
     });
+#else
+    syncIn();
+#endif
   }
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
