@@ -3,10 +3,10 @@
 #include "core/messagesmodel.h"
 
 #include "core/messagesmodelcache.h"
-#include "definitions/definitions.h"
-#include "miscellaneous/application.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -17,6 +17,8 @@
 #include <QPainterPath>
 #include <QSqlError>
 #include <QSqlField>
+
+#include <cmath>
 
 MessagesModel::MessagesModel(QObject* parent)
   : QSqlQueryModel(parent), m_cache(new MessagesModelCache(this)), m_messageHighlighter(MessageHighlighter::NoHighlighting),
