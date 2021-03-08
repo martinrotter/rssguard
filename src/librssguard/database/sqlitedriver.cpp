@@ -97,92 +97,56 @@ bool SqliteDriver::saveDatabase() {
 }
 
 QSqlDatabase SqliteDriver::connection(const QString& connection_name, DesiredStorageType desired_type) {
-  if (desired_type == DatabaseDriver::DesiredStorageType::StrictlyInMemory ||
-      (desired_type == DatabaseDriver::DesiredStorageType::FromSettings && m_inMemoryDatabase)) {
-    // We request in-memory database (either user explicitly
-    // needs in-memory database or it was enabled in the settings).
-    if (!m_inMemoryDatabaseInitialized) {
-      // It is not initialized yet.
-      return initializeInMemoryDatabase();
+  bool want_in_memory = desired_type == DatabaseDriver::DesiredStorageType::StrictlyInMemory ||
+                        (desired_type == DatabaseDriver::DesiredStorageType::FromSettings && m_inMemoryDatabase);
+
+  if ((want_in_memory && !m_inMemoryDatabaseInitialized) ||
+      (!want_in_memory && !m_fileBasedDatabaseInitialized)) {
+    return initializeDatabase(connection_name, want_in_memory);
+  }
+  else {
+    // No need to initialize.
+    QSqlDatabase database;
+
+    if (QSqlDatabase::contains(connection_name)) {
+      qDebugNN << LOGSEC_DB
+               << "SQLite connection"
+               << QUOTE_W_SPACE(connection_name)
+               << "is already active.";
+
+      // This database connection was added previously, no need to
+      // setup its properties.
+      database = QSqlDatabase::database(connection_name);
     }
     else {
-      QSqlDatabase database;
+      database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER, connection_name);
 
-      if (QSqlDatabase::contains(connection_name)) {
-        qDebugNN << LOGSEC_DB
-                 << "SQLite connection '"
-                 << connection_name
-                 << "' is already active.";
-
-        // This database connection was added previously, no need to
-        // setup its properties.
-        database = QSqlDatabase::database(connection_name);
-      }
-      else {
-        database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER, connection_name);
+      if (want_in_memory) {
         database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE"));
         database.setDatabaseName(QSL("file::memory:"));
       }
-
-      if (!database.isOpen() && !database.open()) {
-        qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'.",
-               qPrintable(database.lastError().text()));
-      }
       else {
-        qDebugNN << LOGSEC_DB
-                 << "In-memory SQLite database connection '"
-                 << connection_name
-                 << "' seems to be established.";
-      }
-
-      return database;
-    }
-  }
-  else {
-    // We request file-based database.
-    if (!m_fileBasedDatabaseInitialized) {
-      // File-based database is not yet initialised.
-      return initializeFileBasedDatabase(connection_name);
-    }
-    else {
-      QSqlDatabase database;
-
-      if (QSqlDatabase::contains(connection_name)) {
-        qDebugNN << LOGSEC_DB
-                 << "SQLite connection '"
-                 << connection_name
-                 << "' is already active.";
-
-        // This database connection was added previously, no need to
-        // setup its properties.
-        database = QSqlDatabase::database(connection_name);
-      }
-      else {
-        // Database connection with this name does not exist
-        // yet, add it and set it up.
-        database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER, connection_name);
         const QDir db_path(m_databaseFilePath);
         QFile db_file(db_path.absoluteFilePath(APP_DB_SQLITE_FILE));
 
-        // Setup database file path.
         database.setDatabaseName(db_file.fileName());
       }
-
-      if (!database.isOpen() && !database.open()) {
-        qFatal("File-based SQLite database was NOT opened. Delivered error message: '%s'.",
-               qPrintable(database.lastError().text()));
-      }
-      else {
-        qDebugNN << LOGSEC_DB
-                 << "File-based SQLite database connection '"
-                 << connection_name
-                 << "' to file '"
-                 << QDir::toNativeSeparators(database.databaseName())
-                 << "' seems to be established.";
-      }
-
-      return database;
     }
+
+    if (!database.isOpen() && !database.open()) {
+      qFatal("SQLite database was NOT opened. Delivered error message: '%s'.",
+             qPrintable(database.lastError().text()));
+    }
+    else {
+      qDebugNN << LOGSEC_DB
+               << "SQLite database connection"
+               << QUOTE_W_SPACE(connection_name)
+               << "to file"
+               << QUOTE_W_SPACE(database.databaseName())
+               << "seems to be established.";
+    }
+
+    return database;
   }
 }
 
@@ -215,115 +179,46 @@ bool SqliteDriver::finishRestoration() {
   return true;
 }
 
-QSqlDatabase SqliteDriver::initializeInMemoryDatabase() {
-  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER);
-
-  database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE"));
-  database.setDatabaseName(QSL("file::memory:"));
-
-  if (!database.open()) {
-    qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'",
-           qPrintable(database.lastError().text()));
-  }
-  else {
-    QSqlQuery query_db(database);
-
-    query_db.setForwardOnly(true);
-    setPragmas(query_db);
-
-    // Sample query which checks for existence of tables.
-    query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"));
-
-    if (query_db.lastError().isValid()) {
-      qWarningNN << LOGSEC_DB << "Error occurred. In-memory SQLite database is not initialized. Initializing now.";
-
-      try {
-        const QStringList statements = prepareScript(APP_SQL_PATH, APP_DB_SQLITE_INIT);
-
-        for (const QString& statement : statements) {
-          query_db.exec(statement);
-
-          if (query_db.lastError().isValid()) {
-            throw ApplicationException(query_db.lastError().text());
-          }
-        }
-      }
-      catch (const ApplicationException& ex) {
-        qFatal("Error when running SQL scripts: %s.", qPrintable(ex.message()));
-      }
-
-      qDebugNN << LOGSEC_DB << "In-memory SQLite database backend should be ready now.";
-    }
-    else {
-      query_db.next();
-      qDebugNN << LOGSEC_DB << "In-memory SQLite database connection seems to be established.";
-      qDebugNN << LOGSEC_DB << "In-memory SQLite database has version '"
-               << query_db.value(0).toString()
-               << "'.";
-    }
-
-    // Loading messages from file-based database.
-    QSqlDatabase file_database = connection(objectName(), DatabaseDriver::DesiredStorageType::StrictlyFileBased);
-    QSqlQuery copy_contents(database);
-
-    // Attach database.
-    copy_contents.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
-
-    // Copy all stuff.
-    QStringList tables;
-
-    if (copy_contents.exec(QSL("SELECT name FROM storage.sqlite_master WHERE type='table';"))) {
-      while (copy_contents.next()) {
-        tables.append(copy_contents.value(0).toString());
-      }
-    }
-    else {
-      qFatal("Cannot obtain list of table names from file-base SQLite database.");
-    }
-
-    for (const QString& table : tables) {
-      copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
-    }
-
-    qDebugNN << LOGSEC_DB << "Copying data from file-based database into working in-memory database.";
-
-    // Detach database and finish.
-    copy_contents.exec(QSL("DETACH 'storage'"));
-    copy_contents.finish();
-    query_db.finish();
-  }
-
-  // Everything is initialized now.
-  m_inMemoryDatabaseInitialized = true;
-  return database;
-}
-
-QSqlDatabase SqliteDriver::initializeFileBasedDatabase(const QString& connection_name) {
+QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bool in_memory) {
   finishRestoration();
 
-  // Prepare file paths.
-  const QDir db_path(m_databaseFilePath);
-  QFile db_file(db_path.absoluteFilePath(APP_DB_SQLITE_FILE));
+  QString db_file_name;
 
-  // Check if database directory exists.
-  if (!db_path.exists()) {
-    if (!db_path.mkpath(db_path.absolutePath())) {
-      // Failure when create database file path.
-      qFatal("Directory '%s' for SQLite database file '%s' was NOT created."
-             "This is HUGE problem.",
-             qPrintable(db_path.absolutePath()),
-             qPrintable(db_file.symLinkTarget()));
+  if (!in_memory) {
+    // Prepare file paths.
+    const QDir db_path(m_databaseFilePath);
+    QFile db_file(db_path.absoluteFilePath(APP_DB_SQLITE_FILE));
+
+    // Check if database directory exists.
+    if (!db_path.exists()) {
+      if (!db_path.mkpath(db_path.absolutePath())) {
+        // Failure when create database file path.
+        qFatal("Directory '%s' for SQLite database file '%s' was NOT created."
+               "This is HUGE problem.",
+               qPrintable(db_path.absolutePath()),
+               qPrintable(db_file.symLinkTarget()));
+      }
     }
+
+    db_file_name = db_file.fileName();
+  }
+  else {
+    db_file_name = QSL("file::memory:");
   }
 
   // Folders are created. Create new QSQLDatabase object.
   QSqlDatabase database;
 
   database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER, connection_name);
-  database.setDatabaseName(db_file.fileName());
+
+  if (in_memory) {
+    database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE"));
+  }
+
+  database.setDatabaseName(db_file_name);
 
   if (!database.open()) {
-    qFatal("File-based SQLite database was NOT opened. Delivered error message: '%s'",
+    qFatal("SQLite database was NOT opened. Delivered error message: '%s'",
            qPrintable(database.lastError().text()));
   }
   else {
@@ -334,7 +229,7 @@ QSqlDatabase SqliteDriver::initializeFileBasedDatabase(const QString& connection
 
     // Sample query which checks for existence of tables.
     if (!query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
-      qWarningNN << LOGSEC_DB << "Error occurred. File-based SQLite database is not initialized. Initializing now.";
+      qWarningNN << LOGSEC_DB << "SQLite database is not initialized. Initializing now.";
 
       try {
         const QStringList statements = prepareScript(APP_SQL_PATH, APP_DB_SQLITE_INIT);
@@ -351,14 +246,11 @@ QSqlDatabase SqliteDriver::initializeFileBasedDatabase(const QString& connection
         qFatal("Error when running SQL scripts: %s.", qPrintable(ex.message()));
       }
 
-      query_db.finish();
-      qDebugNN << LOGSEC_DB << "File-based SQLite database backend should be ready now.";
+      qDebugNN << LOGSEC_DB << "SQLite database backend should be ready now.";
     }
-    else {
+    else if (!in_memory) {
       query_db.next();
       const QString installed_db_schema = query_db.value(0).toString();
-
-      query_db.finish();
 
       if (installed_db_schema.toInt() < QString(APP_DB_SCHEMA_VERSION).toInt()) {
         if (updateDatabaseSchema(database, installed_db_schema)) {
@@ -387,10 +279,53 @@ QSqlDatabase SqliteDriver::initializeFileBasedDatabase(const QString& connection
                << installed_db_schema
                << "'.";
     }
+    else {
+      query_db.next();
+      qDebugNN << LOGSEC_DB
+               << "SQLite database has version"
+               << QUOTE_W_SPACE_DOT(query_db.value(0).toString());
+    }
+  }
+
+  if (in_memory) {
+    // Loading messages from file-based database.
+    QSqlDatabase file_database = connection(objectName(), DatabaseDriver::DesiredStorageType::StrictlyFileBased);
+    QSqlQuery copy_contents(database);
+
+    // Attach database.
+    copy_contents.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
+
+    // Copy all stuff.
+    QStringList tables;
+
+    if (copy_contents.exec(QSL("SELECT name FROM storage.sqlite_master WHERE type = 'table';"))) {
+      while (copy_contents.next()) {
+        tables.append(copy_contents.value(0).toString());
+      }
+    }
+    else {
+      qFatal("Cannot obtain list of table names from file-based SQLite database.");
+    }
+
+    for (const QString& table : tables) {
+      copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
+    }
+
+    qDebugNN << LOGSEC_DB
+             << "Copying data from file-based database into working in-memory database.";
+
+    // Detach database and finish.
+    copy_contents.exec(QSL("DETACH 'storage'"));
   }
 
   // Everything is initialized now.
-  m_fileBasedDatabaseInitialized = true;
+  if (in_memory) {
+    m_inMemoryDatabaseInitialized = true;
+  }
+  else {
+    m_fileBasedDatabaseInitialized = true;
+  }
+
   return database;
 }
 
