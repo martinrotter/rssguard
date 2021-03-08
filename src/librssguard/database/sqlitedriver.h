@@ -23,8 +23,7 @@ class SqliteDriver : public DatabaseDriver {
     virtual QString autoIncrementPrimaryKey() const;
 
   private:
-    QSqlDatabase initializeInMemoryDatabase();
-    QSqlDatabase initializeFileBasedDatabase(const QString& connection_name);
+    QSqlDatabase initializeDatabase(const QString& connection_name, bool in_memory);
     bool updateDatabaseSchema(const QSqlDatabase& database, const QString& source_db_schema_version);
     void setPragmas(QSqlQuery& query);
     QString databaseFilePath() const;
