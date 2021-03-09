@@ -93,6 +93,9 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     // NOTE: Use this to get correct path under which store user data.
     QString userDataFolder();
 
+    QString replaceDataUserDataFolderPlaceholder(QString text) const;
+    QStringList replaceDataUserDataFolderPlaceholder(QStringList texts) const;
+
     void setMainForm(FormMain* main_form);
 
     void backupDatabaseSettings(bool backup_database, bool backup_settings,

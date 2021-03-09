@@ -3,12 +3,12 @@
 #include "services/standard/standardfeed.h"
 
 #include "core/feedsmodel.h"
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/scriptexception.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/simplecrypt/simplecrypt.h"
@@ -536,9 +536,8 @@ QStringList StandardFeed::prepareExecutionLine(const QString& execution_line) {
 #else
                                          QString::SplitBehavior::SkipEmptyParts);
 #endif
-  auto user_data_folder = qApp->userDataFolder();
 
-  return split_exec.replaceInStrings(EXECUTION_LINE_USER_DATA_PLACEHOLDER, user_data_folder);
+  return qApp->replaceDataUserDataFolderPlaceholder(split_exec);
 }
 
 QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QString& working_directory,

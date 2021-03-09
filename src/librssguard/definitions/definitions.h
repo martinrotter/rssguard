@@ -84,7 +84,7 @@
 
 #define EXTERNAL_TOOL_SEPARATOR               "###"
 #define EXTERNAL_TOOL_PARAM_SEPARATOR         "|||"
-#define EXECUTION_LINE_USER_DATA_PLACEHOLDER  "%data%"
+#define USER_DATA_PLACEHOLDER  "%data%"
 
 #define CLI_LOG_SHORT     "l"
 #define CLI_LOG_LONG      "log"

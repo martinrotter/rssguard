@@ -22,9 +22,10 @@
     * [Downloading files](#downloading-files)
     * [AdBlock](#adblock)
     * [GUI tweaking](#gui-tweaking)
-* [Miscellaneous](#miscellaneous)
+* [Miscellaneous (for advanced users)](#miscellaneous-for-advanced-users)
     * [Command line interface](#cli)
     * [How to build](#how-to-build)
+    * [`%data%` placeholder](#%data%-placeholder)
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
@@ -212,7 +213,7 @@ Interpreter must be provided in all cases, arguments do not have to be. For exam
 
 Note that the above examples are cross-platform and you can use the exact same command on Windows, Linux or Mac OS X, if your operating system is properly configured.
 
-RSS Guard offers placeholder `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data). You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
+RSS Guard offers [placeholder](#%data%-placeholder) `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data). You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
 
 Also, working directory of process executing the script is set to RSS Guard's user data folder.
 
@@ -285,8 +286,8 @@ Many people have very widescreen monitors nowadays and RSS Guard offers you hori
 
 <img src="images/gui-layout-orientation.png" width="80%">
 
-# Miscellaneous
-Here you can find some useful insights into RSS Guard's modus operandi.
+# Miscellaneous (for advanced users)
+Here you can find some useful advanced insights into RSS Guard's modus operandi.
 
 ## CLI
 RSS Guard offers CLI (command line interface). For overview of its features, run `rssguard --help` in your terminal. You will see the overview of the interface.
@@ -329,6 +330,11 @@ After your dependecies are installed, then you can compile via standard `qmake -
 
 command.
 
+## `%data%` placeholder
+RSS Guard stores its data and settings in single folder. What exact folder it is is described [here](#portable-user-data). RSS Guard allows you to use the folder programmatically in some special contexts via `%data%` placeholder. You can use this placeholder in these RSS Guard contexts:
+* Contents of your [message filters](Message-filters.md) - you can therefore place some scripts under your user data folder and include it via `JavaScript` into your message filter.
+* `source` and `post-process script` attributes of feed - you can use the placeholder to load scripts to generate/process feed from user data folder.
+
 ## Cleaning database
 Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with tens of thousands of messages.
 
@@ -351,8 +357,9 @@ RSS Guard on Linux, Android or Mac OS automatically uses non-portable user data 
 Here is the rough workflow which is performed when you hit `Feeds & categories -> Update all items` or `Feeds & categories -> Update selected items`. At that point of time this happens:
 1. RSS Guard creates a list of all/selected feeds.
 2. Sequentially, for each feed do:
-    * a. Download all available messages from online source.
-    * b. Sequentially, for each downloaded message, do:
+    * a. Download all available messages from online source or generate it with script.
+    * b. Post-process messages with post-process script, if configured.
+    * c. Sequentially, for each downloaded message, do:
         * 1. Sanitize title of the message. This includes replacing all non-breaking spaces with normal spaces, removing all leading spaces, replacing all multiple consecutive spaces with single space. Contents of message are converted from [percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding).
         * 2. Run all [message filters](#message-filtering), one by one, one the message. Cache read/important message attributes (or labels changes) changed by filters to queue which is later synchronized back to online feed service.
         * 3. Store the message into RSS Guard's database, creating completely new DB entry for it, or replacing existing message. **Note that two messages are considered as the same message if they have identical URL, author and title and they belong to the same feed.** This does not stand for synchronized feeds (TT-RSS, Inoreader and others) where each message has assigned special ID which identifies the message uniquely.
