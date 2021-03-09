@@ -2,9 +2,9 @@
 
 #include "services/abstract/feed.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
@@ -52,7 +52,7 @@ QList<Message> Feed::undeletedMessages() const {
 
 QVariant Feed::data(int column, int role) const {
   switch (role) {
-    case Qt::ForegroundRole:
+    case Qt::ItemDataRole::ForegroundRole:
       switch (status()) {
         case Status::NewMessages:
           return qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight];
