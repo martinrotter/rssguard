@@ -17,7 +17,7 @@ GmailAccountDetails::GmailAccountDetails(QWidget* parent)
 #if defined(GMAIL_OFFICIAL_SUPPORT)
   m_ui.m_lblInfo->setText(tr("There are some preconfigured OAuth tokens so you do not have to fill in your "
                              "client ID/secret, but it is strongly recommended to obtain your "
-                             "own as it preconfigured tokens have limited global usage quota. If you wash "
+                             "own as it preconfigured tokens have limited global usage quota. If you wish "
                              "to use preconfigured tokens, simply leave those fields empty and make sure "
                              "to leave default value of redirect URL."));
 #else

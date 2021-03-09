@@ -174,13 +174,12 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
   QStack<QDomElement> elements_to_process;
 
   elements_to_process.push(opml_document.documentElement().elementsByTagName(QSL("body")).at(0).toElement());
+  total = opml_document.elementsByTagName("outline").size();
 
   while (!elements_to_process.isEmpty()) {
     RootItem* active_model_item = model_items.pop();
     QDomElement active_element = elements_to_process.pop();
     int current_count = active_element.childNodes().size();
-
-    total += current_count;
 
     for (int i = 0; i < current_count; i++) {
       QDomNode child = active_element.childNodes().at(i);
