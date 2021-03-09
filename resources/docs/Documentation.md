@@ -8,7 +8,7 @@
     * [Localizations](#localizations)
     * [Videos](#videos)
     * [Web-based and lite app variants](#web-based-and-lite-app-variants)
-    * [RSS Guard 3 vs. RSS Guard 4](#rss-guard-3-vs.-rss-guard-4)
+    * [RSS Guard 3 vs. RSS Guard 4](#rss-guard-3-vs-rss-guard-4)
 * [Features](#features)
     * [List of main features](#list-of-main-features)
     * [Supported feed formats and online feed services](Feed-formats.md)
@@ -25,7 +25,7 @@
 * [Miscellaneous (for advanced users)](#miscellaneous-for-advanced-users)
     * [Command line interface](#cli)
     * [How to build](#how-to-build)
-    * [`%data%` placeholder](#%data%-placeholder)
+    * [`%data%` placeholder](#data-placeholder)
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
@@ -52,16 +52,17 @@ RSS Guard uses [semantic versioning](https://semver.org/). The versioning scheme
 
 ## How to contribute
 RSS Guard is open source application with free GNU GPLv3 license. Everyone willing to contribute is welcomed. You can contribute in many ways by:
-* fixing bugs and requesting PRs (pull requests),
+* fixing and [reporting](#reporting-bugs) bugs and requesting PRs (pull requests),
 * [localizing](#localizations) to other languages,
 * supporting author with [donations](https://github.com/sponsors/martinrotter),
-* spreading the word,
-* reporting discovered [bugs](#reporting-bugs).
+* spreading the word.
 
 If you decide to contribute code, then please try to follow the style and formatting of existing source code. Also, I use [uncrustify](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/uncrustify/uncrustify.cfg) to format source code.
 
 ## Reporting bugs
 Please report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible, along with steps taken leading up to the issue occurring.
+
+Also, for some broader questions or general ideas, use [discussions](https://github.com/martinrotter/rssguard/discussions) rather than [issues](https://github.com/martinrotter/rssguard/issues).
 
 It is a good idea to read [this](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html) before reporting the bug; it will save time and effort for everyone if all the required information is provided from the get-go.
 
@@ -213,7 +214,7 @@ Interpreter must be provided in all cases, arguments do not have to be. For exam
 
 Note that the above examples are cross-platform and you can use the exact same command on Windows, Linux or Mac OS X, if your operating system is properly configured.
 
-RSS Guard offers [placeholder](#%data%-placeholder) `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data). You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
+RSS Guard offers [placeholder](#data-placeholder) `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data). You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
 
 Also, working directory of process executing the script is set to RSS Guard's user data folder.
 
@@ -333,7 +334,7 @@ command.
 ## `%data%` placeholder
 RSS Guard stores its data and settings in single folder. What exact folder it is is described [here](#portable-user-data). RSS Guard allows you to use the folder programmatically in some special contexts via `%data%` placeholder. You can use this placeholder in these RSS Guard contexts:
 * Contents of your [message filters](Message-filters.md) - you can therefore place some scripts under your user data folder and include it via `JavaScript` into your message filter.
-* `source` and `post-process script` attributes of feed - you can use the placeholder to load scripts to generate/process feed from user data folder.
+* `source` and `post-process script` attributes of for [scraping](#websites-scraping) feed - you can use the placeholder to load scripts to generate/process feed from user data folder.
 
 ## Cleaning database
 Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with tens of thousands of messages.

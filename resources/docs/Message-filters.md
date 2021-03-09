@@ -22,7 +22,7 @@ This function must be fast and must return values which belong to enumeration `F
 
 Each message is accessible in your script via global variable named `msg` of type `MessageObject`, see this [file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) for the declaration. Some properties are writable, allowing you to change contents of the message before it is written to DB. You can mark message important, parse its description or perhaps change author name or even assign some label to it!!!
 
-You can use [special placeholders](Documentation.md#%data%-placeholder) within message filter.
+You can use [special placeholders](Documentation.md#data-placeholder) within message filter.
 
 RSS Guard also offers list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. If you change assigned labels to the message, then the change will be eventually synchronized back to server if respective plugin supports it.
 
