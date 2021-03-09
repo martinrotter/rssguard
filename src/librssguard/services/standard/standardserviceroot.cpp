@@ -3,12 +3,12 @@
 #include "services/standard/standardserviceroot.h"
 
 #include "core/feedsmodel.h"
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/scriptexception.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
@@ -81,6 +81,9 @@ void StandardServiceRoot::start(bool freshly_activated) {
       catch (ApplicationException& ex) {
         MessageBox::show(qApp->mainFormWidget(), QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
       }
+    }
+    else {
+      requestItemExpand({ this }, true);
     }
   }
 

@@ -122,11 +122,8 @@ int RootItem::row() const {
 }
 
 QVariant RootItem::data(int column, int role) const {
-  Q_UNUSED(column)
-  Q_UNUSED(role)
-
   switch (role) {
-    case Qt::ToolTipRole:
+    case Qt::ItemDataRole::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         QString tool_tip = m_title;
 
@@ -150,7 +147,7 @@ QVariant RootItem::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::EditRole:
+    case Qt::ItemDataRole::EditRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return m_title;
       }
@@ -161,7 +158,7 @@ QVariant RootItem::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::DisplayRole:
+    case Qt::ItemDataRole::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return m_title;
       }
@@ -177,7 +174,7 @@ QVariant RootItem::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::DecorationRole:
+    case Qt::ItemDataRole::DecorationRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return fullIcon();
       }
@@ -185,7 +182,7 @@ QVariant RootItem::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::TextAlignmentRole:
+    case Qt::ItemDataRole::TextAlignmentRole:
       if (column == FDS_MODEL_COUNTS_INDEX) {
         return Qt::AlignmentFlag::AlignCenter;
       }

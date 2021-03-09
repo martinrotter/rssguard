@@ -22,10 +22,10 @@ QIcon IconFactory::fromByteArray(QByteArray array) {
   QIcon icon;
   QBuffer buffer(&array);
 
-  buffer.open(QIODevice::ReadOnly);
+  buffer.open(QIODevice::OpenModeFlag::ReadOnly);
   QDataStream in(&buffer);
 
-  in.setVersion(QDataStream::Qt_4_7);
+  in.setVersion(QDataStream::Version::Qt_4_7);
   in >> icon;
   buffer.close();
   return icon;
@@ -35,10 +35,10 @@ QByteArray IconFactory::toByteArray(const QIcon& icon) {
   QByteArray array;
   QBuffer buffer(&array);
 
-  buffer.open(QIODevice::WriteOnly);
+  buffer.open(QIODevice::OpenModeFlag::WriteOnly);
   QDataStream out(&buffer);
 
-  out.setVersion(QDataStream::Qt_4_7);
+  out.setVersion(QDataStream::Version::Qt_4_7);
   out << icon;
   buffer.close();
   return array.toBase64();

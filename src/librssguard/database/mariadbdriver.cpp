@@ -150,7 +150,8 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
   database.setPassword(qApp->settings()->password(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
 
   if (!database.open()) {
-    qFatal("Cannot open MySQL database: %s.", qPrintable(database.lastError().text()));
+    qFatal("Cannot open MySQL database: %s. Make sure your DB server is running and "
+           "start application again.", qPrintable(database.lastError().text()));
   }
   else {
     QSqlQuery query_db(database);
@@ -187,11 +188,11 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
       if (installed_db_schema.toInt() < QString(APP_DB_SCHEMA_VERSION).toInt()) {
         if (updateDatabaseSchema(database, installed_db_schema, database_name)) {
           qDebugNN << LOGSEC_DB
-                   << "Database schema was updated from '"
-                   << installed_db_schema
-                   << "' to '"
-                   << APP_DB_SCHEMA_VERSION
-                   << "' successully or it is already up to date.";
+                   << "Database schema was updated from"
+                   << QUOTE_W_SPACE(installed_db_schema)
+                   << "to"
+                   << QUOTE_W_SPACE(APP_DB_SCHEMA_VERSION)
+                   << "successully or it is already up to date.";
         }
         else {
           qFatal("Database schema was not updated from '%s' to '%s' successully.",
@@ -204,7 +205,6 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
     query_db.finish();
   }
 
-  // Everything is initialized now.
   m_databaseInitialized = true;
   return database;
 }
@@ -237,12 +237,10 @@ bool MariaDbDriver::updateDatabaseSchema(const QSqlDatabase& database,
 
     // Increment the version.
     qDebugNN << LOGSEC_DB
-             << "Updating database schema: '"
-             << working_version
-             << "' -> '"
-             << working_version + 1
-             << "'.";
-
+             << "Updating database schema "
+             << QUOTE_W_SPACE(working_version)
+             << "->"
+             << QUOTE_W_SPACE_DOT(working_version + 1);
     working_version++;
   }
 
