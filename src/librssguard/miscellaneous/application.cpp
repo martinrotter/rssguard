@@ -275,6 +275,18 @@ QString Application::userDataFolder() {
   }
 }
 
+QString Application::replaceDataUserDataFolderPlaceholder(QString text) const {
+  auto user_data_folder = qApp->userDataFolder();
+
+  return text.replace(QSL(USER_DATA_PLACEHOLDER), user_data_folder);
+}
+
+QStringList Application::replaceDataUserDataFolderPlaceholder(QStringList texts) const {
+  auto user_data_folder = qApp->userDataFolder();
+
+  return texts.replaceInStrings(QSL(USER_DATA_PLACEHOLDER), user_data_folder);
+}
+
 QString Application::userDataHomeFolder() const {
 #if defined(Q_OS_ANDROID)
   return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME) + QSL(" 4");

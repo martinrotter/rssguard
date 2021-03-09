@@ -202,9 +202,9 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
         }
         catch (const FilteringException& ex) {
           qCriticalNN << LOGSEC_FEEDDOWNLOADER
-                      << "Error when evaluating filtering JS function: '"
-                      << ex.message()
-                      << "'. Accepting message.";
+                      << "Error when evaluating filtering JS function: "
+                      << QUOTE_W_SPACE_DOT(ex.message())
+                      << " Accepting message.";
           continue;
         }
 
