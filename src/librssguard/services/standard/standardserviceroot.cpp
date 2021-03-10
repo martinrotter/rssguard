@@ -318,7 +318,9 @@ QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed* feed) {
   return m_feedContextMenu;
 }
 
-bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, RootItem* target_root_node, QString& output_message) {
+bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
+                                                 RootItem* target_root_node,
+                                                 QString& output_message) {
   QStack<RootItem*> original_parents;
 
   original_parents.push(target_root_node);
@@ -385,17 +387,25 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model, 
         auto* new_feed = new StandardFeed(*source_feed);
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-        DatabaseQueries::createOverwriteFeed(database,
-                                             new_feed,
-                                             target_root_node->getParentServiceRoot()->accountId(),
-                                             target_parent->id());
-        requestItemReassignment(new_feed, target_parent);
+        try {
+          DatabaseQueries::createOverwriteFeed(database,
+                                               new_feed,
+                                               target_root_node->getParentServiceRoot()->accountId(),
+                                               target_parent->id());
+          requestItemReassignment(new_feed, target_parent);
+        }
+        catch (const ApplicationException& ex) {
+          qCriticalNN << LOGSEC_CORE
+                      << "Cannot import feed:"
+                      << QUOTE_W_SPACE_DOT(ex.message());
+          some_feed_category_error = true;
+        }
       }
     }
   }
 
   if (some_feed_category_error) {
-    output_message = tr("Import successful, but some feeds/categories were not imported due to error.");
+    output_message = tr("Some feeds/categories were not imported due to error, check debug log for more details.");
   }
   else {
     output_message = tr("Import was completely successful.");

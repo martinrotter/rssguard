@@ -5,8 +5,9 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "core/feedsmodel.h"
 #include "core/messagesmodel.h"
-#include "miscellaneous/application.h"
 #include "database/databasequeries.h"
+#include "exceptions/applicationexception.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
@@ -281,7 +282,12 @@ ServiceRoot::LabelOperation ServiceRoot::supportedLabelOperations() const {
 void ServiceRoot::saveAccountDataToDatabase() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  DatabaseQueries::createOverwriteAccount(database, this);
+  try {
+    DatabaseQueries::createOverwriteAccount(database, this);
+  }
+  catch (const ApplicationException& ex) {
+    qFatal("Account was not saved into database: '%s'.", qPrintable(ex.message()));
+  }
 }
 
 QVariantHash ServiceRoot::customDatabaseData() const {
