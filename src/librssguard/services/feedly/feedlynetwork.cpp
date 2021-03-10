@@ -238,6 +238,7 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
     message.m_title = entry_obj["title"].toString();
     message.m_author = entry_obj["author"].toString();
     message.m_contents = entry_obj["content"].toObject()["content"].toString();
+    message.m_rawContents = QJsonDocument(entry_obj).toJson(QJsonDocument::JsonFormat::Compact);
 
     if (message.m_contents.isEmpty()) {
       message.m_contents = entry_obj["summary"].toObject()["content"].toString();

@@ -7,8 +7,10 @@
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
+#include "services/standard/definitions.h"
 
 #include <QDomDocument>
+#include <QTextStream>
 
 RssParser::RssParser(const QString& data) : FeedParser(data) {}
 
@@ -81,6 +83,14 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
   else {
     new_message.m_enclosures.append(mrssGetEnclosures(msg_element));
   }
+
+  QString raw_contents;
+  QTextStream str(&raw_contents);
+
+  str.setCodec(DEFAULT_FEED_ENCODING);
+
+  msg_element.save(str, 0, QDomNode::EncodingPolicy::EncodingFromTextStream);
+  new_message.m_rawContents = raw_contents;
 
   new_message.m_author = msg_element.namedItem(QSL("author")).toElement().text();
 

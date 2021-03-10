@@ -2,12 +2,12 @@
 
 #include "services/gmail/gmailnetworkfactory.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 #include "network-web/oauth2service.h"
@@ -397,6 +397,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   }
 
   msg.m_isRead = true;
+  msg.m_rawContents = QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact);
 
   // Assign correct main labels/states.
   for (const QVariant& label : json["labelIds"].toArray().toVariantList()) {

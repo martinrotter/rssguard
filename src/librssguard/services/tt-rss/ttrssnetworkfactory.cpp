@@ -767,6 +767,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
     message.m_isRead = !mapped["unread"].toBool();
     message.m_isImportant = mapped["marked"].toBool();
     message.m_contents = mapped["content"].toString();
+    message.m_rawContents = QJsonDocument(mapped).toJson(QJsonDocument::JsonFormat::Compact);
 
     for (const QJsonValue& lbl_val : mapped["labels"].toArray()) {
       QString lbl_custom_id = QString::number(lbl_val.toArray().at(0).toInt());

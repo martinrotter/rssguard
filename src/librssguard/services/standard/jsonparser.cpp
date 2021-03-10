@@ -26,6 +26,7 @@ QList<Message> JsonParser::messages() const {
     msg.m_title = msg_obj["title"].toString();
     msg.m_url = msg_obj["url"].toString();
     msg.m_contents = msg_obj.contains("content_html") ? msg_obj["content_html"].toString() : msg_obj["content_text"].toString();
+    msg.m_rawContents = QJsonDocument(msg_obj).toJson(QJsonDocument::JsonFormat::Compact);
 
     msg.m_created = TextFactory::parseDateTime(msg_obj.contains("date_modified")
                                                ? msg_obj["date_modified"].toString()

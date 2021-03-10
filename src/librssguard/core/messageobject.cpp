@@ -151,6 +151,14 @@ void MessageObject::setContents(const QString& contents) {
   m_message->m_contents = contents;
 }
 
+QString MessageObject::rawContents() const {
+  return m_message->m_rawContents;
+}
+
+void MessageObject::setRawContents(const QString& raw_contents) {
+  m_message->m_rawContents = raw_contents;
+}
+
 QDateTime MessageObject::created() const {
   return m_message->m_created;
 }

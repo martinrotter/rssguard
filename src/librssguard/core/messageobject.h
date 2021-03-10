@@ -18,6 +18,7 @@ class MessageObject : public QObject {
   Q_PROPERTY(QString url READ url WRITE setUrl)
   Q_PROPERTY(QString author READ author WRITE setAuthor)
   Q_PROPERTY(QString contents READ contents WRITE setContents)
+  Q_PROPERTY(QString rawContents READ rawContents WRITE setRawContents)
   Q_PROPERTY(QDateTime created READ created WRITE setCreated)
   Q_PROPERTY(double score READ score WRITE setScore)
   Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
@@ -100,6 +101,9 @@ class MessageObject : public QObject {
 
     QString contents() const;
     void setContents(const QString& contents);
+
+    QString rawContents() const;
+    void setRawContents(const QString& raw_contents);
 
     QDateTime created() const;
     void setCreated(const QDateTime& created);

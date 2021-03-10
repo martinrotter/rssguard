@@ -582,6 +582,7 @@ QList<Message>OwnCloudGetMessagesResponse::messages() const {
     msg.m_createdFromFeed = true;
     msg.m_customId = message_map["id"].toVariant().toString();
     msg.m_customHash = message_map["guidHash"].toString();
+    msg.m_rawContents = QJsonDocument(message_map).toJson(QJsonDocument::JsonFormat::Compact);
 
     QString enclosure_link = message_map["enclosureLink"].toString();
 

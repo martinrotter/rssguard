@@ -50,14 +50,15 @@ Here is the reference of methods and properties of some types available in your 
 | `String url` | URL of the message. |
 | `String author` | Author of the message. |
 | `String contents` | Contents of the message. |
+| `String rawContents` | This is RAW contents of the message as it was obtained from remote service/feed. You can expect raw `XML` or `JSON` element data here. Note that this attribute has some value only if `alreadyStoredInDb` returns `false`. In other words, this attribute is not persistently stored inside RSS Guard's DB. |
 | `Number score` | Arbitrary number in range <0.0, 100.0>. You can use this number to sort messages in a custom fashion as this attribute also has its own column in messages list. |
 | `Date created` | Date/time of the message. |
 | `Boolean isRead` | Is message read? |
 | `Boolean isImportant` | Is message important? |
-| `Boolean isDeleted` | Is message placed in recycle bin? Available in RSS Guard 3.8.4+. |
+| `Boolean isDeleted` | Is message placed in recycle bin? |
 | `Boolean isDuplicateWithAttribute(DuplicationAttributeCheck)` | Allows you to test if this particular message is already stored in RSS Guard's DB. |
-| `Boolean assignLabel(String)` | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. Available in RSS Guard 3.8.1+. |
-| `Boolean deassignLabel(String)` | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. Available in RSS Guard 3.8.1+. |
+| `Boolean assignLabel(String)` | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. |
+| `Boolean deassignLabel(String)` | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. |
 | `Boolean alreadyStoredInDb` | `READ-ONLY` Returns true if this message is already stored in DB. This function is the way to check if the filter is being run automatically for newly downloaded messages or manually for already existing messages.
 
 ### `Label` class
@@ -105,6 +106,42 @@ function filterMessage() {
   msg.title = msg.title.replace("dogs", "cats");
   return MessageObject.Accept;
 }
+```
+
+Dump RAW data of each message to RSS Guard's [debug output](Documentation.md#generating-debug-log-file).
+```js
+function filterMessage() {
+  console.log(msg.rawContents);
+  return MessageObject.Accept;
+}
+```
+The above script produces this kind of debug output when running for Tiny Tiny RSS.
+```
+...
+...
+time="    34.360" type="debug" -> feed-downloader: Hooking message took 4 microseconds.
+time="    34.361" type="debug" -> {"always_display_attachments":false,"attachments":[],"author":"Aleš Kapica","comments_count":0,"comments_link":"","content":"<p>\nNaposledy jsem psal o čuňačení v MediaWiki asi před půl rokem, kdy jsem chtěl upozornit na to, že jsem přepracoval svoji původní šablonu Images tak, aby bylo možné používat výřezy z obrázků a stránek generovaných z DjVu a PDF dokumentů. Blogpost nebyl nijak extra hodnocen, takže mě vcelku nepřekvapuje, jak se do hlavní vývojové větve MediaWiki dostávají čím dál větší prasečiny.\n</p>","feed_id":"5903","feed_title":"abclinuxu - blogy","flavor_image":"","flavor_stream":"","guid":"{\"ver\":2,\"uid\":\"52\",\"hash\":\"SHA1:5b49e4d8f612984889ba25e7834e80604c795ff8\"}","id":6958843,"is_updated":false,"labels":[],"lang":"","link":"http://www.abclinuxu.cz/blog/kenyho_stesky/2021/1/cunacime-v-mediawiki-responzivni-obsah-ii","marked":false,"note":null,"published":false,"score":0,"tags":[""],"title":"Čuňačíme v MediaWiki - responzivní obsah II.","unread":true,"updated":1610044674}
+time="    34.361" type="debug" -> feed-downloader: Running filter script, it took 348 microseconds.
+time="    34.361" type="debug" -> feed-downloader: Hooking message took 4 microseconds.
+time="    34.361" type="debug" -> {"always_display_attachments":false,"attachments":[],"author":"kol-ouch","comments_count":0,"comments_link":"","content":"Ahoj, 1. 6. se blíží, tak začínám řešit co s bambilionem fotek na google photos. \n<p class=\"separator\"></p>\nZa sebe můžu říct, že gp mi vyhovují - ne snad úplně tím, že jsou zadarmo, ale hlavně způsobem práce s fotkami, možnostmi vyhledávání v nich podle obsahu, vykopírování textu z nich, provázaností s mapami, recenzemi, možnostmi sdílení, automatickým seskupováním a podobně.","feed_id":"5903","feed_title":"abclinuxu - blogy","flavor_image":"","flavor_stream":"","guid":"{\"ver\":2,\"uid\":\"52\",\"hash\":\"SHA1:1277107408b159882b95ca7151a0ec0160a3971a\"}","id":6939327,"is_updated":false,"labels":[],"lang":"","link":"http://www.abclinuxu.cz/blog/Co_to_je/2021/1/kam-s-fotkama","marked":false,"note":null,"published":false,"score":0,"tags":[""],"title":"Kam s fotkama?","unread":true,"updated":1609750800}
+...
+...
+```
+
+```
+...
+...
+For RSS 2.0 message, the result might look like this.
+time="     3.568" type="debug" -> feed-downloader: Hooking message took 6 microseconds.
+time="     3.568" type="debug" -> <item>
+<title><![CDATA[Man Utd's Cavani 'not comfortable' in England, says father]]></title>
+<description><![CDATA[Manchester United striker Edinson Cavani "does not feel comfortable" and could move back to his native South America, his father said.]]></description>
+<link>https://www.bbc.co.uk/sport/football/56341983</link>
+<guid isPermaLink="true">https://www.bbc.co.uk/sport/football/56341983</guid>
+<pubDate>Tue, 09 Mar 2021 23:46:03 GMT</pubDate>
+</item>
+
+time="     3.568" type="debug" -> feed-downloader: Running filter script, it took 416 microseconds.
 ```
 
 Write details of available labels and assign the first label to the message.

@@ -3,11 +3,11 @@
 #include "services/inoreader/inoreadernetworkfactory.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "network-web/networkfactory.h"
 #include "network-web/oauth2service.h"
 #include "network-web/silentnetworkaccessmanager.h"
@@ -364,6 +364,7 @@ QList<Message> InoreaderNetworkFactory::decodeMessages(ServiceRoot* root, const 
     }
 
     message.m_contents = message_obj["summary"].toObject()["content"].toString();
+    message.m_rawContents = QJsonDocument(message_obj).toJson(QJsonDocument::JsonFormat::Compact);
     message.m_feedId = stream_id;
 
     messages.append(message);

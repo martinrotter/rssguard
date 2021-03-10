@@ -5,6 +5,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
+#include "services/standard/definitions.h"
 
 #include "exceptions/applicationexception.h"
 
@@ -63,6 +64,14 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime cur
   new_message.m_title = qApp->web()->unescapeHtml(qApp->web()->stripTags(title));
   new_message.m_contents = summary;
   new_message.m_author = qApp->web()->unescapeHtml(messageAuthor(msg_element));
+
+  QString raw_contents;
+  QTextStream str(&raw_contents);
+
+  str.setCodec(DEFAULT_FEED_ENCODING);
+
+  msg_element.save(str, 0, QDomNode::EncodingPolicy::EncodingFromTextStream);
+  new_message.m_rawContents = raw_contents;
 
   QString updated = textsFromPath(msg_element, m_atomNamespace, QSL("updated"), true).join(QSL(", "));
 

@@ -5,6 +5,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
+#include "services/standard/definitions.h"
 
 #include <QDomDocument>
 
@@ -47,6 +48,14 @@ QList<Message> RdfParser::parseXmlData(const QString& data) {
       new_message.m_title = qApp->web()->unescapeHtml(qApp->web()->stripTags(elem_title));
       new_message.m_contents = elem_description;
     }
+
+    QString raw_contents;
+    QTextStream str(&raw_contents);
+
+    str.setCodec(DEFAULT_FEED_ENCODING);
+
+    message_item.save(str, 0, QDomNode::EncodingPolicy::EncodingFromTextStream);
+    new_message.m_rawContents = raw_contents;
 
     // Deal with link and author.
     new_message.m_url = message_item.namedItem(QSL("link")).toElement().text();

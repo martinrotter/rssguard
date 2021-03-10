@@ -2,8 +2,8 @@
 
 #include "services/tt-rss/ttrssserviceroot.h"
 
-#include "miscellaneous/application.h"
 #include "database/databasequeries.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
@@ -220,7 +220,7 @@ QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bo
     int skip = 0;
 
     do {
-      TtRssGetHeadlinesResponse headlines = network()->getHeadlines(customId().toInt(), limit, skip,
+      TtRssGetHeadlinesResponse headlines = network()->getHeadlines(feed->customNumericId(), limit, skip,
                                                                     true, true, false,
                                                                     network()->downloadOnlyUnreadMessages(),
                                                                     networkProxy());
@@ -232,7 +232,7 @@ QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bo
         continue;
       }
       else {
-        QList<Message> new_messages = headlines.messages(getParentServiceRoot());
+        QList<Message> new_messages = headlines.messages(this);
 
         messages << new_messages;
         newly_added_messages = new_messages.size();

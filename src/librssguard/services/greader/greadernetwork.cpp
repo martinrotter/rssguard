@@ -552,6 +552,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
     }
 
     message.m_contents = message_obj["summary"].toObject()["content"].toString();
+    message.m_rawContents = QJsonDocument(message_obj).toJson(QJsonDocument::JsonFormat::Compact);
     message.m_feedId = stream_id;
 
     messages.append(message);
