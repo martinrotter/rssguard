@@ -215,7 +215,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
               QString feed_type = child_element.attribute(QSL("version"), DEFAULT_FEED_TYPE).toUpper();
               QString feed_description = child_element.attribute(QSL("description"));
               QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
-              QString source_type = child_element.attribute(QSL("rssguard:xmlUrlType"));
+              StandardFeed::SourceType source_type = StandardFeed::SourceType(child_element.attribute(QSL("rssguard:xmlUrlType")).toInt());
               QString post_process = child_element.attribute(QSL("rssguard:postProcess"));
               auto* new_feed = new StandardFeed(active_model_item);
 
@@ -224,6 +224,8 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
               new_feed->setEncoding(feed_encoding);
               new_feed->setSource(feed_url);
               new_feed->setCreationDate(QDateTime::currentDateTime());
+              new_feed->setSourceType(source_type);
+              new_feed->setPostProcessScript(post_process);
 
               if (!feed_icon.isNull()) {
                 new_feed->setIcon(feed_icon);
