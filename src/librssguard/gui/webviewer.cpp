@@ -14,6 +14,7 @@
 #include "network-web/webpage.h"
 
 #include <QOpenGLWidget>
+#include <QTimer>
 #include <QWebEngineContextMenuData>
 #include <QWheelEvent>
 
@@ -163,6 +164,12 @@ void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
     // Add option to open link in external viewe
     menu->addAction(qApp->icons()->fromTheme(QSL("")), tr("Open link in external browser"), [menu_data]() {
       qApp->web()->openUrlInExternalBrowser(menu_data.linkUrl().toString());
+
+      if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool()) {
+        QTimer::singleShot(1000, qApp, []() {
+          qApp->mainForm()->display();
+        });
+      }
     });
   }
 
