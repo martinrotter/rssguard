@@ -1,4 +1,4 @@
-# Obtains Wikipedia's "In the news" today's articles.
+# Obtains producthunt's articles.
 # Sample input file whose contents must be provided as stdin: "https://www.producthunt.com/topics/XXXX"
 
 import json
