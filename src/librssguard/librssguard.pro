@@ -35,6 +35,7 @@ mac|os2|win32 {
 HEADERS += core/feeddownloader.h \
            core/feedsmodel.h \
            core/feedsproxymodel.h \
+           core/filterutils.h \
            core/message.h \
            core/messagefilter.h \
            core/messageobject.h \
@@ -217,6 +218,7 @@ HEADERS += core/feeddownloader.h \
 SOURCES += core/feeddownloader.cpp \
            core/feedsmodel.cpp \
            core/feedsproxymodel.cpp \
+           core/filterutils.cpp \
            core/message.cpp \
            core/messagefilter.cpp \
            core/messageobject.cpp \

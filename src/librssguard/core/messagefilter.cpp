@@ -2,6 +2,7 @@
 
 #include "core/messagefilter.h"
 
+#include "core/filterutils.h"
 #include "core/message.h"
 #include "exceptions/filteringexception.h"
 #include "miscellaneous/application.h"
@@ -52,15 +53,21 @@ void MessageFilter::setScript(const QString& script) {
 
 void MessageFilter::initializeFilteringEngine(QJSEngine& engine, MessageObject* message_wrapper) {
   engine.installExtensions(QJSEngine::Extension::ConsoleExtension);
-  engine.globalObject().setProperty("MSG_ACCEPT", int(MessageObject::FilteringAction::Accept));
-  engine.globalObject().setProperty("MSG_IGNORE", int(MessageObject::FilteringAction::Ignore));
+  engine.globalObject().setProperty(QSL("MSG_ACCEPT"), int(MessageObject::FilteringAction::Accept));
+  engine.globalObject().setProperty(QSL("MSG_IGNORE"), int(MessageObject::FilteringAction::Ignore));
 
   // Register the wrapper.
   auto js_object = engine.newQObject(message_wrapper);
   auto js_meta_object = engine.newQMetaObject(&message_wrapper->staticMetaObject);
 
-  engine.globalObject().setProperty("msg", js_object);
+  engine.globalObject().setProperty(QSL("msg"), js_object);
   engine.globalObject().setProperty(message_wrapper->staticMetaObject.className(), js_meta_object);
+
+  // Register "utils".
+  auto* utils = new FilterUtils(&engine);
+  auto js_utils = engine.newQObject(utils);
+
+  engine.globalObject().setProperty(QSL("utils"), js_utils);
 }
 
 void MessageFilter::setId(int id) {

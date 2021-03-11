@@ -24,6 +24,8 @@ Each message is accessible in your script via global variable named `msg` of typ
 
 You can use [special placeholders](Documentation.md#data-placeholder) within message filter.
 
+Also, there is a special variable named `utils`. This variable is of type `FilterUtils` and offers some useful utility [functions](#utils) for you to use in your filters.
+
 RSS Guard also offers list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. If you change assigned labels to the message, then the change will be eventually synchronized back to server if respective plugin supports it.
 
 Passed message also offers special function
@@ -71,20 +73,26 @@ Here is the reference of methods and properties of some types available in your 
 ### `FilteringAction` enum
 | Enumerant name | Integer value | Description |
 |---|---|---|
-| Accept | 1 | Message is accepted and will be added to DB or updated in DB. |
-| Ignore | 2 | Message is ignored and will be **NOT** added to DB or updated in DB, but is not purged from DB if already exists. |
-| Purge | 4 | Existing message is purged from the DB completely. |
+| `Accept` | 1 | Message is accepted and will be added to DB or updated in DB. |
+| `Ignore` | 2 | Message is ignored and will be **NOT** added to DB or updated in DB, but is not purged from DB if already exists. |
+| `Purge` | 4 | Existing message is purged from the DB completely. |
 
 Note that `MessageObject` attributes which can be synchronized back to service are synchronized even if you return `Purge` or `Ignore`. In other words: even if you filter ignores the message you can still tweak its properties which will get synchronized back to your server.
 
 ### `DuplicationAttributeCheck` enum
 | Enumerant name | Integer value | Description |
 |---|---|---|
-| SameTitle | 1 | Check if message has same title as some another messages. |
-| SameUrl | 2 | Check if message has same URL as some another messages. |
-| SameAuthor | 4 | Check if message has same author as some another messages. |
-| SameDateCreated | 8 | Check if message has same date of creation as some another messages. |
-| AllFeedsSameAccount | 16 | Perform the check across all feeds from your account, not just "current" feed. |
+| `SameTitle` | 1 | Check if message has same title as some another messages. |
+| `SameUrl` | 2 | Check if message has same URL as some another messages. |
+| `SameAuthor` | 4 | Check if message has same author as some another messages. |
+| `SameDateCreated` | 8 | Check if message has same date of creation as some another messages. |
+| `AllFeedsSameAccount` | 16 | Perform the check across all feeds from your account, not just "current" feed. |
+
+## Utils
+| Method | How to call | Description |
+|---|---|---|
+| `String hostname()` | `utils.hostname()` | Returns name of your PC. |
+| `String fromXmlToJson(String)` | `utils.fromXmlToJson('<h1>hello</h1>')` | Converts `XML` string into `JSON`. |
 
 ## Examples
 Accept only messages from "Bob" while also marking them important.
