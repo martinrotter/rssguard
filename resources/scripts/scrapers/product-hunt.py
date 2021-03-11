@@ -22,7 +22,7 @@ for post_content in soup.find_all("div", {"class" : regex_batch}):
     article_url = json.dumps("https://www.producthunt.com" + content.p.a["href"])
     article_title = json.dumps(content.h3.text)
     article_contents = json.dumps(content.p.text)
-    article_time = json.dumps(datetime.now().isoformat())
+    article_time = json.dumps(datetime.utcnow().isoformat())
     items.append("{{\"title\": {title}, \"content_html\": {html}, \"url\": {url}, \"date_published\": {date}}}".format(
       title=article_title,
       html=article_contents,
