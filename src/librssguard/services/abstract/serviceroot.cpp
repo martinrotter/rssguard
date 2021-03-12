@@ -240,7 +240,12 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
 }
 
 void ServiceRoot::storeNewFeedTree(RootItem* root) {
-  DatabaseQueries::storeAccountTree(qApp->database()->driver()->connection(metaObject()->className()), root, accountId());
+  try {
+    DatabaseQueries::storeAccountTree(qApp->database()->driver()->connection(metaObject()->className()), root, accountId());
+  }
+  catch (const ApplicationException& ex) {
+    qFatal("Cannot store account tree: '%s'.", qPrintable(ex.message()));
+  }
 }
 
 void ServiceRoot::removeLeftOverMessages() {

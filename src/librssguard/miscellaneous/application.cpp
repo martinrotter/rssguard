@@ -448,7 +448,7 @@ void Application::showGuiMessage(const QString& title, const QString& message,
   }
   else if (show_at_least_msgbox) {
     // Tray icon or OSD is not available, display simple text box.
-    MessageBox::show(parent, QMessageBox::Icon(message_type), title, message);
+    MessageBox::show(parent == nullptr ? mainFormWidget() : parent, QMessageBox::Icon(message_type), title, message);
   }
   else {
     qDebugNN << LOGSEC_CORE << "Silencing GUI message: '" << message << "'.";

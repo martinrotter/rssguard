@@ -6,6 +6,7 @@
 #include "services/abstract/gui/formfeeddetails.h"
 
 class StandardFeedDetails;
+class StandardServiceRoot;
 class AuthenticationDetails;
 class StandardFeed;
 

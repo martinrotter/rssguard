@@ -204,11 +204,21 @@ void StandardFeed::fetchMetadataForItself() {
 
     QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-    DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), parent()->id());
+    try {
+      DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), parent()->id());
+      serviceRoot()->itemChanged({ this });
+    }
+    catch (const ApplicationException& ex) {
+      qCriticalNN << LOGSEC_DB
+                  << "Cannot overwrite feed:"
+                  << QUOTE_W_SPACE_DOT(ex.message());
+      qApp->showGuiMessage(tr("Error"),
+                           tr("Cannot save data for feed, detailed information was logged via debug log."),
+                           QSystemTrayIcon::MessageIcon::Critical,
+                           nullptr,
+                           true);
+    }
 
-    // Notify the model about fact, that it needs to reload new information about
-    // this item, particularly the icon.
-    serviceRoot()->itemChanged({ this });
   }
   else {
     qApp->showGuiMessage(tr("Metadata not fetched"),
@@ -502,9 +512,22 @@ Qt::ItemFlags StandardFeed::additionalFlags() const {
 bool StandardFeed::performDragDropChange(RootItem* target_item) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), target_item->id());
-  serviceRoot()->requestItemReassignment(this, target_item);
-  return true;
+  try {
+    DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), target_item->id());
+    serviceRoot()->requestItemReassignment(this, target_item);
+    return true;
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_DB
+                << "Cannot overwrite feed:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+    qApp->showGuiMessage(tr("Error"),
+                         tr("Cannot move feed, detailed information was logged via debug log."),
+                         QSystemTrayIcon::MessageIcon::Critical,
+                         nullptr,
+                         true);
+    return false;
+  }
 }
 
 bool StandardFeed::removeItself() {

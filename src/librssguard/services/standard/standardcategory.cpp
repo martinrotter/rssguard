@@ -3,10 +3,11 @@
 #include "services/standard/standardcategory.h"
 
 #include "core/feedsmodel.h"
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
@@ -29,9 +30,22 @@ Qt::ItemFlags StandardCategory::additionalFlags() const {
 bool StandardCategory::performDragDropChange(RootItem* target_item) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  DatabaseQueries::createOverwriteCategory(database, this, getParentServiceRoot()->accountId(), target_item->id());
-  serviceRoot()->requestItemReassignment(this, target_item);
-  return true;
+  try {
+    DatabaseQueries::createOverwriteCategory(database, this, getParentServiceRoot()->accountId(), target_item->id());
+    serviceRoot()->requestItemReassignment(this, target_item);
+    return true;
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_DB
+                << "Cannot overwrite category:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+    qApp->showGuiMessage(tr("Error"),
+                         tr("Cannot save data for category, detailed information was logged via debug log."),
+                         QSystemTrayIcon::MessageIcon::Critical,
+                         nullptr,
+                         true);
+    return false;
+  }
 }
 
 bool StandardCategory::canBeEdited() const {

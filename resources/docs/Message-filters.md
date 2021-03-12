@@ -11,7 +11,6 @@ foreach (feed in feeds_to_update) do
 As you can see, RSS Guard processes all feeds scheduled for message downloading one by one; downloading new messages, feeding them to filtering system and then saving all approved messages to RSS Guard's database.
 
 ## Writing message filter
-
 Message filter consists of arbitrary JavaScript code which must provide function with prototype
 
 ```js
@@ -24,24 +23,23 @@ Each message is accessible in your script via global variable named `msg` of typ
 
 You can use [special placeholders](Documentation.md#data-placeholder) within message filter.
 
-Also, there is a special variable named `utils`. This variable is of type `FilterUtils` and offers some useful utility [functions](#utils) for you to use in your filters.
+Also, there is a special variable named `utils`. This variable is of type `FilterUtils` and offers some useful utility [functions](#utils-object) for you to use in your filters.
 
 RSS Guard also offers list of labels assigned to each message. You can therefore do actions in your filtering script based on which labels are assigned to the message. The property is called `assignedLabels` and is array of `Label` objects. If you change assigned labels to the message, then the change will be eventually synchronized back to server if respective plugin supports it.
 
 Passed message also offers special function
 ```js
-MessageObject.isDuplicateWithAttribute(DuplicationAttributeCheck)
+Boolean MessageObject.isDuplicateWithAttribute(DuplicationAttributeCheck)
 ```
 
 which allows you to perform runtime check for existence of the message in RSS Guard's database. The parameter is integer value from enumeration `DuplicationAttributeCheck` from this [file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) and specifies how exactly you want to determine if given message is "duplicate". Again, you can use direct integer values or enumerant names.
 
-For example if you want to check if there is already another message with same author in database, then you call `msg.isDuplicateWithAttribute(MessageObject.SameAuthor)`. Enumeration even supports "flags" approach, thus you can combine multiple checks via bitwise `OR` operation in single call, for example like this: `msg.isDuplicateWithAttribute(MessageObject.SameAuthor | MessageObject.SameUrl)`.
+For example if you want to check if there is already another message with same author in database, then you call `msg.isDuplicateWithAttribute(MessageObject.SameAuthor)`. Values of the enumeration can be combined via bitwise `|` operation in single call, for example like this: `msg.isDuplicateWithAttribute(MessageObject.SameAuthor | MessageObject.SameUrl)`.
 
 ## API reference
 Here is the reference of methods and properties of some types available in your filtering scipts.
 
 ### `MessageObject` class
-
 | Property/method | Description |
 |---|---|
 | `Array<Label> assignedLabels` | `READ-ONLY` List of labels assigned to the message. |
@@ -88,7 +86,7 @@ Note that `MessageObject` attributes which can be synchronized back to service a
 | `SameDateCreated` | 8 | Check if message has same date of creation as some another messages. |
 | `AllFeedsSameAccount` | 16 | Perform the check across all feeds from your account, not just "current" feed. |
 
-## Utils
+## `utils` object
 | Method | How to call | Description |
 |---|---|---|
 | `String hostname()` | `utils.hostname()` | Returns name of your PC. |
@@ -123,6 +121,7 @@ function filterMessage() {
   return MessageObject.Accept;
 }
 ```
+
 The above script produces this kind of debug output when running for Tiny Tiny RSS.
 ```
 ...
@@ -136,10 +135,10 @@ time="    34.361" type="debug" -> {"always_display_attachments":false,"attachmen
 ...
 ```
 
+For RSS 2.0 message, the result might look like this.
 ```
 ...
 ...
-For RSS 2.0 message, the result might look like this.
 time="     3.568" type="debug" -> feed-downloader: Hooking message took 6 microseconds.
 time="     3.568" type="debug" -> <item>
 <title><![CDATA[Man Utd's Cavani 'not comfortable' in England, says father]]></title>
@@ -155,8 +154,8 @@ time="     3.568" type="debug" -> feed-downloader: Running filter script, it too
 Write details of available labels and assign the first label to the message.
 ```js
 function filterMessage() {
-  console.log('Number of assigned labels ' + msg.assignedLabels.length);
-  console.log('Number of available labels ' + msg.availableLabels.length);
+  console.log('Number of assigned labels: ' + msg.assignedLabels.length);
+  console.log('Number of available labels: ' + msg.availableLabels.length);
 
   var i;
   for (i = 0; i < msg.availableLabels.length; i++) {
@@ -178,10 +177,10 @@ function filterMessage() {
 }
 ```
 
-Make sure that your receive only one message with particular URL and all other messages with same URL are subsequently ignored.
+Make sure that your receive only one message with particular URL across all your feeds (from same plugin) and all other messages with same URL are subsequently ignored.
 ```js
 function filterMessage() {
-  if (msg.isDuplicateWithAttribute(MessageObject.SameUrl)) {
+  if (msg.isDuplicateWithAttribute(MessageObject.SameUrl | MessageObject.AllFeedsSameAccount)) {
     return MessageObject.Ignore;
   }
   else {

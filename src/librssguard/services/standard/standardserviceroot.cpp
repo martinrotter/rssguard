@@ -379,6 +379,10 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
           }
           else {
             some_feed_category_error = true;
+
+            qCriticalNN << LOGSEC_CORE
+                        << "Cannot import category:"
+                        << QUOTE_W_SPACE_DOT(ex.message());
           }
         }
       }

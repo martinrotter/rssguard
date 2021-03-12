@@ -2,8 +2,10 @@
 
 #include "services/standard/gui/formstandardfeeddetails.h"
 
-#include "miscellaneous/application.h"
 #include "database/databasequeries.h"
+#include "exceptions/applicationexception.h"
+#include "gui/messagebox.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/category.h"
@@ -81,9 +83,14 @@ void FormStandardFeedDetails::apply() {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), parent->id());
-  m_serviceRoot->requestItemReassignment(m_feed, parent);
+  try {
+    DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), parent->id());
+  }
+  catch (const ApplicationException& ex) {
+    qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
+  }
 
+  m_serviceRoot->requestItemReassignment(m_feed, parent);
   accept();
 }
 

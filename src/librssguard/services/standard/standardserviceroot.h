@@ -17,47 +17,43 @@ class QMenu;
 class StandardServiceRoot : public ServiceRoot {
   Q_OBJECT
 
+  friend class FormStandardFeedDetails;
+  friend class FormStandardImportExport;
+
   public:
     explicit StandardServiceRoot(RootItem* parent = nullptr);
     virtual ~StandardServiceRoot();
 
-    // Start/stop root.
-    void start(bool freshly_activated);
-    void stop();
-
-    QString code() const;
-
-    bool canBeEdited() const;
-    bool editViaGui();
-    bool supportsFeedAdding() const;
-    bool supportsCategoryAdding() const;
-
-    Qt::ItemFlags additionalFlags() const;
-
+    virtual void start(bool freshly_activated);
+    virtual void stop();
+    virtual QString code() const;
+    virtual bool canBeEdited() const;
+    virtual bool editViaGui();
+    virtual bool supportsFeedAdding() const;
+    virtual bool supportsCategoryAdding() const;
+    virtual Qt::ItemFlags additionalFlags() const;
     virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining);
 
-    // Returns menu to be shown in "Services -> service" menu.
     QList<QAction*> serviceMenu();
-
-    // Returns context specific menu actions for given feed.
     QList<QAction*> getContextMenuForFeed(StandardFeed* feed);
+
+  public slots:
+    void addNewFeed(RootItem* selected_item, const QString& url = QString());
+    void addNewCategory(RootItem* selected_item);
+
+  private slots:
+    void importFeeds();
+    void exportFeeds();
+
+  private:
+    QString processFeedUrl(const QString& feed_url);
+    void checkArgumentForFeedAdding(const QString& argument);
+    void checkArgumentsForFeedAdding();
 
     // Takes structure residing under given root item and adds feeds/categories from
     // it to active structure.
     // NOTE: This is used for import/export of the model.
     bool mergeImportExportModel(FeedsImportExportModel* model, RootItem* target_root_node, QString& output_message);
-
-    QString processFeedUrl(const QString& feed_url);
-    void checkArgumentForFeedAdding(const QString& argument);
-
-  public slots:
-    void addNewFeed(RootItem* selected_item, const QString& url = QString());
-    void addNewCategory(RootItem* selected_item);
-    void importFeeds();
-    void exportFeeds();
-
-  private:
-    void checkArgumentsForFeedAdding();
 
     QPointer<StandardFeed> m_feedForMetadata = {};
     QList<QAction*> m_feedContextMenu = {};

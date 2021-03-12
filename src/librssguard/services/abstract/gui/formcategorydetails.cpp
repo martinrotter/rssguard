@@ -3,12 +3,13 @@
 #include "services/abstract/gui/formcategorydetails.h"
 
 #include "core/feedsmodel.h"
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "gui/baselineedit.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/rootitem.h"
@@ -93,7 +94,13 @@ void FormCategoryDetails::apply() {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  DatabaseQueries::createOverwriteCategory(database, m_category, m_serviceRoot->accountId(), parent->id());
+  try {
+    DatabaseQueries::createOverwriteCategory(database, m_category, m_serviceRoot->accountId(), parent->id());
+  }
+  catch (const ApplicationException& ex) {
+    qFatal("Cannot save category: '%s'.", qPrintable(ex.message()));
+  }
+
   m_serviceRoot->requestItemReassignment(m_category, parent);
   accept();
 }
