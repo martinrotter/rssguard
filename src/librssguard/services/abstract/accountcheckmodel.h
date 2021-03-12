@@ -17,13 +17,13 @@ class AccountCheckModel : public QAbstractItemModel {
     explicit AccountCheckModel(QObject* parent = nullptr);
     virtual ~AccountCheckModel() = default;
 
-    QModelIndex index(int row, int column, const QModelIndex& parent) const;
-    QModelIndex parent(const QModelIndex& child) const;
-    int rowCount(const QModelIndex& parent) const;
-    int columnCount(const QModelIndex& parent) const;
-    QVariant data(const QModelIndex& index, int role) const;
-    bool setData(const QModelIndex& index, const QVariant& value, int role);
-    Qt::ItemFlags flags(const QModelIndex& index) const;
+    virtual QModelIndex index(int row, int column, const QModelIndex& parent) const;
+    virtual QModelIndex parent(const QModelIndex& child) const;
+    virtual int rowCount(const QModelIndex& parent) const;
+    virtual int columnCount(const QModelIndex& parent) const;
+    virtual QVariant data(const QModelIndex& index, int role) const;
+    virtual bool setData(const QModelIndex& index, const QVariant& value, int role);
+    virtual Qt::ItemFlags flags(const QModelIndex& index) const;
 
     QList<RootItem*> checkedItems() const;
 
@@ -39,7 +39,6 @@ class AccountCheckModel : public QAbstractItemModel {
 
     // Root item manipulators.
     RootItem* rootItem() const;
-
     void setRootItem(RootItem* root_item, bool delete_previous_root = true, bool with_layout_change = false);
 
   public slots:

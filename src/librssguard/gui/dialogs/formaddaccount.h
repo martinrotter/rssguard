@@ -19,6 +19,7 @@ class FormAddAccount : public QDialog {
 
   private slots:
     void addSelectedAccount();
+    void showAccountDetails();
 
   private:
     ServiceEntryPoint* selectedEntryPoint() const;
@@ -27,7 +28,6 @@ class FormAddAccount : public QDialog {
 
     QScopedPointer<Ui::FormAddAccount> m_ui;
     FeedsModel* m_model;
-
     QList<ServiceEntryPoint*> m_entryPoints;
 };
 

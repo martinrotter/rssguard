@@ -48,14 +48,12 @@ class Feed : public RootItem {
     virtual int countOfUnreadMessages() const;
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
+    virtual bool canBeEdited() const;
+    virtual bool editViaGui();
+    virtual QVariant data(int column, int role) const;
 
     void setCountOfAllMessages(int count_all_messages);
     void setCountOfUnreadMessages(int count_unread_messages);
-
-    bool canBeEdited() const;
-    bool editViaGui();
-
-    QVariant data(int column, int role) const;
 
     int autoUpdateInitialInterval() const;
     void setAutoUpdateInitialInterval(int auto_update_interval);

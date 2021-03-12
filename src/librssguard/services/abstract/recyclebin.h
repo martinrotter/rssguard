@@ -12,18 +12,14 @@ class RecycleBin : public RootItem {
     explicit RecycleBin(RootItem* parent_item = nullptr);
     virtual ~RecycleBin() = default;
 
-    QString additionalTooltip() const;
-
-    QList<QAction*> contextMenuFeedsList();
-    QList<Message> undeletedMessages() const;
-
-    bool markAsReadUnread(ReadStatus status);
-    bool cleanMessages(bool clear_only_read);
-
-    int countOfUnreadMessages() const;
-    int countOfAllMessages() const;
-
-    void updateCounts(bool update_total_count);
+    virtual QString additionalTooltip() const;
+    virtual QList<QAction*> contextMenuFeedsList();
+    virtual QList<Message> undeletedMessages() const;
+    virtual bool markAsReadUnread(ReadStatus status);
+    virtual bool cleanMessages(bool clear_only_read);
+    virtual int countOfUnreadMessages() const;
+    virtual int countOfAllMessages() const;
+    virtual void updateCounts(bool update_total_count);
 
   public slots:
     virtual bool empty();

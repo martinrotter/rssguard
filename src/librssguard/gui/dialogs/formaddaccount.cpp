@@ -23,6 +23,7 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, Fe
 
   connect(m_ui->m_listEntryPoints, &QListWidget::itemDoubleClicked, this, &FormAddAccount::addSelectedAccount);
   connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormAddAccount::addSelectedAccount);
+  connect(m_ui->m_listEntryPoints, &QListWidget::currentRowChanged, this, &FormAddAccount::showAccountDetails);
 
   loadEntryPoints();
 }
@@ -41,6 +42,14 @@ void FormAddAccount::addSelectedAccount() {
   }
   else {
     qDebugNN << LOGSEC_CORE << "Cannot create new account.";
+  }
+}
+
+void FormAddAccount::showAccountDetails() {
+  ServiceEntryPoint* point = selectedEntryPoint();
+
+  if (point != nullptr) {
+    m_ui->m_lblDetails->setText(point->description());
   }
 }
 
