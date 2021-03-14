@@ -3,6 +3,7 @@
 #include "services/standard/standardfeedsimportexportmodel.h"
 
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/standard/definitions.h"
@@ -193,23 +194,31 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
           // This is FEED.
           // Add feed and end this iteration.
           QString feed_url = child_element.attribute(QSL("xmlUrl"));
+          bool add_offline_anyway = true;
 
           if (!feed_url.isEmpty()) {
-            StandardFeed* guessed = nullptr;
-            bool result = false;
+            try {
+              if (fetch_metadata_online) {
+                StandardFeed* guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
+                                                                feed_url,
+                                                                {}, {}, {},
+                                                                custom_proxy);
 
-            if (fetch_metadata_online &&
-                (guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
-                                                   feed_url,
-                                                   {}, &result, {}, {},
-                                                   custom_proxy)) != nullptr &&
-                result) {
-              // We should obtain fresh metadata from online feed source.
-              guessed->setSource(feed_url);
-              active_model_item->appendChild(guessed);
-              succeded++;
+                guessed->setSource(feed_url);
+                active_model_item->appendChild(guessed);
+                succeded++;
+                add_offline_anyway = false;
+              }
             }
-            else {
+            catch (const ApplicationException& ex) {
+              qCriticalNN << LOGSEC_CORE
+                          << "Cannot fetch medatada for feed:"
+                          << QUOTE_W_SPACE(feed_url)
+                          << "with error:"
+                          << QUOTE_W_SPACE_DOT(ex.message());
+            }
+
+            if (add_offline_anyway) {
               QString feed_title = child_element.attribute(QSL("text"));
               QString feed_encoding = child_element.attribute(QSL("encoding"), DEFAULT_FEED_ENCODING);
               QString feed_type = child_element.attribute(QSL("version"), DEFAULT_FEED_TYPE).toUpper();
@@ -246,7 +255,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
 
               active_model_item->appendChild(new_feed);
 
-              if (fetch_metadata_online && result) {
+              if (fetch_metadata_online) {
                 failed++;
               }
               else {
@@ -330,19 +339,29 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
 
   for (const QByteArray& url : urls) {
     if (!url.isEmpty()) {
-      StandardFeed* guessed = nullptr;
-      bool result = false;
+      bool add_offline_anyway = true;
 
-      if (fetch_metadata_online &&
-          (guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
-                                             url, {}, &result, {}, {},
-                                             custom_proxy)) != nullptr &&
-          result) {
-        guessed->setSource(url);
-        root_item->appendChild(guessed);
-        succeded++;
+      try {
+        if (fetch_metadata_online) {
+          StandardFeed* guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
+                                                          url, {}, {}, {},
+                                                          custom_proxy);
+
+          guessed->setSource(url);
+          root_item->appendChild(guessed);
+          succeded++;
+          add_offline_anyway = false;
+        }
       }
-      else {
+      catch (const ApplicationException& ex) {
+        qCriticalNN << LOGSEC_CORE
+                    << "Cannot fetch medatada for feed:"
+                    << QUOTE_W_SPACE(url)
+                    << "with error:"
+                    << QUOTE_W_SPACE_DOT(ex.message());
+      }
+
+      if (add_offline_anyway) {
         auto* feed = new StandardFeed();
 
         feed->setSource(url);
@@ -352,7 +371,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
         feed->setEncoding(DEFAULT_FEED_ENCODING);
         root_item->appendChild(feed);
 
-        if (fetch_metadata_online && result) {
+        if (fetch_metadata_online) {
           failed++;
         }
         else {

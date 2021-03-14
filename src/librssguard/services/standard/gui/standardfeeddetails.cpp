@@ -2,6 +2,9 @@
 
 #include "services/standard/gui/standardfeeddetails.h"
 
+#include "exceptions/applicationexception.h"
+#include "exceptions/networkexception.h"
+#include "exceptions/scriptexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
@@ -115,37 +118,36 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
 void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type, const QString& source,
                                         const QString& post_process_script, const QString& username,
                                         const QString& password, const QNetworkProxy& custom_proxy) {
-  bool result;
-  StandardFeed* metadata = StandardFeed::guessFeed(source_type,
-                                                   source,
-                                                   post_process_script,
-                                                   &result,
-                                                   username,
-                                                   password,
-                                                   custom_proxy);
+  try {
+    StandardFeed* metadata = StandardFeed::guessFeed(source_type,
+                                                     source,
+                                                     post_process_script,
+                                                     username,
+                                                     password,
+                                                     custom_proxy);
 
-  if (metadata != nullptr) {
     // Icon or whole feed was guessed.
     m_ui.m_btnIcon->setIcon(metadata->icon());
-
-    if (result) {
-      m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
-                                         tr("Icon fetched successfully."),
-                                         tr("Icon metadata fetched."));
-    }
-    else {
-      m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Warning,
-                                         tr("Icon metadata not fetched."),
-                                         tr("Icon metadata not fetched."));
-    }
+    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
+                                       tr("Icon fetched successfully."),
+                                       tr("Icon metadata fetched."));
 
     // Remove temporary feed object.
-    delete metadata;
+    metadata->deleteLater();
   }
-  else {
-    // No feed guessed, even no icon available.
+  catch (const ScriptException& ex) {
     m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr("No icon fetched."),
+                                       tr("Script failed: %1").arg(ex.message()),
+                                       tr("No icon fetched."));
+  }
+  catch (const NetworkException& ex) {
+    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
+                                       tr("Network error: %1").arg(ex.message()),
+                                       tr("No icon fetched."));
+  }
+  catch (const ApplicationException& ex) {
+    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
+                                       tr("Error: %1").arg(ex.message()),
                                        tr("No icon fetched."));
   }
 }
@@ -153,16 +155,14 @@ void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type, co
 void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type, const QString& source,
                                     const QString& post_process_script, const QString& username,
                                     const QString& password, const QNetworkProxy& custom_proxy) {
-  bool result;
-  StandardFeed* metadata = StandardFeed::guessFeed(source_type,
-                                                   source,
-                                                   post_process_script,
-                                                   &result,
-                                                   username,
-                                                   password,
-                                                   custom_proxy);
+  try {
+    StandardFeed* metadata = StandardFeed::guessFeed(source_type,
+                                                     source,
+                                                     post_process_script,
+                                                     username,
+                                                     password,
+                                                     custom_proxy);
 
-  if (metadata != nullptr) {
     // Icon or whole feed was guessed.
     m_ui.m_btnIcon->setIcon(metadata->icon());
     m_ui.m_txtTitle->lineEdit()->setText(metadata->title());
@@ -177,24 +177,26 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type, const 
       m_ui.m_cmbEncoding->setCurrentIndex(m_ui.m_cmbEncoding->findText(DEFAULT_FEED_ENCODING, Qt::MatchFixedString));
     }
 
-    if (result) {
-      m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
-                                         tr("All metadata fetched successfully."),
-                                         tr("Feed and icon metadata fetched."));
-    }
-    else {
-      m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Warning,
-                                         tr("Feed or icon metadata not fetched."),
-                                         tr("Feed or icon metadata not fetched."));
-    }
+    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
+                                       tr("All metadata fetched successfully."),
+                                       tr("Feed and icon metadata fetched."));
 
     // Remove temporary feed object.
-    delete metadata;
+    metadata->deleteLater();
   }
-  else {
-    // No feed guessed, even no icon available.
+  catch (const ScriptException& ex) {
     m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr("No metadata fetched."),
+                                       tr("Script failed: %1").arg(ex.message()),
+                                       tr("No metadata fetched."));
+  }
+  catch (const NetworkException& ex) {
+    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
+                                       tr("Network error: %1").arg(ex.message()),
+                                       tr("No metadata fetched."));
+  }
+  catch (const ApplicationException& ex) {
+    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
+                                       tr("Error: %1").arg(ex.message()),
                                        tr("No metadata fetched."));
   }
 }

@@ -87,7 +87,6 @@ class StandardFeed : public Feed {
     static StandardFeed* guessFeed(SourceType source_type,
                                    const QString& url,
                                    const QString& post_process_script,
-                                   bool* result,
                                    const QString& username = QString(),
                                    const QString& password = QString(),
                                    const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
