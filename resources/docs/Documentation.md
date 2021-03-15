@@ -20,6 +20,7 @@
     * [Feedly](#feedly)
     * [Labels](Labels.md)
     * [Downloading files](#downloading-files)
+    * [External tools](#external-tools)
     * [AdBlock](#adblock)
     * [GUI tweaking](#gui-tweaking)
 * [Miscellaneous (for advanced users)](#miscellaneous-for-advanced-users)
@@ -132,6 +133,7 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * "portable" mode support with clever auto-detection,
     * feed categorization,
     * feed authentication (BASIC),
+    * [external tools](#external-tools) - you can run your program with article URL,
     * handles tons of messages & feeds,
     * ability to backup/restore database or settings,
     * fully-featured recycle bin,
@@ -266,6 +268,12 @@ You can right click on any item in embedded web browser and hit `Save as` button
 <img src="images/downloader-view.png" width="80%">
 
 You can download up to 6 files simultaneously.
+
+## External tools
+RSS Guard allows you to define a set of custom tools which you can subsequently launch with article URL being passed as parameter to your tool's binary. The feature also supports passing direct links to various media source such as pictures or videos, when used with internal web browser's context menu.
+
+<img src="images/ext-tools-message.png" width="80%">
+<img src="images/ext-tools-web.png" width="80%">
 
 ## AdBlock
 [Web-based variant](#web-based-and-lite-app-variants) of RSS Guard offers ad-blocking functionality. AdBlock uses standard AdBlock-Plus-like scripts, thus allowing you to use EasyList etc. AdBlock supports all fundamental features of AdBlock-Plus format, including element hiding rules and site-wide blocking.
