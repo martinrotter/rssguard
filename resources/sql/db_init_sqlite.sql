@@ -22,7 +22,7 @@ CREATE TABLE Categories (
   parent_id       INTEGER     NOT NULL CHECK (parent_id >= -1), /* Root categories contain -1 here. */
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
-  date_created    INTEGER,
+  date_created    BIGINT,
   icon            BLOB,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
@@ -34,7 +34,7 @@ CREATE TABLE Feeds (
   id              $$,
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
-  date_created    INTEGER,
+  date_created    BIGINT,
   icon            BLOB,
   category        INTEGER     NOT NULL CHECK (category >= -1), /* Root feeds contain -1 here. */
   source          TEXT,
@@ -58,7 +58,7 @@ CREATE TABLE Messages (
   title           TEXT        NOT NULL CHECK (title != ''),
   url             TEXT,
   author          TEXT,
-  date_created    INTEGER     NOT NULL CHECK (date_created >= 0),
+  date_created    BIGINT      NOT NULL CHECK (date_created >= 0),
   contents        TEXT,
   enclosures      TEXT,
   score           REAL        NOT NULL DEFAULT 0.0 CHECK (score >= 0.0 AND score <= 100.0),
