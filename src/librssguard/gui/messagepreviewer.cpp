@@ -71,7 +71,7 @@ MessagePreviewer::MessagePreviewer(bool should_resize_to_fit, QWidget* parent)
   createConnections();
   m_actionSwitchImportance->setCheckable(true);
 
-  reloadFontSettings();
+  //reloadFontSettings();
   clear();
 }
 

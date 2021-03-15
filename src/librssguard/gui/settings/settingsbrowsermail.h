@@ -24,11 +24,15 @@ class SettingsBrowserMail : public SettingsPanel {
 
   private slots:
     void addExternalTool();
+    void editSelectedExternalTool();
     void deleteSelectedExternalTool();
     void changeDefaultBrowserArguments(int index);
     void selectBrowserExecutable();
     void changeDefaultEmailArguments(int index);
     void selectEmailExecutable();
+
+  private:
+    ExternalTool tweakExternalTool(const ExternalTool& tool) const;
 
   private:
     QList<ExternalTool> externalTools() const;

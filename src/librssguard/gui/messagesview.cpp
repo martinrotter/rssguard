@@ -224,7 +224,7 @@ void MessagesView::initializeContextMenu() {
   }
 
   if (menu_ext_tools->actions().isEmpty()) {
-    QAction* act_not_tools = new QAction("No external tools activated");
+    QAction* act_not_tools = new QAction(tr("No external tools activated"));
 
     act_not_tools->setEnabled(false);
     menu_ext_tools->addAction(act_not_tools);
@@ -598,10 +598,10 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
                            .replace(QRegularExpression("[\\t\\n]"), QString());
 
       if (!link.isEmpty()) {
-        if (!QProcess::startDetached(tool.executable(), QStringList() << tool.parameters() << link)) {
+        if (!tool.run(link)) {
           qApp->showGuiMessage(tr("Cannot run external tool"),
                                tr("External tool '%1' could not be started.").arg(tool.executable()),
-                               QSystemTrayIcon::Critical);
+                               QSystemTrayIcon::MessageIcon::Critical);
         }
       }
     }

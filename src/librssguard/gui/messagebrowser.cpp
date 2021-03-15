@@ -100,6 +100,8 @@ MessageBrowser::MessageBrowser(bool should_resize_to_fit, QWidget* parent)
 
   m_searchWidget->hide();
   installEventFilter(this);
+
+  reloadFontSettings();
 }
 
 void MessageBrowser::clear() {

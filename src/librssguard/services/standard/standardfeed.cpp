@@ -508,7 +508,7 @@ void StandardFeed::setEncoding(const QString& encoding) {
 }
 
 QStringList StandardFeed::prepareExecutionLine(const QString& execution_line) {
-  auto split_exec = execution_line.split('#',
+  auto split_exec = execution_line.split(EXECUTION_LINE_SEPARATOR,
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
                                          Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else

@@ -82,8 +82,8 @@
 #define GOOGLE_SEARCH_URL                     "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
 #define GOOGLE_SUGGEST_URL                    "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"
 
-#define EXTERNAL_TOOL_SEPARATOR               "###"
-#define EXTERNAL_TOOL_PARAM_SEPARATOR         "|||"
+#define EXECUTION_LINE_SEPARATOR              "#"
+#define EXTERNAL_TOOL_SEPARATOR               "|||"
 #define USER_DATA_PLACEHOLDER  "%data%"
 
 #define CLI_LOG_SHORT     "l"

@@ -2,13 +2,13 @@
 
 #include "gui/webbrowser.h"
 
+#include "database/databasequeries.h"
 #include "gui/discoverfeedsbutton.h"
 #include "gui/locationlineedit.h"
 #include "gui/messagebox.h"
 #include "gui/searchtextwidget.h"
 #include "gui/webviewer.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
@@ -118,9 +118,9 @@ void WebBrowser::reloadFontSettings() {
   fon.fromString(qApp->settings()->value(GROUP(Messages),
                                          SETTING(Messages::PreviewerFontStandard)).toString());
 
-  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::StandardFont, fon.family());
-  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::SerifFont, fon.family());
-  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::SansSerifFont, fon.family());
+  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont, fon.family());
+  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont, fon.family());
+  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont, fon.family());
   QWebEngineSettings::defaultSettings()->setFontSize(QWebEngineSettings::DefaultFontSize, fon.pointSize());
 }
 
