@@ -150,8 +150,8 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
   database.setPassword(qApp->settings()->password(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
 
   if (!database.open()) {
-    qFatal("Cannot open MySQL database: %s. Make sure your DB server is running and "
-           "start application again.", qPrintable(database.lastError().text()));
+    // NOTE: In this case throw exception and fallback SQL backend will be used.
+    throw ApplicationException(database.lastError().text());
   }
   else {
     QSqlQuery query_db(database);
@@ -279,8 +279,8 @@ QSqlDatabase MariaDbDriver::connection(const QString& connection_name, DatabaseD
     }
 
     if (!database.isOpen() && !database.open()) {
-      qFatal("MySQL database was NOT opened. Delivered error message: '%s'.",
-             qPrintable(database.lastError().text()));
+      // NOTE: In this case throw exception and fallback SQL backend will be used.
+      throw ApplicationException(database.lastError().text());
     }
     else {
       qDebugNN << LOGSEC_DB

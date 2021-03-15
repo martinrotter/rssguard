@@ -52,15 +52,14 @@ void DatabaseFactory::determineDriver() {
     }
     catch (const ApplicationException& ex) {
       qCriticalNN << LOGSEC_DB
-                  << "Failed to reach connection to DB source, will fallback to SQLite:"
+                  << "Failed to reach connection to DB source, let's fallback to SQLite:"
                   << QUOTE_W_SPACE_DOT(ex.message());
 
-      qApp->showGuiMessage(tr("Cannot connect to database"),
-                           tr("Connection to your database was not established with error '%1'. "
-                              "Falling back to SQLite.").arg(ex.message()),
-                           QSystemTrayIcon::MessageIcon::Critical,
-                           nullptr,
-                           true);
+      MessageBox::show(nullptr,
+                       QMessageBox::Icon::Critical,
+                       tr("Cannot connect to database"),
+                       tr("Connection to your database was not established with error: '%1'. "
+                          "Falling back to SQLite.").arg(ex.message()));
 
       m_dbDriver = boolinq::from(m_allDbDrivers).first([](DatabaseDriver* driv) {
         return driv->driverType() == DatabaseDriver::DriverType::SQLite;
