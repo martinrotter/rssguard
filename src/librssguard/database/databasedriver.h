@@ -32,6 +32,7 @@ class DatabaseDriver : public QObject {
     virtual QString qtDriverCode() const = 0;
     virtual DriverType driverType() const = 0;
     virtual QString autoIncrementPrimaryKey() const = 0;
+    virtual QString blob() const = 0;
     virtual bool vacuumDatabase() = 0;
     virtual bool saveDatabase() = 0;
     virtual void backupDatabase(const QString& backup_folder, const QString& backup_name) = 0;

@@ -298,3 +298,7 @@ QSqlDatabase MariaDbDriver::connection(const QString& connection_name, DatabaseD
 QString MariaDbDriver::autoIncrementPrimaryKey() const {
   return QSL("INTEGER AUTO_INCREMENT PRIMARY KEY");
 }
+
+QString MariaDbDriver::blob() const {
+  return QSL("BLOB");
+}

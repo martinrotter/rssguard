@@ -429,3 +429,7 @@ void SqliteDriver::backupDatabase(const QString& backup_folder, const QString& b
 QString SqliteDriver::autoIncrementPrimaryKey() const {
   return QSL("INTEGER PRIMARY KEY");
 }
+
+QString SqliteDriver::blob() const {
+  return QSL("BLOB");
+}

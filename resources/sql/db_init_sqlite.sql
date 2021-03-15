@@ -23,7 +23,7 @@ CREATE TABLE Categories (
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
   date_created    BIGINT,
-  icon            BLOB,
+  icon            °°,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
   
@@ -35,10 +35,10 @@ CREATE TABLE Feeds (
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
   date_created    BIGINT,
-  icon            BLOB,
+  icon            °°,
   category        INTEGER     NOT NULL CHECK (category >= -1), /* Root feeds contain -1 here. */
   source          TEXT,
-  update_type     INTEGER(1)  NOT NULL CHECK (update_type >= 0),
+  update_type     INTEGER     NOT NULL CHECK (update_type >= 0),
   update_interval INTEGER     NOT NULL DEFAULT 15 CHECK (update_interval >= 1),
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT        NOT NULL CHECK (custom_id != ''), /* Custom ID cannot be empty, it must contain either service-specific ID, or Feeds/id. */
@@ -50,10 +50,10 @@ CREATE TABLE Feeds (
 -- !
 CREATE TABLE Messages (
   id              $$,
-  is_read         INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),
-  is_important    INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),
-  is_deleted      INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),
-  is_pdeleted     INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
+  is_read         INTEGER     NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),
+  is_important    INTEGER     NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),
+  is_deleted      INTEGER     NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),
+  is_pdeleted     INTEGER     NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
   feed            TEXT        NOT NULL, /* Points to Feeds/custom_id. */
   title           TEXT        NOT NULL CHECK (title != ''),
   url             TEXT,

@@ -221,7 +221,7 @@ void SettingsBrowserMail::addExternalTool() {
     item->setData(0, Qt::ItemDataRole::UserRole, QVariant::fromValue(tool));
     m_ui->m_listTools->addTopLevelItem(item);
   }
-  catch (const ApplicationException& ex) {
+  catch (const ApplicationException&) {
     // NOTE: Tool adding cancelled.
   }
 }
@@ -269,7 +269,7 @@ void SettingsBrowserMail::editSelectedExternalTool() {
     m_ui->m_listTools->currentItem()->setText(1, ext_tool.parameters());
     m_ui->m_listTools->currentItem()->setData(0, Qt::ItemDataRole::UserRole, QVariant::fromValue(ext_tool));
   }
-  catch (const ApplicationException& ex) {
+  catch (const ApplicationException&) {
     // NOTE: Tool adding cancelled.
   }
 }

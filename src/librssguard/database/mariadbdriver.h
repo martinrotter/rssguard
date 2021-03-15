@@ -34,6 +34,7 @@ class MariaDbDriver : public DatabaseDriver {
     virtual QSqlDatabase connection(const QString& connection_name,
                                     DatabaseDriver::DesiredStorageType desired_type = DatabaseDriver::DesiredStorageType::FromSettings);
     virtual QString autoIncrementPrimaryKey() const;
+    virtual QString blob() const;
 
     QString interpretErrorCode(MariaDbError error_code) const;
 
