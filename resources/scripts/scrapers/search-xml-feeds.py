@@ -16,9 +16,12 @@ regexp_href = re.compile("href=\"([^\"]+)\"")
 
 for url in urls_lines:
   # Download HTML data.
-  url_response = urllib.request.urlopen(url)
-  html =  url_response.read().decode("utf-8")
-  
+  try:
+    url_response = urllib.request.urlopen(url)
+    html =  url_response.read().decode("utf-8")
+  except:
+    continue
+
   # Search for XML feeds with regexps.
   for link_tag in re.findall(regexp_link, html):
     for link_xml_feed in re.findall(regexp_href, link_tag):
