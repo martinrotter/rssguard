@@ -9,11 +9,11 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "core/messagefilter.h"
 #include "core/messagesforfiltersmodel.h"
+#include "database/databasequeries.h"
 #include "exceptions/filteringexception.h"
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
@@ -157,7 +157,9 @@ void FormMessageFiltersManager::removeSelectedFilter() {
 }
 
 void FormMessageFiltersManager::loadFilters() {
-  for (auto* fltr : m_reader->messageFilters()) {
+  auto flt = m_reader->messageFilters();
+
+  for (auto* fltr : qAsConst(flt)) {
     auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
 
     it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<MessageFilter*>(fltr));
@@ -344,7 +346,7 @@ void FormMessageFiltersManager::processCheckedFeeds() {
         }
 
         // Process changed labels.
-        for (Label* lbl : msg_backup.m_assignedLabels) {
+        for (Label* lbl : qAsConst(msg_backup.m_assignedLabels)) {
           if (!msg->m_assignedLabels.contains(lbl)) {
             // Label is not there anymore, it was deassigned.
             lbl->deassignFromMessage(*msg);
@@ -356,7 +358,7 @@ void FormMessageFiltersManager::processCheckedFeeds() {
           }
         }
 
-        for (Label* lbl : msg->m_assignedLabels) {
+        for (Label* lbl : qAsConst(msg->m_assignedLabels)) {
           if (!msg_backup.m_assignedLabels.contains(lbl)) {
             // Label is in new message, but is not in old message, it
             // was newly assigned.
@@ -428,8 +430,9 @@ void FormMessageFiltersManager::loadFilterFeedAssignments(MessageFilter* filter,
   }
 
   m_loadingFilter = true;
+  auto stf = account->getSubTreeFeeds();
 
-  for (auto* feed : account->getSubTreeFeeds()) {
+  for (auto* feed : qAsConst(stf)) {
     if (feed->messageFilters().contains(filter)) {
       m_feedsModel->sourceModel()->setItemChecked(feed, Qt::CheckState::Checked);
     }
@@ -503,10 +506,8 @@ void FormMessageFiltersManager::showFilter(MessageFilter* filter) {
 }
 
 void FormMessageFiltersManager::loadAccounts() {
-  for (auto* acc : m_accounts) {
-    m_ui.m_cmbAccounts->addItem(acc->icon(),
-                                acc->title(),
-                                QVariant::fromValue(acc));
+  for (auto* acc : qAsConst(m_accounts)) {
+    m_ui.m_cmbAccounts->addItem(acc->icon(), acc->title(), QVariant::fromValue(acc));
   }
 }
 

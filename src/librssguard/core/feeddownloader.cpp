@@ -226,7 +226,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
       }
 
       // Process changed labels.
-      for (Label* lbl : msg_backup.m_assignedLabels) {
+      for (Label* lbl : qAsConst(msg_backup.m_assignedLabels)) {
         if (!msg_orig->m_assignedLabels.contains(lbl)) {
           // Label is not there anymore, it was deassigned.
           lbl->deassignFromMessage(*msg_orig);
@@ -238,7 +238,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
         }
       }
 
-      for (Label* lbl : msg_orig->m_assignedLabels) {
+      for (Label* lbl : qAsConst(msg_orig->m_assignedLabels)) {
         if (!msg_backup.m_assignedLabels.contains(lbl)) {
           // Label is in new message, but is not in old message, it
           // was newly assigned.

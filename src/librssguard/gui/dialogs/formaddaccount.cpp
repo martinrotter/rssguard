@@ -58,7 +58,7 @@ ServiceEntryPoint* FormAddAccount::selectedEntryPoint() const {
 }
 
 void FormAddAccount::loadEntryPoints() {
-  for (const ServiceEntryPoint* entry_point : m_entryPoints) {
+  for (const ServiceEntryPoint* entry_point : qAsConst(m_entryPoints)) {
     QListWidgetItem* item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
 
     item->setToolTip(entry_point->description());

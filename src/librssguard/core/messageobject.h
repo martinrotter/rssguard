@@ -70,7 +70,7 @@ class MessageObject : public QObject {
     // Check if message is duplicate with another messages in DB.
     // Parameter "attribute_check" is DuplicationAttributeCheck enum
     // value casted to int.
-    Q_INVOKABLE bool isDuplicateWithAttribute(DuplicationAttributeCheck attribute_check) const;
+    Q_INVOKABLE bool isDuplicateWithAttribute(MessageObject::DuplicationAttributeCheck attribute_check) const;
 
     // Adds given label to list of assigned labels to this message.
     // Returns true if label was assigned now or if the message already has it assigned.

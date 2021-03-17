@@ -22,7 +22,7 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicationAttribute
   // Check database according to duplication attribute_check.
   QSqlQuery q(*m_db);
   QStringList where_clauses;
-  QList<QPair<QString, QVariant>> bind_values;
+  QVector<QPair<QString, QVariant>> bind_values;
 
   // Now we construct the query according to parameter.
   if ((attribute_check& DuplicationAttributeCheck::SameTitle) == DuplicationAttributeCheck::SameTitle) {

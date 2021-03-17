@@ -209,10 +209,11 @@ void MessagesView::initializeContextMenu() {
   // External tools.
   QFileIconProvider icon_provider;
   QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), m_contextMenu);
+  auto tools = ExternalTool::toolsFromSettings();
 
   menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 
-  for (const ExternalTool& tool : ExternalTool::toolsFromSettings()) {
+  for (const ExternalTool& tool : qAsConst(tools)) {
     QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
 
     act_tool->setIcon(icon_provider.icon(tool.executable()));
@@ -375,7 +376,9 @@ void MessagesView::switchShowUnreadOnly(bool set_new_value, bool show_unread_onl
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {
-  for (const QModelIndex& index : selectionModel()->selectedRows()) {
+  auto rws = selectionModel()->selectedRows();
+
+  for (const QModelIndex& index : qAsConst(rws)) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
                    .m_url
                    .replace(QRegularExpression("[\\t\\n]"), QString());
@@ -397,8 +400,9 @@ void MessagesView::openSelectedSourceMessagesExternally() {
 
 void MessagesView::openSelectedMessagesInternally() {
   QList<Message> messages;
+  auto rws = selectionModel()->selectedRows();
 
-  for (const QModelIndex& index : selectionModel()->selectedRows()) {
+  for (const QModelIndex& index : qAsConst(rws)) {
     messages << m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
   }
 
@@ -591,8 +595,9 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
 
   if (sndr != nullptr) {
     auto tool = sndr->data().value<ExternalTool>();
+    auto rws = selectionModel()->selectedRows();
 
-    for (const QModelIndex& index : selectionModel()->selectedRows()) {
+    for (const QModelIndex& index : qAsConst(rws)) {
       const QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
                            .m_url
                            .replace(QRegularExpression("[\\t\\n]"), QString());

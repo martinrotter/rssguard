@@ -717,7 +717,7 @@ void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSele
 
   if (!selectedIndexes().isEmpty() &&
       qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoExpandOnSelection)).toBool()) {
-    expand(selectedIndexes().first());
+    expand(selectedIndexes().constFirst());
   }
 }
 

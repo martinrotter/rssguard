@@ -231,8 +231,9 @@ void MessagePreviewer::updateLabels(bool only_clear) {
   if (m_root.data() != nullptr && !m_root.data()->getParentServiceRoot()->labelsNode()->labels().isEmpty()) {
     m_separator = m_toolBar->addSeparator();
     QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+    auto lbls = m_root.data()->getParentServiceRoot()->labelsNode()->labels();
 
-    for (auto* label : m_root.data()->getParentServiceRoot()->labelsNode()->labels()) {
+    for (auto* label : lbls) {
       LabelButton* btn_label = new LabelButton(this);
 
       btn_label->setLabel(label);

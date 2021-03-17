@@ -598,8 +598,6 @@ int DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, Label* lab
     return q.value(0).toInt();
   }
   else {
-    auto aa = q.lastError().text();
-
     if (ok != nullptr) {
       *ok = false;
     }
@@ -877,8 +875,6 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
     }
   }
   else {
-    auto aa = q.lastError().text();
-
     if (ok != nullptr) {
       *ok = false;
     }
@@ -1268,7 +1264,7 @@ bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, int account_id) {
           << QSL("DELETE FROM Labels WHERE account_id = :account_id;")
           << QSL("DELETE FROM Accounts WHERE id = :account_id;");
 
-  for (const QString& q : queries) {
+  for (const QString& q : qAsConst(queries)) {
     query.prepare(q);
     query.bindValue(QSL(":account_id"), account_id);
 
@@ -1483,8 +1479,6 @@ bool DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db, int 
   }
 
   if (!succ) {
-    auto xx = q.lastError().text();
-
     qWarningNN << LOGSEC_DB
                << "Removing of leftover label assignments failed: '"
                << q.lastError().text()
@@ -1509,11 +1503,10 @@ bool DatabaseQueries::purgeLabelsAndLabelAssignments(const QSqlDatabase& db, int
 }
 
 bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id) {
-  QSqlQuery query_category(db);
-  QSqlQuery query_feed(db);
-
   // Iterate all children.
-  for (RootItem* child : tree_root->getSubTree()) {
+  auto str = tree_root->getSubTree();
+
+  for (RootItem* child : qAsConst(str)) {
     if (child->kind() == RootItem::Kind::Category) {
       createOverwriteCategory(db, child->toCategory(), account_id, child->parent()->id());
     }
@@ -1522,7 +1515,9 @@ bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
     }
     else if (child->kind() == RootItem::Kind::Labels) {
       // Add all labels.
-      for (RootItem* lbl : child->childItems()) {
+      auto ch = child->childItems();
+
+      for (RootItem* lbl : qAsConst(ch)) {
         Label* label = lbl->toLabel();
 
         if (!createLabel(db, label, account_id)) {
@@ -1733,8 +1728,6 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":custom_data"), serialized_custom_data);
 
   if (!q.exec()) {
-    auto xx = q.lastError().text();
-
     throw ApplicationException(q.lastError().text());
   }
 }

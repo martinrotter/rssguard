@@ -3,8 +3,8 @@
 #include "gui/labelsmenu.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-#include "miscellaneous/application.h"
 #include "database/databasequeries.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QCheckBox>
@@ -22,7 +22,7 @@ LabelsMenu::LabelsMenu(const QList<Message>& messages, const QList<Label*>& labe
     addAction(act_not_labels);
   }
   else {
-    QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
+    QSqlDatabase db = qApp->database()->driver()->connection(QSL("LabelsMenu"));
 
     for (Label* label: boolinq::from(labels).orderBy([](const Label* label) {
       return label->title().toLower();
@@ -73,13 +73,13 @@ void LabelsMenu::changeLabelAssignment(Qt::CheckState state) {
   if (origin != nullptr) {
     if (state == Qt::CheckState::Checked) {
       // Assign this label to selected messages.
-      for (const auto& msg : m_messages) {
+      for (const auto& msg : qAsConst(m_messages)) {
         origin->label()->assignToMessage(msg);
       }
     }
     else if (state == Qt::CheckState::Unchecked) {
       // Remove label from selected messages.
-      for (const auto& msg : m_messages) {
+      for (const auto& msg : qAsConst(m_messages)) {
         origin->label()->deassignFromMessage(msg);
       }
     }
@@ -140,7 +140,7 @@ void LabelAction::updateActionForState() {
       break;
 
     case Qt::CheckState::PartiallyChecked:
-      highlight = QColor("#ff8c00");
+      highlight = QColor(100, 50, 0);
       break;
 
     case Qt::CheckState::Unchecked:

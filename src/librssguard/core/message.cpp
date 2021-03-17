@@ -20,13 +20,14 @@ Enclosure::Enclosure(QString url, QString mime) : m_url(std::move(url)), m_mimeT
 
 QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
   QList<Enclosure> enclosures;
-
-  for (const QString& single_enclosure : enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR,
+  auto enc = enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR,
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                               Qt::SplitBehaviorFlags::SkipEmptyParts)) {
+                                   Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                               QString::SplitBehavior::SkipEmptyParts)) {
+                                   QString::SplitBehavior::SkipEmptyParts);
 #endif
+
+  for (const QString& single_enclosure : qAsConst(enc)) {
     Enclosure enclosure;
 
     if (single_enclosure.contains(ECNLOSURES_INNER_SEPARATOR)) {

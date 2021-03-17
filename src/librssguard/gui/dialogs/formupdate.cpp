@@ -148,7 +148,7 @@ void FormUpdate::saveUpdateFile(const QByteArray& file_contents) {
 void FormUpdate::loadAvailableFiles() {
   m_ui.m_listFiles->clear();
 
-  for (const UpdateUrl& url : m_updateInfo.m_urls) {
+  for (const UpdateUrl& url : qAsConst(m_updateInfo.m_urls)) {
     if (SystemFactory::supportedUpdateFiles().match(url.m_name).hasMatch()) {
       QListWidgetItem* item = new QListWidgetItem(url.m_name + tr(" (size ") + url.m_size + QSL(")"));
 

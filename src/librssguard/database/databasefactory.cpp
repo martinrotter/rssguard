@@ -48,7 +48,7 @@ void DatabaseFactory::determineDriver() {
   if (m_dbDriver->driverType() != DatabaseDriver::DriverType::SQLite) {
     // Try to setup connection and fallback to SQLite.
     try {
-      m_dbDriver->connection(metaObject()->className());
+      m_dbDriver->connection(QSL("DatabaseFactory"));
     }
     catch (const ApplicationException& ex) {
       qCriticalNN << LOGSEC_DB
