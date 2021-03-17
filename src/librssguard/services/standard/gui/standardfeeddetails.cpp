@@ -78,6 +78,7 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   m_ui.m_txtSource->textEdit()->setFocus(Qt::FocusReason::TabFocusReason);
 
   // Set feed metadata fetch label.
+  m_ui.m_lblFetchMetadata->label()->setWordWrap(true);
   m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Information,
                                      tr("No metadata fetched so far."),
                                      tr("No metadata fetched so far."));

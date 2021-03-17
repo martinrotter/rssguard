@@ -204,6 +204,8 @@ Any errors in your script must be written to **error output**.
 
 Note that you must provide full execution line to your custom script, including interpreter binary path and name and all that must be written in special format `<interpreter>#<argument1>#<argument2>#....`. The `#` character is there to separate interpreter and individual arguments. I had to select some character as separator because simply using space ` ` is not that easy as it might sound, because sometimes space could be a part of an argument sometimes argument separator etc.
 
+Used script must return `0` as process exit code if everything went well, or non-zero exit code if some error happened.
+
 Interpreter must be provided in all cases, arguments do not have to be. For example `bash.exe#` is valid execution line, as well as `bash#-c#cat feed.atom`. Note the difference in interpreter's binary name suffix. Also be very carefully about arguments quoting. Some examples of valid and tested execution lines are:
  
 | Command | Explanation |

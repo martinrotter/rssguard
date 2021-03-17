@@ -547,7 +547,9 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QStrin
     process.closeWriteChannel();
   }
 
-  if (process.waitForFinished(run_timeout) && process.exitStatus() == QProcess::ExitStatus::NormalExit) {
+  if (process.waitForFinished(run_timeout) &&
+      process.exitStatus() == QProcess::ExitStatus::NormalExit &&
+      process.exitCode() == EXIT_SUCCESS) {
     auto raw_output = process.readAllStandardOutput();
     auto raw_error = process.readAllStandardError();
 
@@ -563,6 +565,10 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QStrin
     process.kill();
 
     auto raw_error = process.readAllStandardError().simplified();
+
+    if (raw_error.isEmpty()) {
+      raw_error = process.readAllStandardOutput().simplified();
+    }
 
     switch (process.error()) {
       case QProcess::ProcessError::Timedout:
