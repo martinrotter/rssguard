@@ -178,10 +178,11 @@ void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
   if (menu_data.mediaUrl().isValid() || menu_data.linkUrl().isValid()) {
     QFileIconProvider icon_provider;
     QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), menu);
+    auto tools = ExternalTool::toolsFromSettings();
 
     menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 
-    for (const ExternalTool& tool : ExternalTool::toolsFromSettings()) {
+    for (const ExternalTool& tool : qAsConst(tools)) {
       QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
 
       act_tool->setIcon(icon_provider.icon(tool.executable()));

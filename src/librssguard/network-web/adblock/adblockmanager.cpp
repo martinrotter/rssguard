@@ -178,7 +178,9 @@ void AdBlockManager::load(bool initial_load) {
       QDir().mkpath(storedListsPath());
     }
 
-    for (const QString& subscription_file_name : adblock_dir.entryList(QStringList("*.txt"), QDir::Files)) {
+    auto subs_files = adblock_dir.entryList({ QSL("*.txt") }, QDir::Filter::Files);
+
+    for (const QString& subscription_file_name : qAsConst(subs_files)) {
       if (subscription_file_name == ADBLOCK_CUSTOMLIST_NAME) {
         continue;
       }
@@ -216,7 +218,7 @@ void AdBlockManager::load(bool initial_load) {
     m_subscriptions.append(custom_list);
 
     // Load all subscriptions.
-    for (AdBlockSubscription* subscription : m_subscriptions) {
+    for (AdBlockSubscription* subscription : qAsConst(m_subscriptions)) {
       subscription->loadSubscription(m_disabledRules);
       connect(subscription, &AdBlockSubscription::subscriptionChanged, this, &AdBlockManager::updateMatcher);
     }
@@ -244,7 +246,7 @@ void AdBlockManager::updateMatcher() {
 }
 
 void AdBlockManager::updateAllSubscriptions() {
-  for (AdBlockSubscription* subscription : m_subscriptions) {
+  for (AdBlockSubscription* subscription : qAsConst(m_subscriptions)) {
     subscription->updateSubscription();
   }
 
@@ -256,7 +258,7 @@ void AdBlockManager::save() {
     return;
   }
 
-  for (AdBlockSubscription* subscription : m_subscriptions) {
+  for (AdBlockSubscription* subscription : qAsConst(m_subscriptions)) {
     subscription->saveSubscription();
   }
 

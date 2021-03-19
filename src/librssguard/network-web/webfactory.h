@@ -41,7 +41,6 @@ class WebFactory : public QObject {
     NetworkUrlInterceptor* urlIinterceptor();
 #endif
 
-  public slots:
     void updateProxy();
     bool openUrlInExternalBrowser(const QString& url) const;
     bool sendMessageViaEmail(const Message& message);

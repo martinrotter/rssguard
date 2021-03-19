@@ -171,17 +171,18 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
                                             start_of_body - start_of_headers).replace(QRegularExpression(QSL("[\\n\\r]+")),
                                                                                       QSL("\n"));
 
-    for (const QString& header_line : headers.split(QL1C('\n'),
+    auto header_lines = headers.split(QL1C('\n'),
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                    Qt::SplitBehaviorFlags::SkipEmptyParts)) {
+                                      Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                    QString::SplitBehavior::SkipEmptyParts)) {
+                                      QString::SplitBehavior::SkipEmptyParts);
 #endif
+
+    for (const QString& header_line : qAsConst(header_lines)) {
       int index_colon = header_line.indexOf(QL1C(':'));
 
       if (index_colon > 0) {
-        new_part.appendHeader(header_line.mid(0, index_colon),
-                              header_line.mid(index_colon + 2));
+        new_part.appendHeader(header_line.mid(0, index_colon), header_line.mid(index_colon + 2));
       }
     }
 

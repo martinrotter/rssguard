@@ -2,8 +2,8 @@
 
 #include "services/abstract/category.h"
 
-#include "miscellaneous/application.h"
 #include "database/databasequeries.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
@@ -20,8 +20,9 @@ Category::Category(const Category& other) : RootItem(other) {
 
 void Category::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
+  auto str = getSubTree();
 
-  for (RootItem* child : getSubTree()) {
+  for (RootItem* child : qAsConst(str)) {
     if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }

@@ -40,13 +40,14 @@ class ServiceRoot : public RootItem {
     virtual ~ServiceRoot();
 
     // These methods bellow are part of "interface".
+    RecycleBin* recycleBin() const;
+    ImportantNode* importantNode() const;
+    LabelsNode* labelsNode() const;
+
     virtual void updateCounts(bool including_total_count);
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
     virtual bool markAsReadUnread(ReadStatus status);
-    virtual RecycleBin* recycleBin() const;
-    virtual ImportantNode* importantNode() const;
-    virtual LabelsNode* labelsNode() const;
     virtual bool downloadAttachmentOnMyOwn(const QUrl& url) const;
     virtual QList<Message> undeletedMessages() const;
     virtual bool supportsFeedAdding() const;

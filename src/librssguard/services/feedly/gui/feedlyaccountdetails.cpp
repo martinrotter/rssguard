@@ -130,7 +130,9 @@ void FeedlyAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
   factory.setDeveloperAccessToken(m_ui.m_txtDeveloperAccessToken->lineEdit()->text());
 
   try {
-    m_ui.m_txtUsername->lineEdit()->setText(factory.profile(custom_proxy)["email"].toString());
+    auto prof = factory.profile(custom_proxy);
+
+    m_ui.m_txtUsername->lineEdit()->setText(prof["email"].toString());
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                     tr("Login was successful."),
                                     tr("Access granted."));

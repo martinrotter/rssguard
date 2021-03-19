@@ -97,7 +97,7 @@ void Feed::setCountOfAllMessages(int count_all_messages) {
 }
 
 void Feed::setCountOfUnreadMessages(int count_unread_messages) {
-  if (status() == Status::NewMessages && count_unread_messages < countOfUnreadMessages()) {
+  if (status() == Status::NewMessages && count_unread_messages < m_unreadCount) {
     setStatus(Status::Normal);
   }
 

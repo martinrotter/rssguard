@@ -22,7 +22,7 @@ class TextFactory {
 
     // Tries to parse input textual date/time representation.
     // Returns invalid date/time if processing fails.
-    // NOTE: This method tries to always return time in UTC+00:00.
+    // NOTE: This method tries to always return time in UTC.
     static QDateTime parseDateTime(const QString& date_time);
 
     // Converts 1970-epoch miliseconds to date/time.

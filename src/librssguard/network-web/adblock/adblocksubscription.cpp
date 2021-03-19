@@ -329,7 +329,7 @@ void AdBlockCustomList::saveSubscription() {
   textStream << "Url: " << url().toString() << QL1C('\n');
   textStream << "[Adblock Plus 1.1.1]" << QL1C('\n');
 
-  for (const AdBlockRule* rule : m_rules) {
+  for (const AdBlockRule* rule : qAsConst(m_rules)) {
     textStream << rule->filter() << QL1C('\n');
   }
 

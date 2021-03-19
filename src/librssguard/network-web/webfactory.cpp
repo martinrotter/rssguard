@@ -156,7 +156,7 @@ QString WebFactory::unescapeHtml(const QString& html) {
           }
           else {
             // Failed to convert to number, leave intact.
-            output.append(html.mid(pos, pos_end - pos + 1));
+            output.append(html.midRef(pos, pos_end - pos + 1));
           }
 
           pos = pos_end + 1;

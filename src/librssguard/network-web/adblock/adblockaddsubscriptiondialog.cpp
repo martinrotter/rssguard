@@ -28,16 +28,12 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
   : QDialog(parent), m_ui(new Ui::AdBlockAddSubscriptionDialog) {
   m_ui->setupUi(this);
   m_knownSubscriptions
-    << Subscription(QSL("EasyList"),
-                    QSL(ADBLOCK_EASYLIST_URL))
-    << Subscription(QSL("EasyPrivacy"),
-                  QSL("https://easylist.to/easylist/easyprivacy.txt"))
-    << Subscription(QSL("EasyPrivacy Tracking Protection List"),
-                  QSL("https://easylist-downloads.adblockplus.org/easyprivacy.tpl"))
-    << Subscription(QSL("Adblock Warning Removal List"),
-                  QSL("https://easylist-downloads.adblockplus.org/antiadblockfilters.txt"));
+    << Subscription(QSL("EasyList"), QSL(ADBLOCK_EASYLIST_URL))
+    << Subscription(QSL("EasyPrivacy"), QSL("https://easylist.to/easylist/easyprivacy.txt"))
+    << Subscription(QSL("EasyPrivacy Tracking Protection List"), QSL("https://easylist-downloads.adblockplus.org/easyprivacy.tpl"))
+    << Subscription(QSL("Adblock Warning Removal List"), QSL("https://easylist-downloads.adblockplus.org/antiadblockfilters.txt"));
 
-  for (const Subscription& subscription : m_knownSubscriptions) {
+  for (const Subscription& subscription : qAsConst(m_knownSubscriptions)) {
     m_ui->m_cmbPresets->addItem(subscription.m_title);
   }
 

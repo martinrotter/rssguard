@@ -231,7 +231,9 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
 
   continuation = json.object()["continuation"].toString();
 
-  for (const QJsonValue& entry : json.object()["items"].toArray()) {
+  auto items = json.object()["items"].toArray();
+
+  for (const QJsonValue& entry : qAsConst(items)) {
     const QJsonObject& entry_obj = entry.toObject();
     Message message;
 
@@ -255,7 +257,9 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
       message.m_url = entry_obj["canonical"].toObject()["href"].toString();
     }
 
-    for (const QJsonValue& enc : entry_obj["enclosure"].toArray()) {
+    auto enclosures = entry_obj["enclosure"].toArray();
+
+    for (const QJsonValue& enc : qAsConst(enclosures)) {
       const QJsonObject& enc_obj = enc.toObject();
       const QString& enc_href = enc_obj["href"].toString();
 
@@ -266,7 +270,9 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
       }
     }
 
-    for (const QJsonValue& tag : entry_obj["tags"].toArray()) {
+    auto tags = entry_obj["tags"].toArray();
+
+    for (const QJsonValue& tag : qAsConst(tags)) {
       const QJsonObject& tag_obj = tag.toObject();
       const QString& tag_id = tag_obj["id"].toString();
 
@@ -332,15 +338,18 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json, bool obtain_i
   QJsonDocument doc = QJsonDocument::fromJson(json);
   auto* parent = new RootItem();
   QList<QString> used_feeds;
+  auto coll = doc.array();
 
-  for (const QJsonValue& cat : doc.array()) {
+  for (const QJsonValue& cat : qAsConst(coll)) {
     QJsonObject cat_obj = cat.toObject();
     auto* category = new Category(parent);
 
     category->setTitle(cat_obj["label"].toString());
     category->setCustomId(cat_obj["id"].toString());
 
-    for (const QJsonValue& fee : cat["feeds"].toArray()) {
+    auto feeds = cat["feeds"].toArray();
+
+    for (const QJsonValue& fee : qAsConst(feeds)) {
       QJsonObject fee_obj = fee.toObject();
 
       if (used_feeds.contains(fee_obj["id"].toString())) {
@@ -446,8 +455,9 @@ QList<RootItem*> FeedlyNetwork::tags() {
 
   QJsonDocument json = QJsonDocument::fromJson(output);
   QList<RootItem*> lbls;
+  auto tags = json.array();
 
-  for (const QJsonValue& tag : json.array()) {
+  for (const QJsonValue& tag : qAsConst(tags)) {
     const QJsonObject& tag_obj = tag.toObject();
     QString name_id = tag_obj["id"].toString();
 

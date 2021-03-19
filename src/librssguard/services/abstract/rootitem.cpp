@@ -74,7 +74,7 @@ bool RootItem::deleteViaGui() {
 bool RootItem::markAsReadUnread(ReadStatus status) {
   bool result = true;
 
-  for (RootItem* child : m_childItems) {
+  for (RootItem* child : qAsConst(m_childItems)) {
     result &= child->markAsReadUnread(status);
   }
 
@@ -84,7 +84,7 @@ bool RootItem::markAsReadUnread(ReadStatus status) {
 QList<Message> RootItem::undeletedMessages() const {
   QList<Message> messages;
 
-  for (RootItem* child : m_childItems) {
+  for (RootItem* child : qAsConst(m_childItems)) {
     if (child->kind() != Kind::Bin && child->kind() != Kind::Labels && child->kind() != Kind::Label) {
       messages.append(child->undeletedMessages());
     }
@@ -96,7 +96,7 @@ QList<Message> RootItem::undeletedMessages() const {
 bool RootItem::cleanMessages(bool clear_only_read) {
   bool result = true;
 
-  for (RootItem* child : m_childItems) {
+  for (RootItem* child : qAsConst(m_childItems)) {
     if (child->kind() != RootItem::Kind::Bin) {
       result &= child->cleanMessages(clear_only_read);
     }
@@ -106,7 +106,7 @@ bool RootItem::cleanMessages(bool clear_only_read) {
 }
 
 void RootItem::updateCounts(bool including_total_count) {
-  for (RootItem* child : m_childItems) {
+  for (RootItem* child : qAsConst(m_childItems)) {
     child->updateCounts(including_total_count);
   }
 }

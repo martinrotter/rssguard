@@ -159,7 +159,9 @@ void AdBlockDialog::load() {
     return;
   }
 
-  for (AdBlockSubscription* subscription : m_manager->subscriptions()) {
+  auto subs = m_manager->subscriptions();
+
+  for (AdBlockSubscription* subscription : qAsConst(subs)) {
     auto* tree = new AdBlockTreeWidget(subscription, m_ui->m_tabSubscriptions);
 
     m_ui->m_tabSubscriptions->addTab(tree, subscription->title());

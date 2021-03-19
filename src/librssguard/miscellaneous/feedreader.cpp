@@ -8,9 +8,9 @@
 #include "core/feedsproxymodel.h"
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
+#include "database/databasequeries.h"
 #include "gui/dialogs/formmessagefiltersmanager.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/mutex.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
@@ -164,7 +164,7 @@ void FeedReader::loadSavedMessageFilters() {
   // all feeds.
   m_messageFilters = DatabaseQueries::getMessageFilters(qApp->database()->driver()->connection(metaObject()->className()));
 
-  for (auto* filter : m_messageFilters) {
+  for (auto* filter : qAsConst(m_messageFilters)) {
     filter->setParent(this);
   }
 }

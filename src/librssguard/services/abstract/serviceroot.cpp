@@ -120,8 +120,9 @@ void ServiceRoot::stop() {}
 
 void ServiceRoot::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
+  auto str = getSubTree();
 
-  for (RootItem* child : getSubTree()) {
+  for (RootItem* child : qAsConst(str)) {
     if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }
@@ -194,7 +195,9 @@ void ServiceRoot::removeOldAccountFromDatabase(bool including_messages) {
 }
 
 void ServiceRoot::cleanAllItemsFromModel() {
-  for (RootItem* top_level_item : childItems()) {
+  auto chi = childItems();
+
+  for (RootItem* top_level_item : qAsConst(chi)) {
     if (top_level_item->kind() != RootItem::Kind::Bin &&
         top_level_item->kind() != RootItem::Kind::Important &&
         top_level_item->kind() != RootItem::Kind::Labels) {
@@ -203,7 +206,9 @@ void ServiceRoot::cleanAllItemsFromModel() {
   }
 
   if (labelsNode() != nullptr) {
-    for (RootItem* lbl : labelsNode()->childItems()) {
+    auto lbl_chi = labelsNode()->childItems();
+
+    for (RootItem* lbl : qAsConst(lbl_chi)) {
       requestItemRemoval(lbl);
     }
   }
@@ -218,10 +223,8 @@ void ServiceRoot::appendCommonNodes() {
     appendChild(importantNode());
   }
 
-  if (labelsNode() != nullptr) {
-    if (!childItems().contains(labelsNode())) {
-      appendChild(labelsNode());
-    }
+  if (labelsNode() != nullptr && !childItems().contains(labelsNode())) {
+    appendChild(labelsNode());
   }
 }
 
@@ -338,10 +341,13 @@ void ServiceRoot::addNewCategory(RootItem* selected_item) {
 
 QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
   QMap<QString, QVariantMap> custom_data;
+  auto str = getSubTreeFeeds();
 
-  for (const Feed* feed : getSubTreeFeeds()) {
+  for (const Feed* feed : qAsConst(str)) {
     QVariantMap feed_custom_data;
 
+    // TODO: This could potentially call Feed::customDatabaseData() and append it
+    // to this map and also subsequently restore.
     feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInitialInterval());
     feed_custom_data.insert(QSL("auto_update_type"), int(feed->autoUpdateType()));
     feed_custom_data.insert(QSL("msg_filters"), QVariant::fromValue(feed->messageFilters()));
@@ -412,7 +418,9 @@ void ServiceRoot::syncIn() {
     removeLeftOverMessageFilterAssignments();
     removeLeftOverMessageLabelAssignments();
 
-    for (RootItem* top_level_item : new_tree->childItems()) {
+    auto chi = new_tree->childItems();
+
+    for (RootItem* top_level_item : qAsConst(chi)) {
       if (top_level_item->kind() != Kind::Labels) {
         top_level_item->setParent(nullptr);
         requestItemReassignment(top_level_item, this);
@@ -420,7 +428,9 @@ void ServiceRoot::syncIn() {
       else {
         // It seems that some labels got synced-in.
         if (labelsNode() != nullptr) {
-          for (RootItem* new_lbl : top_level_item->childItems()) {
+          auto lbl_chi = top_level_item->childItems();
+
+          for (RootItem* new_lbl : qAsConst(lbl_chi)) {
             new_lbl->setParent(nullptr);
             requestItemReassignment(new_lbl, labelsNode());
           }
@@ -464,7 +474,9 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
     switch (item->kind()) {
       case RootItem::Kind::Labels:
       case RootItem::Kind::Category: {
-        for (RootItem* child : item->childItems()) {
+        auto chi = item->childItems();
+
+        for (RootItem* child : qAsConst(chi)) {
           list.append(customIDSOfMessagesForItem(child));
         }
 
