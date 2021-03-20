@@ -464,7 +464,7 @@ QPair<QByteArray, QByteArray> GreaderNetwork::authHeader() const {
 }
 
 bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output) {
-  if (m_authSid.isEmpty()) {
+  if (m_authSid.isEmpty() && m_authAuth.isEmpty()) {
     auto login = clientLogin(proxy);
 
     if (output != nullptr) {
@@ -476,6 +476,9 @@ bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::Netw
                   << "Login failed with error:"
                   << QUOTE_W_SPACE_DOT(NetworkFactory::networkErrorText(login));
       return false;
+    }
+    else {
+      qDebugNN << LOGSEC_GREADER << "Login successful.";
     }
   }
 

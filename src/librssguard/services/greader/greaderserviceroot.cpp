@@ -2,9 +2,9 @@
 
 #include "services/greader/greaderserviceroot.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
@@ -49,7 +49,7 @@ QVariantHash GreaderServiceRoot::customDatabaseData() const {
 void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setService(GreaderServiceRoot::Service(data["service"].toInt()));
   m_network->setUsername(data["username"].toString());
-  TextFactory::decrypt(data["password"].toString());
+  m_network->setPassword(TextFactory::decrypt(data["password"].toString()));
   m_network->setBaseUrl(data["url"].toString());
   m_network->setBatchSize(data["batch_size"].toInt());
 }
@@ -183,6 +183,10 @@ void GreaderServiceRoot::updateTitleIcon() {
 
     case Service::Bazqux:
       setIcon(qApp->icons()->miscIcon(QSL("bazqux")));
+      break;
+
+    case Service::Reedah:
+      setIcon(qApp->icons()->miscIcon(QSL("reedah")));
       break;
 
     default:
