@@ -620,6 +620,13 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
                              "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id) > 0")
                      .arg(QString::number(accountId())));
   }
+  else if (item->kind() == RootItem::Kind::ServiceRoot) {
+    model->setFilter(
+      QString("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1").arg(
+        QString::number(accountId())));
+
+    qDebugNN << "Displaying messages from account:" << QUOTE_W_SPACE_DOT(accountId());
+  }
   else {
     QList<Feed*> children = item->getSubTreeFeeds();
     QString filter_clause = textualFeedIds(children).join(QSL(", "));
