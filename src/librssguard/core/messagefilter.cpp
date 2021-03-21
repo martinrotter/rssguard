@@ -52,9 +52,10 @@ void MessageFilter::setScript(const QString& script) {
 }
 
 void MessageFilter::initializeFilteringEngine(QJSEngine& engine, MessageObject* message_wrapper) {
-  engine.installExtensions(QJSEngine::Extension::ConsoleExtension);
+  engine.installExtensions(QJSEngine::Extension::AllExtensions);
   engine.globalObject().setProperty(QSL("MSG_ACCEPT"), int(MessageObject::FilteringAction::Accept));
   engine.globalObject().setProperty(QSL("MSG_IGNORE"), int(MessageObject::FilteringAction::Ignore));
+  engine.globalObject().setProperty(QSL("MSG_PURGE"), int(MessageObject::FilteringAction::Purge));
 
   // Register the wrapper.
   auto js_object = engine.newQObject(message_wrapper);

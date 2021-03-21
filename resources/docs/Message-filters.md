@@ -73,7 +73,7 @@ Here is the reference of methods and properties of some types available in your 
 |---|---|---|
 | `Accept` | 1 | Message is accepted and will be added to DB or updated in DB. |
 | `Ignore` | 2 | Message is ignored and will be **NOT** added to DB or updated in DB, but is not purged from DB if already exists. |
-| `Purge` | 4 | Existing message is purged from the DB completely. |
+| `Purge` | 4 | Existing message is purged from the DB completely. Behavior is the same as `Ignore` when there is new incoming message. |
 
 Note that `MessageObject` attributes which can be synchronized back to service are synchronized even if you return `Purge` or `Ignore`. In other words: even if you filter ignores the message you can still tweak its properties which will get synchronized back to your server.
 
