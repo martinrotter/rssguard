@@ -28,6 +28,7 @@ class GreaderAccountDetails : public QWidget {
     void onUsernameChanged();
     void onPasswordChanged();
     void onUrlChanged();
+    void fillPredefinedUrl();
 
   private:
     Ui::GreaderAccountDetails m_ui;

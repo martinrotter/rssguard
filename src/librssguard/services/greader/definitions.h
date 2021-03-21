@@ -4,6 +4,11 @@
 #define GREADER_UNLIMITED_BATCH_SIZE       -1
 #define GREADER_DEFAULT_BATCH_SIZE         100
 
+// URLs.
+#define GREADER_URL_REEDAH  "https://www.reedah.com"
+#define GREADER_URL_TOR     "https://theoldreader.com"
+#define GREADER_URL_BAZQUX  "https://bazqux.com"
+
 // States.
 
 // Means "unread" message.
