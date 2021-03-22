@@ -91,6 +91,7 @@ void FormStandardFeedDetails::apply() {
   }
 
   m_serviceRoot->requestItemReassignment(m_feed, parent);
+  m_serviceRoot->itemChanged({ m_feed });
   accept();
 }
 
