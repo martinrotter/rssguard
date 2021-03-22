@@ -158,7 +158,13 @@ QString MessageBrowser::prepareHtmlForMessage(const Message& message) {
          .replace(QL1C('\r'), QL1C('\n'))
          .remove(QL1C('\n'));
 
-  return html;
+  return QSL("<html>"
+             "<head><style>"
+             "a { color: %2; }"
+             "</style></head>"
+             "<body>%1</body>"
+             "</html>").arg(html,
+                            qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight].name());
 }
 
 bool MessageBrowser::eventFilter(QObject* watched, QEvent* event) {
@@ -194,7 +200,9 @@ void MessageBrowser::reloadFontSettings() {
 void MessageBrowser::loadMessage(const Message& message, RootItem* root) {
   Q_UNUSED(root)
 
-  m_txtBrowser->setHtml(prepareHtmlForMessage(message));
+  auto html = prepareHtmlForMessage(message);
+
+  m_txtBrowser->setHtml(html);
   m_txtBrowser->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
   m_searchWidget->hide();
 }
