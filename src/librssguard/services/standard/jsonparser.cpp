@@ -19,7 +19,9 @@ QList<Message> JsonParser::messages() const {
     global_author = json.object()["authors"].toArray().at(0).toObject()["name"].toString();
   }
 
-  for (const QJsonValue& msg_val : json.object()["items"].toArray()) {
+  auto json_items = json.object()["items"].toArray();
+
+  for (const QJsonValue& msg_val : qAsConst(json_items)) {
     QJsonObject msg_obj = msg_val.toObject();
     Message msg;
 
@@ -50,9 +52,10 @@ QList<Message> JsonParser::messages() const {
       msg.m_author = global_author;
     }
 
-    for (const QJsonValue& att : msg_obj["attachments"].toArray()) {
+    auto json_att = msg_obj["attachments"].toArray();
+
+    for (const QJsonValue& att : qAsConst(json_att)) {
       QJsonObject att_obj = att.toObject();
-      auto xx = att_obj["url"].toString();
 
       msg.m_enclosures.append(Enclosure(att_obj["url"].toString(), att_obj["mime_type"].toString()));
     }

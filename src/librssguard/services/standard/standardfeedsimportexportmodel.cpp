@@ -65,8 +65,9 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
   while (!items_to_process.isEmpty()) {
     QDomElement active_element = elements_to_use.pop();
     RootItem* active_item = items_to_process.pop();
+    auto chi = active_item->childItems();
 
-    for (RootItem* child_item : active_item->childItems()) {
+    for (RootItem* child_item : qAsConst(chi)) {
       if (!sourceModel()->isItemChecked(child_item)) {
         continue;
       }
@@ -313,7 +314,9 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
 }
 
 bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray& result) {
-  for (const Feed* const feed : sourceModel()->rootItem()->getSubTreeFeeds()) {
+  auto stf = sourceModel()->rootItem()->getSubTreeFeeds();
+
+  for (const Feed* const feed : qAsConst(stf)) {
     result += feed->source() + QL1S("\n");
   }
 

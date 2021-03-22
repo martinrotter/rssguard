@@ -35,7 +35,6 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
   }
 
   QStringList trimmed_ids;
-  QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
 
   for (const QString& id : msg_custom_ids) {
     trimmed_ids.append(QString("i=") + id);
@@ -202,10 +201,11 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     // We need to process subscription list first and extract categories.
     json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
 
-    for (const QJsonValue& feed : json) {
+    for (const QJsonValue& feed : qAsConst(json)) {
       auto subscription = feed.toObject();
+      auto json_cats = subscription["categories"].toArray();
 
-      for (const QJsonValue& cat : subscription["categories"].toArray()) {
+      for (const QJsonValue& cat : qAsConst(json_cats)) {
         auto cat_obj = cat.toObject();
         auto cat_id = cat_obj["id"].toString();
 
@@ -225,7 +225,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
   json = QJsonDocument::fromJson(categories.toUtf8()).object()["tags"].toArray();
   cats.insert(QString(), parent);
 
-  for (const QJsonValue& obj : json) {
+  for (const QJsonValue& obj : qAsConst(json)) {
     auto label = obj.toObject();
     QString label_id = label["id"].toString();
 
@@ -266,7 +266,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
 
   json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
 
-  for (const QJsonValue& obj : json) {
+  for (const QJsonValue& obj : qAsConst(json)) {
     auto subscription = obj.toObject();
     QString id = subscription["id"].toString();
     QString title = subscription["title"].toString();
@@ -278,7 +278,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
       continue;
     }
 
-    for (const QJsonValue& cat : assigned_categories) {
+    for (const QJsonValue& cat : qAsConst(assigned_categories)) {
       QString potential_id = cat.toObject()["id"].toString();
 
       if (potential_id.contains(QSL("/label/"))) {
@@ -301,8 +301,6 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
                          : subscription["htmlUrl"].toString();
 
       if (!icon_url.isEmpty()) {
-        QByteArray icon_data;
-
         if (icon_url.startsWith(QSL("//"))) {
           icon_url = QUrl(baseUrl()).scheme() + QSL(":") + icon_url;
         }

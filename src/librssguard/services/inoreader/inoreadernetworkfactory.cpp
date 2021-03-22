@@ -144,8 +144,9 @@ QList<RootItem*> InoreaderNetworkFactory::getLabels() {
                                                         {},
                                                         m_service->networkProxy());
   QJsonDocument json_lbls = QJsonDocument::fromJson(output);
+  auto json_tags = json_lbls.object()["tags"].toArray();
 
-  for (const QJsonValue& lbl_val : json_lbls.object()["tags"].toArray()) {
+  for (const QJsonValue& lbl_val : qAsConst(json_tags)) {
     QJsonObject lbl_obj = lbl_val.toObject();
 
     if (lbl_obj["type"] == QL1S("tag")) {
@@ -400,7 +401,7 @@ RootItem* InoreaderNetworkFactory::decodeFeedCategoriesData(const QString& categ
 
   json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
 
-  for (const QJsonValue& obj : json) {
+  for (const QJsonValue& obj : qAsConst(json)) {
     auto subscription = obj.toObject();
     QString id = subscription["id"].toString();
     QString title = subscription["title"].toString();

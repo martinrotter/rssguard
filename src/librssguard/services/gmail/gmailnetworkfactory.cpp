@@ -391,8 +391,9 @@ void GmailNetworkFactory::onAuthFailed() {
 
 bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id) {
   QHash<QString, QString> headers;
+  auto json_headers = json["payload"].toObject()["headers"].toArray();
 
-  for (const QJsonValue& header : json["payload"].toObject()["headers"].toArray()) {
+  for (const QJsonValue& header : qAsConst(json_headers)) {
     headers.insert(header.toObject()["name"].toString(), header.toObject()["value"].toString());
   }
 
@@ -400,7 +401,9 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   msg.m_rawContents = QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact);
 
   // Assign correct main labels/states.
-  for (const QVariant& label : json["labelIds"].toArray().toVariantList()) {
+  auto labelids = json["labelIds"].toArray().toVariantList();
+
+  for (const QVariant& label : qAsConst(labelids)) {
     QString lbl = label.toString();
 
     if (lbl == QL1S(GMAIL_SYSTEM_LABEL_UNREAD)) {
@@ -569,8 +572,7 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& messages,
 
     if (res.first == QNetworkReply::NetworkError::NoError) {
       // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
-      for (const HttpResponse& part : output) {
-        auto xx = part.body();
+      for (const HttpResponse& part : qAsConst(output)) {
         QJsonObject msg_doc = QJsonDocument::fromJson(part.body().toUtf8()).object();
         QString msg_id = msg_doc["id"].toString();
 

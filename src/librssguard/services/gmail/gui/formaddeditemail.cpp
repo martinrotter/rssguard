@@ -3,11 +3,11 @@
 #include "services/gmail/gui/formaddeditemail.h"
 
 #include "3rd-party/mimesis/mimesis.hpp"
+#include "database/databasequeries.h"
 #include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/gmail/gmailnetworkfactory.h"
 #include "services/gmail/gmailserviceroot.h"
@@ -38,11 +38,12 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
           this,
           &FormAddEditEmail::onOkClicked);
 
-  QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
+  QSqlDatabase db = qApp->database()->driver()->connection(QSL("FormAddEditEmail"));
 
-  m_possibleRecipients = DatabaseQueries::getAllRecipients(db, m_root->accountId());
+  m_possibleRecipients = DatabaseQueries::getAllGmailRecipients(db, m_root->accountId());
+  auto ctrls = recipientControls();
 
-  for (auto* rec: recipientControls()) {
+  for (auto* rec: qAsConst(ctrls)) {
     rec->setPossibleRecipients(m_possibleRecipients);
   }
 }

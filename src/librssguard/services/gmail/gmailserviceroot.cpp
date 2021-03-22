@@ -2,8 +2,8 @@
 
 #include "services/gmail/gmailserviceroot.h"
 
-#include "miscellaneous/application.h"
 #include "database/databasequeries.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
 #include "services/abstract/importantnode.h"
@@ -171,7 +171,9 @@ void GmailServiceRoot::start(bool freshly_activated) {
     syncIn();
   }
 
-  for (RootItem* feed : childItems()) {
+  auto chi = childItems();
+
+  for (RootItem* feed : qAsConst(chi)) {
     if (feed->customId() == QL1S("INBOX")) {
       feed->setKeepOnTop(true);
     }

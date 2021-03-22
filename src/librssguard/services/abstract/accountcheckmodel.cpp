@@ -234,9 +234,9 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
       // Check children of this new parent item.
       bool all_checked = true;
       bool all_unchecked = true;
-      auto chi = item->childItems();
+      auto childr = item->childItems();
 
-      for (RootItem* child_of_parent : qAsConst(chi)) {
+      for (RootItem* child_of_parent : qAsConst(childr)) {
         if (m_checkStates.contains(child_of_parent)) {
           all_checked &= m_checkStates[child_of_parent] == Qt::CheckState::Checked;
           all_unchecked &= m_checkStates[child_of_parent] == Qt::CheckState::Unchecked;

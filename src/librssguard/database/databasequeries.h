@@ -139,7 +139,7 @@ class DatabaseQueries {
                                             int account_id, bool* ok = nullptr);
 
     // Gmail account.
-    static QStringList getAllRecipients(const QSqlDatabase& db, int account_id);
+    static QStringList getAllGmailRecipients(const QSqlDatabase& db, int account_id);
 
   private:
     static QString unnulifyString(const QString& str);

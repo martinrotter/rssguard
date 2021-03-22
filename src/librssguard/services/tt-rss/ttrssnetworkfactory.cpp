@@ -697,7 +697,9 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
           if (item_id == 0) {
             // This is "Uncategorized" category, all its feeds belong to top-level root.
             if (item.contains("items")) {
-              for (const QJsonValue& child_feed : item["items"].toArray()) {
+              auto ite = item["items"].toArray();
+
+              for (const QJsonValue& child_feed : qAsConst(ite)) {
                 pairs.append(QPair<RootItem*, QJsonValue>(parent, child_feed));
               }
             }
@@ -710,7 +712,9 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
             act_parent->appendChild(category);
 
             if (item.contains("items")) {
-              for (const QJsonValue& child : item["items"].toArray()) {
+              auto ite = item["items"].toArray();
+
+              for (const QJsonValue& child : qAsConst(ite)) {
                 pairs.append(QPair<RootItem*, QJsonValue>(category, child));
               }
             }
@@ -758,8 +762,9 @@ TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() = default;
 QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
   QList<Message> messages;
   auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
+  auto json_msgs = m_rawContent["content"].toArray();
 
-  for (const QJsonValue& item : m_rawContent["content"].toArray()) {
+  for (const QJsonValue& item : qAsConst(json_msgs)) {
     QJsonObject mapped = item.toObject();
     Message message;
 
@@ -769,7 +774,9 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
     message.m_contents = mapped["content"].toString();
     message.m_rawContents = QJsonDocument(mapped).toJson(QJsonDocument::JsonFormat::Compact);
 
-    for (const QJsonValue& lbl_val : mapped["labels"].toArray()) {
+    auto json_labels = mapped["labels"].toArray();
+
+    for (const QJsonValue& lbl_val : qAsConst(json_labels)) {
       QString lbl_custom_id = QString::number(lbl_val.toArray().at(0).toInt());
       Label* label = boolinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([lbl_custom_id](Label* lbl) {
         return lbl->customId() == lbl_custom_id;
@@ -797,7 +804,9 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
 
     if (mapped.contains(QSL("attachments"))) {
       // Process enclosures.
-      for (const QJsonValue& attachment : mapped["attachments"].toArray()) {
+      auto json_att = mapped["attachments"].toArray();
+
+      for (const QJsonValue& attachment : qAsConst(json_att)) {
         QJsonObject mapped_attachemnt = attachment.toObject();
         Enclosure enclosure;
 
@@ -869,8 +878,9 @@ TtRssGetLabelsResponse::TtRssGetLabelsResponse(const QString& raw_content) : TtR
 
 QList<RootItem*> TtRssGetLabelsResponse::labels() const {
   QList<RootItem*> labels;
+  auto json_labels = m_rawContent["content"].toArray();
 
-  for (const QJsonValue& lbl_val : m_rawContent["content"].toArray()) {
+  for (const QJsonValue& lbl_val : qAsConst(json_labels)) {
     QJsonObject lbl_obj = lbl_val.toObject();
     Label* lbl = new Label(lbl_obj["caption"].toString(), QColor(lbl_obj["fg_color"].toString()));
 

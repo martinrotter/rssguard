@@ -2002,7 +2002,7 @@ void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db, const 
   }
 }
 
-QStringList DatabaseQueries::getAllRecipients(const QSqlDatabase& db, int account_id) {
+QStringList DatabaseQueries::getAllGmailRecipients(const QSqlDatabase& db, int account_id) {
   QSqlQuery query(db);
   QStringList rec;
 
