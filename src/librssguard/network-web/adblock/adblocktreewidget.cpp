@@ -29,11 +29,11 @@
 
 AdBlockTreeWidget::AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget* parent)
   : TreeWidget(parent), m_subscription(subscription), m_topItem(nullptr), m_itemChangingBlock(false) {
-  setContextMenuPolicy(Qt::CustomContextMenu);
+  setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
   setDefaultItemShowMode(TreeWidget::ItemShowMode::ItemsExpanded);
   setHeaderHidden(true);
   setAlternatingRowColors(true);
-  setLayoutDirection(Qt::LeftToRight);
+  setLayoutDirection(Qt::LayoutDirection::LeftToRight);
   setIndentation(5);
 
   connect(this, &QWidget::customContextMenuRequested, this, &AdBlockTreeWidget::contextMenuRequested);
@@ -51,13 +51,13 @@ void AdBlockTreeWidget::showRule(const AdBlockRule* rule) {
     m_ruleToBeSelected = rule->filter();
   }
   else if (!m_ruleToBeSelected.isEmpty()) {
-    QList<QTreeWidgetItem*> items = findItems(m_ruleToBeSelected, Qt::MatchRecursive);
+    QList<QTreeWidgetItem*> items = findItems(m_ruleToBeSelected, Qt::MatchFlag::MatchRecursive);
 
     if (!items.isEmpty()) {
       QTreeWidgetItem* item = items.at(0);
 
       setCurrentItem(item);
-      scrollToItem(item, QAbstractItemView::PositionAtCenter);
+      scrollToItem(item, QAbstractItemView::ScrollHint::PositionAtCenter);
     }
 
     m_ruleToBeSelected.clear();
@@ -146,8 +146,8 @@ void AdBlockTreeWidget::addRule() {
   auto* item = new QTreeWidgetItem();
 
   item->setText(0, newRule);
-  item->setData(0, Qt::UserRole + 10, offset);
-  item->setFlags(item->flags() | Qt::ItemIsEditable);
+  item->setData(0, Qt::ItemDataRole::UserRole + 10, offset);
+  item->setFlags(item->flags() | Qt::ItemFlag::ItemIsEditable);
   m_itemChangingBlock = true;
   m_topItem->addChild(item);
   m_itemChangingBlock = false;
@@ -161,7 +161,7 @@ void AdBlockTreeWidget::removeRule() {
     return;
   }
 
-  int offset = item->data(0, Qt::UserRole + 10).toInt();
+  int offset = item->data(0, Qt::ItemDataRole::UserRole + 10).toInt();
 
   m_subscription->removeRule(offset);
   deleteItem(item);
@@ -186,39 +186,39 @@ void AdBlockTreeWidget::adjustItemFeatures(QTreeWidgetItem* item, const AdBlockR
     QFont font;
 
     font.setItalic(true);
-    item->setForeground(0, QColor(Qt::gray));
+    item->setForeground(0, QColor(Qt::GlobalColor::gray));
 
     if (!rule->isComment()) {
-      item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
-      item->setCheckState(0, Qt::Unchecked);
+      item->setFlags(item->flags() | Qt::ItemFlag::ItemIsUserCheckable);
+      item->setCheckState(0, Qt::CheckState::Unchecked);
       item->setFont(0, font);
     }
   }
   else {
-    item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
-    item->setCheckState(0, Qt::Checked);
+    item->setFlags(item->flags() | Qt::ItemFlag::ItemIsUserCheckable);
+    item->setCheckState(0, Qt::CheckState::Checked);
 
     if (rule->isException()) {
-      item->setForeground(0, QColor(Qt::darkGreen));
+      item->setForeground(0, QColor(Qt::GlobalColor::darkGreen));
       item->setFont(0, QFont());
     }
     else if (rule->isCssRule()) {
-      item->setForeground(0, QColor(Qt::darkBlue));
+      item->setForeground(0, QColor(Qt::GlobalColor::darkBlue));
       item->setFont(0, QFont());
     }
     else {
-      item->setForeground(0, QColor(Qt::black));
+      item->setForeground(0, QColor(Qt::GlobalColor::black));
       item->setFont(0, QFont());
     }
   }
 }
 
 void AdBlockTreeWidget::keyPressEvent(QKeyEvent* event) {
-  if (event->key() == Qt::Key_C && (event->modifiers() & Qt::ControlModifier) != 0) {
+  if (event->key() == Qt::Key::Key_C && (event->modifiers() & Qt::KeyboardModifier::ControlModifier) != 0) {
     copyFilter();
   }
 
-  if (event->key() == Qt::Key_Delete) {
+  if (event->key() == Qt::Key::Key_Delete) {
     removeRule();
   }
 
@@ -243,10 +243,10 @@ void AdBlockTreeWidget::refresh() {
     auto* item = new QTreeWidgetItem(m_topItem);
 
     item->setText(0, rule->filter());
-    item->setData(0, Qt::UserRole + 10, index);
+    item->setData(0, Qt::ItemDataRole::UserRole + 10, index);
 
     if (m_subscription->canEditRules()) {
-      item->setFlags(item->flags() | Qt::ItemIsEditable);
+      item->setFlags(item->flags() | Qt::ItemFlag::ItemIsEditable);
     }
 
     adjustItemFeatures(item, rule);

@@ -281,7 +281,7 @@ void DownloadItem::error(QNetworkReply::NetworkError code) {
 }
 
 void DownloadItem::metaDataChanged() {
-  QVariant locationHeader = m_reply->header(QNetworkRequest::LocationHeader);
+  QVariant locationHeader = m_reply->header(QNetworkRequest::KnownHeaders::LocationHeader);
 
   if (locationHeader.isValid()) {
     m_url = locationHeader.toUrl();
@@ -497,7 +497,7 @@ void DownloadManager::handleUnsupportedContent(QNetworkReply* reply) {
     return;
   }
 
-  const QVariant header = reply->header(QNetworkRequest::ContentLengthHeader);
+  const QVariant header = reply->header(QNetworkRequest::KnownHeaders::ContentLengthHeader);
   bool ok;
   const int size = header.toInt(&ok);
 
@@ -526,7 +526,7 @@ void DownloadManager::addItem(DownloadItem* item) {
   m_downloads.append(item);
   m_model->endInsertRows();
   m_ui->m_viewDownloads->setIndexWidget(m_model->index(row, 0), item);
-  QIcon icon = style()->standardIcon(QStyle::SP_FileIcon);
+  QIcon icon = style()->standardIcon(QStyle::StandardPixmap::SP_FileIcon);
 
   item->m_ui->m_lblFileIcon->setPixmap(icon.pixmap(DOWNLOADER_ICON_SIZE, DOWNLOADER_ICON_SIZE));
   m_ui->m_viewDownloads->setRowHeight(row, item->sizeHint().height());
@@ -578,7 +578,7 @@ void DownloadManager::updateRow(DownloadItem* item) {
   QIcon icon = m_iconProvider->icon(item->m_output.fileName());
 
   if (icon.isNull()) {
-    icon = style()->standardIcon(QStyle::SP_FileIcon);
+    icon = style()->standardIcon(QStyle::StandardPixmap::SP_FileIcon);
   }
 
   item->m_ui->m_lblFileIcon->setPixmap(icon.pixmap(DOWNLOADER_ICON_SIZE, DOWNLOADER_ICON_SIZE));

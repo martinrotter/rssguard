@@ -113,7 +113,7 @@ void Downloader::finished() {
     m_lastOutputMultipartData = decodeMultipartAnswer(reply);
   }
 
-  m_lastContentType = reply->header(QNetworkRequest::ContentTypeHeader);
+  m_lastContentType = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader);
   m_lastOutputError = reply->error();
   m_activeReply->deleteLater();
   m_activeReply = nullptr;

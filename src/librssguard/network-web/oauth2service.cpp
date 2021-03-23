@@ -157,7 +157,7 @@ void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
   QNetworkRequest networkRequest;
 
   networkRequest.setUrl(m_tokenUrl);
-  networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+  networkRequest.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, "application/x-www-form-urlencoded");
 
   QString content = QString("client_id=%1&"
                             "client_secret=%2&"
@@ -178,7 +178,7 @@ void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
   QNetworkRequest networkRequest;
 
   networkRequest.setUrl(m_tokenUrl);
-  networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+  networkRequest.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, "application/x-www-form-urlencoded");
 
   QString content = QString("client_id=%1&"
                             "client_secret=%2&"

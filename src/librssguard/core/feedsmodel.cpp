@@ -58,7 +58,7 @@ FeedsModel::~FeedsModel() {
 QMimeData* FeedsModel::mimeData(const QModelIndexList& indexes) const {
   auto* mime_data = new QMimeData();
   QByteArray encoded_data;
-  QDataStream stream(&encoded_data, QIODevice::WriteOnly);
+  QDataStream stream(&encoded_data, QIODevice::OpenModeFlag::WriteOnly);
 
   for (const QModelIndex& index : indexes) {
     if (index.column() != 0) {
@@ -99,7 +99,7 @@ bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int 
     return false;
   }
   else {
-    QDataStream stream(&dragged_items_data, QIODevice::ReadOnly);
+    QDataStream stream(&dragged_items_data, QIODevice::OpenModeFlag::ReadOnly);
 
     while (!stream.atEnd()) {
       quintptr pointer_to_item; stream >> pointer_to_item;

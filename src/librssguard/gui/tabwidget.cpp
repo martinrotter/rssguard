@@ -40,7 +40,7 @@ void TabWidget::setupMainMenuButton() {
   m_btnMainMenu->setPadding(3);
   m_btnMainMenu->setToolTip(tr("Displays main menu."));
   m_btnMainMenu->setIcon(qApp->icons()->fromTheme(QSL("go-home")));
-  m_btnMainMenu->setPopupMode(QToolButton::InstantPopup);
+  m_btnMainMenu->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
   connect(m_btnMainMenu, &PlainToolButton::clicked, this, &TabWidget::openMainMenu);
 }
 
@@ -83,15 +83,16 @@ void TabWidget::showDownloadManager() {
 }
 
 void TabWidget::checkTabBarVisibility() {
-  const bool should_be_visible = count() > 1 || !qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool();
+  const bool should_be_visible = count() > 1 ||
+                                 !qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool();
 
   if (should_be_visible) {
-    setCornerWidget(m_btnMainMenu, Qt::TopLeftCorner);
+    setCornerWidget(m_btnMainMenu, Qt::Corner::TopLeftCorner);
     m_btnMainMenu->setVisible(true);
   }
   else {
-    setCornerWidget(nullptr, Qt::TopLeftCorner);
-    setCornerWidget(nullptr, Qt::TopRightCorner);
+    setCornerWidget(nullptr, Qt::Corner::TopLeftCorner);
+    setCornerWidget(nullptr, Qt::Corner::TopRightCorner);
     m_btnMainMenu->setVisible(false);
   }
 
@@ -252,7 +253,7 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
   // Make new web browser active if desired.
   if (make_active) {
     setCurrentIndex(final_index);
-    browser->setFocus(Qt::OtherFocusReason);
+    browser->setFocus(Qt::FocusReason::OtherFocusReason);
   }
 
   return final_index;

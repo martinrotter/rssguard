@@ -128,11 +128,11 @@ bool FeedMessageViewer::areListHeadersEnabled() const {
 }
 
 void FeedMessageViewer::switchMessageSplitterOrientation() {
-  if (m_messageSplitter->orientation() == Qt::Vertical) {
-    m_messageSplitter->setOrientation(Qt::Horizontal);
+  if (m_messageSplitter->orientation() == Qt::Orientation::Vertical) {
+    m_messageSplitter->setOrientation(Qt::Orientation::Horizontal);
   }
   else {
-    m_messageSplitter->setOrientation(Qt::Vertical);
+    m_messageSplitter->setOrientation(Qt::Orientation::Vertical);
   }
 }
 
@@ -241,10 +241,10 @@ void FeedMessageViewer::initialize() {
   // Initialize/populate toolbars.
   m_toolBarFeeds->setFloatable(false);
   m_toolBarFeeds->setMovable(false);
-  m_toolBarFeeds->setAllowedAreas(Qt::TopToolBarArea);
+  m_toolBarFeeds->setAllowedAreas(Qt::ToolBarArea::TopToolBarArea);
   m_toolBarMessages->setFloatable(false);
   m_toolBarMessages->setMovable(false);
-  m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
+  m_toolBarMessages->setAllowedAreas(Qt::ToolBarArea::TopToolBarArea);
   m_messagesBrowser->clear();
 
   // Now refresh visual setup.
@@ -254,8 +254,8 @@ void FeedMessageViewer::initialize() {
 void FeedMessageViewer::initializeViews() {
   m_feedsWidget = new QWidget(this);
   m_messagesWidget = new QWidget(this);
-  m_feedSplitter = new QSplitter(Qt::Horizontal, this);
-  m_messageSplitter = new QSplitter(Qt::Vertical, this);
+  m_feedSplitter = new QSplitter(Qt::Orientation::Horizontal, this);
+  m_messageSplitter = new QSplitter(Qt::Orientation::Vertical, this);
 
   // Instantiate needed components.
   auto* central_layout = new QVBoxLayout(this);
@@ -272,8 +272,8 @@ void FeedMessageViewer::initializeViews() {
   message_layout->setSpacing(0);
 
   // Set views.
-  m_feedsView->setFrameStyle(QFrame::NoFrame);
-  m_messagesView->setFrameStyle(QFrame::NoFrame);
+  m_feedsView->setFrameStyle(QFrame::Shape::NoFrame);
+  m_messagesView->setFrameStyle(QFrame::Shape::NoFrame);
 
   // Setup message splitter.
   m_messageSplitter->setObjectName(QSL("MessageSplitter"));

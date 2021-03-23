@@ -8,6 +8,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
+#include "gui/guiutilities.h"
 #include "gui/settings/settingsbrowsermail.h"
 #include "gui/settings/settingsdatabase.h"
 #include "gui/settings/settingsdownloads.h"
@@ -22,9 +23,10 @@ FormSettings::FormSettings(QWidget& parent)
   m_ui.setupUi(this);
 
   // Set flags and attributes.
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("emblem-system")));
-  m_btnApply = m_ui.m_buttonBox->button(QDialogButtonBox::Apply);
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("emblem-system")));
+
+  m_btnApply = m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Apply);
+
   m_btnApply->setEnabled(false);
 
   // Establish needed connections.

@@ -130,19 +130,19 @@ void FormCategoryDetails::onLoadIconFromFile() {
   QFileDialog dialog(this, tr("Select icon file for the category"),
                      qApp->homeFolder(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
 
-  dialog.setFileMode(QFileDialog::ExistingFile);
+  dialog.setFileMode(QFileDialog::FileMode::ExistingFile);
   dialog.setWindowIcon(qApp->icons()->fromTheme(QSL("image-x-generic")));
-  dialog.setOptions(QFileDialog::DontUseNativeDialog | QFileDialog::ReadOnly);
-  dialog.setViewMode(QFileDialog::Detail);
-  dialog.setLabelText(QFileDialog::Accept, tr("Select icon"));
-  dialog.setLabelText(QFileDialog::Reject, tr("Cancel"));
+  dialog.setOptions(QFileDialog::Option::DontUseNativeDialog | QFileDialog::Option::ReadOnly);
+  dialog.setViewMode(QFileDialog::ViewMode::Detail);
+  dialog.setLabelText(QFileDialog::DialogLabel::Accept, tr("Select icon"));
+  dialog.setLabelText(QFileDialog::DialogLabel::Reject, tr("Cancel"));
 
   //: Label to describe the folder for icon file selection dialog.
-  dialog.setLabelText(QFileDialog::LookIn, tr("Look in:"));
-  dialog.setLabelText(QFileDialog::FileName, tr("Icon name:"));
-  dialog.setLabelText(QFileDialog::FileType, tr("Icon type:"));
+  dialog.setLabelText(QFileDialog::DialogLabel::LookIn, tr("Look in:"));
+  dialog.setLabelText(QFileDialog::DialogLabel::FileName, tr("Icon name:"));
+  dialog.setLabelText(QFileDialog::DialogLabel::FileType, tr("Icon type:"));
 
-  if (dialog.exec() == QDialog::Accepted) {
+  if (dialog.exec() == QDialog::DialogCode::Accepted) {
     m_ui->m_btnIcon->setIcon(QIcon(dialog.selectedFiles().value(0)));
   }
 }
@@ -185,7 +185,7 @@ void FormCategoryDetails::initialize() {
   setTabOrder(m_ui->m_txtTitle->lineEdit(), m_ui->m_txtDescription->lineEdit());
   setTabOrder(m_ui->m_txtDescription->lineEdit(), m_ui->m_btnIcon);
   setTabOrder(m_ui->m_btnIcon, m_ui->m_buttonBox);
-  m_ui->m_txtTitle->lineEdit()->setFocus(Qt::TabFocusReason);
+  m_ui->m_txtTitle->lineEdit()->setFocus(Qt::FocusReason::TabFocusReason);
 }
 
 void FormCategoryDetails::loadCategories(const QList<Category*>& categories,

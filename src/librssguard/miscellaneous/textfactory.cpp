@@ -2,11 +2,11 @@
 
 #include "miscellaneous/textfactory.h"
 
+#include "3rd-party/sc/simplecrypt.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
-#include "miscellaneous/simplecrypt/simplecrypt.h"
 
 #include <QDir>
 #include <QLocale>
@@ -71,7 +71,7 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
   const QString input_date = date_time.simplified();
   QDateTime dt;
   QTime time_zone_offset;
-  const QLocale locale(QLocale::C);
+  const QLocale locale(QLocale::Language::C);
   bool positive_time_zone_offset = false;
   QStringList date_patterns;
 
@@ -91,7 +91,7 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
 
     if (dt.isValid()) {
       // Make sure that this date/time is considered UTC.
-      dt.setTimeSpec(Qt::UTC);
+      dt.setTimeSpec(Qt::TimeSpec::UTC);
 
       // We find offset from UTC.
       if (input_date.size() >= TIMEZONE_OFFSET_LIMIT) {

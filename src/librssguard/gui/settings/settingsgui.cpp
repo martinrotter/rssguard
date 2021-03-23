@@ -32,10 +32,10 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
                                      << tr("E-mail"));
 
   // Setup skins.
-  m_ui->m_treeSkins->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeMode::ResizeToContents);
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::requireRestart);
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsGui::dirtifySettings);
@@ -72,8 +72,8 @@ bool SettingsGui::eventFilter(QObject* obj, QEvent* e) {
   if (e->type() == QEvent::Type::Drop) {
     auto* drop_event = static_cast<QDropEvent*>(e);
 
-    if (drop_event->keyboardModifiers() != Qt::NoModifier) {
-      drop_event->setDropAction(Qt::MoveAction);
+    if (drop_event->keyboardModifiers() != Qt::KeyboardModifier::NoModifier) {
+      drop_event->setDropAction(Qt::DropAction::MoveAction);
     }
   }
 
@@ -177,11 +177,11 @@ void SettingsGui::loadSettings() {
   m_ui->m_checkHideTabBarIfOneTabVisible->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool());
 
   // Load toolbar button style.
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Icon only"), Qt::ToolButtonIconOnly);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text only"), Qt::ToolButtonTextOnly);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text beside icon"), Qt::ToolButtonTextBesideIcon);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text under icon"), Qt::ToolButtonTextUnderIcon);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Follow OS style"), Qt::ToolButtonFollowStyle);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Icon only"), Qt::ToolButtonStyle::ToolButtonIconOnly);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text only"), Qt::ToolButtonStyle::ToolButtonTextOnly);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text beside icon"), Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text under icon"), Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Follow OS style"), Qt::ToolButtonStyle::ToolButtonFollowStyle);
   m_ui->m_cmbToolbarButtonStyle->setCurrentIndex(m_ui->m_cmbToolbarButtonStyle->findData(settings()->value(GROUP(GUI),
                                                                                                            SETTING(
                                                                                                              GUI::ToolbarStyle)).toInt()));

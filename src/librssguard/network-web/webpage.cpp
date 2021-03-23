@@ -20,7 +20,7 @@
 #include <QWebEngineScript>
 
 WebPage::WebPage(QObject* parent) : QWebEnginePage(parent) {
-  setBackgroundColor(Qt::transparent);
+  setBackgroundColor(Qt::GlobalColor::transparent);
 
   connect(this, &QWebEnginePage::loadFinished, this, &WebPage::hideUnwantedElements);
 }

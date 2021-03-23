@@ -61,16 +61,16 @@ MessageBrowser::MessageBrowser(bool should_resize_to_fit, QWidget* parent)
         box.setInformativeText(tr("What action do you want to take?"));
         box.setDetailedText(url.toString());
 
-        QAbstractButton* btn_open = box.addButton(tr("Open in external browser"), QMessageBox::ActionRole);
-        QAbstractButton* btn_download = box.addButton(tr("Download"), QMessageBox::ActionRole);
-        QAbstractButton* btn_cancel = box.addButton(QMessageBox::Cancel);
+        QAbstractButton* btn_open = box.addButton(tr("Open in external browser"), QMessageBox::ButtonRole::ActionRole);
+        QAbstractButton* btn_download = box.addButton(tr("Download"), QMessageBox::ButtonRole::ActionRole);
+        QAbstractButton* btn_cancel = box.addButton(QMessageBox::StandardButton::Cancel);
         bool always;
         MessageBox::setCheckBox(&box, tr("Always open links in external browser."), &always);
 
-        box.setDefaultButton(QMessageBox::Cancel);
+        box.setDefaultButton(QMessageBox::StandardButton::Cancel);
         box.exec();
 
-        if (box.clickedButton() != box.button(QMessageBox::Cancel)) {
+        if (box.clickedButton() != box.button(QMessageBox::StandardButton::Cancel)) {
           // Store selected checkbox value.
           qApp->settings()->setValue(GROUP(Browser), Browser::OpenLinksInExternalBrowserRightAway, always);
         }
@@ -203,7 +203,7 @@ void MessageBrowser::loadMessage(const Message& message, RootItem* root) {
   auto html = prepareHtmlForMessage(message);
 
   m_txtBrowser->setHtml(html);
-  m_txtBrowser->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
+  m_txtBrowser->verticalScrollBar()->triggerAction(QScrollBar::SliderAction::SliderToMinimum);
   m_searchWidget->hide();
 }
 

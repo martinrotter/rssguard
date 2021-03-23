@@ -252,7 +252,7 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name,
     qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt(),
     QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
     result_raw,
-    QNetworkAccessManager::PutOperation,
+    QNetworkAccessManager::Operation::PutOperation,
     headers,
     false,
     {},
@@ -523,7 +523,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
 
         if (NetworkFactory::performNetworkOperation(icon_path, DOWNLOAD_TIMEOUT,
                                                     QByteArray(), icon_data,
-                                                    QNetworkAccessManager::GetOperation).first ==
+                                                    QNetworkAccessManager::Operation::GetOperation).first ==
             QNetworkReply::NetworkError::NoError) {
           // Icon downloaded, set it up.
           QPixmap icon_pixmap;

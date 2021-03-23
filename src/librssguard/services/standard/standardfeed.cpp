@@ -13,7 +13,7 @@
 #include "gui/feedsview.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
-#include "miscellaneous/simplecrypt/simplecrypt.h"
+#include "3rd-party/sc/simplecrypt.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/recyclebin.h"

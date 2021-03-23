@@ -97,7 +97,7 @@ void TreeWidget::filterString(const QString& string) {
   bool stringIsEmpty = string.isEmpty();
 
   for (QTreeWidgetItem* item : _allItems) {
-    bool containsString = stringIsEmpty || item->text(0).contains(string, Qt::CaseInsensitive);
+    bool containsString = stringIsEmpty || item->text(0).contains(string, Qt::CaseSensitivity::CaseInsensitive);
 
     if (containsString) {
       item->setHidden(false);
@@ -136,7 +136,7 @@ void TreeWidget::filterString(const QString& string) {
 }
 
 bool TreeWidget::appendToParentItem(const QString& parentText, QTreeWidgetItem* item) {
-  QList<QTreeWidgetItem*> list = findItems(parentText, Qt::MatchExactly);
+  QList<QTreeWidgetItem*> list = findItems(parentText, Qt::MatchFlag::MatchExactly);
 
   if (list.count() == 0) {
     return false;
@@ -164,7 +164,7 @@ bool TreeWidget::appendToParentItem(QTreeWidgetItem* parent, QTreeWidgetItem* it
 }
 
 bool TreeWidget::prependToParentItem(const QString& parentText, QTreeWidgetItem* item) {
-  QList<QTreeWidgetItem*> list = findItems(parentText, Qt::MatchExactly);
+  QList<QTreeWidgetItem*> list = findItems(parentText, Qt::MatchFlag::MatchExactly);
 
   if (list.count() == 0) {
     return false;

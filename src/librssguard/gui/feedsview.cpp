@@ -687,8 +687,8 @@ QMenu* FeedsView::initializeContextMenuLabel(RootItem* clicked_item) {
 
 void FeedsView::setupAppearance() {
   // Setup column resize strategies.
-  header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::Stretch);
-  header()->setSectionResizeMode(FDS_MODEL_COUNTS_INDEX, QHeaderView::ResizeToContents);
+  header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
+  header()->setSectionResizeMode(FDS_MODEL_COUNTS_INDEX, QHeaderView::ResizeMode::ResizeToContents);
   header()->setStretchLastSection(false);
 
   setUniformRowHeights(true);
@@ -697,15 +697,15 @@ void FeedsView::setupAppearance() {
   setItemsExpandable(true);
   setAutoExpandDelay(0);
   setExpandsOnDoubleClick(true);
-  setEditTriggers(QAbstractItemView::NoEditTriggers);
+  setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
   setIndentation(FEEDS_VIEW_INDENTATION);
   setAcceptDrops(false);
   setDragEnabled(true);
   setDropIndicatorShown(true);
-  setDragDropMode(QAbstractItemView::InternalMove);
+  setDragDropMode(QAbstractItemView::DragDropMode::InternalMove);
   setAllColumnsShowFocus(false);
   setRootIsDecorated(false);
-  setSelectionMode(QAbstractItemView::SingleSelection);
+  setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
   setItemDelegate(new StyledItemDelegateWithoutFocus(this));
 }
 

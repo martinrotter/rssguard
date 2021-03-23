@@ -36,7 +36,7 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
 #endif
 
   m_ui->m_listTools->setHeaderLabels(QStringList() << tr("Executable") << tr("Parameters"));
-  m_ui->m_listTools->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+  m_ui->m_listTools->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
 
   connect(m_proxyDetails, &NetworkProxyDetails::changed, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_grpCustomExternalBrowser, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);

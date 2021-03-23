@@ -97,9 +97,9 @@ void SettingsFeedsMessages::initializeMessageDateFormats() {
   for (const Language& lang : qAsConst(installed_languages)) {
     QLocale locale(lang.m_code);
 
-    best_formats << locale.dateTimeFormat(QLocale::LongFormat)
-                 << locale.dateTimeFormat(QLocale::ShortFormat)
-                 << locale.dateTimeFormat(QLocale::NarrowFormat);
+    best_formats << locale.dateTimeFormat(QLocale::FormatType::LongFormat)
+                 << locale.dateTimeFormat(QLocale::FormatType::ShortFormat)
+                 << locale.dateTimeFormat(QLocale::FormatType::NarrowFormat);
   }
 
   best_formats.removeDuplicates();

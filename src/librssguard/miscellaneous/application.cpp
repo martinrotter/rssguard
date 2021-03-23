@@ -361,7 +361,7 @@ void Application::processExecutionMessage(const QString& message) {
   else {
     for (const QString& msg : messages) {
       if (msg == APP_IS_RUNNING) {
-        showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
+        showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::MessageIcon::Information);
         mainForm()->display();
       }
       else if (msg.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {

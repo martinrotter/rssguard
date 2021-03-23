@@ -69,18 +69,18 @@ void ToolBarEditor::loadEditor(const QList<QAction*> activated_actions, const QL
     QListWidgetItem* action_item = new QListWidgetItem(action->icon(), action->text().replace('&', ""), m_ui->m_listActivatedActions);
 
     if (action->isSeparator()) {
-      action_item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
+      action_item->setData(Qt::ItemDataRole::UserRole, SEPARATOR_ACTION_NAME);
       action_item->setIcon(qApp->icons()->fromTheme(QSL("insert-object")));
       action_item->setText(tr("Separator"));
       action_item->setToolTip(tr("Separator"));
     }
     else if (action->property("type").isValid()) {
-      action_item->setData(Qt::UserRole, action->property("type").toString());
+      action_item->setData(Qt::ItemDataRole::UserRole, action->property("type").toString());
       action_item->setText(action->property("name").toString());
       action_item->setToolTip(action_item->text());
     }
     else {
-      action_item->setData(Qt::UserRole, action->objectName());
+      action_item->setData(Qt::ItemDataRole::UserRole, action->objectName());
       action_item->setToolTip(action->toolTip());
     }
   }
@@ -107,7 +107,7 @@ void ToolBarEditor::loadEditor(const QList<QAction*> activated_actions, const QL
     }
   }
 
-  m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
+  m_ui->m_listAvailableActions->sortItems(Qt::SortOrder::AscendingOrder);
   m_ui->m_listAvailableActions->setCurrentRow(m_ui->m_listAvailableActions->count() >= 0 ? 0 : -1);
   m_ui->m_listActivatedActions->setCurrentRow(m_ui->m_listActivatedActions->count() >= 0 ? 0 : -1);
 }
@@ -117,15 +117,17 @@ bool ToolBarEditor::eventFilter(QObject* object, QEvent* event) {
     if (event->type() == QEvent::Type::KeyPress) {
       const auto* key_event = static_cast<QKeyEvent*>(event);
 
-      if (key_event->key() == Qt::Key_Delete) {
+      if (key_event->key() == Qt::Key::Key_Delete) {
         deleteSelectedAction();
         return true;
       }
-      else if (key_event->key() == Qt::Key_Down && (key_event->modifiers() & Qt::ControlModifier) == Qt::ControlModifier) {
+      else if (key_event->key() == Qt::Key::Key_Down &&
+               (key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) == Qt::KeyboardModifier::ControlModifier) {
         moveActionDown();
         return true;
       }
-      else if (key_event->key() == Qt::Key_Up && (key_event->modifiers() & Qt::ControlModifier) == Qt::ControlModifier) {
+      else if (key_event->key() == Qt::Key::Key_Up &&
+               (key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) == Qt::KeyboardModifier::ControlModifier) {
         moveActionUp();
         return true;
       }
@@ -150,7 +152,7 @@ void ToolBarEditor::insertSpacer() {
   auto* item = new QListWidgetItem(tr("Toolbar spacer"));
 
   item->setIcon(qApp->icons()->fromTheme(QSL("go-jump")));
-  item->setData(Qt::UserRole, SPACER_ACTION_NAME);
+  item->setData(Qt::ItemDataRole::UserRole, SPACER_ACTION_NAME);
   m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
   m_ui->m_listActivatedActions->setCurrentRow(current_row + 1);
   emit setupChanged();
@@ -160,7 +162,7 @@ void ToolBarEditor::insertSeparator() {
   const int current_row = m_ui->m_listActivatedActions->currentRow();
   QListWidgetItem* item = new QListWidgetItem(tr("Separator"));
 
-  item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
+  item->setData(Qt::ItemDataRole::UserRole, SEPARATOR_ACTION_NAME);
   item->setToolTip(tr("Separator"));
   item->setIcon(qApp->icons()->fromTheme(QSL("insert-object")));
   m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
@@ -215,7 +217,7 @@ void ToolBarEditor::deleteSelectedAction() {
 
   if (items.size() == 1) {
     QListWidgetItem* selected_item = items.at(0);
-    const QString data_item = selected_item->data(Qt::UserRole).toString();
+    const QString data_item = selected_item->data(Qt::ItemDataRole::UserRole).toString();
 
     if (data_item == SEPARATOR_ACTION_NAME || data_item == SPACER_ACTION_NAME) {
       m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item));
@@ -225,7 +227,7 @@ void ToolBarEditor::deleteSelectedAction() {
       m_ui->m_listAvailableActions->insertItem(
         m_ui->m_listAvailableActions->currentRow() + 1,
         m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item)));
-      m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
+      m_ui->m_listAvailableActions->sortItems(Qt::SortOrder::AscendingOrder);
       m_ui->m_listAvailableActions->setCurrentRow(m_ui->m_listAvailableActions->currentRow() + 1);
     }
 
@@ -238,14 +240,14 @@ void ToolBarEditor::deleteAllActions() {
   QString data_item;
 
   while ((taken_item = m_ui->m_listActivatedActions->takeItem(0)) != nullptr) {
-    data_item = taken_item->data(Qt::UserRole).toString();
+    data_item = taken_item->data(Qt::ItemDataRole::UserRole).toString();
 
     if (data_item != SEPARATOR_ACTION_NAME && data_item != SPACER_ACTION_NAME) {
       m_ui->m_listAvailableActions->insertItem(m_ui->m_listAvailableActions->currentRow() + 1, taken_item);
     }
   }
 
-  m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
+  m_ui->m_listAvailableActions->sortItems(Qt::SortOrder::AscendingOrder);
   updateActionsAvailability();
   emit setupChanged();
 }

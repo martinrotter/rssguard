@@ -12,8 +12,8 @@
 
 MessageTextBrowser::MessageTextBrowser(QWidget* parent) : QTextBrowser(parent) {
   setAutoFillBackground(true);
-  setFrameShape(QFrame::StyledPanel);
-  setFrameShadow(QFrame::Plain);
+  setFrameShape(QFrame::Shape::StyledPanel);
+  setFrameShadow(QFrame::Shadow::Plain);
   setTabChangesFocus(true);
   setOpenLinks(false);
   viewport()->setAutoFillBackground(true);
@@ -26,7 +26,8 @@ QVariant MessageTextBrowser::loadResource(int type, const QUrl& name) {
     case QTextDocument::ResourceType::ImageResource: {
       if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayImagePlaceholders)).toBool()) {
         if (m_imagePlaceholder.isNull()) {
-          m_imagePlaceholder = qApp->icons()->miscPixmap(QSL("image-placeholder")).scaledToWidth(20, Qt::FastTransformation);
+          m_imagePlaceholder = qApp->icons()->miscPixmap(QSL("image-placeholder")).scaledToWidth(20,
+                                                                                                 Qt::TransformationMode::FastTransformation);
         }
 
         return m_imagePlaceholder;

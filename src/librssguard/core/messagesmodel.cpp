@@ -342,19 +342,19 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 
     case Qt::ItemDataRole::FontRole: {
       QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
-      QVariant data_read = data(idx_read, Qt::EditRole);
+      QVariant data_read = data(idx_read, Qt::ItemDataRole::EditRole);
       const bool is_bin = qobject_cast<RecycleBin*>(loadedItem()) != nullptr;
       bool is_deleted;
 
       if (is_bin) {
         QModelIndex idx_del = index(idx.row(), MSG_DB_PDELETED_INDEX);
 
-        is_deleted = data(idx_del, Qt::EditRole).toBool();
+        is_deleted = data(idx_del, Qt::ItemDataRole::EditRole).toBool();
       }
       else {
         QModelIndex idx_del = index(idx.row(), MSG_DB_DELETED_INDEX);
 
-        is_deleted = data(idx_del, Qt::EditRole).toBool();
+        is_deleted = data(idx_del, Qt::ItemDataRole::EditRole).toBool();
       }
 
       const bool striked = is_deleted;

@@ -3,7 +3,7 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "qtsingleapplication/qtsingleapplication.h"
+#include "3rd-party/qts/qtsingleapplication.h"
 
 #include "core/feeddownloader.h"
 #include "database/databasefactory.h"

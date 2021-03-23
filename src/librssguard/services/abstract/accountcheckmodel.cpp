@@ -46,7 +46,7 @@ void AccountCheckModel::checkAllItems() {
 
     for (RootItem* root_child : qAsConst(chi)) {
       if (root_child->kind() == RootItem::Kind::Feed || root_child->kind() == RootItem::Kind::Category) {
-        setItemChecked(root_child, Qt::Checked);
+        setItemChecked(root_child, Qt::CheckState::Checked);
       }
     }
   }
@@ -58,7 +58,7 @@ void AccountCheckModel::uncheckAllItems() {
 
     for (RootItem* root_child : qAsConst(chi)) {
       if (root_child->kind() == RootItem::Kind::Feed || root_child->kind() == RootItem::Kind::Category) {
-        setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
+        setData(indexForItem(root_child), Qt::CheckState::Unchecked, Qt::ItemDataRole::CheckStateRole);
       }
     }
   }
@@ -293,7 +293,7 @@ bool AccountCheckModel::isItemChecked(RootItem* item) const {
 }
 
 bool AccountCheckModel::setItemChecked(RootItem* item, Qt::CheckState check) {
-  return setData(indexForItem(item), check, Qt::CheckStateRole);
+  return setData(indexForItem(item), check, Qt::ItemDataRole::CheckStateRole);
 }
 
 AccountCheckSortedModel::AccountCheckSortedModel(QObject* parent)

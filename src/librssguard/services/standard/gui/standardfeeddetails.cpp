@@ -175,7 +175,8 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type, const 
       m_ui.m_cmbEncoding->setCurrentIndex(encoding_index);
     }
     else {
-      m_ui.m_cmbEncoding->setCurrentIndex(m_ui.m_cmbEncoding->findText(DEFAULT_FEED_ENCODING, Qt::MatchFixedString));
+      m_ui.m_cmbEncoding->setCurrentIndex(m_ui.m_cmbEncoding->findText(DEFAULT_FEED_ENCODING,
+                                                                       Qt::MatchFlag::MatchFixedString));
     }
 
     m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,

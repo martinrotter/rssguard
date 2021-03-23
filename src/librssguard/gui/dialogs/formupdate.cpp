@@ -26,15 +26,16 @@ FormUpdate::FormUpdate(QWidget* parent)
 
   // Set flags and attributes.
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("help-about")));
+
   connect(&m_downloader, &Downloader::progress, this, &FormUpdate::updateProgress);
   connect(&m_downloader, &Downloader::completed, this, &FormUpdate::updateCompleted);
 
   if (isSelfUpdateSupported()) {
-    m_btnUpdate = m_ui.m_buttonBox->addButton(tr("Download selected update"), QDialogButtonBox::ActionRole);
+    m_btnUpdate = m_ui.m_buttonBox->addButton(tr("Download selected update"), QDialogButtonBox::ButtonRole::ActionRole);
     m_btnUpdate->setToolTip(tr("Download new installation files."));
   }
   else {
-    m_btnUpdate = m_ui.m_buttonBox->addButton(tr("Go to application website"), QDialogButtonBox::ActionRole);
+    m_btnUpdate = m_ui.m_buttonBox->addButton(tr("Go to application website"), QDialogButtonBox::ButtonRole::ActionRole);
     m_btnUpdate->setToolTip(tr("Go to application website to get update packages manually."));
   }
 
@@ -152,7 +153,7 @@ void FormUpdate::loadAvailableFiles() {
     if (SystemFactory::supportedUpdateFiles().match(url.m_name).hasMatch()) {
       QListWidgetItem* item = new QListWidgetItem(url.m_name + tr(" (size ") + url.m_size + QSL(")"));
 
-      item->setData(Qt::UserRole, url.m_fileUrl);
+      item->setData(Qt::ItemDataRole::UserRole, url.m_fileUrl);
       item->setToolTip(url.m_fileUrl);
       m_ui.m_listFiles->addItem(item);
     }
@@ -221,7 +222,7 @@ void FormUpdate::startUpdate() {
       qDebugNN << LOGSEC_GUI << "External updater was not launched due to error.";
       qApp->showGuiMessage(tr("Cannot update application"),
                            tr("Cannot launch external updater. Update application manually."),
-                           QSystemTrayIcon::Warning, this);
+                           QSystemTrayIcon::MessageIcon::Warning, this);
     }
     else {
       qApp->quit();

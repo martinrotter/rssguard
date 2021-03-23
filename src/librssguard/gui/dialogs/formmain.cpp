@@ -587,7 +587,7 @@ void FormMain::loadSize() {
   move(settings->value(GROUP(GUI), GUI::MainWindowInitialPosition, screen.center() - rect().center()).toPoint());
 
   if (settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsMaximized)).toBool()) {
-    setWindowState(windowState() | Qt::WindowMaximized);
+    setWindowState(windowState() | Qt::WindowState::WindowMaximized);
 
     // We process events so that window is really maximized fast.
     qApp->processEvents();

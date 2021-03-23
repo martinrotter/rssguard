@@ -126,7 +126,7 @@ void MessagesToolBar::initializeHighlighter() {
   m_btnMessageHighlighter = new QToolButton(this);
   m_btnMessageHighlighter->setToolTip(tr("Display all messages"));
   m_btnMessageHighlighter->setMenu(m_menuMessageHighlighter);
-  m_btnMessageHighlighter->setPopupMode(QToolButton::MenuButtonPopup);
+  m_btnMessageHighlighter->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
   m_btnMessageHighlighter->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
   m_actionMessageHighlighter = new QWidgetAction(this);
   m_actionMessageHighlighter->setDefaultWidget(m_btnMessageHighlighter);

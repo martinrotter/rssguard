@@ -123,7 +123,6 @@ HEADERS += core/feeddownloader.h \
            miscellaneous/regexfactory.h \
            miscellaneous/settings.h \
            miscellaneous/settingsproperties.h \
-           miscellaneous/simplecrypt/simplecrypt.h \
            miscellaneous/skinfactory.h \
            miscellaneous/systemfactory.h \
            miscellaneous/templates.h \
@@ -137,10 +136,6 @@ HEADERS += core/feeddownloader.h \
            network-web/oauthhttphandler.h \
            network-web/silentnetworkaccessmanager.h \
            network-web/webfactory.h \
-           qtsingleapplication/qtlocalpeer.h \
-           qtsingleapplication/qtlockedfile.h \
-           qtsingleapplication/qtsingleapplication.h \
-           qtsingleapplication/qtsinglecoreapplication.h \
            services/abstract/accountcheckmodel.h \
            services/abstract/cacheforserviceroot.h \
            services/abstract/category.h \
@@ -303,7 +298,6 @@ SOURCES += core/feeddownloader.cpp \
            miscellaneous/mutex.cpp \
            miscellaneous/regexfactory.cpp \
            miscellaneous/settings.cpp \
-           miscellaneous/simplecrypt/simplecrypt.cpp \
            miscellaneous/skinfactory.cpp \
            miscellaneous/systemfactory.cpp \
            miscellaneous/textfactory.cpp \
@@ -316,10 +310,6 @@ SOURCES += core/feeddownloader.cpp \
            network-web/oauthhttphandler.cpp \
            network-web/silentnetworkaccessmanager.cpp \
            network-web/webfactory.cpp \
-           qtsingleapplication/qtlocalpeer.cpp \
-           qtsingleapplication/qtlockedfile.cpp \
-           qtsingleapplication/qtsingleapplication.cpp \
-           qtsingleapplication/qtsinglecoreapplication.cpp \
            services/abstract/accountcheckmodel.cpp \
            services/abstract/cacheforserviceroot.cpp \
            services/abstract/category.cpp \
@@ -492,6 +482,18 @@ HEADERS  += $$files(3rd-party/mimesis/*.hpp, false)
 
 # Add boolinq.
 HEADERS  += $$files(3rd-party/boolinq/*.h, false)
+
+# Add QtSingleApplication.
+SOURCES +=  3rd-party/qts/qtlocalpeer.cpp \
+            3rd-party/qts/qtlockedfile.cpp \
+            3rd-party/qts/qtsingleapplication.cpp \
+            3rd-party/qts/qtsinglecoreapplication.cpp
+HEADERS  += $$files(3rd-party/qts/*.h   , false)
+
+# Add SimpleCrypt.
+SOURCES += $$files(3rd-party/sc/*.cpp, false)
+HEADERS  += $$files(3rd-party/sc/*.h, false)
+
 
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/gui \

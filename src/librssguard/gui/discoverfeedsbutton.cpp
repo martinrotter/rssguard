@@ -17,13 +17,13 @@
 DiscoverFeedsButton::DiscoverFeedsButton(QWidget* parent) : QToolButton(parent), m_addresses(QStringList()) {
   setEnabled(false);
   setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
-  setPopupMode(QToolButton::InstantPopup);
+  setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
 }
 
 DiscoverFeedsButton::~DiscoverFeedsButton() {}
 
 void DiscoverFeedsButton::clearFeedAddresses() {
-  setFeedAddresses(QStringList());
+  setFeedAddresses({});
 }
 
 void DiscoverFeedsButton::setFeedAddresses(const QStringList& addresses) {

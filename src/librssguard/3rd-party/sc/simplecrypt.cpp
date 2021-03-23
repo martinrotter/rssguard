@@ -25,7 +25,7 @@
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "miscellaneous/simplecrypt/simplecrypt.h"
+#include "3rd-party/sc/simplecrypt.h"
 
 #include <QByteArray>
 #include <QCryptographicHash>

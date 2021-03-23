@@ -29,10 +29,10 @@ WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
   m_searchWidget(new SearchTextWidget(this)),
   m_txtLocation(new LocationLineEdit(this)),
   m_btnDiscoverFeeds(new DiscoverFeedsButton(this)),
-  m_actionBack(m_webView->pageAction(QWebEnginePage::Back)),
-  m_actionForward(m_webView->pageAction(QWebEnginePage::Forward)),
-  m_actionReload(m_webView->pageAction(QWebEnginePage::Reload)),
-  m_actionStop(m_webView->pageAction(QWebEnginePage::Stop)),
+  m_actionBack(m_webView->pageAction(QWebEnginePage::WebAction::Back)),
+  m_actionForward(m_webView->pageAction(QWebEnginePage::WebAction::Forward)),
+  m_actionReload(m_webView->pageAction(QWebEnginePage::WebAction::Reload)),
+  m_actionStop(m_webView->pageAction(QWebEnginePage::WebAction::Stop)),
   m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                           tr("Open this website in system web browser"),
                                           this)) {
@@ -53,7 +53,7 @@ void WebBrowser::createConnections() {
   });
   connect(m_searchWidget, &SearchTextWidget::searchForText, this, [this](const QString& text, bool backwards) {
     if (backwards) {
-      m_webView->findText(text, QWebEnginePage::FindBackward);
+      m_webView->findText(text, QWebEnginePage::FindFlag::FindBackward);
     }
     else {
       m_webView->findText(text);
@@ -230,7 +230,7 @@ void WebBrowser::initializeLayout() {
   m_loadingProgress->setMinimum(0);
   m_loadingProgress->setTextVisible(false);
   m_loadingProgress->setMaximum(100);
-  m_loadingProgress->setAttribute(Qt::WA_TranslucentBackground);
+  m_loadingProgress->setAttribute(Qt::WidgetAttribute::WA_TranslucentBackground);
 
   // Setup layout.
   m_layout->addWidget(m_toolBar);

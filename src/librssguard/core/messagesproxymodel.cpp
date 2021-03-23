@@ -14,12 +14,12 @@ MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* par
   : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_showUnreadOnly(false) {
   setObjectName(QSL("MessagesProxyModel"));
 
-  setSortRole(Qt::EditRole);
-  setSortCaseSensitivity(Qt::CaseInsensitive);
+  setSortRole(Qt::ItemDataRole::EditRole);
+  setSortCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
 
-  setFilterCaseSensitivity(Qt::CaseInsensitive);
+  setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
   setFilterKeyColumn(-1);
-  setFilterRole(Qt::EditRole);
+  setFilterRole(Qt::ItemDataRole::EditRole);
 
   setDynamicSortFilter(false);
   setSourceModel(m_sourceModel);
@@ -110,8 +110,8 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start, int role,
                                           const QVariant& entered_value, int hits, Qt::MatchFlags flags) const {
   QModelIndexList result;
   const int match_type = flags & 0x0F;
-  const Qt::CaseSensitivity case_sensitivity = Qt::CaseInsensitive;
-  const bool wrap = (flags& Qt::MatchWrap) > 0;
+  const Qt::CaseSensitivity case_sensitivity = Qt::CaseSensitivity::CaseInsensitive;
+  const bool wrap = (flags& Qt::MatchFlag::MatchWrap) > 0;
   const bool all_hits = (hits == -1);
   QString entered_text;
   int from = start.row();

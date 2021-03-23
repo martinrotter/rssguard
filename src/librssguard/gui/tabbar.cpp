@@ -13,7 +13,7 @@
 TabBar::TabBar(QWidget* parent) : QTabBar(parent) {
   setDocumentMode(false);
   setUsesScrollButtons(true);
-  setContextMenuPolicy(Qt::CustomContextMenu);
+  setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
 }
 
 TabBar::~TabBar() {
