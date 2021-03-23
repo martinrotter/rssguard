@@ -15,6 +15,9 @@
 DKEY WebEngineAttributes::ID = "web_engine_attributes";
 #endif
 
+// Cookies.
+DKEY Cookies::ID = "cookies";
+
 // AdBlock.
 DKEY AdBlock::ID = "adblock";
 

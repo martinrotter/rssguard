@@ -61,7 +61,7 @@ void Downloader::manipulateData(const QString& url,
                                 const QString& username,
                                 const QString& password) {
 
-  auto cookies = qApp->web()->cookieJar()->extractCookiesFromUrl(url);
+  auto cookies = CookieJar::extractCookiesFromUrl(url);
 
   if (!cookies.isEmpty()) {
     qApp->web()->cookieJar()->setCookiesFromUrl(cookies, url);

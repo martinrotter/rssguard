@@ -32,6 +32,10 @@ namespace WebEngineAttributes {
 }
 #endif
 
+namespace Cookies {
+  KEY ID;
+}
+
 namespace AdBlock {
   KEY ID;
 
