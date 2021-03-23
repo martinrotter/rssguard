@@ -128,6 +128,7 @@ HEADERS += core/feeddownloader.h \
            miscellaneous/templates.h \
            miscellaneous/textfactory.h \
            network-web/basenetworkaccessmanager.h \
+           network-web/cookiejar.h \
            network-web/downloader.h \
            network-web/downloadmanager.h \
            network-web/httpresponse.h \
@@ -302,6 +303,7 @@ SOURCES += core/feeddownloader.cpp \
            miscellaneous/systemfactory.cpp \
            miscellaneous/textfactory.cpp \
            network-web/basenetworkaccessmanager.cpp \
+           network-web/cookiejar.cpp \
            network-web/downloader.cpp \
            network-web/downloadmanager.cpp \
            network-web/httpresponse.cpp \

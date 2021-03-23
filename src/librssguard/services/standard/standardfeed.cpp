@@ -2,6 +2,7 @@
 
 #include "services/standard/standardfeed.h"
 
+#include "3rd-party/sc/simplecrypt.h"
 #include "core/feedsmodel.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
@@ -13,7 +14,6 @@
 #include "gui/feedsview.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
-#include "3rd-party/sc/simplecrypt.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/recyclebin.h"

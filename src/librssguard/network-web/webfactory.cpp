@@ -5,6 +5,7 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "network-web/cookiejar.h"
 
 #include <QDesktopServices>
 #include <QProcess>
@@ -31,6 +32,8 @@ WebFactory::WebFactory(QObject* parent)
   m_urlInterceptor = new NetworkUrlInterceptor(this);
 #endif
 
+  m_cookieJar = new CookieJar(nullptr);
+
 #if defined(USE_WEBENGINE)
 #if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
   QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor(m_urlInterceptor);
@@ -46,6 +49,10 @@ WebFactory::~WebFactory() {
     m_engineSettings->menu()->deleteLater();
   }
 #endif
+
+  if (m_cookieJar != nullptr) {
+    m_cookieJar->deleteLater();
+  }
 }
 
 bool WebFactory::sendMessageViaEmail(const Message& message) {
@@ -223,12 +230,16 @@ void WebFactory::updateProxy() {
 }
 
 #if defined(USE_WEBENGINE)
-AdBlockManager* WebFactory::adBlock() {
+AdBlockManager* WebFactory::adBlock() const {
   return m_adBlock;
 }
 
-NetworkUrlInterceptor* WebFactory::urlIinterceptor() {
+NetworkUrlInterceptor* WebFactory::urlIinterceptor() const {
   return m_urlInterceptor;
+}
+
+CookieJar* WebFactory::cookieJar() const {
+  return m_cookieJar;
 }
 
 QAction* WebFactory::engineSettingsAction() {

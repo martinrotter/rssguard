@@ -2,10 +2,14 @@
 
 #include "network-web/downloader.h"
 
+#include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
+#include "network-web/cookiejar.h"
 #include "network-web/silentnetworkaccessmanager.h"
+#include "network-web/webfactory.h"
 
 #include <QHttpMultiPart>
+#include <QNetworkCookie>
 #include <QRegularExpression>
 #include <QTimer>
 
@@ -17,6 +21,9 @@ Downloader::Downloader(QObject* parent)
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
   connect(m_timer, &QTimer::timeout, this, &Downloader::cancel);
+
+  m_downloadManager->setCookieJar(qApp->web()->cookieJar());
+  qApp->web()->cookieJar()->setParent(nullptr);
 }
 
 Downloader::~Downloader() {
@@ -53,6 +60,13 @@ void Downloader::manipulateData(const QString& url,
                                 bool protected_contents,
                                 const QString& username,
                                 const QString& password) {
+
+  auto cookies = qApp->web()->cookieJar()->extractCookiesFromUrl(url);
+
+  if (!cookies.isEmpty()) {
+    qApp->web()->cookieJar()->setCookiesFromUrl(cookies, url);
+  }
+
   QNetworkRequest request;
   QString non_const_url = url;
   QHashIterator<QByteArray, QByteArray> i(m_customHeaders);

@@ -19,6 +19,8 @@ class AdBlockManager;
 class NetworkUrlInterceptor;
 #endif
 
+class CookieJar;
+
 class WebFactory : public QObject {
   Q_OBJECT
 
@@ -37,9 +39,11 @@ class WebFactory : public QObject {
 
 #if defined(USE_WEBENGINE)
     QAction* engineSettingsAction();
-    AdBlockManager* adBlock();
-    NetworkUrlInterceptor* urlIinterceptor();
+    AdBlockManager* adBlock() const;
+    NetworkUrlInterceptor* urlIinterceptor() const;
 #endif
+
+    CookieJar* cookieJar() const;
 
     void updateProxy();
     bool openUrlInExternalBrowser(const QString& url) const;
@@ -64,6 +68,7 @@ class WebFactory : public QObject {
     QAction* m_engineSettings;
 #endif
 
+    CookieJar* m_cookieJar;
     QMap<QString, char16_t> m_htmlNamedEntities;
 };
 
