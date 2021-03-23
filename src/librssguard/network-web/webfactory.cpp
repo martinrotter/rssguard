@@ -238,10 +238,6 @@ NetworkUrlInterceptor* WebFactory::urlIinterceptor() const {
   return m_urlInterceptor;
 }
 
-CookieJar* WebFactory::cookieJar() const {
-  return m_cookieJar;
-}
-
 QAction* WebFactory::engineSettingsAction() {
   if (m_engineSettings == nullptr) {
     m_engineSettings = new QAction(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web engine settings"), this);
@@ -316,6 +312,10 @@ QAction* WebFactory::createEngineSettingsAction(const QString& title, QWebEngine
 }
 
 #endif
+
+CookieJar* WebFactory::cookieJar() const {
+  return m_cookieJar;
+}
 
 void WebFactory::generateUnescapes() {
   m_htmlNamedEntities[QSL("AElig")] = 0x00c6;
