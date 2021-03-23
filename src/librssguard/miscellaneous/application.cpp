@@ -349,9 +349,9 @@ void Application::restoreDatabaseSettings(bool restore_database, bool restore_se
 
 void Application::processExecutionMessage(const QString& message) {
   qDebugNN << LOGSEC_CORE
-           << "Received '"
-           << message
-           << "' execution message from another application instance.";
+           << "Received"
+           << QUOTE_W_SPACE(message)
+           << "execution message from another application instance.";
 
   const QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR);
 
@@ -376,7 +376,7 @@ void Application::processExecutionMessage(const QString& message) {
         else {
           showGuiMessage(tr("Cannot add feed"),
                          tr("Feed cannot be added because standard RSS/ATOM account is not enabled."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(),
+                         QSystemTrayIcon::MessageIcon::Warning, qApp->mainForm(),
                          true);
         }
       }
