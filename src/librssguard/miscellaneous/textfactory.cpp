@@ -130,7 +130,7 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
 }
 
 QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
-  return QDateTime::fromMSecsSinceEpoch(milis_from_epoch);
+  return QDateTime::fromMSecsSinceEpoch(milis_from_epoch, Qt::TimeSpec::UTC);
 }
 
 QString TextFactory::encrypt(const QString& text) {

@@ -580,7 +580,7 @@ QList<Message>OwnCloudGetMessagesResponse::messages() const {
     msg.m_contents = message_map["body"].toString();
     msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].toDouble() * 1000);
     msg.m_createdFromFeed = true;
-    msg.m_customId = message_map["id"].isString() ? message_map["id"].toString() : QString::number(message_map["id"].toInt());
+    msg.m_customId = message_map["id"].toVariant().toString();
     msg.m_customHash = message_map["guidHash"].toString();
 
     QString enclosure_link = message_map["enclosureLink"].toString();
@@ -593,7 +593,7 @@ QList<Message>OwnCloudGetMessagesResponse::messages() const {
       msg.m_enclosures.append(enclosure);
     }
 
-    msg.m_feedId = message_map["feedId"].toString();
+    msg.m_feedId = message_map["feedId"].toVariant().toString();
     msg.m_isImportant = message_map["starred"].toBool();
     msg.m_isRead = !message_map["unread"].toBool();
     msg.m_title = message_map["title"].toString();

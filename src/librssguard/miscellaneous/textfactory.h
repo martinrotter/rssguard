@@ -26,7 +26,7 @@ class TextFactory {
     static QDateTime parseDateTime(const QString& date_time);
 
     // Converts 1970-epoch miliseconds to date/time.
-    // NOTE: This apparently returns date/time in localtime.
+    // NOTE: This method tries to always return time in UTC.
     static QDateTime parseDateTime(qint64 milis_from_epoch);
     static QString encrypt(const QString& text);
     static QString decrypt(const QString& text);
