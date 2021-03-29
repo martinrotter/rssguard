@@ -30,7 +30,12 @@
 
 #define URI_SCHEME_FEED_SHORT                 "feed:"
 #define URI_SCHEME_FEED                       "feed://"
+
+#define URI_SCHEME_HTTP_SHORT                 "http:"
 #define URI_SCHEME_HTTP                       "http://"
+
+#define URI_SCHEME_HTTPS_SHORT                "https:"
+#define URI_SCHEME_HTTPS                      "https://"
 
 #define DEFAULT_LOCALE                        "en"
 

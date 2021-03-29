@@ -149,7 +149,7 @@ void OAuthHttpHandler::answerClient(QTcpSocket* socket, const QUrl& url) {
 
 void OAuthHttpHandler::readReceivedData(QTcpSocket* socket) {
   if (!m_connectedClients.contains(socket)) {
-    m_connectedClients[socket].m_address = QSL("http://") + m_httpServer.serverAddress().toString();
+    m_connectedClients[socket].m_address = QSL(URI_SCHEME_HTTP) + m_httpServer.serverAddress().toString();
     m_connectedClients[socket].m_port = m_httpServer.serverPort();
   }
 

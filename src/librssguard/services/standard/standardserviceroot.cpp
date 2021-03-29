@@ -283,7 +283,8 @@ QString StandardServiceRoot::processFeedUrl(const QString& feed_url) {
   if (feed_url.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
     QString without_feed_prefix = feed_url.mid(QSL(URI_SCHEME_FEED_SHORT).size());
 
-    if (without_feed_prefix.startsWith(QL1S("https:")) || without_feed_prefix.startsWith(QL1S("http:"))) {
+    if (without_feed_prefix.startsWith(QL1S(URI_SCHEME_HTTPS_SHORT)) ||
+        without_feed_prefix.startsWith(QL1S(URI_SCHEME_HTTP_SHORT))) {
       return without_feed_prefix;
     }
     else {
