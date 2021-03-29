@@ -3,12 +3,13 @@
 #include "services/abstract/gui/formfeeddetails.h"
 
 #include "core/feedsmodel.h"
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "gui/baselineedit.h"
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
@@ -46,6 +47,13 @@ void FormFeedDetails::apply() {
   m_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
                                                                 m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
   m_feed->setAutoUpdateInitialInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
+
+  if (!m_creatingNew) {
+    // We need to make sure that common data are saved.
+    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+    DatabaseQueries::createOverwriteFeed(database, m_feed, m_serviceRoot->accountId(), m_feed->parent()->id());
+  }
 }
 
 void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
@@ -63,7 +71,7 @@ void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
 }
 
 void FormFeedDetails::createConnections() {
-  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormFeedDetails::apply);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormFeedDetails::acceptIfPossible);
   connect(m_ui->m_cmbAutoUpdateType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &FormFeedDetails::onAutoUpdateTypeChanged);
 }
@@ -78,6 +86,20 @@ void FormFeedDetails::loadFeedData() {
 
   m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(m_feed->autoUpdateType()))));
   m_ui->m_spinAutoUpdateInterval->setValue(m_feed->autoUpdateInitialInterval());
+}
+
+void FormFeedDetails::acceptIfPossible() {
+  try {
+    apply();
+    accept();
+  }
+  catch (const ApplicationException& ex) {
+    qApp->showGuiMessage(tr("Error"),
+                         tr("Cannot save changes: %1").arg(ex.message()),
+                         QSystemTrayIcon::MessageIcon::Critical,
+                         this,
+                         true);
+  }
 }
 
 void FormFeedDetails::initialize() {

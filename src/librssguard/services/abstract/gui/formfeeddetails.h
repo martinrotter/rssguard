@@ -47,6 +47,7 @@ class FormFeedDetails : public QDialog {
     virtual void loadFeedData();
 
   private slots:
+    void acceptIfPossible();
     void onAutoUpdateTypeChanged(int new_index);
 
   private:

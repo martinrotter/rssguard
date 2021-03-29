@@ -2,9 +2,9 @@
 
 #include "services/owncloud/owncloudserviceroot.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
@@ -153,7 +153,7 @@ QList<Message> OwnCloudServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
   QList<Message> msgs;
 
   for (Feed* feed : feeds) {
-    OwnCloudGetMessagesResponse messages = network()->getMessages(customNumericId(), networkProxy());
+    OwnCloudGetMessagesResponse messages = network()->getMessages(feed->customNumericId(), networkProxy());
 
     if (messages.networkError() != QNetworkReply::NetworkError::NoError) {
       feed->setStatus(Feed::Status::NetworkError);

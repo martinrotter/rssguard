@@ -2,6 +2,7 @@
 
 #include "services/tt-rss/gui/formttrssfeeddetails.h"
 
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/gui/authenticationdetails.h"
@@ -43,18 +44,13 @@ void FormTtRssFeedDetails::apply() {
 
     if (response.code() == STF_INSERTED) {
       // Feed was added online.
-      accept();
       qApp->showGuiMessage(tr("Feed added"),
                            tr("Feed was added, obtaining new tree of feeds now."),
                            QSystemTrayIcon::MessageIcon::Information);
       QTimer::singleShot(300, root, &TtRssServiceRoot::syncIn);
     }
     else {
-      qApp->showGuiMessage(tr("Cannot add feed"),
-                           tr("Feed was not added due to error."),
-                           QSystemTrayIcon::MessageIcon::Critical,
-                           qApp->mainFormWidget(),
-                           true);
+      throw ApplicationException(tr("API returned error code %1").arg(QString::number(response.code())));
     }
   }
 }

@@ -36,7 +36,7 @@ CREATE TABLE Feeds (
   description     TEXT,
   date_created    BIGINT,
   icon            °°,
-  category        INTEGER     NOT NULL CHECK (category >= -1), /* Root feeds contain -1 here. */
+  category        INTEGER     NOT NULL CHECK (category >= -1), /* Physical category ID, also root feeds contain -1 here. */
   source          TEXT,
   update_type     INTEGER     NOT NULL CHECK (update_type >= 0),
   update_interval INTEGER     NOT NULL DEFAULT 15 CHECK (update_interval >= 1),
