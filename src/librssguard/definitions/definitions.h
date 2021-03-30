@@ -100,6 +100,8 @@
 #define CLI_SIN_LONG      "no-single-instance"
 #define CLI_NDEBUG_SHORT  "n"
 #define CLI_NDEBUG_LONG   "no-debug-output"
+#define CLI_QUIT_INSTANCE "q"
+#define CLI_IS_RUNNING    "a"
 
 #define HTTP_HEADERS_ACCEPT         "Accept"
 #define HTTP_HEADERS_CONTENT_TYPE   "Content-Type"
@@ -169,8 +171,6 @@
 #define APP_CFG_PATH        "config"
 #define APP_CFG_FILE        "config.ini"
 
-#define APP_QUIT_INSTANCE   "-q"
-#define APP_IS_RUNNING      "app_is_running"
 #define APP_SKIN_USER_FOLDER "skins"
 #define APP_SKIN_DEFAULT    "vergilius"
 #define APP_SKIN_METADATA_FILE "metadata.xml"

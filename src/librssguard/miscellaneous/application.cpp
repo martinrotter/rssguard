@@ -158,7 +158,8 @@ void Application::offerChanges() const {
 bool Application::isAlreadyRunning() {
   return m_allowMultipleInstances
       ? false
-      : sendMessage((QStringList() << APP_IS_RUNNING << Application::arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR));
+      : sendMessage((QStringList() << QSL("-%1").arg(CLI_IS_RUNNING)
+                                   << Application::arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR));
 }
 
 FeedReader* Application:: feedReader() {
@@ -351,26 +352,26 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
   qDebugNN << LOGSEC_CORE
            << "Received"
            << QUOTE_W_SPACE(message)
-           << "execution message from another application instance.";
+           << "execution message.";
 
-  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR);
+  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, Qt::SplitBehaviorFlags::SkipEmptyParts);
   QCommandLineParser cmd_parser;
 
   messages.prepend(qApp->applicationFilePath());
 
-  cmd_parser.addOption(QCommandLineOption(QStringList() << APP_QUIT_INSTANCE));
-  cmd_parser.addOption(QCommandLineOption(QStringList() << APP_IS_RUNNING));
+  cmd_parser.addOption(QCommandLineOption(QStringList() << CLI_QUIT_INSTANCE));
+  cmd_parser.addOption(QCommandLineOption(QStringList() << CLI_IS_RUNNING));
   cmd_parser.addPositionalArgument("urls",
                                    "List of URL addresses pointing to individual online feeds which should be added.",
                                    "[url-1 ... url-n]");
 
   cmd_parser.process(messages);
 
-  if (cmd_parser.isSet(APP_QUIT_INSTANCE)) {
+  if (cmd_parser.isSet(CLI_QUIT_INSTANCE)) {
     quit();
     return;
   }
-  else if (cmd_parser.isSet(APP_IS_RUNNING)) {
+  else if (cmd_parser.isSet(CLI_IS_RUNNING)) {
     showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::MessageIcon::Information);
     mainForm()->display();
   }
