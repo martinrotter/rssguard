@@ -170,6 +170,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     QString title() const;
     void setTitle(const QString& title);
 
+    // This should be in UTC and should be converted to localtime when needed.
     QDateTime creationDate() const;
     void setCreationDate(const QDateTime& creation_date);
 

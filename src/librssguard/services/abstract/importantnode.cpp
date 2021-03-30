@@ -2,8 +2,8 @@
 
 #include "services/abstract/importantnode.h"
 
-#include "miscellaneous/application.h"
 #include "database/databasequeries.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
@@ -16,7 +16,6 @@ ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
   setIcon(qApp->icons()->fromTheme(QSL("mail-mark-important")));
   setTitle(tr("Important messages"));
   setDescription(tr("You can find all important messages here."));
-  setCreationDate(QDateTime::currentDateTime());
 }
 
 QList<Message> ImportantNode::undeletedMessages() const {

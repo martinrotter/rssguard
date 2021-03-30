@@ -233,7 +233,6 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
               new_feed->setDescription(feed_description);
               new_feed->setEncoding(feed_encoding);
               new_feed->setSource(feed_url);
-              new_feed->setCreationDate(QDateTime::currentDateTime());
               new_feed->setSourceType(source_type);
               new_feed->setPostProcessScript(post_process);
 
@@ -290,7 +289,6 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
             new_category->setIcon(category_icon);
           }
 
-          new_category->setCreationDate(QDateTime::currentDateTime());
           new_category->setDescription(category_description);
           active_model_item->appendChild(new_category);
 
@@ -369,7 +367,6 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
 
         feed->setSource(url);
         feed->setTitle(url);
-        feed->setCreationDate(QDateTime::currentDateTime());
         feed->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
         feed->setEncoding(DEFAULT_FEED_ENCODING);
         root_item->appendChild(feed);

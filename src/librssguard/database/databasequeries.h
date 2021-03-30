@@ -231,7 +231,7 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
 
     cat->setTitle(query_categories.value(CAT_DB_TITLE_INDEX).toString());
     cat->setDescription(query_categories.value(CAT_DB_DESCRIPTION_INDEX).toString());
-    cat->setCreationDate(TextFactory::parseDateTime(query_categories.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
+    cat->setCreationDate(TextFactory::parseDateTime(query_categories.value(CAT_DB_DCREATED_INDEX).value<qint64>()));
     cat->setIcon(qApp->icons()->fromByteArray(query_categories.value(CAT_DB_ICON_INDEX).toByteArray()));
 
     categories << pair;
@@ -286,7 +286,7 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
     }
 
     feed->setDescription(QString::fromUtf8(query.value(FDS_DB_DESCRIPTION_INDEX).toByteArray()));
-    feed->setCreationDate(TextFactory::parseDateTime(query.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
+    feed->setCreationDate(TextFactory::parseDateTime(query.value(FDS_DB_DCREATED_INDEX).value<qint64>()));
     feed->setIcon(qApp->icons()->fromByteArray(query.value(FDS_DB_ICON_INDEX).toByteArray()));
     feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(query.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
     feed->setAutoUpdateInitialInterval(query.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());

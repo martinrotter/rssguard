@@ -88,7 +88,6 @@ void FormCategoryDetails::apply() {
   RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
 
   m_category->setTitle(m_ui->m_txtTitle->lineEdit()->text());
-  m_category->setCreationDate(QDateTime::currentDateTime());
   m_category->setDescription(m_ui->m_txtDescription->lineEdit()->text());
   m_category->setIcon(m_ui->m_btnIcon->icon());
 

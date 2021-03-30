@@ -21,8 +21,6 @@ ServiceRoot::ServiceRoot(RootItem* parent)
   : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
   m_labelsNode(new LabelsNode(this)), m_accountId(NO_PARENT_CATEGORY), m_networkProxy(QNetworkProxy()) {
   setKind(RootItem::Kind::ServiceRoot);
-  setCreationDate(QDateTime::currentDateTime());
-
   appendCommonNodes();
 }
 

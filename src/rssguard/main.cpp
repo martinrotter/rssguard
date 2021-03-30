@@ -87,6 +87,7 @@ int main(int argc, char* argv[]) {
   qApp->offerChanges();
   qApp->showPolls();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
+  qApp->parseCmdArgumentsFromOtherInstance(qApp->cmdParser()->positionalArguments().join(ARGUMENTS_LIST_SEPARATOR));
 
   return Application::exec();
 }

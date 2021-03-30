@@ -304,7 +304,7 @@ Here you can find some useful advanced insights into RSS Guard's modus operandi.
 RSS Guard offers CLI (command line interface). For overview of its features, run `rssguard --help` in your terminal. You will see the overview of the interface.
 
 ```
-RSS Guard
+rssguard.exe [options] [url-1 ... url-n]
 
 Options:
   -l, --log <log-file>           Write application debug log to file. Note that
@@ -313,10 +313,25 @@ Options:
                                  single instance application mode.
   -s, --no-single-instance       Allow running of multiple application
                                  instances.
+  -n, --no-debug-output          Completely disable stdout/stderr outputs.
   -?, -h, --help                 Displays help on commandline options.
   --help-all                     Displays help including Qt specific options.
   -v, --version                  Displays version information.
+
+Arguments:
+  urls                           List of URL addresses pointing to individual
+                                 online feeds which should be added.
 ```
+
+RSS Guard can add feeds passed as URLs via command line arguments. Feed URI [scheme](https://en.wikipedia.org/wiki/Feed_URI_scheme) is supported, so that you can call RSS Guard like this:
+
+```
+rssguard.exe "feed://archlinux.org/feeds/news"
+rssguard.exe "feed:https//archlinux.org/feeds/news"
+rssguard.exe "https://archlinux.org/feeds/news"
+```
+
+So in order to comfortably add feed directly to RSS Guard from you browser without copying its URL manually, you have to "open" RSS Guard "with" feed URL passed as parameter. There are [extensions](https://addons.mozilla.org/en-GB/firefox/addon/open-with/) which can do it.
 
 ## How to build
 RSS Guard is C++ application and all common build instructions can be found in top of [project file](https://github.com/martinrotter/rssguard/blob/master/build.pro).

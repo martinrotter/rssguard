@@ -2,8 +2,8 @@
 
 #include "services/abstract/recyclebin.h"
 
-#include "miscellaneous/application.h"
 #include "database/databasequeries.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
@@ -18,7 +18,6 @@ RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCo
   setIcon(qApp->icons()->fromTheme(QSL("user-trash")));
   setTitle(tr("Recycle bin"));
   setDescription(tr("Recycle bin contains all deleted messages from all feeds."));
-  setCreationDate(QDateTime::currentDateTime());
 }
 
 QString RecycleBin::additionalTooltip() const {

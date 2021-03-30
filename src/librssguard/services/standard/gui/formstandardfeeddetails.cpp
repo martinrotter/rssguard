@@ -125,7 +125,7 @@ void FormStandardFeedDetails::loadFeedData() {
   m_authDetails->m_txtPassword->lineEdit()->setText(std_feed->password());
 
   if (m_creatingNew) {
-    auto processed_url = qobject_cast<StandardServiceRoot*>(m_serviceRoot)->processFeedUrl(m_urlToProcess);
+    auto processed_url = qApp->web()->processFeedUriScheme(m_urlToProcess);
 
     m_standardFeedDetails->prepareForNewFeed(m_parentToSelect, processed_url);
   }

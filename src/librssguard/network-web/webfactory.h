@@ -37,6 +37,8 @@ class WebFactory : public QObject {
     //   ∀ = &forall; (entity name), &#8704; (base-10 entity), &#x2200; (base-16 entity)
     QString unescapeHtml(const QString& html);
 
+    QString processFeedUriScheme(const QString& url);
+
 #if defined(USE_WEBENGINE)
     QAction* engineSettingsAction();
     AdBlockManager* adBlock() const;

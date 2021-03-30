@@ -202,6 +202,18 @@ QString WebFactory::unescapeHtml(const QString& html) {
   return output;
 }
 
+QString WebFactory::processFeedUriScheme(const QString& url) {
+  if (url.startsWith(URI_SCHEME_FEED)) {
+    return QSL(URI_SCHEME_HTTPS) + url.mid(QSL(URI_SCHEME_FEED).size());
+  }
+  else if (url.startsWith(URI_SCHEME_FEED_SHORT)) {
+    return url.mid(QSL(URI_SCHEME_FEED_SHORT).size());
+  }
+  else {
+    return url;
+  }
+}
+
 void WebFactory::updateProxy() {
   const QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(GROUP(Proxy),
                                                                                                                      SETTING(Proxy::Type)).

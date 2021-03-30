@@ -2,10 +2,10 @@
 
 #include "services/abstract/labelsnode.h"
 
-#include "gui/dialogs/formaddeditlabel.h"
-#include "miscellaneous/application.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
+#include "gui/dialogs/formaddeditlabel.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/serviceroot.h"
 
@@ -17,7 +17,6 @@ LabelsNode::LabelsNode(RootItem* parent_item) : RootItem(parent_item), m_actLabe
   setIcon(qApp->icons()->fromTheme(QSL("tag-folder")));
   setTitle(tr("Labels"));
   setDescription(tr("You can see all your labels (tags) here."));
-  setCreationDate(QDateTime::currentDateTime());
 }
 
 void LabelsNode::loadLabels(const QList<Label*>& labels) {

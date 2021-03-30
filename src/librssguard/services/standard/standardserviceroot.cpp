@@ -13,6 +13,7 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
+#include "network-web/webfactory.h"
 #include "services/abstract/gui/formcategorydetails.h"
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
@@ -86,8 +87,6 @@ void StandardServiceRoot::start(bool freshly_activated) {
       requestItemExpand({ this }, true);
     }
   }
-
-  checkArgumentsForFeedAdding();
 }
 
 void StandardServiceRoot::stop() {
@@ -269,37 +268,6 @@ QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
   }
 
   return msgs;
-}
-
-void StandardServiceRoot::checkArgumentsForFeedAdding() {
-  auto args = qApp->arguments().mid(1);
-
-  for (const QString& arg : qAsConst(args)) {
-    checkArgumentForFeedAdding(arg);
-  }
-}
-
-QString StandardServiceRoot::processFeedUrl(const QString& feed_url) {
-  if (feed_url.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
-    QString without_feed_prefix = feed_url.mid(QSL(URI_SCHEME_FEED_SHORT).size());
-
-    if (without_feed_prefix.startsWith(QL1S(URI_SCHEME_HTTPS_SHORT)) ||
-        without_feed_prefix.startsWith(QL1S(URI_SCHEME_HTTP_SHORT))) {
-      return without_feed_prefix;
-    }
-    else {
-      return feed_url;
-    }
-  }
-  else {
-    return feed_url;
-  }
-}
-
-void StandardServiceRoot::checkArgumentForFeedAdding(const QString& argument) {
-  if (argument.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
-    addNewFeed(nullptr, processFeedUrl(argument));
-  }
 }
 
 QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed* feed) {

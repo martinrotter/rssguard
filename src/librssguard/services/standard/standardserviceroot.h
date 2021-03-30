@@ -46,9 +46,6 @@ class StandardServiceRoot : public ServiceRoot {
     void exportFeeds();
 
   private:
-    QString processFeedUrl(const QString& feed_url);
-    void checkArgumentForFeedAdding(const QString& argument);
-    void checkArgumentsForFeedAdding();
 
     // Takes structure residing under given root item and adds feeds/categories from
     // it to active structure.
