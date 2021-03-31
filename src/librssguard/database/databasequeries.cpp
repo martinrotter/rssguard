@@ -282,6 +282,17 @@ bool DatabaseQueries::markImportantMessagesReadUnread(const QSqlDatabase& db, in
   return q.exec();
 }
 
+bool DatabaseQueries::markUnreadMessagesRead(const QSqlDatabase& db, int account_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("UPDATE Messages SET is_read = :read "
+            "WHERE is_read = 0 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
+  q.bindValue(QSL(":read"), 1);
+  q.bindValue(QSL(":account_id"), account_id);
+  return q.exec();
+}
+
 bool DatabaseQueries::markMessagesReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 
@@ -1435,6 +1446,28 @@ bool DatabaseQueries::cleanImportantMessages(const QSqlDatabase& db, bool clean_
   if (!q.exec()) {
     qWarningNN << LOGSEC_DB
                << "Cleaning of important messages failed: '"
+               << q.lastError().text()
+               << "'.";
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
+bool DatabaseQueries::cleanUnreadMessages(const QSqlDatabase& db, int account_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
+                "WHERE is_deleted = 0 AND is_pdeleted = 0 AND is_read = 0 AND account_id = :account_id;"));
+
+  q.bindValue(QSL(":deleted"), 1);
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    qWarningNN << LOGSEC_DB
+               << "Cleaning of unread messages failed: '"
                << q.lastError().text()
                << "'.";
     return false;

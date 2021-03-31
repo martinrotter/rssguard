@@ -42,6 +42,7 @@ class DatabaseQueries {
     // Message operators.
     static bool markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read);
     static bool markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
+    static bool markUnreadMessagesRead(const QSqlDatabase& db, int account_id);
     static bool markMessagesReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read);
     static bool markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance);
     static bool markFeedsReadUnread(const QSqlDatabase& db, const QStringList& ids, int account_id, RootItem::ReadStatus read);
@@ -114,6 +115,7 @@ class DatabaseQueries {
     static bool deleteAccountData(const QSqlDatabase& db, int account_id, bool delete_messages_too);
     static bool cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label);
     static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
+    static bool cleanUnreadMessages(const QSqlDatabase& db, int account_id);
     static bool cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
     static bool storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id);
     static void createOverwriteFeed(const QSqlDatabase& db, Feed* feed, int account_id, int parent_id);

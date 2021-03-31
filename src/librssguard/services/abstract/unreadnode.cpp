@@ -35,10 +35,14 @@ void UnreadNode::updateCounts(bool including_total_count) {
 }
 
 bool UnreadNode::cleanMessages(bool clean_read_only) {
+  if (clean_read_only) {
+    return true;
+  }
+
   ServiceRoot* service = getParentServiceRoot();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::cleanImportantMessages(database, clean_read_only, service->accountId())) {
+  if (DatabaseQueries::cleanUnreadMessages(database, service->accountId())) {
     service->updateCounts(true);
     service->itemChanged(service->getSubTree());
     service->requestReloadMessageList(true);
@@ -50,6 +54,11 @@ bool UnreadNode::cleanMessages(bool clean_read_only) {
 }
 
 bool UnreadNode::markAsReadUnread(RootItem::ReadStatus status) {
+  if (status == RootItem::ReadStatus::Unread) {
+    // NOTE: We do not need to mark already unread messages as unread.
+    return true;
+  }
+
   ServiceRoot* service = getParentServiceRoot();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
@@ -59,7 +68,7 @@ bool UnreadNode::markAsReadUnread(RootItem::ReadStatus status) {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::markImportantMessagesReadUnread(database, service->accountId(), status)) {
+  if (DatabaseQueries::markUnreadMessagesRead(database, service->accountId())) {
     service->updateCounts(false);
     service->itemChanged(service->getSubTree());
     service->requestReloadMessageList(status == RootItem::ReadStatus::Read);

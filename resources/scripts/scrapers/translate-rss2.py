@@ -51,6 +51,11 @@ def process_article(article):
   contents = article.find("description")
   contents.text = translate_string(" ".join(contents.itertext()))
 
+# Translate title.
+title = rss_document.find(".//channel").find("title")
+title.text = translate_string(title.text)
+
+# Translate articles.
 if parallel:
   with ThreadPoolExecutor(max_workers = 2) as executor:
     futures = []
