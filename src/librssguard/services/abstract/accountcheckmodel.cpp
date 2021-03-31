@@ -313,6 +313,7 @@ bool AccountCheckSortedModel::lessThan(const QModelIndex& source_left, const QMo
       RootItem::Kind::Feed,
       RootItem::Kind::Labels,
       RootItem::Kind::Important,
+      RootItem::Kind::Unread,
       RootItem::Kind::Bin
     };
 

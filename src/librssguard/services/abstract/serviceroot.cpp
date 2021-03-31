@@ -16,10 +16,12 @@
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
+#include "services/abstract/unreadnode.h"
 
 ServiceRoot::ServiceRoot(RootItem* parent)
   : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
-  m_labelsNode(new LabelsNode(this)), m_accountId(NO_PARENT_CATEGORY), m_networkProxy(QNetworkProxy()) {
+  m_labelsNode(new LabelsNode(this)), m_unreadNode(new UnreadNode(this)),
+  m_accountId(NO_PARENT_CATEGORY), m_networkProxy(QNetworkProxy()) {
   setKind(RootItem::Kind::ServiceRoot);
   appendCommonNodes();
 }
@@ -198,6 +200,7 @@ void ServiceRoot::cleanAllItemsFromModel() {
   for (RootItem* top_level_item : qAsConst(chi)) {
     if (top_level_item->kind() != RootItem::Kind::Bin &&
         top_level_item->kind() != RootItem::Kind::Important &&
+        top_level_item->kind() != RootItem::Kind::Unread &&
         top_level_item->kind() != RootItem::Kind::Labels) {
       requestItemRemoval(top_level_item);
     }
@@ -219,6 +222,10 @@ void ServiceRoot::appendCommonNodes() {
 
   if (importantNode() != nullptr && !childItems().contains(importantNode())) {
     appendChild(importantNode());
+  }
+
+  if (unreadNode() != nullptr && !childItems().contains(unreadNode())) {
+    appendChild(unreadNode());
   }
 
   if (labelsNode() != nullptr && !childItems().contains(labelsNode())) {
@@ -391,6 +398,10 @@ LabelsNode* ServiceRoot::labelsNode() const {
   return m_labelsNode;
 }
 
+UnreadNode* ServiceRoot::unreadNode() const {
+  return m_unreadNode;
+}
+
 void ServiceRoot::syncIn() {
   QIcon original_icon = icon();
 
@@ -516,6 +527,13 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
         break;
       }
 
+      case RootItem::Kind::Unread: {
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+        list = DatabaseQueries::customIdsOfUnreadMessages(database, accountId());
+        break;
+      }
+
       default:
         break;
     }
@@ -604,6 +622,10 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   }
   else if (item->kind() == RootItem::Kind::Important) {
     model->setFilter(QString("Messages.is_important = 1 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
+                     .arg(QString::number(accountId())));
+  }
+  else if (item->kind() == RootItem::Kind::Unread) {
+    model->setFilter(QString("Messages.is_read = 0 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
                      .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::Label) {

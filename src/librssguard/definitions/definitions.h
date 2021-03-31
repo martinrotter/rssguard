@@ -43,6 +43,7 @@
 #define ID_RECYCLE_BIN                        -2
 #define ID_IMPORTANT                          -3
 #define ID_LABELS                             -4
+#define ID_UNREAD                             -5
 
 #define MSG_SCORE_MAX   100.0
 #define MSG_SCORE_MIN   0.0

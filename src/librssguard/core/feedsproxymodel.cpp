@@ -30,6 +30,7 @@ FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
     RootItem::Kind::Feed,
     RootItem::Kind::Labels,
     RootItem::Kind::Important,
+    RootItem::Kind::Unread,
     RootItem::Kind::Bin
   };
 }

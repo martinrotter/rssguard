@@ -16,6 +16,7 @@
 class FeedsModel;
 class RecycleBin;
 class ImportantNode;
+class UnreadNode;
 class LabelsNode;
 class Label;
 class QAction;
@@ -43,6 +44,7 @@ class ServiceRoot : public RootItem {
     RecycleBin* recycleBin() const;
     ImportantNode* importantNode() const;
     LabelsNode* labelsNode() const;
+    UnreadNode* unreadNode() const;
 
     virtual void updateCounts(bool including_total_count);
     virtual bool canBeDeleted() const;
@@ -256,6 +258,7 @@ class ServiceRoot : public RootItem {
     RecycleBin* m_recycleBin;
     ImportantNode* m_importantNode;
     LabelsNode* m_labelsNode;
+    UnreadNode* m_unreadNode;
     int m_accountId;
     QList<QAction*> m_serviceMenu;
     QNetworkProxy m_networkProxy;

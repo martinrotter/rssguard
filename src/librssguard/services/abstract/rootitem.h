@@ -47,7 +47,8 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
       ServiceRoot = 16,
       Labels = 32,
       Important = 64,
-      Label = 128
+      Label = 128,
+      Unread = 256
     };
 
     // Constructors and destructors.

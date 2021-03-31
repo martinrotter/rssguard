@@ -152,6 +152,7 @@ HEADERS += core/feeddownloader.h \
            services/abstract/rootitem.h \
            services/abstract/serviceentrypoint.h \
            services/abstract/serviceroot.h \
+           services/abstract/unreadnode.h \
            services/feedly/definitions.h \
            services/feedly/feedlyentrypoint.h \
            services/feedly/feedlynetwork.h \
@@ -326,6 +327,7 @@ SOURCES += core/feeddownloader.cpp \
            services/abstract/recyclebin.cpp \
            services/abstract/rootitem.cpp \
            services/abstract/serviceroot.cpp \
+           services/abstract/unreadnode.cpp \
            services/feedly/feedlyentrypoint.cpp \
            services/feedly/feedlynetwork.cpp \
            services/feedly/feedlyserviceroot.cpp \

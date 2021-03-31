@@ -15,6 +15,7 @@
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
+#include "services/abstract/unreadnode.h"
 
 #include <QThread>
 
@@ -231,6 +232,11 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
       if (getParentServiceRoot()->importantNode() != nullptr && anything_updated) {
         getParentServiceRoot()->importantNode()->updateCounts(true);
         items_to_update.append(getParentServiceRoot()->importantNode());
+      }
+
+      if (getParentServiceRoot()->unreadNode() != nullptr && anything_updated) {
+        getParentServiceRoot()->unreadNode()->updateCounts(true);
+        items_to_update.append(getParentServiceRoot()->unreadNode());
       }
 
       if (getParentServiceRoot()->labelsNode() != nullptr) {

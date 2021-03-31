@@ -638,6 +638,31 @@ int DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int accou
   }
 }
 
+int DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_id, bool* ok) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare("SELECT count(*) FROM Messages "
+            "WHERE is_read = 0 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
+
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (q.exec() && q.next()) {
+    if (ok != nullptr) {
+      *ok = true;
+    }
+
+    return q.value(0).toInt();
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+
+    return 0;
+  }
+}
+
 int DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool including_total_counts, bool* ok) {
   QSqlQuery q(db);
 
@@ -755,6 +780,40 @@ QList<Message> DatabaseQueries::getUndeletedImportantMessages(const QSqlDatabase
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages "
                 "WHERE is_important = 1 AND is_deleted = 0 AND "
+                "      is_pdeleted = 0 AND account_id = :account_id;").arg(messageTableAttributes(true).values().join(QSL(", "))));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (q.exec()) {
+    while (q.next()) {
+      bool decoded;
+      Message message = Message::fromSqlRecord(q.record(), &decoded);
+
+      if (decoded) {
+        messages.append(message);
+      }
+    }
+
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  return messages;
+}
+
+QList<Message> DatabaseQueries::getUndeletedUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok) {
+  QList<Message> messages;
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT %1 "
+                "FROM Messages "
+                "WHERE is_read = 0 AND is_deleted = 0 AND "
                 "      is_pdeleted = 0 AND account_id = :account_id;").arg(messageTableAttributes(true).values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
@@ -1587,6 +1646,29 @@ QStringList DatabaseQueries::customIdsOfImportantMessages(const QSqlDatabase& db
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT custom_id FROM Messages "
                 "WHERE is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (ok != nullptr) {
+    *ok = q.exec();
+  }
+  else {
+    q.exec();
+  }
+
+  while (q.next()) {
+    ids.append(q.value(0).toString());
+  }
+
+  return ids;
+}
+
+QStringList DatabaseQueries::customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok) {
+  QSqlQuery q(db);
+  QStringList ids;
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT custom_id FROM Messages "
+                "WHERE is_read = 0 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (ok != nullptr) {

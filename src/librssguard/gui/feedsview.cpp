@@ -747,7 +747,8 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
       // Display context menu for feeds.
       initializeContextMenuFeeds(clicked_item)->exec(event->globalPos());
     }
-    else if (clicked_item->kind() == RootItem::Kind::Important) {
+    else if (clicked_item->kind() == RootItem::Kind::Important ||
+             clicked_item->kind() == RootItem::Kind::Unread) {
       initializeContextMenuImportant(clicked_item)->exec(event->globalPos());
     }
     else if (clicked_item->kind() == RootItem::Kind::Bin) {

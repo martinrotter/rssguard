@@ -1,15 +1,13 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#ifndef IMPORTANTNODE_H
-#define IMPORTANTNODE_H
+#ifndef UNREADNODE_H
+#define UNREADNODE_H
 
 #include "services/abstract/rootitem.h"
 
-class ImportantNode : public RootItem {
-  Q_OBJECT
-
+class UnreadNode : public RootItem {
   public:
-    explicit ImportantNode(RootItem* parent_item = nullptr);
+    explicit UnreadNode(RootItem* parent_item = nullptr);
 
     virtual QList<Message> undeletedMessages() const;
     virtual bool cleanMessages(bool clean_read_only);
@@ -23,4 +21,4 @@ class ImportantNode : public RootItem {
     int m_unreadCount{};
 };
 
-#endif // IMPORTANTNODE_H
+#endif // UNREADNODE_H

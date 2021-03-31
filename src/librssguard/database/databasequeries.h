@@ -78,12 +78,14 @@ class DatabaseQueries {
                                         bool only_total_counts, bool* ok = nullptr);
     static int getImportantMessageCounts(const QSqlDatabase& db, int account_id,
                                          bool only_total_counts, bool* ok = nullptr);
+    static int getUnreadMessageCounts(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static int getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool including_total_counts, bool* ok = nullptr);
 
     // Get messages (for newspaper view for example).
     static QList<Message> getUndeletedMessagesWithLabel(const QSqlDatabase& db, const Label* label, bool* ok = nullptr);
     static QList<Message> getUndeletedLabelledMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedImportantMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static QList<Message> getUndeletedUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db, const QString& feed_custom_id,
                                                       int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
@@ -92,6 +94,7 @@ class DatabaseQueries {
     // Custom ID accumulators.
     static QStringList customIdsOfMessagesFromLabel(const QSqlDatabase& db, Label* label, bool* ok = nullptr);
     static QStringList customIdsOfImportantMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static QStringList customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id,
