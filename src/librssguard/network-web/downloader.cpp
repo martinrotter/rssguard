@@ -106,11 +106,6 @@ void Downloader::finished() {
 
   m_timer->stop();
 
-  // In this phase, some part of downloading process is completed.
-  const QUrl redirection_url = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
-
-  // No redirection is indicated. Final file is obtained in our "reply" object.
-  // Read the data into output buffer.
   if (m_inputMultipartData == nullptr) {
     m_lastOutputData = reply->readAll();
   }

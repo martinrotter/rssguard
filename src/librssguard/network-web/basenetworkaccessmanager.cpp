@@ -32,15 +32,21 @@ void BaseNetworkAccessManager::loadSettings() {
   qDebugNN << LOGSEC_NETWORK << "Settings of BaseNetworkAccessManager loaded.";
 }
 
+void BaseNetworkAccessManager::acceptRedirection(const QUrl& url) {
+  auto* reply = qobject_cast<QNetworkReply*>(sender());
+  emit reply->redirectAllowed();
+
+  qDebugNN << LOGSEC_NETWORK << "Accepting redirect to" << QUOTE_W_SPACE_DOT(url.toString());
+}
+
 void BaseNetworkAccessManager::onSslErrors(QNetworkReply* reply, const QList<QSslError>& error) {
   qWarningNN << LOGSEC_NETWORK
-             << "Ignoring SSL errors for '"
-             << reply->url().toString()
-             << "':"
+             << "Ignoring SSL errors for"
+             << QUOTE_W_SPACE(reply->url().toString())
+             << ":"
              << QUOTE_W_SPACE(reply->errorString())
-             << "(code "
-             << reply->error()
-             << ").";
+             << "- code"
+             << QUOTE_W_SPACE_DOT(reply->error());
   reply->ignoreSslErrors(error);
 }
 
@@ -50,19 +56,19 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   QNetworkRequest new_request = request;
 
   new_request.setAttribute(QNetworkRequest::Attribute::HttpPipeliningAllowedAttribute, true);
+  new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, true);
 
 #if QT_VERSION >= 0x050900
   new_request.setAttribute(QNetworkRequest::Attribute::RedirectPolicyAttribute,
-                           QNetworkRequest::RedirectPolicy::NoLessSafeRedirectPolicy);
+                           QNetworkRequest::RedirectPolicy::UserVerifiedRedirectPolicy);
 #elif QT_VERSION >= 0x050600
   new_request.setAttribute(QNetworkRequest::Attribute::FollowRedirectsAttribute, true);
 #endif
 
-  new_request.setRawHeader(QSL("Cookie").toLocal8Bit(), QSL("JSESSIONID= ").toLocal8Bit());
-
-  // Setup custom user-agent.
-  new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, QString(APP_USERAGENT).toLocal8Bit());
+  new_request.setHeader(QNetworkRequest::KnownHeaders::CookieHeader, QSL("JSESSIONID= ").toLocal8Bit());
+  new_request.setHeader(QNetworkRequest::KnownHeaders::UserAgentHeader, QString(APP_USERAGENT).toLocal8Bit());
 
   auto reply = QNetworkAccessManager::createRequest(op, new_request, outgoingData);
+  connect(reply, &QNetworkReply::redirected, this, &BaseNetworkAccessManager::acceptRedirection);
   return reply;
 }

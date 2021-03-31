@@ -13,19 +13,13 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
     explicit BaseNetworkAccessManager(QObject* parent = nullptr);
 
   public slots:
-
-    // Loads network settings for this instance.
-    // NOTE: This sets up proxy settings.
-    virtual void loadSettings();
+    void loadSettings();
 
   protected slots:
-
-    // Called when some SSL-related errors are detected.
+    void acceptRedirection(const QUrl& url);
     void onSslErrors(QNetworkReply* reply, const QList<QSslError>& error);
 
   protected:
-
-    // Creates custom request.
     QNetworkReply* createRequest(Operation op, const QNetworkRequest& request, QIODevice* outgoingData);
 };
 
