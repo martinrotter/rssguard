@@ -261,6 +261,11 @@ void FeedsModel::removeItem(RootItem* deleting_item) {
     beginRemoveRows(parent_index, index.row(), index.row());
     parent_item->removeChild(deleting_item);
     endRemoveRows();
+
+    if (deleting_item->kind() != RootItem::Kind::ServiceRoot) {
+      deleting_item->getParentServiceRoot()->updateCounts(true);
+    }
+
     deleting_item->deleteLater();
     notifyWithCounts();
   }

@@ -959,10 +959,8 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                                     int account_id,
                                     const QString& url,
                                     bool force_update,
-                                    bool* any_message_changed,
                                     bool* ok) {
   if (messages.isEmpty()) {
-    *any_message_changed = false;
     *ok = true;
     return 0;
   }
@@ -1188,8 +1186,6 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         query_update.bindValue(QSL(":score"), message.m_score);
         query_update.bindValue(QSL(":id"), id_existing_message);
 
-        *any_message_changed = true;
-
         if (query_update.exec()) {
           qDebugNN << LOGSEC_DB
                    << "Updating message with title"
@@ -1197,10 +1193,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                    << "URL"
                    << QUOTE_W_SPACE(message.m_url)
                    << "in DB.";
-
-          if (!message.m_isRead) {
-            updated_messages++;
-          }
+          updated_messages++;
         }
         else if (query_update.lastError().isValid()) {
           qWarningNN << LOGSEC_DB
@@ -1235,19 +1228,18 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
         }
 
         qDebugNN << LOGSEC_DB
-                 << "Adding new message with title '"
-                 << message.m_title
-                 << "' url '"
-                 << message.m_url
-                 << "' to DB.";
+                 << "Adding new message with title"
+                 << QUOTE_W_SPACE(message.m_title)
+                 << ", URL"
+                 << QUOTE_W_SPACE(message.m_url)
+                 << "to DB.";
       }
       else if (query_insert.lastError().isValid()) {
         qWarningNN << LOGSEC_DB
-                   << "Failed to insert message to DB: '"
-                   << query_insert.lastError().text()
-                   << "' - message title is '"
-                   << message.m_title
-                   << "'.";
+                   << "Failed to insert message to DB:"
+                   << QUOTE_W_SPACE(query_insert.lastError().text())
+                   << "- message title is"
+                   << QUOTE_W_SPACE_DOT(message.m_title);
       }
 
       query_insert.finish();

@@ -199,7 +199,6 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
              << "Updating messages in DB. Main thread:"
              << QUOTE_W_SPACE_DOT(is_main_thread ? "true" : "false");
 
-    bool anything_updated = false;
     bool ok = true;
 
     if (!messages.isEmpty()) {
@@ -213,7 +212,7 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
                               qApp->database()->driver()->connection(QSL("feed_upd"));
 
       updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id,
-                                                         source(), force_update, &anything_updated, &ok);
+                                                         source(), force_update, &ok);
     }
     else {
       qDebugNN << LOGSEC_CORE
@@ -224,17 +223,17 @@ int Feed::updateMessages(const QList<Message>& messages, bool error_during_obtai
       setStatus(updated_messages > 0 ? Status::NewMessages : Status::Normal);
       updateCounts(true);
 
-      if (getParentServiceRoot()->recycleBin() != nullptr && anything_updated) {
+      if (getParentServiceRoot()->recycleBin() != nullptr && updated_messages > 0) {
         getParentServiceRoot()->recycleBin()->updateCounts(true);
         items_to_update.append(getParentServiceRoot()->recycleBin());
       }
 
-      if (getParentServiceRoot()->importantNode() != nullptr && anything_updated) {
+      if (getParentServiceRoot()->importantNode() != nullptr && updated_messages > 0) {
         getParentServiceRoot()->importantNode()->updateCounts(true);
         items_to_update.append(getParentServiceRoot()->importantNode());
       }
 
-      if (getParentServiceRoot()->unreadNode() != nullptr && anything_updated) {
+      if (getParentServiceRoot()->unreadNode() != nullptr && updated_messages > 0) {
         getParentServiceRoot()->unreadNode()->updateCounts(true);
         items_to_update.append(getParentServiceRoot()->unreadNode());
       }

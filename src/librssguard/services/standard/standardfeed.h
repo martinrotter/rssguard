@@ -39,20 +39,15 @@ class StandardFeed : public Feed {
     explicit StandardFeed(RootItem* parent_item = nullptr);
     explicit StandardFeed(const StandardFeed& other);
 
-    QList<QAction*> contextMenuFeedsList();
-    QString additionalTooltip() const;
-
-    bool canBeDeleted() const;
-    bool deleteViaGui();
-
-    bool editViaGui();
-
+    virtual QList<QAction*> contextMenuFeedsList();
+    virtual QString additionalTooltip() const;
+    virtual bool canBeDeleted() const;
+    virtual bool deleteViaGui();
+    virtual bool editViaGui();
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
-
-    // Obtains data related to this feed.
-    Qt::ItemFlags additionalFlags() const;
-    bool performDragDropChange(RootItem* target_item);
+    virtual Qt::ItemFlags additionalFlags() const;
+    virtual bool performDragDropChange(RootItem* target_item);
 
     // Other getters/setters.
     Type type() const;
