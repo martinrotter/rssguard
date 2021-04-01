@@ -65,8 +65,8 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   new_request.setAttribute(QNetworkRequest::Attribute::FollowRedirectsAttribute, true);
 #endif
 
-  new_request.setHeader(QNetworkRequest::KnownHeaders::CookieHeader, QSL("JSESSIONID= ").toLocal8Bit());
-  new_request.setHeader(QNetworkRequest::KnownHeaders::UserAgentHeader, QString(APP_USERAGENT).toLocal8Bit());
+  new_request.setRawHeader(HTTP_HEADERS_COOKIE, QSL("JSESSIONID= ").toLocal8Bit());
+  new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, QString(APP_USERAGENT).toLocal8Bit());
 
   auto reply = QNetworkAccessManager::createRequest(op, new_request, outgoingData);
   connect(reply, &QNetworkReply::redirected, this, &BaseNetworkAccessManager::acceptRedirection);

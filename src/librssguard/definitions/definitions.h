@@ -98,6 +98,7 @@
 #define HTTP_HEADERS_CONTENT_LENGTH "Content-Length"
 #define HTTP_HEADERS_AUTHORIZATION  "Authorization"
 #define HTTP_HEADERS_USER_AGENT     "User-Agent"
+#define HTTP_HEADERS_COOKIE         "Cookie"
 
 #define LOGSEC_NETWORK              "network: "
 #define LOGSEC_ADBLOCK              "adblock: "
