@@ -54,6 +54,7 @@ QVariantHash GmailServiceRoot::customDatabaseData() const {
 
   data["username"] = m_network->username();
   data["batch_size"] = m_network->batchSize();
+  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
   data["client_id"] = m_network->oauth()->clientId();
   data["client_secret"] = m_network->oauth()->clientSecret();
   data["refresh_token"] = m_network->oauth()->refreshToken();
@@ -65,6 +66,7 @@ QVariantHash GmailServiceRoot::customDatabaseData() const {
 void GmailServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setUsername(data["username"].toString());
   m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
   m_network->oauth()->setClientId(data["client_id"].toString());
   m_network->oauth()->setClientSecret(data["client_secret"].toString());
   m_network->oauth()->setRefreshToken(data["refresh_token"].toString());

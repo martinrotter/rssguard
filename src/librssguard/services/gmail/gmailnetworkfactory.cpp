@@ -26,6 +26,7 @@
 
 GmailNetworkFactory::GmailNetworkFactory(QObject* parent) : QObject(parent),
   m_service(nullptr), m_username(QString()), m_batchSize(GMAIL_DEFAULT_BATCH_SIZE),
+  m_downloadOnlyUnreadMessages(false),
   m_oauth2(new OAuth2Service(GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
                              {}, {}, GMAIL_OAUTH_SCOPE, this)) {
   initializeOauth();
@@ -140,6 +141,14 @@ void GmailNetworkFactory::initializeOauth() {
   });
 }
 
+bool GmailNetworkFactory::downloadOnlyUnreadMessages() const {
+  return m_downloadOnlyUnreadMessages;
+}
+
+void GmailNetworkFactory::setDownloadOnlyUnreadMessages(bool download_only_unread_messages) {
+  m_downloadOnlyUnreadMessages = download_only_unread_messages;
+}
+
 void GmailNetworkFactory::setOauth(OAuth2Service* oauth) {
   m_oauth2 = oauth;
 }
@@ -190,6 +199,10 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
   do {
     target_url = GMAIL_API_MSGS_LIST;
     target_url += QString("?labelIds=%1").arg(stream_id);
+
+    if (downloadOnlyUnreadMessages()) {
+      target_url += QString("?labelIds=%1").arg(GMAIL_SYSTEM_LABEL_UNREAD);
+    }
 
     if (batchSize() > 0) {
       target_url += QString("&maxResults=%1").arg(batchSize());

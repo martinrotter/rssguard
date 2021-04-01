@@ -30,6 +30,7 @@ void FormEditGmailAccount::apply() {
 
   account<GmailServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<GmailServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
+  account<GmailServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_cbDownloadOnlyUnreadMessages->isChecked());
 
   account<GmailServiceRoot>()->saveAccountDataToDatabase();
   accept();
@@ -53,4 +54,5 @@ void FormEditGmailAccount::loadAccountData() {
 
   m_details->m_ui.m_txtUsername->lineEdit()->setText(account<GmailServiceRoot>()->network()->username());
   m_details->m_ui.m_spinLimitMessages->setValue(account<GmailServiceRoot>()->network()->batchSize());
+  m_details->m_ui.m_cbDownloadOnlyUnreadMessages->setChecked(account<GmailServiceRoot>()->network()->downloadOnlyUnreadMessages());
 }

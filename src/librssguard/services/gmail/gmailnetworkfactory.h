@@ -32,9 +32,11 @@ class GmailNetworkFactory : public QObject {
     QString username() const;
     void setUsername(const QString& username);
 
-    // Gets/sets the amount of messages to obtain during single feed update.
     int batchSize() const;
     void setBatchSize(int batch_size);
+
+    bool downloadOnlyUnreadMessages() const;
+    void setDownloadOnlyUnreadMessages(bool download_only_unread_messages);
 
     // API methods.
     QString sendEmail(Mimesis::Message msg, const QNetworkProxy& custom_proxy, Message* reply_to_message = nullptr);
@@ -67,6 +69,7 @@ class GmailNetworkFactory : public QObject {
     GmailServiceRoot* m_service;
     QString m_username;
     int m_batchSize;
+    bool m_downloadOnlyUnreadMessages;
     OAuth2Service* m_oauth2;
 };
 
