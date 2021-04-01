@@ -201,7 +201,7 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
     target_url += QString("?labelIds=%1").arg(stream_id);
 
     if (downloadOnlyUnreadMessages()) {
-      target_url += QString("?labelIds=%1").arg(GMAIL_SYSTEM_LABEL_UNREAD);
+      target_url += QString("&labelIds=%1").arg(GMAIL_SYSTEM_LABEL_UNREAD);
     }
 
     if (batchSize() > 0) {
