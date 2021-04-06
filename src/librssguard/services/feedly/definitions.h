@@ -1,7 +1,6 @@
 #ifndef FEEDLY_DEFINITIONS_H
 #define FEEDLY_DEFINITIONS_H
 
-#define FEEDLY_UNLIMITED_BATCH_SIZE       -1
 #define FEEDLY_DEFAULT_BATCH_SIZE         100
 #define FEEDLY_MAX_BATCH_SIZE             500
 #define FEEDLY_MAX_TOTAL_SIZE             5000

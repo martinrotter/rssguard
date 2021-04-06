@@ -43,10 +43,6 @@ GmailAccountDetails::GmailAccountDetails(QWidget* parent)
   connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &GmailAccountDetails::testSetup);
   connect(m_ui.m_btnRegisterApi, &QPushButton::clicked, this, &GmailAccountDetails::registerApi);
 
-  m_ui.m_spinLimitMessages->setValue(GMAIL_DEFAULT_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMinimum(GMAIL_MIN_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMaximum(GMAIL_MAX_BATCH_SIZE);
-
   emit m_ui.m_txtUsername->lineEdit()->textChanged(m_ui.m_txtUsername->lineEdit()->text());
   emit m_ui.m_txtAppId->lineEdit()->textChanged(m_ui.m_txtAppId->lineEdit()->text());
   emit m_ui.m_txtAppKey->lineEdit()->textChanged(m_ui.m_txtAppKey->lineEdit()->text());

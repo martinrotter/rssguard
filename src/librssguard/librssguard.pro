@@ -83,6 +83,7 @@ HEADERS += core/feeddownloader.h \
            gui/labelwithstatus.h \
            gui/lineeditwithstatus.h \
            gui/messagebox.h \
+           gui/messagecountspinbox.h \
            gui/messagepreviewer.h \
            gui/messagessearchlineedit.h \
            gui/messagestoolbar.h \
@@ -261,6 +262,7 @@ SOURCES += core/feeddownloader.cpp \
            gui/labelwithstatus.cpp \
            gui/lineeditwithstatus.cpp \
            gui/messagebox.cpp \
+           gui/messagecountspinbox.cpp \
            gui/messagepreviewer.cpp \
            gui/messagessearchlineedit.cpp \
            gui/messagestoolbar.cpp \

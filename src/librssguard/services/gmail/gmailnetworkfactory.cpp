@@ -22,6 +22,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QRegularExpression>
+#include <QThread>
 #include <QUrl>
 
 GmailNetworkFactory::GmailNetworkFactory(QObject* parent) : QObject(parent),
@@ -186,6 +187,7 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
   QString bearer = m_oauth2->bearer().toLocal8Bit();
   QString next_page_token;
   QList<Message> messages;
+  ulong msecs_wait_between_batches = 1500;
 
   if (bearer.isEmpty()) {
     error = Feed::Status::AuthError;
@@ -236,6 +238,7 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
 
         if (obtained) {
           messages.append(more_messages);
+          QThread::msleep(msecs_wait_between_batches);
 
           // New batch of messages was obtained, check if we have enough.
           if (batchSize() > 0 && batchSize() <= messages.size()) {
@@ -244,7 +247,6 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
           }
         }
         else {
-
           error = Feed::Status::NetworkError;
           return messages;
         }

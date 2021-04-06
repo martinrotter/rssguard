@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>431</width>
-    <height>258</height>
+    <height>259</height>
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout_4">
@@ -128,15 +128,12 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QSpinBox" name="m_spinLimitMessages">
+      <widget class="MessageCountSpinBox" name="m_spinLimitMessages">
        <property name="maximumSize">
         <size>
          <width>140</width>
          <height>16777215</height>
         </size>
-       </property>
-       <property name="suffix">
-        <string> message(s)</string>
        </property>
       </widget>
      </item>
@@ -194,6 +191,11 @@
    <extends>QWidget</extends>
    <header>labelwithstatus.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MessageCountSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>messagecountspinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

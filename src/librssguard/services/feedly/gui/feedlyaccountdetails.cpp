@@ -45,15 +45,6 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
                                           "Feedly automagically caches ALL messages of a feed forever so you might "
                                           "end with thousands of messages you will never read anyway."));
 
-  connect(m_ui.m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, [=](int value) {
-    if (value <= 0) {
-      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
-    }
-    else {
-      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("messages"));
-    }
-  });
-
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessagesInfo, true);
 
@@ -61,10 +52,6 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FeedlyAccountDetails::onUsernameChanged);
   connect(m_ui.m_txtDeveloperAccessToken->lineEdit(), &BaseLineEdit::textChanged,
           this, &FeedlyAccountDetails::onDeveloperAccessTokenChanged);
-
-  m_ui.m_spinLimitMessages->setMinimum(FEEDLY_UNLIMITED_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMaximum(FEEDLY_MAX_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setValue(FEEDLY_DEFAULT_BATCH_SIZE);
 
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_btnGetToken);
   setTabOrder(m_ui.m_btnGetToken, m_ui.m_txtDeveloperAccessToken->lineEdit());
