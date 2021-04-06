@@ -206,7 +206,7 @@ Note that you must provide full execution line to your custom script, including 
 
 Used script must return `0` as process exit code if everything went well, or non-zero exit code if some error happened.
 
-Interpreter must be provided in all cases, arguments do not have to be. For example `bash.exe#` is valid execution line, as well as `bash#-c#cat feed.atom`. Note the difference in interpreter's binary name suffix. Also be very carefully about arguments quoting. Some examples of valid and tested execution lines are:
+Interpreter must be provided in all cases, arguments do not have to be. For example `bash#` is valid execution line, as well as `bash#-c#cat feed.atom`. Note the difference in interpreter's binary name suffix. Also be very carefully about arguments quoting. Some examples of valid and tested execution lines are:
  
 | Command | Explanation |
 |---------|-------------|
@@ -218,7 +218,7 @@ Interpreter must be provided in all cases, arguments do not have to be. For exam
 
 Note that the above examples are cross-platform and you can use the exact same command on Windows, Linux or Mac OS X, if your operating system is properly configured.
 
-RSS Guard offers [placeholder](#data-placeholder) `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data). You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
+RSS Guard offers [placeholder](#data-placeholder) `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data), allowing you to make your configuration fully portable. You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
 
 Also, working directory of process executing the script is set to RSS Guard's user data folder.
 
@@ -230,7 +230,7 @@ Format of post-process script execution line is the same as above.
 
 <img src="images/scrape-post.png" width="50%">
 
-Typical post-processing filter might do things like advanced CSS formatting or filtering of feed file entries or removing ads:
+Typical post-processing filter might do things like advanced CSS formatting, localization of contents to another language or filtering of feed file entries or removing ads:
 
 | Command | Explanation |
 |---------|-------------|
