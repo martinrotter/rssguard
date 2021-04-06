@@ -1,3 +1,18 @@
+3.9.1
+-----
+Note that this is bug-fix maintenance release and all included fixes were backported to this release from 4.x branch which is my main goal right now. RSS Guard 4 will bring huge number of new features and fixes later this year.
+
+Fixed/changed:
+* Properly accept all HTTP redirections, this was regression and is now fixed.
+* Fix repeated overwriting of messages due to bad UTC/localtime article timezone handling. (#329)
+* Alternating list background colors are now better suited for foreground text visibility. (#378)
+* Re-gaining focus after external browser was opened is now optional. (#304)
+* MSVC++ runtime libraries are now automatically installed in RSS Guard installer. (#375)
+* RSS Guard installer now also creates proper uninstaller and add itself to "Add/Remove programs". (#376)
+* Small fixes for  "Message filters" dialog. (#373)
+* Fixed windows hiding problem when tray icon is enabled. (#371)
+* Better favicon downloading strategy which works much much better than previous one. (#363)
+
 3.9.0
 -----
 
