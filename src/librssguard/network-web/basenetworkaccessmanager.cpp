@@ -55,7 +55,7 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
                                                        QIODevice* outgoingData) {
   QNetworkRequest new_request = request;
 
-#if !defined (Q_OS_OS2)
+#if defined(Q_OS_WIN)
   new_request.setAttribute(QNetworkRequest::Attribute::HttpPipeliningAllowedAttribute, true);
   new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, true);
 #endif
