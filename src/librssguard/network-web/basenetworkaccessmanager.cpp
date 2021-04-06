@@ -55,8 +55,10 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
                                                        QIODevice* outgoingData) {
   QNetworkRequest new_request = request;
 
+#if !defined (Q_OS_OS2)
   new_request.setAttribute(QNetworkRequest::Attribute::HttpPipeliningAllowedAttribute, true);
   new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, true);
+#endif
 
 #if QT_VERSION >= 0x050900
   new_request.setAttribute(QNetworkRequest::Attribute::RedirectPolicyAttribute,
