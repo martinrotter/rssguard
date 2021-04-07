@@ -9,10 +9,7 @@
 import json
 import re
 import sys
-import time
-import html
 import requests
-import distutils.util
 from datetime import datetime
 
 twitter_url = "https://twitter.com/" + sys.argv[1]
