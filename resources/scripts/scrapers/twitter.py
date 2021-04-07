@@ -1,6 +1,6 @@
 # Generates JSON feed from Twitter timeline URL.
-# This script expects two input parameters:
 #
+# This script expects two input parameters:
 #   twitter.py [twitter-user-name] [twitter-user-id]
 #
 # For example:
