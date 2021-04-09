@@ -727,7 +727,7 @@ bool ServiceRoot::onAfterSwitchMessageImportance(RootItem* selected_item, const 
   Q_UNUSED(selected_item)
   Q_UNUSED(changes)
 
-  updateCounts(false);
+  updateCounts(true);
   itemChanged(getSubTree());
   return true;
 }
