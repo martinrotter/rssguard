@@ -42,6 +42,7 @@ QVariantHash GreaderServiceRoot::customDatabaseData() const {
   data["password"] = TextFactory::encrypt(m_network->password());
   data["url"] = m_network->baseUrl();
   data["batch_size"] = m_network->batchSize();
+  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
 
   return data;
 }
@@ -52,6 +53,7 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setPassword(TextFactory::decrypt(data["password"].toString()));
   m_network->setBaseUrl(data["url"].toString());
   m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
 QList<Message> GreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {

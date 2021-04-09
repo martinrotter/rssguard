@@ -17,7 +17,7 @@
 
 GreaderNetwork::GreaderNetwork(QObject* parent)
   : QObject(parent), m_service(GreaderServiceRoot::Service::FreshRss), m_username(QString()), m_password(QString()),
-  m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE) {
+  m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false) {
   clearCredentials();
 }
 
@@ -115,6 +115,10 @@ QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& 
   if (!ensureLogin(proxy)) {
     error = Feed::Status::AuthError;
     return {};
+  }
+
+  if (downloadOnlyUnreadMessages()) {
+    full_url += QSL("&xt=%1").arg(GREADER_API_FULL_STATE_READ);
   }
 
   QByteArray output_stream;
@@ -616,4 +620,12 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
     default:
       return sanitizedBaseUrl();
   }
+}
+
+bool GreaderNetwork::downloadOnlyUnreadMessages() const {
+  return m_downloadOnlyUnreadMessages;
+}
+
+void GreaderNetwork::setDownloadOnlyUnreadMessages(bool download_only_unread) {
+  m_downloadOnlyUnreadMessages = download_only_unread;
 }

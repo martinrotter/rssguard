@@ -65,6 +65,9 @@ class GreaderNetwork : public QObject {
 
     static QString serviceToString(GreaderServiceRoot::Service service);
 
+    bool downloadOnlyUnreadMessages() const;
+    void setDownloadOnlyUnreadMessages(bool download_only_unread);
+
   private:
     QPair<QByteArray, QByteArray> authHeader() const;
 
@@ -83,6 +86,7 @@ class GreaderNetwork : public QObject {
     QString m_password;
     QString m_baseUrl;
     int m_batchSize;
+    bool m_downloadOnlyUnreadMessages;
     QString m_authSid;
     QString m_authAuth;
     QString m_authToken;
