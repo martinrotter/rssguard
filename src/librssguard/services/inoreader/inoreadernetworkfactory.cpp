@@ -183,7 +183,9 @@ QList<Message> InoreaderNetworkFactory::messages(ServiceRoot* root, const QStrin
     return QList<Message>();
   }
 
-  target_url += QSL("/") + QUrl::toPercentEncoding(stream_id) + QString("?n=%1").arg(batchSize());
+  target_url += QSL("/") + QUrl::toPercentEncoding(stream_id) + QString("?n=%1").arg(batchSize() <= 0
+                                                                                     ? INOREADER_MAX_BATCH_SIZE
+                                                                                     : batchSize());
 
   if (downloadOnlyUnreadMessages()) {
     target_url += QSL("&xt=%1").arg(INOREADER_FULL_STATE_READ);

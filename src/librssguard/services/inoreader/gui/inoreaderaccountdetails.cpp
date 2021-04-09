@@ -46,10 +46,6 @@ InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
   connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &InoreaderAccountDetails::testSetup);
   connect(m_ui.m_btnRegisterApi, &QPushButton::clicked, this, &InoreaderAccountDetails::registerApi);
 
-  m_ui.m_spinLimitMessages->setValue(INOREADER_DEFAULT_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMinimum(INOREADER_MIN_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMaximum(INOREADER_MAX_BATCH_SIZE);
-
   emit m_ui.m_txtUsername->lineEdit()->textChanged(m_ui.m_txtUsername->lineEdit()->text());
   emit m_ui.m_txtAppId->lineEdit()->textChanged(m_ui.m_txtAppId->lineEdit()->text());
   emit m_ui.m_txtAppKey->lineEdit()->textChanged(m_ui.m_txtAppKey->lineEdit()->text());

@@ -25,7 +25,8 @@ TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblServerSideUpdateInformation, true);
 
   setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_checkDownloadOnlyUnreadMessages);
-  setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_checkServerSideUpdate);
+  setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_checkServerSideUpdate);
   setTabOrder(m_ui.m_checkServerSideUpdate, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
   setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_checkShowPassword);

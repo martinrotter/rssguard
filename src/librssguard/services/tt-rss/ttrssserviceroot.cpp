@@ -216,6 +216,8 @@ QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bo
 
   for (Feed* feed : feeds) {
     int newly_added_messages = 0;
+
+    // TODO: pokračovat, přidat batchSize() a řešit misto limit.
     int limit = TTRSS_MAX_MESSAGES;
     int skip = 0;
 
