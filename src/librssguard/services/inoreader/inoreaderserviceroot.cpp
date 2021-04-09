@@ -2,8 +2,8 @@
 
 #include "services/inoreader/inoreaderserviceroot.h"
 
-#include "miscellaneous/application.h"
 #include "database/databasequeries.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
 #include "services/abstract/importantnode.h"
@@ -35,6 +35,7 @@ QVariantHash InoreaderServiceRoot::customDatabaseData() const {
   QVariantHash data;
 
   data["username"] = m_network->username();
+  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
   data["batch_size"] = m_network->batchSize();
   data["client_id"] = m_network->oauth()->clientId();
   data["client_secret"] = m_network->oauth()->clientSecret();
@@ -47,6 +48,7 @@ QVariantHash InoreaderServiceRoot::customDatabaseData() const {
 void InoreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setUsername(data["username"].toString());
   m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
   m_network->oauth()->setClientId(data["client_id"].toString());
   m_network->oauth()->setClientSecret(data["client_secret"].toString());
   m_network->oauth()->setRefreshToken(data["refresh_token"].toString());

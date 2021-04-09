@@ -34,7 +34,9 @@ InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtAppId);
   setTabOrder(m_ui.m_txtAppId, m_ui.m_txtAppKey);
   setTabOrder(m_ui.m_txtAppKey, m_ui.m_txtRedirectUrl);
-  setTabOrder(m_ui.m_txtRedirectUrl, m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_txtRedirectUrl, m_ui.m_btnRegisterApi);
+  setTabOrder(m_ui.m_btnRegisterApi, m_ui.m_cbDownloadOnlyUnreadMessages);
+  setTabOrder(m_ui.m_cbDownloadOnlyUnreadMessages, m_ui.m_spinLimitMessages);
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_btnTestSetup);
 
   connect(m_ui.m_txtAppId->lineEdit(), &BaseLineEdit::textChanged, this, &InoreaderAccountDetails::checkOAuthValue);

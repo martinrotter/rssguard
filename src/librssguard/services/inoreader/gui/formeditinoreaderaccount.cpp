@@ -32,6 +32,7 @@ void FormEditInoreaderAccount::apply() {
 
   account<InoreaderServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<InoreaderServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
+  account<InoreaderServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_cbDownloadOnlyUnreadMessages->isChecked());
 
   account<InoreaderServiceRoot>()->saveAccountDataToDatabase();
   accept();
@@ -55,4 +56,5 @@ void FormEditInoreaderAccount::loadAccountData() {
 
   m_details->m_ui.m_txtUsername->lineEdit()->setText(account<InoreaderServiceRoot>()->network()->username());
   m_details->m_ui.m_spinLimitMessages->setValue(account<InoreaderServiceRoot>()->network()->batchSize());
+  m_details->m_ui.m_cbDownloadOnlyUnreadMessages->setChecked(account<InoreaderServiceRoot>()->network()->downloadOnlyUnreadMessages());
 }

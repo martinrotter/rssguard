@@ -45,6 +45,9 @@ class InoreaderNetworkFactory : public QObject {
     QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status, const QStringList& msg_custom_ids);
     QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance, const QStringList& msg_custom_ids);
 
+    bool downloadOnlyUnreadMessages() const;
+    void setDownloadOnlyUnreadMessages(bool download_only_unread);
+
   private slots:
     void onTokensError(const QString& error, const QString& error_description);
     void onAuthFailed();
@@ -58,6 +61,7 @@ class InoreaderNetworkFactory : public QObject {
   private:
     InoreaderServiceRoot* m_service;
     QString m_username;
+    bool m_downloadOnlyUnreadMessages;
     int m_batchSize;
     OAuth2Service* m_oauth2;
 };

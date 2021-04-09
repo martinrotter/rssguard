@@ -115,7 +115,7 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="3" column="0" colspan="2">
     <layout class="QFormLayout" name="formLayout_3">
      <item row="0" column="1">
       <widget class="QSpinBox" name="m_spinLimitMessages">
@@ -142,7 +142,7 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="4" column="0" colspan="2">
     <layout class="QFormLayout" name="formLayout_2">
      <item row="0" column="0">
       <widget class="QPushButton" name="m_btnTestSetup">
@@ -160,7 +160,7 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item row="5" column="0" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -172,6 +172,13 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QCheckBox" name="m_cbDownloadOnlyUnreadMessages">
+     <property name="text">
+      <string>Download only unread messages</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

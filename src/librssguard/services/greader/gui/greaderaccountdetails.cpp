@@ -40,7 +40,8 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) 
   connect(m_ui.m_cmbService, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &GreaderAccountDetails::fillPredefinedUrl);
 
   setTabOrder(m_ui.m_cmbService, m_ui.m_txtUrl->lineEdit());
-  setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_cbDownloadOnlyUnreadMessages);
+  setTabOrder(m_ui.m_cbDownloadOnlyUnreadMessages, m_ui.m_spinLimitMessages);
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
   setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_checkShowPassword);

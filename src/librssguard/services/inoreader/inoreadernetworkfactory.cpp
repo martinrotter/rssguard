@@ -25,7 +25,7 @@
 #include <QUrl>
 
 InoreaderNetworkFactory::InoreaderNetworkFactory(QObject* parent) : QObject(parent),
-  m_service(nullptr), m_username(QString()), m_batchSize(INOREADER_DEFAULT_BATCH_SIZE),
+  m_service(nullptr), m_username(QString()), m_downloadOnlyUnreadMessages(false), m_batchSize(INOREADER_DEFAULT_BATCH_SIZE),
   m_oauth2(new OAuth2Service(INOREADER_OAUTH_AUTH_URL, INOREADER_OAUTH_TOKEN_URL,
                              {}, {}, INOREADER_OAUTH_SCOPE, this)) {
   initializeOauth();
@@ -73,6 +73,14 @@ void InoreaderNetworkFactory::initializeOauth() {
       DatabaseQueries::storeNewOauthTokens(database, refresh_token, m_service->accountId());
     }
   });
+}
+
+bool InoreaderNetworkFactory::downloadOnlyUnreadMessages() const {
+  return m_downloadOnlyUnreadMessages;
+}
+
+void InoreaderNetworkFactory::setDownloadOnlyUnreadMessages(bool download_only_unread) {
+  m_downloadOnlyUnreadMessages = download_only_unread;
 }
 
 void InoreaderNetworkFactory::setUsername(const QString& username) {
@@ -176,6 +184,10 @@ QList<Message> InoreaderNetworkFactory::messages(ServiceRoot* root, const QStrin
   }
 
   target_url += QSL("/") + QUrl::toPercentEncoding(stream_id) + QString("?n=%1").arg(batchSize());
+
+  if (downloadOnlyUnreadMessages()) {
+    target_url += QSL("&xt=%1").arg(INOREADER_FULL_STATE_READ);
+  }
 
   QByteArray output_msgs;
   auto result = NetworkFactory::performNetworkOperation(target_url,
