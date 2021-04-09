@@ -195,6 +195,7 @@ QVariantHash TtRssServiceRoot::customDatabaseData() const {
   data["auth_password"] = TextFactory::encrypt(m_network->authPassword());
   data["url"] = m_network->url();
   data["force_update"] = m_network->forceServerSideUpdate();
+  data["batch_size"] = m_network->batchSize();
   data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
 
   return data;
@@ -208,6 +209,7 @@ void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setAuthPassword(TextFactory::decrypt(data["auth_password"].toString()));
   m_network->setUrl(data["url"].toString());
   m_network->setForceServerSideUpdate(data["force_update"].toBool());
+  m_network->setBatchSize(data["batch_size"].toInt());
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
@@ -216,9 +218,7 @@ QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bo
 
   for (Feed* feed : feeds) {
     int newly_added_messages = 0;
-
-    // TODO: pokračovat, přidat batchSize() a řešit misto limit.
-    int limit = TTRSS_MAX_MESSAGES;
+    int limit = network()->batchSize() <= 0 ? TTRSS_MAX_MESSAGES : network()->batchSize();
     int skip = 0;
 
     do {
@@ -241,7 +241,7 @@ QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bo
         skip += newly_added_messages;
       }
     }
-    while (newly_added_messages > 0);
+    while (newly_added_messages > 0 && (network()->batchSize() <= 0 || messages.size() < network()->batchSize()));
   }
 
   return messages;

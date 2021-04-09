@@ -22,8 +22,8 @@
 #include <QVariant>
 
 TtRssNetworkFactory::TtRssNetworkFactory()
-  : m_bareUrl(QString()), m_fullUrl(QString()), m_username(QString()), m_password(QString()), m_forceServerSideUpdate(false),
-  m_authIsUsed(false), m_authUsername(QString()), m_authPassword(QString()), m_sessionId(QString()),
+  : m_bareUrl(QString()), m_fullUrl(QString()), m_username(QString()), m_password(QString()), m_batchSize(TTRSS_DEFAULT_MESSAGES),
+  m_forceServerSideUpdate(false), m_authIsUsed(false), m_authUsername(QString()), m_authPassword(QString()), m_sessionId(QString()),
   m_lastError(QNetworkReply::NoError) {}
 
 QString TtRssNetworkFactory::url() const {
@@ -548,6 +548,14 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id, c
 
   m_lastError = network_reply.first;
   return result;
+}
+
+int TtRssNetworkFactory::batchSize() const {
+  return m_batchSize;
+}
+
+void TtRssNetworkFactory::setBatchSize(int batch_size) {
+  m_batchSize = batch_size;
 }
 
 bool TtRssNetworkFactory::downloadOnlyUnreadMessages() const {

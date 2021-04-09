@@ -175,11 +175,15 @@ class TtRssNetworkFactory {
 
     TtRssUnsubscribeFeedResponse unsubscribeFeed(int feed_id, const QNetworkProxy& proxy);
 
+    int batchSize() const;
+    void setBatchSize(int batch_size);
+
   private:
     QString m_bareUrl;
     QString m_fullUrl;
     QString m_username;
     QString m_password;
+    int m_batchSize;
     bool m_forceServerSideUpdate;
     bool m_downloadOnlyUnreadMessages;
     bool m_authIsUsed;

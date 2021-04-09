@@ -73,6 +73,7 @@ void TtRssAccountDetails::performTest(const QNetworkProxy& proxy) {
   factory.setAuthUsername(m_ui.m_txtHttpUsername->lineEdit()->text());
   factory.setAuthPassword(m_ui.m_txtHttpPassword->lineEdit()->text());
   factory.setForceServerSideUpdate(m_ui.m_checkServerSideUpdate->isChecked());
+  factory.setBatchSize(m_ui.m_spinLimitMessages->value());
 
   TtRssLoginResponse result = factory.login(proxy);
 
