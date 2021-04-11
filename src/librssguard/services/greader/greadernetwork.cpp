@@ -106,7 +106,7 @@ QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Import
 
 QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& stream_id,
                                               Feed::Status& error, const QNetworkProxy& proxy) {
-  QString full_url = generateFullUrl(Operations::StreamContents).arg(stream_id,
+  QString full_url = generateFullUrl(Operations::StreamContents).arg(QUrl::toPercentEncoding(stream_id),
                                                                      QString::number(batchSize() <= 0
                                                                                      ? 2000000
                                                                                      : batchSize()));
@@ -532,11 +532,11 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
     for (const QJsonValue& cat : categories) {
       QString category = cat.toString();
 
-      if (category.contains(GREADER_API_STATE_READ)) {
-        message.m_isRead = !category.contains(GREADER_API_STATE_READING_LIST);
+      if (category.endsWith(GREADER_API_STATE_READ)) {
+        message.m_isRead = true;
       }
-      else if (category.contains(GREADER_API_STATE_IMPORTANT)) {
-        message.m_isImportant = category.contains(GREADER_API_STATE_IMPORTANT);
+      else if (category.endsWith(GREADER_API_STATE_IMPORTANT)) {
+        message.m_isImportant = true;
       }
       else if (category.contains(QSL("label"))) {
         Label* label = boolinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([category](Label* lbl) {

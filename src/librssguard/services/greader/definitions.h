@@ -4,8 +4,13 @@
 #define GREADER_UNLIMITED_BATCH_SIZE       -1
 
 // States.
+
+// Means "unread" message.
 #define GREADER_API_STATE_READING_LIST    "state/com.google/reading-list"
+
+// Means "read" message. If both "reading-list" and "read" are specified, message is READ.
 #define GREADER_API_STATE_READ            "state/com.google/read"
+
 #define GREADER_API_STATE_IMPORTANT       "state/com.google/starred"
 
 #define GREADER_API_FULL_STATE_READING_LIST    "user/-/state/com.google/reading-list"
