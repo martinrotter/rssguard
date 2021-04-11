@@ -128,7 +128,7 @@ NotInstalled:
   File /r "${BINARY_TREE}\"
 
   ; Install MSVCRT libraries.
-  ExecWait '"$INSTDIR\vc_redist.x64.exe" /install /passive /quiet'
+  ExecWait '"$INSTDIR\vc_redist.x64.exe" /install /quiet /norestart'
   Delete "$INSTDIR\vc_redist.x64.exe"
 
   ; Store installation folder.
