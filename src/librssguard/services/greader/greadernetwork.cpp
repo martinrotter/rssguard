@@ -106,7 +106,9 @@ QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Import
 
 QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& stream_id,
                                               Feed::Status& error, const QNetworkProxy& proxy) {
-  QString full_url = generateFullUrl(Operations::StreamContents).arg(QUrl::toPercentEncoding(stream_id),
+  QString full_url = generateFullUrl(Operations::StreamContents).arg(m_service == GreaderServiceRoot::Service::TheOldReader
+                                                                     ? stream_id
+                                                                     : QUrl::toPercentEncoding(stream_id),
                                                                      QString::number(batchSize() <= 0
                                                                                      ? 2000000
                                                                                      : batchSize()));
