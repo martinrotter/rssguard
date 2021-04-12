@@ -48,6 +48,7 @@ class GmailNetworkFactory : public QObject {
     QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance,
                                                     const QStringList& custom_ids,
                                                     const QNetworkProxy& custom_proxy);
+    QVariantHash getProfile(const QNetworkProxy& custom_proxy);
 
   private slots:
     void onTokensError(const QString& error, const QString& error_description);

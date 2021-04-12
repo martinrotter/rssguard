@@ -7,6 +7,8 @@
 
 #include "ui_gmailaccountdetails.h"
 
+#include <QNetworkProxy>
+
 class OAuth2Service;
 
 class GmailAccountDetails : public QWidget {
@@ -17,9 +19,11 @@ class GmailAccountDetails : public QWidget {
   public:
     explicit GmailAccountDetails(QWidget* parent = nullptr);
 
+  public slots:
+    void testSetup(const QNetworkProxy& custom_proxy);
+
   private slots:
     void registerApi();
-    void testSetup();
     void checkOAuthValue(const QString& value);
     void checkUsername(const QString& username);
     void onAuthFailed();
@@ -34,6 +38,7 @@ class GmailAccountDetails : public QWidget {
 
     // Pointer to live OAuth.
     OAuth2Service* m_oauth;
+    QNetworkProxy m_lastProxy;
 };
 
 #endif // GMAILACCOUNTDETAILS_H

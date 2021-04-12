@@ -17,6 +17,9 @@ FormEditGmailAccount::FormEditGmailAccount(QWidget* parent)
   activateTab(0);
 
   m_details->m_ui.m_txtUsername->setFocus();
+  connect(m_details->m_ui.m_btnTestSetup, &QPushButton::clicked, this, [this]() {
+    m_details->testSetup(m_proxyDetails->proxy());
+  });
 }
 
 void FormEditGmailAccount::apply() {

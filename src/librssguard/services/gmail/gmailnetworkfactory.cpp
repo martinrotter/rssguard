@@ -5,6 +5,7 @@
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "exceptions/networkexception.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "miscellaneous/application.h"
@@ -378,6 +379,41 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::I
   }
 
   return QNetworkReply::NetworkError::NoError;
+}
+
+QVariantHash GmailNetworkFactory::getProfile(const QNetworkProxy& custom_proxy) {
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
+
+  if (bearer.isEmpty()) {
+    throw ApplicationException(tr("you are not logged in"));
+  }
+
+  QList<QPair<QByteArray, QByteArray>> headers;
+
+  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                               m_oauth2->bearer().toLocal8Bit()));
+
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray output;
+  auto result = NetworkFactory::performNetworkOperation(GMAIL_API_GET_PROFILE,
+                                                        timeout,
+                                                        {},
+                                                        output,
+                                                        QNetworkAccessManager::Operation::GetOperation,
+                                                        headers,
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        custom_proxy).first;
+
+  if (result != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result, output);
+  }
+  else {
+    QJsonDocument doc = QJsonDocument::fromJson(output);
+
+    return doc.object().toVariantHash();
+  }
 }
 
 void GmailNetworkFactory::onTokensError(const QString& error, const QString& error_description) {

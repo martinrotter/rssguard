@@ -2,14 +2,16 @@
 
 #include "services/gmail/gui/gmailaccountdetails.h"
 
+#include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"
 #include "services/gmail/definitions.h"
+#include "services/gmail/gmailnetworkfactory.h"
 
 GmailAccountDetails::GmailAccountDetails(QWidget* parent)
-  : QWidget(parent), m_oauth(nullptr) {
+  : QWidget(parent), m_oauth(nullptr), m_lastProxy({}) {
   m_ui.setupUi(this);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
@@ -40,7 +42,6 @@ GmailAccountDetails::GmailAccountDetails(QWidget* parent)
   connect(m_ui.m_txtAppKey->lineEdit(), &BaseLineEdit::textChanged, this, &GmailAccountDetails::checkOAuthValue);
   connect(m_ui.m_txtRedirectUrl->lineEdit(), &BaseLineEdit::textChanged, this, &GmailAccountDetails::checkOAuthValue);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &GmailAccountDetails::checkUsername);
-  connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &GmailAccountDetails::testSetup);
   connect(m_ui.m_btnRegisterApi, &QPushButton::clicked, this, &GmailAccountDetails::registerApi);
 
   emit m_ui.m_txtUsername->lineEdit()->textChanged(m_ui.m_txtUsername->lineEdit()->text());
@@ -51,12 +52,13 @@ GmailAccountDetails::GmailAccountDetails(QWidget* parent)
   hookNetwork();
 }
 
-void GmailAccountDetails::testSetup() {
+void GmailAccountDetails::testSetup(const QNetworkProxy& custom_proxy) {
   m_oauth->logout();
   m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
   m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
   m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());
 
+  m_lastProxy = custom_proxy;
   m_oauth->login();
 }
 
@@ -87,6 +89,21 @@ void GmailAccountDetails::onAuthGranted() {
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                   tr("Tested successfully. You may be prompted to login once more."),
                                   tr("Your access was approved."));
+
+  GmailNetworkFactory fac;
+
+  fac.setOauth(m_oauth);
+
+  try {
+    auto resp = fac.getProfile(m_lastProxy);
+
+    m_ui.m_txtUsername->lineEdit()->setText(resp["emailAddress"].toString());
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_GMAIL
+                << "Failed to obtain profile with error:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+  }
 }
 
 void GmailAccountDetails::hookNetwork() {

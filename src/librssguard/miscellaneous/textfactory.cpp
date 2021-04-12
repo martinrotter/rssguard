@@ -79,7 +79,7 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
     QSL("MMM d yyyy hh:mm:ss") << QSL("ddd, dd MMM yyyy HH:mm:ss") << QSL("ddd, d MMM yyyy HH:mm:ss") <<
     QSL("dd MMM yyyy") << QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-dd") <<
     QSL("yyyy") << QSL("yyyy-MM") << QSL("yyyy-MM-dd") << QSL("yyyy-MM-ddThh:mm") <<
-    QSL("yyyy-MM-ddThh:mm:ss");
+    QSL("yyyy-MM-ddThh:mm:ss") << QSL("d MMM yyyy HH:mm:ss");
   QStringList timezone_offset_patterns;
 
   timezone_offset_patterns << QSL("+hh:mm") << QSL("-hh:mm") << QSL("+hhmm")
