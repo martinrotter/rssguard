@@ -1,3 +1,12 @@
+3.9.2
+-----
+Note that this is bug-fix maintenance release and all included fixes were backported to this release from 4.x branch which is my main goal right now. RSS Guard 4 will bring huge number of new features and fixes later this year.
+
+Fixed/changed:
+* Fixed main app window behavior when it is maximized and article is opened in external web browser. (#395)
+* RSS Guard installer no longer automatically restart your PC when installing MSVC++ runtime libraries. Sorry!
+* Google Reader API plugin now correctly synchronizes changed messages back to server.
+
 3.9.1
 -----
 Note that this is bug-fix maintenance release and all included fixes were backported to this release from 4.x branch which is my main goal right now. RSS Guard 4 will bring huge number of new features and fixes later this year.
