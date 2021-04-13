@@ -325,7 +325,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     }
 
     case LOWER_TITLE_ROLE:
-      return messageAt(idx.row()).m_title.toLower();
+      return m_cache->containsData(idx.row())
+          ? m_cache->data(idx).toString().toLower()
+          : QSqlQueryModel::data(idx, Qt::ItemDataRole::EditRole).toString().toLower();
 
     case Qt::ItemDataRole::EditRole:
       return m_cache->containsData(idx.row())

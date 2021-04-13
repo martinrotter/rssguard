@@ -17,7 +17,7 @@ MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* par
   setSortRole(Qt::ItemDataRole::EditRole);
   setSortCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
 
-  setFilterKeyColumn(MSG_DB_TITLE_INDEX);
+  setFilterKeyColumn(-1);
   setFilterRole(LOWER_TITLE_ROLE);
 
   setDynamicSortFilter(false);
