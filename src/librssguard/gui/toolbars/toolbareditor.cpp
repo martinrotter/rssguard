@@ -1,9 +1,9 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/toolbareditor.h"
+#include "gui/toolbars/toolbareditor.h"
 
-#include "gui/basetoolbar.h"
 #include "gui/dialogs/formmain.h"
+#include "gui/toolbars/basetoolbar.h"
 
 #include <QKeyEvent>
 

@@ -1,7 +1,8 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/feedstoolbar.h"
+#include "gui/toolbars/feedstoolbar.h"
 
+#include "gui/baselineedit.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -14,10 +15,16 @@ FeedsToolBar::FeedsToolBar(const QString& title, QWidget* parent) : BaseToolBar(
 
   margins.setRight(margins.right() + FILTER_RIGHT_MARGIN);
   setContentsMargins(margins);
+
+  initializeSearchBox();
 }
 
 QList<QAction*> FeedsToolBar::availableActions() const {
-  return qApp->userActions();
+  QList<QAction*> available_actions = qApp->userActions();
+
+  available_actions.append(m_actionSearchMessages);
+
+  return available_actions;
 }
 
 QList<QAction*> FeedsToolBar::activatedActions() const {
@@ -27,6 +34,11 @@ QList<QAction*> FeedsToolBar::activatedActions() const {
 void FeedsToolBar::saveAndSetActions(const QStringList& actions) {
   qApp->settings()->setValue(GROUP(GUI), GUI::FeedsToolbarActions, actions.join(QSL(",")));
   loadSpecificActions(convertActions(actions));
+
+  // If user hidden search messages box, then remove the filter.
+  if (!activatedActions().contains(m_actionSearchMessages)) {
+    m_txtSearchMessages->clear();
+  }
 }
 
 QList<QAction*> FeedsToolBar::convertActions(const QStringList& actions) {
@@ -47,6 +59,10 @@ QList<QAction*> FeedsToolBar::convertActions(const QStringList& actions) {
 
       act->setSeparator(true);
       spec_actions.append(act);
+    }
+    else if (action_name == SEARCH_BOX_ACTION_NAME) {
+      // Add search box.
+      spec_actions.append(m_actionSearchMessages);
     }
     else if (action_name == SPACER_ACTION_NAME) {
       // Add new spacer.
@@ -93,4 +109,20 @@ QStringList FeedsToolBar::savedActions() const {
 #else
                                                                                      QString::SplitBehavior::SkipEmptyParts);
 #endif
+}
+
+void FeedsToolBar::initializeSearchBox() {
+  m_txtSearchMessages = new BaseLineEdit(this);
+  m_txtSearchMessages->setFixedWidth(FILTER_WIDTH);
+  m_txtSearchMessages->setPlaceholderText(tr("Search feeds"));
+
+  // Setup wrapping action for search box.
+  m_actionSearchMessages = new QWidgetAction(this);
+
+  m_actionSearchMessages->setDefaultWidget(m_txtSearchMessages);
+  m_actionSearchMessages->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
+  m_actionSearchMessages->setProperty("type", SEARCH_BOX_ACTION_NAME);
+  m_actionSearchMessages->setProperty("name", tr("Feeds search box"));
+
+  connect(m_txtSearchMessages, &BaseLineEdit::textChanged, this, &FeedsToolBar::feedsFilterPatternChanged);
 }

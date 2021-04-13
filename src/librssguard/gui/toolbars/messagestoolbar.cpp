@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/messagestoolbar.h"
+#include "gui/toolbars/messagestoolbar.h"
 
 #include "definitions/definitions.h"
 #include "gui/baselineedit.h"
@@ -11,8 +11,7 @@
 #include <QToolButton>
 #include <QWidgetAction>
 
-MessagesToolBar::MessagesToolBar(const QString& title, QWidget* parent)
-  : BaseToolBar(title, parent) {
+MessagesToolBar::MessagesToolBar(const QString& title, QWidget* parent) : BaseToolBar(title, parent) {
   initializeSearchBox();
   initializeHighlighter();
 }
@@ -22,6 +21,7 @@ QList<QAction*> MessagesToolBar::availableActions() const {
 
   available_actions.append(m_actionSearchMessages);
   available_actions.append(m_actionMessageHighlighter);
+
   return available_actions;
 }
 

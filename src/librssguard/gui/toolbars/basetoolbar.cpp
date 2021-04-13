@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/basetoolbar.h"
+#include "gui/toolbars/basetoolbar.h"
 
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"

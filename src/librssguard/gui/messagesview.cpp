@@ -580,7 +580,7 @@ void MessagesView::selectNextUnreadItem() {
 }
 
 void MessagesView::searchMessages(const QString& pattern) {
-#if QT_VERSION_MAJOR <= 5
+#if QT_VERSION < 0x050C00 // Qt < 5.12.0
   m_proxyModel->setFilterRegExp(pattern);
 #else
   m_proxyModel->setFilterRegularExpression(pattern);

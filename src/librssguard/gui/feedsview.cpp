@@ -496,6 +496,18 @@ void FeedsView::switchVisibility() {
   setVisible(!isVisible());
 }
 
+void FeedsView::filterItems(const QString& pattern) {
+#if QT_VERSION < 0x050C00 // Qt < 5.12.0
+  m_proxyModel->setFilterRegExp(pattern);
+#else
+  m_proxyModel->setFilterRegularExpression(pattern);
+#endif
+
+  if (!pattern.simplified().isEmpty()) {
+    expandAll();
+  }
+}
+
 void FeedsView::drawBranches(QPainter* painter, const QRect& rect, const QModelIndex& index) const {
   if (!rootIsDecorated()) {
     painter->save();

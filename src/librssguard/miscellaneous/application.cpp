@@ -10,7 +10,7 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
-#include "gui/statusbar.h"
+#include "gui/toolbars/statusbar.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"

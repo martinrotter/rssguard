@@ -5,7 +5,7 @@
 
 #include <QStatusBar>
 
-#include "gui/basetoolbar.h"
+#include "gui/toolbars/basetoolbar.h"
 
 class QProgressBar;
 class QLabel;
@@ -18,13 +18,13 @@ class StatusBar : public QStatusBar, public BaseBar {
     explicit StatusBar(QWidget* parent = nullptr);
     virtual ~StatusBar();
 
-    QList<QAction*> availableActions() const;
-    QList<QAction*> activatedActions() const;
-    void saveAndSetActions(const QStringList& actions);
-    QStringList defaultActions() const;
-    QStringList savedActions() const;
-    QList<QAction*> convertActions(const QStringList& actions);
-    void loadSpecificActions(const QList<QAction*>& actions, bool initial_load = false);
+    virtual QList<QAction*> availableActions() const;
+    virtual QList<QAction*> activatedActions() const;
+    virtual void saveAndSetActions(const QStringList& actions);
+    virtual QStringList defaultActions() const;
+    virtual QStringList savedActions() const;
+    virtual QList<QAction*> convertActions(const QStringList& actions);
+    virtual void loadSpecificActions(const QList<QAction*>& actions, bool initial_load = false);
 
   public slots:
     void showProgressFeeds(int progress, const QString& label);

@@ -9,8 +9,6 @@ class BaseLineEdit : public QLineEdit {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
     explicit BaseLineEdit(QWidget* parent = nullptr);
     virtual ~BaseLineEdit() = default;
 

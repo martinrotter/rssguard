@@ -5,11 +5,11 @@
 #include "core/feedsmodel.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
-#include "gui/feedstoolbar.h"
-#include "gui/messagestoolbar.h"
-#include "gui/statusbar.h"
 #include "gui/systemtrayicon.h"
 #include "gui/tabwidget.h"
+#include "gui/toolbars/feedstoolbar.h"
+#include "gui/toolbars/messagestoolbar.h"
+#include "gui/toolbars/statusbar.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -36,6 +36,7 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeMode::ResizeToContents);
+
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::requireRestart);
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsGui::dirtifySettings);

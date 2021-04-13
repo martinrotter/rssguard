@@ -77,7 +77,7 @@
 #define HIGHLIGHTER_ACTION_NAME               "highlighter"
 #define SPACER_ACTION_NAME                    "spacer"
 #define SEPARATOR_ACTION_NAME                 "separator"
-#define FILTER_WIDTH                          150
+#define FILTER_WIDTH                          125
 #define FILTER_RIGHT_MARGIN                   5
 #define FEEDS_VIEW_INDENTATION                10
 #define MIME_TYPE_ITEM_POINTER                "rssguard/itempointer"

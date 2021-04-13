@@ -75,6 +75,8 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
     // Switches visibility of the widget.
     void switchVisibility();
 
+    void filterItems(const QString& pattern);
+
   signals:
     void itemSelected(RootItem* item);
     void requestViewNextUnreadMessage();

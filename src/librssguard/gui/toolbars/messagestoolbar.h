@@ -3,7 +3,7 @@
 #ifndef NEWSTOOLBAR_H
 #define NEWSTOOLBAR_H
 
-#include "gui/basetoolbar.h"
+#include "gui/toolbars/basetoolbar.h"
 
 #include "core/messagesmodel.h"
 
@@ -17,8 +17,6 @@ class MessagesToolBar : public BaseToolBar {
 
   public:
     explicit MessagesToolBar(const QString& title, QWidget* parent = nullptr);
-
-    BaseLineEdit* searchLineEdit();
 
     virtual QList<QAction*> availableActions() const;
     virtual QList<QAction*> activatedActions() const;
@@ -46,9 +44,5 @@ class MessagesToolBar : public BaseToolBar {
     QWidgetAction* m_actionSearchMessages;
     BaseLineEdit* m_txtSearchMessages;
 };
-
-inline BaseLineEdit* MessagesToolBar::searchLineEdit() {
-  return m_txtSearchMessages;
-}
 
 #endif // NEWSTOOLBAR_H

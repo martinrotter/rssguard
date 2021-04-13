@@ -13,11 +13,18 @@
 FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_selectedItem(nullptr), m_showUnreadOnly(false) {
   setObjectName(QSL("FeedsProxyModel"));
+
   setSortRole(Qt::ItemDataRole::EditRole);
   setSortCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
+
+#if QT_VERSION >= 0x050A00 // Qt >= 5.10.0
+  setRecursiveFilteringEnabled(true);
+#endif
+
   setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
   setFilterKeyColumn(-1);
   setFilterRole(Qt::ItemDataRole::EditRole);
+
   setDynamicSortFilter(true);
   setSourceModel(m_sourceModel);
 

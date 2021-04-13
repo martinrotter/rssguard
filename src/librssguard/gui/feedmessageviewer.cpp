@@ -10,14 +10,14 @@
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/formdatabasecleanup.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/feedstoolbar.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/messagepreviewer.h"
-#include "gui/messagestoolbar.h"
 #include "gui/messagesview.h"
-#include "gui/statusbar.h"
 #include "gui/systemtrayicon.h"
+#include "gui/toolbars/feedstoolbar.h"
+#include "gui/toolbars/messagestoolbar.h"
+#include "gui/toolbars/statusbar.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
@@ -215,6 +215,7 @@ void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
 void FeedMessageViewer::createConnections() {
   // Filtering & searching.
   connect(m_toolBarMessages, &MessagesToolBar::messageSearchPatternChanged, m_messagesView, &MessagesView::searchMessages);
+  connect(m_toolBarFeeds, &FeedsToolBar::feedsFilterPatternChanged, m_feedsView, &FeedsView::filterItems);
   connect(m_toolBarMessages, &MessagesToolBar::messageFilterChanged, m_messagesView, &MessagesView::filterMessages);
 
   connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &MessagePreviewer::clear);

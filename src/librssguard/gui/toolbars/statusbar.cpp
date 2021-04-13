@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/statusbar.h"
+#include "gui/toolbars/statusbar.h"
 
 #include "gui/dialogs/formmain.h"
 #include "gui/plaintoolbutton.h"
