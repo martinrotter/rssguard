@@ -11,7 +11,7 @@ class BaseBar {
     // Returns all actions which can be added to the toolbar.
     virtual QList<QAction*> availableActions() const = 0;
 
-    // Returns all changeable actions which are currently included
+    // Returns all actions which are currently included
     // in the toolbar.
     virtual QList<QAction*> activatedActions() const = 0;
 

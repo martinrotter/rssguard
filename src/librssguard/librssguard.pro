@@ -85,7 +85,6 @@ HEADERS += core/feeddownloader.h \
            gui/messagebox.h \
            gui/messagecountspinbox.h \
            gui/messagepreviewer.h \
-           gui/messagessearchlineedit.h \
            gui/messagestoolbar.h \
            gui/messagesview.h \
            gui/networkproxydetails.h \
@@ -264,7 +263,6 @@ SOURCES += core/feeddownloader.cpp \
            gui/messagebox.cpp \
            gui/messagecountspinbox.cpp \
            gui/messagepreviewer.cpp \
-           gui/messagessearchlineedit.cpp \
            gui/messagestoolbar.cpp \
            gui/messagesview.cpp \
            gui/networkproxydetails.cpp \

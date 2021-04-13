@@ -4,7 +4,6 @@
 
 #include "definitions/definitions.h"
 #include "gui/baselineedit.h"
-#include "gui/messagessearchlineedit.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
@@ -59,7 +58,7 @@ QList<QAction*> MessagesToolBar::convertActions(const QStringList& actions) {
       act->setSeparator(true);
       spec_actions.append(act);
     }
-    else if (action_name == SEACRH_MESSAGES_ACTION_NAME) {
+    else if (action_name == SEARCH_BOX_ACTION_NAME) {
       // Add search box.
       spec_actions.append(m_actionSearchMessages);
     }
@@ -102,7 +101,7 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
 }
 
 void MessagesToolBar::initializeSearchBox() {
-  m_txtSearchMessages = new MessagesSearchLineEdit(this);
+  m_txtSearchMessages = new BaseLineEdit(this);
   m_txtSearchMessages->setFixedWidth(FILTER_WIDTH);
   m_txtSearchMessages->setPlaceholderText(tr("Search messages"));
 
@@ -110,9 +109,10 @@ void MessagesToolBar::initializeSearchBox() {
   m_actionSearchMessages = new QWidgetAction(this);
   m_actionSearchMessages->setDefaultWidget(m_txtSearchMessages);
   m_actionSearchMessages->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
-  m_actionSearchMessages->setProperty("type", SEACRH_MESSAGES_ACTION_NAME);
+  m_actionSearchMessages->setProperty("type", SEARCH_BOX_ACTION_NAME);
   m_actionSearchMessages->setProperty("name", tr("Message search box"));
-  connect(m_txtSearchMessages, &MessagesSearchLineEdit::textChanged, this, &MessagesToolBar::messageSearchPatternChanged);
+
+  connect(m_txtSearchMessages, &BaseLineEdit::textChanged, this, &MessagesToolBar::messageSearchPatternChanged);
 }
 
 void MessagesToolBar::initializeHighlighter() {

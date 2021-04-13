@@ -73,7 +73,7 @@
 #define TIMEZONE_OFFSET_LIMIT                 6
 #define CHANGE_EVENT_DELAY                    250
 #define FLAG_ICON_SUBFOLDER                   "flags"
-#define SEACRH_MESSAGES_ACTION_NAME           "search"
+#define SEARCH_BOX_ACTION_NAME           "search"
 #define HIGHLIGHTER_ACTION_NAME               "highlighter"
 #define SPACER_ACTION_NAME                    "spacer"
 #define SEPARATOR_ACTION_NAME                 "separator"
