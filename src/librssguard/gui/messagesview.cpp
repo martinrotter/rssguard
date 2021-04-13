@@ -581,9 +581,9 @@ void MessagesView::selectNextUnreadItem() {
 
 void MessagesView::searchMessages(const QString& pattern) {
 #if QT_VERSION < 0x050C00 // Qt < 5.12.0
-  m_proxyModel->setFilterRegExp(pattern);
+  m_proxyModel->setFilterRegExp(pattern.toLower());
 #else
-  m_proxyModel->setFilterRegularExpression(pattern);
+  m_proxyModel->setFilterRegularExpression(pattern.toLower());
 #endif
 
   if (selectionModel()->selectedRows().isEmpty()) {

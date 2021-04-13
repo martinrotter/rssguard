@@ -148,6 +148,9 @@ QVariant RootItem::data(int column, int role) const {
         return QVariant();
       }
 
+    case LOWER_TITLE_ROLE:
+      return m_title.toLower();
+
     case Qt::ItemDataRole::EditRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return m_title;

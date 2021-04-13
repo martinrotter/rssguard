@@ -324,8 +324,13 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
     }
 
+    case LOWER_TITLE_ROLE:
+      return messageAt(idx.row()).m_title.toLower();
+
     case Qt::ItemDataRole::EditRole:
-      return m_cache->containsData(idx.row()) ? m_cache->data(idx) : QSqlQueryModel::data(idx, role);
+      return m_cache->containsData(idx.row())
+          ? m_cache->data(idx)
+          : QSqlQueryModel::data(idx, role);
 
     case Qt::ItemDataRole::ToolTipRole: {
       if (idx.column() == MSG_DB_SCORE_INDEX) {

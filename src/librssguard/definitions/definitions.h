@@ -57,6 +57,7 @@
 #define URL_REGEXP "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
 #define SCRIPT_SOURCE_TYPE_REGEXP             "^.+#.*$"
 #define TEXT_TITLE_LIMIT                      30
+#define LOWER_TITLE_ROLE                      64
 #define RESELECT_MESSAGE_THRESSHOLD           500
 #define ICON_SIZE_SETTINGS                    16
 #define TRAY_ICON_BUBBLE_TIMEOUT              20000
