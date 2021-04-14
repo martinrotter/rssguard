@@ -7,10 +7,10 @@
 
 #include "ui_formaccountdetails.h"
 
-#include "gui/networkproxydetails.h"
-#include "miscellaneous/application.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
+#include "gui/reusable/networkproxydetails.h"
+#include "miscellaneous/application.h"
 
 class ServiceRoot;
 

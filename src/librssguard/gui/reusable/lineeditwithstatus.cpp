@@ -1,9 +1,9 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/lineeditwithstatus.h"
+#include "gui/reusable/lineeditwithstatus.h"
 
-#include "gui/baselineedit.h"
-#include "gui/plaintoolbutton.h"
+#include "gui/reusable/baselineedit.h"
+#include "gui/reusable/plaintoolbutton.h"
 
 #include <QHBoxLayout>
 

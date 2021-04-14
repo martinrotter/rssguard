@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/colortoolbutton.h"
+#include "gui/reusable/colortoolbutton.h"
 
 #include <QColorDialog>
 #include <QPainter>

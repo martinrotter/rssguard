@@ -8,7 +8,7 @@
 #include "gui/feedsview.h"
 #include "gui/messagesview.h"
 #include "gui/newspaperpreviewer.h"
-#include "gui/plaintoolbutton.h"
+#include "gui/reusable/plaintoolbutton.h"
 #include "gui/tabbar.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"

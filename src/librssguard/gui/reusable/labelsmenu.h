@@ -3,7 +3,7 @@
 #ifndef LABELSMENU_H
 #define LABELSMENU_H
 
-#include "gui/nonclosablemenu.h"
+#include "gui/reusable/nonclosablemenu.h"
 
 #include "services/abstract/label.h"
 

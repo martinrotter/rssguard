@@ -11,19 +11,19 @@ class SettingsGeneral : public SettingsPanel {
   Q_OBJECT
 
   public:
-    explicit SettingsGeneral(Settings* settings, QWidget* parent = 0);
+    explicit SettingsGeneral(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsGeneral();
 
-    inline QString title() const {
-      return tr("General");
-    }
-
-    void loadSettings();
-
-    void saveSettings();
+    virtual QString title() const;
+    virtual void loadSettings();
+    virtual void saveSettings();
 
   private:
     Ui::SettingsGeneral* m_ui;
 };
+
+inline QString SettingsGeneral::title() const {
+  return tr("General");
+}
 
 #endif // SETTINGSGENERAL_H

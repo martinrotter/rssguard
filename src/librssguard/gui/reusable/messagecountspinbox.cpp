@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/messagecountspinbox.h"
+#include "gui/reusable/messagecountspinbox.h"
 
 #include "definitions/definitions.h"
 

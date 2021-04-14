@@ -11,16 +11,12 @@ class SettingsGui : public SettingsPanel {
   Q_OBJECT
 
   public:
-    explicit SettingsGui(Settings* settings, QWidget* parent = 0);
+    explicit SettingsGui(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsGui();
 
-    inline QString title() const {
-      return tr("User interface");
-    }
-
-    void loadSettings();
-
-    void saveSettings();
+    virtual QString title() const;
+    virtual void loadSettings();
+    virtual void saveSettings();
 
   protected:
 
@@ -30,5 +26,9 @@ class SettingsGui : public SettingsPanel {
   private:
     Ui::SettingsGui* m_ui;
 };
+
+inline QString SettingsGui::title() const {
+  return tr("User interface");
+}
 
 #endif // SETTINGSGUI_H

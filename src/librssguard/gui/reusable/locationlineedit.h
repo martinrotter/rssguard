@@ -3,7 +3,7 @@
 #ifndef LOCATIONLINEEDIT_H
 #define LOCATIONLINEEDIT_H
 
-#include "gui/baselineedit.h"
+#include "gui/reusable/baselineedit.h"
 
 class WebBrowser;
 class GoogleSuggest;
@@ -14,7 +14,7 @@ class LocationLineEdit : public BaseLineEdit {
   public:
 
     // Constructors and destructors.
-    explicit LocationLineEdit(QWidget* parent = 0);
+    explicit LocationLineEdit(QWidget* parent = nullptr);
     virtual ~LocationLineEdit();
 
   protected:

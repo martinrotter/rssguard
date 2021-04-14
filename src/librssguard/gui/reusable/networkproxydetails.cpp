@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/networkproxydetails.h"
+#include "gui/reusable/networkproxydetails.h"
 
 #include "gui/guiutilities.h"
 

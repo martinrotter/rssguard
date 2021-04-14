@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/searchtextwidget.h"
+#include "gui/reusable/searchtextwidget.h"
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"

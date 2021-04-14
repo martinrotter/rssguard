@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/locationlineedit.h"
+#include "gui/reusable/locationlineedit.h"
 
 #include "network-web/googlesuggest.h"
 

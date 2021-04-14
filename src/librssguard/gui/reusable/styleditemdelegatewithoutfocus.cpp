@@ -1,10 +1,11 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/styleditemdelegatewithoutfocus.h"
+#include "gui/reusable/styleditemdelegatewithoutfocus.h"
 
 StyledItemDelegateWithoutFocus::StyledItemDelegateWithoutFocus(QObject* parent) : QStyledItemDelegate(parent) {}
 
-void StyledItemDelegateWithoutFocus::paint(QPainter* painter, const QStyleOptionViewItem& option,
+void StyledItemDelegateWithoutFocus::paint(QPainter* painter,
+                                           const QStyleOptionViewItem& option,
                                            const QModelIndex& index) const {
   QStyleOptionViewItem itemOption(option);
 

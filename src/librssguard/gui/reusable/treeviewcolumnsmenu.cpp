@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/treeviewcolumnsmenu.h"
+#include "gui/reusable/treeviewcolumnsmenu.h"
 
 #include <QHeaderView>
 

@@ -20,7 +20,7 @@
 #ifndef ADBLOCKTREEWIDGET_H
 #define ADBLOCKTREEWIDGET_H
 
-#include "gui/treewidget.h"
+#include "gui/reusable/treewidget.h"
 
 class AdBlockSubscription;
 class AdBlockRule;
@@ -29,7 +29,7 @@ class AdBlockTreeWidget : public TreeWidget {
   Q_OBJECT
 
   public:
-    explicit AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget* parent = 0);
+    explicit AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget* parent = nullptr);
 
     AdBlockSubscription* subscription() const;
 

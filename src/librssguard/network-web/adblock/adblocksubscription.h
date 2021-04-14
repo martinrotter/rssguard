@@ -115,7 +115,7 @@ class AdBlockCustomList : public AdBlockSubscription {
   Q_OBJECT
 
   public:
-    explicit AdBlockCustomList(QObject* parent = 0);
+    explicit AdBlockCustomList(QObject* parent = nullptr);
 
     void loadSubscription(const QStringList& disabledRules);
     void saveSubscription();

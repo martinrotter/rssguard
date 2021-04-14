@@ -3,7 +3,7 @@
 #ifndef TREEVIEWCOLUMNSMENU_H
 #define TREEVIEWCOLUMNSMENU_H
 
-#include "gui/nonclosablemenu.h"
+#include "gui/reusable/nonclosablemenu.h"
 
 class QHeaderView;
 

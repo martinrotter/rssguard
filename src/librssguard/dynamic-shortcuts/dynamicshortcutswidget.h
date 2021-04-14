@@ -16,7 +16,7 @@ class DynamicShortcutsWidget : public QWidget {
   public:
 
     // Constructors and destructors.
-    explicit DynamicShortcutsWidget(QWidget* parent = 0);
+    explicit DynamicShortcutsWidget(QWidget* parent = nullptr);
     virtual ~DynamicShortcutsWidget();
 
     // Updates shortcuts of all actions according to changes.
@@ -40,7 +40,6 @@ class DynamicShortcutsWidget : public QWidget {
 
   private:
     QGridLayout* m_layout;
-
     QList<ActionBinding> m_actionBindings;
 };
 

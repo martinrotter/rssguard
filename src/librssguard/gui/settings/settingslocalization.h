@@ -11,19 +11,19 @@ class SettingsLocalization : public SettingsPanel {
   Q_OBJECT
 
   public:
-    explicit SettingsLocalization(Settings* settings, QWidget* parent = 0);
+    explicit SettingsLocalization(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsLocalization();
 
-    inline QString title() const {
-      return tr("Language");
-    }
-
-    void loadSettings();
-
-    void saveSettings();
+    virtual QString title() const;
+    virtual void loadSettings();
+    virtual void saveSettings();
 
   private:
     Ui::SettingsLocalization* m_ui;
 };
+
+inline QString SettingsLocalization::title() const {
+  return tr("Localization");
+}
 
 #endif // SETTINGSLOCALIZATION_H

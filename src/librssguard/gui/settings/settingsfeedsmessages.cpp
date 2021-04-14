@@ -8,7 +8,7 @@
 #include "gui/feedsview.h"
 #include "gui/guiutilities.h"
 #include "gui/messagesview.h"
-#include "gui/timespinbox.h"
+#include "gui/reusable/timespinbox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 

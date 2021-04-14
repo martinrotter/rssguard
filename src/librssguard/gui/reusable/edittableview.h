@@ -9,7 +9,7 @@ class EditTableView : public QTableView {
   Q_OBJECT
 
   public:
-    explicit EditTableView(QWidget* parent = 0);
+    explicit EditTableView(QWidget* parent = nullptr);
 
   public slots:
     void removeSelected();

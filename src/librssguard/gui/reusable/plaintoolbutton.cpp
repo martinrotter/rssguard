@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/plaintoolbutton.h"
+#include "gui/reusable/plaintoolbutton.h"
 
 #include <QAction>
 #include <QPainter>

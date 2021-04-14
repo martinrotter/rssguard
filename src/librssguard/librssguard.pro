@@ -60,10 +60,10 @@ HEADERS += core/feeddownloader.h \
            exceptions/ioexception.h \
            exceptions/networkexception.h \
            exceptions/scriptexception.h \
-           gui/baselineedit.h \
+           gui/reusable/baselineedit.h \
            gui/toolbars/basetoolbar.h \
-           gui/colortoolbutton.h \
-           gui/comboboxwithstatus.h \
+           gui/reusable/comboboxwithstatus.h \
+           gui/reusable/colortoolbutton.h \
            gui/dialogs/formabout.h \
            gui/dialogs/formaddaccount.h \
            gui/dialogs/formaddeditlabel.h \
@@ -74,24 +74,24 @@ HEADERS += core/feeddownloader.h \
            gui/dialogs/formrestoredatabasesettings.h \
            gui/dialogs/formsettings.h \
            gui/dialogs/formupdate.h \
-           gui/edittableview.h \
+           gui/reusable/edittableview.h \
            gui/feedmessageviewer.h \
            gui/toolbars/feedstoolbar.h \
            gui/feedsview.h \
            gui/guiutilities.h \
-           gui/labelsmenu.h \
-           gui/labelwithstatus.h \
-           gui/lineeditwithstatus.h \
+           gui/reusable/labelsmenu.h \
+           gui/reusable/labelwithstatus.h \
+           gui/reusable/lineeditwithstatus.h \
            gui/messagebox.h \
-           gui/messagecountspinbox.h \
+           gui/reusable/messagecountspinbox.h \
            gui/messagepreviewer.h \
            gui/toolbars/messagestoolbar.h \
            gui/messagesview.h \
-           gui/networkproxydetails.h \
+           gui/reusable/networkproxydetails.h \
            gui/newspaperpreviewer.h \
-           gui/nonclosablemenu.h \
-           gui/plaintoolbutton.h \
-           gui/searchtextwidget.h \
+           gui/reusable/nonclosablemenu.h \
+           gui/reusable/plaintoolbutton.h \
+           gui/reusable/searchtextwidget.h \
            gui/settings/settingsbrowsermail.h \
            gui/settings/settingsdatabase.h \
            gui/settings/settingsdownloads.h \
@@ -101,17 +101,17 @@ HEADERS += core/feeddownloader.h \
            gui/settings/settingslocalization.h \
            gui/settings/settingspanel.h \
            gui/settings/settingsshortcuts.h \
-           gui/squeezelabel.h \
+           gui/reusable/squeezelabel.h \
            gui/toolbars/statusbar.h \
-           gui/styleditemdelegatewithoutfocus.h \
+           gui/reusable/styleditemdelegatewithoutfocus.h \
            gui/systemtrayicon.h \
            gui/tabbar.h \
            gui/tabcontent.h \
            gui/tabwidget.h \
-           gui/timespinbox.h \
+           gui/reusable/timespinbox.h \
            gui/toolbars/toolbareditor.h \
-           gui/treeviewcolumnsmenu.h \
-           gui/widgetwithstatus.h \
+           gui/reusable/treeviewcolumnsmenu.h \
+           gui/reusable/widgetwithstatus.h \
            miscellaneous/application.h \
            miscellaneous/autosaver.h \
            miscellaneous/externaltool.h \
@@ -238,10 +238,10 @@ SOURCES += core/feeddownloader.cpp \
            exceptions/ioexception.cpp \
            exceptions/networkexception.cpp \
            exceptions/scriptexception.cpp \
-           gui/baselineedit.cpp \
+           gui/reusable/baselineedit.cpp \
            gui/toolbars/basetoolbar.cpp \
-           gui/colortoolbutton.cpp \
-           gui/comboboxwithstatus.cpp \
+           gui/reusable/comboboxwithstatus.cpp \
+           gui/reusable/colortoolbutton.cpp \
            gui/dialogs/formabout.cpp \
            gui/dialogs/formaddaccount.cpp \
            gui/dialogs/formaddeditlabel.cpp \
@@ -252,24 +252,24 @@ SOURCES += core/feeddownloader.cpp \
            gui/dialogs/formrestoredatabasesettings.cpp \
            gui/dialogs/formsettings.cpp \
            gui/dialogs/formupdate.cpp \
-           gui/edittableview.cpp \
+           gui/reusable/edittableview.cpp \
            gui/feedmessageviewer.cpp \
            gui/toolbars/feedstoolbar.cpp \
            gui/feedsview.cpp \
            gui/guiutilities.cpp \
-           gui/labelsmenu.cpp \
-           gui/labelwithstatus.cpp \
-           gui/lineeditwithstatus.cpp \
+           gui/reusable/labelsmenu.cpp \
+           gui/reusable/labelwithstatus.cpp \
+           gui/reusable/lineeditwithstatus.cpp \
            gui/messagebox.cpp \
-           gui/messagecountspinbox.cpp \
+           gui/reusable/messagecountspinbox.cpp \
            gui/messagepreviewer.cpp \
            gui/toolbars/messagestoolbar.cpp \
            gui/messagesview.cpp \
-           gui/networkproxydetails.cpp \
+           gui/reusable/networkproxydetails.cpp \
            gui/newspaperpreviewer.cpp \
-           gui/nonclosablemenu.cpp \
-           gui/plaintoolbutton.cpp \
-           gui/searchtextwidget.cpp \
+           gui/reusable/nonclosablemenu.cpp \
+           gui/reusable/plaintoolbutton.cpp \
+           gui/reusable/searchtextwidget.cpp \
            gui/settings/settingsbrowsermail.cpp \
            gui/settings/settingsdatabase.cpp \
            gui/settings/settingsdownloads.cpp \
@@ -279,17 +279,17 @@ SOURCES += core/feeddownloader.cpp \
            gui/settings/settingslocalization.cpp \
            gui/settings/settingspanel.cpp \
            gui/settings/settingsshortcuts.cpp \
-           gui/squeezelabel.cpp \
+           gui/reusable/squeezelabel.cpp \
            gui/toolbars/statusbar.cpp \
-           gui/styleditemdelegatewithoutfocus.cpp \
+           gui/reusable/styleditemdelegatewithoutfocus.cpp \
            gui/systemtrayicon.cpp \
            gui/tabbar.cpp \
            gui/tabcontent.cpp \
            gui/tabwidget.cpp \
-           gui/timespinbox.cpp \
+           gui/reusable/timespinbox.cpp \
            gui/toolbars/toolbareditor.cpp \
-           gui/treeviewcolumnsmenu.cpp \
-           gui/widgetwithstatus.cpp \
+           gui/reusable/treeviewcolumnsmenu.cpp \
+           gui/reusable/widgetwithstatus.cpp \
            miscellaneous/application.cpp \
            miscellaneous/autosaver.cpp \
            miscellaneous/externaltool.cpp \
@@ -394,9 +394,9 @@ FORMS += gui/dialogs/formabout.ui \
          gui/dialogs/formrestoredatabasesettings.ui \
          gui/dialogs/formsettings.ui \
          gui/dialogs/formupdate.ui \
-         gui/networkproxydetails.ui \
+         gui/reusable/networkproxydetails.ui \
          gui/newspaperpreviewer.ui \
-         gui/searchtextwidget.ui \
+         gui/reusable/searchtextwidget.ui \
          gui/settings/settingsbrowsermail.ui \
          gui/settings/settingsdatabase.ui \
          gui/settings/settingsdownloads.ui \
@@ -426,17 +426,17 @@ FORMS += gui/dialogs/formabout.ui \
 
 
 equals(USE_WEBENGINE, true) {
-  HEADERS += gui/locationlineedit.h \
+  HEADERS += gui/reusable/locationlineedit.h \
              gui/webviewer.h \
              gui/webbrowser.h \
-             gui/discoverfeedsbutton.h \
+             gui/reusable/discoverfeedsbutton.h \
              network-web/googlesuggest.h \
              network-web/webpage.h
 
-  SOURCES += gui/locationlineedit.cpp \
+  SOURCES += gui/reusable/locationlineedit.cpp \
              gui/webviewer.cpp \
              gui/webbrowser.cpp \
-             gui/discoverfeedsbutton.cpp \
+             gui/reusable/discoverfeedsbutton.cpp \
              network-web/googlesuggest.cpp \
              network-web/webpage.cpp
 
@@ -454,7 +454,7 @@ equals(USE_WEBENGINE, true) {
              network-web/adblock/adblockrequestinfo.h \
              network-web/urlinterceptor.h \
              network-web/networkurlinterceptor.h \
-             gui/treewidget.h
+             gui/reusable/treewidget.h
 
   SOURCES += network-web/adblock/adblockaddsubscriptiondialog.cpp \
              network-web/adblock/adblockdialog.cpp \
@@ -468,7 +468,7 @@ equals(USE_WEBENGINE, true) {
              network-web/adblock/adblockurlinterceptor.cpp \
              network-web/adblock/adblockrequestinfo.cpp \
              network-web/networkurlinterceptor.cpp \
-             gui/treewidget.cpp
+             gui/reusable/treewidget.cpp
 
   FORMS += network-web/adblock/adblockaddsubscriptiondialog.ui \
            network-web/adblock/adblockdialog.ui
@@ -502,6 +502,7 @@ HEADERS  += $$files(3rd-party/sc/*.h, false)
 INCLUDEPATH +=  $$PWD/. \
                 $$PWD/gui \
                 $$PWD/gui/dialogs \
+                $$PWD/gui/reusable \
                 $$PWD/gui/toolbars \
                 $$PWD/dynamic-shortcuts
 

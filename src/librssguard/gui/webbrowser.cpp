@@ -3,10 +3,10 @@
 #include "gui/webbrowser.h"
 
 #include "database/databasequeries.h"
-#include "gui/discoverfeedsbutton.h"
-#include "gui/locationlineedit.h"
 #include "gui/messagebox.h"
-#include "gui/searchtextwidget.h"
+#include "gui/reusable/discoverfeedsbutton.h"
+#include "gui/reusable/locationlineedit.h"
+#include "gui/reusable/searchtextwidget.h"
 #include "gui/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"

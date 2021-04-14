@@ -14,7 +14,7 @@ class FormAddAccount : public QDialog {
   Q_OBJECT
 
   public:
-    explicit FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, FeedsModel* model, QWidget* parent = 0);
+    explicit FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, FeedsModel* model, QWidget* parent = nullptr);
     virtual ~FormAddAccount();
 
   private slots:

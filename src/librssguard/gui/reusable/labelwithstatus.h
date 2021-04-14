@@ -3,7 +3,7 @@
 #ifndef LABELWITHSTATUS_H
 #define LABELWITHSTATUS_H
 
-#include "gui/widgetwithstatus.h"
+#include "gui/reusable/widgetwithstatus.h"
 
 #include <QLabel>
 

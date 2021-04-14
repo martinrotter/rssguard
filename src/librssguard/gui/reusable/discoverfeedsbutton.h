@@ -9,18 +9,13 @@ class DiscoverFeedsButton : public QToolButton {
   Q_OBJECT
 
   public:
-
-    // Constructors.
-    explicit DiscoverFeedsButton(QWidget* parent = 0);
+    explicit DiscoverFeedsButton(QWidget* parent = nullptr);
     virtual ~DiscoverFeedsButton();
 
-    // Feed addresses manipulators.
     void clearFeedAddresses();
     void setFeedAddresses(const QStringList& addresses);
 
   private slots:
-
-    // User chose any of addresses.
     void linkTriggered(QAction* action);
     void fillMenu();
 

@@ -2,7 +2,7 @@
 
 #include "dynamic-shortcuts/shortcutcatcher.h"
 
-#include "gui/plaintoolbutton.h"
+#include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QHBoxLayout>

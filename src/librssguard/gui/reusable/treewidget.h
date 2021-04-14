@@ -26,21 +26,15 @@ class TreeWidget : public QTreeWidget {
   Q_OBJECT
 
   public:
-    explicit TreeWidget(QWidget* parent = 0);
+    explicit TreeWidget(QWidget* parent = nullptr);
 
     enum class ItemShowMode {
       ItemsCollapsed = 0,
       ItemsExpanded = 1
     };
 
-    ItemShowMode defaultItemShowMode() {
-      return m_showMode;
-    }
-
-    void setDefaultItemShowMode(ItemShowMode mode) {
-      m_showMode = mode;
-    }
-
+    ItemShowMode defaultItemShowMode();
+    void setDefaultItemShowMode(ItemShowMode mode);
     QList<QTreeWidgetItem*> allItems();
 
     bool appendToParentItem(const QString& parentText, QTreeWidgetItem* item);
@@ -67,13 +61,23 @@ class TreeWidget : public QTreeWidget {
   private slots:
     void sheduleRefresh();
 
-  private:
+  protected:
     void mousePressEvent(QMouseEvent* event);
+
+  private:
     void iterateAllItems(QTreeWidgetItem* parent);
 
     bool m_refreshAllItemsNeeded;
     QList<QTreeWidgetItem*> m_allTreeItems;
     ItemShowMode m_showMode;
 };
+
+inline TreeWidget::ItemShowMode TreeWidget::defaultItemShowMode() {
+  return m_showMode;
+}
+
+inline void TreeWidget::setDefaultItemShowMode(TreeWidget::ItemShowMode mode) {
+  m_showMode = mode;
+}
 
 #endif // BOOKMARKSTREEWIDGET_H

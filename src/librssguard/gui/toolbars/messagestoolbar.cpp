@@ -3,7 +3,7 @@
 #include "gui/toolbars/messagestoolbar.h"
 
 #include "definitions/definitions.h"
-#include "gui/baselineedit.h"
+#include "gui/reusable/baselineedit.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 

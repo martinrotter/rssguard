@@ -2,7 +2,7 @@
 
 #include "services/gmail/gui/emailrecipientcontrol.h"
 
-#include "gui/plaintoolbutton.h"
+#include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/gmail/definitions.h"

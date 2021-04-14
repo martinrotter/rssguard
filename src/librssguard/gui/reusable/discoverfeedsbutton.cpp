@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/discoverfeedsbutton.h"
+#include "gui/reusable/discoverfeedsbutton.h"
 
 #include "core/feedsmodel.h"
 #include "gui/dialogs/formmain.h"

@@ -3,7 +3,7 @@
 #ifndef COMBOBOXWITHSTATUS_H
 #define COMBOBOXWITHSTATUS_H
 
-#include "gui/widgetwithstatus.h"
+#include "gui/reusable/widgetwithstatus.h"
 
 #include <QComboBox>
 

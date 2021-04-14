@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/timespinbox.h"
+#include "gui/reusable/timespinbox.h"
 
 #include <QStringList>
 

@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/labelsmenu.h"
+#include "gui/reusable/labelsmenu.h"
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"

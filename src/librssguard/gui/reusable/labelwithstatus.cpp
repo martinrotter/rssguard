@@ -1,8 +1,8 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/labelwithstatus.h"
+#include "gui/reusable/labelwithstatus.h"
 
-#include "gui/plaintoolbutton.h"
+#include "gui/reusable/plaintoolbutton.h"
 
 #include <QHBoxLayout>
 

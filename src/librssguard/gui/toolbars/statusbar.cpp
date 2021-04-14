@@ -3,7 +3,7 @@
 #include "gui/toolbars/statusbar.h"
 
 #include "gui/dialogs/formmain.h"
-#include "gui/plaintoolbutton.h"
+#include "gui/reusable/plaintoolbutton.h"
 #include "gui/tabwidget.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"

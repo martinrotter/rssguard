@@ -7,7 +7,7 @@
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
-#include "gui/styleditemdelegatewithoutfocus.h"
+#include "gui/reusable/styleditemdelegatewithoutfocus.h"
 #include "gui/systemtrayicon.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"

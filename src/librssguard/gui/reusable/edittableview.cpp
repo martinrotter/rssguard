@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/edittableview.h"
+#include "gui/reusable/edittableview.h"
 
 #include <QKeyEvent>
 

@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/squeezelabel.h"
+#include "gui/reusable/squeezelabel.h"
 
 SqueezeLabel::SqueezeLabel(QWidget* parent) : QLabel(parent) {}
 

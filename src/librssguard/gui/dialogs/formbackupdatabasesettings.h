@@ -11,9 +11,7 @@ class FormBackupDatabaseSettings : public QDialog {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors
-    explicit FormBackupDatabaseSettings(QWidget* parent = 0);
+    explicit FormBackupDatabaseSettings(QWidget* parent = nullptr);
     virtual ~FormBackupDatabaseSettings();
 
   private slots:

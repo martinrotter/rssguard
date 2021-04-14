@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/baselineedit.h"
+#include "gui/reusable/baselineedit.h"
 
 #include <QKeyEvent>
 

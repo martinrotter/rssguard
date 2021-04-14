@@ -2,7 +2,7 @@
 
 #include "gui/toolbars/feedstoolbar.h"
 
-#include "gui/baselineedit.h"
+#include "gui/reusable/baselineedit.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"

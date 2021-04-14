@@ -31,7 +31,7 @@
 #include "network-web/googlesuggest.h"
 
 #include "definitions/definitions.h"
-#include "gui/locationlineedit.h"
+#include "gui/reusable/locationlineedit.h"
 #include "network-web/downloader.h"
 
 #include <QDomDocument>

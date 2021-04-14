@@ -5,8 +5,8 @@
 
 #include <QWidget>
 
-class QHBoxLayout;
 class PlainToolButton;
+class QHBoxLayout;
 class QKeySequenceEdit;
 
 class ShortcutCatcher : public QWidget {

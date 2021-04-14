@@ -16,7 +16,7 @@
 #include "gui/messagebox.h"
 #include "gui/messagepreviewer.h"
 #include "gui/messagesview.h"
-#include "gui/plaintoolbutton.h"
+#include "gui/reusable/plaintoolbutton.h"
 #include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
 #include "gui/toolbars/feedstoolbar.h"
