@@ -4,7 +4,7 @@
 
 #include "gui/messagebox.h"
 #include "gui/messagetextbrowser.h"
-#include "gui/searchtextwidget.h"
+#include "gui/reusable/searchtextwidget.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "network-web/webfactory.h"
