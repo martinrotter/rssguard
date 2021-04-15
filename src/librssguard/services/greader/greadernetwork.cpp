@@ -300,23 +300,26 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     feed->setCustomId(id);
 
     if (obtain_icons) {
-      QString icon_url = subscription.contains(QSL("iconUrl"))
-                         ? subscription["iconUrl"].toString()
-                         : subscription["htmlUrl"].toString();
+      QString icon_url = subscription["iconUrl"].toString();
+      QList<QPair<QString, bool>> icon_urls;
+
+      icon_urls.append({ url, false });
 
       if (!icon_url.isEmpty()) {
         if (icon_url.startsWith(QSL("//"))) {
           icon_url = QUrl(baseUrl()).scheme() + QSL(":") + icon_url;
         }
 
-        QIcon icon;
+        icon_urls.append({ icon_url, true });
+      }
 
-        if (NetworkFactory::downloadIcon({ { icon_url, true } },
-                                         timeout,
-                                         icon,
-                                         proxy) == QNetworkReply::NetworkError::NoError) {
-          feed->setIcon(icon);
-        }
+      QIcon icon;
+
+      if (NetworkFactory::downloadIcon(icon_urls,
+                                       timeout,
+                                       icon,
+                                       proxy) == QNetworkReply::NetworkError::NoError) {
+        feed->setIcon(icon);
       }
     }
 
