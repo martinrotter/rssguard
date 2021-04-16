@@ -83,6 +83,9 @@ namespace Feeds {
   KEY ShowTreeBranches;
   VALUE(bool) ShowTreeBranchesDef;
 
+  KEY HideCountsIfNoUnread;
+  VALUE(bool) HideCountsIfNoUnreadDef;
+
   KEY AutoExpandOnSelection;
   VALUE(bool) AutoExpandOnSelectionDef;
 

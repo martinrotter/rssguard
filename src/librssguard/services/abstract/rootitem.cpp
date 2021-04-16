@@ -167,12 +167,18 @@ QVariant RootItem::data(int column, int role) const {
         return m_title;
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
-        int count_all = countOfAllMessages();
         int count_unread = countOfUnreadMessages();
 
-        return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
-               .replace(PLACEHOLDER_UNREAD_COUNTS, count_unread < 0 ? QSL("-") : QString::number(count_unread))
-               .replace(PLACEHOLDER_ALL_COUNTS, count_all < 0 ? QSL("-") : QString::number(count_all));
+        if (count_unread <= 0 && qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool()) {
+          return QString();
+        }
+        else {
+          int count_all = countOfAllMessages();
+
+          return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
+                 .replace(PLACEHOLDER_UNREAD_COUNTS, count_unread < 0 ? QSL("-") : QString::number(count_unread))
+                 .replace(PLACEHOLDER_ALL_COUNTS, count_all < 0 ? QSL("-") : QString::number(count_all));
+        }
       }
       else {
         return QVariant();

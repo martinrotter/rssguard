@@ -70,13 +70,6 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QCheckBox" name="m_checkAutoUpdateOnlyUnfocused">
-         <property name="text">
-          <string>Only auto-download messages when application is unfocused</string>
-         </property>
-        </widget>
-       </item>
        <item row="4" column="0">
         <widget class="QGroupBox" name="groupBox_6">
          <property name="title">
@@ -214,7 +207,7 @@
          </item>
         </layout>
        </item>
-       <item row="8" column="0" colspan="2">
+       <item row="9" column="0" colspan="2">
         <widget class="QLabel" name="label_9">
          <property name="font">
           <font>
@@ -232,7 +225,7 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="0" colspan="2">
+       <item row="10" column="0" colspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -244,6 +237,20 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="8" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbHideCountsIfNoUnread">
+         <property name="text">
+          <string>Hide message counts if there are no unread messages</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkAutoUpdateOnlyUnfocused">
+         <property name="text">
+          <string>Only auto-download messages when application is unfocused</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -449,6 +456,7 @@
   <tabstop>m_spinFeedUpdateTimeout</tabstop>
   <tabstop>m_spinHeightRowsFeeds</tabstop>
   <tabstop>m_cmbCountsFeedList</tabstop>
+  <tabstop>m_cbHideCountsIfNoUnread</tabstop>
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
   <tabstop>m_checkDisplayPlaceholders</tabstop>
   <tabstop>m_checkDisplayFeedIcons</tabstop>

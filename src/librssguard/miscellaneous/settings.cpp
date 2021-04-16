@@ -63,6 +63,9 @@ DVALUE(bool) Feeds::ShowOnlyUnreadFeedsDef = false;
 DKEY Feeds::ShowTreeBranches = "show_tree_branches";
 DVALUE(bool) Feeds::ShowTreeBranchesDef = true;
 
+DKEY Feeds::HideCountsIfNoUnread = "hide_counts_if_no_unread";
+DVALUE(bool) Feeds::HideCountsIfNoUnreadDef = false;
+
 DKEY Feeds::AutoExpandOnSelection = "auto_expand_on_selection";
 DVALUE(bool) Feeds::AutoExpandOnSelectionDef = false;
 
