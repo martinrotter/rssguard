@@ -3,6 +3,8 @@
 #include "services/greader/greadernetwork.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "exceptions/applicationexception.h"
+#include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
@@ -88,6 +90,34 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
   }
 
   return QNetworkReply::NetworkError::NoError;
+}
+
+QVariantHash GreaderNetwork::userInfo(const QNetworkProxy& proxy) {
+  QString full_url = generateFullUrl(Operations::UserInfo);
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QNetworkReply::NetworkError network_err;
+
+  if (!ensureLogin(proxy, &network_err)) {
+    throw NetworkException(network_err);
+  }
+
+  QByteArray output;
+  auto res = NetworkFactory::performNetworkOperation(full_url,
+                                                     timeout,
+                                                     {},
+                                                     output,
+                                                     QNetworkAccessManager::Operation::GetOperation,
+                                                     { authHeader() },
+                                                     false,
+                                                     {},
+                                                     {},
+                                                     proxy);
+
+  if (res.first != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(res.first);
+  }
+
+  return QJsonDocument::fromJson(output).object().toVariantHash();
 }
 
 QNetworkReply::NetworkError GreaderNetwork::markMessagesRead(RootItem::ReadStatus status,
@@ -616,6 +646,9 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
 
     case Operations::StreamContents:
       return sanitizedBaseUrl() + GREADER_API_STREAM_CONTENTS;
+
+    case Operations::UserInfo:
+      return sanitizedBaseUrl() + GREADER_API_USER_INFO;
 
     case Operations::EditTag:
       return sanitizedBaseUrl() + GREADER_API_EDIT_TAG;

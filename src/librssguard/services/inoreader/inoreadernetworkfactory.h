@@ -39,6 +39,7 @@ class InoreaderNetworkFactory : public QObject {
     // Returned items do not have primary IDs assigned.
     RootItem* feedsCategories(bool obtain_icons);
 
+    QVariantHash userInfo(const QNetworkProxy& custom_proxy);
     QList<RootItem*> getLabels();
     QList<Message> messages(ServiceRoot* root, const QString& stream_id, Feed::Status& error);
     QNetworkReply::NetworkError editLabels(const QString& state, bool assign, const QStringList& msg_custom_ids);

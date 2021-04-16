@@ -29,5 +29,6 @@
 #define INOREADER_API_LIST_LABELS       "https://www.inoreader.com/reader/api/0/tag/list?types=1"
 #define INOREADER_API_LIST_FEEDS        "https://www.inoreader.com/reader/api/0/subscription/list"
 #define INOREADER_API_EDIT_TAG          "https://www.inoreader.com/reader/api/0/edit-tag"
+#define INOREADER_API_USER_INFO         "https://www.inoreader.com/reader/api/0/user-info"
 
 #endif // INOREADER_DEFINITIONS_H

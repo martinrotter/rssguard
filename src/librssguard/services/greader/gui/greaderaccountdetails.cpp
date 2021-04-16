@@ -3,10 +3,13 @@
 #include "services/greader/gui/greaderaccountdetails.h"
 
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/systemfactory.h"
 #include "services/greader/definitions.h"
 #include "services/greader/greadernetwork.h"
+
+#include <QVariantHash>
 
 GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);

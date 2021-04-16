@@ -5,6 +5,8 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
+#include "exceptions/networkexception.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "miscellaneous/application.h"
@@ -129,6 +131,34 @@ RootItem* InoreaderNetworkFactory::feedsCategories(bool obtain_icons) {
   }
 
   return decodeFeedCategoriesData(output_labels, output_feeds, obtain_icons);
+}
+
+QVariantHash InoreaderNetworkFactory::userInfo(const QNetworkProxy& custom_proxy) {
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
+
+  if (bearer.isEmpty()) {
+    throw ApplicationException(tr("not logged in"));
+  }
+
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray output;
+  auto res = NetworkFactory::performNetworkOperation(INOREADER_API_USER_INFO,
+                                                     timeout,
+                                                     {},
+                                                     output,
+                                                     QNetworkAccessManager::Operation::GetOperation,
+                                                     { { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                                       bearer.toLocal8Bit() } },
+                                                     false,
+                                                     {},
+                                                     {},
+                                                     custom_proxy);
+
+  if (res.first != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(res.first);
+  }
+
+  return QJsonDocument::fromJson(output).object().toVariantHash();
 }
 
 QList<RootItem*> InoreaderNetworkFactory::getLabels() {

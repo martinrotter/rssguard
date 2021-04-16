@@ -19,6 +19,8 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent)
   insertCustomTab(m_details, tr("Server setup"), 0);
   activateTab(0);
 
+  connect(m_details->m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditInoreaderAccount::testSetup);
+
   m_details->m_ui.m_txtUsername->setFocus();
 }
 
@@ -57,4 +59,8 @@ void FormEditInoreaderAccount::loadAccountData() {
   m_details->m_ui.m_txtUsername->lineEdit()->setText(account<InoreaderServiceRoot>()->network()->username());
   m_details->m_ui.m_spinLimitMessages->setValue(account<InoreaderServiceRoot>()->network()->batchSize());
   m_details->m_ui.m_cbDownloadOnlyUnreadMessages->setChecked(account<InoreaderServiceRoot>()->network()->downloadOnlyUnreadMessages());
+}
+
+void FormEditInoreaderAccount::testSetup() {
+  m_details->testSetup(m_proxyDetails->proxy());
 }

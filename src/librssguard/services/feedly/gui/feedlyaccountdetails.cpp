@@ -17,7 +17,7 @@
 
 #include <QVariantHash>
 
-FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
+FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent), m_lastProxy({}) {
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_oauth = nullptr;
 #endif
@@ -94,14 +94,30 @@ void FeedlyAccountDetails::onAuthError(const QString& error, const QString& deta
 }
 
 void FeedlyAccountDetails::onAuthGranted() {
-  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                  tr("Tested successfully. You may be prompted to login once more."),
-                                  tr("Your access was approved."));
+  FeedlyNetwork factory;
+
+  factory.setOauth(m_oauth);
+
+  try {
+    auto prof = factory.profile(m_lastProxy);
+
+    m_ui.m_txtUsername->lineEdit()->setText(prof["email"].toString());
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                    tr("Tested successfully. You may be prompted to login once more."),
+                                    tr("Your access was approved."));
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_FEEDLY
+                << "Failed to obtain profile with error:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+  }
 }
 
 #endif
 
 void FeedlyAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
+  m_lastProxy = custom_proxy;
+
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_oauth->logout(false);
 
@@ -113,7 +129,6 @@ void FeedlyAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
 
   FeedlyNetwork factory;
 
-  factory.setUsername(m_ui.m_txtUsername->lineEdit()->text());
   factory.setDeveloperAccessToken(m_ui.m_txtDeveloperAccessToken->lineEdit()->text());
 
   try {

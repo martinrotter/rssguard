@@ -45,6 +45,8 @@ class FeedlyAccountDetails : public QWidget {
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
     OAuth2Service* m_oauth;
 #endif
+
+    QNetworkProxy m_lastProxy;
 };
 
 #endif // FEEDLYACCOUNTDETAILS_H

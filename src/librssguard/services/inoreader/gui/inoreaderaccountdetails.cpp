@@ -2,6 +2,7 @@
 
 #include "services/inoreader/gui/inoreaderaccountdetails.h"
 
+#include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "network-web/oauth2service.h"
@@ -10,7 +11,7 @@
 #include "services/inoreader/inoreadernetworkfactory.h"
 
 InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
-  : QWidget(parent), m_oauth(nullptr) {
+  : QWidget(parent), m_oauth(nullptr), m_lastProxy({}) {
   m_ui.setupUi(this);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
@@ -43,7 +44,6 @@ InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
   connect(m_ui.m_txtAppKey->lineEdit(), &BaseLineEdit::textChanged, this, &InoreaderAccountDetails::checkOAuthValue);
   connect(m_ui.m_txtRedirectUrl->lineEdit(), &BaseLineEdit::textChanged, this, &InoreaderAccountDetails::checkOAuthValue);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &InoreaderAccountDetails::checkUsername);
-  connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &InoreaderAccountDetails::testSetup);
   connect(m_ui.m_btnRegisterApi, &QPushButton::clicked, this, &InoreaderAccountDetails::registerApi);
 
   emit m_ui.m_txtUsername->lineEdit()->textChanged(m_ui.m_txtUsername->lineEdit()->text());
@@ -54,12 +54,13 @@ InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
   hookNetwork();
 }
 
-void InoreaderAccountDetails::testSetup() {
+void InoreaderAccountDetails::testSetup(const QNetworkProxy& custom_proxy) {
+  m_lastProxy = custom_proxy;
+
   m_oauth->logout();
   m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
   m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
   m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());
-
   m_oauth->login();
 }
 
@@ -90,6 +91,21 @@ void InoreaderAccountDetails::onAuthGranted() {
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                   tr("Tested successfully. You may be prompted to login once more."),
                                   tr("Your access was approved."));
+
+  try {
+    InoreaderNetworkFactory fac;
+
+    fac.setOauth(m_oauth);
+
+    auto resp = fac.userInfo(m_lastProxy);
+
+    m_ui.m_txtUsername->lineEdit()->setText(resp["userEmail"].toString());
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_INOREADER
+                << "Failed to obtain profile with error:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+  }
 }
 
 void InoreaderAccountDetails::hookNetwork() {

@@ -90,11 +90,11 @@ void GmailAccountDetails::onAuthGranted() {
                                   tr("Tested successfully. You may be prompted to login once more."),
                                   tr("Your access was approved."));
 
-  GmailNetworkFactory fac;
-
-  fac.setOauth(m_oauth);
-
   try {
+    GmailNetworkFactory fac;
+
+    fac.setOauth(m_oauth);
+
     auto resp = fac.getProfile(m_lastProxy);
 
     m_ui.m_txtUsername->lineEdit()->setText(resp["emailAddress"].toString());

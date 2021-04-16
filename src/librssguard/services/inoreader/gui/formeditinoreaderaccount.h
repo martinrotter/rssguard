@@ -20,6 +20,9 @@ class FormEditInoreaderAccount : public FormAccountDetails {
   protected:
     virtual void loadAccountData();
 
+  private slots:
+    void testSetup();
+
   private:
     InoreaderAccountDetails* m_details;
 };
