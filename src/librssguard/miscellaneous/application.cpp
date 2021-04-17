@@ -80,6 +80,14 @@ Application::Application(const QString& id, int& argc, char** argv)
   m_webFactory->urlIinterceptor()->load();
   m_webFactory->adBlock()->load(true);
 #endif
+
+  qDebugNN << LOGSEC_CORE
+           << "OpenSSL version:"
+           << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
+
+  qDebugNN << LOGSEC_CORE
+           << "OpenSSL supported:"
+           << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
 }
 
 Application::~Application() {
