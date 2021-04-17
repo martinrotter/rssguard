@@ -153,10 +153,11 @@ QString MessageBrowser::prepareHtmlForMessage(const Message& message) {
   }
 
   html += pictures_html;
-  html = html
+
+  /*html = html
          .replace(QSL("\r\n"), QSL("\n"))
          .replace(QL1C('\r'), QL1C('\n'))
-         .remove(QL1C('\n'));
+         .remove(QL1C('\n'));*/
 
   return QSL("<html>"
              "<head><style>"
