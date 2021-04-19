@@ -131,6 +131,12 @@ NotInstalled:
   ExecWait '"$INSTDIR\vc_redist.x64.exe" /install /quiet /norestart'
   Delete "$INSTDIR\vc_redist.x64.exe"
 
+  ExecWait '"$INSTDIR\vcredist_2010.x86.exe" /q /norestart'
+  Delete "$INSTDIR\vcredist_2010.x86.exe"
+
+  ExecWait '"$INSTDIR\vcredist_2010.x64.exe" /q /norestart'
+  Delete "$INSTDIR\vcredist_2010.x64.exe"
+
   ; Create uninstaller.
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
