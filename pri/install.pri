@@ -29,7 +29,7 @@ win32 {
   clng.files = ../../resources/scripts/clang-format
   clng.path = $$PREFIX
 
-  INSTALLS += target lib clng clng.path = $$PREFIX
+  INSTALLS += target lib clng redist10
 
   INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard)
 }
