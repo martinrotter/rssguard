@@ -190,6 +190,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSelectPreviousMessage;
   actions << m_ui->m_actionSelectNextUnreadMessage;
   actions << m_ui->m_actionExpandCollapseItem;
+  actions << m_ui->m_actionExpandCollapseItemRecursively;
   actions << m_ui->m_actionMessageFilters;
 
 #if defined(USE_WEBENGINE)
@@ -448,7 +449,8 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setEnabled(!critical_action_running);
   m_ui->m_actionUpdateSelectedItems->setEnabled(!critical_action_running && (feed_selected || category_selected || service_selected));
   m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(anything_selected);
-  m_ui->m_actionExpandCollapseItem->setEnabled(anything_selected);
+  m_ui->m_actionExpandCollapseItem->setEnabled(category_selected || service_selected);
+  m_ui->m_actionExpandCollapseItemRecursively->setEnabled(category_selected || service_selected);
   m_ui->m_actionServiceDelete->setEnabled(service_selected);
   m_ui->m_actionServiceEdit->setEnabled(service_selected);
   m_ui->m_actionAddFeedIntoSelectedItem->setEnabled(anything_selected);
@@ -545,6 +547,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionShowOnlyUnreadItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionShowOnlyUnreadMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionExpandCollapseItem->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
+  m_ui->m_actionExpandCollapseItemRecursively->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
   m_ui->m_actionRestoreSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
   m_ui->m_actionRestoreAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
   m_ui->m_actionEmptyAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
@@ -741,7 +744,17 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionMarkSelectedItemsAsRead,
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::markSelectedItemRead);
   connect(m_ui->m_actionExpandCollapseItem,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::expandCollapseCurrentItem);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          [this]() {
+    tabWidget()->feedMessageViewer()->feedsView()->expandCollapseCurrentItem(false);
+  });
+  connect(m_ui->m_actionExpandCollapseItemRecursively,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          [this]() {
+    tabWidget()->feedMessageViewer()->feedsView()->expandCollapseCurrentItem(true);
+  });
   connect(m_ui->m_actionMarkSelectedItemsAsUnread,
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::markSelectedItemUnread);
   connect(m_ui->m_actionClearSelectedItems,

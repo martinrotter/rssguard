@@ -12,7 +12,7 @@ Official downloads are available [here](https://github.com/martinrotter/rssguard
 Development builds can be downloaded [here](https://github.com/martinrotter/rssguard/releases/tag/devbuild).
 
 ## Installation packages naming
-**Windows builds** of RSS Guard are generated automatically by the tool called AppVeyor. These builds have auto-generated names. In RSS Guard [downloads page](https://github.com/martinrotter/rssguard/releases) you can see filenames like:
+**All builds** of RSS Guard are generated automatically by GitHub. These builds have auto-generated names. In RSS Guard [downloads page](https://github.com/martinrotter/rssguard/releases) you can see filenames like:
  * `rssguard-3.4.2-7bad9d1-nowebengine-win32.7z`,
  * `rssguard-3.4.2-7bad9d1-win32.7z`,
  * `rssguard-3.4.2-95ee6be-nowebengine-win32.exe`,
@@ -26,3 +26,5 @@ The structure of these filenames is quite trivial and easily understandable for 
  * `<fileformat>` = `exe` (This is self-explanatory.).
 
 Note that same file naming scheme for development builds might be little different. Specifically, `<version>` field is omitted.
+
+If you use `7z` packages on Windows, then you need to manually install all needed MSVC++ runtime libraries. Their installers are included inside the archive.

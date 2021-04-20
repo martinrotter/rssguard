@@ -191,7 +191,7 @@ void FeedsView::addCategoryIntoSelectedAccount() {
   }
 }
 
-void FeedsView::expandCollapseCurrentItem() {
+void FeedsView::expandCollapseCurrentItem(bool recursive) {
   if (selectionModel()->selectedRows().size() == 1) {
     QModelIndex index = selectionModel()->selectedRows().at(0);
 
@@ -200,7 +200,32 @@ void FeedsView::expandCollapseCurrentItem() {
       index = index.parent();
     }
 
-    isExpanded(index) ? collapse(index) : expand(index);
+    if (recursive) {
+      QList<QModelIndex> to_process = { index };
+      bool expa = !isExpanded(index);
+
+      while (!to_process.isEmpty()) {
+        auto idx = to_process.takeFirst();
+
+        if (idx.isValid()) {
+          setExpanded(idx, expa);
+
+          for (int i = 0; i < m_proxyModel->rowCount(idx); i++) {
+            auto new_idx = m_proxyModel->index(i, 0, idx);
+
+            if (new_idx.isValid()) {
+              to_process << new_idx;
+            }
+          }
+        }
+        else {
+          break;
+        }
+      }
+    }
+    else {
+      isExpanded(index) ? collapse(index) : expand(index);
+    }
   }
 }
 
@@ -460,14 +485,15 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
 
   QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
-  m_contextMenuService->addActions(QList<QAction*>() <<
-                                   qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
-                                   qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
-                                   qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed <<
-                                   qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
-                                   qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
-                                   qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
-                                   qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
+  m_contextMenuService->addActions({ qApp->mainForm()->m_ui->m_actionUpdateSelectedItems,
+                                     qApp->mainForm()->m_ui->m_actionEditSelectedItem,
+                                     qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
+                                     qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
+                                     qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
+                                     qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
+                                     qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
+                                     qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
+                                     qApp->mainForm()->m_ui->m_actionDeleteSelectedItem });
 
   auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();
   auto feed_add = clicked_item->getParentServiceRoot()->supportsFeedAdding();
@@ -545,14 +571,15 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
 
   QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
-  m_contextMenuCategories->addActions(QList<QAction*>() <<
-                                      qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
-                                      qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
-                                      qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed <<
-                                      qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
-                                      qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
-                                      qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
-                                      qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
+  m_contextMenuCategories->addActions({ qApp->mainForm()->m_ui->m_actionUpdateSelectedItems,
+                                        qApp->mainForm()->m_ui->m_actionEditSelectedItem,
+                                        qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
+                                        qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
+                                        qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
+                                        qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
+                                        qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
+                                        qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
+                                        qApp->mainForm()->m_ui->m_actionDeleteSelectedItem });
 
   auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();
   auto feed_add = clicked_item->getParentServiceRoot()->supportsFeedAdding();

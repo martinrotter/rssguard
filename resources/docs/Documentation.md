@@ -11,6 +11,7 @@
     * [RSS Guard 3 vs. RSS Guard 4](#rss-guard-3-vs-rss-guard-4)
 * [Features](#features)
     * [List of main features](#list-of-main-features)
+    * [Core concepts](#core-concepts)
     * [Supported feed formats and online feed services](Feed-formats.md)
     * [Message filtering](Message-filters.md)
     * [Database backends](#database-backends)
@@ -120,8 +121,7 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * support for all feed formats (RSS/RDF/ATOM/JSON),
     * full support of podcasts (RSS/ATOM/JSON),
     * import/export of feeds to/from OPML 2.0,
-    * universal plugin for online services with [Google Reader API](#google-reader-api),
-    * possibility of using custom 3rd-party feed synchronization services,
+    * possibility of using custom 3rd-party feed [synchronization services](Feed-formats.md),
     * feed metadata fetching including icons,
     * support for [scraping websites](#websites-scraping) which do not offer RSS/ATOM feeds and other related advanced features,
     * simple internal Chromium-based web viewer (or alternative version with simpler and much more lightweight internal viewer),
@@ -144,7 +144,6 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * support for `feed://` URI scheme.
 * user interface:
     * message list filter with regular expressions,
-    * drag-n-drop for feed list,
     * able to show unread feeds/messages only,
     * can be controlled via keyboard,
     * fully adjustable toolbars (changeable buttons and style),
@@ -155,8 +154,17 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * tabbed interface,
     * ability to hide list of feeds/categories,
     * desktop integration via tray icon,
-    * localizations to some languages,
+    * localizations to many languages,
     * ability to tweak columns in displayed list of messages.
+
+## Core concepts
+RSS Guard is multi-protocol and multi-account application. If you start it for the first time, `Add account` dialog will pop-up.
+
+<img src="images/add-acc.png">
+
+You can also display this dialog from main menu `Accounts -> Add new account`.
+
+You must have added some account to start using RSS Guard. Each account provides access to some specific online service while `Standard online feeds` account is there to provide access to classic `RSS` and `ATOM` feeds. You can have activated many accounts in the same time and even multiple accounts of the same type, for example two distinct `Gmail` accounts.
 
 ## Database backends
 RSS Guard offers switchable database backends which hold your data. At this point, two backends are available:
@@ -187,7 +195,6 @@ Note that even when all Google Reader API enabled services should follow the API
 For example The Old Reader does not seem to offer tags/labels functionality, therefore tags/labels in RSS Guard are not synchronized, but you can still use offline labels.
 
 ## Websites scraping
-
 > **Only proceed if you consider yourself to be a power user and you know what you are doing!**
 
 RSS Guard 3.9.0+ offers extra advanced features which are inspired by [Liferea](https://lzone.de/liferea/).

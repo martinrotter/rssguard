@@ -45,7 +45,7 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
 
     void addFeedIntoSelectedAccount();
     void addCategoryIntoSelectedAccount();
-    void expandCollapseCurrentItem();
+    void expandCollapseCurrentItem(bool recursive);
 
     // Feed updating.
     void updateSelectedItems();
