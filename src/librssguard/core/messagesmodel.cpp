@@ -335,7 +335,10 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           : QSqlQueryModel::data(idx, role);
 
     case Qt::ItemDataRole::ToolTipRole: {
-      if (idx.column() == MSG_DB_SCORE_INDEX) {
+      if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
+        return QVariant();
+      }
+      else if (idx.column() == MSG_DB_SCORE_INDEX) {
         QVariant dta = m_cache->containsData(idx.row())
                          ? m_cache->data(idx)
                          : QSqlQueryModel::data(idx);

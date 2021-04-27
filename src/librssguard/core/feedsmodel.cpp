@@ -563,3 +563,18 @@ bool FeedsModel::markItemRead(RootItem* item, RootItem::ReadStatus read) {
 bool FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
   return item->cleanMessages(clean_read_only);
 }
+
+QVariant FeedsModel::data(const QModelIndex& index, int role) const {
+  switch (role) {
+    case Qt::ItemDataRole::FontRole:
+      return itemForIndex(index)->countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
+
+    case Qt::ItemDataRole::ToolTipRole:
+      if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
+        return QVariant();
+      }
+
+    default:
+      return itemForIndex(index)->data(index.column(), role);;
+  }
+}

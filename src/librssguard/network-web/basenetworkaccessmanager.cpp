@@ -60,10 +60,10 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, true);
 #endif
 
-#if QT_VERSION >= 0x050900
+#if QT_VERSION >= 0x050900 // Qt >= 5.9.0
   new_request.setAttribute(QNetworkRequest::Attribute::RedirectPolicyAttribute,
                            QNetworkRequest::RedirectPolicy::UserVerifiedRedirectPolicy);
-#elif QT_VERSION >= 0x050600
+#elif QT_VERSION >= 0x050600 // Qt >= 5.6.0
   new_request.setAttribute(QNetworkRequest::Attribute::FollowRedirectsAttribute, true);
 #endif
 

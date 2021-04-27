@@ -207,7 +207,7 @@
          </item>
         </layout>
        </item>
-       <item row="9" column="0" colspan="2">
+       <item row="10" column="0" colspan="2">
         <widget class="QLabel" name="label_9">
          <property name="font">
           <font>
@@ -225,7 +225,7 @@
          </property>
         </widget>
        </item>
-       <item row="10" column="0" colspan="2">
+       <item row="11" column="0" colspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -249,6 +249,13 @@
         <widget class="QCheckBox" name="m_checkAutoUpdateOnlyUnfocused">
          <property name="text">
           <string>Only auto-download messages when application is unfocused</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkShowTooltips">
+         <property name="text">
+          <string>Display tooltips for feeds and messages</string>
          </property>
         </widget>
        </item>
@@ -457,6 +464,7 @@
   <tabstop>m_spinHeightRowsFeeds</tabstop>
   <tabstop>m_cmbCountsFeedList</tabstop>
   <tabstop>m_cbHideCountsIfNoUnread</tabstop>
+  <tabstop>m_checkShowTooltips</tabstop>
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
   <tabstop>m_checkDisplayPlaceholders</tabstop>
   <tabstop>m_checkDisplayFeedIcons</tabstop>

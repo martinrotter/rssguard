@@ -62,6 +62,9 @@ namespace Feeds {
   KEY CountFormat;
   VALUE(char*) CountFormatDef;
 
+  KEY EnableTooltipsFeedsMessages;
+  VALUE(bool) EnableTooltipsFeedsMessagesDef;
+
   KEY AutoUpdateInterval;
   VALUE(int) AutoUpdateIntervalDef;
 

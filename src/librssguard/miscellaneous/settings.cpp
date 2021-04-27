@@ -42,6 +42,9 @@ DVALUE(bool) Feeds::EnableAutoUpdateNotificationDef = false;
 DKEY Feeds::CountFormat = "count_format";
 DVALUE(char*) Feeds::CountFormatDef = "(%unread)";
 
+DKEY Feeds::EnableTooltipsFeedsMessages = "show_tooltips";
+DVALUE(bool) Feeds::EnableTooltipsFeedsMessagesDef = true;
+
 DKEY Feeds::AutoUpdateInterval = "auto_update_interval";
 DVALUE(int) Feeds::AutoUpdateIntervalDef = DEFAULT_AUTO_UPDATE_INTERVAL;
 
