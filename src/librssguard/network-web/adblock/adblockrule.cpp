@@ -52,6 +52,8 @@
 #include "network-web/adblock/adblockrequestinfo.h"
 #include "network-web/adblock/adblocksubscription.h"
 
+#include "network-web/urltld.cpp"
+
 #include <QRegularExpression>
 #include <QString>
 #include <QStringList>
@@ -59,14 +61,14 @@
 #include <QWebEnginePage>
 
 static QString toSecondLevelDomain(const QUrl& url) {
-  const QString topLevelDomain = url.topLevelDomain();
+  const QString tld = topLevelDomain(url);
   const QString urlHost = url.host();
 
-  if (topLevelDomain.isEmpty() || urlHost.isEmpty()) {
+  if (tld.isEmpty() || urlHost.isEmpty()) {
     return QString();
   }
 
-  QString domain = urlHost.left(urlHost.size() - topLevelDomain.size());
+  QString domain = urlHost.left(urlHost.size() - tld.size());
 
   if (domain.count(QL1C('.')) == 0) {
     return urlHost;
@@ -76,7 +78,7 @@ static QString toSecondLevelDomain(const QUrl& url) {
     domain = domain.mid(domain.indexOf(QL1C('.')) + 1);
   }
 
-  return domain + topLevelDomain;
+  return domain + tld;
 }
 
 AdBlockRule::AdBlockRule(const QString& filter, AdBlockSubscription* subscription)
