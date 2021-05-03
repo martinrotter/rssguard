@@ -37,7 +37,7 @@ class AdBlockMatcher : public QObject {
     explicit AdBlockMatcher(AdBlockManager* manager);
     virtual ~AdBlockMatcher();
 
-    const AdBlockRule* match(const AdblockRequestInfo& request, const QString& urlDomain, const QString& urlString) const;
+    const AdBlockRule* match(const AdblockRequestInfo& request, const QString& url_domain, const QString& url_string) const;
 
     bool adBlockDisabledForUrl(const QUrl& url) const;
     bool elemHideDisabledForUrl(const QUrl& url) const;

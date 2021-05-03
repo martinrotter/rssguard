@@ -285,9 +285,11 @@ RSS Guard allows you to define a set of custom tools which you can subsequently 
 <img src="images/ext-tools-web.png" width="80%">
 
 ## AdBlock
-[Web-based variant](#web-based-and-lite-app-variants) of RSS Guard offers ad-blocking functionality. AdBlock uses standard AdBlock-Plus-like scripts, thus allowing you to use EasyList etc. AdBlock supports all fundamental features of AdBlock-Plus format, including element hiding rules and site-wide blocking.
+[Web-based variant](#web-based-and-lite-app-variants) of RSS Guard offers ad-blocking functionality via [Adblocker](https://github.com/cliqz-oss/adblocker). Adblocker offers similar performance to [uBlock Origin](https://github.com/gorhill/uBlock).
 
-You can find its settings in `Web browser & tabs` section of main menu. AdBlock is of course available only in [WebEngine-based](#web-based-and-lite-app-variants) version of the app.
+You need to have have [Node.js](https://nodejs.org) installed to have ad-blocking in RSS Guard working. Also, the implementation requires additional [npm](https://www.npmjs.com) modules to be installed, specifically: `@cliqz/adblocker`, `concat-stream`, `psl`, `node-fetch`.
+
+The way ad-blocking internally works is that RSS Guard starts local HTTP browser which provides API determine which elements of website should (or should not) be blocked. RSS Guard then asks the server about each file to be downloaded.
 
 ## GUI tweaking
 RSS Guard's GUI is very customizable. You can, for example, hide many GUI elements. There are even people who use RSS Guard on mobile devices powered by Linux like PinePhone or Librem devices.
