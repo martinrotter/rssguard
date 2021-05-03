@@ -37,7 +37,6 @@ class AdBlockIcon : public QAction {
 
   private slots:
     void showMenu(const QPoint& pos);
-    void toggleCustomFilter();
 
   private:
     void createMenu(QMenu* menu = nullptr);

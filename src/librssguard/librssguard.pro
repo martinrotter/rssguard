@@ -74,7 +74,6 @@ HEADERS += core/feeddownloader.h \
            gui/dialogs/formrestoredatabasesettings.h \
            gui/dialogs/formsettings.h \
            gui/dialogs/formupdate.h \
-           gui/reusable/edittableview.h \
            gui/feedmessageviewer.h \
            gui/toolbars/feedstoolbar.h \
            gui/feedsview.h \
@@ -82,6 +81,8 @@ HEADERS += core/feeddownloader.h \
            gui/reusable/labelsmenu.h \
            gui/reusable/labelwithstatus.h \
            gui/reusable/lineeditwithstatus.h \
+           gui/reusable/squeezelabel.h \
+           gui/reusable/edittableview.h \
            gui/messagebox.h \
            gui/reusable/messagecountspinbox.h \
            gui/messagepreviewer.h \
@@ -101,7 +102,6 @@ HEADERS += core/feeddownloader.h \
            gui/settings/settingslocalization.h \
            gui/settings/settingspanel.h \
            gui/settings/settingsshortcuts.h \
-           gui/reusable/squeezelabel.h \
            gui/toolbars/statusbar.h \
            gui/reusable/styleditemdelegatewithoutfocus.h \
            gui/systemtrayicon.h \
@@ -252,13 +252,14 @@ SOURCES += core/feeddownloader.cpp \
            gui/dialogs/formrestoredatabasesettings.cpp \
            gui/dialogs/formsettings.cpp \
            gui/dialogs/formupdate.cpp \
-           gui/reusable/edittableview.cpp \
            gui/feedmessageviewer.cpp \
            gui/toolbars/feedstoolbar.cpp \
            gui/feedsview.cpp \
            gui/guiutilities.cpp \
            gui/reusable/labelsmenu.cpp \
+           gui/reusable/edittableview.cpp \
            gui/reusable/labelwithstatus.cpp \
+           gui/reusable/squeezelabel.cpp \
            gui/reusable/lineeditwithstatus.cpp \
            gui/messagebox.cpp \
            gui/reusable/messagecountspinbox.cpp \
@@ -279,7 +280,6 @@ SOURCES += core/feeddownloader.cpp \
            gui/settings/settingslocalization.cpp \
            gui/settings/settingspanel.cpp \
            gui/settings/settingsshortcuts.cpp \
-           gui/reusable/squeezelabel.cpp \
            gui/toolbars/statusbar.cpp \
            gui/reusable/styleditemdelegatewithoutfocus.cpp \
            gui/systemtrayicon.cpp \
@@ -445,30 +445,18 @@ equals(USE_WEBENGINE, true) {
              network-web/adblock/adblockdialog.h \
              network-web/adblock/adblockicon.h \
              network-web/adblock/adblockmanager.h \
-             network-web/adblock/adblockmatcher.h \
-             network-web/adblock/adblockrule.h \
-             network-web/adblock/adblocksearchtree.h \
-             network-web/adblock/adblocksubscription.h \
-             network-web/adblock/adblocktreewidget.h \
              network-web/adblock/adblockurlinterceptor.h \
              network-web/adblock/adblockrequestinfo.h \
              network-web/urlinterceptor.h \
-             network-web/networkurlinterceptor.h \
-             gui/reusable/treewidget.h
+             network-web/networkurlinterceptor.h
 
   SOURCES += network-web/adblock/adblockaddsubscriptiondialog.cpp \
              network-web/adblock/adblockdialog.cpp \
              network-web/adblock/adblockicon.cpp \
              network-web/adblock/adblockmanager.cpp \
-             network-web/adblock/adblockmatcher.cpp \
-             network-web/adblock/adblockrule.cpp \
-             network-web/adblock/adblocksearchtree.cpp \
-             network-web/adblock/adblocksubscription.cpp \
-             network-web/adblock/adblocktreewidget.cpp \
              network-web/adblock/adblockurlinterceptor.cpp \
              network-web/adblock/adblockrequestinfo.cpp \
-             network-web/networkurlinterceptor.cpp \
-             gui/reusable/treewidget.cpp
+             network-web/networkurlinterceptor.cpp
 
   FORMS += network-web/adblock/adblockaddsubscriptiondialog.ui \
            network-web/adblock/adblockdialog.ui

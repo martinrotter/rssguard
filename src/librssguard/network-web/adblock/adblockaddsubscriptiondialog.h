@@ -36,7 +36,6 @@ class AdBlockAddSubscriptionDialog : public QDialog {
     explicit AdBlockAddSubscriptionDialog(QWidget* parent = nullptr);
     virtual ~AdBlockAddSubscriptionDialog();
 
-    QString title() const;
     QString url() const;
 
   private slots:

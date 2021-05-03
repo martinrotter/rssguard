@@ -1,5 +1,4 @@
-// Simple local HTTP server providing ad-blocking
-// functionality via https://github.com/cliqz-oss/adblocker
+// Simple local HTTP server providing ad-blocking functionality via https://github.com/cliqz-oss/adblocker
 //
 // How to install:
 //     npm i -g @cliqz/adblocker
@@ -8,10 +7,16 @@
 //     npm i -g node-fetch
 //
 // How to run:
-//     NODE_PATH="C:\Users\<user>\AppData\Roaming\npm\node_modules" node ./adblock-server.js
+//     NODE_PATH="C:\Users\<user>\AppData\Roaming\npm\node_modules" node ./adblock-server.js "<port>" "<filters-file-path>"
 //
 // How to use:
-//     curl -i -X POST --data '{"url": "http://gompoozu.net", "url_type": "main_frame"}' 'http://localhost:48484'
+//     curl -i -X POST --data '
+//       {
+//         "url": "http://gompoozu.net",
+//         "url_type": "main_frame",
+//         "filter": true,
+//         "cosmetic": true
+//       }' 'http://localhost:<port>'
 
 const fs = require('fs');
 const psl = require('psl');
@@ -21,15 +26,10 @@ const concat = require('concat-stream');
 const constants = require('node:http2');
 const fetch = require("node-fetch");
 
-let engine;
-
-adblock.FiltersEngine.fromLists(fetch, [
-  'https://easylist.to/easylist/easylist.txt',
-  'https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt',
-]).then(function (res) { engine = res; });
-
+const port = process.argv[2];
+const filtersFile = process.argv[3];
+const engine = adblock.FiltersEngine.parse(fs.readFileSync(filtersFile, 'utf-8'));
 const hostname = '127.0.0.1';
-const port = 48484;
 
 const server = http.createServer((req, res) => {
   try {
@@ -41,19 +41,22 @@ const server = http.createServer((req, res) => {
         const jsonStruct = JSON.parse(jsonData.toString());
 
         const askUrl = jsonStruct['url'];
+        const askFilter = jsonStruct['filter'];
         const askCosmetic = jsonStruct['cosmetic'];
         const askUrlType = jsonStruct['url_type'];
         const fullUrl = new URL(askUrl);
 
         resultJson = {};
 
-        const adblockMatch = engine.match(adblock.Request.fromRawDetails({
-          type: askUrlType,
-          url: askUrl,
-        }));
+        if (askFilter) {
+          const adblockMatch = engine.match(adblock.Request.fromRawDetails({
+            type: askUrlType,
+            url: askUrl,
+          }));
 
-        resultJson["filter"] = adblockMatch;
-        console.log(`adblocker: Filter is:\n${JSON.stringify(adblockMatch)}.`)
+          resultJson["filter"] = adblockMatch;
+          console.log(`adblocker: Filter is:\n${JSON.stringify(adblockMatch)}.`)
+        }
 
         if (askCosmetic) {
           const adblockCosmetic = engine.getCosmeticsFilters({
@@ -65,7 +68,7 @@ const server = http.createServer((req, res) => {
           resultJson["cosmetic"] = adblockCosmetic;
           console.log(`adblocker: Cosmetic is:\n${JSON.stringify(adblockCosmetic)}.`)
         }
-        
+
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(resultJson));

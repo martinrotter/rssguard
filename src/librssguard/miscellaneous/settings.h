@@ -42,11 +42,11 @@ namespace AdBlock {
   KEY AdBlockEnabled;
   VALUE(bool) AdBlockEnabledDef;
 
-  KEY DisabledRules;
-  VALUE(QStringList) DisabledRulesDef;
+  KEY FilterLists;
+  VALUE(QStringList) FilterListsDef;
 
-  KEY LastUpdatedOn;
-  VALUE(QDateTime) LastUpdatedOnDef;
+  KEY CustomFilters;
+  VALUE(QStringList) CustomFiltersDef;
 }
 
 // Feeds.

@@ -24,10 +24,7 @@
 
 #include "ui_adblockdialog.h"
 
-class AdBlockSubscription;
-class AdBlockTreeWidget;
 class AdBlockManager;
-class AdBlockRule;
 
 class AdBlockDialog : public QDialog {
   Q_OBJECT
@@ -35,34 +32,17 @@ class AdBlockDialog : public QDialog {
   public:
     explicit AdBlockDialog(QWidget* parent = nullptr);
 
-    void showRule(const AdBlockRule* rule) const;
-
   private slots:
-    void addRule();
-    void removeRule();
-
     void addSubscription();
-    void removeSubscription();
-
-    void currentChanged(int index);
     void enableAdBlock(bool state);
-
-    void aboutToShowMenu();
     void learnAboutRules();
-
-    void loadSubscriptions();
 
   private:
     void load();
 
   private:
     AdBlockManager* m_manager;
-    AdBlockTreeWidget* m_currentTreeWidget;
-    AdBlockSubscription* m_currentSubscription;
-    QAction* m_actionAddRule;
-    QAction* m_actionRemoveRule;
     QAction* m_actionAddSubscription;
-    QAction* m_actionRemoveSubscription;
     bool m_loaded;
 
     Ui::AdBlockDialog* m_ui;

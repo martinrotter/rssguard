@@ -60,10 +60,9 @@ QString SkinFactory::selectedSkinName() const {
   return qApp->settings()->value(GROUP(GUI), SETTING(GUI::Skin)).toString();
 }
 
-QString SkinFactory::adBlockedPage(const QString& subscription, const QString& rule) {
+QString SkinFactory::adBlockedPage(const QString& url) {
   const QString& adblocked = currentSkin().m_adblocked.arg(tr("This page was blocked by AdBlock"),
-                                                           tr(R"(Blocked by set: "%1"<br/>Blocked by filter: "%2")")
-                                                           .arg(subscription, rule));
+                                                           tr(R"(Blocked URL: "%1")").arg(url));
 
   return currentSkin().m_layoutMarkupWrapper.arg(tr("This page was blocked by AdBlock"), adblocked);
 }

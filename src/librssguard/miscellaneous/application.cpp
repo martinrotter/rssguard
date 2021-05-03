@@ -500,10 +500,6 @@ void Application::onAboutToQuit() {
 
   m_quitLogicDone = true;
 
-#if defined(USE_WEBENGINE)
-  m_webFactory->adBlock()->save();
-#endif
-
   // Make sure that we obtain close lock BEFORE even trying to quit the application.
   const bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);
 

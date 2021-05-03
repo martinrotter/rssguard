@@ -33,23 +33,6 @@
     </layout>
    </item>
    <item row="1" column="0">
-    <widget class="QLabel" name="m_lblTitle">
-     <property name="text">
-      <string>Title</string>
-     </property>
-     <property name="buddy">
-      <cstring>m_txtTitle</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="m_txtTitle">
-     <property name="placeholderText">
-      <string>Title of subscription</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
     <widget class="QLabel" name="m_lblUrl">
      <property name="text">
       <string>URL</string>
@@ -59,14 +42,14 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="1" column="1">
     <widget class="QLineEdit" name="m_txtUrl">
      <property name="placeholderText">
       <string>Absolute URL to online subscription file</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="2" column="0" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -79,7 +62,7 @@
      </property>
     </spacer>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item row="3" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -94,7 +77,6 @@
  <tabstops>
   <tabstop>m_cbUsePredefined</tabstop>
   <tabstop>m_cmbPresets</tabstop>
-  <tabstop>m_txtTitle</tabstop>
   <tabstop>m_txtUrl</tabstop>
  </tabstops>
  <resources/>

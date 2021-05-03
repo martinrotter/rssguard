@@ -21,14 +21,14 @@ DKEY Cookies::ID = "cookies";
 // AdBlock.
 DKEY AdBlock::ID = "adblock";
 
-DKEY AdBlock::DisabledRules = "disabled_rules";
-DVALUE(QStringList) AdBlock::DisabledRulesDef = QStringList();
-
 DKEY AdBlock::AdBlockEnabled = "enabled";
 DVALUE(bool) AdBlock::AdBlockEnabledDef = false;
 
-DKEY AdBlock::LastUpdatedOn = "last_updated_on";
-DVALUE(QDateTime) AdBlock::LastUpdatedOnDef = QDateTime();
+DKEY AdBlock::FilterLists = "filter_lists";
+DVALUE(QStringList) AdBlock::FilterListsDef = {};
+
+DKEY AdBlock::CustomFilters = "custom_filters";
+DVALUE(QStringList) AdBlock::CustomFiltersDef = {};
 
 // Feeds.
 DKEY Feeds::ID = "feeds";

@@ -14,7 +14,7 @@
 #define SERVICE_CODE_INOREADER  "inoreader"
 #define SERVICE_CODE_GMAIL      "gmail"
 
-#define ADBLOCK_HOWTO_FILTERS                 "https://help.eyeo.com/en/adblockplus/how-to-write-filters"
+#define ADBLOCK_HOWTO                         "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#adblock"
 #define ADBLOCK_UPDATE_DAYS_INTERVAL          14
 #define ADBLOCK_ICON_ACTIVE                   "adblock"
 #define ADBLOCK_ICON_DISABLED                 "adblock-disabled"

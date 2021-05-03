@@ -24,14 +24,11 @@
 #include "gui/webviewer.h"
 #include "miscellaneous/application.h"
 #include "network-web/adblock/adblockmanager.h"
-#include "network-web/adblock/adblockrule.h"
-#include "network-web/adblock/adblocksubscription.h"
 #include "network-web/webpage.h"
 
 #include <QMenu>
 
-AdBlockIcon::AdBlockIcon(AdBlockManager* parent)
-  : QAction(parent), m_manager(parent) {
+AdBlockIcon::AdBlockIcon(AdBlockManager* parent) : QAction(parent), m_manager(parent) {
   setToolTip(tr("AdBlock lets you block unwanted content on web pages"));
   setText(QSL("AdBlock"));
   setMenu(new QMenu());
@@ -61,32 +58,34 @@ void AdBlockIcon::createMenu(QMenu* menu) {
   }
 
   menu->clear();
-  AdBlockCustomList* custom_list = m_manager->customList();
-  WebPage* page = qApp->mainForm()->tabWidget()->currentWidget()->webBrowser()->viewer()->page();
-  const QUrl page_url = page->url();
-
   menu->addAction(tr("Show AdBlock &settings"), m_manager, &AdBlockManager::showDialog);
-  menu->addSeparator();
 
-  if (!page_url.host().isEmpty() && m_manager->isEnabled() && m_manager->canRunOnScheme(page_url.scheme())) {
-    const QString host = page->url().host().contains(QLatin1String("www.")) ? page_url.host().mid(4) : page_url.host();
-    const QString host_filter = QString("@@||%1^$document").arg(host);
-    const QString page_filter = QString("@@|%1|$document").arg(page_url.toString());
-    QAction* act = menu->addAction(tr("Disable on %1").arg(host));
+  /*
+     WebPage* page = qApp->mainForm()->tabWidget()->currentWidget()->webBrowser()->viewer()->page();
+     const QUrl page_url = page->url();
+     AdBlockCustomList* custom_list = m_manager->customList();
 
-    act->setCheckable(true);
-    act->setChecked(custom_list->containsFilter(host_filter));
-    act->setData(host_filter);
-    connect(act, &QAction::triggered, this, &AdBlockIcon::toggleCustomFilter);
+     menu->addSeparator();
 
-    act = menu->addAction(tr("Disable only on this page"));
-    act->setCheckable(true);
-    act->setChecked(custom_list->containsFilter(page_filter));
-    act->setData(page_filter);
-    connect(act, &QAction::triggered, this, &AdBlockIcon::toggleCustomFilter);
+     if (!page_url.host().isEmpty() && m_manager->isEnabled() && m_manager->canRunOnScheme(page_url.scheme())) {
+     const QString host = page->url().host().contains(QLatin1String("www.")) ? page_url.host().mid(4) : page_url.host();
+     const QString host_filter = QString("@@||%1^$document").arg(host);
+     const QString page_filter = QString("@@|%1|$document").arg(page_url.toString());
+     QAction* act = menu->addAction(tr("Disable on %1").arg(host));
 
-    menu->addSeparator();
-  }
+     act->setCheckable(true);
+     act->setChecked(custom_list->containsFilter(host_filter));
+     act->setData(host_filter);
+     connect(act, &QAction::triggered, this, &AdBlockIcon::toggleCustomFilter);
+
+     act = menu->addAction(tr("Disable only on this page"));
+     act->setCheckable(true);
+     act->setChecked(custom_list->containsFilter(page_filter));
+     act->setData(page_filter);
+     connect(act, &QAction::triggered, this, &AdBlockIcon::toggleCustomFilter);
+
+     menu->addSeparator();
+     }*/
 }
 
 void AdBlockIcon::showMenu(const QPoint& pos) {
@@ -94,26 +93,6 @@ void AdBlockIcon::showMenu(const QPoint& pos) {
 
   createMenu(&menu);
   menu.exec(pos);
-}
-
-void AdBlockIcon::toggleCustomFilter() {
-  auto* action = qobject_cast<QAction*>(sender());
-
-  if (action == nullptr) {
-    return;
-  }
-
-  const QString filter = action->data().toString();
-  AdBlockCustomList* custom_list = m_manager->customList();
-
-  if (custom_list->containsFilter(filter)) {
-    custom_list->removeFilter(filter);
-  }
-  else {
-    auto* rule = new AdBlockRule(filter, custom_list);
-
-    custom_list->addRule(rule);
-  }
 }
 
 void AdBlockIcon::setEnabled(bool enabled) {

@@ -27,7 +27,7 @@ AdBlockUrlInterceptor::AdBlockUrlInterceptor(AdBlockManager* manager)
   : UrlInterceptor(manager), m_manager(manager) {}
 
 void AdBlockUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo& info) {
-  if (m_manager->block(AdblockRequestInfo(info)) != nullptr) {
+  if (m_manager->block(AdblockRequestInfo(info))) {
     info.block(true);
 
     qWarningNN << LOGSEC_ADBLOCK << "Blocked request:" << QUOTE_W_SPACE_DOT(info.requestUrl().toString());

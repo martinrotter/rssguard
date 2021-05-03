@@ -48,37 +48,23 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
                                       tr("Add subscription"));
 }
 
-QString AdBlockAddSubscriptionDialog::title() const {
-  return m_ui->m_txtTitle->text();
-}
-
 QString AdBlockAddSubscriptionDialog::url() const {
   return m_ui->m_txtUrl->text();
 }
 
 void AdBlockAddSubscriptionDialog::indexChanged(int index) {
   const Subscription subscription = m_knownSubscriptions.at(index);
-  const int pos = subscription.m_title.indexOf(QLatin1Char('('));
-
-  if (pos > 0) {
-    m_ui->m_txtTitle->setText(subscription.m_title.left(pos).trimmed());
-  }
-  else {
-    m_ui->m_txtTitle->setText(subscription.m_title);
-  }
 
   m_ui->m_txtUrl->setText(subscription.m_url);
 }
 
 void AdBlockAddSubscriptionDialog::presetsEnabledChanged(bool enabled) {
-  m_ui->m_txtTitle->setEnabled(!enabled);
   m_ui->m_txtUrl->setEnabled(!enabled);
   m_ui->m_cmbPresets->setEnabled(enabled);
 
   if (!enabled) {
-    m_ui->m_txtTitle->clear();
     m_ui->m_txtUrl->clear();
-    m_ui->m_txtTitle->setFocus();
+    m_ui->m_txtUrl->setFocus();
   }
   else {
     indexChanged(m_ui->m_cmbPresets->currentIndex());

@@ -25,10 +25,30 @@
     </widget>
    </item>
    <item>
-    <widget class="QTabWidget" name="m_tabSubscriptions">
+    <widget class="QTabWidget" name="m_tcSubscriptions">
      <property name="currentIndex">
-      <number>-1</number>
+      <number>1</number>
      </property>
+     <widget class="QWidget" name="m_tabPredefinedLists">
+      <attribute name="title">
+       <string>Filter lists (list per line)</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPlainTextEdit" name="m_txtPredefined"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="m_tabCustomFilters">
+      <attribute name="title">
+       <string>Custom filters</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPlainTextEdit" name="m_txtCustom"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item>

@@ -7,8 +7,6 @@
 #include "miscellaneous/application.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblockrequestinfo.h"
-#include "network-web/adblock/adblockrule.h"
-#include "network-web/adblock/adblocksubscription.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/rootitem.h"
 #include "services/abstract/serviceroot.h"
@@ -34,16 +32,7 @@ void WebPage::hideUnwantedElements() {
     return;
   }
 
-  auto css = qApp->web()->adBlock()->elementHidingRules(url());
-
-  if (!css.isEmpty()) {
-    auto js = qApp->web()->adBlock()->generateJsForElementHiding(css);
-
-    runJavaScript(js);
-    qDebugNN << LOGSEC_JS << "Running global JS for element hiding rules.";
-  }
-
-  css = qApp->web()->adBlock()->elementHidingRulesForDomain(url());
+  auto css = qApp->web()->adBlock()->elementHidingRulesForDomain(url());
 
   if (!css.isEmpty()) {
     auto js = qApp->web()->adBlock()->generateJsForElementHiding(css);
@@ -57,11 +46,11 @@ bool WebPage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool
   const RootItem* root = view()->root();
 
   if (is_main_frame) {
-    auto* adblock_rule = qApp->web()->adBlock()->block(AdblockRequestInfo(url));
+    auto blocked = qApp->web()->adBlock()->block(AdblockRequestInfo(url));
 
-    if (adblock_rule != nullptr) {
+    if (blocked) {
       // This website is entirely blocked.
-      setHtml(qApp->skins()->adBlockedPage(adblock_rule->subscription()->title(), adblock_rule->filter()),
+      setHtml(qApp->skins()->adBlockedPage(url.toString()),
               QUrl::fromUserInput(INTERNAL_URL_ADBLOCKED));
       return false;
     }

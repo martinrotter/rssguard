@@ -27,10 +27,6 @@
 
 class QUrl;
 class AdblockRequestInfo;
-class AdBlockMatcher;
-class AdBlockCustomList;
-class AdBlockSubscription;
-class AdBlockRule;
 class AdBlockUrlInterceptor;
 class AdBlockIcon;
 
@@ -39,62 +35,40 @@ class AdBlockManager : public QObject {
 
   public:
     explicit AdBlockManager(QObject* parent = nullptr);
-    virtual ~AdBlockManager();
 
-    // If "initial_load" is true, then we want to explicitly turn off
+    // If "initial_load" is false, then we want to explicitly turn off
     // Adblock if it is running or turn on when not running.
     // if "initial_load" is true, then we want to forcefully perform
     // initial loading of Adblock.
     void load(bool initial_load);
 
-    // Save all subscriptions to file(s).
-    void save();
-
-    // General method for adblocking. Returns pointer to rule if request should
-    // be blocked.
-    const AdBlockRule* block(const AdblockRequestInfo& request);
+    // General method for adblocking. Returns true if request should be blocked.
+    bool block(const AdblockRequestInfo& request);
 
     bool isEnabled() const;
     bool canRunOnScheme(const QString& scheme) const;
 
-    QString elementHidingRules(const QUrl& url) const;
     QString elementHidingRulesForDomain(const QUrl& url) const;
     QString generateJsForElementHiding(const QString& css) const;
 
-    QList<AdBlockSubscription*> subscriptions() const;
-
-    QStringList disabledRules() const;
-    void addDisabledRule(const QString& filter);
-    void removeDisabledRule(const QString& filter);
-
-    AdBlockSubscription* addSubscription(const QString& title, const QString& url);
-    bool removeSubscription(AdBlockSubscription* subscription);
-
-    AdBlockCustomList* customList() const;
     AdBlockIcon* adBlockIcon() const;
 
-    static QString storedListsPath();
-
   public slots:
-    void updateMatcher();
-    void updateAllSubscriptions();
     void showDialog();
 
   signals:
     void enabledChanged(bool enabled);
 
-  private:
-    inline bool canBeBlocked(const QUrl& url) const;
+  private slots:
+    void updateUnifiedFiltersFile();
 
   private:
     bool m_loaded;
     bool m_enabled;
     AdBlockIcon* m_adblockIcon;
-    QList<AdBlockSubscription*> m_subscriptions;
-    AdBlockMatcher* m_matcher;
-    QStringList m_disabledRules;
     AdBlockUrlInterceptor* m_interceptor;
     QMutex m_mutex;
+    QString m_unifiedFiltersFile;
 };
 
 inline AdBlockIcon* AdBlockManager::adBlockIcon() const {
