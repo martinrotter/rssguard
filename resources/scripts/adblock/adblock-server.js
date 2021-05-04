@@ -33,9 +33,13 @@ const hostname = '127.0.0.1';
 
 const server = http.createServer((req, res) => {
   try {
+    console.log(new Date());
+
     const chunks = [];
     req.on('data', chunk => chunks.push(chunk));
     req.on('end', () => {
+      console.log(new Date());
+
       try {
         const jsonData = Buffer.concat(chunks);
         const jsonStruct = JSON.parse(jsonData.toString());
@@ -72,6 +76,8 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(resultJson));
+
+        console.log(new Date());
       }
       catch (inner_error) {
         console.error(`adblocker: ${inner_error}.`);

@@ -441,7 +441,7 @@ equals(USE_WEBENGINE, true) {
              network-web/webpage.cpp
 
   # Add AdBlock sources.
-  HEADERS += network-web/adblock/adblockaddsubscriptiondialog.h \
+  HEADERS += \
              network-web/adblock/adblockdialog.h \
              network-web/adblock/adblockicon.h \
              network-web/adblock/adblockmanager.h \
@@ -450,7 +450,7 @@ equals(USE_WEBENGINE, true) {
              network-web/urlinterceptor.h \
              network-web/networkurlinterceptor.h
 
-  SOURCES += network-web/adblock/adblockaddsubscriptiondialog.cpp \
+  SOURCES += \
              network-web/adblock/adblockdialog.cpp \
              network-web/adblock/adblockicon.cpp \
              network-web/adblock/adblockmanager.cpp \
@@ -458,7 +458,7 @@ equals(USE_WEBENGINE, true) {
              network-web/adblock/adblockrequestinfo.cpp \
              network-web/networkurlinterceptor.cpp
 
-  FORMS += network-web/adblock/adblockaddsubscriptiondialog.ui \
+  FORMS += \
            network-web/adblock/adblockdialog.ui
 }
 else {

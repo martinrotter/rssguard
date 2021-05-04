@@ -25,7 +25,10 @@ DKEY AdBlock::AdBlockEnabled = "enabled";
 DVALUE(bool) AdBlock::AdBlockEnabledDef = false;
 
 DKEY AdBlock::FilterLists = "filter_lists";
-DVALUE(QStringList) AdBlock::FilterListsDef = {};
+DVALUE(QStringList) AdBlock::FilterListsDef = {
+  QSL("https://easylist.to/easylist/easylist.txt"),
+  QSL("https://easylist.to/easylist/easyprivacy.txt")
+};
 
 DKEY AdBlock::CustomFilters = "custom_filters";
 DVALUE(QStringList) AdBlock::CustomFiltersDef = {};

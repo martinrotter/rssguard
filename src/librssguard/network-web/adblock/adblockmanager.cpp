@@ -1,39 +1,21 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-//
-// Copyright (C) 2011-2017 by Martin Rotter <rotter.martinos@gmail.com>
-// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
-//
-// RSS Guard is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// RSS Guard is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
-
 #include "network-web/adblock/adblockmanager.h"
 
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "network-web/adblock/adblockdialog.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockrequestinfo.h"
 #include "network-web/adblock/adblockurlinterceptor.h"
+#include "network-web/networkfactory.h"
 #include "network-web/networkurlinterceptor.h"
 #include "network-web/webfactory.h"
 
 #include <QDateTime>
 #include <QDir>
 #include <QMessageBox>
-#include <QMutexLocker>
-#include <QSaveFile>
-#include <QTextStream>
 #include <QTimer>
 #include <QUrlQuery>
 #include <QWebEngineProfile>
@@ -46,9 +28,7 @@ AdBlockManager::AdBlockManager(QObject* parent)
   m_unifiedFiltersFile = qApp->userDataFolder() + QDir::separator() + QSL("adblock-unified-filters.txt");
 }
 
-bool AdBlockManager::block(const AdblockRequestInfo& request) {
-  QMutexLocker locker(&m_mutex);
-
+bool AdBlockManager::block(const AdblockRequestInfo& request) const {
   if (!isEnabled()) {
     return false;
   }
@@ -66,7 +46,6 @@ bool AdBlockManager::block(const AdblockRequestInfo& request) {
 }
 
 void AdBlockManager::load(bool initial_load) {
-  QMutexLocker locker(&m_mutex);
   auto new_enabled = qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::AdBlockEnabled)).toBool();
 
   if (!initial_load) {
@@ -90,14 +69,7 @@ void AdBlockManager::load(bool initial_load) {
   }
 
   if (m_enabled) {
-    if (!QFile::exists(m_unifiedFiltersFile)) {
-      updateUnifiedFiltersFile();
-    }
-  }
-  else {
-    if (QFile::exists(m_unifiedFiltersFile)) {
-      QFile::remove(m_unifiedFiltersFile);
-    }
+    updateUnifiedFiltersFile();
   }
 }
 
@@ -114,7 +86,23 @@ QString AdBlockManager::elementHidingRulesForDomain(const QUrl& url) const {
   return {};
 }
 
-QString AdBlockManager::generateJsForElementHiding(const QString& css) const {
+QStringList AdBlockManager::filterLists() const {
+  return qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::FilterLists)).toStringList();
+}
+
+void AdBlockManager::setFilterLists(const QStringList& filter_lists) {
+  qApp->settings()->setValue(GROUP(AdBlock), AdBlock::FilterLists, filter_lists);
+}
+
+QStringList AdBlockManager::customFilters() const {
+  return qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::CustomFilters)).toStringList();
+}
+
+void AdBlockManager::setCustomFilters(const QStringList& custom_filters) {
+  qApp->settings()->setValue(GROUP(AdBlock), AdBlock::CustomFilters, custom_filters);
+}
+
+QString AdBlockManager::generateJsForElementHiding(const QString& css) {
   QString source = QL1S("(function() {"
                         "var head = document.getElementsByTagName('head')[0];"
                         "if (!head) return;"
@@ -135,7 +123,57 @@ void AdBlockManager::showDialog() {
   AdBlockDialog(qApp->mainFormWidget()).exec();
 }
 
+void AdBlockManager::restartServer() {
+  // TODO:
+}
+
 void AdBlockManager::updateUnifiedFiltersFile() {
-  // TODO: download contents of all filter lists + append custom filters
-  // and combine into single file.
+  if (QFile::exists(m_unifiedFiltersFile)) {
+    QFile::remove(m_unifiedFiltersFile);
+  }
+
+  // TODO: generate file
+  QByteArray unified_contents;
+  auto filter_lists = filterLists();
+
+  // Download filters one by one and append.
+  for (const QString& filter_list_url : qAsConst(filter_lists)) {
+    QByteArray out;
+    auto res = NetworkFactory::performNetworkOperation(filter_list_url,
+                                                       2000,
+                                                       {},
+                                                       out, QNetworkAccessManager::Operation::GetOperation);
+
+    if (res.first == QNetworkReply::NetworkError::NoError) {
+      unified_contents += out;
+    }
+    else {
+      qWarningNN << LOGSEC_ADBLOCK
+                 << "Failed to download list of filters"
+                 << QUOTE_W_SPACE(filter_list_url)
+                 << "with error"
+                 << QUOTE_W_SPACE_DOT(res.first);
+    }
+  }
+
+  unified_contents += customFilters().join(QSL("\n")).toUtf8();
+
+  // Save.
+  m_unifiedFiltersFile = IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation) +
+                         QDir::separator() +
+                         QSL("adblock.filters");
+
+  try {
+    IOFactory::writeFile(m_unifiedFiltersFile, unified_contents);
+
+    if (m_enabled) {
+      // TODO: re-start nodejs adblock server.
+      restartServer();
+    }
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_ADBLOCK
+                << "Failed to write unified filters to file, error:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+  }
 }
