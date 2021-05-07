@@ -63,7 +63,7 @@ class AdBlockManager : public QObject {
     BlockingResult askServerIfBlocked(const QString& url) const;
     QString askServerForCosmeticRules(const QString& url) const;
 
-    void restartServer();
+    void restartServer(int port);
 
   private:
     bool m_loaded;

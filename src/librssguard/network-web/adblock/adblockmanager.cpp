@@ -176,7 +176,7 @@ BlockingResult AdBlockManager::askServerIfBlocked(const QString& url) const {
   tmr.start();
 
   auto network_res = NetworkFactory::performNetworkOperation(QSL("http://%1:%2").arg(QHostAddress(QHostAddress::SpecialAddress::LocalHost).toString(),
-                                                                                     ADBLOCK_SERVER_PORT),
+                                                                                     QString::number(ADBLOCK_SERVER_PORT)),
                                                              500,
                                                              QJsonDocument(req_obj).toJson(),
                                                              out,
@@ -217,7 +217,7 @@ QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
   tmr.start();
 
   auto network_res = NetworkFactory::performNetworkOperation(QSL("http://%1:%2").arg(QHostAddress(QHostAddress::SpecialAddress::LocalHost).toString(),
-                                                                                     ADBLOCK_SERVER_PORT),
+                                                                                     QString::number(ADBLOCK_SERVER_PORT)),
                                                              500,
                                                              QJsonDocument(req_obj).toJson(),
                                                              out,
@@ -241,7 +241,7 @@ QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
   }
 }
 
-void AdBlockManager::restartServer() {
+void AdBlockManager::restartServer(int port) {
   if (m_serverProcess->state() == QProcess::ProcessState::Running) {
     m_serverProcess->kill();
 
@@ -256,7 +256,7 @@ void AdBlockManager::restartServer() {
                         QSL("adblock-server.js");
 
   if (!IOFactory::copyFile(QSL(":/scripts/adblock/adblock-server.js"), temp_server)) {
-    qCriticalNN << LOGSEC_ADBLOCK << "Failed to copy server file to TEMP.";
+    qWarningNN << LOGSEC_ADBLOCK << "Failed to copy server file to TEMP.";
   }
 
 #if defined(Q_OS_WIN)
@@ -267,7 +267,7 @@ void AdBlockManager::restartServer() {
 
   m_serverProcess->setArguments({
     QDir::toNativeSeparators(temp_server),
-    ADBLOCK_SERVER_PORT,
+    QString::number(port),
     QDir::toNativeSeparators(m_unifiedFiltersFile)
   });
 
@@ -347,7 +347,7 @@ void AdBlockManager::updateUnifiedFiltersFile() {
     IOFactory::writeFile(m_unifiedFiltersFile, unified_contents.toUtf8());
 
     if (m_enabled) {
-      restartServer();
+      restartServer(ADBLOCK_SERVER_PORT);
     }
   }
   catch (const ApplicationException& ex) {
