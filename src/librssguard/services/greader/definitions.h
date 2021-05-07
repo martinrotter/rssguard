@@ -1,7 +1,12 @@
 #ifndef GREADER_DEFINITIONS_H
 #define GREADER_DEFINITIONS_H
 
-#define GREADER_UNLIMITED_BATCH_SIZE       -1
+#define GREADER_DEFAULT_BATCH_SIZE         100
+
+// URLs.
+#define GREADER_URL_REEDAH  "https://www.reedah.com"
+#define GREADER_URL_TOR     "https://theoldreader.com"
+#define GREADER_URL_BAZQUX  "https://bazqux.com"
 
 // States.
 
@@ -24,6 +29,7 @@
 #define GREADER_API_STREAM_CONTENTS     "reader/api/0/stream/contents/%1?output=json&n=%2"
 #define GREADER_API_EDIT_TAG            "reader/api/0/edit-tag"
 #define GREADER_API_TOKEN               "reader/api/0/token"
+#define GREADER_API_USER_INFO           "reader/api/0/user-info?output=json"
 
 // Misc.
 #define GREADER_API_EDIT_TAG_BATCH      200

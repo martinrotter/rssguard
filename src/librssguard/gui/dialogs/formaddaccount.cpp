@@ -23,6 +23,7 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, Fe
 
   connect(m_ui->m_listEntryPoints, &QListWidget::itemDoubleClicked, this, &FormAddAccount::addSelectedAccount);
   connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormAddAccount::addSelectedAccount);
+  connect(m_ui->m_listEntryPoints, &QListWidget::currentRowChanged, this, &FormAddAccount::showAccountDetails);
 
   loadEntryPoints();
 }
@@ -44,12 +45,20 @@ void FormAddAccount::addSelectedAccount() {
   }
 }
 
+void FormAddAccount::showAccountDetails() {
+  ServiceEntryPoint* point = selectedEntryPoint();
+
+  if (point != nullptr) {
+    m_ui->m_lblDetails->setText(point->description());
+  }
+}
+
 ServiceEntryPoint* FormAddAccount::selectedEntryPoint() const {
   return m_entryPoints.at(m_ui->m_listEntryPoints->currentRow());
 }
 
 void FormAddAccount::loadEntryPoints() {
-  for (const ServiceEntryPoint* entry_point : m_entryPoints) {
+  for (const ServiceEntryPoint* entry_point : qAsConst(m_entryPoints)) {
     QListWidgetItem* item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
 
     item->setToolTip(entry_point->description());

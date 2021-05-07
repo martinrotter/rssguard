@@ -262,27 +262,6 @@
        <string>External tools</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout">
-       <item row="2" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QPushButton" name="m_btnAddTool">
-           <property name="text">
-            <string>Add external tool</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="m_btnDeleteTool">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Delete selected external tool</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
        <item row="0" column="0" colspan="2">
         <widget class="QLabel" name="m_lblToolInfo">
          <property name="text">
@@ -330,6 +309,37 @@
          </property>
         </spacer>
        </item>
+       <item row="2" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="m_btnAddTool">
+           <property name="text">
+            <string>&amp;Add new external tool</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="m_btnEditTool">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>&amp;Edit selected external tool</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="m_btnDeleteTool">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>&amp;Delete selected external tool</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
       </layout>
      </widget>
     </widget>
@@ -351,6 +361,7 @@
   <tabstop>m_cmbExternalEmailPreset</tabstop>
   <tabstop>m_listTools</tabstop>
   <tabstop>m_btnAddTool</tabstop>
+  <tabstop>m_btnEditTool</tabstop>
   <tabstop>m_btnDeleteTool</tabstop>
  </tabstops>
  <resources/>

@@ -11,19 +11,19 @@ class SettingsShortcuts : public SettingsPanel {
   Q_OBJECT
 
   public:
-    explicit SettingsShortcuts(Settings* settings, QWidget* parent = 0);
+    explicit SettingsShortcuts(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsShortcuts();
 
-    inline QString title() const {
-      return tr("Keyboard shortcuts");
-    }
-
-    void loadSettings();
-
-    void saveSettings();
+    virtual QString title() const;
+    virtual void loadSettings();
+    virtual void saveSettings();
 
   private:
     Ui::SettingsShortcuts* m_ui;
 };
+
+inline QString SettingsShortcuts::title() const {
+  return tr("Keyboard shortcuts");
+}
 
 #endif // SETTINGSSHORTCUTS_H

@@ -15,13 +15,15 @@
 
 RootItem::RootItem(RootItem* parent_item)
   : QObject(nullptr), m_kind(RootItem::Kind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QL1S("")),
-  m_title(QString()), m_description(QString()), m_keepOnTop(false), m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
+  m_title(QString()), m_description(QString()), m_creationDate(QDateTime::currentDateTimeUtc()),
+  m_keepOnTop(false), m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
 
 RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setTitle(other.title());
   setId(other.id());
   setCustomId(other.customId());
   setIcon(other.icon());
+  setKeepOnTop(other.keepOnTop());
 
   // NOTE: We do not need to clone childs, because that would mean that
   // either source or target item tree would get corrupted.
@@ -73,7 +75,7 @@ bool RootItem::deleteViaGui() {
 bool RootItem::markAsReadUnread(ReadStatus status) {
   bool result = true;
 
-  for (RootItem* child : m_childItems) {
+  for (RootItem* child : qAsConst(m_childItems)) {
     result &= child->markAsReadUnread(status);
   }
 
@@ -83,7 +85,7 @@ bool RootItem::markAsReadUnread(ReadStatus status) {
 QList<Message> RootItem::undeletedMessages() const {
   QList<Message> messages;
 
-  for (RootItem* child : m_childItems) {
+  for (RootItem* child : qAsConst(m_childItems)) {
     if (child->kind() != Kind::Bin && child->kind() != Kind::Labels && child->kind() != Kind::Label) {
       messages.append(child->undeletedMessages());
     }
@@ -95,7 +97,7 @@ QList<Message> RootItem::undeletedMessages() const {
 bool RootItem::cleanMessages(bool clear_only_read) {
   bool result = true;
 
-  for (RootItem* child : m_childItems) {
+  for (RootItem* child : qAsConst(m_childItems)) {
     if (child->kind() != RootItem::Kind::Bin) {
       result &= child->cleanMessages(clear_only_read);
     }
@@ -105,7 +107,7 @@ bool RootItem::cleanMessages(bool clear_only_read) {
 }
 
 void RootItem::updateCounts(bool including_total_count) {
-  for (RootItem* child : m_childItems) {
+  for (RootItem* child : qAsConst(m_childItems)) {
     child->updateCounts(including_total_count);
   }
 }
@@ -121,11 +123,8 @@ int RootItem::row() const {
 }
 
 QVariant RootItem::data(int column, int role) const {
-  Q_UNUSED(column)
-  Q_UNUSED(role)
-
   switch (role) {
-    case Qt::ToolTipRole:
+    case Qt::ItemDataRole::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         QString tool_tip = m_title;
 
@@ -149,7 +148,10 @@ QVariant RootItem::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::EditRole:
+    case LOWER_TITLE_ROLE:
+      return m_title.toLower();
+
+    case Qt::ItemDataRole::EditRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return m_title;
       }
@@ -160,23 +162,29 @@ QVariant RootItem::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::DisplayRole:
+    case Qt::ItemDataRole::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return m_title;
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
-        int count_all = countOfAllMessages();
         int count_unread = countOfUnreadMessages();
 
-        return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
-               .replace(PLACEHOLDER_UNREAD_COUNTS, count_unread < 0 ? QSL("-") : QString::number(count_unread))
-               .replace(PLACEHOLDER_ALL_COUNTS, count_all < 0 ? QSL("-") : QString::number(count_all));
+        if (count_unread <= 0 && qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool()) {
+          return QString();
+        }
+        else {
+          int count_all = countOfAllMessages();
+
+          return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
+                 .replace(PLACEHOLDER_UNREAD_COUNTS, count_unread < 0 ? QSL("-") : QString::number(count_unread))
+                 .replace(PLACEHOLDER_ALL_COUNTS, count_all < 0 ? QSL("-") : QString::number(count_all));
+        }
       }
       else {
         return QVariant();
       }
 
-    case Qt::DecorationRole:
+    case Qt::ItemDataRole::DecorationRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return fullIcon();
       }
@@ -184,7 +192,7 @@ QVariant RootItem::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::TextAlignmentRole:
+    case Qt::ItemDataRole::TextAlignmentRole:
       if (column == FDS_MODEL_COUNTS_INDEX) {
         return Qt::AlignmentFlag::AlignCenter;
       }
@@ -208,13 +216,21 @@ bool RootItem::performDragDropChange(RootItem* target_item) {
 
 int RootItem::countOfUnreadMessages() const {
   return boolinq::from(m_childItems).sum([](RootItem* it) {
-    return (it->kind() == RootItem::Kind::Important || it->kind() == RootItem::Kind::Labels) ? 0 : it->countOfUnreadMessages();
+    return (it->kind() == RootItem::Kind::Important ||
+            it->kind() == RootItem::Kind::Unread ||
+            it->kind() == RootItem::Kind::Labels)
+        ? 0
+        : it->countOfUnreadMessages();
   });
 }
 
 int RootItem::countOfAllMessages() const {
   return boolinq::from(m_childItems).sum([](RootItem* it) {
-    return (it->kind() == RootItem::Kind::Important || it->kind() == RootItem::Kind::Labels) ? 0 : it->countOfAllMessages();
+    return (it->kind() == RootItem::Kind::Important ||
+            it->kind() == RootItem::Kind::Unread ||
+            it->kind() == RootItem::Kind::Labels)
+        ? 0
+        : it->countOfAllMessages();
   });
 }
 

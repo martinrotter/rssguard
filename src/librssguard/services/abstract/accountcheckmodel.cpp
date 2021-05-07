@@ -42,9 +42,11 @@ void AccountCheckModel::setRootItem(RootItem* root_item, bool delete_previous_ro
 
 void AccountCheckModel::checkAllItems() {
   if (m_rootItem != nullptr) {
-    for (RootItem* root_child : m_rootItem->childItems()) {
+    auto chi = m_rootItem->childItems();
+
+    for (RootItem* root_child : qAsConst(chi)) {
       if (root_child->kind() == RootItem::Kind::Feed || root_child->kind() == RootItem::Kind::Category) {
-        setItemChecked(root_child, Qt::Checked);
+        setItemChecked(root_child, Qt::CheckState::Checked);
       }
     }
   }
@@ -52,9 +54,11 @@ void AccountCheckModel::checkAllItems() {
 
 void AccountCheckModel::uncheckAllItems() {
   if (m_rootItem != nullptr) {
-    for (RootItem* root_child : m_rootItem->childItems()) {
+    auto chi = m_rootItem->childItems();
+
+    for (RootItem* root_child : qAsConst(chi)) {
       if (root_child->kind() == RootItem::Kind::Feed || root_child->kind() == RootItem::Kind::Category) {
-        setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
+        setData(indexForItem(root_child), Qt::CheckState::Unchecked, Qt::ItemDataRole::CheckStateRole);
       }
     }
   }
@@ -161,7 +165,7 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
 
   RootItem* item = itemForIndex(index);
 
-  if (role == Qt::CheckStateRole) {
+  if (role == Qt::ItemDataRole::CheckStateRole) {
     if (m_checkStates.contains(item)) {
       return m_checkStates.value(item);
     }
@@ -169,15 +173,13 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
       return static_cast<int>(Qt::Unchecked);
     }
   }
-  else if (role == Qt::DecorationRole) {
-    auto ic = item->icon();
-
+  else if (role == Qt::ItemDataRole::DecorationRole) {
     return item->data(0, Qt::ItemDataRole::DecorationRole);
   }
-  else if (role == Qt::EditRole) {
+  else if (role == Qt::ItemDataRole::EditRole) {
     return QVariant::fromValue(item);
   }
-  else if (role == Qt::DisplayRole) {
+  else if (role == Qt::ItemDataRole::DisplayRole) {
     switch (item->kind()) {
       case RootItem::Kind::Category:
         return QVariant(item->data(index.column(), role).toString() + QSL(" ") + tr("(category)"));
@@ -213,7 +215,9 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
     }
 
     // Set new data for all descendants of this actual item.
-    for (RootItem* child : item->childItems()) {
+    auto chi = item->childItems();
+
+    for (RootItem* child : qAsConst(chi)) {
       setData(indexForItem(child), value, Qt::CheckStateRole);
     }
 
@@ -230,8 +234,9 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
       // Check children of this new parent item.
       bool all_checked = true;
       bool all_unchecked = true;
+      auto childr = item->childItems();
 
-      for (RootItem* child_of_parent : item->childItems()) {
+      for (RootItem* child_of_parent : qAsConst(childr)) {
         if (m_checkStates.contains(child_of_parent)) {
           all_checked &= m_checkStates[child_of_parent] == Qt::CheckState::Checked;
           all_unchecked &= m_checkStates[child_of_parent] == Qt::CheckState::Unchecked;
@@ -288,7 +293,7 @@ bool AccountCheckModel::isItemChecked(RootItem* item) const {
 }
 
 bool AccountCheckModel::setItemChecked(RootItem* item, Qt::CheckState check) {
-  return setData(indexForItem(item), check, Qt::CheckStateRole);
+  return setData(indexForItem(item), check, Qt::ItemDataRole::CheckStateRole);
 }
 
 AccountCheckSortedModel::AccountCheckSortedModel(QObject* parent)
@@ -308,6 +313,7 @@ bool AccountCheckSortedModel::lessThan(const QModelIndex& source_left, const QMo
       RootItem::Kind::Feed,
       RootItem::Kind::Labels,
       RootItem::Kind::Important,
+      RootItem::Kind::Unread,
       RootItem::Kind::Bin
     };
 

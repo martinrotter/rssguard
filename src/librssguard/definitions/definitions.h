@@ -6,9 +6,6 @@
 #include <QDebug>
 #include <QtGlobal>
 
-//
-// Constants.
-//
 #define SERVICE_CODE_STD_RSS    "std-rss"
 #define SERVICE_CODE_TT_RSS     "tt-rss"
 #define SERVICE_CODE_OWNCLOUD   "owncloud"
@@ -17,72 +14,82 @@
 #define SERVICE_CODE_INOREADER  "inoreader"
 #define SERVICE_CODE_GMAIL      "gmail"
 
-#define ARGUMENTS_LIST_SEPARATOR  "\n"
-
-#define ADBLOCK_HOWTO_FILTERS                 "https://help.eyeo.com/en/adblockplus/how-to-write-filters"
-#define ADBLOCK_UPDATE_DAYS_INTERVAL          14
+#define ADBLOCK_SERVER_PORT                   "48484"
+#define ADBLOCK_HOWTO                         "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#adblock"
 #define ADBLOCK_ICON_ACTIVE                   "adblock"
 #define ADBLOCK_ICON_DISABLED                 "adblock-disabled"
-#define IS_IN_ARRAY(offset, array)            ((offset >= 0) && (offset < array.count()))
-#define ADBLOCK_CUSTOMLIST_NAME               "customlist.txt"
-#define ADBLOCK_LISTS_SUBDIRECTORY            "adblock"
-#define ADBLOCK_EASYLIST_URL                  "https://easylist.to/easylist/easylist.txt"
-#define DEFAULT_SQL_MESSAGES_FILTER           "0 > 1"
-#define MAX_MULTICOLUMN_SORT_STATES           3
+
+#define OAUTH_DECRYPTION_KEY                  11451167756100761335ul
+#define OAUTH_REDIRECT_URI                    "http://localhost"
+
 #define ENCLOSURES_OUTER_SEPARATOR            '#'
 #define ECNLOSURES_INNER_SEPARATOR            '&'
+
 #define URI_SCHEME_FEED_SHORT                 "feed:"
 #define URI_SCHEME_FEED                       "feed://"
+
+#define URI_SCHEME_HTTP_SHORT                 "http:"
 #define URI_SCHEME_HTTP                       "http://"
-#define RELEASES_LIST                         "https://api.github.com/repos/martinrotter/rssguard/releases"
+
+#define URI_SCHEME_HTTPS_SHORT                "https:"
+#define URI_SCHEME_HTTPS                      "https://"
+
 #define DEFAULT_LOCALE                        "en"
-#define DEFAULT_FEED_ENCODING                 "UTF-8"
-#define MSG_FILTERING_HELP                    "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Message-filters.md#message-filtering"
-#define DEFAULT_FEED_TYPE                     "RSS"
-#define URL_REGEXP "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
-#define SCRIPT_SOURCE_TYPE_REGEXP             "^.+#.*$"
-#define TEXT_TITLE_LIMIT                      30
-#define RESELECT_MESSAGE_THRESSHOLD           500
-#define ICON_SIZE_SETTINGS                    16
+
 #define NO_PARENT_CATEGORY                    -1
 #define ID_RECYCLE_BIN                        -2
 #define ID_IMPORTANT                          -3
 #define ID_LABELS                             -4
+#define ID_UNREAD                             -5
+
+#define MSG_SCORE_MAX   100.0
+#define MSG_SCORE_MIN   0.0
+
+#define ARGUMENTS_LIST_SEPARATOR              "\n"
+#define IS_IN_ARRAY(offset, array)            ((offset >= 0) && (offset < array.count()))
+#define DEFAULT_SQL_MESSAGES_FILTER           "0 > 1"
+#define MAX_MULTICOLUMN_SORT_STATES           3
+#define RELEASES_LIST                         "https://api.github.com/repos/martinrotter/rssguard/releases"
+#define MSG_FILTERING_HELP                    "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Message-filters.md#message-filtering"
+#define URL_REGEXP "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
+#define SCRIPT_SOURCE_TYPE_REGEXP             "^.+#.*$"
+#define TEXT_TITLE_LIMIT                      30
+#define LOWER_TITLE_ROLE                      64
+#define RESELECT_MESSAGE_THRESSHOLD           500
+#define ICON_SIZE_SETTINGS                    16
 #define TRAY_ICON_BUBBLE_TIMEOUT              20000
 #define CLOSE_LOCK_TIMEOUT                    500
 #define DOWNLOAD_TIMEOUT                      30000
 #define MESSAGES_VIEW_DEFAULT_COL             100
 #define MESSAGES_VIEW_MINIMUM_COL             16
 #define FEEDS_VIEW_COLUMN_COUNT               2
-#define FEED_DOWNLOADER_MAX_THREADS           3
 #define DEFAULT_DAYS_TO_DELETE_MSG            14
 #define ELLIPSIS_LENGTH                       3
-#define MIN_CATEGORY_NAME_LENGTH              1
 #define DEFAULT_AUTO_UPDATE_INTERVAL          15
-#define OAUTH_REDIRECT_URI_PORT               14488
-#define OAUTH_REDIRECT_URI                    "http://localhost"
 #define AUTO_UPDATE_INTERVAL                  60000
 #define STARTUP_UPDATE_DELAY                  15.0 // In seconds.
 #define TIMEZONE_OFFSET_LIMIT                 6
 #define CHANGE_EVENT_DELAY                    250
 #define FLAG_ICON_SUBFOLDER                   "flags"
-#define SEACRH_MESSAGES_ACTION_NAME           "search"
+#define SEARCH_BOX_ACTION_NAME           "search"
 #define HIGHLIGHTER_ACTION_NAME               "highlighter"
 #define SPACER_ACTION_NAME                    "spacer"
 #define SEPARATOR_ACTION_NAME                 "separator"
-#define FILTER_WIDTH                          150
+#define FILTER_WIDTH                          125
 #define FILTER_RIGHT_MARGIN                   5
 #define FEEDS_VIEW_INDENTATION                10
-#define ACCEPT_HEADER_FOR_FEED_DOWNLOADER     "application/atom+xml,application/xml;q=0.9,text/xml;q=0.8,*/*;q=0.7"
 #define MIME_TYPE_ITEM_POINTER                "rssguard/itempointer"
 #define DOWNLOADER_ICON_SIZE                  48
-#define GOOGLE_SEARCH_URL                     "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
-#define GOOGLE_SUGGEST_URL                    "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"
 #define ENCRYPTION_FILE_NAME                  "key.private"
 #define RELOAD_MODEL_BORDER_NUM               10
-#define EXTERNAL_TOOL_SEPARATOR               "###"
-#define EXTERNAL_TOOL_PARAM_SEPARATOR         "|||"
-#define EXECUTION_LINE_USER_DATA_PLACEHOLDER  "%data%"
+#define COOKIE_URL_IDENTIFIER                 ":COOKIE:"
+
+#define GOOGLE_SEARCH_URL                     "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
+#define GOOGLE_SUGGEST_URL                    "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"
+
+#define EXECUTION_LINE_SEPARATOR              "#"
+#define EXTERNAL_TOOL_SEPARATOR               "|||"
+#define USER_DATA_PLACEHOLDER  "%data%"
 
 #define CLI_LOG_SHORT     "l"
 #define CLI_LOG_LONG      "log"
@@ -92,6 +99,8 @@
 #define CLI_SIN_LONG      "no-single-instance"
 #define CLI_NDEBUG_SHORT  "n"
 #define CLI_NDEBUG_LONG   "no-debug-output"
+#define CLI_QUIT_INSTANCE "q"
+#define CLI_IS_RUNNING    "a"
 
 #define HTTP_HEADERS_ACCEPT         "Accept"
 #define HTTP_HEADERS_CONTENT_TYPE   "Content-Type"
@@ -126,10 +135,7 @@
 #define INTERNAL_URL_BLANK                    "http://rssguard.blank"
 #define INTERNAL_URL_ADBLOCKED                "http://rssguard.adblocked"
 #define INTERNAL_URL_MESSAGE_HOST             "rssguard.message"
-#define INTERNAL_URL_BLANK_HOST               "rssguard.blank"
 #define INTERNAL_URL_PASSATTACHMENT           "http://rssguard.passattachment"
-
-#define FEED_INITIAL_OPML_PATTERN             "feeds-%1.opml"
 
 #define FEED_REGEX_MATCHER                    "<link[^>]+type=\"application\\/(?:atom\\+xml|rss\\+xml|feed\\+json|json)\"[^>]*>"
 #define FEED_HREF_REGEX_MATCHER               "href=\"([^\"]+)\""
@@ -153,16 +159,17 @@
 #define APP_DB_SQLITE_FILE            "database.db"
 
 // Keep this in sync with schema versions declared in SQL initialization code.
-#define APP_DB_SCHEMA_VERSION         "21"
-#define APP_DB_UPDATE_FILE_PATTERN    "db_update_%1_%2_%3.sql"
-#define APP_DB_COMMENT_SPLIT          "-- !\n"
-#define APP_DB_NAME_PLACEHOLDER       "##"
+#define APP_DB_SCHEMA_VERSION                 "1"
+#define APP_DB_UPDATE_FILE_PATTERN            "db_update_%1_%2_%3.sql"
+#define APP_DB_COMMENT_SPLIT                  "-- !\n"
+#define APP_DB_INCLUDE_PLACEHOLDER            "!!"
+#define APP_DB_NAME_PLACEHOLDER               "##"
+#define APP_DB_AUTO_INC_PRIM_KEY_PLACEHOLDER  "$$"
+#define APP_DB_BLOB_PLACEHOLDER               "°°"
 
 #define APP_CFG_PATH        "config"
 #define APP_CFG_FILE        "config.ini"
 
-#define APP_QUIT_INSTANCE   "-q"
-#define APP_IS_RUNNING      "app_is_running"
 #define APP_SKIN_USER_FOLDER "skins"
 #define APP_SKIN_DEFAULT    "vergilius"
 #define APP_SKIN_METADATA_FILE "metadata.xml"
@@ -180,21 +187,22 @@
 // Indexes of columns as they are DEFINED IN THE TABLE for MESSAGES.
 #define MSG_DB_ID_INDEX                 0
 #define MSG_DB_READ_INDEX               1
-#define MSG_DB_DELETED_INDEX            2
-#define MSG_DB_IMPORTANT_INDEX          3
-#define MSG_DB_FEED_TITLE_INDEX         4
-#define MSG_DB_TITLE_INDEX              5
-#define MSG_DB_URL_INDEX                6
-#define MSG_DB_AUTHOR_INDEX             7
-#define MSG_DB_DCREATED_INDEX           8
-#define MSG_DB_CONTENTS_INDEX           9
-#define MSG_DB_PDELETED_INDEX           10
+#define MSG_DB_IMPORTANT_INDEX          2
+#define MSG_DB_DELETED_INDEX            3
+#define MSG_DB_PDELETED_INDEX           4
+#define MSG_DB_FEED_CUSTOM_ID_INDEX     5
+#define MSG_DB_TITLE_INDEX              6
+#define MSG_DB_URL_INDEX                7
+#define MSG_DB_AUTHOR_INDEX             8
+#define MSG_DB_DCREATED_INDEX           9
+#define MSG_DB_CONTENTS_INDEX           10
 #define MSG_DB_ENCLOSURES_INDEX         11
-#define MSG_DB_ACCOUNT_ID_INDEX         12
-#define MSG_DB_CUSTOM_ID_INDEX          13
-#define MSG_DB_CUSTOM_HASH_INDEX        14
-#define MSG_DB_FEED_CUSTOM_ID_INDEX     15
-#define MSG_DB_HAS_ENCLOSURES           16
+#define MSG_DB_SCORE_INDEX              12
+#define MSG_DB_ACCOUNT_ID_INDEX         13
+#define MSG_DB_CUSTOM_ID_INDEX          14
+#define MSG_DB_CUSTOM_HASH_INDEX        15
+#define MSG_DB_FEED_TITLE_INDEX         16
+#define MSG_DB_HAS_ENCLOSURES           17
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
 #define CAT_DB_ID_INDEX           0
@@ -213,18 +221,12 @@
 #define FDS_DB_DCREATED_INDEX         3
 #define FDS_DB_ICON_INDEX             4
 #define FDS_DB_CATEGORY_INDEX         5
-#define FDS_DB_ENCODING_INDEX         6
-#define FDS_DB_SOURCE_TYPE_INDEX      7
-#define FDS_DB_URL_INDEX              8
-#define FDS_DB_POST_PROCESS           9
-#define FDS_DB_PROTECTED_INDEX        10
-#define FDS_DB_USERNAME_INDEX         11
-#define FDS_DB_PASSWORD_INDEX         12
-#define FDS_DB_UPDATE_TYPE_INDEX      13
-#define FDS_DB_UPDATE_INTERVAL_INDEX  14
-#define FDS_DB_TYPE_INDEX             15
-#define FDS_DB_ACCOUNT_ID_INDEX       16
-#define FDS_DB_CUSTOM_ID_INDEX        17
+#define FDS_DB_SOURCE_INDEX           6
+#define FDS_DB_UPDATE_TYPE_INDEX      7
+#define FDS_DB_UPDATE_INTERVAL_INDEX  8
+#define FDS_DB_ACCOUNT_ID_INDEX       9
+#define FDS_DB_CUSTOM_ID_INDEX        10
+#define FDS_DB_CUSTOM_DATA_INDEX      11
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX           0
@@ -238,9 +240,12 @@
 #define MFM_MODEL_URL           4
 #define MFM_MODEL_AUTHOR        5
 #define MFM_MODEL_CREATED       6
+#define MFM_MODEL_SCORE         7
 
 #if defined(Q_OS_LINUX)
 #define OS_ID   "Linux"
+#elif defined(Q_OS_OS2)
+#define OS_ID   "OS/2"
 #elif defined(Q_OS_OSX)
 #define OS_ID   "Mac OS X"
 #elif defined(Q_OS_WIN)

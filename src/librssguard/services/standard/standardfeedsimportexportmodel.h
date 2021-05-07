@@ -31,9 +31,6 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
     void setMode(const Mode& mode);
 
   signals:
-
-    // These signals are emitted when user selects some data
-    // to be imported/parsed into the model.
     void parsingStarted();
     void parsingProgress(int completed, int total);
     void parsingFinished(int count_failed, int count_succeeded, bool parsing_error);

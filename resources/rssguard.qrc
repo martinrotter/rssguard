@@ -5,6 +5,9 @@
         <file>text/COPYING_MIT</file>
         <file>text/COPYING_GNU_GPL</file>
         <file>text/COPYING_GNU_GPL_HTML</file>
+
+        <file>scripts/adblock/adblock-server.js</file>
+        <file>scripts/public_suffix_list.dat</file>
         
         <file>graphics/rssguard.ico</file>
 
@@ -24,6 +27,7 @@
         <file>graphics/misc/image-placeholder.png</file>
         <file>graphics/misc/inoreader.png</file>
         <file>graphics/misc/nextcloud.png</file>
+        <file>graphics/misc/reedah.png</file>
         <file>graphics/misc/theoldreader.png</file>
         <file>graphics/misc/tt-rss.png</file>
         

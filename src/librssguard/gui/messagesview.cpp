@@ -6,10 +6,10 @@
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/labelsmenu.h"
 #include "gui/messagebox.h"
-#include "gui/styleditemdelegatewithoutfocus.h"
-#include "gui/treeviewcolumnsmenu.h"
+#include "gui/reusable/labelsmenu.h"
+#include "gui/reusable/styleditemdelegatewithoutfocus.h"
+#include "gui/reusable/treeviewcolumnsmenu.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/settings.h"
@@ -79,9 +79,9 @@ void MessagesView::createConnections() {
 void MessagesView::keyboardSearch(const QString& search) {
   // WARNING: This is quite hacky way how to force selection of next item even
   // with extended selection enabled.
-  setSelectionMode(QAbstractItemView::SingleSelection);
+  setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
   QTreeView::keyboardSearch(search);
-  setSelectionMode(QAbstractItemView::ExtendedSelection);
+  setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
 }
 
 void MessagesView::reloadSelections() {
@@ -209,10 +209,11 @@ void MessagesView::initializeContextMenu() {
   // External tools.
   QFileIconProvider icon_provider;
   QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), m_contextMenu);
+  auto tools = ExternalTool::toolsFromSettings();
 
   menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 
-  for (const ExternalTool& tool : ExternalTool::toolsFromSettings()) {
+  for (const ExternalTool& tool : qAsConst(tools)) {
     QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
 
     act_tool->setIcon(icon_provider.icon(tool.executable()));
@@ -224,7 +225,7 @@ void MessagesView::initializeContextMenu() {
   }
 
   if (menu_ext_tools->actions().isEmpty()) {
-    QAction* act_not_tools = new QAction("No external tools activated");
+    QAction* act_not_tools = new QAction(tr("No external tools activated"));
 
     act_not_tools->setEnabled(false);
     menu_ext_tools->addAction(act_not_tools);
@@ -347,7 +348,7 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
   }
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()) {
-    scrollTo(currentIndex(), QAbstractItemView::PositionAtCenter);
+    scrollTo(currentIndex(), QAbstractItemView::ScrollHint::PositionAtCenter);
   }
 
   QTreeView::selectionChanged(selected, deselected);
@@ -375,7 +376,9 @@ void MessagesView::switchShowUnreadOnly(bool set_new_value, bool show_unread_onl
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {
-  for (const QModelIndex& index : selectionModel()->selectedRows()) {
+  auto rws = selectionModel()->selectedRows();
+
+  for (const QModelIndex& index : qAsConst(rws)) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
                    .m_url
                    .replace(QRegularExpression("[\\t\\n]"), QString());
@@ -397,8 +400,9 @@ void MessagesView::openSelectedSourceMessagesExternally() {
 
 void MessagesView::openSelectedMessagesInternally() {
   QList<Message> messages;
+  auto rws = selectionModel()->selectedRows();
 
-  for (const QModelIndex& index : selectionModel()->selectedRows()) {
+  for (const QModelIndex& index : qAsConst(rws)) {
     messages << m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
   }
 
@@ -529,6 +533,7 @@ void MessagesView::selectNextItem() {
 
   if (index_next.isValid()) {
     setCurrentIndex(index_next);
+    scrollTo(index_next, QAbstractItemView::ScrollHint::PositionAtTop);
     selectionModel()->select(index_next, QItemSelectionModel::Select | QItemSelectionModel::Rows);
     setFocus();
   }
@@ -539,6 +544,7 @@ void MessagesView::selectPreviousItem() {
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
+    scrollTo(index_previous, QAbstractItemView::ScrollHint::PositionAtTop);
     selectionModel()->select(index_previous, QItemSelectionModel::Select | QItemSelectionModel::Rows);
     setFocus();
   }
@@ -561,16 +567,23 @@ void MessagesView::selectNextUnreadItem() {
   if (next_unread.isValid()) {
     // We found unread message, mark it.
     setCurrentIndex(next_unread);
-    selectionModel()->select(next_unread, QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+    selectionModel()->select(next_unread,
+                             QItemSelectionModel::SelectionFlag::ClearAndSelect |
+                             QItemSelectionModel::SelectionFlag::Rows);
     setFocus();
+
+    // Make sure that item is properly visible even if
+    // message previewer was hidden and shows up.
+    qApp->processEvents();
+    scrollTo(next_unread, QAbstractItemView::ScrollHint::PositionAtTop);
   }
 }
 
 void MessagesView::searchMessages(const QString& pattern) {
-#if QT_VERSION_MAJOR <= 5
-  m_proxyModel->setFilterRegExp(pattern);
+#if QT_VERSION < 0x050C00 // Qt < 5.12.0
+  m_proxyModel->setFilterRegExp(pattern.toLower());
 #else
-  m_proxyModel->setFilterRegularExpression(pattern);
+  m_proxyModel->setFilterRegularExpression(pattern.toLower());
 #endif
 
   if (selectionModel()->selectedRows().isEmpty()) {
@@ -591,17 +604,18 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
 
   if (sndr != nullptr) {
     auto tool = sndr->data().value<ExternalTool>();
+    auto rws = selectionModel()->selectedRows();
 
-    for (const QModelIndex& index : selectionModel()->selectedRows()) {
+    for (const QModelIndex& index : qAsConst(rws)) {
       const QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
                            .m_url
                            .replace(QRegularExpression("[\\t\\n]"), QString());
 
       if (!link.isEmpty()) {
-        if (!QProcess::startDetached(tool.executable(), QStringList() << tool.parameters() << link)) {
+        if (!tool.run(link)) {
           qApp->showGuiMessage(tr("Cannot run external tool"),
                                tr("External tool '%1' could not be started.").arg(tool.executable()),
-                               QSystemTrayIcon::Critical);
+                               QSystemTrayIcon::MessageIcon::Critical);
         }
       }
     }
@@ -614,13 +628,14 @@ void MessagesView::adjustColumns() {
 
     // Setup column resize strategies.
     for (int i = 0; i < header()->count(); i++) {
-      header()->setSectionResizeMode(i, QHeaderView::Interactive);
+      header()->setSectionResizeMode(i, QHeaderView::ResizeMode::Interactive);
     }
 
-    header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Stretch);
-    header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
-    header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
-    header()->setSectionResizeMode(MSG_DB_HAS_ENCLOSURES, QHeaderView::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
+    header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeMode::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeMode::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_SCORE_INDEX, QHeaderView::ResizeMode::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_HAS_ENCLOSURES, QHeaderView::ResizeMode::ResizeToContents);
 
     // Hide columns.
     hideColumn(MSG_DB_ID_INDEX);
@@ -629,10 +644,13 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_DB_CONTENTS_INDEX);
     hideColumn(MSG_DB_PDELETED_INDEX);
     hideColumn(MSG_DB_ENCLOSURES_INDEX);
+    hideColumn(MSG_DB_SCORE_INDEX);
     hideColumn(MSG_DB_ACCOUNT_ID_INDEX);
     hideColumn(MSG_DB_CUSTOM_ID_INDEX);
     hideColumn(MSG_DB_CUSTOM_HASH_INDEX);
     hideColumn(MSG_DB_FEED_CUSTOM_ID_INDEX);
+    hideColumn(MSG_DB_FEED_TITLE_INDEX);
+    hideColumn(MSG_DB_HAS_ENCLOSURES);
   }
 }
 

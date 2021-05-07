@@ -2,8 +2,8 @@
 
 #include "services/inoreader/inoreaderserviceroot.h"
 
+#include "database/databasequeries.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
 #include "services/abstract/importantnode.h"
@@ -11,8 +11,7 @@
 #include "services/abstract/recyclebin.h"
 #include "services/inoreader/gui/formeditinoreaderaccount.h"
 #include "services/inoreader/inoreaderentrypoint.h"
-#include "services/inoreader/inoreaderfeed.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
+#include "services/inoreader/inoreadernetworkfactory.h"
 
 #include <QThread>
 
@@ -28,46 +27,49 @@ void InoreaderServiceRoot::updateTitle() {
   setTitle(TextFactory::extractUsernameFromEmail(m_network->username()) + QSL(" (Inoreader)"));
 }
 
-void InoreaderServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<InoreaderFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
-
-  performInitialAssembly(categories, feeds, labels);
-}
-
-void InoreaderServiceRoot::saveAccountDataToDatabase(bool creating_new) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (!creating_new) {
-    if (DatabaseQueries::overwriteInoreaderAccount(database, m_network->username(),
-                                                   m_network->oauth()->clientId(),
-                                                   m_network->oauth()->clientSecret(),
-                                                   m_network->oauth()->redirectUrl(),
-                                                   m_network->oauth()->refreshToken(),
-                                                   m_network->batchSize(),
-                                                   accountId())) {
-      updateTitle();
-      itemChanged(QList<RootItem*>() << this);
-    }
-  }
-  else {
-    if (DatabaseQueries::createInoreaderAccount(database,
-                                                accountId(),
-                                                m_network->username(),
-                                                m_network->oauth()->clientId(),
-                                                m_network->oauth()->clientSecret(),
-                                                m_network->oauth()->redirectUrl(),
-                                                m_network->oauth()->refreshToken(),
-                                                m_network->batchSize())) {
-      updateTitle();
-    }
-  }
-}
-
 ServiceRoot::LabelOperation InoreaderServiceRoot::supportedLabelOperations() const {
   return ServiceRoot::LabelOperation(0);
+}
+
+QVariantHash InoreaderServiceRoot::customDatabaseData() const {
+  QVariantHash data;
+
+  data["username"] = m_network->username();
+  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
+  data["batch_size"] = m_network->batchSize();
+  data["client_id"] = m_network->oauth()->clientId();
+  data["client_secret"] = m_network->oauth()->clientSecret();
+  data["refresh_token"] = m_network->oauth()->refreshToken();
+  data["redirect_uri"] = m_network->oauth()->redirectUrl();
+
+  return data;
+}
+
+void InoreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  m_network->setUsername(data["username"].toString());
+  m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
+  m_network->oauth()->setClientId(data["client_id"].toString());
+  m_network->oauth()->setClientSecret(data["client_secret"].toString());
+  m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
+  m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString());
+}
+
+QList<Message> InoreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> messages;
+
+  for (Feed* feed : feeds) {
+    Feed::Status error = Feed::Status::Normal;
+
+    messages << network()->messages(this, feed->customId(), error);
+    feed->setStatus(error);
+
+    if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
+      *error_during_obtaining = true;
+    }
+  }
+
+  return messages;
 }
 
 bool InoreaderServiceRoot::isSyncable() const {
@@ -94,13 +96,17 @@ bool InoreaderServiceRoot::supportsCategoryAdding() const {
 }
 
 void InoreaderServiceRoot::start(bool freshly_activated) {
-  Q_UNUSED(freshly_activated)
+  if (!freshly_activated) {
+    DatabaseQueries::loadFromDatabase<Category, Feed>(this);
+    loadCacheFromFile();
+  }
 
-  loadFromDatabase();
-  loadCacheFromFile();
+  updateTitle();
 
-  if (childCount() <= 3) {
-    syncIn();
+  if (getSubTreeFeeds().isEmpty()) {
+    m_network->oauth()->login([this]() {
+      syncIn();
+    });
   }
   else {
     m_network->oauth()->login();
@@ -201,20 +207,5 @@ void InoreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
         addLabelsAssignmentsToCache(messages, label_custom_id, false);
       }
     }
-  }
-}
-
-bool InoreaderServiceRoot::canBeDeleted() const {
-  return true;
-}
-
-bool InoreaderServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (DatabaseQueries::deleteInoreaderAccount(database, accountId())) {
-    return ServiceRoot::deleteViaGui();
-  }
-  else {
-    return false;
   }
 }

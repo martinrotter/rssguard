@@ -47,7 +47,8 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
       ServiceRoot = 16,
       Labels = 32,
       Important = 64,
-      Label = 128
+      Label = 128,
+      Unread = 256
     };
 
     // Constructors and destructors.
@@ -161,12 +162,16 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // This ALWAYS represents primary column number/ID under which
     // the item is stored in DB.
     int id() const;
+
+    // WARNING: Do not EVER call this method if your "this" object is derived
+    // from "ServiceRoot";
     void setId(int id);
 
     // Each item has its title.
     QString title() const;
     void setTitle(const QString& title);
 
+    // This should be in UTC and should be converted to localtime when needed.
     QDateTime creationDate() const;
     void setCreationDate(const QDateTime& creation_date);
 

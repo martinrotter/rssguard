@@ -8,21 +8,26 @@
     * [Localizations](#localizations)
     * [Videos](#videos)
     * [Web-based and lite app variants](#web-based-and-lite-app-variants)
+    * [RSS Guard 3 vs. RSS Guard 4](#rss-guard-3-vs-rss-guard-4)
 * [Features](#features)
     * [List of main features](#list-of-main-features)
+    * [Core concepts](#core-concepts)
     * [Supported feed formats and online feed services](Feed-formats.md)
     * [Message filtering](Message-filters.md)
     * [Database backends](#database-backends)
     * [Google Reader API](#google-reader-api)
+    * [Websites scraping](#websites-scraping)
     * [Gmail](#gmail)
     * [Feedly](#feedly)
     * [Labels](Labels.md)
     * [Downloading files](#downloading-files)
+    * [External tools](#external-tools)
     * [AdBlock](#adblock)
     * [GUI tweaking](#gui-tweaking)
-* [Miscellaneous](#miscellaneous)
+* [Miscellaneous (for advanced users)](#miscellaneous-for-advanced-users)
     * [Command line interface](#cli)
-    * [OS/2](#os2)
+    * [How to build](#how-to-build)
+    * [`%data%` placeholder](#data-placeholder)
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
@@ -49,16 +54,17 @@ RSS Guard uses [semantic versioning](https://semver.org/). The versioning scheme
 
 ## How to contribute
 RSS Guard is open source application with free GNU GPLv3 license. Everyone willing to contribute is welcomed. You can contribute in many ways by:
-* fixing bugs and requesting PRs (pull requests),
+* fixing and [reporting](#reporting-bugs) bugs and requesting PRs (pull requests),
 * [localizing](#localizations) to other languages,
 * supporting author with [donations](https://github.com/sponsors/martinrotter),
-* spreading the word,
-* reporting discovered [bugs](#reporting-bugs).
+* spreading the word.
 
 If you decide to contribute code, then please try to follow the style and formatting of existing source code. Also, I use [uncrustify](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/uncrustify/uncrustify.cfg) to format source code.
 
 ## Reporting bugs
 Please report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible, along with steps taken leading up to the issue occurring.
+
+Also, for some broader questions or general ideas, use [discussions](https://github.com/martinrotter/rssguard/discussions) rather than [issues](https://github.com/martinrotter/rssguard/issues).
 
 It is a good idea to read [this](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html) before reporting the bug; it will save time and effort for everyone if all the required information is provided from the get-go.
 
@@ -79,7 +85,7 @@ Here you can see some videos to see RSS Guard in action:
 
 ## Web-based and lite app variants
 RSS Guard is distributed in two variants:
-* **Standard package with WebEngine-based bundled message viewer**: This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption. Also, installation packages are relatively big.
+* **Standard package with WebEngine-based bundled message viewer**: This variant displays messages with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone who doesn't care about memory consumption too much. Also, installation packages are relatively big.
 
 <img src="images/webengine-view.png" width="80%">
 
@@ -88,6 +94,11 @@ RSS Guard is distributed in two variants:
 <img src="images/nonwebengine-view.png" width="80%">
 
 If you're not sure which version to use, **use the WebEngine-based RSS Guard**.
+
+## RSS Guard 3 vs. RSS Guard 4
+RSS Guard 4 is **NOT** backwards compatible with previous editions of the application!!! It stores settings in slightly different [folder](#portable-user-data) to not overwrite user data from previous versions.
+
+RSS Guard 4.x contains numerous enhancements and many of them are hidden under the hood and they make application easier to maintain, easier to improve and easier to use.
 
 # Features
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF/ATOM/JSON. RSS Guard is developed on top of the [Qt library](http://qt-project.org) and it supports these operating systems:
@@ -100,23 +111,19 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 
 ## List of main features
 * **support for online feed synchronization via plugins**,
-    * Tiny Tiny RSS (RSS Guard 3.0.0+),
-    * Nextcloud News (RSS Guard 3.1.0+),
-    * Inoreader (RSS Guard 3.5.0+),
-    * Gmail with e-mail sending (RSS Guard 3.7.1+).
-    * FreshRSS (RSS Guard 3.9.0+),
-    * The Old Reader (RSS Guard 3.9.0+),
-    * Bazqux (RSS Guard 3.9.0+),
-    * Reedah (RSS Guard 3.9.0+),
-    * Feedly (RSS Guard 3.9.0+).
+    * Tiny Tiny RSS,
+    * Nextcloud News,
+    * Inoreader,
+    * Gmail.
+    * Google Reader API (FreshRSS, The Old Reader, Bazqux, Reedah and others),
+    * Feedly.
 * core:
     * support for all feed formats (RSS/RDF/ATOM/JSON),
     * full support of podcasts (RSS/ATOM/JSON),
     * import/export of feeds to/from OPML 2.0,
-    * universal plugin for online services with [Google Reader API](#google-reader-api),
-    * possibility of using custom 3rd-party feed synchronization services,
+    * possibility of using custom 3rd-party feed [synchronization services](Feed-formats.md),
     * feed metadata fetching including icons,
-    * support for [scraping websites](Feed-formats.md#websites-scraping-and-related-advanced-features) which do not offer RSS/ATOM feeds and other related advanced features,
+    * support for [scraping websites](#websites-scraping) which do not offer RSS/ATOM feeds and other related advanced features,
     * simple internal Chromium-based web viewer (or alternative version with simpler and much more lightweight internal viewer),
     * scriptable [message filtering](#message-filtering),
     * downloader with own tab and support for up to 6 parallel downloads,
@@ -126,17 +133,17 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * "portable" mode support with clever auto-detection,
     * feed categorization,
     * feed authentication (BASIC),
+    * [external tools](#external-tools) - you can run your program with article URL,
     * handles tons of messages & feeds,
     * ability to backup/restore database or settings,
     * fully-featured recycle bin,
     * multiple data backend support,
         * SQLite,
-        * MySQL.
-    * ability to specify target database by its name (MySQL backend),
+        * MariaDB.
+    * ability to specify target database by its name (MariaDB backend),
     * support for `feed://` URI scheme.
 * user interface:
     * message list filter with regular expressions,
-    * drag-n-drop for feed list,
     * able to show unread feeds/messages only,
     * can be controlled via keyboard,
     * fully adjustable toolbars (changeable buttons and style),
@@ -147,8 +154,17 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * tabbed interface,
     * ability to hide list of feeds/categories,
     * desktop integration via tray icon,
-    * localizations to some languages,
+    * localizations to many languages,
     * ability to tweak columns in displayed list of messages.
+
+## Core concepts
+RSS Guard is multi-protocol and multi-account application. If you start it for the first time, `Add account` dialog will pop-up.
+
+<img src="images/add-acc.png">
+
+You can also display this dialog from main menu `Accounts -> Add new account`.
+
+You must have added some account to start using RSS Guard. Each account provides access to some specific online service while `Standard online feeds` account is there to provide access to classic `RSS` and `ATOM` feeds. You can have activated many accounts in the same time and even multiple accounts of the same type, for example two distinct `Gmail` accounts.
 
 ## Database backends
 RSS Guard offers switchable database backends which hold your data. At this point, two backends are available:
@@ -166,7 +182,7 @@ MariaDB (MySQL) backend is there for users, who want to store their data in a ce
 For database-related configuration see `Settings -> Data storage` dialog.
 
 ## Google Reader API
-Starting with RSS Guard 3.9.0, there is a new plugin which offers synchronization with services using Google Reader API. Plugin was so far tested with FreshRSS, The Old Reader and Bazqux. All Google Reader API enabled services should work.
+Starting with RSS Guard 3.9.0, there is a new plugin which offers synchronization with services using Google Reader API. Plugin was so far tested with FreshRSS, Reedah, The Old Reader and Bazqux. All Google Reader API enabled services should work.
 
 Note that Inoreader has its own separate plugin, because it uses OAuth as authentication method, therefore it is cleaner to have separate plugin.
 
@@ -178,8 +194,59 @@ Note that even when all Google Reader API enabled services should follow the API
 
 For example The Old Reader does not seem to offer tags/labels functionality, therefore tags/labels in RSS Guard are not synchronized, but you can still use offline labels.
 
+## Websites scraping
+> **Only proceed if you consider yourself to be a power user and you know what you are doing!**
+
+RSS Guard 3.9.0+ offers extra advanced features which are inspired by [Liferea](https://lzone.de/liferea/).
+
+You can select source type of each feed. If you select `URL`, then RSS Guard simply downloads feed file from given location and behave like everyone would expect.
+
+However, if you choose `Script` option, then you cannot provide URL of your feed and you rely on custom script to generate feed file and provide its contents to **standard output**. Resulting data written to standard output should be valid feed file, for example RSS or ATOM XML file.
+
+`Fetch it now` button also works with `Script` option. Therefore, if your source script and (optional) post-process script in cooperation deliver a valid feed file to the output, then all important metadata, like title or icon of the feed, can be automagically discovered.
+
+<img src="images/scrape-source-type.png" width="50%">
+
+Any errors in your script must be written to **error output**.
+
+Note that you must provide full execution line to your custom script, including interpreter binary path and name and all that must be written in special format `<interpreter>#<argument1>#<argument2>#....`. The `#` character is there to separate interpreter and individual arguments. I had to select some character as separator because simply using space ` ` is not that easy as it might sound, because sometimes space could be a part of an argument sometimes argument separator etc.
+
+Used script must return `0` as process exit code if everything went well, or non-zero exit code if some error happened.
+
+Interpreter must be provided in all cases, arguments do not have to be. For example `bash#` is valid execution line, as well as `bash#-c#cat feed.atom`. Note the difference in interpreter's binary name suffix. Also be very carefully about arguments quoting. Some examples of valid and tested execution lines are:
+ 
+| Command | Explanation |
+|---------|-------------|
+| `bash#-c#curl https://github.com/martinrotter.atom` | Downloads ATOM feed file with Bash and Curl. |
+| `Powershell#Invoke-WebRequest 'https://github.com/martinrotter.atom' \| Select-Object -ExpandProperty Content` | Downloads ATOM feed file with Powershell. |
+| `php#tweeper.php#-v#0#https://twitter.com/NSACareers` | Scrape Twitter RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git). Tweeper is utility which is able to produce RSS feed from Twitter and other similar social platforms. |
+
+<img src="images/scrape-source.png" width="50%">
+
+Note that the above examples are cross-platform and you can use the exact same command on Windows, Linux or Mac OS X, if your operating system is properly configured.
+
+RSS Guard offers [placeholder](#data-placeholder) `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data), allowing you to make your configuration fully portable. You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
+
+Also, working directory of process executing the script is set to RSS Guard's user data folder.
+
+There are some examples of website scrapers [here](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers), most of the are written in Python 3, thus their execution line is `python#script.py`.
+
+After your source feed data are downloaded either via URL or custom script, you can optionally post-process the data with one more custom script, which will take **raw source data as input** and must produce processed valid feed data to **standard output** while printing all error messages to **error output**.
+
+Format of post-process script execution line is the same as above.
+
+<img src="images/scrape-post.png" width="50%">
+
+Typical post-processing filter might do things like advanced CSS formatting, localization of contents to another language or filtering of feed file entries or removing ads:
+
+| Command | Explanation |
+|---------|-------------|
+| `bash#-c#xmllint --format -` | Pretty-print input XML feed data. |
+
+It's completely up to you if you decide to only use script as `Source` of the script or separate your custom functionality between `Source` script and `Post-process` script. Sometimes you might need different `Source` scripts for different online sources and the same `Post-process` script and vice versa.
+
 ## Gmail
-RSS Guard includes Gmail plugin, which allows users to receive and send (!!!) e-mail messages. Plugin uses [Gmail API](https://developers.google.com/gmail/api) and offers some e-mail client-like features:
+RSS Guard includes Gmail plugin, which allows users to receive and send e-mail messages in a very simple fashion. Plugin uses [Gmail API](https://developers.google.com/gmail/api) and offers some e-mail client-like features:
 * Sending e-mail messages.
 
 <img src="images/gmail-new-email.png">
@@ -197,8 +264,8 @@ Sadly, some builds of RSS Guard do not have embedded production Feedly API keys 
 <img src="images/feedly-details.png">
 
 There are two big downsides of using `developer access token`:
-* It expires after one month and must be renewed.
-* It only allows maximum of 250 API calls per day.
+* It expires after one month and must be manually renewed.
+* It allows maximum of 250 API calls per day.
 
 ## Downloading files
 RSS Guard offers simple embedded file downloader.
@@ -211,10 +278,18 @@ You can right click on any item in embedded web browser and hit `Save as` button
 
 You can download up to 6 files simultaneously.
 
-## AdBlock
-[Web-based variant](#web-based-and-lite-app-variants) of RSS Guard offers ad-blocking functionality. AdBlock uses standard AdBlock-Plus-like scripts, thus allowing you to use EasyList etc. AdBlock supports all fundamental features of AdBlock-Plus format, including element hiding rules and site-wide blocking.
+## External tools
+RSS Guard allows you to define a set of custom tools which you can subsequently launch with article URL being passed as parameter to your tool's binary. The feature also supports passing direct links to various media source such as pictures or videos, when used with internal web browser's context menu.
 
-You can find its settings in `Web browser & tabs` section of main menu. AdBlock is of course available only in [WebEngine-based](#web-based-and-lite-app-variants) version of the app.
+<img src="images/ext-tools-message.png" width="80%">
+<img src="images/ext-tools-web.png" width="80%">
+
+## AdBlock
+[Web-based variant](#web-based-and-lite-app-variants) of RSS Guard offers ad-blocking functionality via [Adblocker](https://github.com/cliqz-oss/adblocker). Adblocker offers similar performance to [uBlock Origin](https://github.com/gorhill/uBlock).
+
+You need to have have [Node.js](https://nodejs.org) installed to have ad-blocking in RSS Guard working. Also, the implementation requires additional [npm](https://www.npmjs.com) modules to be installed, specifically: `@cliqz/adblocker`, `concat-stream`, `psl`, `node-fetch`.
+
+The way ad-blocking internally works is that RSS Guard starts local HTTP browser which provides API determine which elements of website should (or should not) be blocked. RSS Guard then asks the server about each file to be downloaded.
 
 ## GUI tweaking
 RSS Guard's GUI is very customizable. You can, for example, hide many GUI elements. There are even people who use RSS Guard on mobile devices powered by Linux like PinePhone or Librem devices.
@@ -231,14 +306,14 @@ Many people have very widescreen monitors nowadays and RSS Guard offers you hori
 
 <img src="images/gui-layout-orientation.png" width="80%">
 
-# Miscellaneous
-Here you can find some useful insights into RSS Guard's modus operandi.
+# Miscellaneous (for advanced users)
+Here you can find some useful advanced insights into RSS Guard's modus operandi.
 
 ## CLI
 RSS Guard offers CLI (command line interface). For overview of its features, run `rssguard --help` in your terminal. You will see the overview of the interface.
 
 ```
-RSS Guard
+rssguard.exe [options] [url-1 ... url-n]
 
 Options:
   -l, --log <log-file>           Write application debug log to file. Note that
@@ -247,13 +322,31 @@ Options:
                                  single instance application mode.
   -s, --no-single-instance       Allow running of multiple application
                                  instances.
+  -n, --no-debug-output          Completely disable stdout/stderr outputs.
   -?, -h, --help                 Displays help on commandline options.
   --help-all                     Displays help including Qt specific options.
   -v, --version                  Displays version information.
+
+Arguments:
+  urls                           List of URL addresses pointing to individual
+                                 online feeds which should be added.
 ```
 
-## OS/2
-RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to make sure that your OS/2 distro is up-to-date and you have all dependencies installed:
+RSS Guard can add feeds passed as URLs via command line arguments. Feed URI [scheme](https://en.wikipedia.org/wiki/Feed_URI_scheme) is supported, so that you can call RSS Guard like this:
+
+```
+rssguard.exe "feed://archlinux.org/feeds/news"
+rssguard.exe "feed:https//archlinux.org/feeds/news"
+rssguard.exe "https://archlinux.org/feeds/news"
+```
+
+So in order to comfortably add feed directly to RSS Guard from you browser without copying its URL manually, you have to "open" RSS Guard "with" feed URL passed as parameter. There are [extensions](https://addons.mozilla.org/en-GB/firefox/addon/open-with/) which can do it.
+
+## How to build
+RSS Guard is C++ application and all common build instructions can be found in top of [project file](https://github.com/martinrotter/rssguard/blob/master/build.pro).
+
+### OS/2-specifics
+RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to make sure that your OS/2 distribution is up-to-date and you have all dependencies installed:
 * `os2-base`,
 * all `gcc-*` packages,
 * `libc` and `libcx` up-to-date,
@@ -262,12 +355,20 @@ RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to
 * `binutils`,
 * all relevant `qt5-*` packages.
 
+Make sure you really have all development dependencies installed as OS/2 is known to thro erratic errors if you miss some important compile-time dependency.
+
 After your dependecies are installed, then you can compile via standard `qmake -> make -> make install` steps and package with
 
 ```
 7z.exe a -t7z -mmt -mx9 "rssguard.7z" "<build-folder\src\rssguard\app\*"
 ```
+
 command.
+
+## `%data%` placeholder
+RSS Guard stores its data and settings in single folder. What exact folder it is is described [here](#portable-user-data). RSS Guard allows you to use the folder programmatically in some special contexts via `%data%` placeholder. You can use this placeholder in these RSS Guard contexts:
+* Contents of your [message filters](Message-filters.md) - you can therefore place some scripts under your user data folder and include it via `JavaScript` into your message filter.
+* `source` and `post-process script` attributes of for [scraping](#websites-scraping) feed - you can use the placeholder to load scripts to generate/process feed from user data folder.
 
 ## Cleaning database
 Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with tens of thousands of messages.
@@ -277,11 +378,11 @@ Your RSS Guard's database can grow really big over time, therefore you might nee
 ## Portable user data
 RSS Guard checks "config directory" (this is `C:\Users\<user>\AppData\Local` directory on Windows) for existence of file:
 ```
-RSS Guard\data\config\config.ini
+RSS Guard 4\data\config\config.ini
 ```
 If that file exists, then RSS Guard will use the file (this is called _non-portable **FALLBACK** settings_). If this file is not found, then application will check if its root path (folder, in which RSS Guard executable is installed) is writable, and if it is, it will store settings in it, in subfolder:
 ```
-data\config\config.ini
+data4\config\config.ini
 ```
 This is _fully-portable mode_. Check `About RSS Guard -> Resources` dialog to find more info on significant paths used.
 
@@ -291,11 +392,12 @@ RSS Guard on Linux, Android or Mac OS automatically uses non-portable user data 
 Here is the rough workflow which is performed when you hit `Feeds & categories -> Update all items` or `Feeds & categories -> Update selected items`. At that point of time this happens:
 1. RSS Guard creates a list of all/selected feeds.
 2. Sequentially, for each feed do:
-    * a. Download all available messages from online source.
-    * b. Sequentially, for each downloaded message, do:
+    * a. Download all available messages from online source or generate it with script.
+    * b. Post-process messages with post-process script, if configured.
+    * c. Sequentially, for each downloaded message, do:
         * 1. Sanitize title of the message. This includes replacing all non-breaking spaces with normal spaces, removing all leading spaces, replacing all multiple consecutive spaces with single space. Contents of message are converted from [percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding).
         * 2. Run all [message filters](#message-filtering), one by one, one the message. Cache read/important message attributes (or labels changes) changed by filters to queue which is later synchronized back to online feed service.
-        * 3. Store the message into RSS Guard's database, creating completely new DB entry for it, or replacing existing message. **Note that two messages are considered as the same message if they have identical URL, author and title and they belong to the same feed.** This does not stand for synchronized feeds (TT-RSS, Inoreader and others) where each message has assigned special ID which identifies the message uniquely.
+        * 3. Store the message into RSS Guard's [database](#database-backends), creating completely new DB entry for it, or replacing existing message. **Note that two messages are considered as the same message if they have identical URL, author and title and they belong to the same feed.** This does not stand for synchronized feeds (TT-RSS, Inoreader and others) where each message has assigned special ID which identifies the message uniquely.
 
 ## Generating debug log file
 If you run into problems with RSS Guard and you need your problems fixed, you should provide log file from the time when problem occurred. RSS Guard writes all important information to standard output, which is usually calling terminal.

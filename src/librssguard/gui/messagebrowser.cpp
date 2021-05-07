@@ -4,7 +4,7 @@
 
 #include "gui/messagebox.h"
 #include "gui/messagetextbrowser.h"
-#include "gui/searchtextwidget.h"
+#include "gui/reusable/searchtextwidget.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "network-web/webfactory.h"
@@ -61,16 +61,16 @@ MessageBrowser::MessageBrowser(bool should_resize_to_fit, QWidget* parent)
         box.setInformativeText(tr("What action do you want to take?"));
         box.setDetailedText(url.toString());
 
-        QAbstractButton* btn_open = box.addButton(tr("Open in external browser"), QMessageBox::ActionRole);
-        QAbstractButton* btn_download = box.addButton(tr("Download"), QMessageBox::ActionRole);
-        QAbstractButton* btn_cancel = box.addButton(QMessageBox::Cancel);
+        QAbstractButton* btn_open = box.addButton(tr("Open in external browser"), QMessageBox::ButtonRole::ActionRole);
+        QAbstractButton* btn_download = box.addButton(tr("Download"), QMessageBox::ButtonRole::ActionRole);
+        QAbstractButton* btn_cancel = box.addButton(QMessageBox::StandardButton::Cancel);
         bool always;
         MessageBox::setCheckBox(&box, tr("Always open links in external browser."), &always);
 
-        box.setDefaultButton(QMessageBox::Cancel);
+        box.setDefaultButton(QMessageBox::StandardButton::Cancel);
         box.exec();
 
-        if (box.clickedButton() != box.button(QMessageBox::Cancel)) {
+        if (box.clickedButton() != box.button(QMessageBox::StandardButton::Cancel)) {
           // Store selected checkbox value.
           qApp->settings()->setValue(GROUP(Browser), Browser::OpenLinksInExternalBrowserRightAway, always);
         }
@@ -100,6 +100,8 @@ MessageBrowser::MessageBrowser(bool should_resize_to_fit, QWidget* parent)
 
   m_searchWidget->hide();
   installEventFilter(this);
+
+  reloadFontSettings();
 }
 
 void MessageBrowser::clear() {
@@ -151,12 +153,19 @@ QString MessageBrowser::prepareHtmlForMessage(const Message& message) {
   }
 
   html += pictures_html;
-  html = html
+
+  /*html = html
          .replace(QSL("\r\n"), QSL("\n"))
          .replace(QL1C('\r'), QL1C('\n'))
-         .remove(QL1C('\n'));
+         .remove(QL1C('\n'));*/
 
-  return html;
+  return QSL("<html>"
+             "<head><style>"
+             "a { color: %2; }"
+             "</style></head>"
+             "<body>%1</body>"
+             "</html>").arg(html,
+                            qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight].name());
 }
 
 bool MessageBrowser::eventFilter(QObject* watched, QEvent* event) {
@@ -192,8 +201,10 @@ void MessageBrowser::reloadFontSettings() {
 void MessageBrowser::loadMessage(const Message& message, RootItem* root) {
   Q_UNUSED(root)
 
-  m_txtBrowser->setHtml(prepareHtmlForMessage(message));
-  m_txtBrowser->verticalScrollBar()->triggerAction(QScrollBar::SliderToMinimum);
+  auto html = prepareHtmlForMessage(message);
+
+  m_txtBrowser->setHtml(html);
+  m_txtBrowser->verticalScrollBar()->triggerAction(QScrollBar::SliderAction::SliderToMinimum);
   m_searchWidget->hide();
 }
 

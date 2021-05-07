@@ -2,19 +2,18 @@
 
 #include "services/gmail/gmailserviceroot.h"
 
+#include "database/databasequeries.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
 #include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailentrypoint.h"
-#include "services/gmail/gmailfeed.h"
+#include "services/gmail/gmailnetworkfactory.h"
 #include "services/gmail/gui/formaddeditemail.h"
 #include "services/gmail/gui/formdownloadattachment.h"
 #include "services/gmail/gui/formeditgmailaccount.h"
-#include "services/gmail/network/gmailnetworkfactory.h"
 
 #include <QFileDialog>
 
@@ -34,14 +33,14 @@ void GmailServiceRoot::replyToEmail() {
 
 RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
   auto* root = new RootItem();
-  GmailFeed* inbox = new GmailFeed(tr("Inbox"), QSL(GMAIL_SYSTEM_LABEL_INBOX), qApp->icons()->fromTheme(QSL("mail-inbox")), root);
+  Feed* inbox = new Feed(tr("Inbox"), QSL(GMAIL_SYSTEM_LABEL_INBOX), qApp->icons()->fromTheme(QSL("mail-inbox")), root);
 
   inbox->setKeepOnTop(true);
 
   root->appendChild(inbox);
-  root->appendChild(new GmailFeed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root));
-  root->appendChild(new GmailFeed(tr("Drafts"), QSL(GMAIL_SYSTEM_LABEL_DRAFT), qApp->icons()->fromTheme(QSL("gtk-edit")), root));
-  root->appendChild(new GmailFeed(tr("Spam"), QSL(GMAIL_SYSTEM_LABEL_SPAM), qApp->icons()->fromTheme(QSL("mail-mark-junk")), root));
+  root->appendChild(new Feed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root));
+  root->appendChild(new Feed(tr("Drafts"), QSL(GMAIL_SYSTEM_LABEL_DRAFT), qApp->icons()->fromTheme(QSL("gtk-edit")), root));
+  root->appendChild(new Feed(tr("Spam"), QSL(GMAIL_SYSTEM_LABEL_SPAM), qApp->icons()->fromTheme(QSL("mail-mark-junk")), root));
 
   return root;
 }
@@ -50,48 +49,45 @@ void GmailServiceRoot::writeNewEmail() {
   FormAddEditEmail(this, qApp->mainFormWidget()).execForAdd();
 }
 
-void GmailServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<GmailFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
+QVariantHash GmailServiceRoot::customDatabaseData() const {
+  QVariantHash data;
 
-  performInitialAssembly(categories, feeds, labels);
+  data["username"] = m_network->username();
+  data["batch_size"] = m_network->batchSize();
+  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
+  data["client_id"] = m_network->oauth()->clientId();
+  data["client_secret"] = m_network->oauth()->clientSecret();
+  data["refresh_token"] = m_network->oauth()->refreshToken();
+  data["redirect_uri"] = m_network->oauth()->redirectUrl();
 
-  for (RootItem* feed : childItems()) {
-    if (feed->customId() == QL1S("INBOX")) {
-      feed->setKeepOnTop(true);
-    }
-  }
+  return data;
 }
 
-void GmailServiceRoot::saveAccountDataToDatabase(bool creating_new) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+void GmailServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  m_network->setUsername(data["username"].toString());
+  m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
+  m_network->oauth()->setClientId(data["client_id"].toString());
+  m_network->oauth()->setClientSecret(data["client_secret"].toString());
+  m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
+  m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString());
+}
 
-  if (!creating_new) {
-    if (DatabaseQueries::overwriteGmailAccount(database, m_network->username(),
-                                               m_network->oauth()->clientId(),
-                                               m_network->oauth()->clientSecret(),
-                                               m_network->oauth()->redirectUrl(),
-                                               m_network->oauth()->refreshToken(),
-                                               m_network->batchSize(),
-                                               accountId())) {
-      updateTitle();
-      itemChanged(QList<RootItem*>() << this);
+QList<Message> GmailServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> messages;
+
+  for (Feed* feed : feeds) {
+    Feed::Status error = Feed::Status::Normal;
+
+    messages << network()->messages(feed->customId(), error, networkProxy());
+    feed->setStatus(error);
+
+    if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError || error == Feed::Status::ParsingError) {
+      *error_during_obtaining = true;
     }
   }
-  else {
-    if (DatabaseQueries::createGmailAccount(database,
-                                            accountId(),
-                                            m_network->username(),
-                                            m_network->oauth()->clientId(),
-                                            m_network->oauth()->clientSecret(),
-                                            m_network->oauth()->redirectUrl(),
-                                            m_network->oauth()->refreshToken(),
-                                            m_network->batchSize())) {
-      updateTitle();
-    }
-  }
+
+  return messages;
 }
 
 bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
@@ -166,17 +162,26 @@ bool GmailServiceRoot::supportsCategoryAdding() const {
 }
 
 void GmailServiceRoot::start(bool freshly_activated) {
-  Q_UNUSED(freshly_activated)
+  if (!freshly_activated) {
+    DatabaseQueries::loadFromDatabase<Category, Feed>(this);
+    loadCacheFromFile();
+  }
 
-  loadFromDatabase();
-  loadCacheFromFile();
+  updateTitle();
 
-  if (childCount() <= 3) {
+  if (getSubTreeFeeds().isEmpty()) {
     syncIn();
   }
-  else {
-    m_network->oauth()->login();
+
+  auto chi = childItems();
+
+  for (RootItem* feed : qAsConst(chi)) {
+    if (feed->customId() == QL1S("INBOX")) {
+      feed->setKeepOnTop(true);
+    }
   }
+
+  m_network->oauth()->login();
 }
 
 QString GmailServiceRoot::code() const {
@@ -185,7 +190,9 @@ QString GmailServiceRoot::code() const {
 
 QString GmailServiceRoot::additionalTooltip() const {
   return tr("Authentication status: %1\n"
-            "Login tokens expiration: %2").arg(network()->oauth()->isFullyLoggedIn() ? tr("logged-in") : tr("NOT logged-in"),
+            "Login tokens expiration: %2").arg(network()->oauth()->isFullyLoggedIn()
+                                               ? tr("logged-in")
+                                               : tr("NOT logged-in"),
                                                network()->oauth()->tokensExpireIn().isValid() ?
                                                network()->oauth()->tokensExpireIn().toString() : QSL("-"));
 }
@@ -230,20 +237,5 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
         addMessageStatesToCache(messages, key);
       }
     }
-  }
-}
-
-bool GmailServiceRoot::canBeDeleted() const {
-  return true;
-}
-
-bool GmailServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (DatabaseQueries::deleteGmailAccount(database, accountId())) {
-    return ServiceRoot::deleteViaGui();
-  }
-  else {
-    return false;
   }
 }

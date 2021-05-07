@@ -4,12 +4,12 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/inoreader/definitions.h"
 #include "services/inoreader/gui/formeditinoreaderaccount.h"
+#include "services/inoreader/inoreadernetworkfactory.h"
 #include "services/inoreader/inoreaderserviceroot.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
 
 #include <QMessageBox>
 
@@ -20,9 +20,9 @@ ServiceRoot* InoreaderEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> InoreaderEntryPoint::initializeSubtree() const {
-  QSqlDatabase database = qApp->database()->connection(QSL("InoreaderEntryPoint"));
+  QSqlDatabase database = qApp->database()->driver()->connection(QSL("InoreaderEntryPoint"));
 
-  return DatabaseQueries::getInoreaderAccounts(database);
+  return DatabaseQueries::getAccounts<InoreaderServiceRoot>(database, code());
 }
 
 QString InoreaderEntryPoint::name() const {

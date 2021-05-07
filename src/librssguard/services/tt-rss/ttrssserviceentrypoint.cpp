@@ -3,7 +3,7 @@
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
 #include "definitions/definitions.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/formeditttrssaccount.h"
@@ -40,7 +40,7 @@ ServiceRoot* TtRssServiceEntryPoint::createNewRoot() const {
 
 QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() const {
   // Check DB if standard account is enabled.
-  QSqlDatabase database = qApp->database()->connection(QSL("TtRssServiceEntryPoint"));
+  QSqlDatabase database = qApp->database()->driver()->connection(QSL("TtRssServiceEntryPoint"));
 
-  return DatabaseQueries::getTtRssAccounts(database);
+  return DatabaseQueries::getAccounts<TtRssServiceRoot>(database, code());
 }

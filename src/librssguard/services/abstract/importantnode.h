@@ -10,14 +10,13 @@ class ImportantNode : public RootItem {
 
   public:
     explicit ImportantNode(RootItem* parent_item = nullptr);
-    virtual ~ImportantNode() = default;
 
-    QList<Message> undeletedMessages() const;
-    bool cleanMessages(bool clean_read_only);
-    void updateCounts(bool including_total_count);
-    bool markAsReadUnread(ReadStatus status);
-    int countOfUnreadMessages() const;
-    int countOfAllMessages() const;
+    virtual QList<Message> undeletedMessages() const;
+    virtual bool cleanMessages(bool clean_read_only);
+    virtual void updateCounts(bool including_total_count);
+    virtual bool markAsReadUnread(ReadStatus status);
+    virtual int countOfUnreadMessages() const;
+    virtual int countOfAllMessages() const;
 
   private:
     int m_totalCount{};

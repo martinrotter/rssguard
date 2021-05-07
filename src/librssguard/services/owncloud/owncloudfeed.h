@@ -12,16 +12,13 @@ class OwnCloudFeed : public Feed {
 
   public:
     explicit OwnCloudFeed(RootItem* parent = nullptr);
-    explicit OwnCloudFeed(const QSqlRecord& record);
-    virtual ~OwnCloudFeed();
 
-    bool canBeDeleted() const;
-    bool deleteViaGui();
+    virtual bool canBeDeleted() const;
+    virtual bool deleteViaGui();
 
+  private:
     bool removeItself();
-
     OwnCloudServiceRoot* serviceRoot() const;
-    QList<Message> obtainNewMessages(bool* error_during_obtaining);
 };
 
 #endif // OWNCLOUDFEED_H

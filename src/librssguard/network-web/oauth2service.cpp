@@ -47,13 +47,15 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
                              const QString& client_secret, const QString& scope, QObject* parent)
   : QObject(parent),
   m_id(QString::number(QRandomGenerator::global()->generate())), m_timerId(-1),
-  m_redirectionHandler(new OAuthHttpHandler(tr("You can close this window now. Go back to %1.").arg(APP_NAME), this)) {
+  m_redirectionHandler(new OAuthHttpHandler(tr("You can close this window now. Go back to %1.").arg(APP_NAME), this)),
+  m_functorOnLogin(std::function<void()>()) {
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(token_url);
   m_authUrl = auth_url;
 
   m_clientId = client_id;
   m_clientSecret = client_secret;
+  m_clientSecretId = m_clientSecretSecret = QString();
   m_scope = scope;
 
   connect(&m_networkManager, &QNetworkAccessManager::finished, this, &OAuth2Service::tokenRequestFinished);
@@ -127,6 +129,22 @@ void OAuth2Service::timerEvent(QTimerEvent* event) {
   QObject::timerEvent(event);
 }
 
+QString OAuth2Service::clientSecretSecret() const {
+  return m_clientSecretSecret;
+}
+
+void OAuth2Service::setClientSecretSecret(const QString& client_secret_secret) {
+  m_clientSecretSecret = client_secret_secret;
+}
+
+QString OAuth2Service::clientSecretId() const {
+  return m_clientSecretId;
+}
+
+void OAuth2Service::setClientSecretId(const QString& client_secret_id) {
+  m_clientSecretId = client_secret_id;
+}
+
 QString OAuth2Service::id() const {
   return m_id;
 }
@@ -139,14 +157,16 @@ void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
   QNetworkRequest networkRequest;
 
   networkRequest.setUrl(m_tokenUrl);
-  networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+  networkRequest.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, "application/x-www-form-urlencoded");
 
   QString content = QString("client_id=%1&"
                             "client_secret=%2&"
                             "code=%3&"
                             "redirect_uri=%5&"
-                            "grant_type=%4").arg(m_clientId, m_clientSecret,
-                                                 auth_code, m_tokenGrantType,
+                            "grant_type=%4").arg(properClientId(),
+                                                 properClientSecret(),
+                                                 auth_code,
+                                                 m_tokenGrantType,
                                                  m_redirectionHandler->listenAddressPort());
 
   qDebugNN << LOGSEC_OAUTH << "Posting data for access token retrieval:" << QUOTE_W_SPACE_DOT(content);
@@ -158,12 +178,15 @@ void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
   QNetworkRequest networkRequest;
 
   networkRequest.setUrl(m_tokenUrl);
-  networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+  networkRequest.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, "application/x-www-form-urlencoded");
 
   QString content = QString("client_id=%1&"
                             "client_secret=%2&"
                             "refresh_token=%3&"
-                            "grant_type=%4").arg(m_clientId, m_clientSecret, real_refresh_token, QSL("refresh_token"));
+                            "grant_type=%4").arg(properClientId(),
+                                                 properClientSecret(),
+                                                 real_refresh_token,
+                                                 QSL("refresh_token"));
 
   qApp->showGuiMessage(tr("Logging in via OAuth 2.0..."),
                        tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
@@ -207,10 +230,26 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
              << "Obtained refresh token" << QUOTE_W_SPACE(refreshToken())
              << "- expires on date/time" << QUOTE_W_SPACE_DOT(tokensExpireIn());
 
+    if (m_functorOnLogin != nullptr) {
+      m_functorOnLogin();
+    }
+
     emit tokensRetrieved(accessToken(), refreshToken(), expires);
   }
 
   network_reply->deleteLater();
+}
+
+QString OAuth2Service::properClientId() const {
+  return m_clientId.simplified().isEmpty()
+      ? m_clientSecretId
+      : m_clientId;
+}
+
+QString OAuth2Service::properClientSecret() const {
+  return m_clientSecret.simplified().isEmpty()
+      ? m_clientSecretSecret
+      : m_clientSecret;
 }
 
 QString OAuth2Service::accessToken() const {
@@ -263,7 +302,9 @@ void OAuth2Service::setRefreshToken(const QString& refresh_token) {
   startRefreshTimer();
 }
 
-bool OAuth2Service::login() {
+bool OAuth2Service::login(const std::function<void()>& functor_when_logged_in) {
+  m_functorOnLogin = functor_when_logged_in;
+
   if (!m_redirectionHandler->isListening()) {
     qCriticalNN << LOGSEC_OAUTH
                 << "Cannot log-in because OAuth redirection handler is not listening.";
@@ -291,6 +332,7 @@ bool OAuth2Service::login() {
     return false;
   }
   else {
+    functor_when_logged_in();
     return true;
   }
 }
@@ -326,7 +368,7 @@ void OAuth2Service::retrieveAuthCode() {
                                          "response_type=code&"
                                          "state=%4&"
                                          "prompt=consent&"
-                                         "access_type=offline").arg(m_clientId,
+                                         "access_type=offline").arg(properClientId(),
                                                                     m_scope,
                                                                     m_redirectionHandler->listenAddressPort(),
                                                                     m_id);

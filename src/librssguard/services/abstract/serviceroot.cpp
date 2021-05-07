@@ -5,8 +5,9 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "core/feedsmodel.h"
 #include "core/messagesmodel.h"
+#include "database/databasequeries.h"
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
@@ -15,18 +16,20 @@
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
+#include "services/abstract/unreadnode.h"
 
 ServiceRoot::ServiceRoot(RootItem* parent)
   : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
-  m_labelsNode(new LabelsNode(this)), m_accountId(NO_PARENT_CATEGORY) {
+  m_labelsNode(new LabelsNode(this)), m_unreadNode(new UnreadNode(this)),
+  m_accountId(NO_PARENT_CATEGORY), m_networkProxy(QNetworkProxy()) {
   setKind(RootItem::Kind::ServiceRoot);
-  setCreationDate(QDateTime::currentDateTime());
+  appendCommonNodes();
 }
 
 ServiceRoot::~ServiceRoot() = default;
 
 bool ServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::deleteAccount(database, accountId())) {
     stop();
@@ -45,7 +48,7 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
     cache->addMessageStatesToCache(customIDSOfMessagesForItem(this), status);
   }
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::markAccountReadUnread(database, accountId(), status)) {
     updateCounts(false);
@@ -117,8 +120,9 @@ void ServiceRoot::stop() {}
 
 void ServiceRoot::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
+  auto str = getSubTree();
 
-  for (RootItem* child : getSubTree()) {
+  for (RootItem* child : qAsConst(str)) {
     if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }
@@ -133,7 +137,7 @@ void ServiceRoot::updateCounts(bool including_total_count) {
     return;
   }
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   bool ok;
   QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
 
@@ -155,6 +159,10 @@ void ServiceRoot::updateCounts(bool including_total_count) {
       }
     }
   }
+}
+
+bool ServiceRoot::canBeDeleted() const {
+  return true;
 }
 
 void ServiceRoot::completelyRemoveAllData() {
@@ -181,29 +189,52 @@ QIcon ServiceRoot::feedIconForMessage(const QString& feed_custom_id) const {
 }
 
 void ServiceRoot::removeOldAccountFromDatabase(bool including_messages) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::deleteAccountData(database, accountId(), including_messages);
 }
 
 void ServiceRoot::cleanAllItemsFromModel() {
-  for (RootItem* top_level_item : childItems()) {
+  auto chi = childItems();
+
+  for (RootItem* top_level_item : qAsConst(chi)) {
     if (top_level_item->kind() != RootItem::Kind::Bin &&
         top_level_item->kind() != RootItem::Kind::Important &&
+        top_level_item->kind() != RootItem::Kind::Unread &&
         top_level_item->kind() != RootItem::Kind::Labels) {
       requestItemRemoval(top_level_item);
     }
   }
 
   if (labelsNode() != nullptr) {
-    for (RootItem* lbl : labelsNode()->childItems()) {
+    auto lbl_chi = labelsNode()->childItems();
+
+    for (RootItem* lbl : qAsConst(lbl_chi)) {
       requestItemRemoval(lbl);
     }
   }
 }
 
+void ServiceRoot::appendCommonNodes() {
+  if (recycleBin() != nullptr && !childItems().contains(recycleBin())) {
+    appendChild(recycleBin());
+  }
+
+  if (importantNode() != nullptr && !childItems().contains(importantNode())) {
+    appendChild(importantNode());
+  }
+
+  if (unreadNode() != nullptr && !childItems().contains(unreadNode())) {
+    appendChild(unreadNode());
+  }
+
+  if (labelsNode() != nullptr && !childItems().contains(labelsNode())) {
+    appendChild(labelsNode());
+  }
+}
+
 bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::cleanFeeds(database, textualFeedIds(items), clean_read_only, accountId())) {
     getParentServiceRoot()->updateCounts(true);
@@ -217,29 +248,34 @@ bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
 }
 
 void ServiceRoot::storeNewFeedTree(RootItem* root) {
-  DatabaseQueries::storeAccountTree(qApp->database()->connection(metaObject()->className()), root, accountId());
+  try {
+    DatabaseQueries::storeAccountTree(qApp->database()->driver()->connection(metaObject()->className()), root, accountId());
+  }
+  catch (const ApplicationException& ex) {
+    qFatal("Cannot store account tree: '%s'.", qPrintable(ex.message()));
+  }
 }
 
 void ServiceRoot::removeLeftOverMessages() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::purgeLeftoverMessages(database, accountId());
 }
 
 void ServiceRoot::removeLeftOverMessageFilterAssignments() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::purgeLeftoverMessageFilterAssignments(database, accountId());
 }
 
 void ServiceRoot::removeLeftOverMessageLabelAssignments() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::purgeLeftoverLabelAssignments(database, accountId());
 }
 
 QList<Message> ServiceRoot::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesForAccount(database, accountId());
 }
@@ -254,6 +290,25 @@ bool ServiceRoot::supportsCategoryAdding() const {
 
 ServiceRoot::LabelOperation ServiceRoot::supportedLabelOperations() const {
   return LabelOperation::Adding | LabelOperation::Editing | LabelOperation::Deleting;
+}
+
+void ServiceRoot::saveAccountDataToDatabase() {
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+  try {
+    DatabaseQueries::createOverwriteAccount(database, this);
+  }
+  catch (const ApplicationException& ex) {
+    qFatal("Account was not saved into database: '%s'.", qPrintable(ex.message()));
+  }
+}
+
+QVariantHash ServiceRoot::customDatabaseData() const {
+  return {};
+}
+
+void ServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  Q_UNUSED(data)
 }
 
 void ServiceRoot::itemChanged(const QList<RootItem*>& items) {
@@ -291,10 +346,13 @@ void ServiceRoot::addNewCategory(RootItem* selected_item) {
 
 QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
   QMap<QString, QVariantMap> custom_data;
+  auto str = getSubTreeFeeds();
 
-  for (const Feed* feed : getSubTreeFeeds()) {
+  for (const Feed* feed : qAsConst(str)) {
     QVariantMap feed_custom_data;
 
+    // TODO: This could potentially call Feed::customDatabaseData() and append it
+    // to this map and also subsequently restore.
     feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInitialInterval());
     feed_custom_data.insert(QSL("auto_update_type"), int(feed->autoUpdateType()));
     feed_custom_data.insert(QSL("msg_filters"), QVariant::fromValue(feed->messageFilters()));
@@ -340,6 +398,10 @@ LabelsNode* ServiceRoot::labelsNode() const {
   return m_labelsNode;
 }
 
+UnreadNode* ServiceRoot::unreadNode() const {
+  return m_unreadNode;
+}
+
 void ServiceRoot::syncIn() {
   QIcon original_icon = icon();
 
@@ -365,7 +427,9 @@ void ServiceRoot::syncIn() {
     removeLeftOverMessageFilterAssignments();
     removeLeftOverMessageLabelAssignments();
 
-    for (RootItem* top_level_item : new_tree->childItems()) {
+    auto chi = new_tree->childItems();
+
+    for (RootItem* top_level_item : qAsConst(chi)) {
       if (top_level_item->kind() != Kind::Labels) {
         top_level_item->setParent(nullptr);
         requestItemReassignment(top_level_item, this);
@@ -373,7 +437,9 @@ void ServiceRoot::syncIn() {
       else {
         // It seems that some labels got synced-in.
         if (labelsNode() != nullptr) {
-          for (RootItem* new_lbl : top_level_item->childItems()) {
+          auto lbl_chi = top_level_item->childItems();
+
+          for (RootItem* new_lbl : qAsConst(lbl_chi)) {
             new_lbl->setParent(nullptr);
             requestItemReassignment(new_lbl, labelsNode());
           }
@@ -390,21 +456,15 @@ void ServiceRoot::syncIn() {
 
   setIcon(original_icon);
   itemChanged(getSubTree());
+  requestItemExpand(getSubTree(), true);
 }
 
-void ServiceRoot::performInitialAssembly(const Assignment& categories, const Assignment& feeds, const QList<Label*>& labels) {
-  // All data are now obtained, lets create the hierarchy.
+void ServiceRoot::performInitialAssembly(const Assignment& categories,
+                                         const Assignment& feeds,
+                                         const QList<Label*>& labels) {
   assembleCategories(categories);
   assembleFeeds(feeds);
-
-  // As the last item, add recycle bin, which is needed.
-  appendChild(recycleBin());
-  appendChild(importantNode());
-  appendChild(labelsNode());
-
   labelsNode()->loadLabels(labels);
-  requestItemExpand({ labelsNode() }, true);
-
   updateCounts(true);
 }
 
@@ -423,7 +483,9 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
     switch (item->kind()) {
       case RootItem::Kind::Labels:
       case RootItem::Kind::Category: {
-        for (RootItem* child : item->childItems()) {
+        auto chi = item->childItems();
+
+        for (RootItem* child : qAsConst(chi)) {
           list.append(customIDSOfMessagesForItem(child));
         }
 
@@ -431,37 +493,44 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
       }
 
       case RootItem::Kind::Label: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromLabel(database, item->toLabel());
         break;
       }
 
       case RootItem::Kind::ServiceRoot: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromAccount(database, accountId());
         break;
       }
 
       case RootItem::Kind::Bin: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromBin(database, accountId());
         break;
       }
 
       case RootItem::Kind::Feed: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->customId(), accountId());
         break;
       }
 
       case RootItem::Kind::Important: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfImportantMessages(database, accountId());
+        break;
+      }
+
+      case RootItem::Kind::Unread: {
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+        list = DatabaseQueries::customIdsOfUnreadMessages(database, accountId());
         break;
       }
 
@@ -475,7 +544,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
 }
 
 bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus read) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
     getParentServiceRoot()->updateCounts(false);
@@ -494,7 +563,7 @@ QStringList ServiceRoot::textualFeedUrls(const QList<Feed*>& feeds) const {
   stringy_urls.reserve(feeds.size());
 
   for (const Feed* feed : feeds) {
-    stringy_urls.append(!feed->url().isEmpty() ? feed->url() : QL1S("no-url"));
+    stringy_urls.append(!feed->source().isEmpty() ? feed->source() : QL1S("no-url"));
   }
 
   return stringy_urls;
@@ -555,6 +624,10 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     model->setFilter(QString("Messages.is_important = 1 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
                      .arg(QString::number(accountId())));
   }
+  else if (item->kind() == RootItem::Kind::Unread) {
+    model->setFilter(QString("Messages.is_read = 0 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
+                     .arg(QString::number(accountId())));
+  }
   else if (item->kind() == RootItem::Kind::Label) {
     // Show messages with particular label.
     model->setFilter(QString("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
@@ -566,6 +639,13 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     model->setFilter(QString("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
                              "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id) > 0")
                      .arg(QString::number(accountId())));
+  }
+  else if (item->kind() == RootItem::Kind::ServiceRoot) {
+    model->setFilter(
+      QString("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1").arg(
+        QString::number(accountId())));
+
+    qDebugNN << "Displaying messages from account:" << QUOTE_W_SPACE_DOT(accountId());
   }
   else {
     QList<Feed*> children = item->getSubTreeFeeds();
@@ -647,7 +727,7 @@ bool ServiceRoot::onAfterSwitchMessageImportance(RootItem* selected_item, const 
   Q_UNUSED(selected_item)
   Q_UNUSED(changes)
 
-  updateCounts(false);
+  updateCounts(true);
   itemChanged(getSubTree());
   return true;
 }

@@ -156,14 +156,4 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     QFont m_boldFont;
 };
 
-inline QVariant FeedsModel::data(const QModelIndex& index, int role) const {
-  switch (role) {
-    case Qt::FontRole:
-      return itemForIndex(index)->countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
-
-    default:
-      return itemForIndex(index)->data(index.column(), role);;
-  }
-}
-
 #endif // FEEDSMODEL_H

@@ -2,9 +2,9 @@
 
 #include "services/feedly/feedlyentrypoint.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/feedly/definitions.h"
 #include "services/feedly/feedlyserviceroot.h"
@@ -17,9 +17,9 @@ ServiceRoot* FeedlyEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> FeedlyEntryPoint::initializeSubtree() const {
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedlyEntryPoint"));
+  QSqlDatabase database = qApp->database()->driver()->connection(QSL("FeedlyEntryPoint"));
 
-  return DatabaseQueries::getFeedlyAccounts(database);
+  return DatabaseQueries::getAccounts<FeedlyServiceRoot>(database, code());
 }
 
 QString FeedlyEntryPoint::name() const {
@@ -31,7 +31,7 @@ QString FeedlyEntryPoint::code() const {
 }
 
 QString FeedlyEntryPoint::description() const {
-  return QObject::tr("Keep up with the topics and trends you care about, without the overwhelm. "
+  return QObject::tr("Keep up with the topics and trends you care about, without the overwhelm.\n\n"
                      "Feedly is a secure space where you can privately organize and research the "
                      "topics and trends that matter to you.");
 }

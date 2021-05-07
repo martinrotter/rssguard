@@ -6,6 +6,7 @@
 #include <QWebEngineView>
 
 #include "core/message.h"
+#include "miscellaneous/externaltool.h"
 #include "network-web/webpage.h"
 
 class RootItem;
@@ -38,6 +39,9 @@ class WebViewer : public QWebEngineView {
     virtual void wheelEvent(QWheelEvent* event);
     virtual bool event(QEvent* event);
     virtual bool eventFilter(QObject* object, QEvent* event);
+
+  private slots:
+    void openUrlWithExternalTool(ExternalTool tool, const QWebEngineContextMenuData& target);
 
   private:
     RootItem* m_root;

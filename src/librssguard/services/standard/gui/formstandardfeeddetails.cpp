@@ -2,48 +2,40 @@
 
 #include "services/standard/gui/formstandardfeeddetails.h"
 
+#include "database/databasequeries.h"
+#include "exceptions/applicationexception.h"
+#include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "network-web/cookiejar.h"
 #include "network-web/networkfactory.h"
+#include "network-web/webfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/gui/authenticationdetails.h"
 #include "services/abstract/serviceroot.h"
+#include "services/standard/definitions.h"
 #include "services/standard/gui/standardfeeddetails.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardserviceroot.h"
 
 #include <QFileDialog>
+#include <QNetworkCookie>
 #include <QTextCodec>
 
-FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root, QWidget* parent)
+FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root, RootItem* parent_to_select,
+                                                 const QString& url, QWidget* parent)
   : FormFeedDetails(service_root, parent), m_standardFeedDetails(new StandardFeedDetails(this)),
-  m_authDetails(new AuthenticationDetails(this)) {
+  m_authDetails(new AuthenticationDetails(this)), m_parentToSelect(parent_to_select), m_urlToProcess(url) {
   insertCustomTab(m_standardFeedDetails, tr("General"), 0);
   insertCustomTab(m_authDetails, tr("Network"), 2);
   activateTab(0);
 
   connect(m_standardFeedDetails->m_ui.m_btnFetchMetadata, &QPushButton::clicked, this, &FormStandardFeedDetails::guessFeed);
   connect(m_standardFeedDetails->m_actionFetchIcon, &QAction::triggered, this, &FormStandardFeedDetails::guessIconOnly);
-}
+  connect(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit(), &QLineEdit::textChanged,
+          this, &FormStandardFeedDetails::onTitleChanged);
 
-int FormStandardFeedDetails::addEditFeed(StandardFeed* input_feed, RootItem* parent_to_select, const QString& url) {
-  // Load categories.
-  m_standardFeedDetails->loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
-
-  if (input_feed == nullptr) {
-    // User is adding new feed.
-    setWindowTitle(tr("Add new feed"));
-
-    auto processed_url = qobject_cast<StandardServiceRoot*>(m_serviceRoot)->processFeedUrl(url);
-
-    m_standardFeedDetails->prepareForNewFeed(parent_to_select, processed_url);
-  }
-  else {
-    setEditableFeed(input_feed);
-  }
-
-  // Run the dialog.
-  return exec();
+  onTitleChanged(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text());
 }
 
 void FormStandardFeedDetails::guessFeed() {
@@ -62,70 +54,82 @@ void FormStandardFeedDetails::guessIconOnly() {
                                        m_authDetails->m_txtPassword->lineEdit()->text());
 }
 
+void FormStandardFeedDetails::onTitleChanged(const QString& title) {
+  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(!title.simplified().isEmpty());
+}
+
 void FormStandardFeedDetails::apply() {
+  FormFeedDetails::apply();
+
+  auto* std_feed = feed<StandardFeed>();
   RootItem* parent =
     static_cast<RootItem*>(m_standardFeedDetails->m_ui.m_cmbParentCategory->itemData(
                              m_standardFeedDetails->m_ui.m_cmbParentCategory->currentIndex()).value<void*>());
 
   StandardFeed::Type type =
     static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType->itemData(m_standardFeedDetails->m_ui.m_cmbType->currentIndex()).value<int>());
-  auto* new_feed = new StandardFeed();
 
   // Setup data for new_feed.
-  new_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text());
-  new_feed->setCreationDate(QDateTime::currentDateTime());
-  new_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
-  new_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());
-  new_feed->setEncoding(m_standardFeedDetails->m_ui.m_cmbEncoding->currentText());
-  new_feed->setType(type);
-  new_feed->setSourceType(m_standardFeedDetails->sourceType());
-  new_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
-  new_feed->setUrl(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
-  new_feed->setPasswordProtected(m_authDetails->m_gbAuthentication->isChecked());
-  new_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
-  new_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
-  new_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
-                                                                  m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
-  new_feed->setAutoUpdateInitialInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
+  std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text());
+  std_feed->setCreationDate(QDateTime::currentDateTime());
+  std_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
+  std_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());
 
-  if (m_editableFeed == nullptr) {
-    // Add the feed.
-    if (new_feed->addItself(parent)) {
-      m_serviceRoot->requestItemReassignment(new_feed, parent);
-      accept();
-    }
-    else {
-      delete new_feed;
-      qApp->showGuiMessage(tr("Cannot add feed"),
-                           tr("Feed was not added due to error."),
-                           QSystemTrayIcon::MessageIcon::Critical, this, true);
-    }
+  std_feed->setSource(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
+
+  std_feed->setEncoding(m_standardFeedDetails->m_ui.m_cmbEncoding->currentText());
+  std_feed->setType(type);
+  std_feed->setSourceType(m_standardFeedDetails->sourceType());
+  std_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
+  std_feed->setPasswordProtected(m_authDetails->m_gbAuthentication->isChecked());
+  std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
+  std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
+
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+  try {
+    DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), parent->id());
+
+    // Feed is added, save cookies.
+
+    /*if (std_feed->sourceType() == StandardFeed::SourceType::Url) {
+       auto cookies = qApp->web()->cookieJar()->extractCookiesFromUrl(std_feed->source());
+
+       if (!cookies.isEmpty()) {
+        qDebugNN << LOGSEC_NETWORK
+                 << "Detected some cookies in URL"
+                 << QUOTE_W_SPACE_DOT(std_feed->source());
+
+        qApp->web()->cookieJar()->insertCookies(cookies);
+       }
+       }*/
   }
-  else {
-    new_feed->setParent(parent);
-
-    // Edit the feed.
-    bool edited = qobject_cast<StandardFeed*>(m_editableFeed)->editItself(new_feed);
-
-    if (edited) {
-      m_serviceRoot->requestItemReassignment(m_editableFeed, new_feed->parent());
-      accept();
-    }
-    else {
-      qApp->showGuiMessage(tr("Cannot edit feed"),
-                           tr("Feed was not edited due to error."),
-                           QSystemTrayIcon::MessageIcon::Critical, this, true);
-    }
-
-    delete new_feed;
+  catch (const ApplicationException& ex) {
+    qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
   }
+
+  m_serviceRoot->requestItemReassignment(m_feed, parent);
+  m_serviceRoot->itemChanged({ m_feed });
 }
 
-void FormStandardFeedDetails::setEditableFeed(Feed* editable_feed) {
-  FormFeedDetails::setEditableFeed(editable_feed);
+void FormStandardFeedDetails::loadFeedData() {
+  FormFeedDetails::loadFeedData();
 
-  m_standardFeedDetails->setExistingFeed(qobject_cast<StandardFeed*>(editable_feed));
-  m_authDetails->m_gbAuthentication->setChecked(editable_feed->passwordProtected());
-  m_authDetails->m_txtUsername->lineEdit()->setText(editable_feed->username());
-  m_authDetails->m_txtPassword->lineEdit()->setText(editable_feed->password());
+  auto* std_feed = feed<StandardFeed>();
+
+  // Load categories.
+  m_standardFeedDetails->loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
+
+  m_authDetails->m_gbAuthentication->setChecked(std_feed->passwordProtected());
+  m_authDetails->m_txtUsername->lineEdit()->setText(std_feed->username());
+  m_authDetails->m_txtPassword->lineEdit()->setText(std_feed->password());
+
+  if (m_creatingNew) {
+    auto processed_url = qApp->web()->processFeedUriScheme(m_urlToProcess);
+
+    m_standardFeedDetails->prepareForNewFeed(m_parentToSelect, processed_url);
+  }
+  else {
+    m_standardFeedDetails->setExistingFeed(std_feed);
+  }
 }

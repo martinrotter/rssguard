@@ -3,10 +3,13 @@
 #include "services/greader/gui/greaderaccountdetails.h"
 
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/systemfactory.h"
 #include "services/greader/definitions.h"
 #include "services/greader/greadernetwork.h"
+
+#include <QVariantHash>
 
 GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
@@ -31,24 +34,17 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) 
                                       "than specified limit, then some older messages might not be "
                                       "downloaded during feed update."));
 
-  connect(m_ui.m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, [=](int value) {
-    if (value <= 0) {
-      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
-    }
-    else {
-      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("messages"));
-    }
-  });
-
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessages, true);
 
   connect(m_ui.m_checkShowPassword, &QCheckBox::toggled, this, &GreaderAccountDetails::displayPassword);
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onPasswordChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onUsernameChanged);
   connect(m_ui.m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onUrlChanged);
+  connect(m_ui.m_cmbService, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &GreaderAccountDetails::fillPredefinedUrl);
 
   setTabOrder(m_ui.m_cmbService, m_ui.m_txtUrl->lineEdit());
-  setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_cbDownloadOnlyUnreadMessages);
+  setTabOrder(m_ui.m_cbDownloadOnlyUnreadMessages, m_ui.m_spinLimitMessages);
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
   setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_checkShowPassword);
@@ -125,5 +121,26 @@ void GreaderAccountDetails::onUrlChanged() {
   }
   else {
     m_ui.m_txtUrl->setStatus(WidgetWithStatus::StatusType::Ok, tr("URL is okay."));
+  }
+}
+
+void GreaderAccountDetails::fillPredefinedUrl() {
+  switch (service()) {
+    case GreaderServiceRoot::Service::Reedah:
+      m_ui.m_txtUrl->lineEdit()->setText(QSL(GREADER_URL_REEDAH));
+      break;
+
+    case GreaderServiceRoot::Service::Bazqux:
+      m_ui.m_txtUrl->lineEdit()->setText(QSL(GREADER_URL_BAZQUX));
+      break;
+
+    case GreaderServiceRoot::Service::TheOldReader:
+      m_ui.m_txtUrl->lineEdit()->setText(QSL(GREADER_URL_TOR));
+      break;
+
+    default:
+      m_ui.m_txtUrl->lineEdit()->clear();
+      m_ui.m_txtUrl->setFocus();
+      break;
   }
 }

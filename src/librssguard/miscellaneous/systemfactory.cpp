@@ -46,7 +46,7 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
   // User registry way to auto-start the application on Windows.
 #if defined(Q_OS_WIN)
   QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"),
-                         QSettings::NativeFormat);
+                         QSettings::Format::NativeFormat);
   const bool autostart_enabled = registry_key.value(QSL(APP_LOW_NAME),
                                                     QString()).toString().replace(QL1C('\\'),
                                                                                   QL1C('/')) ==
@@ -177,7 +177,7 @@ bool SystemFactory::removeTrolltechJunkRegistryKeys() {
 
     registry_key.remove(QString());
     registry_key.sync();
-    return registry_key.status() == QSettings::NoError;
+    return registry_key.status() == QSettings::Status::NoError;
   }
   else {
     return false;
@@ -224,7 +224,7 @@ void SystemFactory::checkForUpdatesOnStartup() {
                      this, [&](QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> updates) {
       QObject::disconnect(qApp->system(), &SystemFactory::updatesChecked, this, nullptr);
 
-      if (!updates.first.isEmpty() && updates.second == QNetworkReply::NoError &&
+      if (!updates.first.isEmpty() && updates.second == QNetworkReply::NetworkError::NoError &&
           SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, APP_VERSION)) {
         qApp->showGuiMessage(QObject::tr("New version available"),
                              QObject::tr("Click the bubble for more information."),

@@ -50,7 +50,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     // after application restart.
     QString selectedSkinName() const;
 
-    QString adBlockedPage(const QString& subscription, const QString& rule);
+    QString adBlockedPage(const QString& url, const QString& filter);
 
     // Gets skin about a particular skin.
     Skin skinInfo(const QString& skin_name, bool* ok = nullptr) const;

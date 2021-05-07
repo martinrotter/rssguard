@@ -19,7 +19,8 @@ class GreaderNetwork : public QObject {
       SubscriptionList,
       StreamContents,
       EditTag,
-      Token
+      Token,
+      UserInfo
     };
 
     explicit GreaderNetwork(QObject* parent = nullptr);
@@ -34,6 +35,8 @@ class GreaderNetwork : public QObject {
     // Assign/deassign tags to/from message(s).
     QNetworkReply::NetworkError editLabels(const QString& state, bool assign,
                                            const QStringList& msg_custom_ids, const QNetworkProxy& proxy);
+
+    QVariantHash userInfo(const QNetworkProxy& proxy);
 
     // Stream contents for a feed/label/etc.
     QList<Message> streamContents(ServiceRoot* root, const QString& stream_id,
@@ -65,6 +68,9 @@ class GreaderNetwork : public QObject {
 
     static QString serviceToString(GreaderServiceRoot::Service service);
 
+    bool downloadOnlyUnreadMessages() const;
+    void setDownloadOnlyUnreadMessages(bool download_only_unread);
+
   private:
     QPair<QByteArray, QByteArray> authHeader() const;
 
@@ -83,6 +89,7 @@ class GreaderNetwork : public QObject {
     QString m_password;
     QString m_baseUrl;
     int m_batchSize;
+    bool m_downloadOnlyUnreadMessages;
     QString m_authSid;
     QString m_authAuth;
     QString m_authToken;

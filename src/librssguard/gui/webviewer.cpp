@@ -7,12 +7,14 @@
 #include "gui/tabwidget.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/externaltool.h"
 #include "miscellaneous/skinfactory.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
 #include "network-web/webpage.h"
 
+#include <QFileIconProvider>
 #include <QOpenGLWidget>
 #include <QTimer>
 #include <QWebEngineContextMenuData>
@@ -162,7 +164,7 @@ void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
 
   if (menu_data.linkUrl().isValid()) {
     // Add option to open link in external viewe
-    menu->addAction(qApp->icons()->fromTheme(QSL("")), tr("Open link in external browser"), [menu_data]() {
+    menu->addAction(qApp->icons()->fromTheme(QSL("document-open")), tr("Open link in external browser"), [menu_data]() {
       qApp->web()->openUrlInExternalBrowser(menu_data.linkUrl().toString());
 
       if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool()) {
@@ -171,6 +173,36 @@ void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
         });
       }
     });
+  }
+
+  if (menu_data.mediaUrl().isValid() || menu_data.linkUrl().isValid()) {
+    QFileIconProvider icon_provider;
+    QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), menu);
+    auto tools = ExternalTool::toolsFromSettings();
+
+    menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
+
+    for (const ExternalTool& tool : qAsConst(tools)) {
+      QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
+
+      act_tool->setIcon(icon_provider.icon(tool.executable()));
+      act_tool->setToolTip(tool.executable());
+      act_tool->setData(QVariant::fromValue(tool));
+      menu_ext_tools->addAction(act_tool);
+
+      connect(act_tool, &QAction::triggered, this, [this, act_tool, menu_data]() {
+        openUrlWithExternalTool(act_tool->data().value<ExternalTool>(), menu_data);
+      });
+    }
+
+    if (menu_ext_tools->actions().isEmpty()) {
+      QAction* act_not_tools = new QAction("No external tools activated");
+
+      act_not_tools->setEnabled(false);
+      menu_ext_tools->addAction(act_not_tools);
+    }
+
+    menu->addMenu(menu_ext_tools);
   }
 
   menu->addAction(qApp->web()->adBlock()->adBlockIcon());
@@ -231,6 +263,10 @@ bool WebViewer::eventFilter(QObject* object, QEvent* event) {
   }
 
   return false;
+}
+
+void WebViewer::openUrlWithExternalTool(ExternalTool tool, const QWebEngineContextMenuData& target) {
+  tool.run(target.mediaUrl().isValid() ? target.mediaUrl().toString() : target.linkUrl().toString());
 }
 
 RootItem* WebViewer::root() const {

@@ -4,7 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/gui/formeditowncloudaccount.h"
@@ -17,9 +17,9 @@ ServiceRoot* OwnCloudServiceEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> OwnCloudServiceEntryPoint::initializeSubtree() const {
-  QSqlDatabase database = qApp->database()->connection(QSL("OwnCloudServiceEntryPoint"));
+  QSqlDatabase database = qApp->database()->driver()->connection(QSL("OwnCloudServiceEntryPoint"));
 
-  return DatabaseQueries::getOwnCloudAccounts(database);
+  return DatabaseQueries::getAccounts<OwnCloudServiceRoot>(database, code());
 }
 
 QString OwnCloudServiceEntryPoint::name() const {

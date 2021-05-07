@@ -15,30 +15,27 @@ class InoreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     explicit InoreaderServiceRoot(RootItem* parent = nullptr);
     virtual ~InoreaderServiceRoot();
 
-    void saveAccountDataToDatabase(bool creating_new);
-
     InoreaderNetworkFactory* network() const;
 
     virtual LabelOperation supportedLabelOperations() const;
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
     virtual bool editViaGui();
-    virtual bool canBeDeleted() const;
-    virtual bool deleteViaGui();
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual void start(bool freshly_activated);
     virtual QString code() const;
     virtual QString additionalTooltip() const;
     virtual void saveAllCachedData(bool ignore_errors);
-
-    void updateTitle();
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
+    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining);
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
-    void loadFromDatabase();
+    void updateTitle();
 
   private:
     InoreaderNetworkFactory* m_network;

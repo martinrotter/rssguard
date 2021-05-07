@@ -9,11 +9,11 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "core/messagefilter.h"
 #include "core/messagesforfiltersmodel.h"
+#include "database/databasequeries.h"
 #include "exceptions/filteringexception.h"
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
@@ -52,6 +52,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_ISDELETED, QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_AUTHOR, QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_CREATED, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_SCORE, QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_TITLE, QHeaderView::ResizeMode::Interactive);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_URL, QHeaderView::ResizeMode::Interactive);
 
@@ -156,7 +157,9 @@ void FormMessageFiltersManager::removeSelectedFilter() {
 }
 
 void FormMessageFiltersManager::loadFilters() {
-  for (auto* fltr : m_reader->messageFilters()) {
+  auto flt = m_reader->messageFilters();
+
+  for (auto* fltr : qAsConst(flt)) {
     auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
 
     it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<MessageFilter*>(fltr));
@@ -215,7 +218,7 @@ void FormMessageFiltersManager::testFilter() {
   // Perform per-message filtering.
   auto* selected_fd_cat = selectedCategoryFeed();
   QJSEngine filter_engine;
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   MessageObject msg_obj(&database,
                         selected_fd_cat->kind() == RootItem::Kind::Feed
                         ? selected_fd_cat->customId()
@@ -291,7 +294,7 @@ void FormMessageFiltersManager::displayMessagesOfFeed() {
 void FormMessageFiltersManager::processCheckedFeeds() {
   QList<RootItem*> checked = m_feedsModel->sourceModel()->checkedItems();
   auto* fltr = selectedFilter();
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   for (RootItem* it : checked) {
     if (it->kind() == RootItem::Kind::Feed) {
@@ -343,7 +346,7 @@ void FormMessageFiltersManager::processCheckedFeeds() {
         }
 
         // Process changed labels.
-        for (Label* lbl : msg_backup.m_assignedLabels) {
+        for (Label* lbl : qAsConst(msg_backup.m_assignedLabels)) {
           if (!msg->m_assignedLabels.contains(lbl)) {
             // Label is not there anymore, it was deassigned.
             lbl->deassignFromMessage(*msg);
@@ -355,7 +358,7 @@ void FormMessageFiltersManager::processCheckedFeeds() {
           }
         }
 
-        for (Label* lbl : msg->m_assignedLabels) {
+        for (Label* lbl : qAsConst(msg->m_assignedLabels)) {
           if (!msg_backup.m_assignedLabels.contains(lbl)) {
             // Label is in new message, but is not in old message, it
             // was newly assigned.
@@ -427,8 +430,9 @@ void FormMessageFiltersManager::loadFilterFeedAssignments(MessageFilter* filter,
   }
 
   m_loadingFilter = true;
+  auto stf = account->getSubTreeFeeds();
 
-  for (auto* feed : account->getSubTreeFeeds()) {
+  for (auto* feed : qAsConst(stf)) {
     if (feed->messageFilters().contains(filter)) {
       m_feedsModel->sourceModel()->setItemChecked(feed, Qt::CheckState::Checked);
     }
@@ -502,10 +506,8 @@ void FormMessageFiltersManager::showFilter(MessageFilter* filter) {
 }
 
 void FormMessageFiltersManager::loadAccounts() {
-  for (auto* acc : m_accounts) {
-    m_ui.m_cmbAccounts->addItem(acc->icon(),
-                                acc->title(),
-                                QVariant::fromValue(acc));
+  for (auto* acc : qAsConst(m_accounts)) {
+    m_ui.m_cmbAccounts->addItem(acc->icon(), acc->title(), QVariant::fromValue(acc));
   }
 }
 
@@ -515,7 +517,7 @@ void FormMessageFiltersManager::beautifyScript() {
   proc_clang_format.setInputChannelMode(QProcess::InputChannelMode::ManagedInputChannel);
   proc_clang_format.setArguments({ "--assume-filename=script.js", "--style=Chromium" });
 
-#if defined (Q_OS_WIN)
+#if defined(Q_OS_WIN)
   proc_clang_format.setProgram(qApp->applicationDirPath() + QDir::separator() +
                                QSL("clang-format") + QDir::separator() +
                                QSL("clang-format.exe"));

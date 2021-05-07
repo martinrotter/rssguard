@@ -2,17 +2,17 @@
 
 #include "services/owncloud/owncloudserviceroot.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/owncloud/gui/formeditowncloudaccount.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudfeed.h"
+#include "services/owncloud/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem* parent)
@@ -32,26 +32,11 @@ bool OwnCloudServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool OwnCloudServiceRoot::canBeDeleted() const {
-  return true;
-}
-
 bool OwnCloudServiceRoot::editViaGui() {
   QScopedPointer<FormEditOwnCloudAccount> form_pointer(new FormEditOwnCloudAccount(qApp->mainFormWidget()));
 
   form_pointer->addEditAccount(this);
   return true;
-}
-
-bool OwnCloudServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (DatabaseQueries::deleteOwnCloudAccount(database, accountId())) {
-    return ServiceRoot::deleteViaGui();
-  }
-  else {
-    return false;
-  }
 }
 
 bool OwnCloudServiceRoot::supportsFeedAdding() const {
@@ -63,11 +48,14 @@ bool OwnCloudServiceRoot::supportsCategoryAdding() const {
 }
 
 void OwnCloudServiceRoot::start(bool freshly_activated) {
-  Q_UNUSED(freshly_activated)
-  loadFromDatabase();
-  loadCacheFromFile();
+  if (!freshly_activated) {
+    DatabaseQueries::loadFromDatabase<Category, OwnCloudFeed>(this);
+    loadCacheFromFile();
+  }
 
-  if (childCount() <= 3) {
+  updateTitle();
+
+  if (getSubTreeFeeds().isEmpty()) {
     syncIn();
   }
 }
@@ -128,29 +116,6 @@ void OwnCloudServiceRoot::updateTitle() {
   setTitle(m_network->authUsername() + QSL(" (Nextcloud News)"));
 }
 
-void OwnCloudServiceRoot::saveAccountDataToDatabase(bool creating_new) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (!creating_new) {
-    if (DatabaseQueries::overwriteOwnCloudAccount(database, m_network->authUsername(),
-                                                  m_network->authPassword(), m_network->url(),
-                                                  m_network->forceServerSideUpdate(), m_network->batchSize(),
-                                                  m_network->downloadOnlyUnreadMessages(), accountId())) {
-      updateTitle();
-      itemChanged(QList<RootItem*>() << this);
-    }
-  }
-  else {
-    if (DatabaseQueries::createOwnCloudAccount(database, accountId(), m_network->authUsername(),
-                                               m_network->authPassword(), m_network->url(),
-                                               m_network->forceServerSideUpdate(),
-                                               m_network->downloadOnlyUnreadMessages(),
-                                               m_network->batchSize())) {
-      updateTitle();
-    }
-  }
-}
-
 RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
   OwnCloudGetFeedsCategoriesResponse feed_cats_response = m_network->feedsCategories(networkProxy());
 
@@ -162,11 +127,43 @@ RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
   }
 }
 
-void OwnCloudServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<OwnCloudFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
+QVariantHash OwnCloudServiceRoot::customDatabaseData() const {
+  QVariantHash data;
 
-  performInitialAssembly(categories, feeds, labels);
+  data["auth_username"] = m_network->authUsername();
+  data["auth_password"] = TextFactory::encrypt(m_network->authPassword());
+  data["url"] = m_network->url();
+  data["force_update"] = m_network->forceServerSideUpdate();
+  data["batch_size"] = m_network->batchSize();
+  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
+
+  return data;
+}
+
+void OwnCloudServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  m_network->setAuthUsername(data["auth_username"].toString());
+  m_network->setAuthPassword(TextFactory::decrypt(data["auth_password"].toString()));
+  m_network->setUrl(data["url"].toString());
+  m_network->setForceServerSideUpdate(data["force_update"].toBool());
+  m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
+}
+
+QList<Message> OwnCloudServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> msgs;
+
+  for (Feed* feed : feeds) {
+    OwnCloudGetMessagesResponse messages = network()->getMessages(feed->customNumericId(), networkProxy());
+
+    if (messages.networkError() != QNetworkReply::NetworkError::NoError) {
+      feed->setStatus(Feed::Status::NetworkError);
+      *error_during_obtaining = true;
+    }
+    else {
+      *error_during_obtaining = false;
+      msgs << messages.messages();
+    }
+  }
+
+  return msgs;
 }

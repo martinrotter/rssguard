@@ -36,29 +36,24 @@ class Feed : public RootItem {
       OtherError = 5
     };
 
-    // Constructors.
     explicit Feed(RootItem* parent = nullptr);
-    explicit Feed(const QSqlRecord& record);
     explicit Feed(const Feed& other);
-    virtual ~Feed();
+    explicit Feed(const QString& title, const QString& custom_id, const QIcon& icon, RootItem* parent = nullptr);
 
     virtual QList<Message> undeletedMessages() const;
     virtual QString additionalTooltip() const;
     virtual bool markAsReadUnread(ReadStatus status);
     virtual bool cleanMessages(bool clean_read_only);
-    virtual QList<Message> obtainNewMessages(bool* error_during_obtaining);
     virtual int countOfAllMessages() const;
     virtual int countOfUnreadMessages() const;
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
+    virtual bool canBeEdited() const;
+    virtual bool editViaGui();
+    virtual QVariant data(int column, int role) const;
 
     void setCountOfAllMessages(int count_all_messages);
     void setCountOfUnreadMessages(int count_unread_messages);
-
-    bool canBeEdited() const;
-    bool editViaGui();
-
-    bool editItself(Feed* new_feed_data);
-
-    QVariant data(int column, int role) const;
 
     int autoUpdateInitialInterval() const;
     void setAutoUpdateInitialInterval(int auto_update_interval);
@@ -72,17 +67,8 @@ class Feed : public RootItem {
     Status status() const;
     void setStatus(const Status& status);
 
-    QString url() const;
-    void setUrl(const QString& url);
-
-    bool passwordProtected() const;
-    void setPasswordProtected(bool passwordProtected);
-
-    QString username() const;
-    void setUsername(const QString& username);
-
-    QString password() const;
-    void setPassword(const QString& password);
+    QString source() const;
+    void setSource(const QString& source);
 
     void appendMessageFilter(MessageFilter* filter);
     QList<QPointer<MessageFilter>> messageFilters() const;
@@ -99,7 +85,7 @@ class Feed : public RootItem {
     QString getStatusDescription() const;
 
   private:
-    QString m_url;
+    QString m_source;
     Status m_status;
     AutoUpdateType m_autoUpdateType;
     int m_autoUpdateInitialInterval{};
@@ -107,9 +93,6 @@ class Feed : public RootItem {
     int m_totalCount{};
     int m_unreadCount{};
     QList<QPointer<MessageFilter>> m_messageFilters;
-    bool m_passwordProtected{};
-    QString m_username;
-    QString m_password;
 };
 
 Q_DECLARE_METATYPE(Feed::AutoUpdateType)

@@ -11,7 +11,6 @@
 #include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QPair>
-#include <QSqlRecord>
 
 class StandardServiceRoot;
 
@@ -19,6 +18,8 @@ class StandardServiceRoot;
 // NOTE: This class should be derived to create PARTICULAR feed types.
 class StandardFeed : public Feed {
   Q_OBJECT
+
+  friend class StandardCategory;
 
   public:
     enum class SourceType {
@@ -35,38 +36,25 @@ class StandardFeed : public Feed {
       Json = 4
     };
 
-    // Constructors and destructors.
     explicit StandardFeed(RootItem* parent_item = nullptr);
     explicit StandardFeed(const StandardFeed& other);
-    explicit StandardFeed(const QSqlRecord& record);
-    virtual ~StandardFeed();
 
-    StandardServiceRoot* serviceRoot() const;
-
-    QList<QAction*> contextMenuFeedsList();
-
-    QString additionalTooltip() const;
-
-    bool canBeEdited() const;
-    bool canBeDeleted() const;
-
-    bool editViaGui();
-    bool deleteViaGui();
-
-    // Obtains data related to this feed.
-    Qt::ItemFlags additionalFlags() const;
-    bool performDragDropChange(RootItem* target_item);
-
-    bool addItself(RootItem* parent);
-    bool editItself(StandardFeed* new_feed_data);
-    bool removeItself();
+    virtual QList<QAction*> contextMenuFeedsList();
+    virtual QString additionalTooltip() const;
+    virtual bool canBeDeleted() const;
+    virtual bool deleteViaGui();
+    virtual bool editViaGui();
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
+    virtual Qt::ItemFlags additionalFlags() const;
+    virtual bool performDragDropChange(RootItem* target_item);
 
     // Other getters/setters.
     Type type() const;
     void setType(Type type);
 
     SourceType sourceType() const;
-    void setSourceType(const SourceType& source_type);
+    void setSourceType(SourceType source_type);
 
     QString encoding() const;
     void setEncoding(const QString& encoding);
@@ -74,23 +62,26 @@ class StandardFeed : public Feed {
     QString postProcessScript() const;
     void setPostProcessScript(const QString& post_process_script);
 
+    bool passwordProtected() const;
+    void setPasswordProtected(bool passwordProtected);
+
+    QString username() const;
+    void setUsername(const QString& username);
+
+    QString password() const;
+    void setPassword(const QString& password);
+
     QNetworkReply::NetworkError networkError() const;
-
-    QList<Message> obtainNewMessages(bool* error_during_obtaining);
-
-    static QStringList prepareExecutionLine(const QString& execution_line);
-    static QString generateFeedFileWithScript(const QString& execution_line, int run_timeout);
-    static QString postProcessFeedFileWithScript(const QString& execution_line, const QString raw_feed_data, int run_timeout);
+    void setNetworkError(const QNetworkReply::NetworkError& network_error);
 
     // Tries to guess feed hidden under given URL
     // and uses given credentials.
     // Returns pointer to guessed feed (if at least partially
     // guessed) and retrieved error/status code from network layer
-    // or NULL feed.
+    // or nullptr feed.
     static StandardFeed* guessFeed(SourceType source_type,
                                    const QString& url,
                                    const QString& post_process_script,
-                                   bool* result,
                                    const QString& username = QString(),
                                    const QString& password = QString(),
                                    const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
@@ -99,20 +90,31 @@ class StandardFeed : public Feed {
     static QString typeToString(Type type);
     static QString sourceTypeToString(SourceType type);
 
+    // Scraping + post+processing.
+    static QStringList prepareExecutionLine(const QString& execution_line);
+    static QString generateFeedFileWithScript(const QString& execution_line, int run_timeout);
+    static QString postProcessFeedFileWithScript(const QString& execution_line,
+                                                 const QString raw_feed_data,
+                                                 int run_timeout);
+    static QString runScriptProcess(const QStringList& cmd_args, const QString& working_directory,
+                                    int run_timeout, bool provide_input, const QString& input = {});
+
   public slots:
     void fetchMetadataForItself();
 
   private:
-    static QString runScriptProcess(const QStringList& cmd_args, const QString& working_directory,
-                                    int run_timeout, bool provide_input, const QString& input = {});
+    StandardServiceRoot* serviceRoot() const;
+    bool removeItself();
 
   private:
     SourceType m_sourceType;
     Type m_type;
     QString m_postProcessScript;
-
     QNetworkReply::NetworkError m_networkError;
     QString m_encoding;
+    bool m_passwordProtected{};
+    QString m_username;
+    QString m_password;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)

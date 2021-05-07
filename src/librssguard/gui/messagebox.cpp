@@ -16,7 +16,7 @@ MessageBox::MessageBox(QWidget* parent) : QMessageBox(parent) {}
 
 void MessageBox::setIcon(QMessageBox::Icon icon) {
   // Determine correct status icon size.
-  const int icon_size = qApp->style()->pixelMetric(QStyle::PM_MessageBoxIconSize, nullptr, this);
+  const int icon_size = qApp->style()->pixelMetric(QStyle::PixelMetric::PM_MessageBoxIconSize, nullptr, this);
 
   // Setup status icon.
   setIconPixmap(iconForStatus(icon).pixmap(icon_size, icon_size));

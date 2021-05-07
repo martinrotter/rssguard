@@ -25,9 +25,9 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_
   connect(m_model, &FeedsImportExportModel::parsingProgress, this, &FormStandardImportExport::onParsingProgress);
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
   m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Error, tr("No file is selected."), tr("No file is selected."));
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->disconnect();
+  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->disconnect();
   m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
-  connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &FormStandardImportExport::performAction);
+  connect(m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok), &QPushButton::clicked, this, &FormStandardImportExport::performAction);
   connect(m_ui->m_btnSelectFile, &QPushButton::clicked, this, &FormStandardImportExport::selectFile);
   connect(m_ui->m_btnCheckAllItems, &QPushButton::clicked, m_model, &FeedsImportExportModel::checkAllItems);
   connect(m_ui->m_btnUncheckAllItems, &QPushButton::clicked, m_model, &FeedsImportExportModel::uncheckAllItems);
@@ -72,7 +72,7 @@ void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode& mode)
       break;
   }
 
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);
 }
 
 void FormStandardImportExport::selectFile() {
@@ -97,7 +97,7 @@ void FormStandardImportExport::onParsingStarted() {
   m_ui->m_groupFeeds->setEnabled(false);
   m_ui->m_progressBar->setValue(0);
   m_ui->m_progressBar->setVisible(true);
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);
 }
 
 void FormStandardImportExport::onParsingFinished(int count_failed, int count_succeeded, bool parsing_error) {
@@ -121,7 +121,7 @@ void FormStandardImportExport::onParsingFinished(int count_failed, int count_suc
                                  tr("Error occurred. File is not well-formed. Select another file."));
   }
 
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
+  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(true);
 }
 
 void FormStandardImportExport::onParsingProgress(int completed, int total) {
@@ -161,7 +161,7 @@ void FormStandardImportExport::selectExportFile() {
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
   }
 
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(m_ui->m_lblSelectFile->status() == WidgetWithStatus::StatusType::Ok);
+  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(m_ui->m_lblSelectFile->status() == WidgetWithStatus::StatusType::Ok);
 }
 
 void FormStandardImportExport::selectImportFile() {

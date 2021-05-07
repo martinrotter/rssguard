@@ -5,11 +5,11 @@
 #include "core/feedsmodel.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
-#include "gui/feedstoolbar.h"
-#include "gui/messagestoolbar.h"
-#include "gui/statusbar.h"
 #include "gui/systemtrayicon.h"
 #include "gui/tabwidget.h"
+#include "gui/toolbars/feedstoolbar.h"
+#include "gui/toolbars/messagestoolbar.h"
+#include "gui/toolbars/statusbar.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -32,10 +32,11 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
                                      << tr("E-mail"));
 
   // Setup skins.
-  m_ui->m_treeSkins->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
-  m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeMode::ResizeToContents);
+
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::requireRestart);
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsGui::dirtifySettings);
@@ -72,8 +73,8 @@ bool SettingsGui::eventFilter(QObject* obj, QEvent* e) {
   if (e->type() == QEvent::Type::Drop) {
     auto* drop_event = static_cast<QDropEvent*>(e);
 
-    if (drop_event->keyboardModifiers() != Qt::NoModifier) {
-      drop_event->setDropAction(Qt::MoveAction);
+    if (drop_event->keyboardModifiers() != Qt::KeyboardModifier::NoModifier) {
+      drop_event->setDropAction(Qt::DropAction::MoveAction);
     }
   }
 
@@ -84,14 +85,11 @@ void SettingsGui::loadSettings() {
   onBeginLoadSettings();
 
   // Load settings of tray icon.
-  if (SystemTrayIcon::isSystemTrayAvailable()) {
-    m_ui->m_grpTray->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool());
-  }
+  m_ui->m_grpTray->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool());
 
-  // Tray icon is not supported on this machine.
-  else {
-    m_ui->m_grpTray->setTitle(m_ui->m_grpTray->title() + QL1C(' ') + tr("(Tray icon is not available.)"));
-    m_ui->m_grpTray->setChecked(false);
+  if (!SystemTrayIcon::isSystemTrayAreaAvailable()) {
+    m_ui->m_grpTray->setTitle(m_ui->m_grpTray->title() + QL1C(' ') + tr("(Your OS does not support tray icons at the moment.)"));
+    m_ui->m_grpTray->setEnabled(false);
   }
 
   m_ui->m_checkHidden->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool());
@@ -102,8 +100,9 @@ void SettingsGui::loadSettings() {
 
   // Load settings of icon theme.
   const QString current_theme = qApp->icons()->currentIconTheme();
+  auto icons = qApp->icons()->installedIconThemes();
 
-  for (const QString& icon_theme_name : qApp->icons()->installedIconThemes()) {
+  for (const QString& icon_theme_name : qAsConst(icons)) {
     if (icon_theme_name == APP_NO_THEME) {
       // Add just "no theme" on other systems.
       //: Label for disabling icon theme.
@@ -132,8 +131,9 @@ void SettingsGui::loadSettings() {
 
   // Load skin.
   const QString selected_skin = qApp->skins()->selectedSkinName();
+  auto skins = qApp->skins()->installedSkins();
 
-  for (const Skin& skin : qApp->skins()->installedSkins()) {
+  for (const Skin& skin : qAsConst(skins)) {
     QTreeWidgetItem* new_item = new QTreeWidgetItem(QStringList() <<
                                                     skin.m_visibleName <<
                                                     skin.m_version <<
@@ -158,7 +158,9 @@ void SettingsGui::loadSettings() {
   }
 
   // Load styles.
-  for (const QString& style_name : QStyleFactory::keys()) {
+  auto styles = QStyleFactory::keys();
+
+  for (const QString& style_name : qAsConst(styles)) {
     m_ui->m_cmbStyles->addItem(style_name);
   }
 
@@ -176,11 +178,11 @@ void SettingsGui::loadSettings() {
   m_ui->m_checkHideTabBarIfOneTabVisible->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool());
 
   // Load toolbar button style.
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Icon only"), Qt::ToolButtonIconOnly);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text only"), Qt::ToolButtonTextOnly);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text beside icon"), Qt::ToolButtonTextBesideIcon);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text under icon"), Qt::ToolButtonTextUnderIcon);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Follow OS style"), Qt::ToolButtonFollowStyle);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Icon only"), Qt::ToolButtonStyle::ToolButtonIconOnly);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text only"), Qt::ToolButtonStyle::ToolButtonTextOnly);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text beside icon"), Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text under icon"), Qt::ToolButtonStyle::ToolButtonTextUnderIcon);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Follow OS style"), Qt::ToolButtonStyle::ToolButtonFollowStyle);
   m_ui->m_cmbToolbarButtonStyle->setCurrentIndex(m_ui->m_cmbToolbarButtonStyle->findData(settings()->value(GROUP(GUI),
                                                                                                            SETTING(
                                                                                                              GUI::ToolbarStyle)).toInt()));
@@ -200,7 +202,7 @@ void SettingsGui::saveSettings() {
                        m_ui->m_cmbToolbarButtonStyle->itemData(m_ui->m_cmbToolbarButtonStyle->currentIndex()));
 
   // Save tray icon.
-  if (SystemTrayIcon::isSystemTrayAvailable()) {
+  if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
     settings()->setValue(GROUP(GUI), GUI::UseTrayIcon, m_ui->m_grpTray->isChecked());
 
     if (m_ui->m_grpTray->isChecked()) {

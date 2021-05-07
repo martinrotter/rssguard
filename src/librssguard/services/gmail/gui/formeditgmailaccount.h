@@ -5,7 +5,7 @@
 
 #include "services/abstract/gui/formaccountdetails.h"
 
-#include "services/gmail/network/gmailnetworkfactory.h"
+#include "services/gmail/gmailnetworkfactory.h"
 
 class GmailServiceRoot;
 class GmailAccountDetails;
@@ -20,7 +20,7 @@ class FormEditGmailAccount : public FormAccountDetails {
     virtual void apply();
 
   protected:
-    virtual void setEditableAccount(ServiceRoot* editable_account);
+    virtual void loadAccountData();
 
   private:
     GmailAccountDetails* m_details;

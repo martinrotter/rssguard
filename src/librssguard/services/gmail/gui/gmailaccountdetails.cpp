@@ -2,22 +2,29 @@
 
 #include "services/gmail/gui/gmailaccountdetails.h"
 
+#include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"
 #include "services/gmail/definitions.h"
-#include "services/gmail/network/gmailnetworkfactory.h"
+#include "services/gmail/gmailnetworkfactory.h"
 
 GmailAccountDetails::GmailAccountDetails(QWidget* parent)
-  : QWidget(parent), m_oauth(new OAuth2Service(GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
-                                               {}, {}, GMAIL_OAUTH_SCOPE, this)) {
+  : QWidget(parent), m_oauth(nullptr), m_lastProxy({}) {
   m_ui.setupUi(this);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
 
-  m_ui.m_lblInfo->setText(tr("Specified redirect URL must start with \"http://localhost\" and "
-                             "must be configured in your OAuth \"application\"."));
+#if defined(GMAIL_OFFICIAL_SUPPORT)
+  m_ui.m_lblInfo->setText(tr("There are some preconfigured OAuth tokens so you do not have to fill in your "
+                             "client ID/secret, but it is strongly recommended to obtain your "
+                             "own as it preconfigured tokens have limited global usage quota. If you wish "
+                             "to use preconfigured tokens, simply leave those fields empty and make sure "
+                             "to leave default value of redirect URL."));
+#else
+  m_ui.m_lblInfo->setText(tr("You have to fill in your client ID/secret and also fill in correct redirect URL."));
+#endif
 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("Not tested yet."),
@@ -35,35 +42,24 @@ GmailAccountDetails::GmailAccountDetails(QWidget* parent)
   connect(m_ui.m_txtAppKey->lineEdit(), &BaseLineEdit::textChanged, this, &GmailAccountDetails::checkOAuthValue);
   connect(m_ui.m_txtRedirectUrl->lineEdit(), &BaseLineEdit::textChanged, this, &GmailAccountDetails::checkOAuthValue);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &GmailAccountDetails::checkUsername);
-  connect(m_ui.m_btnTestSetup, &QPushButton::clicked, this, &GmailAccountDetails::testSetup);
   connect(m_ui.m_btnRegisterApi, &QPushButton::clicked, this, &GmailAccountDetails::registerApi);
-
-  m_ui.m_spinLimitMessages->setValue(GMAIL_DEFAULT_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMinimum(GMAIL_MIN_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMaximum(GMAIL_MAX_BATCH_SIZE);
 
   emit m_ui.m_txtUsername->lineEdit()->textChanged(m_ui.m_txtUsername->lineEdit()->text());
   emit m_ui.m_txtAppId->lineEdit()->textChanged(m_ui.m_txtAppId->lineEdit()->text());
   emit m_ui.m_txtAppKey->lineEdit()->textChanged(m_ui.m_txtAppKey->lineEdit()->text());
-
-  m_ui.m_txtRedirectUrl->lineEdit()->setText(QString(OAUTH_REDIRECT_URI) +
-                                             QL1C(':') +
-                                             QString::number(OAUTH_REDIRECT_URI_PORT));
+  emit m_ui.m_txtRedirectUrl->lineEdit()->textChanged(m_ui.m_txtAppKey->lineEdit()->text());
 
   hookNetwork();
 }
 
-void GmailAccountDetails::testSetup() {
+void GmailAccountDetails::testSetup(const QNetworkProxy& custom_proxy) {
   m_oauth->logout();
   m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
   m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
   m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());
 
-  if (m_oauth->login()) {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                    tr("You are already logged in."),
-                                    tr("Access granted."));
-  }
+  m_lastProxy = custom_proxy;
+  m_oauth->login();
 }
 
 void GmailAccountDetails::checkUsername(const QString& username) {
@@ -85,7 +81,7 @@ void GmailAccountDetails::onAuthError(const QString& error, const QString& detai
   Q_UNUSED(error)
 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                  tr("There is error. %1 ").arg(detailed_description),
+                                  tr("There is error: %1").arg(detailed_description),
                                   tr("There was error during testing."));
 }
 
@@ -93,6 +89,21 @@ void GmailAccountDetails::onAuthGranted() {
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                   tr("Tested successfully. You may be prompted to login once more."),
                                   tr("Your access was approved."));
+
+  try {
+    GmailNetworkFactory fac;
+
+    fac.setOauth(m_oauth);
+
+    auto resp = fac.getProfile(m_lastProxy);
+
+    m_ui.m_txtUsername->lineEdit()->setText(resp["emailAddress"].toString());
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_GMAIL
+                << "Failed to obtain profile with error:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+  }
 }
 
 void GmailAccountDetails::hookNetwork() {
@@ -110,7 +121,11 @@ void GmailAccountDetails::checkOAuthValue(const QString& value) {
 
   if (line_edit != nullptr) {
     if (value.isEmpty()) {
+#if defined(GMAIL_OFFICIAL_SUPPORT)
+      line_edit->setStatus(WidgetWithStatus::StatusType::Ok, tr("Preconfigured client ID/secret will be used."));
+#else
       line_edit->setStatus(WidgetWithStatus::StatusType::Error, tr("Empty value is entered."));
+#endif
     }
     else {
       line_edit->setStatus(WidgetWithStatus::StatusType::Ok, tr("Some value is entered."));

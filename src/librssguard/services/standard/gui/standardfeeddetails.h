@@ -22,6 +22,8 @@ class StandardFeedDetails : public QWidget {
   public:
     explicit StandardFeedDetails(QWidget* parent = nullptr);
 
+    StandardFeed::SourceType sourceType() const;
+
   private slots:
     void guessIconOnly(StandardFeed::SourceType source_type,
                        const QString& source,
@@ -42,8 +44,6 @@ class StandardFeedDetails : public QWidget {
     void onPostProcessScriptChanged(const QString& new_pp);
     void onLoadIconFromFile();
     void onUseDefaultIcon();
-
-    StandardFeed::SourceType sourceType() const;
 
   private:
     void prepareForNewFeed(RootItem* parent_to_select, const QString& url);

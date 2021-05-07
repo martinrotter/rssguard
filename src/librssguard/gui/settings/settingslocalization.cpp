@@ -18,9 +18,9 @@ SettingsLocalization::SettingsLocalization(Settings* settings, QWidget* parent)
                                          << tr("Author"));
 
   // Setup languages.
-  m_ui->m_treeLanguages->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-  m_ui->m_treeLanguages->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
-  m_ui->m_treeLanguages->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+  m_ui->m_treeLanguages->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui->m_treeLanguages->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui->m_treeLanguages->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
   connect(m_ui->m_treeLanguages, &QTreeWidget::currentItemChanged, this, &SettingsLocalization::requireRestart);
   connect(m_ui->m_treeLanguages, &QTreeWidget::currentItemChanged, this, &SettingsLocalization::dirtifySettings);
 }
@@ -32,7 +32,9 @@ SettingsLocalization::~SettingsLocalization() {
 void SettingsLocalization::loadSettings() {
   onBeginLoadSettings();
 
-  for (const Language& language : qApp->localization()->installedLanguages()) {
+  auto langs = qApp->localization()->installedLanguages();
+
+  for (const Language& language : qAsConst(langs)) {
     auto* item = new QTreeWidgetItem(m_ui->m_treeLanguages);
 
     item->setText(0, language.m_name);
@@ -41,8 +43,10 @@ void SettingsLocalization::loadSettings() {
     item->setIcon(0, qApp->icons()->miscIcon(QString(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
   }
 
-  m_ui->m_treeLanguages->sortByColumn(0, Qt::AscendingOrder);
-  QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(qApp->localization()->loadedLanguage(), Qt::MatchContains, 1);
+  m_ui->m_treeLanguages->sortByColumn(0, Qt::SortOrder::AscendingOrder);
+  QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(qApp->localization()->loadedLanguage(),
+                                                                            Qt::MatchFlag::MatchContains,
+                                                                            1);
 
   if (!matching_items.isEmpty()) {
     m_ui->m_treeLanguages->setCurrentItem(matching_items[0]);

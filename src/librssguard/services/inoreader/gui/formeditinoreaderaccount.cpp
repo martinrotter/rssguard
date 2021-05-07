@@ -9,8 +9,8 @@
 #include "network-web/webfactory.h"
 #include "services/inoreader/definitions.h"
 #include "services/inoreader/gui/inoreaderaccountdetails.h"
+#include "services/inoreader/inoreadernetworkfactory.h"
 #include "services/inoreader/inoreaderserviceroot.h"
-#include "services/inoreader/network/inoreadernetworkfactory.h"
 
 #include <QThread>
 
@@ -19,47 +19,34 @@ FormEditInoreaderAccount::FormEditInoreaderAccount(QWidget* parent)
   insertCustomTab(m_details, tr("Server setup"), 0);
   activateTab(0);
 
+  connect(m_details->m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditInoreaderAccount::testSetup);
+
   m_details->m_ui.m_txtUsername->setFocus();
 }
 
 void FormEditInoreaderAccount::apply() {
-  bool editing_account = !applyInternal<InoreaderServiceRoot>();
+  FormAccountDetails::apply();
 
-  if (!editing_account) {
-    // We transfer refresh token to avoid the need to login once more,
-    // then we delete testing OAuth service.
-    account<InoreaderServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
-    account<InoreaderServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
-    account<InoreaderServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
-    m_details->m_oauth->logout(true);
-    m_details->m_oauth->deleteLater();
-  }
-
+  account<InoreaderServiceRoot>()->network()->oauth()->logout(false);
   account<InoreaderServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
   account<InoreaderServiceRoot>()->network()->oauth()->setClientSecret(m_details->m_ui.m_txtAppKey->lineEdit()->text());
   account<InoreaderServiceRoot>()->network()->oauth()->setRedirectUrl(m_details->m_ui.m_txtRedirectUrl->lineEdit()->text());
 
   account<InoreaderServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<InoreaderServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
+  account<InoreaderServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_cbDownloadOnlyUnreadMessages->isChecked());
 
-  account<InoreaderServiceRoot>()->saveAccountDataToDatabase(!editing_account);
+  account<InoreaderServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
-  if (editing_account) {
+  if (!m_creatingNew) {
     account<InoreaderServiceRoot>()->completelyRemoveAllData();
-    account<InoreaderServiceRoot>()->syncIn();
+    account<InoreaderServiceRoot>()->start(true);
   }
 }
 
-void FormEditInoreaderAccount::setEditableAccount(ServiceRoot* editable_account) {
-  FormAccountDetails::setEditableAccount(editable_account);
-
-  if (m_details->m_oauth != nullptr) {
-    // We will use live OAuth service for testing.
-    m_details->m_oauth->logout(true);
-    delete m_details->m_oauth;
-    m_details->m_oauth = nullptr;
-  }
+void FormEditInoreaderAccount::loadAccountData() {
+  FormAccountDetails::loadAccountData();
 
   m_details->m_oauth = account<InoreaderServiceRoot>()->network()->oauth();
   m_details->hookNetwork();
@@ -71,4 +58,9 @@ void FormEditInoreaderAccount::setEditableAccount(ServiceRoot* editable_account)
 
   m_details->m_ui.m_txtUsername->lineEdit()->setText(account<InoreaderServiceRoot>()->network()->username());
   m_details->m_ui.m_spinLimitMessages->setValue(account<InoreaderServiceRoot>()->network()->batchSize());
+  m_details->m_ui.m_cbDownloadOnlyUnreadMessages->setChecked(account<InoreaderServiceRoot>()->network()->downloadOnlyUnreadMessages());
+}
+
+void FormEditInoreaderAccount::testSetup() {
+  m_details->testSetup(m_proxyDetails->proxy());
 }

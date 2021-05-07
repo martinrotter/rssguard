@@ -16,40 +16,40 @@ QWebEngineUrlRequestInfo::ResourceType AdblockRequestInfo::resourceType() const 
   return m_resourceType;
 }
 
-void AdblockRequestInfo::setResourceType(const QWebEngineUrlRequestInfo::ResourceType& resourceType) {
-  m_resourceType = resourceType;
+void AdblockRequestInfo::setResourceType(const QWebEngineUrlRequestInfo::ResourceType& resource_type) {
+  m_resourceType = resource_type;
 }
 
 QWebEngineUrlRequestInfo::NavigationType AdblockRequestInfo::navigationType() const {
   return m_navigationType;
 }
 
-void AdblockRequestInfo::setNavigationType(const QWebEngineUrlRequestInfo::NavigationType& navigationType) {
-  m_navigationType = navigationType;
+void AdblockRequestInfo::setNavigationType(const QWebEngineUrlRequestInfo::NavigationType& navigation_type) {
+  m_navigationType = navigation_type;
 }
 
 QUrl AdblockRequestInfo::requestUrl() const {
   return m_requestUrl;
 }
 
-void AdblockRequestInfo::setRequestUrl(const QUrl& requestUrl) {
-  m_requestUrl = requestUrl;
+void AdblockRequestInfo::setRequestUrl(const QUrl& request_url) {
+  m_requestUrl = request_url;
 }
 
 QUrl AdblockRequestInfo::firstPartyUrl() const {
   return m_firstPartyUrl;
 }
 
-void AdblockRequestInfo::setFirstPartyUrl(const QUrl& firstPartyUrl) {
-  m_firstPartyUrl = firstPartyUrl;
+void AdblockRequestInfo::setFirstPartyUrl(const QUrl& first_party_url) {
+  m_firstPartyUrl = first_party_url;
 }
 
 QByteArray AdblockRequestInfo::requestMethod() const {
   return m_requestMethod;
 }
 
-void AdblockRequestInfo::setRequestMethod(const QByteArray& requestMethod) {
-  m_requestMethod = requestMethod;
+void AdblockRequestInfo::setRequestMethod(const QByteArray& request_method) {
+  m_requestMethod = request_method;
 }
 
 void AdblockRequestInfo::initialize(const QWebEngineUrlRequestInfo& webengine_info) {

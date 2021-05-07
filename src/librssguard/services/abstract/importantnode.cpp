@@ -2,8 +2,8 @@
 
 #include "services/abstract/importantnode.h"
 
+#include "database/databasequeries.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
@@ -16,11 +16,10 @@ ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
   setIcon(qApp->icons()->fromTheme(QSL("mail-mark-important")));
   setTitle(tr("Important messages"));
   setDescription(tr("You can find all important messages here."));
-  setCreationDate(QDateTime::currentDateTime());
 }
 
 QList<Message> ImportantNode::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedImportantMessages(database, getParentServiceRoot()->accountId());
 }
@@ -28,8 +27,8 @@ QList<Message> ImportantNode::undeletedMessages() const {
 void ImportantNode::updateCounts(bool including_total_count) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
   QSqlDatabase database = is_main_thread ?
-                          qApp->database()->connection(metaObject()->className()) :
-                          qApp->database()->connection(QSL("feed_upd"));
+                          qApp->database()->driver()->connection(metaObject()->className()) :
+                          qApp->database()->driver()->connection(QSL("feed_upd"));
   int account_id = getParentServiceRoot()->accountId();
 
   if (including_total_count) {
@@ -41,7 +40,7 @@ void ImportantNode::updateCounts(bool including_total_count) {
 
 bool ImportantNode::cleanMessages(bool clean_read_only) {
   ServiceRoot* service = getParentServiceRoot();
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::cleanImportantMessages(database, clean_read_only, service->accountId())) {
     service->updateCounts(true);
@@ -62,7 +61,7 @@ bool ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
     cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this), status);
   }
 
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::markImportantMessagesReadUnread(database, service->accountId(), status)) {
     service->updateCounts(false);

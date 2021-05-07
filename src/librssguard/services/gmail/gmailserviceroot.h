@@ -14,8 +14,6 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
   public:
     explicit GmailServiceRoot(RootItem* parent = nullptr);
 
-    void saveAccountDataToDatabase(bool creating_new);
-
     void setNetwork(GmailNetworkFactory* network);
     GmailNetworkFactory* network() const;
 
@@ -25,26 +23,25 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
     virtual bool editViaGui();
-    virtual bool canBeDeleted() const;
-    virtual bool deleteViaGui();
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual void start(bool freshly_activated);
     virtual QString code() const;
     virtual QString additionalTooltip() const;
     virtual void saveAllCachedData(bool ignore_errors);
-
-    void updateTitle();
-
-  private slots:
-    void replyToEmail();
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
+    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining);
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
-  private:
+  private slots:
+    void replyToEmail();
     void writeNewEmail();
-    void loadFromDatabase();
+
+  private:
+    void updateTitle();
 
   private:
     GmailNetworkFactory* m_network;

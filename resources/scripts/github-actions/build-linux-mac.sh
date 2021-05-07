@@ -52,7 +52,7 @@ git_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
 git_revision=$(git rev-parse --short HEAD)
 
 mkdir rssguard-build && cd rssguard-build
-qmake .. "USE_WEBENGINE=$webengine"
+qmake .. "USE_WEBENGINE=$webengine" "FEEDLY_CLIENT_ID=$FEEDLY_CLIENT_ID" "FEEDLY_CLIENT_SECRET=$FEEDLY_CLIENT_SECRET" "GMAIL_CLIENT_ID=$GMAIL_CLIENT_ID" "GMAIL_CLIENT_SECRET=$GMAIL_CLIENT_SECRET" "INOREADER_CLIENT_ID=$INOREADER_CLIENT_ID" "INOREADER_CLIENT_SECRET=$INOREADER_CLIENT_SECRET"
 make
 make install
 cd "src/rssguard"

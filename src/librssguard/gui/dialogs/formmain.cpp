@@ -2,6 +2,7 @@
 
 #include "gui/dialogs/formmain.h"
 
+#include "database/databasefactory.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formabout.h"
 #include "gui/dialogs/formaddaccount.h"
@@ -11,18 +12,17 @@
 #include "gui/dialogs/formsettings.h"
 #include "gui/dialogs/formupdate.h"
 #include "gui/feedmessageviewer.h"
-#include "gui/feedstoolbar.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/messagepreviewer.h"
-#include "gui/messagestoolbar.h"
 #include "gui/messagesview.h"
-#include "gui/plaintoolbutton.h"
-#include "gui/statusbar.h"
+#include "gui/reusable/plaintoolbutton.h"
 #include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
+#include "gui/toolbars/feedstoolbar.h"
+#include "gui/toolbars/messagestoolbar.h"
+#include "gui/toolbars/statusbar.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasefactory.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
@@ -31,10 +31,10 @@
 #include "network-web/webfactory.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "services/owncloud/owncloudnetworkfactory.h"
 #include "services/standard/gui/formstandardimportexport.h"
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
 #endif
@@ -62,7 +62,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   setWindowIcon(qApp->desktopAwareIcon());
   setWindowTitle(APP_LONG_NAME);
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->adBlock()->adBlockIcon());
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());
 #endif
@@ -190,6 +190,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSelectPreviousMessage;
   actions << m_ui->m_actionSelectNextUnreadMessage;
   actions << m_ui->m_actionExpandCollapseItem;
+  actions << m_ui->m_actionExpandCollapseItemRecursively;
   actions << m_ui->m_actionMessageFilters;
 
 #if defined(USE_WEBENGINE)
@@ -204,7 +205,7 @@ QList<QAction*> FormMain::allActions() const {
 
 void FormMain::prepareMenus() {
   // Setup menu for tray icon.
-  if (SystemTrayIcon::isSystemTrayAvailable()) {
+  if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
 #if defined(Q_OS_WIN)
     m_trayMenu = new TrayIconMenu(APP_NAME, this);
 #else
@@ -231,6 +232,11 @@ void FormMain::prepareMenus() {
   m_ui->m_actionSwitchMainMenu->setVisible(false);
   m_ui->m_actionFullscreen->setVisible(false);
 #endif
+
+  if (QSysInfo::currentCpuArchitecture().contains(QSL("arm"), Qt::CaseSensitivity::CaseInsensitive)) {
+    qWarningNN << LOGSEC_GUI << "Disabling native menu bar.";
+    m_ui->m_menuBar->setNativeMenuBar(false);
+  }
 }
 
 void FormMain::switchFullscreenMode() {
@@ -252,7 +258,9 @@ void FormMain::updateAddItemMenu() {
   // NOTE: Clear here deletes items from memory but only those OWNED by the menu.
   m_ui->m_menuAddItem->clear();
 
-  for (ServiceRoot* activated_root : qApp->feedReader()->feedsModel()->serviceRoots()) {
+  auto srts = qApp->feedReader()->feedsModel()->serviceRoots();
+
+  for (ServiceRoot* activated_root : qAsConst(srts)) {
     QMenu* root_menu = new QMenu(activated_root->title(), m_ui->m_menuAddItem);
 
     root_menu->setIcon(activated_root->icon());
@@ -307,7 +315,9 @@ void FormMain::updateAddItemMenu() {
 void FormMain::updateRecycleBinMenu() {
   m_ui->m_menuRecycleBin->clear();
 
-  for (const ServiceRoot* activated_root : qApp->feedReader()->feedsModel()->serviceRoots()) {
+  auto srts = qApp->feedReader()->feedsModel()->serviceRoots();
+
+  for (const ServiceRoot* activated_root : qAsConst(srts)) {
     QMenu* root_menu = new QMenu(activated_root->title(), m_ui->m_menuRecycleBin);
 
     root_menu->setIcon(activated_root->icon());
@@ -349,7 +359,9 @@ void FormMain::updateRecycleBinMenu() {
 void FormMain::updateAccountsMenu() {
   m_ui->m_menuAccounts->clear();
 
-  for (ServiceRoot* activated_root : qApp->feedReader()->feedsModel()->serviceRoots()) {
+  auto srts = qApp->feedReader()->feedsModel()->serviceRoots();
+
+  for (ServiceRoot* activated_root : srts) {
     QMenu* root_menu = new QMenu(activated_root->title(), m_ui->m_menuAccounts);
 
     root_menu->setIcon(activated_root->icon());
@@ -437,7 +449,8 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setEnabled(!critical_action_running);
   m_ui->m_actionUpdateSelectedItems->setEnabled(!critical_action_running && (feed_selected || category_selected || service_selected));
   m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(anything_selected);
-  m_ui->m_actionExpandCollapseItem->setEnabled(anything_selected);
+  m_ui->m_actionExpandCollapseItem->setEnabled(category_selected || service_selected);
+  m_ui->m_actionExpandCollapseItemRecursively->setEnabled(category_selected || service_selected);
   m_ui->m_actionServiceDelete->setEnabled(service_selected);
   m_ui->m_actionServiceEdit->setEnabled(service_selected);
   m_ui->m_actionAddFeedIntoSelectedItem->setEnabled(anything_selected);
@@ -449,7 +462,7 @@ void FormMain::updateFeedButtonsAvailability() {
 
 void FormMain::switchVisibility(bool force_hide) {
   if (force_hide || isVisible()) {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
+    if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
       hide();
     }
     else {
@@ -534,6 +547,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionShowOnlyUnreadItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionShowOnlyUnreadMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionExpandCollapseItem->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
+  m_ui->m_actionExpandCollapseItemRecursively->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
   m_ui->m_actionRestoreSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
   m_ui->m_actionRestoreAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
   m_ui->m_actionEmptyAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
@@ -576,7 +590,7 @@ void FormMain::loadSize() {
   move(settings->value(GROUP(GUI), GUI::MainWindowInitialPosition, screen.center() - rect().center()).toPoint());
 
   if (settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsMaximized)).toBool()) {
-    setWindowState(windowState() | Qt::WindowMaximized);
+    setWindowState(windowState() | Qt::WindowState::WindowMaximized);
 
     // We process events so that window is really maximized fast.
     qApp->processEvents();
@@ -730,7 +744,17 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionMarkSelectedItemsAsRead,
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::markSelectedItemRead);
   connect(m_ui->m_actionExpandCollapseItem,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::expandCollapseCurrentItem);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          [this]() {
+    tabWidget()->feedMessageViewer()->feedsView()->expandCollapseCurrentItem(false);
+  });
+  connect(m_ui->m_actionExpandCollapseItemRecursively,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          [this]() {
+    tabWidget()->feedMessageViewer()->feedsView()->expandCollapseCurrentItem(true);
+  });
   connect(m_ui->m_actionMarkSelectedItemsAsUnread,
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::markSelectedItemUnread);
   connect(m_ui->m_actionClearSelectedItems,
@@ -813,7 +837,8 @@ void FormMain::changeEvent(QEvent* event) {
   switch (event->type()) {
     case QEvent::WindowStateChange: {
       if ((windowState() & Qt::WindowState::WindowMinimized) == Qt::WindowState::WindowMinimized &&
-          SystemTrayIcon::isSystemTrayActivated() &&
+          SystemTrayIcon::isSystemTrayDesired() &&
+          SystemTrayIcon::isSystemTrayAreaAvailable() &&
           qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool()) {
         event->ignore();
         QTimer::singleShot(CHANGE_EVENT_DELAY, this, [this]() {

@@ -57,7 +57,7 @@ cd "$old_pwd"
 # Build application.
 mkdir "rssguard-build"
 cd "rssguard-build"
-& "$qt_qmake" "..\build.pro" "-r" "USE_WEBENGINE=$webengine" "CONFIG-=debug" "CONFIG-=debug_and_release" "CONFIG*=release"
+& "$qt_qmake" "..\build.pro" "-r" "USE_WEBENGINE=$webengine" "FEEDLY_CLIENT_ID=$env:FEEDLY_CLIENT_ID" "FEEDLY_CLIENT_SECRET=$env:FEEDLY_CLIENT_SECRET" "GMAIL_CLIENT_ID=$env:GMAIL_CLIENT_ID" "GMAIL_CLIENT_SECRET=$env:GMAIL_CLIENT_SECRET" "INOREADER_CLIENT_ID=$env:INOREADER_CLIENT_ID" "INOREADER_CLIENT_SECRET=$env:INOREADER_CLIENT_SECRET" "CONFIG-=debug" "CONFIG-=debug_and_release" "CONFIG*=release"
 nmake.exe
 
 cd "src\rssguard"

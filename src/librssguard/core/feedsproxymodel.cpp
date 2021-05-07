@@ -13,11 +13,17 @@
 FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_selectedItem(nullptr), m_showUnreadOnly(false) {
   setObjectName(QSL("FeedsProxyModel"));
-  setSortRole(Qt::EditRole);
-  setSortCaseSensitivity(Qt::CaseInsensitive);
-  setFilterCaseSensitivity(Qt::CaseInsensitive);
-  setFilterKeyColumn(-1);
-  setFilterRole(Qt::EditRole);
+
+  setSortRole(Qt::ItemDataRole::EditRole);
+  setSortCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
+
+#if QT_VERSION >= 0x050A00 // Qt >= 5.10.0
+  setRecursiveFilteringEnabled(true);
+#endif
+
+  setFilterKeyColumn(FDS_MODEL_TITLE_INDEX);
+  setFilterRole(LOWER_TITLE_ROLE);
+
   setDynamicSortFilter(true);
   setSourceModel(m_sourceModel);
 
@@ -30,6 +36,7 @@ FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
     RootItem::Kind::Feed,
     RootItem::Kind::Labels,
     RootItem::Kind::Important,
+    RootItem::Kind::Unread,
     RootItem::Kind::Bin
   };
 }
@@ -41,9 +48,9 @@ FeedsProxyModel::~FeedsProxyModel() {
 QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const QVariant& value, int hits, Qt::MatchFlags flags) const {
   QModelIndexList result;
   const int match_type = flags & 0x0F;
-  const Qt::CaseSensitivity cs = Qt::CaseInsensitive;
-  const bool recurse = (flags& Qt::MatchRecursive) > 0;
-  const bool wrap = (flags& Qt::MatchWrap) > 0;
+  const Qt::CaseSensitivity cs = Qt::CaseSensitivity::CaseInsensitive;
+  const bool recurse = (flags& Qt::MatchFlag::MatchRecursive) > 0;
+  const bool wrap = (flags& Qt::MatchFlag::MatchWrap) > 0;
   const bool all_hits = (hits == -1);
   QString entered_text;
   const QModelIndex p = parent(start);

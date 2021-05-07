@@ -11,7 +11,7 @@
 
 #include <QNetworkProxy>
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 class OAuth2Service;
 #endif
 
@@ -29,7 +29,7 @@ class FeedlyAccountDetails : public QWidget {
     void onUsernameChanged();
     void onDeveloperAccessTokenChanged();
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   private slots:
     void onAuthFailed();
     void onAuthError(const QString& error, const QString& detailed_description);
@@ -42,9 +42,11 @@ class FeedlyAccountDetails : public QWidget {
   private:
     Ui::FeedlyAccountDetails m_ui;
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
     OAuth2Service* m_oauth;
 #endif
+
+    QNetworkProxy m_lastProxy;
 };
 
 #endif // FEEDLYACCOUNTDETAILS_H

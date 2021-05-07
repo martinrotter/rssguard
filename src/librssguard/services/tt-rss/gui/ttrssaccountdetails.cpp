@@ -5,7 +5,7 @@
 #include "gui/guiutilities.h"
 #include "network-web/networkfactory.h"
 #include "services/tt-rss/definitions.h"
-#include "services/tt-rss/network/ttrssnetworkfactory.h"
+#include "services/tt-rss/ttrssnetworkfactory.h"
 
 TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
@@ -25,7 +25,8 @@ TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblServerSideUpdateInformation, true);
 
   setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_checkDownloadOnlyUnreadMessages);
-  setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_checkServerSideUpdate);
+  setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_checkServerSideUpdate);
   setTabOrder(m_ui.m_checkServerSideUpdate, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
   setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_checkShowPassword);
@@ -72,6 +73,7 @@ void TtRssAccountDetails::performTest(const QNetworkProxy& proxy) {
   factory.setAuthUsername(m_ui.m_txtHttpUsername->lineEdit()->text());
   factory.setAuthPassword(m_ui.m_txtHttpPassword->lineEdit()->text());
   factory.setForceServerSideUpdate(m_ui.m_checkServerSideUpdate->isChecked());
+  factory.setBatchSize(m_ui.m_spinLimitMessages->value());
 
   TtRssLoginResponse result = factory.login(proxy);
 

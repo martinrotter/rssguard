@@ -21,25 +21,26 @@ FormEditGreaderAccount::FormEditGreaderAccount(QWidget* parent)
 }
 
 void FormEditGreaderAccount::apply() {
-  bool editing_account = !applyInternal<GreaderServiceRoot>();
+  FormAccountDetails::apply();
 
   account<GreaderServiceRoot>()->network()->setBaseUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
   account<GreaderServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<GreaderServiceRoot>()->network()->setPassword(m_details->m_ui.m_txtPassword->lineEdit()->text());
   account<GreaderServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
+  account<GreaderServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_cbDownloadOnlyUnreadMessages->isChecked());
   account<GreaderServiceRoot>()->network()->setService(m_details->service());
 
-  account<GreaderServiceRoot>()->saveAccountDataToDatabase(!editing_account);
+  account<GreaderServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
-  if (editing_account) {
+  if (!m_creatingNew) {
     account<GreaderServiceRoot>()->completelyRemoveAllData();
-    account<GreaderServiceRoot>()->syncIn();
+    account<GreaderServiceRoot>()->start(true);
   }
 }
 
-void FormEditGreaderAccount::setEditableAccount(ServiceRoot* editable_account) {
-  FormAccountDetails::setEditableAccount(editable_account);
+void FormEditGreaderAccount::loadAccountData() {
+  FormAccountDetails::loadAccountData();
 
   GreaderServiceRoot* existing_root = account<GreaderServiceRoot>();
 
@@ -48,6 +49,7 @@ void FormEditGreaderAccount::setEditableAccount(ServiceRoot* editable_account) {
   m_details->m_ui.m_txtPassword->lineEdit()->setText(existing_root->network()->password());
   m_details->m_ui.m_txtUrl->lineEdit()->setText(existing_root->network()->baseUrl());
   m_details->m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
+  m_details->m_ui.m_cbDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
 }
 
 void FormEditGreaderAccount::performTest() {

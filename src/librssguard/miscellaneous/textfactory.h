@@ -22,14 +22,14 @@ class TextFactory {
 
     // Tries to parse input textual date/time representation.
     // Returns invalid date/time if processing fails.
-    // NOTE: This method tries to always return time in UTC+00:00.
+    // NOTE: This method tries to always return time in UTC.
     static QDateTime parseDateTime(const QString& date_time);
 
     // Converts 1970-epoch miliseconds to date/time.
     // NOTE: This method tries to always return time in UTC.
     static QDateTime parseDateTime(qint64 milis_from_epoch);
-    static QString encrypt(const QString& text);
-    static QString decrypt(const QString& text);
+    static QString encrypt(const QString& text, quint64 key = 0);
+    static QString decrypt(const QString& text, quint64 key = 0);
     static QString newline();
 
     // Shortens input string according to given length limit.

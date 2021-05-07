@@ -11,16 +11,12 @@ class SettingsDownloads : public SettingsPanel {
   Q_OBJECT
 
   public:
-    explicit SettingsDownloads(Settings* settings, QWidget* parent = 0);
+    explicit SettingsDownloads(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsDownloads();
 
-    inline QString title() const {
-      return tr("Downloads");
-    }
-
-    void loadSettings();
-
-    void saveSettings();
+    virtual QString title() const;
+    virtual void loadSettings();
+    virtual void saveSettings();
 
   private slots:
     void selectDownloadsDirectory();
@@ -28,5 +24,9 @@ class SettingsDownloads : public SettingsPanel {
   private:
     Ui::SettingsDownloads* m_ui;
 };
+
+inline QString SettingsDownloads::title() const {
+  return tr("Downloads");
+}
 
 #endif // SETTINGSDOWNLOADS_H

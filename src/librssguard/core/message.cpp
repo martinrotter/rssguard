@@ -20,13 +20,14 @@ Enclosure::Enclosure(QString url, QString mime) : m_url(std::move(url)), m_mimeT
 
 QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
   QList<Enclosure> enclosures;
-
-  for (const QString& single_enclosure : enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR,
+  auto enc = enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR,
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                               Qt::SplitBehaviorFlags::SkipEmptyParts)) {
+                                   Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                               QString::SkipEmptyParts)) {
+                                   QString::SplitBehavior::SkipEmptyParts);
 #endif
+
+  for (const QString& single_enclosure : qAsConst(enc)) {
     Enclosure enclosure;
 
     if (single_enclosure.contains(ECNLOSURES_INNER_SEPARATOR)) {
@@ -63,9 +64,10 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures)
 }
 
 Message::Message() {
-  m_title = m_url = m_author = m_contents = m_feedId = m_customId = m_customHash = "";
+  m_title = m_url = m_author = m_contents = m_rawContents = m_feedId = m_customId = m_customHash = "";
   m_enclosures = QList<Enclosure>();
   m_accountId = m_id = 0;
+  m_score = 0.0;
   m_isRead = m_isImportant = m_isDeleted = false;
   m_assignedLabels = QList<Label*>();
 }
@@ -106,6 +108,7 @@ Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
   message.m_created = TextFactory::parseDateTime(record.value(MSG_DB_DCREATED_INDEX).value<qint64>());
   message.m_contents = record.value(MSG_DB_CONTENTS_INDEX).toString();
   message.m_enclosures = Enclosures::decodeEnclosuresFromString(record.value(MSG_DB_ENCLOSURES_INDEX).toString());
+  message.m_score = record.value(MSG_DB_SCORE_INDEX).toDouble();
   message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
   message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
   message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();
@@ -125,31 +128,34 @@ QDataStream& operator<<(QDataStream& out, const Message& my_obj) {
       << my_obj.m_id
       << my_obj.m_isImportant
       << my_obj.m_isRead
-      << my_obj.m_isDeleted;
+      << my_obj.m_isDeleted
+      << my_obj.m_score;
 
   return out;
 }
 
 QDataStream& operator>>(QDataStream& in, Message& my_obj) {
-  int accountId;
-  QString customHash;
-  QString customId;
-  QString feedId;
+  int account_id;
+  QString custom_hash;
+  QString custom_id;
+  QString feed_id;
   int id;
-  bool isImportant;
-  bool isRead;
-  bool isDeleted;
+  bool is_important;
+  bool is_read;
+  bool is_deleted;
+  double score;
 
-  in >> accountId >> customHash >> customId >> feedId >> id >> isImportant >> isRead >> isDeleted;
+  in >> account_id >> custom_hash >> custom_id >> feed_id >> id >> is_important >> is_read >> is_deleted >> score;
 
-  my_obj.m_accountId = accountId;
-  my_obj.m_customHash = customHash;
-  my_obj.m_customId = customId;
-  my_obj.m_feedId = feedId;
+  my_obj.m_accountId = account_id;
+  my_obj.m_customHash = custom_hash;
+  my_obj.m_customId = custom_id;
+  my_obj.m_feedId = feed_id;
   my_obj.m_id = id;
-  my_obj.m_isImportant = isImportant;
-  my_obj.m_isRead = isRead;
-  my_obj.m_isDeleted = isDeleted;
+  my_obj.m_isImportant = is_important;
+  my_obj.m_isRead = is_read;
+  my_obj.m_isDeleted = is_deleted;
+  my_obj.m_score = score;
 
   return in;
 }

@@ -18,6 +18,7 @@ class MessageTextBrowser : public QTextBrowser {
     virtual QSize sizeHint() const;
 
   protected:
+    virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual void wheelEvent(QWheelEvent* event);
     virtual void resizeEvent (QResizeEvent* event);
 

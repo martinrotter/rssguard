@@ -7,6 +7,8 @@
 
 #include "ui_inoreaderaccountdetails.h"
 
+#include <QNetworkProxy>
+
 class OAuth2Service;
 
 class InoreaderAccountDetails : public QWidget {
@@ -19,7 +21,7 @@ class InoreaderAccountDetails : public QWidget {
 
   private slots:
     void registerApi();
-    void testSetup();;
+    void testSetup(const QNetworkProxy& custom_proxy);;
     void checkOAuthValue(const QString& value);
     void checkUsername(const QString& username);
     void onAuthFailed();
@@ -38,6 +40,7 @@ class InoreaderAccountDetails : public QWidget {
     // If editing existing account, then the pointer points
     // directly to existing OAuth from the account.
     OAuth2Service* m_oauth;
+    QNetworkProxy m_lastProxy;
 };
 
 #endif // INOREADERACCOUNTDETAILS_H

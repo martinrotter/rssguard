@@ -17,45 +17,35 @@ FormEditGmailAccount::FormEditGmailAccount(QWidget* parent)
   activateTab(0);
 
   m_details->m_ui.m_txtUsername->setFocus();
+  connect(m_details->m_ui.m_btnTestSetup, &QPushButton::clicked, this, [this]() {
+    m_details->testSetup(m_proxyDetails->proxy());
+  });
 }
 
 void FormEditGmailAccount::apply() {
-  bool editing_account = !applyInternal<GmailServiceRoot>();
+  FormAccountDetails::apply();
 
-  if (!editing_account) {
-    // We transfer refresh token to avoid the need to login once more,
-    // then we delete testing OAuth service.
-    account<GmailServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
-    account<GmailServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
-    account<GmailServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
-    m_details->m_oauth->logout(true);
-    m_details->m_oauth->deleteLater();
-  }
-
+  // Make sure that the data copied from GUI are used for brand new login.
+  account<GmailServiceRoot>()->network()->oauth()->logout(false);
   account<GmailServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
   account<GmailServiceRoot>()->network()->oauth()->setClientSecret(m_details->m_ui.m_txtAppKey->lineEdit()->text());
   account<GmailServiceRoot>()->network()->oauth()->setRedirectUrl(m_details->m_ui.m_txtRedirectUrl->lineEdit()->text());
 
   account<GmailServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<GmailServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
+  account<GmailServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_cbDownloadOnlyUnreadMessages->isChecked());
 
-  account<GmailServiceRoot>()->saveAccountDataToDatabase(!editing_account);
+  account<GmailServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
-  if (editing_account) {
+  if (!m_creatingNew) {
     account<GmailServiceRoot>()->completelyRemoveAllData();
-    account<GmailServiceRoot>()->syncIn();
+    account<GmailServiceRoot>()->start(true);
   }
 }
 
-void FormEditGmailAccount::setEditableAccount(ServiceRoot* editable_account) {
-  FormAccountDetails::setEditableAccount(editable_account);
-
-  if (m_details->m_oauth != nullptr) {
-    // We will use live OAuth service for testing.
-    m_details->m_oauth->logout(true);
-    m_details->m_oauth->deleteLater();
-  }
+void FormEditGmailAccount::loadAccountData() {
+  FormAccountDetails::loadAccountData();
 
   m_details->m_oauth = account<GmailServiceRoot>()->network()->oauth();
   m_details->hookNetwork();
@@ -67,4 +57,5 @@ void FormEditGmailAccount::setEditableAccount(ServiceRoot* editable_account) {
 
   m_details->m_ui.m_txtUsername->lineEdit()->setText(account<GmailServiceRoot>()->network()->username());
   m_details->m_ui.m_spinLimitMessages->setValue(account<GmailServiceRoot>()->network()->batchSize());
+  m_details->m_ui.m_cbDownloadOnlyUnreadMessages->setChecked(account<GmailServiceRoot>()->network()->downloadOnlyUnreadMessages());
 }

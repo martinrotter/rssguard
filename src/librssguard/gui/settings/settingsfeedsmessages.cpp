@@ -8,7 +8,7 @@
 #include "gui/feedsview.h"
 #include "gui/guiutilities.h"
 #include "gui/messagesview.h"
-#include "gui/timespinbox.h"
+#include "gui/reusable/timespinbox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 
@@ -25,7 +25,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   initializeMessageDateFormats();
   GuiUtilities::setLabelAsNotice(*m_ui->label_9, false);
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
   m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_checkDisplayPlaceholders);
   m_ui->m_checkDisplayPlaceholders->hide();
 #else
@@ -37,6 +37,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_spinHeightRowsFeeds, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::requireRestart);
 
+  connect(m_ui->m_cbHideCountsIfNoUnread, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdateNotification, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdateOnlyUnfocused, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -66,6 +67,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_cmbCountsFeedList, &QComboBox::currentTextChanged, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbCountsFeedList, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkShowTooltips, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 
   connect(m_ui->m_btnChangeMessagesFont, &QPushButton::clicked, this, [&]() {
     changeFont(*m_ui->m_lblMessagesFont);
@@ -92,18 +94,19 @@ void SettingsFeedsMessages::initializeMessageDateFormats() {
   QStringList best_formats;
   const QDateTime current_dt = QDateTime::currentDateTime();
   const QLocale current_locale = qApp->localization()->loadedLocale();
+  auto installed_languages = qApp->localization()->installedLanguages();
 
-  for (const Language& lang : qApp->localization()->installedLanguages()) {
+  for (const Language& lang : qAsConst(installed_languages)) {
     QLocale locale(lang.m_code);
 
-    best_formats << locale.dateTimeFormat(QLocale::LongFormat)
-                 << locale.dateTimeFormat(QLocale::ShortFormat)
-                 << locale.dateTimeFormat(QLocale::NarrowFormat);
+    best_formats << locale.dateTimeFormat(QLocale::FormatType::LongFormat)
+                 << locale.dateTimeFormat(QLocale::FormatType::ShortFormat)
+                 << locale.dateTimeFormat(QLocale::FormatType::NarrowFormat);
   }
 
   best_formats.removeDuplicates();
 
-  for (const QString& format : best_formats) {
+  for (const QString& format : qAsConst(best_formats)) {
     m_ui->m_cmbMessagesDateTimeFormat->addItem(current_locale.toString(current_dt, format), format);
   }
 }
@@ -126,6 +129,7 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_spinHeightRowsMessages->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt());
   m_ui->m_spinHeightRowsFeeds->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt());
 
+  m_ui->m_cbHideCountsIfNoUnread->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool());
   m_ui->m_checkDisplayFeedIcons->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::DisplayFeedIconsInList)).toBool());
   m_ui->m_checkBringToForegroundAfterMsgOpened->setChecked(settings()->value(GROUP(Messages),
                                                                              SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool());
@@ -141,6 +145,7 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_cmbCountsFeedList->addItems(QStringList() << "(%unread)" << "[%unread]" << "%unread/%all" << "%unread-%all" << "[%unread|%all]");
   m_ui->m_cmbCountsFeedList->setEditText(settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString());
   m_ui->m_spinHeightImageAttachments->setValue(settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt());
+  m_ui->m_checkShowTooltips->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool());
 
 #if !defined (USE_WEBENGINE)
   m_ui->m_checkDisplayPlaceholders->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::DisplayImagePlaceholders)).toBool());
@@ -185,6 +190,7 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(GUI), GUI::HeightRowMessages, m_ui->m_spinHeightRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowFeeds, m_ui->m_spinHeightRowsFeeds->value());
 
+  settings()->setValue(GROUP(Feeds), Feeds::HideCountsIfNoUnread, m_ui->m_cbHideCountsIfNoUnread->isChecked());
   settings()->setValue(GROUP(Messages), Messages::DisplayFeedIconsInList, m_ui->m_checkDisplayFeedIcons->isChecked());
   settings()->setValue(GROUP(Messages), Messages::BringAppToFrontAfterMessageOpenedExternally,
                        m_ui->m_checkBringToForegroundAfterMsgOpened->isChecked());
@@ -200,6 +206,7 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::CountFormat, m_ui->m_cmbCountsFeedList->currentText());
   settings()->setValue(GROUP(Messages), Messages::UseCustomDate, m_ui->m_checkMessagesDateTimeFormat->isChecked());
   settings()->setValue(GROUP(Messages), Messages::MessageHeadImageHeight, m_ui->m_spinHeightImageAttachments->value());
+  settings()->setValue(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages, m_ui->m_checkShowTooltips->isChecked());
 
 #if !defined (USE_WEBENGINE)
   settings()->setValue(GROUP(Messages), Messages::DisplayImagePlaceholders, m_ui->m_checkDisplayPlaceholders->isChecked());

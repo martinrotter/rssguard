@@ -11,21 +11,15 @@
 #include "services/feedly/definitions.h"
 #include "services/feedly/feedlynetwork.h"
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 #include "network-web/oauth2service.h"
 #endif
 
 #include <QVariantHash>
 
-FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
-  m_oauth = new OAuth2Service(QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_AUTH,
-                              QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TOKEN,
-                              FEEDLY_CLIENT_ID,
-                              FEEDLY_CLIENT_SECRET,
-                              FEEDLY_API_SCOPE, this);
-
-  m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT));
+FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent), m_lastProxy({}) {
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
+  m_oauth = nullptr;
 #endif
 
   m_ui.setupUi(this);
@@ -37,7 +31,7 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_ui.m_lblInfo->setText(tr("Your %1 build has official Feedly support. You do not have to use \"developer acess "
                              "token\". You can therefore leave corresponding field empty.").arg(APP_NAME));
 #else
@@ -51,15 +45,6 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
                                           "Feedly automagically caches ALL messages of a feed forever so you might "
                                           "end with thousands of messages you will never read anyway."));
 
-  connect(m_ui.m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, [=](int value) {
-    if (value <= 0) {
-      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
-    }
-    else {
-      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("messages"));
-    }
-  });
-
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessagesInfo, true);
 
@@ -67,10 +52,6 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FeedlyAccountDetails::onUsernameChanged);
   connect(m_ui.m_txtDeveloperAccessToken->lineEdit(), &BaseLineEdit::textChanged,
           this, &FeedlyAccountDetails::onDeveloperAccessTokenChanged);
-
-  m_ui.m_spinLimitMessages->setMinimum(FEEDLY_UNLIMITED_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setMaximum(FEEDLY_MAX_BATCH_SIZE);
-  m_ui.m_spinLimitMessages->setValue(FEEDLY_DEFAULT_BATCH_SIZE);
 
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_btnGetToken);
   setTabOrder(m_ui.m_btnGetToken, m_ui.m_txtDeveloperAccessToken->lineEdit());
@@ -81,7 +62,7 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent) {
   onDeveloperAccessTokenChanged();
   onUsernameChanged();
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   hookNetwork();
 #endif
 }
@@ -90,7 +71,7 @@ void FeedlyAccountDetails::getDeveloperAccessToken() {
   qApp->web()->openUrlInExternalBrowser(FEEDLY_GENERATE_DAT);
 }
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 
 void FeedlyAccountDetails::hookNetwork() {
   connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &FeedlyAccountDetails::onAuthGranted);
@@ -113,35 +94,47 @@ void FeedlyAccountDetails::onAuthError(const QString& error, const QString& deta
 }
 
 void FeedlyAccountDetails::onAuthGranted() {
-  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                  tr("Tested successfully. You may be prompted to login once more."),
-                                  tr("Your access was approved."));
+  FeedlyNetwork factory;
+
+  factory.setOauth(m_oauth);
+
+  try {
+    auto prof = factory.profile(m_lastProxy);
+
+    m_ui.m_txtUsername->lineEdit()->setText(prof["email"].toString());
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                    tr("Tested successfully. You may be prompted to login once more."),
+                                    tr("Your access was approved."));
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_FEEDLY
+                << "Failed to obtain profile with error:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+  }
 }
 
 #endif
 
 void FeedlyAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+  m_lastProxy = custom_proxy;
+
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_oauth->logout(false);
 
   if (m_ui.m_txtDeveloperAccessToken->lineEdit()->text().simplified().isEmpty()) {
-    if (m_oauth->login()) {
-      m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                      tr("You are already logged in."),
-                                      tr("Access granted."));
-    }
-
+    m_oauth->login();
     return;
   }
 #endif
 
   FeedlyNetwork factory;
 
-  factory.setUsername(m_ui.m_txtUsername->lineEdit()->text());
   factory.setDeveloperAccessToken(m_ui.m_txtDeveloperAccessToken->lineEdit()->text());
 
   try {
-    m_ui.m_txtUsername->lineEdit()->setText(factory.profile(custom_proxy)["email"].toString());
+    auto prof = factory.profile(custom_proxy);
+
+    m_ui.m_txtUsername->lineEdit()->setText(prof["email"].toString());
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                     tr("Login was successful."),
                                     tr("Access granted."));
@@ -168,7 +161,7 @@ void FeedlyAccountDetails::onDeveloperAccessTokenChanged() {
   const QString token = m_ui.m_txtDeveloperAccessToken->lineEdit()->text();
 
   if (token.isEmpty()) {
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
     WidgetWithStatus::StatusType stat = WidgetWithStatus::StatusType::Ok;
 #else
     WidgetWithStatus::StatusType stat = WidgetWithStatus::StatusType::Error;

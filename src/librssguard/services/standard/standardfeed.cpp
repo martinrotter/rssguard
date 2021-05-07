@@ -2,20 +2,23 @@
 
 #include "services/standard/standardfeed.h"
 
+#include "3rd-party/sc/simplecrypt.h"
 #include "core/feedsmodel.h"
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "exceptions/networkexception.h"
+#include "exceptions/scriptexception.h"
 #include "exceptions/scriptexception.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
-#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
-#include "miscellaneous/simplecrypt/simplecrypt.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/recyclebin.h"
 #include "services/standard/atomparser.h"
+#include "services/standard/definitions.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/jsonparser.h"
 #include "services/standard/rdfparser.h"
@@ -40,6 +43,10 @@ StandardFeed::StandardFeed(RootItem* parent_item)
   m_type = Type::Rss0X;
   m_sourceType = SourceType::Url;
   m_encoding = m_postProcessScript = QString();
+
+  m_passwordProtected = false;
+  m_username = QString();
+  m_password = QString();
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other)
@@ -49,10 +56,9 @@ StandardFeed::StandardFeed(const StandardFeed& other)
   m_postProcessScript = other.postProcessScript();
   m_sourceType = other.sourceType();
   m_encoding = other.encoding();
-}
-
-StandardFeed::~StandardFeed() {
-  qDebugNN << LOGSEC_CORE << "Destroying StandardFeed instance.";
+  m_passwordProtected = other.passwordProtected();
+  m_username = other.username();
+  m_password = other.password();
 }
 
 QList<QAction*> StandardFeed::contextMenuFeedsList() {
@@ -67,10 +73,6 @@ QString StandardFeed::additionalTooltip() const {
                                                         StandardFeed::typeToString(type()));
 }
 
-bool StandardFeed::canBeEdited() const {
-  return true;
-}
-
 bool StandardFeed::canBeDeleted() const {
   return true;
 }
@@ -81,9 +83,11 @@ StandardServiceRoot* StandardFeed::serviceRoot() const {
 
 bool StandardFeed::editViaGui() {
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(serviceRoot(),
+                                                                                   nullptr,
+                                                                                   {},
                                                                                    qApp->mainFormWidget()));
 
-  form_pointer->addEditFeed(this, this);
+  form_pointer->addEditFeed(this);
   return false;
 }
 
@@ -95,6 +99,54 @@ bool StandardFeed::deleteViaGui() {
   else {
     return false;
   }
+}
+
+bool StandardFeed::passwordProtected() const {
+  return m_passwordProtected;
+}
+
+void StandardFeed::setPasswordProtected(bool passwordProtected) {
+  m_passwordProtected = passwordProtected;
+}
+
+QString StandardFeed::username() const {
+  return m_username;
+}
+
+void StandardFeed::setUsername(const QString& username) {
+  m_username = username;
+}
+
+QString StandardFeed::password() const {
+  return m_password;
+}
+
+void StandardFeed::setPassword(const QString& password) {
+  m_password = password;
+}
+
+QVariantHash StandardFeed::customDatabaseData() const {
+  QVariantHash data;
+
+  data["source_type"] = int(sourceType());
+  data["type"] = int(type());
+  data["encoding"] = encoding();
+  data["post_process"] = postProcessScript();
+  data["protected"] = passwordProtected();
+  data["username"] = username();
+  data["password"] = TextFactory::encrypt(password());
+
+  return data;
+}
+
+void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
+  setSourceType(SourceType(data["source_type"].toInt()));
+  setType(Type(data["type"].toInt()));
+  setEncoding(data["encoding"].toString());
+  setPostProcessScript(data["post_process"].toString());
+  setPasswordProtected(data["protected"].toBool());
+  setUsername(data["username"].toString());
+  setPassword(TextFactory::decrypt(data["password"].toString()));
 }
 
 QString StandardFeed::typeToString(StandardFeed::Type type) {
@@ -134,37 +186,36 @@ QString StandardFeed::sourceTypeToString(StandardFeed::SourceType type) {
 }
 
 void StandardFeed::fetchMetadataForItself() {
-  bool result;
-  StandardFeed* metadata = guessFeed(sourceType(),
-                                     url(),
-                                     postProcessScript(),
-                                     &result,
-                                     username(),
-                                     password(),
-                                     getParentServiceRoot()->networkProxy());
+  try {
+    StandardFeed* metadata = guessFeed(sourceType(),
+                                       source(),
+                                       postProcessScript(),
+                                       username(),
+                                       password(),
+                                       getParentServiceRoot()->networkProxy());
 
-  if (metadata != nullptr && result) {
-    // Some properties are not updated when new metadata are fetched.
-    metadata->setParent(parent());
-    metadata->setUrl(url());
-    metadata->setPasswordProtected(passwordProtected());
-    metadata->setUsername(username());
-    metadata->setPassword(password());
-    metadata->setAutoUpdateType(autoUpdateType());
-    metadata->setAutoUpdateInitialInterval(autoUpdateInitialInterval());
-    metadata->setPostProcessScript(postProcessScript());
-    metadata->setSourceType(sourceType());
-    editItself(metadata);
-    delete metadata;
+    // Copy metadata to our object.
+    setTitle(metadata->title());
+    setDescription(metadata->description());
+    setType(metadata->type());
+    setEncoding(metadata->encoding());
+    setIcon(metadata->icon());
+    metadata->deleteLater();
 
-    // Notify the model about fact, that it needs to reload new information about
-    // this item, particularly the icon.
-    serviceRoot()->itemChanged(QList<RootItem*>() << this);
+    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+    DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), parent()->id());
+    serviceRoot()->itemChanged({ this });
   }
-  else {
-    qApp->showGuiMessage(tr("Metadata not fetched"),
-                         tr("Metadata was not fetched."),
-                         QSystemTrayIcon::MessageIcon::Critical);
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_DB
+                << "Cannot overwrite feed:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+    qApp->showGuiMessage(tr("Error"),
+                         tr("Cannot save data for feed: %1").arg(ex.message()),
+                         QSystemTrayIcon::MessageIcon::Critical,
+                         nullptr,
+                         true);
   }
 }
 
@@ -180,14 +231,13 @@ StandardFeed::SourceType StandardFeed::sourceType() const {
   return m_sourceType;
 }
 
-void StandardFeed::setSourceType(const SourceType& source_type) {
+void StandardFeed::setSourceType(SourceType source_type) {
   m_sourceType = source_type;
 }
 
 StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
                                       const QString& source,
                                       const QString& post_process_script,
-                                      bool* result,
                                       const QString& username,
                                       const QString& password,
                                       const QNetworkProxy& custom_proxy) {
@@ -212,8 +262,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     content_type = network_result.second.toString();
 
     if (network_result.first != QNetworkReply::NetworkError::NoError) {
-      *result = false;
-      return nullptr;
+      throw NetworkException(network_result.first);
     }
   }
   else {
@@ -223,37 +272,14 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
              << "to obtain feed data.";
 
     // Use script to generate feed file.
-    try {
-      feed_contents = generateFeedFileWithScript(source, timeout).toUtf8();
-    }
-    catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_CORE
-                  << "Custom script for generating feed file failed during guessing:"
-                  << QUOTE_W_SPACE_DOT(ex.message());
-
-      *result = false;
-      return nullptr;
-    }
+    feed_contents = generateFeedFileWithScript(source, timeout).toUtf8();
   }
 
   if (!post_process_script.simplified().isEmpty()) {
     qDebugNN << LOGSEC_CORE
              << "Post-processing obtained feed data with custom script for guessing"
              << QUOTE_W_SPACE_DOT(post_process_script);
-
-    try {
-      feed_contents = postProcessFeedFileWithScript(post_process_script,
-                                                    feed_contents,
-                                                    timeout).toUtf8();
-    }
-    catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_CORE
-                  << "Post-processing script for feed file for guessing failed:"
-                  << QUOTE_W_SPACE_DOT(ex.message());
-
-      *result = false;
-      return nullptr;
-    }
+    feed_contents = postProcessFeedFileWithScript(post_process_script, feed_contents, timeout).toUtf8();
   }
 
   StandardFeed* feed = nullptr;
@@ -267,8 +293,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
   // only use its domain and download via DuckDuckGo.
   QList<QPair<QString, bool>> icon_possible_locations;
 
-  if (content_type.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive) ||
-      feed_contents.startsWith('{')) {
+  if (content_type.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive) || feed_contents.startsWith('{')) {
     feed = new StandardFeed();
 
     // We have JSON feed.
@@ -303,9 +328,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     QString xml_schema_encoding;
     QString xml_contents_encoded;
     QString enc = QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""),
-                                     QRegularExpression::PatternOption::CaseInsensitiveOption)
-                  .match(feed_contents)
-                  .captured(1);
+                                     QRegularExpression::PatternOption::CaseInsensitiveOption).match(feed_contents).captured(1);
 
     if (!enc.isEmpty()) {
       // Some "encoding" attribute was found get the encoding
@@ -337,13 +360,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
                                  &error_msg,
                                  &error_line,
                                  &error_column)) {
-      qDebugNN << LOGSEC_CORE
-               << "XML of feed" << QUOTE_W_SPACE(source) << "is not valid and cannot be loaded. "
-               << "Error:" << QUOTE_W_SPACE(error_msg) << "(line " << error_line
-               << ", column " << error_column << ").";
-
-      *result = false;
-      return nullptr;
+      throw ApplicationException(tr("XML is not well-formed, %1").arg(error_msg));
     }
 
     feed = new StandardFeed();
@@ -420,9 +437,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
       // File was downloaded and it really was XML file
       // but feed format was NOT recognized.
       feed->deleteLater();
-
-      *result = false;
-      return nullptr;
+      throw ApplicationException(tr("XML feed file format unrecognized"));
     }
   }
 
@@ -442,7 +457,6 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     feed->setIcon(icon_data);
   }
 
-  *result = true;
   return feed;
 }
 
@@ -451,85 +465,30 @@ Qt::ItemFlags StandardFeed::additionalFlags() const {
 }
 
 bool StandardFeed::performDragDropChange(RootItem* target_item) {
-  auto* feed_new = new StandardFeed(*this);
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  feed_new->setParent(target_item);
-
-  if (editItself(feed_new)) {
+  try {
+    DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), target_item->id());
     serviceRoot()->requestItemReassignment(this, target_item);
-    delete feed_new;
     return true;
   }
-  else {
-    delete feed_new;
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_DB
+                << "Cannot overwrite feed:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+    qApp->showGuiMessage(tr("Error"),
+                         tr("Cannot move feed, detailed information was logged via debug log."),
+                         QSystemTrayIcon::MessageIcon::Critical,
+                         nullptr,
+                         true);
     return false;
   }
 }
 
 bool StandardFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, customId().toInt(), getParentServiceRoot()->accountId());
-}
-
-bool StandardFeed::addItself(RootItem* parent) {
-  // Now, add feed to persistent storage.
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  bool ok;
-  int new_id = DatabaseQueries::addStandardFeed(database, parent->id(), parent->getParentServiceRoot()->accountId(),
-                                                title(), description(), creationDate(), icon(), encoding(), url(),
-                                                passwordProtected(), username(), password(), autoUpdateType(),
-                                                autoUpdateInitialInterval(), sourceType(), postProcessScript(),
-                                                type(), &ok);
-
-  if (!ok) {
-    // Query failed.
-    return false;
-  }
-  else {
-    // New feed was added, fetch is primary id from the database.
-    setId(new_id);
-    setCustomId(QString::number(new_id));
-    return true;
-  }
-}
-
-bool StandardFeed::editItself(StandardFeed* new_feed_data) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  StandardFeed* original_feed = this;
-  RootItem* new_parent = new_feed_data->parent();
-
-  if (!DatabaseQueries::editStandardFeed(database, new_parent->id(), original_feed->id(), new_feed_data->title(),
-                                         new_feed_data->description(), new_feed_data->icon(),
-                                         new_feed_data->encoding(), new_feed_data->url(), new_feed_data->passwordProtected(),
-                                         new_feed_data->username(), new_feed_data->password(),
-                                         new_feed_data->autoUpdateType(), new_feed_data->autoUpdateInitialInterval(),
-                                         new_feed_data->sourceType(), new_feed_data->postProcessScript(),
-                                         new_feed_data->type())) {
-    // Persistent storage update failed, no way to continue now.
-    qWarningNN << LOGSEC_CORE
-               << "Self-editing of standard feed failed.";
-    return false;
-  }
-
-  // Setup new model data for the original item.
-  original_feed->setTitle(new_feed_data->title());
-  original_feed->setDescription(new_feed_data->description());
-  original_feed->setIcon(new_feed_data->icon());
-  original_feed->setEncoding(new_feed_data->encoding());
-  original_feed->setDescription(new_feed_data->description());
-  original_feed->setUrl(new_feed_data->url());
-  original_feed->setPasswordProtected(new_feed_data->passwordProtected());
-  original_feed->setUsername(new_feed_data->username());
-  original_feed->setPassword(new_feed_data->password());
-  original_feed->setAutoUpdateType(new_feed_data->autoUpdateType());
-  original_feed->setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
-  original_feed->setType(new_feed_data->type());
-  original_feed->setSourceType(new_feed_data->sourceType());
-  original_feed->setPostProcessScript(new_feed_data->postProcessScript());
-
-  // Editing is done.
-  return true;
 }
 
 StandardFeed::Type StandardFeed::type() const {
@@ -548,138 +507,15 @@ void StandardFeed::setEncoding(const QString& encoding) {
   m_encoding = encoding;
 }
 
-QList<Message> StandardFeed::obtainNewMessages(bool* error_during_obtaining) {
-  QString formatted_feed_contents;
-  int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-
-  if (sourceType() == SourceType::Url) {
-    qDebugNN << LOGSEC_CORE
-             << "Downloading URL"
-             << QUOTE_W_SPACE(url())
-             << "to obtain feed data.";
-
-    QByteArray feed_contents;
-    QList<QPair<QByteArray, QByteArray>> headers;
-
-    headers << NetworkFactory::generateBasicAuthHeader(username(), password());
-    m_networkError = NetworkFactory::performNetworkOperation(url(),
-                                                             download_timeout,
-                                                             QByteArray(),
-                                                             feed_contents,
-                                                             QNetworkAccessManager::Operation::GetOperation,
-                                                             headers,
-                                                             false,
-                                                             {},
-                                                             {},
-                                                             getParentServiceRoot()->networkProxy()).first;
-
-    if (m_networkError != QNetworkReply::NetworkError::NoError) {
-      qWarningNN << LOGSEC_CORE
-                 << "Error"
-                 << QUOTE_W_SPACE(m_networkError)
-                 << "during fetching of new messages for feed"
-                 << QUOTE_W_SPACE_DOT(url());
-      setStatus(Status::NetworkError);
-      *error_during_obtaining = true;
-      return QList<Message>();
-    }
-    else {
-      *error_during_obtaining = false;
-    }
-
-    // Encode downloaded data for further parsing.
-    QTextCodec* codec = QTextCodec::codecForName(encoding().toLocal8Bit());
-
-    if (codec == nullptr) {
-      // No suitable codec for this encoding was found.
-      // Use non-converted data.
-      formatted_feed_contents = feed_contents;
-    }
-    else {
-      formatted_feed_contents = codec->toUnicode(feed_contents);
-    }
-  }
-  else {
-    qDebugNN << LOGSEC_CORE
-             << "Running custom script"
-             << QUOTE_W_SPACE(url())
-             << "to obtain feed data.";
-
-    // Use script to generate feed file.
-    try {
-      formatted_feed_contents = generateFeedFileWithScript(url(), download_timeout);
-    }
-    catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_CORE
-                  << "Custom script for generating feed file failed:"
-                  << QUOTE_W_SPACE_DOT(ex.message());
-
-      setStatus(Status::OtherError);
-      *error_during_obtaining = true;
-      return {};
-    }
-  }
-
-  if (!postProcessScript().simplified().isEmpty()) {
-    qDebugNN << LOGSEC_CORE
-             << "Post-processing obtained feed data with custom script"
-             << QUOTE_W_SPACE_DOT(postProcessScript());
-
-    try {
-      formatted_feed_contents = postProcessFeedFileWithScript(postProcessScript(),
-                                                              formatted_feed_contents,
-                                                              download_timeout);
-    }
-    catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_CORE
-                  << "Post-processing script for feed file failed:"
-                  << QUOTE_W_SPACE_DOT(ex.message());
-
-      setStatus(Status::OtherError);
-      *error_during_obtaining = true;
-      return {};
-    }
-  }
-
-  // Feed data are downloaded and encoded.
-  // Parse data and obtain messages.
-  QList<Message> messages;
-
-  switch (type()) {
-    case StandardFeed::Type::Rss0X:
-    case StandardFeed::Type::Rss2X:
-      messages = RssParser(formatted_feed_contents).messages();
-      break;
-
-    case StandardFeed::Type::Rdf:
-      messages = RdfParser().parseXmlData(formatted_feed_contents);
-      break;
-
-    case StandardFeed::Type::Atom10:
-      messages = AtomParser(formatted_feed_contents).messages();
-      break;
-
-    case StandardFeed::Type::Json:
-      messages = JsonParser(formatted_feed_contents).messages();
-      break;
-
-    default:
-      break;
-  }
-
-  return messages;
-}
-
 QStringList StandardFeed::prepareExecutionLine(const QString& execution_line) {
-  auto split_exec = execution_line.split('#',
+  auto split_exec = execution_line.split(EXECUTION_LINE_SEPARATOR,
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
                                          Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
                                          QString::SplitBehavior::SkipEmptyParts);
 #endif
-  auto user_data_folder = qApp->userDataFolder();
 
-  return split_exec.replaceInStrings(EXECUTION_LINE_USER_DATA_PLACEHOLDER, user_data_folder);
+  return qApp->replaceDataUserDataFolderPlaceholder(split_exec);
 }
 
 QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QString& working_directory,
@@ -711,7 +547,9 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QStrin
     process.closeWriteChannel();
   }
 
-  if (process.waitForFinished(run_timeout) && process.exitStatus() == QProcess::ExitStatus::NormalExit) {
+  if (process.waitForFinished(run_timeout) &&
+      process.exitStatus() == QProcess::ExitStatus::NormalExit &&
+      process.exitCode() == EXIT_SUCCESS) {
     auto raw_output = process.readAllStandardOutput();
     auto raw_error = process.readAllStandardError();
 
@@ -728,6 +566,10 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QStrin
 
     auto raw_error = process.readAllStandardError().simplified();
 
+    if (raw_error.isEmpty()) {
+      raw_error = process.readAllStandardOutput().simplified();
+    }
+
     switch (process.error()) {
       case QProcess::ProcessError::Timedout:
         throw ScriptException(ScriptException::Reason::InterpreterTimeout);
@@ -736,6 +578,10 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QStrin
         throw ScriptException(ScriptException::Reason::InterpreterError, raw_error);
     }
   }
+}
+
+void StandardFeed::setNetworkError(const QNetworkReply::NetworkError& network_error) {
+  m_networkError = network_error;
 }
 
 QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, int run_timeout) {
@@ -754,25 +600,4 @@ QString StandardFeed::postProcessFeedFileWithScript(const QString& execution_lin
 
 QNetworkReply::NetworkError StandardFeed::networkError() const {
   return m_networkError;
-}
-
-StandardFeed::StandardFeed(const QSqlRecord& record) : Feed(record) {
-  setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
-  setSourceType(SourceType(record.value(FDS_DB_SOURCE_TYPE_INDEX).toInt()));
-  setPostProcessScript(record.value(FDS_DB_POST_PROCESS).toString());
-
-  StandardFeed::Type type = static_cast<StandardFeed::Type>(record.value(FDS_DB_TYPE_INDEX).toInt());
-
-  switch (type) {
-    case StandardFeed::Type::Atom10:
-    case StandardFeed::Type::Rdf:
-    case StandardFeed::Type::Rss0X:
-    case StandardFeed::Type::Rss2X:
-    case StandardFeed::Type::Json: {
-      setType(type);
-      break;
-    }
-  }
-
-  m_networkError = QNetworkReply::NetworkError::NoError;
 }

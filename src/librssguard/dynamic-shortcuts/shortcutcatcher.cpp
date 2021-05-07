@@ -2,7 +2,7 @@
 
 #include "dynamic-shortcuts/shortcutcatcher.h"
 
-#include "gui/plaintoolbutton.h"
+#include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QHBoxLayout>
@@ -19,18 +19,18 @@ ShortcutCatcher::ShortcutCatcher(QWidget* parent)
   // Create reset button.
   m_btnReset = new PlainToolButton(this);
   m_btnReset->setIcon(qApp->icons()->fromTheme(QSL("document-revert")));
-  m_btnReset->setFocusPolicy(Qt::NoFocus);
+  m_btnReset->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   m_btnReset->setToolTip(tr("Reset to original shortcut."));
 
   // Create clear button.
   m_btnClear = new PlainToolButton(this);
   m_btnClear->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
-  m_btnClear->setFocusPolicy(Qt::NoFocus);
+  m_btnClear->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   m_btnClear->setToolTip(tr("Clear current shortcut."));
 
   // Clear main shortcut catching button.
   m_shortcutBox = new QKeySequenceEdit(this);
-  m_shortcutBox->setFocusPolicy(Qt::StrongFocus);
+  m_shortcutBox->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
   m_shortcutBox->setMinimumWidth(170);
   m_shortcutBox->setToolTip(tr("Click and hit new shortcut."));
 

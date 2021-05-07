@@ -12,27 +12,25 @@
 
 void ExternalTool::sanitizeParameters() {
   m_executable = QDir::toNativeSeparators(m_executable);
-  m_parameters.removeDuplicates();
-  m_parameters.removeAll(QString());
 }
 
 ExternalTool::ExternalTool(const ExternalTool& other) : ExternalTool(other.executable(), other.parameters()) {}
 
-ExternalTool::ExternalTool(QString executable, QStringList parameters)
+ExternalTool::ExternalTool(QString executable, QString parameters)
   : m_executable(std::move(executable)), m_parameters(std::move(parameters)) {
   sanitizeParameters();
 }
 
 QString ExternalTool::toString() {
   sanitizeParameters();
-  return m_executable + EXTERNAL_TOOL_SEPARATOR + m_parameters.join(EXTERNAL_TOOL_PARAM_SEPARATOR);
+  return m_executable + EXTERNAL_TOOL_SEPARATOR + m_parameters;
 }
 
 QString ExternalTool::executable() const {
   return m_executable;
 }
 
-QStringList ExternalTool::parameters() const {
+QString ExternalTool::parameters() const {
   return m_parameters;
 }
 
@@ -44,7 +42,7 @@ ExternalTool ExternalTool::fromString(const QString& str) {
   }
   else {
     const QString& executable = outer.at(0);
-    const QStringList parameters = outer.at(1).split(EXTERNAL_TOOL_PARAM_SEPARATOR);
+    const QString& parameters = outer.at(1);
 
     return ExternalTool(executable, parameters);
   }
@@ -69,4 +67,8 @@ void ExternalTool::setToolsToSettings(QList<ExternalTool>& tools) {
   }
 
   qApp->settings()->setValue(GROUP(Browser), Browser::ExternalTools, encode);
+}
+
+bool ExternalTool::run(const QString& target) {
+  return IOFactory::startProcessDetached(executable(), QStringList() << parameters() << target);
 }

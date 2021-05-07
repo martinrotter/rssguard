@@ -11,16 +11,12 @@ class SettingsFeedsMessages : public SettingsPanel {
   Q_OBJECT
 
   public:
-    explicit SettingsFeedsMessages(Settings* settings, QWidget* parent = 0);
+    explicit SettingsFeedsMessages(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsFeedsMessages();
 
-    inline QString title() const {
-      return tr("Feeds & messages");
-    }
-
-    void loadSettings();
-
-    void saveSettings();
+    virtual QString title() const;
+    virtual void loadSettings();
+    virtual void saveSettings();
 
   private:
     void changeFont(QLabel& lbl);
@@ -30,5 +26,9 @@ class SettingsFeedsMessages : public SettingsPanel {
 
     Ui::SettingsFeedsMessages* m_ui;
 };
+
+inline QString SettingsFeedsMessages::title() const {
+  return tr("Feeds & messages");
+}
 
 #endif // SETTINGSFEEDSMESSAGES_H

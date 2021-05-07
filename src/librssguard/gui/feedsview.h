@@ -45,7 +45,7 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
 
     void addFeedIntoSelectedAccount();
     void addCategoryIntoSelectedAccount();
-    void expandCollapseCurrentItem();
+    void expandCollapseCurrentItem(bool recursive);
 
     // Feed updating.
     void updateSelectedItems();
@@ -74,6 +74,8 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
 
     // Switches visibility of the widget.
     void switchVisibility();
+
+    void filterItems(const QString& pattern);
 
   signals:
     void itemSelected(RootItem* item);

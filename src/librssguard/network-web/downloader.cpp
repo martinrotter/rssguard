@@ -2,10 +2,14 @@
 
 #include "network-web/downloader.h"
 
+#include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
+#include "network-web/cookiejar.h"
 #include "network-web/silentnetworkaccessmanager.h"
+#include "network-web/webfactory.h"
 
 #include <QHttpMultiPart>
+#include <QNetworkCookie>
 #include <QRegularExpression>
 #include <QTimer>
 
@@ -17,6 +21,9 @@ Downloader::Downloader(QObject* parent)
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
   connect(m_timer, &QTimer::timeout, this, &Downloader::cancel);
+
+  m_downloadManager->setCookieJar(qApp->web()->cookieJar());
+  qApp->web()->cookieJar()->setParent(nullptr);
 }
 
 Downloader::~Downloader() {
@@ -53,6 +60,13 @@ void Downloader::manipulateData(const QString& url,
                                 bool protected_contents,
                                 const QString& username,
                                 const QString& password) {
+
+  auto cookies = CookieJar::extractCookiesFromUrl(url);
+
+  if (!cookies.isEmpty()) {
+    qApp->web()->cookieJar()->setCookiesFromUrl(cookies, url);
+  }
+
   QNetworkRequest request;
   QString non_const_url = url;
   QHashIterator<QByteArray, QByteArray> i(m_customHeaders);
@@ -113,7 +127,7 @@ void Downloader::finished() {
     m_lastOutputMultipartData = decodeMultipartAnswer(reply);
   }
 
-  m_lastContentType = reply->header(QNetworkRequest::ContentTypeHeader);
+  m_lastContentType = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader);
   m_lastOutputError = reply->error();
   m_activeReply->deleteLater();
   m_activeReply = nullptr;
@@ -153,7 +167,7 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
                                                    Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                   QString::SkipEmptyParts);
+                                                   QString::SplitBehavior::SkipEmptyParts);
 #endif
 
   QList<HttpResponse> parts;
@@ -171,17 +185,18 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
                                             start_of_body - start_of_headers).replace(QRegularExpression(QSL("[\\n\\r]+")),
                                                                                       QSL("\n"));
 
-    for (const QString& header_line : headers.split(QL1C('\n'),
+    auto header_lines = headers.split(QL1C('\n'),
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                    Qt::SplitBehaviorFlags::SkipEmptyParts)) {
+                                      Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                    QString::SkipEmptyParts)) {
+                                      QString::SplitBehavior::SkipEmptyParts);
 #endif
+
+    for (const QString& header_line : qAsConst(header_lines)) {
       int index_colon = header_line.indexOf(QL1C(':'));
 
       if (index_colon > 0) {
-        new_part.appendHeader(header_line.mid(0, index_colon),
-                              header_line.mid(index_colon + 2));
+        new_part.appendHeader(header_line.mid(0, index_colon), header_line.mid(index_colon + 2));
       }
     }
 

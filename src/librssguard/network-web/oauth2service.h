@@ -26,10 +26,13 @@
 #define OAUTH2SERVICE_H
 
 #include <QObject>
-#include <QUrl>
 
 #include "network-web/oauthhttphandler.h"
 #include "network-web/silentnetworkaccessmanager.h"
+
+#include <functional>
+
+#include <QUrl>
 
 class OAuth2Service : public QObject {
   Q_OBJECT
@@ -71,6 +74,13 @@ class OAuth2Service : public QObject {
     QString id() const;
     void setId(const QString& id);
 
+    // Super secret fallback client ID/SECRET.
+    QString clientSecretId() const;
+    void setClientSecretId(const QString& client_secret_id);
+
+    QString clientSecretSecret() const;
+    void setClientSecretSecret(const QString& client_secret_secret);
+
   signals:
     void tokensRetrieved(QString access_token, QString refresh_token, int expires_in);
     void tokensRetrieveError(QString error, QString error_description);
@@ -89,10 +99,7 @@ class OAuth2Service : public QObject {
     //
     // Returns true, if user is already logged in (final state).
     // Returns false, if user is NOT logged in (asynchronous flow).
-    //
-    // NOTE: This can be called ONLY on main GUI thread,
-    // because widgets may be displayed.
-    bool login();
+    bool login(const std::function<void()>& functor_when_logged_in = std::function<void()>());
 
     // Removes all state data and stops redirection handler.
     void logout(bool stop_redirection_handler = true);
@@ -103,6 +110,9 @@ class OAuth2Service : public QObject {
     void tokenRequestFinished(QNetworkReply* network_reply);
 
   private:
+    QString properClientId() const;
+    QString properClientSecret() const;
+
     void timerEvent(QTimerEvent* event);
 
   private:
@@ -114,11 +124,14 @@ class OAuth2Service : public QObject {
     QString m_tokenGrantType;
     QString m_clientId;
     QString m_clientSecret;
+    QString m_clientSecretId;
+    QString m_clientSecretSecret;
     QUrl m_tokenUrl;
     QString m_authUrl;
     QString m_scope;
     SilentNetworkAccessManager m_networkManager;
     OAuthHttpHandler* m_redirectionHandler;
+    std::function<void()> m_functorOnLogin;
 };
 
 #endif // OAUTH2SERVICE_H

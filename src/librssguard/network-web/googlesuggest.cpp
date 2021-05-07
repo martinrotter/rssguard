@@ -31,7 +31,7 @@
 #include "network-web/googlesuggest.h"
 
 #include "definitions/definitions.h"
-#include "gui/locationlineedit.h"
+#include "gui/reusable/locationlineedit.h"
 #include "network-web/downloader.h"
 
 #include <QDomDocument>
@@ -45,13 +45,13 @@
 
 GoogleSuggest::GoogleSuggest(LocationLineEdit* editor, QObject* parent)
   : QObject(parent), editor(editor), m_downloader(new Downloader(this)), popup(new QListWidget()), m_enteredText(QString()) {
-  popup->setWindowFlags(Qt::Popup);
-  popup->setFocusPolicy(Qt::NoFocus);
+  popup->setWindowFlags(Qt::WindowType::Popup);
+  popup->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   popup->setFocusProxy(editor);
   popup->setMouseTracking(true);
-  popup->setSelectionBehavior(QAbstractItemView::SelectRows);
-  popup->setFrameStyle(QFrame::Box | QFrame::Plain);
-  popup->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  popup->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectRows);
+  popup->setFrameStyle(QFrame::Shape::Box | QFrame::Shadow::Plain);
+  popup->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
   popup->installEventFilter(this);
   timer = new QTimer(this);
   timer->setSingleShot(true);

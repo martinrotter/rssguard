@@ -26,11 +26,15 @@
 #define DEFAULT_VALUE(x) x ## Def
 #define GROUP(x) x::ID
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 namespace WebEngineAttributes {
   KEY ID;
 }
 #endif
+
+namespace Cookies {
+  KEY ID;
+}
 
 namespace AdBlock {
   KEY ID;
@@ -38,11 +42,11 @@ namespace AdBlock {
   KEY AdBlockEnabled;
   VALUE(bool) AdBlockEnabledDef;
 
-  KEY DisabledRules;
-  VALUE(QStringList) DisabledRulesDef;
+  KEY FilterLists;
+  VALUE(QStringList) FilterListsDef;
 
-  KEY LastUpdatedOn;
-  VALUE(QDateTime) LastUpdatedOnDef;
+  KEY CustomFilters;
+  VALUE(QStringList) CustomFiltersDef;
 }
 
 // Feeds.
@@ -57,6 +61,9 @@ namespace Feeds {
 
   KEY CountFormat;
   VALUE(char*) CountFormatDef;
+
+  KEY EnableTooltipsFeedsMessages;
+  VALUE(bool) EnableTooltipsFeedsMessagesDef;
 
   KEY AutoUpdateInterval;
   VALUE(int) AutoUpdateIntervalDef;
@@ -78,6 +85,9 @@ namespace Feeds {
 
   KEY ShowTreeBranches;
   VALUE(bool) ShowTreeBranchesDef;
+
+  KEY HideCountsIfNoUnread;
+  VALUE(bool) HideCountsIfNoUnreadDef;
 
   KEY AutoExpandOnSelection;
   VALUE(bool) AutoExpandOnSelectionDef;

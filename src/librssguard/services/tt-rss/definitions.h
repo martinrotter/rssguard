@@ -14,6 +14,7 @@
 #define TTRSS_INCORRECT_USAGE   "INCORRECT_USAGE" // Given "op" was used with bad parameters.
 
 // Limitations
+#define TTRSS_DEFAULT_MESSAGES  100
 #define TTRSS_MAX_MESSAGES      200
 
 // General return status codes.

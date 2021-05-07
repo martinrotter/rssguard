@@ -8,9 +8,9 @@
 #include "core/feedsproxymodel.h"
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
+#include "database/databasequeries.h"
 #include "gui/dialogs/formmessagefiltersmanager.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/mutex.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
@@ -162,15 +162,15 @@ void FeedReader::loadSavedMessageFilters() {
   // Load all message filters from database.
   // All plugin services will hook active filters to
   // all feeds.
-  m_messageFilters = DatabaseQueries::getMessageFilters(qApp->database()->connection(metaObject()->className()));
+  m_messageFilters = DatabaseQueries::getMessageFilters(qApp->database()->driver()->connection(metaObject()->className()));
 
-  for (auto* filter : m_messageFilters) {
+  for (auto* filter : qAsConst(m_messageFilters)) {
     filter->setParent(this);
   }
 }
 
 MessageFilter* FeedReader::addMessageFilter(const QString& title, const QString& script) {
-  auto* fltr = DatabaseQueries::addMessageFilter(qApp->database()->connection(metaObject()->className()), title, script);
+  auto* fltr = DatabaseQueries::addMessageFilter(qApp->database()->driver()->connection(metaObject()->className()), title, script);
 
   m_messageFilters.append(fltr);
   return fltr;
@@ -187,20 +187,20 @@ void FeedReader::removeMessageFilter(MessageFilter* filter) {
   }
 
   // Remove from DB.
-  DatabaseQueries::removeMessageFilterAssignments(qApp->database()->connection(metaObject()->className()), filter->id());
-  DatabaseQueries::removeMessageFilter(qApp->database()->connection(metaObject()->className()), filter->id());
+  DatabaseQueries::removeMessageFilterAssignments(qApp->database()->driver()->connection(metaObject()->className()), filter->id());
+  DatabaseQueries::removeMessageFilter(qApp->database()->driver()->connection(metaObject()->className()), filter->id());
 
   // Free from memory as last step.
   filter->deleteLater();
 }
 
 void FeedReader::updateMessageFilter(MessageFilter* filter) {
-  DatabaseQueries::updateMessageFilter(qApp->database()->connection(metaObject()->className()), filter);
+  DatabaseQueries::updateMessageFilter(qApp->database()->driver()->connection(metaObject()->className()), filter);
 }
 
 void FeedReader::assignMessageFilterToFeed(Feed* feed, MessageFilter* filter) {
   feed->appendMessageFilter(filter);
-  DatabaseQueries::assignMessageFilterToFeed(qApp->database()->connection(metaObject()->className()),
+  DatabaseQueries::assignMessageFilterToFeed(qApp->database()->driver()->connection(metaObject()->className()),
                                              feed->customId(),
                                              filter->id(),
                                              feed->getParentServiceRoot()->accountId());
@@ -208,7 +208,7 @@ void FeedReader::assignMessageFilterToFeed(Feed* feed, MessageFilter* filter) {
 
 void FeedReader::removeMessageFilterToFeedAssignment(Feed* feed, MessageFilter* filter) {
   feed->removeMessageFilter(filter);
-  DatabaseQueries::removeMessageFilterFromFeed(qApp->database()->connection(metaObject()->className()),
+  DatabaseQueries::removeMessageFilterFromFeed(qApp->database()->driver()->connection(metaObject()->className()),
                                                feed->customId(),
                                                filter->id(),
                                                feed->getParentServiceRoot()->accountId());

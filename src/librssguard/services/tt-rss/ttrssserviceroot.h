@@ -25,27 +25,26 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString code() const;
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
-    virtual bool canBeDeleted() const;
     virtual bool editViaGui();
-    virtual bool deleteViaGui();
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
     virtual QString additionalTooltip() const;
     virtual void saveAllCachedData(bool ignore_errors);
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
+    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining);
 
     // Access to network.
     TtRssNetworkFactory* network() const;
-
-    void saveAccountDataToDatabase(bool creating_new);
-    void updateTitle();
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
-    void loadFromDatabase();
+    void updateTitle();
 
+  private:
     TtRssNetworkFactory* m_network;
 };
 

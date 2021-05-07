@@ -14,14 +14,18 @@ IconFactory::~IconFactory() {
 }
 
 QIcon IconFactory::fromByteArray(QByteArray array) {
+  if (array.isEmpty()) {
+    return {};
+  }
+
   array = QByteArray::fromBase64(array);
   QIcon icon;
   QBuffer buffer(&array);
 
-  buffer.open(QIODevice::ReadOnly);
+  buffer.open(QIODevice::OpenModeFlag::ReadOnly);
   QDataStream in(&buffer);
 
-  in.setVersion(QDataStream::Qt_4_7);
+  in.setVersion(QDataStream::Version::Qt_4_7);
   in >> icon;
   buffer.close();
   return icon;
@@ -31,10 +35,10 @@ QByteArray IconFactory::toByteArray(const QIcon& icon) {
   QByteArray array;
   QBuffer buffer(&array);
 
-  buffer.open(QIODevice::WriteOnly);
+  buffer.open(QIODevice::OpenModeFlag::WriteOnly);
   QDataStream out(&buffer);
 
-  out.setVersion(QDataStream::Qt_4_7);
+  out.setVersion(QDataStream::Version::Qt_4_7);
   out << icon;
   buffer.close();
   return array.toBase64();
@@ -53,14 +57,15 @@ QIcon IconFactory::miscIcon(const QString& name) {
 }
 
 void IconFactory::setupSearchPaths() {
-  QIcon::setThemeSearchPaths(QIcon::themeSearchPaths()
-                             << APP_THEME_PATH
-                             << qApp->applicationDirPath() + QDir::separator() + APP_LOCAL_THEME_FOLDER);
+  auto paths = QIcon::themeSearchPaths();
+
+  paths << APP_THEME_PATH
+        << qApp->applicationDirPath() + QDir::separator() + APP_LOCAL_THEME_FOLDER;
+
+  QIcon::setThemeSearchPaths(paths);
   qDebugNN << LOGSEC_GUI
            << "Available icon theme paths: "
-           << QIcon::themeSearchPaths()
-    .replaceInStrings(QRegularExpression(QSL("^|$")), QSL("\'"))
-    .replaceInStrings(QRegularExpression(QSL("/")), QDir::separator()).join(QSL(", "));
+           << paths;
 }
 
 void IconFactory::setCurrentIconTheme(const QString& theme_name) {
@@ -125,12 +130,13 @@ QStringList IconFactory::installedIconThemes() const {
 
   for (const QString& icon_path : icon_themes_paths) {
     const QDir icon_dir(icon_path);
+    auto icon_paths = icon_dir.entryInfoList(QDir::Filter::Dirs | QDir::Filter::NoDotAndDotDot |
+                                             QDir::Filter::Readable | QDir::Filter::CaseSensitive |
+                                             QDir::Filter::NoSymLinks,
+                                             QDir::SortFlag::Time);
 
     // Iterate all icon themes in this directory.
-    for (const QFileInfo& icon_theme_path : icon_dir.entryInfoList(QDir::Filter::Dirs | QDir::Filter::NoDotAndDotDot |
-                                                                   QDir::Filter::Readable | QDir::Filter::CaseSensitive |
-                                                                   QDir::Filter::NoSymLinks,
-                                                                   QDir::SortFlag::Time)) {
+    for (const QFileInfo& icon_theme_path : qAsConst(icon_paths)) {
       QDir icon_theme_dir = QDir(icon_theme_path.absoluteFilePath());
 
       if (icon_theme_dir.exists(filters_index.at(0))) {

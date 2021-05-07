@@ -8,6 +8,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
+#include "gui/guiutilities.h"
 #include "gui/settings/settingsbrowsermail.h"
 #include "gui/settings/settingsdatabase.h"
 #include "gui/settings/settingsdownloads.h"
@@ -22,9 +23,10 @@ FormSettings::FormSettings(QWidget& parent)
   m_ui.setupUi(this);
 
   // Set flags and attributes.
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("emblem-system")));
-  m_btnApply = m_ui.m_buttonBox->button(QDialogButtonBox::Apply);
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("emblem-system")));
+
+  m_btnApply = m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Apply);
+
   m_btnApply->setEnabled(false);
 
   // Establish needed connections.
@@ -56,7 +58,7 @@ void FormSettings::applySettings() {
   m_settings.checkSettings();
   QStringList panels_for_restart;
 
-  for (SettingsPanel* panel : m_panels) {
+  for (SettingsPanel* panel : qAsConst(m_panels)) {
     if (panel->isDirty()) {
       panel->saveSettings();
     }
@@ -94,7 +96,7 @@ void FormSettings::applySettings() {
 void FormSettings::cancelSettings() {
   QStringList changed_panels;
 
-  for (SettingsPanel* panel : m_panels) {
+  for (SettingsPanel* panel : qAsConst(m_panels)) {
     if (panel->isDirty()) {
       changed_panels.append(panel->title().toLower());
     }

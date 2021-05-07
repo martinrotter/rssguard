@@ -112,7 +112,7 @@ QStringList FeedParser::textsFromPath(const QDomElement& element, const QString&
   }
 
   if (!current_elements.isEmpty()) {
-    for (const QDomElement& elem : current_elements) {
+    for (const QDomElement& elem : qAsConst(current_elements)) {
       result.append(elem.text());
     }
   }

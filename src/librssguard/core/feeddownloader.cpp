@@ -37,7 +37,7 @@ bool FeedDownloader::isUpdateRunning() const {
 }
 
 void FeedDownloader::updateAvailableFeeds() {
-  for (const Feed* feed : m_feeds) {
+  for (const Feed* feed : qAsConst(m_feeds)) {
     auto* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
 
     if (cache != nullptr) {
@@ -114,16 +114,16 @@ void FeedDownloader::stopRunningUpdate() {
 void FeedDownloader::updateOneFeed(Feed* feed) {
   qDebugNN << LOGSEC_FEEDDOWNLOADER
            << "Downloading new messages for feed ID '"
-           << feed->customId() << "' URL: '" << feed->url() << "' title: '" << feed->title() << "' in thread: '"
+           << feed->customId() << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"
            << QThread::currentThreadId() << "'.";
 
   bool error_during_obtaining = false;
   int acc_id = feed->getParentServiceRoot()->accountId();
   QElapsedTimer tmr; tmr.start();
-  QList<Message> msgs = feed->obtainNewMessages(&error_during_obtaining);
+  QList<Message> msgs = feed->getParentServiceRoot()->obtainNewMessages({ feed }, &error_during_obtaining);
 
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded " << msgs.size() << " messages for feed ID '"
-           << feed->customId() << "' URL: '" << feed->url() << "' title: '" << feed->title() << "' in thread: '"
+           << feed->customId() << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"
            << QThread::currentThreadId() << "'. Operation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
   // Now, sanitize messages (tweak encoding etc.).
@@ -137,8 +137,8 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
     bool is_main_thread = QThread::currentThread() == qApp->thread();
     QSqlDatabase database = is_main_thread ?
-                            qApp->database()->connection(metaObject()->className()) :
-                            qApp->database()->connection(QSL("feed_upd"));
+                            qApp->database()->driver()->connection(metaObject()->className()) :
+                            qApp->database()->driver()->connection(QSL("feed_upd"));
 
     // Perform per-message filtering.
     QJSEngine filter_engine;
@@ -202,9 +202,9 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
         }
         catch (const FilteringException& ex) {
           qCriticalNN << LOGSEC_FEEDDOWNLOADER
-                      << "Error when evaluating filtering JS function: '"
-                      << ex.message()
-                      << "'. Accepting message.";
+                      << "Error when evaluating filtering JS function: "
+                      << QUOTE_W_SPACE_DOT(ex.message())
+                      << " Accepting message.";
           continue;
         }
 
@@ -226,7 +226,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
       }
 
       // Process changed labels.
-      for (Label* lbl : msg_backup.m_assignedLabels) {
+      for (Label* lbl : qAsConst(msg_backup.m_assignedLabels)) {
         if (!msg_orig->m_assignedLabels.contains(lbl)) {
           // Label is not there anymore, it was deassigned.
           lbl->deassignFromMessage(*msg_orig);
@@ -238,7 +238,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
         }
       }
 
-      for (Label* lbl : msg_orig->m_assignedLabels) {
+      for (Label* lbl : qAsConst(msg_orig->m_assignedLabels)) {
         if (!msg_backup.m_assignedLabels.contains(lbl)) {
           // Label is in new message, but is not in old message, it
           // was newly assigned.
@@ -290,7 +290,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
   // Now make sure, that messages are actually stored to SQL in a locked state.
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Saving messages of feed ID '"
-           << feed->customId() << "' URL: '" << feed->url() << "' title: '" << feed->title() << "' in thread: '"
+           << feed->customId() << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"
            << QThread::currentThreadId() << "'.";
 
   int updated_messages = feed->updateMessages(msgs, error_during_obtaining);

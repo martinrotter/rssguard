@@ -9,23 +9,29 @@
 #include <QLocale>
 #include <QPointer>
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 
 // WebEngine.
 DKEY WebEngineAttributes::ID = "web_engine_attributes";
 #endif
 
+// Cookies.
+DKEY Cookies::ID = "cookies";
+
 // AdBlock.
 DKEY AdBlock::ID = "adblock";
-
-DKEY AdBlock::DisabledRules = "disabled_rules";
-DVALUE(QStringList) AdBlock::DisabledRulesDef = QStringList();
 
 DKEY AdBlock::AdBlockEnabled = "enabled";
 DVALUE(bool) AdBlock::AdBlockEnabledDef = false;
 
-DKEY AdBlock::LastUpdatedOn = "last_updated_on";
-DVALUE(QDateTime) AdBlock::LastUpdatedOnDef = QDateTime();
+DKEY AdBlock::FilterLists = "filter_lists";
+DVALUE(QStringList) AdBlock::FilterListsDef = {
+  QSL("https://easylist.to/easylist/easylist.txt"),
+  QSL("https://easylist.to/easylist/easyprivacy.txt")
+};
+
+DKEY AdBlock::CustomFilters = "custom_filters";
+DVALUE(QStringList) AdBlock::CustomFiltersDef = {};
 
 // Feeds.
 DKEY Feeds::ID = "feeds";
@@ -38,6 +44,9 @@ DVALUE(bool) Feeds::EnableAutoUpdateNotificationDef = false;
 
 DKEY Feeds::CountFormat = "count_format";
 DVALUE(char*) Feeds::CountFormatDef = "(%unread)";
+
+DKEY Feeds::EnableTooltipsFeedsMessages = "show_tooltips";
+DVALUE(bool) Feeds::EnableTooltipsFeedsMessagesDef = true;
 
 DKEY Feeds::AutoUpdateInterval = "auto_update_interval";
 DVALUE(int) Feeds::AutoUpdateIntervalDef = DEFAULT_AUTO_UPDATE_INTERVAL;
@@ -59,6 +68,9 @@ DVALUE(bool) Feeds::ShowOnlyUnreadFeedsDef = false;
 
 DKEY Feeds::ShowTreeBranches = "show_tree_branches";
 DVALUE(bool) Feeds::ShowTreeBranchesDef = true;
+
+DKEY Feeds::HideCountsIfNoUnread = "hide_counts_if_no_unread";
+DVALUE(bool) Feeds::HideCountsIfNoUnreadDef = false;
 
 DKEY Feeds::AutoExpandOnSelection = "auto_expand_on_selection";
 DVALUE(bool) Feeds::AutoExpandOnSelectionDef = false;
@@ -130,7 +142,7 @@ DKEY GUI::HeightRowFeeds = "height_row_feeds";
 DVALUE(int) GUI::HeightRowFeedsDef = -1;
 
 DKEY GUI::FeedsToolbarActions = "feeds_toolbar";
-DVALUE(char*) GUI::FeedsToolbarActionsDef = "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionMarkAllItemsRead";
+DVALUE(char*) GUI::FeedsToolbarActionsDef = "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionMarkAllItemsRead,spacer,search";
 
 DKEY GUI::StatusbarActions = "status_bar";
 DVALUE(char*) GUI::StatusbarActionsDef =
@@ -425,7 +437,7 @@ SettingsProperties Settings::determineProperties() {
   else {
     // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
     // settings was not initialized before.
-#if defined (Q_OS_LINUX) || defined (Q_OS_ANDROID) || defined (Q_OS_MACOSOS)
+#if defined(Q_OS_LINUX) || defined (Q_OS_ANDROID) || defined (Q_OS_MACOSOS)
     // DO NOT use portable settings for Linux, it is really not used on that platform.
     const bool will_we_use_portable_settings = false;
 #else

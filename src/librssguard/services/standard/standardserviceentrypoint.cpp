@@ -4,7 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
+#include "database/databasequeries.h"
 #include "services/standard/gui/formeditstandardaccount.h"
 #include "services/standard/standardserviceroot.h"
 
@@ -36,7 +36,7 @@ ServiceRoot* StandardServiceEntryPoint::createNewRoot() const {
 
 QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
   // Check DB if standard account is enabled.
-  QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"));
+  QSqlDatabase database = qApp->database()->driver()->connection(QSL("StandardServiceEntryPoint"));
 
-  return DatabaseQueries::getStandardAccounts(database);
+  return DatabaseQueries::getAccounts<StandardServiceRoot>(database, code());
 }

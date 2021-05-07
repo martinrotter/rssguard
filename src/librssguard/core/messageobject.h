@@ -18,7 +18,9 @@ class MessageObject : public QObject {
   Q_PROPERTY(QString url READ url WRITE setUrl)
   Q_PROPERTY(QString author READ author WRITE setAuthor)
   Q_PROPERTY(QString contents READ contents WRITE setContents)
+  Q_PROPERTY(QString rawContents READ rawContents WRITE setRawContents)
   Q_PROPERTY(QDateTime created READ created WRITE setCreated)
+  Q_PROPERTY(double score READ score WRITE setScore)
   Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
   Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
   Q_PROPERTY(bool isDeleted READ isDeleted WRITE setIsDeleted)
@@ -68,7 +70,7 @@ class MessageObject : public QObject {
     // Check if message is duplicate with another messages in DB.
     // Parameter "attribute_check" is DuplicationAttributeCheck enum
     // value casted to int.
-    Q_INVOKABLE bool isDuplicateWithAttribute(DuplicationAttributeCheck attribute_check) const;
+    Q_INVOKABLE bool isDuplicateWithAttribute(MessageObject::DuplicationAttributeCheck attribute_check) const;
 
     // Adds given label to list of assigned labels to this message.
     // Returns true if label was assigned now or if the message already has it assigned.
@@ -100,6 +102,9 @@ class MessageObject : public QObject {
     QString contents() const;
     void setContents(const QString& contents);
 
+    QString rawContents() const;
+    void setRawContents(const QString& raw_contents);
+
     QDateTime created() const;
     void setCreated(const QDateTime& created);
 
@@ -111,6 +116,9 @@ class MessageObject : public QObject {
 
     bool isDeleted() const;
     void setIsDeleted(bool is_deleted);
+
+    double score() const;
+    void setScore(double score);
 
   private:
     QSqlDatabase* m_db;

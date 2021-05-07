@@ -23,7 +23,7 @@ SetCompressor /SOLID /FINAL lzma
 
 ; Default installation folder.
 InstallDir "C:\${APP_NAME}"
-InstallDirRegKey HKCU "Software\${APP_NAME}" "Install Directory"
+InstallDirRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "InstallLocation"
 
 ; Require administrator access.
 RequestExecutionLevel admin
@@ -131,9 +131,12 @@ NotInstalled:
   ExecWait '"$INSTDIR\vc_redist.x64.exe" /install /quiet /norestart'
   Delete "$INSTDIR\vc_redist.x64.exe"
 
-  ; Store installation folder.
-  WriteRegStr HKCU "Software\${APP_NAME}" "Install Directory" $INSTDIR
-  
+  ExecWait '"$INSTDIR\vc_redist_2010.x86.exe" /q /norestart'
+  Delete "$INSTDIR\vc_redist_2010.x86.exe"
+
+  ExecWait '"$INSTDIR\vc_redist_2010.x64.exe" /q /norestart'
+  Delete "$INSTDIR\vc_redist_2010.x64.exe"
+
   ; Create uninstaller.
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
@@ -141,6 +144,7 @@ NotInstalled:
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "DisplayName" "${APP_NAME}"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "DisplayIcon" "$INSTDIR\${EXE_NAME}"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "DisplayVersion" "${APP_VERSION}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "InstallLocation" "$INSTDIR"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
 SectionEnd

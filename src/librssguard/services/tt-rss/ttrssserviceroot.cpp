@@ -2,8 +2,8 @@
 
 #include "services/tt-rss/ttrssserviceroot.h"
 
+#include "database/databasequeries.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
@@ -15,8 +15,8 @@
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/formeditttrssaccount.h"
 #include "services/tt-rss/gui/formttrssfeeddetails.h"
-#include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssfeed.h"
+#include "services/tt-rss/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
 #include <QClipboard>
@@ -37,11 +37,14 @@ ServiceRoot::LabelOperation TtRssServiceRoot::supportedLabelOperations() const {
 }
 
 void TtRssServiceRoot::start(bool freshly_activated) {
-  Q_UNUSED(freshly_activated)
-  loadFromDatabase();
-  loadCacheFromFile();
+  if (!freshly_activated) {
+    DatabaseQueries::loadFromDatabase<Category, TtRssFeed>(this);
+    loadCacheFromFile();
+  }
 
-  if (childCount() <= 3) {
+  updateTitle();
+
+  if (getSubTreeFeeds().isEmpty()) {
     syncIn();
   }
 }
@@ -68,19 +71,6 @@ bool TtRssServiceRoot::editViaGui() {
   return true;
 }
 
-bool TtRssServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  // Remove extra entry in "Tiny Tiny RSS accounts list" and then delete
-  // all the categories/feeds and messages.
-  if (DatabaseQueries::deleteTtRssAccount(database, accountId())) {
-    return ServiceRoot::deleteViaGui();
-  }
-  else {
-    return false;
-  }
-}
-
 bool TtRssServiceRoot::supportsFeedAdding() const {
   return true;
 }
@@ -103,17 +93,13 @@ void TtRssServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
     return;
   }
 
-  QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, qApp->mainFormWidget()));
+  QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, selected_item, url, qApp->mainFormWidget()));
 
-  form_pointer->addFeed(selected_item, url);
+  form_pointer->addEditFeed<TtRssFeed>();
   qApp->feedUpdateLock()->unlock();
 }
 
 bool TtRssServiceRoot::canBeEdited() const {
-  return true;
-}
-
-bool TtRssServiceRoot::canBeDeleted() const {
   return true;
 }
 
@@ -199,6 +185,68 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
   }
 }
 
+QVariantHash TtRssServiceRoot::customDatabaseData() const {
+  QVariantHash data;
+
+  data["username"] = m_network->username();
+  data["password"] = TextFactory::encrypt(m_network->password());
+  data["auth_protected"] = m_network->authIsUsed();
+  data["auth_username"] = m_network->authUsername();
+  data["auth_password"] = TextFactory::encrypt(m_network->authPassword());
+  data["url"] = m_network->url();
+  data["force_update"] = m_network->forceServerSideUpdate();
+  data["batch_size"] = m_network->batchSize();
+  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
+
+  return data;
+}
+
+void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  m_network->setUsername( data["username"].toString());
+  m_network->setPassword(TextFactory::decrypt(data["password"].toString()));
+  m_network->setAuthIsUsed(data["auth_protected"].toBool());
+  m_network->setAuthUsername(data["auth_username"].toString());
+  m_network->setAuthPassword(TextFactory::decrypt(data["auth_password"].toString()));
+  m_network->setUrl(data["url"].toString());
+  m_network->setForceServerSideUpdate(data["force_update"].toBool());
+  m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
+}
+
+QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> messages;
+
+  for (Feed* feed : feeds) {
+    int newly_added_messages = 0;
+    int limit = network()->batchSize() <= 0 ? TTRSS_MAX_MESSAGES : network()->batchSize();
+    int skip = 0;
+
+    do {
+      TtRssGetHeadlinesResponse headlines = network()->getHeadlines(feed->customNumericId(), limit, skip,
+                                                                    true, true, false,
+                                                                    network()->downloadOnlyUnreadMessages(),
+                                                                    networkProxy());
+
+      if (network()->lastError() != QNetworkReply::NetworkError::NoError) {
+        feed->setStatus(Feed::Status::NetworkError);
+        *error_during_obtaining = true;
+        itemChanged(QList<RootItem*>() << this);
+        continue;
+      }
+      else {
+        QList<Message> new_messages = headlines.messages(this);
+
+        messages << new_messages;
+        newly_added_messages = new_messages.size();
+        skip += newly_added_messages;
+      }
+    }
+    while (newly_added_messages > 0 && (network()->batchSize() <= 0 || messages.size() < network()->batchSize()));
+  }
+
+  return messages;
+}
+
 QString TtRssServiceRoot::additionalTooltip() const {
   return tr("Username: %1\nServer: %2\n"
             "Last error: %3\nLast login on: %4").arg(m_network->username(),
@@ -213,40 +261,6 @@ TtRssNetworkFactory* TtRssServiceRoot::network() const {
   return m_network;
 }
 
-void TtRssServiceRoot::saveAccountDataToDatabase(bool creating_new) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (!creating_new) {
-    // We are overwritting previously saved data.
-    if (DatabaseQueries::overwriteTtRssAccount(database, m_network->username(), m_network->password(),
-                                               m_network->authIsUsed(), m_network->authUsername(),
-                                               m_network->authPassword(), m_network->url(),
-                                               m_network->forceServerSideUpdate(), m_network->downloadOnlyUnreadMessages(),
-                                               accountId())) {
-      updateTitle();
-      itemChanged(QList<RootItem*>() << this);
-    }
-  }
-  else {
-    if (DatabaseQueries::createTtRssAccount(database, accountId(), m_network->username(),
-                                            m_network->password(), m_network->authIsUsed(),
-                                            m_network->authUsername(), m_network->authPassword(),
-                                            m_network->url(), m_network->forceServerSideUpdate(),
-                                            m_network->downloadOnlyUnreadMessages())) {
-      updateTitle();
-    }
-  }
-}
-
-void TtRssServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<TtRssFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
-
-  performInitialAssembly(categories, feeds, labels);
-}
-
 void TtRssServiceRoot::updateTitle() {
   QString host = QUrl(m_network->url()).host();
 
@@ -254,7 +268,7 @@ void TtRssServiceRoot::updateTitle() {
     host = m_network->url();
   }
 
-  setTitle(m_network->username() + QSL(" (Tiny Tiny RSS)"));
+  setTitle(TextFactory::extractUsernameFromEmail(m_network->username()) + QSL(" (Tiny Tiny RSS)"));
 }
 
 RootItem* TtRssServiceRoot::obtainNewTreeForSyncIn() const {

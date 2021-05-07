@@ -3,7 +3,7 @@
 #include "gui/tabbar.h"
 
 #include "definitions/definitions.h"
-#include "gui/plaintoolbutton.h"
+#include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/templates.h"
 
@@ -13,7 +13,7 @@
 TabBar::TabBar(QWidget* parent) : QTabBar(parent) {
   setDocumentMode(false);
   setUsesScrollButtons(true);
-  setContextMenuPolicy(Qt::CustomContextMenu);
+  setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
 }
 
 TabBar::~TabBar() {

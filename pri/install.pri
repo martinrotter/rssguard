@@ -23,10 +23,13 @@ win32 {
   lib.path = $$PREFIX
   lib.CONFIG = no_check_exist
 
+  redist10.files = ../../resources/scripts/redist/*
+  redist10.path = $$PREFIX
+
   clng.files = ../../resources/scripts/clang-format
   clng.path = $$PREFIX
 
-  INSTALLS += target lib clng
+  INSTALLS += target lib clng redist10
 
   INSTALL_HEADERS_PREFIX = $$quote($$PREFIX/include/librssguard)
 }

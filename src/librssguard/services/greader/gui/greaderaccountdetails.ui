@@ -34,7 +34,7 @@
    <item row="2" column="1">
     <widget class="LineEditWithStatus" name="m_txtUrl" native="true"/>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item row="5" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="label">
@@ -47,24 +47,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="m_spinLimitMessages">
-       <property name="suffix">
-        <string> = unlimited</string>
-       </property>
-       <property name="minimum">
-        <number>-1</number>
-       </property>
-       <property name="maximum">
-        <number>1000</number>
-       </property>
-       <property name="value">
-        <number>-1</number>
-       </property>
-      </widget>
+      <widget class="MessageCountSpinBox" name="m_spinLimitMessages"/>
      </item>
     </layout>
    </item>
-   <item row="6" column="0" colspan="2">
+   <item row="7" column="0" colspan="2">
     <widget class="QLabel" name="m_lblLimitMessages">
      <property name="text">
       <string/>
@@ -74,7 +61,7 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="0" colspan="2">
+   <item row="8" column="0" colspan="2">
     <widget class="QGroupBox" name="m_gbAuthentication">
      <property name="toolTip">
       <string>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</string>
@@ -125,7 +112,7 @@
      </layout>
     </widget>
    </item>
-   <item row="8" column="0" colspan="2">
+   <item row="9" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QPushButton" name="m_btnTestSetup">
@@ -149,7 +136,7 @@
      </item>
     </layout>
    </item>
-   <item row="9" column="0" colspan="2">
+   <item row="10" column="0" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -161,6 +148,13 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QCheckBox" name="m_cbDownloadOnlyUnreadMessages">
+     <property name="text">
+      <string>Download only unread messages</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -177,11 +171,18 @@
    <header>labelwithstatus.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>MessageCountSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>messagecountspinbox.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>m_cbDownloadOnlyUnreadMessages</tabstop>
   <tabstop>m_spinLimitMessages</tabstop>
   <tabstop>m_checkShowPassword</tabstop>
   <tabstop>m_btnTestSetup</tabstop>
+  <tabstop>m_cmbService</tabstop>
  </tabstops>
  <resources/>
  <connections/>

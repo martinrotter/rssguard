@@ -9,15 +9,17 @@
 
 #include <QMap>
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 #include <QWebEngineSettings>
 #endif
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
 class QMenu;
 class AdBlockManager;
 class NetworkUrlInterceptor;
 #endif
+
+class CookieJar;
 
 class WebFactory : public QObject {
   Q_OBJECT
@@ -35,18 +37,21 @@ class WebFactory : public QObject {
     //   ∀ = &forall; (entity name), &#8704; (base-10 entity), &#x2200; (base-16 entity)
     QString unescapeHtml(const QString& html);
 
-#if defined (USE_WEBENGINE)
+    QString processFeedUriScheme(const QString& url);
+
+#if defined(USE_WEBENGINE)
     QAction* engineSettingsAction();
-    AdBlockManager* adBlock();
-    NetworkUrlInterceptor* urlIinterceptor();
+    AdBlockManager* adBlock() const;
+    NetworkUrlInterceptor* urlIinterceptor() const;
 #endif
 
-  public slots:
+    CookieJar* cookieJar() const;
+
     void updateProxy();
     bool openUrlInExternalBrowser(const QString& url) const;
     bool sendMessageViaEmail(const Message& message);
 
-#if defined (USE_WEBENGINE)
+#if defined(USE_WEBENGINE)
   private slots:
     void createMenu(QMenu* menu = nullptr);
     void webEngineSettingChanged(bool enabled);
@@ -65,6 +70,7 @@ class WebFactory : public QObject {
     QAction* m_engineSettings;
 #endif
 
+    CookieJar* m_cookieJar;
     QMap<QString, char16_t> m_htmlNamedEntities;
 };
 

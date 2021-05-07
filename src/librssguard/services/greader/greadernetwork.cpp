@@ -3,6 +3,8 @@
 #include "services/greader/greadernetwork.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "exceptions/applicationexception.h"
+#include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
@@ -10,7 +12,6 @@
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
 #include "services/greader/definitions.h"
-#include "services/greader/greaderfeed.h"
 
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -18,7 +19,7 @@
 
 GreaderNetwork::GreaderNetwork(QObject* parent)
   : QObject(parent), m_service(GreaderServiceRoot::Service::FreshRss), m_username(QString()), m_password(QString()),
-  m_baseUrl(QString()), m_batchSize(GREADER_UNLIMITED_BATCH_SIZE) {
+  m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false) {
   clearCredentials();
 }
 
@@ -36,7 +37,6 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
   }
 
   QStringList trimmed_ids;
-  QRegularExpression regex_short_id(QSL("[0-9a-zA-Z]+$"));
 
   for (const QString& id : msg_custom_ids) {
     trimmed_ids.append(QString("i=") + id);
@@ -92,6 +92,34 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
   return QNetworkReply::NetworkError::NoError;
 }
 
+QVariantHash GreaderNetwork::userInfo(const QNetworkProxy& proxy) {
+  QString full_url = generateFullUrl(Operations::UserInfo);
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QNetworkReply::NetworkError network_err;
+
+  if (!ensureLogin(proxy, &network_err)) {
+    throw NetworkException(network_err);
+  }
+
+  QByteArray output;
+  auto res = NetworkFactory::performNetworkOperation(full_url,
+                                                     timeout,
+                                                     {},
+                                                     output,
+                                                     QNetworkAccessManager::Operation::GetOperation,
+                                                     { authHeader() },
+                                                     false,
+                                                     {},
+                                                     {},
+                                                     proxy);
+
+  if (res.first != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(res.first);
+  }
+
+  return QJsonDocument::fromJson(output).object().toVariantHash();
+}
+
 QNetworkReply::NetworkError GreaderNetwork::markMessagesRead(RootItem::ReadStatus status,
                                                              const QStringList& msg_custom_ids,
                                                              const QNetworkProxy& proxy) {
@@ -117,6 +145,10 @@ QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& 
   if (!ensureLogin(proxy)) {
     error = Feed::Status::AuthError;
     return {};
+  }
+
+  if (downloadOnlyUnreadMessages()) {
+    full_url += QSL("&xt=%1").arg(GREADER_API_FULL_STATE_READ);
   }
 
   QByteArray output_stream;
@@ -203,10 +235,11 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     // We need to process subscription list first and extract categories.
     json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
 
-    for (const QJsonValue& feed : json) {
+    for (const QJsonValue& feed : qAsConst(json)) {
       auto subscription = feed.toObject();
+      auto json_cats = subscription["categories"].toArray();
 
-      for (const QJsonValue& cat : subscription["categories"].toArray()) {
+      for (const QJsonValue& cat : qAsConst(json_cats)) {
         auto cat_obj = cat.toObject();
         auto cat_id = cat_obj["id"].toString();
 
@@ -226,7 +259,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
   json = QJsonDocument::fromJson(categories.toUtf8()).object()["tags"].toArray();
   cats.insert(QString(), parent);
 
-  for (const QJsonValue& obj : json) {
+  for (const QJsonValue& obj : qAsConst(json)) {
     auto label = obj.toObject();
     QString label_id = label["id"].toString();
 
@@ -267,7 +300,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
 
   json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
 
-  for (const QJsonValue& obj : json) {
+  for (const QJsonValue& obj : qAsConst(json)) {
     auto subscription = obj.toObject();
     QString id = subscription["id"].toString();
     QString title = subscription["title"].toString();
@@ -279,7 +312,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
       continue;
     }
 
-    for (const QJsonValue& cat : assigned_categories) {
+    for (const QJsonValue& cat : qAsConst(assigned_categories)) {
       QString potential_id = cat.toObject()["id"].toString();
 
       if (potential_id.contains(QSL("/label/"))) {
@@ -289,33 +322,34 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     }
 
     // We have label (not "state").
-    auto* feed = new GreaderFeed();
+    auto* feed = new Feed();
 
     feed->setDescription(url);
-    feed->setUrl(url);
+    feed->setSource(url);
     feed->setTitle(title);
     feed->setCustomId(id);
 
     if (obtain_icons) {
-      QString icon_url = subscription.contains(QSL("iconUrl"))
-                         ? subscription["iconUrl"].toString()
-                         : subscription["htmlUrl"].toString();
+      QString icon_url = subscription["iconUrl"].toString();
+      QList<QPair<QString, bool>> icon_urls;
+
+      icon_urls.append({ url, false });
 
       if (!icon_url.isEmpty()) {
-        QByteArray icon_data;
-
         if (icon_url.startsWith(QSL("//"))) {
           icon_url = QUrl(baseUrl()).scheme() + QSL(":") + icon_url;
         }
 
-        QIcon icon;
+        icon_urls.append({ icon_url, true });
+      }
 
-        if (NetworkFactory::downloadIcon({ { icon_url, true } },
-                                         timeout,
-                                         icon,
-                                         proxy) == QNetworkReply::NetworkError::NoError) {
-          feed->setIcon(icon);
-        }
+      QIcon icon;
+
+      if (NetworkFactory::downloadIcon(icon_urls,
+                                       timeout,
+                                       icon,
+                                       proxy) == QNetworkReply::NetworkError::NoError) {
+        feed->setIcon(icon);
       }
     }
 
@@ -465,7 +499,7 @@ QPair<QByteArray, QByteArray> GreaderNetwork::authHeader() const {
 }
 
 bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output) {
-  if (m_authSid.isEmpty()) {
+  if (m_authSid.isEmpty() && m_authAuth.isEmpty()) {
     auto login = clientLogin(proxy);
 
     if (output != nullptr) {
@@ -477,6 +511,9 @@ bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::Netw
                   << "Login failed with error:"
                   << QUOTE_W_SPACE_DOT(NetworkFactory::networkErrorText(login));
       return false;
+    }
+    else {
+      qDebugNN << LOGSEC_GREADER << "Login successful.";
     }
   }
 
@@ -553,6 +590,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
     }
 
     message.m_contents = message_obj["summary"].toObject()["content"].toString();
+    message.m_rawContents = QJsonDocument(message_obj).toJson(QJsonDocument::JsonFormat::Compact);
     message.m_feedId = stream_id;
 
     messages.append(message);
@@ -609,10 +647,21 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
     case Operations::StreamContents:
       return sanitizedBaseUrl() + GREADER_API_STREAM_CONTENTS;
 
+    case Operations::UserInfo:
+      return sanitizedBaseUrl() + GREADER_API_USER_INFO;
+
     case Operations::EditTag:
       return sanitizedBaseUrl() + GREADER_API_EDIT_TAG;
 
     default:
       return sanitizedBaseUrl();
   }
+}
+
+bool GreaderNetwork::downloadOnlyUnreadMessages() const {
+  return m_downloadOnlyUnreadMessages;
+}
+
+void GreaderNetwork::setDownloadOnlyUnreadMessages(bool download_only_unread) {
+  m_downloadOnlyUnreadMessages = download_only_unread;
 }

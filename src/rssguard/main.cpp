@@ -12,7 +12,7 @@
 #include <QtPlatformHeaders/QWindowsWindowFunctions>
 #endif
 
-#if defined (Q_OS_MACOS)
+#if defined(Q_OS_MACOS)
 extern void disableWindowTabbing();
 
 #endif
@@ -25,14 +25,14 @@ int main(int argc, char* argv[]) {
   QApplication::setAttribute(Qt::ApplicationAttribute::AA_EnableHighDpiScaling);
 #endif
 
-#if defined (Q_OS_LINUX)
+#if defined(Q_OS_LINUX)
   QApplication::setDesktopFileName(APP_DESKTOP_ENTRY_FILE);
 #endif
 
   // Ensure that ini format is used as application settings storage on Mac OS.
   QSettings::setDefaultFormat(QSettings::IniFormat);
 
-#if defined (Q_OS_MACOS)
+#if defined(Q_OS_MACOS)
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
   disableWindowTabbing();
 #endif
@@ -87,6 +87,7 @@ int main(int argc, char* argv[]) {
   qApp->offerChanges();
   qApp->showPolls();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
+  qApp->parseCmdArgumentsFromOtherInstance(qApp->cmdParser()->positionalArguments().join(ARGUMENTS_LIST_SEPARATOR));
 
   return Application::exec();
 }

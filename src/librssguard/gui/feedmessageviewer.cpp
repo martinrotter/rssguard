@@ -5,19 +5,19 @@
 #include "core/feeddownloader.h"
 #include "core/feedsproxymodel.h"
 #include "core/messagesproxymodel.h"
+#include "database/databasecleaner.h"
+#include "database/databasefactory.h"
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/formdatabasecleanup.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/feedstoolbar.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/messagepreviewer.h"
-#include "gui/messagestoolbar.h"
 #include "gui/messagesview.h"
-#include "gui/statusbar.h"
 #include "gui/systemtrayicon.h"
-#include "miscellaneous/databasecleaner.h"
-#include "miscellaneous/databasefactory.h"
+#include "gui/toolbars/feedstoolbar.h"
+#include "gui/toolbars/messagestoolbar.h"
+#include "gui/toolbars/statusbar.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
@@ -128,11 +128,11 @@ bool FeedMessageViewer::areListHeadersEnabled() const {
 }
 
 void FeedMessageViewer::switchMessageSplitterOrientation() {
-  if (m_messageSplitter->orientation() == Qt::Vertical) {
-    m_messageSplitter->setOrientation(Qt::Horizontal);
+  if (m_messageSplitter->orientation() == Qt::Orientation::Vertical) {
+    m_messageSplitter->setOrientation(Qt::Orientation::Horizontal);
   }
   else {
-    m_messageSplitter->setOrientation(Qt::Vertical);
+    m_messageSplitter->setOrientation(Qt::Orientation::Vertical);
   }
 }
 
@@ -215,6 +215,7 @@ void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
 void FeedMessageViewer::createConnections() {
   // Filtering & searching.
   connect(m_toolBarMessages, &MessagesToolBar::messageSearchPatternChanged, m_messagesView, &MessagesView::searchMessages);
+  connect(m_toolBarFeeds, &FeedsToolBar::feedsFilterPatternChanged, m_feedsView, &FeedsView::filterItems);
   connect(m_toolBarMessages, &MessagesToolBar::messageFilterChanged, m_messagesView, &MessagesView::filterMessages);
 
   connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &MessagePreviewer::clear);
@@ -241,10 +242,10 @@ void FeedMessageViewer::initialize() {
   // Initialize/populate toolbars.
   m_toolBarFeeds->setFloatable(false);
   m_toolBarFeeds->setMovable(false);
-  m_toolBarFeeds->setAllowedAreas(Qt::TopToolBarArea);
+  m_toolBarFeeds->setAllowedAreas(Qt::ToolBarArea::TopToolBarArea);
   m_toolBarMessages->setFloatable(false);
   m_toolBarMessages->setMovable(false);
-  m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
+  m_toolBarMessages->setAllowedAreas(Qt::ToolBarArea::TopToolBarArea);
   m_messagesBrowser->clear();
 
   // Now refresh visual setup.
@@ -254,8 +255,8 @@ void FeedMessageViewer::initialize() {
 void FeedMessageViewer::initializeViews() {
   m_feedsWidget = new QWidget(this);
   m_messagesWidget = new QWidget(this);
-  m_feedSplitter = new QSplitter(Qt::Horizontal, this);
-  m_messageSplitter = new QSplitter(Qt::Vertical, this);
+  m_feedSplitter = new QSplitter(Qt::Orientation::Horizontal, this);
+  m_messageSplitter = new QSplitter(Qt::Orientation::Vertical, this);
 
   // Instantiate needed components.
   auto* central_layout = new QVBoxLayout(this);
@@ -272,8 +273,8 @@ void FeedMessageViewer::initializeViews() {
   message_layout->setSpacing(0);
 
   // Set views.
-  m_feedsView->setFrameStyle(QFrame::NoFrame);
-  m_messagesView->setFrameStyle(QFrame::NoFrame);
+  m_feedsView->setFrameStyle(QFrame::Shape::NoFrame);
+  m_messagesView->setFrameStyle(QFrame::Shape::NoFrame);
 
   // Setup message splitter.
   m_messageSplitter->setObjectName(QSL("MessageSplitter"));

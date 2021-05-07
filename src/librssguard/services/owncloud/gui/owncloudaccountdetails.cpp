@@ -6,7 +6,7 @@
 #include "gui/guiutilities.h"
 #include "miscellaneous/systemfactory.h"
 #include "services/owncloud/definitions.h"
-#include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "services/owncloud/owncloudnetworkfactory.h"
 
 OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
@@ -20,9 +20,6 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
-  m_ui.m_lblLimitMessages->setText(
-    tr("Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains "
-       "bigger number of messages than specified limit, then some messages might not be downloaded during feed update."));
 
   connect(m_ui.m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, [=](int value) {
     if (value <= 0) {
@@ -33,7 +30,6 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
     }
   });
 
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessages, true);
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblServerSideUpdateInformation, true);
 
   connect(m_ui.m_checkShowPassword, &QCheckBox::toggled, this, &OwnCloudAccountDetails::displayPassword);
@@ -42,9 +38,9 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
   connect(m_ui.m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onUrlChanged);
 
   setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_checkDownloadOnlyUnreadMessages);
-  setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_checkServerSideUpdate);
-  setTabOrder(m_ui.m_checkServerSideUpdate, m_ui.m_spinLimitMessages);
-  setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_txtUsername->lineEdit());
+  setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_checkServerSideUpdate);
+  setTabOrder(m_ui.m_checkServerSideUpdate, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
   setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_checkShowPassword);
   setTabOrder(m_ui.m_checkShowPassword, m_ui.m_btnTestSetup);

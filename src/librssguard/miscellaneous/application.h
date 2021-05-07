@@ -3,12 +3,12 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "qtsingleapplication/qtsingleapplication.h"
+#include "3rd-party/qts/qtsingleapplication.h"
 
 #include "core/feeddownloader.h"
+#include "database/databasefactory.h"
 #include "definitions/definitions.h"
 #include "gui/systemtrayicon.h"
-#include "miscellaneous/databasefactory.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/localization.h"
@@ -93,6 +93,9 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     // NOTE: Use this to get correct path under which store user data.
     QString userDataFolder();
 
+    QString replaceDataUserDataFolderPlaceholder(QString text) const;
+    QStringList replaceDataUserDataFolderPlaceholder(QStringList texts) const;
+
     void setMainForm(FormMain* main_form);
 
     void backupDatabaseSettings(bool backup_database, bool backup_settings,
@@ -122,7 +125,8 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     void restart();
 
     // Processes incoming message from another RSS Guard instance.
-    void processExecutionMessage(const QString& message);
+    void parseCmdArgumentsFromOtherInstance(const QString& message);
+    void parseCmdArgumentsFromMyInstance();
 
   private slots:
     void onCommitData(QSessionManager& manager);
@@ -139,7 +143,6 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     void setupCustomDataFolder(const QString& data_folder);
     void determineFirstRuns();
     void eliminateFirstRuns();
-    void parseCmdArguments();
 
   private:
     QCommandLineParser m_cmdParser;

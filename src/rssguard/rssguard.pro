@@ -38,6 +38,7 @@ DEFINES *= RSSGUARD_DLLSPEC=Q_DECL_IMPORT
 SOURCES += main.cpp
 INCLUDEPATH +=  $$PWD/../librssguard \
                 $$PWD/../librssguard/gui \
+                $$PWD/../librssguard/gui/reusable \
                 $$OUT_PWD/../librssguard \
                 $$OUT_PWD/../librssguard/ui
 

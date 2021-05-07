@@ -8,7 +8,7 @@
 #include "services/abstract/serviceroot.h"
 
 FormAccountDetails::FormAccountDetails(const QIcon& icon, QWidget* parent)
-  : QDialog(parent), m_proxyDetails(new NetworkProxyDetails(this)), m_account(nullptr) {
+  : QDialog(parent), m_proxyDetails(new NetworkProxyDetails(this)), m_account(nullptr), m_creatingNew(false) {
   m_ui.setupUi(this);
 
   insertCustomTab(m_proxyDetails, tr("Network proxy"), 0);
@@ -16,8 +16,10 @@ FormAccountDetails::FormAccountDetails(const QIcon& icon, QWidget* parent)
                                       ? qApp->icons()->fromTheme(QSL("emblem-system"))
                                       : icon);
   createConnections();
+}
 
-  m_proxyDetails->setProxy(QNetworkProxy());
+void FormAccountDetails::apply() {
+  m_account->setNetworkProxy(m_proxyDetails->proxy());
 }
 
 void FormAccountDetails::insertCustomTab(QWidget* custom_tab, const QString& title, int index) {
@@ -32,13 +34,23 @@ void FormAccountDetails::clearTabs() {
   m_ui.m_tabWidget->clear();
 }
 
-void FormAccountDetails::setEditableAccount(ServiceRoot* editable_account) {
-  setWindowTitle(tr("Edit account '%1'").arg(editable_account->title()));
-  m_account = editable_account;
-
-  if (m_account != nullptr) {
-    m_proxyDetails->setProxy(m_account->networkProxy());
+void FormAccountDetails::loadAccountData() {
+  if (m_creatingNew) {
+    setWindowTitle(tr("Add new account"));
   }
+  else {
+    setWindowTitle(tr("Edit account '%1'").arg(m_account->title()));
+
+    // Perform last-time operations before account is changed.
+    auto* cached_account = dynamic_cast<CacheForServiceRoot*>(m_account);
+
+    if (cached_account != nullptr) {
+      qWarningNN << LOGSEC_CORE << "Last-time account cache saving before account could be edited.";
+      cached_account->saveAllCachedData(true);
+    }
+  }
+
+  m_proxyDetails->setProxy(m_account->networkProxy());
 }
 
 void FormAccountDetails::createConnections() {

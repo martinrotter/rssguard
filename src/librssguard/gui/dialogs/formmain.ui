@@ -120,6 +120,7 @@
     <addaction name="m_actionAutoExpandItemsWhenSelected"/>
     <addaction name="m_actionShowTreeBranches"/>
     <addaction name="m_actionExpandCollapseItem"/>
+    <addaction name="m_actionExpandCollapseItemRecursively"/>
     <addaction name="separator"/>
     <addaction name="m_actionSelectNextItem"/>
     <addaction name="m_actionSelectPreviousItem"/>
@@ -803,6 +804,11 @@
    </property>
    <property name="text">
     <string>Message viewer toolbars</string>
+   </property>
+  </action>
+  <action name="m_actionExpandCollapseItemRecursively">
+   <property name="text">
+    <string>Expand/collapse selected item &amp;recursively</string>
    </property>
   </action>
  </widget>

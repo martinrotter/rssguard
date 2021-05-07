@@ -10,7 +10,7 @@
 #include "services/feedly/feedlyserviceroot.h"
 #include "services/feedly/gui/feedlyaccountdetails.h"
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 #include "network-web/oauth2service.h"
 #endif
 
@@ -24,23 +24,10 @@ FormEditFeedlyAccount::FormEditFeedlyAccount(QWidget* parent)
 }
 
 void FormEditFeedlyAccount::apply() {
-  bool editing_account = !applyInternal<FeedlyServiceRoot>();
+  FormAccountDetails::apply();
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
-  if (!editing_account) {
-    // We transfer refresh token to avoid the need to login once more,
-    // then we delete testing OAuth service.
-    account<FeedlyServiceRoot>()->network()->oauth()->setAccessToken(m_details->m_oauth->accessToken());
-    account<FeedlyServiceRoot>()->network()->oauth()->setRefreshToken(m_details->m_oauth->refreshToken());
-    account<FeedlyServiceRoot>()->network()->oauth()->setTokensExpireIn(m_details->m_oauth->tokensExpireIn());
-    m_details->m_oauth->logout(true);
-    m_details->m_oauth->deleteLater();
-
-    // Force live OAuth object to re-start it's redirection handler.
-    account<FeedlyServiceRoot>()->network()->oauth()->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +
-                                                                     QL1C(':') +
-                                                                     QString::number(FEEDLY_API_REDIRECT_URI_PORT));
-  }
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
+  account<FeedlyServiceRoot>()->network()->oauth()->logout(false);
 #endif
 
   account<FeedlyServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
@@ -48,25 +35,19 @@ void FormEditFeedlyAccount::apply() {
   account<FeedlyServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
   account<FeedlyServiceRoot>()->network()->setDeveloperAccessToken(m_details->m_ui.m_txtDeveloperAccessToken->lineEdit()->text());
 
-  account<FeedlyServiceRoot>()->saveAccountDataToDatabase(!editing_account);
+  account<FeedlyServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
-  if (editing_account) {
+  if (!m_creatingNew) {
     account<FeedlyServiceRoot>()->completelyRemoveAllData();
-    account<FeedlyServiceRoot>()->syncIn();
+    account<FeedlyServiceRoot>()->start(true);
   }
 }
 
-void FormEditFeedlyAccount::setEditableAccount(ServiceRoot* editable_account) {
-  FormAccountDetails::setEditableAccount(editable_account);
+void FormEditFeedlyAccount::loadAccountData() {
+  FormAccountDetails::loadAccountData();
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
-  if (m_details->m_oauth != nullptr) {
-    // We will use live OAuth service for testing.
-    m_details->m_oauth->logout(true);
-    m_details->m_oauth->deleteLater();
-  }
-
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_details->m_oauth = account<FeedlyServiceRoot>()->network()->oauth();
   m_details->hookNetwork();
 #endif

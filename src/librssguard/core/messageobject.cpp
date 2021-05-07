@@ -22,7 +22,7 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicationAttribute
   // Check database according to duplication attribute_check.
   QSqlQuery q(*m_db);
   QStringList where_clauses;
-  QList<QPair<QString, QVariant>> bind_values;
+  QVector<QPair<QString, QVariant>> bind_values;
 
   // Now we construct the query according to parameter.
   if ((attribute_check& DuplicationAttributeCheck::SameTitle) == DuplicationAttributeCheck::SameTitle) {
@@ -151,6 +151,14 @@ void MessageObject::setContents(const QString& contents) {
   m_message->m_contents = contents;
 }
 
+QString MessageObject::rawContents() const {
+  return m_message->m_rawContents;
+}
+
+void MessageObject::setRawContents(const QString& raw_contents) {
+  m_message->m_rawContents = raw_contents;
+}
+
 QDateTime MessageObject::created() const {
   return m_message->m_created;
 }
@@ -181,6 +189,14 @@ bool MessageObject::isDeleted() const {
 
 void MessageObject::setIsDeleted(bool is_deleted) {
   m_message->m_isDeleted = is_deleted;
+}
+
+double MessageObject::score() const {
+  return m_message->m_score;
+}
+
+void MessageObject::setScore(double score) {
+  m_message->m_score = score;
 }
 
 QString MessageObject::feedCustomId() const {

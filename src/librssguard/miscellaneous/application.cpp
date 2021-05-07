@@ -10,7 +10,7 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
-#include "gui/statusbar.h"
+#include "gui/toolbars/statusbar.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
@@ -26,6 +26,7 @@
 
 #include <QProcess>
 #include <QSessionManager>
+#include <QTimer>
 
 #if defined(USE_WEBENGINE)
 #include "network-web/adblock/adblockicon.h"
@@ -38,7 +39,7 @@
 
 Application::Application(const QString& id, int& argc, char** argv)
   : QtSingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
-  parseCmdArguments();
+  parseCmdArgumentsFromMyInstance();
   qInstallMessageHandler(performLogging);
 
   m_feedReader = nullptr;
@@ -77,8 +78,19 @@ Application::Application(const QString& id, int& argc, char** argv)
 
 #if defined(USE_WEBENGINE)
   m_webFactory->urlIinterceptor()->load();
-  m_webFactory->adBlock()->load(true);
+
+  QTimer::singleShot(3000, this, [=]() {
+    m_webFactory->adBlock()->load(true);
+  });
 #endif
+
+  qDebugNN << LOGSEC_CORE
+           << "OpenSSL version:"
+           << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
+
+  qDebugNN << LOGSEC_CORE
+           << "OpenSSL supported:"
+           << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
 }
 
 Application::~Application() {
@@ -117,12 +129,14 @@ void Application::performLogging(QtMsgType type, const QMessageLogContext& conte
 }
 
 void Application::reactOnForeignNotifications() {
-  connect(this, &Application::messageReceived, this, &Application::processExecutionMessage);
+  connect(this, &Application::messageReceived, this, &Application::parseCmdArgumentsFromOtherInstance);
 }
 
 void Application::hideOrShowMainForm() {
   // Display main window.
-  if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
+  if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() &&
+      SystemTrayIcon::isSystemTrayDesired() &&
+      SystemTrayIcon::isSystemTrayAreaAvailable()) {
     qDebugNN << LOGSEC_CORE << "Hiding the main window when the application is starting.";
     mainForm()->switchVisibility(true);
   }
@@ -155,10 +169,11 @@ void Application::offerChanges() const {
 bool Application::isAlreadyRunning() {
   return m_allowMultipleInstances
       ? false
-      : sendMessage((QStringList() << APP_IS_RUNNING << Application::arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR));
+      : sendMessage((QStringList() << QSL("-%1").arg(CLI_IS_RUNNING)
+                                   << Application::arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR));
 }
 
-FeedReader* Application::feedReader() {
+FeedReader* Application:: feedReader() {
   return m_feedReader;
 }
 
@@ -251,13 +266,13 @@ void Application::setMainForm(FormMain* main_form) {
 }
 
 QString Application::configFolder() const {
-  return IOFactory::getSystemFolder(QStandardPaths::GenericConfigLocation);
+  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::GenericConfigLocation);
 }
 
 QString Application::userDataAppFolder() const {
   // In "app" folder, we would like to separate all user data into own subfolder,
   // therefore stick to "data" folder in this mode.
-  return applicationDirPath() + QDir::separator() + QSL("data");
+  return applicationDirPath() + QDir::separator() + QSL("data4");
 }
 
 QString Application::userDataFolder() {
@@ -272,35 +287,39 @@ QString Application::userDataFolder() {
   }
 }
 
-QString Application::userDataHomeFolder() const {
-  // Fallback folder.
-  const QString home_folder = homeFolder() + QDir::separator() + QSL(APP_LOW_H_NAME) + QDir::separator() + QSL("data");
+QString Application::replaceDataUserDataFolderPlaceholder(QString text) const {
+  auto user_data_folder = qApp->userDataFolder();
 
-  if (QDir().exists(home_folder)) {
-    return home_folder;
-  }
-  else {
-#if defined (Q_OS_ANDROID)
-    return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME);
+  return text.replace(QSL(USER_DATA_PLACEHOLDER), user_data_folder);
+}
+
+QStringList Application::replaceDataUserDataFolderPlaceholder(QStringList texts) const {
+  auto user_data_folder = qApp->userDataFolder();
+
+  return texts.replaceInStrings(QSL(USER_DATA_PLACEHOLDER), user_data_folder);
+}
+
+QString Application::userDataHomeFolder() const {
+#if defined(Q_OS_ANDROID)
+  return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME) + QSL(" 4");
 #else
-    return configFolder() + QDir::separator() + QSL(APP_NAME);
+  return configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" 4");
 #endif
-  }
 }
 
 QString Application::tempFolder() const {
-  return IOFactory::getSystemFolder(QStandardPaths::TempLocation);
+  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation);
 }
 
 QString Application::documentsFolder() const {
-  return IOFactory::getSystemFolder(QStandardPaths::DocumentsLocation);
+  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::DocumentsLocation);
 }
 
 QString Application::homeFolder() const {
-#if defined (Q_OS_ANDROID)
-  return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation);
+#if defined(Q_OS_ANDROID)
+  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::GenericDataLocation);
 #else
-  return IOFactory::getSystemFolder(QStandardPaths::HomeLocation);
+  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::HomeLocation);
 #endif
 }
 
@@ -318,23 +337,17 @@ void Application::backupDatabaseSettings(bool backup_database, bool backup_setti
     }
   }
 
-  if (backup_database &&
-      (database()->activeDatabaseDriver() == DatabaseFactory::UsedDriver::SQLITE ||
-       database()->activeDatabaseDriver() == DatabaseFactory::UsedDriver::SQLITE_MEMORY)) {
+  if (backup_database) {
     // We need to save the database first.
-    database()->saveDatabase();
-
-    if (!IOFactory::copyFile(database()->sqliteDatabaseFilePath(),
-                             target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_DATABASE)) {
-      throw ApplicationException(tr("Database file not copied to output directory successfully."));
-    }
+    database()->driver()->saveDatabase();
+    database()->driver()->backupDatabase(target_path, backup_name);
   }
 }
 
 void Application::restoreDatabaseSettings(bool restore_database, bool restore_settings,
                                           const QString& source_database_file_path, const QString& source_settings_file_path) {
   if (restore_database) {
-    if (!qApp->database()->initiateRestoration(source_database_file_path)) {
+    if (!qApp->database()->driver()->initiateRestoration(source_database_file_path)) {
       throw ApplicationException(tr("Database restoration was not initiated. Make sure that output directory is writable."));
     }
   }
@@ -346,39 +359,51 @@ void Application::restoreDatabaseSettings(bool restore_database, bool restore_se
   }
 }
 
-void Application::processExecutionMessage(const QString& message) {
+void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
   qDebugNN << LOGSEC_CORE
-           << "Received '"
-           << message
-           << "' execution message from another application instance.";
+           << "Received"
+           << QUOTE_W_SPACE(message)
+           << "execution message.";
 
-  const QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR);
+  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, Qt::SplitBehaviorFlags::SkipEmptyParts);
+  QCommandLineParser cmd_parser;
 
-  if (messages.contains(APP_QUIT_INSTANCE)) {
+  messages.prepend(qApp->applicationFilePath());
+
+  cmd_parser.addOption(QCommandLineOption(QStringList() << CLI_QUIT_INSTANCE));
+  cmd_parser.addOption(QCommandLineOption(QStringList() << CLI_IS_RUNNING));
+  cmd_parser.addPositionalArgument("urls",
+                                   "List of URL addresses pointing to individual online feeds which should be added.",
+                                   "[url-1 ... url-n]");
+
+  cmd_parser.process(messages);
+
+  if (cmd_parser.isSet(CLI_QUIT_INSTANCE)) {
     quit();
+    return;
   }
-  else {
-    for (const QString& msg : messages) {
-      if (msg == APP_IS_RUNNING) {
-        showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
-        mainForm()->display();
-      }
-      else if (msg.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
-        // Application was running, and someone wants to add new feed.
-        ServiceRoot* rt = boolinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
-          return root->supportsFeedAdding();
-        });
+  else if (cmd_parser.isSet(CLI_IS_RUNNING)) {
+    showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::MessageIcon::Information);
+    mainForm()->display();
+  }
 
-        if (rt != nullptr) {
-          rt->addNewFeed(nullptr, msg);
-        }
-        else {
-          showGuiMessage(tr("Cannot add feed"),
-                         tr("Feed cannot be added because standard RSS/ATOM account is not enabled."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(),
-                         true);
-        }
-      }
+  messages = cmd_parser.positionalArguments();
+
+  for (const QString& msg : qAsConst(messages)) {
+    // Application was running, and someone wants to add new feed.
+    ServiceRoot* rt = boolinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
+      return root->supportsFeedAdding();
+    });
+
+    if (rt != nullptr) {
+      rt->addNewFeed(nullptr, msg);
+    }
+    else {
+      showGuiMessage(tr("Cannot add feed"),
+                     tr("Feed cannot be added because there is no active account which can add feeds."),
+                     QSystemTrayIcon::MessageIcon::Warning,
+                     qApp->mainForm(),
+                     true);
     }
   }
 }
@@ -412,8 +437,15 @@ QIcon Application::desktopAwareIcon() const {
 
 void Application::showTrayIcon() {
   // Display tray icon if it is enabled and available.
-  if (SystemTrayIcon::isSystemTrayActivated()) {
-    qDebugNN << LOGSEC_CORE << "Showing tray icon.";
+  if (SystemTrayIcon::isSystemTrayDesired()) {
+#if !defined(Q_OS_LINUX)
+    if (!SystemTrayIcon::isSystemTrayAreaAvailable()) {
+      qWarningNN << LOGSEC_GUI << "Tray icon area is not available.";
+      return;
+    }
+#endif
+
+    qDebugNN << LOGSEC_GUI << "Showing tray icon.";
     trayIcon()->show();
   }
 }
@@ -433,12 +465,14 @@ void Application::deleteTrayIcon() {
 void Application::showGuiMessage(const QString& title, const QString& message,
                                  QSystemTrayIcon::MessageIcon message_type, QWidget* parent,
                                  bool show_at_least_msgbox, std::function<void()> functor) {
-  if (SystemTrayIcon::areNotificationsEnabled() && SystemTrayIcon::isSystemTrayActivated()) {
+  if (SystemTrayIcon::areNotificationsEnabled() &&
+      SystemTrayIcon::isSystemTrayDesired() &&
+      SystemTrayIcon::isSystemTrayAreaAvailable()) {
     trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, std::move(functor));
   }
   else if (show_at_least_msgbox) {
     // Tray icon or OSD is not available, display simple text box.
-    MessageBox::show(parent, QMessageBox::Icon(message_type), title, message);
+    MessageBox::show(parent == nullptr ? mainFormWidget() : parent, QMessageBox::Icon(message_type), title, message);
   }
   else {
     qDebugNN << LOGSEC_CORE << "Silencing GUI message: '" << message << "'.";
@@ -469,10 +503,6 @@ void Application::onAboutToQuit() {
 
   m_quitLogicDone = true;
 
-#if defined(USE_WEBENGINE)
-  m_webFactory->adBlock()->save();
-#endif
-
   // Make sure that we obtain close lock BEFORE even trying to quit the application.
   const bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);
 
@@ -497,7 +527,7 @@ void Application::onAboutToQuit() {
   }
 
   qApp->feedReader()->quit();
-  database()->saveDatabase();
+  database()->driver()->saveDatabase();
 
   if (mainForm() != nullptr) {
     mainForm()->saveSize();
@@ -566,7 +596,7 @@ void Application::determineFirstRuns() {
   eliminateFirstRuns();
 }
 
-void Application::parseCmdArguments() {
+void Application::parseCmdArgumentsFromMyInstance() {
   QCommandLineOption log_file(QStringList() << CLI_LOG_SHORT << CLI_LOG_LONG,
                               "Write application debug log to file. Note that logging to file may slow application down.",
                               "log-file");
@@ -581,9 +611,11 @@ void Application::parseCmdArguments() {
   m_cmdParser.addOptions({ log_file, custom_data_folder, disable_singleinstance, disable_debug });
   m_cmdParser.addHelpOption();
   m_cmdParser.addVersionOption();
+  m_cmdParser.addPositionalArgument("urls",
+                                    "List of URL addresses pointing to individual online feeds which should be added.",
+                                    "[url-1 ... url-n]");
   m_cmdParser.setApplicationDescription(APP_NAME);
-
-  m_cmdParser.process(*this);
+  m_cmdParser.process(QCoreApplication::arguments());
 
   s_customLogFile = m_cmdParser.value(CLI_LOG_SHORT);
 

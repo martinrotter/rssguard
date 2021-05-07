@@ -2,11 +2,11 @@
 
 #include "services/feedly/feedlyserviceroot.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
@@ -15,11 +15,10 @@
 #include "services/abstract/recyclebin.h"
 #include "services/feedly/definitions.h"
 #include "services/feedly/feedlyentrypoint.h"
-#include "services/feedly/feedlyfeed.h"
 #include "services/feedly/feedlynetwork.h"
 #include "services/feedly/gui/formeditfeedlyaccount.h"
 
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
 #include "network-web/oauth2service.h"
 #endif
 
@@ -37,10 +36,6 @@ bool FeedlyServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool FeedlyServiceRoot::canBeDeleted() const {
-  return true;
-}
-
 bool FeedlyServiceRoot::editViaGui() {
   FormEditFeedlyAccount form_pointer(qApp->mainFormWidget());
 
@@ -48,25 +43,82 @@ bool FeedlyServiceRoot::editViaGui() {
   return true;
 }
 
-bool FeedlyServiceRoot::deleteViaGui() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
+QVariantHash FeedlyServiceRoot::customDatabaseData() const {
+  QVariantHash data;
 
-  if (DatabaseQueries::deleteFeedlyAccount(database, accountId())) {
-    return ServiceRoot::deleteViaGui();
+  data["username"] = m_network->username();
+  data["dat"] = m_network->developerAccessToken();
+
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
+  data["refresh_token"] = m_network->oauth()->refreshToken();
+#endif
+
+  data["batch_size"] = m_network->batchSize();
+  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
+
+  return data;
+}
+
+void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  m_network->setUsername(data["username"].toString());
+  m_network->setDeveloperAccessToken(data["dat"].toString());
+
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
+  m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
+#endif
+
+  m_network->setBatchSize(data["batch_size"].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
+}
+
+QList<Message> FeedlyServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+  QList<Message> messages;
+
+  for (Feed* feed : feeds) {
+    try {
+      messages << m_network->streamContents(feed->customId());
+
+      feed->setStatus(Feed::Status::Normal);
+      *error_during_obtaining = false;
+    }
+    catch (const ApplicationException& ex) {
+      feed->setStatus(Feed::Status::NetworkError);
+      *error_during_obtaining = true;
+
+      qCriticalNN << LOGSEC_FEEDLY
+                  << "Problem"
+                  << QUOTE_W_SPACE(ex.message())
+                  << "when obtaining messages for feed"
+                  << QUOTE_W_SPACE_DOT(customId());
+    }
   }
-  else {
-    return false;
-  }
+
+  return messages;
 }
 
 void FeedlyServiceRoot::start(bool freshly_activated) {
-  Q_UNUSED(freshly_activated)
-  loadFromDatabase();
-  loadCacheFromFile();
-
-  if (childCount() <= 3) {
-    syncIn();
+  if (!freshly_activated) {
+    DatabaseQueries::loadFromDatabase<Category, Feed>(this);
+    loadCacheFromFile();
   }
+
+  updateTitle();
+
+  if (getSubTreeFeeds().isEmpty()) {
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
+    m_network->oauth()->login([this]() {
+      syncIn();
+    });
+#else
+    syncIn();
+#endif
+  }
+
+#if defined(FEEDLY_OFFICIAL_SUPPORT)
+  else {
+    m_network->oauth()->login();
+  }
+#endif
 }
 
 QString FeedlyServiceRoot::code() const {
@@ -198,42 +250,6 @@ void FeedlyServiceRoot::updateTitle() {
   setTitle(QString("%1 (Feedly)").arg(TextFactory::extractUsernameFromEmail(m_network->username())));
 }
 
-void FeedlyServiceRoot::saveAccountDataToDatabase(bool creating_new) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-
-  if (!creating_new) {
-    if (DatabaseQueries::overwriteFeedlyAccount(database,
-                                                m_network->username(),
-                                                m_network->developerAccessToken(),
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
-                                                m_network->oauth()->refreshToken(),
-#else
-                                                {},
-#endif
-                                                m_network->batchSize(),
-                                                m_network->downloadOnlyUnreadMessages(),
-                                                accountId())) {
-      updateTitle();
-      itemChanged(QList<RootItem*>() << this);
-    }
-  }
-  else {
-    if (DatabaseQueries::createFeedlyAccount(database,
-                                             m_network->username(),
-                                             m_network->developerAccessToken(),
-#if defined (FEEDLY_OFFICIAL_SUPPORT)
-                                             m_network->oauth()->refreshToken(),
-#else
-                                             {},
-#endif
-                                             m_network->batchSize(),
-                                             m_network->downloadOnlyUnreadMessages(),
-                                             accountId())) {
-      updateTitle();
-    }
-  }
-}
-
 RootItem* FeedlyServiceRoot::obtainNewTreeForSyncIn() const {
   try {
     auto tree = m_network->collections(true);
@@ -251,13 +267,4 @@ RootItem* FeedlyServiceRoot::obtainNewTreeForSyncIn() const {
                 << QUOTE_W_SPACE_DOT(ex.message());
     return nullptr;
   }
-}
-
-void FeedlyServiceRoot::loadFromDatabase() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Category>(database, accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<FeedlyFeed>(database, qApp->feedReader()->messageFilters(), accountId());
-  auto labels = DatabaseQueries::getLabels(database, accountId());
-
-  performInitialAssembly(categories, feeds, labels);
 }

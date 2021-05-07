@@ -10,19 +10,22 @@ class ExternalTool {
   public:
     explicit ExternalTool() = default;
     ExternalTool(const ExternalTool& other);
-    explicit ExternalTool(QString executable, QStringList parameters);
+    explicit ExternalTool(QString executable, QString parameters);
 
     QString toString();
     QString executable() const;
-    QStringList parameters() const;
+    QString parameters() const;
 
+    bool run(const QString& target);
+
+  public:
     static ExternalTool fromString(const QString& str);
     static QList<ExternalTool> toolsFromSettings();
     static void setToolsToSettings(QList<ExternalTool>& tools);
 
   private:
     QString m_executable;
-    QStringList m_parameters;
+    QString m_parameters;
 
     void sanitizeParameters();
 };

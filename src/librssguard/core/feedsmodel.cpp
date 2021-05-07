@@ -3,9 +3,9 @@
 #include "core/feedsmodel.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "database/databasefactory.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
-#include "miscellaneous/databasefactory.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -58,7 +58,7 @@ FeedsModel::~FeedsModel() {
 QMimeData* FeedsModel::mimeData(const QModelIndexList& indexes) const {
   auto* mime_data = new QMimeData();
   QByteArray encoded_data;
-  QDataStream stream(&encoded_data, QIODevice::WriteOnly);
+  QDataStream stream(&encoded_data, QIODevice::OpenModeFlag::WriteOnly);
 
   for (const QModelIndex& index : indexes) {
     if (index.column() != 0) {
@@ -99,7 +99,7 @@ bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int 
     return false;
   }
   else {
-    QDataStream stream(&dragged_items_data, QIODevice::ReadOnly);
+    QDataStream stream(&dragged_items_data, QIODevice::OpenModeFlag::ReadOnly);
 
     while (!stream.atEnd()) {
       quintptr pointer_to_item; stream >> pointer_to_item;
@@ -261,6 +261,11 @@ void FeedsModel::removeItem(RootItem* deleting_item) {
     beginRemoveRows(parent_index, index.row(), index.row());
     parent_item->removeChild(deleting_item);
     endRemoveRows();
+
+    if (deleting_item->kind() != RootItem::Kind::ServiceRoot) {
+      deleting_item->getParentServiceRoot()->updateCounts(true);
+    }
+
     deleting_item->deleteLater();
     notifyWithCounts();
   }
@@ -292,8 +297,9 @@ void FeedsModel::reassignNodeToNewParent(RootItem* original_node, RootItem* new_
 
 QList<ServiceRoot*>FeedsModel::serviceRoots() const {
   QList<ServiceRoot*> roots;
+  auto ch = m_rootItem->childItems();
 
-  for (RootItem* root : m_rootItem->childItems()) {
+  for (RootItem* root : qAsConst(ch)) {
     if (root->kind() == RootItem::Kind::ServiceRoot) {
       roots.append(root->toServiceRoot());
     }
@@ -304,8 +310,9 @@ QList<ServiceRoot*>FeedsModel::serviceRoots() const {
 
 QList<Feed*>FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   QList<Feed*>feeds_for_update;
+  auto stf = m_rootItem->getSubTreeFeeds();
 
-  for (Feed* feed : m_rootItem->getSubTreeFeeds()) {
+  for (Feed* feed : qAsConst(stf)) {
     switch (feed->autoUpdateType()) {
       case Feed::AutoUpdateType::DontAutoUpdate:
 
@@ -481,6 +488,7 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
   connect(root, &ServiceRoot::reloadMessageListRequested, this, &FeedsModel::reloadMessageListRequested);
   connect(root, &ServiceRoot::itemExpandRequested, this, &FeedsModel::itemExpandRequested);
   connect(root, &ServiceRoot::itemExpandStateSaveRequested, this, &FeedsModel::itemExpandStateSaveRequested);
+
   root->start(freshly_activated);
 
   return true;
@@ -488,8 +496,9 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
 
 bool FeedsModel::restoreAllBins() {
   bool result = true;
+  auto srts = serviceRoots();
 
-  for (ServiceRoot* root : serviceRoots()) {
+  for (ServiceRoot* root : qAsConst(srts)) {
     RecycleBin* bin_of_root = root->recycleBin();
 
     if (bin_of_root != nullptr) {
@@ -502,8 +511,9 @@ bool FeedsModel::restoreAllBins() {
 
 bool FeedsModel::emptyAllBins() {
   bool result = true;
+  auto srts = serviceRoots();
 
-  for (ServiceRoot* root : serviceRoots()) {
+  for (ServiceRoot* root : qAsConst(srts)) {
     RecycleBin* bin_of_root = root->recycleBin();
 
     if (bin_of_root != nullptr) {
@@ -515,8 +525,10 @@ bool FeedsModel::emptyAllBins() {
 }
 
 void FeedsModel::loadActivatedServiceAccounts() {
+  auto serv = qApp->feedReader()->feedServices();
+
   // Iterate all globally available feed "service plugins".
-  for (const ServiceEntryPoint* entry_point : qApp->feedReader()->feedServices()) {
+  for (const ServiceEntryPoint* entry_point : qAsConst(serv)) {
     // Load all stored root nodes from the entry point and add those to the model.
     QList<ServiceRoot*> roots = entry_point->initializeSubtree();
 
@@ -526,14 +538,16 @@ void FeedsModel::loadActivatedServiceAccounts() {
   }
 
   if (serviceRoots().isEmpty()) {
-    QTimer::singleShot(3000, qApp->mainForm(), []() {
+    QTimer::singleShot(2000, qApp->mainForm(), []() {
       qApp->mainForm()->showAddAccountDialog();
     });
   }
 }
 
 void FeedsModel::stopServiceAccounts() {
-  for (ServiceRoot* account : serviceRoots()) {
+  auto serv = serviceRoots();
+
+  for (ServiceRoot* account : qAsConst(serv)) {
     account->stop();
   }
 }
@@ -548,4 +562,19 @@ bool FeedsModel::markItemRead(RootItem* item, RootItem::ReadStatus read) {
 
 bool FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
   return item->cleanMessages(clean_read_only);
+}
+
+QVariant FeedsModel::data(const QModelIndex& index, int role) const {
+  switch (role) {
+    case Qt::ItemDataRole::FontRole:
+      return itemForIndex(index)->countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
+
+    case Qt::ItemDataRole::ToolTipRole:
+      if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
+        return QVariant();
+      }
+
+    default:
+      return itemForIndex(index)->data(index.column(), role);;
+  }
 }

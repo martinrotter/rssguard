@@ -25,10 +25,44 @@
     </widget>
    </item>
    <item>
-    <widget class="QTabWidget" name="m_tabSubscriptions">
+    <widget class="QTabWidget" name="m_tcSubscriptions">
      <property name="currentIndex">
-      <number>-1</number>
+      <number>0</number>
      </property>
+     <widget class="QWidget" name="m_tabPredefinedLists">
+      <attribute name="title">
+       <string>Filter lists (list per line)</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Add your direct links to filter lists here (one URL per line)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="m_txtPredefined"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="m_tabCustomFilters">
+      <attribute name="title">
+       <string>Custom filters</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Add your custom filters here (one filter per line)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="m_txtCustom"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item>

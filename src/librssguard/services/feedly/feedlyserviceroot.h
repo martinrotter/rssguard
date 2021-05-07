@@ -16,24 +16,22 @@ class FeedlyServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
-    virtual bool canBeDeleted() const;
     virtual bool editViaGui();
-    virtual bool deleteViaGui();
     virtual void start(bool freshly_activated);
     virtual QString code() const;
     virtual void saveAllCachedData(bool ignore_errors);
     virtual LabelOperation supportedLabelOperations() const;
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
+    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining);
 
     FeedlyNetwork* network() const;
-
-    void updateTitle();
-    void saveAccountDataToDatabase(bool creating_new);
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
-    void loadFromDatabase();
+    void updateTitle();
 
   private:
     FeedlyNetwork* m_network;
