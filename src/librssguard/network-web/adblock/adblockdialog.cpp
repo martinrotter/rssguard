@@ -5,6 +5,7 @@
 #include "network-web/adblock/adblockmanager.h"
 
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -24,13 +25,10 @@ AdBlockDialog::AdBlockDialog(QWidget* parent)
                                       qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE),
                                       tr("AdBlock configuration"));
 
-  QPushButton* btn_options = m_ui.m_buttonBox->addButton(tr("Options"),
-                                                         QDialogButtonBox::ButtonRole::HelpRole);
-  auto* menu = new QMenu(btn_options);
-
-  menu->addAction(tr("Learn about writing rules..."), this, &AdBlockDialog::learnAboutAdblock);
-  btn_options->setMenu(menu);
-
+  connect(m_ui.m_btnHelp, &QPushButton::clicked, this, [=]() {
+    qApp->web()->openUrlInExternalBrowser(QSL(ADBLOCK_HOWTO));
+  });
+  connect(m_ui.m_btnTest, &QPushButton::clicked, this, &AdBlockDialog::testConfiguration);
   connect(m_ui.m_cbEnable, &QCheckBox::toggled, this, &AdBlockDialog::enableAdBlock);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &AdBlockDialog::saveAndClose);
 
@@ -54,8 +52,20 @@ void AdBlockDialog::enableAdBlock(bool enable) {
   }
 }
 
-void AdBlockDialog::learnAboutAdblock() {
-  qApp->web()->openUrlInExternalBrowser(QSL(ADBLOCK_HOWTO));
+void AdBlockDialog::testConfiguration() {
+  try {
+    m_manager->testConfiguration();
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("You are good to go."), tr("OK!"));
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_ADBLOCK
+                << "Test of configuration failed:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                    tr("There is error, check application log for more details and "
+                                       "head to online documentation."), tr("ERROR!"));
+
+  }
 }
 
 void AdBlockDialog::load() {

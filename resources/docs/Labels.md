@@ -1,7 +1,7 @@
 # Labels
-RSS Guard supports labels/tags. Arbitrary number of tags can be assigned to each and every messages.
+RSS Guard supports labels (tags). Arbitrary number of tags can be assigned to each and every messages.
 
-Also, note that tags are synchronizeable for account plugins which support it, currently Inoreader and TT-RSS. While labels are synchronized with these services, they sometimes cannot directly created via RSS Guard and you have to create them via web interface of the respective service and then perform `Sync in` which will download created labels too.
+Also, note that tags are synchronizeable for account plugins which support it, currently Inoreader, Google Reader and TT-RSS. While labels are synchronized with these services, they sometimes cannot be directly created via RSS Guard and you have to create them via web interface of the respective service and then perform `Synchronize folders & other items` which will download newly created labels too.
 
 You can easily add labels via `Labels` root item.
 

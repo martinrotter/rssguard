@@ -18,7 +18,7 @@ class AdBlockDialog : public QDialog {
   private slots:
     void saveAndClose();
     void enableAdBlock(bool enable);
-    void learnAboutAdblock();
+    void testConfiguration();
 
   private:
     void load();

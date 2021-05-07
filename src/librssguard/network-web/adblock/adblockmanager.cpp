@@ -105,6 +105,10 @@ bool AdBlockManager::canRunOnScheme(const QString& scheme) const {
   return !(scheme == QSL("file") || scheme == QSL("qrc") || scheme == QSL("data") || scheme == QSL("abp"));
 }
 
+void AdBlockManager::testConfiguration() {
+  // Just try to run testing JS program to see if all dependecies are installed.
+}
+
 QString AdBlockManager::elementHidingRulesForDomain(const QUrl& url) const {
   if (m_serverProcess->state() == QProcess::ProcessState::Running) {
     try {

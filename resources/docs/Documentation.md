@@ -98,7 +98,7 @@ If you're not sure which version to use, **use the WebEngine-based RSS Guard**.
 ## RSS Guard 3 vs. RSS Guard 4
 RSS Guard 4 is **NOT** backwards compatible with previous editions of the application!!! It stores settings in slightly different [folder](#portable-user-data) to not overwrite user data from previous versions.
 
-RSS Guard 4.x contains numerous enhancements and many of them are hidden under the hood and they make application easier to maintain, easier to improve and easier to use.
+RSS Guard 4 contains numerous enhancements and many of them are hidden under the hood and they make application easier to maintain, easier to improve and easier to use.
 
 # Features
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF/ATOM/JSON. RSS Guard is developed on top of the [Qt library](http://qt-project.org) and it supports these operating systems:
@@ -119,20 +119,17 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
     * Feedly.
 * core:
     * support for all feed formats (RSS/RDF/ATOM/JSON),
-    * full support of podcasts (RSS/ATOM/JSON),
+    * support for podcasts (RSS/ATOM/JSON),
     * import/export of feeds to/from OPML 2.0,
     * possibility of using custom 3rd-party feed [synchronization services](Feed-formats.md),
     * feed metadata fetching including icons,
     * support for [scraping websites](#websites-scraping) which do not offer RSS/ATOM feeds and other related advanced features,
-    * simple internal Chromium-based web viewer (or alternative version with simpler and much more lightweight internal viewer),
     * scriptable [message filtering](#message-filtering),
     * downloader with own tab and support for up to 6 parallel downloads,
     * application-wide and account-specific network proxies support,
     * ability to cleanup internal message database with various options,
     * enhanced feed auto-updating with separate time intervals,
     * "portable" mode support with clever auto-detection,
-    * feed categorization,
-    * feed authentication (BASIC),
     * [external tools](#external-tools) - you can run your program with article URL,
     * handles tons of messages & feeds,
     * ability to backup/restore database or settings,
@@ -182,9 +179,9 @@ MariaDB (MySQL) backend is there for users, who want to store their data in a ce
 For database-related configuration see `Settings -> Data storage` dialog.
 
 ## Google Reader API
-Starting with RSS Guard 3.9.0, there is a new plugin which offers synchronization with services using Google Reader API. Plugin was so far tested with FreshRSS, Reedah, The Old Reader and Bazqux. All Google Reader API enabled services should work.
+There is a plugin which offers synchronization with services using Google Reader API. Plugin was so far tested with FreshRSS, Reedah, The Old Reader and Bazqux. All Google Reader API enabled services should work.
 
-Note that Inoreader has its own separate plugin, because it uses OAuth as authentication method, therefore it is cleaner to have separate plugin.
+Note that Inoreader has its own separate plugin, because it uses OAuth as authentication method.
 
 Google Reader API integration in RSS Guard offers a way to set custom service endpoint even if you select service which is not self-hosted such as Bazqux, providing all users with greater flexibility and freedom.
 
@@ -197,9 +194,9 @@ For example The Old Reader does not seem to offer tags/labels functionality, the
 ## Websites scraping
 > **Only proceed if you consider yourself to be a power user and you know what you are doing!**
 
-RSS Guard 3.9.0+ offers extra advanced features which are inspired by [Liferea](https://lzone.de/liferea/).
+RSS Guard offers extra advanced features which are inspired by [Liferea](https://lzone.de/liferea/).
 
-You can select source type of each feed. If you select `URL`, then RSS Guard simply downloads feed file from given location and behave like everyone would expect.
+You can select source type of each feed. If you select `URL`, then RSS Guard simply downloads feed file from given location and behaves like everyone would expect.
 
 However, if you choose `Script` option, then you cannot provide URL of your feed and you rely on custom script to generate feed file and provide its contents to **standard output**. Resulting data written to standard output should be valid feed file, for example RSS or ATOM XML file.
 
@@ -211,7 +208,7 @@ Any errors in your script must be written to **error output**.
 
 Note that you must provide full execution line to your custom script, including interpreter binary path and name and all that must be written in special format `<interpreter>#<argument1>#<argument2>#....`. The `#` character is there to separate interpreter and individual arguments. I had to select some character as separator because simply using space ` ` is not that easy as it might sound, because sometimes space could be a part of an argument sometimes argument separator etc.
 
-Used script must return `0` as process exit code if everything went well, or non-zero exit code if some error happened.
+Used script must return [`0`](https://www.cplusplus.com/reference/cstdlib/EXIT_SUCCESS) as process exit code if everything went well, or non-zero exit code if some error happened.
 
 Interpreter must be provided in all cases, arguments do not have to be. For example `bash#` is valid execution line, as well as `bash#-c#cat feed.atom`. Note the difference in interpreter's binary name suffix. Also be very carefully about arguments quoting. Some examples of valid and tested execution lines are:
  
@@ -229,7 +226,7 @@ RSS Guard offers [placeholder](#data-placeholder) `%data%` which is automaticall
 
 Also, working directory of process executing the script is set to RSS Guard's user data folder.
 
-There are some examples of website scrapers [here](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers), most of the are written in Python 3, thus their execution line is `python#script.py`.
+There are some examples of website scrapers [here](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers), most of thme are written in Python 3, thus their execution line is similar to `python#script.py`. Make sure to examine the script for more information on how to use it.
 
 After your source feed data are downloaded either via URL or custom script, you can optionally post-process the data with one more custom script, which will take **raw source data as input** and must produce processed valid feed data to **standard output** while printing all error messages to **error output**.
 
@@ -237,11 +234,7 @@ Format of post-process script execution line is the same as above.
 
 <img src="images/scrape-post.png" width="50%">
 
-Typical post-processing filter might do things like advanced CSS formatting, localization of contents to another language or filtering of feed file entries or removing ads:
-
-| Command | Explanation |
-|---------|-------------|
-| `bash#-c#xmllint --format -` | Pretty-print input XML feed data. |
+Typical post-processing filter might do things like advanced CSS formatting, localization of contents to another language, downloading of full articles, some kind of filtering or removing ads:
 
 It's completely up to you if you decide to only use script as `Source` of the script or separate your custom functionality between `Source` script and `Post-process` script. Sometimes you might need different `Source` scripts for different online sources and the same `Post-process` script and vice versa.
 
@@ -255,11 +248,11 @@ RSS Guard includes Gmail plugin, which allows users to receive and send e-mail m
 * Plugin is able to suggest recipient's e-mail. Suggestable addresses are read from e-mail messages which are already stored in RSS Guard's database. Therefore you have to have some e-mails fetched in order to have this feature working.
 
 ## Feedly
-RSS Guard 3.9.0+ offers [Feedly](https://feedly.com) plugin. Note that there are some specifics when using the plugin.
+RSS Guard offers [Feedly](https://feedly.com) plugin. Note that there are some specifics when using the plugin.
 
-Some official builds of RSS Guard might include official Feedly support and will provide almost unlimited API quotas and ability to just login with your username and password.
+Official builds (including development builds) of RSS Guard include official Feedly support and provide almost unlimited API quotas and ability to just login with your username and password.
 
-Sadly, some builds of RSS Guard do not have embedded production Feedly API keys and thus no official support from Feedly, therefore you must use something called `developer access token` to be able to use the plugin. See below image and notice the `Get token` button which will lead you to Feedly authentication page where you can generate the token.
+Sadly, some builds of RSS Guard do not have embedded production Feedly API keys and thus no official support from Feedly, therefore you must use something called `developer access token` to be able to use the plugin. See the below image and notice the `Get token` button which will lead you to Feedly authentication page where you can generate the token.
 
 <img src="images/feedly-details.png">
 
@@ -287,9 +280,9 @@ RSS Guard allows you to define a set of custom tools which you can subsequently 
 ## AdBlock
 [Web-based variant](#web-based-and-lite-app-variants) of RSS Guard offers ad-blocking functionality via [Adblocker](https://github.com/cliqz-oss/adblocker). Adblocker offers similar performance to [uBlock Origin](https://github.com/gorhill/uBlock).
 
-You need to have have [Node.js](https://nodejs.org) installed to have ad-blocking in RSS Guard working. Also, the implementation requires additional [npm](https://www.npmjs.com) modules to be installed, specifically: `@cliqz/adblocker`, `concat-stream`, `psl`, `node-fetch`.
+You need to have have [Node.js](https://nodejs.org) with [NPM](https://www.npmjs.com) (which is usually included in Node.js installer) installed to have ad-blocking in RSS Guard working. Also, the implementation requires additional [npm](https://www.npmjs.com) modules to be installed. You see that list of needed modules near the top of [this](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/adblock/adblock-server.js) file.
 
-The way ad-blocking internally works is that RSS Guard starts local HTTP browser which provides API determine which elements of website should (or should not) be blocked. RSS Guard then asks the server about each file to be downloaded.
+The way ad-blocking internally works is that RSS Guard starts local HTTP browser which provides ad-blocking API, which is subsequently called by RSS Guard. There is some caching done in between, which speeds up some ad-blocking decisions.
 
 ## GUI tweaking
 RSS Guard's GUI is very customizable. You can, for example, hide many GUI elements. There are even people who use RSS Guard on mobile devices powered by Linux like PinePhone or Librem devices.

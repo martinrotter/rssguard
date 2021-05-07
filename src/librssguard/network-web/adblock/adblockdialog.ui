@@ -9,12 +9,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>438</width>
+    <width>453</width>
     <height>424</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0" colspan="2">
     <widget class="QCheckBox" name="m_cbEnable">
      <property name="text">
       <string>Enable AdBlock</string>
@@ -24,10 +24,41 @@
      </property>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="m_btnHelp">
+       <property name="text">
+        <string>&amp;Help</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_btnTest">
+       <property name="text">
+        <string>&amp;Test configuration</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0" colspan="2">
     <widget class="QTabWidget" name="m_tcSubscriptions">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_tabPredefinedLists">
       <attribute name="title">
@@ -38,6 +69,9 @@
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Add your direct links to filter lists here (one URL per line)</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_txtPredefined</cstring>
          </property>
         </widget>
        </item>
@@ -56,6 +90,9 @@
          <property name="text">
           <string>Add your custom filters here (one filter per line)</string>
          </property>
+         <property name="buddy">
+          <cstring>m_txtCustom</cstring>
+         </property>
         </widget>
        </item>
        <item>
@@ -65,7 +102,7 @@
      </widget>
     </widget>
    </item>
-   <item>
+   <item row="4" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -75,8 +112,27 @@
      </property>
     </widget>
    </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="LabelWithStatus" name="m_lblTestResult" native="true"/>
+   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>m_cbEnable</tabstop>
+  <tabstop>m_btnHelp</tabstop>
+  <tabstop>m_btnTest</tabstop>
+  <tabstop>m_tcSubscriptions</tabstop>
+  <tabstop>m_txtPredefined</tabstop>
+  <tabstop>m_txtCustom</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
