@@ -6,6 +6,8 @@
 #include "database/databasedriver.h"
 
 class MariaDbDriver : public DatabaseDriver {
+  Q_OBJECT
+
   public:
     enum class MariaDbError {
       Ok = 0,

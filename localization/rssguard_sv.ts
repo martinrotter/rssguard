@@ -11,40 +11,6 @@
     </message>
 </context>
 <context>
-    <name>AdBlockAddSubscriptionDialog</name>
-    <message>
-        <source>Add subscription</source>
-        <translation>Lägg till prenumeration</translation>
-    </message>
-    <message>
-        <source>Use predefined subscription</source>
-        <translation>Använd fördefinerad prenumeration</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Title of subscription</source>
-        <translation>Prenumerationsnamn</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Absolute URL to online subscription file</source>
-        <translation>Absolut URL till prenumerationsfil online</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockCustomList</name>
-    <message>
-        <source>Custom rules</source>
-        <translation>Anpassade regler</translation>
-    </message>
-</context>
-<context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
@@ -59,28 +25,24 @@
         <translation>Alternativ</translation>
     </message>
     <message>
-        <source>Add rule</source>
-        <translation>Lägg till regel</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Ta bort regel</translation>
-    </message>
-    <message>
-        <source>Add subscription</source>
-        <translation>Lägg till prenumeration</translation>
-    </message>
-    <message>
-        <source>Remove subscription</source>
-        <translation>Ta bort prenumeration</translation>
-    </message>
-    <message>
-        <source>Update subscriptions</source>
-        <translation>Uppdatera prenumerationer</translation>
-    </message>
-    <message>
         <source>Learn about writing rules...</source>
         <translation>Lär hur man skriver regler...</translation>
+    </message>
+    <message>
+        <source>Filter lists (list per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your direct links to filter lists here (one URL per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your custom filters here (one filter per line)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -92,48 +54,6 @@
     <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Visa AdBlock-&amp;inställningar</translation>
-    </message>
-    <message>
-        <source>Disable on %1</source>
-        <translation>Inaktivera på %1</translation>
-    </message>
-    <message>
-        <source>Disable only on this page</source>
-        <translation>Inaktivera endast på denna sida</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockSubscription</name>
-    <message>
-        <source>Cannot load subscription!</source>
-        <translation>Kan inte läsa in prenumeration!</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockTreeWidget</name>
-    <message>
-        <source>Add rule</source>
-        <translation>Lägg till regel</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Ta bort regel</translation>
-    </message>
-    <message>
-        <source>Add custom rule</source>
-        <translation>Lägg till anpassad regel</translation>
-    </message>
-    <message>
-        <source>Please write your rule here:</source>
-        <translation>Skriv din regel här:</translation>
-    </message>
-    <message>
-        <source>%1 (recently updated)</source>
-        <translation>%1 (nyligen uppdaterad)</translation>
-    </message>
-    <message>
-        <source>%1 (error: %2)</source>
-        <translation>%1 (fel: %2)</translation>
     </message>
 </context>
 <context>
@@ -151,10 +71,6 @@
         <translation>Inställningsfilen kopierades inte till utdatamappen.</translation>
     </message>
     <message>
-        <source>Database file not copied to output directory successfully.</source>
-        <translation>Databasfilen kopierades inte till utdatamappen.</translation>
-    </message>
-    <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Databasåterställning startades inte. Tillse att utdatamappen är skrivbar.</translation>
     </message>
@@ -167,12 +83,12 @@
         <translation>Kan inte lägga till flödet</translation>
     </message>
     <message>
-        <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>Flödet kan inte läggas till eftersom standard RSS-/ATOM-konto inte aktiverats.</translation>
-    </message>
-    <message>
         <source>New messages downloaded</source>
         <translation>Nya meddelanden nedladdade</translation>
+    </message>
+    <message>
+        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -279,40 +195,12 @@
 <context>
     <name>DatabaseFactory</name>
     <message>
-        <source>MySQL server works as expected.</source>
-        <translation>MySQL-servern fungerar som förväntat.</translation>
+        <source>Cannot connect to database</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>No MySQL server is running in the target destination.</source>
-        <translation>Ingen MySQL-server. körs på målplatsen.</translation>
-    </message>
-    <message>
-        <source>Access denied. Invalid username or password used.</source>
-        <translation>Åtkomst nekad. Ogiltigt användarnamn eller lösenord.</translation>
-    </message>
-    <message>
-        <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (dedikerad databas)</translation>
-    </message>
-    <message>
-        <source>SQLite (embedded database)</source>
-        <translation>SQLite (inbäddad databas)</translation>
-    </message>
-    <message>
-        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Den valda databasen finns inte (än). Den kommer att skapas.</translation>
-    </message>
-    <message>
-        <source>MySQL database not available</source>
-        <translation>MySQL databas inte tillgänglig</translation>
-    </message>
-    <message>
-        <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation>%1 kan inte använda MySQL-lagringen, den är inte tillgänglig. %1 växlar nu till SQLite databas. Starta din MySQL-server och justera programinställningarna.</translation>
-    </message>
-    <message>
-        <source>Unknown error: &apos;%1&apos;.</source>
-        <translation>Okänt fel: &quot;%1&quot;</translation>
+        <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -580,10 +468,6 @@ Status: %3</translation>
         <translation>Hämta token</translation>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation> meddelande(n)</translation>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Ladda endast ner X nyaste meddelanden per flöde</translation>
     </message>
@@ -612,14 +496,6 @@ Status: %3</translation>
         <translation>Din %1 har inte officiellt Feedly-stöd. Därför måste du använda en speciell auktoriseringskod kallad &quot;Åtkomst-token för utvecklare&quot;. Dessa token är vanligtvis giltiga i endast en månad och tillåter bara 250 API-anrop per dag.</translation>
     </message>
     <message>
-        <source>= unlimited</source>
-        <translation>= obegränsat</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>meddelanden</translation>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation>Du beviljade inte åtkomst.</translation>
     </message>
@@ -640,20 +516,12 @@ Status: %3</translation>
         <translation>Åtkomst beviljades.</translation>
     </message>
     <message>
-        <source>You are already logged in.</source>
-        <translation>Du är redan inloggad.</translation>
-    </message>
-    <message>
         <source>Access granted.</source>
         <translation>Åtkomst beviljad.</translation>
     </message>
     <message>
         <source>Login was successful.</source>
         <translation>Inloggning slutförd</translation>
-    </message>
-    <message>
-        <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
-        <translation>Tillse att din &quot;Åtkomst-token för utvecklare&quot; är korrekt och att din internetuppkoppling fungerar.</translation>
     </message>
     <message>
         <source>Some problems.</source>
@@ -675,6 +543,22 @@ Status: %3</translation>
         <source>Access token is okay.</source>
         <translation>Åtkomst-token är OK.</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Ladda bara ner olästa meddelanden.</translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedlyNetwork</name>
@@ -693,14 +577,6 @@ Status: %3</translation>
     <message>
         <source>Click this to login again.</source>
         <translation>Klicka här för att logga in igen.</translation>
-    </message>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Inloggad</translation>
-    </message>
-    <message>
-        <source>Your login to Feedly was authorized.</source>
-        <translation>Din inloggning till Feedly godkändes.</translation>
     </message>
 </context>
 <context>
@@ -742,6 +618,14 @@ Status: %3</translation>
     <message>
         <source>Toolbar spacer</source>
         <translation>Avgränsare för verktygsfält</translation>
+    </message>
+    <message>
+        <source>Search feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds search box</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -934,6 +818,10 @@ att funktionen inte är implementerad än.</translation>
         <source>Network proxy</source>
         <translation>Nätverksproxy</translation>
     </message>
+    <message>
+        <source>Add new account</source>
+        <translation>Lägg till nytt konto</translation>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1084,6 +972,114 @@ att funktionen inte är implementerad än.</translation>
     </message>
 </context>
 <context>
+    <name>FormCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>Överordnad kategori</translation>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation>Välj överordnad mapp för kategorin.</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Titel</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Beskrivning</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Ikon</translation>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation>Välj ikon för kategorin.</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation>Lägg till ny kategori</translation>
+    </message>
+    <message>
+        <source>Edit &apos;%1&apos;</source>
+        <translation>Redigera &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation>Kategorinamnet är ok.</translation>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation>Kategorinamnet är för kort.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Beskrivning saknas.</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>Beskrivningen är ok.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation>Välj ikonfil för kategorin</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Välj ikon</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Avbryt</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation>Sök i:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Ikonnamn:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Ikontyp:</translation>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation>Kategorinamn</translation>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation>Ange namnet på din kategori.</translation>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation>Kategoribeskrivning</translation>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation>Beskriv din kategori.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Ikonval</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Hämta ikon från fil...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation>Använd standardikon från ikontemat</translation>
+    </message>
+</context>
+<context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
@@ -1104,10 +1100,6 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Database information</source>
         <translation>Databasinformation</translation>
-    </message>
-    <message>
-        <source>Database file size</source>
-        <translation>Databasens filstorlek</translation>
     </message>
     <message>
         <source>Database type</source>
@@ -1154,8 +1146,8 @@ att funktionen inte är implementerad än.</translation>
         <translation>Okänd</translation>
     </message>
     <message>
-        <source>file: %1, data: %2</source>
-        <translation>fil: %1, data: %2</translation>
+        <source>Total data size</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1214,14 +1206,6 @@ att funktionen inte är implementerad än.</translation>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Cannot edit feed</source>
-        <translation>Kan inte redigera flödet</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Flödet redigerades inte, på grund av något fel.</translation>
-    </message>
-    <message>
         <source>Edit &apos;%1&apos;</source>
         <translation>Redigera &quot;%1&quot;</translation>
     </message>
@@ -1244,6 +1228,18 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Do not download messages at all</source>
         <translation>Ladda inte ner meddelanden över huvud taget</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Lägg till nytt flöde</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Fel</translation>
+    </message>
+    <message>
+        <source>Cannot save changes: %1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1363,14 +1359,6 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Switch visibility of main &amp;window</source>
         <translation>Visa/Dölj &amp;programfönstret</translation>
-    </message>
-    <message>
-        <source>Cannot open external browser</source>
-        <translation>Kan inte öppna extern webbläsare</translation>
-    </message>
-    <message>
-        <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>Kan inte öppna extern webbläsare. Navigera manuellt till programmets webbsida.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
@@ -1669,6 +1657,10 @@ att funktionen inte är implementerad än.</translation>
         <source>Message viewer toolbars</source>
         <translation>Verktygsfält i meddelandeläsare</translation>
     </message>
+    <message>
+        <source>Expand/collapse selected item &amp;recursively</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -1954,147 +1946,7 @@ Du måste starta om manuellt.</translation>
     </message>
 </context>
 <context>
-    <name>FormStandardCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Överordnad kategori</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation>Välj överordnad mapp för kategorin.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Beskrivning</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Ikon</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation>Välj ikon för kategorin.</translation>
-    </message>
-    <message>
-        <source>Add new category</source>
-        <translation>Lägg till ny kategori</translation>
-    </message>
-    <message>
-        <source>Edit existing category</source>
-        <translation>Redigera befintlig kategori</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation>Kan inte lägga till kategori</translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation>Kategorin lades inte till, på grund av något fel.</translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>Kan inte redigera kategorin</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>Kategorin kan inte redigeras, på grund av något fel.</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>Kategorinamnet är ok.</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation>Kategorinamnet är för kort.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Beskrivning saknas.</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Beskrivningen är ok.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation>Välj ikonfil för kategorin</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Välj ikon</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Avbryt</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Sök i:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Ikonnamn:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Ikontyp:</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation>Kategorinamn</translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation>Ange namnet på din kategori.</translation>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>Kategoribeskrivning</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation>Beskriv din kategori.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Ikonval</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Hämta ikon från fil...</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation>Använd standardikon från ikontemat</translation>
-    </message>
-</context>
-<context>
     <name>FormStandardFeedDetails</name>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flöde</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Flödet lades inte till, på grund av något fel.</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>Kan inte redigera flödet</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Flödet redigerades inte, på grund av något fel.</translation>
-    </message>
     <message>
         <source>General</source>
         <translation>Allmänt</translation>
@@ -2102,10 +1954,6 @@ Du måste starta om manuellt.</translation>
     <message>
         <source>Network</source>
         <translation>Nätverk</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Lägg till nytt flöde</translation>
     </message>
 </context>
 <context>
@@ -2246,14 +2094,6 @@ Du måste starta om manuellt.</translation>
         <translation>Flöde tillagt</translation>
     </message>
     <message>
-        <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flöde</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Flödet lades inte till, på grund av ett fel.</translation>
-    </message>
-    <message>
         <source>General</source>
         <translation>Allmänt</translation>
     </message>
@@ -2262,12 +2102,12 @@ Du måste starta om manuellt.</translation>
         <translation>Nätverk</translation>
     </message>
     <message>
-        <source>Add new feed</source>
-        <translation>Lägg till nytt flöde</translation>
-    </message>
-    <message>
         <source>Feed was added, obtaining new tree of feeds now.</source>
         <translation>Flöde lades till, erhåller nytt flödesträd nu.</translation>
+    </message>
+    <message>
+        <source>API returned error code %1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2392,10 +2232,6 @@ You can install it now.</source>
         <translation>Paketet har laddats ner.
 Du kan installera det nu.</translation>
     </message>
-    <message>
-        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation>Kan inte navigera till installationsfilen. Ladda ner ny installationsfil manuellt, från projektets webbplats.</translation>
-    </message>
 </context>
 <context>
     <name>GmailAccountDetails</name>
@@ -2428,16 +2264,8 @@ Du kan installera det nu.</translation>
         <translation>Ladda endast ner X nyaste meddelanden per flöde</translation>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation> meddelande(n)</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>&amp;Logga in</translation>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation>Angiven omdirigerings-URL måste börja med &quot;http://localhost&quot; och måste konfigureras i ditt &quot;OAuth-program&quot;.</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -2446,14 +2274,6 @@ Du kan installera det nu.</translation>
     <message>
         <source>User-visible username</source>
         <translation>Användarsynligt användarnamn</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Du är redan inloggad.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>Åtkomst beviljad.</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2472,10 +2292,6 @@ Du kan installera det nu.</translation>
         <translation>Fel uppstod vid testning.</translation>
     </message>
     <message>
-        <source>There is error. %1 </source>
-        <translation>Det finns fel. %1 </translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>Testet lyckades. Du kan behöva logga in igen.</translation>
     </message>
@@ -2491,17 +2307,29 @@ Du kan installera det nu.</translation>
         <source>Some value is entered.</source>
         <translation>Ett värde angavs.</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Ladda bara ner olästa meddelanden.</translation>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GmailNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Inloggad</translation>
-    </message>
-    <message>
-        <source>Your login to Gmail was authorized.</source>
-        <translation>Din inloggning till Gmail godkändes.</translation>
-    </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Klicka här för att logga in igen. Felet är: &quot;%1&quot;</translation>
@@ -2591,10 +2419,6 @@ Inloggningstoken upphör: %2</translation>
         <translation>Ladda endast ner X nyaste meddelanden per flöde</translation>
     </message>
     <message>
-        <source> = unlimited</source>
-        <translation> = obegränsat</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Vissa flöden kräver autentisering. Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
     </message>
@@ -2643,14 +2467,6 @@ Inloggningstoken upphör: %2</translation>
         <translation>Begränsning av antalet nerladdade meddelanden per flöde gör flödesuppdateringen snabbare, men om ditt flöde innehåller ett större antal meddelanden än specificerad begränsning, kanske en del äldre meddelanden inte laddas ner under flödesuppdateringen.</translation>
     </message>
     <message>
-        <source>= unlimited</source>
-        <translation>= obegränsat</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>meddelanden</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Nätverksfel: &apos;%1&apos;.</translation>
     </message>
@@ -2689,6 +2505,10 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>URL is okay.</source>
         <translation>URL okay.</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Ladda bara ner olästa meddelanden.</translation>
     </message>
 </context>
 <context>
@@ -2747,10 +2567,6 @@ Inloggningstoken upphör: %2</translation>
         <translation>Hämta mitt eget program-ID</translation>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation> meddelande(n)</translation>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Ladda endast ner X nyaste meddelanden per flöde</translation>
     </message>
@@ -2759,28 +2575,12 @@ Inloggningstoken upphör: %2</translation>
         <translation>&amp;Logga in</translation>
     </message>
     <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
-
-It is highly recommended to create your own &quot;App ID&quot;. Because predefined one may be limited due to usage quotas if used by too many users simultaneously.</source>
-        <translation>Angiven omdirigerings-URL måste börja med &quot;http://localhost&quot; och måste konfigureras i ditt &quot;OAuth-program&quot;.
-
-Det rekommenderas starkt att du skapar ditt eget program-ID, eftersom det fördefinierade kan vara begränsat på grund av användningskvoter, om det används av alltför många användare samtidigt.</translation>
-    </message>
-    <message>
         <source>Not tested yet.</source>
         <translation>Inte testat ännu.</translation>
     </message>
     <message>
         <source>User-visible username</source>
         <translation>Användarsynligt användarnamn</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Du är redan inloggad.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>Åtkomst beviljad.</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2818,17 +2618,25 @@ Det rekommenderas starkt att du skapar ditt eget program-ID, eftersom det förde
         <source>Some value is entered.</source>
         <translation>Ett värde angavs.</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Ladda bara ner olästa meddelanden.</translation>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>InoreaderNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Inloggad</translation>
-    </message>
-    <message>
-        <source>Your login to Inoreader was authorized.</source>
-        <translation>Din inloggning till Inoreader godkändes.</translation>
-    </message>
     <message>
         <source>Inoreader: authentication error</source>
         <translation>Inoreader: Autentiseringsfel</translation>
@@ -2844,6 +2652,10 @@ Det rekommenderas starkt att du skapar ditt eget program-ID, eftersom det förde
     <message>
         <source>Click this to login again.</source>
         <translation>Klicka här för att logga in igen.</translation>
+    </message>
+    <message>
+        <source>not logged in</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2901,6 +2713,33 @@ Inloggningstoken upphör: %2</translation>
     </message>
 </context>
 <context>
+    <name>MariaDbDriver</name>
+    <message>
+        <source>MySQL server works as expected.</source>
+        <translation>MySQL-servern fungerar som förväntat.</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation>Den valda databasen finns inte (än). Den kommer att skapas.</translation>
+    </message>
+    <message>
+        <source>No MySQL server is running in the target destination.</source>
+        <translation>Ingen MySQL-server. körs på målplatsen.</translation>
+    </message>
+    <message>
+        <source>Access denied. Invalid username or password used.</source>
+        <translation>Åtkomst nekad. Ogiltigt användarnamn eller lösenord.</translation>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <translation>Okänt fel: &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>MariaDB</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
@@ -2947,6 +2786,21 @@ Inloggningstoken upphör: %2</translation>
     </message>
 </context>
 <context>
+    <name>MessageCountSpinBox</name>
+    <message>
+        <source>= unlimited</source>
+        <translation>= obegränsat</translation>
+    </message>
+    <message>
+        <source>message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>meddelanden</translation>
+    </message>
+</context>
+<context>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
@@ -2959,6 +2813,13 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>Switch message importance</source>
         <translation>Växla meddelandets betydelse</translation>
+    </message>
+</context>
+<context>
+    <name>MessageTextBrowser</name>
+    <message>
+        <source>Open with external tool</source>
+        <translation>Öppna med externt verktyg</translation>
     </message>
 </context>
 <context>
@@ -2990,6 +2851,10 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>Created on</source>
         <translation>Skapad</translation>
+    </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3035,10 +2900,6 @@ Inloggningstoken upphör: %2</translation>
         <translation>Innehåll</translation>
     </message>
     <message>
-        <source>Id of the message.</source>
-        <translation>Meddelande-ID.</translation>
-    </message>
-    <message>
         <source>Is message read?</source>
         <translation>Är meddelandet läst?</translation>
     </message>
@@ -3049,10 +2910,6 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>Is message important?</source>
         <translation>Är meddelandet viktigt?</translation>
-    </message>
-    <message>
-        <source>Id of feed which this message belongs to.</source>
-        <translation>ID för det flöde som detta meddelande tillhör.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
@@ -3138,6 +2995,22 @@ Inloggningstoken upphör: %2</translation>
         <source>Indication of enclosures presence within the message.</source>
         <translation>Det finns indikationer om infogade bilagor i meddelandet.</translation>
     </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of the message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of feed which this message belongs to.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Score of the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3185,14 +3058,6 @@ Inloggningstoken upphör: %2</translation>
         <translation>Kontextmeny för meddelanden</translation>
     </message>
     <message>
-        <source>Problem with starting external web browser</source>
-        <translation>Problem med att starta extern webbläsare</translation>
-    </message>
-    <message>
-        <source>External web browser could not be started.</source>
-        <translation>Extern webbläsare kan inte startas.</translation>
-    </message>
-    <message>
         <source>Problem with starting external e-mail client</source>
         <translation>Problem att starta extern e-postklient</translation>
     </message>
@@ -3211,6 +3076,10 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
         <translation>Det externa verktyget &quot;%1&quot; kan inte startas.</translation>
+    </message>
+    <message>
+        <source>No external tools activated</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3396,14 +3265,6 @@ Inloggningstoken upphör: %2</translation>
         <translation>Du måste logga in först</translation>
     </message>
     <message>
-        <source>Navigate to website</source>
-        <translation>Gå till webbsidan</translation>
-    </message>
-    <message>
-        <source>To login, you need to navigate to this website:</source>
-        <translation>Du måste gå till denna webbsida för att logga in:</translation>
-    </message>
-    <message>
         <source>You can close this window now. Go back to %1.</source>
         <translation>Du kan stänga det här fönstret nu. Gå tillbaka till %1.</translation>
     </message>
@@ -3425,10 +3286,6 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>Only download newest X messages per feed</source>
         <translation>Ladda endast ner X nyaste meddelanden per flöde</translation>
-    </message>
-    <message>
-        <source> = unlimited</source>
-        <translation> = obegränsat</translation>
     </message>
     <message>
         <source>URL</source>
@@ -3481,10 +3338,6 @@ Inloggningstoken upphör: %2</translation>
     <message>
         <source>Here, results of connection test are shown.</source>
         <translation>Här visas resultat av anslutningstest.</translation>
-    </message>
-    <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation>Begränsning av antalet nerladdade meddelanden per flöde gör flödesuppdateringen snabbare, men om ditt flöde innehåller ett större antal meddelanden än specificerad begränsning, kanske en del meddelanden inte laddas ner under flödesuppdateringen.</translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -3636,8 +3489,10 @@ genom att klicka på denna popup-avisering.</translation>
         <translation>Google Reader API används av många RSS-läsare. Detta är här för att stödja</translation>
     </message>
     <message>
-        <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-        <translation>Håll koll på de ämnen och trender du bryr dig om, utan att överdriva. Feedly är ett säkert utrymme där du privat kan organisera och utforska de ämnen och trender som är viktiga för dig.</translation>
+        <source>Keep up with the topics and trends you care about, without the overwhelm.
+
+Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3798,9 +3653,7 @@ genom att klicka på denna popup-avisering.</translation>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
-File filter for external e-mail selection dialog.
-----------
-File filter for external tool selection dialog.</extracomment>
+File filter for external e-mail selection dialog.</extracomment>
         <translation>Körbara (*)</translation>
     </message>
     <message>
@@ -3836,14 +3689,6 @@ File filter for external tool selection dialog.</extracomment>
         <translation>På den här sidan kan du skapa en lista över externa verktyg som kan öppna URL:er i valda meddelanden.</translation>
     </message>
     <message>
-        <source>Add external tool</source>
-        <translation>Lägg till externt verktyg</translation>
-    </message>
-    <message>
-        <source>Delete selected external tool</source>
-        <translation>Ta bort markerat externt verktyg</translation>
-    </message>
-    <message>
         <source>Executable</source>
         <translation>Körbar fil</translation>
     </message>
@@ -3860,16 +3705,28 @@ File filter for external tool selection dialog.</extracomment>
         <translation>Ange parametrar</translation>
     </message>
     <message>
-        <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation>Ange parametrar (valfritt), separerade med enkelt mellanslag, som skall skickas till den körbara filen vid öppning av URL:er.</translation>
-    </message>
-    <message>
         <source>Parameters passed to executable</source>
         <translation>Parametrar skickade till startfilen</translation>
     </message>
     <message>
         <source>Network proxy</source>
         <translation>Nätverksproxy</translation>
+    </message>
+    <message>
+        <source>&amp;Add new external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Edit selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4157,6 +4014,14 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
         <translation>Visa riktiga ikoner för flödet i listan över meddelanden i stället för läst-/oläst-ikoner</translation>
     </message>
+    <message>
+        <source>Hide message counts if there are no unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4272,10 +4137,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>E-post</translation>
     </message>
     <message>
-        <source>(Tray icon is not available.)</source>
-        <translation>(meddelandefältsikon ej tillgänglig)</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Endast ikon</translation>
     </message>
@@ -4328,6 +4189,10 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <source>Display count of unread messages</source>
         <translation>Visa räkneverk för olästa meddelanden</translation>
     </message>
+    <message>
+        <source>(Your OS does not support tray icons at the moment.)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4342,6 +4207,10 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>Author</source>
         <translation>Författare</translation>
+    </message>
+    <message>
+        <source>Localization</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4373,16 +4242,34 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Denna sida blockerades av AdBlock</translation>
     </message>
     <message>
-        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation>Blockerad av uppsättning: &quot;%1&quot;&lt;br/&gt;Blockerad av filter: &quot;%2&quot;</translation>
+        <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>SqliteDriver</name>
+    <message>
+        <source>SQLite (embedded database)</source>
+        <translation>SQLite (inbäddad databas)</translation>
+    </message>
+    <message>
+        <source>Database file not copied to output directory successfully.</source>
+        <translation>Databasfilen kopierades inte till utdatamappen.</translation>
+    </message>
+</context>
+<context>
+    <name>StandardCategory</name>
+    <message>
+        <source>Error</source>
+        <translation>Fel</translation>
+    </message>
+    <message>
+        <source>Cannot save data for category, detailed information was logged via debug log.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
-    <message>
-        <source>Metadata not fetched</source>
-        <translation>Metadata hämtades inte</translation>
-    </message>
     <message>
         <source>
 Network status: %1
@@ -4406,8 +4293,24 @@ Typ: %3</translation>
         <translation>Okänd</translation>
     </message>
     <message>
-        <source>Metadata was not fetched.</source>
-        <translation>Metadata hämtades inte.</translation>
+        <source>Error</source>
+        <translation>Fel</translation>
+    </message>
+    <message>
+        <source>Cannot save data for feed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML is not well-formed, %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML feed file format unrecognized</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed, detailed information was logged via debug log.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4509,10 +4412,6 @@ Typ: %3</translation>
         <translation>Ikonmetadata hämtad.</translation>
     </message>
     <message>
-        <source>Icon metadata not fetched.</source>
-        <translation>Ikonmetadata inte hämtad.</translation>
-    </message>
-    <message>
         <source>No icon fetched.</source>
         <translation>Ikon hämtades inte.</translation>
     </message>
@@ -4523,10 +4422,6 @@ Typ: %3</translation>
     <message>
         <source>Feed and icon metadata fetched.</source>
         <translation>Flödes- och ikonmetadata hämtad.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation>Flödes- eller ikonmetadata inte hämtad.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
@@ -4645,6 +4540,18 @@ Typ: %3</translation>
         <source>Command is empty.</source>
         <translation>Kommano saknas.</translation>
     </message>
+    <message>
+        <source>Script failed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: %1</source>
+        <translation>Fel: %1</translation>
+    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -4693,12 +4600,12 @@ Typ: %3</translation>
         <translation>Kan inte lägga till kategori, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
-        <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation>Importen slutfördes, men vissa flöden/kategorier importerades inte på grund fel.</translation>
-    </message>
-    <message>
         <source>Import was completely successful.</source>
         <translation>Importen slutfördes korrekt.</translation>
+    </message>
+    <message>
+        <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4742,13 +4649,6 @@ Typ: %3</translation>
 Unread news: %2</source>
         <translation>%1
 Olästa nyheter: %2</translation>
-    </message>
-</context>
-<context>
-    <name>T</name>
-    <message>
-        <source>Add new account</source>
-        <translation>Lägg till nytt konto</translation>
     </message>
 </context>
 <context>
@@ -5024,6 +4924,10 @@ Olästa nyheter: %2</translation>
         <source>URL is okay.</source>
         <translation>URL okay.</translation>
     </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Ladda endast ner X nyaste meddelanden per flöde</translation>
+    </message>
 </context>
 <context>
     <name>TtRssFeedDetails</name>
@@ -5086,6 +4990,17 @@ Senaste inloggning: %4</translation>
     </message>
 </context>
 <context>
+    <name>UnreadNode</name>
+    <message>
+        <source>Unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can find all unread messages here.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
@@ -5115,14 +5030,6 @@ Senaste inloggning: %4</translation>
     <message>
         <source>Open this website in system web browser</source>
         <translation>Öppna denna webbsida i systemets webbläsare</translation>
-    </message>
-    <message>
-        <source>Failed to open URL in web browser</source>
-        <translation>Kunde inte öppna URL i webbläsaren</translation>
-    </message>
-    <message>
-        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
-        <translation>URL:en &quot;%1&quot; kunde inte öppnas i systemets webbläsare.</translation>
     </message>
 </context>
 <context>
@@ -5215,6 +5122,14 @@ Senaste inloggning: %4</translation>
         <source>Allow geolocation on insecure origins</source>
         <translation>Tillåt geolokalisering av osäkert ursprung</translation>
     </message>
+    <message>
+        <source>Navigate to website manually</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>WebViewer</name>
@@ -5233,6 +5148,10 @@ Senaste inloggning: %4</translation>
     <message>
         <source>Open link in external browser</source>
         <translation>Öppna länk i extern webbläsare</translation>
+    </message>
+    <message>
+        <source>Open with external tool</source>
+        <translation>Öppna med externt verktyg</translation>
     </message>
 </context>
 </TS>

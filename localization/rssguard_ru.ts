@@ -11,40 +11,6 @@
     </message>
 </context>
 <context>
-    <name>AdBlockAddSubscriptionDialog</name>
-    <message>
-        <source>Add subscription</source>
-        <translation>Добавить подписку</translation>
-    </message>
-    <message>
-        <source>Use predefined subscription</source>
-        <translation>Использовать предопределенную подписку</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Заголовок</translation>
-    </message>
-    <message>
-        <source>Title of subscription</source>
-        <translation>Заголовок подписки</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL </translation>
-    </message>
-    <message>
-        <source>Absolute URL to online subscription file</source>
-        <translation>Абсолютный URL для файла онлайн-подписки</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockCustomList</name>
-    <message>
-        <source>Custom rules</source>
-        <translation>Пользовательские правила</translation>
-    </message>
-</context>
-<context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
@@ -59,28 +25,24 @@
         <translation>Опции</translation>
     </message>
     <message>
-        <source>Add rule</source>
-        <translation>Добавить правило</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Удалить правило</translation>
-    </message>
-    <message>
-        <source>Add subscription</source>
-        <translation>Добавить подписку</translation>
-    </message>
-    <message>
-        <source>Remove subscription</source>
-        <translation>Удалить подписку</translation>
-    </message>
-    <message>
-        <source>Update subscriptions</source>
-        <translation>Обновить подписки</translation>
-    </message>
-    <message>
         <source>Learn about writing rules...</source>
         <translation>Узнайте о правилах написания ...</translation>
+    </message>
+    <message>
+        <source>Filter lists (list per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your direct links to filter lists here (one URL per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your custom filters here (one filter per line)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -92,48 +54,6 @@
     <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Показать настройки &amp;AdBlock</translation>
-    </message>
-    <message>
-        <source>Disable on %1</source>
-        <translation>Отключить на %1</translation>
-    </message>
-    <message>
-        <source>Disable only on this page</source>
-        <translation>Отключить только на этой странице</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockSubscription</name>
-    <message>
-        <source>Cannot load subscription!</source>
-        <translation>Невозможно загрузить подписку!</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockTreeWidget</name>
-    <message>
-        <source>Add rule</source>
-        <translation>Добавить правило</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Удалить правило</translation>
-    </message>
-    <message>
-        <source>Add custom rule</source>
-        <translation>Добавить пользовательское правило</translation>
-    </message>
-    <message>
-        <source>Please write your rule here:</source>
-        <translation>Пожалуйста, напишите правило здесь:</translation>
-    </message>
-    <message>
-        <source>%1 (recently updated)</source>
-        <translation>%1 (недавно обновлено)</translation>
-    </message>
-    <message>
-        <source>%1 (error: %2)</source>
-        <translation>%1 (ошибка: %2)</translation>
     </message>
 </context>
 <context>
@@ -151,10 +71,6 @@
         <translation>Файл настроек не скопирован в выходной каталог.</translation>
     </message>
     <message>
-        <source>Database file not copied to output directory successfully.</source>
-        <translation>Файл базы данных не скопирован в выходной каталог.</translation>
-    </message>
-    <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Восстановление базы данных не было начато. Убедитесь, что выходной каталог доступен для записи.</translation>
     </message>
@@ -167,12 +83,12 @@
         <translation>Невозможно добавить канал</translation>
     </message>
     <message>
-        <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>Канал не может быть добавлен, так как стандартный аккаунт RSS/ATOM не включен.</translation>
-    </message>
-    <message>
         <source>New messages downloaded</source>
         <translation>Новые сообщения загружены</translation>
+    </message>
+    <message>
+        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -279,40 +195,12 @@
 <context>
     <name>DatabaseFactory</name>
     <message>
-        <source>MySQL server works as expected.</source>
-        <translation>Сервер MySQL работает, как ожидалось.</translation>
+        <source>Cannot connect to database</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>No MySQL server is running in the target destination.</source>
-        <translation>Сервер MySQL не запущен в месте назначения.</translation>
-    </message>
-    <message>
-        <source>Access denied. Invalid username or password used.</source>
-        <translation>Доступ запрещён. Неверное имя пользователя или пароль.</translation>
-    </message>
-    <message>
-        <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL / MariaDB (специальная база данных)</translation>
-    </message>
-    <message>
-        <source>SQLite (embedded database)</source>
-        <translation>SQLite (встроенная база данных)</translation>
-    </message>
-    <message>
-        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Выбранная база данных не существует (пока). Будет создана. Это нормально.</translation>
-    </message>
-    <message>
-        <source>MySQL database not available</source>
-        <translation>База данных MySQL недоступна</translation>
-    </message>
-    <message>
-        <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation>%1 не может использовать хранилище MySQL. Оно недоступно. %1 теперь переключается на базу данных SQLite. Запустите сервер MySQL и внесите изменения в настройках приложения.</translation>
-    </message>
-    <message>
-        <source>Unknown error: &apos;%1&apos;.</source>
-        <translation>Неизвестная ошибка: &apos;%1&apos;.</translation>
+        <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -580,10 +468,6 @@ Status: %3</source>
         <translation>Получить токен</translation>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation>сообщение(я)</translation>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Загружать только Х новейших сообщений для канала</translation>
     </message>
@@ -612,14 +496,6 @@ Status: %3</source>
         <translation>%1 не предлагает официальную поддержку Feedly, поэтому вы должны авторизоваться с помощью специального кода авторизации, который называется «токен доступа разработчика». Эти токены обычно действительны только в течение 1 месяца и допускают только 250 вызовов API в день.</translation>
     </message>
     <message>
-        <source>= unlimited</source>
-        <translation>= не ограниченно</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>сообщения</translation>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation>Отказано в доступе.</translation>
     </message>
@@ -640,20 +516,12 @@ Status: %3</source>
         <translation>Ваш доступ одобрен.</translation>
     </message>
     <message>
-        <source>You are already logged in.</source>
-        <translation>Вход уже совершен.</translation>
-    </message>
-    <message>
         <source>Access granted.</source>
         <translation>Доступ разрешен.</translation>
     </message>
     <message>
         <source>Login was successful.</source>
         <translation>Вход прошел успешно.</translation>
-    </message>
-    <message>
-        <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
-        <translation>Убедитесь, что ваш «токен доступа разработки» правильный и нет проблем с Интернет-сетью.</translation>
     </message>
     <message>
         <source>Some problems.</source>
@@ -675,6 +543,22 @@ Status: %3</source>
         <source>Access token is okay.</source>
         <translation>Токен доступа в порядке.</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Скачать только непрочитанные сообщения</translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedlyNetwork</name>
@@ -693,14 +577,6 @@ Status: %3</source>
     <message>
         <source>Click this to login again.</source>
         <translation>Нажмите здесь, чтобы войти снова.</translation>
-    </message>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Вы успешно вошли</translation>
-    </message>
-    <message>
-        <source>Your login to Feedly was authorized.</source>
-        <translation>Ваш логин в Feedly был авторизован.</translation>
     </message>
 </context>
 <context>
@@ -742,6 +618,14 @@ Status: %3</source>
     <message>
         <source>Toolbar spacer</source>
         <translation>Пространство панели инструментов</translation>
+    </message>
+    <message>
+        <source>Search feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds search box</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -933,6 +817,10 @@ or this functionality is not implemented yet.</source>
         <source>Network proxy</source>
         <translation>Сетевой прокси</translation>
     </message>
+    <message>
+        <source>Add new account</source>
+        <translation>Добавить новый аккаунт</translation>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1083,6 +971,114 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>Родительская категория</translation>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation>Выберите родительский элемент для вашей категории.</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Заголовок</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Описание</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Иконка</translation>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation>Выберите иконку для вашей категории</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation>Добавить новую категорию</translation>
+    </message>
+    <message>
+        <source>Edit &apos;%1&apos;</source>
+        <translation>Редактировать &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation>Имя категории подходит.</translation>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation>Имя категории слишком короткое.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Описание пустое.</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>Описание подходит.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation>Выберите файл иконки для категории</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Изображения (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Выберите иконку</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation>Искать в:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Имя иконки:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Тип иконки:</translation>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation>Заголовок категории</translation>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation>Установите название для вашей категории.</translation>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation>Описание категории</translation>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation>Задайте описание для вашей категории.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Выбор иконки</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Загрузить иконку из файла...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation>Использовать иконку по умолчанию из иконок темы.</translation>
+    </message>
+</context>
+<context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
@@ -1103,10 +1099,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Database information</source>
         <translation>Информация о базе данных</translation>
-    </message>
-    <message>
-        <source>Database file size</source>
-        <translation>Размер файла базы данных</translation>
     </message>
     <message>
         <source>Database type</source>
@@ -1153,8 +1145,8 @@ or this functionality is not implemented yet.</source>
         <translation>неизвестно</translation>
     </message>
     <message>
-        <source>file: %1, data: %2</source>
-        <translation>файл: %1, данные: %2</translation>
+        <source>Total data size</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1213,14 +1205,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Cannot edit feed</source>
-        <translation>Невозможно изменить канал</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Канал не был изменен из-за ошибки.</translation>
-    </message>
-    <message>
         <source>Edit &apos;%1&apos;</source>
         <translation>Редактировать &apos;%1&apos;</translation>
     </message>
@@ -1243,6 +1227,18 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Do not download messages at all</source>
         <translation>Не скачивать сообщения вообще</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Добавить новый канал</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Ошибка</translation>
+    </message>
+    <message>
+        <source>Cannot save changes: %1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1362,14 +1358,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Switch visibility of main &amp;window</source>
         <translation>Переключение видимости главного окна (&amp;W)</translation>
-    </message>
-    <message>
-        <source>Cannot open external browser</source>
-        <translation>Не удается открыть внешний браузер</translation>
-    </message>
-    <message>
-        <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>Не удается открыть внешний браузер. Перейдите на сайт приложения вручную.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
@@ -1668,6 +1656,10 @@ or this functionality is not implemented yet.</source>
         <source>Message viewer toolbars</source>
         <translation>Панели инструментов средства просмотра сообщений</translation>
     </message>
+    <message>
+        <source>Expand/collapse selected item &amp;recursively</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -1953,147 +1945,7 @@ You have to restart manually.</source>
     </message>
 </context>
 <context>
-    <name>FormStandardCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Родительская категория</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation>Выберите родительский элемент для вашей категории.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Заголовок</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Описание</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Иконка</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation>Выберите иконку для вашей категории</translation>
-    </message>
-    <message>
-        <source>Add new category</source>
-        <translation>Добавить новую категорию</translation>
-    </message>
-    <message>
-        <source>Edit existing category</source>
-        <translation>Редактировать существующую категорию</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation>Невозможно добавить категорию</translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation>Категория не была добавлена из-за ошибки.</translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>Невозможно редактировать категорию</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>Категория не была изменена из-за ошибки.</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>Имя категории подходит.</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation>Имя категории слишком короткое.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Описание пустое.</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Описание подходит.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation>Выберите файл иконки для категории</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Изображения (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Выберите иконку</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Отмена</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Искать в:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Имя иконки:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Тип иконки:</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation>Заголовок категории</translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation>Установите название для вашей категории.</translation>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>Описание категории</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation>Задайте описание для вашей категории.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Выбор иконки</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Загрузить иконку из файла...</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation>Использовать иконку по умолчанию из иконок темы.</translation>
-    </message>
-</context>
-<context>
     <name>FormStandardFeedDetails</name>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Невозможно добавить канал</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Канал не был добавлен из-за ошибки.</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>Невозможно изменить канал</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Канал не был изменен из-за ошибки.</translation>
-    </message>
     <message>
         <source>General</source>
         <translation>Основные</translation>
@@ -2101,10 +1953,6 @@ You have to restart manually.</source>
     <message>
         <source>Network</source>
         <translation>Сеть</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Добавить новый канал</translation>
     </message>
 </context>
 <context>
@@ -2245,14 +2093,6 @@ You have to restart manually.</source>
         <translation>Канал добавлен</translation>
     </message>
     <message>
-        <source>Cannot add feed</source>
-        <translation>Невозможно добавить канал</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Канал не был добавлен из-за ошибки.</translation>
-    </message>
-    <message>
         <source>General</source>
         <translation>Основные</translation>
     </message>
@@ -2261,12 +2101,12 @@ You have to restart manually.</source>
         <translation>Сеть</translation>
     </message>
     <message>
-        <source>Add new feed</source>
-        <translation>Добавить новый канал</translation>
-    </message>
-    <message>
         <source>Feed was added, obtaining new tree of feeds now.</source>
         <translation>Канал был добавлен, теперь получено новое дерево каналов.</translation>
+    </message>
+    <message>
+        <source>API returned error code %1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2392,10 +2232,6 @@ You can install it now.</source>
         <translation>Пакет был успешно загружен.
 Вы можете установить его сейчас.</translation>
     </message>
-    <message>
-        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation>Невозможно перейти к файлу установки. Загрузите новый файл установки вручную на сацте проекта.</translation>
-    </message>
 </context>
 <context>
     <name>GmailAccountDetails</name>
@@ -2428,16 +2264,8 @@ You can install it now.</source>
         <translation>Загружать только Х новейших сообщений для канала</translation>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation>сообщение(я)</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>Логин (&amp;L)</translation>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation>Указанный URL-адрес перенаправления должен начинаться с  &quot;http://localhost&quot; и быть настроен в вашем &quot;приложении&quot; OAuth.</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -2446,14 +2274,6 @@ You can install it now.</source>
     <message>
         <source>User-visible username</source>
         <translation>Имя пользователя, видное для всех</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Вход уже совершен.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>Доступ разрешен.</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2472,10 +2292,6 @@ You can install it now.</source>
         <translation>Произошла ошибка во время тестирования.</translation>
     </message>
     <message>
-        <source>There is error. %1 </source>
-        <translation>Произошла ошибка. %1 </translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>Протестировано успешно. Вам могут предложить войти ещё раз.</translation>
     </message>
@@ -2491,17 +2307,29 @@ You can install it now.</source>
         <source>Some value is entered.</source>
         <translation>Введено некоторое значение.</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Скачать только непрочитанные сообщения</translation>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GmailNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Вы успешно вошли</translation>
-    </message>
-    <message>
-        <source>Your login to Gmail was authorized.</source>
-        <translation>Ваш логин в Gmail был авторизован.</translation>
-    </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Нажмите здесь, чтобы войти снова. Ошибка: &apos;%1&apos;</translation>
@@ -2591,10 +2419,6 @@ Login tokens expiration: %2</source>
         <translation>Загружать только Х новейших сообщений для канала</translation>
     </message>
     <message>
-        <source> = unlimited</source>
-        <translation> = не ограниченно</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Некоторые каналы требуют аутентификации, включая каналы GMail. Поддерживаются схемы проверки подлинности BASIC, NTLM-2 и DIGEST-MD5.</translation>
     </message>
@@ -2643,14 +2467,6 @@ Login tokens expiration: %2</source>
         <translation>Ограничение количества загружаемых сообщений для одного канала ускоряет обновление каналов, но если ваш канал содержит большее количество сообщений, чем указанное ограничение, некоторые старые сообщения могут не загрузиться во время обновления канала.</translation>
     </message>
     <message>
-        <source>= unlimited</source>
-        <translation>= не ограниченно</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>сообщения</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Ошибка сети: &apos;%1&apos;.</translation>
     </message>
@@ -2689,6 +2505,10 @@ Login tokens expiration: %2</source>
     <message>
         <source>URL is okay.</source>
         <translation>URL в порядке.</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Скачать только непрочитанные сообщения</translation>
     </message>
 </context>
 <context>
@@ -2747,10 +2567,6 @@ Login tokens expiration: %2</source>
         <translation>Получить собственный идентификатор приложения</translation>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation>сообщение(я)</translation>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Загружать только Х новейших сообщений для канала</translation>
     </message>
@@ -2759,28 +2575,12 @@ Login tokens expiration: %2</source>
         <translation>Логин (&amp;L)</translation>
     </message>
     <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
-
-It is highly recommended to create your own &quot;App ID&quot;. Because predefined one may be limited due to usage quotas if used by too many users simultaneously.</source>
-        <translation>Указанный URL-адрес перенаправления должен начинаться с «http://localhost» и должен быть настроен в вашем «приложении» OAuth.
-
-Настоятельно рекомендуется создать свой собственный «Идентификатор приложения». Поскольку предопределенный вариант может быть ограничен из-за квот использования, если используется слишком большим количеством пользователей одновременно.</translation>
-    </message>
-    <message>
         <source>Not tested yet.</source>
         <translation>Ещё не протестировано.</translation>
     </message>
     <message>
         <source>User-visible username</source>
         <translation>Имя пользователя, видное для всех</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Вход уже совершен.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>Доступ разрешен.</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2818,17 +2618,25 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
         <source>Some value is entered.</source>
         <translation>Введено некоторое значение.</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>Скачать только непрочитанные сообщения</translation>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>InoreaderNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Вы успешно вошли</translation>
-    </message>
-    <message>
-        <source>Your login to Inoreader was authorized.</source>
-        <translation>Ваш логин в Inoreader был авторизован.</translation>
-    </message>
     <message>
         <source>Inoreader: authentication error</source>
         <translation>Inoreader: ошибка аутентификации</translation>
@@ -2844,6 +2652,10 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
     <message>
         <source>Click this to login again.</source>
         <translation>Нажмите здесь, чтобы войти снова.</translation>
+    </message>
+    <message>
+        <source>not logged in</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2901,6 +2713,33 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>MariaDbDriver</name>
+    <message>
+        <source>MySQL server works as expected.</source>
+        <translation>Сервер MySQL работает, как ожидалось.</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation>Выбранная база данных не существует (пока). Будет создана. Это нормально.</translation>
+    </message>
+    <message>
+        <source>No MySQL server is running in the target destination.</source>
+        <translation>Сервер MySQL не запущен в месте назначения.</translation>
+    </message>
+    <message>
+        <source>Access denied. Invalid username or password used.</source>
+        <translation>Доступ запрещён. Неверное имя пользователя или пароль.</translation>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <translation>Неизвестная ошибка: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>MariaDB</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
@@ -2947,6 +2786,21 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>MessageCountSpinBox</name>
+    <message>
+        <source>= unlimited</source>
+        <translation>= не ограниченно</translation>
+    </message>
+    <message>
+        <source>message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>сообщения</translation>
+    </message>
+</context>
+<context>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
@@ -2959,6 +2813,13 @@ Login tokens expiration: %2</source>
     <message>
         <source>Switch message importance</source>
         <translation>Переключить важность сообщения</translation>
+    </message>
+</context>
+<context>
+    <name>MessageTextBrowser</name>
+    <message>
+        <source>Open with external tool</source>
+        <translation>Открыть с помощью внешнего инструмента</translation>
     </message>
 </context>
 <context>
@@ -2990,6 +2851,10 @@ Login tokens expiration: %2</source>
     <message>
         <source>Created on</source>
         <translation>Дата создания</translation>
+    </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3035,10 +2900,6 @@ Login tokens expiration: %2</source>
         <translation>Контент</translation>
     </message>
     <message>
-        <source>Id of the message.</source>
-        <translation>Идентификатор сообщения.</translation>
-    </message>
-    <message>
         <source>Is message read?</source>
         <translation>Сообщение прочитано?</translation>
     </message>
@@ -3049,10 +2910,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Is message important?</source>
         <translation>Это сообщение важно?</translation>
-    </message>
-    <message>
-        <source>Id of feed which this message belongs to.</source>
-        <translation>Идентификатор канала, которому принадлежит это сообщение.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
@@ -3138,6 +2995,22 @@ Login tokens expiration: %2</source>
         <source>Indication of enclosures presence within the message.</source>
         <translation>Указание наличия вложений в сообщении.</translation>
     </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of the message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of feed which this message belongs to.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Score of the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3185,14 +3058,6 @@ Login tokens expiration: %2</source>
         <translation>Контекстное меню для сообщений</translation>
     </message>
     <message>
-        <source>Problem with starting external web browser</source>
-        <translation>Проблема с запуском внешнего веб-браузера</translation>
-    </message>
-    <message>
-        <source>External web browser could not be started.</source>
-        <translation>Внешний веб-браузер не может быть запущен.</translation>
-    </message>
-    <message>
         <source>Problem with starting external e-mail client</source>
         <translation>Проблема с запуском внешнего e-mail клиента</translation>
     </message>
@@ -3211,6 +3076,10 @@ Login tokens expiration: %2</source>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
         <translation>Внешний инструмент &apos;%1&apos; не может быть запущен.</translation>
+    </message>
+    <message>
+        <source>No external tools activated</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3397,14 +3266,6 @@ Login tokens expiration: %2</source>
         <translation>Вы должны сначала войти</translation>
     </message>
     <message>
-        <source>Navigate to website</source>
-        <translation>Перейти на веб-сайт</translation>
-    </message>
-    <message>
-        <source>To login, you need to navigate to this website:</source>
-        <translation>Чтобы войти, нужно перейти на этот веб-сайт:</translation>
-    </message>
-    <message>
         <source>You can close this window now. Go back to %1.</source>
         <translation>Вы можете закрыть это окно сейчас. Вернуться к %1.</translation>
     </message>
@@ -3426,10 +3287,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Only download newest X messages per feed</source>
         <translation>Загружать только Х новейших сообщений для канала</translation>
-    </message>
-    <message>
-        <source> = unlimited</source>
-        <translation> = не ограниченно</translation>
     </message>
     <message>
         <source>URL</source>
@@ -3482,10 +3339,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Here, results of connection test are shown.</source>
         <translation>Здесь показаны результаты проверки соединения.</translation>
-    </message>
-    <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation>Ограничение количества загружаемых сообщений для одного канала ускоряет обновление каналов, но если ваш канал содержит большее количество сообщений, чем указанное ограничение, некоторые сообщения могут не загрузиться во время обновления канала.</translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -3641,8 +3494,10 @@ version by clicking this popup notification.</source>
         <translation>Google Reader API используется многими онлайн-ридерами RSS. Доступна поддержка для</translation>
     </message>
     <message>
-        <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-        <translation>Будьте в курсе интересующих вас тем и тенденций, не отвлекаясь. Feedly - это безопасное пространство, где вы можете в частном порядке организовывать и исследовать важные для вас темы и тенденции.</translation>
+        <source>Keep up with the topics and trends you care about, without the overwhelm.
+
+Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3803,9 +3658,7 @@ version by clicking this popup notification.</source>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
-File filter for external e-mail selection dialog.
-----------
-File filter for external tool selection dialog.</extracomment>
+File filter for external e-mail selection dialog.</extracomment>
         <translation>Исполняемые файлы (*)</translation>
     </message>
     <message>
@@ -3841,14 +3694,6 @@ File filter for external tool selection dialog.</extracomment>
         <translation>На этой странице вы можете установить список внешних приложений, которые могут открывать URL-ы в выбранных сообщениях.</translation>
     </message>
     <message>
-        <source>Add external tool</source>
-        <translation>Добавить</translation>
-    </message>
-    <message>
-        <source>Delete selected external tool</source>
-        <translation>Удалить выбранные</translation>
-    </message>
-    <message>
         <source>Executable</source>
         <translation>Приложение</translation>
     </message>
@@ -3865,16 +3710,28 @@ File filter for external tool selection dialog.</extracomment>
         <translation>Ввод параметров</translation>
     </message>
     <message>
-        <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation>Введите (необязательные) параметры, разделенные одним пробелом для отправки в исполняемый файл при открытии URL-адресов.</translation>
-    </message>
-    <message>
         <source>Parameters passed to executable</source>
         <translation>Параметры, переданные в исполняемый файл</translation>
     </message>
     <message>
         <source>Network proxy</source>
         <translation>Сетевой прокси</translation>
+    </message>
+    <message>
+        <source>&amp;Add new external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Edit selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4161,6 +4018,14 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
         <translation>Отображение реальных значков каналов в списке сообщений вместо значков прочитано/не прочитано</translation>
     </message>
+    <message>
+        <source>Hide message counts if there are no unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4276,10 +4141,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>E-Mail</translation>
     </message>
     <message>
-        <source>(Tray icon is not available.)</source>
-        <translation>(Иконка трея не доступна)</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Только иконка</translation>
     </message>
@@ -4332,6 +4193,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Display count of unread messages</source>
         <translation>Отображать количество непрочитанных сообщений</translation>
     </message>
+    <message>
+        <source>(Your OS does not support tray icons at the moment.)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4346,6 +4211,10 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Author</source>
         <translation>Автор</translation>
+    </message>
+    <message>
+        <source>Localization</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4377,16 +4246,34 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Эта страница заблокирована AdBlock</translation>
     </message>
     <message>
-        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation>Заблокировано установкой: &quot;%1&quot;&lt;br/&gt;Заблокировано фильтром: &quot;%2&quot;</translation>
+        <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>SqliteDriver</name>
+    <message>
+        <source>SQLite (embedded database)</source>
+        <translation>SQLite (встроенная база данных)</translation>
+    </message>
+    <message>
+        <source>Database file not copied to output directory successfully.</source>
+        <translation>Файл базы данных не скопирован в выходной каталог.</translation>
+    </message>
+</context>
+<context>
+    <name>StandardCategory</name>
+    <message>
+        <source>Error</source>
+        <translation>Ошибка</translation>
+    </message>
+    <message>
+        <source>Cannot save data for category, detailed information was logged via debug log.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
-    <message>
-        <source>Metadata not fetched</source>
-        <translation>Метаданные не получены</translation>
-    </message>
     <message>
         <source>
 Network status: %1
@@ -4410,8 +4297,24 @@ Type: %3</source>
         <translation>Неизвестно</translation>
     </message>
     <message>
-        <source>Metadata was not fetched.</source>
-        <translation>Метаданные не были получены.</translation>
+        <source>Error</source>
+        <translation>Ошибка</translation>
+    </message>
+    <message>
+        <source>Cannot save data for feed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML is not well-formed, %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML feed file format unrecognized</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed, detailed information was logged via debug log.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4513,10 +4416,6 @@ Type: %3</source>
         <translation>Получены метаданные иконки.</translation>
     </message>
     <message>
-        <source>Icon metadata not fetched.</source>
-        <translation>Метаданные иконки не получены.</translation>
-    </message>
-    <message>
         <source>No icon fetched.</source>
         <translation>Иконка не получена.</translation>
     </message>
@@ -4527,10 +4426,6 @@ Type: %3</source>
     <message>
         <source>Feed and icon metadata fetched.</source>
         <translation>Получены метаданные канала и значка.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation>Метаданные канала и значка не получены.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
@@ -4649,6 +4544,18 @@ Type: %3</source>
         <source>Command is empty.</source>
         <translation>Команда пуста.</translation>
     </message>
+    <message>
+        <source>Script failed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: %1</source>
+        <translation>Ошибка: %1</translation>
+    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -4697,12 +4604,12 @@ Type: %3</source>
         <translation>Невозможно добавить категорию, потому что выполняется другая важная операция.</translation>
     </message>
     <message>
-        <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation>Импорт успешен, но некоторые каналы/категории не импортированы из-за ошибки.</translation>
-    </message>
-    <message>
         <source>Import was completely successful.</source>
         <translation>Импорт успешно завершён.</translation>
+    </message>
+    <message>
+        <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4746,13 +4653,6 @@ Type: %3</source>
 Unread news: %2</source>
         <translation>%1
 Непрочитанных новостей: %2</translation>
-    </message>
-</context>
-<context>
-    <name>T</name>
-    <message>
-        <source>Add new account</source>
-        <translation>Добавить новый аккаунт</translation>
     </message>
 </context>
 <context>
@@ -5028,6 +4928,10 @@ Unread news: %2</source>
         <source>URL is okay.</source>
         <translation>URL в порядке.</translation>
     </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Загружать только Х новейших сообщений для канала</translation>
+    </message>
 </context>
 <context>
     <name>TtRssFeedDetails</name>
@@ -5090,6 +4994,17 @@ Last login on: %4</source>
     </message>
 </context>
 <context>
+    <name>UnreadNode</name>
+    <message>
+        <source>Unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can find all unread messages here.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
@@ -5119,14 +5034,6 @@ Last login on: %4</source>
     <message>
         <source>Open this website in system web browser</source>
         <translation>Открыть этот сайт в системном браузере</translation>
-    </message>
-    <message>
-        <source>Failed to open URL in web browser</source>
-        <translation>Не удалось открыть URL-адрес в веб-браузере</translation>
-    </message>
-    <message>
-        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
-        <translation>URL-адрес &apos;%1&apos; не может быть открыт в веб-браузере системы.</translation>
     </message>
 </context>
 <context>
@@ -5219,6 +5126,14 @@ Last login on: %4</source>
         <source>Allow geolocation on insecure origins</source>
         <translation>Разрешить геолокацию в небезопасных источниках</translation>
     </message>
+    <message>
+        <source>Navigate to website manually</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>WebViewer</name>
@@ -5237,6 +5152,10 @@ Last login on: %4</source>
     <message>
         <source>Open link in external browser</source>
         <translation>Открыть ссылку о внешнем браузере</translation>
+    </message>
+    <message>
+        <source>Open with external tool</source>
+        <translation>Открыть с помощью внешнего инструмента</translation>
     </message>
 </context>
 </TS>

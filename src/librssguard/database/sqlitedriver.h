@@ -6,6 +6,8 @@
 #include "database/databasedriver.h"
 
 class SqliteDriver : public DatabaseDriver {
+  Q_OBJECT
+
   public:
     explicit SqliteDriver(bool in_memory, QObject* parent = nullptr);
 

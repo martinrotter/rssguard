@@ -11,40 +11,6 @@
     </message>
 </context>
 <context>
-    <name>AdBlockAddSubscriptionDialog</name>
-    <message>
-        <source>Add subscription</source>
-        <translation>Tilføj abonnement</translation>
-    </message>
-    <message>
-        <source>Use predefined subscription</source>
-        <translation>Brug predefineret abonnement</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Title of subscription</source>
-        <translation>Titel på abonnement</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>Webadresse</translation>
-    </message>
-    <message>
-        <source>Absolute URL to online subscription file</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>AdBlockCustomList</name>
-    <message>
-        <source>Custom rules</source>
-        <translation>Brugerdefinerede regler</translation>
-    </message>
-</context>
-<context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
@@ -59,28 +25,24 @@
         <translation>Indstillinger</translation>
     </message>
     <message>
-        <source>Add rule</source>
-        <translation>Tilføj regel</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Fjern regel</translation>
-    </message>
-    <message>
-        <source>Add subscription</source>
-        <translation>Tilføj abonnement</translation>
-    </message>
-    <message>
-        <source>Remove subscription</source>
-        <translation>Fjern abonnement</translation>
-    </message>
-    <message>
-        <source>Update subscriptions</source>
-        <translation>Ajourfør abonnement</translation>
-    </message>
-    <message>
         <source>Learn about writing rules...</source>
         <translation>Lær at lave regler...</translation>
+    </message>
+    <message>
+        <source>Filter lists (list per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your direct links to filter lists here (one URL per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your custom filters here (one filter per line)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -92,48 +54,6 @@
     <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Vis AdBlock ind&amp;stillinger</translation>
-    </message>
-    <message>
-        <source>Disable on %1</source>
-        <translation>Deaktivér ved %1</translation>
-    </message>
-    <message>
-        <source>Disable only on this page</source>
-        <translation>Deaktivér kun på denne side.</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockSubscription</name>
-    <message>
-        <source>Cannot load subscription!</source>
-        <translation>Kan ikke indlæse abonnement</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockTreeWidget</name>
-    <message>
-        <source>Add rule</source>
-        <translation>Tilføj regel</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Fjern regel</translation>
-    </message>
-    <message>
-        <source>Add custom rule</source>
-        <translation>Tilføj brugerdefineret regel</translation>
-    </message>
-    <message>
-        <source>Please write your rule here:</source>
-        <translation>Skriv venligst din regel her:</translation>
-    </message>
-    <message>
-        <source>%1 (recently updated)</source>
-        <translation>%1 (ajourført for nyligt)</translation>
-    </message>
-    <message>
-        <source>%1 (error: %2)</source>
-        <translation>%1 (fejl: %2)</translation>
     </message>
 </context>
 <context>
@@ -151,10 +71,6 @@
         <translation>Indstillinger kunne ikke kopieres til uddatabibliotek.</translation>
     </message>
     <message>
-        <source>Database file not copied to output directory successfully.</source>
-        <translation>Databasefilen kunne ikke kopieres til uddatabiblioteket.</translation>
-    </message>
-    <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Gendannelse af database ikke påbegyndt. Sørg for at målbiblioteket er skrivbart.</translation>
     </message>
@@ -167,12 +83,12 @@
         <translation>Kan ikke tilføje feed</translation>
     </message>
     <message>
-        <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>Feedet kan ikke blive tilføjet da standard RSS/ATOM-konti ikke er aktiveret.</translation>
-    </message>
-    <message>
         <source>New messages downloaded</source>
         <translation>Nye meddelelser er hentet</translation>
+    </message>
+    <message>
+        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -279,40 +195,12 @@
 <context>
     <name>DatabaseFactory</name>
     <message>
-        <source>MySQL server works as expected.</source>
-        <translation>MySQL-server fungerer som forventet.</translation>
+        <source>Cannot connect to database</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>No MySQL server is running in the target destination.</source>
-        <translation>Der er ikke fundet nogen MySQL server på målet.</translation>
-    </message>
-    <message>
-        <source>Access denied. Invalid username or password used.</source>
-        <translation>Adgang nægtet. Ugyldigt brugernavn eller adgangskode.</translation>
-    </message>
-    <message>
-        <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (dedikeret database)</translation>
-    </message>
-    <message>
-        <source>SQLite (embedded database)</source>
-        <translation>SQLite (indlejret database)</translation>
-    </message>
-    <message>
-        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Valgte database eksisterer ikke (endnu). Den vil blive oprettet. Det er okay.</translation>
-    </message>
-    <message>
-        <source>MySQL database not available</source>
-        <translation>MySQL-database ikke tilgængelig</translation>
-    </message>
-    <message>
-        <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation>%1 kan ikke bruge MySQL-lager, det er ikke tilgængeligt. %1 skifter nu til SQLite-database. Start din MySQL-server og foretag justeringer i applikationsindstillinger.</translation>
-    </message>
-    <message>
-        <source>Unknown error: &apos;%1&apos;.</source>
-        <translation>Ukendt farve: &apos;%1&apos;.</translation>
+        <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -571,15 +459,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Developer access token</source>
-        <translation type="unfinished"/>
+        <translation>Symbol til udvikleradgang</translation>
     </message>
     <message>
         <source>Get token</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source> message(s)</source>
-        <translation>meddelelse(r)</translation>
+        <translation>Hent symbol</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -591,7 +475,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn på din konto</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -608,14 +492,6 @@ Status: %3</source>
     <message>
         <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>= unlimited</source>
-        <translation>= ubegrænset</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>meddelelser</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -638,10 +514,6 @@ Status: %3</source>
         <translation>Du har fået adgang.</translation>
     </message>
     <message>
-        <source>You are already logged in.</source>
-        <translation>Du er allerede logget på.</translation>
-    </message>
-    <message>
         <source>Access granted.</source>
         <translation>Adgang givet.</translation>
     </message>
@@ -650,12 +522,8 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Some problems.</source>
-        <translation type="unfinished"/>
+        <translation>Problemer.</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -667,10 +535,26 @@ Status: %3</source>
     </message>
     <message>
         <source>Access token is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Adgangsymbol er tomt</translation>
     </message>
     <message>
         <source>Access token is okay.</source>
+        <translation>Adgangsymbol er okay.</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -690,14 +574,6 @@ Status: %3</source>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Logget ind med succes</translation>
-    </message>
-    <message>
-        <source>Your login to Feedly was authorized.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -740,6 +616,14 @@ Status: %3</source>
     <message>
         <source>Toolbar spacer</source>
         <translation>Værktøjslinie afstandsstykke</translation>
+    </message>
+    <message>
+        <source>Search feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds search box</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -931,6 +815,10 @@ or this functionality is not implemented yet.</source>
         <source>Network proxy</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Add new account</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1081,6 +969,114 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
@@ -1101,10 +1097,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Database information</source>
         <translation>Databaseinformation</translation>
-    </message>
-    <message>
-        <source>Database file size</source>
-        <translation>Størrelse på filstørrelse</translation>
     </message>
     <message>
         <source>Database type</source>
@@ -1151,8 +1143,8 @@ or this functionality is not implemented yet.</source>
         <translation>ukendt</translation>
     </message>
     <message>
-        <source>file: %1, data: %2</source>
-        <translation>fil: %1, data: %2</translation>
+        <source>Total data size</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1211,14 +1203,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Cannot edit feed</source>
-        <translation>Kan ikke redigere feed</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Feed blev ikke redigeret på grund af en fejl.</translation>
-    </message>
-    <message>
         <source>Edit &apos;%1&apos;</source>
         <translation>Rediger &apos;%1&apos;</translation>
     </message>
@@ -1241,6 +1225,18 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Do not download messages at all</source>
         <translation>Hent ingen meddelelser</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save changes: %1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1360,14 +1356,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Switch visibility of main &amp;window</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot open external browser</source>
-        <translation>Kan ikke starte ekstern netlæser</translation>
-    </message>
-    <message>
-        <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>Kan ikke starte den eksterne netlæser. Naviger til programhjemmesiden manuelt.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
@@ -1666,12 +1654,16 @@ or this functionality is not implemented yet.</source>
         <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Expand/collapse selected item &amp;recursively</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
     <message>
         <source>Message filters</source>
-        <translation type="unfinished"/>
+        <translation>Meddelelsesfiltre</translation>
     </message>
     <message>
         <source>Remove selected</source>
@@ -1695,11 +1687,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title of message filter</source>
-        <translation type="unfinished"/>
+        <translation>Navn på meddelelsesfilter</translation>
     </message>
     <message>
         <source>JavaScript code</source>
-        <translation type="unfinished"/>
+        <translation>JavaScriptkode</translation>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
@@ -1743,7 +1735,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>New message filter</source>
-        <translation type="unfinished"/>
+        <translation>Nyt meddelelsesfilter</translation>
     </message>
     <message>
         <source>Message will be %1.
@@ -1753,11 +1745,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>ACCEPTED</source>
-        <translation type="unfinished"/>
+        <translation>ACCEPTERET</translation>
     </message>
     <message>
         <source>REJECTED</source>
-        <translation type="unfinished"/>
+        <translation>AFVIST</translation>
     </message>
     <message>
         <source>Output (modified) message is:
@@ -1819,7 +1811,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Existing messages</source>
-        <translation type="unfinished"/>
+        <translation>Eksisterende meddelelser</translation>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
@@ -1837,7 +1829,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu</source>
-        <translation type="unfinished"/>
+        <translation>Genvejsmenu</translation>
     </message>
     <message>
         <source>Filter messages like this</source>
@@ -1940,147 +1932,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
 </context>
 <context>
-    <name>FormStandardCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Forældrekategori</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Beskrivelse</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Ikon</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation>Vælg ikon til denne kategori.</translation>
-    </message>
-    <message>
-        <source>Add new category</source>
-        <translation>Tilføj ny kategori</translation>
-    </message>
-    <message>
-        <source>Edit existing category</source>
-        <translation>Redigér ny kategori</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation>Kan ikke tilføje kategori</translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation>Kategori blev ikke tilføjet på grund af en fejl.</translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>Kan ikke redigere kategori</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>Kategorien blev ikke redigeret på grund af fejl.</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>Kategorinavn er ok.</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation>Kategorinavn er for kort.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Ingen beskrivelse.</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Beskrivelsen er OK.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation>Vælg ikon-fil for kategorien</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Billeder (*. Bmp *. Jpg *. Jpeg *. Png *. SVG *. TGA)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Vælg ikon</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Annuller</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Kig i:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Ikonnavn:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Ikontype:</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation>Kategorinavn</translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation>Sæt titel for din kategori.</translation>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>Kategoribeskrivelse</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Indlæs et ikon fra en fil...</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation>Brug standardikonet fra ikontemaet</translation>
-    </message>
-</context>
-<context>
     <name>FormStandardFeedDetails</name>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Kan ikke tilføje feed</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Feed blev ikke tilføjet på grund af fejl.</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>Kan ikke redigere feed</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Feed blev ikke redigeret på grund af en fejl.</translation>
-    </message>
     <message>
         <source>General</source>
         <translation>Generelt</translation>
@@ -2088,10 +1940,6 @@ Du skal genstarte programmet manuelt.</translation>
     <message>
         <source>Network</source>
         <translation>Netværk</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Tilføj nyt feed</translation>
     </message>
 </context>
 <context>
@@ -2232,14 +2080,6 @@ Du skal genstarte programmet manuelt.</translation>
         <translation>Feed tilføjet</translation>
     </message>
     <message>
-        <source>Cannot add feed</source>
-        <translation>Kan ikke tilføje feed</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Feed blev ikke tilføjet på grund af fejl.</translation>
-    </message>
-    <message>
         <source>General</source>
         <translation>Generelt</translation>
     </message>
@@ -2248,11 +2088,11 @@ Du skal genstarte programmet manuelt.</translation>
         <translation>Netværk</translation>
     </message>
     <message>
-        <source>Add new feed</source>
-        <translation>Tilføj nyt feed</translation>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <source>API returned error code %1</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2375,10 +2215,6 @@ downloaded.</source>
 You can install it now.</source>
         <translation type="unfinished"/>
     </message>
-    <message>
-        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
-    </message>
 </context>
 <context>
     <name>GmailAccountDetails</name>
@@ -2411,16 +2247,8 @@ You can install it now.</source>
         <translation>Hent kun de seneste X meddelelser per feed</translation>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation>meddelelse(r)</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>&amp;Log på</translation>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -2429,14 +2257,6 @@ You can install it now.</source>
     <message>
         <source>User-visible username</source>
         <translation>Brugersynligt brugernavn </translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Du er allerede logget på.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>Adgang givet.</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2455,10 +2275,6 @@ You can install it now.</source>
         <translation>Der opstod en fejl under test.</translation>
     </message>
     <message>
-        <source>There is error. %1 </source>
-        <translation>Der er opstået følgende fejl. %1</translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>Testet med succes. Du bliver muligvis bedt om at logge ind igen.</translation>
     </message>
@@ -2474,17 +2290,29 @@ You can install it now.</source>
         <source>Some value is entered.</source>
         <translation>En værdi er indtastet.</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GmailNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Logget ind med succes</translation>
-    </message>
-    <message>
-        <source>Your login to Gmail was authorized.</source>
-        <translation>Dit login til Gmail blev godkendt.</translation>
-    </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation type="unfinished"/>
@@ -2573,10 +2401,6 @@ Login tokens expiration: %2</source>
         <translation>Hent kun de seneste X meddelelser per feed</translation>
     </message>
     <message>
-        <source> = unlimited</source>
-        <translation>= ubegrænset</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Nogle feeds kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
     </message>
@@ -2606,7 +2430,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn på din konto</translation>
     </message>
     <message>
         <source>URL of your server, without any service-specific path</source>
@@ -2623,14 +2447,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Limiting number of downloaded messages per feed makes updating of feeds faster, but if your feed contains bigger number of messages than specified limit, then some older messages might not be downloaded during feed update.</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>= unlimited</source>
-        <translation>= ubegrænset</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>meddelelser</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -2671,6 +2487,10 @@ Login tokens expiration: %2</source>
     <message>
         <source>URL is okay.</source>
         <translation>URL er okay.</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2729,10 +2549,6 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation>meddelelse(r)</translation>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Hent kun de seneste X meddelelser per feed</translation>
     </message>
@@ -2741,26 +2557,12 @@ Login tokens expiration: %2</source>
         <translation>&amp;Log på</translation>
     </message>
     <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
-
-It is highly recommended to create your own &quot;App ID&quot;. Because predefined one may be limited due to usage quotas if used by too many users simultaneously.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Not tested yet.</source>
         <translation>Endnu ikke testet.</translation>
     </message>
     <message>
         <source>User-visible username</source>
         <translation>Brugersynligt brugernavn </translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Du er allerede logget på.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>Adgang givet.</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2798,17 +2600,25 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
         <source>Some value is entered.</source>
         <translation>En værdi er indtastet.</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>InoreaderNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Logget ind med succes</translation>
-    </message>
-    <message>
-        <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Inoreader: authentication error</source>
         <translation type="unfinished"/>
@@ -2823,6 +2633,10 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
     </message>
     <message>
         <source>Click this to login again.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>not logged in</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2880,6 +2694,33 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>MariaDbDriver</name>
+    <message>
+        <source>MySQL server works as expected.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No MySQL server is running in the target destination.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Access denied. Invalid username or password used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>MariaDB</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
@@ -2926,6 +2767,21 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>MessageCountSpinBox</name>
+    <message>
+        <source>= unlimited</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
@@ -2937,6 +2793,13 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Switch message importance</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>MessageTextBrowser</name>
+    <message>
+        <source>Open with external tool</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2969,6 +2832,10 @@ Login tokens expiration: %2</source>
     <message>
         <source>Created on</source>
         <translation>Oprettet den</translation>
+    </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3014,10 +2881,6 @@ Login tokens expiration: %2</source>
         <translation>Indhold</translation>
     </message>
     <message>
-        <source>Id of the message.</source>
-        <translation>Meddelelses-ID</translation>
-    </message>
-    <message>
         <source>Is message read?</source>
         <translation>Er meddelelsen læst?</translation>
     </message>
@@ -3028,10 +2891,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Is message important?</source>
         <translation>Er meddelelsen vigtig?</translation>
-    </message>
-    <message>
-        <source>Id of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Title of the message.</source>
@@ -3117,6 +2976,22 @@ Login tokens expiration: %2</source>
         <source>Indication of enclosures presence within the message.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of the message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of feed which this message belongs to.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Score of the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3164,14 +3039,6 @@ Login tokens expiration: %2</source>
         <translation>Genvejsmenu for meddelelser</translation>
     </message>
     <message>
-        <source>Problem with starting external web browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>External web browser could not be started.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Problem with starting external e-mail client</source>
         <translation>Kan ikke starte eksternt postprogram</translation>
     </message>
@@ -3189,6 +3056,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No external tools activated</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3375,14 +3246,6 @@ Login tokens expiration: %2</source>
         <translation>Du skal logge ind først.</translation>
     </message>
     <message>
-        <source>Navigate to website</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>To login, you need to navigate to this website:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>You can close this window now. Go back to %1.</source>
         <translation type="unfinished"/>
     </message>
@@ -3404,10 +3267,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Only download newest X messages per feed</source>
         <translation>Hent kun de seneste X meddelelser per feed</translation>
-    </message>
-    <message>
-        <source> = unlimited</source>
-        <translation>= ubegrænset</translation>
     </message>
     <message>
         <source>URL</source>
@@ -3459,10 +3318,6 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3608,7 +3463,9 @@ version by clicking this popup notification.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
+        <source>Keep up with the topics and trends you care about, without the overwhelm.
+
+Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3768,9 +3625,7 @@ version by clicking this popup notification.</source>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
-File filter for external e-mail selection dialog.
-----------
-File filter for external tool selection dialog.</extracomment>
+File filter for external e-mail selection dialog.</extracomment>
         <translation>Eksekverbare (*)</translation>
     </message>
     <message>
@@ -3806,14 +3661,6 @@ File filter for external tool selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Add external tool</source>
-        <translation>Tilføj eksternt værktøj</translation>
-    </message>
-    <message>
-        <source>Delete selected external tool</source>
-        <translation>Slet valgte eksterne værktøj</translation>
-    </message>
-    <message>
         <source>Executable</source>
         <translation>Kørbar</translation>
     </message>
@@ -3830,15 +3677,27 @@ File filter for external tool selection dialog.</extracomment>
         <translation>Indfør parametre</translation>
     </message>
     <message>
-        <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Parameters passed to executable</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Network proxy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add new external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Edit selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4116,6 +3975,14 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Hide message counts if there are no unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4231,10 +4098,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>E-post</translation>
     </message>
     <message>
-        <source>(Tray icon is not available.)</source>
-        <translation>(Systembakke ikon er ikke tilgængelig.)</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Kun ikoner</translation>
     </message>
@@ -4287,6 +4150,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Display count of unread messages</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>(Your OS does not support tray icons at the moment.)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4301,6 +4168,10 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Author</source>
         <translation>Udvikler</translation>
+    </message>
+    <message>
+        <source>Localization</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4332,16 +4203,34 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
+        <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>SqliteDriver</name>
+    <message>
+        <source>SQLite (embedded database)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Database file not copied to output directory successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>StandardCategory</name>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save data for category, detailed information was logged via debug log.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
-    <message>
-        <source>Metadata not fetched</source>
-        <translation>Metadata ikke hentet</translation>
-    </message>
     <message>
         <source>
 Network status: %1
@@ -4362,7 +4251,23 @@ Type: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Metadata was not fetched.</source>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save data for feed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML is not well-formed, %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML feed file format unrecognized</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed, detailed information was logged via debug log.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4465,10 +4370,6 @@ Type: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Icon metadata not fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>No icon fetched.</source>
         <translation>Ingen ikoner hentet</translation>
     </message>
@@ -4479,10 +4380,6 @@ Type: %3</source>
     <message>
         <source>Feed and icon metadata fetched.</source>
         <translation>Feed og ikon metadata hentet.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>No metadata fetched.</source>
@@ -4601,6 +4498,18 @@ Type: %3</source>
         <source>Command is empty.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Script failed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: %1</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -4649,11 +4558,11 @@ Type: %3</source>
         <translation>Kan ikke tilføje kategori, fordi en anden kritisk operation er under udførelse.</translation>
     </message>
     <message>
-        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <source>Import was completely successful.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Import was completely successful.</source>
+        <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4698,13 +4607,6 @@ Type: %3</source>
 Unread news: %2</source>
         <translation>%1
 Ulæste nyheder: %2</translation>
-    </message>
-</context>
-<context>
-    <name>T</name>
-    <message>
-        <source>Add new account</source>
-        <translation>Tilføj ny konto</translation>
     </message>
 </context>
 <context>
@@ -4980,6 +4882,10 @@ Ulæste nyheder: %2</translation>
         <source>URL is okay.</source>
         <translation>URL er okay.</translation>
     </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>TtRssFeedDetails</name>
@@ -5042,6 +4948,17 @@ Sidst logget på: %4</translation>
     </message>
 </context>
 <context>
+    <name>UnreadNode</name>
+    <message>
+        <source>Unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can find all unread messages here.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
@@ -5070,14 +4987,6 @@ Sidst logget på: %4</translation>
     </message>
     <message>
         <source>Open this website in system web browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Failed to open URL in web browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -5171,6 +5080,14 @@ Sidst logget på: %4</translation>
         <source>Allow geolocation on insecure origins</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Navigate to website manually</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>WebViewer</name>
@@ -5189,6 +5106,10 @@ Sidst logget på: %4</translation>
     <message>
         <source>Open link in external browser</source>
         <translation>Åben henvisning i ekstern netlæser</translation>
+    </message>
+    <message>
+        <source>Open with external tool</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

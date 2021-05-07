@@ -11,40 +11,6 @@
     </message>
 </context>
 <context>
-    <name>AdBlockAddSubscriptionDialog</name>
-    <message>
-        <source>Add subscription</source>
-        <translation>Lisää tilaus</translation>
-    </message>
-    <message>
-        <source>Use predefined subscription</source>
-        <translation>Käytä valmiiksi määritettyä tilausta</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Otsikko</translation>
-    </message>
-    <message>
-        <source>Title of subscription</source>
-        <translation>Tilauksen otsikko</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL-osoite</translation>
-    </message>
-    <message>
-        <source>Absolute URL to online subscription file</source>
-        <translation>Absoluuttinen URL-osoite verkkotilauksen tiedostoon</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockCustomList</name>
-    <message>
-        <source>Custom rules</source>
-        <translation>Mukautetut säännöt</translation>
-    </message>
-</context>
-<context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
@@ -59,28 +25,24 @@
         <translation>Valinnat</translation>
     </message>
     <message>
-        <source>Add rule</source>
-        <translation>Lisää sääntö</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Poista sääntö</translation>
-    </message>
-    <message>
-        <source>Add subscription</source>
-        <translation>Lisää tilaus</translation>
-    </message>
-    <message>
-        <source>Remove subscription</source>
-        <translation>Poista tilaus</translation>
-    </message>
-    <message>
-        <source>Update subscriptions</source>
-        <translation>Päivitä tilaukset</translation>
-    </message>
-    <message>
         <source>Learn about writing rules...</source>
         <translation>Lue lisää sääntöjen kirjoittamisesta...</translation>
+    </message>
+    <message>
+        <source>Filter lists (list per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your direct links to filter lists here (one URL per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your custom filters here (one filter per line)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -92,48 +54,6 @@
     <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Näytä &amp;AdBlock-asetukset</translation>
-    </message>
-    <message>
-        <source>Disable on %1</source>
-        <translation>Poista käytöstä sivulla %1</translation>
-    </message>
-    <message>
-        <source>Disable only on this page</source>
-        <translation>Poista käytöstä vain tällä sivulla</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockSubscription</name>
-    <message>
-        <source>Cannot load subscription!</source>
-        <translation>Tilausta ei voi ladata!</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockTreeWidget</name>
-    <message>
-        <source>Add rule</source>
-        <translation>Lisää sääntö</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Poista sääntö</translation>
-    </message>
-    <message>
-        <source>Add custom rule</source>
-        <translation>Lisää mukautettu sääntö</translation>
-    </message>
-    <message>
-        <source>Please write your rule here:</source>
-        <translation>Kirjoita sääntö tähän:</translation>
-    </message>
-    <message>
-        <source>%1 (recently updated)</source>
-        <translation>%1 (äskettäin päivitetty)</translation>
-    </message>
-    <message>
-        <source>%1 (error: %2)</source>
-        <translation>%1 (virhe: %2)</translation>
     </message>
 </context>
 <context>
@@ -151,10 +71,6 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"/>
     </message>
@@ -167,12 +83,12 @@
         <translation>Syötettä ei voi lisätä</translation>
     </message>
     <message>
-        <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>New messages downloaded</source>
         <translation>Uusia viestejä ladattu</translation>
+    </message>
+    <message>
+        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -279,40 +195,12 @@
 <context>
     <name>DatabaseFactory</name>
     <message>
-        <source>MySQL server works as expected.</source>
-        <translation>MySQL-palvelin toimii kuten pitääkin.</translation>
-    </message>
-    <message>
-        <source>No MySQL server is running in the target destination.</source>
+        <source>Cannot connect to database</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Access denied. Invalid username or password used.</source>
+        <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (erillinen tietokanta)</translation>
-    </message>
-    <message>
-        <source>SQLite (embedded database)</source>
-        <translation>SQLite (upotettu tietokanta)</translation>
-    </message>
-    <message>
-        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Valittua tietokantaa ei ole vielä olemassa. Se luodaan. Kaikki kunnossa.</translation>
-    </message>
-    <message>
-        <source>MySQL database not available</source>
-        <translation>MySQL-tietokanta ei ole käytettävissä</translation>
-    </message>
-    <message>
-        <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Unknown error: &apos;%1&apos;.</source>
-        <translation>Tuntematon virhe: &apos;%1&apos;.</translation>
     </message>
 </context>
 <context>
@@ -578,10 +466,6 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
     </message>
@@ -610,14 +494,6 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>= unlimited</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation type="unfinished"/>
     </message>
@@ -638,19 +514,11 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You are already logged in.</source>
-        <translation>Olet jo sisäänkirjautuneena.</translation>
-    </message>
-    <message>
         <source>Access granted.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Login was successful.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -673,6 +541,22 @@ Status: %3</source>
         <source>Access token is okay.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedlyNetwork</name>
@@ -691,14 +575,6 @@ Status: %3</source>
     <message>
         <source>Click this to login again.</source>
         <translation>Napsauta tätä kirjautuaksesi uudelleen.</translation>
-    </message>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Kirjauduttu onnistuneesti</translation>
-    </message>
-    <message>
-        <source>Your login to Feedly was authorized.</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -739,6 +615,14 @@ Status: %3</source>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Search feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds search box</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -931,6 +815,10 @@ or this functionality is not implemented yet.</source>
         <source>Network proxy</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Add new account</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1081,6 +969,114 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
@@ -1101,10 +1097,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Database information</source>
         <translation>Tietokannan tiedot</translation>
-    </message>
-    <message>
-        <source>Database file size</source>
-        <translation>Tietokantatiedoston koko</translation>
     </message>
     <message>
         <source>Database type</source>
@@ -1151,7 +1143,7 @@ or this functionality is not implemented yet.</source>
         <translation>tuntematon</translation>
     </message>
     <message>
-        <source>file: %1, data: %2</source>
+        <source>Total data size</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1211,14 +1203,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Cannot edit feed</source>
-        <translation>Syötettä ei voi muokata</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Syötettä ei muokattu virheen takia.</translation>
-    </message>
-    <message>
         <source>Edit &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
@@ -1241,6 +1225,18 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Do not download messages at all</source>
         <translation>Älä lataa viestejä lainkaan</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save changes: %1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1360,14 +1356,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Switch visibility of main &amp;window</source>
         <translation>Vaihda &amp;pääikkunan näkyvyyttä</translation>
-    </message>
-    <message>
-        <source>Cannot open external browser</source>
-        <translation>Erillistä selainta ei voi avata</translation>
-    </message>
-    <message>
-        <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Toolbars</source>
@@ -1666,6 +1654,10 @@ or this functionality is not implemented yet.</source>
         <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Expand/collapse selected item &amp;recursively</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -1940,147 +1932,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     </message>
 </context>
 <context>
-    <name>FormStandardCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Ylätason luokka</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Otsikko</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Kuvaus</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Kuvake</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation>Valitse kuvake luokalle.</translation>
-    </message>
-    <message>
-        <source>Add new category</source>
-        <translation>Lisää uusi luokka</translation>
-    </message>
-    <message>
-        <source>Edit existing category</source>
-        <translation>Muokkaa olemassa olevaa luokkaa</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation>Luokkaa ei voi lisätä</translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation>Luokkaa ei lisätty virheen takia.</translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>Luokkaa ei voi muokata</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>Luokkaa ei muokattu virheen takia.</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>Luokan nimi on OK.</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation>Luokan nimi on liian lyhyt.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Kuvaus on tyhjä.</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Kuvaus on OK.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation>Valitse kuvaketiedosto luokalle</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Kuvat (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Valitse kuvake</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Peruuta</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Kuvakkeen nimi:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Kuvakkeen tyyppi:</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation>Luokan otsikko</translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>Luokan kuvaus</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation>Aseta kuvaus luokalle.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Kuvakkeen valinta</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Lataa kuvake tiedostosta...</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation>Käytä kuvaketeeman oletuskuvaketta</translation>
-    </message>
-</context>
-<context>
     <name>FormStandardFeedDetails</name>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Syötettä ei voi lisätä</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Syötettä ei lisätty virheen takia.</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>Syötettä ei voi muokata</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Syötettä ei muokattu virheen takia.</translation>
-    </message>
     <message>
         <source>General</source>
         <translation>Yleiset</translation>
@@ -2088,10 +1940,6 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     <message>
         <source>Network</source>
         <translation>Verkko</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Lisää uusi syöte</translation>
     </message>
 </context>
 <context>
@@ -2232,14 +2080,6 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
         <translation>Syöte lisätty</translation>
     </message>
     <message>
-        <source>Cannot add feed</source>
-        <translation>Syötettä ei voi lisätä</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Syötettä ei lisätty virheen takia.</translation>
-    </message>
-    <message>
         <source>General</source>
         <translation>Yleiset</translation>
     </message>
@@ -2248,11 +2088,11 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
         <translation>Verkko</translation>
     </message>
     <message>
-        <source>Add new feed</source>
-        <translation>Lisää uusi syöte</translation>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <source>API returned error code %1</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2378,10 +2218,6 @@ You can install it now.</source>
         <translation>Paketti ladattiin onnistuneesti.
 Voit asentaa sen nyt.</translation>
     </message>
-    <message>
-        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation type="unfinished"/>
-    </message>
 </context>
 <context>
     <name>GmailAccountDetails</name>
@@ -2414,16 +2250,8 @@ Voit asentaa sen nyt.</translation>
         <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>&amp;Kirjaudu</translation>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -2432,14 +2260,6 @@ Voit asentaa sen nyt.</translation>
     <message>
         <source>User-visible username</source>
         <translation>Käyttäjälle näkyvä käyttäjätunnus</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Olet jo sisäänkirjautuneena.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2458,10 +2278,6 @@ Voit asentaa sen nyt.</translation>
         <translation>Testauksen aikana tapahtui virhe.</translation>
     </message>
     <message>
-        <source>There is error. %1 </source>
-        <translation>Ilmeni virhe. %1 </translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation type="unfinished"/>
     </message>
@@ -2477,17 +2293,29 @@ Voit asentaa sen nyt.</translation>
         <source>Some value is entered.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GmailNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Kirjauduttu onnistuneesti</translation>
-    </message>
-    <message>
-        <source>Your login to Gmail was authorized.</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation type="unfinished"/>
@@ -2576,10 +2404,6 @@ Login tokens expiration: %2</source>
         <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
     </message>
     <message>
-        <source> = unlimited</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation type="unfinished"/>
     </message>
@@ -2628,14 +2452,6 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>= unlimited</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Verkkovirhe: &apos;%1&apos;.</translation>
     </message>
@@ -2673,6 +2489,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>URL is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2732,10 +2552,6 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
     </message>
@@ -2744,26 +2560,12 @@ Login tokens expiration: %2</source>
         <translation>&amp;Kirjaudu</translation>
     </message>
     <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
-
-It is highly recommended to create your own &quot;App ID&quot;. Because predefined one may be limited due to usage quotas if used by too many users simultaneously.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Not tested yet.</source>
         <translation>Ei vielä testattu.</translation>
     </message>
     <message>
         <source>User-visible username</source>
         <translation>Käyttäjälle näkyvä käyttäjätunnus</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Olet jo sisäänkirjautuneena.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2801,17 +2603,25 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
         <source>Some value is entered.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>InoreaderNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Kirjauduttu onnistuneesti</translation>
-    </message>
-    <message>
-        <source>Your login to Inoreader was authorized.</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Inoreader: authentication error</source>
         <translation>Inoreader: tunnistusvirhe</translation>
@@ -2827,6 +2637,10 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
     <message>
         <source>Click this to login again.</source>
         <translation>Napsauta tätä kirjautuaksesi uudelleen.</translation>
+    </message>
+    <message>
+        <source>not logged in</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2883,6 +2697,33 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>MariaDbDriver</name>
+    <message>
+        <source>MySQL server works as expected.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No MySQL server is running in the target destination.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Access denied. Invalid username or password used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>MariaDB</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
@@ -2929,6 +2770,21 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>MessageCountSpinBox</name>
+    <message>
+        <source>= unlimited</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
@@ -2941,6 +2797,13 @@ Login tokens expiration: %2</source>
     <message>
         <source>Switch message importance</source>
         <translation>Vaihda viestin tärkeysastetta</translation>
+    </message>
+</context>
+<context>
+    <name>MessageTextBrowser</name>
+    <message>
+        <source>Open with external tool</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2972,6 +2835,10 @@ Login tokens expiration: %2</source>
     <message>
         <source>Created on</source>
         <translation>Luontiaika</translation>
+    </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3017,10 +2884,6 @@ Login tokens expiration: %2</source>
         <translation>Sisältö</translation>
     </message>
     <message>
-        <source>Id of the message.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Is message read?</source>
         <translation type="unfinished"/>
     </message>
@@ -3030,10 +2893,6 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Id of feed which this message belongs to.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3120,6 +2979,22 @@ Login tokens expiration: %2</source>
         <source>Indication of enclosures presence within the message.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of the message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of feed which this message belongs to.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Score of the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3167,14 +3042,6 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Problem with starting external web browser</source>
-        <translation>Ongelma käynnistäessä erillistä verkkoselainta</translation>
-    </message>
-    <message>
-        <source>External web browser could not be started.</source>
-        <translation>Erillistä verkkoselainta ei voitu käynnistää.</translation>
-    </message>
-    <message>
         <source>Problem with starting external e-mail client</source>
         <translation>Ongelma käynnistäessä erillistä sähköpostisovellusta</translation>
     </message>
@@ -3193,6 +3060,10 @@ Login tokens expiration: %2</source>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
         <translation>Erillistä työkalua &apos;%1&apos; ei voitu käynnistää.</translation>
+    </message>
+    <message>
+        <source>No external tools activated</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3378,14 +3249,6 @@ Login tokens expiration: %2</source>
         <translation>Sinun tulee sisäänkirjautua ensin</translation>
     </message>
     <message>
-        <source>Navigate to website</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>To login, you need to navigate to this website:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>You can close this window now. Go back to %1.</source>
         <translation type="unfinished"/>
     </message>
@@ -3407,10 +3270,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Only download newest X messages per feed</source>
         <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
-    </message>
-    <message>
-        <source> = unlimited</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>URL</source>
@@ -3463,10 +3322,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Here, results of connection test are shown.</source>
         <translation>Tässä näytetään yhteystestin tulokset.</translation>
-    </message>
-    <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>= unlimited</source>
@@ -3607,7 +3462,9 @@ version by clicking this popup notification.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
+        <source>Keep up with the topics and trends you care about, without the overwhelm.
+
+Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3767,9 +3624,7 @@ version by clicking this popup notification.</source>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
-File filter for external e-mail selection dialog.
-----------
-File filter for external tool selection dialog.</extracomment>
+File filter for external e-mail selection dialog.</extracomment>
         <translation>Suoritustiedostot (*)</translation>
     </message>
     <message>
@@ -3805,14 +3660,6 @@ File filter for external tool selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Add external tool</source>
-        <translation>Lisää erillinen työkalu</translation>
-    </message>
-    <message>
-        <source>Delete selected external tool</source>
-        <translation>Poista valittu erillinen työkalu</translation>
-    </message>
-    <message>
         <source>Executable</source>
         <translation>Suoritustiedosto</translation>
     </message>
@@ -3829,15 +3676,27 @@ File filter for external tool selection dialog.</extracomment>
         <translation>Kirjoita parametrit</translation>
     </message>
     <message>
-        <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Parameters passed to executable</source>
         <translation>Suoritustiedostot välitettävät parametrit</translation>
     </message>
     <message>
         <source>Network proxy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add new external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Edit selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4115,6 +3974,14 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Hide message counts if there are no unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4230,10 +4097,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Sähköposti</translation>
     </message>
     <message>
-        <source>(Tray icon is not available.)</source>
-        <translation>(Ilmoitusalueen kuvake ei ole käytettävissä.)</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Vain kuvake</translation>
     </message>
@@ -4286,6 +4149,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Display count of unread messages</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>(Your OS does not support tray icons at the moment.)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4300,6 +4167,10 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Author</source>
         <translation>Tekijä</translation>
+    </message>
+    <message>
+        <source>Localization</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4331,16 +4202,34 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Tämä sivu estettiin AdBlock-mainoseston toimesta</translation>
     </message>
     <message>
-        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
+        <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>SqliteDriver</name>
+    <message>
+        <source>SQLite (embedded database)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Database file not copied to output directory successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>StandardCategory</name>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save data for category, detailed information was logged via debug log.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
-    <message>
-        <source>Metadata not fetched</source>
-        <translation>Metatietoja ei noudettu</translation>
-    </message>
     <message>
         <source>
 Network status: %1
@@ -4364,7 +4253,23 @@ Tyyppi: %3</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Metadata was not fetched.</source>
+        <source>Error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save data for feed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML is not well-formed, %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML feed file format unrecognized</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed, detailed information was logged via debug log.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4467,10 +4372,6 @@ Tyyppi: %3</translation>
         <translation>Kuvakkeen metatiedot noudettu.</translation>
     </message>
     <message>
-        <source>Icon metadata not fetched.</source>
-        <translation>Kuvakkeen metatietoja ei noudettu.</translation>
-    </message>
-    <message>
         <source>No icon fetched.</source>
         <translation>Kuvaketta ei noudettu.</translation>
     </message>
@@ -4481,10 +4382,6 @@ Tyyppi: %3</translation>
     <message>
         <source>Feed and icon metadata fetched.</source>
         <translation>Syötteen ja kuvakkeen metatiedot noudettu.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation>Syötteen tai kuvakkeen metatietoja ei noudettu.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
@@ -4603,6 +4500,18 @@ Tyyppi: %3</translation>
         <source>Command is empty.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Script failed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: %1</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -4651,11 +4560,11 @@ Tyyppi: %3</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Import successful, but some feeds/categories were not imported due to error.</source>
+        <source>Import was completely successful.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Import was completely successful.</source>
+        <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4699,13 +4608,6 @@ Tyyppi: %3</translation>
         <source>%1
 Unread news: %2</source>
         <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>T</name>
-    <message>
-        <source>Add new account</source>
-        <translation>Lisää uusi tili</translation>
     </message>
 </context>
 <context>
@@ -4981,6 +4883,10 @@ Unread news: %2</source>
         <source>URL is okay.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>TtRssFeedDetails</name>
@@ -5040,6 +4946,17 @@ Last login on: %4</source>
     </message>
 </context>
 <context>
+    <name>UnreadNode</name>
+    <message>
+        <source>Unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can find all unread messages here.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
@@ -5068,14 +4985,6 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open this website in system web browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Failed to open URL in web browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -5169,6 +5078,14 @@ Last login on: %4</source>
         <source>Allow geolocation on insecure origins</source>
         <translation>Salli geopaikannus turvattomista alkuperistä</translation>
     </message>
+    <message>
+        <source>Navigate to website manually</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>WebViewer</name>
@@ -5187,6 +5104,10 @@ Last login on: %4</source>
     <message>
         <source>Open link in external browser</source>
         <translation>Avaa linkki erillisessä selaimessa</translation>
+    </message>
+    <message>
+        <source>Open with external tool</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>

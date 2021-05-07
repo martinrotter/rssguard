@@ -11,40 +11,6 @@
     </message>
 </context>
 <context>
-    <name>AdBlockAddSubscriptionDialog</name>
-    <message>
-        <source>Add subscription</source>
-        <translation>添加订阅</translation>
-    </message>
-    <message>
-        <source>Use predefined subscription</source>
-        <translation>使用预设的订阅</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>名称</translation>
-    </message>
-    <message>
-        <source>Title of subscription</source>
-        <translation>订阅名称</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Absolute URL to online subscription file</source>
-        <translation>订阅文件的绝对 URL</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockCustomList</name>
-    <message>
-        <source>Custom rules</source>
-        <translation>自定义规则</translation>
-    </message>
-</context>
-<context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
@@ -59,28 +25,24 @@
         <translation>选项</translation>
     </message>
     <message>
-        <source>Add rule</source>
-        <translation>添加规则</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>删除规则</translation>
-    </message>
-    <message>
-        <source>Add subscription</source>
-        <translation>添加订阅</translation>
-    </message>
-    <message>
-        <source>Remove subscription</source>
-        <translation>删除订阅</translation>
-    </message>
-    <message>
-        <source>Update subscriptions</source>
-        <translation>更新订阅</translation>
-    </message>
-    <message>
         <source>Learn about writing rules...</source>
         <translation>了解如何编写规则……</translation>
+    </message>
+    <message>
+        <source>Filter lists (list per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your direct links to filter lists here (one URL per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your custom filters here (one filter per line)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -92,48 +54,6 @@
     <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>显示 AdBlock 设置 (&amp;S)</translation>
-    </message>
-    <message>
-        <source>Disable on %1</source>
-        <translation>在 %1 上禁用</translation>
-    </message>
-    <message>
-        <source>Disable only on this page</source>
-        <translation>只在此页面上禁用</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockSubscription</name>
-    <message>
-        <source>Cannot load subscription!</source>
-        <translation>无法加载订阅！</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockTreeWidget</name>
-    <message>
-        <source>Add rule</source>
-        <translation>添加规则</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>删除规则</translation>
-    </message>
-    <message>
-        <source>Add custom rule</source>
-        <translation>添加自定义规则</translation>
-    </message>
-    <message>
-        <source>Please write your rule here:</source>
-        <translation>请在这里填写你的规则：</translation>
-    </message>
-    <message>
-        <source>%1 (recently updated)</source>
-        <translation>%1（最近更新）</translation>
-    </message>
-    <message>
-        <source>%1 (error: %2)</source>
-        <translation>%1（错误：%2）</translation>
     </message>
 </context>
 <context>
@@ -151,10 +71,6 @@
         <translation>配置文件未能成功复制到输出目录。</translation>
     </message>
     <message>
-        <source>Database file not copied to output directory successfully.</source>
-        <translation>数据库文件未能成功复制到输出目录。</translation>
-    </message>
-    <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>无法开始恢复数据库，请确保输出目录可写。</translation>
     </message>
@@ -167,12 +83,12 @@
         <translation>无法添加 Feed</translation>
     </message>
     <message>
-        <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>未启用标准 RSS/ATOM 账户，无法添加 Feed。</translation>
-    </message>
-    <message>
         <source>New messages downloaded</source>
         <translation>新消息</translation>
+    </message>
+    <message>
+        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -279,40 +195,12 @@
 <context>
     <name>DatabaseFactory</name>
     <message>
-        <source>MySQL server works as expected.</source>
-        <translation>MySQL 服务器工作正常。</translation>
+        <source>Cannot connect to database</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>No MySQL server is running in the target destination.</source>
-        <translation>目标位置没有正在运行的 MySQL 服务器。</translation>
-    </message>
-    <message>
-        <source>Access denied. Invalid username or password used.</source>
-        <translation>拒绝访问，用户名或密码无效。</translation>
-    </message>
-    <message>
-        <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB（独立数据库）</translation>
-    </message>
-    <message>
-        <source>SQLite (embedded database)</source>
-        <translation>SQLite（嵌入式数据库）</translation>
-    </message>
-    <message>
-        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>所选数据库（尚）不存在，即将创建此数据库。</translation>
-    </message>
-    <message>
-        <source>MySQL database not available</source>
-        <translation>MySQL 数据库不可用</translation>
-    </message>
-    <message>
-        <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation>MySQL 数据库不可用，%1 无法使用它，正在切换到 SQLite 数据库。请启动你的 MySQL 服务器，并调整应用设置。</translation>
-    </message>
-    <message>
-        <source>Unknown error: &apos;%1&apos;.</source>
-        <translation>未知错误：&apos;%1&apos;。</translation>
+        <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -580,10 +468,6 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation> 条消息</translation>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>每个 Feed 仅下载最近 X 条消息</translation>
     </message>
@@ -612,14 +496,6 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>= unlimited</source>
-        <translation>= 不限</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>条消息</translation>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation>未能获取权限。</translation>
     </message>
@@ -640,19 +516,11 @@ Status: %3</source>
         <translation>权限申请已被批准。</translation>
     </message>
     <message>
-        <source>You are already logged in.</source>
-        <translation>您已登录。</translation>
-    </message>
-    <message>
         <source>Access granted.</source>
         <translation>未能获取权限。</translation>
     </message>
     <message>
         <source>Login was successful.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -675,6 +543,22 @@ Status: %3</source>
         <source>Access token is okay.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>仅下载未读消息</translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedlyNetwork</name>
@@ -693,14 +577,6 @@ Status: %3</source>
     <message>
         <source>Click this to login again.</source>
         <translation>点此重新登录。</translation>
-    </message>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>登录成功</translation>
-    </message>
-    <message>
-        <source>Your login to Feedly was authorized.</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -742,6 +618,14 @@ Status: %3</source>
     <message>
         <source>Toolbar spacer</source>
         <translation>工具栏空白</translation>
+    </message>
+    <message>
+        <source>Search feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds search box</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -933,6 +817,10 @@ or this functionality is not implemented yet.</source>
         <source>Network proxy</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Add new account</source>
+        <translation>添加新账户</translation>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1083,6 +971,114 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>上级分类</translation>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation>为分类选择上级项目。</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>名称</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>描述</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>图标</translation>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation>为分类选择图标。</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation>添加新分类</translation>
+    </message>
+    <message>
+        <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation>分类名称可用。</translation>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation>分类名称过短。</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>描述为空。</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>描述可用。</translation>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation>为分类选择图标</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>图像 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>选择图标</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation>当前目录：</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>图标名称：</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>图标类型：</translation>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation>分类名称</translation>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation>填写分类名称。</translation>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation>分类描述</translation>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation>填写分类描述。</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>图标选择</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>从文件载入图标…</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation>使用主题的默认图标</translation>
+    </message>
+</context>
+<context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
@@ -1103,10 +1099,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Database information</source>
         <translation>数据库信息</translation>
-    </message>
-    <message>
-        <source>Database file size</source>
-        <translation>数据库大小</translation>
     </message>
     <message>
         <source>Database type</source>
@@ -1153,8 +1145,8 @@ or this functionality is not implemented yet.</source>
         <translation>未知</translation>
     </message>
     <message>
-        <source>file: %1, data: %2</source>
-        <translation>文件：%1，数据：%2</translation>
+        <source>Total data size</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1213,14 +1205,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Cannot edit feed</source>
-        <translation>无法编辑 Feed</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>发生错误，无法编辑 Feed。</translation>
-    </message>
-    <message>
         <source>Edit &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
@@ -1242,6 +1226,18 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Do not download messages at all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>添加 Feed</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <source>Cannot save changes: %1</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1362,14 +1358,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Switch visibility of main &amp;window</source>
         <translation>切换主窗口可见性 (&amp;W)</translation>
-    </message>
-    <message>
-        <source>Cannot open external browser</source>
-        <translation>无法打开外部浏览器</translation>
-    </message>
-    <message>
-        <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>无法打开外部浏览器，请手动访问应用程序网站。</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
@@ -1668,6 +1656,10 @@ or this functionality is not implemented yet.</source>
         <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Expand/collapse selected item &amp;recursively</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -1952,147 +1944,7 @@ You have to restart manually.</source>
     </message>
 </context>
 <context>
-    <name>FormStandardCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>上级分类</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation>为分类选择上级项目。</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>名称</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>描述</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>图标</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation>为分类选择图标。</translation>
-    </message>
-    <message>
-        <source>Add new category</source>
-        <translation>添加新分类</translation>
-    </message>
-    <message>
-        <source>Edit existing category</source>
-        <translation>编辑已有的分类</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation>无法添加分类</translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation>发生错误，无法添加分类。</translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>无法编辑分类</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>发生错误，无法编辑分类。</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>分类名称可用。</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation>分类名称过短。</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>描述为空。</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>描述可用。</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation>为分类选择图标</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>图像 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>选择图标</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>当前目录：</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>图标名称：</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>图标类型：</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation>分类名称</translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation>填写分类名称。</translation>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>分类描述</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation>填写分类描述。</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>图标选择</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>从文件载入图标…</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation>使用主题的默认图标</translation>
-    </message>
-</context>
-<context>
     <name>FormStandardFeedDetails</name>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>无法添加 Feed</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>发生错误，无法添加 Feed。</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>无法编辑 Feed</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>发生错误，无法编辑 Feed。</translation>
-    </message>
     <message>
         <source>General</source>
         <translation>一般</translation>
@@ -2100,10 +1952,6 @@ You have to restart manually.</source>
     <message>
         <source>Network</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>添加 Feed</translation>
     </message>
 </context>
 <context>
@@ -2244,14 +2092,6 @@ You have to restart manually.</source>
         <translation>Feed 已添加</translation>
     </message>
     <message>
-        <source>Cannot add feed</source>
-        <translation>无法添加 Feed</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>发生错误，未能添加 Feed。</translation>
-    </message>
-    <message>
         <source>General</source>
         <translation>一般</translation>
     </message>
@@ -2260,11 +2100,11 @@ You have to restart manually.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Add new feed</source>
-        <translation>添加 Feed</translation>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <source>API returned error code %1</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2387,10 +2227,6 @@ downloaded.</source>
 You can install it now.</source>
         <translation>更新包下载成功，可供安装。</translation>
     </message>
-    <message>
-        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation>无法导航至安装文件。请前往项目首页主动下载。</translation>
-    </message>
 </context>
 <context>
     <name>GmailAccountDetails</name>
@@ -2423,16 +2259,8 @@ You can install it now.</source>
         <translation>每个 Feed 仅下载最近 X 条消息</translation>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation> 条消息</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>登录 (&amp;L)</translation>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation>被指定的重定向链接必须以 &quot;http://localhost&quot; 开头，并在 OAuth 的“应用”设置正确中配置。</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -2441,14 +2269,6 @@ You can install it now.</source>
     <message>
         <source>User-visible username</source>
         <translation>显示的用户名</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>您已登录。</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>未能获取权限。</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2467,10 +2287,6 @@ You can install it now.</source>
         <translation>测试时发生了错误。</translation>
     </message>
     <message>
-        <source>There is error. %1 </source>
-        <translation>错误如下：%1 </translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>测试成功。你可能需要再次登录。</translation>
     </message>
@@ -2486,17 +2302,29 @@ You can install it now.</source>
         <source>Some value is entered.</source>
         <translation>已输入。</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>仅下载未读消息</translation>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GmailNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>登录成功</translation>
-    </message>
-    <message>
-        <source>Your login to Gmail was authorized.</source>
-        <translation>Gmail 登录已授权。</translation>
-    </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>点此重新登录，报错：&apos;%1&apos;</translation>
@@ -2586,10 +2414,6 @@ Token 过期时间：%2</translation>
         <translation>每个 Feed 仅下载最近 X 条消息</translation>
     </message>
     <message>
-        <source> = unlimited</source>
-        <translation> = 不限</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>某些 Feed，例如 Gmail Feed，需要身份认证，我们支持 BASIC, NTLM-2 和 DIGEST-MD5 认证方式。</translation>
     </message>
@@ -2638,14 +2462,6 @@ Token 过期时间：%2</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>= unlimited</source>
-        <translation>= 不限</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>条消息</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>网络错误：&apos;%1&apos;。</translation>
     </message>
@@ -2684,6 +2500,10 @@ Token 过期时间：%2</translation>
     <message>
         <source>URL is okay.</source>
         <translation>URL 可用。</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>仅下载未读消息</translation>
     </message>
 </context>
 <context>
@@ -2742,10 +2562,6 @@ Token 过期时间：%2</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation> 条消息</translation>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>每个 Feed 仅下载最近 X 条消息</translation>
     </message>
@@ -2754,26 +2570,12 @@ Token 过期时间：%2</translation>
         <translation>登录 (&amp;L)</translation>
     </message>
     <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
-
-It is highly recommended to create your own &quot;App ID&quot;. Because predefined one may be limited due to usage quotas if used by too many users simultaneously.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Not tested yet.</source>
         <translation>尚未测试。</translation>
     </message>
     <message>
         <source>User-visible username</source>
         <translation>显示的用户名</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>您已登录。</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>未能获取权限。</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2811,17 +2613,25 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
         <source>Some value is entered.</source>
         <translation>已输入。</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation>仅下载未读消息</translation>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>InoreaderNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>登录成功</translation>
-    </message>
-    <message>
-        <source>Your login to Inoreader was authorized.</source>
-        <translation>Inoreader 登录已授权。</translation>
-    </message>
     <message>
         <source>Inoreader: authentication error</source>
         <translation>Inoreader：身份认证错误</translation>
@@ -2837,6 +2647,10 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
     <message>
         <source>Click this to login again.</source>
         <translation>点此重新登录。</translation>
+    </message>
+    <message>
+        <source>not logged in</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2894,6 +2708,33 @@ Token 过期时间：%2</translation>
     </message>
 </context>
 <context>
+    <name>MariaDbDriver</name>
+    <message>
+        <source>MySQL server works as expected.</source>
+        <translation>MySQL 服务器工作正常。</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation>所选数据库（尚）不存在，即将创建此数据库。</translation>
+    </message>
+    <message>
+        <source>No MySQL server is running in the target destination.</source>
+        <translation>目标位置没有正在运行的 MySQL 服务器。</translation>
+    </message>
+    <message>
+        <source>Access denied. Invalid username or password used.</source>
+        <translation>拒绝访问，用户名或密码无效。</translation>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <translation>未知错误：&apos;%1&apos;。</translation>
+    </message>
+    <message>
+        <source>MariaDB</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
@@ -2940,6 +2781,21 @@ Token 过期时间：%2</translation>
     </message>
 </context>
 <context>
+    <name>MessageCountSpinBox</name>
+    <message>
+        <source>= unlimited</source>
+        <translation>= 不限</translation>
+    </message>
+    <message>
+        <source>message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>条消息</translation>
+    </message>
+</context>
+<context>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
@@ -2952,6 +2808,13 @@ Token 过期时间：%2</translation>
     <message>
         <source>Switch message importance</source>
         <translation>切换消息重要性</translation>
+    </message>
+</context>
+<context>
+    <name>MessageTextBrowser</name>
+    <message>
+        <source>Open with external tool</source>
+        <translation>使用外部工具打开</translation>
     </message>
 </context>
 <context>
@@ -2983,6 +2846,10 @@ Token 过期时间：%2</translation>
     <message>
         <source>Created on</source>
         <translation>创建时间</translation>
+    </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3028,10 +2895,6 @@ Token 过期时间：%2</translation>
         <translation>内容</translation>
     </message>
     <message>
-        <source>Id of the message.</source>
-        <translation>消息的 ID。</translation>
-    </message>
-    <message>
         <source>Is message read?</source>
         <translation>消息是否已读？</translation>
     </message>
@@ -3042,10 +2905,6 @@ Token 过期时间：%2</translation>
     <message>
         <source>Is message important?</source>
         <translation>消息是否重要？</translation>
-    </message>
-    <message>
-        <source>Id of feed which this message belongs to.</source>
-        <translation>消息所属 Feed 的 ID。</translation>
     </message>
     <message>
         <source>Title of the message.</source>
@@ -3131,6 +2990,22 @@ Token 过期时间：%2</translation>
         <source>Indication of enclosures presence within the message.</source>
         <translation>表明消息中是否包含附件。</translation>
     </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of the message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of feed which this message belongs to.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Score of the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3178,14 +3053,6 @@ Token 过期时间：%2</translation>
         <translation>消息上下文菜单</translation>
     </message>
     <message>
-        <source>Problem with starting external web browser</source>
-        <translation>启动外部浏览器时出错</translation>
-    </message>
-    <message>
-        <source>External web browser could not be started.</source>
-        <translation>外部浏览器无法启动。</translation>
-    </message>
-    <message>
         <source>Problem with starting external e-mail client</source>
         <translation>启动外部邮件客户端时出错</translation>
     </message>
@@ -3204,6 +3071,10 @@ Token 过期时间：%2</translation>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
         <translation>外部工具 &apos;%1&apos; 无法启动。</translation>
+    </message>
+    <message>
+        <source>No external tools activated</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3389,14 +3260,6 @@ Token 过期时间：%2</translation>
         <translation>必须先登录</translation>
     </message>
     <message>
-        <source>Navigate to website</source>
-        <translation>导航至网站</translation>
-    </message>
-    <message>
-        <source>To login, you need to navigate to this website:</source>
-        <translation>若要登录，您必须导航至此网站：</translation>
-    </message>
-    <message>
         <source>You can close this window now. Go back to %1.</source>
         <translation type="unfinished"/>
     </message>
@@ -3418,10 +3281,6 @@ Token 过期时间：%2</translation>
     <message>
         <source>Only download newest X messages per feed</source>
         <translation>每个 Feed 仅下载最近 X 条消息</translation>
-    </message>
-    <message>
-        <source> = unlimited</source>
-        <translation> = 不限</translation>
     </message>
     <message>
         <source>URL</source>
@@ -3474,10 +3333,6 @@ Token 过期时间：%2</translation>
     <message>
         <source>Here, results of connection test are shown.</source>
         <translation>此处为连接测试的结果。</translation>
-    </message>
-    <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation>限制每个 Feed 下载的消息数会使更新 Feed 更快，但是，如果 Feed 包含大量消息，超出限制的消息可能被忽略。</translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -3626,7 +3481,9 @@ version by clicking this popup notification.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
+        <source>Keep up with the topics and trends you care about, without the overwhelm.
+
+Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3788,9 +3645,7 @@ version by clicking this popup notification.</source>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
-File filter for external e-mail selection dialog.
-----------
-File filter for external tool selection dialog.</extracomment>
+File filter for external e-mail selection dialog.</extracomment>
         <translation>可执行文件 (*)</translation>
     </message>
     <message>
@@ -3826,14 +3681,6 @@ File filter for external tool selection dialog.</extracomment>
         <translation>在此页面，你可以配置用于打开选中消息的链接的外部工具。</translation>
     </message>
     <message>
-        <source>Add external tool</source>
-        <translation>添加外部工具</translation>
-    </message>
-    <message>
-        <source>Delete selected external tool</source>
-        <translation>删除所选外部工具</translation>
-    </message>
-    <message>
         <source>Executable</source>
         <translation>可执行文件</translation>
     </message>
@@ -3850,15 +3697,27 @@ File filter for external tool selection dialog.</extracomment>
         <translation>输入参数</translation>
     </message>
     <message>
-        <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation>输入（可选的）以空格分隔的参数，在打开 URL 时，这些参数也会一并传递给目标可执行文件。</translation>
-    </message>
-    <message>
         <source>Parameters passed to executable</source>
         <translation>要传递给可执行文件的参数</translation>
     </message>
     <message>
         <source>Network proxy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add new external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Edit selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4147,6 +4006,14 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Hide message counts if there are no unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4262,10 +4129,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>邮箱</translation>
     </message>
     <message>
-        <source>(Tray icon is not available.)</source>
-        <translation>（通知区域图标不可用）</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>仅图标</translation>
     </message>
@@ -4318,6 +4181,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Display count of unread messages</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>(Your OS does not support tray icons at the moment.)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4332,6 +4199,10 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Author</source>
         <translation>作者</translation>
+    </message>
+    <message>
+        <source>Localization</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4363,16 +4234,34 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>此页面已被 AdBlock 屏蔽</translation>
     </message>
     <message>
-        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation>根据集合 &quot;%1&quot; 屏蔽&lt;br/&gt;根据过滤器 &quot;%2&quot; 屏蔽</translation>
+        <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>SqliteDriver</name>
+    <message>
+        <source>SQLite (embedded database)</source>
+        <translation>SQLite（嵌入式数据库）</translation>
+    </message>
+    <message>
+        <source>Database file not copied to output directory successfully.</source>
+        <translation>数据库文件未能成功复制到输出目录。</translation>
+    </message>
+</context>
+<context>
+    <name>StandardCategory</name>
+    <message>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <source>Cannot save data for category, detailed information was logged via debug log.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
-    <message>
-        <source>Metadata not fetched</source>
-        <translation>未获取元数据</translation>
-    </message>
     <message>
         <source>
 Network status: %1
@@ -4396,7 +4285,23 @@ Type: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Metadata was not fetched.</source>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <source>Cannot save data for feed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML is not well-formed, %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML feed file format unrecognized</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed, detailed information was logged via debug log.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4499,10 +4404,6 @@ Type: %3</source>
         <translation>图标元数据已获取。</translation>
     </message>
     <message>
-        <source>Icon metadata not fetched.</source>
-        <translation>未能获取图标元数据。</translation>
-    </message>
-    <message>
         <source>No icon fetched.</source>
         <translation>未能获取图标。</translation>
     </message>
@@ -4513,10 +4414,6 @@ Type: %3</source>
     <message>
         <source>Feed and icon metadata fetched.</source>
         <translation>Feed 与图片元数据已获取。</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation>Feed 或图标元数据未获取。</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
@@ -4635,6 +4532,18 @@ Type: %3</source>
         <source>Command is empty.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Script failed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: %1</source>
+        <translation>错误：%1</translation>
+    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -4683,12 +4592,12 @@ Type: %3</source>
         <translation>另一项关键操作正在执行，无法添加分类。</translation>
     </message>
     <message>
-        <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation>导入成功，但是某些 Feed/分类由于出错未能导入。</translation>
-    </message>
-    <message>
         <source>Import was completely successful.</source>
         <translation>导入成功。</translation>
+    </message>
+    <message>
+        <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4732,13 +4641,6 @@ Type: %3</source>
 Unread news: %2</source>
         <translation>%1
 未读消息：%2</translation>
-    </message>
-</context>
-<context>
-    <name>T</name>
-    <message>
-        <source>Add new account</source>
-        <translation>添加新账户</translation>
     </message>
 </context>
 <context>
@@ -5014,6 +4916,10 @@ Unread news: %2</source>
         <source>URL is okay.</source>
         <translation>URL 可用。</translation>
     </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>每个 Feed 仅下载最近 X 条消息</translation>
+    </message>
 </context>
 <context>
     <name>TtRssFeedDetails</name>
@@ -5076,6 +4982,17 @@ Last login on: %4</source>
     </message>
 </context>
 <context>
+    <name>UnreadNode</name>
+    <message>
+        <source>Unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can find all unread messages here.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
@@ -5104,14 +5021,6 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open this website in system web browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Failed to open URL in web browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -5205,6 +5114,14 @@ Last login on: %4</source>
         <source>Allow geolocation on insecure origins</source>
         <translation>允许来自不安全来源的地理位置</translation>
     </message>
+    <message>
+        <source>Navigate to website manually</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>WebViewer</name>
@@ -5223,6 +5140,10 @@ Last login on: %4</source>
     <message>
         <source>Open link in external browser</source>
         <translation>在外部浏览器中打开链接</translation>
+    </message>
+    <message>
+        <source>Open with external tool</source>
+        <translation>使用外部工具打开</translation>
     </message>
 </context>
 </TS>

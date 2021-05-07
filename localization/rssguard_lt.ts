@@ -11,40 +11,6 @@
     </message>
 </context>
 <context>
-    <name>AdBlockAddSubscriptionDialog</name>
-    <message>
-        <source>Add subscription</source>
-        <translation>Pridėti prenumeratą</translation>
-    </message>
-    <message>
-        <source>Use predefined subscription</source>
-        <translation>Naudoti iš anksto apibrėžtą prenumeratą</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Antraštė</translation>
-    </message>
-    <message>
-        <source>Title of subscription</source>
-        <translation>Prenumeratos antraštė</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL </translation>
-    </message>
-    <message>
-        <source>Absolute URL to online subscription file</source>
-        <translation>Absoliutusis URL į internetinį prenumeratos failą</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockCustomList</name>
-    <message>
-        <source>Custom rules</source>
-        <translation>Tinkintos taisyklės</translation>
-    </message>
-</context>
-<context>
     <name>AdBlockDialog</name>
     <message>
         <source>AdBlock configuration</source>
@@ -59,28 +25,24 @@
         <translation>Parametrai</translation>
     </message>
     <message>
-        <source>Add rule</source>
-        <translation>Pridėti taisyklę</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Šalinti taisyklę</translation>
-    </message>
-    <message>
-        <source>Add subscription</source>
-        <translation>Pridėti prenumeratą</translation>
-    </message>
-    <message>
-        <source>Remove subscription</source>
-        <translation>Šalinti prenumeratą</translation>
-    </message>
-    <message>
-        <source>Update subscriptions</source>
-        <translation>Atnaujinti prenumeratas</translation>
-    </message>
-    <message>
         <source>Learn about writing rules...</source>
         <translation>Sužinoti apie taisyklių rašymą...</translation>
+    </message>
+    <message>
+        <source>Filter lists (list per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your direct links to filter lists here (one URL per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add your custom filters here (one filter per line)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -92,48 +54,6 @@
     <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Rodyti reklamos blokavimo &amp;nustatymus</translation>
-    </message>
-    <message>
-        <source>Disable on %1</source>
-        <translation>Išjungti ties %1</translation>
-    </message>
-    <message>
-        <source>Disable only on this page</source>
-        <translation>Išjungti tik šiame puslapyje</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockSubscription</name>
-    <message>
-        <source>Cannot load subscription!</source>
-        <translation>Nepavyksta įkelti prenumeratos!</translation>
-    </message>
-</context>
-<context>
-    <name>AdBlockTreeWidget</name>
-    <message>
-        <source>Add rule</source>
-        <translation>Pridėti taisyklę</translation>
-    </message>
-    <message>
-        <source>Remove rule</source>
-        <translation>Šalinti taisyklę</translation>
-    </message>
-    <message>
-        <source>Add custom rule</source>
-        <translation>Pridėti tinkintą taisyklę</translation>
-    </message>
-    <message>
-        <source>Please write your rule here:</source>
-        <translation>Prašome čia įrašyti savo taisyklę:</translation>
-    </message>
-    <message>
-        <source>%1 (recently updated)</source>
-        <translation>%1 (neseniai atnaujinta)</translation>
-    </message>
-    <message>
-        <source>%1 (error: %2)</source>
-        <translation>%1 (klaida: %2)</translation>
     </message>
 </context>
 <context>
@@ -151,10 +71,6 @@
         <translation>Nustatymų failas nebuvo sėkmingai nukopijuotas į išvesties katalogą.</translation>
     </message>
     <message>
-        <source>Database file not copied to output directory successfully.</source>
-        <translation>Duomenų bazės failas nebuvo sėkmingai nukopijuotas į išvesties katalogą.</translation>
-    </message>
-    <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Duomenų bazės atkūrimas nebuvo inicijuotas. Įsitikinkite, kad išvesties katalogas yra įrašomas.</translation>
     </message>
@@ -167,12 +83,12 @@
         <translation>Nepavyksta pridėti kanalo</translation>
     </message>
     <message>
-        <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation>Kanalas negali būti pridėtas, nes nėra įjungta standartinė RSS/ATOM paskyra.</translation>
-    </message>
-    <message>
         <source>New messages downloaded</source>
         <translation>Atsiųstos naujos žinutės</translation>
+    </message>
+    <message>
+        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -279,40 +195,12 @@
 <context>
     <name>DatabaseFactory</name>
     <message>
-        <source>MySQL server works as expected.</source>
-        <translation>MySQL serveris veikia kaip tikimasi.</translation>
+        <source>Cannot connect to database</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>No MySQL server is running in the target destination.</source>
-        <translation>Paskirties vietoje nėra vykdomas joks MySQL serveris.</translation>
-    </message>
-    <message>
-        <source>Access denied. Invalid username or password used.</source>
-        <translation>Prieiga negalima. Panaudotas neteisingas naudotojo vardas ar slaptažodis.</translation>
-    </message>
-    <message>
-        <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (paskirta duomenų bazė)</translation>
-    </message>
-    <message>
-        <source>SQLite (embedded database)</source>
-        <translation>SQLite (įtaisyta duomenų bazė)</translation>
-    </message>
-    <message>
-        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation>Pasirinktos duomenų bazės nėra (kol kas). Ji bus sukurta. Viskas gerai.</translation>
-    </message>
-    <message>
-        <source>MySQL database not available</source>
-        <translation>MySQL duomenų bazė neprieinama</translation>
-    </message>
-    <message>
-        <source>%1 cannot use MySQL storage, it is not available. %1 is now switching to SQLite database. Start your MySQL server and make adjustments in application settings.</source>
-        <translation>%1 negali naudoti MySQL kaupiklio, jis yra neprieinamas. %1 dabar persijungia į SQLite duomenų bazę. Paleiskite savo MySQL serverį ir suderinkite programos nustatymus.</translation>
-    </message>
-    <message>
-        <source>Unknown error: &apos;%1&apos;.</source>
-        <translation>Nežinoma klaida: &quot;%1&quot;.</translation>
+        <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -578,10 +466,6 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation>žinutės(-ių)</translation>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Atsisiųsti kiekvienam kanalui tik X naujausių žinučių</translation>
     </message>
@@ -610,14 +494,6 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>= unlimited</source>
-        <translation>= neribotai</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>žinutės(-ių)</translation>
-    </message>
-    <message>
         <source>You did not grant access.</source>
         <translation>Jūs nesuteikėte prieigos.</translation>
     </message>
@@ -638,19 +514,11 @@ Status: %3</source>
         <translation>Jūsų prieiga buvo patvirtinta.</translation>
     </message>
     <message>
-        <source>You are already logged in.</source>
-        <translation>Jūs jau esate prisijungę.</translation>
-    </message>
-    <message>
         <source>Access granted.</source>
         <translation>Prieiga suteikta.</translation>
     </message>
     <message>
         <source>Login was successful.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Make sure your &quot;development access token&quot; is correct and your internet works.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -673,6 +541,22 @@ Status: %3</source>
         <source>Access token is okay.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedlyNetwork</name>
@@ -691,14 +575,6 @@ Status: %3</source>
     <message>
         <source>Click this to login again.</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą.</translation>
-    </message>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Sėkmingai prisijungta</translation>
-    </message>
-    <message>
-        <source>Your login to Feedly was authorized.</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -740,6 +616,14 @@ Status: %3</source>
     <message>
         <source>Toolbar spacer</source>
         <translation>Įrankių juostos tarpiklis</translation>
+    </message>
+    <message>
+        <source>Search feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds search box</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -932,6 +816,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Network proxy</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Add new account</source>
+        <translation>Pridėti naują paskyrą</translation>
+    </message>
 </context>
 <context>
     <name>FormAddAccount</name>
@@ -1082,6 +970,114 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
 </context>
 <context>
+    <name>FormCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>Pirminė kategorija</translation>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation>Pasirinkite savo kategorijos pirminį elementą.</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Antraštė</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Aprašas</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Piktograma</translation>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation>Pasirinkite savo kategorijai piktogramą.</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation>Pridėti naują kategoriją</translation>
+    </message>
+    <message>
+        <source>Edit &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation>Kategorijos pavadinimas yra geras.</translation>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation>Kategorijos pavadinimas yra per trumpas.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Aprašas tuščias.</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>Aprašas yra geras.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation>Pasirinkite kategorijai piktogramos failą</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Paveikslai (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Pasirinkti piktogramą</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Atsisakyti</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation>Ieškoti:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Piktogramos pavadinimas:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Piktogramos tipas:</translation>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation>Kategorijos antraštė</translation>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation>Nustatykite savo kategorijos antraštę.</translation>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation>Kategorijos aprašas</translation>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation>Nustatykite savo kategorijai aprašą.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Piktogramos pasirinkimas</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Įkelti piktogramą iš failo...</translation>
+    </message>
+    <message>
+        <source>Use default icon from icon theme</source>
+        <translation>Naudoti numatytąją piktogramą iš piktogramų temos</translation>
+    </message>
+</context>
+<context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
@@ -1102,10 +1098,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Database information</source>
         <translation>Duomenų bazės informacija</translation>
-    </message>
-    <message>
-        <source>Database file size</source>
-        <translation>Duomenų bazės failo dydis</translation>
     </message>
     <message>
         <source>Database type</source>
@@ -1152,8 +1144,8 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>nežinoma</translation>
     </message>
     <message>
-        <source>file: %1, data: %2</source>
-        <translation>failas: %1, duomenys: %2</translation>
+        <source>Total data size</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1212,14 +1204,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Cannot edit feed</source>
-        <translation>Nepavyksta redaguoti kanalo</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Kanalas negalėjo būti redaguotas dėl klaidos</translation>
-    </message>
-    <message>
         <source>Edit &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
@@ -1241,6 +1225,18 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Do not download messages at all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Pridėti naują kanalą</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Klaida</translation>
+    </message>
+    <message>
+        <source>Cannot save changes: %1</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1361,14 +1357,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Switch visibility of main &amp;window</source>
         <translation>Perjungti pagrindinio &amp;lango matomumą</translation>
-    </message>
-    <message>
-        <source>Cannot open external browser</source>
-        <translation>Nepavyksta atverti išorinės naršyklės</translation>
-    </message>
-    <message>
-        <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation>Nepavyksta atverti išorinės naršyklės. Pereikite į programos tinklalapį rankiniu būdu.</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
@@ -1667,6 +1655,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Expand/collapse selected item &amp;recursively</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -1942,147 +1934,7 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
     </message>
 </context>
 <context>
-    <name>FormStandardCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Pirminė kategorija</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation>Pasirinkite savo kategorijos pirminį elementą.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Antraštė</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Aprašas</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Piktograma</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation>Pasirinkite savo kategorijai piktogramą.</translation>
-    </message>
-    <message>
-        <source>Add new category</source>
-        <translation>Pridėti naują kategoriją</translation>
-    </message>
-    <message>
-        <source>Edit existing category</source>
-        <translation>Redaguoti esamą kategoriją</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation>Nepavyksta pridėti kategorijos</translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation>Kategorija nebuvo pridėta dėl klaidos.</translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>Nepavyksta redaguoti kategorijos</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>Kategorija nebuvo redaguota dėl klaidos.</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>Kategorijos pavadinimas yra geras.</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation>Kategorijos pavadinimas yra per trumpas.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Aprašas tuščias.</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Aprašas yra geras.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation>Pasirinkite kategorijai piktogramos failą</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Paveikslai (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Pasirinkti piktogramą</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Atsisakyti</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Ieškoti:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Piktogramos pavadinimas:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Piktogramos tipas:</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation>Kategorijos antraštė</translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation>Nustatykite savo kategorijos antraštę.</translation>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>Kategorijos aprašas</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation>Nustatykite savo kategorijai aprašą.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Piktogramos pasirinkimas</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Įkelti piktogramą iš failo...</translation>
-    </message>
-    <message>
-        <source>Use default icon from icon theme</source>
-        <translation>Naudoti numatytąją piktogramą iš piktogramų temos</translation>
-    </message>
-</context>
-<context>
     <name>FormStandardFeedDetails</name>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Nepavyksta pridėti kanalo</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Kanalas nebuvo pridėtas dėl klaidos.</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>Nepavyksta redaguoti kanalo</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Kanalas negalėjo būti redaguotas dėl klaidos</translation>
-    </message>
     <message>
         <source>General</source>
         <translation>Bendra</translation>
@@ -2090,10 +1942,6 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
     <message>
         <source>Network</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Pridėti naują kanalą</translation>
     </message>
 </context>
 <context>
@@ -2234,14 +2082,6 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
         <translation>Kanalas pridėtas</translation>
     </message>
     <message>
-        <source>Cannot add feed</source>
-        <translation>Nepavyksta pridėti kanalo</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Kanalas nebuvo pridėtas dėl klaidos.</translation>
-    </message>
-    <message>
         <source>General</source>
         <translation>Bendra</translation>
     </message>
@@ -2250,11 +2090,11 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Add new feed</source>
-        <translation>Pridėti naują kanalą</translation>
+        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was added, obtaining new tree of feeds now.</source>
+        <source>API returned error code %1</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2381,10 +2221,6 @@ You can install it now.</source>
         <translation>Paketas buvo sėkmingai atsisiųstas.
 Jūs dabar galite jį įdiegti.</translation>
     </message>
-    <message>
-        <source>Cannot navigate to installation file. Download new installation file manually on project website.</source>
-        <translation>Nepavyksta naršyti į įdiegimo failą. Rankiniu būdu atsisiųskite naują įdiegimo failą iš projekto svetainės.</translation>
-    </message>
 </context>
 <context>
     <name>GmailAccountDetails</name>
@@ -2417,16 +2253,8 @@ Jūs dabar galite jį įdiegti.</translation>
         <translation>Atsisiųsti kiekvienam kanalui tik X naujausių žinučių</translation>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation>žinutės(-ių)</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>&amp;Prisijungti</translation>
-    </message>
-    <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -2435,14 +2263,6 @@ Jūs dabar galite jį įdiegti.</translation>
     <message>
         <source>User-visible username</source>
         <translation>Naudotojui matomas naudotojo vardas</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Jūs jau esate prisijungę.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>Prieiga suteikta.</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2461,10 +2281,6 @@ Jūs dabar galite jį įdiegti.</translation>
         <translation>Išbandymo metu buvo klaida.</translation>
     </message>
     <message>
-        <source>There is error. %1 </source>
-        <translation>Yra klaida. %1 </translation>
-    </message>
-    <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>Išbandyta sėkmingai. Jūsų gali būti paprašyta prisijungti dar kartą.</translation>
     </message>
@@ -2480,17 +2296,29 @@ Jūs dabar galite jį įdiegti.</translation>
         <source>Some value is entered.</source>
         <translation>Įvesta kažkokia reikšmė.</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GmailNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Sėkmingai prisijungta</translation>
-    </message>
-    <message>
-        <source>Your login to Gmail was authorized.</source>
-        <translation>Jums buvo suteikta prieigos teisė prie Gmail.</translation>
-    </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą. Klaida yra: &quot;%1&quot;</translation>
@@ -2580,10 +2408,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>Atsisiųsti kiekvienam kanalui tik X naujausių žinučių</translation>
     </message>
     <message>
-        <source> = unlimited</source>
-        <translation> = neribotai</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Kai kurie kanalai, įskaitant GMail kanalus, reikalauja atpažinimo. Yra palaikomos BASIC, NTLM-2 ir DIGEST-MD5 atpažinimo schemos. </translation>
     </message>
@@ -2632,14 +2456,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>= unlimited</source>
-        <translation>= neribotai</translation>
-    </message>
-    <message>
-        <source>messages</source>
-        <translation>žinutės(-ių)</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Tinklo klaida: &apos;%1&apos;.</translation>
     </message>
@@ -2678,6 +2494,10 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <source>URL is okay.</source>
         <translation>URL yra geras.</translation>
+    </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2736,10 +2556,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source> message(s)</source>
-        <translation>žinutės(-ių)</translation>
-    </message>
-    <message>
         <source>Only download newest X messages per feed</source>
         <translation>Atsisiųsti kiekvienam kanalui tik X naujausių žinučių</translation>
     </message>
@@ -2748,26 +2564,12 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>&amp;Prisijungti</translation>
     </message>
     <message>
-        <source>Specified redirect URL must start with &quot;http://localhost&quot; and must be configured in your OAuth &quot;application&quot;.
-
-It is highly recommended to create your own &quot;App ID&quot;. Because predefined one may be limited due to usage quotas if used by too many users simultaneously.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Not tested yet.</source>
         <translation>Kol kas neišbandyta.</translation>
     </message>
     <message>
         <source>User-visible username</source>
         <translation>Naudotojui matomas naudotojo vardas</translation>
-    </message>
-    <message>
-        <source>You are already logged in.</source>
-        <translation>Jūs jau esate prisijungę.</translation>
-    </message>
-    <message>
-        <source>Access granted.</source>
-        <translation>Prieiga suteikta.</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -2805,17 +2607,25 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
         <source>Some value is entered.</source>
         <translation>Įvesta kažkokia reikšmė.</translation>
     </message>
+    <message>
+        <source>Download only unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>InoreaderNetworkFactory</name>
-    <message>
-        <source>Logged in successfully</source>
-        <translation>Sėkmingai prisijungta</translation>
-    </message>
-    <message>
-        <source>Your login to Inoreader was authorized.</source>
-        <translation>Jums buvo suteikta prieigos teisė prie Inoreader.</translation>
-    </message>
     <message>
         <source>Inoreader: authentication error</source>
         <translation>Inoreader: atpažinimo klaida</translation>
@@ -2831,6 +2641,10 @@ It is highly recommended to create your own &quot;App ID&quot;. Because predefin
     <message>
         <source>Click this to login again.</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą.</translation>
+    </message>
+    <message>
+        <source>not logged in</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2888,6 +2702,33 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
 </context>
 <context>
+    <name>MariaDbDriver</name>
+    <message>
+        <source>MySQL server works as expected.</source>
+        <translation>MySQL serveris veikia kaip tikimasi.</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
+        <translation>Pasirinktos duomenų bazės nėra (kol kas). Ji bus sukurta. Viskas gerai.</translation>
+    </message>
+    <message>
+        <source>No MySQL server is running in the target destination.</source>
+        <translation>Paskirties vietoje nėra vykdomas joks MySQL serveris.</translation>
+    </message>
+    <message>
+        <source>Access denied. Invalid username or password used.</source>
+        <translation>Prieiga negalima. Panaudotas neteisingas naudotojo vardas ar slaptažodis.</translation>
+    </message>
+    <message>
+        <source>Unknown error: &apos;%1&apos;.</source>
+        <translation>Nežinoma klaida: &quot;%1&quot;.</translation>
+    </message>
+    <message>
+        <source>MariaDB</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>MessageBox</name>
     <message>
         <source>Do not show this dialog again.</source>
@@ -2934,6 +2775,21 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
 </context>
 <context>
+    <name>MessageCountSpinBox</name>
+    <message>
+        <source>= unlimited</source>
+        <translation>= neribotai</translation>
+    </message>
+    <message>
+        <source>message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>messages</source>
+        <translation>žinutės(-ių)</translation>
+    </message>
+</context>
+<context>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark message as read</source>
@@ -2946,6 +2802,13 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <source>Switch message importance</source>
         <translation>Perjungti žinutės svarbą</translation>
+    </message>
+</context>
+<context>
+    <name>MessageTextBrowser</name>
+    <message>
+        <source>Open with external tool</source>
+        <translation>Atverti, naudojant išorinį įrankį</translation>
     </message>
 </context>
 <context>
@@ -2977,6 +2840,10 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <source>Created on</source>
         <translation>Sukurta</translation>
+    </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3022,10 +2889,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>Turinys</translation>
     </message>
     <message>
-        <source>Id of the message.</source>
-        <translation>Žinutės Id.</translation>
-    </message>
-    <message>
         <source>Is message read?</source>
         <translation>Ar žinutė skaityta?</translation>
     </message>
@@ -3036,10 +2899,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <source>Is message important?</source>
         <translation>Ar žinutė svarbi?</translation>
-    </message>
-    <message>
-        <source>Id of feed which this message belongs to.</source>
-        <translation>Kanalo, kuriam priklauso ši žinutė, Id.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
@@ -3125,6 +2984,22 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <source>Indication of enclosures presence within the message.</source>
         <translation>Požymis to ar yra žinutėje intarpai</translation>
     </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of the message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of feed which this message belongs to.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Score of the message.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -3172,14 +3047,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>Kontekstinis meniu žinutėms</translation>
     </message>
     <message>
-        <source>Problem with starting external web browser</source>
-        <translation>Problemos, paleidžiant išorinę naršyklę</translation>
-    </message>
-    <message>
-        <source>External web browser could not be started.</source>
-        <translation>Išorinės naršyklės paleisti nepavyko.</translation>
-    </message>
-    <message>
         <source>Problem with starting external e-mail client</source>
         <translation>Problemos, paleidžiant išorinę el. pašto kliento programą</translation>
     </message>
@@ -3198,6 +3065,10 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <source>External tool &apos;%1&apos; could not be started.</source>
         <translation>Nepavyko paleisti &quot;%1&quot; išorinio įrankio.</translation>
+    </message>
+    <message>
+        <source>No external tools activated</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3383,14 +3254,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>Iš pradžių, turite prisijungti</translation>
     </message>
     <message>
-        <source>Navigate to website</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>To login, you need to navigate to this website:</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>You can close this window now. Go back to %1.</source>
         <translation type="unfinished"/>
     </message>
@@ -3412,10 +3275,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <source>Only download newest X messages per feed</source>
         <translation>Atsisiųsti kiekvienam kanalui tik X naujausių žinučių</translation>
-    </message>
-    <message>
-        <source> = unlimited</source>
-        <translation> = neribotai</translation>
     </message>
     <message>
         <source>URL</source>
@@ -3468,10 +3327,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <source>Here, results of connection test are shown.</source>
         <translation>Čia yra rodomi ryšio bandymo rezultatai.</translation>
-    </message>
-    <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster but if your feed contains bigger number of messages than specified limit, then some messages might not be downloaded during feed update.</source>
-        <translation>Vienam kanalui atsiunčiamų žinučių apribojimas padaro kanalų atnaujinimą greitesnį, tačiau jeigu jūsų kanale yra daugiau žinučių negu nurodyta riba, tuomet kanalo atnaujinimo metu kai kurios žinutės gali būti neatsiųstos.</translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -3627,7 +3482,9 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Keep up with the topics and trends you care about, without the overwhelm. Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
+        <source>Keep up with the topics and trends you care about, without the overwhelm.
+
+Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3789,9 +3646,7 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
-File filter for external e-mail selection dialog.
-----------
-File filter for external tool selection dialog.</extracomment>
+File filter for external e-mail selection dialog.</extracomment>
         <translation>Vykdomieji (*)</translation>
     </message>
     <message>
@@ -3827,14 +3682,6 @@ File filter for external tool selection dialog.</extracomment>
         <translation>Šiame puslapyje galite nusistatyti išorinių įrankių, kurie gali atverti pažymėtų žinučių URL adresus, sąrašą.</translation>
     </message>
     <message>
-        <source>Add external tool</source>
-        <translation>Pridėti išorinį įrankį</translation>
-    </message>
-    <message>
-        <source>Delete selected external tool</source>
-        <translation>Ištrinti pasirinktą išorinį įrankį</translation>
-    </message>
-    <message>
         <source>Executable</source>
         <translation>Vykdomasis</translation>
     </message>
@@ -3851,15 +3698,27 @@ File filter for external tool selection dialog.</extracomment>
         <translation>Įveskite parametrus</translation>
     </message>
     <message>
-        <source>Enter (optional) parameters separated by single space to send to executable when opening URLs.</source>
-        <translation>Įveskite (pasirinktinai) vienu tarpu atskirtus parametrus, kurie, atveriant URL adresus, bus persiunčiami vykdomiesiems.</translation>
-    </message>
-    <message>
         <source>Parameters passed to executable</source>
         <translation>Vykdomajam perduoti parametrai</translation>
     </message>
     <message>
         <source>Network proxy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add new external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Edit selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete selected external tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4147,6 +4006,14 @@ Vilkaduobės:
         <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Hide message counts if there are no unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and messages</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4262,10 +4129,6 @@ Vilkaduobės:
         <translation>El. paštas</translation>
     </message>
     <message>
-        <source>(Tray icon is not available.)</source>
-        <translation>(Dėklo piktograma neprieinama.)</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Tik piktogramos</translation>
     </message>
@@ -4318,6 +4181,10 @@ Vilkaduobės:
         <source>Display count of unread messages</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>(Your OS does not support tray icons at the moment.)</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4332,6 +4199,10 @@ Vilkaduobės:
     <message>
         <source>Author</source>
         <translation>Autorius</translation>
+    </message>
+    <message>
+        <source>Localization</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4363,16 +4234,34 @@ Vilkaduobės:
         <translation>Reklamos blokavimas užblokavo šį puslapį</translation>
     </message>
     <message>
-        <source>Blocked by set: &quot;%1&quot;&lt;br/&gt;Blocked by filter: &quot;%2&quot;</source>
-        <translation>Užblokuota rinkinio: &quot;%1&quot;&lt;br/&gt;Užblokuota filtro: &quot;%2&quot;</translation>
+        <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>SqliteDriver</name>
+    <message>
+        <source>SQLite (embedded database)</source>
+        <translation>SQLite (įtaisyta duomenų bazė)</translation>
+    </message>
+    <message>
+        <source>Database file not copied to output directory successfully.</source>
+        <translation>Duomenų bazės failas nebuvo sėkmingai nukopijuotas į išvesties katalogą.</translation>
+    </message>
+</context>
+<context>
+    <name>StandardCategory</name>
+    <message>
+        <source>Error</source>
+        <translation>Klaida</translation>
+    </message>
+    <message>
+        <source>Cannot save data for category, detailed information was logged via debug log.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>StandardFeed</name>
-    <message>
-        <source>Metadata not fetched</source>
-        <translation>Metaduomenys negauti</translation>
-    </message>
     <message>
         <source>
 Network status: %1
@@ -4396,7 +4285,23 @@ Tipas: %3</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Metadata was not fetched.</source>
+        <source>Error</source>
+        <translation>Klaida</translation>
+    </message>
+    <message>
+        <source>Cannot save data for feed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML is not well-formed, %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML feed file format unrecognized</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed, detailed information was logged via debug log.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4499,10 +4404,6 @@ Tipas: %3</translation>
         <translation>Piktogramos metaduomenys gauti.</translation>
     </message>
     <message>
-        <source>Icon metadata not fetched.</source>
-        <translation>Piktogramos metaduomenys negauti.</translation>
-    </message>
-    <message>
         <source>No icon fetched.</source>
         <translation>Negauta jokios piktogramos.</translation>
     </message>
@@ -4513,10 +4414,6 @@ Tipas: %3</translation>
     <message>
         <source>Feed and icon metadata fetched.</source>
         <translation>Kanalo ir piktogramos metaduomenys gauti.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metadata not fetched.</source>
-        <translation>Kanalo ar piktogramos metaduomenys negauti.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
@@ -4635,6 +4532,18 @@ Tipas: %3</translation>
         <source>Command is empty.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Script failed: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: %1</source>
+        <translation>Klaida: %1</translation>
+    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -4683,12 +4592,12 @@ Tipas: %3</translation>
         <translation>Nepavyksta pridėti kategorijos, nes yra vykdoma kita kritinė operacija.</translation>
     </message>
     <message>
-        <source>Import successful, but some feeds/categories were not imported due to error.</source>
-        <translation>Importavimas sėkmingas, tačiau dėl klaidos nebuvo importuoti kai kurie kanalai/kategorijos.</translation>
-    </message>
-    <message>
         <source>Import was completely successful.</source>
         <translation>Importavimas buvo sėkmingai užbaigtas.</translation>
+    </message>
+    <message>
+        <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4732,13 +4641,6 @@ Tipas: %3</translation>
 Unread news: %2</source>
         <translation>%1
 Neskaitytų naujienų: %2</translation>
-    </message>
-</context>
-<context>
-    <name>T</name>
-    <message>
-        <source>Add new account</source>
-        <translation>Pridėti naują paskyrą</translation>
     </message>
 </context>
 <context>
@@ -5014,6 +4916,10 @@ Neskaitytų naujienų: %2</translation>
         <source>URL is okay.</source>
         <translation>URL yra geras.</translation>
     </message>
+    <message>
+        <source>Only download newest X messages per feed</source>
+        <translation>Atsisiųsti kiekvienam kanalui tik X naujausių žinučių</translation>
+    </message>
 </context>
 <context>
     <name>TtRssFeedDetails</name>
@@ -5076,6 +4982,17 @@ Paskiausias prisijungimas: %4</translation>
     </message>
 </context>
 <context>
+    <name>UnreadNode</name>
+    <message>
+        <source>Unread messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can find all unread messages here.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
@@ -5104,14 +5021,6 @@ Paskiausias prisijungimas: %4</translation>
     </message>
     <message>
         <source>Open this website in system web browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Failed to open URL in web browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL &apos;%1&apos; could not be opened in system&apos;s web browser.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -5205,6 +5114,14 @@ Paskiausias prisijungimas: %4</translation>
         <source>Allow geolocation on insecure origins</source>
         <translation>Leisti geografinės vietos nustatymą nesaugiuose šaltiniuose</translation>
     </message>
+    <message>
+        <source>Navigate to website manually</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>WebViewer</name>
@@ -5223,6 +5140,10 @@ Paskiausias prisijungimas: %4</translation>
     <message>
         <source>Open link in external browser</source>
         <translation>Atverti nuorodą išorinėje naršyklėje</translation>
+    </message>
+    <message>
+        <source>Open with external tool</source>
+        <translation>Atverti, naudojant išorinį įrankį</translation>
     </message>
 </context>
 </TS>
