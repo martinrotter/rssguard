@@ -58,8 +58,9 @@ BlockingResult AdBlockManager::block(const AdblockRequestInfo& request) const {
       }
       catch (const ApplicationException& ex) {
         qCriticalNN << LOGSEC_ADBLOCK
-                    << "HTTP error when calling server:"
+                    << "HTTP error when calling server for blocking rules:"
                     << QUOTE_W_SPACE_DOT(ex.message());
+        return { false };
       }
     }
     else {
@@ -105,8 +106,22 @@ bool AdBlockManager::canRunOnScheme(const QString& scheme) const {
 }
 
 QString AdBlockManager::elementHidingRulesForDomain(const QUrl& url) const {
-  // TODO: call service for cosmetic rules.
-  return {};
+  if (m_serverProcess->state() == QProcess::ProcessState::Running) {
+    try {
+      auto result = askServerForCosmeticRules(url.toString());
+
+      return result;
+    }
+    catch (const ApplicationException& ex) {
+      qCriticalNN << LOGSEC_ADBLOCK
+                  << "HTTP error when calling server for cosmetic rules:"
+                  << QUOTE_W_SPACE_DOT(ex.message());
+      return {};
+    }
+  }
+  else {
+    return {};
+  }
 }
 
 QStringList AdBlockManager::filterLists() const {
@@ -168,7 +183,7 @@ BlockingResult AdBlockManager::askServerIfBlocked(const QString& url) const {
 
   if (network_res.first == QNetworkReply::NetworkError::NoError) {
     qDebugNN << LOGSEC_ADBLOCK
-             << "Query to server took "
+             << "Query for blocking info to server took "
              << tmr.elapsed()
              << " ms.";
 
@@ -181,6 +196,41 @@ BlockingResult AdBlockManager::askServerIfBlocked(const QString& url) const {
           ? out_obj["filter"].toObject()["filter"].toObject()["filter"].toString()
           : QString()
     };
+  }
+  else {
+    throw NetworkException(network_res.first);
+  }
+}
+
+QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
+  QJsonObject req_obj;
+  QByteArray out;
+  QElapsedTimer tmr;
+
+  req_obj["url"] = url;
+  req_obj["cosmetic"] = true;
+
+  tmr.start();
+
+  auto network_res = NetworkFactory::performNetworkOperation(QSL("http://%1:%2").arg(QHostAddress(QHostAddress::SpecialAddress::LocalHost).toString(),
+                                                                                     ADBLOCK_SERVER_PORT),
+                                                             500,
+                                                             QJsonDocument(req_obj).toJson(),
+                                                             out,
+                                                             QNetworkAccessManager::Operation::PostOperation,
+                                                             { {
+                                                               QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                                               QSL("application/json").toLocal8Bit() } });
+
+  if (network_res.first == QNetworkReply::NetworkError::NoError) {
+    qDebugNN << LOGSEC_ADBLOCK
+             << "Query for cosmetic rules to server took "
+             << tmr.elapsed()
+             << " ms.";
+
+    QJsonObject out_obj = QJsonDocument::fromJson(out).object();
+
+    return out_obj["cosmetic"].toObject()["styles"].toString();
   }
   else {
     throw NetworkException(network_res.first);

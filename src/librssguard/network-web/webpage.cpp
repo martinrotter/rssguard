@@ -38,7 +38,7 @@ void WebPage::hideUnwantedElements() {
     auto js = qApp->web()->adBlock()->generateJsForElementHiding(css);
 
     runJavaScript(js);
-    qDebugNN << LOGSEC_JS << "Running domain-specific JS for element hiding rules.";
+    qDebugNN << LOGSEC_ADBLOCK << "Running domain-specific JS for element hiding rules.";
   }
 }
 

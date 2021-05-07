@@ -23,7 +23,7 @@ $qt_version = "5.15.2"
 $qt_link = "https://github.com/qt/qtbase/archive/$qt_version.zip"
 $qt_output = "qt.zip"
 
-$maria_version = "10.5.8"
+$maria_version = "10.5.9"
 $maria_link = "https://downloads.mariadb.org/f/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip/from/https%3A//mirror.vpsfree.cz/mariadb/?serve"
 $maria_output = "maria.zip"
 
