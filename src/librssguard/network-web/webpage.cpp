@@ -48,9 +48,9 @@ bool WebPage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool
   if (is_main_frame) {
     auto blocked = qApp->web()->adBlock()->block(AdblockRequestInfo(url));
 
-    if (blocked) {
+    if (blocked.m_blocked) {
       // This website is entirely blocked.
-      setHtml(qApp->skins()->adBlockedPage(url.toString()),
+      setHtml(qApp->skins()->adBlockedPage(url.toString(), blocked.m_blockedByFilter),
               QUrl::fromUserInput(INTERNAL_URL_ADBLOCKED));
       return false;
     }

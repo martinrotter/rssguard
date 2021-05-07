@@ -6,15 +6,26 @@
 #include <QObject>
 
 class QUrl;
+class QProcess;
 class AdblockRequestInfo;
 class AdBlockUrlInterceptor;
 class AdBlockIcon;
+
+struct BlockingResult {
+  bool m_blocked;
+  QString m_blockedByFilter;
+
+  BlockingResult(bool blocked, QString blocked_by_filter = {})
+    : m_blocked(blocked), m_blockedByFilter(std::move(blocked_by_filter)) {}
+
+};
 
 class AdBlockManager : public QObject {
   Q_OBJECT
 
   public:
     explicit AdBlockManager(QObject* parent = nullptr);
+    virtual ~AdBlockManager();
 
     // If "initial_load" is false, then we want to explicitly turn off
     // Adblock if it is running or turn on when not running.
@@ -27,7 +38,7 @@ class AdBlockManager : public QObject {
     AdBlockIcon* adBlockIcon() const;
 
     // General methods for adblocking.
-    bool block(const AdblockRequestInfo& request) const;
+    BlockingResult block(const AdblockRequestInfo& request) const;
     QString elementHidingRulesForDomain(const QUrl& url) const;
 
     QStringList filterLists() const;
@@ -47,6 +58,8 @@ class AdBlockManager : public QObject {
     void enabledChanged(bool enabled);
 
   private:
+    BlockingResult askServerIfBlocked(const QString& url) const;
+
     void restartServer();
 
   private:
@@ -55,6 +68,7 @@ class AdBlockManager : public QObject {
     AdBlockIcon* m_adblockIcon;
     AdBlockUrlInterceptor* m_interceptor;
     QString m_unifiedFiltersFile;
+    QProcess* m_serverProcess;
 };
 
 inline AdBlockIcon* AdBlockManager::adBlockIcon() const {

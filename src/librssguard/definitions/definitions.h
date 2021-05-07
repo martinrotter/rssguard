@@ -14,13 +14,10 @@
 #define SERVICE_CODE_INOREADER  "inoreader"
 #define SERVICE_CODE_GMAIL      "gmail"
 
+#define ADBLOCK_SERVER_PORT                   "48484"
 #define ADBLOCK_HOWTO                         "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#adblock"
-#define ADBLOCK_UPDATE_DAYS_INTERVAL          14
 #define ADBLOCK_ICON_ACTIVE                   "adblock"
 #define ADBLOCK_ICON_DISABLED                 "adblock-disabled"
-#define ADBLOCK_CUSTOMLIST_NAME               "customlist.txt"
-#define ADBLOCK_LISTS_SUBDIRECTORY            "adblock"
-#define ADBLOCK_EASYLIST_URL                  "https://easylist.to/easylist/easylist.txt"
 
 #define OAUTH_DECRYPTION_KEY                  11451167756100761335ul
 #define OAUTH_REDIRECT_URI                    "http://localhost"

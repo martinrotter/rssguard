@@ -78,7 +78,10 @@ Application::Application(const QString& id, int& argc, char** argv)
 
 #if defined(USE_WEBENGINE)
   m_webFactory->urlIinterceptor()->load();
-  m_webFactory->adBlock()->load(true);
+
+  QTimer::singleShot(3000, this, [=]() {
+    m_webFactory->adBlock()->load(true);
+  });
 #endif
 
   qDebugNN << LOGSEC_CORE
