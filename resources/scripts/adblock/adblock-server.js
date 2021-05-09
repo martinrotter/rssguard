@@ -81,7 +81,7 @@ else {
             const adblockCosmetic = engine.getCosmeticsFilters({
               url: askUrl,
               hostname: fullUrl.hostname,
-              domain: tldts.parse(fullUrl).domain
+              domain: tldts.getDomain(fullUrl.hostname)
             });
 
             resultJson["cosmetic"] = adblockCosmetic;
