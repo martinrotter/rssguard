@@ -30,19 +30,19 @@
     </message>
     <message>
         <source>Filter lists (list per line)</source>
-        <translation type="unfinished"/>
+        <translation>Listas de filtros (lista por linha)</translation>
     </message>
     <message>
         <source>Add your direct links to filter lists here (one URL per line)</source>
-        <translation type="unfinished"/>
+        <translation>Adicione os seus links diretos às listas de filtros aqui (um URL por linha)</translation>
     </message>
     <message>
         <source>Custom filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtros personalizados</translation>
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
-        <translation type="unfinished"/>
+        <translation>Adicione os seus filtros personalizados aqui (um filtro por linha)</translation>
     </message>
 </context>
 <context>
@@ -88,7 +88,7 @@
     </message>
     <message>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
-        <translation type="unfinished"/>
+        <translation>O feed não pode ser adicionado pois não há uma conta ativa que pode adicionar feeds.</translation>
     </message>
 </context>
 <context>
@@ -196,11 +196,11 @@
     <name>DatabaseFactory</name>
     <message>
         <source>Cannot connect to database</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível conectar ao banco de dados</translation>
     </message>
     <message>
         <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-        <translation type="unfinished"/>
+        <translation>A conexão com seu banco de dados não foi estabelecida com o erro: &apos;%1&apos;. Retornando ao SQLite.</translation>
     </message>
 </context>
 <context>
@@ -549,15 +549,15 @@ Status: %3</translation>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"/>
+        <translation>TextLabel</translation>
     </message>
     <message>
         <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
-        <translation type="unfinished"/>
+        <translation>Tenha muito cuidado ao baixar muitas mensagens, porque o Feedly armazena automaticamente em cache TODAS as mensagens de um feed para sempre, então você pode acabar com milhares de mensagens que talvez nunca irá ler.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Erro: &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -621,11 +621,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>Search feeds</source>
-        <translation type="unfinished"/>
+        <translation>Pesquisar feeds</translation>
     </message>
     <message>
         <source>Feeds search box</source>
-        <translation type="unfinished"/>
+        <translation>Caixa de pesquisa de feeds</translation>
     </message>
 </context>
 <context>
@@ -1147,7 +1147,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Total data size</source>
-        <translation type="unfinished"/>
+        <translation>Tamanho de dados total</translation>
     </message>
 </context>
 <context>
@@ -1239,7 +1239,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível salvar as alterações: %1</translation>
     </message>
 </context>
 <context>
@@ -1659,7 +1659,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Expand/collapse selected item &amp;recursively</source>
-        <translation type="unfinished"/>
+        <translation>Expandir/recolher item selecionado recursivamente</translation>
     </message>
 </context>
 <context>
@@ -2107,7 +2107,7 @@ Você precisa reiniciar manualmente.</translation>
     </message>
     <message>
         <source>API returned error code %1</source>
-        <translation type="unfinished"/>
+        <translation>A API retornou o código de erro %1</translation>
     </message>
 </context>
 <context>
@@ -2314,19 +2314,19 @@ Você pode instalar agora.</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Existem alguns tokens OAuth pré-configurados para que você não precise preencher seu client ID/secret, mas é altamente recomendável obter o seu próprio, pois os tokens pré-configurados têm cota de uso global limitada. Se você deseja usar tokens pré-configurados, simplesmente deixe esses campos vazios e certifique-se de deixar o valor padrão do URL de redirecionamento.</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Você precisa preencher o seu client ID/secret e também preencher corretamente o URL de redirecionamento.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Ocorreu um erro. %1</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
+        <translation>O client ID/secret pré-configurado será usado.</translation>
     </message>
 </context>
 <context>
@@ -2625,15 +2625,15 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Existem alguns tokens OAuth pré-configurados para que você não precise preencher seu client ID/secret, mas é altamente recomendável obter o seu próprio, pois os tokens pré-configurados têm cota de uso global limitada. Se você deseja usar tokens pré-configurados, simplesmente deixe esses campos vazios e certifique-se de deixar o valor padrão do URL de redirecionamento.</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Você precisa preencher o seu client ID/secret e também preencher corretamente o URL de redirecionamento.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
+        <translation>O client ID/secret pré-configurado será usado.</translation>
     </message>
 </context>
 <context>
@@ -2656,7 +2656,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>not logged in</source>
-        <translation type="unfinished"/>
+        <translation>você não está logado</translation>
     </message>
 </context>
 <context>
@@ -2737,7 +2737,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>MariaDB</source>
-        <translation type="unfinished"/>
+        <translation>MariaDB</translation>
     </message>
 </context>
 <context>
@@ -2794,7 +2794,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>message</source>
-        <translation type="unfinished"/>
+        <translation>mensagem</translation>
     </message>
     <message>
         <source>messages</source>
@@ -2855,7 +2855,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished"/>
+        <translation>Pontuação</translation>
     </message>
 </context>
 <context>
@@ -2998,19 +2998,19 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished"/>
+        <translation>Pontuação</translation>
     </message>
     <message>
         <source>ID of the message.</source>
-        <translation type="unfinished"/>
+        <translation>ID da mensagem.</translation>
     </message>
     <message>
         <source>ID of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
+        <translation>ID do feed ao qual esta mensagem pertence.</translation>
     </message>
     <message>
         <source>Score of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Pontuação da mensagem.</translation>
     </message>
 </context>
 <context>
@@ -3080,7 +3080,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>No external tools activated</source>
-        <translation type="unfinished"/>
+        <translation>Nenhuma ferramenta externa ativada</translation>
     </message>
 </context>
 <context>
@@ -3493,7 +3493,9 @@ versão, clicando nesta notificação popup.</translation>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-        <translation type="unfinished"/>
+        <translation>Fique por dentro dos tópicos e tendências de seu interesse, sem sobrecarregar.
+
+O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacidade os tópicos e tendências que são importantes para você.</translation>
     </message>
 </context>
 <context>
@@ -3715,19 +3717,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>&amp;Add new external tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Adicionar nova ferramenta externa</translation>
     </message>
     <message>
         <source>&amp;Edit selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Editar ferramenta externa selecionada</translation>
     </message>
     <message>
         <source>&amp;Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>E&amp;xcluir ferramenta externa selecionada</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
-        <translation type="unfinished"/>
+        <translation>Entre (opcional) os parâmetros separados por &quot;%1&quot;:</translation>
     </message>
 </context>
 <context>
@@ -4016,11 +4018,11 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Hide message counts if there are no unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Ocultar contagem de mensagens se não houverem mensagens não lidas</translation>
     </message>
     <message>
         <source>Display tooltips for feeds and messages</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar dicas de ferramentas para feeds e mensagens</translation>
     </message>
 </context>
 <context>
@@ -4191,7 +4193,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>(Your OS does not support tray icons at the moment.)</source>
-        <translation type="unfinished"/>
+        <translation>(O seu sistema operacional não suporta ícones na área de notificação no momento.)</translation>
     </message>
 </context>
 <context>
@@ -4210,7 +4212,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Localization</source>
-        <translation type="unfinished"/>
+        <translation>Localização</translation>
     </message>
 </context>
 <context>
@@ -4243,7 +4245,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>URL bloqueado: &quot;%1&quot;&lt;br/&gt;Filtro usado: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -4265,7 +4267,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Cannot save data for category, detailed information was logged via debug log.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível salvar dados para a categoria, informações detalhadas foram registradas por meio do log de depuração.</translation>
     </message>
 </context>
 <context>
@@ -4298,19 +4300,19 @@ Tipo: %3</translation>
     </message>
     <message>
         <source>Cannot save data for feed: %1</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível salvar os dados para o feed: %1</translation>
     </message>
     <message>
         <source>XML is not well-formed, %1</source>
-        <translation type="unfinished"/>
+        <translation>XML não está bem formado, %1</translation>
     </message>
     <message>
         <source>XML feed file format unrecognized</source>
-        <translation type="unfinished"/>
+        <translation>Formato de arquivo de feed XML não reconhecido</translation>
     </message>
     <message>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível mover o feed, informações detalhadas foram registradas por meio do log de depuração.</translation>
     </message>
 </context>
 <context>
@@ -4542,11 +4544,11 @@ Tipo: %3</translation>
     </message>
     <message>
         <source>Script failed: %1</source>
-        <translation type="unfinished"/>
+        <translation>O script falhou: %1</translation>
     </message>
     <message>
         <source>Network error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Erro de rede: %1</translation>
     </message>
     <message>
         <source>Error: %1</source>
@@ -4605,7 +4607,7 @@ Tipo: %3</translation>
     </message>
     <message>
         <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-        <translation type="unfinished"/>
+        <translation>Alguns feeds/categorias não foram importados devido a um erro, verifique o log de depuração para obter mais detalhes.</translation>
     </message>
 </context>
 <context>
@@ -4993,11 +4995,11 @@ Servidor: %2
     <name>UnreadNode</name>
     <message>
         <source>Unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Mensagens não lidas</translation>
     </message>
     <message>
         <source>You can find all unread messages here.</source>
-        <translation type="unfinished"/>
+        <translation>Você pode encontrar todas as mensagens não lidas aqui.</translation>
     </message>
 </context>
 <context>
@@ -5124,11 +5126,11 @@ Servidor: %2
     </message>
     <message>
         <source>Navigate to website manually</source>
-        <translation type="unfinished"/>
+        <translation>Acessar o site manualmente</translation>
     </message>
     <message>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
-        <translation type="unfinished"/>
+        <translation>O %1 não conseguiu iniciar o seu navegador com o URL fornecido, você precisa abrir o URL do site abaixo no seu navegador manualmente.</translation>
     </message>
 </context>
 <context>

@@ -816,7 +816,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>新しいアカウントを追加</translation>
     </message>
 </context>
 <context>
@@ -971,7 +971,7 @@ or this functionality is not implemented yet.</source>
     <name>FormCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>親カテゴリ</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
@@ -979,15 +979,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>タイトル</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>説明</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>アイコン</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
@@ -995,7 +995,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>新しいカテゴリを追加</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
@@ -1007,11 +1007,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>カテゴリ名が短すぎます。</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>説明欄が空です。</translation>
     </message>
     <message>
         <source>The description is ok.</source>
@@ -1023,15 +1023,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>画像 (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>アイコンを選択</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <source>Look in:</source>
@@ -1064,11 +1064,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>アイコン選択</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>ファイルからアイコンを読み込む</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
@@ -1227,7 +1227,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>新しいフィードを追加</translation>
     </message>
     <message>
         <source>Error</source>
@@ -4204,7 +4204,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SqliteDriver</name>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"/>
+        <translation>SQLite (内蔵データベース)</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
@@ -4501,7 +4501,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>エラー: %1</translation>
     </message>
 </context>
 <context>

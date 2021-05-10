@@ -30,19 +30,19 @@
     </message>
     <message>
         <source>Filter lists (list per line)</source>
-        <translation type="unfinished"/>
+        <translation>Filterlistor (en lista per rad)</translation>
     </message>
     <message>
         <source>Add your direct links to filter lists here (one URL per line)</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till dina direktlänkar till filterlistor här (en URL per rad)</translation>
     </message>
     <message>
         <source>Custom filters</source>
-        <translation type="unfinished"/>
+        <translation>Anpassade filter</translation>
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till dina anpassade filter här (ett filter per rad)</translation>
     </message>
 </context>
 <context>
@@ -88,7 +88,7 @@
     </message>
     <message>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Flödet kan inte läggas till eftersom det saknas ett aktivt konto som kan lägga till flöden.</translation>
     </message>
 </context>
 <context>
@@ -196,11 +196,11 @@
     <name>DatabaseFactory</name>
     <message>
         <source>Cannot connect to database</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte ansluta till databas</translation>
     </message>
     <message>
         <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-        <translation type="unfinished"/>
+        <translation>Anslutning till din databas upprättades inte, med felkod: &quot;%1&quot;. Faller tillbaka på SQLite.</translation>
     </message>
 </context>
 <context>
@@ -549,15 +549,15 @@ Status: %3</translation>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"/>
+        <translation>TextEtikett</translation>
     </message>
     <message>
         <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
-        <translation type="unfinished"/>
+        <translation>Var försiktig med att ladda ner för många meddelanden, eftersom Feedly automatiskt cachelagrar ALLA meddelanden i ett flöde för alltid, så kan det sluta med tusentals meddelanden som du ändå aldrig kommer att läsa.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Fel: &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -621,11 +621,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>Search feeds</source>
-        <translation type="unfinished"/>
+        <translation>Sök flöden</translation>
     </message>
     <message>
         <source>Feeds search box</source>
-        <translation type="unfinished"/>
+        <translation>Flödessök</translation>
     </message>
 </context>
 <context>
@@ -1147,7 +1147,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Total data size</source>
-        <translation type="unfinished"/>
+        <translation>Total datastorlek</translation>
     </message>
 </context>
 <context>
@@ -1239,7 +1239,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte spara ändringar: %1</translation>
     </message>
 </context>
 <context>
@@ -1659,7 +1659,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Expand/collapse selected item &amp;recursively</source>
-        <translation type="unfinished"/>
+        <translation>Expandera/Komprimera markerat objekt &amp;rekursivt</translation>
     </message>
 </context>
 <context>
@@ -2107,7 +2107,7 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>API returned error code %1</source>
-        <translation type="unfinished"/>
+        <translation>API:n returnerade felkod %1</translation>
     </message>
 </context>
 <context>
@@ -2313,19 +2313,19 @@ Du kan installera det nu.</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Det finns några förkonfigurerade OAuth-token så att du inte behöver fylla i ditt klient-ID/din hemlighet, men vi rekommenderar starkt att du skaffar en egen eftersom förkonfigurerade token har begränsad global användningskvot. Om du vill använda förkonfigurerade token lämnar du bara fälten tomma och ser till att lämna kvar standardvärdet för omdirigerings-URL.</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Du måste fylla i ditt klient-ID/din hemlighet och även korrekt omdirigerings-URL.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Det finns fel: %1 </translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
+        <translation>Förkonfigurerad klient-ID/hemlighet kommer att användas.</translation>
     </message>
 </context>
 <context>
@@ -2624,15 +2624,15 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Det finns några förkonfigurerade OAuth-token så att du inte behöver fylla i ditt klient-ID/din hemlighet, men vi rekommenderar starkt att du skaffar en egen eftersom förkonfigurerade token har begränsad global användningskvot. Om du vill använda förkonfigurerade token lämnar du bara fälten tomma och ser till att lämna kvar standardvärdet för omdirigerings-URL.</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Du måste fylla i ditt klient-ID/din hemlighet och även korrekt omdirigerings-URL.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
+        <translation>Förkonfigurerad klient-ID/hemlighet kommer att användas.</translation>
     </message>
 </context>
 <context>
@@ -2655,7 +2655,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>not logged in</source>
-        <translation type="unfinished"/>
+        <translation>Inte inloggad</translation>
     </message>
 </context>
 <context>
@@ -2736,7 +2736,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>MariaDB</source>
-        <translation type="unfinished"/>
+        <translation>MariaDB</translation>
     </message>
 </context>
 <context>
@@ -2793,7 +2793,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>message</source>
-        <translation type="unfinished"/>
+        <translation>meddelande</translation>
     </message>
     <message>
         <source>messages</source>
@@ -2854,7 +2854,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished"/>
+        <translation>Poäng</translation>
     </message>
 </context>
 <context>
@@ -2997,19 +2997,19 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished"/>
+        <translation>Poäng</translation>
     </message>
     <message>
         <source>ID of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Meddelande-ID.</translation>
     </message>
     <message>
         <source>ID of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
+        <translation>ID för det flöde som detta meddelande tillhör.</translation>
     </message>
     <message>
         <source>Score of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Poäng för meddelandet.</translation>
     </message>
 </context>
 <context>
@@ -3079,7 +3079,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>No external tools activated</source>
-        <translation type="unfinished"/>
+        <translation>Inga externa verktyg aktiverade</translation>
     </message>
 </context>
 <context>
@@ -3492,7 +3492,9 @@ genom att klicka på denna popup-avisering.</translation>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-        <translation type="unfinished"/>
+        <translation>Håll koll på de ämnen och trender du bryr dig om, utan att överdriva.
+
+Feedly är ett säkert utrymme där du privat kan organisera och utforska de ämnen och trender som är viktiga för dig.</translation>
     </message>
 </context>
 <context>
@@ -3714,19 +3716,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>&amp;Add new external tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Lägg till nytt externt verktyg</translation>
     </message>
     <message>
         <source>&amp;Edit selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Redigera markerat externt verktyg</translation>
     </message>
     <message>
         <source>&amp;Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ta bort markerat externt verktyg</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
-        <translation type="unfinished"/>
+        <translation>Ange (frivilligt) parametrar separerade med &quot;%1&quot;:</translation>
     </message>
 </context>
 <context>
@@ -4016,11 +4018,11 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Hide message counts if there are no unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Dölj räkneverket om det inte finns några olästa meddelanden</translation>
     </message>
     <message>
         <source>Display tooltips for feeds and messages</source>
-        <translation type="unfinished"/>
+        <translation>Visa knappbeskrivningar för flöden och meddelanden</translation>
     </message>
 </context>
 <context>
@@ -4191,7 +4193,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>(Your OS does not support tray icons at the moment.)</source>
-        <translation type="unfinished"/>
+        <translation>(Ditt OS stödjer inte systemfältsikoner för närvarande)</translation>
     </message>
 </context>
 <context>
@@ -4210,7 +4212,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Localization</source>
-        <translation type="unfinished"/>
+        <translation>Översättning</translation>
     </message>
 </context>
 <context>
@@ -4243,7 +4245,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Blockerad URL: &quot;%1&quot;&lt;br/&gt;Använt filter: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -4265,7 +4267,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Cannot save data for category, detailed information was logged via debug log.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte spara data för kategori, detaljerad information loggades i felsökningsloggen.</translation>
     </message>
 </context>
 <context>
@@ -4298,19 +4300,19 @@ Typ: %3</translation>
     </message>
     <message>
         <source>Cannot save data for feed: %1</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte spara data för flöde: %1</translation>
     </message>
     <message>
         <source>XML is not well-formed, %1</source>
-        <translation type="unfinished"/>
+        <translation>XML är inte väl formaterad, %1</translation>
     </message>
     <message>
         <source>XML feed file format unrecognized</source>
-        <translation type="unfinished"/>
+        <translation>Flödets XML-filformat okänt</translation>
     </message>
     <message>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte flytta flöde, detaljerad information loggades i felsökningsloggen.</translation>
     </message>
 </context>
 <context>
@@ -4542,11 +4544,11 @@ Typ: %3</translation>
     </message>
     <message>
         <source>Script failed: %1</source>
-        <translation type="unfinished"/>
+        <translation>Skript misslyckades: %1</translation>
     </message>
     <message>
         <source>Network error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Nätverksfel: %1</translation>
     </message>
     <message>
         <source>Error: %1</source>
@@ -4605,7 +4607,7 @@ Typ: %3</translation>
     </message>
     <message>
         <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-        <translation type="unfinished"/>
+        <translation>Vissa flöden/kategorier importerades inte på grund av något fel, kolla loggen för mer information.</translation>
     </message>
 </context>
 <context>
@@ -4993,11 +4995,11 @@ Senaste inloggning: %4</translation>
     <name>UnreadNode</name>
     <message>
         <source>Unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Olästa meddelanden</translation>
     </message>
     <message>
         <source>You can find all unread messages here.</source>
-        <translation type="unfinished"/>
+        <translation>Du hittar alla olästa meddelanden här.</translation>
     </message>
 </context>
 <context>
@@ -5124,11 +5126,11 @@ Senaste inloggning: %4</translation>
     </message>
     <message>
         <source>Navigate to website manually</source>
-        <translation type="unfinished"/>
+        <translation>Navigera manuellt till webbsidan</translation>
     </message>
     <message>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
-        <translation type="unfinished"/>
+        <translation>%1 kunde inte starta din webbläsare med den givna URL:en. Du måste öppna nedanstående URL, manuellt i din webbläsare.</translation>
     </message>
 </context>
 <context>

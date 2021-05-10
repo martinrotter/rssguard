@@ -818,7 +818,7 @@ oppure questa funzionalità non è ancora implementata.</translation>
     </message>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Aggiungi nuovo account</translation>
     </message>
 </context>
 <context>
@@ -973,31 +973,31 @@ oppure questa funzionalità non è ancora implementata.</translation>
     <name>FormCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Categoria genitrice</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Seleziona elemento genitore per la categoria.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Titolo</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Descrizione</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Icona</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Seleziona icona per la categoria.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Aggiungi nuova categoria</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
@@ -1005,72 +1005,72 @@ oppure questa funzionalità non è ancora implementata.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Il nome della categoria è ok.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Il nome della categoria è troppo corto.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>La descrizione è vuota.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>La descrizione va bene.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Seleziona icona per la categoria</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Immagini (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Seleziona icona</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annulla</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Guarda in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Nome icona:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Tipo icona:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"/>
+        <translation>Titolo categoria</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Imposta titolo per la categoria.</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"/>
+        <translation>Descrizione categoria</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Imposta descrizione per la categoria.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Selezione icona</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Carica icona dal file...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
@@ -1229,7 +1229,7 @@ oppure questa funzionalità non è ancora implementata.</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Aggiungi nuova fonte</translation>
     </message>
     <message>
         <source>Error</source>
@@ -2703,19 +2703,19 @@ Login tokens expiration: %2</source>
     <name>MariaDbDriver</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>Il server MySQL funziona come previsto.</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>Il database selezionato non esiste (ancora). Verrà creato. Va tutto bene.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"/>
+        <translation>Nessun server MySQL in funzione nella destinazione.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <translation type="unfinished"/>
+        <translation>Accesso negato. Usati nome utente o password errati.</translation>
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
@@ -4232,11 +4232,11 @@ Gli autori di questa applicazione NON sono responsabili per la perdita di dati.<
     <name>SqliteDriver</name>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"/>
+        <translation>SQLite (database incorporato)</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>File database non copiato con successo nella cartella di destinazione.</translation>
     </message>
 </context>
 <context>
@@ -4529,7 +4529,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Errore: %1</translation>
     </message>
 </context>
 <context>

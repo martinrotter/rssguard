@@ -817,7 +817,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Engadir nova conta</translation>
     </message>
 </context>
 <context>
@@ -980,11 +980,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Descrición</translation>
     </message>
     <message>
         <source>Icon</source>
@@ -2695,19 +2695,19 @@ Login tokens expiration: %2</source>
     <name>MariaDbDriver</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>O servidor MySQL traballa como era de agardar.</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>Non existe a base de datos selecionada (aínda). Será creada. Está ben.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"/>
+        <translation>Non hai un servidor MySQL a funcionar no destino establecido.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <translation type="unfinished"/>
+        <translation>Acceso denegado. Nome de usuaria ou contrasinal incorrectos.</translation>
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
@@ -4205,11 +4205,11 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SqliteDriver</name>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"/>
+        <translation>SQLite (base de datos incrustada)</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Non se puido copiar o ficheiro de base de datos ao directorio de saída.</translation>
     </message>
 </context>
 <context>
@@ -4502,7 +4502,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Fallo: %1</translation>
     </message>
 </context>
 <context>

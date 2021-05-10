@@ -816,7 +816,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Neues Konto hinzufügen</translation>
     </message>
 </context>
 <context>
@@ -971,31 +971,31 @@ or this functionality is not implemented yet.</source>
     <name>FormCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Übergeordnete Kategorie</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorie wählen, in der die bearbeitete enthalten sein soll.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Name</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Icon</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Icon für die Kategorie auswählen.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Neue Kategorie hinzufügen</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
@@ -1003,72 +1003,72 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Kategoriename ist in Ordnung.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Kategoriename ist zu kurz.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Beschreibung ist leer.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Die Beschreibung ist in Ordnung.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Icon-Datei für die Kategorie auswählen</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Graphiken (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Icon auswählen</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Suchen in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Icon-Name:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Icon-Typ:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"/>
+        <translation>Kategoriename</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Setzen Sie den Namen für die Kategorie.</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"/>
+        <translation>Kategoriebeschreibung</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Beschreibung für die Kategorie setzen.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Auswahl des Icons</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Icon aus Datei laden...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
@@ -1227,7 +1227,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Neuen Feed hinzufügen</translation>
     </message>
     <message>
         <source>Error</source>
@@ -2702,19 +2702,19 @@ Ablauf des Login tokens: %2</translation>
     <name>MariaDbDriver</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>MySQL Server funktioniert ordnungsgemäß.</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>Die gewählte Datenbank existiert noch nicht und wird angelegt.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"/>
+        <translation>Am Zielort ist kein MySQL Server verfügbar.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <translation type="unfinished"/>
+        <translation>Zugriff verweigert. Es wurde ein ungültiger Benutzername bzw. ein ungültiges Passwort verwendet.</translation>
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
@@ -2775,7 +2775,7 @@ Ablauf des Login tokens: %2</translation>
     <name>MessageCountSpinBox</name>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= unbegrenzt</translation>
     </message>
     <message>
         <source>message</source>
@@ -2783,7 +2783,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>Nachrichten</translation>
     </message>
 </context>
 <context>
@@ -2805,7 +2805,7 @@ Ablauf des Login tokens: %2</translation>
     <name>MessageTextBrowser</name>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Mit externem Programm öffnen</translation>
     </message>
 </context>
 <context>
@@ -4233,11 +4233,11 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <name>SqliteDriver</name>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"/>
+        <translation>SQLite (eingebettete Datenbank)</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Datenbank konnte nicht in das Ausgabeverzeichnis geschrieben werden.</translation>
     </message>
 </context>
 <context>
@@ -4533,7 +4533,7 @@ Typ: %3</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Fehler: %1</translation>
     </message>
 </context>
 <context>
@@ -4909,7 +4909,7 @@ Ungelesene Nachrichten: %2</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Nur die neuesten X messages pro Feed herunterladen</translation>
     </message>
 </context>
 <context>
@@ -5134,7 +5134,7 @@ Letzte Anmeldung am: %4</translation>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Mit externem Programm öffnen</translation>
     </message>
 </context>
 </TS>

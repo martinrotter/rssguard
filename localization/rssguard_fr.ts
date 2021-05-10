@@ -38,7 +38,7 @@
     </message>
     <message>
         <source>Custom filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtres personnalisés</translation>
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
@@ -88,7 +88,7 @@
     </message>
     <message>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Le flux ne peut pas être ajouté car il n&apos;y a aucun compte actif autorisant l&apos;ajout de flux.</translation>
     </message>
 </context>
 <context>
@@ -196,7 +196,7 @@
     <name>DatabaseFactory</name>
     <message>
         <source>Cannot connect to database</source>
-        <translation type="unfinished"/>
+        <translation>Connexion à la base de données impossible</translation>
     </message>
     <message>
         <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
@@ -820,7 +820,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter un nouveau compte</translation>
     </message>
 </context>
 <context>
@@ -975,31 +975,31 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <name>FormCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Catégorie parente</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner l&apos;article parent pour votre catégorie.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Titre</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Description</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Icône</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner un icône pour votre catégorie</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter une nouvelle catégorie</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
@@ -1007,15 +1007,15 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Le nom de la catégorie est correct.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Le nom de la catégorie est trop court.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>La description est vide.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
@@ -1023,56 +1023,56 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner un icône pour la catégorie</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner l&apos;icône</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuler</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Rechercher dans :</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Nom de l&apos;icône :</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Type d&apos;icône :</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"/>
+        <translation>Titre de la catégorie</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Définir un titre pour votre catégorie</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"/>
+        <translation>Description de la catégorie</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Définir une description pour votre catégorie.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Sélection de l&apos;icône</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Charger l&apos;icône depuis un fichier...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
@@ -1154,11 +1154,11 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <name>FormDownloadAttachment</name>
     <message>
         <source>Downloading attachment...</source>
-        <translation type="unfinished"/>
+        <translation>Téléchargement de la pièce jointe...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
-        <translation type="unfinished"/>
+        <translation>Téléchargé : %1 ko</translation>
     </message>
 </context>
 <context>
@@ -1211,7 +1211,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Auto-downloading of messages</source>
-        <translation type="unfinished"/>
+        <translation>Téléchargement automatique de messages</translation>
     </message>
     <message>
         <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
@@ -1231,7 +1231,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter un nouveau flux</translation>
     </message>
     <message>
         <source>Error</source>
@@ -2700,23 +2700,23 @@ Login tokens expiration: %2</source>
     <name>MariaDbDriver</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>Le serveur MySQL fonctionne parfaitement.</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>La base de données sélectionnée n&apos;existe pas (encore). Elle sera créée. C&apos;est bon.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"/>
+        <translation>Aucun serveur MySQL n&apos;est en cours d&apos;exécution sur la destination choisie.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <translation type="unfinished"/>
+        <translation>Accès refusé. Nom d&apos;utilisateur incorrect ou mot de passe utilisé.</translation>
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Erreur inconnue : &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>MariaDB</source>
@@ -2773,7 +2773,7 @@ Login tokens expiration: %2</source>
     <name>MessageCountSpinBox</name>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= illimité</translation>
     </message>
     <message>
         <source>message</source>
@@ -2781,7 +2781,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>messages</translation>
     </message>
 </context>
 <context>
@@ -4220,11 +4220,11 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
     <name>SqliteDriver</name>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"/>
+        <translation>SQLite (base de données embarquée)</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Le fichier de base de données n&apos;a pas été copié correctement dans le répertoire de destination.</translation>
     </message>
 </context>
 <context>
@@ -4517,7 +4517,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Erreur : %1</translation>
     </message>
 </context>
 <context>
@@ -4892,7 +4892,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Télécharger uniquement les X messages les plus récents de chaque flux</translation>
     </message>
 </context>
 <context>

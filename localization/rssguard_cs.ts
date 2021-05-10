@@ -34,15 +34,15 @@
     </message>
     <message>
         <source>Add your direct links to filter lists here (one URL per line)</source>
-        <translation type="unfinished"/>
+        <translation>Zde přidávejte přímé odkazy na seznamy filtrů (jeden odkaz na řádek)</translation>
     </message>
     <message>
         <source>Custom filters</source>
-        <translation type="unfinished"/>
+        <translation>Vlastní filtry</translation>
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
-        <translation type="unfinished"/>
+        <translation>Zde přidávejte vlastní filtry (jeden filtr na řádek)</translation>
     </message>
 </context>
 <context>
@@ -88,7 +88,7 @@
     </message>
     <message>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Kanál nemůže být přidán, protože nemáte aktivovaný žádný účet který umí přidávat kanály.</translation>
     </message>
 </context>
 <context>
@@ -196,11 +196,11 @@
     <name>DatabaseFactory</name>
     <message>
         <source>Cannot connect to database</source>
-        <translation type="unfinished"/>
+        <translation>K databází se nelze připojit</translation>
     </message>
     <message>
         <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-        <translation type="unfinished"/>
+        <translation>Připojení k databázi nebylo navázáno kvůli chybě: &apos;%1&apos;. Aktivuji SQLite.</translation>
     </message>
 </context>
 <context>
@@ -406,7 +406,7 @@ Stav: %3</translation>
     <message>
         <source>does not use auto-downloading of messages</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>nestahovat zprávy automaticky</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
@@ -450,7 +450,7 @@ Stav: %3</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-download new messages for %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Budou se stahovat zprávy pro %n kanál.</numerusform><numerusform>Budou se stahovat zprávy pro %n kanály.</numerusform><numerusform>Budou se stahovat zprávy pro %n kanálů.</numerusform><numerusform>Budou se stahovat zprávy pro %n kanálů.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -461,11 +461,11 @@ Stav: %3</translation>
     </message>
     <message>
         <source>Developer access token</source>
-        <translation type="unfinished"/>
+        <translation>Vývojový přístupový token (DAC)</translation>
     </message>
     <message>
         <source>Get token</source>
-        <translation type="unfinished"/>
+        <translation>Získat token</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
@@ -477,7 +477,7 @@ Stav: %3</translation>
     </message>
     <message>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -489,11 +489,11 @@ Stav: %3</translation>
     </message>
     <message>
         <source>Your %1 build has official Feedly support. You do not have to use &quot;developer acess token&quot;. You can therefore leave corresponding field empty.</source>
-        <translation type="unfinished"/>
+        <translation>Vaše verze programu %1 má oficiální podporu Feedly. Nemusíte tedy používat DAC, a tak můžete nechat odpovídající políčko prázdné.</translation>
     </message>
     <message>
         <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-        <translation type="unfinished"/>
+        <translation>Vaše verze programu %1 NEMÁ oficiální podporu Feedly. Musíte tedy zadat DAC. Mějte taky na paměti, že tato verze Feedly dovoluje maximálně 250 API volání denně.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -545,7 +545,7 @@ Stav: %3</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Stahovat pouze nepřečtené zprávy</translation>
     </message>
     <message>
         <source>TextLabel</source>
@@ -820,7 +820,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Přidat nový účet</translation>
     </message>
 </context>
 <context>
@@ -975,31 +975,31 @@ or this functionality is not implemented yet.</source>
     <name>FormCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Nadřazená kategorie</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte nadřazenou kategorii pro Vaši kategorii.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Nadpis</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Popis</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Ikona</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte ikonu pro Vaši kategorii.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Přidat novou kategorii</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
@@ -1007,76 +1007,76 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Název kategorie je v pořádku.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Název kategorie je příliš krátký.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Popis je prázdný.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Popis je v pořádku.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte ikonu pro Vaši kategorii</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Obrázky (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Vybrat ikonu</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Zrušit</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Hledat v:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Název ikony:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Typ ikony:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"/>
+        <translation>Název kategorie</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte název pro Vaši kategorii.</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"/>
+        <translation>Popis kategorie</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte popis Vaší kategorie.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Vybrat ikonu</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Načíst ikonu ze souboru...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Použít výchozí ikonu z tématu</translation>
     </message>
 </context>
 <context>
@@ -1231,11 +1231,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Přidat nový kanál</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Chyba</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
@@ -2306,7 +2306,7 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Stahovat pouze nepřečtené zprávy</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
@@ -2445,7 +2445,7 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>URL of your server, without any service-specific path</source>
@@ -2505,7 +2505,7 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Stahovat pouze nepřečtené zprávy</translation>
     </message>
 </context>
 <context>
@@ -2617,7 +2617,7 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Stahovat pouze nepřečtené zprávy</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
@@ -2713,23 +2713,23 @@ Tokeny vyprší: %2</translation>
     <name>MariaDbDriver</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>MySQL server pracuje v pořádku.</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>Vybraná databáze doposud neexistuje, ale bude vytvořena při prvním použití.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"/>
+        <translation>V daném umístění neběží žádný MySQL server.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup zamítnut. Nesprávne jméno či heslo.</translation>
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Neznámá chyba: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>MariaDB</source>
@@ -2786,7 +2786,7 @@ Tokeny vyprší: %2</translation>
     <name>MessageCountSpinBox</name>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= neomezeno</translation>
     </message>
     <message>
         <source>message</source>
@@ -2794,7 +2794,7 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>zpráv</translation>
     </message>
 </context>
 <context>
@@ -2816,7 +2816,7 @@ Tokeny vyprší: %2</translation>
     <name>MessageTextBrowser</name>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Otevřít s externím nástrojem</translation>
     </message>
 </context>
 <context>
@@ -4250,18 +4250,18 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <name>SqliteDriver</name>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"/>
+        <translation>SQLite (embedded databáze)</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Soubor databáze nebyl zkopírován do cílového adresáře.</translation>
     </message>
 </context>
 <context>
     <name>StandardCategory</name>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Chyba</translation>
     </message>
     <message>
         <source>Cannot save data for category, detailed information was logged via debug log.</source>
@@ -4294,7 +4294,7 @@ Typ: %3</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Chyba</translation>
     </message>
     <message>
         <source>Cannot save data for feed: %1</source>
@@ -4550,7 +4550,7 @@ Typ: %3</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Chyba: %1</translation>
     </message>
 </context>
 <context>
@@ -4926,7 +4926,7 @@ Nepřečtené zprávy: %2</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Stahovat pouze X nejnovějších zpráv z kanálu</translation>
     </message>
 </context>
 <context>
@@ -5151,7 +5151,7 @@ Poslední čas přihlášení: %4</translation>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Otevřít s externím nástrojem</translation>
     </message>
 </context>
 </TS>

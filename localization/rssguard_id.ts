@@ -543,7 +543,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Mengunduh hanya pesan belum terbaca</translation>
     </message>
     <message>
         <source>TextLabel</source>
@@ -818,7 +818,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Tambah akun baru</translation>
     </message>
 </context>
 <context>
@@ -973,31 +973,31 @@ atau fungsi ini belum diimplementasikan.</translation>
     <name>FormCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Kategori induk</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih item induk untuk kategori anda.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Judul</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Deskripsi</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Ikon</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Pilih ikon untuk kategori anda.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Tambah kategori baru</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
@@ -1005,76 +1005,76 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Nama kategori ok.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Nama kategori terlalu pendek.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Deskripsi kosong.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Deskripsi ok.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Pilih berkas ikon untuk kategori</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Gambar (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Pilih ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Batal</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Lihat ke dalam:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Nama ikon:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Jenis ikon:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"/>
+        <translation>Judul kategori</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Setel judul untuk kategori anda.</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"/>
+        <translation>Deskripsi kategori</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Setel deskripsi untuk kategori anda.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Pilihan ikon</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Memuat ikon dari berkas...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Gunakan ikon bawaan dari tema ikon</translation>
     </message>
 </context>
 <context>
@@ -1229,11 +1229,11 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Tambah feed baru</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Eror</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
@@ -2299,7 +2299,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Mengunduh hanya pesan belum terbaca</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
@@ -2498,7 +2498,7 @@ Waktu berakhir log masuk: %2</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Mengunduh hanya pesan belum terbaca</translation>
     </message>
 </context>
 <context>
@@ -2610,7 +2610,7 @@ Waktu berakhir log masuk: %2</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Mengunduh hanya pesan belum terbaca</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
@@ -2706,23 +2706,23 @@ Waktu berakhir log masuk: %2</translation>
     <name>MariaDbDriver</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>Server MySQL bekerja sesuai yang diharapkan.</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>Database yang dipilih tidak tersedia. Ini akan dibuat. Itu baik-baik saja.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"/>
+        <translation>Tidak ada server MySQL yang sedang berjalan di target tujuan.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <translation type="unfinished"/>
+        <translation>Akses ditolak. Nama pengguna atau kata sandi yang digunakan tidak benar.</translation>
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Eror tak dikenal:  &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>MariaDB</source>
@@ -2779,7 +2779,7 @@ Waktu berakhir log masuk: %2</translation>
     <name>MessageCountSpinBox</name>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= tak terbatas</translation>
     </message>
     <message>
         <source>message</source>
@@ -2787,7 +2787,7 @@ Waktu berakhir log masuk: %2</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>pesan</translation>
     </message>
 </context>
 <context>
@@ -2809,7 +2809,7 @@ Waktu berakhir log masuk: %2</translation>
     <name>MessageTextBrowser</name>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Buka dengan alat eksternal</translation>
     </message>
 </context>
 <context>
@@ -4236,18 +4236,18 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     <name>SqliteDriver</name>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"/>
+        <translation>SQLite (database tertanam)</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>Berkas database tidak berhasil disalin ke direktori keluaran.</translation>
     </message>
 </context>
 <context>
     <name>StandardCategory</name>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Eror</translation>
     </message>
     <message>
         <source>Cannot save data for category, detailed information was logged via debug log.</source>
@@ -4277,7 +4277,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Eror</translation>
     </message>
     <message>
         <source>Cannot save data for feed: %1</source>
@@ -4533,7 +4533,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Eror: %1</translation>
     </message>
 </context>
 <context>
@@ -4909,7 +4909,7 @@ Berita belum terbaca:%2</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Hanya mengunduh X pesan terbaru per feed</translation>
     </message>
 </context>
 <context>
@@ -5134,7 +5134,7 @@ Log masuk terakhir pada: %4</translation>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Buka dengan alat eksternal</translation>
     </message>
 </context>
 </TS>

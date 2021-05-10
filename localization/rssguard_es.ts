@@ -545,7 +545,7 @@ Estado: %3</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Descargar solo mensajes no leídos</translation>
     </message>
     <message>
         <source>TextLabel</source>
@@ -820,7 +820,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Añadir nueva cuenta</translation>
     </message>
 </context>
 <context>
@@ -975,31 +975,31 @@ o debido a que esta función aún no está implementada.</translation>
     <name>FormCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Categoría principal</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar elemento principal para su categoría.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Título</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Descripción</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Icono</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar icono para su categoría.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Añadir nueva categoría</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
@@ -1007,76 +1007,76 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>El nombre de la categoría es válido.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>El nombre de la categoría es muy corto.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>El campo de la descripción está vacío.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>La descripción es válida.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar archivo de icono para la categoría</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Imágenes (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Seleccionar icono</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Examinar:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Nombre del icono:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Tipo de icono:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"/>
+        <translation>Título de la categoría</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Asignar titulo a su categoría</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"/>
+        <translation>Descripción de la categoría</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Asignar descripción a su categoría.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Selección del icono</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Cargando icono desde el archivo...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Utilizar icono predeterminado del tema de iconos</translation>
     </message>
 </context>
 <context>
@@ -1231,11 +1231,11 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Añadir nueva fuente</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Error</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
@@ -2307,7 +2307,7 @@ Puede instalarlo ahora.</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Descargar solo mensajes no leídos</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
@@ -2506,7 +2506,7 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Descargar solo mensajes no leídos</translation>
     </message>
 </context>
 <context>
@@ -2618,7 +2618,7 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Descargar solo mensajes no leídos</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
@@ -2714,23 +2714,23 @@ Expiración de testigos de ingreso: %2</translation>
     <name>MariaDbDriver</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>El servidor MySQL funciona según lo previsto.</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>La base de datos seleccionada no existe (aún). Ésta será creada. No hay problema.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"/>
+        <translation>Ningún servidor MySQL se está ejecutando en el destino.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <translation type="unfinished"/>
+        <translation>Acceso denegado. El nombre de usuario o la contraseña que ha introducido no son válidos.</translation>
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Error desconocido: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>MariaDB</source>
@@ -2787,7 +2787,7 @@ Expiración de testigos de ingreso: %2</translation>
     <name>MessageCountSpinBox</name>
     <message>
         <source>= unlimited</source>
-        <translation type="unfinished"/>
+        <translation>= sin límite</translation>
     </message>
     <message>
         <source>message</source>
@@ -2795,7 +2795,7 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>messages</source>
-        <translation type="unfinished"/>
+        <translation>mensajes</translation>
     </message>
 </context>
 <context>
@@ -2817,7 +2817,7 @@ Expiración de testigos de ingreso: %2</translation>
     <name>MessageTextBrowser</name>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Abrir con una herramienta externa</translation>
     </message>
 </context>
 <context>
@@ -4247,18 +4247,18 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     <name>SqliteDriver</name>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"/>
+        <translation>SQLite (base de datos integrada)</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"/>
+        <translation>El archivo de base de datos no se copió satisfactoriamente a la carpeta de salida.</translation>
     </message>
 </context>
 <context>
     <name>StandardCategory</name>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Error</translation>
     </message>
     <message>
         <source>Cannot save data for category, detailed information was logged via debug log.</source>
@@ -4291,7 +4291,7 @@ Clase: %3</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Error</translation>
     </message>
     <message>
         <source>Cannot save data for feed: %1</source>
@@ -4547,7 +4547,7 @@ Clase: %3</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Error: %1</translation>
     </message>
 </context>
 <context>
@@ -4923,7 +4923,7 @@ Noticias no leídas: %2</translation>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Sólo descargar X mensajes más nuevos por fuente</translation>
     </message>
 </context>
 <context>
@@ -5148,7 +5148,7 @@ Ultimo inicio de sesión: %4</translation>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Abrir con una herramienta externa</translation>
     </message>
 </context>
 </TS>

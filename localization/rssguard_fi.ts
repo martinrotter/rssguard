@@ -543,7 +543,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat viestit</translation>
     </message>
     <message>
         <source>TextLabel</source>
@@ -817,7 +817,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Lisää uusi tili</translation>
     </message>
 </context>
 <context>
@@ -972,7 +972,7 @@ or this functionality is not implemented yet.</source>
     <name>FormCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Ylätason luokka</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
@@ -980,23 +980,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Otsikko</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Kuvaus</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Kuvake</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Valitse kuvake luokalle.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Lisää uusi luokka</translation>
     </message>
     <message>
         <source>Edit &apos;%1&apos;</source>
@@ -1004,35 +1004,35 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Luokan nimi on OK.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"/>
+        <translation>Luokan nimi on liian lyhyt.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvaus on tyhjä.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Kuvaus on OK.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
+        <translation>Valitse kuvaketiedosto luokalle</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Kuvat (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Valitse kuvake</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Peruuta</translation>
     </message>
     <message>
         <source>Look in:</source>
@@ -1041,15 +1041,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Kuvakkeen nimi:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Kuvakkeen tyyppi:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"/>
+        <translation>Luokan otsikko</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
@@ -1057,23 +1057,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"/>
+        <translation>Luokan kuvaus</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Aseta kuvaus luokalle.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Kuvakkeen valinta</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"/>
+        <translation>Lataa kuvake tiedostosta...</translation>
     </message>
     <message>
         <source>Use default icon from icon theme</source>
-        <translation type="unfinished"/>
+        <translation>Käytä kuvaketeeman oletuskuvaketta</translation>
     </message>
 </context>
 <context>
@@ -1228,11 +1228,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Lisää uusi syöte</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Virhe</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
@@ -2295,7 +2295,7 @@ Voit asentaa sen nyt.</translation>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat viestit</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
@@ -2493,7 +2493,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat viestit</translation>
     </message>
 </context>
 <context>
@@ -2605,7 +2605,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Download only unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat viestit</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
@@ -2700,11 +2700,11 @@ Login tokens expiration: %2</source>
     <name>MariaDbDriver</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>MySQL-palvelin toimii kuten pitääkin.</translation>
     </message>
     <message>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-        <translation type="unfinished"/>
+        <translation>Valittua tietokantaa ei ole vielä olemassa. Se luodaan. Kaikki kunnossa.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
@@ -2716,7 +2716,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Unknown error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Tuntematon virhe: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>MariaDB</source>
@@ -2803,7 +2803,7 @@ Login tokens expiration: %2</source>
     <name>MessageTextBrowser</name>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Avaa erillisellä työkalulla</translation>
     </message>
 </context>
 <context>
@@ -4210,7 +4210,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SqliteDriver</name>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"/>
+        <translation>SQLite (upotettu tietokanta)</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
@@ -4221,7 +4221,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>StandardCategory</name>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Virhe</translation>
     </message>
     <message>
         <source>Cannot save data for category, detailed information was logged via debug log.</source>
@@ -4254,7 +4254,7 @@ Tyyppi: %3</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Virhe</translation>
     </message>
     <message>
         <source>Cannot save data for feed: %1</source>
@@ -4510,7 +4510,7 @@ Tyyppi: %3</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Virhe: %1</translation>
     </message>
 </context>
 <context>
@@ -4885,7 +4885,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Only download newest X messages per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa syötekohtaisesti uusimpia viestejä vain</translation>
     </message>
 </context>
 <context>
@@ -5107,7 +5107,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Avaa erillisellä työkalulla</translation>
     </message>
 </context>
 </TS>
