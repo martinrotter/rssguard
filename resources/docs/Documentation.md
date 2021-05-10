@@ -1,17 +1,9 @@
 # Documentation
-* [Introduction](#introduction)
-    * [Downloads](Downloads.md)
-    * [Philosophy](#philosophy)
-    * [Versioning](#versioning)
-    * [How to contribute](#how-to-contribute)
-    * [Reporting bugs](#reporting-bugs)
-    * [Localizations](#localizations)
-    * [Videos](#videos)
-    * [Web-based and lite app variants](#web-based-and-lite-app-variants)
-    * [RSS Guard 3 vs. RSS Guard 4](#rss-guard-3-vs-rss-guard-4)
-* [Features](#features)
+* [RSS Guard overview](#overview)
     * [List of main features](#list-of-main-features)
     * [Core concepts](#core-concepts)
+    * [Web-based and lite app variants](#web-based-and-lite-app-variants)
+    * [RSS Guard 3 vs. RSS Guard 4](#rss-guard-3-vs-rss-guard-4)
     * [Supported feed formats and online feed services](Feed-formats.md)
     * [Message filtering](Message-filters.md)
     * [Database backends](#database-backends)
@@ -24,7 +16,12 @@
     * [External tools](#external-tools)
     * [AdBlock](#adblock)
     * [GUI tweaking](#gui-tweaking)
-* [Miscellaneous (for advanced users)](#miscellaneous-for-advanced-users)
+* [Miscellaneous topics](#miscellaneous-topics)
+    * [Downloads](Downloads.md)
+    * [How to contribute](#how-to-contribute)
+    * [Reporting bugs](#reporting-bugs)
+    * [Localizations](#localizations)
+    * [Videos](#videos)
     * [Command line interface](#cli)
     * [How to build](#how-to-build)
     * [`%data%` placeholder](#data-placeholder)
@@ -35,53 +32,50 @@
 
 <img src="images/rssguard.png" width="64px">
 
-# Introduction
-First, let me say, that you can contact RSS Guard's lead developer via [e-mail](mailto:rotter.martinos@gmail.com) or just submit a ticket here in the repository.
+# Overview
+RSS Guard is simple feed reader. It is able to fetch the most known feed formats, including RSS/RDF/ATOM/JSON. RSS Guard is developed on top of the [Qt library](http://qt-project.org) and it supports these operating systems:
 
-I am glad to accept any kind of donations, see ♥ **Sponsor** button on the top of this page. **I say "thank you" for all your support, my donators.** Also, I personally send "thank you" to all contributors (translators, source code contributors, issue reporters) and users.
+* Windows,
+* GNU/Linux,
+* Mac OS X,
+* OS/2 (ArcaOS, eComStation),
+* Android (prebuilt binaries N/A at this point).
 
-Note that some more elaborate parts of this documentation are placed in separate files for practical purposes.
+## List of main features
+* **support for online feed synchronization via plugins**,
+    * Tiny Tiny RSS,
+    * Nextcloud News,
+    * Inoreader,
+    * Gmail.
+    * Google Reader API (FreshRSS, The Old Reader, Bazqux, Reedah and others),
+    * Feedly.
+* core:
+    * support for all feed formats (RSS/RDF/ATOM/JSON) including podcasts,
+    * import/export of feeds to/from OPML 2.0,
+    * possibility of using custom 3rd-party feed [synchronization services](Feed-formats.md),
+    * feed metadata fetching including icons,
+    * support for [scraping websites](#websites-scraping) which do not offer RSS/ATOM feeds and other related advanced features,
+    * scriptable [message filtering](#message-filtering),
+    * downloader with own tab and support for up to 6 parallel downloads,
+    * network proxy support,
+    * enhanced feed auto-updating with separate time intervals,
+    * "portable" mode support with clever auto-detection,
+    * [external tools](#external-tools) - you can run your program with article URL,
+    * handles tons of messages & feeds,
+    * ability to backup/restore database or settings,
+    * multiple data backend support,
+        * SQLite,
+        * MariaDB.
+    * support for `feed://` URI scheme.
 
-## Philosophy
-RSS Guard tends to be independent software. It's free, it's open-source.
+## Core concepts
+RSS Guard is multi-protocol and multi-account application. If you start it for the first time, `Add account` dialog will pop-up.
 
-## Versioning
-RSS Guard uses [semantic versioning](https://semver.org/). The versioning scheme is `X.Y.Z`, where:
+<img src="images/add-acc.png">
 
-* `X` marks major release version. This number will change very rarely and indicates critical new changes breaking backward compatibility.
-* `Y` indicates that there is new major feature available.
-* `Z` indicates that there are newly fixed bugs or small features introduced.
+You can also display this dialog from main menu `Accounts -> Add new account`.
 
-## How to contribute
-RSS Guard is open source application with free GNU GPLv3 license. Everyone willing to contribute is welcomed. You can contribute in many ways by:
-* fixing and [reporting](#reporting-bugs) bugs and requesting PRs (pull requests),
-* [localizing](#localizations) to other languages,
-* supporting author with [donations](https://github.com/sponsors/martinrotter),
-* spreading the word.
-
-If you decide to contribute code, then please try to follow the style and formatting of existing source code. Also, I use [uncrustify](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/uncrustify/uncrustify.cfg) to format source code.
-
-## Reporting bugs
-Please report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible, along with steps taken leading up to the issue occurring.
-
-Also, for some broader questions or general ideas, use [discussions](https://github.com/martinrotter/rssguard/discussions) rather than [issues](https://github.com/martinrotter/rssguard/issues).
-
-It is a good idea to read [this](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html) before reporting the bug; it will save time and effort for everyone if all the required information is provided from the get-go.
-
-## Localizations
-RSS Guard currently includes [many localizations](http://www.transifex.com/projects/p/rssguard).
-
-If you are interested in creating translations for RSS Guard, then do this:
-
-1. Go [here](http://www.transifex.com/projects/p/rssguard) and check status of currently supported localizations.
-2. [Login](http://www.transifex.com/signin) (you can use social networks to login) and work on existing translations. If no translation team for your country/language exists, then ask for creating of localization team via the website.
-
-**All translators commit themselves to keep their translations up-to-date. If some translations are not updated by their authors regularly and only small number of strings is translated, then those translations along with their teams will be eventually REMOVED from the project!!! At least 50% of strings must be translated for translation to being added to project.**
-
-## Videos
-Here you can see some videos to see RSS Guard in action:
-* [Short RSS Guard sample](videos/rssguard.gif).
-* [Hiding GUI elements](videos/hiding-gui.gif).
+You must have added some account to start using RSS Guard. Each account provides access to some specific online service while `Standard online feeds` account is there to provide access to classic `RSS` and `ATOM` feeds. You can have activated many accounts in the same time and even multiple accounts of the same type, for example two distinct `Gmail` accounts.
 
 ## Web-based and lite app variants
 RSS Guard is distributed in two variants:
@@ -99,69 +93,6 @@ If you're not sure which version to use, **use the WebEngine-based RSS Guard**.
 RSS Guard 4 is **NOT** backwards compatible with previous editions of the application!!! It stores settings in slightly different [folder](#portable-user-data) to not overwrite user data from previous versions.
 
 RSS Guard 4 contains numerous enhancements and many of them are hidden under the hood and they make application easier to maintain, easier to improve and easier to use.
-
-# Features
-RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF/ATOM/JSON. RSS Guard is developed on top of the [Qt library](http://qt-project.org) and it supports these operating systems:
-
-* Windows,
-* GNU/Linux,
-* Mac OS X,
-* OS/2 (ArcaOS, eComStation),
-* Android (prebuilt binaries N/A at this point).
-
-## List of main features
-* **support for online feed synchronization via plugins**,
-    * Tiny Tiny RSS,
-    * Nextcloud News,
-    * Inoreader,
-    * Gmail.
-    * Google Reader API (FreshRSS, The Old Reader, Bazqux, Reedah and others),
-    * Feedly.
-* core:
-    * support for all feed formats (RSS/RDF/ATOM/JSON),
-    * support for podcasts (RSS/ATOM/JSON),
-    * import/export of feeds to/from OPML 2.0,
-    * possibility of using custom 3rd-party feed [synchronization services](Feed-formats.md),
-    * feed metadata fetching including icons,
-    * support for [scraping websites](#websites-scraping) which do not offer RSS/ATOM feeds and other related advanced features,
-    * scriptable [message filtering](#message-filtering),
-    * downloader with own tab and support for up to 6 parallel downloads,
-    * application-wide and account-specific network proxies support,
-    * ability to cleanup internal message database with various options,
-    * enhanced feed auto-updating with separate time intervals,
-    * "portable" mode support with clever auto-detection,
-    * [external tools](#external-tools) - you can run your program with article URL,
-    * handles tons of messages & feeds,
-    * ability to backup/restore database or settings,
-    * fully-featured recycle bin,
-    * multiple data backend support,
-        * SQLite,
-        * MariaDB.
-    * ability to specify target database by its name (MariaDB backend),
-    * support for `feed://` URI scheme.
-* user interface:
-    * message list filter with regular expressions,
-    * able to show unread feeds/messages only,
-    * can be controlled via keyboard,
-    * fully adjustable toolbars (changeable buttons and style),
-    * hideable main menu, toolbars and list headers,
-    * bundled icon themes (Numix & Papirus),
-    * fully skinable user interface + ability to create your own skins,
-    * newspaper view,
-    * tabbed interface,
-    * ability to hide list of feeds/categories,
-    * desktop integration via tray icon,
-    * localizations to many languages,
-    * ability to tweak columns in displayed list of messages.
-
-## Core concepts
-RSS Guard is multi-protocol and multi-account application. If you start it for the first time, `Add account` dialog will pop-up.
-
-<img src="images/add-acc.png">
-
-You can also display this dialog from main menu `Accounts -> Add new account`.
-
-You must have added some account to start using RSS Guard. Each account provides access to some specific online service while `Standard online feeds` account is there to provide access to classic `RSS` and `ATOM` feeds. You can have activated many accounts in the same time and even multiple accounts of the same type, for example two distinct `Gmail` accounts.
 
 ## Database backends
 RSS Guard offers switchable database backends which hold your data. At this point, two backends are available:
@@ -299,8 +230,37 @@ Many people have very widescreen monitors nowadays and RSS Guard offers you hori
 
 <img src="images/gui-layout-orientation.png" width="80%">
 
-# Miscellaneous (for advanced users)
-Here you can find some useful advanced insights into RSS Guard's modus operandi.
+# Miscellaneous topics
+Here you can find documentation on some other useful topics related to RSS Guard.
+
+## How to contribute
+RSS Guard is open source application with free GNU GPLv3 license. Everyone willing to contribute is welcomed. You can contribute in many ways by:
+* fixing and [reporting](#reporting-bugs) bugs and requesting PRs (pull requests),
+* [localizing](#localizations) to other languages,
+* supporting author with [donations](https://github.com/sponsors/martinrotter),
+* spreading the word.
+
+If you decide to contribute code, then please try to follow the style and formatting of existing source code. Also, I use [uncrustify](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/uncrustify/uncrustify.cfg) to format source code.
+
+## Reporting bugs
+Please report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible, along with steps taken leading up to the issue occurring.
+
+Also, for some broader questions or general ideas, use [discussions](https://github.com/martinrotter/rssguard/discussions) rather than [issues](https://github.com/martinrotter/rssguard/issues).
+
+## Localizations
+RSS Guard currently includes [many localizations](http://www.transifex.com/projects/p/rssguard).
+
+If you are interested in creating translations for RSS Guard, then do this:
+
+1. Go [here](http://www.transifex.com/projects/p/rssguard) and check status of currently supported localizations.
+2. [Login](http://www.transifex.com/signin) (you can use social networks to login) and work on existing translations. If no translation team for your country/language exists, then ask for creating of localization team via the website.
+
+**All translators commit themselves to keep their translations up-to-date. If some translations are not updated by their authors regularly and only small number of strings is translated, then those translations along with their teams will be eventually REMOVED from the project!!! At least 50% of strings must be translated for translation to being added to project.**
+
+## Videos
+Here you can see some videos to see RSS Guard in action:
+* [Short RSS Guard sample](videos/rssguard.gif).
+* [Hiding GUI elements](videos/hiding-gui.gif).
 
 ## CLI
 RSS Guard offers CLI (command line interface). For overview of its features, run `rssguard --help` in your terminal. You will see the overview of the interface.
