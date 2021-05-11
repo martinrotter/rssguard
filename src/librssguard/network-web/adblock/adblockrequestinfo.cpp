@@ -12,20 +12,12 @@ AdblockRequestInfo::AdblockRequestInfo(const QUrl& url) {
   initialize(url);
 }
 
-QWebEngineUrlRequestInfo::ResourceType AdblockRequestInfo::resourceType() const {
+QString AdblockRequestInfo::resourceType() const {
   return m_resourceType;
 }
 
-void AdblockRequestInfo::setResourceType(const QWebEngineUrlRequestInfo::ResourceType& resource_type) {
+void AdblockRequestInfo::setResourceType(const QString& resource_type) {
   m_resourceType = resource_type;
-}
-
-QWebEngineUrlRequestInfo::NavigationType AdblockRequestInfo::navigationType() const {
-  return m_navigationType;
-}
-
-void AdblockRequestInfo::setNavigationType(const QWebEngineUrlRequestInfo::NavigationType& navigation_type) {
-  m_navigationType = navigation_type;
 }
 
 QUrl AdblockRequestInfo::requestUrl() const {
@@ -54,16 +46,52 @@ void AdblockRequestInfo::setRequestMethod(const QByteArray& request_method) {
 
 void AdblockRequestInfo::initialize(const QWebEngineUrlRequestInfo& webengine_info) {
   setFirstPartyUrl(webengine_info.firstPartyUrl());
-  setNavigationType(webengine_info.navigationType());
   setRequestMethod(webengine_info.requestMethod());
   setRequestUrl(webengine_info.requestUrl());
-  setResourceType(webengine_info.resourceType());
+  setResourceType(convertResourceType(webengine_info.resourceType()));
 }
 
 void AdblockRequestInfo::initialize(const QUrl& url) {
   setFirstPartyUrl(url);
-  setNavigationType(QWebEngineUrlRequestInfo::NavigationType::NavigationTypeTyped);
   setRequestMethod(QSL("GET").toLocal8Bit());
   setRequestUrl(url);
-  setResourceType(QWebEngineUrlRequestInfo::ResourceType::ResourceTypeMainFrame);
+  setResourceType(convertResourceType(QWebEngineUrlRequestInfo::ResourceType::ResourceTypeMainFrame));
+}
+
+QString AdblockRequestInfo::convertResourceType(QWebEngineUrlRequestInfo::ResourceType rt) const {
+  switch (rt) {
+    case QWebEngineUrlRequestInfo::ResourceType::ResourceTypeStylesheet:
+      return QSL("stylesheet");
+
+    case QWebEngineUrlRequestInfo::ResourceType::ResourceTypeScript:
+      return QSL("script");
+
+    case QWebEngineUrlRequestInfo::ResourceType::ResourceTypeImage:
+      return QSL("image");
+
+    case QWebEngineUrlRequestInfo::ResourceType::ResourceTypeFontResource:
+      return QSL("object");
+
+    case QWebEngineUrlRequestInfo::ResourceType::ResourceTypeSubResource:
+      return QSL("object");
+
+    case QWebEngineUrlRequestInfo::ResourceType::ResourceTypeObject:
+      return QSL("object");
+
+    case QWebEngineUrlRequestInfo::ResourceType::ResourceTypeMedia:
+      return QSL("image");
+
+    case QWebEngineUrlRequestInfo::ResourceType::ResourceTypeFavicon:
+      return QSL("image");
+
+    case QWebEngineUrlRequestInfo::ResourceType::ResourceTypeXhr:
+      return QSL("xmlhttprequest");
+
+    case QWebEngineUrlRequestInfo::ResourceType::ResourceTypeSubFrame:
+    case QWebEngineUrlRequestInfo::ResourceType::ResourceTypeMainFrame:
+      return QSL("main_frame");
+
+    default:
+      return {};
+  }
 }

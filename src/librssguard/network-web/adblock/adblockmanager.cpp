@@ -47,6 +47,7 @@ BlockingResult AdBlockManager::block(const AdblockRequestInfo& request) {
   const QString firstparty_url_string = request.firstPartyUrl().toEncoded().toLower();
   const QString url_scheme = request.requestUrl().scheme().toLower();
   const QPair<QString, QString> url_pair = { firstparty_url_string, url_string };
+  const QString url_type = request.resourceType();
 
   if (!canRunOnScheme(url_scheme)) {
     return { false };
@@ -62,7 +63,7 @@ BlockingResult AdBlockManager::block(const AdblockRequestInfo& request) {
       }
 
       try {
-        auto result = askServerIfBlocked(firstparty_url_string, url_string);
+        auto result = askServerIfBlocked(firstparty_url_string, url_string, url_type);
 
         m_cacheBlocks.insert(url_pair, result);
 
@@ -193,13 +194,14 @@ void AdBlockManager::showDialog() {
   AdBlockDialog(qApp->mainFormWidget()).exec();
 }
 
-BlockingResult AdBlockManager::askServerIfBlocked(const QString& fp_url, const QString& url) const {
+BlockingResult AdBlockManager::askServerIfBlocked(const QString& fp_url, const QString& url, const QString& url_type) const {
   QJsonObject req_obj;
   QByteArray out;
   QElapsedTimer tmr;
 
   req_obj["fp_url"] = fp_url;
   req_obj["url"] = url;
+  req_obj["url_type"] = url_type,
   req_obj["filter"] = true;
 
   tmr.start();
