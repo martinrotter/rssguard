@@ -58,11 +58,11 @@
    <item row="3" column="0" colspan="2">
     <widget class="QTabWidget" name="m_tcSubscriptions">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_tabPredefinedLists">
       <attribute name="title">
-       <string>Filter lists (list per line)</string>
+       <string>Filter lists</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
@@ -113,7 +113,11 @@
     </widget>
    </item>
    <item row="2" column="0" colspan="2">
-    <widget class="LabelWithStatus" name="m_lblTestResult" native="true"/>
+    <widget class="LabelWithStatus" name="m_lblTestResult" native="true">
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

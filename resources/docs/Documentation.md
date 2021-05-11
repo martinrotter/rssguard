@@ -7,8 +7,8 @@
     * [Supported feed formats and online feed services](Feed-formats.md)
     * [Message filtering](Message-filters.md)
     * [Database backends](#database-backends)
-    * [Google Reader API](#google-reader-api)
     * [Websites scraping](#websites-scraping)
+    * [Google Reader API](#google-reader-api)
     * [Gmail](#gmail)
     * [Feedly](#feedly)
     * [Labels](Labels.md)
@@ -109,19 +109,6 @@ MariaDB (MySQL) backend is there for users, who want to store their data in a ce
 
 For database-related configuration see `Settings -> Data storage` dialog.
 
-## Google Reader API
-There is a plugin which offers synchronization with services using Google Reader API. Plugin was so far tested with FreshRSS, Reedah, The Old Reader and Bazqux. All Google Reader API enabled services should work.
-
-Note that Inoreader has its own separate plugin, because it uses OAuth as authentication method.
-
-Google Reader API integration in RSS Guard offers a way to set custom service endpoint even if you select service which is not self-hosted such as Bazqux, providing all users with greater flexibility and freedom.
-
-<img src="images/greader-api-settings.png">
-
-Note that even when all Google Reader API enabled services should follow the API, there are still some minor differences, primarily because Google Reader API has no strict documentation to follow and some services do not offer some features.
-
-For example The Old Reader does not seem to offer tags/labels functionality, therefore tags/labels in RSS Guard are not synchronized, but you can still use offline labels.
-
 ## Websites scraping
 > **Only proceed if you consider yourself to be a power user and you know what you are doing!**
 
@@ -169,6 +156,19 @@ Typical post-processing filter might do things like advanced CSS formatting, loc
 
 It's completely up to you if you decide to only use script as `Source` of the script or separate your custom functionality between `Source` script and `Post-process` script. Sometimes you might need different `Source` scripts for different online sources and the same `Post-process` script and vice versa.
 
+## Google Reader API
+There is a plugin which offers synchronization with services using Google Reader API. Plugin was so far tested with FreshRSS, Reedah, The Old Reader and Bazqux. All Google Reader API enabled services should work.
+
+Note that Inoreader has its own separate plugin, because it uses OAuth as authentication method.
+
+Google Reader API integration in RSS Guard offers a way to set custom service endpoint even if you select service which is not self-hosted such as Bazqux, providing all users with greater flexibility and freedom.
+
+<img src="images/greader-api-settings.png">
+
+Note that even when all Google Reader API enabled services should follow the API, there are still some minor differences, primarily because Google Reader API has no strict documentation to follow and some services do not offer some features.
+
+For example The Old Reader does not seem to offer tags/labels functionality, therefore tags/labels in RSS Guard are not synchronized, but you can still use offline labels.
+
 ## Gmail
 RSS Guard includes Gmail plugin, which allows users to receive and send e-mail messages in a very simple fashion. Plugin uses [Gmail API](https://developers.google.com/gmail/api) and offers some e-mail client-like features:
 * Sending e-mail messages.
@@ -212,6 +212,12 @@ RSS Guard allows you to define a set of custom tools which you can subsequently 
 [Web-based variant](#web-based-and-lite-app-variants) of RSS Guard offers ad-blocking functionality via [Adblocker](https://github.com/cliqz-oss/adblocker). Adblocker offers similar performance to [uBlock Origin](https://github.com/gorhill/uBlock).
 
 You need to have have [Node.js](https://nodejs.org) with [NPM](https://www.npmjs.com) (which is usually included in Node.js installer) installed to have ad-blocking in RSS Guard working. Also, the implementation requires additional [npm](https://www.npmjs.com) modules to be installed. You see that list of needed modules near the top of [this](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/adblock/adblock-server.js) file.
+
+I understand that the above installation of needed dependencies is not trivial, but it is necessary evil to have up-to-date and modern implementation of AdBlock in RSS Guard. Previous `C++`-based implementation was buggy, quite slow and hard to maintain.
+
+You can find elaborated lists of AdBlock rules [here](https://easylist.to). You can just copy direct hyperlinks to those lists and paste them into "Filter lists" textbox as seen below. Remember to always separate individual links with newlines. Same applies to "Custom filters" where you can insert individual filters, for example [filter](https://adblockplus.org/filter-cheatsheet) "idnes" to block all URLs with "idnes" in them.
+
+<img src="images/adblock.png" width="90%">
 
 The way ad-blocking internally works is that RSS Guard starts local HTTP browser which provides ad-blocking API, which is subsequently called by RSS Guard. There is some caching done in between, which speeds up some ad-blocking decisions.
 

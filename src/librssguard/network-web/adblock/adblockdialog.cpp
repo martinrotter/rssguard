@@ -7,6 +7,7 @@
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
+#include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
@@ -32,6 +33,13 @@ AdBlockDialog::AdBlockDialog(QWidget* parent)
   connect(m_ui.m_cbEnable, &QCheckBox::toggled, this, &AdBlockDialog::enableAdBlock);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &AdBlockDialog::saveAndClose);
 
+  m_ui.m_lblTestResult->label()->setWordWrap(true);
+  m_ui.m_btnHelp->setIcon(qApp->icons()->fromTheme(QSL("help-about")));
+  m_ui.m_btnTest->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start")));
+  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
+                                  tr("No test executed yet."),
+                                  tr("No test executed yet."));
+
   load();
   m_ui.m_buttonBox->setFocus();
 }
@@ -39,7 +47,23 @@ AdBlockDialog::AdBlockDialog(QWidget* parent)
 void AdBlockDialog::saveAndClose() {
   m_manager->setFilterLists(m_ui.m_txtPredefined->toPlainText().split(QSL("\n")));
   m_manager->setCustomFilters(m_ui.m_txtCustom->toPlainText().split(QSL("\n")));
-  m_manager->updateUnifiedFiltersFile();
+
+  try {
+    m_manager->updateUnifiedFiltersFile();
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_ADBLOCK
+                << "Failed to write unified filters to file or re-start server, error:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+
+    MessageBox::show(this,
+                     QMessageBox::Icon::Critical,
+                     tr("Cannot enable AdBlock"),
+                     tr("There is some error in AdBlock component and it cannot be enabled. "
+                        "Check error message below (or application debug log) for more information."),
+                     {},
+                     ex.message());
+  }
 
   close();
 }
@@ -54,7 +78,9 @@ void AdBlockDialog::enableAdBlock(bool enable) {
 
 void AdBlockDialog::testConfiguration() {
   try {
-    m_manager->testConfiguration();
+    m_manager->setFilterLists(m_ui.m_txtPredefined->toPlainText().split(QSL("\n")));
+    m_manager->setCustomFilters(m_ui.m_txtCustom->toPlainText().split(QSL("\n")));
+    m_manager->updateUnifiedFiltersFile();
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("You are good to go."), tr("OK!"));
   }
   catch (const ApplicationException& ex) {
@@ -63,7 +89,8 @@ void AdBlockDialog::testConfiguration() {
                 << QUOTE_W_SPACE_DOT(ex.message());
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                     tr("There is error, check application log for more details and "
-                                       "head to online documentation."), tr("ERROR!"));
+                                       "head to online documentation.\n\nError: %1").arg(ex.message()),
+                                    tr("ERROR!"));
 
   }
 }

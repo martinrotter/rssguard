@@ -37,8 +37,6 @@ class AdBlockManager : public QObject {
     bool canRunOnScheme(const QString& scheme) const;
     AdBlockIcon* adBlockIcon() const;
 
-    void testConfiguration();
-
     // General methods for adblocking.
     BlockingResult block(const AdblockRequestInfo& request) const;
     QString elementHidingRulesForDomain(const QUrl& url) const;
@@ -62,8 +60,7 @@ class AdBlockManager : public QObject {
   private:
     BlockingResult askServerIfBlocked(const QString& url) const;
     QString askServerForCosmeticRules(const QString& url) const;
-
-    void restartServer(int port);
+    QProcess* restartServer(int port);
 
   private:
     bool m_loaded;

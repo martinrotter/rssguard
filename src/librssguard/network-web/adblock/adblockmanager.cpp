@@ -25,15 +25,15 @@
 #include <QWebEngineProfile>
 
 AdBlockManager::AdBlockManager(QObject* parent)
-  : QObject(parent), m_loaded(false), m_enabled(false), m_interceptor(new AdBlockUrlInterceptor(this)) {
+  : QObject(parent), m_loaded(false), m_enabled(false), m_interceptor(new AdBlockUrlInterceptor(this)),
+  m_serverProcess(nullptr) {
   m_adblockIcon = new AdBlockIcon(this);
   m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
   m_unifiedFiltersFile = qApp->userDataFolder() + QDir::separator() + QSL("adblock-unified-filters.txt");
-  m_serverProcess = new QProcess(this);
 }
 
 AdBlockManager::~AdBlockManager() {
-  if (m_serverProcess->state() == QProcess::ProcessState::Running) {
+  if (m_serverProcess != nullptr && m_serverProcess->state() == QProcess::ProcessState::Running) {
     m_serverProcess->kill();
   }
 }
@@ -50,7 +50,7 @@ BlockingResult AdBlockManager::block(const AdblockRequestInfo& request) const {
     return { false };
   }
   else {
-    if (m_serverProcess->state() == QProcess::ProcessState::Running) {
+    if (m_serverProcess != nullptr && m_serverProcess->state() == QProcess::ProcessState::Running) {
       try {
         auto result = askServerIfBlocked(url_string);
 
@@ -93,7 +93,23 @@ void AdBlockManager::load(bool initial_load) {
   }
 
   if (m_enabled) {
-    updateUnifiedFiltersFile();
+    try {
+      updateUnifiedFiltersFile();
+    }
+    catch (const ApplicationException& ex) {
+      qCriticalNN << LOGSEC_ADBLOCK
+                  << "Failed to write unified filters to file or re-start server, error:"
+                  << QUOTE_W_SPACE_DOT(ex.message());
+
+      qApp->showGuiMessage(tr("AdBlock needs to be configured"),
+                           tr("AdBlock component is not configured properly."),
+                           QSystemTrayIcon::MessageIcon::Warning,
+                           nullptr,
+                           true,
+                           [=]() {
+        showDialog();
+      });
+    }
   }
 }
 
@@ -105,12 +121,8 @@ bool AdBlockManager::canRunOnScheme(const QString& scheme) const {
   return !(scheme == QSL("file") || scheme == QSL("qrc") || scheme == QSL("data") || scheme == QSL("abp"));
 }
 
-void AdBlockManager::testConfiguration() {
-  // Just try to run testing JS program to see if all dependecies are installed.
-}
-
 QString AdBlockManager::elementHidingRulesForDomain(const QUrl& url) const {
-  if (m_serverProcess->state() == QProcess::ProcessState::Running) {
+  if (m_serverProcess != nullptr &&  m_serverProcess->state() == QProcess::ProcessState::Running) {
     try {
       auto result = askServerForCosmeticRules(url.toString());
 
@@ -241,16 +253,7 @@ QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
   }
 }
 
-void AdBlockManager::restartServer(int port) {
-  if (m_serverProcess->state() == QProcess::ProcessState::Running) {
-    m_serverProcess->kill();
-
-    if (!m_serverProcess->waitForFinished(1000)) {
-      m_serverProcess->deleteLater();
-      m_serverProcess = new QProcess(this);
-    }
-  }
-
+QProcess* AdBlockManager::restartServer(int port) {
   QString temp_server = QDir::toNativeSeparators(IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation)) +
                         QDir::separator() +
                         QSL("adblock-server.js");
@@ -259,21 +262,23 @@ void AdBlockManager::restartServer(int port) {
     qWarningNN << LOGSEC_ADBLOCK << "Failed to copy server file to TEMP.";
   }
 
+  QProcess* proc = new QProcess(this);
+
 #if defined(Q_OS_WIN)
-  m_serverProcess->setProgram(QSL("node.exe"));
+  proc->setProgram(QSL("node.exe"));
 #else
-  m_serverProcess->setProgram(QSL("node"));
+  proc->setProgram(QSL("node"));
 #endif
 
-  m_serverProcess->setArguments({
+  proc->setArguments({
     QDir::toNativeSeparators(temp_server),
     QString::number(port),
     QDir::toNativeSeparators(m_unifiedFiltersFile)
   });
 
-  m_serverProcess->setProcessEnvironment(QProcessEnvironment::systemEnvironment());
+  proc->setProcessEnvironment(QProcessEnvironment::systemEnvironment());
 
-  auto pe = m_serverProcess->processEnvironment();
+  auto pe = proc->processEnvironment();
   QString node_path =
 #if defined(Q_OS_WIN)
     pe.value(QSL("APPDATA")) +
@@ -291,14 +296,18 @@ void AdBlockManager::restartServer(int port) {
     pe.insert(QSL("NODE_PATH"), node_path);
   }
 
-  m_serverProcess->setProcessEnvironment(pe);
-  m_serverProcess->setProcessChannelMode(QProcess::ProcessChannelMode::ForwardedErrorChannel);
+  proc->setProcessEnvironment(pe);
+  proc->setProcessChannelMode(QProcess::ProcessChannelMode::ForwardedErrorChannel);
 
-  if (!m_serverProcess->open()) {
-    qWarningNN << LOGSEC_ADBLOCK << "Failed to start server.";
+  if (!proc->open()) {
+    auto ers = proc->errorString();
+    proc->deleteLater();
+
+    throw ApplicationException(ers);
   }
   else {
     qDebugNN << LOGSEC_ADBLOCK << "Started server.";
+    return proc;
   }
 }
 
@@ -312,6 +321,10 @@ void AdBlockManager::updateUnifiedFiltersFile() {
 
   // Download filters one by one and append.
   for (const QString& filter_list_url : qAsConst(filter_lists)) {
+    if (filter_list_url.simplified().isEmpty()) {
+      continue;
+    }
+
     QByteArray out;
     auto res = NetworkFactory::performNetworkOperation(filter_list_url,
                                                        2000,
@@ -328,11 +341,7 @@ void AdBlockManager::updateUnifiedFiltersFile() {
                << QUOTE_W_SPACE_DOT(filter_list_url);
     }
     else {
-      qWarningNN << LOGSEC_ADBLOCK
-                 << "Failed to download list of filters"
-                 << QUOTE_W_SPACE(filter_list_url)
-                 << "with error"
-                 << QUOTE_W_SPACE_DOT(res.first);
+      throw NetworkException(res.first, tr("failed to download filter list '%1'").arg(filter_list_url));
     }
   }
 
@@ -343,16 +352,16 @@ void AdBlockManager::updateUnifiedFiltersFile() {
                          QDir::separator() +
                          QSL("adblock.filters");
 
-  try {
-    IOFactory::writeFile(m_unifiedFiltersFile, unified_contents.toUtf8());
+  IOFactory::writeFile(m_unifiedFiltersFile, unified_contents.toUtf8());
 
-    if (m_enabled) {
-      restartServer(ADBLOCK_SERVER_PORT);
+  if (m_enabled) {
+    if (m_serverProcess != nullptr && m_serverProcess->state() == QProcess::ProcessState::Running) {
+      m_serverProcess->kill();
+      m_serverProcess->waitForFinished(1000);
+      m_serverProcess->deleteLater();
+      m_serverProcess = nullptr;
     }
-  }
-  catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_ADBLOCK
-                << "Failed to write unified filters to file, error:"
-                << QUOTE_W_SPACE_DOT(ex.message());
+
+    m_serverProcess = restartServer(ADBLOCK_SERVER_PORT);
   }
 }
