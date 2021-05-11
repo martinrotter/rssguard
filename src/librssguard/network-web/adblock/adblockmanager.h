@@ -5,6 +5,8 @@
 
 #include <QObject>
 
+#include <QHash>
+
 class QUrl;
 class QProcess;
 class AdblockRequestInfo;
@@ -14,6 +16,8 @@ class AdBlockIcon;
 struct BlockingResult {
   bool m_blocked;
   QString m_blockedByFilter;
+
+  BlockingResult() : m_blocked(false), m_blockedByFilter(QString()) {}
 
   BlockingResult(bool blocked, QString blocked_by_filter = {})
     : m_blocked(blocked), m_blockedByFilter(std::move(blocked_by_filter)) {}
@@ -38,7 +42,7 @@ class AdBlockManager : public QObject {
     AdBlockIcon* adBlockIcon() const;
 
     // General methods for adblocking.
-    BlockingResult block(const AdblockRequestInfo& request) const;
+    BlockingResult block(const AdblockRequestInfo& request);
     QString elementHidingRulesForDomain(const QUrl& url) const;
 
     QStringList filterLists() const;
@@ -58,7 +62,7 @@ class AdBlockManager : public QObject {
     void enabledChanged(bool enabled);
 
   private:
-    BlockingResult askServerIfBlocked(const QString& url) const;
+    BlockingResult askServerIfBlocked(const QString& fp_url, const QString& url) const;
     QString askServerForCosmeticRules(const QString& url) const;
     QProcess* restartServer(int port);
 
@@ -69,6 +73,7 @@ class AdBlockManager : public QObject {
     AdBlockUrlInterceptor* m_interceptor;
     QString m_unifiedFiltersFile;
     QProcess* m_serverProcess;
+    QHash<QPair<QString, QString>, BlockingResult> m_cacheBlocks;
 };
 
 inline AdBlockIcon* AdBlockManager::adBlockIcon() const {

@@ -26,7 +26,7 @@
 
 AdBlockManager::AdBlockManager(QObject* parent)
   : QObject(parent), m_loaded(false), m_enabled(false), m_interceptor(new AdBlockUrlInterceptor(this)),
-  m_serverProcess(nullptr) {
+  m_serverProcess(nullptr), m_cacheBlocks({}) {
   m_adblockIcon = new AdBlockIcon(this);
   m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
   m_unifiedFiltersFile = qApp->userDataFolder() + QDir::separator() + QSL("adblock-unified-filters.txt");
@@ -38,21 +38,37 @@ AdBlockManager::~AdBlockManager() {
   }
 }
 
-BlockingResult AdBlockManager::block(const AdblockRequestInfo& request) const {
+BlockingResult AdBlockManager::block(const AdblockRequestInfo& request) {
   if (!isEnabled()) {
     return { false };
   }
 
   const QString url_string = request.requestUrl().toEncoded().toLower();
+  const QString firstparty_url_string = request.firstPartyUrl().toEncoded().toLower();
   const QString url_scheme = request.requestUrl().scheme().toLower();
+  const QPair<QString, QString> url_pair = { firstparty_url_string, url_string };
 
   if (!canRunOnScheme(url_scheme)) {
     return { false };
   }
   else {
     if (m_serverProcess != nullptr && m_serverProcess->state() == QProcess::ProcessState::Running) {
+      if (m_cacheBlocks.contains(url_pair)) {
+        qDebugNN << LOGSEC_ADBLOCK
+                 << "Found blocking data in cache, URL:"
+                 << QUOTE_W_SPACE_DOT(url_pair);
+
+        return m_cacheBlocks.value(url_pair);
+      }
+
       try {
-        auto result = askServerIfBlocked(url_string);
+        auto result = askServerIfBlocked(firstparty_url_string, url_string);
+
+        m_cacheBlocks.insert(url_pair, result);
+
+        qDebugNN << LOGSEC_ADBLOCK
+                 << "Inserted blocking data to cache for:"
+                 << QUOTE_W_SPACE_DOT(url_pair);
 
         return result;
       }
@@ -177,11 +193,12 @@ void AdBlockManager::showDialog() {
   AdBlockDialog(qApp->mainFormWidget()).exec();
 }
 
-BlockingResult AdBlockManager::askServerIfBlocked(const QString& url) const {
+BlockingResult AdBlockManager::askServerIfBlocked(const QString& fp_url, const QString& url) const {
   QJsonObject req_obj;
   QByteArray out;
   QElapsedTimer tmr;
 
+  req_obj["fp_url"] = fp_url;
   req_obj["url"] = url;
   req_obj["filter"] = true;
 
@@ -312,6 +329,8 @@ QProcess* AdBlockManager::restartServer(int port) {
 }
 
 void AdBlockManager::updateUnifiedFiltersFile() {
+  m_cacheBlocks.clear();
+
   if (QFile::exists(m_unifiedFiltersFile)) {
     QFile::remove(m_unifiedFiltersFile);
   }

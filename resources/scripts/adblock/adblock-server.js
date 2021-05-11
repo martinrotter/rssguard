@@ -12,7 +12,8 @@
 // How to use:
 //     curl -i -X POST --data '
 //       {
-//         "url": "http://gompoozu.net",
+//         "url": "http://gompoozu.net/cwqcwq/js.js",
+//         "fp_url": "http://bbc.com",
 //         "url_type": "main_frame",
 //         "filter": true,
 //         "cosmetic": true
@@ -60,6 +61,7 @@ else {
           const jsonStruct = JSON.parse(jsonData.toString());
 
           const askUrl = jsonStruct['url'];
+          const askFpUrl = jsonStruct['fp_url'];
           const askFilter = jsonStruct['filter'];
           const askCosmetic = jsonStruct['cosmetic'];
           const askUrlType = jsonStruct['url_type'];
@@ -71,6 +73,7 @@ else {
             const adblockMatch = engine.match(adblock.Request.fromRawDetails({
               type: askUrlType,
               url: askUrl,
+              sourceUrl: askFpUrl
             }));
 
             resultJson["filter"] = adblockMatch;
