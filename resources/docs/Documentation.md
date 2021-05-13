@@ -217,7 +217,7 @@ I understand that the above installation of needed dependencies is not trivial, 
 
 You can find elaborated lists of AdBlock rules [here](https://easylist.to). You can just copy direct hyperlinks to those lists and paste them into "Filter lists" textbox as seen below. Remember to always separate individual links with newlines. Same applies to "Custom filters" where you can insert individual filters, for example [filter](https://adblockplus.org/filter-cheatsheet) "idnes" to block all URLs with "idnes" in them.
 
-<img src="images/adblock.png" width="90%">
+<img src="images/adblock.png" width="75%">
 
 The way ad-blocking internally works is that RSS Guard starts local HTTP browser which provides ad-blocking API, which is subsequently called by RSS Guard. There is some caching done in between, which speeds up some ad-blocking decisions.
 
