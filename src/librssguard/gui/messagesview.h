@@ -29,7 +29,7 @@ class MessagesView : public QTreeView {
 
     // Called after data got changed externally
     // and it needs to be reloaded to the view.
-    void reloadSelections(bool only_if_nothing_selected = false);
+    void reloadSelections();
 
     // Loads un-deleted messages from selected feeds.
     void loadItem(RootItem* item);
