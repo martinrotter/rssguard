@@ -46,7 +46,7 @@ void MessagePreviewer::createConnections() {
 }
 
 MessagePreviewer::MessagePreviewer(bool should_resize_to_fit, QWidget* parent)
-  : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)), m_verticalScrollBarPosition(0.0),
+  : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)),
   m_separator(nullptr), m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
 #if defined(USE_WEBENGINE)
   m_txtMessage = new WebBrowser(this);
@@ -102,7 +102,6 @@ void MessagePreviewer::clear() {
   m_txtMessage->clear();
   hide();
 
-  m_verticalScrollBarPosition = 0.0;
   m_root.clear();
   m_message = Message();
 }
@@ -114,13 +113,6 @@ void MessagePreviewer::hideToolbar() {
 void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
   bool same_message = message.m_id == m_message.m_id && m_root == root;
 
-  if (same_message) {
-    m_verticalScrollBarPosition = m_txtMessage->verticalScrollBarPosition();
-  }
-  else {
-    m_verticalScrollBarPosition = 0.0;
-  }
-
   m_message = message;
   m_root = root;
 
@@ -129,10 +121,10 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
     updateLabels(false);
     show();
     m_actionSwitchImportance->setChecked(m_message.m_isImportant);
-    m_txtMessage->loadMessage(message, m_root);
 
-    if (same_message) {
-      m_txtMessage->setVerticalScrollBarPosition(m_verticalScrollBarPosition);
+    if (!same_message) {
+      m_txtMessage->setVerticalScrollBarPosition(0.0);
+      m_txtMessage->loadMessage(message, m_root);
     }
   }
 }

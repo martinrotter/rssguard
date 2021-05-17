@@ -78,7 +78,6 @@ class MessagePreviewer : public QWidget {
     MessageBrowser* m_txtMessage;
 #endif
 
-    double m_verticalScrollBarPosition;
     Message m_message;
     QPointer<RootItem> m_root;
     QAction* m_actionMarkRead;
