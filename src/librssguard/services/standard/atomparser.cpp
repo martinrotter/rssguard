@@ -23,11 +23,17 @@ AtomParser::AtomParser(const QString& data) : FeedParser(data) {
 AtomParser::~AtomParser() = default;
 
 QString AtomParser::feedAuthor() const {
-  QDomNodeList authors = m_xml.documentElement().elementsByTagNameNS(m_atomNamespace, QSL("author"));
+  QDomNodeList top_level_nodes = m_xml.documentElement().childNodes();
   QStringList author_str;
 
-  for (int i = 0; i < authors.size(); i++) {
-    QDomNodeList names = authors.at(i).toElement().elementsByTagNameNS(m_atomNamespace, QSL("name"));
+  for (int i = 0; i < top_level_nodes.size(); i++) {
+    auto elem = top_level_nodes.at(i).toElement();
+
+    if (elem.localName() != QSL("author") || elem.namespaceURI() != m_atomNamespace) {
+      continue;
+    }
+
+    QDomNodeList names = elem.elementsByTagNameNS(m_atomNamespace, QSL("name"));
 
     if (!names.isEmpty()) {
       const QString name = names.at(0).toElement().text();

@@ -28,7 +28,7 @@ QList<Message> FeedParser::messages() {
     try {
       Message new_message = extractMessage(message_item.toElement(), current_time);
 
-      if (new_message.m_author.isEmpty()) {
+      if (new_message.m_author.isEmpty() && !feed_author.isEmpty()) {
         new_message.m_author = feed_author;
       }
 
