@@ -84,13 +84,17 @@ void MessagesView::keyboardSearch(const QString& search) {
   setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
 }
 
-void MessagesView::reloadSelections() {
+void MessagesView::reloadSelections(bool only_if_nothing_selected) {
   const QDateTime dt1 = QDateTime::currentDateTime();
   QModelIndex current_index = selectionModel()->currentIndex();
   const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   const Message selected_message = m_sourceModel->messageAt(mapped_current_index.row());
   const int col = header()->sortIndicatorSection();
   const Qt::SortOrder ord = header()->sortIndicatorOrder();
+
+  if (only_if_nothing_selected && selected_message.m_id > 0) {
+    return;
+  }
 
   // Reload the model now.
   sort(col, ord, true, false, false);

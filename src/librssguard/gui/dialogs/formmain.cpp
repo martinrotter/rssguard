@@ -396,7 +396,7 @@ void FormMain::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   Q_UNUSED(results)
 
   statusBar()->clearProgressFeeds();
-  tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
+  tabWidget()->feedMessageViewer()->messagesView()->reloadSelections(true);
 }
 
 void FormMain::onFeedUpdatesStarted() {
