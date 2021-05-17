@@ -490,25 +490,35 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   }
 
   QString backup_contents;
-  QJsonArray parts = json["payload"].toObject()["parts"].toArray();
+  QList<QJsonObject> parts_to_process, parts;
 
-  if (parts.isEmpty()) {
-    parts.append(json["payload"].toObject());
+  parts_to_process.append(json["payload"].toObject());
+
+  while (!parts_to_process.isEmpty()) {
+    auto this_part = parts_to_process.takeFirst();
+    auto nested_parts = this_part["parts"].toArray();
+
+    for (const QJsonValue& prt : qAsConst(nested_parts)) {
+      auto prt_obj = prt.toObject();
+
+      parts.append(prt_obj);
+      parts_to_process.append(prt_obj);
+    }
   }
 
-  for (const QJsonValue& part : parts) {
-    QJsonObject part_obj = part.toObject();
-    QJsonObject body = part_obj["body"].toObject();
-    QString filename = part_obj["filename"].toString();
+  for (const QJsonObject& part : qAsConst(parts)) {
+    QJsonObject body = part["body"].toObject();
+    QString mime = part["mimeType"].toString();
+    QString filename = part["filename"].toString();
 
-    if (filename.isEmpty() && body.contains(QL1S("data"))) {
+    if (filename.isEmpty() && mime.startsWith(QSL("text/"))) {
       // We have textual data of e-mail.
       // We check if it is HTML.
       if (msg.m_contents.isEmpty()) {
-        if (part_obj["mimeType"].toString().contains(QL1S("text/html"))) {
+        if (mime.contains(QL1S("text/html"))) {
           msg.m_contents = QByteArray::fromBase64(body["data"].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
         }
-        else {
+        else if (backup_contents.isEmpty()) {
           backup_contents = QByteArray::fromBase64(body["data"].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
         }
       }

@@ -131,7 +131,7 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
                                                      message.m_author),
                                 message.m_url,
                                 message.m_contents,
-                                QLocale().toString(message.m_created, QLocale::FormatType::ShortFormat),
+                                QLocale().toString(message.m_created.toLocalTime(), QLocale::FormatType::ShortFormat),
                                 enclosures,
                                 enclosure_images));
   }
