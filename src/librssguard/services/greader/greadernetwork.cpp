@@ -333,15 +333,24 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
       QString icon_url = subscription["iconUrl"].toString();
       QList<QPair<QString, bool>> icon_urls;
 
-      icon_urls.append({ url, false });
-
       if (!icon_url.isEmpty()) {
         if (icon_url.startsWith(QSL("//"))) {
           icon_url = QUrl(baseUrl()).scheme() + QSL(":") + icon_url;
         }
+        else if (service() == GreaderServiceRoot::Service::FreshRss) {
+          QUrl icon_url_obj(icon_url);
+          QUrl base_url(baseUrl());
+
+          if (icon_url_obj.host() == base_url.host()) {
+            icon_url_obj.setPort(base_url.port());
+            icon_url = icon_url_obj.toString();
+          }
+        }
 
         icon_urls.append({ icon_url, true });
       }
+
+      icon_urls.append({ url, false });
 
       QIcon icon;
 
