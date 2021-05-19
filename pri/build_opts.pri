@@ -28,13 +28,7 @@ gcc|g++|clang* {
 
 msvc {
   QMAKE_CXXFLAGS *= /std:c++17
-
-  # Link statically to runtime.
-  # QMAKE_CXXFLAGS_RELEASE *= /MT
-  # QMAKE_CXXFLAGS_DEBUG *= /MTd
-  # QMAKE_CXXFLAGS -= /MDd -MDd
-  # QMAKE_CXXFLAGS_RELEASE -= /MDd -MDd
-  # QMAKE_CXXFLAGS_DEBUG -= /MDd -MDd
+  QMAKE_CXXFLAGS *= /wd5240
 }
 
 clang* {

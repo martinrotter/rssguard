@@ -298,21 +298,19 @@ QProcess* AdBlockManager::restartServer(int port) {
   proc->setProcessEnvironment(QProcessEnvironment::systemEnvironment());
 
   auto pe = proc->processEnvironment();
-  QString node_path =
+  QString default_node_path =
 #if defined(Q_OS_WIN)
-    pe.value(QSL("APPDATA")) +
+    pe.value(QSL("APPDATA")) + QDir::separator() + QSL("npm") + QDir::separator() + QSL("node_modules");
 #elif defined(Q_OS_LINUX)
-    QSL("/usr/local/lib/node_modules") +
+    QSL("/usr/lib/node_modules");
+#elif defined(Q_OS_MACOS)
+    QSL("/usr/local/lib/node_modules");
 #else
-    QDir::toNativeSeparators(IOFactory::getSystemFolder(QStandardPaths::StandardLocation::GenericDataLocation)) +
+    QSL("");
 #endif
-    QDir::separator() +
-    QSL("npm") +
-    QDir::separator() +
-    QSL("node_modules");
 
-  if (!pe.contains(QSL("NODE_PATH"))) {
-    pe.insert(QSL("NODE_PATH"), node_path);
+  if (!pe.contains(QSL("NODE_PATH")) && !default_node_path.isEmpty()) {
+    pe.insert(QSL("NODE_PATH"), default_node_path);
   }
 
   proc->setProcessEnvironment(pe);

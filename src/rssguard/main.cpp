@@ -8,7 +8,7 @@
 #include "miscellaneous/application.h"
 #include "services/abstract/label.h"
 
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN)
 #include <QtPlatformHeaders/QWindowsWindowFunctions>
 #endif
 
