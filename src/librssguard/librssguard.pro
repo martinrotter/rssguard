@@ -120,6 +120,8 @@ HEADERS += core/feeddownloader.h \
            miscellaneous/iofactory.h \
            miscellaneous/localization.h \
            miscellaneous/mutex.h \
+           miscellaneous/notification.h \
+           miscellaneous/notificationfactory.h \
            miscellaneous/regexfactory.h \
            miscellaneous/settings.h \
            miscellaneous/settingsproperties.h \
@@ -298,6 +300,8 @@ SOURCES += core/feeddownloader.cpp \
            miscellaneous/iofactory.cpp \
            miscellaneous/localization.cpp \
            miscellaneous/mutex.cpp \
+           miscellaneous/notification.cpp \
+           miscellaneous/notificationfactory.cpp \
            miscellaneous/regexfactory.cpp \
            miscellaneous/settings.cpp \
            miscellaneous/skinfactory.cpp \

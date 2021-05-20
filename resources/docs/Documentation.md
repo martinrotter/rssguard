@@ -12,6 +12,7 @@
     * [Gmail](#gmail)
     * [Feedly](#feedly)
     * [Labels](Labels.md)
+    * [Notifications](#notifications)
     * [Downloading files](#downloading-files)
     * [External tools](#external-tools)
     * [AdBlock](#adblock)
@@ -140,7 +141,7 @@ Interpreter must be provided in all cases, arguments do not have to be. For exam
 
 Note that the above examples are cross-platform and you can use the exact same command on Windows, Linux or Mac OS X, if your operating system is properly configured.
 
-RSS Guard offers [placeholder](#data-placeholder) `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](Documentation.md#portable-user-data), allowing you to make your configuration fully portable. You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
+RSS Guard offers [placeholder](#data-placeholder) `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](#portable-user-data), allowing you to make your configuration fully portable. You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
 
 Also, working directory of process executing the script is set to RSS Guard's user data folder.
 
@@ -190,6 +191,15 @@ Sadly, some builds of RSS Guard do not have embedded production Feedly API keys 
 There are two big downsides of using `developer access token`:
 * It expires after one month and must be manually renewed.
 * It allows maximum of 250 API calls per day.
+
+## Notifications
+RSS Guard allows you to configure behavior of desktop notifications. There is a number of events to be configured:
+* new messages downloaded,
+* downloading of messages started,
+* login OAuth tokens refreshed,
+* ...
+
+Your notification can also play `.wav` sounds which you can place under your [user data folder](#portable-user-data) and use them via special [placeholder](#data-placeholder). Other audio formats are not supported.
 
 ## Downloading files
 RSS Guard offers simple embedded file downloader.
@@ -328,6 +338,7 @@ command.
 RSS Guard stores its data and settings in single folder. What exact folder it is is described [here](#portable-user-data). RSS Guard allows you to use the folder programmatically in some special contexts via `%data%` placeholder. You can use this placeholder in these RSS Guard contexts:
 * Contents of your [message filters](Message-filters.md) - you can therefore place some scripts under your user data folder and include it via `JavaScript` into your message filter.
 * `source` and `post-process script` attributes of for [scraping](#websites-scraping) feed - you can use the placeholder to load scripts to generate/process feed from user data folder.
+* Notifications also support the placeholder in path to audio files which are to be played when some event happens. For example you could place audio files in your data folder and then use them in notification with `%data%\audio\new-messages.wav`. See more about notifications [here](#notifications).
 
 ## Cleaning database
 Your RSS Guard's database can grow really big over time, therefore you might need to do its cleanup regularly. There is a dialog `Cleanup database` in `Tools` menu to do just that for you, but note that RSS Guard should run just fine even with tens of thousands of messages.
@@ -346,6 +357,8 @@ data4\config\config.ini
 This is _fully-portable mode_. Check `About RSS Guard -> Resources` dialog to find more info on significant paths used.
 
 RSS Guard on Linux, Android or Mac OS automatically uses non-portable user data location, so that it is in line with [XDG](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) standard.
+
+You can use your base user data folder on some places in RSS Guard via special [placeholder](#data-placeholder).
 
 ## Downloading new messages
 Here is the rough workflow which is performed when you hit `Feeds & categories -> Update all items` or `Feeds & categories -> Update selected items`. At that point of time this happens:

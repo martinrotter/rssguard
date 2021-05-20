@@ -35,6 +35,7 @@ class QAction;
 class Mutex;
 class QWebEngineDownloadItem;
 class WebFactory;
+class NotificationFactory;
 
 class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
   Q_OBJECT
@@ -175,6 +176,7 @@ class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
     IconFactory* m_icons;
     DatabaseFactory* m_database;
     DownloadManager* m_downloadManager;
+    NotificationFactory* m_notifications;
     bool m_shouldRestart;
     bool m_firstRunEver;
     bool m_firstRunCurrentVersion;

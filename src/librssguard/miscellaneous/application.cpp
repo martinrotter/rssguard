@@ -15,6 +15,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
+#include "miscellaneous/notificationfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
@@ -54,6 +55,7 @@ Application::Application(const QString& id, int& argc, char** argv)
   m_icons = new IconFactory(this);
   m_database = new DatabaseFactory(this);
   m_downloadManager = nullptr;
+  m_notifications = new NotificationFactory(this);
   m_shouldRestart = false;
 
   determineFirstRuns();
