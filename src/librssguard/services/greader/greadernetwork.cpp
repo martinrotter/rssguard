@@ -379,13 +379,17 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
   QString full_url = generateFullUrl(Operations::ClientLogin);
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray output;
-  QByteArray args = QSL("Email=%1&Passwd=%2").arg(username(), password()).toUtf8();
+  QByteArray args = QSL("Email=%1&Passwd=%2").arg(QString::fromLocal8Bit(QUrl::toPercentEncoding(username())),
+                                                  QString::fromLocal8Bit(QUrl::toPercentEncoding(password()))).toLocal8Bit();
   auto network_result = NetworkFactory::performNetworkOperation(full_url,
                                                                 timeout,
                                                                 args,
                                                                 output,
                                                                 QNetworkAccessManager::Operation::PostOperation,
-                                                                {},
+                                                                { {
+                                                                  QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                                                  QSL("application/x-www-form-urlencoded").toLocal8Bit()
+                                                                } },
                                                                 false,
                                                                 {},
                                                                 {},

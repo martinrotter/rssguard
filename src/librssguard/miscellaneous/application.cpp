@@ -360,6 +360,11 @@ void Application::restoreDatabaseSettings(bool restore_database, bool restore_se
 }
 
 void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
+  if (message.isEmpty()) {
+    qDebugNN << LOGSEC_CORE << "No execution message received from other app instances.";
+    return;
+  }
+
   qDebugNN << LOGSEC_CORE
            << "Received"
            << QUOTE_W_SPACE(message)
