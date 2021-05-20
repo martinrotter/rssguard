@@ -22,9 +22,14 @@ for lst in lists:
       quote_link = "https://en.wikiquote.org" + quote_link
 
     quote_author = last_link.get_text()
-    quote_text = lst.find("li").decode_contents()
-    quote_heading = (quote_text[:75] + '...') if len(quote_text) > 75 else quote_text
-    quote_text = "<span>" + quote_text + "</span>"
+
+    if not quote_author:
+      continue
+
+    quote_text = "<span>" + lst.find("li").decode_contents() + "</span>"
+    quote_heading = lst.find("li")
+    quote_heading = (quote_heading.get_text()[:75] + '...') if len(quote_heading) > 75 else quote_heading.get_text()
+    quote_heading = quote_heading.split(" ~")[0]
 
     items.append("{{\"title\": {title}, \"authors\": [{{\"name\": {author}}}], \"content_html\": {html}, \"url\": {url}, \"date_published\": {date}}}".format(
       title = json.dumps(quote_heading),
