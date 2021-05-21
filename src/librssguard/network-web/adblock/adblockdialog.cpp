@@ -89,7 +89,8 @@ void AdBlockDialog::testConfiguration() {
                 << QUOTE_W_SPACE_DOT(ex.message());
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                     tr("There is error, check application log for more details and "
-                                       "head to online documentation.\n\nError: %1").arg(ex.message()),
+                                       "head to online documentation. Also make sure that Node.js is installed."
+                                       "\n\nError: %1").arg(ex.message()),
                                     tr("ERROR!"));
 
   }
