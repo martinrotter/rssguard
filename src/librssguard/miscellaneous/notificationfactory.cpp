@@ -22,6 +22,8 @@ Notification NotificationFactory::notificationForEvent(Notification::Event event
   }
 }
 
-void NotificationFactory::load(Settings* settings) {}
+void NotificationFactory::load(Settings* settings) {
+  //settings->allKeys(Notifications::ID)
+}
 
 void NotificationFactory::save(const QList<Notification> new_notifications, Settings* settings) {}

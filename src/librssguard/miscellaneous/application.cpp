@@ -86,6 +86,8 @@ Application::Application(const QString& id, int& argc, char** argv)
   });
 #endif
 
+  m_notifications->load(settings());
+
   qDebugNN << LOGSEC_CORE
            << "OpenSSL version:"
            << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());

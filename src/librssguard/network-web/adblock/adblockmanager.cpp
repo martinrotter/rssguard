@@ -316,7 +316,7 @@ QProcess* AdBlockManager::restartServer(int port) {
   proc->setProcessEnvironment(pe);
   proc->setProcessChannelMode(QProcess::ProcessChannelMode::ForwardedErrorChannel);
 
-  if (!proc->open()) {
+  if (!proc->open() || proc->state() == QProcess::ProcessState::NotRunning) {
     auto ers = proc->errorString();
     proc->deleteLater();
 

@@ -96,7 +96,7 @@ void AdBlockDialog::testConfiguration() {
 }
 
 void AdBlockDialog::load() {
-  if (m_loaded || !m_ui.m_cbEnable->isChecked()) {
+  if (m_loaded) {
     return;
   }
 

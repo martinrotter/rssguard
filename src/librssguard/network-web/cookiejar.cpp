@@ -47,11 +47,7 @@ QList<QNetworkCookie> CookieJar::extractCookiesFromUrl(const QString& url) {
 
 void CookieJar::loadCookies() {
   Settings* sett = qApp->settings();
-
-  sett->beginGroup(GROUP(Cookies));
-  auto keys = sett->allKeys();
-
-  sett->endGroup();
+  auto keys = sett->allKeys(Cookies::ID);
 
   for (const QString& cookie_key : qAsConst(keys)) {
     QByteArray encoded = sett->password(GROUP(Cookies), cookie_key, {}).toByteArray();

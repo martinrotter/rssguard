@@ -312,6 +312,9 @@ DVALUE(char*) Database::ActiveDriverDef = APP_DB_SQLITE_DRIVER;
 // Keyboard.
 DKEY Keyboard::ID = "keyboard";
 
+// Notifications.
+DKEY Notifications::ID = "notifications";
+
 // Web browser.
 DKEY Browser::ID = "browser";
 
@@ -349,6 +352,19 @@ Settings::Settings(const QString& file_name, Format format, const SettingsProper
   : QSettings(file_name, format, parent), m_initializationStatus(type) {}
 
 Settings::~Settings() = default;
+
+QStringList Settings::allKeys(const QString& section) {
+  if (!section.isEmpty()) {
+    beginGroup(section);
+    auto keys = QSettings::allKeys();
+
+    endGroup();
+    return keys;
+  }
+  else {
+    return QSettings::allKeys();
+  }
+}
 
 QString Settings::pathName() const {
   return QFileInfo(fileName()).absolutePath();

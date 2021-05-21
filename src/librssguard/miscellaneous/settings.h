@@ -360,6 +360,11 @@ namespace Keyboard {
   KEY ID;
 }
 
+// Notifications.
+namespace Notifications {
+  KEY ID;
+}
+
 // Web browser.
 namespace Browser {
   KEY ID;
@@ -419,6 +424,8 @@ class Settings : public QSettings {
     // Getters/setters for settings values.
     QVariant password(const QString& section, const QString& key, const QVariant& default_value = QVariant()) const;
     void setPassword(const QString& section, const QString& key, const QVariant& value);
+
+    QStringList allKeys(const QString& section);
 
     QVariant value(const QString& section, const QString& key, const QVariant& default_value = QVariant()) const;
     void setValue(const QString& section, const QString& key, const QVariant& value);
