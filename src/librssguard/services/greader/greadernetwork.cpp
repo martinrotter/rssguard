@@ -355,7 +355,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
       QIcon icon;
 
       if (NetworkFactory::downloadIcon(icon_urls,
-                                       timeout,
+                                       1000,
                                        icon,
                                        proxy) == QNetworkReply::NetworkError::NoError) {
         feed->setIcon(icon);
