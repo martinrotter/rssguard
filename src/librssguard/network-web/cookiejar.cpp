@@ -82,7 +82,7 @@ void CookieJar::saveCookies() {
     }
 
     sett->setPassword(GROUP(Cookies),
-                      QSL("%1-%2").arg(QString::number(i++), cookie.name()),
+                      QSL("%1-%2").arg(QString::number(i++), QString::fromUtf8(cookie.name())),
                       cookie.toRawForm(QNetworkCookie::RawForm::Full));
   }
 }
