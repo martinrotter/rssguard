@@ -45,9 +45,6 @@
        <height>30</height>
       </size>
      </property>
-     <property name="textFormat">
-      <enum>Qt::MarkdownText</enum>
-     </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
