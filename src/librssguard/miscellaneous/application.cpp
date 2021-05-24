@@ -377,7 +377,7 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
   QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, QString::SplitBehaviorFlags::SkipEmptyParts);
+  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, QString::SplitBehavior::SkipEmptyParts);
 #endif
 
   QCommandLineParser cmd_parser;
