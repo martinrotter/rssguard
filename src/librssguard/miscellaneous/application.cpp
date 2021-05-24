@@ -374,7 +374,12 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
            << QUOTE_W_SPACE(message)
            << "execution message.";
 
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
   QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, QString::SplitBehaviorFlags::SkipEmptyParts);
+#endif
+
   QCommandLineParser cmd_parser;
 
   messages.prepend(qApp->applicationFilePath());
