@@ -125,6 +125,7 @@ HEADERS += core/feeddownloader.h \
            miscellaneous/regexfactory.h \
            miscellaneous/settings.h \
            miscellaneous/settingsproperties.h \
+           miscellaneous/singleapplication.h \
            miscellaneous/skinfactory.h \
            miscellaneous/systemfactory.h \
            miscellaneous/templates.h \
@@ -304,6 +305,7 @@ SOURCES += core/feeddownloader.cpp \
            miscellaneous/notificationfactory.cpp \
            miscellaneous/regexfactory.cpp \
            miscellaneous/settings.cpp \
+           miscellaneous/singleapplication.cpp \
            miscellaneous/skinfactory.cpp \
            miscellaneous/systemfactory.cpp \
            miscellaneous/textfactory.cpp \
@@ -478,13 +480,6 @@ HEADERS  += $$files(3rd-party/mimesis/*.hpp, false)
 
 # Add boolinq.
 HEADERS  += $$files(3rd-party/boolinq/*.h, false)
-
-# Add QtSingleApplication.
-SOURCES +=  3rd-party/qts/qtlocalpeer.cpp \
-            3rd-party/qts/qtlockedfile.cpp \
-            3rd-party/qts/qtsingleapplication.cpp \
-            3rd-party/qts/qtsinglecoreapplication.cpp
-HEADERS  += $$files(3rd-party/qts/*.h   , false)
 
 # Add SimpleCrypt.
 SOURCES += $$files(3rd-party/sc/*.cpp, false)

@@ -3,8 +3,6 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "3rd-party/qts/qtsingleapplication.h"
-
 #include "core/feeddownloader.h"
 #include "database/databasefactory.h"
 #include "definitions/definitions.h"
@@ -13,6 +11,7 @@
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/localization.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/singleapplication.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/systemfactory.h"
 #include "network-web/downloadmanager.h"
@@ -37,7 +36,7 @@ class QWebEngineDownloadItem;
 class WebFactory;
 class NotificationFactory;
 
-class RSSGUARD_DLLSPEC Application : public QtSingleApplication {
+class RSSGUARD_DLLSPEC Application : public SingleApplication {
   Q_OBJECT
 
   public:

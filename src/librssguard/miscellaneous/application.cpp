@@ -39,7 +39,7 @@
 #endif
 
 Application::Application(const QString& id, int& argc, char** argv)
-  : QtSingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
+  : SingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
   parseCmdArgumentsFromMyInstance();
   qInstallMessageHandler(performLogging);
 
@@ -177,7 +177,7 @@ bool Application::isAlreadyRunning() {
                                    << Application::arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR));
 }
 
-FeedReader* Application:: feedReader() {
+FeedReader* Application::feedReader() {
   return m_feedReader;
 }
 
