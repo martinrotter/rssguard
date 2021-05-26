@@ -21,7 +21,7 @@ class NotificationFactory : public QObject {
 
     // Load saved notifications from settings
     void load(Settings* settings);
-    void save(const QList<Notification> new_notifications, Settings* settings);
+    void save(const QList<Notification>& new_notifications, Settings* settings);
 
   private:
     QList<Notification> m_notifications = {};

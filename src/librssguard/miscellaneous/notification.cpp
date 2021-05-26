@@ -2,7 +2,14 @@
 
 #include "miscellaneous/notification.h"
 
+#include "miscellaneous/application.h"
+
+#include <QDir>
+#include <QSound>
+
 Notification::Notification() {}
+
+Notification::Notification(Notification::Event event, const QString& sound_path) : m_event(event), m_soundPath(sound_path) {}
 
 Notification::Event Notification::event() const {
   return m_event;
@@ -18,4 +25,8 @@ QString Notification::soundPath() const {
 
 void Notification::setSoundPath(const QString& sound_path) {
   m_soundPath = sound_path;
+}
+
+void Notification::playSound(Application* app) const {
+  QSound::play(QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath)));
 }

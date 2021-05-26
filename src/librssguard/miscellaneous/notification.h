@@ -5,6 +5,8 @@
 
 #include <QString>
 
+class Application;
+
 class Notification {
   public:
     enum class Event {
@@ -21,6 +23,7 @@ class Notification {
     };
 
     explicit Notification();
+    explicit Notification(Event event, const QString& sound_path);
 
     Event event() const;
     void setEvent(const Event& event);
@@ -30,6 +33,8 @@ class Notification {
     // NOTE: This property supports "%data%" placeholder.
     QString soundPath() const;
     void setSoundPath(const QString& sound_path);
+
+    void playSound(Application* app) const;
 
   private:
     Event m_event;
