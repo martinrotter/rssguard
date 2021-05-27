@@ -50,7 +50,7 @@ Here is the reference of methods and properties of some types available in your 
 | `String url` | URL of the message. |
 | `String author` | Author of the message. |
 | `String contents` | Contents of the message. |
-| `String rawContents` | This is RAW contents of the message as it was obtained from remote service/feed. You can expect raw `XML` or `JSON` element data here. Note that this attribute has some value only if `alreadyStoredInDb` returns `false`. In other words, this attribute is not persistently stored inside RSS Guard's DB. |
+| `String rawContents` | This is RAW contents of the message as it was obtained from remote service/feed. You can expect raw `XML` or `JSON` element data here. Note that this attribute has some value only if `alreadyStoredInDb` returns `false`. In other words, this attribute is not persistently stored inside RSS Guard's DB. Also, this attribute might not be filled when testing the filter, it is only filled during live filter execution on real incoming messages. |
 | `Number score` | Arbitrary number in range <0.0, 100.0>. You can use this number to sort messages in a custom fashion as this attribute also has its own column in messages list. |
 | `Date created` | Date/time of the message. |
 | `Boolean isRead` | Is message read? |
