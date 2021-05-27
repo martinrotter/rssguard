@@ -3,6 +3,7 @@
 #include "core/filterutils.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/textfactory.h"
 
 #include <QDomDocument>
 #include <QHostInfo>
@@ -69,4 +70,8 @@ QString FilterUtils::fromXmlToJson(const QString& xml) const {
 
   return QSL("{\"%1\": %2}").arg(xml_doc.documentElement().tagName(),
                                  json);
+}
+
+QDateTime FilterUtils::parseDateTime(const QString& dat) const {
+  return TextFactory::parseDateTime(dat);
 }

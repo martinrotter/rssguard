@@ -3,6 +3,7 @@
 #ifndef FILTERUTILS_H
 #define FILTERUTILS_H
 
+#include <QDateTime>
 #include <QDomElement>
 #include <QObject>
 
@@ -18,6 +19,9 @@ class FilterUtils : public QObject {
 
     // Converts XML -> JSON or returns empty string if failed.
     Q_INVOKABLE QString fromXmlToJson(const QString& xml) const;
+
+    // Parses string into date/time object.
+    Q_INVOKABLE QDateTime parseDateTime(const QString& dat) const;
 };
 
 #endif // FILTERUTILS_H

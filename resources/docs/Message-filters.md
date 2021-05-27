@@ -91,6 +91,7 @@ Note that `MessageObject` attributes which can be synchronized back to service a
 |---|---|---|
 | `String hostname()` | `utils.hostname()` | Returns name of your PC. |
 | `String fromXmlToJson(String)` | `utils.fromXmlToJson('<h1>hello</h1>')` | Converts `XML` string into `JSON`. |
+| `Date parseDateTime(String)` | `utils.parseDateTime('2020-02-24T08:00:00')` | Converts textual date/time representation into proper `Date` object. |
 
 ## Examples
 Accept only messages from "Bob" while also marking them important.
