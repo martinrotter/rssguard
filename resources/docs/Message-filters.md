@@ -115,6 +115,25 @@ function filterMessage() {
 }
 ```
 
+Use published element instead of updated element for ATOM entries (only).
+```js
+function filterMessage() {
+  // Read raw contents of message and
+  // convert to JSON.
+  json = utils.fromXmlToJson(msg.rawContents);
+  jsonObj = JSON.parse(json)
+  
+  // Read published date and parse it.
+  publishedDate = jsonObj.entry.published.__text;
+  parsedDate = utils.parseDateTime(publishedDate);
+
+  // Set new date/time for message and
+  // proceed.
+  msg.created = parsedDate;
+  return MessageObject.Accept;
+}
+```
+
 Dump RAW data of each message to RSS Guard's [debug output](Documentation.md#generating-debug-log-file).
 ```js
 function filterMessage() {

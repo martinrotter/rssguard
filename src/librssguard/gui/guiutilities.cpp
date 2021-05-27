@@ -22,7 +22,12 @@ void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning) {
 }
 
 void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, const QString& title) {
-  widget.setWindowFlags(/*Qt::MSWindowsFixedSizeDialogHint | */ Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
+#if defined(Q_OS_WIN)
+  widget.setWindowFlags(Qt::Dialog | Qt::WindowTitleHint);
+#else
+  widget.setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowCloseButtonHint);
+#endif
+
   widget.setWindowIcon(icon);
 
   if (!title.isEmpty()) {
