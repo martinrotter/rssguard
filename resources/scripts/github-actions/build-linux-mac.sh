@@ -28,7 +28,7 @@ if [ $is_linux = true ]; then
   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50
   sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50
   
-  source /opt/qt515/bin/qt514-env.sh
+  source /opt/qt514/bin/qt514-env.sh
 else
   pip3 install aqtinstall
   
