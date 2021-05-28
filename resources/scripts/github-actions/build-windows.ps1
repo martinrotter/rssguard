@@ -36,7 +36,7 @@ Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
 # Download Qt itself.
 $qt_path = "$old_pwd\qt"
 pip3 install aqtinstall
-aqt install -b "https://mirrors.ocf.berkeley.edu/qt/" -O "$qt_path" "$qt_version" "windows" "desktop" "win64_msvc2019_64"-m "qtwebengine" 
+aqt install -b "https://mirrors.ocf.berkeley.edu/qt/" -O "$qt_path" "$qt_version" "windows" "desktop" "win64_msvc2019_64" -m "qtwebengine" -m "qtmultimedia"
 
 $qt_qmake = "$qt_path\$qt_version\msvc2019_64\bin\qmake.exe"
 $env:PATH = "$qt_path\$qt_version\msvc2019_64\bin\;" + $env:PATH
