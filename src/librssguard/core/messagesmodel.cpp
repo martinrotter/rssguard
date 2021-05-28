@@ -227,7 +227,7 @@ void MessagesModel::setupHeaderData() {
 
     /*: Tooltip for author of message.*/ tr("Author") <<
 
-    /*: Tooltip for creation date of message.*/ tr("Created on") <<
+    /*: Tooltip for creation date of message.*/ tr("Date") <<
 
     /*: Tooltip for contents of message.*/ tr("Contents") <<
 
