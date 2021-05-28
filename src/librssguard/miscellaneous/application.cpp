@@ -27,6 +27,7 @@
 
 #include <QProcess>
 #include <QSessionManager>
+#include <QSslSocket>
 #include <QTimer>
 
 #if defined(USE_WEBENGINE)
