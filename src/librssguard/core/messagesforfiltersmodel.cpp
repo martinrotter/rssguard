@@ -117,6 +117,7 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, QJSEngine* engin
   for (int i = 0; i < m_messages.size(); i++) {
     Message* msg = messageForRow(i);
 
+    msg->m_rawContents = Message::generateRawAtomContents(*msg);
     msg_proxy->setMessage(msg);
 
     try {

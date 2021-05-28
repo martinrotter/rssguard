@@ -120,6 +120,23 @@ Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
   return message;
 }
 
+QString Message::generateRawAtomContents(const Message& msg) {
+  return QSL("<entry>"
+             "<title>%1</title>"
+             "<link href=\"%2\" rel=\"alternate\" type=\"text/html\" title=\"%1\"/>"
+             "<published>%3</published>"
+             "<author><name>%6</name></author>"
+             "<updated>%3</updated>"
+             "<id>%4</id>"
+             "<summary type=\"html\">%5</summary>"
+             "</entry>").arg(msg.m_title,
+                             msg.m_url,
+                             msg.m_created.toUTC().toString(QSL("yyyy-MM-ddThh:mm:ss")),
+                             msg.m_url,
+                             msg.m_contents.toHtmlEscaped(),
+                             msg.m_author);
+}
+
 QDataStream& operator<<(QDataStream& out, const Message& my_obj) {
   out << my_obj.m_accountId
       << my_obj.m_customHash

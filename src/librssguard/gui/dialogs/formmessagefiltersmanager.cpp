@@ -263,11 +263,13 @@ void FormMessageFiltersManager::testFilter() {
                  "  Author = '%3'\n"
                  "  Is read/important = '%4/%5'\n"
                  "  Created on = '%6'\n"
-                 "  Contents = '%7'").arg(msg.m_title, msg.m_url, msg.m_author,
-                                          msg.m_isRead ? tr("yes") : tr("no"),
-                                          msg.m_isImportant ? tr("yes") : tr("no"),
-                                          QString::number(msg.m_created.toMSecsSinceEpoch()),
-                                          msg.m_contents);
+                 "  Contents = '%7'\n"
+                 "  RAW contents = '%8'").arg(msg.m_title, msg.m_url, msg.m_author,
+                                              msg.m_isRead ? tr("yes") : tr("no"),
+                                              msg.m_isImportant ? tr("yes") : tr("no"),
+                                              QString::number(msg.m_created.toMSecsSinceEpoch()),
+                                              msg.m_contents,
+                                              msg.m_rawContents);
 
     m_ui.m_txtErrors->insertPlainText(answer);
   }
@@ -315,22 +317,35 @@ void FormMessageFiltersManager::processCheckedFeeds() {
 
         // Create backup of message.
         Message* msg = &msgs[i]; msg->m_assignedLabels = labels_in_message;
+
+        msg->m_rawContents = Message::generateRawAtomContents(*msg);
+
         Message msg_backup(*msg);
 
         msg_obj.setMessage(msg);
 
-        MessageObject::FilteringAction result = fltr->filterMessage(&filter_engine);
         bool remove_from_list = false;
 
-        if (result == MessageObject::FilteringAction::Purge) {
-          remove_from_list = true;
+        try {
+          MessageObject::FilteringAction result = fltr->filterMessage(&filter_engine);
 
-          // Purge the message completely and remove leftovers.
-          DatabaseQueries::purgeMessage(database, msg->m_id);
-          DatabaseQueries::purgeLeftoverLabelAssignments(database, msg->m_accountId);
+          if (result == MessageObject::FilteringAction::Purge) {
+            remove_from_list = true;
+
+            // Purge the message completely and remove leftovers.
+            DatabaseQueries::purgeMessage(database, msg->m_id);
+            DatabaseQueries::purgeLeftoverLabelAssignments(database, msg->m_accountId);
+          }
+          else if (result == MessageObject::FilteringAction::Ignore) {
+            remove_from_list = true;
+          }
         }
-        else if (result == MessageObject::FilteringAction::Ignore) {
-          remove_from_list = true;
+        catch (const FilteringException& ex) {
+          qCriticalNN << LOGSEC_CORE
+                      << "Error when running script when processing existing messages:"
+                      << QUOTE_W_SPACE_DOT(ex.message());
+
+          continue;
         }
 
         if (!msg_backup.m_isRead && msg->m_isRead) {
@@ -585,6 +600,7 @@ Message FormMessageFiltersManager::testingMessage() const {
   msg.m_isImportant = m_ui.m_cbSampleImportant->isChecked();
   msg.m_created = QDateTime::fromMSecsSinceEpoch(m_ui.m_txtSampleCreatedOn->text().toLongLong());
   msg.m_contents = m_ui.m_txtSampleContents->toPlainText();
+  msg.m_rawContents = Message::generateRawAtomContents(msg);
 
   return msg;
 }

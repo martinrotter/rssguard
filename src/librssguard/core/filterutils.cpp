@@ -33,8 +33,13 @@ QString jsonProcessXmlElement(const QDomElement& elem) {
   }
 
   QStringList elems;
+  QString elem_text;
 
   for (int i = 0; i < elem.childNodes().size(); i++) {
+    if (elem.childNodes().at(i).isText()) {
+      elem_text = jsonEscapeString(elem.childNodes().at(i).nodeValue());
+    }
+
     if (!elem.childNodes().at(i).isElement()) {
       continue;
     }
@@ -43,22 +48,26 @@ QString jsonProcessXmlElement(const QDomElement& elem) {
                                    jsonProcessXmlElement(elem.childNodes().at(i).toElement()));
   }
 
-  if (attrs.isEmpty()) {
-    if (elems.isEmpty()) {
-      return QSL("\"%1\"").arg(jsonEscapeString(elem.text()));
-    }
-    else {
-      return QSL("{%1}").arg(elems.join(QSL(",\n")));
-    }
+  QString str;
+
+  if (!elems.isEmpty() && !attrs.isEmpty()) {
+    str = QSL("{%1, %2, %3}").arg(attrs.join(QSL(",\n")),
+                                  elems.join(QSL(",\n")),
+                                  QSL("\"__text\": \"%1\"").arg(elem_text));
   }
-  else if (elems.isEmpty()) {
-    return QSL("{%1, \"__text\": \"%2\"}").arg(attrs.join(QSL(",\n")),
-                                               jsonEscapeString(elem.text()));
+  else if (!elems.isEmpty()) {
+    str = QSL("{%1, %2}").arg(elems.join(QSL(",\n")),
+                              QSL("\"__text\": \"%1\"").arg(elem_text));
+  }
+  else if (!attrs.isEmpty()) {
+    str = QSL("{%1, %2}").arg(attrs.join(QSL(",\n")),
+                              QSL("\"__text\": \"%1\"").arg(elem_text));
   }
   else {
-    return QSL("{%1, %2}").arg(attrs.join(QSL(",\n")),
-                               elems.join(QSL(",\n")));
+    str = QSL("{%1}").arg(QSL("\"__text\": \"%1\"").arg(elem_text));
   }
+
+  return str;
 }
 
 QString FilterUtils::fromXmlToJson(const QString& xml) const {

@@ -39,6 +39,7 @@ class RSSGUARD_DLLSPEC Message {
     // Creates Message from given record, which contains
     // row from query SELECT * FROM Messages WHERE ....;
     static Message fromSqlRecord(const QSqlRecord& record, bool* result = nullptr);
+    static QString generateRawAtomContents(const Message& msg);
 
   public:
     QString m_title;
