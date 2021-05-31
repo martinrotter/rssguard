@@ -66,11 +66,14 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QToolButton" name="m_btnMoveActionUp">
-       <property name="toolTip">
-        <string>Move action up</string>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <property name="text">
-        <string/>
+        <string>Move action up</string>
        </property>
        <property name="iconSize">
         <size>
@@ -78,11 +81,20 @@
          <height>22</height>
         </size>
        </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="m_btnMoveActionDown">
-       <property name="toolTip">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
         <string>Move action down</string>
        </property>
        <property name="iconSize">
@@ -90,6 +102,9 @@
          <width>22</width>
          <height>22</height>
         </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -102,7 +117,13 @@
      </item>
      <item>
       <widget class="QToolButton" name="m_btnInsertSeparator">
-       <property name="toolTip">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
         <string>Insert separator</string>
        </property>
        <property name="iconSize">
@@ -111,11 +132,20 @@
          <height>22</height>
         </size>
        </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="m_btnInsertSpacer">
-       <property name="toolTip">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
         <string>Insert spacer</string>
        </property>
        <property name="iconSize">
@@ -123,6 +153,9 @@
          <width>22</width>
          <height>22</height>
         </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -135,7 +168,13 @@
      </item>
      <item>
       <widget class="QToolButton" name="m_btnAddSelectedAction">
-       <property name="toolTip">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
         <string>Add selected action</string>
        </property>
        <property name="iconSize">
@@ -144,11 +183,20 @@
          <height>22</height>
         </size>
        </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="m_btnDeleteSelectedAction">
-       <property name="toolTip">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
         <string>Delete selected action</string>
        </property>
        <property name="iconSize">
@@ -157,11 +205,20 @@
          <height>22</height>
         </size>
        </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="m_btnDeleteAllActions">
-       <property name="toolTip">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
         <string>Delete all actions</string>
        </property>
        <property name="iconSize">
@@ -170,11 +227,20 @@
          <height>22</height>
         </size>
        </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="m_btnReset">
-       <property name="toolTip">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
         <string>Reset toolbar</string>
        </property>
        <property name="iconSize">
@@ -182,6 +248,9 @@
          <width>22</width>
          <height>22</height>
         </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
