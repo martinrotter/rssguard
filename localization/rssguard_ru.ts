@@ -30,19 +30,19 @@
     </message>
     <message>
         <source>Filter lists (list per line)</source>
-        <translation type="unfinished"/>
+        <translation>Списки фильтров (список на строку)</translation>
     </message>
     <message>
         <source>Add your direct links to filter lists here (one URL per line)</source>
-        <translation type="unfinished"/>
+        <translation>Добавьте сюда свои прямые ссылки в списки фильтров (по одному URL в строке)</translation>
     </message>
     <message>
         <source>Custom filters</source>
-        <translation type="unfinished"/>
+        <translation>Пользовательские фильтры</translation>
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
-        <translation type="unfinished"/>
+        <translation>Добавьте сюда свои собственные фильтры (по одному на строку)</translation>
     </message>
 </context>
 <context>
@@ -88,7 +88,7 @@
     </message>
     <message>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Канал не может быть добавлен, потому что нет активной учетной записи, которая может добавлять каналы.</translation>
     </message>
 </context>
 <context>
@@ -196,11 +196,11 @@
     <name>DatabaseFactory</name>
     <message>
         <source>Cannot connect to database</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно подключиться к базе данных</translation>
     </message>
     <message>
         <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-        <translation type="unfinished"/>
+        <translation>Соединение с вашей базой данных не было установлено и вызвало ошибку: &apos;%1&apos;. Возвращаемся к SQLite.</translation>
     </message>
 </context>
 <context>
@@ -553,11 +553,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
-        <translation type="unfinished"/>
+        <translation>Будьте очень осторожны с загрузкой слишком большого количества сообщений, потому что Feedly автоматически кэширует ВСЕ сообщения канала навсегда, поэтому вы можете закончить с тысячами сообщений, которые вы никогда не прочтете.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка: &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -1114,15 +1114,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation>Очищение БД запущено.</translation>
+        <translation>Очистка БД запущена.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation>Очищение БД завершено.</translation>
+        <translation>Очистка БД завершена.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation>Очищение БД не удалось.</translation>
+        <translation>Очистка БД не удалась.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
@@ -1238,7 +1238,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно сохранить изменения: %1</translation>
     </message>
 </context>
 <context>
@@ -1658,7 +1658,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Expand/collapse selected item &amp;recursively</source>
-        <translation type="unfinished"/>
+        <translation>Рекурсивно развернуть/свернуть выбранный элемент (&amp;R)</translation>
     </message>
 </context>
 <context>
@@ -2106,7 +2106,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>API returned error code %1</source>
-        <translation type="unfinished"/>
+        <translation>API вернуло код ошибки %1</translation>
     </message>
 </context>
 <context>
@@ -2321,7 +2321,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>There is error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Произошла ошибка: %1 </translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -2736,7 +2736,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>MariaDB</source>
-        <translation type="unfinished"/>
+        <translation>MariaDB</translation>
     </message>
 </context>
 <context>

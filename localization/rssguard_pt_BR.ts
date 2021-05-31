@@ -2691,7 +2691,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>You can see all your labels (tags) here.</source>
-        <translation>Você pode ver todos os aeus rótulos (tags) aqui.</translation>
+        <translation>Você pode ver todos os seus rótulos (tags) aqui.</translation>
     </message>
     <message>
         <source>New label</source>
@@ -3435,7 +3435,7 @@ Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggreg
 At least API level %1 is required.</source>
         <translation>Este serviço oferece integração com o Tiny Tiny RSS.
 
-O Tiny Tiny RSS é um leitor e agregador de feeds de notícias (RSS/Atom) baseado na web de código aberto, desenvolvido para permitir que você leia notícias de qualquer local, enquando se sente o mais próximo possível de um aplicativo real para desktop.
+O Tiny Tiny RSS é um leitor e agregador de feeds de notícias (RSS/Atom) baseado na web de código aberto, desenvolvido para permitir que você leia notícias de qualquer local, enquanto se sente o mais próximo possível de um aplicativo real para desktop.
 
 Pelo menos o API nível %1 é necessário.</translation>
     </message>
@@ -3445,7 +3445,7 @@ Pelo menos o API nível %1 é necessário.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-        <translation>O aplicativo Notícias é um agregador de feed RSS/Atom. Ele é parte da suíte Nextcloud. Este plugin implemente a API %1.</translation>
+        <translation>O aplicativo Notícias é um agregador de feed RSS/Atom. Ele é parte da suíte Nextcloud. Este plugin implementa a API %1.</translation>
     </message>
     <message>
         <source>New version available</source>
@@ -4451,7 +4451,7 @@ Tipo: %3</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>O URL não atende ao padrão. O seu URL deve iniciar com prefixo. &quot;http://&quot; ou &quot;https://&quot;.</translation>
+        <translation>O URL não atende ao padrão. O seu URL deve iniciar com prefixo &quot;http://&quot; ou &quot;https://&quot;.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
@@ -4963,7 +4963,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>O URL não atende ao padrão. O seu URL deve iniciar com prefixo. &quot;http://&quot; ou &quot;https://&quot;.</translation>
+        <translation>O URL não atende ao padrão. O seu URL deve iniciar com prefixo &quot;http://&quot; ou &quot;https://&quot;.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
