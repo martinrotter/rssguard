@@ -463,7 +463,15 @@ void FormMain::updateFeedButtonsAvailability() {
 void FormMain::switchVisibility(bool force_hide) {
   if (force_hide || isVisible()) {
     if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
-      hide();
+
+      if (QApplication::activeModalWidget() != nullptr) {
+        qApp->showGuiMessage(QSL(APP_LONG_NAME),
+                             tr("Close opened modal dialogs first."),
+                             QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
+      }
+      else {
+        hide();
+      }
     }
     else {
       // Window gets minimized in single-window mode.

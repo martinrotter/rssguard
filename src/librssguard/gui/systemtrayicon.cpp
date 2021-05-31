@@ -15,7 +15,7 @@
 TrayIconMenu::TrayIconMenu(const QString& title, QWidget* parent) : QMenu(title, parent) {}
 
 bool TrayIconMenu::event(QEvent* event) {
-  if (event->type() == QEvent::Show && Application::activeModalWidget() != nullptr) {
+  if (event->type() == QEvent::Type::Show && Application::activeModalWidget() != nullptr) {
     QTimer::singleShot(0, this, &TrayIconMenu::hide);
     qApp->showGuiMessage(QSL(APP_LONG_NAME),
                          tr("Close opened modal dialogs first."),
