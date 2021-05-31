@@ -25,9 +25,6 @@
    </property>
    <item>
     <widget class="QTabWidget" name="m_tabUi">
-     <property name="tabPosition">
-      <enum>QTabWidget::North</enum>
-     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
@@ -35,122 +32,85 @@
       <attribute name="title">
        <string>Icons &amp;&amp; skins</string>
       </attribute>
-      <layout class="QHBoxLayout" name="horizontalLayout_8">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QScrollArea" name="m_scrollIconSkins">
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="m_lblIconTheme">
+         <property name="text">
+          <string>Icon theme</string>
          </property>
-         <property name="widgetResizable">
-          <bool>true</bool>
+         <property name="buddy">
+          <cstring>m_cmbIconTheme</cstring>
          </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents_2">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>664</width>
-            <height>368</height>
-           </rect>
-          </property>
-          <layout class="QFormLayout" name="formLayout">
-           <property name="fieldGrowthPolicy">
-            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-           </property>
-           <item row="0" column="0">
-            <widget class="QLabel" name="m_lblIconTheme">
-             <property name="text">
-              <string>Icon theme</string>
-             </property>
-             <property name="buddy">
-              <cstring>m_cmbIconTheme</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="m_cmbIconTheme"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="m_lblStyle">
-             <property name="text">
-              <string>Style</string>
-             </property>
-             <property name="buddy">
-              <cstring>m_cmbStyles</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="m_lblSkin">
-             <property name="text">
-              <string>Skin</string>
-             </property>
-             <property name="buddy">
-              <cstring>m_treeSkins</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QTreeWidget" name="m_treeSkins">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="indentation">
-              <number>0</number>
-             </property>
-             <property name="rootIsDecorated">
-              <bool>false</bool>
-             </property>
-             <property name="itemsExpandable">
-              <bool>false</bool>
-             </property>
-             <property name="expandsOnDoubleClick">
-              <bool>false</bool>
-             </property>
-             <attribute name="headerMinimumSectionSize">
-              <number>80</number>
-             </attribute>
-             <column>
-              <property name="text">
-               <string notr="true">1</string>
-              </property>
-             </column>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QComboBox" name="m_cmbStyles"/>
-           </item>
-           <item row="3" column="0" colspan="2">
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </widget>
         </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="m_cmbIconTheme"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="m_lblStyle">
+         <property name="text">
+          <string>Style</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_cmbStyles</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="m_cmbStyles"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="m_lblSkin">
+         <property name="text">
+          <string>Skin</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_treeSkins</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QTreeWidget" name="m_treeSkins">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="indentation">
+          <number>0</number>
+         </property>
+         <property name="rootIsDecorated">
+          <bool>false</bool>
+         </property>
+         <property name="itemsExpandable">
+          <bool>false</bool>
+         </property>
+         <property name="expandsOnDoubleClick">
+          <bool>false</bool>
+         </property>
+         <attribute name="headerMinimumSectionSize">
+          <number>80</number>
+         </attribute>
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>643</width>
+           <height>97</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -394,10 +354,6 @@
  </customwidgets>
  <tabstops>
   <tabstop>m_tabUi</tabstop>
-  <tabstop>m_scrollIconSkins</tabstop>
-  <tabstop>m_cmbIconTheme</tabstop>
-  <tabstop>m_cmbStyles</tabstop>
-  <tabstop>m_treeSkins</tabstop>
   <tabstop>m_grpTray</tabstop>
   <tabstop>m_checkMonochromeIcons</tabstop>
   <tabstop>m_checkCountUnreadMessages</tabstop>

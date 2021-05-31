@@ -128,7 +128,7 @@
          </layout>
         </widget>
        </item>
-       <item row="0" column="0" colspan="2">
+       <item row="2" column="0">
         <widget class="QCheckBox" name="m_checkOpenLinksInExternal">
          <property name="text">
           <string>Always open links from simple internal text browser in external web browser</string>
@@ -156,7 +156,7 @@
          <property name="checkable">
           <bool>true</bool>
          </property>
-         <layout class="QFormLayout" name="formLayout_21">
+         <layout class="QFormLayout" name="_2">
           <item row="0" column="0">
            <widget class="QLabel" name="m_lblExternalEmailExecutable">
             <property name="text">
@@ -348,7 +348,6 @@
  </widget>
  <tabstops>
   <tabstop>m_tabBrowserProxy</tabstop>
-  <tabstop>m_checkOpenLinksInExternal</tabstop>
   <tabstop>m_grpCustomExternalBrowser</tabstop>
   <tabstop>m_txtExternalBrowserExecutable</tabstop>
   <tabstop>m_btnExternalBrowserExecutable</tabstop>
