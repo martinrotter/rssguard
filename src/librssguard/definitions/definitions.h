@@ -91,6 +91,10 @@
 #define EXTERNAL_TOOL_SEPARATOR               "|||"
 #define USER_DATA_PLACEHOLDER  "%data%"
 
+#define CLI_VER_SHORT     "v"
+#define CLI_VER_LONG      "version"
+#define CLI_HELP_SHORT    "h"
+#define CLI_HELP_LONG     "help"
 #define CLI_LOG_SHORT     "l"
 #define CLI_LOG_LONG      "log"
 #define CLI_DAT_SHORT     "d"

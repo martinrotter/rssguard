@@ -364,65 +364,6 @@ void Application::restoreDatabaseSettings(bool restore_database, bool restore_se
   }
 }
 
-void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
-  if (message.isEmpty()) {
-    qDebugNN << LOGSEC_CORE << "No execution message received from other app instances.";
-    return;
-  }
-
-  qDebugNN << LOGSEC_CORE
-           << "Received"
-           << QUOTE_W_SPACE(message)
-           << "execution message.";
-
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, QString::SplitBehavior::SkipEmptyParts);
-#endif
-
-  QCommandLineParser cmd_parser;
-
-  messages.prepend(qApp->applicationFilePath());
-
-  cmd_parser.addOption(QCommandLineOption(QStringList() << CLI_QUIT_INSTANCE));
-  cmd_parser.addOption(QCommandLineOption(QStringList() << CLI_IS_RUNNING));
-  cmd_parser.addPositionalArgument("urls",
-                                   "List of URL addresses pointing to individual online feeds which should be added.",
-                                   "[url-1 ... url-n]");
-
-  cmd_parser.process(messages);
-
-  if (cmd_parser.isSet(CLI_QUIT_INSTANCE)) {
-    quit();
-    return;
-  }
-  else if (cmd_parser.isSet(CLI_IS_RUNNING)) {
-    showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::MessageIcon::Information);
-    mainForm()->display();
-  }
-
-  messages = cmd_parser.positionalArguments();
-
-  for (const QString& msg : qAsConst(messages)) {
-    // Application was running, and someone wants to add new feed.
-    ServiceRoot* rt = boolinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
-      return root->supportsFeedAdding();
-    });
-
-    if (rt != nullptr) {
-      rt->addNewFeed(nullptr, msg);
-    }
-    else {
-      showGuiMessage(tr("Cannot add feed"),
-                     tr("Feed cannot be added because there is no active account which can add feeds."),
-                     QSystemTrayIcon::MessageIcon::Warning,
-                     qApp->mainForm(),
-                     true);
-    }
-  }
-}
-
 SystemTrayIcon* Application::trayIcon() {
   if (m_trayIcon == nullptr) {
     if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool()) {
@@ -611,7 +552,72 @@ void Application::determineFirstRuns() {
   eliminateFirstRuns();
 }
 
+void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
+  if (message.isEmpty()) {
+    qDebugNN << LOGSEC_CORE << "No execution message received from other app instances.";
+    return;
+  }
+
+  qDebugNN << LOGSEC_CORE
+           << "Received"
+           << QUOTE_W_SPACE(message)
+           << "execution message.";
+
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, QString::SplitBehavior::SkipEmptyParts);
+#endif
+
+  QCommandLineParser cmd_parser;
+
+  messages.prepend(qApp->applicationFilePath());
+
+  cmd_parser.addOption(QCommandLineOption(QStringList() << CLI_QUIT_INSTANCE));
+  cmd_parser.addOption(QCommandLineOption(QStringList() << CLI_IS_RUNNING));
+  cmd_parser.addPositionalArgument("urls",
+                                   "List of URL addresses pointing to individual online feeds which should be added.",
+                                   "[url-1 ... url-n]");
+
+  if (!cmd_parser.parse(messages)) {
+    qCriticalNN << LOGSEC_CORE << cmd_parser.errorText();
+  }
+
+  if (cmd_parser.isSet(CLI_QUIT_INSTANCE)) {
+    quit();
+    return;
+  }
+  else if (cmd_parser.isSet(CLI_IS_RUNNING)) {
+    showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::MessageIcon::Information);
+    mainForm()->display();
+  }
+
+  messages = cmd_parser.positionalArguments();
+
+  for (const QString& msg : qAsConst(messages)) {
+    // Application was running, and someone wants to add new feed.
+    ServiceRoot* rt = boolinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
+      return root->supportsFeedAdding();
+    });
+
+    if (rt != nullptr) {
+      rt->addNewFeed(nullptr, msg);
+    }
+    else {
+      showGuiMessage(tr("Cannot add feed"),
+                     tr("Feed cannot be added because there is no active account which can add feeds."),
+                     QSystemTrayIcon::MessageIcon::Warning,
+                     qApp->mainForm(),
+                     true);
+    }
+  }
+}
+
 void Application::parseCmdArgumentsFromMyInstance() {
+  QCommandLineOption help(QStringList() << CLI_HELP_SHORT << CLI_HELP_LONG,
+                          "Displays overview of CLI.");
+  QCommandLineOption version(QStringList() << CLI_VER_SHORT << CLI_VER_LONG,
+                             "Displays version of the application.");
   QCommandLineOption log_file(QStringList() << CLI_LOG_SHORT << CLI_LOG_LONG,
                               "Write application debug log to file. Note that logging to file may slow application down.",
                               "log-file");
@@ -623,14 +629,15 @@ void Application::parseCmdArgumentsFromMyInstance() {
   QCommandLineOption disable_debug(QStringList() << CLI_NDEBUG_SHORT << CLI_NDEBUG_LONG,
                                    "Completely disable stdout/stderr outputs.");
 
-  m_cmdParser.addOptions({ log_file, custom_data_folder, disable_singleinstance, disable_debug });
-  m_cmdParser.addHelpOption();
-  m_cmdParser.addVersionOption();
+  m_cmdParser.addOptions({ help, version, log_file, custom_data_folder, disable_singleinstance, disable_debug });
   m_cmdParser.addPositionalArgument("urls",
                                     "List of URL addresses pointing to individual online feeds which should be added.",
                                     "[url-1 ... url-n]");
   m_cmdParser.setApplicationDescription(APP_NAME);
-  m_cmdParser.process(QCoreApplication::arguments());
+
+  if (!m_cmdParser.parse(QCoreApplication::arguments())) {
+    qCriticalNN << LOGSEC_CORE << m_cmdParser.errorText();
+  }
 
   s_customLogFile = m_cmdParser.value(CLI_LOG_SHORT);
 
@@ -645,6 +652,13 @@ void Application::parseCmdArgumentsFromMyInstance() {
   }
   else {
     m_allowMultipleInstances = false;
+  }
+
+  if (m_cmdParser.isSet(CLI_HELP_SHORT)) {
+    m_cmdParser.showHelp();
+  }
+  else if (m_cmdParser.isSet(CLI_VER_SHORT)) {
+    m_cmdParser.showVersion();
   }
 
   if (m_cmdParser.isSet(CLI_SIN_SHORT)) {

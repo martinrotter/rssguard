@@ -53,11 +53,9 @@ WebPage* WebViewer::page() const {
 }
 
 void WebViewer::displayMessage() {
-  setHtml(m_messageContents, QUrl::fromUserInput(INTERNAL_URL_MESSAGE));
+  setContent(m_messageContents.toUtf8(), "text/html", QUrl::fromUserInput(INTERNAL_URL_MESSAGE));
 
-  qDebugNN << LOGSEC_CORE
-           << "Displaying contents:"
-           << QUOTE_W_SPACE_DOT(m_messageContents);
+  //setHtml(m_messageContents, QUrl::fromUserInput(INTERNAL_URL_MESSAGE));
 }
 
 bool WebViewer::increaseWebPageZoom() {
