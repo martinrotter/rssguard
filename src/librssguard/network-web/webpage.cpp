@@ -62,13 +62,14 @@ bool WebPage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool
     return false;
   }
 
-  if (url.host() == INTERNAL_URL_MESSAGE_HOST) {
-    setHtml(view()->messageContents(), QUrl(INTERNAL_URL_MESSAGE));
-    return true;
-  }
-  else {
-    return QWebEnginePage::acceptNavigationRequest(url, type, is_main_frame);
-  }
+  /*if (url.host() == INTERNAL_URL_MESSAGE_HOST) {
+     setHtml(view()->messageContents(), QUrl(INTERNAL_URL_MESSAGE));
+     return true;
+     }
+     else {*/
+  return QWebEnginePage::acceptNavigationRequest(url, type, is_main_frame);
+
+  //}
 }
 
 void WebPage::javaScriptConsoleMessage(JavaScriptConsoleMessageLevel level, const QString& message,

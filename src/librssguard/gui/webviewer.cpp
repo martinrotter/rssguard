@@ -53,9 +53,7 @@ WebPage* WebViewer::page() const {
 }
 
 void WebViewer::displayMessage() {
-  setContent(m_messageContents.toUtf8(), "text/html", QUrl::fromUserInput(INTERNAL_URL_MESSAGE));
-
-  //setHtml(m_messageContents, QUrl::fromUserInput(INTERNAL_URL_MESSAGE));
+  setHtml(m_messageContents /*, QUrl::fromUserInput(INTERNAL_URL_MESSAGE)*/);
 }
 
 bool WebViewer::increaseWebPageZoom() {
