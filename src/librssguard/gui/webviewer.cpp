@@ -38,7 +38,7 @@ bool WebViewer::canDecreaseZoom() {
 bool WebViewer::event(QEvent* event) {
   if (event->type() == QEvent::Type::ChildAdded) {
     QChildEvent* child_ev = static_cast<QChildEvent*>(event);
-    QWidget* w = qobject_cast<QWidget*>(child_ev->child());
+    QWidget* w = dynamic_cast<QWidget*>(child_ev->child());
 
     if (w != nullptr) {
       w->installEventFilter(this);
@@ -82,9 +82,9 @@ bool WebViewer::decreaseWebPageZoom() {
   }
 }
 
-bool WebViewer::resetWebPageZoom() {
-  const qreal new_factor = qApp->settings()->value(GROUP(Messages),
-                                                   SETTING(Messages::Zoom)).toReal();
+bool WebViewer::resetWebPageZoom(bool to_factory_default) {
+  const qreal new_factor = to_factory_default ? 1.0 : qApp->settings()->value(GROUP(Messages),
+                                                                              SETTING(Messages::Zoom)).toReal();
 
   if (new_factor != zoomFactor()) {
     setZoomFactor(new_factor);
@@ -263,6 +263,10 @@ bool WebViewer::eventFilter(QObject* object, QEvent* event) {
       }
       else if (key_event->key() == Qt::Key::Key_Minus) {
         decreaseWebPageZoom();
+        return true;
+      }
+      else if (key_event->key() == Qt::Key::Key_0) {
+        resetWebPageZoom(true);
         return true;
       }
     }

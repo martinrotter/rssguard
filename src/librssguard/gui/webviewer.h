@@ -27,7 +27,7 @@ class WebViewer : public QWebEngineView {
   public slots:
     bool increaseWebPageZoom();
     bool decreaseWebPageZoom();
-    bool resetWebPageZoom();
+    bool resetWebPageZoom(bool to_factory_default = false);
 
     void displayMessage();
     void loadMessages(const QList<Message>& messages, RootItem* root);

@@ -133,7 +133,7 @@ void WebBrowser::decreaseZoom() {
 }
 
 void WebBrowser::resetZoom() {
-  m_webView->resetWebPageZoom();
+  m_webView->resetWebPageZoom(true);
 }
 
 void WebBrowser::clear() {
