@@ -82,6 +82,10 @@ bool WebViewer::resetWebPageZoom(bool to_factory_default) {
   const qreal new_factor = to_factory_default ? 1.0 : qApp->settings()->value(GROUP(Messages),
                                                                               SETTING(Messages::Zoom)).toReal();
 
+  if (to_factory_default) {
+    qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, new_factor);
+  }
+
   if (new_factor != zoomFactor()) {
     setZoomFactor(new_factor);
     return true;
