@@ -103,6 +103,7 @@ class MessagesView : public QTreeView {
     MessagesProxyModel* m_proxyModel;
     MessagesModel* m_sourceModel;
     bool m_columnsAdjusted;
+    bool m_processingMouse;
 };
 
 inline MessagesProxyModel* MessagesView::model() const {

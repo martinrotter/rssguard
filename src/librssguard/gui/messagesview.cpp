@@ -26,7 +26,8 @@
 #include <QTimer>
 #include <QTimer>
 
-MessagesView::MessagesView(QWidget* parent) : QTreeView(parent), m_contextMenu(nullptr), m_columnsAdjusted(false) {
+MessagesView::MessagesView(QWidget* parent)
+  : QTreeView(parent), m_contextMenu(nullptr), m_columnsAdjusted(false), m_processingMouse(false) {
   m_sourceModel = qApp->feedReader()->messagesModel();
   m_proxyModel = qApp->feedReader()->messagesProxyModel();
 
@@ -276,7 +277,9 @@ void MessagesView::initializeContextMenu() {
 }
 
 void MessagesView::mousePressEvent(QMouseEvent* event) {
+  m_processingMouse = true;
   QTreeView::mousePressEvent(event);
+  m_processingMouse = false;
 
   switch (event->button()) {
     case Qt::MouseButton::LeftButton: {
@@ -347,7 +350,8 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
     emit currentMessageRemoved();
   }
 
-  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()) {
+  if (!m_processingMouse &&
+      qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()) {
     scrollTo(currentIndex(), QAbstractItemView::ScrollHint::PositionAtCenter);
   }
 
