@@ -113,7 +113,7 @@ QStringList FeedsToolBar::savedActions() const {
 
 void FeedsToolBar::initializeSearchBox() {
   m_txtSearchMessages = new BaseLineEdit(this);
-  m_txtSearchMessages->setFixedWidth(FILTER_WIDTH);
+  m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding, m_txtSearchMessages->sizePolicy().verticalPolicy());
   m_txtSearchMessages->setPlaceholderText(tr("Search feeds"));
 
   // Setup wrapping action for search box.

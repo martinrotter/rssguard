@@ -102,7 +102,7 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
 
 void MessagesToolBar::initializeSearchBox() {
   m_txtSearchMessages = new BaseLineEdit(this);
-  m_txtSearchMessages->setFixedWidth(FILTER_WIDTH);
+  m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding, m_txtSearchMessages->sizePolicy().verticalPolicy());
   m_txtSearchMessages->setPlaceholderText(tr("Search messages"));
 
   // Setup wrapping action for search box.
