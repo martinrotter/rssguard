@@ -137,16 +137,6 @@ NotInstalled:
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "InstallLocation" "$INSTDIR"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
-
-  ; Install MSVCRT libraries.
-  ExecWait '"$INSTDIR\vc_redist.x64.exe" /norestart'
-  Delete "$INSTDIR\vc_redist.x64.exe"
-
-  ExecWait '"$INSTDIR\vc_redist_2010.x86.exe" /norestart'
-  Delete "$INSTDIR\vc_redist_2010.x86.exe"
-
-  ExecWait '"$INSTDIR\vc_redist_2010.x64.exe" /norestart'
-  Delete "$INSTDIR\vc_redist_2010.x64.exe"
 SectionEnd
 
 Section "Desktop Icon" DesktopIcon
