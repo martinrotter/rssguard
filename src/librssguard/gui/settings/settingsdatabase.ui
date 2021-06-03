@@ -23,7 +23,7 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="1" column="0" colspan="2">
+   <item row="0" column="0" colspan="2">
     <widget class="QCheckBox" name="m_checkUseTransactions">
      <property name="toolTip">
       <string>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</string>
@@ -33,7 +33,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="1" column="0" colspan="2">
     <widget class="QLabel" name="m_lblDataStorageWarning">
      <property name="styleSheet">
       <string notr="true">QLabel {
@@ -51,7 +51,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
+   <item row="2" column="0">
     <widget class="QLabel" name="m_lblDatabaseDriver">
      <property name="text">
       <string>Database driver</string>
@@ -61,10 +61,10 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
+   <item row="2" column="1">
     <widget class="QComboBox" name="m_cmbDatabaseDriver"/>
    </item>
-   <item row="5" column="0" colspan="2">
+   <item row="3" column="0" colspan="2">
     <widget class="QStackedWidget" name="m_stackedDatabaseDriver">
      <property name="currentIndex">
       <number>1</number>
@@ -138,6 +138,16 @@ Authors of this application are NOT responsible for lost data.</string>
        <property name="bottomMargin">
         <number>0</number>
        </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Hostname</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_txtMysqlHostname</cstring>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
@@ -174,8 +184,25 @@ Authors of this application are NOT responsible for lost data.</string>
          </item>
         </layout>
        </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>Working database</string>
+         </property>
+        </widget>
+       </item>
        <item row="1" column="1">
         <widget class="LineEditWithStatus" name="m_txtMysqlDatabase" native="true"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Username</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_txtMysqlUsername</cstring>
+         </property>
+        </widget>
        </item>
        <item row="2" column="1">
         <widget class="LineEditWithStatus" name="m_txtMysqlUsername" native="true"/>
@@ -243,36 +270,22 @@ Authors of this application are NOT responsible for lost data.</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Username</string>
-         </property>
-         <property name="buddy">
-          <cstring>m_txtMysqlUsername</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_11">
-         <property name="text">
-          <string>Working database</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Hostname</string>
-         </property>
-         <property name="buddy">
-          <cstring>m_txtMysqlHostname</cstring>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
   <zorder>m_lblDatabaseDriver</zorder>
@@ -280,11 +293,7 @@ Authors of this application are NOT responsible for lost data.</string>
   <zorder>m_stackedDatabaseDriver</zorder>
   <zorder>m_checkUseTransactions</zorder>
   <zorder>m_lblDataStorageWarning</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_11</zorder>
-  <zorder>label_4</zorder>
-  <zorder>label_5</zorder>
-  <zorder>m_lblMysqlInfo</zorder>
+  <zorder>verticalSpacer</zorder>
  </widget>
  <customwidgets>
   <customwidget>

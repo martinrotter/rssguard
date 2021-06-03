@@ -4,6 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "dynamic-shortcuts/shortcutcatcher.h"
+#include "gui/reusable/squeezelabel.h"
 
 #include <QAction>
 #include <QGridLayout>
@@ -69,10 +70,20 @@ void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
 
     // Add new catcher to our control.
     auto* action_label = new QLabel(this);
+    auto act_text = action->text().remove(QSL("&"));
+    auto act_toolt = action->toolTip();
 
-    action_label->setText(action->text().remove(QSL("&")));
+    if (act_text == act_toolt) {
+      action_label->setText(act_text);
+    }
+    else {
+      action_label->setText(QSL("%1 (%2)").arg(act_text, act_toolt));
+    }
+
     action_label->setToolTip(action->toolTip());
-    action_label->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+    action_label->setWordWrap(true);
+
+    //action_label->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
 
     auto* action_icon = new QLabel(this);
 
@@ -81,6 +92,7 @@ void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
     m_layout->addWidget(action_icon, row_id, 0);
     m_layout->addWidget(action_label, row_id, 1);
     m_layout->addWidget(catcher, row_id, 2);
+
     row_id++;
     connect(catcher, &ShortcutCatcher::shortcutChanged, this, &DynamicShortcutsWidget::setupChanged);
   }

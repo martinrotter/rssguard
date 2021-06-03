@@ -32,8 +32,15 @@
       <attribute name="title">
        <string>External web browser</string>
       </attribute>
-      <layout class="QFormLayout" name="formLayout_17">
-       <item row="1" column="0" colspan="2">
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="m_checkOpenLinksInExternal">
+         <property name="text">
+          <string>Always open links from simple internal text browser in external web browser</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
         <widget class="QGroupBox" name="m_grpCustomExternalBrowser">
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -128,12 +135,18 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="m_checkOpenLinksInExternal">
-         <property name="text">
-          <string>Always open links from simple internal text browser in external web browser</string>
+       <item row="2" column="0" colspan="2">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
-        </widget>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>

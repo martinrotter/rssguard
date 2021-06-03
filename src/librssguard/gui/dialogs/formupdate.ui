@@ -6,146 +6,149 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>607</width>
-    <height>326</height>
+    <width>549</width>
+    <height>324</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Check for updates</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Current release</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLabel" name="m_lblCurrentRelease">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Available release</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLabel" name="m_lblAvailableRelease">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Status</string>
-       </property>
-       <property name="buddy">
-        <cstring>m_lblStatus</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="LabelWithStatus" name="m_lblStatus" native="true">
-       <property name="layoutDirection">
-        <enum>Qt::RightToLeft</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QTabWidget" name="m_tabInfo">
-       <property name="currentIndex">
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Current release</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="m_lblCurrentRelease">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Available release</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLabel" name="m_lblAvailableRelease">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Status</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_lblStatus</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="LabelWithStatus" name="m_lblStatus" native="true">
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QTabWidget" name="m_tabInfo">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabChanges">
+      <attribute name="title">
+       <string>Changelog</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="leftMargin">
         <number>0</number>
        </property>
-       <widget class="QWidget" name="tabChanges">
-        <attribute name="title">
-         <string>Changelog</string>
-        </attribute>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <property name="leftMargin">
-          <number>0</number>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTextEdit" name="m_txtChanges">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
          </property>
-         <property name="topMargin">
-          <number>0</number>
+         <property name="font">
+          <font>
+           <family>DejaVu Sans Mono</family>
+          </font>
          </property>
-         <property name="rightMargin">
-          <number>0</number>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
          </property>
-         <property name="bottomMargin">
-          <number>0</number>
+         <property name="undoRedoEnabled">
+          <bool>false</bool>
          </property>
-         <item>
-          <widget class="QTextEdit" name="m_txtChanges">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>1</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans Mono</family>
-            </font>
-           </property>
-           <property name="undoRedoEnabled">
-            <bool>false</bool>
-           </property>
-           <property name="lineWrapMode">
-            <enum>QTextEdit::WidgetWidth</enum>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="html">
-            <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+         <property name="lineWrapMode">
+          <enum>QTextEdit::WidgetWidth</enum>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="html">
+          <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'DejaVu Sans Mono'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="textInteractionFlags">
-            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="tabFiles">
-        <attribute name="title">
-         <string>Available files</string>
-        </attribute>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <property name="leftMargin">
-          <number>0</number>
          </property>
-         <property name="topMargin">
-          <number>0</number>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
          </property>
-         <property name="rightMargin">
-          <number>0</number>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabFiles">
+      <attribute name="title">
+       <string>Available files</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QListWidget" name="m_listFiles">
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
          </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QListWidget" name="m_listFiles"/>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </item>
-    </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </item>
-   <item>
+   <item row="4" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>

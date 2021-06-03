@@ -28,7 +28,7 @@ class SettingsFeedsMessages : public SettingsPanel {
 };
 
 inline QString SettingsFeedsMessages::title() const {
-  return tr("Feeds & messages");
+  return tr("Feeds & articles");
 }
 
 #endif // SETTINGSFEEDSMESSAGES_H

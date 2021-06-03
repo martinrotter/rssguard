@@ -14,8 +14,8 @@ ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
   setKind(RootItem::Kind::Important);
   setId(ID_IMPORTANT);
   setIcon(qApp->icons()->fromTheme(QSL("mail-mark-important")));
-  setTitle(tr("Important messages"));
-  setDescription(tr("You can find all important messages here."));
+  setTitle(tr("Important articles"));
+  setDescription(tr("You can find all important articles here."));
 }
 
 QList<Message> ImportantNode::undeletedMessages() const {

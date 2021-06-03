@@ -21,13 +21,13 @@
      </property>
      <widget class="QWidget" name="tabUpdating">
       <attribute name="title">
-       <string>Auto-downloading of messages</string>
+       <string>Auto-downloading of articles</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout">
        <item row="0" column="0">
         <widget class="QLabel" name="label_6">
          <property name="text">
-          <string>Auto-downloading of messages</string>
+          <string>Auto-downloading of articles</string>
          </property>
          <property name="buddy">
           <cstring>m_cmbAutoUpdateType</cstring>

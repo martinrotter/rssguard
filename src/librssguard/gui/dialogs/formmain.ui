@@ -100,7 +100,7 @@
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
     <property name="title">
-     <string>Feeds &amp;&amp; categories</string>
+     <string>Feeds</string>
     </property>
     <widget class="QMenu" name="m_menuAddItem">
      <property name="title">
@@ -237,18 +237,21 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>View &amp;fullscreen</string>
+    <string>&amp;Fullscreen</string>
    </property>
    <property name="toolTip">
     <string>Switch fullscreen mode.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">F</string>
+    <string notr="true">F11</string>
    </property>
   </action>
   <action name="m_actionUpdateAllItems">
    <property name="text">
-    <string>&amp;Fetch all feeds</string>
+    <string>&amp;Fetch all</string>
+   </property>
+   <property name="toolTip">
+    <string>Fetch all feeds</string>
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+U</string>
@@ -256,7 +259,10 @@
   </action>
   <action name="m_actionUpdateSelectedItems">
    <property name="text">
-    <string>Fetch &amp;selected feeds</string>
+    <string>Fetch &amp;selected</string>
+   </property>
+   <property name="toolTip">
+    <string>Fetch selected feeds</string>
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+U</string>
@@ -335,7 +341,7 @@
   </action>
   <action name="m_actionDeleteSelectedMessages">
    <property name="text">
-    <string>&amp;Delete selected articles</string>
+    <string>&amp;Delete articles</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -390,7 +396,7 @@
   </action>
   <action name="m_actionMarkAllItemsRead">
    <property name="text">
-    <string>&amp;Mark all items read</string>
+    <string>&amp;Mark all read</string>
    </property>
    <property name="toolTip">
     <string>Marks all messages in all items read. This does not take message filters into account.</string>
@@ -443,7 +449,7 @@
   </action>
   <action name="m_actionClearAllItems">
    <property name="text">
-    <string>&amp;Clean all items</string>
+    <string>&amp;Clean all</string>
    </property>
    <property name="toolTip">
     <string>Deletes all messages from all items.</string>
@@ -590,7 +596,7 @@
   </action>
   <action name="m_actionSwitchMessageListOrientation">
    <property name="text">
-    <string>Switch layout orientation</string>
+    <string>Switch layout</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -652,7 +658,7 @@
   </action>
   <action name="m_actionRestoreSelectedMessages">
    <property name="text">
-    <string>&amp;Restore selected articles</string>
+    <string>&amp;Restore articles</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -724,7 +730,7 @@
   </action>
   <action name="m_actionStopRunningItemsUpdate">
    <property name="text">
-    <string>Stop ongoing fetching of feeds</string>
+    <string>Stop ongoing fetching</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>

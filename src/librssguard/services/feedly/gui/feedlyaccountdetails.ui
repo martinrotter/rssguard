@@ -57,7 +57,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Only download newest X messages per feed</string>
+        <string>Only download newest X articles per feed</string>
        </property>
        <property name="buddy">
         <cstring>m_spinLimitMessages</cstring>
@@ -110,15 +110,12 @@
    <item row="3" column="0" colspan="2">
     <widget class="QCheckBox" name="m_checkDownloadOnlyUnreadMessages">
      <property name="text">
-      <string>Download only unread messages</string>
+      <string>Download unread articles only</string>
      </property>
     </widget>
    </item>
    <item row="5" column="0" colspan="2">
     <widget class="QLabel" name="m_lblLimitMessagesInfo">
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
@@ -131,15 +128,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LineEditWithStatus</class>
-   <extends>QWidget</extends>
-   <header>lineeditwithstatus.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LabelWithStatus</class>
    <extends>QWidget</extends>
    <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LineEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>lineeditwithstatus.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

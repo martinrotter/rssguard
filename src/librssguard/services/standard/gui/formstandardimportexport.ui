@@ -100,14 +100,14 @@
       <item row="1" column="1">
        <widget class="QPushButton" name="m_btnCheckAllItems">
         <property name="text">
-         <string>&amp;Check all items</string>
+         <string>&amp;Check all feeds</string>
         </property>
        </widget>
       </item>
       <item row="1" column="2">
        <widget class="QPushButton" name="m_btnUncheckAllItems">
         <property name="text">
-         <string>&amp;Uncheck all items</string>
+         <string>&amp;Uncheck all feeds</string>
         </property>
        </widget>
       </item>
@@ -158,7 +158,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Operation results</string>
+      <string>Operation result</string>
      </property>
      <layout class="QFormLayout" name="formLayout_2">
       <property name="leftMargin">
