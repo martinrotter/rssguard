@@ -17,10 +17,57 @@
    <item>
     <widget class="QGroupBox" name="m_grpCleanupSettings">
      <property name="title">
-      <string>Cleanup settings (all checked items are completely erased from database)</string>
+      <string>Cleanup settings</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="4" column="2">
+      <item row="4" column="0" colspan="3">
+       <widget class="QCheckBox" name="m_checkShrink">
+        <property name="text">
+         <string>Shrink database file</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="3">
+       <widget class="QCheckBox" name="m_checkRemoveReadMessages">
+        <property name="text">
+         <string>Remove all read messages</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QSpinBox" name="m_spinDays">
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+        <property name="singleStep">
+         <number>1</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="3">
+       <widget class="QCheckBox" name="m_checkRemoveRecycleBin">
+        <property name="text">
+         <string>Remove all messages from recycle bin</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="m_checkRemoveOldMessages">
+        <property name="text">
+         <string>Remove all messages older than</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -33,57 +80,10 @@
         </property>
        </spacer>
       </item>
-      <item row="4" column="1">
-       <widget class="QSpinBox" name="m_spinDays">
-        <property name="maximum">
-         <number>1000</number>
-        </property>
-        <property name="singleStep">
-         <number>1</number>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="3">
-       <widget class="QCheckBox" name="m_checkRemoveReadMessages">
-        <property name="text">
-         <string>Remove all read messages (not those from recycle bin)</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QCheckBox" name="m_checkRemoveOldMessages">
-        <property name="text">
-         <string>Remove all messages older than</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0" colspan="3">
-       <widget class="QCheckBox" name="m_checkRemoveRecycleBin">
-        <property name="text">
-         <string>Remove all messages from recycle bin</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" colspan="3">
-       <widget class="QCheckBox" name="m_checkShrink">
-        <property name="text">
-         <string>Shrink database file</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="3">
        <widget class="QCheckBox" name="m_checkRemoveStarredMessages">
         <property name="text">
-         <string>Remove all starred messages (including those from recycle bin)</string>
+         <string>Remove all starred messages</string>
         </property>
        </widget>
       </item>
@@ -195,7 +195,6 @@
  <tabstops>
   <tabstop>m_checkRemoveReadMessages</tabstop>
   <tabstop>m_checkRemoveRecycleBin</tabstop>
-  <tabstop>m_checkRemoveStarredMessages</tabstop>
   <tabstop>m_checkShrink</tabstop>
   <tabstop>m_checkRemoveOldMessages</tabstop>
   <tabstop>m_spinDays</tabstop>

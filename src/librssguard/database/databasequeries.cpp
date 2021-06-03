@@ -398,7 +398,11 @@ bool DatabaseQueries::purgeImportantMessages(const QSqlDatabase& db) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("DELETE FROM Messages WHERE is_important = 1;"));
+  q.prepare(QSL("DELETE FROM Messages WHERE is_important = 1 AND is_deleted = :is_deleted;"));
+
+  // Remove only messages which are NOT in recycle bin.
+  q.bindValue(QSL(":is_deleted"), 0);
+
   return q.exec();
 }
 
@@ -414,6 +418,7 @@ bool DatabaseQueries::purgeReadMessages(const QSqlDatabase& db) {
 
   // Remove only messages which are NOT starred.
   q.bindValue(QSL(":is_important"), 0);
+
   return q.exec();
 }
 
