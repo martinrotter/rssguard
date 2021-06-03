@@ -127,7 +127,7 @@ void SystemTrayIcon::setNumber(int number, bool any_new_message) {
     if (number > 999) {
       m_font.setPixelSize(background.width() * 0.78);
       tray_painter.setFont(m_font);
-      tray_painter.drawText(background.rect(), Qt::AlignVCenter | Qt::AlignCenter, QChar(8734));
+      tray_painter.drawText(background.rect(), Qt::AlignmentFlag::AlignCenter, QChar(8734));
     }
     else {
       // Smaller number if it has 3 digits.
@@ -145,7 +145,7 @@ void SystemTrayIcon::setNumber(int number, bool any_new_message) {
 
       tray_painter.setFont(m_font);
       tray_painter.drawText(background.rect(),
-                            Qt::AlignmentFlag::AlignVCenter | Qt::AlignmentFlag::AlignCenter,
+                            Qt::AlignmentFlag::AlignCenter,
                             QString::number(number));
     }
 

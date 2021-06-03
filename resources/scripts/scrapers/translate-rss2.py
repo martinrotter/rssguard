@@ -57,7 +57,7 @@ title.text = translate_string(title.text)
 
 # Translate articles.
 if parallel:
-  with ThreadPoolExecutor(max_workers = 2) as executor:
+  with ThreadPoolExecutor(max_workers = 8) as executor:
     futures = []
     for article in rss_document.findall(".//item"):
       futures.append(executor.submit(process_article, article))
