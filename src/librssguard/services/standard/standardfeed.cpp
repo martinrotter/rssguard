@@ -562,7 +562,7 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QStrin
     return raw_output;
   }
   else {
-    process.kill();
+    //process.kill();
 
     auto raw_error = process.readAllStandardError().simplified();
 

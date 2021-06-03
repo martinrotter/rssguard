@@ -24,11 +24,16 @@ lang_from = sys.argv[1]
 lang_to = sys.argv[2]
 parallel = bool(distutils.util.strtobool(sys.argv[3]))
 
+if (len(sys.argv) >= 5):
+  src_enc = sys.argv[4]
+else:
+  src_enc = "utf-8"
+
 if parallel:
   import asyncio
   from concurrent.futures import ThreadPoolExecutor
 
-sys.stdin.reconfigure(encoding='utf-8')
+sys.stdin.reconfigure(encoding = src_enc)
 rss_data = sys.stdin.read()
 rss_document = ET.fromstring(rss_data)
 translator = Translator()
@@ -57,7 +62,7 @@ title.text = translate_string(title.text)
 
 # Translate articles.
 if parallel:
-  with ThreadPoolExecutor(max_workers = 8) as executor:
+  with ThreadPoolExecutor(max_workers = 2) as executor:
     futures = []
     for article in rss_document.findall(".//item"):
       futures.append(executor.submit(process_article, article))
