@@ -61,6 +61,7 @@ HEADERS += core/feeddownloader.h \
            exceptions/networkexception.h \
            exceptions/scriptexception.h \
            gui/reusable/baselineedit.h \
+           gui/settings/settingsnotifications.h \
            gui/toolbars/basetoolbar.h \
            gui/reusable/comboboxwithstatus.h \
            gui/reusable/colortoolbutton.h \
@@ -242,6 +243,7 @@ SOURCES += core/feeddownloader.cpp \
            exceptions/networkexception.cpp \
            exceptions/scriptexception.cpp \
            gui/reusable/baselineedit.cpp \
+           gui/settings/settingsnotifications.cpp \
            gui/toolbars/basetoolbar.cpp \
            gui/reusable/comboboxwithstatus.cpp \
            gui/reusable/colortoolbutton.cpp \
@@ -410,6 +412,7 @@ FORMS += gui/dialogs/formabout.ui \
          gui/settings/settingsgeneral.ui \
          gui/settings/settingsgui.ui \
          gui/settings/settingslocalization.ui \
+         gui/settings/settingsnotifications.ui \
          gui/settings/settingsshortcuts.ui \
          gui/toolbars/toolbareditor.ui \
          network-web/downloaditem.ui \

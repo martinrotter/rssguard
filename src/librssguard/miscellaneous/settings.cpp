@@ -193,9 +193,6 @@ DVALUE(bool) GUI::UnreadNumbersInTrayIconDef = true;
 DKEY GUI::UseTrayIcon = "use_tray_icon";
 DVALUE(bool) GUI::UseTrayIconDef = true;
 
-DKEY GUI::EnableNotifications = "enable_notifications";
-DVALUE(bool) GUI::EnableNotificationsDef = true;
-
 DKEY GUI::TabCloseMiddleClick = "tab_close_mid_button";
 DVALUE(bool) GUI::TabCloseMiddleClickDef = true;
 
@@ -314,6 +311,9 @@ DKEY Keyboard::ID = "keyboard";
 
 // Notifications.
 DKEY Notifications::ID = "notifications";
+
+DKEY Notifications::EnableNotifications = "enable_notifications";
+DVALUE(bool) Notifications::EnableNotificationsDef = true;
 
 // Web browser.
 DKEY Browser::ID = "browser";

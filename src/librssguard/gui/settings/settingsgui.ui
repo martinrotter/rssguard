@@ -121,6 +121,12 @@
       <layout class="QFormLayout" name="formLayout_3">
        <item row="0" column="0">
         <widget class="QGroupBox" name="m_grpTray">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="title">
           <string>Tray icon</string>
          </property>
@@ -131,27 +137,6 @@
           <property name="fieldGrowthPolicy">
            <enum>QFormLayout::ExpandingFieldsGrow</enum>
           </property>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="m_checkHideWhenMinimized">
-            <property name="text">
-             <string>Hide main window when it is minimized</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0" colspan="2">
-           <widget class="QCheckBox" name="m_checkHidden">
-            <property name="text">
-             <string>Start application hidden</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QCheckBox" name="m_checkEnableNotifications">
-            <property name="text">
-             <string>Enable popup balloon tooltips</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="0">
            <widget class="QCheckBox" name="m_checkMonochromeIcons">
             <property name="text">
@@ -163,6 +148,20 @@
            <widget class="QCheckBox" name="m_checkCountUnreadMessages">
             <property name="text">
              <string>Display count of unread messages</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="m_checkHideWhenMinimized">
+            <property name="text">
+             <string>Hide main window when it is minimized</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QCheckBox" name="m_checkHidden">
+            <property name="text">
+             <string>Start application hidden</string>
             </property>
            </widget>
           </item>
@@ -386,7 +385,6 @@
   <tabstop>m_grpTray</tabstop>
   <tabstop>m_checkMonochromeIcons</tabstop>
   <tabstop>m_checkCountUnreadMessages</tabstop>
-  <tabstop>m_checkEnableNotifications</tabstop>
   <tabstop>m_checkHideWhenMinimized</tabstop>
   <tabstop>m_checkHidden</tabstop>
   <tabstop>m_checkCloseTabsDoubleClick</tabstop>

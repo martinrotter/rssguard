@@ -16,6 +16,7 @@
 #include "gui/settings/settingsgeneral.h"
 #include "gui/settings/settingsgui.h"
 #include "gui/settings/settingslocalization.h"
+#include "gui/settings/settingsnotifications.h"
 #include "gui/settings/settingsshortcuts.h"
 
 FormSettings::FormSettings(QWidget& parent)
@@ -33,14 +34,17 @@ FormSettings::FormSettings(QWidget& parent)
   connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormSettings::saveSettings);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormSettings::cancelSettings);
   connect(m_btnApply, &QPushButton::clicked, this, &FormSettings::applySettings);
+
   addSettingsPanel(new SettingsGeneral(&m_settings, this));
   addSettingsPanel(new SettingsDatabase(&m_settings, this));
   addSettingsPanel(new SettingsGui(&m_settings, this));
+  addSettingsPanel(new SettingsNotifications(&m_settings, this));
   addSettingsPanel(new SettingsLocalization(&m_settings, this));
   addSettingsPanel(new SettingsShortcuts(&m_settings, this));
   addSettingsPanel(new SettingsBrowserMail(&m_settings, this));
   addSettingsPanel(new SettingsDownloads(&m_settings, this));
   addSettingsPanel(new SettingsFeedsMessages(&m_settings, this));
+
   m_ui.m_listSettings->setCurrentRow(0);
 }
 

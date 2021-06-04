@@ -69,7 +69,7 @@ bool SystemTrayIcon::isSystemTrayDesired() {
 }
 
 bool SystemTrayIcon::areNotificationsEnabled() {
-  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool();
+  return qApp->settings()->value(GROUP(Notifications), SETTING(Notifications::EnableNotifications)).toBool();
 }
 
 void SystemTrayIcon::showPrivate() {

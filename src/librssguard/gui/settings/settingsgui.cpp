@@ -42,7 +42,6 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
           &SettingsGui::dirtifySettings);
   connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_grpTray, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
-  connect(m_ui->m_checkEnableNotifications, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHidden, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkMonochromeIcons, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkCountUnreadMessages, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
@@ -94,9 +93,6 @@ void SettingsGui::loadSettings() {
 
   m_ui->m_checkHidden->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool());
   m_ui->m_checkHideWhenMinimized->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool());
-
-  // Load fancy notification settings.
-  m_ui->m_checkEnableNotifications->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool());
 
   // Load settings of icon theme.
   const QString current_theme = qApp->icons()->currentIconTheme();
@@ -226,9 +222,6 @@ void SettingsGui::saveSettings() {
 
   // Make sure that number of unread messages is shown in tray icon as requested.
   qApp->feedReader()->feedsModel()->notifyWithCounts();
-
-  // Save notifications.
-  settings()->setValue(GROUP(GUI), GUI::EnableNotifications, m_ui->m_checkEnableNotifications->isChecked());
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();

@@ -738,7 +738,7 @@
   </action>
   <action name="m_actionTabNewWebBrowser">
    <property name="text">
-    <string>New web browser tab</string>
+    <string>New browser tab</string>
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+T</string>
@@ -795,7 +795,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;Show tree branches</string>
+    <string>&amp;Show tree expanders</string>
    </property>
   </action>
   <action name="m_actionUpdateSelectedItemsWithCustomTimers">

@@ -207,9 +207,6 @@ namespace GUI {
   KEY UnreadNumbersInTrayIcon;
   VALUE(bool) UnreadNumbersInTrayIconDef;
 
-  KEY EnableNotifications;
-  VALUE(bool) EnableNotificationsDef;
-
   KEY TabCloseMiddleClick;
   VALUE(bool) TabCloseMiddleClickDef;
 
@@ -363,6 +360,9 @@ namespace Keyboard {
 // Notifications.
 namespace Notifications {
   KEY ID;
+
+  KEY EnableNotifications;
+  VALUE(bool) EnableNotificationsDef;
 }
 
 // Web browser.
