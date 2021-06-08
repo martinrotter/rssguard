@@ -30,7 +30,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent) : QDialog(parent), m_u
 }
 
 void FormDatabaseCleanup::closeEvent(QCloseEvent* event) {
-  if (m_ui->m_progressBar->isEnabled()) {
+  if (!m_ui->m_btnBox->isEnabled()) {
     event->ignore();
   }
   else {
@@ -39,7 +39,7 @@ void FormDatabaseCleanup::closeEvent(QCloseEvent* event) {
 }
 
 void FormDatabaseCleanup::keyPressEvent(QKeyEvent* event) {
-  if (m_ui->m_progressBar->isEnabled()) {
+  if (!m_ui->m_btnBox->isEnabled()) {
     event->ignore();
   }
   else {
@@ -66,7 +66,6 @@ void FormDatabaseCleanup::startPurging() {
 
 void FormDatabaseCleanup::onPurgeStarted() {
   m_ui->m_progressBar->setValue(0);
-  m_ui->m_progressBar->setEnabled(true);
   m_ui->m_btnBox->setEnabled(false);
   m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Information, tr("Database cleanup is running."),
                                tr("Database cleanup is running."));
@@ -78,8 +77,7 @@ void FormDatabaseCleanup::onPurgeProgress(int progress, const QString& descripti
 }
 
 void FormDatabaseCleanup::onPurgeFinished(bool finished) {
-  m_ui->m_progressBar->setEnabled(false);
-  m_ui->m_progressBar->setValue(0);
+  m_ui->m_progressBar->setValue(100);
   m_ui->m_btnBox->setEnabled(true);
 
   if (finished) {
@@ -100,5 +98,4 @@ void FormDatabaseCleanup::loadDatabaseInfo() {
 
   m_ui->m_txtFileSize->setText(data_size_str);
   m_ui->m_txtDatabaseType->setText(qApp->database()->driver()->humanDriverType());
-  m_ui->m_checkShrink->setChecked(m_ui->m_checkShrink->isEnabled());
 }
