@@ -21,18 +21,6 @@
         <translation>Aktivér AdBlock</translation>
     </message>
     <message>
-        <source>Options</source>
-        <translation>Indstillinger</translation>
-    </message>
-    <message>
-        <source>Learn about writing rules...</source>
-        <translation>Lær at lave regler...</translation>
-    </message>
-    <message>
-        <source>Filter lists (list per line)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Add your direct links to filter lists here (one URL per line)</source>
         <translation type="unfinished"/>
     </message>
@@ -42,6 +30,48 @@
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Help</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Test configuration</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter lists</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test executed yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot enable AdBlock</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are good to go.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
+
+Error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ERROR!</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -54,6 +84,21 @@
     <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Vis AdBlock ind&amp;stillinger</translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockManager</name>
+    <message>
+        <source>AdBlock needs to be configured</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>AdBlock component is not configured properly.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>failed to download filter list &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -466,10 +511,6 @@ Status: %3</source>
         <translation>Hent symbol</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Hent kun de seneste X meddelelser per feed</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>&amp;Log på</translation>
     </message>
@@ -542,19 +583,19 @@ Status: %3</source>
         <translation>Adgangsymbol er okay.</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Hent kun ulæste meddelelser</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Error: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -971,10 +1012,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormCategoryDetails</name>
     <message>
-        <source>Parent category</source>
-        <translation>Forældrekategori</translation>
-    </message>
-    <message>
         <source>Select parent item for your category.</source>
         <translation type="unfinished"/>
     </message>
@@ -1075,6 +1112,10 @@ or this functionality is not implemented yet.</source>
         <source>Use default icon from icon theme</source>
         <translation>Brug standardikonet fra ikontemaet</translation>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
@@ -1123,20 +1164,8 @@ or this functionality is not implemented yet.</source>
         <translation>Oprydning af database fejlet.</translation>
     </message>
     <message>
-        <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Remove all read messages (not those from recycle bin)</source>
-        <translation>Fjern alle læste meddelelser (ikke dem i papirkurven)</translation>
-    </message>
-    <message>
         <source>Remove all messages from recycle bin</source>
         <translation>Fjern alle meddelelser fra skraldespanden</translation>
-    </message>
-    <message>
-        <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation>Fjern alle favoritmeddelelser (inklusiv dem i papirkurven)</translation>
     </message>
     <message>
         <source>unknown</source>
@@ -1144,6 +1173,18 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Total data size</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cleanup settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all read messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all starred messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1207,10 +1248,6 @@ or this functionality is not implemented yet.</source>
         <translation>Rediger &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>Auto-downloading of messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
         <translation type="unfinished"/>
     </message>
@@ -1236,6 +1273,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-downloading of articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1264,14 +1305,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>&amp;Settings</source>
         <translation>Ind&amp;stillinger</translation>
-    </message>
-    <message>
-        <source>&amp;Messages</source>
-        <translation>&amp;Meddelelser</translation>
-    </message>
-    <message>
-        <source>Switch &amp;importance of selected messages</source>
-        <translation>Skift</translation>
     </message>
     <message>
         <source>Quit the application.</source>
@@ -1314,28 +1347,8 @@ or this functionality is not implemented yet.</source>
         <translation>Viser ekstra information om dette program.</translation>
     </message>
     <message>
-        <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Hides or displays the main menu.</source>
         <translation>Skjuler eller viser hovedmenuen.</translation>
-    </message>
-    <message>
-        <source>Open selected source articles in &amp;external browser</source>
-        <translation>Åben valgte kildeartikel i &amp;ekstern netlæser</translation>
-    </message>
-    <message>
-        <source>Open selected messages in &amp;internal browser</source>
-        <translation>Åben valgte beskeder i &amp;intern netlæser</translation>
-    </message>
-    <message>
-        <source>Select &amp;next message</source>
-        <translation>Vælg &amp;næste meddelelse</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous message</source>
-        <translation>Vælg</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
@@ -1354,10 +1367,6 @@ or this functionality is not implemented yet.</source>
         <translation>&amp;Hovedmenu</translation>
     </message>
     <message>
-        <source>Switch visibility of main &amp;window</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Toolbars</source>
         <translation>Værk&amp;tøjslinie</translation>
     </message>
@@ -1366,36 +1375,12 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Feed/message list headers</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Restore database/settings</source>
-        <translation>&amp;Gendan database/indstillinger</translation>
-    </message>
-    <message>
-        <source>&amp;Backup database/settings</source>
-        <translation>&amp;Backup database/indstillinger</translation>
-    </message>
-    <message>
-        <source>Switch message list layout orientation</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Downloads</source>
         <translation>&amp;Hentet</translation>
     </message>
     <message>
-        <source>Send selected message via e-mail</source>
-        <translation>Send valgte meddelelser med e-post</translation>
-    </message>
-    <message>
         <source>&amp;Cleanup database</source>
         <translation>&amp;Rens databasen</translation>
-    </message>
-    <message>
-        <source>Add &amp;new item</source>
-        <translation>Tilføj &amp;nyt emne</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
@@ -1406,24 +1391,12 @@ or this functionality is not implemented yet.</source>
         <translation>&amp;Slet valgte emne</translation>
     </message>
     <message>
-        <source>&amp;Mark selected items as read</source>
-        <translation>&amp;Marker valgte emne som læst</translation>
-    </message>
-    <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
         <translation>Markér alle meddelelser (uden meddelelsesfiltre) fra valgte elementer som læste.</translation>
     </message>
     <message>
-        <source>&amp;Mark selected items as unread</source>
-        <translation>&amp;Markér valgte emner som ulæste</translation>
-    </message>
-    <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
         <translation>Markér alle meddelelser (uden meddelelsesfiltre) fra valgte elementer som ulæste.</translation>
-    </message>
-    <message>
-        <source>&amp;Clean selected items</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
@@ -1434,15 +1407,7 @@ or this functionality is not implemented yet.</source>
         <translation>Markerer alle meddelelser i alle læste emner. Dette tager ikke meddelelsesfiltre i betragtning.</translation>
     </message>
     <message>
-        <source>View selected items in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Clean all items</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1458,15 +1423,7 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Show only unread items</source>
-        <translation>Vis kun ulæste emner</translation>
-    </message>
-    <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Restore selected messages</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1486,24 +1443,12 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Select next &amp;unread message</source>
-        <translation>Vælg næste &amp;ulæste meddelelse</translation>
-    </message>
-    <message>
         <source>No recycle bin</source>
         <translation>Ingen skraldespand</translation>
     </message>
     <message>
-        <source>Feeds &amp;&amp; categories</source>
-        <translation>Feeds</translation>
-    </message>
-    <message>
         <source>&amp;Accounts</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Add new account</source>
-        <translation>&amp;Tilføj ny konto</translation>
     </message>
     <message>
         <source>Status bar</source>
@@ -1538,20 +1483,12 @@ or this functionality is not implemented yet.</source>
         <translation>Indrapporter en &amp;fejl...</translation>
     </message>
     <message>
-        <source>New web browser tab</source>
-        <translation>Nyt faneblad i netlæser</translation>
-    </message>
-    <message>
         <source>Close all tabs</source>
         <translation>Luk alle faneblade</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>View &amp;fullscreen</source>
-        <translation>Vis i &amp;fuldskærm</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
@@ -1575,10 +1512,6 @@ or this functionality is not implemented yet.</source>
         <translation>Faneblade</translation>
     </message>
     <message>
-        <source>&amp;Mark all items as read</source>
-        <translation>&amp;Markér alle emner som læste</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>Gensta&amp;rt</translation>
     </message>
@@ -1591,36 +1524,12 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Enable message preview</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Donate...</source>
         <translation>&amp;Donér...</translation>
     </message>
     <message>
-        <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Show only &amp;unread messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Message &amp;filters</source>
         <translation>Meddelelses&amp;filtre</translation>
-    </message>
-    <message>
-        <source>&amp;Show tree branches</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
@@ -1631,31 +1540,199 @@ or this functionality is not implemented yet.</source>
         <translation>Vis &amp;dokumentation</translation>
     </message>
     <message>
-        <source>Automatically &amp;expand items when selected</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Download all new messages</source>
-        <translation>Hent alle ny med&amp;delelser</translation>
-    </message>
-    <message>
-        <source>Download messages for &amp;selected items</source>
-        <translation>Hent meddelel&amp;ser for valgte elementer</translation>
-    </message>
-    <message>
-        <source>Stop ongoing downloading of messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download messages for items with &amp;custom auto-download policy</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Expand/collapse selected item &amp;recursively</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Fullscreen</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Fetch all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch &amp;selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch selected feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark articles &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected articles read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark articles &amp;unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected articles unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch &amp;importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch importance of selected articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark selected item read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark selected item unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clean selected item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in &amp;external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open selected articles in external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in &amp;internal browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open selected articles in internal browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark all read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>View selected item in &amp;newspaper mode</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch main &amp;window visibility</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clean all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;List headers</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Restore settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Backup settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch layout</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Send via e-mail</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Send selected articles via e-mail</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show unread items only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Restore articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Next &amp;unread article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing fetching</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New browser tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Enable article preview</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Copy URLs of selected item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show &amp;unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Show tree expanders</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch feeds with &amp;custom auto-download policy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Automatically &amp;expand item when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close opened modal dialogs first.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1695,10 +1772,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Sample message</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1752,16 +1825,6 @@ or this functionality is not implemented yet.</source>
         <translation>AFVIST</translation>
     </message>
     <message>
-        <source>Output (modified) message is:
-  Title = '%1'
-  URL = '%2'
-  Author = '%3'
-  Is read/important = '%4/%5'
-  Created on = '%6'
-  Contents = &apos;%7&apos;</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>yes</source>
         <translation>ja</translation>
     </message>
@@ -1810,10 +1873,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Existing messages</source>
-        <translation>Eksisterende meddelelser</translation>
-    </message>
-    <message>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
         <translation type="unfinished"/>
     </message>
@@ -1833,6 +1892,25 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Filter messages like this</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Existing articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Sample article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Output (modified) message is:
+  Title = '%1'
+  URL = '%2'
+  Author = '%3'
+  Is read/important = '%4/%5'
+  Created on = '%6'
+  Contents = '%7'
+  RAW contents = &apos;%8&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1949,18 +2027,6 @@ Du skal genstarte programmet manuelt.</translation>
         <translation>&amp;Vælg fil</translation>
     </message>
     <message>
-        <source>&amp;Check all items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Uncheck all items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Operation results</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>No file is selected.</source>
         <translation>Ingen fil er udvalgt.</translation>
     </message>
@@ -2071,6 +2137,18 @@ Du skal genstarte programmet manuelt.</translation>
     <message>
         <source>&amp;Import from file</source>
         <translation>&amp;Importér fra fil</translation>
+    </message>
+    <message>
+        <source>&amp;Check all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Uncheck all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Operation result</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2243,10 +2321,6 @@ You can install it now.</source>
         <translation>Få mine legitimationsoplysninger</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Hent kun de seneste X meddelelser per feed</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>&amp;Log på</translation>
     </message>
@@ -2291,10 +2365,6 @@ You can install it now.</source>
         <translation>En værdi er indtastet.</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Hent kun ulæste meddelelser</translation>
-    </message>
-    <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
         <translation type="unfinished"/>
     </message>
@@ -2308,6 +2378,14 @@ You can install it now.</source>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2395,10 +2473,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>URL</source>
         <translation>Webadresse</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Hent kun de seneste X meddelelser per feed</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -2489,8 +2563,12 @@ Login tokens expiration: %2</source>
         <translation>URL er okay.</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Hent kun ulæste meddelelser</translation>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2514,11 +2592,11 @@ Login tokens expiration: %2</source>
 <context>
     <name>ImportantNode</name>
     <message>
-        <source>Important messages</source>
-        <translation>Vigtige meddelelser</translation>
+        <source>Important articles</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can find all important messages here.</source>
+        <source>You can find all important articles here.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2547,10 +2625,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Get my own App ID</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Hent kun de seneste X meddelelser per feed</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -2601,10 +2675,6 @@ Login tokens expiration: %2</source>
         <translation>En værdi er indtastet.</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Hent kun ulæste meddelelser</translation>
-    </message>
-    <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
         <translation type="unfinished"/>
     </message>
@@ -2614,6 +2684,14 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2873,10 +2951,6 @@ Login tokens expiration: %2</source>
         <translation>Udvikler</translation>
     </message>
     <message>
-        <source>Created on</source>
-        <translation>Oprettet den</translation>
-    </message>
-    <message>
         <source>Contents</source>
         <translation>Indhold</translation>
     </message>
@@ -2990,6 +3064,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Score of the message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Date</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3257,16 +3335,8 @@ Login tokens expiration: %2</source>
 <context>
     <name>OwnCloudAccountDetails</name>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Hent kun ulæste meddelelser</translation>
-    </message>
-    <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Hent kun de seneste X meddelelser per feed</translation>
     </message>
     <message>
         <source>URL</source>
@@ -3375,6 +3445,14 @@ Login tokens expiration: %2</source>
     <message>
         <source>URL is okay.</source>
         <translation>URL er okay.</translation>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3868,10 +3946,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
-        <source>Feeds &amp;&amp; categories</source>
-        <translation>Feeds</translation>
-    </message>
-    <message>
         <source>Feed connection timeout</source>
         <translation>Tidsudløb for forbindelse til feed</translation>
     </message>
@@ -3892,18 +3966,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Messages</source>
-        <translation>Meddelelser</translation>
-    </message>
-    <message>
-        <source>Remove all read messages from all feeds on application exit</source>
-        <translation>Fjern alle læste meddelelser fra alle feeds når programmet afsluttes</translation>
-    </message>
-    <message>
-        <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation type="unfinished"/>
     </message>
@@ -3916,19 +3978,11 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Forhåndsvisning af skrifttyper</translation>
     </message>
     <message>
-        <source>Feeds &amp; messages</source>
-        <translation>Feeds &amp; meddelelser</translation>
-    </message>
-    <message>
         <source>Height of image attachments</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Height or rows in feed list (-1 = default height)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Height or rows in message list (-1 = default height)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3938,14 +3992,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Message list font</source>
-        <translation>Meddelelsesliste skrifttype</translation>
-    </message>
-    <message>
-        <source>Internal message browser font</source>
-        <translation>Skrifttype brugt i meddelelseslæser</translation>
     </message>
     <message>
         <source>Select new font</source>
@@ -3968,19 +4014,51 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Bring application window to front once message is opened in external web browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Hide message counts if there are no unread messages</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Display tooltips for feeds and messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all read articles from all feeds on application exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display real icons of feeds in list of articles instead of read/unread icons</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bring application window to front once article is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Keep message selection in the middle of the article list viewport</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Height or rows in article list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list font</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article browser font</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds &amp; articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4032,10 +4110,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Start application hidden</source>
         <translation>Start programmet skjult</translation>
-    </message>
-    <message>
-        <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tabs</source>
@@ -4175,6 +4249,21 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
 </context>
 <context>
+    <name>SettingsNotifications</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable popup balloon tooltips</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Notifications</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>SettingsShortcuts</name>
     <message>
         <source>Keyboard shortcuts</source>
@@ -4276,10 +4365,6 @@ Type: %3</source>
     <message>
         <source>Form</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation>Forældrekategori</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4510,6 +4595,10 @@ Type: %3</source>
         <source>Error: %1</source>
         <translation>Fejl: %1</translation>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -4731,10 +4820,6 @@ Ulæste nyheder: %2</translation>
 <context>
     <name>TtRssAccountDetails</name>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Hent kun ulæste meddelelser</translation>
-    </message>
-    <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
         <translation type="unfinished"/>
     </message>
@@ -4883,8 +4968,12 @@ Ulæste nyheder: %2</translation>
         <translation>URL er okay.</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Hent kun de seneste X meddelelser per feed</translation>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4892,10 +4981,6 @@ Ulæste nyheder: %2</translation>
     <message>
         <source>Form</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation>Forældrekategori</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4925,6 +5010,10 @@ Ulæste nyheder: %2</translation>
         <source>The URL is empty.</source>
         <translation>Webadressen er tom.</translation>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
@@ -4950,11 +5039,11 @@ Sidst logget på: %4</translation>
 <context>
     <name>UnreadNode</name>
     <message>
-        <source>Unread messages</source>
+        <source>Unread articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can find all unread messages here.</source>
+        <source>You can find all unread articles here.</source>
         <translation type="unfinished"/>
     </message>
 </context>

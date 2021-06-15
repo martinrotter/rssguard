@@ -21,18 +21,6 @@
         <translation>啟用 AdBlock</translation>
     </message>
     <message>
-        <source>Options</source>
-        <translation>選項</translation>
-    </message>
-    <message>
-        <source>Learn about writing rules...</source>
-        <translation>學寫規則…</translation>
-    </message>
-    <message>
-        <source>Filter lists (list per line)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Add your direct links to filter lists here (one URL per line)</source>
         <translation type="unfinished"/>
     </message>
@@ -42,6 +30,48 @@
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Help</source>
+        <translation>說明(&amp;H)</translation>
+    </message>
+    <message>
+        <source>&amp;Test configuration</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter lists</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test executed yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot enable AdBlock</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are good to go.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
+
+Error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ERROR!</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -54,6 +84,21 @@
     <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>顯示 AdBlock 設定(&amp;S)</translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockManager</name>
+    <message>
+        <source>AdBlock needs to be configured</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>AdBlock component is not configured properly.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>failed to download filter list &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -468,10 +513,6 @@ Status: %3</source>
         <translation>取得實驗存取權碼</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>每個新聞源僅下載最近 X 條消息</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>登入(&amp;L)</translation>
     </message>
@@ -544,19 +585,19 @@ Status: %3</source>
         <translation>實驗存取權碼無問題。</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>只下載未讀消息</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Error: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -974,10 +1015,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormCategoryDetails</name>
     <message>
-        <source>Parent category</source>
-        <translation>上級分類</translation>
-    </message>
-    <message>
         <source>Select parent item for your category.</source>
         <translation>為分類選擇上層項目。</translation>
     </message>
@@ -1078,6 +1115,10 @@ or this functionality is not implemented yet.</source>
         <source>Use default icon from icon theme</source>
         <translation>使用圖示主題的預設圖示</translation>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
@@ -1126,20 +1167,8 @@ or this functionality is not implemented yet.</source>
         <translation>資料庫清理失敗。</translation>
     </message>
     <message>
-        <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation>清理設定 (勾選項會從資料庫徹底刪除)</translation>
-    </message>
-    <message>
-        <source>Remove all read messages (not those from recycle bin)</source>
-        <translation>移除全部已讀消息 (不包括回收筒中的)</translation>
-    </message>
-    <message>
         <source>Remove all messages from recycle bin</source>
         <translation>移除回收筒內全部消息</translation>
-    </message>
-    <message>
-        <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation>移除全部標星消息 (包括回收筒內的)</translation>
     </message>
     <message>
         <source>unknown</source>
@@ -1147,6 +1176,18 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Total data size</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cleanup settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all read messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all starred messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1210,10 +1251,6 @@ or this functionality is not implemented yet.</source>
         <translation>編輯 &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>Auto-downloading of messages</source>
-        <translation>自動下載消息</translation>
-    </message>
-    <message>
         <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
         <translation>為此新聞源的消息選擇自動更新的策略。自動更新的預設規則是，新聞源的新消息會以應用程式設定中設定的時間間格自動更新。</translation>
     </message>
@@ -1239,6 +1276,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-downloading of articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1267,14 +1308,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>&amp;Settings</source>
         <translation>設定(&amp;S)</translation>
-    </message>
-    <message>
-        <source>&amp;Messages</source>
-        <translation>消息(&amp;M)</translation>
-    </message>
-    <message>
-        <source>Switch &amp;importance of selected messages</source>
-        <translation>切換所選消息的重要性(&amp;I)</translation>
     </message>
     <message>
         <source>Quit the application.</source>
@@ -1317,28 +1350,8 @@ or this functionality is not implemented yet.</source>
         <translation>顯示此應用程式的額外資訊。</translation>
     </message>
     <message>
-        <source>&amp;Delete selected messages</source>
-        <translation>刪除所選消息(&amp;D)</translation>
-    </message>
-    <message>
         <source>Hides or displays the main menu.</source>
         <translation>隱藏/顯示主功能表。</translation>
-    </message>
-    <message>
-        <source>Open selected source articles in &amp;external browser</source>
-        <translation>以外部瀏覽器開啟所選消息(&amp;E)</translation>
-    </message>
-    <message>
-        <source>Open selected messages in &amp;internal browser</source>
-        <translation>以內部瀏覽器開啟所選消息(&amp;I)</translation>
-    </message>
-    <message>
-        <source>Select &amp;next message</source>
-        <translation>選下一消息(&amp;N)</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous message</source>
-        <translation>選上一消息(&amp;P)</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
@@ -1357,10 +1370,6 @@ or this functionality is not implemented yet.</source>
         <translation>主功能表(&amp;M)</translation>
     </message>
     <message>
-        <source>Switch visibility of main &amp;window</source>
-        <translation>顯示/隱藏主窗(&amp;W)</translation>
-    </message>
-    <message>
         <source>&amp;Toolbars</source>
         <translation>工具列(&amp;T)</translation>
     </message>
@@ -1369,36 +1378,12 @@ or this functionality is not implemented yet.</source>
         <translation>切換主工具列的可見性。</translation>
     </message>
     <message>
-        <source>&amp;Feed/message list headers</source>
-        <translation>新聞源/消息清單欄首(&amp;F)</translation>
-    </message>
-    <message>
-        <source>&amp;Restore database/settings</source>
-        <translation>儲存資料庫/設定(&amp;R)</translation>
-    </message>
-    <message>
-        <source>&amp;Backup database/settings</source>
-        <translation>備份資料庫/設定(&amp;B)</translation>
-    </message>
-    <message>
-        <source>Switch message list layout orientation</source>
-        <translation>切換消息清單的版面方向</translation>
-    </message>
-    <message>
         <source>&amp;Downloads</source>
         <translation>下載(&amp;D)</translation>
     </message>
     <message>
-        <source>Send selected message via e-mail</source>
-        <translation>以電子郵件傳送所選消息</translation>
-    </message>
-    <message>
         <source>&amp;Cleanup database</source>
         <translation>清理資料庫(&amp;C)</translation>
-    </message>
-    <message>
-        <source>Add &amp;new item</source>
-        <translation>新增項目(&amp;N)</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
@@ -1409,24 +1394,12 @@ or this functionality is not implemented yet.</source>
         <translation>刪除所選項目(&amp;D)</translation>
     </message>
     <message>
-        <source>&amp;Mark selected items as read</source>
-        <translation>標示所選項目成已讀(&amp;M)</translation>
-    </message>
-    <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
         <translation>將所選項目中的全部消息 (忽略消息過濾器) 標成已讀。</translation>
     </message>
     <message>
-        <source>&amp;Mark selected items as unread</source>
-        <translation>標示所選項目成未讀(&amp;M)</translation>
-    </message>
-    <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
         <translation>將所選項目中的全部消息 (忽略消息過濾器) 標成未讀。</translation>
-    </message>
-    <message>
-        <source>&amp;Clean selected items</source>
-        <translation>清除所選項目(&amp;C)</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
@@ -1437,16 +1410,8 @@ or this functionality is not implemented yet.</source>
         <translation>將所有消息標成已讀。不考慮消息過濾器。</translation>
     </message>
     <message>
-        <source>View selected items in &amp;newspaper mode</source>
-        <translation>於報紙模式檢視所選項目(&amp;N)</translation>
-    </message>
-    <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
         <translation>在新的「報紙模式」中顯示所選項目中的全部消息。請注意: 消息不會自動設成已讀。</translation>
-    </message>
-    <message>
-        <source>&amp;Clean all items</source>
-        <translation>清除全部項目(&amp;C)</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
@@ -1461,16 +1426,8 @@ or this functionality is not implemented yet.</source>
         <translation>選上一項(&amp;P)</translation>
     </message>
     <message>
-        <source>Show only unread items</source>
-        <translation>只顯示未讀項目</translation>
-    </message>
-    <message>
         <source>&amp;Expand/collapse selected item</source>
         <translation>展開/收合所選項(&amp;E)</translation>
-    </message>
-    <message>
-        <source>&amp;Restore selected messages</source>
-        <translation>儲存所選消息(&amp;R)</translation>
     </message>
     <message>
         <source>No possible actions</source>
@@ -1489,24 +1446,12 @@ or this functionality is not implemented yet.</source>
         <translation>清空全部資源回收筒(&amp;E)</translation>
     </message>
     <message>
-        <source>Select next &amp;unread message</source>
-        <translation>選下一未讀消息(&amp;U)</translation>
-    </message>
-    <message>
         <source>No recycle bin</source>
         <translation>無資源回收筒</translation>
     </message>
     <message>
-        <source>Feeds &amp;&amp; categories</source>
-        <translation>新聞源 &amp;&amp; 分類</translation>
-    </message>
-    <message>
         <source>&amp;Accounts</source>
         <translation>帳號(&amp;A)</translation>
-    </message>
-    <message>
-        <source>&amp;Add new account</source>
-        <translation>新增帳號(&amp;A)</translation>
     </message>
     <message>
         <source>Status bar</source>
@@ -1541,20 +1486,12 @@ or this functionality is not implemented yet.</source>
         <translation>提報錯誤(&amp;B)...</translation>
     </message>
     <message>
-        <source>New web browser tab</source>
-        <translation>新的瀏覽器分頁</translation>
-    </message>
-    <message>
         <source>Close all tabs</source>
         <translation>關閉全部分頁</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
         <translation>除此外，關閉其他分頁</translation>
-    </message>
-    <message>
-        <source>View &amp;fullscreen</source>
-        <translation>檢視全螢幕(&amp;F)</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
@@ -1578,10 +1515,6 @@ or this functionality is not implemented yet.</source>
         <translation>分頁</translation>
     </message>
     <message>
-        <source>&amp;Mark all items as read</source>
-        <translation>標示全部項目成已讀(&amp;M)</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>重新啟動(&amp;R)</translation>
     </message>
@@ -1594,36 +1527,12 @@ or this functionality is not implemented yet.</source>
         <translation>到上一分頁(&amp;P)</translation>
     </message>
     <message>
-        <source>&amp;Enable message preview</source>
-        <translation>啟用消息預覽(&amp;E)</translation>
-    </message>
-    <message>
         <source>&amp;Donate...</source>
         <translation>贊助(&amp;D)...</translation>
     </message>
     <message>
-        <source>&amp;Copy URLs of selected items</source>
-        <translation>複製所選項目 URL(&amp;C)</translation>
-    </message>
-    <message>
-        <source>Mark selected messages as &amp;read</source>
-        <translation>標示所選消息成已讀(&amp;R)</translation>
-    </message>
-    <message>
-        <source>Mark selected messages as &amp;unread</source>
-        <translation>標示所選消息成未讀(&amp;U)</translation>
-    </message>
-    <message>
-        <source>Show only &amp;unread messages</source>
-        <translation>只顯示未讀消息(&amp;U)</translation>
-    </message>
-    <message>
         <source>Message &amp;filters</source>
         <translation>消息篩選器(&amp;F)</translation>
-    </message>
-    <message>
-        <source>&amp;Show tree branches</source>
-        <translation>顯示樹狀分枝(&amp;S)</translation>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
@@ -1634,32 +1543,200 @@ or this functionality is not implemented yet.</source>
         <translation>顯示說明文件(&amp;D)</translation>
     </message>
     <message>
-        <source>Automatically &amp;expand items when selected</source>
-        <translation>自動展開所選新聞源(&amp;E)</translation>
-    </message>
-    <message>
-        <source>&amp;Download all new messages</source>
-        <translation>下載所有新消息(&amp;D)</translation>
-    </message>
-    <message>
-        <source>Download messages for &amp;selected items</source>
-        <translation>下載所選項目的消息(&amp;S)</translation>
-    </message>
-    <message>
-        <source>Stop ongoing downloading of messages</source>
-        <translation>中斷進行中的消息下載</translation>
-    </message>
-    <message>
-        <source>Download messages for items with &amp;custom auto-download policy</source>
-        <translation>依自訂的自動下載規則，下載所選項目的消息(&amp;C)</translation>
-    </message>
-    <message>
         <source>Message viewer toolbars</source>
         <translation>消息檢視工具列</translation>
     </message>
     <message>
         <source>Expand/collapse selected item &amp;recursively</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds</source>
+        <translation>新聞源</translation>
+    </message>
+    <message>
+        <source>&amp;Add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Fullscreen</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Fetch all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch &amp;selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch selected feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark articles &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected articles read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark articles &amp;unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected articles unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch &amp;importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch importance of selected articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark selected item read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark selected item unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clean selected item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in &amp;external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open selected articles in external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in &amp;internal browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open selected articles in internal browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark all read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>View selected item in &amp;newspaper mode</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch main &amp;window visibility</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clean all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;List headers</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Restore settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Backup settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch layout</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Send via e-mail</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Send selected articles via e-mail</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show unread items only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Restore articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Next &amp;unread article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing fetching</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New browser tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Enable article preview</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Copy URLs of selected item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show &amp;unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Show tree expanders</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch feeds with &amp;custom auto-download policy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Automatically &amp;expand item when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close opened modal dialogs first.</source>
+        <translation>請先關閉開啟的對話框。</translation>
     </message>
 </context>
 <context>
@@ -1699,10 +1776,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
         <translation>您的使用 JavaScript 的消息篩選器機制</translation>
-    </message>
-    <message>
-        <source>Sample message</source>
-        <translation>測試用的消息</translation>
     </message>
     <message>
         <source>Read</source>
@@ -1755,22 +1828,6 @@ or this functionality is not implemented yet.</source>
         <translation>已拒絕</translation>
     </message>
     <message>
-        <source>Output (modified) message is:
-  Title = '%1'
-  URL = '%2'
-  Author = '%3'
-  Is read/important = '%4/%5'
-  Created on = '%6'
-  Contents = &apos;%7&apos;</source>
-        <translation>輸出的 (修改過的) 消息是:
-標題 = &apos;%1&apos;
-  URL = &apos;%2&apos;
-  作者 = &apos;%3&apos;
-  已讀/重要 = &apos;%4/%5&apos;
-  建立於 = &apos;%6&apos;
-  內容 = &apos;%7&apos;</translation>
-    </message>
-    <message>
         <source>yes</source>
         <translation>是</translation>
     </message>
@@ -1819,10 +1876,6 @@ or this functionality is not implemented yet.</source>
         <translation>美化(&amp;B)</translation>
     </message>
     <message>
-        <source>Existing messages</source>
-        <translation>既存的消息</translation>
-    </message>
-    <message>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
         <translation>無法儲存新篩選器，錯誤: &apos;%1&apos;。</translation>
     </message>
@@ -1843,6 +1896,25 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Filter messages like this</source>
         <translation>像這樣篩選消息</translation>
+    </message>
+    <message>
+        <source>Existing articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Sample article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Output (modified) message is:
+  Title = '%1'
+  URL = '%2'
+  Author = '%3'
+  Is read/important = '%4/%5'
+  Created on = '%6'
+  Contents = '%7'
+  RAW contents = &apos;%8&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1959,18 +2031,6 @@ You have to restart manually.</source>
         <translation>選擇檔案(&amp;S)</translation>
     </message>
     <message>
-        <source>&amp;Check all items</source>
-        <translation>勾全部項目(&amp;C)</translation>
-    </message>
-    <message>
-        <source>&amp;Uncheck all items</source>
-        <translation>不勾全部項目(&amp;U)</translation>
-    </message>
-    <message>
-        <source>Operation results</source>
-        <translation>運作結果</translation>
-    </message>
-    <message>
         <source>No file is selected.</source>
         <translation>未選擇檔案。</translation>
     </message>
@@ -2081,6 +2141,18 @@ You have to restart manually.</source>
     <message>
         <source>&amp;Import from file</source>
         <translation>從檔案匯入(&amp;I)</translation>
+    </message>
+    <message>
+        <source>&amp;Check all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Uncheck all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Operation result</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2257,10 +2329,6 @@ You can install it now.</source>
         <translation>取得我的證件</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>每個新聞源僅下載最近 X 條消息</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>登入(&amp;L)</translation>
     </message>
@@ -2305,10 +2373,6 @@ You can install it now.</source>
         <translation>輸入了某值。</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>只下載未讀消息</translation>
-    </message>
-    <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
         <translation type="unfinished"/>
     </message>
@@ -2322,6 +2386,14 @@ You can install it now.</source>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2412,10 +2484,6 @@ Login tokens expiration: %2</source>
         <translation>URL</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>每個新聞源僅下載最近 X 條消息</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>某些新聞源，包括 Gmail 新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 的認證架構。</translation>
     </message>
@@ -2504,8 +2572,12 @@ Login tokens expiration: %2</source>
         <translation>URL 無問題。</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>只下載未讀消息</translation>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2529,12 +2601,12 @@ Login tokens expiration: %2</source>
 <context>
     <name>ImportantNode</name>
     <message>
-        <source>Important messages</source>
-        <translation>重要的消息</translation>
+        <source>Important articles</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can find all important messages here.</source>
-        <translation>您可以在此找到所有重要的消息。</translation>
+        <source>You can find all important articles here.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2562,10 +2634,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Get my own App ID</source>
         <translation>取得我自己的應用程式識別號(ID)</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>每個新聞源僅下載最近 X 條消息</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -2616,10 +2684,6 @@ Login tokens expiration: %2</source>
         <translation>輸入了某值。</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>只下載未讀消息</translation>
-    </message>
-    <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
         <translation type="unfinished"/>
     </message>
@@ -2629,6 +2693,14 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2889,10 +2961,6 @@ Login tokens expiration: %2</source>
         <translation>作者</translation>
     </message>
     <message>
-        <source>Created on</source>
-        <translation>建立時間</translation>
-    </message>
-    <message>
         <source>Contents</source>
         <translation>擷文</translation>
     </message>
@@ -3006,6 +3074,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Score of the message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Date</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3273,16 +3345,8 @@ Login tokens expiration: %2</source>
 <context>
     <name>OwnCloudAccountDetails</name>
     <message>
-        <source>Download only unread messages</source>
-        <translation>只下載未讀消息</translation>
-    </message>
-    <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
         <translation>RSS Guard 更新新聞源時，也強制執行伺服器端更新</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>每個新聞源僅下載最近 X 條消息</translation>
     </message>
     <message>
         <source>URL</source>
@@ -3391,6 +3455,14 @@ Login tokens expiration: %2</source>
     <message>
         <source>URL is okay.</source>
         <translation>URL 無問題。</translation>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3902,10 +3974,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
-        <source>Feeds &amp;&amp; categories</source>
-        <translation>新聞源 &amp;&amp; 分類</translation>
-    </message>
-    <message>
         <source>Feed connection timeout</source>
         <translation>新聞源連線逾時時間</translation>
     </message>
@@ -3926,18 +3994,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>輸入新聞源清單中每個新聞源/分類旁顯示的消息數量的格式。&quot;%all&quot; 和 &quot;%unread&quot; 分別代表所有消息數和未讀消息數。</translation>
     </message>
     <message>
-        <source>Messages</source>
-        <translation>消息</translation>
-    </message>
-    <message>
-        <source>Remove all read messages from all feeds on application exit</source>
-        <translation>程式結束時移除全部已讀消息</translation>
-    </message>
-    <message>
-        <source>Keep message selection in the middle of the message list viewport</source>
-        <translation>使所選消息在消息清單居中</translation>
-    </message>
-    <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation>使用自訂日期/時間格式 (覆蓋從系統的地區設定載入的格式)</translation>
     </message>
@@ -3950,10 +4006,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>字型預覽</translation>
     </message>
     <message>
-        <source>Feeds &amp; messages</source>
-        <translation>新聞源 &amp; 消息</translation>
-    </message>
-    <message>
         <source>Height of image attachments</source>
         <translation>圖像附件的高度</translation>
     </message>
@@ -3962,24 +4014,12 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>新聞源清單的行高 (-1 = 預設高度)</translation>
     </message>
     <message>
-        <source>Height or rows in message list (-1 = default height)</source>
-        <translation>消息清單的行高 (-1 = 預設高度)</translation>
-    </message>
-    <message>
         <source>Feed list font</source>
         <translation>新聞源清單字型</translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
         <translation>顯示可指示圖片位置的變元欄位</translation>
-    </message>
-    <message>
-        <source>Message list font</source>
-        <translation>消息清單字型</translation>
-    </message>
-    <message>
-        <source>Internal message browser font</source>
-        <translation>內部瀏覽器的消息字型</translation>
     </message>
     <message>
         <source>Select new font</source>
@@ -4002,19 +4042,51 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>自動下載全部新聞源的消息，每</translation>
     </message>
     <message>
-        <source>Bring application window to front once message is opened in external web browser</source>
-        <translation>一旦外在網頁瀏覽器開啟了消息，將本程式窗移至前景</translation>
-    </message>
-    <message>
-        <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
-        <translation>於消息清單，不顯示已讀/未讀圖示，而顯示新聞源的圖示</translation>
-    </message>
-    <message>
         <source>Hide message counts if there are no unread messages</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Display tooltips for feeds and messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds</source>
+        <translation>新聞源</translation>
+    </message>
+    <message>
+        <source>Articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all read articles from all feeds on application exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display real icons of feeds in list of articles instead of read/unread icons</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bring application window to front once article is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Keep message selection in the middle of the article list viewport</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Height or rows in article list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list font</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article browser font</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds &amp; articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4066,10 +4138,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Start application hidden</source>
         <translation>應用程式啟動時隱藏主窗</translation>
-    </message>
-    <message>
-        <source>Enable popup balloon tooltips</source>
-        <translation>啟用彈出窗工具提示</translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -4209,6 +4277,21 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
 </context>
 <context>
+    <name>SettingsNotifications</name>
+    <message>
+        <source>Form</source>
+        <translation>表單</translation>
+    </message>
+    <message>
+        <source>Enable popup balloon tooltips</source>
+        <translation>啟用彈出窗工具提示</translation>
+    </message>
+    <message>
+        <source>Notifications</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>SettingsShortcuts</name>
     <message>
         <source>Keyboard shortcuts</source>
@@ -4313,10 +4396,6 @@ Type: %3</source>
     <message>
         <source>Form</source>
         <translation>表單</translation>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation>上級分類</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4547,6 +4626,10 @@ Type: %3</source>
         <source>Error: %1</source>
         <translation>錯誤: %1</translation>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -4768,10 +4851,6 @@ Unread news: %2</source>
 <context>
     <name>TtRssAccountDetails</name>
     <message>
-        <source>Download only unread messages</source>
-        <translation>只下載未讀消息</translation>
-    </message>
-    <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
         <translation>RSS Guard 更新新聞源時，也強制執行伺服器端更新</translation>
     </message>
@@ -4920,8 +4999,12 @@ Unread news: %2</source>
         <translation>URL 無問題。</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>每個新聞源僅下載最近 X 條消息</translation>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4929,10 +5012,6 @@ Unread news: %2</source>
     <message>
         <source>Form</source>
         <translation>表單</translation>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation>上級分類</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4962,6 +5041,10 @@ Unread news: %2</source>
         <source>The URL is empty.</source>
         <translation>缺 URL。</translation>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
@@ -4987,11 +5070,11 @@ Last login on: %4</source>
 <context>
     <name>UnreadNode</name>
     <message>
-        <source>Unread messages</source>
+        <source>Unread articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can find all unread messages here.</source>
+        <source>You can find all unread articles here.</source>
         <translation type="unfinished"/>
     </message>
 </context>

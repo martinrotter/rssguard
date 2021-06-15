@@ -21,18 +21,6 @@
         <translation>AdBlock aktivieren</translation>
     </message>
     <message>
-        <source>Options</source>
-        <translation>Optionen</translation>
-    </message>
-    <message>
-        <source>Learn about writing rules...</source>
-        <translation>Lernen Sie wie man Regeln erstellt...</translation>
-    </message>
-    <message>
-        <source>Filter lists (list per line)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Add your direct links to filter lists here (one URL per line)</source>
         <translation type="unfinished"/>
     </message>
@@ -42,6 +30,48 @@
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Help</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Test configuration</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter lists</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test executed yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot enable AdBlock</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are good to go.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
+
+Error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ERROR!</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -54,6 +84,21 @@
     <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>AdBlock &amp;settings anzeigen</translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockManager</name>
+    <message>
+        <source>AdBlock needs to be configured</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>AdBlock component is not configured properly.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>failed to download filter list &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -465,10 +510,6 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Nur die neuesten X messages pro Feed herunterladen</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>&amp;Login</translation>
     </message>
@@ -541,19 +582,19 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Error: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -970,10 +1011,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormCategoryDetails</name>
     <message>
-        <source>Parent category</source>
-        <translation>Übergeordnete Kategorie</translation>
-    </message>
-    <message>
         <source>Select parent item for your category.</source>
         <translation>Kategorie wählen, in der die bearbeitete enthalten sein soll.</translation>
     </message>
@@ -1074,6 +1111,10 @@ or this functionality is not implemented yet.</source>
         <source>Use default icon from icon theme</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
@@ -1122,20 +1163,8 @@ or this functionality is not implemented yet.</source>
         <translation>Bereinigung der Datenbank ist fehlgeschlagen.</translation>
     </message>
     <message>
-        <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation>Einstellungen der Bereinigung (alle ausgewählten Einträge werden komplett aus der Datenbank entfernt)</translation>
-    </message>
-    <message>
-        <source>Remove all read messages (not those from recycle bin)</source>
-        <translation>Alle gelesenen Nachrichten entfernen (ausgenommen diejenigen im Papierkorb)</translation>
-    </message>
-    <message>
         <source>Remove all messages from recycle bin</source>
         <translation>Alle Nachrichten aus dem Papierkorb entfernen</translation>
-    </message>
-    <message>
-        <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation>Alle als wichtig markierten Nachrichten entfernen (einschließlich derjenigen im Papierkorb)</translation>
     </message>
     <message>
         <source>unknown</source>
@@ -1143,6 +1172,18 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Total data size</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cleanup settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all read messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all starred messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1206,10 +1247,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Auto-downloading of messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
         <translation type="unfinished"/>
     </message>
@@ -1235,6 +1272,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-downloading of articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1263,14 +1304,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>&amp;Settings</source>
         <translation>&amp;Einstellungen</translation>
-    </message>
-    <message>
-        <source>&amp;Messages</source>
-        <translation>&amp;Nachrichten</translation>
-    </message>
-    <message>
-        <source>Switch &amp;importance of selected messages</source>
-        <translation>Schalte die &amp;Wichtigkeit der selektierten Nachrichten um</translation>
     </message>
     <message>
         <source>Quit the application.</source>
@@ -1313,28 +1346,8 @@ or this functionality is not implemented yet.</source>
         <translation>Zusätzliche Informationen über diese Anwendung anzeigen.</translation>
     </message>
     <message>
-        <source>&amp;Delete selected messages</source>
-        <translation>Ausgewählte Nachrichten &amp;löschen</translation>
-    </message>
-    <message>
         <source>Hides or displays the main menu.</source>
         <translation>Hauptmenü anzeigen oder verstecken.</translation>
-    </message>
-    <message>
-        <source>Open selected source articles in &amp;external browser</source>
-        <translation>Ausgewählte Artikel in &amp;externem Browser öffnen</translation>
-    </message>
-    <message>
-        <source>Open selected messages in &amp;internal browser</source>
-        <translation>Ausgewählte Artikel in &amp;internem Browser öffnen</translation>
-    </message>
-    <message>
-        <source>Select &amp;next message</source>
-        <translation>&amp;Nächste Nachricht auswählen</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous message</source>
-        <translation>&amp;Vorige Nachricht auswählen</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
@@ -1353,10 +1366,6 @@ or this functionality is not implemented yet.</source>
         <translation>&amp;Hauptmenü</translation>
     </message>
     <message>
-        <source>Switch visibility of main &amp;window</source>
-        <translation>Sichtbarkeit des Haupt&amp;fensters umschalten</translation>
-    </message>
-    <message>
         <source>&amp;Toolbars</source>
         <translation>&amp;Werkzeugleisten</translation>
     </message>
@@ -1365,36 +1374,12 @@ or this functionality is not implemented yet.</source>
         <translation>Sichtbarkeit der &amp;Werkzeugleisten umschalten</translation>
     </message>
     <message>
-        <source>&amp;Feed/message list headers</source>
-        <translation>&amp;Kopfzeilen der Listen mit Feeds bzw. Nachrichten</translation>
-    </message>
-    <message>
-        <source>&amp;Restore database/settings</source>
-        <translation>Datenbank und Einstellungen &amp;wiederherstellen</translation>
-    </message>
-    <message>
-        <source>&amp;Backup database/settings</source>
-        <translation>Datenbank und Einstellungen &amp;sichern</translation>
-    </message>
-    <message>
-        <source>Switch message list layout orientation</source>
-        <translation>&amp;Anordnung (Layout) der Nachrichtenliste umschalten</translation>
-    </message>
-    <message>
         <source>&amp;Downloads</source>
         <translation>&amp;Downloads</translation>
     </message>
     <message>
-        <source>Send selected message via e-mail</source>
-        <translation>Ausgewählte Nachricht per &amp;Mail versenden</translation>
-    </message>
-    <message>
         <source>&amp;Cleanup database</source>
         <translation>Datenbank be&amp;reinigen</translation>
-    </message>
-    <message>
-        <source>Add &amp;new item</source>
-        <translation>Neuen &amp;Eintrag hinzufügen</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
@@ -1405,24 +1390,12 @@ or this functionality is not implemented yet.</source>
         <translation>Ausgewählten Eintrag l&amp;öschen</translation>
     </message>
     <message>
-        <source>&amp;Mark selected items as read</source>
-        <translation>Ausgewählte Einträge als ge&amp;lesen markieren</translation>
-    </message>
-    <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
         <translation>Alle zu den ausgewählten Einträgen gehörigen Nachrichten als gelesen markieren. Lässt Nachrichtenfilter unberücksichtigt.</translation>
     </message>
     <message>
-        <source>&amp;Mark selected items as unread</source>
-        <translation>Ausgewählte Einträge als &amp;ungelesen markieren</translation>
-    </message>
-    <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
         <translation>Alle zu den ausgewählten Einträgen gehörigen Nachrichten als ungelesen markieren. Lässt Nachrichtenfilter unberücksichtigt.</translation>
-    </message>
-    <message>
-        <source>&amp;Clean selected items</source>
-        <translation>Ausgewählte Einträge ent&amp;fernen</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
@@ -1433,16 +1406,8 @@ or this functionality is not implemented yet.</source>
         <translation>Zu allen Einträgen gehörige Nachrichten als gelesen markieren. Lässt Nachrichtenfilter unberücksichtigt.</translation>
     </message>
     <message>
-        <source>View selected items in &amp;newspaper mode</source>
-        <translation>Ausgewählte Einträge im &amp;Zeitungsmodus betrachten</translation>
-    </message>
-    <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
         <translation>Alle zu den ausgewählten Einträgen gehörigen Nachrichten in einem neuen Tab im Zeitungsmodus öffnen. Markiert die Nachrichten nicht automatisch als gelesen.</translation>
-    </message>
-    <message>
-        <source>&amp;Clean all items</source>
-        <translation>Alle Einträge &amp;löschen</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
@@ -1457,16 +1422,8 @@ or this functionality is not implemented yet.</source>
         <translation>&amp;Vorigen Eintrag auswählen</translation>
     </message>
     <message>
-        <source>Show only unread items</source>
-        <translation>Nur ungelesene Einträge anzeigen</translation>
-    </message>
-    <message>
         <source>&amp;Expand/collapse selected item</source>
         <translation>Ausgewählten Eintrag aus-/ein&amp;klappen</translation>
-    </message>
-    <message>
-        <source>&amp;Restore selected messages</source>
-        <translation>Ausgewählte Nachrichten &amp;wiederherstellen</translation>
     </message>
     <message>
         <source>No possible actions</source>
@@ -1485,24 +1442,12 @@ or this functionality is not implemented yet.</source>
         <translation>Alle Papierkör&amp;be leeren</translation>
     </message>
     <message>
-        <source>Select next &amp;unread message</source>
-        <translation>Nächste &amp;ungelesene Nachricht auswählen</translation>
-    </message>
-    <message>
         <source>No recycle bin</source>
         <translation>Kein Papierkorb</translation>
     </message>
     <message>
-        <source>Feeds &amp;&amp; categories</source>
-        <translation>Kategorien &amp;&amp; &amp;Feeds</translation>
-    </message>
-    <message>
         <source>&amp;Accounts</source>
         <translation>&amp;Konten</translation>
-    </message>
-    <message>
-        <source>&amp;Add new account</source>
-        <translation>&amp;Neues Konto hinzufügen</translation>
     </message>
     <message>
         <source>Status bar</source>
@@ -1537,20 +1482,12 @@ or this functionality is not implemented yet.</source>
         <translation>&amp;Fehlerbericht einsenden...</translation>
     </message>
     <message>
-        <source>New web browser tab</source>
-        <translation>Neuer Reiter für Browser</translation>
-    </message>
-    <message>
         <source>Close all tabs</source>
         <translation>Alle Reiter schließen</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
         <translation>Alle Reiter schließen außer dem aktuellen</translation>
-    </message>
-    <message>
-        <source>View &amp;fullscreen</source>
-        <translation>&amp;Vollbild</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
@@ -1574,10 +1511,6 @@ or this functionality is not implemented yet.</source>
         <translation>Reiter</translation>
     </message>
     <message>
-        <source>&amp;Mark all items as read</source>
-        <translation>&amp;Markiere alle Einträge als gelesen</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>&amp;Neustart</translation>
     </message>
@@ -1590,35 +1523,11 @@ or this functionality is not implemented yet.</source>
         <translation>&amp;Vorherigen Tab auswählen</translation>
     </message>
     <message>
-        <source>&amp;Enable message preview</source>
-        <translation>Nachrichtenvorschau &amp;aktivieren</translation>
-    </message>
-    <message>
         <source>&amp;Donate...</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Copy URLs of selected items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Show only &amp;unread messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Message &amp;filters</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Show tree branches</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1630,31 +1539,199 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Automatically &amp;expand items when selected</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Download all new messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download messages for &amp;selected items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Stop ongoing downloading of messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download messages for items with &amp;custom auto-download policy</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Message viewer toolbars</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Expand/collapse selected item &amp;recursively</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Fullscreen</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Fetch all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch &amp;selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch selected feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark articles &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected articles read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark articles &amp;unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected articles unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch &amp;importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch importance of selected articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark selected item read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark selected item unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clean selected item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in &amp;external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open selected articles in external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in &amp;internal browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open selected articles in internal browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark all read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>View selected item in &amp;newspaper mode</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch main &amp;window visibility</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clean all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;List headers</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Restore settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Backup settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch layout</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Send via e-mail</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Send selected articles via e-mail</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show unread items only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Restore articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Next &amp;unread article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing fetching</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New browser tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Enable article preview</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Copy URLs of selected item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show &amp;unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Show tree expanders</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch feeds with &amp;custom auto-download policy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Automatically &amp;expand item when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close opened modal dialogs first.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1694,10 +1771,6 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Sample message</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1751,16 +1824,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Output (modified) message is:
-  Title = '%1'
-  URL = '%2'
-  Author = '%3'
-  Is read/important = '%4/%5'
-  Created on = '%6'
-  Contents = &apos;%7&apos;</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>yes</source>
         <translation type="unfinished"/>
     </message>
@@ -1809,10 +1872,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Existing messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
         <translation type="unfinished"/>
     </message>
@@ -1832,6 +1891,25 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Filter messages like this</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Existing articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Sample article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Output (modified) message is:
+  Title = '%1'
+  URL = '%2'
+  Author = '%3'
+  Is read/important = '%4/%5'
+  Created on = '%6'
+  Contents = '%7'
+  RAW contents = &apos;%8&apos;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1949,18 +2027,6 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
         <translation>&amp;Datei wählen</translation>
     </message>
     <message>
-        <source>&amp;Check all items</source>
-        <translation>&amp;Alle Einträge auswählen</translation>
-    </message>
-    <message>
-        <source>&amp;Uncheck all items</source>
-        <translation>&amp;Keinen Eintrag auswählen</translation>
-    </message>
-    <message>
-        <source>Operation results</source>
-        <translation>Ergebnisse der Aktion</translation>
-    </message>
-    <message>
         <source>No file is selected.</source>
         <translation>Keine Datei ausgewählt.</translation>
     </message>
@@ -2070,6 +2136,18 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     </message>
     <message>
         <source>&amp;Import from file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Check all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Uncheck all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Operation result</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2246,10 +2324,6 @@ Sie können es jetzt installieren.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Nur die neuesten X messages pro Feed herunterladen</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>&amp;Login</translation>
     </message>
@@ -2294,10 +2368,6 @@ Sie können es jetzt installieren.</translation>
         <translation>Ein Wert wurde eingegeben.</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
         <translation type="unfinished"/>
     </message>
@@ -2311,6 +2381,14 @@ Sie können es jetzt installieren.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2401,10 +2479,6 @@ Ablauf des Login tokens: %2</translation>
         <translation>URL</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Nur die neuesten X messages pro Feed herunterladen</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Bestimmte Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
     </message>
@@ -2493,7 +2567,11 @@ Ablauf des Login tokens: %2</translation>
         <translation>URL ist in Ordnung.</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2518,11 +2596,11 @@ Ablauf des Login tokens: %2</translation>
 <context>
     <name>ImportantNode</name>
     <message>
-        <source>Important messages</source>
+        <source>Important articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can find all important messages here.</source>
+        <source>You can find all important articles here.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2551,10 +2629,6 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <source>Get my own App ID</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Nur die neuesten X messages pro Feed herunterladen</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -2605,10 +2679,6 @@ Ablauf des Login tokens: %2</translation>
         <translation>Ein Wert wurde eingegeben.</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
         <translation type="unfinished"/>
     </message>
@@ -2618,6 +2688,14 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2878,10 +2956,6 @@ Ablauf des Login tokens: %2</translation>
         <translation>Autor</translation>
     </message>
     <message>
-        <source>Created on</source>
-        <translation>Erstellt am</translation>
-    </message>
-    <message>
         <source>Contents</source>
         <translation>Inhalt</translation>
     </message>
@@ -2995,6 +3069,10 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Score of the message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Date</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3262,16 +3340,8 @@ Ablauf des Login tokens: %2</translation>
 <context>
     <name>OwnCloudAccountDetails</name>
     <message>
-        <source>Download only unread messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
         <translation>Aktualisierung auf Server erzwingen, wenn Feeds innerhalb RSS Guard aktualisiert werden</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Nur die neuesten X messages pro Feed herunterladen</translation>
     </message>
     <message>
         <source>URL</source>
@@ -3380,6 +3450,14 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <source>URL is okay.</source>
         <translation>URL ist in Ordnung.</translation>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3890,10 +3968,6 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
-        <source>Feeds &amp;&amp; categories</source>
-        <translation>Feeds &amp;&amp;Kategorien</translation>
-    </message>
-    <message>
         <source>Feed connection timeout</source>
         <translation>Zeitüberschreitung des Feeds</translation>
     </message>
@@ -3914,18 +3988,6 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
         <translation>Geben Sie das Format der Zählweise ein, mit der die Anzahl (un-) gelesener Nachrichten innerhalb der Liste von Kategorien und Feeds angezeigt wird. Die Platzhalter &quot;%all&quot; und &quot;%unread&quot; können für die Zahl aller bzw. der ungelesenen Nachrichten verwendet werden.</translation>
     </message>
     <message>
-        <source>Messages</source>
-        <translation>Nachrichten</translation>
-    </message>
-    <message>
-        <source>Remove all read messages from all feeds on application exit</source>
-        <translation>Beim Beenden sämtliche Nachrichten aus allen Feeds entfernen</translation>
-    </message>
-    <message>
-        <source>Keep message selection in the middle of the message list viewport</source>
-        <translation>Behalte die Nachrichten in der Mitte des Nachrichten-Listenfelds</translation>
-    </message>
-    <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation>Individuelles Format für Datum und Zeit verwenden (überschreibt das zur aktiven Lokalisierung gehörige Format)</translation>
     </message>
@@ -3938,10 +4000,6 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
         <translation>Vorschau der Schrift</translation>
     </message>
     <message>
-        <source>Feeds &amp; messages</source>
-        <translation>Feeds &amp; Nachrichten</translation>
-    </message>
-    <message>
         <source>Height of image attachments</source>
         <translation>Höhe angehängter Abbildungen</translation>
     </message>
@@ -3950,23 +4008,11 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
         <translation>Höhe oder Zeilen der Feedliste (-1 = Standardhöhe)</translation>
     </message>
     <message>
-        <source>Height or rows in message list (-1 = default height)</source>
-        <translation>Höhe oder Zeilen der Nachrichtenliste (-1 = Standardhöhe)</translation>
-    </message>
-    <message>
         <source>Feed list font</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Message list font</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Internal message browser font</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3990,19 +4036,51 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Bring application window to front once message is opened in external web browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Hide message counts if there are no unread messages</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Display tooltips for feeds and messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all read articles from all feeds on application exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display real icons of feeds in list of articles instead of read/unread icons</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bring application window to front once article is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Keep message selection in the middle of the article list viewport</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Height or rows in article list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list font</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article browser font</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds &amp; articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4054,10 +4132,6 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <message>
         <source>Start application hidden</source>
         <translation>Starte die Anwendung versteckt</translation>
-    </message>
-    <message>
-        <source>Enable popup balloon tooltips</source>
-        <translation>Desktop-Benachrichtigungen aktivieren</translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -4197,6 +4271,21 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
 </context>
 <context>
+    <name>SettingsNotifications</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable popup balloon tooltips</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Notifications</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>SettingsShortcuts</name>
     <message>
         <source>Keyboard shortcuts</source>
@@ -4301,10 +4390,6 @@ Typ: %3</translation>
     <message>
         <source>Form</source>
         <translation>Formular</translation>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation>Übergeordnete Kategorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4535,6 +4620,10 @@ Typ: %3</translation>
         <source>Error: %1</source>
         <translation>Fehler: %1</translation>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -4756,10 +4845,6 @@ Ungelesene Nachrichten: %2</translation>
 <context>
     <name>TtRssAccountDetails</name>
     <message>
-        <source>Download only unread messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
         <translation>Aktualisierung auf Server erzwingen, wenn Feeds innerhalb RSS Guard aktualisiert werden</translation>
     </message>
@@ -4908,8 +4993,12 @@ Ungelesene Nachrichten: %2</translation>
         <translation>URL ist in Ordnung.</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Nur die neuesten X messages pro Feed herunterladen</translation>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4917,10 +5006,6 @@ Ungelesene Nachrichten: %2</translation>
     <message>
         <source>Form</source>
         <translation>Formular</translation>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation>Übergeordnete Kategorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4950,6 +5035,10 @@ Ungelesene Nachrichten: %2</translation>
         <source>The URL is empty.</source>
         <translation>Der URL ist leer.</translation>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
@@ -4975,11 +5064,11 @@ Letzte Anmeldung am: %4</translation>
 <context>
     <name>UnreadNode</name>
     <message>
-        <source>Unread messages</source>
+        <source>Unread articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can find all unread messages here.</source>
+        <source>You can find all unread articles here.</source>
         <translation type="unfinished"/>
     </message>
 </context>

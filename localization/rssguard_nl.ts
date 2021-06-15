@@ -21,18 +21,6 @@
         <translation>Advertenties blokkeren</translation>
     </message>
     <message>
-        <source>Options</source>
-        <translation>Opties</translation>
-    </message>
-    <message>
-        <source>Learn about writing rules...</source>
-        <translation>Lees meer over het opstellen van regels...</translation>
-    </message>
-    <message>
-        <source>Filter lists (list per line)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Add your direct links to filter lists here (one URL per line)</source>
         <translation type="unfinished"/>
     </message>
@@ -42,6 +30,48 @@
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Help</source>
+        <translation>&amp;Help</translation>
+    </message>
+    <message>
+        <source>&amp;Test configuration</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter lists</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test executed yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot enable AdBlock</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are good to go.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
+
+Error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ERROR!</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -54,6 +84,21 @@
     <message>
         <source>Show AdBlock &amp;settings</source>
         <translation>Advertentieblokkering&amp;sinstellingen tonen</translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockManager</name>
+    <message>
+        <source>AdBlock needs to be configured</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>AdBlock component is not configured properly.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>failed to download filter list &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -468,10 +513,6 @@ Status: %3</translation>
         <translation>Token verkrijgen</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Download alleen de nieuwste X berichten  van een feed</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>&amp;Inloggen</translation>
     </message>
@@ -544,19 +585,19 @@ Status: %3</translation>
         <translation>Toegangstoken is goed.</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Alleen ongelezen feeds downloaden</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Error: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -974,10 +1015,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
 <context>
     <name>FormCategoryDetails</name>
     <message>
-        <source>Parent category</source>
-        <translation>Hoofdcategorie</translation>
-    </message>
-    <message>
         <source>Select parent item for your category.</source>
         <translation>Kies hoofd item voor je categorie.</translation>
     </message>
@@ -1078,6 +1115,10 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <source>Use default icon from icon theme</source>
         <translation>Standaardpictogrammen van systeem gebruiken</translation>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormDatabaseCleanup</name>
@@ -1126,20 +1167,8 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>De databank kan niet worden opgeschoond.</translation>
     </message>
     <message>
-        <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation>Instellingen opschanen (alle aangekruiste items worden volledig gewist uit de databank)</translation>
-    </message>
-    <message>
-        <source>Remove all read messages (not those from recycle bin)</source>
-        <translation>Alle gelezen berichten verwijderen (behalve die in de prullenbak)</translation>
-    </message>
-    <message>
         <source>Remove all messages from recycle bin</source>
         <translation>Alle berichten verwijderen uit de prullenbak</translation>
-    </message>
-    <message>
-        <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation>Verwijder alle berichten met ster (niet die van de prullenbak)</translation>
     </message>
     <message>
         <source>unknown</source>
@@ -1147,6 +1176,18 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Total data size</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cleanup settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all read messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all starred messages</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1210,10 +1251,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>&apos;%1&apos; bewerken</translation>
     </message>
     <message>
-        <source>Auto-downloading of messages</source>
-        <translation>Berichten automatisch downloaden</translation>
-    </message>
-    <message>
         <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
         <translation>Selecteer de manier waarop berichten van deze feed automatisch worden bijgewerkt. De standaardmanier betekent dat nieuwe berichten worden gedownload volgens de ingestelde interval zoals opgegeven in de instellingen.</translation>
     </message>
@@ -1239,6 +1276,10 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-downloading of articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1267,14 +1308,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <source>&amp;Settings</source>
         <translation>&amp;Instellingen</translation>
-    </message>
-    <message>
-        <source>&amp;Messages</source>
-        <translation>&amp;Berichten</translation>
-    </message>
-    <message>
-        <source>Switch &amp;importance of selected messages</source>
-        <translation>Als &amp;belangrijk of niet belangrijk markeren</translation>
     </message>
     <message>
         <source>Quit the application.</source>
@@ -1317,28 +1350,8 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>Toon extra informatie over RSS Guard.</translation>
     </message>
     <message>
-        <source>&amp;Delete selected messages</source>
-        <translation>Verwij&amp;der geselecteerde berichten</translation>
-    </message>
-    <message>
         <source>Hides or displays the main menu.</source>
         <translation>Verberg of toon het hoofdmenu.</translation>
-    </message>
-    <message>
-        <source>Open selected source articles in &amp;external browser</source>
-        <translation>Open geselecteerde artikelen met &amp;externe webbrowser</translation>
-    </message>
-    <message>
-        <source>Open selected messages in &amp;internal browser</source>
-        <translation>Open geselecteerde berichten met &amp;ingebouwde webbrowser</translation>
-    </message>
-    <message>
-        <source>Select &amp;next message</source>
-        <translation>Selecteer volge&amp;nd bericht</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous message</source>
-        <translation>Selecteer &amp;vorig bericht</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
@@ -1357,10 +1370,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>Hoofd&amp;menu</translation>
     </message>
     <message>
-        <source>Switch visibility of main &amp;window</source>
-        <translation>Zichtbaarheid van hoofd&amp;venster</translation>
-    </message>
-    <message>
         <source>&amp;Toolbars</source>
         <translation>&amp;Werkbalk</translation>
     </message>
@@ -1369,36 +1378,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>Zichtbaarheid van werkbalken.</translation>
     </message>
     <message>
-        <source>&amp;Feed/message list headers</source>
-        <translation>Kopteksten van &amp;feedlijst/berichtenlijst</translation>
-    </message>
-    <message>
-        <source>&amp;Restore database/settings</source>
-        <translation>Database/instellingen &amp;herstellen</translation>
-    </message>
-    <message>
-        <source>&amp;Backup database/settings</source>
-        <translation>&amp;Back-up maken van database/instellingen</translation>
-    </message>
-    <message>
-        <source>Switch message list layout orientation</source>
-        <translation>Plaatsing van het leesvenster horizontaal of verticaal</translation>
-    </message>
-    <message>
         <source>&amp;Downloads</source>
         <translation>&amp;Downloads</translation>
     </message>
     <message>
-        <source>Send selected message via e-mail</source>
-        <translation>Geselecteerde berichten verzenden via e-mail</translation>
-    </message>
-    <message>
         <source>&amp;Cleanup database</source>
         <translation>&amp;Database opschonen</translation>
-    </message>
-    <message>
-        <source>Add &amp;new item</source>
-        <translation>&amp;Nieuw item toevoegen</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
@@ -1409,24 +1394,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>Geselecteerd item &amp;verwijderen</translation>
     </message>
     <message>
-        <source>&amp;Mark selected items as read</source>
-        <translation>Als gelezen &amp;markeren</translation>
-    </message>
-    <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
         <translation>Markeer alle berichten (zonder berichtenfilters) van geselecteerde items als gelezen.</translation>
     </message>
     <message>
-        <source>&amp;Mark selected items as unread</source>
-        <translation>Als ongelezen &amp;markeren</translation>
-    </message>
-    <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
         <translation>Markeer alle berichten (zonder berichtenfilters) van geselecteerde items als ongelezen.</translation>
-    </message>
-    <message>
-        <source>&amp;Clean selected items</source>
-        <translation>Geselecteerde items &amp;opschonen</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
@@ -1437,16 +1410,8 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>Markeer alle berichten in alle items als gelezen. Dit neemt geen berichtenfilters mee in account.</translation>
     </message>
     <message>
-        <source>View selected items in &amp;newspaper mode</source>
-        <translation>Bekijk geselecteerde items in kra&amp;ntweergave</translation>
-    </message>
-    <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
         <translation>Toon alle berichten van geselecteerde item in een nieuw tabblad als &quot;krantweergave&quot;. Let op dat berichten niet automatisch als gelezen worden ingesteld.</translation>
-    </message>
-    <message>
-        <source>&amp;Clean all items</source>
-        <translation>Alle items &amp;opschonen</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
@@ -1461,16 +1426,8 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>Selecteer &amp;vorig item</translation>
     </message>
     <message>
-        <source>Show only unread items</source>
-        <translation>Toon alleen ongelezen items</translation>
-    </message>
-    <message>
         <source>&amp;Expand/collapse selected item</source>
         <translation>&amp;Uitklappen/inklappen geselecteerde item</translation>
-    </message>
-    <message>
-        <source>&amp;Restore selected messages</source>
-        <translation>&amp;Herstel geselecteerde berichten</translation>
     </message>
     <message>
         <source>No possible actions</source>
@@ -1489,24 +1446,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>&amp;Leeg alle prullenbakken</translation>
     </message>
     <message>
-        <source>Select next &amp;unread message</source>
-        <translation>Selecteer volgend &amp;ongelezen bericht</translation>
-    </message>
-    <message>
         <source>No recycle bin</source>
         <translation>Geen prullenbak</translation>
     </message>
     <message>
-        <source>Feeds &amp;&amp; categories</source>
-        <translation>Feeds &amp;&amp; categorieën</translation>
-    </message>
-    <message>
         <source>&amp;Accounts</source>
         <translation>&amp;Accounts</translation>
-    </message>
-    <message>
-        <source>&amp;Add new account</source>
-        <translation>Nieuw account toe&amp;voegen</translation>
     </message>
     <message>
         <source>Status bar</source>
@@ -1541,20 +1486,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>Rapporteer een &amp;bug...</translation>
     </message>
     <message>
-        <source>New web browser tab</source>
-        <translation>Nieuw browsertabblad</translation>
-    </message>
-    <message>
         <source>Close all tabs</source>
         <translation>Sluit alle tabbladen</translation>
     </message>
     <message>
         <source>Close all tabs except current</source>
         <translation>Sluit alle tabbladen behalve deze</translation>
-    </message>
-    <message>
-        <source>View &amp;fullscreen</source>
-        <translation>In volledig &amp;scherm weergeven</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
@@ -1578,10 +1515,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>Tabbladen</translation>
     </message>
     <message>
-        <source>&amp;Mark all items as read</source>
-        <translation>&amp;Markeer alle items als gelezen</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>&amp;Herstarten</translation>
     </message>
@@ -1594,36 +1527,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>Ga naar &amp;vorig tab</translation>
     </message>
     <message>
-        <source>&amp;Enable message preview</source>
-        <translation>Voorbeeld van berichten weergeven</translation>
-    </message>
-    <message>
         <source>&amp;Donate...</source>
         <translation>&amp;Doneren...</translation>
     </message>
     <message>
-        <source>&amp;Copy URLs of selected items</source>
-        <translation>URL van gesele&amp;cteerde items kopiëren</translation>
-    </message>
-    <message>
-        <source>Mark selected messages as &amp;read</source>
-        <translation>Als gelezen ma&amp;rkeren</translation>
-    </message>
-    <message>
-        <source>Mark selected messages as &amp;unread</source>
-        <translation>Als &amp;ongelezen markeren</translation>
-    </message>
-    <message>
-        <source>Show only &amp;unread messages</source>
-        <translation>Alleen &amp;ongelezen berichten weergeven</translation>
-    </message>
-    <message>
         <source>Message &amp;filters</source>
         <translation>Bericht&amp;filters</translation>
-    </message>
-    <message>
-        <source>&amp;Show tree branches</source>
-        <translation>Boom&amp;structuur weergeven</translation>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
@@ -1634,32 +1543,200 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>&amp;Documentatie weergeven</translation>
     </message>
     <message>
-        <source>Automatically &amp;expand items when selected</source>
-        <translation>Items automatisch uitklappen indien g&amp;eselecteerd</translation>
-    </message>
-    <message>
-        <source>&amp;Download all new messages</source>
-        <translation>Alle nieuwe berichten &amp;downloaden</translation>
-    </message>
-    <message>
-        <source>Download messages for &amp;selected items</source>
-        <translation>Berichten downloaden van geselecteerde item&amp;s</translation>
-    </message>
-    <message>
-        <source>Stop ongoing downloading of messages</source>
-        <translation>Downloaden van berichten annuleren</translation>
-    </message>
-    <message>
-        <source>Download messages for items with &amp;custom auto-download policy</source>
-        <translation>Berichten automatisch downloaden volgens beleidsinstellingen</translation>
-    </message>
-    <message>
         <source>Message viewer toolbars</source>
         <translation>Werkbalk van berichtweergave</translation>
     </message>
     <message>
         <source>Expand/collapse selected item &amp;recursively</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds</source>
+        <translation>Feeds</translation>
+    </message>
+    <message>
+        <source>&amp;Add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Fullscreen</source>
+        <translation>&amp;Beeldvullend</translation>
+    </message>
+    <message>
+        <source>&amp;Fetch all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch &amp;selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch selected feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark articles &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected articles read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark articles &amp;unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark selected articles unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch &amp;importance</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch importance of selected articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark selected item read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark selected item unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clean selected item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in &amp;external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open selected articles in external browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open in &amp;internal browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open selected articles in internal browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark all read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>View selected item in &amp;newspaper mode</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch main &amp;window visibility</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clean all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;List headers</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Restore settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Backup settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Switch layout</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Send via e-mail</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Send selected articles via e-mail</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show unread items only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Restore articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Next &amp;unread article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Stop ongoing fetching</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New browser tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Enable article preview</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Copy URLs of selected item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show &amp;unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Show tree expanders</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch feeds with &amp;custom auto-download policy</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Automatically &amp;expand item when selected</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close opened modal dialogs first.</source>
+        <translation>Sluit geopende modaalvensters eerst.</translation>
     </message>
 </context>
 <context>
@@ -1699,10 +1776,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
         <translation>Aangepaste filtering van berichten volgens jouw eigen JavaScript-code.</translation>
-    </message>
-    <message>
-        <source>Sample message</source>
-        <translation>Voorbeeldbericht</translation>
     </message>
     <message>
         <source>Read</source>
@@ -1757,22 +1830,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>GEWEIGERD</translation>
     </message>
     <message>
-        <source>Output (modified) message is:
-  Title = '%1'
-  URL = '%2'
-  Author = '%3'
-  Is read/important = '%4/%5'
-  Created on = '%6'
-  Contents = &apos;%7&apos;</source>
-        <translation>Uitvoer van (aangepast) bericht is:
-  Titel = &apos;%1&apos;
-  URL = &apos;%2&apos;
-  Auteur = &apos;%3&apos;
-  Is gelezen/belangrijk = &apos;%4/%5&apos;
-  Aangemaakt op = &apos;%6&apos;
-  Inhoud = &apos;%7&apos;</translation>
-    </message>
-    <message>
         <source>yes</source>
         <translation>ja</translation>
     </message>
@@ -1821,10 +1878,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>Mooi &amp;maken</translation>
     </message>
     <message>
-        <source>Existing messages</source>
-        <translation>Bestaande berichten</translation>
-    </message>
-    <message>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
         <translation>Nieuw filter kan niet opgeslagen worden. Fout: &apos;%1&apos;.</translation>
     </message>
@@ -1847,6 +1900,25 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <source>Filter messages like this</source>
         <translation>Berichten op deze manier filteren</translation>
+    </message>
+    <message>
+        <source>Existing articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Sample article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Output (modified) message is:
+  Title = '%1'
+  URL = '%2'
+  Author = '%3'
+  Is read/important = '%4/%5'
+  Created on = '%6'
+  Contents = '%7'
+  RAW contents = &apos;%8&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1963,18 +2035,6 @@ Je moet handmatig herstarten.</translation>
         <translation>&amp;Selecteer bestand</translation>
     </message>
     <message>
-        <source>&amp;Check all items</source>
-        <translation>&amp;Controleer alle items</translation>
-    </message>
-    <message>
-        <source>&amp;Uncheck all items</source>
-        <translation>&amp;Vinkje bij alle items</translation>
-    </message>
-    <message>
-        <source>Operation results</source>
-        <translation>Resultaten</translation>
-    </message>
-    <message>
         <source>No file is selected.</source>
         <translation>Geen bestand geselecteerd.</translation>
     </message>
@@ -2085,6 +2145,18 @@ Je moet handmatig herstarten.</translation>
     <message>
         <source>&amp;Import from file</source>
         <translation>Van bestand &amp;importeren</translation>
+    </message>
+    <message>
+        <source>&amp;Check all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Uncheck all feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Operation result</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2261,10 +2333,6 @@ Installeer het nu.</translation>
         <translation>Mijn inloggegevens verkrijgen</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Download alleen de nieuwste X berichten van een feed</translation>
-    </message>
-    <message>
         <source>&amp;Login</source>
         <translation>&amp;Inloggen</translation>
     </message>
@@ -2309,10 +2377,6 @@ Installeer het nu.</translation>
         <translation>Een waarde is ingevoerd.</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Alleen ongelezen feeds downloaden</translation>
-    </message>
-    <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
         <translation type="unfinished"/>
     </message>
@@ -2326,6 +2390,14 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2416,10 +2488,6 @@ Logintoken verloopt: %2</translation>
         <translation>URL</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Download alleen de nieuwste X berichten van een feed</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Sommige feeds vereisen inloggegevens, inclusief feeds van Gmail. Ondersteunde authenticatiemethoden zijn BASIC, NTLM-2 en DIGEST-MD5.</translation>
     </message>
@@ -2508,8 +2576,12 @@ Logintoken verloopt: %2</translation>
         <translation>Url is goed.</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Alleen ongelezen feeds downloaden</translation>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2533,12 +2605,12 @@ Logintoken verloopt: %2</translation>
 <context>
     <name>ImportantNode</name>
     <message>
-        <source>Important messages</source>
-        <translation>Belangrijke berichten</translation>
+        <source>Important articles</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can find all important messages here.</source>
-        <translation>Hier kan je alle belangrijke berichten vinden.</translation>
+        <source>You can find all important articles here.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2566,10 +2638,6 @@ Logintoken verloopt: %2</translation>
     <message>
         <source>Get my own App ID</source>
         <translation>Mijn eigen applicatie-ID verkrijgen</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Download alleen de nieuwste X berichten van een feed</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -2620,10 +2688,6 @@ Logintoken verloopt: %2</translation>
         <translation>Een waarde is ingevoerd.</translation>
     </message>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Alleen ongelezen feeds downloaden</translation>
-    </message>
-    <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
         <translation type="unfinished"/>
     </message>
@@ -2633,6 +2697,14 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2893,10 +2965,6 @@ Logintoken verloopt: %2</translation>
         <translation>Auteur</translation>
     </message>
     <message>
-        <source>Created on</source>
-        <translation>Gemaakt op</translation>
-    </message>
-    <message>
         <source>Contents</source>
         <translation>Inhoud</translation>
     </message>
@@ -3010,6 +3078,10 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Score of the message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Date</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3277,16 +3349,8 @@ Logintoken verloopt: %2</translation>
 <context>
     <name>OwnCloudAccountDetails</name>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Alleen ongelezen feeds downloaden</translation>
-    </message>
-    <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
         <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
-    </message>
-    <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Download alleen de nieuwste X berichten van een feed</translation>
     </message>
     <message>
         <source>URL</source>
@@ -3395,6 +3459,14 @@ Logintoken verloopt: %2</translation>
     <message>
         <source>URL is okay.</source>
         <translation>Url is goed.</translation>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3907,10 +3979,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
-        <source>Feeds &amp;&amp; categories</source>
-        <translation>Feeds &amp;&amp; categorieën</translation>
-    </message>
-    <message>
         <source>Feed connection timeout</source>
         <translation>Feedverbindingstime-out</translation>
     </message>
@@ -3931,18 +3999,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <translation>Voer formaat in voor telling van berichten weergegeven naast elke feed/categorie in feedlijst. Gebruik &quot;%all&quot; en &quot;%unread&quot; als plaatshouders voor de eigenlijke telling van alle (of all ongelezen) berichten.</translation>
     </message>
     <message>
-        <source>Messages</source>
-        <translation>Berichten</translation>
-    </message>
-    <message>
-        <source>Remove all read messages from all feeds on application exit</source>
-        <translation>Verwijder gelezen berichten van alle feeds bij het afsluiten</translation>
-    </message>
-    <message>
-        <source>Keep message selection in the middle of the message list viewport</source>
-        <translation>Selectie van berichten in het midden van het zichtbare overzicht houden</translation>
-    </message>
-    <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation>Gebruik aangepaste datum- en tijdopmaak (overschrijft de standaardopmaak van huidige locatie)</translation>
     </message>
@@ -3955,10 +4011,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <translation>Voorbeeld lettertype</translation>
     </message>
     <message>
-        <source>Feeds &amp; messages</source>
-        <translation>Feeds &amp; berichten</translation>
-    </message>
-    <message>
         <source>Height of image attachments</source>
         <translation>Hoogte van bijgesloten afbeeldingen</translation>
     </message>
@@ -3967,24 +4019,12 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <translation>Hoogte of aantal rijen in feedlijst (-1 = standaardhoogte)</translation>
     </message>
     <message>
-        <source>Height or rows in message list (-1 = default height)</source>
-        <translation>Hoogte of aantal rijen in berichtenlijst (-1 = standaardhoogte)</translation>
-    </message>
-    <message>
         <source>Feed list font</source>
         <translation>Lettertype feedlijst</translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
         <translation>Plaatshouders weergeven met locatie van afbeeldingen</translation>
-    </message>
-    <message>
-        <source>Message list font</source>
-        <translation>Lettertype berichtenlijst</translation>
-    </message>
-    <message>
-        <source>Internal message browser font</source>
-        <translation>Lettertype interne browser</translation>
     </message>
     <message>
         <source>Select new font</source>
@@ -4007,19 +4047,51 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <translation>Berichten van alle feeds automatisch downloaden</translation>
     </message>
     <message>
-        <source>Bring application window to front once message is opened in external web browser</source>
-        <translation>Breng het applicatievenster naar de voorgrond nadat het bericht in de externe browser is geopend</translation>
-    </message>
-    <message>
-        <source>Display real icons of feeds in list of messages instead of read/unread icons</source>
-        <translation>Geef feedpictogram in de berichtlijst weer in plaats van indicatie van gelezen/ongelezen</translation>
-    </message>
-    <message>
         <source>Hide message counts if there are no unread messages</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Display tooltips for feeds and messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds</source>
+        <translation>Feeds</translation>
+    </message>
+    <message>
+        <source>Articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all read articles from all feeds on application exit</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display real icons of feeds in list of articles instead of read/unread icons</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bring application window to front once article is opened in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Keep message selection in the middle of the article list viewport</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Height or rows in article list (-1 = default height)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list font</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article browser font</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds &amp; articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4071,10 +4143,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     <message>
         <source>Start application hidden</source>
         <translation>Start programma verborgen</translation>
-    </message>
-    <message>
-        <source>Enable popup balloon tooltips</source>
-        <translation>Gebruik tooltips in tekstballon</translation>
     </message>
     <message>
         <source>Tabs</source>
@@ -4214,6 +4282,21 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
 </context>
 <context>
+    <name>SettingsNotifications</name>
+    <message>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <source>Enable popup balloon tooltips</source>
+        <translation>Gebruik tooltips in tekstballon</translation>
+    </message>
+    <message>
+        <source>Notifications</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>SettingsShortcuts</name>
     <message>
         <source>Keyboard shortcuts</source>
@@ -4318,10 +4401,6 @@ Type: %3</translation>
     <message>
         <source>Form</source>
         <translation>Form</translation>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation>Hoofdcategorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4552,6 +4631,10 @@ Type: %3</translation>
         <source>Error: %1</source>
         <translation>Fout: %1</translation>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -4774,10 +4857,6 @@ Ongelezen nieuws: %2</translation>
 <context>
     <name>TtRssAccountDetails</name>
     <message>
-        <source>Download only unread messages</source>
-        <translation>Alleen ongelezen feeds downloaden</translation>
-    </message>
-    <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
         <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
     </message>
@@ -4926,8 +5005,12 @@ Ongelezen nieuws: %2</translation>
         <translation>URL is goed.</translation>
     </message>
     <message>
-        <source>Only download newest X messages per feed</source>
-        <translation>Download alleen de nieuwste X berichten van een feed</translation>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4935,10 +5018,6 @@ Ongelezen nieuws: %2</translation>
     <message>
         <source>Form</source>
         <translation>Form</translation>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation>Hoofdcategorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -4968,6 +5047,10 @@ Ongelezen nieuws: %2</translation>
         <source>The URL is empty.</source>
         <translation>De URL is leeg.</translation>
     </message>
+    <message>
+        <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>TtRssServiceRoot</name>
@@ -4993,11 +5076,11 @@ Laatste login: %4</translation>
 <context>
     <name>UnreadNode</name>
     <message>
-        <source>Unread messages</source>
+        <source>Unread articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can find all unread messages here.</source>
+        <source>You can find all unread articles here.</source>
         <translation type="unfinished"/>
     </message>
 </context>
