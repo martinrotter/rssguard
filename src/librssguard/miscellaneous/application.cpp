@@ -87,7 +87,15 @@ Application::Application(const QString& id, int& argc, char** argv)
   });
 #endif
 
-  m_notifications->load(settings());
+  if (isFirstRun()) {
+    m_notifications->save({
+      Notification(Notification::Event::NewArticlesFetched,
+                   QSL("%1/rooster.wav").arg(SOUNDS_BUILTIN_DIRECTORY))
+    }, settings());
+  }
+  else {
+    m_notifications->load(settings());
+  }
 
   qDebugNN << LOGSEC_CORE
            << "OpenSSL version:"
@@ -229,6 +237,11 @@ DatabaseFactory* Application::database() {
 void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), General::FirstRun, false);
   settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, false);
+}
+
+NotificationFactory* Application::notifications() const
+{
+  return m_notifications;
 }
 
 void Application::setFeedReader(FeedReader* feed_reader) {

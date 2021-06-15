@@ -10,16 +10,20 @@ class Application;
 class Notification {
   public:
     enum class Event {
+      UnknownEvent = 0,
+
       // New (unread) messages were downloaded for some feed.
-      NewMessagesDownloaded = 1,
+      NewArticlesFetched = 1,
 
       // RSS Guard started downloading messages for some feed.
-      MesssagesDownloadStarted = 2,
+      ArticlesFetchingStarted = 2,
 
       // Login tokens were successfuly refreshed.
       // NOTE: This is primarily used in accounts which use
       // OAuth or similar mechanism.
-      LoginDataRefreshed = 4
+      LoginDataRefreshed = 4,
+
+      // TODO: app update is available
     };
 
     explicit Notification();
@@ -35,6 +39,9 @@ class Notification {
     void setSoundPath(const QString& sound_path);
 
     void playSound(Application* app) const;
+
+    static QList<Event> allEvents();
+    static QString nameForEvent(Event event);
 
   private:
     Event m_event;

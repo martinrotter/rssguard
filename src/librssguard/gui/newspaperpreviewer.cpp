@@ -42,13 +42,13 @@ void NewspaperPreviewer::showMoreMessages() {
       prev->loadMessage(msg, m_root.data());
     }
 
-    m_ui->m_btnShowMoreMessages->setText(tr("Show more messages (%n remaining)", "", m_messages.size()));
+    m_ui->m_btnShowMoreMessages->setText(tr("Show more articles (%n remaining)", "", m_messages.size()));
     m_ui->m_btnShowMoreMessages->setEnabled(!m_messages.isEmpty());
     m_ui->scrollArea->verticalScrollBar()->setValue(current_scroll);
   }
   else {
-    qApp->showGuiMessage(tr("Cannot show more messages"),
-                         tr("Cannot show more messages because parent feed was removed."),
+    qApp->showGuiMessage(tr("Cannot show more articles"),
+                         tr("Cannot show more articles because parent feed was removed."),
                          QSystemTrayIcon::MessageIcon::Warning,
                          qApp->mainForm(),
                          true);

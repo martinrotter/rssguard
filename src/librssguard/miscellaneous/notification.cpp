@@ -30,3 +30,27 @@ void Notification::setSoundPath(const QString& sound_path) {
 void Notification::playSound(Application* app) const {
   QSound::play(QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath)));
 }
+
+QList<Notification::Event> Notification::allEvents() {
+  return {
+    Event::NewArticlesFetched,
+    Event::ArticlesFetchingStarted,
+    Event::LoginDataRefreshed
+  };
+}
+
+QString Notification::nameForEvent(Notification::Event event) {
+  switch (event) {
+    case Notification::Event::NewArticlesFetched:
+      return QObject::tr("New articles fetched");
+
+    case Notification::Event::ArticlesFetchingStarted:
+      return QObject::tr("Fetching articles right now");
+
+    case Notification::Event::LoginDataRefreshed:
+      return QObject::tr("Login data refreshed");
+
+    default:
+      return QObject::tr("Unknown event");
+  }
+}

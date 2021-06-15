@@ -15,6 +15,7 @@ class NotificationFactory : public QObject {
   public:
     explicit NotificationFactory(QObject* parent = nullptr);
 
+    QList<Notification> allNotifications() const;
     Notification notificationForEvent(Notification::Event event) const;
 
   public slots:

@@ -432,7 +432,7 @@ class Settings : public QSettings {
     void setValue(const QString& key, const QVariant& value);
 
     bool contains(const QString& section, const QString& key) const;
-    void remove(const QString& section, const QString& key);
+    void remove(const QString& section, const QString& key = {});
 
     // Returns the path which contains the settings.
     QString pathName() const;
@@ -487,7 +487,14 @@ inline bool Settings::contains(const QString& section, const QString& key) const
 }
 
 inline void Settings::remove(const QString& section, const QString& key) {
-  QSettings::remove(QString(QSL("%1/%2")).arg(section, key));
+  if (key.isEmpty()) {
+    beginGroup(section);
+    QSettings::remove({});
+    endGroup();
+  }
+  else {
+    QSettings::remove(QString(QSL("%1/%2")).arg(section, key));
+  }
 }
 
 #endif // SETTINGS_H

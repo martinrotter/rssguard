@@ -7,7 +7,13 @@
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/settings.h"
 
+#include <QRegularExpression>
+
 NotificationFactory::NotificationFactory(QObject* parent) : QObject(parent) {}
+
+QList<Notification> NotificationFactory::allNotifications() const {
+  return m_notifications;
+}
 
 Notification NotificationFactory::notificationForEvent(Notification::Event event) const {
   auto good_n = boolinq::from(m_notifications).where([event](const Notification& n) {
@@ -23,15 +29,23 @@ Notification NotificationFactory::notificationForEvent(Notification::Event event
 }
 
 void NotificationFactory::load(Settings* settings) {
-  //settings->allKeys(Notifications::ID)
+  auto notif_keys = settings->allKeys(GROUP(Notifications)).filter(QRegularExpression(QSL("^\\d+$")));
 
-  m_notifications = {
-    Notification()
-  };
+  m_notifications.clear();
+
+  for (const auto& key : notif_keys) {
+    auto event = Notification::Event(key.toInt());
+    auto sound = settings->value(GROUP(Notifications), key).toString();
+
+    m_notifications.append(Notification(event, sound));
+  }
 }
 
 void NotificationFactory::save(const QList<Notification>& new_notifications, Settings* settings) {
+  settings->remove(GROUP(Notifications));
   m_notifications = new_notifications;
 
-  //
+  for (const auto& n : qAsConst(m_notifications)) {
+    settings->setValue(GROUP(Notifications), QString::number(int(n.event())), n.soundPath());
+  }
 }

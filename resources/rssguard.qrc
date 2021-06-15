@@ -6,6 +6,11 @@
         <file>text/COPYING_GNU_GPL</file>
         <file>text/COPYING_GNU_GPL_HTML</file>
 
+        <file>sounds/boing.wav</file>
+        <file>sounds/doorbell.wav</file>
+        <file>sounds/rooster.wav</file>
+        <file>sounds/sheep.wav</file>
+
         <file>scripts/adblock/adblock-server.js</file>
         <file>scripts/public_suffix_list.dat</file>
         

@@ -60,6 +60,8 @@ HEADERS += core/feeddownloader.h \
            exceptions/ioexception.h \
            exceptions/networkexception.h \
            exceptions/scriptexception.h \
+           gui/notifications/notificationseditor.h \
+           gui/notifications/singlenotificationeditor.h \
            gui/reusable/baselineedit.h \
            gui/settings/settingsnotifications.h \
            gui/toolbars/basetoolbar.h \
@@ -242,6 +244,8 @@ SOURCES += core/feeddownloader.cpp \
            exceptions/ioexception.cpp \
            exceptions/networkexception.cpp \
            exceptions/scriptexception.cpp \
+           gui/notifications/notificationseditor.cpp \
+           gui/notifications/singlenotificationeditor.cpp \
            gui/reusable/baselineedit.cpp \
            gui/settings/settingsnotifications.cpp \
            gui/toolbars/basetoolbar.cpp \
@@ -402,6 +406,8 @@ FORMS += gui/dialogs/formabout.ui \
          gui/dialogs/formrestoredatabasesettings.ui \
          gui/dialogs/formsettings.ui \
          gui/dialogs/formupdate.ui \
+         gui/notifications/notificationseditor.ui \
+         gui/notifications/singlenotificationeditor.ui \
          gui/reusable/networkproxydetails.ui \
          gui/newspaperpreviewer.ui \
          gui/reusable/searchtextwidget.ui \
@@ -494,6 +500,7 @@ INCLUDEPATH +=  $$PWD/. \
                 $$PWD/gui/dialogs \
                 $$PWD/gui/reusable \
                 $$PWD/gui/toolbars \
+                $$PWD/gui/notifications \
                 $$PWD/dynamic-shortcuts
 
 TRANSLATIONS += $$files($$PWD/../../localization/rssguard_*.ts, false) \

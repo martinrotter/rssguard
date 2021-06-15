@@ -76,6 +76,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     FormMain* mainForm();
     QWidget* mainFormWidget();
     SystemTrayIcon* trayIcon();
+    NotificationFactory* notifications() const;
 
     QIcon desktopAwareIcon() const;
 
