@@ -17,8 +17,8 @@ class SingleNotificationEditor : public QWidget {
 
     Notification notification() const;
 
-    bool notificationEnabled() const;
-    void setNotificationEnabled(bool enabled);
+  signals:
+    void notificationChanged();
 
   private slots:
     void playSound();

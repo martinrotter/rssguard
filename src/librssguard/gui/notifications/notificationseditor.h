@@ -19,6 +19,11 @@ class NotificationsEditor : public QScrollArea {
 
     void loadNotifications(const QList<Notification>& notifications);
 
+    QList<Notification> allNotifications() const;
+
+  signals:
+    void someNotificationChanged();
+
   private:
     Ui::NotificationsEditor m_ui;
     QVBoxLayout* m_layout;

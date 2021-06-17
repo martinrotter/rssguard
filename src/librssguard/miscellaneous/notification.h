@@ -10,7 +10,9 @@ class Application;
 class Notification {
   public:
     enum class Event {
-      UnknownEvent = 0,
+      // Is here to provide "empty" events - events which should
+      // not trigger any notifications.
+      NoEvent = 0,
 
       // New (unread) messages were downloaded for some feed.
       NewArticlesFetched = 1,
@@ -26,8 +28,9 @@ class Notification {
       // TODO: app update is available
     };
 
-    explicit Notification();
-    explicit Notification(Event event, const QString& sound_path);
+    explicit Notification(Event event = Event::NoEvent, bool balloon = {}, const QString& sound_path = {});
+
+    bool balloonEnabled() const;
 
     Event event() const;
     void setEvent(const Event& event);
@@ -45,6 +48,7 @@ class Notification {
 
   private:
     Event m_event;
+    bool m_balloonEnabled;
     QString m_soundPath;
 };
 

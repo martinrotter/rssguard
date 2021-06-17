@@ -26,14 +26,14 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="0" column="0" colspan="2">
+   <item row="1" column="0" colspan="2">
     <widget class="QCheckBox" name="m_checkEnableNotifications">
      <property name="text">
       <string>Enable notifications</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="4" column="0" colspan="2">
     <widget class="NotificationsEditor" name="m_editor" native="true">
      <property name="enabled">
       <bool>false</bool>
@@ -46,8 +46,15 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item row="3" column="0" colspan="2">
     <widget class="QLabel" name="m_lblAvailableSounds"/>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="m_lblInfo">
+     <property name="text">
+      <string>You must have &quot;tray icon&quot; activated to have notifications working.</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

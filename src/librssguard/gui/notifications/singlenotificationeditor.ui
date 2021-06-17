@@ -40,18 +40,18 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
      <layout class="QFormLayout" name="formLayout">
-      <item row="0" column="0">
+      <item row="1" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Sound</string>
         </property>
+        <property name="buddy">
+         <cstring>m_txtSound</cstring>
+        </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="1" column="1">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLineEdit" name="m_txtSound">
@@ -76,11 +76,24 @@
         </item>
        </layout>
       </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QCheckBox" name="m_cbBalloon">
+        <property name="text">
+         <string>Balloon notification</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_cbBalloon</tabstop>
+  <tabstop>m_txtSound</tabstop>
+  <tabstop>m_btnBrowseSound</tabstop>
+  <tabstop>m_btnPlaySound</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

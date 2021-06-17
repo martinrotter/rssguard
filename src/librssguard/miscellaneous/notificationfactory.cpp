@@ -5,6 +5,7 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 
 #include <QRegularExpression>
@@ -16,12 +17,21 @@ QList<Notification> NotificationFactory::allNotifications() const {
 }
 
 Notification NotificationFactory::notificationForEvent(Notification::Event event) const {
+  if (!qApp->settings()->value(GROUP(Notifications), SETTING(Notifications::EnableNotifications)).toBool()) {
+    return Notification();
+  }
+
   auto good_n = boolinq::from(m_notifications).where([event](const Notification& n) {
     return n.event() == event;
   });
 
   if (good_n.count() <= 0) {
-    throw ApplicationException(QSL("notification for event %1 was not found").arg(QString::number(int(event))));
+    qCriticalNN << LOGSEC_CORE
+                << "Notification for event"
+                << QUOTE_W_SPACE(int(event))
+                << "not found";
+
+    return Notification();
   }
   else {
     return good_n.first();
@@ -35,9 +45,11 @@ void NotificationFactory::load(Settings* settings) {
 
   for (const auto& key : notif_keys) {
     auto event = Notification::Event(key.toInt());
-    auto sound = settings->value(GROUP(Notifications), key).toString();
+    auto data = settings->value(GROUP(Notifications), key).toStringList();
+    auto enabled = data.at(0).toInt() != 0;
+    auto sound = data.at(1);
 
-    m_notifications.append(Notification(event, sound));
+    m_notifications.append(Notification(event, enabled, sound));
   }
 }
 
@@ -46,6 +58,9 @@ void NotificationFactory::save(const QList<Notification>& new_notifications, Set
   m_notifications = new_notifications;
 
   for (const auto& n : qAsConst(m_notifications)) {
-    settings->setValue(GROUP(Notifications), QString::number(int(n.event())), n.soundPath());
+    settings->setValue(GROUP(Notifications), QString::number(int(n.event())), QStringList {
+      n.balloonEnabled() ? QSL("1") : QSL("0"),
+      n.soundPath()
+    });
   }
 }

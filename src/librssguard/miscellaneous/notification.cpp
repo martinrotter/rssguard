@@ -7,9 +7,8 @@
 #include <QDir>
 #include <QSound>
 
-Notification::Notification() {}
-
-Notification::Notification(Notification::Event event, const QString& sound_path) : m_event(event), m_soundPath(sound_path) {}
+Notification::Notification(Notification::Event event, bool balloon, const QString& sound_path)
+  : m_event(event), m_balloonEnabled(balloon), m_soundPath(sound_path) {}
 
 Notification::Event Notification::event() const {
   return m_event;
@@ -53,4 +52,9 @@ QString Notification::nameForEvent(Notification::Event event) {
     default:
       return QObject::tr("Unknown event");
   }
+}
+
+bool Notification::balloonEnabled() const
+{
+  return m_balloonEnabled;
 }

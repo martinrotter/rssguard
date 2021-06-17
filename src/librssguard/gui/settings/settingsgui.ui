@@ -116,7 +116,7 @@
      </widget>
      <widget class="QWidget" name="m_tabNotifications">
       <attribute name="title">
-       <string>Tray area &amp;&amp; notifications</string>
+       <string>Tray area</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_3">
        <item row="0" column="0">

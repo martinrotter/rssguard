@@ -15,8 +15,10 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
   m_ui.setupUi(this);
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblAvailableSounds, false);
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
 
   connect(m_ui.m_checkEnableNotifications, &QCheckBox::toggled, this, &SettingsNotifications::dirtifySettings);
+  connect(m_ui.m_editor, &NotificationsEditor::someNotificationChanged, this, &SettingsNotifications::dirtifySettings);
 }
 
 void SettingsNotifications::loadSettings() {
@@ -43,6 +45,7 @@ void SettingsNotifications::saveSettings() {
 
   // Save notifications.
   settings()->setValue(GROUP(Notifications), Notifications::EnableNotifications, m_ui.m_checkEnableNotifications->isChecked());
+  qApp->notifications()->save(m_ui.m_editor->allNotifications(), settings());
 
   onEndSaveSettings();
 }
