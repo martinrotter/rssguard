@@ -34,7 +34,7 @@ void SettingsNotifications::loadSettings() {
   m_ui.m_lblAvailableSounds->setText(QSL("Built-in sounds:\n%1").arg(descs));
 
   // Load fancy notification settings.
-  m_ui.m_checkEnableNotifications->setChecked(settings()->value(GROUP(Notifications), SETTING(Notifications::EnableNotifications)).toBool());
+  m_ui.m_checkEnableNotifications->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool());
   m_ui.m_editor->loadNotifications(qApp->notifications()->allNotifications());
 
   onEndLoadSettings();
@@ -44,7 +44,7 @@ void SettingsNotifications::saveSettings() {
   onBeginSaveSettings();
 
   // Save notifications.
-  settings()->setValue(GROUP(Notifications), Notifications::EnableNotifications, m_ui.m_checkEnableNotifications->isChecked());
+  settings()->setValue(GROUP(GUI), GUI::EnableNotifications, m_ui.m_checkEnableNotifications->isChecked());
   qApp->notifications()->save(m_ui.m_editor->allNotifications(), settings());
 
   onEndSaveSettings();

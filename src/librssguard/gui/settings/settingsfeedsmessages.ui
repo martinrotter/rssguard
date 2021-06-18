@@ -73,7 +73,14 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="2" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkAutoUpdateOnlyUnfocused">
+         <property name="text">
+          <string>Only auto-download messages when application is unfocused</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
         <widget class="QGroupBox" name="groupBox_6">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -105,7 +112,17 @@
          </layout>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Feed connection timeout</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_spinFeedUpdateTimeout</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
         <widget class="QSpinBox" name="m_spinFeedUpdateTimeout">
          <property name="toolTip">
           <string>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</string>
@@ -124,7 +141,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
+       <item row="5" column="0">
         <widget class="QLabel" name="label_6">
          <property name="text">
           <string>Height or rows in feed list (-1 = default height)</string>
@@ -134,7 +151,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="1">
+       <item row="5" column="1">
         <widget class="QSpinBox" name="m_spinHeightRowsFeeds">
          <property name="minimum">
           <number>-1</number>
@@ -144,7 +161,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="label_8">
          <property name="text">
           <string>Message count format in feed list</string>
@@ -154,7 +171,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
+       <item row="6" column="1">
         <widget class="QComboBox" name="m_cmbCountsFeedList">
          <property name="toolTip">
           <string notr="true"/>
@@ -164,7 +181,7 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="0" colspan="2">
+       <item row="7" column="0" colspan="2">
         <widget class="QLabel" name="label_9">
          <property name="font">
           <font>
@@ -182,7 +199,21 @@
          </property>
         </widget>
        </item>
-       <item row="11" column="0" colspan="2">
+       <item row="8" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbHideCountsIfNoUnread">
+         <property name="text">
+          <string>Hide message counts if there are no unread messages</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkShowTooltips">
+         <property name="text">
+          <string>Display tooltips for feeds and messages</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0" colspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -194,44 +225,6 @@
           </size>
          </property>
         </spacer>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Feed connection timeout</string>
-         </property>
-         <property name="buddy">
-          <cstring>m_spinFeedUpdateTimeout</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbHideCountsIfNoUnread">
-         <property name="text">
-          <string>Hide message counts if there are no unread messages</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_checkShowTooltips">
-         <property name="text">
-          <string>Display tooltips for feeds and messages</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_checkAutoUpdateOnlyUnfocused">
-         <property name="text">
-          <string>Only auto-download messages when application is unfocused</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_checkAutoUpdateNotification">
-         <property name="text">
-          <string>Enable &quot;auto-download started&quot; notification</string>
-         </property>
-        </widget>
        </item>
       </layout>
      </widget>
@@ -432,7 +425,6 @@
   <tabstop>m_spinStartupUpdateDelay</tabstop>
   <tabstop>m_checkAutoUpdate</tabstop>
   <tabstop>m_spinAutoUpdateInterval</tabstop>
-  <tabstop>m_checkAutoUpdateNotification</tabstop>
   <tabstop>m_checkAutoUpdateOnlyUnfocused</tabstop>
   <tabstop>m_btnChangeFeedListFont</tabstop>
   <tabstop>m_spinFeedUpdateTimeout</tabstop>

@@ -39,9 +39,6 @@ DKEY Feeds::ID = "feeds";
 DKEY Feeds::UpdateTimeout = "feed_update_timeout";
 DVALUE(int) Feeds::UpdateTimeoutDef = DOWNLOAD_TIMEOUT;
 
-DKEY Feeds::EnableAutoUpdateNotification = "enable_auto_update_notification";
-DVALUE(bool) Feeds::EnableAutoUpdateNotificationDef = false;
-
 DKEY Feeds::CountFormat = "count_format";
 DVALUE(char*) Feeds::CountFormatDef = "(%unread)";
 
@@ -181,6 +178,9 @@ DVALUE(bool) GUI::MessageViewerToolbarsVisibleDef = true;
 DKEY GUI::StatusBarVisible = "enable_status_bar";
 DVALUE(bool) GUI::StatusBarVisibleDef = true;
 
+DKEY GUI::EnableNotifications = "enable_notifications";
+DVALUE(bool) GUI::EnableNotificationsDef = true;
+
 DKEY GUI::HideMainWindowWhenMinimized = "hide_when_minimized";
 DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef = false;
 
@@ -311,9 +311,6 @@ DKEY Keyboard::ID = "keyboard";
 
 // Notifications.
 DKEY Notifications::ID = "notifications";
-
-DKEY Notifications::EnableNotifications = "enable_notifications";
-DVALUE(bool) Notifications::EnableNotificationsDef = true;
 
 // Web browser.
 DKEY Browser::ID = "browser";

@@ -316,12 +316,10 @@ void FeedReader::executeNextAutoUpdate() {
     updateFeeds(feeds_for_update);
 
     // NOTE: OSD/bubble informing about performing of scheduled update can be shown now.
-    if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableAutoUpdateNotification)).toBool()) {
-      qApp->showGuiMessage(Notification::Event::ArticlesFetchingStarted,
-                           tr("Starting auto-download of some feeds' articles"),
-                           tr("I will auto-download new articles for %n feed(s).", nullptr, feeds_for_update.size()),
-                           QSystemTrayIcon::MessageIcon::Information);
-    }
+    qApp->showGuiMessage(Notification::Event::ArticlesFetchingStarted,
+                         tr("Starting auto-download of some feeds' articles"),
+                         tr("I will auto-download new articles for %n feed(s).", nullptr, feeds_for_update.size()),
+                         QSystemTrayIcon::MessageIcon::Information);
   }
 }
 

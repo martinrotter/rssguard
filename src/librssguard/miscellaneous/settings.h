@@ -56,9 +56,6 @@ namespace Feeds {
   KEY UpdateTimeout;
   VALUE(int) UpdateTimeoutDef;
 
-  KEY EnableAutoUpdateNotification;
-  VALUE(bool) EnableAutoUpdateNotificationDef;
-
   KEY CountFormat;
   VALUE(char*) CountFormatDef;
 
@@ -143,6 +140,9 @@ namespace Messages {
 // GUI.
 namespace GUI {
   KEY ID;
+
+  KEY EnableNotifications;
+  VALUE(bool) EnableNotificationsDef;
 
   KEY MessageViewState;
   VALUE(QString) MessageViewStateDef;
@@ -360,9 +360,6 @@ namespace Keyboard {
 // Notifications.
 namespace Notifications {
   KEY ID;
-
-  KEY EnableNotifications;
-  VALUE(bool) EnableNotificationsDef;
 }
 
 // Web browser.

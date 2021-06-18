@@ -17,7 +17,7 @@ QList<Notification> NotificationFactory::allNotifications() const {
 }
 
 Notification NotificationFactory::notificationForEvent(Notification::Event event) const {
-  if (!qApp->settings()->value(GROUP(Notifications), SETTING(Notifications::EnableNotifications)).toBool()) {
+  if (!qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool()) {
     return Notification();
   }
 
