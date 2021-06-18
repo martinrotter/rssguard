@@ -84,10 +84,10 @@ void TtRssServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    qApp->showGuiMessage(tr("Cannot add item"),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("Cannot add item"),
                          tr("Cannot add feed because another critical operation is ongoing."),
                          QSystemTrayIcon::MessageIcon::Warning,
-                         qApp->mainFormWidget(),
                          true);
 
     return;

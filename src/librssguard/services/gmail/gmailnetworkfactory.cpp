@@ -419,10 +419,11 @@ QVariantHash GmailNetworkFactory::getProfile(const QNetworkProxy& custom_proxy) 
 void GmailNetworkFactory::onTokensError(const QString& error, const QString& error_description) {
   Q_UNUSED(error)
 
-  qApp->showGuiMessage(tr("Gmail: authentication error"),
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       tr("Gmail: authentication error"),
                        tr("Click this to login again. Error is: '%1'").arg(error_description),
                        QSystemTrayIcon::MessageIcon::Critical,
-                       nullptr, false,
+                       {}, {},
                        [this]() {
     m_oauth2->setAccessToken(QString());
     m_oauth2->setRefreshToken(QString());
@@ -431,10 +432,11 @@ void GmailNetworkFactory::onTokensError(const QString& error, const QString& err
 }
 
 void GmailNetworkFactory::onAuthFailed() {
-  qApp->showGuiMessage(tr("Gmail: authorization denied"),
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       tr("Gmail: authorization denied"),
                        tr("Click this to login again."),
                        QSystemTrayIcon::MessageIcon::Critical,
-                       nullptr, false,
+                       {}, {},
                        [this]() {
     m_oauth2->login();
   });

@@ -39,10 +39,10 @@ bool StandardCategory::performDragDropChange(RootItem* target_item) {
     qCriticalNN << LOGSEC_DB
                 << "Cannot overwrite category:"
                 << QUOTE_W_SPACE_DOT(ex.message());
-    qApp->showGuiMessage(tr("Error"),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("Error"),
                          tr("Cannot save data for category, detailed information was logged via debug log."),
                          QSystemTrayIcon::MessageIcon::Critical,
-                         nullptr,
                          true);
     return false;
   }

@@ -118,11 +118,12 @@ void AdBlockManager::load(bool initial_load) {
                   << "Failed to write unified filters to file or re-start server, error:"
                   << QUOTE_W_SPACE_DOT(ex.message());
 
-      qApp->showGuiMessage(tr("AdBlock needs to be configured"),
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           tr("AdBlock needs to be configured"),
                            tr("AdBlock component is not configured properly."),
                            QSystemTrayIcon::MessageIcon::Warning,
-                           nullptr,
                            true,
+                           {},
                            [=]() {
         showDialog();
       });

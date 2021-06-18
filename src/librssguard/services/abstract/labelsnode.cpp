@@ -67,10 +67,10 @@ void LabelsNode::createLabel() {
     }
   }
   else {
-    qApp->showGuiMessage(tr("This account does not allow you to create labels."),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("This account does not allow you to create labels."),
                          tr("Not allowed"),
                          QSystemTrayIcon::MessageIcon::Critical,
-                         qApp->mainFormWidget(),
                          true);
   }
 }

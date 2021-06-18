@@ -81,10 +81,11 @@ OAuth2Service::~OAuth2Service() {
 
 QString OAuth2Service::bearer() {
   if (!isFullyLoggedIn()) {
-    qApp->showGuiMessage(tr("You have to login first"),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("You have to login first"),
                          tr("Click here to login."),
                          QSystemTrayIcon::MessageIcon::Critical,
-                         nullptr, false,
+                         {}, {},
                          [this]() {
       login();
     });
@@ -188,7 +189,8 @@ void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
                                                  real_refresh_token,
                                                  QSL("refresh_token"));
 
-  qApp->showGuiMessage(tr("Logging in via OAuth 2.0..."),
+  qApp->showGuiMessage(Notification::Event::LoginDataRefreshed,
+                       tr("Logging in via OAuth 2.0..."),
                        tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
                        QSystemTrayIcon::MessageIcon::Information);
 

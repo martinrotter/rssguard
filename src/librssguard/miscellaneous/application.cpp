@@ -172,9 +172,11 @@ void Application::showPolls() const {
 
 void Application::offerChanges() const {
   if (isFirstRunCurrentVersion()) {
-    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
-                                                    "version by clicking this popup notification.").arg(APP_LONG_NAME),
-                         QSystemTrayIcon::MessageIcon::NoIcon, nullptr, false, [] {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         QSL(APP_NAME),
+                         QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
+                                     "version by clicking this popup notification.").arg(APP_LONG_NAME),
+                         QSystemTrayIcon::MessageIcon::NoIcon, {}, {}, [] {
       FormAbout(qApp->mainForm()).exec();
     });
   }
@@ -432,15 +434,25 @@ void Application::deleteTrayIcon() {
   }
 }
 
-void Application::showGuiMessage(const QString& title, const QString& message,
-                                 QSystemTrayIcon::MessageIcon message_type, QWidget* parent,
-                                 bool show_at_least_msgbox, std::function<void()> functor) {
-  if (SystemTrayIcon::areNotificationsEnabled() &&
-      SystemTrayIcon::isSystemTrayDesired() &&
-      SystemTrayIcon::isSystemTrayAreaAvailable()) {
-    trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, std::move(functor));
+void Application::showGuiMessage(Notification::Event event, const QString& title,
+                                 const QString& message, QSystemTrayIcon::MessageIcon message_type, bool show_at_least_msgbox,
+                                 QWidget* parent, std::function<void()> functor) {
+
+  if (SystemTrayIcon::areNotificationsEnabled()) {
+    auto notification = m_notifications->notificationForEvent(event);
+
+    notification.playSound(this);
+
+    if (SystemTrayIcon::isSystemTrayDesired() &&
+        SystemTrayIcon::isSystemTrayAreaAvailable() &&
+        notification.balloonEnabled()) {
+      trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, std::move(functor));
+
+      return;
+    }
   }
-  else if (show_at_least_msgbox) {
+
+  if (show_at_least_msgbox) {
     // Tray icon or OSD is not available, display simple text box.
     MessageBox::show(parent == nullptr ? mainFormWidget() : parent, QMessageBox::Icon(message_type), title, message);
   }
@@ -534,8 +546,10 @@ void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
 void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::MessageIcon::NoIcon,
-                         nullptr, false);
+    qApp->showGuiMessage(Notification::Event::NewArticlesFetched,
+                         tr("New articles fetched"),
+                         results.overview(10),
+                         QSystemTrayIcon::MessageIcon::NoIcon);
   }
 }
 
@@ -602,7 +616,10 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
     return;
   }
   else if (cmd_parser.isSet(CLI_IS_RUNNING)) {
-    showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::MessageIcon::Information);
+    showGuiMessage(Notification::Event::GeneralEvent,
+                   APP_NAME,
+                   tr("Application is already running."),
+                   QSystemTrayIcon::MessageIcon::Information);
     mainForm()->display();
   }
 
@@ -618,10 +635,10 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
       rt->addNewFeed(nullptr, msg);
     }
     else {
-      showGuiMessage(tr("Cannot add feed"),
+      showGuiMessage(Notification::Event::GeneralEvent,
+                     tr("Cannot add feed"),
                      tr("Feed cannot be added because there is no active account which can add feeds."),
                      QSystemTrayIcon::MessageIcon::Warning,
-                     qApp->mainForm(),
                      true);
     }
   }

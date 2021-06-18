@@ -27,7 +27,9 @@ void Notification::setSoundPath(const QString& sound_path) {
 }
 
 void Notification::playSound(Application* app) const {
-  QSound::play(QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath)));
+  if (!m_soundPath.isEmpty()) {
+    QSound::play(QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath)));
+  }
 }
 
 QList<Notification::Event> Notification::allEvents() {

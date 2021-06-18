@@ -94,11 +94,12 @@ void FormFeedDetails::acceptIfPossible() {
     accept();
   }
   catch (const ApplicationException& ex) {
-    qApp->showGuiMessage(tr("Error"),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("Error"),
                          tr("Cannot save changes: %1").arg(ex.message()),
                          QSystemTrayIcon::MessageIcon::Critical,
-                         this,
-                         true);
+                         true,
+                         this);
   }
 }
 

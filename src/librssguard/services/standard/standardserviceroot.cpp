@@ -121,9 +121,11 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    qApp->showGuiMessage(tr("Cannot add item"),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("Cannot add item"),
                          tr("Cannot add feed because another critical operation is ongoing."),
-                         QSystemTrayIcon::MessageIcon::Warning, qApp->mainFormWidget(), true);
+                         QSystemTrayIcon::MessageIcon::Warning,
+                         true);
 
     return;
   }
@@ -396,9 +398,11 @@ void StandardServiceRoot::addNewCategory(RootItem* selected_item) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    qApp->showGuiMessage(tr("Cannot add category"),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("Cannot add category"),
                          tr("Cannot add category because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
+                         QSystemTrayIcon::Warning,
+                         true);
 
     // Thus, cannot delete and quit the method.
     return;

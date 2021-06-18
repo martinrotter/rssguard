@@ -617,7 +617,8 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
 
       if (!link.isEmpty()) {
         if (!tool.run(link)) {
-          qApp->showGuiMessage(tr("Cannot run external tool"),
+          qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                               tr("Cannot run external tool"),
                                tr("External tool '%1' could not be started.").arg(tool.executable()),
                                QSystemTrayIcon::MessageIcon::Critical);
         }

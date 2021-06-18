@@ -211,10 +211,10 @@ void StandardFeed::fetchMetadataForItself() {
     qCriticalNN << LOGSEC_DB
                 << "Cannot overwrite feed:"
                 << QUOTE_W_SPACE_DOT(ex.message());
-    qApp->showGuiMessage(tr("Error"),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("Error"),
                          tr("Cannot save data for feed: %1").arg(ex.message()),
                          QSystemTrayIcon::MessageIcon::Critical,
-                         nullptr,
                          true);
   }
 }
@@ -476,10 +476,10 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
     qCriticalNN << LOGSEC_DB
                 << "Cannot overwrite feed:"
                 << QUOTE_W_SPACE_DOT(ex.message());
-    qApp->showGuiMessage(tr("Error"),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("Error"),
                          tr("Cannot move feed, detailed information was logged via debug log."),
                          QSystemTrayIcon::MessageIcon::Critical,
-                         nullptr,
                          true);
     return false;
   }

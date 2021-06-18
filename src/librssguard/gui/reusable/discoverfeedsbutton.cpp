@@ -51,10 +51,11 @@ void DiscoverFeedsButton::linkTriggered(QAction* action) {
     root->addNewFeed(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->selectedItem(), url);
   }
   else {
-    qApp->showGuiMessage(tr("Not supported"),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("Not supported"),
                          tr("Given account does not support adding feeds."),
                          QSystemTrayIcon::MessageIcon::Warning,
-                         qApp->mainFormWidget(), true);
+                         true);
   }
 }
 

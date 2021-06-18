@@ -10,6 +10,7 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/localization.h"
+#include "miscellaneous/notification.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/singleapplication.h"
 #include "miscellaneous/skinfactory.h"
@@ -110,9 +111,9 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     // Displays given simple message in tray icon bubble or OSD
     // or in message box if tray icon is disabled.
-    void showGuiMessage(const QString& title, const QString& message, QSystemTrayIcon::MessageIcon message_type,
-                        QWidget* parent = nullptr, bool show_at_least_msgbox = false,
-                        std::function<void()> functor = nullptr);
+    void showGuiMessage(Notification::Event event, const QString& title, const QString& message,
+                        QSystemTrayIcon::MessageIcon message_type, bool show_at_least_msgbox = false,
+                        QWidget* parent = nullptr, std::function<void()> functor = nullptr);
 
     // Returns pointer to "GOD" application singleton.
     static Application* instance();

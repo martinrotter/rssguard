@@ -70,10 +70,12 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
 
 void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
   if (!qApp->feedUpdateLock()->tryLock()) {
-    qApp->showGuiMessage(tr("Cannot update all items"),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("Cannot update all items"),
                          tr("You cannot download new messages for your items "
                             "because another critical operation is ongoing."),
-                         QSystemTrayIcon::MessageIcon::Warning, qApp->mainFormWidget(), true);
+                         QSystemTrayIcon::MessageIcon::Warning,
+                         true);
     return;
   }
 
@@ -315,8 +317,9 @@ void FeedReader::executeNextAutoUpdate() {
 
     // NOTE: OSD/bubble informing about performing of scheduled update can be shown now.
     if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableAutoUpdateNotification)).toBool()) {
-      qApp->showGuiMessage(tr("Starting auto-download of some feeds' messages"),
-                           tr("I will auto-download new messages for %n feed(s).", nullptr, feeds_for_update.size()),
+      qApp->showGuiMessage(Notification::Event::ArticlesFetchingStarted,
+                           tr("Starting auto-download of some feeds' articles"),
+                           tr("I will auto-download new articles for %n feed(s).", nullptr, feeds_for_update.size()),
                            QSystemTrayIcon::MessageIcon::Information);
     }
   }

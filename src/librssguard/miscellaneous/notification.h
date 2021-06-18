@@ -14,11 +14,14 @@ class Notification {
       // not trigger any notifications.
       NoEvent = 0,
 
+      // Used for many events which happen throught application lifecycle.
+      GeneralEvent = 1,
+
       // New (unread) messages were downloaded for some feed.
-      NewArticlesFetched = 1,
+      NewArticlesFetched = 2,
 
       // RSS Guard started downloading messages for some feed.
-      ArticlesFetchingStarted = 2,
+      ArticlesFetchingStarted = 3,
 
       // Login tokens were successfuly refreshed.
       // NOTE: This is primarily used in accounts which use

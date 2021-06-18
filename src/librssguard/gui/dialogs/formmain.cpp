@@ -119,9 +119,11 @@ void FormMain::showDbCleanupAssistant() {
     qApp->feedReader()->feedsModel()->reloadCountsOfWholeModel();
   }
   else {
-    qApp->showGuiMessage(tr("Cannot cleanup database"),
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         tr("Cannot cleanup database"),
                          tr("Cannot cleanup database, because another critical action is running."),
-                         QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
+                         QSystemTrayIcon::Warning,
+                         true);
   }
 }
 
@@ -465,9 +467,10 @@ void FormMain::switchVisibility(bool force_hide) {
     if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
 
       if (QApplication::activeModalWidget() != nullptr) {
-        qApp->showGuiMessage(QSL(APP_LONG_NAME),
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             QSL(APP_LONG_NAME),
                              tr("Close opened modal dialogs first."),
-                             QSystemTrayIcon::Warning, qApp->mainFormWidget(), true);
+                             QSystemTrayIcon::Warning, true);
       }
       else {
         hide();

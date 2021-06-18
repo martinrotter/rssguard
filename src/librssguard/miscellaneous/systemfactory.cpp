@@ -226,9 +226,10 @@ void SystemFactory::checkForUpdatesOnStartup() {
 
       if (!updates.first.isEmpty() && updates.second == QNetworkReply::NetworkError::NoError &&
           SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, APP_VERSION)) {
-        qApp->showGuiMessage(QObject::tr("New version available"),
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             QObject::tr("New version available"),
                              QObject::tr("Click the bubble for more information."),
-                             QSystemTrayIcon::Information, qApp->mainForm(), false,
+                             QSystemTrayIcon::Information, {}, {},
                              [] {
           FormUpdate(qApp->mainForm()).exec();
         });
