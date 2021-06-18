@@ -505,10 +505,11 @@ void FeedlyNetwork::setBatchSize(int batch_size) {
 void FeedlyNetwork::onTokensError(const QString& error, const QString& error_description) {
   Q_UNUSED(error)
 
-  qApp->showGuiMessage(tr("Feedly: authentication error"),
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       tr("Feedly: authentication error"),
                        tr("Click this to login again. Error is: '%1'").arg(error_description),
                        QSystemTrayIcon::MessageIcon::Critical,
-                       nullptr, false,
+                       {}, {},
                        [this]() {
     m_oauth->logout(false);
     m_oauth->login();
@@ -516,10 +517,11 @@ void FeedlyNetwork::onTokensError(const QString& error, const QString& error_des
 }
 
 void FeedlyNetwork::onAuthFailed() {
-  qApp->showGuiMessage(tr("Feedly: authorization denied"),
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       tr("Feedly: authorization denied"),
                        tr("Click this to login again."),
                        QSystemTrayIcon::MessageIcon::Critical,
-                       nullptr, false,
+                       {}, {},
                        [this]() {
     m_oauth->logout(false);
     m_oauth->login();
