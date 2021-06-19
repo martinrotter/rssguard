@@ -36,10 +36,19 @@ jobs:
             *.exe
             *.7z
           
-      - uses: actions/checkout@v2
+      - name: Checkout source code
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
           submodules: true
+
+      - name: Update "devbuild" tag
+        uses: richardsimko/update-tag@v1.0.5
+        if: strategy.job-index == 0
+        with:
+          tag_name: devbuild
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Prepare environment and compile application
         run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}"
@@ -50,7 +59,7 @@ jobs:
           INOREADER_CLIENT_SECRET: ${{ secrets.INOREADER_CLIENT_SECRET }}
           FEEDLY_CLIENT_ID: ${{ secrets.FEEDLY_CLIENT_ID }}
           FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}
-        
+
       - name: Release development binaries
         uses: softprops/action-gh-release@v1
         with:
