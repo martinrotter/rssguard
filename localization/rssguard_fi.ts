@@ -34,7 +34,7 @@
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ohje</translation>
     </message>
     <message>
         <source>&amp;Test configuration</source>
@@ -1549,7 +1549,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Syötteet</translation>
     </message>
     <message>
         <source>&amp;Add item</source>
@@ -4022,7 +4022,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Syötteet</translation>
     </message>
     <message>
         <source>Articles</source>
@@ -4255,7 +4255,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <translation>Käytä ponnahdusviestejä työkaluvihjeille</translation>
     </message>
     <message>
         <source>Notifications</source>

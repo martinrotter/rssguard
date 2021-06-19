@@ -34,7 +34,7 @@
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ayuda</translation>
     </message>
     <message>
         <source>&amp;Test configuration</source>
@@ -1552,7 +1552,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Fuentes</translation>
     </message>
     <message>
         <source>&amp;Add item</source>
@@ -1736,7 +1736,7 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"/>
+        <translation>Cerrar primero los diálogos modales abiertos.</translation>
     </message>
 </context>
 <context>
@@ -4053,7 +4053,7 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Fuentes</translation>
     </message>
     <message>
         <source>Articles</source>
@@ -4282,11 +4282,11 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     <name>SettingsNotifications</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulario</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <translation>Habilitar ayudas visuales emergentes</translation>
     </message>
     <message>
         <source>Notifications</source>

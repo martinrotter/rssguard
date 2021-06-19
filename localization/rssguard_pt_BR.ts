@@ -38,41 +38,43 @@
     </message>
     <message>
         <source>&amp;Test configuration</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testar configuração</translation>
     </message>
     <message>
         <source>Filter lists</source>
-        <translation type="unfinished"/>
+        <translation>Listas de filtros</translation>
     </message>
     <message>
         <source>No test executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Nenhum teste executado ainda.</translation>
     </message>
     <message>
         <source>Cannot enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível ativar o AdBlock</translation>
     </message>
     <message>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-        <translation type="unfinished"/>
+        <translation>Há algum erro no componente do AdBlock e ele não pode ser habilitado. Veja a mensagem de erro abaixo (ou registro de depuração do aplicativo) para mais informações.</translation>
     </message>
     <message>
         <source>You are good to go.</source>
-        <translation type="unfinished"/>
+        <translation>Tudo pronto para continuar.</translation>
     </message>
     <message>
         <source>OK!</source>
-        <translation type="unfinished"/>
+        <translation>OK!</translation>
     </message>
     <message>
         <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
 
 Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Ocorreu um erro, veja o registro do aplicativo para mais detalhes e acesse a documentação online. Também veja se Node.js está instalado.
+
+Erro: %1</translation>
     </message>
     <message>
         <source>ERROR!</source>
-        <translation type="unfinished"/>
+        <translation>ERRO!</translation>
     </message>
 </context>
 <context>
@@ -90,15 +92,15 @@ Error: %1</source>
     <name>AdBlockManager</name>
     <message>
         <source>AdBlock needs to be configured</source>
-        <translation type="unfinished"/>
+        <translation>O AdBlock precisa ser configurado</translation>
     </message>
     <message>
         <source>AdBlock component is not configured properly.</source>
-        <translation type="unfinished"/>
+        <translation>O componente AdBlock não está configurado corretamente.</translation>
     </message>
     <message>
         <source>failed to download filter list &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>falha ao baixar lista de filtros &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -594,11 +596,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Somente baixar os X artigos mais recentes por feed</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Baixar somente artigos não lidos</translation>
     </message>
 </context>
 <context>
@@ -1117,7 +1119,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Pasta principal</translation>
     </message>
 </context>
 <context>
@@ -1180,15 +1182,15 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Cleanup settings</source>
-        <translation type="unfinished"/>
+        <translation>Configurações de limpeza</translation>
     </message>
     <message>
         <source>Remove all read messages</source>
-        <translation type="unfinished"/>
+        <translation>Remover todas as mensagens não lidas</translation>
     </message>
     <message>
         <source>Remove all starred messages</source>
-        <translation type="unfinished"/>
+        <translation>Remover todas as mensagens com estrela</translation>
     </message>
 </context>
 <context>
@@ -1280,7 +1282,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Auto-downloading of articles</source>
-        <translation type="unfinished"/>
+        <translation>Download automático de artigos</translation>
     </message>
 </context>
 <context>
@@ -1548,7 +1550,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Expand/collapse selected item &amp;recursively</source>
-        <translation>Expandir/recolher item selecionado recursivamente</translation>
+        <translation>Expandir/recolher item selecionado &amp;recursivamente</translation>
     </message>
     <message>
         <source>Feeds</source>
@@ -1556,11 +1558,11 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>&amp;Add item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Adicionar item</translation>
     </message>
     <message>
         <source>&amp;Articles</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Artigos</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
@@ -1568,171 +1570,171 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>&amp;Fetch all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Buscar todos</translation>
     </message>
     <message>
         <source>Fetch all feeds</source>
-        <translation type="unfinished"/>
+        <translation>Buscar todos os feeds</translation>
     </message>
     <message>
         <source>Fetch &amp;selected</source>
-        <translation type="unfinished"/>
+        <translation>Buscar &amp;selecionados</translation>
     </message>
     <message>
         <source>Fetch selected feeds</source>
-        <translation type="unfinished"/>
+        <translation>Buscar feeds selecionados</translation>
     </message>
     <message>
         <source>Mark articles &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Marcar artigos como &amp;lidos</translation>
     </message>
     <message>
         <source>Mark selected articles read</source>
-        <translation type="unfinished"/>
+        <translation>Marcar artigos selecionados como lidos</translation>
     </message>
     <message>
         <source>Mark articles &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Marcar artigos como &amp;não-lidos</translation>
     </message>
     <message>
         <source>Mark selected articles unread</source>
-        <translation type="unfinished"/>
+        <translation>Marcar artigos selecionados como não-lidos</translation>
     </message>
     <message>
         <source>Switch &amp;importance</source>
-        <translation type="unfinished"/>
+        <translation>Alternar &amp;importância</translation>
     </message>
     <message>
         <source>Switch importance of selected articles</source>
-        <translation type="unfinished"/>
+        <translation>Alterar importância dos artigos selecionados</translation>
     </message>
     <message>
         <source>&amp;Mark selected item read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Marcar item selecionado como lido</translation>
     </message>
     <message>
         <source>&amp;Mark selected item unread</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Marcar item selecionado como não lido</translation>
     </message>
     <message>
         <source>&amp;Delete articles</source>
-        <translation type="unfinished"/>
+        <translation>E&amp;xcluir artigos</translation>
     </message>
     <message>
         <source>&amp;Clean selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Limpar item selecionado</translation>
     </message>
     <message>
         <source>Open in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>Abrir no navegador &amp;externo</translation>
     </message>
     <message>
         <source>Open selected articles in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Abrir artigos selecionados no navegador externo</translation>
     </message>
     <message>
         <source>Open in &amp;internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Abrir no navegador &amp;interno</translation>
     </message>
     <message>
         <source>Open selected articles in internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Abrir artigos selecionados no navegador interno</translation>
     </message>
     <message>
         <source>&amp;Mark all read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Marcar como lido</translation>
     </message>
     <message>
         <source>View selected item in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Ver item selecionado no modo &amp;jornal</translation>
     </message>
     <message>
         <source>Switch main &amp;window visibility</source>
-        <translation type="unfinished"/>
+        <translation>Alterar visibilidade da &amp;janela principal</translation>
     </message>
     <message>
         <source>&amp;Clean all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Limpar tudo</translation>
     </message>
     <message>
         <source>&amp;Next article</source>
-        <translation type="unfinished"/>
+        <translation>Pró&amp;ximo artigo</translation>
     </message>
     <message>
         <source>&amp;Previous article</source>
-        <translation type="unfinished"/>
+        <translation>Artigo an&amp;terior</translation>
     </message>
     <message>
         <source>&amp;List headers</source>
-        <translation type="unfinished"/>
+        <translation>Cabeçalhos da &amp;lista</translation>
     </message>
     <message>
         <source>&amp;Restore settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Restaurar configurações</translation>
     </message>
     <message>
         <source>&amp;Backup settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Backup das configurações</translation>
     </message>
     <message>
         <source>Switch layout</source>
-        <translation type="unfinished"/>
+        <translation>Alterar layout</translation>
     </message>
     <message>
         <source>Send via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Enviar por e-mail</translation>
     </message>
     <message>
         <source>Send selected articles via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Enviar artigos selecionados por e-mail</translation>
     </message>
     <message>
         <source>Show unread items only</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar somente itens não lidos</translation>
     </message>
     <message>
         <source>&amp;Add account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Adicionar conta</translation>
     </message>
     <message>
         <source>&amp;Restore articles</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Restaurar artigos</translation>
     </message>
     <message>
         <source>Next &amp;unread article</source>
-        <translation type="unfinished"/>
+        <translation>Próximo artigo &amp;não-lido</translation>
     </message>
     <message>
         <source>Stop ongoing fetching</source>
-        <translation type="unfinished"/>
+        <translation>Parar busca em andamento</translation>
     </message>
     <message>
         <source>New browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Novo aba do navegador</translation>
     </message>
     <message>
         <source>&amp;Enable article preview</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Habilitar pré-visualização do artigo</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Copiar URLs do item selecionado</translation>
     </message>
     <message>
         <source>Show &amp;unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar somente artigos &amp;não-lidos</translation>
     </message>
     <message>
         <source>&amp;Show tree expanders</source>
-        <translation type="unfinished"/>
+        <translation>Mo&amp;strar expansores de árvore</translation>
     </message>
     <message>
         <source>Fetch feeds with &amp;custom auto-download policy</source>
-        <translation type="unfinished"/>
+        <translation>Bus&amp;car feeds com política personalizada de download automático</translation>
     </message>
     <message>
         <source>Automatically &amp;expand item when selected</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Expandir item automaticamenet quando selecionado</translation>
     </message>
     <message>
         <source>Close opened modal dialogs first.</source>
@@ -1903,11 +1905,11 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Existing articles</source>
-        <translation type="unfinished"/>
+        <translation>Artigos existentes</translation>
     </message>
     <message>
         <source>Sample article</source>
-        <translation type="unfinished"/>
+        <translation>Artigo de amostra</translation>
     </message>
     <message>
         <source>Output (modified) message is:
@@ -1918,7 +1920,14 @@ ou esta função ainda não foi implementada.</translation>
   Created on = '%6'
   Contents = '%7'
   RAW contents = &apos;%8&apos;</source>
-        <translation type="unfinished"/>
+        <translation>A mensagem de saída (modificada) é:
+Título = &apos;%1&apos;
+URL = &apos;%2&apos;
+Autor = &apos;%3&apos;
+É lido/importante = &apos;%4/%5&apos;
+Criado em = &apos;%6&apos;
+Conteúdo = &apos;%7&apos;
+Conteúdo bruto= &apos;%8&apos;</translation>
     </message>
 </context>
 <context>
@@ -2148,15 +2157,15 @@ Você precisa reiniciar manualmente.</translation>
     </message>
     <message>
         <source>&amp;Check all feeds</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Marcar todos os feeds</translation>
     </message>
     <message>
         <source>&amp;Uncheck all feeds</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Desmarcar todos os feeds</translation>
     </message>
     <message>
         <source>Operation result</source>
-        <translation type="unfinished"/>
+        <translation>Resultado da operação</translation>
     </message>
 </context>
 <context>
@@ -2394,11 +2403,11 @@ Você pode instalar agora.</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Somente baixar os X artigos mais recentes por feed</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Baixar somente artigos não lidos</translation>
     </message>
 </context>
 <context>
@@ -2577,11 +2586,11 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Somente baixar os X artigos mais recentes por feed</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Baixar somente artigos não lidos</translation>
     </message>
 </context>
 <context>
@@ -2606,11 +2615,11 @@ Expiração dos tokens de login: %2</translation>
     <name>ImportantNode</name>
     <message>
         <source>Important articles</source>
-        <translation type="unfinished"/>
+        <translation>Artigos importantes</translation>
     </message>
     <message>
         <source>You can find all important articles here.</source>
-        <translation type="unfinished"/>
+        <translation>Aqui você encontra todos os artigos importantes.</translation>
     </message>
 </context>
 <context>
@@ -2701,11 +2710,11 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Somente baixar os X artigos mais recentes por feed</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Baixar somente artigos não lidos</translation>
     </message>
 </context>
 <context>
@@ -3082,7 +3091,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="unfinished"/>
+        <translation>Data</translation>
     </message>
 </context>
 <context>
@@ -3462,11 +3471,11 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Baixar somente artigos não lidos</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Somente baixar os X artigos mais recentes por feed</translation>
     </message>
 </context>
 <context>
@@ -4062,39 +4071,39 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Articles</source>
-        <translation type="unfinished"/>
+        <translation>Artigos</translation>
     </message>
     <message>
         <source>Remove all read articles from all feeds on application exit</source>
-        <translation type="unfinished"/>
+        <translation>Remover todos os artigos lidos de todos os feeds ao sair do aplicativo</translation>
     </message>
     <message>
         <source>Display real icons of feeds in list of articles instead of read/unread icons</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar ícones reais dos feeds na lista de artigos em vez dos ícones de lido/não lido</translation>
     </message>
     <message>
         <source>Bring application window to front once article is opened in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Trazer janela do aplicativo para a frente assim que o artigo é aberto no navegador externo</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the article list viewport</source>
-        <translation type="unfinished"/>
+        <translation>Manter seleção de mensagens no meio da janela de exibição da lista de artigos</translation>
     </message>
     <message>
         <source>Height or rows in article list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Altura ou linhas na lista de artigos (-1 = altura padrão)</translation>
     </message>
     <message>
         <source>Article list font</source>
-        <translation type="unfinished"/>
+        <translation>Fonte da lista de artigos</translation>
     </message>
     <message>
         <source>Article browser font</source>
-        <translation type="unfinished"/>
+        <translation>Fonte do navegador de artigos</translation>
     </message>
     <message>
         <source>Feeds &amp; articles</source>
-        <translation type="unfinished"/>
+        <translation>Feeds &amp; artigos</translation>
     </message>
 </context>
 <context>
@@ -4295,7 +4304,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"/>
+        <translation>Notificações</translation>
     </message>
 </context>
 <context>
@@ -4635,7 +4644,7 @@ Tipo: %3</translation>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Pasta principal</translation>
     </message>
 </context>
 <context>
@@ -5007,11 +5016,11 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Baixar somente artigos não lidos</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Somente baixar os X artigos mais recentes por feed</translation>
     </message>
 </context>
 <context>
@@ -5050,7 +5059,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Pasta principal</translation>
     </message>
 </context>
 <context>
@@ -5078,11 +5087,11 @@ Servidor: %2
     <name>UnreadNode</name>
     <message>
         <source>Unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Artigos não-lidos</translation>
     </message>
     <message>
         <source>You can find all unread articles here.</source>
-        <translation type="unfinished"/>
+        <translation>Aqui você encontra todos os artigos não lidos.</translation>
     </message>
 </context>
 <context>

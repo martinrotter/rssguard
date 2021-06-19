@@ -38,7 +38,7 @@ class FormStandardImportExport : public QDialog {
     void onParsingProgress(int completed, int total);
 
   private:
-    void selectExportFile();
+    void selectExportFile(bool without_dialog);
     void selectImportFile();
     void parseImportFile(const QString& file_name, bool fetch_metadata_online);
 

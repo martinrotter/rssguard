@@ -22,15 +22,15 @@
     </message>
     <message>
         <source>Add your direct links to filter lists here (one URL per line)</source>
-        <translation type="unfinished"/>
+        <translation>Voeg hier je directe links toe aan filterlijsten (een URL per lijn)</translation>
     </message>
     <message>
         <source>Custom filters</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste filters</translation>
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
-        <translation type="unfinished"/>
+        <translation>Voeg hier je aangepaste filters toe (een filter per lijn)</translation>
     </message>
     <message>
         <source>&amp;Help</source>
@@ -109,7 +109,7 @@ Error: %1</source>
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation>De uitvoermap is niet beschrijfbaar </translation>
+        <translation>De uitvoermap is niet beschrijfbaar.</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
@@ -133,7 +133,7 @@ Error: %1</source>
     </message>
     <message>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Feed kan niet worden toegevoegd omdat er geen actief account is dat feeds kan toevoegen.</translation>
     </message>
 </context>
 <context>
@@ -241,11 +241,11 @@ Error: %1</source>
     <name>DatabaseFactory</name>
     <message>
         <source>Cannot connect to database</source>
-        <translation type="unfinished"/>
+        <translation>Kan niet verbinden met database</translation>
     </message>
     <message>
         <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-        <translation type="unfinished"/>
+        <translation>Er is geen verbinding met u database tot stand gebracht met fout:&apos;%1&apos;. Terugvallen naar SQLite.</translation>
     </message>
 </context>
 <context>
@@ -542,7 +542,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation>Er was een fout tijdens het testen. </translation>
+        <translation>Er was een fout tijdens het testen.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
@@ -586,11 +586,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
-        <translation type="unfinished"/>
+        <translation>Wees heel voorzichtig met het downloaden van teveel berichten, want Feedly slaat automatisch ALLE berichten van een feed voor altijd op in de cache, zodat je misschien eindigt met duizenden berihten die je toch nooit zult lezen.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Fout: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
@@ -617,14 +617,14 @@ Status: %3</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation>Klik hier om opnieuw in te loggen</translation>
+        <translation>Klik hier om opnieuw in te loggen.</translation>
     </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
         <source>Category </source>
-        <translation>Categorie</translation>
+        <translation>Categorie </translation>
     </message>
 </context>
 <context>
@@ -662,11 +662,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>Search feeds</source>
-        <translation type="unfinished"/>
+        <translation>Feeds zoeken</translation>
     </message>
     <message>
         <source>Feeds search box</source>
-        <translation type="unfinished"/>
+        <translation>Feeds zoekveld</translation>
     </message>
 </context>
 <context>
@@ -1176,7 +1176,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Total data size</source>
-        <translation type="unfinished"/>
+        <translation>Totale gegevens grootte</translation>
     </message>
     <message>
         <source>Cleanup settings</source>
@@ -1195,7 +1195,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <name>FormDownloadAttachment</name>
     <message>
         <source>Downloading attachment...</source>
-        <translation>Download aanhangsel</translation>
+        <translation>Download aanhangsel...</translation>
     </message>
     <message>
         <source>Downloaded: %1 kB</source>
@@ -1276,7 +1276,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
-        <translation type="unfinished"/>
+        <translation>Kan wijzigingen niet opslaan: %1</translation>
     </message>
     <message>
         <source>Auto-downloading of articles</source>
@@ -1319,7 +1319,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation>In volledig scherm weergeven</translation>
+        <translation>In volledig scherm weergeven.</translation>
     </message>
     <message>
         <source>No actions available</source>
@@ -1548,7 +1548,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Expand/collapse selected item &amp;recursively</source>
-        <translation type="unfinished"/>
+        <translation>Geselecteerd item &amp;recursief uitvouwen/samenvouwen</translation>
     </message>
     <message>
         <source>Feeds</source>
@@ -1775,7 +1775,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Your JavaScript-based message filtering logic</source>
-        <translation>Aangepaste filtering van berichten volgens jouw eigen JavaScript-code.</translation>
+        <translation>Aangepaste filtering van berichten volgens jouw eigen JavaScript-code</translation>
     </message>
     <message>
         <source>Read</source>
@@ -1817,7 +1817,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <source>Message will be %1.
 
 </source>
-        <translation>Bericht wordt %1. 
+        <translation>Bericht wordt %1.
 
 </translation>
     </message>
@@ -1990,7 +1990,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <source>Changed categories of settings:
 %1.</source>
         <translation>Verander de instellingen categorie:
-%1. </translation>
+%1.</translation>
     </message>
     <message>
         <source>Some settings are changed and will be lost</source>
@@ -2179,7 +2179,7 @@ Je moet handmatig herstarten.</translation>
     </message>
     <message>
         <source>API returned error code %1</source>
-        <translation type="unfinished"/>
+        <translation>API geeft foutcode %1</translation>
     </message>
 </context>
 <context>
@@ -2289,11 +2289,11 @@ gedownload worden.</translation>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation>Ga naar de website van RSS Guard om de update handmatig te verkrijgen</translation>
+        <translation>Ga naar de website van RSS Guard om de update handmatig te verkrijgen.</translation>
     </message>
     <message>
         <source> (size </source>
-        <translation> (grootte</translation>
+        <translation> (grootte </translation>
     </message>
     <message>
         <source>Available update files</source>
@@ -2322,7 +2322,7 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>Client secret</source>
-        <translation type="unfinished"/>
+        <translation>Klantgeheim</translation>
     </message>
     <message>
         <source>Redirect URL</source>
@@ -2358,7 +2358,7 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation>Er was een fout tijdens het testen. </translation>
+        <translation>Er was een fout tijdens het testen.</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
@@ -2378,19 +2378,19 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Er zijn enkele vooraf geconfigureerde QAuth-tokens, dus u hoeftuw client-ID/geheim niet in tevullen maar het wordt sterk aanbevolen om uw eigen tokens te verkrijgen, aangezien voorgeconfigureerde tokens een beperkt wereldwijd gebruiksquotum hebben. Als u vooraf geconfigureerde tokens wilt gebruiken, laat u deze velden gewoon leeg en laat u de standaardwaarde van de omleidings-URL achter.</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>U moet uw klant-ID/geheim invullen en ook de juiste omleidings-URL invullen.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Er is een fout: %1</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
+        <translation>Vooraf geconfigureerde client-ID/geheim wordt gebruikt.</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
@@ -2409,7 +2409,7 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation>Klik hier om opnieuw in te loggen</translation>
+        <translation>Klik hier om opnieuw in te loggen.</translation>
     </message>
     <message>
         <source>No subject</source>
@@ -2537,7 +2537,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netwerk fout: &apos;%1&apos;</translation>
+        <translation>Netwerk fout: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
@@ -2665,7 +2665,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation>Er was een fout tijdens het testen. </translation>
+        <translation>Er was een fout tijdens het testen.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
@@ -2689,15 +2689,15 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Er zijn enkele vooraf geconfigureerde QAuth-tokens, dus u hoeftuw client-ID/geheim niet in tevullen maar het wordt sterk aanbevolen om uw eigen tokens te verkrijgen, aangezien voorgeconfigureerde tokens een beperkt wereldwijd gebruiksquotum hebben. Als u vooraf geconfigureerde tokens wilt gebruiken, laat u deze velden gewoon leeg en laat u de standaardwaarde van de omleidings-URL achter.</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>U moet uw klant-ID/geheim invullen en ook de juiste omleidings-URL invullen.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
+        <translation>Vooraf geconfigureerde client-ID/geheim wordt gebruikt.</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
@@ -2724,11 +2724,11 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation>Klik hier om opnieuw in te loggen</translation>
+        <translation>Klik hier om opnieuw in te loggen.</translation>
     </message>
     <message>
         <source>not logged in</source>
-        <translation type="unfinished"/>
+        <translation>niet ingelogd</translation>
     </message>
 </context>
 <context>
@@ -2809,7 +2809,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>MariaDB</source>
-        <translation type="unfinished"/>
+        <translation>MariaDB</translation>
     </message>
 </context>
 <context>
@@ -2866,7 +2866,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>message</source>
-        <translation type="unfinished"/>
+        <translation>bericht</translation>
     </message>
     <message>
         <source>messages</source>
@@ -2927,7 +2927,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished"/>
+        <translation>Score</translation>
     </message>
 </context>
 <context>
@@ -3066,19 +3066,19 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished"/>
+        <translation>Score</translation>
     </message>
     <message>
         <source>ID of the message.</source>
-        <translation type="unfinished"/>
+        <translation>ID van bericht.</translation>
     </message>
     <message>
         <source>ID of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
+        <translation>ID van feed waartoe dit bericht behoort.</translation>
     </message>
     <message>
         <source>Score of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Score van het bericht.</translation>
     </message>
     <message>
         <source>Date</source>
@@ -3152,7 +3152,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>No external tools activated</source>
-        <translation type="unfinished"/>
+        <translation>Geen externe gereedschappen geactiveerd</translation>
     </message>
 </context>
 <context>
@@ -3414,7 +3414,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netwerk fout: &apos;%1&apos;</translation>
+        <translation>Netwerk fout: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
@@ -3564,7 +3564,9 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-        <translation type="unfinished"/>
+        <translation>Blijf op de hoogte van de onderwerpen en trends waar u omgeeft, zonder te overweldigen.
+
+Feedly is een beveiligde ruimte waar u de onderwerpen en trends die voor u van belang zijn, prive kunt organiseren en onderzoeken.</translation>
     </message>
 </context>
 <context>
@@ -3786,19 +3788,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>&amp;Add new external tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Voeg externe applicatie toe</translation>
     </message>
     <message>
         <source>&amp;Edit selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Bewerk geselecteerde externe applicatie</translation>
     </message>
     <message>
         <source>&amp;Delete selected external tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Verwijder geselecteerde externe applicatie</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
-        <translation type="unfinished"/>
+        <translation>Voer (optionele) parameters in, gescheiden door &quot;%1&quot;:</translation>
     </message>
 </context>
 <context>
@@ -3988,7 +3990,7 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source> ms</source>
-        <translation>ms</translation>
+        <translation> ms</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
@@ -4048,11 +4050,11 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>Hide message counts if there are no unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Aantal berichten verbergen als er geen ongelezen berichten zijn</translation>
     </message>
     <message>
         <source>Display tooltips for feeds and messages</source>
-        <translation type="unfinished"/>
+        <translation>Applicatie info voor feeds en berichten weergeven</translation>
     </message>
     <message>
         <source>Feeds</source>
@@ -4259,7 +4261,7 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>(Your OS does not support tray icons at the moment.)</source>
-        <translation type="unfinished"/>
+        <translation>(Je OS ondersteunt momenteel geen systeemvakpictogrammen)</translation>
     </message>
 </context>
 <context>
@@ -4278,7 +4280,7 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>Localization</source>
-        <translation type="unfinished"/>
+        <translation>Lokalisatie</translation>
     </message>
 </context>
 <context>
@@ -4326,7 +4328,7 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Geblokkeerde URL: &quot;%1&quot;&lt;br/&gt;Gebruikte filter: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -4348,7 +4350,7 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>Cannot save data for category, detailed information was logged via debug log.</source>
-        <translation type="unfinished"/>
+        <translation>Kan gegevens voor categorie niet opslaan, gedetailleerde informatie is vastgelegd via debug-log.</translation>
     </message>
 </context>
 <context>
@@ -4381,19 +4383,19 @@ Type: %3</translation>
     </message>
     <message>
         <source>Cannot save data for feed: %1</source>
-        <translation type="unfinished"/>
+        <translation>Kan gegevens voor feed niet opslaan: %1</translation>
     </message>
     <message>
         <source>XML is not well-formed, %1</source>
-        <translation type="unfinished"/>
+        <translation>XML is niet goed gevormd, %1</translation>
     </message>
     <message>
         <source>XML feed file format unrecognized</source>
-        <translation type="unfinished"/>
+        <translation>XML feed bestandsindeling niet herkend</translation>
     </message>
     <message>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
-        <translation type="unfinished"/>
+        <translation>Kan feed niet verplaatsen, gedetailleerde informatie is vastgelegd via debug-log.</translation>
     </message>
 </context>
 <context>
@@ -4593,7 +4595,7 @@ Type: %3</translation>
     </message>
     <message>
         <source>Here you can enter script executaion line, including interpreter.</source>
-        <translation type="unfinished"/>
+        <translation>Hier kunt u de scriptuitvoeringsregel invoeren, inclusief interpreter.</translation>
     </message>
     <message>
         <source>The source is ok.</source>
@@ -4613,7 +4615,7 @@ Type: %3</translation>
     </message>
     <message>
         <source>Command not seem to use &quot;#&quot; separator for arguments.</source>
-        <translation>Argumenten van opdrachten moeten gescheiden zijn met &quot;#&quot;,</translation>
+        <translation>Argumenten van opdrachten moeten gescheiden zijn met &quot;#&quot;.</translation>
     </message>
     <message>
         <source>Command is empty.</source>
@@ -4621,11 +4623,11 @@ Type: %3</translation>
     </message>
     <message>
         <source>Script failed: %1</source>
-        <translation type="unfinished"/>
+        <translation>Script mislukt: %1</translation>
     </message>
     <message>
         <source>Network error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Netwerk fout: %1</translation>
     </message>
     <message>
         <source>Error: %1</source>
@@ -4688,7 +4690,7 @@ Type: %3</translation>
     </message>
     <message>
         <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-        <translation type="unfinished"/>
+        <translation>Sommige feed/categorieën zijn niet geïmporteerd vanwege een fout, controleer het opsporingslogboek voor mer details.</translation>
     </message>
 </context>
 <context>

@@ -3,11 +3,11 @@
     <name>AccountCheckModel</name>
     <message>
         <source>(category)</source>
-        <translation> (kategori)</translation>
+        <translation>(kategori)</translation>
     </message>
     <message>
         <source>(feed)</source>
-        <translation> (flöde)</translation>
+        <translation>(flöde)</translation>
     </message>
 </context>
 <context>
@@ -38,41 +38,43 @@
     </message>
     <message>
         <source>&amp;Test configuration</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testa konfigurationen</translation>
     </message>
     <message>
         <source>Filter lists</source>
-        <translation type="unfinished"/>
+        <translation>Filterlistor</translation>
     </message>
     <message>
         <source>No test executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Inget test kört ännu.</translation>
     </message>
     <message>
         <source>Cannot enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte aktivera AdBlock</translation>
     </message>
     <message>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-        <translation type="unfinished"/>
+        <translation>Det finns fel i AdBlock-komponenten och den kan inte aktiveras. Kolla felmeddelande nedan (eller programloggen) för mer information.</translation>
     </message>
     <message>
         <source>You are good to go.</source>
-        <translation type="unfinished"/>
+        <translation>Då kör vi.</translation>
     </message>
     <message>
         <source>OK!</source>
-        <translation type="unfinished"/>
+        <translation>OK!</translation>
     </message>
     <message>
         <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
 
 Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Något är fel, kolla programloggen för mer detaljerad info och konsultera online-dokumentationen. Tillse också att Node.js är installerad.
+
+Fel: %1</translation>
     </message>
     <message>
         <source>ERROR!</source>
-        <translation type="unfinished"/>
+        <translation>FEL!</translation>
     </message>
 </context>
 <context>
@@ -90,15 +92,15 @@ Error: %1</source>
     <name>AdBlockManager</name>
     <message>
         <source>AdBlock needs to be configured</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock behöver konfigureras</translation>
     </message>
     <message>
         <source>AdBlock component is not configured properly.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock-komponenten är inte korrekt konfigurerad.</translation>
     </message>
     <message>
         <source>failed to download filter list &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>kunde inte ladda ner filterlista &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -594,11 +596,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Ladda bara ner olästa artiklar</translation>
     </message>
 </context>
 <context>
@@ -1117,7 +1119,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Överordnad mapp</translation>
     </message>
 </context>
 <context>
@@ -1180,15 +1182,15 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Cleanup settings</source>
-        <translation type="unfinished"/>
+        <translation>Rensningsinställningar</translation>
     </message>
     <message>
         <source>Remove all read messages</source>
-        <translation type="unfinished"/>
+        <translation>Tar bort alla lästa meddelanden</translation>
     </message>
     <message>
         <source>Remove all starred messages</source>
-        <translation type="unfinished"/>
+        <translation>Tar bort alla stjärnmärkta meddelanden</translation>
     </message>
 </context>
 <context>
@@ -1280,7 +1282,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Auto-downloading of articles</source>
-        <translation type="unfinished"/>
+        <translation>Automatisk nerladdning av artiklar</translation>
     </message>
 </context>
 <context>
@@ -1556,11 +1558,11 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>&amp;Add item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Lägg till objekt</translation>
     </message>
     <message>
         <source>&amp;Articles</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Artiklar</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
@@ -1568,171 +1570,171 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>&amp;Fetch all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Hämta alla</translation>
     </message>
     <message>
         <source>Fetch all feeds</source>
-        <translation type="unfinished"/>
+        <translation>Hämta alla flöden</translation>
     </message>
     <message>
         <source>Fetch &amp;selected</source>
-        <translation type="unfinished"/>
+        <translation>Hämta &amp;markerade</translation>
     </message>
     <message>
         <source>Fetch selected feeds</source>
-        <translation type="unfinished"/>
+        <translation>Hämta markerade flöden</translation>
     </message>
     <message>
         <source>Mark articles &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Märk artiklar som &amp;lästa</translation>
     </message>
     <message>
         <source>Mark selected articles read</source>
-        <translation type="unfinished"/>
+        <translation>Märk markerade artiklar som lästa</translation>
     </message>
     <message>
         <source>Mark articles &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Märk artiklar som &amp;olästa</translation>
     </message>
     <message>
         <source>Mark selected articles unread</source>
-        <translation type="unfinished"/>
+        <translation>Märk markerade artiklar som olästa</translation>
     </message>
     <message>
         <source>Switch &amp;importance</source>
-        <translation type="unfinished"/>
+        <translation>Växla &amp;betydelse</translation>
     </message>
     <message>
         <source>Switch importance of selected articles</source>
-        <translation type="unfinished"/>
+        <translation>Växla betydelse på markerade artiklar</translation>
     </message>
     <message>
         <source>&amp;Mark selected item read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Märk markerat objekt som läst</translation>
     </message>
     <message>
         <source>&amp;Mark selected item unread</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Märk markerat objekt som oläst</translation>
     </message>
     <message>
         <source>&amp;Delete articles</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ta bort artiklar</translation>
     </message>
     <message>
         <source>&amp;Clean selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ta bort markerat objekt</translation>
     </message>
     <message>
         <source>Open in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>Öppna i &amp;extern webbläsare</translation>
     </message>
     <message>
         <source>Open selected articles in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Öppna markerade artiklar i extern webbläsare</translation>
     </message>
     <message>
         <source>Open in &amp;internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Öppna i &amp;intern webbläsare</translation>
     </message>
     <message>
         <source>Open selected articles in internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Öppna markerade artiklar i intern webbläsare</translation>
     </message>
     <message>
         <source>&amp;Mark all read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Märk alla som lästa</translation>
     </message>
     <message>
         <source>View selected item in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Visa markerat objekt i &amp;tidningsläge</translation>
     </message>
     <message>
         <source>Switch main &amp;window visibility</source>
-        <translation type="unfinished"/>
+        <translation>Visa/Dölj &amp;huvudfönstret</translation>
     </message>
     <message>
         <source>&amp;Clean all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Rensa allt</translation>
     </message>
     <message>
         <source>&amp;Next article</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nästa artikel</translation>
     </message>
     <message>
         <source>&amp;Previous article</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Föregående artikel</translation>
     </message>
     <message>
         <source>&amp;List headers</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Listrubriker</translation>
     </message>
     <message>
         <source>&amp;Restore settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Återställ inställningar</translation>
     </message>
     <message>
         <source>&amp;Backup settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Säkerhetskopiera inställningar</translation>
     </message>
     <message>
         <source>Switch layout</source>
-        <translation type="unfinished"/>
+        <translation>Växla layout</translation>
     </message>
     <message>
         <source>Send via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Skicka via e-post</translation>
     </message>
     <message>
         <source>Send selected articles via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Skicka markerade artiklar via e-post</translation>
     </message>
     <message>
         <source>Show unread items only</source>
-        <translation type="unfinished"/>
+        <translation>Visa endast olästa objekt</translation>
     </message>
     <message>
         <source>&amp;Add account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Lägg till konto</translation>
     </message>
     <message>
         <source>&amp;Restore articles</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Återställ artiklar</translation>
     </message>
     <message>
         <source>Next &amp;unread article</source>
-        <translation type="unfinished"/>
+        <translation>Nästa &amp;olästa artikel</translation>
     </message>
     <message>
         <source>Stop ongoing fetching</source>
-        <translation type="unfinished"/>
+        <translation>Stoppa pågående hämtning</translation>
     </message>
     <message>
         <source>New browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Ny webbläsarflik</translation>
     </message>
     <message>
         <source>&amp;Enable article preview</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Aktivera förhandsvisning av artiklar</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Kopiera URL för markerat objekt</translation>
     </message>
     <message>
         <source>Show &amp;unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Visa endast &amp;olästa objekt</translation>
     </message>
     <message>
         <source>&amp;Show tree expanders</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Visa trädexpandrar</translation>
     </message>
     <message>
         <source>Fetch feeds with &amp;custom auto-download policy</source>
-        <translation type="unfinished"/>
+        <translation>Hämta flöden med &amp;anpassad policy för automatisk nerladdning</translation>
     </message>
     <message>
         <source>Automatically &amp;expand item when selected</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Expandera automatiskt objekt vid markering</translation>
     </message>
     <message>
         <source>Close opened modal dialogs first.</source>
@@ -1903,11 +1905,11 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Existing articles</source>
-        <translation type="unfinished"/>
+        <translation>Befintliga artiklar</translation>
     </message>
     <message>
         <source>Sample article</source>
-        <translation type="unfinished"/>
+        <translation>Exempelartikel</translation>
     </message>
     <message>
         <source>Output (modified) message is:
@@ -1918,7 +1920,14 @@ att funktionen inte är implementerad än.</translation>
   Created on = '%6'
   Contents = '%7'
   RAW contents = &apos;%8&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Utdatameddelandet (ändrat) är:
+ Titel = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Författare = &apos;%3&apos;
+  Är läst/viktigt = &apos;%4/%5&apos;
+  Skapat = &apos;%6&apos;
+  Innehåll = &apos;%7&apos;
+ RAW-innehåll = &apos;%8&apos;</translation>
     </message>
 </context>
 <context>
@@ -2148,15 +2157,15 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>&amp;Check all feeds</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Markera alla flöden</translation>
     </message>
     <message>
         <source>&amp;Uncheck all feeds</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Avmarkera alla flöden</translation>
     </message>
     <message>
         <source>Operation result</source>
-        <translation type="unfinished"/>
+        <translation>Åtgärdsresultat</translation>
     </message>
 </context>
 <context>
@@ -2393,11 +2402,11 @@ Du kan installera det nu.</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Ladda bara ner olästa artiklar</translation>
     </message>
 </context>
 <context>
@@ -2576,11 +2585,11 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Ladda bara ner olästa artiklar</translation>
     </message>
 </context>
 <context>
@@ -2605,11 +2614,11 @@ Inloggningstoken upphör: %2</translation>
     <name>ImportantNode</name>
     <message>
         <source>Important articles</source>
-        <translation type="unfinished"/>
+        <translation>Viktiga artiklar</translation>
     </message>
     <message>
         <source>You can find all important articles here.</source>
-        <translation type="unfinished"/>
+        <translation>Du hittar alla viktiga artiklar här.</translation>
     </message>
 </context>
 <context>
@@ -2700,11 +2709,11 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Ladda bara ner olästa artiklar</translation>
     </message>
 </context>
 <context>
@@ -3081,7 +3090,7 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="unfinished"/>
+        <translation>Datum</translation>
     </message>
 </context>
 <context>
@@ -3461,11 +3470,11 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Ladda bara ner olästa artiklar</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
 </context>
 <context>
@@ -4062,39 +4071,39 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Articles</source>
-        <translation type="unfinished"/>
+        <translation>Artiklar</translation>
     </message>
     <message>
         <source>Remove all read articles from all feeds on application exit</source>
-        <translation type="unfinished"/>
+        <translation>Ta bort alla lästa artiklar från alla flöden vid programavslut</translation>
     </message>
     <message>
         <source>Display real icons of feeds in list of articles instead of read/unread icons</source>
-        <translation type="unfinished"/>
+        <translation>Visa riktiga ikoner för flödet i listan över artiklar i stället för läst-/oläst-ikoner</translation>
     </message>
     <message>
         <source>Bring application window to front once article is opened in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Flytta programfönstret längst fram när artikel öppnas i extern webbläsare</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the article list viewport</source>
-        <translation type="unfinished"/>
+        <translation>Behåll meddelandemarkeringen i mitten av artikellistans vy</translation>
     </message>
     <message>
         <source>Height or rows in article list (-1 = default height)</source>
-        <translation type="unfinished"/>
+        <translation>Höjd eller rader i artikellistan (-1 = standardhöjd)</translation>
     </message>
     <message>
         <source>Article list font</source>
-        <translation type="unfinished"/>
+        <translation>Teckensnitt för artikellista</translation>
     </message>
     <message>
         <source>Article browser font</source>
-        <translation type="unfinished"/>
+        <translation>Teckensnitt för artikel i webbläsare</translation>
     </message>
     <message>
         <source>Feeds &amp; articles</source>
-        <translation type="unfinished"/>
+        <translation>Flöden &amp; artiklar</translation>
     </message>
 </context>
 <context>
@@ -4295,7 +4304,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"/>
+        <translation>Avisering</translation>
     </message>
 </context>
 <context>
@@ -4635,7 +4644,7 @@ Typ: %3</translation>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Överordnad mapp</translation>
     </message>
 </context>
 <context>
@@ -5007,11 +5016,11 @@ Olästa nyheter: %2</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Ladda bara ner olästa artiklar</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
 </context>
 <context>
@@ -5050,7 +5059,7 @@ Olästa nyheter: %2</translation>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Överordnad mapp</translation>
     </message>
 </context>
 <context>
@@ -5078,11 +5087,11 @@ Senaste inloggning: %4</translation>
     <name>UnreadNode</name>
     <message>
         <source>Unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Olästa artiklar</translation>
     </message>
     <message>
         <source>You can find all unread articles here.</source>
-        <translation type="unfinished"/>
+        <translation>Du hittar alla olästa artiklar här.</translation>
     </message>
 </context>
 <context>

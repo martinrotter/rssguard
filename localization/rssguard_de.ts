@@ -34,7 +34,7 @@
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Hilfe</translation>
     </message>
     <message>
         <source>&amp;Test configuration</source>
@@ -1548,7 +1548,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Feeds</translation>
     </message>
     <message>
         <source>&amp;Add item</source>
@@ -1560,7 +1560,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Voll&amp;bild</translation>
     </message>
     <message>
         <source>&amp;Fetch all</source>
@@ -1732,7 +1732,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"/>
+        <translation>Schliessen Sie zuerst alle modalen Fenster.</translation>
     </message>
 </context>
 <context>
@@ -4045,7 +4045,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Feeds</translation>
     </message>
     <message>
         <source>Articles</source>
@@ -4274,11 +4274,11 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <name>SettingsNotifications</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formular</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <translation>Desktop-Benachrichtigungen aktivieren</translation>
     </message>
     <message>
         <source>Notifications</source>

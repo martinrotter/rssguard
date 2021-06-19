@@ -34,7 +34,7 @@
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Hjælp</translation>
     </message>
     <message>
         <source>&amp;Test configuration</source>
@@ -1549,7 +1549,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Feeds</translation>
     </message>
     <message>
         <source>&amp;Add item</source>
@@ -1561,7 +1561,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Fuldskærm</translation>
     </message>
     <message>
         <source>&amp;Fetch all</source>
@@ -4023,7 +4023,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Feeds</translation>
     </message>
     <message>
         <source>Articles</source>

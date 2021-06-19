@@ -34,7 +34,7 @@
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Aide</translation>
     </message>
     <message>
         <source>&amp;Test configuration</source>
@@ -1552,7 +1552,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Flux</translation>
     </message>
     <message>
         <source>&amp;Add item</source>
@@ -1564,7 +1564,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Plein écran</translation>
     </message>
     <message>
         <source>&amp;Fetch all</source>
@@ -1736,7 +1736,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"/>
+        <translation>Fermer en premier les fenêtres modales ouvertes.</translation>
     </message>
 </context>
 <context>
@@ -4032,7 +4032,7 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Flux</translation>
     </message>
     <message>
         <source>Articles</source>
@@ -4261,7 +4261,7 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
     <name>SettingsNotifications</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulaire</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>

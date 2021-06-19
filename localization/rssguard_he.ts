@@ -34,7 +34,7 @@
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>&amp;עזרה</translation>
     </message>
     <message>
         <source>&amp;Test configuration</source>
@@ -1548,7 +1548,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>ערוצים</translation>
     </message>
     <message>
         <source>&amp;Add item</source>
@@ -4016,7 +4016,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>ערוצים</translation>
     </message>
     <message>
         <source>Articles</source>

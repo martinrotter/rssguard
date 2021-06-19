@@ -34,7 +34,7 @@
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Pomoc</translation>
     </message>
     <message>
         <source>&amp;Test configuration</source>
@@ -1552,7 +1552,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Kanály</translation>
     </message>
     <message>
         <source>&amp;Add item</source>
@@ -1564,7 +1564,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Přes celou &amp;obrazovku</translation>
     </message>
     <message>
         <source>&amp;Fetch all</source>
@@ -1736,7 +1736,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"/>
+        <translation>Nejdříve ukončete otevřené modální dialogy.</translation>
     </message>
 </context>
 <context>
@@ -4056,7 +4056,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Kanály</translation>
     </message>
     <message>
         <source>Articles</source>
@@ -4285,11 +4285,11 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <name>SettingsNotifications</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulář</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <translation>Povolit vyskakovací notifikační bubliny</translation>
     </message>
     <message>
         <source>Notifications</source>

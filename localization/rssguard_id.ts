@@ -34,7 +34,7 @@
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>Bant&amp;uan</translation>
     </message>
     <message>
         <source>&amp;Test configuration</source>
@@ -1550,7 +1550,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Feed</translation>
     </message>
     <message>
         <source>&amp;Add item</source>
@@ -1562,7 +1562,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Layar penuh</translation>
     </message>
     <message>
         <source>&amp;Fetch all</source>
@@ -1734,7 +1734,7 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"/>
+        <translation>Tutup dialog modal yang terbuka lebih dulu.</translation>
     </message>
 </context>
 <context>
@@ -4048,7 +4048,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"/>
+        <translation>Feed</translation>
     </message>
     <message>
         <source>Articles</source>
@@ -4277,11 +4277,11 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     <name>SettingsNotifications</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"/>
+        <translation>Formulir</translation>
     </message>
     <message>
         <source>Enable popup balloon tooltips</source>
-        <translation type="unfinished"/>
+        <translation>Nyalakan balon popup keterangan alat</translation>
     </message>
     <message>
         <source>Notifications</source>

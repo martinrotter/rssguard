@@ -52,6 +52,7 @@ void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode& mode)
       m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setText(tr("&Export to file"));
       setWindowTitle(tr("Export feeds"));
       setWindowIcon(qApp->icons()->fromTheme(QSL("document-export")));
+      selectExportFile(true);
       break;
     }
 
@@ -82,7 +83,7 @@ void FormStandardImportExport::selectFile() {
       break;
 
     case FeedsImportExportModel::Mode::Export: {
-      selectExportFile();
+      selectExportFile(false);
       break;
     }
 
@@ -129,18 +130,31 @@ void FormStandardImportExport::onParsingProgress(int completed, int total) {
   m_ui->m_progressBar->setValue(completed);
 }
 
-void FormStandardImportExport::selectExportFile() {
+void FormStandardImportExport::selectExportFile(bool without_dialog) {
+  const QString the_file = qApp->homeFolder() +
+                           QDir::separator() +
+                           QSL("rssguard_feeds_%1.opml").arg(QDate::currentDate().toString(Qt::DateFormat::ISODate));
+  QString selected_file;
+  QString selected_filter;
   const QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
   const QString filter_txt_url_per_line = tr("TXT files [one URL per line] (*.txt)");
-  QString filter;
-  QString selected_filter;
 
-  // Add more filters here.
-  filter += filter_opml20;
-  filter += ";;";
-  filter += filter_txt_url_per_line;
-  QString selected_file = QFileDialog::getSaveFileName(this, tr("Select file for feeds export"),
-                                                       qApp->homeFolder(), filter, &selected_filter);
+  if (!without_dialog) {
+    QString filter;
+
+    // Add more filters here.
+    filter += filter_opml20;
+    filter += ";;";
+    filter += filter_txt_url_per_line;
+    selected_file = QFileDialog::getSaveFileName(this, tr("Select file for feeds export"),
+                                                 the_file,
+                                                 filter,
+                                                 &selected_filter);
+  }
+  else {
+    selected_file = the_file;
+    selected_filter = filter_opml20;
+  }
 
   if (!selected_file.isEmpty()) {
     if (selected_filter == filter_opml20) {
