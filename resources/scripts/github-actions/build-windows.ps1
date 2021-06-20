@@ -36,13 +36,13 @@ Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
 # Download Qt itself.
 $qt_path = "$old_pwd\qt"
 pip3 install aqtinstall
-aqt install -b "https://mirrors.ocf.berkeley.edu/qt/" -O "$qt_path" "$qt_version" "windows" "desktop" "win64_msvc2019_64" -m "qtwebengine"
+aqt install -O "$qt_path" "$qt_version" "windows" "desktop" "win64_msvc2019_64" -m "qtwebengine"
 
 $qt_qmake = "$qt_path\$qt_version\msvc2019_64\bin\qmake.exe"
 $env:PATH = "$qt_path\$qt_version\msvc2019_64\bin\;" + $env:PATH
 
 # Download openssl.
-aqt tool -b "https://mirrors.ocf.berkeley.edu/qt/" -O "$qt_path" windows tools_openssl_x64 1.1.1 qt.tools.openssl.win_x64
+aqt tool -O "$qt_path" windows tools_openssl_x64 1.1.1 qt.tools.openssl.win_x64
 $openssl_base_path = "$qt_path\Tools\OpenSSL\Win_x64"
 
 # Build dependencies.
