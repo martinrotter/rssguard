@@ -145,7 +145,7 @@ RSS Guard offers [placeholder](#data-placeholder) `%data%` which is automaticall
 
 Also, working directory of process executing the script is set to RSS Guard's user data folder.
 
-There are some examples of website scrapers [here](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers), most of thme are written in Python 3, thus their execution line is similar to `python#script.py`. Make sure to examine the script for more information on how to use it.
+There are some examples of website scrapers [here](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers), most of them are written in Python 3, thus their execution line is similar to `python#script.py`. Make sure to examine the script for more information on how to use it.
 
 After your source feed data are downloaded either via URL or custom script, you can optionally post-process the data with one more custom script, which will take **raw source data as input** and must produce processed valid feed data to **standard output** while printing all error messages to **error output**.
 
