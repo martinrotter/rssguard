@@ -28,16 +28,6 @@ jobs:
           fetch-depth: 0
           submodules: true
          
-      - name: Prepare environment and compile application
-        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}"
-        env:
-          GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
-          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
-          INOREADER_CLIENT_ID: ${{ secrets.INOREADER_CLIENT_ID }}
-          INOREADER_CLIENT_SECRET: ${{ secrets.INOREADER_CLIENT_SECRET }}
-          FEEDLY_CLIENT_ID: ${{ secrets.FEEDLY_CLIENT_ID }}
-          FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}
-
       - name: Delete old development binaries
         uses: mknejp/delete-release-assets@v1
         if: strategy.job-index == 0
@@ -59,6 +49,16 @@ jobs:
           tag_name: devbuild
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         
+      - name: Prepare environment and compile application
+        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}"
+        env:
+          GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+          INOREADER_CLIENT_ID: ${{ secrets.INOREADER_CLIENT_ID }}
+          INOREADER_CLIENT_SECRET: ${{ secrets.INOREADER_CLIENT_SECRET }}
+          FEEDLY_CLIENT_ID: ${{ secrets.FEEDLY_CLIENT_ID }}
+          FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}
 
       - name: Release development binaries
         uses: softprops/action-gh-release@v1
