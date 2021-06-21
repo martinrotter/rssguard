@@ -106,27 +106,6 @@ Application::Application(const QString& id, int& argc, char** argv)
     m_notifications->load(settings());
   }
 
-#if defined(Q_OS_LINUX)
-  connect(m_feedReader->feedsModel(), &FeedsModel::messageCountsChanged, this,
-          [=](int unread_messages, bool any_feed_has_unread_messages) {
-    QDBusMessage signal = QDBusMessage::createSignal(
-      "/",
-      "com.canonical.Unity.LauncherEntry",
-      "Update");
-
-    signal << QSL("application://%1").arg(APP_DESKTOP_ENTRY_FILE);
-
-    QVariantMap setProperty;
-
-    setProperty.insert("count", qint64(unread_messages));
-    setProperty.insert("count-visible", unread_messages > 0);
-
-    signal << setProperty;
-
-    QDBusConnection::sessionBus().send(signal);
-  });
-#endif
-
   QTimer::singleShot(1000, system(), &SystemFactory::checkForUpdatesOnStartup);
 
   qDebugNN << LOGSEC_CORE
@@ -280,7 +259,29 @@ NotificationFactory* Application::notifications() const
 
 void Application::setFeedReader(FeedReader* feed_reader) {
   m_feedReader = feed_reader;
+
   connect(m_feedReader, &FeedReader::feedUpdatesFinished, this, &Application::onFeedUpdatesFinished);
+
+#if defined(Q_OS_LINUX)
+  connect(m_feedReader->feedsModel(), &FeedsModel::messageCountsChanged, this,
+          [=](int unread_messages, bool any_feed_has_unread_messages) {
+    QDBusMessage signal = QDBusMessage::createSignal(
+      "/",
+      "com.canonical.Unity.LauncherEntry",
+      "Update");
+
+    signal << QSL("application://%1").arg(APP_DESKTOP_ENTRY_FILE);
+
+    QVariantMap setProperty;
+
+    setProperty.insert("count", qint64(unread_messages));
+    setProperty.insert("count-visible", unread_messages > 0);
+
+    signal << setProperty;
+
+    QDBusConnection::sessionBus().send(signal);
+  });
+#endif
 }
 
 IconFactory* Application::icons() {
