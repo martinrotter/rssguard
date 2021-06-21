@@ -134,6 +134,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void onCommitData(QSessionManager& manager);
     void onSaveState(QSessionManager& manager);
     void onAboutToQuit();
+    void showMessagesNumber(int unread_messages, bool any_feed_has_unread_messages);
 
 #if defined(USE_WEBENGINE)
     void downloadRequested(QWebEngineDownloadItem* download_item);

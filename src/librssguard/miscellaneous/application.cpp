@@ -261,27 +261,7 @@ void Application::setFeedReader(FeedReader* feed_reader) {
   m_feedReader = feed_reader;
 
   connect(m_feedReader, &FeedReader::feedUpdatesFinished, this, &Application::onFeedUpdatesFinished);
-
-#if defined(Q_OS_LINUX)
-  connect(m_feedReader->feedsModel(), &FeedsModel::messageCountsChanged, this,
-          [=](int unread_messages, bool any_feed_has_unread_messages) {
-    QDBusMessage signal = QDBusMessage::createSignal(
-      "/",
-      "com.canonical.Unity.LauncherEntry",
-      "Update");
-
-    signal << QSL("application://%1").arg(APP_DESKTOP_ENTRY_FILE);
-
-    QVariantMap setProperty;
-
-    setProperty.insert("count", qint64(unread_messages));
-    setProperty.insert("count-visible", unread_messages > 0);
-
-    signal << setProperty;
-
-    QDBusConnection::sessionBus().send(signal);
-  });
-#endif
+  connect(m_feedReader->feedsModel(), &FeedsModel::messageCountsChanged, this, &Application::showMessagesNumber);
 }
 
 IconFactory* Application::icons() {
@@ -422,7 +402,6 @@ SystemTrayIcon* Application::trayIcon() {
     }
 
     connect(m_trayIcon, &SystemTrayIcon::shown, m_feedReader->feedsModel(), &FeedsModel::notifyWithCounts);
-    connect(m_feedReader->feedsModel(), &FeedsModel::messageCountsChanged, m_trayIcon, &SystemTrayIcon::setNumber);
   }
 
   return m_trayIcon;
@@ -559,6 +538,29 @@ void Application::onAboutToQuit() {
       qCriticalNN << LOGSEC_CORE << "New application instance was not started successfully.";
     }
   }
+}
+
+void Application::showMessagesNumber(int unread_messages, bool any_feed_has_unread_messages) {
+  if (m_trayIcon != nullptr) {
+    m_trayIcon->setNumber(unread_messages, any_feed_has_unread_messages);
+  }
+
+#if defined(Q_OS_LINUX)
+  QDBusMessage signal = QDBusMessage::createSignal(QSL("/"),
+                                                   QSL("com.canonical.Unity.LauncherEntry"),
+                                                   QSL("Update"));
+
+  signal << QSL("application://%1").arg(APP_DESKTOP_ENTRY_FILE);
+
+  QVariantMap setProperty;
+
+  setProperty.insert("count", qint64(unread_messages));
+  setProperty.insert("count-visible", unread_messages > 0);
+
+  signal << setProperty;
+
+  QDBusConnection::sessionBus().send(signal);
+#endif
 }
 
 void Application::restart() {
