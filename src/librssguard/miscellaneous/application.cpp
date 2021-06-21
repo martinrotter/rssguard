@@ -121,19 +121,8 @@ Application::Application(const QString& id, int& argc, char** argv)
     setProperty.insert("count", qint64(unread_messages));
     setProperty.insert("count-visible", unread_messages > 0);
 
-    /*
-       /* progre
-     * ss bar count must be float between 0 and 1 (mean from 0.00 to 0.100)*/
-    setProperty.insert("progress", double(0.80));
-
-    /* show progress bar */
-    setProperty.insert("progress-visible", true);
-
-    /* Tells the launcher to get the users attention  */
-    setProperty.insert("urgent", true);
-    * /
-
     signal << setProperty;
+
     QDBusConnection::sessionBus().send(signal);
   });
 #endif
