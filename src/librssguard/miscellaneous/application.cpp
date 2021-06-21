@@ -28,6 +28,7 @@
 #include <QProcess>
 #include <QSessionManager>
 #include <QSslSocket>
+#include <QtConcurrent/QtConcurrentRun>
 #include <QTimer>
 
 #if defined(USE_WEBENGINE)
@@ -91,12 +92,16 @@ Application::Application(const QString& id, int& argc, char** argv)
     m_notifications->save({
       Notification(Notification::Event::NewArticlesFetched,
                    true,
-                   QSL("%1/rooster.wav").arg(SOUNDS_BUILTIN_DIRECTORY))
+                   QSL("%1/rooster.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
+      Notification(Notification::Event::NewAppVersionAvailable,
+                   true)
     }, settings());
   }
   else {
     m_notifications->load(settings());
   }
+
+  QTimer::singleShot(1000, system(), &SystemFactory::checkForUpdatesOnStartup);
 
   qDebugNN << LOGSEC_CORE
            << "OpenSSL version:"

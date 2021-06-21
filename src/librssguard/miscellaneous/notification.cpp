@@ -34,9 +34,11 @@ void Notification::playSound(Application* app) const {
 
 QList<Notification::Event> Notification::allEvents() {
   return {
+    Event::GeneralEvent,
     Event::NewArticlesFetched,
     Event::ArticlesFetchingStarted,
-    Event::LoginDataRefreshed
+    Event::LoginDataRefreshed,
+    Event::NewAppVersionAvailable,
   };
 }
 
@@ -51,12 +53,17 @@ QString Notification::nameForEvent(Notification::Event event) {
     case Notification::Event::LoginDataRefreshed:
       return QObject::tr("Login data refreshed");
 
+    case Notification::Event::NewAppVersionAvailable:
+      return QObject::tr("New %1 version is available").arg(APP_NAME);
+
+    case Notification::Event::GeneralEvent:
+      return QObject::tr("Miscellaneous events");
+
     default:
       return QObject::tr("Unknown event");
   }
 }
 
-bool Notification::balloonEnabled() const
-{
+bool Notification::balloonEnabled() const {
   return m_balloonEnabled;
 }

@@ -39,7 +39,7 @@ void NotificationsEditor::loadNotifications(const QList<Notification>& notificat
     }
   }
 
-  m_layout->addSpacerItem(new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding));
+  m_layout->addSpacerItem(new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding));
 }
 
 QList<Notification> NotificationsEditor::allNotifications() const {

@@ -224,9 +224,10 @@ void SystemFactory::checkForUpdatesOnStartup() {
                      this, [&](QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> updates) {
       QObject::disconnect(qApp->system(), &SystemFactory::updatesChecked, this, nullptr);
 
-      if (!updates.first.isEmpty() && updates.second == QNetworkReply::NetworkError::NoError &&
+      if (!updates.first.isEmpty() &&
+          updates.second == QNetworkReply::NetworkError::NoError &&
           SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, APP_VERSION)) {
-        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+        qApp->showGuiMessage(Notification::Event::NewAppVersionAvailable,
                              QObject::tr("New version available"),
                              QObject::tr("Click the bubble for more information."),
                              QSystemTrayIcon::Information, {}, {},

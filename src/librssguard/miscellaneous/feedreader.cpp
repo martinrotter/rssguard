@@ -71,8 +71,8 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
 void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         tr("Cannot update all items"),
-                         tr("You cannot download new messages for your items "
+                         tr("Cannot fetch articles for all items"),
+                         tr("You cannot fetch new articles for your items "
                             "because another critical operation is ongoing."),
                          QSystemTrayIcon::MessageIcon::Warning,
                          true);

@@ -3,13 +3,13 @@
 #ifndef SINGLENOTIFICATIONEDITOR_H
 #define SINGLENOTIFICATIONEDITOR_H
 
-#include <QWidget>
+#include <QGroupBox>
 
 #include "ui_singlenotificationeditor.h"
 
 #include "miscellaneous/notification.h"
 
-class SingleNotificationEditor : public QWidget {
+class SingleNotificationEditor : public QGroupBox {
   Q_OBJECT
 
   public:
@@ -21,6 +21,7 @@ class SingleNotificationEditor : public QWidget {
     void notificationChanged();
 
   private slots:
+    void selectSoundFile();
     void playSound();
 
   private:
