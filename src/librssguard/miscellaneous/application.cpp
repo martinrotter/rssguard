@@ -31,6 +31,11 @@
 #include <QtConcurrent/QtConcurrentRun>
 #include <QTimer>
 
+#if defined(Q_OS_LINUX)
+#include <QDBusConnection>
+#include <QDBusMessage>
+#endif
+
 #if defined(USE_WEBENGINE)
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
@@ -100,6 +105,38 @@ Application::Application(const QString& id, int& argc, char** argv)
   else {
     m_notifications->load(settings());
   }
+
+#if defined(Q_OS_LINUX)
+  connect(m_feedReader->feedsModel(), &FeedsModel::messageCountsChanged, this,
+          [=](int unread_messages, bool any_feed_has_unread_messages) {
+    QDBusMessage signal = QDBusMessage::createSignal(
+      "/",
+      "com.canonical.Unity.LauncherEntry",
+      "Update");
+
+    signal << QSL("application://%1").arg(APP_DESKTOP_ENTRY_FILE);
+
+    QVariantMap setProperty;
+
+    setProperty.insert("count", qint64(unread_messages));
+    setProperty.insert("count-visible", unread_messages > 0);
+
+    /*
+       /* progre
+     * ss bar count must be float between 0 and 1 (mean from 0.00 to 0.100)*/
+    setProperty.insert("progress", double(0.80));
+
+    /* show progress bar */
+    setProperty.insert("progress-visible", true);
+
+    /* Tells the launcher to get the users attention  */
+    setProperty.insert("urgent", true);
+    * /
+
+    signal << setProperty;
+    QDBusConnection::sessionBus().send(signal);
+  });
+#endif
 
   QTimer::singleShot(1000, system(), &SystemFactory::checkForUpdatesOnStartup);
 

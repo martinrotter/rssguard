@@ -10,7 +10,11 @@ VERSION = $$APP_VERSION
 QT *= core gui widgets sql network xml qml multimedia
 
 greaterThan(QT_MAJOR_VERSION, 5) {
-  QT*= core5compat
+  QT *= core5compat
+}
+
+unix:!mac:!android {
+  QT *= dbus
 }
 
 equals(USE_WEBENGINE, true) {
