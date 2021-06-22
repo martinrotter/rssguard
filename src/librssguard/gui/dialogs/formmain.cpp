@@ -228,7 +228,7 @@ void FormMain::prepareMenus() {
 
 #if !defined(USE_WEBENGINE)
   m_ui->m_menuWebBrowserTabs->removeAction(m_ui->m_actionTabNewWebBrowser);
-  m_ui->m_menuWebBrowserTabs->setTitle(tr("Tabs"));
+  m_ui->m_menuWebBrowserTabs->setTitle(tr("Ta&bs"));
 #endif
 #if defined(Q_OS_MACOS)
   m_ui->m_actionSwitchMainMenu->setVisible(false);

@@ -100,7 +100,7 @@
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
     <property name="title">
-     <string>&amp;Feeds</string>
+     <string>F&amp;eeds</string>
     </property>
     <widget class="QMenu" name="m_menuAddItem">
      <property name="title">
