@@ -100,7 +100,7 @@
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
     <property name="title">
-     <string>Feeds</string>
+     <string>&amp;Feeds</string>
     </property>
     <widget class="QMenu" name="m_menuAddItem">
      <property name="title">
@@ -136,7 +136,7 @@
    </widget>
    <widget class="QMenu" name="m_menuMessages">
     <property name="title">
-     <string>&amp;Articles</string>
+     <string>Art&amp;icles</string>
     </property>
     <addaction name="m_actionOpenSelectedSourceArticlesExternally"/>
     <addaction name="m_actionOpenSelectedMessagesInternally"/>
@@ -173,7 +173,7 @@
    </widget>
    <widget class="QMenu" name="m_menuWebBrowserTabs">
     <property name="title">
-     <string>Web browser &amp;&amp; tabs</string>
+     <string>&amp;Web browser &amp;&amp; tabs</string>
     </property>
     <addaction name="m_actionTabNewWebBrowser"/>
     <addaction name="separator"/>
