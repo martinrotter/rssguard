@@ -35,6 +35,7 @@ Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
 
 # Download Qt itself.
 $qt_path = "$old_pwd\qt"
+pip3 install -U pip
 pip3 install aqtinstall
 aqt install -O "$qt_path" "$qt_version" "windows" "desktop" "win64_msvc2019_64" -m "qtwebengine"
 
