@@ -29,10 +29,10 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
-  m_ui.m_lblLimitMessages->setText(tr("Limiting number of fetched articles per feed makes fetching of "
-                                      "articles faster, but if your feed contains bigger number of articles "
+  m_ui.m_lblLimitMessages->setText(tr("Limiting the number of fetched articles per feed makes fetching of "
+                                      "articles faster, but if your feed contains more articles "
                                       "than specified limit, then some older articles might not be "
-                                      "downloaded at all."));
+                                      "fetched at all."));
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessages, true);
 

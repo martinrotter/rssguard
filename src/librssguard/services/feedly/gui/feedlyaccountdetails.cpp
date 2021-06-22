@@ -41,9 +41,9 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent), m
                              "each day.").arg(APP_NAME));
 #endif
 
-  m_ui.m_lblLimitMessagesInfo->setText(tr("Be very careful about downloading too many articles, because "
-                                          "Feedly automagically caches ALL articles of a feed forever so you might "
-                                          "end with thousands of articles you will never read anyway."));
+  m_ui.m_lblLimitMessagesInfo->setText(tr("Beware of downloading too many articles, because "
+                                          "Feedly permanently caches ALL articles of the feed forever so you might "
+                                          "end up with thousands of articles which you will never read anyway."));
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessagesInfo, true);

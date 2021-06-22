@@ -116,6 +116,6 @@ void FormFeedDetails::initialize() {
                                      QVariant::fromValue(int(Feed::AutoUpdateType::DefaultAutoUpdate)));
   m_ui->m_cmbAutoUpdateType->addItem(tr("Fetch articles every"),
                                      QVariant::fromValue(int(Feed::AutoUpdateType::SpecificAutoUpdate)));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Do not fetch articles at all"),
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Disable auto-fetching of articles"),
                                      QVariant::fromValue(int(Feed::AutoUpdateType::DontAutoUpdate)));
 }
