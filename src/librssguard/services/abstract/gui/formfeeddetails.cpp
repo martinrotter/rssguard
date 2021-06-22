@@ -81,7 +81,7 @@ void FormFeedDetails::loadFeedData() {
     setWindowTitle(tr("Add new feed"));
   }
   else {
-    setWindowTitle(tr("Edit '%1'").arg(m_feed->title()));
+    setWindowTitle(tr("Edit \"%1\"").arg(m_feed->title()));
   }
 
   m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(m_feed->autoUpdateType()))));

@@ -76,7 +76,7 @@ void FormCategoryDetails::loadCategoryData() {
     }
   }
   else {
-    setWindowTitle(tr("Edit '%1'").arg(m_category->title()));
+    setWindowTitle(tr("Edit \"%1\"").arg(m_category->title()));
     m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) m_category->parent())));
   }
 
