@@ -17,11 +17,11 @@ RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCo
   setId(ID_RECYCLE_BIN);
   setIcon(qApp->icons()->fromTheme(QSL("user-trash")));
   setTitle(tr("Recycle bin"));
-  setDescription(tr("Recycle bin contains all deleted messages from all feeds."));
+  setDescription(tr("Recycle bin contains all deleted articles from all feeds."));
 }
 
 QString RecycleBin::additionalTooltip() const {
-  return tr("%n deleted message(s).", nullptr, countOfAllMessages());
+  return tr("%n deleted article(s).", nullptr, countOfAllMessages());
 }
 
 int RecycleBin::countOfUnreadMessages() const {

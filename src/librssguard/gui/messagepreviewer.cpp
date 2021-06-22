@@ -31,15 +31,15 @@
 void MessagePreviewer::createConnections() {
   installEventFilter(this);
 
-  connect(m_actionMarkRead = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-read"), tr("Mark message as read")),
+  connect(m_actionMarkRead = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-read"), tr("Mark article read")),
           &QAction::triggered,
           this,
           &MessagePreviewer::markMessageAsRead);
-  connect(m_actionMarkUnread = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-unread"), tr("Mark message as unread")),
+  connect(m_actionMarkUnread = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-unread"), tr("Mark article unread")),
           &QAction::triggered,
           this,
           &MessagePreviewer::markMessageAsUnread);
-  connect(m_actionSwitchImportance = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-important"), tr("Switch message importance")),
+  connect(m_actionSwitchImportance = m_toolBar->addAction(qApp->icons()->fromTheme("mail-mark-important"), tr("Switch article importance")),
           &QAction::triggered,
           this,
           &MessagePreviewer::switchMessageImportance);

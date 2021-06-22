@@ -103,28 +103,28 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
 void MessagesToolBar::initializeSearchBox() {
   m_txtSearchMessages = new BaseLineEdit(this);
   m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding, m_txtSearchMessages->sizePolicy().verticalPolicy());
-  m_txtSearchMessages->setPlaceholderText(tr("Search messages"));
+  m_txtSearchMessages->setPlaceholderText(tr("Search articles"));
 
   // Setup wrapping action for search box.
   m_actionSearchMessages = new QWidgetAction(this);
   m_actionSearchMessages->setDefaultWidget(m_txtSearchMessages);
   m_actionSearchMessages->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
   m_actionSearchMessages->setProperty("type", SEARCH_BOX_ACTION_NAME);
-  m_actionSearchMessages->setProperty("name", tr("Message search box"));
+  m_actionSearchMessages->setProperty("name", tr("Article search box"));
 
   connect(m_txtSearchMessages, &BaseLineEdit::textChanged, this, &MessagesToolBar::messageSearchPatternChanged);
 }
 
 void MessagesToolBar::initializeHighlighter() {
-  m_menuMessageHighlighter = new QMenu(tr("Menu for highlighting messages"), this);
+  m_menuMessageHighlighter = new QMenu(tr("Menu for highlighting articles"), this);
   m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")),
                                       tr("No extra highlighting"))->setData(QVariant::fromValue(MessagesModel::MessageHighlighter::NoHighlighting));
   m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-unread")),
-                                      tr("Highlight unread messages"))->setData(QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightUnread));
+                                      tr("Highlight unread articles"))->setData(QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightUnread));
   m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-important")),
-                                      tr("Highlight important messages"))->setData(QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightImportant));
+                                      tr("Highlight important articles"))->setData(QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightImportant));
   m_btnMessageHighlighter = new QToolButton(this);
-  m_btnMessageHighlighter->setToolTip(tr("Display all messages"));
+  m_btnMessageHighlighter->setToolTip(tr("Display all articles"));
   m_btnMessageHighlighter->setMenu(m_menuMessageHighlighter);
   m_btnMessageHighlighter->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
   m_btnMessageHighlighter->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
@@ -132,7 +132,7 @@ void MessagesToolBar::initializeHighlighter() {
   m_actionMessageHighlighter->setDefaultWidget(m_btnMessageHighlighter);
   m_actionMessageHighlighter->setIcon(m_btnMessageHighlighter->icon());
   m_actionMessageHighlighter->setProperty("type", HIGHLIGHTER_ACTION_NAME);
-  m_actionMessageHighlighter->setProperty("name", tr("Message highlighter"));
+  m_actionMessageHighlighter->setProperty("name", tr("Article highlighter"));
 
   connect(m_menuMessageHighlighter, &QMenu::triggered, this, &MessagesToolBar::handleMessageHighlighterChange);
 }

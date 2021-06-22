@@ -45,7 +45,7 @@
 #include <QWidgetAction>
 
 FeedMessageViewer::FeedMessageViewer(QWidget* parent) : TabContent(parent), m_toolBarsEnabled(true), m_listHeadersEnabled(true),
-  m_toolBarFeeds(new FeedsToolBar(tr("Toolbar for feeds"), this)), m_toolBarMessages(new MessagesToolBar(tr("Toolbar for messages"), this)),
+  m_toolBarFeeds(new FeedsToolBar(tr("Toolbar for feeds"), this)), m_toolBarMessages(new MessagesToolBar(tr("Toolbar for articles"), this)),
   m_messagesView(new MessagesView(this)), m_feedsView(new FeedsView(this)),
   m_messagesBrowser(new MessagePreviewer(false, this)) {
   initialize();

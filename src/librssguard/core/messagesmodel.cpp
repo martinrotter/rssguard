@@ -138,8 +138,8 @@ void MessagesModel::loadMessages(RootItem* item) {
                   << "Loading of messages from item '"
                   << item->title() << "' failed.";
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           tr("Loading of messages from item '%1' failed.").arg(item->title()),
-                           tr("Loading of messages failed, maybe messages could not be downloaded."),
+                           tr("Loading of articles from item '%1' failed.").arg(item->title()),
+                           tr("Loading of articles failed, maybe messages could not be downloaded."),
                            QSystemTrayIcon::MessageIcon::Critical,
                            true);
     }
@@ -246,24 +246,24 @@ void MessagesModel::setupHeaderData() {
     /*: Tooltip for indication of presence of enclosures.*/ tr("Has enclosures");
 
   m_tooltipData
-    << tr("ID of the message.")
-    << tr("Is message read?")
-    << tr("Is message important?")
-    << tr("Is message deleted?")
-    << tr("Is message permanently deleted from recycle bin?")
-    << tr("ID of feed which this message belongs to.")
-    << tr("Title of the message.")
-    << tr("Url of the message.")
-    << tr("Author of the message.")
-    << tr("Creation date of the message.")
-    << tr("Contents of the message.")
+    << tr("ID of the article.")
+    << tr("Is article read?")
+    << tr("Is article important?")
+    << tr("Is article deleted?")
+    << tr("Is article permanently deleted from recycle bin?")
+    << tr("ID of feed which this article belongs to.")
+    << tr("Title of the article.")
+    << tr("Url of the article.")
+    << tr("Author of the article.")
+    << tr("Creation date of the article.")
+    << tr("Contents of the article.")
     << tr("List of attachments.")
-    << tr("Score of the message.")
-    << tr("Account ID of the message.")
-    << tr("Custom ID of the message")
-    << tr("Custom hash of the message.")
-    << tr("Custom ID of feed of the message.")
-    << tr("Indication of enclosures presence within the message.");
+    << tr("Score of the article.")
+    << tr("Account ID of the article.")
+    << tr("Custom ID of the article")
+    << tr("Custom hash of the article.")
+    << tr("Custom ID of feed of the article.")
+    << tr("Indication of enclosures presence within the article.");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {

@@ -142,7 +142,7 @@ QVariant RootItem::data(int column, int role) const {
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         //: Tooltip for "unread" column of feed list.
-        return tr("%n unread message(s).", nullptr, countOfUnreadMessages());
+        return tr("%n unread article(s).", nullptr, countOfUnreadMessages());
       }
       else {
         return QVariant();

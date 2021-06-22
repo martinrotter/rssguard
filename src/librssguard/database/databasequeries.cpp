@@ -1920,7 +1920,7 @@ bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
 MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const QString& title,
                                                  const QString& script) {
   if (!db.driver()->hasFeature(QSqlDriver::DriverFeature::LastInsertId)) {
-    throw ApplicationException(QObject::tr("Cannot insert message filter, because current database cannot return last inserted row ID."));
+    throw ApplicationException(QObject::tr("Cannot insert article filter, because current database cannot return last inserted row ID."));
   }
 
   QSqlQuery q(db);

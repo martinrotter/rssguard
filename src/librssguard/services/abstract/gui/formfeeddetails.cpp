@@ -112,10 +112,10 @@ void FormFeedDetails::initialize() {
 
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Download messages using global interval"),
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Fetch articles using global interval"),
                                      QVariant::fromValue(int(Feed::AutoUpdateType::DefaultAutoUpdate)));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Download messages every"),
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Fetch articles every"),
                                      QVariant::fromValue(int(Feed::AutoUpdateType::SpecificAutoUpdate)));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Do not download messages at all"),
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Do not fetch articles at all"),
                                      QVariant::fromValue(int(Feed::AutoUpdateType::DontAutoUpdate)));
 }

@@ -134,7 +134,7 @@ void TabWidget::initializeTabs() {
   m_feedMessageViewer = new FeedMessageViewer(this);
   const int index_of_browser = addTab(m_feedMessageViewer, QIcon(), tr("Feeds"), TabBar::TabType::FeedReader);
 
-  setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
+  setTabToolTip(index_of_browser, tr("Browse your feeds and articles"));
 }
 
 void TabWidget::setupIcons() {

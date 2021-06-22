@@ -26,7 +26,7 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
       m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
     }
     else {
-      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("messages"));
+      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("articles"));
     }
   });
 

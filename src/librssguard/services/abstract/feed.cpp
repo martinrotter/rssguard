@@ -263,24 +263,24 @@ QString Feed::getAutoUpdateStatusDescription() const {
     case AutoUpdateType::DontAutoUpdate:
 
       //: Describes feed auto-update status.
-      auto_update_string = tr("does not use auto-downloading of messages");
+      auto_update_string = tr("does not use auto-fetching of articles");
       break;
 
     case AutoUpdateType::DefaultAutoUpdate:
 
       //: Describes feed auto-update status.
       auto_update_string = qApp->feedReader()->autoUpdateEnabled()
-              ? tr("uses global settings (%n minute(s) to next auto-download of messages)",
+              ? tr("uses global settings (%n minute(s) to next auto-fetch of articles)",
                    nullptr,
                    qApp->feedReader()->autoUpdateRemainingInterval())
-              : tr("uses global settings (global auto-downloading of messages is disabled)");
+              : tr("uses global settings (global auto-fetching of articles is disabled)");
       break;
 
     case AutoUpdateType::SpecificAutoUpdate:
     default:
 
       //: Describes feed auto-update status.
-      auto_update_string = tr("uses specific settings (%n minute(s) to next auto-downloading of new messages)", nullptr, autoUpdateRemainingInterval());
+      auto_update_string = tr("uses specific settings (%n minute(s) to next auto-fetching of new articles)", nullptr, autoUpdateRemainingInterval());
       break;
   }
 
@@ -293,7 +293,7 @@ QString Feed::getStatusDescription() const {
       return tr("no errors");
 
     case Status::NewMessages:
-      return tr("has new messages");
+      return tr("has new articles");
 
     case Status::AuthError:
       return tr("authentication error");

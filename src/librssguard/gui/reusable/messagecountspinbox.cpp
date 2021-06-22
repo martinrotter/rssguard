@@ -12,10 +12,10 @@ MessageCountSpinBox::MessageCountSpinBox(QWidget* parent) : QSpinBox(parent) {
       setSuffix(QSL(" ") + tr("= unlimited"));
     }
     else if (value == 1) {
-      setSuffix(QSL(" ") + tr("message"));
+      setSuffix(QSL(" ") + tr("article"));
     }
     else {
-      setSuffix(QSL(" ") + tr("messages"));
+      setSuffix(QSL(" ") + tr("articles"));
     }
   });
 

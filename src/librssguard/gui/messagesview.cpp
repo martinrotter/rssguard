@@ -191,7 +191,7 @@ void MessagesView::contextMenuEvent(QContextMenuEvent* event) {
 
 void MessagesView::initializeContextMenu() {
   if (m_contextMenu == nullptr) {
-    m_contextMenu = new QMenu(tr("Context menu for messages"), this);
+    m_contextMenu = new QMenu(tr("Context menu for articles"), this);
   }
 
   m_contextMenu->clear();

@@ -22,12 +22,12 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders& which_data) {
 
   if (which_data.m_removeReadMessages) {
     progress += difference;
-    emit purgeProgress(progress, tr("Removing read messages..."));
+    emit purgeProgress(progress, tr("Removing read articles..."));
 
     // Remove read messages.
     result &= purgeReadMessages(database);
     progress += difference;
-    emit purgeProgress(progress, tr("Read messages purged..."));
+    emit purgeProgress(progress, tr("Read articles purged..."));
   }
 
   if (which_data.m_removeRecycleBin) {
@@ -42,22 +42,22 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders& which_data) {
 
   if (which_data.m_removeOldMessages) {
     progress += difference;
-    emit purgeProgress(progress, tr("Removing old messages..."));
+    emit purgeProgress(progress, tr("Removing old articles..."));
 
     // Remove old messages.
     result &= purgeOldMessages(database, which_data.m_barrierForRemovingOldMessagesInDays);
     progress += difference;
-    emit purgeProgress(progress, tr("Old messages purged..."));
+    emit purgeProgress(progress, tr("Old articles purged..."));
   }
 
   if (which_data.m_removeStarredMessages) {
     progress += difference;
-    emit purgeProgress(progress, tr("Removing starred messages..."));
+    emit purgeProgress(progress, tr("Removing starred articles..."));
 
     // Remove old messages.
     result &= purgeStarredMessages(database);
     progress += difference;
-    emit purgeProgress(progress, tr("Starred messages purged..."));
+    emit purgeProgress(progress, tr("Starred articles purged..."));
   }
 
   result &= DatabaseQueries::purgeLeftoverLabelAssignments(database);

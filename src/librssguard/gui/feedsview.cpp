@@ -654,7 +654,7 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
 
 QMenu* FeedsView::initializeContextMenuImportant(RootItem* clicked_item) {
   if (m_contextMenuImportant == nullptr) {
-    m_contextMenuImportant = new QMenu(tr("Context menu for important messages"), this);
+    m_contextMenuImportant = new QMenu(tr("Context menu for important articles"), this);
   }
   else {
     m_contextMenuImportant->clear();

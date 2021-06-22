@@ -138,7 +138,7 @@ void FormMessageFiltersManager::showMessageContextMenu(const QPoint& pos) {
   if (msg != nullptr) {
     QMenu menu(tr("Context menu"), m_ui.m_treeExistingMessages);
 
-    menu.addAction(tr("Filter messages like this"), this, [=]() {
+    menu.addAction(tr("Filter articles like this"), this, [=]() {
       filterMessagesLikeThis(*msg);
     });
     menu.exec(m_ui.m_treeExistingMessages->mapToGlobal(pos));
@@ -169,7 +169,7 @@ void FormMessageFiltersManager::loadFilters() {
 void FormMessageFiltersManager::addNewFilter(const QString& filter_script) {
   try {
     auto* fltr = m_reader->addMessageFilter(
-      tr("New message filter"),
+      tr("New article filter"),
       filter_script.isEmpty()
                    ? QSL("function filterMessage() { return MessageObject.Accept; }")
                    : filter_script);
@@ -237,7 +237,7 @@ void FormMessageFiltersManager::testFilter() {
   }
   catch (const FilteringException& ex) {
     m_ui.m_txtErrors->setTextColor(Qt::GlobalColor::red);
-    m_ui.m_txtErrors->insertPlainText(tr("EXISTING messages filtering error: '%1'.\n").arg(ex.message()));
+    m_ui.m_txtErrors->insertPlainText(tr("EXISTING articles filtering error: '%1'.\n").arg(ex.message()));
 
     // See output.
     m_ui.m_twMessages->setCurrentIndex(2);
@@ -253,11 +253,11 @@ void FormMessageFiltersManager::testFilter() {
 
     m_ui.m_txtErrors->setTextColor(decision == MessageObject::FilteringAction::Accept ? Qt::GlobalColor::darkGreen : Qt::GlobalColor::red);
 
-    QString answer = tr("Message will be %1.\n\n").arg(decision == MessageObject::FilteringAction::Accept
+    QString answer = tr("Article will be %1.\n\n").arg(decision == MessageObject::FilteringAction::Accept
                                                        ? tr("ACCEPTED")
                                                        : tr("REJECTED"));
 
-    answer += tr("Output (modified) message is:\n"
+    answer += tr("Output (modified) article is:\n"
                  "  Title = '%1'\n"
                  "  URL = '%2'\n"
                  "  Author = '%3'\n"
@@ -275,7 +275,7 @@ void FormMessageFiltersManager::testFilter() {
   }
   catch (const FilteringException& ex) {
     m_ui.m_txtErrors->setTextColor(Qt::GlobalColor::red);
-    m_ui.m_txtErrors->insertPlainText(tr("SAMPLE message filtering error: '%1'.\n").arg(ex.message()));
+    m_ui.m_txtErrors->insertPlainText(tr("SAMPLE article filtering error: '%1'.\n").arg(ex.message()));
 
     // See output.
     m_ui.m_twMessages->setCurrentIndex(2);

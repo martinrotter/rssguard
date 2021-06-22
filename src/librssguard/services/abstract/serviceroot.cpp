@@ -94,7 +94,7 @@ QList<QAction*> ServiceRoot::serviceMenu() {
       auto* cache = toCache();
 
       if (cache != nullptr) {
-        auto* act_sync_cache = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Synchronize message cache"), this);
+        auto* act_sync_cache = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Synchronize article cache"), this);
 
         connect(act_sync_cache, &QAction::triggered, this, [cache]() {
           cache->saveAllCachedData(false);
