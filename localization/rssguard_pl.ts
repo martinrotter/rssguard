@@ -128,11 +128,11 @@ Error: %1</source>
         <translation>Nie można dodać kanału</translation>
     </message>
     <message>
-        <source>New messages downloaded</source>
-        <translation>Pobrano nowe wiadomości</translation>
+        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <source>New articles fetched</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -205,35 +205,35 @@ Error: %1</source>
         <translation>Plik bazy danych został zmniejszony...</translation>
     </message>
     <message>
-        <source>Removing read messages...</source>
-        <translation>Usuwanie przeczytanych wiadomości...</translation>
-    </message>
-    <message>
-        <source>Read messages purged...</source>
-        <translation>Przeczytane wiadomości usunięte...</translation>
-    </message>
-    <message>
         <source>Recycle bin purged...</source>
         <translation>Kosz opróżniony...</translation>
-    </message>
-    <message>
-        <source>Removing old messages...</source>
-        <translation>Usuwanie starych wiadomości...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
         <translation>Opróżnianie kosza...</translation>
     </message>
     <message>
-        <source>Old messages purged...</source>
-        <translation>Stare wiadomości usunięte...</translation>
-    </message>
-    <message>
-        <source>Removing starred messages...</source>
+        <source>Removing read articles...</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Starred messages purged...</source>
+        <source>Read articles purged...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Removing old articles...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Old articles purged...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Removing starred articles...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starred articles purged...</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -425,10 +425,6 @@ Kliknij tutaj, aby otworzyć katalog nadrzędny.</translation>
         <translation>bez błędów</translation>
     </message>
     <message>
-        <source>has new messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>authentication error</source>
         <translation type="unfinished"/>
     </message>
@@ -447,52 +443,56 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>does not use auto-downloading of messages</source>
+        <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
+        <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <source>uses global settings (global auto-downloading of messages is disabled)</source>
+        <source>uses global settings (global auto-fetching of articles is disabled)</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
+        <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>has new articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
-        <source>Toolbar for messages</source>
-        <translation>Pasek narzędzi dla wiadomości</translation>
-    </message>
-    <message>
         <source>Toolbar for feeds</source>
         <translation>Pasek narzędzi dla kanałów</translation>
+    </message>
+    <message>
+        <source>Toolbar for articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FeedReader</name>
     <message>
-        <source>Cannot update all items</source>
-        <translation>Nie można zaktualizować wszystkich elementów</translation>
-    </message>
-    <message>
-        <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
+        <source>Cannot fetch articles for all items</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Starting auto-download of some feeds&apos; messages</source>
+        <source>You cannot fetch new articles for your items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starting auto-download of some feeds&apos; articles</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <source>I will auto-download new messages for %n feed(s).</source>
+        <source>I will auto-download new articles for %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
@@ -583,10 +583,6 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Error: &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
@@ -596,6 +592,10 @@ Status: %3</source>
     </message>
     <message>
         <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed forever so you might end up with thousands of articles which you will never read anyway.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -748,11 +748,11 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Context menu for important messages</source>
+        <source>Context menu for label</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Context menu for label</source>
+        <source>Context menu for important articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1037,10 +1037,6 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <translation>Dodaj nową kategorię</translation>
     </message>
     <message>
-        <source>Edit &apos;%1&apos;</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Category name is ok.</source>
         <translation>Nazwa kategorii jest ok</translation>
     </message>
@@ -1115,6 +1111,10 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit &quot;%1&quot;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1245,23 +1245,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Edit &apos;%1&apos;</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download messages using global interval</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download messages every</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Do not download messages at all</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1278,6 +1262,22 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
     </message>
     <message>
         <source>Auto-downloading of articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit &quot;%1&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Disable auto-fetching of articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1476,10 +1476,6 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <translation>Brak możliwych akcji</translation>
     </message>
     <message>
-        <source>Web browser &amp;&amp; tabs</source>
-        <translation>Przeglądarka i karty</translation>
-    </message>
-    <message>
         <source>Report a &amp;bug...</source>
         <translation>Zgłoś &amp;błąd...</translation>
     </message>
@@ -1507,10 +1503,6 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation>Zaktualizowano kanał &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Tabs</source>
-        <translation>Karty</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
@@ -1549,15 +1541,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feeds</source>
-        <translation>Kanały</translation>
-    </message>
-    <message>
         <source>&amp;Add item</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1736,6 +1720,22 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <source>Close opened modal dialogs first.</source>
         <translation>Najpierw zamknij otwarte okna dialogowe.</translation>
     </message>
+    <message>
+        <source>F&amp;eeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Art&amp;icles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Web browser &amp;&amp; tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ta&amp;bs</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -1808,16 +1808,6 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>New message filter</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Message will be %1.
-
-</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>ACCEPTED</source>
         <translation type="unfinished"/>
     </message>
@@ -1878,21 +1868,7 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>EXISTING messages filtering error: '%1'.
-</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>SAMPLE message filtering error: '%1'.
-</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Context menu</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1904,7 +1880,26 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Output (modified) message is:
+        <source>Filter articles like this</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New article filter</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>EXISTING articles filtering error: '%1'.
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article will be %1.
+
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Output (modified) article is:
   Title = '%1'
   URL = '%2'
   Author = '%3'
@@ -1912,6 +1907,11 @@ lub ta funkcja nie jest jeszcze zaimplementowana,</translation>
   Created on = '%6'
   Contents = '%7'
   RAW contents = &apos;%8&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>SAMPLE article filtering error: '%1'.
+</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2522,10 +2522,6 @@ Login tokens expiration: %2</source>
         <translation>Tutaj będą widoczne wyniki połączenia testowego.</translation>
     </message>
     <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster, but if your feed contains bigger number of messages than specified limit, then some older messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Błąd sieci: &apos;%1&apos;.</translation>
     </message>
@@ -2571,6 +2567,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2854,27 +2854,27 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>message</source>
+        <source>article</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>messages</source>
+        <source>articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MessagePreviewer</name>
     <message>
-        <source>Mark message as read</source>
-        <translation>Oznacz wiadomość jako przeczytaną</translation>
+        <source>Mark article read</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Mark message as unread</source>
-        <translation>Oznacz wiadomość jako nieprzeczytaną</translation>
+        <source>Mark article unread</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Switch message importance</source>
-        <translation>Przełącz ważność wiadomości</translation>
+        <source>Switch article importance</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2958,44 +2958,8 @@ Login tokens expiration: %2</source>
         <translation>Zawartość</translation>
     </message>
     <message>
-        <source>Is message read?</source>
-        <translation>Czy wiadomość jest przeczytana?</translation>
-    </message>
-    <message>
-        <source>Is message deleted?</source>
-        <translation>Czy wiadomość jest usunięta?</translation>
-    </message>
-    <message>
-        <source>Is message important?</source>
-        <translation>Czy wiadomość jest ważna?</translation>
-    </message>
-    <message>
-        <source>Title of the message.</source>
-        <translation>Tytuł wiadomości.</translation>
-    </message>
-    <message>
-        <source>Url of the message.</source>
-        <translation>URL wiadomości.</translation>
-    </message>
-    <message>
-        <source>Author of the message.</source>
-        <translation>Autor wiadomości.</translation>
-    </message>
-    <message>
-        <source>Creation date of the message.</source>
-        <translation>Data utworzenia wiadomości.</translation>
-    </message>
-    <message>
-        <source>Contents of the message.</source>
-        <translation>Zawartość wiadomości.</translation>
-    </message>
-    <message>
         <source>Permanently deleted</source>
         <translation>Trwale usunięte</translation>
-    </message>
-    <message>
-        <source>Is message permanently deleted from recycle bin?</source>
-        <translation>Czy wiadomość jest trwale usunięta z kosza?</translation>
     </message>
     <message>
         <source>Attachments</source>
@@ -3006,14 +2970,6 @@ Login tokens expiration: %2</source>
         <translation>Lista załączników.</translation>
     </message>
     <message>
-        <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation>Ładowanie wiadomości nie powiodło się, możliwe że wiadomość nie może być pobrana.</translation>
-    </message>
-    <message>
-        <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation>Ładowanie wiadomości z elementu &apos;%1&apos; nie powiodło się.</translation>
-    </message>
-    <message>
         <source>Account ID</source>
         <translation>ID konta</translation>
     </message>
@@ -3022,19 +2978,7 @@ Login tokens expiration: %2</source>
         <translation>Własne ID</translation>
     </message>
     <message>
-        <source>Account ID of the message.</source>
-        <translation>ID konta wiadomości.</translation>
-    </message>
-    <message>
-        <source>Custom ID of the message</source>
-        <translation>Własne ID wiadomości</translation>
-    </message>
-    <message>
         <source>Custom hash</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Custom hash of the message.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3042,15 +2986,7 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Custom ID of feed of the message.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Has enclosures</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Indication of enclosures presence within the message.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3058,67 +2994,127 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>ID of the message.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>ID of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Score of the message.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Date</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Loading of articles from item &apos;%1&apos; failed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Loading of articles failed, maybe messages could not be downloaded.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article read?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article important?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article deleted?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article permanently deleted from recycle bin?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of feed which this article belongs to.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Url of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Author of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Creation date of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Contents of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Score of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Account ID of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom ID of the article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom hash of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom ID of feed of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Indication of enclosures presence within the article.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
     <message>
-        <source>Search messages</source>
-        <translation>Szukaj wiadomości</translation>
-    </message>
-    <message>
-        <source>Message search box</source>
-        <translation>Pole wyszukiwania wiadomości</translation>
-    </message>
-    <message>
-        <source>Menu for highlighting messages</source>
-        <translation>Menu dla podświetlenia wiadomości</translation>
-    </message>
-    <message>
         <source>No extra highlighting</source>
         <translation>Bez dodatkowego podświetlenia</translation>
-    </message>
-    <message>
-        <source>Highlight unread messages</source>
-        <translation>Podświetl nieprzeczytane wiadomości</translation>
-    </message>
-    <message>
-        <source>Highlight important messages</source>
-        <translation>Podświetl ważne wiadomości</translation>
-    </message>
-    <message>
-        <source>Display all messages</source>
-        <translation>Wyświetl wszystkie wiadomości</translation>
-    </message>
-    <message>
-        <source>Message highlighter</source>
-        <translation>Podświetlanie wiadomości</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
         <translation>Odstęp paska narzędzi</translation>
     </message>
+    <message>
+        <source>Search articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article search box</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Menu for highlighting articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Highlight unread articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Highlight important articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display all articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article highlighter</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesView</name>
-    <message>
-        <source>Context menu for messages</source>
-        <translation>Menu kontekstowe dla wiadomości</translation>
-    </message>
     <message>
         <source>Problem with starting external e-mail client</source>
         <translation type="unfinished"/>
@@ -3141,6 +3137,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>No external tools activated</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu for articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3296,16 +3296,16 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Pokaż więcej wiadomości (pozostała %n)</numerusform><numerusform>Pokaż więcej wiadomości (pozostały %n)</numerusform><numerusform>Pokaż więcej wiadomości (pozostało %n)</numerusform><numerusform>Pokaż więcej wiadomości (pozostało %n)</numerusform></translation>
+        <source>Show more articles (%n remaining)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <source>Cannot show more messages</source>
-        <translation>Nie można wyświetlić więcej wiadomości</translation>
+        <source>Cannot show more articles</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot show more messages because parent feed was removed.</source>
-        <translation>Nie można wyświetlić więcej wiadomości, ponieważ nadrzędny kanał został usunięty.</translation>
+        <source>Cannot show more articles because parent feed was removed.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3398,10 +3398,6 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Błąd sieci: &apos;%1&apos;.</translation>
     </message>
@@ -3455,6 +3451,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3543,10 +3543,6 @@ Sprawdź nowe możliwości dodane w
 tej wersji, klikając na to powiadomienie.</translation>
     </message>
     <message>
-        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation type="unfinished"/>
     </message>
@@ -3560,20 +3556,40 @@ tej wersji, klikając na to powiadomienie.</translation>
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New articles fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetching articles right now</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Login data refreshed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New %1 version is available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Miscellaneous events</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown event</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
         <translation>Kosz</translation>
-    </message>
-    <message>
-        <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation>Kosz zawiera wszystkie usunięte wiadomości ze wszystkich kanałów.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n deleted message(s).</source>
-        <translation><numerusform>%n usunięta wiadomość.</numerusform><numerusform>%n usunięte wiadomości.</numerusform><numerusform>%n usuniętych wiadomości.</numerusform><numerusform>%n usuniętych wiadomości.</numerusform></translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3583,13 +3599,21 @@ Feedly is a secure space where you can privately organize and research the topic
         <source>Empty recycle bin</source>
         <translation>Opróżnij kosz</translation>
     </message>
+    <message>
+        <source>Recycle bin contains all deleted articles from all feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>%n deleted article(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
 </context>
 <context>
     <name>RootItem</name>
     <message numerus="yes">
-        <source>%n unread message(s).</source>
+        <source>%n unread article(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n nieprzeczytana wiadomość.</numerusform><numerusform>%n nieprzeczytane wiadomości.</numerusform><numerusform>%n nieprzeczytanych wiadomości.</numerusform><numerusform>%n nieprzeczytanych wiadomości.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -3641,7 +3665,7 @@ Feedly is a secure space where you can privately organize and research the topic
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Synchronize message cache</source>
+        <source>Synchronize article cache</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4028,10 +4052,6 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Enable &quot;auto-download started&quot; notification</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Only auto-download messages when application is unfocused</source>
         <translation type="unfinished"/>
     </message>
@@ -4122,10 +4142,6 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
         <translation>Motyw ikon</translation>
     </message>
     <message>
-        <source>Tray area &amp;&amp; notifications</source>
-        <translation>Obszar zasobnika i powiadomienia</translation>
-    </message>
-    <message>
         <source>Tray icon</source>
         <translation>Ikona w zasobniku</translation>
     </message>
@@ -4164,10 +4180,6 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
     <message>
         <source>Toolbar for feeds list</source>
         <translation>Pasek narzędzi dla listy kanałów</translation>
-    </message>
-    <message>
-        <source>Toolbar for messages list</source>
-        <translation>Pasek narzędzi dla listy wiadomości</translation>
     </message>
     <message>
         <source>Statusbar</source>
@@ -4254,6 +4266,14 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
         <source>(Your OS does not support tray icons at the moment.)</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Tray area</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar for articles list</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4281,11 +4301,15 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Enable popup balloon tooltips</source>
-        <translation>Włącz wyskakujące dymki z podpowiedziami</translation>
+        <source>Notifications</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Notifications</source>
+        <source>Enable notifications</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4309,6 +4333,41 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
     <message>
         <source>Click and hit new shortcut.</source>
         <translation>Kliknij i naciśnij nowy skrót.</translation>
+    </message>
+</context>
+<context>
+    <name>SingleNotificationEditor</name>
+    <message>
+        <source>Sound</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full path to your WAV sound file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Browse</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Play</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Balloon notification</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select sound file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>WAV files (*.wav)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4742,10 +4801,6 @@ Nieprzeczytanych wiadomości: %2</translation>
         <translation>Kanały</translation>
     </message>
     <message>
-        <source>Browse your feeds and messages</source>
-        <translation>Przeglądaj swoje kanały i wiadomości</translation>
-    </message>
-    <message>
         <source>Displays main menu.</source>
         <translation>Wyświetla menu główne.</translation>
     </message>
@@ -4764,6 +4819,10 @@ Nieprzeczytanych wiadomości: %2</translation>
     <message>
         <source>Web browser</source>
         <translation>Przeglądarka</translation>
+    </message>
+    <message>
+        <source>Browse your feeds and articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -128,11 +128,11 @@ Error: %1</source>
         <translation>無法新增新聞源</translation>
     </message>
     <message>
-        <source>New messages downloaded</source>
-        <translation>新消息已下載</translation>
+        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <source>New articles fetched</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -205,36 +205,36 @@ Error: %1</source>
         <translation>資料庫檔縮小…</translation>
     </message>
     <message>
-        <source>Removing read messages...</source>
-        <translation>已讀消息移除中…</translation>
-    </message>
-    <message>
-        <source>Read messages purged...</source>
-        <translation>已讀消息清空…</translation>
-    </message>
-    <message>
         <source>Recycle bin purged...</source>
         <translation>資源回收筒清空…</translation>
-    </message>
-    <message>
-        <source>Removing old messages...</source>
-        <translation>移除舊消息中…</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
         <translation>資源回收筒清空中…</translation>
     </message>
     <message>
-        <source>Old messages purged...</source>
-        <translation>舊消息清空…</translation>
+        <source>Removing read articles...</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Removing starred messages...</source>
-        <translation>標為重要的消息移除中...</translation>
+        <source>Read articles purged...</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Starred messages purged...</source>
-        <translation>標為重要的消息清空...</translation>
+        <source>Removing old articles...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Old articles purged...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Removing starred articles...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starred articles purged...</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -425,10 +425,6 @@ Click here to open parent directory.</source>
         <translation>無錯誤</translation>
     </message>
     <message>
-        <source>has new messages</source>
-        <translation>有新消息</translation>
-    </message>
-    <message>
         <source>authentication error</source>
         <translation>認證錯誤</translation>
     </message>
@@ -449,53 +445,57 @@ Status: %3</source>
 狀態: %3</translation>
     </message>
     <message>
-        <source>does not use auto-downloading of messages</source>
+        <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>不自動下載消息</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
+        <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>用全局設定 (每 %n 分鐘自動下載消息)</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
-        <source>uses global settings (global auto-downloading of messages is disabled)</source>
-        <translation>用全局設定 (之前停用自動下載消息)</translation>
+        <source>uses global settings (global auto-fetching of articles is disabled)</source>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
+        <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>用特定設定 (每 %n 分鐘自動下載新消息)</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>has new articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
-        <source>Toolbar for messages</source>
-        <translation>消息工具列</translation>
-    </message>
-    <message>
         <source>Toolbar for feeds</source>
         <translation>新聞源工具列</translation>
+    </message>
+    <message>
+        <source>Toolbar for articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FeedReader</name>
     <message>
-        <source>Cannot update all items</source>
-        <translation>無法更新全部項目</translation>
+        <source>Cannot fetch articles for all items</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
-        <translation>無法下載新聞源的新消息，因為正進行其他重要操作。</translation>
+        <source>You cannot fetch new articles for your items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Starting auto-download of some feeds&apos; messages</source>
-        <translation>開始自動下載某些新聞源的消息</translation>
+        <source>Starting auto-download of some feeds&apos; articles</source>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <source>I will auto-download new messages for %n feed(s).</source>
-        <translation><numerusform>將自動下載 %n 新聞源的新消息。</numerusform></translation>
+        <source>I will auto-download new articles for %n feed(s).</source>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -585,10 +585,6 @@ Status: %3</source>
         <translation>實驗存取權碼無問題。</translation>
     </message>
     <message>
-        <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Error: &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
@@ -598,6 +594,10 @@ Status: %3</source>
     </message>
     <message>
         <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed forever so you might end up with thousands of articles which you will never read anyway.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -750,12 +750,12 @@ or this functionality is not implemented yet.</source>
         <translation>帳號之右鍵功能表</translation>
     </message>
     <message>
-        <source>Context menu for important messages</source>
-        <translation>重要消息的鼠右鍵選單</translation>
-    </message>
-    <message>
         <source>Context menu for label</source>
         <translation>標籤的右鍵功能表</translation>
+    </message>
+    <message>
+        <source>Context menu for important articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1039,10 +1039,6 @@ or this functionality is not implemented yet.</source>
         <translation>新增分類</translation>
     </message>
     <message>
-        <source>Edit &apos;%1&apos;</source>
-        <translation>編輯 &apos;%1&apos;</translation>
-    </message>
-    <message>
         <source>Category name is ok.</source>
         <translation>分類名稱無問題。</translation>
     </message>
@@ -1117,6 +1113,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit &quot;%1&quot;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1247,24 +1247,8 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Edit &apos;%1&apos;</source>
-        <translation>編輯 &apos;%1&apos;</translation>
-    </message>
-    <message>
         <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
         <translation>為此新聞源的消息選擇自動更新的策略。自動更新的預設規則是，新聞源的新消息會以應用程式設定中設定的時間間格自動更新。</translation>
-    </message>
-    <message>
-        <source>Download messages using global interval</source>
-        <translation>使用全局時間間隔下載消息</translation>
-    </message>
-    <message>
-        <source>Download messages every</source>
-        <translation>下載消息，每</translation>
-    </message>
-    <message>
-        <source>Do not download messages at all</source>
-        <translation>完全不下載消息</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -1280,6 +1264,22 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Auto-downloading of articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit &quot;%1&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Disable auto-fetching of articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1478,10 +1478,6 @@ or this functionality is not implemented yet.</source>
         <translation>不可能做動作</translation>
     </message>
     <message>
-        <source>Web browser &amp;&amp; tabs</source>
-        <translation>網路瀏覽器 &amp;&amp; 分頁</translation>
-    </message>
-    <message>
         <source>Report a &amp;bug...</source>
         <translation>提報錯誤(&amp;B)...</translation>
     </message>
@@ -1509,10 +1505,6 @@ or this functionality is not implemented yet.</source>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation>新聞源 &apos;%1&apos; 已更新</translation>
-    </message>
-    <message>
-        <source>Tabs</source>
-        <translation>分頁</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
@@ -1551,15 +1543,7 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feeds</source>
-        <translation>新聞源</translation>
-    </message>
-    <message>
         <source>&amp;Add item</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1738,6 +1722,22 @@ or this functionality is not implemented yet.</source>
         <source>Close opened modal dialogs first.</source>
         <translation>請先關閉開啟的對話框。</translation>
     </message>
+    <message>
+        <source>F&amp;eeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Art&amp;icles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Web browser &amp;&amp; tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ta&amp;bs</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -1810,16 +1810,6 @@ or this functionality is not implemented yet.</source>
         <translation>詳細的說明(&amp;H)</translation>
     </message>
     <message>
-        <source>New message filter</source>
-        <translation>新增消息篩選器</translation>
-    </message>
-    <message>
-        <source>Message will be %1.
-
-</source>
-        <translation>消息會是 %1。</translation>
-    </message>
-    <message>
         <source>ACCEPTED</source>
         <translation>已接受</translation>
     </message>
@@ -1880,22 +1870,8 @@ or this functionality is not implemented yet.</source>
         <translation>無法儲存新篩選器，錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
-        <source>EXISTING messages filtering error: '%1'.
-</source>
-        <translation>既存消息篩選器錯誤: &apos;%1&apos;。</translation>
-    </message>
-    <message>
-        <source>SAMPLE message filtering error: '%1'.
-</source>
-        <translation>樣本消息篩選器錯誤: &apos;%1&apos;。</translation>
-    </message>
-    <message>
         <source>Context menu</source>
         <translation>右鍵功能表</translation>
-    </message>
-    <message>
-        <source>Filter messages like this</source>
-        <translation>像這樣篩選消息</translation>
     </message>
     <message>
         <source>Existing articles</source>
@@ -1906,7 +1882,26 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Output (modified) message is:
+        <source>Filter articles like this</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New article filter</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>EXISTING articles filtering error: '%1'.
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article will be %1.
+
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Output (modified) article is:
   Title = '%1'
   URL = '%2'
   Author = '%3'
@@ -1914,6 +1909,11 @@ or this functionality is not implemented yet.</source>
   Created on = '%6'
   Contents = '%7'
   RAW contents = &apos;%8&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>SAMPLE article filtering error: '%1'.
+</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2528,10 +2528,6 @@ Login tokens expiration: %2</source>
         <translation>此處顯示連線測試的結果。</translation>
     </message>
     <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster, but if your feed contains bigger number of messages than specified limit, then some older messages might not be downloaded during feed update.</source>
-        <translation>限制每個新聞源下載的消息量，可加快新聞源更新。但若新聞源含消息量高於指定界限，更新時可能不會下載一些較舊的消息。</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>網路錯誤: &apos;%&apos;。</translation>
     </message>
@@ -2577,6 +2573,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2861,27 +2861,27 @@ Login tokens expiration: %2</source>
         <translation>= 不限</translation>
     </message>
     <message>
-        <source>message</source>
+        <source>article</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>messages</source>
-        <translation>消息</translation>
+        <source>articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MessagePreviewer</name>
     <message>
-        <source>Mark message as read</source>
-        <translation>標示消息成已讀</translation>
+        <source>Mark article read</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Mark message as unread</source>
-        <translation>標示消息成未讀</translation>
+        <source>Mark article unread</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Switch message importance</source>
-        <translation>切換消息的重要性</translation>
+        <source>Switch article importance</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2965,44 +2965,8 @@ Login tokens expiration: %2</source>
         <translation>擷文</translation>
     </message>
     <message>
-        <source>Is message read?</source>
-        <translation>消息已讀？</translation>
-    </message>
-    <message>
-        <source>Is message deleted?</source>
-        <translation>消息已刪？</translation>
-    </message>
-    <message>
-        <source>Is message important?</source>
-        <translation>消息重要？</translation>
-    </message>
-    <message>
-        <source>Title of the message.</source>
-        <translation>消息的標題。</translation>
-    </message>
-    <message>
-        <source>Url of the message.</source>
-        <translation>消息的 URL。</translation>
-    </message>
-    <message>
-        <source>Author of the message.</source>
-        <translation>消息的作者。</translation>
-    </message>
-    <message>
-        <source>Creation date of the message.</source>
-        <translation>消息的建立時間。</translation>
-    </message>
-    <message>
-        <source>Contents of the message.</source>
-        <translation>消息的擷文。</translation>
-    </message>
-    <message>
         <source>Permanently deleted</source>
         <translation>已永久刪除</translation>
-    </message>
-    <message>
-        <source>Is message permanently deleted from recycle bin?</source>
-        <translation>消息已從回收筒永久刪除？</translation>
     </message>
     <message>
         <source>Attachments</source>
@@ -3013,14 +2977,6 @@ Login tokens expiration: %2</source>
         <translation>附件清單</translation>
     </message>
     <message>
-        <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation>載入消息失敗，或許無法下載。</translation>
-    </message>
-    <message>
-        <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation>從項目 &apos;%1&apos; 載入消息失敗。</translation>
-    </message>
-    <message>
         <source>Account ID</source>
         <translation>帳號 ID</translation>
     </message>
@@ -3029,103 +2985,143 @@ Login tokens expiration: %2</source>
         <translation>自訂 ID</translation>
     </message>
     <message>
-        <source>Account ID of the message.</source>
-        <translation>消息之帳號 ID。</translation>
-    </message>
-    <message>
-        <source>Custom ID of the message</source>
-        <translation>消息之自訂 ID</translation>
-    </message>
-    <message>
         <source>Custom hash</source>
         <translation>自訂雜湊</translation>
-    </message>
-    <message>
-        <source>Custom hash of the message.</source>
-        <translation>消息的自訂雜湊。</translation>
     </message>
     <message>
         <source>Feed ID</source>
         <translation>新聞源 ID</translation>
     </message>
     <message>
-        <source>Custom ID of feed of the message.</source>
-        <translation>消息所屬的新聞源的自訂 ID。</translation>
-    </message>
-    <message>
         <source>Has enclosures</source>
         <translation>含附件</translation>
-    </message>
-    <message>
-        <source>Indication of enclosures presence within the message.</source>
-        <translation>指示消息附件。</translation>
     </message>
     <message>
         <source>Score</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>ID of the message.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>ID of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Score of the message.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Date</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Loading of articles from item &apos;%1&apos; failed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Loading of articles failed, maybe messages could not be downloaded.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article read?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article important?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article deleted?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article permanently deleted from recycle bin?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of feed which this article belongs to.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Url of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Author of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Creation date of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Contents of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Score of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Account ID of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom ID of the article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom hash of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom ID of feed of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Indication of enclosures presence within the article.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
     <message>
-        <source>Search messages</source>
-        <translation>搜尋消息</translation>
-    </message>
-    <message>
-        <source>Message search box</source>
-        <translation>消息搜尋框</translation>
-    </message>
-    <message>
-        <source>Menu for highlighting messages</source>
-        <translation>標示消息之功能表</translation>
-    </message>
-    <message>
         <source>No extra highlighting</source>
         <translation>無額外標示</translation>
-    </message>
-    <message>
-        <source>Highlight unread messages</source>
-        <translation>標示未讀消息</translation>
-    </message>
-    <message>
-        <source>Highlight important messages</source>
-        <translation>標示重要消息</translation>
-    </message>
-    <message>
-        <source>Display all messages</source>
-        <translation>顯示全部消息</translation>
-    </message>
-    <message>
-        <source>Message highlighter</source>
-        <translation>消息標示器</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
         <translation>工具列間隔號</translation>
     </message>
+    <message>
+        <source>Search articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article search box</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Menu for highlighting articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Highlight unread articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Highlight important articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display all articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article highlighter</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesView</name>
-    <message>
-        <source>Context menu for messages</source>
-        <translation>消息之右鍵功能表</translation>
-    </message>
     <message>
         <source>Problem with starting external e-mail client</source>
         <translation>啟動外部電子郵件客戶端時出狀況</translation>
@@ -3148,6 +3144,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>No external tools activated</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu for articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3303,16 +3303,16 @@ Login tokens expiration: %2</source>
         <translation>表單</translation>
     </message>
     <message numerus="yes">
-        <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>顯示更多消息 (剩 %n 條)</numerusform></translation>
+        <source>Show more articles (%n remaining)</source>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
-        <source>Cannot show more messages</source>
-        <translation>無法顯示更多消息</translation>
+        <source>Cannot show more articles</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot show more messages because parent feed was removed.</source>
-        <translation>由於上層消息被移除，無法顯示更多消息。</translation>
+        <source>Cannot show more articles because parent feed was removed.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3405,10 +3405,6 @@ Login tokens expiration: %2</source>
         <translation>= 不限</translation>
     </message>
     <message>
-        <source>messages</source>
-        <translation>消息</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>網路錯誤: &apos;%&apos;。</translation>
     </message>
@@ -3462,6 +3458,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3544,10 +3544,6 @@ version by clicking this popup notification.</source>
 查閱此版的新鮮事。</translation>
     </message>
     <message>
-        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
-        <translation>無法插入消息篩選器，因為目前的資料庫無法傳回上次最後插入的行欄 ID。</translation>
-    </message>
-    <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation>標準線上新聞源 (RSS/ATOM/JSON)</translation>
     </message>
@@ -3561,20 +3557,40 @@ version by clicking this popup notification.</source>
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New articles fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetching articles right now</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Login data refreshed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New %1 version is available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Miscellaneous events</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown event</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
         <translation>資源回收筒</translation>
-    </message>
-    <message>
-        <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation>資源回收筒有全部被刪的消息。</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n deleted message(s).</source>
-        <translation><numerusform>%n 條被刪的消息。</numerusform></translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3584,13 +3600,21 @@ Feedly is a secure space where you can privately organize and research the topic
         <source>Empty recycle bin</source>
         <translation>清空資源回收筒</translation>
     </message>
+    <message>
+        <source>Recycle bin contains all deleted articles from all feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>%n deleted article(s).</source>
+        <translation type="unfinished"><numerusform></numerusform></translation>
+    </message>
 </context>
 <context>
     <name>RootItem</name>
     <message numerus="yes">
-        <source>%n unread message(s).</source>
+        <source>%n unread article(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n 未讀消息。</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -3642,8 +3666,8 @@ Feedly is a secure space where you can privately organize and research the topic
         <translation>同步資料夾與其他項目</translation>
     </message>
     <message>
-        <source>Synchronize message cache</source>
-        <translation>同步消息快取</translation>
+        <source>Synchronize article cache</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4030,10 +4054,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>於本程式啟動時下載所有新聞源的消息；起初延遲</translation>
     </message>
     <message>
-        <source>Enable &quot;auto-download started&quot; notification</source>
-        <translation>啟用「開始自動更新」通知</translation>
-    </message>
-    <message>
         <source>Only auto-download messages when application is unfocused</source>
         <translation>只在本程式於背景運作時自動下載消息</translation>
     </message>
@@ -4124,10 +4144,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>圖示佈景主題</translation>
     </message>
     <message>
-        <source>Tray area &amp;&amp; notifications</source>
-        <translation>系統匣區域 &amp;&amp; 通知</translation>
-    </message>
-    <message>
         <source>Tray icon</source>
         <translation>系統匣圖示</translation>
     </message>
@@ -4166,10 +4182,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Toolbar for feeds list</source>
         <translation>新聞源清單工具列</translation>
-    </message>
-    <message>
-        <source>Toolbar for messages list</source>
-        <translation>消息清單工具列</translation>
     </message>
     <message>
         <source>Statusbar</source>
@@ -4256,6 +4268,14 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>(Your OS does not support tray icons at the moment.)</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Tray area</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar for articles list</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4283,11 +4303,15 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>表單</translation>
     </message>
     <message>
-        <source>Enable popup balloon tooltips</source>
-        <translation>啟用彈出窗工具提示</translation>
+        <source>Notifications</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Notifications</source>
+        <source>Enable notifications</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4311,6 +4335,41 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Click and hit new shortcut.</source>
         <translation>點與按出新快鍵。</translation>
+    </message>
+</context>
+<context>
+    <name>SingleNotificationEditor</name>
+    <message>
+        <source>Sound</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full path to your WAV sound file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Browse</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Play</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Balloon notification</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select sound file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>WAV files (*.wav)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4747,10 +4806,6 @@ Unread news: %2</source>
         <translation>新聞源</translation>
     </message>
     <message>
-        <source>Browse your feeds and messages</source>
-        <translation>瀏覽新聞源與消息</translation>
-    </message>
-    <message>
         <source>Displays main menu.</source>
         <translation>顯示主功能表。</translation>
     </message>
@@ -4769,6 +4824,10 @@ Unread news: %2</source>
     <message>
         <source>Web browser</source>
         <translation>網路瀏覽器</translation>
+    </message>
+    <message>
+        <source>Browse your feeds and articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

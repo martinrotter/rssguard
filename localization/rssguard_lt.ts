@@ -128,11 +128,11 @@ Error: %1</source>
         <translation>Nepavyksta pridėti kanalo</translation>
     </message>
     <message>
-        <source>New messages downloaded</source>
-        <translation>Atsiųstos naujos žinutės</translation>
+        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed cannot be added because there is no active account which can add feeds.</source>
+        <source>New articles fetched</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -205,35 +205,35 @@ Error: %1</source>
         <translation>Duomenų bazės failas sumažintas...</translation>
     </message>
     <message>
-        <source>Removing read messages...</source>
-        <translation>Šalinamos skaitytos žinutės...</translation>
-    </message>
-    <message>
-        <source>Read messages purged...</source>
-        <translation>Skaitytos žinutės išvalytos...</translation>
-    </message>
-    <message>
         <source>Recycle bin purged...</source>
         <translation>Šiukšlinė išvalyta...</translation>
-    </message>
-    <message>
-        <source>Removing old messages...</source>
-        <translation>Šalinamos senos žinutės...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
         <translation>Išvaloma šiukšlinė...</translation>
     </message>
     <message>
-        <source>Old messages purged...</source>
-        <translation>Senos žinutės išvalytos...</translation>
-    </message>
-    <message>
-        <source>Removing starred messages...</source>
+        <source>Removing read articles...</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Starred messages purged...</source>
+        <source>Read articles purged...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Removing old articles...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Old articles purged...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Removing starred articles...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starred articles purged...</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -425,10 +425,6 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
         <translation>klaidų nėra</translation>
     </message>
     <message>
-        <source>has new messages</source>
-        <translation>turi naujas žinutes</translation>
-    </message>
-    <message>
         <source>authentication error</source>
         <translation>atpažinimo klaida</translation>
     </message>
@@ -447,52 +443,56 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>does not use auto-downloading of messages</source>
+        <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <source>uses global settings (%n minute(s) to next auto-download of messages)</source>
+        <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <source>uses global settings (global auto-downloading of messages is disabled)</source>
+        <source>uses global settings (global auto-fetching of articles is disabled)</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-downloading of new messages)</source>
+        <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>has new articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
-        <source>Toolbar for messages</source>
-        <translation>Žinučių įrankių juosta</translation>
-    </message>
-    <message>
         <source>Toolbar for feeds</source>
         <translation>Kanalų įrankių juosta</translation>
+    </message>
+    <message>
+        <source>Toolbar for articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>FeedReader</name>
     <message>
-        <source>Cannot update all items</source>
-        <translation>Nepavyksta atnaujinti visų elementų</translation>
-    </message>
-    <message>
-        <source>You cannot download new messages for your items because another critical operation is ongoing.</source>
+        <source>Cannot fetch articles for all items</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Starting auto-download of some feeds&apos; messages</source>
+        <source>You cannot fetch new articles for your items because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Starting auto-download of some feeds&apos; articles</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <source>I will auto-download new messages for %n feed(s).</source>
+        <source>I will auto-download new articles for %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
@@ -583,10 +583,6 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Be very careful about downloading too many messages, because Feedly automagically caches ALL messages of a feed forever so you might end with thousands of messages you will never read anyway.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Error: &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
@@ -596,6 +592,10 @@ Status: %3</source>
     </message>
     <message>
         <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed forever so you might end up with thousands of articles which you will never read anyway.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -748,11 +748,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Kontekstinis meniu paskyroms</translation>
     </message>
     <message>
-        <source>Context menu for important messages</source>
-        <translation>Svarbių žinučių kontekstinis meniu</translation>
+        <source>Context menu for label</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Context menu for label</source>
+        <source>Context menu for important articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1037,10 +1037,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Pridėti naują kategoriją</translation>
     </message>
     <message>
-        <source>Edit &apos;%1&apos;</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Category name is ok.</source>
         <translation>Kategorijos pavadinimas yra geras.</translation>
     </message>
@@ -1115,6 +1111,10 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit &quot;%1&quot;</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1245,23 +1245,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
 <context>
     <name>FormFeedDetails</name>
     <message>
-        <source>Edit &apos;%1&apos;</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download messages using global interval</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download messages every</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Do not download messages at all</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1278,6 +1262,22 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Auto-downloading of articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit &quot;%1&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Disable auto-fetching of articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1476,10 +1476,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Nėra galimų veiksmų</translation>
     </message>
     <message>
-        <source>Web browser &amp;&amp; tabs</source>
-        <translation>Saityno naršyklė ir kortelės</translation>
-    </message>
-    <message>
         <source>Report a &amp;bug...</source>
         <translation>Pranešti apie &amp;klaidą...</translation>
     </message>
@@ -1507,10 +1503,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation>Atnaujintas kanalas &quot;%1&quot;</translation>
-    </message>
-    <message>
-        <source>Tabs</source>
-        <translation>Kortelės</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
@@ -1549,15 +1541,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feeds</source>
-        <translation>Kanalai</translation>
-    </message>
-    <message>
         <source>&amp;Add item</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1736,6 +1720,22 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <source>Close opened modal dialogs first.</source>
         <translation>Iš pradžių, užverkite atvertus modalinius dialogus.</translation>
     </message>
+    <message>
+        <source>F&amp;eeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Art&amp;icles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Web browser &amp;&amp; tabs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ta&amp;bs</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
@@ -1808,16 +1808,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>New message filter</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Message will be %1.
-
-</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>ACCEPTED</source>
         <translation type="unfinished"/>
     </message>
@@ -1878,21 +1868,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>EXISTING messages filtering error: '%1'.
-</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>SAMPLE message filtering error: '%1'.
-</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Context menu</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Filter messages like this</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1904,7 +1880,26 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Output (modified) message is:
+        <source>Filter articles like this</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New article filter</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>EXISTING articles filtering error: '%1'.
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article will be %1.
+
+</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Output (modified) article is:
   Title = '%1'
   URL = '%2'
   Author = '%3'
@@ -1912,6 +1907,11 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
   Created on = '%6'
   Contents = '%7'
   RAW contents = &apos;%8&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>SAMPLE article filtering error: '%1'.
+</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2526,10 +2526,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>Čia yra rodomi ryšio bandymo rezultatai.</translation>
     </message>
     <message>
-        <source>Limiting number of downloaded messages per feed makes updating of feeds faster, but if your feed contains bigger number of messages than specified limit, then some older messages might not be downloaded during feed update.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Tinklo klaida: &apos;%1&apos;.</translation>
     </message>
@@ -2575,6 +2571,10 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2859,27 +2859,27 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>= neribotai</translation>
     </message>
     <message>
-        <source>message</source>
+        <source>article</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>messages</source>
-        <translation>žinutės(-ių)</translation>
+        <source>articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MessagePreviewer</name>
     <message>
-        <source>Mark message as read</source>
-        <translation>Žymėti žinutę kaip skaitytą</translation>
+        <source>Mark article read</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Mark message as unread</source>
-        <translation>Žymėti žinutę kaip neskaitytą</translation>
+        <source>Mark article unread</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Switch message importance</source>
-        <translation>Perjungti žinutės svarbą</translation>
+        <source>Switch article importance</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2963,44 +2963,8 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>Turinys</translation>
     </message>
     <message>
-        <source>Is message read?</source>
-        <translation>Ar žinutė skaityta?</translation>
-    </message>
-    <message>
-        <source>Is message deleted?</source>
-        <translation>Ar žinutė ištrinta?</translation>
-    </message>
-    <message>
-        <source>Is message important?</source>
-        <translation>Ar žinutė svarbi?</translation>
-    </message>
-    <message>
-        <source>Title of the message.</source>
-        <translation>Žinutės antraštė.</translation>
-    </message>
-    <message>
-        <source>Url of the message.</source>
-        <translation>Žinutės Url.</translation>
-    </message>
-    <message>
-        <source>Author of the message.</source>
-        <translation>Žinutės autorius.</translation>
-    </message>
-    <message>
-        <source>Creation date of the message.</source>
-        <translation>Žinutės kūrimo data.</translation>
-    </message>
-    <message>
-        <source>Contents of the message.</source>
-        <translation>Žinutės turinys.</translation>
-    </message>
-    <message>
         <source>Permanently deleted</source>
         <translation>Ištrinta visiems laikams</translation>
-    </message>
-    <message>
-        <source>Is message permanently deleted from recycle bin?</source>
-        <translation>Ar žinutė ištrinta visiems laikams iš šiukšlinės?</translation>
     </message>
     <message>
         <source>Attachments</source>
@@ -3011,14 +2975,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>Priedų sąrašas.</translation>
     </message>
     <message>
-        <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation>Žinučių įkėlimas nepavyko, galbūt, žinutes nepavyko atsisiųsti.</translation>
-    </message>
-    <message>
-        <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation>Žinučių įkėlimas iš &quot;%1&quot; elemento nepavyko.</translation>
-    </message>
-    <message>
         <source>Account ID</source>
         <translation>Paskyros ID</translation>
     </message>
@@ -3027,103 +2983,143 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>Tinkintas ID</translation>
     </message>
     <message>
-        <source>Account ID of the message.</source>
-        <translation>Žinutės paskyros ID.</translation>
-    </message>
-    <message>
-        <source>Custom ID of the message</source>
-        <translation>Tinkintas žinutės ID</translation>
-    </message>
-    <message>
         <source>Custom hash</source>
         <translation>Tinkinta maiša</translation>
-    </message>
-    <message>
-        <source>Custom hash of the message.</source>
-        <translation>Tinkinta žinutės maiša.</translation>
     </message>
     <message>
         <source>Feed ID</source>
         <translation>Kanalo ID</translation>
     </message>
     <message>
-        <source>Custom ID of feed of the message.</source>
-        <translation>Tinkintas kanalo žinutės ID</translation>
-    </message>
-    <message>
         <source>Has enclosures</source>
         <translation>Turi intarpus</translation>
-    </message>
-    <message>
-        <source>Indication of enclosures presence within the message.</source>
-        <translation>Požymis to ar yra žinutėje intarpai</translation>
     </message>
     <message>
         <source>Score</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>ID of the message.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>ID of feed which this message belongs to.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Score of the message.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Date</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Loading of articles from item &apos;%1&apos; failed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Loading of articles failed, maybe messages could not be downloaded.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article read?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article important?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article deleted?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Is article permanently deleted from recycle bin?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>ID of feed which this article belongs to.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Url of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Author of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Creation date of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Contents of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Score of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Account ID of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom ID of the article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom hash of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom ID of feed of the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Indication of enclosures presence within the article.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
     <message>
-        <source>Search messages</source>
-        <translation>Paieška žinutėse</translation>
-    </message>
-    <message>
-        <source>Message search box</source>
-        <translation>Žinučių paieškos langelis</translation>
-    </message>
-    <message>
-        <source>Menu for highlighting messages</source>
-        <translation>Žinučių paryškinimo meniu</translation>
-    </message>
-    <message>
         <source>No extra highlighting</source>
         <translation>Jokio papildomo paryškinimo</translation>
-    </message>
-    <message>
-        <source>Highlight unread messages</source>
-        <translation>Paryškinti neskaitytas žinutes</translation>
-    </message>
-    <message>
-        <source>Highlight important messages</source>
-        <translation>Paryškinti svarbias žinutes</translation>
-    </message>
-    <message>
-        <source>Display all messages</source>
-        <translation>Rodyti visas žinutes</translation>
-    </message>
-    <message>
-        <source>Message highlighter</source>
-        <translation>Žinučių markeris</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
         <translation>Įrankių juostos tarpiklis</translation>
     </message>
+    <message>
+        <source>Search articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article search box</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Menu for highlighting articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Highlight unread articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Highlight important articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display all articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article highlighter</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesView</name>
-    <message>
-        <source>Context menu for messages</source>
-        <translation>Kontekstinis meniu žinutėms</translation>
-    </message>
     <message>
         <source>Problem with starting external e-mail client</source>
         <translation>Problemos, paleidžiant išorinę el. pašto kliento programą</translation>
@@ -3146,6 +3142,10 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
     <message>
         <source>No external tools activated</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu for articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3301,16 +3301,16 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>Forma</translation>
     </message>
     <message numerus="yes">
-        <source>Show more messages (%n remaining)</source>
-        <translation><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform><numerusform>Rodyti daugiau žinučių (liko %n)</numerusform></translation>
+        <source>Show more articles (%n remaining)</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <source>Cannot show more messages</source>
-        <translation>Nepavyksta parodyti daugiau žinučių</translation>
+        <source>Cannot show more articles</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot show more messages because parent feed was removed.</source>
-        <translation>Nepavyksta parodyti daugiau žinučių, kadangi pirminis kanalas buvo pašalintas.</translation>
+        <source>Cannot show more articles because parent feed was removed.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3403,10 +3403,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>= neribotai</translation>
     </message>
     <message>
-        <source>messages</source>
-        <translation>žinutės(-ių)</translation>
-    </message>
-    <message>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Tinklo klaida: &apos;%1&apos;.</translation>
     </message>
@@ -3460,6 +3456,10 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3548,10 +3548,6 @@ Susipažinkite su NAUJOMIS šios
 versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     </message>
     <message>
-        <source>Cannot insert message filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation type="unfinished"/>
     </message>
@@ -3565,20 +3561,40 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New articles fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetching articles right now</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Login data refreshed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New %1 version is available</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Miscellaneous events</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unknown event</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
         <translation>Šiukšlinė</translation>
-    </message>
-    <message>
-        <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation>Šiukšlinėje yra iš visų kanalų, visos ištrintos žinutės.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n deleted message(s).</source>
-        <translation><numerusform>%n ištrinta žinutė.</numerusform><numerusform>%n ištrintos žinutės.</numerusform><numerusform>%n ištrintų žinučių.</numerusform><numerusform>%n ištrintų žinučių.</numerusform></translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
@@ -3588,13 +3604,21 @@ Feedly is a secure space where you can privately organize and research the topic
         <source>Empty recycle bin</source>
         <translation>Ištuštinti šiukšlinę</translation>
     </message>
+    <message>
+        <source>Recycle bin contains all deleted articles from all feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>%n deleted article(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
 </context>
 <context>
     <name>RootItem</name>
     <message numerus="yes">
-        <source>%n unread message(s).</source>
+        <source>%n unread article(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n neskaityta žinutė.</numerusform><numerusform>%n neskaitytos žinutės.</numerusform><numerusform>%n neskaitytų žinučių.</numerusform><numerusform>%n neskaitytų žinučių.</numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -3646,7 +3670,7 @@ Feedly is a secure space where you can privately organize and research the topic
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Synchronize message cache</source>
+        <source>Synchronize article cache</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4033,10 +4057,6 @@ Vilkaduobės:
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Enable &quot;auto-download started&quot; notification</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Only auto-download messages when application is unfocused</source>
         <translation type="unfinished"/>
     </message>
@@ -4127,10 +4147,6 @@ Vilkaduobės:
         <translation>Piktogramų tema</translation>
     </message>
     <message>
-        <source>Tray area &amp;&amp; notifications</source>
-        <translation>Dėklo sritis ir pranešimai</translation>
-    </message>
-    <message>
         <source>Tray icon</source>
         <translation>Dėklo piktograma</translation>
     </message>
@@ -4169,10 +4185,6 @@ Vilkaduobės:
     <message>
         <source>Toolbar for feeds list</source>
         <translation>Kanalų sąrašo įrankių juosta</translation>
-    </message>
-    <message>
-        <source>Toolbar for messages list</source>
-        <translation>Žinučių sąrašo įrankių juosta</translation>
     </message>
     <message>
         <source>Statusbar</source>
@@ -4259,6 +4271,14 @@ Vilkaduobės:
         <source>(Your OS does not support tray icons at the moment.)</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Tray area</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar for articles list</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4286,11 +4306,15 @@ Vilkaduobės:
         <translation>Forma</translation>
     </message>
     <message>
-        <source>Enable popup balloon tooltips</source>
-        <translation>Įjungti iškylančiuosius paaiškinimus</translation>
+        <source>Notifications</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Notifications</source>
+        <source>Enable notifications</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4314,6 +4338,41 @@ Vilkaduobės:
     <message>
         <source>Click and hit new shortcut.</source>
         <translation>Spustelėkite ir nuspauskite naują spartųjį klavišą.</translation>
+    </message>
+</context>
+<context>
+    <name>SingleNotificationEditor</name>
+    <message>
+        <source>Sound</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full path to your WAV sound file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clear</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Browse</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Play</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Balloon notification</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select sound file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>WAV files (*.wav)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4750,10 +4809,6 @@ Neskaitytų naujienų: %2</translation>
         <translation>Kanalai</translation>
     </message>
     <message>
-        <source>Browse your feeds and messages</source>
-        <translation>Naršyti savo kanalus ir žinutes</translation>
-    </message>
-    <message>
         <source>Displays main menu.</source>
         <translation>Rodo pagrindinį meniu.</translation>
     </message>
@@ -4772,6 +4827,10 @@ Neskaitytų naujienų: %2</translation>
     <message>
         <source>Web browser</source>
         <translation>Saityno naršyklė</translation>
+    </message>
+    <message>
+        <source>Browse your feeds and articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
