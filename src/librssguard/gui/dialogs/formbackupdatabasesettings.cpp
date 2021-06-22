@@ -3,6 +3,7 @@
 #include "gui/dialogs/formbackupdatabasesettings.h"
 
 #include "exceptions/applicationexception.h"
+#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
@@ -15,8 +16,9 @@
 FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget* parent) : QDialog(parent), m_ui(new Ui::FormBackupDatabaseSettings) {
   m_ui->setupUi(this);
   m_ui->m_txtBackupName->lineEdit()->setPlaceholderText(tr("Common name for backup files"));
-  setWindowIcon(qApp->icons()->fromTheme(QSL("document-export")));
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
+
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-export")));
+
   connect(m_ui->m_checkBackupDatabase, &QCheckBox::toggled, this, &FormBackupDatabaseSettings::checkOkButton);
   connect(m_ui->m_checkBackupSettings, &QCheckBox::toggled, this, &FormBackupDatabaseSettings::checkOkButton);
   connect(m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok), &QPushButton::clicked, this, &FormBackupDatabaseSettings::performBackup);

@@ -7,6 +7,7 @@
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "gui/feedsview.h"
+#include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/baselineedit.h"
 #include "gui/systemtrayicon.h"
@@ -161,8 +162,7 @@ void FormCategoryDetails::initialize() {
   m_ui->m_txtDescription->lineEdit()->setToolTip(tr("Set description for your category."));
 
   // Set flags and attributes.
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("folder")));
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("folder")));
 
   // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);
