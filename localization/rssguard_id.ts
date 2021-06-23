@@ -4348,7 +4348,7 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Telisik</translation>
     </message>
     <message>
         <source>&amp;Play</source>

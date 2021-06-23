@@ -4354,7 +4354,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Procurar</translation>
     </message>
     <message>
         <source>&amp;Play</source>

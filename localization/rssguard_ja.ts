@@ -4318,7 +4318,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>参照(&amp;B)</translation>
     </message>
     <message>
         <source>&amp;Play</source>

@@ -4347,7 +4347,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Durchsuchen</translation>
     </message>
     <message>
         <source>&amp;Play</source>

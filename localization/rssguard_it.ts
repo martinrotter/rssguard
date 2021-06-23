@@ -4346,7 +4346,7 @@ Gli autori di questa applicazione NON sono responsabili per la perdita di dati.<
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Sfoglia</translation>
     </message>
     <message>
         <source>&amp;Play</source>

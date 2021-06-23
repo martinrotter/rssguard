@@ -4351,7 +4351,7 @@ Autor tej aplikacji NIE odpowiada za utratę danych.</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Przeglądaj</translation>
     </message>
     <message>
         <source>&amp;Play</source>

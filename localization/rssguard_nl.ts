@@ -4356,7 +4356,7 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Bladeren</translation>
     </message>
     <message>
         <source>&amp;Play</source>

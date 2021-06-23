@@ -4356,7 +4356,7 @@ Vilkaduobės:
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Naršyti</translation>
     </message>
     <message>
         <source>&amp;Play</source>

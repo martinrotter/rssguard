@@ -4356,7 +4356,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Procházet</translation>
     </message>
     <message>
         <source>&amp;Play</source>

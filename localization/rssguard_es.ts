@@ -4353,7 +4353,7 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Explorar</translation>
     </message>
     <message>
         <source>&amp;Play</source>

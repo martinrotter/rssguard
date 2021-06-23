@@ -10,7 +10,7 @@
 
 MessagesForFiltersModel::MessagesForFiltersModel(QObject* parent) : QAbstractTableModel(parent) {
   m_headerData << tr("Read") << tr("Important") << tr("In recycle bin") << tr("Title")
-               << tr("URL") << tr("Author") << tr("Created on") << tr("Score");
+               << tr("URL") << tr("Author") << tr("Date") << tr("Score");
 }
 
 void MessagesForFiltersModel::setMessages(const QList<Message>& messages) {

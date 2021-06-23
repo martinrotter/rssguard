@@ -216,7 +216,7 @@ Fel: %1</translation>
     </message>
     <message>
         <source>Removing read articles...</source>
-        <translation type="unfinished"/>
+        <translation>Tar bort lästa meddelanden...</translation>
     </message>
     <message>
         <source>Read articles purged...</source>
@@ -4358,7 +4358,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Bläddra</translation>
     </message>
     <message>
         <source>&amp;Play</source>
