@@ -4,7 +4,9 @@
 
 #include <QKeyEvent>
 
-BaseLineEdit::BaseLineEdit(QWidget* parent) : QLineEdit(parent) {}
+BaseLineEdit::BaseLineEdit(QWidget* parent) : QLineEdit(parent) {
+  setClearButtonEnabled(true);
+}
 
 void BaseLineEdit::submit(const QString& text) {
   setText(text);

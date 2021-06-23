@@ -33,7 +33,7 @@
       <item row="0" column="1">
        <layout class="QHBoxLayout" name="horizontalLayout_7">
         <item>
-         <widget class="QLineEdit" name="m_txtProxyHost">
+         <widget class="BaseLineEdit" name="m_txtProxyHost">
           <property name="enabled">
            <bool>true</bool>
           </property>
@@ -84,7 +84,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="m_txtProxyUsername">
+       <widget class="BaseLineEdit" name="m_txtProxyUsername">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -107,7 +107,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="m_txtProxyPassword">
+       <widget class="BaseLineEdit" name="m_txtProxyPassword">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -193,6 +193,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BaseLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>baselineedit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

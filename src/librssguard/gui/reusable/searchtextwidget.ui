@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>461</width>
-    <height>25</height>
+    <height>28</height>
    </rect>
   </property>
   <layout class="QHBoxLayout">
@@ -26,16 +26,6 @@
    <property name="bottomMargin">
     <number>3</number>
    </property>
-   <item>
-    <widget class="QToolButton" name="m_btnClear">
-     <property name="toolTip">
-      <string>Clear searched phrase</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
    <item>
     <widget class="BaseLineEdit" name="m_txtSearch">
      <property name="placeholderText">
@@ -86,7 +76,6 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>m_btnClear</tabstop>
   <tabstop>m_txtSearch</tabstop>
   <tabstop>m_btnSearchBackward</tabstop>
   <tabstop>m_btnSearchForward</tabstop>

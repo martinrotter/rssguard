@@ -36,16 +36,9 @@
    <item row="1" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLineEdit" name="m_txtSound">
+      <widget class="BaseLineEdit" name="m_txtSound">
        <property name="placeholderText">
         <string>Full path to your WAV sound file</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="m_btnClearSound">
-       <property name="text">
-        <string>&amp;Clear</string>
        </property>
       </widget>
      </item>
@@ -74,10 +67,16 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BaseLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>baselineedit.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>m_cbBalloon</tabstop>
   <tabstop>m_txtSound</tabstop>
-  <tabstop>m_btnClearSound</tabstop>
   <tabstop>m_btnBrowseSound</tabstop>
   <tabstop>m_btnPlaySound</tabstop>
  </tabstops>

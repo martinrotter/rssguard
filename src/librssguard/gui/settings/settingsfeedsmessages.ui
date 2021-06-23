@@ -264,7 +264,7 @@
        <item row="4" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkKeppMessagesInTheMiddle">
          <property name="text">
-          <string>Keep message selection in the middle of the article list viewport</string>
+          <string>Keep article selection in the middle of the article list viewport</string>
          </property>
         </widget>
        </item>

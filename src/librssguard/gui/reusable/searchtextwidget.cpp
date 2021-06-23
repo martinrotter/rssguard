@@ -12,11 +12,9 @@ SearchTextWidget::SearchTextWidget(QWidget* parent) : QWidget(parent) {
   setFocusProxy(m_ui.m_txtSearch);
   setFixedHeight(28);
 
-  m_ui.m_btnClear->setIcon(qApp->icons()->fromTheme(QSL("edit-clear")));
   m_ui.m_btnSearchBackward->setIcon(qApp->icons()->fromTheme(QSL("back")));
   m_ui.m_btnSearchForward->setIcon(qApp->icons()->fromTheme(QSL("forward")));
 
-  connect(m_ui.m_btnClear, &QToolButton::clicked, m_ui.m_txtSearch, &QLineEdit::clear);
   connect(m_ui.m_txtSearch, &BaseLineEdit::textChanged, this, &SearchTextWidget::onTextChanged);
   connect(m_ui.m_txtSearch, &BaseLineEdit::submitted, this, [this]() {
     emit searchForText(m_ui.m_txtSearch->text(), false);
@@ -42,7 +40,6 @@ void SearchTextWidget::cancelSearch() {
 void SearchTextWidget::onTextChanged(const QString& text) {
   m_ui.m_btnSearchBackward->setDisabled(text.isEmpty());
   m_ui.m_btnSearchForward->setDisabled(text.isEmpty());
-  m_ui.m_btnClear->setDisabled(text.isEmpty());
 
   if (!text.isEmpty()) {
     emit searchForText(text, false);

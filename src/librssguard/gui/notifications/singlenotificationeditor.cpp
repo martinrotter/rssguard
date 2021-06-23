@@ -12,14 +12,12 @@ SingleNotificationEditor::SingleNotificationEditor(const Notification& notificat
   m_ui.setupUi(this);
 
   m_ui.m_btnBrowseSound->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
-  m_ui.m_btnClearSound->setIcon(qApp->icons()->fromTheme(QSL("edit-clear")));
   m_ui.m_btnPlaySound->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start")));
 
   loadNotification(notification);
 
   connect(m_ui.m_btnPlaySound, &QPushButton::clicked, this, &SingleNotificationEditor::playSound);
   connect(m_ui.m_btnBrowseSound, &QPushButton::clicked, this, &SingleNotificationEditor::selectSoundFile);
-  connect(m_ui.m_btnClearSound, &QPushButton::clicked, m_ui.m_txtSound, &QLineEdit::clear);
   connect(m_ui.m_txtSound, &QLineEdit::textChanged, this, &SingleNotificationEditor::notificationChanged);
   connect(m_ui.m_cbBalloon, &QCheckBox::toggled, this, &SingleNotificationEditor::notificationChanged);
 
