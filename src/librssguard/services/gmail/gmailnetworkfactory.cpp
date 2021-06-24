@@ -487,6 +487,8 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   msg.m_createdFromFeed = true;
   msg.m_created = TextFactory::parseDateTime(headers["Date"]);
 
+  QString aa = msg.m_rawContents;
+
   if (msg.m_title.isEmpty()) {
     msg.m_title = tr("No subject");
   }
@@ -508,6 +510,10 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     }
   }
 
+  if (json["payload"].toObject().contains(QSL("body"))) {
+    parts.prepend(json["payload"].toObject());
+  }
+
   for (const QJsonObject& part : qAsConst(parts)) {
     QJsonObject body = part["body"].toObject();
     QString mime = part["mimeType"].toString();
@@ -522,6 +528,11 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
         }
         else if (backup_contents.isEmpty()) {
           backup_contents = QByteArray::fromBase64(body["data"].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
+
+          backup_contents = backup_contents
+                            .replace(QSL("\r\n"), QSL("\n"))
+                            .replace(QSL("\n"), QSL("\n"))
+                            .replace(QSL("\n"), QSL("<br/>"));
         }
       }
     }
