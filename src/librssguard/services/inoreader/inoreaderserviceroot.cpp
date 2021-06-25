@@ -3,6 +3,7 @@
 #include "services/inoreader/inoreaderserviceroot.h"
 
 #include "database/databasequeries.h"
+#include "exceptions/feedfetchexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
@@ -55,7 +56,7 @@ void InoreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString());
 }
 
-QList<Message> InoreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+QList<Message> InoreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) {
   QList<Message> messages;
 
   for (Feed* feed : feeds) {
@@ -65,7 +66,7 @@ QList<Message> InoreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds
     feed->setStatus(error);
 
     if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
-      *error_during_obtaining = true;
+      throw FeedFetchException(error);
     }
   }
 

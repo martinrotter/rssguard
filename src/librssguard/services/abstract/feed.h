@@ -75,7 +75,8 @@ class Feed : public RootItem {
     void setMessageFilters(const QList<QPointer<MessageFilter>>& messageFilters);
     void removeMessageFilter(MessageFilter* filter);
 
-    int updateMessages(const QList<Message>& messages, bool error_during_obtaining, bool force_update = false);
+    // Returns counts of updated messages <unread, all>.
+    QPair<int, int> updateMessages(const QList<Message>& messages, bool force_update);
 
   public slots:
     virtual void updateCounts(bool including_total_count);

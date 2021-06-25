@@ -95,6 +95,8 @@ Application::Application(const QString& id, int& argc, char** argv)
 
   if (isFirstRun()) {
     m_notifications->save({
+      Notification(Notification::Event::GeneralEvent,
+                   true),
       Notification(Notification::Event::NewArticlesFetched,
                    true,
                    QSL("%1/rooster.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),

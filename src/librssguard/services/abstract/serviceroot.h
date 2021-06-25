@@ -92,7 +92,9 @@ class ServiceRoot : public RootItem {
     virtual void stop();
 
     // Obtains list of messages.
-    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) = 0;
+    // Throws exception subclassed from ApplicationException, preferably FeedFetchException
+    // if any problems arise.
+    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds) = 0;
 
     // This method should prepare messages for given "item" (download them maybe?)
     // into predefined "Messages" table

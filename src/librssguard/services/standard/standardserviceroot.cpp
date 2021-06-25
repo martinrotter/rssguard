@@ -6,6 +6,7 @@
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "exceptions/feedfetchexception.h"
 #include "exceptions/scriptexception.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
@@ -143,7 +144,7 @@ Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
   return Qt::ItemFlag::ItemIsDropEnabled;
 }
 
-QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) {
   QList<Message> msgs;
 
   for (Feed* f : feeds) {
@@ -178,12 +179,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
                    << QUOTE_W_SPACE(feed->networkError())
                    << "during fetching of new messages for feed"
                    << QUOTE_W_SPACE_DOT(feed->source());
-        feed->setStatus(StandardFeed::Status::NetworkError);
-        *error_during_obtaining = true;
-        continue;
-      }
-      else {
-        *error_during_obtaining = false;
+        throw FeedFetchException(Feed::Status::NetworkError);
       }
 
       // Encode downloaded data for further parsing.
@@ -213,9 +209,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
                     << "Custom script for generating feed file failed:"
                     << QUOTE_W_SPACE_DOT(ex.message());
 
-        feed->setStatus(Feed::Status::OtherError);
-        *error_during_obtaining = true;
-        continue;
+        throw FeedFetchException(Feed::Status::OtherError, ex.message());
       }
     }
 
@@ -234,9 +228,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
                     << "Post-processing script for feed file failed:"
                     << QUOTE_W_SPACE_DOT(ex.message());
 
-        feed->setStatus(Feed::Status::OtherError);
-        *error_during_obtaining = true;
-        continue;
+        throw FeedFetchException(Feed::Status::OtherError, ex.message());
       }
     }
 

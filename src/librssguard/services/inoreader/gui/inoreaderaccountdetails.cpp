@@ -57,11 +57,13 @@ InoreaderAccountDetails::InoreaderAccountDetails(QWidget* parent)
 void InoreaderAccountDetails::testSetup(const QNetworkProxy& custom_proxy) {
   m_lastProxy = custom_proxy;
 
-  m_oauth->logout();
-  m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
-  m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
-  m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());
-  m_oauth->login();
+  if (m_oauth != nullptr) {
+    m_oauth->logout();
+    m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
+    m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
+    m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());
+    m_oauth->login();
+  }
 }
 
 void InoreaderAccountDetails::checkUsername(const QString& username) {
@@ -96,7 +98,6 @@ void InoreaderAccountDetails::onAuthGranted() {
     InoreaderNetworkFactory fac;
 
     fac.setOauth(m_oauth);
-
     auto resp = fac.userInfo(m_lastProxy);
 
     m_ui.m_txtUsername->lineEdit()->setText(resp["userEmail"].toString());
@@ -109,9 +110,11 @@ void InoreaderAccountDetails::onAuthGranted() {
 }
 
 void InoreaderAccountDetails::hookNetwork() {
-  connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &InoreaderAccountDetails::onAuthGranted);
-  connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &InoreaderAccountDetails::onAuthError);
-  connect(m_oauth, &OAuth2Service::authFailed, this, &InoreaderAccountDetails::onAuthFailed);
+  if (m_oauth != nullptr) {
+    connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &InoreaderAccountDetails::onAuthGranted);
+    connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &InoreaderAccountDetails::onAuthError);
+    connect(m_oauth, &OAuth2Service::authFailed, this, &InoreaderAccountDetails::onAuthFailed);
+  }
 }
 
 void InoreaderAccountDetails::registerApi() {

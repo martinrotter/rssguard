@@ -958,20 +958,20 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
   return messages;
 }
 
-int DatabaseQueries::updateMessages(QSqlDatabase db,
-                                    const QList<Message>& messages,
-                                    const QString& feed_custom_id,
-                                    int account_id,
-                                    const QString& url,
-                                    bool force_update,
-                                    bool* ok) {
+QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
+                                                const QList<Message>& messages,
+                                                const QString& feed_custom_id,
+                                                int account_id,
+                                                const QString& url,
+                                                bool force_update,
+                                                bool* ok) {
   if (messages.isEmpty()) {
     *ok = true;
-    return 0;
+    return { 0, 0 };
   }
 
   bool use_transactions = qApp->settings()->value(GROUP(Database), SETTING(Database::UseTransactions)).toBool();
-  int updated_messages = 0;
+  QPair<int, int> updated_messages = { 0, 0 };
 
   // Prepare queries.
   QSqlQuery query_select_with_url(db);
@@ -1198,7 +1198,12 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
                    << "URL"
                    << QUOTE_W_SPACE(message.m_url)
                    << "in DB.";
-          updated_messages++;
+
+          if (!message.m_isRead) {
+            updated_messages.first++;
+          }
+
+          updated_messages.second++;
         }
         else if (query_update.lastError().isValid()) {
           qWarningNN << LOGSEC_DB
@@ -1226,7 +1231,11 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
       query_insert.bindValue(QSL(":account_id"), account_id);
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
-        updated_messages++;
+        if (!message.m_isRead) {
+          updated_messages.first++;
+        }
+
+        updated_messages.second++;
 
         if (query_insert.lastInsertId().isValid()) {
           id_existing_message = query_insert.lastInsertId().toInt();
@@ -1289,7 +1298,7 @@ int DatabaseQueries::updateMessages(QSqlDatabase db,
 
     if (ok != nullptr) {
       *ok = false;
-      updated_messages = 0;
+      updated_messages = { 0, 0 };
     }
   }
   else {

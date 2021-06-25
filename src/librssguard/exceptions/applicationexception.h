@@ -7,7 +7,7 @@
 
 class ApplicationException {
   public:
-    explicit ApplicationException(QString message = QString());
+    explicit ApplicationException(QString message = {});
 
     QString message() const;
 

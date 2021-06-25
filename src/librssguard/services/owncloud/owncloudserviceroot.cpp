@@ -4,6 +4,7 @@
 
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "exceptions/feedfetchexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
@@ -149,18 +150,16 @@ void OwnCloudServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
-QList<Message> OwnCloudServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+QList<Message> OwnCloudServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) {
   QList<Message> msgs;
 
   for (Feed* feed : feeds) {
     OwnCloudGetMessagesResponse messages = network()->getMessages(feed->customNumericId(), networkProxy());
 
     if (messages.networkError() != QNetworkReply::NetworkError::NoError) {
-      feed->setStatus(Feed::Status::NetworkError);
-      *error_during_obtaining = true;
+      throw FeedFetchException(Feed::Status::NetworkError);
     }
     else {
-      *error_during_obtaining = false;
       msgs << messages.messages();
     }
   }

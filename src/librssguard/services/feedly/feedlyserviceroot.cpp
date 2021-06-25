@@ -5,6 +5,7 @@
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "exceptions/feedfetchexception.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -71,25 +72,15 @@ void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
-QList<Message> FeedlyServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+QList<Message> FeedlyServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) {
   QList<Message> messages;
 
   for (Feed* feed : feeds) {
     try {
       messages << m_network->streamContents(feed->customId());
-
-      feed->setStatus(Feed::Status::Normal);
-      *error_during_obtaining = false;
     }
     catch (const ApplicationException& ex) {
-      feed->setStatus(Feed::Status::NetworkError);
-      *error_during_obtaining = true;
-
-      qCriticalNN << LOGSEC_FEEDLY
-                  << "Problem"
-                  << QUOTE_W_SPACE(ex.message())
-                  << "when obtaining messages for feed"
-                  << QUOTE_W_SPACE_DOT(customId());
+      throw FeedFetchException(Feed::Status::NetworkError, ex.message());
     }
   }
 

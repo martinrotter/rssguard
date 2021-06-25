@@ -4,6 +4,7 @@
 
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "exceptions/feedfetchexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
@@ -56,7 +57,7 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
-QList<Message> GreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+QList<Message> GreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) {
   QList<Message> messages;
 
   for (Feed* feed : feeds) {
@@ -66,7 +67,7 @@ QList<Message> GreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, 
     feed->setStatus(error);
 
     if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
-      *error_during_obtaining = true;
+      throw FeedFetchException(error);
     }
   }
 

@@ -3,6 +3,7 @@
 #include "services/tt-rss/ttrssserviceroot.h"
 
 #include "database/databasequeries.h"
+#include "exceptions/feedfetchexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
@@ -213,7 +214,7 @@ void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
-QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) {
   QList<Message> messages;
 
   for (Feed* feed : feeds) {
@@ -228,10 +229,7 @@ QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bo
                                                                     networkProxy());
 
       if (network()->lastError() != QNetworkReply::NetworkError::NoError) {
-        feed->setStatus(Feed::Status::NetworkError);
-        *error_during_obtaining = true;
-        itemChanged(QList<RootItem*>() << this);
-        continue;
+        throw FeedFetchException(Feed::Status::NetworkError);
       }
       else {
         QList<Message> new_messages = headlines.messages(this);

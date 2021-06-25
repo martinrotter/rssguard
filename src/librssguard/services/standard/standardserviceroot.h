@@ -32,7 +32,7 @@ class StandardServiceRoot : public ServiceRoot {
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual Qt::ItemFlags additionalFlags() const;
-    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining);
+    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds);
 
     QList<QAction*> serviceMenu();
     QList<QAction*> getContextMenuForFeed(StandardFeed* feed);

@@ -3,6 +3,7 @@
 #include "services/gmail/gmailserviceroot.h"
 
 #include "database/databasequeries.h"
+#include "exceptions/feedfetchexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
@@ -73,7 +74,7 @@ void GmailServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString());
 }
 
-QList<Message> GmailServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bool* error_during_obtaining) {
+QList<Message> GmailServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) {
   QList<Message> messages;
 
   for (Feed* feed : feeds) {
@@ -83,7 +84,7 @@ QList<Message> GmailServiceRoot::obtainNewMessages(const QList<Feed*>& feeds, bo
     feed->setStatus(error);
 
     if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError || error == Feed::Status::ParsingError) {
-      *error_during_obtaining = true;
+      throw FeedFetchException(error);
     }
   }
 

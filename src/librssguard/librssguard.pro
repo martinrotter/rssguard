@@ -56,6 +56,7 @@ HEADERS += core/feeddownloader.h \
            dynamic-shortcuts/dynamicshortcutswidget.h \
            dynamic-shortcuts/shortcutcatcher.h \
            exceptions/applicationexception.h \
+           exceptions/feedfetchexception.h \
            exceptions/filteringexception.h \
            exceptions/ioexception.h \
            exceptions/networkexception.h \
@@ -240,6 +241,7 @@ SOURCES += core/feeddownloader.cpp \
            dynamic-shortcuts/dynamicshortcutswidget.cpp \
            dynamic-shortcuts/shortcutcatcher.cpp \
            exceptions/applicationexception.cpp \
+           exceptions/feedfetchexception.cpp \
            exceptions/filteringexception.cpp \
            exceptions/ioexception.cpp \
            exceptions/networkexception.cpp \

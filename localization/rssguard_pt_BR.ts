@@ -135,7 +135,7 @@ Erro: %1</translation>
     </message>
     <message>
         <source>New articles fetched</source>
-        <translation type="unfinished"/>
+        <translation>Novos artigos buscados</translation>
     </message>
 </context>
 <context>
@@ -216,27 +216,27 @@ Erro: %1</translation>
     </message>
     <message>
         <source>Removing read articles...</source>
-        <translation type="unfinished"/>
+        <translation>Removendo artigos lidos...</translation>
     </message>
     <message>
         <source>Read articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Artigos lidos removidos...</translation>
     </message>
     <message>
         <source>Removing old articles...</source>
-        <translation type="unfinished"/>
+        <translation>Removendo artigos antigos...</translation>
     </message>
     <message>
         <source>Old articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Artigos antigos removidos...</translation>
     </message>
     <message>
         <source>Removing starred articles...</source>
-        <translation type="unfinished"/>
+        <translation>Removendo artigos com estrela...</translation>
     </message>
     <message>
         <source>Starred articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Artigos com estrela removidos...</translation>
     </message>
 </context>
 <context>
@@ -449,25 +449,25 @@ Status: %3</translation>
     <message>
         <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>não usa a busca automática de artigos</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>usa configurações globais (%n minuto(s) para próxima busca automática de artigos)</numerusform><numerusform>usa configurações globais (%n minuto(s) para próxima busca automática de artigos)</numerusform></translation>
     </message>
     <message>
         <source>uses global settings (global auto-fetching of articles is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>usa configurações globais (busca automática de artigos global desativada)</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>usa configurações específicas (%n minuto(s) para próxima busca automática de artigos)</numerusform><numerusform>usa configurações específicas (%n minuto(s) para próxima busca automática de artigos)</numerusform></translation>
     </message>
     <message>
         <source>has new articles</source>
-        <translation type="unfinished"/>
+        <translation>possui novos artigos</translation>
     </message>
 </context>
 <context>
@@ -478,26 +478,26 @@ Status: %3</translation>
     </message>
     <message>
         <source>Toolbar for articles</source>
-        <translation type="unfinished"/>
+        <translation>Barra de ferramentas para artigos</translation>
     </message>
 </context>
 <context>
     <name>FeedReader</name>
     <message>
         <source>Cannot fetch articles for all items</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível buscar artigos para todos os itens</translation>
     </message>
     <message>
         <source>You cannot fetch new articles for your items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Você não pode buscar novos artigos para seus itens pois outra operação crítica está em andamento.</translation>
     </message>
     <message>
         <source>Starting auto-download of some feeds&apos; articles</source>
-        <translation type="unfinished"/>
+        <translation>Iniciando download automático de alguns artigos de feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-download new articles for %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Farei o download automático de novos artigos para%n feed(s).</numerusform><numerusform>Farei o download automático de novos artigos para%n feed(s).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -600,7 +600,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed forever so you might end up with thousands of articles which you will never read anyway.</source>
-        <translation type="unfinished"/>
+        <translation>Cuidado para não baixar muitos artigos, porque o Feedly armazena em cache permanentemente TODOS os artigos do feed para sempre, então você pode acabar com milhares de artigos que nunca irá ler de qualquer maneira.</translation>
     </message>
 </context>
 <context>
@@ -757,7 +757,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Context menu for important articles</source>
-        <translation type="unfinished"/>
+        <translation>Menu de contexto para artigos importantes</translation>
     </message>
 </context>
 <context>
@@ -1119,7 +1119,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Edit &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Editar &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -1134,7 +1134,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dia(s)</numerusform><numerusform>dia(s)</numerusform></translation>
+        <translation><numerusform> dia(s)</numerusform><numerusform> dia(s)</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1270,19 +1270,19 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Edit &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Editar &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Fetch articles using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Buscar artigos usando intervalo global</translation>
     </message>
     <message>
         <source>Fetch articles every</source>
-        <translation type="unfinished"/>
+        <translation>Buscar artigos a cada</translation>
     </message>
     <message>
         <source>Disable auto-fetching of articles</source>
-        <translation type="unfinished"/>
+        <translation>Desativar busca automática de artigos</translation>
     </message>
 </context>
 <context>
@@ -1726,19 +1726,19 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>F&amp;eeds</source>
-        <translation type="unfinished"/>
+        <translation>F&amp;eeds</translation>
     </message>
     <message>
         <source>Art&amp;icles</source>
-        <translation type="unfinished"/>
+        <translation>Art&amp;igos</translation>
     </message>
     <message>
         <source>&amp;Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>Navegador &amp;web &amp;&amp; abas</translation>
     </message>
     <message>
         <source>Ta&amp;bs</source>
-        <translation type="unfinished"/>
+        <translation>A&amp;bas</translation>
     </message>
 </context>
 <context>
@@ -1885,22 +1885,25 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Filter articles like this</source>
-        <translation type="unfinished"/>
+        <translation>Filtrar artigos como este</translation>
     </message>
     <message>
         <source>New article filter</source>
-        <translation type="unfinished"/>
+        <translation>Novo filtro de artigos</translation>
     </message>
     <message>
         <source>EXISTING articles filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>Erro ao filtrar artigos EXISTENTES: &quot;%1&quot;.
+</translation>
     </message>
     <message>
         <source>Article will be %1.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>O artigo será %1.
+
+</translation>
     </message>
     <message>
         <source>Output (modified) article is:
@@ -1911,12 +1914,20 @@ ou esta função ainda não foi implementada.</translation>
   Created on = '%6'
   Contents = '%7'
   RAW contents = &apos;%8&apos;</source>
-        <translation type="unfinished"/>
+        <translation>O artigo de saída (modificado) é:
+  Título = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Autor = &apos;%3&apos;
+  Foi lido/é importante = &apos;%4/%5&apos;
+  Criado em = &apos;%6&apos;
+  Conteúdo = &apos;%7&apos;
+  Conteúdo RAW = &apos;%8&apos;</translation>
     </message>
     <message>
         <source>SAMPLE article filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>Erro ao filtrar artigos de AMOSTRA: &quot;%1&quot;.
+</translation>
     </message>
 </context>
 <context>
@@ -2543,7 +2554,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Yeah.</source>
-        <translation>Legal</translation>
+        <translation>Legal.</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -2579,7 +2590,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
-        <translation type="unfinished"/>
+        <translation>Limitar o número de artigos buscados por feed forna a busca de artigos mais rápida, mas se seu feed contém mais artigos que o limite especificado, então alguns artigos mais antigos podem não ser buscados.</translation>
     </message>
 </context>
 <context>
@@ -2864,26 +2875,26 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>article</source>
-        <translation type="unfinished"/>
+        <translation>artigo</translation>
     </message>
     <message>
         <source>articles</source>
-        <translation type="unfinished"/>
+        <translation>artigos</translation>
     </message>
 </context>
 <context>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark article read</source>
-        <translation type="unfinished"/>
+        <translation>Marcar artigo como lido</translation>
     </message>
     <message>
         <source>Mark article unread</source>
-        <translation type="unfinished"/>
+        <translation>Marcar artigo como não lido</translation>
     </message>
     <message>
         <source>Switch article importance</source>
-        <translation type="unfinished"/>
+        <translation>Alterar importância do artigo</translation>
     </message>
 </context>
 <context>
@@ -3008,79 +3019,79 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Loading of articles from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
+        <translation>Falha ao carregar artigos do item &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Loading of articles failed, maybe messages could not be downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Falha ao carregar artigos, talvez as mensagens não puderam ser baixadas.</translation>
     </message>
     <message>
         <source>ID of the article.</source>
-        <translation type="unfinished"/>
+        <translation>ID do artigo.</translation>
     </message>
     <message>
         <source>Is article read?</source>
-        <translation type="unfinished"/>
+        <translation>O artigo foi lido?</translation>
     </message>
     <message>
         <source>Is article important?</source>
-        <translation type="unfinished"/>
+        <translation>O artigo é importante?</translation>
     </message>
     <message>
         <source>Is article deleted?</source>
-        <translation type="unfinished"/>
+        <translation>O artigo foi excluído?</translation>
     </message>
     <message>
         <source>Is article permanently deleted from recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>O artigo foi permanentemente excluído da Lixeira?</translation>
     </message>
     <message>
         <source>ID of feed which this article belongs to.</source>
-        <translation type="unfinished"/>
+        <translation>ID do feed ao qual este artigo pertence.</translation>
     </message>
     <message>
         <source>Title of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Título do artigo.</translation>
     </message>
     <message>
         <source>Url of the article.</source>
-        <translation type="unfinished"/>
+        <translation>URL do artigo.</translation>
     </message>
     <message>
         <source>Author of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Autor do artigo.</translation>
     </message>
     <message>
         <source>Creation date of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Data de criação do artigo.</translation>
     </message>
     <message>
         <source>Contents of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Conteúdo do artigo.</translation>
     </message>
     <message>
         <source>Score of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Nota do artigo.</translation>
     </message>
     <message>
         <source>Account ID of the article.</source>
-        <translation type="unfinished"/>
+        <translation>ID da conta do artigo.</translation>
     </message>
     <message>
         <source>Custom ID of the article</source>
-        <translation type="unfinished"/>
+        <translation>ID personalizado do artigo</translation>
     </message>
     <message>
         <source>Custom hash of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Hash personalizado do artigo.</translation>
     </message>
     <message>
         <source>Custom ID of feed of the article.</source>
-        <translation type="unfinished"/>
+        <translation>ID personalizado do feed do artigo.</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the article.</source>
-        <translation type="unfinished"/>
+        <translation>Indicação da presença de anexos dentro do artigo.</translation>
     </message>
 </context>
 <context>
@@ -3095,31 +3106,31 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Search articles</source>
-        <translation type="unfinished"/>
+        <translation>Pesquisar artigos</translation>
     </message>
     <message>
         <source>Article search box</source>
-        <translation type="unfinished"/>
+        <translation>Caixa de pesquisa de artigos</translation>
     </message>
     <message>
         <source>Menu for highlighting articles</source>
-        <translation type="unfinished"/>
+        <translation>Menu para destacar artigos</translation>
     </message>
     <message>
         <source>Highlight unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Destacar artigos não lidos</translation>
     </message>
     <message>
         <source>Highlight important articles</source>
-        <translation type="unfinished"/>
+        <translation>Destacar artigos importantes</translation>
     </message>
     <message>
         <source>Display all articles</source>
-        <translation type="unfinished"/>
+        <translation>Exibir todos os artigos</translation>
     </message>
     <message>
         <source>Article highlighter</source>
-        <translation type="unfinished"/>
+        <translation>Destacador de artigos</translation>
     </message>
 </context>
 <context>
@@ -3150,7 +3161,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Context menu for articles</source>
-        <translation type="unfinished"/>
+        <translation>Menu de contexto para artigos</translation>
     </message>
 </context>
 <context>
@@ -3306,15 +3317,15 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message numerus="yes">
         <source>Show more articles (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Exibir mais artigos (%n restante(s))</numerusform><numerusform>Exibir mais artigos (%n restante(s))</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more articles</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível mostrar mais artigos</translation>
     </message>
     <message>
         <source>Cannot show more articles because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível mostrar mais artigos pois o feed principal foi removido.</translation>
     </message>
 </context>
 <context>
@@ -3464,7 +3475,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>articles</source>
-        <translation type="unfinished"/>
+        <translation>artigos</translation>
     </message>
 </context>
 <context>
@@ -3565,31 +3576,31 @@ O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacid
     </message>
     <message>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível inserir o filtro do artigo, pois o banco de dados atual não pode retornar o último ID de linha inserido.</translation>
     </message>
     <message>
         <source>New articles fetched</source>
-        <translation type="unfinished"/>
+        <translation>Novos artigos buscados</translation>
     </message>
     <message>
         <source>Fetching articles right now</source>
-        <translation type="unfinished"/>
+        <translation>Buscando artigos agora mesmo</translation>
     </message>
     <message>
         <source>Login data refreshed</source>
-        <translation type="unfinished"/>
+        <translation>Dados de login atualizados</translation>
     </message>
     <message>
         <source>New %1 version is available</source>
-        <translation type="unfinished"/>
+        <translation>Nova versão %1 disponível</translation>
     </message>
     <message>
         <source>Miscellaneous events</source>
-        <translation type="unfinished"/>
+        <translation>Eventos diversos</translation>
     </message>
     <message>
         <source>Unknown event</source>
-        <translation type="unfinished"/>
+        <translation>Evento desconhecido</translation>
     </message>
 </context>
 <context>
@@ -3608,11 +3619,11 @@ O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacid
     </message>
     <message>
         <source>Recycle bin contains all deleted articles from all feeds.</source>
-        <translation type="unfinished"/>
+        <translation>A Lixeira contém todos os artigos excluídos de todos os feeds.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted article(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n artigo(s) excluído(s).</numerusform><numerusform>%n artigo(s) excluído(s).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3620,7 +3631,7 @@ O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacid
     <message numerus="yes">
         <source>%n unread article(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n artigo(s) não lido(s).</numerusform><numerusform>%n artigo(s) não lido(s).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3673,7 +3684,7 @@ O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacid
     </message>
     <message>
         <source>Synchronize article cache</source>
-        <translation type="unfinished"/>
+        <translation>Sincronizar cache dos artigos</translation>
     </message>
 </context>
 <context>
@@ -4275,11 +4286,11 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Tray area</source>
-        <translation type="unfinished"/>
+        <translation>Área de notificação</translation>
     </message>
     <message>
         <source>Toolbar for articles list</source>
-        <translation type="unfinished"/>
+        <translation>Barra de ferramentas para lista de artigos</translation>
     </message>
 </context>
 <context>
@@ -4317,7 +4328,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
-        <translation type="unfinished"/>
+        <translation>Você precisa ter o &quot;ícone da área de notificação&quot; ativado para que as janelas de notificação funcionem.</translation>
     </message>
 </context>
 <context>
@@ -4346,15 +4357,15 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <name>SingleNotificationEditor</name>
     <message>
         <source>Sound</source>
-        <translation type="unfinished"/>
+        <translation>Som</translation>
     </message>
     <message>
         <source>Full path to your WAV sound file</source>
-        <translation type="unfinished"/>
+        <translation>Caminho completo para arquivo de som WAV</translation>
     </message>
     <message>
         <source>&amp;Clear</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Limpar</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
@@ -4362,19 +4373,19 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>&amp;Play</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Tocar</translation>
     </message>
     <message>
         <source>Balloon notification</source>
-        <translation type="unfinished"/>
+        <translation>Balão de notificação</translation>
     </message>
     <message>
         <source>Select sound file</source>
-        <translation type="unfinished"/>
+        <translation>Selecionar arquivo de som</translation>
     </message>
     <message>
         <source>WAV files (*.wav)</source>
-        <translation type="unfinished"/>
+        <translation>Arquivos WAV (*.wav)</translation>
     </message>
 </context>
 <context>
@@ -4832,7 +4843,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>Browse your feeds and articles</source>
-        <translation type="unfinished"/>
+        <translation>Procurar seus feeds e artigos</translation>
     </message>
 </context>
 <context>

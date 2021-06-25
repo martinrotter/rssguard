@@ -422,7 +422,10 @@ void FormMessageFiltersManager::processCheckedFeeds() {
       }
 
       // Update messages in DB and reload selection.
-      it->toFeed()->updateMessages(msgs, false, true);
+      it->toFeed()->updateMessages(msgs, true);
+
+      // TODO: ted hazi vyjimku, ošetřit
+
       displayMessagesOfFeed();
     }
   }
