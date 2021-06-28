@@ -162,7 +162,8 @@ QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds)
       QList<QPair<QByteArray, QByteArray>> headers;
 
       headers << NetworkFactory::generateBasicAuthHeader(feed->username(), feed->password());
-      feed->setNetworkError(NetworkFactory::performNetworkOperation(feed->source(),
+
+      auto network_result = NetworkFactory::performNetworkOperation(feed->source(),
                                                                     download_timeout,
                                                                     {},
                                                                     feed_contents,
@@ -171,15 +172,15 @@ QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds)
                                                                     false,
                                                                     {},
                                                                     {},
-                                                                    networkProxy()).first);
+                                                                    networkProxy()).first;
 
-      if (feed->networkError() != QNetworkReply::NetworkError::NoError) {
+      if (network_result != QNetworkReply::NetworkError::NoError) {
         qWarningNN << LOGSEC_CORE
                    << "Error"
-                   << QUOTE_W_SPACE(feed->networkError())
+                   << QUOTE_W_SPACE(network_result)
                    << "during fetching of new messages for feed"
                    << QUOTE_W_SPACE_DOT(feed->source());
-        throw FeedFetchException(Feed::Status::NetworkError);
+        throw FeedFetchException(Feed::Status::NetworkError, NetworkFactory::networkErrorText(network_result));
       }
 
       // Encode downloaded data for further parsing.

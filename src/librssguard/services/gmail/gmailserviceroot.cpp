@@ -81,7 +81,6 @@ QList<Message> GmailServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) {
     Feed::Status error = Feed::Status::Normal;
 
     messages << network()->messages(feed->customId(), error, networkProxy());
-    feed->setStatus(error);
 
     if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError || error == Feed::Status::ParsingError) {
       throw FeedFetchException(error);

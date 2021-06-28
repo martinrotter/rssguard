@@ -39,7 +39,6 @@
 
 StandardFeed::StandardFeed(RootItem* parent_item)
   : Feed(parent_item) {
-  m_networkError = QNetworkReply::NetworkError::NoError;
   m_type = Type::Rss0X;
   m_sourceType = SourceType::Url;
   m_encoding = m_postProcessScript = QString();
@@ -51,7 +50,6 @@ StandardFeed::StandardFeed(RootItem* parent_item)
 
 StandardFeed::StandardFeed(const StandardFeed& other)
   : Feed(other) {
-  m_networkError = other.networkError();
   m_type = other.type();
   m_postProcessScript = other.postProcessScript();
   m_sourceType = other.sourceType();
@@ -66,11 +64,8 @@ QList<QAction*> StandardFeed::contextMenuFeedsList() {
 }
 
 QString StandardFeed::additionalTooltip() const {
-  return Feed::additionalTooltip() + tr("\nNetwork status: %1\n"
-                                        "Encoding: %2\n"
-                                        "Type: %3").arg(NetworkFactory::networkErrorText(m_networkError),
-                                                        encoding(),
-                                                        StandardFeed::typeToString(type()));
+  return Feed::additionalTooltip() + tr("\nEncoding: %2\n"
+                                        "Type: %3").arg(encoding(), StandardFeed::typeToString(type()));
 }
 
 bool StandardFeed::canBeDeleted() const {
@@ -578,10 +573,6 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QStrin
   }
 }
 
-void StandardFeed::setNetworkError(const QNetworkReply::NetworkError& network_error) {
-  m_networkError = network_error;
-}
-
 QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, int run_timeout) {
   auto prepared_query = prepareExecutionLine(execution_line);
 
@@ -594,8 +585,4 @@ QString StandardFeed::postProcessFeedFileWithScript(const QString& execution_lin
   auto prepared_query = prepareExecutionLine(execution_line);
 
   return runScriptProcess(prepared_query, qApp->userDataFolder(), run_timeout, true, raw_feed_data);
-}
-
-QNetworkReply::NetworkError StandardFeed::networkError() const {
-  return m_networkError;
 }

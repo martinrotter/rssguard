@@ -18,7 +18,7 @@ class Notification {
       GeneralEvent = 1,
 
       // New (unread) messages were downloaded for some feed.
-      NewArticlesFetched = 2,
+      NewUnreadArticlesFetched = 2,
 
       // RSS Guard started downloading messages for some feed.
       ArticlesFetchingStarted = 3,

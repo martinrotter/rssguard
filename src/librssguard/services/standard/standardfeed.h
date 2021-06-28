@@ -71,9 +71,6 @@ class StandardFeed : public Feed {
     QString password() const;
     void setPassword(const QString& password);
 
-    QNetworkReply::NetworkError networkError() const;
-    void setNetworkError(const QNetworkReply::NetworkError& network_error);
-
     // Tries to guess feed hidden under given URL
     // and uses given credentials.
     // Returns pointer to guessed feed (if at least partially
@@ -110,7 +107,6 @@ class StandardFeed : public Feed {
     SourceType m_sourceType;
     Type m_type;
     QString m_postProcessScript;
-    QNetworkReply::NetworkError m_networkError;
     QString m_encoding;
     bool m_passwordProtected{};
     QString m_username;

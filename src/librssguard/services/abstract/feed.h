@@ -67,7 +67,8 @@ class Feed : public RootItem {
     void setAutoUpdateRemainingInterval(int auto_update_remaining_interval);
 
     Status status() const;
-    void setStatus(const Status& status);
+    QString statusString() const;
+    void setStatus(const Status& status, const QString& status_text = {});
 
     QString source() const;
     void setSource(const QString& source);
@@ -90,6 +91,7 @@ class Feed : public RootItem {
   private:
     QString m_source;
     Status m_status;
+    QString m_statusString;
     AutoUpdateType m_autoUpdateType;
     int m_autoUpdateInitialInterval{};
     int m_autoUpdateRemainingInterval{};

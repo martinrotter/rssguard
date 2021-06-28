@@ -97,7 +97,7 @@ Application::Application(const QString& id, int& argc, char** argv)
     m_notifications->save({
       Notification(Notification::Event::GeneralEvent,
                    true),
-      Notification(Notification::Event::NewArticlesFetched,
+      Notification(Notification::Event::NewUnreadArticlesFetched,
                    true,
                    QSL("%1/rooster.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
       Notification(Notification::Event::NewAppVersionAvailable,
@@ -582,8 +582,8 @@ void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
 void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(Notification::Event::NewArticlesFetched,
-                         tr("New articles fetched"),
+    qApp->showGuiMessage(Notification::Event::NewUnreadArticlesFetched,
+                         tr("Unread articles fetched"),
                          results.overview(10),
                          QSystemTrayIcon::MessageIcon::NoIcon);
   }

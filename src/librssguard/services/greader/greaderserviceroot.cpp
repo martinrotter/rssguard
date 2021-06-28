@@ -64,7 +64,6 @@ QList<Message> GreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) 
     Feed::Status error = Feed::Status::Normal;
 
     messages << network()->streamContents(this, feed->customId(), error, networkProxy());
-    feed->setStatus(error);
 
     if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
       throw FeedFetchException(error);

@@ -35,7 +35,7 @@ void Notification::playSound(Application* app) const {
 QList<Notification::Event> Notification::allEvents() {
   return {
     Event::GeneralEvent,
-    Event::NewArticlesFetched,
+    Event::NewUnreadArticlesFetched,
     Event::ArticlesFetchingStarted,
     Event::LoginDataRefreshed,
     Event::NewAppVersionAvailable,
@@ -44,8 +44,8 @@ QList<Notification::Event> Notification::allEvents() {
 
 QString Notification::nameForEvent(Notification::Event event) {
   switch (event) {
-    case Notification::Event::NewArticlesFetched:
-      return QObject::tr("New articles fetched");
+    case Notification::Event::NewUnreadArticlesFetched:
+      return QObject::tr("New (unread) articles fetched");
 
     case Notification::Event::ArticlesFetchingStarted:
       return QObject::tr("Fetching articles right now");

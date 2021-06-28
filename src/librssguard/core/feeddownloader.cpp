@@ -314,7 +314,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
                 << "message:"
                 << QUOTE_W_SPACE_DOT(feed_ex.message());
 
-    feed->setStatus(feed_ex.feedStatus());
+    feed->setStatus(feed_ex.feedStatus(), feed_ex.message());
     feed->getParentServiceRoot()->itemChanged({ feed });
   }
 
@@ -324,7 +324,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
                 << "message:"
                 << QUOTE_W_SPACE_DOT(app_ex.message());
 
-    feed->setStatus(Feed::Status::OtherError);
+    feed->setStatus(Feed::Status::OtherError, app_ex.message());
     feed->getParentServiceRoot()->itemChanged({ feed });
   }
 

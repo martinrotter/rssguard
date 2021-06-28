@@ -20,7 +20,7 @@
 #include <QThread>
 
 Feed::Feed(RootItem* parent)
-  : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate),
+  : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()), m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate),
   m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
   m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
@@ -38,7 +38,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setCountOfAllMessages(other.countOfAllMessages());
   setCountOfUnreadMessages(other.countOfUnreadMessages());
   setSource(other.source());
-  setStatus(other.status());
+  setStatus(other.status(), other.statusString());
   setAutoUpdateType(other.autoUpdateType());
   setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
   setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
@@ -143,8 +143,9 @@ Feed::Status Feed::status() const {
   return m_status;
 }
 
-void Feed::setStatus(const Feed::Status& status) {
+void Feed::setStatus(const Feed::Status& status, const QString& status_text) {
   m_status = status;
+  m_statusString = status_text;
 }
 
 QString Feed::source() const {
@@ -295,6 +296,10 @@ QString Feed::getStatusDescription() const {
     default:
       return tr("unspecified error");
   }
+}
+
+QString Feed::statusString() const {
+  return m_statusString;
 }
 
 QList<QPointer<MessageFilter>> Feed::messageFilters() const {
