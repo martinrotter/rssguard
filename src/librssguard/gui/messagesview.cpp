@@ -537,7 +537,12 @@ void MessagesView::selectNextItem() {
 
   if (index_next.isValid()) {
     setCurrentIndex(index_next);
-    scrollTo(index_next, QAbstractItemView::ScrollHint::PositionAtTop);
+
+    scrollTo(index_next,
+             !m_processingMouse && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+             ? QAbstractItemView::ScrollHint::PositionAtCenter
+             : QAbstractItemView::ScrollHint::PositionAtTop);
+
     selectionModel()->select(index_next, QItemSelectionModel::Select | QItemSelectionModel::Rows);
     setFocus();
   }
@@ -548,7 +553,12 @@ void MessagesView::selectPreviousItem() {
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
-    scrollTo(index_previous, QAbstractItemView::ScrollHint::PositionAtTop);
+
+    scrollTo(index_previous,
+             !m_processingMouse && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+             ? QAbstractItemView::ScrollHint::PositionAtCenter
+             : QAbstractItemView::ScrollHint::PositionAtTop);
+
     selectionModel()->select(index_previous, QItemSelectionModel::Select | QItemSelectionModel::Rows);
     setFocus();
   }
@@ -579,7 +589,11 @@ void MessagesView::selectNextUnreadItem() {
     // Make sure that item is properly visible even if
     // message previewer was hidden and shows up.
     qApp->processEvents();
-    scrollTo(next_unread, QAbstractItemView::ScrollHint::PositionAtTop);
+
+    scrollTo(next_unread,
+             !m_processingMouse && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+             ? QAbstractItemView::ScrollHint::PositionAtCenter
+             : QAbstractItemView::ScrollHint::PositionAtTop);
   }
 }
 
@@ -595,7 +609,10 @@ void MessagesView::searchMessages(const QString& pattern) {
   }
   else {
     // Scroll to selected message, it could become scrolled out due to filter change.
-    scrollTo(selectionModel()->selectedRows().at(0));
+    scrollTo(selectionModel()->selectedRows().at(0),
+             !m_processingMouse && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+             ? QAbstractItemView::ScrollHint::PositionAtCenter
+             : QAbstractItemView::ScrollHint::EnsureVisible);
   }
 }
 
