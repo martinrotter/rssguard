@@ -16,7 +16,6 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
     void loadSettings();
 
   protected slots:
-    void acceptRedirection(const QUrl& url);
     void onSslErrors(QNetworkReply* reply, const QList<QSslError>& error);
 
   protected:

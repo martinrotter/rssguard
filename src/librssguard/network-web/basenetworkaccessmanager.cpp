@@ -32,13 +32,6 @@ void BaseNetworkAccessManager::loadSettings() {
   qDebugNN << LOGSEC_NETWORK << "Settings of BaseNetworkAccessManager loaded.";
 }
 
-void BaseNetworkAccessManager::acceptRedirection(const QUrl& url) {
-  auto* reply = qobject_cast<QNetworkReply*>(sender());
-  emit reply->redirectAllowed();
-
-  qDebugNN << LOGSEC_NETWORK << "Accepting redirect to" << QUOTE_W_SPACE_DOT(url.toString());
-}
-
 void BaseNetworkAccessManager::onSslErrors(QNetworkReply* reply, const QList<QSslError>& error) {
   qWarningNN << LOGSEC_NETWORK
              << "Ignoring SSL errors for"
@@ -60,17 +53,9 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, true);
 #endif
 
-#if QT_VERSION >= 0x050900 // Qt >= 5.9.0
-  new_request.setAttribute(QNetworkRequest::Attribute::RedirectPolicyAttribute,
-                           QNetworkRequest::RedirectPolicy::UserVerifiedRedirectPolicy);
-#elif QT_VERSION >= 0x050600 // Qt >= 5.6.0
-  new_request.setAttribute(QNetworkRequest::Attribute::FollowRedirectsAttribute, true);
-#endif
-
   new_request.setRawHeader(HTTP_HEADERS_COOKIE, QSL("JSESSIONID= ").toLocal8Bit());
   new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, QString(APP_USERAGENT).toLocal8Bit());
 
   auto reply = QNetworkAccessManager::createRequest(op, new_request, outgoingData);
-  connect(reply, &QNetworkReply::redirected, this, &BaseNetworkAccessManager::acceptRedirection);
   return reply;
 }
