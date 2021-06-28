@@ -144,6 +144,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     QHash<QString, Feed*> getHashedSubTreeFeeds() const;
     QList<Feed*> getSubTreeFeeds() const;
     QList<Feed*> getSubTreeManuallyIntervaledFeeds() const;
+    QList<Feed*> getSubAutoFetchingEnabledFeeds() const;
 
     // Returns the service root node which is direct or indirect parent of current item.
     ServiceRoot* getParentServiceRoot() const;

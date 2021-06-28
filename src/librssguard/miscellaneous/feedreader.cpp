@@ -43,7 +43,9 @@ FeedReader::FeedReader(QObject* parent)
              << "Requesting update for all feeds on application startup.";
     QTimer::singleShot(qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateStartupDelay)).toDouble() * 1000,
                        this,
-                       &FeedReader::updateAllFeeds);
+                       [this]() {
+      updateFeeds(m_feedsModel->rootItem()->getSubAutoFetchingEnabledFeeds());
+    });
   }
 }
 
