@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Message filters</string>
+   <string>Article filters</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -112,7 +112,7 @@
        <item row="1" column="0" colspan="2">
         <widget class="QGroupBox" name="m_gbDetails">
          <property name="title">
-          <string>Message filter details</string>
+          <string>Article filter details</string>
          </property>
          <layout class="QFormLayout" name="formLayout">
           <item row="0" column="0">
@@ -140,7 +140,7 @@
              </size>
             </property>
             <property name="placeholderText">
-             <string>Title of message filter</string>
+             <string>Title of article filter</string>
             </property>
            </widget>
           </item>
@@ -163,7 +163,7 @@
              </sizepolicy>
             </property>
             <property name="placeholderText">
-             <string>Your JavaScript-based message filtering logic</string>
+             <string>Your JavaScript-based article filtering logic</string>
             </property>
            </widget>
           </item>

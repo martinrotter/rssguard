@@ -42,7 +42,7 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent), m
 #endif
 
   m_ui.m_lblLimitMessagesInfo->setText(tr("Beware of downloading too many articles, because "
-                                          "Feedly permanently caches ALL articles of the feed forever so you might "
+                                          "Feedly permanently caches ALL articles of the feed, so you might "
                                           "end up with thousands of articles which you will never read anyway."));
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);

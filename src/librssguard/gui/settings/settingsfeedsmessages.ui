@@ -36,7 +36,7 @@
        <item row="0" column="0">
         <widget class="QCheckBox" name="m_checkUpdateAllFeedsOnStartup">
          <property name="text">
-          <string>Download messages for all feeds on application startup with initial delay of</string>
+          <string>Fetch articles for all feeds on application startup with initial delay of</string>
          </property>
         </widget>
        </item>
@@ -56,7 +56,7 @@
        <item row="1" column="0">
         <widget class="QCheckBox" name="m_checkAutoUpdate">
          <property name="text">
-          <string>Auto-download messages for all feeds every</string>
+          <string>Auto-fetch articles for all feeds every</string>
          </property>
         </widget>
        </item>
@@ -76,7 +76,7 @@
        <item row="2" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkAutoUpdateOnlyUnfocused">
          <property name="text">
-          <string>Only auto-download messages when application is unfocused</string>
+          <string>Only auto-fetch articles if application is unfocused</string>
          </property>
         </widget>
        </item>
@@ -164,7 +164,7 @@
        <item row="6" column="0">
         <widget class="QLabel" name="label_8">
          <property name="text">
-          <string>Message count format in feed list</string>
+          <string>Article count format in feed list</string>
          </property>
          <property name="buddy">
           <cstring>m_cmbCountsFeedList</cstring>
@@ -189,7 +189,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</string>
+          <string>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -202,14 +202,14 @@
        <item row="8" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbHideCountsIfNoUnread">
          <property name="text">
-          <string>Hide message counts if there are no unread messages</string>
+          <string>Hide article counts if there are no unread articles</string>
          </property>
         </widget>
        </item>
        <item row="9" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkShowTooltips">
          <property name="text">
-          <string>Display tooltips for feeds and messages</string>
+          <string>Display tooltips for feeds and articles</string>
          </property>
         </widget>
        </item>

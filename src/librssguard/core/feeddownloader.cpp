@@ -174,7 +174,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
           if (filter.isNull()) {
             qCriticalNN << LOGSEC_FEEDDOWNLOADER
-                        << "Message filter was probably deleted, removing its pointer from list of filters.";
+                        << "Article filter was probably deleted, removing its pointer from list of filters.";
             feed_filters.removeAt(j--);
             continue;
           }
