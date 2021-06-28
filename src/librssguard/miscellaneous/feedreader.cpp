@@ -223,7 +223,7 @@ void FeedReader::updateAllFeeds() {
 }
 
 void FeedReader::updateManuallyIntervaledFeeds() {
-  updateFeeds(m_feedsModel->rootItem()->getSubTreeManuallyIntervaledFeeds());
+  updateFeeds(m_feedsModel->rootItem()->getSubTreeAutoFetchingWithManualIntervalsFeeds());
 }
 
 void FeedReader::stopRunningFeedUpdate() {

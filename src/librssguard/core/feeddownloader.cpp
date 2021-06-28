@@ -308,15 +308,24 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
     }
   }
   catch (const FeedFetchException& feed_ex) {
-    // TODO: logovat chybu, todo datachanged feed
+    qCriticalNN << LOGSEC_NETWORK
+                << "Error when fetching feed:"
+                << QUOTE_W_SPACE(feed_ex.feedStatus())
+                << "message:"
+                << QUOTE_W_SPACE_DOT(feed_ex.message());
 
     feed->setStatus(feed_ex.feedStatus());
+    feed->getParentServiceRoot()->itemChanged({ feed });
   }
 
   catch (const ApplicationException& app_ex) {
-    // TODO: logovat chybu, todo datachanged feed
+    qCriticalNN << LOGSEC_NETWORK
+                << "Unknown error when fetching feed:"
+                << "message:"
+                << QUOTE_W_SPACE_DOT(app_ex.message());
 
     feed->setStatus(Feed::Status::OtherError);
+    feed->getParentServiceRoot()->itemChanged({ feed });
   }
 
   m_feedsUpdated++;

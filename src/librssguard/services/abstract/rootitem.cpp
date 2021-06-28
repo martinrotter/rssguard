@@ -400,7 +400,7 @@ QList<Feed*> RootItem::getSubTreeFeeds() const {
   return children;
 }
 
-QList<Feed*> RootItem::getSubTreeManuallyIntervaledFeeds() const {
+QList<Feed*> RootItem::getSubTreeAutoFetchingWithManualIntervalsFeeds() const {
   QList<Feed*> children;
   QList<RootItem*> traversable_items;
 

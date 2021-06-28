@@ -192,6 +192,7 @@ QPair<int, int> Feed::updateMessages(const QList<Message>& messages, bool force_
   QPair<int, int> updated_messages = { 0, 0 };
 
   if (messages.isEmpty()) {
+    qDebugNN << "No messages to be updated/added in DB.";
     return updated_messages;
   }
 
@@ -203,20 +204,19 @@ QPair<int, int> Feed::updateMessages(const QList<Message>& messages, bool force_
            << QUOTE_W_SPACE_DOT(is_main_thread);
 
   bool ok = false;
-
-  qDebugNN << LOGSEC_CORE
-           << "There are some messages to be updated/added to DB.";
-
   QString custom_id = customId();
   int account_id = getParentServiceRoot()->accountId();
   QSqlDatabase database = is_main_thread ?
                           qApp->database()->driver()->connection(metaObject()->className()) :
                           qApp->database()->driver()->connection(QSL("feed_upd"));
 
-  updated_messages = DatabaseQueries::updateMessages(database, messages, custom_id, account_id,
-                                                     source(), force_update, &ok);
+  updated_messages = DatabaseQueries::updateMessages(database, messages,
+                                                     custom_id, account_id,
+                                                     source(), force_update,
+                                                     &ok);
 
-  if (ok && (updated_messages.first > 0 || updated_messages.second > 0)) {
+  if (updated_messages.first > 0 || updated_messages.second > 0) {
+    // Something was added or updated in the DB, update numbers.
     updateCounts(true);
 
     if (getParentServiceRoot()->recycleBin() != nullptr) {

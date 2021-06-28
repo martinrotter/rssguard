@@ -36,6 +36,8 @@ class Feed : public RootItem {
       OtherError = 5
     };
 
+    Q_ENUM(Status)
+
     explicit Feed(RootItem* parent = nullptr);
     explicit Feed(const Feed& other);
     explicit Feed(const QString& title, const QString& custom_id, const QIcon& icon, RootItem* parent = nullptr);
