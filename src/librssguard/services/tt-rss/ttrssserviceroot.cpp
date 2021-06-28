@@ -229,7 +229,7 @@ QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) {
                                                                     networkProxy());
 
       if (network()->lastError() != QNetworkReply::NetworkError::NoError) {
-        throw FeedFetchException(Feed::Status::NetworkError);
+        throw FeedFetchException(Feed::Status::NetworkError, headlines.error());
       }
       else {
         QList<Message> new_messages = headlines.messages(this);

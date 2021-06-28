@@ -9,7 +9,11 @@
 #include <utility>
 
 FeedParser::FeedParser(QString data) : m_xmlData(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
-  m_xml.setContent(m_xmlData, true);
+  QString error;
+
+  if (!m_xml.setContent(m_xmlData, true, &error)) {
+    throw ApplicationException(QObject::tr("XML problem: %1").arg(error));
+  }
 }
 
 FeedParser::~FeedParser() = default;

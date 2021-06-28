@@ -293,8 +293,11 @@ QString Feed::getStatusDescription() const {
     case Status::NetworkError:
       return tr("network error");
 
+    case Status::ParsingError:
+      return tr("parsing error");
+
     default:
-      return tr("unspecified error");
+      return tr("error");
   }
 }
 
@@ -319,9 +322,15 @@ void Feed::removeMessageFilter(MessageFilter* filter) {
 }
 
 QString Feed::additionalTooltip() const {
+  QString stat = getStatusDescription();
+
+  if (!m_statusString.simplified().isEmpty()) {
+    stat += QSL(" (%1)").arg(m_statusString);
+  }
+
   return tr("Auto-update status: %1\n"
             "Active message filters: %2\n"
             "Status: %3").arg(getAutoUpdateStatusDescription(),
                               QString::number(m_messageFilters.size()),
-                              getStatusDescription());
+                              stat);
 }
