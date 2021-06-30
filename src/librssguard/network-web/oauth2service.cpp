@@ -203,7 +203,7 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
   QJsonDocument json_document = QJsonDocument::fromJson(repl);
   QJsonObject root_obj = json_document.object();
 
-  qDebugNN << LOGSEC_OAUTH << "Token response:" << QUOTE_W_SPACE_DOT(json_document.toJson());
+  qDebugNN << LOGSEC_OAUTH << "Token response:" << QUOTE_W_SPACE_DOT(QString::fromUtf8(json_document.toJson()));
 
   if (network_reply->error() != QNetworkReply::NetworkError::NoError) {
     qWarningNN << LOGSEC_OAUTH
@@ -215,6 +215,11 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
   else if (root_obj.keys().contains("error")) {
     QString error = root_obj.value("error").toString();
     QString error_description = root_obj.value("error_description").toString();
+
+    qWarningNN << LOGSEC_OAUTH
+               << "JSON error when obtaining token response:"
+               << QUOTE_W_SPACE(error)
+               << QUOTE_W_SPACE_DOT(error_description);
 
     logout();
 

@@ -470,7 +470,7 @@ void Application::showGuiMessage(Notification::Event event, const QString& title
     MessageBox::show(parent == nullptr ? mainFormWidget() : parent, QMessageBox::Icon(message_type), title, message);
   }
   else {
-    qDebugNN << LOGSEC_CORE << "Silencing GUI message: '" << message << "'.";
+    qDebugNN << LOGSEC_CORE << "Silencing GUI message:" << QUOTE_W_SPACE_DOT(message);
   }
 }
 
