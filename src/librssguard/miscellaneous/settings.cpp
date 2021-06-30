@@ -104,7 +104,7 @@ DKEY Messages::DisplayFeedIconsInList = "display_feed_icons_in_message_list";
 DVALUE(bool) Messages::DisplayFeedIconsInListDef = false;
 
 DKEY Messages::BringAppToFrontAfterMessageOpenedExternally = "bring_app_to_front_after_msg_opened";
-DVALUE(bool) Messages::BringAppToFrontAfterMessageOpenedExternallyDef = true;
+DVALUE(bool) Messages::BringAppToFrontAfterMessageOpenedExternallyDef = false;
 
 DKEY Messages::KeepCursorInCenter = "keep_cursor_center";
 DVALUE(bool) Messages::KeepCursorInCenterDef = false;
