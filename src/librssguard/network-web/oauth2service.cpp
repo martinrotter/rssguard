@@ -206,6 +206,10 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
   qDebugNN << LOGSEC_OAUTH << "Token response:" << QUOTE_W_SPACE_DOT(json_document.toJson());
 
   if (network_reply->error() != QNetworkReply::NetworkError::NoError) {
+    qWarningNN << LOGSEC_OAUTH
+               << "Network error when obtaining token response:"
+               << QUOTE_W_SPACE_DOT(network_reply->error());
+
     emit tokensRetrieveError(QString(), NetworkFactory::networkErrorText(network_reply->error()));
   }
   else if (root_obj.keys().contains("error")) {

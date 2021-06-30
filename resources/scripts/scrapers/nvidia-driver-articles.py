@@ -1,6 +1,6 @@
 # Parses output of Nvidia's GDC web service, which provides
 # list of articles.
-# Sample input file whose contents must be provided as stdin: "https://www.nvidia.com/bin/nvidiaGDC/servlet/article.json?locale=en_US&region=us&type=both&tag=drivers&offset=0s"
+# Sample input file whose contents must be provided as stdin: "https://www.nvidia.com/bin/nvidiaGDC/servlet/article.json?locale=en_US&region=us&type=both&tag=drivers&offset=0"
 # This scripts outputs JSON feed 1.1: https://jsonfeed.org/version/1.1
 
 import json
