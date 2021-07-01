@@ -581,10 +581,6 @@ void MessagesView::selectNextUnreadItem() {
   if (next_unread.isValid()) {
     // We found unread message, mark it.
     setCurrentIndex(next_unread);
-    selectionModel()->select(next_unread,
-                             QItemSelectionModel::SelectionFlag::ClearAndSelect |
-                             QItemSelectionModel::SelectionFlag::Rows);
-    setFocus();
 
     // Make sure that item is properly visible even if
     // message previewer was hidden and shows up.
@@ -594,6 +590,11 @@ void MessagesView::selectNextUnreadItem() {
              !m_processingMouse && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
              ? QAbstractItemView::ScrollHint::PositionAtCenter
              : QAbstractItemView::ScrollHint::PositionAtTop);
+
+    selectionModel()->select(next_unread,
+                             QItemSelectionModel::SelectionFlag::Select |
+                             QItemSelectionModel::SelectionFlag::Rows);
+    setFocus();
   }
 }
 
