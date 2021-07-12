@@ -50,13 +50,13 @@ QString AtomParser::feedAuthor() const {
 Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime current_time) const {
   Message new_message;
   QString title = textsFromPath(msg_element, m_atomNamespace, QSL("title"), true).join(QSL(", "));
-  QString summary = textsFromPath(msg_element, m_atomNamespace, QSL("content"), true).join(QSL(", "));
+  QString summary = rawXmlChild(msg_element.elementsByTagNameNS(m_atomNamespace, QSL("content")).at(0).toElement());
 
   if (summary.isEmpty()) {
-    summary = textsFromPath(msg_element, m_atomNamespace, QSL("summary"), true).join(QSL(", "));
+    summary = rawXmlChild(msg_element.elementsByTagNameNS(m_atomNamespace, QSL("summary")).at(0).toElement());
 
     if (summary.isEmpty()) {
-      summary = mrssTextFromPath(msg_element, QSL("description"));
+      summary = rawXmlChild(msg_element.elementsByTagNameNS(m_mrssNamespace, QSL("description")).at(0).toElement());
     }
   }
 

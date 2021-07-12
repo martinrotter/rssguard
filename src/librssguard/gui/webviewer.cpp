@@ -53,7 +53,7 @@ WebPage* WebViewer::page() const {
 }
 
 void WebViewer::displayMessage() {
-  setHtml(m_messageContents /*, QUrl::fromUserInput(INTERNAL_URL_MESSAGE)*/);
+  setHtml(m_messageContents, m_messageBaseUrl /*, QUrl::fromUserInput(INTERNAL_URL_MESSAGE)*/);
 }
 
 bool WebViewer::increaseWebPageZoom() {
@@ -143,6 +143,21 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
   }
 
   m_root = root;
+
+  auto* feed = root->getParentServiceRoot()->getItemFromSubTree([messages](const RootItem* it) {
+    return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
+  })->toFeed();
+
+  m_messageBaseUrl = QString();
+
+  if (feed != nullptr) {
+    QUrl url(feed->source());
+
+    if (url.isValid()) {
+      m_messageBaseUrl = url.scheme() + QSL("://") + url.host();
+    }
+  }
+
   m_messageContents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),
                                                      messages_layout);
 

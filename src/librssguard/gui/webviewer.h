@@ -45,6 +45,7 @@ class WebViewer : public QWebEngineView {
 
   private:
     RootItem* m_root;
+    QString m_messageBaseUrl;
     QString m_messageContents;
 };
 

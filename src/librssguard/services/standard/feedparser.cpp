@@ -3,9 +3,12 @@
 #include "services/standard/feedparser.h"
 
 #include "exceptions/applicationexception.h"
+#include "miscellaneous/application.h"
+#include "network-web/webfactory.h"
 
 #include <QDebug>
 #include <QRegularExpression>
+
 #include <utility>
 
 FeedParser::FeedParser(QString data) : m_xmlData(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
@@ -82,6 +85,28 @@ QString FeedParser::mrssTextFromPath(const QDomElement& msg_element, const QStri
   QString text = msg_element.elementsByTagNameNS(m_mrssNamespace, xml_path).at(0).toElement().text();
 
   return text;
+}
+
+QString FeedParser::rawXmlChild(const QDomElement& container) const {
+  QString raw;
+  auto children = container.childNodes();
+
+  for (int i = 0; i < children.size(); i++) {
+    QString raw_ch;
+
+    if (children.at(i).isCDATASection()) {
+      raw_ch = children.at(i).toCDATASection().data();
+    }
+    else {
+      QTextStream str(&raw_ch);
+
+      children.at(i).save(str, 0);
+    }
+
+    raw += qApp->web()->unescapeHtml(raw_ch);
+  }
+
+  return raw;
 }
 
 QStringList FeedParser::textsFromPath(const QDomElement& element, const QString& namespace_uri,
