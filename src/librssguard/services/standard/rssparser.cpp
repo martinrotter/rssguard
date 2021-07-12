@@ -32,7 +32,7 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
 
   // Deal with titles & descriptions.
   QString elem_title = msg_element.namedItem(QSL("title")).toElement().text().simplified();
-  QString elem_description = msg_element.namedItem(QSL("encoded")).toElement().text();
+  QString elem_description = rawXmlChild(msg_element.elementsByTagName(QSL("encoded")).at(0).toElement());
   QString elem_enclosure = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("url"));
   QString elem_enclosure_type = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 
@@ -48,7 +48,7 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
   }
 
   if (elem_description.isEmpty()) {
-    elem_description = msg_element.namedItem(QSL("description")).toElement().text();
+    elem_description = rawXmlChild(msg_element.elementsByTagName(QSL("description")).at(0).toElement());
   }
 
   if (elem_description.isEmpty()) {
