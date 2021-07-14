@@ -13,7 +13,8 @@
 class AtomParser : public FeedParser {
   public:
     explicit AtomParser(const QString& data);
-    virtual ~AtomParser();
+
+    QString atomNamespace() const;
 
   private:
     QDomNodeList messageElements();

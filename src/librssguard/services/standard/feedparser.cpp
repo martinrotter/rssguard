@@ -19,8 +19,6 @@ FeedParser::FeedParser(QString data) : m_xmlData(std::move(data)), m_mrssNamespa
   }
 }
 
-FeedParser::~FeedParser() = default;
-
 QList<Message> FeedParser::messages() {
   QString feed_author = feedAuthor();
   QList<Message> messages;

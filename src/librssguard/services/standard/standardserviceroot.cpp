@@ -244,7 +244,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds)
         break;
 
       case StandardFeed::Type::Rdf:
-        messages = RdfParser().parseXmlData(formatted_feed_contents);
+        messages = RdfParser(formatted_feed_contents).messages();
         break;
 
       case StandardFeed::Type::Atom10:

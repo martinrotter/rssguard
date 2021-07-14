@@ -12,7 +12,6 @@
 class RssParser : public FeedParser {
   public:
     explicit RssParser(const QString& data);
-    virtual ~RssParser();
 
   private:
     QDomNodeList messageElements();

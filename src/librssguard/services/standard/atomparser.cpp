@@ -20,8 +20,6 @@ AtomParser::AtomParser(const QString& data) : FeedParser(data) {
   }
 }
 
-AtomParser::~AtomParser() = default;
-
 QString AtomParser::feedAuthor() const {
   QDomNodeList top_level_nodes = m_xml.documentElement().childNodes();
   QStringList author_str;
@@ -146,6 +144,10 @@ QString AtomParser::messageAuthor(const QDomElement& msg_element) const {
   }
 
   return author_str.join(", ");
+}
+
+QString AtomParser::atomNamespace() const {
+  return m_atomNamespace;
 }
 
 QDomNodeList AtomParser::messageElements() {

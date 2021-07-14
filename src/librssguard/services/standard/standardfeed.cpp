@@ -352,6 +352,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     int error_line, error_column;
 
     if (!xml_document.setContent(xml_contents_encoded,
+                                 true,
                                  &error_msg,
                                  &error_line,
                                  &error_column)) {
@@ -362,23 +363,24 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     feed->setEncoding(encod);
 
     QDomElement root_element = xml_document.documentElement();
-    QString root_tag_name = root_element.tagName();
+    RdfParser rdf(QSL("<a/>"));
+    AtomParser atom(QSL("<a/>"));
 
-    if (root_tag_name == QL1S("rdf:RDF")) {
+    if (root_element.namespaceURI() == rdf.rdfNamespace()) {
       // We found RDF feed.
-      QDomElement channel_element = root_element.namedItem(QSL("channel")).toElement();
+      QDomElement channel_element = root_element.elementsByTagNameNS(rdf.rssNamespace(), QSL("channel")).at(0).toElement();
 
       feed->setType(Type::Rdf);
-      feed->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
-      feed->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
+      feed->setTitle(channel_element.elementsByTagNameNS(rdf.rssNamespace(), QSL("title")).at(0).toElement().text());
+      feed->setDescription(channel_element.elementsByTagNameNS(rdf.rssNamespace(), QSL("description")).at(0).toElement().text());
 
-      QString home_page = channel_element.namedItem(QSL("link")).toElement().text();
+      QString home_page = channel_element.elementsByTagNameNS(rdf.rssNamespace(), QSL("link")).at(0).toElement().text();
 
       if (!home_page.isEmpty()) {
         icon_possible_locations.prepend({ home_page, false });
       }
     }
-    else if (root_tag_name == QL1S("rss")) {
+    else if (root_element.tagName() == QL1S("rss")) {
       // We found RSS 0.91/0.92/0.93/2.0/2.0.1 feed.
       QString rss_type = root_element.attribute("version", "2.0");
 
@@ -410,7 +412,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
         icon_possible_locations.prepend({ home_page, false });
       }
     }
-    else if (root_tag_name == QL1S("feed")) {
+    else if (root_element.namespaceURI() == atom.atomNamespace()) {
       // We found ATOM feed.
       feed->setType(Type::Atom10);
       feed->setTitle(root_element.namedItem(QSL("title")).toElement().text());

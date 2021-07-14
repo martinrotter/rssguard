@@ -12,7 +12,6 @@
 class FeedParser {
   public:
     explicit FeedParser(QString data);
-    virtual ~FeedParser();
 
     virtual QList<Message> messages();
 
