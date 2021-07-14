@@ -11,6 +11,7 @@
 #include "miscellaneous/skinfactory.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
+#include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "network-web/webpage.h"
 
@@ -151,7 +152,7 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
   m_messageBaseUrl = QString();
 
   if (feed != nullptr) {
-    QUrl url(feed->source());
+    QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
 
     if (url.isValid()) {
       m_messageBaseUrl = url.scheme() + QSL("://") + url.host();

@@ -92,18 +92,16 @@ QString FeedParser::rawXmlChild(const QDomElement& container) const {
   auto children = container.childNodes();
 
   for (int i = 0; i < children.size(); i++) {
-    QString raw_ch;
-
     if (children.at(i).isCDATASection()) {
-      raw_ch = children.at(i).toCDATASection().data();
+      raw += children.at(i).toCDATASection().data();
     }
     else {
+      QString raw_ch;
       QTextStream str(&raw_ch);
 
       children.at(i).save(str, 0);
+      raw += qApp->web()->unescapeHtml(raw_ch);
     }
-
-    raw += qApp->web()->unescapeHtml(raw_ch);
   }
 
   return raw;

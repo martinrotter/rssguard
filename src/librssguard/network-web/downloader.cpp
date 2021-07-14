@@ -5,6 +5,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "network-web/cookiejar.h"
+#include "network-web/networkfactory.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
 
@@ -60,15 +61,14 @@ void Downloader::manipulateData(const QString& url,
                                 bool protected_contents,
                                 const QString& username,
                                 const QString& password) {
-
-  auto cookies = CookieJar::extractCookiesFromUrl(url);
+  QString sanitized_url = NetworkFactory::sanitizeUrl(url);
+  auto cookies = CookieJar::extractCookiesFromUrl(sanitized_url);
 
   if (!cookies.isEmpty()) {
-    qApp->web()->cookieJar()->setCookiesFromUrl(cookies, url);
+    qApp->web()->cookieJar()->setCookiesFromUrl(cookies, sanitized_url);
   }
 
   QNetworkRequest request;
-  QString non_const_url = url;
   QHashIterator<QByteArray, QByteArray> i(m_customHeaders);
 
   while (i.hasNext()) {
@@ -82,15 +82,7 @@ void Downloader::manipulateData(const QString& url,
   // Set url for this request and fire it up.
   m_timer->setInterval(timeout);
 
-  if (non_const_url.startsWith(URI_SCHEME_FEED)) {
-    qDebugNN << LOGSEC_NETWORK
-             << "Replacing URI schemes for"
-             << QUOTE_W_SPACE_DOT(non_const_url);
-    request.setUrl(non_const_url.replace(QRegularExpression(QString('^') + URI_SCHEME_FEED), QString(URI_SCHEME_HTTP)));
-  }
-  else {
-    request.setUrl(non_const_url);
-  }
+  request.setUrl(qApp->web()->processFeedUriScheme(sanitized_url));
 
   m_targetProtected = protected_contents;
   m_targetUsername = username;

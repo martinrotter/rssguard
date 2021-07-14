@@ -28,6 +28,7 @@ class NetworkFactory {
 
     // Returns human readable text for given network error.
     static QString networkErrorText(QNetworkReply::NetworkError error_code);
+    static QString sanitizeUrl(const QString& url);
 
     // Performs SYNCHRONOUS download if favicon for the site,
     // given URL belongs to.
