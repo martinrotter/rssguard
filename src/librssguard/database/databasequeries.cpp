@@ -958,7 +958,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
   return messages;
 }
 
-QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::BagOfMessages bag, const QList<Feed*>& feeds) {
+QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::BagOfMessages bag, const Feed* feed) {
   QStringList ids;
   QSqlQuery q(db);
   QString query;
@@ -984,13 +984,11 @@ QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::
                 "FROM Messages "
                 "WHERE %1 AND account_id = :account_id;").arg(query));
 
-  for (Feed* feed: feeds) {
-    q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
-    q.exec();
+  q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
+  q.exec();
 
-    while (q.next()) {
-      ids.append(q.value(0).toString());
-    }
+  while (q.next()) {
+    ids.append(q.value(0).toString());
   }
 
   return ids;

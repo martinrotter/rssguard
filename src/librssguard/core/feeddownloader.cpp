@@ -127,24 +127,27 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
     QSqlDatabase database = is_main_thread ?
                             qApp->database()->driver()->connection(metaObject()->className()) :
                             qApp->database()->driver()->connection(QSL("feed_upd"));
-    QHash<ServiceRoot::BagOfMessages, QStringList> stated_messages;
+    QHash<QString, QPair<ServiceRoot::BagOfMessages, QStringList>> stated_messages;
     QHash<QString, QStringList> tagged_messages;
 
     if (feed->getParentServiceRoot()->wantsBaggedIdsOfExistingMessages()) {
       // This account has activated intelligent downloading of messages.
       // Prepare bags.
-      stated_messages.insert(ServiceRoot::BagOfMessages::Read,
-                             DatabaseQueries::bagOfMessages(database,
-                                                            ServiceRoot::BagOfMessages::Read,
-                                                            { feed }));
-      stated_messages.insert(ServiceRoot::BagOfMessages::Unread,
-                             DatabaseQueries::bagOfMessages(database,
-                                                            ServiceRoot::BagOfMessages::Unread,
-                                                            { feed }));
-      stated_messages.insert(ServiceRoot::BagOfMessages::Starred,
-                             DatabaseQueries::bagOfMessages(database,
-                                                            ServiceRoot::BagOfMessages::Starred,
-                                                            { feed }));
+      stated_messages.insert(feed->customId(),
+                             { ServiceRoot::BagOfMessages::Read,
+                               DatabaseQueries::bagOfMessages(database,
+                                                              ServiceRoot::BagOfMessages::Read,
+                                                              feed) });
+      stated_messages.insert(feed->customId(),
+                             { ServiceRoot::BagOfMessages::Unread,
+                               DatabaseQueries::bagOfMessages(database,
+                                                              ServiceRoot::BagOfMessages::Unread,
+                                                              feed) });
+      stated_messages.insert(feed->customId(),
+                             { ServiceRoot::BagOfMessages::Starred,
+                               DatabaseQueries::bagOfMessages(database,
+                                                              ServiceRoot::BagOfMessages::Starred,
+                                                              feed) });
 
       tagged_messages = DatabaseQueries::bagsOfMessages(database,
                                                         feed->getParentServiceRoot()->labelsNode()->labels());
