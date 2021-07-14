@@ -134,48 +134,60 @@ QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Import
 
 QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& stream_id,
                                               Feed::Status& error, const QNetworkProxy& proxy) {
-  QString full_url = generateFullUrl(Operations::StreamContents).arg(m_service == GreaderServiceRoot::Service::TheOldReader
-                                                                     ? stream_id
-                                                                     : QUrl::toPercentEncoding(stream_id),
-                                                                     QString::number(batchSize() <= 0
-                                                                                     ? 2000000
-                                                                                     : batchSize()));
-  auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QString continuation;
 
   if (!ensureLogin(proxy)) {
     error = Feed::Status::AuthError;
     return {};
   }
 
-  if (downloadOnlyUnreadMessages()) {
-    full_url += QSL("&xt=%1").arg(GREADER_API_FULL_STATE_READ);
-  }
+  QList<Message> msgs;
+  int target_msgs_size = batchSize() <= 0 ? 2000000: batchSize();
 
-  QByteArray output_stream;
-  auto result_stream = NetworkFactory::performNetworkOperation(full_url,
-                                                               timeout,
-                                                               {},
-                                                               output_stream,
-                                                               QNetworkAccessManager::Operation::GetOperation,
-                                                               { authHeader() },
-                                                               false,
-                                                               {},
-                                                               {},
-                                                               proxy);
+  do {
+    QString full_url = generateFullUrl(Operations::StreamContents).arg(m_service == GreaderServiceRoot::Service::TheOldReader
+                                                                     ? stream_id
+                                                                     : QUrl::toPercentEncoding(stream_id),
+                                                                       QString::number(target_msgs_size));
+    auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-  if (result_stream.first != QNetworkReply::NetworkError::NoError) {
-    qCriticalNN << LOGSEC_GREADER
-                << "Cannot download messages for "
-                << QUOTE_NO_SPACE(stream_id)
-                << ", network error:"
-                << QUOTE_W_SPACE_DOT(result_stream.first);
-    error = Feed::Status::NetworkError;
-    return {};
+    if (downloadOnlyUnreadMessages()) {
+      full_url += QSL("&xt=%1").arg(GREADER_API_FULL_STATE_READ);
+    }
+
+    if (!continuation.isEmpty()) {
+      full_url += QSL("&c=%1").arg(continuation);
+    }
+
+    QByteArray output_stream;
+    auto result_stream = NetworkFactory::performNetworkOperation(full_url,
+                                                                 timeout,
+                                                                 {},
+                                                                 output_stream,
+                                                                 QNetworkAccessManager::Operation::GetOperation,
+                                                                 { authHeader() },
+                                                                 false,
+                                                                 {},
+                                                                 {},
+                                                                 proxy);
+
+    if (result_stream.first != QNetworkReply::NetworkError::NoError) {
+      qCriticalNN << LOGSEC_GREADER
+                  << "Cannot download messages for "
+                  << QUOTE_NO_SPACE(stream_id)
+                  << ", network error:"
+                  << QUOTE_W_SPACE_DOT(result_stream.first);
+      error = Feed::Status::NetworkError;
+      return {};
+    }
+    else {
+      msgs.append(decodeStreamContents(root, output_stream, stream_id, continuation));
+    }
   }
-  else {
-    error = Feed::Status::Normal;
-    return decodeStreamContents(root, output_stream, stream_id);
-  }
+  while (!continuation.isEmpty() && msgs.size() < target_msgs_size);
+
+  error = Feed::Status::Normal;
+  return msgs;
 }
 
 RootItem* GreaderNetwork::categoriesFeedsLabelsTree(bool obtain_icons, const QNetworkProxy& proxy) {
@@ -539,11 +551,14 @@ QString GreaderNetwork::simplifyStreamId(const QString& stream_id) const {
 
 QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
                                                     const QString& stream_json_data,
-                                                    const QString& stream_id) {
+                                                    const QString& stream_id,
+                                                    QString& continuation) {
   QList<Message> messages;
-  QJsonArray json = QJsonDocument::fromJson(stream_json_data.toUtf8()).object()["items"].toArray();
+  QJsonDocument json_doc = QJsonDocument::fromJson(stream_json_data.toUtf8());
+  QJsonArray json = json_doc.object()["items"].toArray();
   auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
 
+  continuation = json_doc.object()["continuation"].toString();
   messages.reserve(json.count());
 
   for (const QJsonValue& obj : json) {

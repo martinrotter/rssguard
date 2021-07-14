@@ -78,7 +78,7 @@ class GreaderNetwork : public QObject {
     bool ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output = nullptr);
 
     QString simplifyStreamId(const QString& stream_id) const;
-    QList<Message> decodeStreamContents(ServiceRoot* root, const QString& stream_json_data, const QString& stream_id);
+    QList<Message> decodeStreamContents(ServiceRoot* root, const QString& stream_json_data, const QString& stream_id, QString& continuation);
     RootItem* decodeTagsSubscriptions(const QString& categories, const QString& feeds, bool obtain_icons, const QNetworkProxy& proxy);
     QString sanitizedBaseUrl() const;
     QString generateFullUrl(Operations operation) const;
