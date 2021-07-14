@@ -102,7 +102,7 @@ class ServiceRoot : public RootItem {
     // Throws exception subclassed from ApplicationException, preferably FeedFetchException
     // if any problems arise.
     virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds,
-                                             QHash<QString, QPair<ServiceRoot::BagOfMessages, QStringList>> stated_messages,
+                                             const QHash<QString, QPair<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages) = 0;
 
     // This method should prepare messages for given "item" (download them maybe?)

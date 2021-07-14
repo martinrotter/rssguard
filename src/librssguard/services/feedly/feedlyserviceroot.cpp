@@ -73,7 +73,7 @@ void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 }
 
 QList<Message> FeedlyServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
-                                                    const QHash<BagOfMessages, QStringList>& stated_messages,
+                                                    const QHash<QString, QPair<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
                                                     const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
