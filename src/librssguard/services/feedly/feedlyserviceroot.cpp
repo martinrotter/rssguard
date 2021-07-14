@@ -72,7 +72,12 @@ void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
-QList<Message> FeedlyServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) {
+QList<Message> FeedlyServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
+                                                    const QHash<BagOfMessages, QStringList>& stated_messages,
+                                                    const QHash<QString, QStringList>& tagged_messages) {
+  Q_UNUSED(stated_messages)
+  Q_UNUSED(tagged_messages)
+
   QList<Message> messages;
 
   for (Feed* feed : feeds) {

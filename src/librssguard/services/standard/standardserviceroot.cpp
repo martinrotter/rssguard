@@ -144,7 +144,12 @@ Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
   return Qt::ItemFlag::ItemIsDropEnabled;
 }
 
-QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds) {
+QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
+                                                      const QHash<BagOfMessages, QStringList>& stated_messages,
+                                                      const QHash<QString, QStringList>& tagged_messages) {
+  Q_UNUSED(stated_messages)
+  Q_UNUSED(tagged_messages)
+
   QList<Message> msgs;
 
   for (Feed* f : feeds) {

@@ -36,6 +36,12 @@ class ServiceRoot : public RootItem {
       Deleting = 4
     };
 
+    enum class BagOfMessages {
+      Read,
+      Unread,
+      Starred
+    };
+
   public:
     explicit ServiceRoot(RootItem* parent = nullptr);
     virtual ~ServiceRoot();
@@ -58,6 +64,7 @@ class ServiceRoot : public RootItem {
     virtual void saveAccountDataToDatabase();
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
+    virtual bool wantsBaggedIdsOfExistingMessages() const;
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
@@ -94,7 +101,9 @@ class ServiceRoot : public RootItem {
     // Obtains list of messages.
     // Throws exception subclassed from ApplicationException, preferably FeedFetchException
     // if any problems arise.
-    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds) = 0;
+    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds,
+                                             const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                             const QHash<QString, QStringList>& tagged_messages) = 0;
 
     // This method should prepare messages for given "item" (download them maybe?)
     // into predefined "Messages" table
@@ -265,6 +274,10 @@ class ServiceRoot : public RootItem {
     QList<QAction*> m_serviceMenu;
     QNetworkProxy m_networkProxy;
 };
+
+inline uint qHash(ServiceRoot::BagOfMessages key, uint seed) {
+  return ::qHash(static_cast<uint>(key), seed);
+}
 
 ServiceRoot::LabelOperation operator|(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs);
 ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs);

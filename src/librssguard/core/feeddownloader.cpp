@@ -5,6 +5,7 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "core/feedsmodel.h"
 #include "core/messagefilter.h"
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/feedfetchexception.h"
 #include "exceptions/filteringexception.h"
@@ -122,7 +123,36 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
   QElapsedTimer tmr; tmr.start();
 
   try {
-    QList<Message> msgs = feed->getParentServiceRoot()->obtainNewMessages({ feed });
+    bool is_main_thread = QThread::currentThread() == qApp->thread();
+    QSqlDatabase database = is_main_thread ?
+                            qApp->database()->driver()->connection(metaObject()->className()) :
+                            qApp->database()->driver()->connection(QSL("feed_upd"));
+    QHash<ServiceRoot::BagOfMessages, QStringList> stated_messages;
+    QHash<QString, QStringList> tagged_messages;
+
+    if (feed->getParentServiceRoot()->wantsBaggedIdsOfExistingMessages()) {
+      // This account has activated intelligent downloading of messages.
+      // Prepare bags.
+      stated_messages.insert(ServiceRoot::BagOfMessages::Read,
+                             DatabaseQueries::bagOfMessages(database,
+                                                            ServiceRoot::BagOfMessages::Read,
+                                                            { feed }));
+      stated_messages.insert(ServiceRoot::BagOfMessages::Unread,
+                             DatabaseQueries::bagOfMessages(database,
+                                                            ServiceRoot::BagOfMessages::Unread,
+                                                            { feed }));
+      stated_messages.insert(ServiceRoot::BagOfMessages::Starred,
+                             DatabaseQueries::bagOfMessages(database,
+                                                            ServiceRoot::BagOfMessages::Starred,
+                                                            { feed }));
+
+      tagged_messages = DatabaseQueries::bagsOfMessages(database,
+                                                        feed->getParentServiceRoot()->labelsNode()->labels());
+    }
+
+    QList<Message> msgs = feed->getParentServiceRoot()->obtainNewMessages({ feed },
+                                                                          stated_messages,
+                                                                          tagged_messages);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded " << msgs.size() << " messages for feed ID '"
              << feed->customId() << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"
@@ -136,11 +166,6 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
 
     if (!feed->messageFilters().isEmpty()) {
       tmr.restart();
-
-      bool is_main_thread = QThread::currentThread() == qApp->thread();
-      QSqlDatabase database = is_main_thread ?
-                              qApp->database()->driver()->connection(metaObject()->className()) :
-                              qApp->database()->driver()->connection(QSL("feed_upd"));
 
       // Perform per-message filtering.
       QJSEngine filter_engine;

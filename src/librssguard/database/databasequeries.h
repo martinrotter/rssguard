@@ -93,6 +93,8 @@ class DatabaseQueries {
     static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     // Custom ID accumulators.
+    static QStringList bagOfMessages(const QSqlDatabase& db, ServiceRoot::BagOfMessages bag, const QList<Feed*>& feeds);
+    static QHash<QString, QStringList> bagsOfMessages(const QSqlDatabase& db, const QList<Label*>& labels);
     static QStringList customIdsOfMessagesFromLabel(const QSqlDatabase& db, Label* label, bool* ok = nullptr);
     static QStringList customIdsOfImportantMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);

@@ -958,6 +958,72 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
   return messages;
 }
 
+QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::BagOfMessages bag, const QList<Feed*>& feeds) {
+  QStringList ids;
+  QSqlQuery q(db);
+  QString query;
+
+  q.setForwardOnly(true);
+
+  switch (bag) {
+    case ServiceRoot::BagOfMessages::Unread:
+      query = QSL("is_read = 0");
+      break;
+
+    case ServiceRoot::BagOfMessages::Starred:
+      query = QSL("is_important = 1");
+      break;
+
+    case ServiceRoot::BagOfMessages::Read:
+    default:
+      query = QSL("is_read = 1");
+      break;
+  }
+
+  q.prepare(QSL("SELECT custom_id "
+                "FROM Messages "
+                "WHERE %1 AND account_id = :account_id;").arg(query));
+
+  for (Feed* feed: feeds) {
+    q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
+    q.exec();
+
+    while (q.next()) {
+      ids.append(q.value(0).toString());
+    }
+  }
+
+  return ids;
+}
+
+QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& db, const QList<Label*>& labels) {
+  QHash<QString, QStringList> ids;
+  QSqlQuery q(db);
+  QString query;
+
+  q.setForwardOnly(true);
+
+  q.prepare(QSL("SELECT message "
+                "FROM LabelsInMessages "
+                "WHERE label = :label AND account_id = :account_id;").arg(query));
+
+  for (const Label* lbl :labels) {
+    q.bindValue(QSL(":label"), lbl->customId());
+    q.bindValue(QSL(":account_id"), lbl->getParentServiceRoot()->accountId());
+    q.exec();
+
+    QStringList ids_one_label;
+
+    while (q.next()) {
+      ids_one_label.append(q.value(0).toString());
+    }
+
+    ids.insert(lbl->customId(), ids_one_label);
+  }
+
+  return ids;
+}
+
 QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                                                 const QList<Message>& messages,
                                                 const QString& feed_custom_id,

@@ -311,6 +311,10 @@ void ServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   Q_UNUSED(data)
 }
 
+bool ServiceRoot::wantsBaggedIdsOfExistingMessages() const {
+  return false;
+}
+
 void ServiceRoot::itemChanged(const QList<RootItem*>& items) {
   emit dataChanged(items);
 }

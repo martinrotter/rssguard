@@ -33,7 +33,9 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual void saveAllCachedData(bool ignore_errors);
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
-    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds);
+    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds,
+                                             const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                             const QHash<QString, QStringList>& tagged_messages);
 
     // Access to network.
     TtRssNetworkFactory* network() const;
