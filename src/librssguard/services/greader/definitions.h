@@ -9,11 +9,10 @@
 #define GREADER_URL_BAZQUX  "https://bazqux.com"
 
 // States.
-
-// Means "unread" message.
 #define GREADER_API_STATE_READING_LIST    "state/com.google/reading-list"
 
-// Means "read" message. If both "reading-list" and "read" are specified, message is READ.
+// Means "read" message. If both "reading-list" and "read" are specified, message is READ. If this state
+// is not present, message is UNREAD.
 #define GREADER_API_STATE_READ            "state/com.google/read"
 
 #define GREADER_API_STATE_IMPORTANT       "state/com.google/starred"
