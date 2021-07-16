@@ -433,6 +433,9 @@ void Application::showTrayIcon() {
     qDebugNN << LOGSEC_GUI << "Showing tray icon.";
     trayIcon()->show();
   }
+  else {
+    m_feedReader->feedsModel()->notifyWithCounts();
+  }
 }
 
 void Application::deleteTrayIcon() {
