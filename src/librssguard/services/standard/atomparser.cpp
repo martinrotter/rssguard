@@ -68,6 +68,7 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime cur
   new_message.m_title = qApp->web()->unescapeHtml(qApp->web()->stripTags(title));
   new_message.m_contents = summary;
   new_message.m_author = qApp->web()->unescapeHtml(messageAuthor(msg_element));
+  new_message.m_customId = msg_element.elementsByTagNameNS(m_atomNamespace, QSL("id")).at(0).toElement().text();
 
   QString raw_contents;
   QTextStream str(&raw_contents);

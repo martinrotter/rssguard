@@ -34,6 +34,7 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
   QString elem_enclosure = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("url"));
   QString elem_enclosure_type = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 
+  new_message.m_customId = msg_element.namedItem(QSL("guid")).toElement().text();
   new_message.m_url = msg_element.namedItem(QSL("link")).toElement().text();
 
   if (new_message.m_url.isEmpty() && !new_message.m_enclosures.isEmpty()) {

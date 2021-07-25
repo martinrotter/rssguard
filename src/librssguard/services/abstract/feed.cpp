@@ -205,14 +205,12 @@ QPair<int, int> Feed::updateMessages(const QList<Message>& messages, bool force_
            << QUOTE_W_SPACE_DOT(is_main_thread);
 
   bool ok = false;
-  QString custom_id = customId();
-  int account_id = getParentServiceRoot()->accountId();
   QSqlDatabase database = is_main_thread ?
                           qApp->database()->driver()->connection(metaObject()->className()) :
                           qApp->database()->driver()->connection(QSL("feed_upd"));
 
   updated_messages = DatabaseQueries::updateMessages(database, messages,
-                                                     custom_id, account_id,
+                                                     this,
                                                      source(), force_update,
                                                      &ok);
 
