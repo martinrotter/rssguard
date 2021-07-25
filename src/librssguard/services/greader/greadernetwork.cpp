@@ -237,7 +237,6 @@ RootItem* GreaderNetwork::categoriesFeedsLabelsTree(bool obtain_icons, const QNe
 RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, const QString& feeds,
                                                   bool obtain_icons, const QNetworkProxy& proxy) {
   auto* parent = new RootItem();
-  auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QMap<QString, RootItem*> cats;
   QList<RootItem*> lbls;
   QJsonArray json;
