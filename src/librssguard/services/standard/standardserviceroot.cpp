@@ -264,6 +264,10 @@ QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
         break;
     }
 
+    for (Message& mess : messages) {
+      mess.m_feedId = f->customId();
+    }
+
     msgs << messages;
   }
 

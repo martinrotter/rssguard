@@ -25,6 +25,7 @@ QList<Message> JsonParser::messages() const {
     QJsonObject msg_obj = msg_val.toObject();
     Message msg;
 
+    msg.m_customId = msg_obj["id"].toString();
     msg.m_title = msg_obj["title"].toString();
     msg.m_url = msg_obj["url"].toString();
     msg.m_contents = msg_obj.contains("content_html") ? msg_obj["content_html"].toString() : msg_obj["content_text"].toString();

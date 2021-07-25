@@ -1041,6 +1041,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   // Prepare queries.
   QSqlQuery query_select_with_url(db);
   QSqlQuery query_select_with_custom_id(db);
+  QSqlQuery query_select_with_custom_id_for_feed(db);
   QSqlQuery query_select_with_id(db);
   QSqlQuery query_update(db);
   QSqlQuery query_insert(db);
@@ -1056,11 +1057,15 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   query_select_with_url.prepare("SELECT id, date_created, is_read, is_important, contents, feed FROM Messages "
                                 "WHERE feed = :feed AND title = :title AND url = :url AND author = :author AND account_id = :account_id;");
 
-  // When we have custom ID of the message, we can check directly for existence
-  // of that particular message.
+  // When we have custom ID of the message which is service-specific (synchronized services).
   query_select_with_custom_id.setForwardOnly(true);
   query_select_with_custom_id.prepare("SELECT id, date_created, is_read, is_important, contents, feed, title FROM Messages "
                                       "WHERE custom_id = :custom_id AND account_id = :account_id;");
+
+  // We have custom ID of message, but it is feed-specific not service-specific (standard RSS/ATOM/JSON).
+  query_select_with_custom_id_for_feed.setForwardOnly(true);
+  query_select_with_custom_id_for_feed.prepare("SELECT id, date_created, is_read, is_important, contents, title FROM Messages "
+                                               "WHERE feed = :feed AND custom_id = :custom_id AND account_id = :account_id;");
 
   // In some case, messages are already stored in the DB and they all have primary DB ID.
   // This is particularly the case when user runs some message filter manually on existing messages
@@ -1191,39 +1196,79 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
     }
     else {
       // We can recognize existing messages via their custom ID.
-      // NOTE: This concerns messages from custom accounts, like TT-RSS or Nextcloud News.
-      query_select_with_custom_id.bindValue(QSL(":account_id"), account_id);
-      query_select_with_custom_id.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
-
-      qDebugNN << LOGSEC_DB
-               << "Checking if message with custom ID '"
-               << message.m_customId
-               << "' is present in DB.";
-
-      if (query_select_with_custom_id.exec() && query_select_with_custom_id.next()) {
-        id_existing_message = query_select_with_custom_id.value(0).toInt();
-        date_existing_message = query_select_with_custom_id.value(1).value<qint64>();
-        is_read_existing_message = query_select_with_custom_id.value(2).toBool();
-        is_important_existing_message = query_select_with_custom_id.value(3).toBool();
-        contents_existing_message = query_select_with_custom_id.value(4).toString();
-        feed_id_existing_message = query_select_with_custom_id.value(5).toString();
-        title_existing_message = query_select_with_custom_id.value(6).toString();
+      if (feed->getParentServiceRoot()->isSyncable()) {
+        // Custom IDs are service-wide.
+        // NOTE: This concerns messages from custom accounts, like TT-RSS or Nextcloud News.
+        query_select_with_custom_id.bindValue(QSL(":account_id"), account_id);
+        query_select_with_custom_id.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
 
         qDebugNN << LOGSEC_DB
-                 << "Message with custom ID"
-                 << QUOTE_W_SPACE(message.m_customId)
-                 << "is already present in DB and has DB ID '"
-                 << id_existing_message
-                 << "'.";
-      }
-      else if (query_select_with_custom_id.lastError().isValid()) {
-        qWarningNN << LOGSEC_DB
-                   << "Failed to check for existing message in DB via ID: '"
-                   << query_select_with_custom_id.lastError().text()
-                   << "'.";
-      }
+                 << "Checking if message with custom ID '"
+                 << message.m_customId
+                 << "' is present in DB.";
 
-      query_select_with_custom_id.finish();
+        if (query_select_with_custom_id.exec() && query_select_with_custom_id.next()) {
+          id_existing_message = query_select_with_custom_id.value(0).toInt();
+          date_existing_message = query_select_with_custom_id.value(1).value<qint64>();
+          is_read_existing_message = query_select_with_custom_id.value(2).toBool();
+          is_important_existing_message = query_select_with_custom_id.value(3).toBool();
+          contents_existing_message = query_select_with_custom_id.value(4).toString();
+          feed_id_existing_message = query_select_with_custom_id.value(5).toString();
+          title_existing_message = query_select_with_custom_id.value(6).toString();
+
+          qDebugNN << LOGSEC_DB
+                   << "Message with custom ID"
+                   << QUOTE_W_SPACE(message.m_customId)
+                   << "is already present in DB and has DB ID '"
+                   << id_existing_message
+                   << "'.";
+        }
+        else if (query_select_with_custom_id.lastError().isValid()) {
+          qWarningNN << LOGSEC_DB
+                     << "Failed to check for existing message in DB via ID: '"
+                     << query_select_with_custom_id.lastError().text()
+                     << "'.";
+        }
+
+        query_select_with_custom_id.finish();
+      }
+      else {
+        // Custom IDs are feed-specific.
+        // NOTE: This concerns articles with ID/GUID from standard RSS/ATOM/JSON feeds.
+        query_select_with_custom_id_for_feed.bindValue(QSL(":account_id"), account_id);
+        query_select_with_custom_id_for_feed.bindValue(QSL(":feed"), feed_custom_id);
+        query_select_with_custom_id_for_feed.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
+
+        qDebugNN << LOGSEC_DB
+                 << "Checking if message with custom ID '"
+                 << message.m_customId
+                 << "' is present in DB.";
+
+        if (query_select_with_custom_id_for_feed.exec() && query_select_with_custom_id_for_feed.next()) {
+          id_existing_message = query_select_with_custom_id_for_feed.value(0).toInt();
+          date_existing_message = query_select_with_custom_id_for_feed.value(1).value<qint64>();
+          is_read_existing_message = query_select_with_custom_id_for_feed.value(2).toBool();
+          is_important_existing_message = query_select_with_custom_id_for_feed.value(3).toBool();
+          contents_existing_message = query_select_with_custom_id_for_feed.value(4).toString();
+          feed_id_existing_message = feed_custom_id;
+          title_existing_message = query_select_with_custom_id_for_feed.value(5).toString();
+
+          qDebugNN << LOGSEC_DB
+                   << "Message with custom ID"
+                   << QUOTE_W_SPACE(message.m_customId)
+                   << "is already present in DB and has DB ID '"
+                   << id_existing_message
+                   << "'.";
+        }
+        else if (query_select_with_custom_id_for_feed.lastError().isValid()) {
+          qWarningNN << LOGSEC_DB
+                     << "Failed to check for existing message in DB via ID: '"
+                     << query_select_with_custom_id_for_feed.lastError().text()
+                     << "'.";
+        }
+
+        query_select_with_custom_id_for_feed.finish();
+      }
     }
 
     // Now, check if this message is already in the DB.
@@ -1267,7 +1312,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
         query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
         query_update.bindValue(QSL(":contents"), unnulifyString(message.m_contents));
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
-        query_update.bindValue(QSL(":feed"), unnulifyString(message.m_feedId));
+        query_update.bindValue(QSL(":feed"), feed_id_existing_message);
         query_update.bindValue(QSL(":score"), message.m_score);
         query_update.bindValue(QSL(":id"), id_existing_message);
 
