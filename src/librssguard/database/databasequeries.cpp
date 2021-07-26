@@ -1025,7 +1025,6 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
 QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                                                 const QList<Message>& messages,
                                                 Feed* feed,
-                                                const QString& url,
                                                 bool force_update,
                                                 bool* ok) {
   if (messages.isEmpty()) {
@@ -1053,6 +1052,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   //   2) they have same URL AND,
   //   3) they have same AUTHOR AND,
   //   4) they have same TITLE.
+  // NOTE: This only applies to messages from standard RSS/ATOM/JSON feeds without ID/GUID.
   query_select_with_url.setForwardOnly(true);
   query_select_with_url.prepare("SELECT id, date_created, is_read, is_important, contents, feed FROM Messages "
                                 "WHERE feed = :feed AND title = :title AND url = :url AND author = :author AND account_id = :account_id;");
@@ -1096,18 +1096,16 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   for (Message message : messages) {
     // Check if messages contain relative URLs and if they do, then replace them.
     if (message.m_url.startsWith(QL1S("//"))) {
-      // TODO: This probably should be replace with HTTPS or taken scheme from feed's URL?
-      message.m_url = QString(URI_SCHEME_HTTP) + message.m_url.mid(2);
+      message.m_url = QString(URI_SCHEME_HTTPS) + message.m_url.mid(2);
     }
-    else if (message.m_url.startsWith(QL1S("/"))) {
-      QString new_message_url = QUrl(url).toString(QUrl::UrlFormattingOption::RemoveUserInfo |
-                                                   QUrl::UrlFormattingOption::RemovePath |
-                                                   QUrl::UrlFormattingOption::RemoveQuery |
-                                                   QUrl::UrlFormattingOption::RemoveFilename |
-                                                   QUrl::UrlFormattingOption::StripTrailingSlash);
+    else if (QUrl(message.m_url).isRelative()) {
+      QUrl base(feed->source());
 
-      new_message_url += message.m_url;
-      message.m_url = new_message_url;
+      if (base.isValid()) {
+        base = QUrl(base.scheme() + QSL("://") + base.host());
+
+        message.m_url = base.resolved(message.m_url).toString();
+      }
     }
 
     int id_existing_message = -1;
@@ -1120,7 +1118,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
 
     if (message.m_id > 0) {
       // We recognize directly existing message.
-      // NOTE: Particular for manual message filter execution.
+      // NOTE: Particularly for manual message filter execution.
       query_select_with_id.bindValue(QSL(":id"), message.m_id);
       query_select_with_id.bindValue(QSL(":account_id"), account_id);
 
@@ -1139,15 +1137,13 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
         title_existing_message = query_select_with_id.value(5).toString();
 
         qDebugNN << LOGSEC_DB
-                 << "Message with these attributes is already present in DB and has DB ID '"
-                 << id_existing_message
-                 << "'.";
+                 << "Message with direct DB ID is already present in DB and has DB ID"
+                 << QUOTE_W_SPACE_DOT(id_existing_message);
       }
       else if (query_select_with_id.lastError().isValid()) {
         qWarningNN << LOGSEC_DB
-                   << "Failed to check for existing message in DB via primary ID: '"
-                   << query_select_with_id.lastError().text()
-                   << "'.";
+                   << "Failed to check for existing message in DB via primary ID:"
+                   << QUOTE_W_SPACE_DOT(query_select_with_id.lastError().text());
       }
 
       query_select_with_id.finish();
@@ -1181,15 +1177,13 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
         title_existing_message = unnulifyString(message.m_title);
 
         qDebugNN << LOGSEC_DB
-                 << "Message with these attributes is already present in DB and has DB ID '"
-                 << id_existing_message
-                 << "'.";
+                 << "Message with these attributes is already present in DB and has DB ID"
+                 << QUOTE_W_SPACE_DOT(id_existing_message);
       }
       else if (query_select_with_url.lastError().isValid()) {
         qWarningNN << LOGSEC_DB
-                   << "Failed to check for existing message in DB via URL: '"
-                   << query_select_with_url.lastError().text()
-                   << "'.";
+                   << "Failed to check for existing message in DB via URL/TITLE/AUTHOR:"
+                   << QUOTE_W_SPACE_DOT(query_select_with_url.lastError().text());
       }
 
       query_select_with_url.finish();
@@ -1203,9 +1197,9 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
         query_select_with_custom_id.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
 
         qDebugNN << LOGSEC_DB
-                 << "Checking if message with custom ID '"
-                 << message.m_customId
-                 << "' is present in DB.";
+                 << "Checking if message with service-specific custom ID"
+                 << QUOTE_W_SPACE(message.m_customId)
+                 << "is present in DB.";
 
         if (query_select_with_custom_id.exec() && query_select_with_custom_id.next()) {
           id_existing_message = query_select_with_custom_id.value(0).toInt();
@@ -1225,9 +1219,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
         }
         else if (query_select_with_custom_id.lastError().isValid()) {
           qWarningNN << LOGSEC_DB
-                     << "Failed to check for existing message in DB via ID: '"
-                     << query_select_with_custom_id.lastError().text()
-                     << "'.";
+                     << "Failed to check for existing message in DB via ID:"
+                     << QUOTE_W_SPACE_DOT(query_select_with_custom_id.lastError().text());
         }
 
         query_select_with_custom_id.finish();
@@ -1240,9 +1233,9 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
         query_select_with_custom_id_for_feed.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
 
         qDebugNN << LOGSEC_DB
-                 << "Checking if message with custom ID '"
-                 << message.m_customId
-                 << "' is present in DB.";
+                 << "Checking if message with feed-specific custom ID"
+                 << QUOTE_W_SPACE(message.m_customId)
+                 << "is present in DB.";
 
         if (query_select_with_custom_id_for_feed.exec() && query_select_with_custom_id_for_feed.next()) {
           id_existing_message = query_select_with_custom_id_for_feed.value(0).toInt();
@@ -1256,15 +1249,13 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
           qDebugNN << LOGSEC_DB
                    << "Message with custom ID"
                    << QUOTE_W_SPACE(message.m_customId)
-                   << "is already present in DB and has DB ID '"
-                   << id_existing_message
-                   << "'.";
+                   << "is already present in DB and has DB ID"
+                   << QUOTE_W_SPACE_DOT(id_existing_message);
         }
         else if (query_select_with_custom_id_for_feed.lastError().isValid()) {
           qWarningNN << LOGSEC_DB
-                     << "Failed to check for existing message in DB via ID: '"
-                     << query_select_with_custom_id_for_feed.lastError().text()
-                     << "'.";
+                     << "Failed to check for existing message in DB via ID:"
+                     << QUOTE_W_SPACE_DOT(query_select_with_custom_id_for_feed.lastError().text());
         }
 
         query_select_with_custom_id_for_feed.finish();
@@ -1282,7 +1273,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
       //   2) FOR NON-SYNCHRONIZED SERVICES (RSS/ATOM/JSON): Message has custom ID/GUID and its title or contents are changed.
       //
       //   3) FOR ALL SERVICES: Message has its date fetched from feed AND its date is different
-      //      from date in DB and contents is changed.
+      //      from date in DB or content is changed.
       //
       //   4) FOR ALL SERVICES: Message update is forced, we want to overwrite message as some arbitrary atribute was changed,
       //      this particularly happens when manual message filter execution happens.
@@ -1302,7 +1293,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                    message.m_contents != contents_existing_message) ||
 
           /* 4 */ force_update) {
-        // Message exists, it is changed, update it.
+        // Message exists and is changed, update it.
         query_update.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_update.bindValue(QSL(":is_read"), int(message.m_isRead));
         query_update.bindValue(QSL(":is_important"), int(message.m_isImportant));
@@ -1312,13 +1303,13 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
         query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
         query_update.bindValue(QSL(":contents"), unnulifyString(message.m_contents));
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
-        query_update.bindValue(QSL(":feed"), feed_id_existing_message);
+        query_update.bindValue(QSL(":feed"), message.m_feedId);
         query_update.bindValue(QSL(":score"), message.m_score);
         query_update.bindValue(QSL(":id"), id_existing_message);
 
         if (query_update.exec()) {
           qDebugNN << LOGSEC_DB
-                   << "Updating message with title"
+                   << "Overwriting message with title"
                    << QUOTE_W_SPACE(message.m_title)
                    << "URL"
                    << QUOTE_W_SPACE(message.m_url)
@@ -1332,7 +1323,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
         }
         else if (query_update.lastError().isValid()) {
           qWarningNN << LOGSEC_DB
-                     << "Failed to update message in DB: '" << query_update.lastError().text() << "'.";
+                     << "Failed to update message in DB:"
+                     << QUOTE_W_SPACE_DOT(query_update.lastError().text());
         }
 
         query_update.finish();
@@ -1375,7 +1367,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
       }
       else if (query_insert.lastError().isValid()) {
         qWarningNN << LOGSEC_DB
-                   << "Failed to insert message to DB:"
+                   << "Failed to insert new message to DB:"
                    << QUOTE_W_SPACE(query_insert.lastError().text())
                    << "- message title is"
                    << QUOTE_W_SPACE_DOT(message.m_title);
@@ -1410,9 +1402,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
               "SET custom_id = id "
               "WHERE custom_id IS NULL OR custom_id = '';").lastError().isValid()) {
     qWarningNN << LOGSEC_DB
-               << "Failed to set custom ID for all messages: '"
-               << db.lastError().text()
-               << "'.";
+               << "Failed to set custom ID for all messages:"
+               << QUOTE_W_SPACE_DOT(db.lastError().text());
   }
 
   if (use_transactions && !db.commit()) {

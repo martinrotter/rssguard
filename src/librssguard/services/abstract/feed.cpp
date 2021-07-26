@@ -193,7 +193,8 @@ QPair<int, int> Feed::updateMessages(const QList<Message>& messages, bool force_
   QPair<int, int> updated_messages = { 0, 0 };
 
   if (messages.isEmpty()) {
-    qDebugNN << "No messages to be updated/added in DB.";
+    qDebugNN << "No messages to be updated/added in DB for feed"
+             << QUOTE_W_SPACE_DOT(customId());
     return updated_messages;
   }
 
@@ -210,8 +211,7 @@ QPair<int, int> Feed::updateMessages(const QList<Message>& messages, bool force_
                           qApp->database()->driver()->connection(QSL("feed_upd"));
 
   updated_messages = DatabaseQueries::updateMessages(database, messages,
-                                                     this,
-                                                     source(), force_update,
+                                                     this, force_update,
                                                      &ok);
 
   if (updated_messages.first > 0 || updated_messages.second > 0) {
