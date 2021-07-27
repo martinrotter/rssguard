@@ -120,6 +120,41 @@ QVariantHash GreaderNetwork::userInfo(const QNetworkProxy& proxy) {
   return QJsonDocument::fromJson(output).object().toVariantHash();
 }
 
+QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
+                                                        const QString& stream_id,
+                                                        const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                                        const QHash<QString, QStringList>& tagged_messages,
+                                                        Feed::Status& error,
+                                                        const QNetworkProxy& proxy) {
+  // 1. Get unread IDs for a feed.
+  // 2. Get read IDs for a feed.
+  // 3. Download messages/contents for missing or changed IDs.
+  // 4. Download all starred messages and append those belonging to this feed.
+
+  auto remote_all_ids_list = itemIds(stream_id, false, proxy);
+  auto remote_unread_ids_list = itemIds(stream_id, true, proxy);
+  QSet<QString> remote_all_ids(remote_all_ids_list.begin(), remote_all_ids_list.end());
+
+  // 1.
+  auto local_unread_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Unread);
+  QSet<QString> remote_unread_ids(remote_unread_ids_list.begin(), remote_unread_ids_list.end());
+  QSet<QString> local_unread_ids(local_unread_ids_list.begin(),
+                                 local_unread_ids_list.end());
+
+  // 2.
+  auto local_read_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Read);
+  QSet<QString> remote_read_ids = remote_all_ids - remote_unread_ids;
+  QSet<QString> local_read_ids(local_read_ids_list.begin(),
+                               local_read_ids_list.end());
+  auto not_downloaded = remote_all_ids - local_read_ids - local_unread_ids;
+  auto moved_unread = local_unread_ids.intersect(remote_read_ids);
+  auto moved_read = local_read_ids.intersect(remote_unread_ids);
+  auto to_download = not_downloaded + moved_read + moved_unread;
+  QList<QString> to_download_list(to_download.begin(), to_download.end());
+
+  return itemContents(root, to_download_list, error, proxy);
+}
+
 QNetworkReply::NetworkError GreaderNetwork::markMessagesRead(RootItem::ReadStatus status,
                                                              const QStringList& msg_custom_ids,
                                                              const QNetworkProxy& proxy) {
@@ -130,6 +165,115 @@ QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Import
                                                                 const QStringList& msg_custom_ids,
                                                                 const QNetworkProxy& proxy) {
   return editLabels(GREADER_API_FULL_STATE_IMPORTANT, importance == RootItem::Importance::Important, msg_custom_ids, proxy);
+}
+
+QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy) {
+  QString continuation;
+
+  if (!ensureLogin(proxy)) {
+    throw ApplicationException(tr("login failed"));
+  }
+
+  QStringList ids;
+
+  do {
+    QString full_url = generateFullUrl(Operations::ItemIds).arg(m_service == GreaderServiceRoot::Service::TheOldReader
+                                                                     ? stream_id
+                                                                     : QUrl::toPercentEncoding(stream_id));
+    auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+    if (unread_only) {
+      full_url += QSL("&xt=%1").arg(GREADER_API_FULL_STATE_READ);
+    }
+
+    if (!continuation.isEmpty()) {
+      full_url += QSL("&c=%1").arg(continuation);
+    }
+
+    QByteArray output_stream;
+    auto result_stream = NetworkFactory::performNetworkOperation(full_url,
+                                                                 timeout,
+                                                                 {},
+                                                                 output_stream,
+                                                                 QNetworkAccessManager::Operation::GetOperation,
+                                                                 { authHeader() },
+                                                                 false,
+                                                                 {},
+                                                                 {},
+                                                                 proxy);
+
+    if (result_stream.first != QNetworkReply::NetworkError::NoError) {
+      qCriticalNN << LOGSEC_GREADER
+                  << "Cannot download item IDs for "
+                  << QUOTE_NO_SPACE(stream_id)
+                  << ", network error:"
+                  << QUOTE_W_SPACE_DOT(result_stream.first);
+      throw NetworkException(result_stream.first);
+    }
+    else {
+      ids.append(decodeItemIds(output_stream, continuation));
+    }
+  }
+  while (!continuation.isEmpty());
+
+  return ids;
+}
+
+QList<Message> GreaderNetwork::itemContents(ServiceRoot* root, const QList<QString>& stream_ids,
+                                            Feed::Status& error, const QNetworkProxy& proxy) {
+  QString continuation;
+
+  if (!ensureLogin(proxy)) {
+    error = Feed::Status::AuthError;
+    return {};
+  }
+
+  QList<Message> msgs;
+  int target_msgs_size = 999;
+
+  do {
+    QString full_url = generateFullUrl(Operations::ItemContents).arg(QString::number(target_msgs_size));
+    auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+    if (!continuation.isEmpty()) {
+      full_url += QSL("&c=%1").arg(continuation);
+    }
+
+    std::list inp = boolinq::from(stream_ids).select([this](const QString& id) {
+      return QSL("i=%1").arg(m_service == GreaderServiceRoot::Service::TheOldReader
+                             ? id
+                             : QUrl::toPercentEncoding(id));
+    }).toStdList();
+    QByteArray input = FROM_STD_LIST(QStringList, inp).join(QSL("&")).toUtf8();
+    QByteArray output_stream;
+    auto result_stream = NetworkFactory::performNetworkOperation(full_url,
+                                                                 timeout,
+                                                                 input,
+                                                                 output_stream,
+                                                                 QNetworkAccessManager::Operation::PostOperation,
+                                                                 { authHeader() },
+                                                                 false,
+                                                                 {},
+                                                                 {},
+                                                                 proxy);
+
+    if (result_stream.first != QNetworkReply::NetworkError::NoError) {
+      qCriticalNN << LOGSEC_GREADER
+                  << "Cannot download messages for "
+                  << stream_ids
+                  << ", network error:"
+                  << QUOTE_W_SPACE_DOT(result_stream.first);
+      error = Feed::Status::NetworkError;
+      return {};
+    }
+    else {
+      msgs.append(decodeStreamContents(root, output_stream, "", continuation));
+    }
+  }
+  while (!continuation.isEmpty());
+
+  error = Feed::Status::Normal;
+  return msgs;
 }
 
 QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& stream_id,
@@ -548,6 +692,21 @@ QString GreaderNetwork::simplifyStreamId(const QString& stream_id) const {
   return QString(stream_id).replace(QRegularExpression("\\/\\d+\\/"), QSL("/-/"));
 }
 
+QStringList GreaderNetwork::decodeItemIds(const QString& stream_json_data, QString& continuation) {
+  QStringList ids;
+  QJsonDocument json_doc = QJsonDocument::fromJson(stream_json_data.toUtf8());
+  QJsonArray json = json_doc.object()["itemRefs"].toArray();
+
+  continuation = json_doc.object()["continuation"].toString();
+  ids.reserve(json.count());
+
+  for (const QJsonValue& id : json) {
+    ids.append(id.toObject()["id"].toString());
+  }
+
+  return ids;
+}
+
 QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
                                                     const QString& stream_json_data,
                                                     const QString& stream_id,
@@ -618,7 +777,9 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
 
     message.m_contents = message_obj["summary"].toObject()["content"].toString();
     message.m_rawContents = QJsonDocument(message_obj).toJson(QJsonDocument::JsonFormat::Compact);
-    message.m_feedId = stream_id;
+    message.m_feedId = stream_id.isEmpty()
+                       ? message_obj["origin"].toObject()["streamId"].toString()
+                       : stream_id;
 
     messages.append(message);
   }
@@ -679,6 +840,12 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
 
     case Operations::EditTag:
       return sanitizedBaseUrl() + GREADER_API_EDIT_TAG;
+
+    case Operations::ItemIds:
+      return sanitizedBaseUrl() + GREADER_API_ITEM_IDS;
+
+    case Operations::ItemContents:
+      return sanitizedBaseUrl() + GREADER_API_ITEM_CONTENTS;
 
     default:
       return sanitizedBaseUrl();

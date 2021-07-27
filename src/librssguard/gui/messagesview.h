@@ -80,7 +80,8 @@ class MessagesView : public QTreeView {
     void willReselectSameMessage();
 
   private:
-    void sort(int column, Qt::SortOrder order, bool repopulate_data, bool change_header, bool emit_changed_from_header);
+    void sort(int column, Qt::SortOrder order, bool repopulate_data,
+              bool change_header, bool emit_changed_from_header, bool ignore_multicolumn_sorting);
 
     // Creates needed connections.
     void createConnections();

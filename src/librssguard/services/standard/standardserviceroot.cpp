@@ -145,7 +145,7 @@ Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
 }
 
 QList<Message> StandardServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
-                                                      const QHash<QString, QPair<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+                                                      const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
                                                       const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)

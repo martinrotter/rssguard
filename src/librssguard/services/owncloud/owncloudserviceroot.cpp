@@ -151,7 +151,7 @@ void OwnCloudServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 }
 
 QList<Message> OwnCloudServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
-                                                      const QHash<QString, QPair<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+                                                      const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
                                                       const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)

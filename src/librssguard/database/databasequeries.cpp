@@ -982,9 +982,10 @@ QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::
 
   q.prepare(QSL("SELECT custom_id "
                 "FROM Messages "
-                "WHERE %1 AND account_id = :account_id;").arg(query));
+                "WHERE %1 AND feed = :feed AND account_id = :account_id;").arg(query));
 
   q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
+  q.bindValue(QSL(":feed"), feed->customId());
   q.exec();
 
   while (q.next()) {
@@ -1277,22 +1278,20 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
       //
       //   4) FOR ALL SERVICES: Message update is forced, we want to overwrite message as some arbitrary atribute was changed,
       //      this particularly happens when manual message filter execution happens.
-      if (/* 1 */ (!message.m_customId.isEmpty() && feed->getParentServiceRoot()->isSyncable() &&
-                   (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
-                    message.m_isRead != is_read_existing_message ||
-                    message.m_isImportant != is_important_existing_message ||
-                    message.m_feedId != feed_id_existing_message ||
-                    message.m_title != title_existing_message ||
-                    message.m_contents != contents_existing_message)) ||
+      bool cond_1 = !message.m_customId.isEmpty() && feed->getParentServiceRoot()->isSyncable() &&
+                    (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
+                     message.m_isRead != is_read_existing_message ||
+                     message.m_isImportant != is_important_existing_message ||
+                     message.m_feedId != feed_id_existing_message ||
+                     message.m_title != title_existing_message ||
+                     message.m_contents != contents_existing_message);
+      bool cond_2 = !message.m_customId.isEmpty() && !feed->getParentServiceRoot()->isSyncable() &&
+                    (message.m_title != title_existing_message ||
+                     message.m_contents != contents_existing_message);
+      bool cond_3 = message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message &&
+                    message.m_contents != contents_existing_message;
 
-          /* 2 */ (!message.m_customId.isEmpty() && !feed->getParentServiceRoot()->isSyncable() &&
-                   (message.m_title != title_existing_message ||
-                    message.m_contents != contents_existing_message)) ||
-
-          /* 3 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message &&
-                   message.m_contents != contents_existing_message) ||
-
-          /* 4 */ force_update) {
+      if (cond_1 || cond_2 || cond_3 || force_update) {
         // Message exists and is changed, update it.
         query_update.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_update.bindValue(QSL(":is_read"), int(message.m_isRead));

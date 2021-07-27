@@ -52,12 +52,15 @@ void MessagesView::reloadFontSettings() {
   m_sourceModel->setupFonts();
 }
 
-void MessagesView::sort(int column, Qt::SortOrder order, bool repopulate_data, bool change_header, bool emit_changed_from_header) {
+void MessagesView::sort(int column, Qt::SortOrder order,
+                        bool repopulate_data, bool change_header,
+                        bool emit_changed_from_header,
+                        bool ignore_multicolumn_sorting) {
   if (change_header && !emit_changed_from_header) {
     header()->blockSignals(true);
   }
 
-  m_sourceModel->addSortState(column, order);
+  m_sourceModel->addSortState(column, order, ignore_multicolumn_sorting);
 
   if (repopulate_data) {
     m_sourceModel->repopulate();
@@ -94,7 +97,7 @@ void MessagesView::reloadSelections() {
   const Qt::SortOrder ord = header()->sortIndicatorOrder();
 
   // Reload the model now.
-  sort(col, ord, true, false, false);
+  sort(col, ord, true, false, false, true);
 
   // Now, we must find the same previously focused message.
   if (selected_message.m_id > 0) {
@@ -363,7 +366,7 @@ void MessagesView::loadItem(RootItem* item) {
   const Qt::SortOrder ord = header()->sortIndicatorOrder();
 
   scrollToTop();
-  sort(col, ord, false, true, false);
+  sort(col, ord, false, true, false, true);
   m_sourceModel->loadMessages(item);
 
   // Messages are loaded, make sure that previously
@@ -679,7 +682,7 @@ void MessagesView::adjustColumns() {
 
 void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
   // Repopulate the shit.
-  sort(column, order, true, false, false);
+  sort(column, order, true, false, false, false);
 
   emit currentMessageRemoved();
 }

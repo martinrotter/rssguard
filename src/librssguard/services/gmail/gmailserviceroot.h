@@ -32,7 +32,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds,
-                                             const QHash<QString, QPair<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+                                             const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages);
 
   protected:

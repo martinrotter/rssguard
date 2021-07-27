@@ -27,6 +27,8 @@
 #define GREADER_API_SUBSCRIPTION_LIST   "reader/api/0/subscription/list?output=json"
 #define GREADER_API_STREAM_CONTENTS     "reader/api/0/stream/contents/%1?output=json&n=%2"
 #define GREADER_API_EDIT_TAG            "reader/api/0/edit-tag"
+#define GREADER_API_ITEM_IDS            "reader/api/0/stream/items/ids?output=json&s=%1"
+#define GREADER_API_ITEM_CONTENTS       "reader/api/0/stream/items/contents?output=json&n=%1"
 #define GREADER_API_TOKEN               "reader/api/0/token"
 #define GREADER_API_USER_INFO           "reader/api/0/user-info?output=json"
 

@@ -20,7 +20,9 @@ class GreaderNetwork : public QObject {
       StreamContents,
       EditTag,
       Token,
-      UserInfo
+      UserInfo,
+      ItemIds,
+      ItemContents
     };
 
     explicit GreaderNetwork(QObject* parent = nullptr);
@@ -38,7 +40,19 @@ class GreaderNetwork : public QObject {
 
     QVariantHash userInfo(const QNetworkProxy& proxy);
 
+    QList<Message> getMessagesIntelligently(ServiceRoot* root,
+                                            const QString& stream_id,
+                                            const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                            const QHash<QString, QStringList>& tagged_messages,
+                                            Feed::Status& error,
+                                            const QNetworkProxy& proxy);
+
+    QStringList itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy);
+
     // Stream contents for a feed/label/etc.
+    QList<Message> itemContents(ServiceRoot* root, const QList<QString>& stream_ids,
+                                Feed::Status& error, const QNetworkProxy& proxy);
+
     QList<Message> streamContents(ServiceRoot* root, const QString& stream_id,
                                   Feed::Status& error, const QNetworkProxy& proxy);
 
@@ -78,6 +92,7 @@ class GreaderNetwork : public QObject {
     bool ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output = nullptr);
 
     QString simplifyStreamId(const QString& stream_id) const;
+    QStringList decodeItemIds(const QString& stream_json_data, QString& continuation);
     QList<Message> decodeStreamContents(ServiceRoot* root, const QString& stream_json_data, const QString& stream_id, QString& continuation);
     RootItem* decodeTagsSubscriptions(const QString& categories, const QString& feeds, bool obtain_icons, const QNetworkProxy& proxy);
     QString sanitizedBaseUrl() const;

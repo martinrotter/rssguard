@@ -13,7 +13,7 @@ class MessagesModelSqlLayer {
     explicit MessagesModelSqlLayer();
 
     // Adds this new state to queue of sort states.
-    void addSortState(int column, Qt::SortOrder order);
+    void addSortState(int column, Qt::SortOrder order, bool ignore_multicolumn_sorting);
 
     // Sets SQL WHERE clause, without "WHERE" keyword.
     void setFilter(const QString& filter);
