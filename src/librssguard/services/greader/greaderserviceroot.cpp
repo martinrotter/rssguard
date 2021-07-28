@@ -150,7 +150,7 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
   }
 
   if (m_network->service() != Service::TheOldReader) {
-    // The Old Reader does not support labels.
+    // NOTE: The Old Reader does not support labels.
     QMapIterator<QString, QStringList> k(msg_cache.m_cachedLabelAssignments);
 
     // Assign label for these messages.

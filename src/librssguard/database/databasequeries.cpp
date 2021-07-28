@@ -998,13 +998,12 @@ QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::
 QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& db, const QList<Label*>& labels) {
   QHash<QString, QStringList> ids;
   QSqlQuery q(db);
-  QString query;
 
   q.setForwardOnly(true);
 
   q.prepare(QSL("SELECT message "
                 "FROM LabelsInMessages "
-                "WHERE label = :label AND account_id = :account_id;").arg(query));
+                "WHERE label = :label AND account_id = :account_id;"));
 
   for (const Label* lbl :labels) {
     q.bindValue(QSL(":label"), lbl->customId());
