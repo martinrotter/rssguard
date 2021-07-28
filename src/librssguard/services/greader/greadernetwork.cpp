@@ -128,12 +128,34 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
                                                         const QNetworkProxy& proxy) {
   // 1. Get unread IDs for a feed.
   // 2. Get read IDs for a feed.
+  // 3. Get starred IDs. Unfortunately, we cannot get only starred IDs for a feed, but all
+  // instead.
   // 3. Download messages/contents for missing or changed IDs.
   // 4. Download all starred messages and append those belonging to this feed.
 
   auto remote_all_ids_list = itemIds(stream_id, false, proxy);
   auto remote_unread_ids_list = itemIds(stream_id, true, proxy);
+  auto remote_starred_ids_list = itemIds(GREADER_API_FULL_STATE_IMPORTANT, false, proxy);
+
+  // Convert item IDs to long form.
+  for (int i = 0; i < remote_all_ids_list.size(); i++) {
+    remote_all_ids_list.replace(i,
+                                convertShortStreamIdToLongStreamId(remote_all_ids_list.at(i)));
+  }
+
+  for (int i = 0; i < remote_unread_ids_list.size(); i++) {
+    remote_unread_ids_list.replace(i,
+                                   convertShortStreamIdToLongStreamId(remote_unread_ids_list.at(i)));
+  }
+
+  for (int i = 0; i < remote_starred_ids_list.size(); i++) {
+    remote_starred_ids_list.replace(i,
+                                    convertShortStreamIdToLongStreamId(remote_starred_ids_list.at(i)));
+  }
+
   QSet<QString> remote_all_ids(remote_all_ids_list.begin(), remote_all_ids_list.end());
+
+  //remote_all_ids += QSet<QString>(remote_starred_ids_list.begin(), remote_starred_ids_list.end());
 
   // 1.
   auto local_unread_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Unread);
@@ -146,13 +168,37 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
   QSet<QString> remote_read_ids = remote_all_ids - remote_unread_ids;
   QSet<QString> local_read_ids(local_read_ids_list.begin(),
                                local_read_ids_list.end());
+
+  // 3.
+  auto local_starred_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Starred);
+  QSet<QString> remote_starred_ids(remote_starred_ids_list.begin(), remote_starred_ids_list.end());
+  QSet<QString> local_starred_ids(local_starred_ids_list.begin(), local_starred_ids_list.end());
+  QSet<QString> local_unstarred_ids((local_read_ids + local_unread_ids) - local_starred_ids);
+
+  // 4.
   auto not_downloaded = remote_all_ids - local_read_ids - local_unread_ids;
   auto moved_unread = local_unread_ids.intersect(remote_read_ids);
   auto moved_read = local_read_ids.intersect(remote_unread_ids);
-  auto to_download = not_downloaded + moved_read + moved_unread;
-  QList<QString> to_download_list(to_download.begin(), to_download.end());
+  auto moved_unstarred = local_unstarred_ids.intersect(remote_starred_ids);
+  auto moved_starred = local_starred_ids - remote_starred_ids;
+  auto to_download = not_downloaded + moved_read + moved_unread + moved_starred + moved_unstarred + remote_starred_ids;
 
-  return itemContents(root, to_download_list, error, proxy);
+  if (to_download.isEmpty()) {
+    return {};
+  }
+
+  QList<QString> to_download_list(to_download.begin(), to_download.end());
+  auto msgs = itemContents(root, to_download_list, error, proxy);
+
+  // Filter out (starred) messages from other feeds.
+  // TODO: Cache them instead?
+  for (int i = 0; i < msgs.size(); i++) {
+    if (msgs.at(i).m_feedId != stream_id) {
+      msgs.removeAt(i--);
+    }
+  }
+
+  return msgs;
 }
 
 QNetworkReply::NetworkError GreaderNetwork::markMessagesRead(RootItem::ReadStatus status,
@@ -229,10 +275,11 @@ QList<Message> GreaderNetwork::itemContents(ServiceRoot* root, const QList<QStri
   }
 
   QList<Message> msgs;
-  int target_msgs_size = 999;
+
+  //int target_msgs_size = 999;
 
   do {
-    QString full_url = generateFullUrl(Operations::ItemContents).arg(QString::number(target_msgs_size));
+    QString full_url = generateFullUrl(Operations::ItemContents);
     auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
     if (!continuation.isEmpty()) {
@@ -267,7 +314,7 @@ QList<Message> GreaderNetwork::itemContents(ServiceRoot* root, const QList<QStri
       return {};
     }
     else {
-      msgs.append(decodeStreamContents(root, output_stream, "", continuation));
+      msgs.append(decodeStreamContents(root, output_stream, QString(), continuation));
     }
   }
   while (!continuation.isEmpty());
@@ -290,8 +337,8 @@ QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& 
 
   do {
     QString full_url = generateFullUrl(Operations::StreamContents).arg(m_service == GreaderServiceRoot::Service::TheOldReader
-                                                                     ? stream_id
-                                                                     : QUrl::toPercentEncoding(stream_id),
+                                                                       ? stream_id
+                                                                       : QUrl::toPercentEncoding(stream_id),
                                                                        QString::number(target_msgs_size));
     auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
@@ -686,6 +733,18 @@ bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::Netw
   }
 
   return true;
+}
+
+QString GreaderNetwork::convertShortStreamIdToLongStreamId(const QString& stream_id) const {
+  if (m_service == GreaderServiceRoot::Service::TheOldReader) {
+    return QSL("tag:google.com,2005:reader/item/%1").arg(stream_id);
+  }
+  else {
+    return QSL("tag:google.com,2005:reader/item/%1").arg(stream_id.toULongLong(),
+                                                         16,
+                                                         16,
+                                                         QL1C('0'));
+  }
 }
 
 QString GreaderNetwork::simplifyStreamId(const QString& stream_id) const {

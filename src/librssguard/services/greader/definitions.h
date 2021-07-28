@@ -14,7 +14,6 @@
 // Means "read" message. If both "reading-list" and "read" are specified, message is READ. If this state
 // is not present, message is UNREAD.
 #define GREADER_API_STATE_READ            "state/com.google/read"
-
 #define GREADER_API_STATE_IMPORTANT       "state/com.google/starred"
 
 #define GREADER_API_FULL_STATE_READING_LIST    "user/-/state/com.google/reading-list"
@@ -27,8 +26,8 @@
 #define GREADER_API_SUBSCRIPTION_LIST   "reader/api/0/subscription/list?output=json"
 #define GREADER_API_STREAM_CONTENTS     "reader/api/0/stream/contents/%1?output=json&n=%2"
 #define GREADER_API_EDIT_TAG            "reader/api/0/edit-tag"
-#define GREADER_API_ITEM_IDS            "reader/api/0/stream/items/ids?output=json&s=%1"
-#define GREADER_API_ITEM_CONTENTS       "reader/api/0/stream/items/contents?output=json&n=%1"
+#define GREADER_API_ITEM_IDS            "reader/api/0/stream/items/ids?output=json&n=200000&s=%1"
+#define GREADER_API_ITEM_CONTENTS       "reader/api/0/stream/items/contents?output=json&n=200000"
 #define GREADER_API_TOKEN               "reader/api/0/token"
 #define GREADER_API_USER_INFO           "reader/api/0/user-info?output=json"
 
