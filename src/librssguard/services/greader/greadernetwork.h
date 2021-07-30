@@ -115,7 +115,8 @@ class GreaderNetwork : public QObject {
     QString m_authSid;
     QString m_authAuth;
     QString m_authToken;
-    QList<Message> m_prefetchedStarredMessages;
+    QList<Message> m_prefetchedMessages;
+    bool m_performGlobalFetching;
 };
 
 #endif // GREADERNETWORK_H

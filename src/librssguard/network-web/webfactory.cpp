@@ -195,9 +195,11 @@ QString WebFactory::unescapeHtml(const QString& html) {
     pos++;
   }
 
-  qDebugNN << LOGSEC_CORE
+  /*
+     qDebugNN << LOGSEC_CORE
            << "Unescaped string" << QUOTE_W_SPACE(html)
            << "to" << QUOTE_W_SPACE_DOT(output);
+   */
 
   return output;
 }

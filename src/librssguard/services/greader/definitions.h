@@ -33,6 +33,7 @@
 
 // Misc.
 #define GREADER_API_EDIT_TAG_BATCH      200
+#define GREADER_GLOBAL_UPDATE_THRES     0.5
 
 // The Old Reader.
 #define TOR_SPONSORED_STREAM_ID   "tor/sponsored"

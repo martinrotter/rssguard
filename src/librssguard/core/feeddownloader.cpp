@@ -192,7 +192,7 @@ void FeedDownloader::updateOneFeed(Feed* feed,
     // Now, sanitize messages (tweak encoding etc.).
     for (auto& msg : msgs) {
       msg.m_accountId = acc_id;
-      msg.sanitize();
+      msg.sanitize(feed);
     }
 
     if (!feed->messageFilters().isEmpty()) {
@@ -349,7 +349,11 @@ void FeedDownloader::updateOneFeed(Feed* feed,
              << feed->customId() << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"
              << QThread::currentThreadId() << "'.";
 
+    tmr.restart();
     auto updated_messages = feed->updateMessages(msgs, false);
+
+    qDebugNN << LOGSEC_FEEDDOWNLOADER
+             << "Updating messages in DB took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
     feed->setStatus(updated_messages.first > 0 || updated_messages.second > 0
                 ? Feed::Status::NewMessages

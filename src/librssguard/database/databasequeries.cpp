@@ -1094,20 +1094,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   }
 
   for (Message message : messages) {
-    // Check if messages contain relative URLs and if they do, then replace them.
-    if (message.m_url.startsWith(QL1S("//"))) {
-      message.m_url = QString(URI_SCHEME_HTTPS) + message.m_url.mid(2);
-    }
-    else if (QUrl(message.m_url).isRelative()) {
-      QUrl base(feed->source());
-
-      if (base.isValid()) {
-        base = QUrl(base.scheme() + QSL("://") + base.host());
-
-        message.m_url = base.resolved(message.m_url).toString();
-      }
-    }
-
     int id_existing_message = -1;
     qint64 date_existing_message = 0;
     bool is_read_existing_message = false;

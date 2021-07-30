@@ -20,7 +20,7 @@
 GreaderNetwork::GreaderNetwork(QObject* parent)
   : QObject(parent), m_service(GreaderServiceRoot::Service::FreshRss), m_username(QString()), m_password(QString()),
   m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false),
-  m_prefetchedStarredMessages({}) {
+  m_prefetchedMessages({}), m_performGlobalFetching(false) {
   clearCredentials();
 }
 
@@ -126,7 +126,15 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
                                          const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_msgs,
                                          const QHash<QString, QStringList>& tagged_msgs,
                                          const QNetworkProxy& proxy) {
-  m_prefetchedStarredMessages.clear();
+  m_prefetchedMessages.clear();
+
+  double perc_of_fetching = (feeds.size() * 1.0) / root->getSubTreeFeeds().size();
+
+  m_performGlobalFetching = perc_of_fetching > GREADER_GLOBAL_UPDATE_THRES;
+
+  qDebugNN << LOGSEC_GREADER
+           << "Percentage of feeds for fetching:"
+           << QUOTE_W_SPACE_DOT(perc_of_fetching);
 
   auto remote_starred_ids_list = itemIds(GREADER_API_FULL_STATE_IMPORTANT, false, proxy);
 
@@ -135,8 +143,8 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
   }
 
   QSet<QString> remote_starred_ids(remote_starred_ids_list.begin(), remote_starred_ids_list.end());
-  QList<QHash<ServiceRoot::BagOfMessages, QStringList>> all_states = stated_msgs.values();
   QSet<QString> local_starred_ids;
+  QList<QHash<ServiceRoot::BagOfMessages, QStringList>> all_states = stated_msgs.values();
 
   for (auto& lst : all_states) {
     auto s = lst.value(ServiceRoot::BagOfMessages::Starred);
@@ -144,12 +152,50 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
     local_starred_ids.unite(QSet<QString>(s.begin(), s.end()));
   }
 
-  QSet<QString> starred_to_download((remote_starred_ids - local_starred_ids).unite(local_starred_ids - remote_starred_ids));
-  QList<QString> starred_to_download_list(starred_to_download.begin(), starred_to_download.end());
+  auto starred_to_download((remote_starred_ids - local_starred_ids).unite(local_starred_ids - remote_starred_ids));
+  auto to_download = starred_to_download;
+
+  if (m_performGlobalFetching) {
+    qWarningNN << LOGSEC_GREADER << "Performing global contents fetching.";
+
+    auto remote_all_ids_list = itemIds(GREADER_API_FULL_STATE_READING_LIST, false, proxy);
+    auto remote_unread_ids_list = itemIds(GREADER_API_FULL_STATE_READING_LIST, true, proxy);
+
+    for (int i = 0; i < remote_all_ids_list.size(); i++) {
+      remote_all_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_all_ids_list.at(i)));
+    }
+
+    for (int i = 0; i < remote_unread_ids_list.size(); i++) {
+      remote_unread_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_unread_ids_list.at(i)));
+    }
+
+    QSet<QString> remote_all_ids(remote_all_ids_list.begin(), remote_all_ids_list.end());
+    QSet<QString> remote_unread_ids(remote_unread_ids_list.begin(), remote_unread_ids_list.end());
+    QSet<QString> remote_read_ids = remote_all_ids - remote_unread_ids;
+    QSet<QString> local_unread_ids;
+    QSet<QString> local_read_ids;
+
+    for (auto& lst : all_states) {
+      auto u = lst.value(ServiceRoot::BagOfMessages::Unread);
+      auto r = lst.value(ServiceRoot::BagOfMessages::Read);
+
+      local_unread_ids.unite(QSet<QString>(u.begin(), u.end()));
+      local_read_ids.unite(QSet<QString>(r.begin(), r.end()));
+    }
+
+    auto not_downloaded = remote_all_ids - local_read_ids - local_unread_ids;
+    auto moved_unread = local_unread_ids.intersect(remote_read_ids);
+    auto moved_read = local_read_ids.intersect(remote_unread_ids);
+
+    to_download += not_downloaded + moved_read + moved_unread;
+  }
+  else {
+    qWarningNN << LOGSEC_GREADER << "Performing feed-based contents fetching.";
+  }
 
   Feed::Status error;
 
-  m_prefetchedStarredMessages = itemContents(root, starred_to_download_list, error, proxy);
+  m_prefetchedMessages = itemContents(root, QList<QString>(to_download.begin(), to_download.end()), error, proxy);
 }
 
 QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
@@ -158,62 +204,61 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
                                                         const QHash<QString, QStringList>& tagged_messages,
                                                         Feed::Status& error,
                                                         const QNetworkProxy& proxy) {
-  // 1. Get unread IDs for a feed.
-  // 2. Get read IDs for a feed.
-  // 3. Download messages/contents for missing or changed IDs.
-  // 4. Add prefetched starred msgs.
-  auto remote_all_ids_list = itemIds(stream_id, false, proxy);
-  auto remote_unread_ids_list = itemIds(stream_id, true, proxy);
+  QList<Message> msgs;
 
-  // Convert item IDs to long form.
-  for (int i = 0; i < remote_all_ids_list.size(); i++) {
-    remote_all_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_all_ids_list.at(i)));
+  if (!m_performGlobalFetching) {
+    // 1. Get unread IDs for a feed.
+    // 2. Get read IDs for a feed.
+    // 3. Download messages/contents for missing or changed IDs.
+    // 4. Add prefetched starred msgs.
+    auto remote_all_ids_list = itemIds(stream_id, false, proxy);
+    auto remote_unread_ids_list = itemIds(stream_id, true, proxy);
+
+    // Convert item IDs to long form.
+    for (int i = 0; i < remote_all_ids_list.size(); i++) {
+      remote_all_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_all_ids_list.at(i)));
+    }
+
+    for (int i = 0; i < remote_unread_ids_list.size(); i++) {
+      remote_unread_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_unread_ids_list.at(i)));
+    }
+
+    QSet<QString> remote_all_ids(remote_all_ids_list.begin(), remote_all_ids_list.end());
+
+    // 1.
+    auto local_unread_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Unread);
+    QSet<QString> remote_unread_ids(remote_unread_ids_list.begin(), remote_unread_ids_list.end());
+    QSet<QString> local_unread_ids(local_unread_ids_list.begin(),
+                                   local_unread_ids_list.end());
+
+    // 2.
+    auto local_read_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Read);
+    QSet<QString> remote_read_ids = remote_all_ids - remote_unread_ids;
+    QSet<QString> local_read_ids(local_read_ids_list.begin(),
+                                 local_read_ids_list.end());
+
+    // 3.
+    auto not_downloaded = remote_all_ids - local_read_ids - local_unread_ids;
+    auto moved_unread = local_unread_ids.intersect(remote_read_ids);
+    auto moved_read = local_read_ids.intersect(remote_unread_ids);
+    auto to_download = not_downloaded + moved_read + moved_unread;
+    QList<QString> to_download_list(to_download.begin(), to_download.end());
+
+    if (!to_download_list.isEmpty()) {
+      msgs = itemContents(root, to_download_list, error, proxy);
+    }
   }
 
-  for (int i = 0; i < remote_unread_ids_list.size(); i++) {
-    remote_unread_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_unread_ids_list.at(i)));
-  }
-
-  QSet<QString> remote_all_ids(remote_all_ids_list.begin(), remote_all_ids_list.end());
-
-  //remote_all_ids += QSet<QString>(remote_starred_ids_list.begin(), remote_starred_ids_list.end());
-
-  // 1.
-  auto local_unread_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Unread);
-  QSet<QString> remote_unread_ids(remote_unread_ids_list.begin(), remote_unread_ids_list.end());
-  QSet<QString> local_unread_ids(local_unread_ids_list.begin(),
-                                 local_unread_ids_list.end());
-
-  // 2.
-  auto local_read_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Read);
-  QSet<QString> remote_read_ids = remote_all_ids - remote_unread_ids;
-  QSet<QString> local_read_ids(local_read_ids_list.begin(),
-                               local_read_ids_list.end());
-
-  // 3.
-  auto not_downloaded = remote_all_ids - local_read_ids - local_unread_ids;
-  auto moved_unread = local_unread_ids.intersect(remote_read_ids);
-  auto moved_read = local_read_ids.intersect(remote_unread_ids);
-  auto to_download = not_downloaded + moved_read + moved_unread;
-
-  if (to_download.isEmpty()) {
-    return {};
-  }
-
-  QList<QString> to_download_list(to_download.begin(), to_download.end());
-  auto msgs = itemContents(root, to_download_list, error, proxy);
-
-  // Filter out (starred) messages from other feeds.
-  // TODO: Cache them instead?
-  for (int i = 0; i < m_prefetchedStarredMessages.size(); i++) {
-    auto prefetched_msg = m_prefetchedStarredMessages.at(i);
+  // Add prefetched messages.
+  for (int i = 0; i < m_prefetchedMessages.size(); i++) {
+    auto prefetched_msg = m_prefetchedMessages.at(i);
 
     if (prefetched_msg.m_feedId == stream_id &&
         !boolinq::from(msgs).any([&prefetched_msg](const Message& ms) {
       return ms.m_customId == prefetched_msg.m_customId;
     })) {
       msgs.append(prefetched_msg);
-      m_prefetchedStarredMessages.removeAt(i--);
+      m_prefetchedMessages.removeAt(i--);
     }
   }
 

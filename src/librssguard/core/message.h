@@ -29,12 +29,14 @@ class RSSGUARD_DLLSPEC Enclosures {
     static QString encodeEnclosuresToString(const QList<Enclosure>& enclosures);
 };
 
+class Feed;
+
 // Represents single message.
 class RSSGUARD_DLLSPEC Message {
   public:
     explicit Message();
 
-    void sanitize();
+    void sanitize(const Feed* feed);
 
     // Creates Message from given record, which contains
     // row from query SELECT * FROM Messages WHERE ....;

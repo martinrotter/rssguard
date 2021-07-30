@@ -4,6 +4,7 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "miscellaneous/textfactory.h"
+#include "services/abstract/feed.h"
 #include "services/abstract/label.h"
 
 #include <QDebug>
@@ -72,7 +73,7 @@ Message::Message() {
   m_assignedLabels = QList<Label*>();
 }
 
-void Message::sanitize() {
+void Message::sanitize(const Feed* feed) {
   // Sanitize title.
   m_title = m_title
 
@@ -84,6 +85,20 @@ void Message::sanitize() {
 
             // Remove all newlines and leading white space.
             .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
+
+  // Check if messages contain relative URLs and if they do, then replace them.
+  if (m_url.startsWith(QL1S("//"))) {
+    m_url = QString(URI_SCHEME_HTTPS) + m_url.mid(2);
+  }
+  else if (QUrl(m_url).isRelative()) {
+    QUrl base(feed->source());
+
+    if (base.isValid()) {
+      base = QUrl(base.scheme() + QSL("://") + base.host());
+
+      m_url = base.resolved(m_url).toString();
+    }
+  }
 }
 
 Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
