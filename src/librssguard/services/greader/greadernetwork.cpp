@@ -340,8 +340,6 @@ QList<Message> GreaderNetwork::itemContents(ServiceRoot* root, const QList<QStri
 
   QList<Message> msgs;
 
-  //int target_msgs_size = 999;
-
   do {
     QString full_url = generateFullUrl(Operations::ItemContents);
     auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
