@@ -40,6 +40,12 @@ class GreaderNetwork : public QObject {
 
     QVariantHash userInfo(const QNetworkProxy& proxy);
 
+    void prepareFeedFetching(GreaderServiceRoot* root,
+                             const QList<Feed*>& feeds,
+                             const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_msgs,
+                             const QHash<QString, QStringList>& tagged_msgs,
+                             const QNetworkProxy& proxy);
+
     QList<Message> getMessagesIntelligently(ServiceRoot* root,
                                             const QString& stream_id,
                                             const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
@@ -109,6 +115,7 @@ class GreaderNetwork : public QObject {
     QString m_authSid;
     QString m_authAuth;
     QString m_authToken;
+    QList<Message> m_prefetchedStarredMessages;
 };
 
 #endif // GREADERNETWORK_H

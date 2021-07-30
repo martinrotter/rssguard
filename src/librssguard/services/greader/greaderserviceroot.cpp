@@ -57,6 +57,17 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
+void GreaderServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
+                                                  const QHash<QString, QHash<BagOfMessages, QStringList>>& stated_msgs,
+                                                  const QHash<QString, QStringList>& tagged_msgs) {
+  // Prefetch starred messages.
+  m_network->prepareFeedFetching(this,
+                                 feeds,
+                                 stated_msgs,
+                                 tagged_msgs,
+                                 networkProxy());
+}
+
 QList<Message> GreaderServiceRoot::obtainNewMessages(Feed* feed,
                                                      const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                      const QHash<QString, QStringList>& tagged_messages) {
