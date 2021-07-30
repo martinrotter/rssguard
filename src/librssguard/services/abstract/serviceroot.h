@@ -65,6 +65,9 @@ class ServiceRoot : public RootItem {
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual bool wantsBaggedIdsOfExistingMessages() const;
+    virtual void aboutToBeginFeedFetching(const QList<Feed*>& feeds,
+                                          const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_msgs,
+                                          const QHash<QString, QStringList>& tagged_msgs);
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
@@ -101,8 +104,8 @@ class ServiceRoot : public RootItem {
     // Obtains list of messages.
     // Throws exception subclassed from ApplicationException, preferably FeedFetchException
     // if any problems arise.
-    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds,
-                                             const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+    virtual QList<Message> obtainNewMessages(Feed* feed,
+                                             const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages) = 0;
 
     // This method should prepare messages for given "item" (download them maybe?)

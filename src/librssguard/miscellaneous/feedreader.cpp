@@ -88,7 +88,8 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
 void FeedReader::synchronizeMessageData(const QList<CacheForServiceRoot*>& caches) {
   QMetaObject::invokeMethod(m_feedDownloader, "synchronizeAccountCaches",
                             Qt::ConnectionType::QueuedConnection,
-                            Q_ARG(QList<CacheForServiceRoot*>, caches));
+                            Q_ARG(QList<CacheForServiceRoot*>, caches),
+                            Q_ARG(bool, true));
 }
 
 void FeedReader::initializeFeedDownloader() {

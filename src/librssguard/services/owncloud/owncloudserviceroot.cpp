@@ -150,24 +150,18 @@ void OwnCloudServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
-QList<Message> OwnCloudServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
-                                                      const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+QList<Message> OwnCloudServiceRoot::obtainNewMessages(Feed* feed,
+                                                      const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                       const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
 
-  QList<Message> msgs;
+  OwnCloudGetMessagesResponse messages = network()->getMessages(feed->customNumericId(), networkProxy());
 
-  for (Feed* feed : feeds) {
-    OwnCloudGetMessagesResponse messages = network()->getMessages(feed->customNumericId(), networkProxy());
-
-    if (messages.networkError() != QNetworkReply::NetworkError::NoError) {
-      throw FeedFetchException(Feed::Status::NetworkError);
-    }
-    else {
-      msgs << messages.messages();
-    }
+  if (messages.networkError() != QNetworkReply::NetworkError::NoError) {
+    throw FeedFetchException(Feed::Status::NetworkError);
   }
-
-  return msgs;
+  else {
+    return messages.messages();
+  }
 }

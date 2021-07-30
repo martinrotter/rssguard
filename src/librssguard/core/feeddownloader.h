@@ -43,7 +43,7 @@ class FeedDownloader : public QObject {
     bool isCacheSynchronizationRunning() const;
 
   public slots:
-    void synchronizeAccountCaches(const QList<CacheForServiceRoot*>& caches);
+    void synchronizeAccountCaches(const QList<CacheForServiceRoot*>& caches, bool emit_signals);
     void updateFeeds(const QList<Feed*>& feeds);
     void stopRunningUpdate();
 
@@ -54,8 +54,9 @@ class FeedDownloader : public QObject {
     void updateProgress(const Feed* feed, int current, int total);
 
   private:
-    void updateOneFeed(Feed* feed);
-    void updateAvailableFeeds();
+    void updateOneFeed(Feed* feed,
+                       const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                       const QHash<QString, QStringList>& tagged_messages);
     void finalizeUpdate();
 
     bool m_isCacheSynchronizationRunning;

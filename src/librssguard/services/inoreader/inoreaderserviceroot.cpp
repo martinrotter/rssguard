@@ -56,22 +56,17 @@ void InoreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString());
 }
 
-QList<Message> InoreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
-                                                       const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+QList<Message> InoreaderServiceRoot::obtainNewMessages(Feed* feed,
+                                                       const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                        const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
 
-  QList<Message> messages;
+  Feed::Status error = Feed::Status::Normal;
+  QList<Message> messages = network()->messages(this, feed->customId(), error);
 
-  for (Feed* feed : feeds) {
-    Feed::Status error = Feed::Status::Normal;
-
-    messages << network()->messages(this, feed->customId(), error);
-
-    if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
-      throw FeedFetchException(error);
-    }
+  if (error != Feed::Status::NewMessages && error != Feed::Status::Normal) {
+    throw FeedFetchException(error);
   }
 
   return messages;

@@ -74,22 +74,17 @@ void GmailServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString());
 }
 
-QList<Message> GmailServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
-                                                   const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+QList<Message> GmailServiceRoot::obtainNewMessages(Feed* feed,
+                                                   const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                    const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
 
-  QList<Message> messages;
+  Feed::Status error = Feed::Status::Normal;
+  QList<Message> messages = network()->messages(feed->customId(), error, networkProxy());
 
-  for (Feed* feed : feeds) {
-    Feed::Status error = Feed::Status::Normal;
-
-    messages << network()->messages(feed->customId(), error, networkProxy());
-
-    if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError || error == Feed::Status::ParsingError) {
-      throw FeedFetchException(error);
-    }
+  if (error != Feed::Status::NewMessages && error != Feed::Status::Normal) {
+    throw FeedFetchException(error);
   }
 
   return messages;

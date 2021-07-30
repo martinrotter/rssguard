@@ -57,35 +57,29 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
-QList<Message> GreaderServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
-                                                     const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+QList<Message> GreaderServiceRoot::obtainNewMessages(Feed* feed,
+                                                     const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                      const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
 
-  QList<Message> messages;
+  Feed::Status error = Feed::Status::Normal;
 
-  for (Feed* feed : feeds) {
-    Feed::Status error = Feed::Status::Normal;
-
-    if (true /* intelligent downloading */ ) {
-      messages << network()->getMessagesIntelligently(this,
-                                                      feed->customId(),
-                                                      stated_messages.value(feed->customId()),
-                                                      tagged_messages,
-                                                      error,
-                                                      networkProxy());
-    }
-    else {
-      messages << network()->streamContents(this, feed->customId(), error, networkProxy());
-    }
-
-    if (error == Feed::Status::NetworkError || error == Feed::Status::AuthError) {
-      throw FeedFetchException(error);
-    }
+  if (true /* intelligent downloading */ ) {
+    return network()->getMessagesIntelligently(this,
+                                               feed->customId(),
+                                               stated_messages,
+                                               tagged_messages,
+                                               error,
+                                               networkProxy());
+  }
+  else {
+    return network()->streamContents(this, feed->customId(), error, networkProxy());
   }
 
-  return messages;
+  if (error != Feed::Status::NewMessages && error != Feed::Status::Normal) {
+    throw FeedFetchException(error);
+  }
 }
 
 bool GreaderServiceRoot::wantsBaggedIdsOfExistingMessages() const {

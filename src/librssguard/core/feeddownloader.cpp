@@ -38,31 +38,7 @@ bool FeedDownloader::isUpdateRunning() const {
   return !m_feeds.isEmpty();
 }
 
-void FeedDownloader::updateAvailableFeeds() {
-  for (const Feed* feed : qAsConst(m_feeds)) {
-    auto* cache = dynamic_cast<CacheForServiceRoot*>(feed->getParentServiceRoot());
-
-    if (cache != nullptr) {
-      qDebugNN << LOGSEC_FEEDDOWNLOADER
-               << "Saving cache for feed with DB ID '" << feed->id()
-               << "' and title '" << feed->title() << "'.";
-      cache->saveAllCachedData(false);
-    }
-
-    if (m_stopCacheSynchronization) {
-      qWarningNN << LOGSEC_FEEDDOWNLOADER << "Aborting cache synchronization.";
-
-      m_stopCacheSynchronization = false;
-      break;
-    }
-  }
-
-  while (!m_feeds.isEmpty()) {
-    updateOneFeed(m_feeds.takeFirst());
-  }
-}
-
-void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>& caches) {
+void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>& caches, bool emit_signals) {
   m_isCacheSynchronizationRunning = true;
 
   for (CacheForServiceRoot* cache : caches) {
@@ -80,7 +56,10 @@ void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>&
 
   m_isCacheSynchronizationRunning = false;
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "All caches synchronized.";
-  emit cachesSynchronized();
+
+  if (emit_signals) {
+    emit cachesSynchronized();
+  }
 }
 
 void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
@@ -100,8 +79,81 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
 
     // Job starts now.
     emit updateStarted();
+    QSet<CacheForServiceRoot*> caches;
+    QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
 
-    updateAvailableFeeds();
+    // 1. key - account.
+    // 2. key - feed custom ID.
+    // 3. key - msg state.
+    QHash<ServiceRoot*, QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>> stated_messages;
+
+    // 1. key - account.
+    // 2. key - label custom ID.
+    QHash<ServiceRoot*, QHash<QString, QStringList>> tagged_messages;
+
+    for (auto* fd : feeds) {
+      CacheForServiceRoot* fd_cache = fd->getParentServiceRoot()->toCache();
+
+      if (fd_cache != nullptr) {
+        caches.insert(fd_cache);
+      }
+
+      feeds_per_root.insert(fd->getParentServiceRoot(), fd);
+    }
+
+    synchronizeAccountCaches(QList<CacheForServiceRoot*>(caches.begin(), caches.end()), false);
+
+    auto roots = feeds_per_root.uniqueKeys();
+    bool is_main_thread = QThread::currentThread() == qApp->thread();
+    QSqlDatabase database = is_main_thread ?
+                            qApp->database()->driver()->connection(metaObject()->className()) :
+                            qApp->database()->driver()->connection(QSL("feed_upd"));
+
+    for (auto* rt : roots) {
+      // Obtain lists of local IDs.
+      if (rt->wantsBaggedIdsOfExistingMessages()) {
+        // Tagged messages for the account.
+        tagged_messages.insert(rt, DatabaseQueries::bagsOfMessages(database, rt->labelsNode()->labels()));
+
+        QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>> per_acc_states;
+
+        // This account has activated intelligent downloading of messages.
+        // Prepare bags.
+        auto fds = feeds_per_root.values(rt);
+
+        for (Feed* fd : fds) {
+          QHash<ServiceRoot::BagOfMessages, QStringList> per_feed_states;
+
+          per_feed_states.insert(ServiceRoot::BagOfMessages::Read,
+                                 DatabaseQueries::bagOfMessages(database,
+                                                                ServiceRoot::BagOfMessages::Read,
+                                                                fd));
+          per_feed_states.insert(ServiceRoot::BagOfMessages::Unread,
+                                 DatabaseQueries::bagOfMessages(database,
+                                                                ServiceRoot::BagOfMessages::Unread,
+                                                                fd));
+          per_feed_states.insert(ServiceRoot::BagOfMessages::Starred,
+                                 DatabaseQueries::bagOfMessages(database,
+                                                                ServiceRoot::BagOfMessages::Starred,
+                                                                fd));
+          per_acc_states.insert(fd->customId(), per_feed_states);
+        }
+
+        stated_messages.insert(rt, per_acc_states);
+      }
+
+      rt->aboutToBeginFeedFetching(feeds_per_root.values(rt),
+                                   stated_messages.value(rt),
+                                   tagged_messages.value(rt));
+    }
+
+    while (!m_feeds.isEmpty()) {
+      auto n_f = m_feeds.takeFirst();
+
+      updateOneFeed(n_f,
+                    stated_messages.value(n_f->getParentServiceRoot()).value(n_f->customId()),
+                    tagged_messages.value(n_f->getParentServiceRoot()));
+    }
   }
 
   finalizeUpdate();
@@ -113,7 +165,9 @@ void FeedDownloader::stopRunningUpdate() {
   m_feedsOriginalCount = m_feedsUpdated = 0;
 }
 
-void FeedDownloader::updateOneFeed(Feed* feed) {
+void FeedDownloader::updateOneFeed(Feed* feed,
+                                   const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                   const QHash<QString, QStringList>& tagged_messages) {
   qDebugNN << LOGSEC_FEEDDOWNLOADER
            << "Downloading new messages for feed ID '"
            << feed->customId() << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"
@@ -127,33 +181,7 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
     QSqlDatabase database = is_main_thread ?
                             qApp->database()->driver()->connection(metaObject()->className()) :
                             qApp->database()->driver()->connection(QSL("feed_upd"));
-    QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>> stated_messages;
-    QHash<QString, QStringList> tagged_messages;
-
-    if (feed->getParentServiceRoot()->wantsBaggedIdsOfExistingMessages()) {
-      // This account has activated intelligent downloading of messages.
-      // Prepare bags.
-      QHash<ServiceRoot::BagOfMessages, QStringList> per_feed_states;
-
-      per_feed_states.insert(ServiceRoot::BagOfMessages::Read,
-                             DatabaseQueries::bagOfMessages(database,
-                                                            ServiceRoot::BagOfMessages::Read,
-                                                            feed));
-      per_feed_states.insert(ServiceRoot::BagOfMessages::Unread,
-                             DatabaseQueries::bagOfMessages(database,
-                                                            ServiceRoot::BagOfMessages::Unread,
-                                                            feed));
-      per_feed_states.insert(ServiceRoot::BagOfMessages::Starred,
-                             DatabaseQueries::bagOfMessages(database,
-                                                            ServiceRoot::BagOfMessages::Starred,
-                                                            feed));
-      stated_messages.insert(feed->customId(), per_feed_states);
-
-      tagged_messages = DatabaseQueries::bagsOfMessages(database,
-                                                        feed->getParentServiceRoot()->labelsNode()->labels());
-    }
-
-    QList<Message> msgs = feed->getParentServiceRoot()->obtainNewMessages({ feed },
+    QList<Message> msgs = feed->getParentServiceRoot()->obtainNewMessages(feed,
                                                                           stated_messages,
                                                                           tagged_messages);
 
@@ -343,7 +371,6 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
                 << QUOTE_W_SPACE_DOT(feed_ex.message());
 
     feed->setStatus(feed_ex.feedStatus(), feed_ex.message());
-    feed->getParentServiceRoot()->itemChanged({ feed });
   }
 
   catch (const ApplicationException& app_ex) {
@@ -353,8 +380,9 @@ void FeedDownloader::updateOneFeed(Feed* feed) {
                 << QUOTE_W_SPACE_DOT(app_ex.message());
 
     feed->setStatus(Feed::Status::OtherError, app_ex.message());
-    feed->getParentServiceRoot()->itemChanged({ feed });
   }
+
+  feed->getParentServiceRoot()->itemChanged({ feed });
 
   m_feedsUpdated++;
 

@@ -214,38 +214,35 @@ void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
-QList<Message> TtRssServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
-                                                   const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+QList<Message> TtRssServiceRoot::obtainNewMessages(Feed* feed,
+                                                   const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                    const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
 
   QList<Message> messages;
+  int newly_added_messages = 0;
+  int limit = network()->batchSize() <= 0 ? TTRSS_MAX_MESSAGES : network()->batchSize();
+  int skip = 0;
 
-  for (Feed* feed : feeds) {
-    int newly_added_messages = 0;
-    int limit = network()->batchSize() <= 0 ? TTRSS_MAX_MESSAGES : network()->batchSize();
-    int skip = 0;
+  do {
+    TtRssGetHeadlinesResponse headlines = network()->getHeadlines(feed->customNumericId(), limit, skip,
+                                                                  true, true, false,
+                                                                  network()->downloadOnlyUnreadMessages(),
+                                                                  networkProxy());
 
-    do {
-      TtRssGetHeadlinesResponse headlines = network()->getHeadlines(feed->customNumericId(), limit, skip,
-                                                                    true, true, false,
-                                                                    network()->downloadOnlyUnreadMessages(),
-                                                                    networkProxy());
-
-      if (network()->lastError() != QNetworkReply::NetworkError::NoError) {
-        throw FeedFetchException(Feed::Status::NetworkError, headlines.error());
-      }
-      else {
-        QList<Message> new_messages = headlines.messages(this);
-
-        messages << new_messages;
-        newly_added_messages = new_messages.size();
-        skip += newly_added_messages;
-      }
+    if (network()->lastError() != QNetworkReply::NetworkError::NoError) {
+      throw FeedFetchException(Feed::Status::NetworkError, headlines.error());
     }
-    while (newly_added_messages > 0 && (network()->batchSize() <= 0 || messages.size() < network()->batchSize()));
+    else {
+      QList<Message> new_messages = headlines.messages(this);
+
+      messages << new_messages;
+      newly_added_messages = new_messages.size();
+      skip += newly_added_messages;
+    }
   }
+  while (newly_added_messages > 0 && (network()->batchSize() <= 0 || messages.size() < network()->batchSize()));
 
   return messages;
 }

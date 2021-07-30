@@ -23,8 +23,8 @@ class FeedlyServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual LabelOperation supportedLabelOperations() const;
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
-    virtual QList<Message> obtainNewMessages(const QList<Feed*>& feeds,
-                                             const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+    virtual QList<Message> obtainNewMessages(Feed* feed,
+                                             const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages);
 
     FeedlyNetwork* network() const;

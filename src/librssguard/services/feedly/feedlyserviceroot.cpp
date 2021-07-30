@@ -72,24 +72,18 @@ void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
 }
 
-QList<Message> FeedlyServiceRoot::obtainNewMessages(const QList<Feed*>& feeds,
-                                                    const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+QList<Message> FeedlyServiceRoot::obtainNewMessages(Feed* feed,
+                                                    const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                     const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
 
-  QList<Message> messages;
-
-  for (Feed* feed : feeds) {
-    try {
-      messages << m_network->streamContents(feed->customId());
-    }
-    catch (const ApplicationException& ex) {
-      throw FeedFetchException(Feed::Status::NetworkError, ex.message());
-    }
+  try {
+    return m_network->streamContents(feed->customId());
   }
-
-  return messages;
+  catch (const ApplicationException& ex) {
+    throw FeedFetchException(Feed::Status::NetworkError, ex.message());
+  }
 }
 
 void FeedlyServiceRoot::start(bool freshly_activated) {
