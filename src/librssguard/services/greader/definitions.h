@@ -33,6 +33,7 @@
 
 // Misc.
 #define GREADER_API_EDIT_TAG_BATCH      200
+#define GREADER_API_ITEM_CONTENTS_BATCH 999
 #define GREADER_GLOBAL_UPDATE_THRES     0.5
 
 // The Old Reader.

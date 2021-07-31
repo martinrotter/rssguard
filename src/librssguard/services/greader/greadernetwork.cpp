@@ -339,47 +339,54 @@ QList<Message> GreaderNetwork::itemContents(ServiceRoot* root, const QList<QStri
   }
 
   QList<Message> msgs;
+  QList<QString> my_stream_ids(stream_ids);
 
-  do {
-    QString full_url = generateFullUrl(Operations::ItemContents);
-    auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  while (!my_stream_ids.isEmpty()) {
+    QList<QString> batch_ids = my_stream_ids.mid(0, GREADER_API_ITEM_CONTENTS_BATCH);
 
-    if (!continuation.isEmpty()) {
-      full_url += QSL("&c=%1").arg(continuation);
-    }
+    my_stream_ids = my_stream_ids.mid(GREADER_API_ITEM_CONTENTS_BATCH);
 
-    std::list inp = boolinq::from(stream_ids).select([this](const QString& id) {
-      return QSL("i=%1").arg(m_service == GreaderServiceRoot::Service::TheOldReader
+    do {
+      QString full_url = generateFullUrl(Operations::ItemContents);
+      auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+      if (!continuation.isEmpty()) {
+        full_url += QSL("&c=%1").arg(continuation);
+      }
+
+      std::list inp = boolinq::from(batch_ids).select([this](const QString& id) {
+        return QSL("i=%1").arg(m_service == GreaderServiceRoot::Service::TheOldReader
                              ? id
                              : QUrl::toPercentEncoding(id));
-    }).toStdList();
-    QByteArray input = FROM_STD_LIST(QStringList, inp).join(QSL("&")).toUtf8();
-    QByteArray output_stream;
-    auto result_stream = NetworkFactory::performNetworkOperation(full_url,
-                                                                 timeout,
-                                                                 input,
-                                                                 output_stream,
-                                                                 QNetworkAccessManager::Operation::PostOperation,
-                                                                 { authHeader() },
-                                                                 false,
-                                                                 {},
-                                                                 {},
-                                                                 proxy);
+      }).toStdList();
+      QByteArray input = FROM_STD_LIST(QStringList, inp).join(QSL("&")).toUtf8();
+      QByteArray output_stream;
+      auto result_stream = NetworkFactory::performNetworkOperation(full_url,
+                                                                   timeout,
+                                                                   input,
+                                                                   output_stream,
+                                                                   QNetworkAccessManager::Operation::PostOperation,
+                                                                   { authHeader() },
+                                                                   false,
+                                                                   {},
+                                                                   {},
+                                                                   proxy);
 
-    if (result_stream.first != QNetworkReply::NetworkError::NoError) {
-      qCriticalNN << LOGSEC_GREADER
-                  << "Cannot download messages for "
-                  << stream_ids
-                  << ", network error:"
-                  << QUOTE_W_SPACE_DOT(result_stream.first);
-      error = Feed::Status::NetworkError;
-      return {};
+      if (result_stream.first != QNetworkReply::NetworkError::NoError) {
+        qCriticalNN << LOGSEC_GREADER
+                    << "Cannot download messages for "
+                    << batch_ids
+                    << ", network error:"
+                    << QUOTE_W_SPACE_DOT(result_stream.first);
+        error = Feed::Status::NetworkError;
+        return {};
+      }
+      else {
+        msgs.append(decodeStreamContents(root, output_stream, QString(), continuation));
+      }
     }
-    else {
-      msgs.append(decodeStreamContents(root, output_stream, QString(), continuation));
-    }
+    while (!continuation.isEmpty());
   }
-  while (!continuation.isEmpty());
 
   error = Feed::Status::Normal;
   return msgs;
