@@ -146,6 +146,11 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name, DesiredSto
                << "seems to be established.";
     }
 
+    QSqlQuery query_db(database);
+
+    query_db.setForwardOnly(true);
+    setPragmas(query_db);
+
     return database;
   }
 }
@@ -382,6 +387,9 @@ void SqliteDriver::setPragmas(QSqlQuery& query) {
   query.exec(QSL("PRAGMA synchronous = OFF"));
   query.exec(QSL("PRAGMA journal_mode = MEMORY"));
   query.exec(QSL("PRAGMA page_size = 4096"));
+
+  //query.exec(QSL("PRAGMA locking_mode = EXCLUSIVE"));
+
   query.exec(QSL("PRAGMA cache_size = 16384"));
   query.exec(QSL("PRAGMA count_changes = OFF"));
   query.exec(QSL("PRAGMA temp_store = MEMORY"));

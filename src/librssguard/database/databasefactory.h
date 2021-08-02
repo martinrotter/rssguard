@@ -24,6 +24,8 @@ class DatabaseFactory : public QObject {
     DatabaseDriver* driver() const;
     DatabaseDriver* driverForType(DatabaseDriver::DriverType d) const;
 
+    static QString escapeQuery(const QString& query);
+
   private:
     void determineDriver();
 

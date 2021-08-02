@@ -1093,6 +1093,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
     return updated_messages;
   }
 
+  QVector<Message> msgs_to_insert;
+
   for (Message message : messages) {
     int id_existing_message = -1;
     qint64 date_existing_message = 0;
@@ -1315,49 +1317,59 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
       }
     }
     else {
-      // Message with this URL is not fetched in this feed yet.
-      query_insert.bindValue(QSL(":feed"), unnulifyString(feed_custom_id));
-      query_insert.bindValue(QSL(":title"), unnulifyString(message.m_title));
-      query_insert.bindValue(QSL(":is_read"), int(message.m_isRead));
-      query_insert.bindValue(QSL(":is_important"), int(message.m_isImportant));
-      query_insert.bindValue(QSL(":is_deleted"), int(message.m_isDeleted));
-      query_insert.bindValue(QSL(":url"), unnulifyString( message.m_url));
-      query_insert.bindValue(QSL(":author"), unnulifyString(message.m_author));
-      query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-      query_insert.bindValue(QSL(":contents"), unnulifyString(message.m_contents));
-      query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
-      query_insert.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
-      query_insert.bindValue(QSL(":custom_hash"), unnulifyString(message.m_customHash));
-      query_insert.bindValue(QSL(":score"), message.m_score);
-      query_insert.bindValue(QSL(":account_id"), account_id);
+      msgs_to_insert.append(message);
 
-      if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
-        if (!message.m_isRead) {
+      if (!message.m_isRead) {
+        updated_messages.first++;
+      }
+
+      updated_messages.second++;
+
+      /*
+         // Message with this URL is not fetched in this feed yet.
+         query_insert.bindValue(QSL(":feed"), unnulifyString(feed_custom_id));
+         query_insert.bindValue(QSL(":title"), unnulifyString(message.m_title));
+         query_insert.bindValue(QSL(":is_read"), int(message.m_isRead));
+         query_insert.bindValue(QSL(":is_important"), int(message.m_isImportant));
+         query_insert.bindValue(QSL(":is_deleted"), int(message.m_isDeleted));
+         query_insert.bindValue(QSL(":url"), unnulifyString( message.m_url));
+         query_insert.bindValue(QSL(":author"), unnulifyString(message.m_author));
+         query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
+         query_insert.bindValue(QSL(":contents"), unnulifyString(message.m_contents));
+         query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
+         query_insert.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
+         query_insert.bindValue(QSL(":custom_hash"), unnulifyString(message.m_customHash));
+         query_insert.bindValue(QSL(":score"), message.m_score);
+         query_insert.bindValue(QSL(":account_id"), account_id);
+
+         if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
+         if (!message.m_isRead) {
           updated_messages.first++;
-        }
+         }
 
-        updated_messages.second++;
+         updated_messages.second++;
 
-        if (query_insert.lastInsertId().isValid()) {
+         if (query_insert.lastInsertId().isValid()) {
           id_existing_message = query_insert.lastInsertId().toInt();
-        }
+         }
 
-        qDebugNN << LOGSEC_DB
+         qDebugNN << LOGSEC_DB
                  << "Adding new message with title"
                  << QUOTE_W_SPACE(message.m_title)
                  << ", URL"
                  << QUOTE_W_SPACE(message.m_url)
                  << "to DB.";
-      }
-      else if (query_insert.lastError().isValid()) {
-        qWarningNN << LOGSEC_DB
+         }
+         else if (query_insert.lastError().isValid()) {
+         qWarningNN << LOGSEC_DB
                    << "Failed to insert new message to DB:"
                    << QUOTE_W_SPACE(query_insert.lastError().text())
                    << "- message title is"
                    << QUOTE_W_SPACE_DOT(message.m_title);
-      }
+         }
 
-      query_insert.finish();
+         query_insert.finish();
+       */
     }
 
     // Update labels assigned to message.
@@ -1376,6 +1388,58 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                    << "Cannot set labels for message"
                    << QUOTE_W_SPACE(message.m_title)
                    << "because we don't have ID or custom ID.";
+      }
+    }
+  }
+
+  if (!msgs_to_insert.isEmpty()) {
+    QString bulk_insert = QSL("INSERT INTO Messages "
+                              "(feed, title, is_read, is_important, is_deleted, url, author, score, date_created, contents, enclosures, custom_id, custom_hash, account_id) "
+                              "VALUES %1;");
+
+    for (int i = 0; i < msgs_to_insert.size(); i += 1000) {
+      QStringList vals;
+      auto next_batch = msgs_to_insert.mid(i, 1000);
+
+      for (const Message& msg: next_batch) {
+        if (msg.m_title.isEmpty()) {
+          qCriticalNN << LOGSEC_DB
+                      << "Message"
+                      << QUOTE_W_SPACE(msg.m_customId)
+                      << "will not be inserted to DB because it does not meet DB constraints.";
+          continue;
+        }
+
+        vals.append(QSL("\n(':feed', ':title', :is_read, :is_important, :is_deleted, "
+                        "':url', ':author', :score, :date_created, ':contents', ':enclosures', "
+                        "':custom_id', ':custom_hash', :account_id)")
+                    .replace(QSL(":feed"), unnulifyString(feed_custom_id))
+                    .replace(QSL(":title"), DatabaseFactory::escapeQuery(unnulifyString(msg.m_title)))
+                    .replace(QSL(":is_read"), QString::number(int(msg.m_isRead)))
+                    .replace(QSL(":is_important"), QString::number(int(msg.m_isImportant)))
+                    .replace(QSL(":is_deleted"), QString::number(int(msg.m_isDeleted)))
+                    .replace(QSL(":url"), DatabaseFactory::escapeQuery(unnulifyString(msg.m_url)))
+                    .replace(QSL(":author"), DatabaseFactory::escapeQuery(unnulifyString(msg.m_author)))
+                    .replace(QSL(":date_created"), QString::number(msg.m_created.toMSecsSinceEpoch()))
+                    .replace(QSL(":contents"), DatabaseFactory::escapeQuery(unnulifyString(msg.m_contents)))
+                    .replace(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(msg.m_enclosures))
+                    .replace(QSL(":custom_id"), unnulifyString(msg.m_customId))
+                    .replace(QSL(":custom_hash"), unnulifyString(msg.m_customHash))
+                    .replace(QSL(":score"), QString::number(msg.m_score))
+                    .replace(QSL(":account_id"), QString::number(account_id)));
+      }
+
+      QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
+      auto bulk_error = db.exec(final_bulk).lastError();
+
+      if (bulk_error.isValid()) {
+        QString txt = bulk_error.text() + bulk_error.databaseText();
+
+        IOFactory::writeFile("aa.sql", final_bulk.toUtf8());
+
+        qCriticalNN << LOGSEC_DB
+                    << "Failed bulk insert of articles:"
+                    << QUOTE_W_SPACE_DOT(txt);
       }
     }
   }
