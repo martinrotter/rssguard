@@ -388,7 +388,9 @@ void DownloadItem::updateDownloadInfoLabel() {
 }
 
 bool DownloadItem::downloading() const {
-  return (m_ui->m_progressDownload->isVisible());
+  return !m_finishedDownloading;
+
+  //return (m_ui->m_progressDownload->isVisible());
 }
 
 bool DownloadItem::downloadedSuccessfully() const {

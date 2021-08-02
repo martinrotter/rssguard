@@ -64,6 +64,7 @@ HEADERS += core/feeddownloader.h \
            gui/notifications/notificationseditor.h \
            gui/notifications/singlenotificationeditor.h \
            gui/reusable/baselineedit.h \
+           gui/reusable/progressbarwithtext.h \
            gui/settings/settingsnotifications.h \
            gui/toolbars/basetoolbar.h \
            gui/reusable/comboboxwithstatus.h \
@@ -249,6 +250,7 @@ SOURCES += core/feeddownloader.cpp \
            gui/notifications/notificationseditor.cpp \
            gui/notifications/singlenotificationeditor.cpp \
            gui/reusable/baselineedit.cpp \
+           gui/reusable/progressbarwithtext.cpp \
            gui/settings/settingsnotifications.cpp \
            gui/toolbars/basetoolbar.cpp \
            gui/reusable/comboboxwithstatus.cpp \

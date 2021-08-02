@@ -403,7 +403,7 @@ void FormMain::onFeedUpdatesFinished(const FeedDownloadResults& results) {
 
 void FormMain::onFeedUpdatesStarted() {
   m_ui->m_actionStopRunningItemsUpdate->setEnabled(true);
-  statusBar()->showProgressFeeds(0, tr("Feed update started"));
+  statusBar()->showProgressFeeds(-1, tr("Fetching common data"));
 }
 
 void FormMain::onFeedUpdatesProgress(const Feed* feed, int current, int total) {

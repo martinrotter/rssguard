@@ -4,54 +4,36 @@
 
 #include "gui/dialogs/formmain.h"
 #include "gui/reusable/plaintoolbutton.h"
+#include "gui/reusable/progressbarwithtext.h"
 #include "gui/tabwidget.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 
 #include <QLabel>
-#include <QProgressBar>
 #include <QToolButton>
 
 StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent) {
   setSizeGripEnabled(false);
   setContentsMargins(2, 0, 2, 2);
 
-  m_barProgressFeeds = new QProgressBar(this);
-  m_barProgressFeeds->setTextVisible(false);
-  m_barProgressFeeds->setFixedWidth(100);
+  m_barProgressFeeds = new ProgressBarWithText(this);
+  m_barProgressFeeds->setTextVisible(true);
+  m_barProgressFeeds->setFixedWidth(200);
   m_barProgressFeeds->setVisible(false);
   m_barProgressFeeds->setObjectName(QSL("m_barProgressFeeds"));
 
   m_barProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Feed update progress bar"), this);
   m_barProgressFeedsAction->setObjectName(QSL("m_barProgressFeedsAction"));
 
-  m_lblProgressFeeds = new QLabel(this);
-  m_lblProgressFeeds->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-  m_lblProgressFeeds->setVisible(false);
-  m_lblProgressFeeds->setObjectName(QSL("m_lblProgressFeeds"));
-
-  m_lblProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Feed update label"), this);
-  m_lblProgressFeedsAction->setObjectName(QSL("m_lblProgressFeedsAction"));
-
-  m_barProgressDownload = new QProgressBar(this);
+  m_barProgressDownload = new ProgressBarWithText(this);
   m_barProgressDownload->setTextVisible(true);
-  m_barProgressDownload->setFixedWidth(100);
+  m_barProgressDownload->setFixedWidth(200);
   m_barProgressDownload->setVisible(false);
   m_barProgressDownload->setObjectName(QSL("m_barProgressDownload"));
 
   m_barProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("File download progress bar"), this);
   m_barProgressDownloadAction->setObjectName(QSL("m_barProgressDownloadAction"));
 
-  m_lblProgressDownload = new QLabel(this);
-  m_lblProgressDownload->setText("Downloading files in background");
-  m_lblProgressDownload->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-  m_lblProgressDownload->setVisible(false);
-  m_lblProgressDownload->setObjectName(QSL("m_lblProgressDownload"));
-
-  m_lblProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("File download label"), this);
-  m_lblProgressDownloadAction->setObjectName(QSL("m_lblProgressDownloadAction"));
-
-  m_lblProgressDownload->installEventFilter(this);
   m_barProgressDownload->installEventFilter(this);
 }
 
@@ -64,8 +46,8 @@ QList<QAction*> StatusBar::availableActions() const {
   QList<QAction*> actions = qApp->userActions();
 
   // Now, add placeholder actions for custom stuff.
-  actions << m_barProgressDownloadAction << m_barProgressFeedsAction
-          << m_lblProgressDownloadAction << m_lblProgressFeedsAction;
+  actions << m_barProgressDownloadAction
+          << m_barProgressFeedsAction;
 
   return actions;
 }
@@ -99,9 +81,7 @@ QStringList StatusBar::savedActions() const {
 }
 
 QList<QAction*> StatusBar::convertActions(const QStringList& actions) {
-  bool progress_visible = this->actions().contains(m_barProgressFeedsAction) &&
-                          m_lblProgressFeeds->isVisible() &&
-                          m_barProgressFeeds->isVisible();
+  bool progress_visible = this->actions().contains(m_barProgressFeedsAction) && m_barProgressFeeds->isVisible();
   QList<QAction*> available_actions = availableActions();
   QList<QAction*> spec_actions;
 
@@ -120,16 +100,6 @@ QList<QAction*> StatusBar::convertActions(const QStringList& actions) {
     else if (matching_action == m_barProgressFeedsAction) {
       widget_to_add = m_barProgressFeeds;
       action_to_add = m_barProgressFeedsAction;
-      widget_to_add->setVisible(progress_visible);
-    }
-    else if (matching_action == m_lblProgressDownloadAction) {
-      widget_to_add = m_lblProgressDownload;
-      action_to_add = m_lblProgressDownloadAction;
-      widget_to_add->setVisible(false);
-    }
-    else if (matching_action == m_lblProgressFeedsAction) {
-      widget_to_add = m_lblProgressFeeds;
-      action_to_add = m_lblProgressFeedsAction;
       widget_to_add->setVisible(progress_visible);
     }
     else {
@@ -192,7 +162,7 @@ void StatusBar::loadSpecificActions(const QList<QAction*>& actions, bool initial
 }
 
 bool StatusBar::eventFilter(QObject* watched, QEvent* event) {
-  if (watched == m_lblProgressDownload || watched == m_barProgressDownload) {
+  if (watched == m_barProgressDownload) {
     if (event->type() == QEvent::Type::MouseButtonPress) {
       qApp->mainForm()->tabWidget()->showDownloadManager();
     }
@@ -219,30 +189,40 @@ void StatusBar::clear() {
 
 void StatusBar::showProgressFeeds(int progress, const QString& label) {
   if (actions().contains(m_barProgressFeedsAction)) {
-    m_lblProgressFeeds->setVisible(true);
     m_barProgressFeeds->setVisible(true);
-    m_lblProgressFeeds->setText(label);
-    m_barProgressFeeds->setValue(progress);
+    m_barProgressFeeds->setFormat(label);
+
+    if (progress < 0) {
+      m_barProgressFeeds->setRange(0, 0);
+    }
+    else {
+      m_barProgressFeeds->setRange(0, 100);
+      m_barProgressFeeds->setValue(progress);
+    }
   }
 }
 
 void StatusBar::clearProgressFeeds() {
-  m_lblProgressFeeds->setVisible(false);
   m_barProgressFeeds->setVisible(false);
 }
 
 void StatusBar::showProgressDownload(int progress, const QString& tooltip) {
   if (actions().contains(m_barProgressDownloadAction)) {
-    m_lblProgressDownload->setVisible(true);
     m_barProgressDownload->setVisible(true);
-    m_barProgressDownload->setValue(progress);
+    m_barProgressDownload->setFormat(tooltip);
     m_barProgressDownload->setToolTip(tooltip);
-    m_lblProgressDownload->setToolTip(tooltip);
+
+    if (progress < 0) {
+      m_barProgressDownload->setRange(0, 0);
+    }
+    else {
+      m_barProgressDownload->setRange(0, 100);
+      m_barProgressDownload->setValue(progress);
+    }
   }
 }
 
 void StatusBar::clearProgressDownload() {
-  m_lblProgressDownload->setVisible(false);
   m_barProgressDownload->setVisible(false);
   m_barProgressDownload->setValue(0);
 }

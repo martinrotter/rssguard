@@ -7,7 +7,7 @@
 
 #include "gui/toolbars/basetoolbar.h"
 
-class QProgressBar;
+class ProgressBarWithText;
 class QLabel;
 class PlainToolButton;
 
@@ -39,14 +39,10 @@ class StatusBar : public QStatusBar, public BaseBar {
   private:
     void clear();
 
-    QProgressBar* m_barProgressFeeds;
+    ProgressBarWithText* m_barProgressFeeds;
     QAction* m_barProgressFeedsAction;
-    QLabel* m_lblProgressFeeds;
-    QAction* m_lblProgressFeedsAction;
-    QProgressBar* m_barProgressDownload;
+    ProgressBarWithText* m_barProgressDownload;
     QAction* m_barProgressDownloadAction;
-    QLabel* m_lblProgressDownload;
-    QAction* m_lblProgressDownloadAction;
 };
 
 #endif // STATUSBAR_H
