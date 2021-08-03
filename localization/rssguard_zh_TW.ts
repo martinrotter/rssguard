@@ -132,7 +132,7 @@ Error: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>New articles fetched</source>
+        <source>Unread articles fetched</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -433,10 +433,6 @@ Click here to open parent directory.</source>
         <translation>網路錯誤</translation>
     </message>
     <message>
-        <source>unspecified error</source>
-        <translation>無法檢別的錯誤</translation>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
@@ -467,6 +463,14 @@ Status: %3</source>
         <source>has new articles</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>parsing error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>error</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
@@ -482,20 +486,20 @@ Status: %3</source>
 <context>
     <name>FeedReader</name>
     <message>
-        <source>Cannot fetch articles for all items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You cannot fetch new articles for your items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Starting auto-download of some feeds&apos; articles</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-download new articles for %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot fetch articles at this point</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -597,7 +601,7 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed forever so you might end up with thousands of articles which you will never read anyway.</source>
+        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1126,17 +1130,9 @@ or this functionality is not implemented yet.</source>
         <source>Cleanup database</source>
         <translation>清理資料庫</translation>
     </message>
-    <message>
-        <source>Remove all messages older than</source>
-        <translation>移除指定天數前的消息</translation>
-    </message>
     <message numerus="yes">
         <source> day(s)</source>
         <translation><numerusform>天</numerusform></translation>
-    </message>
-    <message>
-        <source>Shrink database file</source>
-        <translation>縮小資料庫</translation>
     </message>
     <message>
         <source>Database information</source>
@@ -1167,10 +1163,6 @@ or this functionality is not implemented yet.</source>
         <translation>資料庫清理失敗。</translation>
     </message>
     <message>
-        <source>Remove all messages from recycle bin</source>
-        <translation>移除回收筒內全部消息</translation>
-    </message>
-    <message>
         <source>unknown</source>
         <translation>未知的</translation>
     </message>
@@ -1183,11 +1175,23 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remove all read messages</source>
+        <source>Optimize database file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remove all starred messages</source>
+        <source>Remove all read articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all articles from recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all articles older than</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all starred articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1498,10 +1502,6 @@ or this functionality is not implemented yet.</source>
         <translation>無法清理資料庫，因為另一重要動作執行中。</translation>
     </message>
     <message>
-        <source>Feed update started</source>
-        <translation>已開始新聞源</translation>
-    </message>
-    <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation>新聞源 &apos;%1&apos; 已更新</translation>
@@ -1738,13 +1738,13 @@ or this functionality is not implemented yet.</source>
         <source>Ta&amp;bs</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
-    <message>
-        <source>Message filters</source>
-        <translation>消息篩選器</translation>
-    </message>
     <message>
         <source>Remove selected</source>
         <translation>移除所選</translation>
@@ -1758,24 +1758,12 @@ or this functionality is not implemented yet.</source>
         <translation>不勾全部</translation>
     </message>
     <message>
-        <source>Message filter details</source>
-        <translation>消息篩選器細節</translation>
-    </message>
-    <message>
         <source>Title</source>
         <translation>標題</translation>
     </message>
     <message>
-        <source>Title of message filter</source>
-        <translation>消息篩選器名稱</translation>
-    </message>
-    <message>
         <source>JavaScript code</source>
         <translation>JavaScript 碼</translation>
-    </message>
-    <message>
-        <source>Your JavaScript-based message filtering logic</source>
-        <translation>您的使用 JavaScript 的消息篩選器機制</translation>
     </message>
     <message>
         <source>Read</source>
@@ -1914,6 +1902,22 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>SAMPLE article filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article filter details</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of article filter</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your JavaScript-based article filtering logic</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2586,6 +2590,10 @@ Login tokens expiration: %2</source>
         <source>Other services</source>
         <translation>其他服務</translation>
     </message>
+    <message>
+        <source>login failed</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>IOFactory</name>
@@ -2918,11 +2926,11 @@ Login tokens expiration: %2</source>
         <translation>作者</translation>
     </message>
     <message>
-        <source>Created on</source>
-        <translation>建立時間</translation>
+        <source>Score</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Score</source>
+        <source>Date</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3562,10 +3570,6 @@ Feedly is a secure space where you can privately organize and research the topic
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>New articles fetched</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Fetching articles right now</source>
         <translation type="unfinished"/>
     </message>
@@ -3583,6 +3587,14 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>Unknown event</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New (unread) articles fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML problem: %1</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3642,10 +3654,6 @@ Feedly is a secure space where you can privately organize and research the topic
 </context>
 <context>
     <name>SearchTextWidget</name>
-    <message>
-        <source>Clear searched phrase</source>
-        <translation>清除所搜尋的片語</translation>
-    </message>
     <message>
         <source>Seach text</source>
         <translation>搜尋文字</translation>
@@ -4010,14 +4018,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation> ms</translation>
     </message>
     <message>
-        <source>Message count format in feed list</source>
-        <translation>新聞源清單中的消息數量格式</translation>
-    </message>
-    <message>
-        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>輸入新聞源清單中每個新聞源/分類旁顯示的消息數量的格式。&quot;%all&quot; 和 &quot;%unread&quot; 分別代表所有消息數和未讀消息數。</translation>
-    </message>
-    <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation>使用自訂日期/時間格式 (覆蓋從系統的地區設定載入的格式)</translation>
     </message>
@@ -4050,26 +4050,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>選擇新字型</translation>
     </message>
     <message>
-        <source>Download messages for all feeds on application startup with initial delay of</source>
-        <translation>於本程式啟動時下載所有新聞源的消息；起初延遲</translation>
-    </message>
-    <message>
-        <source>Only auto-download messages when application is unfocused</source>
-        <translation>只在本程式於背景運作時自動下載消息</translation>
-    </message>
-    <message>
-        <source>Auto-download messages for all feeds every</source>
-        <translation>自動下載全部新聞源的消息，每</translation>
-    </message>
-    <message>
-        <source>Hide message counts if there are no unread messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Display tooltips for feeds and messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Feeds</source>
         <translation>新聞源</translation>
     </message>
@@ -4090,10 +4070,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Keep message selection in the middle of the article list viewport</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Height or rows in article list (-1 = default height)</source>
         <translation type="unfinished"/>
     </message>
@@ -4107,6 +4083,38 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feeds &amp; articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-fetch articles for all feeds every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only auto-fetch articles if application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article count format in feed list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hide article counts if there are no unread articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Keep article selection in the middle of the article list viewport</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4348,10 +4356,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Clear</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Browse</source>
         <translation>瀏覽(&amp;B)</translation>
     </message>
@@ -4408,16 +4412,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>StandardFeed</name>
     <message>
-        <source>
-Network status: %1
-Encoding: %2
-Type: %3</source>
-        <translation>
-網路狀態: %1
-編碼: %2
-類型: %3</translation>
-    </message>
-    <message>
         <source>Script</source>
         <translation>隨譯即行程式碼</translation>
     </message>
@@ -4447,6 +4441,12 @@ Type: %3</source>
     </message>
     <message>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>
+Encoding: %2
+Type: %3</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4752,16 +4752,8 @@ Type: %3</source>
         <translation>新聞源更新進度列</translation>
     </message>
     <message>
-        <source>Feed update label</source>
-        <translation>新聞源更新標籤</translation>
-    </message>
-    <message>
         <source>File download progress bar</source>
         <translation>檔案下載進度列</translation>
-    </message>
-    <message>
-        <source>File download label</source>
-        <translation>檔案下載標籤</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>

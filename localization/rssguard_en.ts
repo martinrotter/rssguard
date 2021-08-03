@@ -134,7 +134,7 @@ Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>New articles fetched</source>
+        <source>Unread articles fetched</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -447,10 +447,6 @@ Click here to open parent directory.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>unspecified error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
@@ -485,6 +481,14 @@ Status: %3</source>
         <source>has new articles</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>parsing error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>error</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
@@ -500,14 +504,6 @@ Status: %3</source>
 <context>
     <name>FeedReader</name>
     <message>
-        <source>Cannot fetch articles for all items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You cannot fetch new articles for your items because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Starting auto-download of some feeds&apos; articles</source>
         <translation type="unfinished"></translation>
     </message>
@@ -517,6 +513,14 @@ Status: %3</source>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Cannot fetch articles at this point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -618,7 +622,7 @@ Status: %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed forever so you might end up with thousands of articles which you will never read anyway.</source>
+        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1147,20 +1151,12 @@ or this functionality is not implemented yet.</translation>
         <source>Cleanup database</source>
         <translation>Cleanup database</translation>
     </message>
-    <message>
-        <source>Remove all messages older than</source>
-        <translation>Remove all messages older than</translation>
-    </message>
     <message numerus="yes">
         <source> day(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
-    </message>
-    <message>
-        <source>Shrink database file</source>
-        <translation>Shrink database file</translation>
     </message>
     <message>
         <source>Database information</source>
@@ -1191,10 +1187,6 @@ or this functionality is not implemented yet.</translation>
         <translation>Database cleanup failed.</translation>
     </message>
     <message>
-        <source>Remove all messages from recycle bin</source>
-        <translation>Remove all messages from recycle bin</translation>
-    </message>
-    <message>
         <source>unknown</source>
         <translation>unknown</translation>
     </message>
@@ -1207,11 +1199,23 @@ or this functionality is not implemented yet.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remove all read messages</source>
+        <source>Optimize database file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remove all starred messages</source>
+        <source>Remove all read articles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all articles from recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all articles older than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all starred articles</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1522,10 +1526,6 @@ or this functionality is not implemented yet.</translation>
         <translation type="unfinished">Cannot cleanup database, because another critical action is running.</translation>
     </message>
     <message>
-        <source>Feed update started</source>
-        <translation type="unfinished">Feed update started</translation>
-    </message>
-    <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished">Updated feed &apos;%1&apos;</translation>
@@ -1762,13 +1762,13 @@ or this functionality is not implemented yet.</translation>
         <source>Ta&amp;bs</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Fetching common data</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
-    <message>
-        <source>Message filters</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Remove selected</source>
         <translation type="unfinished"></translation>
@@ -1782,23 +1782,11 @@ or this functionality is not implemented yet.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Message filter details</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Title</source>
         <translation type="unfinished">Title</translation>
     </message>
     <message>
-        <source>Title of message filter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>JavaScript code</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Your JavaScript-based message filtering logic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1938,6 +1926,22 @@ or this functionality is not implemented yet.</translation>
     <message>
         <source>SAMPLE article filtering error: &apos;%1&apos;.
 </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Article filters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Article filter details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title of article filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your JavaScript-based article filtering logic</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2605,6 +2609,10 @@ Login tokens expiration: %2</source>
         <source>Other services</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>login failed</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>IOFactory</name>
@@ -2936,11 +2944,11 @@ Login tokens expiration: %2</source>
         <translation type="unfinished">Author</translation>
     </message>
     <message>
-        <source>Created on</source>
-        <translation type="unfinished">Created on</translation>
+        <source>Score</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Score</source>
+        <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3581,10 +3589,6 @@ Feedly is a secure space where you can privately organize and research the topic
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>New articles fetched</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Fetching articles right now</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3602,6 +3606,14 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>Unknown event</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New (unread) articles fetched</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>XML problem: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3667,10 +3679,6 @@ Feedly is a secure space where you can privately organize and research the topic
 </context>
 <context>
     <name>SearchTextWidget</name>
-    <message>
-        <source>Clear searched phrase</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Seach text</source>
         <translation type="unfinished"></translation>
@@ -4034,14 +4042,6 @@ Authors of this application are NOT responsible for lost data.</translation>
         <translation type="unfinished"> ms</translation>
     </message>
     <message>
-        <source>Message count format in feed list</source>
-        <translation type="unfinished">Message count format in feed list</translation>
-    </message>
-    <message>
-        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished">Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</translation>
-    </message>
-    <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4074,26 +4074,6 @@ Authors of this application are NOT responsible for lost data.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Download messages for all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Only auto-download messages when application is unfocused</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-download messages for all feeds every</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hide message counts if there are no unread messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Display tooltips for feeds and messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Feeds</source>
         <translation type="unfinished">Feeds</translation>
     </message>
@@ -4114,10 +4094,6 @@ Authors of this application are NOT responsible for lost data.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Keep message selection in the middle of the article list viewport</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Height or rows in article list (-1 = default height)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4131,6 +4107,38 @@ Authors of this application are NOT responsible for lost data.</translation>
     </message>
     <message>
         <source>Feeds &amp; articles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fetch articles for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-fetch articles for all feeds every</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Only auto-fetch articles if application is unfocused</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Article count format in feed list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide article counts if there are no unread articles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and articles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keep article selection in the middle of the article list viewport</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4372,10 +4380,6 @@ Authors of this application are NOT responsible for lost data.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Browse</source>
         <translation type="unfinished">&amp;Browse</translation>
     </message>
@@ -4432,13 +4436,6 @@ Authors of this application are NOT responsible for lost data.</translation>
 <context>
     <name>StandardFeed</name>
     <message>
-        <source>
-Network status: %1
-Encoding: %2
-Type: %3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Script</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4468,6 +4465,12 @@ Type: %3</source>
     </message>
     <message>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>
+Encoding: %2
+Type: %3</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4773,16 +4776,8 @@ Type: %3</source>
         <translation>Feed update progress bar</translation>
     </message>
     <message>
-        <source>Feed update label</source>
-        <translation>Feed update label</translation>
-    </message>
-    <message>
         <source>File download progress bar</source>
         <translation>File download progress bar</translation>
-    </message>
-    <message>
-        <source>File download label</source>
-        <translation>File download label</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>

@@ -134,7 +134,7 @@ Fel: %1</translation>
         <translation>Flödet kan inte läggas till eftersom det saknas ett aktivt konto som kan lägga till flöden.</translation>
     </message>
     <message>
-        <source>New articles fetched</source>
+        <source>Unread articles fetched</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -435,10 +435,6 @@ Klicka här för att öppna målmappen.</translation>
         <translation>nätverksfel</translation>
     </message>
     <message>
-        <source>unspecified error</source>
-        <translation>ospecificerat fel</translation>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
@@ -469,6 +465,14 @@ Status: %3</translation>
         <source>has new articles</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>parsing error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>error</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
@@ -484,20 +488,20 @@ Status: %3</translation>
 <context>
     <name>FeedReader</name>
     <message>
-        <source>Cannot fetch articles for all items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You cannot fetch new articles for your items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Starting auto-download of some feeds&apos; articles</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-download new articles for %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot fetch articles at this point</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -599,7 +603,7 @@ Status: %3</translation>
         <translation>Ladda bara ner olästa artiklar</translation>
     </message>
     <message>
-        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed forever so you might end up with thousands of articles which you will never read anyway.</source>
+        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1128,17 +1132,9 @@ att funktionen inte är implementerad än.</translation>
         <source>Cleanup database</source>
         <translation>Rensa databasen</translation>
     </message>
-    <message>
-        <source>Remove all messages older than</source>
-        <translation>Ta bort alla meddelanden äldre än</translation>
-    </message>
     <message numerus="yes">
         <source> day(s)</source>
         <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
-    </message>
-    <message>
-        <source>Shrink database file</source>
-        <translation>Krymp databasfilen</translation>
     </message>
     <message>
         <source>Database information</source>
@@ -1169,10 +1165,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Databasrensning misslyckades.</translation>
     </message>
     <message>
-        <source>Remove all messages from recycle bin</source>
-        <translation>Ta bort alla meddelanden från papperskorgen</translation>
-    </message>
-    <message>
         <source>unknown</source>
         <translation>Okänd</translation>
     </message>
@@ -1185,12 +1177,24 @@ att funktionen inte är implementerad än.</translation>
         <translation>Rensningsinställningar</translation>
     </message>
     <message>
-        <source>Remove all read messages</source>
-        <translation>Tar bort alla lästa meddelanden</translation>
+        <source>Optimize database file</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remove all starred messages</source>
-        <translation>Tar bort alla stjärnmärkta meddelanden</translation>
+        <source>Remove all read articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all articles from recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all articles older than</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all starred articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1500,10 +1504,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Kan inte rensa databasen, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
-        <source>Feed update started</source>
-        <translation>Flödesuppdatering startad</translation>
-    </message>
-    <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation>Uppdaterade flödet &apos;%1&apos;</translation>
@@ -1740,13 +1740,13 @@ att funktionen inte är implementerad än.</translation>
         <source>Ta&amp;bs</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
-    <message>
-        <source>Message filters</source>
-        <translation>Meddelandefilter</translation>
-    </message>
     <message>
         <source>Remove selected</source>
         <translation>Ta bort markerat</translation>
@@ -1760,24 +1760,12 @@ att funktionen inte är implementerad än.</translation>
         <translation>&amp;Avmarkera alla</translation>
     </message>
     <message>
-        <source>Message filter details</source>
-        <translation>Meddelandefilter detaljerat</translation>
-    </message>
-    <message>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <source>Title of message filter</source>
-        <translation>Namn på meddelandefilter</translation>
-    </message>
-    <message>
         <source>JavaScript code</source>
         <translation>JavaScript-kod</translation>
-    </message>
-    <message>
-        <source>Your JavaScript-based message filtering logic</source>
-        <translation>Din JavaScript-baserade meddelandefiltreringslogik</translation>
     </message>
     <message>
         <source>Read</source>
@@ -1916,6 +1904,22 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>SAMPLE article filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article filter details</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of article filter</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your JavaScript-based article filtering logic</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2587,6 +2591,10 @@ Inloggningstoken upphör: %2</translation>
         <source>Other services</source>
         <translation>Andra tjänster</translation>
     </message>
+    <message>
+        <source>login failed</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>IOFactory</name>
@@ -2919,12 +2927,12 @@ Inloggningstoken upphör: %2</translation>
         <translation>Författare</translation>
     </message>
     <message>
-        <source>Created on</source>
-        <translation>Skapad</translation>
-    </message>
-    <message>
         <source>Score</source>
         <translation>Poäng</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Datum</translation>
     </message>
 </context>
 <context>
@@ -3567,10 +3575,6 @@ Feedly är ett säkert utrymme där du privat kan organisera och utforska de äm
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>New articles fetched</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Fetching articles right now</source>
         <translation type="unfinished"/>
     </message>
@@ -3588,6 +3592,14 @@ Feedly är ett säkert utrymme där du privat kan organisera och utforska de äm
     </message>
     <message>
         <source>Unknown event</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New (unread) articles fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML problem: %1</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3647,10 +3659,6 @@ Feedly är ett säkert utrymme där du privat kan organisera och utforska de äm
 </context>
 <context>
     <name>SearchTextWidget</name>
-    <message>
-        <source>Clear searched phrase</source>
-        <translation>Rensa söksträngen</translation>
-    </message>
     <message>
         <source>Seach text</source>
         <translation>Söktext</translation>
@@ -4015,14 +4023,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation> ms</translation>
     </message>
     <message>
-        <source>Message count format in feed list</source>
-        <translation>Meddelanderäknare för flödeslistan</translation>
-    </message>
-    <message>
-        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Ange vilket format meddelanderäknaren skall visa antal meddelanden för varje flöde/kategori. Använd &quot;%all&quot; och &quot;%unread&quot; vilket är platshållare för alla (respektive olästa) meddelanden.</translation>
-    </message>
-    <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation>Använd anpassada datum-/tidsformat (undantar format inlästa från aktivt språksystem)</translation>
     </message>
@@ -4055,26 +4055,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Välj nytt teckensnitt</translation>
     </message>
     <message>
-        <source>Download messages for all feeds on application startup with initial delay of</source>
-        <translation>Ladda ner meddelande från alla flöden vid programstart, med en inledande fördröjning på</translation>
-    </message>
-    <message>
-        <source>Only auto-download messages when application is unfocused</source>
-        <translation>Ladda bara ner automatiskt när programmet inte är i fokus</translation>
-    </message>
-    <message>
-        <source>Auto-download messages for all feeds every</source>
-        <translation>Ladda ner meddelanden automatiskt för alla flöden varje</translation>
-    </message>
-    <message>
-        <source>Hide message counts if there are no unread messages</source>
-        <translation>Dölj räkneverket om det inte finns några olästa meddelanden</translation>
-    </message>
-    <message>
-        <source>Display tooltips for feeds and messages</source>
-        <translation>Visa knappbeskrivningar för flöden och meddelanden</translation>
-    </message>
-    <message>
         <source>Feeds</source>
         <translation>Flöden</translation>
     </message>
@@ -4095,10 +4075,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Flytta programfönstret längst fram när artikel öppnas i extern webbläsare</translation>
     </message>
     <message>
-        <source>Keep message selection in the middle of the article list viewport</source>
-        <translation>Behåll meddelandemarkeringen i mitten av artikellistans vy</translation>
-    </message>
-    <message>
         <source>Height or rows in article list (-1 = default height)</source>
         <translation>Höjd eller rader i artikellistan (-1 = standardhöjd)</translation>
     </message>
@@ -4113,6 +4089,38 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>Feeds &amp; articles</source>
         <translation>Flöden &amp; artiklar</translation>
+    </message>
+    <message>
+        <source>Fetch articles for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-fetch articles for all feeds every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only auto-fetch articles if application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article count format in feed list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hide article counts if there are no unread articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Keep article selection in the middle of the article list viewport</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4353,10 +4361,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Clear</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Browse</source>
         <translation>&amp;Bläddra</translation>
     </message>
@@ -4413,16 +4417,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
 <context>
     <name>StandardFeed</name>
     <message>
-        <source>
-Network status: %1
-Encoding: %2
-Type: %3</source>
-        <translation>
-Nätverksstatus: %1
-Kodning: %2
-Typ: %3</translation>
-    </message>
-    <message>
         <source>Script</source>
         <translation>Skript</translation>
     </message>
@@ -4453,6 +4447,12 @@ Typ: %3</translation>
     <message>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
         <translation>Kan inte flytta flöde, detaljerad information loggades i felsökningsloggen.</translation>
+    </message>
+    <message>
+        <source>
+Encoding: %2
+Type: %3</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4757,16 +4757,8 @@ Typ: %3</translation>
         <translation>Förloppsindikator för flödesuppdatering</translation>
     </message>
     <message>
-        <source>Feed update label</source>
-        <translation>Flödesuppdateringsetikett</translation>
-    </message>
-    <message>
         <source>File download progress bar</source>
         <translation>Förloppsindikator för nedladdning</translation>
-    </message>
-    <message>
-        <source>File download label</source>
-        <translation>Nedladdningsetikett</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>

@@ -134,8 +134,8 @@ Erro: %1</translation>
         <translation>O feed não pode ser adicionado pois não há uma conta ativa que pode adicionar feeds.</translation>
     </message>
     <message>
-        <source>New articles fetched</source>
-        <translation>Novos artigos buscados</translation>
+        <source>Unread articles fetched</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -435,10 +435,6 @@ Clique para abrir a pasta de destino.</translation>
         <translation>erro de rede</translation>
     </message>
     <message>
-        <source>unspecified error</source>
-        <translation>erro não especificado</translation>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
@@ -469,6 +465,14 @@ Status: %3</translation>
         <source>has new articles</source>
         <translation>possui novos artigos</translation>
     </message>
+    <message>
+        <source>parsing error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>error</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
@@ -484,20 +488,20 @@ Status: %3</translation>
 <context>
     <name>FeedReader</name>
     <message>
-        <source>Cannot fetch articles for all items</source>
-        <translation>Não foi possível buscar artigos para todos os itens</translation>
-    </message>
-    <message>
-        <source>You cannot fetch new articles for your items because another critical operation is ongoing.</source>
-        <translation>Você não pode buscar novos artigos para seus itens pois outra operação crítica está em andamento.</translation>
-    </message>
-    <message>
         <source>Starting auto-download of some feeds&apos; articles</source>
         <translation>Iniciando download automático de alguns artigos de feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-download new articles for %n feed(s).</source>
         <translation><numerusform>Farei o download automático de novos artigos para%n feed(s).</numerusform><numerusform>Farei o download automático de novos artigos para%n feed(s).</numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot fetch articles at this point</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -599,8 +603,8 @@ Status: %3</translation>
         <translation>Baixar somente artigos não lidos</translation>
     </message>
     <message>
-        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed forever so you might end up with thousands of articles which you will never read anyway.</source>
-        <translation>Cuidado para não baixar muitos artigos, porque o Feedly armazena em cache permanentemente TODOS os artigos do feed para sempre, então você pode acabar com milhares de artigos que nunca irá ler de qualquer maneira.</translation>
+        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1128,17 +1132,9 @@ ou esta função ainda não foi implementada.</translation>
         <source>Cleanup database</source>
         <translation>Limpar banco de dados</translation>
     </message>
-    <message>
-        <source>Remove all messages older than</source>
-        <translation>Remover mensagens mais antigas que</translation>
-    </message>
     <message numerus="yes">
         <source> day(s)</source>
         <translation><numerusform> dia(s)</numerusform><numerusform> dia(s)</numerusform></translation>
-    </message>
-    <message>
-        <source>Shrink database file</source>
-        <translation>Compactar banco de dados</translation>
     </message>
     <message>
         <source>Database information</source>
@@ -1169,10 +1165,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Falha na limpeza do banco de dados.</translation>
     </message>
     <message>
-        <source>Remove all messages from recycle bin</source>
-        <translation>Remover todas as mensagens da lixeira</translation>
-    </message>
-    <message>
         <source>unknown</source>
         <translation>desconhecido</translation>
     </message>
@@ -1185,12 +1177,24 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Configurações de limpeza</translation>
     </message>
     <message>
-        <source>Remove all read messages</source>
-        <translation>Remover todas as mensagens não lidas</translation>
+        <source>Optimize database file</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remove all starred messages</source>
-        <translation>Remover todas as mensagens com estrela</translation>
+        <source>Remove all read articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all articles from recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all articles older than</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all starred articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1500,10 +1504,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Não é possível limpar o banco de dados, pois outra ação crítica está em execução.</translation>
     </message>
     <message>
-        <source>Feed update started</source>
-        <translation>Atualização do feed iniciada</translation>
-    </message>
-    <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation>Feed &apos;%1&apos; atualizado</translation>
@@ -1740,13 +1740,13 @@ ou esta função ainda não foi implementada.</translation>
         <source>Ta&amp;bs</source>
         <translation>A&amp;bas</translation>
     </message>
+    <message>
+        <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
-    <message>
-        <source>Message filters</source>
-        <translation>Filtros de mensagem</translation>
-    </message>
     <message>
         <source>Remove selected</source>
         <translation>Remover selecionados</translation>
@@ -1760,24 +1760,12 @@ ou esta função ainda não foi implementada.</translation>
         <translation>&amp;Desmarcar todos</translation>
     </message>
     <message>
-        <source>Message filter details</source>
-        <translation>Detalhes do filtro de mensagem</translation>
-    </message>
-    <message>
         <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
-        <source>Title of message filter</source>
-        <translation>Título do filtro de mensagem</translation>
-    </message>
-    <message>
         <source>JavaScript code</source>
         <translation>Código JavaScript</translation>
-    </message>
-    <message>
-        <source>Your JavaScript-based message filtering logic</source>
-        <translation>Sua lógica de filtragem de mensagens baseada em JavaScript</translation>
     </message>
     <message>
         <source>Read</source>
@@ -1928,6 +1916,22 @@ ou esta função ainda não foi implementada.</translation>
 </source>
         <translation>Erro ao filtrar artigos de AMOSTRA: &quot;%1&quot;.
 </translation>
+    </message>
+    <message>
+        <source>Article filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article filter details</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of article filter</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your JavaScript-based article filtering logic</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2599,6 +2603,10 @@ Expiração dos tokens de login: %2</translation>
         <source>Other services</source>
         <translation>Outros serviços</translation>
     </message>
+    <message>
+        <source>login failed</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>IOFactory</name>
@@ -2931,12 +2939,12 @@ Expiração dos tokens de login: %2</translation>
         <translation>Autor</translation>
     </message>
     <message>
-        <source>Created on</source>
-        <translation>Criado em</translation>
-    </message>
-    <message>
         <source>Score</source>
         <translation>Pontuação</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Data</translation>
     </message>
 </context>
 <context>
@@ -3579,10 +3587,6 @@ O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacid
         <translation>Não é possível inserir o filtro do artigo, pois o banco de dados atual não pode retornar o último ID de linha inserido.</translation>
     </message>
     <message>
-        <source>New articles fetched</source>
-        <translation>Novos artigos buscados</translation>
-    </message>
-    <message>
         <source>Fetching articles right now</source>
         <translation>Buscando artigos agora mesmo</translation>
     </message>
@@ -3601,6 +3605,14 @@ O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacid
     <message>
         <source>Unknown event</source>
         <translation>Evento desconhecido</translation>
+    </message>
+    <message>
+        <source>New (unread) articles fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML problem: %1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3659,10 +3671,6 @@ O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacid
 </context>
 <context>
     <name>SearchTextWidget</name>
-    <message>
-        <source>Clear searched phrase</source>
-        <translation>Limpar frase pesquisada</translation>
-    </message>
     <message>
         <source>Seach text</source>
         <translation>Pesquisar texto</translation>
@@ -4026,14 +4034,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation> ms</translation>
     </message>
     <message>
-        <source>Message count format in feed list</source>
-        <translation>Formato da contagem de mensagens na lista de feeds</translation>
-    </message>
-    <message>
-        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Entre o formato da contagem de mensagens exibido próximo a cada feed/categoria na lista de feeds. Use as strings &quot;%all&quot; e &quot;%unread&quot;, que são marcadores para a contagem atual das mensagens no total (ou não lidas).</translation>
-    </message>
-    <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation>Usar formato de data/hora personalizado (substitui o formato ativo carregado)</translation>
     </message>
@@ -4066,26 +4066,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Selecione a nova fonte</translation>
     </message>
     <message>
-        <source>Download messages for all feeds on application startup with initial delay of</source>
-        <translation>Baixar mensagens de todos os feeds ao iniciar o aplicativo com atraso inicial de</translation>
-    </message>
-    <message>
-        <source>Only auto-download messages when application is unfocused</source>
-        <translation>Somente baixar mensagens automaticamente quando o aplicativo está em segundo plano</translation>
-    </message>
-    <message>
-        <source>Auto-download messages for all feeds every</source>
-        <translation>Baixar mensagens automaticamente para todos os feeds a cada</translation>
-    </message>
-    <message>
-        <source>Hide message counts if there are no unread messages</source>
-        <translation>Ocultar contagem de mensagens se não houverem mensagens não lidas</translation>
-    </message>
-    <message>
-        <source>Display tooltips for feeds and messages</source>
-        <translation>Mostrar dicas de ferramentas para feeds e mensagens</translation>
-    </message>
-    <message>
         <source>Feeds</source>
         <translation>Feeds</translation>
     </message>
@@ -4106,10 +4086,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Trazer janela do aplicativo para a frente assim que o artigo é aberto no navegador externo</translation>
     </message>
     <message>
-        <source>Keep message selection in the middle of the article list viewport</source>
-        <translation>Manter seleção de mensagens no meio da janela de exibição da lista de artigos</translation>
-    </message>
-    <message>
         <source>Height or rows in article list (-1 = default height)</source>
         <translation>Altura ou linhas na lista de artigos (-1 = altura padrão)</translation>
     </message>
@@ -4124,6 +4100,38 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>Feeds &amp; articles</source>
         <translation>Feeds &amp; artigos</translation>
+    </message>
+    <message>
+        <source>Fetch articles for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-fetch articles for all feeds every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only auto-fetch articles if application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article count format in feed list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hide article counts if there are no unread articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Keep article selection in the middle of the article list viewport</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4364,10 +4372,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Caminho completo para arquivo de som WAV</translation>
     </message>
     <message>
-        <source>&amp;Clear</source>
-        <translation>&amp;Limpar</translation>
-    </message>
-    <message>
         <source>&amp;Browse</source>
         <translation>&amp;Procurar</translation>
     </message>
@@ -4424,16 +4428,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
 <context>
     <name>StandardFeed</name>
     <message>
-        <source>
-Network status: %1
-Encoding: %2
-Type: %3</source>
-        <translation>
-Status da rede: %1
-Codificação: %2
-Tipo: %3</translation>
-    </message>
-    <message>
         <source>Script</source>
         <translation>Script</translation>
     </message>
@@ -4464,6 +4458,12 @@ Tipo: %3</translation>
     <message>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
         <translation>Não é possível mover o feed, informações detalhadas foram registradas por meio do log de depuração.</translation>
+    </message>
+    <message>
+        <source>
+Encoding: %2
+Type: %3</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4768,16 +4768,8 @@ Tipo: %3</translation>
         <translation>Barra de progresso da atualização de feeds</translation>
     </message>
     <message>
-        <source>Feed update label</source>
-        <translation>Rótulo da atualização de feeds</translation>
-    </message>
-    <message>
         <source>File download progress bar</source>
         <translation>Barra de progresso do download de arquivos</translation>
-    </message>
-    <message>
-        <source>File download label</source>
-        <translation>Rótulo do download de arquivos</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>

@@ -387,9 +387,6 @@ void SqliteDriver::setPragmas(QSqlQuery& query) {
   query.exec(QSL("PRAGMA synchronous = OFF"));
   query.exec(QSL("PRAGMA journal_mode = MEMORY"));
   query.exec(QSL("PRAGMA page_size = 4096"));
-
-  //query.exec(QSL("PRAGMA locking_mode = EXCLUSIVE"));
-
   query.exec(QSL("PRAGMA cache_size = 16384"));
   query.exec(QSL("PRAGMA count_changes = OFF"));
   query.exec(QSL("PRAGMA temp_store = MEMORY"));

@@ -342,9 +342,12 @@ QList<Message> GreaderNetwork::itemContents(ServiceRoot* root, const QList<QStri
   QList<QString> my_stream_ids(stream_ids);
 
   while (!my_stream_ids.isEmpty()) {
-    QList<QString> batch_ids = my_stream_ids.mid(0, GREADER_API_ITEM_CONTENTS_BATCH);
+    int batch = m_service == GreaderServiceRoot::Service::TheOldReader
+                ? TOR_ITEM_CONTENTS_BATCH
+                : GREADER_API_ITEM_CONTENTS_BATCH;
+    QList<QString> batch_ids = my_stream_ids.mid(0, batch);
 
-    my_stream_ids = my_stream_ids.mid(GREADER_API_ITEM_CONTENTS_BATCH);
+    my_stream_ids = my_stream_ids.mid(batch);
 
     do {
       QString full_url = generateFullUrl(Operations::ItemContents);
@@ -908,6 +911,10 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
     message.m_feedId = stream_id.isEmpty()
                        ? message_obj["origin"].toObject()["streamId"].toString()
                        : stream_id;
+
+    if (message.m_title.isEmpty()) {
+      message.m_title = message.m_url;
+    }
 
     messages.append(message);
   }

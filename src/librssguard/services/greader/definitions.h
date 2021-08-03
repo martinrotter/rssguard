@@ -38,6 +38,7 @@
 
 // The Old Reader.
 #define TOR_SPONSORED_STREAM_ID   "tor/sponsored"
+#define TOR_ITEM_CONTENTS_BATCH   9999
 
 // FreshRSS.
 #define FRESHRSS_BASE_URL_PATH    "api/greader.php/"

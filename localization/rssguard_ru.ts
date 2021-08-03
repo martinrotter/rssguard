@@ -132,7 +132,7 @@ Error: %1</source>
         <translation>Канал не может быть добавлен, потому что нет активной учетной записи, которая может добавлять каналы.</translation>
     </message>
     <message>
-        <source>New articles fetched</source>
+        <source>Unread articles fetched</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -433,10 +433,6 @@ Click here to open parent directory.</source>
         <translation>ошибка сети</translation>
     </message>
     <message>
-        <source>unspecified error</source>
-        <translation>неопределенная ошибка</translation>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
@@ -467,6 +463,14 @@ Status: %3</source>
         <source>has new articles</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>parsing error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>error</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
@@ -482,20 +486,20 @@ Status: %3</source>
 <context>
     <name>FeedReader</name>
     <message>
-        <source>Cannot fetch articles for all items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You cannot fetch new articles for your items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Starting auto-download of some feeds&apos; articles</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-download new articles for %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot fetch articles at this point</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -597,7 +601,7 @@ Status: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed forever so you might end up with thousands of articles which you will never read anyway.</source>
+        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1125,17 +1129,9 @@ or this functionality is not implemented yet.</source>
         <source>Cleanup database</source>
         <translation>Очистить БД</translation>
     </message>
-    <message>
-        <source>Remove all messages older than</source>
-        <translation>Удалить все сообщения старше</translation>
-    </message>
     <message numerus="yes">
         <source> day(s)</source>
         <translation><numerusform>день</numerusform><numerusform>дня</numerusform><numerusform>дней</numerusform><numerusform>дня</numerusform></translation>
-    </message>
-    <message>
-        <source>Shrink database file</source>
-        <translation>Уменьшить файл базы данных</translation>
     </message>
     <message>
         <source>Database information</source>
@@ -1166,10 +1162,6 @@ or this functionality is not implemented yet.</source>
         <translation>Очистка БД не удалась.</translation>
     </message>
     <message>
-        <source>Remove all messages from recycle bin</source>
-        <translation>Удалить все сообщения из корзины</translation>
-    </message>
-    <message>
         <source>unknown</source>
         <translation>неизвестно</translation>
     </message>
@@ -1182,11 +1174,23 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remove all read messages</source>
+        <source>Optimize database file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remove all starred messages</source>
+        <source>Remove all read articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all articles from recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all articles older than</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all starred articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1497,10 +1501,6 @@ or this functionality is not implemented yet.</source>
         <translation>Не удается очистить базу данных, т.к. выполняется другое критическое действие.</translation>
     </message>
     <message>
-        <source>Feed update started</source>
-        <translation>Обновление ленты началось</translation>
-    </message>
-    <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation>Обновление канала &apos;%1&apos;</translation>
@@ -1737,13 +1737,13 @@ or this functionality is not implemented yet.</source>
         <source>Ta&amp;bs</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
-    <message>
-        <source>Message filters</source>
-        <translation>Фильтры сообщений</translation>
-    </message>
     <message>
         <source>Remove selected</source>
         <translation>Удалить выбранное</translation>
@@ -1757,24 +1757,12 @@ or this functionality is not implemented yet.</source>
         <translation>Ничего (&amp;U)</translation>
     </message>
     <message>
-        <source>Message filter details</source>
-        <translation>Параметры фильтра сообщений</translation>
-    </message>
-    <message>
         <source>Title</source>
         <translation>Заголовок</translation>
     </message>
     <message>
-        <source>Title of message filter</source>
-        <translation>Заголовок фильтра сообщений</translation>
-    </message>
-    <message>
         <source>JavaScript code</source>
         <translation>JavaScript код</translation>
-    </message>
-    <message>
-        <source>Your JavaScript-based message filtering logic</source>
-        <translation>Ваша логика фильтрации сообщений на основе JavaScript</translation>
     </message>
     <message>
         <source>Read</source>
@@ -1913,6 +1901,22 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>SAMPLE article filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article filter details</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of article filter</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your JavaScript-based article filtering logic</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2585,6 +2589,10 @@ Login tokens expiration: %2</source>
         <source>Other services</source>
         <translation>Другие сервисы</translation>
     </message>
+    <message>
+        <source>login failed</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>IOFactory</name>
@@ -2917,11 +2925,11 @@ Login tokens expiration: %2</source>
         <translation>Автор</translation>
     </message>
     <message>
-        <source>Created on</source>
-        <translation>Дата создания</translation>
+        <source>Score</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Score</source>
+        <source>Date</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3568,10 +3576,6 @@ Feedly is a secure space where you can privately organize and research the topic
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>New articles fetched</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Fetching articles right now</source>
         <translation type="unfinished"/>
     </message>
@@ -3589,6 +3593,14 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>Unknown event</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New (unread) articles fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML problem: %1</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3648,10 +3660,6 @@ Feedly is a secure space where you can privately organize and research the topic
 </context>
 <context>
     <name>SearchTextWidget</name>
-    <message>
-        <source>Clear searched phrase</source>
-        <translation>Очистить искомую фразу</translation>
-    </message>
     <message>
         <source>Seach text</source>
         <translation>Найти текст</translation>
@@ -4015,14 +4023,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>мс</translation>
     </message>
     <message>
-        <source>Message count format in feed list</source>
-        <translation>Формат подсчёта rss-сообщений</translation>
-    </message>
-    <message>
-        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Введите формат для подсчета сообщений, отображаемого рядом с каждым каналом/категорией в списке каналов. Используйте строки &quot;%all&quot; и &quot;%unread%&quot;, которые являются меткой для фактического подсчета всех (или непрочитанных) сообщений.</translation>
-    </message>
-    <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation>Использовать свой формат даты/времени (переопределение системного)</translation>
     </message>
@@ -4055,26 +4055,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Выберите новый шрифт</translation>
     </message>
     <message>
-        <source>Download messages for all feeds on application startup with initial delay of</source>
-        <translation>Загружать сообщения для всех каналов при запуске приложения с начальной задержкой</translation>
-    </message>
-    <message>
-        <source>Only auto-download messages when application is unfocused</source>
-        <translation>Только автозагрузка сообщений, когда приложение не в фокусе</translation>
-    </message>
-    <message>
-        <source>Auto-download messages for all feeds every</source>
-        <translation>Автоматическая загрузка сообщений для всех каналов каждые</translation>
-    </message>
-    <message>
-        <source>Hide message counts if there are no unread messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Display tooltips for feeds and messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Feeds</source>
         <translation>Каналы</translation>
     </message>
@@ -4095,10 +4075,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Keep message selection in the middle of the article list viewport</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Height or rows in article list (-1 = default height)</source>
         <translation type="unfinished"/>
     </message>
@@ -4112,6 +4088,38 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feeds &amp; articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-fetch articles for all feeds every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only auto-fetch articles if application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article count format in feed list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hide article counts if there are no unread articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Keep article selection in the middle of the article list viewport</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4353,10 +4361,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Clear</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Browse</source>
         <translation>Обзор (&amp;B)</translation>
     </message>
@@ -4413,16 +4417,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>StandardFeed</name>
     <message>
-        <source>
-Network status: %1
-Encoding: %2
-Type: %3</source>
-        <translation>
-Статус сети: %1
-Кодирование: %2
-Тип: %3</translation>
-    </message>
-    <message>
         <source>Script</source>
         <translation>Скрипт</translation>
     </message>
@@ -4452,6 +4446,12 @@ Type: %3</source>
     </message>
     <message>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>
+Encoding: %2
+Type: %3</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4757,16 +4757,8 @@ Type: %3</source>
         <translation>Индикатор обновления канала</translation>
     </message>
     <message>
-        <source>Feed update label</source>
-        <translation>Метка обновления канала</translation>
-    </message>
-    <message>
         <source>File download progress bar</source>
         <translation>Индикатор загрузки файла</translation>
-    </message>
-    <message>
-        <source>File download label</source>
-        <translation>Метка загруженного файла</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>

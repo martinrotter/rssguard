@@ -1429,17 +1429,18 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                     .replace(QSL(":account_id"), QString::number(account_id)));
       }
 
-      QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
-      auto bulk_error = db.exec(final_bulk).lastError();
+      if (!vals.isEmpty()) {
+        QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
+        auto bulk_error = db.exec(final_bulk).lastError();
 
-      if (bulk_error.isValid()) {
-        QString txt = bulk_error.text() + bulk_error.databaseText();
+        if (bulk_error.isValid()) {
+          QString txt = bulk_error.text() + bulk_error.databaseText();
 
-        IOFactory::writeFile("aa.sql", final_bulk.toUtf8());
-
-        qCriticalNN << LOGSEC_DB
-                    << "Failed bulk insert of articles:"
-                    << QUOTE_W_SPACE_DOT(txt);
+          //IOFactory::writeFile("aa.sql", final_bulk.toUtf8());
+          qCriticalNN << LOGSEC_DB
+                      << "Failed bulk insert of articles:"
+                      << QUOTE_W_SPACE_DOT(txt);
+        }
       }
     }
   }

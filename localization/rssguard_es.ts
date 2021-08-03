@@ -132,7 +132,7 @@ Error: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>New articles fetched</source>
+        <source>Unread articles fetched</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -433,10 +433,6 @@ Pulse aquí para abrir la carpeta principal</translation>
         <translation>error de la red</translation>
     </message>
     <message>
-        <source>unspecified error</source>
-        <translation>error no especificado</translation>
-    </message>
-    <message>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
@@ -467,6 +463,14 @@ Estado: %3</translation>
         <source>has new articles</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>parsing error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>error</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
@@ -482,20 +486,20 @@ Estado: %3</translation>
 <context>
     <name>FeedReader</name>
     <message>
-        <source>Cannot fetch articles for all items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You cannot fetch new articles for your items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Starting auto-download of some feeds&apos; articles</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-download new articles for %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot fetch articles at this point</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -597,7 +601,7 @@ Estado: %3</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed forever so you might end up with thousands of articles which you will never read anyway.</source>
+        <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1126,17 +1130,9 @@ o debido a que esta función aún no está implementada.</translation>
         <source>Cleanup database</source>
         <translation>Depurar base de datos</translation>
     </message>
-    <message>
-        <source>Remove all messages older than</source>
-        <translation>Borrar todo mensaje más antiguo que</translation>
-    </message>
     <message numerus="yes">
         <source> day(s)</source>
         <translation><numerusform>día()</numerusform><numerusform>día(s)</numerusform></translation>
-    </message>
-    <message>
-        <source>Shrink database file</source>
-        <translation>Comprimir archivo de base de datos</translation>
     </message>
     <message>
         <source>Database information</source>
@@ -1167,10 +1163,6 @@ o debido a que esta función aún no está implementada.</translation>
         <translation>La depuración de la base de datos falló.</translation>
     </message>
     <message>
-        <source>Remove all messages from recycle bin</source>
-        <translation>Borrar todos los mensajes de la papelera de reciclaje</translation>
-    </message>
-    <message>
         <source>unknown</source>
         <translation>desconocido</translation>
     </message>
@@ -1183,11 +1175,23 @@ o debido a que esta función aún no está implementada.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remove all read messages</source>
+        <source>Optimize database file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remove all starred messages</source>
+        <source>Remove all read articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all articles from recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all articles older than</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all starred articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1498,10 +1502,6 @@ o debido a que esta función aún no está implementada.</translation>
         <translation>No es posible depurar la base de datos, debido a que otra operación crítica está en ejecución.</translation>
     </message>
     <message>
-        <source>Feed update started</source>
-        <translation>Inició la actualización de la fuente</translation>
-    </message>
-    <message>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation>Mostrar el texto en la barra de estado cuando una fuente en particular es actualizada.</translation>
@@ -1738,13 +1738,13 @@ o debido a que esta función aún no está implementada.</translation>
         <source>Ta&amp;bs</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormMessageFiltersManager</name>
-    <message>
-        <source>Message filters</source>
-        <translation>Filtros de mensajes</translation>
-    </message>
     <message>
         <source>Remove selected</source>
         <translation>Borrar seleccionados</translation>
@@ -1758,24 +1758,12 @@ o debido a que esta función aún no está implementada.</translation>
         <translation>&amp;Desmarcar todo</translation>
     </message>
     <message>
-        <source>Message filter details</source>
-        <translation>Descripción del filtro de mensaje</translation>
-    </message>
-    <message>
         <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
-        <source>Title of message filter</source>
-        <translation>Título del filtro de mensaje</translation>
-    </message>
-    <message>
         <source>JavaScript code</source>
         <translation>Código JavaScript</translation>
-    </message>
-    <message>
-        <source>Your JavaScript-based message filtering logic</source>
-        <translation>Su lógica de filtrado de mensajes basada en JavaScript</translation>
     </message>
     <message>
         <source>Read</source>
@@ -1914,6 +1902,22 @@ o debido a que esta función aún no está implementada.</translation>
     <message>
         <source>SAMPLE article filtering error: '%1'.
 </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article filter details</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title of article filter</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your JavaScript-based article filtering logic</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2585,6 +2589,10 @@ Expiración de testigos de ingreso: %2</translation>
         <source>Other services</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>login failed</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>IOFactory</name>
@@ -2917,11 +2925,11 @@ Expiración de testigos de ingreso: %2</translation>
         <translation>Autor</translation>
     </message>
     <message>
-        <source>Created on</source>
-        <translation>Creado en</translation>
+        <source>Score</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Score</source>
+        <source>Date</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3563,10 +3571,6 @@ Feedly is a secure space where you can privately organize and research the topic
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>New articles fetched</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Fetching articles right now</source>
         <translation type="unfinished"/>
     </message>
@@ -3584,6 +3588,14 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>Unknown event</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New (unread) articles fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>XML problem: %1</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3643,10 +3655,6 @@ Feedly is a secure space where you can privately organize and research the topic
 </context>
 <context>
     <name>SearchTextWidget</name>
-    <message>
-        <source>Clear searched phrase</source>
-        <translation>Borrar la frase buscada</translation>
-    </message>
     <message>
         <source>Seach text</source>
         <translation>Buscar texto</translation>
@@ -4010,14 +4018,6 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
         <translation> ms</translation>
     </message>
     <message>
-        <source>Message count format in feed list</source>
-        <translation>Formato de recuento de mensajes en la lista de fuentes</translation>
-    </message>
-    <message>
-        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Ingrese el formato de recuento de mensajes que aparece junto a cada fuente/categoría en la lista de fuentes. Utilice las secuencias &quot;%all&quot; y &quot;%unread&quot; que son los marcadores de posición para el recuento real de mensajes totales (o no leídos).</translation>
-    </message>
-    <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation>Utilizar formato personalizado de fecha/hora (reemplaza el formato cargado según la ubicación vigente)</translation>
     </message>
@@ -4050,26 +4050,6 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
         <translation>Seleccionar nuevo tipo de letra</translation>
     </message>
     <message>
-        <source>Download messages for all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only auto-download messages when application is unfocused</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Auto-download messages for all feeds every</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Hide message counts if there are no unread messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Display tooltips for feeds and messages</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Feeds</source>
         <translation>Fuentes</translation>
     </message>
@@ -4090,10 +4070,6 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Keep message selection in the middle of the article list viewport</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Height or rows in article list (-1 = default height)</source>
         <translation type="unfinished"/>
     </message>
@@ -4107,6 +4083,38 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
     </message>
     <message>
         <source>Feeds &amp; articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles for all feeds on application startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-fetch articles for all feeds every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only auto-fetch articles if application is unfocused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article count format in feed list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Hide article counts if there are no unread articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display tooltips for feeds and articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Keep article selection in the middle of the article list viewport</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4348,10 +4356,6 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Clear</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Browse</source>
         <translation>&amp;Explorar</translation>
     </message>
@@ -4408,16 +4412,6 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
 <context>
     <name>StandardFeed</name>
     <message>
-        <source>
-Network status: %1
-Encoding: %2
-Type: %3</source>
-        <translation>
-Estado de red: %1
-Codificación %2
-Clase: %3</translation>
-    </message>
-    <message>
         <source>Script</source>
         <translation type="unfinished"/>
     </message>
@@ -4447,6 +4441,12 @@ Clase: %3</translation>
     </message>
     <message>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>
+Encoding: %2
+Type: %3</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4752,16 +4752,8 @@ Clase: %3</translation>
         <translation>Barra de progreso de actualización de la fuente</translation>
     </message>
     <message>
-        <source>Feed update label</source>
-        <translation>Etiqueta de actualización de la fuente</translation>
-    </message>
-    <message>
         <source>File download progress bar</source>
         <translation>Barra de progreso de descarga del archivo</translation>
-    </message>
-    <message>
-        <source>File download label</source>
-        <translation>Etiqueta de descarga del archivo</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
