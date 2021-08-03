@@ -9,7 +9,7 @@ RSS Guard
 
 ### [Downloads](https://github.com/martinrotter/rssguard/releases) | [Development builds](https://github.com/martinrotter/rssguard/releases/tag/devbuild) | [Documentation](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md)
 
-RSS Guard is simple RSS/ATOM feed reader for Windows, Linux or Mac OS X which supports many online RSS services:
+RSS Guard is simple RSS/ATOM feed reader for Windows, Linux or Mac OS X which can work with RSS/ATOM/JSON and also supports many online RSS services:
 * [Tiny Tiny RSS](https://tt-rss.org),
 * [Inoreader](https://www.inoreader.com),
 * [Nextcloud News](https://apps.nextcloud.com/apps/news),
