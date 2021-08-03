@@ -223,5 +223,5 @@ void GreaderServiceRoot::updateTitleIcon() {
 }
 
 RootItem* GreaderServiceRoot::obtainNewTreeForSyncIn() const {
-  return m_network->categoriesFeedsLabelsTree(network()->service() != Service::FreshRss, networkProxy());
+  return m_network->categoriesFeedsLabelsTree(true, networkProxy());
 }

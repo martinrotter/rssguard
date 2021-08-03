@@ -164,8 +164,10 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
   if (m_performGlobalFetching) {
     qWarningNN << LOGSEC_GREADER << "Performing global contents fetching.";
 
-    auto remote_all_ids_list = itemIds(GREADER_API_FULL_STATE_READING_LIST, false, proxy);
-    auto remote_unread_ids_list = itemIds(GREADER_API_FULL_STATE_READING_LIST, true, proxy);
+    QStringList remote_all_ids_list = m_downloadOnlyUnreadMessages
+                                      ? QStringList()
+                                      : itemIds(GREADER_API_FULL_STATE_READING_LIST, false, proxy);
+    QStringList remote_unread_ids_list = itemIds(GREADER_API_FULL_STATE_READING_LIST, true, proxy);
 
     for (int i = 0; i < remote_all_ids_list.size(); i++) {
       remote_all_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_all_ids_list.at(i)));
@@ -227,8 +229,10 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
     // 2. Get read IDs for a feed.
     // 3. Download messages/contents for missing or changed IDs.
     // 4. Add prefetched starred msgs.
-    auto remote_all_ids_list = itemIds(stream_id, false, proxy);
-    auto remote_unread_ids_list = itemIds(stream_id, true, proxy);
+    QStringList remote_all_ids_list = m_downloadOnlyUnreadMessages
+                                      ? QStringList()
+                                      : itemIds(stream_id, false, proxy);
+    QStringList remote_unread_ids_list = itemIds(stream_id, true, proxy);
 
     // Convert item IDs to long form.
     for (int i = 0; i < remote_all_ids_list.size(); i++) {
@@ -366,7 +370,8 @@ QList<Message> GreaderNetwork::itemContents(ServiceRoot* root, const QList<QStri
   QList<QString> my_stream_ids(stream_ids);
 
   while (!my_stream_ids.isEmpty()) {
-    int batch = m_service == GreaderServiceRoot::Service::TheOldReader
+    int batch = m_service == GreaderServiceRoot::Service::TheOldReader ||
+                m_service == GreaderServiceRoot::Service::FreshRss
                 ? TOR_ITEM_CONTENTS_BATCH
                 : GREADER_API_ITEM_CONTENTS_BATCH;
     QList<QString> batch_ids = my_stream_ids.mid(0, batch);
