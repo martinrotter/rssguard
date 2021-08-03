@@ -58,14 +58,15 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 }
 
 void GreaderServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
-                                                  const QHash<QString, QHash<BagOfMessages, QStringList>>& stated_msgs,
-                                                  const QHash<QString, QStringList>& tagged_msgs) {
+                                                  const QHash<QString, QHash<BagOfMessages, QStringList>>& stated_messages,
+                                                  const QHash<QString, QStringList>& tagged_messages) {
   // Prefetch starred messages.
-  m_network->prepareFeedFetching(this,
-                                 feeds,
-                                 stated_msgs,
-                                 tagged_msgs,
-                                 networkProxy());
+  if (true /* intelligent downloading */) {
+    m_network->prepareFeedFetching(this, feeds, stated_messages, tagged_messages, networkProxy());
+  }
+  else {
+    m_network->clearPrefetchedMessages();
+  }
 }
 
 QList<Message> GreaderServiceRoot::obtainNewMessages(Feed* feed,

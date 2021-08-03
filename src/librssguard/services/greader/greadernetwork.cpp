@@ -121,11 +121,17 @@ QVariantHash GreaderNetwork::userInfo(const QNetworkProxy& proxy) {
   return QJsonDocument::fromJson(output).object().toVariantHash();
 }
 
+void GreaderNetwork::clearPrefetchedMessages() {
+  m_prefetchedMessages.clear();
+}
+
 void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
                                          const QList<Feed*>& feeds,
-                                         const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_msgs,
-                                         const QHash<QString, QStringList>& tagged_msgs,
+                                         const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+                                         const QHash<QString, QStringList>& tagged_messages,
                                          const QNetworkProxy& proxy) {
+  Q_UNUSED(tagged_messages)
+
   m_prefetchedMessages.clear();
 
   double perc_of_fetching = (feeds.size() * 1.0) / root->getSubTreeFeeds().size();
@@ -144,7 +150,7 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
 
   QSet<QString> remote_starred_ids(remote_starred_ids_list.begin(), remote_starred_ids_list.end());
   QSet<QString> local_starred_ids;
-  QList<QHash<ServiceRoot::BagOfMessages, QStringList>> all_states = stated_msgs.values();
+  QList<QHash<ServiceRoot::BagOfMessages, QStringList>> all_states = stated_messages.values();
 
   for (auto& lst : all_states) {
     auto s = lst.value(ServiceRoot::BagOfMessages::Starred);
@@ -183,7 +189,15 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
       local_read_ids.unite(QSet<QString>(r.begin(), r.end()));
     }
 
-    auto not_downloaded = remote_all_ids - local_read_ids - local_unread_ids;
+    QSet<QString> not_downloaded;
+
+    if (!m_downloadOnlyUnreadMessages) {
+      not_downloaded = remote_all_ids - local_read_ids - local_unread_ids;
+    }
+    else {
+      not_downloaded = remote_unread_ids - local_read_ids - local_unread_ids;
+    }
+
     auto moved_unread = local_unread_ids.intersect(remote_read_ids);
     auto moved_read = local_read_ids.intersect(remote_unread_ids);
 
@@ -204,6 +218,8 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
                                                         const QHash<QString, QStringList>& tagged_messages,
                                                         Feed::Status& error,
                                                         const QNetworkProxy& proxy) {
+  Q_UNUSED(tagged_messages)
+
   QList<Message> msgs;
 
   if (!m_performGlobalFetching) {
@@ -238,7 +254,15 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
                                  local_read_ids_list.end());
 
     // 3.
-    auto not_downloaded = remote_all_ids - local_read_ids - local_unread_ids;
+    QSet<QString> not_downloaded;
+
+    if (!m_downloadOnlyUnreadMessages) {
+      not_downloaded = remote_all_ids - local_read_ids - local_unread_ids;
+    }
+    else {
+      not_downloaded = remote_unread_ids - local_read_ids - local_unread_ids;
+    }
+
     auto moved_unread = local_unread_ids.intersect(remote_read_ids);
     auto moved_read = local_read_ids.intersect(remote_unread_ids);
     auto to_download = not_downloaded + moved_read + moved_unread;

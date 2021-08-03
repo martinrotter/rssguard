@@ -40,10 +40,11 @@ class GreaderNetwork : public QObject {
 
     QVariantHash userInfo(const QNetworkProxy& proxy);
 
+    void clearPrefetchedMessages();
     void prepareFeedFetching(GreaderServiceRoot* root,
                              const QList<Feed*>& feeds,
-                             const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_msgs,
-                             const QHash<QString, QStringList>& tagged_msgs,
+                             const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+                             const QHash<QString, QStringList>& tagged_messages,
                              const QNetworkProxy& proxy);
 
     QList<Message> getMessagesIntelligently(ServiceRoot* root,

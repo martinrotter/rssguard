@@ -316,11 +316,11 @@ bool ServiceRoot::wantsBaggedIdsOfExistingMessages() const {
 }
 
 void ServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
-                                           const QHash<QString, QHash<BagOfMessages, QStringList>>& stated_msgs,
-                                           const QHash<QString, QStringList>& tagged_msgs) {
+                                           const QHash<QString, QHash<BagOfMessages, QStringList>>& stated_messages,
+                                           const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(feeds)
-  Q_UNUSED(stated_msgs)
-  Q_UNUSED(tagged_msgs)
+  Q_UNUSED(stated_messages)
+  Q_UNUSED(tagged_messages)
 }
 
 void ServiceRoot::itemChanged(const QList<RootItem*>& items) {

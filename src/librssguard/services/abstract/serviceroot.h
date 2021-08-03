@@ -66,8 +66,8 @@ class ServiceRoot : public RootItem {
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual bool wantsBaggedIdsOfExistingMessages() const;
     virtual void aboutToBeginFeedFetching(const QList<Feed*>& feeds,
-                                          const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_msgs,
-                                          const QHash<QString, QStringList>& tagged_msgs);
+                                          const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+                                          const QHash<QString, QStringList>& tagged_messages);
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
