@@ -191,19 +191,22 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
       local_read_ids.unite(QSet<QString>(r.begin(), r.end()));
     }
 
-    QSet<QString> not_downloaded;
-
     if (!m_downloadOnlyUnreadMessages) {
-      not_downloaded = remote_all_ids - local_read_ids - local_unread_ids;
+      to_download += remote_all_ids - local_read_ids - local_unread_ids;
     }
     else {
-      not_downloaded = remote_unread_ids - local_read_ids - local_unread_ids;
+      to_download += remote_unread_ids - local_read_ids - local_unread_ids;
     }
 
-    auto moved_unread = local_unread_ids.intersect(remote_read_ids);
     auto moved_read = local_read_ids.intersect(remote_unread_ids);
 
-    to_download += not_downloaded + moved_read + moved_unread;
+    to_download += moved_read;
+
+    if (!m_downloadOnlyUnreadMessages) {
+      auto moved_unread = local_unread_ids.intersect(remote_read_ids);
+
+      to_download += moved_unread;
+    }
   }
   else {
     qWarningNN << LOGSEC_GREADER << "Performing feed-based contents fetching.";
@@ -258,18 +261,25 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
                                  local_read_ids_list.end());
 
     // 3.
-    QSet<QString> not_downloaded;
+    QSet<QString> to_download;
 
     if (!m_downloadOnlyUnreadMessages) {
-      not_downloaded = remote_all_ids - local_read_ids - local_unread_ids;
+      to_download += remote_all_ids - local_read_ids - local_unread_ids;
     }
     else {
-      not_downloaded = remote_unread_ids - local_read_ids - local_unread_ids;
+      to_download += remote_unread_ids - local_read_ids - local_unread_ids;
     }
 
-    auto moved_unread = local_unread_ids.intersect(remote_read_ids);
     auto moved_read = local_read_ids.intersect(remote_unread_ids);
-    auto to_download = not_downloaded + moved_read + moved_unread;
+
+    to_download += moved_read;
+
+    if (!m_downloadOnlyUnreadMessages) {
+      auto moved_unread = local_unread_ids.intersect(remote_read_ids);
+
+      to_download += moved_unread;
+    }
+
     QList<QString> to_download_list(to_download.begin(), to_download.end());
 
     if (!to_download_list.isEmpty()) {
@@ -305,7 +315,7 @@ QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Import
   return editLabels(GREADER_API_FULL_STATE_IMPORTANT, importance == RootItem::Importance::Important, msg_custom_ids, proxy);
 }
 
-QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy) {
+QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy, int max_count) {
   QString continuation;
 
   if (!ensureLogin(proxy)) {
@@ -317,7 +327,10 @@ QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, 
   do {
     QString full_url = generateFullUrl(Operations::ItemIds).arg(m_service == GreaderServiceRoot::Service::TheOldReader
                                                                      ? stream_id
-                                                                     : QUrl::toPercentEncoding(stream_id));
+                                                                     : QUrl::toPercentEncoding(stream_id),
+                                                                QString::number(max_count <= 0
+                                                                                ? GREADET_API_ITEM_IDS_MAX
+                                                                                : max_count));
     auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
     if (unread_only) {

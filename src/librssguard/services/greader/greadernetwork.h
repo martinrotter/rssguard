@@ -54,7 +54,7 @@ class GreaderNetwork : public QObject {
                                             Feed::Status& error,
                                             const QNetworkProxy& proxy);
 
-    QStringList itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy);
+    QStringList itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy, int max_count = -1);
 
     // Stream contents for a feed/label/etc.
     QList<Message> itemContents(ServiceRoot* root, const QList<QString>& stream_ids,

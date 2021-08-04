@@ -3,7 +3,7 @@
     * [List of main features](#list-of-main-features)
     * [Core concepts](#core-concepts)
     * [Web-based and lite app variants](#web-based-and-lite-app-variants)
-    * [RSS Guard 3 vs. RSS Guard 4](#rss-guard-3-vs-rss-guard-4)
+    * [RSS Guard 3 vs RSS Guard 4](#rss-guard-3-vs-rss-guard-4)
     * [Supported feed formats and online feed services](Feed-formats.md)
     * [Message filtering](Message-filters.md)
     * [Database backends](#database-backends)
@@ -18,7 +18,7 @@
     * [AdBlock](#adblock)
     * [GUI tweaking](#gui-tweaking)
 * [Miscellaneous topics](#miscellaneous-topics)
-    * [Downloads](Downloads.md)
+    * [Download](Downloads.md)
     * [How to contribute](#how-to-contribute)
     * [Reporting bugs](#reporting-bugs)
     * [Localizations](#localizations)
@@ -29,6 +29,7 @@
     * [Cleaning database](#cleaning-database)
     * [Portable user data](#portable-user-data)
     * [Downloading new messages](#downloading-new-messages)
+    * [Synchronization algorithms](#synchronization-algorithms)
     * [Generating debug log file](#generating-debug-log-file)
 
 <img src="images/rssguard.png" width="64px">
@@ -193,7 +194,7 @@ There are two big downsides of using `developer access token`:
 * It allows maximum of 250 API calls per day.
 
 ## Notifications
-RSS Guard allows you to configure behavior of desktop notifications. There is a number of events to be configured:
+RSS Guard allows you to configure behavior of desktop notifications. There is a number of events which can be configured:
 * new messages downloaded,
 * downloading of messages started,
 * login OAuth tokens refreshed,
@@ -370,6 +371,16 @@ Here is the rough workflow which is performed when you hit `Feeds & categories -
         * 1. Sanitize title of the message. This includes replacing all non-breaking spaces with normal spaces, removing all leading spaces, replacing all multiple consecutive spaces with single space. Contents of message are converted from [percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding).
         * 2. Run all [message filters](#message-filtering), one by one, one the message. Cache read/important message attributes (or labels changes) changed by filters to queue which is later synchronized back to online feed service.
         * 3. Store the message into RSS Guard's [database](#database-backends), creating completely new DB entry for it, or replacing existing message. **Note that two messages are considered as the same message if they have identical URL, author and title and they belong to the same feed.** This does not stand for synchronized feeds (TT-RSS, Inoreader and others) where each message has assigned special ID which identifies the message uniquely.
+
+## Synchronization algorithms
+There is always a problem of how to synchronize remote and local articles properly and fast.
+
+RSS Guard supports many web-based [feed services](Feed-formats.md) which can by synchronized with full two-way synchronization.
+
+For some services, RSS Guard provides modern synchronization algorithm which **tries to minimise amount of downloaded data and downloads only really needed articles** - not-yet-downloaded or updated ones. This improved synchronization algorithm is called "Intelligent synchronization algorithm" in RSS Guard and at this point is optionally supported by these plugins:
+* Google Reader API.
+
+Other services offer older, not so fast synchronization algorithms and will be eventually modernized.
 
 ## Generating debug log file
 If you run into problems with RSS Guard and you need your problems fixed, you should provide log file from the time when problem occurred. RSS Guard writes all important information to standard output, which is usually calling terminal.
