@@ -98,7 +98,9 @@ class GreaderNetwork : public QObject {
     // Make sure we are logged in and if we are not, return error.
     bool ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output = nullptr);
 
+    QString convertLongStreamIdToShortStreamId(const QString& stream_id) const;
     QString convertShortStreamIdToLongStreamId(const QString& stream_id) const;
+
     QString simplifyStreamId(const QString& stream_id) const;
     QStringList decodeItemIds(const QString& stream_json_data, QString& continuation);
     QList<Message> decodeStreamContents(ServiceRoot* root, const QString& stream_json_data, const QString& stream_id, QString& continuation);

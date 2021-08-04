@@ -213,8 +213,17 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
   }
 
   Feed::Status error;
+  QList<QString> to_download_list(to_download.begin(), to_download.end());
 
-  m_prefetchedMessages = itemContents(root, QList<QString>(to_download.begin(), to_download.end()), error, proxy);
+  if (!to_download_list.isEmpty()) {
+    if (m_service == GreaderServiceRoot::Service::Reedah) {
+      for (int i = 0; i < to_download_list.size(); i++) {
+        to_download_list.replace(i, convertLongStreamIdToShortStreamId(to_download_list.at(i)));
+      }
+    }
+
+    m_prefetchedMessages = itemContents(root, to_download_list, error, proxy);
+  }
 }
 
 QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
@@ -283,6 +292,12 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
     QList<QString> to_download_list(to_download.begin(), to_download.end());
 
     if (!to_download_list.isEmpty()) {
+      if (m_service == GreaderServiceRoot::Service::Reedah) {
+        for (int i = 0; i < to_download_list.size(); i++) {
+          to_download_list.replace(i, convertLongStreamIdToShortStreamId(to_download_list.at(i)));
+        }
+      }
+
       msgs = itemContents(root, to_download_list, error, proxy);
     }
   }
@@ -849,7 +864,16 @@ bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::Netw
   return true;
 }
 
+QString GreaderNetwork::convertLongStreamIdToShortStreamId(const QString& stream_id) const {
+  return QString::number(QString(stream_id).replace(QSL("tag:google.com,2005:reader/item/"),
+                                                    QString()).toULongLong(nullptr, 16));
+}
+
 QString GreaderNetwork::convertShortStreamIdToLongStreamId(const QString& stream_id) const {
+  if (stream_id.startsWith(QSL("tag:google.com,2005:reader/item/"))) {
+    return stream_id;
+  }
+
   if (m_service == GreaderServiceRoot::Service::TheOldReader) {
     return QSL("tag:google.com,2005:reader/item/%1").arg(stream_id);
   }
