@@ -79,7 +79,10 @@ DatabaseDriver* DatabaseFactory::driverForType(DatabaseDriver::DriverType d) con
 }
 
 QString DatabaseFactory::escapeQuery(const QString& query) {
-  return QString(query).replace(QSL("'"), QSL("''")).replace(QSL("\""), QSL("\\\""));
+  return QString(query)
+         .replace(QSL("'"), QSL("''"));
+
+  //.replace(QSL("\""), QSL("\\\""));
 }
 
 DatabaseDriver::DriverType DatabaseFactory::activeDatabaseDriver() const {
