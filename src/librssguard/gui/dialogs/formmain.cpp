@@ -410,7 +410,7 @@ void FormMain::onFeedUpdatesProgress(const Feed* feed, int current, int total) {
   statusBar()->showProgressFeeds(int((current * 100.0) / total),
 
                                  //: Text display in status bar when particular feed is updated.
-                                 tr("Updated feed '%1'").arg(feed->title()));
+                                 tr("Fetched '%1'").arg(TextFactory::shorten(feed->title())));
 }
 
 void FormMain::updateMessageButtonsAvailability() {

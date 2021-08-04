@@ -18,7 +18,7 @@ StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent) {
 
   m_barProgressFeeds = new ProgressBarWithText(this);
   m_barProgressFeeds->setTextVisible(true);
-  m_barProgressFeeds->setFixedWidth(200);
+  m_barProgressFeeds->setFixedWidth(230);
   m_barProgressFeeds->setVisible(false);
   m_barProgressFeeds->setObjectName(QSL("m_barProgressFeeds"));
 
@@ -27,7 +27,7 @@ StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent) {
 
   m_barProgressDownload = new ProgressBarWithText(this);
   m_barProgressDownload->setTextVisible(true);
-  m_barProgressDownload->setFixedWidth(200);
+  m_barProgressDownload->setFixedWidth(230);
   m_barProgressDownload->setVisible(false);
   m_barProgressDownload->setObjectName(QSL("m_barProgressDownload"));
 
