@@ -44,6 +44,7 @@ QVariantHash GreaderServiceRoot::customDatabaseData() const {
   data["url"] = m_network->baseUrl();
   data["batch_size"] = m_network->batchSize();
   data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
+  data["intelligent_synchronization"] = m_network->intelligentSynchronization();
 
   return data;
 }
@@ -55,13 +56,13 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setBaseUrl(data["url"].toString());
   m_network->setBatchSize(data["batch_size"].toInt());
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
+  m_network->setIntelligentSynchronization(data["intelligent_synchronization"].toBool());
 }
 
 void GreaderServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
                                                   const QHash<QString, QHash<BagOfMessages, QStringList>>& stated_messages,
                                                   const QHash<QString, QStringList>& tagged_messages) {
-  // Prefetch starred messages.
-  if (true /* intelligent downloading */) {
+  if (m_network->intelligentSynchronization()) {
     m_network->prepareFeedFetching(this, feeds, stated_messages, tagged_messages, networkProxy());
   }
   else {
@@ -72,13 +73,10 @@ void GreaderServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
 QList<Message> GreaderServiceRoot::obtainNewMessages(Feed* feed,
                                                      const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                      const QHash<QString, QStringList>& tagged_messages) {
-  Q_UNUSED(stated_messages)
-  Q_UNUSED(tagged_messages)
-
   Feed::Status error = Feed::Status::Normal;
 
-  if (true /* intelligent downloading */ ) {
-    return network()->getMessagesIntelligently(this,
+  if (m_network->intelligentSynchronization()) {
+    return m_network->getMessagesIntelligently(this,
                                                feed->customId(),
                                                stated_messages,
                                                tagged_messages,
@@ -86,7 +84,7 @@ QList<Message> GreaderServiceRoot::obtainNewMessages(Feed* feed,
                                                networkProxy());
   }
   else {
-    return network()->streamContents(this, feed->customId(), error, networkProxy());
+    return m_network->streamContents(this, feed->customId(), error, networkProxy());
   }
 
   if (error != Feed::Status::NewMessages && error != Feed::Status::Normal) {

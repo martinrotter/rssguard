@@ -20,7 +20,7 @@
 GreaderNetwork::GreaderNetwork(QObject* parent)
   : QObject(parent), m_service(GreaderServiceRoot::Service::FreshRss), m_username(QString()), m_password(QString()),
   m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false),
-  m_prefetchedMessages({}), m_performGlobalFetching(false) {
+  m_prefetchedMessages({}), m_performGlobalFetching(false), m_intelligentSynchronization(false) {
   clearCredentials();
 }
 
@@ -1051,6 +1051,14 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
     default:
       return sanitizedBaseUrl();
   }
+}
+
+bool GreaderNetwork::intelligentSynchronization() const {
+  return m_intelligentSynchronization;
+}
+
+void GreaderNetwork::setIntelligentSynchronization(bool intelligent_synchronization) {
+  m_intelligentSynchronization = intelligent_synchronization;
 }
 
 bool GreaderNetwork::downloadOnlyUnreadMessages() const {

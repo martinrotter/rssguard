@@ -29,6 +29,7 @@ void FormEditGreaderAccount::apply() {
   account<GreaderServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
   account<GreaderServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_cbDownloadOnlyUnreadMessages->isChecked());
   account<GreaderServiceRoot>()->network()->setService(m_details->service());
+  account<GreaderServiceRoot>()->network()->setIntelligentSynchronization(m_details->m_ui.m_cbNewAlgorithm->isChecked());
 
   account<GreaderServiceRoot>()->saveAccountDataToDatabase();
   accept();
@@ -50,6 +51,7 @@ void FormEditGreaderAccount::loadAccountData() {
   m_details->m_ui.m_txtUrl->lineEdit()->setText(existing_root->network()->baseUrl());
   m_details->m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
   m_details->m_ui.m_cbDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
+  m_details->m_ui.m_cbNewAlgorithm->setChecked(existing_root->network()->intelligentSynchronization());
 }
 
 void FormEditGreaderAccount::performTest() {

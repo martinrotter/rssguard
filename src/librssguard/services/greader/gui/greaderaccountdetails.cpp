@@ -29,22 +29,29 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
+
   m_ui.m_lblLimitMessages->setText(tr("Limiting the number of fetched articles per feed makes fetching of "
                                       "articles faster, but if your feed contains more articles "
                                       "than specified limit, then some older articles might not be "
                                       "fetched at all."));
-
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessages, true);
+
+  m_ui.m_lblNewAlgorithm->setText(tr("If you select intelligent synchronization, then only not-yet-fetched "
+                                     "or updated articles are downloaded. Network usage is greatly reduced and "
+                                     "overall synchronization speed is greatly improved."));
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblNewAlgorithm, false);
 
   connect(m_ui.m_checkShowPassword, &QCheckBox::toggled, this, &GreaderAccountDetails::displayPassword);
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onPasswordChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onUsernameChanged);
   connect(m_ui.m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onUrlChanged);
   connect(m_ui.m_cmbService, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &GreaderAccountDetails::fillPredefinedUrl);
+  connect(m_ui.m_cbNewAlgorithm, &QCheckBox::toggled, m_ui.m_spinLimitMessages, &MessageCountSpinBox::setDisabled);
 
   setTabOrder(m_ui.m_cmbService, m_ui.m_txtUrl->lineEdit());
   setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_cbDownloadOnlyUnreadMessages);
-  setTabOrder(m_ui.m_cbDownloadOnlyUnreadMessages, m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_cbDownloadOnlyUnreadMessages, m_ui.m_cbNewAlgorithm);
+  setTabOrder(m_ui.m_cbNewAlgorithm, m_ui.m_spinLimitMessages);
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
   setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_checkShowPassword);

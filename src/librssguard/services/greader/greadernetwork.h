@@ -92,6 +92,9 @@ class GreaderNetwork : public QObject {
     bool downloadOnlyUnreadMessages() const;
     void setDownloadOnlyUnreadMessages(bool download_only_unread);
 
+    bool intelligentSynchronization() const;
+    void setIntelligentSynchronization(bool intelligent_synchronization);
+
   private:
     QPair<QByteArray, QByteArray> authHeader() const;
 
@@ -120,6 +123,7 @@ class GreaderNetwork : public QObject {
     QString m_authToken;
     QList<Message> m_prefetchedMessages;
     bool m_performGlobalFetching;
+    bool m_intelligentSynchronization;
 };
 
 #endif // GREADERNETWORK_H
