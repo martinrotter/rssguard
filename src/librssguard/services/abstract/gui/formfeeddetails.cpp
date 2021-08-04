@@ -78,10 +78,14 @@ void FormFeedDetails::createConnections() {
 
 void FormFeedDetails::loadFeedData() {
   if (m_creatingNew) {
-    setWindowTitle(tr("Add new feed"));
+    GuiUtilities::applyDialogProperties(*this,
+                                        qApp->icons()->fromTheme(QSL("application-rss+xml")),
+                                        tr("Add new feed"));
   }
   else {
-    setWindowTitle(tr("Edit \"%1\"").arg(m_feed->title()));
+    GuiUtilities::applyDialogProperties(*this,
+                                        m_feed->fullIcon(),
+                                        tr("Edit \"%1\"").arg(m_feed->title()));
   }
 
   m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(m_feed->autoUpdateType()))));
@@ -106,9 +110,6 @@ void FormFeedDetails::acceptIfPossible() {
 void FormFeedDetails::initialize() {
   m_ui.reset(new Ui::FormFeedDetails());
   m_ui->setupUi(this);
-
-  // Set flags and attributes.
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("application-rss+xml")));
 
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);

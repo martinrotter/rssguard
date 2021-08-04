@@ -55,7 +55,9 @@ void FormCategoryDetails::loadCategoryData() {
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot, m_category);
 
   if (m_creatingNew) {
-    setWindowTitle(tr("Add new category"));
+    GuiUtilities::applyDialogProperties(*this,
+                                        qApp->icons()->fromTheme(QSL("folder")),
+                                        tr("Add new category"));
 
     // Make sure that "default" icon is used as the default option for new
     // categories.
@@ -76,7 +78,10 @@ void FormCategoryDetails::loadCategoryData() {
     }
   }
   else {
-    setWindowTitle(tr("Edit \"%1\"").arg(m_category->title()));
+    GuiUtilities::applyDialogProperties(*this,
+                                        m_category->fullIcon(),
+                                        tr("Edit \"%1\"").arg(m_category->title()));
+
     m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) m_category->parent())));
   }
 
@@ -160,9 +165,6 @@ void FormCategoryDetails::initialize() {
   m_ui->m_txtTitle->lineEdit()->setToolTip(tr("Set title for your category."));
   m_ui->m_txtDescription->lineEdit()->setPlaceholderText(tr("Category description"));
   m_ui->m_txtDescription->lineEdit()->setToolTip(tr("Set description for your category."));
-
-  // Set flags and attributes.
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("folder")));
 
   // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);

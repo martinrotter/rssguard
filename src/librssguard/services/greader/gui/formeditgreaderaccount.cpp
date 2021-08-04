@@ -45,6 +45,7 @@ void FormEditGreaderAccount::loadAccountData() {
 
   GreaderServiceRoot* existing_root = account<GreaderServiceRoot>();
 
+  setWindowIcon(existing_root->icon());
   m_details->setService(existing_root->network()->service());
   m_details->m_ui.m_txtUsername->lineEdit()->setText(existing_root->network()->username());
   m_details->m_ui.m_txtPassword->lineEdit()->setText(existing_root->network()->password());
