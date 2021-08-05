@@ -36,7 +36,8 @@ FeedlyNetwork::FeedlyNetwork(QObject* parent)
   m_developerAccessToken(QString()), m_batchSize(FEEDLY_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false) {
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
-  m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT));
+  m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT),
+                          true);
 
   connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &FeedlyNetwork::onTokensError);
   connect(m_oauth, &OAuth2Service::authFailed, this, &FeedlyNetwork::onAuthFailed);
