@@ -30,7 +30,7 @@ class OAuthHttpHandler : public QObject {
     QString listenAddressPort() const;
 
     // Sets full URL string, for example "http://localhost:123456".
-    void setListenAddressPort(const QString& full_uri);
+    void setListenAddressPort(const QString& full_uri, bool start_handler);
 
   signals:
     void authRejected(const QString& error_description, const QString& state);

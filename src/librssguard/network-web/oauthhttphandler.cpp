@@ -29,7 +29,7 @@ bool OAuthHttpHandler::isListening() const {
   return m_httpServer.isListening();
 }
 
-void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
+void OAuthHttpHandler::setListenAddressPort(const QString& full_uri, bool start_handler) {
   QUrl url = QUrl::fromUserInput(full_uri);
   QHostAddress listen_address;
   quint16 listen_port = quint16(url.port(80));
@@ -41,7 +41,9 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
     listen_address = QHostAddress(url.host());
   }
 
-  if (listen_address == m_listenAddress && listen_port == m_listenPort && m_httpServer.isListening()) {
+  if (listen_address == m_listenAddress &&
+      listen_port == m_listenPort &&
+      start_handler == m_httpServer.isListening()) {
     // NOTE: We do not need to change listener's settings or re-start it.
     return;
   }
@@ -49,6 +51,16 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
   if (m_httpServer.isListening()) {
     qWarningNN << LOGSEC_OAUTH << "Redirection OAuth handler is listening. Stopping it now.";
     stop();
+  }
+
+  m_listenAddress = listen_address;
+  m_listenPort = listen_port;
+  m_listenAddressPort = full_uri;
+
+  if (!start_handler) {
+    qDebugNN << LOGSEC_OAUTH
+             << "User does not want handler to be running.";
+    return;
   }
 
   if (!m_httpServer.listen(listen_address, listen_port)) {
@@ -61,10 +73,6 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri) {
                 << QUOTE_W_SPACE_DOT(m_httpServer.errorString());
   }
   else {
-    m_listenAddress = listen_address;
-    m_listenPort = listen_port;
-    m_listenAddressPort = full_uri;
-
     qDebugNN << LOGSEC_OAUTH
              << "OAuth redirect handler IS LISTENING on address"
              << QUOTE_W_SPACE(m_listenAddress.toString())

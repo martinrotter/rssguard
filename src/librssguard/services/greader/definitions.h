@@ -4,9 +4,10 @@
 #define GREADER_DEFAULT_BATCH_SIZE         100
 
 // URLs.
-#define GREADER_URL_REEDAH  "https://www.reedah.com"
-#define GREADER_URL_TOR     "https://theoldreader.com"
-#define GREADER_URL_BAZQUX  "https://bazqux.com"
+#define GREADER_URL_REEDAH    "https://www.reedah.com"
+#define GREADER_URL_TOR       "https://theoldreader.com"
+#define GREADER_URL_BAZQUX    "https://bazqux.com"
+#define GREADER_URL_INOREADER "https://www.inoreader.com"
 
 // States.
 #define GREADER_API_STATE_READING_LIST    "state/com.google/reading-list"
@@ -40,6 +41,15 @@
 // The Old Reader.
 #define TOR_SPONSORED_STREAM_ID   "tor/sponsored"
 #define TOR_ITEM_CONTENTS_BATCH   9999
+
+#define INO_HEADER_APPID    "AppId"
+#define INO_HEADER_APPKEY   "AppKey"
+
+#define INO_OAUTH_REDIRECT_URI_PORT   14488
+#define INO_OAUTH_SCOPE               "read write"
+#define INO_OAUTH_TOKEN_URL           "https://www.inoreader.com/oauth2/token"
+#define INO_OAUTH_AUTH_URL            "https://www.inoreader.com/oauth2/auth"
+#define INO_REG_API_URL               "https://www.inoreader.com/developers/register-app"
 
 // FreshRSS.
 #define FRESHRSS_BASE_URL_PATH    "api/greader.php/"

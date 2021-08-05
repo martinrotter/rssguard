@@ -61,7 +61,8 @@ void InoreaderNetworkFactory::initializeOauth() {
 
   m_oauth2->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +
                            QL1C(':') +
-                           QString::number(INOREADER_OAUTH_REDIRECT_URI_PORT));
+                           QString::number(INOREADER_OAUTH_REDIRECT_URI_PORT),
+                           true);
 
   connect(m_oauth2, &OAuth2Service::tokensRetrieveError, this, &InoreaderNetworkFactory::onTokensError);
   connect(m_oauth2, &OAuth2Service::authFailed, this, &InoreaderNetworkFactory::onAuthFailed);

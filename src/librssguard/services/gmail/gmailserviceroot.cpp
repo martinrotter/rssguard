@@ -71,7 +71,7 @@ void GmailServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->oauth()->setClientId(data["client_id"].toString());
   m_network->oauth()->setClientSecret(data["client_secret"].toString());
   m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
-  m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString());
+  m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString(), true);
 }
 
 QList<Message> GmailServiceRoot::obtainNewMessages(Feed* feed,

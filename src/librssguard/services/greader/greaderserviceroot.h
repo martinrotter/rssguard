@@ -17,6 +17,7 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
       TheOldReader = 2,
       Bazqux = 4,
       Reedah = 8,
+      Inoreader = 16,
       Other = 1024
     };
 
@@ -40,6 +41,8 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual bool wantsBaggedIdsOfExistingMessages() const;
 
     GreaderNetwork* network() const;
+
+    static QString serviceToString(Service service);
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;

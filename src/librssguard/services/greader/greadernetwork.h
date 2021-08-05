@@ -9,6 +9,8 @@
 #include "services/abstract/feed.h"
 #include "services/greader/greaderserviceroot.h"
 
+class OAuth2Service;
+
 class GreaderNetwork : public QObject {
   Q_OBJECT
 
@@ -87,13 +89,20 @@ class GreaderNetwork : public QObject {
 
     void clearCredentials();
 
-    static QString serviceToString(GreaderServiceRoot::Service service);
-
     bool downloadOnlyUnreadMessages() const;
     void setDownloadOnlyUnreadMessages(bool download_only_unread);
 
     bool intelligentSynchronization() const;
     void setIntelligentSynchronization(bool intelligent_synchronization);
+
+    void setRoot(GreaderServiceRoot* root);
+
+    OAuth2Service* oauth() const;
+    void setOauth(OAuth2Service* oauth);
+
+  private slots:
+    void onTokensError(const QString& error, const QString& error_description);
+    void onAuthFailed();
 
   private:
     QPair<QByteArray, QByteArray> authHeader() const;
@@ -110,8 +119,10 @@ class GreaderNetwork : public QObject {
     RootItem* decodeTagsSubscriptions(const QString& categories, const QString& feeds, bool obtain_icons, const QNetworkProxy& proxy);
     QString sanitizedBaseUrl() const;
     QString generateFullUrl(Operations operation) const;
+    void initializeOauth();
 
   private:
+    GreaderServiceRoot* m_root;
     GreaderServiceRoot::Service m_service;
     QString m_username;
     QString m_password;
@@ -124,6 +135,7 @@ class GreaderNetwork : public QObject {
     QList<Message> m_prefetchedMessages;
     bool m_performGlobalFetching;
     bool m_intelligentSynchronization;
+    OAuth2Service* m_oauth2;
 };
 
 #endif // GREADERNETWORK_H

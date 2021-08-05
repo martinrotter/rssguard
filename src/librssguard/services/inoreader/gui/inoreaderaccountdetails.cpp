@@ -58,10 +58,10 @@ void InoreaderAccountDetails::testSetup(const QNetworkProxy& custom_proxy) {
   m_lastProxy = custom_proxy;
 
   if (m_oauth != nullptr) {
-    m_oauth->logout();
+    m_oauth->logout(true);
     m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
     m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
-    m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text());
+    m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text(), true);
     m_oauth->login();
   }
 }

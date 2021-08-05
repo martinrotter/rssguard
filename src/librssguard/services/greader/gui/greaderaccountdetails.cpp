@@ -5,21 +5,26 @@
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/systemfactory.h"
+#include "network-web/oauth2service.h"
+#include "network-web/webfactory.h"
 #include "services/greader/definitions.h"
 #include "services/greader/greadernetwork.h"
 
 #include <QVariantHash>
 
-GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) {
+GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
+  m_oauth(nullptr), m_lastProxy({}) {
   m_ui.setupUi(this);
 
   for (auto serv : { GreaderServiceRoot::Service::Bazqux,
                      GreaderServiceRoot::Service::FreshRss,
+                     GreaderServiceRoot::Service::Inoreader,
                      GreaderServiceRoot::Service::Reedah,
                      GreaderServiceRoot::Service::TheOldReader,
                      GreaderServiceRoot::Service::Other }) {
-    m_ui.m_cmbService->addItem(GreaderNetwork::serviceToString(serv), QVariant::fromValue(serv));
+    m_ui.m_cmbService->addItem(GreaderServiceRoot::serviceToString(serv), QVariant::fromValue(serv));
   }
 
   m_ui.m_lblTestResult->label()->setWordWrap(true);
@@ -34,12 +39,26 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) 
                                       "articles faster, but if your feed contains more articles "
                                       "than specified limit, then some older articles might not be "
                                       "fetched at all."));
+
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessages, true);
 
   m_ui.m_lblNewAlgorithm->setText(tr("If you select intelligent synchronization, then only not-yet-fetched "
                                      "or updated articles are downloaded. Network usage is greatly reduced and "
                                      "overall synchronization speed is greatly improved."));
+
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblNewAlgorithm, false);
+
+#if defined(INOREADER_OFFICIAL_SUPPORT)
+  m_ui.m_lblInfo->setText(tr("There are some preconfigured OAuth tokens so you do not have to fill in your "
+                             "client ID/secret, but it is strongly recommended to obtain your "
+                             "own as preconfigured tokens have limited global usage quota. If you wish "
+                             "to use preconfigured tokens, simply leave all above fields to their default values even "
+                             "if they are empty."));
+#else
+  m_ui.m_lblInfo->setText(tr("You have to fill in your client ID/secret and also fill in correct redirect URL."));
+#endif
+
+  GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
 
   connect(m_ui.m_checkShowPassword, &QCheckBox::toggled, this, &GreaderAccountDetails::displayPassword);
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onPasswordChanged);
@@ -47,6 +66,10 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) 
   connect(m_ui.m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onUrlChanged);
   connect(m_ui.m_cmbService, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &GreaderAccountDetails::fillPredefinedUrl);
   connect(m_ui.m_cbNewAlgorithm, &QCheckBox::toggled, m_ui.m_spinLimitMessages, &MessageCountSpinBox::setDisabled);
+  connect(m_ui.m_txtAppId->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::checkOAuthValue);
+  connect(m_ui.m_txtAppKey->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::checkOAuthValue);
+  connect(m_ui.m_txtRedirectUrl->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::checkOAuthValue);
+  connect(m_ui.m_btnRegisterApi, &QPushButton::clicked, this, &GreaderAccountDetails::registerApi);
 
   setTabOrder(m_ui.m_cmbService, m_ui.m_txtUrl->lineEdit());
   setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_cbDownloadOnlyUnreadMessages);
@@ -55,12 +78,83 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent) 
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
   setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_checkShowPassword);
-  setTabOrder(m_ui.m_checkShowPassword, m_ui.m_btnTestSetup);
+  setTabOrder(m_ui.m_checkShowPassword, m_ui.m_txtAppId);
+  setTabOrder(m_ui.m_txtAppId, m_ui.m_txtAppKey);
+  setTabOrder(m_ui.m_txtAppKey, m_ui.m_txtRedirectUrl);
+  setTabOrder(m_ui.m_txtRedirectUrl, m_ui.m_btnRegisterApi);
+  setTabOrder(m_ui.m_btnRegisterApi, m_ui.m_btnTestSetup);
 
   onPasswordChanged();
   onUsernameChanged();
   onUrlChanged();
   displayPassword(false);
+
+  emit m_ui.m_txtAppId->lineEdit()->textChanged(m_ui.m_txtAppId->lineEdit()->text());
+  emit m_ui.m_txtAppKey->lineEdit()->textChanged(m_ui.m_txtAppKey->lineEdit()->text());
+  emit m_ui.m_txtRedirectUrl->lineEdit()->textChanged(m_ui.m_txtAppKey->lineEdit()->text());
+}
+
+void GreaderAccountDetails::onAuthFailed() {
+  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                  tr("You did not grant access."),
+                                  tr("There was error during testing."));
+}
+
+void GreaderAccountDetails::onAuthError(const QString& error, const QString& detailed_description) {
+  Q_UNUSED(error)
+
+  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                  tr("There is error. %1").arg(detailed_description),
+                                  tr("There was error during testing."));
+}
+
+void GreaderAccountDetails::onAuthGranted() {
+  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                  tr("Tested successfully. You may be prompted to login once more."),
+                                  tr("Your access was approved."));
+
+  try {
+    GreaderNetwork fac;
+
+    fac.setOauth(m_oauth);
+    auto resp = fac.userInfo(m_lastProxy);
+
+    m_ui.m_txtUsername->lineEdit()->setText(resp["userEmail"].toString());
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_GREADER
+                << "Failed to obtain profile with error:"
+                << QUOTE_W_SPACE_DOT(ex.message());
+  }
+}
+
+void GreaderAccountDetails::hookNetwork() {
+  if (m_oauth != nullptr) {
+    connect(m_oauth, &OAuth2Service::tokensRetrieved, this, &GreaderAccountDetails::onAuthGranted);
+    connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &GreaderAccountDetails::onAuthError);
+    connect(m_oauth, &OAuth2Service::authFailed, this, &GreaderAccountDetails::onAuthFailed);
+  }
+}
+
+void GreaderAccountDetails::registerApi() {
+  qApp->web()->openUrlInExternalBrowser(INO_REG_API_URL);
+}
+
+void GreaderAccountDetails::checkOAuthValue(const QString& value) {
+  auto* line_edit = qobject_cast<LineEditWithStatus*>(sender()->parent());
+
+  if (line_edit != nullptr) {
+    if (value.isEmpty()) {
+#if defined(INOREADER_OFFICIAL_SUPPORT)
+      line_edit->setStatus(WidgetWithStatus::StatusType::Ok, tr("Preconfigured client ID/secret will be used."));
+#else
+      line_edit->setStatus(WidgetWithStatus::StatusType::Error, tr("Empty value is entered."));
+#endif
+    }
+    else {
+      line_edit->setStatus(WidgetWithStatus::StatusType::Ok, tr("Some value is entered."));
+    }
+  }
 }
 
 GreaderServiceRoot::Service GreaderAccountDetails::service() const {
@@ -76,25 +170,38 @@ void GreaderAccountDetails::displayPassword(bool display) {
 }
 
 void GreaderAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
-  GreaderNetwork factory;
+  m_lastProxy = custom_proxy;
 
-  factory.setUsername(m_ui.m_txtUsername->lineEdit()->text());
-  factory.setPassword(m_ui.m_txtPassword->lineEdit()->text());
-  factory.setBaseUrl(m_ui.m_txtUrl->lineEdit()->text());
-  factory.setService(service());
-  factory.clearCredentials();
-
-  auto result = factory.clientLogin(custom_proxy);
-
-  if (result != QNetworkReply::NetworkError::NoError) {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(result)),
-                                    tr("Network error, have you entered correct Nextcloud endpoint and password?"));
+  if (service() == GreaderServiceRoot::Service::Inoreader) {
+    if (m_oauth != nullptr) {
+      m_oauth->logout(true);
+      m_oauth->setClientId(m_ui.m_txtAppId->lineEdit()->text());
+      m_oauth->setClientSecret(m_ui.m_txtAppKey->lineEdit()->text());
+      m_oauth->setRedirectUrl(m_ui.m_txtRedirectUrl->lineEdit()->text(), true);
+      m_oauth->login();
+    }
   }
   else {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                    tr("You are good to go!"),
-                                    tr("Yeah."));
+    GreaderNetwork factory;
+
+    factory.setUsername(m_ui.m_txtUsername->lineEdit()->text());
+    factory.setPassword(m_ui.m_txtPassword->lineEdit()->text());
+    factory.setBaseUrl(m_ui.m_txtUrl->lineEdit()->text());
+    factory.setService(service());
+    factory.clearCredentials();
+
+    auto result = factory.clientLogin(custom_proxy);
+
+    if (result != QNetworkReply::NetworkError::NoError) {
+      m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                      tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(result)),
+                                      tr("Network error, have you entered correct Nextcloud endpoint and password?"));
+    }
+    else {
+      m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                      tr("You are good to go!"),
+                                      tr("Yeah."));
+    }
   }
 }
 
@@ -145,9 +252,17 @@ void GreaderAccountDetails::fillPredefinedUrl() {
       m_ui.m_txtUrl->lineEdit()->setText(QSL(GREADER_URL_TOR));
       break;
 
+    case GreaderServiceRoot::Service::Inoreader:
+      m_ui.m_txtUrl->lineEdit()->setText(QSL(GREADER_URL_INOREADER));
+      break;
+
     default:
       m_ui.m_txtUrl->lineEdit()->clear();
       m_ui.m_txtUrl->setFocus();
       break;
   }
+
+  // Show OAuth settings for Inoreader and classic for other services.
+  m_ui.m_stackedAuth->setCurrentIndex(service() == GreaderServiceRoot::Service::Inoreader ? 1 : 0);
+  m_ui.m_txtUrl->setDisabled(service() == GreaderServiceRoot::Service::Inoreader);
 }

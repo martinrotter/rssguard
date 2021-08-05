@@ -57,7 +57,7 @@ class OAuth2Service : public QObject {
     void setRefreshToken(const QString& refresh_token);
 
     QString redirectUrl() const;
-    void setRedirectUrl(const QString& redirect_url);
+    void setRedirectUrl(const QString& redirect_url, bool start_handler);
 
     QString clientId() const;
     void setClientId(const QString& client_id);

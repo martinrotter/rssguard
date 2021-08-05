@@ -299,8 +299,8 @@ QString OAuth2Service::redirectUrl() const {
   return m_redirectionHandler->listenAddressPort();
 }
 
-void OAuth2Service::setRedirectUrl(const QString& redirect_url) {
-  m_redirectionHandler->setListenAddressPort(redirect_url);
+void OAuth2Service::setRedirectUrl(const QString& redirect_url, bool start_handler) {
+  m_redirectionHandler->setListenAddressPort(redirect_url, start_handler);
 }
 
 QString OAuth2Service::refreshToken() const {

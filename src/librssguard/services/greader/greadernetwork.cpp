@@ -3,10 +3,12 @@
 #include "services/greader/greadernetwork.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "database/databasequeries.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
+#include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
@@ -18,9 +20,12 @@
 #include <QJsonObject>
 
 GreaderNetwork::GreaderNetwork(QObject* parent)
-  : QObject(parent), m_service(GreaderServiceRoot::Service::FreshRss), m_username(QString()), m_password(QString()),
-  m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false),
-  m_prefetchedMessages({}), m_performGlobalFetching(false), m_intelligentSynchronization(false) {
+  : QObject(parent), m_root(nullptr), m_service(GreaderServiceRoot::Service::FreshRss), m_username(QString()),
+  m_password(QString()), m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false),
+  m_prefetchedMessages({}), m_performGlobalFetching(false), m_intelligentSynchronization(false),
+  m_oauth2(new OAuth2Service(INO_OAUTH_AUTH_URL, INO_OAUTH_TOKEN_URL,
+                             {}, {}, INO_OAUTH_SCOPE, this)) {
+  initializeOauth();
   clearCredentials();
 }
 
@@ -819,27 +824,11 @@ void GreaderNetwork::setBaseUrl(const QString& base_url) {
   m_baseUrl = base_url;
 }
 
-QString GreaderNetwork::serviceToString(GreaderServiceRoot::Service service) {
-  switch (service) {
-    case GreaderServiceRoot::Service::FreshRss:
-      return QSL("FreshRSS");
-
-    case GreaderServiceRoot::Service::Bazqux:
-      return QSL("Bazqux");
-
-    case GreaderServiceRoot::Service::Reedah:
-      return QSL("Reedah");
-
-    case GreaderServiceRoot::Service::TheOldReader:
-      return QSL("The Old Reader");
-
-    default:
-      return tr("Other services");
-  }
-}
-
 QPair<QByteArray, QByteArray> GreaderNetwork::authHeader() const {
-  return { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), QSL("GoogleLogin auth=%1").arg(m_authAuth).toLocal8Bit() };
+  QPair<QByteArray, QByteArray> header = { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                           QSL("GoogleLogin auth=%1").arg(m_authAuth).toLocal8Bit() };
+
+  return header;
 }
 
 bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output) {
@@ -1051,6 +1040,69 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
     default:
       return sanitizedBaseUrl();
   }
+}
+
+void GreaderNetwork::onTokensError(const QString& error, const QString& error_description) {
+  Q_UNUSED(error)
+
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       tr("Inoreader: authentication error"),
+                       tr("Click this to login again. Error is: '%1'").arg(error_description),
+                       QSystemTrayIcon::MessageIcon::Critical,
+                       {}, {},
+                       [this]() {
+    m_oauth2->setAccessToken(QString());
+    m_oauth2->setRefreshToken(QString());
+    m_oauth2->login();
+  });
+}
+
+void GreaderNetwork::onAuthFailed() {
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       tr("Inoreader: authorization denied"),
+                       tr("Click this to login again."),
+                       QSystemTrayIcon::MessageIcon::Critical,
+                       {}, {},
+                       [this]() {
+    m_oauth2->login();
+  });
+}
+
+void GreaderNetwork::initializeOauth() {
+#if defined(INOREADER_OFFICIAL_SUPPORT)
+  m_oauth2->setClientSecretId(TextFactory::decrypt(INOREADER_CLIENT_ID, OAUTH_DECRYPTION_KEY));
+  m_oauth2->setClientSecretSecret(TextFactory::decrypt(INOREADER_CLIENT_SECRET, OAUTH_DECRYPTION_KEY));
+#endif
+
+  m_oauth2->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +
+                           QL1C(':') +
+                           QString::number(INO_OAUTH_REDIRECT_URI_PORT),
+                           false);
+
+  connect(m_oauth2, &OAuth2Service::tokensRetrieveError, this, &GreaderNetwork::onTokensError);
+  connect(m_oauth2, &OAuth2Service::authFailed, this, &GreaderNetwork::onAuthFailed);
+  connect(m_oauth2, &OAuth2Service::tokensRetrieved, this, [this](QString access_token, QString refresh_token, int expires_in) {
+    Q_UNUSED(expires_in)
+    Q_UNUSED(access_token)
+
+    if (m_root != nullptr && m_root->accountId() > 0 && !refresh_token.isEmpty()) {
+      QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+      DatabaseQueries::storeNewOauthTokens(database, refresh_token, m_root->accountId());
+    }
+  });
+}
+
+OAuth2Service* GreaderNetwork::oauth() const {
+  return m_oauth2;
+}
+
+void GreaderNetwork::setOauth(OAuth2Service* oauth) {
+  m_oauth2 = oauth;
+}
+
+void GreaderNetwork::setRoot(GreaderServiceRoot* root) {
+  m_root = root;
 }
 
 bool GreaderNetwork::intelligentSynchronization() const {

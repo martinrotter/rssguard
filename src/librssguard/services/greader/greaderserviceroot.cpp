@@ -9,6 +9,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
+#include "network-web/oauth2service.h"
 #include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/greader/greaderentrypoint.h"
@@ -18,6 +19,7 @@
 GreaderServiceRoot::GreaderServiceRoot(RootItem* parent)
   : ServiceRoot(parent), m_network(new GreaderNetwork(this)) {
   setIcon(GreaderEntryPoint().icon());
+  m_network->setRoot(this);
 }
 
 bool GreaderServiceRoot::isSyncable() const {
@@ -46,6 +48,13 @@ QVariantHash GreaderServiceRoot::customDatabaseData() const {
   data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
   data["intelligent_synchronization"] = m_network->intelligentSynchronization();
 
+  if (m_network->service() == Service::Inoreader) {
+    data["client_id"] = m_network->oauth()->clientId();
+    data["client_secret"] = m_network->oauth()->clientSecret();
+    data["refresh_token"] = m_network->oauth()->refreshToken();
+    data["redirect_uri"] = m_network->oauth()->redirectUrl();
+  }
+
   return data;
 }
 
@@ -57,6 +66,13 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setBatchSize(data["batch_size"].toInt());
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
   m_network->setIntelligentSynchronization(data["intelligent_synchronization"].toBool());
+
+  if (m_network->service() == Service::Inoreader) {
+    m_network->oauth()->setClientId(data["client_id"].toString());
+    m_network->oauth()->setClientSecret(data["client_secret"].toString());
+    m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
+    m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString(), true);
+  }
 }
 
 void GreaderServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
@@ -67,6 +83,28 @@ void GreaderServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
   }
   else {
     m_network->clearPrefetchedMessages();
+  }
+}
+
+QString GreaderServiceRoot::serviceToString(Service service) {
+  switch (service) {
+    case Service::FreshRss:
+      return QSL("FreshRSS");
+
+    case Service::Bazqux:
+      return QSL("Bazqux");
+
+    case Service::Reedah:
+      return QSL("Reedah");
+
+    case Service::TheOldReader:
+      return QSL("The Old Reader");
+
+    case Service::Inoreader:
+      return QSL("Inoreader");
+
+    default:
+      return tr("Other services");
   }
 }
 
@@ -109,7 +147,17 @@ void GreaderServiceRoot::start(bool freshly_activated) {
   updateTitleIcon();
 
   if (getSubTreeFeeds().isEmpty()) {
-    syncIn();
+    if (m_network->service() == Service::Inoreader) {
+      m_network->oauth()->login([this]() {
+        syncIn();
+      });
+    }
+    else {
+      syncIn();
+    }
+  }
+  else if (m_network->service() == Service::Inoreader) {
+    m_network->oauth()->login();
   }
 }
 
@@ -199,7 +247,7 @@ ServiceRoot::LabelOperation GreaderServiceRoot::supportedLabelOperations() const
 
 void GreaderServiceRoot::updateTitleIcon() {
   setTitle(QString("%1 (%2)").arg(TextFactory::extractUsernameFromEmail(m_network->username()),
-                                  m_network->serviceToString(m_network->service())));
+                                  GreaderServiceRoot::serviceToString(m_network->service())));
 
   switch (m_network->service()) {
     case Service::TheOldReader:
@@ -216,6 +264,10 @@ void GreaderServiceRoot::updateTitleIcon() {
 
     case Service::Reedah:
       setIcon(qApp->icons()->miscIcon(QSL("reedah")));
+      break;
+
+    case Service::Inoreader:
+      setIcon(qApp->icons()->miscIcon(QSL("inoreader")));
       break;
 
     default:
