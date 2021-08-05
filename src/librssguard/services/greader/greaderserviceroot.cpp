@@ -74,9 +74,10 @@ QList<Message> GreaderServiceRoot::obtainNewMessages(Feed* feed,
                                                      const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                      const QHash<QString, QStringList>& tagged_messages) {
   Feed::Status error = Feed::Status::Normal;
+  QList<Message> msgs;
 
   if (m_network->intelligentSynchronization()) {
-    return m_network->getMessagesIntelligently(this,
+    msgs = m_network->getMessagesIntelligently(this,
                                                feed->customId(),
                                                stated_messages,
                                                tagged_messages,
@@ -84,11 +85,14 @@ QList<Message> GreaderServiceRoot::obtainNewMessages(Feed* feed,
                                                networkProxy());
   }
   else {
-    return m_network->streamContents(this, feed->customId(), error, networkProxy());
+    msgs = m_network->streamContents(this, feed->customId(), error, networkProxy());
   }
 
   if (error != Feed::Status::NewMessages && error != Feed::Status::Normal) {
     throw FeedFetchException(error);
+  }
+  else {
+    return msgs;
   }
 }
 
