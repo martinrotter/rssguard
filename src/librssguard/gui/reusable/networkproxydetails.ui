@@ -119,17 +119,7 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QCheckBox" name="m_checkShowPassword">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="text">
-         <string>Display password</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0" colspan="2">
+      <item row="3" column="0" colspan="2">
        <widget class="QLabel" name="m_lblProxyInfo">
         <property name="text">
          <string>Note that these settings are applied only on newly established connections.</string>

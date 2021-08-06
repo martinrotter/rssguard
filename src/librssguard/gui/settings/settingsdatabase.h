@@ -25,7 +25,6 @@ class SettingsDatabase : public SettingsPanel {
     void onMysqlPasswordChanged(const QString& new_password);
     void onMysqlDatabaseChanged(const QString& new_database);
     void selectSqlBackend(int index);
-    void switchMysqlPasswordVisiblity(bool visible);
 
     Ui::SettingsDatabase* m_ui;
 };

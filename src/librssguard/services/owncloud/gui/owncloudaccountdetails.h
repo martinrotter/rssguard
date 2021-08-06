@@ -18,7 +18,6 @@ class OwnCloudAccountDetails : public QWidget {
     explicit OwnCloudAccountDetails(QWidget* parent = nullptr);
 
   private slots:
-    void displayPassword(bool display);
     void performTest(const QNetworkProxy& custom_proxy);
     void onUsernameChanged();
     void onPasswordChanged();

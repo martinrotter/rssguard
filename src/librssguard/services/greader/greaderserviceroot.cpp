@@ -12,6 +12,7 @@
 #include "network-web/oauth2service.h"
 #include "services/abstract/importantnode.h"
 #include "services/abstract/recyclebin.h"
+#include "services/greader/definitions.h"
 #include "services/greader/greaderentrypoint.h"
 #include "services/greader/greadernetwork.h"
 #include "services/greader/gui/formeditgreaderaccount.h"
@@ -43,7 +44,6 @@ QVariantHash GreaderServiceRoot::customDatabaseData() const {
   data["service"] = int(m_network->service());
   data["username"] = m_network->username();
   data["password"] = TextFactory::encrypt(m_network->password());
-  data["url"] = m_network->baseUrl();
   data["batch_size"] = m_network->batchSize();
   data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
   data["intelligent_synchronization"] = m_network->intelligentSynchronization();
@@ -54,6 +54,9 @@ QVariantHash GreaderServiceRoot::customDatabaseData() const {
     data["refresh_token"] = m_network->oauth()->refreshToken();
     data["redirect_uri"] = m_network->oauth()->redirectUrl();
   }
+  else {
+    data["url"] = m_network->baseUrl();
+  }
 
   return data;
 }
@@ -62,7 +65,6 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setService(GreaderServiceRoot::Service(data["service"].toInt()));
   m_network->setUsername(data["username"].toString());
   m_network->setPassword(TextFactory::decrypt(data["password"].toString()));
-  m_network->setBaseUrl(data["url"].toString());
   m_network->setBatchSize(data["batch_size"].toInt());
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
   m_network->setIntelligentSynchronization(data["intelligent_synchronization"].toBool());
@@ -72,6 +74,11 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
     m_network->oauth()->setClientSecret(data["client_secret"].toString());
     m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
     m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString(), true);
+
+    m_network->setBaseUrl(QSL(GREADER_URL_INOREADER));
+  }
+  else {
+    m_network->setBaseUrl(data["url"].toString());
   }
 }
 

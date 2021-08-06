@@ -20,8 +20,6 @@ class TtRssAccountDetails : public QWidget {
     explicit TtRssAccountDetails(QWidget* parent = nullptr);
 
   private slots:
-    void displayPassword(bool display);
-    void displayHttpPassword(bool display);
     void performTest(const QNetworkProxy& proxy);
 
     void onUsernameChanged();

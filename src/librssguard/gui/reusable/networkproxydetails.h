@@ -22,7 +22,6 @@ class NetworkProxyDetails : public QWidget {
     void changed();
 
   private slots:
-    void displayProxyPassword(int state);
     void onProxyTypeChanged(int index);
 
   private:

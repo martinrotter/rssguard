@@ -25,7 +25,6 @@ class GreaderAccountDetails : public QWidget {
     void setService(GreaderServiceRoot::Service service);
 
   private slots:
-    void displayPassword(bool display);
     void performTest(const QNetworkProxy& custom_proxy);
     void onUsernameChanged();
     void onPasswordChanged();

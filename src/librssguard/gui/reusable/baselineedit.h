@@ -12,6 +12,8 @@ class BaseLineEdit : public QLineEdit {
     explicit BaseLineEdit(QWidget* parent = nullptr);
     virtual ~BaseLineEdit() = default;
 
+    void setPasswordMode(bool is_password);
+
   public slots:
     void submit(const QString& text);
 
@@ -19,9 +21,10 @@ class BaseLineEdit : public QLineEdit {
     void keyPressEvent(QKeyEvent* event);
 
   signals:
-
-    // Emitted if user hits ENTER button.
     void submitted(const QString& text);
+
+  private:
+    QAction* m_actShowPassword;
 };
 
 #endif // BASELINEEDIT_H

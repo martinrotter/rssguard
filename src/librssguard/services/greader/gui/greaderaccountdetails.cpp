@@ -28,6 +28,7 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
   }
 
   m_ui.m_lblTestResult->label()->setWordWrap(true);
+  m_ui.m_txtPassword->lineEdit()->setPasswordMode(true);
   m_ui.m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your account"));
   m_ui.m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your account"));
   m_ui.m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your server, without any service-specific path"));
@@ -60,7 +61,6 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
 
-  connect(m_ui.m_checkShowPassword, &QCheckBox::toggled, this, &GreaderAccountDetails::displayPassword);
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onPasswordChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onUsernameChanged);
   connect(m_ui.m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onUrlChanged);
@@ -77,8 +77,7 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
   setTabOrder(m_ui.m_cbNewAlgorithm, m_ui.m_spinLimitMessages);
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
-  setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_checkShowPassword);
-  setTabOrder(m_ui.m_checkShowPassword, m_ui.m_txtAppId);
+  setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_txtAppId);
   setTabOrder(m_ui.m_txtAppId, m_ui.m_txtAppKey);
   setTabOrder(m_ui.m_txtAppKey, m_ui.m_txtRedirectUrl);
   setTabOrder(m_ui.m_txtRedirectUrl, m_ui.m_btnRegisterApi);
@@ -87,7 +86,6 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
   onPasswordChanged();
   onUsernameChanged();
   onUrlChanged();
-  displayPassword(false);
 
   emit m_ui.m_txtAppId->lineEdit()->textChanged(m_ui.m_txtAppId->lineEdit()->text());
   emit m_ui.m_txtAppKey->lineEdit()->textChanged(m_ui.m_txtAppKey->lineEdit()->text());
@@ -163,10 +161,6 @@ GreaderServiceRoot::Service GreaderAccountDetails::service() const {
 
 void GreaderAccountDetails::setService(GreaderServiceRoot::Service service) {
   m_ui.m_cmbService->setCurrentIndex(m_ui.m_cmbService->findData(QVariant::fromValue(service)));
-}
-
-void GreaderAccountDetails::displayPassword(bool display) {
-  m_ui.m_txtPassword->lineEdit()->setEchoMode(display ? QLineEdit::Normal : QLineEdit::Password);
 }
 
 void GreaderAccountDetails::performTest(const QNetworkProxy& custom_proxy) {

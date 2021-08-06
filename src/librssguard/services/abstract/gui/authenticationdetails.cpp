@@ -6,6 +6,7 @@ AuthenticationDetails::AuthenticationDetails(QWidget* parent) : QWidget(parent) 
   setupUi(this);
 
   // Set text boxes.
+  m_txtPassword->lineEdit()->setPasswordMode(true);
   m_txtUsername->lineEdit()->setPlaceholderText(tr("Username"));
   m_txtUsername->lineEdit()->setToolTip(tr("Set username to access the feed."));
   m_txtPassword->lineEdit()->setPlaceholderText(tr("Password"));

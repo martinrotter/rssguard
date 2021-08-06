@@ -10,16 +10,15 @@ NetworkProxyDetails::NetworkProxyDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblProxyInfo, false);
 
+  m_ui.m_txtProxyPassword->setPasswordMode(true);
+
   connect(m_ui.m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &NetworkProxyDetails::onProxyTypeChanged);
-  connect(m_ui.m_checkShowPassword, &QCheckBox::stateChanged, this, &NetworkProxyDetails::displayProxyPassword);
 
   m_ui.m_cmbProxyType->addItem(tr("No proxy"), QNetworkProxy::ProxyType::NoProxy);
   m_ui.m_cmbProxyType->addItem(tr("System proxy"), QNetworkProxy::ProxyType::DefaultProxy);
   m_ui.m_cmbProxyType->addItem(tr("Socks5"), QNetworkProxy::ProxyType::Socks5Proxy);
   m_ui.m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::ProxyType::HttpProxy);
-
-  displayProxyPassword(Qt::CheckState::Unchecked);
 
   connect(m_ui.m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &NetworkProxyDetails::changed);
@@ -46,15 +45,6 @@ void NetworkProxyDetails::setProxy(const QNetworkProxy& proxy) {
   m_ui.m_spinProxyPort->setValue(proxy.port());
   m_ui.m_txtProxyUsername->setText(proxy.user());
   m_ui.m_txtProxyPassword->setText(proxy.password());
-}
-
-void NetworkProxyDetails::displayProxyPassword(int state) {
-  if (state == Qt::CheckState::Checked) {
-    m_ui.m_txtProxyPassword->setEchoMode(QLineEdit::EchoMode::Normal);
-  }
-  else {
-    m_ui.m_txtProxyPassword->setEchoMode(QLineEdit::EchoMode::Password);
-  }
 }
 
 void NetworkProxyDetails::onProxyTypeChanged(int index) {

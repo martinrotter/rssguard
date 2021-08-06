@@ -221,16 +221,6 @@ Authors of this application are NOT responsible for lost data.</string>
         <widget class="LineEditWithStatus" name="m_txtMysqlPassword" native="true"/>
        </item>
        <item row="4" column="1">
-        <widget class="QCheckBox" name="m_checkMysqlShowPassword">
-         <property name="text">
-          <string>&amp;Show password</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_11">
          <item>
           <widget class="QPushButton" name="m_btnMysqlTestSetup">
@@ -257,7 +247,7 @@ Authors of this application are NOT responsible for lost data.</string>
          </item>
         </layout>
        </item>
-       <item row="6" column="0" colspan="2">
+       <item row="5" column="0" colspan="2">
         <widget class="QLabel" name="m_lblMysqlInfo">
          <property name="text">
           <string>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</string>

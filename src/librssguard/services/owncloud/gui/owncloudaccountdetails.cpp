@@ -15,6 +15,7 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
   m_ui.m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
                                                     "of feeds will be probably much slower and may time-out often."));
   m_ui.m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your Nextcloud account"));
+  m_ui.m_txtPassword->lineEdit()->setPasswordMode(true);
   m_ui.m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your Nextcloud account"));
   m_ui.m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your Nextcloud server, without any API path"));
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
@@ -32,7 +33,6 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblServerSideUpdateInformation, true);
 
-  connect(m_ui.m_checkShowPassword, &QCheckBox::toggled, this, &OwnCloudAccountDetails::displayPassword);
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onPasswordChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onUsernameChanged);
   connect(m_ui.m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onUrlChanged);
@@ -42,17 +42,11 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_checkServerSideUpdate);
   setTabOrder(m_ui.m_checkServerSideUpdate, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
-  setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_checkShowPassword);
-  setTabOrder(m_ui.m_checkShowPassword, m_ui.m_btnTestSetup);
+  setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_btnTestSetup);
 
   onPasswordChanged();
   onUsernameChanged();
   onUrlChanged();
-  displayPassword(false);
-}
-
-void OwnCloudAccountDetails::displayPassword(bool display) {
-  m_ui.m_txtPassword->lineEdit()->setEchoMode(display ? QLineEdit::Normal : QLineEdit::Password);
 }
 
 void OwnCloudAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
