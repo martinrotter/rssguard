@@ -142,7 +142,7 @@ QList<Message> GreaderServiceRoot::obtainNewMessages(Feed* feed,
 }
 
 bool GreaderServiceRoot::wantsBaggedIdsOfExistingMessages() const {
-  return true;
+  return m_network->intelligentSynchronization();
 }
 
 void GreaderServiceRoot::start(bool freshly_activated) {
