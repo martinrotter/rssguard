@@ -30,7 +30,6 @@
 #include "network-web/networkfactory.h"
 #include "network-web/oauthhttphandler.h"
 #include "network-web/webfactory.h"
-#include "services/inoreader/definitions.h"
 
 #include <QDebug>
 #include <QInputDialog>

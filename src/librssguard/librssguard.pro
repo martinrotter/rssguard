@@ -183,12 +183,6 @@ HEADERS += core/feeddownloader.h \
            services/greader/greaderserviceroot.h \
            services/greader/gui/formeditgreaderaccount.h \
            services/greader/gui/greaderaccountdetails.h \
-           services/inoreader/definitions.h \
-           services/inoreader/gui/formeditinoreaderaccount.h \
-           services/inoreader/gui/inoreaderaccountdetails.h \
-           services/inoreader/inoreaderentrypoint.h \
-           services/inoreader/inoreadernetworkfactory.h \
-           services/inoreader/inoreaderserviceroot.h \
            services/owncloud/definitions.h \
            services/owncloud/gui/formeditowncloudaccount.h \
            services/owncloud/gui/owncloudaccountdetails.h \
@@ -364,11 +358,6 @@ SOURCES += core/feeddownloader.cpp \
            services/greader/greaderserviceroot.cpp \
            services/greader/gui/formeditgreaderaccount.cpp \
            services/greader/gui/greaderaccountdetails.cpp \
-           services/inoreader/gui/formeditinoreaderaccount.cpp \
-           services/inoreader/gui/inoreaderaccountdetails.cpp \
-           services/inoreader/inoreaderentrypoint.cpp \
-           services/inoreader/inoreadernetworkfactory.cpp \
-           services/inoreader/inoreaderserviceroot.cpp \
            services/owncloud/gui/formeditowncloudaccount.cpp \
            services/owncloud/gui/owncloudaccountdetails.cpp \
            services/owncloud/owncloudfeed.cpp \
@@ -438,7 +427,6 @@ FORMS += gui/dialogs/formabout.ui \
          services/gmail/gui/formdownloadattachment.ui \
          services/gmail/gui/gmailaccountdetails.ui \
          services/greader/gui/greaderaccountdetails.ui \
-         services/inoreader/gui/inoreaderaccountdetails.ui \
          services/owncloud/gui/owncloudaccountdetails.ui \
          services/standard/gui/formstandardimportexport.ui \
          services/standard/gui/standardfeeddetails.ui \
