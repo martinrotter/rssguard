@@ -43,10 +43,8 @@ class GreaderAccountDetails : public QWidget {
     Ui::GreaderAccountDetails m_ui;
 
     // Testing OAuth service. This object is not ever copied
-    // to new living account instance, instead only its properties
-    // like tokens are copied.
-    // If editing existing account, then the pointer points
-    // directly to existing OAuth from the account.
+    // to new living account instance but maybe be copied from it,
+    // instead only its properties like tokens are copied.
     OAuth2Service* m_oauth;
     QNetworkProxy m_lastProxy;
 };

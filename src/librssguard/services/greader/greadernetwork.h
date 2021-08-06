@@ -29,6 +29,7 @@ class GreaderNetwork : public QObject {
 
     explicit GreaderNetwork(QObject* parent = nullptr);
 
+    // Convenience methods.
     QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status,
                                                  const QStringList& msg_custom_ids,
                                                  const QNetworkProxy& proxy);
@@ -36,13 +37,6 @@ class GreaderNetwork : public QObject {
                                                     const QStringList& msg_custom_ids,
                                                     const QNetworkProxy& proxy);
 
-    // Assign/deassign tags to/from message(s).
-    QNetworkReply::NetworkError editLabels(const QString& state, bool assign,
-                                           const QStringList& msg_custom_ids, const QNetworkProxy& proxy);
-
-    QVariantHash userInfo(const QNetworkProxy& proxy);
-
-    void clearPrefetchedMessages();
     void prepareFeedFetching(GreaderServiceRoot* root,
                              const QList<Feed*>& feeds,
                              const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
@@ -56,22 +50,12 @@ class GreaderNetwork : public QObject {
                                             Feed::Status& error,
                                             const QNetworkProxy& proxy);
 
-    QStringList itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy, int max_count = -1);
-
-    // Stream contents for a feed/label/etc.
-    QList<Message> itemContents(ServiceRoot* root, const QList<QString>& stream_ids,
-                                Feed::Status& error, const QNetworkProxy& proxy);
-
-    QList<Message> streamContents(ServiceRoot* root, const QString& stream_id,
-                                  Feed::Status& error, const QNetworkProxy& proxy);
-
-    // Downloads and structures full tree for sync-in.
     RootItem* categoriesFeedsLabelsTree(bool obtain_icons, const QNetworkProxy& proxy);
 
-    // Performs client login, if successful, then saves SID, LSID and Auth.
-    QNetworkReply::NetworkError clientLogin(const QNetworkProxy& proxy);
+    void clearCredentials();
 
-    // Getters/setters.
+    void clearPrefetchedMessages();
+
     GreaderServiceRoot::Service service() const;
     void setService(const GreaderServiceRoot::Service& service);
 
@@ -87,8 +71,6 @@ class GreaderNetwork : public QObject {
     int batchSize() const;
     void setBatchSize(int batch_size);
 
-    void clearCredentials();
-
     bool downloadOnlyUnreadMessages() const;
     void setDownloadOnlyUnreadMessages(bool download_only_unread);
 
@@ -99,6 +81,17 @@ class GreaderNetwork : public QObject {
 
     OAuth2Service* oauth() const;
     void setOauth(OAuth2Service* oauth);
+
+    // API methods.
+    QNetworkReply::NetworkError editLabels(const QString& state, bool assign,
+                                           const QStringList& msg_custom_ids, const QNetworkProxy& proxy);
+    QVariantHash userInfo(const QNetworkProxy& proxy);
+    QStringList itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy, int max_count = -1);
+    QList<Message> itemContents(ServiceRoot* root, const QList<QString>& stream_ids,
+                                Feed::Status& error, const QNetworkProxy& proxy);
+    QList<Message> streamContents(ServiceRoot* root, const QString& stream_id,
+                                  Feed::Status& error, const QNetworkProxy& proxy);
+    QNetworkReply::NetworkError clientLogin(const QNetworkProxy& proxy);
 
   private slots:
     void onTokensError(const QString& error, const QString& error_description);
@@ -112,13 +105,15 @@ class GreaderNetwork : public QObject {
 
     QString convertLongStreamIdToShortStreamId(const QString& stream_id) const;
     QString convertShortStreamIdToLongStreamId(const QString& stream_id) const;
-
     QString simplifyStreamId(const QString& stream_id) const;
+
     QStringList decodeItemIds(const QString& stream_json_data, QString& continuation);
     QList<Message> decodeStreamContents(ServiceRoot* root, const QString& stream_json_data, const QString& stream_id, QString& continuation);
     RootItem* decodeTagsSubscriptions(const QString& categories, const QString& feeds, bool obtain_icons, const QNetworkProxy& proxy);
+
     QString sanitizedBaseUrl() const;
     QString generateFullUrl(Operations operation) const;
+
     void initializeOauth();
 
   private:

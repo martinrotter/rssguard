@@ -42,6 +42,9 @@
 #define TOR_SPONSORED_STREAM_ID   "tor/sponsored"
 #define TOR_ITEM_CONTENTS_BATCH   9999
 
+// Inoreader.
+#define INO_ITEM_CONTENTS_BATCH   250
+
 #define INO_HEADER_APPID    "AppId"
 #define INO_HEADER_APPKEY   "AppKey"
 

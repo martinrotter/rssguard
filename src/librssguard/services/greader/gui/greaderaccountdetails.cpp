@@ -114,6 +114,7 @@ void GreaderAccountDetails::onAuthGranted() {
   try {
     GreaderNetwork fac;
 
+    fac.setService(service());
     fac.setOauth(m_oauth);
     auto resp = fac.userInfo(m_lastProxy);
 

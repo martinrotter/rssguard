@@ -403,10 +403,12 @@ QList<Message> GreaderNetwork::itemContents(ServiceRoot* root, const QList<QStri
   QList<QString> my_stream_ids(stream_ids);
 
   while (!my_stream_ids.isEmpty()) {
-    int batch = m_service == GreaderServiceRoot::Service::TheOldReader ||
-                m_service == GreaderServiceRoot::Service::FreshRss
+    int batch = (m_service == GreaderServiceRoot::Service::TheOldReader ||
+                 m_service == GreaderServiceRoot::Service::FreshRss)
                 ? TOR_ITEM_CONTENTS_BATCH
-                : GREADER_API_ITEM_CONTENTS_BATCH;
+                : (m_service == GreaderServiceRoot::Service::Inoreader
+                ? INO_ITEM_CONTENTS_BATCH
+                : GREADER_API_ITEM_CONTENTS_BATCH);
     QList<QString> batch_ids = my_stream_ids.mid(0, batch);
 
     my_stream_ids = my_stream_ids.mid(batch);
@@ -567,7 +569,8 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
   QJsonArray json;
 
   if (m_service == GreaderServiceRoot::Service::Bazqux ||
-      m_service == GreaderServiceRoot::Service::Reedah) {
+      m_service == GreaderServiceRoot::Service::Reedah ||
+      m_service == GreaderServiceRoot::Service::Inoreader) {
     // We need to process subscription list first and extract categories.
     json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
 
@@ -621,7 +624,8 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
       lbls.append(new_lbl);
     }
     else if ((m_service == GreaderServiceRoot::Service::Bazqux ||
-              m_service == GreaderServiceRoot::Service::Reedah) &&
+              m_service == GreaderServiceRoot::Service::Reedah ||
+              m_service == GreaderServiceRoot::Service::Inoreader) &&
              label_id.contains(QSL("/label/"))) {
       if (!cats.contains(label_id)) {
         // This stream is not a category, it is label, bitches!
@@ -825,13 +829,21 @@ void GreaderNetwork::setBaseUrl(const QString& base_url) {
 }
 
 QPair<QByteArray, QByteArray> GreaderNetwork::authHeader() const {
-  QPair<QByteArray, QByteArray> header = { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
-                                           QSL("GoogleLogin auth=%1").arg(m_authAuth).toLocal8Bit() };
-
-  return header;
+  if (m_service == GreaderServiceRoot::Service::Inoreader) {
+    return { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+             m_oauth2->bearer().toLocal8Bit() };
+  }
+  else {
+    return { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+             QSL("GoogleLogin auth=%1").arg(m_authAuth).toLocal8Bit() };
+  }
 }
 
 bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output) {
+  if (m_service == GreaderServiceRoot::Service::Inoreader) {
+    return !m_oauth2->bearer().isEmpty();
+  }
+
   if (m_authSid.isEmpty() && m_authAuth.isEmpty()) {
     auto login = clientLogin(proxy);
 
@@ -990,7 +1002,9 @@ void GreaderNetwork::clearCredentials() {
 }
 
 QString GreaderNetwork::sanitizedBaseUrl() const {
-  auto base_url = m_baseUrl;
+  QString base_url = m_service == GreaderServiceRoot::Service::Inoreader
+                     ? GREADER_URL_INOREADER
+                     : m_baseUrl;
 
   if (!base_url.endsWith('/')) {
     base_url = base_url + QL1C('/');
