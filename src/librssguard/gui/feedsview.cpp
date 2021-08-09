@@ -363,32 +363,32 @@ void FeedsView::openSelectedItemsInNewspaperMode() {
 }
 
 void FeedsView::selectNextItem() {
-  QModelIndex index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
+  QModelIndex index_next = moveCursor(QAbstractItemView::CursorAction::MoveDown, Qt::KeyboardModifier::NoModifier);
 
   while (m_proxyModel->hasChildren(index_next) && !isExpanded(index_next)) {
     expand(index_next);
-    index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
+    index_next = moveCursor(QAbstractItemView::CursorAction::MoveDown, Qt::KeyboardModifier::NoModifier);
   }
 
   if (index_next.isValid()) {
     setCurrentIndex(index_next);
-    scrollTo(index_next, QAbstractItemView::ScrollHint::PositionAtTop);
+    scrollTo(index_next, QAbstractItemView::ScrollHint::EnsureVisible);
   }
 
   setFocus();
 }
 
 void FeedsView::selectPreviousItem() {
-  QModelIndex index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+  QModelIndex index_previous = moveCursor(QAbstractItemView::CursorAction::MoveUp, Qt::KeyboardModifier::NoModifier);
 
   while (m_proxyModel->hasChildren(index_previous) && !isExpanded(index_previous)) {
     expand(index_previous);
-    index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+    index_previous = moveCursor(QAbstractItemView::CursorAction::MoveUp, Qt::KeyboardModifier::NoModifier);
   }
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
-    scrollTo(index_previous, QAbstractItemView::ScrollHint::PositionAtTop);
+    scrollTo(index_previous, QAbstractItemView::ScrollHint::EnsureVisible);
   }
 
   setFocus();
@@ -406,7 +406,7 @@ void FeedsView::selectNextUnreadItem() {
 
   if (next_unread_row.isValid()) {
     setCurrentIndex(next_unread_row);
-    scrollTo(next_unread_row, QAbstractItemView::ScrollHint::PositionAtTop);
+    scrollTo(next_unread_row, QAbstractItemView::ScrollHint::EnsureVisible);
     emit requestViewNextUnreadMessage();
   }
 }
