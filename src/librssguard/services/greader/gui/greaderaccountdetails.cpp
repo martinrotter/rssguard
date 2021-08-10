@@ -36,16 +36,18 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
 
-  m_ui.m_lblLimitMessages->setText(tr("Limiting the number of fetched articles per feed makes fetching of "
-                                      "articles faster, but if your feed contains more articles "
-                                      "than specified limit, then some older articles might not be "
-                                      "fetched at all."));
+  m_ui.m_lblLimitMessages->setText(tr("Some feeds might contain tens of thousands of articles "
+                                      "and downloading all of them could take great amount of time, "
+                                      "so sometimes it is good to download "
+                                      "only certain amount of newest messages."));
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessages, true);
 
   m_ui.m_lblNewAlgorithm->setText(tr("If you select intelligent synchronization, then only not-yet-fetched "
                                      "or updated articles are downloaded. Network usage is greatly reduced and "
-                                     "overall synchronization speed is greatly improved."));
+                                     "overall synchronization speed is greatly improved, but "
+                                     "first feed fetching could be slow anyway if your feed contains "
+                                     "huge number of articles."));
 
   GuiUtilities::setLabelAsNotice(*m_ui.m_lblNewAlgorithm, false);
 
