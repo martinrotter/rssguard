@@ -56,7 +56,7 @@ Fixed/changed:
 * Improved some visual glitches in dialogs and skins. (#426)
 * "Keep message selection in the middle" now works in a more reasonable way when trigerred with mouse vs keyboard. (#427)
 * Fixed GUI behavior of "Database cleanup" dialog. (#433)
-* RSS Guard now properly gives/gets window focus when article is opened in external web browser. (#447)
+* "Bring application window to front once article is opened in external web browser" is now disabled by default. (#447)
 * Fixed cooperation of "Next unread article" + "Keep message selection in the middle" features. (#435)
 * URL of feeds are now sanitized before making a network request. (#450)
 * All pictures from feeds should be now properly displayed. (#422)
