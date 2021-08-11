@@ -23,6 +23,7 @@ GreaderNetwork::GreaderNetwork(QObject* parent)
   : QObject(parent), m_root(nullptr), m_service(GreaderServiceRoot::Service::FreshRss), m_username(QString()),
   m_password(QString()), m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false),
   m_prefetchedMessages({}), m_performGlobalFetching(false), m_intelligentSynchronization(false),
+  m_newerThanFilter(QDate::currentDate().addYears(-1)),
   m_oauth2(new OAuth2Service(INO_OAUTH_AUTH_URL, INO_OAUTH_TOKEN_URL,
                              {}, {}, INO_OAUTH_SCOPE, this)) {
   initializeOauth();
@@ -147,7 +148,7 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
            << "Percentage of feeds for fetching:"
            << QUOTE_W_SPACE_DOT(perc_of_fetching);
 
-  auto remote_starred_ids_list = itemIds(GREADER_API_FULL_STATE_IMPORTANT, false, proxy);
+  auto remote_starred_ids_list = itemIds(GREADER_API_FULL_STATE_IMPORTANT, false, proxy, -1, m_newerThanFilter);
 
   for (int i = 0; i < remote_starred_ids_list.size(); i++) {
     remote_starred_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_starred_ids_list.at(i)));
@@ -171,8 +172,8 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
 
     QStringList remote_all_ids_list = m_downloadOnlyUnreadMessages
                                       ? QStringList()
-                                      : itemIds(GREADER_API_FULL_STATE_READING_LIST, false, proxy);
-    QStringList remote_unread_ids_list = itemIds(GREADER_API_FULL_STATE_READING_LIST, true, proxy);
+                                      : itemIds(GREADER_API_FULL_STATE_READING_LIST, false, proxy, -1, m_newerThanFilter);
+    QStringList remote_unread_ids_list = itemIds(GREADER_API_FULL_STATE_READING_LIST, true, proxy, -1, m_newerThanFilter);
 
     for (int i = 0; i < remote_all_ids_list.size(); i++) {
       remote_all_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_all_ids_list.at(i)));
@@ -248,8 +249,8 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
     // 4. Add prefetched starred msgs.
     QStringList remote_all_ids_list = m_downloadOnlyUnreadMessages
                                       ? QStringList()
-                                      : itemIds(stream_id, false, proxy);
-    QStringList remote_unread_ids_list = itemIds(stream_id, true, proxy);
+                                      : itemIds(stream_id, false, proxy, -1, m_newerThanFilter);
+    QStringList remote_unread_ids_list = itemIds(stream_id, true, proxy, -1, m_newerThanFilter);
 
     // Convert item IDs to long form.
     for (int i = 0; i < remote_all_ids_list.size(); i++) {
@@ -335,7 +336,8 @@ QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Import
   return editLabels(GREADER_API_FULL_STATE_IMPORTANT, importance == RootItem::Importance::Important, msg_custom_ids, proxy);
 }
 
-QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy, int max_count) {
+QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy,
+                                    int max_count, const QDate& newer_than) {
   QString continuation;
 
   if (!ensureLogin(proxy)) {
@@ -359,6 +361,10 @@ QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, 
 
     if (!continuation.isEmpty()) {
       full_url += QSL("&c=%1").arg(continuation);
+    }
+
+    if (newer_than.isValid()) {
+      full_url += QSL("&ot=%1").arg(QDateTime(newer_than).toSecsSinceEpoch());
     }
 
     QByteArray output_stream;
@@ -484,6 +490,10 @@ QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& 
 
     if (!continuation.isEmpty()) {
       full_url += QSL("&c=%1").arg(continuation);
+    }
+
+    if (m_newerThanFilter.isValid()) {
+      full_url += QSL("&ot=%1").arg(QDateTime(m_newerThanFilter).toSecsSinceEpoch());
     }
 
     QByteArray output_stream;
@@ -1105,6 +1115,14 @@ void GreaderNetwork::initializeOauth() {
       DatabaseQueries::storeNewOauthTokens(database, refresh_token, m_root->accountId());
     }
   });
+}
+
+QDate GreaderNetwork::newerThanFilter() const {
+  return m_newerThanFilter;
+}
+
+void GreaderNetwork::setNewerThanFilter(const QDate& newer_than) {
+  m_newerThanFilter = newer_than;
 }
 
 OAuth2Service* GreaderNetwork::oauth() const {

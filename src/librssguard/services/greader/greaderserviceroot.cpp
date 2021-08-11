@@ -48,6 +48,10 @@ QVariantHash GreaderServiceRoot::customDatabaseData() const {
   data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
   data["intelligent_synchronization"] = m_network->intelligentSynchronization();
 
+  if (m_network->newerThanFilter().isValid()) {
+    data["fetch_newer_than"] = m_network->newerThanFilter();
+  }
+
   if (m_network->service() == Service::Inoreader) {
     data["client_id"] = m_network->oauth()->clientId();
     data["client_secret"] = m_network->oauth()->clientSecret();
@@ -68,6 +72,10 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setBatchSize(data["batch_size"].toInt());
   m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
   m_network->setIntelligentSynchronization(data["intelligent_synchronization"].toBool());
+
+  if (data["fetch_newer_than"].toDate().isValid()) {
+    m_network->setNewerThanFilter(data["fetch_newer_than"].toDate());
+  }
 
   if (m_network->service() == Service::Inoreader) {
     m_network->oauth()->setClientId(data["client_id"].toString());

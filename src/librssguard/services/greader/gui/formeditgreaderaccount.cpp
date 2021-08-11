@@ -33,6 +33,7 @@ void FormEditGreaderAccount::apply() {
   existing_root->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_cbDownloadOnlyUnreadMessages->isChecked());
   existing_root->network()->setService(m_details->service());
   existing_root->network()->setIntelligentSynchronization(m_details->m_ui.m_cbNewAlgorithm->isChecked());
+  existing_root->network()->setNewerThanFilter(m_details->m_ui.m_dateNewerThan->date());
 
   existing_root->network()->oauth()->logout(true);
 
@@ -73,6 +74,7 @@ void FormEditGreaderAccount::loadAccountData() {
   m_details->m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
   m_details->m_ui.m_cbDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
   m_details->m_ui.m_cbNewAlgorithm->setChecked(existing_root->network()->intelligentSynchronization());
+  m_details->m_ui.m_dateNewerThan->setDate(existing_root->network()->newerThanFilter());
 }
 
 void FormEditGreaderAccount::performTest() {

@@ -27,6 +27,12 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
     m_ui.m_cmbService->addItem(GreaderServiceRoot::serviceToString(serv), QVariant::fromValue(serv));
   }
 
+  m_ui.m_dateNewerThan->setMinimumDate(QDate(2000, 1, 1));
+  m_ui.m_dateNewerThan->setMaximumDate(QDate::currentDate());
+
+  //m_ui.m_dateNewerThan->setDate(QDate::currentDate().addYears(-1));
+  m_ui.m_dateNewerThan->setDisplayFormat(qApp->localization()->loadedLocale().dateFormat());
+
   m_ui.m_lblTestResult->label()->setWordWrap(true);
   m_ui.m_txtPassword->lineEdit()->setPasswordMode(true);
   m_ui.m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your account"));
@@ -76,7 +82,8 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
   setTabOrder(m_ui.m_cmbService, m_ui.m_txtUrl->lineEdit());
   setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_cbDownloadOnlyUnreadMessages);
   setTabOrder(m_ui.m_cbDownloadOnlyUnreadMessages, m_ui.m_cbNewAlgorithm);
-  setTabOrder(m_ui.m_cbNewAlgorithm, m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_cbNewAlgorithm, m_ui.m_dateNewerThan);
+  setTabOrder(m_ui.m_dateNewerThan, m_ui.m_spinLimitMessages);
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
   setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_txtAppId);

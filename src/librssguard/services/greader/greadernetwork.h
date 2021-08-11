@@ -86,12 +86,16 @@ class GreaderNetwork : public QObject {
     QNetworkReply::NetworkError editLabels(const QString& state, bool assign,
                                            const QStringList& msg_custom_ids, const QNetworkProxy& proxy);
     QVariantHash userInfo(const QNetworkProxy& proxy);
-    QStringList itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy, int max_count = -1);
+    QStringList itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy, int max_count = -1,
+                        const QDate& newer_than = {});
     QList<Message> itemContents(ServiceRoot* root, const QList<QString>& stream_ids,
                                 Feed::Status& error, const QNetworkProxy& proxy);
     QList<Message> streamContents(ServiceRoot* root, const QString& stream_id,
                                   Feed::Status& error, const QNetworkProxy& proxy);
     QNetworkReply::NetworkError clientLogin(const QNetworkProxy& proxy);
+
+    QDate newerThanFilter() const;
+    void setNewerThanFilter(const QDate& newer_than);
 
   private slots:
     void onTokensError(const QString& error, const QString& error_description);
@@ -130,6 +134,7 @@ class GreaderNetwork : public QObject {
     QList<Message> m_prefetchedMessages;
     bool m_performGlobalFetching;
     bool m_intelligentSynchronization;
+    QDate m_newerThanFilter;
     OAuth2Service* m_oauth2;
 };
 

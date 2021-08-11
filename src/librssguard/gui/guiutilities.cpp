@@ -10,8 +10,10 @@
 #include <QSize>
 #endif
 
-void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning) {
-  label.setMargin(6);
+void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning, bool set_margins) {
+  if (set_margins) {
+    label.setMargin(6);
+  }
 
   if (is_warning) {
     label.setStyleSheet(QSL("font-weight: bold; font-style: italic; color: red"));
@@ -23,9 +25,9 @@ void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning) {
 
 void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, const QString& title) {
 #if defined(Q_OS_WIN)
-  widget.setWindowFlags(Qt::Dialog | Qt::WindowTitleHint);
+  widget.setWindowFlags(Qt::WindowType::Dialog | Qt::WindowType::WindowTitleHint);
 #else
-  widget.setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowCloseButtonHint);
+  widget.setWindowFlags(Qt::WindowType::Dialog | Qt::WindowType::CustomizeWindowHint | Qt::WindowType::WindowCloseButtonHint);
 #endif
 
   widget.setWindowIcon(icon);
