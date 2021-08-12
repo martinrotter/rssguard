@@ -52,22 +52,28 @@ RSS Guard is multi-account application and supports many web feed readers via bu
 
 I organized supported web feed readers into elegant table.
 
-| Service | Two-way Synchronization | [Intelligent Synchronization Algorithm](#intel) | <a id="sfrl"></a>Synchronized Labels | OAuth |
+| Service | Two-way Synchronization | [Intelligent Synchronization Algorithm](#intel) <sup>2</sup>  | <a id="sfrl"></a>Synchronized Labels <sup>1</sup> | OAuth |
 |----|-----|-----|----|---|
 | Feedly | ✅ | ❌ | ✅ | ✅ (only for official binaries) |
 | Gmail | ✅ | ❌ | ❌ | ✅ |
-| Google Reader API | ✅ | ✅ | ✅ | ✅ (only for Inoreader) |
+| Google Reader API <sup>3</sup> | ✅ | ✅ | ✅ | ✅ (only for Inoreader) |
 | Nextcloud News | ✅ | ❌ | ❌ | ❌ |
 | Tiny Tiny RSS | ✅ | ❌ | ✅ | ❌ |
 
-Note that [labels](#lbls) are supported for all plugins, it's just that on some plugins they are local-only and are not synchronizeable to/from service, usually because service itself does not support the feature.
+<sup>1</sup> Note that [labels](#lbls) are supported for all plugins, it's just that on some plugins they are local-only and are not synchronizeable to/from service, usually because service itself does not support the feature.
 
-#### <a id="intel"></a>Intelligent Synchronization Algorithm
-Some plugins support next-gen intelligent synchronization algorithm (ISA) which has some benefits as it usually offers superier synchronization speed and transfers much less data over your network connection.
+<sup>2</sup> <a id="intel"></a> Some plugins support next-gen intelligent synchronization algorithm (ISA) which has some benefits as it usually offers superier synchronization speed and transfers much less data over your network connection.
 
 <img src="images/intel.png" width="350px">
 
 In ISA, RSS Guard only downloads only articles which are new or were updated, whereas older algorithm in RSS Guard usually always fetches all available articles, even if they are not needed, leading to unnecessary overload of your network connection and RSS Guard.
+
+<sup>3</sup> Tested services are:
+* Bazqux
+* Reedah
+* Inoreader
+* TheOldReader
+* FreshRSS
 
 ### <a id="fltr"></a>Article Filtering
 Sometimes yout need to tweak incoming article - mark them starred, remove ads from their contents or simply ignore them. That's what filtering feature is for.
