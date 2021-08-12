@@ -56,7 +56,7 @@ I organized supported web feed readers into elegant table.
 |----|-----|-----|----|---|
 | Feedly | ✅ | ❌ | ✅ | ✅ (only for official binaries) |
 | Gmail | ✅ | ❌ | ❌ | ✅ |
-| Google Reader | ✅ | ✅ | ✅ | ✅ (only for Inoreader) |
+| Google Reader API | ✅ | ✅ | ✅ | ✅ (only for Inoreader) |
 | Nextcloud News | ✅ | ❌ | ❌ | ❌ |
 | Tiny Tiny RSS | ✅ | ❌ | ✅ | ❌ |
 
