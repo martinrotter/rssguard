@@ -22,7 +22,7 @@
 GreaderNetwork::GreaderNetwork(QObject* parent)
   : QObject(parent), m_root(nullptr), m_service(GreaderServiceRoot::Service::FreshRss), m_username(QString()),
   m_password(QString()), m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false),
-  m_prefetchedMessages({}), m_performGlobalFetching(false), m_intelligentSynchronization(false),
+  m_prefetchedMessages({}), m_performGlobalFetching(false), m_intelligentSynchronization(true),
   m_newerThanFilter(QDate::currentDate().addYears(-1)),
   m_oauth2(new OAuth2Service(INO_OAUTH_AUTH_URL, INO_OAUTH_TOKEN_URL,
                              {}, {}, INO_OAUTH_SCOPE, this)) {

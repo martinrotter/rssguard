@@ -89,6 +89,10 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicationAttribute
 }
 
 bool MessageObject::assignLabel(QString label_custom_id) const {
+  if (m_message->m_id <= 0 && m_message->m_customId.isEmpty()) {
+    return false;
+  }
+
   Label* lbl = boolinq::from(m_availableLabels).firstOrDefault([label_custom_id](Label* lbl) {
     return lbl->customId() == label_custom_id;
   });
@@ -106,6 +110,10 @@ bool MessageObject::assignLabel(QString label_custom_id) const {
 }
 
 bool MessageObject::deassignLabel(QString label_custom_id) const {
+  if (m_message->m_id <= 0 && m_message->m_customId.isEmpty()) {
+    return false;
+  }
+
   Label* lbl = boolinq::from(m_message->m_assignedLabels).firstOrDefault([label_custom_id](Label* lbl) {
     return lbl->customId() == label_custom_id;
   });
