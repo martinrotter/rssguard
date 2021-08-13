@@ -154,14 +154,14 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
     remote_starred_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_starred_ids_list.at(i)));
   }
 
-  QSet<QString> remote_starred_ids(remote_starred_ids_list.begin(), remote_starred_ids_list.end());
+  QSet<QString> remote_starred_ids = FROM_LIST_TO_SET(QSet<QString>, remote_starred_ids_list);
   QSet<QString> local_starred_ids;
   QList<QHash<ServiceRoot::BagOfMessages, QStringList>> all_states = stated_messages.values();
 
   for (auto& lst : all_states) {
     auto s = lst.value(ServiceRoot::BagOfMessages::Starred);
 
-    local_starred_ids.unite(QSet<QString>(s.begin(), s.end()));
+    local_starred_ids.unite(FROM_LIST_TO_SET(QSet<QString>, s));
   }
 
   auto starred_to_download((remote_starred_ids - local_starred_ids).unite(local_starred_ids - remote_starred_ids));
@@ -183,8 +183,8 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
       remote_unread_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_unread_ids_list.at(i)));
     }
 
-    QSet<QString> remote_all_ids(remote_all_ids_list.begin(), remote_all_ids_list.end());
-    QSet<QString> remote_unread_ids(remote_unread_ids_list.begin(), remote_unread_ids_list.end());
+    QSet<QString> remote_all_ids = FROM_LIST_TO_SET(QSet<QString>, remote_all_ids_list);
+    QSet<QString> remote_unread_ids = FROM_LIST_TO_SET(QSet<QString>, remote_unread_ids_list);
     QSet<QString> remote_read_ids = remote_all_ids - remote_unread_ids;
     QSet<QString> local_unread_ids;
     QSet<QString> local_read_ids;
@@ -193,8 +193,8 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
       auto u = lst.value(ServiceRoot::BagOfMessages::Unread);
       auto r = lst.value(ServiceRoot::BagOfMessages::Read);
 
-      local_unread_ids.unite(QSet<QString>(u.begin(), u.end()));
-      local_read_ids.unite(QSet<QString>(r.begin(), r.end()));
+      local_unread_ids.unite(FROM_LIST_TO_SET(QSet<QString>, u));
+      local_read_ids.unite(FROM_LIST_TO_SET(QSet<QString>, r));
     }
 
     if (!m_downloadOnlyUnreadMessages) {
@@ -219,7 +219,7 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
   }
 
   Feed::Status error;
-  QList<QString> to_download_list(to_download.begin(), to_download.end());
+  QList<QString> to_download_list(to_download.values());
 
   if (!to_download_list.isEmpty()) {
     if (m_service == GreaderServiceRoot::Service::Reedah) {
@@ -261,19 +261,17 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
       remote_unread_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_unread_ids_list.at(i)));
     }
 
-    QSet<QString> remote_all_ids(remote_all_ids_list.begin(), remote_all_ids_list.end());
+    QSet<QString> remote_all_ids = FROM_LIST_TO_SET(QSet<QString>, remote_all_ids_list);
 
     // 1.
     auto local_unread_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Unread);
-    QSet<QString> remote_unread_ids(remote_unread_ids_list.begin(), remote_unread_ids_list.end());
-    QSet<QString> local_unread_ids(local_unread_ids_list.begin(),
-                                   local_unread_ids_list.end());
+    QSet<QString> remote_unread_ids = FROM_LIST_TO_SET(QSet<QString>, remote_unread_ids_list);
+    QSet<QString> local_unread_ids = FROM_LIST_TO_SET(QSet<QString>, local_unread_ids_list);
 
     // 2.
     auto local_read_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Read);
     QSet<QString> remote_read_ids = remote_all_ids - remote_unread_ids;
-    QSet<QString> local_read_ids(local_read_ids_list.begin(),
-                                 local_read_ids_list.end());
+    QSet<QString> local_read_ids = FROM_LIST_TO_SET(QSet<QString>, local_read_ids_list);
 
     // 3.
     QSet<QString> to_download;
@@ -295,7 +293,7 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
       to_download += moved_unread;
     }
 
-    QList<QString> to_download_list(to_download.begin(), to_download.end());
+    QList<QString> to_download_list(to_download.values());
 
     if (!to_download_list.isEmpty()) {
       if (m_service == GreaderServiceRoot::Service::Reedah) {

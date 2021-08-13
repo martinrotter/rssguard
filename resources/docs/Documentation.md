@@ -379,8 +379,8 @@ The other mode is that user data folder is placed in subfolder `data4` in the sa
 #### <a id="userd-plac"></a>`%data%` placeholder
 RSS Guard stores its data and settings in single folder. What exact folder it is is described [here](#portable-user-data). RSS Guard allows you to use the folder programmatically in some special contexts via `%data%` placeholder. You can use this placeholder in these RSS Guard contexts:
 * Contents of your [message filters](Message-filters.md) - you can therefore place some scripts under your user data folder and include it via `JavaScript` into your message filter.
-* `source` and `post-process script` attributes of for [scraping](#websites-scraping) feed - you can use the placeholder to load scripts to generate/process feed from user data folder.
-* Notifications also support the placeholder in path to audio files which are to be played when some event happens. For example you could place audio files in your data folder and then use them in notification with `%data%\audio\new-messages.wav`. See more about notifications [here](#notifications).
+* `source` and `post-process script` attributes of for [scraping](#scrap) feed - you can use the placeholder to load scripts to generate/process feed from user data folder.
+* Notifications also support the placeholder in path to audio files which are to be played when some event happens. For example you could place audio files in your data folder and then use them in notification with `%data%\audio\new-messages.wav`. See more about notifications [here](#notif).
 
 ### <a id="webb"></a>Built-in Web Browser with AdBlock
 RSS Guard is distributed in two variants:
