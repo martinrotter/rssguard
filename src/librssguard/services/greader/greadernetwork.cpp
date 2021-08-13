@@ -1081,7 +1081,7 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
 void GreaderNetwork::onTokensError(const QString& error, const QString& error_description) {
   Q_UNUSED(error)
 
-  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+  qApp->showGuiMessage(Notification::Event::LoginFailure,
                        tr("Inoreader: authentication error"),
                        tr("Click this to login again. Error is: '%1'").arg(error_description),
                        QSystemTrayIcon::MessageIcon::Critical,
@@ -1106,8 +1106,8 @@ void GreaderNetwork::onAuthFailed() {
 
 void GreaderNetwork::initializeOauth() {
 #if defined(INOREADER_OFFICIAL_SUPPORT)
-  m_oauth2->setClientSecretId(TextFactory::decrypt(INOREADER_CLIENT_ID, OAUTH_DECRYPTION_KEY));
-  m_oauth2->setClientSecretSecret(TextFactory::decrypt(INOREADER_CLIENT_SECRET, OAUTH_DECRYPTION_KEY));
+  m_oauth->setClientSecretId(TextFactory::decrypt(INOREADER_CLIENT_ID, OAUTH_DECRYPTION_KEY));
+  m_oauth->setClientSecretSecret(TextFactory::decrypt(INOREADER_CLIENT_SECRET, OAUTH_DECRYPTION_KEY));
 #endif
 
   m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +

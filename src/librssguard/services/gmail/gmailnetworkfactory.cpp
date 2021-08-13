@@ -420,7 +420,7 @@ QVariantHash GmailNetworkFactory::getProfile(const QNetworkProxy& custom_proxy) 
 void GmailNetworkFactory::onTokensError(const QString& error, const QString& error_description) {
   Q_UNUSED(error)
 
-  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+  qApp->showGuiMessage(Notification::Event::LoginFailure,
                        tr("Gmail: authentication error"),
                        tr("Click this to login again. Error is: '%1'").arg(error_description),
                        QSystemTrayIcon::MessageIcon::Critical,
