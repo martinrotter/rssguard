@@ -135,7 +135,7 @@ Erro: %1</translation>
     </message>
     <message>
         <source>Unread articles fetched</source>
-        <translation type="unfinished"/>
+        <translation>Artigos não lidos buscados</translation>
     </message>
 </context>
 <context>
@@ -183,6 +183,13 @@ Erro: %1</translation>
     <message>
         <source>Password is empty.</source>
         <translation>Senha está vazia.</translation>
+    </message>
+</context>
+<context>
+    <name>BaseLineEdit</name>
+    <message>
+        <source>Show/hide the password</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -467,11 +474,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>parsing error</source>
-        <translation type="unfinished"/>
+        <translation>erro de análise</translation>
     </message>
     <message>
         <source>error</source>
-        <translation type="unfinished"/>
+        <translation>erro</translation>
     </message>
 </context>
 <context>
@@ -497,11 +504,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>Cannot fetch articles at this point</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível buscar artigos neste ponto</translation>
     </message>
     <message>
         <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Você não pode buscar novos artigos pois outra operação crítica está em andamento.</translation>
     </message>
 </context>
 <context>
@@ -604,7 +611,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-        <translation type="unfinished"/>
+        <translation>Cuidado para não baixar muitos artigos, porque o Feedly armazena em cache permanentemente TODOS os artigos do feed, então você pode acabar com milhares de artigos que nunca irá ler de qualquer maneira.</translation>
     </message>
 </context>
 <context>
@@ -1178,23 +1185,23 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Optimize database file</source>
-        <translation type="unfinished"/>
+        <translation>Otimizar banco de dados</translation>
     </message>
     <message>
         <source>Remove all read articles</source>
-        <translation type="unfinished"/>
+        <translation>Remover todos os artigos lidos</translation>
     </message>
     <message>
         <source>Remove all articles from recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Remover todos os artigos da lixeira</translation>
     </message>
     <message>
         <source>Remove all articles older than</source>
-        <translation type="unfinished"/>
+        <translation>Remover artigos mais antigos que</translation>
     </message>
     <message>
         <source>Remove all starred articles</source>
-        <translation type="unfinished"/>
+        <translation>Remover todos os artigos com estrela</translation>
     </message>
 </context>
 <context>
@@ -1224,13 +1231,6 @@ ou esta função ainda não foi implementada.</translation>
 </context>
 <context>
     <name>FormEditGreaderAccount</name>
-    <message>
-        <source>Server setup</source>
-        <translation>Configurar servidor</translation>
-    </message>
-</context>
-<context>
-    <name>FormEditInoreaderAccount</name>
     <message>
         <source>Server setup</source>
         <translation>Configurar servidor</translation>
@@ -1504,11 +1504,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Não é possível limpar o banco de dados, pois outra ação crítica está em execução.</translation>
     </message>
     <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed &apos;%1&apos; atualizado</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>&amp;Reiniciar</translation>
     </message>
@@ -1742,6 +1737,11 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Fetching common data</source>
+        <translation>Buscando dados comuns</translation>
+    </message>
+    <message>
+        <source>Fetched &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1919,19 +1919,19 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Article filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtros de artigos</translation>
     </message>
     <message>
         <source>Article filter details</source>
-        <translation type="unfinished"/>
+        <translation>Detalhes do filtro de artigos</translation>
     </message>
     <message>
         <source>Title of article filter</source>
-        <translation type="unfinished"/>
+        <translation>Título do filtro de artigos</translation>
     </message>
     <message>
         <source>Your JavaScript-based article filtering logic</source>
-        <translation type="unfinished"/>
+        <translation>Sua lógica de filtragem de artigos baseada em JavaScript</translation>
     </message>
 </context>
 <context>
@@ -2501,10 +2501,6 @@ Expiração dos tokens de login: %2</translation>
         <translation>URL</translation>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Alguns feeds necessitam de autenticação, incluindo feeds do GMail. Esquemas de autenticação BASIC, NTLM-2 e DIGEST-MD5 são suportados.</translation>
-    </message>
-    <message>
         <source>Authentication</source>
         <translation>Autenticação</translation>
     </message>
@@ -2515,10 +2511,6 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <source>Password</source>
         <translation>Senha</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Mostrar senha</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -2593,48 +2585,12 @@ Expiração dos tokens de login: %2</translation>
         <translation>Baixar somente artigos não lidos</translation>
     </message>
     <message>
-        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
-        <translation>Limitar o número de artigos buscados por feed forna a busca de artigos mais rápida, mas se seu feed contém mais artigos que o limite especificado, então alguns artigos mais antigos podem não ser buscados.</translation>
-    </message>
-</context>
-<context>
-    <name>GreaderNetwork</name>
-    <message>
-        <source>Other services</source>
-        <translation>Outros serviços</translation>
-    </message>
-    <message>
-        <source>login failed</source>
+        <source>Intelligent synchronization algorithm</source>
         <translation type="unfinished"/>
     </message>
-</context>
-<context>
-    <name>IOFactory</name>
     <message>
-        <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation>Não foi possível abrir o arquivo &apos;%1&apos; para leitura.</translation>
-    </message>
-    <message>
-        <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation>Não foi possível abrir o arquivo &apos;%1&apos; para escrita.</translation>
-    </message>
-</context>
-<context>
-    <name>ImportantNode</name>
-    <message>
-        <source>Important articles</source>
-        <translation>Artigos importantes</translation>
-    </message>
-    <message>
-        <source>You can find all important articles here.</source>
-        <translation>Aqui você encontra todos os artigos importantes.</translation>
-    </message>
-</context>
-<context>
-    <name>InoreaderAccountDetails</name>
-    <message>
-        <source>Username</source>
-        <translation>Usuário</translation>
+        <source>Fetch articles newer than</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -2657,24 +2613,20 @@ Expiração dos tokens de login: %2</translation>
         <translation>Obter meu próprio ID de Aplicativo</translation>
     </message>
     <message>
-        <source>&amp;Login</source>
-        <translation>&amp;Login</translation>
+        <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Not tested yet.</source>
-        <translation>Não testado ainda.</translation>
+        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>User-visible username</source>
-        <translation>Nome de usuário visível</translation>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>No username entered.</source>
-        <translation>Nenhum nome de usuário inserido.</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>Algum nome de usuário inserido.</translation>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation>Você precisa preencher o seu client ID/secret e também preencher corretamente o URL de redirecionamento.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -2697,6 +2649,10 @@ Expiração dos tokens de login: %2</translation>
         <translation>Seu acesso foi aprovado.</translation>
     </message>
     <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation>O client ID/secret pré-configurado será usado.</translation>
+    </message>
+    <message>
         <source>Empty value is entered.</source>
         <translation>Valor vazio foi inserido.</translation>
     </message>
@@ -2704,29 +2660,13 @@ Expiração dos tokens de login: %2</translation>
         <source>Some value is entered.</source>
         <translation>Algum valor foi inserido.</translation>
     </message>
-    <message>
-        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation>Existem alguns tokens OAuth pré-configurados para que você não precise preencher seu client ID/secret, mas é altamente recomendável obter o seu próprio, pois os tokens pré-configurados têm cota de uso global limitada. Se você deseja usar tokens pré-configurados, simplesmente deixe esses campos vazios e certifique-se de deixar o valor padrão do URL de redirecionamento.</translation>
-    </message>
-    <message>
-        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation>Você precisa preencher o seu client ID/secret e também preencher corretamente o URL de redirecionamento.</translation>
-    </message>
-    <message>
-        <source>Preconfigured client ID/secret will be used.</source>
-        <translation>O client ID/secret pré-configurado será usado.</translation>
-    </message>
-    <message>
-        <source>Only download newest X articles per feed</source>
-        <translation>Somente baixar os X artigos mais recentes por feed</translation>
-    </message>
-    <message>
-        <source>Download unread articles only</source>
-        <translation>Baixar somente artigos não lidos</translation>
-    </message>
 </context>
 <context>
-    <name>InoreaderNetworkFactory</name>
+    <name>GreaderNetwork</name>
+    <message>
+        <source>login failed</source>
+        <translation>falha no login</translation>
+    </message>
     <message>
         <source>Inoreader: authentication error</source>
         <translation>Inoreader: erro de autenticação</translation>
@@ -2743,26 +2683,34 @@ Expiração dos tokens de login: %2</translation>
         <source>Click this to login again.</source>
         <translation>Clique nisto para fazer login novamente.</translation>
     </message>
+</context>
+<context>
+    <name>GreaderServiceRoot</name>
     <message>
-        <source>not logged in</source>
-        <translation>você não está logado</translation>
+        <source>Other services</source>
+        <translation>Outros serviços</translation>
     </message>
 </context>
 <context>
-    <name>InoreaderServiceRoot</name>
+    <name>IOFactory</name>
     <message>
-        <source>Authentication status: %1
-Login tokens expiration: %2</source>
-        <translation>Status da autenticação: %1
-Expiração dos tokens de login: %2</translation>
+        <source>Cannot open file &apos;%1&apos; for reading.</source>
+        <translation>Não foi possível abrir o arquivo &apos;%1&apos; para leitura.</translation>
     </message>
     <message>
-        <source>logged-in</source>
-        <translation>logado</translation>
+        <source>Cannot open file &apos;%1&apos; for writting.</source>
+        <translation>Não foi possível abrir o arquivo &apos;%1&apos; para escrita.</translation>
+    </message>
+</context>
+<context>
+    <name>ImportantNode</name>
+    <message>
+        <source>Important articles</source>
+        <translation>Artigos importantes</translation>
     </message>
     <message>
-        <source>NOT logged-in</source>
-        <translation>NÃO logado</translation>
+        <source>You can find all important articles here.</source>
+        <translation>Aqui você encontra todos os artigos importantes.</translation>
     </message>
 </context>
 <context>
@@ -3293,10 +3241,6 @@ Expiração dos tokens de login: %2</translation>
         <translation>Sua senha para autenticação do servidor proxy</translation>
     </message>
     <message>
-        <source>Display password</source>
-        <translation>Mostrar senha</translation>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation>Note que estas configurações são aplicadas somente em novas conexões estabelecidas.</translation>
     </message>
@@ -3388,10 +3332,6 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <source>Password</source>
         <translation>Senha</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Mostrar senha</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -3549,10 +3489,6 @@ Pelo menos o API nível %1 é necessário.</translation>
         <translation>A representação da ferramenta externa aprovada não é válida.</translation>
     </message>
     <message>
-        <source>This is integration of Inoreader.</source>
-        <translation>Esta é a integração do Inoreader.</translation>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation>Integração simples do Gmail via API JSON. Permite também o envio de e-mails.</translation>
     </message>
@@ -3569,10 +3505,6 @@ versão, clicando nesta notificação popup.</translation>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation>Feeds online padrão (RSS/ATOM/JSON)</translation>
-    </message>
-    <message>
-        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
-        <translation>O API do Google Reader é usado por muitos leitores de RSS online. Isto está aqui para oferecer suporte</translation>
     </message>
     <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
@@ -3608,10 +3540,16 @@ O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacid
     </message>
     <message>
         <source>New (unread) articles fetched</source>
-        <translation type="unfinished"/>
+        <translation>Novos artigos (não lidos) buscados</translation>
     </message>
     <message>
         <source>XML problem: %1</source>
+        <translation>Problema de XML: %1</translation>
+    </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers.
+
+List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3908,10 +3846,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Note que a velocidade do servidor MySQL usado e a latência da conexão influenciam FORTEMENTE no desempenho final deste aplicativo. Usar conexões lentas ao banco de dados ocasionam um desempenho ruim ao navegar por feeds ou mensagens.</translation>
     </message>
     <message>
-        <source>&amp;Show password</source>
-        <translation>Mo&amp;strar senha</translation>
-    </message>
-    <message>
         <source>Working database</source>
         <translation>Bando de dados de trabalho</translation>
     </message>
@@ -4103,35 +4037,35 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Fetch articles for all feeds on application startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Baixar artigos de todos os feeds ao iniciar o aplicativo com atraso inicial de</translation>
     </message>
     <message>
         <source>Auto-fetch articles for all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Buscar artigos automaticamente para todos os feeds a cada</translation>
     </message>
     <message>
         <source>Only auto-fetch articles if application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation>Somente buscar artigos quando o aplicativo está em segundo plano</translation>
     </message>
     <message>
         <source>Article count format in feed list</source>
-        <translation type="unfinished"/>
+        <translation>Formato da contagem de artigos na lista de feeds</translation>
     </message>
     <message>
         <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-        <translation type="unfinished"/>
+        <translation>Entre o formato da contagem de artigos exibido próximo a cada feed/categoria na lista de feeds. Use as strings &quot;%all&quot; e &quot;%unread&quot;, que são marcadores para a contagem atual dos artigos no total (ou não lidos).</translation>
     </message>
     <message>
         <source>Hide article counts if there are no unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Ocultar contagem de artigos se não houverem artigos não lidos</translation>
     </message>
     <message>
         <source>Display tooltips for feeds and articles</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar dicas de ferramentas para feeds e artigos</translation>
     </message>
     <message>
         <source>Keep article selection in the middle of the article list viewport</source>
-        <translation type="unfinished"/>
+        <translation>Manter seleção de artigos no meio da janela de exibição da lista de artigos</translation>
     </message>
 </context>
 <context>
@@ -4463,7 +4397,9 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <source>
 Encoding: %2
 Type: %3</source>
-        <translation type="unfinished"/>
+        <translation>
+Codificação: %2
+Tipo: %3</translation>
     </message>
 </context>
 <context>
@@ -4936,10 +4872,6 @@ Notícias não lidas: %2</translation>
     <message>
         <source>Password</source>
         <translation>Senha</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Mostrar senha</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>

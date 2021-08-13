@@ -184,6 +184,13 @@ Error: %1</source>
     </message>
 </context>
 <context>
+    <name>BaseLineEdit</name>
+    <message>
+        <source>Show/hide the password</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -1224,13 +1231,6 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
-    <name>FormEditInoreaderAccount</name>
-    <message>
-        <source>Server setup</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>Server setup</source>
@@ -1498,11 +1498,6 @@ or this functionality is not implemented yet.</source>
         <translation>Kann die Datenbank aufgrund einer anderen Aktion hieran nicht bereinigen.</translation>
     </message>
     <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed &apos;%1&apos; wurde aktualisiert</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>&amp;Neustart</translation>
     </message>
@@ -1736,6 +1731,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetched &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2483,10 +2483,6 @@ Ablauf des Login tokens: %2</translation>
         <translation>URL</translation>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Bestimmte Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
-    </message>
-    <message>
         <source>Authentication</source>
         <translation>Authentifizierung</translation>
     </message>
@@ -2497,10 +2493,6 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <source>Password</source>
         <translation>Passwort</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Passwort anzeigen</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -2575,18 +2567,109 @@ Ablauf des Login tokens: %2</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
+        <source>Intelligent synchronization algorithm</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles newer than</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>App key</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Get my own App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>GreaderNetwork</name>
     <message>
-        <source>Other services</source>
+        <source>login failed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>login failed</source>
+        <source>Inoreader: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Inoreader: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>GreaderServiceRoot</name>
+    <message>
+        <source>Other services</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2610,141 +2693,6 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <source>You can find all important articles here.</source>
         <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderAccountDetails</name>
-    <message>
-        <source>Username</source>
-        <translation>Benutzername</translation>
-    </message>
-    <message>
-        <source>OAuth 2.0 settings</source>
-        <translation>OAuth 2.0 Einstellungen</translation>
-    </message>
-    <message>
-        <source>App ID</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>App key</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Redirect URL</source>
-        <translation>URL umleiten</translation>
-    </message>
-    <message>
-        <source>Get my own App ID</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Login</source>
-        <translation>&amp;Login</translation>
-    </message>
-    <message>
-        <source>Not tested yet.</source>
-        <translation>Noch nicht getestet.</translation>
-    </message>
-    <message>
-        <source>User-visible username</source>
-        <translation>Nutzer sichtbarer Benutzername</translation>
-    </message>
-    <message>
-        <source>No username entered.</source>
-        <translation>Keinen Benutzernamen eingegeben.</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>Ein Benutzername wurde eingegeben.</translation>
-    </message>
-    <message>
-        <source>You did not grant access.</source>
-        <translation>Sie haben keinen Zugang gewährt.</translation>
-    </message>
-    <message>
-        <source>There was error during testing.</source>
-        <translation>Ein Fehler ist während des Tests aufgetreten.</translation>
-    </message>
-    <message>
-        <source>There is error. %1</source>
-        <translation>Ein Fehler ist aufgetreten. %1</translation>
-    </message>
-    <message>
-        <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation>Test erfolgreich. Sie könnten zu einem erneuten Einloggen aufgefordert werden.</translation>
-    </message>
-    <message>
-        <source>Your access was approved.</source>
-        <translation>Ihr Zugang wurde genehmigt.</translation>
-    </message>
-    <message>
-        <source>Empty value is entered.</source>
-        <translation>Leerer Wert wurde eingegeben.</translation>
-    </message>
-    <message>
-        <source>Some value is entered.</source>
-        <translation>Ein Wert wurde eingegeben.</translation>
-    </message>
-    <message>
-        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download unread articles only</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderNetworkFactory</name>
-    <message>
-        <source>Inoreader: authentication error</source>
-        <translation>Inoreader: Fehler bei der Authentifizierung</translation>
-    </message>
-    <message>
-        <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation>Klicken Sie hier um sich wieder anzumelden. Der Fehler ist: &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Inoreader: authorization denied</source>
-        <translation>Inoreader: Autorisierung abgelehnt</translation>
-    </message>
-    <message>
-        <source>Click this to login again.</source>
-        <translation>Drücken Sie hier um sich neu anzumelden.</translation>
-    </message>
-    <message>
-        <source>not logged in</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderServiceRoot</name>
-    <message>
-        <source>Authentication status: %1
-Login tokens expiration: %2</source>
-        <translation>Authentifikationsstatus: %1
-Ablauf des Login tokens: %2</translation>
-    </message>
-    <message>
-        <source>logged-in</source>
-        <translation>angemeldet</translation>
-    </message>
-    <message>
-        <source>NOT logged-in</source>
-        <translation>NICHT angemeldet</translation>
     </message>
 </context>
 <context>
@@ -3275,10 +3223,6 @@ Ablauf des Login tokens: %2</translation>
         <translation>Ihr Passwort für die Authentifizierung am Proxy-Server</translation>
     </message>
     <message>
-        <source>Display password</source>
-        <translation>Passwort anzeigen</translation>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation>Bitte beachten, dass diese Einstellungen nur auf neue Verbindungen angewendet werden.</translation>
     </message>
@@ -3370,10 +3314,6 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <source>Password</source>
         <translation>Passwort</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Passwort anzeigen</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -3528,10 +3468,6 @@ Das API muss mindestens in Stufe %1 verfügbar sein.</translation>
         <translation>Die übergebene externe Werkzeugdarstellung ist nicht gültig.</translation>
     </message>
     <message>
-        <source>This is integration of Inoreader.</source>
-        <translation>Das ist die Integration von Inoreader.</translation>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation>Einfach Gmail-Integration via JSON API. Erlaubt auch das Senden von E-Mails.</translation>
     </message>
@@ -3547,10 +3483,6 @@ durch Klicken auf diese Benachrichtigung.</translation>
     </message>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3589,6 +3521,12 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>XML problem: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers.
+
+List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3884,10 +3822,6 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>Bitte beachten Sie, dass die Leistungsfähigkeit des verwendeten MySQL Servers bzw. der Netzwerkverbindung einen MASSIVEN Einfluss auf die Leistungsfähigkeit von RSS Guard haben. Eine langsame Verbindung zur Datenbank beeinflusst insbesondere das Durchsuchen von Feeds oder Nachrichten.</translation>
-    </message>
-    <message>
-        <source>&amp;Show password</source>
-        <translation>&amp;Passwort anzeigen</translation>
     </message>
     <message>
         <source>Working database</source>
@@ -4914,10 +4848,6 @@ Ungelesene Nachrichten: %2</translation>
     <message>
         <source>Password</source>
         <translation>Passwort</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Passwort anzeigen</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>

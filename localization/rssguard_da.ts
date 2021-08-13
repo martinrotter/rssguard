@@ -184,6 +184,13 @@ Error: %1</source>
     </message>
 </context>
 <context>
+    <name>BaseLineEdit</name>
+    <message>
+        <source>Show/hide the password</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -1225,13 +1232,6 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
-    <name>FormEditInoreaderAccount</name>
-    <message>
-        <source>Server setup</source>
-        <translation>Serverindstillinger</translation>
-    </message>
-</context>
-<context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>Server setup</source>
@@ -1499,11 +1499,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Ajourført feed &apos;%1&apos;</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>Gensta&amp;rt</translation>
     </message>
@@ -1737,6 +1732,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetched &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2479,10 +2479,6 @@ Login tokens expiration: %2</source>
         <translation>Webadresse</translation>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Nogle feeds kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
-    </message>
-    <message>
         <source>Authentication</source>
         <translation>Godkendelse</translation>
     </message>
@@ -2493,10 +2489,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Password</source>
         <translation>Adgangskode</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Vis adgangskode</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -2571,18 +2563,109 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
+        <source>Intelligent synchronization algorithm</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles newer than</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>App key</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Get my own App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>GreaderNetwork</name>
     <message>
-        <source>Other services</source>
+        <source>login failed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>login failed</source>
+        <source>Inoreader: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Inoreader: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>GreaderServiceRoot</name>
+    <message>
+        <source>Other services</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2606,140 +2689,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>You can find all important articles here.</source>
         <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderAccountDetails</name>
-    <message>
-        <source>Username</source>
-        <translation>Brugernavn</translation>
-    </message>
-    <message>
-        <source>OAuth 2.0 settings</source>
-        <translation>OAuth 2.0 indstillinger</translation>
-    </message>
-    <message>
-        <source>App ID</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>App key</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Redirect URL</source>
-        <translation>Omdiriger webadresse</translation>
-    </message>
-    <message>
-        <source>Get my own App ID</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Login</source>
-        <translation>&amp;Log på</translation>
-    </message>
-    <message>
-        <source>Not tested yet.</source>
-        <translation>Endnu ikke testet.</translation>
-    </message>
-    <message>
-        <source>User-visible username</source>
-        <translation>Brugersynligt brugernavn </translation>
-    </message>
-    <message>
-        <source>No username entered.</source>
-        <translation>Intet brugernavn indtastet.</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>Et brugernavn er indtastet.</translation>
-    </message>
-    <message>
-        <source>You did not grant access.</source>
-        <translation>Du har ikke givet adgang.</translation>
-    </message>
-    <message>
-        <source>There was error during testing.</source>
-        <translation>Der opstod en fejl under test.</translation>
-    </message>
-    <message>
-        <source>There is error. %1</source>
-        <translation>Dette er fejl. %1</translation>
-    </message>
-    <message>
-        <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation>Testet med succes. Du bliver muligvis bedt om at logge ind igen.</translation>
-    </message>
-    <message>
-        <source>Your access was approved.</source>
-        <translation>Du har fået adgang.</translation>
-    </message>
-    <message>
-        <source>Empty value is entered.</source>
-        <translation>En tom værdi er indtastet.</translation>
-    </message>
-    <message>
-        <source>Some value is entered.</source>
-        <translation>En værdi er indtastet.</translation>
-    </message>
-    <message>
-        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download unread articles only</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderNetworkFactory</name>
-    <message>
-        <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Click this to login again.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>not logged in</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderServiceRoot</name>
-    <message>
-        <source>Authentication status: %1
-Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>logged-in</source>
-        <translation>logget ind</translation>
-    </message>
-    <message>
-        <source>NOT logged-in</source>
-        <translation>IKKE logget ind</translation>
     </message>
 </context>
 <context>
@@ -3270,10 +3219,6 @@ Login tokens expiration: %2</source>
         <translation>Din adgangskode til godkendelse af proxyserveren</translation>
     </message>
     <message>
-        <source>Display password</source>
-        <translation>Vis kodeord</translation>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation type="unfinished"/>
     </message>
@@ -3365,10 +3310,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Password</source>
         <translation>Adgangskode</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Vis adgangskode</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -3522,10 +3463,6 @@ Mindst API niveau %1 er påkrævet.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation>Basal  Gmail-integration via JSON API. Tillader også at sende e-post.</translation>
     </message>
@@ -3538,10 +3475,6 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3580,6 +3513,12 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>XML problem: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers.
+
+List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3862,10 +3801,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Show password</source>
-        <translation>Vi&amp;s adgangskode</translation>
     </message>
     <message>
         <source>Working database</source>
@@ -4892,10 +4827,6 @@ Ulæste nyheder: %2</translation>
     <message>
         <source>Password</source>
         <translation>Adgangskode</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Vis adgangskode</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>

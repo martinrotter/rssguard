@@ -184,6 +184,13 @@ Error: %1</source>
     </message>
 </context>
 <context>
+    <name>BaseLineEdit</name>
+    <message>
+        <source>Show/hide the password</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -1227,13 +1234,6 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
-    <name>FormEditInoreaderAccount</name>
-    <message>
-        <source>Server setup</source>
-        <translation>Настройка сервера</translation>
-    </message>
-</context>
-<context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>Server setup</source>
@@ -1501,11 +1501,6 @@ or this functionality is not implemented yet.</source>
         <translation>Не удается очистить базу данных, т.к. выполняется другое критическое действие.</translation>
     </message>
     <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Обновление канала &apos;%1&apos;</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>Перезапустить (&amp;R)</translation>
     </message>
@@ -1739,6 +1734,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetched &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2487,10 +2487,6 @@ Login tokens expiration: %2</source>
         <translation>URL </translation>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Некоторые каналы требуют аутентификации, включая каналы GMail. Поддерживаются схемы проверки подлинности BASIC, NTLM-2 и DIGEST-MD5.</translation>
-    </message>
-    <message>
         <source>Authentication</source>
         <translation>Аутентификация</translation>
     </message>
@@ -2501,10 +2497,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Password</source>
         <translation>Пароль</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Показать пароль</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -2579,48 +2571,12 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>GreaderNetwork</name>
-    <message>
-        <source>Other services</source>
-        <translation>Другие сервисы</translation>
-    </message>
-    <message>
-        <source>login failed</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>IOFactory</name>
-    <message>
-        <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation>Невозможно открыть файл &apos;%1&apos; для чтения.</translation>
-    </message>
-    <message>
-        <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation>Невозможно открыть файл &apos;%1&apos; для записи.</translation>
-    </message>
-</context>
-<context>
-    <name>ImportantNode</name>
-    <message>
-        <source>Important articles</source>
+        <source>Intelligent synchronization algorithm</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can find all important articles here.</source>
+        <source>Fetch articles newer than</source>
         <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderAccountDetails</name>
-    <message>
-        <source>Username</source>
-        <translation>Логин</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -2643,24 +2599,20 @@ Login tokens expiration: %2</source>
         <translation>Получить собственный идентификатор приложения</translation>
     </message>
     <message>
-        <source>&amp;Login</source>
-        <translation>Логин (&amp;L)</translation>
+        <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Not tested yet.</source>
-        <translation>Ещё не протестировано.</translation>
+        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>User-visible username</source>
-        <translation>Имя пользователя, видное для всех</translation>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>No username entered.</source>
-        <translation>Нет логина.</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>Введен некоторый логин.</translation>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -2683,6 +2635,10 @@ Login tokens expiration: %2</source>
         <translation>Ваш доступ одобрен.</translation>
     </message>
     <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Empty value is entered.</source>
         <translation>Введено пустое значение.</translation>
     </message>
@@ -2690,29 +2646,13 @@ Login tokens expiration: %2</source>
         <source>Some value is entered.</source>
         <translation>Введено некоторое значение.</translation>
     </message>
-    <message>
-        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download unread articles only</source>
-        <translation type="unfinished"/>
-    </message>
 </context>
 <context>
-    <name>InoreaderNetworkFactory</name>
+    <name>GreaderNetwork</name>
+    <message>
+        <source>login failed</source>
+        <translation type="unfinished"/>
+    </message>
     <message>
         <source>Inoreader: authentication error</source>
         <translation>Inoreader: ошибка аутентификации</translation>
@@ -2729,26 +2669,34 @@ Login tokens expiration: %2</source>
         <source>Click this to login again.</source>
         <translation>Нажмите здесь, чтобы войти снова.</translation>
     </message>
+</context>
+<context>
+    <name>GreaderServiceRoot</name>
     <message>
-        <source>not logged in</source>
-        <translation type="unfinished"/>
+        <source>Other services</source>
+        <translation>Другие сервисы</translation>
     </message>
 </context>
 <context>
-    <name>InoreaderServiceRoot</name>
+    <name>IOFactory</name>
     <message>
-        <source>Authentication status: %1
-Login tokens expiration: %2</source>
-        <translation>Состояние аутентификации: %1
-Срок действия токенов входа: %2</translation>
+        <source>Cannot open file &apos;%1&apos; for reading.</source>
+        <translation>Невозможно открыть файл &apos;%1&apos; для чтения.</translation>
     </message>
     <message>
-        <source>logged-in</source>
-        <translation>вход выполнен</translation>
+        <source>Cannot open file &apos;%1&apos; for writting.</source>
+        <translation>Невозможно открыть файл &apos;%1&apos; для записи.</translation>
+    </message>
+</context>
+<context>
+    <name>ImportantNode</name>
+    <message>
+        <source>Important articles</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>NOT logged-in</source>
-        <translation>вход НЕ выполнен</translation>
+        <source>You can find all important articles here.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3280,10 +3228,6 @@ Login tokens expiration: %2</source>
         <translation>Ваш пароль для аутентификации прокси-сервера</translation>
     </message>
     <message>
-        <source>Display password</source>
-        <translation>Отобразить пароль</translation>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation>Обратите внимание, что эти настройки применяются только на вновь созданных соединений.</translation>
     </message>
@@ -3375,10 +3319,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Password</source>
         <translation>Пароль</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Показать пароль</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -3540,10 +3480,6 @@ Tiny Tiny RSS - это программа для чтения и агрегац�
         <translation>Переданное внешнее представление инструмента недопустимо.</translation>
     </message>
     <message>
-        <source>This is integration of Inoreader.</source>
-        <translation>Это интеграция Inoreader.</translation>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation>Простая интеграция с Gmail через JSON API. Позволяет также отправлять электронную почту.</translation>
     </message>
@@ -3560,10 +3496,6 @@ version by clicking this popup notification.</source>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation>Стандартные онлайн-каналы (RSS/ATOM/JSON)</translation>
-    </message>
-    <message>
-        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
-        <translation>Google Reader API используется многими онлайн-ридерами RSS. Доступна поддержка для</translation>
     </message>
     <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
@@ -3601,6 +3533,12 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>XML problem: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers.
+
+List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3895,10 +3833,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>Обратите внимание, что скорость используемого сервера MySQL и задержки используемого соединения СИЛЬНО влияет на конечную эффективность этого приложения. Использование медленных соединений с БД приводит к плохой производительности при просмотре каналов и сообщений.</translation>
-    </message>
-    <message>
-        <source>&amp;Show password</source>
-        <translation>Показать пароль (&amp;S)</translation>
     </message>
     <message>
         <source>Working database</source>
@@ -4925,10 +4859,6 @@ Unread news: %2</source>
     <message>
         <source>Password</source>
         <translation>Пароль</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Показать пароль</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>

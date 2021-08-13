@@ -184,6 +184,13 @@ Error: %1</source>
     </message>
 </context>
 <context>
+    <name>BaseLineEdit</name>
+    <message>
+        <source>Show/hide the password</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -1227,13 +1234,6 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
-    <name>FormEditInoreaderAccount</name>
-    <message>
-        <source>Server setup</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>Server setup</source>
@@ -1501,11 +1501,6 @@ or this functionality is not implemented yet.</source>
         <translation>另一项关键操作正在执行，无法清理数据库。</translation>
     </message>
     <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed &apos;%1&apos; 已更新</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>重新启动 (&amp;R)</translation>
     </message>
@@ -1739,6 +1734,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetched &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2484,10 +2484,6 @@ Token 过期时间：%2</translation>
         <translation>URL</translation>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>某些 Feed，例如 Gmail Feed，需要身份认证，我们支持 BASIC, NTLM-2 和 DIGEST-MD5 认证方式。</translation>
-    </message>
-    <message>
         <source>Authentication</source>
         <translation>身份认证</translation>
     </message>
@@ -2498,10 +2494,6 @@ Token 过期时间：%2</translation>
     <message>
         <source>Password</source>
         <translation>密码</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>显示密码</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -2576,18 +2568,109 @@ Token 过期时间：%2</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
+        <source>Intelligent synchronization algorithm</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles newer than</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>OAuth 2.0 设置</translation>
+    </message>
+    <message>
+        <source>App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>App key</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>重定向 URL</translation>
+    </message>
+    <message>
+        <source>Get my own App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>未能获取权限。</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>测试时发生了错误。</translation>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation>错误如下：%1</translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>测试成功。你可能需要再次登录。</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>权限申请已被批准。</translation>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>未输入。</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>已输入。</translation>
     </message>
 </context>
 <context>
     <name>GreaderNetwork</name>
     <message>
-        <source>Other services</source>
+        <source>login failed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>login failed</source>
+        <source>Inoreader: authentication error</source>
+        <translation>Inoreader：身份认证错误</translation>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation>点此重新登录，报错：&apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Inoreader: authorization denied</source>
+        <translation>Inoreader：身份验证被拒绝</translation>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation>点此重新登录。</translation>
+    </message>
+</context>
+<context>
+    <name>GreaderServiceRoot</name>
+    <message>
+        <source>Other services</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2611,141 +2694,6 @@ Token 过期时间：%2</translation>
     <message>
         <source>You can find all important articles here.</source>
         <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderAccountDetails</name>
-    <message>
-        <source>Username</source>
-        <translation>用户名</translation>
-    </message>
-    <message>
-        <source>OAuth 2.0 settings</source>
-        <translation>OAuth 2.0 设置</translation>
-    </message>
-    <message>
-        <source>App ID</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>App key</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Redirect URL</source>
-        <translation>重定向 URL</translation>
-    </message>
-    <message>
-        <source>Get my own App ID</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Login</source>
-        <translation>登录 (&amp;L)</translation>
-    </message>
-    <message>
-        <source>Not tested yet.</source>
-        <translation>尚未测试。</translation>
-    </message>
-    <message>
-        <source>User-visible username</source>
-        <translation>显示的用户名</translation>
-    </message>
-    <message>
-        <source>No username entered.</source>
-        <translation>用户名未输入。</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>用户名已输入。</translation>
-    </message>
-    <message>
-        <source>You did not grant access.</source>
-        <translation>未能获取权限。</translation>
-    </message>
-    <message>
-        <source>There was error during testing.</source>
-        <translation>测试时发生了错误。</translation>
-    </message>
-    <message>
-        <source>There is error. %1</source>
-        <translation>错误如下：%1</translation>
-    </message>
-    <message>
-        <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation>测试成功。你可能需要再次登录。</translation>
-    </message>
-    <message>
-        <source>Your access was approved.</source>
-        <translation>权限申请已被批准。</translation>
-    </message>
-    <message>
-        <source>Empty value is entered.</source>
-        <translation>未输入。</translation>
-    </message>
-    <message>
-        <source>Some value is entered.</source>
-        <translation>已输入。</translation>
-    </message>
-    <message>
-        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download unread articles only</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderNetworkFactory</name>
-    <message>
-        <source>Inoreader: authentication error</source>
-        <translation>Inoreader：身份认证错误</translation>
-    </message>
-    <message>
-        <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation>点此重新登录，报错：&apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Inoreader: authorization denied</source>
-        <translation>Inoreader：身份验证被拒绝</translation>
-    </message>
-    <message>
-        <source>Click this to login again.</source>
-        <translation>点此重新登录。</translation>
-    </message>
-    <message>
-        <source>not logged in</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderServiceRoot</name>
-    <message>
-        <source>Authentication status: %1
-Login tokens expiration: %2</source>
-        <translation>认证状态：%1
-Token 过期时间：%2</translation>
-    </message>
-    <message>
-        <source>logged-in</source>
-        <translation>已登录</translation>
-    </message>
-    <message>
-        <source>NOT logged-in</source>
-        <translation>未登录</translation>
     </message>
 </context>
 <context>
@@ -3276,10 +3224,6 @@ Token 过期时间：%2</translation>
         <translation>代理服务器认证所需的密码</translation>
     </message>
     <message>
-        <source>Display password</source>
-        <translation>显示密码</translation>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation>注意，这些设置只对新建立的连接有效。</translation>
     </message>
@@ -3371,10 +3315,6 @@ Token 过期时间：%2</translation>
     <message>
         <source>Password</source>
         <translation>密码</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>显示密码</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -3530,10 +3470,6 @@ Tiny Tiny RSS 是一个基于 Web 的开源 RSS/Atom 阅读器，允许你以近
         <translation>被传递的外部工具无效。</translation>
     </message>
     <message>
-        <source>This is integration of Inoreader.</source>
-        <translation>Inoreader 集成。</translation>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation>通过 JSON API 实现的简单 Gmail 集成，也可以发送邮件。</translation>
     </message>
@@ -3548,10 +3484,6 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3590,6 +3522,12 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>XML problem: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers.
+
+List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3885,10 +3823,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>注意，MySQL 服务器的性能和网络连接的延迟将严重影响应用的最终性能，性能或连接不佳的数据库将拖慢浏览 Feed 或消息时的速度。</translation>
-    </message>
-    <message>
-        <source>&amp;Show password</source>
-        <translation>显示密码 (&amp;S)</translation>
     </message>
     <message>
         <source>Working database</source>
@@ -4915,10 +4849,6 @@ Unread news: %2</source>
     <message>
         <source>Password</source>
         <translation>密码</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>显示密码</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>

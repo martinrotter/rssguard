@@ -184,6 +184,13 @@ Error: %1</source>
     </message>
 </context>
 <context>
+    <name>BaseLineEdit</name>
+    <message>
+        <source>Show/hide the password</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -1228,13 +1235,6 @@ ou esta função ainda não foi implementada.</translation>
     </message>
 </context>
 <context>
-    <name>FormEditInoreaderAccount</name>
-    <message>
-        <source>Server setup</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>Server setup</source>
@@ -1502,11 +1502,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Não foi possível limpar o banco de dados, pois outra ação crítica está em execução.</translation>
     </message>
     <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed &apos;%1&apos; atualizado</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>&amp;Reiniciar</translation>
     </message>
@@ -1740,6 +1735,11 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetched &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2488,10 +2488,6 @@ Expiração dos tokens de login: %2</translation>
         <translation>URL </translation>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Alguns feeds necessitam de autenticação, incluindo feeds do GMail. Esquemas de autenticação BASIC, NTLM-2 e DIGEST-MD5 são suportados.</translation>
-    </message>
-    <message>
         <source>Authentication</source>
         <translation>Autenticação</translation>
     </message>
@@ -2502,10 +2498,6 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <source>Password</source>
         <translation>Senha</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Mostrar senha</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -2580,18 +2572,109 @@ Expiração dos tokens de login: %2</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
+        <source>Intelligent synchronization algorithm</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch articles newer than</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>Configurações OAuth 2.0</translation>
+    </message>
+    <message>
+        <source>App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>App key</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>URL de Redirecionamento</translation>
+    </message>
+    <message>
+        <source>Get my own App ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>O acesso não foi garantido.</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>Ocorreu um erro durante o teste.</translation>
+    </message>
+    <message>
+        <source>There is error. %1</source>
+        <translation>Há um erro. %1</translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>Testado com sucesso. Você será solicitado para fazer login mais uma vez.</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>Seu acesso foi aprovado.</translation>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>Valor em branco inserido.</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>Algum valor foi inserido.</translation>
     </message>
 </context>
 <context>
     <name>GreaderNetwork</name>
     <message>
-        <source>Other services</source>
+        <source>login failed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>login failed</source>
+        <source>Inoreader: authentication error</source>
+        <translation>Inoreader: erro de autenticação</translation>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation>Clique aqui para fazer login novamente. O erro é: &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Inoreader: authorization denied</source>
+        <translation>Inoreader: autorização negada</translation>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation>Clique aqui para fazer login novamente.</translation>
+    </message>
+</context>
+<context>
+    <name>GreaderServiceRoot</name>
+    <message>
+        <source>Other services</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2615,141 +2698,6 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <source>You can find all important articles here.</source>
         <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderAccountDetails</name>
-    <message>
-        <source>Username</source>
-        <translation>Usuário</translation>
-    </message>
-    <message>
-        <source>OAuth 2.0 settings</source>
-        <translation>Configurações OAuth 2.0</translation>
-    </message>
-    <message>
-        <source>App ID</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>App key</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Redirect URL</source>
-        <translation>URL de Redirecionamento</translation>
-    </message>
-    <message>
-        <source>Get my own App ID</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Login</source>
-        <translation>&amp;Login</translation>
-    </message>
-    <message>
-        <source>Not tested yet.</source>
-        <translation>Ainda não testado.</translation>
-    </message>
-    <message>
-        <source>User-visible username</source>
-        <translation>Nome de usuário visível ao usuário</translation>
-    </message>
-    <message>
-        <source>No username entered.</source>
-        <translation>Nenhum nome de usuário inserido.</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>Algum nome de usuário inserido.</translation>
-    </message>
-    <message>
-        <source>You did not grant access.</source>
-        <translation>O acesso não foi garantido.</translation>
-    </message>
-    <message>
-        <source>There was error during testing.</source>
-        <translation>Ocorreu um erro durante o teste.</translation>
-    </message>
-    <message>
-        <source>There is error. %1</source>
-        <translation>Há um erro. %1</translation>
-    </message>
-    <message>
-        <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation>Testado com sucesso. Você será solicitado para fazer login mais uma vez.</translation>
-    </message>
-    <message>
-        <source>Your access was approved.</source>
-        <translation>Seu acesso foi aprovado.</translation>
-    </message>
-    <message>
-        <source>Empty value is entered.</source>
-        <translation>Valor em branco inserido.</translation>
-    </message>
-    <message>
-        <source>Some value is entered.</source>
-        <translation>Algum valor foi inserido.</translation>
-    </message>
-    <message>
-        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download unread articles only</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderNetworkFactory</name>
-    <message>
-        <source>Inoreader: authentication error</source>
-        <translation>Inoreader: erro de autenticação</translation>
-    </message>
-    <message>
-        <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation>Clique aqui para fazer login novamente. O erro é: &apos;%1&apos;</translation>
-    </message>
-    <message>
-        <source>Inoreader: authorization denied</source>
-        <translation>Inoreader: autorização negada</translation>
-    </message>
-    <message>
-        <source>Click this to login again.</source>
-        <translation>Clique aqui para fazer login novamente.</translation>
-    </message>
-    <message>
-        <source>not logged in</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderServiceRoot</name>
-    <message>
-        <source>Authentication status: %1
-Login tokens expiration: %2</source>
-        <translation>Status da autenticação: %1
-Expiração dos tokens de login: %2</translation>
-    </message>
-    <message>
-        <source>logged-in</source>
-        <translation>logado</translation>
-    </message>
-    <message>
-        <source>NOT logged-in</source>
-        <translation>NÃO logado</translation>
     </message>
 </context>
 <context>
@@ -3280,10 +3228,6 @@ Expiração dos tokens de login: %2</translation>
         <translation>Sua senha para autenticação no servidor proxy</translation>
     </message>
     <message>
-        <source>Display password</source>
-        <translation>Exibir senha</translation>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation>Note que estas configurações são aplicadas somente em novas conexões estabelecidas.</translation>
     </message>
@@ -3375,10 +3319,6 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <source>Password</source>
         <translation>Senha</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Mostrar senha</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -3536,10 +3476,6 @@ Pelo menos o API nível %1 é necessário.</translation>
         <translation>A representação da ferramenta externa passada não é válida.</translation>
     </message>
     <message>
-        <source>This is integration of Inoreader.</source>
-        <translation>Isto é a integração do Inoreader.</translation>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation>Integração simples do Gmail via API JSON. Permite também o envio de e-mails.</translation>
     </message>
@@ -3556,10 +3492,6 @@ versão, clicando nesta notificação popup.</translation>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation>Feeds online padrão (RSS/ATOM/JSON)</translation>
-    </message>
-    <message>
-        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
@@ -3597,6 +3529,12 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>XML problem: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers.
+
+List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3891,10 +3829,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>Note que a velocidade do servidor MySQL usado e a latência da conexão influenciam FORTEMENTE no desempenho final deste aplicativo. Usar conexões lentas ao banco de dados ocasionam um desempenho ruim ao navegar por feeds ou mensagens.</translation>
-    </message>
-    <message>
-        <source>&amp;Show password</source>
-        <translation>E&amp;xibir senha</translation>
     </message>
     <message>
         <source>Working database</source>
@@ -4921,10 +4855,6 @@ Notícias não lidas: %2</translation>
     <message>
         <source>Password</source>
         <translation>Senha</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Mostrar senha</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>

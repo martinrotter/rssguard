@@ -184,6 +184,13 @@ Error: %1</source>
     </message>
 </context>
 <context>
+    <name>BaseLineEdit</name>
+    <message>
+        <source>Show/hide the password</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -1224,13 +1231,6 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
-    <name>FormEditInoreaderAccount</name>
-    <message>
-        <source>Server setup</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>Server setup</source>
@@ -1498,11 +1498,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation type="unfinished"/>
     </message>
@@ -1736,6 +1731,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetched &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2476,10 +2476,6 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Authentication</source>
         <translation type="unfinished"/>
     </message>
@@ -2489,10 +2485,6 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Show password</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2568,47 +2560,11 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>GreaderNetwork</name>
-    <message>
-        <source>Other services</source>
+        <source>Intelligent synchronization algorithm</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>login failed</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>IOFactory</name>
-    <message>
-        <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>ImportantNode</name>
-    <message>
-        <source>Important articles</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You can find all important articles here.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderAccountDetails</name>
-    <message>
-        <source>Username</source>
+        <source>Fetch articles newer than</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2632,23 +2588,19 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Login</source>
+        <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Not tested yet.</source>
+        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>User-visible username</source>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>No username entered.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Some username entered.</source>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2672,6 +2624,10 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Empty value is entered.</source>
         <translation type="unfinished"/>
     </message>
@@ -2679,29 +2635,13 @@ Login tokens expiration: %2</source>
         <source>Some value is entered.</source>
         <translation type="unfinished"/>
     </message>
-    <message>
-        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download unread articles only</source>
-        <translation type="unfinished"/>
-    </message>
 </context>
 <context>
-    <name>InoreaderNetworkFactory</name>
+    <name>GreaderNetwork</name>
+    <message>
+        <source>login failed</source>
+        <translation type="unfinished"/>
+    </message>
     <message>
         <source>Inoreader: authentication error</source>
         <translation type="unfinished"/>
@@ -2712,30 +2652,39 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation>Inoreader: authorisation denied</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Click this to login again.</source>
         <translation type="unfinished"/>
     </message>
+</context>
+<context>
+    <name>GreaderServiceRoot</name>
     <message>
-        <source>not logged in</source>
+        <source>Other services</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
-    <name>InoreaderServiceRoot</name>
+    <name>IOFactory</name>
     <message>
-        <source>Authentication status: %1
-Login tokens expiration: %2</source>
+        <source>Cannot open file &apos;%1&apos; for reading.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>logged-in</source>
+        <source>Cannot open file &apos;%1&apos; for writting.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>ImportantNode</name>
+    <message>
+        <source>Important articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>NOT logged-in</source>
+        <source>You can find all important articles here.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3267,10 +3216,6 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Display password</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation type="unfinished"/>
     </message>
@@ -3361,10 +3306,6 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Show password</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3515,10 +3456,6 @@ At least API level %1 is required.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>This is integration of Inoreader.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation type="unfinished"/>
     </message>
@@ -3531,10 +3468,6 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3575,6 +3508,12 @@ Feedly is a secure space where you can privately organise and research the topic
     </message>
     <message>
         <source>XML problem: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers.
+
+List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3856,10 +3795,6 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Show password</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -4885,10 +4820,6 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Show password</source>
         <translation type="unfinished"/>
     </message>
     <message>

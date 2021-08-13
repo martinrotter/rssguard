@@ -186,6 +186,13 @@ Fout: %1</translation>
     </message>
 </context>
 <context>
+    <name>BaseLineEdit</name>
+    <message>
+        <source>Show/hide the password</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -1230,13 +1237,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
 </context>
 <context>
-    <name>FormEditInoreaderAccount</name>
-    <message>
-        <source>Server setup</source>
-        <translation>Installatie van server</translation>
-    </message>
-</context>
-<context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>Server setup</source>
@@ -1504,11 +1504,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>De database kan nu niet opgeschoond worden omdat er een kritieke handeling uitgevoerd wordt.</translation>
     </message>
     <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed bijwerken &apos;%1&apos;</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>&amp;Herstarten</translation>
     </message>
@@ -1742,6 +1737,11 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetched &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2490,10 +2490,6 @@ Logintoken verloopt: %2</translation>
         <translation>URL</translation>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen inloggegevens, inclusief feeds van Gmail. Ondersteunde authenticatiemethoden zijn BASIC, NTLM-2 en DIGEST-MD5.</translation>
-    </message>
-    <message>
         <source>Authentication</source>
         <translation>Authenticatie</translation>
     </message>
@@ -2504,10 +2500,6 @@ Logintoken verloopt: %2</translation>
     <message>
         <source>Password</source>
         <translation>Wachtwoord</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Wachtwoord weergeven</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -2582,48 +2574,12 @@ Logintoken verloopt: %2</translation>
         <translation>Download alleen ongelezen artikelen</translation>
     </message>
     <message>
-        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>GreaderNetwork</name>
-    <message>
-        <source>Other services</source>
-        <translation>Andere diensten</translation>
-    </message>
-    <message>
-        <source>login failed</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>IOFactory</name>
-    <message>
-        <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation>Kan bestand &apos;%1&apos; niet openen om te lezen.</translation>
-    </message>
-    <message>
-        <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation>Kan bestand &apos;%1&apos; niet openen om te schrijven.</translation>
-    </message>
-</context>
-<context>
-    <name>ImportantNode</name>
-    <message>
-        <source>Important articles</source>
+        <source>Intelligent synchronization algorithm</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can find all important articles here.</source>
+        <source>Fetch articles newer than</source>
         <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderAccountDetails</name>
-    <message>
-        <source>Username</source>
-        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -2646,24 +2602,20 @@ Logintoken verloopt: %2</translation>
         <translation>Mijn eigen applicatie-ID verkrijgen</translation>
     </message>
     <message>
-        <source>&amp;Login</source>
-        <translation>&amp;Inloggen</translation>
+        <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Not tested yet.</source>
-        <translation>Nog niet getest.</translation>
+        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>User-visible username</source>
-        <translation>Openbare gebruikersnaam</translation>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>No username entered.</source>
-        <translation>Geen gebruikersnaam ingevoerd.</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>Een gebruikersnaam invoeren.</translation>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation>U moet uw klant-ID/geheim invullen en ook de juiste omleidings-URL invullen.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -2686,6 +2638,10 @@ Logintoken verloopt: %2</translation>
         <translation>De toegang is goedgekeurd.</translation>
     </message>
     <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation>Vooraf geconfigureerde client-ID/geheim wordt gebruikt.</translation>
+    </message>
+    <message>
         <source>Empty value is entered.</source>
         <translation>Een lege waarde is ingevoerd.</translation>
     </message>
@@ -2693,29 +2649,13 @@ Logintoken verloopt: %2</translation>
         <source>Some value is entered.</source>
         <translation>Een waarde is ingevoerd.</translation>
     </message>
-    <message>
-        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation>Er zijn enkele vooraf geconfigureerde QAuth-tokens, dus u hoeftuw client-ID/geheim niet in tevullen maar het wordt sterk aanbevolen om uw eigen tokens te verkrijgen, aangezien voorgeconfigureerde tokens een beperkt wereldwijd gebruiksquotum hebben. Als u vooraf geconfigureerde tokens wilt gebruiken, laat u deze velden gewoon leeg en laat u de standaardwaarde van de omleidings-URL achter.</translation>
-    </message>
-    <message>
-        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation>U moet uw klant-ID/geheim invullen en ook de juiste omleidings-URL invullen.</translation>
-    </message>
-    <message>
-        <source>Preconfigured client ID/secret will be used.</source>
-        <translation>Vooraf geconfigureerde client-ID/geheim wordt gebruikt.</translation>
-    </message>
-    <message>
-        <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download unread articles only</source>
-        <translation>Download alleen ongelezen artikelen</translation>
-    </message>
 </context>
 <context>
-    <name>InoreaderNetworkFactory</name>
+    <name>GreaderNetwork</name>
+    <message>
+        <source>login failed</source>
+        <translation type="unfinished"/>
+    </message>
     <message>
         <source>Inoreader: authentication error</source>
         <translation>Inoreader: inlogfout</translation>
@@ -2732,26 +2672,34 @@ Logintoken verloopt: %2</translation>
         <source>Click this to login again.</source>
         <translation>Klik hier om opnieuw in te loggen.</translation>
     </message>
+</context>
+<context>
+    <name>GreaderServiceRoot</name>
     <message>
-        <source>not logged in</source>
-        <translation>niet ingelogd</translation>
+        <source>Other services</source>
+        <translation>Andere diensten</translation>
     </message>
 </context>
 <context>
-    <name>InoreaderServiceRoot</name>
+    <name>IOFactory</name>
     <message>
-        <source>Authentication status: %1
-Login tokens expiration: %2</source>
-        <translation>Authenticatiestatus: %1
-Logintoken verloopt: %2</translation>
+        <source>Cannot open file &apos;%1&apos; for reading.</source>
+        <translation>Kan bestand &apos;%1&apos; niet openen om te lezen.</translation>
     </message>
     <message>
-        <source>logged-in</source>
-        <translation>ingelogd</translation>
+        <source>Cannot open file &apos;%1&apos; for writting.</source>
+        <translation>Kan bestand &apos;%1&apos; niet openen om te schrijven.</translation>
+    </message>
+</context>
+<context>
+    <name>ImportantNode</name>
+    <message>
+        <source>Important articles</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>NOT logged-in</source>
-        <translation>NIET ingelogd</translation>
+        <source>You can find all important articles here.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3282,10 +3230,6 @@ Logintoken verloopt: %2</translation>
         <translation>Je wachtwoord voor de proxyserver</translation>
     </message>
     <message>
-        <source>Display password</source>
-        <translation>Wachtwoord weergeven</translation>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation>Merk op dat deze instellingen alleen worden  toegepast op nieuw tot stand gebrachte verbindingen.</translation>
     </message>
@@ -3377,10 +3321,6 @@ Logintoken verloopt: %2</translation>
     <message>
         <source>Password</source>
         <translation>Wachtwoord</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Wachtwoord weergeven</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -3538,10 +3478,6 @@ Een API-niveau van tenminste %1 is vereist.</translation>
         <translation>Ingevoerde weergave van externe applicatie is niet geldig.</translation>
     </message>
     <message>
-        <source>This is integration of Inoreader.</source>
-        <translation>Dit is de integratie van Inoreader.</translation>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation>Eenvoudige integratie van Gmail via JSON API. Ondersteunt ook het versturen van e-mails.</translation>
     </message>
@@ -3557,10 +3493,6 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation>Standaard online feeds (RSS/ATOM/JSON)</translation>
-    </message>
-    <message>
-        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
-        <translation>De API van Google Reader wordt door veel online RSS-lezers gebruikt. Dit biedt ondersteuning voor</translation>
     </message>
     <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
@@ -3600,6 +3532,12 @@ Feedly is een beveiligde ruimte waar u de onderwerpen en trends die voor u van b
     </message>
     <message>
         <source>XML problem: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers.
+
+List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3895,10 +3833,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>Merk op dat de snelheid van de gebruikte MySQL server en wachttijd van de gebruikte verbinding ZWAAR invloed heeft op de uiteindelijke prestaties van deze toepassing. Met langzame database connecties leidt dit tot slechte prestaties tijdens het browsen feeds of berichten.</translation>
-    </message>
-    <message>
-        <source>&amp;Show password</source>
-        <translation>Wachtwoord &amp;weergeven</translation>
     </message>
     <message>
         <source>Working database</source>
@@ -4926,10 +4860,6 @@ Ongelezen nieuws: %2</translation>
     <message>
         <source>Password</source>
         <translation>Wachtwoord</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>Wachtwoord weergeven</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>

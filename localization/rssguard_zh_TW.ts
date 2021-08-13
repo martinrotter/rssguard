@@ -184,6 +184,13 @@ Error: %1</source>
     </message>
 </context>
 <context>
+    <name>BaseLineEdit</name>
+    <message>
+        <source>Show/hide the password</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
@@ -1228,13 +1235,6 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
-    <name>FormEditInoreaderAccount</name>
-    <message>
-        <source>Server setup</source>
-        <translation>伺服器設立</translation>
-    </message>
-</context>
-<context>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>Server setup</source>
@@ -1502,11 +1502,6 @@ or this functionality is not implemented yet.</source>
         <translation>無法清理資料庫，因為另一重要動作執行中。</translation>
     </message>
     <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>新聞源 &apos;%1&apos; 已更新</translation>
-    </message>
-    <message>
         <source>&amp;Restart</source>
         <translation>重新啟動(&amp;R)</translation>
     </message>
@@ -1740,6 +1735,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetching common data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetched &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2488,10 +2488,6 @@ Login tokens expiration: %2</source>
         <translation>URL</translation>
     </message>
     <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>某些新聞源，包括 Gmail 新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 的認證架構。</translation>
-    </message>
-    <message>
         <source>Authentication</source>
         <translation>認證</translation>
     </message>
@@ -2502,10 +2498,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Password</source>
         <translation>密碼</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>顯示密碼</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -2580,48 +2572,12 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Limiting the number of fetched articles per feed makes fetching of articles faster, but if your feed contains more articles than specified limit, then some older articles might not be fetched at all.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>GreaderNetwork</name>
-    <message>
-        <source>Other services</source>
-        <translation>其他服務</translation>
-    </message>
-    <message>
-        <source>login failed</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>IOFactory</name>
-    <message>
-        <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation>無法開啟檔案 &apos;%1&apos; 供讀取。</translation>
-    </message>
-    <message>
-        <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation>無法開啟檔案 &apos;%1&apos; 供寫入。</translation>
-    </message>
-</context>
-<context>
-    <name>ImportantNode</name>
-    <message>
-        <source>Important articles</source>
+        <source>Intelligent synchronization algorithm</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You can find all important articles here.</source>
+        <source>Fetch articles newer than</source>
         <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>InoreaderAccountDetails</name>
-    <message>
-        <source>Username</source>
-        <translation>使用者名稱</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -2644,24 +2600,20 @@ Login tokens expiration: %2</source>
         <translation>取得我自己的應用程式識別號(ID)</translation>
     </message>
     <message>
-        <source>&amp;Login</source>
-        <translation>登入(&amp;L)</translation>
+        <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Not tested yet.</source>
-        <translation>尚未測試。</translation>
+        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>User-visible username</source>
-        <translation>顯示的使用者名稱</translation>
+        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>No username entered.</source>
-        <translation>未輸入使用者名稱。</translation>
-    </message>
-    <message>
-        <source>Some username entered.</source>
-        <translation>已輸入某個使用者名稱。</translation>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -2684,6 +2636,10 @@ Login tokens expiration: %2</source>
         <translation>您的存取已被批准。</translation>
     </message>
     <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Empty value is entered.</source>
         <translation>缺輸入。</translation>
     </message>
@@ -2691,29 +2647,13 @@ Login tokens expiration: %2</source>
         <source>Some value is entered.</source>
         <translation>輸入了某值。</translation>
     </message>
-    <message>
-        <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Download unread articles only</source>
-        <translation type="unfinished"/>
-    </message>
 </context>
 <context>
-    <name>InoreaderNetworkFactory</name>
+    <name>GreaderNetwork</name>
+    <message>
+        <source>login failed</source>
+        <translation type="unfinished"/>
+    </message>
     <message>
         <source>Inoreader: authentication error</source>
         <translation>Inoreader: 認證錯誤</translation>
@@ -2730,26 +2670,34 @@ Login tokens expiration: %2</source>
         <source>Click this to login again.</source>
         <translation>點此重新登入。</translation>
     </message>
+</context>
+<context>
+    <name>GreaderServiceRoot</name>
     <message>
-        <source>not logged in</source>
-        <translation type="unfinished"/>
+        <source>Other services</source>
+        <translation>其他服務</translation>
     </message>
 </context>
 <context>
-    <name>InoreaderServiceRoot</name>
+    <name>IOFactory</name>
     <message>
-        <source>Authentication status: %1
-Login tokens expiration: %2</source>
-        <translation>認證狀態: %1
-登入用的語詞過期: %2</translation>
+        <source>Cannot open file &apos;%1&apos; for reading.</source>
+        <translation>無法開啟檔案 &apos;%1&apos; 供讀取。</translation>
     </message>
     <message>
-        <source>logged-in</source>
-        <translation>已登入</translation>
+        <source>Cannot open file &apos;%1&apos; for writting.</source>
+        <translation>無法開啟檔案 &apos;%1&apos; 供寫入。</translation>
+    </message>
+</context>
+<context>
+    <name>ImportantNode</name>
+    <message>
+        <source>Important articles</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>NOT logged-in</source>
-        <translation>未登入</translation>
+        <source>You can find all important articles here.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3280,10 +3228,6 @@ Login tokens expiration: %2</source>
         <translation>代理伺服器認證所需的密碼</translation>
     </message>
     <message>
-        <source>Display password</source>
-        <translation>顯示密碼</translation>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation>注意，這些設定只適用新建立的連線。</translation>
     </message>
@@ -3375,10 +3319,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Password</source>
         <translation>密碼</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>顯示密碼</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -3534,10 +3474,6 @@ Tiny Tiny RSS 是一個開源的基於網站 的 RSS/Atom 新聞源消息閱讀�
         <translation>所傳的外部工具無效。</translation>
     </message>
     <message>
-        <source>This is integration of Inoreader.</source>
-        <translation>這會整合 Inoreader 進來。</translation>
-    </message>
-    <message>
         <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
         <translation>透過 JSON API 簡單整合 Gmail 進來，也可發送電子郵件。</translation>
     </message>
@@ -3554,10 +3490,6 @@ version by clicking this popup notification.</source>
     <message>
         <source>Standard online feeds (RSS/ATOM/JSON)</source>
         <translation>標準線上新聞源 (RSS/ATOM/JSON)</translation>
-    </message>
-    <message>
-        <source>Google Reader API is used by many online RSS readers. This is here to support</source>
-        <translation>許多線上 RSS 閱讀器使用 Google Reader API。於此有支援。</translation>
     </message>
     <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
@@ -3595,6 +3527,12 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>XML problem: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Google Reader API is used by many online RSS readers.
+
+List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3890,10 +3828,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>注意，所用的 MySQL 伺服器的速度和所用的連線媒介的延遲，會大大影響此應用程式的最終效能。慢的資料庫連線會降低瀏覽新聞源或消息時的速度。</translation>
-    </message>
-    <message>
-        <source>&amp;Show password</source>
-        <translation>顯示密碼(&amp;S)</translation>
     </message>
     <message>
         <source>Working database</source>
@@ -4920,10 +4854,6 @@ Unread news: %2</source>
     <message>
         <source>Password</source>
         <translation>密碼</translation>
-    </message>
-    <message>
-        <source>Show password</source>
-        <translation>顯示密碼</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
