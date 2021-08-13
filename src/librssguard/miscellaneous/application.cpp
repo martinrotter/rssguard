@@ -95,13 +95,11 @@ Application::Application(const QString& id, int& argc, char** argv)
 
   if (isFirstRun()) {
     m_notifications->save({
-      Notification(Notification::Event::GeneralEvent,
-                   true),
-      Notification(Notification::Event::NewUnreadArticlesFetched,
-                   true,
+      Notification(Notification::Event::GeneralEvent, true),
+      Notification(Notification::Event::NewUnreadArticlesFetched, true,
                    QSL("%1/rooster.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
-      Notification(Notification::Event::NewAppVersionAvailable,
-                   true)
+      Notification(Notification::Event::NewAppVersionAvailable, true),
+      Notification(Notification::Event::LoginFailure, true)
     }, settings());
   }
   else {
@@ -254,8 +252,7 @@ void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, false);
 }
 
-NotificationFactory* Application::notifications() const
-{
+NotificationFactory* Application::notifications() const {
   return m_notifications;
 }
 

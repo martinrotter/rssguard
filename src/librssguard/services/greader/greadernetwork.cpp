@@ -5,6 +5,7 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "exceptions/applicationexception.h"
+#include "exceptions/feedfetchexception.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
@@ -22,10 +23,10 @@
 GreaderNetwork::GreaderNetwork(QObject* parent)
   : QObject(parent), m_root(nullptr), m_service(GreaderServiceRoot::Service::FreshRss), m_username(QString()),
   m_password(QString()), m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false),
-  m_prefetchedMessages({}), m_performGlobalFetching(false), m_intelligentSynchronization(true),
-  m_newerThanFilter(QDate::currentDate().addYears(-1)),
-  m_oauth2(new OAuth2Service(INO_OAUTH_AUTH_URL, INO_OAUTH_TOKEN_URL,
-                             {}, {}, INO_OAUTH_SCOPE, this)) {
+  m_prefetchedMessages({}), m_prefetchedStatus(Feed::Status::Normal), m_performGlobalFetching(false),
+  m_intelligentSynchronization(true), m_newerThanFilter(QDate::currentDate().addYears(-1)),
+  m_oauth(new OAuth2Service(INO_OAUTH_AUTH_URL, INO_OAUTH_TOKEN_URL,
+                            {}, {}, INO_OAUTH_SCOPE, this)) {
   initializeOauth();
   clearCredentials();
 }
@@ -129,6 +130,7 @@ QVariantHash GreaderNetwork::userInfo(const QNetworkProxy& proxy) {
 
 void GreaderNetwork::clearPrefetchedMessages() {
   m_prefetchedMessages.clear();
+  m_prefetchedStatus = Feed::Status::Normal;
 }
 
 void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
@@ -139,96 +141,103 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
   Q_UNUSED(tagged_messages)
 
   m_prefetchedMessages.clear();
+  m_prefetchedStatus = Feed::Status::Normal;
 
-  double perc_of_fetching = (feeds.size() * 1.0) / root->getSubTreeFeeds().size();
+  try {
 
-  m_performGlobalFetching = perc_of_fetching > GREADER_GLOBAL_UPDATE_THRES;
+    double perc_of_fetching = (feeds.size() * 1.0) / root->getSubTreeFeeds().size();
 
-  qDebugNN << LOGSEC_GREADER
-           << "Percentage of feeds for fetching:"
-           << QUOTE_W_SPACE_DOT(perc_of_fetching);
+    m_performGlobalFetching = perc_of_fetching > GREADER_GLOBAL_UPDATE_THRES;
 
-  auto remote_starred_ids_list = itemIds(GREADER_API_FULL_STATE_IMPORTANT, false, proxy, -1, m_newerThanFilter);
+    qDebugNN << LOGSEC_GREADER
+             << "Percentage of feeds for fetching:"
+             << QUOTE_W_SPACE_DOT(perc_of_fetching);
 
-  for (int i = 0; i < remote_starred_ids_list.size(); i++) {
-    remote_starred_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_starred_ids_list.at(i)));
-  }
+    auto remote_starred_ids_list = itemIds(GREADER_API_FULL_STATE_IMPORTANT, false, proxy, -1, m_newerThanFilter);
 
-  QSet<QString> remote_starred_ids = FROM_LIST_TO_SET(QSet<QString>, remote_starred_ids_list);
-  QSet<QString> local_starred_ids;
-  QList<QHash<ServiceRoot::BagOfMessages, QStringList>> all_states = stated_messages.values();
-
-  for (auto& lst : all_states) {
-    auto s = lst.value(ServiceRoot::BagOfMessages::Starred);
-
-    local_starred_ids.unite(FROM_LIST_TO_SET(QSet<QString>, s));
-  }
-
-  auto starred_to_download((remote_starred_ids - local_starred_ids).unite(local_starred_ids - remote_starred_ids));
-  auto to_download = starred_to_download;
-
-  if (m_performGlobalFetching) {
-    qWarningNN << LOGSEC_GREADER << "Performing global contents fetching.";
-
-    QStringList remote_all_ids_list = m_downloadOnlyUnreadMessages
-                                      ? QStringList()
-                                      : itemIds(GREADER_API_FULL_STATE_READING_LIST, false, proxy, -1, m_newerThanFilter);
-    QStringList remote_unread_ids_list = itemIds(GREADER_API_FULL_STATE_READING_LIST, true, proxy, -1, m_newerThanFilter);
-
-    for (int i = 0; i < remote_all_ids_list.size(); i++) {
-      remote_all_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_all_ids_list.at(i)));
+    for (int i = 0; i < remote_starred_ids_list.size(); i++) {
+      remote_starred_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_starred_ids_list.at(i)));
     }
 
-    for (int i = 0; i < remote_unread_ids_list.size(); i++) {
-      remote_unread_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_unread_ids_list.at(i)));
-    }
-
-    QSet<QString> remote_all_ids = FROM_LIST_TO_SET(QSet<QString>, remote_all_ids_list);
-    QSet<QString> remote_unread_ids = FROM_LIST_TO_SET(QSet<QString>, remote_unread_ids_list);
-    QSet<QString> remote_read_ids = remote_all_ids - remote_unread_ids;
-    QSet<QString> local_unread_ids;
-    QSet<QString> local_read_ids;
+    QSet<QString> remote_starred_ids = FROM_LIST_TO_SET(QSet<QString>, remote_starred_ids_list);
+    QSet<QString> local_starred_ids;
+    QList<QHash<ServiceRoot::BagOfMessages, QStringList>> all_states = stated_messages.values();
 
     for (auto& lst : all_states) {
-      auto u = lst.value(ServiceRoot::BagOfMessages::Unread);
-      auto r = lst.value(ServiceRoot::BagOfMessages::Read);
+      auto s = lst.value(ServiceRoot::BagOfMessages::Starred);
 
-      local_unread_ids.unite(FROM_LIST_TO_SET(QSet<QString>, u));
-      local_read_ids.unite(FROM_LIST_TO_SET(QSet<QString>, r));
+      local_starred_ids.unite(FROM_LIST_TO_SET(QSet<QString>, s));
     }
 
-    if (!m_downloadOnlyUnreadMessages) {
-      to_download += remote_all_ids - local_read_ids - local_unread_ids;
-    }
-    else {
-      to_download += remote_unread_ids - local_read_ids - local_unread_ids;
-    }
+    auto starred_to_download((remote_starred_ids - local_starred_ids).unite(local_starred_ids - remote_starred_ids));
+    auto to_download = starred_to_download;
 
-    auto moved_read = local_read_ids.intersect(remote_unread_ids);
+    if (m_performGlobalFetching) {
+      qWarningNN << LOGSEC_GREADER << "Performing global contents fetching.";
 
-    to_download += moved_read;
+      QStringList remote_all_ids_list = m_downloadOnlyUnreadMessages
+                                      ? QStringList()
+                                      : itemIds(GREADER_API_FULL_STATE_READING_LIST, false, proxy, -1, m_newerThanFilter);
+      QStringList remote_unread_ids_list = itemIds(GREADER_API_FULL_STATE_READING_LIST, true, proxy, -1, m_newerThanFilter);
 
-    if (!m_downloadOnlyUnreadMessages) {
-      auto moved_unread = local_unread_ids.intersect(remote_read_ids);
+      for (int i = 0; i < remote_all_ids_list.size(); i++) {
+        remote_all_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_all_ids_list.at(i)));
+      }
 
-      to_download += moved_unread;
-    }
-  }
-  else {
-    qWarningNN << LOGSEC_GREADER << "Performing feed-based contents fetching.";
-  }
+      for (int i = 0; i < remote_unread_ids_list.size(); i++) {
+        remote_unread_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_unread_ids_list.at(i)));
+      }
 
-  Feed::Status error;
-  QList<QString> to_download_list(to_download.values());
+      QSet<QString> remote_all_ids = FROM_LIST_TO_SET(QSet<QString>, remote_all_ids_list);
+      QSet<QString> remote_unread_ids = FROM_LIST_TO_SET(QSet<QString>, remote_unread_ids_list);
+      QSet<QString> remote_read_ids = remote_all_ids - remote_unread_ids;
+      QSet<QString> local_unread_ids;
+      QSet<QString> local_read_ids;
 
-  if (!to_download_list.isEmpty()) {
-    if (m_service == GreaderServiceRoot::Service::Reedah) {
-      for (int i = 0; i < to_download_list.size(); i++) {
-        to_download_list.replace(i, convertLongStreamIdToShortStreamId(to_download_list.at(i)));
+      for (auto& lst : all_states) {
+        auto u = lst.value(ServiceRoot::BagOfMessages::Unread);
+        auto r = lst.value(ServiceRoot::BagOfMessages::Read);
+
+        local_unread_ids.unite(FROM_LIST_TO_SET(QSet<QString>, u));
+        local_read_ids.unite(FROM_LIST_TO_SET(QSet<QString>, r));
+      }
+
+      if (!m_downloadOnlyUnreadMessages) {
+        to_download += remote_all_ids - local_read_ids - local_unread_ids;
+      }
+      else {
+        to_download += remote_unread_ids - local_read_ids - local_unread_ids;
+      }
+
+      auto moved_read = local_read_ids.intersect(remote_unread_ids);
+
+      to_download += moved_read;
+
+      if (!m_downloadOnlyUnreadMessages) {
+        auto moved_unread = local_unread_ids.intersect(remote_read_ids);
+
+        to_download += moved_unread;
       }
     }
+    else {
+      qWarningNN << LOGSEC_GREADER << "Performing feed-based contents fetching.";
+    }
 
-    m_prefetchedMessages = itemContents(root, to_download_list, error, proxy);
+    Feed::Status error;
+    QList<QString> to_download_list(to_download.values());
+
+    if (!to_download_list.isEmpty()) {
+      if (m_service == GreaderServiceRoot::Service::Reedah) {
+        for (int i = 0; i < to_download_list.size(); i++) {
+          to_download_list.replace(i, convertLongStreamIdToShortStreamId(to_download_list.at(i)));
+        }
+      }
+
+      m_prefetchedMessages = itemContents(root, to_download_list, error, proxy);
+    }
+  }
+  catch (const FeedFetchException& fex) {
+    m_prefetchedStatus = fex.feedStatus();
   }
 }
 
@@ -241,6 +250,11 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
   Q_UNUSED(tagged_messages)
 
   QList<Message> msgs;
+
+  if (m_prefetchedStatus != Feed::Status::Normal) {
+    error = m_prefetchedStatus;
+    return msgs;
+  }
 
   if (!m_performGlobalFetching) {
     // 1. Get unread IDs for a feed.
@@ -339,7 +353,7 @@ QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, 
   QString continuation;
 
   if (!ensureLogin(proxy)) {
-    throw ApplicationException(tr("login failed"));
+    throw FeedFetchException(Feed::Status::AuthError, tr("login failed"));
   }
 
   QStringList ids;
@@ -839,7 +853,7 @@ void GreaderNetwork::setBaseUrl(const QString& base_url) {
 QPair<QByteArray, QByteArray> GreaderNetwork::authHeader() const {
   if (m_service == GreaderServiceRoot::Service::Inoreader) {
     return { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
-             m_oauth2->bearer().toLocal8Bit() };
+             m_oauth->bearer().toLocal8Bit() };
   }
   else {
     return { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
@@ -849,7 +863,7 @@ QPair<QByteArray, QByteArray> GreaderNetwork::authHeader() const {
 
 bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output) {
   if (m_service == GreaderServiceRoot::Service::Inoreader) {
-    return !m_oauth2->bearer().isEmpty();
+    return !m_oauth->bearer().isEmpty();
   }
 
   if (m_authSid.isEmpty() && m_authAuth.isEmpty()) {
@@ -1073,20 +1087,20 @@ void GreaderNetwork::onTokensError(const QString& error, const QString& error_de
                        QSystemTrayIcon::MessageIcon::Critical,
                        {}, {},
                        [this]() {
-    m_oauth2->setAccessToken(QString());
-    m_oauth2->setRefreshToken(QString());
-    m_oauth2->login();
+    m_oauth->setAccessToken(QString());
+    m_oauth->setRefreshToken(QString());
+    m_oauth->login();
   });
 }
 
 void GreaderNetwork::onAuthFailed() {
-  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+  qApp->showGuiMessage(Notification::Event::LoginFailure,
                        tr("Inoreader: authorization denied"),
                        tr("Click this to login again."),
                        QSystemTrayIcon::MessageIcon::Critical,
                        {}, {},
                        [this]() {
-    m_oauth2->login();
+    m_oauth->login();
   });
 }
 
@@ -1096,14 +1110,14 @@ void GreaderNetwork::initializeOauth() {
   m_oauth2->setClientSecretSecret(TextFactory::decrypt(INOREADER_CLIENT_SECRET, OAUTH_DECRYPTION_KEY));
 #endif
 
-  m_oauth2->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +
-                           QL1C(':') +
-                           QString::number(INO_OAUTH_REDIRECT_URI_PORT),
-                           false);
+  m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +
+                          QL1C(':') +
+                          QString::number(INO_OAUTH_REDIRECT_URI_PORT),
+                          false);
 
-  connect(m_oauth2, &OAuth2Service::tokensRetrieveError, this, &GreaderNetwork::onTokensError);
-  connect(m_oauth2, &OAuth2Service::authFailed, this, &GreaderNetwork::onAuthFailed);
-  connect(m_oauth2, &OAuth2Service::tokensRetrieved, this, [this](QString access_token, QString refresh_token, int expires_in) {
+  connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &GreaderNetwork::onTokensError);
+  connect(m_oauth, &OAuth2Service::authFailed, this, &GreaderNetwork::onAuthFailed);
+  connect(m_oauth, &OAuth2Service::tokensRetrieved, this, [this](QString access_token, QString refresh_token, int expires_in) {
     Q_UNUSED(expires_in)
     Q_UNUSED(access_token)
 
@@ -1124,11 +1138,11 @@ void GreaderNetwork::setNewerThanFilter(const QDate& newer_than) {
 }
 
 OAuth2Service* GreaderNetwork::oauth() const {
-  return m_oauth2;
+  return m_oauth;
 }
 
 void GreaderNetwork::setOauth(OAuth2Service* oauth) {
-  m_oauth2 = oauth;
+  m_oauth = oauth;
 }
 
 void GreaderNetwork::setRoot(GreaderServiceRoot* root) {

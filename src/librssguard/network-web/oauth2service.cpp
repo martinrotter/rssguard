@@ -80,7 +80,7 @@ OAuth2Service::~OAuth2Service() {
 
 QString OAuth2Service::bearer() {
   if (!isFullyLoggedIn()) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+    qApp->showGuiMessage(Notification::Event::LoginFailure,
                          tr("You have to login first"),
                          tr("Click here to login."),
                          QSystemTrayIcon::MessageIcon::Critical,

@@ -28,7 +28,9 @@ class Notification {
       // OAuth or similar mechanism.
       LoginDataRefreshed = 4,
 
-      NewAppVersionAvailable = 5
+      NewAppVersionAvailable = 5,
+
+      LoginFailure = 6
     };
 
     explicit Notification(Event event = Event::NoEvent, bool balloon = {}, const QString& sound_path = {});

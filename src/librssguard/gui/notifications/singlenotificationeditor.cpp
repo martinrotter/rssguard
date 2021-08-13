@@ -25,7 +25,7 @@ SingleNotificationEditor::SingleNotificationEditor(const Notification& notificat
   connect(m_ui.m_txtSound, &QLineEdit::textChanged, this, &SingleNotificationEditor::notificationChanged);
   connect(m_ui.m_cbBalloon, &QCheckBox::toggled, this, &SingleNotificationEditor::notificationChanged);
 
-  //setFixedHeight(sizeHint().height());
+  setFixedHeight(sizeHint().height());
 }
 
 Notification SingleNotificationEditor::notification() const {

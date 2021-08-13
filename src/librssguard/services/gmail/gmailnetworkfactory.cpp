@@ -433,7 +433,7 @@ void GmailNetworkFactory::onTokensError(const QString& error, const QString& err
 }
 
 void GmailNetworkFactory::onAuthFailed() {
-  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+  qApp->showGuiMessage(Notification::Event::LoginFailure,
                        tr("Gmail: authorization denied"),
                        tr("Click this to login again."),
                        QSystemTrayIcon::MessageIcon::Critical,

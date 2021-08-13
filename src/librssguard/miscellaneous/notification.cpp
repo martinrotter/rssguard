@@ -43,6 +43,7 @@ QList<Notification::Event> Notification::allEvents() {
     Event::NewUnreadArticlesFetched,
     Event::ArticlesFetchingStarted,
     Event::LoginDataRefreshed,
+    Event::LoginFailure,
     Event::NewAppVersionAvailable,
   };
 }
@@ -57,6 +58,9 @@ QString Notification::nameForEvent(Notification::Event event) {
 
     case Notification::Event::LoginDataRefreshed:
       return QObject::tr("Login data refreshed");
+
+    case Notification::Event::LoginFailure:
+      return QObject::tr("Login failed");
 
     case Notification::Event::NewAppVersionAvailable:
       return QObject::tr("New %1 version is available").arg(APP_NAME);

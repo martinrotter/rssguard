@@ -13,6 +13,9 @@
   <property name="frameShape">
    <enum>QFrame::NoFrame</enum>
   </property>
+  <property name="widgetResizable">
+   <bool>true</bool>
+  </property>
  </widget>
  <resources/>
  <connections/>

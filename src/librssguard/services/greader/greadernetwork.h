@@ -132,10 +132,11 @@ class GreaderNetwork : public QObject {
     QString m_authAuth;
     QString m_authToken;
     QList<Message> m_prefetchedMessages;
+    Feed::Status m_prefetchedStatus;
     bool m_performGlobalFetching;
     bool m_intelligentSynchronization;
     QDate m_newerThanFilter;
-    OAuth2Service* m_oauth2;
+    OAuth2Service* m_oauth;
 };
 
 #endif // GREADERNETWORK_H
