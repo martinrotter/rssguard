@@ -101,7 +101,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
       feeds_per_root.insert(fd->getParentServiceRoot(), fd);
     }
 
-    synchronizeAccountCaches(QList<CacheForServiceRoot*>(caches.begin(), caches.end()), false);
+    synchronizeAccountCaches(caches.values(), false);
 
     auto roots = feeds_per_root.uniqueKeys();
     bool is_main_thread = QThread::currentThread() == qApp->thread();
