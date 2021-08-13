@@ -11,8 +11,12 @@ SingleNotificationEditor::SingleNotificationEditor(const Notification& notificat
   : QGroupBox(parent), m_notificationEvent(Notification::Event::NoEvent) {
   m_ui.setupUi(this);
 
+#if defined(Q_OS_OS2)
+  m_ui.m_wdgSound->setVisible(false);
+#else
   m_ui.m_btnBrowseSound->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
   m_ui.m_btnPlaySound->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start")));
+#endif
 
   loadNotification(notification);
 
@@ -21,7 +25,7 @@ SingleNotificationEditor::SingleNotificationEditor(const Notification& notificat
   connect(m_ui.m_txtSound, &QLineEdit::textChanged, this, &SingleNotificationEditor::notificationChanged);
   connect(m_ui.m_cbBalloon, &QCheckBox::toggled, this, &SingleNotificationEditor::notificationChanged);
 
-  setFixedHeight(sizeHint().height());
+  //setFixedHeight(sizeHint().height());
 }
 
 Notification SingleNotificationEditor::notification() const {

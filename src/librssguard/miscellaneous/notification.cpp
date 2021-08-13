@@ -5,7 +5,10 @@
 #include "miscellaneous/application.h"
 
 #include <QDir>
+
+#if !defined(Q_OS_OS2)
 #include <QSound>
+#endif
 
 Notification::Notification(Notification::Event event, bool balloon, const QString& sound_path)
   : m_event(event), m_balloonEnabled(balloon), m_soundPath(sound_path) {}
@@ -28,7 +31,9 @@ void Notification::setSoundPath(const QString& sound_path) {
 
 void Notification::playSound(Application* app) const {
   if (!m_soundPath.isEmpty()) {
+#if !defined(Q_OS_OS2)
     QSound::play(QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath)));
+#endif
   }
 }
 

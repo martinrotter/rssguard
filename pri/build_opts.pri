@@ -7,7 +7,11 @@ CONFIG *= c++1z warn_on
 CONFIG -=  debug_and_release
 DEFINES *= QT_USE_QSTRINGBUILDER QT_USE_FAST_CONCATENATION QT_USE_FAST_OPERATOR_PLUS UNICODE _UNICODE
 VERSION = $$APP_VERSION
-QT *= core gui widgets sql network xml qml multimedia
+QT *= core gui widgets sql network xml qml
+
+!os2 {
+  QT *= multimedia
+}
 
 greaterThan(QT_MAJOR_VERSION, 5) {
   QT *= core5compat

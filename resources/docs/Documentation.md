@@ -48,11 +48,11 @@ RSS Guard is cross-platform application and at this point is know to work on:
 ## <a id="mfe"></a>Major Features
 
 ### <a id="sfr"></a>Supported Feed Readers
-RSS Guard is multi-account application and supports many web feed readers via built-in [plugins](#papi). One of the plugins, of course, provide support for standard **RSS/ATOM/JSON** feeds with set of features everyone would expect from classic feed reader like OPML support etc.
+RSS Guard is multi-account application and supports many web feed readers via built-in [plugins](#papi). One of the plugins, of course, provides support for standard **RSS/ATOM/JSON** feeds with set of features everyone would expect from classic feed reader like OPML support etc.
 
 I organized supported web feed readers into elegant table.
 
-| Service | Two-way Synchronization | [Intelligent Synchronization Algorithm](#intel) <sup>2</sup>  | <a id="sfrl"></a>Synchronized Labels <sup>1</sup> | OAuth |
+| Service | Two-way Synchronization | [Intelligent Synchronization Algorithm](#intel) (ISA) <sup>2</sup>  | <a id="sfrl"></a>Synchronized Labels <sup>1</sup> | OAuth |
 |----|-----|-----|----|---|
 | Feedly | ✅ | ❌ | ✅ | ✅ (only for official binaries) |
 | Gmail | ✅ | ❌ | ❌ | ✅ |
@@ -66,7 +66,7 @@ I organized supported web feed readers into elegant table.
 
 <img src="images/intel.png" width="350px">
 
-In ISA, RSS Guard only downloads only articles which are new or were updated, whereas older algorithm in RSS Guard usually always fetches all available articles, even if they are not needed, leading to unnecessary overload of your network connection and RSS Guard.
+With ISA, RSS Guard only downloads only articles which are new or were updated, whereas older algorithm in RSS Guard usually always fetches all available articles, even if they are not needed, leading to unnecessary overload of your network connection and RSS Guard.
 
 <sup>3</sup> Tested services are:
 * Bazqux
