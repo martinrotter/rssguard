@@ -128,8 +128,8 @@ Here is the reference of methods and properties of some types available in your 
 | `Boolean isImportant` | Is message important? |
 | `Boolean isDeleted` | Is message placed in recycle bin? |
 | `Boolean isDuplicateWithAttribute(DuplicationAttributeCheck)` | Allows you to test if this particular message is already stored in RSS Guard's DB. |
-| `Boolean assignLabel(String)` | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. Only works if either `customId` or `id` of this message are is valid. |
-| `Boolean deassignLabel(String)` | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.  Only works if either `customId` or `id` of this message are is valid. |
+| `Boolean assignLabel(String)` | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. Only works if either `customId` or `id` of this message is valid. |
+| `Boolean deassignLabel(String)` | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.  Only works if either `customId` or `id` of this message is valid. |
 | `Boolean alreadyStoredInDb` | `READ-ONLY` Returns true if this message is already stored in DB. This function is the way to check if the filter is being run automatically for newly downloaded messages or manually for already existing messages.
 
 #### `Label` class
@@ -364,17 +364,17 @@ MariaDB (MySQL) backend is there for users, who want to store their data in a ce
 For database-related configuration see `Settings -> Data storage` dialog.
 
 ### <a id="userd"></a>User Data Portability
-One of the main goals of RSS Guard is to have local application data portable (relocatable) and use them across all [supported operating systems](#sos).
+One of the main goals of RSS Guard is to have local application data portable (relocatable) so that they can be use across all [supported operating systems](#sos).
 
 RSS Guard is able to run in two modes.
 
-Default mode is "non-portable" mode, where user data folder is placed in user-wide "config directory" (this is `C:\Users\<user>\AppData\Local` on Windows). If subfolders with file
+Default mode is *"non-portable"* mode, where user data folder is placed in user-wide "config directory" (this is `C:\Users\<user>\AppData\Local` on Windows). If subfolder with file
 ```
 RSS Guard 4\data\config\config.ini
 ```
 exists, then this user folder is used.
 
-The other mode is that user data folder is placed in subfolder `data4` in the same directory as RSS Guard binary (`rssguard.exe` on Windows). This "portable" mode is automatically enabled if "non-portable" mode detection fails.
+The other mode is that user data folder is placed in subfolder `data4` in the same directory as RSS Guard binary (`rssguard.exe` on Windows). This *"portable"* mode is automatically enabled if "non-portable" mode detection fails.
 
 #### <a id="userd-plac"></a>`%data%` placeholder
 RSS Guard stores its data and settings in single folder. What exact folder it is is described [here](#portable-user-data). RSS Guard allows you to use the folder programmatically in some special contexts via `%data%` placeholder. You can use this placeholder in these RSS Guard contexts:
@@ -439,7 +439,7 @@ You can easily (de)assign label to messages in message viewer.
 
 Note that (de)assignments of labels to messages are synchronized back to supported servers in regular intervals.
 
-Also, [message filters](Message-filters.md) can assign or remove labels to/from messages.
+Also, [message filters](#fltr) can assign or remove labels to/from messages.
 
 ### <a id="guit"></a>GUI Tweaking
 
