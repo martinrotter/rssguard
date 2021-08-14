@@ -1,0 +1,12 @@
+name: Feature request
+description: Suggest an idea for this project
+title: '[FR]: '
+labels: Type-Enhancement
+assignees: martinrotter
+body:
+  - type: textarea
+    attributes:
+      label: Brief description of the feature request
+      description: Write your description here.
+    validations:
+      required: true
