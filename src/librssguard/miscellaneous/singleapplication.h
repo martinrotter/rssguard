@@ -12,6 +12,7 @@ class SingleApplication : public QApplication {
 
   public:
     explicit SingleApplication(const QString& id, int& argc, char** argv);
+    virtual ~SingleApplication();
 
     void finish();
 

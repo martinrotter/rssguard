@@ -11,6 +11,10 @@
 SingleApplication::SingleApplication(const QString& id, int& argc, char** argv)
   : QApplication(argc, argv), m_id(id), m_server(new QLocalServer(this)) {}
 
+SingleApplication::~SingleApplication() {
+  finish();
+}
+
 void SingleApplication::finish() {
   if (m_server->isListening()) {
     m_server->close();
@@ -40,6 +44,7 @@ bool SingleApplication::isOtherInstanceRunning(const QString& message) {
     return true;
   }
 
+  QLocalServer::removeServer(m_id);
   auto i_am_first = m_server->listen(m_id);
 
   if (i_am_first) {
