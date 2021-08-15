@@ -1,0 +1,53 @@
+name: Bug Report
+description: Create a report to help us improve
+title: '[BUG]: '
+labels: Type-Defect
+assignees: martinrotter
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Dear RSS Guard contributor, please RESPECT this template. You might be interested in reading [www.chiark.greenend.org.uk](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html).
+        Also, ALWAYS, ALWAYS, ALWAYS attach DEBUG LOG to your bug report!!!
+        How to generate it see [here](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#command-line-interface).
+  - type: textarea
+    attributes:
+      label: Brief description of the issue
+      description: Write your description here.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: How to reproduce the bug?
+      placeholder: |
+        1. (First Step)
+        2. (Second Step)
+        3. (etc.)
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: What was the expected result?
+      description: Write expected results of above reproduction steps here.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: What actually happened?
+      description: Write the actual result here.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Other information
+      description: Write any other supplementary information here.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Operating system and version
+      value: |
+        * OS:
+        * RSS Guard version:
+    validations:
+      required: true
