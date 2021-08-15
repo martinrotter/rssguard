@@ -233,7 +233,7 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
 }
 
 ServiceRoot::LabelOperation FeedlyServiceRoot::supportedLabelOperations() const {
-  return LabelOperation(0);
+  return ServiceRoot::LabelOperation::Synchronised;
 }
 
 void FeedlyServiceRoot::updateTitle() {

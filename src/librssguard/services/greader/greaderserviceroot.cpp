@@ -257,7 +257,7 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
 }
 
 ServiceRoot::LabelOperation GreaderServiceRoot::supportedLabelOperations() const {
-  return LabelOperation(0);
+  return ServiceRoot::LabelOperation::Synchronised;
 }
 
 void GreaderServiceRoot::updateTitleIcon() {

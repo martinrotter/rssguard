@@ -167,10 +167,10 @@ bool ServiceRoot::canBeDeleted() const {
 
 void ServiceRoot::completelyRemoveAllData() {
   // Purge old data from SQL and clean all model items.
-  cleanAllItemsFromModel();
-  removeOldAccountFromDatabase(true);
+  cleanAllItemsFromModel(true);
+  removeOldAccountFromDatabase(true, true);
   updateCounts(true);
-  itemChanged(QList<RootItem*>() << this);
+  itemChanged({ this });
   requestReloadMessageList(true);
 }
 
@@ -188,13 +188,16 @@ QIcon ServiceRoot::feedIconForMessage(const QString& feed_custom_id) const {
   }
 }
 
-void ServiceRoot::removeOldAccountFromDatabase(bool including_messages) {
+void ServiceRoot::removeOldAccountFromDatabase(bool delete_messages_too, bool delete_labels_too) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  DatabaseQueries::deleteAccountData(database, accountId(), including_messages);
+  DatabaseQueries::deleteAccountData(database,
+                                     accountId(),
+                                     delete_messages_too,
+                                     delete_labels_too);
 }
 
-void ServiceRoot::cleanAllItemsFromModel() {
+void ServiceRoot::cleanAllItemsFromModel(bool clean_labels_too) {
   auto chi = childItems();
 
   for (RootItem* top_level_item : qAsConst(chi)) {
@@ -206,7 +209,7 @@ void ServiceRoot::cleanAllItemsFromModel() {
     }
   }
 
-  if (labelsNode() != nullptr) {
+  if (labelsNode() != nullptr && clean_labels_too) {
     auto lbl_chi = labelsNode()->childItems();
 
     for (RootItem* lbl : qAsConst(lbl_chi)) {
@@ -425,8 +428,13 @@ void ServiceRoot::syncIn() {
     auto feed_custom_data = storeCustomFeedsData();
 
     // Remove from feeds model, then from SQL but leave messages intact.
-    cleanAllItemsFromModel();
-    removeOldAccountFromDatabase(false);
+    bool uses_remote_labels = (supportedLabelOperations() & LabelOperation::Synchronised) == LabelOperation::Synchronised;
+
+    // Remove stuff.
+    cleanAllItemsFromModel(uses_remote_labels);
+    removeOldAccountFromDatabase(false, uses_remote_labels);
+
+    // Restore some local settings to feeds etc.
     restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
 
     // Model is clean, now store new tree into DB and

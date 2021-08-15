@@ -34,7 +34,7 @@ TtRssServiceRoot::~TtRssServiceRoot() {
 }
 
 ServiceRoot::LabelOperation TtRssServiceRoot::supportedLabelOperations() const {
-  return ServiceRoot::LabelOperation(0);
+  return ServiceRoot::LabelOperation::Synchronised;
 }
 
 void TtRssServiceRoot::start(bool freshly_activated) {

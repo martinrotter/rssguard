@@ -33,7 +33,11 @@ class ServiceRoot : public RootItem {
     enum class LabelOperation {
       Adding = 1,
       Editing = 2,
-      Deleting = 4
+      Deleting = 4,
+
+      // NOTE: Service fetches list of labels from remote source
+      // and does not use local offline labels.
+      Synchronised = 8
     };
 
     enum class BagOfMessages {
@@ -226,9 +230,9 @@ class ServiceRoot : public RootItem {
 
     // Removes all messages/categories/feeds which are
     // associated with this account.
-    void removeOldAccountFromDatabase(bool including_messages);
+    void removeOldAccountFromDatabase(bool delete_messages_too, bool delete_labels_too);
     void storeNewFeedTree(RootItem* root);
-    void cleanAllItemsFromModel();
+    void cleanAllItemsFromModel(bool clean_labels_too);
     void appendCommonNodes();
 
     // Removes messages which do not belong to any

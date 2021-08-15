@@ -1524,7 +1524,10 @@ bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, int account_id) {
   return true;
 }
 
-bool DatabaseQueries::deleteAccountData(const QSqlDatabase& db, int account_id, bool delete_messages_too) {
+bool DatabaseQueries::deleteAccountData(const QSqlDatabase& db,
+                                        int account_id,
+                                        bool delete_messages_too,
+                                        bool delete_labels_too) {
   bool result = true;
   QSqlQuery q(db);
 
@@ -1545,15 +1548,16 @@ bool DatabaseQueries::deleteAccountData(const QSqlDatabase& db, int account_id, 
   result &= q.exec();
 
   if (delete_messages_too) {
-    // If we delete message, make sure to delete message/label assignments too.
     q.prepare(QSL("DELETE FROM LabelsInMessages WHERE account_id = :account_id;"));
     q.bindValue(QSL(":account_id"), account_id);
     result &= q.exec();
   }
 
-  q.prepare(QSL("DELETE FROM Labels WHERE account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-  result &= q.exec();
+  if (delete_labels_too) {
+    q.prepare(QSL("DELETE FROM Labels WHERE account_id = :account_id;"));
+    q.bindValue(QSL(":account_id"), account_id);
+    result &= q.exec();
+  }
 
   return result;
 }

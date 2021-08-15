@@ -116,7 +116,7 @@ class DatabaseQueries {
     static QPair<int, int> updateMessages(QSqlDatabase db, const QList<Message>& messages,
                                           Feed* feed, bool force_update, bool* ok = nullptr);
     static bool deleteAccount(const QSqlDatabase& db, int account_id);
-    static bool deleteAccountData(const QSqlDatabase& db, int account_id, bool delete_messages_too);
+    static bool deleteAccountData(const QSqlDatabase& db, int account_id, bool delete_messages_too, bool delete_labels_too);
     static bool cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label);
     static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static bool cleanUnreadMessages(const QSqlDatabase& db, int account_id);
