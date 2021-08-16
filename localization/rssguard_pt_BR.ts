@@ -189,7 +189,7 @@ Erro: %1</translation>
     <name>BaseLineEdit</name>
     <message>
         <source>Show/hide the password</source>
-        <translation type="unfinished"/>
+        <translation>Exibir/ocultar a senha</translation>
     </message>
 </context>
 <context>
@@ -1742,7 +1742,7 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Fetched &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>&apos;%1&apos; buscado</translation>
     </message>
 </context>
 <context>
@@ -2586,11 +2586,11 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Intelligent synchronization algorithm</source>
-        <translation type="unfinished"/>
+        <translation>Algoritmo de sincronização inteligente</translation>
     </message>
     <message>
         <source>Fetch articles newer than</source>
-        <translation type="unfinished"/>
+        <translation>Buscar artigos mais novos que</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -2614,15 +2614,15 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
-        <translation type="unfinished"/>
+        <translation>Alguns feeds podem conter dezenas de milhares de artigos e fazer o download de todos eles pode demorar muito, então às vezes é bom fazer o download apenas de uma determinada quantidade das mensagens mais recentes.</translation>
     </message>
     <message>
         <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-        <translation type="unfinished"/>
+        <translation>Se você selecionar a sincronização inteligente, apenas os artigos ainda não buscados ou atualizados serão baixados. O uso da rede é muito reduzido e a velocidade geral de sincronização é muito melhorada, mas a busca do primeiro feed pode ser lenta de qualquer maneira se o seu feed contiver um grande número de artigos.</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
-        <translation type="unfinished"/>
+        <translation>Existem alguns tokens OAuth pré-configurados para que você não precise preencher seu client ID/secret do cliente, mas é altamente recomendável obter o seu próprio, pois os tokens pré-configurados têm cota de uso global limitada. Se você deseja usar tokens pré-configurados, simplesmente deixe todos os campos acima com seus valores padrão, mesmo se estiverem vazios.</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
@@ -3550,7 +3550,9 @@ O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacid
         <source>Google Reader API is used by many online RSS readers.
 
 List of supported readers:</source>
-        <translation type="unfinished"/>
+        <translation>A API do Google Reader é usada por muitos leitores RSS online.
+
+Lista de leitores suportados:</translation>
     </message>
 </context>
 <context>

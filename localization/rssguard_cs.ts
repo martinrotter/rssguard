@@ -2579,7 +2579,7 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Nastaveni OAuth 2.0</translation>
     </message>
     <message>
         <source>App ID</source>
@@ -2591,7 +2591,7 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Přesměrovací URL</translation>
     </message>
     <message>
         <source>Get my own App ID</source>
@@ -2615,23 +2615,23 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup NEpovolen.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Byla chyba během testování.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Máme chybu: %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Otestováno úspěšně.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup byl povolen.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -2639,11 +2639,11 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Zadána prázdná hodnota.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Zadána nějaká hodnota.</translation>
     </message>
 </context>
 <context>
@@ -2654,19 +2654,19 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inroeader: chyba autentizace</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Pro opětovné přihlášení klikněte zde.</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: přistup nepovolen</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klikně sem pro opětovné přihlášení.</translation>
     </message>
 </context>
 <context>

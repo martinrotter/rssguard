@@ -2572,7 +2572,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 indstillinger</translation>
     </message>
     <message>
         <source>App ID</source>
@@ -2584,7 +2584,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Omdiriger webadresse</translation>
     </message>
     <message>
         <source>Get my own App ID</source>
@@ -2608,23 +2608,23 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Du har ikke givet adgang.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Der opstod en fejl under test.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Dette er fejl. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Testet med succes. Du bliver muligvis bedt om at logge ind igen.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Du har fået adgang.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -2632,11 +2632,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>En tom værdi er indtastet.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>En værdi er indtastet.</translation>
     </message>
 </context>
 <context>

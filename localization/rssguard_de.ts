@@ -2576,7 +2576,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 Einstellungen</translation>
     </message>
     <message>
         <source>App ID</source>
@@ -2588,7 +2588,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>URL umleiten</translation>
     </message>
     <message>
         <source>Get my own App ID</source>
@@ -2612,23 +2612,23 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Sie haben keinen Zugang gewährt.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist während des Tests aufgetreten.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist aufgetreten. %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Test erfolgreich. Sie könnten zu einem erneuten Einloggen aufgefordert werden.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Ihr Zugang wurde genehmigt.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -2636,11 +2636,11 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Leerer Wert wurde eingegeben.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Wert wurde eingegeben.</translation>
     </message>
 </context>
 <context>
@@ -2651,19 +2651,19 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: Fehler bei der Authentifizierung</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klicken Sie hier um sich wieder anzumelden. Der Fehler ist: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: Autorisierung abgelehnt</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Drücken Sie hier um sich neu anzumelden.</translation>
     </message>
 </context>
 <context>

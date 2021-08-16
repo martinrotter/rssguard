@@ -2580,7 +2580,7 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Ajustes de OAuth 2.0</translation>
     </message>
     <message>
         <source>App ID</source>
@@ -2592,7 +2592,7 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Redirigir URL</translation>
     </message>
     <message>
         <source>Get my own App ID</source>
@@ -2616,23 +2616,23 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>No concedió el acceso.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Hubo un error durante la prueba.</translation>
     </message>
     <message>
         <source>There is error. %1</source>
-        <translation type="unfinished"/>
+        <translation>Hay un error. %1 </translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Probado con éxito. Puede que se le pida que se registre una vez más.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Su acceso fue aprobado.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -2640,11 +2640,11 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Se ha introducido un valor vacío.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Algún valor ha sido introducido.</translation>
     </message>
 </context>
 <context>
@@ -2655,19 +2655,19 @@ Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: error de autenticación</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Pulse aquí para iniciar sesión nuevamente. El error es: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: autorización denegada</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Pulse aquí para iniciar sesión nuevamente. </translation>
     </message>
 </context>
 <context>

@@ -2652,7 +2652,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Inoreader: authorisation denied</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
