@@ -23,6 +23,10 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget* parent)
 void FormEditOwnCloudAccount::apply() {
   FormAccountDetails::apply();
 
+  bool using_another_acc =
+    m_details->m_ui.m_txtUsername->lineEdit()->text() != account<OwnCloudServiceRoot>()->network()->authUsername() ||
+    m_details->m_ui.m_txtUrl->lineEdit()->text() != account<OwnCloudServiceRoot>()->network()->url();
+
   account<OwnCloudServiceRoot>()->network()->setUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
   account<OwnCloudServiceRoot>()->network()->setAuthUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<OwnCloudServiceRoot>()->network()->setAuthPassword(m_details->m_ui.m_txtPassword->lineEdit()->text());
@@ -33,7 +37,7 @@ void FormEditOwnCloudAccount::apply() {
   account<OwnCloudServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
-  if (!m_creatingNew) {
+  if (!m_creatingNew && using_another_acc) {
     account<OwnCloudServiceRoot>()->completelyRemoveAllData();
     account<OwnCloudServiceRoot>()->start(true);
   }

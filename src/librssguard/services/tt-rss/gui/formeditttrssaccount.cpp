@@ -20,6 +20,10 @@ FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
 void FormEditTtRssAccount::apply() {
   FormAccountDetails::apply();
 
+  bool using_another_acc =
+    m_details->m_ui.m_txtUsername->lineEdit()->text() != account<TtRssServiceRoot>()->network()->username() ||
+    m_details->m_ui.m_txtUrl->lineEdit()->text() != account<TtRssServiceRoot>()->network()->url();
+
   account<TtRssServiceRoot>()->network()->logout(m_account->networkProxy());
   account<TtRssServiceRoot>()->network()->setUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
   account<TtRssServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
@@ -34,7 +38,7 @@ void FormEditTtRssAccount::apply() {
   account<TtRssServiceRoot>()->saveAccountDataToDatabase();
   accept();
 
-  if (!m_creatingNew) {
+  if (!m_creatingNew && using_another_acc) {
     account<TtRssServiceRoot>()->completelyRemoveAllData();
     account<TtRssServiceRoot>()->start(true);
   }

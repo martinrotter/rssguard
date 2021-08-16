@@ -30,6 +30,9 @@ void FormEditFeedlyAccount::apply() {
   account<FeedlyServiceRoot>()->network()->oauth()->logout(false);
 #endif
 
+  bool using_another_acc =
+    m_details->m_ui.m_txtUsername->lineEdit()->text() !=account<FeedlyServiceRoot>()->network()->username();
+
   account<FeedlyServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<FeedlyServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
   account<FeedlyServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
@@ -39,7 +42,10 @@ void FormEditFeedlyAccount::apply() {
   accept();
 
   if (!m_creatingNew) {
-    account<FeedlyServiceRoot>()->completelyRemoveAllData();
+    if (using_another_acc) {
+      account<FeedlyServiceRoot>()->completelyRemoveAllData();
+    }
+
     account<FeedlyServiceRoot>()->start(true);
   }
 }

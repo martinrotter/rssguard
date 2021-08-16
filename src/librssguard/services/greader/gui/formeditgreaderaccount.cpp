@@ -25,6 +25,10 @@ void FormEditGreaderAccount::apply() {
   FormAccountDetails::apply();
 
   GreaderServiceRoot* existing_root = account<GreaderServiceRoot>();
+  bool using_another_acc =
+    m_details->m_ui.m_txtUsername->lineEdit()->text() != existing_root->network()->username() ||
+    m_details->service() != existing_root->network()->service() ||
+    m_details->m_ui.m_txtUrl->lineEdit()->text() != existing_root->network()->baseUrl();
 
   existing_root->network()->setBaseUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
   existing_root->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
@@ -48,7 +52,10 @@ void FormEditGreaderAccount::apply() {
   accept();
 
   if (!m_creatingNew) {
-    existing_root->completelyRemoveAllData();
+    if (using_another_acc) {
+      existing_root->completelyRemoveAllData();
+    }
+
     existing_root->start(true);
   }
 }
