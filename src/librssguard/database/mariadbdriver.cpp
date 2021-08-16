@@ -62,6 +62,11 @@ MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostnam
   }
 }
 
+QString MariaDbDriver::location() const {
+  return QSL("%1/%2").arg(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString(),
+                          qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString());
+}
+
 QString MariaDbDriver::interpretErrorCode(MariaDbDriver::MariaDbError error_code) const {
   switch (error_code) {
     case MariaDbError::Ok:

@@ -160,7 +160,7 @@
 
 #define APP_DB_SQLITE_DRIVER          "QSQLITE"
 #define APP_DB_SQLITE_INIT            "db_init_sqlite.sql"
-#define APP_DB_SQLITE_PATH            "database/local"
+#define APP_DB_SQLITE_PATH            "database"
 #define APP_DB_SQLITE_FILE            "database.db"
 
 // Keep this in sync with schema versions declared in SQL initialization code.

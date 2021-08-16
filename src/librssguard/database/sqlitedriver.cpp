@@ -16,6 +16,10 @@ SqliteDriver::SqliteDriver(bool in_memory, QObject* parent)
   m_fileBasedDatabaseInitialized(false),
   m_inMemoryDatabaseInitialized(false) {}
 
+QString SqliteDriver::location() const {
+  return m_databaseFilePath;
+}
+
 DatabaseDriver::DriverType SqliteDriver::driverType() const {
   return DriverType::SQLite;
 }

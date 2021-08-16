@@ -24,6 +24,7 @@ class MariaDbDriver : public DatabaseDriver {
     MariaDbError testConnection(const QString& hostname, int port, const QString& w_database,
                                 const QString& username, const QString& password);
 
+    virtual QString location() const;
     virtual QString humanDriverType() const;
     virtual QString qtDriverCode() const;
     virtual DriverType driverType() const;

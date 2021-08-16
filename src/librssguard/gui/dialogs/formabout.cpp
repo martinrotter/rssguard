@@ -2,9 +2,12 @@
 
 #include "gui/dialogs/formabout.h"
 
+#include "database/databasedriver.h"
+#include "database/databasefactory.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settingsproperties.h"
 #include "miscellaneous/textfactory.h"
@@ -33,9 +36,7 @@ void FormAbout::loadSettingsAndPaths() {
     m_ui.m_txtPathsSettingsType->setText(tr("NOT portable"));
   }
 
-  m_ui.m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->userDataFolder() +
-                                                                QDir::separator() +
-                                                                QString(APP_DB_SQLITE_PATH)));
+  m_ui.m_txtPathsDatabaseRoot->setText(qApp->database()->driver()->location());
   m_ui.m_txtPathsSettingsFile->setText(QDir::toNativeSeparators(qApp->settings()->fileName()));
   m_ui.m_txtPathsSkinsRoot->setText(QDir::toNativeSeparators(qApp->skins()->customSkinBaseFolder()));
 }

@@ -28,6 +28,7 @@ class DatabaseDriver : public QObject {
     explicit DatabaseDriver(QObject* parent = nullptr);
 
     // API.
+    virtual QString location() const = 0;
     virtual QString humanDriverType() const = 0;
     virtual QString qtDriverCode() const = 0;
     virtual DriverType driverType() const = 0;
