@@ -96,7 +96,9 @@ void FeedsView::saveAllExpandStates() {
 
 void FeedsView::saveExpandStates(RootItem* item) {
   Settings* settings = qApp->settings();
-  QList<RootItem*> items = item->getSubTree(RootItem::Kind::Category | RootItem::Kind::ServiceRoot);
+  QList<RootItem*> items = item->getSubTree(RootItem::Kind::Category |
+                                            RootItem::Kind::ServiceRoot |
+                                            RootItem::Kind::Labels);
 
   // Iterate all categories and save their expand statuses.
   for (const RootItem* it : items) {
@@ -114,7 +116,9 @@ void FeedsView::loadAllExpandStates() {
   const Settings* settings = qApp->settings();
   QList<RootItem*> expandable_items;
 
-  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItem::Kind::Category | RootItem::Kind::ServiceRoot));
+  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItem::Kind::Category |
+                                                                RootItem::Kind::ServiceRoot |
+                                                                RootItem::Kind::Labels));
 
   // Iterate all categories and save their expand statuses.
   for (const RootItem* item : expandable_items) {

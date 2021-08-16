@@ -17,7 +17,7 @@ SqliteDriver::SqliteDriver(bool in_memory, QObject* parent)
   m_inMemoryDatabaseInitialized(false) {}
 
 QString SqliteDriver::location() const {
-  return m_databaseFilePath;
+  return QDir::toNativeSeparators(m_databaseFilePath);
 }
 
 DatabaseDriver::DriverType SqliteDriver::driverType() const {

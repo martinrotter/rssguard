@@ -176,7 +176,7 @@ void GmailServiceRoot::start(bool freshly_activated) {
   auto chi = childItems();
 
   for (RootItem* feed : qAsConst(chi)) {
-    if (feed->customId() == QL1S("INBOX")) {
+    if (feed->customId() == QL1S(GMAIL_SYSTEM_LABEL_INBOX)) {
       feed->setKeepOnTop(true);
     }
   }
