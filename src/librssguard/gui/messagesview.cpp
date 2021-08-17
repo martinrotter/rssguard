@@ -78,6 +78,12 @@ void MessagesView::restoreHeaderState(const QByteArray& data) {
   inn.setVersion(QDataStream::Version::Qt_4_7);
 
   int saved_header_count; inn >> saved_header_count;
+
+  if (std::abs(saved_header_count - header()->count()) > 10) {
+    qWarningNN << LOGSEC_GUI << "Detected invalid state for list view.";
+    return;
+  }
+
   Qt::SortOrder saved_sort_order; inn >> saved_sort_order;
   int saved_sort_column; inn >> saved_sort_column;
 
