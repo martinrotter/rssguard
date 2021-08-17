@@ -91,7 +91,7 @@ void FeedMessageViewer::saveSize() {
   // Store offsets of splitters.
   settings->setValue(GROUP(GUI), GUI::SplitterFeeds, QString(m_feedSplitter->saveState().toBase64()));
   settings->setValue(GROUP(GUI), GUI::SplitterMessages, QString(m_messageSplitter->saveState().toBase64()));
-  settings->setValue(GROUP(GUI), GUI::MessageViewState, QString(m_messagesView->header()->saveState().toBase64()));
+  settings->setValue(GROUP(GUI), GUI::MessageViewState, QString(m_messagesView->saveHeaderState().toBase64()));
 
   // Store "visibility" of toolbars and list headers.
   settings->setValue(GROUP(GUI), GUI::ToolbarsVisible, m_toolBarsEnabled);
@@ -109,7 +109,7 @@ void FeedMessageViewer::loadSize() {
   QString settings_msg_header = settings->value(GROUP(GUI), SETTING(GUI::MessageViewState)).toString();
 
   if (!settings_msg_header.isEmpty()) {
-    m_messagesView->header()->restoreState(QByteArray::fromBase64(settings_msg_header.toLocal8Bit()));
+    m_messagesView->restoreHeaderState(QByteArray::fromBase64(settings_msg_header.toLocal8Bit()));
   }
 }
 

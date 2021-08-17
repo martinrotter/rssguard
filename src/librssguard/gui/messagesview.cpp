@@ -52,6 +52,53 @@ void MessagesView::reloadFontSettings() {
   m_sourceModel->setupFonts();
 }
 
+QByteArray MessagesView::saveHeaderState() const {
+  QByteArray arr;
+  QDataStream outt(&arr, QIODevice::OpenModeFlag::WriteOnly);
+
+  outt.setVersion(QDataStream::Version::Qt_4_7);
+  outt << header()->count();
+  outt << header()->sortIndicatorOrder();
+  outt << header()->sortIndicatorSection();
+
+  // Save column data.
+  for (int i = 0; i < header()->count(); i++) {
+    outt << header()->visualIndex(i);
+    outt << header()->sectionSize(i);
+    outt << header()->isSectionHidden(i);
+  }
+
+  return arr;
+}
+
+void MessagesView::restoreHeaderState(const QByteArray& data) {
+  QByteArray arr = data;
+  QDataStream inn(&arr, QIODevice::OpenModeFlag::ReadOnly);
+
+  inn.setVersion(QDataStream::Version::Qt_4_7);
+
+  int saved_header_count; inn >> saved_header_count;
+  Qt::SortOrder saved_sort_order; inn >> saved_sort_order;
+  int saved_sort_column; inn >> saved_sort_column;
+
+  for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
+    int vi, ss;
+    bool ish;
+
+    inn >> vi;
+    inn >> ss;
+    inn >> ish;
+
+    header()->swapSections(header()->visualIndex(i), vi);
+    header()->resizeSection(i, ss);
+    header()->setSectionHidden(i, ish);
+  }
+
+  if (saved_sort_column < header()->count()) {
+    header()->setSortIndicator(saved_sort_column, saved_sort_order);
+  }
+}
+
 void MessagesView::sort(int column, Qt::SortOrder order,
                         bool repopulate_data, bool change_header,
                         bool emit_changed_from_header,
