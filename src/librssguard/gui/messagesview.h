@@ -25,7 +25,7 @@ class MessagesView : public QTreeView {
     void reloadFontSettings();
 
     QByteArray saveHeaderState() const;
-    void restoreHeaderState(const QByteArray& data);
+    void restoreHeaderState(const QByteArray& dta);
 
   public slots:
     void keyboardSearch(const QString& search);

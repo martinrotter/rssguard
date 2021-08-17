@@ -1,125 +1,124 @@
 <RCC>
-    <qresource prefix="/">
-        <file>text/CHANGELOG</file>
-        <file>text/COPYING_BSD</file>
-        <file>text/COPYING_MIT</file>
-        <file>text/COPYING_GNU_GPL</file>
-        <file>text/COPYING_GNU_GPL_HTML</file>
+  <qresource prefix="/">
+    <file>text/CHANGELOG</file>
+    <file>text/COPYING_MIT</file>
+    <file>text/COPYING_GNU_GPL</file>
+    <file>text/COPYING_GNU_GPL_HTML</file>
 
-        <file>sounds/boing.wav</file>
-        <file>sounds/rooster.wav</file>
-        <file>sounds/sheep.wav</file>
+    <file>sounds/boing.wav</file>
+    <file>sounds/rooster.wav</file>
+    <file>sounds/sheep.wav</file>
 
-        <file>scripts/adblock/adblock-server.js</file>
-        <file>scripts/public_suffix_list.dat</file>
-        
-        <file>graphics/rssguard.ico</file>
+    <file>scripts/adblock/adblock-server.js</file>
+    <file>scripts/public_suffix_list.dat</file>
 
-        <file>graphics/rssguard.png</file>
-        <file>graphics/rssguard_plain.png</file>
+    <file>graphics/rssguard.ico</file>
 
-        <file>graphics/rssguard_mono.png</file>
-        <file>graphics/rssguard_plain_mono.png</file>
+    <file>graphics/rssguard.png</file>
+    <file>graphics/rssguard_plain.png</file>
 
-        <file>graphics/misc/adblock.png</file>
-        <file>graphics/misc/adblock-disabled.png</file>
-        <file>graphics/misc/bazqux.png</file>
-        <file>graphics/misc/feedly.png</file>
-        <file>graphics/misc/freshrss.png</file>
-        <file>graphics/misc/gmail.png</file>
-        <file>graphics/misc/google.png</file>
-        <file>graphics/misc/image-placeholder.png</file>
-        <file>graphics/misc/inoreader.png</file>
-        <file>graphics/misc/nextcloud.png</file>
-        <file>graphics/misc/reedah.png</file>
-        <file>graphics/misc/theoldreader.png</file>
-        <file>graphics/misc/tt-rss.png</file>
-        
-        <file>graphics/misc/flags/cs.png</file>
-        <file>graphics/misc/flags/da.png</file>
-        <file>graphics/misc/flags/de.png</file>
-        <file>graphics/misc/flags/en.png</file>
-        <file>graphics/misc/flags/en_GB.png</file>
-        <file>graphics/misc/flags/es.png</file>
-        <file>graphics/misc/flags/fi.png</file>
-        <file>graphics/misc/flags/fr.png</file>
-        <file>graphics/misc/flags/gl.png</file>
-        <file>graphics/misc/flags/he.png</file>
-        <file>graphics/misc/flags/id.png</file>
-        <file>graphics/misc/flags/it.png</file>
-        <file>graphics/misc/flags/ja.png</file>
-        <file>graphics/misc/flags/lt.png</file>
-        <file>graphics/misc/flags/nl.png</file>
-        <file>graphics/misc/flags/pl.png</file>
-        <file>graphics/misc/flags/pt_BR.png</file>
-        <file>graphics/misc/flags/pt_PT.png</file>
-        <file>graphics/misc/flags/ru.png</file>
-        <file>graphics/misc/flags/sv.png</file>
-        <file>graphics/misc/flags/uk.png</file>
-        <file>graphics/misc/flags/zh_CN.png</file>
-        <file>graphics/misc/flags/zh_TW.png</file>
-        
-        <file>skins/dark/html_adblocked.html</file>
-        <file>skins/dark/html_enclosure_every.html</file>
-        <file>skins/dark/html_enclosure_image.html</file>
-        <file>skins/dark/html_single_message.html</file>
-        <file>skins/dark/html_wrapper.html</file>
-        <file>skins/dark/metadata.xml</file>
-        <file>skins/dark/theme.css</file>
-        
-        <file>skins/vergilius/html_adblocked.html</file>
-        <file>skins/vergilius/html_enclosure_every.html</file>
-        <file>skins/vergilius/html_enclosure_image.html</file>
-        <file>skins/vergilius/html_single_message.html</file>
-        <file>skins/vergilius/html_wrapper.html</file>
-        <file>skins/vergilius/metadata.xml</file>
-        <file>skins/vergilius/theme.css</file>
-        
-        <file>initial_feeds/feeds-en.opml</file>
-        
-        <file>desktop/com.github.rssguard.desktop</file>
-        <file>desktop/com.github.rssguard.desktop.autostart</file>
-        
-        <file>../localization/rssguard_cs.qm</file>
-        <file>../localization/rssguard_da.qm</file>
-        <file>../localization/rssguard_de.qm</file>
-        <file>../localization/rssguard_en.qm</file>
-        <file>../localization/rssguard_en_GB.qm</file>
-        <file>../localization/rssguard_es.qm</file>
-        <file>../localization/rssguard_fi.qm</file>
-        <file>../localization/rssguard_fr.qm</file>
-        <file>../localization/rssguard_gl.qm</file>
-        <file>../localization/rssguard_he.qm</file>
-        <file>../localization/rssguard_id.qm</file>
-        <file>../localization/rssguard_it.qm</file>
-        <file>../localization/rssguard_ja.qm</file>
-        <file>../localization/rssguard_lt.qm</file>
-        <file>../localization/rssguard_nl.qm</file>
-        <file>../localization/rssguard_pl.qm</file>
-        <file>../localization/rssguard_pt_BR.qm</file>
-        <file>../localization/rssguard_pt_PT.qm</file>
-        <file>../localization/rssguard_ru.qm</file>
-        <file>../localization/rssguard_sv.qm</file>
-        <file>../localization/rssguard_uk.qm</file>
-        <file>../localization/rssguard_zh_CN.qm</file>
-        <file>../localization/rssguard_zh_TW.qm</file>
+    <file>graphics/rssguard_mono.png</file>
+    <file>graphics/rssguard_plain_mono.png</file>
 
-        <file>../localization/qtbase_cs.qm</file>
-        <file>../localization/qtbase_da.qm</file>
-        <file>../localization/qtbase_de.qm</file>
-        <file>../localization/qtbase_es.qm</file>
-        <file>../localization/qtbase_fi.qm</file>
-        <file>../localization/qtbase_fr.qm</file>
-        <file>../localization/qtbase_it.qm</file>
-        <file>../localization/qtbase_ja.qm</file>
-        <file>../localization/qtbase_lt.qm</file>
-        <file>../localization/qtbase_pl.qm</file>
-        <file>../localization/qtbase_pt_BR.qm</file>
-        <file>../localization/qtbase_pt_PT.qm</file>
-        <file>../localization/qtbase_ru.qm</file>
-        <file>../localization/qtbase_sv.qm</file>
-        <file>../localization/qtbase_uk.qm</file>
-        <file>../localization/qtbase_zh_CN.qm</file>
-        <file>../localization/qtbase_zh_TW.qm</file>
-    </qresource>
+    <file>graphics/misc/adblock.png</file>
+    <file>graphics/misc/adblock-disabled.png</file>
+    <file>graphics/misc/bazqux.png</file>
+    <file>graphics/misc/feedly.png</file>
+    <file>graphics/misc/freshrss.png</file>
+    <file>graphics/misc/gmail.png</file>
+    <file>graphics/misc/google.png</file>
+    <file>graphics/misc/image-placeholder.png</file>
+    <file>graphics/misc/inoreader.png</file>
+    <file>graphics/misc/nextcloud.png</file>
+    <file>graphics/misc/reedah.png</file>
+    <file>graphics/misc/theoldreader.png</file>
+    <file>graphics/misc/tt-rss.png</file>
+
+    <file>graphics/misc/flags/cs.png</file>
+    <file>graphics/misc/flags/da.png</file>
+    <file>graphics/misc/flags/de.png</file>
+    <file>graphics/misc/flags/en.png</file>
+    <file>graphics/misc/flags/en_GB.png</file>
+    <file>graphics/misc/flags/es.png</file>
+    <file>graphics/misc/flags/fi.png</file>
+    <file>graphics/misc/flags/fr.png</file>
+    <file>graphics/misc/flags/gl.png</file>
+    <file>graphics/misc/flags/he.png</file>
+    <file>graphics/misc/flags/id.png</file>
+    <file>graphics/misc/flags/it.png</file>
+    <file>graphics/misc/flags/ja.png</file>
+    <file>graphics/misc/flags/lt.png</file>
+    <file>graphics/misc/flags/nl.png</file>
+    <file>graphics/misc/flags/pl.png</file>
+    <file>graphics/misc/flags/pt_BR.png</file>
+    <file>graphics/misc/flags/pt_PT.png</file>
+    <file>graphics/misc/flags/ru.png</file>
+    <file>graphics/misc/flags/sv.png</file>
+    <file>graphics/misc/flags/uk.png</file>
+    <file>graphics/misc/flags/zh_CN.png</file>
+    <file>graphics/misc/flags/zh_TW.png</file>
+
+    <file>skins/dark/html_adblocked.html</file>
+    <file>skins/dark/html_enclosure_every.html</file>
+    <file>skins/dark/html_enclosure_image.html</file>
+    <file>skins/dark/html_single_message.html</file>
+    <file>skins/dark/html_wrapper.html</file>
+    <file>skins/dark/metadata.xml</file>
+    <file>skins/dark/theme.css</file>
+
+    <file>skins/vergilius/html_adblocked.html</file>
+    <file>skins/vergilius/html_enclosure_every.html</file>
+    <file>skins/vergilius/html_enclosure_image.html</file>
+    <file>skins/vergilius/html_single_message.html</file>
+    <file>skins/vergilius/html_wrapper.html</file>
+    <file>skins/vergilius/metadata.xml</file>
+    <file>skins/vergilius/theme.css</file>
+
+    <file>initial_feeds/feeds-en.opml</file>
+
+    <file>desktop/com.github.rssguard.desktop</file>
+    <file>desktop/com.github.rssguard.desktop.autostart</file>
+
+    <file>../localization/rssguard_cs.qm</file>
+    <file>../localization/rssguard_da.qm</file>
+    <file>../localization/rssguard_de.qm</file>
+    <file>../localization/rssguard_en.qm</file>
+    <file>../localization/rssguard_en_GB.qm</file>
+    <file>../localization/rssguard_es.qm</file>
+    <file>../localization/rssguard_fi.qm</file>
+    <file>../localization/rssguard_fr.qm</file>
+    <file>../localization/rssguard_gl.qm</file>
+    <file>../localization/rssguard_he.qm</file>
+    <file>../localization/rssguard_id.qm</file>
+    <file>../localization/rssguard_it.qm</file>
+    <file>../localization/rssguard_ja.qm</file>
+    <file>../localization/rssguard_lt.qm</file>
+    <file>../localization/rssguard_nl.qm</file>
+    <file>../localization/rssguard_pl.qm</file>
+    <file>../localization/rssguard_pt_BR.qm</file>
+    <file>../localization/rssguard_pt_PT.qm</file>
+    <file>../localization/rssguard_ru.qm</file>
+    <file>../localization/rssguard_sv.qm</file>
+    <file>../localization/rssguard_uk.qm</file>
+    <file>../localization/rssguard_zh_CN.qm</file>
+    <file>../localization/rssguard_zh_TW.qm</file>
+
+    <file>../localization/qtbase_cs.qm</file>
+    <file>../localization/qtbase_da.qm</file>
+    <file>../localization/qtbase_de.qm</file>
+    <file>../localization/qtbase_es.qm</file>
+    <file>../localization/qtbase_fi.qm</file>
+    <file>../localization/qtbase_fr.qm</file>
+    <file>../localization/qtbase_it.qm</file>
+    <file>../localization/qtbase_ja.qm</file>
+    <file>../localization/qtbase_lt.qm</file>
+    <file>../localization/qtbase_pl.qm</file>
+    <file>../localization/qtbase_pt_BR.qm</file>
+    <file>../localization/qtbase_pt_PT.qm</file>
+    <file>../localization/qtbase_ru.qm</file>
+    <file>../localization/qtbase_sv.qm</file>
+    <file>../localization/qtbase_uk.qm</file>
+    <file>../localization/qtbase_zh_CN.qm</file>
+    <file>../localization/qtbase_zh_TW.qm</file>
+  </qresource>
 </RCC>

@@ -64,13 +64,6 @@ void FormAbout::loadLicenseAndInformation() {
   }
 
   try {
-    m_ui.m_txtLicenseBsd->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/COPYING_BSD")));
-  }
-  catch (...) {
-    m_ui.m_txtLicenseBsd->setText(tr("License not found."));
-  }
-
-  try {
     m_ui.m_txtLicenseMit->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/COPYING_MIT")));
   }
   catch (...) {

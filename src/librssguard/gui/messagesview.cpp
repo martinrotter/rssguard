@@ -71,8 +71,8 @@ QByteArray MessagesView::saveHeaderState() const {
   return arr;
 }
 
-void MessagesView::restoreHeaderState(const QByteArray& data) {
-  QByteArray arr = data;
+void MessagesView::restoreHeaderState(const QByteArray& dta) {
+  QByteArray arr = dta;
   QDataStream inn(&arr, QIODevice::OpenModeFlag::ReadOnly);
 
   inn.setVersion(QDataStream::Version::Qt_4_7);
