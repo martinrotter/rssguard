@@ -89,7 +89,10 @@ void MessagesView::restoreHeaderState(const QByteArray& data) {
     inn >> ss;
     inn >> ish;
 
-    header()->swapSections(header()->visualIndex(i), vi);
+    if (vi < header()->count()) {
+      header()->swapSections(header()->visualIndex(i), vi);
+    }
+
     header()->resizeSection(i, ss);
     header()->setSectionHidden(i, ish);
   }
@@ -204,6 +207,7 @@ void MessagesView::setupAppearance() {
   setItemDelegate(new StyledItemDelegateWithoutFocus(this));
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
+  header()->setFirstSectionMovable(true);
   header()->setCascadingSectionResizes(false);
   header()->setStretchLastSection(false);
 }
