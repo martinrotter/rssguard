@@ -97,7 +97,7 @@ Application::Application(const QString& id, int& argc, char** argv)
     m_notifications->save({
       Notification(Notification::Event::GeneralEvent, true),
       Notification(Notification::Event::NewUnreadArticlesFetched, true,
-                   QSL("%1/rooster.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
+                   QSL("%1/notify.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
       Notification(Notification::Event::NewAppVersionAvailable, true),
       Notification(Notification::Event::LoginFailure, true)
     }, settings());
