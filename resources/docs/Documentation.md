@@ -17,6 +17,7 @@ Welcome to RSS Guard documentation. You can find everything about the applicatio
 ### [`Minor Features`]()
 ##### &nbsp;&nbsp;&nbsp;&nbsp;[`Files Downloader`](#downl)
 ##### &nbsp;&nbsp;&nbsp;&nbsp;[`Labels`](#lbls)
+##### &nbsp;&nbsp;&nbsp;&nbsp;[`Skins`](#skin)
 ##### &nbsp;&nbsp;&nbsp;&nbsp;[`GUI Tweaking`](#guit)
 ##### &nbsp;&nbsp;&nbsp;&nbsp;[`Command Line Interface (CLI)`](#cli)
 ### [`For Contributors`](#contrib)
@@ -441,9 +442,30 @@ Note that (de)assignments of labels to messages are synchronized back to support
 
 Also, [message filters](#fltr) can assign or remove labels to/from messages.
 
-### <a id="guit"></a>GUI Tweaking
+### <a id="skin"></a>Skins
+RSS Guard is skinable application. Its GUI can be almost completely styled with [stylesheets](https://doc.qt.io/qt-5/stylesheet.html).
 
-RSS Guard's main window appearance can be tweaked in many ways. You can hide menu, toolbars, status bar, you can also change orientation of article viewer to suit widescreen devices. You can change skins and icon themes.
+<img src="images/gui-dark.png" width="600px">
+
+You can select style and skin in settings category `User interface`.
+
+RSS Guard encapsulates styling capabilities via *skins* feature. Each skin is placed in its own folder and must contain several [files](https://github.com/martinrotter/rssguard/tree/master/resources/skins/vergilius). There are some [built-in](https://github.com/martinrotter/rssguard/tree/master/resources/skins) skins, but you can place your custom skins in your [user data folder](#userd). You can find exact path to your user data folder in `About` dialog. Note that there must be subfolder `skins`. Create it if it does not exist and place your custom skins inside.
+
+<img src="images/about-skins.png" width="600px">
+
+So for example if your new skin is called `greenland`, you must place it in folder
+
+```
+<user-data-path>\skins\greenland
+```
+
+As stated above, there are several files in each skin:
+* `metadata.xml` - XML file with some basic information about the skin's name, author etc. Also,
+* `theme.css` - [Qt stylesheet](https://doc.qt.io/qt-5/stylesheet.html) file.
+* `html_*.html` - These are (partial) HTML files which are used by RSS Guard in various situations like displaying article or error page.
+
+### <a id="guit"></a>GUI Tweaking
+RSS Guard's main window appearance can be tweaked in many ways. You can hide menu, toolbars, status bar, you can also change orientation of article viewer to suit widescreen devices.
 
 <img src="images/gui-hiding.png" width="600px">
 <img src="images/gui-hiding-all.png" width="600px">
