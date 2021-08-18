@@ -189,7 +189,7 @@ bool Feed::markAsReadUnread(RootItem::ReadStatus status) {
   return service->markFeedsReadUnread(QList<Feed*>() << this, status);
 }
 
-QPair<int, int> Feed::updateMessages(const QList<Message>& messages, bool force_update) {
+QPair<int, int> Feed::updateMessages(QList<Message>& messages, bool force_update) {
   QPair<int, int> updated_messages = { 0, 0 };
 
   if (messages.isEmpty()) {

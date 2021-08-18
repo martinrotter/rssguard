@@ -79,7 +79,7 @@ class Feed : public RootItem {
     void removeMessageFilter(MessageFilter* filter);
 
     // Returns counts of updated messages <unread, all>.
-    QPair<int, int> updateMessages(const QList<Message>& messages, bool force_update);
+    QPair<int, int> updateMessages(QList<Message>& messages, bool force_update);
 
   public slots:
     virtual void updateCounts(bool including_total_count);

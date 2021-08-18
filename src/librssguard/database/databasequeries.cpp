@@ -1023,7 +1023,7 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
 }
 
 QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
-                                                const QList<Message>& messages,
+                                                QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,
                                                 bool* ok) {
@@ -1095,7 +1095,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
 
   QVector<Message> msgs_to_insert;
 
-  for (Message message : messages) {
+  for (Message& message : messages) {
     int id_existing_message = -1;
     qint64 date_existing_message = 0;
     bool is_read_existing_message = false;
@@ -1252,6 +1252,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
 
     // Now, check if this message is already in the DB.
     if (id_existing_message >= 0) {
+      message.m_id = id_existing_message;
+
       // Message is already in the DB.
       //
       // Now, we update it if at least one of next conditions is true:
@@ -1324,71 +1326,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
       }
 
       updated_messages.second++;
-
-      /*
-         // Message with this URL is not fetched in this feed yet.
-         query_insert.bindValue(QSL(":feed"), unnulifyString(feed_custom_id));
-         query_insert.bindValue(QSL(":title"), unnulifyString(message.m_title));
-         query_insert.bindValue(QSL(":is_read"), int(message.m_isRead));
-         query_insert.bindValue(QSL(":is_important"), int(message.m_isImportant));
-         query_insert.bindValue(QSL(":is_deleted"), int(message.m_isDeleted));
-         query_insert.bindValue(QSL(":url"), unnulifyString( message.m_url));
-         query_insert.bindValue(QSL(":author"), unnulifyString(message.m_author));
-         query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-         query_insert.bindValue(QSL(":contents"), unnulifyString(message.m_contents));
-         query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
-         query_insert.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
-         query_insert.bindValue(QSL(":custom_hash"), unnulifyString(message.m_customHash));
-         query_insert.bindValue(QSL(":score"), message.m_score);
-         query_insert.bindValue(QSL(":account_id"), account_id);
-
-         if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
-         if (!message.m_isRead) {
-          updated_messages.first++;
-         }
-
-         updated_messages.second++;
-
-         if (query_insert.lastInsertId().isValid()) {
-          id_existing_message = query_insert.lastInsertId().toInt();
-         }
-
-         qDebugNN << LOGSEC_DB
-                 << "Adding new message with title"
-                 << QUOTE_W_SPACE(message.m_title)
-                 << ", URL"
-                 << QUOTE_W_SPACE(message.m_url)
-                 << "to DB.";
-         }
-         else if (query_insert.lastError().isValid()) {
-         qWarningNN << LOGSEC_DB
-                   << "Failed to insert new message to DB:"
-                   << QUOTE_W_SPACE(query_insert.lastError().text())
-                   << "- message title is"
-                   << QUOTE_W_SPACE_DOT(message.m_title);
-         }
-
-         query_insert.finish();
-       */
-    }
-
-    // Update labels assigned to message.
-    if (!message.m_assignedLabels.isEmpty()) {
-      // NOTE: This message provides list of its labels from remote
-      // source, which means they must replace local labels.
-      if (!message.m_customId.isEmpty()) {
-        setLabelsForMessage(db, message.m_assignedLabels, message);
-      }
-      else if (id_existing_message >= 0) {
-        message.m_id = id_existing_message;
-        setLabelsForMessage(db, message.m_assignedLabels, message);
-      }
-      else {
-        qWarningNN << LOGSEC_DB
-                   << "Cannot set labels for message"
-                   << QUOTE_W_SPACE(message.m_title)
-                   << "because we don't have ID or custom ID.";
-      }
     }
   }
 
@@ -1401,7 +1338,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
       QStringList vals;
       auto next_batch = msgs_to_insert.mid(i, 1000);
 
-      for (const Message& msg: next_batch) {
+      for (Message& msg: next_batch) {
         if (msg.m_title.isEmpty()) {
           qCriticalNN << LOGSEC_DB
                       << "Message"
@@ -1431,7 +1368,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
 
       if (!vals.isEmpty()) {
         QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
-        auto bulk_error = db.exec(final_bulk).lastError();
+        auto bulk_query = db.exec(final_bulk);
+        auto bulk_error = bulk_query.lastError();
 
         if (bulk_error.isValid()) {
           QString txt = bulk_error.text() + bulk_error.databaseText();
@@ -1441,6 +1379,34 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                       << "Failed bulk insert of articles:"
                       << QUOTE_W_SPACE_DOT(txt);
         }
+        else {
+          // OK, we bulk-inserted many messages but the thing is that they do not
+          // have their DB IDs fetched in objects, therefore labels cannot be assigned etc.
+          //
+          // We can calculate real IDs because of how "auto-increment" algorithms work.
+          //   https://www.sqlite.org/autoinc.html
+          //   https://mariadb.com/kb/en/auto_increment
+          int last_msg_id = bulk_query.lastInsertId().toInt();
+
+          for (int j = next_batch.size() - 1, k = 0; j >= 0; j--, k++) {
+            next_batch[j].m_id = last_msg_id - k;
+          }
+        }
+      }
+    }
+  }
+
+  // Update labels assigned to message.
+  for (Message& message: messages) {
+    if (!message.m_assignedLabels.isEmpty()) {
+      if (!message.m_customId.isEmpty() || message.m_id > 0) {
+        setLabelsForMessage(db, message.m_assignedLabels, message);
+      }
+      else {
+        qWarningNN << LOGSEC_DB
+                   << "Cannot set labels for message"
+                   << QUOTE_W_SPACE(message.m_title)
+                   << "because we don't have ID or custom ID.";
       }
     }
   }

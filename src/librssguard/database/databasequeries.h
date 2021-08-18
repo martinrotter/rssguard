@@ -113,7 +113,7 @@ class DatabaseQueries {
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
     // Returns counts of updated messages <unread, all>.
-    static QPair<int, int> updateMessages(QSqlDatabase db, const QList<Message>& messages,
+    static QPair<int, int> updateMessages(QSqlDatabase db, QList<Message>& messages,
                                           Feed* feed, bool force_update, bool* ok = nullptr);
     static bool deleteAccount(const QSqlDatabase& db, int account_id);
     static bool deleteAccountData(const QSqlDatabase& db, int account_id, bool delete_messages_too, bool delete_labels_too);
