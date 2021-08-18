@@ -42,7 +42,13 @@ void SkinFactory::loadCurrentSkin() {
 
 void SkinFactory::loadSkinFromData(const Skin& skin) {
   if (!skin.m_rawData.isEmpty()) {
-    qApp->setStyleSheet(skin.m_rawData);
+    if (qApp->styleSheet().simplified().isEmpty()) {
+      qApp->setStyleSheet(skin.m_rawData);
+    }
+    else {
+      qCriticalNN << LOGSEC_GUI
+                  << "Skipped setting of application style and skin because there is already some style set.";
+    }
   }
 
   qApp->setStyle(qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString());
@@ -76,14 +82,17 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
   base_skin_folders.append(customSkinBaseFolder());
 
   while (!base_skin_folders.isEmpty()) {
-    const QString skin_folder = base_skin_folders.takeAt(0) + QDir::separator() + skin_name + QDir::separator();
+    const QString skin_folder_no_sep = base_skin_folders.takeAt(0).replace(QDir::separator(),
+                                                                           QL1C('/')) + QL1C('/') + skin_name;
+    const QString skin_folder = skin_folder_no_sep + QDir::separator();
     const QString metadata_file = skin_folder + APP_SKIN_METADATA_FILE;
 
     if (QFile::exists(metadata_file)) {
       QFile skin_file(metadata_file);
       QDomDocument dokument;
 
-      if (!skin_file.open(QIODevice::Text | QIODevice::ReadOnly) || !dokument.setContent(&skin_file, true)) {
+      if (!skin_file.open(QIODevice::OpenModeFlag::Text | QIODevice::OpenModeFlag::ReadOnly) ||
+          !dokument.setContent(&skin_file, true)) {
         if (ok != nullptr) {
           *ok = false;
         }
@@ -132,22 +141,29 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       // Here we use "/" instead of QDir::separator() because CSS2.1 url field
       // accepts '/' as path elements separator.
       //
-      // "##" is placeholder for the actual path to skin file. This is needed for using
+      // USER_DATA_PLACEHOLDER is placeholder for the actual path to skin folder. This is needed for using
       // images within the QSS file.
-      // So if one uses "##/images/border.png" in QSS then it is
+      // So if one uses "%data%/images/border.png" in QSS then it is
       // replaced by fully absolute path and target file can
       // be safely loaded.
       skin.m_layoutMarkupWrapper = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_wrapper.html")));
-      skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
+      skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL(USER_DATA_PLACEHOLDER),
+                                                                      skin_folder_no_sep);
       skin.m_enclosureImageMarkup = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_enclosure_image.html")));
-      skin.m_enclosureImageMarkup = skin.m_enclosureImageMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
+      skin.m_enclosureImageMarkup = skin.m_enclosureImageMarkup.replace(QSL(USER_DATA_PLACEHOLDER),
+                                                                        skin_folder_no_sep);
       skin.m_layoutMarkup = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_single_message.html")));
-      skin.m_layoutMarkup = skin.m_layoutMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
+      skin.m_layoutMarkup = skin.m_layoutMarkup.replace(QSL(USER_DATA_PLACEHOLDER),
+                                                        skin_folder_no_sep);
       skin.m_enclosureMarkup = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_enclosure_every.html")));
-      skin.m_enclosureMarkup = skin.m_enclosureMarkup.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
+      skin.m_enclosureMarkup = skin.m_enclosureMarkup.replace(QSL(USER_DATA_PLACEHOLDER),
+                                                              skin_folder_no_sep);
       skin.m_rawData = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("theme.css")));
-      skin.m_rawData = skin.m_rawData.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_name);
+      skin.m_rawData = skin.m_rawData.replace(QSL(USER_DATA_PLACEHOLDER),
+                                              skin_folder_no_sep);
       skin.m_adblocked = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_adblocked.html")));
+      skin.m_adblocked = skin.m_adblocked.replace(QSL(USER_DATA_PLACEHOLDER),
+                                                  skin_folder_no_sep);
 
       if (ok != nullptr) {
         *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&
