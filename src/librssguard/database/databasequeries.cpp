@@ -1093,7 +1093,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
     return updated_messages;
   }
 
-  QVector<Message> msgs_to_insert;
+  QVector<Message*> msgs_to_insert;
 
   for (Message& message : messages) {
     int id_existing_message = -1;
@@ -1319,7 +1319,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
       }
     }
     else {
-      msgs_to_insert.append(message);
+      msgs_to_insert.append(&message);
 
       if (!message.m_isRead) {
         updated_messages.first++;
@@ -1336,13 +1336,15 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
 
     for (int i = 0; i < msgs_to_insert.size(); i += 1000) {
       QStringList vals;
-      auto next_batch = msgs_to_insert.mid(i, 1000);
+      int batch_length = std::min(1000, msgs_to_insert.size() - i);
 
-      for (Message& msg: next_batch) {
-        if (msg.m_title.isEmpty()) {
+      for (int l = i; l < (i + batch_length); l++) {
+        Message* msg = msgs_to_insert[l];
+
+        if (msg->m_title.isEmpty()) {
           qCriticalNN << LOGSEC_DB
                       << "Message"
-                      << QUOTE_W_SPACE(msg.m_customId)
+                      << QUOTE_W_SPACE(msg->m_customId)
                       << "will not be inserted to DB because it does not meet DB constraints.";
           continue;
         }
@@ -1351,18 +1353,18 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                         "':url', ':author', :score, :date_created, ':contents', ':enclosures', "
                         "':custom_id', ':custom_hash', :account_id)")
                     .replace(QSL(":feed"), unnulifyString(feed_custom_id))
-                    .replace(QSL(":title"), DatabaseFactory::escapeQuery(unnulifyString(msg.m_title)))
-                    .replace(QSL(":is_read"), QString::number(int(msg.m_isRead)))
-                    .replace(QSL(":is_important"), QString::number(int(msg.m_isImportant)))
-                    .replace(QSL(":is_deleted"), QString::number(int(msg.m_isDeleted)))
-                    .replace(QSL(":url"), DatabaseFactory::escapeQuery(unnulifyString(msg.m_url)))
-                    .replace(QSL(":author"), DatabaseFactory::escapeQuery(unnulifyString(msg.m_author)))
-                    .replace(QSL(":date_created"), QString::number(msg.m_created.toMSecsSinceEpoch()))
-                    .replace(QSL(":contents"), DatabaseFactory::escapeQuery(unnulifyString(msg.m_contents)))
-                    .replace(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(msg.m_enclosures))
-                    .replace(QSL(":custom_id"), unnulifyString(msg.m_customId))
-                    .replace(QSL(":custom_hash"), unnulifyString(msg.m_customHash))
-                    .replace(QSL(":score"), QString::number(msg.m_score))
+                    .replace(QSL(":title"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_title)))
+                    .replace(QSL(":is_read"), QString::number(int(msg->m_isRead)))
+                    .replace(QSL(":is_important"), QString::number(int(msg->m_isImportant)))
+                    .replace(QSL(":is_deleted"), QString::number(int(msg->m_isDeleted)))
+                    .replace(QSL(":url"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_url)))
+                    .replace(QSL(":author"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_author)))
+                    .replace(QSL(":date_created"), QString::number(msg->m_created.toMSecsSinceEpoch()))
+                    .replace(QSL(":contents"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_contents)))
+                    .replace(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(msg->m_enclosures))
+                    .replace(QSL(":custom_id"), unnulifyString(msg->m_customId))
+                    .replace(QSL(":custom_hash"), unnulifyString(msg->m_customHash))
+                    .replace(QSL(":score"), QString::number(msg->m_score))
                     .replace(QSL(":account_id"), QString::number(account_id)));
       }
 
@@ -1388,8 +1390,10 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
           //   https://mariadb.com/kb/en/auto_increment
           int last_msg_id = bulk_query.lastInsertId().toInt();
 
-          for (int j = next_batch.size() - 1, k = 0; j >= 0; j--, k++) {
-            next_batch[j].m_id = last_msg_id - k;
+          for (int l = i, c = 1; l < (i + batch_length); l++, c++) {
+            Message* msg = msgs_to_insert[l];
+
+            msg->m_id = last_msg_id - batch_length + c;
           }
         }
       }

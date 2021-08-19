@@ -143,9 +143,9 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start, int role,
 
         switch (match_type) {
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-          case Qt::MatchRegularExpression:
+          case Qt::MatchFlag::MatchRegularExpression:
 #else
-          case Qt::MatchRegExp:
+          case Qt::MatchFlag::MatchRegExp:
 #endif
             if (QRegularExpression(entered_text,
                                    QRegularExpression::PatternOption::CaseInsensitiveOption |
