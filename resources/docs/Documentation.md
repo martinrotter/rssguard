@@ -77,7 +77,7 @@ With ISA, RSS Guard only downloads only articles which are new or were updated, 
 * FreshRSS
 
 ### <a id="fltr"></a>Article Filtering
-Sometimes yout need to tweak incoming article - mark them starred, remove ads from their contents or simply ignore them. That's what filtering feature is for.
+Sometimes you need to tweak incoming article - mark them starred, remove ads from their contents or simply ignore them. That's what filtering feature is for.
 
 <img src="images/filters-dialog.png" width="600px">
 
