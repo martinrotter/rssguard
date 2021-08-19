@@ -129,9 +129,9 @@ Here is the reference of methods and properties of some types available in your 
 | `Boolean isImportant` | Is message important? |
 | `Boolean isDeleted` | Is message placed in recycle bin? |
 | `Boolean isDuplicateWithAttribute(DuplicationAttributeCheck)` | Allows you to test if this particular message is already stored in RSS Guard's DB. |
-| `Boolean assignLabel(String)` | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. Only works if either `customId` or `id` of this message is valid. |
-| `Boolean deassignLabel(String)` | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.  Only works if either `customId` or `id` of this message is valid. |
-| `Boolean alreadyStoredInDb` | `READ-ONLY` Returns true if this message is already stored in DB. This function is the way to check if the filter is being run automatically for newly downloaded messages or manually for already existing messages.
+| `Boolean assignLabel(String)` | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. |
+| `Boolean deassignLabel(String)` | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info. |
+| `Boolean runningFilterWhenFetching` | `READ-ONLY` Returns `true` if current run of the message filter is done when message is fetched. Returns `false` if message filter runs manually, for example from `Article filters` window. |
 
 #### `Label` class
 | Property/method | Description |

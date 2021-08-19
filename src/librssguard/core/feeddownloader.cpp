@@ -205,7 +205,8 @@ void FeedDownloader::updateOneFeed(Feed* feed,
       MessageObject msg_obj(&database,
                             feed->customId(),
                             feed->getParentServiceRoot()->accountId(),
-                            feed->getParentServiceRoot()->labelsNode()->labels());
+                            feed->getParentServiceRoot()->labelsNode()->labels(),
+                            true);
 
       MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
 

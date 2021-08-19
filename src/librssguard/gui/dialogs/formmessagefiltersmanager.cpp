@@ -226,7 +226,8 @@ void FormMessageFiltersManager::testFilter() {
                         selectedAccount() != nullptr
                                              ? selectedAccount()->accountId()
                                              : NO_PARENT_CATEGORY,
-                        selected_fd_cat->getParentServiceRoot()->labelsNode()->labels());
+                        selected_fd_cat->getParentServiceRoot()->labelsNode()->labels(),
+                        false);
   auto* fltr = selectedFilter();
 
   MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
@@ -304,7 +305,8 @@ void FormMessageFiltersManager::processCheckedFeeds() {
       MessageObject msg_obj(&database,
                             it->customId(),
                             selectedAccount()->accountId(),
-                            it->getParentServiceRoot()->labelsNode()->labels());
+                            it->getParentServiceRoot()->labelsNode()->labels(),
+                            false);
 
       MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
 

@@ -8,11 +8,10 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
-MessageObject::MessageObject(QSqlDatabase* db, const QString& feed_custom_id,
-                             int account_id, QList<Label*> available_labels,
-                             QObject* parent)
+MessageObject::MessageObject(QSqlDatabase* db, const QString& feed_custom_id, int account_id,
+                             QList<Label*> available_labels, bool is_new_message, QObject* parent)
   : QObject(parent), m_db(db), m_feedCustomId(feed_custom_id), m_accountId(account_id), m_message(nullptr),
-  m_availableLabels(available_labels) {}
+  m_availableLabels(available_labels), m_runningAfterFetching(is_new_message) {}
 
 void MessageObject::setMessage(Message* message) {
   m_message = message;
@@ -228,6 +227,6 @@ QList<Label*> MessageObject::availableLabels() const {
   return m_availableLabels;
 }
 
-bool MessageObject::alreadyStoredInDb() const {
-  return m_message->m_id > 0;
+bool MessageObject::runningFilterWhenFetching() const {
+  return m_runningAfterFetching;
 }

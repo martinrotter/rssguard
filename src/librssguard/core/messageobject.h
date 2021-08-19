@@ -24,7 +24,7 @@ class MessageObject : public QObject {
   Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
   Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
   Q_PROPERTY(bool isDeleted READ isDeleted WRITE setIsDeleted)
-  Q_PROPERTY(bool alreadyStoredInDb READ alreadyStoredInDb)
+  Q_PROPERTY(bool runningFilterWhenFetching READ runningFilterWhenFetching)
 
   public:
     enum class FilteringAction {
@@ -61,8 +61,11 @@ class MessageObject : public QObject {
 
     Q_ENUM(DuplicationAttributeCheck)
 
-    explicit MessageObject(QSqlDatabase* db, const QString& feed_custom_id,
-                           int account_id, QList<Label*> available_labels,
+    explicit MessageObject(QSqlDatabase* db,
+                           const QString& feed_custom_id,
+                           int account_id,
+                           QList<Label*> available_labels,
+                           bool is_new_message,
                            QObject* parent = nullptr);
 
     void setMessage(Message* message);
@@ -84,7 +87,7 @@ class MessageObject : public QObject {
     QList<Label*> assignedLabels() const;
     QList<Label*> availableLabels() const;
 
-    bool alreadyStoredInDb() const;
+    bool runningFilterWhenFetching() const;
 
     // Generic Message's properties bindings.
     QString feedCustomId() const;
@@ -126,6 +129,7 @@ class MessageObject : public QObject {
     int m_accountId;
     Message* m_message;
     QList<Label*> m_availableLabels;
+    bool m_runningAfterFetching;
 };
 
 inline MessageObject::DuplicationAttributeCheck operator|(MessageObject::DuplicationAttributeCheck lhs,
