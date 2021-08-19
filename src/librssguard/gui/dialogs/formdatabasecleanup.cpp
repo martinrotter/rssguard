@@ -3,6 +3,7 @@
 #include "gui/dialogs/formdatabasecleanup.h"
 
 #include "database/databasefactory.h"
+#include "definitions/definitions.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -13,6 +14,8 @@
 
 FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent) : QDialog(parent), m_ui(new Ui::FormDatabaseCleanup), m_cleaner(nullptr) {
   m_ui->setupUi(this);
+
+  setObjectName(QSL("form_db_cleanup"));
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("edit-clear")));
 
@@ -27,6 +30,9 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent) : QDialog(parent), m_u
   m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Information, tr("I am ready."), tr("I am ready."));
 
   loadDatabaseInfo();
+
+  GuiUtilities::restoreState(this,
+                             qApp->settings()->value(GROUP(GUI), objectName(), QByteArray()).toByteArray());
 }
 
 void FormDatabaseCleanup::closeEvent(QCloseEvent* event) {
@@ -98,4 +104,11 @@ void FormDatabaseCleanup::loadDatabaseInfo() {
 
   m_ui->m_txtFileSize->setText(data_size_str);
   m_ui->m_txtDatabaseType->setText(qApp->database()->driver()->humanDriverType());
+}
+
+void FormDatabaseCleanup::hideEvent(QHideEvent* event) {
+  QByteArray state = GuiUtilities::saveState(this);
+
+  qApp->settings()->setValue(GROUP(GUI), objectName(), state);
+  QDialog::hideEvent(event);
 }

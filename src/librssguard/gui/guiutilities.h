@@ -12,6 +12,8 @@ class GuiUtilities {
     static void setLabelAsNotice(QLabel& label, bool is_warning, bool set_margins = true);
     static void applyDialogProperties(QWidget& widget, const QIcon& icon = QIcon(), const QString& title = QString());
     static void applyResponsiveDialogResize(QWidget& widget, double factor = 0.6);
+    static void restoreState(QWidget* wdg, QByteArray state);
+    static QByteArray saveState(QWidget* wdg);
 
   private:
     explicit GuiUtilities();

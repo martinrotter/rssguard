@@ -17,8 +17,9 @@ class FormDatabaseCleanup : public QDialog {
     virtual ~FormDatabaseCleanup() = default;
 
   protected:
-    void closeEvent(QCloseEvent* event);
-    void keyPressEvent(QKeyEvent* event);
+    virtual void closeEvent(QCloseEvent* event);
+    virtual void hideEvent(QHideEvent* event);
+    virtual void keyPressEvent(QKeyEvent* event);
 
   private slots:
     void updateDaysSuffix(int number);

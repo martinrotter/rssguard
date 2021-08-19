@@ -15,6 +15,9 @@
 
 FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget* parent) : QDialog(parent), m_ui(new Ui::FormBackupDatabaseSettings) {
   m_ui->setupUi(this);
+
+  setObjectName(QSL("form_backup_db_set"));
+
   m_ui->m_txtBackupName->lineEdit()->setPlaceholderText(tr("Common name for backup files"));
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-export")));
@@ -33,6 +36,9 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget* parent) : QDialo
   if (qApp->database()->activeDatabaseDriver() != DatabaseDriver::DriverType::SQLite) {
     m_ui->m_checkBackupDatabase->setDisabled(true);
   }
+
+  GuiUtilities::restoreState(this,
+                             qApp->settings()->value(GROUP(GUI), objectName(), QByteArray()).toByteArray());
 }
 
 FormBackupDatabaseSettings::~FormBackupDatabaseSettings() {
@@ -81,4 +87,11 @@ void FormBackupDatabaseSettings::checkOkButton() {
                                                                                m_ui->m_lblSelectFolder->label()->text().simplified().isEmpty() ||
                                                                                (!m_ui->m_checkBackupDatabase->isChecked() &&
                                                                                 !m_ui->m_checkBackupSettings->isChecked()));
+}
+
+void FormBackupDatabaseSettings::hideEvent(QHideEvent* event) {
+  QByteArray state = GuiUtilities::saveState(this);
+
+  qApp->settings()->setValue(GROUP(GUI), objectName(), state);
+  QDialog::hideEvent(event);
 }

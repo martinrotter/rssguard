@@ -14,6 +14,9 @@ class FormBackupDatabaseSettings : public QDialog {
     explicit FormBackupDatabaseSettings(QWidget* parent = nullptr);
     virtual ~FormBackupDatabaseSettings();
 
+  protected:
+    virtual void hideEvent(QHideEvent* event);
+
   private slots:
     void performBackup();
     void selectFolderInitial();
