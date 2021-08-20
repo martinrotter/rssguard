@@ -189,63 +189,6 @@ bool Feed::markAsReadUnread(RootItem::ReadStatus status) {
   return service->markFeedsReadUnread(QList<Feed*>() << this, status);
 }
 
-QPair<int, int> Feed::updateMessages(QList<Message>& messages, bool force_update) {
-  QPair<int, int> updated_messages = { 0, 0 };
-
-  if (messages.isEmpty()) {
-    qDebugNN << "No messages to be updated/added in DB for feed"
-             << QUOTE_W_SPACE_DOT(customId());
-    return updated_messages;
-  }
-
-  QList<RootItem*> items_to_update;
-  bool is_main_thread = QThread::currentThread() == qApp->thread();
-
-  qDebugNN << LOGSEC_CORE
-           << "Updating messages in DB. Main thread:"
-           << QUOTE_W_SPACE_DOT(is_main_thread);
-
-  bool ok = false;
-  QSqlDatabase database = is_main_thread ?
-                          qApp->database()->driver()->connection(metaObject()->className()) :
-                          qApp->database()->driver()->connection(QSL("feed_upd"));
-
-  updated_messages = DatabaseQueries::updateMessages(database, messages,
-                                                     this, force_update,
-                                                     &ok);
-
-  if (updated_messages.first > 0 || updated_messages.second > 0) {
-    // Something was added or updated in the DB, update numbers.
-    updateCounts(true);
-
-    if (getParentServiceRoot()->recycleBin() != nullptr) {
-      getParentServiceRoot()->recycleBin()->updateCounts(true);
-      items_to_update.append(getParentServiceRoot()->recycleBin());
-    }
-
-    if (getParentServiceRoot()->importantNode() != nullptr) {
-      getParentServiceRoot()->importantNode()->updateCounts(true);
-      items_to_update.append(getParentServiceRoot()->importantNode());
-    }
-
-    if (getParentServiceRoot()->unreadNode() != nullptr) {
-      getParentServiceRoot()->unreadNode()->updateCounts(true);
-      items_to_update.append(getParentServiceRoot()->unreadNode());
-    }
-
-    if (getParentServiceRoot()->labelsNode() != nullptr) {
-      getParentServiceRoot()->labelsNode()->updateCounts(true);
-      items_to_update.append(getParentServiceRoot()->labelsNode());
-    }
-  }
-
-  // Some messages were really added to DB, reload feed in model.
-  items_to_update.append(this);
-  getParentServiceRoot()->itemChanged(items_to_update);
-
-  return updated_messages;
-}
-
 QString Feed::getAutoUpdateStatusDescription() const {
   QString auto_update_string;
 

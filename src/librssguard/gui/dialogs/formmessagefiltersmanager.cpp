@@ -424,7 +424,7 @@ void FormMessageFiltersManager::processCheckedFeeds() {
       }
 
       // Update messages in DB and reload selection.
-      it->toFeed()->updateMessages(msgs, true);
+      it->getParentServiceRoot()->updateMessages(msgs, it->toFeed(), true);
       displayMessagesOfFeed();
     }
   }

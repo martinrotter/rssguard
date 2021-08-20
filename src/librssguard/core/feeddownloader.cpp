@@ -150,7 +150,8 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
     while (!m_feeds.isEmpty()) {
       auto n_f = m_feeds.takeFirst();
 
-      updateOneFeed(n_f,
+      updateOneFeed(n_f->getParentServiceRoot(),
+                    n_f,
                     stated_messages.value(n_f->getParentServiceRoot()).value(n_f->customId()),
                     tagged_messages.value(n_f->getParentServiceRoot()));
     }
@@ -165,7 +166,8 @@ void FeedDownloader::stopRunningUpdate() {
   m_feedsOriginalCount = m_feedsUpdated = 0;
 }
 
-void FeedDownloader::updateOneFeed(Feed* feed,
+void FeedDownloader::updateOneFeed(ServiceRoot* acc,
+                                   Feed* feed,
                                    const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                    const QHash<QString, QStringList>& tagged_messages) {
   qDebugNN << LOGSEC_FEEDDOWNLOADER
@@ -351,7 +353,7 @@ void FeedDownloader::updateOneFeed(Feed* feed,
              << QThread::currentThreadId() << "'.";
 
     tmr.restart();
-    auto updated_messages = feed->updateMessages(msgs, false);
+    auto updated_messages = acc->updateMessages(msgs, feed, false);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER
              << "Updating messages in DB took " << tmr.nsecsElapsed() / 1000 << " microseconds.";

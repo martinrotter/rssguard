@@ -421,7 +421,7 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Switch main &amp;window visibility</string>
+    <string>Minimize (or hide) main window</string>
    </property>
    <property name="toolTip">
     <string>Hides main window if it is visible and shows it if it is hidden.</string>

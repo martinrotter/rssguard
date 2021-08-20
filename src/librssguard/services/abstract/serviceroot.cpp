@@ -18,6 +18,8 @@
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/unreadnode.h"
 
+#include <QThread>
+
 ServiceRoot::ServiceRoot(RootItem* parent)
   : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
   m_labelsNode(new LabelsNode(this)), m_unreadNode(new UnreadNode(this)),
@@ -863,4 +865,59 @@ ServiceRoot::LabelOperation operator|(ServiceRoot::LabelOperation lhs, ServiceRo
 
 ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs) {
   return static_cast<ServiceRoot::LabelOperation>(static_cast<char>(lhs) & static_cast<char>(rhs));
+}
+
+QPair<int, int> ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed, bool force_update) {
+  QPair<int, int> updated_messages = { 0, 0 };
+
+  if (messages.isEmpty()) {
+    qDebugNN << "No messages to be updated/added in DB for feed"
+             << QUOTE_W_SPACE_DOT(feed->customId());
+    return updated_messages;
+  }
+
+  QList<RootItem*> items_to_update;
+  bool is_main_thread = QThread::currentThread() == qApp->thread();
+
+  qDebugNN << LOGSEC_CORE
+           << "Updating messages in DB. Main thread:"
+           << QUOTE_W_SPACE_DOT(is_main_thread);
+
+  bool ok = false;
+  QSqlDatabase database = is_main_thread ?
+                          qApp->database()->driver()->connection(metaObject()->className()) :
+                          qApp->database()->driver()->connection(QSL("feed_upd"));
+
+  updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, &ok);
+
+  if (updated_messages.first > 0 || updated_messages.second > 0) {
+    // Something was added or updated in the DB, update numbers.
+    feed->updateCounts(true);
+
+    if (recycleBin() != nullptr) {
+      recycleBin()->updateCounts(true);
+      items_to_update.append(recycleBin());
+    }
+
+    if (importantNode() != nullptr) {
+      importantNode()->updateCounts(true);
+      items_to_update.append(importantNode());
+    }
+
+    if (unreadNode() != nullptr) {
+      unreadNode()->updateCounts(true);
+      items_to_update.append(unreadNode());
+    }
+
+    if (labelsNode() != nullptr) {
+      labelsNode()->updateCounts(true);
+      items_to_update.append(labelsNode());
+    }
+  }
+
+  // Some messages were really added to DB, reload feed in model.
+  items_to_update.append(feed);
+  getParentServiceRoot()->itemChanged(items_to_update);
+
+  return updated_messages;
 }

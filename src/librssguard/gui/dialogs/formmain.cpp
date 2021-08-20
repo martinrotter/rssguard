@@ -215,8 +215,6 @@ void FormMain::prepareMenus() {
 #endif
 
     // Add needed items to the menu.
-    m_trayMenu->addAction(m_ui->m_actionSwitchMainWindow);
-    m_trayMenu->addSeparator();
     m_trayMenu->addAction(m_ui->m_actionUpdateAllItems);
     m_trayMenu->addAction(m_ui->m_actionMarkAllItemsRead);
     m_trayMenu->addSeparator();
@@ -846,7 +844,7 @@ void FormMain::restoreDatabaseSettings() {
 
 void FormMain::changeEvent(QEvent* event) {
   switch (event->type()) {
-    case QEvent::WindowStateChange: {
+    case QEvent::Type::WindowStateChange: {
       if ((windowState() & Qt::WindowState::WindowMinimized) == Qt::WindowState::WindowMinimized &&
           SystemTrayIcon::isSystemTrayDesired() &&
           SystemTrayIcon::isSystemTrayAreaAvailable() &&

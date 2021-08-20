@@ -54,7 +54,8 @@ class FeedDownloader : public QObject {
     void updateProgress(const Feed* feed, int current, int total);
 
   private:
-    void updateOneFeed(Feed* feed,
+    void updateOneFeed(ServiceRoot* acc,
+                       Feed* feed,
                        const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                        const QHash<QString, QStringList>& tagged_messages);
     void finalizeUpdate();
