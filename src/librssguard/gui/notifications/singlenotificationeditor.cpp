@@ -5,7 +5,9 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
+#include <QCompleter>
 #include <QFileDialog>
+#include <QFileSystemModel>
 
 SingleNotificationEditor::SingleNotificationEditor(const Notification& notification, QWidget* parent)
   : QGroupBox(parent), m_notificationEvent(Notification::Event::NoEvent) {
@@ -24,6 +26,9 @@ SingleNotificationEditor::SingleNotificationEditor(const Notification& notificat
   connect(m_ui.m_btnBrowseSound, &QPushButton::clicked, this, &SingleNotificationEditor::selectSoundFile);
   connect(m_ui.m_txtSound, &QLineEdit::textChanged, this, &SingleNotificationEditor::notificationChanged);
   connect(m_ui.m_cbBalloon, &QCheckBox::toggled, this, &SingleNotificationEditor::notificationChanged);
+
+  QCompleter* completer = new QCompleter(qApp->builtinSounds(), this);
+  m_ui.m_txtSound->setCompleter(completer);
 
   setFixedHeight(sizeHint().height());
 }

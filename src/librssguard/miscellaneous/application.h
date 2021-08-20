@@ -52,6 +52,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     bool isAlreadyRunning();
 
+    QStringList builtinSounds() const;
+
     FeedReader* feedReader();
     void setFeedReader(FeedReader* feed_reader);
 

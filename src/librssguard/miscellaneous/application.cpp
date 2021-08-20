@@ -199,6 +199,16 @@ bool Application::isAlreadyRunning() {
                                    << Application::arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR));
 }
 
+QStringList Application::builtinSounds() const {
+  auto builtin_sounds = QDir(SOUNDS_BUILTIN_DIRECTORY).entryInfoList(QDir::Filter::Files, QDir::SortFlag::Name);
+  auto iter = boolinq::from(builtin_sounds).select([](const QFileInfo& i) {
+    return i.absoluteFilePath();
+  }).toStdList();
+  auto descs = FROM_STD_LIST(QStringList, iter);
+
+  return descs;
+}
+
 FeedReader* Application::feedReader() {
   return m_feedReader;
 }

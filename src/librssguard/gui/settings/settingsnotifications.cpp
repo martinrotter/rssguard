@@ -24,15 +24,6 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
 void SettingsNotifications::loadSettings() {
   onBeginLoadSettings();
 
-  auto builtin_sounds = QDir(SOUNDS_BUILTIN_DIRECTORY).entryInfoList(QDir::Filter::Files,
-                                                                     QDir::SortFlag::Name);
-  auto iter = boolinq::from(builtin_sounds).select([](const QFileInfo& i) {
-    return QSL("  %1").arg(i.absoluteFilePath());
-  }).toStdList();
-  auto descs = FROM_STD_LIST(QStringList, iter).join(QSL("\n"));
-
-  m_ui.m_lblAvailableSounds->setText(QSL("Built-in sounds:\n%1").arg(descs));
-
   // Load fancy notification settings.
   m_ui.m_checkEnableNotifications->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool());
   m_ui.m_editor->loadNotifications(qApp->notifications()->allNotifications());
