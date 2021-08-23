@@ -120,15 +120,14 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
       enclosures += skin.m_enclosureMarkup.arg(enc_url,
                                                QSL("&#129527;"), enclosure.m_mimeType);
 
-      /*
-         if (enclosure.m_mimeType.startsWith(QSL("image/"))) {
-         // Add thumbnail image.
-         enclosure_images += skin.m_enclosureImageMarkup.arg(
+      if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
+          qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
+        // Add thumbnail image.
+        enclosure_images += skin.m_enclosureImageMarkup.arg(
           enclosure.m_url,
           enclosure.m_mimeType,
           qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toString());
-         }
-       */
+      }
     }
 
     messages_layout.append(single_message_layout

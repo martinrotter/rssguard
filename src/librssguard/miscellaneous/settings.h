@@ -99,6 +99,9 @@ namespace Messages {
   KEY MessageHeadImageHeight;
   VALUE(int) MessageHeadImageHeightDef;
 
+  KEY DisplayEnclosuresInMessage;
+  VALUE(bool) DisplayEnclosuresInMessageDef;
+
   KEY EnableMessagePreview;
   VALUE(bool) EnableMessagePreviewDef;
 

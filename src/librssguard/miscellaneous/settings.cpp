@@ -80,6 +80,11 @@ DKEY Messages::ID = "messages";
 DKEY Messages::MessageHeadImageHeight = "message_head_image_height";
 DVALUE(int) Messages::MessageHeadImageHeightDef = 36;
 
+#if defined (USE_WEBENGINE)
+DKEY Messages::DisplayEnclosuresInMessage = "show_enclosures_in_message";
+DVALUE(bool) Messages::DisplayEnclosuresInMessageDef = false;
+#endif
+
 DKEY Messages::EnableMessagePreview = "enable_message_preview";
 DVALUE(bool) Messages::EnableMessagePreviewDef = true;
 

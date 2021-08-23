@@ -28,7 +28,12 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
 #if defined(USE_WEBENGINE)
   m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_checkDisplayPlaceholders);
   m_ui->m_checkDisplayPlaceholders->hide();
+
+  connect(m_ui->m_cbShowEnclosuresDirectly, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 #else
+  m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_cbShowEnclosuresDirectly);
+  m_ui->m_cbShowEnclosuresDirectly->hide());
+
   connect(m_ui->m_checkDisplayPlaceholders, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 #endif
 
@@ -147,6 +152,9 @@ void SettingsFeedsMessages::loadSettings() {
 
 #if !defined (USE_WEBENGINE)
   m_ui->m_checkDisplayPlaceholders->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::DisplayImagePlaceholders)).toBool());
+#else
+  m_ui->m_cbShowEnclosuresDirectly->setChecked(settings()->value(GROUP(Messages),
+                                                                 SETTING(Messages::DisplayEnclosuresInMessage)).toBool());
 #endif
 
   m_ui->m_checkMessagesDateTimeFormat->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool());
@@ -207,6 +215,10 @@ void SettingsFeedsMessages::saveSettings() {
 
 #if !defined (USE_WEBENGINE)
   settings()->setValue(GROUP(Messages), Messages::DisplayImagePlaceholders, m_ui->m_checkDisplayPlaceholders->isChecked());
+#else
+  settings()->setValue(GROUP(Messages),
+                       Messages::DisplayEnclosuresInMessage,
+                       m_ui->m_cbShowEnclosuresDirectly->isChecked());
 #endif
 
   settings()->setValue(GROUP(Messages), Messages::CustomDateFormat,
