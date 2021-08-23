@@ -30,9 +30,14 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   m_ui->m_checkDisplayPlaceholders->hide();
 
   connect(m_ui->m_cbShowEnclosuresDirectly, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinHeightImageAttachments, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::dirtifySettings);
 #else
   m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_cbShowEnclosuresDirectly);
   m_ui->m_cbShowEnclosuresDirectly->hide());
+
+  m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_spinHeightImageAttachments);
+  m_ui->m_spinHeightImageAttachments->hide());
 
   connect(m_ui->m_checkDisplayPlaceholders, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 #endif
@@ -55,8 +60,6 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_spinAutoUpdateInterval, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinStartupUpdateDelay, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
-          this, &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_spinHeightImageAttachments, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinHeightRowsMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
@@ -147,12 +150,13 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_spinStartupUpdateDelay->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateStartupDelay)).toDouble());
   m_ui->m_cmbCountsFeedList->addItems(QStringList() << "(%unread)" << "[%unread]" << "%unread/%all" << "%unread-%all" << "[%unread|%all]");
   m_ui->m_cmbCountsFeedList->setEditText(settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString());
-  m_ui->m_spinHeightImageAttachments->setValue(settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt());
   m_ui->m_checkShowTooltips->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool());
 
 #if !defined (USE_WEBENGINE)
   m_ui->m_checkDisplayPlaceholders->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::DisplayImagePlaceholders)).toBool());
 #else
+  m_ui->m_spinHeightImageAttachments->setValue(settings()->value(GROUP(Messages),
+                                                                 SETTING(Messages::MessageHeadImageHeight)).toInt());
   m_ui->m_cbShowEnclosuresDirectly->setChecked(settings()->value(GROUP(Messages),
                                                                  SETTING(Messages::DisplayEnclosuresInMessage)).toBool());
 #endif
@@ -210,12 +214,12 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::FeedsUpdateStartupDelay, m_ui->m_spinStartupUpdateDelay->value());
   settings()->setValue(GROUP(Feeds), Feeds::CountFormat, m_ui->m_cmbCountsFeedList->currentText());
   settings()->setValue(GROUP(Messages), Messages::UseCustomDate, m_ui->m_checkMessagesDateTimeFormat->isChecked());
-  settings()->setValue(GROUP(Messages), Messages::MessageHeadImageHeight, m_ui->m_spinHeightImageAttachments->value());
   settings()->setValue(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages, m_ui->m_checkShowTooltips->isChecked());
 
 #if !defined (USE_WEBENGINE)
   settings()->setValue(GROUP(Messages), Messages::DisplayImagePlaceholders, m_ui->m_checkDisplayPlaceholders->isChecked());
 #else
+  settings()->setValue(GROUP(Messages), Messages::MessageHeadImageHeight, m_ui->m_spinHeightImageAttachments->value());
   settings()->setValue(GROUP(Messages),
                        Messages::DisplayEnclosuresInMessage,
                        m_ui->m_cbShowEnclosuresDirectly->isChecked());
