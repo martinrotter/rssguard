@@ -20,6 +20,7 @@
 #include <QJsonObject>
 #include <QMessageBox>
 #include <QProcess>
+#include <QThread>
 #include <QTimer>
 #include <QUrlQuery>
 #include <QWebEngineProfile>
@@ -316,9 +317,11 @@ QProcess* AdBlockManager::restartServer(int port) {
 
   proc->setProcessEnvironment(pe);
   proc->setProcessChannelMode(QProcess::ProcessChannelMode::ForwardedErrorChannel);
+  proc->open();
 
-  if (!proc->open() ||
-      proc->state() == QProcess::ProcessState::NotRunning ||
+  proc->waitForFinished(1000);
+
+  if (proc->state() == QProcess::ProcessState::NotRunning ||
       proc->error() != QProcess::ProcessError::UnknownError) {
     auto ers = proc->errorString();
     proc->deleteLater();
