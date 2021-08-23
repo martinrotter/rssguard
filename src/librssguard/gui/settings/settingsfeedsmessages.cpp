@@ -34,10 +34,10 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           this, &SettingsFeedsMessages::dirtifySettings);
 #else
   m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_cbShowEnclosuresDirectly);
-  m_ui->m_cbShowEnclosuresDirectly->hide());
+  m_ui->m_cbShowEnclosuresDirectly->hide();
 
   m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_spinHeightImageAttachments);
-  m_ui->m_spinHeightImageAttachments->hide());
+  m_ui->m_spinHeightImageAttachments->hide();
 
   connect(m_ui->m_checkDisplayPlaceholders, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 #endif
