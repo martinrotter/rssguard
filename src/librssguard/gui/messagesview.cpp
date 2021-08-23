@@ -58,7 +58,7 @@ QByteArray MessagesView::saveHeaderState() const {
 
   outt.setVersion(QDataStream::Version::Qt_4_7);
   outt << header()->count();
-  outt << header()->sortIndicatorOrder();
+  outt << int(header()->sortIndicatorOrder());
   outt << header()->sortIndicatorSection();
 
   // Save column data.
@@ -84,7 +84,7 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
     return;
   }
 
-  Qt::SortOrder saved_sort_order; inn >> saved_sort_order;
+  int saved_sort_order; inn >> saved_sort_order;
   int saved_sort_column; inn >> saved_sort_column;
 
   for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
@@ -104,7 +104,7 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
   }
 
   if (saved_sort_column < header()->count()) {
-    header()->setSortIndicator(saved_sort_column, saved_sort_order);
+    header()->setSortIndicator(saved_sort_column, Qt::SortOrder(saved_sort_order));
   }
 }
 
