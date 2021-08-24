@@ -16,7 +16,7 @@ class AdBlockIcon : public QAction {
     virtual ~AdBlockIcon();
 
   public slots:
-    void setEnabled(bool enabled);
+    void setIcon(bool adblock_enabled);
 
   private slots:
     void showMenu(const QPoint& pos);

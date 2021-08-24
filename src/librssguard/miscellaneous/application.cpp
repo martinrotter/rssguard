@@ -80,18 +80,22 @@ Application::Application(const QString& id, int& argc, char** argv)
   connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
 
 #if defined(USE_WEBENGINE)
+  m_webFactory->urlIinterceptor()->load();
+
   connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
+  connect(m_webFactory->adBlock(), &AdBlockManager::processTerminated, this, &Application::onAdBlockFailure);
+
+  QTimer::singleShot(3000, this, [=]() {
+    try {
+      m_webFactory->adBlock()->setEnabled(qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::AdBlockEnabled)).toBool());
+    }
+    catch (...) {
+      onAdBlockFailure();
+    }
+  });
 #endif
 
   m_webFactory->updateProxy();
-
-#if defined(USE_WEBENGINE)
-  m_webFactory->urlIinterceptor()->load();
-
-  QTimer::singleShot(3000, this, [=]() {
-    m_webFactory->adBlock()->load(true);
-  });
-#endif
 
   if (isFirstRun()) {
     m_notifications->save({
@@ -186,7 +190,7 @@ void Application::offerChanges() const {
                          QSL(APP_NAME),
                          QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
                                      "version by clicking this popup notification.").arg(APP_LONG_NAME),
-                         QSystemTrayIcon::MessageIcon::NoIcon, {}, {}, [] {
+                         QSystemTrayIcon::MessageIcon::NoIcon, {}, {}, "Go to changelog", [] {
       FormAbout(qApp->mainForm()).exec();
     });
   }
@@ -459,7 +463,7 @@ void Application::deleteTrayIcon() {
 
 void Application::showGuiMessage(Notification::Event event, const QString& title,
                                  const QString& message, QSystemTrayIcon::MessageIcon message_type, bool show_at_least_msgbox,
-                                 QWidget* parent, std::function<void()> functor) {
+                                 QWidget* parent, const QString& functor_heading, std::function<void()> functor) {
 
   if (SystemTrayIcon::areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
@@ -477,7 +481,8 @@ void Application::showGuiMessage(Notification::Event event, const QString& title
 
   if (show_at_least_msgbox) {
     // Tray icon or OSD is not available, display simple text box.
-    MessageBox::show(parent == nullptr ? mainFormWidget() : parent, QMessageBox::Icon(message_type), title, message);
+    MessageBox::show(parent == nullptr ? mainFormWidget() : parent, QMessageBox::Icon(message_type), title, message,
+                     {}, {}, QMessageBox::StandardButton::Ok, QMessageBox::StandardButton::Ok, {}, functor_heading, functor);
   }
   else {
     qDebugNN << LOGSEC_CORE << "Silencing GUI message:" << QUOTE_W_SPACE_DOT(message);
@@ -581,10 +586,24 @@ void Application::restart() {
 }
 
 #if defined(USE_WEBENGINE)
+
 void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
   downloadManager()->download(download_item->url());
   download_item->cancel();
   download_item->deleteLater();
+}
+
+void Application::onAdBlockFailure() {
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       tr("AdBlock needs to be configured"),
+                       tr("AdBlock component is not configured properly."),
+                       QSystemTrayIcon::MessageIcon::Critical,
+                       true,
+                       {},
+                       tr("Configure now"),
+                       [=]() {
+    m_webFactory->adBlock()->showDialog();
+  });
 }
 
 #endif

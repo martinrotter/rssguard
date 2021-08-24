@@ -85,6 +85,7 @@ QString OAuth2Service::bearer() {
                          tr("Click here to login."),
                          QSystemTrayIcon::MessageIcon::Critical,
                          {}, {},
+                         tr("Login"),
                          [this]() {
       login();
     });

@@ -15,13 +15,17 @@ class AdBlockDialog : public QDialog {
   public:
     explicit AdBlockDialog(QWidget* parent = nullptr);
 
+  protected:
+    virtual void hideEvent(QHideEvent* event);
+
   private slots:
-    void saveAndClose();
+    void saveOnClose();
     void enableAdBlock(bool enable);
-    void testConfiguration();
+    void onAdBlockEnabledChanged(bool enabled);
+    void onAdBlockProcessTerminated();
 
   private:
-    void load();
+    void loadDialog();
 
   private:
     AdBlockManager* m_manager;

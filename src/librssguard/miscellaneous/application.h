@@ -115,7 +115,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     // or in message box if tray icon is disabled.
     void showGuiMessage(Notification::Event event, const QString& title, const QString& message,
                         QSystemTrayIcon::MessageIcon message_type, bool show_at_least_msgbox = false,
-                        QWidget* parent = nullptr, std::function<void()> functor = nullptr);
+                        QWidget* parent = nullptr, const QString& functor_heading = {},
+                        std::function<void()> functor = nullptr);
 
     // Returns pointer to "GOD" application singleton.
     static Application* instance();
@@ -140,6 +141,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
 #if defined(USE_WEBENGINE)
     void downloadRequested(QWebEngineDownloadItem* download_item);
+    void onAdBlockFailure();
 #endif
 
     void onFeedUpdatesFinished(const FeedDownloadResults& results);

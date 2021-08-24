@@ -1,4 +1,4 @@
-// For license of this file, see <project-root-folder>/LICENSE.md.
+﻿// For license of this file, see <project-root-folder>/LICENSE.md.
 
 #include "network-web/adblock/adblockmanager.h"
 
@@ -19,7 +19,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QMessageBox>
-#include <QProcess>
 #include <QThread>
 #include <QTimer>
 #include <QUrlQuery>
@@ -34,9 +33,7 @@ AdBlockManager::AdBlockManager(QObject* parent)
 }
 
 AdBlockManager::~AdBlockManager() {
-  if (m_serverProcess != nullptr && m_serverProcess->state() == QProcess::ProcessState::Running) {
-    m_serverProcess->kill();
-  }
+  killServer();
 }
 
 BlockingResult AdBlockManager::block(const AdblockRequestInfo& request) {
@@ -54,15 +51,15 @@ BlockingResult AdBlockManager::block(const AdblockRequestInfo& request) {
     return { false };
   }
   else {
+    if (m_cacheBlocks.contains(url_pair)) {
+      qDebugNN << LOGSEC_ADBLOCK
+               << "Found blocking data in cache, URL:"
+               << QUOTE_W_SPACE_DOT(url_pair);
+
+      return m_cacheBlocks.value(url_pair);
+    }
+
     if (m_serverProcess != nullptr && m_serverProcess->state() == QProcess::ProcessState::Running) {
-      if (m_cacheBlocks.contains(url_pair)) {
-        qDebugNN << LOGSEC_ADBLOCK
-                 << "Found blocking data in cache, URL:"
-                 << QUOTE_W_SPACE_DOT(url_pair);
-
-        return m_cacheBlocks.value(url_pair);
-      }
-
       try {
         auto result = askServerIfBlocked(firstparty_url_string, url_string, url_type);
 
@@ -87,48 +84,34 @@ BlockingResult AdBlockManager::block(const AdblockRequestInfo& request) {
   }
 }
 
-void AdBlockManager::load(bool initial_load) {
-  auto new_enabled = qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::AdBlockEnabled)).toBool();
-
-  if (!initial_load) {
-    new_enabled = !new_enabled;
-  }
-
-  if (new_enabled != m_enabled) {
-    emit enabledChanged(new_enabled);
-
-    qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, new_enabled);
-  }
-  else if (!initial_load) {
+void AdBlockManager::setEnabled(bool enabled) {
+  if (enabled == m_enabled) {
     return;
   }
-
-  m_enabled = new_enabled;
 
   if (!m_loaded) {
     qApp->web()->urlIinterceptor()->installUrlInterceptor(m_interceptor);
     m_loaded = true;
   }
 
+  m_enabled = enabled;
+  emit enabledChanged(m_enabled);
+
   if (m_enabled) {
     try {
-      updateUnifiedFiltersFile();
+      updateUnifiedFiltersFileAndStartServer();
     }
     catch (const ApplicationException& ex) {
       qCriticalNN << LOGSEC_ADBLOCK
                   << "Failed to write unified filters to file or re-start server, error:"
                   << QUOTE_W_SPACE_DOT(ex.message());
 
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           tr("AdBlock needs to be configured"),
-                           tr("AdBlock component is not configured properly."),
-                           QSystemTrayIcon::MessageIcon::Warning,
-                           true,
-                           {},
-                           [=]() {
-        showDialog();
-      });
+      m_enabled = false;
+      emit enabledChanged(m_enabled);
     }
+  }
+  else {
+    killServer();
   }
 }
 
@@ -194,6 +177,19 @@ QString AdBlockManager::generateJsForElementHiding(const QString& css) {
 
 void AdBlockManager::showDialog() {
   AdBlockDialog(qApp->mainFormWidget()).exec();
+}
+
+void AdBlockManager::onServerProcessFinished(int exit_code, QProcess::ExitStatus exit_status) {
+  Q_UNUSED(exit_status)
+  killServer();
+
+  qCriticalNN << LOGSEC_ADBLOCK
+              << "Process exited with exit code"
+              << QUOTE_W_SPACE(exit_code)
+              << "so check application log for more details.";
+
+  m_enabled = false;
+  emit processTerminated();
 }
 
 BlockingResult AdBlockManager::askServerIfBlocked(const QString& fp_url, const QString& url, const QString& url_type) const {
@@ -274,7 +270,7 @@ QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
   }
 }
 
-QProcess* AdBlockManager::restartServer(int port) {
+QProcess* AdBlockManager::startServer(int port) {
   QString temp_server = QDir::toNativeSeparators(IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation)) +
                         QDir::separator() +
                         QSL("adblock-server.js");
@@ -317,25 +313,32 @@ QProcess* AdBlockManager::restartServer(int port) {
 
   proc->setProcessEnvironment(pe);
   proc->setProcessChannelMode(QProcess::ProcessChannelMode::ForwardedErrorChannel);
+
+  connect(proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &AdBlockManager::onServerProcessFinished);
+
   proc->open();
 
-  proc->waitForFinished(1000);
+  qDebugNN << LOGSEC_ADBLOCK << "Attempting to start AdBlock server.";
+  return proc;
+}
 
-  if (proc->state() == QProcess::ProcessState::NotRunning ||
-      proc->error() != QProcess::ProcessError::UnknownError) {
-    auto ers = proc->errorString();
-    proc->deleteLater();
+void AdBlockManager::killServer() {
+  if (m_serverProcess != nullptr) {
+    disconnect(m_serverProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+               this, &AdBlockManager::onServerProcessFinished);
 
-    throw ApplicationException(ers);
-  }
-  else {
-    qDebugNN << LOGSEC_ADBLOCK << "Started server.";
-    return proc;
+    if (m_serverProcess->state() == QProcess::ProcessState::Running) {
+      m_serverProcess->kill();
+    }
+
+    m_serverProcess->deleteLater();
+    m_serverProcess = nullptr;
   }
 }
 
-void AdBlockManager::updateUnifiedFiltersFile() {
+void AdBlockManager::updateUnifiedFiltersFileAndStartServer() {
   m_cacheBlocks.clear();
+  killServer();
 
   if (QFile::exists(m_unifiedFiltersFile)) {
     QFile::remove(m_unifiedFiltersFile);
@@ -380,13 +383,6 @@ void AdBlockManager::updateUnifiedFiltersFile() {
   IOFactory::writeFile(m_unifiedFiltersFile, unified_contents.toUtf8());
 
   if (m_enabled) {
-    if (m_serverProcess != nullptr && m_serverProcess->state() == QProcess::ProcessState::Running) {
-      m_serverProcess->kill();
-      m_serverProcess->waitForFinished(1000);
-      m_serverProcess->deleteLater();
-      m_serverProcess = nullptr;
-    }
-
-    m_serverProcess = restartServer(ADBLOCK_SERVER_PORT);
+    m_serverProcess = startServer(ADBLOCK_SERVER_PORT);
   }
 }

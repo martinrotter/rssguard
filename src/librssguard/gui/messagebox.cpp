@@ -61,7 +61,9 @@ QMessageBox::StandardButton MessageBox::show(QWidget* parent,
                                              const QString& detailed_text,
                                              QMessageBox::StandardButtons buttons,
                                              QMessageBox::StandardButton default_button,
-                                             bool* dont_show_again) {
+                                             bool* dont_show_again,
+                                             const QString& functor_heading,
+                                             std::function<void ()> functor) {
   // Create and find needed components.
   MessageBox msg_box(parent);
 
@@ -76,6 +78,13 @@ QMessageBox::StandardButton MessageBox::show(QWidget* parent,
 
   if (dont_show_again != nullptr) {
     MessageBox::setCheckBox(&msg_box, tr("Do not show this dialog again."), dont_show_again);
+  }
+
+  if (functor) {
+    connect(msg_box.addButton(functor_heading, QMessageBox::ButtonRole::HelpRole),
+            &QPushButton::clicked,
+            &msg_box,
+            functor);
   }
 
   // Display it.

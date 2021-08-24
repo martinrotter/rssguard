@@ -422,6 +422,7 @@ void DownloadItem::finished() {
                          QSystemTrayIcon::MessageIcon::Information,
                          {},
                          {},
+                         tr("Open folder"),
                          [this] {
       openFolder();
     });

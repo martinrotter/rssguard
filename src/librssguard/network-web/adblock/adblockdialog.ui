@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>AdBlockDialog</class>
- <widget class="QWidget" name="AdBlockDialog">
+ <widget class="QDialog" name="AdBlockDialog">
   <property name="windowModality">
    <enum>Qt::NonModal</enum>
   </property>
@@ -30,13 +30,6 @@
       <widget class="QPushButton" name="m_btnHelp">
        <property name="text">
         <string>&amp;Help</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="m_btnTest">
-       <property name="text">
-        <string>&amp;Test configuration</string>
        </property>
       </widget>
      </item>
@@ -132,11 +125,43 @@
  <tabstops>
   <tabstop>m_cbEnable</tabstop>
   <tabstop>m_btnHelp</tabstop>
-  <tabstop>m_btnTest</tabstop>
   <tabstop>m_tcSubscriptions</tabstop>
   <tabstop>m_txtPredefined</tabstop>
   <tabstop>m_txtCustom</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>m_buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>AdBlockDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>226</x>
+     <y>403</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>226</x>
+     <y>211</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>AdBlockDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>226</x>
+     <y>403</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>226</x>
+     <y>211</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

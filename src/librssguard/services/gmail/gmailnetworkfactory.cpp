@@ -425,6 +425,7 @@ void GmailNetworkFactory::onTokensError(const QString& error, const QString& err
                        tr("Click this to login again. Error is: '%1'").arg(error_description),
                        QSystemTrayIcon::MessageIcon::Critical,
                        {}, {},
+                       tr("Login"),
                        [this]() {
     m_oauth2->setAccessToken(QString());
     m_oauth2->setRefreshToken(QString());
@@ -438,6 +439,7 @@ void GmailNetworkFactory::onAuthFailed() {
                        tr("Click this to login again."),
                        QSystemTrayIcon::MessageIcon::Critical,
                        {}, {},
+                       tr("Login"),
                        [this]() {
     m_oauth2->login();
   });

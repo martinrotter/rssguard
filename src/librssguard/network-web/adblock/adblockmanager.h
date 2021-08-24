@@ -6,9 +6,9 @@
 #include <QObject>
 
 #include <QHash>
+#include <QProcess>
 
 class QUrl;
-class QProcess;
 class AdblockRequestInfo;
 class AdBlockUrlInterceptor;
 class AdBlockIcon;
@@ -31,13 +31,18 @@ class AdBlockManager : public QObject {
     explicit AdBlockManager(QObject* parent = nullptr);
     virtual ~AdBlockManager();
 
-    // If "initial_load" is false, then we want to explicitly turn off
-    // Adblock if it is running or turn on when not running.
-    // if "initial_load" is true, then we want to forcefully perform
-    // initial loading of Adblock.
-    void load(bool initial_load);
-
+    // Enables (or disables) AdBlock feature asynchronously.
+    // This method will start/stop AdBlock in separate process
+    // and thus cannot run synchronously (when enabling) as process takes
+    // some time to start.
+    //
+    // If the process fails then signal
+    //   processTerminated() is thrown.
+    // If AdBlock is switched on/off peacefully then signal
+    //   enabledChanged(bool) is thrown.
+    void setEnabled(bool enabled);
     bool isEnabled() const;
+
     bool canRunOnScheme(const QString& scheme) const;
     AdBlockIcon* adBlockIcon() const;
 
@@ -51,8 +56,6 @@ class AdBlockManager : public QObject {
     QStringList customFilters() const;
     void setCustomFilters(const QStringList& custom_filters);
 
-    void updateUnifiedFiltersFile();
-
     static QString generateJsForElementHiding(const QString& css);
 
   public slots:
@@ -60,11 +63,18 @@ class AdBlockManager : public QObject {
 
   signals:
     void enabledChanged(bool enabled);
+    void processTerminated();
+
+  private slots:
+    void onServerProcessFinished(int exit_code, QProcess::ExitStatus exit_status);
 
   private:
+    void updateUnifiedFiltersFileAndStartServer();
+    QProcess* startServer(int port);
+    void killServer();
+
     BlockingResult askServerIfBlocked(const QString& fp_url, const QString& url, const QString& url_type) const;
     QString askServerForCosmeticRules(const QString& url) const;
-    QProcess* restartServer(int port);
 
   private:
     bool m_loaded;

@@ -29,31 +29,36 @@ AdBlockDialog::AdBlockDialog(QWidget* parent)
   connect(m_ui.m_btnHelp, &QPushButton::clicked, this, [=]() {
     qApp->web()->openUrlInExternalBrowser(QSL(ADBLOCK_HOWTO));
   });
-  connect(m_ui.m_btnTest, &QPushButton::clicked, this, &AdBlockDialog::testConfiguration);
-  connect(m_ui.m_cbEnable, &QCheckBox::toggled, this, &AdBlockDialog::enableAdBlock);
-  connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &AdBlockDialog::saveAndClose);
+  connect(m_ui.m_cbEnable, &QCheckBox::clicked, this, &AdBlockDialog::enableAdBlock);
+  connect(m_manager, &AdBlockManager::enabledChanged, this, &AdBlockDialog::onAdBlockEnabledChanged);
+  connect(m_manager, &AdBlockManager::processTerminated, this, &AdBlockDialog::onAdBlockProcessTerminated);
 
   m_ui.m_lblTestResult->label()->setWordWrap(true);
   m_ui.m_btnHelp->setIcon(qApp->icons()->fromTheme(QSL("help-about")));
-  m_ui.m_btnTest->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start")));
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
-                                  tr("No test executed yet."),
-                                  tr("No test executed yet."));
+                                  tr("No additional info."),
+                                  tr("No additional info."));
 
-  load();
+  loadDialog();
   m_ui.m_buttonBox->setFocus();
 }
 
-void AdBlockDialog::saveAndClose() {
+void AdBlockDialog::saveOnClose() {
   m_manager->setFilterLists(m_ui.m_txtPredefined->toPlainText().split(QSL("\n")));
   m_manager->setCustomFilters(m_ui.m_txtCustom->toPlainText().split(QSL("\n")));
 
   try {
-    m_manager->updateUnifiedFiltersFile();
+    auto enabl = m_manager->isEnabled();
+
+    m_manager->setEnabled(false);
+
+    if (enabl) {
+      m_manager->setEnabled(enabl);
+    }
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_ADBLOCK
-                << "Failed to write unified filters to file or re-start server, error:"
+                << "Failed to enable AdBlock, error:"
                 << QUOTE_W_SPACE_DOT(ex.message());
 
     MessageBox::show(this,
@@ -64,43 +69,61 @@ void AdBlockDialog::saveAndClose() {
                      {},
                      ex.message());
   }
-
-  close();
 }
 
 void AdBlockDialog::enableAdBlock(bool enable) {
-  m_manager->load(false);
+  qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, enable);
 
-  if (enable) {
-    load();
-  }
-}
+  m_manager->setFilterLists(m_ui.m_txtPredefined->toPlainText().split(QSL("\n")));
+  m_manager->setCustomFilters(m_ui.m_txtCustom->toPlainText().split(QSL("\n")));
 
-void AdBlockDialog::testConfiguration() {
   try {
-    m_manager->setFilterLists(m_ui.m_txtPredefined->toPlainText().split(QSL("\n")));
-    m_manager->setCustomFilters(m_ui.m_txtCustom->toPlainText().split(QSL("\n")));
-    m_manager->updateUnifiedFiltersFile();
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("You are good to go."), tr("OK!"));
+    m_manager->setEnabled(enable);
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_ADBLOCK
                 << "Test of configuration failed:"
                 << QUOTE_W_SPACE_DOT(ex.message());
+
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                     tr("There is error, check application log for more details and "
                                        "head to online documentation. Also make sure that Node.js is installed."
                                        "\n\nError: %1").arg(ex.message()),
                                     tr("ERROR!"));
-
   }
 }
 
-void AdBlockDialog::load() {
-  if (m_loaded) {
-    return;
-  }
+void AdBlockDialog::onAdBlockEnabledChanged(bool enabled) {
+  m_ui.m_cbEnable->setChecked(enabled);
 
+  if (enabled) {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                    tr("It seems your AdBlock runs fine, but wait few seconds to be sure."),
+                                    tr("OK!"));
+  }
+  else {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
+                                    tr("No additional info."),
+                                    tr("No additional info."));
+  }
+}
+
+void AdBlockDialog::onAdBlockProcessTerminated() {
+  m_ui.m_cbEnable->setChecked(false);
+
+  m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                  tr("There is error, check application log for more details and "
+                                     "head to online documentation. Also make sure that Node.js is installed."),
+                                  tr("ERROR!"));
+}
+
+void AdBlockDialog::loadDialog() {
   m_ui.m_txtCustom->setPlainText(m_manager->customFilters().join(QSL("\n")));
   m_ui.m_txtPredefined->setPlainText(m_manager->filterLists().join(QSL("\n")));
+}
+
+void AdBlockDialog::hideEvent(QHideEvent* event) {
+  QDialog::hideEvent(event);
+
+  saveOnClose();
 }
