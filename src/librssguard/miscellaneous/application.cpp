@@ -28,7 +28,6 @@
 #include <QProcess>
 #include <QSessionManager>
 #include <QSslSocket>
-#include <QtConcurrent/QtConcurrentRun>
 #include <QTimer>
 
 #if defined(Q_OS_LINUX)

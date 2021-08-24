@@ -21,7 +21,6 @@
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
-#include <QtConcurrent/QtConcurrentRun>
 #include <QThread>
 #include <QTimer>
 

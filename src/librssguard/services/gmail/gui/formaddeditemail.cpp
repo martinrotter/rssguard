@@ -13,8 +13,6 @@
 #include "services/gmail/gmailserviceroot.h"
 #include "services/gmail/gui/emailrecipientcontrol.h"
 
-#include <QtConcurrent/QtConcurrentRun>
-
 #include <QCloseEvent>
 
 FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
