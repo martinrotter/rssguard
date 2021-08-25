@@ -235,9 +235,6 @@ DKEY General::ID = "main";
 DKEY General::UpdateOnStartup = "update_on_start";
 DVALUE(bool) General::UpdateOnStartupDef = true;
 
-DKEY General::RemoveTrolltechJunk = "remove_trolltech_junk";
-DVALUE(bool) General::RemoveTrolltechJunkDef = false;
-
 DKEY General::FirstRun = "first_run";
 DVALUE(bool) General::FirstRunDef = true;
 

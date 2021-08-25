@@ -50,7 +50,7 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
 #endif
 
   new_request.setRawHeader(HTTP_HEADERS_COOKIE, QSL("JSESSIONID= ").toLocal8Bit());
-  new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, QString(APP_USERAGENT).toLocal8Bit());
+  new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, QSL(APP_USERAGENT).toLocal8Bit());
 
   auto reply = QNetworkAccessManager::createRequest(op, new_request, outgoingData);
   return reply;

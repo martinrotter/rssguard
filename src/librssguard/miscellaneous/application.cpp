@@ -518,10 +518,6 @@ void Application::onAboutToQuit() {
   processEvents();
   qDebugNN << LOGSEC_CORE << "Cleaning up resources and saving application state.";
 
-#if defined(Q_OS_WIN)
-  system()->removeTrolltechJunkRegistryKeys();
-#endif
-
   if (locked_safely) {
     // Application obtained permission to close in a safe way.
     qDebugNN << LOGSEC_CORE << "Close lock was obtained safely.";

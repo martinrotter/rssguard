@@ -250,20 +250,14 @@ namespace GUI {
 // General.
 namespace General {
   KEY ID;
-  KEY UpdateOnStartup;
 
+  KEY UpdateOnStartup;
   VALUE(bool) UpdateOnStartupDef;
 
-  KEY RemoveTrolltechJunk;
-
-  VALUE(bool) RemoveTrolltechJunkDef;
-
   KEY FirstRun;
-
   VALUE(bool) FirstRunDef;
 
   KEY Language;
-
   VALUE(QString) LanguageDef;
 }
 
