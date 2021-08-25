@@ -15,24 +15,24 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_fieldNames = DatabaseQueries::messageTableAttributes(false);
 
   // Used in <x>: SELECT ... FROM ... ORDER BY <x1> DESC, <x2> ASC;
-  m_orderByNames[MSG_DB_ID_INDEX] = "Messages.id";
-  m_orderByNames[MSG_DB_READ_INDEX] = "Messages.is_read";
-  m_orderByNames[MSG_DB_IMPORTANT_INDEX] = "Messages.is_important";
-  m_orderByNames[MSG_DB_DELETED_INDEX] = "Messages.is_deleted";
-  m_orderByNames[MSG_DB_PDELETED_INDEX] = "Messages.is_pdeleted";
-  m_orderByNames[MSG_DB_FEED_CUSTOM_ID_INDEX] = "Messages.feed";
-  m_orderByNames[MSG_DB_TITLE_INDEX] = "Messages.title";
-  m_orderByNames[MSG_DB_URL_INDEX] = "Messages.url";
-  m_orderByNames[MSG_DB_AUTHOR_INDEX] = "Messages.author";
-  m_orderByNames[MSG_DB_DCREATED_INDEX] = "Messages.date_created";
-  m_orderByNames[MSG_DB_CONTENTS_INDEX] = "Messages.contents";
-  m_orderByNames[MSG_DB_ENCLOSURES_INDEX] = "Messages.enclosures";
-  m_orderByNames[MSG_DB_SCORE_INDEX] = "Messages.score";
-  m_orderByNames[MSG_DB_ACCOUNT_ID_INDEX] = "Messages.account_id";
-  m_orderByNames[MSG_DB_CUSTOM_ID_INDEX] = "Messages.custom_id";
-  m_orderByNames[MSG_DB_CUSTOM_HASH_INDEX] = "Messages.custom_hash";
-  m_orderByNames[MSG_DB_FEED_TITLE_INDEX] = "Feeds.title";
-  m_orderByNames[MSG_DB_HAS_ENCLOSURES] = "has_enclosures";
+  m_orderByNames[MSG_DB_ID_INDEX] = QSL("Messages.id");
+  m_orderByNames[MSG_DB_READ_INDEX] = QSL("Messages.is_read");
+  m_orderByNames[MSG_DB_IMPORTANT_INDEX] = QSL("Messages.is_important");
+  m_orderByNames[MSG_DB_DELETED_INDEX] = QSL("Messages.is_deleted");
+  m_orderByNames[MSG_DB_PDELETED_INDEX] = QSL("Messages.is_pdeleted");
+  m_orderByNames[MSG_DB_FEED_CUSTOM_ID_INDEX] = QSL("Messages.feed");
+  m_orderByNames[MSG_DB_TITLE_INDEX] = QSL("Messages.title");
+  m_orderByNames[MSG_DB_URL_INDEX] = QSL("Messages.url");
+  m_orderByNames[MSG_DB_AUTHOR_INDEX] = QSL("Messages.author");
+  m_orderByNames[MSG_DB_DCREATED_INDEX] = QSL("Messages.date_created");
+  m_orderByNames[MSG_DB_CONTENTS_INDEX] = QSL("Messages.contents");
+  m_orderByNames[MSG_DB_ENCLOSURES_INDEX] = QSL("Messages.enclosures");
+  m_orderByNames[MSG_DB_SCORE_INDEX] = QSL("Messages.score");
+  m_orderByNames[MSG_DB_ACCOUNT_ID_INDEX] = QSL("Messages.account_id");
+  m_orderByNames[MSG_DB_CUSTOM_ID_INDEX] = QSL("Messages.custom_id");
+  m_orderByNames[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
+  m_orderByNames[MSG_DB_FEED_TITLE_INDEX] = QSL("Feeds.title");
+  m_orderByNames[MSG_DB_HAS_ENCLOSURES] = QSL("has_enclosures");
 
   m_numericColumns << MSG_DB_ID_INDEX << MSG_DB_READ_INDEX << MSG_DB_DELETED_INDEX << MSG_DB_PDELETED_INDEX
                    << MSG_DB_IMPORTANT_INDEX << MSG_DB_ACCOUNT_ID_INDEX << MSG_DB_DCREATED_INDEX

@@ -54,10 +54,6 @@ void GuiUtilities::applyResponsiveDialogResize(QWidget& widget, double factor) {
 }
 
 void GuiUtilities::restoreState(QWidget* wdg, QByteArray state) {
-  QHash<QString, QStringList> props_to_serialize {
-    { QSL("QCheckBox"), { QSL("checked") } },
-    { QSL("QSpinBox"), { QSL("value") } }
-  };
   QHash<QString, QHash<QString, QVariant>> props;
   QDataStream str(&state, QIODevice::OpenModeFlag::ReadOnly);
 

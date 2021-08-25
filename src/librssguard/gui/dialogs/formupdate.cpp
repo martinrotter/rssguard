@@ -20,7 +20,7 @@
 FormUpdate::FormUpdate(QWidget* parent)
   : QDialog(parent) {
   m_ui.setupUi(this);
-  m_ui.m_lblCurrentRelease->setText(APP_VERSION);
+  m_ui.m_lblCurrentRelease->setText(QSL(APP_VERSION));
   m_ui.m_tabInfo->removeTab(1);
   m_ui.m_buttonBox->setEnabled(false);
 
@@ -78,7 +78,7 @@ void FormUpdate::checkForUpdates() {
       m_ui.m_lblAvailableRelease->setText(m_updateInfo.m_availableVersion);
       m_ui.m_txtChanges->setText(m_updateInfo.m_changes);
 
-      if (SystemFactory::isVersionNewer(m_updateInfo.m_availableVersion, APP_VERSION)) {
+      if (SystemFactory::isVersionNewer(m_updateInfo.m_availableVersion, QSL(APP_VERSION))) {
         m_btnUpdate->setVisible(true);
         m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Ok,
                                     tr("New release available."),
@@ -200,7 +200,7 @@ void FormUpdate::startUpdate() {
     m_ui.m_listFiles->setEnabled(false);
   }
   else {
-    url_file = APP_URL;
+    url_file = QSL(APP_URL);
   }
 
   if (m_readyToInstall) {

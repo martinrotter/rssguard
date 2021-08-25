@@ -16,7 +16,7 @@ LabelsMenu::LabelsMenu(const QList<Message>& messages, const QList<Label*>& labe
   setIcon(qApp->icons()->fromTheme(QSL("tag-folder")));
 
   if (labels.isEmpty()) {
-    QAction* act_not_labels = new QAction("No labels found");
+    QAction* act_not_labels = new QAction(tr("No labels found"));
 
     act_not_labels->setEnabled(false);
     addAction(act_not_labels);

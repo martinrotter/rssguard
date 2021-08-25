@@ -93,8 +93,8 @@ void SettingsBrowserMail::selectBrowserExecutable() {
   }
 }
 
-QList<ExternalTool> SettingsBrowserMail::externalTools() const {
-  QList<ExternalTool> list;
+QVector<ExternalTool> SettingsBrowserMail::externalTools() const {
+  QVector<ExternalTool> list; list.reserve(m_ui->m_listTools->topLevelItemCount());
 
   for (int i = 0; i < m_ui->m_listTools->topLevelItemCount(); i++) {
     list.append(m_ui->m_listTools->topLevelItem(i)->data(0, Qt::ItemDataRole::UserRole).value<ExternalTool>());
@@ -241,7 +241,7 @@ ExternalTool SettingsBrowserMail::tweakExternalTool(const ExternalTool& tool) co
     bool ok;
     QString parameters = QInputDialog::getText(window(),
                                                tr("Enter parameters"),
-                                               tr("Enter (optional) parameters separated by \"%1\":").arg(EXECUTION_LINE_SEPARATOR),
+                                               tr("Enter (optional) parameters separated by \"%1\":").arg(QSL(EXECUTION_LINE_SEPARATOR)),
                                                QLineEdit::EchoMode::Normal,
                                                tool.parameters(),
                                                &ok);

@@ -864,7 +864,7 @@ or this functionality is not implemented yet.</source>
     <name>FormAccountDetails</name>
     <message>
         <source>Edit account &apos;%1&apos;</source>
-        <translation>Updavit účet &apos;%1&apos;</translation>
+        <translation>Upravit účet &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Network proxy</source>

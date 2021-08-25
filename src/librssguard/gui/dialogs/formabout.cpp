@@ -18,7 +18,7 @@
 FormAbout::FormAbout(QWidget* parent) : QDialog(parent) {
   m_ui.setupUi(this);
   m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("help-about")), tr("About %1").arg(APP_NAME));
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("help-about")), tr("About %1").arg(QSL(APP_NAME)));
   loadLicenseAndInformation();
   loadSettingsAndPaths();
 }
@@ -73,20 +73,21 @@ void FormAbout::loadLicenseAndInformation() {
   // Set other informative texts.
   m_ui.m_lblDesc->setText(tr("<b>%8</b><br>" "<b>Version:</b> %1 (built on %2/%3)<br>" "<b>Revision:</b> %4<br>" "<b>Build date:</b> %5<br>"
                                                                                                                  "<b>Qt:</b> %6 (compiled against %7)<br>").arg(
-                            qApp->applicationVersion(), APP_SYSTEM_NAME, APP_SYSTEM_VERSION, APP_REVISION,
-                            QLocale().toString(TextFactory::parseDateTime(QString("%1 %2").arg(__DATE__, __TIME__)),
+                            qApp->applicationVersion(), QSL(APP_SYSTEM_NAME),
+                            QSL(APP_SYSTEM_VERSION), QSL(APP_REVISION),
+                            QLocale().toString(TextFactory::parseDateTime(QSL("%1 %2").arg(__DATE__, __TIME__)),
                                                QLocale::FormatType::ShortFormat),
-                            qVersion(), QT_VERSION_STR,
-                            APP_NAME));
+                            qVersion(), QSL(QT_VERSION_STR),
+                            QSL(APP_NAME)));
   m_ui.m_txtInfo->setText(tr("<body>%5 is a (very) tiny feed reader."
                              "<br><br>This software is distributed under the terms of GNU General Public License, version 3."
                              "<br><br>Contacts:"
                              "<ul><li><a href=\"mailto://%1\">%1</a> ~e-mail</li>"
                              "<li><a href=\"%2\">%2</a> ~website</li></ul>"
                              "You can obtain source code for %5 from its website."
-                             "<br><br><br>Copyright (C) 2011-%3 %4</body>").arg(APP_EMAIL, APP_URL,
+                             "<br><br><br>Copyright (C) 2011-%3 %4</body>").arg(QSL(APP_EMAIL), QSL(APP_URL),
                                                                                 QString::number(QDateTime::currentDateTime()
                                                                                                 .date()
                                                                                                 .year()),
-                                                                                APP_AUTHOR, APP_NAME));
+                                                                                QSL(APP_AUTHOR), QSL(APP_NAME)));
 }

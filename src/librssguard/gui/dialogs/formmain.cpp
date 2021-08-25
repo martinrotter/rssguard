@@ -60,7 +60,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   qApp->setMainForm(this);
 
   setWindowIcon(qApp->desktopAwareIcon());
-  setWindowTitle(APP_LONG_NAME);
+  setWindowTitle(QSL(APP_LONG_NAME));
 
 #if defined(USE_WEBENGINE)
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->adBlock()->adBlockIcon());
@@ -209,7 +209,7 @@ void FormMain::prepareMenus() {
   // Setup menu for tray icon.
   if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
 #if defined(Q_OS_WIN)
-    m_trayMenu = new TrayIconMenu(APP_NAME, this);
+    m_trayMenu = new TrayIconMenu(QSL(APP_NAME), this);
 #else
     m_trayMenu = new QMenu(QSL(APP_NAME), this);
 #endif
@@ -228,6 +228,7 @@ void FormMain::prepareMenus() {
   m_ui->m_menuWebBrowserTabs->removeAction(m_ui->m_actionTabNewWebBrowser);
   m_ui->m_menuWebBrowserTabs->setTitle(tr("Ta&bs"));
 #endif
+
 #if defined(Q_OS_MACOS)
   m_ui->m_actionSwitchMainMenu->setVisible(false);
   m_ui->m_actionFullscreen->setVisible(false);
@@ -878,7 +879,7 @@ void FormMain::hideEvent(QHideEvent* event) {
 }
 
 void FormMain::showDocs() {
-  qApp->web()->openUrlInExternalBrowser(APP_URL_DOCUMENTATION);
+  qApp->web()->openUrlInExternalBrowser(QSL(APP_URL_DOCUMENTATION));
 }
 
 void FormMain::showAddAccountDialog() {

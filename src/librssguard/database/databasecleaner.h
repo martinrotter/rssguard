@@ -29,7 +29,7 @@ class DatabaseCleaner : public QObject {
     void purgeFinished(bool result);
 
   public slots:
-    void purgeDatabaseData(const CleanerOrders& which_data);
+    void purgeDatabaseData(CleanerOrders which_data);
 
   private:
     bool purgeStarredMessages(const QSqlDatabase& database);

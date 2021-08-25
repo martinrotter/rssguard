@@ -16,7 +16,7 @@ MariaDbDriver::MariaDbDriver(QObject* parent) : DatabaseDriver(parent), m_databa
 MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostname, int port,
                                                           const QString& w_database, const QString& username,
                                                           const QString& password) {
-  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER, APP_DB_MYSQL_TEST);
+  QSqlDatabase database = QSqlDatabase::addDatabase(QSL(APP_DB_MYSQL_DRIVER), QSL(APP_DB_MYSQL_TEST));
 
   database.setHostName(hostname);
   database.setPort(port);
@@ -93,7 +93,7 @@ QString MariaDbDriver::humanDriverType() const {
 }
 
 QString MariaDbDriver::qtDriverCode() const {
-  return APP_DB_MYSQL_DRIVER;
+  return QSL(APP_DB_MYSQL_DRIVER);
 }
 
 DatabaseDriver::DriverType MariaDbDriver::driverType() const {
@@ -146,7 +146,7 @@ qint64 MariaDbDriver::databaseDataSize() {
 
 QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
   // Folders are created. Create new QSqlDatabase object.
-  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER, connection_name);
+  QSqlDatabase database = QSqlDatabase::addDatabase(QSL(APP_DB_MYSQL_DRIVER), connection_name);
   const QString database_name = qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString();
 
   database.setHostName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
@@ -163,13 +163,13 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
 
     query_db.setForwardOnly(true);
 
-    if (!query_db.exec(QString("USE %1").arg(database_name)) ||
+    if (!query_db.exec(QSL("USE %1").arg(database_name)) ||
         !query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
       // If no "rssguard" database exists or schema version is wrong, then initialize it.
       qWarningNN << LOGSEC_DB << "Error occurred. MySQL database is not initialized. Initializing now.";
 
       try {
-        const QStringList statements = prepareScript(APP_SQL_PATH, APP_DB_MYSQL_INIT, database_name);
+        const QStringList statements = prepareScript(APP_SQL_PATH, QSL(APP_DB_MYSQL_INIT), database_name);
 
         for (const QString& statement : statements) {
           query_db.exec(statement);
@@ -190,7 +190,7 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
       query_db.next();
       const QString installed_db_schema = query_db.value(0).toString();
 
-      if (installed_db_schema.toInt() < QString(APP_DB_SCHEMA_VERSION).toInt()) {
+      if (installed_db_schema.toInt() < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
         if (updateDatabaseSchema(database, installed_db_schema, database_name)) {
           qDebugNN << LOGSEC_DB
                    << "Database schema was updated from"
@@ -218,14 +218,14 @@ bool MariaDbDriver::updateDatabaseSchema(const QSqlDatabase& database,
                                          const QString& source_db_schema_version,
                                          const QString& database_name) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
-  const int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
+  const int current_version = QSL(APP_DB_SCHEMA_VERSION).remove('.').toInt();
 
   while (working_version != current_version) {
     try {
       const QStringList statements = prepareScript(APP_SQL_PATH,
-                                                   QString(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("mysql"),
-                                                                                           QString::number(working_version),
-                                                                                           QString::number(working_version + 1)),
+                                                   QSL(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("mysql"),
+                                                                                       QString::number(working_version),
+                                                                                       QString::number(working_version + 1)),
                                                    database_name);
 
       for (const QString& statement : statements) {
@@ -275,7 +275,7 @@ QSqlDatabase MariaDbDriver::connection(const QString& connection_name, DatabaseD
     else {
       // Database connection with this name does not exist
       // yet, add it and set it up.
-      database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER, connection_name);
+      database = QSqlDatabase::addDatabase(QSL(APP_DB_MYSQL_DRIVER), connection_name);
       database.setHostName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
       database.setPort(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
       database.setUserName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());

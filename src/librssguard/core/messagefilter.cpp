@@ -59,10 +59,10 @@ void MessageFilter::initializeFilteringEngine(QJSEngine& engine, MessageObject* 
 
   // Register the wrapper.
   auto js_object = engine.newQObject(message_wrapper);
-  auto js_meta_object = engine.newQMetaObject(&message_wrapper->staticMetaObject);
+  auto js_meta_object = engine.newQMetaObject(&MessageObject::staticMetaObject);
 
   engine.globalObject().setProperty(QSL("msg"), js_object);
-  engine.globalObject().setProperty(message_wrapper->staticMetaObject.className(), js_meta_object);
+  engine.globalObject().setProperty(MessageObject::staticMetaObject.className(), js_meta_object);
 
   // Register "utils".
   auto* utils = new FilterUtils(&engine);

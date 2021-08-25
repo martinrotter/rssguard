@@ -30,7 +30,7 @@ class MessageBox : public QMessageBox {
                                             QMessageBox::StandardButton default_button = QMessageBox::Ok,
                                             bool* dont_show_again = nullptr,
                                             const QString& functor_heading = {},
-                                            std::function<void()> functor = nullptr);
+                                            const std::function<void()>& functor = nullptr);
     static QIcon iconForStatus(QMessageBox::Icon status);
 };
 

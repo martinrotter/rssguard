@@ -211,7 +211,7 @@ void MessagesProxyModel::sort(int column, Qt::SortOrder order) {
 }
 
 QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList& indexes) const {
-  QModelIndexList source_indexes;
+  QModelIndexList source_indexes; source_indexes.reserve(indexes.size());
 
   for (const QModelIndex& index : indexes) {
     source_indexes << mapToSource(index);

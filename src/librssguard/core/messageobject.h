@@ -64,7 +64,7 @@ class MessageObject : public QObject {
     explicit MessageObject(QSqlDatabase* db,
                            const QString& feed_custom_id,
                            int account_id,
-                           QList<Label*> available_labels,
+                           const QList<Label*>& available_labels,
                            bool is_new_message,
                            QObject* parent = nullptr);
 
@@ -77,11 +77,11 @@ class MessageObject : public QObject {
 
     // Adds given label to list of assigned labels to this message.
     // Returns true if label was assigned now or if the message already has it assigned.
-    Q_INVOKABLE bool assignLabel(QString label_custom_id) const;
+    Q_INVOKABLE bool assignLabel(const QString& label_custom_id) const;
 
     // Removes given label from list of assigned labels of this message.
     // Returns true if label was now removed or if it is not assigned to the message at all.
-    Q_INVOKABLE bool deassignLabel(QString label_custom_id) const;
+    Q_INVOKABLE bool deassignLabel(const QString& label_custom_id) const;
 
     // Returns list of assigned and available messages.
     QList<Label*> assignedLabels() const;

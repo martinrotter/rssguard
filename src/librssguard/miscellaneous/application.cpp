@@ -188,8 +188,8 @@ void Application::offerChanges() const {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          QSL(APP_NAME),
                          QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
-                                     "version by clicking this popup notification.").arg(APP_LONG_NAME),
-                         QSystemTrayIcon::MessageIcon::NoIcon, {}, {}, "Go to changelog", [] {
+                                     "version by clicking this popup notification.").arg(QSL(APP_LONG_NAME)),
+                         QSystemTrayIcon::MessageIcon::NoIcon, {}, {}, tr("Go to changelog"), [] {
       FormAbout(qApp->mainForm()).exec();
     });
   }
@@ -198,12 +198,12 @@ void Application::offerChanges() const {
 bool Application::isAlreadyRunning() {
   return m_allowMultipleInstances
       ? false
-      : sendMessage((QStringList() << QSL("-%1").arg(CLI_IS_RUNNING)
-                                   << Application::arguments().mid(1)).join(ARGUMENTS_LIST_SEPARATOR));
+      : sendMessage((QStringList() << QSL("-%1").arg(QSL(CLI_IS_RUNNING))
+                                   << Application::arguments().mid(1)).join(QSL(ARGUMENTS_LIST_SEPARATOR)));
 }
 
 QStringList Application::builtinSounds() const {
-  auto builtin_sounds = QDir(SOUNDS_BUILTIN_DIRECTORY).entryInfoList(QDir::Filter::Files, QDir::SortFlag::Name);
+  auto builtin_sounds = QDir(QSL(SOUNDS_BUILTIN_DIRECTORY)).entryInfoList(QDir::Filter::Files, QDir::SortFlag::Name);
   auto iter = boolinq::from(builtin_sounds).select([](const QFileInfo& i) {
     return i.absoluteFilePath();
   }).toStdList();
@@ -652,32 +652,32 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
            << "execution message.";
 
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, Qt::SplitBehaviorFlags::SkipEmptyParts);
+  QStringList messages = message.split(QSL(ARGUMENTS_LIST_SEPARATOR), Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-  QStringList messages = message.split(ARGUMENTS_LIST_SEPARATOR, QString::SplitBehavior::SkipEmptyParts);
+  QStringList messages = message.split(QSL(ARGUMENTS_LIST_SEPARATOR), QString::SplitBehavior::SkipEmptyParts);
 #endif
 
   QCommandLineParser cmd_parser;
 
   messages.prepend(qApp->applicationFilePath());
 
-  cmd_parser.addOption(QCommandLineOption(QStringList() << CLI_QUIT_INSTANCE));
-  cmd_parser.addOption(QCommandLineOption(QStringList() << CLI_IS_RUNNING));
-  cmd_parser.addPositionalArgument("urls",
-                                   "List of URL addresses pointing to individual online feeds which should be added.",
-                                   "[url-1 ... url-n]");
+  cmd_parser.addOption(QCommandLineOption({ QSL(CLI_QUIT_INSTANCE) }));
+  cmd_parser.addOption(QCommandLineOption({ QSL(CLI_IS_RUNNING) }));
+  cmd_parser.addPositionalArgument(QSL("urls"),
+                                   QSL("List of URL addresses pointing to individual online feeds which should be added."),
+                                   QSL("[url-1 ... url-n]"));
 
   if (!cmd_parser.parse(messages)) {
     qCriticalNN << LOGSEC_CORE << cmd_parser.errorText();
   }
 
-  if (cmd_parser.isSet(CLI_QUIT_INSTANCE)) {
+  if (cmd_parser.isSet(QSL(CLI_QUIT_INSTANCE))) {
     quit();
     return;
   }
-  else if (cmd_parser.isSet(CLI_IS_RUNNING)) {
+  else if (cmd_parser.isSet(QSL(CLI_IS_RUNNING))) {
     showGuiMessage(Notification::Event::GeneralEvent,
-                   APP_NAME,
+                   QSL(APP_NAME),
                    tr("Application is already running."),
                    QSystemTrayIcon::MessageIcon::Information);
     mainForm()->display();
@@ -705,35 +705,35 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
 }
 
 void Application::parseCmdArgumentsFromMyInstance() {
-  QCommandLineOption help(QStringList() << CLI_HELP_SHORT << CLI_HELP_LONG,
-                          "Displays overview of CLI.");
-  QCommandLineOption version(QStringList() << CLI_VER_SHORT << CLI_VER_LONG,
-                             "Displays version of the application.");
-  QCommandLineOption log_file(QStringList() << CLI_LOG_SHORT << CLI_LOG_LONG,
-                              "Write application debug log to file. Note that logging to file may slow application down.",
-                              "log-file");
-  QCommandLineOption custom_data_folder(QStringList() << CLI_DAT_SHORT << CLI_DAT_LONG,
-                                        "Use custom folder for user data and disable single instance application mode.",
-                                        "user-data-folder");
-  QCommandLineOption disable_singleinstance(QStringList() << CLI_SIN_SHORT << CLI_SIN_LONG,
-                                            "Allow running of multiple application instances.");
-  QCommandLineOption disable_debug(QStringList() << CLI_NDEBUG_SHORT << CLI_NDEBUG_LONG,
-                                   "Completely disable stdout/stderr outputs.");
+  QCommandLineOption help({ QSL(CLI_HELP_SHORT), QSL(CLI_HELP_LONG) },
+                          QSL("Displays overview of CLI."));
+  QCommandLineOption version({ QSL(CLI_VER_SHORT), QSL(CLI_VER_LONG) },
+                             QSL("Displays version of the application."));
+  QCommandLineOption log_file({ QSL(CLI_LOG_SHORT), QSL(CLI_LOG_LONG) },
+                              QSL("Write application debug log to file. Note that logging to file may slow application down."),
+                              QSL("log-file"));
+  QCommandLineOption custom_data_folder({ QSL(CLI_DAT_SHORT), QSL(CLI_DAT_LONG) },
+                                        QSL("Use custom folder for user data and disable single instance application mode."),
+                                        QSL("user-data-folder"));
+  QCommandLineOption disable_singleinstance({ QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG) },
+                                            QSL("Allow running of multiple application instances."));
+  QCommandLineOption disable_debug({ QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG) },
+                                   QSL("Completely disable stdout/stderr outputs."));
 
   m_cmdParser.addOptions({ help, version, log_file, custom_data_folder, disable_singleinstance, disable_debug });
-  m_cmdParser.addPositionalArgument("urls",
-                                    "List of URL addresses pointing to individual online feeds which should be added.",
-                                    "[url-1 ... url-n]");
-  m_cmdParser.setApplicationDescription(APP_NAME);
+  m_cmdParser.addPositionalArgument(QSL("urls"),
+                                    QSL("List of URL addresses pointing to individual online feeds which should be added."),
+                                    QSL("[url-1 ... url-n]"));
+  m_cmdParser.setApplicationDescription(QSL(APP_NAME));
 
   if (!m_cmdParser.parse(QCoreApplication::arguments())) {
     qCriticalNN << LOGSEC_CORE << m_cmdParser.errorText();
   }
 
-  s_customLogFile = m_cmdParser.value(CLI_LOG_SHORT);
+  s_customLogFile = m_cmdParser.value(QSL(CLI_LOG_SHORT));
 
-  if (!m_cmdParser.value(CLI_DAT_SHORT).isEmpty()) {
-    auto data_folder = QDir::toNativeSeparators(m_cmdParser.value(CLI_DAT_SHORT));
+  if (!m_cmdParser.value(QSL(CLI_DAT_SHORT)).isEmpty()) {
+    auto data_folder = QDir::toNativeSeparators(m_cmdParser.value(QSL(CLI_DAT_SHORT)));
 
     qDebugNN << LOGSEC_CORE
              << "User wants to use custom directory for user data (and disable single instance mode):"
@@ -745,19 +745,19 @@ void Application::parseCmdArgumentsFromMyInstance() {
     m_allowMultipleInstances = false;
   }
 
-  if (m_cmdParser.isSet(CLI_HELP_SHORT)) {
+  if (m_cmdParser.isSet(QSL(CLI_HELP_SHORT))) {
     m_cmdParser.showHelp();
   }
-  else if (m_cmdParser.isSet(CLI_VER_SHORT)) {
+  else if (m_cmdParser.isSet(QSL(CLI_VER_SHORT))) {
     m_cmdParser.showVersion();
   }
 
-  if (m_cmdParser.isSet(CLI_SIN_SHORT)) {
+  if (m_cmdParser.isSet(QSL(CLI_SIN_SHORT))) {
     m_allowMultipleInstances = true;
     qDebugNN << LOGSEC_CORE << "Explicitly allowing this instance to run.";
   }
 
-  if (m_cmdParser.isSet(CLI_NDEBUG_SHORT)) {
+  if (m_cmdParser.isSet(QSL(CLI_NDEBUG_SHORT))) {
     s_disableDebug = true;
     qDebugNN << LOGSEC_CORE << "Disabling any stdout/stderr outputs.";
   }

@@ -445,7 +445,7 @@ void MessagesView::openSelectedSourceMessagesExternally() {
   for (const QModelIndex& index : qAsConst(rws)) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
                    .m_url
-                   .replace(QRegularExpression("[\\t\\n]"), QString());
+                   .replace(QRegularExpression(QSL("[\\t\\n]")), QString());
 
     qApp->web()->openUrlInExternalBrowser(link);
   }
@@ -691,7 +691,7 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
     for (const QModelIndex& index : qAsConst(rws)) {
       const QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
                            .m_url
-                           .replace(QRegularExpression("[\\t\\n]"), QString());
+                           .replace(QRegularExpression(QSL("[\\t\\n]")), QString());
 
       if (!link.isEmpty()) {
         if (!tool.run(link)) {

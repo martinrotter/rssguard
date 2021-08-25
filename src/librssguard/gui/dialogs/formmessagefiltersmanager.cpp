@@ -57,7 +57,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_URL, QHeaderView::ResizeMode::Interactive);
 
   connect(m_ui.m_btnDetailedHelp, &QPushButton::clicked, this, []() {
-    qApp->web()->openUrlInExternalBrowser(MSG_FILTERING_HELP);
+    qApp->web()->openUrlInExternalBrowser(QSL(MSG_FILTERING_HELP));
   });
   connect(m_ui.m_listFilters, &QListWidget::currentRowChanged,
           this, &FormMessageFiltersManager::loadFilter);

@@ -31,7 +31,7 @@ void DatabaseFactory::determineDriver() {
     new SqliteDriver(qApp->settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool(), this)
   };
 
-  if (QSqlDatabase::isDriverAvailable(APP_DB_MYSQL_DRIVER)) {
+  if (QSqlDatabase::isDriverAvailable(QSL(APP_DB_MYSQL_DRIVER))) {
     m_allDbDrivers.append(new MariaDbDriver(this));
   }
 

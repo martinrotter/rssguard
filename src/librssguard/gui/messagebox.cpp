@@ -63,7 +63,7 @@ QMessageBox::StandardButton MessageBox::show(QWidget* parent,
                                              QMessageBox::StandardButton default_button,
                                              bool* dont_show_again,
                                              const QString& functor_heading,
-                                             std::function<void ()> functor) {
+                                             const std::function<void()>& functor) {
   // Create and find needed components.
   MessageBox msg_box(parent);
 

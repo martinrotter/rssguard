@@ -9,7 +9,7 @@
 #include <QSqlQuery>
 
 MessageObject::MessageObject(QSqlDatabase* db, const QString& feed_custom_id, int account_id,
-                             QList<Label*> available_labels, bool is_new_message, QObject* parent)
+                             const QList<Label*>& available_labels, bool is_new_message, QObject* parent)
   : QObject(parent), m_db(db), m_feedCustomId(feed_custom_id), m_accountId(account_id), m_message(nullptr),
   m_availableLabels(available_labels), m_runningAfterFetching(is_new_message) {}
 
@@ -26,31 +26,31 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicationAttribute
   // Now we construct the query according to parameter.
   if ((attribute_check& DuplicationAttributeCheck::SameTitle) == DuplicationAttributeCheck::SameTitle) {
     where_clauses.append(QSL("title = :title"));
-    bind_values.append({ ":title", title() });
+    bind_values.append({ QSL(":title"), title() });
   }
 
   if ((attribute_check& DuplicationAttributeCheck::SameUrl) == DuplicationAttributeCheck::SameUrl) {
     where_clauses.append(QSL("url = :url"));
-    bind_values.append({ ":url", url() });
+    bind_values.append({ QSL(":url"), url() });
   }
 
   if ((attribute_check& DuplicationAttributeCheck::SameAuthor) == DuplicationAttributeCheck::SameAuthor) {
     where_clauses.append(QSL("author = :author"));
-    bind_values.append({ ":author", author() });
+    bind_values.append({ QSL(":author"), author() });
   }
 
   if ((attribute_check& DuplicationAttributeCheck::SameDateCreated) == DuplicationAttributeCheck::SameDateCreated) {
     where_clauses.append(QSL("date_created = :date_created"));
-    bind_values.append({ ":date_created", created().toMSecsSinceEpoch() });
+    bind_values.append({ QSL(":date_created"), created().toMSecsSinceEpoch() });
   }
 
   where_clauses.append(QSL("account_id = :account_id"));
-  bind_values.append({ ":account_id", accountId() });
+  bind_values.append({ QSL(":account_id"), accountId() });
 
   if ((attribute_check& DuplicationAttributeCheck::AllFeedsSameAccount) != DuplicationAttributeCheck::AllFeedsSameAccount) {
     // Limit to current feed.
     where_clauses.append(QSL("feed = :feed"));
-    bind_values.append({ ":feed", feedCustomId() });
+    bind_values.append({ QSL(":feed"), feedCustomId() });
   }
 
   QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
@@ -87,7 +87,7 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicationAttribute
   return false;
 }
 
-bool MessageObject::assignLabel(QString label_custom_id) const {
+bool MessageObject::assignLabel(const QString& label_custom_id) const {
   if (m_message->m_id <= 0 && m_message->m_customId.isEmpty()) {
     return false;
   }
@@ -108,7 +108,7 @@ bool MessageObject::assignLabel(QString label_custom_id) const {
   }
 }
 
-bool MessageObject::deassignLabel(QString label_custom_id) const {
+bool MessageObject::deassignLabel(const QString& label_custom_id) const {
   if (m_message->m_id <= 0 && m_message->m_customId.isEmpty()) {
     return false;
   }

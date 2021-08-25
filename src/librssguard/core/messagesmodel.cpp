@@ -41,8 +41,8 @@ void MessagesModel::setupIcons() {
   m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
   m_enclosuresIcon = qApp->icons()->fromTheme(QSL("mail-attachment"));
 
-  for (double i = MSG_SCORE_MIN; i <= MSG_SCORE_MAX; i += 10.0) {
-    m_scoreIcons.append(generateIconForScore(i));
+  for (int i = int(MSG_SCORE_MIN); i <= int(MSG_SCORE_MAX); i += 10) {
+    m_scoreIcons.append(generateIconForScore(double(i)));
   }
 }
 
@@ -271,8 +271,8 @@ Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
   return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemNeverHasChildren;
 }
 
-QList<Message> MessagesModel::messagesAt(QList<int> row_indices) const {
-  QList<Message> msgs;
+QList<Message> MessagesModel::messagesAt(const QList<int>& row_indices) const {
+  QList<Message> msgs; msgs.reserve(row_indices.size());
 
   for (int idx : row_indices) {
     msgs << messageAt(idx);
@@ -537,8 +537,8 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 }
 
 bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages) {
-  QStringList message_ids;
-  QList<QPair<Message, RootItem::Importance>> message_states;
+  QStringList message_ids; message_ids.reserve(messages.size());
+  QList<QPair<Message, RootItem::Importance>> message_states; message_states.reserve(messages.size());
 
   // Obtain IDs of all desired messages.
   for (const QModelIndex& message : messages) {
@@ -572,8 +572,8 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
 }
 
 bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
-  QStringList message_ids;
-  QList<Message> msgs;
+  QStringList message_ids; message_ids.reserve(messages.size());
+  QList<Message> msgs; msgs.reserve(messages.size());
 
   // Obtain IDs of all desired messages.
   for (const QModelIndex& message : messages) {
@@ -614,8 +614,8 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
 }
 
 bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootItem::ReadStatus read) {
-  QStringList message_ids;
-  QList<Message> msgs;
+  QStringList message_ids; message_ids.reserve(messages.size());
+  QList<Message> msgs; msgs.reserve(messages.size());
 
   // Obtain IDs of all desired messages.
   for (const QModelIndex& message : messages) {
@@ -641,8 +641,8 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
 }
 
 bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
-  QStringList message_ids;
-  QList<Message> msgs;
+  QStringList message_ids; message_ids.reserve(messages.size());
+  QList<Message> msgs; msgs.reserve(messages.size());
 
   // Obtain IDs of all desired messages.
   for (const QModelIndex& message : messages) {

@@ -101,8 +101,8 @@ class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
     void onItemExpandStateSaveRequested(RootItem* item);
 
   private:
-    QModelIndex nextPreviousUnreadItem(QModelIndex default_row);
-    QModelIndex nextUnreadItem(QModelIndex default_row);
+    QModelIndex nextPreviousUnreadItem(const QModelIndex& default_row);
+    QModelIndex nextUnreadItem(const QModelIndex& default_row);
 
     // Initializes context menus.
     QMenu* initializeContextMenuBin(RootItem* clicked_item);

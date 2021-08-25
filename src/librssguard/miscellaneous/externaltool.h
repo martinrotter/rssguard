@@ -21,7 +21,7 @@ class ExternalTool {
   public:
     static ExternalTool fromString(const QString& str);
     static QList<ExternalTool> toolsFromSettings();
-    static void setToolsToSettings(QList<ExternalTool>& tools);
+    static void setToolsToSettings(QVector<ExternalTool>& tools);
 
   private:
     QString m_executable;

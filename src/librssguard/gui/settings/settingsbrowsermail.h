@@ -35,7 +35,7 @@ class SettingsBrowserMail : public SettingsPanel {
     ExternalTool tweakExternalTool(const ExternalTool& tool) const;
 
   private:
-    QList<ExternalTool> externalTools() const;
+    QVector<ExternalTool> externalTools() const;
     void setExternalTools(const QList<ExternalTool>& list);
 
     NetworkProxyDetails* m_proxyDetails;

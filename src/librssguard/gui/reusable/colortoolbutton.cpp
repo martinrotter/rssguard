@@ -2,6 +2,8 @@
 
 #include "gui/reusable/colortoolbutton.h"
 
+#include "definitions/definitions.h"
+
 #include <QColorDialog>
 #include <QPainter>
 #include <QPainterPath>
@@ -34,7 +36,7 @@ void ColorToolButton::setColor(const QColor& color) {
 
 void ColorToolButton::setRandomColor() {
   auto rnd_color = QRandomGenerator::global()->bounded(0xFFFFFF);
-  auto rnd_color_name = QString("#%1").arg(QString::number(rnd_color, 16));
+  auto rnd_color_name = QSL("#%1").arg(QString::number(rnd_color, 16));
 
   setColor(rnd_color_name);
   emit colorChanged(rnd_color_name);

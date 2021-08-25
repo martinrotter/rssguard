@@ -22,7 +22,7 @@ class TimeSpinBox : public QDoubleSpinBox {
     QValidator::State validate(QString& input, int& pos) const;
 
     Mode mode() const;
-    void setMode(const TimeSpinBox::Mode& mode);
+    void setMode(Mode mode);
 
   private:
     Mode m_mode;

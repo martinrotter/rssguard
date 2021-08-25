@@ -2,6 +2,8 @@
 
 #include "gui/reusable/timespinbox.h"
 
+#include "definitions/definitions.h"
+
 #include <QStringList>
 
 TimeSpinBox::TimeSpinBox(QWidget* parent) : QDoubleSpinBox(parent) {
@@ -19,7 +21,7 @@ double TimeSpinBox::valueFromText(const QString& text) const {
     return value;
   }
   else {
-    QRegularExpression rx("\\b[0-9]{1,}\\b");
+    QRegularExpression rx(QSL("\\b[0-9]{1,}\\b"));
     QStringList numbers;
     int pos = 0;
     int count = 0;
@@ -84,7 +86,7 @@ TimeSpinBox::Mode TimeSpinBox::mode() const {
   return m_mode;
 }
 
-void TimeSpinBox::setMode(const TimeSpinBox::Mode& mode) {
+void TimeSpinBox::setMode(TimeSpinBox::Mode mode) {
   m_mode = mode;
 
   setValue(value());

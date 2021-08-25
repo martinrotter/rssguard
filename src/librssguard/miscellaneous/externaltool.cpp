@@ -59,7 +59,7 @@ QList<ExternalTool> ExternalTool::toolsFromSettings() {
   return tools;
 }
 
-void ExternalTool::setToolsToSettings(QList<ExternalTool>& tools) {
+void ExternalTool::setToolsToSettings(QVector<ExternalTool>& tools) {
   QStringList encode;
 
   for (ExternalTool tool : tools) {

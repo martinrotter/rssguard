@@ -415,7 +415,7 @@ void FeedsView::selectNextUnreadItem() {
   }
 }
 
-QModelIndex FeedsView::nextPreviousUnreadItem(QModelIndex default_row) {
+QModelIndex FeedsView::nextPreviousUnreadItem(const QModelIndex& default_row) {
   const bool started_from_zero = default_row.row() == 0 && !default_row.parent().isValid();
   QModelIndex next_index = nextUnreadItem(default_row);
 
@@ -427,34 +427,34 @@ QModelIndex FeedsView::nextPreviousUnreadItem(QModelIndex default_row) {
   return next_index;
 }
 
-QModelIndex FeedsView::nextUnreadItem(QModelIndex default_row) {
-  default_row = m_proxyModel->index(default_row.row(), 0, default_row.parent());
+QModelIndex FeedsView::nextUnreadItem(const QModelIndex& default_row) {
+  QModelIndex nconst_default_row = m_proxyModel->index(default_row.row(), 0, default_row.parent());
   const QModelIndex starting_row = default_row;
 
   while (true) {
-    bool has_unread = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(default_row))->countOfUnreadMessages() > 0;
+    bool has_unread = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(nconst_default_row))->countOfUnreadMessages() > 0;
 
     if (has_unread) {
-      if (m_proxyModel->hasChildren(default_row)) {
+      if (m_proxyModel->hasChildren(nconst_default_row)) {
         // Current index has unread items, but is expandable, go to first child.
-        expand(default_row);
-        default_row = indexBelow(default_row);
+        expand(nconst_default_row);
+        nconst_default_row = indexBelow(nconst_default_row);
         continue;
       }
       else {
         // We found unread feed, return it.
-        return default_row;
+        return nconst_default_row;
       }
     }
     else {
-      QModelIndex next_row = indexBelow(default_row);
+      QModelIndex next_row = indexBelow(nconst_default_row);
 
-      if (next_row == default_row || !next_row.isValid() || starting_row == next_row) {
+      if (next_row == nconst_default_row || !next_row.isValid() || starting_row == next_row) {
         // We came to last row probably.
         break;
       }
       else {
-        default_row = next_row;
+        nconst_default_row = next_row;
       }
     }
   }

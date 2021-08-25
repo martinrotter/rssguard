@@ -15,7 +15,7 @@ void NonClosableMenu::keyPressEvent(QKeyEvent* event) {
 }
 
 void NonClosableMenu::mousePressEvent(QMouseEvent* event) {
-  auto* act = dynamic_cast<QAction*>(activeAction());
+  auto* act = activeAction();
 
   if (act != nullptr) {
     act->toggle();

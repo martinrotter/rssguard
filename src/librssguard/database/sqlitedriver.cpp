@@ -12,7 +12,7 @@
 
 SqliteDriver::SqliteDriver(bool in_memory, QObject* parent)
   : DatabaseDriver(parent), m_inMemoryDatabase(in_memory),
-  m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QString(APP_DB_SQLITE_PATH)),
+  m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QSL(APP_DB_SQLITE_PATH)),
   m_fileBasedDatabaseInitialized(false),
   m_inMemoryDatabaseInitialized(false) {}
 
@@ -123,7 +123,7 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name, DesiredSto
       database = QSqlDatabase::database(connection_name);
     }
     else {
-      database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER, connection_name);
+      database = QSqlDatabase::addDatabase(QSL(APP_DB_SQLITE_DRIVER), connection_name);
 
       if (want_in_memory) {
         database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE"));
@@ -131,7 +131,7 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name, DesiredSto
       }
       else {
         const QDir db_path(m_databaseFilePath);
-        QFile db_file(db_path.absoluteFilePath(APP_DB_SQLITE_FILE));
+        QFile db_file(db_path.absoluteFilePath(QSL(APP_DB_SQLITE_FILE)));
 
         database.setDatabaseName(db_file.fileName());
       }
@@ -196,7 +196,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
   if (!in_memory) {
     // Prepare file paths.
     const QDir db_path(m_databaseFilePath);
-    QFile db_file(db_path.absoluteFilePath(APP_DB_SQLITE_FILE));
+    QFile db_file(db_path.absoluteFilePath(QSL(APP_DB_SQLITE_FILE)));
 
     // Check if database directory exists.
     if (!db_path.exists()) {
@@ -218,7 +218,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
   // Folders are created. Create new QSQLDatabase object.
   QSqlDatabase database;
 
-  database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER, connection_name);
+  database = QSqlDatabase::addDatabase(QSL(APP_DB_SQLITE_DRIVER), connection_name);
 
   if (in_memory) {
     database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE"));
@@ -241,7 +241,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
       qWarningNN << LOGSEC_DB << "SQLite database is not initialized. Initializing now.";
 
       try {
-        const QStringList statements = prepareScript(APP_SQL_PATH, APP_DB_SQLITE_INIT);
+        const QStringList statements = prepareScript(APP_SQL_PATH, QSL(APP_DB_SQLITE_INIT));
 
         for (const QString& statement : statements) {
           query_db.exec(statement);
@@ -261,7 +261,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
       query_db.next();
       const QString installed_db_schema = query_db.value(0).toString();
 
-      if (installed_db_schema.toInt() < QString(APP_DB_SCHEMA_VERSION).toInt()) {
+      if (installed_db_schema.toInt() < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
         if (updateDatabaseSchema(database, installed_db_schema)) {
           qDebugNN << LOGSEC_DB
                    << "Database schema was updated from '"
@@ -302,7 +302,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
     QSqlQuery copy_contents(database);
 
     // Attach database.
-    copy_contents.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
+    copy_contents.exec(QSL("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
 
     // Copy all stuff.
     QStringList tables;
@@ -317,7 +317,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
     }
 
     for (const QString& table : tables) {
-      copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
+      copy_contents.exec(QSL("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
     }
 
     qDebugNN << LOGSEC_DB
@@ -344,7 +344,7 @@ QString SqliteDriver::databaseFilePath() const {
 
 bool SqliteDriver::updateDatabaseSchema(const QSqlDatabase& database, const QString& source_db_schema_version) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
-  const int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
+  const int current_version = QSL(APP_DB_SCHEMA_VERSION).remove('.').toInt();
 
   // Now, it would be good to create backup of SQLite DB file.
   if (IOFactory::copyFile(databaseFilePath(), databaseFilePath() + ".bak")) {
@@ -357,9 +357,9 @@ bool SqliteDriver::updateDatabaseSchema(const QSqlDatabase& database, const QStr
   while (working_version != current_version) {
     try {
       const QStringList statements = prepareScript(APP_SQL_PATH,
-                                                   QString(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("sqlite"),
-                                                                                           QString::number(working_version),
-                                                                                           QString::number(working_version + 1)));
+                                                   QSL(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("sqlite"),
+                                                                                       QString::number(working_version),
+                                                                                       QString::number(working_version + 1)));
 
       for (const QString& statement : statements) {
         QSqlQuery query = database.exec(statement);
@@ -425,7 +425,7 @@ QString SqliteDriver::humanDriverType() const {
 }
 
 QString SqliteDriver::qtDriverCode() const {
-  return APP_DB_SQLITE_DRIVER;
+  return QSL(APP_DB_SQLITE_DRIVER);
 }
 
 void SqliteDriver::backupDatabase(const QString& backup_folder, const QString& backup_name) {
