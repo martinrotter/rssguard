@@ -19,6 +19,7 @@ import requests
 import distutils.util
 import xml.etree.ElementTree as ET
 from googletrans import Translator
+from bs4 import BeautifulSoup
 
 lang_from = sys.argv[1]
 lang_to = sys.argv[2]
@@ -38,8 +39,13 @@ rss_data = sys.stdin.read()
 rss_document = ET.fromstring(rss_data)
 translator = Translator()
 
+atom_ns = {"ns": "http://www.w3.org/2005/Atom"}
+
 def translate_string(to_translate):
   try:
+    if to_translate is None:
+      return to_translate
+
     translated_text = translator.translate(to_translate, src = lang_from, dest = lang_to)
 
     if not parallel:
@@ -51,14 +57,40 @@ def translate_string(to_translate):
 
 def process_article(article):
   title = article.find("title")
-  title.text = translate_string(title.text)
 
+  if title is None:
+    title = article.find("ns:title", atom_ns)
+
+  if title is not None:
+    title.text = translate_string(title.text)
+
+  # RSS.
   contents = article.find("description")
-  contents.text = translate_string(" ".join(contents.itertext()))
+
+  if contents is None:
+    # ATOM.
+    contents = article.find("ns:content", atom_ns)
+
+  if contents is not None:
+    htmll = "<div>{}</div>".format(contents.text)
+
+    soup = BeautifulSoup(htmll, features = "lxml")
+    contents.text = translate_string(soup.get_text())
+    contents.text = contents.text.replace("\n", "<br/>")
 
 # Translate title.
-title = rss_document.find(".//channel").find("title")
-title.text = translate_string(title.text)
+# RSS.
+channel = rss_document.find("channel")
+
+if channel is not None:
+  title = channel.find("title")
+
+if (channel is None) or (title is None):
+  # ATOM.
+  title = rss_document.find("ns:title", atom_ns)
+
+if title is not None:
+  title.text = translate_string(title.text)
 
 # Translate articles.
 if parallel:
@@ -66,10 +98,14 @@ if parallel:
     futures = []
     for article in rss_document.findall(".//item"):
       futures.append(executor.submit(process_article, article))
+    for article in rss_document.findall(".//ns:entry", atom_ns):
+      futures.append(executor.submit(process_article, article))
     for future in futures:
       future.result()
 else:
   for article in rss_document.findall(".//item"):
+    process_article(article)
+  for article in rss_document.findall(".//ns:entry", atom_ns):
     process_article(article)
 
 print(ET.tostring(rss_document, encoding = "unicode"))
