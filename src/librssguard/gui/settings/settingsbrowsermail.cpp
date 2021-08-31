@@ -57,7 +57,7 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
   connect(m_ui->m_btnAddTool, &QPushButton::clicked, this, &SettingsBrowserMail::addExternalTool);
   connect(m_ui->m_btnEditTool, &QPushButton::clicked, this, &SettingsBrowserMail::editSelectedExternalTool);
   connect(m_ui->m_btnDeleteTool, &QPushButton::clicked, this, &SettingsBrowserMail::deleteSelectedExternalTool);
-  connect(m_ui->m_listTools, &QTreeWidget::itemDoubleClicked, this, &SettingsBrowserMail::editSelectedExternalTool);
+  connect(m_ui->m_listTools, &QTreeWidget::itemDoubleClicked, m_ui->m_btnEditTool, &QPushButton::click);
   connect(m_ui->m_listTools, &QTreeWidget::currentItemChanged, this, [this](QTreeWidgetItem* current, QTreeWidgetItem* previous) {
     Q_UNUSED(previous)
 

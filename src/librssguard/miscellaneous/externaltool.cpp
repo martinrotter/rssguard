@@ -70,5 +70,10 @@ void ExternalTool::setToolsToSettings(QVector<ExternalTool>& tools) {
 }
 
 bool ExternalTool::run(const QString& target) {
-  return IOFactory::startProcessDetached(executable(), QStringList() << parameters() << target);
+  if (parameters().isEmpty()) {
+    return IOFactory::startProcessDetached(executable(), { target });
+  }
+  else {
+    return IOFactory::startProcessDetached(executable(), QStringList() << parameters() << target);
+  }
 }
