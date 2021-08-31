@@ -60,7 +60,6 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
   connect(m_ui->m_listTools, &QTreeWidget::itemDoubleClicked, m_ui->m_btnEditTool, &QPushButton::click);
   connect(m_ui->m_listTools, &QTreeWidget::currentItemChanged, this, [this](QTreeWidgetItem* current, QTreeWidgetItem* previous) {
     Q_UNUSED(previous)
-
     m_ui->m_btnDeleteTool->setEnabled(current != nullptr);
     m_ui->m_btnEditTool->setEnabled(current != nullptr);
   });
