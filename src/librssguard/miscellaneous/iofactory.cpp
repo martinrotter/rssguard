@@ -79,7 +79,9 @@ bool IOFactory::startProcessDetached(const QString& program, const QStringList& 
   process.setArguments(arguments);
 
 #if defined(Q_OS_WIN) || defined(Q_CLANG_QDOC)
-  process.setNativeArguments(native_arguments);
+  if (!native_arguments.isEmpty()) {
+    process.setNativeArguments(native_arguments);
+  }
 #else
   if (arguments.isEmpty() && !native_arguments.isEmpty()) {
     process.setArguments({ native_arguments });

@@ -599,6 +599,8 @@ void Application::onAdBlockFailure() {
                        [=]() {
     m_webFactory->adBlock()->showDialog();
   });
+
+  qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, false);
 }
 
 #endif
