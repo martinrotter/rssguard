@@ -26,6 +26,17 @@ void BaseNetworkAccessManager::loadSettings() {
     setProxy(QNetworkProxy::ProxyType::NoProxy);
   }
   else {
+    qWarningNN << LOGSEC_NETWORK << "Using application-wide proxy.";
+
+    if (QNetworkProxy::applicationProxy().type() != QNetworkProxy::ProxyType::DefaultProxy &&
+        QNetworkProxy::applicationProxy().type() != QNetworkProxy::ProxyType::NoProxy) {
+      qWarningNN << LOGSEC_NETWORK
+                 << "Used proxy address:"
+                 << QUOTE_W_SPACE_COMMA(QNetworkProxy::applicationProxy().hostName())
+                 << " type:"
+                 << QUOTE_W_SPACE_DOT(QNetworkProxy::applicationProxy().type());
+    }
+
     setProxy(QNetworkProxy::applicationProxy());
   }
 

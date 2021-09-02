@@ -296,7 +296,11 @@ QVariant Downloader::lastContentType() const {
 }
 
 void Downloader::setProxy(const QNetworkProxy& proxy) {
-  qWarningNN << LOGSEC_NETWORK << "Setting custom proxy:" << QUOTE_W_SPACE_DOT(proxy.hostName());
+  qWarningNN << LOGSEC_NETWORK
+             << "Setting specific downloader proxy, address:"
+             << QUOTE_W_SPACE_COMMA(proxy.hostName())
+             << " type:"
+             << QUOTE_W_SPACE_DOT(proxy.type());
 
   m_downloadManager->setProxy(proxy);
 }

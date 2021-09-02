@@ -222,10 +222,13 @@ void WebFactory::updateProxy() {
                                                                                              toInt());
 
   if (selected_proxy_type == QNetworkProxy::NoProxy) {
+    qDebugNN << LOGSEC_NETWORK << "Disabling application-wide proxy completely.";
+
     QNetworkProxyFactory::setUseSystemConfiguration(false);
-    QNetworkProxy::setApplicationProxy(QNetworkProxy::NoProxy);
+    QNetworkProxy::setApplicationProxy(QNetworkProxy::ProxyType::NoProxy);
   }
-  else if (selected_proxy_type == QNetworkProxy::DefaultProxy) {
+  else if (selected_proxy_type == QNetworkProxy::ProxyType::DefaultProxy) {
+    qDebugNN << LOGSEC_NETWORK << "Using application-wide proxy to be system's default proxy.";
     QNetworkProxyFactory::setUseSystemConfiguration(true);
   }
   else {
@@ -238,6 +241,12 @@ void WebFactory::updateProxy() {
     new_proxy.setPort(quint16(settings->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt()));
     new_proxy.setUser(settings->value(GROUP(Proxy), SETTING(Proxy::Username)).toString());
     new_proxy.setPassword(settings->password(GROUP(Proxy), SETTING(Proxy::Password)).toString());
+
+    qWarningNN << LOGSEC_NETWORK
+               << "Activating application-wide custom proxy, address:"
+               << QUOTE_W_SPACE_COMMA(new_proxy.hostName())
+               << " type:"
+               << QUOTE_W_SPACE_DOT(new_proxy.type());
 
     QNetworkProxy::setApplicationProxy(new_proxy);
   }
