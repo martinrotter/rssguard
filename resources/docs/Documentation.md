@@ -550,7 +550,7 @@ RSS Guard automatically migrates all your [user data](#userd) if you install new
 
 If you decide to upgrade to new major version, for example from `3.x.x` to `4.x.x`, then you cannot use your existing user data as major versions are declared as backwards incompatible, so such data transition are not supported.
 
-#### Migrating user data from `3.9.2` to `4.x.x`
+### Migrating user data from `3.9.2` to `4.x.x`
 > **Only proceed if you consider yourself to be a SQL power user and you know what you are doing!
 >
 > Also, make sure that last RSS Guard from `3.x.x` line you used with your data was the most up-to-date `3.9.2` version. **
