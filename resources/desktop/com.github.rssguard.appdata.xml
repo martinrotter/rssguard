@@ -15,19 +15,15 @@
   </description>
   <launchable type="desktop-id">com.github.rssguard.desktop</launchable>
   <screenshots>
-    <screenshot type="default">
-      <caption>Linux version</caption>
-      <image>https://github.com/martinrotter/rssguard/blob/master/resources/docs/images/screenshot-linux.png?raw=true</image>
-    </screenshot>
-  <screenshot>
+  <screenshot type="default">
       <caption>Windows version</caption>
-      <image>https://github.com/martinrotter/rssguard/blob/master/resources/docs/images/screenshot-windows.png?raw=true</image>
+      <image>https://github.com/martinrotter/rssguard/blob/master/resources/docs/images/rssguard-window.png?raw=true</image>
     </screenshot>
   </screenshots>
   <url type="homepage">https://github.com/martinrotter/rssguard</url>
   <url type="bugtracker">https://github.com/martinrotter/rssguard/issues</url>
-  <url type="translate">https://www.transifex.com/martinrotter/rssguard/</url>
-  <url type="donation">https://martinrotter.github.io/donate/</url>
+  <url type="translate">https://www.transifex.com/martinrotter/rssguard</url>
+  <url type="donation">https://github.com/sponsors/martinrotter</url>
   <content_rating type="oars-1.1" />
   <releases>
     <release version="4.0.0" date="2021-09-03"/>
