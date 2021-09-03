@@ -63,7 +63,12 @@ QIcon MessagesModel::generateIconForScore(double score) {
   paint.fillPath(path, Qt::GlobalColor::white);
   paint.drawPath(path);
 
+#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
   path.clear();
+#else
+  path = QPainterPath();
+#endif
+
   paint.setPen(Qt::GlobalColor::transparent);
 
   int bar_height = 6 * level;
