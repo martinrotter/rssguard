@@ -559,7 +559,7 @@ Here is short DIY manual on how to manually update your `database.db` file to `4
 
 Here are SQLs for [old](https://github.com/martinrotter/rssguard/blob/3.9.2/resources/sql/db_init_sqlite.sql) schema and [new](https://github.com/martinrotter/rssguard/blob/4.0.0/resources/sql/db_init_sqlite.sql) schema.
 
-Converting `*Accounts` tables
+### Converting `*Accounts` tables
 ***
 In `3.x.x` each plugin/account type had its own table where it kept your login usernames, service URLs etc. In `4.x.x` all plugins share one table `Accounts` and place account-specific data into `custom_data` column. You simply can take all rows from any `*Accounts` table (for example `TtRssAccounts`) and insert them into `Accounts`, keeping all columns their default values, except of `type`, which must have on of these values:
 * `std-rss` - for standard RSS/ATOM feeds.
@@ -573,15 +573,14 @@ Then you need to go to `Edit` dialog of your account in RSS Guard (once you comp
 
 Also, once you add any rows the `Accounts` table, your row will be assigned uniqued `id` value which is integer and is used as foreign key in other DB tables, via column `account_id`.
 
-Converting `Feeds` table
+### Converting `Feeds` table
 ***
 WIP
 
-Converting `Messages` table
+### Converting `Messages` table
 ***
 WIP
 
-Other tables
+### Other tables
 ***
-
 Other tables like `Labels` or `MessageFilters` are unchanged between these two major RSS Guard versions. But you might need to adjust `account_id` to match DB ID of your account.
