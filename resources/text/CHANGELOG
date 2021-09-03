@@ -4,24 +4,29 @@
 * configuration file "config.ini" IS fully backwards compatible,
 * database file "database.db" is NOT backwards compatible.
 
-You may ask why is there new major version and backwards compatibility is broken:
+You may ask why is there new major version and why backwards compatibility is broken:
 * I needed to completely overhaul some of core concepts inside RSS Guard.
 * Database structure in file "database.db" was very complicated and hard to maintain and had to be simplified. Number of database tables was greatly reduced and whole structure is easier to follow.
 * Source code was greatly simplified in many places which makes RSS Guard easier to maintain and easier to develop new features.
-* Also, and this is potential killer feature. New changes allowed implementation of "next-gen" synchronization algorithms which may, in some cases, dramatically speed-up two-way synchronization of articles. This new synchronization algorithm is right now implemented and enabled for Google Reader API plugin as PoC and it is called "Intelligent synchronization algorithm" within RSS Guard.
+* Also, and this is potential killer feature, new changes allowed implementation of "next-gen" synchronization algorithms which may, in some cases, dramatically speed-up two-way synchronization of articles. This new synchronization algorithm is right now implemented and enabled for Google Reader API plugin as PoC and it is called "Intelligent synchronization algorithm" within RSS Guard. The algorithm will be implemented for other plugins over time.
 * There is crazy number of new features and bugfixes. See list below.
 * Also, let me say some more extra points:
     * More than 4 000 code changes were made in total during RSS Guard development. Codebase consists of 38 500 lines of C++ code.
     * First version of RSS Guard was published 8 years ago.
     * RSS Guard is one-man project, I have implemented it on my own. 99% of code is written from scratch.
     * Received donations for RSS Guard were under 100 USD in total.
-    * If you feel that RSS Guard is slow, broken or shitty application, then you are probably right. Nonetheless, you should still submit well-structured and sane bug report.
+    * If you feel that RSS Guard is slow, broken or shitty application, then you are probably right. Nonetheless, you should still submit well-structured and sane bug report, so that I can actually fix the issue! If you do not submit bug report, then please do no spread lies about how bad RSS Guard is and switch to another feed reader instead. 
 
 Added:
 * Brand new notifications subsystem added. It can play sounds, individual events are independently configurable in application settings. (#356, #144)
 * "MessageObject" class now exposes "rawContents" property for message filtering. Property contains raw RSS/ATOM/JSON contents of the message. (#377)
 * URL-embedded cookies are now supported, as well as classic cookies, which are now saved in non-persistent cookie jar. (#391)
 * "Next-gen" synchronization algorithms which may, in some cases, dramatically speed-up two-way synchronization of articles. This new synchronization algorithm is right now implemented and enabled for Google Reader API plugin as PoC and is called "Intelligent synchronization algorithm" within RSS Guard. The algorithm will be also implemented for other plugins in the future.
+* Google Reader API plugin supports "ot" option.
+* Documentation was completely rewritten.
+* Fixed support for OS/2.
+* Optional notification for login failures.
+* Improved bug report templates (PR by sakkamade). (#467)
 * Properly implement "feed://" scheme to be able to "open" feeds from web browsers etc. (#390)
 * Added "Unread messages" node to feeds list which now centralizes access to all unread messages. (#384)
 * New search box for feeds list toolbar which now allows users to search/filter feeds list. (#380)
@@ -34,6 +39,7 @@ Added:
 * Google Reader API plugin is greatly enhanced, has better support for TheOldReader.
 * Inoreader plugin was merged into Google Reader API plugin as Inoreader too uses Google Reader API.
 * Toolbar search boxes have now dynamic width. (#431)
+* Visual state of some dialogs is now remembered, for example "Cleanup database".
 * Some GUI texts and terms were unified and changed (message -> article, download feed -> fetch feed, etc.). (#430)
 * There is now some default filename set when exporting feeds to file.
 * Number of unread messages is now shown on Linux also in taskbar (not just tray icon). (#437)
@@ -43,6 +49,15 @@ Added:
 * Notifications with new messages is now only launched if there are NEW UNREAD messages. (#440)
 
 Fixed/changed:
+* RSS Guard can be correctly "killed. (#466)
+* Database file "database.db" now not stored in redundant "local" subfolder.
+* Expand state of "Labels" item is now remembered.
+* Example scraper "translate-feed.py" now can translate ATOM feeds too.
+* External tools now can be used with any hyperlink.
+* Account's folders/feeds are resynchronized when "Edit" dialog exits only when really needed.
+* Fixed problems related to custom order (and sorting) of columns in article list.
+* Qt stylesheet from skins is now not loaded if there is already loaded some external stylesheet.
+* Local-only labels/tags are now note removed when performing folder synchronization of the account. (#465)
 * Progress bar in "Import/Export feeds" dialog was misleading and show invalid progress. (#379)
 * Feeds were not correctly re-sorted by titles after some feed is renamed. (#387)
 * "Select next unread message" feature produces some exotic message list scrolling. (#389)
