@@ -20,12 +20,13 @@ Welcome to RSS Guard documentation. You can find everything about the applicatio
 ##### &nbsp;&nbsp;&nbsp;&nbsp;[`Skins`](#skin)
 ##### &nbsp;&nbsp;&nbsp;&nbsp;[`GUI Tweaking`](#guit)
 ##### &nbsp;&nbsp;&nbsp;&nbsp;[`Command Line Interface (CLI)`](#cli)
-### [`For Contributors`](#contrib)
+### [`For Contributors and Other Topics`](#contrib)
 ##### &nbsp;&nbsp;&nbsp;&nbsp;[`Donations`](#donat)
 ##### &nbsp;&nbsp;&nbsp;&nbsp;[`Compiling RSS Guard`](#compil)
 ##### &nbsp;&nbsp;&nbsp;&nbsp;[`Plugin API`](#papi)
-##### &nbsp;&nbsp;&nbsp;&nbsp;[`Reporting Bugs or Feature Requests`]()
-##### &nbsp;&nbsp;&nbsp;&nbsp;[`Localization`]()
+##### &nbsp;&nbsp;&nbsp;&nbsp;[`Reporting Bugs or Feature Requests`](#reprt)
+##### &nbsp;&nbsp;&nbsp;&nbsp;[`Localization`](#locali)
+##### &nbsp;&nbsp;&nbsp;&nbsp;[`Migrating data`](#migratt)
 
 <hr style="margin: 40px;"/>
 
@@ -529,12 +530,12 @@ Perhaps the best approach to use when writing new plugin is to copy [existing](h
 
 Note that RSS Guard can support loading of plugins from external libraries (dll, so, etc.) but the functionality must be polished because so far all plugins are directly bundled into the app as no one really requested run-time loading of plugins so far.
 
-### Reporting Bugs or Feature Requests
+### <a id="reprt"></a>Reporting Bugs or Feature Requests
 Please report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible, along with steps taken leading up to the issue occurring.
 
 Also, for some broader questions or general ideas, use [discussions](https://github.com/martinrotter/rssguard/discussions) rather than [issues](https://github.com/martinrotter/rssguard/issues).
 
-### Localization
+### <a id="locali"></a>Localization
 RSS Guard currently includes [many localizations](http://www.transifex.com/projects/p/rssguard).
 
 If you are interested in creating translations for RSS Guard, then do this:
@@ -543,3 +544,44 @@ If you are interested in creating translations for RSS Guard, then do this:
 2. [Login](http://www.transifex.com/signin) (you can use social networks to login) and work on existing translations. If no translation team for your country/language exists, then ask for creating of localization team via the website.
 
 **All translators commit themselves to keep their translations up-to-date. If some translations are not updated by their authors regularly and only small number of strings is translated, then those translations along with their teams will be eventually REMOVED from the project!!! At least 50% of strings must be translated for translation to being added to project.**
+
+### <a id="migratt"></a>Migrating data
+RSS Guard automatically migrates all your [user data](#userd) if you install newer minor version, for example if you update from `3.7.5` to `3.9.1`.
+
+If you decide to upgrade to new major version, for example from `3.x.x` to `4.x.x`, then you cannot use your existing user data as major versions are declared as backwards incompatible, so such data transition are not supported.
+
+#### Migrating user data from `3.9.2` to `4.x.x`
+> **Only proceed if you consider yourself to be a SQL power user and you know what you are doing!
+>
+> Also, make sure that last RSS Guard from `3.x.x` line you used with your data was the most up-to-date `3.9.2` version. **
+
+Here is short DIY manual on how to manually update your `database.db` file to `4.x.x` format. Similar approach can be taken if you use `MariaDB` [database backend](#datab).
+
+Here are SQLs for [old](https://github.com/martinrotter/rssguard/blob/3.9.2/resources/sql/db_init_sqlite.sql) schema and [new](https://github.com/martinrotter/rssguard/blob/4.0.0/resources/sql/db_init_sqlite.sql) schema.
+
+Converting `*Accounts` tables
+***
+In `3.x.x` each plugin/account type had its own table where it kept your login usernames, service URLs etc. In `4.x.x` all plugins share one table `Accounts` and place account-specific data into `custom_data` column. You simply can take all rows from any `*Accounts` table (for example `TtRssAccounts`) and insert them into `Accounts`, keeping all columns their default values, except of `type`, which must have on of these values:
+* `std-rss` - for standard RSS/ATOM feeds.
+* `tt-rss` - for Tiny Tiny RSS.
+* `owncloud` - for Nextcloud News.
+* `greader` - For all Google Reader API services, including Inoreader.
+* `feedly` - for Feedly.
+* `gmail` - for Gmail.
+
+Then you need to go to `Edit` dialog of your account in RSS Guard (once you complete this migration guide) and check for all missing login information etc.
+
+Also, once you add any rows the `Accounts` table, your row will be assigned uniqued `id` value which is integer and is used as foreign key in other DB tables, via column `account_id`.
+
+Converting `Feeds` table
+***
+WIP
+
+Converting `Messages` table
+***
+WIP
+
+Other tables
+***
+
+Other tables like `Labels` or `MessageFilters` are unchanged between these two major RSS Guard versions. But you might need to adjust `account_id` to match DB ID of your account.
