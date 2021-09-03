@@ -6,6 +6,8 @@
 #include <QDialogButtonBox>
 #include <QMessageBox>
 
+#include <functional>
+
 class MessageBox : public QMessageBox {
   Q_OBJECT
 
