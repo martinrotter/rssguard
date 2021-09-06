@@ -18,6 +18,8 @@ LabelWithStatus::LabelWithStatus(QWidget* parent)
   // Compose the layout.
   m_layout->addWidget(m_wdgInput);
   m_layout->addWidget(m_btnStatus);
+
+  setLayoutDirection(Qt::LayoutDirection::RightToLeft);
 }
 
 void LabelWithStatus::setStatus(WidgetWithStatus::StatusType status,

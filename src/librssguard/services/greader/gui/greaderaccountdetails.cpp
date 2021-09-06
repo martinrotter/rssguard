@@ -29,8 +29,6 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
 
   m_ui.m_dateNewerThan->setMinimumDate(QDate(2000, 1, 1));
   m_ui.m_dateNewerThan->setMaximumDate(QDate::currentDate());
-
-  //m_ui.m_dateNewerThan->setDate(QDate::currentDate().addYears(-1));
   m_ui.m_dateNewerThan->setDisplayFormat(qApp->localization()->loadedLocale().dateFormat());
 
   m_ui.m_lblTestResult->label()->setWordWrap(true);
@@ -42,32 +40,30 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
 
-  m_ui.m_lblLimitMessages->setText(tr("Some feeds might contain tens of thousands of articles "
-                                      "and downloading all of them could take great amount of time, "
-                                      "so sometimes it is good to download "
-                                      "only certain amount of newest messages."));
+  m_ui.m_lblLimitMessages->setHelpText(tr("Some feeds might contain tens of thousands of articles "
+                                          "and downloading all of them could take great amount of time, "
+                                          "so sometimes it is good to download "
+                                          "only certain amount of newest messages."),
+                                       true);
 
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessages, true);
-
-  m_ui.m_lblNewAlgorithm->setText(tr("If you select intelligent synchronization, then only not-yet-fetched "
-                                     "or updated articles are downloaded. Network usage is greatly reduced and "
-                                     "overall synchronization speed is greatly improved, but "
-                                     "first feed fetching could be slow anyway if your feed contains "
-                                     "huge number of articles."));
-
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblNewAlgorithm, false);
+  m_ui.m_lblNewAlgorithm->setHelpText(tr("If you select intelligent synchronization, then only not-yet-fetched "
+                                         "or updated articles are downloaded. Network usage is greatly reduced and "
+                                         "overall synchronization speed is greatly improved, but "
+                                         "first feed fetching could be slow anyway if your feed contains "
+                                         "huge number of articles."),
+                                      false);
 
 #if defined(INOREADER_OFFICIAL_SUPPORT)
-  m_ui.m_lblInfo->setText(tr("There are some preconfigured OAuth tokens so you do not have to fill in your "
-                             "client ID/secret, but it is strongly recommended to obtain your "
-                             "own as preconfigured tokens have limited global usage quota. If you wish "
-                             "to use preconfigured tokens, simply leave all above fields to their default values even "
-                             "if they are empty."));
+  m_ui.m_lblInfo->setHelpText(tr("There are some preconfigured OAuth tokens so you do not have to fill in your "
+                                 "client ID/secret, but it is strongly recommended to obtain your "
+                                 "own as preconfigured tokens have limited global usage quota. If you wish "
+                                 "to use preconfigured tokens, simply leave all above fields to their default values even "
+                                 "if they are empty."),
+                              true);
 #else
-  m_ui.m_lblInfo->setText(tr("You have to fill in your client ID/secret and also fill in correct redirect URL."));
+  m_ui.m_lblInfo->setHelpText(tr("You have to fill in your client ID/secret and also fill in correct redirect URL."),
+                              true);
 #endif
-
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
 
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onPasswordChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onUsernameChanged);

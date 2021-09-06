@@ -18,7 +18,8 @@ class WidgetWithStatus : public QWidget {
       Warning,
       Error,
       Ok,
-      Progress
+      Progress,
+      Question
     };
 
     explicit WidgetWithStatus(QWidget* parent);
@@ -36,6 +37,7 @@ class WidgetWithStatus : public QWidget {
     QIcon m_iconWarning;
     QIcon m_iconError;
     QIcon m_iconOk;
+    QIcon m_iconQuestion;
 };
 
 inline WidgetWithStatus::StatusType WidgetWithStatus::status() const {

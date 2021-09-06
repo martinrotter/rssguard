@@ -1,10 +1,8 @@
 // Simple local HTTP server providing ad-blocking functionality via https://github.com/cliqz-oss/adblocker
 //
 // How to install:
-//     npm i -g @cliqz/adblocker
-//     npm i -g concat-stream
 //     npm i -g tldts-experimental
-//     npm i -g node-fetch
+//     npm i -g @cliqz/adblocker
 //
 // How to run:
 //     NODE_PATH="C:\Users\<user>\AppData\Roaming\npm\node_modules" node ./adblock-server.js "<port>" "<filters-file-path>"
@@ -23,9 +21,6 @@ const fs = require('fs');
 const tldts = require('tldts-experimental');
 const adblock = require('@cliqz/adblocker')
 const http = require('http');
-const concat = require('concat-stream');
-const constants = require('node:http2');
-const fetch = require("node-fetch");
 const cluster = require('cluster');
 
 const numCPUs = require('os').cpus().length;

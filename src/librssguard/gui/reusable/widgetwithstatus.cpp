@@ -17,6 +17,7 @@ WidgetWithStatus::WidgetWithStatus(QWidget* parent)
   m_iconWarning = qApp->icons()->fromTheme(QSL("dialog-warning"));
   m_iconError = qApp->icons()->fromTheme(QSL("dialog-error"));
   m_iconOk = qApp->icons()->fromTheme(QSL("dialog-yes"));
+  m_iconQuestion = qApp->icons()->fromTheme(QSL("dialog-question"));
 
   // Set layout properties.
   m_layout->setContentsMargins({});
@@ -47,6 +48,10 @@ void WidgetWithStatus::setStatus(WidgetWithStatus::StatusType status, const QStr
 
     case StatusType::Ok:
       m_btnStatus->setIcon(m_iconOk);
+      break;
+
+    case StatusType::Question:
+      m_btnStatus->setIcon(m_iconQuestion);
       break;
 
     default:
