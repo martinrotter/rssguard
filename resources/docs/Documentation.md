@@ -400,7 +400,7 @@ If you're not sure which version to use, **use the WebEngine-based RSS Guard**.
 #### AdBlock
 [Web-based variant](#webb) of RSS Guard offers ad-blocking functionality via [Adblocker](https://github.com/cliqz-oss/adblocker). Adblocker offers similar performance to [uBlock Origin](https://github.com/gorhill/uBlock).
 
-You need to have have [Node.js](https://nodejs.org) with [NPM](https://www.npmjs.com) (which is usually included in Node.js installer) installed to have ad-blocking in RSS Guard working. Also, the implementation requires additional [npm](https://www.npmjs.com) modules to be installed. You see that list of needed modules near the top of [this](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/adblock/adblock-server.js) file.
+You need to have have [Node.js](https://nodejs.org) with [NPM](https://www.npmjs.com) (which is usually included in Node.js installer) installed to have ad-blocking in RSS Guard working. Also, the implementation requires additional [npm](https://www.npmjs.com) modules to be installed. You see the list of needed modules near the top of [this](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/adblock/adblock-server.js) file.
 
 I understand that the above installation of needed dependencies is not trivial, but it is necessary evil to have up-to-date and modern implementation of AdBlock in RSS Guard. Previous `C++`-based implementation was buggy, quite slow and hard to maintain.
 
@@ -551,9 +551,9 @@ RSS Guard automatically migrates all your [user data](#userd) if you install new
 If you decide to upgrade to new major version, for example from `3.x.x` to `4.x.x`, then you cannot use your existing user data as major versions are declared as backwards incompatible, so such data transition are not supported.
 
 ### Migrating user data from `3.9.2` to `4.x.x`
-> **Only proceed if you consider yourself to be a SQL power user and you know what you are doing!
+> Only proceed if you consider yourself to be a SQL power user and you know what you are doing!
 >
-> Also, make sure that last RSS Guard from `3.x.x` line you used with your data was the most up-to-date `3.9.2` version. **
+> Also, make sure that last RSS Guard from `3.x.x` line you used with your data was the most up-to-date `3.9.2` version.
 
 Here is short DIY manual on how to manually update your `database.db` file to `4.x.x` format. Similar approach can be taken if you use `MariaDB` [database backend](#datab).
 
@@ -571,15 +571,33 @@ In `3.x.x` each plugin/account type had its own table where it kept your login u
 
 Then you need to go to `Edit` dialog of your account in RSS Guard (once you complete this migration guide) and check for all missing login information etc.
 
-Also, once you add any rows the `Accounts` table, your row will be assigned uniqued `id` value which is integer and is used as foreign key in other DB tables, via column `account_id`.
+<a id="accid"></a>Also, once you add any rows the `Accounts` table, your row will be assigned uniqued `id` value which is integer and is used as foreign key in other DB tables, via column `account_id`.
 
 ### Converting `Feeds` table
 ***
-WIP
+There are some changes in `Feeds` table:
+* `url` column is now named `source`,
+* `source_type`, `post_process`, `encoding`, `type`, `protected`, `username`, `password` columns are removed and their data are now stored in JSON-serialized form in new column `custom_data`. Here is sample value of `custom_data`:
+
+```json
+{
+  "encoding": "UTF-8",
+  "password": "AwUujeO2efOgYpX3g1/zoOTp9JULcLTZzwfY",
+  "post_process": "",
+  "protected": false,
+  "source_type": 0,
+  "type": 3,
+  "username": ""
+}
+```
+
+Pay attention to `account_id` column as this column is the ID of your accout as stated in the above [section](#accid).
 
 ### Converting `Messages` table
 ***
-WIP
+Columns were reordered and other than that new column `score` with sane default value was added. Therefore you can simply copy your data in a column-to-column mode.
+
+Pay attention to `account_id` column as this column is the ID of your accout as stated in the above [section](#accid).
 
 ### Other tables
 ***

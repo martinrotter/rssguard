@@ -38,7 +38,7 @@
     </message>
     <message>
         <source>&amp;Test configuration</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testaa kokoonpano</translation>
     </message>
     <message>
         <source>Filter lists</source>
@@ -46,11 +46,11 @@
     </message>
     <message>
         <source>No test executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Testiä ei ole vielä suoritettu.</translation>
     </message>
     <message>
         <source>Cannot enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>AdBlockin käyttöönotto ei onnistu</translation>
     </message>
     <message>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
@@ -62,7 +62,7 @@
     </message>
     <message>
         <source>OK!</source>
-        <translation type="unfinished"/>
+        <translation>OK!</translation>
     </message>
     <message>
         <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
@@ -72,7 +72,7 @@ Error: %1</source>
     </message>
     <message>
         <source>ERROR!</source>
-        <translation type="unfinished"/>
+        <translation>VIRHE!</translation>
     </message>
 </context>
 <context>
@@ -90,7 +90,7 @@ Error: %1</source>
     <name>AdBlockManager</name>
     <message>
         <source>AdBlock needs to be configured</source>
-        <translation type="unfinished"/>
+        <translation>AdBlockin asetukset tulee määrittää</translation>
     </message>
     <message>
         <source>AdBlock component is not configured properly.</source>
@@ -98,7 +98,7 @@ Error: %1</source>
     </message>
     <message>
         <source>failed to download filter list &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>suodatuslistan &apos;%1&apos; lataaminen epäonnistui</translation>
     </message>
 </context>
 <context>
@@ -160,11 +160,11 @@ Error: %1</source>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Aseta käyttäjätunnus voidaksesi käyttää syötettä.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
+        <translation>Aseta salasana voidaksesi käyttää syötettä.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
@@ -187,7 +187,7 @@ Error: %1</source>
     <name>BaseLineEdit</name>
     <message>
         <source>Show/hide the password</source>
-        <translation type="unfinished"/>
+        <translation>Näytä/piilota salasana</translation>
     </message>
 </context>
 <context>
@@ -221,7 +221,7 @@ Error: %1</source>
     </message>
     <message>
         <source>Removing read articles...</source>
-        <translation type="unfinished"/>
+        <translation>Poistetaan luetut artikkelit...</translation>
     </message>
     <message>
         <source>Read articles purged...</source>
@@ -229,7 +229,7 @@ Error: %1</source>
     </message>
     <message>
         <source>Removing old articles...</source>
-        <translation type="unfinished"/>
+        <translation>Poistetaan vanhat artikkelit...</translation>
     </message>
     <message>
         <source>Old articles purged...</source>
@@ -248,7 +248,7 @@ Error: %1</source>
     <name>DatabaseFactory</name>
     <message>
         <source>Cannot connect to database</source>
-        <translation type="unfinished"/>
+        <translation>Tietokantaan ei voi yhdistää</translation>
     </message>
     <message>
         <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
@@ -271,7 +271,7 @@ Error: %1</source>
     </message>
     <message>
         <source>This website does not contain any feeds</source>
-        <translation type="unfinished"/>
+        <translation>Verkkosivu ei sisällä syötteitä</translation>
     </message>
     <message numerus="yes">
         <source>Add one of %n feed(s)</source>
@@ -470,11 +470,11 @@ Status: %3</source>
     </message>
     <message>
         <source>parsing error</source>
-        <translation type="unfinished"/>
+        <translation>jäsennysvirhe</translation>
     </message>
     <message>
         <source>error</source>
-        <translation type="unfinished"/>
+        <translation>virhe</translation>
     </message>
 </context>
 <context>
@@ -515,11 +515,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Developer access token</source>
-        <translation type="unfinished"/>
+        <translation>Kehittäjän pääsypoletti</translation>
     </message>
     <message>
         <source>Get token</source>
-        <translation type="unfinished"/>
+        <translation>Hanki poletti</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -527,7 +527,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Tilisi käyttäjätunnus</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -571,7 +571,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Login was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Kirjautuminen onnistui.</translation>
     </message>
     <message>
         <source>Some problems.</source>
@@ -583,27 +583,27 @@ Status: %3</source>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus on OK.</translation>
     </message>
     <message>
         <source>Access token is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Pääsypoletti on tyhjä.</translation>
     </message>
     <message>
         <source>Access token is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Pääsypoletti on OK.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Virhe: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain X artikkelia per syöte</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat artikkelit</translation>
     </message>
     <message>
         <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
@@ -614,15 +614,15 @@ Status: %3</source>
     <name>FeedlyNetwork</name>
     <message>
         <source>Feedly: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: virhe tunnistautumisessa</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Napsauta kirjautuaksesi uudelleen. Virhe on: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Feedly: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: valtuutus evätty</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -656,7 +656,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
+        <translation>Raahaa ja pudota -toimintoa ei voi suorittaa</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -682,11 +682,11 @@ Status: %3</source>
     <name>FeedsView</name>
     <message>
         <source>Cannot edit item</source>
-        <translation type="unfinished"/>
+        <translation>Tietuetta ei voi muokata</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation type="unfinished"/>
+        <translation>Tietuetta ei voi poistaa</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
@@ -861,11 +861,11 @@ or this functionality is not implemented yet.</source>
     <name>FormAccountDetails</name>
     <message>
         <source>Edit account &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Muokkaa tiliä &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Network proxy</source>
-        <translation type="unfinished"/>
+        <translation>Verkon välityspalvelin</translation>
     </message>
     <message>
         <source>Add new account</source>
@@ -907,11 +907,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>E-mail NOT sent</source>
-        <translation type="unfinished"/>
+        <translation>Sähköpostia EI lähetetty</translation>
     </message>
     <message>
         <source>Your e-mail message wasn&apos;t sent.</source>
-        <translation type="unfinished"/>
+        <translation>Sähköpostiviestiäsi ei lähetetty.</translation>
     </message>
 </context>
 <context>
@@ -1125,7 +1125,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Edit &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Muokkaa &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -1180,11 +1180,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Optimize database file</source>
-        <translation type="unfinished"/>
+        <translation>Optimoi tietokantatiedosto</translation>
     </message>
     <message>
         <source>Remove all read articles</source>
-        <translation type="unfinished"/>
+        <translation>Poista kaikki luetut artikkelit</translation>
     </message>
     <message>
         <source>Remove all articles from recycle bin</source>
@@ -1261,7 +1261,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
-        <translation type="unfinished"/>
+        <translation>Muutoksia ei voi tallentaa: %1</translation>
     </message>
     <message>
         <source>Auto-downloading of articles</source>
@@ -1269,7 +1269,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Edit &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Muokkaa &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Fetch articles using global interval</source>
@@ -1281,7 +1281,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Disable auto-fetching of articles</source>
-        <translation type="unfinished"/>
+        <translation>Poista käytöstä artikkelien automaattinen noutaminen</translation>
     </message>
 </context>
 <context>
@@ -1332,7 +1332,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation type="unfinished"/>
+        <translation>Piilottaa pääikkunan jos se on näkyvissä, palauttaa näkyviin jos pääikkuna on piilossa.</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
@@ -1340,7 +1340,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation type="unfinished"/>
+        <translation>Tarkista onko sovelluspäivitystä tarjolla ladattavaksi.</translation>
     </message>
     <message>
         <source>&amp;About application</source>
@@ -1536,31 +1536,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Add item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Lisää tietue</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Koko näyttö</translation>
     </message>
     <message>
         <source>&amp;Fetch all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nouda kaikki</translation>
     </message>
     <message>
         <source>Fetch all feeds</source>
-        <translation type="unfinished"/>
+        <translation>Nouda kaikki syötteet</translation>
     </message>
     <message>
         <source>Fetch &amp;selected</source>
-        <translation type="unfinished"/>
+        <translation>Nouda &amp;valitut</translation>
     </message>
     <message>
         <source>Fetch selected feeds</source>
-        <translation type="unfinished"/>
+        <translation>Nouda valitut syötteet</translation>
     </message>
     <message>
         <source>Mark articles &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Merkitse artikkelit &amp;luetuiksi</translation>
     </message>
     <message>
         <source>Mark selected articles read</source>
@@ -1568,7 +1568,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Mark articles &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Merkitse artikkelit l&amp;ukemattomiksi</translation>
     </message>
     <message>
         <source>Mark selected articles unread</source>
@@ -1576,7 +1576,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Switch &amp;importance</source>
-        <translation type="unfinished"/>
+        <translation>Vaihda &amp;tärkeyttä</translation>
     </message>
     <message>
         <source>Switch importance of selected articles</source>
@@ -1592,7 +1592,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Delete articles</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Poista artikkelit</translation>
     </message>
     <message>
         <source>&amp;Clean selected item</source>
@@ -1600,19 +1600,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Open in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>Avaa &amp;erillisessä selaimessa</translation>
     </message>
     <message>
         <source>Open selected articles in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Avaa valitut artikkelit erillisessä selaimessa</translation>
     </message>
     <message>
         <source>Open in &amp;internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Avaa &amp;sisäisessä selaimessa</translation>
     </message>
     <message>
         <source>Open selected articles in internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Avaa valitut artikkelit sisäisessä selaimessa</translation>
     </message>
     <message>
         <source>&amp;Mark all read</source>
@@ -1632,11 +1632,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Next article</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Seuraava artikkeli</translation>
     </message>
     <message>
         <source>&amp;Previous article</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Edellinen artikkeli</translation>
     </message>
     <message>
         <source>&amp;List headers</source>
@@ -1656,7 +1656,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Send via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Lähetä sähköpostitse</translation>
     </message>
     <message>
         <source>Send selected articles via e-mail</source>
@@ -1668,7 +1668,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Add account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Lisää tili</translation>
     </message>
     <message>
         <source>&amp;Restore articles</source>
@@ -1676,7 +1676,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Next &amp;unread article</source>
-        <translation type="unfinished"/>
+        <translation>Seuraava &amp;lukematon artikkeli</translation>
     </message>
     <message>
         <source>Stop ongoing fetching</source>
@@ -1688,7 +1688,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Enable article preview</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Käytä artikkelin esikatselua</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected item</source>
@@ -1696,7 +1696,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Show &amp;unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Näytä vain &amp;lukemattomat artikkelit</translation>
     </message>
     <message>
         <source>&amp;Show tree expanders</source>
@@ -1716,19 +1716,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>F&amp;eeds</source>
-        <translation type="unfinished"/>
+        <translation>S&amp;yötteet</translation>
     </message>
     <message>
         <source>Art&amp;icles</source>
-        <translation type="unfinished"/>
+        <translation>Art&amp;ikkelit</translation>
     </message>
     <message>
         <source>&amp;Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Verkkoselain &amp;&amp; välilehdet</translation>
     </message>
     <message>
         <source>Ta&amp;bs</source>
-        <translation type="unfinished"/>
+        <translation>V&amp;älilehdet</translation>
     </message>
     <message>
         <source>Fetching common data</source>
@@ -1737,7 +1737,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Fetched &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Noudettu &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -2175,7 +2175,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     </message>
     <message>
         <source>API returned error code %1</source>
-        <translation type="unfinished"/>
+        <translation>API palautti virhekoodin %1</translation>
     </message>
 </context>
 <context>
@@ -2381,7 +2381,7 @@ Voit asentaa sen nyt.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Virhe: %1</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -2389,18 +2389,18 @@ Voit asentaa sen nyt.</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain X artikkelia per syöte</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat artikkelit</translation>
     </message>
 </context>
 <context>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Napsauta kirjautuaksesi uudelleen. Virhe on: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -2503,7 +2503,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Tilisi käyttäjätunnus</translation>
     </message>
     <message>
         <source>URL of your server, without any service-specific path</source>
@@ -2539,7 +2539,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus on OK.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
@@ -2559,11 +2559,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain X artikkelia per syöte</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat artikkelit</translation>
     </message>
     <message>
         <source>Intelligent synchronization algorithm</source>
@@ -2654,7 +2654,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Napsauta kirjautuaksesi uudelleen. Virhe on: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
@@ -2669,7 +2669,7 @@ Login tokens expiration: %2</source>
     <name>GreaderServiceRoot</name>
     <message>
         <source>Other services</source>
-        <translation type="unfinished"/>
+        <translation>Muut palvelut</translation>
     </message>
 </context>
 <context>
@@ -2755,7 +2755,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>MariaDB</source>
-        <translation type="unfinished"/>
+        <translation>MariaDB</translation>
     </message>
 </context>
 <context>
@@ -3376,7 +3376,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus on OK.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
@@ -3396,11 +3396,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat artikkelit</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain X artikkelia per syöte</translation>
     </message>
     <message>
         <source>articles</source>
@@ -3496,7 +3496,7 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>New %1 version is available</source>
-        <translation type="unfinished"/>
+        <translation>Uusi %1-versio saatavilla</translation>
     </message>
     <message>
         <source>Miscellaneous events</source>
@@ -3512,7 +3512,7 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>XML problem: %1</source>
-        <translation type="unfinished"/>
+        <translation>XML-ongelma: %1</translation>
     </message>
     <message>
         <source>Google Reader API is used by many online RSS readers.
@@ -3583,11 +3583,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>Etsi edellinen esiintymä</translation>
     </message>
     <message>
         <source>Find next occurence</source>
-        <translation type="unfinished"/>
+        <translation>Etsi seuraava esiintymä</translation>
     </message>
 </context>
 <context>
@@ -3730,7 +3730,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Network proxy</source>
-        <translation type="unfinished"/>
+        <translation>Verkon välityspalvelin</translation>
     </message>
     <message>
         <source>&amp;Add new external tool</source>
@@ -4218,11 +4218,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"/>
+        <translation>Ilmoitukset</translation>
     </message>
     <message>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Käytä ilmoituksia</translation>
     </message>
     <message>
         <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
@@ -4255,7 +4255,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SingleNotificationEditor</name>
     <message>
         <source>Sound</source>
-        <translation type="unfinished"/>
+        <translation>Ääni</translation>
     </message>
     <message>
         <source>Full path to your WAV sound file</source>
@@ -4267,7 +4267,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&amp;Play</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Toista</translation>
     </message>
     <message>
         <source>Balloon notification</source>
@@ -4275,11 +4275,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Select sound file</source>
-        <translation type="unfinished"/>
+        <translation>Valitse äänitiedosto</translation>
     </message>
     <message>
         <source>WAV files (*.wav)</source>
-        <translation type="unfinished"/>
+        <translation>WAV-tiedostot (*.wav)</translation>
     </message>
 </context>
 <context>
@@ -4323,11 +4323,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Local file</source>
-        <translation type="unfinished"/>
+        <translation>Paikallinen tiedosto</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Tuntematon</translation>
     </message>
     <message>
         <source>Error</source>
@@ -4496,7 +4496,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Valitse kuvake syötteelle</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
@@ -4525,7 +4525,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Source</source>
-        <translation type="unfinished"/>
+        <translation>Lähde</translation>
     </message>
     <message>
         <source>Post-process script</source>
@@ -4577,7 +4577,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Command is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Komento on tyhjä.</translation>
     </message>
     <message>
         <source>Script failed: %1</source>
@@ -4585,7 +4585,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Network error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Verkkovirhe: %1</translation>
     </message>
     <message>
         <source>Error: %1</source>
@@ -4724,7 +4724,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Browse your feeds and articles</source>
-        <translation type="unfinished"/>
+        <translation>Selaa syötteitä ja artikkeleja</translation>
     </message>
 </context>
 <context>
@@ -4912,7 +4912,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus on OK.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
@@ -4952,11 +4952,11 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat artikkelit</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain X artikkelia per syöte</translation>
     </message>
 </context>
 <context>

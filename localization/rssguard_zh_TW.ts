@@ -26,11 +26,11 @@
     </message>
     <message>
         <source>Custom filters</source>
-        <translation type="unfinished"/>
+        <translation>自訂篩選器</translation>
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
-        <translation type="unfinished"/>
+        <translation>於此新增自訂篩選器(每行一個)</translation>
     </message>
     <message>
         <source>&amp;Help</source>
@@ -42,15 +42,15 @@
     </message>
     <message>
         <source>Filter lists</source>
-        <translation type="unfinished"/>
+        <translation>篩選器清單</translation>
     </message>
     <message>
         <source>No test executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>尚未做過測試。</translation>
     </message>
     <message>
         <source>Cannot enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>無法啟用 AdBlock</translation>
     </message>
     <message>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
@@ -1128,7 +1128,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Edit &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>編輯 &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -1175,15 +1175,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Total data size</source>
-        <translation type="unfinished"/>
+        <translation>全部資料大小</translation>
     </message>
     <message>
         <source>Cleanup settings</source>
-        <translation type="unfinished"/>
+        <translation>清除設定</translation>
     </message>
     <message>
         <source>Optimize database file</source>
-        <translation type="unfinished"/>
+        <translation>最佳化資料庫檔案</translation>
     </message>
     <message>
         <source>Remove all read articles</source>
@@ -1272,7 +1272,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Edit &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>編輯 &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Fetch articles using global interval</source>
@@ -4295,7 +4295,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&amp;Play</source>
-        <translation type="unfinished"/>
+        <translation>播放(&amp;P)</translation>
     </message>
     <message>
         <source>Balloon notification</source>
