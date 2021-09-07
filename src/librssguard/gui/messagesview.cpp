@@ -659,6 +659,10 @@ void MessagesView::selectNextUnreadItem() {
 }
 
 void MessagesView::searchMessages(const QString& pattern) {
+  qDebugNN << LOGSEC_GUI
+           << "Running search of messages with pattern"
+           << QUOTE_W_SPACE_DOT(pattern);
+
 #if QT_VERSION < 0x050C00 // Qt < 5.12.0
   m_proxyModel->setFilterRegExp(pattern.toLower());
 #else

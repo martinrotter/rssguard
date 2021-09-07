@@ -7,9 +7,13 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
+#include <chrono>
 #include <QMenu>
+#include <QTimer>
 #include <QToolButton>
 #include <QWidgetAction>
+
+using namespace std::chrono_literals;
 
 MessagesToolBar::MessagesToolBar(const QString& title, QWidget* parent) : BaseToolBar(title, parent) {
   initializeSearchBox();
@@ -101,6 +105,9 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
 }
 
 void MessagesToolBar::initializeSearchBox() {
+  m_tmrSearchPattern = new QTimer(this);
+  m_tmrSearchPattern->setSingleShot(true);
+
   m_txtSearchMessages = new BaseLineEdit(this);
   m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding, m_txtSearchMessages->sizePolicy().verticalPolicy());
   m_txtSearchMessages->setPlaceholderText(tr("Search articles"));
@@ -112,7 +119,10 @@ void MessagesToolBar::initializeSearchBox() {
   m_actionSearchMessages->setProperty("type", SEARCH_BOX_ACTION_NAME);
   m_actionSearchMessages->setProperty("name", tr("Article search box"));
 
-  connect(m_txtSearchMessages, &BaseLineEdit::textChanged, this, &MessagesToolBar::messageSearchPatternChanged);
+  connect(m_txtSearchMessages, &BaseLineEdit::textChanged, this, &MessagesToolBar::onSearchPatternChanged);
+  connect(m_tmrSearchPattern, &QTimer::timeout, this, [this]() {
+    emit messageSearchPatternChanged(m_searchPattern);
+  });
 }
 
 void MessagesToolBar::initializeHighlighter() {
@@ -154,4 +164,9 @@ QStringList MessagesToolBar::savedActions() const {
 #else
                                                                                                QString::SplitBehavior::SkipEmptyParts);
 #endif
+}
+
+void MessagesToolBar::onSearchPatternChanged(const QString& search_pattern) {
+  m_searchPattern = search_pattern;
+  m_tmrSearchPattern->start(700ms);
 }

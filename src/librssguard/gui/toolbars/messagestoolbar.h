@@ -11,6 +11,7 @@ class BaseLineEdit;
 class QWidgetAction;
 class QToolButton;
 class QMenu;
+class QTimer;
 
 class MessagesToolBar : public BaseToolBar {
   Q_OBJECT
@@ -31,6 +32,7 @@ class MessagesToolBar : public BaseToolBar {
     void messageFilterChanged(MessagesModel::MessageHighlighter filter);
 
   private slots:
+    void onSearchPatternChanged(const QString& search_pattern);
     void handleMessageHighlighterChange(QAction* action);
 
   private:
@@ -43,6 +45,8 @@ class MessagesToolBar : public BaseToolBar {
     QMenu* m_menuMessageHighlighter;
     QWidgetAction* m_actionSearchMessages;
     BaseLineEdit* m_txtSearchMessages;
+    QTimer* m_tmrSearchPattern;
+    QString m_searchPattern;
 };
 
 #endif // NEWSTOOLBAR_H
