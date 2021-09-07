@@ -7,17 +7,17 @@
 #include <QDir>
 
 #if !defined(Q_OS_OS2)
-#include <QSound>
+#include <QMediaPlayer>
 #endif
 
-Notification::Notification(Notification::Event event, bool balloon, const QString& sound_path)
-  : m_event(event), m_balloonEnabled(balloon), m_soundPath(sound_path) {}
+Notification::Notification(Notification::Event event, bool balloon, const QString& sound_path, int volume)
+  : m_event(event), m_balloonEnabled(balloon), m_soundPath(sound_path), m_volume(volume) {}
 
 Notification::Event Notification::event() const {
   return m_event;
 }
 
-void Notification::setEvent(const Event& event) {
+void Notification::setEvent(Event event) {
   m_event = event;
 }
 
@@ -32,7 +32,26 @@ void Notification::setSoundPath(const QString& sound_path) {
 void Notification::playSound(Application* app) const {
   if (!m_soundPath.isEmpty()) {
 #if !defined(Q_OS_OS2)
-    QSound::play(QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath)));
+    QMediaPlayer* play = new QMediaPlayer(app);
+
+    QObject::connect(play, &QMediaPlayer::stateChanged, play, [play](QMediaPlayer::State state) {
+      if (state == QMediaPlayer::State::StoppedState) {
+        play->deleteLater();
+      }
+    });
+
+    if (m_soundPath.startsWith(QSL(":"))) {
+      play->setMedia(QMediaContent(QUrl(QSL("qrc") + m_soundPath)));
+
+    }
+    else {
+      play->setMedia(QMediaContent(
+                       QUrl::fromLocalFile(
+                         QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath)))));
+    }
+
+    play->setVolume(m_volume);
+    play->play();
 #endif
   }
 }
@@ -63,7 +82,7 @@ QString Notification::nameForEvent(Notification::Event event) {
       return QObject::tr("Login failed");
 
     case Notification::Event::NewAppVersionAvailable:
-      return QObject::tr("New %1 version is available").arg(APP_NAME);
+      return QObject::tr("New %1 version is available").arg(QSL(APP_NAME));
 
     case Notification::Event::GeneralEvent:
       return QObject::tr("Miscellaneous events");
@@ -71,6 +90,14 @@ QString Notification::nameForEvent(Notification::Event event) {
     default:
       return QObject::tr("Unknown event");
   }
+}
+
+int Notification::volume() const {
+  return m_volume;
+}
+
+void Notification::setVolume(int volume) {
+  m_volume = volume;
 }
 
 bool Notification::balloonEnabled() const {

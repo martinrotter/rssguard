@@ -33,12 +33,16 @@ class Notification {
       LoginFailure = 6
     };
 
-    explicit Notification(Event event = Event::NoEvent, bool balloon = {}, const QString& sound_path = {});
+    explicit Notification(Event event = Event::NoEvent, bool balloon = {}, const QString& sound_path = {},
+                          int volume = {});
 
     bool balloonEnabled() const;
 
     Event event() const;
-    void setEvent(const Event& event);
+    void setEvent(Event event);
+
+    int volume() const;
+    void setVolume(int volume);
 
     // Returns full path to audio file which should be played when notification
     // is launched.
@@ -55,6 +59,7 @@ class Notification {
     Event m_event;
     bool m_balloonEnabled;
     QString m_soundPath;
+    int m_volume;
 };
 
 #endif // NOTIFICATION_H

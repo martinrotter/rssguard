@@ -48,8 +48,9 @@ void NotificationFactory::load(Settings* settings) {
     auto data = settings->value(GROUP(Notifications), key).toStringList();
     auto enabled = data.at(0).toInt() != 0;
     auto sound = data.at(1);
+    auto volume = data.size() > 2 ? data.at(2).toInt() : 100;
 
-    m_notifications.append(Notification(event, enabled, sound));
+    m_notifications.append(Notification(event, enabled, sound, volume));
   }
 }
 
@@ -60,7 +61,8 @@ void NotificationFactory::save(const QList<Notification>& new_notifications, Set
   for (const auto& n : qAsConst(m_notifications)) {
     settings->setValue(GROUP(Notifications), QString::number(int(n.event())), QStringList {
       n.balloonEnabled() ? QSL("1") : QSL("0"),
-      n.soundPath()
+      n.soundPath(),
+      QString::number(n.volume())
     });
   }
 }

@@ -39,7 +39,6 @@ void NotificationsEditor::loadNotifications(const QList<Notification>& notificat
       connect(notif_editor, &SingleNotificationEditor::notificationChanged, this, &NotificationsEditor::someNotificationChanged);
 
       m_layout->addWidget(notif_editor);
-
     }
   }
 
