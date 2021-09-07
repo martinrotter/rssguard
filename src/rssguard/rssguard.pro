@@ -45,7 +45,8 @@ INCLUDEPATH +=  $$PWD/../librssguard \
 DEPENDPATH += $$PWD/../librssguard
 
 win32: LIBS += -L$$OUT_PWD/../librssguard/ -llibrssguard
-unix: LIBS += $$OUT_PWD/../librssguard/librssguard.so
+mac: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard
+unix:!mac: LIBS += $$OUT_PWD/../librssguard/librssguard.so
 os2: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard
 
 win32 {
