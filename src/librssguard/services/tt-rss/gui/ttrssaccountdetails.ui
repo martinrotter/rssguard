@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>432</width>
-    <height>480</height>
+    <height>396</height>
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout">
@@ -93,14 +93,7 @@
     </widget>
    </item>
    <item row="4" column="0" colspan="2">
-    <widget class="QLabel" name="m_lblServerSideUpdateInformation">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
+    <widget class="HelpSpoiler" name="m_lblServerSideUpdateInformation" native="true"/>
    </item>
    <item row="5" column="0" colspan="2">
     <widget class="QGroupBox" name="m_gbAuthentication">
@@ -221,21 +214,27 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LabelWithStatus</class>
-   <extends>QWidget</extends>
-   <header>labelwithstatus.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>MessageCountSpinBox</class>
    <extends>QSpinBox</extends>
    <header>messagecountspinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

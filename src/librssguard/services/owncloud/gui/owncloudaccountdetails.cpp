@@ -12,8 +12,9 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
   m_ui.setupUi(this);
 
   m_ui.m_lblTestResult->label()->setWordWrap(true);
-  m_ui.m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
-                                                    "of feeds will be probably much slower and may time-out often."));
+  m_ui.m_lblServerSideUpdateInformation->setHelpText(tr("Leaving this option on causes that updates "
+                                                        "of feeds will be probably much slower and may time-out often."),
+                                                     true);
   m_ui.m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your Nextcloud account"));
   m_ui.m_txtPassword->lineEdit()->setPasswordMode(true);
   m_ui.m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your Nextcloud account"));
@@ -30,8 +31,6 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
       m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("articles"));
     }
   });
-
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblServerSideUpdateInformation, true);
 
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onPasswordChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onUsernameChanged);

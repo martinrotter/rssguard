@@ -43,14 +43,7 @@
     </layout>
    </item>
    <item row="2" column="0" colspan="2">
-    <widget class="QLabel" name="m_lblInfo">
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
+    <widget class="HelpSpoiler" name="m_lblInfo" native="true"/>
    </item>
    <item row="4" column="0" colspan="2">
     <layout class="QFormLayout" name="formLayout_3">
@@ -115,24 +108,11 @@
     </widget>
    </item>
    <item row="5" column="0" colspan="2">
-    <widget class="QLabel" name="m_lblLimitMessagesInfo">
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
+    <widget class="HelpSpoiler" name="m_lblLimitMessagesInfo" native="true"/>
    </item>
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>LabelWithStatus</class>
-   <extends>QWidget</extends>
-   <header>labelwithstatus.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
@@ -140,9 +120,21 @@
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>MessageCountSpinBox</class>
    <extends>QSpinBox</extends>
    <header>messagecountspinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

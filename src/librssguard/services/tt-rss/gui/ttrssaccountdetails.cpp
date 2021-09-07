@@ -11,8 +11,9 @@ TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
 
   m_ui.m_lblTestResult->label()->setWordWrap(true);
-  m_ui.m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
-                                                    "of feeds will be probably much slower and may time-out often."));
+  m_ui.m_lblServerSideUpdateInformation->setHelpText(tr("Leaving this option on causes that updates "
+                                                        "of feeds will be probably much slower and may time-out often."),
+                                                     true);
   m_ui.m_txtHttpUsername->lineEdit()->setPlaceholderText(tr("HTTP authentication username"));
   m_ui.m_txtHttpPassword->lineEdit()->setPlaceholderText(tr("HTTP authentication password"));
   m_ui.m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account"));
@@ -21,8 +22,6 @@ TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
-
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblServerSideUpdateInformation, true);
 
   setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_checkDownloadOnlyUnreadMessages);
   setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_spinLimitMessages);

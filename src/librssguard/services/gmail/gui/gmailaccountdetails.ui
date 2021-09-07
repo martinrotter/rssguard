@@ -97,20 +97,7 @@
        </layout>
       </item>
       <item row="3" column="0" colspan="2">
-       <widget class="QLabel" name="m_lblInfo">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>1</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
+       <widget class="HelpSpoiler" name="m_lblInfo" native="true"/>
       </item>
      </layout>
     </widget>
@@ -181,21 +168,27 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LabelWithStatus</class>
-   <extends>QWidget</extends>
-   <header>labelwithstatus.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>MessageCountSpinBox</class>
    <extends>QSpinBox</extends>
    <header>messagecountspinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>

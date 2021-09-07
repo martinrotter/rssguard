@@ -14,16 +14,16 @@ GmailAccountDetails::GmailAccountDetails(QWidget* parent)
   : QWidget(parent), m_oauth(nullptr), m_lastProxy({}) {
   m_ui.setupUi(this);
 
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
-
 #if defined(GMAIL_OFFICIAL_SUPPORT)
-  m_ui.m_lblInfo->setText(tr("There are some preconfigured OAuth tokens so you do not have to fill in your "
-                             "client ID/secret, but it is strongly recommended to obtain your "
-                             "own as it preconfigured tokens have limited global usage quota. If you wish "
-                             "to use preconfigured tokens, simply leave those fields empty and make sure "
-                             "to leave default value of redirect URL."));
+  m_ui.m_lblInfo->setHelpText(tr("There are some preconfigured OAuth tokens so you do not have to fill in your "
+                                 "client ID/secret, but it is strongly recommended to obtain your "
+                                 "own as it preconfigured tokens have limited global usage quota. If you wish "
+                                 "to use preconfigured tokens, simply leave those fields empty and make sure "
+                                 "to leave default value of redirect URL."),
+                              false);
 #else
-  m_ui.m_lblInfo->setText(tr("You have to fill in your client ID/secret and also fill in correct redirect URL."));
+  m_ui.m_lblInfo->setHelpText(tr("You have to fill in your client ID/secret and also fill in correct redirect URL."),
+                              true);
 #endif
 
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,

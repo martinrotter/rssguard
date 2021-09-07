@@ -32,21 +32,21 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent), m
                                   tr("Here, results of connection test are shown."));
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
-  m_ui.m_lblInfo->setText(tr("Your %1 build has official Feedly support. You do not have to use \"developer acess "
-                             "token\". You can therefore leave corresponding field empty.").arg(APP_NAME));
+  m_ui.m_lblInfo->setHelpText(tr("Your %1 build has official Feedly support. You do not have to use \"developer acess "
+                                 "token\". You can therefore leave corresponding field empty.").arg(QSL(APP_NAME)),
+                              false);
 #else
-  m_ui.m_lblInfo->setText(tr("Your %1 does not offer official Feedly support, thus you must "
-                             "authorize via special authorization code called \"developer access token\". "
-                             "These tokens are usually valid only for 1 month and allow only 250 API calls "
-                             "each day.").arg(APP_NAME));
+  m_ui.m_lblInfo->setHelpText(tr("Your %1 does not offer official Feedly support, thus you must "
+                                 "authorize via special authorization code called \"developer access token\". "
+                                 "These tokens are usually valid only for 1 month and allow only 250 API calls "
+                                 "each day.").arg(QSL(APP_NAME)),
+                              true);
 #endif
 
-  m_ui.m_lblLimitMessagesInfo->setText(tr("Beware of downloading too many articles, because "
-                                          "Feedly permanently caches ALL articles of the feed, so you might "
-                                          "end up with thousands of articles which you will never read anyway."));
-
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblInfo, true);
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblLimitMessagesInfo, true);
+  m_ui.m_lblLimitMessagesInfo->setHelpText(tr("Beware of downloading too many articles, because "
+                                              "Feedly permanently caches ALL articles of the feed, so you might "
+                                              "end up with thousands of articles which you will never read anyway."),
+                                           true);
 
   connect(m_ui.m_btnGetToken, &QPushButton::clicked, this, &FeedlyAccountDetails::getDeveloperAccessToken);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FeedlyAccountDetails::onUsernameChanged);
