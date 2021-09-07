@@ -6,16 +6,50 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>477</width>
-    <height>336</height>
+    <width>480</width>
+    <height>430</height>
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout_2">
    <item row="0" column="0" colspan="2">
-    <widget class="QTabWidget" name="m_tabWidget">
-     <property name="currentIndex">
-      <number>-1</number>
+    <widget class="QScrollArea" name="m_scroll">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
      </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>462</width>
+        <height>383</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTabWidget" name="m_tabWidget">
+         <property name="currentIndex">
+          <number>-1</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item row="1" column="0" colspan="2">
