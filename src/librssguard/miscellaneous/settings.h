@@ -122,6 +122,9 @@ namespace Messages {
   KEY ClearReadOnExit;
   VALUE(bool) ClearReadOnExitDef;
 
+  KEY IgnoreContentsChanges;
+  VALUE(bool) IgnoreContentsChangesDef;
+
   KEY DisplayFeedIconsInList;
   VALUE(bool) DisplayFeedIconsInListDef;
 

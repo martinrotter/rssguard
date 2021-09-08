@@ -240,7 +240,7 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="2">
+       <item row="2" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkDisplayPlaceholders">
          <property name="text">
           <string>Display placeholders to indicate locations of pictures</string>
@@ -248,27 +248,34 @@
         </widget>
        </item>
        <item row="3" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbShowEnclosuresDirectly">
+         <property name="text">
+          <string>Display attached pictures directly in article</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkDisplayFeedIcons">
          <property name="text">
           <string>Display real icons of feeds in list of articles instead of read/unread icons</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="2">
+       <item row="5" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkBringToForegroundAfterMsgOpened">
          <property name="text">
           <string>Bring application window to front once article is opened in external web browser</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0" colspan="2">
+       <item row="6" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkKeppMessagesInTheMiddle">
          <property name="text">
           <string>Keep article selection in the middle of the article list viewport</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
+       <item row="7" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Height or rows in article list (-1 = default height)</string>
@@ -278,7 +285,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="1">
+       <item row="7" column="1">
         <widget class="QSpinBox" name="m_spinHeightRowsMessages">
          <property name="minimum">
           <number>-1</number>
@@ -288,7 +295,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="8" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
           <string>Height of image attachments</string>
@@ -298,7 +305,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
+       <item row="8" column="1">
         <widget class="QSpinBox" name="m_spinHeightImageAttachments">
          <property name="minimum">
           <number>22</number>
@@ -308,7 +315,23 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="0" colspan="2">
+       <item row="9" column="0">
+        <widget class="QCheckBox" name="m_checkMessagesDateTimeFormat">
+         <property name="text">
+          <string>Use custom date/time format (overrides format loaded from active localization)</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="QComboBox" name="m_cmbMessagesDateTimeFormat"/>
+       </item>
+       <item row="10" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QGroupBox" name="groupBox_5">
@@ -377,23 +400,7 @@
          </item>
         </layout>
        </item>
-       <item row="8" column="0">
-        <widget class="QCheckBox" name="m_checkMessagesDateTimeFormat">
-         <property name="text">
-          <string>Use custom date/time format (overrides format loaded from active localization)</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QComboBox" name="m_cmbMessagesDateTimeFormat"/>
-       </item>
-       <item row="11" column="0" colspan="2">
+       <item row="12" column="0" colspan="2">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -406,10 +413,10 @@
          </property>
         </spacer>
        </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbShowEnclosuresDirectly">
+       <item row="1" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cmbIgnoreContentsChanges">
          <property name="text">
-          <string>Display attached pictures directly in article</string>
+          <string>Ignore changes in article contents when determining if article is &quot;new&quot;</string>
          </property>
         </widget>
        </item>
@@ -440,6 +447,7 @@
   <tabstop>m_cbHideCountsIfNoUnread</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
+  <tabstop>m_cmbIgnoreContentsChanges</tabstop>
   <tabstop>m_checkDisplayPlaceholders</tabstop>
   <tabstop>m_cbShowEnclosuresDirectly</tabstop>
   <tabstop>m_checkDisplayFeedIcons</tabstop>

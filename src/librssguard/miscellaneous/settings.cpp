@@ -105,6 +105,9 @@ DVALUE(char*) Messages::CustomDateFormatDef = "";
 DKEY Messages::ClearReadOnExit = "clear_read_on_exit";
 DVALUE(bool) Messages::ClearReadOnExitDef = false;
 
+DKEY Messages::IgnoreContentsChanges = "ignore_contents_changes";
+DVALUE(bool) Messages::IgnoreContentsChangesDef = true;
+
 DKEY Messages::DisplayFeedIconsInList = "display_feed_icons_in_message_list";
 DVALUE(bool) Messages::DisplayFeedIconsInListDef = false;
 
