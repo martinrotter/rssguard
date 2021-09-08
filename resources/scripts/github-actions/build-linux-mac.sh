@@ -67,9 +67,10 @@ if [ $is_linux = true ]; then
   install -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" "AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
   gst_executables="-executable=AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
 
-  for plugin in alsa app audioconvert audioparsers audioresample autodetect coreelements id3demux jack mpg123 mulaw playback typefindfunctions wavparse apetag; do
-    install -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgst${plugin}.so" "AppDir/usr/lib/gstreamer-1.0/libgst${plugin}.so"
-    gst_executables="${gst_executables} -executable=AppDir/usr/lib/gstreamer-1.0/libgst${plugin}.so"
+  for plugin in $(ls /usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgst*.so); do
+    basen=$(basename "$plugin")
+    install -Dm755 "$plugin" "AppDir/usr/lib/gstreamer-1.0/$basen"
+    gst_executables="${gst_executables} -executable=AppDir/usr/lib/gstreamer-1.0/$basen"
   done
 
   # Create AppImage.
