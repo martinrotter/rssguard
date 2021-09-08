@@ -78,6 +78,21 @@ Application::Application(const QString& id, int& argc, char** argv)
   connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
   connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
 
+#if defined(Q_OS_LINUX)
+  QString app_dir = QString::fromLocal8Bit(qgetenv("APPDIR"));
+
+  if (!app_dir.isEmpty()) {
+    bool success = qputenv("GST_PLUGIN_SYSTEM_PATH_1_0",
+                           QSL("%1/usr/lib/gstreamer-1.0:%2").arg(app_dir,
+                                                                  QString::fromLocal8Bit(qgetenv("GST_PLUGIN_SYSTEM_PATH_1_0"))).toLocal8Bit());
+    success = qputenv("GST_PLUGIN_SCANNER_1_0",
+                      QSL("%1/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner").arg(app_dir).toLocal8Bit()) && success;
+    if (!success) {
+      qWarningNN << LOGSEC_CORE << "Unable to set up GStreamer environment.";
+    }
+  }
+#endif
+
 #if defined(USE_WEBENGINE)
   m_webFactory->urlIinterceptor()->load();
 
