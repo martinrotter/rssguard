@@ -1,3 +1,20 @@
+4.0.2
+-----
+
+Added:
+* Documentation now contains section for DIY migration of data from RSS Guard 3.x line.
+* Updated localizations.
+* Notification sounds now have adjustable volume. (#488)
+* Searching in articles is now performed with delay after search expression is typed. (#485)
+* Big account "edit" dialogs now have scrollbars if they are too big to fit on screen. (#483)
+* Both built-in skins now use same Pico.css CSS library and have unified look for both light and dark variants (except of dark colors of course).
+
+Fixed:
+* Gstreamer libraries are now bundled into AppImage version of RSS Guard.
+* Feedly now fetches messages correctly, no more message disappearing, related algorithm for article DB storing was also updated. (#487)
+* AdBlock local Node.js-based server now has only really needed dependencies.
+* Fixed problem with linking "librssguard.so" on some Linux distributions. (#486)
+
 4.0.0
 -----
 4.0.0 is new major release of RSS Guard. RSS Guard 4.x is NOT backwards compatible with 3.x line. Specifically:
