@@ -22,7 +22,7 @@ if [ $is_linux = true ]; then
 
   #sudo apt-get -y install gcc-7 g++-7
   sudo apt-get -y install qt515tools qt515base qt515webengine qt515svg qt515multimedia 
-  sudo apt-get -y install openssl libssl-dev libgl1-mesa-dev 
+  sudo apt-get -y install openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-qt5
 
   #sudo update-alternatives --remove-all gcc 
   #sudo update-alternatives --remove-all g++
