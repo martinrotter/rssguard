@@ -34,7 +34,7 @@ class Notification {
     };
 
     explicit Notification(Event event = Event::NoEvent, bool balloon = {}, const QString& sound_path = {},
-                          int volume = {});
+                          int volume = 50);
 
     bool balloonEnabled() const;
 
