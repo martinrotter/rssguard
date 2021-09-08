@@ -16,19 +16,20 @@ echo "OS: $os; WebEngine: $webengine"
 
 # Prepare environment.
 if [ $is_linux = true ]; then
-  sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-  sudo add-apt-repository ppa:beineri/opt-qt-5.14.2-xenial -y
-
+  #sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-bionic -y
   sudo apt-get update
-  sudo apt-get -y install gcc-7 g++-7 qt514tools qt514base qt514webengine qt514svg qt514multimedia 
+
+  #sudo apt-get -y install gcc-7 g++-7
+  sudo apt-get -y install qt515tools qt515base qt515webengine qt515svg qt515multimedia 
   sudo apt-get -y install openssl libssl-dev libgl1-mesa-dev 
 
-  sudo update-alternatives --remove-all gcc 
-  sudo update-alternatives --remove-all g++
-  sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50
-  sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50
+  #sudo update-alternatives --remove-all gcc 
+  #sudo update-alternatives --remove-all g++
+  #sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50
+  #sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50
   
-  source /opt/qt514/bin/qt514-env.sh
+  source /opt/qt515/bin/qt515-env.sh
 else
   pip3 install aqtinstall
   
@@ -64,6 +65,7 @@ if [ $is_linux = true ]; then
 
   # Create AppImage.
   unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations
   ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations
 
   if [[ "$webengine" == "true" ]]; then
