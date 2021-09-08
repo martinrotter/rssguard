@@ -63,17 +63,26 @@ if [ $is_linux = true ]; then
   wget -c https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
   chmod a+x linuxdeployqt-continuous-x86_64.AppImage 
 
+  # Copy Gstreamer libs.
+  install -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" "AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
+  gst_executables="-executable=AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
+
+  for plugin in alsa app audioconvert audioparsers audioresample autodetect coreelements id3demux jack mpg123 mulaw playback typefindfunctions wavparse apetag; do
+    install -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgst${plugin}.so" "AppDir/usr/lib/gstreamer-1.0/libgst${plugin}.so"
+    gst_executables="${gst_executables} -executable=AppDir/usr/lib/gstreamer-1.0/libgst${plugin}.so"
+  done
+
   # Create AppImage.
   unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
 
   if [[ "$webengine" == "true" ]]; then
     # Copy some NSS3 files to prevent WebEngine crashes.
     cp /usr/lib/x86_64-linux-gnu/nss/* ./AppDir/usr/lib/ -v
   fi
 
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -appimage -no-translations
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -appimage -no-translations $gst_executables
 
   # Rename AppImaage.
   set -- R*.AppImage
