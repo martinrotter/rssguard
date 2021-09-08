@@ -48,7 +48,7 @@ void NotificationFactory::load(Settings* settings) {
     auto data = settings->value(GROUP(Notifications), key).toStringList();
     auto enabled = data.at(0).toInt() != 0;
     auto sound = data.at(1);
-    auto volume = data.size() > 2 ? data.at(2).toInt() : 100;
+    auto volume = data.size() > 2 ? data.at(2).toInt() : DEFAULT_NOTIFICATION_VOLUME;
 
     m_notifications.append(Notification(event, enabled, sound, volume));
   }

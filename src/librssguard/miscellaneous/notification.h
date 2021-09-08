@@ -5,6 +5,8 @@
 
 #include <QString>
 
+#include "definitions/definitions.h"
+
 class Application;
 
 class Notification {
@@ -34,7 +36,7 @@ class Notification {
     };
 
     explicit Notification(Event event = Event::NoEvent, bool balloon = {}, const QString& sound_path = {},
-                          int volume = 50);
+                          int volume = DEFAULT_NOTIFICATION_VOLUME);
 
     bool balloonEnabled() const;
 

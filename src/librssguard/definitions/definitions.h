@@ -84,6 +84,7 @@
 #define ENCRYPTION_FILE_NAME                  "key.private"
 #define RELOAD_MODEL_BORDER_NUM               10
 #define COOKIE_URL_IDENTIFIER                 ":COOKIE:"
+#define DEFAULT_NOTIFICATION_VOLUME           50
 
 #define GOOGLE_SEARCH_URL                     "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
 #define GOOGLE_SUGGEST_URL                    "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"
