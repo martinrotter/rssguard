@@ -16,18 +16,11 @@ echo "OS: $os; WebEngine: $webengine"
 
 # Prepare environment.
 if [ $is_linux = true ]; then
-  #sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-bionic -y
   sudo apt-get update
 
-  #sudo apt-get -y install gcc-7 g++-7
   sudo apt-get -y install qt515tools qt515base qt515webengine qt515svg qt515multimedia 
-  sudo apt-get -y install openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-qt5
-
-  #sudo update-alternatives --remove-all gcc 
-  #sudo update-alternatives --remove-all g++
-  #sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50
-  #sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 50
+  sudo apt-get -y install openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-qt5 gstreamer1.0-pulseaudio
   
   source /opt/qt515/bin/qt515-env.sh
 else
@@ -64,14 +57,16 @@ if [ $is_linux = true ]; then
   chmod a+x linuxdeployqt-continuous-x86_64.AppImage 
 
   # Copy Gstreamer libs.
-  install -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" "AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
+  install -v -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" "AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
   gst_executables="-executable=AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
 
   for plugin in $(ls /usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgst*.so); do
     basen=$(basename "$plugin")
-    install -Dm755 "$plugin" "AppDir/usr/lib/gstreamer-1.0/$basen"
+    install -v -Dm755 "$plugin" "AppDir/usr/lib/gstreamer-1.0/$basen"
     gst_executables="${gst_executables} -executable=AppDir/usr/lib/gstreamer-1.0/$basen"
   done
+
+  echo "Gstream command line for AppImage is: $gst_executables"
 
   # Create AppImage.
   unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
