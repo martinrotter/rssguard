@@ -22,7 +22,7 @@ if [ $is_linux = true ]; then
 
   #sudo apt-get -y install gcc-7 g++-7
   sudo apt-get -y install qt515tools qt515base qt515webengine qt515svg qt515multimedia 
-  sudo apt-get -y install openssl libssl-dev libgl1-mesa-dev 
+  sudo apt-get -y install openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-qt5
 
   #sudo update-alternatives --remove-all gcc 
   #sudo update-alternatives --remove-all g++
@@ -63,17 +63,27 @@ if [ $is_linux = true ]; then
   wget -c https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
   chmod a+x linuxdeployqt-continuous-x86_64.AppImage 
 
+  # Copy Gstreamer libs.
+  install -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" "AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
+  gst_executables="-executable=AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
+
+  for plugin in $(ls /usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgst*.so); do
+    basen=$(basename "$plugin")
+    install -Dm755 "$plugin" "AppDir/usr/lib/gstreamer-1.0/$basen"
+    gst_executables="${gst_executables} -executable=AppDir/usr/lib/gstreamer-1.0/$basen"
+  done
+
   # Create AppImage.
   unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
 
   if [[ "$webengine" == "true" ]]; then
     # Copy some NSS3 files to prevent WebEngine crashes.
     cp /usr/lib/x86_64-linux-gnu/nss/* ./AppDir/usr/lib/ -v
   fi
 
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -appimage -no-translations
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -appimage -no-translations $gst_executables
 
   # Rename AppImaage.
   set -- R*.AppImage
