@@ -1265,7 +1265,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
       //
       // Now, we update it if at least one of next conditions is true:
       //   1) FOR SYNCHRONIZED SERVICES: Message has custom ID AND (its date OR read status OR starred status are changed
-      //      or message was moved from one feed to another - this can particularly happen in Gmail feeds).
+      //      or message was moved from other feed to current feed - this can particularly happen in Gmail feeds).
       //
       //   2) FOR NON-SYNCHRONIZED SERVICES (RSS/ATOM/JSON): Message has custom ID/GUID and its title or contents are changed.
       //
@@ -1279,7 +1279,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                     (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
                      message.m_isRead != is_read_existing_message ||
                      message.m_isImportant != is_important_existing_message ||
-                     message.m_feedId != feed_id_existing_message ||
+                     (message.m_feedId != feed_id_existing_message && message.m_feedId == feed_custom_id) ||
                      message.m_title != title_existing_message ||
                      (!ignore_contents_changes && message.m_contents != contents_existing_message));
       bool cond_2 = !message.m_customId.isEmpty() && !feed->getParentServiceRoot()->isSyncable() &&
