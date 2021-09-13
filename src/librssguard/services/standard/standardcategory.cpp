@@ -84,10 +84,10 @@ bool StandardCategory::removeItself() {
 
   for (RootItem* child : qAsConst(chi)) {
     if (child->kind() == RootItem::Kind::Category) {
-      children_removed &= dynamic_cast<StandardCategory*>(child)->removeItself();
+      children_removed &= qobject_cast<StandardCategory*>(child)->removeItself();
     }
     else if (child->kind() == RootItem::Kind::Feed) {
-      children_removed &= dynamic_cast<StandardFeed*>(child)->removeItself();
+      children_removed &= qobject_cast<StandardFeed*>(child)->removeItself();
     }
   }
 

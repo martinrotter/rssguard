@@ -132,7 +132,7 @@ void FormMessageFiltersManager::filterMessagesLikeThis(const Message& msg) {
   addNewFilter(filter_script);
 }
 
-void FormMessageFiltersManager::showMessageContextMenu(const QPoint& pos) {
+void FormMessageFiltersManager::showMessageContextMenu(QPoint pos) {
   Message* msg = m_msgModel->messageForRow(m_ui.m_treeExistingMessages->indexAt(pos).row());
 
   if (msg != nullptr) {

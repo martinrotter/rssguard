@@ -39,16 +39,17 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
   // Added OPML 2.0 metadata.
   opml_document.appendChild(opml_document.createElement(QSL("opml")));
   opml_document.documentElement().setAttribute(QSL("version"), QSL("2.0"));
-  opml_document.documentElement().setAttribute("xmlns:rssguard", APP_URL);
+  opml_document.documentElement().setAttribute(QSL("xmlns:rssguard"), QSL(APP_URL));
   QDomElement elem_opml_head = opml_document.createElement(QSL("head"));
   QDomElement elem_opml_title = opml_document.createElement(QSL("title"));
-  QDomText text_opml_title = opml_document.createTextNode(QString(APP_NAME));
+  QDomText text_opml_title = opml_document.createTextNode(QSL(APP_NAME));
 
   elem_opml_title.appendChild(text_opml_title);
   elem_opml_head.appendChild(elem_opml_title);
   QDomElement elem_opml_created = opml_document.createElement(QSL("dateCreated"));
   QDomText text_opml_created = opml_document.createTextNode(QLocale::c().toString(QDateTime::currentDateTimeUtc(),
-                                                                                  QSL("ddd, dd MMM yyyy hh:mm:ss")) + QL1S(" GMT"));
+                                                                                  QSL("ddd, dd MMM yyyy hh:mm:ss")) +
+                                                            QSL(" GMT"));
 
   elem_opml_created.appendChild(text_opml_created);
   elem_opml_head.appendChild(elem_opml_created);
@@ -176,7 +177,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
   QStack<QDomElement> elements_to_process;
 
   elements_to_process.push(opml_document.documentElement().elementsByTagName(QSL("body")).at(0).toElement());
-  total = opml_document.elementsByTagName("outline").size();
+  total = opml_document.elementsByTagName(QSL("outline")).size();
 
   while (!elements_to_process.isEmpty()) {
     RootItem* active_model_item = model_items.pop();
@@ -221,8 +222,8 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
 
             if (add_offline_anyway) {
               QString feed_title = child_element.attribute(QSL("text"));
-              QString feed_encoding = child_element.attribute(QSL("encoding"), DEFAULT_FEED_ENCODING);
-              QString feed_type = child_element.attribute(QSL("version"), DEFAULT_FEED_TYPE).toUpper();
+              QString feed_encoding = child_element.attribute(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING));
+              QString feed_type = child_element.attribute(QSL("version"), QSL(DEFAULT_FEED_TYPE)).toUpper();
               QString feed_description = child_element.attribute(QSL("description"));
               QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
               StandardFeed::SourceType source_type = StandardFeed::SourceType(child_element.attribute(QSL("rssguard:xmlUrlType")).toInt());
@@ -368,7 +369,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
         feed->setSource(url);
         feed->setTitle(url);
         feed->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
-        feed->setEncoding(DEFAULT_FEED_ENCODING);
+        feed->setEncoding(QSL(DEFAULT_FEED_ENCODING));
         root_item->appendChild(feed);
 
         if (fetch_metadata_online) {
@@ -401,6 +402,6 @@ FeedsImportExportModel::Mode FeedsImportExportModel::mode() const {
   return m_mode;
 }
 
-void FeedsImportExportModel::setMode(const FeedsImportExportModel::Mode& mode) {
+void FeedsImportExportModel::setMode(FeedsImportExportModel::Mode mode) {
   m_mode = mode;
 }

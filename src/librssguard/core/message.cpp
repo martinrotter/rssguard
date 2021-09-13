@@ -65,7 +65,7 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures)
 }
 
 Message::Message() {
-  m_title = m_url = m_author = m_contents = m_rawContents = m_feedId = m_customId = m_customHash = QSL("");
+  m_title = m_url = m_author = m_contents = m_rawContents = m_feedId = m_customId = m_customHash = QL1S("");
   m_enclosures = QList<Enclosure>();
   m_accountId = m_id = 0;
   m_score = 0.0;

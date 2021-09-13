@@ -19,7 +19,7 @@ class AdBlockIcon : public QAction {
     void setIcon(bool adblock_enabled);
 
   private slots:
-    void showMenu(const QPoint& pos);
+    void showMenu(QPoint pos);
 
   private:
     void createMenu(QMenu* menu = nullptr);

@@ -24,7 +24,7 @@ QDomNodeList RdfParser::messageElements() {
   return xml_file.elementsByTagName(QSL("item"));
 }
 
-Message RdfParser::extractMessage(const QDomElement& msg_element, QDateTime current_time) const {
+Message RdfParser::extractMessage(const QDomElement& msg_element, const QDateTime& current_time) const {
   Message new_message;
 
   // Deal with title and description.
@@ -78,11 +78,11 @@ Message RdfParser::extractMessage(const QDomElement& msg_element, QDateTime curr
   }
 
   if (new_message.m_author.isNull()) {
-    new_message.m_author = "";
+    new_message.m_author = QL1S("");
   }
 
   if (new_message.m_url.isNull()) {
-    new_message.m_url = "";
+    new_message.m_url = QL1S("");
   }
 
   return new_message;

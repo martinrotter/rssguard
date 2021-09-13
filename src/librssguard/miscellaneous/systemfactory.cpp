@@ -125,12 +125,12 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
 
   switch (new_status) {
     case AutoStartStatus::Enabled:
-      registry_key.setValue(APP_LOW_NAME,
+      registry_key.setValue(QSL(APP_LOW_NAME),
                             Application::applicationFilePath().replace(QL1C('/'), QL1C('\\')));
       return true;
 
     case AutoStartStatus::Disabled:
-      registry_key.remove(APP_LOW_NAME);
+      registry_key.remove(QSL(APP_LOW_NAME));
       return true;
 
     default:
@@ -199,18 +199,18 @@ void SystemFactory::checkForUpdates() const {
     emit updatesChecked(result);
     downloader->deleteLater();
   });
-  downloader->downloadFile(RELEASES_LIST);
+  downloader->downloadFile(QSL(RELEASES_LIST));
 }
 
 void SystemFactory::checkForUpdatesOnStartup() {
   if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
     QObject::connect(qApp->system(), &SystemFactory::updatesChecked,
-                     this, [&](QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> updates) {
+                     this, [&](const QPair<QList<UpdateInfo>, QNetworkReply::NetworkError>& updates) {
       QObject::disconnect(qApp->system(), &SystemFactory::updatesChecked, this, nullptr);
 
       if (!updates.first.isEmpty() &&
           updates.second == QNetworkReply::NetworkError::NoError &&
-          SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, APP_VERSION)) {
+          SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, QSL(APP_VERSION))) {
         qApp->showGuiMessage(Notification::Event::NewAppVersionAvailable,
                              QObject::tr("New version available"),
                              QObject::tr("Click the bubble for more information."),
@@ -279,24 +279,24 @@ QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray& updates_file
   for (QJsonValueRef i : document) {
     QJsonObject release = i.toObject();
 
-    if (release["tag_name"].toString() == QSL("devbuild")) {
+    if (release[QSL("tag_name")].toString() == QSL("devbuild")) {
       continue;
     }
 
     UpdateInfo update;
 
-    update.m_availableVersion = release["tag_name"].toString();
-    update.m_date = QDateTime::fromString(release["published_at"].toString(), QSL("yyyy-MM-ddTHH:mm:ssZ"));
-    update.m_changes = release["body"].toString();
-    QJsonArray assets = release["assets"].toArray();
+    update.m_availableVersion = release[QSL("tag_name")].toString();
+    update.m_date = QDateTime::fromString(release[QSL("published_at")].toString(), QSL("yyyy-MM-ddTHH:mm:ssZ"));
+    update.m_changes = release[QSL("body")].toString();
+    QJsonArray assets = release[QSL("assets")].toArray();
 
     for (QJsonValueRef j : assets) {
       QJsonObject asset = j.toObject();
       UpdateUrl url;
 
-      url.m_fileUrl = asset["browser_download_url"].toString();
-      url.m_name = asset["name"].toString();
-      url.m_size = asset["size"].toVariant().toString() + tr(" bytes");
+      url.m_fileUrl = asset[QSL("browser_download_url")].toString();
+      url.m_name = asset[QSL("name")].toString();
+      url.m_size = asset[QSL("size")].toVariant().toString() + tr(" bytes");
       update.m_urls.append(url);
     }
 

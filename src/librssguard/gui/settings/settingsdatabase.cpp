@@ -107,10 +107,10 @@ void SettingsDatabase::onMysqlDatabaseChanged(const QString& new_database) {
 void SettingsDatabase::selectSqlBackend(int index) {
   const QString selected_db_driver = m_ui->m_cmbDatabaseDriver->itemData(index).toString();
 
-  if (selected_db_driver == APP_DB_SQLITE_DRIVER) {
+  if (selected_db_driver == QSL(APP_DB_SQLITE_DRIVER)) {
     m_ui->m_stackedDatabaseDriver->setCurrentIndex(0);
   }
-  else if (selected_db_driver == APP_DB_MYSQL_DRIVER) {
+  else if (selected_db_driver == QSL(APP_DB_MYSQL_DRIVER)) {
     m_ui->m_stackedDatabaseDriver->setCurrentIndex(1);
   }
   else {
@@ -185,7 +185,7 @@ void SettingsDatabase::saveSettings() {
   // Save SQLite.
   settings()->setValue(GROUP(Database), Database::UseInMemory, new_inmemory);
 
-  if (QSqlDatabase::isDriverAvailable(APP_DB_MYSQL_DRIVER)) {
+  if (QSqlDatabase::isDriverAvailable(QSL(APP_DB_MYSQL_DRIVER))) {
     // Save MySQL.
     settings()->setValue(GROUP(Database), Database::MySQLHostname, m_ui->m_txtMysqlHostname->lineEdit()->text());
     settings()->setValue(GROUP(Database), Database::MySQLUsername, m_ui->m_txtMysqlUsername->lineEdit()->text());

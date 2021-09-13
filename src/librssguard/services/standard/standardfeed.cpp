@@ -123,25 +123,25 @@ void StandardFeed::setPassword(const QString& password) {
 QVariantHash StandardFeed::customDatabaseData() const {
   QVariantHash data;
 
-  data["source_type"] = int(sourceType());
-  data["type"] = int(type());
-  data["encoding"] = encoding();
-  data["post_process"] = postProcessScript();
-  data["protected"] = passwordProtected();
-  data["username"] = username();
-  data["password"] = TextFactory::encrypt(password());
+  data[QSL("source_type")] = int(sourceType());
+  data[QSL("type")] = int(type());
+  data[QSL("encoding")] = encoding();
+  data[QSL("post_process")] = postProcessScript();
+  data[QSL("protected")] = passwordProtected();
+  data[QSL("username")] = username();
+  data[QSL("password")] = TextFactory::encrypt(password());
 
   return data;
 }
 
 void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
-  setSourceType(SourceType(data["source_type"].toInt()));
-  setType(Type(data["type"].toInt()));
-  setEncoding(data["encoding"].toString());
-  setPostProcessScript(data["post_process"].toString());
-  setPasswordProtected(data["protected"].toBool());
-  setUsername(data["username"].toString());
-  setPassword(TextFactory::decrypt(data["password"].toString()));
+  setSourceType(SourceType(data[QSL("source_type")].toInt()));
+  setType(Type(data[QSL("type")].toInt()));
+  setEncoding(data[QSL("encoding")].toString());
+  setPostProcessScript(data[QSL("post_process")].toString());
+  setPasswordProtected(data[QSL("protected")].toBool());
+  setUsername(data[QSL("username")].toString());
+  setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
 }
 
 QString StandardFeed::typeToString(StandardFeed::Type type) {
@@ -292,24 +292,24 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     feed = new StandardFeed();
 
     // We have JSON feed.
-    feed->setEncoding(DEFAULT_FEED_ENCODING);
+    feed->setEncoding(QSL(DEFAULT_FEED_ENCODING));
     feed->setType(Type::Json);
 
     QJsonDocument json = QJsonDocument::fromJson(feed_contents);
 
-    feed->setTitle(json.object()["title"].toString());
-    feed->setDescription(json.object()["description"].toString());
+    feed->setTitle(json.object()[QSL("title")].toString());
+    feed->setDescription(json.object()[QSL("description")].toString());
 
-    auto home_page = json.object()["home_page_url"].toString();
+    auto home_page = json.object()[QSL("home_page_url")].toString();
 
     if (!home_page.isEmpty()) {
       icon_possible_locations.prepend({ home_page, false });
     }
 
-    auto icon = json.object()["favicon"].toString();
+    auto icon = json.object()[QSL("favicon")].toString();
 
     if (icon.isEmpty()) {
-      icon = json.object()["icon"].toString();
+      icon = json.object()[QSL("icon")].toString();
     }
 
     if (!icon.isEmpty()) {
@@ -343,7 +343,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
       // Feed encoding probably not guessed, set it as
       // default.
       xml_contents_encoded = feed_contents;
-      encod = DEFAULT_FEED_ENCODING;
+      encod = QSL(DEFAULT_FEED_ENCODING);
     }
 
     // Feed XML was obtained, guess it now.
@@ -382,7 +382,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     }
     else if (root_element.tagName() == QL1S("rss")) {
       // We found RSS 0.91/0.92/0.93/2.0/2.0.1 feed.
-      QString rss_type = root_element.attribute("version", "2.0");
+      QString rss_type = root_element.attribute(QSL("version"), QSL("2.0"));
 
       if (rss_type == QL1S("0.91") || rss_type == QL1S("0.92") || rss_type == QL1S("0.93")) {
         feed->setType(Type::Rss0X);
@@ -505,7 +505,7 @@ void StandardFeed::setEncoding(const QString& encoding) {
 }
 
 QStringList StandardFeed::prepareExecutionLine(const QString& execution_line) {
-  auto split_exec = execution_line.split(EXECUTION_LINE_SEPARATOR,
+  auto split_exec = execution_line.split(QSL(EXECUTION_LINE_SEPARATOR),
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
                                          Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
@@ -582,7 +582,7 @@ QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, 
 }
 
 QString StandardFeed::postProcessFeedFileWithScript(const QString& execution_line,
-                                                    const QString raw_feed_data,
+                                                    const QString& raw_feed_data,
                                                     int run_timeout) {
   auto prepared_query = prepareExecutionLine(execution_line);
 

@@ -65,9 +65,9 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
   else {
     // Send it via mailto protocol.
     // NOTE: http://en.wikipedia.org/wiki/Mailto
-    return QDesktopServices::openUrl(QString("mailto:?subject=%1&body=%2").arg(QString(QUrl::toPercentEncoding(message.m_title)),
-                                                                               QString(QUrl::toPercentEncoding(stripTags(
-                                                                                                                 message.m_contents)))));
+    return QDesktopServices::openUrl(QSL("mailto:?subject=%1&body=%2").arg(QString(QUrl::toPercentEncoding(message.m_title)),
+                                                                           QString(QUrl::toPercentEncoding(stripTags(
+                                                                                                             message.m_contents)))));
   }
 }
 
@@ -99,7 +99,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
                      QMessageBox::Icon::Critical,
                      tr("Navigate to website manually"),
                      tr("%1 was unable to launch your web browser with the given URL, you need to open the "
-                        "below website URL in your web browser manually.").arg(APP_NAME),
+                        "below website URL in your web browser manually.").arg(QSL(APP_NAME)),
                      {},
                      url,
                      QMessageBox::StandardButton::Ok);
@@ -205,10 +205,10 @@ QString WebFactory::unescapeHtml(const QString& html) {
 }
 
 QString WebFactory::processFeedUriScheme(const QString& url) {
-  if (url.startsWith(URI_SCHEME_FEED)) {
+  if (url.startsWith(QSL(URI_SCHEME_FEED))) {
     return QSL(URI_SCHEME_HTTPS) + url.mid(QSL(URI_SCHEME_FEED).size());
   }
-  else if (url.startsWith(URI_SCHEME_FEED_SHORT)) {
+  else if (url.startsWith(QSL(URI_SCHEME_FEED_SHORT))) {
     return url.mid(QSL(URI_SCHEME_FEED_SHORT).size());
   }
   else {

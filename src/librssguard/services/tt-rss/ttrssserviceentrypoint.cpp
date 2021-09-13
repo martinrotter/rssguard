@@ -2,8 +2,8 @@
 
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
-#include "definitions/definitions.h"
 #include "database/databasequeries.h"
+#include "definitions/definitions.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/formeditttrssaccount.h"
@@ -21,7 +21,7 @@ QString TtRssServiceEntryPoint::description() const {
 }
 
 QString TtRssServiceEntryPoint::author() const {
-  return APP_AUTHOR;
+  return QSL(APP_AUTHOR);
 }
 
 QIcon TtRssServiceEntryPoint::icon() const {
@@ -29,7 +29,7 @@ QIcon TtRssServiceEntryPoint::icon() const {
 }
 
 QString TtRssServiceEntryPoint::code() const {
-  return SERVICE_CODE_TT_RSS;
+  return QSL(SERVICE_CODE_TT_RSS);
 }
 
 ServiceRoot* TtRssServiceEntryPoint::createNewRoot() const {

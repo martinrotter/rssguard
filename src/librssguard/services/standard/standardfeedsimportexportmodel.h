@@ -28,7 +28,7 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
     void importAsTxtURLPerLine(const QByteArray& data, bool fetch_metadata_online);
 
     Mode mode() const;
-    void setMode(const Mode& mode);
+    void setMode(Mode mode);
 
   signals:
     void parsingStarted();

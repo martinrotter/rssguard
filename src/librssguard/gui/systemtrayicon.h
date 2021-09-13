@@ -44,7 +44,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
     void setNumber(int number = -1, bool any_new_message = false);
 
     void showMessage(const QString& title, const QString& message, MessageIcon icon = Information,
-                     int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT, std::function<void()> functor = nullptr);
+                     int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT, const std::function<void ()>& functor = nullptr);
 
     // Returns true if tray area is available and icon can be displayed.
     static bool isSystemTrayAreaAvailable();

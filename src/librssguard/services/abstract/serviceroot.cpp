@@ -238,7 +238,7 @@ void ServiceRoot::appendCommonNodes() {
   }
 }
 
-bool ServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
+bool ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::cleanFeeds(database, textualFeedIds(items), clean_read_only, accountId())) {
@@ -565,7 +565,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
   }
 }
 
-bool ServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus read) {
+bool ServiceRoot::markFeedsReadUnread(const QList<Feed*>& items, RootItem::ReadStatus read) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
@@ -585,26 +585,24 @@ QStringList ServiceRoot::textualFeedUrls(const QList<Feed*>& feeds) const {
   stringy_urls.reserve(feeds.size());
 
   for (const Feed* feed : feeds) {
-    stringy_urls.append(!feed->source().isEmpty() ? feed->source() : QL1S("no-url"));
+    stringy_urls.append(!feed->source().isEmpty() ? feed->source() : QSL("no-url"));
   }
 
   return stringy_urls;
 }
 
 QStringList ServiceRoot::textualFeedIds(const QList<Feed*>& feeds) const {
-  QStringList stringy_ids;
-
-  stringy_ids.reserve(feeds.size());
+  QStringList stringy_ids; stringy_ids.reserve(feeds.size());
 
   for (const Feed* feed : feeds) {
-    stringy_ids.append(QString("'%1'").arg(feed->customId()));
+    stringy_ids.append(QSL("'%1'").arg(feed->customId()));
   }
 
   return stringy_ids;
 }
 
 QStringList ServiceRoot::customIDsOfMessages(const QList<ImportanceChange>& changes) {
-  QStringList list;
+  QStringList list; list.reserve(changes.size());
 
   for (const auto& change : changes) {
     list.append(change.first.m_customId);
@@ -614,7 +612,7 @@ QStringList ServiceRoot::customIDsOfMessages(const QList<ImportanceChange>& chan
 }
 
 QStringList ServiceRoot::customIDsOfMessages(const QList<Message>& messages) {
-  QStringList list;
+  QStringList list; list.reserve(messages.size());
 
   for (const Message& message : messages) {
     list.append(message.m_customId);
@@ -639,32 +637,32 @@ void ServiceRoot::setAccountId(int account_id) {
 
 bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   if (item->kind() == RootItem::Kind::Bin) {
-    model->setFilter(QString("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
+    model->setFilter(QSL("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
                      .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::Important) {
-    model->setFilter(QString("Messages.is_important = 1 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
+    model->setFilter(QSL("Messages.is_important = 1 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
                      .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::Unread) {
-    model->setFilter(QString("Messages.is_read = 0 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
+    model->setFilter(QSL("Messages.is_read = 0 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
                      .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::Label) {
     // Show messages with particular label.
-    model->setFilter(QString("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
-                             "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id AND label = '%2') > 0")
+    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
+                         "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id AND label = '%2') > 0")
                      .arg(QString::number(accountId()), item->customId()));
   }
   else if (item->kind() == RootItem::Kind::Labels) {
     // Show messages with any label.
-    model->setFilter(QString("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
-                             "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id) > 0")
+    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
+                         "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id) > 0")
                      .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::ServiceRoot) {
     model->setFilter(
-      QString("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1").arg(
+      QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1").arg(
         QString::number(accountId())));
 
     qDebugNN << "Displaying messages from account:" << QUOTE_W_SPACE_DOT(accountId());
@@ -678,7 +676,7 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     }
 
     model->setFilter(
-      QString("Feeds.custom_id IN (%1) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %2").arg(
+      QSL("Feeds.custom_id IN (%1) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %2").arg(
         filter_clause,
         QString::
         number(accountId())));
@@ -769,7 +767,9 @@ bool ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Mes
   return true;
 }
 
-bool ServiceRoot::onBeforeLabelMessageAssignmentChanged(const QList<Label*> labels, const QList<Message>& messages, bool assign) {
+bool ServiceRoot::onBeforeLabelMessageAssignmentChanged(const QList<Label*>& labels,
+                                                        const QList<Message>& messages,
+                                                        bool assign) {
   auto cache = dynamic_cast<CacheForServiceRoot*>(this);
 
   if (cache != nullptr) {
@@ -781,7 +781,9 @@ bool ServiceRoot::onBeforeLabelMessageAssignmentChanged(const QList<Label*> labe
   return true;
 }
 
-bool ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*> labels, const QList<Message>& messages, bool assign) {
+bool ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*>& labels,
+                                                       const QList<Message>& messages,
+                                                       bool assign) {
   Q_UNUSED(messages)
   Q_UNUSED(assign)
 
@@ -817,7 +819,7 @@ CacheForServiceRoot* ServiceRoot::toCache() const {
   return dynamic_cast<CacheForServiceRoot*>(const_cast<ServiceRoot*>(this));
 }
 
-void ServiceRoot::assembleFeeds(Assignment feeds) {
+void ServiceRoot::assembleFeeds(const Assignment& feeds) {
   QHash<int, Category*> categories = getHashedSubTreeCategories();
 
   for (const AssignmentItem& feed : feeds) {
@@ -835,24 +837,25 @@ void ServiceRoot::assembleFeeds(Assignment feeds) {
   }
 }
 
-void ServiceRoot::assembleCategories(Assignment categories) {
+void ServiceRoot::assembleCategories(const Assignment& categories) {
+  Assignment editable_categories = categories;
   QHash<int, RootItem*> assignments;
 
   assignments.insert(NO_PARENT_CATEGORY, this);
 
   // Add top-level categories.
-  while (!categories.isEmpty()) {
-    for (int i = 0; i < categories.size(); i++) {
-      if (assignments.contains(categories.at(i).first)) {
+  while (!editable_categories.isEmpty()) {
+    for (int i = 0; i < editable_categories.size(); i++) {
+      if (assignments.contains(editable_categories.at(i).first)) {
         // Parent category of this category is already added.
-        assignments.value(categories.at(i).first)->appendChild(categories.at(i).second);
+        assignments.value(editable_categories.at(i).first)->appendChild(editable_categories.at(i).second);
 
         // Now, added category can be parent for another categories, add it.
-        assignments.insert(categories.at(i).second->id(), categories.at(i).second);
+        assignments.insert(editable_categories.at(i).second->id(), editable_categories.at(i).second);
 
         // Remove the category from the list, because it was
         // added to the final collection.
-        categories.removeAt(i);
+        editable_categories.removeAt(i);
         i--;
       }
     }

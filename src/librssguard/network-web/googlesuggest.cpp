@@ -140,7 +140,7 @@ void GoogleSuggest::doneCompletion() {
   QListWidgetItem* item = popup->currentItem();
 
   if (item != nullptr) {
-    editor->submit(QString(GOOGLE_SEARCH_URL).arg(item->text()));
+    editor->submit(QSL(GOOGLE_SEARCH_URL).arg(item->text()));
   }
 }
 
@@ -150,7 +150,7 @@ void GoogleSuggest::preventSuggest() {
 
 void GoogleSuggest::autoSuggest() {
   m_enteredText = QUrl::toPercentEncoding(editor->text());
-  QString url = QString(GOOGLE_SUGGEST_URL).arg(m_enteredText);
+  QString url = QSL(GOOGLE_SUGGEST_URL).arg(m_enteredText);
 
   m_downloader->downloadFile(url);
 }

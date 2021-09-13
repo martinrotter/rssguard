@@ -2,9 +2,9 @@
 
 #include "services/tt-rss/ttrssfeed.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/tt-rss/definitions.h"
@@ -27,7 +27,7 @@ bool TtRssFeed::deleteViaGui() {
   TtRssUnsubscribeFeedResponse response = serviceRoot()->network()->unsubscribeFeed(customNumericId(),
                                                                                     getParentServiceRoot()->networkProxy());
 
-  if (response.code() == UFF_OK && removeItself()) {
+  if (response.code() == QSL(UFF_OK) && removeItself()) {
     serviceRoot()->requestItemRemoval(this);
     return true;
   }

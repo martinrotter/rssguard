@@ -24,7 +24,7 @@ class TabBar : public QTabBar {
     virtual ~TabBar();
 
     // Getter/setter for tab type.
-    void setTabType(int index, const TabBar::TabType& type);
+    void setTabType(int index, TabType type);
     TabBar::TabType tabType(int index) const;
 
   private slots:

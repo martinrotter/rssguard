@@ -141,7 +141,7 @@ QString DownloadItem::saveFileName(const QString& directory) const {
 
   if (m_reply->hasRawHeader("Content-Disposition")) {
     QString value = QLatin1String(m_reply->rawHeader("Content-Disposition"));
-    QRegularExpression exp(".*filename=?\"([^\"]+)\"?");
+    QRegularExpression exp(QSL(".*filename=?\"([^\"]+)\"?"));
     QRegularExpressionMatch match = exp.match(value);
 
     if (match.isValid()) {
@@ -737,7 +737,7 @@ QString DownloadManager::dataString(qint64 size) {
     unit = tr("GB");
   }
 
-  return QString(QL1S("%1 %2")).arg(new_size, 0, 'f', 1).arg(unit);
+  return QSL("%1 %2").arg(new_size, 0, 'f', 1).arg(unit);
 }
 
 DownloadModel::DownloadModel(DownloadManager* download_manager, QObject* parent)

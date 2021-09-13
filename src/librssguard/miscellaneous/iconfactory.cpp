@@ -113,19 +113,19 @@ void IconFactory::loadCurrentIconTheme() {
     qWarningNN << "Icon theme"
                << QUOTE_W_SPACE(theme_name_from_settings)
                << "cannot be loaded because it is not installed. Activating \"no\" icon theme.";
-    QIcon::setThemeName(APP_NO_THEME);
+    QIcon::setThemeName(QSL(APP_NO_THEME));
 #endif
   }
 }
 
 QStringList IconFactory::installedIconThemes() const {
-  QStringList icon_theme_names; icon_theme_names << APP_NO_THEME;
+  QStringList icon_theme_names = { QSL(APP_NO_THEME) };
 
   // Iterate all directories with icon themes.
   QStringList icon_themes_paths = QIcon::themeSearchPaths();
   QStringList filters_index;
 
-  filters_index.append("index.theme");
+  filters_index.append(QSL("index.theme"));
   icon_themes_paths.removeDuplicates();
 
   for (const QString& icon_path : icon_themes_paths) {

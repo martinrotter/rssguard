@@ -2,9 +2,9 @@
 
 #include "services/gmail/gmailentrypoint.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailserviceroot.h"
@@ -29,7 +29,7 @@ QString GmailEntryPoint::name() const {
 }
 
 QString GmailEntryPoint::code() const {
-  return SERVICE_CODE_GMAIL;
+  return QSL(SERVICE_CODE_GMAIL);
 }
 
 QString GmailEntryPoint::description() const {
@@ -37,7 +37,7 @@ QString GmailEntryPoint::description() const {
 }
 
 QString GmailEntryPoint::author() const {
-  return APP_AUTHOR;
+  return QSL(APP_AUTHOR);
 }
 
 QIcon GmailEntryPoint::icon() const {

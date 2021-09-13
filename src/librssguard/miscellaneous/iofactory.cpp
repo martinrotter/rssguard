@@ -22,7 +22,7 @@ bool IOFactory::isFolderWritable(const QString& folder) {
     real_file += QDir::separator();
   }
 
-  real_file += "test-permissions-file";
+  real_file += QSL("test-permissions-file");
   return QTemporaryFile(real_file).open();
 }
 

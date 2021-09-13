@@ -29,8 +29,8 @@
 GmailNetworkFactory::GmailNetworkFactory(QObject* parent) : QObject(parent),
   m_service(nullptr), m_username(QString()), m_batchSize(GMAIL_DEFAULT_BATCH_SIZE),
   m_downloadOnlyUnreadMessages(false),
-  m_oauth2(new OAuth2Service(GMAIL_OAUTH_AUTH_URL, GMAIL_OAUTH_TOKEN_URL,
-                             {}, {}, GMAIL_OAUTH_SCOPE, this)) {
+  m_oauth2(new OAuth2Service(QSL(GMAIL_OAUTH_AUTH_URL), QSL(GMAIL_OAUTH_TOKEN_URL),
+                             {}, {}, QSL(GMAIL_OAUTH_SCOPE), this)) {
   initializeOauth();
 }
 
@@ -83,13 +83,13 @@ QString GmailNetworkFactory::sendEmail(Mimesis::Message msg, const QNetworkProxy
   QByteArray input_data = rfc_email.toUtf8();
   QList<QPair<QByteArray, QByteArray>> headers;
 
-  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                m_oauth2->bearer().toLocal8Bit()));
-  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
-                                               QString("message/rfc822").toLocal8Bit()));
+  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                               QSL("message/rfc822").toLocal8Bit()));
 
   QByteArray out;
-  auto result = NetworkFactory::performNetworkOperation(GMAIL_API_SEND_MESSAGE,
+  auto result = NetworkFactory::performNetworkOperation(QSL(GMAIL_API_SEND_MESSAGE),
                                                         DOWNLOAD_TIMEOUT,
                                                         input_data,
                                                         out,
@@ -103,7 +103,7 @@ QString GmailNetworkFactory::sendEmail(Mimesis::Message msg, const QNetworkProxy
   if (result.first != QNetworkReply::NetworkError::NoError) {
     if (!out.isEmpty()) {
       QJsonDocument doc = QJsonDocument::fromJson(out);
-      auto json_message = doc.object()["error"].toObject()["message"].toString();
+      auto json_message = doc.object()[QSL("error")].toObject()[QSL("message")].toString();
 
       throw ApplicationException(json_message);
     }
@@ -113,7 +113,7 @@ QString GmailNetworkFactory::sendEmail(Mimesis::Message msg, const QNetworkProxy
   }
   else {
     QJsonDocument doc = QJsonDocument::fromJson(out);
-    auto msg_id = doc.object()["id"].toString();
+    auto msg_id = doc.object()[QSL("id")].toString();
 
     return msg_id;
   }
@@ -121,11 +121,11 @@ QString GmailNetworkFactory::sendEmail(Mimesis::Message msg, const QNetworkProxy
 
 void GmailNetworkFactory::initializeOauth() {
 #if defined(GMAIL_OFFICIAL_SUPPORT)
-  m_oauth2->setClientSecretId(TextFactory::decrypt(GMAIL_CLIENT_ID, OAUTH_DECRYPTION_KEY));
-  m_oauth2->setClientSecretSecret(TextFactory::decrypt(GMAIL_CLIENT_SECRET, OAUTH_DECRYPTION_KEY));
+  m_oauth2->setClientSecretId(TextFactory::decrypt(QSL(GMAIL_CLIENT_ID), OAUTH_DECRYPTION_KEY));
+  m_oauth2->setClientSecretSecret(TextFactory::decrypt(QSL(GMAIL_CLIENT_SECRET), OAUTH_DECRYPTION_KEY));
 #endif
 
-  m_oauth2->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +
+  m_oauth2->setRedirectUrl(QSL(OAUTH_REDIRECT_URI) +
                            QL1C(':') +
                            QString::number(GMAIL_OAUTH_REDIRECT_URI_PORT),
                            true);
@@ -170,13 +170,13 @@ Downloader* GmailNetworkFactory::downloadAttachment(const QString& msg_id,
   }
   else {
     auto* downloader = new Downloader();
-    QString target_url = QString(GMAIL_API_GET_ATTACHMENT).arg(msg_id, attachment_id);
+    QString target_url = QSL(GMAIL_API_GET_ATTACHMENT).arg(msg_id, attachment_id);
 
     if (custom_proxy.type() != QNetworkProxy::ProxyType::DefaultProxy) {
       downloader->setProxy(custom_proxy);
     }
 
-    downloader->appendRawHeader(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
+    downloader->appendRawHeader(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
     downloader->downloadFile(target_url);
 
     return downloader;
@@ -201,15 +201,15 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   do {
-    target_url = GMAIL_API_MSGS_LIST;
-    target_url += QString("?labelIds=%1").arg(stream_id);
+    target_url = QSL(GMAIL_API_MSGS_LIST);
+    target_url += QSL("?labelIds=%1").arg(stream_id);
 
     if (downloadOnlyUnreadMessages()) {
-      target_url += QString("&labelIds=%1").arg(GMAIL_SYSTEM_LABEL_UNREAD);
+      target_url += QSL("&labelIds=%1").arg(QSL(GMAIL_SYSTEM_LABEL_UNREAD));
     }
 
     if (batchSize() > 0) {
-      target_url += QString("&maxResults=%1").arg(batchSize());
+      target_url += QSL("&maxResults=%1").arg(batchSize());
     }
 
     if (!next_page_token.isEmpty()) {
@@ -222,7 +222,7 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
                                                         {},
                                                         messages_raw_data,
                                                         QNetworkAccessManager::Operation::GetOperation,
-                                                        { { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                                        { { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                           bearer.toLocal8Bit() } },
                                                         false,
                                                         {},
@@ -265,7 +265,7 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
 }
 
 QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status,
-                                                                  QStringList custom_ids,
+                                                                  const QStringList& custom_ids,
                                                                   const QNetworkProxy& custom_proxy) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
@@ -275,10 +275,10 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::Read
 
   QList<QPair<QByteArray, QByteArray>> headers;
 
-  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                m_oauth2->bearer().toLocal8Bit()));
-  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
-                                               QString(GMAIL_CONTENT_TYPE_JSON).toLocal8Bit()));
+  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                               QSL(GMAIL_CONTENT_TYPE_JSON).toLocal8Bit()));
 
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QJsonObject param_obj;
@@ -293,18 +293,18 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::Read
     param_add.append(GMAIL_SYSTEM_LABEL_UNREAD);
   }
 
-  param_obj["addLabelIds"] = param_add;
-  param_obj["removeLabelIds"] = param_remove;
+  param_obj[QSL("addLabelIds")] = param_add;
+  param_obj[QSL("removeLabelIds")] = param_remove;
 
   // We need to operate withing allowed batches.
   for (int i = 0; i < custom_ids.size(); i += GMAIL_MAX_BATCH_SIZE) {
     auto batch = custom_ids.mid(i, GMAIL_MAX_BATCH_SIZE);
 
-    param_obj["ids"] = QJsonArray::fromStringList(batch);
+    param_obj[QSL("ids")] = QJsonArray::fromStringList(batch);
 
     QJsonDocument param_doc(param_obj);
     QByteArray output;
-    auto result = NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+    auto result = NetworkFactory::performNetworkOperation(QSL(GMAIL_API_BATCH_UPD_LABELS),
                                                           timeout,
                                                           param_doc.toJson(QJsonDocument::JsonFormat::Compact),
                                                           output,
@@ -334,10 +334,10 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::I
 
   QList<QPair<QByteArray, QByteArray>> headers;
 
-  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                m_oauth2->bearer().toLocal8Bit()));
-  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
-                                               QString(GMAIL_CONTENT_TYPE_JSON).toLocal8Bit()));
+  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                               QSL(GMAIL_CONTENT_TYPE_JSON).toLocal8Bit()));
 
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QJsonObject param_obj;
@@ -352,18 +352,18 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::I
     param_remove.append(GMAIL_SYSTEM_LABEL_STARRED);
   }
 
-  param_obj["addLabelIds"] = param_add;
-  param_obj["removeLabelIds"] = param_remove;
+  param_obj[QSL("addLabelIds")] = param_add;
+  param_obj[QSL("removeLabelIds")] = param_remove;
 
   // We need to operate withing allowed batches.
   for (int i = 0; i < custom_ids.size(); i += GMAIL_MAX_BATCH_SIZE) {
     auto batch = custom_ids.mid(i, GMAIL_MAX_BATCH_SIZE);
 
-    param_obj["ids"] = QJsonArray::fromStringList(batch);
+    param_obj[QSL("ids")] = QJsonArray::fromStringList(batch);
 
     QJsonDocument param_doc(param_obj);
     QByteArray output;
-    auto result = NetworkFactory::performNetworkOperation(GMAIL_API_BATCH_UPD_LABELS,
+    auto result = NetworkFactory::performNetworkOperation(QSL(GMAIL_API_BATCH_UPD_LABELS),
                                                           timeout,
                                                           param_doc.toJson(QJsonDocument::JsonFormat::Compact),
                                                           output,
@@ -391,12 +391,12 @@ QVariantHash GmailNetworkFactory::getProfile(const QNetworkProxy& custom_proxy) 
 
   QList<QPair<QByteArray, QByteArray>> headers;
 
-  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                m_oauth2->bearer().toLocal8Bit()));
 
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray output;
-  auto result = NetworkFactory::performNetworkOperation(GMAIL_API_GET_PROFILE,
+  auto result = NetworkFactory::performNetworkOperation(QSL(GMAIL_API_GET_PROFILE),
                                                         timeout,
                                                         {},
                                                         output,
@@ -447,48 +447,48 @@ void GmailNetworkFactory::onAuthFailed() {
 
 bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id) {
   QHash<QString, QString> headers;
-  auto json_headers = json["payload"].toObject()["headers"].toArray();
+  auto json_headers = json[QSL("payload")].toObject()[QSL("headers")].toArray();
 
   for (const QJsonValue& header : qAsConst(json_headers)) {
-    headers.insert(header.toObject()["name"].toString(), header.toObject()["value"].toString());
+    headers.insert(header.toObject()[QSL("name")].toString(), header.toObject()["value"].toString());
   }
 
   msg.m_isRead = true;
   msg.m_rawContents = QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact);
 
   // Assign correct main labels/states.
-  auto labelids = json["labelIds"].toArray().toVariantList();
+  auto labelids = json[QSL("labelIds")].toArray().toVariantList();
 
   for (const QVariant& label : qAsConst(labelids)) {
     QString lbl = label.toString();
 
-    if (lbl == QL1S(GMAIL_SYSTEM_LABEL_UNREAD)) {
+    if (lbl == QSL(GMAIL_SYSTEM_LABEL_UNREAD)) {
       msg.m_isRead = false;
     }
-    else if (lbl == QL1S(GMAIL_SYSTEM_LABEL_STARRED)) {
+    else if (lbl == QSL(GMAIL_SYSTEM_LABEL_STARRED)) {
       msg.m_isImportant = true;
     }
 
     // RSS Guard does not support multi-labeling of messages, thus each message can have MAX single label.
     // Every message which is in INBOX, must be in INBOX, even if Gmail API returns more labels for the message.
     // I have to always decide which single label is most important one.
-    if (lbl == QL1S(GMAIL_SYSTEM_LABEL_INBOX) && feed_id != QL1S(GMAIL_SYSTEM_LABEL_INBOX)) {
+    if (lbl == QSL(GMAIL_SYSTEM_LABEL_INBOX) && feed_id != QSL(GMAIL_SYSTEM_LABEL_INBOX)) {
       // This message is in INBOX label too, but this updated feed is not INBOX,
       // we want to leave this message in INBOX and not duplicate it to other feed/label.
       return false;
     }
 
-    if (lbl == QL1S(GMAIL_SYSTEM_LABEL_TRASH) && feed_id != QL1S(GMAIL_SYSTEM_LABEL_TRASH)) {
+    if (lbl == QSL(GMAIL_SYSTEM_LABEL_TRASH) && feed_id != QSL(GMAIL_SYSTEM_LABEL_TRASH)) {
       // This message is in trash, but this updated feed is not recycle bin, we do not want
       // this message to appear anywhere.
       return false;
     }
   }
 
-  msg.m_author = headers["From"];
-  msg.m_title = headers["Subject"];
+  msg.m_author = headers[QSL("From")];
+  msg.m_title = headers[QSL("Subject")];
   msg.m_createdFromFeed = true;
-  msg.m_created = TextFactory::parseDateTime(headers["Date"]);
+  msg.m_created = TextFactory::parseDateTime(headers[QSL("Date")]);
 
   QString aa = msg.m_rawContents;
 
@@ -499,11 +499,11 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   QString backup_contents;
   QList<QJsonObject> parts_to_process, parts;
 
-  parts_to_process.append(json["payload"].toObject());
+  parts_to_process.append(json[QSL("payload")].toObject());
 
   while (!parts_to_process.isEmpty()) {
     auto this_part = parts_to_process.takeFirst();
-    auto nested_parts = this_part["parts"].toArray();
+    auto nested_parts = this_part[QSL("parts")].toArray();
 
     for (const QJsonValue& prt : qAsConst(nested_parts)) {
       auto prt_obj = prt.toObject();
@@ -513,24 +513,24 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     }
   }
 
-  if (json["payload"].toObject().contains(QSL("body"))) {
-    parts.prepend(json["payload"].toObject());
+  if (json[QSL("payload")].toObject().contains(QSL("body"))) {
+    parts.prepend(json[QSL("payload")].toObject());
   }
 
   for (const QJsonObject& part : qAsConst(parts)) {
-    QJsonObject body = part["body"].toObject();
-    QString mime = part["mimeType"].toString();
-    QString filename = part["filename"].toString();
+    QJsonObject body = part[QSL("body")].toObject();
+    QString mime = part[QSL("mimeType")].toString();
+    QString filename = part[QSL("filename")].toString();
 
     if (filename.isEmpty() && mime.startsWith(QSL("text/"))) {
       // We have textual data of e-mail.
       // We check if it is HTML.
       if (msg.m_contents.isEmpty()) {
         if (mime.contains(QL1S("text/html"))) {
-          msg.m_contents = QByteArray::fromBase64(body["data"].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
+          msg.m_contents = QByteArray::fromBase64(body[QSL("data")].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
         }
         else if (backup_contents.isEmpty()) {
-          backup_contents = QByteArray::fromBase64(body["data"].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
+          backup_contents = QByteArray::fromBase64(body[QSL("data")].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
 
           backup_contents = backup_contents
                             .replace(QSL("\r\n"), QSL("\n"))
@@ -542,8 +542,8 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     else if (!filename.isEmpty()) {
       // We have attachment.
       msg.m_enclosures.append(Enclosure(filename +
-                                        QL1S(GMAIL_ATTACHMENT_SEP) + msg.m_customId +
-                                        QL1S(GMAIL_ATTACHMENT_SEP) + body["attachmentId"].toString(),
+                                        QSL(GMAIL_ATTACHMENT_SEP) + msg.m_customId +
+                                        QSL(GMAIL_ATTACHMENT_SEP) + body[QSL("attachmentId")].toString(),
                                         filename + QString(" (%1 KB)").arg(QString::number(body["size"].toInt() / 1000.0))));
     }
   }
@@ -555,7 +555,9 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   return true;
 }
 
-QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& msg_id, const QStringList& metadata, const QNetworkProxy& custom_proxy) {
+QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& msg_id,
+                                                               const QStringList& metadata,
+                                                               const QNetworkProxy& custom_proxy) {
   QString bearer = m_oauth2->bearer();
 
   if (bearer.isEmpty()) {
@@ -566,10 +568,10 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
   QByteArray output;
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-  headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                bearer.toLocal8Bit()));
 
-  QString query = QString("%1/%2?format=metadata&metadataHeaders=%3").arg(GMAIL_API_MSGS_LIST,
+  QString query = QString("%1/%2?format=metadata&metadataHeaders=%3").arg(QSL(GMAIL_API_MSGS_LIST),
                                                                           msg_id,
                                                                           metadata.join(QSL("&metadataHeaders=")));
   NetworkResult res = NetworkFactory::performNetworkOperation(query,
@@ -586,12 +588,12 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
   if (res.first == QNetworkReply::NetworkError::NoError) {
     QJsonDocument doc = QJsonDocument::fromJson(output);
     QMap<QString, QString> result;
-    auto json_headers = doc.object()["payload"].toObject()["headers"].toArray();
+    auto json_headers = doc.object()[QSL("payload")].toObject()[QSL("headers")].toArray();
 
     for (const auto& header : json_headers) {
       QJsonObject obj_header = header.toObject();
 
-      result.insert(obj_header["name"].toString(), obj_header["value"].toString());
+      result.insert(obj_header[QSL("name")].toString(), obj_header[QSL("value")].toString());
     }
 
     return result;
@@ -622,7 +624,7 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& messages,
       QHttpPart part;
 
       part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);
-      QString full_msg_endpoint = QString("GET /gmail/v1/users/me/messages/%1\r\n").arg(msg.m_customId);
+      QString full_msg_endpoint = QSL("GET /gmail/v1/users/me/messages/%1\r\n").arg(msg.m_customId);
 
       part.setBody(full_msg_endpoint.toUtf8());
       multi->append(part);
@@ -633,7 +635,7 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& messages,
     QList<HttpResponse> output;
     int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-    headers.append(QPair<QByteArray, QByteArray>(QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+    headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
                                                  bearer.toLocal8Bit()));
 
     NetworkResult res = NetworkFactory::performNetworkOperation(GMAIL_API_BATCH,
@@ -651,13 +653,13 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& messages,
       // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
       for (const HttpResponse& part : qAsConst(output)) {
         QJsonObject msg_doc = QJsonDocument::fromJson(part.body().toUtf8()).object();
-        QString msg_id = msg_doc["id"].toString();
+        QString msg_id = msg_doc[QSL("id")].toString();
 
         if (msgs.contains(msg_id)) {
           Message& msg = messages[msgs.value(msg_id)];
 
           if (!fillFullMessage(msg, msg_doc, feed_id)) {
-            qWarningNN << "Failed to get full message for custom ID:" << QUOTE_W_SPACE_DOT(msg.m_customId);
+            qWarningNN << LOGSEC_GMAIL << "Failed to get full message for custom ID:" << QUOTE_W_SPACE_DOT(msg.m_customId);
           }
         }
       }
@@ -676,16 +678,16 @@ QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_j
                                                        QString& next_page_token) {
   QList<Message> messages;
   QJsonObject top_object = QJsonDocument::fromJson(messages_json_data.toUtf8()).object();
-  QJsonArray json_msgs = top_object["messages"].toArray();
+  QJsonArray json_msgs = top_object[QSL("messages")].toArray();
 
-  next_page_token = top_object["nextPageToken"].toString();
+  next_page_token = top_object[QSL("nextPageToken")].toString();
   messages.reserve(json_msgs.count());
 
   for (const QJsonValue& obj : json_msgs) {
     auto message_obj = obj.toObject();
     Message message;
 
-    message.m_customId = message_obj["id"].toString();
+    message.m_customId = message_obj[QSL("id")].toString();
     message.m_feedId = stream_id;
 
     messages.append(message);

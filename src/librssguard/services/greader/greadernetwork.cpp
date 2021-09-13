@@ -25,8 +25,8 @@ GreaderNetwork::GreaderNetwork(QObject* parent)
   m_password(QString()), m_baseUrl(QString()), m_batchSize(GREADER_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false),
   m_prefetchedMessages({}), m_prefetchedStatus(Feed::Status::Normal), m_performGlobalFetching(false),
   m_intelligentSynchronization(true), m_newerThanFilter(QDate::currentDate().addYears(-1)),
-  m_oauth(new OAuth2Service(INO_OAUTH_AUTH_URL, INO_OAUTH_TOKEN_URL,
-                            {}, {}, INO_OAUTH_SCOPE, this)) {
+  m_oauth(new OAuth2Service(QSL(INO_OAUTH_AUTH_URL), QSL(INO_OAUTH_TOKEN_URL),
+                            {}, {}, QSL(INO_OAUTH_SCOPE), this)) {
   initializeOauth();
   clearCredentials();
 }
@@ -38,16 +38,16 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
   QString full_url = generateFullUrl(Operations::EditTag);
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-  QNetworkReply::NetworkError network_err;
+  QNetworkReply::NetworkError network_err = QNetworkReply::NetworkError::UnknownNetworkError;
 
   if (!ensureLogin(proxy, &network_err)) {
     return network_err;
   }
 
-  QStringList trimmed_ids;
+  QStringList trimmed_ids; trimmed_ids.reserve(msg_custom_ids.size());
 
   for (const QString& id : msg_custom_ids) {
-    trimmed_ids.append(QString("i=") + id);
+    trimmed_ids.append(QSL("i=") + id);
   }
 
   QStringList working_subset; working_subset.reserve(std::min(GREADER_API_EDIT_TAG_BATCH, trimmed_ids.size()));
@@ -62,10 +62,10 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
     QString args;
 
     if (assign) {
-      args = QString("a=") + state + "&";
+      args = QSL("a=") + state + "&";
     }
     else {
-      args = QString("r=") + state + "&";
+      args = QSL("r=") + state + "&";
     }
 
     args += working_subset.join(QL1C('&'));
@@ -103,7 +103,7 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
 QVariantHash GreaderNetwork::userInfo(const QNetworkProxy& proxy) {
   QString full_url = generateFullUrl(Operations::UserInfo);
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QNetworkReply::NetworkError network_err;
+  QNetworkReply::NetworkError network_err = QNetworkReply::NetworkError::UnknownNetworkError;
 
   if (!ensureLogin(proxy, &network_err)) {
     throw NetworkException(network_err);
@@ -153,7 +153,7 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
              << "Percentage of feeds for fetching:"
              << QUOTE_W_SPACE_DOT(perc_of_fetching);
 
-    auto remote_starred_ids_list = itemIds(GREADER_API_FULL_STATE_IMPORTANT, false, proxy, -1, m_newerThanFilter);
+    auto remote_starred_ids_list = itemIds(QSL(GREADER_API_FULL_STATE_IMPORTANT), false, proxy, -1, m_newerThanFilter);
 
     for (int i = 0; i < remote_starred_ids_list.size(); i++) {
       remote_starred_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_starred_ids_list.at(i)));
@@ -177,8 +177,8 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
 
       QStringList remote_all_ids_list = m_downloadOnlyUnreadMessages
                                       ? QStringList()
-                                      : itemIds(GREADER_API_FULL_STATE_READING_LIST, false, proxy, -1, m_newerThanFilter);
-      QStringList remote_unread_ids_list = itemIds(GREADER_API_FULL_STATE_READING_LIST, true, proxy, -1, m_newerThanFilter);
+                                      : itemIds(QSL(GREADER_API_FULL_STATE_READING_LIST), false, proxy, -1, m_newerThanFilter);
+      QStringList remote_unread_ids_list = itemIds(QSL(GREADER_API_FULL_STATE_READING_LIST), true, proxy, -1, m_newerThanFilter);
 
       for (int i = 0; i < remote_all_ids_list.size(); i++) {
         remote_all_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_all_ids_list.at(i)));
@@ -339,17 +339,20 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
 QNetworkReply::NetworkError GreaderNetwork::markMessagesRead(RootItem::ReadStatus status,
                                                              const QStringList& msg_custom_ids,
                                                              const QNetworkProxy& proxy) {
-  return editLabels(GREADER_API_FULL_STATE_READ, status == RootItem::ReadStatus::Read, msg_custom_ids, proxy);
+  return editLabels(QSL(GREADER_API_FULL_STATE_READ), status == RootItem::ReadStatus::Read, msg_custom_ids, proxy);
 }
 
 QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Importance importance,
                                                                 const QStringList& msg_custom_ids,
                                                                 const QNetworkProxy& proxy) {
-  return editLabels(GREADER_API_FULL_STATE_IMPORTANT, importance == RootItem::Importance::Important, msg_custom_ids, proxy);
+  return editLabels(QSL(GREADER_API_FULL_STATE_IMPORTANT),
+                    importance == RootItem::Importance::Important,
+                    msg_custom_ids,
+                    proxy);
 }
 
 QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy,
-                                    int max_count, const QDate& newer_than) {
+                                    int max_count, QDate newer_than) {
   QString continuation;
 
   if (!ensureLogin(proxy)) {
@@ -368,7 +371,7 @@ QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, 
     auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
     if (unread_only) {
-      full_url += QSL("&xt=%1").arg(GREADER_API_FULL_STATE_READ);
+      full_url += QSL("&xt=%1").arg(QSL(GREADER_API_FULL_STATE_READ));
     }
 
     if (!continuation.isEmpty()) {
@@ -503,7 +506,7 @@ QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& 
     auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
     if (downloadOnlyUnreadMessages()) {
-      full_url += QSL("&xt=%1").arg(GREADER_API_FULL_STATE_READ);
+      full_url += QSL("&xt=%1").arg(QSL(GREADER_API_FULL_STATE_READ));
     }
 
     if (!continuation.isEmpty()) {
@@ -606,15 +609,15 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
       m_service == GreaderServiceRoot::Service::Reedah ||
       m_service == GreaderServiceRoot::Service::Inoreader) {
     // We need to process subscription list first and extract categories.
-    json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
+    json = QJsonDocument::fromJson(feeds.toUtf8()).object()[QSL("subscriptions")].toArray();
 
     for (const QJsonValue& feed : qAsConst(json)) {
       auto subscription = feed.toObject();
-      auto json_cats = subscription["categories"].toArray();
+      auto json_cats = subscription[QSL("categories")].toArray();
 
       for (const QJsonValue& cat : qAsConst(json_cats)) {
         auto cat_obj = cat.toObject();
-        auto cat_id = cat_obj["id"].toString();
+        auto cat_id = cat_obj[QSL("id")].toString();
 
         if (!cats.contains(cat_id)) {
           auto* category = new Category();
@@ -629,28 +632,28 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     }
   }
 
-  json = QJsonDocument::fromJson(categories.toUtf8()).object()["tags"].toArray();
+  json = QJsonDocument::fromJson(categories.toUtf8()).object()[QSL("tags")].toArray();
   cats.insert(QString(), parent);
 
   for (const QJsonValue& obj : qAsConst(json)) {
     auto label = obj.toObject();
-    QString label_id = label["id"].toString();
+    QString label_id = label[QSL("id")].toString();
 
-    if ((label["type"].toString() == QL1S("folder")) ||
-        (m_service == GreaderServiceRoot::Service::TheOldReader &&
-         label_id.contains(QSL("/label/")))) {
+    if ((label[QSL("type")].toString() == QSL("folder") ||
+         (m_service == GreaderServiceRoot::Service::TheOldReader &&
+          label_id.contains(QSL("/label/"))))) {
 
       // We have category (not "state" or "tag" or "label").
       auto* category = new Category();
 
-      category->setDescription(label["htmlUrl"].toString());
+      category->setDescription(label[QSL("htmlUrl")].toString());
       category->setTitle(label_id.mid(label_id.lastIndexOf(QL1C('/')) + 1));
       category->setCustomId(label_id);
 
       cats.insert(category->customId(), category);
       parent->appendChild(category);
     }
-    else if (label["type"] == QL1S("tag")) {
+    else if (label[QSL("type")] == QSL("tag")) {
       QString plain_name = QRegularExpression(".+\\/([^\\/]+)").match(label_id).captured(1);
       auto* new_lbl = new Label(plain_name, TextFactory::generateColorFromText(label_id));
 
@@ -663,7 +666,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
              label_id.contains(QSL("/label/"))) {
       if (!cats.contains(label_id)) {
         // This stream is not a category, it is label, bitches!
-        QString plain_name = QRegularExpression(".+\\/([^\\/]+)").match(label_id).captured(1);
+        QString plain_name = QRegularExpression(QSL(".+\\/([^\\/]+)")).match(label_id).captured(1);
         auto* new_lbl = new Label(plain_name, TextFactory::generateColorFromText(label_id));
 
         new_lbl->setCustomId(label_id);
@@ -672,22 +675,22 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     }
   }
 
-  json = QJsonDocument::fromJson(feeds.toUtf8()).object()["subscriptions"].toArray();
+  json = QJsonDocument::fromJson(feeds.toUtf8()).object()[QSL("subscriptions")].toArray();
 
   for (const QJsonValue& obj : qAsConst(json)) {
     auto subscription = obj.toObject();
-    QString id = subscription["id"].toString();
-    QString title = subscription["title"].toString();
-    QString url = subscription["htmlUrl"].toString();
+    QString id = subscription[QSL("id")].toString();
+    QString title = subscription[QSL("title")].toString();
+    QString url = subscription[QSL("htmlUrl")].toString();
     QString parent_label;
-    QJsonArray assigned_categories = subscription["categories"].toArray();
+    QJsonArray assigned_categories = subscription[QSL("categories")].toArray();
 
     if (id.startsWith(TOR_SPONSORED_STREAM_ID)) {
       continue;
     }
 
     for (const QJsonValue& cat : qAsConst(assigned_categories)) {
-      QString potential_id = cat.toObject()["id"].toString();
+      QString potential_id = cat.toObject()[QSL("id")].toString();
 
       if (potential_id.contains(QSL("/label/"))) {
         parent_label = potential_id;
@@ -704,7 +707,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories, con
     feed->setCustomId(id);
 
     if (obtain_icons) {
-      QString icon_url = subscription["iconUrl"].toString();
+      QString icon_url = subscription[QSL("iconUrl")].toString();
       QList<QPair<QString, bool>> icon_urls;
 
       if (!icon_url.isEmpty()) {
@@ -788,7 +791,7 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
       }
     }
 
-    QRegularExpression exp("^(NA|unused|none|null)$");
+    QRegularExpression exp(QSL("^(NA|unused|none|null)$"));
 
     if (exp.match(m_authSid).hasMatch()) {
       m_authSid = QString();
@@ -834,7 +837,7 @@ GreaderServiceRoot::Service GreaderNetwork::service() const {
   return m_service;
 }
 
-void GreaderNetwork::setService(const GreaderServiceRoot::Service& service) {
+void GreaderNetwork::setService(GreaderServiceRoot::Service service) {
   m_service = service;
 }
 
@@ -864,7 +867,7 @@ void GreaderNetwork::setBaseUrl(const QString& base_url) {
 
 QPair<QByteArray, QByteArray> GreaderNetwork::authHeader() const {
   if (m_service == GreaderServiceRoot::Service::Inoreader) {
-    return { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+    return { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
              m_oauth->bearer().toLocal8Bit() };
   }
   else {
@@ -921,19 +924,19 @@ QString GreaderNetwork::convertShortStreamIdToLongStreamId(const QString& stream
 }
 
 QString GreaderNetwork::simplifyStreamId(const QString& stream_id) const {
-  return QString(stream_id).replace(QRegularExpression("\\/\\d+\\/"), QSL("/-/"));
+  return QString(stream_id).replace(QRegularExpression(QSL("\\/\\d+\\/")), QSL("/-/"));
 }
 
 QStringList GreaderNetwork::decodeItemIds(const QString& stream_json_data, QString& continuation) {
   QStringList ids;
   QJsonDocument json_doc = QJsonDocument::fromJson(stream_json_data.toUtf8());
-  QJsonArray json = json_doc.object()["itemRefs"].toArray();
+  QJsonArray json = json_doc.object()[QSL("itemRefs")].toArray();
 
-  continuation = json_doc.object()["continuation"].toString();
+  continuation = json_doc.object()[QSL("continuation")].toString();
   ids.reserve(json.count());
 
   for (const QJsonValue& id : json) {
-    ids.append(id.toObject()["id"].toString());
+    ids.append(id.toObject()[QSL("id")].toString());
   }
 
   return ids;
@@ -945,30 +948,30 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
                                                     QString& continuation) {
   QList<Message> messages;
   QJsonDocument json_doc = QJsonDocument::fromJson(stream_json_data.toUtf8());
-  QJsonArray json = json_doc.object()["items"].toArray();
+  QJsonArray json = json_doc.object()[QSL("items")].toArray();
   auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
 
-  continuation = json_doc.object()["continuation"].toString();
+  continuation = json_doc.object()[QSL("continuation")].toString();
   messages.reserve(json.count());
 
   for (const QJsonValue& obj : json) {
     auto message_obj = obj.toObject();
     Message message;
 
-    message.m_title = qApp->web()->unescapeHtml(message_obj["title"].toString());
-    message.m_author = qApp->web()->unescapeHtml(message_obj["author"].toString());
-    message.m_created = QDateTime::fromSecsSinceEpoch(message_obj["published"].toInt(), Qt::UTC);
+    message.m_title = qApp->web()->unescapeHtml(message_obj[QSL("title")].toString());
+    message.m_author = qApp->web()->unescapeHtml(message_obj[QSL("author")].toString());
+    message.m_created = QDateTime::fromSecsSinceEpoch(message_obj[QSL("published")].toInt(), Qt::UTC);
     message.m_createdFromFeed = true;
-    message.m_customId = message_obj["id"].toString();
+    message.m_customId = message_obj[QSL("id")].toString();
 
-    auto alternates = message_obj["alternate"].toArray();
-    auto enclosures = message_obj["enclosure"].toArray();
-    auto categories = message_obj["categories"].toArray();
+    auto alternates = message_obj[QSL("alternate")].toArray();
+    auto enclosures = message_obj[QSL("enclosure")].toArray();
+    auto categories = message_obj[QSL("categories")].toArray();
 
     for (const QJsonValue& alt : alternates) {
       auto alt_obj = alt.toObject();
-      QString mime = alt_obj["type"].toString();
-      QString href = alt_obj["href"].toString();
+      QString mime = alt_obj[QSL("type")].toString();
+      QString href = alt_obj[QSL("href")].toString();
 
       if (mime.isEmpty() || mime == QL1S("text/html")) {
         message.m_url = href;
@@ -980,8 +983,8 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
 
     for (const QJsonValue& enc : enclosures) {
       auto enc_obj = enc.toObject();
-      QString mime = enc_obj["type"].toString();
-      QString href = enc_obj["href"].toString();
+      QString mime = enc_obj[QSL("type")].toString();
+      QString href = enc_obj[QSL("href")].toString();
 
       message.m_enclosures.append(Enclosure(href, mime));
     }
@@ -989,10 +992,10 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
     for (const QJsonValue& cat : categories) {
       QString category = cat.toString();
 
-      if (category.endsWith(GREADER_API_STATE_READ)) {
+      if (category.endsWith(QSL(GREADER_API_STATE_READ))) {
         message.m_isRead = true;
       }
-      else if (category.endsWith(GREADER_API_STATE_IMPORTANT)) {
+      else if (category.endsWith(QSL(GREADER_API_STATE_IMPORTANT))) {
         message.m_isImportant = true;
       }
       else if (category.contains(QSL("label"))) {
@@ -1007,10 +1010,10 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
       }
     }
 
-    message.m_contents = message_obj["summary"].toObject()["content"].toString();
+    message.m_contents = message_obj[QSL("summary")].toObject()[QSL("content")].toString();
     message.m_rawContents = QJsonDocument(message_obj).toJson(QJsonDocument::JsonFormat::Compact);
     message.m_feedId = stream_id.isEmpty()
-                       ? message_obj["origin"].toObject()["streamId"].toString()
+                       ? message_obj[QSL("origin")].toObject()[QSL("streamId")].toString()
                        : stream_id;
 
     if (message.m_title.isEmpty()) {
@@ -1037,7 +1040,7 @@ void GreaderNetwork::clearCredentials() {
 
 QString GreaderNetwork::sanitizedBaseUrl() const {
   QString base_url = m_service == GreaderServiceRoot::Service::Inoreader
-                     ? GREADER_URL_INOREADER
+                     ? QSL(GREADER_URL_INOREADER)
                      : m_baseUrl;
 
   if (!base_url.endsWith('/')) {
@@ -1046,7 +1049,7 @@ QString GreaderNetwork::sanitizedBaseUrl() const {
 
   switch (m_service) {
     case GreaderServiceRoot::Service::FreshRss:
-      base_url += FRESHRSS_BASE_URL_PATH;
+      base_url += QSL(FRESHRSS_BASE_URL_PATH);
       break;
 
     default:
@@ -1059,31 +1062,31 @@ QString GreaderNetwork::sanitizedBaseUrl() const {
 QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) const {
   switch (operation) {
     case Operations::ClientLogin:
-      return sanitizedBaseUrl() + GREADER_API_CLIENT_LOGIN;
+      return sanitizedBaseUrl() + QSL(GREADER_API_CLIENT_LOGIN);
 
     case Operations::Token:
-      return sanitizedBaseUrl() + GREADER_API_TOKEN;
+      return sanitizedBaseUrl() + QSL(GREADER_API_TOKEN);
 
     case Operations::TagList:
-      return sanitizedBaseUrl() + GREADER_API_TAG_LIST;
+      return sanitizedBaseUrl() + QSL(GREADER_API_TAG_LIST);
 
     case Operations::SubscriptionList:
-      return sanitizedBaseUrl() + GREADER_API_SUBSCRIPTION_LIST;
+      return sanitizedBaseUrl() + QSL(GREADER_API_SUBSCRIPTION_LIST);
 
     case Operations::StreamContents:
-      return sanitizedBaseUrl() + GREADER_API_STREAM_CONTENTS;
+      return sanitizedBaseUrl() + QSL(GREADER_API_STREAM_CONTENTS);
 
     case Operations::UserInfo:
-      return sanitizedBaseUrl() + GREADER_API_USER_INFO;
+      return sanitizedBaseUrl() + QSL(GREADER_API_USER_INFO);
 
     case Operations::EditTag:
-      return sanitizedBaseUrl() + GREADER_API_EDIT_TAG;
+      return sanitizedBaseUrl() + QSL(GREADER_API_EDIT_TAG);
 
     case Operations::ItemIds:
-      return sanitizedBaseUrl() + GREADER_API_ITEM_IDS;
+      return sanitizedBaseUrl() + QSL(GREADER_API_ITEM_IDS);
 
     case Operations::ItemContents:
-      return sanitizedBaseUrl() + GREADER_API_ITEM_CONTENTS;
+      return sanitizedBaseUrl() + QSL(GREADER_API_ITEM_CONTENTS);
 
     default:
       return sanitizedBaseUrl();
@@ -1120,11 +1123,11 @@ void GreaderNetwork::onAuthFailed() {
 
 void GreaderNetwork::initializeOauth() {
 #if defined(INOREADER_OFFICIAL_SUPPORT)
-  m_oauth->setClientSecretId(TextFactory::decrypt(INOREADER_CLIENT_ID, OAUTH_DECRYPTION_KEY));
-  m_oauth->setClientSecretSecret(TextFactory::decrypt(INOREADER_CLIENT_SECRET, OAUTH_DECRYPTION_KEY));
+  m_oauth->setClientSecretId(TextFactory::decrypt(QSL(INOREADER_CLIENT_ID), OAUTH_DECRYPTION_KEY));
+  m_oauth->setClientSecretSecret(TextFactory::decrypt(QSL(INOREADER_CLIENT_SECRET), OAUTH_DECRYPTION_KEY));
 #endif
 
-  m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) +
+  m_oauth->setRedirectUrl(QSL(OAUTH_REDIRECT_URI) +
                           QL1C(':') +
                           QString::number(INO_OAUTH_REDIRECT_URI_PORT),
                           false);

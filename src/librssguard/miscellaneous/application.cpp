@@ -435,7 +435,7 @@ SystemTrayIcon* Application::trayIcon() {
 }
 
 QIcon Application::desktopAwareIcon() const {
-  auto from_theme = m_icons->fromTheme(APP_LOW_NAME);
+  auto from_theme = m_icons->fromTheme(QSL(APP_LOW_NAME));
 
   if (!from_theme.isNull()) {
     return from_theme;

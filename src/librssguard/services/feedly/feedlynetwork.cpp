@@ -26,17 +26,17 @@
 FeedlyNetwork::FeedlyNetwork(QObject* parent)
   : QObject(parent), m_service(nullptr),
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
-  m_oauth(new OAuth2Service(QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_AUTH,
-                            QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TOKEN,
-                            TextFactory::decrypt(FEEDLY_CLIENT_ID, OAUTH_DECRYPTION_KEY),
-                            TextFactory::decrypt(FEEDLY_CLIENT_SECRET, OAUTH_DECRYPTION_KEY),
-                            FEEDLY_API_SCOPE, this)),
+  m_oauth(new OAuth2Service(QSL(FEEDLY_API_URL_BASE) + QSL(FEEDLY_API_URL_AUTH),
+                            QSL(FEEDLY_API_URL_BASE) + QSL(FEEDLY_API_URL_TOKEN),
+                            TextFactory::decrypt(QSL(FEEDLY_CLIENT_ID), OAUTH_DECRYPTION_KEY),
+                            TextFactory::decrypt(QSL(FEEDLY_CLIENT_SECRET), OAUTH_DECRYPTION_KEY),
+                            QSL(FEEDLY_API_SCOPE), this)),
 #endif
   m_username(QString()),
   m_developerAccessToken(QString()), m_batchSize(FEEDLY_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false) {
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
-  m_oauth->setRedirectUrl(QString(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT),
+  m_oauth->setRedirectUrl(QSL(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(FEEDLY_API_REDIRECT_URI_PORT),
                           true);
 
   connect(m_oauth, &OAuth2Service::tokensRetrieveError, this, &FeedlyNetwork::onTokensError);
@@ -108,7 +108,7 @@ void FeedlyNetwork::tagEntries(const QString& tag_id, const QStringList& msg_cus
   QByteArray input_data;
   QJsonObject input;
 
-  input["entryIds"] = QJsonArray::fromStringList(msg_custom_ids);
+  input[QSL("entryIds")] = QJsonArray::fromStringList(msg_custom_ids);
   input_data = QJsonDocument(input).toJson(QJsonDocument::JsonFormat::Compact);
 
   auto result = NetworkFactory::performNetworkOperation(target_url,
@@ -145,9 +145,9 @@ void FeedlyNetwork::markers(const QString& action, const QStringList& msg_custom
   QByteArray output;
   QJsonObject input;
 
-  input["action"] = action;
-  input["type"] = QSL("entries");
-  input["entryIds"] = QJsonArray::fromStringList(msg_custom_ids);
+  input[QSL("action")] = action;
+  input[QSL("type")] = QSL("entries");
+  input[QSL("entryIds")] = QJsonArray::fromStringList(msg_custom_ids);
 
   QByteArray input_data = QJsonDocument(input).toJson(QJsonDocument::JsonFormat::Compact);
   auto result = NetworkFactory::performNetworkOperation(target_url,
@@ -230,53 +230,53 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
   QJsonDocument json = QJsonDocument::fromJson(stream_contents);
   auto active_labels = m_service->labelsNode() != nullptr ? m_service->labelsNode()->labels() : QList<Label*>();
 
-  continuation = json.object()["continuation"].toString();
+  continuation = json.object()[QSL("continuation")].toString();
 
-  auto items = json.object()["items"].toArray();
+  auto items = json.object()[QSL("items")].toArray();
 
   for (const QJsonValue& entry : qAsConst(items)) {
     const QJsonObject& entry_obj = entry.toObject();
     Message message;
 
-    message.m_feedId = entry_obj["origin"].toObject()["streamId"].toString();
-    message.m_title = entry_obj["title"].toString();
-    message.m_author = entry_obj["author"].toString();
-    message.m_contents = entry_obj["content"].toObject()["content"].toString();
+    message.m_feedId = entry_obj[QSL("origin")].toObject()[QSL("streamId")].toString();
+    message.m_title = entry_obj[QSL("title")].toString();
+    message.m_author = entry_obj[QSL("author")].toString();
+    message.m_contents = entry_obj[QSL("content")].toObject()[QSL("content")].toString();
     message.m_rawContents = QJsonDocument(entry_obj).toJson(QJsonDocument::JsonFormat::Compact);
 
     if (message.m_contents.isEmpty()) {
-      message.m_contents = entry_obj["summary"].toObject()["content"].toString();
+      message.m_contents = entry_obj[QSL("summary")].toObject()[QSL("content")].toString();
     }
 
     message.m_createdFromFeed = true;
-    message.m_created = QDateTime::fromMSecsSinceEpoch(entry_obj["published"].toVariant().toLongLong(),
+    message.m_created = QDateTime::fromMSecsSinceEpoch(entry_obj[QSL("published")].toVariant().toLongLong(),
                                                        Qt::TimeSpec::UTC);
-    message.m_customId = entry_obj["id"].toString();
-    message.m_isRead = !entry_obj["unread"].toBool();
-    message.m_url = entry_obj["canonicalUrl"].toString();
+    message.m_customId = entry_obj[QSL("id")].toString();
+    message.m_isRead = !entry_obj[QSL("unread")].toBool();
+    message.m_url = entry_obj[QSL("canonicalUrl")].toString();
 
     if (message.m_url.isEmpty()) {
-      message.m_url = entry_obj["canonical"].toObject()["href"].toString();
+      message.m_url = entry_obj[QSL("canonical")].toObject()[QSL("href")].toString();
     }
 
-    auto enclosures = entry_obj["enclosure"].toArray();
+    auto enclosures = entry_obj[QSL("enclosure")].toArray();
 
     for (const QJsonValue& enc : qAsConst(enclosures)) {
       const QJsonObject& enc_obj = enc.toObject();
-      const QString& enc_href = enc_obj["href"].toString();
+      const QString& enc_href = enc_obj[QSL("href")].toString();
 
       if (!boolinq::from(message.m_enclosures).any([enc_href](const Enclosure& existing_enclosure) {
         return existing_enclosure.m_url == enc_href;
       })) {
-        message.m_enclosures.append(Enclosure(enc_href, enc_obj["type"].toString()));
+        message.m_enclosures.append(Enclosure(enc_href, enc_obj[QSL("type")].toString()));
       }
     }
 
-    auto tags = entry_obj["tags"].toArray();
+    auto tags = entry_obj[QSL("tags")].toArray();
 
     for (const QJsonValue& tag : qAsConst(tags)) {
       const QJsonObject& tag_obj = tag.toObject();
-      const QString& tag_id = tag_obj["id"].toString();
+      const QString& tag_id = tag_obj[QSL("id")].toString();
 
       if (tag_id.endsWith(FEEDLY_API_SYSTEM_TAG_SAVED)) {
         message.m_isImportant = true;
@@ -346,33 +346,34 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json, bool obtain_i
     QJsonObject cat_obj = cat.toObject();
     auto* category = new Category(parent);
 
-    category->setTitle(cat_obj["label"].toString());
-    category->setCustomId(cat_obj["id"].toString());
+    category->setTitle(cat_obj[QSL("label")].toString());
+    category->setCustomId(cat_obj[QSL("id")].toString());
 
-    auto feeds = cat["feeds"].toArray();
+    auto feeds = cat[QSL("feeds")].toArray();
 
     for (const QJsonValue& fee : qAsConst(feeds)) {
       QJsonObject fee_obj = fee.toObject();
 
-      if (used_feeds.contains(fee_obj["id"].toString())) {
+      if (used_feeds.contains(fee_obj[QSL("id")].toString())) {
         qWarningNN << LOGSEC_FEEDLY
                    << "Feed"
-                   << QUOTE_W_SPACE(fee_obj["id"].toString())
+                   << QUOTE_W_SPACE(fee_obj[QSL("id")].toString())
                    << "is already decoded and cannot be placed under several categories.";
         continue;
       }
 
       auto* feed = new Feed(category);
 
-      feed->setTitle(fee_obj["title"].toString());
-      feed->setDescription(fee_obj["description"].toString());
-      feed->setCustomId(fee_obj["id"].toString());
+      feed->setSource(fee_obj[QSL("website")].toString());
+      feed->setTitle(fee_obj[QSL("title")].toString());
+      feed->setDescription(fee_obj[QSL("description")].toString());
+      feed->setCustomId(fee_obj[QSL("id")].toString());
 
       if (obtain_icons) {
         QIcon icon;
-        auto result = NetworkFactory::downloadIcon({ { fee_obj["iconUrl"].toString(), true },
-                                                     { fee_obj["website"].toString(), false },
-                                                     { fee_obj["logo"].toString(), true } },
+        auto result = NetworkFactory::downloadIcon({ { fee_obj[QSL("iconUrl")].toString(), true },
+                                                     { fee_obj[QSL("website")].toString(), false },
+                                                     { fee_obj[QSL("logo")].toString(), true } },
                                                    timeout,
                                                    icon,
                                                    proxy);
@@ -461,14 +462,14 @@ QList<RootItem*> FeedlyNetwork::tags() {
 
   for (const QJsonValue& tag : qAsConst(tags)) {
     const QJsonObject& tag_obj = tag.toObject();
-    QString name_id = tag_obj["id"].toString();
+    QString name_id = tag_obj[QSL("id")].toString();
 
     if (name_id.endsWith(FEEDLY_API_SYSTEM_TAG_READ) ||
         name_id.endsWith(FEEDLY_API_SYSTEM_TAG_SAVED)) {
       continue;
     }
 
-    QString plain_name = tag_obj["label"].toString();
+    QString plain_name = tag_obj[QSL("label")].toString();
     auto* new_lbl = new Label(plain_name, TextFactory::generateColorFromText(name_id));
 
     new_lbl->setCustomId(name_id);
@@ -559,23 +560,23 @@ void FeedlyNetwork::setOauth(OAuth2Service* oauth) {
 QString FeedlyNetwork::fullUrl(FeedlyNetwork::Service service) const {
   switch (service) {
     case Service::Profile:
-      return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_PROFILE;
+      return QSL(FEEDLY_API_URL_BASE) + QSL(FEEDLY_API_URL_PROFILE);
 
     case Service::Collections:
-      return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_COLLETIONS;
+      return QSL(FEEDLY_API_URL_BASE) + QSL(FEEDLY_API_URL_COLLETIONS);
 
     case Service::Tags:
     case Service::TagEntries:
-      return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_TAGS;
+      return QSL(FEEDLY_API_URL_BASE) + QSL(FEEDLY_API_URL_TAGS);
 
     case Service::StreamContents:
-      return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_STREAM_CONTENTS;
+      return QSL(FEEDLY_API_URL_BASE) + QSL(FEEDLY_API_URL_STREAM_CONTENTS);
 
     case Service::Markers:
-      return QSL(FEEDLY_API_URL_BASE) + FEEDLY_API_URL_MARKERS;
+      return QSL(FEEDLY_API_URL_BASE) + QSL(FEEDLY_API_URL_MARKERS);
 
     default:
-      return FEEDLY_API_URL_BASE;
+      return QSL(FEEDLY_API_URL_BASE);
   }
 }
 
@@ -586,11 +587,11 @@ QString FeedlyNetwork::bearer() const {
   }
 #endif
 
-  return QString("Bearer %1").arg(m_developerAccessToken);
+  return QSL("Bearer %1").arg(m_developerAccessToken);
 }
 
 QPair<QByteArray, QByteArray> FeedlyNetwork::bearerHeader(const QString& bearer) const {
-  return { QString(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit() };
+  return { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit() };
 }
 
 bool FeedlyNetwork::downloadOnlyUnreadMessages() const {

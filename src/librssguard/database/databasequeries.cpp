@@ -2327,5 +2327,5 @@ bool DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db,
 }
 
 QString DatabaseQueries::unnulifyString(const QString& str) {
-  return str.isNull() ? QSL("") : str;
+  return str.isNull() ? QL1S("") : str;
 }

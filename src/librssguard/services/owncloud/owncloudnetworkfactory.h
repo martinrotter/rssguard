@@ -42,7 +42,6 @@ class OwnCloudStatusResponse : public OwnCloudResponse {
     virtual ~OwnCloudStatusResponse();
 
     QString version() const;
-    bool misconfiguredCron() const;
 };
 
 class RootItem;

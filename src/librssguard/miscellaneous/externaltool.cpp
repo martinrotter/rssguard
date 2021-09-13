@@ -35,7 +35,7 @@ QString ExternalTool::parameters() const {
 }
 
 ExternalTool ExternalTool::fromString(const QString& str) {
-  QStringList outer = str.split(EXTERNAL_TOOL_SEPARATOR);
+  QStringList outer = str.split(QSL(EXTERNAL_TOOL_SEPARATOR));
 
   if (outer.size() != 2) {
     throw ApplicationException(QObject::tr("Passed external tool representation is not valid."));

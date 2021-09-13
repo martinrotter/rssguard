@@ -39,7 +39,7 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_
 
 FormStandardImportExport::~FormStandardImportExport() = default;
 
-void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode& mode) {
+void FormStandardImportExport::setMode(FeedsImportExportModel::Mode mode) {
   m_model->setMode(mode);
   m_ui->m_progressBar->setVisible(false);
 
@@ -148,7 +148,7 @@ void FormStandardImportExport::selectExportFile(bool without_dialog) {
 
     // Add more filters here.
     filter += filter_opml20;
-    filter += ";;";
+    filter += QSL(";;");
     filter += filter_txt_url_per_line;
     selected_file = QFileDialog::getSaveFileName(this, tr("Select file for feeds export"),
                                                  the_file,
@@ -190,7 +190,7 @@ void FormStandardImportExport::selectImportFile() {
 
   // Add more filters here.
   filter += filter_opml20;
-  filter += ";;";
+  filter += QSL(";;");
   filter += filter_txt_url_per_line;
   const QString selected_file = QFileDialog::getOpenFileName(this, tr("Select file for feeds import"), qApp->homeFolder(),
                                                              filter, &selected_filter);

@@ -2,9 +2,9 @@
 
 #include "services/standard/standardserviceentrypoint.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "services/standard/gui/formeditstandardaccount.h"
 #include "services/standard/standardserviceroot.h"
 
@@ -17,7 +17,7 @@ QString StandardServiceEntryPoint::description() const {
 }
 
 QString StandardServiceEntryPoint::author() const {
-  return APP_AUTHOR;
+  return QSL(APP_AUTHOR);
 }
 
 QIcon StandardServiceEntryPoint::icon() const {
@@ -25,7 +25,7 @@ QIcon StandardServiceEntryPoint::icon() const {
 }
 
 QString StandardServiceEntryPoint::code() const {
-  return SERVICE_CODE_STD_RSS;
+  return QSL(SERVICE_CODE_STD_RSS);
 }
 
 ServiceRoot* StandardServiceEntryPoint::createNewRoot() const {

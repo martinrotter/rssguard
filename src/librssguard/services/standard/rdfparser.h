@@ -18,7 +18,7 @@ class RdfParser : public FeedParser {
 
   private:
     QDomNodeList messageElements();
-    Message extractMessage(const QDomElement& msg_element, QDateTime current_time) const;
+    Message extractMessage(const QDomElement& msg_element, const QDateTime& current_time) const;
 
     QString m_rdfNamespace;
     QString m_rssNamespace;

@@ -15,7 +15,7 @@ TtRssFeedDetails::TtRssFeedDetails(QWidget* parent) : QWidget(parent) {
 }
 
 void TtRssFeedDetails::onUrlChanged(const QString& new_url) {
-  if (QRegularExpression(URL_REGEXP).match(new_url).hasMatch()) {
+  if (QRegularExpression(QSL(URL_REGEXP)).match(new_url).hasMatch()) {
     // New url is well-formed.
     ui.m_txtUrl->setStatus(LineEditWithStatus::StatusType::Ok, tr("The URL is ok."));
   }

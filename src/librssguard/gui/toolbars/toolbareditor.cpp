@@ -61,12 +61,14 @@ void ToolBarEditor::resetToolBar() {
   }
 }
 
-void ToolBarEditor::loadEditor(const QList<QAction*> activated_actions, const QList<QAction*> available_actions) {
+void ToolBarEditor::loadEditor(const QList<QAction*>& activated_actions, const QList<QAction*>& available_actions) {
   m_ui->m_listActivatedActions->clear();
   m_ui->m_listAvailableActions->clear();
 
   for (const QAction* action : activated_actions) {
-    QListWidgetItem* action_item = new QListWidgetItem(action->icon(), action->text().replace('&', ""), m_ui->m_listActivatedActions);
+    QListWidgetItem* action_item = new QListWidgetItem(action->icon(),
+                                                       action->text().replace('&', QL1S("")),
+                                                       m_ui->m_listActivatedActions);
 
     if (action->isSeparator()) {
       action_item->setData(Qt::ItemDataRole::UserRole, SEPARATOR_ACTION_NAME);
@@ -87,21 +89,23 @@ void ToolBarEditor::loadEditor(const QList<QAction*> activated_actions, const QL
 
   for (QAction* action : available_actions) {
     if (!activated_actions.contains(action)) {
-      QListWidgetItem* action_item = new QListWidgetItem(action->icon(), action->text().replace('&', ""), m_ui->m_listAvailableActions);
+      QListWidgetItem* action_item = new QListWidgetItem(action->icon(),
+                                                         action->text().replace('&', QL1S("")),
+                                                         m_ui->m_listAvailableActions);
 
       if (action->isSeparator()) {
-        action_item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
+        action_item->setData(Qt::ItemDataRole::UserRole, QSL(SEPARATOR_ACTION_NAME));
         action_item->setText(tr("Separator"));
         action_item->setToolTip(tr("Separator"));
         action_item->setIcon(qApp->icons()->fromTheme(QSL("insert-object")));
       }
       else if (action->property("type").isValid()) {
-        action_item->setData(Qt::UserRole, action->property("type").toString());
+        action_item->setData(Qt::ItemDataRole::UserRole, action->property("type").toString());
         action_item->setText(action->property("name").toString());
         action_item->setToolTip(action_item->text());
       }
       else {
-        action_item->setData(Qt::UserRole, action->objectName());
+        action_item->setData(Qt::ItemDataRole::UserRole, action->objectName());
         action_item->setToolTip(action->toolTip());
       }
     }
@@ -219,7 +223,7 @@ void ToolBarEditor::deleteSelectedAction() {
     QListWidgetItem* selected_item = items.at(0);
     const QString data_item = selected_item->data(Qt::ItemDataRole::UserRole).toString();
 
-    if (data_item == SEPARATOR_ACTION_NAME || data_item == SPACER_ACTION_NAME) {
+    if (data_item == QSL(SEPARATOR_ACTION_NAME) || data_item == QSL(SPACER_ACTION_NAME)) {
       m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item));
       updateActionsAvailability();
     }
@@ -242,7 +246,7 @@ void ToolBarEditor::deleteAllActions() {
   while ((taken_item = m_ui->m_listActivatedActions->takeItem(0)) != nullptr) {
     data_item = taken_item->data(Qt::ItemDataRole::UserRole).toString();
 
-    if (data_item != SEPARATOR_ACTION_NAME && data_item != SPACER_ACTION_NAME) {
+    if (data_item != QSL(SEPARATOR_ACTION_NAME) && data_item != QSL(SPACER_ACTION_NAME)) {
       m_ui->m_listAvailableActions->insertItem(m_ui->m_listAvailableActions->currentRow() + 1, taken_item);
     }
   }

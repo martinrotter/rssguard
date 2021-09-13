@@ -40,7 +40,7 @@ void SettingsLocalization::loadSettings() {
     item->setText(0, language.m_name);
     item->setText(1, language.m_code);
     item->setText(2, language.m_author);
-    item->setIcon(0, qApp->icons()->miscIcon(QString(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
+    item->setIcon(0, qApp->icons()->miscIcon(QSL(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
   }
 
   m_ui->m_treeLanguages->sortByColumn(0, Qt::SortOrder::AscendingOrder);

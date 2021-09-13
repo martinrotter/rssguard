@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
 #endif
 
   // Instantiate base application object.
-  Application application(APP_LOW_NAME, argc, argv);
+  Application application(QSL(APP_LOW_NAME), argc, argv);
 
   qDebugNN << LOGSEC_CORE << "Starting" << NONQUOTE_W_SPACE_DOT(APP_LONG_NAME);
   qDebugNN << LOGSEC_CORE << "Instantiated class " << QUOTE_W_SPACE_DOT(application.metaObject()->className());
@@ -66,9 +66,9 @@ int main(int argc, char* argv[]) {
   qApp->skins()->loadCurrentSkin();
 
   // These settings needs to be set before any QSettings object.
-  Application::setApplicationName(APP_NAME);
-  Application::setApplicationVersion(APP_VERSION);
-  Application::setOrganizationDomain(APP_URL);
+  Application::setApplicationName(QSL(APP_NAME));
+  Application::setApplicationVersion(QSL(APP_VERSION));
+  Application::setOrganizationDomain(QSL(APP_URL));
   Application::setWindowIcon(qApp->desktopAwareIcon());
 
   qApp->reactOnForeignNotifications();
@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
   qApp->offerChanges();
   qApp->showPolls();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
-  qApp->parseCmdArgumentsFromOtherInstance(qApp->cmdParser()->positionalArguments().join(ARGUMENTS_LIST_SEPARATOR));
+  qApp->parseCmdArgumentsFromOtherInstance(qApp->cmdParser()->positionalArguments().join(QSL(ARGUMENTS_LIST_SEPARATOR)));
 
   return Application::exec();
 }

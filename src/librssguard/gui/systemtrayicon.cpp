@@ -157,7 +157,7 @@ void SystemTrayIcon::setNumber(int number, bool any_new_message) {
 }
 
 void SystemTrayIcon::showMessage(const QString& title, const QString& message, QSystemTrayIcon::MessageIcon icon,
-                                 int milliseconds_timeout_hint, std::function<void()> functor) {
+                                 int milliseconds_timeout_hint, const std::function<void()>& functor) {
   if (m_connection != nullptr) {
     // Disconnect previous bubble click signalling.
     disconnect(m_connection);

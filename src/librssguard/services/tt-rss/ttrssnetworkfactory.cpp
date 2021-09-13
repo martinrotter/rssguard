@@ -78,9 +78,9 @@ TtRssLoginResponse TtRssNetworkFactory::login(const QNetworkProxy& proxy) {
 
   QJsonObject json;
 
-  json["op"] = QSL("login");
-  json["user"] = m_username;
-  json["password"] = m_password;
+  json[QSL("op")] = QSL("login");
+  json[QSL("user")] = m_username;
+  json[QSL("password")] = m_password;
 
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -120,8 +120,8 @@ TtRssResponse TtRssNetworkFactory::logout(const QNetworkProxy& proxy) {
   if (!m_sessionId.isEmpty()) {
     QJsonObject json;
 
-    json["op"] = QSL("logout");
-    json["sid"] = m_sessionId;
+    json[QSL("op")] = QSL("logout");
+    json[QSL("sid")] = m_sessionId;
     QByteArray result_raw;
     QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -165,8 +165,8 @@ TtRssResponse TtRssNetworkFactory::logout(const QNetworkProxy& proxy) {
 TtRssGetLabelsResponse TtRssNetworkFactory::getLabels(const QNetworkProxy& proxy) {
   QJsonObject json;
 
-  json["op"] = QSL("getLabels");
-  json["sid"] = m_sessionId;
+  json[QSL("op")] = QSL("getLabels");
+  json[QSL("sid")] = m_sessionId;
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
@@ -185,7 +185,7 @@ TtRssGetLabelsResponse TtRssNetworkFactory::getLabels(const QNetworkProxy& proxy
   if (result.isNotLoggedIn()) {
     // We are not logged in.
     login(proxy);
-    json["sid"] = m_sessionId;
+    json[QSL("sid")] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl,
                                                             timeout,
                                                             QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
@@ -212,9 +212,9 @@ TtRssGetLabelsResponse TtRssNetworkFactory::getLabels(const QNetworkProxy& proxy
 TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(const QNetworkProxy& proxy) {
   QJsonObject json;
 
-  json["op"] = QSL("getFeedTree");
-  json["sid"] = m_sessionId;
-  json["include_empty"] = true;
+  json[QSL("op")] = QSL("getFeedTree");
+  json[QSL("sid")] = m_sessionId;
+  json[QSL("include_empty")] = true;
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -236,7 +236,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(const QN
   if (result.isNotLoggedIn()) {
     // We are not logged in.
     login(proxy);
-    json["sid"] = m_sessionId;
+    json[QSL("sid")] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl,
                                                             timeout,
                                                             QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
@@ -266,16 +266,16 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
                                                             const QNetworkProxy& proxy) {
   QJsonObject json;
 
-  json["op"] = QSL("getHeadlines");
-  json["sid"] = m_sessionId;
-  json["feed_id"] = feed_id;
-  json["force_update"] = m_forceServerSideUpdate;
-  json["limit"] = limit;
-  json["skip"] = skip;
-  json["view_mode"] = unread_only ? QSL("unread") : QSL("all_articles");
-  json["show_content"] = show_content;
-  json["include_attachments"] = include_attachments;
-  json["sanitize"] = sanitize;
+  json[QSL("op")] = QSL("getHeadlines");
+  json[QSL("sid")] = m_sessionId;
+  json[QSL("feed_id")] = feed_id;
+  json[QSL("force_update")] = m_forceServerSideUpdate;
+  json[QSL("limit")] = limit;
+  json[QSL("skip")] = skip;
+  json[QSL("view_mode")] = unread_only ? QSL("unread") : QSL("all_articles");
+  json[QSL("show_content")] = show_content;
+  json[QSL("include_attachments")] = include_attachments;
+  json[QSL("sanitize")] = sanitize;
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -298,7 +298,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
   if (result.isNotLoggedIn()) {
     // We are not logged in.
     login(proxy);
-    json["sid"] = m_sessionId;
+    json[QSL("sid")] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl,
                                                             timeout,
                                                             QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
@@ -326,11 +326,11 @@ TtRssResponse TtRssNetworkFactory::setArticleLabel(const QStringList& article_id
                                                    bool assign, const QNetworkProxy& proxy) {
   QJsonObject json;
 
-  json["op"] = QSL("setArticleLabel");
-  json["sid"] = m_sessionId;
-  json["article_ids"] = article_ids.join(QSL(","));
-  json["label_id"] = label_custom_id.toInt();
-  json["assign"] = assign;
+  json[QSL("op")] = QSL("setArticleLabel");
+  json[QSL("sid")] = m_sessionId;
+  json[QSL("article_ids")] = article_ids.join(QSL(","));
+  json[QSL("label_id")] = label_custom_id.toInt();
+  json[QSL("assign")] = assign;
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
@@ -354,7 +354,7 @@ TtRssResponse TtRssNetworkFactory::setArticleLabel(const QStringList& article_id
   if (result.isNotLoggedIn()) {
     // We are not logged in.
     login(proxy);
-    json["sid"] = m_sessionId;
+    json[QSL("sid")] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl,
                                                             timeout,
                                                             QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
@@ -384,11 +384,11 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
                                                                const QNetworkProxy& proxy) {
   QJsonObject json;
 
-  json["op"] = QSL("updateArticle");
-  json["sid"] = m_sessionId;
-  json["article_ids"] = ids.join(QSL(","));
-  json["mode"] = (int) mode;
-  json["field"] = (int) field;
+  json[QSL("op")] = QSL("updateArticle");
+  json[QSL("sid")] = m_sessionId;
+  json[QSL("article_ids")] = ids.join(QSL(","));
+  json[QSL("mode")] = int(mode);
+  json[QSL("field")] = int(field);
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
@@ -412,7 +412,7 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
   if (result.isNotLoggedIn()) {
     // We are not logged in.
     login(proxy);
-    json["sid"] = m_sessionId;
+    json[QSL("sid")] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl,
                                                             timeout,
                                                             QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
@@ -442,14 +442,14 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString&
                                                                   const QString& password) {
   QJsonObject json;
 
-  json["op"] = QSL("subscribeToFeed");
-  json["sid"] = m_sessionId;
-  json["feed_url"] = url;
-  json["category_id"] = category_id;
+  json[QSL("op")] = QSL("subscribeToFeed");
+  json[QSL("sid")] = m_sessionId;
+  json[QSL("feed_url")] = url;
+  json[QSL("category_id")] = category_id;
 
   if (protectd) {
-    json["login"] = username;
-    json["password"] = password;
+    json[QSL("login")] = username;
+    json[QSL("password")] = password;
   }
 
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
@@ -474,7 +474,7 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString&
   if (result.isNotLoggedIn()) {
     // We are not logged in.
     login(proxy);
-    json["sid"] = m_sessionId;
+    json[QSL("sid")] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl,
                                                             timeout,
                                                             QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
@@ -501,9 +501,9 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString&
 TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id, const QNetworkProxy& proxy) {
   QJsonObject json;
 
-  json["op"] = QSL("unsubscribeFeed");
-  json["sid"] = m_sessionId;
-  json["feed_id"] = feed_id;
+  json[QSL("op")] = QSL("unsubscribeFeed");
+  json[QSL("sid")] = m_sessionId;
+  json[QSL("feed_id")] = feed_id;
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -526,7 +526,7 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id, c
   if (result.isNotLoggedIn()) {
     // We are not logged in.
     login(proxy);
-    json["sid"] = m_sessionId;
+    json[QSL("sid")] = m_sessionId;
     network_reply = NetworkFactory::performNetworkOperation(m_fullUrl,
                                                             timeout,
                                                             QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
@@ -613,7 +613,7 @@ int TtRssResponse::seq() const {
     return TTRSS_CONTENT_NOT_LOADED;
   }
   else {
-    return m_rawContent["seq"].toInt();
+    return m_rawContent[QSL("seq")].toInt();
   }
 }
 
@@ -622,12 +622,12 @@ int TtRssResponse::status() const {
     return TTRSS_CONTENT_NOT_LOADED;
   }
   else {
-    return m_rawContent["status"].toInt();
+    return m_rawContent[QSL("status")].toInt();
   }
 }
 
 bool TtRssResponse::isNotLoggedIn() const {
-  return status() == TTRSS_API_STATUS_ERR && hasError() && error() == TTRSS_NOT_LOGGED_IN;
+  return status() == TTRSS_API_STATUS_ERR && hasError() && error() == QSL(TTRSS_NOT_LOGGED_IN);
 }
 
 QString TtRssResponse::toString() const {
@@ -642,7 +642,7 @@ int TtRssLoginResponse::apiLevel() const {
     return TTRSS_CONTENT_NOT_LOADED;
   }
   else {
-    return m_rawContent["content"].toObject()["api_level"].toInt();
+    return m_rawContent[QSL("content")].toObject()[QSL("api_level")].toInt();
   }
 }
 
@@ -651,7 +651,7 @@ QString TtRssLoginResponse::sessionId() const {
     return QString();
   }
   else {
-    return m_rawContent["content"].toObject()["session_id"].toString();
+    return m_rawContent[QSL("content")].toObject()[QSL("session_id")].toString();
   }
 }
 
@@ -660,7 +660,7 @@ QString TtRssResponse::error() const {
     return QString();
   }
   else {
-    return m_rawContent["content"].toObject()["error"].toString();
+    return m_rawContent[QSL("content")].toObject()[QSL("error")].toString();
   }
 }
 
@@ -669,7 +669,7 @@ bool TtRssResponse::hasError() const {
     return false;
   }
   else {
-    return m_rawContent["content"].toObject().contains("error");
+    return m_rawContent[QSL("content")].toObject().contains(QSL("error"));
   }
 }
 
@@ -686,7 +686,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
 
   if (status() == TTRSS_API_STATUS_OK) {
     // We have data, construct object tree according to data.
-    QJsonArray items_to_process = m_rawContent["content"].toObject()["categories"].toObject()["items"].toArray();
+    QJsonArray items_to_process = m_rawContent[QSL("content")].toObject()[QSL("categories")].toObject()[QSL("items")].toArray();
     QVector<QPair<RootItem*, QJsonValue>> pairs;
 
     for (const QJsonValue& item : items_to_process) {
@@ -698,14 +698,14 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
       RootItem* act_parent = pair.first;
       QJsonObject item = pair.second.toObject();
       int item_id = item["bare_id"].toInt();
-      bool is_category = item.contains("type") && item["type"].toString() == TTRSS_GFT_TYPE_CATEGORY;
+      bool is_category = item.contains(QSL("type")) && item[QSL("type")].toString() == QSL(TTRSS_GFT_TYPE_CATEGORY);
 
       if (item_id >= 0) {
         if (is_category) {
           if (item_id == 0) {
             // This is "Uncategorized" category, all its feeds belong to top-level root.
-            if (item.contains("items")) {
-              auto ite = item["items"].toArray();
+            if (item.contains(QSL("items"))) {
+              auto ite = item[QSL("items")].toArray();
 
               for (const QJsonValue& child_feed : qAsConst(ite)) {
                 pairs.append(QPair<RootItem*, QJsonValue>(parent, child_feed));
@@ -715,12 +715,12 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
           else {
             auto* category = new Category();
 
-            category->setTitle(item["name"].toString());
+            category->setTitle(item[QSL("name")].toString());
             category->setCustomId(QString::number(item_id));
             act_parent->appendChild(category);
 
-            if (item.contains("items")) {
-              auto ite = item["items"].toArray();
+            if (item.contains(QSL("items"))) {
+              auto ite = item[QSL("items")].toArray();
 
               for (const QJsonValue& child : qAsConst(ite)) {
                 pairs.append(QPair<RootItem*, QJsonValue>(category, child));
@@ -733,7 +733,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
           auto* feed = new TtRssFeed();
 
           if (obtain_icons) {
-            QString icon_path = item["icon"].type() == QJsonValue::String ? item["icon"].toString() : QString();
+            QString icon_path = item[QSL("icon")].type() == QJsonValue::String ? item[QSL("icon")].toString() : QString();
 
             if (!icon_path.isEmpty()) {
               // Chop the "api/" suffix out and append
@@ -752,7 +752,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
             }
           }
 
-          feed->setTitle(item["name"].toString());
+          feed->setTitle(item[QSL("name")].toString());
           feed->setCustomId(QString::number(item_id));
           act_parent->appendChild(feed);
         }
@@ -770,19 +770,19 @@ TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() = default;
 QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
   QList<Message> messages;
   auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
-  auto json_msgs = m_rawContent["content"].toArray();
+  auto json_msgs = m_rawContent[QSL("content")].toArray();
 
   for (const QJsonValue& item : qAsConst(json_msgs)) {
     QJsonObject mapped = item.toObject();
     Message message;
 
-    message.m_author = mapped["author"].toString();
-    message.m_isRead = !mapped["unread"].toBool();
-    message.m_isImportant = mapped["marked"].toBool();
-    message.m_contents = mapped["content"].toString();
+    message.m_author = mapped[QSL("author")].toString();
+    message.m_isRead = !mapped[QSL("unread")].toBool();
+    message.m_isImportant = mapped[QSL("marked")].toBool();
+    message.m_contents = mapped[QSL("content")].toString();
     message.m_rawContents = QJsonDocument(mapped).toJson(QJsonDocument::JsonFormat::Compact);
 
-    auto json_labels = mapped["labels"].toArray();
+    auto json_labels = mapped[QSL("labels")].toArray();
 
     for (const QJsonValue& lbl_val : qAsConst(json_labels)) {
       QString lbl_custom_id = QString::number(lbl_val.toArray().at(0).toInt());
@@ -801,25 +801,25 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
 
     // Multiply by 1000 because Tiny Tiny RSS API does not include miliseconds in Unix
     // date/time number.
-    const qint64 t = static_cast<qint64>(mapped["updated"].toDouble()) * 1000;
+    const qint64 t = static_cast<qint64>(mapped[QSL("updated")].toDouble()) * 1000;
 
     message.m_created = TextFactory::parseDateTime(t);
     message.m_createdFromFeed = true;
-    message.m_customId = QString::number(mapped["id"].toInt());
-    message.m_feedId = mapped["feed_id"].toString();
-    message.m_title = mapped["title"].toString();
-    message.m_url = mapped["link"].toString();
+    message.m_customId = QString::number(mapped[QSL("id")].toInt());
+    message.m_feedId = mapped[QSL("feed_id")].toString();
+    message.m_title = mapped[QSL("title")].toString();
+    message.m_url = mapped[QSL("link")].toString();
 
     if (mapped.contains(QSL("attachments"))) {
       // Process enclosures.
-      auto json_att = mapped["attachments"].toArray();
+      auto json_att = mapped[QSL("attachments")].toArray();
 
       for (const QJsonValue& attachment : qAsConst(json_att)) {
         QJsonObject mapped_attachemnt = attachment.toObject();
         Enclosure enclosure;
 
-        enclosure.m_mimeType = mapped_attachemnt["content_type"].toString();
-        enclosure.m_url = mapped_attachemnt["content_url"].toString();
+        enclosure.m_mimeType = mapped_attachemnt[QSL("content_type")].toString();
+        enclosure.m_url = mapped_attachemnt[QSL("content_url")].toString();
         message.m_enclosures.append(enclosure);
       }
     }
@@ -836,7 +836,7 @@ TtRssUpdateArticleResponse::~TtRssUpdateArticleResponse() = default;
 
 QString TtRssUpdateArticleResponse::updateStatus() const {
   if (m_rawContent.contains(QSL("content"))) {
-    return m_rawContent["content"].toObject()["status"].toString();
+    return m_rawContent[QSL("content")].toObject()[QSL("status")].toString();
   }
   else {
     return QString();
@@ -845,7 +845,7 @@ QString TtRssUpdateArticleResponse::updateStatus() const {
 
 int TtRssUpdateArticleResponse::articlesUpdated() const {
   if (m_rawContent.contains(QSL("content"))) {
-    return m_rawContent["content"].toObject()["updated"].toInt();
+    return m_rawContent[QSL("content")].toObject()[QSL("updated")].toInt();
   }
   else {
     return 0;
@@ -857,7 +857,7 @@ TtRssSubscribeToFeedResponse::TtRssSubscribeToFeedResponse(const QString& raw_co
 TtRssSubscribeToFeedResponse::~TtRssSubscribeToFeedResponse() = default;
 int TtRssSubscribeToFeedResponse::code() const {
   if (m_rawContent.contains(QSL("content"))) {
-    return m_rawContent["content"].toObject()["status"].toObject()["code"].toInt();
+    return m_rawContent[QSL("content")].toObject()[QSL("status")].toObject()[QSL("code")].toInt();
   }
   else {
     return STF_UNKNOWN;
@@ -869,13 +869,13 @@ TtRssUnsubscribeFeedResponse::TtRssUnsubscribeFeedResponse(const QString& raw_co
 TtRssUnsubscribeFeedResponse::~TtRssUnsubscribeFeedResponse() = default;
 QString TtRssUnsubscribeFeedResponse::code() const {
   if (m_rawContent.contains(QSL("content"))) {
-    QJsonObject map = m_rawContent["content"].toObject();
+    QJsonObject map = m_rawContent[QSL("content")].toObject();
 
     if (map.contains(QSL("error"))) {
-      return map["error"].toString();
+      return map[QSL("error")].toString();
     }
     else if (map.contains(QSL("status"))) {
-      return map["status"].toString();
+      return map[QSL("status")].toString();
     }
   }
 
@@ -886,13 +886,13 @@ TtRssGetLabelsResponse::TtRssGetLabelsResponse(const QString& raw_content) : TtR
 
 QList<RootItem*> TtRssGetLabelsResponse::labels() const {
   QList<RootItem*> labels;
-  auto json_labels = m_rawContent["content"].toArray();
+  auto json_labels = m_rawContent[QSL("content")].toArray();
 
   for (const QJsonValue& lbl_val : qAsConst(json_labels)) {
     QJsonObject lbl_obj = lbl_val.toObject();
-    Label* lbl = new Label(lbl_obj["caption"].toString(), QColor(lbl_obj["fg_color"].toString()));
+    Label* lbl = new Label(lbl_obj[QSL("caption")].toString(), QColor(lbl_obj[QSL("fg_color")].toString()));
 
-    lbl->setCustomId(QString::number(lbl_obj["id"].toInt()));
+    lbl->setCustomId(QString::number(lbl_obj[QSL("id")].toInt()));
     labels.append(lbl);
   }
 

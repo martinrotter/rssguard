@@ -48,7 +48,7 @@ void AdBlockIcon::createMenu(QMenu* menu) {
   menu->addAction(tr("Show AdBlock &settings"), m_manager, &AdBlockManager::showDialog);
 }
 
-void AdBlockIcon::showMenu(const QPoint& pos) {
+void AdBlockIcon::showMenu(QPoint pos) {
   QMenu menu;
 
   createMenu(&menu);
@@ -57,6 +57,6 @@ void AdBlockIcon::showMenu(const QPoint& pos) {
 
 void AdBlockIcon::setIcon(bool adblock_enabled) {
   QAction::setIcon(adblock_enabled
-                   ? qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE)
-                   : qApp->icons()->miscIcon(ADBLOCK_ICON_DISABLED));
+                   ? qApp->icons()->miscIcon(QSL(ADBLOCK_ICON_ACTIVE))
+                   : qApp->icons()->miscIcon(QSL(ADBLOCK_ICON_ACTIVE)));
 }

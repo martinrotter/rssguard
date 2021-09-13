@@ -27,7 +27,7 @@ class FormStandardImportExport : public QDialog {
     explicit FormStandardImportExport(StandardServiceRoot* service_root, QWidget* parent = nullptr);
     virtual ~FormStandardImportExport();
 
-    void setMode(const FeedsImportExportModel::Mode& mode);
+    void setMode(FeedsImportExportModel::Mode mode);
 
   private slots:
     void performAction();

@@ -118,7 +118,7 @@ void FormAddEditEmail::onOkClicked() {
     msg["Reply-To"] = rec_repl.join(',').toStdString();
   }
 
-  msg["Subject"] = QString("=?utf-8?B?%1?=")
+  msg["Subject"] = QSL("=?utf-8?B?%1?=")
                    .arg(QString(m_ui.m_txtSubject->text().toUtf8().toBase64(QByteArray::Base64Option::Base64UrlEncoding)))
                    .toStdString();
   msg.set_plain(m_ui.m_txtMessage->toPlainText().toStdString());

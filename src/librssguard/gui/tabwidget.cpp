@@ -306,7 +306,7 @@ void TabWidget::removeTab(int index, bool clear_from_memory) {
   QTabWidget::removeTab(index);
 }
 
-int TabWidget::addTab(TabContent* widget, const QIcon& icon, const QString& label, const TabBar::TabType& type) {
+int TabWidget::addTab(TabContent* widget, const QIcon& icon, const QString& label, TabBar::TabType type) {
   const int index = QTabWidget::addTab(widget, icon, label);
 
   tabBar()->setTabType(index, type);
@@ -314,7 +314,7 @@ int TabWidget::addTab(TabContent* widget, const QIcon& icon, const QString& labe
   return index;
 }
 
-int TabWidget::addTab(TabContent* widget, const QString& label, const TabBar::TabType& type) {
+int TabWidget::addTab(TabContent* widget, const QString& label, TabBar::TabType type) {
   const int index = QTabWidget::addTab(widget, label);
 
   tabBar()->setTabType(index, type);
@@ -322,7 +322,7 @@ int TabWidget::addTab(TabContent* widget, const QString& label, const TabBar::Ta
   return index;
 }
 
-int TabWidget::insertTab(int index, QWidget* widget, const QIcon& icon, const QString& label, const TabBar::TabType& type) {
+int TabWidget::insertTab(int index, QWidget* widget, const QIcon& icon, const QString& label, TabBar::TabType type) {
   const int tab_index = QTabWidget::insertTab(index, widget, icon, label);
 
   tabBar()->setTabType(tab_index, type);
@@ -330,7 +330,7 @@ int TabWidget::insertTab(int index, QWidget* widget, const QIcon& icon, const QS
   return tab_index;
 }
 
-int TabWidget::insertTab(int index, QWidget* widget, const QString& label, const TabBar::TabType& type) {
+int TabWidget::insertTab(int index, QWidget* widget, const QString& label, TabBar::TabType type) {
   const int tab_index = QTabWidget::insertTab(index, widget, label);
 
   tabBar()->setTabType(tab_index, type);
@@ -354,7 +354,7 @@ void TabWidget::fixContentsAfterMove(int from, int to) {
   to = qMax(from, to);
 
   for (; from <= to; from++) {
-    auto* content = static_cast<TabContent*>(widget(from));
+    auto* content = widget(from);
 
     content->setIndex(from);
   }

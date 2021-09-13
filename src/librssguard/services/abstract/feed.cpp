@@ -143,7 +143,7 @@ Feed::Status Feed::status() const {
   return m_status;
 }
 
-void Feed::setStatus(const Feed::Status& status, const QString& status_text) {
+void Feed::setStatus(Feed::Status status, const QString& status_text) {
   m_status = status;
   m_statusString = status_text;
 }

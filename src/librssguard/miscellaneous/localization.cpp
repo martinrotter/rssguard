@@ -27,7 +27,7 @@ void Localization::loadActiveLanguage() {
            << "Starting to load active localization. Desired localization is"
            << QUOTE_W_SPACE_DOT(desired_localization);
 
-  if (app_translator->load(QLocale(desired_localization), "rssguard", QSL("_"), APP_LANG_PATH)) {
+  if (app_translator->load(QLocale(desired_localization), QSL("rssguard"), QSL("_"), APP_LANG_PATH)) {
     const QString real_loaded_locale = app_translator->translate("QObject", "LANG_ABBREV");
 
     Application::installTranslator(app_translator);
@@ -46,10 +46,10 @@ void Localization::loadActiveLanguage() {
                << "was not loaded. Loading"
                << QUOTE_W_SPACE(DEFAULT_LOCALE)
                << "instead.";
-    desired_localization = DEFAULT_LOCALE;
+    desired_localization = QSL(DEFAULT_LOCALE);
   }
 
-  if (qt_translator->load(QLocale(desired_localization), "qtbase", QSL("_"), APP_LANG_PATH)) {
+  if (qt_translator->load(QLocale(desired_localization), QSL("qtbase"), QSL("_"), APP_LANG_PATH)) {
     Application::installTranslator(qt_translator);
     qDebugNN << LOGSEC_CORE
              << "Qt localization"

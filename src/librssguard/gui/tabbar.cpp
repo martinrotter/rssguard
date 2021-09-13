@@ -20,7 +20,7 @@ TabBar::~TabBar() {
   qDebugNN << LOGSEC_GUI << "Destroying TabBar instance.";
 }
 
-void TabBar::setTabType(int index, const TabBar::TabType& type) {
+void TabBar::setTabType(int index, TabBar::TabType type) {
   const auto button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::StyleHint::SH_TabBar_CloseButtonPosition,
                                                                               nullptr,
                                                                               this));

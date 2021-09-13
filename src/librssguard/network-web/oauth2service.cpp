@@ -46,7 +46,7 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
                              const QString& client_secret, const QString& scope, QObject* parent)
   : QObject(parent),
   m_id(QString::number(QRandomGenerator::global()->generate())), m_timerId(-1),
-  m_redirectionHandler(new OAuthHttpHandler(tr("You can close this window now. Go back to %1.").arg(APP_NAME), this)),
+  m_redirectionHandler(new OAuthHttpHandler(tr("You can close this window now. Go back to %1.").arg(QSL(APP_NAME)), this)),
   m_functorOnLogin(std::function<void()>()) {
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(token_url);
@@ -89,10 +89,10 @@ QString OAuth2Service::bearer() {
                          [this]() {
       login();
     });
-    return QString();
+    return {};
   }
   else {
-    return QString("Bearer %1").arg(accessToken());
+    return QSL("Bearer %1").arg(accessToken());
   }
 }
 
@@ -212,9 +212,9 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
 
     emit tokensRetrieveError(QString(), NetworkFactory::networkErrorText(network_reply->error()));
   }
-  else if (root_obj.keys().contains("error")) {
-    QString error = root_obj.value("error").toString();
-    QString error_description = root_obj.value("error_description").toString();
+  else if (root_obj.keys().contains(QSL("error"))) {
+    QString error = root_obj.value(QSL("error")).toString();
+    QString error_description = root_obj.value(QSL("error_description")).toString();
 
     qWarningNN << LOGSEC_OAUTH
                << "JSON error when obtaining token response:"

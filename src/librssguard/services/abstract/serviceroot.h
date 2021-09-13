@@ -160,10 +160,14 @@ class ServiceRoot : public RootItem {
     virtual bool onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages);
 
     // Called BEFORE some labels are assigned/deassigned from/to messages.
-    virtual bool onBeforeLabelMessageAssignmentChanged(const QList<Label*> labels, const QList<Message>& messages, bool assign);
+    virtual bool onBeforeLabelMessageAssignmentChanged(const QList<Label*>& labels,
+                                                       const QList<Message>& messages,
+                                                       bool assign);
 
     // Called AFTER some labels are assigned/deassigned from/to messages.
-    virtual bool onAfterLabelMessageAssignmentChanged(const QList<Label*> labels, const QList<Message>& messages, bool assign);
+    virtual bool onAfterLabelMessageAssignmentChanged(const QList<Label*>& labels,
+                                                      const QList<Message>& messages,
+                                                      bool assign);
 
     // Called BEFORE the list of messages is about to be restored from recycle bin
     // by the user from message list.
@@ -199,10 +203,10 @@ class ServiceRoot : public RootItem {
     QIcon feedIconForMessage(const QString& feed_custom_id) const;
 
     // Removes all/read only messages from given underlying feeds.
-    bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
+    bool cleanFeeds(const QList<Feed*>& items, bool clean_read_only);
 
     // Marks all messages from feeds read/unread.
-    bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
+    bool markFeedsReadUnread(const QList<Feed*>& items, ReadStatus read);
 
     // Obvious methods to wrap signals.
     void itemChanged(const QList<RootItem*>& items);
@@ -258,8 +262,8 @@ class ServiceRoot : public RootItem {
     void removeLeftOverMessageLabelAssignments();
 
     // Takes lists of feeds/categories and assembles them into the tree structure.
-    void assembleCategories(Assignment categories);
-    void assembleFeeds(Assignment feeds);
+    void assembleCategories(const Assignment& categories);
+    void assembleFeeds(const Assignment& feeds);
 
   signals:
     void proxyChanged(QNetworkProxy proxy);

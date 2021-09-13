@@ -103,14 +103,14 @@ QList<QAction*> StatusBar::convertActions(const QStringList& actions) {
       widget_to_add->setVisible(progress_visible);
     }
     else {
-      if (action_name == SEPARATOR_ACTION_NAME) {
-        QLabel* lbl = new QLabel(QString::fromUtf8("•"), this);
+      if (action_name == QSL(SEPARATOR_ACTION_NAME)) {
+        QLabel* lbl = new QLabel(QSL("•"), this);
 
         widget_to_add = lbl;
         action_to_add = new QAction(this);
         action_to_add->setSeparator(true);
       }
-      else if (action_name == SPACER_ACTION_NAME) {
+      else if (action_name == QSL(SPACER_ACTION_NAME)) {
         QLabel* lbl = new QLabel(QSL("\t\t"), this);
 
         widget_to_add = lbl;

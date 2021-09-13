@@ -175,7 +175,7 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type, const 
       m_ui.m_cmbEncoding->setCurrentIndex(encoding_index);
     }
     else {
-      m_ui.m_cmbEncoding->setCurrentIndex(m_ui.m_cmbEncoding->findText(DEFAULT_FEED_ENCODING,
+      m_ui.m_cmbEncoding->setCurrentIndex(m_ui.m_cmbEncoding->findText(QSL(DEFAULT_FEED_ENCODING),
                                                                        Qt::MatchFlag::MatchFixedString));
     }
 
@@ -223,7 +223,7 @@ void StandardFeedDetails::onDescriptionChanged(const QString& new_description) {
 
 void StandardFeedDetails::onUrlChanged(const QString& new_url) {
   if (sourceType() == StandardFeed::SourceType::Url) {
-    if (QRegularExpression(URL_REGEXP).match(new_url).hasMatch()) {
+    if (QRegularExpression(QSL(URL_REGEXP)).match(new_url).hasMatch()) {
       m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The URL is ok."));
     }
     else if (!new_url.simplified().isEmpty()) {
@@ -236,7 +236,7 @@ void StandardFeedDetails::onUrlChanged(const QString& new_url) {
     }
   }
   else if (sourceType() == StandardFeed::SourceType::Script) {
-    if (QRegularExpression(SCRIPT_SOURCE_TYPE_REGEXP).match(new_url).hasMatch()) {
+    if (QRegularExpression(QSL(SCRIPT_SOURCE_TYPE_REGEXP)).match(new_url).hasMatch()) {
       m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
     }
     else if (!new_url.simplified().isEmpty()) {
@@ -253,7 +253,7 @@ void StandardFeedDetails::onUrlChanged(const QString& new_url) {
 }
 
 void StandardFeedDetails::onPostProcessScriptChanged(const QString& new_pp) {
-  if (QRegularExpression(SCRIPT_SOURCE_TYPE_REGEXP).match(new_pp).hasMatch()) {
+  if (QRegularExpression(QSL(SCRIPT_SOURCE_TYPE_REGEXP)).match(new_pp).hasMatch()) {
     m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("Command is ok."));
   }
   else if (!new_pp.simplified().isEmpty()) {
@@ -298,7 +298,7 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
   // Make sure that "default" icon is used as the default option for new
   // feed.
   m_actionUseDefaultIcon->trigger();
-  int default_encoding_index = m_ui.m_cmbEncoding->findText(DEFAULT_FEED_ENCODING);
+  int default_encoding_index = m_ui.m_cmbEncoding->findText(QSL(DEFAULT_FEED_ENCODING));
 
   if (default_encoding_index >= 0) {
     m_ui.m_cmbEncoding->setCurrentIndex(default_encoding_index);

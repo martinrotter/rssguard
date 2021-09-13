@@ -47,29 +47,29 @@ bool FeedlyServiceRoot::editViaGui() {
 QVariantHash FeedlyServiceRoot::customDatabaseData() const {
   QVariantHash data;
 
-  data["username"] = m_network->username();
-  data["dat"] = m_network->developerAccessToken();
+  data[QSL("username")] = m_network->username();
+  data[QSL("dat")] = m_network->developerAccessToken();
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
-  data["refresh_token"] = m_network->oauth()->refreshToken();
+  data[QSL("refresh_token")] = m_network->oauth()->refreshToken();
 #endif
 
-  data["batch_size"] = m_network->batchSize();
-  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
+  data[QSL("batch_size")] = m_network->batchSize();
+  data[QSL("download_only_unread")] = m_network->downloadOnlyUnreadMessages();
 
   return data;
 }
 
 void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
-  m_network->setUsername(data["username"].toString());
-  m_network->setDeveloperAccessToken(data["dat"].toString());
+  m_network->setUsername(data[QSL("username")].toString());
+  m_network->setDeveloperAccessToken(data[QSL("dat")].toString());
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
-  m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
+  m_network->oauth()->setRefreshToken(data[QSL("refresh_token")].toString());
 #endif
 
-  m_network->setBatchSize(data["batch_size"].toInt());
-  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
+  m_network->setBatchSize(data[QSL("batch_size")].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data[QSL("download_only_unread")].toBool());
 }
 
 QList<Message> FeedlyServiceRoot::obtainNewMessages(Feed* feed,
@@ -128,8 +128,8 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
     if (!ids.isEmpty()) {
       try {
         network()->markers(key == RootItem::ReadStatus::Read
-                           ? FEEDLY_MARKERS_READ
-                           : FEEDLY_MARKERS_UNREAD, ids);
+                           ? QSL(FEEDLY_MARKERS_READ)
+                           : QSL(FEEDLY_MARKERS_UNREAD), ids);
       }
       catch (const NetworkException& net_ex) {
         qCriticalNN << LOGSEC_FEEDLY
@@ -237,7 +237,7 @@ ServiceRoot::LabelOperation FeedlyServiceRoot::supportedLabelOperations() const 
 }
 
 void FeedlyServiceRoot::updateTitle() {
-  setTitle(QString("%1 (Feedly)").arg(TextFactory::extractUsernameFromEmail(m_network->username())));
+  setTitle(QSL("%1 (Feedly)").arg(TextFactory::extractUsernameFromEmail(m_network->username())));
 }
 
 RootItem* FeedlyServiceRoot::obtainNewTreeForSyncIn() const {

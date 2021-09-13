@@ -23,7 +23,7 @@ FormDownloadAttachment::FormDownloadAttachment(const QString& target_file, Downl
           this,
           [this, downloader, target_file](QNetworkReply::NetworkError status, const QByteArray& contents) {
     if (status == QNetworkReply::NetworkError::NoError) {
-      QString data = QJsonDocument::fromJson(contents).object()["data"].toString();
+      QString data = QJsonDocument::fromJson(contents).object()[QSL("data")].toString();
 
       if (!data.isEmpty()) {
         IOFactory::writeFile(target_file, QByteArray::fromBase64(data.toLocal8Bit(),

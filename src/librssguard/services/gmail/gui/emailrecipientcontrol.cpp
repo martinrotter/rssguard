@@ -29,7 +29,7 @@ EmailRecipientControl::EmailRecipientControl(const QString& recipient, QWidget* 
 
   setFocusProxy(m_txtRecipient);
 
-  m_btnCloseMe->setToolTip("Remove this recipient.");
+  m_btnCloseMe->setToolTip(QSL("Remove this recipient."));
   m_btnCloseMe->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
 
   connect(m_btnCloseMe, &PlainToolButton::clicked, this, &EmailRecipientControl::removalRequested);

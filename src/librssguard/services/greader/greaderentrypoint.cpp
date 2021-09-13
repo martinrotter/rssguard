@@ -27,7 +27,7 @@ QString GreaderEntryPoint::name() const {
 }
 
 QString GreaderEntryPoint::code() const {
-  return SERVICE_CODE_GREADER;
+  return QSL(SERVICE_CODE_GREADER);
 }
 
 QString GreaderEntryPoint::description() const {
@@ -36,7 +36,7 @@ QString GreaderEntryPoint::description() const {
 }
 
 QString GreaderEntryPoint::author() const {
-  return APP_AUTHOR;
+  return QSL(APP_AUTHOR);
 }
 
 QIcon GreaderEntryPoint::icon() const {

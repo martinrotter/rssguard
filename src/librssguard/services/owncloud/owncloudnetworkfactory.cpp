@@ -193,15 +193,15 @@ bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id, const QNetworkPr
 bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id, const QNetworkProxy& custom_proxy) {
   QJsonObject json;
 
-  json["url"] = url;
+  json[QSL("url")] = url;
 
   auto nextcloud_version = status(custom_proxy).version();
 
   if (SystemFactory::isVersionEqualOrNewer(nextcloud_version, QSL("15.1.0"))) {
-    json["folderId"] = parent_id == 0 ? QJsonValue(QJsonValue::Type::Null) : parent_id;
+    json[QSL("folderId")] = parent_id == 0 ? QJsonValue(QJsonValue::Type::Null) : parent_id;
   }
   else {
-    json["folderId"] = parent_id;
+    json[QSL("folderId")] = parent_id;
   }
 
   QByteArray result_raw;
@@ -240,7 +240,7 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name,
   QByteArray result_raw;
   QJsonObject json;
 
-  json["feedTitle"] = new_name;
+  json[QSL("feedTitle")] = new_name;
 
   QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -345,17 +345,17 @@ NetworkResult OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus stat
   QString final_url;
 
   if (status == RootItem::ReadStatus::Read) {
-    final_url = m_fixedUrl + OWNCLOUD_API_PATH + "items/read/multiple";
+    final_url = m_fixedUrl + QSL(OWNCLOUD_API_PATH) + QSL("items/read/multiple");
   }
   else {
-    final_url = m_fixedUrl + OWNCLOUD_API_PATH + "items/unread/multiple";
+    final_url = m_fixedUrl + QSL(OWNCLOUD_API_PATH) + QSL("items/unread/multiple");
   }
 
   for (const QString& id : custom_ids) {
     ids.append(QJsonValue(id.toInt()));
   }
 
-  json["items"] = ids;
+  json[QSL("items")] = ids;
 
   QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -395,12 +395,12 @@ NetworkResult OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance i
   for (int i = 0; i < feed_ids.size(); i++) {
     QJsonObject item;
 
-    item["feedId"] = feed_ids.at(i);
-    item["guidHash"] = guid_hashes.at(i);
+    item[QSL("feedId")] = feed_ids.at(i);
+    item[QSL("guidHash")] = guid_hashes.at(i);
     ids.append(item);
   }
 
-  json["items"] = ids;
+  json[QSL("items")] = ids;
 
   QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -463,19 +463,10 @@ OwnCloudStatusResponse::~OwnCloudStatusResponse() = default;
 
 QString OwnCloudStatusResponse::version() const {
   if (isLoaded()) {
-    return m_rawContent["version"].toString();
+    return m_rawContent[QSL("version")].toString();
   }
   else {
     return QString();
-  }
-}
-
-bool OwnCloudStatusResponse::misconfiguredCron() const {
-  if (isLoaded()) {
-    return m_rawContent["warnings"].toObject()["improperlyConfiguredCron"].toBool();
-  }
-  else {
-    return false;
   }
 }
 
@@ -494,14 +485,14 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
   cats.insert(QSL("0"), parent);
 
   // Process categories first, then process feeds.
-  auto json_folders = QJsonDocument::fromJson(m_contentCategories.toUtf8()).object()["folders"].toArray();
+  auto json_folders = QJsonDocument::fromJson(m_contentCategories.toUtf8()).object()[QSL("folders")].toArray();
 
   for (const QJsonValue& cat : qAsConst(json_folders)) {
     QJsonObject item = cat.toObject();
     auto* category = new Category();
 
-    category->setTitle(item["name"].toString());
-    category->setCustomId(QString::number(item["id"].toInt()));
+    category->setTitle(item[QSL("name")].toString());
+    category->setCustomId(QString::number(item[QSL("id")].toInt()));
     cats.insert(category->customId(), category);
 
     // All categories in Nextcloud are top-level.
@@ -509,14 +500,14 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
   }
 
   // We have categories added, now add all feeds.
-  auto json_feeds = QJsonDocument::fromJson(m_contentFeeds.toUtf8()).object()["feeds"].toArray();
+  auto json_feeds = QJsonDocument::fromJson(m_contentFeeds.toUtf8()).object()[QSL("feeds")].toArray();
 
   for (const QJsonValue& fed : qAsConst(json_feeds)) {
     QJsonObject item = fed.toObject();
     auto* feed = new OwnCloudFeed();
 
     if (obtain_icons) {
-      QString icon_path = item["faviconLink"].toString();
+      QString icon_path = item[QSL("faviconLink")].toString();
 
       if (!icon_path.isEmpty()) {
         QByteArray icon_data;
@@ -534,14 +525,14 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
       }
     }
 
-    feed->setCustomId(QString::number(item["id"].toInt()));
-    feed->setSource(item["url"].toString());
+    feed->setCustomId(QString::number(item[QSL("id")].toInt()));
+    feed->setSource(item[QSL("url")].toString());
 
     if (feed->source().isEmpty()) {
-      feed->setSource(item["link"].toString());
+      feed->setSource(item[QSL("link")].toString());
     }
 
-    feed->setTitle(item["title"].toString());
+    feed->setTitle(item[QSL("title")].toString());
 
     if (feed->title().isEmpty()) {
       if (feed->source().isEmpty()) {
@@ -559,7 +550,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
 
     // NOTE: Starting with News 15.1.0, top-level feeds do not have parent folder ID 0, but JSON "null".
     // Luckily, if folder ID is not convertible to int, then default 0 value is returned.
-    cats.value(QString::number(item["folderId"].toInt(0)))->appendChild(feed);
+    cats.value(QString::number(item[QSL("folderId")].toInt(0)))->appendChild(feed);
     qDebugNN << LOGSEC_NEXTCLOUD
              << "Custom ID of next fetched processed feed is"
              << QUOTE_W_SPACE_DOT(feed->customId());
@@ -575,35 +566,35 @@ OwnCloudGetMessagesResponse::~OwnCloudGetMessagesResponse() = default;
 
 QList<Message>OwnCloudGetMessagesResponse::messages() const {
   QList<Message>msgs;
-  auto json_items = m_rawContent["items"].toArray();
+  auto json_items = m_rawContent[QSL("items")].toArray();
 
   for (const QJsonValue& message : qAsConst(json_items)) {
     QJsonObject message_map = message.toObject();
     Message msg;
 
-    msg.m_author = message_map["author"].toString();
-    msg.m_contents = message_map["body"].toString();
-    msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].toDouble() * 1000);
+    msg.m_author = message_map[QSL("author")].toString();
+    msg.m_contents = message_map[QSL("body")].toString();
+    msg.m_created = TextFactory::parseDateTime(message_map[QSL("pubDate")].toDouble() * 1000);
     msg.m_createdFromFeed = true;
-    msg.m_customId = message_map["id"].toVariant().toString();
-    msg.m_customHash = message_map["guidHash"].toString();
+    msg.m_customId = message_map[QSL("id")].toVariant().toString();
+    msg.m_customHash = message_map[QSL("guidHash")].toString();
     msg.m_rawContents = QJsonDocument(message_map).toJson(QJsonDocument::JsonFormat::Compact);
 
-    QString enclosure_link = message_map["enclosureLink"].toString();
+    QString enclosure_link = message_map[QSL("enclosureLink")].toString();
 
     if (!enclosure_link.isEmpty()) {
       Enclosure enclosure;
 
-      enclosure.m_mimeType = message_map["enclosureMime"].toString();
+      enclosure.m_mimeType = message_map[QSL("enclosureMime")].toString();
       enclosure.m_url = enclosure_link;
       msg.m_enclosures.append(enclosure);
     }
 
-    msg.m_feedId = message_map["feedId"].toVariant().toString();
-    msg.m_isImportant = message_map["starred"].toBool();
-    msg.m_isRead = !message_map["unread"].toBool();
-    msg.m_title = message_map["title"].toString();
-    msg.m_url = message_map["url"].toString();
+    msg.m_feedId = message_map[QSL("feedId")].toVariant().toString();
+    msg.m_isImportant = message_map[QSL("starred")].toBool();
+    msg.m_isRead = !message_map[QSL("unread")].toBool();
+    msg.m_title = message_map[QSL("title")].toString();
+    msg.m_url = message_map[QSL("url")].toString();
     msgs.append(msg);
   }
 

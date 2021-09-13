@@ -64,14 +64,16 @@ void OwnCloudAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
                                     tr("Network error, have you entered correct Nextcloud endpoint and password?"));
   }
   else if (result.isLoaded()) {
-    if (!SystemFactory::isVersionEqualOrNewer(result.version(), OWNCLOUD_MIN_VERSION)) {
+    if (!SystemFactory::isVersionEqualOrNewer(result.version(), QSL(OWNCLOUD_MIN_VERSION))) {
       m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                      tr("Installed version: %1, required at least: %2.").arg(result.version(), OWNCLOUD_MIN_VERSION),
+                                      tr("Installed version: %1, required at least: %2.").arg(result.version(),
+                                                                                              QSL(OWNCLOUD_MIN_VERSION)),
                                       tr("Selected Nextcloud News server is running unsupported version."));
     }
     else {
       m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                      tr("Installed version: %1, required at least: %2.").arg(result.version(), OWNCLOUD_MIN_VERSION),
+                                      tr("Installed version: %1, required at least: %2.").arg(result.version(),
+                                                                                              QSL(OWNCLOUD_MIN_VERSION)),
                                       tr("Nextcloud News server is okay."));
     }
   }

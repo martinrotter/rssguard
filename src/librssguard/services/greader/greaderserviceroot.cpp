@@ -41,52 +41,52 @@ bool GreaderServiceRoot::editViaGui() {
 QVariantHash GreaderServiceRoot::customDatabaseData() const {
   QVariantHash data;
 
-  data["service"] = int(m_network->service());
-  data["username"] = m_network->username();
-  data["password"] = TextFactory::encrypt(m_network->password());
-  data["batch_size"] = m_network->batchSize();
-  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
-  data["intelligent_synchronization"] = m_network->intelligentSynchronization();
+  data[QSL("service")] = int(m_network->service());
+  data[QSL("username")] = m_network->username();
+  data[QSL("password")] = TextFactory::encrypt(m_network->password());
+  data[QSL("batch_size")] = m_network->batchSize();
+  data[QSL("download_only_unread")] = m_network->downloadOnlyUnreadMessages();
+  data[QSL("intelligent_synchronization")] = m_network->intelligentSynchronization();
 
   if (m_network->newerThanFilter().isValid()) {
-    data["fetch_newer_than"] = m_network->newerThanFilter();
+    data[QSL("fetch_newer_than")] = m_network->newerThanFilter();
   }
 
   if (m_network->service() == Service::Inoreader) {
-    data["client_id"] = m_network->oauth()->clientId();
-    data["client_secret"] = m_network->oauth()->clientSecret();
-    data["refresh_token"] = m_network->oauth()->refreshToken();
-    data["redirect_uri"] = m_network->oauth()->redirectUrl();
+    data[QSL("client_id")] = m_network->oauth()->clientId();
+    data[QSL("client_secret")] = m_network->oauth()->clientSecret();
+    data[QSL("refresh_token")] = m_network->oauth()->refreshToken();
+    data[QSL("redirect_uri")] = m_network->oauth()->redirectUrl();
   }
   else {
-    data["url"] = m_network->baseUrl();
+    data[QSL("url")] = m_network->baseUrl();
   }
 
   return data;
 }
 
 void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
-  m_network->setService(GreaderServiceRoot::Service(data["service"].toInt()));
-  m_network->setUsername(data["username"].toString());
-  m_network->setPassword(TextFactory::decrypt(data["password"].toString()));
-  m_network->setBatchSize(data["batch_size"].toInt());
-  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
-  m_network->setIntelligentSynchronization(data["intelligent_synchronization"].toBool());
+  m_network->setService(GreaderServiceRoot::Service(data[QSL("service")].toInt()));
+  m_network->setUsername(data[QSL("username")].toString());
+  m_network->setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
+  m_network->setBatchSize(data[QSL("batch_size")].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data[QSL("download_only_unread")].toBool());
+  m_network->setIntelligentSynchronization(data[QSL("intelligent_synchronization")].toBool());
 
-  if (data["fetch_newer_than"].toDate().isValid()) {
-    m_network->setNewerThanFilter(data["fetch_newer_than"].toDate());
+  if (data[QSL("fetch_newer_than")].toDate().isValid()) {
+    m_network->setNewerThanFilter(data[QSL("fetch_newer_than")].toDate());
   }
 
   if (m_network->service() == Service::Inoreader) {
-    m_network->oauth()->setClientId(data["client_id"].toString());
-    m_network->oauth()->setClientSecret(data["client_secret"].toString());
-    m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
-    m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString(), true);
+    m_network->oauth()->setClientId(data[QSL("client_id")].toString());
+    m_network->oauth()->setClientSecret(data[QSL("client_secret")].toString());
+    m_network->oauth()->setRefreshToken(data[QSL("refresh_token")].toString());
+    m_network->oauth()->setRedirectUrl(data[QSL("redirect_uri")].toString(), true);
 
     m_network->setBaseUrl(QSL(GREADER_URL_INOREADER));
   }
   else {
-    m_network->setBaseUrl(data["url"].toString());
+    m_network->setBaseUrl(data[QSL("url")].toString());
   }
 }
 
@@ -207,7 +207,7 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
     QList<Message> messages = j.value();
 
     if (!messages.isEmpty()) {
-      QStringList custom_ids;
+      QStringList custom_ids; custom_ids.reserve(messages.size());
 
       for (const Message& msg : messages) {
         custom_ids.append(msg.m_customId);
@@ -261,8 +261,8 @@ ServiceRoot::LabelOperation GreaderServiceRoot::supportedLabelOperations() const
 }
 
 void GreaderServiceRoot::updateTitleIcon() {
-  setTitle(QString("%1 (%2)").arg(TextFactory::extractUsernameFromEmail(m_network->username()),
-                                  GreaderServiceRoot::serviceToString(m_network->service())));
+  setTitle(QSL("%1 (%2)").arg(TextFactory::extractUsernameFromEmail(m_network->username()),
+                              GreaderServiceRoot::serviceToString(m_network->service())));
 
   switch (m_network->service()) {
     case Service::TheOldReader:

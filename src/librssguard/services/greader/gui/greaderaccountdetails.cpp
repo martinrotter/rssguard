@@ -123,7 +123,7 @@ void GreaderAccountDetails::onAuthGranted() {
     fac.setOauth(m_oauth);
     auto resp = fac.userInfo(m_lastProxy);
 
-    m_ui.m_txtUsername->lineEdit()->setText(resp["userEmail"].toString());
+    m_ui.m_txtUsername->lineEdit()->setText(resp[QSL("userEmail")].toString());
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_GREADER
@@ -141,7 +141,7 @@ void GreaderAccountDetails::hookNetwork() {
 }
 
 void GreaderAccountDetails::registerApi() {
-  qApp->web()->openUrlInExternalBrowser(INO_REG_API_URL);
+  qApp->web()->openUrlInExternalBrowser(QSL(INO_REG_API_URL));
 }
 
 void GreaderAccountDetails::checkOAuthValue(const QString& value) {

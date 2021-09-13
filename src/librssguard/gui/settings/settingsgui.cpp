@@ -99,7 +99,7 @@ void SettingsGui::loadSettings() {
   auto icons = qApp->icons()->installedIconThemes();
 
   for (const QString& icon_theme_name : qAsConst(icons)) {
-    if (icon_theme_name == APP_NO_THEME) {
+    if (icon_theme_name == QSL(APP_NO_THEME)) {
       // Add just "no theme" on other systems.
       //: Label for disabling icon theme.
 #if defined(Q_OS_LINUX)

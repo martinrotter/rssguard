@@ -15,7 +15,7 @@ void SkinFactory::loadCurrentSkin() {
   QList<QString> skin_names_to_try;
 
   skin_names_to_try.append(selectedSkinName());
-  skin_names_to_try.append(APP_SKIN_DEFAULT);
+  skin_names_to_try.append(QSL(APP_SKIN_DEFAULT));
   bool skin_parsed;
   Skin skin_data;
   QString skin_name;

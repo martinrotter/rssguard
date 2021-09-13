@@ -15,7 +15,7 @@ class RssParser : public FeedParser {
 
   private:
     QDomNodeList messageElements();
-    Message extractMessage(const QDomElement& msg_element, QDateTime current_time) const;
+    Message extractMessage(const QDomElement& msg_element, const QDateTime& current_time) const;
 };
 
 #endif // RSSPARSER_H

@@ -2,9 +2,9 @@
 
 #include "services/owncloud/owncloudserviceentrypoint.h"
 
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/gui/formeditowncloudaccount.h"
@@ -27,16 +27,16 @@ QString OwnCloudServiceEntryPoint::name() const {
 }
 
 QString OwnCloudServiceEntryPoint::code() const {
-  return SERVICE_CODE_OWNCLOUD;
+  return QSL(SERVICE_CODE_OWNCLOUD);
 }
 
 QString OwnCloudServiceEntryPoint::description() const {
   return QObject::tr("The News app is an RSS/Atom feed aggregator. "
-                     "It is part of Nextcloud suite. This plugin implements %1 API.").arg(OWNCLOUD_API_VERSION);
+                     "It is part of Nextcloud suite. This plugin implements %1 API.").arg(QSL(OWNCLOUD_API_VERSION));
 }
 
 QString OwnCloudServiceEntryPoint::author() const {
-  return APP_AUTHOR;
+  return QSL(APP_AUTHOR);
 }
 
 QIcon OwnCloudServiceEntryPoint::icon() const {

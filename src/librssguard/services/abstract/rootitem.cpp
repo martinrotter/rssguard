@@ -176,8 +176,8 @@ QVariant RootItem::data(int column, int role) const {
           int count_all = countOfAllMessages();
 
           return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
-                 .replace(PLACEHOLDER_UNREAD_COUNTS, count_unread < 0 ? QSL("-") : QString::number(count_unread))
-                 .replace(PLACEHOLDER_ALL_COUNTS, count_all < 0 ? QSL("-") : QString::number(count_all));
+                 .replace(QSL(PLACEHOLDER_UNREAD_COUNTS), count_unread < 0 ? QSL("-") : QString::number(count_unread))
+                 .replace(QSL(PLACEHOLDER_ALL_COUNTS), count_all < 0 ? QSL("-") : QString::number(count_all));
         }
       }
       else {
@@ -537,19 +537,19 @@ void RootItem::setCustomId(const QString& custom_id) {
 }
 
 Category* RootItem::toCategory() const {
-  return dynamic_cast<Category*>(const_cast<RootItem*>(this));
+  return qobject_cast<Category*>(const_cast<RootItem*>(this));
 }
 
 Feed* RootItem::toFeed() const {
-  return dynamic_cast<Feed*>(const_cast<RootItem*>(this));
+  return qobject_cast<Feed*>(const_cast<RootItem*>(this));
 }
 
 Label* RootItem::toLabel() const {
-  return dynamic_cast<Label*>(const_cast<RootItem*>(this));
+  return qobject_cast<Label*>(const_cast<RootItem*>(this));
 }
 
 ServiceRoot* RootItem::toServiceRoot() const {
-  return dynamic_cast<ServiceRoot*>(const_cast<RootItem*>(this));
+  return qobject_cast<ServiceRoot*>(const_cast<RootItem*>(this));
 }
 
 bool RootItem::keepOnTop() const {

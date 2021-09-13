@@ -39,7 +39,7 @@ bool WebViewer::canDecreaseZoom() {
 bool WebViewer::event(QEvent* event) {
   if (event->type() == QEvent::Type::ChildAdded) {
     QChildEvent* child_ev = static_cast<QChildEvent*>(event);
-    QWidget* w = dynamic_cast<QWidget*>(child_ev->child());
+    QWidget* w = qobject_cast<QWidget*>(child_ev->child());
 
     if (w != nullptr) {
       w->installEventFilter(this);
@@ -109,7 +109,7 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
       QString enc_url;
 
       if (!enclosure.m_url.contains(QRegularExpression(QSL("^(http|ftp|\\/)")))) {
-        enc_url = QString(INTERNAL_URL_PASSATTACHMENT) + QL1S("/?") + enclosure.m_url;
+        enc_url = QSL(INTERNAL_URL_PASSATTACHMENT) + QL1S("/?") + enclosure.m_url;
       }
       else {
         enc_url = enclosure.m_url;
@@ -179,7 +179,7 @@ void WebViewer::clear() {
   bool previously_enabled = isEnabled();
 
   setEnabled(false);
-  setHtml("<!DOCTYPE html><html><body</body></html>", QUrl(INTERNAL_URL_BLANK));
+  setHtml(QSL("<!DOCTYPE html><html><body</body></html>"), QUrl(QSL(INTERNAL_URL_BLANK)));
   setEnabled(previously_enabled);
 }
 
@@ -222,7 +222,7 @@ void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
     }
 
     if (menu_ext_tools->actions().isEmpty()) {
-      QAction* act_not_tools = new QAction("No external tools activated");
+      QAction* act_not_tools = new QAction(tr("No external tools activated"));
 
       act_not_tools->setEnabled(false);
       menu_ext_tools->addAction(act_not_tools);

@@ -37,7 +37,7 @@ QList<Message> FeedParser::messages() {
         new_message.m_author = feed_author;
       }
 
-      new_message.m_url = new_message.m_url.replace(QRegularExpression("[\\t\\n]"), QString());
+      new_message.m_url = new_message.m_url.replace(QRegularExpression(QSL("[\\t\\n]")), QString());
 
       messages.append(new_message);
     }
@@ -53,7 +53,7 @@ QList<Message> FeedParser::messages() {
 
 QList<Enclosure> FeedParser::mrssGetEnclosures(const QDomElement& msg_element) const {
   QList<Enclosure> enclosures;
-  auto content_list = msg_element.elementsByTagNameNS(m_mrssNamespace, "content");
+  auto content_list = msg_element.elementsByTagNameNS(m_mrssNamespace, QSL("content"));
 
   for (int i = 0; i < content_list.size(); i++) {
     QDomElement elem_content = content_list.at(i).toElement();
@@ -65,7 +65,7 @@ QList<Enclosure> FeedParser::mrssGetEnclosures(const QDomElement& msg_element) c
     }
   }
 
-  auto thumbnail_list = msg_element.elementsByTagNameNS(m_mrssNamespace, "thumbnail");
+  auto thumbnail_list = msg_element.elementsByTagNameNS(m_mrssNamespace, QSL("thumbnail"));
 
   for (int i = 0; i < thumbnail_list.size(); i++) {
     QDomElement elem_content = thumbnail_list.at(i).toElement();
@@ -146,5 +146,5 @@ QStringList FeedParser::textsFromPath(const QDomElement& element, const QString&
 }
 
 QString FeedParser::feedAuthor() const {
-  return "";
+  return QL1S("");
 }

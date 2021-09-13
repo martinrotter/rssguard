@@ -68,7 +68,7 @@ class Feed : public RootItem {
 
     Status status() const;
     QString statusString() const;
-    void setStatus(const Status& status, const QString& status_text = {});
+    void setStatus(Feed::Status status, const QString& status_text = {});
 
     QString source() const;
     void setSource(const QString& source);

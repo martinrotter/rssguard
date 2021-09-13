@@ -68,7 +68,7 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent), m
 }
 
 void FeedlyAccountDetails::getDeveloperAccessToken() {
-  qApp->web()->openUrlInExternalBrowser(FEEDLY_GENERATE_DAT);
+  qApp->web()->openUrlInExternalBrowser(QSL(FEEDLY_GENERATE_DAT));
 }
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
@@ -101,7 +101,7 @@ void FeedlyAccountDetails::onAuthGranted() {
   try {
     auto prof = factory.profile(m_lastProxy);
 
-    m_ui.m_txtUsername->lineEdit()->setText(prof["email"].toString());
+    m_ui.m_txtUsername->lineEdit()->setText(prof[QSL("email")].toString());
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                     tr("Tested successfully. You may be prompted to login once more."),
                                     tr("Your access was approved."));
@@ -134,7 +134,7 @@ void FeedlyAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
   try {
     auto prof = factory.profile(custom_proxy);
 
-    m_ui.m_txtUsername->lineEdit()->setText(prof["email"].toString());
+    m_ui.m_txtUsername->lineEdit()->setText(prof[QSL("email")].toString());
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                     tr("Login was successful."),
                                     tr("Access granted."));

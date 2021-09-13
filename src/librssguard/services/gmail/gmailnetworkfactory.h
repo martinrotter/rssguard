@@ -43,7 +43,7 @@ class GmailNetworkFactory : public QObject {
     Downloader* downloadAttachment(const QString& msg_id, const QString& attachment_id, const QNetworkProxy& custom_proxy);
     QList<Message> messages(const QString& stream_id, Feed::Status& error, const QNetworkProxy& custom_proxy);
     QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status,
-                                                 QStringList custom_ids,
+                                                 const QStringList& custom_ids,
                                                  const QNetworkProxy& custom_proxy);
     QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance,
                                                     const QStringList& custom_ids,

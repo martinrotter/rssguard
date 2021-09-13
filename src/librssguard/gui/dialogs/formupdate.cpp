@@ -76,7 +76,12 @@ void FormUpdate::checkForUpdates() {
       m_updateInfo = update.first.at(0);
       m_ui.m_tabInfo->setEnabled(true);
       m_ui.m_lblAvailableRelease->setText(m_updateInfo.m_availableVersion);
+
+#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
+      m_ui.m_txtChanges->setMarkdown(m_updateInfo.m_changes);
+#else
       m_ui.m_txtChanges->setText(m_updateInfo.m_changes);
+#endif
 
       if (SystemFactory::isVersionNewer(m_updateInfo.m_availableVersion, QSL(APP_VERSION))) {
         m_btnUpdate->setVisible(true);

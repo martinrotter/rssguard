@@ -189,29 +189,29 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
 QVariantHash TtRssServiceRoot::customDatabaseData() const {
   QVariantHash data;
 
-  data["username"] = m_network->username();
-  data["password"] = TextFactory::encrypt(m_network->password());
-  data["auth_protected"] = m_network->authIsUsed();
-  data["auth_username"] = m_network->authUsername();
-  data["auth_password"] = TextFactory::encrypt(m_network->authPassword());
-  data["url"] = m_network->url();
-  data["force_update"] = m_network->forceServerSideUpdate();
-  data["batch_size"] = m_network->batchSize();
-  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
+  data[QSL("username")] = m_network->username();
+  data[QSL("password")] = TextFactory::encrypt(m_network->password());
+  data[QSL("auth_protected")] = m_network->authIsUsed();
+  data[QSL("auth_username")] = m_network->authUsername();
+  data[QSL("auth_password")] = TextFactory::encrypt(m_network->authPassword());
+  data[QSL("url")] = m_network->url();
+  data[QSL("force_update")] = m_network->forceServerSideUpdate();
+  data[QSL("batch_size")] = m_network->batchSize();
+  data[QSL("download_only_unread")] = m_network->downloadOnlyUnreadMessages();
 
   return data;
 }
 
 void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
-  m_network->setUsername( data["username"].toString());
-  m_network->setPassword(TextFactory::decrypt(data["password"].toString()));
-  m_network->setAuthIsUsed(data["auth_protected"].toBool());
-  m_network->setAuthUsername(data["auth_username"].toString());
-  m_network->setAuthPassword(TextFactory::decrypt(data["auth_password"].toString()));
-  m_network->setUrl(data["url"].toString());
-  m_network->setForceServerSideUpdate(data["force_update"].toBool());
-  m_network->setBatchSize(data["batch_size"].toInt());
-  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
+  m_network->setUsername(data[QSL("username")].toString());
+  m_network->setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
+  m_network->setAuthIsUsed(data[QSL("auth_protected")].toBool());
+  m_network->setAuthUsername(data[QSL("auth_username")].toString());
+  m_network->setAuthPassword(TextFactory::decrypt(data[QSL("auth_password")].toString()));
+  m_network->setUrl(data[QSL("url")].toString());
+  m_network->setForceServerSideUpdate(data[QSL("force_update")].toBool());
+  m_network->setBatchSize(data[QSL("batch_size")].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data[QSL("download_only_unread")].toBool());
 }
 
 QList<Message> TtRssServiceRoot::obtainNewMessages(Feed* feed,

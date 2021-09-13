@@ -49,7 +49,7 @@ class ToolBarEditor : public QWidget {
     void setupChanged();
 
   private:
-    void loadEditor(const QList<QAction*> activated_actions, const QList<QAction*> available_actions);
+    void loadEditor(const QList<QAction*>& activated_actions, const QList<QAction*>& available_actions);
 
     QScopedPointer<Ui::ToolBarEditor> m_ui;
     BaseBar* m_toolBar;

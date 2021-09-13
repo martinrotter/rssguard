@@ -42,10 +42,10 @@ QString AtomParser::feedAuthor() const {
     }
   }
 
-  return author_str.join(", ");
+  return author_str.join(QSL(", "));
 }
 
-Message AtomParser::extractMessage(const QDomElement& msg_element, QDateTime current_time) const {
+Message AtomParser::extractMessage(const QDomElement& msg_element, const QDateTime& current_time) const {
   Message new_message;
   QString title = textsFromPath(msg_element, m_atomNamespace, QSL("title"), true).join(QSL(", "));
   QString summary = rawXmlChild(msg_element.elementsByTagNameNS(m_atomNamespace, QSL("content")).at(0).toElement());
@@ -144,7 +144,7 @@ QString AtomParser::messageAuthor(const QDomElement& msg_element) const {
     }
   }
 
-  return author_str.join(", ");
+  return author_str.join(QSL(", "));
 }
 
 QString AtomParser::atomNamespace() const {

@@ -23,7 +23,7 @@ AdBlockDialog::AdBlockDialog(QWidget* parent)
   m_ui.m_cbEnable->setChecked(m_manager->isEnabled());
 
   GuiUtilities::applyDialogProperties(*this,
-                                      qApp->icons()->miscIcon(ADBLOCK_ICON_ACTIVE),
+                                      qApp->icons()->miscIcon(QSL(ADBLOCK_ICON_ACTIVE)),
                                       tr("AdBlock configuration"));
 
   connect(m_ui.m_btnHelp, &QPushButton::clicked, this, [=]() {

@@ -25,7 +25,7 @@ QDomNodeList RssParser::messageElements() {
   }
 }
 
-Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime current_time) const {
+Message RssParser::extractMessage(const QDomElement& msg_element, const QDateTime& current_time) const {
   Message new_message;
 
   // Deal with titles & descriptions.
@@ -111,13 +111,13 @@ Message RssParser::extractMessage(const QDomElement& msg_element, QDateTime curr
   }
 
   if (new_message.m_author.isNull()) {
-    new_message.m_author = "";
+    new_message.m_author = QL1S("");
   }
 
   new_message.m_author = qApp->web()->unescapeHtml(new_message.m_author);
 
   if (new_message.m_url.isNull()) {
-    new_message.m_url = "";
+    new_message.m_url = QL1S("");
   }
 
   return new_message;

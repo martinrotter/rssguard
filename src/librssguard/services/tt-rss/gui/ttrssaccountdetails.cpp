@@ -69,12 +69,12 @@ void TtRssAccountDetails::performTest(const QNetworkProxy& proxy) {
     if (result.hasError()) {
       QString error = result.error();
 
-      if (error == TTRSS_API_DISABLED) {
+      if (error == QSL(TTRSS_API_DISABLED)) {
         m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                         tr("API access on selected server is not enabled."),
                                         tr("API access on selected server is not enabled."));
       }
-      else if (error == TTRSS_LOGIN_ERROR) {
+      else if (error == QSL(TTRSS_LOGIN_ERROR)) {
         m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                         tr("Entered credentials are incorrect."),
                                         tr("Entered credentials are incorrect."));

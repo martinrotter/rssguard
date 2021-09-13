@@ -57,7 +57,7 @@ class GreaderNetwork : public QObject {
     void clearPrefetchedMessages();
 
     GreaderServiceRoot::Service service() const;
-    void setService(const GreaderServiceRoot::Service& service);
+    void setService(GreaderServiceRoot::Service service);
 
     QString username() const;
     void setUsername(const QString& username);
@@ -87,7 +87,7 @@ class GreaderNetwork : public QObject {
                                            const QStringList& msg_custom_ids, const QNetworkProxy& proxy);
     QVariantHash userInfo(const QNetworkProxy& proxy);
     QStringList itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy, int max_count = -1,
-                        const QDate& newer_than = {});
+                        QDate newer_than = {});
     QList<Message> itemContents(ServiceRoot* root, const QList<QString>& stream_ids,
                                 Feed::Status& error, const QNetworkProxy& proxy);
     QList<Message> streamContents(ServiceRoot* root, const QString& stream_id,

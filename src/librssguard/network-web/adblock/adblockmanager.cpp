@@ -159,14 +159,14 @@ void AdBlockManager::setCustomFilters(const QStringList& custom_filters) {
 }
 
 QString AdBlockManager::generateJsForElementHiding(const QString& css) {
-  QString source = QL1S("(function() {"
-                        "var head = document.getElementsByTagName('head')[0];"
-                        "if (!head) return;"
-                        "var css = document.createElement('style');"
-                        "css.setAttribute('type', 'text/css');"
-                        "css.appendChild(document.createTextNode('%1'));"
-                        "head.appendChild(css);"
-                        "})()");
+  QString source = QSL("(function() {"
+                       "var head = document.getElementsByTagName('head')[0];"
+                       "if (!head) return;"
+                       "var css = document.createElement('style');"
+                       "css.setAttribute('type', 'text/css');"
+                       "css.appendChild(document.createTextNode('%1'));"
+                       "head.appendChild(css);"
+                       "})()");
   QString style = css;
 
   style.replace(QL1S("'"), QL1S("\\'"));
@@ -197,10 +197,10 @@ BlockingResult AdBlockManager::askServerIfBlocked(const QString& fp_url, const Q
   QByteArray out;
   QElapsedTimer tmr;
 
-  req_obj["fp_url"] = fp_url;
-  req_obj["url"] = url;
-  req_obj["url_type"] = url_type,
-  req_obj["filter"] = true;
+  req_obj[QSL("fp_url")] = fp_url;
+  req_obj[QSL("url")] = url;
+  req_obj[QSL("url_type")] = url_type,
+  req_obj[QSL("filter")] = true;
 
   tmr.start();
 
@@ -221,12 +221,12 @@ BlockingResult AdBlockManager::askServerIfBlocked(const QString& fp_url, const Q
              << " ms.";
 
     QJsonObject out_obj = QJsonDocument::fromJson(out).object();
-    bool blocking = out_obj["filter"].toObject()["match"].toBool();
+    bool blocking = out_obj[QSL("filter")].toObject()[QSL("match")].toBool();
 
     return {
       blocking,
       blocking
-          ? out_obj["filter"].toObject()["filter"].toObject()["filter"].toString()
+          ? out_obj[QSL("filter")].toObject()[QSL("filter")].toObject()[QSL("filter")].toString()
           : QString()
     };
   }
@@ -240,8 +240,8 @@ QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
   QByteArray out;
   QElapsedTimer tmr;
 
-  req_obj["url"] = url;
-  req_obj["cosmetic"] = true;
+  req_obj[QSL("url")] = url;
+  req_obj[QSL("cosmetic")] = true;
 
   tmr.start();
 
@@ -263,7 +263,7 @@ QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
 
     QJsonObject out_obj = QJsonDocument::fromJson(out).object();
 
-    return out_obj["cosmetic"].toObject()["styles"].toString();
+    return out_obj[QSL("cosmetic")].toObject()[QSL("styles")].toString();
   }
   else {
     throw NetworkException(network_res.first);

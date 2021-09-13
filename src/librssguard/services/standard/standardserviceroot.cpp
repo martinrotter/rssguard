@@ -65,8 +65,8 @@ void StandardServiceRoot::start(bool freshly_activated) {
       if (QFile::exists(target_opml_file.arg(current_locale))) {
         file_to_load = target_opml_file.arg(current_locale);
       }
-      else if (QFile::exists(target_opml_file.arg(DEFAULT_LOCALE))) {
-        file_to_load = target_opml_file.arg(DEFAULT_LOCALE);
+      else if (QFile::exists(target_opml_file.arg(QSL(DEFAULT_LOCALE)))) {
+        file_to_load = target_opml_file.arg(QSL(DEFAULT_LOCALE));
       }
 
       FeedsImportExportModel model;
@@ -312,7 +312,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
       }
 
       if (source_item->kind() == RootItem::Kind::Category) {
-        auto* source_category = dynamic_cast<StandardCategory*>(source_item);
+        auto* source_category = qobject_cast<StandardCategory*>(source_item);
         auto* new_category = new StandardCategory(*source_category);
         QString new_category_title = new_category->title();
 
@@ -358,7 +358,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
         }
       }
       else if (source_item->kind() == RootItem::Kind::Feed) {
-        auto* source_feed = dynamic_cast<StandardFeed*>(source_item);
+        auto* source_feed = qobject_cast<StandardFeed*>(source_item);
         auto* new_feed = new StandardFeed(*source_feed);
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
@@ -430,8 +430,8 @@ QList<QAction*> StandardServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
     ServiceRoot::serviceMenu();
 
-    auto* action_export_feeds = new QAction(qApp->icons()->fromTheme("document-export"), tr("Export feeds"), this);
-    auto* action_import_feeds = new QAction(qApp->icons()->fromTheme("document-import"), tr("Import feeds"), this);
+    auto* action_export_feeds = new QAction(qApp->icons()->fromTheme(QSL("document-export")), tr("Export feeds"), this);
+    auto* action_import_feeds = new QAction(qApp->icons()->fromTheme(QSL("document-import")), tr("Import feeds"), this);
 
     connect(action_export_feeds, &QAction::triggered, this, &StandardServiceRoot::exportFeeds);
     connect(action_import_feeds, &QAction::triggered, this, &StandardServiceRoot::importFeeds);

@@ -27,7 +27,7 @@ QString FeedlyEntryPoint::name() const {
 }
 
 QString FeedlyEntryPoint::code() const {
-  return SERVICE_CODE_FEEDLY;
+  return QSL(SERVICE_CODE_FEEDLY);
 }
 
 QString FeedlyEntryPoint::description() const {
@@ -37,7 +37,7 @@ QString FeedlyEntryPoint::description() const {
 }
 
 QString FeedlyEntryPoint::author() const {
-  return APP_AUTHOR;
+  return QSL(APP_AUTHOR);
 }
 
 QIcon FeedlyEntryPoint::icon() const {

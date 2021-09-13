@@ -449,7 +449,7 @@ class Settings : public QSettings {
   private:
 
     // Constructor.
-    explicit Settings(const QString& file_name, Format format, const SettingsProperties::SettingsType& type, QObject* parent = nullptr);
+    explicit Settings(const QString& file_name, Format format, SettingsProperties::SettingsType type, QObject* parent = nullptr);
 
     SettingsProperties::SettingsType m_initializationStatus;
 };

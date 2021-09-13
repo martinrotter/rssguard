@@ -27,13 +27,13 @@ class TabWidget : public QTabWidget {
 
     // Manimulators for tabs.
     int addTab(TabContent* widget, const QString&,
-               const TabBar::TabType& type = TabBar::TabType::NonClosable);
+               TabBar::TabType type = TabBar::TabType::NonClosable);
     int addTab(TabContent* widget, const QIcon& icon,
-               const QString& label, const TabBar::TabType& type = TabBar::TabType::NonClosable);
+               const QString& label, TabBar::TabType type = TabBar::TabType::NonClosable);
     int insertTab(int index, QWidget* widget, const QString& label,
-                  const TabBar::TabType& type = TabBar::TabType::Closable);
+                  TabBar::TabType type = TabBar::TabType::Closable);
     int insertTab(int index, QWidget* widget, const QIcon& icon,
-                  const QString& label, const TabBar::TabType& type = TabBar::TabType::NonClosable);
+                  const QString& label, TabBar::TabType type = TabBar::TabType::NonClosable);
     void removeTab(int index, bool clear_from_memory);
 
     // Returns tab bar.

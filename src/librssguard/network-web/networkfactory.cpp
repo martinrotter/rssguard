@@ -16,8 +16,8 @@
 
 QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html) {
   QStringList feeds;
-  QRegularExpression rx(FEED_REGEX_MATCHER, QRegularExpression::PatternOption::CaseInsensitiveOption);
-  QRegularExpression rx_href(FEED_HREF_REGEX_MATCHER, QRegularExpression::PatternOption::CaseInsensitiveOption);
+  QRegularExpression rx(QSL(FEED_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
+  QRegularExpression rx_href(QSL(FEED_HREF_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
 
   rx_href.optimize();
 
@@ -29,10 +29,12 @@ QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const 
     QString feed_link = rx_href.match(link_tag).captured(1);
 
     if (feed_link.startsWith(QL1S("//"))) {
-      feed_link = QString(URI_SCHEME_HTTP) + feed_link.mid(2);
+      feed_link = QSL(URI_SCHEME_HTTP) + feed_link.mid(2);
     }
     else if (feed_link.startsWith(QL1C('/'))) {
-      feed_link = url.toString(QUrl::RemovePath | QUrl::RemoveQuery | QUrl::StripTrailingSlash) + feed_link;
+      feed_link = url.toString(QUrl::UrlFormattingOption::RemovePath |
+                               QUrl::UrlFormattingOption::RemoveQuery |
+                               QUrl::UrlFormattingOption::StripTrailingSlash) + feed_link;
     }
 
     feeds.append(feed_link);
@@ -46,8 +48,8 @@ QPair<QByteArray, QByteArray> NetworkFactory::generateBasicAuthHeader(const QStr
     return QPair<QByteArray, QByteArray>(QByteArray(), QByteArray());
   }
   else {
-    QString basic_value = username + ":" + password;
-    QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
+    QString basic_value = username + QSL(":") + password;
+    QString header_value = QSL("Basic ") + QString(basic_value.toUtf8().toBase64());
 
     return QPair<QByteArray, QByteArray>(HTTP_HEADERS_AUTHORIZATION, header_value.toLocal8Bit());
   }
@@ -185,7 +187,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
         host = host.mid(4);
       }
 
-      const QString ddg_icon_service = QString("https://external-content.duckduckgo.com/ip3/%1.ico").arg(host);
+      const QString ddg_icon_service = QSL("https://external-content.duckduckgo.com/ip3/%1.ico").arg(host);
 
       network_result = performNetworkOperation(ddg_icon_service,
                                                timeout,
@@ -216,7 +218,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
 
 NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
                                                       QByteArray& output, QNetworkAccessManager::Operation operation,
-                                                      QList<QPair<QByteArray, QByteArray>> additional_headers,
+                                                      const QList<QPair<QByteArray, QByteArray>>& additional_headers,
                                                       bool protected_contents,
                                                       const QString& username, const QString& password,
                                                       const QNetworkProxy& custom_proxy) {
@@ -251,7 +253,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       QHttpMultiPart* input_data,
                                                       QList<HttpResponse>& output,
                                                       QNetworkAccessManager::Operation operation,
-                                                      QList<QPair<QByteArray, QByteArray>> additional_headers,
+                                                      const QList<QPair<QByteArray, QByteArray>>& additional_headers,
                                                       bool protected_contents,
                                                       const QString& username,
                                                       const QString& password,

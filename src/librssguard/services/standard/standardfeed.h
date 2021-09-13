@@ -91,7 +91,7 @@ class StandardFeed : public Feed {
     static QStringList prepareExecutionLine(const QString& execution_line);
     static QString generateFeedFileWithScript(const QString& execution_line, int run_timeout);
     static QString postProcessFeedFileWithScript(const QString& execution_line,
-                                                 const QString raw_feed_data,
+                                                 const QString& raw_feed_data,
                                                  int run_timeout);
     static QString runScriptProcess(const QStringList& cmd_args, const QString& working_directory,
                                     int run_timeout, bool provide_input, const QString& input = {});

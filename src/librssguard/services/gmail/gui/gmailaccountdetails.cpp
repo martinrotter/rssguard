@@ -97,7 +97,7 @@ void GmailAccountDetails::onAuthGranted() {
 
     auto resp = fac.getProfile(m_lastProxy);
 
-    m_ui.m_txtUsername->lineEdit()->setText(resp["emailAddress"].toString());
+    m_ui.m_txtUsername->lineEdit()->setText(resp[QSL("emailAddress")].toString());
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_GMAIL
@@ -113,7 +113,7 @@ void GmailAccountDetails::hookNetwork() {
 }
 
 void GmailAccountDetails::registerApi() {
-  qApp->web()->openUrlInExternalBrowser(GMAIL_REG_API_URL);
+  qApp->web()->openUrlInExternalBrowser(QSL(GMAIL_REG_API_URL));
 }
 
 void GmailAccountDetails::checkOAuthValue(const QString& value) {

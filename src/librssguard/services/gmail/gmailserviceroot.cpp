@@ -53,25 +53,25 @@ void GmailServiceRoot::writeNewEmail() {
 QVariantHash GmailServiceRoot::customDatabaseData() const {
   QVariantHash data;
 
-  data["username"] = m_network->username();
-  data["batch_size"] = m_network->batchSize();
-  data["download_only_unread"] = m_network->downloadOnlyUnreadMessages();
-  data["client_id"] = m_network->oauth()->clientId();
-  data["client_secret"] = m_network->oauth()->clientSecret();
-  data["refresh_token"] = m_network->oauth()->refreshToken();
-  data["redirect_uri"] = m_network->oauth()->redirectUrl();
+  data[QSL("username")] = m_network->username();
+  data[QSL("batch_size")] = m_network->batchSize();
+  data[QSL("download_only_unread")] = m_network->downloadOnlyUnreadMessages();
+  data[QSL("client_id")] = m_network->oauth()->clientId();
+  data[QSL("client_secret")] = m_network->oauth()->clientSecret();
+  data[QSL("refresh_token")] = m_network->oauth()->refreshToken();
+  data[QSL("redirect_uri")] = m_network->oauth()->redirectUrl();
 
   return data;
 }
 
 void GmailServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
-  m_network->setUsername(data["username"].toString());
-  m_network->setBatchSize(data["batch_size"].toInt());
-  m_network->setDownloadOnlyUnreadMessages(data["download_only_unread"].toBool());
-  m_network->oauth()->setClientId(data["client_id"].toString());
-  m_network->oauth()->setClientSecret(data["client_secret"].toString());
-  m_network->oauth()->setRefreshToken(data["refresh_token"].toString());
-  m_network->oauth()->setRedirectUrl(data["redirect_uri"].toString(), true);
+  m_network->setUsername(data[QSL("username")].toString());
+  m_network->setBatchSize(data[QSL("batch_size")].toInt());
+  m_network->setDownloadOnlyUnreadMessages(data[QSL("download_only_unread")].toBool());
+  m_network->oauth()->setClientId(data[QSL("client_id")].toString());
+  m_network->oauth()->setClientSecret(data[QSL("client_secret")].toString());
+  m_network->oauth()->setRefreshToken(data[QSL("refresh_token")].toString());
+  m_network->oauth()->setRedirectUrl(data[QSL("redirect_uri")].toString(), true);
 }
 
 QList<Message> GmailServiceRoot::obtainNewMessages(Feed* feed,
@@ -93,7 +93,7 @@ QList<Message> GmailServiceRoot::obtainNewMessages(Feed* feed,
 bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
   QString str_url = url.toString();
   QString attachment_id = str_url.mid(str_url.indexOf(QL1C('?')) + 1);
-  QStringList parts = attachment_id.split(QL1S(GMAIL_ATTACHMENT_SEP));
+  QStringList parts = attachment_id.split(QSL(GMAIL_ATTACHMENT_SEP));
   QString file = QFileDialog::getSaveFileName(qApp->mainFormWidget(), tr("Select attachment destination file"),
                                               qApp->homeFolder() + QDir::separator() + parts.at(0));
 
@@ -225,7 +225,7 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
     QList<Message> messages = j.value();
 
     if (!messages.isEmpty()) {
-      QStringList custom_ids;
+      QStringList custom_ids; custom_ids.reserve(messages.size());
 
       for (const Message& msg : messages) {
         custom_ids.append(msg.m_customId);
