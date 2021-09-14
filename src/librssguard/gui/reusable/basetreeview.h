@@ -11,14 +11,10 @@ class BaseTreeView : public QTreeView {
   public:
     explicit BaseTreeView(QWidget* parent = nullptr);
 
-    bool keyboardShortcutsLimited() const;
-    void setKeyboardShortcutsLimited(bool limited);
-
   protected:
     virtual void keyPressEvent(QKeyEvent* event);
 
   private:
-    bool m_keyboardShortcutsLimited;
     QList<int> m_allowedKeyboardKeys;
 };
 

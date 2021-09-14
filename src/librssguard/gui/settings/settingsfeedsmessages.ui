@@ -26,7 +26,7 @@
    <item>
     <widget class="QTabWidget" name="m_tabFeedsMessages">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
@@ -236,14 +236,14 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="0" colspan="2">
+       <item row="10" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkShowTooltips">
          <property name="text">
           <string>Display tooltips for feeds and articles</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="0" colspan="2">
+       <item row="11" column="0" colspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -255,6 +255,13 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="9" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbListsRestrictedShortcuts">
+         <property name="text">
+          <string>Allow only basic keyboard shortcuts for feed/article list</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -494,6 +501,7 @@
   <tabstop>m_spinHeightRowsFeeds</tabstop>
   <tabstop>m_cmbCountsFeedList</tabstop>
   <tabstop>m_cbHideCountsIfNoUnread</tabstop>
+  <tabstop>m_cbListsRestrictedShortcuts</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
   <tabstop>m_cmbIgnoreContentsChanges</tabstop>

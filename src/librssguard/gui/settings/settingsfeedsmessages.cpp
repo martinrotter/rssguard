@@ -47,6 +47,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_spinHeightRowsFeeds, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::requireRestart);
 
+  connect(m_ui->m_cbListsRestrictedShortcuts, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbIgnoreContentsChanges, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbHideCountsIfNoUnread, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -137,6 +138,8 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_spinHeightRowsMessages->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt());
   m_ui->m_spinHeightRowsFeeds->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt());
 
+  m_ui->m_cbListsRestrictedShortcuts->setChecked(settings()->value(GROUP(Feeds),
+                                                                   SETTING(Feeds::OnlyBasicShortcutsInLists)).toBool());
   m_ui->m_cbHideCountsIfNoUnread->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool());
   m_ui->m_checkDisplayFeedIcons->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::DisplayFeedIconsInList)).toBool());
   m_ui->m_checkBringToForegroundAfterMsgOpened->setChecked(settings()->value(GROUP(Messages),
@@ -203,6 +206,9 @@ void SettingsFeedsMessages::saveSettings() {
 
   settings()->setValue(GROUP(GUI), GUI::HeightRowMessages, m_ui->m_spinHeightRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowFeeds, m_ui->m_spinHeightRowsFeeds->value());
+
+  settings()->setValue(GROUP(Feeds), Feeds::OnlyBasicShortcutsInLists,
+                       m_ui->m_cbListsRestrictedShortcuts->isChecked());
 
   settings()->setValue(GROUP(Feeds), Feeds::HideCountsIfNoUnread, m_ui->m_cbHideCountsIfNoUnread->isChecked());
   settings()->setValue(GROUP(Messages), Messages::DisplayFeedIconsInList, m_ui->m_checkDisplayFeedIcons->isChecked());

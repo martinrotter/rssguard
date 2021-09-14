@@ -81,7 +81,7 @@
           <item row="0" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_10">
             <item>
-             <widget class="QLineEdit" name="m_txtExternalBrowserExecutable">
+             <widget class="BaseLineEdit" name="m_txtExternalBrowserExecutable">
               <property name="placeholderText">
                <string>Executable file of web browser</string>
               </property>
@@ -107,7 +107,7 @@
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="m_txtExternalBrowserArguments">
+           <widget class="BaseLineEdit" name="m_txtExternalBrowserArguments">
             <property name="placeholderText">
              <string>Parameters passed to executable</string>
             </property>
@@ -196,7 +196,7 @@
           <item row="0" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_15">
             <item>
-             <widget class="QLineEdit" name="m_txtExternalEmailExecutable">
+             <widget class="BaseLineEdit" name="m_txtExternalEmailExecutable">
               <property name="readOnly">
                <bool>true</bool>
               </property>
@@ -225,7 +225,7 @@
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="m_txtExternalEmailArguments">
+           <widget class="BaseLineEdit" name="m_txtExternalEmailArguments">
             <property name="placeholderText">
              <string>Parameters passed to executable</string>
             </property>
@@ -359,6 +359,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BaseLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>baselineedit.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>m_tabBrowserProxy</tabstop>
   <tabstop>m_grpCustomExternalBrowser</tabstop>

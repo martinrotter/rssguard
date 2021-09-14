@@ -72,6 +72,9 @@ DVALUE(bool) Feeds::HideCountsIfNoUnreadDef = false;
 DKEY Feeds::AutoExpandOnSelection = "auto_expand_on_selection";
 DVALUE(bool) Feeds::AutoExpandOnSelectionDef = false;
 
+DKEY Feeds::OnlyBasicShortcutsInLists = "only_basic_shortcuts_in_lists";
+DVALUE(bool) Feeds::OnlyBasicShortcutsInListsDef = false;
+
 DKEY Feeds::ListFont = "list_font";
 
 // Messages.

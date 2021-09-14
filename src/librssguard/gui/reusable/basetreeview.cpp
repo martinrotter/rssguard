@@ -2,9 +2,11 @@
 
 #include "gui/reusable/basetreeview.h"
 
+#include "miscellaneous/application.h"
+
 #include <QKeyEvent>
 
-BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent), m_keyboardShortcutsLimited(false) {
+BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent) {
   m_allowedKeyboardKeys = {
     Qt::Key::Key_Back,
     Qt::Key::Key_Select,
@@ -22,16 +24,8 @@ BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent), m_keyboardShort
   };
 }
 
-bool BaseTreeView::keyboardShortcutsLimited() const {
-  return m_keyboardShortcutsLimited;
-}
-
-void BaseTreeView::setKeyboardShortcutsLimited(bool limited) {
-  m_keyboardShortcutsLimited = limited;
-}
-
 void BaseTreeView::keyPressEvent(QKeyEvent* event) {
-  if (m_keyboardShortcutsLimited &&
+  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::OnlyBasicShortcutsInLists)).toBool() &&
       !m_allowedKeyboardKeys.contains(event->key()) &&
       !event->matches(QKeySequence::StandardKey::SelectAll)) {
     event->ignore();

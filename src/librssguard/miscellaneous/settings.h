@@ -89,6 +89,9 @@ namespace Feeds {
   KEY AutoExpandOnSelection;
   VALUE(bool) AutoExpandOnSelectionDef;
 
+  KEY OnlyBasicShortcutsInLists;
+  VALUE(bool) OnlyBasicShortcutsInListsDef;
+
   KEY ListFont;
 }
 
