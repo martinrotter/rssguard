@@ -64,6 +64,7 @@ HEADERS += core/feeddownloader.h \
            gui/notifications/notificationseditor.h \
            gui/notifications/singlenotificationeditor.h \
            gui/reusable/baselineedit.h \
+           gui/reusable/basetreeview.h \
            gui/reusable/helpspoiler.h \
            gui/reusable/progressbarwithtext.h \
            gui/reusable/resizablestackedwidget.h \
@@ -246,6 +247,7 @@ SOURCES += core/feeddownloader.cpp \
            gui/notifications/notificationseditor.cpp \
            gui/notifications/singlenotificationeditor.cpp \
            gui/reusable/baselineedit.cpp \
+           gui/reusable/basetreeview.cpp \
            gui/reusable/helpspoiler.cpp \
            gui/reusable/progressbarwithtext.cpp \
            gui/reusable/resizablestackedwidget.cpp \

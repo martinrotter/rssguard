@@ -6,12 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>367</width>
     <height>300</height>
    </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Form</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="leftMargin">

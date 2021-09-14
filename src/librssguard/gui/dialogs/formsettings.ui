@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>680</height>
+    <width>800</width>
+    <height>550</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,13 +45,6 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QStackedWidget" name="m_stackedSettings">
-     <property name="currentIndex">
-      <number>-1</number>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
@@ -59,6 +52,13 @@
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QStackedWidget" name="m_stackedSettings">
+     <property name="currentIndex">
+      <number>-1</number>
      </property>
     </widget>
    </item>

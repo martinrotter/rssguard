@@ -130,8 +130,19 @@ void FormSettings::cancelSettings() {
 void FormSettings::addSettingsPanel(SettingsPanel* panel) {
   m_ui.m_listSettings->addItem(panel->title());
   m_panels.append(panel);
-  m_ui.m_stackedSettings->addWidget(panel);
+
+  QScrollArea* scr = new QScrollArea(m_ui.m_stackedSettings);
+
+  scr->setWidgetResizable(true);
+  scr->setFrameShape(QFrame::Shape::NoFrame);
+
+  //panel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+  scr->setWidget(panel);
+
+  m_ui.m_stackedSettings->addWidget(scr);
+
   panel->loadSettings();
+
   connect(panel, &SettingsPanel::settingsChanged, this, [this]() {
     m_btnApply->setEnabled(true);
   });

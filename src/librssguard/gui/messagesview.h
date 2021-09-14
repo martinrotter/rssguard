@@ -3,16 +3,16 @@
 #ifndef MESSAGESVIEW_H
 #define MESSAGESVIEW_H
 
-#include "core/messagesmodel.h"
+#include "gui/reusable/basetreeview.h"
 
+#include "core/messagesmodel.h"
 #include "services/abstract/rootitem.h"
 
 #include <QHeaderView>
-#include <QTreeView>
 
 class MessagesProxyModel;
 
-class MessagesView : public QTreeView {
+class MessagesView : public BaseTreeView {
   Q_OBJECT
 
   public:

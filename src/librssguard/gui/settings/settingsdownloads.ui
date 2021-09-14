@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>758</width>
+    <width>469</width>
     <height>300</height>
    </rect>
   </property>
@@ -36,13 +36,6 @@
       <string>Target directory for downloaded files</string>
      </property>
      <layout class="QFormLayout" name="formLayout_20">
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="m_rbDownloadsAskEachFile">
-        <property name="text">
-         <string>Ask for each individual downloaded file</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout_12">
         <item>
@@ -86,6 +79,13 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QRadioButton" name="m_rbDownloadsAskEachFile">
+        <property name="text">
+         <string>Ask for each individual downloaded file</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

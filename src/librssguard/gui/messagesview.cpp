@@ -27,7 +27,7 @@
 #include <QTimer>
 
 MessagesView::MessagesView(QWidget* parent)
-  : QTreeView(parent), m_contextMenu(nullptr), m_columnsAdjusted(false), m_processingMouse(false) {
+  : BaseTreeView(parent), m_contextMenu(nullptr), m_columnsAdjusted(false), m_processingMouse(false) {
   m_sourceModel = qApp->feedReader()->messagesModel();
   m_proxyModel = qApp->feedReader()->messagesProxyModel();
 
@@ -227,10 +227,13 @@ void MessagesView::focusInEvent(QFocusEvent* event) {
 }
 
 void MessagesView::keyPressEvent(QKeyEvent* event) {
-  QTreeView::keyPressEvent(event);
+  BaseTreeView::keyPressEvent(event);
 
   if (event->key() == Qt::Key::Key_Delete) {
     deleteSelectedMessages();
+  }
+  else if (event->key() == Qt::Key::Key_Backspace) {
+    restoreSelectedMessages();
   }
 }
 

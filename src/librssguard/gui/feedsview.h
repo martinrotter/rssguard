@@ -3,7 +3,7 @@
 #ifndef FEEDSVIEW_H
 #define FEEDSVIEW_H
 
-#include <QTreeView>
+#include "gui/reusable/basetreeview.h"
 
 #include "core/feedsmodel.h"
 
@@ -13,7 +13,7 @@ class FeedsProxyModel;
 class Feed;
 class Category;
 
-class RSSGUARD_DLLSPEC FeedsView : public QTreeView {
+class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
   Q_OBJECT
 
   public:

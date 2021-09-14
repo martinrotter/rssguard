@@ -28,7 +28,7 @@
 #include <QTimer>
 
 FeedsView::FeedsView(QWidget* parent)
-  : QTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
+  : BaseTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
   m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuEmptySpace(nullptr), m_contextMenuOtherItems(nullptr),
   m_contextMenuLabel(nullptr) {
   setObjectName(QSL("FeedsView"));
@@ -774,9 +774,9 @@ void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSele
 }
 
 void FeedsView::keyPressEvent(QKeyEvent* event) {
-  QTreeView::keyPressEvent(event);
+  BaseTreeView::keyPressEvent(event);
 
-  if (event->key() == Qt::Key_Delete) {
+  if (event->key() == Qt::Key::Key_Delete) {
     deleteSelectedItem();
   }
 }
