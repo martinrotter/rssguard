@@ -9,7 +9,7 @@ body:
       value: |
         Dear RSS Guard contributor, please RESPECT this template. You might be interested in reading [www.chiark.greenend.org.uk](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html).
         Also, ALWAYS, ALWAYS, ALWAYS attach DEBUG LOG to your bug report!!!
-        How to generate it see [here](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#command-line-interface).
+        How to generate it see [here](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#reprt).
   - type: textarea
     attributes:
       label: Brief description of the issue

@@ -533,13 +533,14 @@ Note that RSS Guard can support loading of plugins from external libraries (dll,
 ### <a id="reprt"></a>Reporting Bugs or Feature Requests
 Please report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible, along with steps taken leading up to the issue occurring.
 
+If you report any bug, you must provide application debug log. So make sure to start RSS Guard with `--log` switch and path where you want to store log file, for example `rssguard.exe --log '.\rssguard.log'` which will save log file into your RSS Guard folder. After you've started RSS Guard this way, then reproduce your problem and upload log file to the ticket.
+
 Also, for some broader questions or general ideas, use [discussions](https://github.com/martinrotter/rssguard/discussions) rather than [issues](https://github.com/martinrotter/rssguard/issues).
 
 ### <a id="locali"></a>Localization
 RSS Guard currently includes [many localizations](http://www.transifex.com/projects/p/rssguard).
 
 If you are interested in creating translations for RSS Guard, then do this:
-
 1. Go [here](http://www.transifex.com/projects/p/rssguard) and check status of currently supported localizations.
 2. [Login](http://www.transifex.com/signin) (you can use social networks to login) and work on existing translations. If no translation team for your country/language exists, then ask for creating of localization team via the website.
 
