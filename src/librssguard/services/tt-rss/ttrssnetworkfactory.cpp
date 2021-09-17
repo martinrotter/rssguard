@@ -677,17 +677,16 @@ TtRssGetFeedsCategoriesResponse::TtRssGetFeedsCategoriesResponse(const QString& 
 
 TtRssGetFeedsCategoriesResponse::~TtRssGetFeedsCategoriesResponse() = default;
 
-RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QString base_address) const {
+RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, const QNetworkProxy& proxy, const QString& base_address) const {
   auto* parent = new RootItem();
 
   // Chop the "api/" from the end of the address.
-  base_address.chop(4);
-  qDebug("TT-RSS: Chopped base address to '%s' to get feed icons.", qPrintable(base_address));
+  qDebug("TT-RSS: Base address to '%s' to get feed icons.", qPrintable(base_address));
 
   if (status() == TTRSS_API_STATUS_OK) {
     // We have data, construct object tree according to data.
     QJsonArray items_to_process = m_rawContent[QSL("content")].toObject()[QSL("categories")].toObject()[QSL("items")].toArray();
-    QVector<QPair<RootItem*, QJsonValue>> pairs;
+    QVector<QPair<RootItem*, QJsonValue>> pairs; pairs.reserve(items_to_process.size());
 
     for (const QJsonValue& item : items_to_process) {
       pairs.append(QPair<RootItem*, QJsonValue>(parent, item));
@@ -697,7 +696,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
       QPair<RootItem*, QJsonValue> pair = pairs.takeFirst();
       RootItem* act_parent = pair.first;
       QJsonObject item = pair.second.toObject();
-      int item_id = item["bare_id"].toInt();
+      int item_id = item[QSL("bare_id")].toInt();
       bool is_category = item.contains(QSL("type")) && item[QSL("type")].toString() == QSL(TTRSS_GFT_TYPE_CATEGORY);
 
       if (item_id >= 0) {
@@ -732,22 +731,21 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
           // We have feed.
           auto* feed = new TtRssFeed();
 
+          IOFactory::writeFile("aa.json", QJsonDocument(item).toJson());
+
           if (obtain_icons) {
             QString icon_path = item[QSL("icon")].type() == QJsonValue::String ? item[QSL("icon")].toString() : QString();
 
             if (!icon_path.isEmpty()) {
               // Chop the "api/" suffix out and append
               QString full_icon_address = base_address + QL1C('/') + icon_path;
-              QByteArray icon_data;
+              QIcon icon;
 
-              if (NetworkFactory::performNetworkOperation(full_icon_address, DOWNLOAD_TIMEOUT,
-                                                          QByteArray(), icon_data,
-                                                          QNetworkAccessManager::GetOperation).first == QNetworkReply::NoError) {
-                // Icon downloaded, set it up.
-                QPixmap icon_pixmap;
-
-                icon_pixmap.loadFromData(icon_data);
-                feed->setIcon(QIcon(icon_pixmap));
+              if (NetworkFactory::downloadIcon({ { full_icon_address, true } },
+                                               DOWNLOAD_TIMEOUT,
+                                               icon,
+                                               proxy) == QNetworkReply::NoError) {
+                feed->setIcon(icon);
               }
             }
           }

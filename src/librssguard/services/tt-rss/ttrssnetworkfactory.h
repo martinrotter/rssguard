@@ -56,7 +56,7 @@ class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
     // Returns tree of feeds/categories.
     // Top-level root of the tree is not needed here.
     // Returned items do not have primary IDs assigned.
-    RootItem* feedsCategories(bool obtain_icons, QString base_address = QString()) const;
+    RootItem* feedsCategories(bool obtain_icons, const QNetworkProxy& proxy, const QString& base_address = QString()) const;
 };
 
 class ServiceRoot;

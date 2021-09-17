@@ -276,7 +276,7 @@ RootItem* TtRssServiceRoot::obtainNewTreeForSyncIn() const {
   TtRssGetLabelsResponse labels = m_network->getLabels(networkProxy());
 
   if (m_network->lastError() == QNetworkReply::NoError) {
-    auto* tree = feed_cats.feedsCategories(true, m_network->url());
+    auto* tree = feed_cats.feedsCategories(true, networkProxy(), m_network->url());
     auto* lblroot = new LabelsNode(tree);
 
     lblroot->setChildItems(labels.labels());
