@@ -533,7 +533,7 @@ Note that RSS Guard can support loading of plugins from external libraries (dll,
 ### <a id="reprt"></a>Reporting Bugs or Feature Requests
 Please report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/rssguard/issues) section. Describe your problem as precisely as possible, along with steps taken leading up to the issue occurring.
 
-If you report any bug, you must provide application debug log. So make sure to start RSS Guard with `--log` switch and path where you want to store log file, for example `rssguard.exe --log '.\rssguard.log'` which will save log file into your RSS Guard folder. After you've started RSS Guard this way, then reproduce your problem and upload log file to the ticket.
+If you report any bug, you must provide application debug log. So make sure to start RSS Guard from command line (`cmd.exe` on Windows) with `--log` switch and path where you want to store log file, for example `rssguard.exe --log '.\rssguard.log'` which will save log file into your RSS Guard folder. After you've started RSS Guard this way, then reproduce your problem and upload log file to the ticket.
 
 Also, for some broader questions or general ideas, use [discussions](https://github.com/martinrotter/rssguard/discussions) rather than [issues](https://github.com/martinrotter/rssguard/issues).
 
