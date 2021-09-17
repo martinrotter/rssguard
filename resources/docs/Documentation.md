@@ -207,7 +207,7 @@ function filterMessage() {
 }
 ```
 
-Dump RAW data of each message to RSS Guard's [debug output](Documentation.md#generating-debug-log-file).
+Dump RAW data of each message to RSS Guard's [debug output](#reprt).
 ```js
 function filterMessage() {
   console.log(msg.rawContents);
