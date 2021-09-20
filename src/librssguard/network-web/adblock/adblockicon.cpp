@@ -58,5 +58,5 @@ void AdBlockIcon::showMenu(QPoint pos) {
 void AdBlockIcon::setIcon(bool adblock_enabled) {
   QAction::setIcon(adblock_enabled
                    ? qApp->icons()->miscIcon(QSL(ADBLOCK_ICON_ACTIVE))
-                   : qApp->icons()->miscIcon(QSL(ADBLOCK_ICON_ACTIVE)));
+                   : qApp->icons()->miscIcon(QSL(ADBLOCK_ICON_DISABLED)));
 }
