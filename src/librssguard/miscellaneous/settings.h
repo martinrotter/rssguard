@@ -171,6 +171,7 @@ namespace GUI {
   KEY StatusbarActions;
   VALUE(char*) StatusbarActionsDef;
 
+  KEY SettingsWindowInitialSize;
   KEY MainWindowInitialSize;
   KEY MainWindowInitialPosition;
 

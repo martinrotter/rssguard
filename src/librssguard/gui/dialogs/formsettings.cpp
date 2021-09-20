@@ -46,6 +46,8 @@ FormSettings::FormSettings(QWidget& parent)
   addSettingsPanel(new SettingsFeedsMessages(&m_settings, this));
 
   m_ui.m_listSettings->setCurrentRow(0);
+
+  resize(qApp->settings()->value(GROUP(GUI), GUI::SettingsWindowInitialSize, size()).toSize());
 }
 
 FormSettings::~FormSettings() {
@@ -95,6 +97,8 @@ void FormSettings::applySettings() {
   }
 
   m_btnApply->setEnabled(false);
+
+  qApp->settings()->setValue(GROUP(GUI), GUI::SettingsWindowInitialSize, size());
 }
 
 void FormSettings::cancelSettings() {
