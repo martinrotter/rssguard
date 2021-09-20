@@ -1,3 +1,17 @@
+4.0.3
+-----
+
+Added:
+* Now it is possible to disable hardcoded keyboard shortcuts in feed/article lists so that user-defined single-stroke shortcuts can work properly. (#484)
+
+Fixed:
+* Settings dialog now remembers its size and also adds scrollbars where needed. (#493)
+* Updated documentation.
+* "Written by" bottom section of article preview now uses same date/time format as article list.
+* Code refactored.
+* Icons are now properly loaded when fetching list of feeds in Tiny Tiny RSS.
+* Inline article searching now uses much smaller delay after typing search phrase.
+
 4.0.2
 -----
 
@@ -17,6 +31,7 @@ Fixed:
 
 4.0.0
 -----
+
 4.0.0 is new major release of RSS Guard. RSS Guard 4.x is NOT backwards compatible with 3.x line. Specifically:
 * configuration file "config.ini" IS fully backwards compatible,
 * database file "database.db" is NOT backwards compatible.
