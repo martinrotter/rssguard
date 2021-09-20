@@ -168,5 +168,5 @@ QStringList MessagesToolBar::savedActions() const {
 
 void MessagesToolBar::onSearchPatternChanged(const QString& search_pattern) {
   m_searchPattern = search_pattern;
-  m_tmrSearchPattern->start(700ms);
+  m_tmrSearchPattern->start(search_pattern.isEmpty() ? 0ms : 300ms);
 }
