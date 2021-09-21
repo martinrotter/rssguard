@@ -27,7 +27,7 @@ $maria_version = "10.6.4"
 $maria_link = "https://downloads.mariadb.org/f/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip/from/?serve"
 $maria_output = "maria.zip"
 
-Invoke-WebRequest -Uri "$qt_link" -OutFile "$qt_output"
+Invoke-WebRequest -Uri "$qt_link" -OutFile "$qt_output" -MaximumRedirection 5 
 Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
 
 & ".\resources\scripts\7za\7za.exe" x $qt_output
