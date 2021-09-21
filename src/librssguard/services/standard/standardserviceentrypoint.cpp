@@ -9,11 +9,11 @@
 #include "services/standard/standardserviceroot.h"
 
 QString StandardServiceEntryPoint::name() const {
-  return QObject::tr("Standard online feeds (RSS/ATOM/JSON)");
+  return QObject::tr("Classic feeds (RSS/ATOM/JSON)");
 }
 
 QString StandardServiceEntryPoint::description() const {
-  return QObject::tr("This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.");
+  return QObject::tr("This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.");
 }
 
 QString StandardServiceEntryPoint::author() const {
@@ -21,7 +21,7 @@ QString StandardServiceEntryPoint::author() const {
 }
 
 QIcon StandardServiceEntryPoint::icon() const {
-  return QIcon(APP_ICON_PATH);
+  return qApp->icons()->miscIcon(QSL("rss"));
 }
 
 QString StandardServiceEntryPoint::code() const {

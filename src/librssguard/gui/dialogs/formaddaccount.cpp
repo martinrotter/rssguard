@@ -58,11 +58,18 @@ ServiceEntryPoint* FormAddAccount::selectedEntryPoint() const {
 }
 
 void FormAddAccount::loadEntryPoints() {
+  int classic_row = 0, i = 0;
+
   for (const ServiceEntryPoint* entry_point : qAsConst(m_entryPoints)) {
+    if (entry_point->code() == QSL(SERVICE_CODE_STD_RSS)) {
+      classic_row = i;
+    }
+
     QListWidgetItem* item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
 
     item->setToolTip(entry_point->description());
+    i++;
   }
 
-  m_ui->m_listEntryPoints->setCurrentRow(m_entryPoints.size() - 1);
+  m_ui->m_listEntryPoints->setCurrentRow(classic_row);
 }
