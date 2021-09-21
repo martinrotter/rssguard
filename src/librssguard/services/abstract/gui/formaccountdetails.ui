@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
-    <height>430</height>
+    <width>550</width>
+    <height>450</height>
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout_2">
@@ -24,8 +24,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>462</width>
-        <height>383</height>
+        <width>532</width>
+        <height>403</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
