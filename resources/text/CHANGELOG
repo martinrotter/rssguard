@@ -3,6 +3,7 @@
 
 Added:
 * Now it is possible to disable hardcoded keyboard shortcuts in feed/article lists so that user-defined single-stroke shortcuts can work properly. (#484)
+* Skins were reverted to 4.0.1 as they were very buggy. Previous skins were stable and will be used for time to come. I will make brand new polished skin in some next release which will not replace existing skins but will be added.
 
 Fixed:
 * Settings dialog now remembers its size and also adds scrollbars where needed. (#493)
