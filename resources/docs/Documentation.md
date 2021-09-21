@@ -453,6 +453,8 @@ You can select style and skin in settings category `User interface`.
 
 RSS Guard encapsulates styling capabilities via *skins* feature. Each skin is placed in its own folder and must contain several [files](https://github.com/martinrotter/rssguard/tree/master/resources/skins/vergilius). There are some [built-in](https://github.com/martinrotter/rssguard/tree/master/resources/skins) skins, but you can place your custom skins in your [user data folder](#userd). You can find exact path to your user data folder in `About` dialog. Note that there must be subfolder `skins`. Create it if it does not exist and place your custom skins inside.
 
+Also, there is "empty" [skin](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain) which can be used as a base for your custom skins. Look into its main [layout file](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain/html_wrapper.html) for some commentary.
+
 <img src="images/about-skins.png" width="600px">
 
 So for example if your new skin is called `greenland`, you must place it in folder

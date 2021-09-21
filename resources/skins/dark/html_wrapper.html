@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-<!-- This is core html which is used as a wrapper for "html_single_message.html  -->
 <html lang="en">
 
   <head>
@@ -7219,41 +7217,11 @@ a.list-group-item-danger.active:focus {
       }
     </style>
 
-    <!-- PERCENTAGE-1 gets replaced by actual title of the message by RSS Guard. -->
     <title>
       %1
     </title>
-
-    <!-- Required JavaScript code for RSS Guard. -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        // Do something when message(s) gets loaded.
-      }, false);
-
-      function switchReadStatus(link) {
-        if (link.className == "mark-read") {
-          link.className = "mark-unread";
-          alert(link.getAttribute("message_id") + "-" + "read");
-        } else {
-          link.className = "mark-read";
-          alert(link.getAttribute("message_id") + "-" + "unread");
-        }
-      }
-
-      function switchStarredStatus(link) {
-        if (link.className == "mark-starred") {
-          link.className = "mark-unstarred";
-          alert(link.getAttribute("message_id") + "-" + "starred");
-        } else {
-          link.className = "mark-starred";
-          alert(link.getAttribute("message_id") + "-" + "unstarred");
-        }
-      }
-
-    </script>
   </head>
 
-  <!-- PERCENTAGE-2 gets replaced by contents of message(s). -->
   <body>
     %2
   </body>
