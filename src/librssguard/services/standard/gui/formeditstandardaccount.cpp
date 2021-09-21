@@ -6,10 +6,11 @@
 #include "database/databasequeries.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "services/standard/standardserviceentrypoint.h"
 #include "services/standard/standardserviceroot.h"
 
 FormEditStandardAccount::FormEditStandardAccount(QWidget* parent)
-  : FormAccountDetails(qApp->icons()->miscIcon(QSL("rss")), parent) {}
+  : FormAccountDetails(StandardServiceEntryPoint().icon(), parent) {}
 
 void FormEditStandardAccount::apply() {
   FormAccountDetails::apply();
