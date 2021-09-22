@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>NotificationsEditor</class>
- <widget class="QScrollArea" name="NotificationsEditor">
+ <widget class="QWidget" name="NotificationsEditor">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -9,12 +9,6 @@
     <width>400</width>
     <height>300</height>
    </rect>
-  </property>
-  <property name="frameShape">
-   <enum>QFrame::NoFrame</enum>
-  </property>
-  <property name="widgetResizable">
-   <bool>true</bool>
   </property>
  </widget>
  <resources/>

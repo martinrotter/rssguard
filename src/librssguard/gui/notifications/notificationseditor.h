@@ -3,7 +3,7 @@
 #ifndef NOTIFICATIONSEDITOR_H
 #define NOTIFICATIONSEDITOR_H
 
-#include <QScrollArea>
+#include <QWidget>
 
 #include "ui_notificationseditor.h"
 
@@ -11,7 +11,7 @@
 
 class QVBoxLayout;
 
-class NotificationsEditor : public QScrollArea {
+class NotificationsEditor : public QWidget {
   Q_OBJECT
 
   public:

@@ -8,13 +8,9 @@
 
 #include <QVBoxLayout>
 
-NotificationsEditor::NotificationsEditor(QWidget* parent) : QScrollArea(parent), m_layout(new QVBoxLayout(this)) {
+NotificationsEditor::NotificationsEditor(QWidget* parent) : QWidget(parent), m_layout(new QVBoxLayout(this)) {
   m_ui.setupUi(this);
-
-  QWidget* wdg = new QWidget(this);
-
-  wdg->setLayout(m_layout);
-  setWidget(wdg);
+  setLayout(m_layout);
 }
 
 void NotificationsEditor::loadNotifications(const QList<Notification>& notifications) {
