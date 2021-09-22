@@ -37,16 +37,8 @@
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <source>&amp;Test configuration</source>
-        <translation>&amp;Test configuratie</translation>
-    </message>
-    <message>
         <source>Filter lists</source>
         <translation>Filter lijst</translation>
-    </message>
-    <message>
-        <source>No test executed yet.</source>
-        <translation>Nog geen test uitgevoerd.</translation>
     </message>
     <message>
         <source>Cannot enable AdBlock</source>
@@ -55,10 +47,6 @@
     <message>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
         <translation>Er is een fout in de AdBlock-component en deze kan niet worden ingeschakeld. Controleer het onderstaande foutbericht (of het foutopsporingslogboek van de toepassing) voor meer informatie. </translation>
-    </message>
-    <message>
-        <source>You are good to go.</source>
-        <translation>Je bent klaar om te gaan.</translation>
     </message>
     <message>
         <source>OK!</source>
@@ -76,6 +64,18 @@ Fout: %1</translation>
         <source>ERROR!</source>
         <translation>FOUT!</translation>
     </message>
+    <message>
+        <source>No additional info.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
@@ -90,14 +90,6 @@ Fout: %1</translation>
 </context>
 <context>
     <name>AdBlockManager</name>
-    <message>
-        <source>AdBlock needs to be configured</source>
-        <translation>AdBlock moet worden geconfigureerd</translation>
-    </message>
-    <message>
-        <source>AdBlock component is not configured properly.</source>
-        <translation>AdBlock-component is niet correct geconfigureerd.</translation>
-    </message>
     <message>
         <source>failed to download filter list &apos;%1&apos;</source>
         <translation>kan filterlijst &apos;%1&apos; niet downloaden</translation>
@@ -135,6 +127,22 @@ Fout: %1</translation>
     </message>
     <message>
         <source>Unread articles fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>AdBlock needs to be configured</source>
+        <translation>AdBlock moet worden geconfigureerd</translation>
+    </message>
+    <message>
+        <source>AdBlock component is not configured properly.</source>
+        <translation>AdBlock-component is niet correct geconfigureerd.</translation>
+    </message>
+    <message>
+        <source>Configure now</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -367,6 +375,10 @@ Klik hier om de bovenliggende map te openen.</translation>
     <message>
         <source>Selection of local file cancelled.</source>
         <translation>Selectie van lokaal bestand afgebroken.</translation>
+    </message>
+    <message>
+        <source>Open folder</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -632,6 +644,10 @@ Status: %3</translation>
         <source>Click this to login again.</source>
         <translation>Klik hier om opnieuw in te loggen.</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
@@ -786,10 +802,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>GNU GPL-licentie</translation>
     </message>
     <message>
-        <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation>BSD-licentie (van toepassing op QtSingleApplication-broncode)</translation>
-    </message>
-    <message>
         <source>Licenses page is available only in English language.</source>
         <translation>De licentiepagina is alleen beschikbaar in het Engels.</translation>
     </message>
@@ -820,10 +832,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <source>Settings file</source>
         <translation>Bestandsinstellingen</translation>
-    </message>
-    <message>
-        <source>Database root path</source>
-        <translation>Hoofdpad van databank</translation>
     </message>
     <message>
         <source>FULLY portable</source>
@@ -860,6 +868,10 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <source>CUSTOM</source>
         <translation>AANGEPAST</translation>
+    </message>
+    <message>
+        <source>Database location</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1628,10 +1640,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Switch main &amp;window visibility</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>&amp;Clean all</source>
         <translation>&amp;Alles opschonen</translation>
     </message>
@@ -1742,6 +1750,10 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <source>Fetched &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Minimize (or hide) main window</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2433,6 +2445,10 @@ Installeer het nu.</translation>
         <source>failed to get metadata</source>
         <translation>metadata ophalen mislukt</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GmailServiceRoot</name>
@@ -2672,12 +2688,23 @@ Logintoken verloopt: %2</translation>
         <source>Click this to login again.</source>
         <translation>Klik hier om opnieuw in te loggen.</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GreaderServiceRoot</name>
     <message>
         <source>Other services</source>
         <translation>Andere diensten</translation>
+    </message>
+</context>
+<context>
+    <name>HelpSpoiler</name>
+    <message>
+        <source>View more information on this</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2707,6 +2734,10 @@ Logintoken verloopt: %2</translation>
     <message>
         <source>Labels</source>
         <translation>Labels</translation>
+    </message>
+    <message>
+        <source>No labels found</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3295,13 +3326,13 @@ Logintoken verloopt: %2</translation>
         <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
         <translation>Omleiding via OAuth-applicatie kan niet gestart worden. Misschien heb je niet genoeg rechten.</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>OwnCloudAccountDetails</name>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
-    </message>
     <message>
         <source>URL</source>
         <translation>URL</translation>
@@ -3414,6 +3445,10 @@ Logintoken verloopt: %2</translation>
         <source>articles</source>
         <translation>Artikelen</translation>
     </message>
+    <message>
+        <source>Force execution of server-side feeds update</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3458,10 +3493,6 @@ Tiny Tiny RSS is een open-source web-based nieuwsfeedlezer en -aggregator (RSS/A
 Een API-niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
-        <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
-        <translation>Deze service biedt integratie met standaard online RSS/RDF/Atom-feeds en podcasts.</translation>
-    </message>
-    <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation>De News-app brengt RSS/Atom-feeds samen en maakt deel uit van de Nextcloud-suite. Deze plug-in gebruikt de API van %1.</translation>
     </message>
@@ -3489,10 +3520,6 @@ version by clicking this popup notification.</source>
         <translation>Welkom bij %1.
 
 Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
-    </message>
-    <message>
-        <source>Standard online feeds (RSS/ATOM/JSON)</source>
-        <translation>Standaard online feeds (RSS/ATOM/JSON)</translation>
     </message>
     <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
@@ -3538,6 +3565,14 @@ Feedly is een beveiligde ruimte waar u de onderwerpen en trends die voor u van b
         <source>Google Reader API is used by many online RSS readers.
 
 List of supported readers:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Login failed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3719,10 +3754,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Webbrowser, e-mail en proxy</translation>
     </message>
     <message>
-        <source>Always open links from simple internal text browser in external web browser</source>
-        <translation>Koppelingen in de simpele interne tekstbrowser altijd in externe browser openen</translation>
-    </message>
-    <message>
         <source>External tools</source>
         <translation>Externe applicatie</translation>
     </message>
@@ -3755,20 +3786,24 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Netwerkproxy</translation>
     </message>
     <message>
-        <source>&amp;Add new external tool</source>
-        <translation>&amp;Voeg externe applicatie toe</translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected external tool</source>
-        <translation>&amp;Bewerk geselecteerde externe applicatie</translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected external tool</source>
-        <translation>&amp;Verwijder geselecteerde externe applicatie</translation>
-    </message>
-    <message>
         <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
         <translation>Voer (optionele) parameters in, gescheiden door &quot;%1&quot;:</translation>
+    </message>
+    <message>
+        <source>Always open hyperlinks in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Edit selected tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete selected tool</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3957,10 +3992,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <translation> ms</translation>
     </message>
     <message>
-        <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation>Gebruik aangepaste datum- en tijdopmaak (overschrijft de standaardopmaak van huidige locatie)</translation>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation>&amp;Verander lettertype</translation>
     </message>
@@ -3971,10 +4002,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     <message>
         <source>Height of image attachments</source>
         <translation>Hoogte van bijgesloten afbeeldingen</translation>
-    </message>
-    <message>
-        <source>Height or rows in feed list (-1 = default height)</source>
-        <translation>Hoogte of aantal rijen in feedlijst (-1 = standaardhoogte)</translation>
     </message>
     <message>
         <source>Feed list font</source>
@@ -4009,10 +4036,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Height or rows in article list (-1 = default height)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Article list font</source>
         <translation type="unfinished"/>
     </message>
@@ -4022,10 +4045,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>Feeds &amp; articles</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Fetch articles for all feeds on application startup with initial delay of</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -4056,6 +4075,34 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <source>Keep article selection in the middle of the article list viewport</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Fetch all articles on startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed list row height (-1 = default)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Allow only basic keyboard shortcuts for feed/article list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display attached pictures directly in article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list row height (-1 = default)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use custom date/time format</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ignore changes in article body (text) when article is updated upstream</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4066,10 +4113,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     <message>
         <source>Check for updates on application startup</source>
         <translation>Controleer op updates als RssGuard wordt gestart</translation>
-    </message>
-    <message>
-        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Verwijder ongewenste Trolltech registersleutel (HKCU\\Software\\Trolltech) wanneer RSS Guard wordt afgesloten (Gebruik op eigen risico!)</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
@@ -4246,10 +4289,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
 <context>
     <name>SettingsNotifications</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Notifications</source>
         <translation>Meldingen</translation>
     </message>
@@ -4259,6 +4298,10 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4311,8 +4354,12 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <translation>Selecteer geluidsbestand </translation>
     </message>
     <message>
-        <source>WAV files (*.wav)</source>
-        <translation>Wav bestanden (*.wav)</translation>
+        <source>Volume</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4709,6 +4756,10 @@ Type: %3</source>
         <source> bytes</source>
         <translation> bytes</translation>
     </message>
+    <message>
+        <source>See new version info</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SystemTrayIcon</name>
@@ -4841,10 +4892,6 @@ Ongelezen nieuws: %2</translation>
 </context>
 <context>
     <name>TtRssAccountDetails</name>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
-    </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Sommige feeds vereisen authenticatie, inclusief Gmail feeds. Authenticatiemethodes BASIC, NTLM-2 en DIGEST-MD5 worden ondersteund.</translation>
@@ -4991,6 +5038,10 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force execution of server-side feeds update</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -5217,6 +5268,10 @@ Laatste login: %4</translation>
     <message>
         <source>Open with external tool</source>
         <translation>Met externe applicatie openen</translation>
+    </message>
+    <message>
+        <source>No external tools activated</source>
+        <translation>Geen externe gereedschappen geactiveerd</translation>
     </message>
 </context>
 </TS>

@@ -37,16 +37,8 @@
         <translation>A&amp;juda</translation>
     </message>
     <message>
-        <source>&amp;Test configuration</source>
-        <translation>&amp;Testar configuração</translation>
-    </message>
-    <message>
         <source>Filter lists</source>
         <translation>Listas de filtros</translation>
-    </message>
-    <message>
-        <source>No test executed yet.</source>
-        <translation>Nenhum teste executado ainda.</translation>
     </message>
     <message>
         <source>Cannot enable AdBlock</source>
@@ -55,10 +47,6 @@
     <message>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
         <translation>Há algum erro no componente do AdBlock e ele não pode ser habilitado. Veja a mensagem de erro abaixo (ou registro de depuração do aplicativo) para mais informações.</translation>
-    </message>
-    <message>
-        <source>You are good to go.</source>
-        <translation>Tudo pronto para continuar.</translation>
     </message>
     <message>
         <source>OK!</source>
@@ -76,6 +64,18 @@ Erro: %1</translation>
         <source>ERROR!</source>
         <translation>ERRO!</translation>
     </message>
+    <message>
+        <source>No additional info.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
@@ -90,14 +90,6 @@ Erro: %1</translation>
 </context>
 <context>
     <name>AdBlockManager</name>
-    <message>
-        <source>AdBlock needs to be configured</source>
-        <translation>O AdBlock precisa ser configurado</translation>
-    </message>
-    <message>
-        <source>AdBlock component is not configured properly.</source>
-        <translation>O componente AdBlock não está configurado corretamente.</translation>
-    </message>
     <message>
         <source>failed to download filter list &apos;%1&apos;</source>
         <translation>falha ao baixar lista de filtros &apos;%1&apos;</translation>
@@ -136,6 +128,22 @@ Erro: %1</translation>
     <message>
         <source>Unread articles fetched</source>
         <translation>Artigos não lidos buscados</translation>
+    </message>
+    <message>
+        <source>Go to changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>AdBlock needs to be configured</source>
+        <translation>O AdBlock precisa ser configurado</translation>
+    </message>
+    <message>
+        <source>AdBlock component is not configured properly.</source>
+        <translation>O componente AdBlock não está configurado corretamente.</translation>
+    </message>
+    <message>
+        <source>Configure now</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -367,6 +375,10 @@ Clique para abrir a pasta de destino.</translation>
     <message>
         <source>Selection of local file cancelled.</source>
         <translation>Seleção do arquivo local cancelada.</translation>
+    </message>
+    <message>
+        <source>Open folder</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -632,6 +644,10 @@ Status: %3</translation>
         <source>Click this to login again.</source>
         <translation>Clique nisto para fazer login novamente.</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
@@ -786,10 +802,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Licença GNU GPL</translation>
     </message>
     <message>
-        <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation>Licença BSD (aplica-se ao código fonte do QtSingleApplication)</translation>
-    </message>
-    <message>
         <source>Licenses page is available only in English language.</source>
         <translation>A página de licenças está disponível somente no idioma Inglês.</translation>
     </message>
@@ -820,10 +832,6 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Settings file</source>
         <translation>Arquivo de configurações</translation>
-    </message>
-    <message>
-        <source>Database root path</source>
-        <translation>Caminho da raiz do banco de dados</translation>
     </message>
     <message>
         <source>FULLY portable</source>
@@ -860,6 +868,10 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>CUSTOM</source>
         <translation>PERSONALIZADO</translation>
+    </message>
+    <message>
+        <source>Database location</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1628,10 +1640,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Ver item selecionado no modo &amp;jornal</translation>
     </message>
     <message>
-        <source>Switch main &amp;window visibility</source>
-        <translation>Alterar visibilidade da &amp;janela principal</translation>
-    </message>
-    <message>
         <source>&amp;Clean all</source>
         <translation>&amp;Limpar tudo</translation>
     </message>
@@ -1743,6 +1751,10 @@ ou esta função ainda não foi implementada.</translation>
         <source>Fetched &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation>&apos;%1&apos; buscado</translation>
+    </message>
+    <message>
+        <source>Minimize (or hide) main window</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2444,6 +2456,10 @@ Você pode instalar agora.</translation>
         <source>failed to get metadata</source>
         <translation>falha ao obter metadados</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GmailServiceRoot</name>
@@ -2683,12 +2699,23 @@ Expiração dos tokens de login: %2</translation>
         <source>Click this to login again.</source>
         <translation>Clique nisto para fazer login novamente.</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GreaderServiceRoot</name>
     <message>
         <source>Other services</source>
         <translation>Outros serviços</translation>
+    </message>
+</context>
+<context>
+    <name>HelpSpoiler</name>
+    <message>
+        <source>View more information on this</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2718,6 +2745,10 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <source>Labels</source>
         <translation>Rótulos</translation>
+    </message>
+    <message>
+        <source>No labels found</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3306,13 +3337,13 @@ Expiração dos tokens de login: %2</translation>
         <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
         <translation>Falha ao iniciar escuta de redirecionamento OAuth. Talvez você não possua direitos suficientes.</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>OwnCloudAccountDetails</name>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Forçar execução de atualização do lado do servidor ao atualizar feeds do RSS Guard</translation>
-    </message>
     <message>
         <source>URL</source>
         <translation>URL</translation>
@@ -3425,6 +3456,10 @@ Expiração dos tokens de login: %2</translation>
         <source>articles</source>
         <translation>artigos</translation>
     </message>
+    <message>
+        <source>Force execution of server-side feeds update</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3469,10 +3504,6 @@ O Tiny Tiny RSS é um leitor e agregador de feeds de notícias (RSS/Atom) basead
 Pelo menos o API nível %1 é necessário.</translation>
     </message>
     <message>
-        <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
-        <translation>Este serviço oferece integração com feeds padrão RSS/RDF/ATOM e podcasts.</translation>
-    </message>
-    <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
         <translation>O aplicativo Notícias é um agregador de feed RSS/Atom. Ele é parte da suíte Nextcloud. Este plugin implementa a API %1.</translation>
     </message>
@@ -3501,10 +3532,6 @@ version by clicking this popup notification.</source>
 
 Por favor, veja o NOVO conteúdo incluído nesta
 versão, clicando nesta notificação popup.</translation>
-    </message>
-    <message>
-        <source>Standard online feeds (RSS/ATOM/JSON)</source>
-        <translation>Feeds online padrão (RSS/ATOM/JSON)</translation>
     </message>
     <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
@@ -3553,6 +3580,14 @@ List of supported readers:</source>
         <translation>A API do Google Reader é usada por muitos leitores RSS online.
 
 Lista de leitores suportados:</translation>
+    </message>
+    <message>
+        <source>Login failed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3733,10 +3768,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Navegador &amp; e-mail &amp; proxy</translation>
     </message>
     <message>
-        <source>Always open links from simple internal text browser in external web browser</source>
-        <translation>Sempre abre links do navegador de texto interno simples no navegador externo</translation>
-    </message>
-    <message>
         <source>External tools</source>
         <translation>Ferramentas externas</translation>
     </message>
@@ -3769,20 +3800,24 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Proxy de rede</translation>
     </message>
     <message>
-        <source>&amp;Add new external tool</source>
-        <translation>&amp;Adicionar nova ferramenta externa</translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected external tool</source>
-        <translation>&amp;Editar ferramenta externa selecionada</translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected external tool</source>
-        <translation>E&amp;xcluir ferramenta externa selecionada</translation>
-    </message>
-    <message>
         <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
         <translation>Entre (opcional) os parâmetros separados por &quot;%1&quot;:</translation>
+    </message>
+    <message>
+        <source>Always open hyperlinks in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Edit selected tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete selected tool</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3970,10 +4005,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation> ms</translation>
     </message>
     <message>
-        <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation>Usar formato de data/hora personalizado (substitui o formato ativo carregado)</translation>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation>Mudar &amp;fonte</translation>
     </message>
@@ -3984,10 +4015,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>Height of image attachments</source>
         <translation>Altura dos anexos de imagem</translation>
-    </message>
-    <message>
-        <source>Height or rows in feed list (-1 = default height)</source>
-        <translation>Altura ou linhas na lista de feeds (-1 = altura padrão)</translation>
     </message>
     <message>
         <source>Feed list font</source>
@@ -4022,10 +4049,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Trazer janela do aplicativo para a frente assim que o artigo é aberto no navegador externo</translation>
     </message>
     <message>
-        <source>Height or rows in article list (-1 = default height)</source>
-        <translation>Altura ou linhas na lista de artigos (-1 = altura padrão)</translation>
-    </message>
-    <message>
         <source>Article list font</source>
         <translation>Fonte da lista de artigos</translation>
     </message>
@@ -4036,10 +4059,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>Feeds &amp; articles</source>
         <translation>Feeds &amp; artigos</translation>
-    </message>
-    <message>
-        <source>Fetch articles for all feeds on application startup with initial delay of</source>
-        <translation>Baixar artigos de todos os feeds ao iniciar o aplicativo com atraso inicial de</translation>
     </message>
     <message>
         <source>Auto-fetch articles for all feeds every</source>
@@ -4069,6 +4088,34 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <source>Keep article selection in the middle of the article list viewport</source>
         <translation>Manter seleção de artigos no meio da janela de exibição da lista de artigos</translation>
     </message>
+    <message>
+        <source>Fetch all articles on startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed list row height (-1 = default)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Allow only basic keyboard shortcuts for feed/article list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display attached pictures directly in article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list row height (-1 = default)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use custom date/time format</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ignore changes in article body (text) when article is updated upstream</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4079,10 +4126,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>Check for updates on application startup</source>
         <translation>Verificar por atualizações ao iniciar o aplicativo</translation>
-    </message>
-    <message>
-        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Remover chave de registro Trolltech (HKCU\Software\Trolltech) ao fechar o aplicativo (Use por sua conta e risco!)</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
@@ -4259,10 +4302,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
 <context>
     <name>SettingsNotifications</name>
     <message>
-        <source>Form</source>
-        <translation>Formulário</translation>
-    </message>
-    <message>
         <source>Notifications</source>
         <translation>Notificações</translation>
     </message>
@@ -4273,6 +4312,10 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
         <translation>Você precisa ter o &quot;ícone da área de notificação&quot; ativado para que as janelas de notificação funcionem.</translation>
+    </message>
+    <message>
+        <source>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4324,8 +4367,12 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Selecionar arquivo de som</translation>
     </message>
     <message>
-        <source>WAV files (*.wav)</source>
-        <translation>Arquivos WAV (*.wav)</translation>
+        <source>Volume</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4724,6 +4771,10 @@ Tipo: %3</translation>
         <source> bytes</source>
         <translation> bytes</translation>
     </message>
+    <message>
+        <source>See new version info</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SystemTrayIcon</name>
@@ -4855,10 +4906,6 @@ Notícias não lidas: %2</translation>
 </context>
 <context>
     <name>TtRssAccountDetails</name>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>Forçar execução de atualização do lado do servidor ao atualizar feeds do RSS Guard</translation>
-    </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Alguns feeds necessitam de autenticação, incluindo feeds do GMail. Esquemas de autenticação BASIC, NTLM-2 e DIGEST-MD5 são suportados.</translation>
@@ -5006,6 +5053,10 @@ Notícias não lidas: %2</translation>
     <message>
         <source>Only download newest X articles per feed</source>
         <translation>Somente baixar os X artigos mais recentes por feed</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side feeds update</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -5231,6 +5282,10 @@ Servidor: %2
     <message>
         <source>Open with external tool</source>
         <translation>Abrir com ferramenta externa</translation>
+    </message>
+    <message>
+        <source>No external tools activated</source>
+        <translation>Nenhuma ferramenta externa ativada</translation>
     </message>
 </context>
 </TS>

@@ -37,16 +37,8 @@
         <translation>說明(&amp;H)</translation>
     </message>
     <message>
-        <source>&amp;Test configuration</source>
-        <translation>測試設定(&amp;T)</translation>
-    </message>
-    <message>
         <source>Filter lists</source>
         <translation>篩選器清單</translation>
-    </message>
-    <message>
-        <source>No test executed yet.</source>
-        <translation>尚未做過測試。</translation>
     </message>
     <message>
         <source>Cannot enable AdBlock</source>
@@ -55,10 +47,6 @@
     <message>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
         <translation>AdBlock 元件有某種錯誤，無法啟用。查看下面錯誤訊息 (或應用程式debug.log) 以得更多資訊。</translation>
-    </message>
-    <message>
-        <source>You are good to go.</source>
-        <translation>已準備好！</translation>
     </message>
     <message>
         <source>OK!</source>
@@ -74,6 +62,18 @@ Error: %1</source>
         <source>ERROR!</source>
         <translation>錯誤！</translation>
     </message>
+    <message>
+        <source>No additional info.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
@@ -88,14 +88,6 @@ Error: %1</source>
 </context>
 <context>
     <name>AdBlockManager</name>
-    <message>
-        <source>AdBlock needs to be configured</source>
-        <translation>須設定 AdBlock</translation>
-    </message>
-    <message>
-        <source>AdBlock component is not configured properly.</source>
-        <translation>AdBlock 元件未適當設定。</translation>
-    </message>
     <message>
         <source>failed to download filter list &apos;%1&apos;</source>
         <translation>無法下載篩選規則清單 &apos;%1&apos;</translation>
@@ -134,6 +126,22 @@ Error: %1</source>
     <message>
         <source>Unread articles fetched</source>
         <translation>下載了未讀的文章</translation>
+    </message>
+    <message>
+        <source>Go to changelog</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>AdBlock needs to be configured</source>
+        <translation>須設定 AdBlock</translation>
+    </message>
+    <message>
+        <source>AdBlock component is not configured properly.</source>
+        <translation>AdBlock 元件未適當設定。</translation>
+    </message>
+    <message>
+        <source>Configure now</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -365,6 +373,10 @@ Click here to open parent directory.</source>
     <message>
         <source>Selection of local file cancelled.</source>
         <translation>取消選擇本機檔。</translation>
+    </message>
+    <message>
+        <source>Open folder</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -630,6 +642,10 @@ Status: %3</source>
         <source>Click this to login again.</source>
         <translation>點此重新登入。</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
@@ -662,7 +678,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
-        <translation>未讀/全部消息 之數量。</translation>
+        <translation>未讀/全部文訊 之數量。</translation>
     </message>
 </context>
 <context>
@@ -784,10 +800,6 @@ or this functionality is not implemented yet.</source>
         <translation>GNU GPL 授權書</translation>
     </message>
     <message>
-        <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation>BSD 授權書 (適用於 QtSingleApplication 源碼)</translation>
-    </message>
-    <message>
         <source>Licenses page is available only in English language.</source>
         <translation>授權書只有英文版。</translation>
     </message>
@@ -818,10 +830,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Settings file</source>
         <translation>設定檔</translation>
-    </message>
-    <message>
-        <source>Database root path</source>
-        <translation>資料庫根路徑</translation>
     </message>
     <message>
         <source>FULLY portable</source>
@@ -858,6 +866,10 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>CUSTOM</source>
         <translation>自訂</translation>
+    </message>
+    <message>
+        <source>Database location</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1399,27 +1411,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation>將所選項目中的全部消息 (忽略消息過濾器) 標成已讀。</translation>
+        <translation>將所選項目中的全部文訊 (忽略消息過濾器) 標成已讀。</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation>將所選項目中的全部消息 (忽略消息過濾器) 標成未讀。</translation>
+        <translation>將所選項目中的全部文訊 (忽略文訊過濾規則) 標成未讀。</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation>刪除所選項目中所有消息。</translation>
+        <translation>刪除所選項目中所有文訊。</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation>將所有消息標成已讀。不考慮消息過濾器。</translation>
+        <translation>將所有文訊標成已讀。不考慮文訊過濾規則。</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation>在新的「報紙模式」中顯示所選項目中的全部消息。請注意: 消息不會自動設成已讀。</translation>
+        <translation>在新的「報紙模式」中顯示所選項目中的全部文訊。請注意: 文訊不會自動設成已讀。</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation>刪除每一項目的全部消息。</translation>
+        <translation>刪除每一項目的全部文訊。</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
@@ -1519,11 +1531,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Message &amp;filters</source>
-        <translation>消息篩選器(&amp;F)</translation>
+        <translation>文章篩選規則(&amp;F)</translation>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
-        <translation>清單行交替邊換顏色</translation>
+        <translation>清單行交替上色</translation>
     </message>
     <message>
         <source>Display &amp;documentation</source>
@@ -1531,7 +1543,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Message viewer toolbars</source>
-        <translation>消息檢視工具列</translation>
+        <translation>文訊檢視工具列</translation>
     </message>
     <message>
         <source>Expand/collapse selected item &amp;recursively</source>
@@ -1624,10 +1636,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>View selected item in &amp;newspaper mode</source>
         <translation>以報紙版面檢視所選項目(&amp;N)</translation>
-    </message>
-    <message>
-        <source>Switch main &amp;window visibility</source>
-        <translation>切換主視窗的便視性(&amp;W)</translation>
     </message>
     <message>
         <source>&amp;Clean all</source>
@@ -1741,6 +1749,10 @@ or this functionality is not implemented yet.</source>
         <source>Fetched &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation>下載了 &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Minimize (or hide) main window</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2440,6 +2452,10 @@ You can install it now.</source>
         <source>failed to get metadata</source>
         <translation>無法取得屬性資料</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GmailServiceRoot</name>
@@ -2679,12 +2695,23 @@ Login tokens expiration: %2</source>
         <source>Click this to login again.</source>
         <translation>點此重新登入。</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>GreaderServiceRoot</name>
     <message>
         <source>Other services</source>
         <translation>其他服務</translation>
+    </message>
+</context>
+<context>
+    <name>HelpSpoiler</name>
+    <message>
+        <source>View more information on this</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2714,6 +2741,10 @@ Login tokens expiration: %2</source>
     <message>
         <source>Labels</source>
         <translation>標籤</translation>
+    </message>
+    <message>
+        <source>No labels found</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3302,13 +3333,13 @@ Login tokens expiration: %2</source>
         <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
         <translation>無法開始 OAuth 重導向聽取器。也許您的權限還不夠高。</translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>OwnCloudAccountDetails</name>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>RSS Guard 更新文源時，也強制執行伺服器端更新</translation>
-    </message>
     <message>
         <source>URL</source>
         <translation>URL</translation>
@@ -3421,6 +3452,10 @@ Login tokens expiration: %2</source>
         <source>articles</source>
         <translation>文章</translation>
     </message>
+    <message>
+        <source>Force execution of server-side feeds update</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3458,13 +3493,9 @@ Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggreg
 At least API level %1 is required.</source>
         <translation>此服務會整合 Tiny Tiny RSS 進來。
 
-Tiny Tiny RSS 是一個開源的基於網站 的 RSS/Atom 文源消息閱讀器，設計成可從任何裝置讀新聞，卻有近乎桌面應用程式的體驗。
+Tiny Tiny RSS 是一個開源的基於網站 的 RSS/Atom 文源文章閱讀器，設計成可從任何裝置讀新聞，卻有近乎桌面應用程式的體驗。
 
 至少需要 API 版本級別 %1。</translation>
-    </message>
-    <message>
-        <source>This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.</source>
-        <translation>此服務整合標準線上 RSS/RDF/ATOM 文源和廣播進來。</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
@@ -3497,10 +3528,6 @@ version by clicking this popup notification.</source>
 查閱此版的新鮮事。</translation>
     </message>
     <message>
-        <source>Standard online feeds (RSS/ATOM/JSON)</source>
-        <translation>標準線上文源 (RSS/ATOM/JSON)</translation>
-    </message>
-    <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
@@ -3514,7 +3541,7 @@ Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。<
     </message>
     <message>
         <source>Fetching articles right now</source>
-        <translation>立即下載文章</translation>
+        <translation>下載文章中</translation>
     </message>
     <message>
         <source>Login data refreshed</source>
@@ -3534,7 +3561,7 @@ Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。<
     </message>
     <message>
         <source>New (unread) articles fetched</source>
-        <translation>已下載的新(未讀)的文章</translation>
+        <translation>下載了新(未讀)的文章</translation>
     </message>
     <message>
         <source>XML problem: %1</source>
@@ -3547,6 +3574,14 @@ List of supported readers:</source>
         <translation>Google Reader API 為眾多線上 RSS 閱讀器所用。
 
 所支援的閱讀器清單:</translation>
+    </message>
+    <message>
+        <source>Login failed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3665,7 +3700,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation>注意，&quot;%1&quot; (不包括雙引號) 存放所選消息的 URL 的變元欄位。</translation>
+        <translation>注意，&quot;%1&quot; (不包括雙引號) 存放所選文訊的 URL 的變元欄位。</translation>
     </message>
     <message>
         <source>External e-mail client</source>
@@ -3692,8 +3727,8 @@ List of supported readers:</source>
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
         <translation>變元欄位: 
- • %1 - 所選消息的標題，
- • %2 - 所選消息的正文。</translation>
+ • %1 - 所選文訊的標題，
+ • %2 - 所選文訊的正文。</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
@@ -3727,16 +3762,12 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>網路瀏覽器 &amp; 電子郵件 &amp; 代理伺服器</translation>
     </message>
     <message>
-        <source>Always open links from simple internal text browser in external web browser</source>
-        <translation>總是使用外部瀏覽器開啟內部簡易文字瀏覽器中的連結</translation>
-    </message>
-    <message>
         <source>External tools</source>
         <translation>外部工具</translation>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation>於此頁， 可設定用於開啟所選消息的 URL 的一些外部工具。</translation>
+        <translation>於此頁， 可設定用於開啟所選文訊的 URL 的一些外部工具。</translation>
     </message>
     <message>
         <source>Executable</source>
@@ -3763,20 +3794,24 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>網路代理伺服器</translation>
     </message>
     <message>
-        <source>&amp;Add new external tool</source>
-        <translation>新增外部工具(&amp;A)</translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected external tool</source>
-        <translation>編輯外部工具(&amp;E)</translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected external tool</source>
-        <translation>刪除所選外部工具(&amp;D)</translation>
-    </message>
-    <message>
         <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
         <translation>輸入以&quot;%1&quot;分隔的(選項)參元:</translation>
+    </message>
+    <message>
+        <source>Always open hyperlinks in external web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Edit selected tool</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete selected tool</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3808,7 +3843,7 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>使用載入記憶體的資料庫有不少優點與缺點。打開此功能前，請確認您熟知這些。
 優點：
 &lt;ul&gt;
-&lt;li&gt;文源/消息的運作更快 (特別在顯示成千上萬條消息時)&lt;/li&gt;
+&lt;li&gt;文源/文訊的運作更快 (特別在顯示成千上萬條文訊時)&lt;/li&gt;
 &lt;li&gt;整個資料庫儲存於記憶體，因此硬碟運作較少。&lt;/li&gt;
 &lt;/ul&gt;
 缺點：
@@ -3965,10 +4000,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation> ms</translation>
     </message>
     <message>
-        <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation>使用自訂日期/時間格式 (覆蓋從系統的地區設定載入的格式)</translation>
-    </message>
-    <message>
         <source>&amp;Change font</source>
         <translation>變更字型(&amp;C)</translation>
     </message>
@@ -3979,10 +4010,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Height of image attachments</source>
         <translation>圖像附件的高度</translation>
-    </message>
-    <message>
-        <source>Height or rows in feed list (-1 = default height)</source>
-        <translation>文源清單的行高 (-1 = 預設高度)</translation>
     </message>
     <message>
         <source>Feed list font</source>
@@ -4017,10 +4044,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>一旦文章開啟於外部瀏覽器，就將 RSS Guard 視窗設到前景</translation>
     </message>
     <message>
-        <source>Height or rows in article list (-1 = default height)</source>
-        <translation>文章清單的行高 (-1 = 預設高度)</translation>
-    </message>
-    <message>
         <source>Article list font</source>
         <translation>文章清單字型</translation>
     </message>
@@ -4031,10 +4054,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Feeds &amp; articles</source>
         <translation>文源與文章</translation>
-    </message>
-    <message>
-        <source>Fetch articles for all feeds on application startup with initial delay of</source>
-        <translation>於 RSS Guard 啟動時，延遲指定的時間，下載全部文源的文章</translation>
     </message>
     <message>
         <source>Auto-fetch articles for all feeds every</source>
@@ -4064,6 +4083,34 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Keep article selection in the middle of the article list viewport</source>
         <translation>使所選消息在消息清單居中</translation>
     </message>
+    <message>
+        <source>Fetch all articles on startup with initial delay of</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed list row height (-1 = default)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Allow only basic keyboard shortcuts for feed/article list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Display attached pictures directly in article</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list row height (-1 = default)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use custom date/time format</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ignore changes in article body (text) when article is updated upstream</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4074,10 +4121,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Check for updates on application startup</source>
         <translation>於應用程式啟動時檢查更新</translation>
-    </message>
-    <message>
-        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>應用程式結束時，移除冗餘的 Trolltech 登錄鍵 (HKCU\Software\Trolltech) (風險自負!)</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
@@ -4254,10 +4297,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsNotifications</name>
     <message>
-        <source>Form</source>
-        <translation>表單</translation>
-    </message>
-    <message>
         <source>Notifications</source>
         <translation>通知</translation>
     </message>
@@ -4268,6 +4307,10 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
         <translation>一定得先啟動 &quot;系統匣圖示&quot;，才會跳出通知。</translation>
+    </message>
+    <message>
+        <source>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4319,8 +4362,12 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>選擇聲音檔</translation>
     </message>
     <message>
-        <source>WAV files (*.wav)</source>
-        <translation>WAV 檔(*.wav)</translation>
+        <source>Volume</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4719,6 +4766,10 @@ Type: %3</source>
         <source> bytes</source>
         <translation> bytes</translation>
     </message>
+    <message>
+        <source>See new version info</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SystemTrayIcon</name>
@@ -4850,10 +4901,6 @@ Unread news: %2</source>
 </context>
 <context>
     <name>TtRssAccountDetails</name>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation>RSS Guard 更新文源時，也強制執行伺服器端更新</translation>
-    </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>某些文源，包括 Gmail 文源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 的認證架構。</translation>
@@ -5001,6 +5048,10 @@ Unread news: %2</source>
     <message>
         <source>Only download newest X articles per feed</source>
         <translation>僅下載文源的前 X 篇最新文章</translation>
+    </message>
+    <message>
+        <source>Force execution of server-side feeds update</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -5226,6 +5277,10 @@ Last login on: %4</source>
     <message>
         <source>Open with external tool</source>
         <translation>使用外部工具開啟</translation>
+    </message>
+    <message>
+        <source>No external tools activated</source>
+        <translation>未啟動外部工具</translation>
     </message>
 </context>
 </TS>
