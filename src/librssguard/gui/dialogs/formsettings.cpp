@@ -19,6 +19,9 @@
 #include "gui/settings/settingsnotifications.h"
 #include "gui/settings/settingsshortcuts.h"
 
+#include <QPainter>
+#include <QScrollBar>
+
 FormSettings::FormSettings(QWidget& parent)
   : QDialog(&parent), m_settings(*qApp->settings()) {
   m_ui.setupUi(this);
@@ -131,16 +134,33 @@ void FormSettings::cancelSettings() {
   }
 }
 
+class Scr : public QScrollBar {
+  public:
+    explicit Scr(QWidget* parent) : QScrollBar(parent) {}
+
+  protected:
+    virtual void paintEvent(QPaintEvent* event) {
+      QScrollBar::paintEvent(event);
+
+      QPainter p(this);
+
+      p.setPen(QPen(Qt::GlobalColor::gray, 0.7));
+
+      p.drawRect(rect().marginsRemoved(QMargins(0, 0, 1, 1)));
+    }
+
+};
+
 void FormSettings::addSettingsPanel(SettingsPanel* panel) {
   m_ui.m_listSettings->addItem(panel->title());
   m_panels.append(panel);
 
   QScrollArea* scr = new QScrollArea(m_ui.m_stackedSettings);
 
+  //scr->setHorizontalScrollBar(new Scr(scr));
+  //scr->setVerticalScrollBar(new Scr(scr));
   scr->setWidgetResizable(true);
-  scr->setFrameShape(QFrame::Shape::NoFrame);
-
-  //panel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+  scr->setFrameShape(QFrame::Shape::Box);
   scr->setWidget(panel);
 
   m_ui.m_stackedSettings->addWidget(scr);

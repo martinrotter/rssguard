@@ -104,10 +104,14 @@ MessageBrowser::MessageBrowser(bool should_resize_to_fit, QWidget* parent)
   reloadFontSettings();
 }
 
-void MessageBrowser::clear() {
+void MessageBrowser::clear(bool also_hide) {
   m_txtBrowser->clear();
   m_pictures.clear();
   m_searchWidget->hide();
+
+  if (also_hide) {
+    hide();
+  }
 }
 
 QString MessageBrowser::prepareHtmlForMessage(const Message& message) {

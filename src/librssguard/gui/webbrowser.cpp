@@ -136,10 +136,13 @@ void WebBrowser::resetZoom() {
   m_webView->resetWebPageZoom(true);
 }
 
-void WebBrowser::clear() {
+void WebBrowser::clear(bool also_hide) {
   m_webView->clear();
   m_messages.clear();
-  hide();
+
+  if (also_hide) {
+    hide();
+  }
 }
 
 void WebBrowser::loadUrl(const QString& url) {

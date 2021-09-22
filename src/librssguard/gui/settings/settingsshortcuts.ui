@@ -11,18 +11,6 @@
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
-   <property name="topMargin">
-    <number>0</number>
-   </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
-   <property name="bottomMargin">
-    <number>0</number>
-   </property>
    <item>
     <widget class="QScrollArea" name="m_scrollShortcuts">
      <property name="frameShape">
@@ -36,8 +24,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>785</width>
-        <height>526</height>
+        <width>767</width>
+        <height>508</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_4">

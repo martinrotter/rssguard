@@ -10,19 +10,7 @@
     <height>148</height>
    </rect>
   </property>
-  <layout class="QFormLayout" name="formLayout">
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
-   <property name="topMargin">
-    <number>0</number>
-   </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
-   <property name="bottomMargin">
-    <number>0</number>
-   </property>
+  <layout class="QFormLayout">
    <item row="0" column="0">
     <widget class="QCheckBox" name="m_checkAutostart">
      <property name="text">

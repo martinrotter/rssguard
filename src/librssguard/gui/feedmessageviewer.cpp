@@ -50,8 +50,6 @@ FeedMessageViewer::FeedMessageViewer(QWidget* parent) : TabContent(parent), m_to
   m_messagesBrowser(new MessagePreviewer(false, this)) {
   initialize();
   initializeViews();
-
-  //loadMessageViewerFonts();
   createConnections();
 }
 

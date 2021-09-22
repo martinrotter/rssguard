@@ -44,7 +44,7 @@ class WebBrowser : public TabContent {
     void decreaseZoom();
     void resetZoom();
 
-    void clear();
+    void clear(bool also_hide);
     void loadUrl(const QString& url);
     void loadUrl(const QUrl& url);
     void loadMessages(const QList<Message>& messages, RootItem* root);

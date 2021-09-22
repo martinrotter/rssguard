@@ -70,8 +70,6 @@ MessagePreviewer::MessagePreviewer(bool should_resize_to_fit, QWidget* parent)
 
   createConnections();
   m_actionSwitchImportance->setCheckable(true);
-
-  //reloadFontSettings();
   clear();
 }
 
@@ -99,9 +97,8 @@ WebBrowser* MessagePreviewer::webBrowser() const {
 
 void MessagePreviewer::clear() {
   updateLabels(true);
-  m_txtMessage->clear();
+  m_txtMessage->clear(false);
   hide();
-
   m_root.clear();
   m_message = Message();
 }

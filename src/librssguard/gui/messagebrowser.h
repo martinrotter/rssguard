@@ -26,7 +26,7 @@ class MessageBrowser : public QWidget {
 
   public slots:
     void setVerticalScrollBarPosition(double pos);
-    void clear();
+    void clear(bool also_hide);
     void reloadFontSettings();
     void loadMessage(const Message& message, RootItem* root);
 
