@@ -66,15 +66,15 @@ Erro: %1</translation>
     </message>
     <message>
         <source>No additional info.</source>
-        <translation type="unfinished"/>
+        <translation>Nenhuma informação adicional.</translation>
     </message>
     <message>
         <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
-        <translation type="unfinished"/>
+        <translation>Parece que o seu AdBlock está funcionando corretamente, mas aguarde alguns segundos para ter certeza.</translation>
     </message>
     <message>
         <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.</source>
-        <translation type="unfinished"/>
+        <translation>Ocorreu um erro. Verifique o log do aplicativo para mais detalhes e consulte a documentação online. Também certifique-se de que Node.js está instalado.</translation>
     </message>
 </context>
 <context>
@@ -131,7 +131,7 @@ Erro: %1</translation>
     </message>
     <message>
         <source>Go to changelog</source>
-        <translation type="unfinished"/>
+        <translation>Ir para registro de alterações</translation>
     </message>
     <message>
         <source>AdBlock needs to be configured</source>
@@ -143,7 +143,7 @@ Erro: %1</translation>
     </message>
     <message>
         <source>Configure now</source>
-        <translation type="unfinished"/>
+        <translation>Configurar agora</translation>
     </message>
 </context>
 <context>
@@ -378,7 +378,7 @@ Clique para abrir a pasta de destino.</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation type="unfinished"/>
+        <translation>Abrir pasta</translation>
     </message>
 </context>
 <context>
@@ -646,7 +646,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Entrar</translation>
     </message>
 </context>
 <context>
@@ -871,7 +871,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Database location</source>
-        <translation type="unfinished"/>
+        <translation>Local do banco de dados</translation>
     </message>
 </context>
 <context>
@@ -1754,7 +1754,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Minimize (or hide) main window</source>
-        <translation type="unfinished"/>
+        <translation>Minimizar (ou ocultar) janela principal</translation>
     </message>
 </context>
 <context>
@@ -2458,7 +2458,7 @@ Você pode instalar agora.</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Entrar</translation>
     </message>
 </context>
 <context>
@@ -2701,7 +2701,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Entrar</translation>
     </message>
 </context>
 <context>
@@ -2715,7 +2715,7 @@ Expiração dos tokens de login: %2</translation>
     <name>HelpSpoiler</name>
     <message>
         <source>View more information on this</source>
-        <translation type="unfinished"/>
+        <translation>Veja mais informações sobre este</translation>
     </message>
 </context>
 <context>
@@ -2748,7 +2748,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>No labels found</source>
-        <translation type="unfinished"/>
+        <translation>Nenhum rótulo encontrado</translation>
     </message>
 </context>
 <context>
@@ -3339,7 +3339,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Entrar</translation>
     </message>
 </context>
 <context>
@@ -3458,7 +3458,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Force execution of server-side feeds update</source>
-        <translation type="unfinished"/>
+        <translation>Forçar execução de atualização de feeds do lado do servidor</translation>
     </message>
 </context>
 <context>
@@ -3583,11 +3583,11 @@ Lista de leitores suportados:</translation>
     </message>
     <message>
         <source>Login failed</source>
-        <translation type="unfinished"/>
+        <translation>Falha ao entrar</translation>
     </message>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
-        <translation type="unfinished"/>
+        <translation>Este serviço oferece integração com feeds padrão RSS/RDF/ATOM/JSON e podcasts.</translation>
     </message>
 </context>
 <context>
@@ -3805,19 +3805,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open hyperlinks in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Sempre abrir links no navegador externo</translation>
     </message>
     <message>
         <source>&amp;Add tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Adicionar ferramenta</translation>
     </message>
     <message>
         <source>&amp;Edit selected tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Editar ferramenta selecionada</translation>
     </message>
     <message>
         <source>&amp;Delete selected tool</source>
-        <translation type="unfinished"/>
+        <translation>E&amp;xcluir ferramenta selecionada</translation>
     </message>
 </context>
 <context>
@@ -4090,31 +4090,31 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Fetch all articles on startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Baixar artigos de todos os artigos ao iniciar com atraso inicial de</translation>
     </message>
     <message>
         <source>Feed list row height (-1 = default)</source>
-        <translation type="unfinished"/>
+        <translation>Altura da linha da lista de feeds (-1 = padrão)</translation>
     </message>
     <message>
         <source>Allow only basic keyboard shortcuts for feed/article list</source>
-        <translation type="unfinished"/>
+        <translation>Permitir apenas atalhos de teclado básicos para lista de feeds/artigos</translation>
     </message>
     <message>
         <source>Display attached pictures directly in article</source>
-        <translation type="unfinished"/>
+        <translation>Exibir fotos anexadas diretamente no artigo</translation>
     </message>
     <message>
         <source>Article list row height (-1 = default)</source>
-        <translation type="unfinished"/>
+        <translation>Altura da linha da lista de artigos (-1 = padrão)</translation>
     </message>
     <message>
         <source>Use custom date/time format</source>
-        <translation type="unfinished"/>
+        <translation>Usar formato de data/hora personalizado</translation>
     </message>
     <message>
         <source>Ignore changes in article body (text) when article is updated upstream</source>
-        <translation type="unfinished"/>
+        <translation>Ignorar alterações no corpo do artigo (texto) quando o artigo é atualizado upstream</translation>
     </message>
 </context>
 <context>
@@ -4315,7 +4315,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
-        <translation type="unfinished"/>
+        <translation>Existem alguns sons integrados. Basta começar a digitar &quot;:&quot; e eles aparecerão.</translation>
     </message>
 </context>
 <context>
@@ -4368,11 +4368,11 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Volume</source>
-        <translation type="unfinished"/>
+        <translation>Volume</translation>
     </message>
     <message>
         <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
-        <translation type="unfinished"/>
+        <translation>Arquivos WAV (*.wav);;Arquivos MP3 (*.mp3)</translation>
     </message>
 </context>
 <context>
@@ -4773,7 +4773,7 @@ Tipo: %3</translation>
     </message>
     <message>
         <source>See new version info</source>
-        <translation type="unfinished"/>
+        <translation>Ver informações da nova versão</translation>
     </message>
 </context>
 <context>
@@ -5056,7 +5056,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>Force execution of server-side feeds update</source>
-        <translation type="unfinished"/>
+        <translation>Forçar execução de atualização de feeds do lado do servidor</translation>
     </message>
 </context>
 <context>

@@ -133,11 +133,11 @@ Error: %1</source>
     </message>
     <message>
         <source>AdBlock needs to be configured</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock skal indstilles</translation>
     </message>
     <message>
         <source>AdBlock component is not configured properly.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlok-komponent er ikke indstillet korrekt.</translation>
     </message>
     <message>
         <source>Configure now</source>
