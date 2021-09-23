@@ -1289,8 +1289,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                     (!ignore_contents_changes && message.m_contents != contents_existing_message);
 
       if (cond_1 || cond_2 || cond_3 || force_update) {
-        auto aa = message.m_created.toMSecsSinceEpoch();
-
         // Message exists and is changed, update it.
         query_update.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_update.bindValue(QSL(":is_read"), int(message.m_isRead));

@@ -787,7 +787,7 @@
   </action>
   <action name="m_actionMessageFilters">
    <property name="text">
-    <string>Message &amp;filters</string>
+    <string>Article &amp;filters</string>
    </property>
   </action>
   <action name="m_actionShowTreeBranches">
