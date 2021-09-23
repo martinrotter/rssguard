@@ -49,6 +49,7 @@ FormSettings::FormSettings(QWidget& parent)
   addSettingsPanel(new SettingsDownloads(&m_settings, this));
   addSettingsPanel(new SettingsFeedsMessages(&m_settings, this));
 
+  m_ui.m_listSettings->setMaximumWidth(m_ui.m_listSettings->sizeHintForColumn(0) + 4 * m_ui.m_listSettings->frameWidth());
   m_ui.m_listSettings->setCurrentRow(0);
 
   resize(qApp->settings()->value(GROUP(GUI), GUI::SettingsWindowInitialSize, size()).toSize());
