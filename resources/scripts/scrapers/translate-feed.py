@@ -9,7 +9,7 @@
 #   curl 'https://phys.org/rss-feed/' | python ./translate-feed.py "en" "pt_BR" "true"
 #
 # You must provide three command line arguments:
-#   translate-feed.py [FROM-LANGUAGE] [TO-LANGUAGE] [RUN-PARALLEL]
+#   translate-feed.py [FROM-LANGUAGE] [TO-LANGUAGE] [RUN-PARALLEL] [FEED-ENCODING (optional)]
 
 import json
 import re
