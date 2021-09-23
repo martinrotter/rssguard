@@ -13,12 +13,14 @@
 
 import json
 import re
+import io
 import sys
 import time
 import html
 import requests
 import distutils.util
 import xml.etree.ElementTree as ET
+import itertools as IT
 from googletrans import Translator
 from bs4 import BeautifulSoup
 
@@ -37,7 +39,18 @@ if parallel:
 
 sys.stdin.reconfigure(encoding = src_enc)
 rss_data = sys.stdin.read()
-rss_document = ET.fromstring(rss_data)
+
+#print(rss_data)
+
+try:
+  rss_document = ET.fromstring(rss_data)
+except ET.ParseError as err:
+  lineno, column = err.position
+  line = next(IT.islice(io.StringIO(rss_data), lineno))
+  caret = '{:=>{}}'.format('^', column)
+  err.msg = '{}\n{}\n{}'.format(err, line, caret)
+  raise 
+
 translator = Translator()
 
 atom_ns = {"ns": "http://www.w3.org/2005/Atom"}
@@ -109,4 +122,7 @@ else:
   for article in rss_document.findall(".//ns:entry", atom_ns):
     process_article(article)
 
-print(ET.tostring(rss_document, encoding = "unicode"))
+out_xml = ET.tostring(rss_document)
+out_decoded_xml = out_xml.decode()
+
+print(out_decoded_xml)
