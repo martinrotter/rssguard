@@ -681,7 +681,9 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, co
   auto* parent = new RootItem();
 
   // Chop the "api/" from the end of the address.
-  qDebug("TT-RSS: Base address to '%s' to get feed icons.", qPrintable(base_address));
+  qDebugNN << LOGSEC_TTRSS
+           << "Base address to get feed icons is"
+           << QUOTE_W_SPACE_DOT(base_address);
 
   if (status() == TTRSS_API_STATUS_OK) {
     // We have data, construct object tree according to data.
@@ -731,8 +733,6 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, co
           // We have feed.
           auto* feed = new TtRssFeed();
 
-          IOFactory::writeFile("aa.json", QJsonDocument(item).toJson());
-
           if (obtain_icons) {
             QString icon_path = item[QSL("icon")].type() == QJsonValue::String ? item[QSL("icon")].toString() : QString();
 
@@ -740,12 +740,18 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, co
               // Chop the "api/" suffix out and append
               QString full_icon_address = base_address + QL1C('/') + icon_path;
               QIcon icon;
+              auto res = NetworkFactory::downloadIcon({ { full_icon_address, true } },
+                                                      DOWNLOAD_TIMEOUT,
+                                                      icon,
+                                                      proxy);
 
-              if (NetworkFactory::downloadIcon({ { full_icon_address, true } },
-                                               DOWNLOAD_TIMEOUT,
-                                               icon,
-                                               proxy) == QNetworkReply::NoError) {
+              if (res == QNetworkReply::NoError) {
                 feed->setIcon(icon);
+              }
+              else {
+                qWarningNN << LOGSEC_TTRSS
+                           << "Failed to download icon with error"
+                           << QUOTE_W_SPACE_DOT(res);
               }
             }
           }
