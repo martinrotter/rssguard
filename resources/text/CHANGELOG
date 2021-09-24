@@ -6,8 +6,9 @@ Added:
 * Skins were reverted to 4.0.1 as they were very buggy. Previous skins were stable and will be used for time to come. I will make brand new polished skin in some next release which will not replace existing skins but will be added.
 
 Fixed:
-* Settings dialog now remembers its size and also adds scrollbars where needed. (#493)
-* Updated documentation.
+* Settings dialog now remembers its size and also adds scrollbars where needed. Also was polished a bit. (#493)
+* Icon of "standard RSS/ATOM/..." service/account was updated to be "RSS" icon, not "RSS Guard" icon and also is preselected in "Add account" dialog.
+* Updated documentation and translations.
 * "Written by" bottom section of article preview now uses same date/time format as article list.
 * Code refactored.
 * Icons are now properly loaded when fetching list of feeds in Tiny Tiny RSS.
