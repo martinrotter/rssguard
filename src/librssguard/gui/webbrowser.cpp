@@ -161,7 +161,7 @@ void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {
 }
 
 void WebBrowser::loadMessage(const Message& message, RootItem* root) {
-  loadMessages(QList<Message>() << message, root);
+  loadMessages({ message }, root);
 }
 
 bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {

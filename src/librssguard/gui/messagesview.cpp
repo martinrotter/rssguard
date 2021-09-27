@@ -221,7 +221,14 @@ void MessagesView::setupAppearance() {
 void MessagesView::focusInEvent(QFocusEvent* event) {
   QTreeView::focusInEvent(event);
 
-  if (currentIndex().isValid()) {
+  qDebugNN << LOGSEC_GUI
+           << "Message list got focus with reason"
+           << QUOTE_W_SPACE_DOT(event->reason());
+
+  if ((event->reason()== Qt::FocusReason::TabFocusReason ||
+       event->reason()== Qt::FocusReason::BacktabFocusReason ||
+       event->reason()== Qt::FocusReason::ShortcutFocusReason) &&
+      currentIndex().isValid()) {
     selectionModel()->select(currentIndex(), QItemSelectionModel::SelectionFlag::Select | QItemSelectionModel::SelectionFlag::Rows);
   }
 }
