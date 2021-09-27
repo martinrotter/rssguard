@@ -143,7 +143,7 @@ void FormSettings::addSettingsPanel(SettingsPanel* panel) {
   QScrollArea* scr = new QScrollArea(m_ui.m_stackedSettings);
 
   scr->setWidgetResizable(true);
-  scr->setFrameShape(QFrame::Shape::Box);
+  scr->setFrameShape(QFrame::Shape::StyledPanel);
   scr->setWidget(panel);
 
   m_ui.m_stackedSettings->addWidget(scr);
