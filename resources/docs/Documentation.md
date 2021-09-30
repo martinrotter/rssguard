@@ -158,6 +158,7 @@ Note that `MessageObject` attributes which can be synchronized back to service a
 | `SameAuthor` | 4 | Check if message has same author as some another messages. |
 | `SameDateCreated` | 8 | Check if message has same date of creation as some another messages. |
 | `AllFeedsSameAccount` | 16 | Perform the check across all feeds from your account, not just "current" feed. |
+| `SameCustomId` | 32 | Check if message with same custom ID exists in RSS Guard's DB. |
 
 #### `utils` object
 | Method | How to call | Description |

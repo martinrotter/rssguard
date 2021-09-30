@@ -44,6 +44,11 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicationAttribute
     bind_values.append({ QSL(":date_created"), created().toMSecsSinceEpoch() });
   }
 
+  if ((attribute_check& DuplicationAttributeCheck::SameCustomId) == DuplicationAttributeCheck::SameCustomId) {
+    where_clauses.append(QSL("custom_id = :custom_id"));
+    bind_values.append({ QSL(":custom_id"), customId() });
+  }
+
   where_clauses.append(QSL("account_id = :account_id"));
   bind_values.append({ QSL(":account_id"), accountId() });
 
@@ -217,6 +222,14 @@ QString MessageObject::feedCustomId() const {
 
 int MessageObject::accountId() const {
   return m_accountId;
+}
+
+QString MessageObject::customId() const {
+  return m_message->m_customId;
+}
+
+int MessageObject::id() const {
+  return m_message->m_id;
 }
 
 QList<Label*> MessageObject::assignedLabels() const {
