@@ -78,6 +78,14 @@
     <file>skins/vergilius/metadata.xml</file>
     <file>skins/vergilius/theme.css</file>
 
+    <file>skins/nudus/html_adblocked.html</file>
+    <file>skins/nudus/html_enclosure_every.html</file>
+    <file>skins/nudus/html_enclosure_image.html</file>
+    <file>skins/nudus/html_single_message.html</file>
+    <file>skins/nudus/html_wrapper.html</file>
+    <file>skins/nudus/metadata.xml</file>
+    <file>skins/nudus/theme.css</file>
+
     <file>initial_feeds/feeds-en.opml</file>
 
     <file>desktop/com.github.rssguard.desktop</file>
