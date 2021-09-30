@@ -23,19 +23,17 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   m_ui->m_editorFeedsToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorMessagesToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorFeedsToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
-  m_ui->m_treeSkins->setColumnCount(4);
+  m_ui->m_treeSkins->setColumnCount(3);
   m_ui->m_treeSkins->setHeaderHidden(false);
   m_ui->m_treeSkins->setHeaderLabels(QStringList()
                                      << /*: Skin list name column. */ tr("Name")
                                      << /*: Version column of skin list. */ tr("Version")
-                                     << tr("Author")
-                                     << tr("E-mail"));
+                                     << tr("Author"));
 
   // Setup skins.
   m_ui->m_treeSkins->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
-  m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeMode::ResizeToContents);
 
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::requireRestart);
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
@@ -133,8 +131,7 @@ void SettingsGui::loadSettings() {
     QTreeWidgetItem* new_item = new QTreeWidgetItem(QStringList() <<
                                                     skin.m_visibleName <<
                                                     skin.m_version <<
-                                                    skin.m_author <<
-                                                    skin.m_email);
+                                                    skin.m_author);
 
     new_item->setData(0, Qt::UserRole, QVariant::fromValue(skin));
 
@@ -236,7 +233,7 @@ void SettingsGui::saveSettings() {
 
   // Save and activate new skin.
   if (!m_ui->m_treeSkins->selectedItems().isEmpty()) {
-    const Skin active_skin = m_ui->m_treeSkins->currentItem()->data(0, Qt::UserRole).value<Skin>();
+    const Skin active_skin = m_ui->m_treeSkins->currentItem()->data(0, Qt::ItemDataRole::UserRole).value<Skin>();
 
     if (qApp->skins()->selectedSkinName() != active_skin.m_baseName) {
       qApp->skins()->setCurrentSkinName(active_skin.m_baseName);

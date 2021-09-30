@@ -108,9 +108,6 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       // Obtain author.
       skin.m_author = skin_node.namedItem(QSL("author")).namedItem(QSL("name")).toElement().text();
 
-      // Obtain email.
-      skin.m_email = skin_node.namedItem(QSL("author")).namedItem(QSL("email")).toElement().text();
-
       // Obtain version.
       skin.m_version = skin_node.attributes().namedItem(QSL("version")).toAttr().value();
 
@@ -167,7 +164,7 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
 
       if (ok != nullptr) {
         *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&
-              !skin.m_baseName.isEmpty() && !skin.m_email.isEmpty() &&
+              !skin.m_baseName.isEmpty() &&
               !skin.m_layoutMarkup.isEmpty();
       }
 
