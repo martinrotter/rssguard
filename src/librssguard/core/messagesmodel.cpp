@@ -343,15 +343,15 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
         return QVariant();
       }
-      else if (idx.column() == MSG_DB_SCORE_INDEX) {
+      else {
         QVariant dta = m_cache->containsData(idx.row())
                          ? m_cache->data(idx)
                          : QSqlQueryModel::data(idx);
+        QString txt = dta.toString().size() > 300
+                      ? (dta.toString().left(300) + QSL("..."))
+                      : dta.toString().left(300);
 
-        return dta.toString();
-      }
-      else {
-        return QVariant();
+        return txt;
       }
     }
 
