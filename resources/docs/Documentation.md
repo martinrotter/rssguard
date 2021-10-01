@@ -31,7 +31,7 @@ Welcome to RSS Guard documentation. You can find everything about the applicatio
 <hr style="margin: 40px;"/>
 
 ## <a id="wirss"></a>What is RSS Guard?
-RSS Guard is desktop [open-source](https://en.wikipedia.org/wiki/Open_source) [cross-platform](#sos) [multi-protocol](#sfr) feed reader. It is able to fetch basically all known feed formats, including RSS/RDF/ATOM/JSON. RSS Guard is developed on top of the [Qt library](http://qt-project.org).
+RSS Guard is desktop [open-source](https://en.wikipedia.org/wiki/Open_source) [cross-platform](#sos) [multi-protocol](#sfr) feed reader. It is able to fetch basically all known feed formats, including RSS/RDF/ATOM/JSON. RSS Guard is developed on top of the [Qt library](http://qt-project.org). There is a Discord [channel](https://discord.gg/7xbVMPPNqH) for users to communicate.
 
 ## <a id="dwn"></a>Downloads
 Official place to download RSS Guard is at [Github Releases](https://github.com/martinrotter/rssguard/releases). You can also download development (beta) [build](https://github.com/martinrotter/rssguard/releases/tag/devbuild) which is automatically updated everytime source code is updated.
