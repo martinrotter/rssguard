@@ -344,14 +344,12 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         return QVariant();
       }
       else {
-        QVariant dta = m_cache->containsData(idx.row())
-                         ? m_cache->data(idx)
-                         : QSqlQueryModel::data(idx);
-        QString txt = dta.toString().size() > 300
-                      ? (dta.toString().left(300) + QSL("..."))
-                      : dta.toString().left(300);
-
-        return txt;
+        if (idx.column() == MSG_DB_SCORE_INDEX) {
+          return data(idx, Qt::ItemDataRole::EditRole);
+        }
+        else {
+          return data(idx, Qt::ItemDataRole::DisplayRole);
+        }
       }
     }
 
