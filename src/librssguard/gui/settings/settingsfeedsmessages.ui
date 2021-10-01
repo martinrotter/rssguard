@@ -460,7 +460,7 @@
        <item row="1" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cmbIgnoreContentsChanges">
          <property name="text">
-          <string>Ignore changes in article body (text) when article is updated upstream</string>
+          <string>Ignore changes in article body when new articles are being fetched</string>
          </property>
         </widget>
        </item>
