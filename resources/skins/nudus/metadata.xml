@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<skin version="0.01">
+  <author>
+    <name>Maki Blackwell</name>
+  </author>
+  <palette>
+    <color key="1">#3A4EE4</color>
+    <color key="2">#E43A4E</color>
+    <color key="3">#4EE43A</color>
+  </palette>
+</skin>
