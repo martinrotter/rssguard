@@ -91,7 +91,9 @@
 
 #define EXECUTION_LINE_SEPARATOR              "#"
 #define EXTERNAL_TOOL_SEPARATOR               "|||"
+
 #define USER_DATA_PLACEHOLDER  "%data%"
+#define SKIN_STYLE_PLACEHOLDER "%style%"
 
 #define CLI_VER_SHORT     "v"
 #define CLI_VER_LONG      "version"

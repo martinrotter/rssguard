@@ -6,6 +6,7 @@ Here is overview of all placeholders used throughtout the skin:
     %data% - is replaced by current absolute path to user data folder.
 
   html_wrapper.html:
+    %style% - Skin-wide CSS, will be replaced by custom CSS if skin provides it in file "style.css".
     %1 - Title of the article.
     %2 - Body of the preview which is composed from:
             - single html_single_message.html (single article preview),

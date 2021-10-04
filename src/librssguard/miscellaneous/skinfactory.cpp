@@ -2,6 +2,7 @@
 
 #include "miscellaneous/skinfactory.h"
 
+#include "exceptions/ioexception.h"
 #include "miscellaneous/application.h"
 
 #include <QDir>
@@ -143,9 +144,24 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       // So if one uses "%data%/images/border.png" in QSS then it is
       // replaced by fully absolute path and target file can
       // be safely loaded.
+      //
+      // %style% placeholder is used in main wrapper HTML file to be replaced with custom skin-wide CSS.
       skin.m_layoutMarkupWrapper = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_wrapper.html")));
       skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL(USER_DATA_PLACEHOLDER),
                                                                       skin_folder_no_sep);
+
+      try {
+        auto custom_css = IOFactory::readFile(skin_folder + QL1S("html_style.css"));
+
+        skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL(SKIN_STYLE_PLACEHOLDER),
+                                                                        QString::fromUtf8(custom_css));
+      }
+      catch (const IOException& ex) {
+        qWarningNN << "Skin"
+                   << QUOTE_W_SPACE(skin_name)
+                   << "does not support separated custom CSS.";
+      }
+
       skin.m_enclosureImageMarkup = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_enclosure_image.html")));
       skin.m_enclosureImageMarkup = skin.m_enclosureImageMarkup.replace(QSL(USER_DATA_PLACEHOLDER),
                                                                         skin_folder_no_sep);

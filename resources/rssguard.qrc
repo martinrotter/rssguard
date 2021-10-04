@@ -75,6 +75,7 @@
     <file>skins/vergilius/html_enclosure_image.html</file>
     <file>skins/vergilius/html_single_message.html</file>
     <file>skins/vergilius/html_wrapper.html</file>
+    <file>skins/vergilius/html_style.css</file>
     <file>skins/vergilius/metadata.xml</file>
     <file>skins/vergilius/theme.css</file>
 
