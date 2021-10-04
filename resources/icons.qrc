@@ -1,7 +1,6 @@
 <RCC>
   <qresource prefix="/">
     <file>./graphics/Faenza/actions/64/application-exit.png</file>
-    <file>./graphics/Faenza/actions/64/back.png</file>
     <file>./graphics/Faenza/actions/64/call-start.png</file>
     <file>./graphics/Faenza/actions/64/dialog-no.png</file>
     <file>./graphics/Faenza/actions/64/dialog-yes.png</file>
@@ -15,7 +14,6 @@
     <file>./graphics/Faenza/actions/64/edit-copy.png</file>
     <file>./graphics/Faenza/actions/64/format-indent-more.png</file>
     <file>./graphics/Faenza/actions/64/format-justify-fill.png</file>
-    <file>./graphics/Faenza/actions/64/forward.png</file>
     <file>./graphics/Faenza/actions/64/go-down.png</file>
     <file>./graphics/Faenza/actions/64/go-home.png</file>
     <file>./graphics/Faenza/actions/64/go-jump.png</file>
@@ -70,7 +68,6 @@
     <file>./graphics/Faenza/status/64/dialog-question.png</file>
     <file>./graphics/Faenza/status/64/dialog-warning.png</file>
     <file>./graphics/Numix/22/actions/application-exit.svg</file>
-    <file>./graphics/Numix/22/actions/back.svg</file>
     <file>./graphics/Numix/22/actions/call-start.svg</file>
     <file>./graphics/Numix/22/actions/dialog-no.svg</file>
     <file>./graphics/Numix/22/actions/dialog-yes.svg</file>
@@ -85,7 +82,6 @@
     <file>./graphics/Numix/22/actions/edit-copy.svg</file>
     <file>./graphics/Numix/22/actions/format-indent-more.svg</file>
     <file>./graphics/Numix/22/actions/format-justify-fill.svg</file>
-    <file>./graphics/Numix/22/actions/forward.svg</file>
     <file>./graphics/Numix/22/actions/go-down.svg</file>
     <file>./graphics/Numix/22/actions/go-home.svg</file>
     <file>./graphics/Numix/22/actions/go-jump.svg</file>
