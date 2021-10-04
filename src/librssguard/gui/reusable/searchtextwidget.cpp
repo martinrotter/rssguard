@@ -12,8 +12,8 @@ SearchTextWidget::SearchTextWidget(QWidget* parent) : QWidget(parent) {
   setFocusProxy(m_ui.m_txtSearch);
   setFixedHeight(28);
 
-  m_ui.m_btnSearchBackward->setIcon(qApp->icons()->fromTheme(QSL("back")));
-  m_ui.m_btnSearchForward->setIcon(qApp->icons()->fromTheme(QSL("forward")));
+  m_ui.m_btnSearchBackward->setIcon(qApp->icons()->fromTheme(QSL("go-previous")));
+  m_ui.m_btnSearchForward->setIcon(qApp->icons()->fromTheme(QSL("go-next")));
 
   connect(m_ui.m_txtSearch, &BaseLineEdit::textChanged, this, &SearchTextWidget::onTextChanged);
   connect(m_ui.m_txtSearch, &BaseLineEdit::submitted, this, [this]() {

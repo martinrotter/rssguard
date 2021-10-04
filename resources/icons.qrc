@@ -1,7 +1,5 @@
 <RCC>
   <qresource prefix="/">
-    <file>./docs/images/rssguard.png</file>
-    <file>./docs/videos/rssguard.gif</file>
     <file>./graphics/Faenza/actions/64/application-exit.png</file>
     <file>./graphics/Faenza/actions/64/back.png</file>
     <file>./graphics/Faenza/actions/64/call-start.png</file>
@@ -11,7 +9,6 @@
     <file>./graphics/Faenza/actions/64/document-export.png</file>
     <file>./graphics/Faenza/actions/64/document-import.png</file>
     <file>./graphics/Faenza/actions/64/document-open.png</file>
-    <file>./graphics/Faenza/actions/64/document-properties.png</file>
     <file>./graphics/Faenza/actions/64/document-revert.png</file>
     <file>./graphics/Faenza/actions/64/down.png</file>
     <file>./graphics/Faenza/actions/64/edit-clear.png</file>
@@ -81,7 +78,6 @@
     <file>./graphics/Numix/22/actions/document-export.svg</file>
     <file>./graphics/Numix/22/actions/document-import.svg</file>
     <file>./graphics/Numix/22/actions/document-open.svg</file>
-    <file>./graphics/Numix/22/actions/document-properties.svg</file>
     <file>./graphics/Numix/22/actions/document-revert.svg</file>
     <file>./graphics/Numix/22/actions/down.svg</file>
     <file>./graphics/Numix/22/actions/download.svg</file>
@@ -145,10 +141,5 @@
     <file>./graphics/Numix/22/status/dialog-question.svg</file>
     <file>./graphics/Numix/22/status/dialog-warning.svg</file>
     <file>./graphics/Numix/index.theme</file>
-    <file>./graphics/original_sizes/rssguard.png</file>
-    <file>./graphics/rssguard.ico</file>
-    <file>./graphics/rssguard.png</file>
-    <file>./macosx/rssguard.icns</file>
-    <file>./rssguard.qrc</file>
   </qresource>
 </RCC>
