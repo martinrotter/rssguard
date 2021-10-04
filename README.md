@@ -7,7 +7,7 @@ RSS Guard
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](https://github.com/martinrotter/rssguard/issues)
 [![License](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=360000)](https://github.com/martinrotter/rssguard/blob/master/LICENSE.md)
 
-### [Downloads](https://github.com/martinrotter/rssguard/releases) | [Development builds](https://github.com/martinrotter/rssguard/releases/tag/devbuild) | [Documentation](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md)
+### [Discord server](https://discord.gg/7xbVMPPNqH) | [Downloads](https://github.com/martinrotter/rssguard/releases) | [Development builds](https://github.com/martinrotter/rssguard/releases/tag/devbuild) | [Documentation](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md)
 
 RSS Guard is simple RSS/ATOM feed reader for Windows, Linux or Mac OS X which can work with RSS/ATOM/JSON and also supports many online RSS services:
 * [Tiny Tiny RSS](https://tt-rss.org),
