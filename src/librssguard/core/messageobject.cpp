@@ -17,6 +17,10 @@ void MessageObject::setMessage(Message* message) {
   m_message = message;
 }
 
+bool MessageObject::isDuplicate(DuplicationAttributeCheck attribute_check) const {
+  return isDuplicateWithAttribute(attribute_check);
+}
+
 bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicationAttributeCheck attribute_check) const {
   // Check database according to duplication attribute_check.
   QSqlQuery q(*m_db);
