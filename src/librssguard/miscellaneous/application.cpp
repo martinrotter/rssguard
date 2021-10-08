@@ -193,9 +193,9 @@ void Application::loadDynamicShortcuts() {
 }
 
 void Application::showPolls() const {
-  /*if (isFirstRunCurrentVersion()) {
-     web()->openUrlInExternalBrowser(QSL("https://forms.gle/Son3h3xg2ZtCmi9K8"));
-     }*/
+  if(isFirstRunCurrentVersion()) {
+    web()->openUrlInExternalBrowser(QSL("https://discord.gg/7xbVMPPNqH"));
+  }
 }
 
 void Application::offerChanges() const {
