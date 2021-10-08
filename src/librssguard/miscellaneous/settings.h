@@ -157,10 +157,16 @@ namespace GUI {
   VALUE(QString) MessageViewStateDef;
 
   KEY SplitterFeeds;
-  VALUE(char*) SplitterFeedsDef;
+  VALUE(QList<QVariant>) SplitterFeedsDef;
 
-  KEY SplitterMessages;
-  VALUE(char*) SplitterMessagesDef;
+  KEY SplitterMessagesIsVertical;
+  VALUE(bool) SplitterMessagesIsVerticalDef;
+
+  KEY SplitterMessagesVertical;
+  VALUE(QList<QVariant>) SplitterMessagesVerticalDef;
+
+  KEY SplitterMessagesHorizontal;
+  VALUE(QList<QVariant>) SplitterMessagesHorizontalDef;
 
   KEY ToolbarStyle;
   VALUE(Qt::ToolButtonStyle) ToolbarStyleDef;

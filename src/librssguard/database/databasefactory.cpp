@@ -12,7 +12,9 @@
 #include "miscellaneous/textfactory.h"
 
 #include <QDir>
+#include <QSqlDriver>
 #include <QSqlError>
+#include <QSqlField>
 #include <QSqlQuery>
 #include <QVariant>
 
@@ -76,6 +78,25 @@ DatabaseDriver* DatabaseFactory::driverForType(DatabaseDriver::DriverType d) con
   return boolinq::from(m_allDbDrivers).firstOrDefault([d](DatabaseDriver* driv) {
     return driv->driverType() == d;
   });
+}
+
+QString DatabaseFactory::lastExecutedQuery(const QSqlQuery& query) {
+  QString str = query.lastQuery();
+  QMapIterator<QString, QVariant> it(query.boundValues());
+
+  while (it.hasNext()) {
+    it.next();
+
+    if (it.value().type() == QVariant::Type::Char ||
+        it.value().type() == QVariant::Type::String) {
+      str.replace(it.key(), QSL("'%1'").arg(it.value().toString()));
+    }
+    else {
+      str.replace(it.key(), it.value().toString());
+    }
+  }
+
+  return str;
 }
 
 QString DatabaseFactory::escapeQuery(const QString& query) {

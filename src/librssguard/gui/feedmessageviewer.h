@@ -51,7 +51,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     void loadMessageViewerFonts();
 
     // Switches orientation horizontal/vertical.
-    void switchMessageSplitterOrientation();
+    void switchMessageSplitterOrientation(bool save_settings);
 
     // Enables/disables main toolbars or list headers.
     void setToolBarsEnabled(bool enable);

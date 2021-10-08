@@ -804,7 +804,9 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionSelectPreviousMessage,
           &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::selectPreviousItem);
   connect(m_ui->m_actionSwitchMessageListOrientation, &QAction::triggered,
-          tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchMessageSplitterOrientation);
+          tabWidget()->feedMessageViewer(), [this]() {
+    tabWidget()->feedMessageViewer()->switchMessageSplitterOrientation(true);
+  });
   connect(m_ui->m_actionShowOnlyUnreadItems, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadFeeds);
   connect(m_ui->m_actionShowTreeBranches, &QAction::toggled,

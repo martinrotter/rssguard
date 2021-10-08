@@ -135,10 +135,16 @@ DKEY GUI::MessageViewState = "msg_view_state";
 DVALUE(QString) GUI::MessageViewStateDef = QString();
 
 DKEY GUI::SplitterFeeds = "splitter_feeds";
-DVALUE(char*) GUI::SplitterFeedsDef = "";
+DVALUE(QList<QVariant>) GUI::SplitterFeedsDef = {};
 
-DKEY GUI::SplitterMessages = "splitter_messages";
-DVALUE(char*) GUI::SplitterMessagesDef = "";
+DKEY GUI::SplitterMessagesIsVertical = "splitter_messages_is_vertical";
+DVALUE(bool) GUI::SplitterMessagesIsVerticalDef = true;
+
+DKEY GUI::SplitterMessagesVertical = "splitter_messages_vertical";
+DVALUE(QList<QVariant>) GUI::SplitterMessagesVerticalDef = {};
+
+DKEY GUI::SplitterMessagesHorizontal = "splitter_messages_horizontal";
+DVALUE(QList<QVariant>) GUI::SplitterMessagesHorizontalDef = {};
 
 DKEY GUI::ToolbarStyle = "toolbar_style";
 DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef = Qt::ToolButtonIconOnly;

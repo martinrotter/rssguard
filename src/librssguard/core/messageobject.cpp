@@ -3,6 +3,7 @@
 #include "core/messageobject.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "database/databasefactory.h"
 
 #include <QSqlDatabase>
 #include <QSqlError>
@@ -65,9 +66,8 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicationAttribute
   QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
 
   qDebugNN << LOGSEC_MESSAGEMODEL
-           << "Query for MSG duplicate identification is: '"
-           << full_query
-           << "'.";
+           << "Prepared query for MSG duplicate identification is:"
+           << QUOTE_W_SPACE_DOT(full_query);
 
   q.setForwardOnly(true);
   q.prepare(full_query);
@@ -77,20 +77,23 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicationAttribute
   }
 
   if (q.exec() && q.next()) {
+    qDebugNN << LOGSEC_DB
+             << "Executed SQL for message duplicates check:"
+             << QUOTE_W_SPACE_DOT(DatabaseFactory::lastExecutedQuery(q));
+
     if (q.record().value(0).toInt() > 0) {
       // Whoops, we have the "same" message in database.
-      qDebugNN << LOGSEC_MESSAGEMODEL
-               << "Message '"
-               << title()
-               << "' was identified as duplicate by filter script.";
+      qDebugNN << LOGSEC_CORE
+               << "Message"
+               << QUOTE_W_SPACE(title())
+               << "was identified as duplicate by filter script.";
       return true;
     }
   }
   else if (q.lastError().isValid()) {
-    qWarningNN << LOGSEC_MESSAGEMODEL
-               << "Error when checking for duplicate messages via filtering system, error: '"
-               << q.lastError().text()
-               << "'.";
+    qWarningNN << LOGSEC_CORE
+               << "Error when checking for duplicate messages via filtering system, error:"
+               << QUOTE_W_SPACE_DOT(q.lastError().text());
   }
 
   return false;

@@ -156,7 +156,7 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
         skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL(SKIN_STYLE_PLACEHOLDER),
                                                                         QString::fromUtf8(custom_css));
       }
-      catch (const IOException& ex) {
+      catch (...) {
         qWarningNN << "Skin"
                    << QUOTE_W_SPACE(skin_name)
                    << "does not support separated custom CSS.";

@@ -2,6 +2,7 @@
 
 #include "gui/feedmessageviewer.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "core/feeddownloader.h"
 #include "core/feedsproxymodel.h"
 #include "core/messagesproxymodel.h"
@@ -23,6 +24,7 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
+#include "miscellaneous/templates.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
 #include "services/standard/standardserviceroot.h"
@@ -87,8 +89,19 @@ void FeedMessageViewer::saveSize() {
   m_feedsView->saveAllExpandStates();
 
   // Store offsets of splitters.
-  settings->setValue(GROUP(GUI), GUI::SplitterFeeds, QString(m_feedSplitter->saveState().toBase64()));
-  settings->setValue(GROUP(GUI), GUI::SplitterMessages, QString(m_messageSplitter->saveState().toBase64()));
+  settings->setValue(GROUP(GUI), GUI::SplitterFeeds, toVariant(m_feedSplitter->sizes()));
+
+  if (!settings->value(GROUP(GUI), SETTING(GUI::SplitterMessagesIsVertical)).toBool()) {
+    settings->setValue(GROUP(GUI),
+                       GUI::SplitterMessagesHorizontal,
+                       toVariant(m_messageSplitter->sizes()));
+  }
+  else {
+    settings->setValue(GROUP(GUI),
+                       GUI::SplitterMessagesVertical,
+                       toVariant(m_messageSplitter->sizes()));
+  }
+
   settings->setValue(GROUP(GUI), GUI::MessageViewState, QString(m_messagesView->saveHeaderState().toBase64()));
 
   // Store "visibility" of toolbars and list headers.
@@ -100,9 +113,19 @@ void FeedMessageViewer::loadSize() {
   const Settings* settings = qApp->settings();
 
   // Restore offsets of splitters.
-  m_feedSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::SplitterFeeds)).toString().toLocal8Bit()));
-  m_messageSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI),
-                                                                         SETTING(GUI::SplitterMessages)).toString().toLocal8Bit()));
+  m_feedSplitter->setSizes(toList<int>(settings->value(GROUP(GUI),
+                                                       SETTING(GUI::SplitterFeeds))));
+
+  if (!settings->value(GROUP(GUI), SETTING(GUI::SplitterMessagesIsVertical)).toBool()) {
+    switchMessageSplitterOrientation(false);
+    m_messageSplitter->setSizes(toList<int>(settings->value(GROUP(GUI),
+                                                            SETTING(GUI::SplitterMessagesHorizontal))));
+  }
+  else {
+    m_messageSplitter->setSizes(toList<int>(settings->value(GROUP(GUI),
+                                                            SETTING(GUI::SplitterMessagesVertical))));
+
+  }
 
   QString settings_msg_header = settings->value(GROUP(GUI), SETTING(GUI::MessageViewState)).toString();
 
@@ -125,13 +148,33 @@ bool FeedMessageViewer::areListHeadersEnabled() const {
   return m_listHeadersEnabled;
 }
 
-void FeedMessageViewer::switchMessageSplitterOrientation() {
+void FeedMessageViewer::switchMessageSplitterOrientation(bool save_settings) {
   if (m_messageSplitter->orientation() == Qt::Orientation::Vertical) {
+    if (save_settings) {
+      qApp->settings()->setValue(GROUP(GUI),
+                                 GUI::SplitterMessagesVertical,
+                                 toVariant(m_messageSplitter->sizes()));
+    }
+
     m_messageSplitter->setOrientation(Qt::Orientation::Horizontal);
+    m_messageSplitter->setSizes(toList<int>(qApp->settings()->value(GROUP(GUI),
+                                                                    SETTING(GUI::SplitterMessagesHorizontal))));
   }
   else {
+    if (save_settings) {
+      qApp->settings()->setValue(GROUP(GUI),
+                                 GUI::SplitterMessagesHorizontal,
+                                 toVariant(m_messageSplitter->sizes()));
+    }
+
     m_messageSplitter->setOrientation(Qt::Orientation::Vertical);
+    m_messageSplitter->setSizes(toList<int>(qApp->settings()->value(GROUP(GUI),
+                                                                    SETTING(GUI::SplitterMessagesVertical))));
   }
+
+  qApp->settings()->setValue(GROUP(GUI),
+                             GUI::SplitterMessagesIsVertical,
+                             m_messageSplitter->orientation() == Qt::Orientation::Vertical);
 }
 
 void FeedMessageViewer::setToolBarsEnabled(bool enable) {

@@ -596,6 +596,7 @@ Message FormMessageFiltersManager::testingMessage() const {
 
   msg.m_feedId = NO_PARENT_CATEGORY;
   msg.m_url = m_ui.m_txtSampleUrl->text();
+  msg.m_customId = m_ui.m_txtSampleUrl->text();
   msg.m_title = m_ui.m_txtSampleTitle->text();
   msg.m_author = m_ui.m_txtSampleAuthor->text();
   msg.m_isRead = m_ui.m_cbSampleRead->isChecked();
