@@ -147,6 +147,9 @@ void MessagesView::keyboardSearch(const QString& search) {
 void MessagesView::reloadSelections() {
   const QDateTime dt1 = QDateTime::currentDateTime();
   QModelIndex current_index = selectionModel()->currentIndex();
+  const bool is_current_selected = selectionModel()->selectedRows().contains(m_proxyModel->index(current_index.row(),
+                                                                                                 0,
+                                                                                                 current_index.parent()));
   const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   const Message selected_message = m_sourceModel->messageAt(mapped_current_index.row());
   const int col = header()->sortIndicatorSection();
@@ -157,7 +160,8 @@ void MessagesView::reloadSelections() {
 
   // Now, we must find the same previously focused message.
   if (selected_message.m_id > 0) {
-    if (m_proxyModel->rowCount() == 0) {
+    if (m_proxyModel->rowCount() == 0 ||
+        !is_current_selected) {
       current_index = QModelIndex();
     }
     else {
