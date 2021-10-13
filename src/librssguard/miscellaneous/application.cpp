@@ -194,7 +194,16 @@ void Application::loadDynamicShortcuts() {
 
 void Application::showPolls() const {
   if(isFirstRunCurrentVersion()) {
-    web()->openUrlInExternalBrowser(QSL("https://discord.gg/7xbVMPPNqH"));
+    qApp->showGuiMessage(Notification::Event::NewAppVersionAvailable,
+                         tr("RSS Guard has Discord server!"),
+                         tr("You can visit it now! Click me!"),
+                         QSystemTrayIcon::MessageIcon::Information,
+                         true,
+                         {},
+                         tr("Go to Discord!"),
+                         [this]() {
+      web()->openUrlInExternalBrowser(QSL("https://discord.gg/7xbVMPPNqH"));
+    });
   }
 }
 

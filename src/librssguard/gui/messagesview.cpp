@@ -410,7 +410,7 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
            << current_index << "', source '"
            << mapped_current_index << "'.";
 
-  if (mapped_current_index.isValid() && selected_rows.count() > 0) {
+  if (mapped_current_index.isValid() && selected_rows.count() == 1) {
     Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row());
 
     // Set this message as read only if current item
@@ -509,19 +509,18 @@ void MessagesView::markSelectedMessagesUnread() {
 }
 
 void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
-  QModelIndex current_index = selectionModel()->currentIndex();
+  const QModelIndexList selected_indexes = selectionModel()->selectedRows();
 
-  if (!current_index.isValid()) {
+  if (selected_indexes.isEmpty()) {
     return;
   }
 
-  QModelIndexList selected_indexes = selectionModel()->selectedRows();
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesRead(mapped_indexes, read);
-  current_index = m_proxyModel->index(current_index.row(), current_index.column());
+  QModelIndex current_index = selectionModel()->currentIndex();
 
-  if (current_index.isValid()) {
+  if (current_index.isValid() && selected_indexes.size() == 1) {
     emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()), m_sourceModel->loadedItem());
   }
   else {
@@ -530,19 +529,20 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
 }
 
 void MessagesView::deleteSelectedMessages() {
-  QModelIndex current_index = selectionModel()->currentIndex();
+  const QModelIndexList selected_indexes = selectionModel()->selectedRows();
 
-  if (!current_index.isValid()) {
+  if (selected_indexes.isEmpty()) {
     return;
   }
 
-  const QModelIndexList selected_indexes = selectionModel()->selectedRows();
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesDeleted(mapped_indexes);
-  current_index = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
+  QModelIndex current_index = currentIndex().isValid()
+                              ? moveCursor(QAbstractItemView::CursorAction::MoveDown, Qt::KeyboardModifier::NoModifier)
+                              : currentIndex();
 
-  if (current_index.isValid()) {
+  if (current_index.isValid() && selected_indexes.size() == 1) {
     setCurrentIndex(current_index);
   }
   else {
@@ -572,19 +572,18 @@ void MessagesView::restoreSelectedMessages() {
 }
 
 void MessagesView::switchSelectedMessagesImportance() {
-  QModelIndex current_index = selectionModel()->currentIndex();
+  const QModelIndexList selected_indexes = selectionModel()->selectedRows();
 
-  if (!current_index.isValid()) {
+  if (selected_indexes.isEmpty()) {
     return;
   }
 
-  QModelIndexList selected_indexes = selectionModel()->selectedRows();
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->switchBatchMessageImportance(mapped_indexes);
-  current_index = m_proxyModel->index(current_index.row(), current_index.column());
+  QModelIndex current_index = selectionModel()->currentIndex();
 
-  if (current_index.isValid()) {
+  if (current_index.isValid() && selected_indexes.size() == 1) {
     emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()), m_sourceModel->loadedItem());
   }
   else {
