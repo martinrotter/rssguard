@@ -1,6 +1,8 @@
 4.0.4
 -----
 
+RSS Guard now has its own DISCORD: https://discord.gg/7xbVMPPNqH
+
 Added:
 * Updated documentation. (#516)
 * Sizes of horizontal/vertical width/height of article preview are now kept separately. User can thus have different sizes of article preview in each layout. (#515)
