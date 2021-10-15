@@ -91,6 +91,11 @@ void FeedMessageViewer::saveSize() {
   // Store offsets of splitters.
   settings->setValue(GROUP(GUI), GUI::SplitterFeeds, toVariant(m_feedSplitter->sizes()));
 
+  // We need to display message previewer so that it "has" some dimensions
+  // so that they can be saved.
+  m_messagesBrowser->show();
+  qApp->processEvents();
+
   if (!settings->value(GROUP(GUI), SETTING(GUI::SplitterMessagesIsVertical)).toBool()) {
     settings->setValue(GROUP(GUI),
                        GUI::SplitterMessagesHorizontal,
@@ -116,15 +121,12 @@ void FeedMessageViewer::loadSize() {
   m_feedSplitter->setSizes(toList<int>(settings->value(GROUP(GUI),
                                                        SETTING(GUI::SplitterFeeds))));
 
-  if (!settings->value(GROUP(GUI), SETTING(GUI::SplitterMessagesIsVertical)).toBool()) {
-    switchMessageSplitterOrientation(false);
-    m_messageSplitter->setSizes(toList<int>(settings->value(GROUP(GUI),
-                                                            SETTING(GUI::SplitterMessagesHorizontal))));
-  }
-  else {
+  if (settings->value(GROUP(GUI), SETTING(GUI::SplitterMessagesIsVertical)).toBool()) {
     m_messageSplitter->setSizes(toList<int>(settings->value(GROUP(GUI),
                                                             SETTING(GUI::SplitterMessagesVertical))));
-
+  }
+  else {
+    switchMessageSplitterOrientation(false);
   }
 
   QString settings_msg_header = settings->value(GROUP(GUI), SETTING(GUI::MessageViewState)).toString();
@@ -149,6 +151,14 @@ bool FeedMessageViewer::areListHeadersEnabled() const {
 }
 
 void FeedMessageViewer::switchMessageSplitterOrientation(bool save_settings) {
+  bool preview_visible = m_messagesBrowser->isVisible();
+
+  if (!preview_visible && save_settings) {
+    // Must be visible to get correct dimensions to be saved.
+    m_messagesBrowser->show();
+    qApp->processEvents();
+  }
+
   if (m_messageSplitter->orientation() == Qt::Orientation::Vertical) {
     if (save_settings) {
       qApp->settings()->setValue(GROUP(GUI),
@@ -170,6 +180,12 @@ void FeedMessageViewer::switchMessageSplitterOrientation(bool save_settings) {
     m_messageSplitter->setOrientation(Qt::Orientation::Vertical);
     m_messageSplitter->setSizes(toList<int>(qApp->settings()->value(GROUP(GUI),
                                                                     SETTING(GUI::SplitterMessagesVertical))));
+  }
+
+  if (!preview_visible && save_settings) {
+    // Must be visible to get correct dimensions to be saved.
+    m_messagesBrowser->hide();
+    qApp->processEvents();
   }
 
   qApp->settings()->setValue(GROUP(GUI),
