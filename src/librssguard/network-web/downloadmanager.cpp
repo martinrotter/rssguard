@@ -141,7 +141,7 @@ QString DownloadItem::saveFileName(const QString& directory) const {
 
   if (m_reply->hasRawHeader("Content-Disposition")) {
     QString value = QLatin1String(m_reply->rawHeader("Content-Disposition"));
-    QRegularExpression exp(QSL(".*filename=?\"([^\"]+)\"?"));
+    QRegularExpression exp(QSL(".*filename\\s*=\\s*\"?([^\"]+)\"?"));
     QRegularExpressionMatch match = exp.match(value);
 
     if (match.isValid()) {
