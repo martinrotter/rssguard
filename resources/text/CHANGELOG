@@ -1,3 +1,24 @@
+4.0.4
+-----
+
+Added:
+* Updated documentation. (#516)
+* Sizes of horizontal/vertical width/height of article preview are now kept separately. User can thus have different sizes of article preview in each layout. (#515)
+* Added new simplistic skin "nudus". (#512)
+* Article filters now can determine "uniqueness" of article according to article's "id". (#509)
+* Some columns in article list now also display respective values in tooltips. (#513)
+* Columns "read" and "important" in article list are now resizable. (#514)
+
+Fixed:
+* Avoid unwanted displays of article previewer. (#507)
+* "Automatically expand item when selected" now behaves consistently when launched with keyboard shortcut. (#506)
+* Fixed multiple issues regarding article "focus" or "selection".
+* Fixed some problems with recognizing filenames when downloading files.
+* Fixed crash when repeatedly downloading some files.
+* Tweaked some icons.
+* Fixed executable bits on some deployed files.
+* Updated skin "API".
+
 4.0.3
 -----
 
