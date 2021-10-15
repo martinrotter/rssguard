@@ -410,7 +410,7 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
            << current_index << "', source '"
            << mapped_current_index << "'.";
 
-  if (mapped_current_index.isValid() && selected_rows.count() == 1) {
+  if (mapped_current_index.isValid() && selected_rows.size() == 1) {
     Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row());
 
     // Set this message as read only if current item
@@ -422,6 +422,10 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
   }
   else {
     emit currentMessageRemoved();
+  }
+
+  if (selected_rows.isEmpty()) {
+    setCurrentIndex({});
   }
 
   if (!m_processingMouse &&
