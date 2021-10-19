@@ -27,7 +27,8 @@
 #include <QTimer>
 
 MessagesView::MessagesView(QWidget* parent)
-  : BaseTreeView(parent), m_contextMenu(nullptr), m_columnsAdjusted(false), m_processingMouse(false) {
+  : BaseTreeView(parent), m_contextMenu(nullptr), m_columnsAdjusted(false), m_processingAnyMouseButton(false),
+  m_processingRightMouseButton(false) {
   m_sourceModel = qApp->feedReader()->messagesModel();
   m_proxyModel = qApp->feedReader()->messagesProxyModel();
 
@@ -351,9 +352,13 @@ void MessagesView::initializeContextMenu() {
 }
 
 void MessagesView::mousePressEvent(QMouseEvent* event) {
-  m_processingMouse = true;
+  m_processingAnyMouseButton = true;
+  m_processingRightMouseButton = event->button() == Qt::MouseButton::RightButton;
+
   QTreeView::mousePressEvent(event);
-  m_processingMouse = false;
+
+  m_processingAnyMouseButton = false;
+  m_processingRightMouseButton = false;
 
   switch (event->button()) {
     case Qt::MouseButton::LeftButton: {
@@ -415,8 +420,10 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
 
     // Set this message as read only if current item
     // wasn't changed by "mark selected messages unread" action.
-    m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
-    message.m_isRead = true;
+    if (!m_processingRightMouseButton) {
+      m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
+      message.m_isRead = true;
+    }
 
     emit currentMessageChanged(message, m_sourceModel->loadedItem());
   }
@@ -428,7 +435,7 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
     setCurrentIndex({});
   }
 
-  if (!m_processingMouse &&
+  if (!m_processingAnyMouseButton &&
       qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()) {
     scrollTo(currentIndex(), QAbstractItemView::ScrollHint::PositionAtCenter);
   }
@@ -616,7 +623,7 @@ void MessagesView::selectNextItem() {
     setCurrentIndex(index_next);
 
     scrollTo(index_next,
-             !m_processingMouse && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+             !m_processingAnyMouseButton && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
              ? QAbstractItemView::ScrollHint::PositionAtCenter
              : QAbstractItemView::ScrollHint::PositionAtTop);
 
@@ -632,7 +639,7 @@ void MessagesView::selectPreviousItem() {
     setCurrentIndex(index_previous);
 
     scrollTo(index_previous,
-             !m_processingMouse && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+             !m_processingAnyMouseButton && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
              ? QAbstractItemView::ScrollHint::PositionAtCenter
              : QAbstractItemView::ScrollHint::PositionAtTop);
 
@@ -664,7 +671,7 @@ void MessagesView::selectNextUnreadItem() {
     qApp->processEvents();
 
     scrollTo(next_unread,
-             !m_processingMouse && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+             !m_processingAnyMouseButton && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
              ? QAbstractItemView::ScrollHint::PositionAtCenter
              : QAbstractItemView::ScrollHint::PositionAtTop);
 
@@ -692,7 +699,7 @@ void MessagesView::searchMessages(const QString& pattern) {
   else {
     // Scroll to selected message, it could become scrolled out due to filter change.
     scrollTo(selectionModel()->selectedRows().at(0),
-             !m_processingMouse && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+             !m_processingAnyMouseButton && qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
              ? QAbstractItemView::ScrollHint::PositionAtCenter
              : QAbstractItemView::ScrollHint::EnsureVisible);
   }

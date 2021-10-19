@@ -107,7 +107,8 @@ class MessagesView : public BaseTreeView {
     MessagesProxyModel* m_proxyModel;
     MessagesModel* m_sourceModel;
     bool m_columnsAdjusted;
-    bool m_processingMouse;
+    bool m_processingAnyMouseButton;
+    bool m_processingRightMouseButton;
 };
 
 inline MessagesProxyModel* MessagesView::model() const {

@@ -18,7 +18,7 @@ StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent) {
 
   m_barProgressFeeds = new ProgressBarWithText(this);
   m_barProgressFeeds->setTextVisible(true);
-  m_barProgressFeeds->setFixedWidth(230);
+  m_barProgressFeeds->setFixedWidth(250);
   m_barProgressFeeds->setVisible(false);
   m_barProgressFeeds->setObjectName(QSL("m_barProgressFeeds"));
 
