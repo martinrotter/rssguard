@@ -78,7 +78,7 @@ void Message::sanitize(const Feed* feed) {
   m_title = m_title
 
             // Remove non-breaking spaces.
-            .replace(QRegularExpression(QSL("[ \u202F\u00A0 ]")), QSL(" "))
+            .replace(QRegularExpression(QString::fromUtf8(QByteArray("[\xE2\x80\xAF]"))), QSL(" "))
 
             // Shrink consecutive whitespaces.
             .replace(QRegularExpression(QSL("[\\s]{2,}")), QSL(" "))
