@@ -307,9 +307,13 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           return dt.toString(m_customDateFormat);
         }
       }
+      else if (index_column == MSG_DB_FEED_TITLE_INDEX) {
+        // Trim feed title.
+        return data(idx, Qt::ItemDataRole::EditRole).toString().trimmed();
+      }
       else if (index_column == MSG_DB_CONTENTS_INDEX) {
         // Do not display full contents here.
-        QString contents = data(idx, Qt::EditRole).toString().mid(0, 64).simplified() + QL1S("...");
+        QString contents = data(idx, Qt::ItemDataRole::EditRole).toString().mid(0, 64).simplified() + QL1S("...");
 
         return contents;
       }
