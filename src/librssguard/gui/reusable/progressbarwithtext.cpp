@@ -5,25 +5,7 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 
-ProgressBarWithText::ProgressBarWithText(QWidget* parent) : QProgressBar(parent) {
-  //setSizePolicy(QSizePolicy::Policy::Maximum, QSizePolicy::Policy::Preferred);
-}
-
-/*
-   QSize ProgressBarWithText::minimumSizeHint() const {
-   QString txt = text();
-
-   return QSize(fontMetrics().boundingRect(txt).width() + 32,
-               QProgressBar::minimumSizeHint().height());
-   }
-
-   QSize ProgressBarWithText::sizeHint() const {
-   QString txt = text();
-
-   return QSize(fontMetrics().boundingRect(txt).width() + 32,
-               QProgressBar::sizeHint().height());
-   }
- */
+ProgressBarWithText::ProgressBarWithText(QWidget* parent) : QProgressBar(parent) {}
 
 QString ProgressBarWithText::text() const {
   qint64 total_steps = qint64(maximum()) - minimum();
@@ -45,5 +27,14 @@ QString ProgressBarWithText::text() const {
   const auto progress = static_cast<int>((qint64(value()) - minimum()) * 100.0 / total_steps);
 
   result.replace(QLatin1String("%p"), locale.toString(progress));
-  return result;
+
+  // Now, shorten the text to fit the widget.
+  bool elide = false;
+
+  while (fontMetrics().boundingRect(result + QSL("...")).width() > width() - 30) {
+    result.chop(1);
+    elide = true;
+  }
+
+  return elide ? result + QSL("...") : result;
 }
