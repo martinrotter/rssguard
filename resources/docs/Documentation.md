@@ -564,7 +564,7 @@ Here are SQLs for [old](https://github.com/martinrotter/rssguard/blob/3.9.2/reso
 
 ### Converting `*Accounts` tables
 ***
-In `3.x.x` each plugin/account type had its own table where it kept your login usernames, service URLs etc. In `4.x.x` all plugins share one table `Accounts` and place account-specific data into `custom_data` column. You simply can take all rows from any `*Accounts` table (for example `TtRssAccounts`) and insert them into `Accounts`, keeping all columns their default values, except of `type`, which must have on of these values:
+In `3.x.x` each plugin/account type had its own table where it kept your login usernames, service URLs etc. In `4.x.x` all plugins share one table `Accounts` and place account-specific data into `custom_data` column. You simply can take all rows from any `*Accounts` table (for example `TtRssAccounts`) and insert them into `Accounts`, keeping all columns their default values, except of `type`, which must have one of these values:
 * `std-rss` - for standard RSS/ATOM feeds.
 * `tt-rss` - for Tiny Tiny RSS.
 * `owncloud` - for Nextcloud News.
