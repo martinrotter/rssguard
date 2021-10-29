@@ -582,7 +582,7 @@ void DownloadManager::updateRow(DownloadItem* item) {
     m_iconProvider.reset(new QFileIconProvider());
   }
 
-  QIcon icon = m_iconProvider->icon(item->m_output.fileName());
+  QIcon icon = m_iconProvider->icon(QFileInfo(item->m_output.fileName()));
 
   if (icon.isNull()) {
     icon = style()->standardIcon(QStyle::StandardPixmap::SP_FileIcon);

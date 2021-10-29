@@ -8,6 +8,10 @@
 
 #if !defined(Q_OS_OS2)
 #include <QMediaPlayer>
+
+#if QT_VERSION_MAJOR == 6
+#include <QAudioOutput>
+#endif
 #endif
 
 Notification::Notification(Notification::Event event, bool balloon, const QString& sound_path, int volume)
@@ -34,6 +38,29 @@ void Notification::playSound(Application* app) const {
 #if !defined(Q_OS_OS2)
     QMediaPlayer* play = new QMediaPlayer(app);
 
+#if QT_VERSION_MAJOR == 6
+    QAudioOutput* out = new QAudioOutput(app);
+
+    play->setAudioOutput(out);
+
+    QObject::connect(play, &QMediaPlayer::playbackStateChanged, play, [play, out](QMediaPlayer::PlaybackState state) {
+      if (state == QMediaPlayer::PlaybackState::StoppedState) {
+        out->deleteLater();
+        play->deleteLater();
+      }
+    });
+
+    if (m_soundPath.startsWith(QSL(":"))) {
+      play->setSource(QUrl(QSL("qrc") + m_soundPath));
+
+    }
+    else {
+      play->setSource(QUrl::fromLocalFile(QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath))));
+    }
+
+    play->audioOutput()->setVolume((m_volume * 1.0f) / 100.0f);
+    play->play();
+#else
     QObject::connect(play, &QMediaPlayer::stateChanged, play, [play](QMediaPlayer::State state) {
       if (state == QMediaPlayer::State::StoppedState) {
         play->deleteLater();
@@ -52,6 +79,7 @@ void Notification::playSound(Application* app) const {
 
     play->setVolume(m_volume);
     play->play();
+#endif
 #endif
   }
 }

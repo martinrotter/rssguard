@@ -1344,7 +1344,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
 
     for (int i = 0; i < msgs_to_insert.size(); i += 1000) {
       QStringList vals;
-      int batch_length = std::min(1000, msgs_to_insert.size() - i);
+      int batch_length = std::min(1000, int(msgs_to_insert.size()) - i);
 
       for (int l = i; l < (i + batch_length); l++) {
         Message* msg = msgs_to_insert[l];

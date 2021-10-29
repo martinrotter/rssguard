@@ -9,12 +9,13 @@
 #include "services/abstract/label.h"
 
 #if defined(Q_OS_WIN)
+#if QT_VERSION_MAJOR == 5
 #include <QtPlatformHeaders/QWindowsWindowFunctions>
+#endif
 #endif
 
 #if defined(Q_OS_MACOS)
 extern void disableWindowTabbing();
-
 #endif
 
 int main(int argc, char* argv[]) {
@@ -73,8 +74,10 @@ int main(int argc, char* argv[]) {
 
   qApp->reactOnForeignNotifications();
 
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN)
+#if QT_VERSION_MAJOR == 5
   QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
+#endif
 #endif
 
   FormMain main_window;

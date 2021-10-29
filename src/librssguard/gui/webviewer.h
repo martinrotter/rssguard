@@ -41,7 +41,7 @@ class WebViewer : public QWebEngineView {
     virtual bool eventFilter(QObject* object, QEvent* event);
 
   private slots:
-    void openUrlWithExternalTool(ExternalTool tool, const QWebEngineContextMenuData& target);
+    void openUrlWithExternalTool(ExternalTool tool, const QString& target_url);
 
   private:
     RootItem* m_root;

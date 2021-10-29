@@ -70,7 +70,12 @@ bool SettingsGui::eventFilter(QObject* obj, QEvent* e) {
   if (e->type() == QEvent::Type::Drop) {
     auto* drop_event = static_cast<QDropEvent*>(e);
 
-    if (drop_event->keyboardModifiers() != Qt::KeyboardModifier::NoModifier) {
+#if QT_VERSION_MAJOR == 6
+    if (drop_event->modifiers() !=
+#else
+    if (drop_event->keyboardModifiers() !=
+#endif
+        Qt::KeyboardModifier::NoModifier) {
       drop_event->setDropAction(Qt::DropAction::MoveAction);
     }
   }

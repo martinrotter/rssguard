@@ -33,7 +33,13 @@ class FormMain;
 class IconFactory;
 class QAction;
 class Mutex;
+
+#if QT_VERSION_MAJOR == 6
+class QWebEngineDownloadRequest;
+#else
 class QWebEngineDownloadItem;
+#endif
+
 class WebFactory;
 class NotificationFactory;
 
@@ -140,7 +146,12 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void showMessagesNumber(int unread_messages, bool any_feed_has_unread_messages);
 
 #if defined(USE_WEBENGINE)
+#if QT_VERSION_MAJOR == 6
+    void downloadRequested(QWebEngineDownloadRequest* download_item);
+#else
     void downloadRequested(QWebEngineDownloadItem* download_item);
+#endif
+
     void onAdBlockFailure();
 #endif
 

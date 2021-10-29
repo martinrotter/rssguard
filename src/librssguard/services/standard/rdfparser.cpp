@@ -52,8 +52,6 @@ Message RdfParser::extractMessage(const QDomElement& msg_element, const QDateTim
   QString raw_contents;
   QTextStream str(&raw_contents);
 
-  str.setCodec(DEFAULT_FEED_ENCODING);
-
   msg_element.save(str, 0, QDomNode::EncodingPolicy::EncodingFromTextStream);
   new_message.m_rawContents = raw_contents;
 

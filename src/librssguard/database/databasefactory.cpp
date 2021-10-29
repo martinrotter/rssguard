@@ -16,6 +16,7 @@
 #include <QSqlError>
 #include <QSqlField>
 #include <QSqlQuery>
+#include <QSqlResult>
 #include <QVariant>
 
 DatabaseFactory::DatabaseFactory(QObject* parent)
@@ -82,6 +83,8 @@ DatabaseDriver* DatabaseFactory::driverForType(DatabaseDriver::DriverType d) con
 
 QString DatabaseFactory::lastExecutedQuery(const QSqlQuery& query) {
   QString str = query.lastQuery();
+
+#if QT_VERSION_MAJOR == 5
   QMapIterator<QString, QVariant> it(query.boundValues());
 
   while (it.hasNext()) {
@@ -95,6 +98,7 @@ QString DatabaseFactory::lastExecutedQuery(const QSqlQuery& query) {
       str.replace(it.key(), it.value().toString());
     }
   }
+#endif
 
   return str;
 }

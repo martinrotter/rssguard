@@ -16,9 +16,15 @@
 #include "network-web/webpage.h"
 
 #include <QFileIconProvider>
-#include <QOpenGLWidget>
 #include <QTimer>
+
+#if QT_VERSION_MAJOR == 6
+#include <QWebEngineContextMenuRequest>
+#else
+#include <QOpenGLWidget>
 #include <QWebEngineContextMenuData>
+#endif
+
 #include <QWheelEvent>
 
 WebViewer::WebViewer(QWidget* parent) : QWebEngineView(parent), m_root(nullptr) {
@@ -186,13 +192,22 @@ void WebViewer::clear() {
 
 void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
   event->accept();
+
+#if QT_VERSION_MAJOR == 6
+  QMenu* menu = createStandardContextMenu();
+  auto* menu_pointer = lastContextMenuRequest();
+  QWebEngineContextMenuRequest& menu_data = *menu_pointer;
+#else
   QMenu* menu = page()->createStandardContextMenu();
   QWebEngineContextMenuData menu_data = page()->contextMenuData();
+#endif
 
   if (menu_data.linkUrl().isValid()) {
+    QString link_url = menu_data.linkUrl().toString();
+
     // Add option to open link in external viewe
-    menu->addAction(qApp->icons()->fromTheme(QSL("document-open")), tr("Open link in external browser"), [menu_data]() {
-      qApp->web()->openUrlInExternalBrowser(menu_data.linkUrl().toString());
+    menu->addAction(qApp->icons()->fromTheme(QSL("document-open")), tr("Open link in external browser"), [link_url]() {
+      qApp->web()->openUrlInExternalBrowser(link_url);
 
       if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool()) {
         QTimer::singleShot(1000, qApp, []() {
@@ -203,6 +218,7 @@ void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
   }
 
   if (menu_data.mediaUrl().isValid() || menu_data.linkUrl().isValid()) {
+    QString media_link = menu_data.mediaUrl().isValid() ? menu_data.mediaUrl().toString() : menu_data.linkUrl().toString();
     QFileIconProvider icon_provider;
     QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), menu);
     auto tools = ExternalTool::toolsFromSettings();
@@ -212,13 +228,13 @@ void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
     for (const ExternalTool& tool : qAsConst(tools)) {
       QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
 
-      act_tool->setIcon(icon_provider.icon(tool.executable()));
+      act_tool->setIcon(icon_provider.icon(QFileInfo(tool.executable())));
       act_tool->setToolTip(tool.executable());
       act_tool->setData(QVariant::fromValue(tool));
       menu_ext_tools->addAction(act_tool);
 
-      connect(act_tool, &QAction::triggered, this, [this, act_tool, menu_data]() {
-        openUrlWithExternalTool(act_tool->data().value<ExternalTool>(), menu_data);
+      connect(act_tool, &QAction::triggered, this, [this, act_tool, media_link]() {
+        openUrlWithExternalTool(act_tool->data().value<ExternalTool>(), media_link);
       });
     }
 
@@ -296,8 +312,8 @@ bool WebViewer::eventFilter(QObject* object, QEvent* event) {
   return false;
 }
 
-void WebViewer::openUrlWithExternalTool(ExternalTool tool, const QWebEngineContextMenuData& target) {
-  tool.run(target.mediaUrl().isValid() ? target.mediaUrl().toString() : target.linkUrl().toString());
+void WebViewer::openUrlWithExternalTool(ExternalTool tool, const QString& target_url) {
+  tool.run(target_url);
 }
 
 RootItem* WebViewer::root() const {

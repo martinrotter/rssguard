@@ -40,7 +40,12 @@
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/networkurlinterceptor.h"
 
+#if QT_VERSION_MAJOR == 6
+#include <QWebEngineDownloadRequest>
+#else
 #include <QWebEngineDownloadItem>
+#endif
+
 #include <QWebEngineProfile>
 #endif
 
@@ -606,7 +611,11 @@ void Application::restart() {
 
 #if defined(USE_WEBENGINE)
 
+#if QT_VERSION_MAJOR == 6
+void Application::downloadRequested(QWebEngineDownloadRequest* download_item) {
+#else
 void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
+#endif
   downloadManager()->download(download_item->url());
   download_item->cancel();
   download_item->deleteLater();

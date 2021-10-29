@@ -19,6 +19,7 @@
 #include <QTimer>
 #include <QToolBar>
 #include <QToolTip>
+#include <QWebEngineProfile>
 #include <QWebEngineSettings>
 #include <QWidgetAction>
 
@@ -118,10 +119,10 @@ void WebBrowser::reloadFontSettings() {
   fon.fromString(qApp->settings()->value(GROUP(Messages),
                                          SETTING(Messages::PreviewerFontStandard)).toString());
 
-  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont, fon.family());
-  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont, fon.family());
-  QWebEngineSettings::defaultSettings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont, fon.family());
-  QWebEngineSettings::defaultSettings()->setFontSize(QWebEngineSettings::DefaultFontSize, fon.pointSize());
+  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont, fon.family());
+  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont, fon.family());
+  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont, fon.family());
+  QWebEngineProfile::defaultProfile()->settings()->setFontSize(QWebEngineSettings::DefaultFontSize, fon.pointSize());
 }
 
 void WebBrowser::increaseZoom() {
@@ -215,6 +216,12 @@ void WebBrowser::initializeLayout() {
   m_actionForward->setText(tr("Forward"));
   m_actionReload->setText(tr("Reload"));
   m_actionStop->setText(tr("Stop"));
+
+  m_actionBack->setIcon(qApp->icons()->fromTheme(QSL("go-previous")));
+  m_actionForward->setIcon(qApp->icons()->fromTheme(QSL("go-next")));
+  m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("reload")));
+  m_actionStop->setIcon(qApp->icons()->fromTheme(QSL("process-stop")));
+
   QWidgetAction* act_discover = new QWidgetAction(this);
 
   m_actionOpenInSystemBrowser->setEnabled(false);
@@ -228,6 +235,7 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(m_actionOpenInSystemBrowser);
   m_toolBar->addAction(act_discover);
   m_toolBar->addWidget(m_txtLocation);
+
   m_loadingProgress = new QProgressBar(this);
   m_loadingProgress->setFixedHeight(5);
   m_loadingProgress->setMinimum(0);
@@ -240,7 +248,7 @@ void WebBrowser::initializeLayout() {
   m_layout->addWidget(m_webView);
   m_layout->addWidget(m_loadingProgress);
   m_layout->addWidget(m_searchWidget);
-  m_layout->setMargin(0);
+  m_layout->setContentsMargins({ 0, 0, 0, 0 });
   m_layout->setSpacing(0);
 
   m_searchWidget->hide();

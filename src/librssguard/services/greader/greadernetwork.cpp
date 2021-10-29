@@ -50,7 +50,7 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
     trimmed_ids.append(QSL("i=") + id);
   }
 
-  QStringList working_subset; working_subset.reserve(std::min(GREADER_API_EDIT_TAG_BATCH, trimmed_ids.size()));
+  QStringList working_subset; working_subset.reserve(std::min(GREADER_API_EDIT_TAG_BATCH, int(trimmed_ids.size())));
 
   // Now, we perform messages update in batches (max X messages per batch).
   while (!trimmed_ids.isEmpty()) {

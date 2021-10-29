@@ -14,10 +14,10 @@ APP_URL_DOCUMENTATION         = "https://github.com/martinrotter/rssguard/blob/m
 APP_USERAGENT                 = "RSS Guard/$$APP_VERSION (github.com/martinrotter/rssguard)"
 APP_DONATE_URL                = "https://martinrotter.github.io/donate"
 
-message(rssguard: Welcome RSS Guard qmake script.)
+message($$MSG_PREFIX: Welcome RSS Guard qmake script.)
 
-lessThan(QT_MAJOR_VERSION, 5)|lessThan(QT_MINOR_VERSION, 9) {
-  warning(rssguard: At least Qt \"5.9.0\" is required!!!)
+!versionAtLeast(QT_VERSION, 5.9.0) {
+  warning($$MSG_PREFIX: At least Qt \"5.9.0\" is required!!!)
 }
 
 isEmpty(USE_WEBENGINE) {

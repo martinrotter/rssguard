@@ -24,7 +24,11 @@ WebPage::WebPage(QObject* parent) : QWebEnginePage(parent) {
 }
 
 WebViewer* WebPage::view() const {
+#if QT_VERSION_MAJOR == 6
+  return qobject_cast<WebViewer*>(QWebEngineView::forPage(this));
+#else
   return qobject_cast<WebViewer*>(QWebEnginePage::view());
+#endif
 }
 
 void WebPage::hideUnwantedElements() {

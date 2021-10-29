@@ -594,7 +594,7 @@ RootItem* FormMessageFiltersManager::selectedCategoryFeed() const {
 Message FormMessageFiltersManager::testingMessage() const {
   Message msg;
 
-  msg.m_feedId = NO_PARENT_CATEGORY;
+  msg.m_feedId = QString::number(NO_PARENT_CATEGORY);
   msg.m_url = m_ui.m_txtSampleUrl->text();
   msg.m_customId = m_ui.m_txtSampleUrl->text();
   msg.m_title = m_ui.m_txtSampleTitle->text();

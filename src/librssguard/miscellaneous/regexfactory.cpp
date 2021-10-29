@@ -51,7 +51,7 @@ QString RegexFactory::wildcardToRegularExpression(const QString& pattern) {
   int i = 0;
   const QChar* wc = pattern.unicode();
 
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN)
   const QLatin1Char nativePathSeparator('\\');
   const QLatin1String starEscape("[^/\\\\]*");
   const QLatin1String questionMarkEscape("[^/\\\\]");
@@ -74,7 +74,7 @@ QString RegexFactory::wildcardToRegularExpression(const QString& pattern) {
         break;
 
       case '\\':
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN)
       case '/':
         rx += QLatin1String("[/\\\\]");
         break;
