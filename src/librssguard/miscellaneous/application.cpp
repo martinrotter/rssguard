@@ -496,14 +496,15 @@ void Application::showGuiMessage(Notification::Event event,
                                  const GuiAction& action,
                                  QWidget* parent) {
 
-  if (SystemTrayIcon::areNotificationsEnabled() && dest.m_tray) {
+  if (SystemTrayIcon::areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
 
     notification.playSound(this);
 
     if (SystemTrayIcon::isSystemTrayDesired() &&
         SystemTrayIcon::isSystemTrayAreaAvailable() &&
-        notification.balloonEnabled()) {
+        notification.balloonEnabled() &&
+        dest.m_tray) {
       trayIcon()->showMessage(msg.m_title, msg.m_message, msg.m_type, TRAY_ICON_BUBBLE_TIMEOUT, std::move(action.m_action));
       return;
     }
