@@ -17,6 +17,7 @@
 
 #include <QFileIconProvider>
 #include <QTimer>
+#include <QToolTip>
 
 #if QT_VERSION_MAJOR == 6
 #include <QWebEngineContextMenuRequest>
@@ -32,6 +33,8 @@ WebViewer::WebViewer(QWidget* parent) : QWebEngineView(parent), m_root(nullptr) 
 
   setPage(page);
   resetWebPageZoom();
+
+  connect(page, &WebPage::linkHovered, this, &WebViewer::onLinkHovered);
 }
 
 bool WebViewer::canIncreaseZoom() {
@@ -310,6 +313,12 @@ bool WebViewer::eventFilter(QObject* object, QEvent* event) {
   }
 
   return false;
+}
+
+void WebViewer::onLinkHovered(const QString& url) {
+  qDebugNN << LOGSEC_GUI << "Hovered link:" << QUOTE_W_SPACE_DOT(url);
+
+  QToolTip::showText(QCursor::pos(), url, {}, {}, 6000);
 }
 
 void WebViewer::openUrlWithExternalTool(ExternalTool tool, const QString& target_url) {
