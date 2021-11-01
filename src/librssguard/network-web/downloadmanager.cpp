@@ -194,11 +194,10 @@ void DownloadItem::stop() {
 
 void DownloadItem::openFile() {
   if (!QDesktopServices::openUrl(QUrl::fromLocalFile(m_output.fileName()))) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         tr("Cannot open file"),
-                         tr("Cannot open output file. Open it manually."),
-                         QSystemTrayIcon::MessageIcon::Warning,
-                         true);
+    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+      tr("Cannot open file"),
+      tr("Cannot open output file. Open it manually."),
+      QSystemTrayIcon::MessageIcon::Warning });
   }
 }
 
@@ -415,17 +414,16 @@ void DownloadItem::finished() {
   emit downloadFinished();
 
   if (downloadedSuccessfully()) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         tr("Download finished"),
-                         tr("File '%1' is downloaded.\nClick here to open parent directory.").arg(QDir::toNativeSeparators(
-                                                                                                    m_output.fileName())),
-                         QSystemTrayIcon::MessageIcon::Information,
-                         {},
-                         {},
-                         tr("Open folder"),
-                         [this] {
-      openFolder();
-    });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+      tr("Download finished"),
+      tr("File '%1' is downloaded.\nClick here to open parent directory.").arg(QDir::toNativeSeparators(
+                                                                                 m_output.fileName())),
+      QSystemTrayIcon::MessageIcon::Information },
+                         {}, {
+      tr("Open folder"),
+      [this] {
+        openFolder();
+      } });
   }
 }
 

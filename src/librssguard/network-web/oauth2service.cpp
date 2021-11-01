@@ -80,15 +80,15 @@ OAuth2Service::~OAuth2Service() {
 
 QString OAuth2Service::bearer() {
   if (!isFullyLoggedIn()) {
-    qApp->showGuiMessage(Notification::Event::LoginFailure,
-                         tr("You have to login first"),
-                         tr("Click here to login."),
-                         QSystemTrayIcon::MessageIcon::Critical,
-                         {}, {},
-                         tr("Login"),
-                         [this]() {
-      login();
-    });
+    qApp->showGuiMessage(Notification::Event::LoginFailure, {
+      tr("You have to login first"),
+      tr("Click here to login."),
+      QSystemTrayIcon::MessageIcon::Critical },
+                         {}, {
+      tr("Login"),
+      [this]() {
+        login();
+      } });
     return {};
   }
   else {
@@ -189,10 +189,10 @@ void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
                                                  real_refresh_token,
                                                  QSL("refresh_token"));
 
-  qApp->showGuiMessage(Notification::Event::LoginDataRefreshed,
-                       tr("Logging in via OAuth 2.0..."),
-                       tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
-                       QSystemTrayIcon::MessageIcon::Information);
+  qApp->showGuiMessage(Notification::Event::LoginDataRefreshed, {
+    tr("Logging in via OAuth 2.0..."),
+    tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
+    QSystemTrayIcon::MessageIcon::Information });
 
   qDebugNN << LOGSEC_OAUTH << "Posting data for access token refreshing:" << QUOTE_W_SPACE_DOT(content);
   m_networkManager.post(networkRequest, content.toUtf8());

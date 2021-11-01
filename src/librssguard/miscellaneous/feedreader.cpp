@@ -69,11 +69,10 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
 
 void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
   if (!qApp->feedUpdateLock()->tryLock()) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         tr("Cannot fetch articles at this point"),
-                         tr("You cannot fetch new articles now because another critical operation is ongoing."),
-                         QSystemTrayIcon::MessageIcon::Warning,
-                         true);
+    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+      tr("Cannot fetch articles at this point"),
+      tr("You cannot fetch new articles now because another critical operation is ongoing."),
+      QSystemTrayIcon::MessageIcon::Warning });
     return;
   }
 
@@ -315,10 +314,10 @@ void FeedReader::executeNextAutoUpdate() {
     updateFeeds(feeds_for_update);
 
     // NOTE: OSD/bubble informing about performing of scheduled update can be shown now.
-    qApp->showGuiMessage(Notification::Event::ArticlesFetchingStarted,
-                         tr("Starting auto-download of some feeds' articles"),
-                         tr("I will auto-download new articles for %n feed(s).", nullptr, feeds_for_update.size()),
-                         QSystemTrayIcon::MessageIcon::Information);
+    qApp->showGuiMessage(Notification::Event::ArticlesFetchingStarted, {
+      tr("Starting auto-download of some feeds' articles"),
+      tr("I will auto-download new articles for %n feed(s).", nullptr, feeds_for_update.size()),
+      QSystemTrayIcon::MessageIcon::Information });
   }
 }
 

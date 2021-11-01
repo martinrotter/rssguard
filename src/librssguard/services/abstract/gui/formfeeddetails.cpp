@@ -98,11 +98,11 @@ void FormFeedDetails::acceptIfPossible() {
     accept();
   }
   catch (const ApplicationException& ex) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         tr("Error"),
-                         tr("Cannot save changes: %1").arg(ex.message()),
-                         QSystemTrayIcon::MessageIcon::Critical,
-                         true,
+    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+      tr("Cannot save feed properties"),
+      tr("Cannot save changes: %1").arg(ex.message()),
+      QSystemTrayIcon::MessageIcon::Critical },
+                         {}, {},
                          this);
   }
 }

@@ -47,10 +47,9 @@ void NewspaperPreviewer::showMoreMessages() {
     m_ui->scrollArea->verticalScrollBar()->setValue(current_scroll);
   }
   else {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         tr("Cannot show more articles"),
-                         tr("Cannot show more articles because parent feed was removed."),
-                         QSystemTrayIcon::MessageIcon::Warning,
-                         true);
+    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+      tr("Cannot show more articles"),
+      tr("Cannot show more articles because parent feed was removed."),
+      QSystemTrayIcon::MessageIcon::Warning });
   }
 }

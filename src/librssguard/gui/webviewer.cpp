@@ -318,6 +318,10 @@ bool WebViewer::eventFilter(QObject* object, QEvent* event) {
 void WebViewer::onLinkHovered(const QString& url) {
   qDebugNN << LOGSEC_GUI << "Hovered link:" << QUOTE_W_SPACE_DOT(url);
 
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       { url, url, QSystemTrayIcon::MessageIcon::NoIcon },
+                       { false, false, true });
+
   QToolTip::showText(QCursor::pos(), url, {}, {}, 6000);
 }
 

@@ -225,12 +225,11 @@ void FormUpdate::startUpdate() {
 
     if (exec_result <= HINSTANCE(32)) {
       qDebugNN << LOGSEC_GUI << "External updater was not launched due to error.";
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           tr("Cannot update application"),
-                           tr("Cannot launch external updater. Update application manually."),
-                           QSystemTrayIcon::MessageIcon::Warning,
-                           true,
-                           this);
+      qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+        tr("Cannot update application"),
+        tr("Cannot launch external updater. Update application manually."),
+        QSystemTrayIcon::MessageIcon::Warning },
+                           {}, {}, this);
     }
     else {
       qApp->quit();

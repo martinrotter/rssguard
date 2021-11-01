@@ -1096,29 +1096,29 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
 void GreaderNetwork::onTokensError(const QString& error, const QString& error_description) {
   Q_UNUSED(error)
 
-  qApp->showGuiMessage(Notification::Event::LoginFailure,
-                       tr("Inoreader: authentication error"),
-                       tr("Click this to login again. Error is: '%1'").arg(error_description),
-                       QSystemTrayIcon::MessageIcon::Critical,
-                       {}, {},
-                       tr("Login"),
-                       [this]() {
-    m_oauth->setAccessToken(QString());
-    m_oauth->setRefreshToken(QString());
-    m_oauth->login();
-  });
+  qApp->showGuiMessage(Notification::Event::LoginFailure, {
+    tr("Inoreader: authentication error"),
+    tr("Click this to login again. Error is: '%1'").arg(error_description),
+    QSystemTrayIcon::MessageIcon::Critical },
+                       {}, {
+    tr("Login"),
+    [this]() {
+      m_oauth->setAccessToken(QString());
+      m_oauth->setRefreshToken(QString());
+      m_oauth->login();
+    } });
 }
 
 void GreaderNetwork::onAuthFailed() {
-  qApp->showGuiMessage(Notification::Event::LoginFailure,
-                       tr("Inoreader: authorization denied"),
-                       tr("Click this to login again."),
-                       QSystemTrayIcon::MessageIcon::Critical,
-                       {}, {},
-                       tr("Login"),
-                       [this]() {
-    m_oauth->login();
-  });
+  qApp->showGuiMessage(Notification::Event::LoginFailure, {
+    tr("Inoreader: authorization denied"),
+    tr("Click this to login again."),
+    QSystemTrayIcon::MessageIcon::Critical },
+                       {}, {
+    tr("Login"),
+    [this]() {
+      m_oauth->login();
+    } });
 }
 
 void GreaderNetwork::initializeOauth() {

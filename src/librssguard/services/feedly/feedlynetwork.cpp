@@ -508,32 +508,32 @@ void FeedlyNetwork::setBatchSize(int batch_size) {
 void FeedlyNetwork::onTokensError(const QString& error, const QString& error_description) {
   Q_UNUSED(error)
 
-  qApp->showGuiMessage(Notification::Event::LoginFailure,
-                       tr("Feedly: authentication error"),
-                       tr("Click this to login again. Error is: '%1'").arg(error_description),
-                       QSystemTrayIcon::MessageIcon::Critical,
-                       {}, {},
-                       tr("Login"),
-                       [this]() {
-    m_oauth->setAccessToken(QString());
-    m_oauth->setRefreshToken(QString());
+  qApp->showGuiMessage(Notification::Event::LoginFailure, {
+    tr("Feedly: authentication error"),
+    tr("Click this to login again. Error is: '%1'").arg(error_description),
+    QSystemTrayIcon::MessageIcon::Critical },
+                       {}, {
+    tr("Login"),
+    [this]() {
+      m_oauth->setAccessToken(QString());
+      m_oauth->setRefreshToken(QString());
 
-    //m_oauth->logout(false);
-    m_oauth->login();
-  });
+      //m_oauth->logout(false);
+      m_oauth->login();
+    } });
 }
 
 void FeedlyNetwork::onAuthFailed() {
-  qApp->showGuiMessage(Notification::Event::LoginFailure,
-                       tr("Feedly: authorization denied"),
-                       tr("Click this to login again."),
-                       QSystemTrayIcon::MessageIcon::Critical,
-                       {}, {},
-                       tr("Login"),
-                       [this]() {
-    //m_oauth->logout(false);
-    m_oauth->login();
-  });
+  qApp->showGuiMessage(Notification::Event::LoginFailure, {
+    tr("Feedly: authorization denied"),
+    tr("Click this to login again."),
+    QSystemTrayIcon::MessageIcon::Critical },
+                       {}, {
+    tr("Login"),
+    [this]() {
+      //m_oauth->logout(false);
+      m_oauth->login();
+    } });
 }
 
 void FeedlyNetwork::onTokensRetrieved(const QString& access_token, const QString& refresh_token, int expires_in) {

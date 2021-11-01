@@ -17,11 +17,10 @@ TrayIconMenu::TrayIconMenu(const QString& title, QWidget* parent) : QMenu(title,
 bool TrayIconMenu::event(QEvent* event) {
   if (event->type() == QEvent::Type::Show && Application::activeModalWidget() != nullptr) {
     QTimer::singleShot(0, this, &TrayIconMenu::hide);
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         QSL(APP_LONG_NAME),
-                         tr("Close opened modal dialogs first."),
-                         QSystemTrayIcon::Warning,
-                         true);
+    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+      tr("Close dialogs"),
+      tr("Close opened modal dialogs first."),
+      QSystemTrayIcon::Warning });
   }
 
   return QMenu::event(event);

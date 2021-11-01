@@ -142,11 +142,10 @@ void MessagesModel::loadMessages(RootItem* item) {
       qCriticalNN << LOGSEC_MESSAGEMODEL
                   << "Loading of messages from item '"
                   << item->title() << "' failed.";
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           tr("Loading of articles from item '%1' failed.").arg(item->title()),
-                           tr("Loading of articles failed, maybe messages could not be downloaded."),
-                           QSystemTrayIcon::MessageIcon::Critical,
-                           true);
+      qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+        tr("Loading of articles from item '%1' failed").arg(item->title()),
+        tr("Loading of articles failed, maybe messages could not be downloaded."),
+        QSystemTrayIcon::MessageIcon::Critical });
     }
   }
 

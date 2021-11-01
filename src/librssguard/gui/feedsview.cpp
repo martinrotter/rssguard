@@ -169,11 +169,10 @@ void FeedsView::addFeedIntoSelectedAccount() {
       root->addNewFeed(selected, QGuiApplication::clipboard()->text(QClipboard::Mode::Clipboard));
     }
     else {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           tr("Not supported"),
-                           tr("Selected account does not support adding of new feeds."),
-                           QSystemTrayIcon::MessageIcon::Warning,
-                           true);
+      qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+        tr("Not supported by account"),
+        tr("Selected account does not support adding of new feeds."),
+        QSystemTrayIcon::MessageIcon::Warning });
     }
   }
 }
@@ -188,11 +187,10 @@ void FeedsView::addCategoryIntoSelectedAccount() {
       root->addNewCategory(selectedItem());
     }
     else {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           tr("Not supported"),
-                           tr("Selected account does not support adding of new categories."),
-                           QSystemTrayIcon::MessageIcon::Warning,
-                           true);
+      qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+        tr("Not supported by account"),
+        tr("Selected account does not support adding of new categories."),
+        QSystemTrayIcon::MessageIcon::Warning });
     }
   }
 }
@@ -252,11 +250,10 @@ void FeedsView::editSelectedItem() {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         tr("Cannot edit item"),
-                         tr("Selected item cannot be edited because another critical operation is ongoing."),
-                         QSystemTrayIcon::MessageIcon::Warning,
-                         true);
+    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+      tr("Cannot edit item"),
+      tr("Selected item cannot be edited because another critical operation is ongoing."),
+      QSystemTrayIcon::MessageIcon::Warning });
 
     // Thus, cannot delete and quit the method.
     return;
@@ -266,11 +263,10 @@ void FeedsView::editSelectedItem() {
     selectedItem()->editViaGui();
   }
   else {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         tr("Cannot edit item"),
-                         tr("Selected item cannot be edited, this is not (yet?) supported."),
-                         QSystemTrayIcon::MessageIcon::Warning,
-                         true);
+    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+      tr("Cannot edit item"),
+      tr("Selected item cannot be edited, this is not (yet?) supported."),
+      QSystemTrayIcon::MessageIcon::Warning });
   }
 
   // Changes are done, unlock the update master lock.
@@ -282,11 +278,10 @@ void FeedsView::deleteSelectedItem() {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         tr("Cannot delete item"),
-                         tr("Selected item cannot be deleted because another critical operation is ongoing."),
-                         QSystemTrayIcon::MessageIcon::Warning,
-                         true);
+    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+      tr("Cannot delete item"),
+      tr("Selected item cannot be deleted because another critical operation is ongoing."),
+      QSystemTrayIcon::MessageIcon::Warning });
 
     // Thus, cannot delete and quit the method.
     return;
@@ -317,19 +312,17 @@ void FeedsView::deleteSelectedItem() {
 
       // We have deleteable item selected, remove it via GUI.
       if (!selected_item->deleteViaGui()) {
-        qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                             tr("Cannot delete \"%1\"").arg(selected_item->title()),
-                             tr("This item cannot be deleted because something critically failed. Submit bug report."),
-                             QSystemTrayIcon::MessageIcon::Critical,
-                             true);
+        qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+          tr("Cannot delete \"%1\"").arg(selected_item->title()),
+          tr("This item cannot be deleted because something critically failed. Submit bug report."),
+          QSystemTrayIcon::MessageIcon::Critical });
       }
     }
     else {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           tr("Cannot delete \"%1\"").arg(selected_item->title()),
-                           tr("This item cannot be deleted, because it does not support it\nor this functionality is not implemented yet."),
-                           QSystemTrayIcon::MessageIcon::Critical,
-                           true);
+      qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+        tr("Cannot delete \"%1\"").arg(selected_item->title()),
+        tr("This item cannot be deleted, because it does not support it\nor this functionality is not implemented yet."),
+        QSystemTrayIcon::MessageIcon::Critical });
     }
   }
 

@@ -211,14 +211,14 @@ void SystemFactory::checkForUpdatesOnStartup() {
       if (!updates.first.isEmpty() &&
           updates.second == QNetworkReply::NetworkError::NoError &&
           SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, QSL(APP_VERSION))) {
-        qApp->showGuiMessage(Notification::Event::NewAppVersionAvailable,
-                             QObject::tr("New version available"),
-                             QObject::tr("Click the bubble for more information."),
-                             QSystemTrayIcon::Information, {}, {},
-                             tr("See new version info"),
-                             [] {
-          FormUpdate(qApp->mainForm()).exec();
-        });
+        qApp->showGuiMessage(Notification::Event::NewAppVersionAvailable, {
+          QObject::tr("New version available"),
+          QObject::tr("Click the bubble for more information."),
+          QSystemTrayIcon::Information }, {}, {
+          tr("See new version info"),
+          [] {
+            FormUpdate(qApp->mainForm()).exec();
+          } });
       }
     });
     qApp->system()->checkForUpdates();

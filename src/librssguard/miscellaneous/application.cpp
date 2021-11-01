@@ -199,28 +199,29 @@ void Application::loadDynamicShortcuts() {
 
 void Application::showPolls() const {
   if(isFirstRunCurrentVersion()) {
-    qApp->showGuiMessage(Notification::Event::NewAppVersionAvailable,
-                         tr("RSS Guard has Discord server!"),
-                         tr("You can visit it now! Click me!"),
-                         QSystemTrayIcon::MessageIcon::Information,
-                         true,
-                         {},
-                         tr("Go to Discord!"),
-                         [this]() {
-      web()->openUrlInExternalBrowser(QSL("https://discord.gg/7xbVMPPNqH"));
-    });
+    qApp->showGuiMessage(Notification::Event::NewAppVersionAvailable, {
+      tr("RSS Guard has Discord server!"),
+      tr("You can visit it now! Click me!"),
+      QSystemTrayIcon::MessageIcon::Information },
+                         {}, {
+      tr("Go to Discord!"),
+      [this]() {
+        web()->openUrlInExternalBrowser(QSL("https://discord.gg/7xbVMPPNqH"));
+      } });
   }
 }
 
 void Application::offerChanges() const {
   if (isFirstRunCurrentVersion()) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         QSL(APP_NAME),
-                         QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
-                                     "version by clicking this popup notification.").arg(QSL(APP_LONG_NAME)),
-                         QSystemTrayIcon::MessageIcon::NoIcon, {}, {}, tr("Go to changelog"), [] {
-      FormAbout(qApp->mainForm()).exec();
-    });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+      tr("Welcome"),
+      tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
+         "version by clicking this popup notification.").arg(QSL(APP_LONG_NAME)),
+      QSystemTrayIcon::MessageIcon::NoIcon },
+                         {},
+                         { tr("Go to changelog"), [] {
+                             FormAbout(qApp->mainForm()).exec();
+                           } });
   }
 }
 
@@ -489,11 +490,13 @@ void Application::deleteTrayIcon() {
   }
 }
 
-void Application::showGuiMessage(Notification::Event event, const QString& title,
-                                 const QString& message, QSystemTrayIcon::MessageIcon message_type, bool show_at_least_msgbox,
-                                 QWidget* parent, const QString& functor_heading, std::function<void()> functor) {
+void Application::showGuiMessage(Notification::Event event,
+                                 const GuiMessage& msg,
+                                 const GuiMessageDestination& dest,
+                                 const GuiAction& action,
+                                 QWidget* parent) {
 
-  if (SystemTrayIcon::areNotificationsEnabled()) {
+  if (SystemTrayIcon::areNotificationsEnabled() && dest.m_tray) {
     auto notification = m_notifications->notificationForEvent(event);
 
     notification.playSound(this);
@@ -501,19 +504,23 @@ void Application::showGuiMessage(Notification::Event event, const QString& title
     if (SystemTrayIcon::isSystemTrayDesired() &&
         SystemTrayIcon::isSystemTrayAreaAvailable() &&
         notification.balloonEnabled()) {
-      trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, std::move(functor));
-
+      trayIcon()->showMessage(msg.m_title, msg.m_message, msg.m_type, TRAY_ICON_BUBBLE_TIMEOUT, std::move(action.m_action));
       return;
     }
   }
 
-  if (show_at_least_msgbox) {
+  if (dest.m_messageBox) {
     // Tray icon or OSD is not available, display simple text box.
-    MessageBox::show(parent == nullptr ? mainFormWidget() : parent, QMessageBox::Icon(message_type), title, message,
-                     {}, {}, QMessageBox::StandardButton::Ok, QMessageBox::StandardButton::Ok, {}, functor_heading, functor);
+    MessageBox::show(parent == nullptr ? mainFormWidget() : parent,
+                     QMessageBox::Icon(msg.m_type), msg.m_title, msg.m_message,
+                     {}, {}, QMessageBox::StandardButton::Ok, QMessageBox::StandardButton::Ok, {},
+                     action.m_title, action.m_action);
+  }
+  else if (dest.m_statusBar && mainForm()->statusBar() != nullptr && mainForm()->statusBar()->isVisible()) {
+    mainForm()->statusBar()->showMessage(msg.m_message);
   }
   else {
-    qDebugNN << LOGSEC_CORE << "Silencing GUI message:" << QUOTE_W_SPACE_DOT(message);
+    qDebugNN << LOGSEC_CORE << "Silencing GUI message:" << QUOTE_W_SPACE_DOT(msg.m_message);
   }
 }
 
@@ -622,16 +629,15 @@ void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
 }
 
 void Application::onAdBlockFailure() {
-  qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                       tr("AdBlock needs to be configured"),
-                       tr("AdBlock component is not configured properly."),
-                       QSystemTrayIcon::MessageIcon::Critical,
-                       true,
-                       {},
-                       tr("Configure now"),
-                       [=]() {
-    m_webFactory->adBlock()->showDialog();
-  });
+  qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+    tr("AdBlock needs to be configured"),
+    tr("AdBlock component is not configured properly."),
+    QSystemTrayIcon::MessageIcon::Critical },
+                       {}, {
+    tr("Configure now"),
+    [=]() {
+      m_webFactory->adBlock()->showDialog();
+    } });
 
   qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, false);
 }
@@ -641,10 +647,10 @@ void Application::onAdBlockFailure() {
 void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(Notification::Event::NewUnreadArticlesFetched,
-                         tr("Unread articles fetched"),
-                         results.overview(10),
-                         QSystemTrayIcon::MessageIcon::NoIcon);
+    qApp->showGuiMessage(Notification::Event::NewUnreadArticlesFetched, {
+      tr("Unread articles fetched"),
+      results.overview(10),
+      QSystemTrayIcon::MessageIcon::NoIcon });
   }
 }
 
@@ -711,10 +717,10 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
     return;
   }
   else if (cmd_parser.isSet(QSL(CLI_IS_RUNNING))) {
-    showGuiMessage(Notification::Event::GeneralEvent,
-                   QSL(APP_NAME),
-                   tr("Application is already running."),
-                   QSystemTrayIcon::MessageIcon::Information);
+    showGuiMessage(Notification::Event::GeneralEvent, {
+      tr("Already running"),
+      tr("Application is already running."),
+      QSystemTrayIcon::MessageIcon::Information });
     mainForm()->display();
   }
 
@@ -730,11 +736,10 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
       rt->addNewFeed(nullptr, msg);
     }
     else {
-      showGuiMessage(Notification::Event::GeneralEvent,
-                     tr("Cannot add feed"),
-                     tr("Feed cannot be added because there is no active account which can add feeds."),
-                     QSystemTrayIcon::MessageIcon::Warning,
-                     true);
+      showGuiMessage(Notification::Event::GeneralEvent, {
+        tr("Cannot add feed"),
+        tr("Feed cannot be added because there is no active account which can add feeds."),
+        QSystemTrayIcon::MessageIcon::Warning });
     }
   }
 }

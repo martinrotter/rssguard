@@ -43,6 +43,35 @@ class QWebEngineDownloadItem;
 class WebFactory;
 class NotificationFactory;
 
+struct GuiMessage {
+  public:
+    GuiMessage(QString title, QString message, QSystemTrayIcon::MessageIcon type)
+      : m_title(std::move(title)), m_message(std::move(message)), m_type(type) {}
+
+    QString m_title;
+    QString m_message;
+    QSystemTrayIcon::MessageIcon m_type;
+};
+
+struct GuiMessageDestination {
+  public:
+    GuiMessageDestination(bool tray = true, bool message_box = true, bool status_bar = false)
+      : m_tray(tray), m_messageBox(message_box), m_statusBar(status_bar) {}
+
+    bool m_tray;
+    bool m_messageBox;
+    bool m_statusBar;
+};
+
+struct GuiAction {
+  public:
+    GuiAction(QString title = {}, const std::function<void()>& action = nullptr)
+      : m_title(std::move(title)), m_action(action) {}
+
+    QString m_title;
+    std::function<void()> m_action;
+};
+
 class RSSGUARD_DLLSPEC Application : public SingleApplication {
   Q_OBJECT
 
@@ -119,10 +148,11 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     // Displays given simple message in tray icon bubble or OSD
     // or in message box if tray icon is disabled.
-    void showGuiMessage(Notification::Event event, const QString& title, const QString& message,
-                        QSystemTrayIcon::MessageIcon message_type, bool show_at_least_msgbox = false,
-                        QWidget* parent = nullptr, const QString& functor_heading = {},
-                        std::function<void()> functor = nullptr);
+    void showGuiMessage(Notification::Event event,
+                        const GuiMessage& msg,
+                        const GuiMessageDestination& dest = {},
+                        const GuiAction& action = {},
+                        QWidget* parent = nullptr);
 
     // Returns pointer to "GOD" application singleton.
     static Application* instance();
