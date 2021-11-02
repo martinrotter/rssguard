@@ -738,7 +738,7 @@ void FeedsView::setupAppearance() {
   setAllColumnsShowFocus(false);
   setRootIsDecorated(false);
   setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
-  setItemDelegate(new StyledItemDelegateWithoutFocus(this));
+  setItemDelegate(new StyledItemDelegateWithoutFocus(GUI::HeightRowFeeds, this));
 }
 
 void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {

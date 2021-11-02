@@ -22,7 +22,7 @@
 
 MessagesModel::MessagesModel(QObject* parent)
   : QSqlQueryModel(parent), m_cache(new MessagesModelCache(this)), m_messageHighlighter(MessageHighlighter::NoHighlighting),
-  m_customDateFormat(QString()), m_selectedItem(nullptr), m_itemHeight(-1), m_displayFeedIcons(false) {
+  m_customDateFormat(QString()), m_selectedItem(nullptr), m_displayFeedIcons(false) {
   setupFonts();
   setupIcons();
   setupHeaderData();
@@ -119,15 +119,6 @@ void MessagesModel::setupFonts() {
   m_boldStrikedFont = m_boldFont;
   m_normalStrikedFont.setStrikeOut(true);
   m_boldStrikedFont.setStrikeOut(true);
-
-  m_itemHeight = qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt();
-
-  if (m_itemHeight > 0) {
-    m_boldFont.setPixelSize(int(m_itemHeight * 0.6));
-    m_normalFont.setPixelSize(int(m_itemHeight * 0.6));
-    m_boldStrikedFont.setPixelSize(int(m_itemHeight * 0.6));
-    m_normalStrikedFont.setPixelSize(int(m_itemHeight * 0.6));
-  }
 }
 
 void MessagesModel::loadMessages(RootItem* item) {

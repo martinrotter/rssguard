@@ -20,7 +20,7 @@ bool TrayIconMenu::event(QEvent* event) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent, {
       tr("Close dialogs"),
       tr("Close opened modal dialogs first."),
-      QSystemTrayIcon::Warning });
+      QSystemTrayIcon::MessageIcon::Warning });
   }
 
   return QMenu::event(event);

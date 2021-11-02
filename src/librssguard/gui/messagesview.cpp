@@ -215,7 +215,7 @@ void MessagesView::setupAppearance() {
   setAllColumnsShowFocus(false);
   setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
 
-  setItemDelegate(new StyledItemDelegateWithoutFocus(this));
+  setItemDelegate(new StyledItemDelegateWithoutFocus(GUI::HeightRowMessages, this));
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
   header()->setFirstSectionMovable(true);

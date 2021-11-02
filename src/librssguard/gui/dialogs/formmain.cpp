@@ -122,7 +122,7 @@ void FormMain::showDbCleanupAssistant() {
     qApp->showGuiMessage(Notification::Event::GeneralEvent, {
       tr("Cannot cleanup database"),
       tr("Cannot cleanup database, because another critical action is running."),
-      QSystemTrayIcon::Warning });
+      QSystemTrayIcon::MessageIcon::Warning });
   }
 }
 
@@ -466,7 +466,7 @@ void FormMain::switchVisibility(bool force_hide) {
         qApp->showGuiMessage(Notification::Event::GeneralEvent, {
           tr("Close dialogs"),
           tr("Close opened modal dialogs first."),
-          QSystemTrayIcon::Warning });
+          QSystemTrayIcon::MessageIcon::Warning });
       }
       else {
         hide();

@@ -207,7 +207,7 @@ void StandardFeed::fetchMetadataForItself() {
                 << "Cannot overwrite feed:"
                 << QUOTE_W_SPACE_DOT(ex.message());
     qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Error"),
+      tr("Cannot save feed data"),
       tr("Cannot save data for feed: %1").arg(ex.message()),
       QSystemTrayIcon::MessageIcon::Critical });
   }

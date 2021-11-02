@@ -28,7 +28,7 @@
 
 using RootItemPtr = RootItem*;
 
-FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_itemHeight(-1) {
+FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent) {
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
@@ -120,7 +120,7 @@ bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int 
         qApp->showGuiMessage(Notification::Event::GeneralEvent, {
           tr("Cannot perform drag & drop operation"),
           tr("You can't transfer dragged item into different account, this is not supported."),
-          QSystemTrayIcon::MessageIcon::Warning });
+          QSystemTrayIcon::MessageIcon::Critical });
         qDebugNN << LOGSEC_FEEDMODEL
                  << "Dragged item cannot be dragged into different account. Cancelling drag-drop action.";
         return false;
@@ -459,13 +459,6 @@ void FeedsModel::setupFonts() {
   m_normalFont = fon;
   m_boldFont = m_normalFont;
   m_boldFont.setBold(true);
-
-  m_itemHeight = qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt();
-
-  if (m_itemHeight > 0) {
-    m_boldFont.setPixelSize(int(m_itemHeight * 0.6));
-    m_normalFont.setPixelSize(int(m_itemHeight * 0.6));
-  }
 }
 
 void FeedsModel::reloadWholeLayout() {

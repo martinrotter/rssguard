@@ -55,7 +55,7 @@ struct GuiMessage {
 
 struct GuiMessageDestination {
   public:
-    GuiMessageDestination(bool tray = true, bool message_box = true, bool status_bar = false)
+    GuiMessageDestination(bool tray = true, bool message_box = false, bool status_bar = false)
       : m_tray(tray), m_messageBox(message_box), m_statusBar(status_bar) {}
 
     bool m_tray;

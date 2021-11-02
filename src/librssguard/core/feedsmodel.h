@@ -148,7 +148,6 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
 
   private:
     RootItem* m_rootItem;
-    int m_itemHeight;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QIcon m_countsIcon;

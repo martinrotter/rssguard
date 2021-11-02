@@ -396,7 +396,7 @@ void StandardServiceRoot::addNewCategory(RootItem* selected_item) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent, {
       tr("Cannot add category"),
       tr("Cannot add category because another critical operation is ongoing."),
-      QSystemTrayIcon::Warning });
+      QSystemTrayIcon::MessageIcon::Warning });
 
     // Thus, cannot delete and quit the method.
     return;

@@ -103,7 +103,6 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     QIcon m_unreadIcon;
     QIcon m_enclosuresIcon;
     QList<QIcon> m_scoreIcons;
-    int m_itemHeight;
     bool m_displayFeedIcons;
 };
 

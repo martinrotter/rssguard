@@ -192,7 +192,8 @@ void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
   qApp->showGuiMessage(Notification::Event::LoginDataRefreshed, {
     tr("Logging in via OAuth 2.0..."),
     tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
-    QSystemTrayIcon::MessageIcon::Information });
+    QSystemTrayIcon::MessageIcon::Information },
+                       { true, false, true });
 
   qDebugNN << LOGSEC_OAUTH << "Posting data for access token refreshing:" << QUOTE_W_SPACE_DOT(content);
   m_networkManager.post(networkRequest, content.toUtf8());
