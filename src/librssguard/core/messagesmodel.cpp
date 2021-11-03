@@ -22,7 +22,7 @@
 
 MessagesModel::MessagesModel(QObject* parent)
   : QSqlQueryModel(parent), m_cache(new MessagesModelCache(this)), m_messageHighlighter(MessageHighlighter::NoHighlighting),
-  m_customDateFormat(QString()), m_selectedItem(nullptr), m_displayFeedIcons(false) {
+  m_customDateFormat(QString()), m_customTimeFormat(QString()), m_selectedItem(nullptr), m_displayFeedIcons(false) {
   setupFonts();
   setupIcons();
   setupHeaderData();
@@ -186,6 +186,13 @@ void MessagesModel::updateDateFormat() {
   else {
     m_customDateFormat = QString();
   }
+
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomTime)).toBool()) {
+    m_customTimeFormat = qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomTimeFormat)).toString();
+  }
+  else {
+    m_customTimeFormat = QString();
+  }
 }
 
 void MessagesModel::updateFeedIconsDisplay() {
@@ -290,7 +297,10 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       if (index_column == MSG_DB_DCREATED_INDEX) {
         QDateTime dt = TextFactory::parseDateTime(QSqlQueryModel::data(idx, role).value<qint64>()).toLocalTime();
 
-        if (m_customDateFormat.isEmpty()) {
+        if (dt.date() == QDate::currentDate() && !m_customTimeFormat.isEmpty()) {
+          return dt.toString(m_customTimeFormat);
+        }
+        else if (m_customDateFormat.isEmpty()) {
           return QLocale().toString(dt, QLocale::FormatType::ShortFormat);
         }
         else {

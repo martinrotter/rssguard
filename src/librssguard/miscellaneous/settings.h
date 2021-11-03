@@ -122,6 +122,12 @@ namespace Messages {
   KEY CustomDateFormat;
   VALUE(char*) CustomDateFormatDef;
 
+  KEY UseCustomTime;
+  VALUE(bool) UseCustomTimeDef;
+
+  KEY CustomTimeFormat;
+  VALUE(QString) CustomTimeFormatDef;
+
   KEY ClearReadOnExit;
   VALUE(bool) ClearReadOnExitDef;
 

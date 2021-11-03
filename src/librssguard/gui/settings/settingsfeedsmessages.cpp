@@ -49,8 +49,13 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_checkAutoUpdateOnlyUnfocused, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkDisplayFeedIcons, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+
   connect(m_ui->m_checkMessagesDateTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkMessagesDateTimeFormat, &QCheckBox::toggled, m_ui->m_cmbMessagesDateTimeFormat, &QComboBox::setEnabled);
+
+  connect(m_ui->m_checkMessagesTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkMessagesTimeFormat, &QCheckBox::toggled, m_ui->m_cmbMessagesTimeFormat, &QComboBox::setEnabled);
+
   connect(m_ui->m_checkRemoveReadMessagesOnExit, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkBringToForegroundAfterMsgOpened, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkUpdateAllFeedsOnStartup, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -67,6 +72,8 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_spinFeedUpdateTimeout, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this,
           &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbMessagesDateTimeFormat, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+          &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cmbMessagesTimeFormat, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbCountsFeedList, &QComboBox::currentTextChanged, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbCountsFeedList, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
@@ -95,7 +102,7 @@ SettingsFeedsMessages::~SettingsFeedsMessages() {
 }
 
 void SettingsFeedsMessages::initializeMessageDateFormats() {
-  QStringList best_formats;
+  QStringList datetime_formats, time_formats;
   const QDateTime current_dt = QDateTime::currentDateTime();
   const QLocale current_locale = qApp->localization()->loadedLocale();
   auto installed_languages = qApp->localization()->installedLanguages();
@@ -103,15 +110,23 @@ void SettingsFeedsMessages::initializeMessageDateFormats() {
   for (const Language& lang : qAsConst(installed_languages)) {
     QLocale locale(lang.m_code);
 
-    best_formats << locale.dateTimeFormat(QLocale::FormatType::LongFormat)
-                 << locale.dateTimeFormat(QLocale::FormatType::ShortFormat)
-                 << locale.dateTimeFormat(QLocale::FormatType::NarrowFormat);
+    datetime_formats << locale.dateTimeFormat(QLocale::FormatType::LongFormat)
+                     << locale.dateTimeFormat(QLocale::FormatType::ShortFormat)
+                     << locale.dateTimeFormat(QLocale::FormatType::NarrowFormat);
+    time_formats << locale.timeFormat(QLocale::FormatType::LongFormat)
+                 << locale.timeFormat(QLocale::FormatType::ShortFormat)
+                 << locale.timeFormat(QLocale::FormatType::NarrowFormat);
   }
 
-  best_formats.removeDuplicates();
+  datetime_formats.removeDuplicates();
+  time_formats.removeDuplicates();
 
-  for (const QString& format : qAsConst(best_formats)) {
+  for (const QString& format : qAsConst(datetime_formats)) {
     m_ui->m_cmbMessagesDateTimeFormat->addItem(current_locale.toString(current_dt, format), format);
+  }
+
+  for (const QString& format : qAsConst(time_formats)) {
+    m_ui->m_cmbMessagesTimeFormat->addItem(current_locale.toString(current_dt, format), format);
   }
 }
 
@@ -164,11 +179,21 @@ void SettingsFeedsMessages::loadSettings() {
 #endif
 
   m_ui->m_checkMessagesDateTimeFormat->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool());
-  const int index_format = m_ui->m_cmbMessagesDateTimeFormat->findData(settings()->value(GROUP(Messages),
-                                                                                         SETTING(Messages::CustomDateFormat)).toString());
+
+  int index_format = m_ui->m_cmbMessagesDateTimeFormat->findData(settings()->value(GROUP(Messages),
+                                                                                   SETTING(Messages::CustomDateFormat)).toString());
 
   if (index_format >= 0) {
     m_ui->m_cmbMessagesDateTimeFormat->setCurrentIndex(index_format);
+  }
+
+  m_ui->m_checkMessagesTimeFormat->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseCustomTime)).toBool());
+
+  index_format = m_ui->m_cmbMessagesTimeFormat->findData(settings()->value(GROUP(Messages),
+                                                                           SETTING(Messages::CustomTimeFormat)).toString());
+
+  if (index_format >= 0) {
+    m_ui->m_cmbMessagesTimeFormat->setCurrentIndex(index_format);
   }
 
   QFont fon;
@@ -218,7 +243,6 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::FeedsUpdateOnStartup, m_ui->m_checkUpdateAllFeedsOnStartup->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::FeedsUpdateStartupDelay, m_ui->m_spinStartupUpdateDelay->value());
   settings()->setValue(GROUP(Feeds), Feeds::CountFormat, m_ui->m_cmbCountsFeedList->currentText());
-  settings()->setValue(GROUP(Messages), Messages::UseCustomDate, m_ui->m_checkMessagesDateTimeFormat->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages, m_ui->m_checkShowTooltips->isChecked());
   settings()->setValue(GROUP(Messages), Messages::IgnoreContentsChanges, m_ui->m_cmbIgnoreContentsChanges->isChecked());
 
@@ -231,8 +255,14 @@ void SettingsFeedsMessages::saveSettings() {
                        m_ui->m_cbShowEnclosuresDirectly->isChecked());
 #endif
 
+  settings()->setValue(GROUP(Messages), Messages::UseCustomDate, m_ui->m_checkMessagesDateTimeFormat->isChecked());
+  settings()->setValue(GROUP(Messages), Messages::UseCustomTime, m_ui->m_checkMessagesTimeFormat->isChecked());
+
   settings()->setValue(GROUP(Messages), Messages::CustomDateFormat,
                        m_ui->m_cmbMessagesDateTimeFormat->itemData(m_ui->m_cmbMessagesDateTimeFormat->currentIndex()).toString());
+
+  settings()->setValue(GROUP(Messages), Messages::CustomTimeFormat,
+                       m_ui->m_cmbMessagesTimeFormat->itemData(m_ui->m_cmbMessagesTimeFormat->currentIndex()).toString());
 
   // Save fonts.
   settings()->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_lblMessagesFont->font().toString());

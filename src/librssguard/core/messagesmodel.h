@@ -91,6 +91,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     MessagesModelCache* m_cache;
     MessageHighlighter m_messageHighlighter;
     QString m_customDateFormat;
+    QString m_customTimeFormat;
     RootItem* m_selectedItem;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;

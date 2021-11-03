@@ -105,6 +105,12 @@ DVALUE(bool) Messages::UseCustomDateDef = false;
 DKEY Messages::CustomDateFormat = "custom_date_format";
 DVALUE(char*) Messages::CustomDateFormatDef = "";
 
+DKEY Messages::UseCustomTime = "use_custom_time";
+DVALUE(bool) Messages::UseCustomTimeDef = false;
+
+DKEY Messages::CustomTimeFormat = "custom_time_format";
+DVALUE(QString) Messages::CustomTimeFormatDef = {};
+
 DKEY Messages::ClearReadOnExit = "clear_read_on_exit";
 DVALUE(bool) Messages::ClearReadOnExitDef = false;
 
