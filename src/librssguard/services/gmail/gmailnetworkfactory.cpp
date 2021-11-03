@@ -528,6 +528,15 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
       if (msg.m_contents.isEmpty()) {
         if (mime.contains(QL1S("text/html"))) {
           msg.m_contents = QByteArray::fromBase64(body[QSL("data")].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
+
+          if (msg.m_contents.contains(QSL("<body>"))) {
+            int strt = msg.m_contents.indexOf(QSL("<body>"));
+            int end = msg.m_contents.indexOf(QSL("</body>"));
+
+            if (strt > 0 && end > strt) {
+              msg.m_contents = msg.m_contents.mid(strt + 6, end - strt - 6);
+            }
+          }
         }
         else if (backup_contents.isEmpty()) {
           backup_contents = QByteArray::fromBase64(body[QSL("data")].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
