@@ -164,7 +164,7 @@ QVariant RootItem::data(int column, int role) const {
 
     case Qt::ItemDataRole::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title.trimmed();
+        return sanitizedTitle();
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         int count_unread = countOfUnreadMessages();
@@ -498,6 +498,10 @@ void RootItem::setId(int id) {
 
 QString RootItem::title() const {
   return m_title;
+}
+
+QString RootItem::sanitizedTitle() const {
+  return m_title.simplified();
 }
 
 void RootItem::setTitle(const QString& title) {

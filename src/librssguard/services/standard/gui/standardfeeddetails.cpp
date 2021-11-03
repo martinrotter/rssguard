@@ -166,7 +166,7 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type, const 
 
     // Icon or whole feed was guessed.
     m_ui.m_btnIcon->setIcon(metadata->icon());
-    m_ui.m_txtTitle->lineEdit()->setText(metadata->title());
+    m_ui.m_txtTitle->lineEdit()->setText(metadata->sanitizedTitle());
     m_ui.m_txtDescription->lineEdit()->setText(metadata->description());
     m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue((int) metadata->type())));
     int encoding_index = m_ui.m_cmbEncoding->findText(metadata->encoding(), Qt::MatchFlag::MatchFixedString);

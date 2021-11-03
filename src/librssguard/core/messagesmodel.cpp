@@ -299,7 +299,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
       else if (index_column == MSG_DB_FEED_TITLE_INDEX) {
         // Trim feed title.
-        return data(idx, Qt::ItemDataRole::EditRole).toString().trimmed();
+        return data(idx, Qt::ItemDataRole::EditRole).toString().simplified();
       }
       else if (index_column == MSG_DB_CONTENTS_INDEX) {
         // Do not display full contents here.

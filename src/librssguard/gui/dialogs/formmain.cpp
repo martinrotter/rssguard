@@ -406,7 +406,7 @@ void FormMain::onFeedUpdatesStarted() {
 
 void FormMain::onFeedUpdatesProgress(const Feed* feed, int current, int total) {
   statusBar()->showProgressFeeds(int((current * 100.0) / total),
-                                 feed->title());
+                                 feed->sanitizedTitle());
 }
 
 void FormMain::updateMessageButtonsAvailability() {

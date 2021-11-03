@@ -70,7 +70,7 @@ void FormStandardFeedDetails::apply() {
     static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType->itemData(m_standardFeedDetails->m_ui.m_cmbType->currentIndex()).value<int>());
 
   // Setup data for new_feed.
-  std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text());
+  std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text().simplified());
   std_feed->setCreationDate(QDateTime::currentDateTime());
   std_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
   std_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());

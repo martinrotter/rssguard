@@ -171,6 +171,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
 
     // Each item has its title.
     QString title() const;
+    QString sanitizedTitle() const;
     void setTitle(const QString& title);
 
     // This should be in UTC and should be converted to localtime when needed.
