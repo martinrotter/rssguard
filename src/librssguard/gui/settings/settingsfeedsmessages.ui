@@ -118,7 +118,7 @@
        <item row="5" column="0">
         <widget class="QLabel" name="label_6">
          <property name="text">
-          <string>Feed list row height (-1 = default)</string>
+          <string>Feed list row height</string>
          </property>
          <property name="buddy">
           <cstring>m_spinHeightRowsFeeds</cstring>
@@ -132,6 +132,9 @@
            <width>150</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="suffix">
+          <string notr="true"> px</string>
          </property>
          <property name="minimum">
           <number>-1</number>
@@ -303,7 +306,7 @@
        <item row="7" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>Article list row height (-1 = default)</string>
+          <string>Article list row height</string>
          </property>
          <property name="buddy">
           <cstring>m_spinHeightRowsMessages</cstring>
@@ -317,6 +320,9 @@
            <width>150</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="suffix">
+          <string notr="true"> px</string>
          </property>
          <property name="minimum">
           <number>-1</number>
@@ -343,6 +349,9 @@
            <width>150</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="suffix">
+          <string notr="true"> px</string>
          </property>
          <property name="minimum">
           <number>22</number>
