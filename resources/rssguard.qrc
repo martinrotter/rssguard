@@ -68,7 +68,7 @@
     <file>skins/dark/html_single_message.html</file>
     <file>skins/dark/html_wrapper.html</file>
     <file>skins/dark/metadata.xml</file>
-    <file>skins/dark/theme.css</file>
+    <file>skins/dark/qt_style.qss</file>
 
     <file>skins/vergilius/html_adblocked.html</file>
     <file>skins/vergilius/html_enclosure_every.html</file>
@@ -77,7 +77,7 @@
     <file>skins/vergilius/html_wrapper.html</file>
     <file>skins/vergilius/html_style.css</file>
     <file>skins/vergilius/metadata.xml</file>
-    <file>skins/vergilius/theme.css</file>
+    <file>skins/vergilius/qt_style.qss</file>
 
     <file>skins/nudus/html_adblocked.html</file>
     <file>skins/nudus/html_enclosure_every.html</file>
@@ -85,7 +85,7 @@
     <file>skins/nudus/html_single_message.html</file>
     <file>skins/nudus/html_wrapper.html</file>
     <file>skins/nudus/metadata.xml</file>
-    <file>skins/nudus/theme.css</file>
+    <file>skins/nudus/qt_style.qss</file>
 
     <file>initial_feeds/feeds-en.opml</file>
 

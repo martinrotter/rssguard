@@ -171,7 +171,7 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       skin.m_enclosureMarkup = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_enclosure_every.html")));
       skin.m_enclosureMarkup = skin.m_enclosureMarkup.replace(QSL(USER_DATA_PLACEHOLDER),
                                                               skin_folder_no_sep);
-      skin.m_rawData = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("theme.css")));
+      skin.m_rawData = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("qt_style.qss")));
       skin.m_rawData = skin.m_rawData.replace(QSL(USER_DATA_PLACEHOLDER),
                                               skin_folder_no_sep);
       skin.m_adblocked = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_adblocked.html")));
