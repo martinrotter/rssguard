@@ -83,17 +83,17 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
   base_skin_folders.append(customSkinBaseFolder());
 
   while (!base_skin_folders.isEmpty()) {
-    const QString skin_folder_no_sep = base_skin_folders.takeAt(0).replace(QDir::separator(),
-                                                                           QL1C('/')) + QL1C('/') + skin_name;
+    const QString skin_parent = base_skin_folders.takeAt(0).replace(QDir::separator(), QL1C('/')) + QL1C('/');
+    const QString skin_folder_no_sep = skin_parent + skin_name;
     const QString skin_folder = skin_folder_no_sep + QDir::separator();
     const QString metadata_file = skin_folder + APP_SKIN_METADATA_FILE;
 
     if (QFile::exists(metadata_file)) {
       QFile skin_file(metadata_file);
-      QDomDocument dokument;
+      QDomDocument document;
 
       if (!skin_file.open(QIODevice::OpenModeFlag::Text | QIODevice::OpenModeFlag::ReadOnly) ||
-          !dokument.setContent(&skin_file, true)) {
+          !document.setContent(&skin_file, true)) {
         if (ok != nullptr) {
           *ok = false;
         }
@@ -101,7 +101,12 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
         return skin;
       }
 
-      const QDomNode skin_node = dokument.namedItem(QSL("skin"));
+      const QDomNode skin_node = document.namedItem(QSL("skin"));
+      QString base_skin_folder = skin_node.toElement().attribute(QSL("base"));
+
+      if (!base_skin_folder.isEmpty()) {
+        base_skin_folder = skin_parent + base_skin_folder;
+      }
 
       // Obtain visible skin name.
       skin.m_visibleName = skin_name;
@@ -146,15 +151,12 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       // be safely loaded.
       //
       // %style% placeholder is used in main wrapper HTML file to be replaced with custom skin-wide CSS.
-      skin.m_layoutMarkupWrapper = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_wrapper.html")));
-      skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL(USER_DATA_PLACEHOLDER),
-                                                                      skin_folder_no_sep);
+      skin.m_layoutMarkupWrapper = loadSkinFile(skin_folder_no_sep, QSL("html_wrapper.html"), base_skin_folder);
 
       try {
-        auto custom_css = IOFactory::readFile(skin_folder + QL1S("html_style.css"));
+        auto custom_css = loadSkinFile(skin_folder_no_sep, QSL("html_style.css"), base_skin_folder);
 
-        skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL(SKIN_STYLE_PLACEHOLDER),
-                                                                        QString::fromUtf8(custom_css));
+        skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL(SKIN_STYLE_PLACEHOLDER), custom_css);
       }
       catch (...) {
         qWarningNN << "Skin"
@@ -162,21 +164,11 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
                    << "does not support separated custom CSS.";
       }
 
-      skin.m_enclosureImageMarkup = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_enclosure_image.html")));
-      skin.m_enclosureImageMarkup = skin.m_enclosureImageMarkup.replace(QSL(USER_DATA_PLACEHOLDER),
-                                                                        skin_folder_no_sep);
-      skin.m_layoutMarkup = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_single_message.html")));
-      skin.m_layoutMarkup = skin.m_layoutMarkup.replace(QSL(USER_DATA_PLACEHOLDER),
-                                                        skin_folder_no_sep);
-      skin.m_enclosureMarkup = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_enclosure_every.html")));
-      skin.m_enclosureMarkup = skin.m_enclosureMarkup.replace(QSL(USER_DATA_PLACEHOLDER),
-                                                              skin_folder_no_sep);
-      skin.m_rawData = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("qt_style.qss")));
-      skin.m_rawData = skin.m_rawData.replace(QSL(USER_DATA_PLACEHOLDER),
-                                              skin_folder_no_sep);
-      skin.m_adblocked = QString::fromUtf8(IOFactory::readFile(skin_folder + QL1S("html_adblocked.html")));
-      skin.m_adblocked = skin.m_adblocked.replace(QSL(USER_DATA_PLACEHOLDER),
-                                                  skin_folder_no_sep);
+      skin.m_enclosureImageMarkup = loadSkinFile(skin_folder_no_sep, QSL("html_enclosure_image.html"), base_skin_folder);
+      skin.m_layoutMarkup = loadSkinFile(skin_folder_no_sep, QSL("html_single_message.html"), base_skin_folder);
+      skin.m_enclosureMarkup = loadSkinFile(skin_folder_no_sep, QSL("html_enclosure_every.html"), base_skin_folder);
+      skin.m_rawData = loadSkinFile(skin_folder_no_sep, QSL("qt_style.qss"), base_skin_folder);
+      skin.m_adblocked = loadSkinFile(skin_folder_no_sep, QSL("html_adblocked.html"), base_skin_folder);
 
       if (ok != nullptr) {
         *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&
@@ -184,11 +176,32 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
               !skin.m_layoutMarkup.isEmpty();
       }
 
-      break;
+      return skin;
     }
   }
 
+  if (ok != nullptr) {
+    *ok = false;
+  }
+
   return skin;
+}
+
+QString SkinFactory::loadSkinFile(const QString& skin_folder, const QString& file_name, const QString& base_folder) const {
+  QString local_file = QDir::toNativeSeparators(skin_folder + QDir::separator() + file_name);
+  QString base_file = QDir::toNativeSeparators(base_folder + QDir::separator() + file_name);
+  QString data;
+
+  if (QFile::exists(local_file)) {
+    qDebugNN << LOGSEC_GUI << "Local file" << QUOTE_W_SPACE(local_file) << "exists, using it for the skin.";
+    data = QString::fromUtf8(IOFactory::readFile(local_file));
+  }
+  else {
+    qDebugNN << LOGSEC_GUI << "Trying to load base file" << QUOTE_W_SPACE(base_file) << "for the skin.";
+    data = QString::fromUtf8(IOFactory::readFile(base_file));
+  }
+
+  return data.replace(QSL(USER_DATA_PLACEHOLDER), skin_folder);
 }
 
 QList<Skin> SkinFactory::installedSkins() const {

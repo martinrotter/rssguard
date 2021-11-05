@@ -67,6 +67,8 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     // Loads the skin from give skin_data.
     void loadSkinFromData(const Skin& skin);
 
+    QString loadSkinFile(const QString& skin_folder, const QString& file_name, const QString& base_folder) const;
+
     // Holds name of the current skin.
     Skin m_currentSkin;
 };
