@@ -177,6 +177,7 @@
     </property>
     <addaction name="m_actionTabNewWebBrowser"/>
     <addaction name="separator"/>
+    <addaction name="m_actionTabsCloseCurrent"/>
     <addaction name="m_actionTabsCloseAll"/>
     <addaction name="m_actionTabsCloseAllExceptCurrent"/>
     <addaction name="separator"/>
@@ -833,6 +834,11 @@
   <action name="m_actionExpandCollapseItemRecursively">
    <property name="text">
     <string>Expand/collapse selected item &amp;recursively</string>
+   </property>
+  </action>
+  <action name="m_actionTabsCloseCurrent">
+   <property name="text">
+    <string>Close &amp;current tab</string>
    </property>
   </action>
  </widget>

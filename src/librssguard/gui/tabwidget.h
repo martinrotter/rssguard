@@ -63,6 +63,7 @@ class TabWidget : public QTabWidget {
     bool closeTab(int index);
     void closeAllTabsExceptCurrent();
     void closeAllTabs();
+    void closeCurrentTab();
 
     // Displays download manager.
     void showDownloadManager();

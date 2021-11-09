@@ -84,6 +84,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   createConnections();
   updateMessageButtonsAvailability();
   updateFeedButtonsAvailability();
+  updateTabsButtonsAvailability(tabWidget()->currentIndex());
 
   // Setup some appearance of the window.
   setupIcons();
@@ -198,6 +199,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionTabNewWebBrowser;
 #endif
 
+  actions << m_ui->m_actionTabsCloseCurrent;
   actions << m_ui->m_actionTabsCloseAll;
   actions << m_ui->m_actionTabsCloseAllExceptCurrent;
 
@@ -392,6 +394,11 @@ void FormMain::updateAccountsMenu() {
   m_ui->m_menuAccounts->addAction(m_ui->m_actionServiceDelete);
 }
 
+void FormMain::updateTabsButtonsAvailability(int index) {
+  m_ui->m_actionTabsCloseCurrent->setEnabled(tabWidget()->tabBar()->tabType(index) == TabBar::TabType::Closable ||
+                                             tabWidget()->tabBar()->tabType(index) == TabBar::TabType::DownloadManager);
+}
+
 void FormMain::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   Q_UNUSED(results)
 
@@ -568,6 +575,7 @@ void FormMain::setupIcons() {
   // Tabs & web browser.
   m_ui->m_actionTabNewWebBrowser->setIcon(icon_theme_factory->fromTheme(QSL("tab-new")));
   m_ui->m_actionTabsCloseAll->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
+  m_ui->m_actionTabsCloseCurrent->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
   m_ui->m_actionTabsCloseAllExceptCurrent->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
   m_ui->m_actionTabsNext->setIcon(icon_theme_factory->fromTheme(QSL("go-next")));
   m_ui->m_actionTabsPrevious->setIcon(icon_theme_factory->fromTheme(QSL("go-previous")));
@@ -715,6 +723,7 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionTabsPrevious, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::gotoPreviousTab);
   connect(m_ui->m_actionTabsCloseAllExceptCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabsExceptCurrent);
   connect(m_ui->m_actionTabsCloseAll, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabs);
+  connect(m_ui->m_actionTabsCloseCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeCurrentTab);
   connect(m_ui->m_actionTabNewWebBrowser, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::addEmptyBrowser);
   connect(tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::itemSelected, this, &FormMain::updateFeedButtonsAvailability);
   connect(qApp->feedUpdateLock(), &Mutex::locked, this, &FormMain::updateFeedButtonsAvailability);
@@ -723,6 +732,7 @@ void FormMain::createConnections() {
           this, &FormMain::updateMessageButtonsAvailability);
   connect(tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::currentMessageChanged,
           this, &FormMain::updateMessageButtonsAvailability);
+  connect(tabWidget(), &TabWidget::currentChanged, this, &FormMain::updateTabsButtonsAvailability);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesStarted, this, &FormMain::onFeedUpdatesStarted);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesProgress, this, &FormMain::onFeedUpdatesProgress);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesFinished, this, &FormMain::onFeedUpdatesFinished);

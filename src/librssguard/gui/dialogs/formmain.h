@@ -49,6 +49,7 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     void updateRecycleBinMenu();
     void updateAccountsMenu();
 
+    void updateTabsButtonsAvailability(int index);
     void updateMessageButtonsAvailability();
     void updateFeedButtonsAvailability();
 
