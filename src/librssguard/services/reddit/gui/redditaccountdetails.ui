@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RedditAccountDetails</class>
+ <widget class="QWidget" name="RedditAccountDetails">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>431</width>
+    <height>259</height>
+   </rect>
+  </property>
+  <layout class="QFormLayout" name="formLayout_4">
+   <item row="0" column="0">
+    <widget class="QLabel" name="m_lblUsername">
+     <property name="text">
+      <string>Username</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="LineEditWithStatus" name="m_txtUsername" native="true"/>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>1</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>OAuth 2.0 settings</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="m_lblUsername_2">
+        <property name="text">
+         <string>Client ID</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_txtAppId</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="LineEditWithStatus" name="m_txtAppId" native="true"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="m_lblUsername_3">
+        <property name="text">
+         <string>Client secret</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_txtAppKey</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="LineEditWithStatus" name="m_txtAppKey" native="true"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="m_lblUsername_4">
+        <property name="text">
+         <string>Redirect URL</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_txtRedirectUrl</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="LineEditWithStatus" name="m_txtRedirectUrl" native="true"/>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="m_btnRegisterApi">
+          <property name="text">
+           <string>Get my credentials</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="HelpSpoiler" name="m_lblInfo" native="true"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <layout class="QFormLayout" name="formLayout_3">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Only download newest X articles per feed</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_spinLimitMessages</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="MessageCountSpinBox" name="m_spinLimitMessages">
+       <property name="maximumSize">
+        <size>
+         <width>140</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="m_btnTestSetup">
+       <property name="text">
+        <string>&amp;Login</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="LabelWithStatus" name="m_lblTestResult" native="true">
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>410</width>
+       <height>0</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QCheckBox" name="m_cbDownloadOnlyUnreadMessages">
+     <property name="text">
+      <string>Download unread articles only</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LineEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>lineeditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MessageCountSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>messagecountspinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>m_btnRegisterApi</tabstop>
+  <tabstop>m_cbDownloadOnlyUnreadMessages</tabstop>
+  <tabstop>m_spinLimitMessages</tabstop>
+  <tabstop>m_btnTestSetup</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

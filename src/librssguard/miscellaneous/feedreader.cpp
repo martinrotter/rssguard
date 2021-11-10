@@ -18,6 +18,7 @@
 #include "services/gmail/gmailentrypoint.h"
 #include "services/greader/greaderentrypoint.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
+#include "services/reddit/redditentrypoint.h"
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
@@ -60,6 +61,11 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
     m_feedServices.append(new GmailEntryPoint());
     m_feedServices.append(new GreaderEntryPoint());
     m_feedServices.append(new OwnCloudServiceEntryPoint());
+
+#if defined(DEBUG)
+    m_feedServices.append(new RedditEntryPoint());
+#endif
+
     m_feedServices.append(new StandardServiceEntryPoint());
     m_feedServices.append(new TtRssServiceEntryPoint());
   }

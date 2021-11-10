@@ -13,6 +13,7 @@
 #define SERVICE_CODE_FEEDLY     "feedly"
 #define SERVICE_CODE_INOREADER  "inoreader"
 #define SERVICE_CODE_GMAIL      "gmail"
+#define SERVICE_CODE_REDDIT     "reddit"
 
 #define ADBLOCK_SERVER_PORT                   48484
 #define ADBLOCK_HOWTO                         "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#adblock"
@@ -132,6 +133,7 @@
 #define LOGSEC_TTRSS                "tt-rss: "
 #define LOGSEC_GMAIL                "gmail: "
 #define LOGSEC_OAUTH                "oauth: "
+#define LOGSEC_REDDIT               "reddit: "
 
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f

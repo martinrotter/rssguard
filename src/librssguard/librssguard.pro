@@ -192,6 +192,12 @@ HEADERS += core/feeddownloader.h \
            services/owncloud/owncloudnetworkfactory.h \
            services/owncloud/owncloudserviceentrypoint.h \
            services/owncloud/owncloudserviceroot.h \
+           services/reddit/definitions.h \
+           services/reddit/gui/formeditredditaccount.h \
+           services/reddit/gui/redditaccountdetails.h \
+           services/reddit/redditentrypoint.h \
+           services/reddit/redditnetworkfactory.h \
+           services/reddit/redditserviceroot.h \
            services/standard/atomparser.h \
            services/standard/definitions.h \
            services/standard/feedparser.h \
@@ -368,6 +374,11 @@ SOURCES += core/feeddownloader.cpp \
            services/owncloud/owncloudnetworkfactory.cpp \
            services/owncloud/owncloudserviceentrypoint.cpp \
            services/owncloud/owncloudserviceroot.cpp \
+           services/reddit/gui/formeditredditaccount.cpp \
+           services/reddit/gui/redditaccountdetails.cpp \
+           services/reddit/redditentrypoint.cpp \
+           services/reddit/redditnetworkfactory.cpp \
+           services/reddit/redditserviceroot.cpp \
            services/standard/atomparser.cpp \
            services/standard/feedparser.cpp \
            services/standard/gui/formeditstandardaccount.cpp \
@@ -432,6 +443,7 @@ FORMS += gui/dialogs/formabout.ui \
          services/gmail/gui/gmailaccountdetails.ui \
          services/greader/gui/greaderaccountdetails.ui \
          services/owncloud/gui/owncloudaccountdetails.ui \
+         services/reddit/gui/redditaccountdetails.ui \
          services/standard/gui/formstandardimportexport.ui \
          services/standard/gui/standardfeeddetails.ui \
          services/tt-rss/gui/ttrssaccountdetails.ui \
