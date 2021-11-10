@@ -56,6 +56,7 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
   m_clientSecret = client_secret;
   m_clientSecretId = m_clientSecretSecret = QString();
   m_scope = scope;
+  m_useHttpBasicAuthWithClientData = false;
 
   connect(&m_networkManager, &QNetworkAccessManager::finished, this, &OAuth2Service::tokenRequestFinished);
   connect(m_redirectionHandler, &OAuthHttpHandler::authGranted, [this](const QString& auth_code, const QString& id) {
@@ -130,6 +131,14 @@ void OAuth2Service::timerEvent(QTimerEvent* event) {
   QObject::timerEvent(event);
 }
 
+bool OAuth2Service::useHttpBasicAuthWithClientData() const {
+  return m_useHttpBasicAuthWithClientData;
+}
+
+void OAuth2Service::setUseHttpBasicAuthWithClientData(bool use_auth) {
+  m_useHttpBasicAuthWithClientData = use_auth;
+}
+
 QString OAuth2Service::clientSecretSecret() const {
   return m_clientSecretSecret;
 }
@@ -155,10 +164,16 @@ void OAuth2Service::setId(const QString& id) {
 }
 
 void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
-  QNetworkRequest networkRequest;
+  QNetworkRequest network_request;
 
-  networkRequest.setUrl(m_tokenUrl);
-  networkRequest.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, "application/x-www-form-urlencoded");
+  network_request.setUrl(m_tokenUrl);
+  network_request.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, "application/x-www-form-urlencoded");
+
+  if (m_useHttpBasicAuthWithClientData) {
+    auto basic_auth = NetworkFactory::generateBasicAuthHeader(properClientId(), properClientSecret());
+
+    network_request.setRawHeader(basic_auth.first, basic_auth.second);
+  }
 
   QString content = QString("client_id=%1&"
                             "client_secret=%2&"
@@ -171,15 +186,21 @@ void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
                                                  m_redirectionHandler->listenAddressPort());
 
   qDebugNN << LOGSEC_OAUTH << "Posting data for access token retrieval:" << QUOTE_W_SPACE_DOT(content);
-  m_networkManager.post(networkRequest, content.toUtf8());
+  m_networkManager.post(network_request, content.toUtf8());
 }
 
 void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
   auto real_refresh_token = refresh_token.isEmpty() ? refreshToken() : refresh_token;
-  QNetworkRequest networkRequest;
+  QNetworkRequest network_request;
 
-  networkRequest.setUrl(m_tokenUrl);
-  networkRequest.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, "application/x-www-form-urlencoded");
+  network_request.setUrl(m_tokenUrl);
+  network_request.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, "application/x-www-form-urlencoded");
+
+  if (m_useHttpBasicAuthWithClientData) {
+    auto basic_auth = NetworkFactory::generateBasicAuthHeader(properClientId(), properClientSecret());
+
+    network_request.setRawHeader(basic_auth.first, basic_auth.second);
+  }
 
   QString content = QString("client_id=%1&"
                             "client_secret=%2&"
@@ -196,7 +217,7 @@ void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
                        { true, false, true });
 
   qDebugNN << LOGSEC_OAUTH << "Posting data for access token refreshing:" << QUOTE_W_SPACE_DOT(content);
-  m_networkManager.post(networkRequest, content.toUtf8());
+  m_networkManager.post(network_request, content.toUtf8());
 }
 
 void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
@@ -380,6 +401,7 @@ void OAuth2Service::retrieveAuthCode() {
                                          "response_type=code&"
                                          "state=%4&"
                                          "prompt=consent&"
+                                         "duration=permanent&"
                                          "access_type=offline").arg(properClientId(),
                                                                     m_scope,
                                                                     m_redirectionHandler->listenAddressPort(),

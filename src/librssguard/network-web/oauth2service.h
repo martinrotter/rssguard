@@ -81,6 +81,9 @@ class OAuth2Service : public QObject {
     QString clientSecretSecret() const;
     void setClientSecretSecret(const QString& client_secret_secret);
 
+    bool useHttpBasicAuthWithClientData() const;
+    void setUseHttpBasicAuthWithClientData(bool use_auth);
+
   signals:
     void tokensRetrieved(QString access_token, QString refresh_token, int expires_in);
     void tokensRetrieveError(QString error, QString error_description);
@@ -129,6 +132,7 @@ class OAuth2Service : public QObject {
     QUrl m_tokenUrl;
     QString m_authUrl;
     QString m_scope;
+    bool m_useHttpBasicAuthWithClientData;
     SilentNetworkAccessManager m_networkManager;
     OAuthHttpHandler* m_redirectionHandler;
     std::function<void()> m_functorOnLogin;
