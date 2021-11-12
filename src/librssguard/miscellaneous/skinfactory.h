@@ -45,6 +45,8 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     void loadCurrentSkin();
     Skin currentSkin() const;
 
+    bool isStyleGoodForDarkVariant(const QString& style_name) const;
+
     // Returns the name of the skin, that should be activated
     // after application restart.
     QString selectedSkinName() const;

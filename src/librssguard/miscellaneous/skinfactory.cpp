@@ -42,6 +42,10 @@ void SkinFactory::loadCurrentSkin() {
   qCriticalNN << LOGSEC_GUI << "Failed to load selected or default skin. Quitting!";
 }
 
+bool SkinFactory::isStyleGoodForDarkVariant(const QString& style_name) const {
+  return QRegularExpression("^(fusion)|(qt5ct-style)$").match(style_name.toLower()).hasMatch();
+}
+
 void SkinFactory::loadSkinFromData(const Skin& skin) {
   if (!skin.m_rawData.isEmpty()) {
     if (qApp->styleSheet().simplified().isEmpty()) {
@@ -57,7 +61,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
 
   qApp->setStyle(style_name);
 
-  if (style_name.toLower() == QSL("fusion") &&
+  if (isStyleGoodForDarkVariant(style_name) &&
       qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForceDarkFusion)).toBool()) {
     qDebugNN << LOGSEC_GUI << "Activating dark palette for Fusion style.";
 

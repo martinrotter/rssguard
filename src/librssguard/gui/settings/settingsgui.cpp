@@ -36,7 +36,7 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
 
   connect(m_ui->m_cmbStyles, &QComboBox::currentTextChanged, this, [this](const QString& txt) {
-    m_ui->m_checkForceDarkFusion->setVisible(txt.toLower() == QSL("fusion"));
+    m_ui->m_checkForceDarkFusion->setVisible(qApp->skins()->isStyleGoodForDarkVariant(txt));
   });
 
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::requireRestart);
