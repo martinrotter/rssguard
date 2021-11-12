@@ -217,6 +217,9 @@ namespace GUI {
   KEY HideMainWindowWhenMinimized;
   VALUE(bool) HideMainWindowWhenMinimizedDef;
 
+  KEY ForceDarkFusion;
+  VALUE(bool) ForceDarkFusionDef;
+
   KEY AlternateRowColorsInLists;
   VALUE(bool) AlternateRowColorsInListsDef;
 

@@ -35,12 +35,18 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
 
+  connect(m_ui->m_cmbStyles, &QComboBox::currentTextChanged, this, [this](const QString& txt) {
+    m_ui->m_checkForceDarkFusion->setVisible(txt.toLower() == QSL("fusion"));
+  });
+
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::requireRestart);
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsGui::dirtifySettings);
   connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_grpTray, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHidden, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkForceDarkFusion, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkForceDarkFusion, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
   connect(m_ui->m_checkMonochromeIcons, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkCountUnreadMessages, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHideWhenMinimized, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
@@ -96,6 +102,9 @@ void SettingsGui::loadSettings() {
 
   m_ui->m_checkHidden->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool());
   m_ui->m_checkHideWhenMinimized->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool());
+
+  m_ui->m_checkForceDarkFusion->setChecked(settings()->value(GROUP(GUI),
+                                                             SETTING(GUI::ForceDarkFusion)).toBool());
 
   // Load settings of icon theme.
   const QString current_theme = qApp->icons()->currentIconTheme();
@@ -221,6 +230,8 @@ void SettingsGui::saveSettings() {
   settings()->setValue(GROUP(GUI), GUI::UnreadNumbersInTrayIcon, m_ui->m_checkCountUnreadMessages->isChecked());
   settings()->setValue(GROUP(GUI), GUI::MainWindowStartsHidden, m_ui->m_checkHidden->isChecked());
   settings()->setValue(GROUP(GUI), GUI::HideMainWindowWhenMinimized, m_ui->m_checkHideWhenMinimized->isChecked());
+
+  settings()->setValue(GROUP(GUI), GUI::ForceDarkFusion, m_ui->m_checkForceDarkFusion->isChecked());
 
   // Make sure that number of unread messages is shown in tray icon as requested.
   qApp->feedReader()->feedsModel()->notifyWithCounts();

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>667</width>
+    <width>685</width>
     <height>394</height>
    </rect>
   </property>
@@ -53,7 +53,7 @@
        <item row="1" column="1">
         <widget class="QComboBox" name="m_cmbStyles"/>
        </item>
-       <item row="2" column="0">
+       <item row="3" column="0">
         <widget class="QLabel" name="m_lblSkin">
          <property name="text">
           <string>Skin</string>
@@ -63,7 +63,7 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
+       <item row="3" column="1">
         <widget class="QTreeWidget" name="m_treeSkins">
          <property name="indentation">
           <number>0</number>
@@ -87,7 +87,7 @@
          </column>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
+       <item row="4" column="0" colspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -99,6 +99,13 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="m_checkForceDarkFusion">
+         <property name="text">
+          <string>Force dark look</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -381,6 +388,10 @@
   <tabstop>m_checkHideTabBarIfOneTabVisible</tabstop>
   <tabstop>m_cmbToolbarButtonStyle</tabstop>
   <tabstop>m_cmbSelectToolBar</tabstop>
+  <tabstop>m_cmbIconTheme</tabstop>
+  <tabstop>m_cmbStyles</tabstop>
+  <tabstop>m_checkForceDarkFusion</tabstop>
+  <tabstop>m_treeSkins</tabstop>
  </tabstops>
  <resources/>
  <connections/>

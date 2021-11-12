@@ -211,6 +211,9 @@ DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef = false;
 DKEY GUI::MonochromeTrayIcon = "monochrome_tray_icon";
 DVALUE(bool) GUI::MonochromeTrayIconDef = false;
 
+DKEY GUI::ForceDarkFusion = "force_dark_fusion";
+DVALUE(bool) GUI::ForceDarkFusionDef = false;
+
 DKEY GUI::UnreadNumbersInTrayIcon = "show_unread_numbers_in_tray_icon";
 DVALUE(bool) GUI::UnreadNumbersInTrayIconDef = true;
 

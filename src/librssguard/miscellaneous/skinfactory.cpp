@@ -9,6 +9,7 @@
 #include <QDomDocument>
 #include <QDomElement>
 #include <QStyleFactory>
+#include <QToolTip>
 
 SkinFactory::SkinFactory(QObject* parent) : QObject(parent) {}
 
@@ -52,7 +53,52 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     }
   }
 
-  qApp->setStyle(qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString());
+  QString style_name = qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString();
+
+  qApp->setStyle(style_name);
+
+  if (style_name.toLower() == QSL("fusion") &&
+      qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForceDarkFusion)).toBool()) {
+    qDebugNN << LOGSEC_GUI << "Activating dark palette for Fusion style.";
+
+    QPalette fusion_palette = qApp->palette();
+    QColor clr_bg(QSL("#2D2F32"));
+    QColor clr_altbg(QSL("#323437"));
+    QColor clr_selbg(QSL("#8291AD"));
+    QColor clr_fg(QSL("#D8D8D8"));
+    QColor clr_brdr(QSL("#585C65"));
+    QColor clr_tooltip_brdr(QSL("#707580"));
+    QColor clr_link(QSL("#a1acc1"));
+    QColor clr_dis_fg(QSL("#727272"));
+
+    // Normal state.
+    fusion_palette.setColor(QPalette::Window, clr_bg);
+    fusion_palette.setColor(QPalette::WindowText, clr_fg);
+    fusion_palette.setColor(QPalette::Base, clr_bg);
+    fusion_palette.setColor(QPalette::AlternateBase, clr_altbg);
+    fusion_palette.setColor(QPalette::ToolTipBase, clr_altbg);
+    fusion_palette.setColor(QPalette::ToolTipText, clr_fg);
+    fusion_palette.setColor(QPalette::Text, clr_fg);
+    fusion_palette.setColor(QPalette::Button, clr_altbg);
+    fusion_palette.setColor(QPalette::ButtonText, clr_fg);
+    fusion_palette.setColor(QPalette::BrightText, clr_fg);
+    fusion_palette.setColor(QPalette::Link, clr_link);
+    fusion_palette.setColor(QPalette::Highlight, clr_selbg);
+    fusion_palette.setColor(QPalette::HighlightedText, clr_fg);
+
+    // Disabled state.
+    fusion_palette.setColor(QPalette::Disabled, QPalette::Text, clr_dis_fg);
+    fusion_palette.setColor(QPalette::Disabled, QPalette::WindowText, clr_dis_fg);
+    fusion_palette.setColor(QPalette::Disabled, QPalette::ButtonText, clr_dis_fg);
+    fusion_palette.setColor(QPalette::Disabled, QPalette::Button, Qt::GlobalColor::red);
+    fusion_palette.setColor(QPalette::Disabled, QPalette::HighlightedText, clr_fg);
+    fusion_palette.setColor(QPalette::Disabled, QPalette::Base, clr_altbg);
+    fusion_palette.setColor(QPalette::Disabled, QPalette::Window, clr_altbg);
+    fusion_palette.setColor(QPalette::Disabled, QPalette::Highlight, clr_selbg);
+
+    QToolTip::setPalette(fusion_palette);
+    qApp->setPalette(fusion_palette);
+  }
 }
 
 void SkinFactory::setCurrentSkinName(const QString& skin_name) {
