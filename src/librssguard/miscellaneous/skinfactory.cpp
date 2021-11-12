@@ -47,16 +47,6 @@ bool SkinFactory::isStyleGoodForDarkVariant(const QString& style_name) const {
 }
 
 void SkinFactory::loadSkinFromData(const Skin& skin) {
-  if (!skin.m_rawData.isEmpty()) {
-    if (qApp->styleSheet().simplified().isEmpty()) {
-      qApp->setStyleSheet(skin.m_rawData);
-    }
-    else {
-      qCriticalNN << LOGSEC_GUI
-                  << "Skipped setting of application style and skin because there is already some style set.";
-    }
-  }
-
   QString style_name = qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString();
 
   qApp->setStyle(style_name);
@@ -85,7 +75,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     fusion_palette.setColor(QPalette::ColorRole::Dark, clr_bg);
     fusion_palette.setColor(QPalette::ColorRole::AlternateBase, clr_altbg);
     fusion_palette.setColor(QPalette::ColorRole::Button, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorRole::Highlight, clr_selbg);
+    fusion_palette.setColor(QPalette::ColorRole::Highlight, Qt::GlobalColor::blue);
 
     // Texts.
     fusion_palette.setColor(QPalette::ColorRole::WindowText, clr_fg);
@@ -96,6 +86,14 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     fusion_palette.setColor(QPalette::ColorRole::Link, clr_link);
     fusion_palette.setColor(QPalette::ColorRole::LinkVisited, clr_link);
     fusion_palette.setColor(QPalette::ColorRole::HighlightedText, clr_fg);
+
+    //
+    // Inactive state.
+    //
+
+    // Backgrounds & bases.
+
+    // Texts.
 
     //
     // Disabled state.
@@ -128,6 +126,16 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
 
     QToolTip::setPalette(fusion_palette);
     qApp->setPalette(fusion_palette);
+  }
+
+  if (!skin.m_rawData.isEmpty()) {
+    if (qApp->styleSheet().simplified().isEmpty()) {
+      qApp->setStyleSheet(skin.m_rawData);
+    }
+    else {
+      qCriticalNN << LOGSEC_GUI
+                  << "Skipped setting of application style and skin because there is already some style set.";
+    }
   }
 }
 
