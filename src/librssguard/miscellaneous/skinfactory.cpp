@@ -75,7 +75,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     fusion_palette.setColor(QPalette::ColorRole::Dark, clr_bg);
     fusion_palette.setColor(QPalette::ColorRole::AlternateBase, clr_altbg);
     fusion_palette.setColor(QPalette::ColorRole::Button, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorRole::Highlight, Qt::GlobalColor::blue);
+    fusion_palette.setColor(QPalette::ColorRole::Highlight, clr_selbg);
 
     // Texts.
     fusion_palette.setColor(QPalette::ColorRole::WindowText, clr_fg);
