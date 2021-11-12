@@ -120,7 +120,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     //
 
     fusion_palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipBase, clr_bg);
-    fusion_palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipText, clr_altbg);
+    fusion_palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipText, clr_fg);
 
     QToolTip::setPalette(fusion_palette);
     qApp->setPalette(fusion_palette);
