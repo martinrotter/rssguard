@@ -368,15 +368,17 @@ For database-related configuration see `Settings -> Data storage` dialog.
 ### User Data Portability <a id="userd"></a>
 One of the main goals of RSS Guard is to have local application data portable (relocatable) so that they can be use across all [supported operating systems](#sos).
 
-RSS Guard is able to run in two modes.
+RSS Guard is able to run in two modes:
 
-Default mode is *"non-portable"* mode, where user data folder is placed in user-wide "config directory" (this is `C:\Users\<user>\AppData\Local` on Windows). If subfolder with file
+* Default mode is *"non-portable"* mode, where user data folder is placed in user-wide "config directory" (this is `C:\Users\<user>\AppData\Local` on Windows). If subfolder with file
 ```
 RSS Guard 4\data\config\config.ini
 ```
 exists, then this user folder is used.
 
-The other mode is that user data folder is placed in subfolder `data4` in the same directory as RSS Guard binary (`rssguard.exe` on Windows). This *"portable"* mode is automatically enabled if "non-portable" mode detection fails.
+* The other mode is that user data folder is placed in subfolder `data4` in the same directory as RSS Guard binary (`rssguard.exe` on Windows). This *"portable"* mode is automatically enabled if "non-portable" mode detection fails.
+
+User data folder can host your custom icon themes in `icons` subfolder and custom skins in `skins` subfolder.
 
 #### `%data%` placeholder <a id="userd-plac"></a>
 RSS Guard stores its data and settings in single folder. What exact folder it is is described [here](#portable-user-data). RSS Guard allows you to use the folder programmatically in some special contexts via `%data%` placeholder. You can use this placeholder in these RSS Guard contexts:
