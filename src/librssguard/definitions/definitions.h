@@ -187,7 +187,7 @@
 #if defined(Q_OS_LINUX)
 #define APP_THEME_DEFAULT   ""
 #else
-#define APP_THEME_DEFAULT   "Numix"
+#define APP_THEME_DEFAULT   "Breeze"
 #endif
 
 #define APP_LOCAL_THEME_FOLDER  "icons"
