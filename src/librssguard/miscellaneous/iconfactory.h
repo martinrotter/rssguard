@@ -27,7 +27,7 @@ class RSSGUARD_DLLSPEC IconFactory : public QObject {
 
     // Returns icon from active theme or invalid icon if
     // "no icon theme" is set.
-    QIcon fromTheme(const QString& name);
+    QIcon fromTheme(const QString& name, const QString& fallback = {});
 
     QPixmap miscPixmap(const QString& name);
     QIcon miscIcon(const QString& name);

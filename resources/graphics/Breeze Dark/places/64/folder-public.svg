@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs id="defs3051">
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#232629;
+      }
+      .ColorScheme-Highlight {
+        color:#3daee9;
+      }
+      </style>
+  </defs>
+ <path 
+     style="fill:currentColor" 
+     d="M 4 6 L 4 11 L 4 20 L 3 20 L 3 21 L 3 21 C 3 21 3 21 3 21 L 3 57 L 3 58 L 4 58 L 60 58 L 61 58 L 61 57 L 61 21 L 61 21 L 61 16 L 60 16 L 60 11 C 60 11 60 11 60 11 L 60 11 L 60 10 L 32 10 L 28 6 L 4 6 z "
+     class="ColorScheme-Highlight"
+     />
+ <path 
+     style="fill-opacity:0.33"
+     d="M 4 6 L 4 11 L 4 20 L 22 20 L 26 16 L 60 16 L 60 11 C 60 11 60 11 60 11 L 60 11 L 60 10 L 32 10 L 28 6 L 4 6 z "
+     />
+ <path 
+     style="fill:#ffffff;fill-opacity:0.2"
+     d="M 28 6 L 31 11 L 33 11 L 60 11 L 60 10 L 33 10 L 32 10 L 28 6 z M 26 16 L 22 20 L 3 20 L 3 21 L 23 21 L 26 16 z "
+     />
+ <path 
+     style="fill-opacity:0.2;fill-rule:evenodd"
+     d="M 26 16 L 20 19 L 4 19 L 4 20 L 22 20 L 26 16 z M 3 57 L 3 58 L 4 58 L 60 58 L 61 58 L 61 57 L 60 57 L 4 57 L 3 57 z "
+     class="ColorScheme-Text"
+     />
+ <path 
+     style="fill:currentColor;fill-opacity:0.6;stroke:none"  
+     d="M 29 27 C 26.8 27 25 28.8 25 31 C 25 33.2 26.8 35 29 35 C 31.2 35 33 33.2 33 31 C 33 28.8 31.2 27 29 27 z M 29 28 C 30.7 28 32 29.3 32 31 C 32 32.7 30.7 34 29 34 C 27.3 34 26 32.7 26 31 C 26 29.3 27.3 28 29 28 z M 38 28 C 36.3 28 35 29.3 35 31 C 35 32.7 36.3 34 38 34 C 39.7 34 41 32.7 41 31 C 41 29.3 39.7 28 38 28 z M 38 29 C 39.1 29 40 29.9 40 31 C 40 32.1 39.1 33 38 33 C 36.9 33 36 32.1 36 31 C 36 29.9 36.9 29 38 29 z M 38 35 C 36.9 35 35.9 35.4 35.2 36.2 L 35.9 36.9 C 36.4 36.3 37.169 36 38 36 C 39.7 36 41 37.3 41 39 L 41 42 L 38 42 L 38 43 L 42 43 L 42 39 C 42 36.8 40.2 35 38 35 z M 29 36 C 25.1 36 22 39.1 22 43 L 22 47 L 36 47 L 36 43 C 36 39.1 32.9 36 29 36 z M 29 37 C 32.3 37 35 39.7 35 43 L 35 46 L 23 46 L 23 43 C 23 39.7 25.7 37 29 37 z "
+     class="ColorScheme-Text"
+     />
+</svg>

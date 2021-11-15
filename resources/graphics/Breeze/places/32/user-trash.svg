@@ -1,0 +1,50 @@
+<svg version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <radialGradient id="d" cx="20.64" cy="8.5" r="4" gradientTransform="matrix(3.75,-6.8e-8,2.7e-8,1.5,-60.95,-4.75)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4f575f" stop-opacity=".25" offset="0"/>
+            <stop stop-color="#8a939a" offset="1"/>
+        </radialGradient>
+        <linearGradient id="l" x1="390.6" x2="410.6" y1="521.8" y2="545.8" gradientTransform="matrix(1 0 0 .9 -384.6 -471.3)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#bdc3c7" offset="0"/>
+            <stop stop-color="#8a9696" offset="1"/>
+        </linearGradient>
+    </defs>
+    <linearGradient id="a">
+        <stop stop-color="#4f575f" stop-opacity=".4" offset="0"/>
+        <stop stop-color="#4f575f" stop-opacity=".6" offset=".5"/>
+        <stop stop-color="#4f575f" stop-opacity=".4" offset="1"/>
+    </linearGradient>
+    <radialGradient id="t" cx="16" cy="8.5" r="4" gradientTransform="matrix(1.75,0,0,1.5,-12,-6.75)" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#4f575f" stop-opacity=".25" offset="0"/>
+        <stop stop-color="#9da5ab" offset="1"/>
+    </radialGradient>
+    <linearGradient id="s" x1="412.6" x2="412.6" y1="522.8" y2="520.8" gradientTransform="translate(-384.6,-514.8)" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#9da5ab" offset="0"/>
+        <stop stop-color="#bdc3c7" offset="1"/>
+    </linearGradient>
+    <linearGradient id="r" x1="395.6" x2="395.6" y1="520.8" y2="516.8" gradientTransform="translate(-384.6,-514.8)" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#afb0b3" offset="0"/>
+        <stop stop-color="#bdc3c7" offset="1"/>
+    </linearGradient>
+    <linearGradient id="q" x1="390.6" x2="406.6" y1="521.8" y2="537.8" gradientTransform="matrix(1 0 0 .95 -384.6 -490)" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#292c2f" offset="0"/>
+        <stop stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <linearGradient id="p" x1="391.6" x2="394.6" y1="534.8" y2="534.8" gradientTransform="matrix(.7 0 0 .9 -249.047 -463.3)" gradientUnits="userSpaceOnUse" xlink:href="#a"/>
+    <linearGradient id="o" x1="391.6" x2="394.6" y1="534.8" y2="534.8" gradientTransform="matrix(.7 0 0 .9 -254.048 -463.3)" gradientUnits="userSpaceOnUse" xlink:href="#a"/>
+    <linearGradient id="n" x1="391.6" x2="394.6" y1="534.8" y2="534.8" gradientTransform="matrix(.7 0 0 .9 -243.048 -463.3)" gradientUnits="userSpaceOnUse" xlink:href="#a"/>
+    <linearGradient id="m" x1="391.6" x2="394.6" y1="534.8" y2="534.8" gradientTransform="matrix(.7 0 0 .9 -238.047 -463.3)" gradientUnits="userSpaceOnUse" xlink:href="#a"/>
+    <path d="M 6,7 V 28.083334 C 6,28.591166 6.4,29 7,29 h 18 c 0.554,0 1,-0.408834 1,-0.916666 V 7 Z" fill="url(#l)" stroke-width="1"/>
+    <path d="m12 3c-0.554 0-1 0.4-1 1v2h2v-0.75a0.25 0.25 0 0 1 0.233-0.25h5.535a0.25 0.25 0 0 1 0.232 0.25v0.75h2v-2c0-0.554-0.4-1-1-1z" fill="url(#r)"/>
+    <path d="m12.5 4c-0.277 0-0.5 0.223-0.5 0.5v1.5h1v-0.75a0.25 0.25 0 0 1 0.233-0.25h5.535a0.25 0.25 0 0 1 0.232 0.25v0.75h1v-1.5c0-0.277-0.223-0.5-0.5-0.5z" fill="url(#t)"/>
+    <path d="m5 6c-0.554 0-1 0.4-1 1v1h24v-1c0-0.554-0.4-1-1-1z" fill="url(#s)"/>
+    <g stroke-width=".94868326">
+        <path d="m13.00001 9c0.554 0 1 0.4014 1 0.9v16.2c0 0.5-0.4 0.9-1 0.9s-1-0.4014-1-0.9v-16.2c0-0.5 0.4-0.9 1-0.9z" fill="url(#p)"/>
+        <path d="m8.00001 9c0.554 0 1 0.4014 1 0.9v16.2c0 0.5-0.4 0.9-1 0.9s-1-0.4014-1-0.9v-16.2c0-0.5 0.4-0.9 1-0.9z" fill="url(#o)"/>
+        <path d="m19.00001 9c0.554 0 1 0.4014 1 0.9v16.2c0 0.5-0.4 0.9-1 0.9s-1-0.4014-1-0.9v-16.2c0-0.5 0.4-0.9 1-0.9z" fill="url(#n)"/>
+        <path d="m24.00001 9c0.554 0 1 0.4014 1 0.9v16.2c0 0.5-0.4 0.9-1 0.9s-1-0.4014-1-0.9v-16.2c0-0.5 0.4-0.9 1-0.9z" fill="url(#m)"/>
+    </g>
+    <path d="M 6,8 V 10 L 26,29 V 8 Z" fill="url(#q)" opacity=".2" stroke-width="1"/>
+    <path d="m4 8h24v-1h-23.947382z" fill="url(#d)" stroke-width="1"/>
+    <path d="m6 27v1c0 0.554 0.4 1 1 1h18c0.554 0 1-0.4 1-1v-1c0 0.554-0.4 1-1 1h-18c-0.554 0-1-0.4-1-1z" opacity=".2"/>
+</svg>

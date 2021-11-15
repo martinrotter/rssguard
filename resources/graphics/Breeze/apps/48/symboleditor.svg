@@ -1,0 +1,27 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="4" x2="4" y1="3" y2="45">
+        <stop offset="0" stop-color="#2a2c2f"/>
+        <stop offset="1" stop-color="#536161"/>
+        </linearGradient>
+    <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="4" x2="4" y1="3" y2="45">
+        <stop offset="0" stop-color="#292c2f"/>
+        <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+  <path
+     d="m4 4v40h40v-40z"
+     fill="url(#a)"
+     />
+  <path
+     d="m8 34 10 10h26v-30l-4-4.25-3 1.25-4 5h-3l-8-8v14h-14l6 6 2 4 6 2z"
+     fill="url(#b)"
+     opacity=".2"
+     />
+  <path
+     style="fill:#ffffff"
+     d="M 8 8 L 8 22 L 22 22 L 22 8 L 8 8 z M 27.75 8 L 26 9.75 L 31.25 15 L 26 20.25 L 27.75 22 L 33 16.75 L 38.25 22 L 40 20.25 L 34.75 15 L 40 9.75 L 38.25 8 L 33 13.25 L 27.75 8 z M 10 10 L 20 10 L 20 20 L 10 20 L 10 10 z M 14 26 L 14 32 L 8 32 L 8 34 L 14 34 L 14 40 L 16 40 L 16 34 L 22 34 L 22 32 L 16 32 L 16 26 L 14 26 z M 33 26 A 7 7 0 0 0 26 33 A 7 7 0 0 0 33 40 A 7 7 0 0 0 40 33 A 7 7 0 0 0 33 26 z M 33 28 A 5 5 0 0 1 38 33 A 5 5 0 0 1 33 38 A 5 5 0 0 1 28 33 A 5 5 0 0 1 33 28 z "
+     />
+  <path
+     style="opacity:0.33;fill:#ffffff"
+     d="M 4 43 L 4 44 L 44 44 L 44 43 L 4 43 z "
+     />
+</svg>

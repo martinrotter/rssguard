@@ -1,8 +1,144 @@
 <RCC>
   <qresource prefix="/">
+    <file>./graphics/Breeze/actions/32/application-exit.svg</file>
+    <file>./graphics/Breeze/mimetypes/64/application-rss+xml.svg</file>
+    <file>./graphics/Breeze/categories/32/applications-internet.svg</file>
+    <file>./graphics/Breeze/categories/32/applications-office.svg</file>
+    <file>./graphics/Breeze/categories/32/applications-science.svg</file>
+    <file>./graphics/Breeze/categories/32/applications-system.svg</file>
+    <file>./graphics/Breeze/actions/32/arrow-down.svg</file>
+    <file>./graphics/Breeze/actions/32/arrow-up.svg</file>
+    <file>./graphics/Breeze/actions/32/call-start.svg</file>
+    <file>./graphics/Breeze/status/64/dialog-error.svg</file>
+    <file>./graphics/Breeze/status/64/dialog-information.svg</file>
+    <file>./graphics/Breeze/status/64/dialog-password.svg</file>
+    <file>./graphics/Breeze/status/64/dialog-question.svg</file>
+    <file>./graphics/Breeze/status/64/dialog-warning.svg</file>
+    <file>./graphics/Breeze/actions/32/document-edit.svg</file>
+    <file>./graphics/Breeze/actions/32/document-export.svg</file>
+    <file>./graphics/Breeze/actions/32/document-import.svg</file>
+    <file>./graphics/Breeze/actions/32/document-open.svg</file>
+    <file>./graphics/Breeze/actions/32/document-revert.svg</file>
+    <file>./graphics/Breeze/actions/22/download.svg</file>
+    <file>./graphics/Breeze/actions/22/edit-clear.svg</file>
+    <file>./graphics/Breeze/actions/22/edit-copy.svg</file>
+    <file>./graphics/Breeze/places/96/folder.svg</file>
+    <file>./graphics/Breeze/actions/22/format-indent-more.svg</file>
+    <file>./graphics/Breeze/actions/22/format-justify-fill.svg</file>
+    <file>./graphics/Breeze/actions/32/go-down.svg</file>
+    <file>./graphics/Breeze/actions/64/go-home.svg</file>
+    <file>./graphics/Breeze/actions/32/go-jump.svg</file>
+    <file>./graphics/Breeze/actions/32/go-next.svg</file>
+    <file>./graphics/Breeze/actions/32/go-previous.svg</file>
+    <file>./graphics/Breeze/actions/32/go-up.svg</file>
+    <file>./graphics/Breeze/actions/22/gtk-edit.svg</file>
+    <file>./graphics/Breeze/actions/32/help-about.svg</file>
+    <file>./graphics/Breeze/actions/22/help-contents.svg</file>
+    <file>./graphics/Breeze/mimetypes/64/image-x-generic.svg</file>
+    <file>./graphics/Breeze/actions/22/insert-page-break.svg</file>
+    <file>./graphics/Breeze/actions/22/list-add.svg</file>
+    <file>./graphics/Breeze/actions/22/list-remove.svg</file>
+    <file>./graphics/Breeze/actions/32/mail-attachment.svg</file>
+    <file>./graphics/Breeze/actions/32/mail-mark-important.svg</file>
+    <file>./graphics/Breeze/actions/32/mail-mark-junk.svg</file>
+    <file>./graphics/Breeze/actions/32/mail-mark-read.svg</file>
+    <file>./graphics/Breeze/actions/32/mail-mark-unread.svg</file>
+    <file>./graphics/Breeze/actions/32/mail-message-new.svg</file>
+    <file>./graphics/Breeze/actions/32/mail-reply-sender.svg</file>
+    <file>./graphics/Breeze/actions/32/mail-send.svg</file>
+    <file>./graphics/Breeze/actions/32/mail-sent.svg</file>
+    <file>./graphics/Breeze/actions/32/media-playback-start.svg</file>
+    <file>./graphics/Breeze/actions/22/process-stop.svg</file>
+    <file>./graphics/Breeze/actions/22/system-search.svg</file>
+    <file>./graphics/Breeze/actions/22/system-upgrade.svg</file>
+    <file>./graphics/Breeze/actions/22/tab-new.svg</file>
+    <file>./graphics/Breeze/actions/22/tag-folder.svg</file>
+    <file>./graphics/Breeze/actions/22/tag-new.svg</file>
+    <file>./graphics/Breeze/actions/22/tag-properties.svg</file>
+    <file>./graphics/Breeze/mimetypes/64/text-html.svg</file>
+    <file>./graphics/Breeze/places/96/user-trash.svg</file>
+    <file>./graphics/Breeze/actions/22/view-fullscreen.svg</file>
+    <file>./graphics/Breeze/actions/32/view-list-details.svg</file>
+    <file>./graphics/Breeze/actions/32/view-refresh.svg</file>
+    <file>./graphics/Breeze/actions/22/view-restore.svg</file>
+    <file>./graphics/Breeze/actions/32/window-close.svg</file>
+    <file>./graphics/Breeze/index.theme</file>
+    <file>./graphics/Breeze Dark/actions/32/application-exit.svg</file>
+    <file>./graphics/Breeze Dark/mimetypes/64/application-rss+xml.svg</file>
+    <file>./graphics/Breeze Dark/categories/32/applications-internet.svg</file>
+    <file>./graphics/Breeze Dark/categories/32/applications-office.svg</file>
+    <file>./graphics/Breeze Dark/categories/32/applications-science.svg</file>
+    <file>./graphics/Breeze Dark/categories/32/applications-system.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/arrow-down.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/arrow-up.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/call-start.svg</file>
+    <file>./graphics/Breeze Dark/status/64/dialog-error.svg</file>
+    <file>./graphics/Breeze Dark/status/64/dialog-information.svg</file>
+    <file>./graphics/Breeze Dark/status/64/dialog-password.svg</file>
+    <file>./graphics/Breeze Dark/status/64/dialog-question.svg</file>
+    <file>./graphics/Breeze Dark/status/64/dialog-warning.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/document-edit.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/document-export.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/document-import.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/document-open.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/document-revert.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/download.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/edit-clear.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/edit-copy.svg</file>
+    <file>./graphics/Breeze Dark/places/96/folder.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/format-indent-more.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/format-justify-fill.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/go-down.svg</file>
+    <file>./graphics/Breeze Dark/actions/64/go-home.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/go-jump.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/go-next.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/go-previous.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/go-up.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/gtk-edit.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/help-about.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/help-contents.svg</file>
+    <file>./graphics/Breeze Dark/mimetypes/64/image-x-generic.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/insert-page-break.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/list-add.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/list-remove.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/mail-attachment.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/mail-mark-important.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/mail-mark-junk.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/mail-mark-read.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/mail-mark-unread.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/mail-message-new.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/mail-reply-sender.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/mail-send.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/mail-sent.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/media-playback-start.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/process-stop.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/system-search.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/system-upgrade.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/tab-new.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/tag-folder.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/tag-new.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/tag-properties.svg</file>
+    <file>./graphics/Breeze Dark/mimetypes/64/text-html.svg</file>
+    <file>./graphics/Breeze Dark/places/96/user-trash.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/view-fullscreen.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/view-list-details.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/view-refresh.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/view-restore.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/window-close.svg</file>
+    <file>./graphics/Breeze Dark/index.theme</file>
     <file>./graphics/Faenza/actions/64/application-exit.png</file>
+    <file>./graphics/Faenza/mimetypes/64/application-rss+xml.png</file>
+    <file>./graphics/Faenza/categories/64/applications-internet.png</file>
+    <file>./graphics/Faenza/categories/64/applications-office.png</file>
+    <file>./graphics/Faenza/categories/64/applications-science.png</file>
+    <file>./graphics/Faenza/categories/64/applications-system.png</file>
     <file>./graphics/Faenza/actions/64/call-start.png</file>
+    <file>./graphics/Faenza/status/64/dialog-error.png</file>
+    <file>./graphics/Faenza/status/64/dialog-information.png</file>
     <file>./graphics/Faenza/actions/64/dialog-no.png</file>
+    <file>./graphics/Faenza/status/64/dialog-password.png</file>
+    <file>./graphics/Faenza/status/64/dialog-question.png</file>
+    <file>./graphics/Faenza/status/64/dialog-warning.png</file>
     <file>./graphics/Faenza/actions/64/dialog-yes.png</file>
     <file>./graphics/Faenza/actions/64/document-edit.png</file>
     <file>./graphics/Faenza/actions/64/document-export.png</file>
@@ -12,6 +148,9 @@
     <file>./graphics/Faenza/actions/64/down.png</file>
     <file>./graphics/Faenza/actions/64/edit-clear.png</file>
     <file>./graphics/Faenza/actions/64/edit-copy.png</file>
+    <file>./graphics/Faenza/emblems/64/emblem-downloads.png</file>
+    <file>./graphics/Faenza/emblems/64/emblem-system.png</file>
+    <file>./graphics/Faenza/places/64/folder.png</file>
     <file>./graphics/Faenza/actions/64/format-indent-more.png</file>
     <file>./graphics/Faenza/actions/64/format-justify-fill.png</file>
     <file>./graphics/Faenza/actions/64/go-down.png</file>
@@ -23,6 +162,7 @@
     <file>./graphics/Faenza/actions/64/gtk-edit.png</file>
     <file>./graphics/Faenza/actions/64/help-about.png</file>
     <file>./graphics/Faenza/actions/64/help-contents.png</file>
+    <file>./graphics/Faenza/mimetypes/64/image-x-generic.png</file>
     <file>./graphics/Faenza/actions/64/insert-object.png</file>
     <file>./graphics/Faenza/actions/64/list-add.png</file>
     <file>./graphics/Faenza/actions/64/list-remove.png</file>
@@ -43,33 +183,30 @@
     <file>./graphics/Faenza/actions/64/system-upgrade.png</file>
     <file>./graphics/Faenza/actions/64/tab-new.png</file>
     <file>./graphics/Faenza/actions/64/tag-new.png</file>
+    <file>./graphics/Faenza/mimetypes/64/text-html.png</file>
     <file>./graphics/Faenza/actions/64/up.png</file>
+    <file>./graphics/Faenza/places/64/user-trash.png</file>
     <file>./graphics/Faenza/actions/64/view-fullscreen.png</file>
     <file>./graphics/Faenza/actions/64/view-list-details.png</file>
     <file>./graphics/Faenza/actions/64/view-refresh.png</file>
     <file>./graphics/Faenza/actions/64/view-restore.png</file>
     <file>./graphics/Faenza/actions/64/window-close.png</file>
-    <file>./graphics/Faenza/categories/64/applications-internet.png</file>
-    <file>./graphics/Faenza/categories/64/applications-office.png</file>
-    <file>./graphics/Faenza/categories/64/applications-science.png</file>
-    <file>./graphics/Faenza/emblems/64/emblem-downloads.icon</file>
-    <file>./graphics/Faenza/emblems/64/emblem-downloads.png</file>
-    <file>./graphics/Faenza/emblems/64/emblem-system.icon</file>
-    <file>./graphics/Faenza/emblems/64/emblem-system.png</file>
     <file>./graphics/Faenza/index.theme</file>
-    <file>./graphics/Faenza/mimetypes/64/application-rss+xml.png</file>
-    <file>./graphics/Faenza/mimetypes/64/image-x-generic.png</file>
-    <file>./graphics/Faenza/mimetypes/64/text-html.png</file>
-    <file>./graphics/Faenza/places/64/folder.png</file>
-    <file>./graphics/Faenza/places/64/user-trash.png</file>
-    <file>./graphics/Faenza/status/64/dialog-error.png</file>
-    <file>./graphics/Faenza/status/64/dialog-information.png</file>
-    <file>./graphics/Faenza/status/64/dialog-password.png</file>
-    <file>./graphics/Faenza/status/64/dialog-question.png</file>
-    <file>./graphics/Faenza/status/64/dialog-warning.png</file>
     <file>./graphics/Numix/22/actions/application-exit.svg</file>
+    <file>./graphics/Numix/22/mimetypes/application-rss+xml.svg</file>
+    <file>./graphics/Numix/22/categories/applications-internet.svg</file>
+    <file>./graphics/Numix/22/categories/applications-office.svg</file>
+    <file>./graphics/Numix/22/categories/applications-science.svg</file>
+    <file>./graphics/Numix/22/categories/applications-system.svg</file>
+    <file>./graphics/Numix/22/actions/arrow-down.svg</file>
+    <file>./graphics/Numix/22/actions/arrow-up.svg</file>
     <file>./graphics/Numix/22/actions/call-start.svg</file>
+    <file>./graphics/Numix/22/status/dialog-error.svg</file>
+    <file>./graphics/Numix/22/status/dialog-information.svg</file>
     <file>./graphics/Numix/22/actions/dialog-no.svg</file>
+    <file>./graphics/Numix/22/status/dialog-password.svg</file>
+    <file>./graphics/Numix/22/status/dialog-question.svg</file>
+    <file>./graphics/Numix/22/status/dialog-warning.svg</file>
     <file>./graphics/Numix/22/actions/dialog-yes.svg</file>
     <file>./graphics/Numix/22/actions/document-edit.svg</file>
     <file>./graphics/Numix/22/actions/document-export.svg</file>
@@ -80,6 +217,9 @@
     <file>./graphics/Numix/22/actions/download.svg</file>
     <file>./graphics/Numix/22/actions/edit-clear.svg</file>
     <file>./graphics/Numix/22/actions/edit-copy.svg</file>
+    <file>./graphics/Numix/22/emblems/emblem-downloads.svg</file>
+    <file>./graphics/Numix/22/emblems/emblem-system.svg</file>
+    <file>./graphics/Numix/22/places/folder.svg</file>
     <file>./graphics/Numix/22/actions/format-indent-more.svg</file>
     <file>./graphics/Numix/22/actions/format-justify-fill.svg</file>
     <file>./graphics/Numix/22/actions/go-down.svg</file>
@@ -89,12 +229,14 @@
     <file>./graphics/Numix/22/actions/go-previous.svg</file>
     <file>./graphics/Numix/22/actions/go-up.svg</file>
     <file>./graphics/Numix/22/actions/gtk-edit.svg</file>
-    <file>./graphics/Numix/22/actions/help-about.svg</file>
+    <file>./graphics/Numix/22/categories/help-about.svg</file>
     <file>./graphics/Numix/22/actions/help-contents.svg</file>
+    <file>./graphics/Numix/22/mimetypes/image-x-generic.svg</file>
     <file>./graphics/Numix/22/actions/insert-object.svg</file>
     <file>./graphics/Numix/22/actions/list-add.svg</file>
     <file>./graphics/Numix/22/actions/list-remove.svg</file>
     <file>./graphics/Numix/22/actions/mail-attachment.svg</file>
+    <file>./graphics/Numix/22/places/mail-inbox.svg</file>
     <file>./graphics/Numix/22/actions/mail-mark-important.svg</file>
     <file>./graphics/Numix/22/actions/mail-mark-junk.svg</file>
     <file>./graphics/Numix/22/actions/mail-mark-read.svg</file>
@@ -102,7 +244,7 @@
     <file>./graphics/Numix/22/actions/mail-message-new.svg</file>
     <file>./graphics/Numix/22/actions/mail-reply-sender.svg</file>
     <file>./graphics/Numix/22/actions/mail-send.svg</file>
-    <file>./graphics/Numix/22/actions/mail-sent.svg</file>
+    <file>./graphics/Numix/22/places/mail-sent.svg</file>
     <file>./graphics/Numix/22/actions/media-playback-start.svg</file>
     <file>./graphics/Numix/22/actions/process-stop.svg</file>
     <file>./graphics/Numix/22/actions/reload.svg</file>
@@ -112,30 +254,14 @@
     <file>./graphics/Numix/22/actions/tag-folder.svg</file>
     <file>./graphics/Numix/22/actions/tag-new.svg</file>
     <file>./graphics/Numix/22/actions/tag-properties.svg</file>
+    <file>./graphics/Numix/22/mimetypes/text-html.svg</file>
     <file>./graphics/Numix/22/actions/up.svg</file>
+    <file>./graphics/Numix/22/places/user-trash.svg</file>
     <file>./graphics/Numix/22/actions/view-fullscreen.svg</file>
     <file>./graphics/Numix/22/actions/view-list-details.svg</file>
     <file>./graphics/Numix/22/actions/view-refresh.svg</file>
     <file>./graphics/Numix/22/actions/view-restore.svg</file>
     <file>./graphics/Numix/22/actions/window-close.svg</file>
-    <file>./graphics/Numix/22/categories/applications-internet.svg</file>
-    <file>./graphics/Numix/22/categories/applications-office.svg</file>
-    <file>./graphics/Numix/22/categories/applications-science.svg</file>
-    <file>./graphics/Numix/22/categories/help-about.svg</file>
-    <file>./graphics/Numix/22/emblems/emblem-downloads.svg</file>
-    <file>./graphics/Numix/22/emblems/emblem-system.svg</file>
-    <file>./graphics/Numix/22/mimetypes/application-rss+xml.svg</file>
-    <file>./graphics/Numix/22/mimetypes/image-x-generic.svg</file>
-    <file>./graphics/Numix/22/mimetypes/text-html.svg</file>
-    <file>./graphics/Numix/22/places/folder.svg</file>
-    <file>./graphics/Numix/22/places/mail-inbox.svg</file>
-    <file>./graphics/Numix/22/places/mail-sent.svg</file>
-    <file>./graphics/Numix/22/places/user-trash.svg</file>
-    <file>./graphics/Numix/22/status/dialog-error.svg</file>
-    <file>./graphics/Numix/22/status/dialog-information.svg</file>
-    <file>./graphics/Numix/22/status/dialog-password.svg</file>
-    <file>./graphics/Numix/22/status/dialog-question.svg</file>
-    <file>./graphics/Numix/22/status/dialog-warning.svg</file>
     <file>./graphics/Numix/index.theme</file>
   </qresource>
 </RCC>

@@ -2,49 +2,57 @@
 
 # This script will generate .qrc file from used icons.
 #
-# PWD is used as used src root folder.
-# "resources/graphics/Faenza" is used as folder for icons.
+# PWD must be the root of repository.
 # Output qrc file has paths relative to "resources" folder.
 
-echo_formatted_qrc() {
+append_icon_theme_files() {
+  local -n ICON_NAMES_TO_FIND=$1
+  local -n ALREADY_FOUND_ICONS=$2
+  local ICONS_BASE_FOLDER="$3"
+  local ICON_THEME_NAME="$4"
+
+  local ICON_THEME_FOLDER="$ICONS_BASE_FOLDER/$ICON_THEME_NAME"
+
+  # Find relevant icons.
+  for ICON_NAME in "${ICON_NAMES_TO_FIND[@]}"; do
+    local ICON=$(find "$ICON_THEME_FOLDER" -name "${ICON_NAME}.*" -printf "%P\n" | tail -1)
+    
+    if [ -n "$ICON" ]; then
+      ALREADY_FOUND_ICONS+=("./$(basename "$ICONS_BASE_FOLDER")/$ICON_THEME_NAME/$ICON")
+    fi
+  done
+
+  # Append index file.
+  ALREADY_FOUND_ICONS+=("./$(basename "$ICONS_BASE_FOLDER")/$ICON_THEME_NAME/index.theme")
+}
+
+main() {
+  local ROOT_FOLDER="$(pwd)"
+  local ROOT_SRC_FOLDER="$(pwd)/src/librssguard"
+  local RESOURCES_FOLDER="$ROOT_FOLDER/resources"
+  local THEMES_FOLDER="$RESOURCES_FOLDER/graphics"
+
+  local FOUND_ICON_FILES
+  local ICON_THEMES=("Breeze" "Breeze Dark" "Faenza" "Numix")
+  local ICON_NAMES=($(pcregrep.exe -r -h --om-separator=$'\n' -o1 -o2 '.+fromTheme\(QSL\(\"([\-\+a-z]+)\"\)(?:, QSL\(\"([\-\+a-z]+)\"\))?' "$ROOT_SRC_FOLDER" | sort -u))
+
+  #cd $ROOT_SRC_FOLDER
+
+  # Build list of relative paths to individual icons.
+  for THEME_NAME in "${ICON_THEMES[@]}"; do
+    append_icon_theme_files ICON_NAMES FOUND_ICON_FILES "$THEMES_FOLDER" "$THEME_NAME"
+  done
+
+  # Generate final XML and print it.
   printf "<RCC>\n  <qresource prefix=\"/\">\n"
-  
-  # Sort icons first.
-  readarray -t sorted < <(for a in "$@"; do echo "$a"; done | sort)
-  
-  for ICON_FILE in "${sorted[@]}"; do
-    # We find icon.
+
+  for ICON_FILE in "${FOUND_ICON_FILES[@]}"; do
     echo "    <file>$ICON_FILE</file>"
   done
-  
+
   printf "  </qresource>\n</RCC>"
+
+  #declare -p FOUND_ICON_FILES
 }
 
-discover_used_icons() {
-  local ROOT_SRC_FOLDER="$(pwd)"
-  local RESOURCES_FOLDER="$ROOT_SRC_FOLDER/../resources"
-  
-  local INDEX_FILE_1="./graphics/Faenza/index.theme"
-  local INDEX_FILE_2="./graphics/Numix/index.theme"
-  
-  declare -a ICON_FILES
-  #echo "Root src folder: \"$ROOT_SRC_FOLDER\"."
-  
-  # Now we discover all usages of icons.
-  local ICON_NAMES=$(grep -Prioh '(?<=fromTheme\(QSL\(\")[-\+a-z]+' "$ROOT_SRC_FOLDER" | sort -u)
- 
-  cd "$RESOURCES_FOLDER"
-  
-  for ICON_NAME in $ICON_NAMES; do
-    # We find icon.
-    local ICON_FILE="$(find . -name "${ICON_NAME}.*")"
-    ICON_FILES+=("$ICON_FILE")
-  done
-  
-  ICON_FILES+=("$INDEX_FILE_1")
-  ICON_FILES+=("$INDEX_FILE_2")
-  cd "$ROOT_SRC_FOLDER"
-  echo_formatted_qrc ${ICON_FILES[@]}
-}
-
-discover_used_icons
+main

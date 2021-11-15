@@ -1,0 +1,23 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <linearGradient id="a" gradientTransform="matrix(.66666726 0 0 .63518419 128.19014 198.51873)" gradientUnits="userSpaceOnUse" x2="0" y1="543.79797" y2="502.65509">
+        <stop offset="0" stop-color="#c6cdd1"/>
+        <stop offset="1" stop-color="#e0e5e7"/>
+    </linearGradient><linearGradient id="b">
+        <stop offset="0"/>
+        <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="c" gradientUnits="userSpaceOnUse" x1="391.571433" x2="406.571463" xlink:href="#b" y1="525.797999" y2="540.797999"/>
+    <linearGradient id="d" gradientTransform="translate(387.57143 517.798)" gradientUnits="userSpaceOnUse" x1="-7" x2="18" xlink:href="#b" y1="13" y2="26"/>
+    <linearGradient id="e" gradientTransform="translate(0 -.000002)" gradientUnits="userSpaceOnUse" x1="384.57144" x2="411.57144" xlink:href="#d" y1="513.79797" y2="538.79797"/>
+    <linearGradient id="f" gradientTransform="translate(-.010239 -.010045)" gradientUnits="userSpaceOnUse" x1="391.18909" x2="410.15625" xlink:href="#d" y1="530.46497" y2="545.5434"/>
+    <g transform="translate(-384.57143 -515.798)">
+        <path d="m384.57144 517.79797h32v28h-32z" fill="url(#a)"/>
+        <path d="m385.57142 543.79803 30-20 1.00001 1-.00001 20.99997-29 .00003z" fill="url(#c)" fill-rule="evenodd" opacity=".2"/>
+        <path d="m384.57141 517.79797h32.000011v4h-32.000011z" fill="#566069"/>
+        <path d="m384.57141 521.79797h31.999968v1h-31.999968z" fill="#3daee9"/>
+        <path d="m30 3c-.554 0-1 .446-1 1s.446 1 1 1 1-.446 1-1-.446-1-1-1zm-29 5v20h30v-20z" fill="#fff" transform="translate(384.57143 515.798)"/>
+        <path d="m392.56119 529.78796 8.01024 8.01004h8l6 6h1v-8l-7.01024-7.01004v1z" fill="url(#e)" opacity=".25"/>
+        <path d="m393.0174 539.78796 4.32502 4h17.21877l-6-6v1h-11.60132l-.98372 1.36378-1.41496-.0308z" fill="url(#f)" opacity=".25"/>
+        <path d="m401.06119 526.78796c-1.21386 0-2.21902.85593-2.44922 2h-6.05078v1h6.05078c.2302 1.14407 1.23536 2 2.44922 2s2.21902-.85593 2.44922-2h5.05078v-1h-5.05078c-.2302-1.14407-1.23536-2-2.44922-2zm-6 9c-1.385 0-2.5 1.115-2.5 2.5s1.115 2.5 2.5 2.5c1.21386 0 2.21902-.85593 2.44922-2h11.05078v-1h-11.05078c-.2302-1.14407-1.23536-2-2.44922-2zm0 1c.831 0 1.5.669 1.5 1.5s-.669 1.5-1.5 1.5-1.5-.669-1.5-1.5.669-1.5 1.5-1.5z" fill="#353b3e"/>
+    </g>
+</svg>

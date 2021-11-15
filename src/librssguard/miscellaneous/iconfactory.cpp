@@ -44,8 +44,10 @@ QByteArray IconFactory::toByteArray(const QIcon& icon) {
   return array.toBase64();
 }
 
-QIcon IconFactory::fromTheme(const QString& name) {
-  return QIcon::fromTheme(name);
+QIcon IconFactory::fromTheme(const QString& name, const QString& fallback) {
+  QIcon original = QIcon::fromTheme(name);
+
+  return (original.isNull() && !fallback.isEmpty()) ? QIcon::fromTheme(fallback) : original;
 }
 
 QPixmap IconFactory::miscPixmap(const QString& name) {

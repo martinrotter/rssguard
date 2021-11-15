@@ -1,0 +1,38 @@
+<svg version="1.1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient id="f" x1="3" x2="-1" y1="507.8" y2="503.8" gradientTransform="matrix(0 1-1 0 422.57 539.8)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2f3943" offset="0"/>
+            <stop stop-color="#4d5662" offset="1"/>
+        </linearGradient>
+        <linearGradient id="g-3" x2="0" y1="-521.79999" y2="-518.79999" gradientTransform="matrix(1,0,0,1.6666667,1.7421875e-6,347.86666)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#84cbfe" offset="0"/>
+            <stop stop-color="#84cbfe" stop-opacity="0" offset="1"/>
+        </linearGradient>
+        <linearGradient id="linearGradient890" x1="408.55548" x2="408.57217" y1="-521.50116" y2="-518.81458" gradientTransform="matrix(1,0,0,1.1666667,1.7421875e-6,85.466657)" gradientUnits="userSpaceOnUse" xlink:href="#g-3"/>
+        <linearGradient id="linearGradient904" x1="408.55548" x2="408.57217" y1="-521.50116" y2="-518.81458" gradientTransform="matrix(1,0,0,1.1666667,-817.14002,1132.0668)" gradientUnits="userSpaceOnUse" xlink:href="#g-3"/>
+        <linearGradient id="e-3" x2="0" y1="509.79999" y2="537.79999" gradientTransform="matrix(1,0,0,1.0714286,-4.0291406e-6,-38.414301)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2e5d89" offset="0"/>
+            <stop stop-color="#1b92f4" offset="1"/>
+        </linearGradient>
+    </defs>
+    <g transform="translate(-384.57-499.8)">
+        <path d="m426.57 507.8v-2c0-1.136-0.915-2-2.051-2h-31.898c-1.136 0-2.051 0.864-2.051 2v2z" fill="#d0d5d7"/>
+        <rect x="390.57001" y="505.79999" width="36" height="35.5" rx="0" fill="#d0d5d7" stroke-width=".999384"/>
+        <rect x="391.57001" y="506.79999" width="34" height="32" fill="#eff0f1" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="6.24501"/>
+        <rect x="392.57001" y="507.79999" width="32" height="30" fill="url(#e-3)" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="6.41761"/>
+        <path transform="translate(384.57,499.8)" d="m6 40v2c0 1.136 0.915 2 2.051 2h31.898c1.136 0 2.051-0.864 2.051-2v-2z" fill="#d0d5d7"/>
+        <g stroke-linecap="round" stroke-linejoin="bevel">
+            <path d="m407.05708 510.28708 10.01723 1e-5 5.0086 5.00645 1e-5 15.01938h-15.02584z" fill="#eff0f1" stroke="#808080" stroke-linejoin="miter" stroke-width=".974166"/>
+            <path d="m395.05708 515.28708 10.01723 1e-5 5.0086 5.00645 1e-5 15.01938h-15.02584z" fill="#eff0f1" stroke="#808080" stroke-linejoin="miter" stroke-width=".974166"/>
+            <rect x="392.57001" y="522.79999" width="32" height="1" fill="#84cbfe" stroke-width="6.2"/>
+        </g>
+        <g stroke-linejoin="round" stroke-width="2">
+            <path d="m422.57 539.8h-28v1c0 1.108.892 2 2 2h24c1.108 0 2-.892 2-2z" fill="url(#f)"/>
+            <circle transform="matrix(0-1-1 0 0 0)" cx="-541.3" cy="-420.07" r=".5" fill="#11d116" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(-7.3242188e-6,1.2207031e-5)" stroke-width="1.08012">
+            <rect transform="scale(1,-1)" x="392.57001" y="-523.29999" width="32" height="3.5" fill="url(#linearGradient890)"/>
+            <rect transform="scale(-1,1)" x="-424.57001" y="523.29999" width="32" height="3.5" fill="url(#linearGradient904)"/>
+        </g>
+    </g>
+</svg>

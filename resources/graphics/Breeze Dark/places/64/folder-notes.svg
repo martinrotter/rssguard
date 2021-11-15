@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs id="defs3051">
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#232629;
+      }
+      .ColorScheme-Highlight {
+        color:#3daee9;
+      }
+      </style>
+  </defs>
+ <path 
+     style="fill:currentColor" 
+     d="M 4 6 L 4 11 L 4 20 L 3 20 L 3 21 L 3 21 C 3 21 3 21 3 21 L 3 57 L 3 58 L 4 58 L 60 58 L 61 58 L 61 57 L 61 21 L 61 21 L 61 16 L 60 16 L 60 11 C 60 11 60 11 60 11 L 60 11 L 60 10 L 32 10 L 28 6 L 4 6 z "
+     class="ColorScheme-Highlight"
+     />
+ <path 
+     style="fill-opacity:0.33"
+     d="M 4 6 L 4 11 L 4 20 L 22 20 L 26 16 L 60 16 L 60 11 C 60 11 60 11 60 11 L 60 11 L 60 10 L 32 10 L 28 6 L 4 6 z "
+     />
+ <path 
+     style="fill:#ffffff;fill-opacity:0.2"
+     d="M 28 6 L 31 11 L 33 11 L 60 11 L 60 10 L 33 10 L 32 10 L 28 6 z M 26 16 L 22 20 L 3 20 L 3 21 L 23 21 L 26 16 z "
+     />
+ <path 
+     style="fill-opacity:0.2;fill-rule:evenodd"
+     d="M 26 16 L 20 19 L 4 19 L 4 20 L 22 20 L 26 16 z M 3 57 L 3 58 L 4 58 L 60 58 L 61 58 L 61 57 L 60 57 L 4 57 L 3 57 z "
+     class="ColorScheme-Text"
+     />
+ <path 
+     style="fill:currentColor;fill-opacity:0.6;stroke:none"  
+     d="M 22 26 C 21.446 26 21 26.446 21 27 L 21 47 C 21 47.554 21.446 48 22 48 L 40 48 C 40.554 48 41 47.554 41 47 L 41 46 L 42 46 C 42.554 46 43 45.554 43 45 L 43 41 C 43 40.814 42.935656 40.649 42.847656 40.5 C 42.935656 40.351 43 40.186 43 40 L 43 36 C 43 35.814 42.935656 35.649 42.847656 35.5 C 42.935656 35.351 43 35.186 43 35 L 43 31 C 43 30.446 42.554 30 42 30 L 41 30 L 41 27 C 41 26.446 40.554 26 40 26 L 22 26 z M 22 27 L 40 27 L 40 47 L 22 47 L 22 27 z M 23 29 L 23 30 L 30 30 L 30 29 L 23 29 z M 32 29 L 32 30 L 39 30 L 39 29 L 32 29 z M 41 31 L 42 31 L 42 35 L 41 35 L 41 31 z M 23 32 L 23 33 L 30 33 L 30 32 L 23 32 z M 32 32 L 32 33 L 39 33 L 39 32 L 32 32 z M 23 35 L 23 36 L 30 36 L 30 35 L 23 35 z M 32 35 L 32 36 L 39 36 L 39 35 L 32 35 z M 41 36 L 42 36 L 42 40 L 41 40 L 41 36 z M 23 38 L 23 39 L 30 39 L 30 38 L 23 38 z M 32 38 L 32 39 L 39 39 L 39 38 L 32 38 z M 23 41 L 23 42 L 30 42 L 30 41 L 23 41 z M 32 41 L 32 42 L 39 42 L 39 41 L 32 41 z M 41 41 L 42 41 L 42 45 L 41 45 L 41 41 z M 23 44 L 23 45 L 30 45 L 30 44 L 23 44 z M 32 44 L 32 45 L 39 45 L 39 44 L 32 44 z "
+     class="ColorScheme-Text"
+     />
+</svg>

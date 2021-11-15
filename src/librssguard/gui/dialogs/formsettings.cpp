@@ -28,7 +28,7 @@ FormSettings::FormSettings(QWidget& parent)
   m_ui.setupUi(this);
 
   // Set flags and attributes.
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("emblem-system")));
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("emblem-system"), QSL("applications-system")));
 
   m_btnApply = m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Apply);
 

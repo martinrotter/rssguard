@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs id="defs3051">
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#31363b;
+      }
+      .ColorScheme-Highlight {
+        color:#3daee9;
+      }
+      </style>
+  </defs>
+ <path 
+     style="fill:currentColor;fill-opacity:1;stroke:none" 
+     d="M 2 3 L 2 10 L 1 10 L 1 29 L 12 29 L 13 29 L 31 29 L 31 8 L 30 8 L 30 5 L 16 5 L 14 3 L 2 3 z "
+     class="ColorScheme-Highlight"
+     />
+ <path 
+     style="fill-opacity:0.33;fill-rule:evenodd"
+     d="m 2,3 0,7 9,0 L 13,8 30,8 30,5 16,5 14,3 2,3 Z"
+     />
+ <path 
+     style="fill:#ffffff;fill-opacity:0.2;fill-rule:evenodd"
+     d="M 14 3 L 15 6 L 30 6 L 30 5 L 16 5 L 14 3 z M 13 8 L 11 10 L 1 10 L 1 11 L 12 11 L 13 8 z "
+     />
+ <path 
+     style="fill-opacity:0.2;fill-rule:evenodd"
+     d="M 13 8 L 11 9 L 2 9 L 2 10 L 11 10 L 13 8 z M 1 28 L 1 29 L 31 29 L 31 28 L 1 28 z "
+     class="ColorScheme-Text"
+     />
+ <path 
+     style="fill:currentColor;fill-opacity:0.6;stroke:none" 
+     d="M 15 14 L 15 15 L 16 15 L 16 14 L 15 14 z M 17 14 L 17 15 L 18 15 L 18 14 L 17 14 z M 20.269531 15.271484 C 19.745595 15.630566 19.504625 16.280718 19.667969 16.894531 C 19.833126 17.507888 20.366712 17.950717 21 18 C 21.211634 18.598592 21.777207 18.999109 22.412109 19 C 23.047011 18.999109 23.612585 18.598592 23.824219 18 C 23.612585 17.401408 23.047011 17.000891 22.412109 17 C 22.109219 17.000928 21.813706 17.09353 21.564453 17.265625 C 21.665739 16.979766 21.677984 16.66992 21.599609 16.376953 C 21.434682 15.76423 20.90208 15.321559 20.269531 15.271484 z M 21 18 L 9 18 C 8.9999996 21.313709 11.686291 23 15 23 C 18.313709 23 21 21.313709 21 18 z M 12 16 L 12 17 L 13 17 L 13 16 L 12 16 z M 14 16 L 14 17 L 15 17 L 15 16 L 14 16 z M 16 16 L 16 17 L 17 17 L 17 16 L 16 16 z M 18 16 L 18 17 L 19 17 L 19 16 L 18 16 z M 11.5 19 C 11.776142 19 12 19.223858 12 19.5 C 12 19.776142 11.776142 20 11.5 20 C 11.223858 20 11 19.776142 11 19.5 C 11 19.223858 11.223858 19 11.5 19 z "
+     class="ColorScheme-Text"
+     />
+</svg>
