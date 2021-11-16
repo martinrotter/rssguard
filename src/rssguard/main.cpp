@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
   QApplication::setDesktopFileName(APP_DESKTOP_ENTRY_FILE);
 #endif
 
-  // Ensure that ini format is used as application settings storage on Mac OS.
+  // Ensure that ini format is used as application settings storage on macOS.
   QSettings::setDefaultFormat(QSettings::IniFormat);
 
 #if defined(Q_OS_MACOS)

@@ -32,7 +32,7 @@
 #   {FEEDLY,GMAIL,INOREADER}_CLIENT_SECRET - preconfigured OAuth cliend SECRET.
 #
 # Other information:
-#   - supports Windows, Linux, Mac OS X, OS/2, Android,
+#   - supports Windows, Linux, macOS, OS/2, Android,
 #   - Qt 5.9.0 or higher is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules within repository before compilation,
 #   - C++ 11/17 is required.
