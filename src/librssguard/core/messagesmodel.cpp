@@ -352,7 +352,8 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           return data(idx, Qt::ItemDataRole::EditRole);
         }
         else {
-          return data(idx, Qt::ItemDataRole::DisplayRole);
+          return TextFactory::shorten(data(idx, Qt::ItemDataRole::DisplayRole).toString(),
+                                      TEXT_TOOLTIP_LIMIT);
         }
       }
     }
