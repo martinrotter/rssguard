@@ -10,13 +10,19 @@ StyledItemDelegateWithoutFocus::StyledItemDelegateWithoutFocus(const QString& ro
 void StyledItemDelegateWithoutFocus::paint(QPainter* painter,
                                            const QStyleOptionViewItem& option,
                                            const QModelIndex& index) const {
-  QStyleOptionViewItem itemOption(option);
+  QStyleOptionViewItem item_option(option);
 
-  if ((itemOption.state & QStyle::StateFlag::State_HasFocus) == QStyle::StateFlag::State_HasFocus) {
-    itemOption.state = itemOption.state ^ QStyle::StateFlag::State_HasFocus;
+  if ((item_option.state & QStyle::StateFlag::State_HasFocus) == QStyle::StateFlag::State_HasFocus) {
+    item_option.state = item_option.state ^ QStyle::StateFlag::State_HasFocus;
   }
 
-  QStyledItemDelegate::paint(painter, itemOption, index);
+  if ((item_option.state & QStyle::StateFlag::State_Selected) == QStyle::StateFlag::State_Selected &&
+      index.data(Qt::ItemDataRole::ForegroundRole).isValid()) {
+    item_option.palette.setColor(QPalette::ColorRole::HighlightedText,
+                                 index.data(Qt::ItemDataRole::ForegroundRole).value<QColor>());
+  }
+
+  QStyledItemDelegate::paint(painter, item_option, index);
 }
 
 QSize StyledItemDelegateWithoutFocus::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
