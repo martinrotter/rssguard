@@ -24,6 +24,7 @@ ToolBarEditor::ToolBarEditor(QWidget* parent)
   connect(m_ui->m_listActivatedActions, &QListWidget::itemSelectionChanged, this, &ToolBarEditor::updateActionsAvailability);
   connect(m_ui->m_listActivatedActions, &QListWidget::itemDoubleClicked, this, &ToolBarEditor::deleteSelectedAction);
   connect(m_ui->m_listAvailableActions, &QListWidget::itemDoubleClicked, this, &ToolBarEditor::addSelectedAction);
+
   m_ui->m_listActivatedActions->installEventFilter(this);
   m_ui->m_btnInsertSeparator->setIcon(qApp->icons()->fromTheme(QSL("insert-object"), QSL("insert-page-break")));
   m_ui->m_btnInsertSpacer->setIcon(qApp->icons()->fromTheme(QSL("go-jump")));
@@ -32,7 +33,7 @@ ToolBarEditor::ToolBarEditor(QWidget* parent)
   m_ui->m_btnDeleteSelectedAction->setIcon(qApp->icons()->fromTheme(QSL("go-next")));
   m_ui->m_btnMoveActionDown->setIcon(qApp->icons()->fromTheme(QSL("down"), QSL("arrow-down")));
   m_ui->m_btnMoveActionUp->setIcon(qApp->icons()->fromTheme(QSL("up"), QSL("arrow-up")));
-  m_ui->m_btnReset->setIcon(qApp->icons()->fromTheme(QSL("reload")));
+  m_ui->m_btnReset->setIcon(qApp->icons()->fromTheme(QSL("reload"), QSL("edit-reset")));
 }
 
 void ToolBarEditor::loadFromToolBar(BaseBar* tool_bar) {
