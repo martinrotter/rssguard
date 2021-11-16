@@ -293,12 +293,10 @@ QList<Skin> SkinFactory::installedSkins() const {
   bool skin_load_ok;
   QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Filter::Dirs |
                                                                QDir::Filter::NoDotAndDotDot |
-                                                               QDir::Filter::NoSymLinks |
                                                                QDir::Filter::Readable);
 
   skin_directories.append(QDir(customSkinBaseFolder()).entryList(QDir::Filter::Dirs |
                                                                  QDir::Filter::NoDotAndDotDot |
-                                                                 QDir::Filter::NoSymLinks |
                                                                  QDir::Filter::Readable));
 
   for (const QString& base_directory : skin_directories) {
