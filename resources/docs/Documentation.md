@@ -320,7 +320,7 @@ Binary name (interpreter) must be always be specified, while arguments not. Be v
 
 <img alt="alt-img" src="images/scrape-source.png" width="350px">
 
-Note that the above examples are cross-platform and you can use the exact same command on Windows, Linux or Mac OS X, if your operating system is properly configured.
+Note that the above examples are cross-platform and you can use the exact same command on Windows, Linux or macOS, if your operating system is properly configured.
 
 RSS Guard offers [placeholder](#userd-plac) `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](#userd), allowing you to make your configuration fully portable. You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
 

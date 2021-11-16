@@ -8,7 +8,7 @@ if [[ "$os" == *"ubuntu"* ]]; then
   echo "We are building for GNU/Linux on Ubuntu."
   is_linux=true
 else
-  echo "We are building for Mac OS X."
+  echo "We are building for macOS."
   is_linux=false
 fi
 
