@@ -38,41 +38,43 @@
     </message>
     <message>
         <source>Filter lists</source>
-        <translation type="unfinished"/>
+        <translation>Список фильтров</translation>
     </message>
     <message>
         <source>Cannot enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось включить блокировщик рекламы AdBlock</translation>
     </message>
     <message>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-        <translation type="unfinished"/>
+        <translation>В компоненте AdBlock возникла ошибка, и его нельзя включить. Дополнительную информацию смотрите в сообщении об ошибке ниже (или в журнале отладки приложения).</translation>
     </message>
     <message>
         <source>OK!</source>
-        <translation type="unfinished"/>
+        <translation>OK!</translation>
     </message>
     <message>
         <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
 
 Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Произошла ошибка. Для получения дополнительных сведений обратитесь к журналу отладки приложения и перейдите к онлайн-документации. Также убедитесь, что установлен Node.js.
+
+Ошибка: %1</translation>
     </message>
     <message>
         <source>ERROR!</source>
-        <translation type="unfinished"/>
+        <translation>ОШИБКА!</translation>
     </message>
     <message>
         <source>No additional info.</source>
-        <translation type="unfinished"/>
+        <translation>Дополнительной информации нет.</translation>
     </message>
     <message>
         <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
-        <translation type="unfinished"/>
+        <translation>Кажется, ваш AdBlock работает нормально, но подождите несколько секунд, чтобы убедиться в этом полностью.</translation>
     </message>
     <message>
         <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.</source>
-        <translation type="unfinished"/>
+        <translation>Произошла ошибка. Для получения дополнительных сведений обратитесь к журналу отладки приложения и перейдите к онлайн-документации. Также убедитесь, что установлен Node.js.</translation>
     </message>
 </context>
 <context>
@@ -83,14 +85,14 @@ Error: %1</source>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation>Показать настройки &amp;AdBlock</translation>
+        <translation>Показать настройки AdBlock (&amp;S)</translation>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>failed to download filter list &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>не удалось загрузить список фильтров &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -125,22 +127,52 @@ Error: %1</source>
     </message>
     <message>
         <source>Unread articles fetched</source>
-        <translation type="unfinished"/>
+        <translation>Загружены непрочитанные статьи</translation>
     </message>
     <message>
         <source>Go to changelog</source>
-        <translation type="unfinished"/>
+        <translation>К списку изменений</translation>
     </message>
     <message>
         <source>AdBlock needs to be configured</source>
-        <translation type="unfinished"/>
+        <translation>Блокировщик рекламы (AdBlock) должен быть настроен</translation>
     </message>
     <message>
         <source>AdBlock component is not configured properly.</source>
-        <translation type="unfinished"/>
+        <translation>Компонент AdBlock настроен неправильно.</translation>
     </message>
     <message>
         <source>Configure now</source>
+        <translation>Настроить сейчас</translation>
+    </message>
+    <message>
+        <source>RSS Guard has Discord server!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can visit it now! Click me!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to Discord!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
+        <translation>Добро пожаловать в %1.
+
+Пожалуйста, ознакомьтесь с ИЗМЕНЕНИЯМИ, включенными в эту
+версию, щелкнув на это всплывающее уведомление.</translation>
+    </message>
+    <message>
+        <source>Already running</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -195,7 +227,7 @@ Error: %1</source>
     <name>BaseLineEdit</name>
     <message>
         <source>Show/hide the password</source>
-        <translation type="unfinished"/>
+        <translation>Показать/скрыть пароль</translation>
     </message>
 </context>
 <context>
@@ -229,27 +261,27 @@ Error: %1</source>
     </message>
     <message>
         <source>Removing read articles...</source>
-        <translation type="unfinished"/>
+        <translation>Удаление прочитанных статей...</translation>
     </message>
     <message>
         <source>Read articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Прочитанные статьи удалены...</translation>
     </message>
     <message>
         <source>Removing old articles...</source>
-        <translation type="unfinished"/>
+        <translation>Удаление старых статей...</translation>
     </message>
     <message>
         <source>Old articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Старые статьи удалены...</translation>
     </message>
     <message>
         <source>Removing starred articles...</source>
-        <translation type="unfinished"/>
+        <translation>Удаление помеченных статей...</translation>
     </message>
     <message>
         <source>Starred articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Помеченные статьи удалены...</translation>
     </message>
 </context>
 <context>
@@ -266,10 +298,6 @@ Error: %1</source>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>Not supported</source>
-        <translation>Не поддерживается</translation>
-    </message>
-    <message>
         <source>Given account does not support adding feeds.</source>
         <translation>Данный аккаунт не поддерживает добавление каналов.</translation>
     </message>
@@ -284,6 +312,10 @@ Error: %1</source>
     <message numerus="yes">
         <source>Add one of %n feed(s)</source>
         <translation><numerusform>Добавить один из %n канала(ов)</numerusform><numerusform>Добавить один из %n канала(ов)</numerusform><numerusform>Добавить один из %n канала(ов)</numerusform><numerusform>Добавить один из %n канала(ов)</numerusform></translation>
+    </message>
+    <message>
+        <source>Not supported by account</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -376,7 +408,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Open folder</source>
-        <translation type="unfinished"/>
+        <translation>Развернуть категорию</translation>
     </message>
 </context>
 <context>
@@ -462,33 +494,33 @@ Status: %3</source>
     <message>
         <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>не использует автозагрузку статей</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического получения статей)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического получения статей)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического получения статей)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического получения статей)</numerusform></translation>
     </message>
     <message>
         <source>uses global settings (global auto-fetching of articles is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>использует глобальные настройки (автоматическое получение статей отключено)</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления новых статей)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления новых статей)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления новых статей)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления новых статей)</numerusform></translation>
     </message>
     <message>
         <source>has new articles</source>
-        <translation type="unfinished"/>
+        <translation>есть новые статьи</translation>
     </message>
     <message>
         <source>parsing error</source>
-        <translation type="unfinished"/>
+        <translation>ошибка разбора (парсинга)</translation>
     </message>
     <message>
         <source>error</source>
-        <translation type="unfinished"/>
+        <translation>ошибка</translation>
     </message>
 </context>
 <context>
@@ -499,26 +531,26 @@ Status: %3</source>
     </message>
     <message>
         <source>Toolbar for articles</source>
-        <translation type="unfinished"/>
+        <translation>Панель инструментов для статей</translation>
     </message>
 </context>
 <context>
     <name>FeedReader</name>
     <message>
         <source>Starting auto-download of some feeds&apos; articles</source>
-        <translation type="unfinished"/>
+        <translation>Запущена автоматическая загрузка статей некоторых каналов</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-download new articles for %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Я буду автоматически загружать новые статьи для %n канала(ов).</numerusform><numerusform>Я буду автоматически загружать новые статьи для %n канала(ов).</numerusform><numerusform>Я буду автоматически загружать новые статьи для %n канала(ов).</numerusform><numerusform>Я буду автоматически загружать новые статьи для %n канала(ов).</numerusform></translation>
     </message>
     <message>
         <source>Cannot fetch articles at this point</source>
-        <translation type="unfinished"/>
+        <translation>Сейчас не удается получить статьи</translation>
     </message>
     <message>
         <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Нельзя получить новые статьи сейчас, потому что выполняется другая важная операция.</translation>
     </message>
 </context>
 <context>
@@ -613,15 +645,15 @@ Status: %3</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только Х новейших статей для канала</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только непрочитанные статьи</translation>
     </message>
     <message>
         <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-        <translation type="unfinished"/>
+        <translation>Будьте очень осторожны с загрузкой слишком большого количества статей, потому что Feedly автоматически кэширует ВСЕ статьи канала, поэтому вы можете получить тысячи статей, которые вы никогда не прочтете.</translation>
     </message>
 </context>
 <context>
@@ -644,7 +676,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Логин</translation>
     </message>
 </context>
 <context>
@@ -689,11 +721,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Search feeds</source>
-        <translation type="unfinished"/>
+        <translation>Поиск каналов</translation>
     </message>
     <message>
         <source>Feeds search box</source>
-        <translation type="unfinished"/>
+        <translation>Окно поиска каналов</translation>
     </message>
 </context>
 <context>
@@ -756,10 +788,6 @@ or this functionality is not implemented yet.</source>
         <translation>Контекстное меню для других пунктов</translation>
     </message>
     <message>
-        <source>Not supported</source>
-        <translation>Не поддерживается</translation>
-    </message>
-    <message>
         <source>Selected account does not support adding of new feeds.</source>
         <translation>Выбранный аккаунт не поддерживает добавление новых каналов.</translation>
     </message>
@@ -781,6 +809,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for important articles</source>
+        <translation>Контекстное меню для важных статей</translation>
+    </message>
+    <message>
+        <source>Not supported by account</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -868,6 +900,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database location</source>
+        <translation>Расположение базы данных</translation>
+    </message>
+    <message>
+        <source>GNU LGPL License (applies to Breeze source code)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1135,11 +1171,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Родительская категория</translation>
     </message>
     <message>
         <source>Edit &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Изменить &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -1186,31 +1222,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Total data size</source>
-        <translation type="unfinished"/>
+        <translation>Общий размер данных</translation>
     </message>
     <message>
         <source>Cleanup settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки очистки</translation>
     </message>
     <message>
         <source>Optimize database file</source>
-        <translation type="unfinished"/>
+        <translation>Оптимизировать файл базы данных</translation>
     </message>
     <message>
         <source>Remove all read articles</source>
-        <translation type="unfinished"/>
+        <translation>Удалить все прочитанные статьи</translation>
     </message>
     <message>
         <source>Remove all articles from recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Удалить все статьи из корзины</translation>
     </message>
     <message>
         <source>Remove all articles older than</source>
-        <translation type="unfinished"/>
+        <translation>Удалить все статьи старше</translation>
     </message>
     <message>
         <source>Remove all starred articles</source>
-        <translation type="unfinished"/>
+        <translation>Удалить все помеченные статьи</translation>
     </message>
 </context>
 <context>
@@ -1253,6 +1289,13 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormEditRedditAccount</name>
+    <message>
+        <source>Server setup</source>
+        <translation>Настройка сервера</translation>
+    </message>
+</context>
+<context>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>Server setup</source>
@@ -1270,31 +1313,31 @@ or this functionality is not implemented yet.</source>
         <translation>Добавить новый канал</translation>
     </message>
     <message>
-        <source>Error</source>
-        <translation>Ошибка</translation>
-    </message>
-    <message>
         <source>Cannot save changes: %1</source>
         <translation>Невозможно сохранить изменения: %1</translation>
     </message>
     <message>
         <source>Auto-downloading of articles</source>
-        <translation type="unfinished"/>
+        <translation>Автозагрузка статей</translation>
     </message>
     <message>
         <source>Edit &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Изменить &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Fetch articles using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Получение статей с использованием глобального интервала</translation>
     </message>
     <message>
         <source>Fetch articles every</source>
-        <translation type="unfinished"/>
+        <translation>Получать статьи каждые</translation>
     </message>
     <message>
         <source>Disable auto-fetching of articles</source>
+        <translation>Отключить автозагрузку статей</translation>
+    </message>
+    <message>
+        <source>Cannot save feed properties</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1529,10 +1572,6 @@ or this functionality is not implemented yet.</source>
         <translation>Пожертвовать... (&amp;D)</translation>
     </message>
     <message>
-        <source>Message &amp;filters</source>
-        <translation>Фильтры сообщений (&amp;F)</translation>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation>Чередовать цвет фона строк в списках</translation>
     </message>
@@ -1550,175 +1589,175 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Add item</source>
-        <translation type="unfinished"/>
+        <translation>Добавить элемент (&amp;A)</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>Полный экран (&amp;F)</translation>
     </message>
     <message>
         <source>&amp;Fetch all</source>
-        <translation type="unfinished"/>
+        <translation>Обновить все (&amp;F)</translation>
     </message>
     <message>
         <source>Fetch all feeds</source>
-        <translation type="unfinished"/>
+        <translation>Обновить все каналы</translation>
     </message>
     <message>
         <source>Fetch &amp;selected</source>
-        <translation type="unfinished"/>
+        <translation>Обновить выбранные каналы (&amp;S)</translation>
     </message>
     <message>
         <source>Fetch selected feeds</source>
-        <translation type="unfinished"/>
+        <translation>Обновить выбранные каналы</translation>
     </message>
     <message>
         <source>Mark articles &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить статьи как прочитанные (&amp;R)</translation>
     </message>
     <message>
         <source>Mark selected articles read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить выбранные статьи как прочитанные</translation>
     </message>
     <message>
         <source>Mark articles &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Пометить статьи как непрочитанные (&amp;U)</translation>
     </message>
     <message>
         <source>Mark selected articles unread</source>
-        <translation type="unfinished"/>
+        <translation>Пометить выбранные статьи как непрочитанные</translation>
     </message>
     <message>
         <source>Switch &amp;importance</source>
-        <translation type="unfinished"/>
+        <translation>Переключить важность (&amp;I)</translation>
     </message>
     <message>
         <source>Switch importance of selected articles</source>
-        <translation type="unfinished"/>
+        <translation>Переключить важность выбранных статей</translation>
     </message>
     <message>
         <source>&amp;Mark selected item read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить выбранный элемент как прочитанный (&amp;M)</translation>
     </message>
     <message>
         <source>&amp;Mark selected item unread</source>
-        <translation type="unfinished"/>
+        <translation>Пометить выбранный элемент как непрочитанный (&amp;M)</translation>
     </message>
     <message>
         <source>&amp;Delete articles</source>
-        <translation type="unfinished"/>
+        <translation>Удалить статьи (&amp;D)</translation>
     </message>
     <message>
         <source>&amp;Clean selected item</source>
-        <translation type="unfinished"/>
+        <translation>Очистить выбранный элемент (&amp;C)</translation>
     </message>
     <message>
         <source>Open in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>Открыть во внешнем браузере (&amp;E)</translation>
     </message>
     <message>
         <source>Open selected articles in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Открыть выбранные статьи во внешнем браузере</translation>
     </message>
     <message>
         <source>Open in &amp;internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Открыть во внутреннем браузере (&amp;I)</translation>
     </message>
     <message>
         <source>Open selected articles in internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Открыть выбранные статьи во внутреннем браузере</translation>
     </message>
     <message>
         <source>&amp;Mark all read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить всё как прочитанное (&amp;M)</translation>
     </message>
     <message>
         <source>View selected item in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Просмотр выбранного элемента в режиме газеты (&amp;N)</translation>
     </message>
     <message>
         <source>&amp;Clean all</source>
-        <translation type="unfinished"/>
+        <translation>Очистить все (&amp;C)</translation>
     </message>
     <message>
         <source>&amp;Next article</source>
-        <translation type="unfinished"/>
+        <translation>Следующая статья (&amp;N)</translation>
     </message>
     <message>
         <source>&amp;Previous article</source>
-        <translation type="unfinished"/>
+        <translation>Предыдущая статья (&amp;P)</translation>
     </message>
     <message>
         <source>&amp;List headers</source>
-        <translation type="unfinished"/>
+        <translation>Список заголовков (&amp;L)</translation>
     </message>
     <message>
         <source>&amp;Restore settings</source>
-        <translation type="unfinished"/>
+        <translation>Восстановить настройки (&amp;R)</translation>
     </message>
     <message>
         <source>&amp;Backup settings</source>
-        <translation type="unfinished"/>
+        <translation>Резервная копия настроек (&amp;B)</translation>
     </message>
     <message>
         <source>Switch layout</source>
-        <translation type="unfinished"/>
+        <translation>Переключить расположение панелей</translation>
     </message>
     <message>
         <source>Send via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Отправить по электронной почте</translation>
     </message>
     <message>
         <source>Send selected articles via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Отправить выбранные статьи по электронной почте</translation>
     </message>
     <message>
         <source>Show unread items only</source>
-        <translation type="unfinished"/>
+        <translation>Показать только непрочитанные элементы</translation>
     </message>
     <message>
         <source>&amp;Add account</source>
-        <translation type="unfinished"/>
+        <translation>Добавить аккаунт (&amp;A)</translation>
     </message>
     <message>
         <source>&amp;Restore articles</source>
-        <translation type="unfinished"/>
+        <translation>Восстановить статьи (&amp;R)</translation>
     </message>
     <message>
         <source>Next &amp;unread article</source>
-        <translation type="unfinished"/>
+        <translation>Следующая непрочитанная статья (&amp;U)</translation>
     </message>
     <message>
         <source>Stop ongoing fetching</source>
-        <translation type="unfinished"/>
+        <translation>Остановить получение</translation>
     </message>
     <message>
         <source>New browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Новая вкладка браузера</translation>
     </message>
     <message>
         <source>&amp;Enable article preview</source>
-        <translation type="unfinished"/>
+        <translation>Включить предпросмотр статей (&amp;E)</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected item</source>
-        <translation type="unfinished"/>
+        <translation>Копировать URL-адрес выбранного элемента (&amp;C)</translation>
     </message>
     <message>
         <source>Show &amp;unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Показать только непрочитанные статьи (&amp;U)</translation>
     </message>
     <message>
         <source>&amp;Show tree expanders</source>
-        <translation type="unfinished"/>
+        <translation>Отображать иерархию расширителей (&amp;S)</translation>
     </message>
     <message>
         <source>Fetch feeds with &amp;custom auto-download policy</source>
-        <translation type="unfinished"/>
+        <translation>Обновить каналы с настроенной политикой автозагрузки (&amp;C)</translation>
     </message>
     <message>
         <source>Automatically &amp;expand item when selected</source>
-        <translation type="unfinished"/>
+        <translation>Автоматически разворачивать элемент при выборе (&amp;E)</translation>
     </message>
     <message>
         <source>Close opened modal dialogs first.</source>
@@ -1726,31 +1765,38 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>F&amp;eeds</source>
-        <translation type="unfinished"/>
+        <translation>Каналы (&amp;E)</translation>
     </message>
     <message>
         <source>Art&amp;icles</source>
-        <translation type="unfinished"/>
+        <translation>Статьи (&amp;I)</translation>
     </message>
     <message>
         <source>&amp;Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>Веб-браузер и вкладки (&amp;W)</translation>
     </message>
     <message>
         <source>Ta&amp;bs</source>
-        <translation type="unfinished"/>
+        <translation>Вкладки (&amp;B)</translation>
     </message>
     <message>
         <source>Fetching common data</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Fetched &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Получение общих данных</translation>
     </message>
     <message>
         <source>Minimize (or hide) main window</source>
+        <translation>Свернуть (или скрыть) главное окно</translation>
+    </message>
+    <message>
+        <source>Article &amp;filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close &amp;current tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close dialogs</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1858,7 +1904,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Process checked feeds</source>
-        <translation>Тест по сообщениям</translation>
+        <translation>Тест по статьям</translation>
     </message>
     <message>
         <source>&amp;Beautify</source>
@@ -1874,30 +1920,33 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Existing articles</source>
-        <translation type="unfinished"/>
+        <translation>Существующие статьи</translation>
     </message>
     <message>
         <source>Sample article</source>
-        <translation type="unfinished"/>
+        <translation>Пример статьи</translation>
     </message>
     <message>
         <source>Filter articles like this</source>
-        <translation type="unfinished"/>
+        <translation>Фильтровать статьи подобные этой</translation>
     </message>
     <message>
         <source>New article filter</source>
-        <translation type="unfinished"/>
+        <translation>Новый фильтр статей</translation>
     </message>
     <message>
         <source>EXISTING articles filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>Ошибка фильтрации СУЩЕСТВУЮЩИХ статей: &apos;%1&apos;.
+</translation>
     </message>
     <message>
         <source>Article will be %1.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>Статья будет %1.
+
+</translation>
     </message>
     <message>
         <source>Output (modified) article is:
@@ -1908,28 +1957,36 @@ or this functionality is not implemented yet.</source>
   Created on = '%6'
   Contents = '%7'
   RAW contents = &apos;%8&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Обработанная (измененная) статья:
+  Заголовок = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Автор = &apos;%3&apos;
+  Прочитано/важно = &apos;%4/%5&apos;
+  Создано = &apos;%6&apos;
+  Содержимое = &apos;%7&apos;
+  RAW-содержимое = &apos;%8&apos;</translation>
     </message>
     <message>
         <source>SAMPLE article filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>Ошибка фильтрации статьи из ПРИМЕРА: &apos;%1&apos;.
+</translation>
     </message>
     <message>
         <source>Article filters</source>
-        <translation type="unfinished"/>
+        <translation>Фильтры статей</translation>
     </message>
     <message>
         <source>Article filter details</source>
-        <translation type="unfinished"/>
+        <translation>Параметры фильтра статей</translation>
     </message>
     <message>
         <source>Title of article filter</source>
-        <translation type="unfinished"/>
+        <translation>Заголовок фильтра статей</translation>
     </message>
     <message>
         <source>Your JavaScript-based article filtering logic</source>
-        <translation type="unfinished"/>
+        <translation>Ваша логика фильтрации статей на основе JavaScript</translation>
     </message>
 </context>
 <context>
@@ -2159,15 +2216,15 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>&amp;Check all feeds</source>
-        <translation type="unfinished"/>
+        <translation>Пометить все каналы (&amp;C)</translation>
     </message>
     <message>
         <source>&amp;Uncheck all feeds</source>
-        <translation type="unfinished"/>
+        <translation>Снять пометку со всех каналов (&amp;C)</translation>
     </message>
     <message>
         <source>Operation result</source>
-        <translation type="unfinished"/>
+        <translation>Результат операции</translation>
     </message>
 </context>
 <context>
@@ -2389,11 +2446,11 @@ You can install it now.</source>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Существует несколько предварительно настроенных токенов OAuth, поэтому вам не нужно указывать свой идентификатор / секрет клиента, но настоятельно рекомендуется получить собственный, поскольку предварительно настроенные токены имеют ограниченную глобальную квоту использования. Если вы хотите использовать предварительно настроенные токены, просто оставьте эти поля пустыми и не забудьте оставить значение по умолчанию для URL-адреса перенаправления.</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Вы должны ввести свой идентификатор / секрет клиента, а также указать правильный URL-адрес перенаправления.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
@@ -2401,15 +2458,15 @@ You can install it now.</source>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
+        <translation>Будет использоваться предварительно настроенный идентификатор / секрет клиента.</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только Х новейших статей для канала</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только непрочитанные статьи</translation>
     </message>
 </context>
 <context>
@@ -2444,7 +2501,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Логин</translation>
     </message>
 </context>
 <context>
@@ -2580,19 +2637,19 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только Х новейших статей для канала</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только непрочитанные статьи</translation>
     </message>
     <message>
         <source>Intelligent synchronization algorithm</source>
-        <translation type="unfinished"/>
+        <translation>Интеллектуальный алгоритм синхронизации</translation>
     </message>
     <message>
         <source>Fetch articles newer than</source>
-        <translation type="unfinished"/>
+        <translation>Получать статьи новее, чем</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -2616,19 +2673,19 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
-        <translation type="unfinished"/>
+        <translation>Некоторые каналы могут содержать десятки тысяч статей, и загрузка всех из них может занять много времени, поэтому иногда полезно загружать только определенное количество самых новых сообщений.</translation>
     </message>
     <message>
         <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-        <translation type="unfinished"/>
+        <translation>Если вы выберете интеллектуальную синхронизацию, будут загружены только еще не загруженные или обновленные статьи. Использование сети значительно сокращается, и общая скорость синхронизации значительно улучшается, но выборка первого канала в любом случае может быть медленной, если ваш канал содержит огромное количество статей.</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
-        <translation type="unfinished"/>
+        <translation>Существует несколько предварительно настроенных токенов OAuth, поэтому вам не нужно указывать свой идентификатор / секрет клиента, но настоятельно рекомендуется получить собственный, поскольку предварительно настроенные токены имеют ограниченную глобальную квоту использования. Если вы хотите использовать предварительно настроенные токены, просто оставьте для всех вышеуказанных полей значения по умолчанию, даже если они пусты.</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-        <translation type="unfinished"/>
+        <translation>Вы должны ввести свой идентификатор / секрет клиента, а также указать правильный URL-адрес перенаправления.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
@@ -2652,7 +2709,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
-        <translation type="unfinished"/>
+        <translation>Будет использоваться предварительно настроенный идентификатор / секрет клиента.</translation>
     </message>
     <message>
         <source>Empty value is entered.</source>
@@ -2667,7 +2724,7 @@ Login tokens expiration: %2</source>
     <name>GreaderNetwork</name>
     <message>
         <source>login failed</source>
-        <translation type="unfinished"/>
+        <translation>ошибка входа</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
@@ -2687,7 +2744,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Логин</translation>
     </message>
 </context>
 <context>
@@ -2701,7 +2758,7 @@ Login tokens expiration: %2</source>
     <name>HelpSpoiler</name>
     <message>
         <source>View more information on this</source>
-        <translation type="unfinished"/>
+        <translation>Посмотреть дополнительную информацию об этом</translation>
     </message>
 </context>
 <context>
@@ -2719,11 +2776,11 @@ Login tokens expiration: %2</source>
     <name>ImportantNode</name>
     <message>
         <source>Important articles</source>
-        <translation type="unfinished"/>
+        <translation>Важные статьи</translation>
     </message>
     <message>
         <source>You can find all important articles here.</source>
-        <translation type="unfinished"/>
+        <translation>Вы можете найти важные статьи здесь.</translation>
     </message>
 </context>
 <context>
@@ -2734,7 +2791,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>No labels found</source>
-        <translation type="unfinished"/>
+        <translation>Метки не найдены</translation>
     </message>
 </context>
 <context>
@@ -2848,26 +2905,26 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>article</source>
-        <translation type="unfinished"/>
+        <translation>статья</translation>
     </message>
     <message>
         <source>articles</source>
-        <translation type="unfinished"/>
+        <translation>статей</translation>
     </message>
 </context>
 <context>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark article read</source>
-        <translation type="unfinished"/>
+        <translation>Пометить статью как прочитанную</translation>
     </message>
     <message>
         <source>Mark article unread</source>
-        <translation type="unfinished"/>
+        <translation>Пометить статью как непрочитанную</translation>
     </message>
     <message>
         <source>Switch article importance</source>
-        <translation type="unfinished"/>
+        <translation>Переключить важность статьи</translation>
     </message>
 </context>
 <context>
@@ -2905,11 +2962,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished"/>
+        <translation>Оценка</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="unfinished"/>
+        <translation>Дата</translation>
     </message>
 </context>
 <context>
@@ -2984,86 +3041,86 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished"/>
+        <translation>Оценка</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Loading of articles from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
+        <translation>Дата</translation>
     </message>
     <message>
         <source>Loading of articles failed, maybe messages could not be downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось загрузить статьи, возможно, статьи не могут быть загружены.</translation>
     </message>
     <message>
         <source>ID of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Идентификатор статьи.</translation>
     </message>
     <message>
         <source>Is article read?</source>
-        <translation type="unfinished"/>
+        <translation>Прочитана ли статья?</translation>
     </message>
     <message>
         <source>Is article important?</source>
-        <translation type="unfinished"/>
+        <translation>Важна ли статья?</translation>
     </message>
     <message>
         <source>Is article deleted?</source>
-        <translation type="unfinished"/>
+        <translation>Удалена ли статья?</translation>
     </message>
     <message>
         <source>Is article permanently deleted from recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>Удалена ли статья навсегда из корзины?</translation>
     </message>
     <message>
         <source>ID of feed which this article belongs to.</source>
-        <translation type="unfinished"/>
+        <translation>Идентификатор канала, которому принадлежит эта статья.</translation>
     </message>
     <message>
         <source>Title of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Заголовок статьи.</translation>
     </message>
     <message>
         <source>Url of the article.</source>
-        <translation type="unfinished"/>
+        <translation>URL-адрес статьи.</translation>
     </message>
     <message>
         <source>Author of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Автор статьи.</translation>
     </message>
     <message>
         <source>Creation date of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Дата создания статьи.</translation>
     </message>
     <message>
         <source>Contents of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Содержимое статьи.</translation>
     </message>
     <message>
         <source>Score of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Оценка статьи.</translation>
     </message>
     <message>
         <source>Account ID of the article.</source>
-        <translation type="unfinished"/>
+        <translation>ID аккаунта статьи.</translation>
     </message>
     <message>
         <source>Custom ID of the article</source>
-        <translation type="unfinished"/>
+        <translation>Пользовательский ID статьи</translation>
     </message>
     <message>
         <source>Custom hash of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Пользовательский хэш статьи.</translation>
     </message>
     <message>
         <source>Custom ID of feed of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Пользовательский ID канала статьи.</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the article.</source>
+        <translation>Указатель наличия вложений в статье.</translation>
+    </message>
+    <message>
+        <source>Loading of articles from item &apos;%1&apos; failed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3079,31 +3136,31 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Search articles</source>
-        <translation type="unfinished"/>
+        <translation>Поиск статей</translation>
     </message>
     <message>
         <source>Article search box</source>
-        <translation type="unfinished"/>
+        <translation>Окно поиска статей</translation>
     </message>
     <message>
         <source>Menu for highlighting articles</source>
-        <translation type="unfinished"/>
+        <translation>Меню для подсветки статей</translation>
     </message>
     <message>
         <source>Highlight unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Подсвечивать непрочитанные статьи</translation>
     </message>
     <message>
         <source>Highlight important articles</source>
-        <translation type="unfinished"/>
+        <translation>Подсветить важные статьи</translation>
     </message>
     <message>
         <source>Display all articles</source>
-        <translation type="unfinished"/>
+        <translation>Показать все статьи</translation>
     </message>
     <message>
         <source>Article highlighter</source>
-        <translation type="unfinished"/>
+        <translation>Подсветка статей</translation>
     </message>
 </context>
 <context>
@@ -3130,11 +3187,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>No external tools activated</source>
-        <translation type="unfinished"/>
+        <translation>Ни одна внешняя утилита не была активирована</translation>
     </message>
     <message>
         <source>Context menu for articles</source>
-        <translation type="unfinished"/>
+        <translation>Контекстное меню для статей</translation>
     </message>
 </context>
 <context>
@@ -3287,15 +3344,15 @@ Login tokens expiration: %2</source>
     </message>
     <message numerus="yes">
         <source>Show more articles (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Показать больше статей (осталось %n)</numerusform><numerusform>Показать больше статей (осталось %n)</numerusform><numerusform>Показать больше статей (осталось %n)</numerusform><numerusform>Показать больше статей (осталось %n)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more articles</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно показать больше статей</translation>
     </message>
     <message>
         <source>Cannot show more articles because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно показать больше статей, поскольку родительский канал был удален.</translation>
     </message>
 </context>
 <context>
@@ -3326,7 +3383,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Логин</translation>
     </message>
 </context>
 <context>
@@ -3433,19 +3490,19 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только непрочитанные статьи</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только Х новейших статей для канала</translation>
     </message>
     <message>
         <source>articles</source>
-        <translation type="unfinished"/>
+        <translation>статей</translation>
     </message>
     <message>
         <source>Force execution of server-side feeds update</source>
-        <translation type="unfinished"/>
+        <translation>Принудительное выполнение обновления каналов на стороне сервера</translation>
     </message>
 </context>
 <context>
@@ -3515,65 +3572,63 @@ Tiny Tiny RSS - это программа для чтения и агрегац�
         <translation>Простая интеграция с Gmail через JSON API. Позволяет также отправлять электронную почту.</translation>
     </message>
     <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Добро пожаловать в %1.
-
-Пожалуйста, ознакомьтесь с ИЗМЕНЕНИЯМИ, включенными в эту
-версию, щелкнув на это всплывающее уведомление.</translation>
-    </message>
-    <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-        <translation type="unfinished"/>
+        <translation>Будьте в курсе интересующих вас тем и тенденций, не отвлекаясь. 
+
+Feedly - это безопасное пространство, где вы можете в частном порядке организовывать и исследовать важные для вас темы и тенденции.</translation>
     </message>
     <message>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно вставить фильтр статьи, поскольку текущая база данных не может вернуть идентификатор последней добавленной строки.</translation>
     </message>
     <message>
         <source>Fetching articles right now</source>
-        <translation type="unfinished"/>
+        <translation>Получение статей прямо сейчас</translation>
     </message>
     <message>
         <source>Login data refreshed</source>
-        <translation type="unfinished"/>
+        <translation>Данные для входа обновлены</translation>
     </message>
     <message>
         <source>New %1 version is available</source>
-        <translation type="unfinished"/>
+        <translation>Доступно обновление до версии %1</translation>
     </message>
     <message>
         <source>Miscellaneous events</source>
-        <translation type="unfinished"/>
+        <translation>Прочие события</translation>
     </message>
     <message>
         <source>Unknown event</source>
-        <translation type="unfinished"/>
+        <translation>Неизвестное событие</translation>
     </message>
     <message>
         <source>New (unread) articles fetched</source>
-        <translation type="unfinished"/>
+        <translation>Загружены новые (непрочитанные) статьи</translation>
     </message>
     <message>
         <source>XML problem: %1</source>
-        <translation type="unfinished"/>
+        <translation>Проблема XML: %1</translation>
     </message>
     <message>
         <source>Google Reader API is used by many online RSS readers.
 
 List of supported readers:</source>
-        <translation type="unfinished"/>
+        <translation>Google Reader API используется многими онлайн-ридерами RSS.
+
+Доступна поддержка для:</translation>
     </message>
     <message>
         <source>Login failed</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка входа</translation>
     </message>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
+        <translation>Этот сервис предлагает интеграцию со стандартными онлайн-каналами RSS/RDF/ATOM/JSON и подкастами.</translation>
+    </message>
+    <message>
+        <source>Simplistic Reddit client.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3593,11 +3648,153 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Recycle bin contains all deleted articles from all feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Корзина содержит все удаленные статьи из всех каналов.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted article(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n удаленные(х) статьи(ей).</numerusform><numerusform>%n удаленные(х) статьи(ей).</numerusform><numerusform>%n удаленные(х) статьи(ей).</numerusform><numerusform>%n удаленные(х) статьи(ей).</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>RedditAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>Логин</translation>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>Настройки OAuth 2.0</translation>
+    </message>
+    <message>
+        <source>Client ID</source>
+        <translation>Идентификатор клиента</translation>
+    </message>
+    <message>
+        <source>Client secret</source>
+        <translation>Секрет клиента</translation>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>Redirect URL</translation>
+    </message>
+    <message>
+        <source>Get my credentials</source>
+        <translation>Получить учетные данные</translation>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation>Загружать только Х новейших статей для канала</translation>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>Логин (&amp;L)</translation>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation>Загружать только непрочитанные статьи</translation>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation>Вы должны ввести свой идентификатор / секрет клиента, а также указать правильный URL-адрес перенаправления.</translation>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation>Ещё не протестировано.</translation>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation>Имя пользователя, видное для всех</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Нет логина.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Введен некоторый логин.</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>Отказано в доступе.</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>Произошла ошибка во время тестирования.</translation>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation>Произошла ошибка: %1 </translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>Протестировано успешно. Вам могут предложить войти ещё раз.</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>Ваш доступ одобрен.</translation>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation>Будет использоваться предварительно настроенный идентификатор / секрет клиента.</translation>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>Введено пустое значение.</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>Введено некоторое значение.</translation>
+    </message>
+</context>
+<context>
+    <name>RedditCategory</name>
+    <message>
+        <source>Subscriptions</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>RedditNetworkFactory</name>
+    <message>
+        <source>you are not logged in</source>
+        <translation>вы не вошли</translation>
+    </message>
+    <message>
+        <source>Reddit: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation>Нажмите здесь, чтобы войти снова. Ошибка: &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>Логин</translation>
+    </message>
+    <message>
+        <source>Reddit: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation>Нажмите здесь, чтобы войти снова.</translation>
+    </message>
+</context>
+<context>
+    <name>RedditServiceRoot</name>
+    <message>
+        <source>Authentication status: %1
+Login tokens expiration: %2</source>
+        <translation>Состояние аутентификации: %1
+Срок действия токенов входа: %2</translation>
+    </message>
+    <message>
+        <source>logged-in</source>
+        <translation>вход выполнен</translation>
+    </message>
+    <message>
+        <source>NOT logged-in</source>
+        <translation>вход НЕ выполнен</translation>
     </message>
 </context>
 <context>
@@ -3605,7 +3802,7 @@ List of supported readers:</source>
     <message numerus="yes">
         <source>%n unread article(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n непрочитанная(ых) статья(й)</numerusform><numerusform>%n непрочитанная(ых) статья(й)</numerusform><numerusform>%n непрочитанная(ых) статья(й)</numerusform><numerusform>%n непрочитанная(ых) статья(й)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3654,7 +3851,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Synchronize article cache</source>
-        <translation type="unfinished"/>
+        <translation>Синхронизация кеша статей</translation>
     </message>
 </context>
 <context>
@@ -3788,23 +3985,23 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
-        <translation type="unfinished"/>
+        <translation>Введите (необязательно) параметры, разделенные &quot;%1&quot;:</translation>
     </message>
     <message>
         <source>Always open hyperlinks in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Всегда открывать гиперссылки во внешнем web-браузере.</translation>
     </message>
     <message>
         <source>&amp;Add tool</source>
-        <translation type="unfinished"/>
+        <translation>Добавить утилиту (&amp;A)</translation>
     </message>
     <message>
         <source>&amp;Edit selected tool</source>
-        <translation type="unfinished"/>
+        <translation>Изменить выбранную утилиту (&amp;E)</translation>
     </message>
     <message>
         <source>&amp;Delete selected tool</source>
-        <translation type="unfinished"/>
+        <translation>Удалить выбранную утилиту (&amp;D)</translation>
     </message>
 </context>
 <context>
@@ -4021,86 +4218,90 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Articles</source>
-        <translation type="unfinished"/>
+        <translation>Статьи</translation>
     </message>
     <message>
         <source>Remove all read articles from all feeds on application exit</source>
-        <translation type="unfinished"/>
+        <translation>Удалять все прочитанные статьи из всех каналов при выходе</translation>
     </message>
     <message>
         <source>Display real icons of feeds in list of articles instead of read/unread icons</source>
-        <translation type="unfinished"/>
+        <translation>Отображение реальных значков каналов в списке статей вместо значков прочитано/не прочитано</translation>
     </message>
     <message>
         <source>Bring application window to front once article is opened in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Вывести окно приложения на передний план после открытия статьи во внешнем веб-браузере</translation>
     </message>
     <message>
         <source>Article list font</source>
-        <translation type="unfinished"/>
+        <translation>Шрифт списка статей</translation>
     </message>
     <message>
         <source>Article browser font</source>
-        <translation type="unfinished"/>
+        <translation>Шрифт содержимого статьи</translation>
     </message>
     <message>
         <source>Feeds &amp; articles</source>
-        <translation type="unfinished"/>
+        <translation>Каналы и статьи</translation>
     </message>
     <message>
         <source>Auto-fetch articles for all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Авто-загрузка статей для всех каналов каждые</translation>
     </message>
     <message>
         <source>Only auto-fetch articles if application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation>Авто-загрузка статей только когда не в фокусе</translation>
     </message>
     <message>
         <source>Article count format in feed list</source>
-        <translation type="unfinished"/>
+        <translation>Формат подсчёта статей</translation>
     </message>
     <message>
         <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-        <translation type="unfinished"/>
+        <translation>Введите формат для подсчета статей, отображаемого рядом с каждым каналом/категорией в списке каналов. Используйте строки &quot;%all&quot; и &quot;%unread%&quot;, которые являются меткой для фактического подсчета всех (или непрочитанных) статей.</translation>
     </message>
     <message>
         <source>Hide article counts if there are no unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Скрыть количество статей, если нет непрочитанных статей</translation>
     </message>
     <message>
         <source>Display tooltips for feeds and articles</source>
-        <translation type="unfinished"/>
+        <translation>Отображать всплывающие подсказки для каналов и статей</translation>
     </message>
     <message>
         <source>Keep article selection in the middle of the article list viewport</source>
-        <translation type="unfinished"/>
+        <translation>Сохранять выделение статьи в среднем окне просмотра списка статей</translation>
     </message>
     <message>
         <source>Fetch all articles on startup with initial delay of</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Feed list row height (-1 = default)</source>
-        <translation type="unfinished"/>
+        <translation>Получить все статьи при запуске приложения с начальной задержкой</translation>
     </message>
     <message>
         <source>Allow only basic keyboard shortcuts for feed/article list</source>
-        <translation type="unfinished"/>
+        <translation>Разрешить только основные сочетания клавиш для ленты новостей / списка статей</translation>
     </message>
     <message>
         <source>Display attached pictures directly in article</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Article list row height (-1 = default)</source>
-        <translation type="unfinished"/>
+        <translation>Показывать прикрепленные изображения прямо в статье</translation>
     </message>
     <message>
         <source>Use custom date/time format</source>
+        <translation>Использовать собственный формат даты/времени</translation>
+    </message>
+    <message>
+        <source>Feed list row height</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Ignore changes in article body (text) when article is updated upstream</source>
+        <source>Article list row height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ignore changes in article body when new articles are being fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only time for today articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4198,10 +4399,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Автор</translation>
     </message>
     <message>
-        <source>E-mail</source>
-        <translation>E-Mail</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Только иконка</translation>
     </message>
@@ -4256,14 +4453,18 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>(Your OS does not support tray icons at the moment.)</source>
-        <translation type="unfinished"/>
+        <translation>(Ваша ОС в настоящий момент не поддерживает значки на панели задач.)</translation>
     </message>
     <message>
         <source>Tray area</source>
-        <translation type="unfinished"/>
+        <translation>Системный лоток</translation>
     </message>
     <message>
         <source>Toolbar for articles list</source>
+        <translation>Панель инструментов для списка статей</translation>
+    </message>
+    <message>
+        <source>Force dark look</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4283,26 +4484,26 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Localization</source>
-        <translation type="unfinished"/>
+        <translation>Локализация</translation>
     </message>
 </context>
 <context>
     <name>SettingsNotifications</name>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"/>
+        <translation>Уведомления</translation>
     </message>
     <message>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Включить уведомления</translation>
     </message>
     <message>
         <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
-        <translation type="unfinished"/>
+        <translation>Чтобы всплывающие уведомления работали, у вас должен быть активирован «значок в трее».</translation>
     </message>
     <message>
         <source>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
-        <translation type="unfinished"/>
+        <translation>Есть встроенные звуки. Просто начните набирать &quot;:&quot;, и они появятся.</translation>
     </message>
 </context>
 <context>
@@ -4331,11 +4532,11 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SingleNotificationEditor</name>
     <message>
         <source>Sound</source>
-        <translation type="unfinished"/>
+        <translation>Звуки</translation>
     </message>
     <message>
         <source>Full path to your WAV sound file</source>
-        <translation type="unfinished"/>
+        <translation>Полный путь до вашего WAV файла</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
@@ -4343,23 +4544,23 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&amp;Play</source>
-        <translation type="unfinished"/>
+        <translation>Воспроизвести (&amp;P)</translation>
     </message>
     <message>
         <source>Balloon notification</source>
-        <translation type="unfinished"/>
+        <translation>Всплывающее уведомление</translation>
     </message>
     <message>
         <source>Select sound file</source>
-        <translation type="unfinished"/>
+        <translation>Выберите звуковой файл</translation>
     </message>
     <message>
         <source>Volume</source>
-        <translation type="unfinished"/>
+        <translation>Громкость</translation>
     </message>
     <message>
         <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
-        <translation type="unfinished"/>
+        <translation>Файлы WAV (*.wav);;Файлы MP3 (*.mp3)</translation>
     </message>
 </context>
 <context>
@@ -4370,7 +4571,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Заблокированный URL: &quot;%1&quot;&lt;br/&gt;Используемый фильтр: &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -4387,11 +4588,11 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>StandardCategory</name>
     <message>
-        <source>Error</source>
-        <translation>Ошибка</translation>
+        <source>Cannot save data for category, detailed information was logged via debug log.</source>
+        <translation>Невозможно сохранить данные для категории, подробная информация записана в журнале отладки.</translation>
     </message>
     <message>
-        <source>Cannot save data for category, detailed information was logged via debug log.</source>
+        <source>Cannot save category data</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4410,29 +4611,35 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Неизвестно</translation>
     </message>
     <message>
-        <source>Error</source>
-        <translation>Ошибка</translation>
-    </message>
-    <message>
         <source>Cannot save data for feed: %1</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось сохранить данные канала: %1</translation>
     </message>
     <message>
         <source>XML is not well-formed, %1</source>
-        <translation type="unfinished"/>
+        <translation>XML имеет неправильный формат, %1</translation>
     </message>
     <message>
         <source>XML feed file format unrecognized</source>
-        <translation type="unfinished"/>
+        <translation>Неизвестный формат файла канала XML</translation>
     </message>
     <message>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно переместить канал, подробная информация записана в журнале отладки.</translation>
     </message>
     <message>
         <source>
 Encoding: %2
 Type: %3</source>
+        <translation>
+Кодировка: %2
+Тип: %3</translation>
+    </message>
+    <message>
+        <source>Cannot save feed data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4661,11 +4868,11 @@ Type: %3</source>
     </message>
     <message>
         <source>Script failed: %1</source>
-        <translation type="unfinished"/>
+        <translation>Сценарий завершился с ошибкой: %1</translation>
     </message>
     <message>
         <source>Network error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка сети: %1</translation>
     </message>
     <message>
         <source>Error: %1</source>
@@ -4673,7 +4880,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Родительская категория</translation>
     </message>
 </context>
 <context>
@@ -4728,7 +4935,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-        <translation type="unfinished"/>
+        <translation>Некоторые каналы/категории не были импортированы из-за ошибки. Дополнительные сведения записаны в журнале отладки.</translation>
     </message>
 </context>
 <context>
@@ -4758,7 +4965,7 @@ Type: %3</source>
     </message>
     <message>
         <source>See new version info</source>
-        <translation type="unfinished"/>
+        <translation>Посмотреть информацию о новой версии</translation>
     </message>
 </context>
 <context>
@@ -4809,7 +5016,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Browse your feeds and articles</source>
-        <translation type="unfinished"/>
+        <translation>Обзор каналов и статей</translation>
     </message>
 </context>
 <context>
@@ -4887,6 +5094,10 @@ Unread news: %2</source>
     <message>
         <source>Close opened modal dialogs first.</source>
         <translation>Сначала закройте открытые модальные диалоги.</translation>
+    </message>
+    <message>
+        <source>Close dialogs</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -5033,15 +5244,15 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только непрочитанные статьи</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Загружать только Х новейших статей для канала</translation>
     </message>
     <message>
         <source>Force execution of server-side feeds update</source>
-        <translation type="unfinished"/>
+        <translation>Принудительное выполнение обновления каналов на стороне сервера</translation>
     </message>
 </context>
 <context>
@@ -5080,7 +5291,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Родительская категория</translation>
     </message>
 </context>
 <context>
@@ -5108,11 +5319,11 @@ Last login on: %4</source>
     <name>UnreadNode</name>
     <message>
         <source>Unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Непрочитанные статьи</translation>
     </message>
     <message>
         <source>You can find all unread articles here.</source>
-        <translation type="unfinished"/>
+        <translation>Вы можете найти все непрочитанные статьи здесь.</translation>
     </message>
 </context>
 <context>
@@ -5239,11 +5450,11 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Navigate to website manually</source>
-        <translation type="unfinished"/>
+        <translation>Перейти на сайт вручную</translation>
     </message>
     <message>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
-        <translation type="unfinished"/>
+        <translation>%1 не удалось запустить ваш веб-браузер с указанным URL-адресом, вам необходимо вручную открыть указанный ниже URL-адрес веб-сайта в своем веб-браузере.</translation>
     </message>
 </context>
 <context>
@@ -5270,7 +5481,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>No external tools activated</source>
-        <translation type="unfinished"/>
+        <translation>Ни одна внешняя утилита не была активирована</translation>
     </message>
 </context>
 </TS>

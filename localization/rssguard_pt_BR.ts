@@ -145,6 +145,36 @@ Erro: %1</translation>
         <source>Configure now</source>
         <translation>Configurar agora</translation>
     </message>
+    <message>
+        <source>RSS Guard has Discord server!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can visit it now! Click me!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to Discord!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
+        <translation>Bem-vindo ao %1.
+
+Por favor, veja o NOVO conteúdo incluído nesta
+versão, clicando nesta notificação popup.</translation>
+    </message>
+    <message>
+        <source>Already running</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>AuthenticationDetails</name>
@@ -268,10 +298,6 @@ Erro: %1</translation>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>Not supported</source>
-        <translation>Não suportado</translation>
-    </message>
-    <message>
         <source>Given account does not support adding feeds.</source>
         <translation>A conta fornecida não suporta adicionar feeds.</translation>
     </message>
@@ -286,6 +312,10 @@ Erro: %1</translation>
     <message numerus="yes">
         <source>Add one of %n feed(s)</source>
         <translation><numerusform>Adicionar um de %n feed</numerusform><numerusform>Adicionar um de %n feeds</numerusform></translation>
+    </message>
+    <message>
+        <source>Not supported by account</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -759,10 +789,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Menu de contexto para outros itens</translation>
     </message>
     <message>
-        <source>Not supported</source>
-        <translation>Não suportado</translation>
-    </message>
-    <message>
         <source>Selected account does not support adding of new feeds.</source>
         <translation>A conta selecionada não suporta adicionar novos feeds.</translation>
     </message>
@@ -785,6 +811,10 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Context menu for important articles</source>
         <translation>Menu de contexto para artigos importantes</translation>
+    </message>
+    <message>
+        <source>Not supported by account</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -872,6 +902,10 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Database location</source>
         <translation>Local do banco de dados</translation>
+    </message>
+    <message>
+        <source>GNU LGPL License (applies to Breeze source code)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1256,6 +1290,13 @@ ou esta função ainda não foi implementada.</translation>
     </message>
 </context>
 <context>
+    <name>FormEditRedditAccount</name>
+    <message>
+        <source>Server setup</source>
+        <translation>Configurar servidor</translation>
+    </message>
+</context>
+<context>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>Server setup</source>
@@ -1271,10 +1312,6 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Adicionar novo feed</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>Erro</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
@@ -1299,6 +1336,10 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Disable auto-fetching of articles</source>
         <translation>Desativar busca automática de artigos</translation>
+    </message>
+    <message>
+        <source>Cannot save feed properties</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1532,10 +1573,6 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Fazer uma &amp;doação...</translation>
     </message>
     <message>
-        <source>Message &amp;filters</source>
-        <translation>&amp;Filtros de mensagem</translation>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation>Alternar cores de linha em listas</translation>
     </message>
@@ -1748,13 +1785,20 @@ ou esta função ainda não foi implementada.</translation>
         <translation>Buscando dados comuns</translation>
     </message>
     <message>
-        <source>Fetched &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>&apos;%1&apos; buscado</translation>
-    </message>
-    <message>
         <source>Minimize (or hide) main window</source>
         <translation>Minimizar (ou ocultar) janela principal</translation>
+    </message>
+    <message>
+        <source>Article &amp;filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close &amp;current tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close dialogs</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3005,10 +3049,6 @@ Expiração dos tokens de login: %2</translation>
         <translation>Data</translation>
     </message>
     <message>
-        <source>Loading of articles from item &apos;%1&apos; failed.</source>
-        <translation>Falha ao carregar artigos do item &apos;%1&apos;.</translation>
-    </message>
-    <message>
         <source>Loading of articles failed, maybe messages could not be downloaded.</source>
         <translation>Falha ao carregar artigos, talvez as mensagens não puderam ser baixadas.</translation>
     </message>
@@ -3079,6 +3119,10 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <source>Indication of enclosures presence within the article.</source>
         <translation>Indicação da presença de anexos dentro do artigo.</translation>
+    </message>
+    <message>
+        <source>Loading of articles from item &apos;%1&apos; failed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3524,16 +3568,6 @@ Pelo menos o API nível %1 é necessário.</translation>
         <translation>Integração simples do Gmail via API JSON. Permite também o envio de e-mails.</translation>
     </message>
     <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Bem-vindo ao %1.
-
-Por favor, veja o NOVO conteúdo incluído nesta
-versão, clicando nesta notificação popup.</translation>
-    </message>
-    <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
@@ -3589,6 +3623,10 @@ Lista de leitores suportados:</translation>
         <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
         <translation>Este serviço oferece integração com feeds padrão RSS/RDF/ATOM/JSON e podcasts.</translation>
     </message>
+    <message>
+        <source>Simplistic Reddit client.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3611,6 +3649,148 @@ Lista de leitores suportados:</translation>
     <message numerus="yes">
         <source>%n deleted article(s).</source>
         <translation><numerusform>%n artigo(s) excluído(s).</numerusform><numerusform>%n artigo(s) excluído(s).</numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>RedditAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>Usuário</translation>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>Configurações OAuth 2.0</translation>
+    </message>
+    <message>
+        <source>Client ID</source>
+        <translation>ID do cliente</translation>
+    </message>
+    <message>
+        <source>Client secret</source>
+        <translation>Segredo do cliente</translation>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>URL de redirecionamento</translation>
+    </message>
+    <message>
+        <source>Get my credentials</source>
+        <translation>Obter minhas credenciais</translation>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation>Somente baixar os X artigos mais recentes por feed</translation>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>&amp;Login</translation>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation>Baixar somente artigos não lidos</translation>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation>Você precisa preencher o seu client ID/secret e também preencher corretamente o URL de redirecionamento.</translation>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation>Não testado ainda.</translation>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation>Nome de usuário visível</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Nenhum nome de usuário inserido.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Algum nome de usuário inserido.</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>Você não garantiu o acesso.</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>Ocorreu um erro durante o teste.</translation>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation>Ocorreu um erro. %1</translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>Testado com sucesso. Você pode ser solicitado a fazer login mais uma vez.</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>Seu acesso foi aprovado.</translation>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation>O client ID/secret pré-configurado será usado.</translation>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>Valor vazio foi inserido.</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>Algum valor foi inserido.</translation>
+    </message>
+</context>
+<context>
+    <name>RedditCategory</name>
+    <message>
+        <source>Subscriptions</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>RedditNetworkFactory</name>
+    <message>
+        <source>you are not logged in</source>
+        <translation>você não está logado</translation>
+    </message>
+    <message>
+        <source>Reddit: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation>Clique nisto para fazer login novamente. Erro: &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>Entrar</translation>
+    </message>
+    <message>
+        <source>Reddit: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation>Clique nisto para fazer login novamente.</translation>
+    </message>
+</context>
+<context>
+    <name>RedditServiceRoot</name>
+    <message>
+        <source>Authentication status: %1
+Login tokens expiration: %2</source>
+        <translation>Status da autenticação: %1
+Expiração dos tokens de login: %2</translation>
+    </message>
+    <message>
+        <source>logged-in</source>
+        <translation>logado</translation>
+    </message>
+    <message>
+        <source>NOT logged-in</source>
+        <translation>NÃO logado</translation>
     </message>
 </context>
 <context>
@@ -4093,10 +4273,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Baixar artigos de todos os artigos ao iniciar com atraso inicial de</translation>
     </message>
     <message>
-        <source>Feed list row height (-1 = default)</source>
-        <translation>Altura da linha da lista de feeds (-1 = padrão)</translation>
-    </message>
-    <message>
         <source>Allow only basic keyboard shortcuts for feed/article list</source>
         <translation>Permitir apenas atalhos de teclado básicos para lista de feeds/artigos</translation>
     </message>
@@ -4105,16 +4281,24 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Exibir fotos anexadas diretamente no artigo</translation>
     </message>
     <message>
-        <source>Article list row height (-1 = default)</source>
-        <translation>Altura da linha da lista de artigos (-1 = padrão)</translation>
-    </message>
-    <message>
         <source>Use custom date/time format</source>
         <translation>Usar formato de data/hora personalizado</translation>
     </message>
     <message>
-        <source>Ignore changes in article body (text) when article is updated upstream</source>
-        <translation>Ignorar alterações no corpo do artigo (texto) quando o artigo é atualizado upstream</translation>
+        <source>Feed list row height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list row height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ignore changes in article body when new articles are being fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only time for today articles</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4211,10 +4395,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Autor</translation>
     </message>
     <message>
-        <source>E-mail</source>
-        <translation>E-mail</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Somente ícone</translation>
     </message>
@@ -4278,6 +4458,10 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>Toolbar for articles list</source>
         <translation>Barra de ferramentas para lista de artigos</translation>
+    </message>
+    <message>
+        <source>Force dark look</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4400,12 +4584,12 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
 <context>
     <name>StandardCategory</name>
     <message>
-        <source>Error</source>
-        <translation>Erro</translation>
-    </message>
-    <message>
         <source>Cannot save data for category, detailed information was logged via debug log.</source>
         <translation>Não é possível salvar dados para a categoria, informações detalhadas foram registradas por meio do log de depuração.</translation>
+    </message>
+    <message>
+        <source>Cannot save category data</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4421,10 +4605,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>Unknown</source>
         <translation>Desconhecido</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>Erro</translation>
     </message>
     <message>
         <source>Cannot save data for feed: %1</source>
@@ -4449,6 +4629,14 @@ Type: %3</source>
         <translation>
 Codificação: %2
 Tipo: %3</translation>
+    </message>
+    <message>
+        <source>Cannot save feed data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4902,6 +5090,10 @@ Notícias não lidas: %2</translation>
     <message>
         <source>Close opened modal dialogs first.</source>
         <translation>Fecha as caixas de diálogo restritas abertas primeiro.</translation>
+    </message>
+    <message>
+        <source>Close dialogs</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

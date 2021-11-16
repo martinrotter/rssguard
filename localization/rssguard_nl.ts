@@ -145,6 +145,35 @@ Fout: %1</translation>
         <source>Configure now</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>RSS Guard has Discord server!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can visit it now! Click me!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to Discord!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
+        <translation>Welkom bij %1.
+
+Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
+    </message>
+    <message>
+        <source>Already running</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>AuthenticationDetails</name>
@@ -268,10 +297,6 @@ Fout: %1</translation>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>Not supported</source>
-        <translation>Niet ondersteund</translation>
-    </message>
-    <message>
         <source>Given account does not support adding feeds.</source>
         <translation>Dit account heeft geen ondersteuning voor het toevoegen van feeds.</translation>
     </message>
@@ -286,6 +311,10 @@ Fout: %1</translation>
     <message numerus="yes">
         <source>Add one of %n feed(s)</source>
         <translation><numerusform>Eén van %n feed(s) toevoegen</numerusform><numerusform>Eén van %n feed(s) toevoegen</numerusform></translation>
+    </message>
+    <message>
+        <source>Not supported by account</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -759,10 +788,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>Rechtermuisknopmenu van andere items</translation>
     </message>
     <message>
-        <source>Not supported</source>
-        <translation>Niet-ondersteund</translation>
-    </message>
-    <message>
         <source>Selected account does not support adding of new feeds.</source>
         <translation>Dit account heeft geen ondersteuning voor het toevoegen van feeds.</translation>
     </message>
@@ -784,6 +809,10 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Context menu for important articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not supported by account</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -871,6 +900,10 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Database location</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>GNU LGPL License (applies to Breeze source code)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1256,6 +1289,13 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
 </context>
 <context>
+    <name>FormEditRedditAccount</name>
+    <message>
+        <source>Server setup</source>
+        <translation>Installatie van server</translation>
+    </message>
+</context>
+<context>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>Server setup</source>
@@ -1271,10 +1311,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Nieuwe feed toevoegen</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>Fout</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
@@ -1298,6 +1334,10 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Disable auto-fetching of articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save feed properties</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1532,10 +1572,6 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation>&amp;Doneren...</translation>
     </message>
     <message>
-        <source>Message &amp;filters</source>
-        <translation>Bericht&amp;filters</translation>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation>Afwisselende achtergrondkleuren in lijsten</translation>
     </message>
@@ -1748,12 +1784,19 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Fetched &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <source>Minimize (or hide) main window</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Minimize (or hide) main window</source>
+        <source>Article &amp;filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close &amp;current tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close dialogs</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2994,10 +3037,6 @@ Logintoken verloopt: %2</translation>
         <translation>Datum</translation>
     </message>
     <message>
-        <source>Loading of articles from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Loading of articles failed, maybe messages could not be downloaded.</source>
         <translation type="unfinished"/>
     </message>
@@ -3067,6 +3106,10 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Loading of articles from item &apos;%1&apos; failed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3513,15 +3556,6 @@ Een API-niveau van tenminste %1 is vereist.</translation>
         <translation>Eenvoudige integratie van Gmail via JSON API. Ondersteunt ook het versturen van e-mails.</translation>
     </message>
     <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Welkom bij %1.
-
-Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
-    </message>
-    <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
@@ -3575,6 +3609,10 @@ List of supported readers:</source>
         <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Simplistic Reddit client.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3597,6 +3635,148 @@ List of supported readers:</source>
     <message numerus="yes">
         <source>%n deleted article(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>RedditAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>QAuth 2.0 instellingen</translation>
+    </message>
+    <message>
+        <source>Client ID</source>
+        <translation>Client-ID</translation>
+    </message>
+    <message>
+        <source>Client secret</source>
+        <translation>Klantgeheim</translation>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>URL doorsturen</translation>
+    </message>
+    <message>
+        <source>Get my credentials</source>
+        <translation>Mijn inloggegevens verkrijgen</translation>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>&amp;Inloggen</translation>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation>Download alleen ongelezen artikelen</translation>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation>U moet uw klant-ID/geheim invullen en ook de juiste omleidings-URL invullen.</translation>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation>Nog niet getest.</translation>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation>Openbare gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Geen gebruikersnaam ingevoerd.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Een gebruikersnaam invoeren.</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>Je hebt geen toegang gegeven.</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>Er was een fout tijdens het testen.</translation>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation>Er is een fout: %1</translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>Met succes getest. Mogelijk wordt nog een keer gevraagd om in te loggen.</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>De toegang is goedgekeurd.</translation>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation>Vooraf geconfigureerde client-ID/geheim wordt gebruikt.</translation>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>Een lege waarde is ingevoerd.</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>Een waarde is ingevoerd.</translation>
+    </message>
+</context>
+<context>
+    <name>RedditCategory</name>
+    <message>
+        <source>Subscriptions</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>RedditNetworkFactory</name>
+    <message>
+        <source>you are not logged in</source>
+        <translation>je bent niet ingelogd</translation>
+    </message>
+    <message>
+        <source>Reddit: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation>Klik hier om opnieuw in te loggen. Foutmelding is: &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reddit: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation>Klik hier om opnieuw in te loggen.</translation>
+    </message>
+</context>
+<context>
+    <name>RedditServiceRoot</name>
+    <message>
+        <source>Authentication status: %1
+Login tokens expiration: %2</source>
+        <translation>Authenticatiestatus: %1
+Logintoken verloopt: %2</translation>
+    </message>
+    <message>
+        <source>logged-in</source>
+        <translation>ingelogd</translation>
+    </message>
+    <message>
+        <source>NOT logged-in</source>
+        <translation>NIET ingelogd</translation>
     </message>
 </context>
 <context>
@@ -4080,10 +4260,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed list row height (-1 = default)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Allow only basic keyboard shortcuts for feed/article list</source>
         <translation type="unfinished"/>
     </message>
@@ -4092,15 +4268,23 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Article list row height (-1 = default)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Use custom date/time format</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Ignore changes in article body (text) when article is updated upstream</source>
+        <source>Feed list row height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list row height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ignore changes in article body when new articles are being fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only time for today articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4198,10 +4382,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <translation>Auteur</translation>
     </message>
     <message>
-        <source>E-mail</source>
-        <translation>E-mail</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Alleen pictogram</translation>
     </message>
@@ -4265,6 +4445,10 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     <message>
         <source>Toolbar for articles list</source>
         <translation>Werkbalk voor artikelenlijst</translation>
+    </message>
+    <message>
+        <source>Force dark look</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4387,12 +4571,12 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
 <context>
     <name>StandardCategory</name>
     <message>
-        <source>Error</source>
-        <translation>Fout</translation>
-    </message>
-    <message>
         <source>Cannot save data for category, detailed information was logged via debug log.</source>
         <translation>Kan gegevens voor categorie niet opslaan, gedetailleerde informatie is vastgelegd via debug-log.</translation>
+    </message>
+    <message>
+        <source>Cannot save category data</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4408,10 +4592,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     <message>
         <source>Unknown</source>
         <translation>Onbekend</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>Fout</translation>
     </message>
     <message>
         <source>Cannot save data for feed: %1</source>
@@ -4433,6 +4613,14 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <source>
 Encoding: %2
 Type: %3</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save feed data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4888,6 +5076,10 @@ Ongelezen nieuws: %2</translation>
     <message>
         <source>Close opened modal dialogs first.</source>
         <translation>Sluit geopende modaalvensters eerst.</translation>
+    </message>
+    <message>
+        <source>Close dialogs</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -143,6 +143,35 @@ Error: %1</source>
         <source>Configure now</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>RSS Guard has Discord server!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can visit it now! Click me!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to Discord!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
+        <translation>欢迎使用 %1。
+
+请点击此弹出通知以查看本版本的新功能。</translation>
+    </message>
+    <message>
+        <source>Already running</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>AuthenticationDetails</name>
@@ -266,10 +295,6 @@ Error: %1</source>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>Not supported</source>
-        <translation>不支持</translation>
-    </message>
-    <message>
         <source>Given account does not support adding feeds.</source>
         <translation>被指定的账户不支持添加 Feed。</translation>
     </message>
@@ -284,6 +309,10 @@ Error: %1</source>
     <message numerus="yes">
         <source>Add one of %n feed(s)</source>
         <translation type="unfinished"><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Not supported by account</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -756,10 +785,6 @@ or this functionality is not implemented yet.</source>
         <translation>其它项目的上下文菜单</translation>
     </message>
     <message>
-        <source>Not supported</source>
-        <translation>不支持</translation>
-    </message>
-    <message>
         <source>Selected account does not support adding of new feeds.</source>
         <translation>所选账户不支持添加新订阅。</translation>
     </message>
@@ -781,6 +806,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for important articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not supported by account</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -868,6 +897,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database location</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>GNU LGPL License (applies to Breeze source code)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1253,6 +1286,13 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormEditRedditAccount</name>
+    <message>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>Server setup</source>
@@ -1268,10 +1308,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Add new feed</source>
         <translation>添加 Feed</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>错误</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
@@ -1295,6 +1331,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Disable auto-fetching of articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save feed properties</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1529,10 +1569,6 @@ or this functionality is not implemented yet.</source>
         <translation>捐赠 (&amp;D)…</translation>
     </message>
     <message>
-        <source>Message &amp;filters</source>
-        <translation>消息过滤器 (&amp;F)</translation>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation type="unfinished"/>
     </message>
@@ -1745,12 +1781,19 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Fetched &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <source>Minimize (or hide) main window</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Minimize (or hide) main window</source>
+        <source>Article &amp;filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close &amp;current tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close dialogs</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2988,10 +3031,6 @@ Token 过期时间：%2</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Loading of articles from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Loading of articles failed, maybe messages could not be downloaded.</source>
         <translation type="unfinished"/>
     </message>
@@ -3061,6 +3100,10 @@ Token 过期时间：%2</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Loading of articles from item &apos;%1&apos; failed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3505,15 +3548,6 @@ Tiny Tiny RSS 是一个基于 Web 的开源 RSS/Atom 阅读器，允许你以近
         <translation>通过 JSON API 实现的简单 Gmail 集成，也可以发送邮件。</translation>
     </message>
     <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>欢迎使用 %1。
-
-请点击此弹出通知以查看本版本的新功能。</translation>
-    </message>
-    <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
@@ -3565,6 +3599,10 @@ List of supported readers:</source>
         <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Simplistic Reddit client.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3587,6 +3625,148 @@ List of supported readers:</source>
     <message numerus="yes">
         <source>%n deleted article(s).</source>
         <translation type="unfinished"><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>RedditAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>OAuth 2.0 设置</translation>
+    </message>
+    <message>
+        <source>Client ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Client secret</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>重定向 URL</translation>
+    </message>
+    <message>
+        <source>Get my credentials</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>登录 (&amp;L)</translation>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation>尚未测试。</translation>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation>显示的用户名</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>用户名未输入。</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>用户名已输入。</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>未能获取权限。</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>测试时发生了错误。</translation>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>测试成功。你可能需要再次登录。</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>权限申请已被批准。</translation>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>未输入。</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>已输入。</translation>
+    </message>
+</context>
+<context>
+    <name>RedditCategory</name>
+    <message>
+        <source>Subscriptions</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>RedditNetworkFactory</name>
+    <message>
+        <source>you are not logged in</source>
+        <translation>您尚未登录</translation>
+    </message>
+    <message>
+        <source>Reddit: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation>点此重新登录，报错：&apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reddit: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation>点此重新登录。</translation>
+    </message>
+</context>
+<context>
+    <name>RedditServiceRoot</name>
+    <message>
+        <source>Authentication status: %1
+Login tokens expiration: %2</source>
+        <translation>认证状态：%1
+Token 过期时间：%2</translation>
+    </message>
+    <message>
+        <source>logged-in</source>
+        <translation>已登录</translation>
+    </message>
+    <message>
+        <source>NOT logged-in</source>
+        <translation>未登录</translation>
     </message>
 </context>
 <context>
@@ -4070,10 +4250,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed list row height (-1 = default)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Allow only basic keyboard shortcuts for feed/article list</source>
         <translation type="unfinished"/>
     </message>
@@ -4082,15 +4258,23 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Article list row height (-1 = default)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Use custom date/time format</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Ignore changes in article body (text) when article is updated upstream</source>
+        <source>Feed list row height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list row height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ignore changes in article body when new articles are being fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only time for today articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4188,10 +4372,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>作者</translation>
     </message>
     <message>
-        <source>E-mail</source>
-        <translation>邮箱</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>仅图标</translation>
     </message>
@@ -4254,6 +4434,10 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Toolbar for articles list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force dark look</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4377,11 +4561,11 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>StandardCategory</name>
     <message>
-        <source>Error</source>
-        <translation>错误</translation>
+        <source>Cannot save data for category, detailed information was logged via debug log.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot save data for category, detailed information was logged via debug log.</source>
+        <source>Cannot save category data</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4398,10 +4582,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Unknown</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>错误</translation>
     </message>
     <message>
         <source>Cannot save data for feed: %1</source>
@@ -4423,6 +4603,14 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>
 Encoding: %2
 Type: %3</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save feed data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4877,6 +5065,10 @@ Unread news: %2</source>
     <message>
         <source>Close opened modal dialogs first.</source>
         <translation>请先关闭已打开的对话框。</translation>
+    </message>
+    <message>
+        <source>Close dialogs</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

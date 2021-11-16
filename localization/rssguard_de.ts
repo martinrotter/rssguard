@@ -26,7 +26,7 @@
     </message>
     <message>
         <source>Custom filters</source>
-        <translation type="unfinished"/>
+        <translation>Eigene Filter</translation>
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
@@ -38,11 +38,11 @@
     </message>
     <message>
         <source>Filter lists</source>
-        <translation type="unfinished"/>
+        <translation>Filterlisten</translation>
     </message>
     <message>
         <source>Cannot enable AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Kann AdBlock nicht aktivieren</translation>
     </message>
     <message>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
@@ -50,7 +50,7 @@
     </message>
     <message>
         <source>OK!</source>
-        <translation type="unfinished"/>
+        <translation>OK!</translation>
     </message>
     <message>
         <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
@@ -60,11 +60,11 @@ Error: %1</source>
     </message>
     <message>
         <source>ERROR!</source>
-        <translation type="unfinished"/>
+        <translation>FEHLER!</translation>
     </message>
     <message>
         <source>No additional info.</source>
-        <translation type="unfinished"/>
+        <translation>Keine weitere Information.</translation>
     </message>
     <message>
         <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
@@ -125,11 +125,11 @@ Error: %1</source>
     </message>
     <message>
         <source>Unread articles fetched</source>
-        <translation type="unfinished"/>
+        <translation>Ungelesene Artikel aktualisiert</translation>
     </message>
     <message>
         <source>Go to changelog</source>
-        <translation type="unfinished"/>
+        <translation>Geh zum Changelog</translation>
     </message>
     <message>
         <source>AdBlock needs to be configured</source>
@@ -141,6 +141,33 @@ Error: %1</source>
     </message>
     <message>
         <source>Configure now</source>
+        <translation>konfiguriere</translation>
+    </message>
+    <message>
+        <source>RSS Guard has Discord server!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can visit it now! Click me!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to Discord!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Already running</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -195,18 +222,18 @@ Error: %1</source>
     <name>BaseLineEdit</name>
     <message>
         <source>Show/hide the password</source>
-        <translation type="unfinished"/>
+        <translation>Zeige/verstecke Passwort</translation>
     </message>
 </context>
 <context>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
-        <translation type="unfinished"/>
+        <translation>Klicken zum Ändern der Farbe!</translation>
     </message>
     <message>
         <source>Select new color</source>
-        <translation type="unfinished"/>
+        <translation>Neue Farbe auswählen</translation>
     </message>
 </context>
 <context>
@@ -229,61 +256,61 @@ Error: %1</source>
     </message>
     <message>
         <source>Removing read articles...</source>
-        <translation type="unfinished"/>
+        <translation>Entferne gelesene Artikel...</translation>
     </message>
     <message>
         <source>Read articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Gelesene Artikel aufgeräumt...</translation>
     </message>
     <message>
         <source>Removing old articles...</source>
-        <translation type="unfinished"/>
+        <translation>Entferne alte Artikel...</translation>
     </message>
     <message>
         <source>Old articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Alte Artikel aufgeräumt...</translation>
     </message>
     <message>
         <source>Removing starred articles...</source>
-        <translation type="unfinished"/>
+        <translation>Entferne favorisierte Artikel...</translation>
     </message>
     <message>
         <source>Starred articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Favorisierte Artikel aufgeräumt...</translation>
     </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
     <message>
         <source>Cannot connect to database</source>
-        <translation type="unfinished"/>
+        <translation>Keine Verbindung zur Datenbank</translation>
     </message>
     <message>
         <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-        <translation type="unfinished"/>
+        <translation>Verbindung zu deiner Datenbank war nicht möglich mit Fehler: &apos;%1&apos;. Gehe zurück auf SQLite.</translation>
     </message>
 </context>
 <context>
     <name>DiscoverFeedsButton</name>
-    <message>
-        <source>Not supported</source>
-        <translation>Nicht unterstützt</translation>
-    </message>
     <message>
         <source>Given account does not support adding feeds.</source>
         <translation>Zum genannten Konto können keine Feeds hinzugefügt werden.</translation>
     </message>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
-        <translation type="unfinished"/>
+        <translation>Feeds wurden gefunden, aber keine passenden Accounts sind konfiguriert.</translation>
     </message>
     <message>
         <source>This website does not contain any feeds</source>
-        <translation type="unfinished"/>
+        <translation>Dieser Webseite beinhaltete keine Feeds</translation>
     </message>
     <message numerus="yes">
         <source>Add one of %n feed(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Not supported by account</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -375,7 +402,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Open folder</source>
-        <translation type="unfinished"/>
+        <translation>Ordner öffnen</translation>
     </message>
 </context>
 <context>
@@ -417,23 +444,23 @@ Click here to open parent directory.</source>
     <name>EmailRecipientControl</name>
     <message>
         <source>To</source>
-        <translation type="unfinished"/>
+        <translation>An</translation>
     </message>
     <message>
         <source>Cc</source>
-        <translation type="unfinished"/>
+        <translation>Cc</translation>
     </message>
     <message>
         <source>Bcc</source>
-        <translation type="unfinished"/>
+        <translation>Bcc</translation>
     </message>
     <message>
         <source>Reply-to</source>
-        <translation type="unfinished"/>
+        <translation>Antwort an</translation>
     </message>
     <message>
         <source>E-mail address</source>
-        <translation type="unfinished"/>
+        <translation>Email-Adresse</translation>
     </message>
 </context>
 <context>
@@ -477,7 +504,7 @@ Status: %3</source>
     </message>
     <message>
         <source>has new articles</source>
-        <translation type="unfinished"/>
+        <translation>hat neue Artikel</translation>
     </message>
     <message>
         <source>parsing error</source>
@@ -485,7 +512,7 @@ Status: %3</source>
     </message>
     <message>
         <source>error</source>
-        <translation type="unfinished"/>
+        <translation>Fehler</translation>
     </message>
 </context>
 <context>
@@ -511,7 +538,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Cannot fetch articles at this point</source>
-        <translation type="unfinished"/>
+        <translation>Kann Artikel hier nicht abrufen</translation>
     </message>
     <message>
         <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
@@ -530,7 +557,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Get token</source>
-        <translation type="unfinished"/>
+        <translation>Hole token</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -538,7 +565,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Benutzernamen für Ihren Account</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -582,11 +609,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Login was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Login erfolgreich,</translation>
     </message>
     <message>
         <source>Some problems.</source>
-        <translation type="unfinished"/>
+        <translation>Einige Probleme.</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -598,23 +625,23 @@ Status: %3</source>
     </message>
     <message>
         <source>Access token is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Zugangs-Token ist leer.</translation>
     </message>
     <message>
         <source>Access token is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Zugangs-Token ist ok.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Fehler: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lade nur die neusten X Artikel je Feed</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Nur ungelesene Artikel herunterladen.</translation>
     </message>
     <message>
         <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
@@ -641,7 +668,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Login</translation>
     </message>
 </context>
 <context>
@@ -753,10 +780,6 @@ or this functionality is not implemented yet.</source>
         <translation>Kontextmenü für sonstige Einträge</translation>
     </message>
     <message>
-        <source>Not supported</source>
-        <translation>Nicht unterstützt</translation>
-    </message>
-    <message>
         <source>Selected account does not support adding of new feeds.</source>
         <translation>Zum ausgewählten Konto können keine zusätzlichen Feeds hinzugefügt werden.</translation>
     </message>
@@ -778,6 +801,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for important articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not supported by account</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -865,6 +892,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database location</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>GNU LGPL License (applies to Breeze source code)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1250,6 +1281,13 @@ or this functionality is not implemented yet.</source>
     </message>
 </context>
 <context>
+    <name>FormEditRedditAccount</name>
+    <message>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>Server setup</source>
@@ -1265,10 +1303,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Add new feed</source>
         <translation>Neuen Feed hinzufügen</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
@@ -1292,6 +1326,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Disable auto-fetching of articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save feed properties</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1523,19 +1561,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Message &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Spenden</translation>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
-        <translation type="unfinished"/>
+        <translation>Zeilenfarbe in Listen umkehren</translation>
     </message>
     <message>
         <source>Display &amp;documentation</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Dokumentation anzeigen</translation>
     </message>
     <message>
         <source>Message viewer toolbars</source>
@@ -1555,11 +1589,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Fetch all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Alle aktualisieren</translation>
     </message>
     <message>
         <source>Fetch all feeds</source>
-        <translation type="unfinished"/>
+        <translation>Alle Feeds aktualisieren</translation>
     </message>
     <message>
         <source>Fetch &amp;selected</source>
@@ -1571,19 +1605,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Mark articles &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Markiere Artikel als &amp;gelesen</translation>
     </message>
     <message>
         <source>Mark selected articles read</source>
-        <translation type="unfinished"/>
+        <translation>Gewählte Artikel als gelesen markieren</translation>
     </message>
     <message>
         <source>Mark articles &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Markiere Artikel als &amp;ungelesen</translation>
     </message>
     <message>
         <source>Mark selected articles unread</source>
-        <translation type="unfinished"/>
+        <translation>Gewählte Artikel als ungelesen markieren</translation>
     </message>
     <message>
         <source>Switch &amp;importance</source>
@@ -1595,11 +1629,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Mark selected item read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Auswahl als gelesen markieren</translation>
     </message>
     <message>
         <source>&amp;Mark selected item unread</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Auswahl als ungelesen markieren</translation>
     </message>
     <message>
         <source>&amp;Delete articles</source>
@@ -1627,7 +1661,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Mark all read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Alle als gelesen markieren</translation>
     </message>
     <message>
         <source>View selected item in &amp;newspaper mode</source>
@@ -1651,11 +1685,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Restore settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Einstellungen wiederherstellen</translation>
     </message>
     <message>
         <source>&amp;Backup settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Einstellungen sichern</translation>
     </message>
     <message>
         <source>Switch layout</source>
@@ -1742,12 +1776,19 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Fetched &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <source>Minimize (or hide) main window</source>
+        <translation>Minimiere (oder verstecke) Hauptfenster</translation>
+    </message>
+    <message>
+        <source>Article &amp;filters</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Minimize (or hide) main window</source>
+        <source>Close &amp;current tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close dialogs</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1847,19 +1888,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;New filter</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Neuer Filter</translation>
     </message>
     <message>
         <source>&amp;Test</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Test</translation>
     </message>
     <message>
         <source>Process checked feeds</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Feeds verarbeiten</translation>
     </message>
     <message>
         <source>&amp;Beautify</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Verschönern</translation>
     </message>
     <message>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
@@ -2033,7 +2074,7 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Netzwerk</translation>
     </message>
 </context>
 <context>
@@ -2148,15 +2189,15 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;In Datei exportieren</translation>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Von Datei importieren</translation>
     </message>
     <message>
         <source>&amp;Check all feeds</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Wähle alle Feeds</translation>
     </message>
     <message>
         <source>&amp;Uncheck all feeds</source>
@@ -2179,7 +2220,7 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Netzwerk</translation>
     </message>
     <message>
         <source>Feed was added, obtaining new tree of feeds now.</source>
@@ -2325,7 +2366,7 @@ Sie können es jetzt installieren.</translation>
     </message>
     <message>
         <source>Client ID</source>
-        <translation type="unfinished"/>
+        <translation>Client ID</translation>
     </message>
     <message>
         <source>Client secret</source>
@@ -2393,7 +2434,7 @@ Sie können es jetzt installieren.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Fehler:  %1</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -2401,11 +2442,11 @@ Sie können es jetzt installieren.</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lade nur die neusten X Artikel je Feed</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Nur ungelesene Artikel herunterladen.</translation>
     </message>
 </context>
 <context>
@@ -2432,7 +2473,7 @@ Sie können es jetzt installieren.</translation>
     </message>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>Sie sind nicht eingeloggt</translation>
     </message>
     <message>
         <source>failed to get metadata</source>
@@ -2440,7 +2481,7 @@ Sie können es jetzt installieren.</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Login</translation>
     </message>
 </context>
 <context>
@@ -2485,14 +2526,14 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Reply to this message</source>
-        <translation type="unfinished"/>
+        <translation>Nachricht beantworten</translation>
     </message>
 </context>
 <context>
     <name>GreaderAccountDetails</name>
     <message>
         <source>Service</source>
-        <translation type="unfinished"/>
+        <translation>Dienst</translation>
     </message>
     <message>
         <source>URL</source>
@@ -2516,11 +2557,11 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Password for your account</source>
-        <translation type="unfinished"/>
+        <translation>Passwort für Ihren Account</translation>
     </message>
     <message>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Benutzernamen für Ihren Account</translation>
     </message>
     <message>
         <source>URL of your server, without any service-specific path</source>
@@ -2540,7 +2581,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Netzwerkfehler. Sind die Nextcloud-Daten und das Passwort korrekt?</translation>
     </message>
     <message>
         <source>You are good to go!</source>
@@ -2548,7 +2589,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Yeah.</source>
-        <translation type="unfinished"/>
+        <translation>Jippie.</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -2576,11 +2617,11 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lade nur die neusten X Artikel je Feed</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Nur ungelesene Artikel herunterladen.</translation>
     </message>
     <message>
         <source>Intelligent synchronization algorithm</source>
@@ -2588,7 +2629,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Fetch articles newer than</source>
-        <translation type="unfinished"/>
+        <translation>Hole Artikel neuer als</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -2596,11 +2637,11 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>App ID</source>
-        <translation type="unfinished"/>
+        <translation>App ID</translation>
     </message>
     <message>
         <source>App key</source>
-        <translation type="unfinished"/>
+        <translation>App Schlüssel</translation>
     </message>
     <message>
         <source>Redirect URL</source>
@@ -2663,7 +2704,7 @@ Ablauf des Login tokens: %2</translation>
     <name>GreaderNetwork</name>
     <message>
         <source>login failed</source>
-        <translation type="unfinished"/>
+        <translation>Login fehlgeschlagen</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
@@ -2683,7 +2724,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Login</translation>
     </message>
 </context>
 <context>
@@ -2848,18 +2889,18 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>articles</source>
-        <translation type="unfinished"/>
+        <translation>Artikel</translation>
     </message>
 </context>
 <context>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark article read</source>
-        <translation type="unfinished"/>
+        <translation>als gelesen markieren</translation>
     </message>
     <message>
         <source>Mark article unread</source>
-        <translation type="unfinished"/>
+        <translation>als ungelesen markieren</translation>
     </message>
     <message>
         <source>Switch article importance</source>
@@ -2987,10 +3028,6 @@ Ablauf des Login tokens: %2</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Loading of articles from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Loading of articles failed, maybe messages could not be downloaded.</source>
         <translation type="unfinished"/>
     </message>
@@ -3060,6 +3097,10 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Loading of articles from item &apos;%1&apos; failed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3321,7 +3362,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Login</translation>
     </message>
 </context>
 <context>
@@ -3356,11 +3397,11 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Passwort für Ihren Nextcloud-Zugang</translation>
     </message>
     <message>
         <source>Username for your Nextcloud account</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername für Ihren Nextcloud-Zugang</translation>
     </message>
     <message>
         <source>URL of your Nextcloud server, without any API path</source>
@@ -3384,7 +3425,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Netzwerkfehler. Sind die Nextcloud-Daten und das Passwort korrekt?</translation>
     </message>
     <message>
         <source>Installed version: %1, required at least: %2.</source>
@@ -3396,7 +3437,7 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Nextcloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Nextcloud News Server ist ok.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -3428,15 +3469,15 @@ Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Nur ungelesene Artikel herunterladen.</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lade nur die neusten X Artikel je Feed</translation>
     </message>
     <message>
         <source>articles</source>
-        <translation type="unfinished"/>
+        <translation>Artikel</translation>
     </message>
     <message>
         <source>Force execution of server-side feeds update</source>
@@ -3503,16 +3544,6 @@ Das API muss mindestens in Stufe %1 verfügbar sein.</translation>
         <translation>Einfach Gmail-Integration via JSON API. Erlaubt auch das Senden von E-Mails.</translation>
     </message>
     <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Willkommen bei %1.
-
-Bitte überprüfen Sie die in dieser Version enthaltene Neuerungen
-durch Klicken auf diese Benachrichtigung.</translation>
-    </message>
-    <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
@@ -3564,6 +3595,10 @@ List of supported readers:</source>
         <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Simplistic Reddit client.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3586,6 +3621,147 @@ List of supported readers:</source>
     <message numerus="yes">
         <source>%n deleted article(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>RedditAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Client ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Client secret</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Get my credentials</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>RedditCategory</name>
+    <message>
+        <source>Subscriptions</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>RedditNetworkFactory</name>
+    <message>
+        <source>you are not logged in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reddit: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reddit: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>RedditServiceRoot</name>
+    <message>
+        <source>Authentication status: %1
+Login tokens expiration: %2</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>logged-in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NOT logged-in</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4002,7 +4178,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Select new font</source>
-        <translation type="unfinished"/>
+        <translation>Neue Schriftart auswählen</translation>
     </message>
     <message>
         <source>Feeds</source>
@@ -4010,7 +4186,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Articles</source>
-        <translation type="unfinished"/>
+        <translation>Artikel</translation>
     </message>
     <message>
         <source>Remove all read articles from all feeds on application exit</source>
@@ -4026,7 +4202,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Article list font</source>
-        <translation type="unfinished"/>
+        <translation>Artikelliste Schriftart</translation>
     </message>
     <message>
         <source>Article browser font</source>
@@ -4069,10 +4245,6 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed list row height (-1 = default)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Allow only basic keyboard shortcuts for feed/article list</source>
         <translation type="unfinished"/>
     </message>
@@ -4081,15 +4253,23 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Article list row height (-1 = default)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Use custom date/time format</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Ignore changes in article body (text) when article is updated upstream</source>
+        <source>Feed list row height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list row height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ignore changes in article body when new articles are being fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only time for today articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4187,10 +4367,6 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
         <translation>Autor</translation>
     </message>
     <message>
-        <source>E-mail</source>
-        <translation>Mail</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Nur Icon</translation>
     </message>
@@ -4253,6 +4429,10 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Toolbar for articles list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force dark look</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4320,7 +4500,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <name>SingleNotificationEditor</name>
     <message>
         <source>Sound</source>
-        <translation type="unfinished"/>
+        <translation>Klang</translation>
     </message>
     <message>
         <source>Full path to your WAV sound file</source>
@@ -4332,7 +4512,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>&amp;Play</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Abspielen</translation>
     </message>
     <message>
         <source>Balloon notification</source>
@@ -4340,11 +4520,11 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Select sound file</source>
-        <translation type="unfinished"/>
+        <translation>Sounddatei auswählen</translation>
     </message>
     <message>
         <source>Volume</source>
-        <translation type="unfinished"/>
+        <translation>Lautstärke</translation>
     </message>
     <message>
         <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
@@ -4376,11 +4556,11 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
 <context>
     <name>StandardCategory</name>
     <message>
-        <source>Error</source>
+        <source>Cannot save data for category, detailed information was logged via debug log.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot save data for category, detailed information was logged via debug log.</source>
+        <source>Cannot save category data</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4396,10 +4576,6 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Error</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -4422,6 +4598,14 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
         <source>
 Encoding: %2
 Type: %3</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save feed data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4877,6 +5061,10 @@ Ungelesene Nachrichten: %2</translation>
         <source>Close opened modal dialogs first.</source>
         <translation>Schliessen Sie zuerst alle modalen Fenster.</translation>
     </message>
+    <message>
+        <source>Close dialogs</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>TtRssAccountDetails</name>
@@ -5022,11 +5210,11 @@ Ungelesene Nachrichten: %2</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Nur ungelesene Artikel herunterladen.</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lade nur die neusten X Artikel je Feed</translation>
     </message>
     <message>
         <source>Force execution of server-side feeds update</source>

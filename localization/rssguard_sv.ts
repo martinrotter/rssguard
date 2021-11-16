@@ -145,6 +145,36 @@ Fel: %1</translation>
         <source>Configure now</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>RSS Guard has Discord server!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can visit it now! Click me!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Go to Discord!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
+        <translation>Välkommen till %1.
+
+Kolla in NYA grejer i den här versionen 
+genom att klicka på denna popup-avisering.</translation>
+    </message>
+    <message>
+        <source>Already running</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>AuthenticationDetails</name>
@@ -268,10 +298,6 @@ Fel: %1</translation>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
-        <source>Not supported</source>
-        <translation>Stöds ej</translation>
-    </message>
-    <message>
         <source>Given account does not support adding feeds.</source>
         <translation>Angivet kontot stöder inte tillägg av nya flöden.</translation>
     </message>
@@ -286,6 +312,10 @@ Fel: %1</translation>
     <message numerus="yes">
         <source>Add one of %n feed(s)</source>
         <translation><numerusform>Lägg till ett av %n flöde</numerusform><numerusform>Lägg till ett av %n flöden</numerusform></translation>
+    </message>
+    <message>
+        <source>Not supported by account</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -759,10 +789,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Kontextmeny för andra objekt</translation>
     </message>
     <message>
-        <source>Not supported</source>
-        <translation>Stöds ej</translation>
-    </message>
-    <message>
         <source>Selected account does not support adding of new feeds.</source>
         <translation>Det valda kontot stöder inte tillägg av nya flöden.</translation>
     </message>
@@ -784,6 +810,10 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Context menu for important articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Not supported by account</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -871,6 +901,10 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Database location</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>GNU LGPL License (applies to Breeze source code)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1256,6 +1290,13 @@ att funktionen inte är implementerad än.</translation>
     </message>
 </context>
 <context>
+    <name>FormEditRedditAccount</name>
+    <message>
+        <source>Server setup</source>
+        <translation>Serverinställning</translation>
+    </message>
+</context>
+<context>
     <name>FormEditTtRssAccount</name>
     <message>
         <source>Server setup</source>
@@ -1271,10 +1312,6 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Lägg till nytt flöde</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>Fel</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
@@ -1298,6 +1335,10 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Disable auto-fetching of articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save feed properties</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1532,10 +1573,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>&amp;Donera...</translation>
     </message>
     <message>
-        <source>Message &amp;filters</source>
-        <translation>Meddelande&amp;filter</translation>
-    </message>
-    <message>
         <source>Alternate row colors in lists</source>
         <translation>Växla radfärger i listan</translation>
     </message>
@@ -1748,12 +1785,19 @@ att funktionen inte är implementerad än.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Fetched &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <source>Minimize (or hide) main window</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Minimize (or hide) main window</source>
+        <source>Article &amp;filters</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close &amp;current tab</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Close dialogs</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2993,10 +3037,6 @@ Inloggningstoken upphör: %2</translation>
         <translation>Datum</translation>
     </message>
     <message>
-        <source>Loading of articles from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Loading of articles failed, maybe messages could not be downloaded.</source>
         <translation type="unfinished"/>
     </message>
@@ -3066,6 +3106,10 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the article.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Loading of articles from item &apos;%1&apos; failed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3512,16 +3556,6 @@ Minst API-nivå %1 krävs.</translation>
         <translation>Enkel Gmail-integrering via JSON API. Låter dig skicka e-post också.</translation>
     </message>
     <message>
-        <source>Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</source>
-        <translation>Välkommen till %1.
-
-Kolla in NYA grejer i den här versionen 
-genom att klicka på denna popup-avisering.</translation>
-    </message>
-    <message>
         <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
@@ -3575,6 +3609,10 @@ List of supported readers:</source>
         <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Simplistic Reddit client.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3597,6 +3635,148 @@ List of supported readers:</source>
     <message numerus="yes">
         <source>%n deleted article(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>RedditAccountDetails</name>
+    <message>
+        <source>Username</source>
+        <translation>Användarnamn</translation>
+    </message>
+    <message>
+        <source>OAuth 2.0 settings</source>
+        <translation>OAuth 2.0 inställningar</translation>
+    </message>
+    <message>
+        <source>Client ID</source>
+        <translation>Klient-ID</translation>
+    </message>
+    <message>
+        <source>Client secret</source>
+        <translation>Klienthemlighet</translation>
+    </message>
+    <message>
+        <source>Redirect URL</source>
+        <translation>Omdirigera URL</translation>
+    </message>
+    <message>
+        <source>Get my credentials</source>
+        <translation>Hämta mina inloggningsuppgifter</translation>
+    </message>
+    <message>
+        <source>Only download newest X articles per feed</source>
+        <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
+    </message>
+    <message>
+        <source>&amp;Login</source>
+        <translation>&amp;Logga in</translation>
+    </message>
+    <message>
+        <source>Download unread articles only</source>
+        <translation>Ladda bara ner olästa artiklar</translation>
+    </message>
+    <message>
+        <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
+        <translation>Du måste fylla i ditt klient-ID/din hemlighet och även korrekt omdirigerings-URL.</translation>
+    </message>
+    <message>
+        <source>Not tested yet.</source>
+        <translation>Inte testat ännu.</translation>
+    </message>
+    <message>
+        <source>User-visible username</source>
+        <translation>Användarsynligt användarnamn</translation>
+    </message>
+    <message>
+        <source>No username entered.</source>
+        <translation>Inget användarnamn angivet.</translation>
+    </message>
+    <message>
+        <source>Some username entered.</source>
+        <translation>Användarnamn angivet.</translation>
+    </message>
+    <message>
+        <source>You did not grant access.</source>
+        <translation>Du beviljade inte åtkomst.</translation>
+    </message>
+    <message>
+        <source>There was error during testing.</source>
+        <translation>Fel uppstod vid testning.</translation>
+    </message>
+    <message>
+        <source>There is error: %1</source>
+        <translation>Det finns fel: %1 </translation>
+    </message>
+    <message>
+        <source>Tested successfully. You may be prompted to login once more.</source>
+        <translation>Testet lyckades. Du kan behöva logga in igen.</translation>
+    </message>
+    <message>
+        <source>Your access was approved.</source>
+        <translation>Åtkomst beviljades.</translation>
+    </message>
+    <message>
+        <source>Preconfigured client ID/secret will be used.</source>
+        <translation>Förkonfigurerad klient-ID/hemlighet kommer att användas.</translation>
+    </message>
+    <message>
+        <source>Empty value is entered.</source>
+        <translation>Ett tomt värde angavs.</translation>
+    </message>
+    <message>
+        <source>Some value is entered.</source>
+        <translation>Ett värde angavs.</translation>
+    </message>
+</context>
+<context>
+    <name>RedditCategory</name>
+    <message>
+        <source>Subscriptions</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>RedditNetworkFactory</name>
+    <message>
+        <source>you are not logged in</source>
+        <translation>Du är inte inloggad</translation>
+    </message>
+    <message>
+        <source>Reddit: authentication error</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again. Error is: &apos;%1&apos;</source>
+        <translation>Klicka här för att logga in igen. Felet är: &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Reddit: authorization denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Click this to login again.</source>
+        <translation>Klicka här för att logga in igen.</translation>
+    </message>
+</context>
+<context>
+    <name>RedditServiceRoot</name>
+    <message>
+        <source>Authentication status: %1
+Login tokens expiration: %2</source>
+        <translation>Autentiseringsstatus: %1
+Inloggningstoken upphör: %2</translation>
+    </message>
+    <message>
+        <source>logged-in</source>
+        <translation>inloggad</translation>
+    </message>
+    <message>
+        <source>NOT logged-in</source>
+        <translation>INTE inloggad</translation>
     </message>
 </context>
 <context>
@@ -4080,10 +4260,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed list row height (-1 = default)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Allow only basic keyboard shortcuts for feed/article list</source>
         <translation type="unfinished"/>
     </message>
@@ -4092,15 +4268,23 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Article list row height (-1 = default)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Use custom date/time format</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Ignore changes in article body (text) when article is updated upstream</source>
+        <source>Feed list row height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Article list row height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Ignore changes in article body when new articles are being fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only time for today articles</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4198,10 +4382,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Författare</translation>
     </message>
     <message>
-        <source>E-mail</source>
-        <translation>E-post</translation>
-    </message>
-    <message>
         <source>Icon only</source>
         <translation>Endast ikon</translation>
     </message>
@@ -4264,6 +4444,10 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Toolbar for articles list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force dark look</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4387,12 +4571,12 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
 <context>
     <name>StandardCategory</name>
     <message>
-        <source>Error</source>
-        <translation>Fel</translation>
-    </message>
-    <message>
         <source>Cannot save data for category, detailed information was logged via debug log.</source>
         <translation>Kan inte spara data för kategori, detaljerad information loggades i felsökningsloggen.</translation>
+    </message>
+    <message>
+        <source>Cannot save category data</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4408,10 +4592,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>Unknown</source>
         <translation>Okänd</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>Fel</translation>
     </message>
     <message>
         <source>Cannot save data for feed: %1</source>
@@ -4433,6 +4613,14 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <source>
 Encoding: %2
 Type: %3</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot save feed data</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot move feed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4887,6 +5075,10 @@ Olästa nyheter: %2</translation>
     <message>
         <source>Close opened modal dialogs first.</source>
         <translation>Stäng öppna dialogrutor först.</translation>
+    </message>
+    <message>
+        <source>Close dialogs</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
