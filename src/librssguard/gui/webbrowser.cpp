@@ -219,7 +219,7 @@ void WebBrowser::initializeLayout() {
 
   m_actionBack->setIcon(qApp->icons()->fromTheme(QSL("go-previous")));
   m_actionForward->setIcon(qApp->icons()->fromTheme(QSL("go-next")));
-  m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("reload")));
+  m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("reload"), QSL("view-refresh")));
   m_actionStop->setIcon(qApp->icons()->fromTheme(QSL("process-stop")));
 
   QWidgetAction* act_discover = new QWidgetAction(this);

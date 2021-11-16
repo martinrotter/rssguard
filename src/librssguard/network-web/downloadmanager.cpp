@@ -159,7 +159,7 @@ QString DownloadItem::saveFileName(const QString& directory) const {
   QString base_name = info.completeBaseName();
   QString end_name = info.suffix();
 
-  if (base_name.isEmpty()) {
+  if (base_name.isEmpty() || base_name.contains(QRegularExpression(QSL("\\/|<|\\?")))) {
     base_name = QSL("unnamed_download");
   }
 

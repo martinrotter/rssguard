@@ -671,6 +671,7 @@ void FormMain::saveSize() {
   settings->setValue(GROUP(GUI), GUI::MainWindowStartsMaximized, is_maximized);
   settings->setValue(GROUP(GUI), GUI::MainWindowStartsFullscreen, is_fullscreen);
   settings->setValue(GROUP(GUI), GUI::StatusBarVisible, m_ui->m_actionSwitchStatusBar->isChecked());
+
   m_ui->m_tabWidget->feedMessageViewer()->saveSize();
 }
 
