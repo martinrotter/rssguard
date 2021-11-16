@@ -1292,7 +1292,9 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
         // Message exists and is changed, update it.
         query_update.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_update.bindValue(QSL(":is_read"), int(message.m_isRead));
-        query_update.bindValue(QSL(":is_important"), int(message.m_isImportant));
+        query_update.bindValue(QSL(":is_important"), (feed->getParentServiceRoot()->isSyncable() || message.m_isImportant)
+                               ? int(message.m_isImportant)
+                               : is_important_existing_message);
         query_update.bindValue(QSL(":is_deleted"), int(message.m_isDeleted));
         query_update.bindValue(QSL(":url"), unnulifyString(message.m_url));
         query_update.bindValue(QSL(":author"), unnulifyString(message.m_author));
