@@ -195,9 +195,11 @@ HEADERS += core/feeddownloader.h \
            services/reddit/definitions.h \
            services/reddit/gui/formeditredditaccount.h \
            services/reddit/gui/redditaccountdetails.h \
+           services/reddit/redditcategory.h \
            services/reddit/redditentrypoint.h \
            services/reddit/redditnetworkfactory.h \
            services/reddit/redditserviceroot.h \
+           services/reddit/redditsubscription.h \
            services/standard/atomparser.h \
            services/standard/definitions.h \
            services/standard/feedparser.h \
@@ -376,9 +378,11 @@ SOURCES += core/feeddownloader.cpp \
            services/owncloud/owncloudserviceroot.cpp \
            services/reddit/gui/formeditredditaccount.cpp \
            services/reddit/gui/redditaccountdetails.cpp \
+           services/reddit/redditcategory.cpp \
            services/reddit/redditentrypoint.cpp \
            services/reddit/redditnetworkfactory.cpp \
            services/reddit/redditserviceroot.cpp \
+           services/reddit/redditsubscription.cpp \
            services/standard/atomparser.cpp \
            services/standard/feedparser.cpp \
            services/standard/gui/formeditstandardaccount.cpp \

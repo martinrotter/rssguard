@@ -11,6 +11,7 @@
 #include "services/abstract/recyclebin.h"
 #include "services/reddit/definitions.h"
 #include "services/reddit/gui/formeditredditaccount.h"
+#include "services/reddit/redditcategory.h"
 #include "services/reddit/redditentrypoint.h"
 #include "services/reddit/redditnetworkfactory.h"
 
@@ -93,7 +94,7 @@ bool RedditServiceRoot::supportsCategoryAdding() const {
 
 void RedditServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadFromDatabase<Category, Feed>(this);
+    DatabaseQueries::loadFromDatabase<RedditCategory, Feed>(this);
     loadCacheFromFile();
   }
 
