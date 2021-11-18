@@ -19,40 +19,44 @@ $AllProtocols = [System.Net.SecurityProtocolType]'Tls11,Tls12'
 $ProgressPreference = 'SilentlyContinue'
 
 # Get and prepare needed dependencies.
-$qt_version = "5.15.2"
-$qt_link = "https://github.com/qt/qtbase/archive/$qt_version.zip"
-$qt_output = "qt.zip"
-
-$maria_version = "10.6.4"
+$qt_version = "6.2.1"
+$maria_version = "10.6.5"
 $maria_link = "https://mirror.vpsfree.cz/mariadb/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
+$cmake_version = "3.22.0-rc3"
+$cmake_link = "https://github.com/Kitware/CMake/releases/download/v$cmake_version/cmake-$cmake_version-windows-x86_64.zip"
+$cmake_output = "cmake.zip"
 
-Invoke-WebRequest -Uri "$qt_link" -OutFile "$qt_output" -MaximumRedirection 5 
 Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
-
-& ".\resources\scripts\7za\7za.exe" x $qt_output
 & ".\resources\scripts\7za\7za.exe" x $maria_output
+
+Invoke-WebRequest -Uri "$cmake_link" -OutFile "$cmake_output"
+& ".\resources\scripts\7za\7za.exe" x $cmake_output
+
+$cmake_path = "$old_pwd\cmake-$cmake_version-windows-x86_64\bin\cmake.exe"
 
 # Download Qt itself.
 $qt_path = "$old_pwd\qt"
 pip3 install -U pip
-pip3 install -I aqtinstall==1.2.5
-aqt install -O "$qt_path" "$qt_version" "windows" "desktop" "win64_msvc2019_64" -m "qtwebengine"
+pip3 install -I aqtinstall
+
+aqt install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine qtmultimedia qt5compat qtwebchannel qtpositioning
+aqt install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
 
 $qt_qmake = "$qt_path\$qt_version\msvc2019_64\bin\qmake.exe"
 $env:PATH = "$qt_path\$qt_version\msvc2019_64\bin\;" + $env:PATH
 
 # Download openssl.
-aqt tool -O "$qt_path" windows tools_openssl_x64 1.1.1 qt.tools.openssl.win_x64
+aqt install-tool -O "$qt_path" windows desktop tools_openssl_x64 qt.tools.openssl.win_x64
 $openssl_base_path = "$qt_path\Tools\OpenSSL\Win_x64"
 
 # Build dependencies.
 $maria_path = "$old_pwd\mariadb-$maria_version-winx64"
-$qt_sqldrivers_path = "$old_pwd\qtbase-$qt_version\src\plugins\sqldrivers"
+$qt_sqldrivers_path = "$qt_path\$qt_version\Src\qtbase\src\plugins\sqldrivers"
 
 cd "$qt_sqldrivers_path"
-& $qt_qmake -- MYSQL_INCDIR="$maria_path\include\mysql" MYSQL_LIBDIR="$maria_path\lib"
-nmake.exe sub-mysql
+& $cmake_path -G Ninja -DCMAKE_BUILD_TYPE="Release" -DMySQL_INCLUDE_DIR="$maria_path\include\mysql" -DMySQL_LIBRARY="$maria_path\lib\libmariadb.lib"
+& $cmake_path --build .
 cd "$old_pwd"
 
 # Build application.
