@@ -154,7 +154,8 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
                                 message.m_contents,
                                 msg_date,
                                 enclosures,
-                                enclosure_images));
+                                enclosure_images,
+                                QString::number(message.m_id)));
   }
 
   m_root = root;

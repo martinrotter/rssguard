@@ -20,6 +20,7 @@ Here is overview of all placeholders used throughtout the skin:
     %5 - Date/time of the article.
     %6 - Attachments (composed from html_enclosure_every.html).
     %7 - Attached pictures (composed from html_enclosure_image.html).
+    %8 - Database ID of the message.
 
   html_adblocked.html:
     %1 - Title of the page. This page is used when the website is entirely blocked by AdBlock.
