@@ -12,9 +12,17 @@
 
 struct RSSGUARD_DLLSPEC Skin {
   enum class PaletteColors {
+    // Used to highlight foreground of some interesting articles.
     Highlight = 1,
+
+    // Foreground color of errorneous entries.
     Error = 2,
-    Allright = 3
+
+    // OK-ish color.
+    Allright = 3,
+
+    // Foreground color when item is highlighted/selected.
+    HighlightedError = 4
   };
 
   QString m_baseName;
