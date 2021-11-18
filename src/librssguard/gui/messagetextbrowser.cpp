@@ -70,7 +70,7 @@ void MessageTextBrowser::contextMenuEvent(QContextMenuEvent* event) {
     for (const ExternalTool& tool : qAsConst(tools)) {
       QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
 
-      act_tool->setIcon(icon_provider.icon(tool.executable()));
+      act_tool->setIcon(icon_provider.icon(QFileInfo(tool.executable())));
       act_tool->setToolTip(tool.executable());
       act_tool->setData(QVariant::fromValue(tool));
       menu_ext_tools->addAction(act_tool);
