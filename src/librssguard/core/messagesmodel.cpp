@@ -386,19 +386,28 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     }
 
     case Qt::ItemDataRole::ForegroundRole:
+    case HIGHLIGHTED_FOREGROUND_TITLE_ROLE:
       switch (m_messageHighlighter) {
         case MessageHighlighter::HighlightImportant: {
           QModelIndex idx_important = index(idx.row(), MSG_DB_IMPORTANT_INDEX);
           QVariant dta = m_cache->containsData(idx_important.row()) ? m_cache->data(idx_important) : QSqlQueryModel::data(idx_important);
 
-          return dta.toInt() == 1 ? qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight] : QVariant();
+          return dta.toInt() == 1
+              ? qApp->skins()->currentSkin().m_colorPalette[role == Qt::ItemDataRole::ForegroundRole
+              ? SkinEnums::PaletteColors::FgInteresting
+              : SkinEnums::PaletteColors::FgSelectedInteresting]
+              : QVariant();
         }
 
         case MessageHighlighter::HighlightUnread: {
           QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
           QVariant dta = m_cache->containsData(idx_read.row()) ? m_cache->data(idx_read) : QSqlQueryModel::data(idx_read);
 
-          return dta.toInt() == 0 ? qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight] : QVariant();
+          return dta.toInt() == 0
+              ? qApp->skins()->currentSkin().m_colorPalette[role == Qt::ItemDataRole::ForegroundRole
+              ? SkinEnums::PaletteColors::FgInteresting
+              : SkinEnums::PaletteColors::FgSelectedInteresting]
+              : QVariant();
         }
 
         case MessageHighlighter::NoHighlighting:

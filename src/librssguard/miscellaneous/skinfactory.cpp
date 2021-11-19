@@ -8,6 +8,8 @@
 #include <QDir>
 #include <QDomDocument>
 #include <QDomElement>
+#include <QMetaEnum>
+#include <QMetaObject>
 #include <QStyleFactory>
 #include <QToolTip>
 
@@ -205,13 +207,15 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       skin.m_baseName = skin_name;
 
       // Obtain color palette.
-      QHash<Skin::PaletteColors, QColor> palette;
+      QHash<SkinEnums::PaletteColors, QColor> palette;
       QDomNodeList colors_of_palette = skin_node.namedItem(QSL("palette")).toElement().elementsByTagName(QSL("color"));
+      const QMetaObject& mo = SkinEnums::staticMetaObject;
+      QMetaEnum enumer = mo.enumerator(mo.indexOfEnumerator(QSL("PaletteColors").toLocal8Bit().constData()));
 
       for (int i = 0; i < colors_of_palette.size(); i++) {
         QDomElement elem_clr = colors_of_palette.item(i).toElement();
-
-        Skin::PaletteColors key = Skin::PaletteColors(elem_clr.attribute(QSL("key")).toInt());
+        QString en_val = elem_clr.attribute(QSL("key"));
+        SkinEnums::PaletteColors key = SkinEnums::PaletteColors(enumer.keyToValue(en_val.toLatin1()));
         QColor value = elem_clr.text();
 
         if (value.isValid()) {
@@ -310,6 +314,6 @@ QList<Skin> SkinFactory::installedSkins() const {
   return skins;
 }
 
-uint qHash(const Skin::PaletteColors& key) {
+uint qHash(const SkinEnums::PaletteColors& key) {
   return uint(key);
 }

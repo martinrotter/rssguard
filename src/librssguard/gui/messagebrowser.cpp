@@ -169,7 +169,7 @@ QString MessageBrowser::prepareHtmlForMessage(const Message& message) {
              "</style></head>"
              "<body>%1</body>"
              "</html>").arg(html,
-                            qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight].name());
+                            qApp->skins()->currentSkin().m_colorPalette[SkinEnums::PaletteColors::FgInteresting].name());
 }
 
 bool MessageBrowser::eventFilter(QObject* watched, QEvent* event) {

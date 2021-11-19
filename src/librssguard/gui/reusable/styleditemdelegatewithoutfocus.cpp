@@ -19,7 +19,7 @@ void StyledItemDelegateWithoutFocus::paint(QPainter* painter,
   if ((item_option.state & QStyle::StateFlag::State_Selected) == QStyle::StateFlag::State_Selected &&
       index.data(Qt::ItemDataRole::ForegroundRole).isValid()) {
     item_option.palette.setColor(QPalette::ColorRole::HighlightedText,
-                                 index.data(Qt::ItemDataRole::ForegroundRole).value<QColor>());
+                                 index.data(HIGHLIGHTED_FOREGROUND_TITLE_ROLE).value<QColor>());
   }
 
   QStyledItemDelegate::paint(painter, item_option, index);

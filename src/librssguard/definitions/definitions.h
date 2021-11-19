@@ -46,6 +46,9 @@
 #define MSG_SCORE_MAX   100.0
 #define MSG_SCORE_MIN   0.0
 
+#define LOWER_TITLE_ROLE                      64
+#define HIGHLIGHTED_FOREGROUND_TITLE_ROLE     128
+
 #define SOUNDS_BUILTIN_DIRECTORY              ":/sounds"
 #define ARGUMENTS_LIST_SEPARATOR              "\n"
 #define IS_IN_ARRAY(offset, array)            ((offset >= 0) && (offset < array.count()))
@@ -57,7 +60,6 @@
 #define SCRIPT_SOURCE_TYPE_REGEXP             "^.+#.*$"
 #define TEXT_TITLE_LIMIT                      30
 #define TEXT_TOOLTIP_LIMIT                    50
-#define LOWER_TITLE_ROLE                      64
 #define RESELECT_MESSAGE_THRESSHOLD           500
 #define ICON_SIZE_SETTINGS                    16
 #define TRAY_ICON_BUBBLE_TIMEOUT              20000

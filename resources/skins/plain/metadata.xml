@@ -10,8 +10,10 @@
 
       Specifically, they are taken from enumeration "PaletteColors".
     -->
-    <color key="1">#00BFFF</color>
-    <color key="2">#FF0000</color>
-    <color key="3">#32CD32</color>
+    <color key="FgInteresting">#3A4EE4</color>
+    <color key="FgSelectedInteresting">#ff66cc</color>
+    <color key="FgError">#4EE43A</color>
+    <color key="FgSelectedError">#ff99ff</color>
+    <color key="Allright">#00ff99</color>
   </palette>
 </skin>

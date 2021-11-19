@@ -53,16 +53,31 @@ QList<Message> Feed::undeletedMessages() const {
 
 QVariant Feed::data(int column, int role) const {
   switch (role) {
-    case Qt::ItemDataRole::ForegroundRole:
+    case HIGHLIGHTED_FOREGROUND_TITLE_ROLE:
       switch (status()) {
         case Status::NewMessages:
-          return qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Highlight];
+          return qApp->skins()->currentSkin().m_colorPalette[SkinEnums::PaletteColors::FgSelectedInteresting];
 
         case Status::NetworkError:
         case Status::ParsingError:
         case Status::AuthError:
         case Status::OtherError:
-          return qApp->skins()->currentSkin().m_colorPalette[Skin::PaletteColors::Error];
+          return qApp->skins()->currentSkin().m_colorPalette[SkinEnums::PaletteColors::FgSelectedError];
+
+        default:
+          return QVariant();
+      }
+
+    case Qt::ItemDataRole::ForegroundRole:
+      switch (status()) {
+        case Status::NewMessages:
+          return qApp->skins()->currentSkin().m_colorPalette[SkinEnums::PaletteColors::FgInteresting];
+
+        case Status::NetworkError:
+        case Status::ParsingError:
+        case Status::AuthError:
+        case Status::OtherError:
+          return qApp->skins()->currentSkin().m_colorPalette[SkinEnums::PaletteColors::FgError];
 
         default:
           return QVariant();

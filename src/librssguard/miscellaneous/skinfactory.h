@@ -10,21 +10,31 @@
 #include <QMetaType>
 #include <QStringList>
 
+class SkinEnums : public QObject {
+  Q_OBJECT
+
+  public:
+    enum class PaletteColors {
+      // Paint foreground of some interesting items (feeds with new articles, etc.).
+      FgInteresting = 1,
+
+      // Paint foreground of some interesting items WHEN SELECTED (feeds with new articles, etc.).
+      FgSelectedInteresting = 2,
+
+      // Paint foreground of some errored items (feeds with error, etc.).
+      FgError = 4,
+
+      // Paint foreground of some errored items WHEN SELECTED (feeds with error, etc.).
+      FgSelectedError = 8,
+
+      // OK-ish color (background of list with test results of article filter).
+      Allright = 16
+    };
+
+    Q_ENUM(PaletteColors)
+};
+
 struct RSSGUARD_DLLSPEC Skin {
-  enum class PaletteColors {
-    // Used to highlight foreground of some interesting articles.
-    Highlight = 1,
-
-    // Foreground color of errorneous entries.
-    Error = 2,
-
-    // OK-ish color.
-    Allright = 3,
-
-    // Foreground color when item is highlighted/selected.
-    HighlightedError = 4
-  };
-
   QString m_baseName;
   QString m_visibleName;
   QString m_author;
@@ -35,10 +45,10 @@ struct RSSGUARD_DLLSPEC Skin {
   QString m_enclosureImageMarkup;
   QString m_layoutMarkup;
   QString m_enclosureMarkup;
-  QHash<Skin::PaletteColors, QColor> m_colorPalette;
+  QHash<SkinEnums::PaletteColors, QColor> m_colorPalette;
 };
 
-uint qHash(const Skin::PaletteColors& key);
+uint qHash(const SkinEnums::PaletteColors& key);
 
 Q_DECLARE_METATYPE(Skin)
 
