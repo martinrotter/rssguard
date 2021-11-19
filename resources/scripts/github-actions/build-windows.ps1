@@ -19,7 +19,7 @@ $AllProtocols = [System.Net.SecurityProtocolType]'Tls11,Tls12'
 $ProgressPreference = 'SilentlyContinue'
 
 # Get and prepare needed dependencies.
-$qt_version = "6.2.1"
+$qt_version = "5.15.2"
 $maria_version = "10.6.5"
 $maria_link = "https://mirror.vpsfree.cz/mariadb/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
