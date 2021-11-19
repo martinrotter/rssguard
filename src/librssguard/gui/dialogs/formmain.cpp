@@ -812,9 +812,7 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionSelectPreviousMessage,
           &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::selectPreviousItem);
   connect(m_ui->m_actionSwitchMessageListOrientation, &QAction::triggered,
-          tabWidget()->feedMessageViewer(), [this]() {
-    tabWidget()->feedMessageViewer()->switchMessageSplitterOrientation(true);
-  });
+          tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchMessageSplitterOrientation);
   connect(m_ui->m_actionShowOnlyUnreadItems, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadFeeds);
   connect(m_ui->m_actionShowTreeBranches, &QAction::toggled,
@@ -906,4 +904,10 @@ void FormMain::reportABug() {
 
 void FormMain::donate() {
   qApp->web()->openUrlInExternalBrowser(QSL(APP_DONATE_URL));
+}
+
+void FormMain::resizeEvent(QResizeEvent* event) {
+  QMainWindow::resizeEvent(event);
+
+  emit windowResized(event->size());
 }

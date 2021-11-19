@@ -89,6 +89,7 @@ int main(int argc, char* argv[]) {
   qApp->showTrayIcon();
   qApp->offerChanges();
   qApp->showPolls();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->respondToMainWindowResizes();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
   qApp->parseCmdArgumentsFromOtherInstance(qApp->cmdParser()->positionalArguments().join(QSL(ARGUMENTS_LIST_SEPARATOR)));
 

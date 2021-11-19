@@ -91,22 +91,6 @@ void FeedMessageViewer::saveSize() {
   // Store offsets of splitters.
   settings->setValue(GROUP(GUI), GUI::SplitterFeeds, toVariant(m_feedSplitter->sizes()));
 
-  // We need to display message previewer so that it "has" some dimensions
-  // so that they can be saved.
-  m_messagesBrowser->show();
-  qApp->processEvents();
-
-  if (!settings->value(GROUP(GUI), SETTING(GUI::SplitterMessagesIsVertical)).toBool()) {
-    settings->setValue(GROUP(GUI),
-                       GUI::SplitterMessagesHorizontal,
-                       toVariant(m_messageSplitter->sizes()));
-  }
-  else {
-    settings->setValue(GROUP(GUI),
-                       GUI::SplitterMessagesVertical,
-                       toVariant(m_messageSplitter->sizes()));
-  }
-
   settings->setValue(GROUP(GUI), GUI::MessageViewState, QString(m_messagesView->saveHeaderState().toBase64()));
 
   // Store "visibility" of toolbars and list headers.
@@ -126,7 +110,7 @@ void FeedMessageViewer::loadSize() {
                                                             SETTING(GUI::SplitterMessagesVertical))));
   }
   else {
-    switchMessageSplitterOrientation(false);
+    switchMessageSplitterOrientation();
   }
 
   QString settings_msg_header = settings->value(GROUP(GUI), SETTING(GUI::MessageViewState)).toString();
@@ -150,42 +134,29 @@ bool FeedMessageViewer::areListHeadersEnabled() const {
   return m_listHeadersEnabled;
 }
 
-void FeedMessageViewer::switchMessageSplitterOrientation(bool save_settings) {
-  bool preview_visible = m_messagesBrowser->isVisible();
-
-  if (!preview_visible && save_settings) {
-    // Must be visible to get correct dimensions to be saved.
-    m_messagesBrowser->show();
-    qApp->processEvents();
-  }
-
+void FeedMessageViewer::onSplitterResized() {
   if (m_messageSplitter->orientation() == Qt::Orientation::Vertical) {
-    if (save_settings) {
-      qApp->settings()->setValue(GROUP(GUI),
-                                 GUI::SplitterMessagesVertical,
-                                 toVariant(m_messageSplitter->sizes()));
-    }
+    qApp->settings()->setValue(GROUP(GUI),
+                               GUI::SplitterMessagesVertical,
+                               toVariant(m_messageSplitter->sizes()));
+  }
+  else {
+    qApp->settings()->setValue(GROUP(GUI),
+                               GUI::SplitterMessagesHorizontal,
+                               toVariant(m_messageSplitter->sizes()));
+  }
+}
 
+void FeedMessageViewer::switchMessageSplitterOrientation() {
+  if (m_messageSplitter->orientation() == Qt::Orientation::Vertical) {
     m_messageSplitter->setOrientation(Qt::Orientation::Horizontal);
     m_messageSplitter->setSizes(toList<int>(qApp->settings()->value(GROUP(GUI),
                                                                     SETTING(GUI::SplitterMessagesHorizontal))));
   }
   else {
-    if (save_settings) {
-      qApp->settings()->setValue(GROUP(GUI),
-                                 GUI::SplitterMessagesHorizontal,
-                                 toVariant(m_messageSplitter->sizes()));
-    }
-
     m_messageSplitter->setOrientation(Qt::Orientation::Vertical);
     m_messageSplitter->setSizes(toList<int>(qApp->settings()->value(GROUP(GUI),
                                                                     SETTING(GUI::SplitterMessagesVertical))));
-  }
-
-  if (!preview_visible && save_settings) {
-    // Must be visible to get correct dimensions to be saved.
-    m_messagesBrowser->hide();
-    qApp->processEvents();
   }
 
   qApp->settings()->setValue(GROUP(GUI),
@@ -260,6 +231,10 @@ void FeedMessageViewer::alternateRowColorsInLists() {
   qApp->settings()->setValue(GROUP(GUI), GUI::AlternateRowColorsInLists, origin->isChecked());
 }
 
+void FeedMessageViewer::respondToMainWindowResizes() {
+  connect(qApp->mainForm(), &FormMain::windowResized, this, &FeedMessageViewer::onSplitterResized);
+}
+
 void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::EnableMessagePreview)).toBool()) {
     m_messagesBrowser->loadMessage(message, root);
@@ -274,6 +249,8 @@ void FeedMessageViewer::createConnections() {
   connect(m_toolBarMessages, &MessagesToolBar::messageSearchPatternChanged, m_messagesView, &MessagesView::searchMessages);
   connect(m_toolBarFeeds, &FeedsToolBar::feedsFilterPatternChanged, m_feedsView, &FeedsView::filterItems);
   connect(m_toolBarMessages, &MessagesToolBar::messageFilterChanged, m_messagesView, &MessagesView::filterMessages);
+
+  connect(m_messageSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onSplitterResized);
 
   connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &MessagePreviewer::clear);
   connect(m_messagesBrowser, &MessagePreviewer::markMessageRead, m_messagesView->sourceModel(), &MessagesModel::setMessageReadById);

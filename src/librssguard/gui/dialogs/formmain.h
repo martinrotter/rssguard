@@ -66,9 +66,13 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     void donate();
 
   protected:
+    virtual void resizeEvent(QResizeEvent* event);
     virtual void changeEvent(QEvent* event);
     virtual void closeEvent(QCloseEvent* event);
     virtual void hideEvent(QHideEvent* event);
+
+  signals:
+    void windowResized(const QSize& new_size);
 
   private:
     void prepareMenus();
