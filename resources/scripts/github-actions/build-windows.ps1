@@ -40,7 +40,13 @@ $qt_path = "$old_pwd\qt"
 pip3 install -U pip
 pip3 install -I aqtinstall
 
-aqt install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine qtmultimedia qt5compat qtwebchannel qtpositioning
+if ($qt_version.StartsWith("6")) {
+  aqt install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine qtmultimedia qt5compat qtwebchannel qtpositioning
+}
+else {
+  aqt install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine
+}
+
 aqt install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
 
 $qt_qmake = "$qt_path\$qt_version\msvc2019_64\bin\qmake.exe"
