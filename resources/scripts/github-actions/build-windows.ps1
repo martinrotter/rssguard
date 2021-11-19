@@ -61,8 +61,16 @@ $maria_path = "$old_pwd\mariadb-$maria_version-winx64"
 $qt_sqldrivers_path = "$qt_path\$qt_version\Src\qtbase\src\plugins\sqldrivers"
 
 cd "$qt_sqldrivers_path"
-& $cmake_path -G Ninja -DCMAKE_BUILD_TYPE="Release" -DMySQL_INCLUDE_DIR="$maria_path\include\mysql" -DMySQL_LIBRARY="$maria_path\lib\libmariadb.lib"
-& $cmake_path --build .
+
+if ($qt_version.StartsWith("6")) {
+  & $cmake_path -G Ninja -DCMAKE_BUILD_TYPE="Release" -DMySQL_INCLUDE_DIR="$maria_path\include\mysql" -DMySQL_LIBRARY="$maria_path\lib\libmariadb.lib"
+  & $cmake_path --build .
+}
+else {
+  & $qt_qmake -- MYSQL_INCDIR="$maria_path\include\mysql" MYSQL_LIBDIR="$maria_path\lib"
+  nmake.exe sub-mysql
+}
+
 cd "$old_pwd"
 
 # Build application.
