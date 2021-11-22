@@ -1,0 +1,14 @@
+QPlainTextEdit:focus {
+    border: 1px solid palette(highlight);
+}
+
+QSplitter::handle {
+  background: palette(dark);
+}
+
+/*
+ * For `qt5-styleplugins`: motif, cde, gtk2, etc.
+ */
+QStatusBar::item {
+    border: none;
+}

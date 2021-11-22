@@ -81,13 +81,20 @@
     <file>skins/vergilius/metadata.xml</file>
     <file>skins/vergilius/qt_style.qss</file>
 
-    <file>skins/nudus/html_adblocked.html</file>
-    <file>skins/nudus/html_enclosure_every.html</file>
-    <file>skins/nudus/html_enclosure_image.html</file>
-    <file>skins/nudus/html_single_message.html</file>
-    <file>skins/nudus/html_wrapper.html</file>
-    <file>skins/nudus/metadata.xml</file>
-    <file>skins/nudus/qt_style.qss</file>
+    <file>skins/nudus-base/html_adblocked.html</file>
+    <file>skins/nudus-base/html_enclosure_every.html</file>
+    <file>skins/nudus-base/html_enclosure_image.html</file>
+    <file>skins/nudus-base/html_single_message.html</file>
+    <file>skins/nudus-base/html_wrapper.html</file>
+
+    <file>skins/nudus-dark/html_wrapper.html</file>
+    <file>skins/nudus-dark/html_style.css</file>
+    <file>skins/nudus-dark/metadata.xml</file>
+    <file>skins/nudus-dark/qt_style.qss</file>
+
+    <file>skins/nudus-light/html_style.css</file>
+    <file>skins/nudus-light/metadata.xml</file>
+    <file>skins/nudus-light/qt_style.qss</file>
 
     <file>initial_feeds/feeds-en.opml</file>
 

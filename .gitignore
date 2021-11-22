@@ -25,3 +25,4 @@
 *.user*
 localization/*qm
 *.TMP
+resources/skins/*/*.map
