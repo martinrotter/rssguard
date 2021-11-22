@@ -351,9 +351,12 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         if (idx.column() == MSG_DB_SCORE_INDEX) {
           return data(idx, Qt::ItemDataRole::EditRole);
         }
-        else {
+        else if (idx.column() == MSG_DB_URL_INDEX) {
           return TextFactory::shorten(data(idx, Qt::ItemDataRole::DisplayRole).toString(),
                                       TEXT_TOOLTIP_LIMIT);
+        }
+        else {
+          return data(idx, Qt::ItemDataRole::DisplayRole);
         }
       }
     }

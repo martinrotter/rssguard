@@ -288,7 +288,7 @@ void TabWidget::gotoPreviousTab() {
 }
 
 void TabWidget::indentTabText(int index) {
-#if defined(Q_OS_MACOSOS)
+#if defined(Q_OS_MACOS)
   if (tabBar()->tabType(index) != TabBar::FeedReader && !tabIcon(index).isNull()) {
     // We have closable tab with some icon, fix the title.
     const QString text = tabText(index);
@@ -311,7 +311,7 @@ void TabWidget::removeTab(int index, bool clear_from_memory) {
 }
 
 int TabWidget::addTab(TabContent* widget, const QIcon& icon, const QString& label, TabBar::TabType type) {
-  const int index = QTabWidget::addTab(widget, icon, label);
+  const int index = QTabWidget::addTab(widget, icon, TextFactory::shorten(label));
 
   tabBar()->setTabType(index, type);
   indentTabText(index);
@@ -319,7 +319,7 @@ int TabWidget::addTab(TabContent* widget, const QIcon& icon, const QString& labe
 }
 
 int TabWidget::addTab(TabContent* widget, const QString& label, TabBar::TabType type) {
-  const int index = QTabWidget::addTab(widget, label);
+  const int index = QTabWidget::addTab(widget, TextFactory::shorten(label));
 
   tabBar()->setTabType(index, type);
   indentTabText(index);
@@ -349,7 +349,7 @@ void TabWidget::changeIcon(int index, const QIcon& new_icon) {
 
 void TabWidget::changeTitle(int index, const QString& new_title) {
   setTabText(index, TextFactory::shorten(new_title));
-  setTabToolTip(index, new_title);
+  setTabToolTip(index, TextFactory::shorten(new_title));
   indentTabText(index);
 }
 
