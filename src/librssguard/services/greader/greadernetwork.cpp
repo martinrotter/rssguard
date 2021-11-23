@@ -144,7 +144,6 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
   m_prefetchedStatus = Feed::Status::Normal;
 
   try {
-
     double perc_of_fetching = (feeds.size() * 1.0) / root->getSubTreeFeeds().size();
 
     m_performGlobalFetching = perc_of_fetching > GREADER_GLOBAL_UPDATE_THRES;
@@ -238,6 +237,24 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
   }
   catch (const FeedFetchException& fex) {
     m_prefetchedStatus = fex.feedStatus();
+
+    qCriticalNN << LOGSEC_CORE
+                << "Failed to fetch item IDs for common stream:"
+                << QUOTE_W_SPACE_DOT(fex.message());
+  }
+  catch (const NetworkException& nex) {
+    m_prefetchedStatus = Feed::Status::NetworkError;
+
+    qCriticalNN << LOGSEC_CORE
+                << "Failed to fetch item IDs for common stream:"
+                << QUOTE_W_SPACE_DOT(nex.message());
+  }
+  catch (const ApplicationException& aex) {
+    m_prefetchedStatus = Feed::Status::OtherError;
+
+    qCriticalNN << LOGSEC_CORE
+                << "Failed to fetch item IDs for common stream:"
+                << QUOTE_W_SPACE_DOT(aex.message());
   }
 }
 
@@ -265,6 +282,40 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
                                       ? QStringList()
                                       : itemIds(stream_id, false, proxy, -1, m_newerThanFilter);
     QStringList remote_unread_ids_list = itemIds(stream_id, true, proxy, -1, m_newerThanFilter);
+
+    try {
+      remote_all_ids_list = m_downloadOnlyUnreadMessages
+                                      ? QStringList()
+                                      : itemIds(stream_id, false, proxy, -1, m_newerThanFilter);
+      remote_unread_ids_list = itemIds(stream_id, true, proxy, -1, m_newerThanFilter);
+    }
+    catch (const FeedFetchException& fex) {
+      error = fex.feedStatus();
+
+      qCriticalNN << LOGSEC_CORE
+                  << "Failed to fetch item IDs for specific stream:"
+                  << QUOTE_W_SPACE_DOT(fex.message());
+
+      return msgs;
+    }
+    catch (const NetworkException& nex) {
+      error = Feed::Status::NetworkError;
+
+      qCriticalNN << LOGSEC_CORE
+                  << "Failed to fetch item IDs for specific stream:"
+                  << QUOTE_W_SPACE_DOT(nex.message());
+
+      return msgs;
+    }
+    catch (const ApplicationException& aex) {
+      error = Feed::Status::OtherError;
+
+      qCriticalNN << LOGSEC_CORE
+                  << "Failed to fetch item IDs for specific stream:"
+                  << QUOTE_W_SPACE_DOT(aex.message());
+
+      return msgs;
+    }
 
     // Convert item IDs to long form.
     for (int i = 0; i < remote_all_ids_list.size(); i++) {
@@ -353,12 +404,11 @@ QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Import
 
 QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy,
                                     int max_count, QDate newer_than) {
-  QString continuation;
-
   if (!ensureLogin(proxy)) {
     throw FeedFetchException(Feed::Status::AuthError, tr("login failed"));
   }
 
+  QString continuation;
   QStringList ids;
 
   do {

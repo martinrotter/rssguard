@@ -16,7 +16,7 @@ WidgetWithStatus::WidgetWithStatus(QWidget* parent)
   m_iconInformation = qApp->icons()->fromTheme(QSL("dialog-information"));
   m_iconWarning = qApp->icons()->fromTheme(QSL("dialog-warning"));
   m_iconError = qApp->icons()->fromTheme(QSL("dialog-error"));
-  m_iconOk = qApp->icons()->fromTheme(QSL("dialog-yes"));
+  m_iconOk = qApp->icons()->fromTheme(QSL("dialog-yes"), QSL("dialog-ok"));
   m_iconQuestion = qApp->icons()->fromTheme(QSL("dialog-question"));
 
   // Set layout properties.

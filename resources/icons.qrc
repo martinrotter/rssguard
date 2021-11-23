@@ -11,6 +11,7 @@
     <file>./graphics/Breeze/actions/32/call-start.svg</file>
     <file>./graphics/Breeze/status/64/dialog-error.svg</file>
     <file>./graphics/Breeze/status/64/dialog-information.svg</file>
+    <file>./graphics/Breeze/actions/32/dialog-ok.svg</file>
     <file>./graphics/Breeze/status/64/dialog-password.svg</file>
     <file>./graphics/Breeze/status/64/dialog-question.svg</file>
     <file>./graphics/Breeze/status/64/dialog-warning.svg</file>
@@ -75,6 +76,7 @@
     <file>./graphics/Breeze Dark/actions/32/call-start.svg</file>
     <file>./graphics/Breeze Dark/status/64/dialog-error.svg</file>
     <file>./graphics/Breeze Dark/status/64/dialog-information.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/dialog-ok.svg</file>
     <file>./graphics/Breeze Dark/status/64/dialog-password.svg</file>
     <file>./graphics/Breeze Dark/status/64/dialog-question.svg</file>
     <file>./graphics/Breeze Dark/status/64/dialog-warning.svg</file>
@@ -138,6 +140,7 @@
     <file>./graphics/Faenza/status/64/dialog-error.png</file>
     <file>./graphics/Faenza/status/64/dialog-information.png</file>
     <file>./graphics/Faenza/actions/64/dialog-no.png</file>
+    <file>./graphics/Faenza/actions/64/dialog-ok.png</file>
     <file>./graphics/Faenza/status/64/dialog-password.png</file>
     <file>./graphics/Faenza/status/64/dialog-question.png</file>
     <file>./graphics/Faenza/status/64/dialog-warning.png</file>
@@ -206,6 +209,7 @@
     <file>./graphics/Numix/22/status/dialog-error.svg</file>
     <file>./graphics/Numix/22/status/dialog-information.svg</file>
     <file>./graphics/Numix/22/actions/dialog-no.svg</file>
+    <file>./graphics/Numix/22/actions/dialog-ok.svg</file>
     <file>./graphics/Numix/22/status/dialog-password.svg</file>
     <file>./graphics/Numix/22/status/dialog-question.svg</file>
     <file>./graphics/Numix/22/status/dialog-warning.svg</file>
