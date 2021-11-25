@@ -29,7 +29,13 @@ QColor ColorToolButton::color() const {
 }
 
 void ColorToolButton::setColor(const QColor& color) {
+  bool changed = m_color != color;
+
   m_color = color;
+
+  if (changed) {
+    emit colorChanged(m_color);
+  }
 
   repaint();
 }

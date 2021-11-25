@@ -39,11 +39,11 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
       if (m_filteringDecisions.contains(index.row())) {
         switch (m_filteringDecisions.value(index.row())) {
           case MessageObject::FilteringAction::Accept:
-            return qApp->skins()->currentSkin().m_colorPalette[SkinEnums::PaletteColors::Allright];
+            return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::Allright);
 
           case MessageObject::FilteringAction::Ignore:
           case MessageObject::FilteringAction::Purge:
-            return qApp->skins()->currentSkin().m_colorPalette[SkinEnums::PaletteColors::FgError];
+            return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgError);
 
           default:
             break;

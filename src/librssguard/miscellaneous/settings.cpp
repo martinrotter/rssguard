@@ -134,6 +134,12 @@ NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef = QFont(QFont().fam
 
 DKEY Messages::ListFont = "list_font";
 
+// Custom skin colors.
+DKEY CustomSkinColors::ID = "custom_skin_colors";
+
+DKEY CustomSkinColors::Enabled = "enabled";
+DVALUE(bool) CustomSkinColors::EnabledDef = false;
+
 // GUI.
 DKEY GUI::ID = "gui";
 

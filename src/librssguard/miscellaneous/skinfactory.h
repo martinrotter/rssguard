@@ -9,6 +9,7 @@
 #include <QHash>
 #include <QMetaType>
 #include <QStringList>
+#include <QVariant>
 
 class SkinEnums : public QObject {
   Q_OBJECT
@@ -46,6 +47,8 @@ struct RSSGUARD_DLLSPEC Skin {
   QString m_layoutMarkup;
   QString m_enclosureMarkup;
   QHash<SkinEnums::PaletteColors, QColor> m_colorPalette;
+
+  QVariant colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors = false) const;
 };
 
 uint qHash(const SkinEnums::PaletteColors& key);

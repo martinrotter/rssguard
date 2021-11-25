@@ -323,7 +323,8 @@ void WebViewer::onLinkHovered(const QString& url) {
                        { url, url, QSystemTrayIcon::MessageIcon::NoIcon },
                        { false, false, true });
 
-  QToolTip::showText(QCursor::pos(), url, {}, {}, 6000);
+  // NOTE: Disable for now, not needed.
+  //QToolTip::showText(QCursor::pos(), url, {}, {}, 6000);
 }
 
 void WebViewer::openUrlWithExternalTool(ExternalTool tool, const QString& target_url) {

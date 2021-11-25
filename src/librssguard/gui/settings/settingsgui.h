@@ -23,6 +23,9 @@ class SettingsGui : public SettingsPanel {
     // Does check of controls before dialog can be submitted.
     bool eventFilter(QObject* obj, QEvent* e);
 
+  private slots:
+    void resetCustomSkinColor();
+
   private:
     Ui::SettingsGui* m_ui;
 };

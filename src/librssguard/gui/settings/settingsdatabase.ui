@@ -271,7 +271,6 @@ Authors of this application are NOT responsible for lost data.</string>
   <zorder>m_stackedDatabaseDriver</zorder>
   <zorder>m_checkUseTransactions</zorder>
   <zorder>m_lblDataStorageWarning</zorder>
-  <zorder>verticalSpacer</zorder>
  </widget>
  <customwidgets>
   <customwidget>

@@ -163,13 +163,17 @@ QString MessageBrowser::prepareHtmlForMessage(const Message& message) {
          .replace(QL1C('\r'), QL1C('\n'))
          .remove(QL1C('\n'));*/
 
+  // TODO: If FgInteresting not defined by the skin
+  // use current pallette/Highlight color perhaps.E
   return QSL("<html>"
              "<head><style>"
              "a { color: %2; }"
              "</style></head>"
              "<body>%1</body>"
              "</html>").arg(html,
-                            qApp->skins()->currentSkin().m_colorPalette[SkinEnums::PaletteColors::FgInteresting].name());
+                            qApp->skins()->currentSkin()
+                            .colorForModel(SkinEnums::PaletteColors::FgInteresting)
+                            .value<QColor>().name());
 }
 
 bool MessageBrowser::eventFilter(QObject* watched, QEvent* event) {

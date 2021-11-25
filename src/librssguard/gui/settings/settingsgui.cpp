@@ -5,6 +5,8 @@
 #include "core/feedsmodel.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
+#include "gui/reusable/colortoolbutton.h"
+#include "gui/reusable/plaintoolbutton.h"
 #include "gui/systemtrayicon.h"
 #include "gui/tabwidget.h"
 #include "gui/toolbars/feedstoolbar.h"
@@ -15,6 +17,8 @@
 #include "miscellaneous/settings.h"
 
 #include <QDropEvent>
+#include <QMetaEnum>
+#include <QMetaObject>
 #include <QStyleFactory>
 
 SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent), m_ui(new Ui::SettingsGui) {
@@ -30,8 +34,12 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
                                      << /*: Version column of skin list. */ tr("Version")
                                      << tr("Author"));
 
+  m_ui->m_helpCustomSkinColors->setHelpText(tr("You can override some colors defined by your skin here. "
+                                               "Some colors are used dynamically throughout the application."), false);
+
   // Setup skins.
   m_ui->m_treeSkins->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
+
   m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
 
@@ -64,6 +72,8 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   connect(m_ui->m_cmbStyles, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_cmbSelectToolBar, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), m_ui->m_stackedToolbars,
           &QStackedWidget::setCurrentIndex);
+  connect(m_ui->m_gbCustomSkinColors, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_gbCustomSkinColors, &QGroupBox::toggled, this, &SettingsGui::requireRestart);
 }
 
 SettingsGui::~SettingsGui() {
@@ -198,11 +208,73 @@ void SettingsGui::loadSettings() {
   m_ui->m_editorFeedsToolbar->loadFromToolBar(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsToolBar());
   m_ui->m_editorMessagesToolbar->loadFromToolBar(qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesToolBar());
   m_ui->m_editorStatusbar->loadFromToolBar(qApp->mainForm()->statusBar());
+
+  // Load custom colors.
+  m_ui->m_gbCustomSkinColors->setChecked(settings()->value(GROUP(CustomSkinColors),
+                                                           SETTING(CustomSkinColors::Enabled)).toBool());
+
+  const QMetaObject& mo = SkinEnums::staticMetaObject;
+  QMetaEnum enumer = mo.enumerator(mo.indexOfEnumerator(QSL("PaletteColors").toLocal8Bit().constData()));
+
+  for (int i = 0, row = 0; i < enumer.keyCount(); i++, row++) {
+    SkinEnums::PaletteColors pal = SkinEnums::PaletteColors(enumer.value(i));
+
+    auto* clr_btn = new ColorToolButton(this);
+    auto* rst_btn = new PlainToolButton(this);
+
+    rst_btn->setToolTip(tr("Fetch color from activated skin"));
+    rst_btn->setIcon(qApp->icons()->fromTheme(QSL("edit-reset")));
+
+    QColor clr = settings()->value(GROUP(CustomSkinColors), enumer.key(i)).toString();
+
+    if (!clr.isValid()) {
+      clr = qApp->skins()->currentSkin().colorForModel(pal).value<QColor>();
+    }
+
+    rst_btn->setObjectName(QString::number(enumer.value(i)));
+
+    connect(rst_btn, &PlainToolButton::clicked, this, &SettingsGui::resetCustomSkinColor);
+    connect(clr_btn, &ColorToolButton::colorChanged, this, &SettingsGui::dirtifySettings);
+    connect(clr_btn, &ColorToolButton::colorChanged, this, &SettingsGui::requireRestart);
+
+    clr_btn->setObjectName(QString::number(enumer.value(i)));
+    clr_btn->setColor(clr);
+
+    auto* lay = new QHBoxLayout(this);
+
+    lay->addWidget(clr_btn);
+    lay->addWidget(rst_btn);
+
+    m_ui->m_layoutCustomColors->setWidget(row, QFormLayout::ItemRole::LabelRole, new QLabel(enumer.key(i), this));
+    m_ui->m_layoutCustomColors->setLayout(row, QFormLayout::ItemRole::FieldRole, lay);
+
+  }
+
   onEndLoadSettings();
+}
+
+void SettingsGui::resetCustomSkinColor() {
+  auto* clr_btn = m_ui->m_gbCustomSkinColors->findChild<ColorToolButton*>(sender()->objectName());
+  SkinEnums::PaletteColors pal = SkinEnums::PaletteColors(sender()->objectName().toInt());
+
+  clr_btn->setColor(qApp->skins()->currentSkin().colorForModel(pal, true).value<QColor>());
 }
 
 void SettingsGui::saveSettings() {
   onBeginSaveSettings();
+
+  // Save custom skin colors.
+  settings()->setValue(GROUP(CustomSkinColors), CustomSkinColors::Enabled, m_ui->m_gbCustomSkinColors->isChecked());
+
+  const QMetaObject& mo = SkinEnums::staticMetaObject;
+  QMetaEnum enumer = mo.enumerator(mo.indexOfEnumerator(QSL("PaletteColors").toLocal8Bit().constData()));
+  auto children = m_ui->m_gbCustomSkinColors->findChildren<ColorToolButton*>();
+
+  for (const ColorToolButton* clr : children) {
+    settings()->setValue(GROUP(CustomSkinColors),
+                         enumer.valueToKey(clr->objectName().toInt()),
+                         clr->color().name());
+  }
 
   // Save toolbar.
   settings()->setValue(GROUP(GUI), GUI::ToolbarStyle,

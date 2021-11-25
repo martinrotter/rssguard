@@ -10,6 +10,7 @@
 #include <QDomElement>
 #include <QMetaEnum>
 #include <QMetaObject>
+#include <QProcessEnvironment>
 #include <QStyleFactory>
 #include <QToolTip>
 
@@ -50,8 +51,17 @@ bool SkinFactory::isStyleGoodForDarkVariant(const QString& style_name) const {
 
 void SkinFactory::loadSkinFromData(const Skin& skin) {
   QString style_name = qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString();
+  auto env = QProcessEnvironment::systemEnvironment();
+  QString over_style = env.value(QSL("QT_STYLE_OVERRIDE"));
 
-  qApp->setStyle(style_name);
+  if (over_style.isEmpty()) {
+    qApp->setStyle(style_name);
+
+    qDebugNN << LOGSEC_GUI << "Setting style:" << QUOTE_W_SPACE_DOT(style_name);
+  }
+  else {
+    qDebugNN << LOGSEC_GUI << "Respecting forced style:" << QUOTE_W_SPACE_DOT(over_style);
+  }
 
   if (isStyleGoodForDarkVariant(style_name) &&
       qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForceDarkFusion)).toBool()) {
@@ -316,4 +326,20 @@ QList<Skin> SkinFactory::installedSkins() const {
 
 uint qHash(const SkinEnums::PaletteColors& key) {
   return uint(key);
+}
+
+QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors) const {
+  if (!ignore_custom_colors) {
+    const QMetaObject& mo = SkinEnums::staticMetaObject;
+    QMetaEnum enumer = mo.enumerator(mo.indexOfEnumerator(QSL("PaletteColors").toLocal8Bit().constData()));
+    QColor custom_clr = qApp->settings()->value(GROUP(CustomSkinColors), enumer.valueToKey(int(type))).toString();
+
+    if (custom_clr.isValid()) {
+      return custom_clr;
+    }
+  }
+
+  return m_colorPalette.contains(type)
+      ? m_colorPalette[type]
+      : QVariant();
 }

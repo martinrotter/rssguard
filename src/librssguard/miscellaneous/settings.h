@@ -152,6 +152,16 @@ namespace Messages {
   KEY ListFont;
 }
 
+// Custom skin colors.
+namespace CustomSkinColors {
+  KEY ID;
+
+  KEY Enabled;
+  VALUE(bool) EnabledDef;
+
+  KEY CustomSkinColors;
+}
+
 // GUI.
 namespace GUI {
   KEY ID;
