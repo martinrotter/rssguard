@@ -330,12 +330,17 @@ uint qHash(const SkinEnums::PaletteColors& key) {
 
 QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors) const {
   if (!ignore_custom_colors) {
-    const QMetaObject& mo = SkinEnums::staticMetaObject;
-    QMetaEnum enumer = mo.enumerator(mo.indexOfEnumerator(QSL("PaletteColors").toLocal8Bit().constData()));
-    QColor custom_clr = qApp->settings()->value(GROUP(CustomSkinColors), enumer.valueToKey(int(type))).toString();
+    bool enabled = qApp->settings()->value(GROUP(CustomSkinColors),
+                                           SETTING(CustomSkinColors::Enabled)).toBool();
 
-    if (custom_clr.isValid()) {
-      return custom_clr;
+    if (enabled) {
+      const QMetaObject& mo = SkinEnums::staticMetaObject;
+      QMetaEnum enumer = mo.enumerator(mo.indexOfEnumerator(QSL("PaletteColors").toLocal8Bit().constData()));
+      QColor custom_clr = qApp->settings()->value(GROUP(CustomSkinColors), enumer.valueToKey(int(type))).toString();
+
+      if (custom_clr.isValid()) {
+        return custom_clr;
+      }
     }
   }
 
