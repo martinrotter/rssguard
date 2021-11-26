@@ -348,3 +348,25 @@ QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_c
       ? m_colorPalette[type]
       : QVariant();
 }
+
+QString SkinEnums::palleteColorText(PaletteColors col) {
+  switch (col) {
+    case SkinEnums::PaletteColors::FgInteresting:
+      return QObject::tr("interesting stuff");
+
+    case SkinEnums::PaletteColors::FgSelectedInteresting:
+      return QObject::tr("interesting stuff (highlighted)");;
+
+    case SkinEnums::PaletteColors::FgError:
+      return QObject::tr("errored items");
+
+    case SkinEnums::PaletteColors::FgSelectedError:
+      return QObject::tr("errored items (highlighted)");
+
+    case SkinEnums::PaletteColors::Allright:
+      return QObject::tr("OK-ish color");
+
+    default:
+      return {};
+  }
+}

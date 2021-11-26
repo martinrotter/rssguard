@@ -243,8 +243,14 @@ void SettingsGui::loadSettings() {
     lay->addWidget(clr_btn);
     lay->addWidget(rst_btn);
 
-    m_ui->m_layoutCustomColors->setWidget(row, QFormLayout::ItemRole::LabelRole, new QLabel(enumer.key(i), this));
-    m_ui->m_layoutCustomColors->setLayout(row, QFormLayout::ItemRole::FieldRole, lay);
+    m_ui->m_layoutCustomColors->setWidget(row,
+                                          QFormLayout::ItemRole::LabelRole,
+                                          new QLabel(
+                                            TextFactory::capitalizeFirstLetter(SkinEnums::palleteColorText(SkinEnums::PaletteColors(enumer.value(i)))),
+                                            this));
+    m_ui->m_layoutCustomColors->setLayout(row,
+                                          QFormLayout::ItemRole::FieldRole,
+                                          lay);
 
   }
 

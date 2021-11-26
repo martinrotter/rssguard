@@ -151,6 +151,15 @@ QString TextFactory::newline() {
 #endif
 }
 
+QString TextFactory::capitalizeFirstLetter(const QString& sts) {
+  if (sts.isEmpty()) {
+    return sts;
+  }
+  else {
+    return sts[0].toUpper() + sts.mid(1);
+  }
+}
+
 QString TextFactory::shorten(const QString& input, int text_length_limit) {
   if (input.size() > text_length_limit) {
     return input.left(text_length_limit - ELLIPSIS_LENGTH) + QString(ELLIPSIS_LENGTH, QL1C('.'));

@@ -32,6 +32,8 @@ class SkinEnums : public QObject {
       Allright = 16
     };
 
+    static QString palleteColorText(PaletteColors col);
+
     Q_ENUM(PaletteColors)
 };
 
