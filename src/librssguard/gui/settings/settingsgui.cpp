@@ -73,7 +73,6 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   connect(m_ui->m_cmbSelectToolBar, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), m_ui->m_stackedToolbars,
           &QStackedWidget::setCurrentIndex);
   connect(m_ui->m_gbCustomSkinColors, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
-  connect(m_ui->m_gbCustomSkinColors, &QGroupBox::toggled, this, &SettingsGui::requireRestart);
 }
 
 SettingsGui::~SettingsGui() {
@@ -235,7 +234,6 @@ void SettingsGui::loadSettings() {
 
     connect(rst_btn, &PlainToolButton::clicked, this, &SettingsGui::resetCustomSkinColor);
     connect(clr_btn, &ColorToolButton::colorChanged, this, &SettingsGui::dirtifySettings);
-    connect(clr_btn, &ColorToolButton::colorChanged, this, &SettingsGui::requireRestart);
 
     clr_btn->setObjectName(QString::number(enumer.value(i)));
     clr_btn->setColor(clr);
@@ -346,10 +344,16 @@ void SettingsGui::saveSettings() {
   settings()->setValue(GROUP(GUI), GUI::TabCloseDoubleClick, m_ui->m_checkCloseTabsDoubleClick->isChecked());
   settings()->setValue(GROUP(GUI), GUI::TabNewDoubleClick, m_ui->m_checkNewTabDoubleClick->isChecked());
   settings()->setValue(GROUP(GUI), GUI::HideTabBarIfOnlyOneTab, m_ui->m_checkHideTabBarIfOneTabVisible->isChecked());
+
   m_ui->m_editorFeedsToolbar->saveToolBar();
   m_ui->m_editorMessagesToolbar->saveToolBar();
   m_ui->m_editorStatusbar->saveToolBar();
+
   qApp->mainForm()->tabWidget()->checkTabBarVisibility();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
+
+  qApp->feedReader()->feedsModel()->reloadWholeLayout();
+  qApp->feedReader()->messagesModel()->reloadWholeLayout();
+
   onEndSaveSettings();
 }
