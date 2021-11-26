@@ -147,19 +147,19 @@ Erro: %1</translation>
     </message>
     <message>
         <source>RSS Guard has Discord server!</source>
-        <translation type="unfinished"/>
+        <translation>O RSS Guard possui servidor no Discord!</translation>
     </message>
     <message>
         <source>You can visit it now! Click me!</source>
-        <translation type="unfinished"/>
+        <translation>Você pode acessá-lo agora! Clique aqui!</translation>
     </message>
     <message>
         <source>Go to Discord!</source>
-        <translation type="unfinished"/>
+        <translation>Ir para Discord!</translation>
     </message>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"/>
+        <translation>Bem-vindo</translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -173,7 +173,7 @@ versão, clicando nesta notificação popup.</translation>
     </message>
     <message>
         <source>Already running</source>
-        <translation type="unfinished"/>
+        <translation>Já está em execução</translation>
     </message>
 </context>
 <context>
@@ -315,7 +315,7 @@ versão, clicando nesta notificação popup.</translation>
     </message>
     <message>
         <source>Not supported by account</source>
-        <translation type="unfinished"/>
+        <translation>Não suportado pela conta</translation>
     </message>
 </context>
 <context>
@@ -814,7 +814,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Not supported by account</source>
-        <translation type="unfinished"/>
+        <translation>Não suportado pela conta</translation>
     </message>
 </context>
 <context>
@@ -905,7 +905,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>GNU LGPL License (applies to Breeze source code)</source>
-        <translation type="unfinished"/>
+        <translation>Licença GNU LGPL (aplica-se ao código fonte do Breeze)</translation>
     </message>
 </context>
 <context>
@@ -1339,7 +1339,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Cannot save feed properties</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível salvar as propriedades do feed</translation>
     </message>
 </context>
 <context>
@@ -1475,14 +1475,6 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <source>Deletes all messages from all items.</source>
         <translation>Exclui todas as mensagens de todos os itens.</translation>
-    </message>
-    <message>
-        <source>Select &amp;next item</source>
-        <translation>Selecionar &amp;próximo item</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous item</source>
-        <translation>Selecionar item &amp;anterior</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
@@ -1790,14 +1782,22 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Article &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Filtros do artigo</translation>
     </message>
     <message>
         <source>Close &amp;current tab</source>
-        <translation type="unfinished"/>
+        <translation>Fe&amp;char aba atual</translation>
     </message>
     <message>
         <source>Close dialogs</source>
+        <translation>Fechar diálogos</translation>
+    </message>
+    <message>
+        <source>&amp;Next item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous item</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3122,7 +3122,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Loading of articles from item &apos;%1&apos; failed</source>
-        <translation type="unfinished"/>
+        <translation>Falha ao carregar artigos do item &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -3625,6 +3625,26 @@ Lista de leitores suportados:</translation>
     </message>
     <message>
         <source>Simplistic Reddit client.</source>
+        <translation>Cliente simples para o Reddit.</translation>
+    </message>
+    <message>
+        <source>interesting stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>interesting stuff (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK-ish color</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3746,7 +3766,7 @@ Lista de leitores suportados:</translation>
     <name>RedditCategory</name>
     <message>
         <source>Subscriptions</source>
-        <translation type="unfinished"/>
+        <translation>Inscrições</translation>
     </message>
 </context>
 <context>
@@ -3757,7 +3777,7 @@ Lista de leitores suportados:</translation>
     </message>
     <message>
         <source>Reddit: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Reddit: erro de autenticação</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -3769,7 +3789,7 @@ Lista de leitores suportados:</translation>
     </message>
     <message>
         <source>Reddit: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Reddit: autorização negada</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -4286,19 +4306,19 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Feed list row height</source>
-        <translation type="unfinished"/>
+        <translation>Altura da linha da lista de feeds</translation>
     </message>
     <message>
         <source>Article list row height</source>
-        <translation type="unfinished"/>
+        <translation>Altura da linha da lista de artigos</translation>
     </message>
     <message>
         <source>Ignore changes in article body when new articles are being fetched</source>
-        <translation type="unfinished"/>
+        <translation>Ignorar mudanças no corpo de artigos quando novos artigos estão sendo buscados</translation>
     </message>
     <message>
         <source>Show only time for today articles</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar somente a hora para os artigos de hoje</translation>
     </message>
 </context>
 <context>
@@ -4460,7 +4480,23 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Barra de ferramentas para lista de artigos</translation>
     </message>
     <message>
-        <source>Force dark look</source>
+        <source>Force dark look (Fusion only)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4589,7 +4625,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Cannot save category data</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível salvar os dados da categoria</translation>
     </message>
 </context>
 <context>
@@ -4632,11 +4668,11 @@ Tipo: %3</translation>
     </message>
     <message>
         <source>Cannot save feed data</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível salvar os dados do feed</translation>
     </message>
     <message>
         <source>Cannot move feed</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível mover o feed</translation>
     </message>
 </context>
 <context>
@@ -5093,7 +5129,7 @@ Notícias não lidas: %2</translation>
     </message>
     <message>
         <source>Close dialogs</source>
-        <translation type="unfinished"/>
+        <translation>Fechar diálogos</translation>
     </message>
 </context>
 <context>

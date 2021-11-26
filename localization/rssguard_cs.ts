@@ -164,7 +164,10 @@ Error: %1</source>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Vítá Vás %1.
+
+Prosím, zkontrolujte novinky kliknutím
+na tuto bublinu.</translation>
     </message>
     <message>
         <source>Already running</source>
@@ -1472,14 +1475,6 @@ or this functionality is not implemented yet.</source>
         <translation>Smaže zprávy ze všech položek.</translation>
     </message>
     <message>
-        <source>Select &amp;next item</source>
-        <translation>Vybrat &amp;následující položku</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous item</source>
-        <translation>Vybrat &amp;předchozí položku</translation>
-    </message>
-    <message>
         <source>&amp;Expand/collapse selected item</source>
         <translation>&amp;Expandovat/složit vybranou položku</translation>
     </message>
@@ -1793,6 +1788,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close dialogs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous item</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3609,6 +3612,26 @@ List of supported readers:</source>
         <source>Simplistic Reddit client.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>interesting stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>interesting stuff (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK-ish color</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3637,11 +3660,11 @@ List of supported readers:</source>
     <name>RedditAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Nastaveni OAuth 2.0</translation>
     </message>
     <message>
         <source>Client ID</source>
@@ -3653,11 +3676,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Přesměrovací URL</translation>
     </message>
     <message>
         <source>Get my credentials</source>
-        <translation type="unfinished"/>
+        <translation>Získat přihlašovací údaje</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
@@ -3665,7 +3688,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Přihlásit se</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -3677,27 +3700,27 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Neotestováno.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Nezadáno uživ. jméno.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Nějaké uživ. jméno zadáno.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup NEpovolen.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Byla chyba během testování.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
@@ -3705,11 +3728,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Otestováno úspěšně.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Přístup byl povolen.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -3717,11 +3740,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Zadána prázdná hodnota.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Zadána nějaká hodnota.</translation>
     </message>
 </context>
 <context>
@@ -3735,7 +3758,7 @@ List of supported readers:</source>
     <name>RedditNetworkFactory</name>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>nejste přihlášen</translation>
     </message>
     <message>
         <source>Reddit: authentication error</source>
@@ -3743,7 +3766,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Pro opětovné přihlášení klikněte zde.</translation>
     </message>
     <message>
         <source>Login</source>
@@ -3755,7 +3778,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klikně sem pro opětovné přihlášení.</translation>
     </message>
 </context>
 <context>
@@ -3763,15 +3786,16 @@ List of supported readers:</source>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Status autentizace: %1
+Tokeny vyprší: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>přihlášen</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NEpřihlášen</translation>
     </message>
 </context>
 <context>
@@ -4441,7 +4465,23 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Force dark look</source>
+        <source>Force dark look (Fusion only)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
 </context>

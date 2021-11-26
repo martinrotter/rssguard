@@ -1468,14 +1468,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Select &amp;next item</source>
-        <translation>次のアイテムを選択(&amp;N)</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous item</source>
-        <translation>前のアイテムを選択(&amp;P)</translation>
-    </message>
-    <message>
         <source>&amp;Expand/collapse selected item</source>
         <translation>選択したアイテムを展開/折りたたむ(&amp;E)</translation>
     </message>
@@ -1789,6 +1781,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close dialogs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous item</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3587,6 +3587,26 @@ List of supported readers:</source>
         <source>Simplistic Reddit client.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>interesting stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>interesting stuff (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK-ish color</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3615,11 +3635,11 @@ List of supported readers:</source>
     <name>RedditAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>ユーザー名</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 設定</translation>
     </message>
     <message>
         <source>Client ID</source>
@@ -3643,7 +3663,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>ログイン(&amp;L)</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -3655,7 +3675,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>まだテストしていません。</translation>
     </message>
     <message>
         <source>User-visible username</source>
@@ -4407,7 +4427,23 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Force dark look</source>
+        <source>Force dark look (Fusion only)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
 </context>

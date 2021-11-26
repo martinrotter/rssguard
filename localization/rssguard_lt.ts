@@ -164,7 +164,10 @@ Error: %1</source>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Sveiki atvykę į %1.
+
+Susipažinkite su NAUJOMIS šios
+versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     </message>
     <message>
         <source>Already running</source>
@@ -1286,7 +1289,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <name>FormEditRedditAccount</name>
     <message>
         <source>Server setup</source>
-        <translation type="unfinished"/>
+        <translation>Serverio sąranka</translation>
     </message>
 </context>
 <context>
@@ -1468,14 +1471,6 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <source>Deletes all messages from all items.</source>
         <translation>Ištrina visas žinutes iš visų elementų.</translation>
-    </message>
-    <message>
-        <source>Select &amp;next item</source>
-        <translation>Pasiri&amp;nkti kitą elementą</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous item</source>
-        <translation>&amp;Pasirinkti ankstesnį elementą</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
@@ -1791,6 +1786,14 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <source>Close dialogs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous item</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3609,6 +3612,26 @@ List of supported readers:</source>
         <source>Simplistic Reddit client.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>interesting stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>interesting stuff (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK-ish color</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3637,11 +3660,11 @@ List of supported readers:</source>
     <name>RedditAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo vardas </translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 nustatymai</translation>
     </message>
     <message>
         <source>Client ID</source>
@@ -3653,7 +3676,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Peradresavimo URL</translation>
     </message>
     <message>
         <source>Get my credentials</source>
@@ -3665,7 +3688,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Prisijungti</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -3677,27 +3700,27 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Kol kas neišbandyta.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojui matomas naudotojo vardas</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Neįvestas naudotojo vardas.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Įvestas kažkoks naudotojo vardas.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Jūs nesuteikėte prieigos.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Išbandymo metu buvo klaida.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
@@ -3705,11 +3728,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Išbandyta sėkmingai. Jūsų gali būti paprašyta prisijungti dar kartą.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Jūsų prieiga buvo patvirtinta.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -3717,11 +3740,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Įvesta tuščia reikšmė.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Įvesta kažkokia reikšmė.</translation>
     </message>
 </context>
 <context>
@@ -3735,7 +3758,7 @@ List of supported readers:</source>
     <name>RedditNetworkFactory</name>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>jūs nesate prisijungę</translation>
     </message>
     <message>
         <source>Reddit: authentication error</source>
@@ -3743,7 +3766,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Spustelėkite tai, norėdami prisijungti dar kartą. Klaida yra: &quot;%1&quot;</translation>
     </message>
     <message>
         <source>Login</source>
@@ -3755,7 +3778,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Spustelėkite tai, norėdami prisijungti dar kartą.</translation>
     </message>
 </context>
 <context>
@@ -3763,15 +3786,16 @@ List of supported readers:</source>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Atpažinimo būsena: %1
+Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>prisijungta</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NEPRISIJUNGTA</translation>
     </message>
 </context>
 <context>
@@ -4441,7 +4465,23 @@ Vilkaduobės:
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Force dark look</source>
+        <source>Force dark look (Fusion only)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
 </context>

@@ -1469,14 +1469,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Select &amp;next item</source>
-        <translation>Valitse &amp;seuraava tietue</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous item</source>
-        <translation>Valitse &amp;edellinen tietue</translation>
-    </message>
-    <message>
         <source>&amp;Expand/collapse selected item</source>
         <translation>&amp;Laajenna/supista valittu tietue</translation>
     </message>
@@ -1790,6 +1782,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close dialogs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous item</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3593,6 +3593,26 @@ List of supported readers:</source>
         <source>Simplistic Reddit client.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>interesting stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>interesting stuff (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK-ish color</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3621,11 +3641,11 @@ List of supported readers:</source>
     <name>RedditAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 -asetukset</translation>
     </message>
     <message>
         <source>Client ID</source>
@@ -3637,7 +3657,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Uudelleenohjauksen URL-osoite</translation>
     </message>
     <message>
         <source>Get my credentials</source>
@@ -3645,15 +3665,15 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain X artikkelia per syöte</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Kirjaudu</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat artikkelit</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
@@ -3661,11 +3681,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Ei vielä testattu.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjälle näkyvä käyttäjätunnus</translation>
     </message>
     <message>
         <source>No username entered.</source>
@@ -3681,11 +3701,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Testauksen aikana tapahtui virhe.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Virhe: %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
@@ -3719,7 +3739,7 @@ List of supported readers:</source>
     <name>RedditNetworkFactory</name>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>et ole sisäänkirjautuneena</translation>
     </message>
     <message>
         <source>Reddit: authentication error</source>
@@ -3727,7 +3747,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Napsauta kirjautuaksesi uudelleen. Virhe on: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Login</source>
@@ -3739,7 +3759,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Napsauta tätä kirjautuaksesi uudelleen.</translation>
     </message>
 </context>
 <context>
@@ -4413,7 +4433,23 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Force dark look</source>
+        <source>Force dark look (Fusion only)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
 </context>

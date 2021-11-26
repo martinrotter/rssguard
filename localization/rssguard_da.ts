@@ -1285,7 +1285,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditRedditAccount</name>
     <message>
         <source>Server setup</source>
-        <translation type="unfinished"/>
+        <translation>Serverindstillinger</translation>
     </message>
 </context>
 <context>
@@ -1467,14 +1467,6 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Deletes all messages from all items.</source>
         <translation>Sletter alle meddelelser fra alle emner.</translation>
-    </message>
-    <message>
-        <source>Select &amp;next item</source>
-        <translation>Vælg &amp;næste emne</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous item</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
@@ -1790,6 +1782,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close dialogs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous item</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3594,6 +3594,26 @@ List of supported readers:</source>
         <source>Simplistic Reddit client.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>interesting stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>interesting stuff (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK-ish color</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3622,11 +3642,11 @@ List of supported readers:</source>
     <name>RedditAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 indstillinger</translation>
     </message>
     <message>
         <source>Client ID</source>
@@ -3638,11 +3658,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Omdiriger webadresse</translation>
     </message>
     <message>
         <source>Get my credentials</source>
-        <translation type="unfinished"/>
+        <translation>Få mine legitimationsoplysninger</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
@@ -3650,11 +3670,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Log på</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Hent kun ulæste artikler</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
@@ -3662,27 +3682,27 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Endnu ikke testet.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Brugersynligt brugernavn </translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Intet brugernavn indtastet.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Et brugernavn er indtastet.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Du har ikke givet adgang.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Der opstod en fejl under test.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
@@ -3690,11 +3710,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Testet med succes. Du bliver muligvis bedt om at logge ind igen.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Du har fået adgang.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -3702,11 +3722,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>En tom værdi er indtastet.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>En værdi er indtastet.</translation>
     </message>
 </context>
 <context>
@@ -3752,11 +3772,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>logget ind</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>IKKE logget ind</translation>
     </message>
 </context>
 <context>
@@ -4414,7 +4434,23 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Force dark look</source>
+        <source>Force dark look (Fusion only)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
 </context>

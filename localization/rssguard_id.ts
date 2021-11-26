@@ -164,7 +164,10 @@ Error: %1</source>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Selamat datang di %1.
+
+Silahkan, memeriksa hal BARU yang termasuk
+di versi ini dengan meng-klik popup notifikasi ini.</translation>
     </message>
     <message>
         <source>Already running</source>
@@ -1470,14 +1473,6 @@ atau fungsi ini belum diimplementasikan.</translation>
         <translation>Hapus semua pesan dari semua item.</translation>
     </message>
     <message>
-        <source>Select &amp;next item</source>
-        <translation>Pilih item selan&amp;jutnya</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous item</source>
-        <translation>Pilih item s&amp;ebelumnya</translation>
-    </message>
-    <message>
         <source>&amp;Expand/collapse selected item</source>
         <translation>Per&amp;lebar/persempit item yang dipilih</translation>
     </message>
@@ -1791,6 +1786,14 @@ atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
         <source>Close dialogs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous item</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3601,6 +3604,26 @@ List of supported readers:</source>
         <source>Simplistic Reddit client.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>interesting stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>interesting stuff (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK-ish color</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3629,11 +3652,11 @@ List of supported readers:</source>
     <name>RedditAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Pengaturan OAuth 2.0</translation>
     </message>
     <message>
         <source>Client ID</source>
@@ -3657,7 +3680,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Log masuk</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -3669,27 +3692,27 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Belum teruji.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna yang terlihat</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Tak ada nama pengguna dimasukkan.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa nama pengguna dimasukkan.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Anda tidak diberikan ijin akses.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Ada eror ketika pengujian.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
@@ -3697,11 +3720,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Pengujian berhasil. Anda mungkin disarankan untuk log masuk sekali lagi.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Akses anda disetujui.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -3709,11 +3732,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Nilai kosong dimasukkan.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Beberapa nilai dimasukkan.</translation>
     </message>
 </context>
 <context>
@@ -3727,7 +3750,7 @@ List of supported readers:</source>
     <name>RedditNetworkFactory</name>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>anda belum log masuk</translation>
     </message>
     <message>
         <source>Reddit: authentication error</source>
@@ -3735,7 +3758,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klik ini untuk log masuk kembali. Eror adalah: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Login</source>
@@ -3747,7 +3770,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klik ini untuk log masuk kembali.</translation>
     </message>
 </context>
 <context>
@@ -3755,15 +3778,16 @@ List of supported readers:</source>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Status pengesahan: %1
+Waktu berakhir log masuk: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>telah log masuk</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>BELUM log masuk</translation>
     </message>
 </context>
 <context>
@@ -4433,7 +4457,23 @@ Penulis aplikasi ini tidak bertanggung jawab untuk data yang hilang.</translatio
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Force dark look</source>
+        <source>Force dark look (Fusion only)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
 </context>

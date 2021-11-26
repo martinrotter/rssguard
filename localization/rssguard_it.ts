@@ -164,7 +164,10 @@ Error: %1</source>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Benvenuto in %1.
+
+Controlla la NUOVA roba inclusa in questa
+versione facendo clic su questa notifica a scomparsa.</translation>
     </message>
     <message>
         <source>Already running</source>
@@ -1470,14 +1473,6 @@ oppure questa funzionalità non è ancora implementata.</translation>
         <translation>Cancella tutti i messaggi da tutti gli elementi.</translation>
     </message>
     <message>
-        <source>Select &amp;next item</source>
-        <translation>Seleziona elemento &amp;successivo</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous item</source>
-        <translation>Seleziona elemento &amp;precedente</translation>
-    </message>
-    <message>
         <source>&amp;Expand/collapse selected item</source>
         <translation>&amp;Espandi/collassa elemento selezionato</translation>
     </message>
@@ -1791,6 +1786,14 @@ oppure questa funzionalità non è ancora implementata.</translation>
     </message>
     <message>
         <source>Close dialogs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous item</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3600,6 +3603,26 @@ List of supported readers:</source>
         <source>Simplistic Reddit client.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>interesting stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>interesting stuff (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK-ish color</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3628,7 +3651,7 @@ List of supported readers:</source>
     <name>RedditAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nome utente</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -4432,7 +4455,23 @@ Gli autori di questa applicazione NON sono responsabili per la perdita di dati.<
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Force dark look</source>
+        <source>Force dark look (Fusion only)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
 </context>

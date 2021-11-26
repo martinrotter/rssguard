@@ -157,14 +157,17 @@ Error: %1</source>
     </message>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"/>
+        <translation>Willkommen</translation>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Willkommen bei %1.
+
+Bitte überprüfen Sie die in dieser Version enthaltene Neuerungen
+durch Klicken auf diese Benachrichtigung.</translation>
     </message>
     <message>
         <source>Already running</source>
@@ -1468,14 +1471,6 @@ or this functionality is not implemented yet.</source>
         <translation>Zu allen Einträgen gehörige Nachrichten alle löschen.</translation>
     </message>
     <message>
-        <source>Select &amp;next item</source>
-        <translation>&amp;Nächsten Eintrag auswählen</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous item</source>
-        <translation>&amp;Vorigen Eintrag auswählen</translation>
-    </message>
-    <message>
         <source>&amp;Expand/collapse selected item</source>
         <translation>Ausgewählten Eintrag aus-/ein&amp;klappen</translation>
     </message>
@@ -1789,6 +1784,14 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close dialogs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous item</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3599,6 +3602,26 @@ List of supported readers:</source>
         <source>Simplistic Reddit client.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>interesting stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>interesting stuff (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK-ish color</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3627,15 +3650,15 @@ List of supported readers:</source>
     <name>RedditAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>OAuth 2.0 Einstellungen</translation>
     </message>
     <message>
         <source>Client ID</source>
-        <translation type="unfinished"/>
+        <translation>Client ID</translation>
     </message>
     <message>
         <source>Client secret</source>
@@ -3643,7 +3666,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>URL umleiten</translation>
     </message>
     <message>
         <source>Get my credentials</source>
@@ -3651,15 +3674,15 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lade nur die neusten X Artikel je Feed</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Login</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Nur ungelesene Artikel herunterladen.</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
@@ -3667,39 +3690,39 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Noch nicht getestet.</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Nutzer sichtbarer Benutzername</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Keinen Benutzernamen eingegeben.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Benutzername wurde eingegeben.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>Sie haben keinen Zugang gewährt.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Fehler ist während des Tests aufgetreten.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Fehler:  %1</translation>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Test erfolgreich. Sie könnten zu einem erneuten Einloggen aufgefordert werden.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Ihr Zugang wurde genehmigt.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -3707,11 +3730,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Leerer Wert wurde eingegeben.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Ein Wert wurde eingegeben.</translation>
     </message>
 </context>
 <context>
@@ -3725,7 +3748,7 @@ List of supported readers:</source>
     <name>RedditNetworkFactory</name>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>Sie sind nicht eingeloggt</translation>
     </message>
     <message>
         <source>Reddit: authentication error</source>
@@ -3733,11 +3756,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klicken Sie hier um sich wieder anzumelden. Der Fehler ist: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Login</translation>
     </message>
     <message>
         <source>Reddit: authorization denied</source>
@@ -3745,7 +3768,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Drücken Sie hier um sich neu anzumelden.</translation>
     </message>
 </context>
 <context>
@@ -3753,15 +3776,16 @@ List of supported readers:</source>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Authentifikationsstatus: %1
+Ablauf des Login tokens: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>angemeldet</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NICHT angemeldet</translation>
     </message>
 </context>
 <context>
@@ -4432,7 +4456,23 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Force dark look</source>
+        <source>Force dark look (Fusion only)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
 </context>

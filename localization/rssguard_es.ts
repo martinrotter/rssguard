@@ -164,7 +164,10 @@ Error: %1</source>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Bienvenido a %1.
+
+Por favor, consulte las NUEVAS funciones incluidas en esta
+versión pulsando en esta notificación emergente..</translation>
     </message>
     <message>
         <source>Already running</source>
@@ -1472,14 +1475,6 @@ o debido a que esta función aún no está implementada.</translation>
         <translation>Borra todos los mensajes de todos los elementos.</translation>
     </message>
     <message>
-        <source>Select &amp;next item</source>
-        <translation>Seleccionar &amp;siguiente elemento</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous item</source>
-        <translation>Seleccionar &amp;anterior elemento</translation>
-    </message>
-    <message>
         <source>&amp;Expand/collapse selected item</source>
         <translation>&amp;Expandir/contraer el elemento seleccionado</translation>
     </message>
@@ -1793,6 +1788,14 @@ o debido a que esta función aún no está implementada.</translation>
     </message>
     <message>
         <source>Close dialogs</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Next item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Previous item</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3606,6 +3609,26 @@ List of supported readers:</source>
         <source>Simplistic Reddit client.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>interesting stuff</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>interesting stuff (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>errored items (highlighted)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OK-ish color</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3634,11 +3657,11 @@ List of supported readers:</source>
     <name>RedditAccountDetails</name>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Ajustes de OAuth 2.0</translation>
     </message>
     <message>
         <source>Client ID</source>
@@ -3650,7 +3673,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>Redirigir URL</translation>
     </message>
     <message>
         <source>Get my credentials</source>
@@ -3662,7 +3685,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Acceder</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -3674,27 +3697,27 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Not tested yet.</source>
-        <translation type="unfinished"/>
+        <translation>Todavía no comprobado</translation>
     </message>
     <message>
         <source>User-visible username</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario visible</translation>
     </message>
     <message>
         <source>No username entered.</source>
-        <translation type="unfinished"/>
+        <translation>No ha introducido un nombre de usuario.</translation>
     </message>
     <message>
         <source>Some username entered.</source>
-        <translation type="unfinished"/>
+        <translation>Algún nombre de usuario introducido.</translation>
     </message>
     <message>
         <source>You did not grant access.</source>
-        <translation type="unfinished"/>
+        <translation>No concedió el acceso.</translation>
     </message>
     <message>
         <source>There was error during testing.</source>
-        <translation type="unfinished"/>
+        <translation>Hubo un error durante la prueba.</translation>
     </message>
     <message>
         <source>There is error: %1</source>
@@ -3702,11 +3725,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Tested successfully. You may be prompted to login once more.</source>
-        <translation type="unfinished"/>
+        <translation>Probado con éxito. Puede que se le pida que se registre una vez más.</translation>
     </message>
     <message>
         <source>Your access was approved.</source>
-        <translation type="unfinished"/>
+        <translation>Su acceso fue aprobado.</translation>
     </message>
     <message>
         <source>Preconfigured client ID/secret will be used.</source>
@@ -3714,11 +3737,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Empty value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Se ha introducido un valor vacío.</translation>
     </message>
     <message>
         <source>Some value is entered.</source>
-        <translation type="unfinished"/>
+        <translation>Algún valor ha sido introducido.</translation>
     </message>
 </context>
 <context>
@@ -3732,7 +3755,7 @@ List of supported readers:</source>
     <name>RedditNetworkFactory</name>
     <message>
         <source>you are not logged in</source>
-        <translation type="unfinished"/>
+        <translation>no ha iniciado sesión</translation>
     </message>
     <message>
         <source>Reddit: authentication error</source>
@@ -3740,7 +3763,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Pulse aquí para iniciar sesión nuevamente. El error es: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Login</source>
@@ -3752,7 +3775,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Pulse aquí para iniciar sesión nuevamente. </translation>
     </message>
 </context>
 <context>
@@ -3760,15 +3783,16 @@ List of supported readers:</source>
     <message>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
-        <translation type="unfinished"/>
+        <translation>Estado de autenticación: %1
+Expiración de testigos de ingreso: %2</translation>
     </message>
     <message>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>sesión iniciada</translation>
     </message>
     <message>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NO ha iniciado sesión</translation>
     </message>
 </context>
 <context>
@@ -4438,7 +4462,23 @@ Los autores de esta aplicación NO son responsables de los datos que se lleguen 
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Force dark look</source>
+        <source>Force dark look (Fusion only)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force custom skin colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
 </context>
