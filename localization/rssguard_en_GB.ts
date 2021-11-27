@@ -1557,7 +1557,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
-        <translation type="unfinished"/>
+        <translation>Alternate row colours in lists</translation>
     </message>
     <message>
         <source>Display &amp;documentation</source>
@@ -4434,15 +4434,15 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Custom skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Custom skin colours</translation>
     </message>
     <message>
         <source>Force custom skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Force custom skin colours</translation>
     </message>
     <message>
         <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
-        <translation type="unfinished"/>
+        <translation>You can override some colours defined by your skin here. Some colours are used dynamically throughout the application.</translation>
     </message>
     <message>
         <source>Fetch color from activated skin</source>

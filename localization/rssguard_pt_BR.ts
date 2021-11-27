@@ -1794,11 +1794,11 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>&amp;Next item</source>
-        <translation type="unfinished"/>
+        <translation>Pró&amp;ximo item</translation>
     </message>
     <message>
         <source>&amp;Previous item</source>
-        <translation type="unfinished"/>
+        <translation>I&amp;tem anterior</translation>
     </message>
 </context>
 <context>
@@ -3629,23 +3629,23 @@ Lista de leitores suportados:</translation>
     </message>
     <message>
         <source>interesting stuff</source>
-        <translation type="unfinished"/>
+        <translation>coisas interessantes</translation>
     </message>
     <message>
         <source>interesting stuff (highlighted)</source>
-        <translation type="unfinished"/>
+        <translation>coisas interessantes (destacadas)</translation>
     </message>
     <message>
         <source>errored items</source>
-        <translation type="unfinished"/>
+        <translation>itens com erro</translation>
     </message>
     <message>
         <source>errored items (highlighted)</source>
-        <translation type="unfinished"/>
+        <translation>itens com erro (destacados)</translation>
     </message>
     <message>
         <source>OK-ish color</source>
-        <translation type="unfinished"/>
+        <translation>Cor OK</translation>
     </message>
 </context>
 <context>
@@ -4481,23 +4481,23 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
     <message>
         <source>Force dark look (Fusion only)</source>
-        <translation type="unfinished"/>
+        <translation>Forçar tema escuro (somente Fusion)</translation>
     </message>
     <message>
         <source>Custom skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Cores do tema personalizadas</translation>
     </message>
     <message>
         <source>Force custom skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Forçar cores de tema personalizadas</translation>
     </message>
     <message>
         <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
-        <translation type="unfinished"/>
+        <translation>Você pode substituir algumas cores definidas pelo seu tema aqui. Algumas cores são usadas dinamicamente em todo o aplicativo.</translation>
     </message>
     <message>
         <source>Fetch color from activated skin</source>
-        <translation type="unfinished"/>
+        <translation>Obter cor do tema ativado</translation>
     </message>
 </context>
 <context>
