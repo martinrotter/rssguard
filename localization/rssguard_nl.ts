@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-        <translation>Er is een fout in de AdBlock-component en deze kan niet worden ingeschakeld. Controleer het onderstaande foutbericht (of het foutopsporingslogboek van de toepassing) voor meer informatie. </translation>
+        <translation>Er is een fout in de AdBlock-component en deze kan niet worden ingeschakeld. Controleer het onderstaande foutbericht (of het foutopsporingslogboek van de toepassing) voor meer informatie.</translation>
     </message>
     <message>
         <source>OK!</source>
@@ -66,15 +66,15 @@ Fout: %1</translation>
     </message>
     <message>
         <source>No additional info.</source>
-        <translation type="unfinished"/>
+        <translation>Geen aanvullende informatie.</translation>
     </message>
     <message>
         <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
-        <translation type="unfinished"/>
+        <translation>Het lijkt erop dat AdBlock goed werkt, maar wacht een paar seconden om zeker te zijn.</translation>
     </message>
     <message>
         <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.</source>
-        <translation type="unfinished"/>
+        <translation>Er is een fout opgetreden, controleer het toepassingslogboek voor meer details en ga naar de online documentatie. Zorg er ook voor dat Node.js is geïnstalleerd.</translation>
     </message>
 </context>
 <context>
@@ -127,11 +127,11 @@ Fout: %1</translation>
     </message>
     <message>
         <source>Unread articles fetched</source>
-        <translation type="unfinished"/>
+        <translation>Ongelezen artikelen opgehaald</translation>
     </message>
     <message>
         <source>Go to changelog</source>
-        <translation type="unfinished"/>
+        <translation>Ga naar changelog</translation>
     </message>
     <message>
         <source>AdBlock needs to be configured</source>
@@ -143,23 +143,23 @@ Fout: %1</translation>
     </message>
     <message>
         <source>Configure now</source>
-        <translation type="unfinished"/>
+        <translation>Nu configureren</translation>
     </message>
     <message>
         <source>RSS Guard has Discord server!</source>
-        <translation type="unfinished"/>
+        <translation>RSS Guard heeft Discord server!</translation>
     </message>
     <message>
         <source>You can visit it now! Click me!</source>
-        <translation type="unfinished"/>
+        <translation>Je kunt het nu bezoeken! Klik hier!</translation>
     </message>
     <message>
         <source>Go to Discord!</source>
-        <translation type="unfinished"/>
+        <translation>Ga naar Discord!</translation>
     </message>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"/>
+        <translation>Welkom</translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -172,7 +172,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     </message>
     <message>
         <source>Already running</source>
-        <translation type="unfinished"/>
+        <translation>Is al gestart</translation>
     </message>
 </context>
 <context>
@@ -226,7 +226,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     <name>BaseLineEdit</name>
     <message>
         <source>Show/hide the password</source>
-        <translation type="unfinished"/>
+        <translation>Toon/verberg het paswoord</translation>
     </message>
 </context>
 <context>
@@ -268,7 +268,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     </message>
     <message>
         <source>Removing old articles...</source>
-        <translation>Oude artikelen verwijderd</translation>
+        <translation>Oude artikelen verwijderen...</translation>
     </message>
     <message>
         <source>Old articles purged...</source>
@@ -314,7 +314,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     </message>
     <message>
         <source>Not supported by account</source>
-        <translation type="unfinished"/>
+        <translation>Niet ondersteund door account</translation>
     </message>
 </context>
 <context>
@@ -407,7 +407,7 @@ Klik hier om de bovenliggende map te openen.</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation type="unfinished"/>
+        <translation>Map openen</translation>
     </message>
 </context>
 <context>
@@ -498,16 +498,16 @@ Status: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>gebruikt globale instellingen (%n minuut naar de volgende automatische fetch van artikelen)</numerusform><numerusform>gebruikt globalee instellingen (%n minuten naar de volgende automatische fetch van artikelen)</numerusform></translation>
     </message>
     <message>
         <source>uses global settings (global auto-fetching of articles is disabled)</source>
-        <translation type="unfinished"/>
+        <translation>gebruik globale instellingen (globale auto-halende artikelen zijn uitgeschakeld)</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Gebruikt specifieke instellingen (%n minuut naar de volgende auto-halende artikel)</numerusform><numerusform>Gebruikt specifieke instellingen (%n minuten naar de volgende auto-halende artikelen)</numerusform></translation>
     </message>
     <message>
         <source>has new articles</source>
@@ -515,11 +515,11 @@ Status: %3</translation>
     </message>
     <message>
         <source>parsing error</source>
-        <translation type="unfinished"/>
+        <translation>fout ontleden</translation>
     </message>
     <message>
         <source>error</source>
-        <translation type="unfinished"/>
+        <translation>fout</translation>
     </message>
 </context>
 <context>
@@ -537,19 +537,19 @@ Status: %3</translation>
     <name>FeedReader</name>
     <message>
         <source>Starting auto-download of some feeds&apos; articles</source>
-        <translation type="unfinished"/>
+        <translation>Automatisch downloaden van sommige feeds-artikelen starten</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-download new articles for %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>automatisch nieuwe artikelen downloaden voor %n feed.</numerusform><numerusform>automatisch nieuwe artikelen downloaden voor %n feeds.</numerusform></translation>
     </message>
     <message>
         <source>Cannot fetch articles at this point</source>
-        <translation type="unfinished"/>
+        <translation>Kan op dit moment geen artikelen ophalen</translation>
     </message>
     <message>
         <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>U kunt nu geen nieuwe artikelen ophalen omdat er een andere kritieke bewerking aan de gang is.</translation>
     </message>
 </context>
 <context>
@@ -644,7 +644,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Download alleen de nieuwste X-artikelen per feed</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -652,7 +652,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-        <translation type="unfinished"/>
+        <translation>Pas op voor het downloaden van te veel artikelen, omdat Feedly ALLE artikelen van de feed permanent in de cache opslaat, dus u kunt eindigen met duizenden artikelen die u toch nooit zult lezen.</translation>
     </message>
 </context>
 <context>
@@ -675,7 +675,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Inloggen</translation>
     </message>
 </context>
 <context>
@@ -809,11 +809,11 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Context menu for important articles</source>
-        <translation type="unfinished"/>
+        <translation>Contextmenu voor belangrijke artikelen</translation>
     </message>
     <message>
         <source>Not supported by account</source>
-        <translation type="unfinished"/>
+        <translation>Niet ondersteund door een account</translation>
     </message>
 </context>
 <context>
@@ -900,11 +900,11 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Database location</source>
-        <translation type="unfinished"/>
+        <translation>Database locatie</translation>
     </message>
     <message>
         <source>GNU LGPL License (applies to Breeze source code)</source>
-        <translation type="unfinished"/>
+        <translation>GNU LGPL-licentie (van toepassing op breeze broncode)</translation>
     </message>
 </context>
 <context>
@@ -1230,23 +1230,23 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Optimize database file</source>
-        <translation type="unfinished"/>
+        <translation>Databasebestand optimaliseren</translation>
     </message>
     <message>
         <source>Remove all read articles</source>
-        <translation type="unfinished"/>
+        <translation>Verwijder alle gelezen artikelen</translation>
     </message>
     <message>
         <source>Remove all articles from recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Verwijder alle gelezen artikelen uit prullebak</translation>
     </message>
     <message>
         <source>Remove all articles older than</source>
-        <translation type="unfinished"/>
+        <translation>Verwijder alle artikelen ouder dan</translation>
     </message>
     <message>
         <source>Remove all starred articles</source>
-        <translation type="unfinished"/>
+        <translation>Verwijder alle artikelen met ster</translation>
     </message>
 </context>
 <context>
@@ -1326,19 +1326,19 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Fetch articles using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Ophalen van artikelen met behulp van de globale interval</translation>
     </message>
     <message>
         <source>Fetch articles every</source>
-        <translation type="unfinished"/>
+        <translation>Ophalen artikelen elke</translation>
     </message>
     <message>
         <source>Disable auto-fetching of articles</source>
-        <translation type="unfinished"/>
+        <translation>Auto-ophalende artikelen uitschakelen</translation>
     </message>
     <message>
         <source>Cannot save feed properties</source>
-        <translation type="unfinished"/>
+        <translation>Kan geen feed-eigenschappen opslaan</translation>
     </message>
 </context>
 <context>
@@ -1597,11 +1597,11 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Fetch &amp;selected</source>
-        <translation>Ophalen &amp;geselecteerd </translation>
+        <translation>Ophalen &amp;geselecteerd</translation>
     </message>
     <message>
         <source>Fetch selected feeds</source>
-        <translation type="unfinished"/>
+        <translation>Ophalen geselecteerde feeds</translation>
     </message>
     <message>
         <source>Mark articles &amp;read</source>
@@ -1609,31 +1609,31 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Mark selected articles read</source>
-        <translation type="unfinished"/>
+        <translation>Markeer geselecteerde artikelen als gelezen</translation>
     </message>
     <message>
         <source>Mark articles &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Markeer artikelen als &amp;ongelezen</translation>
     </message>
     <message>
         <source>Mark selected articles unread</source>
-        <translation type="unfinished"/>
+        <translation>Markeer geselecteerde artikelen als ongelezen</translation>
     </message>
     <message>
         <source>Switch &amp;importance</source>
-        <translation type="unfinished"/>
+        <translation>Wijzig &amp;belang</translation>
     </message>
     <message>
         <source>Switch importance of selected articles</source>
-        <translation type="unfinished"/>
+        <translation>Belang van geselecteerde artikelen wisselen</translation>
     </message>
     <message>
         <source>&amp;Mark selected item read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Markeer geselecteerde artikelen als gelezen</translation>
     </message>
     <message>
         <source>&amp;Mark selected item unread</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Markeer geselecteerde artikelen als ongelezen</translation>
     </message>
     <message>
         <source>&amp;Delete articles</source>
@@ -1641,23 +1641,23 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>&amp;Clean selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Geselecteerd item opschonen</translation>
     </message>
     <message>
         <source>Open in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Open in de externe browser</translation>
     </message>
     <message>
         <source>Open selected articles in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Open geselecteerde artikelen in externe browser</translation>
     </message>
     <message>
         <source>Open in &amp;internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Open in &amp;externe browser</translation>
     </message>
     <message>
         <source>Open selected articles in internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Open geselecteerde artikelen in externe browser</translation>
     </message>
     <message>
         <source>&amp;Mark all read</source>
@@ -1665,7 +1665,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>View selected item in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Geselecteerd item bekijken in &amp;krantenmodus</translation>
     </message>
     <message>
         <source>&amp;Clean all</source>
@@ -1681,19 +1681,19 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>&amp;List headers</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Lijstkoppen</translation>
     </message>
     <message>
         <source>&amp;Restore settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Herstel instellingen</translation>
     </message>
     <message>
         <source>&amp;Backup settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Backup instellingen</translation>
     </message>
     <message>
         <source>Switch layout</source>
-        <translation type="unfinished"/>
+        <translation>Van lay-out wisselen</translation>
     </message>
     <message>
         <source>Send via e-mail</source>
@@ -1701,11 +1701,11 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Send selected articles via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Zend geselecteerde artikelen via E-mail</translation>
     </message>
     <message>
         <source>Show unread items only</source>
-        <translation>Toon alleen ongelezen items </translation>
+        <translation>Toon alleen ongelezen items</translation>
     </message>
     <message>
         <source>&amp;Add account</source>
@@ -1713,43 +1713,43 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>&amp;Restore articles</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Artikelen herstellen</translation>
     </message>
     <message>
         <source>Next &amp;unread article</source>
-        <translation type="unfinished"/>
+        <translation>Volgende &amp;ongelezen artikel</translation>
     </message>
     <message>
         <source>Stop ongoing fetching</source>
-        <translation type="unfinished"/>
+        <translation>Stop met ophalen</translation>
     </message>
     <message>
         <source>New browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Nieuwe browser tab</translation>
     </message>
     <message>
         <source>&amp;Enable article preview</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Artikelvoorbeeld inschakelen</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Kopieer URL&apos;s van geselecteerd item</translation>
     </message>
     <message>
         <source>Show &amp;unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Alleen &amp;ongelezen artikelen weergeven</translation>
     </message>
     <message>
         <source>&amp;Show tree expanders</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Structuur uitbreidingen weergeven</translation>
     </message>
     <message>
         <source>Fetch feeds with &amp;custom auto-download policy</source>
-        <translation type="unfinished"/>
+        <translation>Feeds ophalen met &amp;aangepast beleid voor automatisch downloaden</translation>
     </message>
     <message>
         <source>Automatically &amp;expand item when selected</source>
-        <translation type="unfinished"/>
+        <translation>Automatisch &amp;item uitbreiden wanneer geselecteerd</translation>
     </message>
     <message>
         <source>Close opened modal dialogs first.</source>
@@ -1757,7 +1757,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>F&amp;eeds</source>
-        <translation type="unfinished"/>
+        <translation>F&amp;eeds</translation>
     </message>
     <message>
         <source>Art&amp;icles</source>
@@ -1765,31 +1765,31 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>&amp;Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Webbrowser &amp;&amp;tabbladen</translation>
     </message>
     <message>
         <source>Ta&amp;bs</source>
-        <translation type="unfinished"/>
+        <translation>Tab&amp;bladen</translation>
     </message>
     <message>
         <source>Fetching common data</source>
-        <translation type="unfinished"/>
+        <translation>Algemene gegevens ophalen</translation>
     </message>
     <message>
         <source>Minimize (or hide) main window</source>
-        <translation type="unfinished"/>
+        <translation>Minimaliseer (of verberg) het hoofdvenster</translation>
     </message>
     <message>
         <source>Article &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>Artikelen &amp;filters</translation>
     </message>
     <message>
         <source>Close &amp;current tab</source>
-        <translation type="unfinished"/>
+        <translation>Sluit &amp;huidige tabblad</translation>
     </message>
     <message>
         <source>Close dialogs</source>
-        <translation type="unfinished"/>
+        <translation>Dialogen sluiten</translation>
     </message>
     <message>
         <source>&amp;Next item</source>
@@ -1808,7 +1808,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>&amp;Check all</source>
-        <translation>Alles sele&amp;cteren</translation>
+        <translation>Alles &amp;controleren</translation>
     </message>
     <message>
         <source>&amp;Uncheck all</source>
@@ -1920,30 +1920,33 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>Existing articles</source>
-        <translation type="unfinished"/>
+        <translation>Bestaande artikelen</translation>
     </message>
     <message>
         <source>Sample article</source>
-        <translation type="unfinished"/>
+        <translation>Voorbeeld artikelen</translation>
     </message>
     <message>
         <source>Filter articles like this</source>
-        <translation type="unfinished"/>
+        <translation>Filter artikelen zoals dit</translation>
     </message>
     <message>
         <source>New article filter</source>
-        <translation type="unfinished"/>
+        <translation>Nieuw artikel filter</translation>
     </message>
     <message>
         <source>EXISTING articles filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>BESTAANDE artikelen filterfout:&apos;%1&apos;.
+</translation>
     </message>
     <message>
         <source>Article will be %1.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>Artikel zal zijn %1.
+
+</translation>
     </message>
     <message>
         <source>Output (modified) article is:
@@ -1954,28 +1957,36 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
   Created on = '%6'
   Contents = '%7'
   RAW contents = &apos;%8&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Uitvoer (aangepast) artikel is:
+  Titel = &apos;%1&apos;
+  URL = &apos;%2&apos;
+  Auteur = &apos;%3&apos;
+  Is gelezen/belangrijk = &apos;%4/%5&apos;
+  Gemaakt op = &apos;%6&apos;
+  Inhoud = &apos;%7&apos;
+  RAW-inhoud = &apos;%8&apos;</translation>
     </message>
     <message>
         <source>SAMPLE article filtering error: '%1'.
 </source>
-        <translation type="unfinished"/>
+        <translation>VOORBEELD artikel filterfout: &apos;%1&apos;.
+</translation>
     </message>
     <message>
         <source>Article filters</source>
-        <translation type="unfinished"/>
+        <translation>Artikel filters</translation>
     </message>
     <message>
         <source>Article filter details</source>
-        <translation type="unfinished"/>
+        <translation>Artikel filter details</translation>
     </message>
     <message>
         <source>Title of article filter</source>
-        <translation type="unfinished"/>
+        <translation>Naam van Artikel filter</translation>
     </message>
     <message>
         <source>Your JavaScript-based article filtering logic</source>
-        <translation type="unfinished"/>
+        <translation>Uw op JavaScript gebaseerde logica voor artikelfiltering</translation>
     </message>
 </context>
 <context>
@@ -2205,15 +2216,15 @@ Je moet handmatig herstarten.</translation>
     </message>
     <message>
         <source>&amp;Check all feeds</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Controleer alle feeds</translation>
     </message>
     <message>
         <source>&amp;Uncheck all feeds</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Alle feeds uitvinken</translation>
     </message>
     <message>
         <source>Operation result</source>
-        <translation type="unfinished"/>
+        <translation>Operatie resultaat</translation>
     </message>
 </context>
 <context>
@@ -2451,7 +2462,7 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Download alleen de nieuwste X-artikelen per feed</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -2490,7 +2501,7 @@ Installeer het nu.</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Inloggen</translation>
     </message>
 </context>
 <context>
@@ -2626,7 +2637,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Download alleen de nieuwste X-artikelen per feed</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -2634,11 +2645,11 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Intelligent synchronization algorithm</source>
-        <translation type="unfinished"/>
+        <translation>Intelligent synchronisatie-algoritme</translation>
     </message>
     <message>
         <source>Fetch articles newer than</source>
-        <translation type="unfinished"/>
+        <translation>Ophalen artikelen nieuwer dan</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -2662,15 +2673,15 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
-        <translation type="unfinished"/>
+        <translation>Sommige feeds kunnen tienduizenden artikelen bevatten en het downloaden van al deze artikelen kan veel tijd kosten, dus soms is het goed om slechts een bepaald aantal nieuwste berichten te downloaden.</translation>
     </message>
     <message>
         <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-        <translation type="unfinished"/>
+        <translation>Als u intelligente synchronisatie selecteert, worden alleen nog niet opgehaalde of bijgewerkte artikelen gedownload. Het netwerkgebruik is aanzienlijk verminderd en de algehele synchronisatiesnelheid is aanzienlijk verbeterd, maar het ophalen van de eerste feed kan hoe dan ook traag zijn als uw feed een groot aantal artikelen bevat.</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
-        <translation type="unfinished"/>
+        <translation>Er zijn enkele vooraf geconfigureerde OAuth-tokens, dus u hoeft uw client-ID/geheim niet in te vullen, maar het wordt sterk aanbevolen om uw eigen tokens te verkrijgen, aangezien vooraf geconfigureerde tokens een beperkt algemeen gebruiksquotum hebben. Als u vooraf geconfigureerde tokens wilt gebruiken, laat u alle bovenstaande velden gewoon op hun standaardwaarden staan, zelfs als ze leeg zijn.</translation>
     </message>
     <message>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
@@ -2713,7 +2724,7 @@ Logintoken verloopt: %2</translation>
     <name>GreaderNetwork</name>
     <message>
         <source>login failed</source>
-        <translation type="unfinished"/>
+        <translation>login mislukt</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
@@ -2733,7 +2744,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>login</translation>
     </message>
 </context>
 <context>
@@ -2747,7 +2758,7 @@ Logintoken verloopt: %2</translation>
     <name>HelpSpoiler</name>
     <message>
         <source>View more information on this</source>
-        <translation type="unfinished"/>
+        <translation>Bekijk hier meer informatie over</translation>
     </message>
 </context>
 <context>
@@ -2765,11 +2776,11 @@ Logintoken verloopt: %2</translation>
     <name>ImportantNode</name>
     <message>
         <source>Important articles</source>
-        <translation type="unfinished"/>
+        <translation>belangrijke artikelen</translation>
     </message>
     <message>
         <source>You can find all important articles here.</source>
-        <translation type="unfinished"/>
+        <translation>Alle belangrijke artikelen vind je hier.</translation>
     </message>
 </context>
 <context>
@@ -2780,7 +2791,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>No labels found</source>
-        <translation type="unfinished"/>
+        <translation>Geen labels gevonden</translation>
     </message>
 </context>
 <context>
@@ -2894,7 +2905,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>article</source>
-        <translation type="unfinished"/>
+        <translation>artikel</translation>
     </message>
     <message>
         <source>articles</source>
@@ -2905,15 +2916,15 @@ Logintoken verloopt: %2</translation>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark article read</source>
-        <translation type="unfinished"/>
+        <translation>Markeer artikelen als gelezen</translation>
     </message>
     <message>
         <source>Mark article unread</source>
-        <translation type="unfinished"/>
+        <translation>Markeer artikelen als ongelezen</translation>
     </message>
     <message>
         <source>Switch article importance</source>
-        <translation type="unfinished"/>
+        <translation>Artikelbelang wijzigen</translation>
     </message>
 </context>
 <context>
@@ -3038,15 +3049,15 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Loading of articles failed, maybe messages could not be downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Het laden van artikelen is mislukt, mogelijk konden berichten niet worden gedownload.</translation>
     </message>
     <message>
         <source>ID of the article.</source>
-        <translation type="unfinished"/>
+        <translation>ID van het artikel.</translation>
     </message>
     <message>
         <source>Is article read?</source>
-        <translation type="unfinished"/>
+        <translation>Is artikel gelezen?</translation>
     </message>
     <message>
         <source>Is article important?</source>
@@ -3058,23 +3069,23 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Is article permanently deleted from recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>Wordt het artikel permanent uit de prullenbak verwijderd?</translation>
     </message>
     <message>
         <source>ID of feed which this article belongs to.</source>
-        <translation type="unfinished"/>
+        <translation>ID van de feed waartoe dit artikel behoort.</translation>
     </message>
     <message>
         <source>Title of the article.</source>
-        <translation>Titel van artikel</translation>
+        <translation>Titel van artikel.</translation>
     </message>
     <message>
         <source>Url of the article.</source>
-        <translation type="unfinished"/>
+        <translation>URL van het artikel.</translation>
     </message>
     <message>
         <source>Author of the article.</source>
-        <translation>Schrijver van het artikel</translation>
+        <translation>Schrijver van het artikel.</translation>
     </message>
     <message>
         <source>Creation date of the article.</source>
@@ -3082,35 +3093,35 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Contents of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Inhoud van het artikel.</translation>
     </message>
     <message>
         <source>Score of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Score van het artikel.</translation>
     </message>
     <message>
         <source>Account ID of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Account-ID van het artikel.</translation>
     </message>
     <message>
         <source>Custom ID of the article</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste ID van het artikel</translation>
     </message>
     <message>
         <source>Custom hash of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste hash van het artikel.</translation>
     </message>
     <message>
         <source>Custom ID of feed of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste ID van de feed van het artikel.</translation>
     </message>
     <message>
         <source>Indication of enclosures presence within the article.</source>
-        <translation type="unfinished"/>
+        <translation>Vermelding van de aanwezigheid van bijlagen in het artikel.</translation>
     </message>
     <message>
         <source>Loading of articles from item &apos;%1&apos; failed</source>
-        <translation type="unfinished"/>
+        <translation>Laden van artikelen van item &apos;%1&apos; is mislukt</translation>
     </message>
 </context>
 <context>
@@ -3129,27 +3140,27 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Article search box</source>
-        <translation type="unfinished"/>
+        <translation>Artikel zoekvak</translation>
     </message>
     <message>
         <source>Menu for highlighting articles</source>
-        <translation type="unfinished"/>
+        <translation>Menu voor het markeren van artikelen</translation>
     </message>
     <message>
         <source>Highlight unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Markeer ongelezen artikelen</translation>
     </message>
     <message>
         <source>Highlight important articles</source>
-        <translation type="unfinished"/>
+        <translation>Markeer belangrijke artikelen</translation>
     </message>
     <message>
         <source>Display all articles</source>
-        <translation type="unfinished"/>
+        <translation>Toon alle artikelen</translation>
     </message>
     <message>
         <source>Article highlighter</source>
-        <translation type="unfinished"/>
+        <translation>Artikel markeerstift</translation>
     </message>
 </context>
 <context>
@@ -3180,7 +3191,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Context menu for articles</source>
-        <translation type="unfinished"/>
+        <translation>Contextmenu voor artikelen</translation>
     </message>
 </context>
 <context>
@@ -3332,15 +3343,15 @@ Logintoken verloopt: %2</translation>
     </message>
     <message numerus="yes">
         <source>Show more articles (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Toon artikel (%n resterende)</numerusform><numerusform>Toon meer artikelen (%n resterende)</numerusform></translation>
     </message>
     <message>
         <source>Cannot show more articles</source>
-        <translation type="unfinished"/>
+        <translation>Kan niet meer artikelen tonen</translation>
     </message>
     <message>
         <source>Cannot show more articles because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation>Kan niet meer artikelen weergeven omdat de oudere feed is verwijderd.</translation>
     </message>
 </context>
 <context>
@@ -3371,7 +3382,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Inloggen</translation>
     </message>
 </context>
 <context>
@@ -3482,7 +3493,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Download alleen de nieuwste X-artikelen per feed</translation>
     </message>
     <message>
         <source>articles</source>
@@ -3490,7 +3501,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Force execution of server-side feeds update</source>
-        <translation type="unfinished"/>
+        <translation>Forceer uitvoering van feeds-update aan serverzijde</translation>
     </message>
 </context>
 <context>
@@ -3565,53 +3576,55 @@ Feedly is een beveiligde ruimte waar u de onderwerpen en trends die voor u van b
     </message>
     <message>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
-        <translation type="unfinished"/>
+        <translation>Kan artikelfilter niet invoegen, omdat de huidige database de laatst ingevoegde rij-ID niet kan retourneren.</translation>
     </message>
     <message>
         <source>Fetching articles right now</source>
-        <translation type="unfinished"/>
+        <translation>Ben nu artikelen aan het ophalen</translation>
     </message>
     <message>
         <source>Login data refreshed</source>
-        <translation type="unfinished"/>
+        <translation>Inloggegevens vernieuwd</translation>
     </message>
     <message>
         <source>New %1 version is available</source>
-        <translation type="unfinished"/>
+        <translation>Nieuw %1 versie beschikbaar</translation>
     </message>
     <message>
         <source>Miscellaneous events</source>
-        <translation type="unfinished"/>
+        <translation>Diverse evenementen</translation>
     </message>
     <message>
         <source>Unknown event</source>
-        <translation type="unfinished"/>
+        <translation>Onbekende gebeurtenis</translation>
     </message>
     <message>
         <source>New (unread) articles fetched</source>
-        <translation type="unfinished"/>
+        <translation>Nieuwe (ongelezen) artikelen opgehaald</translation>
     </message>
     <message>
         <source>XML problem: %1</source>
-        <translation type="unfinished"/>
+        <translation>XML probleem: %1</translation>
     </message>
     <message>
         <source>Google Reader API is used by many online RSS readers.
 
 List of supported readers:</source>
-        <translation type="unfinished"/>
+        <translation>Google Reader API wordt door veel online RSS-lezers gebruikt.
+
+Lijst met ondersteunde lezers:</translation>
     </message>
     <message>
         <source>Login failed</source>
-        <translation type="unfinished"/>
+        <translation>login mislukt</translation>
     </message>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
-        <translation type="unfinished"/>
+        <translation>Deze service biedt integratie met standaard online RSS/RDF/ATOM/JSON-feeds en podcasts.</translation>
     </message>
     <message>
         <source>Simplistic Reddit client.</source>
-        <translation type="unfinished"/>
+        <translation>Simplistische Reddit-client.</translation>
     </message>
     <message>
         <source>interesting stuff</source>
@@ -3650,11 +3663,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Recycle bin contains all deleted articles from all feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Prullenbak bevat alle verwijderde artikelen uit alle feeds.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted article(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n verwijderde artikel.</numerusform><numerusform>%n verwijderde artikelen.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3685,7 +3698,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Download alleen de nieuwste X-artikelen per feed</translation>
     </message>
     <message>
         <source>&amp;Login</source>
@@ -3752,7 +3765,7 @@ List of supported readers:</source>
     <name>RedditCategory</name>
     <message>
         <source>Subscriptions</source>
-        <translation type="unfinished"/>
+        <translation>Abonnementen</translation>
     </message>
 </context>
 <context>
@@ -3763,7 +3776,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Reddit: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Reddit: fout bij inloggen</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -3771,11 +3784,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Inloggen</translation>
     </message>
     <message>
         <source>Reddit: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Reddit: inloggegevens niet geaccepteerd</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -3804,7 +3817,7 @@ Logintoken verloopt: %2</translation>
     <message numerus="yes">
         <source>%n unread article(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n Ongelezen artikel.</numerusform><numerusform>%n Ongelezen artikelen.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3853,7 +3866,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
         <source>Synchronize article cache</source>
-        <translation type="unfinished"/>
+        <translation>Synchroniseer artkel cache</translation>
     </message>
 </context>
 <context>
@@ -3991,19 +4004,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open hyperlinks in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Hyperlinks altijd in externe browser openen</translation>
     </message>
     <message>
         <source>&amp;Add tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Gereedschap toevoegen</translation>
     </message>
     <message>
         <source>&amp;Edit selected tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Bewerk geselekteerd gereedschap</translation>
     </message>
     <message>
         <source>&amp;Delete selected tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Verwijder geselekteerd gereedschap</translation>
     </message>
 </context>
 <context>
@@ -4225,87 +4238,87 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>Remove all read articles from all feeds on application exit</source>
-        <translation type="unfinished"/>
+        <translation>Verwijder alle gelezen artikelen uit alle feeds bij het afsluiten van de applicatie</translation>
     </message>
     <message>
         <source>Display real icons of feeds in list of articles instead of read/unread icons</source>
-        <translation type="unfinished"/>
+        <translation>Toon echte iconen van feeds in de lijst met artikelen in plaats van gelezen/ongelezen iconen</translation>
     </message>
     <message>
         <source>Bring application window to front once article is opened in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Breng het toepassingsvenster naar voren zodra het artikel is geopend in een externe webbrowser</translation>
     </message>
     <message>
         <source>Article list font</source>
-        <translation type="unfinished"/>
+        <translation>Lettertype van artikellijst</translation>
     </message>
     <message>
         <source>Article browser font</source>
-        <translation type="unfinished"/>
+        <translation>Artikel browser lettertype</translation>
     </message>
     <message>
         <source>Feeds &amp; articles</source>
-        <translation type="unfinished"/>
+        <translation>Feeds &amp; artikelen</translation>
     </message>
     <message>
         <source>Auto-fetch articles for all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Automatisch artikelen ophalen voor alle feeds elke</translation>
     </message>
     <message>
         <source>Only auto-fetch articles if application is unfocused</source>
-        <translation type="unfinished"/>
+        <translation>Automatisch artikelen alleen ophalen als de toepassing niet gefocust is</translation>
     </message>
     <message>
         <source>Article count format in feed list</source>
-        <translation type="unfinished"/>
+        <translation>Formaat aantal artikelen in feedlijst</translation>
     </message>
     <message>
         <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-        <translation type="unfinished"/>
+        <translation>Voer de indeling in voor het aantal artikelen dat wordt weergegeven naast elke feed/categorie in de feedlijst. Gebruik &quot;%alles&quot; en &quot;%ongelezen teksten die tijdelijke aanduidingen zijn voor het daadwerkelijke aantal (of ongelezen) artikelen.</translation>
     </message>
     <message>
         <source>Hide article counts if there are no unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Artikel tellingen verbergen als er geen ongelezen artikelen zijn</translation>
     </message>
     <message>
         <source>Display tooltips for feeds and articles</source>
-        <translation type="unfinished"/>
+        <translation>Knopinfo voor feeds en artikelen weergeven</translation>
     </message>
     <message>
         <source>Keep article selection in the middle of the article list viewport</source>
-        <translation type="unfinished"/>
+        <translation>Artikelselectie in het midden van de viewport van de artikellijst houden</translation>
     </message>
     <message>
         <source>Fetch all articles on startup with initial delay of</source>
-        <translation type="unfinished"/>
+        <translation>Haal alle artikelen op bij het opstarten met een initiële vertraging van</translation>
     </message>
     <message>
         <source>Allow only basic keyboard shortcuts for feed/article list</source>
-        <translation type="unfinished"/>
+        <translation>Sta alleen standaard sneltoetsen toe voor feed/artikellijst</translation>
     </message>
     <message>
         <source>Display attached pictures directly in article</source>
-        <translation type="unfinished"/>
+        <translation>Geef bijgevoegde foto&apos;s direct in artikel weer</translation>
     </message>
     <message>
         <source>Use custom date/time format</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste datum-/tijdnotatie gebruiken</translation>
     </message>
     <message>
         <source>Feed list row height</source>
-        <translation type="unfinished"/>
+        <translation>Rijhoogte feedlijst</translation>
     </message>
     <message>
         <source>Article list row height</source>
-        <translation type="unfinished"/>
+        <translation>Artikellijst rijhoogte</translation>
     </message>
     <message>
         <source>Ignore changes in article body when new articles are being fetched</source>
-        <translation type="unfinished"/>
+        <translation>Negeer wijzigingen in de hoofdtekst van het artikel wanneer nieuwe artikelen worden opgehaald</translation>
     </message>
     <message>
         <source>Show only time for today articles</source>
-        <translation type="unfinished"/>
+        <translation>Toon alleen tijd voor artikelen van vandaag</translation>
     </message>
 </context>
 <context>
@@ -4460,7 +4473,7 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>Tray area</source>
-        <translation type="unfinished"/>
+        <translation>Systeemvak</translation>
     </message>
     <message>
         <source>Toolbar for articles list</source>
@@ -4518,11 +4531,11 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
-        <translation type="unfinished"/>
+        <translation>U moet het &quot;traypictogram&quot; hebben geactiveerd om ballonmeldingen te laten werken.</translation>
     </message>
     <message>
         <source>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
-        <translation type="unfinished"/>
+        <translation>Er zijn enkele ingebouwde geluiden. Begin gewoon &quot;:&quot; te typen en ze zullen verschijnen.</translation>
     </message>
 </context>
 <context>
@@ -4555,7 +4568,7 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>Full path to your WAV sound file</source>
-        <translation type="unfinished"/>
+        <translation>Volledig pad naar het WAV bestand</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
@@ -4571,15 +4584,15 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>Select sound file</source>
-        <translation>Selecteer geluidsbestand </translation>
+        <translation>Selecteer geluidsbestand \</translation>
     </message>
     <message>
         <source>Volume</source>
-        <translation type="unfinished"/>
+        <translation>Volume</translation>
     </message>
     <message>
         <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
-        <translation type="unfinished"/>
+        <translation>WAV bestanden (*.wav);;MP3 bestanden (*.mp3)</translation>
     </message>
 </context>
 <context>
@@ -4612,7 +4625,7 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>Cannot save category data</source>
-        <translation type="unfinished"/>
+        <translation>Kan categoriegegevens niet opslaan</translation>
     </message>
 </context>
 <context>
@@ -4649,15 +4662,17 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <source>
 Encoding: %2
 Type: %3</source>
-        <translation type="unfinished"/>
+        <translation>
+Codering: %2
+Model: %3</translation>
     </message>
     <message>
         <source>Cannot save feed data</source>
-        <translation type="unfinished"/>
+        <translation>Kan feed gegevens niet opslaan</translation>
     </message>
     <message>
         <source>Cannot move feed</source>
-        <translation type="unfinished"/>
+        <translation>Kan feed niet verplaatsen</translation>
     </message>
 </context>
 <context>
@@ -4982,7 +4997,7 @@ Type: %3</source>
     </message>
     <message>
         <source>See new version info</source>
-        <translation type="unfinished"/>
+        <translation>Zie nieuwe versie info</translation>
     </message>
 </context>
 <context>
@@ -5034,7 +5049,7 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Browse your feeds and articles</source>
-        <translation type="unfinished"/>
+        <translation>Blader door uw feeds en artikelen</translation>
     </message>
 </context>
 <context>
@@ -5115,7 +5130,7 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Close dialogs</source>
-        <translation type="unfinished"/>
+        <translation>Dialogen sluiten</translation>
     </message>
 </context>
 <context>
@@ -5206,7 +5221,7 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netwerkfout: &apos;%1&apos;</translation>
+        <translation>Netwerkfout: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
@@ -5266,11 +5281,11 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Download alleen de nieuwste X-artikelen per feed</translation>
     </message>
     <message>
         <source>Force execution of server-side feeds update</source>
-        <translation type="unfinished"/>
+        <translation>Uitvoering van feeds-update aan serverzijde forceren</translation>
     </message>
 </context>
 <context>
@@ -5289,7 +5304,7 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Full feed URL including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Volledige feed-URL inclusief schema</translation>
     </message>
     <message>
         <source>Provide URL for your feed.</source>
@@ -5468,11 +5483,11 @@ Laatste login: %4</translation>
     </message>
     <message>
         <source>Navigate to website manually</source>
-        <translation type="unfinished"/>
+        <translation>Navigeer handmatig naar de website</translation>
     </message>
     <message>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
-        <translation type="unfinished"/>
+        <translation>%1 kon uw webbrowser niet starten met de opgegeven URL, u moet de onderstaande website-URL handmatig in uw webbrowser openen.</translation>
     </message>
 </context>
 <context>

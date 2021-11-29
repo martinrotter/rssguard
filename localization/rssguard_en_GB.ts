@@ -229,11 +229,11 @@ version by clicking this popup notification.</source>
     <name>ColorToolButton</name>
     <message>
         <source>Click me to change color!</source>
-        <translation type="unfinished"/>
+        <translation>Click me to change colour!</translation>
     </message>
     <message>
         <source>Select new color</source>
-        <translation type="unfinished"/>
+        <translation>Select new colour</translation>
     </message>
 </context>
 <context>
@@ -3607,7 +3607,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>OK-ish color</source>
-        <translation type="unfinished"/>
+        <translation>OK-ish colour</translation>
     </message>
 </context>
 <context>
@@ -4446,7 +4446,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Fetch color from activated skin</source>
-        <translation type="unfinished"/>
+        <translation>Fetch colour from activated skin</translation>
     </message>
 </context>
 <context>
