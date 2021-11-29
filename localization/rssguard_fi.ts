@@ -26,7 +26,7 @@
     </message>
     <message>
         <source>Custom filters</source>
-        <translation type="unfinished"/>
+        <translation>Mukautetut suodattimet</translation>
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
@@ -38,7 +38,7 @@
     </message>
     <message>
         <source>Filter lists</source>
-        <translation type="unfinished"/>
+        <translation>Suodatinlistat</translation>
     </message>
     <message>
         <source>Cannot enable AdBlock</source>
@@ -129,7 +129,7 @@ Error: %1</source>
     </message>
     <message>
         <source>Go to changelog</source>
-        <translation type="unfinished"/>
+        <translation>Siirry muutoslokiin</translation>
     </message>
     <message>
         <source>AdBlock needs to be configured</source>
@@ -137,27 +137,27 @@ Error: %1</source>
     </message>
     <message>
         <source>AdBlock component is not configured properly.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock-komponenttia ei ole määritetty oikein.</translation>
     </message>
     <message>
         <source>Configure now</source>
-        <translation type="unfinished"/>
+        <translation>Määritä nyt</translation>
     </message>
     <message>
         <source>RSS Guard has Discord server!</source>
-        <translation type="unfinished"/>
+        <translation>RSS Guardilla on Discord-palvelin!</translation>
     </message>
     <message>
         <source>You can visit it now! Click me!</source>
-        <translation type="unfinished"/>
+        <translation>Voit vierailla siellä nyt, napsauta tästä!</translation>
     </message>
     <message>
         <source>Go to Discord!</source>
-        <translation type="unfinished"/>
+        <translation>Siirry Discordiin!</translation>
     </message>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"/>
+        <translation>Tervetuloa</translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -403,7 +403,7 @@ Napsauta tästä avataksesi sen ylätason kansion.</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation type="unfinished"/>
+        <translation>Avaa kansio</translation>
     </message>
 </context>
 <context>
@@ -614,7 +614,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Some problems.</source>
-        <translation type="unfinished"/>
+        <translation>Joitain ongelmia.</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -1164,7 +1164,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Ylätason kansio</translation>
     </message>
     <message>
         <source>Edit &quot;%1&quot;</source>
@@ -1331,7 +1331,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot save feed properties</source>
-        <translation type="unfinished"/>
+        <translation>Syötteen ominaisuuksia ei voi tallentaa</translation>
     </message>
 </context>
 <context>
@@ -1622,11 +1622,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Mark selected item read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Merkitse valittu tietue luetuksi</translation>
     </message>
     <message>
         <source>&amp;Mark selected item unread</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Merkitse valittu tietue lukemattomaksi</translation>
     </message>
     <message>
         <source>&amp;Delete articles</source>
@@ -1706,7 +1706,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Restore articles</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Palauta artikkelit</translation>
     </message>
     <message>
         <source>Next &amp;unread article</source>
@@ -2488,19 +2488,19 @@ Voit asentaa sen nyt.</translation>
     <name>GmailServiceRoot</name>
     <message>
         <source>Inbox</source>
-        <translation type="unfinished"/>
+        <translation>Saapuneet</translation>
     </message>
     <message>
         <source>Sent</source>
-        <translation type="unfinished"/>
+        <translation>Lähetetty</translation>
     </message>
     <message>
         <source>Drafts</source>
-        <translation type="unfinished"/>
+        <translation>Luonnokset</translation>
     </message>
     <message>
         <source>Spam</source>
-        <translation type="unfinished"/>
+        <translation>Roskaposti</translation>
     </message>
     <message>
         <source>Authentication status: %1
@@ -2532,7 +2532,7 @@ Login tokens expiration: %2</source>
     <name>GreaderAccountDetails</name>
     <message>
         <source>Service</source>
-        <translation type="unfinished"/>
+        <translation>Palvelu</translation>
     </message>
     <message>
         <source>URL</source>
@@ -2884,22 +2884,22 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>article</source>
-        <translation type="unfinished"/>
+        <translation>artikkeli</translation>
     </message>
     <message>
         <source>articles</source>
-        <translation type="unfinished"/>
+        <translation>artikkelia</translation>
     </message>
 </context>
 <context>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark article read</source>
-        <translation type="unfinished"/>
+        <translation>Merkitse artikkeli luetuksi</translation>
     </message>
     <message>
         <source>Mark article unread</source>
-        <translation type="unfinished"/>
+        <translation>Merkitse artikkeli lukemattomaksi</translation>
     </message>
     <message>
         <source>Switch article importance</source>
@@ -3476,7 +3476,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>articles</source>
-        <translation type="unfinished"/>
+        <translation>artikkelia</translation>
     </message>
     <message>
         <source>Force execution of server-side feeds update</source>
@@ -3565,7 +3565,7 @@ Feedly is a secure space where you can privately organize and research the topic
     </message>
     <message>
         <source>Unknown event</source>
-        <translation type="unfinished"/>
+        <translation>Tuntematon tapahtuma</translation>
     </message>
     <message>
         <source>New (unread) articles fetched</source>
@@ -3583,7 +3583,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Login failed</source>
-        <translation type="unfinished"/>
+        <translation>Kirjautuminen epäonnistui</translation>
     </message>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
@@ -3968,19 +3968,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Always open hyperlinks in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Avaa linkit aina erillisessä selaimessa</translation>
     </message>
     <message>
         <source>&amp;Add tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Lisää työkalu</translation>
     </message>
     <message>
         <source>&amp;Edit selected tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Muokkaa valittua työkalua</translation>
     </message>
     <message>
         <source>&amp;Delete selected tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Poista valittu työkalu</translation>
     </message>
 </context>
 <context>
@@ -4187,7 +4187,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Articles</source>
-        <translation type="unfinished"/>
+        <translation>Artikkelit</translation>
     </message>
     <message>
         <source>Remove all read articles from all feeds on application exit</source>
@@ -4211,7 +4211,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feeds &amp; articles</source>
-        <translation type="unfinished"/>
+        <translation>Syötteet ja artikkelit</translation>
     </message>
     <message>
         <source>Auto-fetch articles for all feeds every</source>
@@ -4469,7 +4469,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Localization</source>
-        <translation type="unfinished"/>
+        <translation>Lokalisointi</translation>
     </message>
 </context>
 <context>
@@ -4521,7 +4521,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Full path to your WAV sound file</source>
-        <translation type="unfinished"/>
+        <translation>Koko polku WAV-äänitiedostoon</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
@@ -4863,7 +4863,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Ylätason kansio</translation>
     </message>
 </context>
 <context>
@@ -5273,7 +5273,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Parent folder</source>
-        <translation type="unfinished"/>
+        <translation>Ylätason kansio</translation>
     </message>
 </context>
 <context>
@@ -5334,7 +5334,7 @@ Last login on: %4</source>
     </message>
     <message>
         <source>Open this website in system web browser</source>
-        <translation type="unfinished"/>
+        <translation>Avaa tämä sivusto järjestelmän verkkoselaimessa</translation>
     </message>
 </context>
 <context>

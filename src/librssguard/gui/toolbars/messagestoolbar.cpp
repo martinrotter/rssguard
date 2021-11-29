@@ -110,7 +110,7 @@ void MessagesToolBar::initializeSearchBox() {
 
   m_txtSearchMessages = new BaseLineEdit(this);
   m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding, m_txtSearchMessages->sizePolicy().verticalPolicy());
-  m_txtSearchMessages->setPlaceholderText(tr("Search articles"));
+  m_txtSearchMessages->setPlaceholderText(tr("Search articles (regex only)"));
 
   // Setup wrapping action for search box.
   m_actionSearchMessages = new QWidgetAction(this);
