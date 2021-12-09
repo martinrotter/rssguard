@@ -68,36 +68,40 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     qDebugNN << LOGSEC_GUI << "Activating dark palette for Fusion style.";
 
     QPalette fusion_palette = qApp->palette();
-    QColor clr_bg(QSL("#2D2F32"));
+    QColor clr_maibg(QSL("#2D2F32"));
+    QColor clr_basbg(QSL("#373A3D"));
     QColor clr_altbg(QSL("#323437"));
     QColor clr_selbg(QSL("#8291AD"));
-    QColor clr_fg(QSL("#D8D8D8"));
-    QColor clr_brdr(QSL("#585C65"));
-    QColor clr_tooltip_brdr(QSL("#707580"));
-    QColor clr_link(QSL("#a1acc1"));
-    QColor clr_dis_fg(QSL("#727272"));
+    QColor clr_selfg(QSL("#FFFFFF"));
+    QColor clr_btnfg(QSL("#E7E7E7"));
+    QColor clr_dibfg(QSL("#A7A7A7"));
+    QColor clr_winfg(QSL("#D8D8D8"));
+    QColor clr_diwfg(QSL("#999999"));
+    QColor clr_brdbg(QSL("#202224")); // Use colour picker on dark brdr under list header for this one
+    QColor clr_wlink(QSL("#a1acc1"));
 
     //
     // Normal state.
     //
 
     // Backgrounds & bases.
-    fusion_palette.setColor(QPalette::ColorRole::Window, clr_bg);
-    fusion_palette.setColor(QPalette::ColorRole::Base, clr_bg);
-    fusion_palette.setColor(QPalette::ColorRole::Dark, clr_bg);
+    fusion_palette.setColor(QPalette::ColorRole::Window,        clr_maibg);
+    fusion_palette.setColor(QPalette::ColorRole::Base,          clr_basbg);
+    fusion_palette.setColor(QPalette::ColorRole::Dark,          clr_brdbg);
     fusion_palette.setColor(QPalette::ColorRole::AlternateBase, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorRole::Button, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorRole::Highlight, clr_selbg);
+    fusion_palette.setColor(QPalette::ColorRole::Button,        clr_altbg);
+    fusion_palette.setColor(QPalette::ColorRole::Light,         clr_altbg); // Bright
+    fusion_palette.setColor(QPalette::ColorRole::Highlight,     clr_selbg);
 
     // Texts.
-    fusion_palette.setColor(QPalette::ColorRole::WindowText, clr_fg);
-    fusion_palette.setColor(QPalette::ColorRole::ButtonText, clr_fg);
-    fusion_palette.setColor(QPalette::ColorRole::BrightText, clr_fg);
-    fusion_palette.setColor(QPalette::ColorRole::Text, clr_fg);
-    fusion_palette.setColor(QPalette::ColorRole::PlaceholderText, clr_fg);
-    fusion_palette.setColor(QPalette::ColorRole::Link, clr_link);
-    fusion_palette.setColor(QPalette::ColorRole::LinkVisited, clr_link);
-    fusion_palette.setColor(QPalette::ColorRole::HighlightedText, clr_fg);
+    fusion_palette.setColor(QPalette::ColorRole::ButtonText,        clr_btnfg);
+    fusion_palette.setColor(QPalette::ColorRole::WindowText,        clr_winfg);
+    fusion_palette.setColor(QPalette::ColorRole::BrightText,        clr_basbg);
+    fusion_palette.setColor(QPalette::ColorRole::Text,              clr_winfg); // Normal text
+    fusion_palette.setColor(QPalette::ColorRole::PlaceholderText,   clr_dibfg);
+    fusion_palette.setColor(QPalette::ColorRole::Link,              clr_wlink);
+    fusion_palette.setColor(QPalette::ColorRole::LinkVisited,       clr_wlink);
+    fusion_palette.setColor(QPalette::ColorRole::HighlightedText,   clr_selfg);
 
     //
     // Inactive state.
@@ -112,29 +116,30 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     //
 
     // Backgrounds & bases.
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Window, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Base, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Dark, clr_altbg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Window,        clr_maibg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Base,          clr_basbg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Dark,          clr_brdbg);
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::AlternateBase, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Button, Qt::GlobalColor::red);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Highlight, clr_selbg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Button,        clr_altbg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Light,         clr_altbg); // Bright
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Highlight,     clr_selbg);
 
     // Texts.
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::WindowText, clr_dis_fg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::ButtonText, clr_dis_fg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::BrightText, clr_fg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Text, clr_dis_fg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::PlaceholderText, clr_fg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Link, clr_link);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::LinkVisited, clr_link);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::HighlightedText, clr_fg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::ButtonText,        clr_dibfg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::WindowText,        clr_diwfg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::BrightText,        clr_basbg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Text,              clr_diwfg); // Normal text
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::PlaceholderText,   clr_dibfg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Link,              clr_wlink);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::LinkVisited,       clr_wlink);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::HighlightedText,   clr_selfg);
 
     //
     // Tooltips.
     //
 
-    fusion_palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipBase, clr_bg);
-    fusion_palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipText, clr_fg);
+    fusion_palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipBase, clr_maibg);
+    fusion_palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipText, clr_winfg);
 
     QToolTip::setPalette(fusion_palette);
     qApp->setPalette(fusion_palette);

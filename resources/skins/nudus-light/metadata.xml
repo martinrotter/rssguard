@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<skin version="0.1" base="nudus-base">
+  <author>
+    <name>akinokonomi</name>
+  </author>
+  <palette>
+    <color key="FgInteresting"          >#3A6FE4</color>
+    <color key="FgSelectedInteresting"  >#F0F2FC</color>
+    <color key="FgError"                >#E74343</color>
+    <color key="FgSelectedError"        >#FFD7D7</color>
+    <color key="Allright"               >#77dd77</color>
+  </palette>
+</skin>
