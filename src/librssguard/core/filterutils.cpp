@@ -9,6 +9,7 @@
 #include <QHostInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QProcess>
 
 FilterUtils::FilterUtils(QObject* parent) : QObject(parent) {}
 
@@ -83,4 +84,22 @@ QString FilterUtils::fromXmlToJson(const QString& xml) const {
 
 QDateTime FilterUtils::parseDateTime(const QString& dat) const {
   return TextFactory::parseDateTime(dat);
+}
+
+QString FilterUtils::runExecutableGetOutput(const QString& executable, const QStringList& arguments) const {
+  QProcess proc;
+
+  proc.setProgram(executable);
+  proc.setArguments(arguments);
+
+  proc.start();
+
+  if (proc.waitForFinished() &&
+      proc.exitStatus() == QProcess::ExitStatus::NormalExit &&
+      proc.exitCode() == EXIT_SUCCESS) {
+    return proc.readAllStandardOutput();
+  }
+  else {
+    return proc.readAllStandardError().simplified();
+  }
 }

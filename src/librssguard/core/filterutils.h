@@ -22,6 +22,7 @@ class FilterUtils : public QObject {
 
     // Parses string into date/time object.
     Q_INVOKABLE QDateTime parseDateTime(const QString& dat) const;
+    Q_INVOKABLE QString runExecutableGetOutput(const QString& executable, const QStringList& arguments = {}) const;
 };
 
 #endif // FILTERUTILS_H
