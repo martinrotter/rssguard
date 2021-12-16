@@ -101,6 +101,8 @@ Application::Application(const QString& id, int& argc, char** argv)
 #if defined(USE_WEBENGINE)
   m_webFactory->urlIinterceptor()->load();
 
+  QWebEngineProfile::defaultProfile()->setHttpUserAgent(QString(HTTP_COMPLETE_USERAGENT));
+
   connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
   connect(m_webFactory->adBlock(), &AdBlockManager::processTerminated, this, &Application::onAdBlockFailure);
 
