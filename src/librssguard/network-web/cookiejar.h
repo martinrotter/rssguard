@@ -14,6 +14,8 @@ class CookieJar : public QNetworkCookieJar {
     virtual bool insertCookie(const QNetworkCookie& cookie);
     virtual bool updateCookie(const QNetworkCookie& cookie);
     virtual bool deleteCookie(const QNetworkCookie& cookie);
+
+  public:
     static QList<QNetworkCookie> extractCookiesFromUrl(const QString& url);
 
   private:

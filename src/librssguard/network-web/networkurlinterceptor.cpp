@@ -23,6 +23,8 @@
 #include "miscellaneous/settings.h"
 #include "network-web/urlinterceptor.h"
 
+#include <QWebEngineProfile>
+
 NetworkUrlInterceptor::NetworkUrlInterceptor(QObject* parent)
   : QWebEngineUrlRequestInterceptor(parent), m_sendDnt(false) {}
 
@@ -32,6 +34,9 @@ void NetworkUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo& info) {
   }
 
   // NOTE: Here we can add custom headers for each webengine request, for example "User-Agent".
+
+  info.setHttpHeader(QByteArrayLiteral(HTTP_HEADERS_USER_AGENT),
+                     HTTP_COMPLETE_USERAGENT);
 
   for (UrlInterceptor* interceptor : qAsConst(m_interceptors)) {
     interceptor->interceptRequest(info);
