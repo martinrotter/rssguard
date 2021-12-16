@@ -315,6 +315,25 @@ void WebFactory::createMenu(QMenu* menu) {
   actions << createEngineSettingsAction(tr("Allow geolocation on insecure origins"), QWebEngineSettings::WebAttribute::AllowGeolocationOnInsecureOrigins);
 #endif
 
+#if QT_VERSION >= 0x050A00 // Qt >= 5.10.0
+  actions << createEngineSettingsAction(tr("JS can activate windows"), QWebEngineSettings::WebAttribute::AllowWindowActivationFromJavaScript);
+  actions << createEngineSettingsAction(tr("Show scrollbars"), QWebEngineSettings::WebAttribute::ShowScrollBars);
+#endif
+
+#if QT_VERSION >= 0x050B00 // Qt >= 5.11.0
+  actions << createEngineSettingsAction(tr("Media playback with gestures"), QWebEngineSettings::WebAttribute::PlaybackRequiresUserGesture);
+  actions << createEngineSettingsAction(tr("WebRTC uses only public interfaces"), QWebEngineSettings::WebAttribute::WebRTCPublicInterfacesOnly);
+  actions << createEngineSettingsAction(tr("JS can paste from clipboard"), QWebEngineSettings::WebAttribute::JavascriptCanPaste);
+#endif
+
+#if QT_VERSION >= 0x050C00 // Qt >= 5.12.0
+  actions << createEngineSettingsAction(tr("DNS prefetch enabled"), QWebEngineSettings::WebAttribute::DnsPrefetchEnabled);
+#endif
+
+#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
+  actions << createEngineSettingsAction(tr("PDF viewer enabled"), QWebEngineSettings::WebAttribute::PdfViewerEnabled);
+#endif
+
   menu->addActions(actions);
 }
 
