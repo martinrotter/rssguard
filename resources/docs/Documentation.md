@@ -167,6 +167,7 @@ Note that `MessageObject` attributes which can be synchronized with service are 
 | Method    | `hostname()`              | `String`      | `utils.hostname()`                        | Returns name of your PC.
 | Method    | `fromXmlToJson(String)`   | `String`      | `utils.fromXmlToJson('<h1>hello</h1>')`   | Converts `XML` string into `JSON`.
 | Method    | `parseDateTime(String)`   | `Date`        | `utils.parseDateTime('2020-02-24T08:00:00')`  | Converts textual date/time representation into proper `Date` object.
+| Method    | `runExecutableGetOutput(String, String[])`   | `String`        | `utils.runExecutableGetOutput('cmd.exe', ['/c', 'dir'])`  | Launches external executable with optional parameters, reads its standard output and returns the output when executable finishes.
 
 #### Examples
 Accept only messages/articles from "Bob", while also mark them "important":
