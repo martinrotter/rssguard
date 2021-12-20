@@ -3,6 +3,7 @@
 #include "core/filterutils.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/iofactory.h"
 #include "miscellaneous/textfactory.h"
 
 #include <QDomDocument>
@@ -87,19 +88,5 @@ QDateTime FilterUtils::parseDateTime(const QString& dat) const {
 }
 
 QString FilterUtils::runExecutableGetOutput(const QString& executable, const QStringList& arguments) const {
-  QProcess proc;
-
-  proc.setProgram(executable);
-  proc.setArguments(arguments);
-
-  proc.start();
-
-  if (proc.waitForFinished() &&
-      proc.exitStatus() == QProcess::ExitStatus::NormalExit &&
-      proc.exitCode() == EXIT_SUCCESS) {
-    return proc.readAllStandardOutput();
-  }
-  else {
-    return proc.readAllStandardError().simplified();
-  }
+  return IOFactory::startProcessGetOutput(executable, arguments);
 }

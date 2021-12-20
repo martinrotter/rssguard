@@ -31,6 +31,7 @@ class IOFactory {
                                      const QStringList& arguments,
                                      const QString& native_arguments = {},
                                      const QString& working_directory = {});
+    static QString startProcessGetOutput(const QString& executable, const QStringList& arguments = {});
 
     // Returns contents of a file.
     // Throws exception when no such file exists.

@@ -93,6 +93,27 @@ bool IOFactory::startProcessDetached(const QString& program, const QStringList& 
   return process.startDetached(nullptr);
 }
 
+QString IOFactory::startProcessGetOutput(const QString& executable, const QStringList& arguments) {
+  QProcess proc;
+
+  proc.setProgram(executable);
+  proc.setArguments(arguments);
+  proc.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
+
+  proc.start();
+
+  if (proc.waitForFinished() &&
+      proc.exitStatus() == QProcess::ExitStatus::NormalExit &&
+      proc.exitCode() == EXIT_SUCCESS) {
+    return proc.readAllStandardOutput();
+  }
+  else {
+    QString err = proc.readAllStandardError().simplified();
+
+    return err;
+  }
+}
+
 QByteArray IOFactory::readFile(const QString& file_path) {
   QFile input_file(file_path);
   QByteArray input_data;
