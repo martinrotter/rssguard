@@ -198,7 +198,15 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
 bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
   bool should_show = filterAcceptsRowInternal(source_row, source_parent);
 
+  qDebugNN << LOGSEC_CORE
+           << "Filter accepts row"
+           << QUOTE_W_SPACE(m_sourceModel->itemForIndex(m_sourceModel->index(source_row, 0, source_parent))->title())
+           << "and filter result is:"
+           << QUOTE_W_SPACE_DOT(should_show);
+
   if (should_show && m_hiddenIndices.contains(QPair<int, QModelIndex>(source_row, source_parent))) {
+    qDebugNN << LOGSEC_CORE << "Item was previously hidden and now shows up, expand.";
+
     const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(QPair<int, QModelIndex>(source_row, source_parent));
 
     // Load status.
@@ -213,10 +221,6 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source
 }
 
 bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex& source_parent) const {
-  if (!m_showUnreadOnly) {
-    return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
-  }
-
   const QModelIndex idx = m_sourceModel->index(source_row, 0, source_parent);
 
   if (!idx.isValid()) {
@@ -225,18 +229,23 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
 
   const RootItem* item = m_sourceModel->itemForIndex(idx);
 
-  if (item->kind() != RootItem::Kind::Category && item->kind() != RootItem::Kind::Feed) {
+  if (item->kind() != RootItem::Kind::Category &&
+      item->kind() != RootItem::Kind::Feed &&
+      item->kind() != RootItem::Kind::Label) {
     // Some items are always visible.
     return true;
   }
-  else if (item->isParentOf(m_selectedItem) /* || item->isChildOf(m_selectedItem)*/ || m_selectedItem == item) {
-    // Currently selected item and all its parents and children must be displayed.
-    return true;
+
+  if (!m_showUnreadOnly) {
+    // Take only regexp filtering into account.
+    return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
   }
   else {
     // NOTE: If item has < 0 of unread message it may mean, that the count
     // of unread messages is not (yet) known, display that item too.
-    return item->countOfUnreadMessages() != 0;
+    return
+      item->countOfUnreadMessages() != 0 &&
+      QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
   }
 }
 

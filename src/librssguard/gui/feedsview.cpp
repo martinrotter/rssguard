@@ -550,7 +550,9 @@ void FeedsView::focusInEvent(QFocusEvent* event) {
 
 void FeedsView::expandItemDelayed(const QModelIndex& idx) {
   QTimer::singleShot(100, this, [=] {
-    setExpanded(m_proxyModel->mapFromSource(idx), true);
+    QModelIndex pidx = m_proxyModel->mapFromSource(idx);
+
+    setExpanded(pidx, true);
   });
 }
 
