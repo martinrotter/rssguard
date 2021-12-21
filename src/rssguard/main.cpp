@@ -30,6 +30,13 @@ int main(int argc, char* argv[]) {
   QApplication::setDesktopFileName(APP_DESKTOP_ENTRY_FILE);
 #endif
 
+#if defined(QT_STATIC)
+  // NOTE: Add all used resources here.
+  Q_INIT_RESOURCE(icons);
+  Q_INIT_RESOURCE(sql);
+  Q_INIT_RESOURCE(rssguard);
+#endif
+
   // Ensure that ini format is used as application settings storage on macOS.
   QSettings::setDefaultFormat(QSettings::IniFormat);
 
