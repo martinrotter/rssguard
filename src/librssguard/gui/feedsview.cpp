@@ -106,6 +106,14 @@ void FeedsView::saveExpandStates(RootItem* item) {
     QModelIndex source_index = sourceModel()->indexForItem(it);
     QModelIndex visible_index = model()->mapFromSource(source_index);
 
+    // TODO: Think.
+
+    /*
+       if (isRowHidden(visible_index.row(), visible_index.parent())) {
+       continue;
+       }
+     */
+
     settings->setValue(GROUP(CategoriesExpandStates),
                        setting_name,
                        isExpanded(visible_index));
