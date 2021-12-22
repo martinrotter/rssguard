@@ -93,13 +93,18 @@ bool IOFactory::startProcessDetached(const QString& program, const QStringList& 
   return process.startDetached(nullptr);
 }
 
-QString IOFactory::startProcessGetOutput(const QString& executable, const QStringList& arguments) {
+QString IOFactory::startProcessGetOutput(const QString& executable,
+                                         const QStringList& arguments,
+                                         const QProcessEnvironment& pe) {
   QProcess proc;
 
   proc.setProgram(executable);
   proc.setArguments(arguments);
-  proc.setProcessEnvironment(QProcessEnvironment::systemEnvironment());
 
+  QProcessEnvironment system_pe = QProcessEnvironment::systemEnvironment();
+
+  system_pe.insert(pe);
+  proc.setProcessEnvironment(system_pe);
   proc.start();
 
   if (proc.waitForFinished() &&
@@ -142,6 +147,14 @@ void IOFactory::writeFile(const QString& file_path, const QByteArray& data) {
 
 bool IOFactory::copyFile(const QString& source, const QString& destination) {
   if (QFile::exists(destination)) {
+    QFile file(destination);
+
+    file.setPermissions(file.permissions() |
+                        QFileDevice::WriteOwner |
+                        QFileDevice::WriteUser |
+                        QFileDevice::WriteGroup |
+                        QFileDevice::WriteOther);
+
     if (!QFile::remove(destination)) {
       return false;
     }

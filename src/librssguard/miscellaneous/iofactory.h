@@ -7,6 +7,7 @@
 
 #include "definitions/definitions.h"
 
+#include <QProcessEnvironment>
 #include <QStandardPaths>
 
 class IOFactory {
@@ -31,7 +32,9 @@ class IOFactory {
                                      const QStringList& arguments,
                                      const QString& native_arguments = {},
                                      const QString& working_directory = {});
-    static QString startProcessGetOutput(const QString& executable, const QStringList& arguments = {});
+    static QString startProcessGetOutput(const QString& executable,
+                                         const QStringList& arguments = {},
+                                         const QProcessEnvironment& pe = {});
 
     // Returns contents of a file.
     // Throws exception when no such file exists.
