@@ -152,8 +152,14 @@ void FormMessageFiltersManager::removeSelectedFilter() {
     return;
   }
 
-  m_reader->removeMessageFilter(fltr);
-  delete m_ui.m_listFilters->currentItem();
+  if (MessageBox::show(this, QMessageBox::Icon::Question, tr("Are you sure?"),
+                       tr("Do you really want to remove selected filter?"),
+                       {}, fltr->name(),
+                       QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                       QMessageBox::StandardButton::No) == QMessageBox::StandardButton::Yes) {
+    m_reader->removeMessageFilter(fltr);
+    delete m_ui.m_listFilters->currentItem();
+  }
 }
 
 void FormMessageFiltersManager::loadFilters() {

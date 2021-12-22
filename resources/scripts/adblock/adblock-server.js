@@ -19,7 +19,7 @@
 
 const fs = require('fs');
 const tldts = require('tldts-experimental');
-const adblock = require('@cliqz/adblocker')
+const adblock = require('@cliqz/adblocker');
 const http = require('http');
 const cluster = require('cluster');
 
