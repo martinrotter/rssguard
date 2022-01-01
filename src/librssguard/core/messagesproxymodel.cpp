@@ -28,6 +28,18 @@ MessagesProxyModel::~MessagesProxyModel() {
   qDebugNN << LOGSEC_MESSAGEMODEL << "Destroying MessagesProxyModel instance.";
 }
 
+QModelIndex MessagesProxyModel::getNextPreviousImportantItemIndex(int default_row) {
+  const bool started_from_zero = default_row == 0;
+  QModelIndex next_index = getNextImportantItemIndex(default_row, rowCount() - 1);
+
+  // There is no next message, check previous.
+  if (!next_index.isValid() && !started_from_zero) {
+    next_index = getNextImportantItemIndex(0, default_row - 1);
+  }
+
+  return next_index;
+}
+
 QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) {
   const bool started_from_zero = default_row == 0;
   QModelIndex next_index = getNextUnreadItemIndex(default_row, rowCount() - 1);
@@ -40,12 +52,33 @@ QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) 
   return next_index;
 }
 
+QModelIndex MessagesProxyModel::getNextImportantItemIndex(int default_row, int max_row) const {
+  while (default_row <= max_row) {
+    // Get info if the message is read or not.
+    const QModelIndex proxy_index = index(default_row, MSG_DB_IMPORTANT_INDEX);
+    const bool is_important = m_sourceModel->data(mapToSource(proxy_index).row(),
+                                                  MSG_DB_IMPORTANT_INDEX,
+                                                  Qt::ItemDataRole::EditRole).toInt() == 1;
+
+    if (!is_important) {
+      // We found unread message, mark it.
+      return proxy_index;
+    }
+    else {
+      default_row++;
+    }
+  }
+
+  return QModelIndex();
+}
+
 QModelIndex MessagesProxyModel::getNextUnreadItemIndex(int default_row, int max_row) const {
   while (default_row <= max_row) {
     // Get info if the message is read or not.
     const QModelIndex proxy_index = index(default_row, MSG_DB_READ_INDEX);
     const bool is_read = m_sourceModel->data(mapToSource(proxy_index).row(),
-                                             MSG_DB_READ_INDEX, Qt::EditRole).toInt() == 1;
+                                             MSG_DB_READ_INDEX,
+                                             Qt::ItemDataRole::EditRole).toInt() == 1;
 
     if (!is_read) {
       // We found unread message, mark it.

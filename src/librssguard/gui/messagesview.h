@@ -52,7 +52,10 @@ class MessagesView : public BaseTreeView {
 
     void selectNextItem();
     void selectPreviousItem();
+    void selectItemWithCursorAction(QAbstractItemView::CursorAction act);
+
     void selectNextUnreadItem();
+    void selectNextImportantItem();
 
     // Searchs the visible message according to given pattern.
     void searchMessages(const QString& pattern);

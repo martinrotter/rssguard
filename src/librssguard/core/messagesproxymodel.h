@@ -14,6 +14,7 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     explicit MessagesProxyModel(MessagesModel* source_model, QObject* parent = nullptr);
     virtual ~MessagesProxyModel();
 
+    QModelIndex getNextPreviousImportantItemIndex(int default_row);
     QModelIndex getNextPreviousUnreadItemIndex(int default_row);
 
     // Maps list of indexes.
@@ -30,6 +31,7 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     void setShowUnreadOnly(bool show_unread_only);
 
   private:
+    QModelIndex getNextImportantItemIndex(int default_row, int max_row) const;
     QModelIndex getNextUnreadItemIndex(int default_row, int max_row) const;
 
     bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
