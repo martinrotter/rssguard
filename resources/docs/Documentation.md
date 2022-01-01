@@ -167,6 +167,7 @@ Note that `MessageObject` attributes which can be synchronized with service are 
 | Method    | `hostname()`              | `String`      | `utils.hostname()`                        | Returns name of your PC.
 | Method    | `fromXmlToJson(String)`   | `String`      | `utils.fromXmlToJson('<h1>hello</h1>')`   | Converts `XML` string into `JSON`.
 | Method    | `parseDateTime(String)`   | `Date`        | `utils.parseDateTime('2020-02-24T08:00:00')`  | Converts textual date/time representation into proper `Date` object.
+| Method    | `runExecutableGetOutput(String, String[])`   | `String`        | `utils.runExecutableGetOutput('cmd.exe', ['/c', 'dir'])`  | Launches external executable with optional parameters, reads its standard output and returns the output when executable finishes.
 
 #### Examples
 Accept only messages/articles from "Bob", while also mark them "important":
@@ -399,12 +400,15 @@ RSS Guard is distributed in two variants:
 
 If you're not sure which version to use, **use the WebEngine-based RSS Guard**.
 
-#### AdBlock
+#### AdBlock <a id="adbl"></a>
 [Web-based variant](#webb) of RSS Guard offers ad-blocking functionality via [Adblocker](https://github.com/cliqz-oss/adblocker). Adblocker offers similar performance to [uBlock Origin](https://github.com/gorhill/uBlock).
 
-You need to have have [Node.js](https://nodejs.org) with [NPM](https://www.npmjs.com) (which is usually included in Node.js installer) installed to have ad-blocking in RSS Guard working. Also, the implementation requires additional [npm](https://www.npmjs.com) modules to be installed. You see the list of needed modules near the top of [this](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/adblock/adblock-server.js) file.
+If you want to enable AdBlock in RSS Guard you need to do this:
 
-I understand that the above installation of needed dependencies is not trivial, but it is necessary evil to have up-to-date and modern implementation of AdBlock in RSS Guard. Previous, "C++"-based, implementation was buggy, quite slow, and hard to maintain.
+1. Have [Node.js](https://nodejs.org) with [NPM](https://www.npmjs.com) (which is usually included in Node.js installer) installed. Also you need to have paths `node.exe` and `npm` added to your system `PATH` environment available.
+2. The implementation requires additional [npm](https://www.npmjs.com) modules to be installed. You see the list of needed modules near the top of [this](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/adblock/adblock-server.js) file.
+
+I understand that the above installation is not trivial, but it is necessary evil to have up-to-date and modern implementation of AdBlock in RSS Guard. Previous, `C++`-based, implementation was buggy, slow, and hard to maintain.
 
 You can find elaborate lists of AdBlock rules [here](https://easylist.to). You can just copy direct hyperlinks to those lists and paste them into the "Filter lists" text-box as shown below. Remember to always separate individual links with newlines. Same applies to "Custom filters", where you can insert individual filters, for example [filter](https://adblockplus.org/filter-cheatsheet) "idnes" to block all URLs with "idnes" in them.
 

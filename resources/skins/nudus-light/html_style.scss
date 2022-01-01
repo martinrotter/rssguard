@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+//
+// Colours
+//
+
+$cbg00: #FBFBFB !default; // Background // Qt5 fusion bg light toolbar-grey
+
+$cfg00: #000000 !default;
+//$cfg10: #A23542 !default; // TODO: fg for code
+$cfg11: #343434 !default; // Lighter fg for blockquote
+$cfg10: $cfg11;
+
+$cbor2: #CFCFCF !default; // hr and blockquote border
+
+$ccodeblock:    #F1F1F1     !default; // bg for `pre > code` and `details > summ`
+$ccode:         $ccodeblock !default; // bg for `code`
+$cbor3:         #DEDEDE     !default; // code/pre border
+$cmark:         #FFECCC     !default;
+
+$clink: #5D88D2 !default; // Else use steelblue
+
+//
+// Other
+//
+
+$radius-unit: .1em !default;
+
+@import
+    "../nudus-base/html_style_base"
+;
+
+//
+// Light style has following additions:
+//
+
+::selection {
+    color: #F1F1F1;
+}

@@ -3,12 +3,14 @@
 #include "core/filterutils.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/iofactory.h"
 #include "miscellaneous/textfactory.h"
 
 #include <QDomDocument>
 #include <QHostInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QProcess>
 
 FilterUtils::FilterUtils(QObject* parent) : QObject(parent) {}
 
@@ -83,4 +85,8 @@ QString FilterUtils::fromXmlToJson(const QString& xml) const {
 
 QDateTime FilterUtils::parseDateTime(const QString& dat) const {
   return TextFactory::parseDateTime(dat);
+}
+
+QString FilterUtils::runExecutableGetOutput(const QString& executable, const QStringList& arguments) const {
+  return IOFactory::startProcessGetOutput(executable, arguments);
 }

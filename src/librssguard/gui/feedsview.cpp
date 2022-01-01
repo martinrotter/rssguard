@@ -106,6 +106,14 @@ void FeedsView::saveExpandStates(RootItem* item) {
     QModelIndex source_index = sourceModel()->indexForItem(it);
     QModelIndex visible_index = model()->mapFromSource(source_index);
 
+    // TODO: Think.
+
+    /*
+       if (isRowHidden(visible_index.row(), visible_index.parent())) {
+       continue;
+       }
+     */
+
     settings->setValue(GROUP(CategoriesExpandStates),
                        setting_name,
                        isExpanded(visible_index));
@@ -550,7 +558,9 @@ void FeedsView::focusInEvent(QFocusEvent* event) {
 
 void FeedsView::expandItemDelayed(const QModelIndex& idx) {
   QTimer::singleShot(100, this, [=] {
-    setExpanded(m_proxyModel->mapFromSource(idx), true);
+    QModelIndex pidx = m_proxyModel->mapFromSource(idx);
+
+    setExpanded(pidx, true);
   });
 }
 

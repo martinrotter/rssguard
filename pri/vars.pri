@@ -11,7 +11,7 @@ APP_URL                       = "https://github.com/martinrotter/rssguard"
 APP_URL_ISSUES                = "https://github.com/martinrotter/rssguard/issues"
 APP_URL_ISSUES_NEW            = "https://github.com/martinrotter/rssguard/issues/new"
 APP_URL_DOCUMENTATION         = "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md"
-APP_USERAGENT                 = "RSS Guard/$$APP_VERSION (github.com/martinrotter/rssguard)"
+APP_USERAGENT                 = "RSS Guard/$$APP_VERSION"
 APP_DONATE_URL                = "https://martinrotter.github.io/donate"
 
 message($$MSG_PREFIX: Welcome RSS Guard qmake script.)

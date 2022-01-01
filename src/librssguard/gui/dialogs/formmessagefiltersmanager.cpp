@@ -36,8 +36,8 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader, const Q
 
   m_ui.m_treeFeeds->setIndentation(FEEDS_VIEW_INDENTATION);
   m_ui.m_treeFeeds->setModel(m_feedsModel);
-  m_ui.m_btnCheckAll->setIcon(qApp->icons()->fromTheme(QSL("dialog-yes")));
-  m_ui.m_btnUncheckAll->setIcon(qApp->icons()->fromTheme(QSL("dialog-no")));
+  m_ui.m_btnCheckAll->setIcon(qApp->icons()->fromTheme(QSL("dialog-yes"), QSL("edit-select-all")));
+  m_ui.m_btnUncheckAll->setIcon(qApp->icons()->fromTheme(QSL("dialog-no"), QSL("edit-select-none")));
   m_ui.m_btnAddNew->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
   m_ui.m_btnRemoveSelected->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
   m_ui.m_btnBeautify->setIcon(qApp->icons()->fromTheme(QSL("format-justify-fill")));
@@ -152,8 +152,14 @@ void FormMessageFiltersManager::removeSelectedFilter() {
     return;
   }
 
-  m_reader->removeMessageFilter(fltr);
-  delete m_ui.m_listFilters->currentItem();
+  if (MessageBox::show(this, QMessageBox::Icon::Question, tr("Are you sure?"),
+                       tr("Do you really want to remove selected filter?"),
+                       {}, fltr->name(),
+                       QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                       QMessageBox::StandardButton::No) == QMessageBox::StandardButton::Yes) {
+    m_reader->removeMessageFilter(fltr);
+    delete m_ui.m_listFilters->currentItem();
+  }
 }
 
 void FormMessageFiltersManager::loadFilters() {

@@ -143,6 +143,12 @@
 #define DEFAULT_ZOOM_FACTOR 1.0f
 #define ZOOM_FACTOR_STEP    0.1f
 
+#if defined(USE_WEBENGINE)
+#define HTTP_COMPLETE_USERAGENT (QWebEngineProfile::defaultProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") + QByteArrayLiteral(APP_USERAGENT))
+#else
+#define HTTP_COMPLETE_USERAGENT (QByteArrayLiteral(APP_USERAGENT))
+#endif
+
 #define INTERNAL_URL_MESSAGE                  "http://rssguard.message"
 #define INTERNAL_URL_BLANK                    "http://rssguard.blank"
 #define INTERNAL_URL_ADBLOCKED                "http://rssguard.adblocked"

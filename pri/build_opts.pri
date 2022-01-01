@@ -82,6 +82,10 @@ win32 {
   
   # Additionally link against Shell32.
   LIBS *= Shell32.lib
+
+  static {
+    LIBS *= -lodbc32
+  }
 }
 
 static {

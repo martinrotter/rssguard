@@ -431,7 +431,9 @@ bool DatabaseQueries::purgeReadMessages(const QSqlDatabase& db) {
 
 bool DatabaseQueries::purgeOldMessages(const QSqlDatabase& db, int older_than_days) {
   QSqlQuery q(db);
-  const qint64 since_epoch = QDateTime::currentDateTimeUtc().addDays(-older_than_days).toMSecsSinceEpoch();
+  const qint64 since_epoch = older_than_days == 0
+                             ? QDateTime::currentDateTimeUtc().addYears(10).toMSecsSinceEpoch()
+                             : QDateTime::currentDateTimeUtc().addDays(-older_than_days).toMSecsSinceEpoch();
 
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND date_created < :date_created;"));

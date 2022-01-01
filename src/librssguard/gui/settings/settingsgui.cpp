@@ -39,7 +39,6 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
 
   // Setup skins.
   m_ui->m_treeSkins->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
-
   m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
 
@@ -238,7 +237,7 @@ void SettingsGui::loadSettings() {
     clr_btn->setObjectName(QString::number(enumer.value(i)));
     clr_btn->setColor(clr);
 
-    auto* lay = new QHBoxLayout(this);
+    auto* lay = new QHBoxLayout();
 
     lay->addWidget(clr_btn);
     lay->addWidget(rst_btn);
@@ -251,7 +250,6 @@ void SettingsGui::loadSettings() {
     m_ui->m_layoutCustomColors->setLayout(row,
                                           QFormLayout::ItemRole::FieldRole,
                                           lay);
-
   }
 
   onEndLoadSettings();

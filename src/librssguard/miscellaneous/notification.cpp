@@ -8,6 +8,7 @@
 
 #if !defined(Q_OS_OS2)
 #include <QMediaPlayer>
+#include <QSoundEffect>
 
 #if QT_VERSION_MAJOR == 6
 #include <QAudioOutput>
@@ -36,50 +37,77 @@ void Notification::setSoundPath(const QString& sound_path) {
 void Notification::playSound(Application* app) const {
   if (!m_soundPath.isEmpty()) {
 #if !defined(Q_OS_OS2)
-    QMediaPlayer* play = new QMediaPlayer(app);
+    if (m_soundPath.endsWith(QSL(".wav"), Qt::CaseSensitivity::CaseInsensitive)) {
+      qDebugNN << LOGSEC_CORE << "Using QSoundEffect to play notification sound.";
+
+      QSoundEffect* play = new QSoundEffect(app);
+
+      QObject::connect(play, &QSoundEffect::playingChanged, play, [play]() {
+        if (!play->isPlaying()) {
+          play->deleteLater();
+        }
+      });
+
+      if (m_soundPath.startsWith(QSL(":"))) {
+        play->setSource(QUrl(QSL("qrc") + m_soundPath));
+
+      }
+      else {
+        play->setSource(QUrl::fromLocalFile(
+                          QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath))));
+      }
+
+      play->setVolume(m_volume);
+      play->play();
+    }
+    else {
+      qDebugNN << LOGSEC_CORE << "Using QMediaPlayer to play notification sound.";
+
+      QMediaPlayer* play = new QMediaPlayer(app);
 
 #if QT_VERSION_MAJOR == 6
-    QAudioOutput* out = new QAudioOutput(app);
+      QAudioOutput* out = new QAudioOutput(app);
 
-    play->setAudioOutput(out);
+      play->setAudioOutput(out);
 
-    QObject::connect(play, &QMediaPlayer::playbackStateChanged, play, [play, out](QMediaPlayer::PlaybackState state) {
-      if (state == QMediaPlayer::PlaybackState::StoppedState) {
-        out->deleteLater();
-        play->deleteLater();
+      QObject::connect(play, &QMediaPlayer::playbackStateChanged, play, [play, out](QMediaPlayer::PlaybackState state) {
+        if (state == QMediaPlayer::PlaybackState::StoppedState) {
+          out->deleteLater();
+          play->deleteLater();
+        }
+      });
+
+      if (m_soundPath.startsWith(QSL(":"))) {
+        play->setSource(QUrl(QSL("qrc") + m_soundPath));
+
       }
-    });
+      else {
+        play->setSource(QUrl::fromLocalFile(QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath))));
+      }
 
-    if (m_soundPath.startsWith(QSL(":"))) {
-      play->setSource(QUrl(QSL("qrc") + m_soundPath));
-
-    }
-    else {
-      play->setSource(QUrl::fromLocalFile(QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath))));
-    }
-
-    play->audioOutput()->setVolume((m_volume * 1.0f) / 100.0f);
-    play->play();
+      play->audioOutput()->setVolume((m_volume * 1.0f) / 100.0f);
+      play->play();
 #else
-    QObject::connect(play, &QMediaPlayer::stateChanged, play, [play](QMediaPlayer::State state) {
-      if (state == QMediaPlayer::State::StoppedState) {
-        play->deleteLater();
+      QObject::connect(play, &QMediaPlayer::stateChanged, play, [play](QMediaPlayer::State state) {
+        if (state == QMediaPlayer::State::StoppedState) {
+          play->deleteLater();
+        }
+      });
+
+      if (m_soundPath.startsWith(QSL(":"))) {
+        play->setMedia(QMediaContent(QUrl(QSL("qrc") + m_soundPath)));
+
       }
-    });
+      else {
+        play->setMedia(QMediaContent(
+                         QUrl::fromLocalFile(
+                           QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath)))));
+      }
 
-    if (m_soundPath.startsWith(QSL(":"))) {
-      play->setMedia(QMediaContent(QUrl(QSL("qrc") + m_soundPath)));
-
-    }
-    else {
-      play->setMedia(QMediaContent(
-                       QUrl::fromLocalFile(
-                         QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath)))));
-    }
-
-    play->setVolume(m_volume);
-    play->play();
+      play->setVolume(m_volume);
+      play->play();
 #endif
+    }
 #endif
   }
 }
