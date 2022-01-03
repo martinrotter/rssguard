@@ -37,6 +37,8 @@ FeedsView::FeedsView(QWidget* parent)
   m_sourceModel = qApp->feedReader()->feedsModel();
   m_proxyModel = qApp->feedReader()->feedsProxyModel();
 
+  m_proxyModel->setView(this);
+
   // Connections.
   connect(m_sourceModel, &FeedsModel::requireItemValidationAfterDragDrop, this, &FeedsView::validateItemAfterDragDrop);
   connect(m_sourceModel, &FeedsModel::itemExpandRequested, this, &FeedsView::onItemExpandRequested);

@@ -8,6 +8,7 @@
 #include "services/abstract/rootitem.h"
 
 class FeedsModel;
+class FeedsView;
 
 class FeedsProxyModel : public QSortFilterProxyModel {
   Q_OBJECT
@@ -29,6 +30,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     const RootItem* selectedItem() const;
 
     void setSelectedItem(const RootItem* selected_item);
+    void setView(FeedsView* newView);
 
   public slots:
     void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
@@ -45,6 +47,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
 
     // Source model pointer.
     FeedsModel* m_sourceModel;
+    FeedsView* m_view;
     const RootItem* m_selectedItem;
     bool m_showUnreadOnly;
     QList<QPair<int, QModelIndex>> m_hiddenIndices;

@@ -4,6 +4,7 @@
 
 #include "core/feedsmodel.h"
 #include "definitions/definitions.h"
+#include "gui/feedsview.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/regexfactory.h"
 #include "services/abstract/rootitem.h"
@@ -11,7 +12,8 @@
 #include <QTimer>
 
 FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_selectedItem(nullptr), m_showUnreadOnly(false) {
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_view(nullptr),
+  m_selectedItem(nullptr), m_showUnreadOnly(false) {
   setObjectName(QSL("FeedsProxyModel"));
 
   setSortRole(Qt::ItemDataRole::EditRole);
@@ -243,10 +245,20 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
   else {
     // NOTE: If item has < 0 of unread message it may mean, that the count
     // of unread messages is not (yet) known, display that item too.
+    //
+    // Also, the actual selected item should not be filtered out too.
+    // This is primarily to make sure that the selection does not "vanish", this
+    // particularly manifests itself if user uses "next unread item" action and
+    // "show unread only" is enabled too and user for example selects last unread
+    // article in a feed -> then the feed would disappear from list suddenly.
     return
-      item->countOfUnreadMessages() != 0 &&
-      QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+      m_selectedItem == item || (item->countOfUnreadMessages() != 0 &&
+                                 QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent));
   }
+}
+
+void FeedsProxyModel::setView(FeedsView* newView) {
+  m_view = newView;
 }
 
 const RootItem* FeedsProxyModel::selectedItem() const {
