@@ -549,11 +549,19 @@ QList<Feed*>FeedsModel::feedsForIndex(const QModelIndex& index) const {
 }
 
 bool FeedsModel::markItemRead(RootItem* item, RootItem::ReadStatus read) {
-  return item->markAsReadUnread(read);
+  if (item != nullptr) {
+    return item->markAsReadUnread(read);
+  }
+
+  return true;
 }
 
 bool FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
-  return item->cleanMessages(clean_read_only);
+  if (item != nullptr) {
+    return item->cleanMessages(clean_read_only);
+  }
+
+  return true;
 }
 
 QVariant FeedsModel::data(const QModelIndex& index, int role) const {
