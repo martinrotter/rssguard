@@ -23,7 +23,7 @@ def get_score_of_url(article_url):
   req.add_header("User-Agent", "curl/7.55.1")
   response = urllib.request.urlopen(req, context=ssl.SSLContext())
   text = response.read().decode("utf-8")
-  score = int(re.search(r'metascore_w larger tvshow positive">(\d{1,2})', text).group(1))
+  score = int(re.search(r'(metascore_w larger tvshow positive|ratingValue)">(\d{1,2})', text).group(2))
   return score
 
 def main():
