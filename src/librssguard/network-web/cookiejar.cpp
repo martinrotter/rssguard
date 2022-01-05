@@ -13,7 +13,26 @@
 #include <QNetworkCookie>
 #include <QSettings>
 
+#if defined(USE_WEBENGINE)
+#include <QWebEngineCookieStore>
+#include <QWebEngineProfile>
+#endif
+
 CookieJar::CookieJar(QObject* parent) : QNetworkCookieJar(parent) {
+#if defined(USE_WEBENGINE)
+  QWebEngineProfile::defaultProfile()->setPersistentCookiesPolicy(QWebEngineProfile::PersistentCookiesPolicy::NoPersistentCookies);
+
+  m_webEngineCookies = QWebEngineProfile::defaultProfile()->cookieStore();
+
+  // When cookies change in WebEngine, then change in main cookie jar too.
+  connect(m_webEngineCookies, &QWebEngineCookieStore::cookieAdded, this, [=](const QNetworkCookie& cookie) {
+    insertCookieInternal(cookie, false, true);
+  });
+  connect(m_webEngineCookies, &QWebEngineCookieStore::cookieRemoved, this, [=](const QNetworkCookie& cookie) {
+    deleteCookieInternal(cookie, false);
+  });
+#endif
+
   loadCookies();
 }
 
@@ -56,7 +75,7 @@ void CookieJar::loadCookies() {
       auto cookie = QNetworkCookie::parseCookies(encoded);
 
       if (!cookie.isEmpty()) {
-        if (!QNetworkCookieJar::insertCookie(cookie.at(0))) {
+        if (!insertCookieInternal(cookie.at(0), true, false)) {
           qCriticalNN << LOGSEC_NETWORK
                       << "Failed to load cookie"
                       << QUOTE_W_SPACE(cookie_key)
@@ -95,32 +114,70 @@ bool CookieJar::setCookiesFromUrl(const QList<QNetworkCookie>& cookie_list, cons
   return QNetworkCookieJar::setCookiesFromUrl(cookie_list, url);
 }
 
-bool CookieJar::insertCookie(const QNetworkCookie& cookie) {
+bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool notify_others, bool should_save) {
   auto result = QNetworkCookieJar::insertCookie(cookie);
 
   if (result) {
-    saveCookies();
+    if (should_save) {
+      saveCookies();
+    }
+
+#if defined(USE_WEBENGINE)
+    if (notify_others) {
+      m_webEngineCookies->setCookie(cookie);
+    }
+#else
+    Q_UNUSED(notify_others)
+#endif
   }
 
   return result;
 }
 
-bool CookieJar::updateCookie(const QNetworkCookie& cookie) {
+bool CookieJar::updateCookieInternal(const QNetworkCookie& cookie, bool notify_others) {
   auto result = QNetworkCookieJar::updateCookie(cookie);
 
   if (result) {
     saveCookies();
+
+#if defined(USE_WEBENGINE)
+    if (notify_others) {
+      m_webEngineCookies->setCookie(cookie);
+    }
+#else
+    Q_UNUSED(notify_others)
+#endif
   }
 
   return result;
 }
 
-bool CookieJar::deleteCookie(const QNetworkCookie& cookie) {
+bool CookieJar::deleteCookieInternal(const QNetworkCookie& cookie, bool notify_others) {
   auto result = QNetworkCookieJar::deleteCookie(cookie);
 
   if (result) {
     saveCookies();
+
+#if defined(USE_WEBENGINE)
+    if (notify_others) {
+      m_webEngineCookies->deleteCookie(cookie);
+    }
+#else
+    Q_UNUSED(notify_others)
+#endif
   }
 
   return result;
+}
+
+bool CookieJar::insertCookie(const QNetworkCookie& cookie) {
+  return insertCookieInternal(cookie, true, true);
+}
+
+bool CookieJar::deleteCookie(const QNetworkCookie& cookie) {
+  return deleteCookieInternal(cookie, true);
+}
+
+bool CookieJar::updateCookie(const QNetworkCookie& cookie) {
+  return updateCookieInternal(cookie, true);
 }
