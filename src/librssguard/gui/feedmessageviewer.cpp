@@ -347,8 +347,20 @@ void FeedMessageViewer::initializeViews() {
 
 void FeedMessageViewer::refreshVisualProperties() {
   const Qt::ToolButtonStyle button_style =
-    static_cast<Qt::ToolButtonStyle>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToolbarStyle)).toInt());
+    static_cast<Qt::ToolButtonStyle>(qApp->settings()->value(GROUP(GUI),
+                                                             SETTING(GUI::ToolbarStyle)).toInt());
 
   m_toolBarFeeds->setToolButtonStyle(button_style);
   m_toolBarMessages->setToolButtonStyle(button_style);
+
+  const int icon_size = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToolbarIconSize)).toInt();
+
+  if (icon_size > 0) {
+    m_toolBarFeeds->setIconSize({ icon_size, icon_size });
+    m_toolBarMessages->setIconSize({ icon_size, icon_size });
+  }
+  else {
+    m_toolBarFeeds->setIconSize({ qApp->style()->pixelMetric(QStyle::PM_ToolBarIconSize),
+                                  qApp->style()->pixelMetric(QStyle::PM_ToolBarIconSize) });
+  }
 }

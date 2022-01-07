@@ -158,6 +158,9 @@ DVALUE(QList<QVariant>) GUI::SplitterMessagesVerticalDef = {};
 DKEY GUI::SplitterMessagesHorizontal = "splitter_messages_horizontal";
 DVALUE(QList<QVariant>) GUI::SplitterMessagesHorizontalDef = {};
 
+DKEY GUI::ToolbarIconSize = "toolbar_icon_size";
+DVALUE(int) GUI::ToolbarIconSizeDef = 0;
+
 DKEY GUI::ToolbarStyle = "toolbar_style";
 DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef = Qt::ToolButtonIconOnly;
 

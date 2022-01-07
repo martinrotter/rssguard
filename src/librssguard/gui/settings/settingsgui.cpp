@@ -72,6 +72,16 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   connect(m_ui->m_cmbSelectToolBar, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), m_ui->m_stackedToolbars,
           &QStackedWidget::setCurrentIndex);
   connect(m_ui->m_gbCustomSkinColors, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_spinToolbarIconSize, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsGui::dirtifySettings);
+
+  connect(m_ui->m_spinToolbarIconSize, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
+    if (value <= 0) {
+      m_ui->m_spinToolbarIconSize->setSuffix(QSL(" px ") + tr("= default icon size"));
+    }
+    else {
+      m_ui->m_spinToolbarIconSize->setSuffix(QSL(" px"));
+    }
+  });
 }
 
 SettingsGui::~SettingsGui() {
@@ -193,6 +203,7 @@ void SettingsGui::loadSettings() {
   m_ui->m_checkHideTabBarIfOneTabVisible->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool());
 
   // Load toolbar button style.
+  m_ui->m_spinToolbarIconSize->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToolbarIconSize)).toInt());
   m_ui->m_cmbToolbarButtonStyle->addItem(tr("Icon only"), Qt::ToolButtonStyle::ToolButtonIconOnly);
   m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text only"), Qt::ToolButtonStyle::ToolButtonTextOnly);
   m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text beside icon"), Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
@@ -279,6 +290,8 @@ void SettingsGui::saveSettings() {
   }
 
   // Save toolbar.
+  settings()->setValue(GROUP(GUI), GUI::ToolbarIconSize, m_ui->m_spinToolbarIconSize->value());
+
   settings()->setValue(GROUP(GUI), GUI::ToolbarStyle,
                        m_ui->m_cmbToolbarButtonStyle->itemData(m_ui->m_cmbToolbarButtonStyle->currentIndex()));
 

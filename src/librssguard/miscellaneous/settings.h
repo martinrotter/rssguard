@@ -184,6 +184,9 @@ namespace GUI {
   KEY SplitterMessagesHorizontal;
   VALUE(QList<QVariant>) SplitterMessagesHorizontalDef;
 
+  KEY ToolbarIconSize;
+  VALUE(int) ToolbarIconSizeDef;
+
   KEY ToolbarStyle;
   VALUE(Qt::ToolButtonStyle) ToolbarStyleDef;
 
