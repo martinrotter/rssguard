@@ -86,8 +86,6 @@ FeedsToolBar* FeedMessageViewer::feedsToolBar() const {
 void FeedMessageViewer::saveSize() {
   Settings* settings = qApp->settings();
 
-  //m_feedsView->saveAllExpandStates();
-
   // Store offsets of splitters.
   settings->setValue(GROUP(GUI), GUI::SplitterFeeds, toVariant(m_feedSplitter->sizes()));
 

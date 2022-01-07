@@ -39,9 +39,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void saveAllExpandStates();
     void loadAllExpandStates();
 
-    bool isFiltering() const;
-    void setIsFiltering(bool newIsFiltering);
-
   public slots:
     void copyUrlOfSelectedFeeds() const;
     void sortByColumn(int column, Qt::SortOrder order);

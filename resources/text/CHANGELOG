@@ -1,3 +1,36 @@
+4.1.0
+-----
+
+RSS Guard now has its own DISCORD: https://discord.gg/7xbVMPPNqH
+
+Special thanks to @akinokonomi who helped with this release and made world a better place to live our lives!
+
+Added:
+* Network communication of RSS Guard now shares cookies and user-agent with bundled WebEngine. You can thus access cookie-protected resources in RSS Guard, including feeds. (#556)
+* Confirmation dialog is displayed when removing article filter. (#562)
+* Use "QSoundPlayer" for better support when playing notification sounds, no GStreamer required now. (#551)
+* New default skins with light/dark variants, Nudus. Thanks to @akinokonomi for amazing job. Nudus is lightweight skin with maintainable code base. Note all other skins will be removed in next release as it is difficult to provide reasonable support for them. (#540)
+* Optionally display only time (without date) for today's articles. (#530)
+* Icon size of toolbars is now configurable.
+* More web attributes added to web viewer context menu.
+* Use more standard user-agent.
+* Tens of minor tweaks added.
+
+Fixed:
+* Expanding/collapsing of categories is now properly persistent and behaves more correctly when filtering feed list in some way. (#546)
+* No more crashing after "mark item as read" action. (#563)
+* Deal with spaces in feed URLs. (#542)
+* Fix crash in Greader plugin. (#539)
+* Fix cleaning up of database when clearing articles older than 0 days.
+* Finally solving issues with remembering article list/viewer splitter position. (#517)
+* Update some hyperlinks, use correct terminology. (#536, #537)
+* Make "article list row height" work as intended. (#528)
+* Localizations synced.
+* Application now closes correctly on Linux, if tray area is not available and tray icon is mistakenly still "enabled".
+* Server JavaScript file of Adblock is now copied to destination properly.
+* Regex filtering and "show unread only" features now work together in feed list.
+* Node.js "NODE_PATH" value is now determined in runtime, not hardcoded.
+
 4.0.4
 -----
 

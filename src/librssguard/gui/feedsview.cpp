@@ -44,9 +44,7 @@ FeedsView::FeedsView(QWidget* parent)
   connect(m_sourceModel, &FeedsModel::itemExpandRequested, this, &FeedsView::onItemExpandRequested);
   connect(m_sourceModel, &FeedsModel::itemExpandStateSaveRequested, this, &FeedsView::onItemExpandStateSaveRequested);
   connect(header(), &QHeaderView::sortIndicatorChanged, this, &FeedsView::saveSortState);
-
   connect(m_proxyModel, &FeedsProxyModel::expandAfterFilterIn, this, &FeedsView::expandItemDelayed);
-
   connect(this, &FeedsView::expanded, this, &FeedsView::onIndexExpanded);
   connect(this, &FeedsView::collapsed, this, &FeedsView::onIndexCollapsed);
 
@@ -573,28 +571,10 @@ void FeedsView::saveExpandStates(RootItem* item) {
     QModelIndex source_index = sourceModel()->indexForItem(it);
     QModelIndex visible_index = model()->mapFromSource(source_index);
 
-    // TODO: Think.
-
-    /*
-       if (isRowHidden(visible_index.row(), visible_index.parent())) {
-       continue;
-       }
-     */
-
     settings->setValue(GROUP(CategoriesExpandStates),
                        setting_name,
                        isExpanded(visible_index));
   }
-}
-
-bool FeedsView::isFiltering() const
-{
-  return m_isFiltering;
-}
-
-void FeedsView::setIsFiltering(bool newIsFiltering)
-{
-  m_isFiltering = newIsFiltering;
 }
 
 void FeedsView::loadAllExpandStates() {
