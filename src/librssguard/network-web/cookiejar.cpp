@@ -124,7 +124,8 @@ bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
 #if defined(USE_WEBENGINE)
     if (notify_others) {
-      m_webEngineCookies->setCookie(cookie);
+      // NOTE: Make sync one-way for now, it crashes.
+      //m_webEngineCookies->setCookie(cookie);
     }
 #else
     Q_UNUSED(notify_others)
@@ -142,7 +143,7 @@ bool CookieJar::updateCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
 #if defined(USE_WEBENGINE)
     if (notify_others) {
-      m_webEngineCookies->setCookie(cookie);
+      //m_webEngineCookies->setCookie(cookie);
     }
 #else
     Q_UNUSED(notify_others)
@@ -160,7 +161,7 @@ bool CookieJar::deleteCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
 #if defined(USE_WEBENGINE)
     if (notify_others) {
-      m_webEngineCookies->deleteCookie(cookie);
+      //m_webEngineCookies->deleteCookie(cookie);
     }
 #else
     Q_UNUSED(notify_others)
