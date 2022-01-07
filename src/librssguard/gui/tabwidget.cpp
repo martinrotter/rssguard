@@ -289,7 +289,7 @@ void TabWidget::gotoPreviousTab() {
 
 void TabWidget::indentTabText(int index) {
 #if defined(Q_OS_MACOS)
-  if (tabBar()->tabType(index) != TabBar::FeedReader && !tabIcon(index).isNull()) {
+  if (tabBar()->tabType(index) != TabBar::TabType::FeedReader && !tabIcon(index).isNull()) {
     // We have closable tab with some icon, fix the title.
     const QString text = tabText(index);
 
