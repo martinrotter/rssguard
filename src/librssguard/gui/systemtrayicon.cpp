@@ -87,15 +87,9 @@ void SystemTrayIcon::showPrivate() {
 }
 
 void SystemTrayIcon::show() {
-#if defined(Q_OS_WIN)
   // Show immediately.
   qDebugNN << LOGSEC_GUI << "Showing tray icon immediately.";
   showPrivate();
-#else
-  // Delay avoids race conditions and tray icon is properly displayed.
-  qDebugNN << LOGSEC_GUI << "Showing tray icon with 3000 ms delay.";
-  QTimer::singleShot(3000, this, &SystemTrayIcon::showPrivate);
-#endif
 }
 
 void SystemTrayIcon::setNumber(int number, bool any_new_message) {

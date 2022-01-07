@@ -465,15 +465,29 @@ QIcon Application::desktopAwareIcon() const {
 void Application::showTrayIcon() {
   // Display tray icon if it is enabled and available.
   if (SystemTrayIcon::isSystemTrayDesired()) {
-#if !defined(Q_OS_LINUX)
-    if (!SystemTrayIcon::isSystemTrayAreaAvailable()) {
-      qWarningNN << LOGSEC_GUI << "Tray icon area is not available.";
-      return;
-    }
-#endif
+    qDebugNN << LOGSEC_GUI << "User wants to have tray icon.";
 
-    qDebugNN << LOGSEC_GUI << "Showing tray icon.";
-    trayIcon()->show();
+#if defined(Q_OS_WIN)
+    if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
+      qDebugNN << LOGSEC_GUI << "Tray icon is available, showing now.";
+      trayIcon()->show();
+    }
+    else {
+      m_feedReader->feedsModel()->notifyWithCounts();
+    }
+#else
+    // Delay avoids race conditions and tray icon is properly displayed.
+    qWarningNN << LOGSEC_GUI << "Showing tray icon with 3000 ms delay.";
+    QTimer::singleShot(3000, this, [=]() {
+      if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
+        qWarningNN << LOGSEC_GUI << "Tray icon is available, showing now.";
+        trayIcon()->show();
+      }
+      else {
+        m_feedReader->feedsModel()->notifyWithCounts();
+      }
+    });
+#endif
   }
   else {
     m_feedReader->feedsModel()->notifyWithCounts();
