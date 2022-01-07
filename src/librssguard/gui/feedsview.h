@@ -39,6 +39,9 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void saveAllExpandStates();
     void loadAllExpandStates();
 
+    bool isFiltering() const;
+    void setIsFiltering(bool newIsFiltering);
+
   public slots:
     void copyUrlOfSelectedFeeds() const;
     void sortByColumn(int column, Qt::SortOrder order);
@@ -91,7 +94,10 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void mouseDoubleClickEvent(QMouseEvent* event);
 
   private slots:
-    void expandItemDelayed(const QModelIndex& idx);
+    void onIndexExpanded(const QModelIndex& idx);
+    void onIndexCollapsed(const QModelIndex& idx);
+
+    void expandItemDelayed(const QModelIndex& source_idx);
     void markSelectedItemReadStatus(RootItem::ReadStatus read);
     void markAllItemsReadStatus(RootItem::ReadStatus read);
 
@@ -127,6 +133,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     QMenu* m_contextMenuLabel;
     FeedsModel* m_sourceModel;
     FeedsProxyModel* m_proxyModel;
+    bool m_isFiltering;
 };
 
 inline FeedsProxyModel* FeedsView::model() const {

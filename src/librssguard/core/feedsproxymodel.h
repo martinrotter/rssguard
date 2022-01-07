@@ -36,7 +36,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
 
   signals:
-    void expandAfterFilterIn(QModelIndex idx) const;
+    void expandAfterFilterIn(QModelIndex source_idx) const;
 
   private:
 

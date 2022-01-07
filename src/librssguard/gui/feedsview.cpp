@@ -30,7 +30,7 @@
 FeedsView::FeedsView(QWidget* parent)
   : BaseTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
   m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuEmptySpace(nullptr), m_contextMenuOtherItems(nullptr),
-  m_contextMenuLabel(nullptr) {
+  m_contextMenuLabel(nullptr), m_isFiltering(false) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -44,7 +44,11 @@ FeedsView::FeedsView(QWidget* parent)
   connect(m_sourceModel, &FeedsModel::itemExpandRequested, this, &FeedsView::onItemExpandRequested);
   connect(m_sourceModel, &FeedsModel::itemExpandStateSaveRequested, this, &FeedsView::onItemExpandStateSaveRequested);
   connect(header(), &QHeaderView::sortIndicatorChanged, this, &FeedsView::saveSortState);
+
   connect(m_proxyModel, &FeedsProxyModel::expandAfterFilterIn, this, &FeedsView::expandItemDelayed);
+
+  connect(this, &FeedsView::expanded, this, &FeedsView::onIndexExpanded);
+  connect(this, &FeedsView::collapsed, this, &FeedsView::onIndexCollapsed);
 
   setModel(m_proxyModel);
   setupAppearance();
@@ -86,60 +90,6 @@ RootItem* FeedsView::selectedItem() const {
 
     return selected_item == m_sourceModel->rootItem() ? nullptr : selected_item;
   }
-}
-
-void FeedsView::onItemExpandStateSaveRequested(RootItem* item) {
-  saveExpandStates(item);
-}
-
-void FeedsView::saveAllExpandStates() {
-  saveExpandStates(sourceModel()->rootItem());
-}
-
-void FeedsView::saveExpandStates(RootItem* item) {
-  Settings* settings = qApp->settings();
-  QList<RootItem*> items = item->getSubTree(RootItem::Kind::Category |
-                                            RootItem::Kind::ServiceRoot |
-                                            RootItem::Kind::Labels);
-
-  // Iterate all categories and save their expand statuses.
-  for (const RootItem* it : items) {
-    const QString setting_name = it->hashCode();
-    QModelIndex source_index = sourceModel()->indexForItem(it);
-    QModelIndex visible_index = model()->mapFromSource(source_index);
-
-    // TODO: Think.
-
-    /*
-       if (isRowHidden(visible_index.row(), visible_index.parent())) {
-       continue;
-       }
-     */
-
-    settings->setValue(GROUP(CategoriesExpandStates),
-                       setting_name,
-                       isExpanded(visible_index));
-  }
-}
-
-void FeedsView::loadAllExpandStates() {
-  const Settings* settings = qApp->settings();
-  QList<RootItem*> expandable_items;
-
-  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItem::Kind::Category |
-                                                                RootItem::Kind::ServiceRoot |
-                                                                RootItem::Kind::Labels));
-
-  // Iterate all categories and save their expand statuses.
-  for (const RootItem* item : expandable_items) {
-    const QString setting_name = item->hashCode();
-
-    setExpanded(model()->mapFromSource(sourceModel()->indexForItem(item)),
-                settings->value(GROUP(CategoriesExpandStates), setting_name, item->childCount() > 0).toBool());
-  }
-
-  sortByColumn(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt(),
-               static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt()));
 }
 
 void FeedsView::copyUrlOfSelectedFeeds() const {
@@ -525,18 +475,6 @@ void FeedsView::switchVisibility() {
   setVisible(!isVisible());
 }
 
-void FeedsView::filterItems(const QString& pattern) {
-#if QT_VERSION < 0x050C00 // Qt < 5.12.0
-  m_proxyModel->setFilterRegExp(pattern.toLower());
-#else
-  m_proxyModel->setFilterRegularExpression(pattern.toLower());
-#endif
-
-  if (!pattern.simplified().isEmpty()) {
-    expandAll();
-  }
-}
-
 void FeedsView::drawBranches(QPainter* painter, const QRect& rect, const QModelIndex& index) const {
   if (!rootIsDecorated()) {
     painter->save();
@@ -558,12 +496,135 @@ void FeedsView::focusInEvent(QFocusEvent* event) {
   }
 }
 
-void FeedsView::expandItemDelayed(const QModelIndex& idx) {
-  QTimer::singleShot(100, this, [=] {
-    QModelIndex pidx = m_proxyModel->mapFromSource(idx);
+void FeedsView::filterItems(const QString& pattern) {
+  m_isFiltering = !pattern.isEmpty();
 
-    setExpanded(pidx, true);
-  });
+#if QT_VERSION < 0x050C00 // Qt < 5.12.0
+  m_proxyModel->setFilterRegExp(pattern.toLower());
+#else
+  m_proxyModel->setFilterRegularExpression(pattern.toLower());
+#endif
+
+  if (pattern.isEmpty()) {
+    loadAllExpandStates();
+  }
+  else {
+    expandAll();
+  }
+}
+
+void FeedsView::onIndexExpanded(const QModelIndex& idx) {
+  qDebugNN << LOGSEC_GUI << "Feed list item expanded - " << m_proxyModel->data(idx).toString();
+
+  if (m_isFiltering) {
+    return;
+  }
+
+  const RootItem* it = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
+
+  if (it != nullptr && (int(it->kind()) & int(RootItem::Kind::Category |
+                                              RootItem::Kind::ServiceRoot |
+                                              RootItem::Kind::Labels)) > 0) {
+    const QString setting_name = it->hashCode();
+
+    qApp->settings()->setValue(GROUP(CategoriesExpandStates),
+                               setting_name,
+                               true);
+  }
+}
+
+void FeedsView::onIndexCollapsed(const QModelIndex& idx) {
+  qDebugNN << LOGSEC_GUI << "Feed list item collapsed - " << m_proxyModel->data(idx).toString();
+
+  if (m_isFiltering) {
+    return;
+  }
+
+  RootItem* it = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
+
+  if (it != nullptr && (int(it->kind()) & int(RootItem::Kind::Category |
+                                              RootItem::Kind::ServiceRoot |
+                                              RootItem::Kind::Labels)) > 0) {
+    const QString setting_name = it->hashCode();
+
+    qApp->settings()->setValue(GROUP(CategoriesExpandStates),
+                               setting_name,
+                               false);
+  }
+}
+
+void FeedsView::onItemExpandStateSaveRequested(RootItem* item) {
+  saveExpandStates(item);
+}
+
+void FeedsView::saveAllExpandStates() {
+  saveExpandStates(sourceModel()->rootItem());
+}
+
+void FeedsView::saveExpandStates(RootItem* item) {
+  Settings* settings = qApp->settings();
+  QList<RootItem*> items = item->getSubTree(RootItem::Kind::Category |
+                                            RootItem::Kind::ServiceRoot |
+                                            RootItem::Kind::Labels);
+
+  // Iterate all categories and save their expand statuses.
+  for (const RootItem* it : items) {
+    const QString setting_name = it->hashCode();
+    QModelIndex source_index = sourceModel()->indexForItem(it);
+    QModelIndex visible_index = model()->mapFromSource(source_index);
+
+    // TODO: Think.
+
+    /*
+       if (isRowHidden(visible_index.row(), visible_index.parent())) {
+       continue;
+       }
+     */
+
+    settings->setValue(GROUP(CategoriesExpandStates),
+                       setting_name,
+                       isExpanded(visible_index));
+  }
+}
+
+bool FeedsView::isFiltering() const
+{
+  return m_isFiltering;
+}
+
+void FeedsView::setIsFiltering(bool newIsFiltering)
+{
+  m_isFiltering = newIsFiltering;
+}
+
+void FeedsView::loadAllExpandStates() {
+  const Settings* settings = qApp->settings();
+  QList<RootItem*> expandable_items;
+
+  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItem::Kind::Category |
+                                                                RootItem::Kind::ServiceRoot |
+                                                                RootItem::Kind::Labels));
+
+  // Iterate all categories and save their expand statuses.
+  for (const RootItem* item : expandable_items) {
+    const QString setting_name = item->hashCode();
+
+    setExpanded(model()->mapFromSource(sourceModel()->indexForItem(item)),
+                settings->value(GROUP(CategoriesExpandStates), setting_name, item->childCount() > 0).toBool());
+  }
+
+  sortByColumn(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt(),
+               static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt()));
+}
+
+void FeedsView::expandItemDelayed(const QModelIndex& source_idx) {
+  if (m_isFiltering) {
+    QTimer::singleShot(100, this, [=] {
+      QModelIndex pidx = m_proxyModel->mapFromSource(source_idx);
+
+      setExpanded(pidx, true);
+    });
+  }
 }
 
 QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {

@@ -86,7 +86,7 @@ FeedsToolBar* FeedMessageViewer::feedsToolBar() const {
 void FeedMessageViewer::saveSize() {
   Settings* settings = qApp->settings();
 
-  m_feedsView->saveAllExpandStates();
+  //m_feedsView->saveAllExpandStates();
 
   // Store offsets of splitters.
   settings->setValue(GROUP(GUI), GUI::SplitterFeeds, toVariant(m_feedSplitter->sizes()));
@@ -357,10 +357,11 @@ void FeedMessageViewer::refreshVisualProperties() {
 
   if (icon_size > 0) {
     m_toolBarFeeds->setIconSize({ icon_size, icon_size });
-    m_toolBarMessages->setIconSize({ icon_size, icon_size });
   }
   else {
     m_toolBarFeeds->setIconSize({ qApp->style()->pixelMetric(QStyle::PM_ToolBarIconSize),
                                   qApp->style()->pixelMetric(QStyle::PM_ToolBarIconSize) });
   }
+
+  m_toolBarMessages->setIconSize(m_toolBarFeeds->iconSize());
 }
