@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="da" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="da">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -7,7 +7,7 @@
     </message>
     <message>
         <source>(feed)</source>
-        <translation>(feed)</translation>
+        <translation>(nyhedskilde)</translation>
     </message>
 </context>
 <context>
@@ -22,7 +22,7 @@
     </message>
     <message>
         <source>Add your direct links to filter lists here (one URL per line)</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj dine direkte henvisninger til filterlister her (en webadresse pr. linje)</translation>
     </message>
     <message>
         <source>Custom filters</source>
@@ -30,11 +30,11 @@
     </message>
     <message>
         <source>Add your custom filters here (one filter per line)</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj dine brugerdefinerede filtre her (et filter pr. linje)</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Hjælp</translation>
+        <translation>Hjælp</translation>
     </message>
     <message>
         <source>Filter lists</source>
@@ -46,7 +46,7 @@
     </message>
     <message>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-        <translation type="unfinished"/>
+        <translation>Der er en fejl i AdBlock-komponenten, og den kan ikke aktiveres. Tjek fejlmeddelelsen nedenfor (eller i programfejlfindingsloggen) for at få flere oplysninger.</translation>
     </message>
     <message>
         <source>OK!</source>
@@ -56,7 +56,9 @@
         <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
 
 Error: %1</source>
-        <translation type="unfinished"/>
+        <translation>En fejl er opstået, tjek programloggen for yderligere detaljer og gå ind på onlinedokumentationen. Sørg også for, at Node.js er installeret.
+
+Fejl: %1</translation>
     </message>
     <message>
         <source>ERROR!</source>
@@ -68,11 +70,11 @@ Error: %1</source>
     </message>
     <message>
         <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock ser ud til at fungere fint, men vent lige et øjeblik for at være sikker.</translation>
     </message>
     <message>
         <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.</source>
-        <translation type="unfinished"/>
+        <translation>En fejl er opstået, tjek programloggen for yderligere detaljer og gå til onlinedokumentationen. Sørg også for, at Node.js er installeret.</translation>
     </message>
 </context>
 <context>
@@ -83,14 +85,14 @@ Error: %1</source>
     </message>
     <message>
         <source>Show AdBlock &amp;settings</source>
-        <translation>Vis AdBlock ind&amp;stillinger</translation>
+        <translation>Vis AdBlock indstillinger</translation>
     </message>
 </context>
 <context>
     <name>AdBlockManager</name>
     <message>
         <source>failed to download filter list &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>kunne ikke hente filterliste &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -117,11 +119,11 @@ Error: %1</source>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan ikke tilføje feed</translation>
+        <translation>Kan ikke tilføje nyhedskilde</translation>
     </message>
     <message>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Nyhedskilde kan ikke tilføjes, da der ikke er nogen aktiv konto at tilføje den til.</translation>
     </message>
     <message>
         <source>Unread articles fetched</source>
@@ -129,7 +131,7 @@ Error: %1</source>
     </message>
     <message>
         <source>Go to changelog</source>
-        <translation type="unfinished"/>
+        <translation>Gå til ændringslog</translation>
     </message>
     <message>
         <source>AdBlock needs to be configured</source>
@@ -145,7 +147,7 @@ Error: %1</source>
     </message>
     <message>
         <source>RSS Guard has Discord server!</source>
-        <translation type="unfinished"/>
+        <translation>RSS Guard har en Discord-server!</translation>
     </message>
     <message>
         <source>You can visit it now! Click me!</source>
@@ -153,22 +155,26 @@ Error: %1</source>
     </message>
     <message>
         <source>Go to Discord!</source>
-        <translation type="unfinished"/>
+        <translation>Gå til Discord!</translation>
     </message>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"/>
+        <translation>Velkommen</translation>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Velkommen til %1.
+
+Tjek venligst NYE ting inkluderet i denne
+version ved at klikke på denne pop up 
+påmindelse.</translation>
     </message>
     <message>
         <source>Already running</source>
-        <translation type="unfinished"/>
+        <translation>Kører allerede</translation>
     </message>
 </context>
 <context>
@@ -179,7 +185,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Nogle feeds kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
+        <translation>Nogle nyhedskilder kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
@@ -195,11 +201,11 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation>Indstil brugernavn for at få adgang til feedet.</translation>
+        <translation>Indstil brugernavn for at få adgang til nyhedskilden.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation>Indstil adgangskode for at få adgang til feedet.</translation>
+        <translation>Indstil adgangskode for at få adgang til nyhedskilden.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
@@ -260,7 +266,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Read articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Oprydning af læste artikler...</translation>
     </message>
     <message>
         <source>Removing old articles...</source>
@@ -268,15 +274,15 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Old articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Oprydning af gamle artikler...</translation>
     </message>
     <message>
         <source>Removing starred articles...</source>
-        <translation type="unfinished"/>
+        <translation>Fjerner favoritartikler...</translation>
     </message>
     <message>
         <source>Starred articles purged...</source>
-        <translation type="unfinished"/>
+        <translation>Oprydning af favoritartikler...</translation>
     </message>
 </context>
 <context>
@@ -294,23 +300,23 @@ version by clicking this popup notification.</source>
     <name>DiscoverFeedsButton</name>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation>Den givne konto understøtter ikke tilføjelse af nye feeds.</translation>
+        <translation>Den givne konto understøtter ikke tilføjelse af nye nyhedskilder.</translation>
     </message>
     <message>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
-        <translation type="unfinished"/>
+        <translation>Nyhedskilder blev fundet, men ingen passende konti er indstillet.</translation>
     </message>
     <message>
         <source>This website does not contain any feeds</source>
-        <translation>Denne hjemmeside indeholder ingen feeds</translation>
+        <translation>Denne hjemmeside indeholder ingen nyhedskilder</translation>
     </message>
     <message numerus="yes">
         <source>Add one of %n feed(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Tilføj en af nyhedskilde(r)</numerusform><numerusform>Tilføj en af %n nyhedskilde(r)</numerusform></translation>
     </message>
     <message>
         <source>Not supported by account</source>
-        <translation type="unfinished"/>
+        <translation>Ikke understøttet af konto</translation>
     </message>
 </context>
 <context>
@@ -325,15 +331,15 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation>&amp;Forsøg igen</translation>
+        <translation>Forsøg igen</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation>&amp;Stop</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation>&amp;Åben fil</translation>
+        <translation>Åben fil</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
@@ -345,7 +351,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation type="unfinished"/>
+        <translation>Nedhentningsbibliotek kan ikke oprettes</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
@@ -361,7 +367,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation>Åben &amp;bibliotek</translation>
+        <translation>Åben bibliotek</translation>
     </message>
     <message>
         <source>Cannot open file</source>
@@ -391,7 +397,7 @@ Klik her for at åbne forældrebibliotek.</translation>
     </message>
     <message>
         <source>URL: %1</source>
-        <translation>URL: %1</translation>
+        <translation>Webadresse: %1</translation>
     </message>
     <message>
         <source>Local file: %1</source>
@@ -487,7 +493,7 @@ Status: %3</source>
     <message>
         <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>bruger ikke automatisk hentning af artikler</translation>
     </message>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
@@ -509,7 +515,7 @@ Status: %3</source>
     </message>
     <message>
         <source>parsing error</source>
-        <translation type="unfinished"/>
+        <translation>fortolkningsfejl</translation>
     </message>
     <message>
         <source>error</source>
@@ -520,11 +526,11 @@ Status: %3</source>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for feeds</source>
-        <translation>Værktøjslinie for feeds</translation>
+        <translation>Værktøjsbjælke for nyhedskilder</translation>
     </message>
     <message>
         <source>Toolbar for articles</source>
-        <translation type="unfinished"/>
+        <translation>Værktøjsbjælke for artikler</translation>
     </message>
 </context>
 <context>
@@ -539,11 +545,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Cannot fetch articles at this point</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke hente artikler lige nu</translation>
     </message>
     <message>
         <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Du kan ikke hente nye artikler nu, fordi en anden kritisk handling er under udførelse.</translation>
     </message>
 </context>
 <context>
@@ -562,7 +568,7 @@ Status: %3</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation>&amp;Log på</translation>
+        <translation>Log på</translation>
     </message>
     <message>
         <source>Username for your account</source>
@@ -574,7 +580,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Her vises resultaterne af forbindelsestesten.</translation>
     </message>
     <message>
         <source>Your %1 build has official Feedly support. You do not have to use &quot;developer acess token&quot;. You can therefore leave corresponding field empty.</source>
@@ -610,7 +616,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Login was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Login lykkedes.</translation>
     </message>
     <message>
         <source>Some problems.</source>
@@ -638,7 +644,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>hent de nyeste X artikler per nyhedskilde</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -646,30 +652,30 @@ Status: %3</source>
     </message>
     <message>
         <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-        <translation type="unfinished"/>
+        <translation>Pas på mede at hente for mange artikler på én gang, fordi Feedly permanent cacher alle artikler i nyhedskilden, så du kan ende med tusindvis af artikler, som du sandsynligvis aldrig vil læse alligevel.</translation>
     </message>
 </context>
 <context>
     <name>FeedlyNetwork</name>
     <message>
         <source>Feedly: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: godkendelsesfejl</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klik her for at logge på igen. Fejlen er: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Feedly: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: godkendelse nægtet</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klik her for at logge på igen.</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Log på</translation>
     </message>
 </context>
 <context>
@@ -687,7 +693,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <translation>Titel på feeds/kategorier.</translation>
+        <translation>Titel på nyhedskilde/kategorier.</translation>
     </message>
     <message>
         <source>Root</source>
@@ -699,7 +705,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation>Kan ikke udføre træk&amp;slip operation</translation>
+        <translation>Kan ikke udføre træk &amp; slip operation</translation>
     </message>
     <message>
         <source>Counts of unread/all mesages.</source>
@@ -713,12 +719,12 @@ Status: %3</source>
         <translation>Værktøjslinie afstandsstykke</translation>
     </message>
     <message>
-        <source>Search feeds</source>
-        <translation>Søg i feeds</translation>
+        <source>Feeds search box</source>
+        <translation>Nyhedskilde søgeboks</translation>
     </message>
     <message>
-        <source>Feeds search box</source>
-        <translation>Feed søgeboks</translation>
+        <source>Search feeds (regex only)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -737,11 +743,11 @@ Status: %3</source>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation>Valgte element kan ikke redigeres, da en anden kritisk operation er igangsat.</translation>
+        <translation>Det valgte element kan ikke redigeres, fordi en anden kritisk handling er under udførelse.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation>Valgte element kan ikke redigeres, da en anden kritisk operation er igangsat.</translation>
+        <translation>Det valgte element kan ikke redigeres, fordi en anden kritisk handling er under udførelse.</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
@@ -782,7 +788,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation>Valgte konto understøtter ikke tilføjelse af nye feeds.</translation>
+        <translation>Valgte konto understøtter ikke tilføjelse af nye nyhedskilder.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
@@ -802,11 +808,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Context menu for important articles</source>
-        <translation type="unfinished"/>
+        <translation>Genvejsmenu for vigtige artikler</translation>
     </message>
     <message>
         <source>Not supported by account</source>
-        <translation type="unfinished"/>
+        <translation>Ikke understøttet af konto</translation>
     </message>
 </context>
 <context>
@@ -833,7 +839,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
-        <translation type="unfinished"/>
+        <translation>Ændringslogsiden er kun tilgængelig på engelsk.</translation>
     </message>
     <message>
         <source>License not found.</source>
@@ -861,11 +867,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Resources</source>
-        <translation>Resurser</translation>
+        <translation>Ressourcer</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;%5 er en (meget) lille feedlæser.&lt;br&gt;&lt;br&gt;Dette programmel bliver distribueret under  GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Kontakter:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-post&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~hjemmeside&lt;/li&gt;&lt;/ul&gt;Du kan hente %5s kildekode fra hjemmesiden.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;%5 er en (meget) lille nyhedskildelæser.&lt;br&gt;&lt;br&gt;Dette programmel bliver distribueret under  GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Kontakter:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-post&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~hjemmeside&lt;/li&gt;&lt;/ul&gt;Du kan hente %5s kildekode fra hjemmesiden.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
@@ -881,11 +887,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>MIT License (applies to boolinq source code)</source>
-        <translation type="unfinished"/>
+        <translation>MIT License (gælder boolinq kildekoden)</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard; mimesis; Numix source codes)</source>
-        <translation type="unfinished"/>
+        <translation>GNU GPL License (gælder RSS Guard; mimesis; Numix kildekode)</translation>
     </message>
     <message>
         <source>CUSTOM</source>
@@ -893,11 +899,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Database location</source>
-        <translation type="unfinished"/>
+        <translation>Database placering</translation>
     </message>
     <message>
         <source>GNU LGPL License (applies to Breeze source code)</source>
-        <translation type="unfinished"/>
+        <translation>GNU LGPL License (gælder Breeze kildekode)</translation>
     </message>
 </context>
 <context>
@@ -908,7 +914,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Network proxy</source>
-        <translation type="unfinished"/>
+        <translation>Netværksproxy</translation>
     </message>
     <message>
         <source>Add new account</source>
@@ -977,7 +983,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Hot stuff</source>
-        <translation type="unfinished"/>
+        <translation>Hot stuff</translation>
     </message>
     <message>
         <source>Create new label</source>
@@ -1016,7 +1022,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Driftsresultater</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
@@ -1024,7 +1030,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen handling er endnu udført.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
@@ -1048,7 +1054,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Vælg bibliotek</translation>
+        <translation>Vælg bibliotek</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
@@ -1148,7 +1154,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Indstil beskrivelse for din kategori.</translation>
     </message>
     <message>
         <source>Icon selection</source>
@@ -1219,11 +1225,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cleanup settings</source>
-        <translation type="unfinished"/>
+        <translation>Oprydningsindstillinger</translation>
     </message>
     <message>
         <source>Optimize database file</source>
-        <translation type="unfinished"/>
+        <translation>Optimér databasefil</translation>
     </message>
     <message>
         <source>Remove all read articles</source>
@@ -1239,7 +1245,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Remove all starred articles</source>
-        <translation type="unfinished"/>
+        <translation>Fjern alle favoritartikler</translation>
     </message>
 </context>
 <context>
@@ -1303,15 +1309,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Tilføj nyt feed</translation>
+        <translation>Tilføj ny nyhedskilde</translation>
     </message>
     <message>
         <source>Cannot save changes: %1</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke gemme ændringer: %1</translation>
     </message>
     <message>
         <source>Auto-downloading of articles</source>
-        <translation type="unfinished"/>
+        <translation>Hent artikler automatisk</translation>
     </message>
     <message>
         <source>Edit &quot;%1&quot;</source>
@@ -1319,46 +1325,46 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Fetch articles using global interval</source>
-        <translation type="unfinished"/>
+        <translation>Hent artikler ved hjælp af globalt interval</translation>
     </message>
     <message>
         <source>Fetch articles every</source>
-        <translation type="unfinished"/>
+        <translation>Hent artikler hver</translation>
     </message>
     <message>
         <source>Disable auto-fetching of articles</source>
-        <translation type="unfinished"/>
+        <translation>Deaktiver automatisk hentning af artikler</translation>
     </message>
     <message>
         <source>Cannot save feed properties</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke gemme indstillinger for nyhedskilde</translation>
     </message>
 </context>
 <context>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation>&amp;Filer</translation>
+        <translation>Filer</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Hjælp</translation>
+        <translation>Hjælp</translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation>&amp;Vis</translation>
+        <translation>Vis</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>Værk&amp;tøj</translation>
+        <translation>Værktøj</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation>&amp;Afslut</translation>
+        <translation>Afslut</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>Ind&amp;stillinger</translation>
+        <translation>Indstillinger</translation>
     </message>
     <message>
         <source>Quit the application.</source>
@@ -1386,7 +1392,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation>Gemmer eller viser listen af feeds/kategorier.</translation>
+        <translation>Gemmer eller viser listen af nyhedskilder/kategorier.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
@@ -1394,7 +1400,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation>Om &amp;Applikationen</translation>
+        <translation>Om Programmet</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
@@ -1414,35 +1420,35 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation>&amp;Feedliste</translation>
+        <translation>Nyhedskildeliste</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation>&amp;Hovedmenu</translation>
+        <translation>Hovedmenu</translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
-        <translation>Værk&amp;tøjslinie</translation>
+        <translation>Værktøjsbjælker</translation>
     </message>
     <message>
         <source>Switch visibility of main toolbars.</source>
-        <translation type="unfinished"/>
+        <translation>Skift synlighed for den primære værktøjsbjælke</translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation>&amp;Hentet</translation>
+        <translation>Hentet</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation>&amp;Rens databasen</translation>
+        <translation>Rens databasen</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation>R&amp;ediger valgte emner</translation>
+        <translation>Rediger valgte emner</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation>&amp;Slet valgte emne</translation>
+        <translation>Slet valgte emne</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
@@ -1470,7 +1476,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation type="unfinished"/>
+        <translation>Udvid/skjul det valgte element</translation>
     </message>
     <message>
         <source>No possible actions</source>
@@ -1478,15 +1484,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation>Sk&amp;raldespand(e)</translation>
+        <translation>Skraldespand(e)</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Gendan alle skraldespande</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>Gendan alle skraldespande</translation>
     </message>
     <message>
         <source>No recycle bin</source>
@@ -1494,7 +1500,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation type="unfinished"/>
+        <translation>Konti</translation>
     </message>
     <message>
         <source>Status bar</source>
@@ -1502,11 +1508,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation>R&amp;ediger valgte konto</translation>
+        <translation>Rediger valgte konto</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation type="unfinished"/>
+        <translation>Fjern valgte konto</translation>
     </message>
     <message>
         <source>Add new category</source>
@@ -1514,7 +1520,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Tilføj nyt feed</translation>
+        <translation>Tilføj ny nyhedskilde</translation>
     </message>
     <message>
         <source>No actions possible</source>
@@ -1522,7 +1528,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation>Indrapporter en &amp;fejl...</translation>
+        <translation>Indrapporter en fejl...</translation>
     </message>
     <message>
         <source>Close all tabs</source>
@@ -1530,7 +1536,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Close all tabs except current</source>
-        <translation type="unfinished"/>
+        <translation>Luk alle andre faneblade</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
@@ -1542,19 +1548,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation>Gensta&amp;rt</translation>
+        <translation>Genstart</translation>
     </message>
     <message>
         <source>Go to &amp;next tab</source>
-        <translation type="unfinished"/>
+        <translation>Gå til næste faneblad</translation>
     </message>
     <message>
         <source>Go to &amp;previous tab</source>
-        <translation type="unfinished"/>
+        <translation>Gå til forrige faneblad</translation>
     </message>
     <message>
         <source>&amp;Donate...</source>
-        <translation>&amp;Donér...</translation>
+        <translation>Donér...</translation>
     </message>
     <message>
         <source>Alternate row colors in lists</source>
@@ -1562,127 +1568,127 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Display &amp;documentation</source>
-        <translation>Vis &amp;dokumentation</translation>
+        <translation>Vis dokumentation</translation>
     </message>
     <message>
         <source>Message viewer toolbars</source>
-        <translation type="unfinished"/>
+        <translation>Beskedfremviser værktøjsbjælke</translation>
     </message>
     <message>
         <source>Expand/collapse selected item &amp;recursively</source>
-        <translation type="unfinished"/>
+        <translation>Udvid/skjul det valgte element rekursivt</translation>
     </message>
     <message>
         <source>&amp;Add item</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj element</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation>&amp;Fuldskærm</translation>
+        <translation>Fuldskærm</translation>
     </message>
     <message>
         <source>&amp;Fetch all</source>
-        <translation type="unfinished"/>
+        <translation>Hent alle</translation>
     </message>
     <message>
         <source>Fetch all feeds</source>
-        <translation type="unfinished"/>
+        <translation>Hent alle nyhedskilder</translation>
     </message>
     <message>
         <source>Fetch &amp;selected</source>
-        <translation type="unfinished"/>
+        <translation>Hent valgte</translation>
     </message>
     <message>
         <source>Fetch selected feeds</source>
-        <translation type="unfinished"/>
+        <translation>Hent valgte nyhedskilder</translation>
     </message>
     <message>
         <source>Mark articles &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Markér artikler som læst</translation>
     </message>
     <message>
         <source>Mark selected articles read</source>
-        <translation type="unfinished"/>
+        <translation>Markér valgte artikler som læst</translation>
     </message>
     <message>
         <source>Mark articles &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Markér artikler som ulæst</translation>
     </message>
     <message>
         <source>Mark selected articles unread</source>
-        <translation type="unfinished"/>
+        <translation>Markér valgte artikler som &amp;ulæst</translation>
     </message>
     <message>
         <source>Switch &amp;importance</source>
-        <translation type="unfinished"/>
+        <translation>Skift vigtighed</translation>
     </message>
     <message>
         <source>Switch importance of selected articles</source>
-        <translation type="unfinished"/>
+        <translation>Skift vigtighed af valgte artikler</translation>
     </message>
     <message>
         <source>&amp;Mark selected item read</source>
-        <translation type="unfinished"/>
+        <translation>Markér valgte element som læst</translation>
     </message>
     <message>
         <source>&amp;Mark selected item unread</source>
-        <translation type="unfinished"/>
+        <translation>Markér valgte element som ulæst</translation>
     </message>
     <message>
         <source>&amp;Delete articles</source>
-        <translation type="unfinished"/>
+        <translation>Fjern artikler</translation>
     </message>
     <message>
         <source>&amp;Clean selected item</source>
-        <translation type="unfinished"/>
+        <translation>Rens valgte element</translation>
     </message>
     <message>
         <source>Open in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>Åben i ekstern netlæser</translation>
     </message>
     <message>
         <source>Open selected articles in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Åben valgte artikler i ekstern netlæser</translation>
     </message>
     <message>
         <source>Open in &amp;internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Åben i intern netlæser</translation>
     </message>
     <message>
         <source>Open selected articles in internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Åben valgte artikler i intern netlæser</translation>
     </message>
     <message>
         <source>&amp;Mark all read</source>
-        <translation type="unfinished"/>
+        <translation>Markér alle som læste</translation>
     </message>
     <message>
         <source>View selected item in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Vis valgte element i avistilstand</translation>
     </message>
     <message>
         <source>&amp;Clean all</source>
-        <translation type="unfinished"/>
+        <translation>Rens alle</translation>
     </message>
     <message>
         <source>&amp;Next article</source>
-        <translation type="unfinished"/>
+        <translation>Næste artikel</translation>
     </message>
     <message>
         <source>&amp;Previous article</source>
-        <translation type="unfinished"/>
+        <translation>Forrige artikel</translation>
     </message>
     <message>
         <source>&amp;List headers</source>
-        <translation type="unfinished"/>
+        <translation>List overskrifter</translation>
     </message>
     <message>
         <source>&amp;Restore settings</source>
-        <translation type="unfinished"/>
+        <translation>Gendan indstillinger</translation>
     </message>
     <message>
         <source>&amp;Backup settings</source>
-        <translation type="unfinished"/>
+        <translation>Sikkerhedskopier indstillinger</translation>
     </message>
     <message>
         <source>Switch layout</source>
@@ -1690,11 +1696,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Send via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Send via e-Post</translation>
     </message>
     <message>
         <source>Send selected articles via e-mail</source>
-        <translation type="unfinished"/>
+        <translation>Send valgte artikler med e-Post</translation>
     </message>
     <message>
         <source>Show unread items only</source>
@@ -1702,15 +1708,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Add account</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj konto</translation>
     </message>
     <message>
         <source>&amp;Restore articles</source>
-        <translation type="unfinished"/>
+        <translation>Gendan artikler</translation>
     </message>
     <message>
         <source>Next &amp;unread article</source>
-        <translation type="unfinished"/>
+        <translation>Næste ulæste artikel</translation>
     </message>
     <message>
         <source>Stop ongoing fetching</source>
@@ -1722,27 +1728,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Enable article preview</source>
-        <translation type="unfinished"/>
+        <translation>Slå forhåndsvisning af artikler til</translation>
     </message>
     <message>
         <source>&amp;Copy URLs of selected item</source>
-        <translation type="unfinished"/>
+        <translation>Kopiér webadressen for det valgte element</translation>
     </message>
     <message>
         <source>Show &amp;unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Vis kun ulæste artikler</translation>
     </message>
     <message>
         <source>&amp;Show tree expanders</source>
-        <translation type="unfinished"/>
+        <translation>Vis træudvidelser</translation>
     </message>
     <message>
         <source>Fetch feeds with &amp;custom auto-download policy</source>
-        <translation type="unfinished"/>
+        <translation>Hent automatisk nyhedskilder med tilpasset politik</translation>
     </message>
     <message>
         <source>Automatically &amp;expand item when selected</source>
-        <translation type="unfinished"/>
+        <translation>Udvid automatisk når element vælges</translation>
     </message>
     <message>
         <source>Close opened modal dialogs first.</source>
@@ -1750,19 +1756,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>F&amp;eeds</source>
-        <translation type="unfinished"/>
+        <translation>Nyhedskilder</translation>
     </message>
     <message>
         <source>Art&amp;icles</source>
-        <translation type="unfinished"/>
+        <translation>Artikler</translation>
     </message>
     <message>
         <source>&amp;Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>Netlæser &amp;&amp; faneblade</translation>
     </message>
     <message>
         <source>Ta&amp;bs</source>
-        <translation type="unfinished"/>
+        <translation>Faneblade</translation>
     </message>
     <message>
         <source>Fetching common data</source>
@@ -1774,23 +1780,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Article &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>Artikelfilter</translation>
     </message>
     <message>
         <source>Close &amp;current tab</source>
-        <translation type="unfinished"/>
+        <translation>Luk aktive faneblad.</translation>
     </message>
     <message>
         <source>Close dialogs</source>
-        <translation type="unfinished"/>
+        <translation>Luk dialoger</translation>
     </message>
     <message>
         <source>&amp;Next item</source>
-        <translation type="unfinished"/>
+        <translation>Næste element</translation>
     </message>
     <message>
         <source>&amp;Previous item</source>
-        <translation type="unfinished"/>
+        <translation>Forrige element</translation>
     </message>
 </context>
 <context>
@@ -1801,11 +1807,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Check all</source>
-        <translation type="unfinished"/>
+        <translation>Vælg alle</translation>
     </message>
     <message>
         <source>&amp;Uncheck all</source>
-        <translation type="unfinished"/>
+        <translation>Fravælg alle</translation>
     </message>
     <message>
         <source>Title</source>
@@ -1845,7 +1851,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Detailed &amp;help</source>
-        <translation type="unfinished"/>
+        <translation>Detaljeret hjælp</translation>
     </message>
     <message>
         <source>ACCEPTED</source>
@@ -1889,11 +1895,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;New filter</source>
-        <translation>&amp;Nyt filter</translation>
+        <translation>Nyt filter</translation>
     </message>
     <message>
         <source>&amp;Test</source>
-        <translation>&amp;Test</translation>
+        <translation>Test</translation>
     </message>
     <message>
         <source>Process checked feeds</source>
@@ -1913,19 +1919,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Existing articles</source>
-        <translation type="unfinished"/>
+        <translation>Eksisterende artikler</translation>
     </message>
     <message>
         <source>Sample article</source>
-        <translation type="unfinished"/>
+        <translation>Eksempel på artikel</translation>
     </message>
     <message>
         <source>Filter articles like this</source>
-        <translation type="unfinished"/>
+        <translation>Filtrer artikler som denne</translation>
     </message>
     <message>
         <source>New article filter</source>
-        <translation type="unfinished"/>
+        <translation>Nyt artikelfilter</translation>
     </message>
     <message>
         <source>EXISTING articles filtering error: '%1'.
@@ -1947,7 +1953,14 @@ or this functionality is not implemented yet.</source>
   Created on = '%6'
   Contents = '%7'
   RAW contents = &apos;%8&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Output (modified) article is:
+  Titel = &apos;%1&apos;
+  Webadresse = &apos;%2&apos;
+  Forfatter = &apos;%3&apos;
+  Er læst/vigtig = &apos;%4/%5&apos;
+  Oprettet den = &apos;%6&apos;
+  Indhold = &apos;%7&apos;
+  Råindhold = &apos;%8&apos;</translation>
     </message>
     <message>
         <source>SAMPLE article filtering error: '%1'.
@@ -1956,7 +1969,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Article filters</source>
-        <translation type="unfinished"/>
+        <translation>Artikelfiltre</translation>
     </message>
     <message>
         <source>Article filter details</source>
@@ -1964,10 +1977,18 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Title of article filter</source>
-        <translation type="unfinished"/>
+        <translation>Navn på artikelfilter</translation>
     </message>
     <message>
         <source>Your JavaScript-based article filtering logic</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Are you sure?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do you really want to remove selected filter?</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1979,7 +2000,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Driftsresultater</translation>
     </message>
     <message>
         <source>Restore database</source>
@@ -1991,7 +2012,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen handling er endnu udført.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
@@ -2007,7 +2028,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation>&amp;Vælg bibliotek</translation>
+        <translation>Vælg bibliotek</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
@@ -2081,7 +2102,7 @@ Du skal genstarte programmet manuelt.</translation>
     <name>FormStandardImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation>&amp;Vælg fil</translation>
+        <translation>Vælg fil</translation>
     </message>
     <message>
         <source>No file is selected.</source>
@@ -2089,7 +2110,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen handling er endnu udført.</translation>
     </message>
     <message>
         <source>Destination file</source>
@@ -2101,7 +2122,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Eksportér feeds</translation>
+        <translation>Eksportér nyhedskilder</translation>
     </message>
     <message>
         <source>Source file</source>
@@ -2113,7 +2134,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Importér feeds</translation>
+        <translation>Importér nyhedskilder</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
@@ -2121,7 +2142,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation type="unfinished"/>
+        <translation>Vælg fil til eksport af nyhedskilder</translation>
     </message>
     <message>
         <source>File is selected.</source>
@@ -2129,7 +2150,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation type="unfinished"/>
+        <translation>Vælg fil for import af nyhedskilder</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
@@ -2137,7 +2158,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation>Feeds blev hentet</translation>
+        <translation>Nyhedskilder blev hentet</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
@@ -2149,7 +2170,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
-        <translation>Feeds blev eksporteret succesfuldt.</translation>
+        <translation>Nyhedskilder blev eksporteret succesfuldt.</translation>
     </message>
     <message>
         <source>Critical error occurred.</source>
@@ -2173,7 +2194,7 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation>TXT-filer [en webadresse pr. linje] (* .txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
@@ -2185,23 +2206,23 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation>Vil du hente feed metadata fra nettet?</translation>
+        <translation>Vil du hente nyhedskilde-metadata fra nettet?</translation>
     </message>
     <message>
         <source>&amp;Export to file</source>
-        <translation>&amp;Eksportér til fil</translation>
+        <translation>Eksportér til fil</translation>
     </message>
     <message>
         <source>&amp;Import from file</source>
-        <translation>&amp;Importér fra fil</translation>
+        <translation>Importér fra fil</translation>
     </message>
     <message>
         <source>&amp;Check all feeds</source>
-        <translation type="unfinished"/>
+        <translation>Vælg alle nyhedskilder</translation>
     </message>
     <message>
         <source>&amp;Uncheck all feeds</source>
-        <translation type="unfinished"/>
+        <translation>Fravælg alle nyhedskilder</translation>
     </message>
     <message>
         <source>Operation result</source>
@@ -2212,7 +2233,7 @@ Du skal genstarte programmet manuelt.</translation>
     <name>FormTtRssFeedDetails</name>
     <message>
         <source>Feed added</source>
-        <translation>Feed tilføjet</translation>
+        <translation>Nyhedskilde tilføjet</translation>
     </message>
     <message>
         <source>General</source>
@@ -2224,11 +2245,11 @@ Du skal genstarte programmet manuelt.</translation>
     </message>
     <message>
         <source>Feed was added, obtaining new tree of feeds now.</source>
-        <translation type="unfinished"/>
+        <translation>En nyhedskilde blev tilføjet, et nyt kildetræ indhentes nu.</translation>
     </message>
     <message>
         <source>API returned error code %1</source>
-        <translation type="unfinished"/>
+        <translation>API returnerede fejlkode %1</translation>
     </message>
 </context>
 <context>
@@ -2335,7 +2356,7 @@ downloaded.</source>
     </message>
     <message>
         <source>Go to application website to get update packages manually.</source>
-        <translation type="unfinished"/>
+        <translation>Gå til programmets hjemmeside for at opdatere pakker manuelt.</translation>
     </message>
     <message>
         <source> (size </source>
@@ -2379,7 +2400,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation>&amp;Log på</translation>
+        <translation>Log på</translation>
     </message>
     <message>
         <source>Not tested yet.</source>
@@ -2439,7 +2460,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>hent de nyeste X artikler per nyhedskilde</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -2450,11 +2471,11 @@ You can install it now.</source>
     <name>GmailNetworkFactory</name>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klik her for at logge på igen. Fejlen er: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klik her for at logge på igen.</translation>
     </message>
     <message>
         <source>No subject</source>
@@ -2478,7 +2499,7 @@ You can install it now.</source>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Log på</translation>
     </message>
 </context>
 <context>
@@ -2549,11 +2570,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test opsætning</translation>
+        <translation>Test opsætning</translation>
     </message>
     <message>
         <source>Password for your account</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord til din konto</translation>
     </message>
     <message>
         <source>Username for your account</source>
@@ -2561,7 +2582,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>URL of your server, without any service-specific path</source>
-        <translation type="unfinished"/>
+        <translation>Webadressen på din server, uden nogen tjeneste-specifik sti.</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -2569,7 +2590,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Her vises resultaterne af forbindelsestesten.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -2609,11 +2630,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL er okay.</translation>
+        <translation>Webadresse er okay.</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>hent de nyeste X artikler per nyhedskilde</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -2625,7 +2646,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Fetch articles newer than</source>
-        <translation type="unfinished"/>
+        <translation>Hent artikler nyere end</translation>
     </message>
     <message>
         <source>OAuth 2.0 settings</source>
@@ -2633,11 +2654,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>App ID</source>
-        <translation type="unfinished"/>
+        <translation>ProgramID</translation>
     </message>
     <message>
         <source>App key</source>
-        <translation type="unfinished"/>
+        <translation>Programnøgle</translation>
     </message>
     <message>
         <source>Redirect URL</source>
@@ -2645,15 +2666,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Get my own App ID</source>
-        <translation type="unfinished"/>
+        <translation>Få min egen programID</translation>
     </message>
     <message>
         <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
-        <translation type="unfinished"/>
+        <translation>Nogle feeds kan indeholde titusindvis af artikler, og det kan tage lang tid at hente dem alle. Derfor kan det nogle gange være hensigtsmæssigt kun at hente et begrænset antal af de seneste beskeder.</translation>
     </message>
     <message>
         <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-        <translation type="unfinished"/>
+        <translation>Hvis du vælger intelligent synkronisering, hentes kun endnu ikke-hentede eller ajourførte artikler. Netværksforbruget er stærkt reduceret, og den overordnede synkroniseringshastighed er væsentligt forbedret, men første hentning kan alligevel være langsom, hvis din nyhedskilde indeholder et stort antal artikler.</translation>
     </message>
     <message>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
@@ -2700,7 +2721,7 @@ Login tokens expiration: %2</source>
     <name>GreaderNetwork</name>
     <message>
         <source>login failed</source>
-        <translation type="unfinished"/>
+        <translation>kan ikke logge på</translation>
     </message>
     <message>
         <source>Inoreader: authentication error</source>
@@ -2708,7 +2729,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klik her for at logge på igen. Fejlen er: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Inoreader: authorization denied</source>
@@ -2716,11 +2737,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klik her for at logge på igen.</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Log på</translation>
     </message>
 </context>
 <context>
@@ -2752,11 +2773,11 @@ Login tokens expiration: %2</source>
     <name>ImportantNode</name>
     <message>
         <source>Important articles</source>
-        <translation type="unfinished"/>
+        <translation>Vigtige artikler</translation>
     </message>
     <message>
         <source>You can find all important articles here.</source>
-        <translation type="unfinished"/>
+        <translation>Du kan finde alle vigtige artikler her</translation>
     </message>
 </context>
 <context>
@@ -2881,18 +2902,18 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>article</source>
-        <translation type="unfinished"/>
+        <translation>artikel</translation>
     </message>
     <message>
         <source>articles</source>
-        <translation type="unfinished"/>
+        <translation>artikler</translation>
     </message>
 </context>
 <context>
     <name>MessagePreviewer</name>
     <message>
         <source>Mark article read</source>
-        <translation type="unfinished"/>
+        <translation>Markér artikler som læste</translation>
     </message>
     <message>
         <source>Mark article unread</source>
@@ -2965,7 +2986,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Feed</source>
-        <translation>Feed</translation>
+        <translation>Nyhedskilde</translation>
     </message>
     <message>
         <source>Title</source>
@@ -2973,7 +2994,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Url</source>
-        <translation>URL</translation>
+        <translation>Webadresse</translation>
     </message>
     <message>
         <source>Author</source>
@@ -3009,7 +3030,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Feed ID</source>
-        <translation type="unfinished"/>
+        <translation>Nyhedskilde-ID</translation>
     </message>
     <message>
         <source>Has enclosures</source>
@@ -3037,7 +3058,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Is article important?</source>
-        <translation type="unfinished"/>
+        <translation>Er denne artikel vigtig?</translation>
     </message>
     <message>
         <source>Is article deleted?</source>
@@ -3049,7 +3070,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>ID of feed which this article belongs to.</source>
-        <translation type="unfinished"/>
+        <translation>ID på den nyhedskilde som denne artikel tilhører</translation>
     </message>
     <message>
         <source>Title of the article.</source>
@@ -3057,7 +3078,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Url of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Webadresse på artiklen.</translation>
     </message>
     <message>
         <source>Author of the article.</source>
@@ -3108,11 +3129,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Værktøjslinie afstandsstykke</translation>
-    </message>
-    <message>
-        <source>Search articles</source>
-        <translation type="unfinished"/>
+        <translation>Værktøjsbjælke afstandsstykke</translation>
     </message>
     <message>
         <source>Article search box</source>
@@ -3128,7 +3145,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Highlight important articles</source>
-        <translation type="unfinished"/>
+        <translation>Fremhæv vigtige artikler</translation>
     </message>
     <message>
         <source>Display all articles</source>
@@ -3136,6 +3153,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Article highlighter</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Search articles (regex only)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3163,7 +3184,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>No external tools activated</source>
-        <translation type="unfinished"/>
+        <translation>Intet eksternt værktøj aktiveret</translation>
     </message>
     <message>
         <source>Context menu for articles</source>
@@ -3327,7 +3348,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Cannot show more articles because parent feed was removed.</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke vise flere artikler da forældrenyhedskilden er fjernet.</translation>
     </message>
 </context>
 <context>
@@ -3358,7 +3379,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Log på</translation>
     </message>
 </context>
 <context>
@@ -3369,7 +3390,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Nogle feeds kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
+        <translation>Nogle nyhedskilder kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -3385,11 +3406,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test opsætning</translation>
+        <translation>Test opsætning</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Hvis du slår denne funktionalitet til, vil ajourføring af nyhedskilder sandsynligvis foregå meget langsommere og der vil ofte ske tidsudløb.</translation>
     </message>
     <message>
         <source>Password for your Nextcloud account</source>
@@ -3409,7 +3430,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Her vises resultaterne af forbindelsestesten.</translation>
     </message>
     <message>
         <source>= unlimited</source>
@@ -3425,7 +3446,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Installed version: %1, required at least: %2.</source>
-        <translation type="unfinished"/>
+        <translation>Installeret version: %1, kræver mindst: %2.</translation>
     </message>
     <message>
         <source>Selected Nextcloud News server is running unsupported version.</source>
@@ -3437,7 +3458,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>Uspecificeret fejl, indtastede du den rigtige adresse ?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -3461,7 +3482,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL er okay.</translation>
+        <translation>Webadressen er okay.</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -3469,15 +3490,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>hent de nyeste X artikler per nyhedskilde</translation>
     </message>
     <message>
         <source>articles</source>
-        <translation type="unfinished"/>
+        <translation>artikler</translation>
     </message>
     <message>
         <source>Force execution of server-side feeds update</source>
-        <translation type="unfinished"/>
+        <translation>Gennemtving server-side ajourføring af nyhedskilde</translation>
     </message>
 </context>
 <context>
@@ -3504,7 +3525,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Load initial set of feeds</source>
-        <translation type="unfinished"/>
+        <translation>Indlæs de oprindelige nyhedskilder</translation>
     </message>
     <message>
         <source>This service offers integration with Tiny Tiny RSS.
@@ -3514,7 +3535,7 @@ Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggreg
 At least API level %1 is required.</source>
         <translation>Denne tjeneste  tilbyder integration med Tiny Tiny RSS.
 
-Tiny Tiny RSS er en open source netbaseret nyhedsfeed (RSS/Atom) læser, lavet til at gøre det muligt for dig at læse nyheder alle steder fra, men føles næsten som et rigtigt skrivebord sprogram.
+Tiny Tiny RSS er en open source netbaseret nyhedskilde (RSS/Atom) læser, lavet til at gøre det muligt for dig at læse nyheder alle steder fra, men føles næsten som et rigtigt skrivebord sprogram.
 
 Mindst API niveau %1 er påkrævet.</translation>
     </message>
@@ -3588,7 +3609,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
-        <translation type="unfinished"/>
+        <translation>Denne tjeneste tilbyder integration med standard online RSS/RDF/ATOM/JSON-nyhedskilder og podcasts.</translation>
     </message>
     <message>
         <source>Simplistic Reddit client.</source>
@@ -3631,7 +3652,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Recycle bin contains all deleted articles from all feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Skraldespanden indeholder alle slettede artikler fra alle nyhedskilder.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted article(s).</source>
@@ -3666,11 +3687,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>hent de nyeste X artikler per nyhedskilde</translation>
     </message>
     <message>
         <source>&amp;Login</source>
-        <translation>&amp;Log på</translation>
+        <translation>Log på</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -3748,11 +3769,11 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Klik her for at logge på igen. Fejlen er: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"/>
+        <translation>Log på</translation>
     </message>
     <message>
         <source>Reddit: authorization denied</source>
@@ -3760,7 +3781,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Click this to login again.</source>
-        <translation type="unfinished"/>
+        <translation>Klik her for at logge på igen.</translation>
     </message>
 </context>
 <context>
@@ -3803,7 +3824,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>script execution took too long</source>
-        <translation type="unfinished"/>
+        <translation>scriptudførelsen tog for lang tid</translation>
     </message>
     <message>
         <source>unknown error</source>
@@ -3829,7 +3850,7 @@ Login tokens expiration: %2</source>
     <name>ServiceRoot</name>
     <message>
         <source>Synchronize folders &amp;&amp; other items</source>
-        <translation type="unfinished"/>
+        <translation>Synkroniser mapper og andre elementer</translation>
     </message>
     <message>
         <source>Synchronize article cache</source>
@@ -3848,11 +3869,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation>Brug brugervalgt ekstern netlæser</translation>
+        <translation>Brugervalgt ekstern netlæser</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="unfinished"/>
+        <translation>Netlæser programfil</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
@@ -3860,11 +3881,11 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>Gennemse</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"/>
+        <translation>Brug eksemplificerede argumenter for</translation>
     </message>
     <message>
         <source>Select browser</source>
@@ -3876,15 +3897,15 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation>Eksterne e-post klient</translation>
+        <translation>Ekstern e-Post-klient</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation>Brug brugervalgt ekstern e-postklient</translation>
+        <translation>Brugervalgt ekstern e-Post-klient</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"/>
+        <translation>E-Post-klient programfil</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
@@ -3902,7 +3923,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="unfinished"/>
+        <translation>Vælg netlæser programfil</translation>
     </message>
     <message>
         <source>Executables (*)</source>
@@ -3929,7 +3950,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation>Netlæser &amp; e-post &amp; proxyserver</translation>
+        <translation>Netlæser, e-Post og proxyserver</translation>
     </message>
     <message>
         <source>External tools</source>
@@ -3937,7 +3958,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation type="unfinished"/>
+        <translation>På denne side kan du sætte en liste op, over eksternt værktøj, der kan åbne webadresser for valgte meddelelser.</translation>
     </message>
     <message>
         <source>Executable</source>
@@ -3961,7 +3982,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Network proxy</source>
-        <translation type="unfinished"/>
+        <translation>Netværksproxy</translation>
     </message>
     <message>
         <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
@@ -3973,15 +3994,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>&amp;Add tool</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj værktøj</translation>
     </message>
     <message>
         <source>&amp;Edit selected tool</source>
-        <translation type="unfinished"/>
+        <translation>Rediger valgte værktøj</translation>
     </message>
     <message>
         <source>&amp;Delete selected tool</source>
-        <translation type="unfinished"/>
+        <translation>Fjern valgte værktøj</translation>
     </message>
 </context>
 <context>
@@ -4034,7 +4055,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"/>
+        <translation>Bemærk, at hastigheden på den brugte MySQL-server og forsinkelsen på det brugte forbindelsesmedium i HØJ GRAD påvirker hastigheden på dette program. Brug af langsomme databaseforbindelser fører til langsom hastighed, når du gennemser nyhedskilder eller meddelelser.</translation>
     </message>
     <message>
         <source>Working database</source>
@@ -4133,7 +4154,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>Gennemse</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
@@ -4148,7 +4169,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SettingsFeedsMessages</name>
     <message>
         <source>Feed connection timeout</source>
-        <translation>Tidsudløb for forbindelse til feed</translation>
+        <translation>Tidsudløb for forbindelse til nyhedskilde</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
@@ -4160,7 +4181,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&amp;Change font</source>
-        <translation type="unfinished"/>
+        <translation>Skift skrifttype</translation>
     </message>
     <message>
         <source>Font preview</source>
@@ -4172,7 +4193,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feed list font</source>
-        <translation>Feedliste skrifttype</translation>
+        <translation>Nyhedskildeliste skrifttype</translation>
     </message>
     <message>
         <source>Display placeholders to indicate locations of pictures</source>
@@ -4184,19 +4205,19 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feeds</source>
-        <translation>Feeds</translation>
+        <translation>Nyhedskilder</translation>
     </message>
     <message>
         <source>Articles</source>
-        <translation type="unfinished"/>
+        <translation>Artikler</translation>
     </message>
     <message>
         <source>Remove all read articles from all feeds on application exit</source>
-        <translation type="unfinished"/>
+        <translation>Fjern alle læste artikler fra alle nyhedskilder ved programafslutning</translation>
     </message>
     <message>
         <source>Display real icons of feeds in list of articles instead of read/unread icons</source>
-        <translation type="unfinished"/>
+        <translation>Vis de rigtige ikoner for nyhedskilder på listen over artikler i stedet for læste/ulæste ikoner</translation>
     </message>
     <message>
         <source>Bring application window to front once article is opened in external web browser</source>
@@ -4212,7 +4233,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feeds &amp; articles</source>
-        <translation type="unfinished"/>
+        <translation>Nyhedskilder &amp; artikler</translation>
     </message>
     <message>
         <source>Auto-fetch articles for all feeds every</source>
@@ -4322,7 +4343,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"/>
+        <translation>Åben nye faneblade med venstre museknap, dobbeltklik på fanebladsbjælke</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
@@ -4338,11 +4359,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Toolbars</source>
-        <translation>Værktøjslinier</translation>
+        <translation>Værktøjsbjælker</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation>Værktøjslinie for feedliste</translation>
+        <translation>Værktøjsbjælke for nyhedskildeliste</translation>
     </message>
     <message>
         <source>Statusbar</source>
@@ -4350,11 +4371,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation>Knapstil for værktøjslinie</translation>
+        <translation>Knapstil for værktøjsbjælke</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"/>
+        <translation>Vælg værktøjsbjælke for redigering</translation>
     </message>
     <message>
         <source>Name</source>
@@ -4427,11 +4448,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Tray area</source>
-        <translation type="unfinished"/>
+        <translation>Systembakke</translation>
     </message>
     <message>
         <source>Toolbar for articles list</source>
-        <translation type="unfinished"/>
+        <translation>Værktøjsbjælke for artikelliste</translation>
     </message>
     <message>
         <source>Force dark look (Fusion only)</source>
@@ -4462,7 +4483,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Code</source>
-        <translation type="unfinished"/>
+        <translation>Kode</translation>
     </message>
     <message>
         <source>Author</source>
@@ -4477,11 +4498,11 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>SettingsNotifications</name>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"/>
+        <translation>Påmindelser</translation>
     </message>
     <message>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Slå påmindelser til</translation>
     </message>
     <message>
         <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
@@ -4526,11 +4547,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>Gennemse</translation>
     </message>
     <message>
         <source>&amp;Play</source>
-        <translation type="unfinished"/>
+        <translation>Afspil</translation>
     </message>
     <message>
         <source>Balloon notification</source>
@@ -4675,23 +4696,23 @@ Type: %3</source>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation>Vælg ikon til feed.</translation>
+        <translation>Vælg ikon til nyhedskilde.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation>Feedtitel</translation>
+        <translation>Nyhedskildetitel</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation>Sæt feedtitel</translation>
+        <translation>Indstil navn på nyhedskilde</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation>Feedbeskrivelse</translation>
+        <translation>Beskrivelse af nyhedskilde</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation>Angiv  beskrivelse for dit feed.</translation>
+        <translation>Angiv  beskrivelse af din nyhedskilde.</translation>
     </message>
     <message>
         <source>Icon selection</source>
@@ -4707,7 +4728,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation>Hent ikon fra feed</translation>
+        <translation>Hent ikon fra nyhedskilde</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
@@ -4731,7 +4752,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation>Feed og ikon metadata hentet.</translation>
+        <translation>Metadata på nyhedskilde og ikon er hentet.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
@@ -4739,11 +4760,11 @@ Type: %3</source>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation>Feed navn er i orden.</translation>
+        <translation>Navn på nyhedskilde er i orden.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation>Feednavn er for kort.</translation>
+        <translation>Navn på nyhedskilde er for kort.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
@@ -4759,7 +4780,7 @@ Type: %3</source>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>Webadressen opfylder ikke standardmønsteret. Starter din webadresse med &quot;http: //&quot; eller &quot;https: //&quot; præfiks ?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
@@ -4767,7 +4788,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation>Vælg ikonfil for dette feed</translation>
+        <translation>Vælg ikonfil til denne nyhedskilde</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
@@ -4804,7 +4825,7 @@ Type: %3</source>
     </message>
     <message>
         <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-        <translation type="unfinished"/>
+        <translation>Du kan bruge webadressen som kilde til din nyhedskilde, eller du kan fremstille dit feed med et brugerdefineret script. Du kan også efterbehandle den genererede kildedata med endnu et script, hvis du ønsker det. Disse er avancerede funktioner. Sørg for at læse dokumentationen, før du bruger dem.</translation>
     </message>
     <message>
         <source>Full feed source identifier</source>
@@ -4812,7 +4833,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Full feed source identifier which can be URL.</source>
-        <translation type="unfinished"/>
+        <translation>Komplet nyhedskilde-ID, der kan være webadressen.</translation>
     </message>
     <message>
         <source>Full command to execute</source>
@@ -4871,15 +4892,15 @@ Type: %3</source>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Dette er en obligatorisk konto til standard RSS/RDF/ATOM-nyhedskilder.</translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation type="unfinished"/>
+        <translation>Ønsker du at indlæse det oprindelige sæt nyhedskilder?</translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation type="unfinished"/>
+        <translation>Fejl ved indlæsning af indledende nyhedskilder</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -4887,11 +4908,11 @@ Type: %3</source>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation>Eksportér feeds</translation>
+        <translation>Eksportér nyhedskilder</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation>Importér feeds</translation>
+        <translation>Importér nyhedskilder</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
@@ -4903,7 +4924,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke tilføje nyhedskilde, fordi en anden kritisk handling er under udførelse.</translation>
     </message>
     <message>
         <source>Cannot add category</source>
@@ -4911,7 +4932,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation>Kan ikke tilføje kategori, fordi en anden kritisk operation er under udførelse.</translation>
+        <translation>Kan ikke tilføje kategori, fordi en anden kritisk handling er under udførelse.</translation>
     </message>
     <message>
         <source>Import was completely successful.</source>
@@ -4934,7 +4955,7 @@ Type: %3</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Værktøjslinie afstandsstykke</translation>
+        <translation>Værktøjsbjælke afstandsstykke</translation>
     </message>
 </context>
 <context>
@@ -4976,7 +4997,7 @@ Ulæste nyheder: %2</translation>
     <name>TabWidget</name>
     <message>
         <source>Feeds</source>
-        <translation>Feeds</translation>
+        <translation>Nyhedskilder</translation>
     </message>
     <message>
         <source>Displays main menu.</source>
@@ -5000,7 +5021,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Browse your feeds and articles</source>
-        <translation type="unfinished"/>
+        <translation>Gennemse dine nyhedskilder og artikler</translation>
     </message>
 </context>
 <context>
@@ -5019,7 +5040,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n sekund</numerusform><numerusform>%n sekund(er)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -5046,7 +5067,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation>Værktøjslinie afstandsstykke</translation>
+        <translation>Værktøjsbjælke afstandsstykke</translation>
     </message>
     <message>
         <source>Move action up</source>
@@ -5070,7 +5091,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Reset toolbar</source>
-        <translation>Nulstil værktøjsbælte</translation>
+        <translation>Nulstil værktøjsbjælke</translation>
     </message>
 </context>
 <context>
@@ -5081,14 +5102,14 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Close dialogs</source>
-        <translation type="unfinished"/>
+        <translation>Luk dialoger</translation>
     </message>
 </context>
 <context>
     <name>TtRssAccountDetails</name>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Nogle feeds kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
+        <translation>Nogle nyhedskilder kræver godkendelse,  inklusiv GMail feeds. BASIC, NTLM-2 og  DIGEST-MD5 godkendelsesmetoder er understøttet.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -5108,7 +5129,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test opsætning</translation>
+        <translation>Test opsætning</translation>
     </message>
     <message>
         <source>URL</source>
@@ -5116,7 +5137,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Hvis du slår denne funktionalitet til, vil ajourføring af nyhedskilder sandsynligvis foregå meget langsommere og der vil ofte ske tidsudløb.</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
@@ -5136,7 +5157,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>Webadressen på din TT-RSS instans UDEN den efterfølgende &quot;/api/&quot; streng</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -5144,7 +5165,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Her vises resultaterne af forbindelsestesten.</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
@@ -5160,7 +5181,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Installed version: %1, required at least: %2.</source>
-        <translation type="unfinished"/>
+        <translation>Installeret version: %1, kræver mindst: %2.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
@@ -5180,7 +5201,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>Uspecificeret fejl, indtastede du den rigtige adresse ?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
@@ -5224,7 +5245,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation>URL er okay.</translation>
+        <translation>Webadressen er okay.</translation>
     </message>
     <message>
         <source>Download unread articles only</source>
@@ -5232,11 +5253,11 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Hent kun de nyeste X artikler per nyhedskilde</translation>
     </message>
     <message>
         <source>Force execution of server-side feeds update</source>
-        <translation type="unfinished"/>
+        <translation>Gennemtving server-side ajourføring af nyhedskilde</translation>
     </message>
 </context>
 <context>
@@ -5259,7 +5280,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Provide URL for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Angiv webadressen til din nyhedskilde.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
@@ -5267,7 +5288,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>Webadressen opfylder ikke standardmønsteret. Starter din webadresse med &quot;http: //&quot; eller &quot;https: //&quot; præfiks ?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
@@ -5286,7 +5307,7 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke tilføje nyhedskilde, fordi en anden kritisk handling er under udførelse.</translation>
     </message>
     <message>
         <source>Username: %1
@@ -5374,11 +5395,11 @@ Sidst logget på: %4</translation>
     </message>
     <message>
         <source>Local content can access remote URLs</source>
-        <translation type="unfinished"/>
+        <translation>Lokalt indhold kan tilgå eksterne webadresser</translation>
     </message>
     <message>
         <source>XSS auditing enabled</source>
-        <translation type="unfinished"/>
+        <translation>XSS-revision aktiveret</translation>
     </message>
     <message>
         <source>Spatial navigation enabled</source>
@@ -5422,7 +5443,7 @@ Sidst logget på: %4</translation>
     </message>
     <message>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"/>
+        <translation>Udskriv elementbaggrunde</translation>
     </message>
     <message>
         <source>Allow running insecure content</source>
@@ -5434,10 +5455,38 @@ Sidst logget på: %4</translation>
     </message>
     <message>
         <source>Navigate to website manually</source>
-        <translation type="unfinished"/>
+        <translation>Gå til hjemmeside manuelt</translation>
     </message>
     <message>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>JS can activate windows</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show scrollbars</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Media playback with gestures</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>WebRTC uses only public interfaces</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>JS can paste from clipboard</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>DNS prefetch enabled</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>PDF viewer enabled</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -5465,7 +5514,7 @@ Sidst logget på: %4</translation>
     </message>
     <message>
         <source>No external tools activated</source>
-        <translation type="unfinished"/>
+        <translation>Intet eksternt værktøj aktiveret</translation>
     </message>
 </context>
 </TS>

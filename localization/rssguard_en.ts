@@ -736,11 +736,11 @@ Status: %3</source>
         <translation>Toolbar spacer</translation>
     </message>
     <message>
-        <source>Search feeds</source>
+        <source>Feeds search box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Feeds search box</source>
+        <source>Search feeds (regex only)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1997,6 +1997,14 @@ or this functionality is not implemented yet.</translation>
         <source>Your JavaScript-based article filtering logic</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Are you sure?</source>
+        <translation type="unfinished">Are you sure?</translation>
+    </message>
+    <message>
+        <source>Do you really want to remove selected filter?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -3139,10 +3147,6 @@ Login tokens expiration: %2</source>
         <translation>Toolbar spacer</translation>
     </message>
     <message>
-        <source>Search articles</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Article search box</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3164,6 +3168,10 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Article highlighter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search articles (regex only)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5496,6 +5504,34 @@ Last login on: %4</source>
     </message>
     <message>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JS can activate windows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show scrollbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Media playback with gestures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WebRTC uses only public interfaces</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JS can paste from clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DNS prefetch enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PDF viewer enabled</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

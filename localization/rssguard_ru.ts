@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ru">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -147,19 +147,19 @@ Error: %1</source>
     </message>
     <message>
         <source>RSS Guard has Discord server!</source>
-        <translation type="unfinished"/>
+        <translation>У RSS Guard есть сервер Discord!</translation>
     </message>
     <message>
         <source>You can visit it now! Click me!</source>
-        <translation type="unfinished"/>
+        <translation>Вы можете зайти на него сейчас! Нажимай!</translation>
     </message>
     <message>
         <source>Go to Discord!</source>
-        <translation type="unfinished"/>
+        <translation>Перейти в Discord!</translation>
     </message>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"/>
+        <translation>Добро пожаловать</translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -173,7 +173,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Already running</source>
-        <translation type="unfinished"/>
+        <translation>Уже выполняется</translation>
     </message>
 </context>
 <context>
@@ -315,7 +315,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Not supported by account</source>
-        <translation type="unfinished"/>
+        <translation>Не поддерживается аккаунтом</translation>
     </message>
 </context>
 <context>
@@ -720,12 +720,12 @@ Status: %3</source>
         <translation>Пространство панели инструментов</translation>
     </message>
     <message>
-        <source>Search feeds</source>
-        <translation>Поиск каналов</translation>
-    </message>
-    <message>
         <source>Feeds search box</source>
         <translation>Окно поиска каналов</translation>
+    </message>
+    <message>
+        <source>Search feeds (regex only)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -813,7 +813,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Not supported by account</source>
-        <translation type="unfinished"/>
+        <translation>Не поддерживается аккаунтом</translation>
     </message>
 </context>
 <context>
@@ -904,7 +904,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>GNU LGPL License (applies to Breeze source code)</source>
-        <translation type="unfinished"/>
+        <translation>GNU LGPL License (применяется к исходному коду Breeze)</translation>
     </message>
 </context>
 <context>
@@ -1338,7 +1338,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Cannot save feed properties</source>
-        <translation type="unfinished"/>
+        <translation>Невозможно сохранить свойства канала</translation>
     </message>
 </context>
 <context>
@@ -1781,23 +1781,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Article &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>Фильтры статей (&amp;F)</translation>
     </message>
     <message>
         <source>Close &amp;current tab</source>
-        <translation type="unfinished"/>
+        <translation>Закрыть текущую вкладку (&amp;C)</translation>
     </message>
     <message>
         <source>Close dialogs</source>
-        <translation type="unfinished"/>
+        <translation>Закрыть диалоги</translation>
     </message>
     <message>
         <source>&amp;Next item</source>
-        <translation type="unfinished"/>
+        <translation>Следующий элемент (&amp;N)</translation>
     </message>
     <message>
         <source>&amp;Previous item</source>
-        <translation type="unfinished"/>
+        <translation>Предыдущий элемент (&amp;P)</translation>
     </message>
 </context>
 <context>
@@ -1987,6 +1987,14 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Your JavaScript-based article filtering logic</source>
         <translation>Ваша логика фильтрации статей на основе JavaScript</translation>
+    </message>
+    <message>
+        <source>Are you sure?</source>
+        <translation>Вы уверены?</translation>
+    </message>
+    <message>
+        <source>Do you really want to remove selected filter?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3121,7 +3129,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Loading of articles from item &apos;%1&apos; failed</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось загрузить статьи из &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -3133,10 +3141,6 @@ Login tokens expiration: %2</source>
     <message>
         <source>Toolbar spacer</source>
         <translation>Пространство панели инструментов</translation>
-    </message>
-    <message>
-        <source>Search articles</source>
-        <translation>Поиск статей</translation>
     </message>
     <message>
         <source>Article search box</source>
@@ -3161,6 +3165,10 @@ Login tokens expiration: %2</source>
     <message>
         <source>Article highlighter</source>
         <translation>Подсветка статей</translation>
+    </message>
+    <message>
+        <source>Search articles (regex only)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3629,27 +3637,27 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Simplistic Reddit client.</source>
-        <translation type="unfinished"/>
+        <translation>Упрощенный клиент Reddit.</translation>
     </message>
     <message>
         <source>interesting stuff</source>
-        <translation type="unfinished"/>
+        <translation>интересный материал</translation>
     </message>
     <message>
         <source>interesting stuff (highlighted)</source>
-        <translation type="unfinished"/>
+        <translation>интересный материал (выделено)</translation>
     </message>
     <message>
         <source>errored items</source>
-        <translation type="unfinished"/>
+        <translation>элементы с ошибками</translation>
     </message>
     <message>
         <source>errored items (highlighted)</source>
-        <translation type="unfinished"/>
+        <translation>элементы с ошибками (выделено)</translation>
     </message>
     <message>
         <source>OK-ish color</source>
-        <translation type="unfinished"/>
+        <translation>Цвет OK</translation>
     </message>
 </context>
 <context>
@@ -3770,7 +3778,7 @@ List of supported readers:</source>
     <name>RedditCategory</name>
     <message>
         <source>Subscriptions</source>
-        <translation type="unfinished"/>
+        <translation>Подписки</translation>
     </message>
 </context>
 <context>
@@ -3781,7 +3789,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Reddit: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Reddit: ошибка аутентификации</translation>
     </message>
     <message>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
@@ -3793,7 +3801,7 @@ List of supported readers:</source>
     </message>
     <message>
         <source>Reddit: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Reddit: авторизация отклонена</translation>
     </message>
     <message>
         <source>Click this to login again.</source>
@@ -4310,19 +4318,19 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feed list row height</source>
-        <translation type="unfinished"/>
+        <translation>Высота строки списка каналов</translation>
     </message>
     <message>
         <source>Article list row height</source>
-        <translation type="unfinished"/>
+        <translation>Высота строки списка статей</translation>
     </message>
     <message>
         <source>Ignore changes in article body when new articles are being fetched</source>
-        <translation type="unfinished"/>
+        <translation>Игнорировать изменения в теле статьи при получении новых статей</translation>
     </message>
     <message>
         <source>Show only time for today articles</source>
-        <translation type="unfinished"/>
+        <translation>Показывать только время для сегодняшних статей</translation>
     </message>
 </context>
 <context>
@@ -4485,23 +4493,23 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Force dark look (Fusion only)</source>
-        <translation type="unfinished"/>
+        <translation>Принудительно темная тема (только Fusion)</translation>
     </message>
     <message>
         <source>Custom skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Пользовательские цвета тем</translation>
     </message>
     <message>
         <source>Force custom skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Принудительные пользовательские цвета тем</translation>
     </message>
     <message>
         <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
-        <translation type="unfinished"/>
+        <translation>Здесь вы можете переопределить некоторые цвета, определенные вашей темой. Некоторые цвета используются динамически во всем приложении.</translation>
     </message>
     <message>
         <source>Fetch color from activated skin</source>
-        <translation type="unfinished"/>
+        <translation>Получить цвет из активированной темы</translation>
     </message>
 </context>
 <context>
@@ -4629,7 +4637,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Cannot save category data</source>
-        <translation type="unfinished"/>
+        <translation>Не удается сохранить данные категории</translation>
     </message>
 </context>
 <context>
@@ -4672,11 +4680,11 @@ Type: %3</source>
     </message>
     <message>
         <source>Cannot save feed data</source>
-        <translation type="unfinished"/>
+        <translation>Не удается сохранить данные канала</translation>
     </message>
     <message>
         <source>Cannot move feed</source>
-        <translation type="unfinished"/>
+        <translation>Не удается переместить канал</translation>
     </message>
 </context>
 <context>
@@ -5133,7 +5141,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Close dialogs</source>
-        <translation type="unfinished"/>
+        <translation>Закрыть диалоги</translation>
     </message>
 </context>
 <context>
@@ -5491,6 +5499,34 @@ Last login on: %4</source>
     <message>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
         <translation>%1 не удалось запустить ваш веб-браузер с указанным URL-адресом, вам необходимо вручную открыть указанный ниже URL-адрес веб-сайта в своем веб-браузере.</translation>
+    </message>
+    <message>
+        <source>JS can activate windows</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show scrollbars</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Media playback with gestures</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>WebRTC uses only public interfaces</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>JS can paste from clipboard</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>DNS prefetch enabled</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>PDF viewer enabled</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

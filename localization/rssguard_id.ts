@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="id" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="id">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -716,11 +716,11 @@ Status: %3</source>
         <translation>Pengatur jarak bilah alat</translation>
     </message>
     <message>
-        <source>Search feeds</source>
+        <source>Feeds search box</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feeds search box</source>
+        <source>Search feeds (regex only)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1974,6 +1974,14 @@ atau fungsi ini belum diimplementasikan.</translation>
         <source>Your JavaScript-based article filtering logic</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Are you sure?</source>
+        <translation>Apakah anda yakin?</translation>
+    </message>
+    <message>
+        <source>Do you really want to remove selected filter?</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -3120,10 +3128,6 @@ Waktu berakhir log masuk: %2</translation>
         <translation>Pengatur jarak bilah alat</translation>
     </message>
     <message>
-        <source>Search articles</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Article search box</source>
         <translation type="unfinished"/>
     </message>
@@ -3145,6 +3149,10 @@ Waktu berakhir log masuk: %2</translation>
     </message>
     <message>
         <source>Article highlighter</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Search articles (regex only)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -5461,6 +5469,34 @@ Log masuk terakhir pada: %4</translation>
     </message>
     <message>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>JS can activate windows</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show scrollbars</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Media playback with gestures</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>WebRTC uses only public interfaces</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>JS can paste from clipboard</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>DNS prefetch enabled</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>PDF viewer enabled</source>
         <translation type="unfinished"/>
     </message>
 </context>

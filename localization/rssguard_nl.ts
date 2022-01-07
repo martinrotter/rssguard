@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl">
 <context>
     <name>AccountCheckModel</name>
     <message>
@@ -442,7 +442,7 @@ Klik hier om de bovenliggende map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Bezig met downloaden van %n bestand...</numerusform><numerusform>Bezig met downloaden van %n bestanden...</numerusform></translation>
+        <translation><numerusform>Bezig met downloaden van %n bestand...</numerusform><numerusform>Bezig met downloaden van %n bestand(en)...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -498,7 +498,7 @@ Status: %3</translation>
     <message numerus="yes">
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruikt globale instellingen (%n minuut naar de volgende automatische fetch van artikelen)</numerusform><numerusform>gebruikt globalee instellingen (%n minuten naar de volgende automatische fetch van artikelen)</numerusform></translation>
+        <translation><numerusform>gebruikt globale instellingen (%n minuut naar de volgende automatische fetch van artikelen)</numerusform><numerusform>gebruikt globalee instellingen (%n minuten tot automatisch ophalen van artikelen)</numerusform></translation>
     </message>
     <message>
         <source>uses global settings (global auto-fetching of articles is disabled)</source>
@@ -507,7 +507,7 @@ Status: %3</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>Gebruikt specifieke instellingen (%n minuut naar de volgende auto-halende artikel)</numerusform><numerusform>Gebruikt specifieke instellingen (%n minuten naar de volgende auto-halende artikelen)</numerusform></translation>
+        <translation><numerusform>Gebruikt specifieke instellingen (%n minuut naar de volgende auto-halende artikel)</numerusform><numerusform>gebruikt specifieke instellingen (%n minuten tot automatisch ophalen van artikelen)</numerusform></translation>
     </message>
     <message>
         <source>has new articles</source>
@@ -541,7 +541,7 @@ Status: %3</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-download new articles for %n feed(s).</source>
-        <translation><numerusform>automatisch nieuwe artikelen downloaden voor %n feed.</numerusform><numerusform>automatisch nieuwe artikelen downloaden voor %n feeds.</numerusform></translation>
+        <translation><numerusform>automatisch nieuwe artikelen downloaden voor %n feed.</numerusform><numerusform>automatisch nieuwe artikelen downloaden voor %n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>Cannot fetch articles at this point</source>
@@ -719,12 +719,12 @@ Status: %3</translation>
         <translation>Werkbalkruimte</translation>
     </message>
     <message>
-        <source>Search feeds</source>
-        <translation>Feeds zoeken</translation>
-    </message>
-    <message>
         <source>Feeds search box</source>
         <translation>Feeds zoekveld</translation>
+    </message>
+    <message>
+        <source>Search feeds (regex only)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1793,11 +1793,11 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     </message>
     <message>
         <source>&amp;Next item</source>
-        <translation type="unfinished"/>
+        <translation>Volge&amp;nd item</translation>
     </message>
     <message>
         <source>&amp;Previous item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Vorig item</translation>
     </message>
 </context>
 <context>
@@ -1987,6 +1987,14 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <source>Your JavaScript-based article filtering logic</source>
         <translation>Uw op JavaScript gebaseerde logica voor artikelfiltering</translation>
+    </message>
+    <message>
+        <source>Are you sure?</source>
+        <translation>Weet je het zeker?</translation>
+    </message>
+    <message>
+        <source>Do you really want to remove selected filter?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3135,10 +3143,6 @@ Logintoken verloopt: %2</translation>
         <translation>Paneelscheiding op werkbalk</translation>
     </message>
     <message>
-        <source>Search articles</source>
-        <translation>Artikel zoeken</translation>
-    </message>
-    <message>
         <source>Article search box</source>
         <translation>Artikel zoekvak</translation>
     </message>
@@ -3161,6 +3165,10 @@ Logintoken verloopt: %2</translation>
     <message>
         <source>Article highlighter</source>
         <translation>Artikel markeerstift</translation>
+    </message>
+    <message>
+        <source>Search articles (regex only)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3628,23 +3636,23 @@ Lijst met ondersteunde lezers:</translation>
     </message>
     <message>
         <source>interesting stuff</source>
-        <translation type="unfinished"/>
+        <translation>interresante dingen </translation>
     </message>
     <message>
         <source>interesting stuff (highlighted)</source>
-        <translation type="unfinished"/>
+        <translation>interresante dingen </translation>
     </message>
     <message>
         <source>errored items</source>
-        <translation type="unfinished"/>
+        <translation>items met fouten</translation>
     </message>
     <message>
         <source>errored items (highlighted)</source>
-        <translation type="unfinished"/>
+        <translation>items met fouten (gemarkeerd)</translation>
     </message>
     <message>
         <source>OK-ish color</source>
-        <translation type="unfinished"/>
+        <translation>Acceptabele kleur</translation>
     </message>
 </context>
 <context>
@@ -4481,23 +4489,23 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
     <message>
         <source>Force dark look (Fusion only)</source>
-        <translation type="unfinished"/>
+        <translation>Donker thema forceren (alleen voor Fusion)</translation>
     </message>
     <message>
         <source>Custom skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste kleuren</translation>
     </message>
     <message>
         <source>Force custom skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Aangepaste kleuren forceren</translation>
     </message>
     <message>
         <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
-        <translation type="unfinished"/>
+        <translation>Hier kunnen enkele kleuren aangepast worden. Sommige kleuren worden dynamisch toegepast in de applicatie.</translation>
     </message>
     <message>
         <source>Fetch color from activated skin</source>
-        <translation type="unfinished"/>
+        <translation>Volgende item</translation>
     </message>
 </context>
 <context>
@@ -5488,6 +5496,34 @@ Laatste login: %4</translation>
     <message>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
         <translation>%1 kon uw webbrowser niet starten met de opgegeven URL, u moet de onderstaande website-URL handmatig in uw webbrowser openen.</translation>
+    </message>
+    <message>
+        <source>JS can activate windows</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show scrollbars</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Media playback with gestures</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>WebRTC uses only public interfaces</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>JS can paste from clipboard</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>DNS prefetch enabled</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>PDF viewer enabled</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
