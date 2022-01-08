@@ -495,6 +495,12 @@ void FeedsView::focusInEvent(QFocusEvent* event) {
 }
 
 void FeedsView::filterItems(const QString& pattern) {
+  if (!pattern.isEmpty()) {
+    m_dontSaveExpandState = true;
+    expandAll();
+    m_dontSaveExpandState = false;
+  }
+
 #if QT_VERSION < 0x050C00 // Qt < 5.12.0
   m_proxyModel->setFilterRegExp(pattern.toLower());
 #else
@@ -504,14 +510,6 @@ void FeedsView::filterItems(const QString& pattern) {
   if (pattern.isEmpty()) {
     loadAllExpandStates();
   }
-
-  /*
-     else {
-       m_isDontSaveExpandState = true;
-       expandAll();
-       m_isDontSaveExpandState = false;
-     }
-   */
 }
 
 void FeedsView::onIndexExpanded(const QModelIndex& idx) {
@@ -603,17 +601,18 @@ void FeedsView::loadAllExpandStates() {
 }
 
 void FeedsView::expandItemDelayed(const QModelIndex& source_idx) {
-  QTimer::singleShot(100, this, [=] {
-    // Model requests to expand some items as they are visible and there is
-    // a filter active, so they maybe were not visible before.
-    QModelIndex pidx = m_proxyModel->mapFromSource(source_idx);
+  //QTimer::singleShot(100, this, [=] {
+  // Model requests to expand some items as they are visible and there is
+  // a filter active, so they maybe were not visible before.
+  QModelIndex pidx = m_proxyModel->mapFromSource(source_idx);
 
-    // NOTE: These changes are caused by filtering mechanisms
-    // and we don't want to store the values.
-    m_dontSaveExpandState = true;
-    expandRecursively(pidx);
-    m_dontSaveExpandState = false;
-  });
+  // NOTE: These changes are caused by filtering mechanisms
+  // and we don't want to store the values.
+  m_dontSaveExpandState = true;
+  expandRecursively(pidx);
+  m_dontSaveExpandState = false;
+
+  //});
 }
 
 QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
