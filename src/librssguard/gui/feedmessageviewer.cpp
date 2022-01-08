@@ -200,10 +200,10 @@ void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
   const QAction* origin = qobject_cast<QAction*>(sender());
 
   if (origin == nullptr) {
-    m_feedsView->model()->invalidateReadFeedsFilter(true, false);
+    m_feedsView->invalidateReadFeedsFilter(true, false);
   }
   else {
-    m_feedsView->model()->invalidateReadFeedsFilter(true, origin->isChecked());
+    m_feedsView->invalidateReadFeedsFilter(true, origin->isChecked());
   }
 }
 

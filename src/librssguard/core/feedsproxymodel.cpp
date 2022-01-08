@@ -206,12 +206,20 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source
            << "and filter result is:"
            << QUOTE_W_SPACE_DOT(should_show);
 
+  /*
+     if (should_show && (!filterRegularExpression().pattern().isEmpty() ||
+                      m_showUnreadOnly)) {
+     emit expandAfterFilterIn(m_sourceModel->index(source_row, 0, source_parent));
+     }
+   */
+
   if (should_show && m_hiddenIndices.contains(QPair<int, QModelIndex>(source_row, source_parent))) {
     qDebugNN << LOGSEC_CORE << "Item was previously hidden and now shows up, expand.";
 
     const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(QPair<int, QModelIndex>(source_row, source_parent));
 
-    // Load status.
+    // Now, item now should be displayed and previously it was not.
+    // Expand!
     emit expandAfterFilterIn(m_sourceModel->index(source_row, 0, source_parent));
   }
 

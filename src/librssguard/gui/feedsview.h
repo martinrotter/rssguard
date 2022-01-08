@@ -77,6 +77,8 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
 
     void filterItems(const QString& pattern);
 
+    void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
+
   signals:
     void itemSelected(RootItem* item);
     void requestViewNextUnreadMessage();
@@ -130,7 +132,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     QMenu* m_contextMenuLabel;
     FeedsModel* m_sourceModel;
     FeedsProxyModel* m_proxyModel;
-    bool m_isFiltering;
+    bool m_dontSaveExpandState;
 };
 
 inline FeedsProxyModel* FeedsView::model() const {

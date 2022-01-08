@@ -30,7 +30,7 @@
 FeedsView::FeedsView(QWidget* parent)
   : BaseTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
   m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuEmptySpace(nullptr), m_contextMenuOtherItems(nullptr),
-  m_contextMenuLabel(nullptr), m_isFiltering(false) {
+  m_contextMenuLabel(nullptr), m_dontSaveExpandState(false) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -495,8 +495,6 @@ void FeedsView::focusInEvent(QFocusEvent* event) {
 }
 
 void FeedsView::filterItems(const QString& pattern) {
-  m_isFiltering = !pattern.isEmpty();
-
 #if QT_VERSION < 0x050C00 // Qt < 5.12.0
   m_proxyModel->setFilterRegExp(pattern.toLower());
 #else
@@ -506,15 +504,21 @@ void FeedsView::filterItems(const QString& pattern) {
   if (pattern.isEmpty()) {
     loadAllExpandStates();
   }
-  else {
-    expandAll();
-  }
+
+  /*
+     else {
+       m_isDontSaveExpandState = true;
+       expandAll();
+       m_isDontSaveExpandState = false;
+     }
+   */
 }
 
 void FeedsView::onIndexExpanded(const QModelIndex& idx) {
   qDebugNN << LOGSEC_GUI << "Feed list item expanded - " << m_proxyModel->data(idx).toString();
 
-  if (m_isFiltering) {
+  if (m_dontSaveExpandState) {
+    qWarningNN << LOGSEC_GUI << "Don't saving expand state - " << m_proxyModel->data(idx).toString();
     return;
   }
 
@@ -534,7 +538,8 @@ void FeedsView::onIndexExpanded(const QModelIndex& idx) {
 void FeedsView::onIndexCollapsed(const QModelIndex& idx) {
   qDebugNN << LOGSEC_GUI << "Feed list item collapsed - " << m_proxyModel->data(idx).toString();
 
-  if (m_isFiltering) {
+  if (m_dontSaveExpandState) {
+    qWarningNN << LOGSEC_GUI << "Don't saving collapse state - " << m_proxyModel->data(idx).toString();
     return;
   }
 
@@ -598,13 +603,17 @@ void FeedsView::loadAllExpandStates() {
 }
 
 void FeedsView::expandItemDelayed(const QModelIndex& source_idx) {
-  if (m_isFiltering) {
-    QTimer::singleShot(100, this, [=] {
-      QModelIndex pidx = m_proxyModel->mapFromSource(source_idx);
+  QTimer::singleShot(100, this, [=] {
+    // Model requests to expand some items as they are visible and there is
+    // a filter active, so they maybe were not visible before.
+    QModelIndex pidx = m_proxyModel->mapFromSource(source_idx);
 
-      setExpanded(pidx, true);
-    });
-  }
+    // NOTE: These changes are caused by filtering mechanisms
+    // and we don't want to store the values.
+    m_dontSaveExpandState = true;
+    expandRecursively(pidx);
+    m_dontSaveExpandState = false;
+  });
 }
 
 QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
@@ -794,6 +803,10 @@ void FeedsView::setupAppearance() {
   setItemDelegate(new StyledItemDelegateWithoutFocus(GUI::HeightRowFeeds, this));
 }
 
+void FeedsView::invalidateReadFeedsFilter(bool set_new_value, bool show_unread_only) {
+  m_proxyModel->invalidateReadFeedsFilter(set_new_value, show_unread_only);
+}
+
 void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {
   RootItem* selected_item = selectedItem();
 
@@ -801,7 +814,7 @@ void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSele
   QTreeView::selectionChanged(selected, deselected);
   emit itemSelected(selected_item);
 
-  m_proxyModel->invalidateReadFeedsFilter();
+  invalidateReadFeedsFilter();
 
   if (!selectedIndexes().isEmpty() &&
       qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoExpandOnSelection)).toBool()) {
