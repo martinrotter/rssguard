@@ -23,7 +23,7 @@ CREATE TABLE Categories (
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
   date_created    BIGINT,
-  icon            °°,
+  icon            ^^,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
   
@@ -35,7 +35,7 @@ CREATE TABLE Feeds (
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
   date_created    BIGINT,
-  icon            °°,
+  icon            ^^,
   category        INTEGER     NOT NULL CHECK (category >= -1), /* Physical category ID, also root feeds contain -1 here. */
   source          TEXT,
   update_type     INTEGER     NOT NULL CHECK (update_type >= 0),
