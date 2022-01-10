@@ -76,7 +76,7 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
 
   connect(m_ui->m_spinToolbarIconSize, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
     if (value <= 0) {
-      m_ui->m_spinToolbarIconSize->setSuffix(QSL(" px ") + tr("= default icon size"));
+      m_ui->m_spinToolbarIconSize->setSuffix(tr(" = default icon size"));
     }
     else {
       m_ui->m_spinToolbarIconSize->setSuffix(QSL(" px"));

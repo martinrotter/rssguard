@@ -124,7 +124,7 @@ bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
 #if defined(USE_WEBENGINE)
     if (notify_others) {
-      //m_webEngineCookies->setCookie(cookie);
+      m_webEngineCookies->setCookie(cookie);
     }
 #else
     Q_UNUSED(notify_others)
