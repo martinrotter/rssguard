@@ -73,6 +73,10 @@ Message RssParser::extractMessage(const QDomElement& msg_element, const QDateTim
   }
 
   if (!elem_enclosure.isEmpty()) {
+    if (elem_enclosure_type.isEmpty()) {
+      elem_enclosure_type = QSL(DEFAULT_ENCLOSURE_MIME_TYPE);
+    }
+
     new_message.m_enclosures.append(Enclosure(elem_enclosure, elem_enclosure_type));
     qDebugNN << LOGSEC_CORE
              << "Found enclosure"

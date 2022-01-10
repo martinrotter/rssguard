@@ -100,7 +100,13 @@ Message AtomParser::extractMessage(const QDomElement& msg_element, const QDateTi
     QString attribute = link.attribute(QSL("rel"));
 
     if (attribute == QSL("enclosure")) {
-      new_message.m_enclosures.append(Enclosure(link.attribute(QSL("href")), link.attribute(QSL("type"))));
+      QString enclosure_type = link.attribute(QSL("type"));
+
+      if (enclosure_type.isEmpty()) {
+        enclosure_type = QSL(DEFAULT_ENCLOSURE_MIME_TYPE);
+      }
+
+      new_message.m_enclosures.append(Enclosure(link.attribute(QSL("href")), enclosure_type));
       qDebugNN << LOGSEC_CORE
                << "Found enclosure"
                << QUOTE_W_SPACE(new_message.m_enclosures.last().m_url)

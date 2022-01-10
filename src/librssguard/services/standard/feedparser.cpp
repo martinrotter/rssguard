@@ -5,6 +5,7 @@
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "network-web/webfactory.h"
+#include "services/standard/definitions.h"
 
 #include <QDebug>
 #include <QRegularExpression>
@@ -60,6 +61,10 @@ QList<Enclosure> FeedParser::mrssGetEnclosures(const QDomElement& msg_element) c
     QString url = elem_content.attribute(QSL("url"));
     QString type = elem_content.attribute(QSL("type"));
 
+    if (type.isEmpty()) {
+      type = QSL(DEFAULT_ENCLOSURE_MIME_TYPE);
+    }
+
     if (!url.isEmpty() && !type.isEmpty()) {
       enclosures.append(Enclosure(url, type));
     }
@@ -72,7 +77,7 @@ QList<Enclosure> FeedParser::mrssGetEnclosures(const QDomElement& msg_element) c
     QString url = elem_content.attribute(QSL("url"));
 
     if (!url.isEmpty()) {
-      enclosures.append(Enclosure(url, QSL("image/png")));
+      enclosures.append(Enclosure(url, QSL(DEFAULT_ENCLOSURE_MIME_TYPE)));
     }
   }
 

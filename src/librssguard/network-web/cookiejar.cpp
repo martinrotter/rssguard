@@ -26,10 +26,10 @@ CookieJar::CookieJar(QObject* parent) : QNetworkCookieJar(parent) {
 
   // When cookies change in WebEngine, then change in main cookie jar too.
   connect(m_webEngineCookies, &QWebEngineCookieStore::cookieAdded, this, [=](const QNetworkCookie& cookie) {
-    insertCookieInternal(cookie, false, true);
+    //insertCookieInternal(cookie, false, true);
   });
   connect(m_webEngineCookies, &QWebEngineCookieStore::cookieRemoved, this, [=](const QNetworkCookie& cookie) {
-    deleteCookieInternal(cookie, false);
+    //deleteCookieInternal(cookie, false);
   });
 #endif
 
@@ -124,7 +124,6 @@ bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
 #if defined(USE_WEBENGINE)
     if (notify_others) {
-      // NOTE: Make sync one-way for now, it crashes.
       //m_webEngineCookies->setCookie(cookie);
     }
 #else
