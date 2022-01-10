@@ -1,3 +1,11 @@
+4.1.2
+-----
+
+Fixed:
+* Make webengine cookies synchronization one-way because it was crashing in some instances. This is likely temporary fix.
+* Fixed RSS Guard crashing when using MariaDB backend. Problem was in buggy runtime generation of DDL SQL scripts. (#573)
+* Expanding/collapsing of categories is now EVEN MORE properly persistent and behaves more correctly when filtering feed list in some way. (#546)
+
 4.1.0
 -----
 
