@@ -170,6 +170,28 @@ Note that `MessageObject` attributes which can be synchronized with service are 
 | Method    | `runExecutableGetOutput(String, String[])`   | `String`        | `utils.runExecutableGetOutput('cmd.exe', ['/c', 'dir'])`  | Launches external executable with optional parameters, reads its standard output and returns the output when executable finishes.
 
 #### Examples
+Accept only messages/articles with title containing "Series Name" in it:
+```js
+function filterMessage() {
+  if (msg.title.indexOf('Series Name') != -1) {
+    return MessageObject.Accept;
+  } else {
+    return MessageObject.Ignore;
+  }
+}
+```
+
+Accept only messages/articles with title NOT containing "Other Series Name" or "Some other title" in it:
+```js
+function filterMessage() {
+  if (msg.title.indexOf('Other Series Name') == -1 && msg.title.indexOf('Some other title') == -1) {
+    return MessageObject.Accept;
+  } else {
+    return MessageObject.Ignore;
+  }
+}
+```
+
 Accept only messages/articles from "Bob", while also mark them "important":
 ```js
 function filterMessage() {
