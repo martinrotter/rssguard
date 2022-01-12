@@ -35,6 +35,7 @@ class NetworkFactory {
     static QNetworkReply::NetworkError downloadIcon(const QList<QPair<QString, bool>>& urls,
                                                     int timeout,
                                                     QIcon& output,
+                                                    const QList<QPair<QByteArray, QByteArray>>& additional_headers,
                                                     const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
     static NetworkResult performNetworkOperation(const QString& url, int timeout,
                                                  const QByteArray& input_data,

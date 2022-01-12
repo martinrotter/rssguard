@@ -48,6 +48,8 @@ class TtRssGetLabelsResponse : public TtRssResponse {
     QList<RootItem*> labels() const;
 };
 
+class TtRssNetworkFactory;
+
 class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
   public:
     explicit TtRssGetFeedsCategoriesResponse(const QString& raw_content = QString());
@@ -56,7 +58,8 @@ class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
     // Returns tree of feeds/categories.
     // Top-level root of the tree is not needed here.
     // Returned items do not have primary IDs assigned.
-    RootItem* feedsCategories(bool obtain_icons, const QNetworkProxy& proxy, const QString& base_address = QString()) const;
+    RootItem* feedsCategories(TtRssNetworkFactory* network, bool obtain_icons,
+                              const QNetworkProxy& proxy, const QString& base_address = QString()) const;
 };
 
 class ServiceRoot;

@@ -144,8 +144,11 @@ QString NetworkFactory::sanitizeUrl(const QString& url) {
                               {});
 }
 
-QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QString, bool>>& urls, int timeout,
-                                                         QIcon& output, const QNetworkProxy& custom_proxy) {
+QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QString, bool>>& urls,
+                                                         int timeout,
+                                                         QIcon& output,
+                                                         const QList<QPair<QByteArray, QByteArray>>& additional_headers,
+                                                         const QNetworkProxy& custom_proxy) {
   QNetworkReply::NetworkError network_result = QNetworkReply::NetworkError::UnknownNetworkError;
 
   for (const auto& url : urls) {
@@ -162,7 +165,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
                                                {},
                                                icon_data,
                                                QNetworkAccessManager::Operation::GetOperation,
-                                               {},
+                                               additional_headers,
                                                false,
                                                {},
                                                {},

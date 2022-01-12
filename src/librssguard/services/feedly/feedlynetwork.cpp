@@ -376,6 +376,7 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json, bool obtain_i
                                                      { fee_obj[QSL("logo")].toString(), true } },
                                                    timeout,
                                                    icon,
+                                                   {},
                                                    proxy);
 
         if (result == QNetworkReply::NetworkError::NoError && !icon.isNull()) {

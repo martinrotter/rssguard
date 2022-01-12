@@ -448,6 +448,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
   if (NetworkFactory::downloadIcon(icon_possible_locations,
                                    DOWNLOAD_TIMEOUT,
                                    icon_data,
+                                   {},
                                    custom_proxy) == QNetworkReply::NetworkError::NoError) {
     // Icon for feed was downloaded and is stored now in _icon_data.
     feed->setIcon(icon_data);

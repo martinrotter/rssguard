@@ -677,7 +677,10 @@ TtRssGetFeedsCategoriesResponse::TtRssGetFeedsCategoriesResponse(const QString& 
 
 TtRssGetFeedsCategoriesResponse::~TtRssGetFeedsCategoriesResponse() = default;
 
-RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, const QNetworkProxy& proxy, const QString& base_address) const {
+RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(TtRssNetworkFactory* network,
+                                                           bool obtain_icons,
+                                                           const QNetworkProxy& proxy,
+                                                           const QString& base_address) const {
   auto* parent = new RootItem();
 
   // Chop the "api/" from the end of the address.
@@ -740,9 +743,17 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, co
               // Chop the "api/" suffix out and append
               QString full_icon_address = base_address + QL1C('/') + icon_path;
               QIcon icon;
+              QList<QPair<QByteArray, QByteArray>> headers;
+
+              if (network->authIsUsed()) {
+                headers << NetworkFactory::generateBasicAuthHeader(network->authUsername(),
+                                                                   network->authPassword());
+              }
+
               auto res = NetworkFactory::downloadIcon({ { full_icon_address, true } },
                                                       DOWNLOAD_TIMEOUT,
                                                       icon,
+                                                      headers,
                                                       proxy);
 
               if (res == QNetworkReply::NoError) {
