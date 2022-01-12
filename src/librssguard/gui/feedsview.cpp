@@ -609,7 +609,13 @@ void FeedsView::expandItemDelayed(const QModelIndex& source_idx) {
   // NOTE: These changes are caused by filtering mechanisms
   // and we don't want to store the values.
   m_dontSaveExpandState = true;
+
+#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
   expandRecursively(pidx);
+#else
+  setExpanded(pidx, true);
+#endif
+
   m_dontSaveExpandState = false;
 
   //});
