@@ -68,6 +68,7 @@ HEADERS += core/feeddownloader.h \
            gui/reusable/helpspoiler.h \
            gui/reusable/progressbarwithtext.h \
            gui/reusable/resizablestackedwidget.h \
+           gui/settings/settingsnodejs.h \
            gui/settings/settingsnotifications.h \
            gui/toolbars/basetoolbar.h \
            gui/reusable/comboboxwithstatus.h \
@@ -128,6 +129,7 @@ HEADERS += core/feeddownloader.h \
            miscellaneous/iofactory.h \
            miscellaneous/localization.h \
            miscellaneous/mutex.h \
+           miscellaneous/nodejs.h \
            miscellaneous/notification.h \
            miscellaneous/notificationfactory.h \
            miscellaneous/regexfactory.h \
@@ -259,6 +261,7 @@ SOURCES += core/feeddownloader.cpp \
            gui/reusable/helpspoiler.cpp \
            gui/reusable/progressbarwithtext.cpp \
            gui/reusable/resizablestackedwidget.cpp \
+           gui/settings/settingsnodejs.cpp \
            gui/settings/settingsnotifications.cpp \
            gui/toolbars/basetoolbar.cpp \
            gui/reusable/comboboxwithstatus.cpp \
@@ -319,6 +322,7 @@ SOURCES += core/feeddownloader.cpp \
            miscellaneous/iofactory.cpp \
            miscellaneous/localization.cpp \
            miscellaneous/mutex.cpp \
+           miscellaneous/nodejs.cpp \
            miscellaneous/notification.cpp \
            miscellaneous/notificationfactory.cpp \
            miscellaneous/regexfactory.cpp \
@@ -432,6 +436,7 @@ FORMS += gui/dialogs/formabout.ui \
          gui/settings/settingsgeneral.ui \
          gui/settings/settingsgui.ui \
          gui/settings/settingslocalization.ui \
+         gui/settings/settingsnodejs.ui \
          gui/settings/settingsnotifications.ui \
          gui/settings/settingsshortcuts.ui \
          gui/toolbars/toolbareditor.ui \

@@ -26,10 +26,10 @@ CookieJar::CookieJar(QObject* parent) : QNetworkCookieJar(parent) {
 
   // When cookies change in WebEngine, then change in main cookie jar too.
   connect(m_webEngineCookies, &QWebEngineCookieStore::cookieAdded, this, [=](const QNetworkCookie& cookie) {
-    //insertCookieInternal(cookie, false, true);
+    insertCookieInternal(cookie, false, true);
   });
   connect(m_webEngineCookies, &QWebEngineCookieStore::cookieRemoved, this, [=](const QNetworkCookie& cookie) {
-    //deleteCookieInternal(cookie, false);
+    deleteCookieInternal(cookie, false);
   });
 #endif
 
@@ -80,6 +80,7 @@ void CookieJar::loadCookies() {
                       << "Failed to load cookie"
                       << QUOTE_W_SPACE(cookie_key)
                       << "from settings.";
+          sett->remove(Cookies::ID, cookie_key);
         }
       }
     }
@@ -124,7 +125,7 @@ bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
 #if defined(USE_WEBENGINE)
     if (notify_others) {
-      m_webEngineCookies->setCookie(cookie);
+      //m_webEngineCookies->setCookie(cookie);
     }
 #else
     Q_UNUSED(notify_others)

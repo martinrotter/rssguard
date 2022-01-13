@@ -22,22 +22,7 @@
     </widget>
    </item>
    <item row="1" column="0" colspan="2">
-    <widget class="QLabel" name="m_lblDataStorageWarning">
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	margin-top: 12px;
-}</string>
-     </property>
-     <property name="text">
-      <string>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
+    <widget class="HelpSpoiler" name="m_lblDataStorageWarning" native="true"/>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="m_lblDatabaseDriver">
@@ -55,7 +40,7 @@
    <item row="3" column="0" colspan="2">
     <widget class="QStackedWidget" name="m_stackedDatabaseDriver">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_pageSqlite">
       <layout class="QFormLayout" name="formLayout_15">
@@ -82,30 +67,7 @@
         </widget>
        </item>
        <item row="1" column="0" colspan="2">
-        <widget class="QLabel" name="m_lblSqliteInMemoryWarnings">
-         <property name="text">
-          <string>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
-&lt;ul&gt;
-&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
-&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
-&lt;/ul&gt;
-Disadvantages:
-&lt;ul&gt;
-&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
-&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
-&lt;/ul&gt;
-Authors of this application are NOT responsible for lost data.</string>
-         </property>
-         <property name="textFormat">
-          <enum>Qt::RichText</enum>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-         <property name="indent">
-          <number>20</number>
-         </property>
-        </widget>
+        <widget class="HelpSpoiler" name="m_lblSqliteInMemoryWarnings" native="true"/>
        </item>
       </layout>
      </widget>
@@ -236,17 +198,7 @@ Authors of this application are NOT responsible for lost data.</string>
         </layout>
        </item>
        <item row="5" column="0" colspan="2">
-        <widget class="QLabel" name="m_lblMysqlInfo">
-         <property name="text">
-          <string>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
+        <widget class="HelpSpoiler" name="m_lblMysqlInfo" native="true"/>
        </item>
       </layout>
      </widget>
@@ -273,6 +225,12 @@ Authors of this application are NOT responsible for lost data.</string>
   <zorder>m_lblDataStorageWarning</zorder>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
+  </customwidget>
   <customwidget>
    <class>LabelWithStatus</class>
    <extends>QWidget</extends>

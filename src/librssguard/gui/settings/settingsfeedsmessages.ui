@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>479</width>
-    <height>433</height>
+    <width>489</width>
+    <height>434</height>
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QTabWidget" name="m_tabFeedsMessages">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
@@ -268,6 +268,13 @@
          </property>
         </widget>
        </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cmbIgnoreContentsChanges">
+         <property name="text">
+          <string>Ignore changes in article body when new articles are being fetched</string>
+         </property>
+        </widget>
+       </item>
        <item row="2" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkDisplayPlaceholders">
          <property name="text">
@@ -303,7 +310,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="9" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Article list row height</string>
@@ -313,7 +320,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
+       <item row="9" column="1">
         <widget class="QSpinBox" name="m_spinHeightRowsMessages">
          <property name="minimumSize">
           <size>
@@ -332,24 +339,18 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="label">
+       <item row="10" column="0">
+        <widget class="QLabel" name="m_lblHeightImageAttachments">
          <property name="text">
-          <string>Height of image attachments</string>
+          <string>Image attachments height</string>
          </property>
          <property name="buddy">
           <cstring>m_spinHeightImageAttachments</cstring>
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
+       <item row="10" column="1">
         <widget class="QSpinBox" name="m_spinHeightImageAttachments">
-         <property name="minimumSize">
-          <size>
-           <width>150</width>
-           <height>0</height>
-          </size>
-         </property>
          <property name="suffix">
           <string notr="true"> px</string>
          </property>
@@ -361,7 +362,7 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="0">
+       <item row="11" column="0">
         <widget class="QCheckBox" name="m_checkMessagesDateTimeFormat">
          <property name="text">
           <string>Use custom date/time format</string>
@@ -374,7 +375,7 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
+       <item row="11" column="1">
         <widget class="QComboBox" name="m_cmbMessagesDateTimeFormat">
          <property name="minimumSize">
           <size>
@@ -384,7 +385,30 @@
          </property>
         </widget>
        </item>
-       <item row="11" column="0" colspan="2">
+       <item row="12" column="0">
+        <widget class="QCheckBox" name="m_checkMessagesTimeFormat">
+         <property name="text">
+          <string>Show only time for today articles</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="1">
+        <widget class="QComboBox" name="m_cmbMessagesTimeFormat">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QGroupBox" name="groupBox_5">
@@ -453,7 +477,7 @@
          </item>
         </layout>
        </item>
-       <item row="13" column="0" colspan="2">
+       <item row="15" column="0" colspan="2">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -466,33 +490,20 @@
          </property>
         </spacer>
        </item>
-       <item row="1" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cmbIgnoreContentsChanges">
+       <item row="7" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkMultilineArticleList">
          <property name="text">
-          <string>Ignore changes in article body when new articles are being fetched</string>
+          <string>Enable multiline article list items</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="1">
-        <widget class="QComboBox" name="m_cmbMessagesTimeFormat">
+       <item row="8" column="0" colspan="2">
+        <widget class="HelpSpoiler" name="m_helpMultilineArticleList" native="true">
          <property name="minimumSize">
           <size>
-           <width>150</width>
+           <width>50</width>
            <height>0</height>
           </size>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="0">
-        <widget class="QCheckBox" name="m_checkMessagesTimeFormat">
-         <property name="text">
-          <string>Show only time for today articles</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -507,6 +518,12 @@
    <class>TimeSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>timespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -530,6 +547,7 @@
   <tabstop>m_checkDisplayFeedIcons</tabstop>
   <tabstop>m_checkBringToForegroundAfterMsgOpened</tabstop>
   <tabstop>m_checkKeppMessagesInTheMiddle</tabstop>
+  <tabstop>m_checkMultilineArticleList</tabstop>
   <tabstop>m_spinHeightRowsMessages</tabstop>
   <tabstop>m_spinHeightImageAttachments</tabstop>
   <tabstop>m_checkMessagesDateTimeFormat</tabstop>

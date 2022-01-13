@@ -17,6 +17,7 @@ class HelpSpoiler : public QWidget {
   public:
     explicit HelpSpoiler(QWidget* parent = nullptr);
 
+    void setHelpText(const QString& title, const QString& text, bool is_warning);
     void setHelpText(const QString& text, bool is_warning);
 
   private:

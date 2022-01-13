@@ -6,6 +6,7 @@
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "gui/messagesview.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/skinfactory.h"
@@ -21,8 +22,9 @@
 #include <cmath>
 
 MessagesModel::MessagesModel(QObject* parent)
-  : QSqlQueryModel(parent), m_cache(new MessagesModelCache(this)), m_messageHighlighter(MessageHighlighter::NoHighlighting),
-  m_customDateFormat(QString()), m_customTimeFormat(QString()), m_selectedItem(nullptr), m_displayFeedIcons(false) {
+  : QSqlQueryModel(parent), m_view(nullptr), m_cache(new MessagesModelCache(this)), m_messageHighlighter(MessageHighlighter::NoHighlighting),
+  m_customDateFormat(QString()), m_customTimeFormat(QString()), m_selectedItem(nullptr), m_displayFeedIcons(false),
+  m_multilineListItems(qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()) {
   setupFonts();
   setupIcons();
   setupHeaderData();
@@ -77,6 +79,14 @@ QIcon MessagesModel::generateIconForScore(double score) {
   paint.fillPath(path, QColor::fromHsv(int(score), 200, 230));
 
   return pix;
+}
+
+MessagesView* MessagesModel::view() const {
+  return m_view;
+}
+
+void MessagesModel::setView(MessagesView* newView) {
+  m_view = newView;
 }
 
 MessagesModelCache* MessagesModel::cache() const {
@@ -418,6 +428,29 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           return QVariant();
       }
 
+    case Qt::ItemDataRole::SizeHintRole: {
+      if (!m_multilineListItems || m_view == nullptr || m_view->isColumnHidden(idx.column())) {
+        return {};
+      }
+      else {
+        auto wd = m_view->columnWidth(idx.column());
+        QString str = data(idx, Qt::ItemDataRole::DisplayRole).toString();
+
+        if (str.simplified().isEmpty()) {
+          return {};
+        }
+
+        QFontMetrics fm(data(idx, Qt::ItemDataRole::FontRole).value<QFont>());
+        auto rct = fm.boundingRect(QRect(QPoint(0, 0), QPoint(wd - 20, 100000)),
+                                   Qt::TextFlag::TextWordWrap |
+                                   Qt::AlignmentFlag::AlignLeft |
+                                   Qt::AlignmentFlag::AlignVCenter,
+                                   str).size();
+
+        return rct;
+      }
+    }
+
     case Qt::ItemDataRole::DecorationRole: {
       const int index_column = idx.column();
 
@@ -425,8 +458,8 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         if (m_displayFeedIcons && m_selectedItem != nullptr) {
           QModelIndex idx_feedid = index(idx.row(), MSG_DB_FEED_CUSTOM_ID_INDEX);
           QVariant dta = m_cache->containsData(idx_feedid.row())
-                           ? m_cache->data(idx_feedid)
-                           : QSqlQueryModel::data(idx_feedid);
+                         ? m_cache->data(idx_feedid)
+                         : QSqlQueryModel::data(idx_feedid);
           QString feed_custom_id = dta.toString();
           auto acc = m_selectedItem->getParentServiceRoot()->feedIconForMessage(feed_custom_id);
 

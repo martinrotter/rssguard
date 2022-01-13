@@ -125,6 +125,9 @@ namespace Messages {
   KEY UseCustomTime;
   VALUE(bool) UseCustomTimeDef;
 
+  KEY MultilineArticleList;
+  VALUE(bool) MultilineArticleListDef;
+
   KEY CustomTimeFormat;
   VALUE(QString) CustomTimeFormatDef;
 

@@ -13,6 +13,7 @@
 #include <QFont>
 #include <QIcon>
 
+class MessagesView;
 class MessagesModelCache;
 
 class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
@@ -74,6 +75,9 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     // Loads messages of given feeds.
     void loadMessages(RootItem* item);
 
+    MessagesView* view() const;
+    void setView(MessagesView* newView);
+
   public slots:
 
     // NOTE: These methods DO NOT actually change data in the DB, just in the model.
@@ -88,6 +92,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     static QIcon generateIconForScore(double score);
 
   private:
+    MessagesView* m_view;
     MessagesModelCache* m_cache;
     MessageHighlighter m_messageHighlighter;
     QString m_customDateFormat;
@@ -105,6 +110,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     QIcon m_enclosuresIcon;
     QList<QIcon> m_scoreIcons;
     bool m_displayFeedIcons;
+    bool m_multilineListItems;
 };
 
 Q_DECLARE_METATYPE(MessagesModel::MessageHighlighter)

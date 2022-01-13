@@ -108,7 +108,13 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   setTabOrder(m_ui.m_txtPostProcessScript->textEdit(), m_ui.m_btnFetchMetadata);
   setTabOrder(m_ui.m_btnFetchMetadata, m_ui.m_btnIcon);
 
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblScriptInfo, false);
+  m_ui.m_lblScriptInfo->setHelpText(tr("What is post-processing script?"),
+                                    tr("You can use URL as a source of your feed or you can produce your feed with "
+                                       "custom script.\n\n"
+                                       "Also, you can post-process generated feed data with yet "
+                                       "another script if you wish. These are advanced features and make sure to "
+                                       "read the documentation before your use them."),
+                                    true);
 
   onTitleChanged({});
   onDescriptionChanged({});

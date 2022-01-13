@@ -105,6 +105,9 @@ DVALUE(bool) Messages::UseCustomDateDef = false;
 DKEY Messages::CustomDateFormat = "custom_date_format";
 DVALUE(char*) Messages::CustomDateFormatDef = "";
 
+DKEY Messages::MultilineArticleList = "multiline_article_list";
+DVALUE(bool) Messages::MultilineArticleListDef = false;
+
 DKEY Messages::UseCustomTime = "use_custom_time";
 DVALUE(bool) Messages::UseCustomTimeDef = false;
 

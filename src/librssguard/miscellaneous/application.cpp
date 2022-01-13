@@ -15,6 +15,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
+#include "miscellaneous/nodejs.h"
 #include "miscellaneous/notificationfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
@@ -67,6 +68,7 @@ Application::Application(const QString& id, int& argc, char** argv)
   m_database = new DatabaseFactory(this);
   m_downloadManager = nullptr;
   m_notifications = new NotificationFactory(this);
+  m_nodejs = new NodeJs(this);
   m_shouldRestart = false;
 
   determineFirstRuns();

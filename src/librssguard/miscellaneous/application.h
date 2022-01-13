@@ -33,6 +33,7 @@ class FormMain;
 class IconFactory;
 class QAction;
 class Mutex;
+class NodeJs;
 
 #if QT_VERSION_MAJOR == 6
 class QWebEngineDownloadRequest;
@@ -224,6 +225,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     DatabaseFactory* m_database;
     DownloadManager* m_downloadManager;
     NotificationFactory* m_notifications;
+    NodeJs* m_nodejs;
     bool m_shouldRestart;
     bool m_firstRunEver;
     bool m_firstRunCurrentVersion;

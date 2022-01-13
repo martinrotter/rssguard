@@ -16,6 +16,7 @@
 #include "gui/settings/settingsgeneral.h"
 #include "gui/settings/settingsgui.h"
 #include "gui/settings/settingslocalization.h"
+#include "gui/settings/settingsnodejs.h"
 #include "gui/settings/settingsnotifications.h"
 #include "gui/settings/settingsshortcuts.h"
 
@@ -46,6 +47,7 @@ FormSettings::FormSettings(QWidget& parent)
   addSettingsPanel(new SettingsLocalization(&m_settings, this));
   addSettingsPanel(new SettingsShortcuts(&m_settings, this));
   addSettingsPanel(new SettingsBrowserMail(&m_settings, this));
+  addSettingsPanel(new SettingsNodejs(&m_settings, this));
   addSettingsPanel(new SettingsDownloads(&m_settings, this));
   addSettingsPanel(new SettingsFeedsMessages(&m_settings, this));
 

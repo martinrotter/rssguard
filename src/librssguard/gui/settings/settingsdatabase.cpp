@@ -12,9 +12,34 @@ SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsDatabase) {
   m_ui->setupUi(this);
 
-  GuiUtilities::setLabelAsNotice(*m_ui->m_lblDataStorageWarning, true);
-  GuiUtilities::setLabelAsNotice(*m_ui->m_lblMysqlInfo, false);
-  GuiUtilities::setLabelAsNotice(*m_ui->m_lblSqliteInMemoryWarnings, true);
+  m_ui->m_lblDataStorageWarning->setHelpText(tr("Note that switching to another data storage type will "
+                                                "NOT copy existing your data from currently active data "
+                                                "storage to newly selected one."),
+                                             true);
+
+  m_ui->m_lblMysqlInfo->setHelpText(tr("Note that speed of used MySQL server and latency of used connection "
+                                       "medium HEAVILY influences the final performance of this application. "
+                                       "Using slow database connections leads to bad performance when browsing "
+                                       "feeds or messages."),
+                                    false);
+
+  m_ui->m_lblSqliteInMemoryWarnings->setHelpText(tr("Usage of in-memory working database has several advantages "
+                                                    "and pitfalls. Make sure that you are familiar with these "
+                                                    "before you turn this feature on.\n"
+                                                    "\n"
+                                                    "Advantages:\n"
+                                                    " • higher speed for feed/message manipulations "
+                                                    "(especially with thousands of messages displayed),\n"
+                                                    " • whole database stored in RAM, thus your hard drive can "
+                                                    "rest more.\n"
+                                                    "\n"
+                                                    "Disadvantages:\n"
+                                                    " • if application crashes, your changes from last session are lost,\n"
+                                                    " • application startup and shutdown can take little longer "
+                                                    "(max. 2 seconds).\n"
+                                                    "\n"
+                                                    "Authors of this application are NOT responsible for lost data."),
+                                                 true);
 
   m_ui->m_txtMysqlPassword->lineEdit()->setPasswordMode(true);
 

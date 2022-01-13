@@ -18,7 +18,10 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item row="2" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_lblInfo" native="true"/>
+   </item>
+   <item row="3" column="0" colspan="2">
     <widget class="NotificationsEditor" name="m_editor" native="true">
      <property name="enabled">
       <bool>false</bool>
@@ -31,29 +34,15 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
-    <widget class="QLabel" name="m_lblAvailableSounds">
-     <property name="text">
-      <string>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</string>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="QLabel" name="m_lblInfo">
-     <property name="text">
-      <string>You must have &quot;tray icon&quot; activated to have balloon notifications working.</string>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
+  </customwidget>
   <customwidget>
    <class>NotificationsEditor</class>
    <extends>QWidget</extends>

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>481</width>
+    <width>537</width>
     <height>330</height>
    </rect>
   </property>
@@ -337,7 +337,7 @@
        <item row="0" column="0" colspan="2">
         <widget class="QLabel" name="m_lblToolInfo">
          <property name="text">
-          <string>On this page, you can setup a list of external tools which can open URLs of selected messages.</string>
+          <string>On this page, you can setup a list of external tools which can open URLs.</string>
          </property>
         </widget>
        </item>

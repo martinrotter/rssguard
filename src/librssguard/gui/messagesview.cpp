@@ -31,6 +31,7 @@ MessagesView::MessagesView(QWidget* parent)
   m_processingRightMouseButton(false) {
   m_sourceModel = qApp->feedReader()->messagesModel();
   m_proxyModel = qApp->feedReader()->messagesProxyModel();
+  m_sourceModel->setView(this);
 
   // Forward count changes to the view.
   createConnections();
@@ -202,8 +203,21 @@ void MessagesView::reloadSelections() {
 }
 
 void MessagesView::setupAppearance() {
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()) {
+    // Enable some word wrapping for multiline list items.
+    //
+    // NOTE: If user explicitly changed height of rows, then respect this even if he enabled multiline support.
+    setUniformRowHeights(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt() > 0);
+    setWordWrap(true);
+    setTextElideMode(Qt::TextElideMode::ElideNone);
+  }
+  else {
+    setUniformRowHeights(true);
+    setWordWrap(false);
+    setTextElideMode(Qt::TextElideMode::ElideRight);
+  }
+
   setFocusPolicy(Qt::FocusPolicy::StrongFocus);
-  setUniformRowHeights(true);
   setAcceptDrops(false);
   setDragEnabled(false);
   setDragDropMode(QAbstractItemView::DragDropMode::NoDragDrop);
@@ -214,8 +228,8 @@ void MessagesView::setupAppearance() {
   setSortingEnabled(true);
   setAllColumnsShowFocus(false);
   setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
-
   setItemDelegate(new StyledItemDelegateWithoutFocus(GUI::HeightRowMessages, this));
+
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
   header()->setFirstSectionMovable(true);

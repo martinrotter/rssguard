@@ -132,7 +132,7 @@
    <item row="7" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>Post-process script</string>
+      <string>Post-processing script</string>
      </property>
     </widget>
    </item>
@@ -153,17 +153,7 @@
     </widget>
    </item>
    <item row="8" column="0" colspan="2">
-    <widget class="QLabel" name="m_lblScriptInfo">
-     <property name="text">
-      <string>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
+    <widget class="HelpSpoiler" name="m_lblScriptInfo" native="true"/>
    </item>
    <item row="9" column="0">
     <widget class="QLabel" name="label_7">
@@ -262,6 +252,12 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
+  </customwidget>
   <customwidget>
    <class>LabelWithStatus</class>
    <extends>QWidget</extends>

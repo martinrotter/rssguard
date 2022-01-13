@@ -25,6 +25,10 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   initializeMessageDateFormats();
   GuiUtilities::setLabelAsNotice(*m_ui->label_9, false);
 
+  m_ui->m_helpMultilineArticleList->setHelpText(tr("Note that enabling this might have drastic consequences on "
+                                                   "performance of article list with big number of articles."),
+                                                true);
+
 #if defined(USE_WEBENGINE)
   m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_checkDisplayPlaceholders);
   m_ui->m_checkDisplayPlaceholders->hide();
@@ -35,6 +39,9 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
 #else
   m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_cbShowEnclosuresDirectly);
   m_ui->m_cbShowEnclosuresDirectly->hide();
+
+  m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_lblHeightImageAttachments);
+  m_ui->m_lblHeightImageAttachments->hide();
 
   m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_spinHeightImageAttachments);
   m_ui->m_spinHeightImageAttachments->hide();
@@ -79,6 +86,8 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_cmbCountsFeedList, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkShowTooltips, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkMultilineArticleList, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkMultilineArticleList, &QCheckBox::toggled, this, &SettingsFeedsMessages::requireRestart);
 
   connect(m_ui->m_btnChangeMessagesFont, &QPushButton::clicked, this, [&]() {
     changeFont(*m_ui->m_lblMessagesFont);
@@ -168,6 +177,8 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_checkShowTooltips->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool());
   m_ui->m_cmbIgnoreContentsChanges->setChecked(settings()->value(GROUP(Messages),
                                                                  SETTING(Messages::IgnoreContentsChanges)).toBool());
+  m_ui->m_checkMultilineArticleList->setChecked(settings()->value(GROUP(Messages),
+                                                                  SETTING(Messages::MultilineArticleList)).toBool());
 
 #if !defined (USE_WEBENGINE)
   m_ui->m_checkDisplayPlaceholders->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::DisplayImagePlaceholders)).toBool());
@@ -245,6 +256,7 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::CountFormat, m_ui->m_cmbCountsFeedList->currentText());
   settings()->setValue(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages, m_ui->m_checkShowTooltips->isChecked());
   settings()->setValue(GROUP(Messages), Messages::IgnoreContentsChanges, m_ui->m_cmbIgnoreContentsChanges->isChecked());
+  settings()->setValue(GROUP(Messages), Messages::MultilineArticleList, m_ui->m_checkMultilineArticleList->isChecked());
 
 #if !defined (USE_WEBENGINE)
   settings()->setValue(GROUP(Messages), Messages::DisplayImagePlaceholders, m_ui->m_checkDisplayPlaceholders->isChecked());
