@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>489</width>
-    <height>434</height>
+    <height>476</height>
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QTabWidget" name="m_tabFeedsMessages">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
@@ -515,15 +515,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TimeSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>timespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>HelpSpoiler</class>
    <extends>QWidget</extends>
    <header>helpspoiler.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TimeSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>timespinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
