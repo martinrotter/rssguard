@@ -39,7 +39,7 @@ void FormAccountDetails::loadAccountData() {
     setWindowTitle(tr("Add new account"));
   }
   else {
-    setWindowTitle(tr("Edit account '%1'").arg(m_account->title()));
+    setWindowTitle(tr("Edit account \"%1\"").arg(m_account->title()));
 
     // Perform last-time operations before account is changed.
     auto* cached_account = dynamic_cast<CacheForServiceRoot*>(m_account);
