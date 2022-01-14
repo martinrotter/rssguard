@@ -770,10 +770,23 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(TtRssNetworkFactory* 
 
           feed->setTitle(item[QSL("name")].toString());
           feed->setCustomId(QString::number(item_id));
+
           act_parent->appendChild(feed);
         }
       }
     }
+
+    // Append special "published" feed to hold "notes" created by user
+    // via "shareToPublished" method. These "notes" are not normal articles
+    // because they do not belong to any feed.
+    // We have feed.
+    auto* published_feed = new TtRssFeed();
+
+    published_feed->setTitle(QSL("[SYSTEM] ") + QObject::tr("User-published articles"));
+    published_feed->setCustomId(QString::number(0));
+    published_feed->setKeepOnTop(true);
+
+    parent->appendChild(published_feed);
   }
 
   return parent;
@@ -788,7 +801,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
   auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
   auto json_msgs = m_rawContent[QSL("content")].toArray();
   auto* published_lbl = boolinq::from(active_labels).firstOrDefault([](const Label* lbl) {
-    return lbl->customNumericId() == TTRSS_FEED_PUBLISHED_ID;
+    return lbl->customNumericId() == TTRSS_PUBLISHED_LABEL_ID;
   });
 
   for (const QJsonValue& item : qAsConst(json_msgs)) {
@@ -921,11 +934,11 @@ QList<RootItem*> TtRssGetLabelsResponse::labels() const {
   // note, which is then assigned to "Published feed" but can be also assigned label from 1).
   //
   // This label solves situation 1). 2) is solved in other way (creating static system feed).
-  QString published_caption = QObject::tr("[SYSTEM] Published articles");
+  QString published_caption = QSL("[SYSTEM] ") + QObject::tr("Published articles");
   auto* published_lbl = new Label(published_caption, TextFactory::generateColorFromText(published_caption));
 
   published_lbl->setKeepOnTop(true);
-  published_lbl->setCustomId(QString::number(TTRSS_FEED_PUBLISHED_ID));
+  published_lbl->setCustomId(QString::number(TTRSS_PUBLISHED_LABEL_ID));
   labels.append(published_lbl);
 
   for (const QJsonValue& lbl_val : qAsConst(json_labels)) {

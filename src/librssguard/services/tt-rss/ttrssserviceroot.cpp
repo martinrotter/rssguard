@@ -46,8 +46,14 @@ void TtRssServiceRoot::start(bool freshly_activated) {
     auto lbls = m_labelsNode->labels();
 
     boolinq::from(lbls).for_each([](Label* lbl) {
-      if (lbl->customNumericId() == TTRSS_FEED_PUBLISHED_ID) {
+      if (lbl->customNumericId() == TTRSS_PUBLISHED_LABEL_ID) {
         lbl->setKeepOnTop(true);
+      }
+    });
+
+    boolinq::from(childItems()).for_each([](RootItem* child) {
+      if (child->kind() == RootItem::Kind::Feed && child->customNumericId() == TTRSS_PUBLISHED_FEED_ID) {
+        child->setKeepOnTop(true);
       }
     });
   }
@@ -170,7 +176,7 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
     if (!messages.isEmpty()) {
       TtRssResponse res;
 
-      if (label_custom_id.toInt() == TTRSS_FEED_PUBLISHED_ID) {
+      if (label_custom_id.toInt() == TTRSS_PUBLISHED_LABEL_ID) {
         // "published" label must be added in other method.
         res = network()->updateArticles(messages,
                                         UpdateArticle::OperatingField::Published,
@@ -198,7 +204,7 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
     if (!messages.isEmpty()) {
       TtRssResponse res;
 
-      if (label_custom_id.toInt() == TTRSS_FEED_PUBLISHED_ID) {
+      if (label_custom_id.toInt() == TTRSS_PUBLISHED_LABEL_ID) {
         // "published" label must be removed in other method.
         res = network()->updateArticles(messages,
                                         UpdateArticle::OperatingField::Published,

@@ -29,8 +29,9 @@
 // Get feed tree.
 #define TTRSS_GFT_TYPE_CATEGORY "category"
 
-// Special feeds.
-#define TTRSS_FEED_PUBLISHED_ID   -2
+// "Published" feed/label.
+#define TTRSS_PUBLISHED_LABEL_ID    -2
+#define TTRSS_PUBLISHED_FEED_ID     0
 
 // Subscribe to feed.
 #define STF_UNKNOWN          -1
