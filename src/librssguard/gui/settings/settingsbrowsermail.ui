@@ -77,6 +77,12 @@
             </item>
             <item>
              <widget class="QPushButton" name="m_btnExternalBrowserExecutable">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="text">
                <string>&amp;Browse</string>
               </property>
@@ -195,6 +201,12 @@
             </item>
             <item>
              <widget class="QPushButton" name="m_btnExternalEmailExecutable">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="text">
                <string>&amp;Browse</string>
               </property>

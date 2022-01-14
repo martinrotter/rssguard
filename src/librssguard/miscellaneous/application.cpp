@@ -299,6 +299,10 @@ void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, false);
 }
 
+NodeJs* Application::nodejs() const {
+  return m_nodejs;
+}
+
 NotificationFactory* Application::notifications() const {
   return m_notifications;
 }

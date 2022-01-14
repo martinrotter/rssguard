@@ -3979,10 +3979,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Externe applicatie</translation>
     </message>
     <message>
-        <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation>Op deze pagina kan je externe applicaties instellen waarmee URL&apos;s of berichten geopend kunnen worden.</translation>
-    </message>
-    <message>
         <source>Executable</source>
         <translation>UItvoerbaar</translation>
     </message>
@@ -4026,13 +4022,13 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>&amp;Delete selected tool</source>
         <translation>&amp;Verwijder geselekteerd gereedschap</translation>
     </message>
+    <message>
+        <source>On this page, you can setup a list of external tools which can open URLs.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
-    <message>
-        <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>WAARSCHUWING: Let op dat de bij het overstappen naar een nieuw type gegevensopslag de bestaande gegevens NIET worden overgezet naar de nieuwe gekozen gevensopslag.</translation>
-    </message>
     <message>
         <source>Database driver</source>
         <translation>Databasedriver</translation>
@@ -4040,31 +4036,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Use in-memory database as the working database</source>
         <translation>Gebruik de database die in het geheugen geladen is als hoofddatabase</translation>
-    </message>
-    <message>
-        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
-&lt;ul&gt;
-&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
-&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
-&lt;/ul&gt;
-Disadvantages:
-&lt;ul&gt;
-&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
-&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
-&lt;/ul&gt;
-Authors of this application are NOT responsible for lost data.</source>
-        <translation>Het gebruik van een in het geheugen werkende database heeft een aantal voordelen en nadelen. Wees ervan op de hoogte voordat je deze functie inschakelt.
-Voordelen:
-&lt;ul&gt;
-&lt;li&gt;hogere snelheid voor manipulaties van feeds/berichten (vooral bij weergave van duizenden berichten).&lt;/li&gt;
-&lt;li&gt;de gehele database wordt opgeslagen in het RAM zodat de harde schijf minder hoeft te doen.&lt;/li&gt;
-&lt;/ul&gt;
-Nadelen:
-&lt;ul&gt;
-&lt;li&gt;als RSS Guard crasht, gaan wijzigingen van laatste sessie verloren,&lt;/li&gt;
-&lt;li&gt;opstarten en afsluiten van RSS Guard kan iets langer duren (max. 2 seconden).&lt;/li&gt;
-&lt;/lu&gt;
-Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</translation>
     </message>
     <message>
         <source>Hostname</source>
@@ -4162,6 +4133,24 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <source>Use DB transactions when storing downloaded messages</source>
         <translation>Gebruik databasetransacties bij het opslaan van gedownloade berichten</translation>
     </message>
+    <message>
+        <source>Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on.
+
+Advantages:
+ • higher speed for feed/message manipulations (especially with thousands of messages displayed),
+ • whole database stored in RAM, thus your hard drive can rest more.
+
+Disadvantages:
+ • if application crashes, your changes from last session are lost,
+ • application startup and shutdown can take little longer (max. 2 seconds).
+
+Authors of this application are NOT responsible for lost data.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
@@ -4219,10 +4208,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     <message>
         <source>Font preview</source>
         <translation>Voorbeeld lettertype</translation>
-    </message>
-    <message>
-        <source>Height of image attachments</source>
-        <translation>Hoogte van bijgesloten afbeeldingen</translation>
     </message>
     <message>
         <source>Feed list font</source>
@@ -4328,6 +4313,18 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <source>Show only time for today articles</source>
         <translation>Toon alleen tijd voor artikelen van vandaag</translation>
     </message>
+    <message>
+        <source>Image attachments height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable multiline article list items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4401,14 +4398,6 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     <message>
         <source>Statusbar</source>
         <translation>Statusbalk</translation>
-    </message>
-    <message>
-        <source>Toolbar button style</source>
-        <translation>Werkbalkknopstijl</translation>
-    </message>
-    <message>
-        <source>Select toolbar to edit</source>
-        <translation>Selecteer werkbalk om te bewerken</translation>
     </message>
     <message>
         <source>Name</source>
@@ -4507,6 +4496,22 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <source>Fetch color from activated skin</source>
         <translation>Volgende item</translation>
     </message>
+    <message>
+        <source>Button style</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar editor</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon size</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> = default icon size</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4528,6 +4533,45 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
     </message>
 </context>
 <context>
+    <name>SettingsNodejs</name>
+    <message>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <source>Node.js executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Browse...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NPM executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package folder </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What is Node.js?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Node.js is asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
+
+%1 integrates Node.js to bring some modern features like Adblock.
+
+Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>SettingsNotifications</name>
     <message>
         <source>Notifications</source>
@@ -4538,12 +4582,10 @@ Auteurs van RSS Guard zijn NIET verantwoordelijk voor verlies van gegevens.</tra
         <translation>Aanzetten van meldingen</translation>
     </message>
     <message>
-        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
-        <translation>U moet het &quot;traypictogram&quot; hebben geactiveerd om ballonmeldingen te laten werken.</translation>
-    </message>
-    <message>
-        <source>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
-        <translation>Er zijn enkele ingebouwde geluiden. Begin gewoon &quot;:&quot; te typen en ze zullen verschijnen.</translation>
+        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.
+
+Also, there are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4855,14 +4897,6 @@ Model: %3</translation>
         <translation>Bron</translation>
     </message>
     <message>
-        <source>Post-process script</source>
-        <translation>Script na binnenhalen uitvoeren</translation>
-    </message>
-    <message>
-        <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-        <translation>De feed kan van een URL worden opgehaald of je kunt zelf een feed genereren met m.b.v. een script. Deze feed kan vervolgens met een ander script worden bewerkt. Dit zijn geavanceerde functies. Lees dus de documentatie voordat je dit gebruikt.</translation>
-    </message>
-    <message>
         <source>Full feed source identifier</source>
         <translation>Volledige bron van feed</translation>
     </message>
@@ -4921,6 +4955,20 @@ Model: %3</translation>
     <message>
         <source>Parent folder</source>
         <translation>Bovenliggende map</translation>
+    </message>
+    <message>
+        <source>Post-processing script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What is post-processing script?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can use URL as a source of your feed or you can produce your feed with custom script.
+
+Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

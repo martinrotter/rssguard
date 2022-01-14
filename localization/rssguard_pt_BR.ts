@@ -725,7 +725,7 @@ Status: %3</translation>
     </message>
     <message>
         <source>Search feeds (regex only)</source>
-        <translation type="unfinished"/>
+        <translation>Pesquisar feeds (somente regex)</translation>
     </message>
 </context>
 <context>
@@ -1995,7 +1995,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Do you really want to remove selected filter?</source>
-        <translation type="unfinished"/>
+        <translation>Deseja realmente remover o filtro selecionado?</translation>
     </message>
 </context>
 <context>
@@ -3169,7 +3169,7 @@ Expiração dos tokens de login: %2</translation>
     </message>
     <message>
         <source>Search articles (regex only)</source>
-        <translation type="unfinished"/>
+        <translation>Pesquisar artigos (somente regex)</translation>
     </message>
 </context>
 <context>
@@ -3980,10 +3980,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Ferramentas externas</translation>
     </message>
     <message>
-        <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation>Nesta página, você pode configurar a lista de ferramentas externas que podem abrir URLs de mensagens selecionadas.</translation>
-    </message>
-    <message>
         <source>Executable</source>
         <translation>Executável</translation>
     </message>
@@ -4027,13 +4023,13 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>&amp;Delete selected tool</source>
         <translation>E&amp;xcluir ferramenta selecionada</translation>
     </message>
+    <message>
+        <source>On this page, you can setup a list of external tools which can open URLs.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
-    <message>
-        <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>AVISO: Note que mudar para outro tipo de armazenamento de dados NÃO irá copiar os dados existentes do armazenamento ativo atual para o novo.</translation>
-    </message>
     <message>
         <source>Database driver</source>
         <translation>Driver do banco de dados</translation>
@@ -4041,30 +4037,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Use in-memory database as the working database</source>
         <translation>Usar banco de dados na memória como banco de dados de trabalho</translation>
-    </message>
-    <message>
-        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
-&lt;ul&gt;
-&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
-&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
-&lt;/ul&gt;
-Disadvantages:
-&lt;ul&gt;
-&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
-&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
-&lt;/ul&gt;
-Authors of this application are NOT responsible for lost data.</source>
-        <translation>O uso do banco de dados ativo na memória possui várias vantagens e desvantagens. Certifique-se de estar familiarizado com estes antes de ativar esse recurso. Vantagens:
-&lt;ul&gt;
-&lt;li&gt;maior velocidade na manipulação de feeds/mensagens (especialmente com milhares de mensagens exibidas),&lt;/li&gt;
-&lt;li&gt;todo o banco de dados armazenado na RAM, assim seu disco rígido não trabalho tanto.&lt;/li&gt;
-&lt;/ul&gt;
-Desvantagens:
-&lt;ul&gt;
-&lt;li&gt;se o aplicativo travar, as alterações feitas na última sessão serão perdidas,&lt;/li&gt;
-&lt;li&gt;a inicialização e encerramento do aplicativo pode demorar um pouco mais (máx. 2 segundos).&lt;/li&gt;
-&lt;/ul&gt;
-Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</translation>
     </message>
     <message>
         <source>Hostname</source>
@@ -4162,6 +4134,24 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <source>Use DB transactions when storing downloaded messages</source>
         <translation>Use transações de banco de dados ao armazenar mensagens baixadas</translation>
     </message>
+    <message>
+        <source>Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on.
+
+Advantages:
+ • higher speed for feed/message manipulations (especially with thousands of messages displayed),
+ • whole database stored in RAM, thus your hard drive can rest more.
+
+Disadvantages:
+ • if application crashes, your changes from last session are lost,
+ • application startup and shutdown can take little longer (max. 2 seconds).
+
+Authors of this application are NOT responsible for lost data.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
@@ -4219,10 +4209,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>Font preview</source>
         <translation>Prévia da fonte</translation>
-    </message>
-    <message>
-        <source>Height of image attachments</source>
-        <translation>Altura dos anexos de imagem</translation>
     </message>
     <message>
         <source>Feed list font</source>
@@ -4328,6 +4314,18 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <source>Show only time for today articles</source>
         <translation>Mostrar somente a hora para os artigos de hoje</translation>
     </message>
+    <message>
+        <source>Image attachments height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable multiline article list items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4401,14 +4399,6 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <source>Statusbar</source>
         <translation>Barra de status</translation>
-    </message>
-    <message>
-        <source>Toolbar button style</source>
-        <translation>Estilo do botão da barra de ferramentas</translation>
-    </message>
-    <message>
-        <source>Select toolbar to edit</source>
-        <translation>Selecione a barra de ferramentas para editar</translation>
     </message>
     <message>
         <source>Name</source>
@@ -4507,6 +4497,22 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <source>Fetch color from activated skin</source>
         <translation>Obter cor do tema ativado</translation>
     </message>
+    <message>
+        <source>Button style</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar editor</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon size</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> = default icon size</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4528,6 +4534,45 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     </message>
 </context>
 <context>
+    <name>SettingsNodejs</name>
+    <message>
+        <source>Form</source>
+        <translation>Formulário</translation>
+    </message>
+    <message>
+        <source>Node.js executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Browse...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NPM executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package folder </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What is Node.js?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Node.js is asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
+
+%1 integrates Node.js to bring some modern features like Adblock.
+
+Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>SettingsNotifications</name>
     <message>
         <source>Notifications</source>
@@ -4538,12 +4583,10 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Ativar notificações</translation>
     </message>
     <message>
-        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
-        <translation>Você precisa ter o &quot;ícone da área de notificação&quot; ativado para que as janelas de notificação funcionem.</translation>
-    </message>
-    <message>
-        <source>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
-        <translation>Existem alguns sons integrados. Basta começar a digitar &quot;:&quot; e eles aparecerão.</translation>
+        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.
+
+Also, there are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4855,14 +4898,6 @@ Tipo: %3</translation>
         <translation>Origem</translation>
     </message>
     <message>
-        <source>Post-process script</source>
-        <translation>Script de pós-processamento</translation>
-    </message>
-    <message>
-        <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-        <translation>Você pode usar o URL como fonte de seu feed ou pode produzir seu feed com um script personalizado. Além disso, você pode pós-processar os dados de feed gerados com outro script, se desejar. Estes são recursos avançados e certifique-se de ler a documentação antes de usá-los.</translation>
-    </message>
-    <message>
         <source>Full feed source identifier</source>
         <translation>Identificador completo de origem de feed</translation>
     </message>
@@ -4921,6 +4956,20 @@ Tipo: %3</translation>
     <message>
         <source>Parent folder</source>
         <translation>Pasta principal</translation>
+    </message>
+    <message>
+        <source>Post-processing script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What is post-processing script?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can use URL as a source of your feed or you can produce your feed with custom script.
+
+Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -5498,31 +5547,31 @@ Servidor: %2
     </message>
     <message>
         <source>JS can activate windows</source>
-        <translation type="unfinished"/>
+        <translation>JS pode ativar janelas</translation>
     </message>
     <message>
         <source>Show scrollbars</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar barras de rolagem</translation>
     </message>
     <message>
         <source>Media playback with gestures</source>
-        <translation type="unfinished"/>
+        <translation>Reprodução de mídia com gestos</translation>
     </message>
     <message>
         <source>WebRTC uses only public interfaces</source>
-        <translation type="unfinished"/>
+        <translation>WebRTC usa somente interfaces públicas</translation>
     </message>
     <message>
         <source>JS can paste from clipboard</source>
-        <translation type="unfinished"/>
+        <translation>JS pode colar da área de transferência</translation>
     </message>
     <message>
         <source>DNS prefetch enabled</source>
-        <translation type="unfinished"/>
+        <translation>Pré-busca DNS ativada</translation>
     </message>
     <message>
         <source>PDF viewer enabled</source>
-        <translation type="unfinished"/>
+        <translation>Visualizador PDF ativado</translation>
     </message>
 </context>
 <context>

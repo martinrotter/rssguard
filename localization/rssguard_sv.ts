@@ -3966,10 +3966,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Externa verktyg</translation>
     </message>
     <message>
-        <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation>På den här sidan kan du skapa en lista över externa verktyg som kan öppna URL:er i valda meddelanden.</translation>
-    </message>
-    <message>
         <source>Executable</source>
         <translation>Körbar fil</translation>
     </message>
@@ -4013,13 +4009,13 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>&amp;Delete selected tool</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>On this page, you can setup a list of external tools which can open URLs.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
-    <message>
-        <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>VARNING! Notera att byte till en annan datalagringstyp INTE kopierar befintliga data från den aktiva datalagringen till den nyvalda.</translation>
-    </message>
     <message>
         <source>Database driver</source>
         <translation>Databasdrivrutin</translation>
@@ -4027,31 +4023,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Use in-memory database as the working database</source>
         <translation>Använd minnesdatabas (IMDB) som arbetsdatabas</translation>
-    </message>
-    <message>
-        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
-&lt;ul&gt;
-&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
-&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
-&lt;/ul&gt;
-Disadvantages:
-&lt;ul&gt;
-&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
-&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
-&lt;/ul&gt;
-Authors of this application are NOT responsible for lost data.</source>
-        <translation>Användning av minnesdatabas har åtskilliga fördelar och fallgropar. Se till att du känner till dessa innan du aktiverar den här funktionen.
-Fördelar:
-&lt;ul&gt;
-&lt;li&gt;Bättre hastighet för manipulation av flöden/meddelanden(speciellt vid visning av tusentals meddelanden).&lt;/li&gt;
-&lt;li&gt;Hela databasen lagrad i RAM, för en mindre belastad hårddisk.&lt;/li&gt;
-&lt;/ul&gt;
-Nackdelar:
-&lt;ul&gt;
-&lt;li&gt;Om programmet kraschar, förlorar du ändringar gjorda under den sessionen.&lt;/li&gt;
-&lt;li&gt;Programstart och avslut kan ta lite längre tid (max. 2 sekunder).&lt;/li&gt;
-&lt;/ul&gt;
-Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translation>
     </message>
     <message>
         <source>Hostname</source>
@@ -4149,6 +4120,24 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <source>Use DB transactions when storing downloaded messages</source>
         <translation>Använd DB-transaktioner vid lagring av nerladdade meddelanden</translation>
     </message>
+    <message>
+        <source>Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on.
+
+Advantages:
+ • higher speed for feed/message manipulations (especially with thousands of messages displayed),
+ • whole database stored in RAM, thus your hard drive can rest more.
+
+Disadvantages:
+ • if application crashes, your changes from last session are lost,
+ • application startup and shutdown can take little longer (max. 2 seconds).
+
+Authors of this application are NOT responsible for lost data.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
@@ -4206,10 +4195,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>Font preview</source>
         <translation>Teckengranskning</translation>
-    </message>
-    <message>
-        <source>Height of image attachments</source>
-        <translation>Höjd på bildbilagor</translation>
     </message>
     <message>
         <source>Feed list font</source>
@@ -4315,6 +4300,18 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <source>Show only time for today articles</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Image attachments height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable multiline article list items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4388,14 +4385,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>Statusbar</source>
         <translation>Statusfält</translation>
-    </message>
-    <message>
-        <source>Toolbar button style</source>
-        <translation>Verktygsfältets knappstil</translation>
-    </message>
-    <message>
-        <source>Select toolbar to edit</source>
-        <translation>Välj verktygsfält att redigera</translation>
     </message>
     <message>
         <source>Name</source>
@@ -4494,6 +4483,22 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Button style</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar editor</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon size</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> = default icon size</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4515,6 +4520,45 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
 </context>
 <context>
+    <name>SettingsNodejs</name>
+    <message>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <source>Node.js executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Browse...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NPM executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package folder </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What is Node.js?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Node.js is asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
+
+%1 integrates Node.js to bring some modern features like Adblock.
+
+Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>SettingsNotifications</name>
     <message>
         <source>Notifications</source>
@@ -4525,11 +4569,9 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
+        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.
+
+Also, there are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4840,14 +4882,6 @@ Type: %3</source>
         <translation>Källa</translation>
     </message>
     <message>
-        <source>Post-process script</source>
-        <translation>Efterbearbetningsskript</translation>
-    </message>
-    <message>
-        <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-        <translation>Du kan använda en URL som källa till ditt flöde eller så kan du producera ditt flöde med ett anpassat skript. Du kan också efterbearbeta genererad flödesdata med ännu ett skript om du vill. Det här är avancerade funktioner så se till att läsa dokumentationen innan du använder dem.</translation>
-    </message>
-    <message>
         <source>Full feed source identifier</source>
         <translation>Fullständig källidentifierare</translation>
     </message>
@@ -4906,6 +4940,20 @@ Type: %3</source>
     <message>
         <source>Parent folder</source>
         <translation>Överordnad mapp</translation>
+    </message>
+    <message>
+        <source>Post-processing script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What is post-processing script?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can use URL as a source of your feed or you can produce your feed with custom script.
+
+Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

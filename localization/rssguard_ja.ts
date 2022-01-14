@@ -3937,10 +3937,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>外部ツール</translation>
     </message>
     <message>
-        <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation>このページでは選択したメッセージのURLを開く外部ツールの一覧を構成できます。</translation>
-    </message>
-    <message>
         <source>Executable</source>
         <translation>実行可能ファイル</translation>
     </message>
@@ -3984,33 +3980,19 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>&amp;Delete selected tool</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>On this page, you can setup a list of external tools which can open URLs.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
-    <message>
-        <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation type="unfinished"/>
-    </message>
     <message>
         <source>Database driver</source>
         <translation>データベースドライバー</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
-&lt;ul&gt;
-&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
-&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
-&lt;/ul&gt;
-Disadvantages:
-&lt;ul&gt;
-&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
-&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
-&lt;/ul&gt;
-Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -4109,6 +4091,24 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Use DB transactions when storing downloaded messages</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on.
+
+Advantages:
+ • higher speed for feed/message manipulations (especially with thousands of messages displayed),
+ • whole database stored in RAM, thus your hard drive can rest more.
+
+Disadvantages:
+ • if application crashes, your changes from last session are lost,
+ • application startup and shutdown can take little longer (max. 2 seconds).
+
+Authors of this application are NOT responsible for lost data.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
@@ -4165,10 +4165,6 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Font preview</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Height of image attachments</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -4275,6 +4271,18 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Show only time for today articles</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Image attachments height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable multiline article list items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4348,14 +4356,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Statusbar</source>
         <translation>ステータスバー</translation>
-    </message>
-    <message>
-        <source>Toolbar button style</source>
-        <translation>ボタンの表示スタイル</translation>
-    </message>
-    <message>
-        <source>Select toolbar to edit</source>
-        <translation>編集するツールバー</translation>
     </message>
     <message>
         <source>Name</source>
@@ -4454,6 +4454,22 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Button style</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar editor</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon size</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> = default icon size</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4475,6 +4491,45 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
 </context>
 <context>
+    <name>SettingsNodejs</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Node.js executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Browse...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NPM executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package folder </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What is Node.js?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Node.js is asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
+
+%1 integrates Node.js to bring some modern features like Adblock.
+
+Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>SettingsNotifications</name>
     <message>
         <source>Notifications</source>
@@ -4485,11 +4540,9 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
+        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.
+
+Also, there are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4800,14 +4853,6 @@ Type: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Post-process script</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Full feed source identifier</source>
         <translation type="unfinished"/>
     </message>
@@ -4865,6 +4910,20 @@ Type: %3</source>
     </message>
     <message>
         <source>Parent folder</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Post-processing script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What is post-processing script?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can use URL as a source of your feed or you can produce your feed with custom script.
+
+Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
         <translation type="unfinished"/>
     </message>
 </context>

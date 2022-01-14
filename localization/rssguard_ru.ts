@@ -725,7 +725,7 @@ Status: %3</source>
     </message>
     <message>
         <source>Search feeds (regex only)</source>
-        <translation type="unfinished"/>
+        <translation>Поиск каналов (только регулярное выражение)</translation>
     </message>
 </context>
 <context>
@@ -1994,7 +1994,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Do you really want to remove selected filter?</source>
-        <translation type="unfinished"/>
+        <translation>Вы действительно хотите удалить выбранный фильтр?</translation>
     </message>
 </context>
 <context>
@@ -3168,7 +3168,7 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <source>Search articles (regex only)</source>
-        <translation type="unfinished"/>
+        <translation>Поиск статей (только регулярное выражение)</translation>
     </message>
 </context>
 <context>
@@ -3984,10 +3984,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Внешние приложения</translation>
     </message>
     <message>
-        <source>On this page, you can setup a list of external tools which can open URLs of selected messages.</source>
-        <translation>На этой странице вы можете установить список внешних приложений, которые могут открывать URL-ы в выбранных сообщениях.</translation>
-    </message>
-    <message>
         <source>Executable</source>
         <translation>Приложение</translation>
     </message>
@@ -4031,13 +4027,13 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>&amp;Delete selected tool</source>
         <translation>Удалить выбранную утилиту (&amp;D)</translation>
     </message>
+    <message>
+        <source>On this page, you can setup a list of external tools which can open URLs.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
-    <message>
-        <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>ВНИМАНИЕ: Обратите внимание, что переход на другой тип хранения данных не будет копировать существующие данные из текущего активного хранения данных для вновь выбранной.</translation>
-    </message>
     <message>
         <source>Database driver</source>
         <translation>Драйвер БД</translation>
@@ -4045,30 +4041,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Use in-memory database as the working database</source>
         <translation>Использовать БД в памяти, как рабочую БД</translation>
-    </message>
-    <message>
-        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
-&lt;ul&gt;
-&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
-&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
-&lt;/ul&gt;
-Disadvantages:
-&lt;ul&gt;
-&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
-&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
-&lt;/ul&gt;
-Authors of this application are NOT responsible for lost data.</source>
-        <translation>Использование работающей в памяти базы данных имеет ряд преимуществ и подводных камней. Убедитесь, что вы знакомы с ними, прежде чем включать эту функцию. Преимущества:
-&lt;ul&gt;
-&lt;li&gt;более высокая скорость работы с каналами/сообщениями (особенно при отображении тысяч сообщений),&lt;/li&gt;
-&lt;li&gt;вся база данных хранится в оперативной памяти, поэтому ваш жесткий диск меньше нагружен.&lt;/li&gt;
-&lt;/ul&gt;
-Недостатки:
-&lt;ul&gt;
-&lt;li&gt;в случае сбоя приложения ваши изменения с последнего сеанса теряются,&lt;/li&gt;
-&lt;li&gt;запуск и завершение работы приложения может занять немного больше времени (максимум 2 секунды).&lt;/li&gt;
-&lt;/ul&gt;
-Авторы этого приложения не несут ответственности за потерянные данные.</translation>
     </message>
     <message>
         <source>Hostname</source>
@@ -4166,6 +4138,24 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Use DB transactions when storing downloaded messages</source>
         <translation>Использовать БД при сохранении загруженных сообщений</translation>
     </message>
+    <message>
+        <source>Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on.
+
+Advantages:
+ • higher speed for feed/message manipulations (especially with thousands of messages displayed),
+ • whole database stored in RAM, thus your hard drive can rest more.
+
+Disadvantages:
+ • if application crashes, your changes from last session are lost,
+ • application startup and shutdown can take little longer (max. 2 seconds).
+
+Authors of this application are NOT responsible for lost data.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
@@ -4223,10 +4213,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Font preview</source>
         <translation>Предпросмотр</translation>
-    </message>
-    <message>
-        <source>Height of image attachments</source>
-        <translation>Высота вложений изображений</translation>
     </message>
     <message>
         <source>Feed list font</source>
@@ -4332,6 +4318,18 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Show only time for today articles</source>
         <translation>Показывать только время для сегодняшних статей</translation>
     </message>
+    <message>
+        <source>Image attachments height</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable multiline article list items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -4405,14 +4403,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Statusbar</source>
         <translation>Панель статуса</translation>
-    </message>
-    <message>
-        <source>Toolbar button style</source>
-        <translation>Стиль кнопок панели</translation>
-    </message>
-    <message>
-        <source>Select toolbar to edit</source>
-        <translation>Панель для изменения</translation>
     </message>
     <message>
         <source>Name</source>
@@ -4511,6 +4501,22 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Fetch color from activated skin</source>
         <translation>Получить цвет из активированной темы</translation>
     </message>
+    <message>
+        <source>Button style</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Toolbar editor</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon size</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> = default icon size</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -4532,6 +4538,45 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
 </context>
 <context>
+    <name>SettingsNodejs</name>
+    <message>
+        <source>Form</source>
+        <translation>Форма</translation>
+    </message>
+    <message>
+        <source>Node.js executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Browse...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>NPM executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Package folder </source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What is Node.js?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Node.js is asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
+
+%1 integrates Node.js to bring some modern features like Adblock.
+
+Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>SettingsNotifications</name>
     <message>
         <source>Notifications</source>
@@ -4542,12 +4587,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Включить уведомления</translation>
     </message>
     <message>
-        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.</source>
-        <translation>Чтобы всплывающие уведомления работали, у вас должен быть активирован «значок в трее».</translation>
-    </message>
-    <message>
-        <source>There are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
-        <translation>Есть встроенные звуки. Просто начните набирать &quot;:&quot;, и они появятся.</translation>
+        <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.
+
+Also, there are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4859,14 +4902,6 @@ Type: %3</source>
         <translation>Источник</translation>
     </message>
     <message>
-        <source>Post-process script</source>
-        <translation>Скрипт пост-обработки</translation>
-    </message>
-    <message>
-        <source>You can use URL as a source of your feed or you can produce your feed with custom script. Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-        <translation>Вы можете использовать URL-адрес в качестве источника своего канала или создать свой канал с помощью собственного скрипта. Кроме того, вы можете постобработать сгенерированные данные канала с помощью еще одного скрипта, если хотите. Это расширенные функции, и перед их использованием обязательно прочтите документацию.</translation>
-    </message>
-    <message>
         <source>Full feed source identifier</source>
         <translation>Полный идентификатор источника канала</translation>
     </message>
@@ -4925,6 +4960,20 @@ Type: %3</source>
     <message>
         <source>Parent folder</source>
         <translation>Родительская категория</translation>
+    </message>
+    <message>
+        <source>Post-processing script</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>What is post-processing script?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can use URL as a source of your feed or you can produce your feed with custom script.
+
+Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -5502,31 +5551,31 @@ Last login on: %4</source>
     </message>
     <message>
         <source>JS can activate windows</source>
-        <translation type="unfinished"/>
+        <translation>JS может активировать окна</translation>
     </message>
     <message>
         <source>Show scrollbars</source>
-        <translation type="unfinished"/>
+        <translation>Показать полосы прокрутки</translation>
     </message>
     <message>
         <source>Media playback with gestures</source>
-        <translation type="unfinished"/>
+        <translation>Воспроизведение мультимедиа жестами</translation>
     </message>
     <message>
         <source>WebRTC uses only public interfaces</source>
-        <translation type="unfinished"/>
+        <translation>WebRTC использует только публичные интерфейсы</translation>
     </message>
     <message>
         <source>JS can paste from clipboard</source>
-        <translation type="unfinished"/>
+        <translation>JS может вставлять из буфера обмена</translation>
     </message>
     <message>
         <source>DNS prefetch enabled</source>
-        <translation type="unfinished"/>
+        <translation>Предзагрузка DNS включена</translation>
     </message>
     <message>
         <source>PDF viewer enabled</source>
-        <translation type="unfinished"/>
+        <translation>Просмотрщик PDF включен</translation>
     </message>
 </context>
 <context>
