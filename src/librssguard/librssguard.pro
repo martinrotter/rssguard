@@ -220,10 +220,12 @@ HEADERS += core/feeddownloader.h \
            services/tt-rss/definitions.h \
            services/tt-rss/gui/formeditttrssaccount.h \
            services/tt-rss/gui/formttrssfeeddetails.h \
+           services/tt-rss/gui/formttrssnote.h \
            services/tt-rss/gui/ttrssaccountdetails.h \
            services/tt-rss/gui/ttrssfeeddetails.h \
            services/tt-rss/ttrssfeed.h \
            services/tt-rss/ttrssnetworkfactory.h \
+           services/tt-rss/ttrssnotetopublish.h \
            services/tt-rss/ttrssserviceentrypoint.h \
            services/tt-rss/ttrssserviceroot.h
 
@@ -403,6 +405,7 @@ SOURCES += core/feeddownloader.cpp \
            services/standard/standardserviceroot.cpp \
            services/tt-rss/gui/formeditttrssaccount.cpp \
            services/tt-rss/gui/formttrssfeeddetails.cpp \
+           services/tt-rss/gui/formttrssnote.cpp \
            services/tt-rss/gui/ttrssaccountdetails.cpp \
            services/tt-rss/gui/ttrssfeeddetails.cpp \
            services/tt-rss/ttrssfeed.cpp \
@@ -455,6 +458,7 @@ FORMS += gui/dialogs/formabout.ui \
          services/reddit/gui/redditaccountdetails.ui \
          services/standard/gui/formstandardimportexport.ui \
          services/standard/gui/standardfeeddetails.ui \
+         services/tt-rss/gui/formttrssnote.ui \
          services/tt-rss/gui/ttrssaccountdetails.ui \
          services/tt-rss/gui/ttrssfeeddetails.ui
 

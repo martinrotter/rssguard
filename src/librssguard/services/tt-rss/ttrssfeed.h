@@ -15,10 +15,14 @@ class TtRssFeed : public Feed {
 
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
+    virtual QList<QAction*> contextMenuFeedsList();
 
   private:
     TtRssServiceRoot* serviceRoot() const;
     bool removeItself();
+
+  private:
+    QAction* m_actionShareToPublished;
 };
 
 #endif // TTRSSFEED_H

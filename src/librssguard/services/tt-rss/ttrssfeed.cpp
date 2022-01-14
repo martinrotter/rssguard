@@ -13,7 +13,7 @@
 
 #include <QPointer>
 
-TtRssFeed::TtRssFeed(RootItem* parent) : Feed(parent) {}
+TtRssFeed::TtRssFeed(RootItem* parent) : Feed(parent), m_actionShareToPublished(nullptr) {}
 
 TtRssServiceRoot* TtRssFeed::serviceRoot() const {
   return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
@@ -37,6 +37,24 @@ bool TtRssFeed::deleteViaGui() {
                << QUOTE_W_SPACE_DOT(response.toString());
     return false;
   }
+}
+
+QList<QAction*> TtRssFeed::contextMenuFeedsList() {
+  auto menu = Feed::contextMenuFeedsList();
+
+  if (customNumericId() == TTRSS_PUBLISHED_FEED_ID) {
+    if (m_actionShareToPublished == nullptr) {
+      m_actionShareToPublished = new QAction(qApp->icons()->fromTheme(QSL("emblem-shared")),
+                                             tr("Share to published"),
+                                             this);
+
+      connect(m_actionShareToPublished, &QAction::triggered, serviceRoot(), &TtRssServiceRoot::shareToPublished);
+    }
+
+    menu.append(m_actionShareToPublished);
+  }
+
+  return menu;
 }
 
 bool TtRssFeed::removeItself() {

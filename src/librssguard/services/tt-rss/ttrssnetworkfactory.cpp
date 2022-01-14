@@ -209,6 +209,61 @@ TtRssGetLabelsResponse TtRssNetworkFactory::getLabels(const QNetworkProxy& proxy
   return result;
 }
 
+TtRssResponse TtRssNetworkFactory::shareToPublished(const TtRssNoteToPublish& note, const QNetworkProxy& proxy) {
+  QJsonObject json;
+
+  json[QSL("op")] = QSL("shareToPublished");
+  json[QSL("sid")] = m_sessionId;
+  json[QSL("title")] = note.m_title;
+  json[QSL("url")] = note.m_url;
+  json[QSL("content")] = note.m_content;
+
+  const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray result_raw;
+  QList<QPair<QByteArray, QByteArray>> headers;
+
+  headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
+  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+
+  NetworkResult network_reply = NetworkFactory::performNetworkOperation(m_fullUrl,
+                                                                        timeout,
+                                                                        QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
+                                                                        result_raw,
+                                                                        QNetworkAccessManager::Operation::PostOperation,
+                                                                        headers,
+                                                                        false,
+                                                                        {},
+                                                                        {},
+                                                                        proxy);
+  TtRssResponse result(QString::fromUtf8(result_raw));
+
+  if (result.isNotLoggedIn()) {
+    // We are not logged in.
+    login(proxy);
+    json[QSL("sid")] = m_sessionId;
+    network_reply = NetworkFactory::performNetworkOperation(m_fullUrl,
+                                                            timeout,
+                                                            QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
+                                                            result_raw,
+                                                            QNetworkAccessManager::Operation::PostOperation,
+                                                            headers,
+                                                            false,
+                                                            {},
+                                                            {},
+                                                            proxy);
+    result = TtRssResponse(QString::fromUtf8(result_raw));
+  }
+
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarningNN << LOGSEC_TTRSS
+               << "shareToPublished failed with error:"
+               << QUOTE_W_SPACE_DOT(network_reply.first);
+  }
+
+  m_lastError = network_reply.first;
+  return result;
+}
+
 TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(const QNetworkProxy& proxy) {
   QJsonObject json;
 

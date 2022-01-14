@@ -17,6 +17,7 @@
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/formeditttrssaccount.h"
 #include "services/tt-rss/gui/formttrssfeeddetails.h"
+#include "services/tt-rss/gui/formttrssnote.h"
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
@@ -295,6 +296,10 @@ QString TtRssServiceRoot::additionalTooltip() const {
 
 TtRssNetworkFactory* TtRssServiceRoot::network() const {
   return m_network;
+}
+
+void TtRssServiceRoot::shareToPublished() {
+  FormTtRssNote(this).exec();
 }
 
 void TtRssServiceRoot::updateTitle() {

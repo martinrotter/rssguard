@@ -5,6 +5,8 @@
 
 #include "core/message.h"
 
+#include "services/tt-rss/ttrssnotetopublish.h"
+
 #include <QJsonObject>
 #include <QNetworkReply>
 #include <QPair>
@@ -154,6 +156,9 @@ class TtRssNetworkFactory {
 
     // Gets list of labels from the server.
     TtRssGetLabelsResponse getLabels(const QNetworkProxy& proxy);
+
+    // Shares new item to "published" feed.
+    TtRssResponse shareToPublished(const TtRssNoteToPublish& note, const QNetworkProxy& proxy);
 
     // Gets feeds from the server.
     TtRssGetFeedsCategoriesResponse getFeedsCategories(const QNetworkProxy& proxy);

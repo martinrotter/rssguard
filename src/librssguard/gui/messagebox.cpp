@@ -64,6 +64,10 @@ QMessageBox::StandardButton MessageBox::show(QWidget* parent,
                                              bool* dont_show_again,
                                              const QString& functor_heading,
                                              const std::function<void()>& functor) {
+  if (parent == nullptr) {
+    parent = qApp->mainFormWidget();
+  }
+
   // Create and find needed components.
   MessageBox msg_box(parent);
 

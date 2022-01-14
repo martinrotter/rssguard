@@ -40,6 +40,9 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     // Access to network.
     TtRssNetworkFactory* network() const;
 
+  public slots:
+    void shareToPublished();
+
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
