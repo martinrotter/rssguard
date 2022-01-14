@@ -28,6 +28,8 @@ class MessagesView : public BaseTreeView {
     void restoreHeaderState(const QByteArray& dta);
 
   public slots:
+    void copyUrlOfSelectedArticles() const;
+
     void keyboardSearch(const QString& search);
 
     // Called after data got changed externally

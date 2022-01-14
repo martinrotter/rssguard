@@ -178,6 +178,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionStopRunningItemsUpdate;
   actions << m_ui->m_actionEditSelectedItem;
   actions << m_ui->m_actionCopyUrlSelectedFeed;
+  actions << m_ui->m_actionCopyUrlSelectedArticles;
   actions << m_ui->m_actionDeleteSelectedItem;
   actions << m_ui->m_actionServiceAdd;
   actions << m_ui->m_actionServiceEdit;
@@ -428,6 +429,7 @@ void FormMain::updateMessageButtonsAvailability() {
   m_ui->m_actionMarkSelectedMessagesAsUnread->setEnabled(atleast_one_message_selected);
   m_ui->m_actionOpenSelectedMessagesInternally->setEnabled(atleast_one_message_selected);
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setEnabled(atleast_one_message_selected);
+  m_ui->m_actionCopyUrlSelectedArticles->setEnabled(atleast_one_message_selected);
   m_ui->m_actionSendMessageViaEmail->setEnabled(one_message_selected);
   m_ui->m_actionSwitchImportanceOfSelectedMessages->setEnabled(atleast_one_message_selected);
 }
@@ -543,6 +545,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionEditSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("document-edit")));
   m_ui->m_actionCopyUrlSelectedFeed->setIcon(icon_theme_factory->fromTheme(QSL("edit-copy")));
+  m_ui->m_actionCopyUrlSelectedArticles->setIcon(icon_theme_factory->fromTheme(QSL("edit-copy")));
   m_ui->m_actionMarkAllItemsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedItemsAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedItemsAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
@@ -789,6 +792,8 @@ void FormMain::createConnections() {
           &QAction::triggered, qApp->feedReader(), &FeedReader::stopRunningFeedUpdate);
   connect(m_ui->m_actionCopyUrlSelectedFeed,
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::copyUrlOfSelectedFeeds);
+  connect(m_ui->m_actionCopyUrlSelectedArticles,
+          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::copyUrlOfSelectedArticles);
   connect(m_ui->m_actionEditSelectedItem,
           &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::editSelectedItem);
   connect(m_ui->m_actionViewSelectedItemsNewspaperMode,

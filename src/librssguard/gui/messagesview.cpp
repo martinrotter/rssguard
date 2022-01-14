@@ -5,6 +5,7 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
+#include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/labelsmenu.h"
@@ -15,9 +16,11 @@
 #include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
+#include "qnamespace.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
 
+#include <QClipboard>
 #include <QFileIconProvider>
 #include <QKeyEvent>
 #include <QMenu>
@@ -107,6 +110,26 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
 
   if (saved_sort_column < header()->count()) {
     header()->setSortIndicator(saved_sort_column, Qt::SortOrder(saved_sort_order));
+  }
+}
+
+void MessagesView::copyUrlOfSelectedArticles() const {
+  const QModelIndexList selected_indexes = selectionModel()->selectedRows();
+
+  if (selected_indexes.isEmpty()) {
+    return;
+  }
+
+  const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+  QStringList urls;
+
+  for (const auto article_idx : mapped_indexes) {
+    urls << m_sourceModel->data(m_sourceModel->index(article_idx.row(), MSG_DB_URL_INDEX),
+                                Qt::ItemDataRole::EditRole).toString();
+  }
+
+  if (qApp->clipboard() != nullptr && !urls.isEmpty()) {
+    qApp->clipboard()->setText(urls.join(TextFactory::newline()));
   }
 }
 
@@ -346,6 +369,7 @@ void MessagesView::initializeContextMenu() {
       << qApp->mainForm()->m_ui->m_actionSendMessageViaEmail
       << qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally
       << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally
+      << qApp->mainForm()->m_ui->m_actionCopyUrlSelectedArticles
       << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead
       << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread
       << qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages
