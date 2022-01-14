@@ -18,8 +18,8 @@
 #define TTRSS_MAX_MESSAGES      200
 
 // General return status codes.
-#define TTRSS_API_STATUS_OK     0
-#define TTRSS_API_STATUS_ERR    1
+#define TTRSS_API_STATUS_OK       0
+#define TTRSS_API_STATUS_ERR      1
 #define TTRSS_CONTENT_NOT_LOADED  -1
 
 // Login.
@@ -28,6 +28,9 @@
 
 // Get feed tree.
 #define TTRSS_GFT_TYPE_CATEGORY "category"
+
+// Special feeds.
+#define TTRSS_FEED_PUBLISHED_ID   -2
 
 // Subscribe to feed.
 #define STF_UNKNOWN          -1

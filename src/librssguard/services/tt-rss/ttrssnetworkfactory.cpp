@@ -276,6 +276,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
   json[QSL("show_content")] = show_content;
   json[QSL("include_attachments")] = include_attachments;
   json[QSL("sanitize")] = sanitize;
+
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -786,6 +787,9 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
   QList<Message> messages;
   auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
   auto json_msgs = m_rawContent[QSL("content")].toArray();
+  auto* published_lbl = boolinq::from(active_labels).firstOrDefault([](const Label* lbl) {
+    return lbl->customNumericId() == TTRSS_FEED_PUBLISHED_ID;
+  });
 
   for (const QJsonValue& item : qAsConst(json_msgs)) {
     QJsonObject mapped = item.toObject();
@@ -796,6 +800,11 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
     message.m_isImportant = mapped[QSL("marked")].toBool();
     message.m_contents = mapped[QSL("content")].toString();
     message.m_rawContents = QJsonDocument(mapped).toJson(QJsonDocument::JsonFormat::Compact);
+
+    if (published_lbl != nullptr && mapped[QSL("published")].toBool()) {
+      // Article is published, set label.
+      message.m_assignedLabels.append(published_lbl);
+    }
 
     auto json_labels = mapped[QSL("labels")].toArray();
 
@@ -902,6 +911,22 @@ TtRssGetLabelsResponse::TtRssGetLabelsResponse(const QString& raw_content) : TtR
 QList<RootItem*> TtRssGetLabelsResponse::labels() const {
   QList<RootItem*> labels;
   auto json_labels = m_rawContent[QSL("content")].toArray();
+
+  // Add "Published" label.
+  //
+  // NOTE: In TT-RSS there is a problem with "published" feature:
+  //   1. If user has article in existing feed, he can mark it as "published" and in
+  // that case, the "published" behaves more like a label.
+  //   2. If user uses feature "shareToPublished", he essentially creates new textual
+  // note, which is then assigned to "Published feed" but can be also assigned label from 1).
+  //
+  // This label solves situation 1). 2) is solved in other way (creating static system feed).
+  QString published_caption = QObject::tr("[SYSTEM] Published articles");
+  auto* published_lbl = new Label(published_caption, TextFactory::generateColorFromText(published_caption));
+
+  published_lbl->setKeepOnTop(true);
+  published_lbl->setCustomId(QString::number(TTRSS_FEED_PUBLISHED_ID));
+  labels.append(published_lbl);
 
   for (const QJsonValue& lbl_val : qAsConst(json_labels)) {
     QJsonObject lbl_obj = lbl_val.toObject();

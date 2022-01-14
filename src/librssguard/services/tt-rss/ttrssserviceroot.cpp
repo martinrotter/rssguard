@@ -2,6 +2,7 @@
 
 #include "services/tt-rss/ttrssserviceroot.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "exceptions/feedfetchexception.h"
 #include "miscellaneous/application.h"
@@ -41,6 +42,14 @@ void TtRssServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
     DatabaseQueries::loadFromDatabase<Category, TtRssFeed>(this);
     loadCacheFromFile();
+
+    auto lbls = m_labelsNode->labels();
+
+    boolinq::from(lbls).for_each([](Label* lbl) {
+      if (lbl->customNumericId() == TTRSS_FEED_PUBLISHED_ID) {
+        lbl->setKeepOnTop(true);
+      }
+    });
   }
 
   updateTitle();
@@ -159,7 +168,18 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
     QStringList messages = k.value();
 
     if (!messages.isEmpty()) {
-      auto res = network()->setArticleLabel(messages, label_custom_id, true, networkProxy());
+      TtRssResponse res;
+
+      if (label_custom_id.toInt() == TTRSS_FEED_PUBLISHED_ID) {
+        // "published" label must be added in other method.
+        res = network()->updateArticles(messages,
+                                        UpdateArticle::OperatingField::Published,
+                                        UpdateArticle::Mode::SetToTrue,
+                                        networkProxy());
+      }
+      else {
+        res = network()->setArticleLabel(messages, label_custom_id, true, networkProxy());
+      }
 
       if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
         addLabelsAssignmentsToCache(messages, label_custom_id, true);
@@ -176,7 +196,18 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
     QStringList messages = l.value();
 
     if (!messages.isEmpty()) {
-      auto res = network()->setArticleLabel(messages, label_custom_id, false, networkProxy());
+      TtRssResponse res;
+
+      if (label_custom_id.toInt() == TTRSS_FEED_PUBLISHED_ID) {
+        // "published" label must be removed in other method.
+        res = network()->updateArticles(messages,
+                                        UpdateArticle::OperatingField::Published,
+                                        UpdateArticle::Mode::SetToFalse,
+                                        networkProxy());
+      }
+      else {
+        res = network()->setArticleLabel(messages, label_custom_id, false, networkProxy());
+      }
 
       if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
         addLabelsAssignmentsToCache(messages, label_custom_id, false);
