@@ -795,6 +795,14 @@ void Application::parseCmdArgumentsFromMyInstance() {
 
   s_customLogFile = m_cmdParser.value(QSL(CLI_LOG_SHORT));
 
+  if (s_customLogFile.startsWith('\'')) {
+    s_customLogFile = s_customLogFile.mid(1);
+  }
+
+  if (s_customLogFile.endsWith('\'')) {
+    s_customLogFile.chop(1);
+  }
+
   if (!m_cmdParser.value(QSL(CLI_DAT_SHORT)).isEmpty()) {
     auto data_folder = QDir::toNativeSeparators(m_cmdParser.value(QSL(CLI_DAT_SHORT)));
 

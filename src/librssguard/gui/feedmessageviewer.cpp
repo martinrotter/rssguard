@@ -311,7 +311,7 @@ void FeedMessageViewer::initializeViews() {
   // Setup message splitter.
   m_messageSplitter->setObjectName(QSL("MessageSplitter"));
   m_messageSplitter->setHandleWidth(1);
-  m_messageSplitter->setOpaqueResize(false);
+  m_messageSplitter->setOpaqueResize(true);
   m_messageSplitter->setChildrenCollapsible(false);
   m_messageSplitter->addWidget(m_messagesView);
   m_messageSplitter->addWidget(m_messagesBrowser);
@@ -324,9 +324,9 @@ void FeedMessageViewer::initializeViews() {
   feed_layout->addWidget(m_toolBarFeeds);
   feed_layout->addWidget(m_feedsView);
 
-  // Assembler everything together.
+  // Assemble everything together.
   m_feedSplitter->setHandleWidth(1);
-  m_feedSplitter->setOpaqueResize(false);
+  m_feedSplitter->setOpaqueResize(true);
   m_feedSplitter->setChildrenCollapsible(false);
   m_feedSplitter->addWidget(m_feedsWidget);
   m_feedSplitter->addWidget(m_messagesWidget);
