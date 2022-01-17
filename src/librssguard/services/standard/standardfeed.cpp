@@ -395,20 +395,21 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
       feed->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
       feed->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
 
-      QString icon_link = channel_element.namedItem(QSL("image")).toElement().text();
-      QString icon_url_link = channel_element.namedItem(QSL("image")).toElement().attribute(QSL("url"));
+      QString icon_url_link = channel_element.namedItem(QSL("image")).namedItem(QSL("url")).toElement().text();
 
       if (!icon_url_link.isEmpty()) {
         icon_possible_locations.append({ icon_url_link, true });
       }
-      else if (!icon_link.isEmpty()) {
-        icon_possible_locations.append({ icon_link, true });
-      }
 
-      QString home_page = channel_element.namedItem(QSL("link")).toElement().text();
+      auto channel_links = channel_element.elementsByTagName(QSL("link"));
 
-      if (!home_page.isEmpty()) {
-        icon_possible_locations.prepend({ home_page, false });
+      for (int i = 0; i < channel_links.size(); i++) {
+        QString home_page = channel_links.at(i).toElement().text();
+
+        if (!home_page.isEmpty()) {
+          icon_possible_locations.prepend({ home_page, false });
+          break;
+        }
       }
     }
     else if (root_element.namespaceURI() == atom.atomNamespace()) {
