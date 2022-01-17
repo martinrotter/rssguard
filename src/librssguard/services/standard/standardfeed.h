@@ -71,9 +71,6 @@ class StandardFeed : public Feed {
     QString password() const;
     void setPassword(const QString& password);
 
-    bool displayUrl() const;
-    void setDisplayUrl(bool flag);
-
     // Tries to guess feed hidden under given URL
     // and uses given credentials.
     // Returns pointer to guessed feed (if at least partially
@@ -114,7 +111,6 @@ class StandardFeed : public Feed {
     bool m_passwordProtected{};
     QString m_username;
     QString m_password;
-    bool m_displayUrl;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)

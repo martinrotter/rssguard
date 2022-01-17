@@ -47,6 +47,8 @@ void FormFeedDetails::apply() {
   m_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
                                                                 m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
   m_feed->setAutoUpdateInitialInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
+  m_feed->setDisplayUrl(m_ui->m_cbLoadUrl->checkState() == Qt::CheckState::Checked);
+
 
   if (!m_creatingNew) {
     // We need to make sure that common data are saved.
@@ -90,6 +92,7 @@ void FormFeedDetails::loadFeedData() {
 
   m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(m_feed->autoUpdateType()))));
   m_ui->m_spinAutoUpdateInterval->setValue(m_feed->autoUpdateInitialInterval());
+  m_ui->m_cbLoadUrl->setCheckState(m_feed->displayUrl() ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
 }
 
 void FormFeedDetails::acceptIfPossible() {

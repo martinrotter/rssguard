@@ -43,6 +43,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
   setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
   setMessageFilters(other.messageFilters());
+  setDisplayUrl(other.displayUrl());
 }
 
 QList<Message> Feed::undeletedMessages() const {
@@ -169,6 +170,14 @@ QString Feed::source() const {
 
 void Feed::setSource(const QString& source) {
   m_source = source;
+}
+
+bool Feed::displayUrl() const {
+  return m_displayUrl;
+}
+
+void Feed::setDisplayUrl(bool flag) {
+  m_displayUrl = flag;
 }
 
 void Feed::appendMessageFilter(MessageFilter* filter) {

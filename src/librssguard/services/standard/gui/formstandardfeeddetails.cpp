@@ -84,7 +84,6 @@ void FormStandardFeedDetails::apply() {
   std_feed->setPasswordProtected(m_authDetails->m_gbAuthentication->isChecked());
   std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
   std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
-  std_feed->setDisplayUrl(m_standardFeedDetails->m_ui.m_cbLoadUrl->checkState() == Qt::CheckState::Checked);
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
