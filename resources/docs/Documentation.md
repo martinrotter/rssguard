@@ -315,7 +315,7 @@ function filterMessage() {
 ```
 
 ### Websites Scraping <a id="scrap"></a>
-> **[CAUTION!] Only proceed if you consider yourself a power user and you know what you are doing!**
+> **Only proceed if you consider yourself a power user and you know what you are doing!**
 
 RSS Guard offers additional advanced features inspired by [Liferea](https://lzone.de/liferea/).
 
@@ -329,7 +329,7 @@ However, if you choose `Script` option, then you cannot provide URL of your feed
 
 Any errors in your script must be written to **error output**.
 
-Note that you must provide full execution line to your custom script, including interpreter binary path and name and all that must be written in special format `<interpreter>#<argument1>#<argument2>#....`. The `#` character is there to separate interpreter and individual arguments. I had to select some character as separator because simply using space ` ` is not that easy as it might sound, as sometimes space could be a part of an argument itself.
+> **As of RSS Guard 4.1.3, you do not have to separate your arguments with `#`. If your argument contains spaces, then enclose it with DOUBLE quotes, for example `"my argument"`. DO NOT use SINGLE quotes to do that.**
 
 If everything went well, script must return `0` as the process exit code, or a non-zero exit code if some error happened.
 
@@ -337,9 +337,9 @@ Binary name (interpreter) must be always be specified, while arguments not. Be v
 
 | Command       | Explanation   |
 | :---          | ---           |
-| `bash#-c#curl https://github.com/martinrotter.atom`   | Download ATOM feed file using Bash and Curl. |
-| `Powershell#Invoke-WebRequest 'https://github.com/martinrotter.atom' \| Select-Object -ExpandProperty Content` | Download ATOM feed file with Powershell. |
-| `php#tweeper.php#-v#0#https://twitter.com/NSACareers` | Scrape Twitter RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git). Tweeper is the utility which is able to produce RSS feed from Twitter and other similar social platforms. |
+| `bash -c "curl 'https://github.com/martinrotter.atom'"`   | Download ATOM feed file using Bash and Curl. |
+| `Powershell Invoke-WebRequest 'https://github.com/martinrotter.atom' \| Select-Object -ExpandProperty Content` | Download ATOM feed file with Powershell. |
+| `php tweeper.php -v 0 https://twitter.com/NSACareers` | Scrape Twitter RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git). Tweeper is the utility which is able to produce RSS feed from Twitter and other similar social platforms. |
 
 <img alt="alt-img" src="images/scrape-source.png" width="350px">
 
