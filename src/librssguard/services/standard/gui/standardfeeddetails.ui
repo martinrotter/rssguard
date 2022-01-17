@@ -236,7 +236,7 @@
      </property>
     </widget>
    </item>
-   <item row="11" column="0" colspan="2">
+   <item row="12" column="0" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -248,6 +248,20 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="11" column="1">
+    <widget class="QCheckBox" name="m_cbLoadUrl">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Display URL in preview</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

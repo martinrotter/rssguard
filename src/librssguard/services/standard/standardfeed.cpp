@@ -46,6 +46,7 @@ StandardFeed::StandardFeed(RootItem* parent_item)
   m_passwordProtected = false;
   m_username = QString();
   m_password = QString();
+  m_displayUrl = false;
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other)
@@ -57,6 +58,7 @@ StandardFeed::StandardFeed(const StandardFeed& other)
   m_passwordProtected = other.passwordProtected();
   m_username = other.username();
   m_password = other.password();
+  m_displayUrl = other.displayUrl();
 }
 
 QList<QAction*> StandardFeed::contextMenuFeedsList() {
@@ -130,6 +132,7 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("protected")] = passwordProtected();
   data[QSL("username")] = username();
   data[QSL("password")] = TextFactory::encrypt(password());
+  data[QSL("display_url")] = displayUrl();
 
   return data;
 }
@@ -142,6 +145,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setPasswordProtected(data[QSL("protected")].toBool());
   setUsername(data[QSL("username")].toString());
   setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
+  setDisplayUrl(data[QSL("display_url")].toBool());
 }
 
 QString StandardFeed::typeToString(StandardFeed::Type type) {
@@ -227,6 +231,14 @@ StandardFeed::SourceType StandardFeed::sourceType() const {
 
 void StandardFeed::setSourceType(SourceType source_type) {
   m_sourceType = source_type;
+}
+
+bool StandardFeed::displayUrl() const {
+  return m_displayUrl;
+}
+
+void StandardFeed::setDisplayUrl(bool flag) {
+  m_displayUrl = flag;
 }
 
 StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,

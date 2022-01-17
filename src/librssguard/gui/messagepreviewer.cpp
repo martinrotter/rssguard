@@ -12,6 +12,7 @@
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
+#include "services/standard/standardfeed.h"
 
 #if defined(USE_WEBENGINE)
 #include "gui/webbrowser.h"
@@ -121,7 +122,16 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
 
     if (!same_message) {
       m_txtMessage->setVerticalScrollBarPosition(0.0);
-      m_txtMessage->loadMessage(message, m_root);
+      const auto * feed = static_cast<const StandardFeed *>(
+        root->getParentServiceRoot()->getItemFromSubTree(
+          [feedId = message.m_feedId](const RootItem * it) {
+             return it->kind() == RootItem::Kind::Feed && it->customId() == feedId;
+          })->toFeed());
+      if (feed && feed->displayUrl()) {
+        m_txtMessage->loadUrl(m_message.m_url);
+      } else {
+        m_txtMessage->loadMessage(message, m_root);
+      }
     }
   }
 }

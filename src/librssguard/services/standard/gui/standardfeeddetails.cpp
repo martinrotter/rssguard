@@ -348,6 +348,7 @@ void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
   m_ui.m_cmbEncoding->setCurrentIndex(m_ui.m_cmbEncoding->findData(feed->encoding(),
                                                                    Qt::ItemDataRole::DisplayRole,
                                                                    Qt::MatchFlag::MatchFixedString));
+  m_ui.m_cbLoadUrl->setCheckState(feed->displayUrl() ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
 }
 
 void StandardFeedDetails::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
