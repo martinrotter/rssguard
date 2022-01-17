@@ -51,7 +51,8 @@
 
 #define SOUNDS_BUILTIN_DIRECTORY              ":/sounds"
 #define ARGUMENTS_LIST_SEPARATOR              "\n"
-#define IS_IN_ARRAY(offset, array)            ((offset >= 0) && (offset < array.count()))
+#define IS_IN_ARRAY(offset, \
+                    array)            ((offset >= 0) && (offset < array.count()))
 #define DEFAULT_SQL_MESSAGES_FILTER           "0 > 1"
 #define MAX_MULTICOLUMN_SORT_STATES           3
 #define RELEASES_LIST                         "https://api.github.com/repos/martinrotter/rssguard/releases"
@@ -146,7 +147,10 @@
 #if defined(USE_WEBENGINE)
 #define HTTP_COMPLETE_USERAGENT (QWebEngineProfile::defaultProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") + QByteArrayLiteral(APP_USERAGENT))
 #else
-#define HTTP_COMPLETE_USERAGENT (QByteArrayLiteral(APP_USERAGENT))
+#define HTTP_COMPLETE_USERAGENT (QByteArrayLiteral( \
+                                   "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.15.2 Chrome/83.0.4103.122 Safari/537.36 ") \
+                                 + \
+                                 QByteArrayLiteral(APP_USERAGENT))
 #endif
 
 #define INTERNAL_URL_MESSAGE                  "http://rssguard.message"
