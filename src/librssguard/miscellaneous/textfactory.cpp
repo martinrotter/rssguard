@@ -160,6 +160,50 @@ QString TextFactory::capitalizeFirstLetter(const QString& sts) {
   }
 }
 
+QStringList TextFactory::tokenizeProcessArguments(QStringView command) {
+  QStringList args;
+  QString tmp;
+  int quote_count = 0;
+  bool in_quote = false;
+
+  for (int i = 0; i < command.size(); ++i) {
+    if (command.at(i) == QL1C('"')) {
+      ++quote_count;
+
+      if (quote_count == 3) {
+        quote_count = 0;
+        tmp += command.at(i);
+      }
+
+      continue;
+    }
+
+    if (quote_count) {
+      if (quote_count == 1) {
+        in_quote = !in_quote;
+      }
+
+      quote_count = 0;
+    }
+
+    if (!in_quote && command.at(i).isSpace()) {
+      if (!tmp.isEmpty()) {
+        args += tmp;
+        tmp.clear();
+      }
+    }
+    else {
+      tmp += command.at(i);
+    }
+  }
+
+  if (!tmp.isEmpty()) {
+    args += tmp;
+  }
+
+  return args;
+}
+
 QString TextFactory::shorten(const QString& input, int text_length_limit) {
   if (input.size() > text_length_limit) {
     return input.left(text_length_limit - ELLIPSIS_LENGTH) + QString(ELLIPSIS_LENGTH, QL1C('.'));

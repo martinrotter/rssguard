@@ -25,6 +25,7 @@
 #include "services/standard/rssparser.h"
 #include "services/standard/standardserviceroot.h"
 
+#include <QCommandLineParser>
 #include <QDomDocument>
 #include <QDomElement>
 #include <QDomNode>
@@ -506,14 +507,9 @@ void StandardFeed::setEncoding(const QString& encoding) {
 }
 
 QStringList StandardFeed::prepareExecutionLine(const QString& execution_line) {
-  auto split_exec = execution_line.split(QSL(EXECUTION_LINE_SEPARATOR),
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                         Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                         QString::SplitBehavior::SkipEmptyParts);
-#endif
+  auto args = TextFactory::tokenizeProcessArguments(execution_line);
 
-  return qApp->replaceDataUserDataFolderPlaceholder(split_exec);
+  return qApp->replaceDataUserDataFolderPlaceholder(args);
 }
 
 QString StandardFeed::runScriptProcess(const QStringList& cmd_args, const QString& working_directory,

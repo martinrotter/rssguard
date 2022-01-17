@@ -32,6 +32,7 @@ class TextFactory {
     static QString decrypt(const QString& text, quint64 key = 0);
     static QString newline();
     static QString capitalizeFirstLetter(const QString& sts);
+    static QStringList tokenizeProcessArguments(QStringView args);
 
     // Shortens input string according to given length limit.
     static QString shorten(const QString& input, int text_length_limit = TEXT_TITLE_LIMIT);
