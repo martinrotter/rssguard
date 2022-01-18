@@ -44,6 +44,7 @@ CREATE TABLE Feeds (
   custom_id       TEXT        NOT NULL CHECK (custom_id != ''), /* Custom ID cannot be empty, it must contain either service-specific ID, or Feeds/id. */
   /* Custom column for (serialized) custom account-specific data. */
   custom_data     TEXT,
+  display_url     BOOLEAN     NOT NULL DEFAULT FALSE,
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );

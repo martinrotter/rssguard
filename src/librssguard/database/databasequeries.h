@@ -299,6 +299,7 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
     feed->setIcon(qApp->icons()->fromByteArray(query.value(FDS_DB_ICON_INDEX).toByteArray()));
     feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(query.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
     feed->setAutoUpdateInitialInterval(query.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
+    feed->setDisplayUrl(query.value(FDS_DB_DISPLAY_URL_INDEX).toBool());
 
     qDebugNN << LOGSEC_CORE
              << "Custom ID of feed when loading from DB is"

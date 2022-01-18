@@ -249,6 +249,7 @@
 #define FDS_DB_ACCOUNT_ID_INDEX       9
 #define FDS_DB_CUSTOM_ID_INDEX        10
 #define FDS_DB_CUSTOM_DATA_INDEX      11
+#define FDS_DB_DISPLAY_URL_INDEX      12
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX           0

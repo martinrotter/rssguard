@@ -21,7 +21,7 @@
      </property>
      <widget class="QWidget" name="tabUpdating">
       <attribute name="title">
-       <string>Auto-downloading of articles</string>
+       <string>Articles</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout">
        <item row="0" column="0">
@@ -51,6 +51,23 @@
           </widget>
          </item>
         </layout>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Display URL in preview</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_cmbAutoUpdateType</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="m_cbLoadUrl">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -87,8 +104,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>325</x>
-     <y>342</y>
+     <x>331</x>
+     <y>556</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
