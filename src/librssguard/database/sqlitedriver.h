@@ -28,7 +28,7 @@ class SqliteDriver : public DatabaseDriver {
 
   private:
     QSqlDatabase initializeDatabase(const QString& connection_name, bool in_memory);
-    bool updateDatabaseSchema(const QSqlDatabase& database, const QString& source_db_schema_version);
+    bool updateDatabaseSchema(QSqlQuery &query, const QString& source_db_schema_version);
     void setPragmas(QSqlQuery& query);
     QString databaseFilePath() const;
 

@@ -299,14 +299,15 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
     feed->setIcon(qApp->icons()->fromByteArray(query.value(FDS_DB_ICON_INDEX).toByteArray()));
     feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(query.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
     feed->setAutoUpdateInitialInterval(query.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
-    feed->setDisplayUrl(query.value(FDS_DB_DISPLAY_URL_INDEX).toBool());
+    feed->setIsSwitchedOff(query.value(FDS_DB_IS_OFF_INDEX).toBool());
+    feed->setOpenArticlesDirectly(query.value(FDS_DB_OPEN_ARTICLES_INDEX).toBool());
 
     qDebugNN << LOGSEC_CORE
              << "Custom ID of feed when loading from DB is"
              << QUOTE_W_SPACE_DOT(feed->customId());
 
     // Load custom data.
-    feed->setCustomDatabaseData(deserializeCustomData(query.value(QSL("custom_data")).toString()));
+    feed->setCustomDatabaseData(deserializeCustomData(query.value(FDS_DB_CUSTOM_DATA_INDEX).toString()));
 
     if (filters_in_feeds.contains(feed->customId())) {
       auto all_filters_for_this_feed = filters_in_feeds.values(feed->customId());

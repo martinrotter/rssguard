@@ -191,7 +191,7 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
       const QString installed_db_schema = query_db.value(0).toString();
 
       if (installed_db_schema.toInt() < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
-        if (updateDatabaseSchema(database, installed_db_schema, database_name)) {
+        if (updateDatabaseSchema(query_db, installed_db_schema, database_name)) {
           qDebugNN << LOGSEC_DB
                    << "Database schema was updated from"
                    << QUOTE_W_SPACE(installed_db_schema)
@@ -214,7 +214,7 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
   return database;
 }
 
-bool MariaDbDriver::updateDatabaseSchema(const QSqlDatabase& database,
+bool MariaDbDriver::updateDatabaseSchema(QSqlQuery& query,
                                          const QString& source_db_schema_version,
                                          const QString& database_name) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
@@ -229,8 +229,6 @@ bool MariaDbDriver::updateDatabaseSchema(const QSqlDatabase& database,
                                                    database_name);
 
       for (const QString& statement : statements) {
-        QSqlQuery query = database.exec(statement);
-
         if (!query.exec(statement) && query.lastError().isValid()) {
           throw ApplicationException(query.lastError().text());
         }
@@ -246,6 +244,7 @@ bool MariaDbDriver::updateDatabaseSchema(const QSqlDatabase& database,
              << QUOTE_W_SPACE(working_version)
              << "->"
              << QUOTE_W_SPACE_DOT(working_version + 1);
+
     working_version++;
   }
 

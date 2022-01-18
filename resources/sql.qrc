@@ -1,7 +1,9 @@
 <RCC>
   <qresource prefix="/">
-    <file>sql/db_init_mysql.sql</file>   
+    <file>sql/db_init_mysql.sql</file>
+    <file>sql/db_update_mysql_1_2.sql</file>
 
     <file>sql/db_init_sqlite.sql</file>
+    <file>sql/db_update_sqlite_1_2.sql</file>
   </qresource>
 </RCC>

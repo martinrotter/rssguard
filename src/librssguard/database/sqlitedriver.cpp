@@ -262,7 +262,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
       const QString installed_db_schema = query_db.value(0).toString();
 
       if (installed_db_schema.toInt() < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
-        if (updateDatabaseSchema(database, installed_db_schema)) {
+        if (updateDatabaseSchema(query_db, installed_db_schema)) {
           qDebugNN << LOGSEC_DB
                    << "Database schema was updated from '"
                    << installed_db_schema
@@ -342,7 +342,7 @@ QString SqliteDriver::databaseFilePath() const {
   return m_databaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE;
 }
 
-bool SqliteDriver::updateDatabaseSchema(const QSqlDatabase& database, const QString& source_db_schema_version) {
+bool SqliteDriver::updateDatabaseSchema(QSqlQuery& query, const QString& source_db_schema_version) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
   const int current_version = QSL(APP_DB_SCHEMA_VERSION).remove('.').toInt();
 
@@ -362,8 +362,6 @@ bool SqliteDriver::updateDatabaseSchema(const QSqlDatabase& database, const QStr
                                                                                        QString::number(working_version + 1)));
 
       for (const QString& statement : statements) {
-        QSqlQuery query = database.exec(statement);
-
         if (!query.exec(statement) && query.lastError().isValid()) {
           throw ApplicationException(query.lastError().text());
         }

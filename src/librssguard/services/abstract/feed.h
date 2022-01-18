@@ -73,8 +73,11 @@ class Feed : public RootItem {
     QString source() const;
     void setSource(const QString& source);
 
-    bool displayUrl() const;
-    void setDisplayUrl(bool flag);
+    bool openArticlesDirectly() const;
+    void setOpenArticlesDirectly(bool opn);
+
+    bool isSwitchedOff() const;
+    void setIsSwitchedOff(bool switched_off);
 
     void appendMessageFilter(MessageFilter* filter);
     QList<QPointer<MessageFilter>> messageFilters() const;
@@ -95,7 +98,8 @@ class Feed : public RootItem {
     AutoUpdateType m_autoUpdateType;
     int m_autoUpdateInitialInterval{};
     int m_autoUpdateRemainingInterval{};
-    bool m_displayUrl{false};
+    bool m_isSwitchedOff;
+    bool m_openArticlesDirectly;
     int m_totalCount{};
     int m_unreadCount{};
     QList<QPointer<MessageFilter>> m_messageFilters;

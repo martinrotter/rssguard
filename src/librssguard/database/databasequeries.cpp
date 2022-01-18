@@ -1989,8 +1989,8 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.prepare("UPDATE Feeds "
             "SET title = :title, description = :description, date_created = :date_created, "
             "    icon = :icon, category = :category, source = :source, update_type = :update_type, "
-            "    update_interval = :update_interval, account_id = :account_id, "
-            "    custom_id = :custom_id, custom_data = :custom_data, display_url = :display_url "
+            "    update_interval = :update_interval, is_off = :is_off, open_articles = :open_articles, "
+            "    account_id = :account_id, custom_id = :custom_id, custom_data = :custom_data "
             "WHERE id = :id;");
   q.bindValue(QSL(":title"), feed->title());
   q.bindValue(QSL(":description"), feed->description());
@@ -2003,7 +2003,8 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":custom_id"), feed->customId());
   q.bindValue(QSL(":id"), feed->id());
-  q.bindValue(QSL(":display_url"), feed->displayUrl());
+  q.bindValue(QSL(":is_off"), feed->isSwitchedOff());
+  q.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
 
   auto custom_data = feed->customDatabaseData();
   QString serialized_custom_data = serializeCustomData(custom_data);

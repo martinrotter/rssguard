@@ -52,20 +52,10 @@
          </item>
         </layout>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_7">
+       <item row="1" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbOpenArticlesAutomatically">
          <property name="text">
-          <string>Display URL in preview</string>
-         </property>
-         <property name="buddy">
-          <cstring>m_cmbAutoUpdateType</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QCheckBox" name="m_cbLoadUrl">
-         <property name="text">
-          <string/>
+          <string>Open articles via their URL automatically</string>
          </property>
         </widget>
        </item>

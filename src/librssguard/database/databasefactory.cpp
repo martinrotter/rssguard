@@ -48,16 +48,16 @@ void DatabaseFactory::determineDriver() {
     qFatal("DB driver for '%s' was not found.", qPrintable(db_driver));
   }
 
-  if (m_dbDriver->driverType() != DatabaseDriver::DriverType::SQLite) {
-    // Try to setup connection and fallback to SQLite.
-    try {
-      m_dbDriver->connection(QSL("DatabaseFactory"));
-    }
-    catch (const ApplicationException& ex) {
-      qCriticalNN << LOGSEC_DB
-                  << "Failed to reach connection to DB source, let's fallback to SQLite:"
-                  << QUOTE_W_SPACE_DOT(ex.message());
+  // Try to setup connection and fallback to SQLite.
+  try {
+    m_dbDriver->connection(QSL("DatabaseFactory"));
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_DB
+                << "Failed to reach connection to DB source:"
+                << QUOTE_W_SPACE_DOT(ex.message());
 
+    if (m_dbDriver->driverType() != DatabaseDriver::DriverType::SQLite) {
       MessageBox::show(nullptr,
                        QMessageBox::Icon::Critical,
                        tr("Cannot connect to database"),

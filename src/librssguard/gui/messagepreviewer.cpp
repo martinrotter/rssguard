@@ -121,15 +121,23 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
 
     if (!same_message) {
       m_txtMessage->setVerticalScrollBarPosition(0.0);
-      const auto * feed = root->getParentServiceRoot()->getItemFromSubTree(
-          [feedId = message.m_feedId](const RootItem * it) {
-             return it->kind() == RootItem::Kind::Feed && it->customId() == feedId;
-          })->toFeed();
-      if (feed && feed->displayUrl()) {
+
+#if defined(USE_WEBENGINE)
+      const auto msg_feed_id = message.m_feedId;
+      const auto* feed = root->getParentServiceRoot()->getItemFromSubTree(
+        [msg_feed_id](const RootItem* it) {
+        return it->kind() == RootItem::Kind::Feed && it->customId() == msg_feed_id;
+      })->toFeed();
+
+      if (feed != nullptr && feed->openArticlesDirectly()) {
         m_txtMessage->loadUrl(m_message.m_url);
-      } else {
+      }
+      else {
         m_txtMessage->loadMessage(message, m_root);
       }
+#else
+      m_txtMessage->loadMessage(message, m_root);
+#endif
     }
   }
 }

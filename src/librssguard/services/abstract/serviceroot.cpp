@@ -373,6 +373,9 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInitialInterval());
     feed_custom_data.insert(QSL("auto_update_type"), int(feed->autoUpdateType()));
     feed_custom_data.insert(QSL("msg_filters"), QVariant::fromValue(feed->messageFilters()));
+    feed_custom_data.insert(QSL("is_off"), feed->isSwitchedOff());
+    feed_custom_data.insert(QSL("open_articles_directly"), feed->openArticlesDirectly());
+
     custom_data.insert(feed->customId(), feed_custom_data);
   }
 
@@ -393,6 +396,9 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
       feed->setAutoUpdateInitialInterval(feed_custom_data.value(QSL("auto_update_interval")).toInt());
       feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(feed_custom_data.value(QSL("auto_update_type")).toInt()));
       feed->setMessageFilters(feed_custom_data.value(QSL("msg_filters")).value<QList<QPointer<MessageFilter>>>());
+
+      feed->setIsSwitchedOff(feed_custom_data.value(QSL("is_off")).toBool());
+      feed->setOpenArticlesDirectly(feed_custom_data.value(QSL("open_articles_directly")).toBool());
     }
   }
 }

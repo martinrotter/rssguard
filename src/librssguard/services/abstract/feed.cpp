@@ -22,7 +22,7 @@
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()), m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate),
   m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-  m_messageFilters(QList<QPointer<MessageFilter>>()) {
+  m_isSwitchedOff(false), m_openArticlesDirectly(false), m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
 
@@ -43,7 +43,8 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
   setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
   setMessageFilters(other.messageFilters());
-  setDisplayUrl(other.displayUrl());
+  setOpenArticlesDirectly(other.openArticlesDirectly());
+  setIsSwitchedOff(other.isSwitchedOff());
 }
 
 QList<Message> Feed::undeletedMessages() const {
@@ -172,12 +173,12 @@ void Feed::setSource(const QString& source) {
   m_source = source;
 }
 
-bool Feed::displayUrl() const {
-  return m_displayUrl;
+bool Feed::openArticlesDirectly() const {
+  return m_openArticlesDirectly;
 }
 
-void Feed::setDisplayUrl(bool flag) {
-  m_displayUrl = flag;
+void Feed::setOpenArticlesDirectly(bool opn) {
+  m_openArticlesDirectly = opn;
 }
 
 void Feed::appendMessageFilter(MessageFilter* filter) {
@@ -264,6 +265,14 @@ QString Feed::getStatusDescription() const {
     default:
       return tr("error");
   }
+}
+
+bool Feed::isSwitchedOff() const {
+  return m_isSwitchedOff;
+}
+
+void Feed::setIsSwitchedOff(bool switched_off) {
+  m_isSwitchedOff = switched_off;
 }
 
 QString Feed::statusString() const {
