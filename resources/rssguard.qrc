@@ -64,23 +64,6 @@
     <file>graphics/misc/flags/zh_CN.png</file>
     <file>graphics/misc/flags/zh_TW.png</file>
 
-    <file>skins/dark/html_adblocked.html</file>
-    <file>skins/dark/html_enclosure_every.html</file>
-    <file>skins/dark/html_enclosure_image.html</file>
-    <file>skins/dark/html_single_message.html</file>
-    <file>skins/dark/html_wrapper.html</file>
-    <file>skins/dark/metadata.xml</file>
-    <file>skins/dark/qt_style.qss</file>
-
-    <file>skins/vergilius/html_adblocked.html</file>
-    <file>skins/vergilius/html_enclosure_every.html</file>
-    <file>skins/vergilius/html_enclosure_image.html</file>
-    <file>skins/vergilius/html_single_message.html</file>
-    <file>skins/vergilius/html_wrapper.html</file>
-    <file>skins/vergilius/html_style.css</file>
-    <file>skins/vergilius/metadata.xml</file>
-    <file>skins/vergilius/qt_style.qss</file>
-
     <file>skins/nudus-base/html_adblocked.html</file>
     <file>skins/nudus-base/html_enclosure_every.html</file>
     <file>skins/nudus-base/html_enclosure_image.html</file>

@@ -193,7 +193,7 @@
 #define APP_CFG_FILE        "config.ini"
 
 #define APP_SKIN_USER_FOLDER "skins"
-#define APP_SKIN_DEFAULT    "vergilius"
+#define APP_SKIN_DEFAULT    "nudus-light"
 #define APP_SKIN_METADATA_FILE "metadata.xml"
 #define APP_STYLE_DEFAULT   "Fusion"
 
