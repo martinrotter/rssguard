@@ -162,6 +162,7 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
     QSqlQuery query_db(database);
 
     query_db.setForwardOnly(true);
+    setPragmas(query_db);
 
     if (!query_db.exec(QSL("USE %1").arg(database_name)) ||
         !query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
@@ -212,6 +213,11 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
 
   m_databaseInitialized = true;
   return database;
+}
+
+void MariaDbDriver::setPragmas(QSqlQuery& query) {
+  query.exec(QSL("SET NAMES 'utf8mb4';"));
+  query.exec(QSL("SET CHARACTER SET utf8mb4;"));
 }
 
 bool MariaDbDriver::updateDatabaseSchema(QSqlQuery& query,
@@ -294,6 +300,11 @@ QSqlDatabase MariaDbDriver::connection(const QString& connection_name, DatabaseD
                << QUOTE_W_SPACE(QDir::toNativeSeparators(database.databaseName()))
                << "seems to be established.";
     }
+
+    QSqlQuery query_db(database);
+
+    query_db.setForwardOnly(true);
+    setPragmas(query_db);
 
     return database;
   }

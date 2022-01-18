@@ -42,10 +42,12 @@ class MariaDbDriver : public DatabaseDriver {
     QString interpretErrorCode(MariaDbError error_code) const;
 
   private:
-    bool updateDatabaseSchema(QSqlQuery &query,
+    bool updateDatabaseSchema(QSqlQuery& query,
                               const QString& source_db_schema_version,
                               const QString& database_name);
     QSqlDatabase initializeDatabase(const QString& connection_name);
+
+    void setPragmas(QSqlQuery& query);
 
   private:
     bool m_databaseInitialized;
