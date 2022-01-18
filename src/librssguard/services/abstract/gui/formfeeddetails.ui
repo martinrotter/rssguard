@@ -61,6 +61,20 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tabMisc">
+      <attribute name="title">
+       <string>Miscellaneous</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbDisableFeed">
+         <property name="text">
+          <string>Disable this feed</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item>

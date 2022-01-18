@@ -74,6 +74,14 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
 }
 
 void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
+  auto my_feeds = feeds;
+
+  for (int i = 0; i < my_feeds.size(); i++) {
+    if (my_feeds.at(i)->isSwitchedOff()) {
+      my_feeds.removeAt(i--);
+    }
+  }
+
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent, {
       tr("Cannot fetch articles at this point"),
@@ -84,7 +92,7 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
 
   QMetaObject::invokeMethod(m_feedDownloader, "updateFeeds",
                             Qt::ConnectionType::QueuedConnection,
-                            Q_ARG(QList<Feed*>, feeds));
+                            Q_ARG(QList<Feed*>, my_feeds));
 }
 
 void FeedReader::synchronizeMessageData(const QList<CacheForServiceRoot*>& caches) {

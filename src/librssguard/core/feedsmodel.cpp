@@ -457,8 +457,15 @@ void FeedsModel::setupFonts() {
   fon.fromString(qApp->settings()->value(GROUP(Feeds), Feeds::ListFont, Application::font("FeedsView").toString()).toString());
 
   m_normalFont = fon;
+
   m_boldFont = m_normalFont;
   m_boldFont.setBold(true);
+
+  m_normalStrikedFont = m_normalFont;
+  m_normalStrikedFont.setStrikeOut(true);
+
+  m_boldStrikedFont = m_boldFont;
+  m_boldStrikedFont.setStrikeOut(true);
 }
 
 void FeedsModel::reloadWholeLayout() {
@@ -566,8 +573,20 @@ bool FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
 
 QVariant FeedsModel::data(const QModelIndex& index, int role) const {
   switch (role) {
-    case Qt::ItemDataRole::FontRole:
-      return itemForIndex(index)->countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
+    case Qt::ItemDataRole::FontRole: {
+      RootItem* it = itemForIndex(index);
+      bool is_bold = it->countOfUnreadMessages() > 0;
+      bool is_striked = it->kind() == RootItem::Kind::Feed
+                        ? qobject_cast<Feed*>(it)->isSwitchedOff()
+                        : false;
+
+      if (is_bold) {
+        return is_striked ? m_boldStrikedFont : m_boldFont;
+      }
+      else {
+        return is_striked ? m_normalStrikedFont : m_normalFont;
+      }
+    }
 
     case Qt::ItemDataRole::ToolTipRole:
       if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {

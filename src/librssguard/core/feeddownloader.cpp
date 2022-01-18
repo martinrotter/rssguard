@@ -65,6 +65,11 @@ void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>&
 void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
   QMutexLocker locker(m_mutex);
 
+  m_results.clear();
+  m_feeds = feeds;
+  m_feedsOriginalCount = m_feeds.size();
+  m_feedsUpdated = 0;
+
   if (feeds.isEmpty()) {
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "No feeds to update in worker thread, aborting update.";
   }
@@ -72,10 +77,6 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
     qDebugNN << LOGSEC_FEEDDOWNLOADER
              << "Starting feed updates from worker in thread: '"
              << QThread::currentThreadId() << "'.";
-    m_feeds = feeds;
-    m_feedsOriginalCount = m_feeds.size();
-    m_results.clear();
-    m_feedsUpdated = 0;
 
     // Job starts now.
     emit updateStarted();

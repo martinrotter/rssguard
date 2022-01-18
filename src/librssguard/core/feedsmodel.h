@@ -153,6 +153,8 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     QIcon m_countsIcon;
     QFont m_normalFont;
     QFont m_boldFont;
+    QFont m_normalStrikedFont;
+    QFont m_boldStrikedFont;
 };
 
 #endif // FEEDSMODEL_H

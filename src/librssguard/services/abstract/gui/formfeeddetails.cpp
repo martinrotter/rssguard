@@ -48,6 +48,7 @@ void FormFeedDetails::apply() {
                                                                 m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
   m_feed->setAutoUpdateInitialInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
   m_feed->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
+  m_feed->setIsSwitchedOff(m_ui->m_cbDisableFeed->isChecked());
 
   if (!m_creatingNew) {
     // We need to make sure that common data are saved.
@@ -92,6 +93,7 @@ void FormFeedDetails::loadFeedData() {
   m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(m_feed->autoUpdateType()))));
   m_ui->m_spinAutoUpdateInterval->setValue(m_feed->autoUpdateInitialInterval());
   m_ui->m_cbOpenArticlesAutomatically->setChecked(m_feed->openArticlesDirectly());
+  m_ui->m_cbDisableFeed->setChecked(m_feed->isSwitchedOff());
 }
 
 void FormFeedDetails::acceptIfPossible() {

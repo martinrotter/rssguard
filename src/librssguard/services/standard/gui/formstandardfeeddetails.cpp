@@ -89,20 +89,6 @@ void FormStandardFeedDetails::apply() {
 
   try {
     DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), parent->id());
-
-    // Feed is added, save cookies.
-
-    /*if (std_feed->sourceType() == StandardFeed::SourceType::Url) {
-       auto cookies = qApp->web()->cookieJar()->extractCookiesFromUrl(std_feed->source());
-
-       if (!cookies.isEmpty()) {
-        qDebugNN << LOGSEC_NETWORK
-                 << "Detected some cookies in URL"
-                 << QUOTE_W_SPACE_DOT(std_feed->source());
-
-        qApp->web()->cookieJar()->insertCookies(cookies);
-       }
-       }*/
   }
   catch (const ApplicationException& ex) {
     qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
