@@ -35,6 +35,10 @@ bool SqliteDriver::vacuumDatabase() {
   return query_vacuum.exec(QSL("VACUUM"));
 }
 
+QString SqliteDriver::ddlFilePrefix() const {
+  return QSL("sqlite");
+}
+
 bool SqliteDriver::saveDatabase() {
   if (!m_inMemoryDatabase) {
     return true;
@@ -259,9 +263,17 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
     }
     else if (!in_memory) {
       query_db.next();
-      const QString installed_db_schema = query_db.value(0).toString();
+      const int installed_db_schema = query_db.value(0).toString().toInt();
 
-      if (installed_db_schema.toInt() < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
+      if (installed_db_schema < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
+        // Now, it would be good to create backup of SQLite DB file.
+        if (IOFactory::copyFile(databaseFilePath(), databaseFilePath() + ".bak")) {
+          qDebugNN << LOGSEC_DB << "Creating backup of SQLite DB file.";
+        }
+        else {
+          qFatal("Creation of backup SQLite DB file failed.");
+        }
+
         if (updateDatabaseSchema(query_db, installed_db_schema)) {
           qDebugNN << LOGSEC_DB
                    << "Database schema was updated from '"
@@ -272,7 +284,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
         }
         else {
           qFatal("Database schema was not updated from '%s' to '%s' successully.",
-                 qPrintable(installed_db_schema),
+                 qPrintable(QString::number(installed_db_schema)),
                  APP_DB_SCHEMA_VERSION);
         }
       }
@@ -340,48 +352,6 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
 
 QString SqliteDriver::databaseFilePath() const {
   return m_databaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE;
-}
-
-bool SqliteDriver::updateDatabaseSchema(QSqlQuery& query, const QString& source_db_schema_version) {
-  int working_version = QString(source_db_schema_version).remove('.').toInt();
-  const int current_version = QSL(APP_DB_SCHEMA_VERSION).remove('.').toInt();
-
-  // Now, it would be good to create backup of SQLite DB file.
-  if (IOFactory::copyFile(databaseFilePath(), databaseFilePath() + ".bak")) {
-    qDebugNN << LOGSEC_DB << "Creating backup of SQLite DB file.";
-  }
-  else {
-    qFatal("Creation of backup SQLite DB file failed.");
-  }
-
-  while (working_version != current_version) {
-    try {
-      const QStringList statements = prepareScript(APP_SQL_PATH,
-                                                   QSL(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("sqlite"),
-                                                                                       QString::number(working_version),
-                                                                                       QString::number(working_version + 1)));
-
-      for (const QString& statement : statements) {
-        if (!query.exec(statement) && query.lastError().isValid()) {
-          throw ApplicationException(query.lastError().text());
-        }
-      }
-    }
-    catch (const ApplicationException& ex) {
-      qFatal("Error when running SQL scripts: %s.", qPrintable(ex.message()));
-    }
-
-    // Increment the version.
-    qDebugNN << LOGSEC_DB
-             << "Updating database schema:"
-             << QUOTE_W_SPACE(working_version)
-             << "->"
-             << QUOTE_W_SPACE_DOT(working_version + 1);
-
-    working_version++;
-  }
-
-  return true;
 }
 
 void SqliteDriver::setPragmas(QSqlQuery& query) {

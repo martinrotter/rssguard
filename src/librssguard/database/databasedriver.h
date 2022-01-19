@@ -6,6 +6,7 @@
 #include <QObject>
 
 #include <QSqlDatabase>
+#include <QSqlQuery>
 
 class DatabaseDriver : public QObject {
   Q_OBJECT
@@ -31,6 +32,7 @@ class DatabaseDriver : public QObject {
     virtual QString location() const = 0;
     virtual QString humanDriverType() const = 0;
     virtual QString qtDriverCode() const = 0;
+    virtual QString ddlFilePrefix() const = 0;
     virtual DriverType driverType() const = 0;
     virtual QString autoIncrementPrimaryKey() const = 0;
     virtual QString blob() const = 0;
@@ -44,6 +46,10 @@ class DatabaseDriver : public QObject {
                                     DatabaseDriver::DesiredStorageType desired_type = DatabaseDriver::DesiredStorageType::FromSettings) = 0;
 
   protected:
+    bool updateDatabaseSchema(QSqlQuery& query,
+                              int source_db_schema_version,
+                              const QString& database_name = {});
+
     QStringList prepareScript(const QString& base_sql_folder,
                               const QString& sql_file,
                               const QString& database_name = {});

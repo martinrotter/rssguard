@@ -8,9 +8,47 @@
 
 #include <QDir>
 #include <QRegularExpression>
+#include <QSqlError>
+#include <QSqlQuery>
 
 DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent)
 {}
+
+bool DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
+                                          int source_db_schema_version,
+                                          const QString& database_name) {
+  const int current_version = QSL(APP_DB_SCHEMA_VERSION).toInt();
+
+  while (source_db_schema_version != current_version) {
+    try {
+      const QStringList statements = prepareScript(APP_SQL_PATH,
+                                                   QSL(APP_DB_UPDATE_FILE_PATTERN).arg(ddlFilePrefix(),
+                                                                                       QString::number(source_db_schema_version),
+                                                                                       QString::number(source_db_schema_version + 1)),
+                                                   database_name);
+
+      for (const QString& statement : statements) {
+        if (!query.exec(statement) && query.lastError().isValid()) {
+          throw ApplicationException(query.lastError().text());
+        }
+      }
+    }
+    catch (const ApplicationException& ex) {
+      qFatal("Error when running SQL scripts: %s.", qPrintable(ex.message()));
+    }
+
+    // Increment the version.
+    qDebugNN << LOGSEC_DB
+             << "Updating database schema "
+             << QUOTE_W_SPACE(source_db_schema_version)
+             << "->"
+             << QUOTE_W_SPACE_DOT(source_db_schema_version + 1);
+
+    source_db_schema_version++;
+  }
+
+  return true;
+}
 
 QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
                                           const QString& sql_file,

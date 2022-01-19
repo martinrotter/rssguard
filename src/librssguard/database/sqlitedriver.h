@@ -14,6 +14,7 @@ class SqliteDriver : public DatabaseDriver {
     virtual QString location() const;
     virtual DriverType driverType() const;
     virtual bool vacuumDatabase();
+    virtual QString ddlFilePrefix() const;
     virtual bool saveDatabase();
     virtual bool initiateRestoration(const QString& database_package_file);
     virtual bool finishRestoration();
@@ -28,7 +29,6 @@ class SqliteDriver : public DatabaseDriver {
 
   private:
     QSqlDatabase initializeDatabase(const QString& connection_name, bool in_memory);
-    bool updateDatabaseSchema(QSqlQuery &query, const QString& source_db_schema_version);
     void setPragmas(QSqlQuery& query);
     QString databaseFilePath() const;
 
