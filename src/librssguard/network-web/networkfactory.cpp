@@ -183,8 +183,9 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
       }
     }
     else {
-      // Use favicon fetching service.
-      QString host = QUrl(url.first).host();
+      // Duck Duck Go.
+      QUrl url_full = QUrl(url.first);
+      QString host = url_full.host();
 
       if (host.startsWith(QSL("www."))) {
         host = host.mid(4);
@@ -192,25 +193,34 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
 
       const QString ddg_icon_service = QSL("https://external-content.duckduckgo.com/ip3/%1.ico").arg(host);
 
-      network_result = performNetworkOperation(ddg_icon_service,
-                                               timeout,
-                                               QByteArray(),
-                                               icon_data,
-                                               QNetworkAccessManager::Operation::GetOperation,
-                                               {},
-                                               false,
-                                               {},
-                                               {},
-                                               custom_proxy).first;
+      // Google S2.
+      host = url_full.scheme() + QSL("://") + url_full.host();
 
-      if (network_result == QNetworkReply::NetworkError::NoError) {
-        QPixmap icon_pixmap;
+      const QString gs2_icon_service = QSL("https://t2.gstatic.com/faviconV2?"
+                                           "client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&"
+                                           "url=%1").arg(host);
 
-        icon_pixmap.loadFromData(icon_data);
-        output = QIcon(icon_pixmap);
+      for (const QString& service : { ddg_icon_service, gs2_icon_service }) {
+        network_result = performNetworkOperation(service,
+                                                 timeout,
+                                                 QByteArray(),
+                                                 icon_data,
+                                                 QNetworkAccessManager::Operation::GetOperation,
+                                                 {},
+                                                 false,
+                                                 {},
+                                                 {},
+                                                 custom_proxy).first;
 
-        if (!output.isNull()) {
-          break;
+        if (network_result == QNetworkReply::NetworkError::NoError) {
+          QPixmap icon_pixmap;
+
+          icon_pixmap.loadFromData(icon_data);
+          output = QIcon(icon_pixmap);
+
+          if (!output.isNull()) {
+            return network_result;
+          }
         }
       }
     }

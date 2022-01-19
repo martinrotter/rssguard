@@ -17,10 +17,7 @@
 SkinFactory::SkinFactory(QObject* parent) : QObject(parent) {}
 
 void SkinFactory::loadCurrentSkin() {
-  QList<QString> skin_names_to_try;
-
-  skin_names_to_try.append(selectedSkinName());
-  skin_names_to_try.append(QSL(APP_SKIN_DEFAULT));
+  QList<QString> skin_names_to_try = { selectedSkinName(), QSL(APP_SKIN_DEFAULT) };
   bool skin_parsed;
   Skin skin_data;
   QString skin_name;
@@ -85,23 +82,23 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     //
 
     // Backgrounds & bases.
-    fusion_palette.setColor(QPalette::ColorRole::Window,        clr_maibg);
-    fusion_palette.setColor(QPalette::ColorRole::Base,          clr_basbg);
-    fusion_palette.setColor(QPalette::ColorRole::Dark,          clr_brdbg);
+    fusion_palette.setColor(QPalette::ColorRole::Window, clr_maibg);
+    fusion_palette.setColor(QPalette::ColorRole::Base, clr_basbg);
+    fusion_palette.setColor(QPalette::ColorRole::Dark, clr_brdbg);
     fusion_palette.setColor(QPalette::ColorRole::AlternateBase, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorRole::Button,        clr_altbg);
-    fusion_palette.setColor(QPalette::ColorRole::Light,         clr_altbg); // Bright
-    fusion_palette.setColor(QPalette::ColorRole::Highlight,     clr_selbg);
+    fusion_palette.setColor(QPalette::ColorRole::Button, clr_altbg);
+    fusion_palette.setColor(QPalette::ColorRole::Light, clr_altbg);         // Bright
+    fusion_palette.setColor(QPalette::ColorRole::Highlight, clr_selbg);
 
     // Texts.
-    fusion_palette.setColor(QPalette::ColorRole::ButtonText,        clr_btnfg);
-    fusion_palette.setColor(QPalette::ColorRole::WindowText,        clr_winfg);
-    fusion_palette.setColor(QPalette::ColorRole::BrightText,        clr_basbg);
-    fusion_palette.setColor(QPalette::ColorRole::Text,              clr_winfg); // Normal text
-    fusion_palette.setColor(QPalette::ColorRole::PlaceholderText,   clr_dibfg);
-    fusion_palette.setColor(QPalette::ColorRole::Link,              clr_wlink);
-    fusion_palette.setColor(QPalette::ColorRole::LinkVisited,       clr_wlink);
-    fusion_palette.setColor(QPalette::ColorRole::HighlightedText,   clr_selfg);
+    fusion_palette.setColor(QPalette::ColorRole::ButtonText, clr_btnfg);
+    fusion_palette.setColor(QPalette::ColorRole::WindowText, clr_winfg);
+    fusion_palette.setColor(QPalette::ColorRole::BrightText, clr_basbg);
+    fusion_palette.setColor(QPalette::ColorRole::Text, clr_winfg);              // Normal text
+    fusion_palette.setColor(QPalette::ColorRole::PlaceholderText, clr_dibfg);
+    fusion_palette.setColor(QPalette::ColorRole::Link, clr_wlink);
+    fusion_palette.setColor(QPalette::ColorRole::LinkVisited, clr_wlink);
+    fusion_palette.setColor(QPalette::ColorRole::HighlightedText, clr_selfg);
 
     //
     // Inactive state.
@@ -116,23 +113,23 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     //
 
     // Backgrounds & bases.
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Window,        clr_maibg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Base,          clr_basbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Dark,          clr_brdbg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Window, clr_maibg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Base, clr_basbg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Dark, clr_brdbg);
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::AlternateBase, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Button,        clr_altbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Light,         clr_altbg); // Bright
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Highlight,     clr_selbg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Button, clr_altbg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Light, clr_altbg);         // Bright
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Highlight, clr_selbg);
 
     // Texts.
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::ButtonText,        clr_dibfg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::WindowText,        clr_diwfg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::BrightText,        clr_basbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Text,              clr_diwfg); // Normal text
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::PlaceholderText,   clr_dibfg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Link,              clr_wlink);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::LinkVisited,       clr_wlink);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::HighlightedText,   clr_selfg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::ButtonText, clr_dibfg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::WindowText, clr_diwfg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::BrightText, clr_basbg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Text, clr_diwfg);              // Normal text
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::PlaceholderText, clr_dibfg);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Link, clr_wlink);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::LinkVisited, clr_wlink);
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::HighlightedText, clr_selfg);
 
     //
     // Tooltips.
