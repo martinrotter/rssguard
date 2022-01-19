@@ -21,6 +21,9 @@ extern void disableWindowTabbing();
 int main(int argc, char* argv[]) {
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
 
+  // High DPI stuff.
+  qputenv("QT_AUTO_SCREEN_SCALE_FACTOR", "1");
+
 #if QT_VERSION_MAJOR <= 5
   QApplication::setAttribute(Qt::ApplicationAttribute::AA_UseHighDpiPixmaps);
   QApplication::setAttribute(Qt::ApplicationAttribute::AA_EnableHighDpiScaling);
