@@ -22,7 +22,11 @@ int main(int argc, char* argv[]) {
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
 
   // High DPI stuff.
+#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
+  qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
+#else
   qputenv("QT_AUTO_SCREEN_SCALE_FACTOR", "1");
+#endif
 
 #if QT_VERSION_MAJOR <= 5
   QApplication::setAttribute(Qt::ApplicationAttribute::AA_UseHighDpiPixmaps);
