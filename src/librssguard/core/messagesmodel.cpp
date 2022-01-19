@@ -441,7 +441,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         }
 
         QFontMetrics fm(data(idx, Qt::ItemDataRole::FontRole).value<QFont>());
-        auto rct = fm.boundingRect(QRect(QPoint(0, 0), QPoint(wd - 10, 100000)),
+        auto rct = fm.boundingRect(QRect(QPoint(0, 0), QPoint(wd - 5, 100000)),
                                    Qt::TextFlag::TextWordWrap |
                                    Qt::AlignmentFlag::AlignLeft |
                                    Qt::AlignmentFlag::AlignVCenter,

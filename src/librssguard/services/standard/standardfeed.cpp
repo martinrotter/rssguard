@@ -295,7 +295,12 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     feed->setEncoding(QSL(DEFAULT_FEED_ENCODING));
     feed->setType(Type::Json);
 
-    QJsonDocument json = QJsonDocument::fromJson(feed_contents);
+    QJsonParseError json_err;
+    QJsonDocument json = QJsonDocument::fromJson(feed_contents, &json_err);
+
+    if (json.isNull() && !json_err.errorString().isEmpty()) {
+      throw ApplicationException(tr("JSON error '%1'").arg(json_err.errorString()));
+    }
 
     feed->setTitle(json.object()[QSL("title")].toString());
     feed->setDescription(json.object()[QSL("description")].toString());
