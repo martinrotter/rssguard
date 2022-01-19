@@ -2,6 +2,7 @@
 
 #include "services/standard/jsonparser.h"
 
+#include "exceptions/feedfetchexception.h"
 #include "miscellaneous/textfactory.h"
 
 #include <QJsonArray>
@@ -12,7 +13,14 @@ JsonParser::JsonParser(const QString& data) : m_jsonData(data) {}
 
 QList<Message> JsonParser::messages() const {
   QList<Message> msgs;
-  QJsonDocument json = QJsonDocument::fromJson(m_jsonData.toUtf8());
+  QJsonParseError json_err;
+  QJsonDocument json = QJsonDocument::fromJson(m_jsonData.toUtf8(), &json_err);
+
+  if (json.isNull() && !json_err.errorString().isEmpty()) {
+    throw FeedFetchException(Feed::Status::ParsingError,
+                             QObject::tr("JSON error '%1'").arg(json_err.errorString()));
+  }
+
   QString global_author = json.object()[QSL("author")].toObject()[QSL("name")].toString();
 
   if (global_author.isEmpty()) {
