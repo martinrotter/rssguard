@@ -119,10 +119,12 @@ void WebBrowser::reloadFontSettings() {
   fon.fromString(qApp->settings()->value(GROUP(Messages),
                                          SETTING(Messages::PreviewerFontStandard)).toString());
 
+  auto pixel_size = QFontMetrics(fon).height();
+
   QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont, fon.family());
   QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont, fon.family());
   QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont, fon.family());
-  QWebEngineProfile::defaultProfile()->settings()->setFontSize(QWebEngineSettings::DefaultFontSize, fon.pointSize());
+  QWebEngineProfile::defaultProfile()->settings()->setFontSize(QWebEngineSettings::DefaultFontSize, pixel_size);
 }
 
 void WebBrowser::increaseZoom() {

@@ -133,7 +133,7 @@ DKEY Messages::ShowOnlyUnreadMessages = "show_only_unread_messages";
 DVALUE(bool) Messages::ShowOnlyUnreadMessagesDef = false;
 
 DKEY Messages::PreviewerFontStandard = "previewer_font_standard";
-NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef = QFont(QFont().family(), 12).toString();
+NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef = QString();
 
 DKEY Messages::ListFont = "list_font";
 
@@ -382,7 +382,9 @@ DVALUE(QStringList) Browser::ExternalToolsDef = QStringList();
 DKEY CategoriesExpandStates::ID = "categories_expand_states";
 
 Settings::Settings(const QString& file_name, Format format, SettingsProperties::SettingsType type, QObject* parent)
-  : QSettings(file_name, format, parent), m_initializationStatus(type) {}
+  : QSettings(file_name, format, parent), m_initializationStatus(type) {
+  Messages::PreviewerFontStandardDef = QFont(QApplication::font().family(), 12).toString();
+}
 
 Settings::~Settings() = default;
 
