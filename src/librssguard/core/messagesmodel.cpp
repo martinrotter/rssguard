@@ -429,7 +429,10 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
 
     case Qt::ItemDataRole::SizeHintRole: {
-      if (!m_multilineListItems || m_view == nullptr || m_view->isColumnHidden(idx.column())) {
+      if (!m_multilineListItems ||
+          m_view == nullptr ||
+          m_view->isColumnHidden(idx.column()) ||
+          idx.column() != MSG_DB_TITLE_INDEX) {
         return {};
       }
       else {
@@ -446,6 +449,8 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
                                    Qt::AlignmentFlag::AlignLeft |
                                    Qt::AlignmentFlag::AlignVCenter,
                                    str).size();
+
+        //rct.setHeight(rct.height() + 20);
 
         return rct;
       }
