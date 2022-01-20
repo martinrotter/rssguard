@@ -72,8 +72,16 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinHeightRowsMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinHeightRowsMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::requireRestart);
   connect(m_ui->m_spinHeightRowsFeeds, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinHeightRowsFeeds, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::requireRestart);
+  connect(m_ui->m_spinPaddingRowsMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinPaddingRowsMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::requireRestart);
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, m_ui->m_spinAutoUpdateInterval, &TimeSpinBox::setEnabled);
   connect(m_ui->m_checkUpdateAllFeedsOnStartup, &QCheckBox::toggled, m_ui->m_spinStartupUpdateDelay, &TimeSpinBox::setEnabled);
   connect(m_ui->m_spinFeedUpdateTimeout, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this,
@@ -154,6 +162,7 @@ void SettingsFeedsMessages::changeFont(QLabel& lbl) {
 void SettingsFeedsMessages::loadSettings() {
   onBeginLoadSettings();
 
+  m_ui->m_spinPaddingRowsMessages->setValue(settings()->value(GROUP(Messages), SETTING(Messages::ArticleListPadding)).toInt());
   m_ui->m_spinHeightRowsMessages->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt());
   m_ui->m_spinHeightRowsFeeds->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt());
 
@@ -235,6 +244,7 @@ void SettingsFeedsMessages::loadSettings() {
 void SettingsFeedsMessages::saveSettings() {
   onBeginSaveSettings();
 
+  settings()->setValue(GROUP(Messages), Messages::ArticleListPadding, m_ui->m_spinPaddingRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowMessages, m_ui->m_spinHeightRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowFeeds, m_ui->m_spinHeightRowsFeeds->value());
 

@@ -125,6 +125,9 @@ namespace Messages {
   KEY UseCustomTime;
   VALUE(bool) UseCustomTimeDef;
 
+  KEY ArticleListPadding;
+  VALUE(int) ArticleListPaddingDef;
+
   KEY MultilineArticleList;
   VALUE(bool) MultilineArticleListDef;
 

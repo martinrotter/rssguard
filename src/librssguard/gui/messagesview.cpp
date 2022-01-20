@@ -251,7 +251,11 @@ void MessagesView::setupAppearance() {
   setSortingEnabled(true);
   setAllColumnsShowFocus(false);
   setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
-  setItemDelegate(new StyledItemDelegateWithoutFocus(GUI::HeightRowMessages, this));
+  setItemDelegate(new StyledItemDelegateWithoutFocus(qApp->settings()->value(GROUP(GUI),
+                                                                             SETTING(GUI::HeightRowMessages)).toInt(),
+                                                     qApp->settings()->value(GROUP(Messages),
+                                                                             SETTING(Messages::ArticleListPadding)).toInt(),
+                                                     this));
 
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);

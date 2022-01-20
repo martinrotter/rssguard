@@ -805,7 +805,10 @@ void FeedsView::setupAppearance() {
   setAllColumnsShowFocus(false);
   setRootIsDecorated(false);
   setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
-  setItemDelegate(new StyledItemDelegateWithoutFocus(GUI::HeightRowFeeds, this));
+  setItemDelegate(new StyledItemDelegateWithoutFocus(qApp->settings()->value(GROUP(GUI),
+                                                                             SETTING(GUI::HeightRowFeeds)).toInt(),
+                                                     -1,
+                                                     this));
 }
 
 void FeedsView::invalidateReadFeedsFilter(bool set_new_value, bool show_unread_only) {

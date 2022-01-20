@@ -450,8 +450,6 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
                                    Qt::AlignmentFlag::AlignVCenter,
                                    str).size();
 
-        //rct.setHeight(rct.height() + 20);
-
         return rct;
       }
     }

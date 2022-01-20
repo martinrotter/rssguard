@@ -4,8 +4,8 @@
 
 #include "miscellaneous/application.h"
 
-StyledItemDelegateWithoutFocus::StyledItemDelegateWithoutFocus(const QString& row_height_settings_key, QObject* parent)
-  : QStyledItemDelegate(parent), m_rowHeightSettingsKey(row_height_settings_key) {}
+StyledItemDelegateWithoutFocus::StyledItemDelegateWithoutFocus(int height_row, int padding_row, QObject* parent)
+  : QStyledItemDelegate(parent), m_rowHeight(height_row), m_rowPadding(padding_row) {}
 
 void StyledItemDelegateWithoutFocus::paint(QPainter* painter,
                                            const QStyleOptionViewItem& option,
@@ -26,13 +26,19 @@ void StyledItemDelegateWithoutFocus::paint(QPainter* painter,
 }
 
 QSize StyledItemDelegateWithoutFocus::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
-  auto row_height = qApp->settings()->value(GROUP(GUI), m_rowHeightSettingsKey).toInt();
   auto original_hint = QStyledItemDelegate::sizeHint(option, index);
+  QSize new_hint;
 
-  if (row_height <= 0) {
-    return original_hint;
+  if (m_rowHeight <= 0) {
+    new_hint = original_hint;
   }
   else {
-    return QSize(original_hint.width(), row_height);
+    new_hint = QSize(original_hint.width(), m_rowHeight);
   }
+
+  if (m_rowPadding > 0) {
+    new_hint.setHeight(new_hint.height() + (2 * m_rowPadding));
+  }
+
+  return new_hint;
 }
