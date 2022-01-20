@@ -473,13 +473,13 @@ Note that unassigning a message labels is also synchronized at regular intervals
 Also, [message filters](#fltr) can assign or remove labels to/from messages.
 
 ### Skins <a id="skin"></a>
-RSS Guard is a skin-able application. Its GUI can be almost completely styled with [stylesheets](https://doc.qt.io/qt-5/stylesheet.html).
+RSS Guard is a skinable application. Its GUI can be almost completely styled with [Qt stylesheets](https://doc.qt.io/qt-5/stylesheet.html).
 
 <img alt="alt-img" src="images/gui-dark.png" width="600px">
 
 You can select style and skin in settings category `User interface`.
 
-RSS Guard encapsulates styling capabilities via *skins* feature. Each skin is placed in its own folder and must contain several [files](https://github.com/martinrotter/rssguard/tree/master/resources/skins/vergilius). There are some [built-in](https://github.com/martinrotter/rssguard/tree/master/resources/skins) skins, but you can place your custom skins in your [user data folder](#userd). You can find exact path to your user data folder in `About` dialog. Note that there must be subfolder `skins`. Create it if it does not exist and place your custom skins inside.
+RSS Guard encapsulates styling capabilities via *skins* feature. Each skin is placed in its own folder and must contain several [files](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain). There are some [built-in](https://github.com/martinrotter/rssguard/tree/master/resources/skins) skins, but you can place your custom skins in your [user data folder](#userd). You can find exact path to your user data folder in `About` dialog. Note that there must be subfolder `skins`. Create it if it does not exist and place your custom skins inside.
 
 The base for your custom skin may serve an empty ["plain" skin](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain). Look the [README file](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain/README) there, for some commentaries to it.
 

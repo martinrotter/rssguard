@@ -271,7 +271,8 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       skin.m_adblocked = loadSkinFile(skin_folder_no_sep, QSL("html_adblocked.html"), base_skin_folder);
 
       if (ok != nullptr) {
-        *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&
+        *ok = !skin.m_author.isEmpty() &&
+              !skin.m_version.isEmpty() &&
               !skin.m_baseName.isEmpty() &&
               !skin.m_layoutMarkup.isEmpty();
       }
