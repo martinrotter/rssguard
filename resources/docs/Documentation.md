@@ -477,24 +477,32 @@ RSS Guard is a skinable application. Its GUI can be almost completely styled wit
 
 <img alt="alt-img" src="images/gui-dark.png" width="600px">
 
+> Note that as of RSS Guard 4.1.3, old skins `vergilius` and `dark` were removed and replaced with `nudus-*` skins which will be the only skins maintained by RSS Guard developers. There is skin "API" (described below) which is very extensive and allows to use many ways of tweaking the visual part of RSS Guard without much work.
+
 You can select style and skin in settings category `User interface`.
+
+Try to play with various combinations of styles and skins to achieve UI you like.
 
 RSS Guard encapsulates styling capabilities via *skins* feature. Each skin is placed in its own folder and must contain several [files](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain). There are some [built-in](https://github.com/martinrotter/rssguard/tree/master/resources/skins) skins, but you can place your custom skins in your [user data folder](#userd). You can find exact path to your user data folder in `About` dialog. Note that there must be subfolder `skins`. Create it if it does not exist and place your custom skins inside.
 
-The base for your custom skin may serve an empty ["plain" skin](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain). Look the [README file](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain/README) there, for some commentaries to it.
-
 <img alt="alt-img" src="images/about-skins.png" width="600px">
 
-So for example if your new skin is called `greenland`, you must place it in folder
+For example if your new skin is called `greenland`, you must place it in folder
 
 ```
 <user-data-path>\skins\greenland
 ```
 
+You can use the ["plain" skin](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain) as a reference for implementing your own skins. Go through its [README file](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain/README) for some advanced information.
+
 As stated above, there are several files in each skin:
-* `metadata.xml` - XML file with some basic information about the skin's name, author etc. Also,
-* `theme.css` - [Qt stylesheet](https://doc.qt.io/qt-5/stylesheet.html) file.
+* `metadata.xml` - XML file with some basic information about the skin's name, author etc.
+* `qt_style.qss` - [Qt stylesheet](https://doc.qt.io/qt-5/stylesheet.html) file.
 * `html_*.html` - These are (partial) HTML files which are used by RSS Guard in various situations like displaying article or error page.
+
+Note that not all skins have to provide full-blown theming for all UI components of RSS Guard. They can implement only some of the features, like provide custom HTML/CSS setup for article viewer and do some minimal Qt CSS styling for some UI controls.
+
+To avoid confusion, when style `Fusion` is enabled, then option `Force dark look` becomes available. This option is completely independent from Qt stylesheet defined in skin's `qt_style.qss` file.
 
 ### GUI Tweaking <a id="guit"></a>
 RSS Guard's main window appearance can be tweaked in many ways. You can hide menu, toolbars, status bar, you can also change orientation of article viewer to suit widescreen devices.
