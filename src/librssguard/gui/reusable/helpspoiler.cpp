@@ -18,6 +18,7 @@
 HelpSpoiler::HelpSpoiler(QWidget* parent) : QWidget(parent),
   m_btnToggle(new QToolButton(this)), m_content(new QScrollArea(this)), m_animation(new QParallelAnimationGroup(this)),
   m_layout(new QGridLayout(this)), m_text(new QLabel(this)) {
+
   m_btnToggle->setStyleSheet(QSL("QToolButton { border: none; }"));
   m_btnToggle->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
   m_btnToggle->setArrowType(Qt::ArrowType::RightArrow);
