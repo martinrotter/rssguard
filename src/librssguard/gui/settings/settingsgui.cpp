@@ -196,6 +196,12 @@ void SettingsGui::loadSettings() {
     m_ui->m_cmbStyles->setCurrentIndex(item_style);
   }
 
+  if (qApp->skins()->styleIsFrozen()) {
+    m_ui->m_cmbStyles->setEnabled(false);
+    m_ui->m_cmbStyles->setToolTip(tr("You cannot change style because it was explicitly selected in your OS settings.\n"
+                                     "Perhaps it is set with 'QT_STYLE_OVERRIDE' environment variable?"));
+  }
+
   // Load tab settings.
   m_ui->m_checkCloseTabsMiddleClick->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::TabCloseMiddleClick)).toBool());
   m_ui->m_checkCloseTabsDoubleClick->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::TabCloseDoubleClick)).toBool());

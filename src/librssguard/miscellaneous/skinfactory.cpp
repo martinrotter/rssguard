@@ -14,7 +14,7 @@
 #include <QStyleFactory>
 #include <QToolTip>
 
-SkinFactory::SkinFactory(QObject* parent) : QObject(parent) {}
+SkinFactory::SkinFactory(QObject* parent) : QObject(parent), m_styleIsFrozen(false) {}
 
 void SkinFactory::loadCurrentSkin() {
   QList<QString> skin_names_to_try = { selectedSkinName(), QSL(APP_SKIN_DEFAULT) };
@@ -53,11 +53,13 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
 
   if (over_style.isEmpty()) {
     qApp->setStyle(style_name);
+    m_styleIsFrozen = false;
 
     qDebugNN << LOGSEC_GUI << "Setting style:" << QUOTE_W_SPACE_DOT(style_name);
   }
   else {
-    qDebugNN << LOGSEC_GUI << "Respecting forced style:" << QUOTE_W_SPACE_DOT(over_style);
+    m_styleIsFrozen = true;
+    qWarningNN << LOGSEC_GUI << "Respecting forced style:" << QUOTE_W_SPACE_DOT(over_style);
   }
 
   if (isStyleGoodForDarkVariant(style_name) &&
@@ -303,6 +305,10 @@ QString SkinFactory::loadSkinFile(const QString& skin_folder, const QString& fil
   }
 
   return data.replace(QSL(USER_DATA_PLACEHOLDER), skin_folder);
+}
+
+bool SkinFactory::styleIsFrozen() const {
+  return m_styleIsFrozen;
 }
 
 QList<Skin> SkinFactory::installedSkins() const {

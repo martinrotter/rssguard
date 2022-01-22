@@ -87,7 +87,9 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
 
     QString customSkinBaseFolder() const;
 
-  private:
+    bool styleIsFrozen() const;
+
+private:
 
     // Loads the skin from give skin_data.
     void loadSkinFromData(const Skin& skin);
@@ -96,6 +98,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
 
     // Holds name of the current skin.
     Skin m_currentSkin;
+    bool m_styleIsFrozen;
 };
 
 inline Skin SkinFactory::currentSkin() const {
