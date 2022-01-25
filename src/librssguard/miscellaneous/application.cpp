@@ -81,6 +81,12 @@ Application::Application(const QString& id, int& argc, char** argv)
   //: Name of translator - optional.
   QObject::tr("LANG_AUTHOR");
 
+  // Add an extra path for non-system icon themes and set current icon theme
+  // and skin.
+  m_icons->setupSearchPaths();
+  m_icons->loadCurrentIconTheme();
+  m_skins->loadCurrentSkin();
+
   connect(this, &Application::aboutToQuit, this, &Application::onAboutToQuit);
   connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
   connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
