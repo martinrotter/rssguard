@@ -43,7 +43,7 @@ void SkinFactory::loadCurrentSkin() {
 }
 
 bool SkinFactory::isStyleGoodForDarkVariant(const QString& style_name) const {
-  return QRegularExpression("^(fusion)|(qt5ct-style)$").match(style_name.toLower()).hasMatch();
+  return QRegularExpression("^(fusion)|(qt[56]ct-style)$").match(style_name.toLower()).hasMatch();
 }
 
 void SkinFactory::loadSkinFromData(const Skin& skin) {
