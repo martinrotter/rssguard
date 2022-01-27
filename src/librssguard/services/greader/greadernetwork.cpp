@@ -278,10 +278,7 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
     // 2. Get read IDs for a feed.
     // 3. Download messages/contents for missing or changed IDs.
     // 4. Add prefetched starred msgs.
-    QStringList remote_all_ids_list = m_downloadOnlyUnreadMessages
-                                      ? QStringList()
-                                      : itemIds(stream_id, false, proxy, -1, m_newerThanFilter);
-    QStringList remote_unread_ids_list = itemIds(stream_id, true, proxy, -1, m_newerThanFilter);
+    QStringList remote_all_ids_list, remote_unread_ids_list;
 
     try {
       remote_all_ids_list = m_downloadOnlyUnreadMessages
