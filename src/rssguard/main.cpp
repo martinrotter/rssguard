@@ -74,12 +74,6 @@ int main(int argc, char* argv[]) {
   qRegisterMetaType<QList<Label*>>("QList<Label*>");
   qRegisterMetaType<Label*>("Label*");
 
-  // Add an extra path for non-system icon themes and set current icon theme
-  // and skin.
-  qApp->icons()->setupSearchPaths();
-  qApp->icons()->loadCurrentIconTheme();
-  qApp->skins()->loadCurrentSkin();
-
   // These settings needs to be set before any QSettings object.
   Application::setApplicationName(QSL(APP_NAME));
   Application::setApplicationVersion(QSL(APP_VERSION));
