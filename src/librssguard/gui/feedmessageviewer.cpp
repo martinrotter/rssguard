@@ -133,6 +133,8 @@ bool FeedMessageViewer::areListHeadersEnabled() const {
 }
 
 void FeedMessageViewer::onSplitterResized() {
+  qDebugNN << LOGSEC_GUI << "Message splitter moved.";
+
   if (m_messageSplitter->orientation() == Qt::Orientation::Vertical) {
     qApp->settings()->setValue(GROUP(GUI),
                                GUI::SplitterMessagesVertical,

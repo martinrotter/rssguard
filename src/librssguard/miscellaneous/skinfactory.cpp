@@ -43,7 +43,9 @@ void SkinFactory::loadCurrentSkin() {
 }
 
 bool SkinFactory::isStyleGoodForDarkVariant(const QString& style_name) const {
-  return QRegularExpression("^(fusion)|(qt[56]ct-style)$").match(style_name.toLower()).hasMatch();
+  static QRegularExpression re = QRegularExpression("^(fusion)|(qt[56]ct-style)$");
+
+  return re.match(style_name.toLower()).hasMatch();
 }
 
 void SkinFactory::loadSkinFromData(const Skin& skin) {
@@ -89,14 +91,14 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     fusion_palette.setColor(QPalette::ColorRole::Dark, clr_brdbg);
     fusion_palette.setColor(QPalette::ColorRole::AlternateBase, clr_altbg);
     fusion_palette.setColor(QPalette::ColorRole::Button, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorRole::Light, clr_altbg);         // Bright
+    fusion_palette.setColor(QPalette::ColorRole::Light, clr_altbg);
     fusion_palette.setColor(QPalette::ColorRole::Highlight, clr_selbg);
 
     // Texts.
     fusion_palette.setColor(QPalette::ColorRole::ButtonText, clr_btnfg);
     fusion_palette.setColor(QPalette::ColorRole::WindowText, clr_winfg);
     fusion_palette.setColor(QPalette::ColorRole::BrightText, clr_basbg);
-    fusion_palette.setColor(QPalette::ColorRole::Text, clr_winfg);              // Normal text
+    fusion_palette.setColor(QPalette::ColorRole::Text, clr_winfg);
     fusion_palette.setColor(QPalette::ColorRole::PlaceholderText, clr_dibfg);
     fusion_palette.setColor(QPalette::ColorRole::Link, clr_wlink);
     fusion_palette.setColor(QPalette::ColorRole::LinkVisited, clr_wlink);
@@ -120,14 +122,14 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Dark, clr_brdbg);
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::AlternateBase, clr_altbg);
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Button, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Light, clr_altbg);         // Bright
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Light, clr_altbg);
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Highlight, clr_selbg);
 
     // Texts.
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::ButtonText, clr_dibfg);
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::WindowText, clr_diwfg);
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::BrightText, clr_basbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Text, clr_diwfg);              // Normal text
+    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Text, clr_diwfg);
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::PlaceholderText, clr_dibfg);
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Link, clr_wlink);
     fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::LinkVisited, clr_wlink);

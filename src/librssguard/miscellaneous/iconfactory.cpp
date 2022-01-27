@@ -80,7 +80,7 @@ void IconFactory::loadCurrentIconTheme() {
   const QString theme_name_from_settings = qApp->settings()->value(GROUP(GUI), SETTING(GUI::IconTheme)).toString();
 
   if (QIcon::themeName() == theme_name_from_settings) {
-    qDebugNN << LOGSEC_GUI << "Icon theme '" << theme_name_from_settings << "' already loaded.";
+    qDebugNN << LOGSEC_GUI << "Icon theme" << QUOTE_W_SPACE(theme_name_from_settings) << "already loaded.";
     return;
   }
 
