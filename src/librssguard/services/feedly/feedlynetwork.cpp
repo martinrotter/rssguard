@@ -156,7 +156,7 @@ void FeedlyNetwork::markers(const QString& action, const QStringList& msg_custom
                                                         output,
                                                         QNetworkAccessManager::Operation::PostOperation,
                                                         { bearerHeader(bear),
-                                                          { "Content-Type", "application/json" } },
+                                                          { HTTP_HEADERS_CONTENT_TYPE, "application/json" } },
                                                         false,
                                                         {},
                                                         {},
