@@ -215,7 +215,7 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id, const
                                                                                                 SETTING(Feeds::UpdateTimeout)).toInt(),
                                                                         QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
                                                                         result_raw,
-                                                                        QNetworkAccessManager::Operation::PostOperation,
+                                                                        QNetworkAccessManager::Operation::  PostOperation,
                                                                         headers,
                                                                         false,
                                                                         {},

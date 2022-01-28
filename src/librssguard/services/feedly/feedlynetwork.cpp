@@ -117,7 +117,7 @@ void FeedlyNetwork::tagEntries(const QString& tag_id, const QStringList& msg_cus
                                                         output,
                                                         QNetworkAccessManager::Operation::PutOperation,
                                                         { bearerHeader(bear),
-                                                          { "Content-Type", "application/json" } },
+                                                          { HTTP_HEADERS_CONTENT_TYPE, "application/json" } },
                                                         false,
                                                         {},
                                                         {},
