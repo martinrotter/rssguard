@@ -548,10 +548,12 @@ QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& 
   int target_msgs_size = batchSize() <= 0 ? 2000000: batchSize();
 
   do {
-    QString full_url = generateFullUrl(Operations::StreamContents).arg(m_service == GreaderServiceRoot::Service::TheOldReader
-                                                                       ? stream_id
-                                                                       : QUrl::toPercentEncoding(stream_id),
-                                                                       QString::number(target_msgs_size));
+    QString full_url = generateFullUrl(Operations::StreamContents).arg(
+      (m_service == GreaderServiceRoot::Service::TheOldReader ||
+       m_service == GreaderServiceRoot::Service::FreshRss)
+                ? stream_id
+                : QUrl::toPercentEncoding(stream_id),
+      QString::number(target_msgs_size));
     auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
     if (downloadOnlyUnreadMessages()) {
