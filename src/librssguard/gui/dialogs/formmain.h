@@ -8,6 +8,7 @@
 #include "ui_formmain.h"
 
 class StatusBar;
+class QWidgetAction;
 
 class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
   Q_OBJECT
@@ -81,6 +82,7 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
 
     QScopedPointer<Ui::FormMain> m_ui;
     QMenu* m_trayMenu;
+    QWidgetAction* m_actionToolbarMainMenu;
     StatusBar* m_statusBar;
 };
 

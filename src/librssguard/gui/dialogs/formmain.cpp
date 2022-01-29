@@ -45,6 +45,8 @@
 #include <QScopedPointer>
 #include <QThread>
 #include <QTimer>
+#include <QToolButton>
+#include <QWidgetAction>
 
 #if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
 #include <QScreen>
@@ -61,6 +63,30 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 
   setWindowIcon(qApp->desktopAwareIcon());
   setWindowTitle(QSL(APP_LONG_NAME));
+
+  QMenu* main_menu = new QMenu(tr("Main menu"), this);
+
+  main_menu->addMenu(m_ui->m_menuFile);
+  main_menu->addMenu(m_ui->m_menuView);
+  main_menu->addMenu(m_ui->m_menuAccounts);
+  main_menu->addMenu(m_ui->m_menuFeeds);
+  main_menu->addMenu(m_ui->m_menuMessages);
+  main_menu->addMenu(m_ui->m_menuWebBrowserTabs);
+  main_menu->addMenu(m_ui->m_menuTools);
+  main_menu->addMenu(m_ui->m_menuHelp);
+
+  QToolButton* btn_main_menu = new QToolButton(this);
+
+  btn_main_menu->setToolTip(tr("Open main menu"));
+  btn_main_menu->setMenu(main_menu);
+  btn_main_menu->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
+  btn_main_menu->setIcon(qApp->icons()->fromTheme(QSL("go-home")));
+
+  m_actionToolbarMainMenu = new QWidgetAction(this);
+  m_actionToolbarMainMenu->setDefaultWidget(btn_main_menu);
+  m_actionToolbarMainMenu->setIcon(qApp->icons()->fromTheme(QSL("go-home")));
+  m_actionToolbarMainMenu->setText(tr("Open &main menu"));
+  m_actionToolbarMainMenu->setObjectName("m_actionToolbarMainMenu");
 
 #if defined(USE_WEBENGINE)
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->adBlock()->adBlockIcon());
@@ -203,6 +229,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionTabsCloseCurrent;
   actions << m_ui->m_actionTabsCloseAll;
   actions << m_ui->m_actionTabsCloseAllExceptCurrent;
+  actions << m_actionToolbarMainMenu;
 
   return actions;
 }
