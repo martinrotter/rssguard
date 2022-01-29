@@ -86,9 +86,6 @@ FeedsToolBar* FeedMessageViewer::feedsToolBar() const {
 void FeedMessageViewer::saveSize() {
   Settings* settings = qApp->settings();
 
-  // Store offsets of splitters.
-  settings->setValue(GROUP(GUI), GUI::SplitterFeeds, toVariant(m_feedSplitter->sizes()));
-
   settings->setValue(GROUP(GUI), GUI::MessageViewState, QString(m_messagesView->saveHeaderState().toBase64()));
 
   // Store "visibility" of toolbars and list headers.
@@ -132,7 +129,13 @@ bool FeedMessageViewer::areListHeadersEnabled() const {
   return m_listHeadersEnabled;
 }
 
-void FeedMessageViewer::onSplitterResized() {
+void FeedMessageViewer::onFeedSplitterResized() {
+  qDebugNN << LOGSEC_GUI << "Feed splitter moved.";
+
+  qApp->settings()->setValue(GROUP(GUI), GUI::SplitterFeeds, toVariant(m_feedSplitter->sizes()));
+}
+
+void FeedMessageViewer::onMessageSplitterResized() {
   qDebugNN << LOGSEC_GUI << "Message splitter moved.";
 
   if (m_messageSplitter->orientation() == Qt::Orientation::Vertical) {
@@ -232,7 +235,7 @@ void FeedMessageViewer::alternateRowColorsInLists() {
 }
 
 void FeedMessageViewer::respondToMainWindowResizes() {
-  connect(qApp->mainForm(), &FormMain::windowResized, this, &FeedMessageViewer::onSplitterResized);
+  connect(qApp->mainForm(), &FormMain::windowResized, this, &FeedMessageViewer::onMessageSplitterResized);
 }
 
 void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
@@ -250,7 +253,8 @@ void FeedMessageViewer::createConnections() {
   connect(m_toolBarFeeds, &FeedsToolBar::feedsFilterPatternChanged, m_feedsView, &FeedsView::filterItems);
   connect(m_toolBarMessages, &MessagesToolBar::messageFilterChanged, m_messagesView, &MessagesView::filterMessages);
 
-  connect(m_messageSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onSplitterResized);
+  connect(m_feedSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onFeedSplitterResized);
+  connect(m_messageSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onMessageSplitterResized);
 
   connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &MessagePreviewer::clear);
   connect(m_messagesBrowser, &MessagePreviewer::markMessageRead, m_messagesView->sourceModel(), &MessagesModel::setMessageReadById);
@@ -311,7 +315,7 @@ void FeedMessageViewer::initializeViews() {
   m_messagesView->setFrameStyle(QFrame::Shape::NoFrame);
 
   // Setup message splitter.
-  m_messageSplitter->setObjectName(QSL("MessageSplitter"));
+  m_messageSplitter->setObjectName(QSL("m_messageSplitter"));
   m_messageSplitter->setHandleWidth(1);
   m_messageSplitter->setOpaqueResize(true);
   m_messageSplitter->setChildrenCollapsible(false);
