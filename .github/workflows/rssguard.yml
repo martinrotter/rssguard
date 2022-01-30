@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2019, ubuntu-18.04, macos-10.15]
-        use_webengine: ["true", "false"]
+        use_webengine: ["ON", "OFF"]
         include:
           - os: windows-2019
             script_name: .\resources\scripts\github-actions\build-windows.ps1
@@ -67,10 +67,10 @@ jobs:
           name: "Development builds"
           tag_name: "devbuild"
           files: |
-            .\rssguard-build\src\rssguard\rssguard-*win64.exe
-            .\rssguard-build\src\rssguard\rssguard-*win64.7z
-            ./rssguard-build/src/rssguard/rssguard-*mac64.dmg
-            ./rssguard-build/src/rssguard/rssguard-*linux64.AppImage
+            .\rssguard-build\rssguard-*win64.exe
+            .\rssguard-build\rssguard-*win64.7z
+            ./rssguard-build/rssguard-*mac64.dmg
+            ./rssguard-build/rssguard-*linux64.AppImage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
@@ -80,9 +80,9 @@ jobs:
         with:
           prerelease: false
           files: |
-            .\rssguard-build\src\rssguard\rssguard-*win64.exe
-            .\rssguard-build\src\rssguard\rssguard-*win64.7z
-            ./rssguard-build/src/rssguard/rssguard-*mac64.dmg
-            ./rssguard-build/src/rssguard/rssguard-*linux64.AppImage
+            .\rssguard-build\rssguard-*win64.exe
+            .\rssguard-build\rssguard-*win64.7z
+            ./rssguard-build/rssguard-*mac64.dmg
+            ./rssguard-build/rssguard-*linux64.AppImage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

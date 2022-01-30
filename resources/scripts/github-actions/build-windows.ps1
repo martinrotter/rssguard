@@ -76,14 +76,12 @@ cd "$old_pwd"
 # Build application.
 mkdir "rssguard-build"
 cd "rssguard-build"
-& "$qt_qmake" "..\build.pro" "-r" "USE_WEBENGINE=$webengine" "FEEDLY_CLIENT_ID=$env:FEEDLY_CLIENT_ID" "FEEDLY_CLIENT_SECRET=$env:FEEDLY_CLIENT_SECRET" "GMAIL_CLIENT_ID=$env:GMAIL_CLIENT_ID" "GMAIL_CLIENT_SECRET=$env:GMAIL_CLIENT_SECRET" "INOREADER_CLIENT_ID=$env:INOREADER_CLIENT_ID" "INOREADER_CLIENT_SECRET=$env:INOREADER_CLIENT_SECRET" "CONFIG-=debug" "CONFIG-=debug_and_release" "CONFIG*=release"
-nmake.exe
-
-cd "src\rssguard"
-nmake.exe install
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="Release" -DREVISION_FROM_GIT=ON -DUSE_WEBENGINE="$webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET" -DINOREADER_CLIENT_ID="$env:INOREADER_CLIENT_ID" -DINOREADER_CLIENT_SECRET="$env:INOREADER_CLIENT_SECRET"
+& "$cmake_path" --build .
+& "$cmake_path" --install . --prefix app
 
 cd "app"
-windeployqt.exe --verbose 1 --no-compiler-runtime --no-translations --release rssguard.exe librssguard.dll
+windeployqt.exe --verbose 1 --no-compiler-runtime --no-translations --release rssguard.exe rssguard.dll
 cd ".."
 
 # Copy OpenSSL.
@@ -94,7 +92,7 @@ Copy-Item -Path "$openssl_base_path\bin\libssl*.dll" -Destination ".\app\"
 Copy-Item -Path "$maria_path\lib\libmariadb.dll" -Destination ".\app\"
 Copy-Item -Path "$qt_sqldrivers_path\plugins\sqldrivers\qsqlmysql.dll" -Destination ".\app\sqldrivers\" -Force
 
-if ($webengine -eq "true") {
+if ($webengine -eq "ON") {
   $packagebase = "rssguard-${git_tag}-${git_revision}-win64"
 }
 else {

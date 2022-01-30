@@ -1,0 +1,32 @@
+TYPELIB "versioninfo.rc"
+
+IDI_APPLICATION ICON "@CMAKE_PROJECT_NAME@.ico"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION @PROJECT_VERSION_MAJOR@,@PROJECT_VERSION_MINOR@,@PROJECT_VERSION_PATCH@,0
+PRODUCTVERSION @PROJECT_VERSION_MAJOR@,@PROJECT_VERSION_MINOR@,@PROJECT_VERSION_PATCH@,0
+FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+FILEFLAGS 0x1L
+#else
+FILEFLAGS 0x0L
+#endif
+FILEOS 0x4L
+FILETYPE 0x2L
+FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "@APP_AUTHOR@"
+            VALUE "FileDescription", "@APP_NAME@"
+            VALUE "FileVersion","@CMAKE_PROJECT_VERSION"
+            VALUE "InternalName", "@CMAKE_PROJECT_NAME@"
+            VALUE "LegalCopyright", "@APP_COPYRIGHT@"
+            VALUE "OriginalFilename", "@CMAKE_PROJECT_NAME@.exe"
+            VALUE "ProductName", "@APP_NAME@"
+            VALUE "ProductVersion","@CMAKE_PROJECT_VERSION"
+        END
+    END
+END

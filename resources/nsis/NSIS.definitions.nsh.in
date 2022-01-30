@@ -1,11 +1,11 @@
 ; For license of this file, see <project-root-folder>/LICENSE.md.
 
-!define VERSION "@APP_VERSION@"
-!define APP_VERSION "@APP_VERSION@"
+!define VERSION "@CMAKE_PROJECT_VERSION@"
+!define APP_VERSION "@CMALE_PROJECT_VERSION@"
 !define APP_NAME "@APP_NAME@"
-!define EXE_NAME "@EXE_NAME@"
-!define LICENSE_FILE "@PWD@\..\..\resources\text\COPYING_GNU_GPL"
-!define MUI_ICON "@PWD@\..\..\resources\graphics\@APP_LOW_NAME@.ico"
-!define MUI_UNICON "@PWD@\..\..\resources\graphics\@APP_LOW_NAME@.ico"
+!define EXE_NAME "@CMAKE_PROJECT_NAME@.exe"
+!define LICENSE_FILE "@CMAKE_SOURCE_DIR@\resources\text\COPYING_GNU_GPL"
+!define MUI_ICON "@CMAKE_SOURCE_DIR@\resources\graphics\@CMAKE_PROJECT_NAME@.ico"
+!define MUI_UNICON "@CMAKE_SOURCE_DIR@\resources\graphics\@CMAKE_PROJECT_NAME@.ico"
 !define PATCH  "0"
-!define BINARY_TREE "@OUT_PWD@\app"
+!define BINARY_TREE "@CMAKE_BINARY_DIR@\app"
