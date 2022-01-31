@@ -19,7 +19,7 @@ BEGIN
     BLOCK "StringFileInfo"
 
     BEGIN
-        BLOCK "040904e4"
+        BLOCK "040904b0"
 
         BEGIN
             VALUE "CompanyName", "@APP_AUTHOR@"

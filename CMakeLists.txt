@@ -1,6 +1,64 @@
+#################################################################
+#
+# For license of this file, see <project-root-folder>/LICENSE.md.
+#
+# This is RSS Guard compilation script for cmake.
+#
+# Usage (out of source build type, we have two side by side folders:
+# empty "build-dir" and RSS Guard repository "rssguard-dir"):
+#   a) DEBUG build for testing.
+#     cd build-dir
+#     cmake -DCMAKE_BUILD_TYPE="Debug" ../rssguard-dir/
+#     cmake --build .
+#     cmake --install .
+#
+#   b) RELEASE build for production use.
+#     cd build-dir
+#     cmake -DCMAKE_BUILD_TYPE="Release" ../rssguard-dir/
+#     cmake --build .
+#     cmake --install .
+#
+# Variables:
+#   USE_WEBENGINE - if specified, then QtWebEngine module for internal web browser is used.
+#                   Otherwise simple text component is used and some features will be disabled.
+#                   Default value is "false". If QtWebEngine is installed during compilation, then
+#                   value of this variable is tweaked automatically.
+#   {FEEDLY,GMAIL,INOREADER}_CLIENT_ID - preconfigured OAuth cliend ID.
+#   {FEEDLY,GMAIL,INOREADER}_CLIENT_SECRET - preconfigured OAuth cliend SECRET.
+#
+# Other information:
+#   - supports Windows, Linux, macOS, OS/2, Android,
+#   - Qt 5.9.0 or newer is required,
+#   - cmake 3.9.0 or newer is required,
+#   - if you wish to make packages for Windows, then you must initialize all submodules within repository before compilation,
+#   - C++ 11/17 is required.
+#
+# Building on OS/2:
+#   RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to make sure that
+#   your OS/2 distro is up-to-date and you have all dependencies installed: os2-base, all gcc-* packages,
+#   libc and libcx up-to-date, kbuild-make, ash, binutils, all relevant qt5-* packages.
+#
+#   After your dependecies are installed, then you can compile via standard `qmake -> make -> make install` steps
+#   and package with: 7z.exe a -t7z -mmt -mx9 "rssguard.7z" "<build-folder\src\rssguard\app\*" command.
+#
+# Authors and contributors:
+#   - Martin Rotter (project leader),
+#   - Elbert Pol (OS/2-related contributions),
+#   - CyberTailor (cmake-related contributions.
+#
+#################################################################
+
 cmake_minimum_required(VERSION 3.9.0)
 
-project(rssguard VERSION 4.1.2 LANGUAGES CXX)
+# Global variables describing the project.
+set(APP_NAME "RSS Guard")
+set(APP_AUTHOR "Martin Rotter")
+set(APP_COPYRIGHT "\\251 2011-2022 ${APP_AUTHOR}")
+set(APP_REVERSE_NAME "com.github.rssguard")
+set(APP_VERSION "4.2.0")
+set(TYPEINFO "????")
+
+project(rssguard VERSION ${APP_VERSION} LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -10,10 +68,14 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE "Release")
+endif()
+
 option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source" OFF)
 option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)" OFF)
-option(REVISION_FROM_GIT "Get revision using `git rev-parse`" OFF)
+option(REVISION_FROM_GIT "Get revision using `git rev-parse`" ON)
 
 set(FEEDLY_CLIENT_ID "" CACHE STRING "Feedly client ID")
 set(FEEDLY_CLIENT_SECRET "" CACHE STRING "Feedly client secret")
@@ -26,144 +88,141 @@ set(INOREADER_CLIENT_SECRET "" CACHE STRING "Inoreader client secret")
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
-    Core
-    Gui
-    LinguistTools
-    Network
-    Qml
-    Sql
-    Widgets 
-    Xml
+  Core
+  Gui
+  LinguistTools
+  Network
+  Qml
+  Sql
+  Widgets
+  Xml
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    find_package(Qt6 COMPONENTS Core5Compat REQUIRED)
+  find_package(Qt6 COMPONENTS Core5Compat REQUIRED)
 endif()
 
 if(USE_WEBENGINE)
-    find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WebEngineWidgets REQUIRED)
-    add_compile_definitions(USE_WEBENGINE)
+  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WebEngineWidgets REQUIRED)
+  add_compile_definitions(USE_WEBENGINE)
 endif()
 
 if(NOT OS2)
-    find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Multimedia REQUIRED)
-    macro(qt_add_resources)
-        qt_add_big_resources(${ARGN})
-    endmacro()
+  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Multimedia REQUIRED)
+  macro(qt_add_resources)
+    qt_add_big_resources(${ARGN})
+  endmacro()
 endif()
 
 if(UNIX AND NOT APPLE AND NOT ANDROID)
-    find_package(Qt${QT_VERSION_MAJOR} COMPONENTS DBus REQUIRED)
+  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS DBus REQUIRED)
 endif()
 
 if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
-    add_compile_definitions(
-        FEEDLY_OFFICIAL_SUPPORT
-        FEEDLY_CLIENT_ID="${FEEDLY_CLIENT_ID}"
-        FEEDLY_CLIENT_SECRET="${FEEDLY_CLIENT_SECRET}"
-    )
+  add_compile_definitions(
+    FEEDLY_OFFICIAL_SUPPORT
+    FEEDLY_CLIENT_ID="${FEEDLY_CLIENT_ID}"
+    FEEDLY_CLIENT_SECRET="${FEEDLY_CLIENT_SECRET}"
+  )
 else()
-    message(STATUS "Feedly client ID/secret variables are not set. Disabling official support")
+  message(STATUS "Feedly client ID/secret variables are not set. Disabling official support")
 endif()
 
 if(NOT GMAIL_CLIENT_ID STREQUAL "" AND NOT GMAIL_CLIENT_SECRET STREQUAL "")
-    add_compile_definitions(
-        GMAIL_OFFICIAL_SUPPORT
-        GMAIL_CLIENT_ID="${GMAIL_CLIENT_ID}"
-        GMAIL_CLIENT_SECRET="${GMAIL_CLIENT_SECRET}"
-    )
+  add_compile_definitions(
+    GMAIL_OFFICIAL_SUPPORT
+    GMAIL_CLIENT_ID="${GMAIL_CLIENT_ID}"
+    GMAIL_CLIENT_SECRET="${GMAIL_CLIENT_SECRET}"
+  )
 else()
-    message(STATUS "GMail client ID/secret variables are not set. Disabling official support")
+  message(STATUS "GMail client ID/secret variables are not set. Disabling official support")
 endif()
 
 if(NOT INOREADER_CLIENT_ID STREQUAL "" AND NOT INOREADER_CLIENT_SECRET STREQUAL "")
-    add_compile_definitions(
-        INOREADER_OFFICIAL_SUPPORT
-        INOREADER_CLIENT_ID="${INOREADER_CLIENT_ID}"
-        INOREADER_CLIENT_SECRET="${INOREADER_CLIENT_SECRET}"
-    )
+  add_compile_definitions(
+    INOREADER_OFFICIAL_SUPPORT
+    INOREADER_CLIENT_ID="${INOREADER_CLIENT_ID}"
+    INOREADER_CLIENT_SECRET="${INOREADER_CLIENT_SECRET}"
+  )
 else()
-    message(STATUS "Inoreader client ID/secret variables are not set. Disabling official support")
+  message(STATUS "Inoreader client ID/secret variables are not set. Disabling official support")
 endif()
 
-set(APP_NAME "RSS Guard")
-set(APP_AUTHOR "Martin Rotter")
-set(APP_COPYRIGHT "(C) 2011-2022 ${APP_AUTHOR}")
-set(APP_REVERSE_NAME "com.github.rssguard")
-set(TYPEINFO "????")
-
 if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
-    execute_process(COMMAND "git rev-parse --short HEAD"
-        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-        OUTPUT_VARIABLE APP_REVISION
-        ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE
-    )
+ execute_process(COMMAND "git rev-parse --short HEAD"
+   WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+   OUTPUT_VARIABLE APP_REVISION
+   ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE
+ )
 else()
-    set(APP_REVISION "")
+  set(APP_REVISION "")
 endif()
 
 if(NOT USE_WEBENGINE)
-    set(APP_REVISION "${APP_REVISION}-nowebengine")
+  set(APP_REVISION "${APP_REVISION}-nowebengine")
 endif()
 
 add_compile_definitions(
-    APP_AUTHOR="Martin Rotter"
-    APP_DONATE_URL="https://martinrotter.github.io/donate"
-    APP_EMAIL="rotter.martinos@gmail.com"
-    APP_LONG_NAME="${APP_NAME} ${CMAKE_PROJECT_VERSION}"
-    APP_LOW_H_NAME=".${CMAKE_PROJECT_NAME}"
-    APP_LOW_NAME="${CMAKE_PROJECT_NAME}"
-    APP_NAME="${APP_NAME}"
-    APP_REVISION="${APP_REVISON}"
-    APP_SYSTEM_NAME="${CMAKE_SYSTEM_NAME}"
-    APP_SYSTEM_VERSION="${CMAKE_SYSTEM_PROCESSOR}"
-    APP_URL="https://github.com/martinrotter/rssguard"
-    APP_URL_DOCUMENTATION="https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md"
-    APP_URL_ISSUES="https://github.com/martinrotter/rssguard/issues"
-    APP_URL_ISSUES_NEW="https://github.com/martinrotter/rssguard/issues/new"
-    APP_USERAGENT="${APP_NAME}/${CMAKE_PROJECT_VERSION}"
-    APP_VERSION="${CMAKE_PROJECT_VERSION}"
+  APP_AUTHOR="${APP_AUTHOR}"
+  APP_DONATE_URL="https://github.com/sponsors/martinrotter"
+  APP_EMAIL="rotter.martinos@gmail.com"
+  APP_LONG_NAME="${APP_NAME} ${CMAKE_PROJECT_VERSION}"
+  APP_LOW_H_NAME=".${CMAKE_PROJECT_NAME}"
+  APP_LOW_NAME="${CMAKE_PROJECT_NAME}"
+  APP_NAME="${APP_NAME}"
+  APP_REVISION="${APP_REVISON}"
+  APP_SYSTEM_NAME="${CMAKE_SYSTEM_NAME}"
+  APP_SYSTEM_VERSION="${CMAKE_SYSTEM_PROCESSOR}"
+  APP_URL="https://github.com/martinrotter/rssguard"
+  APP_URL_DOCUMENTATION="https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md"
+  APP_URL_ISSUES="https://github.com/martinrotter/rssguard/issues"
+  APP_URL_ISSUES_NEW="https://github.com/martinrotter/rssguard/issues/new"
+  APP_USERAGENT="${APP_NAME}/${CMAKE_PROJECT_VERSION}"
+  APP_VERSION="${CMAKE_PROJECT_VERSION}"
 
-    QT_USE_QSTRINGBUILDER
-    QT_USE_FAST_CONCATENATION
-    QT_USE_FAST_OPERATOR_PLUS
-    UNICODE _UNICODE
+  QT_USE_QSTRINGBUILDER
+  QT_USE_FAST_CONCATENATION
+  QT_USE_FAST_OPERATOR_PLUS
+  UNICODE
+  _UNICODE
 )
 
 if(UNIX)
-    add_compile_options(-fPIC)
+  add_compile_options(-fPIC)
 endif()
 
 if(APPLE)
-    add_compile_options(-stdlib=libc++)
-    add_link_options(-stdlib=libc++)
+  add_compile_options(-stdlib=libc++)
+  add_link_options(-stdlib=libc++)
 endif()
 
 if(${FORCE_COLORED_OUTPUT})
-    if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-       add_compile_options(-fdiagnostics-color=always)
-    elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-       add_compile_options(-fcolor-diagnostics)
-    endif()
+  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    add_compile_options(-fdiagnostics-color=always)
+  elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    add_compile_options(-fcolor-diagnostics)
+  endif()
 endif()
 
 if(WIN32)
-    configure_file(
-        resources/rssguard.rc.in
-        ${CMAKE_BINARY_DIR}/rssguard.rc
-        NEWLINE_STYLE WIN32
-    )
-    configure_file(
-        resources/nsis/NSIS.definitions.nsh.in
-        ${CMAKE_BINARY_DIR}/NSIS.definitions.nsh
-    )
-    file(COPY resources/nsis/NSIS.template.in DESTINATION ${CMAKE_BINARY_DIR})
-    file(COPY resources/graphics/${CMAKE_PROJECT_NAME}.ico DESTINATION ${CMAKE_BINARY_DIR})
+  configure_file(
+    resources/rssguard.rc.in
+    ${CMAKE_BINARY_DIR}/rssguard.rc
+    NEWLINE_STYLE WIN32
+  )
+
+  configure_file(
+    resources/nsis/NSIS.definitions.nsh.in
+    ${CMAKE_BINARY_DIR}/NSIS.definitions.nsh
+  )
+
+  file(COPY resources/nsis/NSIS.template.in DESTINATION ${CMAKE_BINARY_DIR})
+  file(COPY resources/graphics/${CMAKE_PROJECT_NAME}.ico DESTINATION ${CMAKE_BINARY_DIR})
 elseif(APPLE)
-    configure_file(
-        resources/macosx/Info.plist.in
-        ${CMAKE_BINARY_DIR}/Info.plist
-    )
+  configure_file(
+    resources/macosx/Info.plist.in
+    ${CMAKE_BINARY_DIR}/Info.plist
+  )
 endif()
 
 add_subdirectory(localization)
