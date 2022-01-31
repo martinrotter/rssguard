@@ -1,7 +1,7 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#ifndef FORMEDITINOREADERACCOUNT_H
-#define FORMEDITINOREADERACCOUNT_H
+#ifndef FORMEDITREDDITACCOUNT_H
+#define FORMEDITREDDITACCOUNT_H
 
 #include "services/abstract/gui/formaccountdetails.h"
 
@@ -26,4 +26,4 @@ class FormEditRedditAccount : public FormAccountDetails {
     RedditAccountDetails* m_details;
 };
 
-#endif // FORMEDITINOREADERACCOUNT_H
+#endif // FORMEDITREDDITACCOUNT_H
