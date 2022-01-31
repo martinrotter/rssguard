@@ -99,6 +99,7 @@ if(${FORCE_COLORED_OUTPUT})
 endif()
 
 # Global compilation switches.
+option(BUILD_WITH_QT6 "Build application with Qt 6" OFF)
 option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source" OFF)
 option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)" OFF)
@@ -114,8 +115,7 @@ set(INOREADER_CLIENT_ID "" CACHE STRING "Inoreader client ID")
 set(INOREADER_CLIENT_SECRET "" CACHE STRING "Inoreader client secret")
 
 # Import Qt libraries.
-find_package(QT NAMES Qt6 Qt5 REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
+set(QT_COMPONENTS
   Core
   Gui
   LinguistTools
@@ -126,24 +126,47 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
   Xml
 )
 
-if(QT_VERSION_MAJOR EQUAL 6)
-  find_package(Qt6 COMPONENTS Core5Compat REQUIRED)
+if(NOT OS2)
+  list(APPEND QT_COMPONENTS Multimedia)
 endif()
 
 if(USE_WEBENGINE)
-  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WebEngineWidgets REQUIRED)
+  list(APPEND QT_COMPONENTS WebEngineWidgets)
   add_compile_definitions(USE_WEBENGINE)
 endif()
 
+if(UNIX AND NOT APPLE AND NOT ANDROID)
+  list(APPEND QT_COMPONENTS DBus)
+endif()
+
+if(BUILD_WITH_QT6)
+  find_package(QT NAMES Qt6)
+  find_package(Qt6 COMPONENTS ${QT_COMPONENTS} Core5Compat REQUIRED)
+else()
+  find_package(QT NAMES Qt5)
+  find_package(Qt5 COMPONENTS ${QT_COMPONENTS} REQUIRED)
+
+  if(Qt5Core_VERSION VERSION_LESS 5.15.0)
+    # Compatibility macros.
+    macro(qt_add_resources)
+        qt5_add_resources(${ARGN})
+    endmacro()
+    macro(qt_add_big_resources)
+        qt5_add_big_resources(${ARGN})
+    endmacro()
+    macro(qt_create_translation)
+        qt5_create_translation(${ARGN})
+    endmacro()
+    macro(qt_add_translation)
+        qt5_add_translation(${ARGN})
+    endmacro()
+  endif()
+endif()
+
 if(NOT OS2)
-  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Multimedia REQUIRED)
   macro(qt_add_resources)
     qt_add_big_resources(${ARGN})
   endmacro()
-endif()
-
-if(UNIX AND NOT APPLE AND NOT ANDROID)
-  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS DBus REQUIRED)
 endif()
 
 # Process oauth service secrets.
