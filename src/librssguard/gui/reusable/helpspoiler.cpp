@@ -17,7 +17,7 @@
 
 HelpSpoiler::HelpSpoiler(QWidget* parent) : QWidget(parent),
   m_btnToggle(new QToolButton(this)), m_content(new QScrollArea(this)), m_animation(new QParallelAnimationGroup(this)),
-  m_layout(new QGridLayout(this)), m_text(new QLabel(this)) {
+  m_layout(new QGridLayout(this)), m_text(new QLabel(this)), m_btnHelp(new PlainToolButton(this)) {
 
   m_btnToggle->setStyleSheet(QSL("QToolButton { border: none; }"));
   m_btnToggle->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
@@ -29,6 +29,7 @@ HelpSpoiler::HelpSpoiler(QWidget* parent) : QWidget(parent),
   m_content->setSizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
   m_content->setMaximumHeight(0);
   m_content->setMinimumHeight(0);
+  m_content->setContentsMargins({ 0, 0, 0, 0 });
 
   m_animation->addAnimation(new QPropertyAnimation(this, QSL("minimumHeight").toLocal8Bit()));
   m_animation->addAnimation(new QPropertyAnimation(this, QSL("maximumHeight").toLocal8Bit()));
@@ -39,12 +40,9 @@ HelpSpoiler::HelpSpoiler(QWidget* parent) : QWidget(parent),
   m_layout->setVerticalSpacing(0);
   m_layout->setContentsMargins(0, 0, 0, 0);
 
-  PlainToolButton* btn_help = new PlainToolButton(this);
+  m_btnHelp->setPadding(0);
 
-  btn_help->setPadding(0);
-  btn_help->setIcon(qApp->icons()->fromTheme(QSL("dialog-question")));
-
-  m_layout->addWidget(btn_help, 0, 0);
+  m_layout->addWidget(m_btnHelp, 0, 0);
   m_layout->addWidget(m_btnToggle, 0, 1, 1, 1, Qt::AlignmentFlag::AlignLeft);
   m_layout->addWidget(m_content, 1, 0, 1, 2);
 
@@ -79,6 +77,7 @@ HelpSpoiler::HelpSpoiler(QWidget* parent) : QWidget(parent),
     m_animation->start();
   });
 
+  m_text->setMargin(0);
   m_text->setWordWrap(true);
 
   auto* content_layout = new QVBoxLayout(m_content);
@@ -93,5 +92,7 @@ void HelpSpoiler::setHelpText(const QString& title, const QString& text, bool is
 
 void HelpSpoiler::setHelpText(const QString& text, bool is_warning) {
   m_text->setText(text);
-  GuiUtilities::setLabelAsNotice(*m_text, is_warning, false);
+  m_btnHelp->setIcon(is_warning
+                       ? qApp->icons()->fromTheme(QSL("dialog-warning"))
+                       : qApp->icons()->fromTheme(QSL("dialog-question")));
 }
