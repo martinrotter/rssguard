@@ -98,6 +98,9 @@ if(${FORCE_COLORED_OUTPUT})
   endif()
 endif()
 
+# Aux files not used for build but include in project.
+add_custom_target(AuxFiles SOURCES "resources/scripts/uncrustify/uncrustify.cfg")
+
 # Global compilation switches.
 option(BUILD_WITH_QT6 "Build application with Qt 6" OFF)
 option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
@@ -149,25 +152,28 @@ else()
   if(Qt5Core_VERSION VERSION_LESS 5.15.0)
     # Compatibility macros.
     macro(qt_add_resources)
-        qt5_add_resources(${ARGN})
+      qt5_add_resources(${ARGN})
     endmacro()
+
     macro(qt_add_big_resources)
-        qt5_add_big_resources(${ARGN})
+      qt5_add_big_resources(${ARGN})
     endmacro()
+
     macro(qt_create_translation)
-        qt5_create_translation(${ARGN})
+      qt5_create_translation(${ARGN})
     endmacro()
+
     macro(qt_add_translation)
-        qt5_add_translation(${ARGN})
+      qt5_add_translation(${ARGN})
     endmacro()
   endif()
 endif()
 
-if(NOT OS2)
-  macro(qt_add_resources)
-    qt_add_big_resources(${ARGN})
-  endmacro()
-endif()
+#if(NOT OS2)
+#  macro(qt_add_resources)
+#    qt_add_big_resources(${ARGN})
+#  endmacro()
+#endif()
 
 # Process oauth service secrets.
 if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
