@@ -451,6 +451,11 @@ if(APPLE OR WIN32 OR OS2)
     qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/icons.qrc)
 endif()
 
+if(WIN32)
+  enable_language("RC")
+  list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
+endif()
+
 add_library(rssguard SHARED ${SOURCES} ${QM_FILES})
 
 target_compile_definitions(rssguard PRIVATE RSSGUARD_DLLSPEC=Q_DECL_EXPORT)
