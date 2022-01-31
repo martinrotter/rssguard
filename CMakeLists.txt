@@ -68,6 +68,7 @@ set(TYPEINFO "????")
 
 project(rssguard VERSION ${APP_VERSION} LANGUAGES CXX)
 
+# Basic C++ related behavior of cmake.
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -80,6 +81,24 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE "Release")
 endif()
 
+if(UNIX)
+  add_compile_options(-fPIC)
+endif()
+
+if(APPLE)
+  add_compile_options(-stdlib=libc++)
+  add_link_options(-stdlib=libc++)
+endif()
+
+if(${FORCE_COLORED_OUTPUT})
+  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    add_compile_options(-fdiagnostics-color=always)
+  elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    add_compile_options(-fcolor-diagnostics)
+  endif()
+endif()
+
+# Global compilation switches.
 option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source" OFF)
 option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)" OFF)
@@ -94,6 +113,7 @@ set(GMAIL_CLIENT_SECRET "" CACHE STRING "GMail client secret")
 set(INOREADER_CLIENT_ID "" CACHE STRING "Inoreader client ID")
 set(INOREADER_CLIENT_SECRET "" CACHE STRING "Inoreader client secret")
 
+# Import Qt libraries.
 find_package(QT NAMES Qt6 Qt5 REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
   Core
@@ -126,6 +146,7 @@ if(UNIX AND NOT APPLE AND NOT ANDROID)
   find_package(Qt${QT_VERSION_MAJOR} COMPONENTS DBus REQUIRED)
 endif()
 
+# Process oauth service secrets.
 if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
   add_compile_definitions(
     FEEDLY_OFFICIAL_SUPPORT
@@ -156,6 +177,7 @@ else()
   message(STATUS "Inoreader client ID/secret variables are not set. Disabling official support.")
 endif()
 
+# Load git commit hash.
 if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
   execute_process(COMMAND "git" "rev-parse" "--short" "HEAD"
     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
@@ -173,6 +195,7 @@ if(NOT USE_WEBENGINE)
   set(APP_REVISION "${APP_REVISION}-nowebengine")
 endif()
 
+# Pass needed defines.
 add_compile_definitions(
   APP_AUTHOR="${APP_AUTHOR}"
   APP_DONATE_URL="${APP_DONATE_URL}"
@@ -198,23 +221,7 @@ add_compile_definitions(
   _UNICODE
 )
 
-if(UNIX)
-  add_compile_options(-fPIC)
-endif()
-
-if(APPLE)
-  add_compile_options(-stdlib=libc++)
-  add_link_options(-stdlib=libc++)
-endif()
-
-if(${FORCE_COLORED_OUTPUT})
-  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    add_compile_options(-fdiagnostics-color=always)
-  elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-    add_compile_options(-fcolor-diagnostics)
-  endif()
-endif()
-
+# Configure and copy some needed files.
 if(WIN32)
   configure_file(
     resources/rssguard.rc.in
