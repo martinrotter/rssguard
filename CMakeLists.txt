@@ -52,10 +52,18 @@ cmake_minimum_required(VERSION 3.9.0)
 
 # Global variables describing the project.
 set(APP_NAME "RSS Guard")
+set(APP_EMAIL "rotter.martinos@gmail.com")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_COPYRIGHT "\\251 2011-2022 ${APP_AUTHOR}")
 set(APP_REVERSE_NAME "com.github.rssguard")
+set(APP_DONATE_URL "https://github.com/sponsors/martinrotter")
 set(APP_VERSION "4.2.0")
+
+set(APP_URL "https://github.com/martinrotter/rssguard")
+set(APP_URL_DOCUMENTATION "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md")
+set(APP_URL_ISSUES "https://github.com/martinrotter/rssguard/issues")
+set(APP_URL_ISSUES_NEW "https://github.com/martinrotter/rssguard/issues/new")
+
 set(TYPEINFO "????")
 
 project(rssguard VERSION ${APP_VERSION} LANGUAGES CXX)
@@ -125,7 +133,7 @@ if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
     FEEDLY_CLIENT_SECRET="${FEEDLY_CLIENT_SECRET}"
   )
 else()
-  message(STATUS "Feedly client ID/secret variables are not set. Disabling official support")
+  message(STATUS "Feedly client ID/secret variables are not set. Disabling official support.")
 endif()
 
 if(NOT GMAIL_CLIENT_ID STREQUAL "" AND NOT GMAIL_CLIENT_SECRET STREQUAL "")
@@ -135,7 +143,7 @@ if(NOT GMAIL_CLIENT_ID STREQUAL "" AND NOT GMAIL_CLIENT_SECRET STREQUAL "")
     GMAIL_CLIENT_SECRET="${GMAIL_CLIENT_SECRET}"
   )
 else()
-  message(STATUS "GMail client ID/secret variables are not set. Disabling official support")
+  message(STATUS "GMail client ID/secret variables are not set. Disabling official support.")
 endif()
 
 if(NOT INOREADER_CLIENT_ID STREQUAL "" AND NOT INOREADER_CLIENT_SECRET STREQUAL "")
@@ -145,15 +153,18 @@ if(NOT INOREADER_CLIENT_ID STREQUAL "" AND NOT INOREADER_CLIENT_SECRET STREQUAL 
     INOREADER_CLIENT_SECRET="${INOREADER_CLIENT_SECRET}"
   )
 else()
-  message(STATUS "Inoreader client ID/secret variables are not set. Disabling official support")
+  message(STATUS "Inoreader client ID/secret variables are not set. Disabling official support.")
 endif()
 
 if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
- execute_process(COMMAND "git rev-parse --short HEAD"
-   WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-   OUTPUT_VARIABLE APP_REVISION
-   ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE
- )
+  execute_process(COMMAND "git" "rev-parse" "--short" "HEAD"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    OUTPUT_VARIABLE APP_REVISION
+    ERROR_QUIET
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+
+  message(STATUS "Detected git revision: '${APP_REVISION}'.")
 else()
   set(APP_REVISION "")
 endif()
@@ -164,8 +175,8 @@ endif()
 
 add_compile_definitions(
   APP_AUTHOR="${APP_AUTHOR}"
-  APP_DONATE_URL="https://github.com/sponsors/martinrotter"
-  APP_EMAIL="rotter.martinos@gmail.com"
+  APP_DONATE_URL="${APP_DONATE_URL}"
+  APP_EMAIL="${APP_EMAIL}"
   APP_LONG_NAME="${APP_NAME} ${CMAKE_PROJECT_VERSION}"
   APP_LOW_H_NAME=".${CMAKE_PROJECT_NAME}"
   APP_LOW_NAME="${CMAKE_PROJECT_NAME}"
@@ -173,10 +184,10 @@ add_compile_definitions(
   APP_REVISION="${APP_REVISON}"
   APP_SYSTEM_NAME="${CMAKE_SYSTEM_NAME}"
   APP_SYSTEM_VERSION="${CMAKE_SYSTEM_PROCESSOR}"
-  APP_URL="https://github.com/martinrotter/rssguard"
-  APP_URL_DOCUMENTATION="https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md"
-  APP_URL_ISSUES="https://github.com/martinrotter/rssguard/issues"
-  APP_URL_ISSUES_NEW="https://github.com/martinrotter/rssguard/issues/new"
+  APP_URL="${APP_URL}"
+  APP_URL_DOCUMENTATION="${APP_URL_DOCUMENTATION}"
+  APP_URL_ISSUES="${APP_URL_ISSUES}"
+  APP_URL_ISSUES_NEW="${APP_URL_ISSUES_NEW}"
   APP_USERAGENT="${APP_NAME}/${CMAKE_PROJECT_VERSION}"
   APP_VERSION="${CMAKE_PROJECT_VERSION}"
 
