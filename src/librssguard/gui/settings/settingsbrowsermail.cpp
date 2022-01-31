@@ -82,7 +82,7 @@ void SettingsBrowserMail::selectBrowserExecutable() {
                                                                qApp->homeFolder(),
 
                                                                //: File filter for external browser selection dialog.
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
                                                                tr("Executables (*)"));
 #else
                                                                tr("Executables (*.*)"));
@@ -126,7 +126,7 @@ void SettingsBrowserMail::selectEmailExecutable() {
                                                          qApp->homeFolder(),
 
                                                          //: File filter for external e-mail selection dialog.
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
                                                          tr("Executables (*)"));
 #else
                                                          tr("Executables (*.*)"));

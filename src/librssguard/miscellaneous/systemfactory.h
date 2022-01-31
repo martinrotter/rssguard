@@ -55,7 +55,7 @@ class SystemFactory : public QObject {
     // new status failed.
     bool setAutoStartStatus(AutoStartStatus new_status);
 
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
     // Returns standard location where auto-start .desktop files
     // should be placed.
     QString autostartDesktopFileLocation() const;
