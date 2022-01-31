@@ -1,13 +1,9 @@
-# TODO: fix RC file
-
-#if(WIN32)
-    #enable_language("RC")
-    #add_executable(app main.cpp ${CMAKE_BINARY_DIR}/rssguard.rc)
-#else()
-    #add_executable(app main.cpp)
-#endif()
-
-add_executable(app main.cpp)
+if(WIN32)
+  enable_language("RC")
+  add_executable(app main.cpp ${CMAKE_BINARY_DIR}/rssguard.rc)
+else()
+  add_executable(app main.cpp)
+endif()
 
 target_compile_definitions(app PRIVATE RSSGUARD_DLLSPEC=Q_DECL_IMPORT)
 

@@ -87,8 +87,8 @@ else()
 endif()
 
 set(APP_NAME "RSS Guard")
-set(APP_AUTHOR "")
-set(APP_COPYRIGHT "")
+set(APP_AUTHOR "Martin Rotter")
+set(APP_COPYRIGHT "(C) 2011-2022 ${APP_AUTHOR}")
 set(APP_REVERSE_NAME "com.github.rssguard")
 set(TYPEINFO "????")
 
