@@ -44,7 +44,7 @@
 # Authors and contributors:
 #   - Martin Rotter (project leader),
 #   - Elbert Pol (OS/2-related contributions),
-#   - Anna Vyalkova (cmake-related contributions.
+#   - Anna Vyalkova (cmake-related contributions).
 #
 #################################################################
 
