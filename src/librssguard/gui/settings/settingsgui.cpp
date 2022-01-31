@@ -132,7 +132,7 @@ void SettingsGui::loadSettings() {
     if (icon_theme_name == QSL(APP_NO_THEME)) {
       // Add just "no theme" on other systems.
       //: Label for disabling icon theme.
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
       m_ui->m_cmbIconTheme->addItem(tr("system icon theme"), APP_NO_THEME);
 #else
       m_ui->m_cmbIconTheme->addItem(tr("no icon theme"), APP_NO_THEME);

@@ -197,7 +197,7 @@
 #define APP_SKIN_METADATA_FILE "metadata.xml"
 #define APP_STYLE_DEFAULT   "Fusion"
 
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
 #define APP_THEME_DEFAULT   ""
 #else
 #define APP_THEME_DEFAULT   "Breeze"
@@ -268,6 +268,12 @@
 
 #if defined(Q_OS_LINUX)
 #define OS_ID   "Linux"
+#elif defined(Q_OS_FREEBSD)
+#define OS_ID   "FreeBSD"
+#elif defined(Q_OS_NETBSD)
+#define OS_ID   "NetBSD"
+#elif defined(Q_OS_OPENBSD)
+#define OS_ID   "OpenBSD"
 #elif defined(Q_OS_OS2)
 #define OS_ID   "OS/2"
 #elif defined(Q_OS_OSX)
@@ -276,6 +282,8 @@
 #define OS_ID   "Windows"
 #elif defined(Q_OS_ANDROID)
 #define OS_ID   "Android"
+#elif defined(Q_OS_UNIX)
+#define OS_ID   "Unix"
 #else
 #define OS_ID   ""
 #endif
@@ -295,7 +303,7 @@
 #define APP_INITIAL_FEEDS_PATH QSL(":/initial_feeds")
 #define APP_LANG_PATH QSL(":/localization")
 
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
 #define APP_DESKTOP_SOURCE_ENTRY_FILE "com.github.rssguard.desktop.autostart"
 #define APP_DESKTOP_ENTRY_FILE "com.github.rssguard.desktop"
 
