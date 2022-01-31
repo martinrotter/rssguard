@@ -58,8 +58,8 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
   else {
     return AutoStartStatus::Disabled;
   }
-#elif defined(Q_OS_LINUX)
-  // Use proper freedesktop.org way to auto-start the application on Linux.
+#elif defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+  // Use proper freedesktop.org way to auto-start the application.
   // INFO: http://standards.freedesktop.org/autostart-spec/latest/
   const QString desktop_file_location = autostartDesktopFileLocation();
 
@@ -86,7 +86,7 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
 #endif
 }
 
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
 QString SystemFactory::autostartDesktopFileLocation() const {
   const QString xdg_config_path(qgetenv("XDG_CONFIG_HOME"));
   QString desktop_file_location;
@@ -136,7 +136,7 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
     default:
       return false;
   }
-#elif defined(Q_OS_LINUX)
+#elif defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   // Note that we expect here that no other program uses
   // "rssguard.desktop" desktop file.
   const QString destination_file = autostartDesktopFileLocation();

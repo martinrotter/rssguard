@@ -491,8 +491,8 @@ SettingsProperties Settings::determineProperties() {
   else {
     // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
     // settings was not initialized before.
-#if defined(Q_OS_LINUX) || defined (Q_OS_ANDROID) || defined (Q_OS_MACOSOS)
-    // DO NOT use portable settings for Linux, it is really not used on that platform.
+#if defined(Q_OS_UNIX)
+    // DO NOT use portable settings for *nix, it is really not used on that platform.
     const bool will_we_use_portable_settings = false;
 #else
     const QString exe_path = qApp->applicationDirPath();

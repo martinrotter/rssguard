@@ -92,7 +92,7 @@ void IconFactory::loadCurrentIconTheme() {
 
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
     if (theme_name_from_settings.isEmpty()) {
       qDebugNN << LOGSEC_GUI << "Loading default system icon theme.";
     }
@@ -108,7 +108,7 @@ void IconFactory::loadCurrentIconTheme() {
   else {
     // Desired icon theme is not currently available.
     // Activate "default" or "no" icon theme instead.
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
     qWarningNN << "Icon theme"
                << QUOTE_W_SPACE(theme_name_from_settings)
                << "cannot be loaded because it is not installed. Activating \"no\" icon theme.";
