@@ -74,7 +74,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOUIC OFF)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -151,6 +151,10 @@ else()
 
   if(Qt5Core_VERSION VERSION_LESS 5.15.0)
     # Compatibility macros.
+    macro(qt_wrap_ui)
+      qt5_wrap_ui(${ARGN})
+    endmacro()
+
     macro(qt_add_resources)
       qt5_add_resources(${ARGN})
     endmacro()

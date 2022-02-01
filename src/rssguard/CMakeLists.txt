@@ -10,7 +10,7 @@ target_compile_definitions(app PRIVATE RSSGUARD_DLLSPEC=Q_DECL_IMPORT)
 set_target_properties(app PROPERTIES OUTPUT_NAME ${CMAKE_PROJECT_NAME})
 
 target_include_directories(app PUBLIC
-  ${CMAKE_BINARY_DIR}/src/librssguard/rssguard_autogen/include
+  ${CMAKE_BINARY_DIR}/src/librssguard
 )
 
 target_link_libraries(app PUBLIC

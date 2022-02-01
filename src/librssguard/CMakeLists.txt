@@ -405,6 +405,52 @@ if(APPLE)
   )
 endif()
 
+set(UI_FILES
+  gui/dialogs/formabout.ui
+  gui/dialogs/formaddaccount.ui
+  gui/dialogs/formaddeditlabel.ui
+  gui/dialogs/formbackupdatabasesettings.ui
+  gui/dialogs/formdatabasecleanup.ui
+  gui/dialogs/formmain.ui
+  gui/dialogs/formmessagefiltersmanager.ui
+  gui/dialogs/formrestoredatabasesettings.ui
+  gui/dialogs/formsettings.ui
+  gui/dialogs/formupdate.ui
+  gui/notifications/notificationseditor.ui
+  gui/notifications/singlenotificationeditor.ui
+  gui/reusable/networkproxydetails.ui
+  gui/newspaperpreviewer.ui
+  gui/reusable/searchtextwidget.ui
+  gui/settings/settingsbrowsermail.ui
+  gui/settings/settingsdatabase.ui
+  gui/settings/settingsdownloads.ui
+  gui/settings/settingsfeedsmessages.ui
+  gui/settings/settingsgeneral.ui
+  gui/settings/settingsgui.ui
+  gui/settings/settingslocalization.ui
+  gui/settings/settingsnotifications.ui
+  gui/settings/settingsnodejs.ui
+  gui/settings/settingsshortcuts.ui
+  gui/toolbars/toolbareditor.ui
+  network-web/downloaditem.ui
+  network-web/downloadmanager.ui
+  services/abstract/gui/authenticationdetails.ui
+  services/abstract/gui/formaccountdetails.ui
+  services/abstract/gui/formcategorydetails.ui
+  services/abstract/gui/formfeeddetails.ui
+  services/feedly/gui/feedlyaccountdetails.ui
+  services/gmail/gui/formaddeditemail.ui
+  services/gmail/gui/formdownloadattachment.ui
+  services/gmail/gui/gmailaccountdetails.ui
+  services/greader/gui/greaderaccountdetails.ui
+  services/owncloud/gui/owncloudaccountdetails.ui
+  services/reddit/gui/redditaccountdetails.ui
+  services/standard/gui/formstandardimportexport.ui
+  services/standard/gui/standardfeeddetails.ui
+  services/tt-rss/gui/formttrssnote.ui
+  services/tt-rss/gui/ttrssaccountdetails.ui
+  services/tt-rss/gui/ttrssfeeddetails.ui)
+
 if(USE_WEBENGINE)
   list(APPEND SOURCES
     # WebEngine-based web (and message) browser.
@@ -436,6 +482,9 @@ if(USE_WEBENGINE)
     network-web/networkurlinterceptor.h
     network-web/urlinterceptor.h
   )
+
+  list(APPEND UI_FILES
+    network-web/adblock/adblockdialog.ui)
 else()
   list(APPEND SOURCES
     # Lite non-WebEngine message browser.
@@ -446,6 +495,10 @@ else()
   )
 endif()
 
+# Deal with .ui files.
+qt_wrap_ui(SOURCES ${UI_FILES})
+
+# Bundle resources.
 qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/sql.qrc)
 qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/rssguard.qrc)
 
@@ -453,6 +506,7 @@ if(APPLE OR WIN32 OR OS2)
   qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/icons.qrc)
 endif()
 
+# Bundle version info.
 if(WIN32)
   enable_language("RC")
   list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
