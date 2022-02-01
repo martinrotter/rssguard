@@ -1,5 +1,5 @@
 # Collect all .ts files.
-FILE(GLOB TS_FILES *.ts)
+FILE(GLOB TS_FILES  ${CMAKE_CURRENT_SOURCE_DIR}/*.ts)
 
 set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}")
 
