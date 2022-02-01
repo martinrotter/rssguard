@@ -61,7 +61,10 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
 
 #if defined(Q_OS_WIN)
   new_request.setAttribute(QNetworkRequest::Attribute::HttpPipeliningAllowedAttribute, true);
+
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
   new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, true);
+#endif
 #endif
 
   new_request.setRawHeader(HTTP_HEADERS_COOKIE, QSL("JSESSIONID= ").toLocal8Bit());
