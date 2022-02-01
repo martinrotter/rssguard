@@ -143,11 +143,9 @@ if(UNIX AND NOT APPLE AND NOT ANDROID)
 endif()
 
 if(BUILD_WITH_QT6)
-  set(QTTAR Qt)
   find_package(QT NAMES Qt6)
   find_package(Qt6 COMPONENTS ${QT_COMPONENTS} Core5Compat REQUIRED)
 else()
-  set(QTTAR Qt5)
   find_package(QT NAMES Qt5)
   find_package(Qt5 COMPONENTS ${QT_COMPONENTS} REQUIRED)
 

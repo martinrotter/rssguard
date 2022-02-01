@@ -530,36 +530,36 @@ target_include_directories(rssguard
 )
 
 target_link_libraries(rssguard PUBLIC
-  ${QTTAR}::Core
-  ${QTTAR}::Gui
-  ${QTTAR}::Network
-  ${QTTAR}::Qml
-  ${QTTAR}::Sql
-  ${QTTAR}::Widgets
-  ${QTTAR}::Xml
+  Qt${QT_VERSION_MAJOR}::Core
+  Qt${QT_VERSION_MAJOR}::Gui
+  Qt${QT_VERSION_MAJOR}::Network
+  Qt${QT_VERSION_MAJOR}::Qml
+  Qt${QT_VERSION_MAJOR}::Sql
+  Qt${QT_VERSION_MAJOR}::Widgets
+  Qt${QT_VERSION_MAJOR}::Xml
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
   target_link_libraries(rssguard PUBLIC
-    ${QTTAR}::Core5Compat
+    Qt${QT_VERSION_MAJOR}::Core5Compat
   )
 endif()
 
 if(USE_WEBENGINE)
   target_link_libraries(rssguard PUBLIC
-    ${QTTAR}::WebEngineWidgets
+    Qt${QT_VERSION_MAJOR}::WebEngineWidgets
   )
 endif()
 
 if(NOT OS2)
   target_link_libraries(rssguard PUBLIC
-    ${QTTAR}::Multimedia
+    Qt${QT_VERSION_MAJOR}::Multimedia
   )
 endif()
 
 if(UNIX AND NOT APPLE AND NOT ANDROID)
   target_link_libraries(rssguard PUBLIC
-    ${QTTAR}::DBus
+    Qt${QT_VERSION_MAJOR}::DBus
   )
 endif()
 
