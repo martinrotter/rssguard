@@ -27,7 +27,7 @@
 #   {FEEDLY,GMAIL,INOREADER}_CLIENT_SECRET - preconfigured OAuth cliend SECRET.
 #
 # Other information:
-#   - supports Windows, Linux, macOS, OS/2, Android,
+#   - supports Windows, Linux, *BSD, macOS, OS/2, Android,
 #   - Qt 5.9.0 or newer is required,
 #   - cmake 3.9.0 or newer is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules within repository before compilation,
@@ -38,13 +38,13 @@
 #   your OS/2 distro is up-to-date and you have all dependencies installed: os2-base, all gcc-* packages,
 #   libc and libcx up-to-date, kbuild-make, ash, binutils, all relevant qt5-* packages.
 #
-#   After your dependecies are installed, then you can compile via standard `qmake -> make -> make install` steps
+#   After your dependecies are installed, then you can compile via standard `cmake -> make -> make install` steps
 #   and package with: 7z.exe a -t7z -mmt -mx9 "rssguard.7z" "<build-folder\src\rssguard\app\*" command.
 #
 # Authors and contributors:
 #   - Martin Rotter (project leader),
 #   - Elbert Pol (OS/2-related contributions),
-#   - CyberTailor (cmake-related contributions.
+#   - Anna Vyalkova (cmake-related contributions).
 #
 #################################################################
 
@@ -98,7 +98,11 @@ if(${FORCE_COLORED_OUTPUT})
   endif()
 endif()
 
+# Aux files not used for build but include in project.
+add_custom_target(AuxFiles SOURCES "resources/scripts/uncrustify/uncrustify.cfg")
+
 # Global compilation switches.
+option(BUILD_WITH_QT6 "Build application with Qt 6" OFF)
 option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source" OFF)
 option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)" OFF)
@@ -114,8 +118,7 @@ set(INOREADER_CLIENT_ID "" CACHE STRING "Inoreader client ID")
 set(INOREADER_CLIENT_SECRET "" CACHE STRING "Inoreader client secret")
 
 # Import Qt libraries.
-find_package(QT NAMES Qt6 Qt5 REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
+set(QT_COMPONENTS
   Core
   Gui
   LinguistTools
@@ -126,25 +129,51 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS
   Xml
 )
 
-if(QT_VERSION_MAJOR EQUAL 6)
-  find_package(Qt6 COMPONENTS Core5Compat REQUIRED)
+if(NOT OS2)
+  list(APPEND QT_COMPONENTS Multimedia)
 endif()
 
 if(USE_WEBENGINE)
-  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WebEngineWidgets REQUIRED)
+  list(APPEND QT_COMPONENTS WebEngineWidgets)
   add_compile_definitions(USE_WEBENGINE)
 endif()
 
-if(NOT OS2)
-  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Multimedia REQUIRED)
-  macro(qt_add_resources)
-    qt_add_big_resources(${ARGN})
-  endmacro()
+if(UNIX AND NOT APPLE AND NOT ANDROID)
+  list(APPEND QT_COMPONENTS DBus)
 endif()
 
-if(UNIX AND NOT APPLE AND NOT ANDROID)
-  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS DBus REQUIRED)
+if(BUILD_WITH_QT6)
+  find_package(QT NAMES Qt6)
+  find_package(Qt6 COMPONENTS ${QT_COMPONENTS} Core5Compat REQUIRED)
+else()
+  find_package(QT NAMES Qt5)
+  find_package(Qt5 COMPONENTS ${QT_COMPONENTS} REQUIRED)
+
+  if(Qt5Core_VERSION VERSION_LESS 5.15.0)
+    # Compatibility macros.
+    macro(qt_add_resources)
+      qt5_add_resources(${ARGN})
+    endmacro()
+
+    macro(qt_add_big_resources)
+      qt5_add_big_resources(${ARGN})
+    endmacro()
+
+    macro(qt_create_translation)
+      qt5_create_translation(${ARGN})
+    endmacro()
+
+    macro(qt_add_translation)
+      qt5_add_translation(${ARGN})
+    endmacro()
+  endif()
 endif()
+
+#if(NOT OS2)
+#  macro(qt_add_resources)
+#    qt_add_big_resources(${ARGN})
+#  endmacro()
+#endif()
 
 # Process oauth service secrets.
 if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")

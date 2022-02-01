@@ -306,7 +306,7 @@ void WebFactory::createMenu(QMenu* menu) {
   actions << createEngineSettingsAction(tr("Plugins enabled"), QWebEngineSettings::WebAttribute::PluginsEnabled);
   actions << createEngineSettingsAction(tr("Fullscreen enabled"), QWebEngineSettings::WebAttribute::FullScreenSupportEnabled);
 
-#if !defined(Q_OS_LINUX)
+#if !defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   actions << createEngineSettingsAction(tr("Screen capture enabled"), QWebEngineSettings::WebAttribute::ScreenCaptureEnabled);
   actions << createEngineSettingsAction(tr("WebGL enabled"), QWebEngineSettings::WebAttribute::WebGLEnabled);
   actions << createEngineSettingsAction(tr("Accelerate 2D canvas"), QWebEngineSettings::WebAttribute::Accelerated2dCanvasEnabled);

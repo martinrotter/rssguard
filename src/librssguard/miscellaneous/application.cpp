@@ -31,7 +31,7 @@
 #include <QSslSocket>
 #include <QTimer>
 
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
 #include <QDBusConnection>
 #include <QDBusMessage>
 #endif
@@ -91,7 +91,7 @@ Application::Application(const QString& id, int& argc, char** argv)
   connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
   connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
 
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   QString app_dir = QString::fromLocal8Bit(qgetenv("APPDIR"));
 
   if (!app_dir.isEmpty()) {
@@ -623,7 +623,7 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_unre
     m_trayIcon->setNumber(unread_messages, any_feed_has_unread_messages);
   }
 
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   QDBusMessage signal = QDBusMessage::createSignal(QSL("/"),
                                                    QSL("com.canonical.Unity.LauncherEntry"),
                                                    QSL("Update"));

@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
   QApplication::setAttribute(Qt::ApplicationAttribute::AA_EnableHighDpiScaling);
 #endif
 
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   QApplication::setDesktopFileName(APP_DESKTOP_ENTRY_FILE);
 #endif
 
