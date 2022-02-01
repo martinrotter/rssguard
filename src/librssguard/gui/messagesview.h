@@ -42,6 +42,7 @@ class MessagesView : public BaseTreeView {
     // Message manipulators.
     void openSelectedSourceMessagesExternally();
     void openSelectedMessagesInternally();
+    void openSelectedMessageUrl();
     void sendSelectedMessageViaEmail();
 
     // Works with SELECTED messages only.

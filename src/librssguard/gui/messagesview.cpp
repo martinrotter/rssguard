@@ -373,11 +373,13 @@ void MessagesView::initializeContextMenu() {
       << qApp->mainForm()->m_ui->m_actionSendMessageViaEmail
       << qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally
       << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally
+      << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternallyNoTab
       << qApp->mainForm()->m_ui->m_actionCopyUrlSelectedArticles
       << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead
       << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread
       << qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages
       << qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
+
 
   if (m_sourceModel->loadedItem() != nullptr) {
     if (m_sourceModel->loadedItem()->kind() == RootItem::Kind::Bin) {
@@ -539,6 +541,18 @@ void MessagesView::openSelectedMessagesInternally() {
 
   if (!messages.isEmpty()) {
     emit openMessagesInNewspaperView(m_sourceModel->loadedItem(), messages);
+  }
+}
+
+void MessagesView::openSelectedMessageUrl() {
+  auto rws = selectionModel()->selectedRows();
+
+  if (!rws.isEmpty()) {
+    auto msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(rws.at(0)).row());
+
+    if (!msg.m_url.isEmpty()) {
+     emit openLinkMiniBrowser(msg.m_url);
+    }
   }
 }
 

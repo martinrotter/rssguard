@@ -49,6 +49,7 @@ class MessagePreviewer : public QWidget {
     void setToolbarsVisible(bool visible);
     void clear();
     void hideToolbar();
+    void loadUrl(const QString& url);
     void loadMessage(const Message& message, RootItem* root);
 
   private slots:

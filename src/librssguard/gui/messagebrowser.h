@@ -28,10 +28,14 @@ class MessageBrowser : public QWidget {
     void setVerticalScrollBarPosition(double pos);
     void clear(bool also_hide);
     void reloadFontSettings();
+    void loadUrl(const QString& url);
     void loadMessage(const Message& message, RootItem* root);
 
   protected:
     bool eventFilter(QObject* watched, QEvent* event);
+
+  private slots:
+    void onAnchorClicked(const QUrl& url);
 
   private:
     QString prepareHtmlForMessage(const Message& message);

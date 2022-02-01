@@ -107,6 +107,15 @@ void MessagePreviewer::hideToolbar() {
   m_toolBar->setVisible(false);
 }
 
+void MessagePreviewer::loadUrl(const QString &url) {
+#if defined(USE_WEBENGINE)
+  m_txtMessage->loadUrl(url);
+
+#else
+  m_txtMessage->loadUrl(url);
+#endif
+}
+
 void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
   bool same_message = message.m_id == m_message.m_id && m_root == root;
 

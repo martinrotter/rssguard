@@ -21,6 +21,7 @@ Downloader::Downloader(QObject* parent)
   m_lastOutputData(QByteArray()), m_lastOutputError(QNetworkReply::NoError) {
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
+
   connect(m_timer, &QTimer::timeout, this, &Downloader::cancel);
 
   m_downloadManager->setCookieJar(qApp->web()->cookieJar());

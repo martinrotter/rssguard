@@ -52,6 +52,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget* parent) : TabContent(parent), m_to
   m_messagesBrowser(new MessagePreviewer(false, this)) {
   initialize();
   initializeViews();
+
   createConnections();
 }
 
@@ -262,6 +263,7 @@ void FeedMessageViewer::createConnections() {
           m_messagesView->sourceModel(), &MessagesModel::setMessageImportantById);
 
   connect(m_messagesView, &MessagesView::currentMessageChanged, this, &FeedMessageViewer::displayMessage);
+  connect(m_messagesView, &MessagesView::openLinkMiniBrowser, m_messagesBrowser, &MessagePreviewer::loadUrl);
 
   // If user selects feeds, load their messages.
   connect(m_feedsView, &FeedsView::itemSelected, m_messagesView, &MessagesView::loadItem);

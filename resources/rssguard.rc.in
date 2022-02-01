@@ -29,7 +29,7 @@ BEGIN
             VALUE "LegalCopyright", "@APP_COPYRIGHT@"
             VALUE "OriginalFilename", "@CMAKE_PROJECT_NAME@.exe"
             VALUE "ProductName", "@APP_NAME@"
-            VALUE "ProductVersion","@CMAKE_PROJECT_VERSION@"
+            VALUE "ProductVersion","@CMAKE_PROJECT_VERSION@-@APP_REVISION@"
         END
     END
 
