@@ -148,56 +148,58 @@ bool MessageBrowser::eventFilter(QObject* watched, QEvent* event) {
   return false;
 }
 
-void MessageBrowser::onAnchorClicked(const QUrl &url) {
-      if (url.toString().startsWith(INTERNAL_URL_PASSATTACHMENT) &&
-          m_root != nullptr &&
-          m_root->getParentServiceRoot()->downloadAttachmentOnMyOwn(url)) {
-        return;
+void MessageBrowser::onAnchorClicked(const QUrl& url) {
+  if (url.toString().startsWith(INTERNAL_URL_PASSATTACHMENT) &&
+      m_root != nullptr &&
+      m_root->getParentServiceRoot()->downloadAttachmentOnMyOwn(url)) {
+    return;
+  }
+
+  if (!url.isEmpty()) {
+    bool open_externally_now = qApp->settings()->value(GROUP(Browser),
+                                                       SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
+
+    if (open_externally_now) {
+      qApp->web()->openUrlInExternalBrowser(url.toString());
+    }
+    else {
+      // User clicked some URL. Open it in external browser or download?
+      MessageBox box(qApp->mainFormWidget());
+
+      box.setText(tr("You clicked some link. You can download the link contents or open it in external web browser."));
+      box.setInformativeText(tr("What action do you want to take?"));
+      box.setDetailedText(url.toString());
+
+      QAbstractButton* btn_open = box.addButton(tr("Open in external browser"), QMessageBox::ButtonRole::ActionRole);
+      QAbstractButton* btn_download = box.addButton(tr("Download"), QMessageBox::ButtonRole::ActionRole);
+      QAbstractButton* btn_cancel = box.addButton(QMessageBox::StandardButton::Cancel);
+      bool always;
+
+      MessageBox::setCheckBox(&box, tr("Always open links in external browser."), &always);
+
+      box.setDefaultButton(QMessageBox::StandardButton::Cancel);
+      box.exec();
+
+      if (box.clickedButton() != box.button(QMessageBox::StandardButton::Cancel)) {
+        // Store selected checkbox value.
+        qApp->settings()->setValue(GROUP(Browser), Browser::OpenLinksInExternalBrowserRightAway, always);
       }
 
-      if (!url.isEmpty()) {
-        bool open_externally_now = qApp->settings()->value(GROUP(Browser),
-                                                           SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
-
-        if (open_externally_now) {
-          qApp->web()->openUrlInExternalBrowser(url.toString());
-        }
-        else {
-          // User clicked some URL. Open it in external browser or download?
-          MessageBox box(qApp->mainFormWidget());
-          box.setText(tr("You clicked some link. You can download the link contents or open it in external web browser."));
-          box.setInformativeText(tr("What action do you want to take?"));
-          box.setDetailedText(url.toString());
-
-          QAbstractButton* btn_open = box.addButton(tr("Open in external browser"), QMessageBox::ButtonRole::ActionRole);
-          QAbstractButton* btn_download = box.addButton(tr("Download"), QMessageBox::ButtonRole::ActionRole);
-          QAbstractButton* btn_cancel = box.addButton(QMessageBox::StandardButton::Cancel);
-          bool always;
-          MessageBox::setCheckBox(&box, tr("Always open links in external browser."), &always);
-
-          box.setDefaultButton(QMessageBox::StandardButton::Cancel);
-          box.exec();
-
-          if (box.clickedButton() != box.button(QMessageBox::StandardButton::Cancel)) {
-            // Store selected checkbox value.
-            qApp->settings()->setValue(GROUP(Browser), Browser::OpenLinksInExternalBrowserRightAway, always);
-          }
-
-          if (box.clickedButton() == btn_open) {
-            qApp->web()->openUrlInExternalBrowser(url.toString());
-          }
-          else if (box.clickedButton() == btn_download) {
-            qApp->downloadManager()->download(url);
-          }
-
-          btn_download->deleteLater();
-          btn_open->deleteLater();
-          btn_cancel->deleteLater();
-        }
+      if (box.clickedButton() == btn_open) {
+        qApp->web()->openUrlInExternalBrowser(url.toString());
       }
-      else {
-        MessageBox::show(qApp->mainFormWidget(), QMessageBox::Warning, tr("Incorrect link"), tr("Selected hyperlink is invalid."));
+      else if (box.clickedButton() == btn_download) {
+        qApp->downloadManager()->download(url);
       }
+
+      btn_download->deleteLater();
+      btn_open->deleteLater();
+      btn_cancel->deleteLater();
+    }
+  }
+  else {
+    MessageBox::show(qApp->mainFormWidget(), QMessageBox::Warning, tr("Incorrect link"), tr("Selected hyperlink is invalid."));
+  }
 }
 
 void MessageBrowser::reloadFontSettings() {
@@ -208,7 +210,7 @@ void MessageBrowser::reloadFontSettings() {
   m_txtBrowser->setFont(fon);
 }
 
-void MessageBrowser::loadUrl(const QString &url) {
+void MessageBrowser::loadUrl(const QString& url) {
   onAnchorClicked(url);
 }
 
