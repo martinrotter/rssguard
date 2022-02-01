@@ -14,15 +14,15 @@ target_include_directories(app PUBLIC
 )
 
 target_link_libraries(app PUBLIC
-  Qt::Core
-  Qt::Gui
-  Qt::Widgets
+  ${QTTAR}::Core
+  ${QTTAR}::Gui
+  ${QTTAR}::Widgets
   rssguard
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
   target_link_libraries(app PUBLIC
-    Qt::Core5Compat
+    ${QTTAR}::Core5Compat
   )
 endif()
 

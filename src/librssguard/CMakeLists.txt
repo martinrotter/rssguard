@@ -502,6 +502,7 @@ qt_wrap_ui(SOURCES ${UI_FILES})
 qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/sql.qrc)
 qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/rssguard.qrc)
 
+# Bundle icons on some platforms which do not provide system-wide icon themes.
 if(APPLE OR WIN32 OR OS2)
   qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/icons.qrc)
 endif()
@@ -529,36 +530,36 @@ target_include_directories(rssguard
 )
 
 target_link_libraries(rssguard PUBLIC
-  Qt::Core
-  Qt::Gui
-  Qt::Network
-  Qt::Qml
-  Qt::Sql
-  Qt::Widgets
-  Qt::Xml
+  ${QTTAR}::Core
+  ${QTTAR}::Gui
+  ${QTTAR}::Network
+  ${QTTAR}::Qml
+  ${QTTAR}::Sql
+  ${QTTAR}::Widgets
+  ${QTTAR}::Xml
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
   target_link_libraries(rssguard PUBLIC
-    Qt::Core5Compat
+    ${QTTAR}::Core5Compat
   )
 endif()
 
 if(USE_WEBENGINE)
   target_link_libraries(rssguard PUBLIC
-    Qt::WebEngineWidgets
+    ${QTTAR}::WebEngineWidgets
   )
 endif()
 
 if(NOT OS2)
   target_link_libraries(rssguard PUBLIC
-    Qt::Multimedia
+    ${QTTAR}::Multimedia
   )
 endif()
 
 if(UNIX AND NOT APPLE AND NOT ANDROID)
   target_link_libraries(rssguard PUBLIC
-    Qt::DBus
+    ${QTTAR}::DBus
   )
 endif()
 

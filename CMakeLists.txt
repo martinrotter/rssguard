@@ -143,9 +143,11 @@ if(UNIX AND NOT APPLE AND NOT ANDROID)
 endif()
 
 if(BUILD_WITH_QT6)
+  set(QTTAR Qt)
   find_package(QT NAMES Qt6)
   find_package(Qt6 COMPONENTS ${QT_COMPONENTS} Core5Compat REQUIRED)
 else()
+  set(QTTAR Qt5)
   find_package(QT NAMES Qt5)
   find_package(Qt5 COMPONENTS ${QT_COMPONENTS} REQUIRED)
 
@@ -172,12 +174,6 @@ else()
     endmacro()
   endif()
 endif()
-
-#if(NOT OS2)
-#  macro(qt_add_resources)
-#    qt_add_big_resources(${ARGN})
-#  endmacro()
-#endif()
 
 # Process oauth service secrets.
 if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
@@ -276,6 +272,7 @@ elseif(APPLE)
   )
 endif()
 
+# Generate localizations, build library and application.
 add_subdirectory(localization)
 add_subdirectory(src/librssguard)
 add_subdirectory(src/rssguard)
