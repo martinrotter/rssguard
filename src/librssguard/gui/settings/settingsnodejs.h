@@ -22,6 +22,8 @@ class SettingsNodejs : public SettingsPanel {
     void testNpm();
     void testPackageFolder();
 
+    void changeFileFolder(LineEditWithStatus* tb, bool directory_select, const QString& file_filter = {});
+
   private:
     Ui::SettingsNodejs m_ui;
 };

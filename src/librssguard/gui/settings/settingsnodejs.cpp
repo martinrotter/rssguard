@@ -8,6 +8,7 @@
 #include "miscellaneous/nodejs.h"
 
 #include <QDir>
+#include <QFileDialog>
 
 SettingsNodejs::SettingsNodejs(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent) {
   m_ui.setupUi(this);
@@ -32,8 +33,46 @@ SettingsNodejs::SettingsNodejs(Settings* settings, QWidget* parent) : SettingsPa
   connect(m_ui.m_tbPackageFolder->lineEdit(), &BaseLineEdit::textChanged,
           this, &SettingsNodejs::testPackageFolder);
 
+  connect(m_ui.m_tbNodeExecutable->lineEdit(), &BaseLineEdit::textChanged,
+          this, &SettingsNodejs::dirtifySettings);
+  connect(m_ui.m_tbNpmExecutable->lineEdit(), &BaseLineEdit::textChanged,
+          this, &SettingsNodejs::dirtifySettings);
+  connect(m_ui.m_tbPackageFolder->lineEdit(), &BaseLineEdit::textChanged,
+          this, &SettingsNodejs::dirtifySettings);
+
+  connect(m_ui.m_btnPackageFolder, &QPushButton::clicked, this, [this]() {
+    changeFileFolder(m_ui.m_tbPackageFolder, true);
+  });
+  connect(m_ui.m_btnNodeExecutable, &QPushButton::clicked, this, [this]() {
+    changeFileFolder(m_ui.m_tbPackageFolder, false, QSL("Node.js (node*)"));
+  });
+  connect(m_ui.m_btnNpmExecutable, &QPushButton::clicked, this, [this]() {
+    changeFileFolder(m_ui.m_tbPackageFolder, false, QSL("NPM (npm*)"));
+  });
+
   // FOR ME: npm install --prefix "složka"
   // NODE_PATH="složka" node.exe....
+}
+
+void SettingsNodejs::changeFileFolder(LineEditWithStatus* tb, bool directory_select, const QString& file_filter) {
+  QFileDialog d(this);
+
+  d.setFileMode(directory_select ? QFileDialog::FileMode::Directory : QFileDialog::FileMode::ExistingFile);
+
+  if (directory_select) {
+    d.setOption(QFileDialog::Option::ShowDirsOnly);
+  }
+  else {
+    d.setNameFilter(file_filter);
+  }
+
+  QString current = qApp->replaceDataUserDataFolderPlaceholder(tb->lineEdit()->text());
+
+  d.selectFile(current);
+
+  if (d.exec() == QDialog::DialogCode::Accepted && !d.selectedFiles().isEmpty()) {
+    tb->lineEdit()->setText(QDir::toNativeSeparators(d.selectedFiles().at(0)));
+  }
 }
 
 QString SettingsNodejs::title() const {
@@ -41,12 +80,20 @@ QString SettingsNodejs::title() const {
 }
 
 void SettingsNodejs::loadSettings() {
+  onBeginLoadSettings();
+
   m_ui.m_tbNodeExecutable->lineEdit()->setText(qApp->nodejs()->nodeJsExecutable());
   m_ui.m_tbNpmExecutable->lineEdit()->setText(qApp->nodejs()->npmExecutable());
   m_ui.m_tbPackageFolder->lineEdit()->setText(qApp->nodejs()->packageFolder());
+
+  onEndLoadSettings();
 }
 
-void SettingsNodejs::saveSettings() {}
+void SettingsNodejs::saveSettings() {
+  onBeginSaveSettings();
+
+  onEndSaveSettings();
+}
 
 void SettingsNodejs::testNodejs() {
   try {

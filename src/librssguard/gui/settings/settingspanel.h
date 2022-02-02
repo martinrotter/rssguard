@@ -23,6 +23,8 @@ class SettingsPanel : public QWidget {
     void setIsDirty(bool is_dirty);
     void setRequiresRestart(bool requiresRestart);
 
+    bool isLoaded() const;
+
   protected:
     void onBeginLoadSettings();
     void onEndLoadSettings();
@@ -43,6 +45,7 @@ class SettingsPanel : public QWidget {
     bool m_requiresRestart;
     bool m_isDirty;
     bool m_isLoading;
+    bool m_isLoaded;
     Settings* m_settings;
 };
 

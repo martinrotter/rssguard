@@ -39,6 +39,7 @@ FormSettings::FormSettings(QWidget& parent)
   connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormSettings::saveSettings);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormSettings::cancelSettings);
   connect(m_btnApply, &QPushButton::clicked, this, &FormSettings::applySettings);
+  connect(m_ui.m_listSettings, &QListWidget::currentRowChanged, this, &FormSettings::openSettingsCategory);
 
   addSettingsPanel(new SettingsGeneral(&m_settings, this));
   addSettingsPanel(new SettingsDatabase(&m_settings, this));
@@ -61,6 +62,16 @@ FormSettings::~FormSettings() {
   qDebugNN << LOGSEC_GUI << "Destroying FormSettings distance.";
 }
 
+void FormSettings::openSettingsCategory(int category) {
+  if (category >=0 && category < m_panels.size()) {
+    if (!m_panels.at(category)->isLoaded()) {
+      m_panels.at(category)->loadSettings();
+    }
+  }
+
+  m_ui.m_stackedSettings->setCurrentIndex(category);
+}
+
 void FormSettings::saveSettings() {
   applySettings();
   accept();
@@ -72,7 +83,7 @@ void FormSettings::applySettings() {
   QStringList panels_for_restart;
 
   for (SettingsPanel* panel : qAsConst(m_panels)) {
-    if (panel->isDirty()) {
+    if (panel->isDirty() && panel->isLoaded()) {
       panel->saveSettings();
     }
 
@@ -149,8 +160,6 @@ void FormSettings::addSettingsPanel(SettingsPanel* panel) {
   scr->setWidget(panel);
 
   m_ui.m_stackedSettings->addWidget(scr);
-
-  panel->loadSettings();
 
   connect(panel, &SettingsPanel::settingsChanged, this, [this]() {
     m_btnApply->setEnabled(true);

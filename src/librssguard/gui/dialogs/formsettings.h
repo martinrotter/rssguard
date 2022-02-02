@@ -20,6 +20,7 @@ class FormSettings : public QDialog {
     virtual ~FormSettings();
 
   private slots:
+    void openSettingsCategory(int category);
 
     // Saves settings into global configuration.
     void saveSettings();
@@ -31,7 +32,6 @@ class FormSettings : public QDialog {
 
     Ui::FormSettings m_ui;
     QPushButton* m_btnApply;
-
     QList<SettingsPanel*> m_panels;
     Settings& m_settings;
 };

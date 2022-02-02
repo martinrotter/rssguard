@@ -62,22 +62,5 @@
   <tabstop>m_listSettings</tabstop>
  </tabstops>
  <resources/>
- <connections>
-  <connection>
-   <sender>m_listSettings</sender>
-   <signal>currentRowChanged(int)</signal>
-   <receiver>m_stackedSettings</receiver>
-   <slot>setCurrentIndex(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>83</x>
-     <y>162</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>370</x>
-     <y>162</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
