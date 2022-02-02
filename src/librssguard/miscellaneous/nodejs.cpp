@@ -3,6 +3,7 @@
 #include "miscellaneous/nodejs.h"
 
 #include "exceptions/applicationexception.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 
@@ -27,7 +28,19 @@ void NodeJs::setNpmExecutable(const QString& exe) const {
 }
 
 QString NodeJs::packageFolder() const {
-  return QDir::toNativeSeparators(m_settings->value(GROUP(Node), SETTING(Node::PackageFolder)).toString());
+  QString path = QDir::toNativeSeparators(m_settings->value(GROUP(Node), SETTING(Node::PackageFolder)).toString());
+
+  return path;
+}
+
+QString NodeJs::processedPackageFolder() const {
+  QString path = qApp->replaceDataUserDataFolderPlaceholder(packageFolder());
+
+  if (!QDir().mkpath(path)) {
+    qCriticalNN << LOGSEC_NODEJS << "Failed to create package folder structure" << QUOTE_W_SPACE_DOT(path);
+  }
+
+  return path;
 }
 
 void NodeJs::setPackageFolder(const QString& path) {}

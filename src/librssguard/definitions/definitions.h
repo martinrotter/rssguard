@@ -130,6 +130,7 @@
 #define LOGSEC_JS                   "javascript: "
 #define LOGSEC_GUI                  "gui: "
 #define LOGSEC_CORE                 "core: "
+#define LOGSEC_NODEJS               "nodejs: "
 #define LOGSEC_DB                   "database: "
 #define LOGSEC_NEXTCLOUD            "nextcloud: "
 #define LOGSEC_GREADER              "greader: "

@@ -20,6 +20,7 @@ class NodeJs : public QObject {
     void setNpmExecutable(const QString& exe) const;
 
     QString packageFolder() const;
+    QString processedPackageFolder() const;
     void setPackageFolder(const QString& path);
 
     QString nodejsVersion(const QString& nodejs_exe) const;
