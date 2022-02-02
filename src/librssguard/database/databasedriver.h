@@ -46,9 +46,11 @@ class DatabaseDriver : public QObject {
                                     DatabaseDriver::DesiredStorageType desired_type = DatabaseDriver::DesiredStorageType::FromSettings) = 0;
 
   protected:
-    bool updateDatabaseSchema(QSqlQuery& query,
+    void updateDatabaseSchema(QSqlQuery& query,
                               int source_db_schema_version,
                               const QString& database_name = {});
+
+    void setSchemaVersion(QSqlQuery& query, int new_schema_version, bool empty_table);
 
     QStringList prepareScript(const QString& base_sql_folder,
                               const QString& sql_file,

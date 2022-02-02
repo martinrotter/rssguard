@@ -27,5 +27,3 @@ SELECT id, title, description, date_created, icon, category, source, update_type
 FROM backup_Feeds;
 -- !
 DROP TABLE backup_Feeds;
--- !
-UPDATE Information SET inf_value = '2' WHERE inf_key = 'schema_version';

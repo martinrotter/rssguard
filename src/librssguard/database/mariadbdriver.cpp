@@ -183,6 +183,8 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
             throw ApplicationException(query_db.lastError().text());
           }
         }
+
+        setSchemaVersion(query_db, QSL(APP_DB_SCHEMA_VERSION).toInt(), true);
       }
       catch (const ApplicationException& ex) {
         qFatal("Error when running SQL scripts: %s.", qPrintable(ex.message()));
@@ -196,18 +198,17 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
       const int installed_db_schema = query_db.value(0).toString().toInt();
 
       if (installed_db_schema < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
-        if (updateDatabaseSchema(query_db, installed_db_schema, database_name)) {
+        try {
+          updateDatabaseSchema(query_db, installed_db_schema, database_name);
           qDebugNN << LOGSEC_DB
                    << "Database schema was updated from"
                    << QUOTE_W_SPACE(installed_db_schema)
                    << "to"
                    << QUOTE_W_SPACE(APP_DB_SCHEMA_VERSION)
-                   << "successully or it is already up to date.";
+                   << "successully.";
         }
-        else {
-          qFatal("Database schema was not updated from '%s' to '%s' successully.",
-                 qPrintable(QString::number(installed_db_schema)),
-                 APP_DB_SCHEMA_VERSION);
+        catch (const ApplicationException& ex) {
+          qFatal("Error when updating DB schema from %d: %s.", installed_db_schema, qPrintable(ex.message()));
         }
       }
     }

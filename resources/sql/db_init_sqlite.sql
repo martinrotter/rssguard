@@ -3,8 +3,6 @@ CREATE TABLE Information (
   inf_value       TEXT
 );
 -- !
-INSERT INTO Information VALUES ('schema_version', '2');
--- !
 CREATE TABLE Accounts (
   id              $$,
   type            TEXT        NOT NULL CHECK (type != ''), /* ID of the account type. Each account defines its own, for example 'ttrss'. */

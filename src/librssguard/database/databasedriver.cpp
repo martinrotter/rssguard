@@ -14,27 +14,22 @@
 DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent)
 {}
 
-bool DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
+void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
                                           int source_db_schema_version,
                                           const QString& database_name) {
   const int current_version = QSL(APP_DB_SCHEMA_VERSION).toInt();
 
   while (source_db_schema_version != current_version) {
-    try {
-      const QStringList statements = prepareScript(APP_SQL_PATH,
-                                                   QSL(APP_DB_UPDATE_FILE_PATTERN).arg(ddlFilePrefix(),
-                                                                                       QString::number(source_db_schema_version),
-                                                                                       QString::number(source_db_schema_version + 1)),
-                                                   database_name);
+    const QStringList statements = prepareScript(APP_SQL_PATH,
+                                                 QSL(APP_DB_UPDATE_FILE_PATTERN).arg(ddlFilePrefix(),
+                                                                                     QString::number(source_db_schema_version),
+                                                                                     QString::number(source_db_schema_version + 1)),
+                                                 database_name);
 
-      for (const QString& statement : statements) {
-        if (!query.exec(statement) && query.lastError().isValid()) {
-          throw ApplicationException(query.lastError().text());
-        }
+    for (const QString& statement : statements) {
+      if (!query.exec(statement) && query.lastError().isValid()) {
+        throw ApplicationException(query.lastError().text());
       }
-    }
-    catch (const ApplicationException& ex) {
-      qFatal("Error when running SQL scripts: %s.", qPrintable(ex.message()));
     }
 
     // Increment the version.
@@ -47,7 +42,20 @@ bool DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
     source_db_schema_version++;
   }
 
-  return true;
+  setSchemaVersion(query, current_version, false);
+}
+
+void DatabaseDriver::setSchemaVersion(QSqlQuery& query, int new_schema_version, bool empty_table) {
+  if (!query.prepare(empty_table
+                     ? QSL("INSERT INTO Information VALUES ('schema_version', :schema_version);")
+                     : QSL("UPDATE Information SET inf_value = :schema_version WHERE inf_key = 'schema_version';"))) {
+    throw ApplicationException(query.lastError().text());
+  }
+
+  query.bindValue(QSL(":schema_version"), QString::number(new_schema_version));
+  if (!query.exec()) {
+    throw ApplicationException(query.lastError().text());
+  }
 }
 
 QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
