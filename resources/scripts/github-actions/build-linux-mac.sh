@@ -103,7 +103,7 @@ else
   set -- *.dmg
   imagename="$1"
 
-  if [[ "$webengine" == "true" ]]; then
+  if [[ "$webengine" == "ON" ]]; then
     imagenewname="rssguard-${git_tag}-${git_revision}-mac64.dmg"
   else
     imagenewname="rssguard-${git_tag}-${git_revision}-nowebengine-mac64.dmg"
