@@ -1,5 +1,5 @@
 CREATE TABLE Information (
-  inf_key         TEXT        NOT NULL UNIQUE CHECK (inf_key != ''),
+  inf_key         VARCHAR(128)    NOT NULL UNIQUE CHECK (inf_key != ''), /* Use VARCHAR as MariaDB 10.3 does no support UNIQUE TEXT columns. */
   inf_value       TEXT
 );
 -- !

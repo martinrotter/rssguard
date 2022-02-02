@@ -10,8 +10,8 @@
     <height>450</height>
    </rect>
   </property>
-  <layout class="QFormLayout" name="formLayout_2">
-   <item row="0" column="0" colspan="2">
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
     <widget class="QScrollArea" name="m_scroll">
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -25,7 +25,7 @@
         <x>0</x>
         <y>0</y>
         <width>532</width>
-        <height>403</height>
+        <height>402</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -43,6 +43,12 @@
        </property>
        <item>
         <widget class="QTabWidget" name="m_tabWidget">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
          <property name="currentIndex">
           <number>-1</number>
          </property>
@@ -52,7 +58,7 @@
      </widget>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item>
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>

@@ -103,6 +103,9 @@ QString MessagesModelSqlLayer::orderByClause() const {
                           ? QSL("%1")
                           : QSL("LOWER(%1)");
 
+      //sorts.append(QSL("LENGTH(%1)").arg(order_sql.arg(field_name)) +
+      //             (m_sortOrders[i] == Qt::SortOrder::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
+
       sorts.append(order_sql.arg(field_name) +
                    (m_sortOrders[i] == Qt::SortOrder::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
     }
