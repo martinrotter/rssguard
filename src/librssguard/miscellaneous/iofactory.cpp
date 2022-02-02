@@ -4,6 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "exceptions/ioexception.h"
+#include "exceptions/processexception.h"
 
 #include <QDataStream>
 #include <QDir>
@@ -113,9 +114,7 @@ QString IOFactory::startProcessGetOutput(const QString& executable,
     return proc.readAllStandardOutput();
   }
   else {
-    QString err = proc.readAllStandardError().simplified();
-
-    return err;
+    throw ProcessException(proc.exitCode(), proc.exitStatus(), proc.readAllStandardError().simplified());
   }
 }
 

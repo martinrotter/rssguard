@@ -298,17 +298,22 @@ QProcess* AdBlockManager::startServer(int port) {
   auto pe = proc->processEnvironment();
 
   if (!pe.contains(QSL("NODE_PATH"))) {
-    const QString system_node_prefix = IOFactory::startProcessGetOutput(
+    try {
+      const QString system_node_prefix = IOFactory::startProcessGetOutput(
 #if defined(Q_OS_WIN)
-      QSL("npm.cmd")
+        QSL("npm.cmd")
 #else
-      QSL("npm")
+        QSL("npm")
 #endif
-      , { QSL("root"), QSL("--quiet"), QSL("-g") }
-      );
+        , { QSL("root"), QSL("--quiet"), QSL("-g") }
+        );
 
-    if (!system_node_prefix.isEmpty()) {
-      pe.insert(QSL("NODE_PATH"), system_node_prefix.simplified());
+      if (!system_node_prefix.isEmpty()) {
+        pe.insert(QSL("NODE_PATH"), system_node_prefix.simplified());
+      }
+    }
+    catch (const ApplicationException& ex) {
+      qWarningNN << LOGSEC_ADBLOCK << "Failed to get NPM root path:" << QUOTE_W_SPACE_DOT(ex.message());
     }
   }
 

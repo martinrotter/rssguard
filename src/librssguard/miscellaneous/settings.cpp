@@ -15,6 +15,30 @@
 DKEY WebEngineAttributes::ID = "web_engine_attributes";
 #endif
 
+// Node.js.
+DKEY Node::ID = "nodejs";
+
+DKEY Node::NodeJsExecutable = QSL("nodejs_executable_") + OS_ID;
+
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+DVALUE(QString) Node::NodeJsExecutableDef = "node.exe";
+#else
+DVALUE(QString) Node::NodeJsExecutableDef = "node";
+#endif
+
+DKEY Node::NpmExecutable = QSL("npm_executable_") + OS_ID;
+
+#if defined(Q_OS_WIN)
+DVALUE(QString) Node::NpmExecutableDef = "npm.cmd";
+#elif defined(Q_OS_OS2)
+DVALUE(QString) Node::NpmExecutableDef = "npm.exe";
+#else
+DVALUE(QString) Node::NpmExecutableDef = "npm";
+#endif
+
+DKEY Node::PackageFolder = QSL("package_folder") + OS_ID;
+DVALUE(QString) Node::PackageFolderDef = QSL(USER_DATA_PLACEHOLDER) + "/node-packages-" + OS_ID;
+
 // Cookies.
 DKEY Cookies::ID = "cookies";
 

@@ -3,6 +3,7 @@
 #include "core/filterutils.h"
 
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/textfactory.h"
 
@@ -88,5 +89,10 @@ QDateTime FilterUtils::parseDateTime(const QString& dat) const {
 }
 
 QString FilterUtils::runExecutableGetOutput(const QString& executable, const QStringList& arguments) const {
-  return IOFactory::startProcessGetOutput(executable, arguments);
+  try {
+    return IOFactory::startProcessGetOutput(executable, arguments);
+  }
+  catch (const ApplicationException& ex) {
+    return ex.message();
+  }
 }

@@ -16,8 +16,8 @@
 #include <QNetworkProxy>
 #include <QStringList>
 
-#define KEY extern const char*
-#define DKEY const char*
+#define KEY extern const QString
+#define DKEY const QString
 #define VALUE(x) extern const x
 #define NON_CONST_VALUE(x) extern x
 #define DVALUE(x) const x
@@ -34,6 +34,19 @@ namespace WebEngineAttributes {
 
 namespace Cookies {
   KEY ID;
+}
+
+namespace Node {
+  KEY ID;
+
+  KEY NodeJsExecutable;
+  VALUE(QString) NodeJsExecutableDef;
+
+  KEY NpmExecutable;
+  VALUE(QString) NpmExecutableDef;
+
+  KEY PackageFolder;
+  VALUE(QString) PackageFolderDef;
 }
 
 namespace AdBlock {

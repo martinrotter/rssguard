@@ -5,11 +5,28 @@
 
 #include <QObject>
 
+class Settings;
+
 class NodeJs : public QObject {
   Q_OBJECT
 
   public:
-    explicit NodeJs(QObject* parent = nullptr);
+    explicit NodeJs(Settings* settings, QObject* parent = nullptr);
+
+    QString nodeJsExecutable() const;
+    void setNodeJsExecutable(const QString& exe) const;
+
+    QString npmExecutable() const;
+    void setNpmExecutable(const QString& exe) const;
+
+    QString packageFolder() const;
+    void setPackageFolder(const QString& path);
+
+    QString nodejsVersion(const QString& nodejs_exe) const;
+    QString npmVersion(const QString& npm_exe) const;
+
+  private:
+    Settings* m_settings;
 };
 
 #endif // NODEJS_H

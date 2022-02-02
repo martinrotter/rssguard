@@ -55,6 +55,8 @@ set(SOURCES
   exceptions/networkexception.h
   exceptions/scriptexception.cpp
   exceptions/scriptexception.h
+  exceptions/processexception.cpp
+  exceptions/processexception.h
   gui/dialogs/formabout.cpp
   gui/dialogs/formabout.h
   gui/dialogs/formaddaccount.cpp

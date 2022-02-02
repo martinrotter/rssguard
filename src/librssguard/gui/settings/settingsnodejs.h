@@ -17,6 +17,11 @@ class SettingsNodejs : public SettingsPanel {
     virtual void loadSettings();
     virtual void saveSettings();
 
+  private slots:
+    void testNodejs();
+    void testNpm();
+    void testPackageFolder();
+
   private:
     Ui::SettingsNodejs m_ui;
 };
