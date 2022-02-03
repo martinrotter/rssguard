@@ -242,6 +242,7 @@ bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
   q.bindValue(QSL(":color"), label->color().name());
   q.bindValue(QSL(":custom_id"), label->customId());
   q.bindValue(QSL(":account_id"), account_id);
+
   auto res = q.exec();
 
   if (res && q.lastInsertId().isValid()) {
@@ -1368,6 +1369,14 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                       << "Message"
                       << QUOTE_W_SPACE(msg->m_customId)
                       << "will not be inserted to DB because it does not meet DB constraints.";
+
+          // Message is not inserted to DB at last,
+          // fix numbers.
+          if (!msg->m_isRead) {
+            updated_messages.first--;
+          }
+
+          updated_messages.second--;
           continue;
         }
 
@@ -1398,7 +1407,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
         if (bulk_error.isValid()) {
           QString txt = bulk_error.text() + bulk_error.databaseText() + bulk_error.driverText();
 
-          //IOFactory::writeFile("aa.sql", final_bulk.toUtf8());
           qCriticalNN << LOGSEC_DB
                       << "Failed bulk insert of articles:"
                       << QUOTE_W_SPACE_DOT(txt);
@@ -1761,7 +1769,7 @@ bool DatabaseQueries::purgeLabelsAndLabelAssignments(const QSqlDatabase& db, int
   return succ;
 }
 
-bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id) {
+void DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id) {
   // Iterate all children.
   auto str = tree_root->getSubTree();
 
@@ -1779,14 +1787,10 @@ bool DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
       for (RootItem* lbl : qAsConst(ch)) {
         Label* label = lbl->toLabel();
 
-        if (!createLabel(db, label, account_id)) {
-          return false;
-        }
+        createLabel(db, label, account_id);
       }
     }
   }
-
-  return true;
 }
 
 QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& db, int account_id, bool* ok) {

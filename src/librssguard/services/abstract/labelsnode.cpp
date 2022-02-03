@@ -4,6 +4,7 @@
 
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
+#include "exceptions/applicationexception.h"
 #include "gui/dialogs/formaddeditlabel.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -61,9 +62,14 @@ void LabelsNode::createLabel() {
     if (new_lbl != nullptr) {
       QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
-      DatabaseQueries::createLabel(db, new_lbl, getParentServiceRoot()->accountId());
+      try {
+        DatabaseQueries::createLabel(db, new_lbl, getParentServiceRoot()->accountId());
 
-      getParentServiceRoot()->requestItemReassignment(new_lbl, this);
+        getParentServiceRoot()->requestItemReassignment(new_lbl, this);
+      }
+      catch (const ApplicationException& ex) {
+        new_lbl->deleteLater();
+      }
     }
   }
   else {
