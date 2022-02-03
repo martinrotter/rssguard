@@ -358,6 +358,24 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
       }
       else if (source_item->kind() == RootItem::Kind::Feed) {
         auto* source_feed = qobject_cast<StandardFeed*>(source_item);
+        const auto items = target_root_node->childItems();
+        bool already_exists = false;
+        for (auto i : items) {
+            auto feed = qobject_cast<StandardFeed*>(i);
+            if (feed == nullptr) {
+                continue;
+            }
+
+            if (feed->source() == source_feed->source()) {
+                already_exists = true;
+                break;
+            }
+        }
+
+        if (already_exists) {
+            continue;
+        }
+
         auto* new_feed = new StandardFeed(*source_feed);
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
