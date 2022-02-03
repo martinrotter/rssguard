@@ -358,22 +358,13 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
       }
       else if (source_item->kind() == RootItem::Kind::Feed) {
         auto* source_feed = qobject_cast<StandardFeed*>(source_item);
-        const auto items = target_root_node->childItems();
-        bool already_exists = false;
-        for (auto i : items) {
-            auto feed = qobject_cast<StandardFeed*>(i);
-            if (feed == nullptr) {
-                continue;
-            }
+        const auto* feed_with_same_url = target_root_node->getItemFromSubTree([source_feed](const RootItem* it) {
+          return it->kind() == RootItem::Kind::Feed &&
+          it->toFeed()->source().toLower() == source_feed->source().toLower();
+        });
 
-            if (feed->source() == source_feed->source()) {
-                already_exists = true;
-                break;
-            }
-        }
-
-        if (already_exists) {
-            continue;
+        if (feed_with_same_url != nullptr) {
+          continue;
         }
 
         auto* new_feed = new StandardFeed(*source_feed);

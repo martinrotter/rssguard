@@ -49,9 +49,6 @@ SettingsNodejs::SettingsNodejs(Settings* settings, QWidget* parent) : SettingsPa
   connect(m_ui.m_btnNpmExecutable, &QPushButton::clicked, this, [this]() {
     changeFileFolder(m_ui.m_tbPackageFolder, false, QSL("NPM (npm*)"));
   });
-
-  // FOR ME: npm install --prefix "složka"
-  // NODE_PATH="složka" node.exe....
 }
 
 void SettingsNodejs::changeFileFolder(LineEditWithStatus* tb, bool directory_select, const QString& file_filter) {
@@ -91,6 +88,10 @@ void SettingsNodejs::loadSettings() {
 
 void SettingsNodejs::saveSettings() {
   onBeginSaveSettings();
+
+  qApp->nodejs()->setNodeJsExecutable(m_ui.m_tbNodeExecutable->lineEdit()->text());
+  qApp->nodejs()->setNpmExecutable(m_ui.m_tbNpmExecutable->lineEdit()->text());
+  qApp->nodejs()->setPackageFolder(m_ui.m_tbPackageFolder->lineEdit()->text());
 
   onEndSaveSettings();
 }

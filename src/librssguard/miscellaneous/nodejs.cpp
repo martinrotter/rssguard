@@ -27,6 +27,10 @@ void NodeJs::setNpmExecutable(const QString& exe) const {
   m_settings->setValue(GROUP(Node), Node::NpmExecutable, exe);
 }
 
+void NodeJs::setPackageFolder(const QString& path) {
+  m_settings->setValue(GROUP(Node), Node::PackageFolder, path);
+}
+
 QString NodeJs::packageFolder() const {
   QString path = QDir::toNativeSeparators(m_settings->value(GROUP(Node), SETTING(Node::PackageFolder)).toString());
 
@@ -40,10 +44,8 @@ QString NodeJs::processedPackageFolder() const {
     qCriticalNN << LOGSEC_NODEJS << "Failed to create package folder structure" << QUOTE_W_SPACE_DOT(path);
   }
 
-  return path;
+  return QDir::toNativeSeparators(path);
 }
-
-void NodeJs::setPackageFolder(const QString& path) {}
 
 QString NodeJs::nodejsVersion(const QString& nodejs_exe) const {
   if (nodejs_exe.simplified().isEmpty()) {
@@ -60,3 +62,16 @@ QString NodeJs::npmVersion(const QString& npm_exe) const {
 
   return IOFactory::startProcessGetOutput(npm_exe, { QSL("--version") }).simplified();
 }
+
+NodeJs::PackageStatus NodeJs::packageStatus(const PackageMetadata& pkg) const {
+  //npm ls --unicode --json --prefix "."
+
+  QString npm_ls = IOFactory::startProcessGetOutput(npmExecutable(),
+                                                    { QSL("ls"), QSL("--unicode"), QSL("--json"), QSL("--prefix"),
+                                                      processedPackageFolder() });
+
+  return {};
+}
+
+void NodeJs::installPackage(const PackageMetadata& pkg)
+{}
