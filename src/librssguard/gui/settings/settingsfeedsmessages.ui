@@ -388,7 +388,7 @@
        <item row="13" column="0">
         <widget class="QCheckBox" name="m_checkMessagesTimeFormat">
          <property name="text">
-          <string>Show only time for today articles</string>
+          <string>Custom date/time format for today's articles</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
