@@ -365,6 +365,12 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           return TextFactory::shorten(data(idx, Qt::ItemDataRole::DisplayRole).toString(),
                                       TEXT_TOOLTIP_LIMIT);
         }
+        else if (idx.column() == MSG_DB_DCREATED_INDEX) {
+          return qApp->localization()->loadedLocale().toString(
+            QDateTime::fromMSecsSinceEpoch(data(idx,
+                                                Qt::ItemDataRole::EditRole).toLongLong()).toLocalTime(),
+            QLocale::FormatType::LongFormat);
+        }
         else {
           return data(idx, Qt::ItemDataRole::DisplayRole);
         }
