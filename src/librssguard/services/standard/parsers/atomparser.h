@@ -16,11 +16,16 @@ class AtomParser : public FeedParser {
 
     QString atomNamespace() const;
 
-  private:
-    QDomNodeList messageElements();
-    QString feedAuthor() const;
-    Message extractMessage(const QDomElement& msg_element, const QDateTime& current_time) const;
-    QString messageAuthor(const QDomElement& msg_element) const;
+  protected:
+    virtual QString messageTitle(const QDomElement& msg_element) const;
+    virtual QString messageDescription(const QDomElement& msg_element) const;
+    virtual QDateTime messageDateCreated(const QDomElement& msg_element) const;
+    virtual QString messageId(const QDomElement& msg_element) const;
+    virtual QString messageUrl(const QDomElement& msg_element) const;
+    virtual QList<Enclosure> messageEnclosures(const QDomElement& msg_element) const;
+    virtual QDomNodeList messageElements();
+    virtual QString messageAuthor(const QDomElement& msg_element) const;
+    virtual QString feedAuthor() const;
 
   private:
     QString m_atomNamespace;

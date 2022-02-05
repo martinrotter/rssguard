@@ -20,6 +20,14 @@ FeedParser::FeedParser(QString data) : m_xmlData(std::move(data)), m_mrssNamespa
   }
 }
 
+QString FeedParser::messageRawContents(const QDomElement& msg_element) const {
+  QString raw_contents;
+  QTextStream str(&raw_contents);
+
+  msg_element.save(str, 0, QDomNode::EncodingPolicy::EncodingFromTextStream);
+  return raw_contents;
+}
+
 QList<Message> FeedParser::messages() {
   QString feed_author = feedAuthor();
   QList<Message> messages;
@@ -29,15 +37,50 @@ QList<Message> FeedParser::messages() {
   QDomNodeList messages_in_xml = messageElements();
 
   for (int i = 0; i < messages_in_xml.size(); i++) {
-    QDomNode message_item = messages_in_xml.item(i);
+    QDomElement message_item = messages_in_xml.item(i).toElement();
 
     try {
-      Message new_message = extractMessage(message_item.toElement(), current_time);
+      Message new_message;
 
+      // Fill available data.
+      new_message.m_title = qApp->web()->unescapeHtml(messageTitle(message_item));
+      new_message.m_contents = messageDescription(message_item);
+      new_message.m_author = qApp->web()->unescapeHtml(messageAuthor(message_item));
+      new_message.m_url = messageUrl(message_item);
+      new_message.m_created = messageDateCreated(message_item);
+      new_message.m_customId = messageId(message_item);
+      new_message.m_rawContents = messageRawContents(message_item);
+      new_message.m_enclosures = messageEnclosures(message_item);
+      new_message.m_enclosures.append(mrssGetEnclosures(message_item));
+
+      // Fixup missing data.
+      //
+      // NOTE: Message must have "title" field, otherwise it is skipped.
+
+      // Author.
       if (new_message.m_author.isEmpty() && !feed_author.isEmpty()) {
         new_message.m_author = feed_author;
       }
 
+      // Created date.
+      new_message.m_createdFromFeed = !new_message.m_created.isNull();
+
+      if (!new_message.m_createdFromFeed) {
+        // Date was NOT obtained from the feed, set current date as creation date for the message.
+        // NOTE: Date is lessened by 1 second for each message to allow for more
+        // stable sorting.
+        new_message.m_created = current_time.addSecs(-1);
+        current_time = new_message.m_created;
+      }
+
+      // Enclosures.
+      for (Enclosure& enc : new_message.m_enclosures) {
+        if (enc.m_mimeType.simplified().isEmpty()) {
+          enc.m_mimeType = QSL(DEFAULT_ENCLOSURE_MIME_TYPE);
+        }
+      }
+
+      // Url.
       new_message.m_url = new_message.m_url.replace(QRegularExpression(QSL("[\\t\\n]")), QString());
 
       messages.append(new_message);

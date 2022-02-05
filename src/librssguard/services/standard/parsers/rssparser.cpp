@@ -25,102 +25,63 @@ QDomNodeList RssParser::messageElements() {
   }
 }
 
-Message RssParser::extractMessage(const QDomElement& msg_element, const QDateTime& current_time) const {
-  Message new_message;
+QString RssParser::messageTitle(const QDomElement& msg_element) const {
+  return msg_element.namedItem(QSL("title")).toElement().text();
+}
 
-  // Deal with titles & descriptions.
-  QString elem_title = msg_element.namedItem(QSL("title")).toElement().text().simplified();
-  QString elem_description = rawXmlChild(msg_element.elementsByTagName(QSL("encoded")).at(0).toElement());
+QString RssParser::messageDescription(const QDomElement& msg_element) const {
+  QString description = rawXmlChild(msg_element.elementsByTagName(QSL("encoded")).at(0).toElement());
+
+  if (description.isEmpty()) {
+    description = rawXmlChild(msg_element.elementsByTagName(QSL("description")).at(0).toElement());
+  }
+
+  return description;
+}
+
+QString RssParser::messageAuthor(const QDomElement& msg_element) const {
+  QString author = msg_element.namedItem(QSL("author")).toElement().text();
+
+  if (author.isEmpty()) {
+    author = msg_element.namedItem(QSL("creator")).toElement().text();
+  }
+
+  return author;
+}
+
+QDateTime RssParser::messageDateCreated(const QDomElement& msg_element) const {
+  QDateTime date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("pubDate")).toElement().text());
+
+  if (date_created.isNull()) {
+    date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("date")).toElement().text());
+  }
+
+  return date_created;
+}
+
+QString RssParser::messageId(const QDomElement& msg_element) const {
+  return msg_element.namedItem(QSL("guid")).toElement().text();
+}
+
+QString RssParser::messageUrl(const QDomElement& msg_element) const {
+  QString url = msg_element.namedItem(QSL("link")).toElement().text();
+
+  if (url.isEmpty()) {
+    // Try to get "href" attribute.
+    url = msg_element.namedItem(QSL("link")).toElement().attribute(QSL("href"));
+  }
+
+  return url;
+}
+
+QList<Enclosure> RssParser::messageEnclosures(const QDomElement& msg_element) const {
   QString elem_enclosure = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("url"));
   QString elem_enclosure_type = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 
-  new_message.m_customId = msg_element.namedItem(QSL("guid")).toElement().text();
-  new_message.m_url = msg_element.namedItem(QSL("link")).toElement().text();
-
-  if (new_message.m_url.isEmpty() && !new_message.m_enclosures.isEmpty()) {
-    new_message.m_url = new_message.m_enclosures.first().m_url;
-  }
-
-  if (new_message.m_url.isEmpty()) {
-    // Try to get "href" attribute.
-    new_message.m_url = msg_element.namedItem(QSL("link")).toElement().attribute(QSL("href"));
-  }
-
-  if (elem_description.isEmpty()) {
-    elem_description = rawXmlChild(msg_element.elementsByTagName(QSL("description")).at(0).toElement());
-  }
-
-  if (elem_description.isEmpty()) {
-    elem_description = new_message.m_url;
-  }
-
-  // Now we obtained maximum of information for title & description.
-  if (elem_title.isEmpty()) {
-    if (elem_description.isEmpty()) {
-      // BOTH title and description are empty, skip this message.
-      throw ApplicationException(QSL("Not enough data for the message."));
-    }
-    else {
-      // Title is empty but description is not.
-      new_message.m_title = qApp->web()->unescapeHtml(qApp->web()->stripTags(elem_description.simplified()));
-      new_message.m_contents = elem_description;
-    }
-  }
-  else {
-    // Title is really not empty, description does not matter.
-    new_message.m_title = qApp->web()->unescapeHtml(qApp->web()->stripTags(elem_title));
-    new_message.m_contents = elem_description;
-  }
-
   if (!elem_enclosure.isEmpty()) {
-    if (elem_enclosure_type.isEmpty()) {
-      elem_enclosure_type = QSL(DEFAULT_ENCLOSURE_MIME_TYPE);
-    }
-
-    new_message.m_enclosures.append(Enclosure(elem_enclosure, elem_enclosure_type));
-    qDebugNN << LOGSEC_CORE
-             << "Found enclosure"
-             << QUOTE_W_SPACE(elem_enclosure)
-             << "for the message.";
+    return { Enclosure(elem_enclosure, elem_enclosure_type) };
   }
   else {
-    new_message.m_enclosures.append(mrssGetEnclosures(msg_element));
+    return {};
   }
-
-  QString raw_contents;
-  QTextStream str(&raw_contents);
-
-  msg_element.save(str, 0, QDomNode::EncodingPolicy::EncodingFromTextStream);
-  new_message.m_rawContents = raw_contents;
-
-  new_message.m_author = msg_element.namedItem(QSL("author")).toElement().text();
-
-  if (new_message.m_author.isEmpty()) {
-    new_message.m_author = msg_element.namedItem(QSL("creator")).toElement().text();
-  }
-
-  // Deal with creation date.
-  new_message.m_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("pubDate")).toElement().text());
-
-  if (new_message.m_created.isNull()) {
-    new_message.m_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("date")).toElement().text());
-  }
-
-  if (!(new_message.m_createdFromFeed = !new_message.m_created.isNull())) {
-    // Date was NOT obtained from the feed,
-    // set current date as creation date for the message.
-    new_message.m_created = current_time;
-  }
-
-  if (new_message.m_author.isNull()) {
-    new_message.m_author = QL1S("");
-  }
-
-  new_message.m_author = qApp->web()->unescapeHtml(new_message.m_author);
-
-  if (new_message.m_url.isNull()) {
-    new_message.m_url = QL1S("");
-  }
-
-  return new_message;
 }
