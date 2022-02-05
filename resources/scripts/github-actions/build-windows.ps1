@@ -65,10 +65,14 @@ cd "$qt_sqldrivers_path"
 if ($qt_version.StartsWith("6")) {
   & $cmake_path -G Ninja -DCMAKE_BUILD_TYPE="Release" -DMySQL_INCLUDE_DIR="$maria_path\include\mysql" -DMySQL_LIBRARY="$maria_path\lib\libmariadb.lib"
   & $cmake_path --build .
+
+  $with_qt6 = "ON"
 }
 else {
   & $qt_qmake -- MYSQL_INCDIR="$maria_path\include\mysql" MYSQL_LIBDIR="$maria_path\lib"
   nmake.exe sub-mysql
+
+  $with_qt6 = "OFF"
 }
 
 cd "$old_pwd"
@@ -76,7 +80,7 @@ cd "$old_pwd"
 # Build application.
 mkdir "rssguard-build"
 cd "rssguard-build"
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="Release" -DREVISION_FROM_GIT=ON -DUSE_WEBENGINE="$webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET" -DINOREADER_CLIENT_ID="$env:INOREADER_CLIENT_ID" -DINOREADER_CLIENT_SECRET="$env:INOREADER_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="Release" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT=ON -DUSE_WEBENGINE="$webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET" -DINOREADER_CLIENT_ID="$env:INOREADER_CLIENT_ID" -DINOREADER_CLIENT_SECRET="$env:INOREADER_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
