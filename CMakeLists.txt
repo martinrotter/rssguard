@@ -30,7 +30,8 @@
 #   - supports Windows, Linux, *BSD, macOS, OS/2, Android,
 #   - Qt 5.9.0 or newer is required,
 #   - cmake 3.9.0 or newer is required,
-#   - if you wish to make packages for Windows, then you must initialize all submodules within repository before compilation,
+#   - if you wish to make packages for Windows, then you must initialize all submodules
+#     within repository before compilation,
 #   - C++ 11/17 is required.
 #
 # Building on OS/2:

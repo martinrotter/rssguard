@@ -17,12 +17,12 @@
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/recyclebin.h"
-#include "services/standard/atomparser.h"
 #include "services/standard/definitions.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
-#include "services/standard/jsonparser.h"
-#include "services/standard/rdfparser.h"
-#include "services/standard/rssparser.h"
+#include "services/standard/parsers/atomparser.h"
+#include "services/standard/parsers/jsonparser.h"
+#include "services/standard/parsers/rdfparser.h"
+#include "services/standard/parsers/rssparser.h"
 #include "services/standard/standardserviceroot.h"
 
 #include <QCommandLineParser>

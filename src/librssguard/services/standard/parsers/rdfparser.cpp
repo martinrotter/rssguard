@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/standard/rdfparser.h"
+#include "services/standard/parsers/rdfparser.h"
 
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"

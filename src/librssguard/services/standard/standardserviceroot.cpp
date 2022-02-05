@@ -19,14 +19,14 @@
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
-#include "services/standard/atomparser.h"
 #include "services/standard/definitions.h"
 #include "services/standard/gui/formeditstandardaccount.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/gui/formstandardimportexport.h"
-#include "services/standard/jsonparser.h"
-#include "services/standard/rdfparser.h"
-#include "services/standard/rssparser.h"
+#include "services/standard/parsers/atomparser.h"
+#include "services/standard/parsers/jsonparser.h"
+#include "services/standard/parsers/rdfparser.h"
+#include "services/standard/parsers/rssparser.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
@@ -360,7 +360,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
         auto* source_feed = qobject_cast<StandardFeed*>(source_item);
         const auto* feed_with_same_url = target_root_node->getItemFromSubTree([source_feed](const RootItem* it) {
           return it->kind() == RootItem::Kind::Feed &&
-          it->toFeed()->source().toLower() == source_feed->source().toLower();
+                 it->toFeed()->source().toLower() == source_feed->source().toLower();
         });
 
         if (feed_with_same_url != nullptr) {

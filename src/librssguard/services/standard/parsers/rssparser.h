@@ -3,7 +3,7 @@
 #ifndef RSSPARSER_H
 #define RSSPARSER_H
 
-#include "services/standard/feedparser.h"
+#include "services/standard/parsers/feedparser.h"
 
 #include "core/message.h"
 

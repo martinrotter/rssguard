@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/standard/atomparser.h"
+#include "services/standard/parsers/atomparser.h"
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"

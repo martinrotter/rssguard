@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/standard/jsonparser.h"
+#include "services/standard/parsers/jsonparser.h"
 
 #include "exceptions/feedfetchexception.h"
 #include "miscellaneous/textfactory.h"

@@ -331,11 +331,7 @@ set(SOURCES
   services/reddit/redditserviceroot.h
   services/reddit/redditsubscription.cpp
   services/reddit/redditsubscription.h
-  services/standard/atomparser.cpp
-  services/standard/atomparser.h
   services/standard/definitions.h
-  services/standard/feedparser.cpp
-  services/standard/feedparser.h
   services/standard/gui/formeditstandardaccount.cpp
   services/standard/gui/formeditstandardaccount.h
   services/standard/gui/formstandardfeeddetails.cpp
@@ -344,12 +340,16 @@ set(SOURCES
   services/standard/gui/formstandardimportexport.h
   services/standard/gui/standardfeeddetails.cpp
   services/standard/gui/standardfeeddetails.h
-  services/standard/jsonparser.cpp
-  services/standard/jsonparser.h
-  services/standard/rdfparser.cpp
-  services/standard/rdfparser.h
-  services/standard/rssparser.cpp
-  services/standard/rssparser.h
+  services/standard/parsers/feedparser.cpp
+  services/standard/parsers/feedparser.h
+  services/standard/parsers/atomparser.cpp
+  services/standard/parsers/atomparser.h
+  services/standard/parsers/jsonparser.cpp
+  services/standard/parsers/jsonparser.h
+  services/standard/parsers/rdfparser.cpp
+  services/standard/parsers/rdfparser.h
+  services/standard/parsers/rssparser.cpp
+  services/standard/parsers/rssparser.h
   services/standard/standardcategory.cpp
   services/standard/standardcategory.h
   services/standard/standardfeed.cpp

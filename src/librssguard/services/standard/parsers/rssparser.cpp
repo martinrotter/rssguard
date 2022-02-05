@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/standard/rssparser.h"
+#include "services/standard/parsers/rssparser.h"
 
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"

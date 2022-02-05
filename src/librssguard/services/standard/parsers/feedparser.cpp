@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/standard/feedparser.h"
+#include "services/standard/parsers/feedparser.h"
 
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
