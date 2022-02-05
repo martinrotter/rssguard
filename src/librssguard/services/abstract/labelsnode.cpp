@@ -67,7 +67,7 @@ void LabelsNode::createLabel() {
 
         getParentServiceRoot()->requestItemReassignment(new_lbl, this);
       }
-      catch (const ApplicationException& ex) {
+      catch (const ApplicationException&) {
         new_lbl->deleteLater();
       }
     }

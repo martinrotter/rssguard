@@ -19,11 +19,11 @@ $AllProtocols = [System.Net.SecurityProtocolType]'Tls11,Tls12'
 $ProgressPreference = 'SilentlyContinue'
 
 # Get and prepare needed dependencies.
-$qt_version = "5.15.2"
+$qt_version = "6.2.3"
 $maria_version = "10.6.5"
 $maria_link = "https://mirror.vpsfree.cz/mariadb/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
-$cmake_version = "3.22.1"
+$cmake_version = "3.22.2"
 $cmake_link = "https://github.com/Kitware/CMake/releases/download/v$cmake_version/cmake-$cmake_version-windows-x86_64.zip"
 $cmake_output = "cmake.zip"
 
