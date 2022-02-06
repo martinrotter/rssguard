@@ -383,6 +383,9 @@
            <height>0</height>
           </size>
          </property>
+         <property name="editable">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="13" column="0">
@@ -405,6 +408,9 @@
            <width>150</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="editable">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

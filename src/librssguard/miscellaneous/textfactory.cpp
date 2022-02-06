@@ -73,13 +73,7 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
   QTime time_zone_offset;
   const QLocale locale(QLocale::Language::C);
   bool positive_time_zone_offset = false;
-  QStringList date_patterns;
-
-  date_patterns << QSL("yyyy-MM-ddTHH:mm:ss") << QSL("MMM dd yyyy hh:mm:ss") <<
-    QSL("MMM d yyyy hh:mm:ss") << QSL("ddd, dd MMM yyyy HH:mm:ss") << QSL("ddd, d MMM yyyy HH:mm:ss") <<
-    QSL("dd MMM yyyy") << QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-dd") <<
-    QSL("yyyy") << QSL("yyyy-MM") << QSL("yyyy-MM-dd") << QSL("yyyy-MM-ddThh:mm") <<
-    QSL("yyyy-MM-ddThh:mm:ss") << QSL("d MMM yyyy HH:mm:ss");
+  static QStringList date_patterns = dateTimePatterns();
   QStringList timezone_offset_patterns;
 
   timezone_offset_patterns << QSL("+hh:mm") << QSL("-hh:mm") << QSL("+hhmm")
@@ -131,6 +125,15 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
 
 QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
   return QDateTime::fromMSecsSinceEpoch(milis_from_epoch, Qt::TimeSpec::UTC);
+}
+
+QStringList TextFactory::dateTimePatterns() {
+  return QStringList() << QSL("yyyy-MM-ddTHH:mm:ss") << QSL("MMM dd yyyy hh:mm:ss") <<
+         QSL("MMM d yyyy hh:mm:ss") << QSL("ddd, dd MMM yyyy HH:mm:ss") << QSL("ddd, d MMM yyyy HH:mm:ss") <<
+         QSL("dd MMM yyyy") << QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-dd") <<
+         QSL("yyyy") << QSL("yyyy-MM") << QSL("yyyy-MM-dd") << QSL("yyyy-MM-ddThh:mm") <<
+         QSL("yyyy-MM-ddThh:mm:ss") << QSL("d MMM yyyy HH:mm:ss") << QSL("hh:mm:ss") <<
+         QSL("h:m:s AP") << QSL("h:m") << QSL("h.m");
 }
 
 QString TextFactory::encrypt(const QString& text, quint64 key) {

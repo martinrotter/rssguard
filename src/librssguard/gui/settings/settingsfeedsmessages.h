@@ -18,6 +18,9 @@ class SettingsFeedsMessages : public SettingsPanel {
     virtual void loadSettings();
     virtual void saveSettings();
 
+  private slots:
+    void updateDateTimeTooltip();
+
   private:
     void changeFont(QLabel& lbl);
 
