@@ -104,6 +104,9 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_cmbMessagesTimeFormat, &QComboBox::currentTextChanged,
           this, &SettingsFeedsMessages::updateDateTimeTooltip);
 
+  emit m_ui->m_cmbMessagesDateTimeFormat->currentTextChanged({});
+  emit m_ui->m_cmbMessagesTimeFormat->currentTextChanged({});
+
   connect(m_ui->m_btnChangeMessagesFont, &QPushButton::clicked, this, [&]() {
     changeFont(*m_ui->m_lblMessagesFont);
   });
@@ -126,30 +129,19 @@ SettingsFeedsMessages::~SettingsFeedsMessages() {
 }
 
 void SettingsFeedsMessages::initializeMessageDateFormats() {
-  /*
-     QStringList datetime_formats, time_formats;
-     const QDateTime current_dt = QDateTime::currentDateTime();
-     const QLocale current_locale = qApp->localization()->loadedLocale();
-     auto installed_languages = qApp->localization()->installedLanguages();
-
-     for (const Language& lang : qAsConst(installed_languages)) {
-     QLocale locale(lang.m_code);
-
-     datetime_formats << locale.dateTimeFormat(QLocale::FormatType::LongFormat)
-                   << locale.dateTimeFormat(QLocale::FormatType::ShortFormat)
-                   << locale.dateTimeFormat(QLocale::FormatType::NarrowFormat);
-     time_formats << locale.timeFormat(QLocale::FormatType::LongFormat)
-               << locale.timeFormat(QLocale::FormatType::ShortFormat)
-               << locale.timeFormat(QLocale::FormatType::NarrowFormat);
-     }
-
-     datetime_formats.removeDuplicates();
-     time_formats.removeDuplicates();*/
-
   QStringList patterns = TextFactory::dateTimePatterns();
 
   m_ui->m_cmbMessagesDateTimeFormat->addItems(patterns);
   m_ui->m_cmbMessagesTimeFormat->addItems(patterns);
+
+  for (int i = 0; i < patterns.size(); i++) {
+    m_ui->m_cmbMessagesDateTimeFormat->setItemData(i,
+                                                   QDateTime::currentDateTime().toString(patterns.at(i)),
+                                                   Qt::ItemDataRole::ToolTipRole);
+    m_ui->m_cmbMessagesTimeFormat->setItemData(i,
+                                               QDateTime::currentDateTime().toString(patterns.at(i)),
+                                               Qt::ItemDataRole::ToolTipRole);
+  }
 }
 
 void SettingsFeedsMessages::changeFont(QLabel& lbl) {
