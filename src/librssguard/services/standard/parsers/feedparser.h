@@ -4,6 +4,9 @@
 #define FEEDPARSER_H
 
 #include <QDomDocument>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QString>
 
 #include "core/message.h"
@@ -11,31 +14,46 @@
 // Base class for all XML-based feed parsers.
 class FeedParser {
   public:
-    explicit FeedParser(QString data);
+    explicit FeedParser(QString data, bool is_xml = true);
 
     virtual QList<Message> messages();
 
   protected:
     virtual QString feedAuthor() const;
-    virtual QDomNodeList messageElements() = 0;
-    virtual QString messageTitle(const QDomElement& msg_element) const = 0;
-    virtual QString messageUrl(const QDomElement& msg_element) const = 0;
-    virtual QString messageDescription(const QDomElement& msg_element) const = 0;
-    virtual QString messageAuthor(const QDomElement& msg_element) const = 0;
-    virtual QDateTime messageDateCreated(const QDomElement& msg_element) const = 0;
-    virtual QString messageId(const QDomElement& msg_element) const = 0;
-    virtual QList<Enclosure> messageEnclosures(const QDomElement& msg_element) const = 0;
-    virtual QString messageRawContents(const QDomElement& msg_element) const;
+
+    // XML.
+    virtual QDomNodeList xmlMessageElements();
+    virtual QString xmlMessageTitle(const QDomElement& msg_element) const;
+    virtual QString xmlMessageUrl(const QDomElement& msg_element) const;
+    virtual QString xmlMessageDescription(const QDomElement& msg_element) const;
+    virtual QString xmlMessageAuthor(const QDomElement& msg_element) const;
+    virtual QDateTime xmlMessageDateCreated(const QDomElement& msg_element) const;
+    virtual QString xmlMessageId(const QDomElement& msg_element) const;
+    virtual QList<Enclosure> xmlMessageEnclosures(const QDomElement& msg_element) const;
+    virtual QString xmlMessageRawContents(const QDomElement& msg_element) const;
+
+    // JSON.
+    virtual QJsonArray jsonMessageElements();
+    virtual QString jsonMessageTitle(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageUrl(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageDescription(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageAuthor(const QJsonObject& msg_element) const;
+    virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageId(const QJsonObject& msg_element) const;
+    virtual QList<Enclosure> jsonMessageEnclosures(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageRawContents(const QJsonObject& msg_element) const;
 
   protected:
-    QList<Enclosure> mrssGetEnclosures(const QDomElement& msg_element) const;
-    QString mrssTextFromPath(const QDomElement& msg_element, const QString& xml_path) const;
-    QString rawXmlChild(const QDomElement& container) const;
-    QStringList textsFromPath(const QDomElement& element, const QString& namespace_uri, const QString& xml_path, bool only_first) const;
+    QList<Enclosure> xmlMrssGetEnclosures(const QDomElement& msg_element) const;
+    QString xmlMrssTextFromPath(const QDomElement& msg_element, const QString& xml_path) const;
+    QString xmlRawChild(const QDomElement& container) const;
+    QStringList xmlTextsFromPath(const QDomElement& element, const QString& namespace_uri, const QString& xml_path, bool only_first) const;
 
   protected:
-    QString m_xmlData;
+    bool m_isXml;
+    QString m_data;
     QDomDocument m_xml;
+    QJsonDocument m_json;
     QString m_mrssNamespace;
 };
 

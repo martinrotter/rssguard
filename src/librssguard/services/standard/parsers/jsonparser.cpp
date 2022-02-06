@@ -9,74 +9,71 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
-JsonParser::JsonParser(const QString& data) : m_jsonData(data) {}
+JsonParser::JsonParser(const QString& data) : FeedParser(data, false) {}
 
-QList<Message> JsonParser::messages() const {
-  QList<Message> msgs;
-  QJsonParseError json_err;
-  QJsonDocument json = QJsonDocument::fromJson(m_jsonData.toUtf8(), &json_err);
-
-  if (json.isNull() && !json_err.errorString().isEmpty()) {
-    throw FeedFetchException(Feed::Status::ParsingError,
-                             QObject::tr("JSON error '%1'").arg(json_err.errorString()));
-  }
-
-  QString global_author = json.object()[QSL("author")].toObject()[QSL("name")].toString();
+QString JsonParser::feedAuthor() const {
+  QString global_author = m_json.object()[QSL("author")].toObject()[QSL("name")].toString();
 
   if (global_author.isEmpty()) {
-    global_author = json.object()[QSL("authors")].toArray().at(0).toObject()[QSL("name")].toString();
+    global_author = m_json.object()[QSL("authors")].toArray().at(0).toObject()[QSL("name")].toString();
   }
 
-  auto json_items = json.object()[QSL("items")].toArray();
+  return global_author;
+}
 
-  for (const QJsonValue& msg_val : qAsConst(json_items)) {
-    QJsonObject msg_obj = msg_val.toObject();
-    Message msg;
+QJsonArray JsonParser::jsonMessageElements() {
+  return m_json.object()[QSL("items")].toArray();
+}
 
-    msg.m_customId = msg_obj[QSL("id")].toString();
-    msg.m_title = msg_obj[QSL("title")].toString();
-    msg.m_url = msg_obj[QSL("url")].toString();
-    msg.m_contents = msg_obj.contains(QSL("content_html"))
-                                      ? msg_obj[QSL("content_html")].toString()
-                                      : msg_obj[QSL("content_text")].toString();
-    msg.m_rawContents = QJsonDocument(msg_obj).toJson(QJsonDocument::JsonFormat::Compact);
+QString JsonParser::jsonMessageTitle(const QJsonObject& msg_element) const {
+  return msg_element[QSL("title")].toString();
+}
 
-    msg.m_created = TextFactory::parseDateTime(msg_obj.contains(QSL("date_modified"))
-                                               ? msg_obj[QSL("date_modified")].toString()
-                                               : msg_obj[QSL("date_published")].toString());
+QString JsonParser::jsonMessageUrl(const QJsonObject& msg_element) const {
+  return msg_element[QSL("url")].toString();
+}
 
-    if (!msg.m_created.isValid()) {
-      msg.m_created = QDateTime::currentDateTime();
-      msg.m_createdFromFeed = false;
-    }
-    else {
-      msg.m_createdFromFeed = true;
-    }
+QString JsonParser::jsonMessageDescription(const QJsonObject& msg_element) const {
+  return msg_element.contains(QSL("content_html"))
+            ? msg_element[QSL("content_html")].toString()
+            : msg_element[QSL("content_text")].toString();
+}
 
-    if (msg_obj.contains(QSL("author"))) {
-      msg.m_author = msg_obj[QSL("author")].toObject()[QSL("name")].toString();
-    }
-    else if (msg_obj.contains(QSL("authors"))) {
-      msg.m_author = msg_obj[QSL("authors")].toArray().at(0).toObject()[QSL("name")].toString();
-    }
-    else if (!global_author.isEmpty()) {
-      msg.m_author = global_author;
-    }
+QString JsonParser::jsonMessageAuthor(const QJsonObject& msg_element) const {
+  if (msg_element.contains(QSL("author"))) {
+    return msg_element[QSL("author")].toObject()[QSL("name")].toString();
+  }
+  else if (msg_element.contains(QSL("authors"))) {
+    return msg_element[QSL("authors")].toArray().at(0).toObject()[QSL("name")].toString();
+  }
+  else {
+    return {};
+  }
+}
 
-    auto json_att = msg_obj[QSL("attachments")].toArray();
+QDateTime JsonParser::jsonMessageDateCreated(const QJsonObject& msg_element) const {
+  return TextFactory::parseDateTime(msg_element.contains(QSL("date_modified"))
+                                                   ? msg_element[QSL("date_modified")].toString()
+                                                   : msg_element[QSL("date_published")].toString());
+}
 
-    for (const QJsonValue& att : qAsConst(json_att)) {
-      QJsonObject att_obj = att.toObject();
+QString JsonParser::jsonMessageId(const QJsonObject& msg_element) const {
+  return msg_element[QSL("id")].toString();
+}
 
-      msg.m_enclosures.append(Enclosure(att_obj[QSL("url")].toString(), att_obj[QSL("mime_type")].toString()));
-    }
+QList<Enclosure> JsonParser::jsonMessageEnclosures(const QJsonObject& msg_element) const {
+  auto json_att = msg_element[QSL("attachments")].toArray();
+  QList<Enclosure> enc;
 
-    if (msg.m_title.isEmpty() && !msg.m_url.isEmpty()) {
-      msg.m_title = msg.m_url;
-    }
+  for (const QJsonValue& att : qAsConst(json_att)) {
+    QJsonObject att_obj = att.toObject();
 
-    msgs.append(msg);
+    enc.append(Enclosure(att_obj[QSL("url")].toString(), att_obj[QSL("mime_type")].toString()));
   }
 
-  return msgs;
+  return enc;
+}
+
+QString JsonParser::jsonMessageRawContents(const QJsonObject& msg_element) const {
+  return QJsonDocument(msg_element).toJson(QJsonDocument::JsonFormat::Compact);
 }

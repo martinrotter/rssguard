@@ -17,7 +17,7 @@ RdfParser::RdfParser(const QString& data)
   m_rssCoNamespace(QSL("http://purl.org/rss/1.0/modules/content/")),
   m_dcElNamespace(QSL("http://purl.org/dc/elements/1.1/")) {}
 
-QDomNodeList RdfParser::messageElements() {
+QDomNodeList RdfParser::xmlMessageElements() {
   return m_xml.elementsByTagNameNS(m_rssNamespace, QSL("item"));
 }
 
@@ -29,11 +29,11 @@ QString RdfParser::rdfNamespace() const {
   return m_rdfNamespace;
 }
 
-QString RdfParser::messageTitle(const QDomElement& msg_element) const {
+QString RdfParser::xmlMessageTitle(const QDomElement& msg_element) const {
   return msg_element.elementsByTagNameNS(m_rssNamespace, QSL("title")).at(0).toElement().text();
 }
 
-QString RdfParser::messageDescription(const QDomElement& msg_element) const {
+QString RdfParser::xmlMessageDescription(const QDomElement& msg_element) const {
   QString description = msg_element.elementsByTagNameNS(m_rssCoNamespace, QSL("encoded")).at(0).toElement().text();
 
   if (description.simplified().isEmpty()) {
@@ -43,22 +43,22 @@ QString RdfParser::messageDescription(const QDomElement& msg_element) const {
   return description;
 }
 
-QString RdfParser::messageAuthor(const QDomElement& msg_element) const {
+QString RdfParser::xmlMessageAuthor(const QDomElement& msg_element) const {
   return msg_element.elementsByTagNameNS(m_dcElNamespace, QSL("creator")).at(0).toElement().text();
 }
 
-QDateTime RdfParser::messageDateCreated(const QDomElement& msg_element) const {
+QDateTime RdfParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
   return TextFactory::parseDateTime(msg_element.elementsByTagNameNS(m_dcElNamespace, QSL("date")).at(0).toElement().text());
 }
 
-QString RdfParser::messageId(const QDomElement& msg_element) const {
+QString RdfParser::xmlMessageId(const QDomElement& msg_element) const {
   return msg_element.elementsByTagNameNS(m_dcElNamespace, QSL("identifier")).at(0).toElement().text();
 }
 
-QString RdfParser::messageUrl(const QDomElement& msg_element) const {
+QString RdfParser::xmlMessageUrl(const QDomElement& msg_element) const {
   return msg_element.elementsByTagNameNS(m_rssNamespace, QSL("link")).at(0).toElement().text();
 }
 
-QList<Enclosure> RdfParser::messageEnclosures(const QDomElement& msg_element) const {
+QList<Enclosure> RdfParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
   return {};
 }

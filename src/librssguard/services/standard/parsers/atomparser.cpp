@@ -34,7 +34,7 @@ QString AtomParser::feedAuthor() const {
   return {};
 }
 
-QString AtomParser::messageAuthor(const QDomElement& msg_element) const {
+QString AtomParser::xmlMessageAuthor(const QDomElement& msg_element) const {
   QDomNodeList authors = msg_element.elementsByTagNameNS(m_atomNamespace, QSL("author"));
   QStringList author_str;
 
@@ -53,43 +53,43 @@ QString AtomParser::atomNamespace() const {
   return m_atomNamespace;
 }
 
-QDomNodeList AtomParser::messageElements() {
+QDomNodeList AtomParser::xmlMessageElements() {
   return m_xml.elementsByTagNameNS(m_atomNamespace, QSL("entry"));
 }
 
-QString AtomParser::messageTitle(const QDomElement& msg_element) const {
-  return textsFromPath(msg_element, m_atomNamespace, QSL("title"), true).join(QSL(", "));
+QString AtomParser::xmlMessageTitle(const QDomElement& msg_element) const {
+  return xmlTextsFromPath(msg_element, m_atomNamespace, QSL("title"), true).join(QSL(", "));
 }
 
-QString AtomParser::messageDescription(const QDomElement& msg_element) const {
-  QString summary = rawXmlChild(msg_element.elementsByTagNameNS(m_atomNamespace, QSL("content")).at(0).toElement());
+QString AtomParser::xmlMessageDescription(const QDomElement& msg_element) const {
+  QString summary = xmlRawChild(msg_element.elementsByTagNameNS(m_atomNamespace, QSL("content")).at(0).toElement());
 
   if (summary.isEmpty()) {
-    summary = rawXmlChild(msg_element.elementsByTagNameNS(m_atomNamespace, QSL("summary")).at(0).toElement());
+    summary = xmlRawChild(msg_element.elementsByTagNameNS(m_atomNamespace, QSL("summary")).at(0).toElement());
 
     if (summary.isEmpty()) {
-      summary = rawXmlChild(msg_element.elementsByTagNameNS(m_mrssNamespace, QSL("description")).at(0).toElement());
+      summary = xmlRawChild(msg_element.elementsByTagNameNS(m_mrssNamespace, QSL("description")).at(0).toElement());
     }
   }
 
   return summary;
 }
 
-QDateTime AtomParser::messageDateCreated(const QDomElement& msg_element) const {
-  QString updated = textsFromPath(msg_element, m_atomNamespace, QSL("updated"), true).join(QSL(", "));
+QDateTime AtomParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
+  QString updated = xmlTextsFromPath(msg_element, m_atomNamespace, QSL("updated"), true).join(QSL(", "));
 
   if (updated.simplified().isEmpty()) {
-    updated = textsFromPath(msg_element, m_atomNamespace, QSL("modified"), true).join(QSL(", "));
+    updated = xmlTextsFromPath(msg_element, m_atomNamespace, QSL("modified"), true).join(QSL(", "));
   }
 
   return TextFactory::parseDateTime(updated);
 }
 
-QString AtomParser::messageId(const QDomElement& msg_element) const {
+QString AtomParser::xmlMessageId(const QDomElement& msg_element) const {
   return msg_element.elementsByTagNameNS(m_atomNamespace, QSL("id")).at(0).toElement().text();
 }
 
-QString AtomParser::messageUrl(const QDomElement& msg_element) const {
+QString AtomParser::xmlMessageUrl(const QDomElement& msg_element) const {
   QDomNodeList elem_links = msg_element.toElement().elementsByTagNameNS(m_atomNamespace, QSL("link"));
   QString last_link_other;
 
@@ -113,7 +113,7 @@ QString AtomParser::messageUrl(const QDomElement& msg_element) const {
   }
 }
 
-QList<Enclosure> AtomParser::messageEnclosures(const QDomElement& msg_element) const {
+QList<Enclosure> AtomParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
   QList<Enclosure> enclosures;
   QDomNodeList elem_links = msg_element.toElement().elementsByTagNameNS(m_atomNamespace, QSL("link"));
 

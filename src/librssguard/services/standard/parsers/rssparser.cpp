@@ -14,7 +14,7 @@
 
 RssParser::RssParser(const QString& data) : FeedParser(data) {}
 
-QDomNodeList RssParser::messageElements() {
+QDomNodeList RssParser::xmlMessageElements() {
   QDomNode channel_elem = m_xml.namedItem(QSL("rss")).namedItem(QSL("channel"));
 
   if (channel_elem.isNull()) {
@@ -25,21 +25,21 @@ QDomNodeList RssParser::messageElements() {
   }
 }
 
-QString RssParser::messageTitle(const QDomElement& msg_element) const {
+QString RssParser::xmlMessageTitle(const QDomElement& msg_element) const {
   return msg_element.namedItem(QSL("title")).toElement().text();
 }
 
-QString RssParser::messageDescription(const QDomElement& msg_element) const {
-  QString description = rawXmlChild(msg_element.elementsByTagName(QSL("encoded")).at(0).toElement());
+QString RssParser::xmlMessageDescription(const QDomElement& msg_element) const {
+  QString description = xmlRawChild(msg_element.elementsByTagName(QSL("encoded")).at(0).toElement());
 
   if (description.isEmpty()) {
-    description = rawXmlChild(msg_element.elementsByTagName(QSL("description")).at(0).toElement());
+    description = xmlRawChild(msg_element.elementsByTagName(QSL("description")).at(0).toElement());
   }
 
   return description;
 }
 
-QString RssParser::messageAuthor(const QDomElement& msg_element) const {
+QString RssParser::xmlMessageAuthor(const QDomElement& msg_element) const {
   QString author = msg_element.namedItem(QSL("author")).toElement().text();
 
   if (author.isEmpty()) {
@@ -49,7 +49,7 @@ QString RssParser::messageAuthor(const QDomElement& msg_element) const {
   return author;
 }
 
-QDateTime RssParser::messageDateCreated(const QDomElement& msg_element) const {
+QDateTime RssParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
   QDateTime date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("pubDate")).toElement().text());
 
   if (date_created.isNull()) {
@@ -59,11 +59,11 @@ QDateTime RssParser::messageDateCreated(const QDomElement& msg_element) const {
   return date_created;
 }
 
-QString RssParser::messageId(const QDomElement& msg_element) const {
+QString RssParser::xmlMessageId(const QDomElement& msg_element) const {
   return msg_element.namedItem(QSL("guid")).toElement().text();
 }
 
-QString RssParser::messageUrl(const QDomElement& msg_element) const {
+QString RssParser::xmlMessageUrl(const QDomElement& msg_element) const {
   QString url = msg_element.namedItem(QSL("link")).toElement().text();
 
   if (url.isEmpty()) {
@@ -74,7 +74,7 @@ QString RssParser::messageUrl(const QDomElement& msg_element) const {
   return url;
 }
 
-QList<Enclosure> RssParser::messageEnclosures(const QDomElement& msg_element) const {
+QList<Enclosure> RssParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
   QString elem_enclosure = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("url"));
   QString elem_enclosure_type = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 

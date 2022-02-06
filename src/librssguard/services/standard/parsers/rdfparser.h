@@ -17,14 +17,14 @@ class RdfParser : public FeedParser {
     QString rssNamespace() const;
 
   protected:
-    virtual QString messageTitle(const QDomElement& msg_element) const;
-    virtual QString messageDescription(const QDomElement& msg_element) const;
-    virtual QString messageAuthor(const QDomElement& msg_element) const;
-    virtual QDateTime messageDateCreated(const QDomElement& msg_element) const;
-    virtual QString messageId(const QDomElement& msg_element) const;
-    virtual QString messageUrl(const QDomElement& msg_element) const;
-    virtual QList<Enclosure> messageEnclosures(const QDomElement& msg_element) const;
-    virtual QDomNodeList messageElements();
+    virtual QString xmlMessageTitle(const QDomElement& msg_element) const;
+    virtual QString xmlMessageDescription(const QDomElement& msg_element) const;
+    virtual QString xmlMessageAuthor(const QDomElement& msg_element) const;
+    virtual QDateTime xmlMessageDateCreated(const QDomElement& msg_element) const;
+    virtual QString xmlMessageId(const QDomElement& msg_element) const;
+    virtual QString xmlMessageUrl(const QDomElement& msg_element) const;
+    virtual QList<Enclosure> xmlMessageEnclosures(const QDomElement& msg_element) const;
+    virtual QDomNodeList xmlMessageElements();
 
   private:
     QString m_rdfNamespace;
