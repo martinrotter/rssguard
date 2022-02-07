@@ -61,6 +61,10 @@ class NodeJs : public QObject {
     // NOTE: https://docs.npmjs.com/cli/v8/commands/npm-install
     void installUpdatePackage(const PackageMetadata& pkg);
 
+  signals:
+    void packageError(const PackageMetadata& pkg, const QString& error);
+    void packageInstalledUpdated(const PackageMetadata& pkg);
+
   private:
     void installPackage(const PackageMetadata& pkg);
     void updatePackage(const PackageMetadata& pkg);

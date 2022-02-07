@@ -141,6 +141,8 @@ Application::Application(const QString& id, int& argc, char** argv)
 
   QTimer::singleShot(1000, system(), &SystemFactory::checkForUpdatesOnStartup);
 
+  //nodejs()->installUpdatePackage({ "@cliqz/adblocker", ">=1.0.0 <2.0.0" });
+
   qDebugNN << LOGSEC_CORE
            << "OpenSSL version:"
            << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());

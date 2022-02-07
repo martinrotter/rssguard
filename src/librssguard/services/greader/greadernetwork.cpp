@@ -150,7 +150,7 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
 
     qDebugNN << LOGSEC_GREADER
              << "Percentage of feeds for fetching:"
-             << QUOTE_W_SPACE_DOT(perc_of_fetching);
+             << QUOTE_W_SPACE_DOT(perc_of_fetching * 100.0);
 
     auto remote_starred_ids_list = itemIds(QSL(GREADER_API_FULL_STATE_IMPORTANT), false, proxy, -1, m_newerThanFilter);
 

@@ -32,6 +32,11 @@ class IOFactory {
                                      const QStringList& arguments,
                                      const QString& native_arguments = {},
                                      const QString& working_directory = {});
+    static void startProcess(QProcess* const proc,
+                             const QString& executable,
+                             const QStringList& arguments = {},
+                             const QProcessEnvironment& pe = {},
+                             const QString& working_directory = {});
     static QString startProcessGetOutput(const QString& executable,
                                          const QStringList& arguments = {},
                                          const QProcessEnvironment& pe = {},

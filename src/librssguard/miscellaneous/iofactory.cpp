@@ -94,6 +94,26 @@ bool IOFactory::startProcessDetached(const QString& program, const QStringList& 
   return process.startDetached(nullptr);
 }
 
+void IOFactory::startProcess(QProcess* const proc,
+                             const QString& executable,
+                             const QStringList& arguments,
+                             const QProcessEnvironment& pe,
+                             const QString& working_directory) {
+  proc->setProgram(executable);
+  proc->setArguments(arguments);
+
+  QProcessEnvironment system_pe = QProcessEnvironment::systemEnvironment();
+
+  system_pe.insert(pe);
+  proc->setProcessEnvironment(system_pe);
+
+  if (!working_directory.isEmpty()) {
+    proc->setWorkingDirectory(working_directory);
+  }
+
+  proc->start();
+}
+
 QString IOFactory::startProcessGetOutput(const QString& executable,
                                          const QStringList& arguments,
                                          const QProcessEnvironment& pe,

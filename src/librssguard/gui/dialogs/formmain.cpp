@@ -251,7 +251,7 @@ void FormMain::prepareMenus() {
     m_trayMenu->addAction(m_ui->m_actionSettings);
     m_trayMenu->addAction(m_ui->m_actionQuit);
 
-    qDebugNN << LOGSEC_MESSAGEMODEL << "Creating tray icon menu.";
+    qDebugNN << LOGSEC_GUI << "Creating tray icon menu.";
   }
 
 #if !defined(USE_WEBENGINE)

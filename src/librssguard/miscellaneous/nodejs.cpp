@@ -3,6 +3,7 @@
 #include "miscellaneous/nodejs.h"
 
 #include "exceptions/applicationexception.h"
+#include "exceptions/processexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
@@ -73,7 +74,14 @@ NodeJs::PackageStatus NodeJs::packageStatus(const PackageMetadata& pkg) const {
   QJsonDocument json = QJsonDocument::fromJson(npm_ls.toUtf8());
   QJsonObject deps = json.object()["dependencies"].toObject();
 
-  return {};
+  if (deps.contains(pkg.m_name)) {
+    QString vers = deps[pkg.m_name].toObject()["version"].toString();
+
+    return vers == pkg.m_version ? PackageStatus::UpToDate : PackageStatus::OutOfDate;
+  }
+  else {
+    return PackageStatus::NotInstalled;
+  }
 }
 
 void NodeJs::installUpdatePackage(const PackageMetadata& pkg) {
@@ -81,12 +89,13 @@ void NodeJs::installUpdatePackage(const PackageMetadata& pkg) {
 
   switch (pkg_status) {
     case PackageStatus::NotInstalled:
-      break;
-
     case PackageStatus::OutOfDate:
+      installPackage(pkg);
       break;
 
     case PackageStatus::UpToDate:
+      emit packageInstalledUpdated(pkg);
+
       break;
   }
 }
@@ -94,11 +103,47 @@ void NodeJs::installUpdatePackage(const PackageMetadata& pkg) {
 void NodeJs::installPackage(const PackageMetadata& pkg) {
   // npm install --prefix "." @cliqz/adblocker@">=1.0.0 <2.0.0" --production --save-exact
   //https://docs.npmjs.com/cli/v8/commands/npm-install
+  try {
+    QProcess* proc = new QProcess();
 
+    connect(proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [pkg, this](int exit_code,
+                                                                                                   QProcess::ExitStatus status) {
+      QProcess* sndr = qobject_cast<QProcess*>(sender());
+
+      if (exit_code != EXIT_SUCCESS || status == QProcess::ExitStatus::CrashExit) {
+        qCriticalNN << LOGSEC_NODEJS << "Error when installing package" << QUOTE_W_SPACE_DOT(pkg.m_name)
+                    << " Exit code:" << QUOTE_W_SPACE_DOT(exit_code)
+                    << " Message:" << QUOTE_W_SPACE_DOT(sndr->readAllStandardError());
+
+        emit packageError(pkg, sndr->errorString());
+      }
+      else {
+        qDebugNN << LOGSEC_NODEJS << "Installed/updated package" << QUOTE_W_SPACE(pkg.m_name)
+                 << "with version" << QUOTE_W_SPACE_DOT(pkg.m_version);
+        emit packageInstalledUpdated(pkg);
+      }
+    });
+    connect(proc, &QProcess::errorOccurred, this, [pkg, this](QProcess::ProcessError error) {
+      QProcess* sndr = qobject_cast<QProcess*>(sender());
+
+      qCriticalNN << LOGSEC_NODEJS << "Error when installing package" << QUOTE_W_SPACE_DOT(pkg.m_name)
+                  << " Message:" << QUOTE_W_SPACE_DOT(error);
+
+      emit packageError(pkg, sndr->errorString());
+    });
+
+    IOFactory::startProcess(proc,
+                            npmExecutable(),
+                            { QSL("install"), QSL("--production"),
+                              QSL("%1@%2").arg(pkg.m_name, pkg.m_version),
+                              QSL("--prefix"), processedPackageFolder() });
+  }
+  catch (const ProcessException& ex) {
+    emit packageError(pkg, ex.message());
+  }
 }
 
-void NodeJs::updatePackage(const PackageMetadata& pkg)
-{
+void NodeJs::updatePackage(const PackageMetadata& pkg) {
   //  npm update --prefix "." @cliqz/adblocker@">=1.0.0 <2.0.0" --production --save-exact
   //https://docs.npmjs.com/cli/v8/commands/npm-update
 }
