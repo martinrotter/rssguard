@@ -55,13 +55,16 @@ class NodeJs : public QObject {
 
     // Installs package.
     //
-    // If package is NOT installed, then it is installed.
+    // If package is NOT installed, then it will be installed.
     // If package IS installed but out-of-date, it is updated to desired versions.
     //
     // NOTE: https://docs.npmjs.com/cli/v8/commands/npm-install
-    void installPackage(const PackageMetadata& pkg);
+    void installUpdatePackage(const PackageMetadata& pkg);
 
   private:
+    void installPackage(const PackageMetadata& pkg);
+    void updatePackage(const PackageMetadata& pkg);
+
     Settings* m_settings;
 };
 

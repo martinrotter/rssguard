@@ -8,6 +8,9 @@
 #include "miscellaneous/settings.h"
 
 #include <QDir>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 NodeJs::NodeJs(Settings* settings, QObject* parent) : QObject(parent), m_settings(settings) {}
 
@@ -64,14 +67,38 @@ QString NodeJs::npmVersion(const QString& npm_exe) const {
 }
 
 NodeJs::PackageStatus NodeJs::packageStatus(const PackageMetadata& pkg) const {
-  //npm ls --unicode --json --prefix "."
-
   QString npm_ls = IOFactory::startProcessGetOutput(npmExecutable(),
                                                     { QSL("ls"), QSL("--unicode"), QSL("--json"), QSL("--prefix"),
                                                       processedPackageFolder() });
+  QJsonDocument json = QJsonDocument::fromJson(npm_ls.toUtf8());
+  QJsonObject deps = json.object()["dependencies"].toObject();
 
   return {};
 }
 
-void NodeJs::installPackage(const PackageMetadata& pkg)
-{}
+void NodeJs::installUpdatePackage(const PackageMetadata& pkg) {
+  auto pkg_status = packageStatus(pkg);
+
+  switch (pkg_status) {
+    case PackageStatus::NotInstalled:
+      break;
+
+    case PackageStatus::OutOfDate:
+      break;
+
+    case PackageStatus::UpToDate:
+      break;
+  }
+}
+
+void NodeJs::installPackage(const PackageMetadata& pkg) {
+  // npm install --prefix "." @cliqz/adblocker@">=1.0.0 <2.0.0" --production --save-exact
+  //https://docs.npmjs.com/cli/v8/commands/npm-install
+
+}
+
+void NodeJs::updatePackage(const PackageMetadata& pkg)
+{
+  //  npm update --prefix "." @cliqz/adblocker@">=1.0.0 <2.0.0" --production --save-exact
+  //https://docs.npmjs.com/cli/v8/commands/npm-update
+}
