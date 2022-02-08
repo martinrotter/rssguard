@@ -504,6 +504,76 @@ qt_wrap_ui(SOURCES ${UI_FILES})
 qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/sql.qrc)
 qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/rssguard.qrc)
 
+# Process OAuth service secrets.
+set(FEEDLY_CLIENT_ID "" CACHE STRING "Feedly client ID")
+set(FEEDLY_CLIENT_SECRET "" CACHE STRING "Feedly client secret")
+
+set(GMAIL_CLIENT_ID "" CACHE STRING "GMail client ID")
+set(GMAIL_CLIENT_SECRET "" CACHE STRING "GMail client secret")
+
+set(INOREADER_CLIENT_ID "" CACHE STRING "Inoreader client ID")
+set(INOREADER_CLIENT_SECRET "" CACHE STRING "Inoreader client secret")
+
+if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
+  target_compile_definitions(rssguard
+    PRIVATE
+
+    FEEDLY_OFFICIAL_SUPPORT
+    FEEDLY_CLIENT_ID="${FEEDLY_CLIENT_ID}"
+    FEEDLY_CLIENT_SECRET="${FEEDLY_CLIENT_SECRET}"
+  )
+
+  message(STATUS "Enabling official Feedly support.")
+else()
+  message(STATUS "Feedly client ID/secret variables are not set. Disabling official support.")
+endif()
+
+if(NOT GMAIL_CLIENT_ID STREQUAL "" AND NOT GMAIL_CLIENT_SECRET STREQUAL "")
+  target_compile_definitions(rssguard
+    PRIVATE
+
+    GMAIL_OFFICIAL_SUPPORT
+    GMAIL_CLIENT_ID="${GMAIL_CLIENT_ID}"
+    GMAIL_CLIENT_SECRET="${GMAIL_CLIENT_SECRET}"
+  )
+
+  message(STATUS "Enabling official Gmail support.")
+else()
+  message(STATUS "Gmail client ID/secret variables are not set. Disabling official support.")
+endif()
+
+if(NOT INOREADER_CLIENT_ID STREQUAL "" AND NOT INOREADER_CLIENT_SECRET STREQUAL "")
+  target_compile_definitions(rssguard
+    PRIVATE
+
+    INOREADER_OFFICIAL_SUPPORT
+    INOREADER_CLIENT_ID="${INOREADER_CLIENT_ID}"
+    INOREADER_CLIENT_SECRET="${INOREADER_CLIENT_SECRET}"
+  )
+
+  message(STATUS "Enabling official Inoreader support.")
+else()
+  message(STATUS "Inoreader client ID/secret variables are not set. Disabling official support.")
+endif()
+
+# Load git commit hash.
+if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
+  execute_process(COMMAND "git" "rev-parse" "--short" "HEAD"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    OUTPUT_VARIABLE APP_REVISION
+    ERROR_QUIET
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+
+  message(STATUS "Detected git revision: '${APP_REVISION}'.")
+else()
+  set(APP_REVISION "")
+endif()
+
+if(NOT USE_WEBENGINE)
+  set(APP_REVISION "${APP_REVISION}-nowebengine")
+endif()
+
 # Bundle icons on some platforms which do not provide system-wide icon themes.
 if(APPLE OR WIN32 OR OS2)
   qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/icons.qrc)
@@ -517,7 +587,21 @@ endif()
 
 add_library(rssguard SHARED ${SOURCES} ${QM_FILES})
 
-target_compile_definitions(rssguard PRIVATE RSSGUARD_DLLSPEC=Q_DECL_EXPORT)
+target_compile_definitions(rssguard
+  PRIVATE
+  RSSGUARD_DLLSPEC=Q_DECL_EXPORT
+
+  APP_AUTHOR="${APP_AUTHOR}"
+  APP_DONATE_URL="${APP_DONATE_URL}"
+  APP_EMAIL="${APP_EMAIL}"
+  APP_LOW_H_NAME=".${CMAKE_PROJECT_NAME}"
+  APP_REVISION="${APP_REVISION}"
+  APP_SYSTEM_NAME="${CMAKE_SYSTEM_NAME}"
+  APP_SYSTEM_VERSION="${CMAKE_SYSTEM_PROCESSOR}"
+
+  APP_URL_DOCUMENTATION="${APP_URL_DOCUMENTATION}"
+  APP_URL_ISSUES_NEW="${APP_URL_ISSUES_NEW}"
+  APP_USERAGENT="${APP_NAME}/${CMAKE_PROJECT_VERSION}")
 
 target_include_directories(rssguard
   PUBLIC
@@ -526,6 +610,7 @@ target_include_directories(rssguard
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/dialogs
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/reusable
   ${CMAKE_CURRENT_SOURCE_DIR}/dynamic-shortcuts
+
   PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/notifications
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/toolbars
