@@ -32,7 +32,7 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent), m
                                   tr("Here, results of connection test are shown."));
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
-  m_ui.m_lblInfo->setHelpText(tr("Your %1 build has official Feedly support. You do not have to use \"developer acess "
+  m_ui.m_lblInfo->setHelpText(tr("Your %1 build has official Feedly support. You do not have to use \"developer access "
                                  "token\". You can therefore leave corresponding field empty.").arg(QSL(APP_NAME)),
                               false);
 #else

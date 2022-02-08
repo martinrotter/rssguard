@@ -143,7 +143,8 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
     QString msg_date = qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
                        ? message.m_created.toLocalTime().toString(qApp->settings()->value(GROUP(Messages),
                                                                                           SETTING(Messages::CustomDateFormat)).toString())
-                       : QLocale().toString(message.m_created.toLocalTime(), QLocale::FormatType::ShortFormat);
+                       : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
+                                                                       QLocale::FormatType::ShortFormat);
 
     messages_layout.append(single_message_layout
                            .arg(message.m_title,

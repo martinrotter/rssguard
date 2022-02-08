@@ -35,7 +35,7 @@ if(APPLE)
 elseif(WIN32)
   target_link_libraries(app PUBLIC
     Shell32.lib
-    odbc32
+    odbc32.lib
   )
 endif()
 

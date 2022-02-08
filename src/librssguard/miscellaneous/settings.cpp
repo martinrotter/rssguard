@@ -37,7 +37,7 @@ DVALUE(QString) Node::NpmExecutableDef = "npm";
 #endif
 
 DKEY Node::PackageFolder = QSL("package_folder") + OS_ID;
-DVALUE(QString) Node::PackageFolderDef = QSL(USER_DATA_PLACEHOLDER) + "/node-packages-" + OS_ID;
+DVALUE(QString) Node::PackageFolderDef = QSL(USER_DATA_PLACEHOLDER) + "/node-packages-" + QSL(OS_ID).toLower();
 
 // Cookies.
 DKEY Cookies::ID = "cookies";
