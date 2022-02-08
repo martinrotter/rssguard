@@ -514,6 +514,38 @@ set(GMAIL_CLIENT_SECRET "" CACHE STRING "GMail client secret")
 set(INOREADER_CLIENT_ID "" CACHE STRING "Inoreader client ID")
 set(INOREADER_CLIENT_SECRET "" CACHE STRING "Inoreader client secret")
 
+# Load git commit hash.
+if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
+  execute_process(COMMAND "git" "rev-parse" "--short" "HEAD"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    OUTPUT_VARIABLE APP_REVISION
+    ERROR_QUIET
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+
+  message(STATUS "Detected git revision: '${APP_REVISION}'.")
+else()
+  set(APP_REVISION "")
+endif()
+
+if(NOT USE_WEBENGINE)
+  set(APP_REVISION "${APP_REVISION}-nowebengine")
+endif()
+
+# Bundle icons on some platforms which do not provide system-wide icon themes.
+if(APPLE OR WIN32 OR OS2)
+  qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/icons.qrc)
+endif()
+
+# Bundle version info.
+if(WIN32)
+  enable_language("RC")
+  list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
+endif()
+
+add_library(rssguard SHARED ${SOURCES} ${QM_FILES})
+
+# Add OAuth services definitions.
 if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
   target_compile_definitions(rssguard
     PRIVATE
@@ -556,37 +588,7 @@ else()
   message(STATUS "Inoreader client ID/secret variables are not set. Disabling official support.")
 endif()
 
-# Load git commit hash.
-if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
-  execute_process(COMMAND "git" "rev-parse" "--short" "HEAD"
-    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-    OUTPUT_VARIABLE APP_REVISION
-    ERROR_QUIET
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-  )
-
-  message(STATUS "Detected git revision: '${APP_REVISION}'.")
-else()
-  set(APP_REVISION "")
-endif()
-
-if(NOT USE_WEBENGINE)
-  set(APP_REVISION "${APP_REVISION}-nowebengine")
-endif()
-
-# Bundle icons on some platforms which do not provide system-wide icon themes.
-if(APPLE OR WIN32 OR OS2)
-  qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/icons.qrc)
-endif()
-
-# Bundle version info.
-if(WIN32)
-  enable_language("RC")
-  list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
-endif()
-
-add_library(rssguard SHARED ${SOURCES} ${QM_FILES})
-
+# Add specific definitions.
 target_compile_definitions(rssguard
   PRIVATE
   RSSGUARD_DLLSPEC=Q_DECL_EXPORT
