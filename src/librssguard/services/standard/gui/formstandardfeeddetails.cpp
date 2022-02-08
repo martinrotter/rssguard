@@ -43,7 +43,8 @@ void FormStandardFeedDetails::guessFeed() {
                                    m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText(),
                                    m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
                                    m_authDetails->m_txtUsername->lineEdit()->text(),
-                                   m_authDetails->m_txtPassword->lineEdit()->text());
+                                   m_authDetails->m_txtPassword->lineEdit()->text(),
+                                   m_serviceRoot->networkProxy());
 }
 
 void FormStandardFeedDetails::guessIconOnly() {
@@ -51,7 +52,8 @@ void FormStandardFeedDetails::guessIconOnly() {
                                        m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText(),
                                        m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
                                        m_authDetails->m_txtUsername->lineEdit()->text(),
-                                       m_authDetails->m_txtPassword->lineEdit()->text());
+                                       m_authDetails->m_txtPassword->lineEdit()->text(),
+                                       m_serviceRoot->networkProxy());
 }
 
 void FormStandardFeedDetails::onTitleChanged(const QString& title) {
