@@ -6,6 +6,7 @@
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/nodejs.h"
+#include "network-web/webfactory.h"
 
 #include <QDir>
 #include <QFileDialog>
@@ -18,13 +19,19 @@ SettingsNodejs::SettingsNodejs(Settings* settings, QWidget* parent) : SettingsPa
                                   "scalable network applications.\n\n"
                                   "%1 integrates Node.js to bring some modern features like Adblock.\n\n"
                                   "Note that usually all required Node.js tools should be available via your \"PATH\" "
-                                  "environment variable, so you do not have to specify full paths.").arg(APP_NAME),
+                                  "environment variable, so you do not have to specify full paths.\n\n"
+                                  "Also, relaunch \"Settings\" dialog after you install Node.js.").arg(APP_NAME),
                                false);
 
   m_ui.m_helpPackages->setHelpText(tr("%1 automatically installs some Node.js packages so that you do not have to. %1 does not "
                                       "use global package folder because that requires administrator rights, therefore by default "
                                       "it uses subfolder placed in your \"user data\" folder.").arg(APP_NAME),
                                    false);
+
+  connect(m_ui.m_btnDownloadNodejs, &QPushButton::clicked,
+          this, [this]() {
+    qApp->web()->openUrlInExternalBrowser(QSL("https://nodejs.org/en/download/"));
+  });
 
   connect(m_ui.m_tbNodeExecutable->lineEdit(), &BaseLineEdit::textChanged,
           this, &SettingsNodejs::testNodejs);
