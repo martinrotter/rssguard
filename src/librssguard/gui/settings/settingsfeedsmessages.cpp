@@ -23,8 +23,11 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   m_ui->m_spinStartupUpdateDelay->setMode(TimeSpinBox::Mode::MinutesSeconds);
 
   initializeMessageDateFormats();
-  GuiUtilities::setLabelAsNotice(*m_ui->label_9, false);
 
+  m_ui->m_helpCountsFeedsFormat->setHelpText(tr("Enter format for count of articles displayed next to each "
+                                                "feed/category in feed list. Use \"%all\" and \"%unread\" strings "
+                                                "which are placeholders for the actual count of all (or unread) articles."),
+                                             false);
   m_ui->m_helpMultilineArticleList->setHelpText(tr("Note that enabling this might have drastic consequences on "
                                                    "performance of article list with big number of articles."),
                                                 true);

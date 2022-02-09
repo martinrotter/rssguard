@@ -18,7 +18,7 @@
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
-       <string>Feeds</string>
+       <string>Feed fetching</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_2">
        <item row="0" column="0">
@@ -80,7 +80,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="3" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
           <string>Feed connection timeout</string>
@@ -90,7 +90,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="3" column="1">
         <widget class="QSpinBox" name="m_spinFeedUpdateTimeout">
          <property name="minimumSize">
           <size>
@@ -115,17 +115,37 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="4" column="0" colspan="2">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="m_tabFeedsList">
+      <attribute name="title">
+       <string>Feeds list</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_4">
+       <item row="0" column="0">
         <widget class="QLabel" name="label_6">
          <property name="text">
-          <string>Feed list row height</string>
+          <string>Row height</string>
          </property>
          <property name="buddy">
           <cstring>m_spinHeightRowsFeeds</cstring>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="0" column="1">
         <widget class="QSpinBox" name="m_spinHeightRowsFeeds">
          <property name="minimumSize">
           <size>
@@ -144,17 +164,66 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="1" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QGroupBox" name="groupBox_6">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="title">
+            <string>Feed list font</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout_3">
+            <item row="0" column="0">
+             <widget class="QLabel" name="m_lblFeedListFont">
+              <property name="text">
+               <string>Font preview</string>
+              </property>
+              <property name="buddy">
+               <cstring>m_btnChangeFeedListFont</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QPushButton" name="m_btnChangeFeedListFont">
+              <property name="text">
+               <string>&amp;Change font</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="0">
         <widget class="QLabel" name="label_8">
          <property name="text">
-          <string>Article count format in feed list</string>
+          <string>Article count format</string>
          </property>
          <property name="buddy">
           <cstring>m_cmbCountsFeedList</cstring>
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
+       <item row="2" column="1">
         <widget class="QComboBox" name="m_cmbCountsFeedList">
          <property name="minimumSize">
           <size>
@@ -170,40 +239,32 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="0" colspan="2">
-        <widget class="QLabel" name="label_9">
-         <property name="font">
-          <font>
-           <italic>true</italic>
-          </font>
-         </property>
-         <property name="text">
-          <string>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
+       <item row="3" column="0" colspan="2">
+        <widget class="HelpSpoiler" name="m_helpCountsFeedsFormat" native="true"/>
        </item>
-       <item row="9" column="0" colspan="2">
+       <item row="4" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbHideCountsIfNoUnread">
          <property name="text">
           <string>Hide article counts if there are no unread articles</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="0" colspan="2">
+       <item row="5" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbListsRestrictedShortcuts">
+         <property name="text">
+          <string>Allow only basic keyboard shortcuts for feed/article list</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkShowTooltips">
          <property name="text">
           <string>Display tooltips for feeds and articles</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="0" colspan="2">
-        <spacer name="verticalSpacer">
+       <item row="7" column="0" colspan="2">
+        <spacer name="verticalSpacer_3">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -214,45 +275,6 @@
           </size>
          </property>
         </spacer>
-       </item>
-       <item row="10" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbListsRestrictedShortcuts">
-         <property name="text">
-          <string>Allow only basic keyboard shortcuts for feed/article list</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QGroupBox" name="groupBox_6">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="title">
-          <string>Feed list font</string>
-         </property>
-         <layout class="QFormLayout" name="formLayout_3">
-          <item row="0" column="0">
-           <widget class="QLabel" name="m_lblFeedListFont">
-            <property name="text">
-             <string>Font preview</string>
-            </property>
-            <property name="buddy">
-             <cstring>m_btnChangeFeedListFont</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QPushButton" name="m_btnChangeFeedListFont">
-            <property name="text">
-             <string>&amp;Change font</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
        </item>
       </layout>
      </widget>
@@ -290,56 +312,13 @@
         </widget>
        </item>
        <item row="4" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_checkDisplayFeedIcons">
-         <property name="text">
-          <string>Display real icons of feeds in list of articles instead of read/unread icons</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkBringToForegroundAfterMsgOpened">
          <property name="text">
           <string>Bring application window to front once article is opened in external web browser</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_checkKeppMessagesInTheMiddle">
-         <property name="text">
-          <string>Keep article selection in the middle of the article list viewport</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Article list row height</string>
-         </property>
-         <property name="buddy">
-          <cstring>m_spinHeightRowsMessages</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="1">
-        <widget class="QSpinBox" name="m_spinHeightRowsMessages">
-         <property name="minimumSize">
-          <size>
-           <width>150</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="suffix">
-          <string notr="true"> px</string>
-         </property>
-         <property name="minimum">
-          <number>-1</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="0">
+       <item row="5" column="0">
         <widget class="QLabel" name="m_lblHeightImageAttachments">
          <property name="text">
           <string>Image attachments height</string>
@@ -349,7 +328,7 @@
          </property>
         </widget>
        </item>
-       <item row="11" column="1">
+       <item row="5" column="1">
         <widget class="QSpinBox" name="m_spinHeightImageAttachments">
          <property name="suffix">
           <string notr="true"> px</string>
@@ -362,86 +341,8 @@
          </property>
         </widget>
        </item>
-       <item row="12" column="0">
-        <widget class="QCheckBox" name="m_checkMessagesDateTimeFormat">
-         <property name="text">
-          <string>Use custom date/time format</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="1">
-        <widget class="QComboBox" name="m_cmbMessagesDateTimeFormat">
-         <property name="minimumSize">
-          <size>
-           <width>150</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="editable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="0">
-        <widget class="QCheckBox" name="m_checkMessagesTimeFormat">
-         <property name="text">
-          <string>Custom date/time format for today's articles</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="1">
-        <widget class="QComboBox" name="m_cmbMessagesTimeFormat">
-         <property name="minimumSize">
-          <size>
-           <width>150</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="editable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="0" colspan="2">
+       <item row="6" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QGroupBox" name="groupBox_5">
-           <property name="title">
-            <string>Article list font</string>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_17">
-            <item>
-             <widget class="QLabel" name="m_lblMessageListFont">
-              <property name="text">
-               <string>Font preview</string>
-              </property>
-              <property name="buddy">
-               <cstring>m_btnChangeMessageListFont</cstring>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="m_btnChangeMessageListFont">
-              <property name="text">
-               <string>&amp;Change font</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
          <item>
           <widget class="QGroupBox" name="groupBox_4">
            <property name="title">
@@ -483,7 +384,7 @@
          </item>
         </layout>
        </item>
-       <item row="16" column="0" colspan="2">
+       <item row="7" column="0" colspan="2">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -496,14 +397,28 @@
          </property>
         </spacer>
        </item>
-       <item row="7" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_checkMultilineArticleList">
+      </layout>
+     </widget>
+     <widget class="QWidget" name="m_tabArticlesList">
+      <attribute name="title">
+       <string>Articles list</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_5">
+       <item row="0" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkDisplayFeedIcons">
          <property name="text">
-          <string>Enable multiline article list items</string>
+          <string>Display real icons of feeds instead of read/unread icons</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="0" colspan="2">
+       <item row="1" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkKeppMessagesInTheMiddle">
+         <property name="text">
+          <string>Keep article selection in the middle of the article list viewport</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
         <widget class="HelpSpoiler" name="m_helpMultilineArticleList" native="true">
          <property name="minimumSize">
           <size>
@@ -513,7 +428,46 @@
          </property>
         </widget>
        </item>
-       <item row="10" column="1">
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Row height</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_spinHeightRowsMessages</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QSpinBox" name="m_spinHeightRowsMessages">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="suffix">
+          <string notr="true"> px</string>
+         </property>
+         <property name="minimum">
+          <number>-1</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Top/bottom row padding</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_spinPaddingRowsMessages</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
         <widget class="QSpinBox" name="m_spinPaddingRowsMessages">
          <property name="minimumSize">
           <size>
@@ -532,13 +486,101 @@
          </property>
         </widget>
        </item>
-       <item row="10" column="0">
-        <widget class="QLabel" name="label_4">
+       <item row="6" column="0">
+        <widget class="QCheckBox" name="m_checkMessagesDateTimeFormat">
          <property name="text">
-          <string>Article list top/bottom row padding</string>
+          <string>Use custom date/time format</string>
          </property>
-         <property name="buddy">
-          <cstring>m_spinPaddingRowsMessages</cstring>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="m_cmbMessagesDateTimeFormat">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="editable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QCheckBox" name="m_checkMessagesTimeFormat">
+         <property name="text">
+          <string>Custom date/time format for today's articles</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QComboBox" name="m_cmbMessagesTimeFormat">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="editable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0" colspan="2">
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="8" column="0">
+        <widget class="QGroupBox" name="groupBox_5">
+         <property name="title">
+          <string>Article list font</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_17">
+          <item>
+           <widget class="QLabel" name="m_lblMessageListFont">
+            <property name="text">
+             <string>Font preview</string>
+            </property>
+            <property name="buddy">
+             <cstring>m_btnChangeMessageListFont</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="m_btnChangeMessageListFont">
+            <property name="text">
+             <string>&amp;Change font</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkMultilineArticleList">
+         <property name="text">
+          <string>Enable multiline items</string>
          </property>
         </widget>
        </item>
@@ -562,35 +604,18 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>m_tabFeedsMessages</tabstop>
   <tabstop>m_checkUpdateAllFeedsOnStartup</tabstop>
   <tabstop>m_spinStartupUpdateDelay</tabstop>
   <tabstop>m_checkAutoUpdate</tabstop>
   <tabstop>m_spinAutoUpdateInterval</tabstop>
   <tabstop>m_checkAutoUpdateOnlyUnfocused</tabstop>
   <tabstop>m_spinFeedUpdateTimeout</tabstop>
-  <tabstop>m_spinHeightRowsFeeds</tabstop>
-  <tabstop>m_btnChangeFeedListFont</tabstop>
-  <tabstop>m_cmbCountsFeedList</tabstop>
-  <tabstop>m_cbHideCountsIfNoUnread</tabstop>
-  <tabstop>m_cbListsRestrictedShortcuts</tabstop>
-  <tabstop>m_checkShowTooltips</tabstop>
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
   <tabstop>m_cmbIgnoreContentsChanges</tabstop>
   <tabstop>m_checkDisplayPlaceholders</tabstop>
   <tabstop>m_cbShowEnclosuresDirectly</tabstop>
-  <tabstop>m_checkDisplayFeedIcons</tabstop>
   <tabstop>m_checkBringToForegroundAfterMsgOpened</tabstop>
-  <tabstop>m_checkKeppMessagesInTheMiddle</tabstop>
-  <tabstop>m_checkMultilineArticleList</tabstop>
-  <tabstop>m_spinHeightRowsMessages</tabstop>
-  <tabstop>m_spinPaddingRowsMessages</tabstop>
   <tabstop>m_spinHeightImageAttachments</tabstop>
-  <tabstop>m_checkMessagesDateTimeFormat</tabstop>
-  <tabstop>m_cmbMessagesDateTimeFormat</tabstop>
-  <tabstop>m_checkMessagesTimeFormat</tabstop>
-  <tabstop>m_cmbMessagesTimeFormat</tabstop>
-  <tabstop>m_btnChangeMessageListFont</tabstop>
   <tabstop>m_btnChangeMessagesFont</tabstop>
  </tabstops>
  <resources/>
