@@ -6,34 +6,37 @@
 #include <QObject>
 
 class Settings;
+class QProcess;
 
 class NodeJs : public QObject {
   Q_OBJECT
 
-  struct PackageMetadata {
-    public:
-
-      // Name of package.
-      QString m_name;
-
-      // Version description. This could be fixed version or empty
-      // string (latest version) or perhaps version range.
-      QString m_version;
-  };
-
-  enum class PackageStatus {
-    // Package not installed.
-    NotInstalled,
-
-    // Package installed but out-of-date.
-    OutOfDate,
-
-    // Package installed and up-to-date.
-    UpToDate
-  };
-
   public:
+    struct PackageMetadata {
+      public:
+
+        // Name of package.
+        QString m_name;
+
+        // Version description. This could be fixed version or empty
+        // string (latest version) or perhaps version range.
+        QString m_version;
+    };
+
+    enum class PackageStatus {
+      // Package not installed.
+      NotInstalled,
+
+      // Package installed but out-of-date.
+      OutOfDate,
+
+      // Package installed and up-to-date.
+      UpToDate
+    };
+
     explicit NodeJs(Settings* settings, QObject* parent = nullptr);
+
+    void runScript(QProcess* proc, const QString& script, const QStringList& arguments) const;
 
     QString nodeJsExecutable() const;
     void setNodeJsExecutable(const QString& exe) const;
@@ -67,7 +70,6 @@ class NodeJs : public QObject {
 
   private:
     void installPackage(const PackageMetadata& pkg);
-    void updatePackage(const PackageMetadata& pkg);
 
     Settings* m_settings;
 };

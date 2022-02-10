@@ -9,6 +9,7 @@ SettingsGeneral::SettingsGeneral(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsGeneral) {
   m_ui->setupUi(this);
   m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text().arg(QSL(APP_NAME)));
+  m_ui->m_checkForUpdatesOnStart->setText(m_ui->m_checkForUpdatesOnStart->text().arg(QSL(APP_NAME)));
 
   connect(m_ui->m_checkAutostart, &QCheckBox::stateChanged, this, &SettingsGeneral::dirtifySettings);
   connect(m_ui->m_checkForUpdatesOnStart, &QCheckBox::stateChanged, this, &SettingsGeneral::dirtifySettings);

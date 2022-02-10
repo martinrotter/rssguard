@@ -1,11 +1,10 @@
 // Simple local HTTP server providing ad-blocking functionality via https://github.com/cliqz-oss/adblocker
 //
 // How to install:
-//     npm i -g tldts-experimental
-//     npm i -g @cliqz/adblocker
+//     npm i @cliqz/adblocker
 //
 // How to run:
-//     NODE_PATH="C:\Users\<user>\AppData\Roaming\npm\node_modules" node ./adblock-server.js "<port>" "<filters-file-path>"
+//     NODE_PATH="..." node ./adblock-server.js "<port>" "<filters-file-path>"
 //
 // How to use:
 //     curl -i -X POST --data '

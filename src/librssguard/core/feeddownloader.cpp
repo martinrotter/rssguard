@@ -368,7 +368,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
              << feed->customId() << " stored in DB.";
 
     if (updated_messages.first > 0) {
-      m_results.appendUpdatedFeed(QPair<QString, int>(feed->title(), updated_messages.first));
+      m_results.appendUpdatedFeed({ feed->title(), updated_messages.first });
     }
   }
   catch (const FeedFetchException& feed_ex) {
@@ -412,8 +412,7 @@ void FeedDownloader::finalizeUpdate() {
   emit updateFinished(m_results);
 }
 
-bool FeedDownloader::isCacheSynchronizationRunning() const
-{
+bool FeedDownloader::isCacheSynchronizationRunning() const {
   return m_isCacheSynchronizationRunning;
 }
 

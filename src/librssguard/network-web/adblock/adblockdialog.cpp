@@ -112,7 +112,7 @@ void AdBlockDialog::onAdBlockProcessTerminated() {
   m_ui.m_cbEnable->setChecked(false);
   m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                   tr("There is error, check application log for more details and "
-                                     "head to online documentation. Also make sure that Node.js is installed."),
+                                     "head to online documentation."),
                                   tr("ERROR!"));
 }
 

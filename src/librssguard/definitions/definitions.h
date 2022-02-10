@@ -16,7 +16,7 @@
 #define SERVICE_CODE_REDDIT     "reddit"
 
 #define ADBLOCK_SERVER_PORT                   48484
-#define ADBLOCK_HOWTO                         "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#adblock"
+#define ADBLOCK_HOWTO                         "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#adbl"
 #define ADBLOCK_ICON_ACTIVE                   "adblock"
 #define ADBLOCK_ICON_DISABLED                 "adblock-disabled"
 

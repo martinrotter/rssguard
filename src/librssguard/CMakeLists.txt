@@ -514,24 +514,6 @@ set(GMAIL_CLIENT_SECRET "" CACHE STRING "GMail client secret")
 set(INOREADER_CLIENT_ID "" CACHE STRING "Inoreader client ID")
 set(INOREADER_CLIENT_SECRET "" CACHE STRING "Inoreader client secret")
 
-# Load git commit hash.
-if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
-  execute_process(COMMAND "git" "rev-parse" "--short" "HEAD"
-    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-    OUTPUT_VARIABLE APP_REVISION
-    ERROR_QUIET
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-  )
-
-  message(STATUS "Detected git revision: '${APP_REVISION}'.")
-else()
-  set(APP_REVISION "")
-endif()
-
-if(NOT USE_WEBENGINE)
-  set(APP_REVISION "${APP_REVISION}-nowebengine")
-endif()
-
 # Bundle icons on some platforms which do not provide system-wide icon themes.
 if(APPLE OR WIN32 OR OS2)
   qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/icons.qrc)

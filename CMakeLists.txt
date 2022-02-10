@@ -164,6 +164,24 @@ else()
   endif()
 endif()
 
+# Load git commit hash.
+if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
+  execute_process(COMMAND "git" "rev-parse" "--short" "HEAD"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    OUTPUT_VARIABLE APP_REVISION
+    ERROR_QUIET
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+
+  message(STATUS "Detected git revision: '${APP_REVISION}'.")
+else()
+  set(APP_REVISION "")
+endif()
+
+if(NOT USE_WEBENGINE)
+  set(APP_REVISION "${APP_REVISION}-nowebengine")
+endif()
+
 # Pass common defines.
 add_compile_definitions(
   APP_NAME="${APP_NAME}"

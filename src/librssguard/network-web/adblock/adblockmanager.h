@@ -5,8 +5,13 @@
 
 #include <QObject>
 
+#include "miscellaneous/nodejs.h"
+
 #include <QHash>
 #include <QProcess>
+
+#define CLIQZ_ADBLOCKED_PACKAGE "@cliqz/adblocker"
+#define CLIQZ_ADBLOCKED_VERSION "1.23.5"
 
 class QUrl;
 class AdblockRequestInfo;
@@ -66,6 +71,8 @@ class AdBlockManager : public QObject {
     void processTerminated();
 
   private slots:
+    void onPackageReady(const NodeJs::PackageMetadata& pkg);
+    void onPackageError(const NodeJs::PackageMetadata& pkg, const QString& error);
     void onServerProcessFinished(int exit_code, QProcess::ExitStatus exit_status);
 
   private:
@@ -79,6 +86,7 @@ class AdBlockManager : public QObject {
   private:
     bool m_loaded;
     bool m_enabled;
+    bool m_installing;
     AdBlockIcon* m_adblockIcon;
     AdBlockUrlInterceptor* m_interceptor;
     QString m_unifiedFiltersFile;

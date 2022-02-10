@@ -60,6 +60,7 @@ Application::Application(const QString& id, int& argc, char** argv)
   m_mainForm = nullptr;
   m_trayIcon = nullptr;
   m_settings = Settings::setupSettings(this);
+  m_nodejs = new NodeJs(m_settings, this);
   m_webFactory = new WebFactory(this);
   m_system = new SystemFactory(this);
   m_skins = new SkinFactory(this);
@@ -68,7 +69,6 @@ Application::Application(const QString& id, int& argc, char** argv)
   m_database = new DatabaseFactory(this);
   m_downloadManager = nullptr;
   m_notifications = new NotificationFactory(this);
-  m_nodejs = new NodeJs(m_settings, this);
   m_shouldRestart = false;
 
   determineFirstRuns();
@@ -663,13 +663,9 @@ void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
 void Application::onAdBlockFailure() {
   qApp->showGuiMessage(Notification::Event::GeneralEvent, {
     tr("AdBlock needs to be configured"),
-    tr("AdBlock component is not configured properly."),
-    QSystemTrayIcon::MessageIcon::Critical },
-                       {}, {
-    tr("Configure now"),
-    [=]() {
-      m_webFactory->adBlock()->showDialog();
-    } });
+    tr("AdBlock component is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
+       "if your Node.js is properly configured."),
+    QSystemTrayIcon::MessageIcon::Critical }, {});
 
   qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, false);
 }

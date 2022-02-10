@@ -17,6 +17,7 @@ There is a [Discord server](https://discord.gg/7xbVMPPNqH) for user communicatio
     - [Built-in Web Browser with AdBlock](#webb)
 - [Minor Features](#mife)
     - [Files Downloader](#downl)
+    - [Node.js](#node)
     - [Labels](#lbls)
     - [Skins](#skin)
     - [GUI Tweaking](#guit)
@@ -426,18 +427,13 @@ If you're not sure which version to use, **use the WebEngine-based RSS Guard**.
 #### AdBlock <a id="adbl"></a>
 [Web-based variant](#webb) of RSS Guard offers ad-blocking functionality via [Adblocker](https://github.com/cliqz-oss/adblocker). Adblocker offers similar performance to [uBlock Origin](https://github.com/gorhill/uBlock).
 
-If you want to enable AdBlock in RSS Guard you need to do this:
-
-1. Have [Node.js](https://nodejs.org) with [NPM](https://www.npmjs.com) (which is usually included in Node.js installer) installed. Also you need to have paths `node.exe` and `npm` added to your system `PATH` environment available.
-2. The implementation requires additional [npm](https://www.npmjs.com) modules to be installed. You see the list of needed modules near the top of [this](https://github.com/martinrotter/rssguard/blob/master/resources/scripts/adblock/adblock-server.js) file.
-
-I understand that the above installation is not trivial, but it is necessary evil to have up-to-date and modern implementation of AdBlock in RSS Guard. Previous, `C++`-based, implementation was buggy, slow, and hard to maintain.
+If you want to use AdBlock, you need to have [Node.js](#node) installed.
 
 You can find elaborate lists of AdBlock rules [here](https://easylist.to). You can just copy direct hyperlinks to those lists and paste them into the "Filter lists" text-box as shown below. Remember to always separate individual links with newlines. Same applies to "Custom filters", where you can insert individual filters, for example [filter](https://adblockplus.org/filter-cheatsheet) "idnes" to block all URLs with "idnes" in them.
 
 <img alt="alt-img" src="images/adblock.png" width="350px">
 
-The way ad-blocking internally works is that RSS Guard starts local HTTP browser which provides ad-blocking API, which is subsequently called by RSS Guard. There is some caching done in between, which speeds up some ad-blocking decisions.
+The way ad-blocking internally works is that RSS Guard starts local `HTTP` browser which provides ad-blocking API, which is subsequently called by RSS Guard. There is some caching done in between, which speeds up some ad-blocking decisions.
 
 ## Minor Features <a id="mife"></a>
 
@@ -451,6 +447,12 @@ You can right click on any item in embedded web browser and hit `Save as` button
 <img alt="alt-img" src="images/downloader-view.png" width="600px">
 
 You can download up to 6 files simultaneously.
+
+### Node.js <a id="node"></a>
+RSS Guard integrates [`Node.js`](https://nodejs.org). Go to `Node.js` section of `Settings` dialog to see more.
+
+`Node.js` is used for some advanced functionality like [AdBlock](#adbl).
+
 
 ### Labels <a id="lbls"></a>
 RSS Guard supports labels (tags). Any number of tags can be assigned to any article.

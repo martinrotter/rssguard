@@ -25,11 +25,14 @@
 #include <QWebEngineProfile>
 
 AdBlockManager::AdBlockManager(QObject* parent)
-  : QObject(parent), m_loaded(false), m_enabled(false), m_interceptor(new AdBlockUrlInterceptor(this)),
+  : QObject(parent), m_loaded(false), m_enabled(false), m_installing(false), m_interceptor(new AdBlockUrlInterceptor(this)),
   m_serverProcess(nullptr), m_cacheBlocks({}) {
   m_adblockIcon = new AdBlockIcon(this);
   m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
   m_unifiedFiltersFile = qApp->userDataFolder() + QDir::separator() + QSL("adblock-unified-filters.txt");
+
+  connect(qApp->nodejs(), &NodeJs::packageInstalledUpdated, this, &AdBlockManager::onPackageReady);
+  connect(qApp->nodejs(), &NodeJs::packageError, this, &AdBlockManager::onPackageError);
 }
 
 AdBlockManager::~AdBlockManager() {
@@ -98,16 +101,9 @@ void AdBlockManager::setEnabled(bool enabled) {
   emit enabledChanged(m_enabled);
 
   if (m_enabled) {
-    try {
-      updateUnifiedFiltersFileAndStartServer();
-    }
-    catch (const ApplicationException& ex) {
-      qCriticalNN << LOGSEC_ADBLOCK
-                  << "Failed to write unified filters to file or re-start server, error:"
-                  << QUOTE_W_SPACE_DOT(ex.message());
-
-      m_enabled = false;
-      emit enabledChanged(m_enabled);
+    if (!m_installing) {
+      m_installing = true;
+      qApp->nodejs()->installUpdatePackage({ QSL(CLIQZ_ADBLOCKED_PACKAGE), QSL(CLIQZ_ADBLOCKED_VERSION) });
     }
   }
   else {
@@ -177,6 +173,37 @@ QString AdBlockManager::generateJsForElementHiding(const QString& css) {
 
 void AdBlockManager::showDialog() {
   AdBlockDialog(qApp->mainFormWidget()).exec();
+}
+
+void AdBlockManager::onPackageReady(const NodeJs::PackageMetadata& pkg) {
+  if (pkg.m_name == QSL(CLIQZ_ADBLOCKED_PACKAGE)) {
+    m_installing = false;
+
+    if (m_enabled) {
+      try {
+        updateUnifiedFiltersFileAndStartServer();
+      }
+      catch (const ApplicationException& ex) {
+        qCriticalNN << LOGSEC_ADBLOCK
+                    << "Failed to setup filters and start server:"
+                    << QUOTE_W_SPACE_DOT(ex.message());
+
+        m_enabled = false;
+        emit enabledChanged(m_enabled);
+      }
+    }
+  }
+}
+
+void AdBlockManager::onPackageError(const NodeJs::PackageMetadata& pkg, const QString& error) {
+  if (pkg.m_name == QSL(CLIQZ_ADBLOCKED_PACKAGE)) {
+    m_installing = false;
+    m_enabled = false;
+
+    qCriticalNN << LOGSEC_ADBLOCK << "Needed Node.js packages were not installed:" << QUOTE_W_SPACE_DOT(error);
+
+    emit processTerminated();
+  }
 }
 
 void AdBlockManager::onServerProcessFinished(int exit_code, QProcess::ExitStatus exit_status) {
@@ -281,48 +308,54 @@ QProcess* AdBlockManager::startServer(int port) {
 
   QProcess* proc = new QProcess(this);
 
-#if defined(Q_OS_WIN)
-  proc->setProgram(QSL("node.exe"));
-#else
-  proc->setProgram(QSL("node"));
-#endif
+  proc->setProcessChannelMode(QProcess::ProcessChannelMode::ForwardedErrorChannel);
 
-  proc->setArguments({
-    QDir::toNativeSeparators(temp_server),
+  connect(proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &AdBlockManager::onServerProcessFinished);
+
+  qApp->nodejs()->runScript(proc, QDir::toNativeSeparators(temp_server), {
     QString::number(port),
     QDir::toNativeSeparators(m_unifiedFiltersFile)
   });
 
-  proc->setProcessEnvironment(QProcessEnvironment::systemEnvironment());
+  /*
+   #if defined(Q_OS_WIN)
+     proc->setProgram(QSL("node.exe"));
+   #else
+     proc->setProgram(QSL("node"));
+   #endif
 
-  auto pe = proc->processEnvironment();
+     proc->setArguments({
+     QDir::toNativeSeparators(temp_server),
+     QString::number(port),
+     QDir::toNativeSeparators(m_unifiedFiltersFile)
+     });
 
-  if (!pe.contains(QSL("NODE_PATH"))) {
-    try {
+     proc->setProcessEnvironment(QProcessEnvironment::systemEnvironment());
+
+     auto pe = proc->processEnvironment();
+
+     if (!pe.contains(QSL("NODE_PATH"))) {
+     try {
       const QString system_node_prefix = IOFactory::startProcessGetOutput(
-#if defined(Q_OS_WIN)
+   #if defined(Q_OS_WIN)
         QSL("npm.cmd")
-#else
+   #else
         QSL("npm")
-#endif
+   #endif
         , { QSL("root"), QSL("--quiet"), QSL("-g") }
         );
 
       if (!system_node_prefix.isEmpty()) {
         pe.insert(QSL("NODE_PATH"), system_node_prefix.simplified());
       }
-    }
-    catch (const ApplicationException& ex) {
+     }
+     catch (const ApplicationException& ex) {
       qWarningNN << LOGSEC_ADBLOCK << "Failed to get NPM root path:" << QUOTE_W_SPACE_DOT(ex.message());
-    }
-  }
+     }
+     }
 
-  proc->setProcessEnvironment(pe);
-  proc->setProcessChannelMode(QProcess::ProcessChannelMode::ForwardedErrorChannel);
-
-  connect(proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &AdBlockManager::onServerProcessFinished);
-
-  proc->open();
+     proc->setProcessEnvironment(pe);
+   */
 
   qDebugNN << LOGSEC_ADBLOCK << "Attempting to start AdBlock server.";
   return proc;

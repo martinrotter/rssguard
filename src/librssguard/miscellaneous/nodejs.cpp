@@ -15,6 +15,16 @@
 
 NodeJs::NodeJs(Settings* settings, QObject* parent) : QObject(parent), m_settings(settings) {}
 
+void NodeJs::runScript(QProcess* proc, const QString& script, const QStringList& arguments) const {
+  QStringList arg = { script }; arg.append(arguments);
+  QProcessEnvironment env;
+  QString node_modules = processedPackageFolder() + QDir::separator() + QSL("node_modules");
+
+  env.insert(QSL("NODE_PATH"), node_modules);
+
+  IOFactory::startProcess(proc, nodeJsExecutable(), arg, env);
+}
+
 QString NodeJs::nodeJsExecutable() const {
   return QDir::toNativeSeparators(m_settings->value(GROUP(Node), SETTING(Node::NodeJsExecutable)).toString());
 }
@@ -94,6 +104,8 @@ void NodeJs::installUpdatePackage(const PackageMetadata& pkg) {
       break;
 
     case PackageStatus::UpToDate:
+      qDebugNN << LOGSEC_NODEJS << "Package" << QUOTE_W_SPACE(pkg.m_name) << "is up-to-date.";
+
       emit packageInstalledUpdated(pkg);
 
       break;
@@ -101,8 +113,6 @@ void NodeJs::installUpdatePackage(const PackageMetadata& pkg) {
 }
 
 void NodeJs::installPackage(const PackageMetadata& pkg) {
-  // npm install --prefix "." @cliqz/adblocker@">=1.0.0 <2.0.0" --production --save-exact
-  //https://docs.npmjs.com/cli/v8/commands/npm-install
   try {
     QProcess* proc = new QProcess();
 
@@ -132,6 +142,8 @@ void NodeJs::installPackage(const PackageMetadata& pkg) {
       emit packageError(pkg, sndr->errorString());
     });
 
+    qDebugNN << LOGSEC_NODEJS << "Installing package" << QUOTE_W_SPACE_DOT(pkg.m_name);
+
     IOFactory::startProcess(proc,
                             npmExecutable(),
                             { QSL("install"), QSL("--production"),
@@ -139,11 +151,9 @@ void NodeJs::installPackage(const PackageMetadata& pkg) {
                               QSL("--prefix"), processedPackageFolder() });
   }
   catch (const ProcessException& ex) {
+    qCriticalNN << LOGSEC_NODEJS << "Package" << QUOTE_W_SPACE(pkg.m_name)
+      "was not installed, error:" << QUOTE_W_SPACE_DOT(ex.message());
+
     emit packageError(pkg, ex.message());
   }
-}
-
-void NodeJs::updatePackage(const PackageMetadata& pkg) {
-  //  npm update --prefix "." @cliqz/adblocker@">=1.0.0 <2.0.0" --production --save-exact
-  //https://docs.npmjs.com/cli/v8/commands/npm-update
 }
