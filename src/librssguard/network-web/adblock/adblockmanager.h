@@ -71,8 +71,8 @@ class AdBlockManager : public QObject {
     void processTerminated();
 
   private slots:
-    void onPackageReady(const NodeJs::PackageMetadata& pkg, bool already_up_to_date);
-    void onPackageError(const NodeJs::PackageMetadata& pkg, const QString& error);
+    void onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date);
+    void onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
     void onServerProcessFinished(int exit_code, QProcess::ExitStatus exit_status);
 
   private:

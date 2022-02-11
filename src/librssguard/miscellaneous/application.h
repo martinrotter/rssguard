@@ -172,8 +172,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void parseCmdArgumentsFromMyInstance();
 
   private slots:
-    void onNodeJsPackageUpdateError(const NodeJs::PackageMetadata& pkg, const QString& error);
-    void onNodeJsPackageInstalled(const NodeJs::PackageMetadata& pkg, bool already_up_to_date);
+    void onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
+    void onNodeJsPackageInstalled(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date);
     void onCommitData(QSessionManager& manager);
     void onSaveState(QSessionManager& manager);
     void onAboutToQuit();

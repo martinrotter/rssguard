@@ -2,6 +2,7 @@
 
 #include "network-web/adblock/adblockmanager.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
@@ -103,7 +104,7 @@ void AdBlockManager::setEnabled(bool enabled) {
   if (m_enabled) {
     if (!m_installing) {
       m_installing = true;
-      qApp->nodejs()->installUpdatePackage({ QSL(CLIQZ_ADBLOCKED_PACKAGE), QSL(CLIQZ_ADBLOCKED_VERSION) });
+      qApp->nodejs()->installUpdatePackages({ { QSL(CLIQZ_ADBLOCKED_PACKAGE), QSL(CLIQZ_ADBLOCKED_VERSION) } });
     }
   }
   else {
@@ -175,10 +176,14 @@ void AdBlockManager::showDialog() {
   AdBlockDialog(qApp->mainFormWidget()).exec();
 }
 
-void AdBlockManager::onPackageReady(const NodeJs::PackageMetadata& pkg, bool already_up_to_date) {
+void AdBlockManager::onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date) {
   Q_UNUSED(already_up_to_date)
 
-  if (pkg.m_name == QSL(CLIQZ_ADBLOCKED_PACKAGE)) {
+  bool concerns_adblock = boolinq::from(pkgs).any([](const NodeJs::PackageMetadata& pkg) {
+    return pkg.m_name == QSL(CLIQZ_ADBLOCKED_PACKAGE);
+  });
+
+  if (concerns_adblock) {
     m_installing = false;
 
     if (m_enabled) {
@@ -197,8 +202,12 @@ void AdBlockManager::onPackageReady(const NodeJs::PackageMetadata& pkg, bool alr
   }
 }
 
-void AdBlockManager::onPackageError(const NodeJs::PackageMetadata& pkg, const QString& error) {
-  if (pkg.m_name == QSL(CLIQZ_ADBLOCKED_PACKAGE)) {
+void AdBlockManager::onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error) {
+  bool concerns_adblock = boolinq::from(pkgs).any([](const NodeJs::PackageMetadata& pkg) {
+    return pkg.m_name == QSL(CLIQZ_ADBLOCKED_PACKAGE);
+  });
+
+  if (concerns_adblock) {
     m_installing = false;
     m_enabled = false;
 

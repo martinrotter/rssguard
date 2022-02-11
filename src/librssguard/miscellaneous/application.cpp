@@ -847,20 +847,19 @@ void Application::parseCmdArgumentsFromMyInstance() {
   }
 }
 
-void Application::onNodeJsPackageUpdateError(const NodeJs::PackageMetadata& pkg, const QString& error) {
+void Application::onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error) {
   qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
                        { {},
-                         tr("Package %1 was NOT updated to version %2 because of error: %3.").arg(pkg.m_name,
-                                                                                                  pkg.m_version,
-                                                                                                  error),
+                         tr("Packages %1 were NOT updated because of error: %3.").arg(NodeJs::packagesToString(pkgs),
+                                                                                      error),
                          QSystemTrayIcon::MessageIcon::Critical });
 }
 
-void Application::onNodeJsPackageInstalled(const NodeJs::PackageMetadata& pkg, bool already_up_to_date) {
+void Application::onNodeJsPackageInstalled(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date) {
   if (!already_up_to_date) {
     qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
                          { {},
-                           tr("Package %1 was updated to version %2.").arg(pkg.m_name, pkg.m_version),
+                           tr("Packages %1 were updated.").arg(NodeJs::packagesToString(pkgs)),
                            QSystemTrayIcon::MessageIcon::Information });
   }
 }
