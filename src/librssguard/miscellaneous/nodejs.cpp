@@ -106,7 +106,7 @@ void NodeJs::installUpdatePackage(const PackageMetadata& pkg) {
     case PackageStatus::UpToDate:
       qDebugNN << LOGSEC_NODEJS << "Package" << QUOTE_W_SPACE(pkg.m_name) << "is up-to-date.";
 
-      emit packageInstalledUpdated(pkg);
+      emit packageInstalledUpdated(pkg, true);
 
       break;
   }
@@ -130,7 +130,7 @@ void NodeJs::installPackage(const PackageMetadata& pkg) {
       else {
         qDebugNN << LOGSEC_NODEJS << "Installed/updated package" << QUOTE_W_SPACE(pkg.m_name)
                  << "with version" << QUOTE_W_SPACE_DOT(pkg.m_version);
-        emit packageInstalledUpdated(pkg);
+        emit packageInstalledUpdated(pkg, false);
       }
     });
     connect(proc, &QProcess::errorOccurred, this, [pkg, this](QProcess::ProcessError error) {

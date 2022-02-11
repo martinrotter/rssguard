@@ -120,6 +120,8 @@ QList<Notification::Event> Notification::allEvents() {
     Event::LoginDataRefreshed,
     Event::LoginFailure,
     Event::NewAppVersionAvailable,
+    Event::NodePackageUpdated,
+    Event::NodePackageFailedToUpdate
   };
 }
 
@@ -142,6 +144,12 @@ QString Notification::nameForEvent(Notification::Event event) {
 
     case Notification::Event::GeneralEvent:
       return QObject::tr("Miscellaneous events");
+
+    case Notification::Event::NodePackageUpdated:
+      return QObject::tr("Node.js - package updated");
+
+    case Notification::Event::NodePackageFailedToUpdate:
+      return QObject::tr("Node.js - package failed to updated");
 
     default:
       return QObject::tr("Unknown event");

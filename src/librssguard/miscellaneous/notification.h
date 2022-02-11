@@ -30,9 +30,17 @@ class Notification {
       // OAuth or similar mechanism.
       LoginDataRefreshed = 4,
 
+      // New RSS Guard version available.
       NewAppVersionAvailable = 5,
 
-      LoginFailure = 6
+      // Some service failed to login.
+      LoginFailure = 6,
+
+      // Node.js - package updated.
+      NodePackageUpdated = 7,
+
+      // Node.js - package failde to update.
+      NodePackageFailedToUpdate = 8
     };
 
     explicit Notification(Event event = Event::NoEvent, bool balloon = {}, const QString& sound_path = {},

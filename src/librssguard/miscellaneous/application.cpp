@@ -15,7 +15,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
-#include "miscellaneous/nodejs.h"
 #include "miscellaneous/notificationfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
@@ -91,6 +90,9 @@ Application::Application(const QString& id, int& argc, char** argv)
   connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
   connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
 
+  connect(m_nodejs, &NodeJs::packageError, this, &Application::onNodeJsPackageUpdateError);
+  connect(m_nodejs, &NodeJs::packageInstalledUpdated, this, &Application::onNodeJsPackageInstalled);
+
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   QString app_dir = QString::fromLocal8Bit(qgetenv("APPDIR"));
 
@@ -132,7 +134,9 @@ Application::Application(const QString& id, int& argc, char** argv)
       Notification(Notification::Event::NewUnreadArticlesFetched, true,
                    QSL("%1/notify.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
       Notification(Notification::Event::NewAppVersionAvailable, true),
-      Notification(Notification::Event::LoginFailure, true)
+      Notification(Notification::Event::LoginFailure, true),
+      Notification(Notification::Event::NodePackageUpdated, true),
+      Notification(Notification::Event::NodePackageFailedToUpdate, true)
     }, settings());
   }
   else {
@@ -140,8 +144,6 @@ Application::Application(const QString& id, int& argc, char** argv)
   }
 
   QTimer::singleShot(1000, system(), &SystemFactory::checkForUpdatesOnStartup);
-
-  //nodejs()->installUpdatePackage({ "@cliqz/adblocker", ">=1.0.0 <2.0.0" });
 
   qDebugNN << LOGSEC_CORE
            << "OpenSSL version:"
@@ -535,7 +537,13 @@ void Application::showGuiMessage(Notification::Event event,
         SystemTrayIcon::isSystemTrayAreaAvailable() &&
         notification.balloonEnabled() &&
         dest.m_tray) {
-      trayIcon()->showMessage(msg.m_title, msg.m_message, msg.m_type, TRAY_ICON_BUBBLE_TIMEOUT, std::move(action.m_action));
+      trayIcon()->showMessage(msg.m_title.simplified().isEmpty()
+                              ? Notification::nameForEvent(notification.event())
+                              : msg.m_title,
+                              msg.m_message,
+                              msg.m_type,
+                              TRAY_ICON_BUBBLE_TIMEOUT,
+                              std::move(action.m_action));
       return;
     }
   }
@@ -836,6 +844,24 @@ void Application::parseCmdArgumentsFromMyInstance() {
   if (m_cmdParser.isSet(QSL(CLI_NDEBUG_SHORT))) {
     s_disableDebug = true;
     qDebugNN << LOGSEC_CORE << "Disabling any stdout/stderr outputs.";
+  }
+}
+
+void Application::onNodeJsPackageUpdateError(const NodeJs::PackageMetadata& pkg, const QString& error) {
+  qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
+                       { {},
+                         tr("Package %1 was NOT updated to version %2 because of error: %3.").arg(pkg.m_name,
+                                                                                                  pkg.m_version,
+                                                                                                  error),
+                         QSystemTrayIcon::MessageIcon::Critical });
+}
+
+void Application::onNodeJsPackageInstalled(const NodeJs::PackageMetadata& pkg, bool already_up_to_date) {
+  if (!already_up_to_date) {
+    qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
+                         { {},
+                           tr("Package %1 was updated to version %2.").arg(pkg.m_name, pkg.m_version),
+                           QSystemTrayIcon::MessageIcon::Information });
   }
 }
 

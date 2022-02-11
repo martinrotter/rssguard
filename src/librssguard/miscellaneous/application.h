@@ -10,6 +10,7 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/localization.h"
+#include "miscellaneous/nodejs.h"
 #include "miscellaneous/notification.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/singleapplication.h"
@@ -33,7 +34,6 @@ class FormMain;
 class IconFactory;
 class QAction;
 class Mutex;
-class NodeJs;
 
 #if QT_VERSION_MAJOR == 6
 class QWebEngineDownloadRequest;
@@ -172,6 +172,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void parseCmdArgumentsFromMyInstance();
 
   private slots:
+    void onNodeJsPackageUpdateError(const NodeJs::PackageMetadata& pkg, const QString& error);
+    void onNodeJsPackageInstalled(const NodeJs::PackageMetadata& pkg, bool already_up_to_date);
     void onCommitData(QSessionManager& manager);
     void onSaveState(QSessionManager& manager);
     void onAboutToQuit();

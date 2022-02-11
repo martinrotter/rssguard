@@ -175,7 +175,9 @@ void AdBlockManager::showDialog() {
   AdBlockDialog(qApp->mainFormWidget()).exec();
 }
 
-void AdBlockManager::onPackageReady(const NodeJs::PackageMetadata& pkg) {
+void AdBlockManager::onPackageReady(const NodeJs::PackageMetadata& pkg, bool already_up_to_date) {
+  Q_UNUSED(already_up_to_date)
+
   if (pkg.m_name == QSL(CLIQZ_ADBLOCKED_PACKAGE)) {
     m_installing = false;
 

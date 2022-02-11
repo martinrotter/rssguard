@@ -66,7 +66,7 @@ class NodeJs : public QObject {
 
   signals:
     void packageError(const PackageMetadata& pkg, const QString& error);
-    void packageInstalledUpdated(const PackageMetadata& pkg);
+    void packageInstalledUpdated(const PackageMetadata& pkg, bool already_up_to_date);
 
   private:
     void installPackage(const PackageMetadata& pkg);

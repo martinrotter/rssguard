@@ -23,6 +23,7 @@
 #include <QJsonObject>
 #include <QProcess>
 #include <QString>
+#include <QVersionNumber>
 
 using UpdateCheck = QPair<UpdateInfo, QNetworkReply::NetworkError>;
 
@@ -226,35 +227,10 @@ void SystemFactory::checkForUpdatesOnStartup() {
 }
 
 bool SystemFactory::isVersionNewer(const QString& new_version, const QString& base_version) {
-  QStringList base_version_tkn = base_version.split(QL1C('.'));
-  QStringList new_version_tkn = new_version.split(QL1C('.'));
+  QVersionNumber nw = QVersionNumber::fromString(new_version);
+  QVersionNumber bs = QVersionNumber::fromString(base_version);
 
-  while (!base_version_tkn.isEmpty() && !new_version_tkn.isEmpty()) {
-    const int base_number = base_version_tkn.takeFirst().toInt();
-    const int new_number = new_version_tkn.takeFirst().toInt();
-
-    if (new_number > base_number) {
-      // New version is indeed higher that current version.
-      return true;
-    }
-    else if (new_number < base_number) {
-      return false;
-    }
-  }
-
-  // Versions are either the same or they have unequal sizes.
-  if (base_version_tkn.isEmpty() && new_version_tkn.isEmpty()) {
-    // Versions are the same.
-    return false;
-  }
-  else {
-    if (new_version_tkn.isEmpty()) {
-      return false;
-    }
-    else {
-      return new_version_tkn.join(QString()).toInt() > 0;
-    }
-  }
+  return nw > bs;
 }
 
 bool SystemFactory::isVersionEqualOrNewer(const QString& new_version, const QString& base_version) {
