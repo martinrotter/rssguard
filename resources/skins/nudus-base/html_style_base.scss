@@ -346,10 +346,10 @@ summary {
 }
 
 // m* == message*
-body:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl {
+body:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl a {
 
-    a,
-    span {
+    &,
+    &:not([href=""]) + span { // NOTE: 'a[href="*"] + span' is never visible
         visibility: visible;
     }
 }
@@ -396,6 +396,14 @@ body:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl {
                 a,
                 span {
                     visibility: hidden;
+                }
+
+                a[href=""] {
+
+                    &,
+                    & + span {
+                        display: none;
+                    }
                 }
             }
         }
