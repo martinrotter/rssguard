@@ -11,6 +11,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
+#include "network-web/readability.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 
@@ -36,7 +37,10 @@ WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
   m_actionStop(m_webView->pageAction(QWebEnginePage::WebAction::Stop)),
   m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                           tr("Open this website in system web browser"),
-                                          this)) {
+                                          this)),
+  m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("document-preview")),
+                                    tr("View website in reader mode"),
+                                    this)) {
   // Initialize the components and layout.
   initializeLayout();
   setFocusProxy(m_txtLocation);
@@ -64,6 +68,7 @@ void WebBrowser::createConnections() {
   });
 
   connect(m_actionOpenInSystemBrowser, &QAction::triggered, this, &WebBrowser::openCurrentSiteInSystemBrowser);
+  connect(m_actionReadabilePage, &QAction::triggered, this, &WebBrowser::readabilePage);
 
   connect(m_txtLocation, &LocationLineEdit::submitted,
           this, static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
@@ -79,6 +84,8 @@ void WebBrowser::createConnections() {
   connect(m_webView, &WebViewer::iconChanged, this, &WebBrowser::onIconChanged);
 
   connect(m_webView->page(), &WebPage::windowCloseRequested, this, &WebBrowser::closeRequested);
+  connect(qApp->web()->readability(), &Readability::htmlReadabled, this, &WebBrowser::setReadabledHtml);
+  connect(qApp->web()->readability(), &Readability::errorOnHtmlReadabiliting, this, &WebBrowser::readabilityFailed);
 }
 
 void WebBrowser::updateUrl(const QUrl& url) {
@@ -167,6 +174,13 @@ void WebBrowser::loadMessage(const Message& message, RootItem* root) {
   loadMessages({ message }, root);
 }
 
+void WebBrowser::readabilePage() {
+  m_actionReadabilePage->setEnabled(false);
+  m_webView->page()->toHtml([this](const QString& htm) {
+    qApp->web()->readability()->makeHtmlReadable(htm, m_webView->url().toString());
+  });
+}
+
 bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
   Q_UNUSED(watched)
 
@@ -208,6 +222,18 @@ void WebBrowser::onIconChanged(const QIcon& icon) {
   emit iconChanged(m_index, icon);
 }
 
+void WebBrowser::setReadabledHtml(const QString& better_html) {
+  m_webView->setHtml(better_html, m_webView->url());
+}
+
+void WebBrowser::readabilityFailed(const QString& error) {
+  MessageBox::show({}, QMessageBox::Icon::Critical,
+                   tr("Reader mode failed for this website"),
+                   tr("Reader mode cannot be applied to current page."),
+                   {},
+                   error);
+}
+
 void WebBrowser::initializeLayout() {
   m_toolBar->setFloatable(false);
   m_toolBar->setMovable(false);
@@ -227,6 +253,8 @@ void WebBrowser::initializeLayout() {
   QWidgetAction* act_discover = new QWidgetAction(this);
 
   m_actionOpenInSystemBrowser->setEnabled(false);
+  m_actionReadabilePage->setEnabled(false);
+
   act_discover->setDefaultWidget(m_btnDiscoverFeeds);
 
   // Add needed actions into toolbar.
@@ -235,6 +263,7 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(m_actionReload);
   m_toolBar->addAction(m_actionStop);
   m_toolBar->addAction(m_actionOpenInSystemBrowser);
+  m_toolBar->addAction(m_actionReadabilePage);
   m_toolBar->addAction(act_discover);
   m_toolBar->addWidget(m_txtLocation);
 
@@ -260,6 +289,7 @@ void WebBrowser::onLoadingStarted() {
   m_btnDiscoverFeeds->clearFeedAddresses();
   m_loadingProgress->show();
   m_actionOpenInSystemBrowser->setEnabled(false);
+  m_actionReadabilePage->setEnabled(false);
 }
 
 void WebBrowser::onLoadingProgress(int progress) {
@@ -270,8 +300,13 @@ void WebBrowser::onLoadingFinished(bool success) {
   if (success) {
     auto url = m_webView->url();
 
-    if (url.isValid() && !url.host().contains(QSL(APP_LOW_NAME))) {
+    if (url.isValid() && !url.host().isEmpty()) {
       m_actionOpenInSystemBrowser->setEnabled(true);
+      m_actionReadabilePage->setEnabled(true);
+    }
+    else {
+      m_actionOpenInSystemBrowser->setEnabled(false);
+      m_actionReadabilePage->setEnabled(false);
     }
 
     // Let's check if there are any feeds defined on the web and eventually

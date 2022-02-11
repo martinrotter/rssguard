@@ -6,6 +6,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/cookiejar.h"
+#include "network-web/readability.h"
 
 #include <QDesktopServices>
 #include <QProcess>
@@ -37,6 +38,7 @@ WebFactory::WebFactory(QObject* parent)
 #endif
 
   m_cookieJar = new CookieJar(nullptr);
+  m_readability = new Readability(this);
 
 #if defined(USE_WEBENGINE)
 #if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
@@ -361,6 +363,10 @@ QAction* WebFactory::createEngineSettingsAction(const QString& title, QWebEngine
 
 CookieJar* WebFactory::cookieJar() const {
   return m_cookieJar;
+}
+
+Readability* WebFactory::readability() const {
+  return m_readability;
 }
 
 void WebFactory::generateUnescapes() {

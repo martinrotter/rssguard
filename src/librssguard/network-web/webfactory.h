@@ -20,6 +20,7 @@ class NetworkUrlInterceptor;
 #endif
 
 class CookieJar;
+class Readability;
 
 class WebFactory : public QObject {
   Q_OBJECT
@@ -46,6 +47,7 @@ class WebFactory : public QObject {
 #endif
 
     CookieJar* cookieJar() const;
+    Readability* readability() const;
 
     void updateProxy();
     bool openUrlInExternalBrowser(const QString& url) const;
@@ -71,6 +73,7 @@ class WebFactory : public QObject {
 #endif
 
     CookieJar* m_cookieJar;
+    Readability* m_readability;
     QMap<QString, char16_t> m_htmlNamedEntities;
 };
 

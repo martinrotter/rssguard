@@ -55,6 +55,7 @@ class WebBrowser : public TabContent {
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
+    void readabilePage();
     void openCurrentSiteInSystemBrowser();
     void updateUrl(const QUrl& url);
     void onLoadingStarted();
@@ -62,6 +63,8 @@ class WebBrowser : public TabContent {
     void onLoadingFinished(bool success);
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
+    void setReadabledHtml(const QString& better_html);
+    void readabilityFailed(const QString& error);
 
   signals:
     void closeRequested();
@@ -87,6 +90,7 @@ class WebBrowser : public TabContent {
     QAction* m_actionReload;
     QAction* m_actionStop;
     QAction* m_actionOpenInSystemBrowser;
+    QAction* m_actionReadabilePage;
     QList<Message> m_messages;
     QPointer<RootItem> m_root;
 };

@@ -229,6 +229,8 @@ set(SOURCES
   network-web/oauth2service.h
   network-web/oauthhttphandler.cpp
   network-web/oauthhttphandler.h
+  network-web/readability.cpp
+  network-web/readability.h
   network-web/silentnetworkaccessmanager.cpp
   network-web/silentnetworkaccessmanager.h
   network-web/webfactory.cpp
