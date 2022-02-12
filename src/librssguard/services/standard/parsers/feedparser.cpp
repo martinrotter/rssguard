@@ -96,9 +96,9 @@ QList<Message> FeedParser::messages() {
         Message new_message;
 
         // Fill available data.
-        new_message.m_title = qApp->web()->unescapeHtml(xmlMessageTitle(message_item));
+        new_message.m_title = qApp->web()->stripTags(qApp->web()->unescapeHtml(xmlMessageTitle(message_item)));
         new_message.m_contents = xmlMessageDescription(message_item);
-        new_message.m_author = qApp->web()->unescapeHtml(xmlMessageAuthor(message_item));
+        new_message.m_author = qApp->web()->stripTags(qApp->web()->unescapeHtml(xmlMessageAuthor(message_item)));
         new_message.m_url = xmlMessageUrl(message_item);
         new_message.m_created = xmlMessageDateCreated(message_item);
         new_message.m_customId = xmlMessageId(message_item);
@@ -125,9 +125,9 @@ QList<Message> FeedParser::messages() {
         Message new_message;
 
         // Fill available data.
-        new_message.m_title = qApp->web()->unescapeHtml(jsonMessageTitle(message_item));
+        new_message.m_title = qApp->web()->stripTags(qApp->web()->unescapeHtml(jsonMessageTitle(message_item)));
         new_message.m_contents = jsonMessageDescription(message_item);
-        new_message.m_author = qApp->web()->unescapeHtml(jsonMessageAuthor(message_item));
+        new_message.m_author = qApp->web()->stripTags(qApp->web()->unescapeHtml(jsonMessageAuthor(message_item)));
         new_message.m_url = jsonMessageUrl(message_item);
         new_message.m_created = jsonMessageDateCreated(message_item);
         new_message.m_customId = jsonMessageId(message_item);
