@@ -123,7 +123,7 @@ void FormSettings::cancelSettings() {
   QStringList changed_panels;
 
   for (SettingsPanel* panel : qAsConst(m_panels)) {
-    if (panel->isDirty()) {
+    if (panel->isLoaded() && panel->isDirty()) {
       changed_panels.append(panel->title().toLower());
     }
   }
