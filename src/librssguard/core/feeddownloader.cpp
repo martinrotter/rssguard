@@ -359,9 +359,11 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     qDebugNN << LOGSEC_FEEDDOWNLOADER
              << "Updating messages in DB took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
-    feed->setStatus(updated_messages.first > 0 || updated_messages.second > 0
+    if (feed->status() != Feed::Status::NewMessages) {
+      feed->setStatus(updated_messages.first > 0 || updated_messages.second > 0
                 ? Feed::Status::NewMessages
                 : Feed::Status::Normal);
+    }
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER
              << updated_messages << " messages for feed "
