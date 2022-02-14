@@ -138,6 +138,9 @@ namespace Messages {
   KEY UseCustomTime;
   VALUE(bool) UseCustomTimeDef;
 
+  KEY RelativeTimeForNewerArticles;
+  VALUE(int) RelativeTimeForNewerArticlesDef;
+
   KEY ArticleListPadding;
   VALUE(int) ArticleListPaddingDef;
 

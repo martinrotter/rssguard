@@ -130,6 +130,9 @@ DVALUE(bool) Messages::UseCustomDateDef = false;
 DKEY Messages::CustomDateFormat = "custom_date_format";
 DVALUE(char*) Messages::CustomDateFormatDef = "";
 
+DKEY Messages::RelativeTimeForNewerArticles = "relative_time_for_new_articles";
+DVALUE(int) Messages::RelativeTimeForNewerArticlesDef = -1;
+
 DKEY Messages::ArticleListPadding = "article_list_padding";
 DVALUE(int) Messages::ArticleListPaddingDef = -1;
 

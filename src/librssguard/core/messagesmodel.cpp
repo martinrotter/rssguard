@@ -23,7 +23,8 @@
 
 MessagesModel::MessagesModel(QObject* parent)
   : QSqlQueryModel(parent), m_view(nullptr), m_cache(new MessagesModelCache(this)), m_messageHighlighter(MessageHighlighter::NoHighlighting),
-  m_customDateFormat(QString()), m_customTimeFormat(QString()), m_selectedItem(nullptr), m_displayFeedIcons(false),
+  m_customDateFormat(QString()), m_customTimeFormat(QString()), m_newerArticlesRelativeTime(-1),
+  m_selectedItem(nullptr), m_displayFeedIcons(false),
   m_multilineListItems(qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()) {
   setupFonts();
   setupIcons();
@@ -203,6 +204,9 @@ void MessagesModel::updateDateFormat() {
   else {
     m_customTimeFormat = QString();
   }
+
+  m_newerArticlesRelativeTime = qApp->settings()->value(GROUP(Messages),
+                                                        SETTING(Messages::RelativeTimeForNewerArticles)).toInt();
 }
 
 void MessagesModel::updateFeedIconsDisplay() {
@@ -305,9 +309,35 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       int index_column = idx.column();
 
       if (index_column == MSG_DB_DCREATED_INDEX) {
-        QDateTime dt = TextFactory::parseDateTime(QSqlQueryModel::data(idx, role).value<qint64>()).toLocalTime();
+        QDateTime dt = TextFactory::parseDateTime(QSqlQueryModel::data(idx,
+                                                                       Qt::ItemDataRole::EditRole).value<qint64>()).toLocalTime();
 
-        if (dt.date() == QDate::currentDate() && !m_customTimeFormat.isEmpty()) {
+        if (m_newerArticlesRelativeTime > 0 &&
+            dt.daysTo(QDateTime::currentDateTime()) <= m_newerArticlesRelativeTime) {
+          auto secs_difference = dt.secsTo(QDateTime::currentDateTime());
+
+          if (secs_difference >= 604800) {
+            // More than 1 week.
+            return tr("%1 weeks ago").arg(secs_difference / 604800);
+          }
+          else if (secs_difference >= 172800) {
+            // At least 2 days.
+            return tr("%1 days ago").arg(secs_difference / 86400);
+          }
+          else if (secs_difference >= 86400) {
+            // 1 day.
+            return tr("1 day ago");
+          }
+          else if (secs_difference >= 3600) {
+            // Less than a day.
+            return tr("%1 hours ago").arg(secs_difference / 3600);
+          }
+          else {
+            // Less then 1 hour ago.
+            return tr("%1 minutes ago").arg(secs_difference / 60);
+          }
+        }
+        else if (dt.date() == QDate::currentDate() && !m_customTimeFormat.isEmpty()) {
           return dt.toString(m_customTimeFormat);
         }
         else if (m_customDateFormat.isEmpty()) {

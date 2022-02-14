@@ -52,6 +52,15 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_checkDisplayPlaceholders, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 #endif
 
+  connect(m_ui->m_spinRelativeArticleTime, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
+    if (value <= 0) {
+      m_ui->m_spinRelativeArticleTime->setSuffix(QSL(" ") + tr("days (turned off)"));
+    }
+    else {
+      m_ui->m_spinRelativeArticleTime->setSuffix(QSL(" ") + tr("day(s)", nullptr, value));
+    }
+  });
+
   connect(m_ui->m_cbListsRestrictedShortcuts, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbIgnoreContentsChanges, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbHideCountsIfNoUnread, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -73,18 +82,27 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinStartupUpdateDelay, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
+
   connect(m_ui->m_spinHeightRowsMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinHeightRowsMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::requireRestart);
+
   connect(m_ui->m_spinHeightRowsFeeds, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinHeightRowsFeeds, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::requireRestart);
+
   connect(m_ui->m_spinPaddingRowsMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinPaddingRowsMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::requireRestart);
+
+  connect(m_ui->m_spinRelativeArticleTime, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinRelativeArticleTime, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &SettingsFeedsMessages::requireRestart);
+
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, m_ui->m_spinAutoUpdateInterval, &TimeSpinBox::setEnabled);
   connect(m_ui->m_checkUpdateAllFeedsOnStartup, &QCheckBox::toggled, m_ui->m_spinStartupUpdateDelay, &TimeSpinBox::setEnabled);
   connect(m_ui->m_spinFeedUpdateTimeout, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this,
@@ -125,6 +143,8 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   if (!m_ui->m_spinFeedUpdateTimeout->suffix().startsWith(' ')) {
     m_ui->m_spinFeedUpdateTimeout->setSuffix(QSL(" ") + m_ui->m_spinFeedUpdateTimeout->suffix());
   }
+
+  m_ui->m_spinRelativeArticleTime->setValue(-1);
 }
 
 SettingsFeedsMessages::~SettingsFeedsMessages() {
@@ -162,6 +182,7 @@ void SettingsFeedsMessages::changeFont(QLabel& lbl) {
 void SettingsFeedsMessages::loadSettings() {
   onBeginLoadSettings();
 
+  m_ui->m_spinRelativeArticleTime->setValue(settings()->value(GROUP(Messages), SETTING(Messages::RelativeTimeForNewerArticles)).toInt());
   m_ui->m_spinPaddingRowsMessages->setValue(settings()->value(GROUP(Messages), SETTING(Messages::ArticleListPadding)).toInt());
   m_ui->m_spinHeightRowsMessages->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt());
   m_ui->m_spinHeightRowsFeeds->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt());
@@ -234,6 +255,7 @@ void SettingsFeedsMessages::loadSettings() {
 void SettingsFeedsMessages::saveSettings() {
   onBeginSaveSettings();
 
+  settings()->setValue(GROUP(Messages), Messages::RelativeTimeForNewerArticles, m_ui->m_spinRelativeArticleTime->value());
   settings()->setValue(GROUP(Messages), Messages::ArticleListPadding, m_ui->m_spinPaddingRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowMessages, m_ui->m_spinHeightRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowFeeds, m_ui->m_spinHeightRowsFeeds->value());

@@ -88,6 +88,10 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   m_actionToolbarMainMenu->setText(tr("Open &main menu"));
   m_actionToolbarMainMenu->setObjectName("m_actionToolbarMainMenu");
 
+  connect(m_actionToolbarMainMenu, &QWidgetAction::triggered, this, [this]() {
+    qobject_cast<QToolButton*>(m_actionToolbarMainMenu->defaultWidget())->menu()->exec();
+  });
+
 #if defined(USE_WEBENGINE)
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->adBlock()->adBlockIcon());
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());

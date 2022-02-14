@@ -418,6 +418,13 @@
          </property>
         </widget>
        </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkMultilineArticleList">
+         <property name="text">
+          <string>Enable multiline items</string>
+         </property>
+        </widget>
+       </item>
        <item row="3" column="0" colspan="2">
         <widget class="HelpSpoiler" name="m_helpMultilineArticleList" native="true">
          <property name="minimumSize">
@@ -538,20 +545,7 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="0" colspan="2">
-        <spacer name="verticalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="8" column="0">
+       <item row="9" column="0">
         <widget class="QGroupBox" name="groupBox_5">
          <property name="title">
           <string>Article list font</string>
@@ -577,10 +571,33 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_checkMultilineArticleList">
+       <item row="10" column="0" colspan="2">
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label">
          <property name="text">
-          <string>Enable multiline items</string>
+          <string>Show relative time for articles not older than</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QSpinBox" name="m_spinRelativeArticleTime">
+         <property name="minimum">
+          <number>-1</number>
+         </property>
+         <property name="maximum">
+          <number>300</number>
          </property>
         </widget>
        </item>
