@@ -1,6 +1,7 @@
 @charset "UTF-8";
 * {
   font-family: inherit;
+  font-size: inherit;
 }
 
 body, h1, h2, h3, h4, h5, h6,
@@ -162,6 +163,8 @@ code {
   border: 1px solid #DEDEDE;
   border-radius: 0.1em;
   color: #343434;
+  font-family: monospace;
+  font-size: .95rem !important;
 }
 
 code {
