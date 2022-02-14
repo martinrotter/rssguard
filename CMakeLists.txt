@@ -19,6 +19,7 @@
 #     cmake --install .
 #
 # Variables:
+#   BUILD_WITH_QT6 - Build either with Qt 6 or Qt 5.
 #   USE_WEBENGINE - if specified, then QtWebEngine module for internal web browser is used.
 #                   Otherwise simple text component is used and some features will be disabled.
 #                   Default value is "false". If QtWebEngine is installed during compilation, then
@@ -32,7 +33,7 @@
 #   - cmake 3.9.0 or newer is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules
 #     within repository before compilation,
-#   - C++ 11/17 is required.
+#   - C++ 17 is required.
 #
 # Building on OS/2:
 #   RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to make sure that
@@ -109,6 +110,9 @@ option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)
 option(REVISION_FROM_GIT "Get revision using `git rev-parse`" ON)
 
 # Import Qt libraries.
+set(QT6_MIN_VERSION 6.2.3)
+set(QT5_MIN_VERSION 5.9.0)
+
 set(QT_COMPONENTS
   Core
   Gui
@@ -135,10 +139,10 @@ endif()
 
 if(BUILD_WITH_QT6)
   find_package(QT NAMES Qt6)
-  find_package(Qt6 COMPONENTS ${QT_COMPONENTS} Core5Compat REQUIRED)
+  find_package(Qt6 ${QT6_MIN_VERSION} COMPONENTS ${QT_COMPONENTS} Core5Compat REQUIRED)
 else()
   find_package(QT NAMES Qt5)
-  find_package(Qt5 COMPONENTS ${QT_COMPONENTS} REQUIRED)
+  find_package(Qt5 ${QT5_MIN_VERSION} COMPONENTS ${QT_COMPONENTS} REQUIRED)
 
   if(Qt5Core_VERSION VERSION_LESS 5.15.0)
     # Compatibility macros.
