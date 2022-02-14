@@ -1327,7 +1327,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="67"/>
         <source>Main menu</source>
-        <translation type="unfinished"/>
+        <translation>Hlavní menu</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="80"/>

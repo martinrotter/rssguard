@@ -37,7 +37,7 @@
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="114"/>
         <source>There is error, check application log for more details and head to online documentation.</source>
-        <translation type="unfinished"/>
+        <translation>Ocorreu um erro, veja o log do aplicativo para mais detalhes e consulte a documentação online.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="89"/>
@@ -119,7 +119,7 @@ Erro: %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="674"/>
         <source>AdBlock component is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-        <translation type="unfinished"/>
+        <translation>O componente AdBlock não está configurado corretamente. Acesse &quot;Configurações&quot; -&gt; &quot;Node.js&quot; e veja se o Node.js está configurado corretamente.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="776"/>
@@ -134,12 +134,12 @@ Erro: %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="853"/>
         <source>Packages %1 were NOT updated because of error: %3.</source>
-        <translation type="unfinished"/>
+        <translation>Os pacotes %1 NÃO foram atualizados devido ao erro: %3.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="862"/>
         <source>Packages %1 were updated.</source>
-        <translation type="unfinished"/>
+        <translation>Os pacotes %1 foram atualizados.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="687"/>
@@ -674,7 +674,7 @@ Status: %3</translation>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="35"/>
         <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-        <translation type="unfinished"/>
+        <translation>A compilação %1 possui suporte oficial ao Feedly. Você não precisa usar o &quot;developer access token&quot;. Você pode deixar o campo correspondente em branco.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="145"/>
@@ -974,7 +974,7 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="42"/>
         <source>Edit account &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Editar conta &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -1334,12 +1334,12 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="80"/>
         <source>Open main menu</source>
-        <translation type="unfinished"/>
+        <translation>Abrir menu principal</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="88"/>
         <source>Open &amp;main menu</source>
-        <translation type="unfinished"/>
+        <translation>Abrir &amp;menu principal</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="303"/>
@@ -1781,27 +1781,27 @@ Você precisa reiniciar manualmente.</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="20"/>
         <source>Share note to &quot;Published&quot; feed</source>
-        <translation type="unfinished"/>
+        <translation>Compartilhar nota no feed &quot;Publicado&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="48"/>
         <source>Cannot share note</source>
-        <translation type="unfinished"/>
+        <translation>Não foi possível compartilhar a nota</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="49"/>
         <source>There was an error, when trying to send your custom note.</source>
-        <translation type="unfinished"/>
+        <translation>Ocorreu um erro ao tentar enviar a sua nota personalizada.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="61"/>
         <source>Enter non-empty title.</source>
-        <translation type="unfinished"/>
+        <translation>Entre um título não-vazio.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="72"/>
         <source>Enter valid URL.</source>
-        <translation type="unfinished"/>
+        <translation>Entre um URL válido.</translation>
     </message>
 </context>
 <context>
@@ -2966,7 +2966,7 @@ Expiração dos tokens de login: %2</translation>
         <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="66"/>
         <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="74"/>
         <source>file not found</source>
-        <translation type="unfinished"/>
+        <translation>arquivo não encontrado</translation>
     </message>
 </context>
 <context>
@@ -3225,12 +3225,12 @@ O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacid
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="149"/>
         <source>Node.js - package(s) updated</source>
-        <translation type="unfinished"/>
+        <translation>Note.js - pacote(s) atualizado(s)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="152"/>
         <source>Node.js - package(s) failed to updated</source>
-        <translation type="unfinished"/>
+        <translation>Note.js - falha ao atualizar pacote(s)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="155"/>
@@ -3250,7 +3250,7 @@ O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacid
     <message>
         <location filename="../src/librssguard/services/standard/parsers/feedparser.cpp" line="34"/>
         <source>JSON problem: %1</source>
-        <translation type="unfinished"/>
+        <translation>Problema de JSON: %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/greaderentrypoint.cpp" line="34"/>
@@ -3304,12 +3304,12 @@ Lista de leitores suportados:</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="840"/>
         <source>User-published articles</source>
-        <translation type="unfinished"/>
+        <translation>Artigos publicados pelo usuário</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="992"/>
         <source>Published articles</source>
-        <translation type="unfinished"/>
+        <translation>Artigos publicados</translation>
     </message>
 </context>
 <context>
@@ -3755,7 +3755,8 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="201"/>
         <source>You cannot change style because it was explicitly selected in your OS settings.
 Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</source>
-        <translation type="unfinished"/>
+        <translation>Você não pode alterar o estilo porque ele foi selecionado explicitamente nas configurações do seu sistema operacional.
+Talvez esteja definido com a variável de ambiente &apos;QT_STYLE_OVERRIDE&apos;?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
@@ -3848,37 +3849,43 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
 Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.
 
 Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
-        <translation type="unfinished"/>
+        <translation>O Node.js é um tempo de execução JavaScript assíncrono orientado a eventos, projetado para criar aplicativos de rede escaláveis.
+
+O %1 integra o Node.js para trazer alguns recursos modernos como o Adblock.
+
+Observe que geralmente todas as ferramentas Node.js necessárias devem estar disponíveis por meio de sua variável de ambiente &quot;PATH&quot;, para que você não precise especificar caminhos completos.
+
+Além disso, reinicie a caixa de diálogo &quot;Configurações&quot; após instalar o Node.js.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="111"/>
         <source>Node.js has version %1.</source>
-        <translation type="unfinished"/>
+        <translation>Versão do Node.js: %1.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="115"/>
         <source>Node.js: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Node.js: %1.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="124"/>
         <source>NPM has version %1.</source>
-        <translation type="unfinished"/>
+        <translation>Versão do NPM: %1.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="128"/>
         <source>NPM: %1.</source>
-        <translation type="unfinished"/>
+        <translation>NPM: %1.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="137"/>
         <source>Package folder is OK.</source>
-        <translation type="unfinished"/>
+        <translation>A pasta do pacote está OK.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="138"/>
         <source>Package folder will be created!</source>
-        <translation type="unfinished"/>
+        <translation>A pasta do pacote será criada!</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="26"/>
@@ -3994,7 +4001,7 @@ Além disso, existem alguns sons embutidos. Basta começar a digitar &quot;:&quo
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="302"/>
         <source>JSON error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Erro de JSON &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="364"/>
@@ -4647,7 +4654,7 @@ Notícias não lidas: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssfeed.cpp" line="48"/>
         <source>Share to published</source>
-        <translation type="unfinished"/>
+        <translation>Compartilhar em publicado</translation>
     </message>
 </context>
 <context>
@@ -4725,7 +4732,7 @@ Servidor: %2
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="42"/>
         <source>View website in reader mode</source>
-        <translation type="unfinished"/>
+        <translation>Visualizar site em modo de leitura</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="214"/>
@@ -4736,12 +4743,12 @@ Servidor: %2
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="231"/>
         <source>Reader mode failed for this website</source>
-        <translation type="unfinished"/>
+        <translation>Falha no modo de leitura para este site</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="232"/>
         <source>Reader mode cannot be applied to current page.</source>
-        <translation type="unfinished"/>
+        <translation>O modo de leitura não pôde ser aplicado na página atual.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="243"/>
