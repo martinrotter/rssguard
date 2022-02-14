@@ -179,16 +179,16 @@ QString SkinFactory::adBlockedPage(const QString& url, const QString& filter) {
 
 Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
   Skin skin;
-  QStringList base_skin_folders;
+  const QStringList skins_root_folders = {
+    APP_SKIN_PATH,
+    customSkinBaseFolder()
+  };
 
-  base_skin_folders.append(APP_SKIN_PATH);
-  base_skin_folders.append(customSkinBaseFolder());
-
-  for (const QString& base_skin_folder : base_skin_folders) {
-    const QString skin_parent = QString(base_skin_folder).replace(QDir::separator(), QL1C('/')) + QL1C('/');
+  for (const QString& skins_root_folder : skins_root_folders) {
+    const QString skin_parent = QString(skins_root_folder).replace(QDir::separator(), QL1C('/')) + QL1C('/');
     const QString skin_folder_no_sep = skin_parent + skin_name;
-    const QString skin_folder = skin_folder_no_sep + QDir::separator();
-    const QString metadata_file = skin_folder + APP_SKIN_METADATA_FILE;
+    const QString skin_folder_with_sep = skin_folder_no_sep + QDir::separator();
+    const QString metadata_file = skin_folder_with_sep + APP_SKIN_METADATA_FILE;
 
     if (QFile::exists(metadata_file)) {
       QFile skin_file(metadata_file);
@@ -204,18 +204,16 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       }
 
       const QDomNode skin_node = document.namedItem(QSL("skin"));
-      QString base_skin_name = skin_node.toElement().attribute(QSL("base"));;
+      const QString base_skin_name = skin_node.toElement().attribute(QSL("base"));;
       QString real_base_skin_folder;
 
       if (!base_skin_name.isEmpty()) {
         // We now find folder of "base" skin.
-        QStringList copy_skin_folders = base_skin_folders;
-
-        for (const QString& parent_for_base : copy_skin_folders) {
+        for (const QString& parent_for_base : skins_root_folders) {
           QString full_base = parent_for_base + QDir::separator() + base_skin_name;
 
           if (QDir().exists(full_base)) {
-            real_base_skin_folder = skin_parent + base_skin_name;
+            real_base_skin_folder = full_base;
             real_base_skin_folder = real_base_skin_folder.replace(QDir::separator(), QL1C('/'));
 
             qDebugNN << LOGSEC_GUI << "Found path of base skin:"
