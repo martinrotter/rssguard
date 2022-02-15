@@ -20,7 +20,7 @@ $ProgressPreference = 'SilentlyContinue'
 
 # Get and prepare needed dependencies.
 $qt_version = "6.2.3"
-$maria_version = "10.6.5"
+$maria_version = "10.6.7"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
 $cmake_version = "3.22.2"
