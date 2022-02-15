@@ -64,6 +64,8 @@ class NodeJs : public QObject {
     // NOTE: https://docs.npmjs.com/cli/v8/commands/npm-install
     void installUpdatePackages(const QList<PackageMetadata>& pkgs);
 
+    void installPackages(const QList<PackageMetadata>& pkgs);
+
     static QString packagesToString(const QList<PackageMetadata>& pkgs);
 
   signals:
@@ -71,8 +73,6 @@ class NodeJs : public QObject {
     void packageInstalledUpdated(const QList<PackageMetadata>& pkgs, bool already_up_to_date);
 
   private:
-    void installPackages(const QList<PackageMetadata>& pkgs);
-
     Settings* m_settings;
 };
 

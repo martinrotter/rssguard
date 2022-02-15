@@ -74,7 +74,7 @@ void Readability::makeHtmlReadable(const QString& html, const QString& base_url)
                                   "You will be notified when installation is complete.").arg(QSL(APP_NAME)),
                                QSystemTrayIcon::MessageIcon::Information },
                              { true, true, false });
-        qApp->nodejs()->installUpdatePackages({ { QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION) } });
+        qApp->nodejs()->installPackages({ { QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION) } });
       }
 
       return;

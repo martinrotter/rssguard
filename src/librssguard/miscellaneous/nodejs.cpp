@@ -99,17 +99,24 @@ void NodeJs::installUpdatePackages(const QList<PackageMetadata>& pkgs) {
   QStringList desc;
 
   for (const PackageMetadata& mt : pkgs) {
-    auto pkg_status = packageStatus(mt);
+    try {
+      auto pkg_status = packageStatus(mt);
 
-    switch (pkg_status) {
-      case PackageStatus::NotInstalled:
-      case PackageStatus::OutOfDate:
-        to_install.append(mt);
-        break;
+      switch (pkg_status) {
+        case PackageStatus::NotInstalled:
+        case PackageStatus::OutOfDate:
+          to_install.append(mt);
+          break;
 
-      default:
-        desc << QSL("%1@%2").arg(mt.m_name, mt.m_version);
-        break;
+        default:
+          desc << QSL("%1@%2").arg(mt.m_name, mt.m_version);
+          break;
+      }
+    }
+    catch (const ApplicationException& ex) {
+      emit packageError(pkgs, ex.message());
+
+      return;
     }
   }
 
