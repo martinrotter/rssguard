@@ -18,11 +18,9 @@ $base-unit:     10px !default;
 //
 
 // Let the font be customised via RSS Guard settings
-// Note: Font size there related **only** to that font alone, it is
-// not absolute, and nothing else can be done from my side
-// E.g. "Roboto 10" <-- something like this is send from RSS Guard side
 * {
     font-family: inherit;
+    font-size: inherit;
 }
 
 //
@@ -182,7 +180,11 @@ code {
     border: 1px solid $cbor3;
     border-radius: $radius-unit;
     color: $cfg10;
-    // cursor: text;
+    //cursor: text;
+
+    // Font for code blocks falls back to system default monospace
+    font-family: monospace;
+    font-size: .95rem !important;
 }
 
 code {
@@ -349,11 +351,12 @@ summary {
 body:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl a {
 
     &,
-    &:not([href=""]) + span { // NOTE: 'a[href="*"] + span' is never visible
+    &:not([href=""]) + span {
         visibility: visible;
     }
 }
 
+// Stay visible when right-clicked
 .rssguard-mwrapper .rssguard-mhead .mwrapurl a:focus {
 
     &,
