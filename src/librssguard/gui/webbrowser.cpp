@@ -38,7 +38,7 @@ WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
   m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                           tr("Open this website in system web browser"),
                                           this)),
-  m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("document-preview")),
+  m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("text-html")),
                                     tr("View website in reader mode"),
                                     this)) {
   // Initialize the components and layout.
@@ -223,7 +223,9 @@ void WebBrowser::onIconChanged(const QIcon& icon) {
 }
 
 void WebBrowser::setReadabledHtml(const QString& better_html) {
-  m_webView->setHtml(better_html, m_webView->url());
+  if (!better_html.isEmpty()) {
+    m_webView->setHtml(better_html, m_webView->url());
+  }
 }
 
 void WebBrowser::readabilityFailed(const QString& error) {
