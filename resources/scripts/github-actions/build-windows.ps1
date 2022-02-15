@@ -93,7 +93,7 @@ Copy-Item -Path "$openssl_base_path\bin\libcrypto*.dll" -Destination ".\app\"
 Copy-Item -Path "$openssl_base_path\bin\libssl*.dll" -Destination ".\app\"
 
 # Copy MySQL.
-Copy-Item -Path "$maria_path\lib\libmariadb.dll" -Destination ".\app\"
+Copy-Item -Path "$maria_path\bin\libmariadb.dll" -Destination ".\app\"
 Copy-Item -Path "$qt_sqldrivers_path\plugins\sqldrivers\qsqlmysql.dll" -Destination ".\app\sqldrivers\" -Force
 
 if ($webengine -eq "ON") {
