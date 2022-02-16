@@ -105,7 +105,7 @@ void SettingsNodejs::saveSettings() {
 
 void SettingsNodejs::testNodejs() {
   try {
-    QString node_version = qApp->nodejs()->nodejsVersion(m_ui.m_tbNodeExecutable->lineEdit()->text());
+    QString node_version = qApp->nodejs()->nodeJsVersion(m_ui.m_tbNodeExecutable->lineEdit()->text());
 
     m_ui.m_tbNodeExecutable->setStatus(WidgetWithStatus::StatusType::Ok,
                                        tr("Node.js has version %1.").arg(node_version));

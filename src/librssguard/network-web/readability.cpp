@@ -3,6 +3,7 @@
 #include "network-web/readability.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "exceptions/applicationexception.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 
@@ -61,26 +62,41 @@ void Readability::onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, con
 
 void Readability::makeHtmlReadable(const QString& html, const QString& base_url) {
   if (!m_modulesInstalled) {
-    NodeJs::PackageStatus st = qApp->nodejs()->packageStatus({ QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION) });
+    try {
+      NodeJs::PackageStatus st = qApp->nodejs()->packageStatus({ QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION) });
 
-    if (st != NodeJs::PackageStatus::UpToDate) {
-      if (!m_modulesInstalling) {
-        // We make sure to update modules.
-        m_modulesInstalling = true;
+      if (st != NodeJs::PackageStatus::UpToDate) {
+        if (!m_modulesInstalling) {
+          // We make sure to update modules.
+          m_modulesInstalling = true;
 
-        qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
-                             { tr("Node.js libraries not installed"),
-                               tr("%1 will now install some needed libraries, this will take only a few seconds. "
-                                  "You will be notified when installation is complete.").arg(QSL(APP_NAME)),
-                               QSystemTrayIcon::MessageIcon::Information },
-                             { true, true, false });
-        qApp->nodejs()->installPackages({ { QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION) } });
+          qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
+                               { tr("Node.js libraries not installed"),
+                                 tr("%1 will now install some needed libraries, this will take only a few seconds. "
+                                    "You will be notified when installation is complete.").arg(QSL(APP_NAME)),
+                                 QSystemTrayIcon::MessageIcon::Warning },
+                               { true, true, false });
+          qApp->nodejs()->installPackages({ { QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION) } });
+        }
+
+        return;
       }
-
-      return;
+      else {
+        m_modulesInstalled = true;
+      }
     }
-    else {
-      m_modulesInstalled = true;
+    catch (const ApplicationException& ex) {
+      qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
+                           { tr("Node.js libraries not installed"),
+                             tr("Node.js is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
+                                "if your Node.js is properly configured."),
+                             QSystemTrayIcon::MessageIcon::Critical },
+                           { true, true, false });
+
+      qCriticalNN << LOGSEC_CORE << "Failed to check for Node.js package status:" << QUOTE_W_SPACE_DOT(ex.message());
+
+      // Emit this just to allow readability again for user.
+      emit htmlReadabled({});
     }
   }
 

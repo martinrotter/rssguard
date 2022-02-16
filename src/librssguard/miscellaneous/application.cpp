@@ -671,9 +671,9 @@ void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
 void Application::onAdBlockFailure() {
   qApp->showGuiMessage(Notification::Event::GeneralEvent, {
     tr("AdBlock needs to be configured"),
-    tr("AdBlock component is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
+    tr("AdBlock is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
        "if your Node.js is properly configured."),
-    QSystemTrayIcon::MessageIcon::Critical }, {});
+    QSystemTrayIcon::MessageIcon::Critical }, { true, true, false });
 
   qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, false);
 }

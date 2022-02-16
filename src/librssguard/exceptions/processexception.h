@@ -9,12 +9,15 @@
 
 class ProcessException : public ApplicationException {
   public:
-    ProcessException(int exit_code, QProcess::ExitStatus exit_status, const QString& message = QString());
+    ProcessException(int exit_code, QProcess::ExitStatus exit_status,
+                     QProcess::ProcessError error, const QString& message = QString());
 
     QProcess::ExitStatus exitStatus() const;
     int exitCode() const;
+    QProcess::ProcessError error() const;
 
   private:
+    QProcess::ProcessError m_error;
     QProcess::ExitStatus m_exitStatus;
     int m_exitCode;
 };

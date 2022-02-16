@@ -61,7 +61,7 @@ QString NodeJs::processedPackageFolder() const {
   return QDir::toNativeSeparators(path);
 }
 
-QString NodeJs::nodejsVersion(const QString& nodejs_exe) const {
+QString NodeJs::nodeJsVersion(const QString& nodejs_exe) const {
   if (nodejs_exe.simplified().isEmpty()) {
     throw ApplicationException(tr("file not found"));
   }

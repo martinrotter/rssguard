@@ -140,7 +140,12 @@ QString IOFactory::startProcessGetOutput(const QString& executable,
     return proc.readAllStandardOutput();
   }
   else {
-    throw ProcessException(proc.exitCode(), proc.exitStatus(), proc.readAllStandardError().simplified());
+    QString err_output = proc.readAllStandardError().simplified();
+
+    throw ProcessException(proc.exitCode(),
+                           proc.exitStatus(),
+                           proc.error(),
+                           err_output.isEmpty() ? proc.errorString() : err_output);
   }
 }
 

@@ -48,7 +48,7 @@ class NodeJs : public QObject {
     QString processedPackageFolder() const;
     void setPackageFolder(const QString& path);
 
-    QString nodejsVersion(const QString& nodejs_exe) const;
+    QString nodeJsVersion(const QString& nodejs_exe) const;
     QString npmVersion(const QString& npm_exe) const;
 
     // Checks status of package.
