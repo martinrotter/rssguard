@@ -18,6 +18,10 @@ void MessageObject::setMessage(Message* message) {
   m_message = message;
 }
 
+bool MessageObject::isAlreadyInDatabase(DuplicationAttributeCheck attribute_check) const {
+  return isDuplicateWithAttribute(attribute_check);
+}
+
 bool MessageObject::isDuplicate(DuplicationAttributeCheck attribute_check) const {
   return isDuplicateWithAttribute(attribute_check);
 }
