@@ -485,27 +485,27 @@ Pulse aquí para abrir o seu directorio pai.</translation>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="54"/>
         <source>Filename</source>
-        <translation type="unfinished"/>
+        <translation>Nome do ficheiro</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="86"/>
         <source>&amp;Try again</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Inténteo de novo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="93"/>
         <source>&amp;Stop</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Deter</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="100"/>
         <source>&amp;Open file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Abrir ficheiro</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="107"/>
         <source>Open &amp;directory</source>
-        <translation type="unfinished"/>
+        <translation>Abrir &amp;directorio</translation>
     </message>
 </context>
 <context>
@@ -1056,12 +1056,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="102"/>
         <source>Information</source>
-        <translation type="unfinished"/>
+        <translation>Información</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="150"/>
         <source>Licenses</source>
-        <translation type="unfinished"/>
+        <translation>Licenzas</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="171"/>
@@ -1091,17 +1091,17 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="381"/>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Rexistro de cambios</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="416"/>
         <source>Changelog page is available only in English language.</source>
-        <translation type="unfinished"/>
+        <translation>A páxina de rexistro de cambios só está dipoñible en inglés.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="424"/>
         <source>Resources</source>
-        <translation type="unfinished"/>
+        <translation>Recursos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="433"/>
@@ -1111,7 +1111,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="447"/>
         <source>Settings file</source>
-        <translation type="unfinished"/>
+        <translation>Ficheiro de axustes</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="468"/>
@@ -1121,7 +1121,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="482"/>
         <source>User skins root path</source>
-        <translation type="unfinished"/>
+        <translation>Ruta ao raíz do decorado da usuaria</translation>
     </message>
 </context>
 <context>
@@ -1281,22 +1281,22 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="14"/>
         <source>Backup database/settings</source>
-        <translation type="unfinished"/>
+        <translation>Respaldar axustes/base de datos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="20"/>
         <source>Output directory</source>
-        <translation type="unfinished"/>
+        <translation>Directorio de saída</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
         <source>&amp;Select directory</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Selecione directorio</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
         <source>Backup properties</source>
-        <translation type="unfinished"/>
+        <translation>Respaldar propiedades</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="49"/>
@@ -1316,12 +1316,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="76"/>
         <source>Backup name</source>
-        <translation type="unfinished"/>
+        <translation>Respaldar nome</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="89"/>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Resultados da operación</translation>
     </message>
 </context>
 <context>
@@ -1440,12 +1440,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="54"/>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Título</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="64"/>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Descrición</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="74"/>
@@ -1495,7 +1495,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="14"/>
         <source>Cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Limpar a base de datos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
@@ -1540,12 +1540,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
         <source>Database type</source>
-        <translation type="unfinished"/>
+        <translation>Tipo de base de datos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="139"/>
         <source>Progress</source>
-        <translation type="unfinished"/>
+        <translation>Progreso</translation>
     </message>
 </context>
 <context>
@@ -2427,7 +2427,7 @@ or this functionality is not implemented yet.</source>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="282"/>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Título</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="143"/>
@@ -2482,7 +2482,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="308"/>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Autor</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="321"/>
@@ -2555,7 +2555,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="33"/>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Resultados da operación</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="59"/>
@@ -2622,7 +2622,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="14"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Axustes</translation>
     </message>
 </context>
 <context>
@@ -2863,12 +2863,12 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Diálogo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="20"/>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Título</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="59"/>
@@ -3023,7 +3023,7 @@ You can install it now.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="69"/>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Rexistro de cambios</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="125"/>
@@ -3421,7 +3421,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="95"/>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Autenticación</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="101"/>
@@ -3461,7 +3461,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="270"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Probar a configuración</translation>
     </message>
 </context>
 <context>
@@ -4432,12 +4432,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="81"/>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Algunhas fontes requiren autenticación, incluíndo as fontes de GMail. Os tipos de autenticación BASIC, NTLM-2 e DIGEST-MD5 están soportados.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="84"/>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Autenticación</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="96"/>
@@ -6305,7 +6305,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="74"/>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Título</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="87"/>
@@ -6784,12 +6784,12 @@ Unread news: %2</source>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="101"/>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="145"/>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Algunhas fontes requiren autenticación, incluíndo as fontes de GMail. Os tipos de autenticación BASIC, NTLM-2 e DIGEST-MD5 están soportados.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="104"/>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Autenticación</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="116"/>
@@ -6806,12 +6806,12 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="148"/>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Require autenticación HTTP</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="194"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Probar a configuración</translation>
     </message>
 </context>
 <context>

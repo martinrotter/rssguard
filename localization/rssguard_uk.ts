@@ -73,7 +73,7 @@ Error: %1</source>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="32"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>Допомога</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
@@ -485,27 +485,27 @@ Click here to open parent directory.</source>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="54"/>
         <source>Filename</source>
-        <translation type="unfinished"/>
+        <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="86"/>
         <source>&amp;Try again</source>
-        <translation type="unfinished"/>
+        <translation>Спробуйте ще раз</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="93"/>
         <source>&amp;Stop</source>
-        <translation type="unfinished"/>
+        <translation>Стоп</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="100"/>
         <source>&amp;Open file</source>
-        <translation type="unfinished"/>
+        <translation>Відкрити файл</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="107"/>
         <source>Open &amp;directory</source>
-        <translation type="unfinished"/>
+        <translation>Відкрити каталог</translation>
     </message>
 </context>
 <context>
@@ -683,7 +683,7 @@ Status: %3</source>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="17"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="27"/>
@@ -704,7 +704,7 @@ Status: %3</source>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="90"/>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Логін</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="106"/>
@@ -1057,12 +1057,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="102"/>
         <source>Information</source>
-        <translation type="unfinished"/>
+        <translation>Інформація</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="150"/>
         <source>Licenses</source>
-        <translation type="unfinished"/>
+        <translation>Ліцензії</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="171"/>
@@ -1092,27 +1092,27 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="381"/>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Changelog</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="416"/>
         <source>Changelog page is available only in English language.</source>
-        <translation type="unfinished"/>
+        <translation>Сторінка Changelog доступна лише англйською мовою</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="424"/>
         <source>Resources</source>
-        <translation type="unfinished"/>
+        <translation>Ресурси</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="433"/>
         <source>Settings type</source>
-        <translation type="unfinished"/>
+        <translation>Тип налаштувань</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="447"/>
         <source>Settings file</source>
-        <translation type="unfinished"/>
+        <translation>Файл налаштувань</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="468"/>
@@ -1122,7 +1122,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="482"/>
         <source>User skins root path</source>
-        <translation type="unfinished"/>
+        <translation>Корінний шлях до обкладинок</translation>
     </message>
 </context>
 <context>
@@ -1282,12 +1282,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="14"/>
         <source>Backup database/settings</source>
-        <translation type="unfinished"/>
+        <translation>Створити резервну копію бази та налаштувань</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="20"/>
         <source>Output directory</source>
-        <translation type="unfinished"/>
+        <translation>Каталог для результатів</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
@@ -1297,7 +1297,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
         <source>Backup properties</source>
-        <translation type="unfinished"/>
+        <translation>Параметри резервування</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="49"/>
@@ -1317,12 +1317,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="76"/>
         <source>Backup name</source>
-        <translation type="unfinished"/>
+        <translation>Ім&apos;я резервної копії</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="89"/>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Результати виконання</translation>
     </message>
 </context>
 <context>
@@ -1436,27 +1436,27 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="41"/>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Обрати юатьківскьий елемент для категорії</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="54"/>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Назва</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="64"/>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Опис</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="74"/>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Значок</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="96"/>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"/>
+        <translation>Обрати значок для категорії</translation>
     </message>
 </context>
 <context>
@@ -1496,7 +1496,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="14"/>
         <source>Cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Очистити базу</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
@@ -1541,12 +1541,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
         <source>Database type</source>
-        <translation type="unfinished"/>
+        <translation>Тип бази</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="139"/>
         <source>Progress</source>
-        <translation type="unfinished"/>
+        <translation>Прогрес</translation>
     </message>
 </context>
 <context>
@@ -1708,27 +1708,27 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
         <source>&amp;File</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Файл</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="63"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>Допомога</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="73"/>
         <source>&amp;View</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Перегляд</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="77"/>
         <source>Show/hide</source>
-        <translation type="unfinished"/>
+        <translation>Показати/сховати</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="94"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"/>
+        <translation>Інструменти</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="103"/>
@@ -1748,12 +1748,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="163"/>
         <source>&amp;Recycle bin(s)</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Кошик(и)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="170"/>
         <source>&amp;Accounts</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Облікові записи</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="178"/>
@@ -1763,32 +1763,32 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="201"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Вихід</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="204"/>
         <source>Quit the application.</source>
-        <translation type="unfinished"/>
+        <translation>Вийти з програми.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="215"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Налаштування</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="218"/>
         <source>Display settings of the application.</source>
-        <translation type="unfinished"/>
+        <translation>Відобразити налаштування програми.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="226"/>
         <source>&amp;About application</source>
-        <translation type="unfinished"/>
+        <translation>О програмі.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="229"/>
         <source>Displays extra info about this application.</source>
-        <translation type="unfinished"/>
+        <translation>Показати додаткову інформацію про програму.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="243"/>
@@ -1798,7 +1798,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="246"/>
         <source>Switch fullscreen mode.</source>
-        <translation type="unfinished"/>
+        <translation>Переключити режим відображення на повний екран.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="254"/>
@@ -1823,12 +1823,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="276"/>
         <source>&amp;Edit selected item</source>
-        <translation type="unfinished"/>
+        <translation>Редагувати елемент</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="284"/>
         <source>&amp;Delete selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Видалити елемент</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
@@ -1868,7 +1868,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="328"/>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation type="unfinished"/>
+        <translation>Помітити всі повідомлення ( без накладання фільтрів ) з обраних елементів як прочитані.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="336"/>
@@ -1878,7 +1878,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="339"/>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation type="unfinished"/>
+        <translation>Помітити всі повідомлення ( без накладання фільтрів ) з обраних елементів як непрочитані.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="347"/>
@@ -1893,7 +1893,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="358"/>
         <source>Deletes all messages from selected items.</source>
-        <translation type="unfinished"/>
+        <translation>Вадалити всі повідомленні в обраних елементах</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="366"/>
@@ -1918,12 +1918,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="391"/>
         <source>No actions available</source>
-        <translation type="unfinished"/>
+        <translation>Дії недоступні</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="394"/>
         <source>No actions are available right now.</source>
-        <translation type="unfinished"/>
+        <translation>Наразі якісь дії недоступні</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="402"/>
@@ -1933,7 +1933,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="405"/>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation type="unfinished"/>
+        <translation>Помітити усі повідомлення в усіх елементах я прочитані. При цьому не будуть братися до уваги фільтри повідомлень.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="413"/>
@@ -1953,17 +1953,17 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="430"/>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation type="unfinished"/>
+        <translation>Згортає головне вікно, якщо воно розгорнуте, та розгортає, якщо згорнуте.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="444"/>
         <source>&amp;Feed list</source>
-        <translation type="unfinished"/>
+        <translation>Список &amp;потоків</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="447"/>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation type="unfinished"/>
+        <translation>Сховати або відображати перелік потоків та категорій.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="455"/>
@@ -1973,7 +1973,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="458"/>
         <source>Deletes all messages from all items.</source>
-        <translation type="unfinished"/>
+        <translation>Вадалити всі повідомленні в усіхі елементах</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="466"/>
@@ -1998,7 +1998,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="498"/>
         <source>Check for &amp;updates</source>
-        <translation type="unfinished"/>
+        <translation>Перевірити &amp;оновлення.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="501"/>
@@ -2008,7 +2008,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="515"/>
         <source>&amp;Main menu</source>
-        <translation type="unfinished"/>
+        <translation>Головне меню</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="518"/>
@@ -2018,12 +2018,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="526"/>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"/>
+        <translation>Сповістити про &amp;помилку</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="537"/>
         <source>&amp;Toolbars</source>
-        <translation type="unfinished"/>
+        <translation>Панелі інструментів</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="540"/>
@@ -2048,7 +2048,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
         <source>&amp;Restart</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Перезапустити</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
@@ -2068,7 +2068,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="610"/>
         <source>&amp;Downloads</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Завантаження</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="618"/>
@@ -2083,7 +2083,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
         <source>&amp;Cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Очистити базу</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="640"/>
@@ -2093,7 +2093,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="648"/>
         <source>&amp;Expand/collapse selected item</source>
-        <translation type="unfinished"/>
+        <translation>Розгорнути/згорнути відмічені елементи</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="656"/>
@@ -2108,12 +2108,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="672"/>
         <source>&amp;Restore all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Відновити всі кошики.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="680"/>
         <source>&amp;Empty all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Спорожнити всі кошики.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="688"/>
@@ -2128,12 +2128,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="710"/>
         <source>&amp;Edit selected account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Редагувати обліковий запис</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="718"/>
         <source>&amp;Delete selected account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Видалити обліковий запис</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="731"/>
@@ -2154,7 +2154,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="752"/>
         <source>Close all tabs</source>
-        <translation type="unfinished"/>
+        <translation>Закрити всі вкладки</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="757"/>
@@ -2164,12 +2164,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="762"/>
         <source>Go to &amp;next tab</source>
-        <translation type="unfinished"/>
+        <translation>Перейти до &amp;наступної вкладинки</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="767"/>
         <source>Go to &amp;previous tab</source>
-        <translation type="unfinished"/>
+        <translation>Перейти до &amp;попередньої вкладинки</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="775"/>
@@ -2428,7 +2428,7 @@ or this functionality is not implemented yet.</source>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="282"/>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Назва</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="143"/>
@@ -2478,32 +2478,32 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="295"/>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="308"/>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Автор</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="321"/>
         <source>Created on</source>
-        <translation type="unfinished"/>
+        <translation>Дата створення</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="334"/>
         <source>Contents</source>
-        <translation type="unfinished"/>
+        <translation>Вміст</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="349"/>
         <source>Read</source>
-        <translation type="unfinished"/>
+        <translation>Прочитане</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="356"/>
         <source>Important</source>
-        <translation type="unfinished"/>
+        <translation>Важливе</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="379"/>
@@ -2551,17 +2551,17 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="14"/>
         <source>Restore database/settings</source>
-        <translation type="unfinished"/>
+        <translation>Відновити базу/налаштування</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="33"/>
         <source>Operation results</source>
-        <translation type="unfinished"/>
+        <translation>Результати виконання</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="59"/>
         <source>Source directory</source>
-        <translation type="unfinished"/>
+        <translation>Початковий каталог</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="65"/>
@@ -2576,7 +2576,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="100"/>
         <source>Restore settings</source>
-        <translation type="unfinished"/>
+        <translation>Відновити налаштування</translation>
     </message>
 </context>
 <context>
@@ -2626,7 +2626,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="14"/>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation>Налаштування</translation>
     </message>
 </context>
 <context>
@@ -2786,12 +2786,12 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="57"/>
         <source>Root node</source>
-        <translation type="unfinished"/>
+        <translation>Корінний вузол</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="67"/>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Оберіть батьковський елемент для потоку.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="103"/>
@@ -2867,7 +2867,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Діалогове вікно</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="20"/>
@@ -2877,7 +2877,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="59"/>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="69"/>
@@ -3020,7 +3020,7 @@ You can install it now.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="34"/>
         <source>Available release</source>
-        <translation type="unfinished"/>
+        <translation>Доступна версія</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="48"/>
@@ -3030,12 +3030,12 @@ You can install it now.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="69"/>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Changelog</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="125"/>
         <source>Available files</source>
-        <translation type="unfinished"/>
+        <translation>Доступні файли</translation>
     </message>
 </context>
 <context>
@@ -3115,12 +3115,12 @@ You can install it now.</source>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="17"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="33"/>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Налаштування OAuth 2.0</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="39"/>
@@ -3135,7 +3135,7 @@ You can install it now.</source>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="65"/>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>URL перенаправлення</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="80"/>
@@ -3150,7 +3150,7 @@ You can install it now.</source>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="134"/>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Логін</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="163"/>
@@ -3429,7 +3429,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="95"/>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Аутентифікація</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="101"/>
@@ -3459,7 +3459,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="218"/>
         <source>Redirect URL</source>
-        <translation type="unfinished"/>
+        <translation>URL перенаправлення</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="233"/>
@@ -4214,7 +4214,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
         <source>Port</source>
-        <translation type="unfinished"/>
+        <translation>Порт</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="76"/>
@@ -4229,7 +4229,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Пароль</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
@@ -4245,7 +4245,7 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="156"/>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Тип</translation>
     </message>
 </context>
 <context>
@@ -4440,17 +4440,17 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="81"/>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Деякі потоки потребують аутентифікації, включаючи потоки GMail. Підтримуються BASIC, NTLM-2 та DIGEST-MD5 схеми аутентифікації.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="84"/>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Аутентифікація</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="96"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="109"/>
@@ -4794,7 +4794,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="33"/>
         <source>OAuth 2.0 settings</source>
-        <translation type="unfinished"/>
+        <translation>Налаштування OAuth 2.0</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="39"/>
@@ -4824,7 +4824,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="134"/>
         <source>&amp;Login</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Логін</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="163"/>
@@ -4936,12 +4936,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="32"/>
         <source>Seach text</source>
-        <translation type="unfinished"/>
+        <translation>Текст для пошуку</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
         <source>Find previous occurence</source>
-        <translation type="unfinished"/>
+        <translation>Знайти попереднє входження</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="49"/>
@@ -5009,7 +5009,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
         <source>External web browser</source>
-        <translation type="unfinished"/>
+        <translation>Зовнішній браузер</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
@@ -5065,7 +5065,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="127"/>
         <source>Select browser</source>
-        <translation type="unfinished"/>
+        <translation>Вибрати браузер</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="135"/>
@@ -5107,7 +5107,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="275"/>
         <source>External tools</source>
-        <translation type="unfinished"/>
+        <translation>Зовнішні інструменти</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="310"/>
@@ -5270,12 +5270,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="94"/>
         <source>Hostname</source>
-        <translation type="unfinished"/>
+        <translation>Ім&apos;я системи</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="109"/>
         <source>Port</source>
-        <translation type="unfinished"/>
+        <translation>Порт</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="140"/>
@@ -5285,12 +5285,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="150"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="163"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Пароль</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="178"/>
@@ -5396,7 +5396,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="105"/>
         <source> ms</source>
-        <translation type="unfinished"/>
+        <translation>мс</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="135"/>
@@ -5426,7 +5426,7 @@ Authors of this application are NOT responsible for lost data.</source>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="365"/>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="567"/>
         <source>&amp;Change font</source>
-        <translation type="unfinished"/>
+        <translation>Змінити шрифт</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="219"/>
@@ -5644,7 +5644,7 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="46"/>
         <source>Style</source>
-        <translation type="unfinished"/>
+        <translation>Стиль</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="59"/>
@@ -5699,12 +5699,12 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="204"/>
         <source>Tabs</source>
-        <translation type="unfinished"/>
+        <translation>Вкладинки</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="216"/>
         <source>Close tabs with</source>
-        <translation type="unfinished"/>
+        <translation>Закривати вкладки</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="222"/>
@@ -6294,7 +6294,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="30"/>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Оберіть батьковський елемент для потоку.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="46"/>
@@ -6304,17 +6304,17 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="58"/>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
+        <translation>Оберіть тип звичайного потоку.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="65"/>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
+        <translation>Оберіть кодову сторінку звичайного потоку. Якщо ви невпевнені, то оберіть кодову сторінку &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="74"/>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Назва</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="87"/>
@@ -6334,7 +6334,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="158"/>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Завантажити метадані</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="170"/>
@@ -6344,12 +6344,12 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="192"/>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Значок</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="214"/>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Обрати значок для потоку.</translation>
     </message>
 </context>
 <context>
@@ -6562,12 +6562,12 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="32"/>
         <source>Activated actions</source>
-        <translation type="unfinished"/>
+        <translation>Активовані дії</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="39"/>
         <source>Available actions</source>
-        <translation type="unfinished"/>
+        <translation>Доступні дії</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="76"/>
@@ -6577,12 +6577,12 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="98"/>
         <source>Move action down</source>
-        <translation type="unfinished"/>
+        <translation>Пересунути дію нижче</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="127"/>
         <source>Insert separator</source>
-        <translation type="unfinished"/>
+        <translation>Вставити росподілювач</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="149"/>
@@ -6592,7 +6592,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="178"/>
         <source>Add selected action</source>
-        <translation type="unfinished"/>
+        <translation>Додати обрані дії</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="200"/>
@@ -6602,12 +6602,12 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="222"/>
         <source>Delete all actions</source>
-        <translation type="unfinished"/>
+        <translation>Видалити всі дії</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="244"/>
         <source>Reset toolbar</source>
-        <translation type="unfinished"/>
+        <translation>Скинути панель інструментів</translation>
     </message>
 </context>
 <context>
@@ -6773,7 +6773,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="32"/>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="47"/>
@@ -6794,34 +6794,34 @@ Unread news: %2</source>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="101"/>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="145"/>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Деякі потоки потребують аутентифікації, включаючи потоки GMail. Підтримуються BASIC, NTLM-2 та DIGEST-MD5 схеми аутентифікації.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="104"/>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Аутентифікація</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="116"/>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="163"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Ім’я користувача</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="129"/>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="176"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Пароль</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="148"/>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Потребує HTTP аутентифікації</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="194"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>Протестувати налаштування</translation>
     </message>
 </context>
 <context>
@@ -6872,12 +6872,12 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="30"/>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Оберіть батьковський елемент для потоку.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="46"/>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
 </context>
 <context>
