@@ -26,6 +26,90 @@ NewsBlurNetwork::NewsBlurNetwork(QObject* parent)
   clearCredentials();
 }
 
+RootItem* NewsBlurNetwork::categoriesFeedsLabelsTree(const QNetworkProxy& proxy) {
+  QJsonDocument json = feeds(proxy);
+  RootItem* root = new RootItem();
+  const auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QMap<QString, RootItem*> cats;
+  QList<QPair<RootItem*, QJsonArray>> cats_array = {
+    { root, json.object()["folders"].toArray() }
+  };
+
+  while (!cats_array.isEmpty()) {
+    // Add direct descendants as categories to parent, then process their children.
+    QPair<RootItem*, QJsonArray> cats_for_parent = cats_array.takeFirst();
+
+    for (const QJsonValue& var : cats_for_parent.second) {
+      if (var.type() == QJsonValue::Type::Double) {
+        // We have feed.
+        Feed* feed = new Feed();
+
+        feed->setCustomId(QString::number(var.toInt()));
+
+        QJsonObject feed_json = json.object()["feeds"].toObject()[feed->customId()].toObject();
+
+        feed->setTitle(feed_json["feed_title"].toString());
+        feed->setSource(feed_json["feed_link"].toString());
+
+        QString favicon_url = feed_json["favicon_url"].toString();
+
+        if (!favicon_url.isEmpty()) {
+          QIcon icon;
+
+          if (NetworkFactory::downloadIcon({ { favicon_url, true } }, timeout, icon, {}, proxy) ==
+              QNetworkReply::NetworkError::NoError) {
+            feed->setIcon(icon);
+          }
+        }
+
+        cats_for_parent.first->appendChild(feed);
+      }
+      else if (var.type() == QJsonValue::Type::Object) {
+        const QString category_name = var.toObject().keys().first();
+        Category* category = new Category();
+
+        category->setTitle(category_name);
+        category->setCustomId(category_name);
+
+        cats_for_parent.first->appendChild(category);
+        cats_array.append({
+          category,
+          var.toObject()[category_name].toArray()
+        });
+      }
+    }
+  }
+
+  return root;
+}
+
+QJsonDocument NewsBlurNetwork::feeds(const QNetworkProxy& proxy) {
+  ensureLogin(proxy);
+
+  const QString full_url = generateFullUrl(Operations::Feeds);
+  const auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray output;
+  auto network_result = NetworkFactory::performNetworkOperation(full_url,
+                                                                timeout,
+                                                                {},
+                                                                output,
+                                                                QNetworkAccessManager::Operation::GetOperation,
+                                                                {},
+                                                                false,
+                                                                {},
+                                                                {},
+                                                                proxy);
+
+  if (network_result.m_networkError == QNetworkReply::NetworkError::NoError) {
+    ApiResult res; res.decodeBaseResponse(output);
+
+    return res.m_json;
+  }
+  else {
+    throw NetworkException(network_result.m_networkError, output);
+  }
+}
+
 LoginResult NewsBlurNetwork::login(const QNetworkProxy& proxy) {
   const QString full_url = generateFullUrl(Operations::Login);
   const auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
@@ -46,17 +130,9 @@ LoginResult NewsBlurNetwork::login(const QNetworkProxy& proxy) {
                                                                 proxy);
 
   if (network_result.m_networkError == QNetworkReply::NetworkError::NoError) {
-    QJsonParseError err;
-    QJsonDocument doc = QJsonDocument::fromJson(output, &err);
+    LoginResult res; res.decodeBaseResponse(output);
 
-    if (err.error != QJsonParseError::ParseError::NoError) {
-      throw ApplicationException(err.errorString());
-    }
-
-    LoginResult res;
-
-    res.decodeBaseResponse(doc);
-    res.m_userId = doc.object()["user_id"].toInt();
+    res.m_userId = res.m_json.object()["user_id"].toInt();
     res.m_sessiodId = boolinq::from(network_result.m_cookies).firstOrDefault([](const QNetworkCookie& c) {
       return c.name() == QSL(NEWSBLUS_AUTH_COOKIE);
     }).value();
@@ -146,6 +222,9 @@ QString NewsBlurNetwork::generateFullUrl(NewsBlurNetwork::Operations operation) 
     case Operations::Login:
       return sanitizedBaseUrl() + QSL(NEWSBLUR_API_LOGIN);
 
+    case Operations::Feeds:
+      return sanitizedBaseUrl() + QSL(NEWSBLUR_API_FEEDS);
+
     default:
       return sanitizedBaseUrl();
   }
@@ -163,7 +242,15 @@ void NewsBlurNetwork::setDownloadOnlyUnreadMessages(bool download_only_unread) {
   m_downloadOnlyUnreadMessages = download_only_unread;
 }
 
-void ApiResult::decodeBaseResponse(const QJsonDocument& doc) {
+void ApiResult::decodeBaseResponse(const QByteArray& json_data) {
+  QJsonParseError err;
+  QJsonDocument doc = QJsonDocument::fromJson(json_data, &err);
+
+  if (err.error != QJsonParseError::ParseError::NoError) {
+    throw ApplicationException(err.errorString());
+  }
+
+  m_json = doc;
   m_authenticated = doc.object()["authenticated"].toBool();
   m_code = doc.object()["code"].toInt();
 

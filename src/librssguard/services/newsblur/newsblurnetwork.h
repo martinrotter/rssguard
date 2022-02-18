@@ -13,8 +13,9 @@ struct ApiResult {
   bool m_authenticated;
   int m_code;
   QStringList m_errors;
+  QJsonDocument m_json;
 
-  void decodeBaseResponse(const QJsonDocument& doc);
+  void decodeBaseResponse(const QByteArray& json_data);
 };
 
 struct LoginResult : ApiResult {
@@ -27,11 +28,19 @@ class NewsBlurNetwork : public QObject {
 
   public:
     enum class Operations {
-      Login
+      Login,
+      Feeds
     };
 
     explicit NewsBlurNetwork(QObject* parent = nullptr);
 
+    // Convenience methods.
+    RootItem* categoriesFeedsLabelsTree(const QNetworkProxy& proxy);
+
+    // API.
+    QJsonDocument feeds(const QNetworkProxy& proxy);
+
+    // Misc.
     void clearCredentials();
 
     QString username() const;

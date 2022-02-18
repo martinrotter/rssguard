@@ -12,5 +12,6 @@
 #define NEWSBLUR_API_LOGIN      "api/login"
 #define NEWSBLUR_API_LOGOUT     "api/logout"
 #define NEWSBLUR_API_SIGNUP     "api/signup"
+#define NEWSBLUR_API_FEEDS      "reader/feeds"
 
 #endif // NEWSBLUR_DEFINITIONS_H

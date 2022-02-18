@@ -139,7 +139,5 @@ void NewsBlurServiceRoot::updateTitleIcon() {
 }
 
 RootItem* NewsBlurServiceRoot::obtainNewTreeForSyncIn() const {
-  return nullptr;
-
-  //return m_network->categoriesFeedsLabelsTree(true, networkProxy());
+  return m_network->categoriesFeedsLabelsTree(networkProxy());;
 }
