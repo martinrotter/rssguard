@@ -82,7 +82,7 @@ void OwnCloudServiceRoot::saveAllCachedData(bool ignore_errors) {
     if (!ids.isEmpty()) {
       auto res = network()->markMessagesRead(key, ids, networkProxy());
 
-      if (!ignore_errors && res.first != QNetworkReply::NetworkError::NoError) {
+      if (!ignore_errors && res.m_networkError != QNetworkReply::NetworkError::NoError) {
         addMessageStatesToCache(ids, key);
       }
     }
@@ -106,7 +106,7 @@ void OwnCloudServiceRoot::saveAllCachedData(bool ignore_errors) {
 
       auto res = network()->markMessagesStarred(key, feed_ids, guid_hashes, networkProxy());
 
-      if (!ignore_errors && res.first != QNetworkReply::NetworkError::NoError) {
+      if (!ignore_errors && res.m_networkError != QNetworkReply::NetworkError::NoError) {
         addMessageStatesToCache(messages, key);
       }
     }

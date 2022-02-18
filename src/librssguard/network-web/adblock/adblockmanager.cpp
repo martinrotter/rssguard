@@ -252,7 +252,7 @@ BlockingResult AdBlockManager::askServerIfBlocked(const QString& fp_url, const Q
                                                                QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
                                                                QSL("application/json").toLocal8Bit() } });
 
-  if (network_res.first == QNetworkReply::NetworkError::NoError) {
+  if (network_res.m_networkError == QNetworkReply::NetworkError::NoError) {
     qDebugNN << LOGSEC_ADBLOCK
              << "Query for blocking info to server took "
              << tmr.elapsed()
@@ -269,7 +269,7 @@ BlockingResult AdBlockManager::askServerIfBlocked(const QString& fp_url, const Q
     };
   }
   else {
-    throw NetworkException(network_res.first);
+    throw NetworkException(network_res.m_networkError);
   }
 }
 
@@ -293,7 +293,7 @@ QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
                                                                QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
                                                                QSL("application/json").toLocal8Bit() } });
 
-  if (network_res.first == QNetworkReply::NetworkError::NoError) {
+  if (network_res.m_networkError == QNetworkReply::NetworkError::NoError) {
     qDebugNN << LOGSEC_ADBLOCK
              << "Query for cosmetic rules to server took "
              << tmr.elapsed()
@@ -304,7 +304,7 @@ QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
     return out_obj[QSL("cosmetic")].toObject()[QSL("styles")].toString();
   }
   else {
-    throw NetworkException(network_res.first);
+    throw NetworkException(network_res.m_networkError);
   }
 }
 
@@ -370,7 +370,7 @@ void AdBlockManager::updateUnifiedFiltersFileAndStartServer() {
                                                        out,
                                                        QNetworkAccessManager::Operation::GetOperation);
 
-    if (res.first == QNetworkReply::NetworkError::NoError) {
+    if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
       unified_contents = unified_contents.append(QString::fromUtf8(out));
       unified_contents = unified_contents.append('\n');
 
@@ -379,7 +379,7 @@ void AdBlockManager::updateUnifiedFiltersFileAndStartServer() {
                << QUOTE_W_SPACE_DOT(filter_list_url);
     }
     else {
-      throw NetworkException(res.first, tr("failed to download filter list '%1'").arg(filter_list_url));
+      throw NetworkException(res.m_networkError, tr("failed to download filter list '%1'").arg(filter_list_url));
     }
   }
 

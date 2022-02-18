@@ -114,7 +114,7 @@ QVariantHash RedditNetworkFactory::me(const QNetworkProxy& custom_proxy) {
                                                         false,
                                                         {},
                                                         {},
-                                                        custom_proxy).first;
+                                                        custom_proxy).m_networkError;
 
   if (result != QNetworkReply::NetworkError::NoError) {
     throw NetworkException(result, output);

@@ -169,7 +169,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
                                                false,
                                                {},
                                                {},
-                                               custom_proxy).first;
+                                               custom_proxy).m_networkError;
 
       if (network_result == QNetworkReply::NetworkError::NoError) {
         QPixmap icon_pixmap;
@@ -210,7 +210,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
                                                  false,
                                                  {},
                                                  {},
-                                                 custom_proxy).first;
+                                                 custom_proxy).m_networkError;
 
         if (network_result == QNetworkReply::NetworkError::NoError) {
           QPixmap icon_pixmap;
@@ -260,8 +260,11 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   loop.exec();
 
   output = downloader.lastOutputData();
-  result.first = downloader.lastOutputError();
-  result.second = downloader.lastContentType();
+
+  result.m_networkError = downloader.lastOutputError();
+  result.m_contentType = downloader.lastContentType().toString();
+  result.m_cookies = downloader.lastCookies();
+
   return result;
 }
 
@@ -296,7 +299,15 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   loop.exec();
 
   output = downloader.lastOutputMultipartData();
-  result.first = downloader.lastOutputError();
-  result.second = downloader.lastContentType();
+
+  result.m_networkError = downloader.lastOutputError();
+  result.m_contentType = downloader.lastContentType().toString();
+  result.m_cookies = downloader.lastCookies();
+
   return result;
 }
+
+NetworkResult::NetworkResult() {}
+
+NetworkResult::NetworkResult(QNetworkReply::NetworkError err, const QString& ct, const QList<QNetworkCookie>& cook)
+  : m_networkError(err), m_contentType(ct), m_cookies(cook) {}

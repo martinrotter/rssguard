@@ -100,7 +100,7 @@ QString GmailNetworkFactory::sendEmail(Mimesis::Message msg, const QNetworkProxy
                                                         {},
                                                         custom_proxy);
 
-  if (result.first != QNetworkReply::NetworkError::NoError) {
+  if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
     if (!out.isEmpty()) {
       QJsonDocument doc = QJsonDocument::fromJson(out);
       auto json_message = doc.object()[QSL("error")].toObject()[QSL("message")].toString();
@@ -229,7 +229,7 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
                                                         {},
                                                         custom_proxy);
 
-    if (netw.first == QNetworkReply::NetworkError::NoError) {
+    if (netw.m_networkError == QNetworkReply::NetworkError::NoError) {
       // We parse this chunk.
       QString messages_data = QString::fromUtf8(messages_raw_data);
       QList<Message> more_messages = decodeLiteMessages(messages_data, stream_id, next_page_token);
@@ -313,7 +313,7 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::Read
                                                           false,
                                                           {},
                                                           {},
-                                                          custom_proxy).first;
+                                                          custom_proxy).m_networkError;
 
     if (result != QNetworkReply::NetworkError::NoError) {
       return result;
@@ -372,7 +372,7 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::I
                                                           false,
                                                           {},
                                                           {},
-                                                          custom_proxy).first;
+                                                          custom_proxy).m_networkError;
 
     if (result != QNetworkReply::NetworkError::NoError) {
       return result;
@@ -405,7 +405,7 @@ QVariantHash GmailNetworkFactory::getProfile(const QNetworkProxy& custom_proxy) 
                                                         false,
                                                         {},
                                                         {},
-                                                        custom_proxy).first;
+                                                        custom_proxy).m_networkError;
 
   if (result != QNetworkReply::NetworkError::NoError) {
     throw NetworkException(result, output);
@@ -594,7 +594,7 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
                                                               {},
                                                               custom_proxy);
 
-  if (res.first == QNetworkReply::NetworkError::NoError) {
+  if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     QJsonDocument doc = QJsonDocument::fromJson(output);
     QMap<QString, QString> result;
     auto json_headers = doc.object()[QSL("payload")].toObject()[QSL("headers")].toArray();
@@ -658,7 +658,7 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& messages,
                                                                 {},
                                                                 custom_proxy);
 
-    if (res.first == QNetworkReply::NetworkError::NoError) {
+    if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
       // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
       for (const HttpResponse& part : qAsConst(output)) {
         QJsonObject msg_doc = QJsonDocument::fromJson(part.body().toUtf8()).object();

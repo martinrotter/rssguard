@@ -83,8 +83,8 @@ void FeedlyNetwork::untagEntries(const QString& tag_id, const QStringList& msg_c
                                                           {},
                                                           m_service->networkProxy());
 
-    if (result.first != QNetworkReply::NetworkError::NoError) {
-      throw NetworkException(result.first, output);
+    if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+      throw NetworkException(result.m_networkError, output);
     }
   }
   while (i < msg_custom_ids.size());
@@ -123,8 +123,8 @@ void FeedlyNetwork::tagEntries(const QString& tag_id, const QStringList& msg_cus
                                                         {},
                                                         m_service->networkProxy());
 
-  if (result.first != QNetworkReply::NetworkError::NoError) {
-    throw NetworkException(result.first, output);
+  if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result.m_networkError, output);
   }
 }
 
@@ -162,8 +162,8 @@ void FeedlyNetwork::markers(const QString& action, const QStringList& msg_custom
                                                         {},
                                                         m_service->networkProxy());
 
-  if (result.first != QNetworkReply::NetworkError::NoError) {
-    throw NetworkException(result.first, output);
+  if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result.m_networkError, output);
   }
 }
 
@@ -212,8 +212,8 @@ QList<Message> FeedlyNetwork::streamContents(const QString& stream_id) {
                                                           {},
                                                           m_service->networkProxy());
 
-    if (result.first != QNetworkReply::NetworkError::NoError) {
-      throw NetworkException(result.first, output);
+    if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+      throw NetworkException(result.m_networkError, output);
     }
 
     messages += decodeStreamContents(output, continuation);
@@ -328,8 +328,8 @@ RootItem* FeedlyNetwork::collections(bool obtain_icons) {
                                                         {},
                                                         m_service->networkProxy());
 
-  if (result.first != QNetworkReply::NetworkError::NoError) {
-    throw NetworkException(result.first, output);
+  if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result.m_networkError, output);
   }
 
   return decodeCollections(output, obtain_icons, m_service->networkProxy(), timeout);
@@ -424,8 +424,8 @@ QVariantHash FeedlyNetwork::profile(const QNetworkProxy& network_proxy) {
                                                         {},
                                                         network_proxy);
 
-  if (result.first != QNetworkReply::NetworkError::NoError) {
-    throw NetworkException(result.first, output);
+  if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result.m_networkError, output);
   }
 
   return QJsonDocument::fromJson(output).object().toVariantHash();
@@ -453,8 +453,8 @@ QList<RootItem*> FeedlyNetwork::tags() {
                                                         {},
                                                         m_service->networkProxy());
 
-  if (result.first != QNetworkReply::NetworkError::NoError) {
-    throw NetworkException(result.first, output);
+  if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result.m_networkError, output);
   }
 
   QJsonDocument json = QJsonDocument::fromJson(output);

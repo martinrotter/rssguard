@@ -173,7 +173,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                                                   false,
                                                                   {},
                                                                   {},
-                                                                  networkProxy()).first;
+                                                                  networkProxy()).m_networkError;
 
     if (network_result != QNetworkReply::NetworkError::NoError) {
       qWarningNN << LOGSEC_CORE
@@ -360,7 +360,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
         auto* source_feed = qobject_cast<StandardFeed*>(source_item);
         const auto* feed_with_same_url = target_root_node->getItemFromSubTree([source_feed](const RootItem* it) {
           return it->kind() == RootItem::Kind::Feed &&
-                 it->toFeed()->source().toLower() == source_feed->source().toLower();
+          it->toFeed()->source().toLower() == source_feed->source().toLower();
         });
 
         if (feed_with_same_url != nullptr) {

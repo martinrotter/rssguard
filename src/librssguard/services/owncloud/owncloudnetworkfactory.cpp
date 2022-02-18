@@ -92,15 +92,15 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status(const QNetworkProxy& custo
                                                                         {},
                                                                         {},
                                                                         custom_proxy);
-  OwnCloudStatusResponse status_response(network_reply.first, QString::fromUtf8(result_raw));
+  OwnCloudStatusResponse status_response(network_reply.m_networkError, QString::fromUtf8(result_raw));
 
   qDebugNN << LOGSEC_NEXTCLOUD
            << "Raw status data is:" << QUOTE_W_SPACE_DOT(result_raw);
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
                 << "Obtaining status info failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.first);
+                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
   return status_response;
@@ -125,11 +125,11 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories(const
                                                                         {},
                                                                         custom_proxy);
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
                 << "Obtaining of categories failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.first);
-    return OwnCloudGetFeedsCategoriesResponse(network_reply.first);
+                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
+    return OwnCloudGetFeedsCategoriesResponse(network_reply.m_networkError);
   }
 
   QString content_categories = QString::fromUtf8(result_raw);
@@ -147,16 +147,16 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories(const
                                                           {},
                                                           custom_proxy);
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
                 << "Obtaining of feeds failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.first);
-    return OwnCloudGetFeedsCategoriesResponse(network_reply.first);
+                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
+    return OwnCloudGetFeedsCategoriesResponse(network_reply.m_networkError);
   }
 
   QString content_feeds = QString::fromUtf8(result_raw);
 
-  return OwnCloudGetFeedsCategoriesResponse(network_reply.first, content_categories, content_feeds);
+  return OwnCloudGetFeedsCategoriesResponse(network_reply.m_networkError, content_categories, content_feeds);
 }
 
 bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id, const QNetworkProxy& custom_proxy) {
@@ -179,10 +179,10 @@ bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id, const QNetworkPr
                                                                         {},
                                                                         custom_proxy);
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
                 << "Obtaining of categories failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.first);
+                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
     return false;
   }
   else {
@@ -222,10 +222,10 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id, const
                                                                         {},
                                                                         custom_proxy);
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
                 << "Creating of category failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.first);
+                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
     return false;
   }
   else {
@@ -259,10 +259,10 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name,
     {},
     custom_proxy);
 
-  if (network_reply.first != QNetworkReply::NetworkError::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
                 << "Renaming of feed failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.first);
+                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
     return false;
   }
   else {
@@ -296,12 +296,12 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id, con
                                                                         {},
                                                                         {},
                                                                         custom_proxy);
-  OwnCloudGetMessagesResponse msgs_response(network_reply.first, QString::fromUtf8(result_raw));
+  OwnCloudGetMessagesResponse msgs_response(network_reply.m_networkError, QString::fromUtf8(result_raw));
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
                 << "Obtaining messages failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.first);
+                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
   return msgs_response;
@@ -328,13 +328,13 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
                                                                         {},
                                                                         custom_proxy);
 
-  if (network_reply.first != QNetworkReply::NetworkError::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD
                 << "Feeds update failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.first);
+                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
-  return network_reply.first;
+  return network_reply.m_networkError;
 }
 
 NetworkResult OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status,
@@ -514,7 +514,7 @@ RootItem* OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons)
 
         if (NetworkFactory::performNetworkOperation(icon_path, DOWNLOAD_TIMEOUT,
                                                     QByteArray(), icon_data,
-                                                    QNetworkAccessManager::Operation::GetOperation).first ==
+                                                    QNetworkAccessManager::Operation::GetOperation).m_networkError ==
             QNetworkReply::NetworkError::NoError) {
           // Icon downloaded, set it up.
           QPixmap icon_pixmap;

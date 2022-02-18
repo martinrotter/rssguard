@@ -45,7 +45,7 @@ LoginResult NewsBlurNetwork::login(const QNetworkProxy& proxy) {
                                                                 {},
                                                                 proxy);
 
-  if (network_result.first == QNetworkReply::NetworkError::NoError) {
+  if (network_result.m_networkError == QNetworkReply::NetworkError::NoError) {
     QJsonParseError err;
     QJsonDocument doc = QJsonDocument::fromJson(output, &err);
 
@@ -61,7 +61,7 @@ LoginResult NewsBlurNetwork::login(const QNetworkProxy& proxy) {
     return res;
   }
   else {
-    throw NetworkException(network_result.first, output);
+    throw NetworkException(network_result.m_networkError, output);
   }
 }
 

@@ -102,17 +102,17 @@ TtRssLoginResponse TtRssNetworkFactory::login(const QNetworkProxy& proxy) {
                                                                         proxy);
   TtRssLoginResponse login_response(QString::fromUtf8(result_raw));
 
-  if (network_reply.first == QNetworkReply::NoError) {
+  if (network_reply.m_networkError == QNetworkReply::NoError) {
     m_sessionId = login_response.sessionId();
     m_lastLoginTime = QDateTime::currentDateTime();
   }
   else {
     qWarningNN << LOGSEC_TTRSS
                << "Login failed with error:"
-               << QUOTE_W_SPACE_DOT(network_reply.first);
+               << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
-  m_lastError = network_reply.first;
+  m_lastError = network_reply.m_networkError;
   return login_response;
 }
 
@@ -141,7 +141,7 @@ TtRssResponse TtRssNetworkFactory::logout(const QNetworkProxy& proxy) {
                                                                           {},
                                                                           proxy);
 
-    m_lastError = network_reply.first;
+    m_lastError = network_reply.m_networkError;
 
     if (m_lastError == QNetworkReply::NoError) {
       m_sessionId.clear();
@@ -149,7 +149,7 @@ TtRssResponse TtRssNetworkFactory::logout(const QNetworkProxy& proxy) {
     else {
       qWarningNN << LOGSEC_TTRSS
                  << "Logout failed with error:"
-                 << QUOTE_W_SPACE_DOT(network_reply.first);
+                 << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
     }
 
     return TtRssResponse(QString::fromUtf8(result_raw));
@@ -199,13 +199,13 @@ TtRssGetLabelsResponse TtRssNetworkFactory::getLabels(const QNetworkProxy& proxy
     result = TtRssGetLabelsResponse(QString::fromUtf8(result_raw));
   }
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qWarningNN << LOGSEC_TTRSS
                << "getLabels failed with error:"
-               << QUOTE_W_SPACE_DOT(network_reply.first);
+               << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
-  m_lastError = network_reply.first;
+  m_lastError = network_reply.m_networkError;
   return result;
 }
 
@@ -254,13 +254,13 @@ TtRssResponse TtRssNetworkFactory::shareToPublished(const TtRssNoteToPublish& no
     result = TtRssResponse(QString::fromUtf8(result_raw));
   }
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qWarningNN << LOGSEC_TTRSS
                << "shareToPublished failed with error:"
-               << QUOTE_W_SPACE_DOT(network_reply.first);
+               << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
-  m_lastError = network_reply.first;
+  m_lastError = network_reply.m_networkError;
   return result;
 }
 
@@ -305,13 +305,13 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(const QN
     result = TtRssGetFeedsCategoriesResponse(QString::fromUtf8(result_raw));
   }
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qWarningNN << LOGSEC_TTRSS
                << "getFeedTree failed with error:"
-               << QUOTE_W_SPACE_DOT(network_reply.first);
+               << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
-  m_lastError = network_reply.first;
+  m_lastError = network_reply.m_networkError;
   return result;
 }
 
@@ -368,13 +368,13 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
     result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
   }
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qWarningNN << LOGSEC_TTRSS
                << "getHeadlines failed with error:"
-               << QUOTE_W_SPACE_DOT(network_reply.first);
+               << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
-  m_lastError = network_reply.first;
+  m_lastError = network_reply.m_networkError;
   return result;
 }
 
@@ -424,13 +424,13 @@ TtRssResponse TtRssNetworkFactory::setArticleLabel(const QStringList& article_id
     result = TtRssResponse(QString::fromUtf8(result_raw));
   }
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qWarningNN << LOGSEC_TTRSS
                << "setArticleLabel failed with error"
-               << QUOTE_W_SPACE_DOT(network_reply.first);
+               << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
-  m_lastError = network_reply.first;
+  m_lastError = network_reply.m_networkError;
   return result;
 }
 
@@ -482,13 +482,13 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
     result = TtRssUpdateArticleResponse(QString::fromUtf8(result_raw));
   }
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qWarningNN << LOGSEC_TTRSS
                << "updateArticle failed with error"
-               << QUOTE_W_SPACE_DOT(network_reply.first);
+               << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
-  m_lastError = network_reply.first;
+  m_lastError = network_reply.m_networkError;
   return result;
 }
 
@@ -544,13 +544,13 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString&
     result = TtRssSubscribeToFeedResponse(QString::fromUtf8(result_raw));
   }
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qWarningNN << LOGSEC_TTRSS
                << "updateArticle failed with error"
-               << QUOTE_W_SPACE_DOT(network_reply.first);
+               << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
-  m_lastError = network_reply.first;
+  m_lastError = network_reply.m_networkError;
   return result;
 }
 
@@ -596,13 +596,13 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id, c
     result = TtRssUnsubscribeFeedResponse(QString::fromUtf8(result_raw));
   }
 
-  if (network_reply.first != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NoError) {
     qWarningNN << LOGSEC_TTRSS
                << "getFeeds failed with error"
-               << QUOTE_W_SPACE_DOT(network_reply.first);
+               << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
   }
 
-  m_lastError = network_reply.first;
+  m_lastError = network_reply.m_networkError;
   return result;
 }
 

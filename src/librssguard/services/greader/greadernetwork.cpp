@@ -89,8 +89,8 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
                                                                {},
                                                                proxy);
 
-    if (result_edit.first != QNetworkReply::NetworkError::NoError) {
-      return result_edit.first;
+    if (result_edit.m_networkError != QNetworkReply::NetworkError::NoError) {
+      return result_edit.m_networkError;
     }
 
     // Cleanup for next batch.
@@ -121,8 +121,8 @@ QVariantHash GreaderNetwork::userInfo(const QNetworkProxy& proxy) {
                                                      {},
                                                      proxy);
 
-  if (res.first != QNetworkReply::NetworkError::NoError) {
-    throw NetworkException(res.first);
+  if (res.m_networkError != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(res.m_networkError);
   }
 
   return QJsonDocument::fromJson(output).object().toVariantHash();
@@ -447,13 +447,13 @@ QStringList GreaderNetwork::itemIds(const QString& stream_id, bool unread_only, 
                                                                  {},
                                                                  proxy);
 
-    if (result_stream.first != QNetworkReply::NetworkError::NoError) {
+    if (result_stream.m_networkError != QNetworkReply::NetworkError::NoError) {
       qCriticalNN << LOGSEC_GREADER
                   << "Cannot download item IDs for "
                   << QUOTE_NO_SPACE(stream_id)
                   << ", network error:"
-                  << QUOTE_W_SPACE_DOT(result_stream.first);
-      throw NetworkException(result_stream.first);
+                  << QUOTE_W_SPACE_DOT(result_stream.m_networkError);
+      throw NetworkException(result_stream.m_networkError);
     }
     else {
       ids.append(decodeItemIds(output_stream, continuation));
@@ -515,12 +515,12 @@ QList<Message> GreaderNetwork::itemContents(ServiceRoot* root, const QList<QStri
                                                                    {},
                                                                    proxy);
 
-      if (result_stream.first != QNetworkReply::NetworkError::NoError) {
+      if (result_stream.m_networkError != QNetworkReply::NetworkError::NoError) {
         qCriticalNN << LOGSEC_GREADER
                     << "Cannot download messages for "
                     << batch_ids
                     << ", network error:"
-                    << QUOTE_W_SPACE_DOT(result_stream.first);
+                    << QUOTE_W_SPACE_DOT(result_stream.m_networkError);
         error = Feed::Status::NetworkError;
         return {};
       }
@@ -586,12 +586,12 @@ QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& 
                                                                  {},
                                                                  proxy);
 
-    if (result_stream.first != QNetworkReply::NetworkError::NoError) {
+    if (result_stream.m_networkError != QNetworkReply::NetworkError::NoError) {
       qCriticalNN << LOGSEC_GREADER
                   << "Cannot download messages for "
                   << QUOTE_NO_SPACE(stream_id)
                   << ", network error:"
-                  << QUOTE_W_SPACE_DOT(result_stream.first);
+                  << QUOTE_W_SPACE_DOT(result_stream.m_networkError);
       error = Feed::Status::NetworkError;
       return {};
     }
@@ -625,7 +625,7 @@ RootItem* GreaderNetwork::categoriesFeedsLabelsTree(bool obtain_icons, const QNe
                                                                {},
                                                                proxy);
 
-  if (result_labels.first != QNetworkReply::NetworkError::NoError) {
+  if (result_labels.m_networkError != QNetworkReply::NetworkError::NoError) {
     return nullptr;
   }
 
@@ -642,7 +642,7 @@ RootItem* GreaderNetwork::categoriesFeedsLabelsTree(bool obtain_icons, const QNe
                                                               {},
                                                               proxy);
 
-  if (result_feeds.first != QNetworkReply::NetworkError::NoError) {
+  if (result_feeds.m_networkError != QNetworkReply::NetworkError::NoError) {
     return nullptr;
   }
 
@@ -824,7 +824,7 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
                                                                 {},
                                                                 proxy);
 
-  if (network_result.first == QNetworkReply::NetworkError::NoError) {
+  if (network_result.m_networkError == QNetworkReply::NetworkError::NoError) {
     // Save credentials.
     auto lines = QString::fromUtf8(output).replace(QSL("\r"), QString()).split('\n');
 
@@ -873,7 +873,7 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
                                                                {},
                                                                proxy);
 
-      if (network_result.first == QNetworkReply::NetworkError::NoError) {
+      if (network_result.m_networkError == QNetworkReply::NetworkError::NoError) {
         m_authToken = output;
       }
       else {
@@ -882,7 +882,7 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
     }
   }
 
-  return network_result.first;
+  return network_result.m_networkError;
 }
 
 GreaderServiceRoot::Service GreaderNetwork::service() const {

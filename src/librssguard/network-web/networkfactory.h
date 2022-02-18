@@ -7,12 +7,20 @@
 
 #include <QCoreApplication>
 #include <QHttpPart>
+#include <QNetworkCookie>
 #include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QPair>
 #include <QVariant>
 
-typedef QPair<QNetworkReply::NetworkError, QVariant> NetworkResult;
+struct NetworkResult {
+  QNetworkReply::NetworkError m_networkError;
+  QString m_contentType;
+  QList<QNetworkCookie> m_cookies;
+
+  explicit NetworkResult();
+  explicit NetworkResult(QNetworkReply::NetworkError err, const QString& ct, const QList<QNetworkCookie>& cook);
+};
 
 class Downloader;
 

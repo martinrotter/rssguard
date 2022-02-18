@@ -254,10 +254,10 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
                                                                            {},
                                                                            custom_proxy);
 
-    content_type = network_result.second.toString();
+    content_type = network_result.m_contentType;
 
-    if (network_result.first != QNetworkReply::NetworkError::NoError) {
-      throw NetworkException(network_result.first);
+    if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
+      throw NetworkException(network_result.m_networkError);
     }
   }
   else {
