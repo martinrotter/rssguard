@@ -850,7 +850,7 @@ void Application::parseCmdArgumentsFromMyInstance() {
 void Application::onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error) {
   qApp->showGuiMessage(Notification::Event::NodePackageFailedToUpdate,
                        { {},
-                         tr("Packages %1 were NOT updated because of error: %3.").arg(NodeJs::packagesToString(pkgs),
+                         tr("Packages %1 were NOT updated because of error: %2.").arg(NodeJs::packagesToString(pkgs),
                                                                                       error),
                          QSystemTrayIcon::MessageIcon::Critical });
 }

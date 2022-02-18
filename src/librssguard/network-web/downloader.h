@@ -28,6 +28,7 @@ class Downloader : public QObject {
     QNetworkReply::NetworkError lastOutputError() const;
     QList<HttpResponse> lastOutputMultipartData() const;
     QVariant lastContentType() const;
+    QList<QNetworkCookie> lastCookies() const;
 
     void setProxy(const QNetworkProxy& proxy);
 
@@ -98,6 +99,7 @@ class Downloader : public QObject {
 
     QNetworkReply::NetworkError m_lastOutputError;
     QVariant m_lastContentType;
+    QList<QNetworkCookie> m_lastCookies;
 };
 
 #endif // DOWNLOADER_H

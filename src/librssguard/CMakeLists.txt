@@ -305,6 +305,17 @@ set(SOURCES
   services/greader/gui/formeditgreaderaccount.h
   services/greader/gui/greaderaccountdetails.cpp
   services/greader/gui/greaderaccountdetails.h
+  services/newsblur/definitions.h
+  services/newsblur/newsblurentrypoint.cpp
+  services/newsblur/newsblurentrypoint.h
+  services/newsblur/newsblurnetwork.cpp
+  services/newsblur/newsblurnetwork.h
+  services/newsblur/newsblurserviceroot.cpp
+  services/newsblur/newsblurserviceroot.h
+  services/newsblur/gui/formeditnewsbluraccount.cpp
+  services/newsblur/gui/formeditnewsbluraccount.h
+  services/newsblur/gui/newsbluraccountdetails.cpp
+  services/newsblur/gui/newsbluraccountdetails.h
   services/owncloud/definitions.h
   services/owncloud/gui/formeditowncloudaccount.cpp
   services/owncloud/gui/formeditowncloudaccount.h
@@ -447,6 +458,7 @@ set(UI_FILES
   services/gmail/gui/formdownloadattachment.ui
   services/gmail/gui/gmailaccountdetails.ui
   services/greader/gui/greaderaccountdetails.ui
+  services/newsblur/gui/newsbluraccountdetails.ui
   services/owncloud/gui/owncloudaccountdetails.ui
   services/reddit/gui/redditaccountdetails.ui
   services/standard/gui/formstandardimportexport.ui

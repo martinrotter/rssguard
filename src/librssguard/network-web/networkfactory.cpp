@@ -229,11 +229,15 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
   return network_result;
 }
 
-NetworkResult NetworkFactory::performNetworkOperation(const QString& url, int timeout, const QByteArray& input_data,
-                                                      QByteArray& output, QNetworkAccessManager::Operation operation,
+NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
+                                                      int timeout,
+                                                      const QByteArray& input_data,
+                                                      QByteArray& output,
+                                                      QNetworkAccessManager::Operation operation,
                                                       const QList<QPair<QByteArray, QByteArray>>& additional_headers,
                                                       bool protected_contents,
-                                                      const QString& username, const QString& password,
+                                                      const QString& username,
+                                                      const QString& password,
                                                       const QNetworkProxy& custom_proxy) {
   Downloader downloader;
   QEventLoop loop;
