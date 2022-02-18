@@ -57,6 +57,9 @@ LoginResult NewsBlurNetwork::login(const QNetworkProxy& proxy) {
 
     res.decodeBaseResponse(doc);
     res.m_userId = doc.object()["user_id"].toInt();
+    res.m_sessiodId = boolinq::from(network_result.m_cookies).firstOrDefault([](const QNetworkCookie& c) {
+      return c.name() == QSL(NEWSBLUS_AUTH_COOKIE);
+    }).value();
 
     return res;
   }

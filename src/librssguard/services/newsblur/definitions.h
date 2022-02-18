@@ -2,7 +2,8 @@
 #define NEWSBLUR_DEFINITIONS_H
 
 // Misc.
-#define NEWSBLUR_DEFAULT_BATCH_SIZE 500
+#define NEWSBLUR_DEFAULT_BATCH_SIZE   500
+#define NEWSBLUS_AUTH_COOKIE          "newsblur_sessionid"
 
 // URLs.
 #define NEWSBLUR_URL    "https://newsblur.com"

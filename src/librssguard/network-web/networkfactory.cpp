@@ -307,7 +307,8 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   return result;
 }
 
-NetworkResult::NetworkResult() {}
+NetworkResult::NetworkResult()
+  : m_networkError(QNetworkReply::NetworkError::NoError), m_contentType(QString()), m_cookies({}) {}
 
 NetworkResult::NetworkResult(QNetworkReply::NetworkError err, const QString& ct, const QList<QNetworkCookie>& cook)
   : m_networkError(err), m_contentType(ct), m_cookies(cook) {}
