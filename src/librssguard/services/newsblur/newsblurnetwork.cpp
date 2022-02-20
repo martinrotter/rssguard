@@ -203,7 +203,7 @@ void NewsBlurNetwork::setBatchSize(int batch_size) {
 }
 
 void NewsBlurNetwork::clearCredentials() {
-  m_authSid = {};
+  m_authSid = QString{};
   m_userId = {};
 }
 
