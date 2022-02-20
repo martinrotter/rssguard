@@ -23,9 +23,9 @@ class CookieJar : public QNetworkCookieJar {
     static QList<QNetworkCookie> extractCookiesFromUrl(const QString& url);
 
   private:
-    bool insertCookieInternal(const QNetworkCookie& cookie, bool notify_others, bool should_save);
-    bool updateCookieInternal(const QNetworkCookie& cookie, bool notify_others);
-    bool deleteCookieInternal(const QNetworkCookie& cookie, bool notify_others);
+    bool insertCookieInternal(const QNetworkCookie& cookie, bool should_save);
+    bool updateCookieInternal(const QNetworkCookie& cookie);
+    bool deleteCookieInternal(const QNetworkCookie& cookie);
 
     void loadCookies();
     void saveCookies();
