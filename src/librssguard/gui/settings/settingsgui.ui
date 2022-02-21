@@ -410,6 +410,24 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="m_taskBar">
+      <attribute name="title">
+       <string>Task bar</string>
+      </attribute>
+      <widget class="QCheckBox" name="m_displayUnreadMessageCountOnTaskBar">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>321</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Display count of unread messages</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
    </item>
   </layout>

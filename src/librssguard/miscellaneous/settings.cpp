@@ -260,6 +260,11 @@ DVALUE(bool) GUI::ForceDarkFusionDef = false;
 DKEY GUI::UnreadNumbersInTrayIcon = "show_unread_numbers_in_tray_icon";
 DVALUE(bool) GUI::UnreadNumbersInTrayIconDef = true;
 
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+DKEY GUI::UnreadNumbersOnTaskBar = "show_unread_numbers_on_task_bar";
+DVALUE(bool) GUI::UnreadNumbersOnTaskBarDef = true;
+#endif
+
 DKEY GUI::UseTrayIcon = "use_tray_icon";
 DVALUE(bool) GUI::UseTrayIconDef = true;
 

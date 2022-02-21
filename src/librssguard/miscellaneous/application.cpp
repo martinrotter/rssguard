@@ -643,7 +643,9 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_unre
   QVariantMap setProperty;
 
   setProperty.insert("count", qint64(unread_messages));
-  setProperty.insert("count-visible", unread_messages > 0);
+  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
+                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+  setProperty.insert("count-visible", task_bar_count_enabled && unread_messages > 0);
 
   signal << setProperty;
 
