@@ -312,17 +312,24 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         QDateTime dt = TextFactory::parseDateTime(QSqlQueryModel::data(idx,
                                                                        Qt::ItemDataRole::EditRole).value<qint64>()).toLocalTime();
 
-        if (m_newerArticlesRelativeTime > 0 &&
-            dt.daysTo(QDateTime::currentDateTime()) <= m_newerArticlesRelativeTime) {
+        if (dt.date() == QDate::currentDate() && !m_customTimeFormat.isEmpty()) {
+          return dt.toString(m_customTimeFormat);
+        }
+        else if (m_newerArticlesRelativeTime > 0 &&
+                 dt.daysTo(QDateTime::currentDateTime()) <= m_newerArticlesRelativeTime) {
           auto secs_difference = dt.secsTo(QDateTime::currentDateTime());
 
-          if (secs_difference >= 604800) {
+          if (secs_difference >= 2419200) {
             // More than 1 week.
-            return tr("%1 weeks ago").arg(secs_difference / 604800);
+            return tr("%n months ago", nullptr, secs_difference / 2419200);
+          }
+          else if (secs_difference >= 604800) {
+            // More than 1 week.
+            return tr("%n weeks ago", nullptr, secs_difference / 604800);
           }
           else if (secs_difference >= 172800) {
             // At least 2 days.
-            return tr("%1 days ago").arg(secs_difference / 86400);
+            return tr("%n days ago", nullptr, secs_difference / 86400);
           }
           else if (secs_difference >= 86400) {
             // 1 day.
@@ -330,15 +337,15 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           }
           else if (secs_difference >= 3600) {
             // Less than a day.
-            return tr("%1 hours ago").arg(secs_difference / 3600);
+            return tr("%n hours ago", nullptr, secs_difference / 3600);
+          }
+          else if (secs_difference >= 120) {
+            // Less then 1 hour ago.
+            return tr("%n minutes ago", nullptr, secs_difference / 60);
           }
           else {
-            // Less then 1 hour ago.
-            return tr("%1 minutes ago").arg(secs_difference / 60);
+            return tr("just now");
           }
-        }
-        else if (dt.date() == QDate::currentDate() && !m_customTimeFormat.isEmpty()) {
-          return dt.toString(m_customTimeFormat);
         }
         else if (m_customDateFormat.isEmpty()) {
           return QLocale().toString(dt, QLocale::FormatType::ShortFormat);

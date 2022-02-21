@@ -147,11 +147,6 @@ Erreur : %1</translation>
         <translation>La restauration des paramètres n&apos;a pas été initiée. Vérifier que le répertoire de destination est accessible en écriture.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="674"/>
-        <source>AdBlock component is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="776"/>
         <source>Cannot add feed</source>
         <translation>Impossible d&apos;ajouter le flux</translation>
@@ -160,11 +155,6 @@ Erreur : %1</translation>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="777"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>Le flux ne peut pas être ajouté car il n&apos;y a aucun compte actif autorisant l&apos;ajout de flux.</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="853"/>
-        <source>Packages %1 were NOT updated because of error: %3.</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="862"/>
@@ -218,9 +208,19 @@ Découvrez les nouveautés de cette
 version en cliquant sur cette notification.</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="674"/>
+        <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="757"/>
         <source>Already running</source>
         <translation>Déjà en fonctionnement</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="853"/>
+        <source>Packages %1 were NOT updated because of error: %2.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -665,22 +665,22 @@ Filtre de messages actifs : %2
 <context>
     <name>FeedReader</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="332"/>
+        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="334"/>
         <source>Starting auto-download of some feeds&apos; articles</source>
         <translation>Lancement du téléchargement automatique des articles de certains flux</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="333"/>
+        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="335"/>
         <source>I will auto-download new articles for %n feed(s).</source>
         <translation><numerusform>Je vais télécharger automatiquement les nouveaux articles de %n flux.</numerusform><numerusform>Je vais télécharger automatiquement les nouveaux articles de %n flux.</numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="87"/>
+        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="89"/>
         <source>Cannot fetch articles at this point</source>
         <translation>Impossible actuellement d&apos;obtenir des articles</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="88"/>
+        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="90"/>
         <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
         <translation>Vous ne pouvez pas obtenir de nouveaux articles actuellement car une autre opération critique est en cours.</translation>
     </message>
@@ -1591,6 +1591,14 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
         <location filename="../src/librssguard/services/greader/gui/formeditgreaderaccount.cpp" line="16"/>
         <source>Server setup</source>
         <translation>Paramètres du serveur</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditNewsBlurAccount</name>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/formeditnewsbluraccount.cpp" line="15"/>
+        <source>Server setup</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3962,29 +3970,39 @@ Login tokens expiration: %2</source>
         <source>Indication of enclosures presence within the article.</source>
         <translation type="unfinished"/>
     </message>
-    <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="321"/>
-        <source>%1 weeks ago</source>
-        <translation type="unfinished"/>
+    <message numerus="yes">
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
+        <source>%n months ago</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="328"/>
+        <source>%n weeks ago</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="332"/>
+        <source>%n days ago</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="340"/>
+        <source>%n hours ago</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="344"/>
+        <source>%n minutes ago</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="325"/>
-        <source>%1 days ago</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="329"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
         <source>1 day ago</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="333"/>
-        <source>%1 hours ago</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="337"/>
-        <source>%1 minutes ago</source>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="347"/>
+        <source>just now</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -4248,6 +4266,134 @@ Login tokens expiration: %2</source>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
         <translation>Type</translation>
+    </message>
+</context>
+<context>
+    <name>NewsBlurAccountDetails</name>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="17"/>
+        <source>URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="30"/>
+        <source>Download unread articles only</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="39"/>
+        <source>Only download newest X articles per feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="63"/>
+        <source>Authentication</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="69"/>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="82"/>
+        <source>Password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="100"/>
+        <source>&amp;Test setup</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="22"/>
+        <source>Password for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="23"/>
+        <source>Username for your account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="24"/>
+        <source>URL of your server, without any service-specific path</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="26"/>
+        <source>No test done yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="27"/>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="29"/>
+        <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="64"/>
+        <source>You are good to go!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="65"/>
+        <source>Yeah.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="73"/>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="74"/>
+        <source>Network error, have you entered correct username and password?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="78"/>
+        <source>Error: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="79"/>
+        <source>Error, have you entered correct Nextcloud endpoint and password?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="87"/>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="90"/>
+        <source>Username is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="98"/>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="101"/>
+        <source>Password is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="109"/>
+        <source>URL cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="112"/>
+        <source>URL is okay.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4657,37 +4803,48 @@ List of supported readers:</source>
         <source>Published articles</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <location filename="../src/librssguard/services/newsblur/newsblurentrypoint.cpp" line="33"/>
+        <source>Personal news reader bringing people together to talk about the world.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>Readability</name>
     <message>
-        <location filename="../src/librssguard/network-web/readability.cpp" line="32"/>
+        <location filename="../src/librssguard/network-web/readability.cpp" line="33"/>
         <source>Packages for reader mode are installed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/readability.cpp" line="33"/>
+        <location filename="../src/librssguard/network-web/readability.cpp" line="34"/>
         <source>You can now use reader mode!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/readability.cpp" line="53"/>
+        <location filename="../src/librssguard/network-web/readability.cpp" line="54"/>
         <source>Packages for reader mode are NOT installed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/readability.cpp" line="54"/>
+        <location filename="../src/librssguard/network-web/readability.cpp" line="55"/>
         <source>There is error: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/readability.cpp" line="72"/>
+        <location filename="../src/librssguard/network-web/readability.cpp" line="74"/>
+        <location filename="../src/librssguard/network-web/readability.cpp" line="90"/>
         <source>Node.js libraries not installed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/readability.cpp" line="73"/>
+        <location filename="../src/librssguard/network-web/readability.cpp" line="75"/>
         <source>%1 will now install some needed libraries, this will take only a few seconds. You will be notified when installation is complete.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/network-web/readability.cpp" line="91"/>
+        <source>Node.js is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation type="unfinished"/>
     </message>
 </context>
