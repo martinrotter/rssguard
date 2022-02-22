@@ -59,7 +59,7 @@ class FeedDownloader : public QObject {
                        const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                        const QHash<QString, QStringList>& tagged_messages);
     void finalizeUpdate();
-    static void removeDuplicateMessages(QList<Message>& messages);
+    void removeDuplicateMessages(QList<Message>& messages);
 
     bool m_isCacheSynchronizationRunning;
     bool m_stopCacheSynchronization;

@@ -61,10 +61,10 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
     m_feedServices.append(new FeedlyEntryPoint());
     m_feedServices.append(new GmailEntryPoint());
     m_feedServices.append(new GreaderEntryPoint());
-    m_feedServices.append(new NewsBlurEntryPoint());
     m_feedServices.append(new OwnCloudServiceEntryPoint());
 
 #if defined(DEBUG)
+    m_feedServices.append(new NewsBlurEntryPoint());
     m_feedServices.append(new RedditEntryPoint());
 #endif
 

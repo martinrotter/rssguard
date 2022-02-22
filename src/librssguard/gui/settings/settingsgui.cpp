@@ -35,7 +35,7 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
                                      << tr("Author"));
 
 #if !defined(Q_OS_UNIX) || defined(Q_OS_MACOS)
-  m_ui->m_tabUi->setTabVisible(m_ui->m_tabUi->indexOf(m_ui->m_taskBar), false);
+  m_ui->m_tabUi->setTabVisible(m_ui->m_tabUi->indexOf(m_ui->m_tabTaskBar), false);
 #endif
 
   m_ui->m_helpCustomSkinColors->setHelpText(tr("You can override some colors defined by your skin here. "

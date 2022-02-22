@@ -25,6 +25,7 @@
 
 #include <iostream>
 
+#include <QLoggingCategory>
 #include <QProcess>
 #include <QSessionManager>
 #include <QSslSocket>
@@ -795,10 +796,13 @@ void Application::parseCmdArgumentsFromMyInstance() {
                                         QSL("user-data-folder"));
   QCommandLineOption disable_singleinstance({ QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG) },
                                             QSL("Allow running of multiple application instances."));
-  QCommandLineOption disable_debug({ QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG) },
+  QCommandLineOption disable_only_debug({ QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG) },
+                                        QSL("Disable just \"debug\" outputs."));
+  QCommandLineOption disable_debug({ QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG) },
                                    QSL("Completely disable stdout/stderr outputs."));
 
-  m_cmdParser.addOptions({ help, version, log_file, custom_data_folder, disable_singleinstance, disable_debug });
+  m_cmdParser.addOptions({ help, version, log_file, custom_data_folder,
+                           disable_singleinstance, disable_only_debug, disable_debug });
   m_cmdParser.addPositionalArgument(QSL("urls"),
                                     QSL("List of URL addresses pointing to individual online feeds which should be added."),
                                     QSL("[url-1 ... url-n]"));
@@ -816,6 +820,10 @@ void Application::parseCmdArgumentsFromMyInstance() {
 
   if (s_customLogFile.endsWith('\'')) {
     s_customLogFile.chop(1);
+  }
+
+  if (m_cmdParser.isSet(QSL(CLI_NDEBUG_SHORT))) {
+    QLoggingCategory::setFilterRules(QSL("*.debug=false"));
   }
 
   if (!m_cmdParser.value(QSL(CLI_DAT_SHORT)).isEmpty()) {
@@ -843,7 +851,7 @@ void Application::parseCmdArgumentsFromMyInstance() {
     qDebugNN << LOGSEC_CORE << "Explicitly allowing this instance to run.";
   }
 
-  if (m_cmdParser.isSet(QSL(CLI_NDEBUG_SHORT))) {
+  if (m_cmdParser.isSet(QSL(CLI_NSTDOUTERR_SHORT))) {
     s_disableDebug = true;
     qDebugNN << LOGSEC_CORE << "Disabling any stdout/stderr outputs.";
   }

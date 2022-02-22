@@ -103,16 +103,25 @@
 
 #define CLI_VER_SHORT     "v"
 #define CLI_VER_LONG      "version"
+
 #define CLI_HELP_SHORT    "h"
 #define CLI_HELP_LONG     "help"
+
 #define CLI_LOG_SHORT     "l"
 #define CLI_LOG_LONG      "log"
+
 #define CLI_DAT_SHORT     "d"
 #define CLI_DAT_LONG      "data"
+
 #define CLI_SIN_SHORT     "s"
 #define CLI_SIN_LONG      "no-single-instance"
-#define CLI_NDEBUG_SHORT  "n"
+
+#define CLI_NSTDOUTERR_SHORT  "n"
+#define CLI_NSTDOUTERR_LONG   "no-standard-output"
+
+#define CLI_NDEBUG_SHORT  "g"
 #define CLI_NDEBUG_LONG   "no-debug-output"
+
 #define CLI_QUIT_INSTANCE "q"
 #define CLI_IS_RUNNING    "a"
 

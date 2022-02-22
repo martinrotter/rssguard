@@ -422,45 +422,57 @@ bool FeedDownloader::isCacheSynchronizationRunning() const {
 
 void FeedDownloader::removeDuplicateMessages(QList<Message>& messages) {
   auto idx = 0;
+
   while (idx < messages.size()) {
     Message& message = messages[idx];
     std::function<bool(const Message& a, const Message& b)> is_duplicate;
+
     if (message.m_id > 0) {
       is_duplicate = [](const Message& a, const Message& b) {
-        return a.m_id == b.m_id;
-      };
+                       return a.m_id == b.m_id;
+                     };
     }
     else if (message.m_customId.isEmpty()) {
       is_duplicate = [](const Message& a, const Message& b) {
-        return std::tie(a.m_title, a.m_url, a.m_author) == std::tie(b.m_title, b.m_url, b.m_author);
-      };
+                       return std::tie(a.m_title, a.m_url, a.m_author) == std::tie(b.m_title, b.m_url, b.m_author);
+                     };
     }
     else {
       is_duplicate = [](const Message& a, const Message& b) {
-        return a.m_customId == b.m_customId;
-      };
+                       return a.m_customId == b.m_customId;
+                     };
     }
+
     auto next_idx = idx + 1; // Index of next message to check after removing all duplicates.
     auto last_idx = idx; // Index of the last kept duplicate.
+
     idx = next_idx;
 
     // Remove all duplicate messages, and keep the message with the latest created date.
     // If the created date is identical for all duplicate messages then keep the last message in the list.
     while (idx < messages.size()) {
       auto& last_duplicate = messages[last_idx];
+
       if (is_duplicate(last_duplicate, messages[idx])) {
         if (last_duplicate.m_created <= messages[idx].m_created) {
           // The last seen message was created earlier or at the same date -- keep the current, and remove the last.
+          qWarningNN << LOGSEC_CORE << "Removing article" << QUOTE_W_SPACE(last_duplicate.m_title)
+                     << "before saving articles to DB, because it is duplicate.";
+
           messages.removeAt(last_idx);
           if (last_idx + 1 == next_idx) {
             // The `next_idx` was pointing to the message following the duplicate. With that duplicate removed the
             // next index needs to be adjusted.
             next_idx = last_idx;
           }
+
           last_idx = idx;
           ++idx;
         }
         else {
+          qWarningNN << LOGSEC_CORE << "Removing article" << QUOTE_W_SPACE(messages[idx].m_title)
+                     << "before saving articles to DB, because it is duplicate.";
+
           messages.removeAt(idx);
         }
       }
