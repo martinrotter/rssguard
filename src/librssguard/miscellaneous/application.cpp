@@ -797,7 +797,7 @@ void Application::parseCmdArgumentsFromMyInstance() {
   QCommandLineOption disable_singleinstance({ QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG) },
                                             QSL("Allow running of multiple application instances."));
   QCommandLineOption disable_only_debug({ QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG) },
-                                        QSL("Disable just \"debug\" outputs."));
+                                        QSL("Disable just \"debug\" output."));
   QCommandLineOption disable_debug({ QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG) },
                                    QSL("Completely disable stdout/stderr outputs."));
 
