@@ -267,6 +267,11 @@ namespace GUI {
   KEY UnreadNumbersInTrayIcon;
   VALUE(bool) UnreadNumbersInTrayIconDef;
 
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+  KEY UnreadNumbersOnTaskBar;
+  VALUE(bool) UnreadNumbersOnTaskBarDef;
+#endif
+
   KEY TabCloseMiddleClick;
   VALUE(bool) TabCloseMiddleClickDef;
 

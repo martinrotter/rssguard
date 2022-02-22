@@ -34,6 +34,10 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
                                      << /*: Version column of skin list. */ tr("Version")
                                      << tr("Author"));
 
+#if !defined(Q_OS_UNIX) || defined(Q_OS_MACOS)
+  m_ui->m_tabUi->setTabVisible(m_ui->m_tabUi->indexOf(m_ui->m_taskBar), false);
+#endif
+
   m_ui->m_helpCustomSkinColors->setHelpText(tr("You can override some colors defined by your skin here. "
                                                "Some colors are used dynamically throughout the application."), false);
 
@@ -73,6 +77,7 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
           &QStackedWidget::setCurrentIndex);
   connect(m_ui->m_gbCustomSkinColors, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_spinToolbarIconSize, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_displayUnreadMessageCountOnTaskBar, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
 
   connect(m_ui->m_spinToolbarIconSize, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
     if (value <= 0) {
@@ -145,6 +150,10 @@ void SettingsGui::loadSettings() {
 
   m_ui->m_checkMonochromeIcons->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool());
   m_ui->m_checkCountUnreadMessages->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool());
+
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+  m_ui->m_displayUnreadMessageCountOnTaskBar->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool());
+#endif
 
   // Mark active theme.
   if (current_theme == QL1S(APP_NO_THEME)) {
@@ -325,6 +334,10 @@ void SettingsGui::saveSettings() {
   settings()->setValue(GROUP(GUI), GUI::HideMainWindowWhenMinimized, m_ui->m_checkHideWhenMinimized->isChecked());
 
   settings()->setValue(GROUP(GUI), GUI::ForceDarkFusion, m_ui->m_checkForceDarkFusion->isChecked());
+
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+  settings()->setValue(GROUP(GUI), GUI::UnreadNumbersOnTaskBar, m_ui->m_displayUnreadMessageCountOnTaskBar->isChecked());
+#endif
 
   // Make sure that number of unread messages is shown in tray icon as requested.
   qApp->feedReader()->feedsModel()->notifyWithCounts();
