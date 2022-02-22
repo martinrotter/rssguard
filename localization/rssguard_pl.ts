@@ -4271,7 +4271,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="17"/>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL </translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="30"/>
@@ -4286,22 +4286,22 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="63"/>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Uwierzytelnianie</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="69"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nazwa użytkownika</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="82"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Hasło</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="100"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testuj konfigurację</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="22"/>
@@ -4321,12 +4321,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="26"/>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Nie wykonano jeszcze testu.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="27"/>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Tutaj będą widoczne wyniki połączenia testowego.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="29"/>
@@ -4346,7 +4346,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="73"/>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Błąd sieci: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="74"/>
@@ -4356,7 +4356,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="78"/>
         <source>Error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Błąd: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="79"/>
@@ -4366,32 +4366,32 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="87"/>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Nazwa użytkownika nie może być pusta.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="90"/>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Nazwa użytkownika jest w porządku.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="98"/>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Hasło nie może być puste.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="101"/>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Hasło jest w porządku.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="109"/>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL nie może być pusty.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="112"/>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL jest ok.</translation>
     </message>
 </context>
 <context>

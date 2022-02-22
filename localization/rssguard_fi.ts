@@ -4268,32 +4268,32 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="17"/>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="30"/>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain lukemattomat artikkelit</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="39"/>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Lataa vain X artikkelia per syöte</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="63"/>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Tunnistautuminen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="69"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="82"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Salasana</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="100"/>
@@ -4308,7 +4308,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="23"/>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Tilisi käyttäjätunnus</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="24"/>
@@ -4318,12 +4318,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="26"/>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Testiä ei ole vielä tehty.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="27"/>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Tässä näytetään yhteystestin tulokset.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="29"/>
@@ -4343,7 +4343,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="73"/>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Verkkovirhe: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="74"/>
@@ -4353,7 +4353,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="78"/>
         <source>Error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Virhe: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="79"/>
@@ -4363,17 +4363,17 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="87"/>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus ei voi olla tyhjä.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="90"/>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Käyttäjätunnus on OK.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="98"/>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Salasana ei voi olla tyhjä.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="101"/>
@@ -4383,7 +4383,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="109"/>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL-osoite ei voi olla tyhjä.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="112"/>

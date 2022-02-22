@@ -4274,7 +4274,7 @@ Waktu berakhir log masuk: %2</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="17"/>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="30"/>
@@ -4289,22 +4289,22 @@ Waktu berakhir log masuk: %2</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="63"/>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Autentikasi</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="69"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="82"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Kata sandi</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="100"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Tes setelan</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="22"/>
@@ -4324,12 +4324,12 @@ Waktu berakhir log masuk: %2</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="26"/>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Belum ada tes yang dilakukan.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="27"/>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="29"/>
@@ -4349,7 +4349,7 @@ Waktu berakhir log masuk: %2</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="73"/>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Eror jaringan: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="74"/>
@@ -4359,7 +4359,7 @@ Waktu berakhir log masuk: %2</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="78"/>
         <source>Error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Eror: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="79"/>
@@ -4369,32 +4369,32 @@ Waktu berakhir log masuk: %2</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="87"/>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna tidak dapat kosong.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="90"/>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Nama pengguna ok.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="98"/>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kata sandi tidak dapat kosong.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="101"/>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Kata sandi ok.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="109"/>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL tidak dapat kosong.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="112"/>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL ok.</translation>
     </message>
 </context>
 <context>

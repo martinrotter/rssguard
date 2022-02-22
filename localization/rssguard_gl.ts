@@ -4278,7 +4278,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="63"/>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Autenticación</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="69"/>
@@ -4293,7 +4293,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="100"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Probar a configuración</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="22"/>
@@ -4313,12 +4313,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="26"/>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Aínda non se comprobou.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="27"/>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Aquí móstranse os resultados da conexión de proba.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="29"/>
@@ -4338,7 +4338,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="73"/>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Fallo de rede: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="74"/>

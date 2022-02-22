@@ -210,7 +210,7 @@ versão, clicando nesta notificação popup.</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="674"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-        <translation type="unfinished"/>
+        <translation>O  AdBlock não está configurado corretamente. Acesse &quot;Configurações&quot; -&gt; &quot;Node.js&quot; e veja se o Node.js está configurado corretamente.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="757"/>
@@ -220,7 +220,7 @@ versão, clicando nesta notificação popup.</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="853"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
-        <translation type="unfinished"/>
+        <translation>Os pacotes %1 NÃO foram atualizados devido ao erro: %2.</translation>
     </message>
 </context>
 <context>
@@ -1598,7 +1598,7 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/formeditnewsbluraccount.cpp" line="15"/>
         <source>Server setup</source>
-        <translation type="unfinished"/>
+        <translation>Configurar servidor</translation>
     </message>
 </context>
 <context>
@@ -3990,27 +3990,27 @@ Expiração dos tokens de login: %2</translation>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
         <source>%n months ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n mês atrás</numerusform><numerusform>%n meses atrás</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="328"/>
         <source>%n weeks ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n semana atrás</numerusform><numerusform>%n semanas atrás</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="332"/>
         <source>%n days ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n dia atrás</numerusform><numerusform>%n dias atrás</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="340"/>
         <source>%n hours ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n hora atrás</numerusform><numerusform>%n horas atrás</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="344"/>
         <source>%n minutes ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n minuto atrás</numerusform><numerusform>%n minutos atrás</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
@@ -4020,7 +4020,7 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="347"/>
         <source>just now</source>
-        <translation type="unfinished"/>
+        <translation>agora mesmo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="148"/>
@@ -4290,127 +4290,127 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="17"/>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="30"/>
         <source>Download unread articles only</source>
-        <translation type="unfinished"/>
+        <translation>Baixar somente artigos não lidos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="39"/>
         <source>Only download newest X articles per feed</source>
-        <translation type="unfinished"/>
+        <translation>Somente baixar os X artigos mais recentes por feed</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="63"/>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Autenticação</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="69"/>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Usuário</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="82"/>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Senha</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="100"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testar configuração</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="22"/>
         <source>Password for your account</source>
-        <translation type="unfinished"/>
+        <translation>Senha para a sua conta</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="23"/>
         <source>Username for your account</source>
-        <translation type="unfinished"/>
+        <translation>Nome de usuário para a sua conta</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="24"/>
         <source>URL of your server, without any service-specific path</source>
-        <translation type="unfinished"/>
+        <translation>URL do seu servidor, sem nenhum caminho específico de serviço</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="26"/>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Nenhum teste feito ainda.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="27"/>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Aqui são exibidos os resultados do teste de conexão.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="29"/>
         <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
-        <translation type="unfinished"/>
+        <translation>Alguns feeds podem conter dezenas de milhares de artigos e fazer o download de todos eles pode demorar muito, então às vezes é bom fazer o download apenas de uma determinada quantidade das mensagens mais recentes.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="64"/>
         <source>You are good to go!</source>
-        <translation type="unfinished"/>
+        <translation>Tudo pronto para continuar!</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="65"/>
         <source>Yeah.</source>
-        <translation type="unfinished"/>
+        <translation>Legal.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="73"/>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Erro de rede: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="74"/>
         <source>Network error, have you entered correct username and password?</source>
-        <translation type="unfinished"/>
+        <translation>Erro de rede, você inseriu o nome de usuário e senha correto?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="78"/>
         <source>Error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Erro: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="79"/>
         <source>Error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Erro de rede, você inseriu o endpoint Nexcloud e senha correta?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="87"/>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>O nome de usuário não pode estar vazio.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="90"/>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>O nome de usuário está correto.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="98"/>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>A senha não pode estar vazia.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="101"/>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>A senha está correta.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="109"/>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>O URL não pode estar vazio.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="112"/>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>O URL está correto.</translation>
     </message>
 </context>
 <context>
@@ -4835,7 +4835,7 @@ Lista de leitores suportados:</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/newsblurentrypoint.cpp" line="33"/>
         <source>Personal news reader bringing people together to talk about the world.</source>
-        <translation type="unfinished"/>
+        <translation>Leitor de notícias pessoal reunindo pessoas para falar sobre o mundo.</translation>
     </message>
 </context>
 <context>
@@ -4874,7 +4874,7 @@ Lista de leitores suportados:</translation>
     <message>
         <location filename="../src/librssguard/network-web/readability.cpp" line="91"/>
         <source>Node.js is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-        <translation type="unfinished"/>
+        <translation>O  Node.js não está configurado corretamente. Acesse &quot;Configurações&quot; -&gt; &quot;Node.js&quot; e veja se o Node.js está configurado corretamente.</translation>
     </message>
 </context>
 <context>
