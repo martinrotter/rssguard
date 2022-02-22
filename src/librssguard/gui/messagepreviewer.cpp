@@ -107,10 +107,9 @@ void MessagePreviewer::hideToolbar() {
   m_toolBar->setVisible(false);
 }
 
-void MessagePreviewer::loadUrl(const QString &url) {
+void MessagePreviewer::loadUrl(const QString& url) {
 #if defined(USE_WEBENGINE)
   m_txtMessage->loadUrl(url);
-
 #else
   m_txtMessage->loadUrl(url);
 #endif
@@ -255,7 +254,9 @@ void MessagePreviewer::updateLabels(bool only_clear) {
       btn_label->setIcon(Label::generateIcon(label->color()));
       btn_label->setAutoRaise(false);
       btn_label->setText(QSL(" ") + label->title());
-      btn_label->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
+      btn_label->setToolButtonStyle(Qt::ToolButtonStyle(qApp->settings()->value(GROUP(GUI),
+                                                                                SETTING(GUI::ToolbarStyle)).toInt()));
+      btn_label->setToolTip(label->title());
       btn_label->setChecked(DatabaseQueries::isLabelAssignedToMessage(database, label, m_message));
 
       QAction* act_label = m_toolBar->addWidget(btn_label);

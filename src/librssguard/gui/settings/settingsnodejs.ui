@@ -41,7 +41,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>&amp;Browse...</string>
+        <string>&amp;Browse</string>
        </property>
       </widget>
      </item>
@@ -71,7 +71,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>&amp;Browse...</string>
+        <string>&amp;Browse</string>
        </property>
       </widget>
      </item>
@@ -101,7 +101,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>&amp;Browse...</string>
+        <string>&amp;Browse</string>
        </property>
       </widget>
      </item>
