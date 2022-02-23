@@ -113,7 +113,6 @@ bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool should_s
 #if defined(USE_WEBENGINE)
     m_webEngineCookies->setCookie(cookie);
 #else
-    Q_UNUSED(notify_others)
     if (should_save) {
       saveCookies();
     }
@@ -131,7 +130,6 @@ bool CookieJar::updateCookieInternal(const QNetworkCookie& cookie) {
 #if defined(USE_WEBENGINE)
     m_webEngineCookies->setCookie(cookie);
 #else
-    Q_UNUSED(notify_others)
     saveCookies();
 #endif
   }
@@ -146,7 +144,6 @@ bool CookieJar::deleteCookieInternal(const QNetworkCookie& cookie) {
 #if defined(USE_WEBENGINE)
     m_webEngineCookies->deleteCookie(cookie);
 #else
-    Q_UNUSED(notify_others)
     saveCookies();
 #endif
   }
