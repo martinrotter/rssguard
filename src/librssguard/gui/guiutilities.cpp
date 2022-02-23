@@ -26,12 +26,16 @@ void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning, bool set_mar
 }
 
 void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, const QString& title) {
-#if defined(Q_OS_WIN)
-  widget.setWindowFlags(Qt::WindowType::Dialog | Qt::WindowType::WindowTitleHint | Qt::WindowType::WindowMaximizeButtonHint);
+
+  widget.setWindowFlags(
+#if defined(Q_OS_LINUX)
+    Qt::WindowType::Window |
 #else
-  widget.setWindowFlags(Qt::WindowType::Dialog | Qt::WindowType::CustomizeWindowHint |
-                        Qt::WindowType::WindowCloseButtonHint | Qt::WindowType::WindowMaximizeButtonHint);
+    Qt::WindowType::Dialog |
 #endif
+    Qt::WindowType::WindowTitleHint |
+    Qt::WindowType::WindowMaximizeButtonHint |
+    Qt::WindowType::WindowCloseButtonHint);
 
   widget.setWindowIcon(icon);
 
