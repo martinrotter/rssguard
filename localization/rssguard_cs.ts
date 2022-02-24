@@ -122,82 +122,82 @@ Chyba: %1</translation>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="758"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="919"/>
         <source>Application is already running.</source>
         <translation>Aplikace již běží</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="422"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="468"/>
         <source>Output directory is not writable.</source>
         <translation>Nelze psát do cílové složky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="429"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="475"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation>Soubor nastavení nebyl zkopírován do cílového adresáře.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="444"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="490"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Obnovení databáze nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="450"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="496"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Obnovení nastavení nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="776"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="937"/>
         <source>Cannot add feed</source>
         <translation>Nelze přidat kanál</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="777"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="938"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>Kanál nemůže být přidán, protože nemáte aktivovaný žádný účet který umí přidávat kanály.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="862"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1030"/>
         <source>Packages %1 were updated.</source>
         <translation>Balíčky %1 byly aktualizovány.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="687"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="838"/>
         <source>Unread articles fetched</source>
         <translation>Staženy nepřečtené zprávy</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="236"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="280"/>
         <source>Go to changelog</source>
         <translation>Zobrazit seznam změn</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="673"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="796"/>
         <source>AdBlock needs to be configured</source>
         <translation>Je třeba nastavit AdBlock</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="217"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="261"/>
         <source>RSS Guard has Discord server!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="218"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="262"/>
         <source>You can visit it now! Click me!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="221"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="265"/>
         <source>Go to Discord!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="231"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="275"/>
         <source>Welcome</source>
         <translation>Vítejte</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="232"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="276"/>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -208,17 +208,17 @@ Prosím, zkontrolujte novinky kliknutím
 na tuto bublinu.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="674"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="797"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="757"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="918"/>
         <source>Already running</source>
         <translation>Již běží</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="853"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1021"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation type="unfinished"/>
     </message>
@@ -2889,22 +2889,17 @@ Musíte restartovat manuálně.</translation>
         <translation>Zadejte URL.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="20"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="17"/>
         <source>Title</source>
         <translation>Nadpis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="59"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="56"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="69"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="66"/>
         <source>Content</source>
         <translation>Poznámka</translation>
     </message>
@@ -3654,14 +3649,6 @@ Tokeny vyprší: %2</translation>
     </message>
 </context>
 <context>
-    <name>MessageBox</name>
-    <message>
-        <location filename="../src/librssguard/gui/messagebox.cpp" line="84"/>
-        <source>Do not show this dialog again.</source>
-        <translation>Znovu toto upozornění nezobrazovat.</translation>
-    </message>
-</context>
-<context>
     <name>MessageBrowser</name>
     <message>
         <location filename="../src/librssguard/gui/messagebrowser.cpp" line="169"/>
@@ -4102,11 +4089,19 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/messagesview.cpp" line="345"/>
         <source>No external tools activated</source>
-        <translation type="unfinished"/>
+        <translation>Nemáte žádné externí nástroje</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/messagesview.cpp" line="310"/>
         <source>Context menu for articles</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>MsgBox</name>
+    <message>
+        <location filename="../src/librssguard/gui/messagebox.cpp" line="84"/>
+        <source>Do not show this dialog again.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -4270,12 +4265,12 @@ Tokeny vyprší: %2</translation>
         <translation>Vaše heslo pro autentifikaci</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="125"/>
+        <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="12"/>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation>Tato nastavení se projeví pouze na nově vytvořených spojeních.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="156"/>
+        <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
         <translation>Typ</translation>
@@ -4466,12 +4461,12 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/network-web/oauth2service.cpp" line="49"/>
         <source>You can close this window now. Go back to %1.</source>
-        <translation type="unfinished"/>
+        <translation>Toto okno můžete nyní zavřít a můžete přejít zpět do aplikace %1.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/oauth2service.cpp" line="345"/>
         <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
-        <translation type="unfinished"/>
+        <translation>Nepodařilo se spustit OAuth naslouchač. Možná nemáte dostatečná systémová práva.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/oauth2service.cpp" line="89"/>
@@ -4632,7 +4627,7 @@ Tokeny vyprší: %2</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="78"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="116"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="31"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="82"/>
         <source>LANG_ABBREV</source>
@@ -4640,7 +4635,7 @@ Tokeny vyprší: %2</translation>
         <translation>cs</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="81"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="119"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="83"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
@@ -4652,7 +4647,7 @@ Tokeny vyprší: %2</translation>
         <translation>rotter.martinos@gmail.com</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/feeddownloader.cpp" line="431"/>
+        <location filename="../src/librssguard/core/feeddownloader.cpp" line="498"/>
         <source>
 
 + %n other feeds.</source>
@@ -5190,6 +5185,11 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="244"/>
+        <source>Enter (optional) parameters:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="38"/>
         <source>Executable</source>
         <translation>Spouštěč</translation>
@@ -5333,11 +5333,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="22"/>
         <source>Network proxy</source>
         <translation>Síťová proxy</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="244"/>
-        <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -5770,65 +5765,65 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>Autor</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="201"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="214"/>
         <source>You cannot change style because it was explicitly selected in your OS settings.
 Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</source>
         <translation>Style nelze změnit, protože byl explicitně nastaven v nastavení vašeho OS.
 Možná že styl je nastaven přes proměnnou prostředí &apos;QT_STYLE_OVERRIDE&apos;?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="226"/>
         <source>Icon only</source>
         <translation>Pouze ikony</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="214"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="227"/>
         <source>Text only</source>
         <translation>Pouze texty</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="215"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="228"/>
         <source>Text beside icon</source>
         <translation>Texty vedle ikon</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="216"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
         <source>Text under icon</source>
         <translation>Texty pod ikonami</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="217"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="230"/>
         <source>Follow OS style</source>
         <translation>Podle nastavení systému</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="136"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="145"/>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
         <translation>systémové téma ikon</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="138"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="147"/>
         <source>no icon theme</source>
         <translation>žádné téma ikon</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="117"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="126"/>
         <source>(Your OS does not support tray icons at the moment.)</source>
         <translation>(Váš OS nepodporuje tray ikonu.)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="37"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="44"/>
         <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
         <translation>Některé barvy skinu lze zde přenastavit.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="240"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="253"/>
         <source>Fetch color from activated skin</source>
         <translation>Načíst barvu z aktivního skinu.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="79"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="88"/>
         <source> = default icon size</source>
         <translation> = výchozí velikost ikony</translation>
     </message>
@@ -5884,6 +5879,7 @@ Možná že styl je nastaven přes proměnnou prostředí &apos;QT_STYLE_OVERRID
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="166"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
         <source>Display count of unread messages</source>
         <translation>Zobrazit počet nepřečtených zpráv</translation>
     </message>
@@ -5899,66 +5895,71 @@ Možná že styl je nastaven přes proměnnou prostředí &apos;QT_STYLE_OVERRID
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="204"/>
+        <source>Task bar</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="218"/>
         <source>Tabs</source>
         <translation>Panely</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="216"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="230"/>
         <source>Close tabs with</source>
         <translation>Zavírat panely pomocí</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="222"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
         <source>Middle mouse button single-click</source>
         <translation>Prostředního tlačítka myši</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="229"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="243"/>
         <source>Left mouse button double-click</source>
         <translation>Dvojitý klik levého tlačítka myši</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="239"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="253"/>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
         <translation>Otevírat nové panely poklepáním na panelový pruh</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="246"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="260"/>
         <source>Hide tab bar if just one tab is visible</source>
         <translation>Skrýt přepínač tabů, je-li viditelný pouze jeden tab</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="267"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="281"/>
         <source>Toolbars</source>
         <translation>Nástrojové lišty</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="280"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="294"/>
         <source>Toolbar for feeds list</source>
         <translation>Lišta seznamu kanálů</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="285"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="299"/>
         <source>Toolbar for articles list</source>
         <translation>Lišta seznamu zpráv</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="290"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="304"/>
         <source>Statusbar</source>
         <translation>Stavový pruh</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="368"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="382"/>
         <source>Button style</source>
         <translation>Styl tlačítek</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="378"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="392"/>
         <source>Toolbar editor</source>
         <translation>Editor nástrojové lišty</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="404"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="418"/>
         <source>Icon size</source>
         <translation>Velikost ikon</translation>
     </message>
@@ -6048,8 +6049,8 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="44"/>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="74"/>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="104"/>
-        <source>&amp;Browse...</source>
-        <translation>&amp;Procházet</translation>
+        <source>&amp;Browse</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="53"/>
@@ -7301,37 +7302,37 @@ Poslední čas přihlášení: %4</translation>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="321"/>
         <source>JS can activate windows</source>
-        <translation type="unfinished"/>
+        <translation>JS může aktivovat okna</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="322"/>
         <source>Show scrollbars</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit posuvníky</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="326"/>
         <source>Media playback with gestures</source>
-        <translation type="unfinished"/>
+        <translation>Přehrávání médií přes gesta</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="327"/>
         <source>WebRTC uses only public interfaces</source>
-        <translation type="unfinished"/>
+        <translation>WebRTC smí používat pouze veřejná rozhraní</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="328"/>
         <source>JS can paste from clipboard</source>
-        <translation type="unfinished"/>
+        <translation>JS může vkládat ze schránky</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="332"/>
         <source>DNS prefetch enabled</source>
-        <translation type="unfinished"/>
+        <translation>DNS přednačítání povoleno</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="336"/>
         <source>PDF viewer enabled</source>
-        <translation type="unfinished"/>
+        <translation>PDF prohlížeč povolen</translation>
     </message>
 </context>
 <context>
@@ -7364,7 +7365,7 @@ Poslední čas přihlášení: %4</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewer.cpp" line="247"/>
         <source>No external tools activated</source>
-        <translation type="unfinished"/>
+        <translation>Nemáte žádné externí nástroje</translation>
     </message>
 </context>
 </TS>

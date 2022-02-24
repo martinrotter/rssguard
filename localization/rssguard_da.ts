@@ -122,82 +122,82 @@ Fejl: %1</translation>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="758"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="919"/>
         <source>Application is already running.</source>
         <translation>Programmet kører allerede</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="422"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="468"/>
         <source>Output directory is not writable.</source>
         <translation>Målbiblioteket er ikke skrivbart</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="429"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="475"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation>Indstillinger kunne ikke kopieres til uddatabibliotek.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="444"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="490"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Gendannelse af database ikke påbegyndt. Sørg for at målbiblioteket er skrivbart.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="450"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="496"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Gendannelse af indstillinger ikke påbegyndt. Sørg for at målbiblioteket er skrivbart.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="776"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="937"/>
         <source>Cannot add feed</source>
         <translation>Kan ikke tilføje nyhedskilde</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="777"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="938"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>Nyhedskilde kan ikke tilføjes, da der ikke er nogen aktiv konto at tilføje den til.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="862"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1030"/>
         <source>Packages %1 were updated.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="687"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="838"/>
         <source>Unread articles fetched</source>
         <translation>Ulæste artikler hentet</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="236"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="280"/>
         <source>Go to changelog</source>
         <translation>Gå til ændringslog</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="673"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="796"/>
         <source>AdBlock needs to be configured</source>
         <translation>AdBlock skal indstilles</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="217"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="261"/>
         <source>RSS Guard has Discord server!</source>
         <translation>RSS Guard har en Discord-server!</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="218"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="262"/>
         <source>You can visit it now! Click me!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="221"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="265"/>
         <source>Go to Discord!</source>
         <translation>Gå til Discord!</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="231"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="275"/>
         <source>Welcome</source>
         <translation>Velkommen</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="232"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="276"/>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -209,17 +209,17 @@ version ved at klikke på denne pop up
 påmindelse.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="674"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="797"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="757"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="918"/>
         <source>Already running</source>
         <translation>Kører allerede</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="853"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1021"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation type="unfinished"/>
     </message>
@@ -2884,22 +2884,17 @@ Du skal genstarte programmet manuelt.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="14"/>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="20"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="17"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="59"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="56"/>
         <source>URL</source>
         <translation>Webadresse</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="69"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="66"/>
         <source>Content</source>
         <translation type="unfinished"/>
     </message>
@@ -3646,14 +3641,6 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
-    <name>MessageBox</name>
-    <message>
-        <location filename="../src/librssguard/gui/messagebox.cpp" line="84"/>
-        <source>Do not show this dialog again.</source>
-        <translation>Vis ikke denne dialog igen.</translation>
-    </message>
-</context>
-<context>
     <name>MessageBrowser</name>
     <message>
         <location filename="../src/librssguard/gui/messagebrowser.cpp" line="169"/>
@@ -4103,6 +4090,14 @@ Login tokens expiration: %2</source>
     </message>
 </context>
 <context>
+    <name>MsgBox</name>
+    <message>
+        <location filename="../src/librssguard/gui/messagebox.cpp" line="84"/>
+        <source>Do not show this dialog again.</source>
+        <translation>Vis ikke denne dialog igen.</translation>
+    </message>
+</context>
+<context>
     <name>NetworkFactory</name>
     <message>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="64"/>
@@ -4262,12 +4257,12 @@ Login tokens expiration: %2</source>
         <translation>Din adgangskode til godkendelse af proxyserveren</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="125"/>
+        <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="12"/>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="156"/>
+        <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
         <translation>Type</translation>
@@ -4624,7 +4619,7 @@ Login tokens expiration: %2</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="78"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="116"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="31"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="82"/>
         <source>LANG_ABBREV</source>
@@ -4632,7 +4627,7 @@ Login tokens expiration: %2</source>
         <translation>da</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="81"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="119"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="83"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
@@ -4644,7 +4639,7 @@ Login tokens expiration: %2</source>
         <translation>rotter.martinos@gmail.com</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/feeddownloader.cpp" line="431"/>
+        <location filename="../src/librssguard/core/feeddownloader.cpp" line="498"/>
         <source>
 
 + %n other feeds.</source>
@@ -5169,6 +5164,11 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="244"/>
+        <source>Enter (optional) parameters:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="38"/>
         <source>Executable</source>
         <translation>Kørbar</translation>
@@ -5310,11 +5310,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="22"/>
         <source>Network proxy</source>
         <translation>Netværksproxy</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="244"/>
-        <source>Enter (optional) parameters separated by &quot;%1&quot;:</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -5737,64 +5732,64 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Udvikler</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="201"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="214"/>
         <source>You cannot change style because it was explicitly selected in your OS settings.
 Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="226"/>
         <source>Icon only</source>
         <translation>Kun ikoner</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="214"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="227"/>
         <source>Text only</source>
         <translation>Kun tekst</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="215"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="228"/>
         <source>Text beside icon</source>
         <translation>Tekst ved siden af ikon</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="216"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
         <source>Text under icon</source>
         <translation>Tekst under ikon</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="217"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="230"/>
         <source>Follow OS style</source>
         <translation>Brug OS-stil</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="136"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="145"/>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="138"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="147"/>
         <source>no icon theme</source>
         <translation>intet ikon-tema</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="117"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="126"/>
         <source>(Your OS does not support tray icons at the moment.)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="37"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="44"/>
         <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="240"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="253"/>
         <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="79"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="88"/>
         <source> = default icon size</source>
         <translation type="unfinished"/>
     </message>
@@ -5850,6 +5845,7 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="166"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
         <source>Display count of unread messages</source>
         <translation type="unfinished"/>
     </message>
@@ -5865,66 +5861,71 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="204"/>
+        <source>Task bar</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="218"/>
         <source>Tabs</source>
         <translation>Faneblade</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="216"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="230"/>
         <source>Close tabs with</source>
         <translation>Luk faneblade med</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="222"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
         <source>Middle mouse button single-click</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="229"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="243"/>
         <source>Left mouse button double-click</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="239"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="253"/>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
         <translation>Åben nye faneblade med venstre museknap, dobbeltklik på fanebladsbjælke</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="246"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="260"/>
         <source>Hide tab bar if just one tab is visible</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="267"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="281"/>
         <source>Toolbars</source>
         <translation>Værktøjsbjælker</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="280"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="294"/>
         <source>Toolbar for feeds list</source>
         <translation>Værktøjsbjælke for nyhedskildeliste</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="285"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="299"/>
         <source>Toolbar for articles list</source>
         <translation>Værktøjsbjælke for artikelliste</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="290"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="304"/>
         <source>Statusbar</source>
         <translation>Statuslinie</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="368"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="382"/>
         <source>Button style</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="378"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="392"/>
         <source>Toolbar editor</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="404"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="418"/>
         <source>Icon size</source>
         <translation type="unfinished"/>
     </message>
@@ -6014,7 +6015,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="44"/>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="74"/>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="104"/>
-        <source>&amp;Browse...</source>
+        <source>&amp;Browse</source>
         <translation type="unfinished"/>
     </message>
     <message>
