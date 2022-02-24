@@ -364,6 +364,8 @@ NotificationFactory* Application::notifications() const {
 void Application::setFeedReader(FeedReader* feed_reader) {
   m_feedReader = feed_reader;
 
+  connect(m_feedReader, &FeedReader::feedUpdatesStarted, this, &Application::onFeedUpdatesStarted);
+  connect(m_feedReader, &FeedReader::feedUpdatesProgress, this, &Application::onFeedUpdatesProgress);
   connect(m_feedReader, &FeedReader::feedUpdatesFinished, this, &Application::onFeedUpdatesFinished);
   connect(m_feedReader->feedsModel(), &FeedsModel::messageCountsChanged, this, &Application::showMessagesNumber);
 }
@@ -721,9 +723,6 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
     if (FAILED(overlay_result)) {
       qCriticalNN << LOGSEC_CORE << "Failed to set overlay icon with HRESULT:" << QUOTE_W_SPACE_DOT(overlay_result);
     }
-
-    //m_taskbar->SetProgressValue(reinterpret_cast<HWND>(m_mainForm->winId()), 50, 100);
-    //m_taskbar->SetProgressState(reinterpret_cast<HWND>(m_mainForm->winId()), TBPFLAG::TBPF_ERROR);
   }
 #endif
 
@@ -804,6 +803,34 @@ void Application::onAdBlockFailure() {
 
 #endif
 
+void Application::onFeedUpdatesStarted() {
+#if defined(Q_OS_WIN)
+  // Use SetOverlayIcon Windows API method on Windows.
+  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
+                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+
+  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskBar != nullptr) {
+    m_windowsTaskBar->SetProgressValue(reinterpret_cast<HWND>(m_mainForm->winId()),
+                                       1ul,
+                                       100ul);
+  }
+#endif
+}
+
+void Application::onFeedUpdatesProgress(const Feed* feed, int current, int total) {
+#if defined(Q_OS_WIN)
+  // Use SetOverlayIcon Windows API method on Windows.
+  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
+                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+
+  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskBar != nullptr) {
+    m_windowsTaskBar->SetProgressValue(reinterpret_cast<HWND>(m_mainForm->winId()),
+                                       current,
+                                       total);
+  }
+#endif
+}
+
 void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
@@ -812,6 +839,16 @@ void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
       results.overview(10),
       QSystemTrayIcon::MessageIcon::NoIcon });
   }
+
+#if defined(Q_OS_WIN)
+  // Use SetOverlayIcon Windows API method on Windows.
+  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
+                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+
+  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskBar != nullptr) {
+    m_windowsTaskBar->SetProgressState(reinterpret_cast<HWND>(m_mainForm->winId()), TBPFLAG::TBPF_NOPROGRESS);
+  }
+#endif
 }
 
 void Application::setupCustomDataFolder(const QString& data_folder) {

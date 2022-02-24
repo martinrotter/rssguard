@@ -197,6 +197,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     QImage generateOverlayIcon(int number) const;
 #endif
 
+    void onFeedUpdatesStarted();
+    void onFeedUpdatesProgress(const Feed* feed, int current, int total);
     void onFeedUpdatesFinished(const FeedDownloadResults& results);
 
   private:
