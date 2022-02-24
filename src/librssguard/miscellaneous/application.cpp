@@ -629,9 +629,9 @@ void Application::onAboutToQuit() {
   }
 }
 
-void Application::showMessagesNumber(int unread_messages, bool any_feed_has_unread_messages) {
+void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_unread_messages) {
   if (m_trayIcon != nullptr) {
-    m_trayIcon->setNumber(unread_messages, any_feed_has_unread_messages);
+    m_trayIcon->setNumber(unread_messages, any_feed_has_new_unread_messages);
   }
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
@@ -652,6 +652,10 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_unre
 
   QDBusConnection::sessionBus().send(signal);
 #endif
+
+  mainForm()->setWindowTitle(unread_messages > 0
+                             ? QSL("%1 (%2)").arg(QSL(APP_NAME), QString::number(unread_messages))
+                             : QSL(APP_NAME));
 }
 
 void Application::restart() {

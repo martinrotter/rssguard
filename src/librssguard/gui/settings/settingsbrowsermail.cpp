@@ -241,7 +241,7 @@ ExternalTool SettingsBrowserMail::tweakExternalTool(const ExternalTool& tool) co
     bool ok;
     QString parameters = QInputDialog::getText(window(),
                                                tr("Enter parameters"),
-                                               tr("Enter (optional) parameters separated by \"%1\":").arg(QSL(EXECUTION_LINE_SEPARATOR)),
+                                               tr("Enter (optional) parameters:"),
                                                QLineEdit::EchoMode::Normal,
                                                tool.parameters(),
                                                &ok);
@@ -265,6 +265,7 @@ void SettingsBrowserMail::editSelectedExternalTool() {
 
   try {
     ext_tool = tweakExternalTool(ext_tool);
+
     m_ui->m_listTools->currentItem()->setText(0, ext_tool.executable());
     m_ui->m_listTools->currentItem()->setText(1, ext_tool.parameters());
     m_ui->m_listTools->currentItem()->setData(0, Qt::ItemDataRole::UserRole, QVariant::fromValue(ext_tool));

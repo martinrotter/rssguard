@@ -430,15 +430,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ToolBarEditor</class>
-   <extends>QWidget</extends>
-   <header>toolbareditor.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>HelpSpoiler</class>
    <extends>QWidget</extends>
    <header>helpspoiler.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ToolBarEditor</class>
+   <extends>QWidget</extends>
+   <header>toolbareditor.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

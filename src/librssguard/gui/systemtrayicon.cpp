@@ -92,8 +92,8 @@ void SystemTrayIcon::show() {
   showPrivate();
 }
 
-void SystemTrayIcon::setNumber(int number, bool any_new_message) {
-  Q_UNUSED(any_new_message)
+void SystemTrayIcon::setNumber(int number, bool any_feed_has_new_unread_messages) {
+  Q_UNUSED(any_feed_has_new_unread_messages)
 
   if (number <= 0 || !qApp->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool()) {
     // Either no unread messages or numbers in tray icon are disabled.

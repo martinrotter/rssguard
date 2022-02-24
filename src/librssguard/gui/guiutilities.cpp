@@ -44,20 +44,6 @@ void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, con
   }
 }
 
-void GuiUtilities::applyResponsiveDialogResize(QWidget& widget, double factor) {
-#if defined(Q_OS_ANDROID)
-  auto desktop_geom = QApplication::desktop()->screenGeometry();
-  auto ratio = double(widget.size().height()) / widget.size().width();
-  int widt = desktop_geom.width() * factor;
-  int heig = widt * ratio;
-
-  widget.resize(widt, heig);
-#else
-  Q_UNUSED(factor)
-  Q_UNUSED(widget)
-#endif
-}
-
 void GuiUtilities::restoreState(QWidget* wdg, QByteArray state) {
   QHash<QString, QHash<QString, QVariant>> props;
   QDataStream str(&state, QIODevice::OpenModeFlag::ReadOnly);

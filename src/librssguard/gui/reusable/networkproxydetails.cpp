@@ -8,25 +8,25 @@
 
 NetworkProxyDetails::NetworkProxyDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
-  GuiUtilities::setLabelAsNotice(*m_ui.m_lblProxyInfo, false);
 
+  m_ui.m_lblProxyInfo->setHelpText(tr("Note that these settings are applied only on newly established connections."), false);
   m_ui.m_txtProxyPassword->setPasswordMode(true);
 
-  connect(m_ui.m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
-          &NetworkProxyDetails::onProxyTypeChanged);
+  connect(m_ui.m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this, &NetworkProxyDetails::onProxyTypeChanged);
 
   m_ui.m_cmbProxyType->addItem(tr("No proxy"), QNetworkProxy::ProxyType::NoProxy);
   m_ui.m_cmbProxyType->addItem(tr("System proxy"), QNetworkProxy::ProxyType::DefaultProxy);
   m_ui.m_cmbProxyType->addItem(tr("Socks5"), QNetworkProxy::ProxyType::Socks5Proxy);
   m_ui.m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::ProxyType::HttpProxy);
 
-  connect(m_ui.m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
-          &NetworkProxyDetails::changed);
+  connect(m_ui.m_cmbProxyType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this, &NetworkProxyDetails::changed);
   connect(m_ui.m_txtProxyHost, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
   connect(m_ui.m_txtProxyPassword, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
   connect(m_ui.m_txtProxyUsername, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
-  connect(m_ui.m_spinProxyPort, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this,
-          &NetworkProxyDetails::changed);
+  connect(m_ui.m_spinProxyPort, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this, &NetworkProxyDetails::changed);
 }
 
 QNetworkProxy NetworkProxyDetails::proxy() const {

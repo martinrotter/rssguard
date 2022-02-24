@@ -50,7 +50,8 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
     m_ui->m_checkForceDarkFusion->setVisible(qApp->skins()->isStyleGoodForDarkVariant(txt));
   });
 
-  connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &SettingsGui::requireRestart);
+  connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this, &SettingsGui::requireRestart);
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsGui::dirtifySettings);
   connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::dirtifySettings);
