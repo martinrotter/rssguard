@@ -8,13 +8,13 @@
 
 #include <functional>
 
-class MessageBox : public QMessageBox {
+class MsgBox : public QMessageBox {
   Q_OBJECT
 
   public:
 
     // Constructors and destructors.
-    explicit MessageBox(QWidget* parent = nullptr);
+    explicit MsgBox(QWidget* parent = nullptr);
 
     // Custom icon setting.
     void setIcon(Icon icon);

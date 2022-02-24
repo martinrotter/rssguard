@@ -58,7 +58,7 @@ void DatabaseFactory::determineDriver() {
                 << QUOTE_W_SPACE_DOT(ex.message());
 
     if (m_dbDriver->driverType() != DatabaseDriver::DriverType::SQLite) {
-      MessageBox::show(nullptr,
+      MsgBox::show(nullptr,
                        QMessageBox::Icon::Critical,
                        tr("Cannot connect to database"),
                        tr("Connection to your database was not established with error: '%1'. "

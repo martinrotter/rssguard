@@ -152,7 +152,7 @@ void FormMessageFiltersManager::removeSelectedFilter() {
     return;
   }
 
-  if (MessageBox::show(this, QMessageBox::Icon::Question, tr("Are you sure?"),
+  if (MsgBox::show(this, QMessageBox::Icon::Question, tr("Are you sure?"),
                        tr("Do you really want to remove selected filter?"),
                        {}, fltr->name(),
                        QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
@@ -186,7 +186,7 @@ void FormMessageFiltersManager::addNewFilter(const QString& filter_script) {
     m_ui.m_listFilters->setCurrentRow(m_ui.m_listFilters->count() - 1);
   }
   catch (const ApplicationException& ex) {
-    MessageBox::show(this, QMessageBox::Icon::Critical, tr("Error"),
+    MsgBox::show(this, QMessageBox::Icon::Critical, tr("Error"),
                      tr("Cannot save new filter, error: '%1'.").arg(ex.message()));
   }
 }
@@ -549,7 +549,7 @@ void FormMessageFiltersManager::beautifyScript() {
 #endif
 
   if (!proc_clang_format.open() || proc_clang_format.error() == QProcess::ProcessError::FailedToStart) {
-    MessageBox::show(this, QMessageBox::Icon::Critical,
+    MsgBox::show(this, QMessageBox::Icon::Critical,
                      tr("Cannot find 'clang-format'"),
                      tr("Script was not beautified, because 'clang-format' tool was not found."));
     return;
@@ -567,7 +567,7 @@ void FormMessageFiltersManager::beautifyScript() {
     else {
       auto err = proc_clang_format.readAllStandardError();
 
-      MessageBox::show(this, QMessageBox::Icon::Critical,
+      MsgBox::show(this, QMessageBox::Icon::Critical,
                        tr("Error"),
                        tr("Script was not beautified, because 'clang-format' tool thrown error."),
                        QString(),
@@ -576,7 +576,7 @@ void FormMessageFiltersManager::beautifyScript() {
   }
   else {
     proc_clang_format.kill();
-    MessageBox::show(this, QMessageBox::Icon::Critical,
+    MsgBox::show(this, QMessageBox::Icon::Critical,
                      tr("Beautifier was running for too long time"),
                      tr("Script was not beautified, is 'clang-format' installed?"));
   }

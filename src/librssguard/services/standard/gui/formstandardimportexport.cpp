@@ -204,7 +204,7 @@ void FormStandardImportExport::selectImportFile() {
     }
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
-    QMessageBox::StandardButton answer = MessageBox::show(this,
+    QMessageBox::StandardButton answer = MsgBox::show(this,
                                                           QMessageBox::Icon::Warning,
                                                           tr("Get online metadata"),
                                                           tr("Metadata for your feeds can be fetched online. Note that the action "

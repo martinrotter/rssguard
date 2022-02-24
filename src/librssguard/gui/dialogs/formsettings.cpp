@@ -96,7 +96,7 @@ void FormSettings::applySettings() {
   if (!panels_for_restart.isEmpty()) {
     const QStringList changed_settings_description = panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")),
                                                                                          QString::fromUtf8(QByteArray(" • ")));
-    const QMessageBox::StandardButton clicked_button = MessageBox::show(this,
+    const QMessageBox::StandardButton clicked_button = MsgBox::show(this,
                                                                         QMessageBox::Icon::Question,
                                                                         tr("Critical settings were changed"),
                                                                         tr(
@@ -135,7 +135,7 @@ void FormSettings::cancelSettings() {
     const QStringList changed_settings_description = changed_panels.replaceInStrings(QRegularExpression(QSL("^")),
                                                                                      QString::fromUtf8(QByteArray(" • ")));
 
-    if (MessageBox::show(this,
+    if (MsgBox::show(this,
                          QMessageBox::Icon::Critical,
                          tr("Some settings are changed and will be lost"),
                          tr("Some settings were changed and by cancelling this dialog, you would lose these changes."),

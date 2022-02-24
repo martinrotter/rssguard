@@ -12,9 +12,9 @@
 #include <QStyle>
 #include <QtGlobal>
 
-MessageBox::MessageBox(QWidget* parent) : QMessageBox(parent) {}
+MsgBox::MsgBox(QWidget* parent) : QMessageBox(parent) {}
 
-void MessageBox::setIcon(QMessageBox::Icon icon) {
+void MsgBox::setIcon(QMessageBox::Icon icon) {
   // Determine correct status icon size.
   const int icon_size = qApp->style()->pixelMetric(QStyle::PixelMetric::PM_MessageBoxIconSize, nullptr, this);
 
@@ -22,7 +22,7 @@ void MessageBox::setIcon(QMessageBox::Icon icon) {
   setIconPixmap(iconForStatus(icon).pixmap(icon_size, icon_size));
 }
 
-void MessageBox::setCheckBox(QMessageBox* msg_box, const QString& text, bool* data) {
+void MsgBox::setCheckBox(QMessageBox* msg_box, const QString& text, bool* data) {
   // Add "don't show this again checkbox.
   auto* check_box = new QCheckBox(msg_box);
 
@@ -34,7 +34,7 @@ void MessageBox::setCheckBox(QMessageBox* msg_box, const QString& text, bool* da
   msg_box->setCheckBox(check_box);
 }
 
-QIcon MessageBox::iconForStatus(QMessageBox::Icon status) {
+QIcon MsgBox::iconForStatus(QMessageBox::Icon status) {
   switch (status) {
     case QMessageBox::Icon::Information:
       return qApp->icons()->fromTheme(QSL("dialog-information"));
@@ -53,7 +53,7 @@ QIcon MessageBox::iconForStatus(QMessageBox::Icon status) {
   }
 }
 
-QMessageBox::StandardButton MessageBox::show(QWidget* parent,
+QMessageBox::StandardButton MsgBox::show(QWidget* parent,
                                              QMessageBox::Icon icon,
                                              const QString& title,
                                              const QString& text,
@@ -69,7 +69,7 @@ QMessageBox::StandardButton MessageBox::show(QWidget* parent,
   }
 
   // Create and find needed components.
-  MessageBox msg_box(parent);
+  MsgBox msg_box(parent);
 
   // Initialize message box properties.
   msg_box.setWindowTitle(title);
@@ -81,7 +81,7 @@ QMessageBox::StandardButton MessageBox::show(QWidget* parent,
   msg_box.setDefaultButton(default_button);
 
   if (dont_show_again != nullptr) {
-    MessageBox::setCheckBox(&msg_box, tr("Do not show this dialog again."), dont_show_again);
+    MsgBox::setCheckBox(&msg_box, tr("Do not show this dialog again."), dont_show_again);
   }
 
   if (functor) {

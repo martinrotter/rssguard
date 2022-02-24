@@ -129,7 +129,7 @@ void FormAddEditEmail::onOkClicked() {
     accept();
   }
   catch (const ApplicationException& ex) {
-    MessageBox::show(this, QMessageBox::Icon::Critical,
+    MsgBox::show(this, QMessageBox::Icon::Critical,
                      tr("E-mail NOT sent"), tr("Your e-mail message wasn't sent."),
                      QString(),
                      ex.message());

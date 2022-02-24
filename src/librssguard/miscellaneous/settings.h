@@ -267,7 +267,7 @@ namespace GUI {
   KEY UnreadNumbersInTrayIcon;
   VALUE(bool) UnreadNumbersInTrayIconDef;
 
-#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+#if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)) || defined(Q_OS_WIN)
   KEY UnreadNumbersOnTaskBar;
   VALUE(bool) UnreadNumbersOnTaskBarDef;
 #endif

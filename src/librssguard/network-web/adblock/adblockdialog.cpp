@@ -61,13 +61,13 @@ void AdBlockDialog::saveOnClose() {
                 << "Failed to enable AdBlock, error:"
                 << QUOTE_W_SPACE_DOT(ex.message());
 
-    MessageBox::show(this,
-                     QMessageBox::Icon::Critical,
-                     tr("Cannot enable AdBlock"),
-                     tr("There is some error in AdBlock component and it cannot be enabled. "
-                        "Check error message below (or application debug log) for more information."),
-                     {},
-                     ex.message());
+    MsgBox::show(this,
+                 QMessageBox::Icon::Critical,
+                 tr("Cannot enable AdBlock"),
+                 tr("There is some error in AdBlock component and it cannot be enabled. "
+                    "Check error message below (or application debug log) for more information."),
+                 {},
+                 ex.message());
   }
 }
 

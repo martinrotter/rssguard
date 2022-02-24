@@ -164,7 +164,7 @@ void MessageBrowser::onAnchorClicked(const QUrl& url) {
     }
     else {
       // User clicked some URL. Open it in external browser or download?
-      MessageBox box(qApp->mainFormWidget());
+      MsgBox box(qApp->mainFormWidget());
 
       box.setText(tr("You clicked some link. You can download the link contents or open it in external web browser."));
       box.setInformativeText(tr("What action do you want to take?"));
@@ -175,7 +175,7 @@ void MessageBrowser::onAnchorClicked(const QUrl& url) {
       QAbstractButton* btn_cancel = box.addButton(QMessageBox::StandardButton::Cancel);
       bool always;
 
-      MessageBox::setCheckBox(&box, tr("Always open links in external browser."), &always);
+      MsgBox::setCheckBox(&box, tr("Always open links in external browser."), &always);
 
       box.setDefaultButton(QMessageBox::StandardButton::Cancel);
       box.exec();
@@ -198,7 +198,7 @@ void MessageBrowser::onAnchorClicked(const QUrl& url) {
     }
   }
   else {
-    MessageBox::show(qApp->mainFormWidget(), QMessageBox::Warning, tr("Incorrect link"), tr("Selected hyperlink is invalid."));
+    MsgBox::show(qApp->mainFormWidget(), QMessageBox::Warning, tr("Incorrect link"), tr("Selected hyperlink is invalid."));
   }
 }
 

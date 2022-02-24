@@ -44,7 +44,7 @@ void FormTtRssNote::sendNote() {
     accept();
   }
   else {
-    MessageBox::show({}, QMessageBox::Icon::Critical,
+    MsgBox::show({}, QMessageBox::Icon::Critical,
                      tr("Cannot share note"),
                      tr("There was an error, when trying to send your custom note."),
                      {},

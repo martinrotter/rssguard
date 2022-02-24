@@ -101,7 +101,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
 
   if (!result) {
     // We display GUI information that browser was not probably opened.
-    MessageBox::show(qApp->mainFormWidget(),
+    MsgBox::show(qApp->mainFormWidget(),
                      QMessageBox::Icon::Critical,
                      tr("Navigate to website manually"),
                      tr("%1 was unable to launch your web browser with the given URL, you need to open the "

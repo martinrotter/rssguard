@@ -256,7 +256,7 @@ void FeedsView::deleteSelectedItem() {
   if (selected_item != nullptr) {
     if (selected_item->canBeDeleted()) {
       // Ask user first.
-      if (MessageBox::show(qApp->mainFormWidget(),
+      if (MsgBox::show(qApp->mainFormWidget(),
                            QMessageBox::Icon::Question,
                            tr("Deleting \"%1\"").arg(selected_item->title()),
                            tr("You are about to completely delete item \"%1\".").arg(selected_item->title()),

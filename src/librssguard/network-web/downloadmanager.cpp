@@ -204,7 +204,7 @@ void DownloadItem::openFile() {
 void DownloadItem::openFolder() {
   if (m_output.exists()) {
     if (!SystemFactory::openFolderFile(m_output.fileName())) {
-      MessageBox::show(this,
+      MsgBox::show(this,
                        QMessageBox::Icon::Warning,
                        tr("Cannot open directory"),
                        tr("Cannot open output directory. Open it manually."),

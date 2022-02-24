@@ -128,6 +128,10 @@ if(NOT OS2)
   list(APPEND QT_COMPONENTS Multimedia)
 endif()
 
+if(WIN32 AND NOT BUILD_WITH_QT6)
+  list(APPEND QT_COMPONENTS WinExtras)
+endif()
+
 if(USE_WEBENGINE)
   list(APPEND QT_COMPONENTS WebEngineWidgets)
   add_compile_definitions(USE_WEBENGINE)

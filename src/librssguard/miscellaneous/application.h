@@ -44,6 +44,10 @@ class QWebEngineDownloadItem;
 class WebFactory;
 class NotificationFactory;
 
+#if defined(Q_OS_WIN)
+struct ITaskbarList4;
+#endif
+
 struct GuiMessage {
   public:
     GuiMessage(QString title, QString message, QSystemTrayIcon::MessageIcon type)
@@ -189,6 +193,10 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void onAdBlockFailure();
 #endif
 
+#if defined(Q_OS_WIN)
+    QImage generateOverlayIcon(int number) const;
+#endif
+
     void onFeedUpdatesFinished(const FeedDownloadResults& results);
 
   private:
@@ -234,6 +242,10 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     bool m_firstRunCurrentVersion;
     QString m_customDataFolder;
     bool m_allowMultipleInstances;
+
+#if defined(Q_OS_WIN)
+    ITaskbarList4* m_windowsTaskBar;
+#endif
 };
 
 inline Application* Application::instance() {

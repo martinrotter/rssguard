@@ -561,7 +561,7 @@ void MessagesView::sendSelectedMessageViaEmail() {
     const Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
 
     if (!qApp->web()->sendMessageViaEmail(message)) {
-      MessageBox::show(this, QMessageBox::Critical, tr("Problem with starting external e-mail client"),
+      MsgBox::show(this, QMessageBox::Critical, tr("Problem with starting external e-mail client"),
                        tr("External e-mail client could not be started."));
     }
   }

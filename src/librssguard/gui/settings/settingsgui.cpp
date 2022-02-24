@@ -34,8 +34,11 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
                                      << /*: Version column of skin list. */ tr("Version")
                                      << tr("Author"));
 
-#if !defined(Q_OS_UNIX) || defined(Q_OS_MACOS)
-  m_ui->m_tabUi->setTabVisible(m_ui->m_tabUi->indexOf(m_ui->m_tabTaskBar), false);
+  m_ui->m_tabUi->setTabVisible(m_ui->m_tabUi->indexOf(m_ui->m_tabTaskBar),
+#if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)) || defined(Q_OS_WIN)
+                               true);
+#else
+                               false);
 #endif
 
   m_ui->m_helpCustomSkinColors->setHelpText(tr("You can override some colors defined by your skin here. "
@@ -152,7 +155,7 @@ void SettingsGui::loadSettings() {
   m_ui->m_checkMonochromeIcons->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool());
   m_ui->m_checkCountUnreadMessages->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool());
 
-#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+#if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)) || defined(Q_OS_WIN)
   m_ui->m_displayUnreadMessageCountOnTaskBar->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool());
 #endif
 
@@ -336,7 +339,7 @@ void SettingsGui::saveSettings() {
 
   settings()->setValue(GROUP(GUI), GUI::ForceDarkFusion, m_ui->m_checkForceDarkFusion->isChecked());
 
-#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+#if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)) || defined(Q_OS_WIN)
   settings()->setValue(GROUP(GUI), GUI::UnreadNumbersOnTaskBar, m_ui->m_displayUnreadMessageCountOnTaskBar->isChecked());
 #endif
 

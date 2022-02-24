@@ -26,6 +26,8 @@
 #include <iostream>
 
 #include <QLoggingCategory>
+#include <QPainter>
+#include <QPainterPath>
 #include <QProcess>
 #include <QSessionManager>
 #include <QSslSocket>
@@ -50,6 +52,14 @@
 #include <QWebEngineProfile>
 #endif
 
+#if defined(Q_OS_WIN)
+#include <ShObjIdl.h>
+
+#if QT_VERSION_MAJOR == 5
+#include <QtWinExtras/QtWin>
+#endif
+#endif
+
 Application::Application(const QString& id, int& argc, char** argv)
   : SingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
   parseCmdArgumentsFromMyInstance();
@@ -70,6 +80,33 @@ Application::Application(const QString& id, int& argc, char** argv)
   m_downloadManager = nullptr;
   m_notifications = new NotificationFactory(this);
   m_shouldRestart = false;
+
+#if defined(Q_OS_WIN)
+  m_windowsTaskBar = nullptr;
+
+  const GUID qIID_ITaskbarList4 = { 0xc43dc798, 0x95d1, 0x4bea, { 0x90, 0x30, 0xbb, 0x99, 0xe2, 0x98, 0x3a, 0x1a } };
+  HRESULT task_result = CoCreateInstance(CLSID_TaskbarList,
+                                         nullptr,
+                                         CLSCTX_INPROC_SERVER,
+                                         qIID_ITaskbarList4,
+                                         reinterpret_cast<void**>(&m_windowsTaskBar));
+
+  if (FAILED(task_result)) {
+    qCriticalNN << LOGSEC_CORE
+                << "Taskbar integration for Windows failed to initialize with HRESULT:"
+                << QUOTE_W_SPACE_DOT(task_result);
+
+    m_windowsTaskBar = nullptr;
+  }
+  else if (FAILED(m_windowsTaskBar->HrInit())) {
+    qCriticalNN << LOGSEC_CORE
+                << "Taskbar integration for Windows failed to initialize with inner HRESULT:"
+                << QUOTE_W_SPACE_DOT(m_windowsTaskBar->HrInit());
+
+    m_windowsTaskBar->Release();
+    m_windowsTaskBar = nullptr;
+  }
+#endif
 
   determineFirstRuns();
 
@@ -156,6 +193,12 @@ Application::Application(const QString& id, int& argc, char** argv)
 }
 
 Application::~Application() {
+#if defined(Q_OS_WIN)
+  if (m_windowsTaskBar != nullptr) {
+    m_windowsTaskBar->Release();
+  }
+#endif
+
   qDebugNN << LOGSEC_CORE << "Destroying Application instance.";
 }
 
@@ -551,10 +594,10 @@ void Application::showGuiMessage(Notification::Event event,
 
   if (dest.m_messageBox || msg.m_type == QSystemTrayIcon::MessageIcon::Critical) {
     // Tray icon or OSD is not available, display simple text box.
-    MessageBox::show(parent == nullptr ? mainFormWidget() : parent,
-                     QMessageBox::Icon(msg.m_type), msg.m_title, msg.m_message,
-                     {}, {}, QMessageBox::StandardButton::Ok, QMessageBox::StandardButton::Ok, {},
-                     action.m_title, action.m_action);
+    MsgBox::show(parent == nullptr ? mainFormWidget() : parent,
+                 QMessageBox::Icon(msg.m_type), msg.m_title, msg.m_message,
+                 {}, {}, QMessageBox::StandardButton::Ok, QMessageBox::StandardButton::Ok, {},
+                 action.m_title, action.m_action);
   }
   else if (dest.m_statusBar && mainForm()->statusBar() != nullptr && mainForm()->statusBar()->isVisible()) {
     mainForm()->statusBar()->showMessage(msg.m_message);
@@ -634,7 +677,11 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
     m_trayIcon->setNumber(unread_messages, any_feed_has_new_unread_messages);
   }
 
+  // Set task bar overlay with number of unread articles.
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+  // Use D-Bus "LauncherEntry" service on Linux.
+  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
+                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
   QDBusMessage signal = QDBusMessage::createSignal(QSL("/"),
                                                    QSL("com.canonical.Unity.LauncherEntry"),
                                                    QSL("Update"));
@@ -644,19 +691,89 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
   QVariantMap setProperty;
 
   setProperty.insert("count", qint64(unread_messages));
-  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
-                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
   setProperty.insert("count-visible", task_bar_count_enabled && unread_messages > 0);
 
   signal << setProperty;
 
   QDBusConnection::sessionBus().send(signal);
+#elif defined(Q_OS_WIN)
+  // Use SetOverlayIcon Windows API method on Windows.
+  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
+                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+
+  if (m_mainForm != nullptr) {
+    QImage overlay_icon = generateOverlayIcon(unread_messages);
+
+#if QT_VERSION_MAJOR == 5
+    HICON overlay_hicon = QtWin::toHICON(QPixmap::fromImage(overlay_icon));
+#else
+    HICON overlay_hicon = overlay_icon.toHICON();
 #endif
 
-  mainForm()->setWindowTitle(unread_messages > 0
-                             ? QSL("%1 (%2)").arg(QSL(APP_NAME), QString::number(unread_messages))
-                             : QSL(APP_NAME));
+    HRESULT overlay_result = m_windowsTaskBar->SetOverlayIcon(reinterpret_cast<HWND>(m_mainForm->winId()),
+                                                              (task_bar_count_enabled && unread_messages > 0)
+                                                              ? overlay_hicon
+                                                              : nullptr,
+                                                              nullptr);
+
+    DestroyIcon(overlay_hicon);
+
+    if (FAILED(overlay_result)) {
+      qCriticalNN << LOGSEC_CORE << "Failed to set overlay icon with HRESULT:" << QUOTE_W_SPACE_DOT(overlay_result);
+    }
+
+    //m_taskbar->SetProgressValue(reinterpret_cast<HWND>(m_mainForm->winId()), 50, 100);
+    //m_taskbar->SetProgressState(reinterpret_cast<HWND>(m_mainForm->winId()), TBPFLAG::TBPF_ERROR);
+  }
+#endif
+
+  if (m_mainForm != nullptr) {
+    m_mainForm->setWindowTitle(unread_messages > 0
+                               ? QSL("%1 (%2)").arg(QSL(APP_NAME), QString::number(unread_messages))
+                               : QSL(APP_NAME));
+  }
 }
+
+#if defined(Q_OS_WIN)
+QImage Application::generateOverlayIcon(int number) const {
+  QImage img(64, 64, QImage::Format::Format_ARGB32);
+  QPainter p;
+  QString num_txt = number > 999 ? QChar(8734) : QString::number(number);
+  QPainterPath rounded_rectangle; rounded_rectangle.addRoundedRect(QRectF(img.rect()), 15, 15);
+  QFont fon = font();
+
+  if (num_txt.size() == 3) {
+    fon.setPixelSize(img.width() * 0.52);
+  }
+  else if (num_txt.size() == 2) {
+    fon.setPixelSize(img.width() * 0.65);
+  }
+  else {
+    fon.setPixelSize(img.width() * 0.85);
+  }
+
+  p.begin(&img);
+  p.setFont(fon);
+
+  p.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
+  p.setRenderHint(QPainter::RenderHint::TextAntialiasing, true);
+
+  img.fill(Qt::GlobalColor::transparent);
+
+  p.fillPath(rounded_rectangle, Qt::GlobalColor::white);
+
+  p.setPen(Qt::GlobalColor::black);
+  p.drawPath(rounded_rectangle);
+
+  p.drawText(img.rect(),
+             num_txt,
+             QTextOption(Qt::AlignmentFlag::AlignCenter));
+  p.end();
+
+  return img;
+}
+
+#endif
 
 void Application::restart() {
   m_shouldRestart = true;

@@ -229,11 +229,11 @@ void WebBrowser::setReadabledHtml(const QString& better_html) {
 }
 
 void WebBrowser::readabilityFailed(const QString& error) {
-  MessageBox::show({}, QMessageBox::Icon::Critical,
-                   tr("Reader mode failed for this website"),
-                   tr("Reader mode cannot be applied to current page."),
-                   {},
-                   error);
+  MsgBox::show({}, QMessageBox::Icon::Critical,
+               tr("Reader mode failed for this website"),
+               tr("Reader mode cannot be applied to current page."),
+               {},
+               error);
 }
 
 void WebBrowser::initializeLayout() {

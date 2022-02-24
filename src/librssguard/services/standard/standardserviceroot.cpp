@@ -54,7 +54,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
 
   if (freshly_activated && getSubTreeFeeds().isEmpty()) {
     // In other words, if there are no feeds or categories added.
-    if (MessageBox::show(qApp->mainFormWidget(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
+    if (MsgBox::show(qApp->mainFormWidget(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
                          tr("This new account does not include any feeds. You can now add default set of feeds."),
                          tr("Do you want to load initial set of feeds?"),
                          QString(), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
@@ -81,7 +81,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
         }
       }
       catch (ApplicationException& ex) {
-        MessageBox::show(qApp->mainFormWidget(), QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
+        MsgBox::show(qApp->mainFormWidget(), QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
       }
     }
     else {
