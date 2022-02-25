@@ -22,6 +22,7 @@ class MessageObject : public QObject {
   Q_PROPERTY(QString contents READ contents WRITE setContents)
   Q_PROPERTY(QString rawContents READ rawContents WRITE setRawContents)
   Q_PROPERTY(QDateTime created READ created WRITE setCreated)
+  Q_PROPERTY(bool createdIsMadeup READ createdIsMadeup WRITE setCreatedIsMadeup)
   Q_PROPERTY(double score READ score WRITE setScore)
   Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
   Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
@@ -122,6 +123,9 @@ class MessageObject : public QObject {
 
     QDateTime created() const;
     void setCreated(const QDateTime& created);
+
+    bool createdIsMadeup() const;
+    void setCreatedIsMadeup(bool madeup);
 
     bool isRead() const;
     void setIsRead(bool is_read);

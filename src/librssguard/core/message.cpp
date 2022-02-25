@@ -99,6 +99,15 @@ void Message::sanitize(const Feed* feed) {
       m_url = base.resolved(m_url).toString();
     }
   }
+
+  // Fix datetimes in future.
+  if (m_createdFromFeed && m_created.toUTC() > QDateTime::currentDateTimeUtc()) {
+    qWarningNN << LOGSEC_CORE << "Fixing future date of article" << QUOTE_W_SPACE(m_title) << "from invalid date/time"
+               << QUOTE_W_SPACE_DOT(m_created);
+
+    m_createdFromFeed = false;
+    m_created = QDateTime::currentDateTimeUtc();
+  }
 }
 
 Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {

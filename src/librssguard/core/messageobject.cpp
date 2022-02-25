@@ -190,6 +190,14 @@ void MessageObject::setCreated(const QDateTime& created) {
   m_message->m_created = created;
 }
 
+bool MessageObject::createdIsMadeup() const {
+  return !m_message->m_createdFromFeed;
+}
+
+void MessageObject::setCreatedIsMadeup(bool madeup) {
+  m_message->m_createdFromFeed = !madeup;
+}
+
 bool MessageObject::isRead() const {
   return m_message->m_isRead;
 }
