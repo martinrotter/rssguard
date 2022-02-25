@@ -73,7 +73,7 @@ Message::Message() {
   m_assignedLabels = QList<Label*>();
 }
 
-void Message::sanitize(const Feed* feed) {
+void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   // Sanitize title.
   m_title = m_title
 
@@ -101,7 +101,9 @@ void Message::sanitize(const Feed* feed) {
   }
 
   // Fix datetimes in future.
-  if (m_createdFromFeed && m_created.toUTC() > QDateTime::currentDateTimeUtc()) {
+  if (fix_future_datetimes &&
+      m_createdFromFeed &&
+      m_created.toUTC() > QDateTime::currentDateTimeUtc()) {
     qWarningNN << LOGSEC_CORE << "Fixing future date of article" << QUOTE_W_SPACE(m_title) << "from invalid date/time"
                << QUOTE_W_SPACE_DOT(m_created);
 

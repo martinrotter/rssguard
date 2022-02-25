@@ -111,6 +111,8 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_cmbMessagesTimeFormat, &QComboBox::currentTextChanged, this,
           &SettingsFeedsMessages::dirtifySettings);
 
+  connect(m_ui->m_cbFixupArticleDatetime, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+
   connect(m_ui->m_cmbCountsFeedList, &QComboBox::currentTextChanged, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbCountsFeedList, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsFeedsMessages::dirtifySettings);
@@ -217,6 +219,9 @@ void SettingsFeedsMessages::loadSettings() {
                                                                  SETTING(Messages::DisplayEnclosuresInMessage)).toBool());
 #endif
 
+  m_ui->m_cbFixupArticleDatetime->setChecked(settings()->value(GROUP(Messages),
+                                                               SETTING(Messages::FixupFutureArticleDateTimes)).toBool());
+
   m_ui->m_checkMessagesDateTimeFormat->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool());
   m_ui->m_cmbMessagesDateTimeFormat->setCurrentText(settings()->value(GROUP(Messages),
                                                                       SETTING(Messages::CustomDateFormat)).toString());
@@ -286,6 +291,8 @@ void SettingsFeedsMessages::saveSettings() {
                        Messages::DisplayEnclosuresInMessage,
                        m_ui->m_cbShowEnclosuresDirectly->isChecked());
 #endif
+
+  settings()->setValue(GROUP(Messages), Messages::FixupFutureArticleDateTimes, m_ui->m_cbFixupArticleDatetime->isChecked());
 
   settings()->setValue(GROUP(Messages), Messages::UseCustomDate, m_ui->m_checkMessagesDateTimeFormat->isChecked());
   settings()->setValue(GROUP(Messages), Messages::UseCustomTime, m_ui->m_checkMessagesTimeFormat->isChecked());

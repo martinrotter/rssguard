@@ -129,6 +129,9 @@ namespace Messages {
   KEY Zoom;
   VALUE(qreal) ZoomDef;
 
+  KEY FixupFutureArticleDateTimes;
+  VALUE(bool) FixupFutureArticleDateTimesDef;
+
   KEY UseCustomDate;
   VALUE(bool) UseCustomDateDef;
 
