@@ -36,7 +36,7 @@ class RSSGUARD_DLLSPEC Message {
   public:
     explicit Message();
 
-    void sanitize(const Feed* feed);
+    void sanitize(const Feed* feed, bool fix_future_datetimes);
 
     // Creates Message from given record, which contains
     // row from query SELECT * FROM Messages WHERE ....;

@@ -192,10 +192,13 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
              << feed->customId() << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"
              << QThread::currentThreadId() << "'. Operation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
+    bool fix_future_datetimes = qApp->settings()->value(GROUP(Messages),
+                                                        SETTING(Messages::FixupFutureArticleDateTimes)).toBool();
+
     // Now, sanitize messages (tweak encoding etc.).
     for (auto& msg : msgs) {
       msg.m_accountId = acc_id;
-      msg.sanitize(feed);
+      msg.sanitize(feed, fix_future_datetimes);
     }
 
     if (!feed->messageFilters().isEmpty()) {
