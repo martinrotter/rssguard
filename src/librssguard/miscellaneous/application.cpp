@@ -728,8 +728,8 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
 
   if (m_mainForm != nullptr) {
     m_mainForm->setWindowTitle(unread_messages > 0
-                               ? QSL("%1 (%2)").arg(QSL(APP_NAME), QString::number(unread_messages))
-                               : QSL(APP_NAME));
+                               ? QSL("[%2] %1").arg(QSL(APP_LONG_NAME), QString::number(unread_messages))
+                               : QSL(APP_LONG_NAME));
   }
 }
 
