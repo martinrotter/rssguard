@@ -52,8 +52,17 @@ int main(int argc, char* argv[]) {
   disableWindowTabbing();
 #endif
 
+  // We create our own "arguments" list as Qt strips something
+  // sometimes out.
+  char** const av = argv;
+  QStringList raw_cli_args;
+
+  for (int a = 0; a < argc; a++) {
+    raw_cli_args << QString::fromLocal8Bit(av[a]);
+  }
+
   // Instantiate base application object.
-  Application application(QSL(APP_LOW_NAME), argc, argv);
+  Application application(QSL(APP_LOW_NAME), argc, argv, raw_cli_args);
 
   qDebugNN << LOGSEC_CORE << "Starting" << NONQUOTE_W_SPACE_DOT(APP_LONG_NAME);
   qDebugNN << LOGSEC_CORE << "Instantiated class " << QUOTE_W_SPACE_DOT(application.metaObject()->className());
@@ -97,8 +106,10 @@ int main(int argc, char* argv[]) {
   qApp->showTrayIcon();
   qApp->offerChanges();
   qApp->showPolls();
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->respondToMainWindowResizes();
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
+
+  main_window.tabWidget()->feedMessageViewer()->respondToMainWindowResizes();
+  main_window.tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
+
   qApp->parseCmdArgumentsFromOtherInstance(qApp->cmdParser()->positionalArguments().join(QSL(ARGUMENTS_LIST_SEPARATOR)));
 
   return Application::exec();

@@ -72,7 +72,7 @@ QList<Message> NewsBlurServiceRoot::obtainNewMessages(Feed* feed,
 
 void NewsBlurServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadFromDatabase<Category, Feed>(this);
+    DatabaseQueries::loadRootFromDatabase<Category, Feed>(this);
     loadCacheFromFile();
   }
 

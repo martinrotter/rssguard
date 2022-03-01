@@ -7,7 +7,9 @@
     <file>./graphics/Breeze/categories/32/applications-science.svg</file>
     <file>./graphics/Breeze/categories/32/applications-system.svg</file>
     <file>./graphics/Breeze/actions/32/arrow-down.svg</file>
+    <file>./graphics/Breeze/actions/32/arrow-down-double.svg</file>
     <file>./graphics/Breeze/actions/32/arrow-up.svg</file>
+    <file>./graphics/Breeze/actions/32/arrow-up-double.svg</file>
     <file>./graphics/Breeze/actions/32/call-start.svg</file>
     <file>./graphics/Breeze/status/64/dialog-error.svg</file>
     <file>./graphics/Breeze/status/64/dialog-information.svg</file>
@@ -30,12 +32,11 @@
     <file>./graphics/Breeze/places/96/folder.svg</file>
     <file>./graphics/Breeze/actions/22/format-indent-more.svg</file>
     <file>./graphics/Breeze/actions/22/format-justify-fill.svg</file>
-    <file>./graphics/Breeze/actions/32/go-down.svg</file>
+    <file>./graphics/Breeze/actions/22/format-text-bold.svg</file>
     <file>./graphics/Breeze/actions/64/go-home.svg</file>
     <file>./graphics/Breeze/actions/32/go-jump.svg</file>
     <file>./graphics/Breeze/actions/32/go-next.svg</file>
     <file>./graphics/Breeze/actions/32/go-previous.svg</file>
-    <file>./graphics/Breeze/actions/32/go-up.svg</file>
     <file>./graphics/Breeze/actions/22/gtk-edit.svg</file>
     <file>./graphics/Breeze/actions/32/help-about.svg</file>
     <file>./graphics/Breeze/actions/22/help-contents.svg</file>
@@ -75,7 +76,9 @@
     <file>./graphics/Breeze Dark/categories/32/applications-science.svg</file>
     <file>./graphics/Breeze Dark/categories/32/applications-system.svg</file>
     <file>./graphics/Breeze Dark/actions/32/arrow-down.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/arrow-down-double.svg</file>
     <file>./graphics/Breeze Dark/actions/32/arrow-up.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/arrow-up-double.svg</file>
     <file>./graphics/Breeze Dark/actions/32/call-start.svg</file>
     <file>./graphics/Breeze Dark/status/64/dialog-error.svg</file>
     <file>./graphics/Breeze Dark/status/64/dialog-information.svg</file>
@@ -98,12 +101,11 @@
     <file>./graphics/Breeze Dark/places/96/folder.svg</file>
     <file>./graphics/Breeze Dark/actions/22/format-indent-more.svg</file>
     <file>./graphics/Breeze Dark/actions/22/format-justify-fill.svg</file>
-    <file>./graphics/Breeze Dark/actions/32/go-down.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/format-text-bold.svg</file>
     <file>./graphics/Breeze Dark/actions/64/go-home.svg</file>
     <file>./graphics/Breeze Dark/actions/32/go-jump.svg</file>
     <file>./graphics/Breeze Dark/actions/32/go-next.svg</file>
     <file>./graphics/Breeze Dark/actions/32/go-previous.svg</file>
-    <file>./graphics/Breeze Dark/actions/32/go-up.svg</file>
     <file>./graphics/Breeze Dark/actions/22/gtk-edit.svg</file>
     <file>./graphics/Breeze Dark/actions/32/help-about.svg</file>
     <file>./graphics/Breeze Dark/actions/22/help-contents.svg</file>
@@ -166,12 +168,11 @@
     <file>./graphics/Faenza/places/64/folder.png</file>
     <file>./graphics/Faenza/actions/64/format-indent-more.png</file>
     <file>./graphics/Faenza/actions/64/format-justify-fill.png</file>
-    <file>./graphics/Faenza/actions/64/go-down.png</file>
+    <file>./graphics/Faenza/actions/64/format-text-bold.png</file>
     <file>./graphics/Faenza/actions/64/go-home.png</file>
     <file>./graphics/Faenza/actions/64/go-jump.png</file>
     <file>./graphics/Faenza/actions/64/go-next.png</file>
     <file>./graphics/Faenza/actions/64/go-previous.png</file>
-    <file>./graphics/Faenza/actions/64/go-up.png</file>
     <file>./graphics/Faenza/actions/64/gtk-edit.png</file>
     <file>./graphics/Faenza/actions/64/help-about.png</file>
     <file>./graphics/Faenza/actions/64/help-contents.png</file>
@@ -212,7 +213,9 @@
     <file>./graphics/Numix/22/categories/applications-science.svg</file>
     <file>./graphics/Numix/22/categories/applications-system.svg</file>
     <file>./graphics/Numix/22/actions/arrow-down.svg</file>
+    <file>./graphics/Numix/22/actions/arrow-down-double.svg</file>
     <file>./graphics/Numix/22/actions/arrow-up.svg</file>
+    <file>./graphics/Numix/22/actions/arrow-up-double.svg</file>
     <file>./graphics/Numix/22/actions/call-start.svg</file>
     <file>./graphics/Numix/22/status/dialog-error.svg</file>
     <file>./graphics/Numix/22/status/dialog-information.svg</file>
@@ -238,12 +241,11 @@
     <file>./graphics/Numix/22/places/folder.svg</file>
     <file>./graphics/Numix/22/actions/format-indent-more.svg</file>
     <file>./graphics/Numix/22/actions/format-justify-fill.svg</file>
-    <file>./graphics/Numix/22/actions/go-down.svg</file>
+    <file>./graphics/Numix/22/actions/format-text-bold.svg</file>
     <file>./graphics/Numix/22/actions/go-home.svg</file>
     <file>./graphics/Numix/22/actions/go-jump.svg</file>
     <file>./graphics/Numix/22/actions/go-next.svg</file>
     <file>./graphics/Numix/22/actions/go-previous.svg</file>
-    <file>./graphics/Numix/22/actions/go-up.svg</file>
     <file>./graphics/Numix/22/actions/gtk-edit.svg</file>
     <file>./graphics/Numix/22/categories/help-about.svg</file>
     <file>./graphics/Numix/22/actions/help-contents.svg</file>

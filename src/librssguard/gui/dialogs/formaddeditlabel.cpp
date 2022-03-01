@@ -23,6 +23,7 @@ FormAddEditLabel::FormAddEditLabel(QWidget* parent) : QDialog(parent), m_editabl
   });
 
   m_ui.m_txtName->lineEdit()->setText(tr("Hot stuff"));
+  m_ui.m_txtName->lineEdit()->setFocus();
 }
 
 Label* FormAddEditLabel::execForAdd() {

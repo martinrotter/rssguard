@@ -1,9 +1,8 @@
-CREATE TABLE backup_Feeds AS SELECT * FROM Feeds;
--- !
-DROP TABLE Feeds;
+ALTER TABLE Feeds RENAME TO backup_Feeds;
 -- !
 CREATE TABLE Feeds (
   id              $$,
+  ordr            INTEGER     NOT NULL CHECK (ordr >= 0),
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
   date_created    BIGINT,
@@ -22,8 +21,51 @@ CREATE TABLE Feeds (
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
 -- !
-INSERT INTO Feeds (id, title, description, date_created, icon, category, source, update_type, update_interval, account_id, custom_id, custom_data)
-SELECT id, title, description, date_created, icon, category, source, update_type, update_interval, account_id, custom_id, custom_data
+INSERT INTO Feeds (id, ordr, title, description, date_created, icon, category, source, update_type, update_interval, account_id, custom_id, custom_data)
+SELECT id, id, title, description, date_created, icon, category, source, update_type, update_interval, account_id, custom_id, custom_data
 FROM backup_Feeds;
 -- !
 DROP TABLE backup_Feeds;
+-- !
+ALTER TABLE Categories RENAME TO backup_Categories;
+-- !
+CREATE TABLE Categories (
+  id              $$,
+  ordr            INTEGER     NOT NULL CHECK (ordr >= 0),
+  parent_id       INTEGER     NOT NULL CHECK (parent_id >= -1), /* Root categories contain -1 here. */
+  title           TEXT        NOT NULL CHECK (title != ''),
+  description     TEXT,
+  date_created    BIGINT,
+  icon            ^^,
+  account_id      INTEGER     NOT NULL,
+  custom_id       TEXT,
+  
+  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
+);
+-- !
+INSERT INTO Categories (id, ordr, parent_id, title, description, date_created, icon, account_id, custom_id)
+SELECT id, id, parent_id, title, description, date_created, icon, account_id, custom_id
+FROM backup_Categories;
+-- !
+DROP TABLE backup_Categories;
+-- !
+ALTER TABLE Accounts RENAME TO backup_Accounts;
+-- !
+CREATE TABLE Accounts (
+  id              $$,
+  ordr            INTEGER     NOT NULL CHECK (ordr >= 0),
+  type            TEXT        NOT NULL CHECK (type != ''), /* ID of the account type. Each account defines its own, for example 'ttrss'. */
+  proxy_type      INTEGER     NOT NULL DEFAULT 0 CHECK (proxy_type >= 0),
+  proxy_host      TEXT,
+  proxy_port      INTEGER,
+  proxy_username  TEXT,
+  proxy_password  TEXT,
+  /* Custom column for (serialized) custom account-specific data. */
+  custom_data     TEXT
+);
+-- !
+INSERT INTO Accounts (id, ordr, type, proxy_type, proxy_host, proxy_port, proxy_username, proxy_password, custom_data)
+SELECT id, id, type, proxy_type, proxy_host, proxy_port, proxy_username, proxy_password, custom_data
+FROM backup_Accounts;
+-- !
+DROP TABLE backup_Accounts;

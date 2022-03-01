@@ -90,12 +90,16 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     virtual QList<Message> undeletedMessages() const;
 
     // This method should "clean" all messages it contains.
-    // What "clean" means? It means delete messages -> move them to recycle bin
+    //
+    // NOTE: What "clean" means? It means delete messages -> move them to recycle bin
     // or eventually remove them completely if there is no recycle bin functionality.
     //
     // If this method is called on "recycle bin" instance of your
     // service account, it should "empty" the recycle bin.
     virtual bool cleanMessages(bool clear_only_read);
+
+    // Reloads current counts of articles in this item from DB and
+    // sets.
     virtual void updateCounts(bool including_total_count);
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
@@ -195,6 +199,16 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     bool keepOnTop() const;
     void setKeepOnTop(bool keep_on_top);
 
+    // Sort order, when items in feeds list are sorted manually.
+    //
+    // NOTE: This is only used for "Account", "Category" and "Feed" classes
+    // which can be manually sorted. Other types like "Label" cannot be
+    // automatically sorted and are always sorted by title.
+    //
+    // Sort order number cannot be negative.
+    int sortOrder() const;
+    void setSortOrder(int sort_order);
+
   private:
     RootItem::Kind m_kind;
     int m_id;
@@ -204,6 +218,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     QIcon m_icon;
     QDateTime m_creationDate;
     bool m_keepOnTop;
+    int m_sortOrder;
     QList<RootItem*> m_childItems;
     RootItem* m_parentItem;
 };

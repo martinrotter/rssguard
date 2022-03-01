@@ -81,7 +81,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
   Q_OBJECT
 
   public:
-    explicit Application(const QString& id, int& argc, char** argv);
+    explicit Application(const QString& id, int& argc, char** argv, const QStringList &raw_cli_args);
     virtual ~Application();
 
     void reactOnForeignNotifications();
@@ -173,7 +173,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     // Processes incoming message from another RSS Guard instance.
     void parseCmdArgumentsFromOtherInstance(const QString& message);
-    void parseCmdArgumentsFromMyInstance();
+    void parseCmdArgumentsFromMyInstance(const QStringList &raw_cli_args);
 
   private slots:
     void onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);

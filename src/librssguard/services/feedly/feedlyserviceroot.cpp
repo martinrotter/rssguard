@@ -88,7 +88,7 @@ QList<Message> FeedlyServiceRoot::obtainNewMessages(Feed* feed,
 
 void FeedlyServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadFromDatabase<Category, Feed>(this);
+    DatabaseQueries::loadRootFromDatabase<Category, Feed>(this);
     loadCacheFromFile();
   }
 

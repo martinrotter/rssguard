@@ -51,9 +51,10 @@ bool SkinFactory::isStyleGoodForDarkVariant(const QString& style_name) const {
 void SkinFactory::loadSkinFromData(const Skin& skin) {
   QString style_name = qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString();
   auto env = QProcessEnvironment::systemEnvironment();
-  QString over_style = env.value(QSL("QT_STYLE_OVERRIDE"));
+  const QString env_forced_style = env.value(QSL("QT_STYLE_OVERRIDE"));
+  const QString cli_forced_style = qApp->cmdParser()->value(QSL(CLI_STYLE_SHORT));
 
-  if (over_style.isEmpty()) {
+  if (env_forced_style.isEmpty() && cli_forced_style.isEmpty()) {
     qApp->setStyle(style_name);
     m_styleIsFrozen = false;
 
@@ -61,7 +62,9 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   }
   else {
     m_styleIsFrozen = true;
-    qWarningNN << LOGSEC_GUI << "Respecting forced style:" << QUOTE_W_SPACE_DOT(over_style);
+    qWarningNN << LOGSEC_GUI << "Respecting forced style(s):\n"
+               << "  QT_STYLE_OVERRIDE: " QUOTE_NO_SPACE(env_forced_style) << "\n"
+               << "  CLI (-style): " QUOTE_NO_SPACE(cli_forced_style);
   }
 
   if (isStyleGoodForDarkVariant(style_name) &&

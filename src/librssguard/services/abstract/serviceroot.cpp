@@ -77,7 +77,18 @@ bool ServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
 }
 
 QList<QAction*> ServiceRoot::contextMenuFeedsList() {
-  return serviceMenu();
+  auto specific = serviceMenu();
+  auto base = RootItem::contextMenuFeedsList();
+
+  if (!specific.isEmpty()) {
+    auto* act_sep = new QAction(this);
+
+    act_sep->setSeparator(true);
+    base.append(act_sep);
+    base.append(specific);
+  }
+
+  return base;
 }
 
 QList<QAction*> ServiceRoot::contextMenuMessagesList(const QList<Message>& messages) {

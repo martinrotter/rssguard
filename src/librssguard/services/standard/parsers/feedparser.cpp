@@ -83,7 +83,7 @@ QString FeedParser::jsonMessageRawContents(const QJsonObject& msg_element) const
 QList<Message> FeedParser::messages() {
   QString feed_author = feedAuthor();
   QList<Message> messages;
-  QDateTime current_time = QDateTime::currentDateTime();
+  QDateTime current_time = QDateTime::currentDateTimeUtc();
 
   // Pull out all messages.
   if (m_isXml) {

@@ -60,9 +60,9 @@
 #endif
 #endif
 
-Application::Application(const QString& id, int& argc, char** argv)
+Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
   : SingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
-  parseCmdArgumentsFromMyInstance();
+  parseCmdArgumentsFromMyInstance(raw_cli_args);
   qInstallMessageHandler(performLogging);
 
   m_feedReader = nullptr;
@@ -941,7 +941,7 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
   }
 }
 
-void Application::parseCmdArgumentsFromMyInstance() {
+void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args) {
   QCommandLineOption help({ QSL(CLI_HELP_SHORT), QSL(CLI_HELP_LONG) },
                           QSL("Displays overview of CLI."));
   QCommandLineOption version({ QSL(CLI_VER_SHORT), QSL(CLI_VER_LONG) },
@@ -958,15 +958,20 @@ void Application::parseCmdArgumentsFromMyInstance() {
                                         QSL("Disable just \"debug\" output."));
   QCommandLineOption disable_debug({ QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG) },
                                    QSL("Completely disable stdout/stderr outputs."));
+  QCommandLineOption forced_style({ QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG) },
+                                  QSL("Force some application style."),
+                                  QSL("style-name"));
 
   m_cmdParser.addOptions({ help, version, log_file, custom_data_folder,
-                           disable_singleinstance, disable_only_debug, disable_debug });
+                           disable_singleinstance, disable_only_debug, disable_debug,
+                           forced_style });
   m_cmdParser.addPositionalArgument(QSL("urls"),
                                     QSL("List of URL addresses pointing to individual online feeds which should be added."),
                                     QSL("[url-1 ... url-n]"));
   m_cmdParser.setApplicationDescription(QSL(APP_NAME));
+  m_cmdParser.setSingleDashWordOptionMode(QCommandLineParser::SingleDashWordOptionMode::ParseAsLongOptions);
 
-  if (!m_cmdParser.parse(QCoreApplication::arguments())) {
+  if (!m_cmdParser.parse(raw_cli_args)) {
     qCriticalNN << LOGSEC_CORE << m_cmdParser.errorText();
   }
 

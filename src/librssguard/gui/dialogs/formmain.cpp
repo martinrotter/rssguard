@@ -56,7 +56,7 @@
 
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_trayMenu(nullptr), m_statusBar(nullptr) {
-  qDebugNN << LOGSEC_GUI << "Creating main application form in thread: '" << QThread::currentThreadId() << "'.";
+  qDebugNN << LOGSEC_GUI << "Creating main application form in thread:" << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
 
   m_ui->setupUi(this);
   qApp->setMainForm(this);
@@ -196,6 +196,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionClearSelectedItems;
   actions << m_ui->m_actionClearAllItems;
   actions << m_ui->m_actionShowOnlyUnreadItems;
+  actions << m_ui->m_actionSortFeedsAlphabetically;
   actions << m_ui->m_actionShowTreeBranches;
   actions << m_ui->m_actionAutoExpandItemsWhenSelected;
   actions << m_ui->m_actionShowOnlyUnreadMessages;
@@ -216,6 +217,10 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionServiceDelete;
   actions << m_ui->m_actionCleanupDatabase;
   actions << m_ui->m_actionAddFeedIntoSelectedItem;
+  actions << m_ui->m_actionFeedMoveUp;
+  actions << m_ui->m_actionFeedMoveDown;
+  actions << m_ui->m_actionFeedMoveTop;
+  actions << m_ui->m_actionFeedMoveBottom;
   actions << m_ui->m_actionAddCategoryIntoSelectedItem;
   actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
   actions << m_ui->m_actionSelectNextItem;
@@ -475,6 +480,7 @@ void FormMain::updateFeedButtonsAvailability() {
   const bool feed_selected = anything_selected && selected_item->kind() == RootItem::Kind::Feed;
   const bool category_selected = anything_selected && selected_item->kind() == RootItem::Kind::Category;
   const bool service_selected = anything_selected && selected_item->kind() == RootItem::Kind::ServiceRoot;
+  const bool manual_feed_sort = !m_ui->m_actionSortFeedsAlphabetically->isChecked();
 
   m_ui->m_actionStopRunningItemsUpdate->setEnabled(is_update_running);
   m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
@@ -498,6 +504,11 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_menuAddItem->setEnabled(!critical_action_running);
   m_ui->m_menuAccounts->setEnabled(!critical_action_running);
   m_ui->m_menuRecycleBin->setEnabled(!critical_action_running);
+
+  m_ui->m_actionFeedMoveUp->setEnabled(manual_feed_sort &&(feed_selected || category_selected || service_selected));
+  m_ui->m_actionFeedMoveDown->setEnabled(manual_feed_sort &&(feed_selected || category_selected || service_selected));
+  m_ui->m_actionFeedMoveTop->setEnabled(manual_feed_sort &&(feed_selected || category_selected || service_selected));
+  m_ui->m_actionFeedMoveBottom->setEnabled(manual_feed_sort &&(feed_selected || category_selected || service_selected));
 }
 
 void FormMain::switchVisibility(bool force_hide) {
@@ -590,11 +601,12 @@ void FormMain::setupIcons() {
   m_ui->m_actionOpenSelectedMessagesInternallyNoTab->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
   m_ui->m_actionSendMessageViaEmail->setIcon(icon_theme_factory->fromTheme(QSL("mail-send")));
   m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(icon_theme_factory->fromTheme(QSL("format-justify-fill")));
-  m_ui->m_actionSelectNextItem->setIcon(icon_theme_factory->fromTheme(QSL("go-down")));
-  m_ui->m_actionSelectPreviousItem->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
-  m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-down")));
-  m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
+  m_ui->m_actionSelectNextItem->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
+  m_ui->m_actionSelectPreviousItem->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
+  m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
+  m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
   m_ui->m_actionSelectNextUnreadMessage->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
+  m_ui->m_actionSortFeedsAlphabetically->setIcon(icon_theme_factory->fromTheme(QSL("format-text-bold")));
   m_ui->m_actionShowOnlyUnreadItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionShowOnlyUnreadMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionExpandCollapseItem->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
@@ -608,6 +620,11 @@ void FormMain::setupIcons() {
   m_ui->m_actionAddFeedIntoSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("application-rss+xml")));
   m_ui->m_actionAddCategoryIntoSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("folder")));
   m_ui->m_actionMessageFilters->setIcon(icon_theme_factory->fromTheme(QSL("view-list-details")));
+
+  m_ui->m_actionFeedMoveUp->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
+  m_ui->m_actionFeedMoveDown->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
+  m_ui->m_actionFeedMoveTop->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up-double")));
+  m_ui->m_actionFeedMoveBottom->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down-double")));
 
   // Tabs & web browser.
   m_ui->m_actionTabNewWebBrowser->setIcon(icon_theme_factory->fromTheme(QSL("tab-new")));
@@ -667,6 +684,8 @@ void FormMain::loadSize() {
   m_ui->m_actionSwitchStatusBar->setChecked(settings->value(GROUP(GUI), SETTING(GUI::StatusBarVisible)).toBool());
 
   // Other startup GUI-related settings.
+  m_ui->m_actionSortFeedsAlphabetically->setChecked(settings->value(GROUP(Feeds),
+                                                                    SETTING(Feeds::SortAlphabetically)).toBool());
   m_ui->m_actionShowOnlyUnreadItems->setChecked(settings->value(GROUP(Feeds),
                                                                 SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
   m_ui->m_actionShowTreeBranches->setChecked(settings->value(GROUP(Feeds),
@@ -858,6 +877,8 @@ void FormMain::createConnections() {
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchMessageSplitterOrientation);
   connect(m_ui->m_actionShowOnlyUnreadItems, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadFeeds);
+  connect(m_ui->m_actionSortFeedsAlphabetically, &QAction::toggled,
+          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::toggleFeedSortingMode);
   connect(m_ui->m_actionShowTreeBranches, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowFeedTreeBranches);
   connect(m_ui->m_actionAutoExpandItemsWhenSelected, &QAction::toggled,

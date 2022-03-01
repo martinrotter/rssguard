@@ -28,11 +28,7 @@ void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning, bool set_mar
 void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, const QString& title) {
 
   widget.setWindowFlags(
-#if defined(Q_OS_LINUX)
-    Qt::WindowType::Window |
-#else
     Qt::WindowType::Dialog |
-#endif
     Qt::WindowType::WindowTitleHint |
     Qt::WindowType::WindowMaximizeButtonHint |
     Qt::WindowType::WindowCloseButtonHint);

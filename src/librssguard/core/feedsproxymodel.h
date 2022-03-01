@@ -17,9 +17,11 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     explicit FeedsProxyModel(FeedsModel* source_model, QObject* parent = nullptr);
     virtual ~FeedsProxyModel();
 
+    virtual void sort(int column, Qt::SortOrder order = Qt::SortOrder::AscendingOrder);
+
     // Returns index list of items which "match" given value.
     // Used for finding items according to entered title text.
-    QModelIndexList match(const QModelIndex& start, int role, const QVariant& value, int hits, Qt::MatchFlags flags) const;
+    virtual QModelIndexList match(const QModelIndex& start, int role, const QVariant& value, int hits, Qt::MatchFlags flags) const;
 
     // Maps list of indexes.
     QModelIndexList mapListToSource(const QModelIndexList& indexes) const;
@@ -32,24 +34,27 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     void setSelectedItem(const RootItem* selected_item);
     void setView(FeedsView* newView);
 
+    void setSortAlphabetically(bool sort_alphabetically);
+
   public slots:
     void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
 
   signals:
     void expandAfterFilterIn(QModelIndex source_idx) const;
 
-  private:
+  protected:
+    virtual bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
+    virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
 
-    // Compares two rows of data.
-    bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
-    bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
-    bool filterAcceptsRowInternal(int source_row, const QModelIndex& source_parent) const;
+  private:
+    virtual bool filterAcceptsRowInternal(int source_row, const QModelIndex& source_parent) const;
 
     // Source model pointer.
     FeedsModel* m_sourceModel;
     FeedsView* m_view;
     const RootItem* m_selectedItem;
     bool m_showUnreadOnly;
+    bool m_sortAlphabetically;
     QList<QPair<int, QModelIndex>> m_hiddenIndices;
     QList<RootItem::Kind> m_priorities;
 };

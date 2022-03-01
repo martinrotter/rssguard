@@ -76,7 +76,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void switchVisibility();
 
     void filterItems(const QString& pattern);
-
+    void toggleFeedSortingMode(bool sort_alphabetically);
     void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
 
   signals:

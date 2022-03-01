@@ -1940,8 +1940,8 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
   if (category->id() <= 0) {
     // We need to insert category first.
     q.prepare(QSL("INSERT INTO "
-                  "Categories (parent_id, title, date_created, account_id) "
-                  "VALUES (0, 'new', 0, %1);").arg(QString::number(account_id)));
+                  "Categories (parent_id, ordr, title, date_created, account_id) "
+                  "VALUES (0, 0, 'new', 0, %1);").arg(QString::number(account_id)));
 
     if (!q.exec()) {
       throw ApplicationException(q.lastError().text());
@@ -1952,7 +1952,7 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
   }
 
   q.prepare("UPDATE Categories "
-            "SET parent_id = :parent_id, title = :title, description = :description, date_created = :date_created, "
+            "SET parent_id = :parent_id, ordr = :ordr, title = :title, description = :description, date_created = :date_created, "
             "    icon = :icon, account_id = :account_id, custom_id = :custom_id "
             "WHERE id = :id;");
   q.bindValue(QSL(":parent_id"), parent_id);
@@ -1963,6 +1963,7 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":custom_id"), category->customId());
   q.bindValue(QSL(":id"), category->id());
+  q.bindValue(QSL(":ordr"), category->sortOrder());
 
   if (!q.exec()) {
     throw ApplicationException(q.lastError().text());
@@ -1975,8 +1976,8 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   if (feed->id() <= 0) {
     // We need to insert feed first.
     q.prepare(QSL("INSERT INTO "
-                  "Feeds (title, date_created, category, update_type, update_interval, account_id, custom_id) "
-                  "VALUES ('new', 0, 0, 0, 1, %1, 'new');").arg(QString::number(account_id)));
+                  "Feeds (title, ordr, date_created, category, update_type, update_interval, account_id, custom_id) "
+                  "VALUES ('new', 0, 0, 0, 0, 1, %1, 'new');").arg(QString::number(account_id)));
 
     if (!q.exec()) {
       throw ApplicationException(q.lastError().text());
@@ -1991,7 +1992,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   }
 
   q.prepare("UPDATE Feeds "
-            "SET title = :title, description = :description, date_created = :date_created, "
+            "SET title = :title, ordr = :ordr, description = :description, date_created = :date_created, "
             "    icon = :icon, category = :category, source = :source, update_type = :update_type, "
             "    update_interval = :update_interval, is_off = :is_off, open_articles = :open_articles, "
             "    account_id = :account_id, custom_id = :custom_id, custom_data = :custom_data "
@@ -2007,6 +2008,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":custom_id"), feed->customId());
   q.bindValue(QSL(":id"), feed->id());
+  q.bindValue(QSL(":ordr"), feed->sortOrder());
   q.bindValue(QSL(":is_off"), feed->isSwitchedOff());
   q.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
 
@@ -2025,14 +2027,13 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
 
   if (account->accountId() <= 0) {
     // We need to insert account first.
-    q.prepare(QSL("INSERT INTO Accounts (type) VALUES (:type);"));
+    q.prepare(QSL("INSERT INTO Accounts (ordr, type) VALUES (0, :type);"));
     q.bindValue(QSL(":type"), account->code());
 
     if (!q.exec()) {
       throw ApplicationException(q.lastError().text());
     }
     else {
-      //account->setId(q.lastInsertId().toInt());
       account->setAccountId(q.lastInsertId().toInt());
     }
   }
@@ -2042,7 +2043,7 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
 
   q.prepare(QSL("UPDATE Accounts "
                 "SET proxy_type = :proxy_type, proxy_host = :proxy_host, proxy_port = :proxy_port, "
-                "    proxy_username = :proxy_username, proxy_password = :proxy_password, "
+                "    proxy_username = :proxy_username, proxy_password = :proxy_password, ordr = :ordr, "
                 "    custom_data = :custom_data "
                 "WHERE id = :id"));
   q.bindValue(QSL(":proxy_type"), proxy.type());
@@ -2051,6 +2052,7 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
   q.bindValue(QSL(":proxy_username"), proxy.user());
   q.bindValue(QSL(":proxy_password"), TextFactory::encrypt(proxy.password()));
   q.bindValue(QSL(":id"), account->accountId());
+  q.bindValue(QSL(":ordr"), account->sortOrder());
 
   auto custom_data = account->customDatabaseData();
   QString serialized_custom_data = serializeCustomData(custom_data);
@@ -2092,6 +2094,10 @@ bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
   q.bindValue(QSL(":category"), id);
   return q.exec();
 }
+
+void DatabaseQueries::moveItemUp(RootItem* item, const QSqlDatabase& db) {}
+
+void DatabaseQueries::moveItemDown(RootItem* item, const QSqlDatabase& db) {}
 
 MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const QString& title,
                                                  const QString& script) {

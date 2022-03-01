@@ -1012,7 +1012,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
 
     message.m_title = qApp->web()->unescapeHtml(message_obj[QSL("title")].toString());
     message.m_author = qApp->web()->unescapeHtml(message_obj[QSL("author")].toString());
-    message.m_created = QDateTime::fromSecsSinceEpoch(message_obj[QSL("published")].toInt(), Qt::UTC);
+    message.m_created = QDateTime::fromSecsSinceEpoch(message_obj[QSL("published")].toInt(), Qt::TimeSpec::UTC);
     message.m_createdFromFeed = true;
     message.m_customId = message_obj[QSL("id")].toString();
 

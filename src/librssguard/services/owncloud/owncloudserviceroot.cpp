@@ -50,7 +50,7 @@ bool OwnCloudServiceRoot::supportsCategoryAdding() const {
 
 void OwnCloudServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadFromDatabase<Category, OwnCloudFeed>(this);
+    DatabaseQueries::loadRootFromDatabase<Category, OwnCloudFeed>(this);
     loadCacheFromFile();
   }
 

@@ -89,9 +89,9 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
 
     bool styleIsFrozen() const;
 
-private:
+  private:
 
-    // Loads the skin from give skin_data.
+    // Loads the skin from given skin_data.
     void loadSkinFromData(const Skin& skin);
 
     QString loadSkinFile(const QString& skin_folder, const QString& file_name, const QString& base_folder) const;

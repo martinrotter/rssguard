@@ -257,12 +257,12 @@ void FeedsView::deleteSelectedItem() {
     if (selected_item->canBeDeleted()) {
       // Ask user first.
       if (MsgBox::show(qApp->mainFormWidget(),
-                           QMessageBox::Icon::Question,
-                           tr("Deleting \"%1\"").arg(selected_item->title()),
-                           tr("You are about to completely delete item \"%1\".").arg(selected_item->title()),
-                           tr("Are you sure?"),
-                           QString(), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                           QMessageBox::StandardButton::Yes) == QMessageBox::StandardButton::No) {
+                       QMessageBox::Icon::Question,
+                       tr("Deleting \"%1\"").arg(selected_item->title()),
+                       tr("You are about to completely delete item \"%1\".").arg(selected_item->title()),
+                       tr("Are you sure?"),
+                       QString(), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                       QMessageBox::StandardButton::Yes) == QMessageBox::StandardButton::No) {
         // User refused.
         qApp->feedUpdateLock()->unlock();
         return;
@@ -512,6 +512,11 @@ void FeedsView::filterItems(const QString& pattern) {
   }
 }
 
+void FeedsView::toggleFeedSortingMode(bool sort_alphabetically) {
+  setSortingEnabled(sort_alphabetically);
+  m_proxyModel->setSortAlphabetically(sort_alphabetically);
+}
+
 void FeedsView::onIndexExpanded(const QModelIndex& idx) {
   qDebugNN << LOGSEC_GUI << "Feed list item expanded - " << m_proxyModel->data(idx).toString();
 
@@ -698,6 +703,15 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
     m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
   }
 
+  if (!qApp->settings()->value(GROUP(Feeds),
+                               SETTING(Feeds::SortAlphabetically)).toBool()) {
+    m_contextMenuFeeds->addSeparator();
+    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveUp);
+    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveDown);
+    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveTop);
+    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveBottom);
+  }
+
   if (!specific_actions.isEmpty()) {
     m_contextMenuFeeds->addSeparator();
     m_contextMenuFeeds->addActions(specific_actions);
@@ -792,6 +806,7 @@ void FeedsView::setupAppearance() {
 
   setUniformRowHeights(true);
   setAnimated(true);
+
   setSortingEnabled(true);
   setItemsExpandable(true);
   setAutoExpandDelay(0);
