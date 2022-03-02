@@ -157,7 +157,7 @@ Chyba: %1</translation>
         <translation>Kanál nemůže být přidán, protože nemáte aktivovaný žádný účet který umí přidávat kanály.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1030"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1035"/>
         <source>Packages %1 were updated.</source>
         <translation>Balíčky %1 byly aktualizovány.</translation>
     </message>
@@ -218,7 +218,7 @@ na tuto bublinu.</translation>
         <translation>Již běží</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1021"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1026"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation type="unfinished"/>
     </message>
@@ -917,7 +917,7 @@ Stav: %3</translation>
         <translation>Nelze smazat položku</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="734"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="748"/>
         <source>Context menu for empty space</source>
         <translation>Kontextové menu pro prázdný prostor</translation>
     </message>
@@ -932,8 +932,8 @@ Stav: %3</translation>
         <translation>Nelze smazat vybranou položku, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="626"/>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="669"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="631"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="674"/>
         <source>Context menu for categories</source>
         <translation>Kontextové menu pro kategorie</translation>
     </message>
@@ -975,7 +975,7 @@ or this functionality is not implemented yet.</source>
         <translation>Položka nemůže být smazána, protože to nepodporuje.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="744"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="758"/>
         <source>Context menu for other items</source>
         <translation>Kontextové menu pro ostatní položky</translation>
     </message>
@@ -1001,12 +1001,12 @@ or this functionality is not implemented yet.</source>
         <translation>Kontextové menu pro účty</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="765"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="779"/>
         <source>Context menu for label</source>
         <translation>Kontextové menu pro štítek</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="711"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="725"/>
         <source>Context menu for important articles</source>
         <translation>Kontextové menu pro důležité zprávy</translation>
     </message>
@@ -1224,12 +1224,12 @@ or this functionality is not implemented yet.</source>
         <translation>Dobrej matroš</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formaddeditlabel.cpp" line="29"/>
+        <location filename="../src/librssguard/gui/dialogs/formaddeditlabel.cpp" line="30"/>
         <source>Create new label</source>
         <translation>Vytvořit nový štítek</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formaddeditlabel.cpp" line="43"/>
+        <location filename="../src/librssguard/gui/dialogs/formaddeditlabel.cpp" line="44"/>
         <source>Edit label &apos;%1&apos;</source>
         <translation>Upravit štítek &apos;%1&apos;</translation>
     </message>
@@ -1696,12 +1696,12 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormMain</name>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="408"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="413"/>
         <source>No possible actions</source>
         <translation>Žádná možná akce</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="365"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="370"/>
         <source>No recycle bin</source>
         <translation>Žádný koš</translation>
     </message>
@@ -1756,509 +1756,539 @@ or this functionality is not implemented yet.</source>
         <translation>&amp;Přidat položku</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="139"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="112"/>
+        <source>&amp;Move</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="151"/>
         <source>Art&amp;icles</source>
         <translation>Zpráv&amp;y</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="163"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="175"/>
         <source>&amp;Recycle bin(s)</source>
         <translation>&amp;Odpadkové koše</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="170"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="182"/>
         <source>&amp;Accounts</source>
         <translation>&amp;Účty</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="178"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="190"/>
         <source>&amp;Web browser &amp;&amp; tabs</source>
         <translation>&amp;Webový prohlížeč &amp;&amp; taby</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="201"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="213"/>
         <source>&amp;Quit</source>
         <translation>&amp;Ukončit</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="204"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="216"/>
         <source>Quit the application.</source>
         <translation>Ukončit aplikaci.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="215"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="227"/>
         <source>&amp;Settings</source>
         <translation>Na&amp;stavení</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="218"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="230"/>
         <source>Display settings of the application.</source>
         <translation>Zobrazit nastavení aplikace.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="226"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="238"/>
         <source>&amp;About application</source>
         <translation>O &amp;aplikaci</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="229"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="241"/>
         <source>Displays extra info about this application.</source>
         <translation>Zobrazí dodatečné informace o této aplikaci.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="243"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="255"/>
         <source>&amp;Fullscreen</source>
         <translation>Přes celou &amp;obrazovku</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="246"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="258"/>
         <source>Switch fullscreen mode.</source>
         <translation>Přepnout režim celé obrazovky.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="254"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="266"/>
         <source>&amp;Fetch all</source>
         <translation>&amp;Stáhnout vše</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="257"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="269"/>
         <source>Fetch all feeds</source>
         <translation>Stáhnout všechny kanály</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="265"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="277"/>
         <source>Fetch &amp;selected</source>
         <translation>Stáhnout &amp;vybrané</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="268"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="280"/>
         <source>Fetch selected feeds</source>
         <translation>Stáhnout vybrané kanály</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="276"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="288"/>
         <source>&amp;Edit selected item</source>
         <translation>Upravit &amp;vybranou položku</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="284"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="296"/>
         <source>&amp;Delete selected item</source>
         <translation>&amp;Smazat vybranou položku</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="304"/>
         <source>Mark articles &amp;read</source>
         <translation>Označit zprávy jako &amp;přečtené</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="295"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="307"/>
         <source>Mark selected articles read</source>
         <translation>Označit vybrané zprávy jako přečtené</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="303"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="315"/>
         <source>Mark articles &amp;unread</source>
         <translation>Označit zprávy jako &amp;nepřečtené</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="306"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="318"/>
         <source>Mark selected articles unread</source>
         <translation>Označit vybrané zprávy jako nepřečtené</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="314"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="326"/>
         <source>Switch &amp;importance</source>
         <translation>Přepnout &amp;důležitost</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="317"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="329"/>
         <source>Switch importance of selected articles</source>
         <translation>Přepnout důležitost vybraných zpráv</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="325"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="337"/>
         <source>Mark selected item &amp;read</source>
         <translation>&amp;Označit vybranou položku jako přečtenou</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="328"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="340"/>
         <source>Mark all messages (without message filters) from selected items as read.</source>
         <translation>Označit všechny zprávy (bez filtrů) z vybraných položek jako přečtené.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="336"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="348"/>
         <source>Mark selected item &amp;unread</source>
         <translation>&amp;Označit vybranou položku jako nepřečtenou</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="339"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="351"/>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
         <translation>Označit všechny zprávy (bez filtrů) z vybraných položek jako nepřečtené.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="347"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="359"/>
         <source>&amp;Delete articles</source>
         <translation>&amp;Smazat zprávy</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="355"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="367"/>
         <source>&amp;Clean selected item</source>
         <translation>&amp;Vyčistit vybranou položku</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="358"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="370"/>
         <source>Deletes all messages from selected items.</source>
         <translation>Smaže všechny zprávy z vybraných položek.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="366"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="378"/>
         <source>Open in &amp;external browser</source>
         <translation>Otevřít v &amp;externím prohlížeči</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="369"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="381"/>
         <source>Open selected articles in external browser</source>
         <translation>Otevřít vybrané zprávy v externím webovém prohlížeči</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="377"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="389"/>
         <source>Open in &amp;internal browser</source>
         <translation>Otevřít v &amp;interním prohlížeči</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="380"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="392"/>
         <source>Open selected articles in internal browser</source>
         <translation>Otevřít vybrané zprávy v interním webovém prohlížeči</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="391"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="403"/>
         <source>No actions available</source>
         <translation>Žádná dostupná akce</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="394"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="406"/>
         <source>No actions are available right now.</source>
         <translation>Žádná akce není právě dostupná.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="402"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="414"/>
         <source>&amp;Mark all read</source>
         <translation>&amp;Označit vše jako přečtené</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="405"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="417"/>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
         <translation>Označí úplně všechny zprávy jako přečtené.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="413"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="425"/>
         <source>View selected item in &amp;newspaper mode</source>
         <translation>Zobrazit vybranout položku v &amp;novinovém náhledu</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="416"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="428"/>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
         <translation>Zobrazit všechny zprávy z vybraných položek v &quot;novinovém náhledu&quot;. Zprávy jsou následně označené jako přečtené.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="427"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="439"/>
         <source>Minimize (or hide) main window</source>
         <translation>Minimalizovat či skrýt hlavní okno</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="430"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="442"/>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
         <translation>Skryje hlavní ikno, je-li aktuálně viditelné. Jinak jej zobrazí.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="444"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="456"/>
         <source>&amp;Feed list</source>
         <translation>Seznam &amp;kanálů</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="447"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="459"/>
         <source>Hides or shows the list of feeds/categories.</source>
         <translation>Skryje nebo zobrazí seznam kanálů/kategorií.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="455"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="467"/>
         <source>&amp;Clean all</source>
         <translation>&amp;Vyčistit vše</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="458"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="470"/>
         <source>Deletes all messages from all items.</source>
         <translation>Smaže zprávy ze všech položek.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="466"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="478"/>
         <source>&amp;Next item</source>
         <translation>&amp;Další položka</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="474"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="486"/>
         <source>&amp;Previous item</source>
         <translation>&amp;Předchozí položka</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="482"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="494"/>
         <source>&amp;Next article</source>
         <translation>&amp;Další zpráva</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="490"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="502"/>
         <source>&amp;Previous article</source>
         <translation>&amp;Předchozí zpráva</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="498"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="510"/>
         <source>Check for &amp;updates</source>
         <translation>Ověřit dostupnost &amp;aktualizace</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="501"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="513"/>
         <source>Check if new update for the application is available for download.</source>
         <translation>Zkontrolovat, zda nejsou k dispozici aktualizace programu.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="515"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="527"/>
         <source>&amp;Main menu</source>
         <translation>Hlavní &amp;menu</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="518"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="530"/>
         <source>Hides or displays the main menu.</source>
         <translation>Skryje či zobrazí hlavní menu.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="526"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="538"/>
         <source>Report a &amp;bug...</source>
         <translation>Nahlásit &amp;chybu programu...</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="537"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="549"/>
         <source>&amp;Toolbars</source>
         <translation>&amp;Nástrojové lišty</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="540"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="552"/>
         <source>Switch visibility of main toolbars.</source>
         <translation>Přepnout viditelnost hlavnich nástrojových lišet.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="554"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="566"/>
         <source>&amp;List headers</source>
         <translation>&amp;Záhlaví sloupců</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="562"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="574"/>
         <source>&amp;Donate...</source>
         <translation>&amp;Podpořit autora...</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="570"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="582"/>
         <source>Display &amp;documentation</source>
         <translation>Zobrazit &amp;dokumentaci</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="590"/>
         <source>&amp;Restart</source>
         <translation>&amp;Restartovat</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="598"/>
         <source>&amp;Restore settings</source>
         <translation>&amp;Obnovit nastavení</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="594"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="606"/>
         <source>&amp;Backup settings</source>
         <translation>&amp;Zálohovat nastavení</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="602"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="614"/>
         <source>Switch layout</source>
         <translation>Přepnout rozhraní</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="610"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="622"/>
         <source>&amp;Downloads</source>
         <translation>&amp;Stahování</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="618"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="630"/>
         <source>Send via e-mail</source>
         <translation>Odeslat přes e-mail</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="621"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="633"/>
         <source>Send selected articles via e-mail</source>
         <translation>Odeslat vybrané zprávy přes e-mail</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="641"/>
         <source>&amp;Cleanup database</source>
         <translation>&amp;Vyčistit databázi</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="640"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="652"/>
         <source>Show unread items only</source>
         <translation>Pouze nepřečtené položky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="648"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="660"/>
         <source>&amp;Expand/collapse selected item</source>
         <translation>&amp;Expandovat/složit vybranou položku</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="656"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="668"/>
         <source>&amp;Add account</source>
         <translation>&amp;Přidat účet</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="664"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="676"/>
         <source>&amp;Restore articles</source>
         <translation>&amp;Obnovit zprávy</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="672"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="684"/>
         <source>&amp;Restore all recycle bins</source>
         <translation>&amp;Obnovit všechny koše</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="680"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="692"/>
         <source>&amp;Empty all recycle bins</source>
         <translation>&amp;Vysypat všechny koše</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="688"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="700"/>
         <source>Next &amp;unread article</source>
         <translation>Další &amp;nepřečtená zpráva</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="702"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="714"/>
         <source>Status bar</source>
         <translation>Stavový řádek</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="710"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="722"/>
         <source>&amp;Edit selected account</source>
         <translation>&amp;Upravit vybraný účet</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="718"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="730"/>
         <source>&amp;Delete selected account</source>
         <translation>&amp;Smazat vybraný účet</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="731"/>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="307"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="743"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="312"/>
         <source>Add new category</source>
         <translation>Přidat novou kategorii</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="736"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="748"/>
         <source>Stop ongoing fetching</source>
         <translation>Zastavit stahování zpráv</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="744"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
         <source>New browser tab</source>
         <translation>Nový tab s prohlížečem</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="752"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
         <source>Close all tabs</source>
         <translation>Zavřít všechny záložky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="757"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="769"/>
         <source>Close all tabs except current</source>
         <translation>Zavřít ostatní záložky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="762"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="774"/>
         <source>Go to &amp;next tab</source>
         <translation>Přejít na &amp;další tab</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="767"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="779"/>
         <source>Go to &amp;previous tab</source>
         <translation>Přejít na &amp;předchozí tab</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="775"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="787"/>
         <source>&amp;Enable article preview</source>
         <translation>&amp;Povolit náhled zprávy</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="780"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="792"/>
         <source>&amp;Copy URL of selected item</source>
         <translation>&amp;Kopírovat URL vybrané položky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="788"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="800"/>
         <source>Show &amp;unread articles only</source>
         <translation>Zobrazit jen &amp;nepřečtené zprávy</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="793"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="805"/>
         <source>Article &amp;filters</source>
         <translation>Filtry &amp;zpráv</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="801"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="813"/>
         <source>&amp;Show tree expanders</source>
         <translation>&amp;Zobrazit rozbalovače stromu</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="806"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="818"/>
         <source>Fetch feeds with &amp;custom auto-download policy</source>
         <translation>&amp;Stáhnout kanály se specifickým auto-stahováním zpráv</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="814"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="826"/>
         <source>Alternate row colors in lists</source>
         <translation>Alternovat barvy pozadí položek v seznamech</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="822"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="834"/>
         <source>Automatically &amp;expand item when selected</source>
         <translation>&amp;Automaticky rozbalovat kategorie při výběru</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="833"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="845"/>
         <source>Message viewer toolbars</source>
         <translation>Nástrojové lišty náhledu zpráv</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="838"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="850"/>
         <source>Expand/collapse selected item &amp;recursively</source>
         <translation>Rozbalit/sbalit vybranou položku rekurzivně</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="843"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="855"/>
         <source>Close &amp;current tab</source>
         <translation>Zavřit aktivní &amp;tab</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="848"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="860"/>
         <source>&amp;Copy URLs of selected articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="853"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="865"/>
         <source>Open in internal browser (no new tab)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="726"/>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="319"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="876"/>
+        <source>&amp;Sort alphabetically</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="881"/>
+        <source>Move &amp;up</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="886"/>
+        <source>Move to &amp;top</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="891"/>
+        <source>Move &amp;down</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="896"/>
+        <source>Move to &amp;bottom</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="738"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="324"/>
         <source>Add new feed</source>
         <translation>Přidat nový kanál</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="373"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="378"/>
         <source>No actions possible</source>
         <translation>Žádná možná akce</translation>
     </message>
@@ -2273,22 +2303,22 @@ or this functionality is not implemented yet.</source>
         <translation>Databázi nelze v současné době vyčistit, protože běží jiná kritická akce. Zkuste to později.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="510"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="521"/>
         <source>Close opened modal dialogs first.</source>
         <translation>Nejdříve ukončete otevřené modální dialogy.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="263"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="268"/>
         <source>Ta&amp;bs</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="444"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="449"/>
         <source>Fetching common data</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="509"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="520"/>
         <source>Close dialogs</source>
         <translation>Zavřít dialogy</translation>
     </message>
@@ -4102,7 +4132,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/messagebox.cpp" line="84"/>
         <source>Do not show this dialog again.</source>
-        <translation type="unfinished"/>
+        <translation>Znovu toto upozornění nezobrazovat.</translation>
     </message>
 </context>
 <context>
@@ -4647,7 +4677,7 @@ Tokeny vyprší: %2</translation>
         <translation>rotter.martinos@gmail.com</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/feeddownloader.cpp" line="498"/>
+        <location filename="../src/librssguard/core/feeddownloader.cpp" line="501"/>
         <source>
 
 + %n other feeds.</source>
@@ -4714,7 +4744,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly je bezpečný prostor, kde můžete soukromě organizovat a prohledávat témata a trendy, které jsou pro vás důležité.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2099"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2105"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation>Nelze vložit filtr zpráv, protože databáze neumí vrátit ID.</translation>
     </message>
@@ -4793,27 +4823,27 @@ Podporované čtečky:</translation>
         <translation>Jednoduchý klient pro Reddit.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="389"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="392"/>
         <source>interesting stuff</source>
         <translation>zajímavá věc</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="392"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="395"/>
         <source>interesting stuff (highlighted)</source>
         <translation>zajímavá věc (zvýrazněno)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="395"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="398"/>
         <source>errored items</source>
         <translation>chybové položky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="398"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="401"/>
         <source>errored items (highlighted)</source>
         <translation>chybové položky (zvýrazněno)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="401"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="404"/>
         <source>OK-ish color</source>
         <translation>vše v pořádku</translation>
     </message>
@@ -5080,7 +5110,7 @@ Tokeny vyprší: %2</translation>
 <context>
     <name>RootItem</name>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="145"/>
+        <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="146"/>
         <source>%n unread article(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
@@ -5135,12 +5165,12 @@ Tokeny vyprší: %2</translation>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="91"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="102"/>
         <source>Synchronize folders &amp;&amp; other items</source>
         <translation>Synchronizovat strom &amp; další položky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="99"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="110"/>
         <source>Synchronize article cache</source>
         <translation>Synchronizovat stavy zpráv</translation>
     </message>
@@ -5534,7 +5564,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="171"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="173"/>
         <source>Select new font</source>
         <translation>Vybrat písmo</translation>
     </message>
@@ -5600,7 +5630,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="141"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="441"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="448"/>
         <source>Row height</source>
         <translation>Výška položky seznamu</translation>
     </message>
@@ -5612,14 +5642,14 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="184"/>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="355"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="557"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="564"/>
         <source>Font preview</source>
         <translation>Náhled písma</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="194"/>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="365"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="567"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="574"/>
         <source>&amp;Change font</source>
         <translation>&amp;Změnit písmo</translation>
     </message>
@@ -5684,47 +5714,52 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>Písmo prohlížeče zpráv</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="404"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="403"/>
+        <source>Fixup date/time of articles which are in the future</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="411"/>
         <source>Articles list</source>
         <translation>Seznam zpráv</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="410"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="417"/>
         <source>Display real icons of feeds instead of read/unread icons</source>
         <translation>Zobrazovat skutečné ikony kanálů místo ikon (ne)přečteno</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="417"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="424"/>
         <source>Keep article selection in the middle of the article list viewport</source>
         <translation>Udržovat výběr uprostřed seznamu kanálů</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="424"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="431"/>
         <source>Enable multiline items</source>
         <translation>Povolit víceřádkové zobrazení</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="470"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="477"/>
         <source>Top/bottom row padding</source>
         <translation>Horní/dolní padding textu v položkách</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="499"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="506"/>
         <source>Use custom date/time format</source>
         <translation>Vlastní formát datumu</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="525"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="532"/>
         <source>Custom date/time format for today&apos;s articles</source>
         <translation>Vlastní formát datumu pro dnešní zprávy</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="551"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="558"/>
         <source>Article list font</source>
         <translation>Písmo seznamu zpráv</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="590"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="597"/>
         <source>Show relative time for articles not older than</source>
         <translation>Zobrazit relativní čas pro zprávy ne starší než</translation>
     </message>
@@ -6050,7 +6085,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="74"/>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="104"/>
         <source>&amp;Browse</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Procházet</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="53"/>
@@ -6149,13 +6184,13 @@ Jsou obsaženy zabudované zvuky, napište &quot;:&quot; a seznam se zobrazí.</
 <context>
     <name>SkinFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="173"/>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="177"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="176"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="180"/>
         <source>This page was blocked by AdBlock</source>
         <translation>Tato stránka byla zablokována AdBlockem</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="174"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="177"/>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
         <translation>Zablokováno seznamem: &quot;%1&quot;&lt;br/&gt;Použitý filtr: &quot;%2&quot;</translation>
     </message>

@@ -36,7 +36,7 @@
 #define URI_SCHEME_HTTPS_SHORT                "https:"
 #define URI_SCHEME_HTTPS                      "https://"
 
-#define DEFAULT_LOCALE                        "en"
+#define DEFAULT_LOCALE                        "en_US"
 
 #define NO_PARENT_CATEGORY                    -1
 #define ID_RECYCLE_BIN                        -2

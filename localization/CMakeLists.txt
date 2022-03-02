@@ -1,5 +1,8 @@
 if(UPDATE_TRANSLATIONS)
   # Regenerate "en" .ts file.
+  #
+  # "en" .ts file is only used as "source" language
+  # and it is not offered in RSS Guard as localization.
   file(GLOB_RECURSE ALL_SOURCES
     "${CMAKE_SOURCE_DIR}/src/librssguard/*.cpp"
     "${CMAKE_SOURCE_DIR}/src/librssguard/*.ui")

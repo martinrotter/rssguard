@@ -44,8 +44,8 @@
     <file>graphics/misc/flags/cs.png</file>
     <file>graphics/misc/flags/da.png</file>
     <file>graphics/misc/flags/de.png</file>
-    <file>graphics/misc/flags/en.png</file>
     <file>graphics/misc/flags/en_GB.png</file>
+    <file>graphics/misc/flags/en_US.png</file>
     <file>graphics/misc/flags/es.png</file>
     <file>graphics/misc/flags/fi.png</file>
     <file>graphics/misc/flags/fr.png</file>
@@ -88,8 +88,8 @@
     <file>../localization/rssguard_cs.qm</file>
     <file>../localization/rssguard_da.qm</file>
     <file>../localization/rssguard_de.qm</file>
-    <file>../localization/rssguard_en.qm</file>
     <file>../localization/rssguard_en_GB.qm</file>
+    <file>../localization/rssguard_en_US.qm</file>
     <file>../localization/rssguard_es.qm</file>
     <file>../localization/rssguard_fi.qm</file>
     <file>../localization/rssguard_fr.qm</file>

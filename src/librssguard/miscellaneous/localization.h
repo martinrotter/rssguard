@@ -39,19 +39,22 @@ class RSSGUARD_DLLSPEC Localization : public QObject {
 
     // Returns empty string or loaded language
     // name if it is really loaded.
-    inline QString loadedLanguage() const {
-      return m_loadedLanguage;
-    }
+    QString loadedLanguage() const;
 
-    inline QLocale loadedLocale() const {
-      return m_loadedLocale;
-    }
+    // Returns loaded locale.
+    QLocale loadedLocale() const;
 
   private:
-
-    // Code of loaded language.
     QString m_loadedLanguage;
     QLocale m_loadedLocale;
 };
+
+inline QString Localization::loadedLanguage() const {
+  return m_loadedLanguage;
+}
+
+inline QLocale Localization::loadedLocale() const {
+  return m_loadedLocale;
+}
 
 #endif // LOCALIZATION_H
