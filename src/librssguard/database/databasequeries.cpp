@@ -2096,14 +2096,14 @@ bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
 }
 
 void DatabaseQueries::fixupOrders(const QSqlDatabase& db) {
-  QSqlQuery res = db.exec(QSL("SELECT COUNT(*) FROM Accounts WHERE ordr = 0 "
+  // We first determine if there are same orders assigned to some items
+  // which have same parent category/acc.
+  QSqlQuery res = db.exec(QSL("SELECT COUNT(*) FROM Accounts GROUP BY ordr HAVING COUNT(*) > 1 "
                               "UNION ALL "
-                              "SELECT COUNT(*) FROM Categories WHERE ordr = 0 "
+                              "SELECT COUNT(*) FROM Categories GROUP BY account_id, parent_id, ordr HAVING COUNT(*) > 1 "
                               "UNION ALL "
-                              "SELECT COUNT(*) FROM Feeds WHERE ordr = 0;"));
-  bool should_fixup = false;
-
-  while (res.next() && !(should_fixup = (res.value(0).toInt() > 1))) {}
+                              "SELECT COUNT(*) FROM Feeds GROUP BY account_id, category, ordr HAVING COUNT(*) > 1;"));
+  bool should_fixup = res.lastError().isValid() || res.size() > 0;
 
   if (should_fixup) {
     // Some orders are messed up, fix.
@@ -2116,6 +2116,9 @@ void DatabaseQueries::fixupOrders(const QSqlDatabase& db) {
         qFatal("Fixup of messed up order failed: '%s'.", qPrintable(q.lastError().text()));
       }
     }
+  }
+  else {
+    qDebugNN << LOGSEC_DB << "No fixing of item order is needed.";
   }
 }
 
