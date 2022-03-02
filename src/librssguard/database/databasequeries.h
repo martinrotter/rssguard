@@ -135,6 +135,7 @@ class DatabaseQueries {
                                int account_id, bool* ok = nullptr);
 
     // Item order methods.
+    static void fixupOrders(const QSqlDatabase& db);
     static void moveItemUp(RootItem* item, const QSqlDatabase& db);
     static void moveItemDown(RootItem* item, const QSqlDatabase& db);
 
@@ -337,6 +338,9 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
 template<typename Categ, typename Fee>
 void DatabaseQueries::loadRootFromDatabase(ServiceRoot* root) {
   QSqlDatabase database = qApp->database()->driver()->connection(root->metaObject()->className());
+
+  fixupOrders(database);
+
   Assignment categories = DatabaseQueries::getCategories<Categ>(database, root->accountId());
   Assignment feeds = DatabaseQueries::getFeeds<Fee>(database, qApp->feedReader()->messageFilters(), root->accountId());
   auto labels = DatabaseQueries::getLabelsForAccount(database, root->accountId());

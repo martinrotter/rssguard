@@ -80,7 +80,7 @@
     <file>skins/nudus-light/metadata.xml</file>
     <file>skins/nudus-light/qt_style.qss</file>
 
-    <file>initial_feeds/feeds-en.opml</file>
+    <file>initial_feeds/feeds-en_US.opml</file>
 
     <file>desktop/com.github.rssguard.desktop</file>
     <file>desktop/com.github.rssguard.desktop.autostart</file>

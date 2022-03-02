@@ -2095,6 +2095,30 @@ bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
   return q.exec();
 }
 
+void DatabaseQueries::fixupOrders(const QSqlDatabase& db) {
+  QSqlQuery res = db.exec(QSL("SELECT COUNT(*) FROM Accounts WHERE ordr = 0 "
+                              "UNION ALL "
+                              "SELECT COUNT(*) FROM Categories WHERE ordr = 0 "
+                              "UNION ALL "
+                              "SELECT COUNT(*) FROM Feeds WHERE ordr = 0;"));
+  bool should_fixup = false;
+
+  while (res.next() && !(should_fixup = (res.value(0).toInt() > 1))) {}
+
+  if (should_fixup) {
+    // Some orders are messed up, fix.
+    qCriticalNN << LOGSEC_DB << "Order of items is messed up, fixing.";
+
+    for (const QString& table : { QSL("Accounts"), QSL("Categories"), QSL("Feeds") }) {
+      QSqlQuery q = db.exec(QSL("UPDATE %1 SET ordr = id;").arg(table));
+
+      if (q.lastError().isValid()) {
+        qFatal("Fixup of messed up order failed: '%s'.", qPrintable(q.lastError().text()));
+      }
+    }
+  }
+}
+
 void DatabaseQueries::moveItemUp(RootItem* item, const QSqlDatabase& db) {}
 
 void DatabaseQueries::moveItemDown(RootItem* item, const QSqlDatabase& db) {}
