@@ -202,8 +202,7 @@ void SettingsGui::loadSettings() {
     m_ui->m_cmbStyles->addItem(style_name);
   }
 
-  int item_style = m_ui->m_cmbStyles->findText(settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString(),
-                                               Qt::MatchFlag::MatchFixedString);
+  int item_style = m_ui->m_cmbStyles->findText(qApp->skins()->currentStyle(), Qt::MatchFlag::MatchFixedString);
 
   if (item_style >= 0) {
     m_ui->m_cmbStyles->setCurrentIndex(item_style);
@@ -368,7 +367,7 @@ void SettingsGui::saveSettings() {
   }
 
   // Set new style.
-  if (m_ui->m_cmbStyles->currentIndex() >= 0) {
+  if (m_ui->m_cmbStyles->currentIndex() >= 0 && m_ui->m_cmbStyles->isEnabled()) {
     const QString new_style = m_ui->m_cmbStyles->currentText();
     const QString old_style = qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString();
 

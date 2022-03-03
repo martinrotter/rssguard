@@ -65,16 +65,13 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     qWarningNN << LOGSEC_GUI << "Respecting forced style(s):\n"
                << "  QT_STYLE_OVERRIDE: " QUOTE_NO_SPACE(env_forced_style) << "\n"
                << "  CLI (-style): " QUOTE_NO_SPACE(cli_forced_style);
-
-    if (!cli_forced_style.isEmpty()) {
-      style_name = cli_forced_style;
-    }
-    else if (!env_forced_style.isEmpty()) {
-      style_name = env_forced_style;
-    }
   }
 
-  if (isStyleGoodForDarkVariant(style_name) &&
+  // NOTE: We can do this because in Qt source code
+  // they specifically set object name to style name.
+  m_currentStyle = qApp->style()->objectName();
+
+  if (isStyleGoodForDarkVariant(m_currentStyle) &&
       qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForceDarkFusion)).toBool()) {
     qDebugNN << LOGSEC_GUI << "Activating dark palette for Fusion style.";
 
@@ -340,6 +337,10 @@ QString SkinFactory::loadSkinFile(const QString& skin_folder, const QString& fil
     data = QString::fromUtf8(IOFactory::readFile(base_file));
     return data.replace(QSL(USER_DATA_PLACEHOLDER), base_folder);
   }
+}
+
+QString SkinFactory::currentStyle() const {
+  return m_currentStyle;
 }
 
 bool SkinFactory::styleIsFrozen() const {
