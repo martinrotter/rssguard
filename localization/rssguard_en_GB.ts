@@ -385,7 +385,7 @@ version by clicking this popup notification.</source>
     <message numerus="yes">
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="33"/>
         <source>Add one of %n feed(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Add one of %n feed</numerusform><numerusform>Add one of %n feeds</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="55"/>
@@ -512,12 +512,12 @@ Click here to open parent directory.</source>
     <message numerus="yes">
         <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="707"/>
         <source>%n minutes remaining</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n minute remaining</numerusform><numerusform>%n minutes remaining</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="711"/>
         <source>%n seconds remaining</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n second remaining</numerusform><numerusform>%n seconds remaining</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="723"/>
@@ -542,7 +542,7 @@ Click here to open parent directory.</source>
     <message numerus="yes">
         <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="568"/>
         <source>Downloading %n file(s)...</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Downloading %n file...</numerusform><numerusform>Downloading %n files...</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloadmanager.ui" line="38"/>
@@ -612,7 +612,7 @@ Status: %3</source>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="231"/>
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>uses global settings (%n minute to next auto-fetch of articles)</numerusform><numerusform>uses global settings (%n minutes to next auto-fetch of articles)</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="234"/>
@@ -623,7 +623,7 @@ Status: %3</source>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="241"/>
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>uses specific settings (%n minute to next auto-fetching of new articles)</numerusform><numerusform>uses specific settings (%n minutes to next auto-fetching of new articles)</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="254"/>
@@ -664,7 +664,7 @@ Status: %3</source>
     <message numerus="yes">
         <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="335"/>
         <source>I will auto-download new articles for %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>I will auto-download new articles for %n feed.</numerusform><numerusform>I will auto-download new articles for %n feeds.</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="89"/>
@@ -3979,27 +3979,27 @@ Login tokens expiration: %2</source>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
         <source>%n months ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n month ago</numerusform><numerusform>%n months ago</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="328"/>
         <source>%n weeks ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n week ago</numerusform><numerusform>%n weeks ago</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="332"/>
         <source>%n days ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>yesterday</numerusform><numerusform>%n days ago</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="340"/>
         <source>%n hours ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n hour ago</numerusform><numerusform>%n hours ago</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="344"/>
         <source>%n minutes ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n minute ago</numerusform><numerusform>%n minutes ago</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
@@ -4415,7 +4415,7 @@ Login tokens expiration: %2</source>
     <message numerus="yes">
         <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="45"/>
         <source>Show more articles (%n remaining)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Show last article</numerusform><numerusform>Show more articles (%n remaining)</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="51"/>
@@ -4657,7 +4657,11 @@ Login tokens expiration: %2</source>
         <source>
 
 + %n other feeds.</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>
+
++ %n other feed.</numerusform><numerusform>
+
++ %n other feeds.</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="57"/>
@@ -4889,7 +4893,7 @@ List of supported readers:</source>
     <message numerus="yes">
         <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="24"/>
         <source>%n deleted article(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n deleted article.</numerusform><numerusform>%n deleted articles.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -5074,7 +5078,7 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="146"/>
         <source>%n unread article(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n unread article.</numerusform><numerusform>%n unread articles.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -6754,13 +6758,13 @@ Unread news: %2</source>
     <message numerus="yes">
         <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="54"/>
         <source>%n hour(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n hour</numerusform><numerusform>%n hours</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="55"/>
         <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="65"/>
         <source>%n minute(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n minute</numerusform><numerusform>%n minutes</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="57"/>
@@ -6771,7 +6775,7 @@ Unread news: %2</source>
     <message numerus="yes">
         <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="64"/>
         <source>%n second(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n second</numerusform><numerusform>%n seconds</numerusform></translation>
     </message>
 </context>
 <context>
