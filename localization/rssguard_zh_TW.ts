@@ -4659,20 +4659,20 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="116"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="31"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="82"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="91"/>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>zh_TW</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="119"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="83"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="92"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
         <translation>wck317</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="84"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="93"/>
         <source>LANG_EMAIL</source>
         <translation>wck317@pchome.com.tw</translation>
     </message>
@@ -4738,7 +4738,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2105"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2132"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation>無法插入文章篩選規則，因為目前的資料庫無法傳回最後插入行的 ID。</translation>
     </message>
@@ -4817,27 +4817,27 @@ List of supported readers:</source>
         <translation>簡化的 Reddit 客戶。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="392"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="400"/>
         <source>interesting stuff</source>
         <translation>有趣的項目</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="395"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="403"/>
         <source>interesting stuff (highlighted)</source>
         <translation>有趣的項目(標示)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="398"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="406"/>
         <source>errored items</source>
         <translation>出錯的項目</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="401"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="409"/>
         <source>errored items (highlighted)</source>
         <translation>出錯的項目(標示)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="404"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="412"/>
         <source>OK-ish color</source>
         <translation>像 OK 的顏色</translation>
     </message>
@@ -5358,6 +5358,11 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Network proxy</source>
         <translation>網路代理伺服器</translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
+        <source>Web browser &amp; e-mail &amp; proxy</source>
+        <translation>網路瀏覽器 &amp; 電子郵件 &amp; 代理伺服器</translation>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -5517,6 +5522,11 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Test setup</source>
         <translation>測試設定</translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="33"/>
+        <source>Data storage</source>
+        <translation>資料存儲</translation>
+    </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
@@ -5554,6 +5564,11 @@ Authors of this application are NOT responsible for lost data.</source>
         <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="74"/>
         <source>Ask for each individual downloaded file</source>
         <translation>每次下載都詢問</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsdownloads.h" line="29"/>
+        <source>Downloads</source>
+        <translation>下載</translation>
     </message>
 </context>
 <context>
@@ -5758,6 +5773,11 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Show relative time for articles not older than</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="34"/>
+        <source>Feeds &amp; articles</source>
+        <translation>文源與文章</translation>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -5775,6 +5795,11 @@ Authors of this application are NOT responsible for lost data.</source>
         <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
         <source>Check for %1 updates on application startup</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
+        <source>General</source>
+        <translation>一般</translation>
     </message>
 </context>
 <context>
@@ -5795,33 +5820,33 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>作者</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="214"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
         <source>You cannot change style because it was explicitly selected in your OS settings.
 Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="226"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="225"/>
         <source>Icon only</source>
         <translation>僅圖示</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="227"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="226"/>
         <source>Text only</source>
         <translation>僅文字</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="228"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="227"/>
         <source>Text beside icon</source>
         <translation>文字在圖示旁</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="228"/>
         <source>Text under icon</source>
         <translation>文字在圖示下</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="230"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
         <source>Follow OS style</source>
         <translation>使用作業系統風格</translation>
     </message>
@@ -5847,7 +5872,7 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
         <translation>可於此自訂外觀以蓋掉一些顏色。這些顏色可動態使用於本應用程式。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="253"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="252"/>
         <source>Fetch color from activated skin</source>
         <translation>從使用中的外觀抓取顏色</translation>
     </message>
@@ -5992,6 +6017,11 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
         <source>Icon size</source>
         <translation>圖示大小</translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsgui.h" line="34"/>
+        <source>User interface</source>
+        <translation>使用者介面</translation>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -6009,6 +6039,11 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
         <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="18"/>
         <source>Author</source>
         <translation>作者</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
+        <source>Localization</source>
+        <translation>本地化</translation>
     </message>
 </context>
 <context>
@@ -6113,6 +6148,19 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
         <source>Enable notifications</source>
         <translation>啟用通知</translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="27"/>
+        <source>Notifications</source>
+        <translation>通知</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsShortcuts</name>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="26"/>
+        <source>Keyboard shortcuts</source>
+        <translation>鍵盤快鍵</translation>
+    </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
@@ -6178,13 +6226,13 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
 <context>
     <name>SkinFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="176"/>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="180"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="184"/>
         <source>This page was blocked by AdBlock</source>
         <translation>AdBlock 封鎖了此頁</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="177"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="181"/>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
         <translation>封鎖網址: &quot;%1&quot; &lt;br/&gt;使用的篩選規則: &quot;%2&quot;</translation>
     </message>

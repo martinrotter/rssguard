@@ -1758,7 +1758,7 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="112"/>
         <source>&amp;Move</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Mover</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="151"/>
@@ -2259,27 +2259,27 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="876"/>
         <source>&amp;Sort alphabetically</source>
-        <translation type="unfinished"/>
+        <translation>Cla&amp;ssificar em ordem alfabética</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="881"/>
         <source>Move &amp;up</source>
-        <translation type="unfinished"/>
+        <translation>Mover para &amp;cima</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="886"/>
         <source>Move to &amp;top</source>
-        <translation type="unfinished"/>
+        <translation>Mover para o &amp;início</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="891"/>
         <source>Move &amp;down</source>
-        <translation type="unfinished"/>
+        <translation>Mover para &amp;baixo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="896"/>
         <source>Move to &amp;bottom</source>
-        <translation type="unfinished"/>
+        <translation>Mover para o &amp;final</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="738"/>
@@ -4663,20 +4663,20 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="116"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="31"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="82"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="91"/>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>pt_BR</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="119"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="83"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="92"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
         <translation>Igor Rückert</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="84"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="93"/>
         <source>LANG_EMAIL</source>
         <translation>igorruckert@yahoo.com.br</translation>
     </message>
@@ -4744,7 +4744,7 @@ Feedly is a secure space where you can privately organize and research the topic
 O Feedly é um espaço seguro onde você pode organizar e pesquisar com privacidade os tópicos e tendências que são importantes para você.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2105"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2132"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation>Não é possível inserir o filtro do artigo, pois o banco de dados atual não pode retornar o último ID de linha inserido.</translation>
     </message>
@@ -4823,27 +4823,27 @@ Lista de leitores suportados:</translation>
         <translation>Cliente simples para o Reddit.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="392"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="400"/>
         <source>interesting stuff</source>
         <translation>coisas interessantes</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="395"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="403"/>
         <source>interesting stuff (highlighted)</source>
         <translation>coisas interessantes (destacadas)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="398"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="406"/>
         <source>errored items</source>
         <translation>itens com erro</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="401"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="409"/>
         <source>errored items (highlighted)</source>
         <translation>itens com erro (destacados)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="404"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="412"/>
         <source>OK-ish color</source>
         <translation>Cor OK</translation>
     </message>
@@ -5364,6 +5364,11 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Network proxy</source>
         <translation>Proxy de rede</translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
+        <source>Web browser &amp; e-mail &amp; proxy</source>
+        <translation>Navegador &amp; e-mail &amp; proxy</translation>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -5522,6 +5527,11 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <source>Test setup</source>
         <translation>Testar configuração</translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="33"/>
+        <source>Data storage</source>
+        <translation>Armazenamento de dados</translation>
+    </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
@@ -5559,6 +5569,11 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="74"/>
         <source>Ask for each individual downloaded file</source>
         <translation>Perguntar para cada arquivo baixado</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsdownloads.h" line="29"/>
+        <source>Downloads</source>
+        <translation>Downloads</translation>
     </message>
 </context>
 <context>
@@ -5716,7 +5731,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="403"/>
         <source>Fixup date/time of articles which are in the future</source>
-        <translation type="unfinished"/>
+        <translation>Corrigir data/hora de artigos que estão no futuro</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="411"/>
@@ -5763,6 +5778,11 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <source>Show relative time for articles not older than</source>
         <translation>Mostrar tempo relativo para artigos com menos de</translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="34"/>
+        <source>Feeds &amp; articles</source>
+        <translation>Feeds &amp; artigos</translation>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -5780,6 +5800,11 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
         <source>Check for %1 updates on application startup</source>
         <translation>Verificar por atualizações do %1 ao iniciar o aplicativo</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
+        <source>General</source>
+        <translation>Geral</translation>
     </message>
 </context>
 <context>
@@ -5800,34 +5825,34 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
         <translation>Autor</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="214"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
         <source>You cannot change style because it was explicitly selected in your OS settings.
 Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</source>
         <translation>Você não pode alterar o estilo porque ele foi selecionado explicitamente nas configurações do seu sistema operacional.
 Talvez esteja definido com a variável de ambiente &apos;QT_STYLE_OVERRIDE&apos;?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="226"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="225"/>
         <source>Icon only</source>
         <translation>Somente ícone</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="227"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="226"/>
         <source>Text only</source>
         <translation>Somente texto</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="228"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="227"/>
         <source>Text beside icon</source>
         <translation>Texto ao lado do ícone</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="228"/>
         <source>Text under icon</source>
         <translation>Texto abaixo do ícone</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="230"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
         <source>Follow OS style</source>
         <translation>Estilo do sistema</translation>
     </message>
@@ -5853,7 +5878,7 @@ Talvez esteja definido com a variável de ambiente &apos;QT_STYLE_OVERRIDE&apos;
         <translation>Você pode substituir algumas cores definidas pelo seu tema aqui. Algumas cores são usadas dinamicamente em todo o aplicativo.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="253"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="252"/>
         <source>Fetch color from activated skin</source>
         <translation>Obter cor do tema ativado</translation>
     </message>
@@ -5998,6 +6023,11 @@ Talvez esteja definido com a variável de ambiente &apos;QT_STYLE_OVERRIDE&apos;
         <source>Icon size</source>
         <translation>Tamanho do ícone</translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsgui.h" line="34"/>
+        <source>User interface</source>
+        <translation>Interface do usuário</translation>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -6015,6 +6045,11 @@ Talvez esteja definido com a variável de ambiente &apos;QT_STYLE_OVERRIDE&apos;
         <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="18"/>
         <source>Author</source>
         <translation>Autor</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
+        <source>Localization</source>
+        <translation>Localização</translation>
     </message>
 </context>
 <context>
@@ -6125,6 +6160,19 @@ Além disso, existem alguns sons embutidos. Basta começar a digitar &quot;:&quo
         <source>Enable notifications</source>
         <translation>Ativar notificações</translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="27"/>
+        <source>Notifications</source>
+        <translation>Notificações</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsShortcuts</name>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="26"/>
+        <source>Keyboard shortcuts</source>
+        <translation>Atalhos do teclado</translation>
+    </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
@@ -6190,13 +6238,13 @@ Além disso, existem alguns sons embutidos. Basta começar a digitar &quot;:&quo
 <context>
     <name>SkinFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="176"/>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="180"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="184"/>
         <source>This page was blocked by AdBlock</source>
         <translation>Esta página foi bloqueada pelo Adblock</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="177"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="181"/>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
         <translation>URL bloqueado: &quot;%1&quot;&lt;br/&gt;Filtro usado: &quot;%2&quot;</translation>
     </message>

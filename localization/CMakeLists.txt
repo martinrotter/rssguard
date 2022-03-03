@@ -5,6 +5,7 @@ if(UPDATE_TRANSLATIONS)
   # and it is not offered in RSS Guard as localization.
   file(GLOB_RECURSE ALL_SOURCES
     "${CMAKE_SOURCE_DIR}/src/librssguard/*.cpp"
+    "${CMAKE_SOURCE_DIR}/src/librssguard/*.h"
     "${CMAKE_SOURCE_DIR}/src/librssguard/*.ui")
 
   qt_add_lupdate(rssguard

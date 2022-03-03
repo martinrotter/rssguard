@@ -4648,20 +4648,20 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="116"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="31"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="82"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="91"/>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>lt</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="119"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="83"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="92"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
         <translation>Moo</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="84"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="93"/>
         <source>LANG_EMAIL</source>
         <translation> </translation>
     </message>
@@ -4731,7 +4731,7 @@ Feedly is a secure space where you can privately organize and research the topic
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2105"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2132"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation type="unfinished"/>
     </message>
@@ -4808,27 +4808,27 @@ List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="392"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="400"/>
         <source>interesting stuff</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="395"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="403"/>
         <source>interesting stuff (highlighted)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="398"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="406"/>
         <source>errored items</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="401"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="409"/>
         <source>errored items (highlighted)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="404"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="412"/>
         <source>OK-ish color</source>
         <translation type="unfinished"/>
     </message>
@@ -5349,6 +5349,11 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Network proxy</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
+        <source>Web browser &amp; e-mail &amp; proxy</source>
+        <translation>Naršyklė, el. paštas ir įg. serveris</translation>
+    </message>
 </context>
 <context>
     <name>SettingsDatabase</name>
@@ -5497,6 +5502,11 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Test setup</source>
         <translation>Išbandyti sąranką</translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="33"/>
+        <source>Data storage</source>
+        <translation>Duomenų kaupiklis</translation>
+    </message>
 </context>
 <context>
     <name>SettingsDownloads</name>
@@ -5534,6 +5544,11 @@ Authors of this application are NOT responsible for lost data.</source>
         <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="74"/>
         <source>Ask for each individual downloaded file</source>
         <translation>Atskirai klausti kiekvienam atsiunčiamam failui</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsdownloads.h" line="29"/>
+        <source>Downloads</source>
+        <translation>Atsiuntimai</translation>
     </message>
 </context>
 <context>
@@ -5738,6 +5753,11 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Show relative time for articles not older than</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="34"/>
+        <source>Feeds &amp; articles</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>SettingsGeneral</name>
@@ -5755,6 +5775,11 @@ Authors of this application are NOT responsible for lost data.</source>
         <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
         <source>Check for %1 updates on application startup</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
+        <source>General</source>
+        <translation>Bendra</translation>
     </message>
 </context>
 <context>
@@ -5775,33 +5800,33 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Autorius</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="214"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
         <source>You cannot change style because it was explicitly selected in your OS settings.
 Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="226"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="225"/>
         <source>Icon only</source>
         <translation>Tik piktogramos</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="227"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="226"/>
         <source>Text only</source>
         <translation>Tik tekstas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="228"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="227"/>
         <source>Text beside icon</source>
         <translation>Tekstas šalia piktogramų</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="228"/>
         <source>Text under icon</source>
         <translation>Tekstas po piktogramomis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="230"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
         <source>Follow OS style</source>
         <translation>Sekti OS stiliumi</translation>
     </message>
@@ -5827,7 +5852,7 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="253"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="252"/>
         <source>Fetch color from activated skin</source>
         <translation type="unfinished"/>
     </message>
@@ -5972,6 +5997,11 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
         <source>Icon size</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsgui.h" line="34"/>
+        <source>User interface</source>
+        <translation>Naudotojo sąsaja</translation>
+    </message>
 </context>
 <context>
     <name>SettingsLocalization</name>
@@ -5989,6 +6019,11 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
         <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="18"/>
         <source>Author</source>
         <translation>Autorius</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
+        <source>Localization</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -6091,6 +6126,19 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
         <source>Enable notifications</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="27"/>
+        <source>Notifications</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>SettingsShortcuts</name>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="26"/>
+        <source>Keyboard shortcuts</source>
+        <translation>Spartieji klavišai</translation>
+    </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
@@ -6156,13 +6204,13 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
 <context>
     <name>SkinFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="176"/>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="180"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="184"/>
         <source>This page was blocked by AdBlock</source>
         <translation>Reklamos blokavimas užblokavo šį puslapį</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="177"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="181"/>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
         <translation type="unfinished"/>
     </message>
