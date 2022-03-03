@@ -333,7 +333,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           }
           else if (secs_difference >= 86400) {
             // 1 day.
-            return tr("1 day ago");
+            return tr("yesterday");
           }
           else if (secs_difference >= 3600) {
             // Less than a day.

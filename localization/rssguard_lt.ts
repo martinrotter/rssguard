@@ -4004,6 +4004,11 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <source>%n days ago</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
+        <source>yesterday</source>
+        <translation type="unfinished"/>
+    </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="340"/>
         <source>%n hours ago</source>
@@ -4013,11 +4018,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="344"/>
         <source>%n minutes ago</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
-        <source>1 day ago</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="347"/>

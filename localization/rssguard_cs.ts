@@ -4015,6 +4015,11 @@ Tokeny vyprší: %2</translation>
         <source>%n days ago</source>
         <translation><numerusform>před %n dnem</numerusform><numerusform>před %n dny</numerusform><numerusform>před %n dny</numerusform><numerusform>před %n dny</numerusform></translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
+        <source>yesterday</source>
+        <translation type="unfinished"/>
+    </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="340"/>
         <source>%n hours ago</source>
@@ -4024,11 +4029,6 @@ Tokeny vyprší: %2</translation>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="344"/>
         <source>%n minutes ago</source>
         <translation><numerusform>před %n minutou</numerusform><numerusform>před %n minutami</numerusform><numerusform>před %n minutami</numerusform><numerusform>před %n minutami</numerusform></translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
-        <source>1 day ago</source>
-        <translation>včera</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="347"/>

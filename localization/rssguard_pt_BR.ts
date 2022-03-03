@@ -4019,6 +4019,11 @@ Expiração dos tokens de login: %2</translation>
         <source>%n days ago</source>
         <translation><numerusform>%n dia atrás</numerusform><numerusform>%n dias atrás</numerusform></translation>
     </message>
+    <message>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
+        <source>yesterday</source>
+        <translation type="unfinished"/>
+    </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="340"/>
         <source>%n hours ago</source>
@@ -4028,11 +4033,6 @@ Expiração dos tokens de login: %2</translation>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="344"/>
         <source>%n minutes ago</source>
         <translation><numerusform>%n minuto atrás</numerusform><numerusform>%n minutos atrás</numerusform></translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
-        <source>1 day ago</source>
-        <translation>1 dia atrás</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="347"/>
