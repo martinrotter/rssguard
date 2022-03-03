@@ -206,9 +206,10 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // automatically sorted and are always sorted by title.
     //
     // Sort order number cannot be negative but order of list of items with same
-    // parent does not have to form continuous series, for example:
+    // parent MUST form continuous series AND start with zero, for example:
     //   0, 1, 2, 3, 4, ...
-    //   5, 7, 12, 13, 19
+    //
+    // NOTE: This is checked with DatabaseQueries::fixupOrders() method on app startup.
     int sortOrder() const;
     void setSortOrder(int sort_order);
 

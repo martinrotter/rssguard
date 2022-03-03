@@ -65,6 +65,13 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     qWarningNN << LOGSEC_GUI << "Respecting forced style(s):\n"
                << "  QT_STYLE_OVERRIDE: " QUOTE_NO_SPACE(env_forced_style) << "\n"
                << "  CLI (-style): " QUOTE_NO_SPACE(cli_forced_style);
+
+    if (!cli_forced_style.isEmpty()) {
+      style_name = cli_forced_style;
+    }
+    else if (!env_forced_style.isEmpty()) {
+      style_name = env_forced_style;
+    }
   }
 
   if (isStyleGoodForDarkVariant(style_name) &&
