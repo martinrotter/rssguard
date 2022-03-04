@@ -288,6 +288,10 @@ void FeedsView::deleteSelectedItem() {
   qApp->feedUpdateLock()->unlock();
 }
 
+void FeedsView::moveSelectedItemUp() {
+  m_sourceModel->changeSortOrder(selectedItem(), false, false, selectedItem()->sortOrder() - 1);
+}
+
 void FeedsView::markSelectedItemReadStatus(RootItem::ReadStatus read) {
   m_sourceModel->markItemRead(selectedItem(), read);
 }

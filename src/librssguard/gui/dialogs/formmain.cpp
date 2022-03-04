@@ -897,6 +897,8 @@ void FormMain::createConnections() {
     qApp->feedReader()->showMessageFiltersManager();
     tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
   });
+  connect(m_ui->m_actionFeedMoveUp, &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::moveSelectedItemUp);
 }
 
 void FormMain::backupDatabaseSettings() {

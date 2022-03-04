@@ -27,6 +27,13 @@ FROM backup_Feeds;
 -- !
 DROP TABLE backup_Feeds;
 -- !
+UPDATE Feeds
+SET ordr = (
+  SELECT COUNT(*)
+  FROM Feeds ct
+  WHERE Feeds.account_id = ct.account_id AND Feeds.category = ct.category AND ct.id < Feeds.id
+);
+-- !
 ALTER TABLE Categories RENAME TO backup_Categories;
 -- !
 CREATE TABLE Categories (
@@ -49,6 +56,13 @@ FROM backup_Categories;
 -- !
 DROP TABLE backup_Categories;
 -- !
+UPDATE Categories
+SET ordr = (
+  SELECT COUNT(*)
+  FROM Categories ct
+  WHERE Categories.account_id = ct.account_id AND Categories.parent_id = ct.parent_id AND ct.id < Categories.id
+);
+-- !
 ALTER TABLE Accounts RENAME TO backup_Accounts;
 -- !
 CREATE TABLE Accounts (
@@ -65,7 +79,7 @@ CREATE TABLE Accounts (
 );
 -- !
 INSERT INTO Accounts (id, ordr, type, proxy_type, proxy_host, proxy_port, proxy_username, proxy_password, custom_data)
-SELECT id, id, type, proxy_type, proxy_host, proxy_port, proxy_username, proxy_password, custom_data
+SELECT id, id - 1, type, proxy_type, proxy_host, proxy_port, proxy_username, proxy_password, custom_data
 FROM backup_Accounts;
 -- !
 DROP TABLE backup_Accounts;
