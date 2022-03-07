@@ -88,6 +88,8 @@ void FormCategoryDetails::loadCategoryData() {
   m_ui->m_txtTitle->lineEdit()->setText(m_category->title());
   m_ui->m_txtDescription->lineEdit()->setText(m_category->description());
   m_ui->m_btnIcon->setIcon(m_category->icon());
+
+  m_ui->m_txtTitle->lineEdit()->setFocus();
 }
 
 void FormCategoryDetails::apply() {

@@ -1940,7 +1940,7 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
   if (category->id() <= 0) {
     // We need to insert category first.
     if (category->sortOrder() < 0) {
-      q.exec(QSL("SELECT MAX(ordr) FROM Categories WHERE account_id = :account_id AND parent_id = :parent_id;"));
+      q.prepare(QSL("SELECT MAX(ordr) FROM Categories WHERE account_id = :account_id AND parent_id = :parent_id;"));
       q.bindValue(QSL(":account_id"), account_id);
       q.bindValue(QSL(":parent_id"), parent_id);
 

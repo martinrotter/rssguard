@@ -21,6 +21,9 @@
 StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
 
+  m_ui.m_txtPostProcessScript->textEdit()->setTabChangesFocus(true);
+  m_ui.m_txtSource->textEdit()->setTabChangesFocus(true);
+
   m_ui.m_txtTitle->lineEdit()->setPlaceholderText(tr("Feed title"));
   m_ui.m_txtTitle->lineEdit()->setToolTip(tr("Set title for your feed."));
   m_ui.m_txtDescription->lineEdit()->setPlaceholderText(tr("Feed description"));
@@ -334,6 +337,7 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
   }
 
   m_ui.m_txtSource->setFocus();
+  m_ui.m_txtSource->textEdit()->selectAll();
 }
 
 void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
