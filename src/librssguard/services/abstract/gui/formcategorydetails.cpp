@@ -110,6 +110,11 @@ void FormCategoryDetails::apply() {
 
   m_serviceRoot->requestItemReassignment(m_category, parent);
   m_serviceRoot->itemChanged({ m_category });
+
+  if (m_creatingNew) {
+    m_serviceRoot->requestItemExpand({ parent }, true);
+  }
+
   accept();
 }
 

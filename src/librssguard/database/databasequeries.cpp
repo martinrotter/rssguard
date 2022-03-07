@@ -1950,7 +1950,7 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
 
       q.next();
 
-      int next_order = (q.value(0).isNull() ? 0 : q.value(0).toInt()) + 1;
+      int next_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
 
       category->setSortOrder(next_order);
       q.finish();
