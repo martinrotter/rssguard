@@ -1993,7 +1993,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   if (feed->id() <= 0) {
     // We need to insert feed first.
     if (feed->sortOrder() < 0) {
-      q.exec(QSL("SELECT MAX(ordr) FROM Feeds WHERE account_id = :account_id AND category = :category;"));
+      q.prepare(QSL("SELECT MAX(ordr) FROM Feeds WHERE account_id = :account_id AND category = :category;"));
       q.bindValue(QSL(":account_id"), account_id);
       q.bindValue(QSL(":category"), parent_id);
 
@@ -2003,7 +2003,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
 
       q.next();
 
-      int next_order = (q.value(0).isNull() ? 0 : q.value(0).toInt()) + 1;
+      int next_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
 
       feed->setSortOrder(next_order);
       q.finish();
@@ -2042,9 +2042,6 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":custom_id"), feed->customId());
   q.bindValue(QSL(":id"), feed->id());
-
-  // TODO: upravit set na ordr = (SELECT MAX(ordr) FROM Feeds WHERE account_id = :account_id AND category = :category) + 1;
-  // to ale pokud je sortOrder < 0
   q.bindValue(QSL(":ordr"), feed->sortOrder());
   q.bindValue(QSL(":is_off"), feed->isSwitchedOff());
   q.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
@@ -2071,7 +2068,7 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
 
       q.next();
 
-      int next_order = (q.value(0).isNull() ? 0 : q.value(0).toInt()) + 1;
+      int next_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
 
       account->setSortOrder(next_order);
       q.finish();
