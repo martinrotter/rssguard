@@ -33,7 +33,7 @@ ServiceRoot::~ServiceRoot() = default;
 bool ServiceRoot::deleteViaGui() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::deleteAccount(database, accountId())) {
+  if (DatabaseQueries::deleteAccount(database, this)) {
     stop();
     requestItemRemoval(this);
     return true;

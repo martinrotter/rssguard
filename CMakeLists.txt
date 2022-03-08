@@ -29,7 +29,8 @@
 #
 # Other information:
 #   - supports Windows, Linux, *BSD, macOS, OS/2, Android,
-#   - Qt 5.9.0 or newer is required,
+#   - Qt 5.10.0 or newer is required,
+#   - Qt 6.3.0 or newer is required,
 #   - cmake 3.9.0 or newer is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules
 #     within repository before compilation,
@@ -111,7 +112,7 @@ option(REVISION_FROM_GIT "Get revision using `git rev-parse`" ON)
 
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.2.3)
-set(QT5_MIN_VERSION 5.9.0)
+set(QT5_MIN_VERSION 5.10.0)
 
 set(QT_COMPONENTS
   Core

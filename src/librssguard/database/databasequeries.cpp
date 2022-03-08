@@ -1491,7 +1491,7 @@ bool DatabaseQueries::purgeMessagesFromBin(const QSqlDatabase& db, bool clear_on
   return q.exec();
 }
 
-bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, int account_id) {
+bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, ServiceRoot* account) {
   QSqlQuery query(db);
 
   query.setForwardOnly(true);
@@ -1507,7 +1507,7 @@ bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, int account_id) {
 
   for (const QString& q : qAsConst(queries)) {
     query.prepare(q);
-    query.bindValue(QSL(":account_id"), account_id);
+    query.bindValue(QSL(":account_id"), account->accountId());
 
     if (!query.exec()) {
       qCriticalNN << LOGSEC_DB

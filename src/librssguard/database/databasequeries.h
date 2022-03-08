@@ -115,7 +115,7 @@ class DatabaseQueries {
     // Returns counts of updated messages <unread, all>.
     static QPair<int, int> updateMessages(QSqlDatabase db, QList<Message>& messages,
                                           Feed* feed, bool force_update, bool* ok = nullptr);
-    static bool deleteAccount(const QSqlDatabase& db, int account_id);
+    static bool deleteAccount(const QSqlDatabase& db, ServiceRoot* account);
     static bool deleteAccountData(const QSqlDatabase& db, int account_id, bool delete_messages_too, bool delete_labels_too);
     static bool cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label);
     static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
