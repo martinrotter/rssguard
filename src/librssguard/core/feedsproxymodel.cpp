@@ -164,7 +164,6 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
     // feeds are queued one after another too.
     // Moreover, sort everything alphabetically or
     // by item counts, depending on the sort column.
-
     if (left_item->keepOnTop()) {
       return sortOrder() == Qt::SortOrder::AscendingOrder;
     }
@@ -172,10 +171,15 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
       return sortOrder() == Qt::SortOrder::DescendingOrder;
     }
     else if (left_item->kind() == right_item->kind()) {
-      // We sort items alphabetically.
-      return sortOrder() == Qt::SortOrder::AscendingOrder
-                ? QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0
-                : QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) > 0;
+      // Both items are of the same type.
+      if (left.column() == FDS_MODEL_COUNTS_INDEX) {
+        // User wants to sort according to counts.
+        return left_item->countOfUnreadMessages() < right_item->countOfUnreadMessages();
+      }
+      else {
+        // In other cases, sort by title.
+        return QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0;
+      }
     }
     else {
       // We sort using priorities.
