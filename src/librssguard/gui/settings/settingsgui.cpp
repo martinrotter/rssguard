@@ -2,6 +2,7 @@
 
 #include "gui/settings/settingsgui.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "core/feedsmodel.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
@@ -27,12 +28,9 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   m_ui->m_editorFeedsToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorMessagesToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorFeedsToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
-  m_ui->m_treeSkins->setColumnCount(3);
+  m_ui->m_treeSkins->setColumnCount(5);
   m_ui->m_treeSkins->setHeaderHidden(false);
-  m_ui->m_treeSkins->setHeaderLabels(QStringList()
-                                     << /*: Skin list name column. */ tr("Name")
-                                     << /*: Version column of skin list. */ tr("Version")
-                                     << tr("Author"));
+  m_ui->m_treeSkins->setHeaderLabels({ tr("Name"), tr("Version"), tr("Author"), tr("Forced styles"), tr("Forced alternative palette") });
 
   m_ui->m_tabUi->setTabVisible(m_ui->m_tabUi->indexOf(m_ui->m_tabTaskBar),
 #if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)) || defined(Q_OS_WIN)
@@ -48,20 +46,21 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   m_ui->m_treeSkins->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(4, QHeaderView::ResizeMode::ResizeToContents);
 
-  connect(m_ui->m_cmbStyles, &QComboBox::currentTextChanged, this, [this](const QString& txt) {
-    m_ui->m_checkForceDarkFusion->setVisible(qApp->skins()->isStyleGoodForDarkVariant(txt));
-  });
+  connect(m_ui->m_cmbStyles, &QComboBox::currentTextChanged, this, &SettingsGui::updateSkinOptions);
 
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this, &SettingsGui::requireRestart);
   connect(m_ui->m_cmbIconTheme, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
           &SettingsGui::dirtifySettings);
   connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_treeSkins, &QTreeWidget::currentItemChanged, this, &SettingsGui::updateSkinOptions);
   connect(m_ui->m_grpTray, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHidden, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
-  connect(m_ui->m_checkForceDarkFusion, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
-  connect(m_ui->m_checkForceDarkFusion, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
+  connect(m_ui->m_checkForceAlternativePalette, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkForceAlternativePalette, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
   connect(m_ui->m_checkMonochromeIcons, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkCountUnreadMessages, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHideWhenMinimized, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
@@ -116,6 +115,24 @@ bool SettingsGui::eventFilter(QObject* obj, QEvent* e) {
   return false;
 }
 
+void SettingsGui::updateSkinOptions() {
+  auto* it = m_ui->m_treeSkins->currentItem();
+
+  if (it == nullptr) {
+    return;
+  }
+
+  const Skin skin = it->data(0, Qt::ItemDataRole::UserRole).value<Skin>();
+  const bool skin_has_palette = !skin.m_stylePalette.isEmpty();
+  const bool skin_forces_palette = skin.m_forcedStylePalette;
+  const bool skin_forces_style = skin.m_forcedStyles.isEmpty();
+
+  m_ui->m_cmbStyles->setEnabled(!qApp->skins()->styleIsFrozen() && skin_forces_style);
+  m_ui->m_checkForceAlternativePalette->setEnabled(skin_has_palette
+                                                   ? !skin_forces_palette
+                                                   : qApp->skins()->isStyleGoodForAlternativeStylePalette(m_ui->m_cmbStyles->currentText()));
+}
+
 void SettingsGui::loadSettings() {
   onBeginLoadSettings();
 
@@ -129,9 +146,6 @@ void SettingsGui::loadSettings() {
 
   m_ui->m_checkHidden->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool());
   m_ui->m_checkHideWhenMinimized->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool());
-
-  m_ui->m_checkForceDarkFusion->setChecked(settings()->value(GROUP(GUI),
-                                                             SETTING(GUI::ForceDarkFusion)).toBool());
 
   // Load settings of icon theme.
   const QString current_theme = qApp->icons()->currentIconTheme();
@@ -159,7 +173,7 @@ void SettingsGui::loadSettings() {
   m_ui->m_displayUnreadMessageCountOnTaskBar->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool());
 #endif
 
-  // Mark active theme.
+  // Mark active icon theme.
   if (current_theme == QL1S(APP_NO_THEME)) {
     // Because "no icon theme" lies at the index 0.
     m_ui->m_cmbIconTheme->setCurrentIndex(0);
@@ -168,15 +182,32 @@ void SettingsGui::loadSettings() {
     m_ui->m_cmbIconTheme->setCurrentText(current_theme);
   }
 
+  // Load styles.
+  auto styles = QStyleFactory::keys();
+
+  for (const QString& style_name : qAsConst(styles)) {
+    m_ui->m_cmbStyles->addItem(style_name);
+  }
+
+  int item_style = m_ui->m_cmbStyles->findText(qApp->skins()->currentStyle(), Qt::MatchFlag::MatchFixedString);
+
+  if (item_style >= 0) {
+    m_ui->m_cmbStyles->setCurrentIndex(item_style);
+  }
+
+  m_ui->m_checkForceAlternativePalette->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::ForceDarkFusion)).toBool());
+
   // Load skin.
   const QString selected_skin = qApp->skins()->selectedSkinName();
   auto skins = qApp->skins()->installedSkins();
 
   for (const Skin& skin : qAsConst(skins)) {
-    QTreeWidgetItem* new_item = new QTreeWidgetItem(QStringList() <<
-                                                    skin.m_visibleName <<
-                                                    skin.m_version <<
-                                                    skin.m_author);
+    QTreeWidgetItem* new_item = new QTreeWidgetItem({
+      skin.m_visibleName,
+      skin.m_version,
+      skin.m_author,
+      skin.m_forcedStyles.isEmpty() ? QChar(10007) : skin.m_forcedStyles.join(QSL(", ")),
+      skin.m_forcedStylePalette ? QChar(10003) : QChar(10007) });
 
     new_item->setData(0, Qt::UserRole, QVariant::fromValue(skin));
 
@@ -193,25 +224,6 @@ void SettingsGui::loadSettings() {
     // Currently active skin is NOT available, select another one as selected
     // if possible.
     m_ui->m_treeSkins->setCurrentItem(m_ui->m_treeSkins->topLevelItem(0));
-  }
-
-  // Load styles.
-  auto styles = QStyleFactory::keys();
-
-  for (const QString& style_name : qAsConst(styles)) {
-    m_ui->m_cmbStyles->addItem(style_name);
-  }
-
-  int item_style = m_ui->m_cmbStyles->findText(qApp->skins()->currentStyle(), Qt::MatchFlag::MatchFixedString);
-
-  if (item_style >= 0) {
-    m_ui->m_cmbStyles->setCurrentIndex(item_style);
-  }
-
-  if (qApp->skins()->styleIsFrozen()) {
-    m_ui->m_cmbStyles->setEnabled(false);
-    m_ui->m_cmbStyles->setToolTip(tr("You cannot change style because it was explicitly selected in your OS settings.\n"
-                                     "Perhaps it is set with 'QT_STYLE_OVERRIDE' environment variable?"));
   }
 
   // Load tab settings.
@@ -336,8 +348,6 @@ void SettingsGui::saveSettings() {
   settings()->setValue(GROUP(GUI), GUI::MainWindowStartsHidden, m_ui->m_checkHidden->isChecked());
   settings()->setValue(GROUP(GUI), GUI::HideMainWindowWhenMinimized, m_ui->m_checkHideWhenMinimized->isChecked());
 
-  settings()->setValue(GROUP(GUI), GUI::ForceDarkFusion, m_ui->m_checkForceDarkFusion->isChecked());
-
 #if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)) || defined(Q_OS_WIN)
   settings()->setValue(GROUP(GUI), GUI::UnreadNumbersOnTaskBar, m_ui->m_displayUnreadMessageCountOnTaskBar->isChecked());
 #endif
@@ -376,6 +386,10 @@ void SettingsGui::saveSettings() {
     }
 
     qApp->settings()->setValue(GROUP(GUI), GUI::Style, new_style);
+  }
+
+  if (m_ui->m_checkForceAlternativePalette->isEnabled()) {
+    settings()->setValue(GROUP(GUI), GUI::ForceDarkFusion, m_ui->m_checkForceAlternativePalette->isChecked());
   }
 
   // Save tab settings.

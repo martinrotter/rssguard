@@ -8,6 +8,7 @@
 #include <QColor>
 #include <QHash>
 #include <QMetaType>
+#include <QPalette>
 #include <QStringList>
 #include <QVariant>
 
@@ -49,8 +50,12 @@ struct RSSGUARD_DLLSPEC Skin {
   QString m_layoutMarkup;
   QString m_enclosureMarkup;
   QHash<SkinEnums::PaletteColors, QColor> m_colorPalette;
+  QStringList m_forcedStyles;
+  bool m_forcedStylePalette;
+  QMultiHash<QPalette::ColorGroup, QPair<QPalette::ColorRole, QColor>> m_stylePalette;
 
   QVariant colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors = false) const;
+  QPalette extractPalette() const;
 };
 
 uint qHash(const SkinEnums::PaletteColors& key);
@@ -68,7 +73,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     void loadCurrentSkin();
     Skin currentSkin() const;
 
-    bool isStyleGoodForDarkVariant(const QString& style_name) const;
+    bool isStyleGoodForAlternativeStylePalette(const QString& style_name) const;
 
     // Returns the name of the skin, that should be activated
     // after application restart.

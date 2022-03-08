@@ -101,9 +101,9 @@
         </spacer>
        </item>
        <item row="2" column="1">
-        <widget class="QCheckBox" name="m_checkForceDarkFusion">
+        <widget class="QCheckBox" name="m_checkForceAlternativePalette">
          <property name="text">
-          <string>Force dark look (Fusion only)</string>
+          <string>Force alternative color palette defined in skin</string>
          </property>
         </widget>
        </item>
@@ -458,7 +458,7 @@
   <tabstop>m_cmbSelectToolBar</tabstop>
   <tabstop>m_cmbIconTheme</tabstop>
   <tabstop>m_cmbStyles</tabstop>
-  <tabstop>m_checkForceDarkFusion</tabstop>
+  <tabstop>m_checkForceAlternativePalette</tabstop>
   <tabstop>m_treeSkins</tabstop>
   <tabstop>m_gbCustomSkinColors</tabstop>
  </tabstops>

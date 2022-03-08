@@ -24,6 +24,7 @@ class SettingsGui : public SettingsPanel {
     bool eventFilter(QObject* obj, QEvent* e);
 
   private slots:
+    void updateSkinOptions();
     void resetCustomSkinColor();
 
   private:

@@ -42,7 +42,7 @@ void SkinFactory::loadCurrentSkin() {
   qCriticalNN << LOGSEC_GUI << "Failed to load selected or default skin. Quitting!";
 }
 
-bool SkinFactory::isStyleGoodForDarkVariant(const QString& style_name) const {
+bool SkinFactory::isStyleGoodForAlternativeStylePalette(const QString& style_name) const {
   static QRegularExpression re = QRegularExpression("^(fusion)|(qt[56]ct-style)$");
 
   return re.match(style_name.toLower()).hasMatch();
@@ -55,13 +55,26 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   const QString cli_forced_style = qApp->cmdParser()->value(QSL(CLI_STYLE_SHORT));
 
   if (env_forced_style.isEmpty() && cli_forced_style.isEmpty()) {
-    qApp->setStyle(style_name);
     m_styleIsFrozen = false;
 
-    qDebugNN << LOGSEC_GUI << "Setting style:" << QUOTE_W_SPACE_DOT(style_name);
+    if (!skin.m_forcedStyles.isEmpty()) {
+      qDebugNN << LOGSEC_GUI << "Forcing one of skin's declared styles:"
+               << QUOTE_W_SPACE_DOT(skin.m_forcedStyles);
+
+      for (const QString& skin_forced_style : skin.m_forcedStyles) {
+        if (qApp->setStyle(skin_forced_style) != nullptr) {
+          break;
+        }
+      }
+    }
+    else {
+      qDebugNN << LOGSEC_GUI << "Setting style:" << QUOTE_W_SPACE_DOT(style_name);
+      qApp->setStyle(style_name);
+    }
   }
   else {
     m_styleIsFrozen = true;
+
     qWarningNN << LOGSEC_GUI << "Respecting forced style(s):\n"
                << "  QT_STYLE_OVERRIDE: " QUOTE_NO_SPACE(env_forced_style) << "\n"
                << "  CLI (-style): " QUOTE_NO_SPACE(cli_forced_style);
@@ -71,86 +84,97 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   // they specifically set object name to style name.
   m_currentStyle = qApp->style()->objectName();
 
-  if (isStyleGoodForDarkVariant(m_currentStyle) &&
-      qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForceDarkFusion)).toBool()) {
-    qDebugNN << LOGSEC_GUI << "Activating dark palette for Fusion style.";
+  if (isStyleGoodForAlternativeStylePalette(m_currentStyle) &&
 
-    QPalette fusion_palette = qApp->palette();
-    QColor clr_maibg(QSL("#2D2F32"));
-    QColor clr_basbg(QSL("#373A3D"));
-    QColor clr_altbg(QSL("#323437"));
-    QColor clr_selbg(QSL("#8291AD"));
-    QColor clr_selfg(QSL("#FFFFFF"));
-    QColor clr_btnfg(QSL("#E7E7E7"));
-    QColor clr_dibfg(QSL("#A7A7A7"));
-    QColor clr_winfg(QSL("#D8D8D8"));
-    QColor clr_diwfg(QSL("#999999"));
-    QColor clr_brdbg(QSL("#202224")); // Use colour picker on dark brdr under list header for this one
-    QColor clr_wlink(QSL("#a1acc1"));
+      /* Skin has alternative style palette and forces its usage. */
+      ((!skin.m_stylePalette.isEmpty() && skin.m_forcedStylePalette) ||
 
-    //
-    // Normal state.
-    //
+       /* User wants alternative style palette anyway. */
+       qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForceDarkFusion)).toBool())) {
+    qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
 
-    // Backgrounds & bases.
-    fusion_palette.setColor(QPalette::ColorRole::Window, clr_maibg);
-    fusion_palette.setColor(QPalette::ColorRole::Base, clr_basbg);
-    fusion_palette.setColor(QPalette::ColorRole::Dark, clr_brdbg);
-    fusion_palette.setColor(QPalette::ColorRole::AlternateBase, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorRole::Button, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorRole::Light, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorRole::Highlight, clr_selbg);
+    QPalette pal;
 
-    // Texts.
-    fusion_palette.setColor(QPalette::ColorRole::ButtonText, clr_btnfg);
-    fusion_palette.setColor(QPalette::ColorRole::WindowText, clr_winfg);
-    fusion_palette.setColor(QPalette::ColorRole::BrightText, clr_basbg);
-    fusion_palette.setColor(QPalette::ColorRole::Text, clr_winfg);
-    fusion_palette.setColor(QPalette::ColorRole::PlaceholderText, clr_dibfg);
-    fusion_palette.setColor(QPalette::ColorRole::Link, clr_wlink);
-    fusion_palette.setColor(QPalette::ColorRole::LinkVisited, clr_wlink);
-    fusion_palette.setColor(QPalette::ColorRole::HighlightedText, clr_selfg);
+    if (skin.m_stylePalette.isEmpty()) {
+      QColor clr_maibg(QSL("#2D2F32"));
+      QColor clr_basbg(QSL("#373A3D"));
+      QColor clr_altbg(QSL("#323437"));
+      QColor clr_selbg(QSL("#8291AD"));
+      QColor clr_selfg(QSL("#FFFFFF"));
+      QColor clr_btnfg(QSL("#E7E7E7"));
+      QColor clr_dibfg(QSL("#A7A7A7"));
+      QColor clr_winfg(QSL("#D8D8D8"));
+      QColor clr_diwfg(QSL("#999999"));
+      QColor clr_brdbg(QSL("#202224")); // Use color picker on dark brdr under list header for this one
+      QColor clr_wlink(QSL("#a1acc1"));
 
-    //
-    // Inactive state.
-    //
+      //
+      // Normal state.
+      //
 
-    // Backgrounds & bases.
+      // Backgrounds & bases.
+      pal.setColor(QPalette::ColorRole::Window, clr_maibg);
+      pal.setColor(QPalette::ColorRole::Base, clr_basbg);
+      pal.setColor(QPalette::ColorRole::Dark, clr_brdbg);
+      pal.setColor(QPalette::ColorRole::AlternateBase, clr_altbg);
+      pal.setColor(QPalette::ColorRole::Button, clr_altbg);
+      pal.setColor(QPalette::ColorRole::Light, clr_altbg);
+      pal.setColor(QPalette::ColorRole::Highlight, clr_selbg);
 
-    // Texts.
+      // Texts.
+      pal.setColor(QPalette::ColorRole::ButtonText, clr_btnfg);
+      pal.setColor(QPalette::ColorRole::WindowText, clr_winfg);
+      pal.setColor(QPalette::ColorRole::BrightText, clr_basbg);
+      pal.setColor(QPalette::ColorRole::Text, clr_winfg);
+      pal.setColor(QPalette::ColorRole::PlaceholderText, clr_dibfg);
+      pal.setColor(QPalette::ColorRole::Link, clr_wlink);
+      pal.setColor(QPalette::ColorRole::LinkVisited, clr_wlink);
+      pal.setColor(QPalette::ColorRole::HighlightedText, clr_selfg);
 
-    //
-    // Disabled state.
-    //
+      //
+      // Inactive state.
+      //
 
-    // Backgrounds & bases.
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Window, clr_maibg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Base, clr_basbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Dark, clr_brdbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::AlternateBase, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Button, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Light, clr_altbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Highlight, clr_selbg);
+      // Backgrounds & bases.
 
-    // Texts.
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::ButtonText, clr_dibfg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::WindowText, clr_diwfg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::BrightText, clr_basbg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Text, clr_diwfg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::PlaceholderText, clr_dibfg);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Link, clr_wlink);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::LinkVisited, clr_wlink);
-    fusion_palette.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::HighlightedText, clr_selfg);
+      // Texts.
 
-    //
-    // Tooltips.
-    //
+      //
+      // Disabled state.
+      //
 
-    fusion_palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipBase, clr_maibg);
-    fusion_palette.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipText, clr_winfg);
+      // Backgrounds & bases.
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Window, clr_maibg);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Base, clr_basbg);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Dark, clr_brdbg);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::AlternateBase, clr_altbg);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Button, clr_altbg);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Light, clr_altbg);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Highlight, clr_selbg);
 
-    QToolTip::setPalette(fusion_palette);
-    qApp->setPalette(fusion_palette);
+      // Texts.
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::ButtonText, clr_dibfg);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::WindowText, clr_diwfg);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::BrightText, clr_basbg);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Text, clr_diwfg);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::PlaceholderText, clr_dibfg);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Link, clr_wlink);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::LinkVisited, clr_wlink);
+      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::HighlightedText, clr_selfg);
+
+      //
+      // Tooltips.
+      //
+
+      pal.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipBase, clr_maibg);
+      pal.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipText, clr_winfg);
+    }
+    else {
+      pal = skin.extractPalette();
+    }
+
+    QToolTip::setPalette(pal);
+    qApp->setPalette(pal);
   }
 
   if (!skin.m_rawData.isEmpty()) {
@@ -270,6 +294,49 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       }
 
       skin.m_colorPalette = palette;
+
+      // Obtain alternative style palette.
+      skin.m_forcedStyles = skin_node
+                            .namedItem(QSL("forced-styles"))
+                            .toElement().text().split(',',
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                      Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                      QString::SplitBehavior::SkipEmptyParts);
+#endif
+
+      skin.m_forcedStylePalette = skin_node.namedItem(QSL("forced-style-palette")).toElement().text() ==
+                                  QVariant(true).toString();
+
+      QDomElement style_palette_root = skin_node.namedItem(QSL("style-palette")).toElement();
+
+      if (!style_palette_root.isNull()) {
+        const QMetaObject& mop = QPalette::staticMetaObject;
+        QMetaEnum enumerp = mop.enumerator(mop.indexOfEnumerator(QSL("ColorGroup").toLocal8Bit().constData()));
+        QMetaEnum enumerx = mop.enumerator(mop.indexOfEnumerator(QSL("ColorRole").toLocal8Bit().constData()));
+
+        QMultiHash<QPalette::ColorGroup, QPair<QPalette::ColorRole, QColor>> groups;
+
+        QDomNodeList groups_of_palette = style_palette_root.elementsByTagName(QSL("group"));
+
+        for (int i = 0; i < groups_of_palette.size(); i++) {
+          const QDomNode& group_root_nd = groups_of_palette.at(i);
+          QPalette::ColorGroup group = QPalette::ColorGroup(enumerp.keyToValue(group_root_nd.toElement().attribute(QSL("id")).toLatin1()));
+
+          QDomNodeList colors_of_group = group_root_nd.toElement().elementsByTagName(QSL("color"));
+
+          for (int j = 0; j < colors_of_group.size(); j++) {
+            const QDomNode& color_nd = colors_of_group.at(j);
+
+            QColor color(color_nd.toElement().text());
+            QPalette::ColorRole role = QPalette::ColorRole(enumerx.keyToValue(color_nd.toElement().attribute(QSL("role")).toLatin1()));
+
+            groups.insert(group, QPair<QPalette::ColorRole, QColor>(role, color));
+          }
+        }
+
+        skin.m_stylePalette = groups;
+      }
 
       // Free resources.
       skin_file.close();
@@ -392,6 +459,27 @@ QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_c
   return m_colorPalette.contains(type)
       ? m_colorPalette[type]
       : QVariant();
+}
+
+QPalette Skin::extractPalette() const {
+  QPalette pal;
+  QList<QPalette::ColorGroup> groups = m_stylePalette.keys();
+
+  if (groups.contains(QPalette::ColorGroup::All)) {
+
+    groups.removeAll(QPalette::ColorGroup::All);
+    groups.insert(0, QPalette::ColorGroup::All);
+  }
+
+  for (QPalette::ColorGroup grp : groups) {
+    auto roles = m_stylePalette.values(grp);
+
+    for (const auto& rl : roles) {
+      pal.setColor(grp, rl.first, rl.second);
+    }
+  }
+
+  return pal;
 }
 
 QString SkinEnums::palleteColorText(PaletteColors col) {
