@@ -172,10 +172,10 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
 }
 
 QString SystemFactory::loggedInUser() const {
-  QString name = qgetenv("USER");
+  QString name = qEnvironmentVariable("USER");
 
   if (name.isEmpty()) {
-    name = qgetenv("USERNAME");
+    name = qEnvironmentVariable("USERNAME");
   }
 
   if (name.isEmpty()) {
