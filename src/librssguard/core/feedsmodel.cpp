@@ -524,12 +524,6 @@ bool FeedsModel::emptyAllBins() {
   return result;
 }
 
-void FeedsModel::changeSortOrder(RootItem* item, bool move_top, bool move_bottom, int new_sort_order) {
-  QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::moveItem(item, move_top, move_bottom, new_sort_order, db);
-}
-
 void FeedsModel::loadActivatedServiceAccounts() {
   auto serv = qApp->feedReader()->feedServices();
 

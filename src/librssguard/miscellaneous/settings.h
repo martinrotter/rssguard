@@ -93,9 +93,6 @@ namespace Feeds {
   KEY ShowOnlyUnreadFeeds;
   VALUE(bool) ShowOnlyUnreadFeedsDef;
 
-  KEY SortAlphabetically;
-  VALUE(bool) SortAlphabeticallyDef;
-
   KEY ShowTreeBranches;
   VALUE(bool) ShowTreeBranchesDef;
 

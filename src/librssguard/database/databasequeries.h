@@ -134,10 +134,6 @@ class DatabaseQueries {
     static Assignment getFeeds(const QSqlDatabase& db, const QList<MessageFilter*>& global_filters,
                                int account_id, bool* ok = nullptr);
 
-    // Item order methods.
-    static void moveItem(RootItem* item, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db);
-    static void moveFeed(Feed* feed, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db);
-
     // Message filters operators.
     static bool purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id);
     static MessageFilter* addMessageFilter(const QSqlDatabase& db, const QString& title, const QString& script);
@@ -171,7 +167,6 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const Q
 
       // Load common data.
       root->setAccountId(query.value(QSL("id")).toInt());
-      root->setSortOrder(query.value(QSL("ordr")).toInt());
 
       QNetworkProxy proxy(QNetworkProxy::ProxyType(query.value(QSL("proxy_type")).toInt()),
                           query.value(QSL("proxy_host")).toString(),
@@ -237,7 +232,6 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
     auto* cat = static_cast<Category*>(pair.second);
 
     cat->setId(query_categories.value(CAT_DB_ID_INDEX).toInt());
-    cat->setSortOrder(query_categories.value(CAT_DB_ORDER_INDEX).toInt());
     cat->setCustomId(query_categories.value(CAT_DB_CUSTOM_ID_INDEX).toString());
 
     if (cat->customId().isEmpty()) {
@@ -293,7 +287,6 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
     // Load common data.
     feed->setTitle(query.value(FDS_DB_TITLE_INDEX).toString());
     feed->setId(query.value(FDS_DB_ID_INDEX).toInt());
-    feed->setSortOrder(query.value(FDS_DB_ORDER_INDEX).toInt());
     feed->setSource(query.value(FDS_DB_SOURCE_INDEX).toString());
     feed->setCustomId(query.value(FDS_DB_CUSTOM_ID_INDEX).toString());
 

@@ -243,31 +243,29 @@
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
 #define CAT_DB_ID_INDEX           0
-#define CAT_DB_ORDER_INDEX        1
-#define CAT_DB_PARENT_ID_INDEX    2
-#define CAT_DB_TITLE_INDEX        3
-#define CAT_DB_DESCRIPTION_INDEX  4
-#define CAT_DB_DCREATED_INDEX     5
-#define CAT_DB_ICON_INDEX         6
-#define CAT_DB_ACCOUNT_ID_INDEX   7
-#define CAT_DB_CUSTOM_ID_INDEX    8
+#define CAT_DB_PARENT_ID_INDEX    1
+#define CAT_DB_TITLE_INDEX        2
+#define CAT_DB_DESCRIPTION_INDEX  3
+#define CAT_DB_DCREATED_INDEX     4
+#define CAT_DB_ICON_INDEX         5
+#define CAT_DB_ACCOUNT_ID_INDEX   6
+#define CAT_DB_CUSTOM_ID_INDEX    7
 
 // Indexes of columns as they are DEFINED IN THE TABLE for FEEDS.
 #define FDS_DB_ID_INDEX               0
-#define FDS_DB_ORDER_INDEX            1
-#define FDS_DB_TITLE_INDEX            2
-#define FDS_DB_DESCRIPTION_INDEX      3
-#define FDS_DB_DCREATED_INDEX         4
-#define FDS_DB_ICON_INDEX             5
-#define FDS_DB_CATEGORY_INDEX         6
-#define FDS_DB_SOURCE_INDEX           7
-#define FDS_DB_UPDATE_TYPE_INDEX      8
-#define FDS_DB_UPDATE_INTERVAL_INDEX  9
-#define FDS_DB_IS_OFF_INDEX           10
-#define FDS_DB_OPEN_ARTICLES_INDEX    11
-#define FDS_DB_ACCOUNT_ID_INDEX       12
-#define FDS_DB_CUSTOM_ID_INDEX        13
-#define FDS_DB_CUSTOM_DATA_INDEX      14
+#define FDS_DB_TITLE_INDEX            1
+#define FDS_DB_DESCRIPTION_INDEX      2
+#define FDS_DB_DCREATED_INDEX         3
+#define FDS_DB_ICON_INDEX             4
+#define FDS_DB_CATEGORY_INDEX         5
+#define FDS_DB_SOURCE_INDEX           6
+#define FDS_DB_UPDATE_TYPE_INDEX      7
+#define FDS_DB_UPDATE_INTERVAL_INDEX  8
+#define FDS_DB_IS_OFF_INDEX           9
+#define FDS_DB_OPEN_ARTICLES_INDEX    10
+#define FDS_DB_ACCOUNT_ID_INDEX       11
+#define FDS_DB_CUSTOM_ID_INDEX        12
+#define FDS_DB_CUSTOM_DATA_INDEX      13
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX           0

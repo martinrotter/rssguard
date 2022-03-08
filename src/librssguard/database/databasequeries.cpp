@@ -1939,26 +1939,9 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
 
   if (category->id() <= 0) {
     // We need to insert category first.
-    if (category->sortOrder() < 0) {
-      q.prepare(QSL("SELECT MAX(ordr) FROM Categories WHERE account_id = :account_id AND parent_id = :parent_id;"));
-      q.bindValue(QSL(":account_id"), account_id);
-      q.bindValue(QSL(":parent_id"), parent_id);
-
-      if (!q.exec()) {
-        throw ApplicationException(q.lastError().text());
-      }
-
-      q.next();
-
-      int next_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
-
-      category->setSortOrder(next_order);
-      q.finish();
-    }
-
     q.prepare(QSL("INSERT INTO "
-                  "Categories (parent_id, ordr, title, date_created, account_id) "
-                  "VALUES (0, 0, 'new', 0, %1);").arg(QString::number(account_id)));
+                  "Categories (parent_id, title, date_created, account_id) "
+                  "VALUES (0, 'new', 0, %1);").arg(QString::number(account_id)));
 
     if (!q.exec()) {
       throw ApplicationException(q.lastError().text());
@@ -1969,7 +1952,7 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
   }
 
   q.prepare("UPDATE Categories "
-            "SET parent_id = :parent_id, ordr = :ordr, title = :title, description = :description, date_created = :date_created, "
+            "SET parent_id = :parent_id, title = :title, description = :description, date_created = :date_created, "
             "    icon = :icon, account_id = :account_id, custom_id = :custom_id "
             "WHERE id = :id;");
   q.bindValue(QSL(":parent_id"), parent_id);
@@ -1980,7 +1963,6 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":custom_id"), category->customId());
   q.bindValue(QSL(":id"), category->id());
-  q.bindValue(QSL(":ordr"), category->sortOrder());
 
   if (!q.exec()) {
     throw ApplicationException(q.lastError().text());
@@ -1992,26 +1974,9 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
 
   if (feed->id() <= 0) {
     // We need to insert feed first.
-    if (feed->sortOrder() < 0) {
-      q.prepare(QSL("SELECT MAX(ordr) FROM Feeds WHERE account_id = :account_id AND category = :category;"));
-      q.bindValue(QSL(":account_id"), account_id);
-      q.bindValue(QSL(":category"), parent_id);
-
-      if (!q.exec()) {
-        throw ApplicationException(q.lastError().text());
-      }
-
-      q.next();
-
-      int next_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
-
-      feed->setSortOrder(next_order);
-      q.finish();
-    }
-
     q.prepare(QSL("INSERT INTO "
-                  "Feeds (title, ordr, date_created, category, update_type, update_interval, account_id, custom_id) "
-                  "VALUES ('new', 0, 0, 0, 0, 1, %1, 'new');").arg(QString::number(account_id)));
+                  "Feeds (title, date_created, category, update_type, update_interval, account_id, custom_id) "
+                  "VALUES ('new', 0, 0, 0, 1, %1, 'new');").arg(QString::number(account_id)));
 
     if (!q.exec()) {
       throw ApplicationException(q.lastError().text());
@@ -2026,7 +1991,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   }
 
   q.prepare("UPDATE Feeds "
-            "SET title = :title, ordr = :ordr, description = :description, date_created = :date_created, "
+            "SET title = :title, description = :description, date_created = :date_created, "
             "    icon = :icon, category = :category, source = :source, update_type = :update_type, "
             "    update_interval = :update_interval, is_off = :is_off, open_articles = :open_articles, "
             "    account_id = :account_id, custom_id = :custom_id, custom_data = :custom_data "
@@ -2042,7 +2007,6 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":custom_id"), feed->customId());
   q.bindValue(QSL(":id"), feed->id());
-  q.bindValue(QSL(":ordr"), feed->sortOrder());
   q.bindValue(QSL(":is_off"), feed->isSwitchedOff());
   q.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
 
@@ -2060,22 +2024,9 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
   QSqlQuery q(db);
 
   if (account->accountId() <= 0) {
-    // We need to insert account and generate sort order first.
-    if (account->sortOrder() < 0) {
-      if (!q.exec(QSL("SELECT MAX(ordr) FROM Accounts;"))) {
-        throw ApplicationException(q.lastError().text());
-      }
-
-      q.next();
-
-      int next_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
-
-      account->setSortOrder(next_order);
-      q.finish();
-    }
-
-    q.prepare(QSL("INSERT INTO Accounts (ordr, type) "
-                  "VALUES (0, :type);"));
+    // We need to insert account first.
+    q.prepare(QSL("INSERT INTO Accounts (type) "
+                  "VALUES (:type);"));
     q.bindValue(QSL(":type"), account->code());
 
     if (!q.exec()) {
@@ -2091,7 +2042,7 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
 
   q.prepare(QSL("UPDATE Accounts "
                 "SET proxy_type = :proxy_type, proxy_host = :proxy_host, proxy_port = :proxy_port, "
-                "    proxy_username = :proxy_username, proxy_password = :proxy_password, ordr = :ordr, "
+                "    proxy_username = :proxy_username, proxy_password = :proxy_password, "
                 "    custom_data = :custom_data "
                 "WHERE id = :id"));
   q.bindValue(QSL(":proxy_type"), proxy.type());
@@ -2100,7 +2051,6 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
   q.bindValue(QSL(":proxy_username"), proxy.user());
   q.bindValue(QSL(":proxy_password"), TextFactory::encrypt(proxy.password()));
   q.bindValue(QSL(":id"), account->accountId());
-  q.bindValue(QSL(":ordr"), account->sortOrder());
 
   auto custom_data = account->customDatabaseData();
   QString serialized_custom_data = serializeCustomData(custom_data);
@@ -2141,81 +2091,6 @@ bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
   q.prepare(QSL("DELETE FROM Categories WHERE id = :category;"));
   q.bindValue(QSL(":category"), id);
   return q.exec();
-}
-
-void DatabaseQueries::moveItem(RootItem* item, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db) {
-  switch (item->kind()) {
-    case RootItem::Kind::Feed:
-      moveFeed(item->toFeed(), move_top, move_bottom, move_index, db);
-      break;
-
-    case RootItem::Kind::Category:
-      break;
-
-    case RootItem::Kind::ServiceRoot:
-
-      break;
-
-    default:
-      return;
-  }
-}
-
-void DatabaseQueries::moveFeed(Feed* feed, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db) {
-  if (feed->sortOrder() == move_index || /* Item is already sorted OK. */
-      (!move_top && !move_bottom && move_index < 0 ) || /* Order cannot be smaller than 0 if we do not move to begin/end. */
-      (move_top && feed->sortOrder() == 0)) { /* Item is already on top. */
-    return;
-  }
-
-  QSqlQuery q(db);
-
-  q.prepare(QSL("SELECT MAX(ordr) FROM Feeds WHERE account_id = :account_id AND category = :category;"));
-  q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
-  q.bindValue(QSL(":category"), feed->parent()->id());
-
-  int max_sort_order;
-
-  if (q.exec() && q.next()) {
-    max_sort_order = q.value(0).toInt();
-  }
-  else {
-    throw ApplicationException(q.lastError().text());
-  }
-
-  if (max_sort_order == 0 || /* We only have 1 item, nothing to sort. */
-      max_sort_order == feed->sortOrder() || /* Item is already sorted OK. */
-      move_index > max_sort_order) { /* Cannot move past biggest sort order. */
-    return;
-  }
-
-  if (move_top) {
-    move_index = 0;
-  }
-  else if (move_bottom) {
-    move_index = max_sort_order;
-  }
-
-  int move_low = qMin(move_index, feed->sortOrder());
-  int move_high = qMax(move_index, feed->sortOrder());
-
-  if (feed->sortOrder() > move_index) {
-    q.prepare(QSL("UPDATE Feeds SET ordr = ordr + 1 "
-                  "WHERE account_id = :account_id AND category = :category AND ordr < :move_high AND ordr >= :move_low;"));
-  }
-  else {
-    q.prepare(QSL("UPDATE Feeds SET ordr = ordr - 1 "
-                  "WHERE account_id = :account_id AND category = :category AND ordr > :move_low AND ordr <= :move_high;"));
-  }
-
-  q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
-  q.bindValue(QSL(":category"), feed->parent()->id());
-  q.bindValue(QSL(":move_low"), move_low);
-  q.bindValue(QSL(":move_high"), move_high);
-
-  if (!q.exec()) {
-    throw ApplicationException(q.lastError().text());
-  }
 }
 
 MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const QString& title,
