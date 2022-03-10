@@ -206,8 +206,16 @@ void SettingsGui::loadSettings() {
       skin.m_visibleName,
       skin.m_version,
       skin.m_author,
-      skin.m_forcedStyles.isEmpty() ? QChar(10007) : skin.m_forcedStyles.join(QSL(", ")),
-      skin.m_forcedStylePalette ? QChar(10003) : QChar(10007) });
+      skin.m_forcedStyles.isEmpty() ? QString() : skin.m_forcedStyles.join(QSL(", ")),
+      QString() });
+
+    if (skin.m_forcedStyles.isEmpty()) {
+      new_item->setIcon(3, qApp->icons()->fromTheme(QSL("dialog-cancel"), QSL("gtk-cancel")));
+    }
+
+    new_item->setIcon(4, skin.m_forcedStylePalette
+                      ? qApp->icons()->fromTheme(QSL("dialog-yes"), QSL("dialog-ok"))
+                      : qApp->icons()->fromTheme(QSL("dialog-cancel"), QSL("gtk-cancel")));
 
     new_item->setData(0, Qt::UserRole, QVariant::fromValue(skin));
 
