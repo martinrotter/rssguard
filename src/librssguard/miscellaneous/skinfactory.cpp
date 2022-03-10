@@ -85,93 +85,11 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   m_currentStyle = qApp->style()->objectName();
 
   if (isStyleGoodForAlternativeStylePalette(m_currentStyle) &&
-
-      /* Skin has alternative style palette and forces its usage. */
-      ((!skin.m_stylePalette.isEmpty() && skin.m_forcedStylePalette) ||
-
-       /* User wants alternative style palette anyway. */
-       qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForceDarkFusion)).toBool())) {
+      !skin.m_stylePalette.isEmpty() &&
+      (skin.m_forcedStylePalette || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForceDarkFusion)).toBool())) {
     qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
 
-    QPalette pal;
-
-    if (skin.m_stylePalette.isEmpty()) {
-      QColor clr_maibg(QSL("#2D2F32"));
-      QColor clr_basbg(QSL("#373A3D"));
-      QColor clr_altbg(QSL("#323437"));
-      QColor clr_selbg(QSL("#8291AD"));
-      QColor clr_selfg(QSL("#FFFFFF"));
-      QColor clr_btnfg(QSL("#E7E7E7"));
-      QColor clr_dibfg(QSL("#A7A7A7"));
-      QColor clr_winfg(QSL("#D8D8D8"));
-      QColor clr_diwfg(QSL("#999999"));
-      QColor clr_brdbg(QSL("#202224")); // Use color picker on dark brdr under list header for this one
-      QColor clr_wlink(QSL("#a1acc1"));
-
-      //
-      // Normal state.
-      //
-
-      // Backgrounds & bases.
-      pal.setColor(QPalette::ColorRole::Window, clr_maibg);
-      pal.setColor(QPalette::ColorRole::Base, clr_basbg);
-      pal.setColor(QPalette::ColorRole::Dark, clr_brdbg);
-      pal.setColor(QPalette::ColorRole::AlternateBase, clr_altbg);
-      pal.setColor(QPalette::ColorRole::Button, clr_altbg);
-      pal.setColor(QPalette::ColorRole::Light, clr_altbg);
-      pal.setColor(QPalette::ColorRole::Highlight, clr_selbg);
-
-      // Texts.
-      pal.setColor(QPalette::ColorRole::ButtonText, clr_btnfg);
-      pal.setColor(QPalette::ColorRole::WindowText, clr_winfg);
-      pal.setColor(QPalette::ColorRole::BrightText, clr_basbg);
-      pal.setColor(QPalette::ColorRole::Text, clr_winfg);
-      pal.setColor(QPalette::ColorRole::PlaceholderText, clr_dibfg);
-      pal.setColor(QPalette::ColorRole::Link, clr_wlink);
-      pal.setColor(QPalette::ColorRole::LinkVisited, clr_wlink);
-      pal.setColor(QPalette::ColorRole::HighlightedText, clr_selfg);
-
-      //
-      // Inactive state.
-      //
-
-      // Backgrounds & bases.
-
-      // Texts.
-
-      //
-      // Disabled state.
-      //
-
-      // Backgrounds & bases.
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Window, clr_maibg);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Base, clr_basbg);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Dark, clr_brdbg);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::AlternateBase, clr_altbg);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Button, clr_altbg);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Light, clr_altbg);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Highlight, clr_selbg);
-
-      // Texts.
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::ButtonText, clr_dibfg);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::WindowText, clr_diwfg);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::BrightText, clr_basbg);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Text, clr_diwfg);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::PlaceholderText, clr_dibfg);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Link, clr_wlink);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::LinkVisited, clr_wlink);
-      pal.setColor(QPalette::ColorGroup::Disabled, QPalette::ColorRole::HighlightedText, clr_selfg);
-
-      //
-      // Tooltips.
-      //
-
-      pal.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipBase, clr_maibg);
-      pal.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::ToolTipText, clr_winfg);
-    }
-    else {
-      pal = skin.extractPalette();
-    }
+    QPalette pal = skin.extractPalette();
 
     QToolTip::setPalette(pal);
     qApp->setPalette(pal);
@@ -312,10 +230,12 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
 
       if (!style_palette_root.isNull()) {
         const QMetaObject& mop = QPalette::staticMetaObject;
-        QMetaEnum enumerp = mop.enumerator(mop.indexOfEnumerator(QSL("ColorGroup").toLocal8Bit().constData()));
-        QMetaEnum enumerx = mop.enumerator(mop.indexOfEnumerator(QSL("ColorRole").toLocal8Bit().constData()));
 
-        QMultiHash<QPalette::ColorGroup, QPair<QPalette::ColorRole, QColor>> groups;
+        QMetaEnum enumerp = QMetaEnum::fromType<QPalette::ColorGroup>();
+        QMetaEnum enumerx = QMetaEnum::fromType<QPalette::ColorRole>();
+        QMetaEnum enumery = QMetaEnum::fromType<Qt::BrushStyle>();
+
+        QMultiHash<QPalette::ColorGroup, QPair<QPalette::ColorRole, QPair<QColor, Qt::BrushStyle>>> groups;
 
         QDomNodeList groups_of_palette = style_palette_root.elementsByTagName(QSL("group"));
 
@@ -330,8 +250,10 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
 
             QColor color(color_nd.toElement().text());
             QPalette::ColorRole role = QPalette::ColorRole(enumerx.keyToValue(color_nd.toElement().attribute(QSL("role")).toLatin1()));
+            Qt::BrushStyle brush = Qt::BrushStyle(enumery.keyToValue(color_nd.toElement().attribute(QSL("brush")).toLatin1()));
 
-            groups.insert(group, QPair<QPalette::ColorRole, QColor>(role, color));
+            groups.insert(group, QPair<QPalette::ColorRole, QPair<QColor, Qt::BrushStyle>>(role,
+                                                                                           { color, brush }));
           }
         }
 
@@ -475,7 +397,12 @@ QPalette Skin::extractPalette() const {
     auto roles = m_stylePalette.values(grp);
 
     for (const auto& rl : roles) {
-      pal.setColor(grp, rl.first, rl.second);
+      if (rl.second.second <= 0) {
+        pal.setColor(grp, rl.first, rl.second.first);
+      }
+      else {
+        pal.setBrush(grp, rl.first, QBrush(rl.second.first, rl.second.second));
+      }
     }
   }
 

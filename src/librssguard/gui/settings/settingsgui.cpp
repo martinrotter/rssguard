@@ -28,9 +28,9 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   m_ui->m_editorFeedsToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorMessagesToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorFeedsToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
-  m_ui->m_treeSkins->setColumnCount(5);
+  m_ui->m_treeSkins->setColumnCount(4);
   m_ui->m_treeSkins->setHeaderHidden(false);
-  m_ui->m_treeSkins->setHeaderLabels({ tr("Name"), tr("Version"), tr("Author"), tr("Forced style"), tr("Forced alternative palette") });
+  m_ui->m_treeSkins->setHeaderLabels({ tr("Name"), tr("Author"), tr("Forced style"), tr("Forced alternative palette") });
 
   m_ui->m_tabUi->setTabVisible(m_ui->m_tabUi->indexOf(m_ui->m_tabTaskBar),
 #if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)) || defined(Q_OS_WIN)
@@ -47,7 +47,6 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeMode::ResizeToContents);
-  m_ui->m_treeSkins->header()->setSectionResizeMode(4, QHeaderView::ResizeMode::ResizeToContents);
 
   connect(m_ui->m_cmbStyles, &QComboBox::currentTextChanged, this, &SettingsGui::updateSkinOptions);
 
@@ -125,9 +124,9 @@ void SettingsGui::updateSkinOptions() {
   const Skin skin = it->data(0, Qt::ItemDataRole::UserRole).value<Skin>();
   const bool skin_has_palette = !skin.m_stylePalette.isEmpty();
   const bool skin_forces_palette = skin.m_forcedStylePalette;
-  const bool skin_forces_style = skin.m_forcedStyles.isEmpty();
+  const bool skin_forces_style = !skin.m_forcedStyles.isEmpty();
 
-  m_ui->m_cmbStyles->setEnabled(!qApp->skins()->styleIsFrozen() && skin_forces_style);
+  m_ui->m_cmbStyles->setEnabled(!qApp->skins()->styleIsFrozen() && !skin_forces_style);
   m_ui->m_checkForceAlternativePalette->setEnabled(skin_has_palette
                                                    ? !skin_forces_palette
                                                    : qApp->skins()->isStyleGoodForAlternativeStylePalette(m_ui->m_cmbStyles->currentText()));
@@ -204,16 +203,15 @@ void SettingsGui::loadSettings() {
   for (const Skin& skin : qAsConst(skins)) {
     QTreeWidgetItem* new_item = new QTreeWidgetItem({
       skin.m_visibleName,
-      skin.m_version,
       skin.m_author,
       skin.m_forcedStyles.isEmpty() ? QString() : skin.m_forcedStyles.join(QSL(", ")),
       QString() });
 
     if (skin.m_forcedStyles.isEmpty()) {
-      new_item->setIcon(3, qApp->icons()->fromTheme(QSL("dialog-cancel"), QSL("gtk-cancel")));
+      new_item->setIcon(2, qApp->icons()->fromTheme(QSL("dialog-cancel"), QSL("gtk-cancel")));
     }
 
-    new_item->setIcon(4, skin.m_forcedStylePalette
+    new_item->setIcon(3, skin.m_forcedStylePalette
                       ? qApp->icons()->fromTheme(QSL("dialog-yes"), QSL("dialog-ok"))
                       : qApp->icons()->fromTheme(QSL("dialog-cancel"), QSL("gtk-cancel")));
 
