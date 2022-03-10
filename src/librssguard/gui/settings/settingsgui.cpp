@@ -30,7 +30,7 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   m_ui->m_editorFeedsToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_treeSkins->setColumnCount(5);
   m_ui->m_treeSkins->setHeaderHidden(false);
-  m_ui->m_treeSkins->setHeaderLabels({ tr("Name"), tr("Version"), tr("Author"), tr("Forced styles"), tr("Forced alternative palette") });
+  m_ui->m_treeSkins->setHeaderLabels({ tr("Name"), tr("Version"), tr("Author"), tr("Forced style"), tr("Forced alternative palette") });
 
   m_ui->m_tabUi->setTabVisible(m_ui->m_tabUi->indexOf(m_ui->m_tabTaskBar),
 #if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)) || defined(Q_OS_WIN)
