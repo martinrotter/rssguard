@@ -855,32 +855,32 @@ Status: %3</source>
 <context>
     <name>FeedsModel</name>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="45"/>
+        <location filename="../src/librssguard/core/feedsmodel.cpp" line="46"/>
         <source>Title</source>
         <translation>Заголовок</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="47"/>
+        <location filename="../src/librssguard/core/feedsmodel.cpp" line="48"/>
         <source>Titles of feeds/categories.</source>
         <translation>Заголовки каналов/категорий</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="38"/>
+        <location filename="../src/librssguard/core/feedsmodel.cpp" line="39"/>
         <source>Root</source>
         <translation>Root</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="122"/>
+        <location filename="../src/librssguard/core/feedsmodel.cpp" line="123"/>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
         <translation>Нельзя передать перетаскиваемый пункт в другой аккаунт, это не поддерживается.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="121"/>
+        <location filename="../src/librssguard/core/feedsmodel.cpp" line="122"/>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Невозможно выполнить операцию перетаскивания</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="48"/>
+        <location filename="../src/librssguard/core/feedsmodel.cpp" line="49"/>
         <source>Counts of unread/all mesages.</source>
         <translation>Количество непрочитанных / всех сообщений.</translation>
     </message>
@@ -917,7 +917,7 @@ Status: %3</source>
         <translation>Невозможно удалить элемент</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="748"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="734"/>
         <source>Context menu for empty space</source>
         <translation>Контекстное меню для пустого пространства</translation>
     </message>
@@ -932,8 +932,8 @@ Status: %3</source>
         <translation>Выбранный пункт нельзя удалить, потому что выполняется другая важная операция.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="631"/>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="674"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="626"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="669"/>
         <source>Context menu for categories</source>
         <translation>Контекстное меню для категорий</translation>
     </message>
@@ -975,7 +975,7 @@ or this functionality is not implemented yet.</source>
         <translation>Этот пункт нельзя удалить, потому что это не поддерживается или функция ещё не реализована.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="758"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="744"/>
         <source>Context menu for other items</source>
         <translation>Контекстное меню для других пунктов</translation>
     </message>
@@ -1000,12 +1000,12 @@ or this functionality is not implemented yet.</source>
         <translation>Контекстное меню для аккаунтов</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="779"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="765"/>
         <source>Context menu for label</source>
         <translation>Контекстное меню для меток</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="725"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="711"/>
         <source>Context menu for important articles</source>
         <translation>Контекстное меню для важных статей</translation>
     </message>
@@ -1339,93 +1339,93 @@ or this functionality is not implemented yet.</source>
         <translation>Добавить новую категорию</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="117"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="124"/>
         <source>Category name is ok.</source>
         <translation>Имя категории подходит.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="121"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="128"/>
         <source>Category name is too short.</source>
         <translation>Имя категории слишком короткое.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="127"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="134"/>
         <source>Description is empty.</source>
         <translation>Описание пустое.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="130"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="137"/>
         <source>The description is ok.</source>
         <translation>Описание подходит.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="135"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="142"/>
         <source>Select icon file for the category</source>
         <translation>Выберите файл иконки для категории</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="136"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="143"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
         <translation>Изображения (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="142"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="149"/>
         <source>Select icon</source>
         <translation>Выберите иконку</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="143"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="150"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="146"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="153"/>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
         <translation>Искать в:</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="147"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="154"/>
         <source>Icon name:</source>
         <translation>Имя иконки:</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="148"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="155"/>
         <source>Icon type:</source>
         <translation>Тип иконки:</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="164"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="171"/>
         <source>Category title</source>
         <translation>Заголовок категории</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="165"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="172"/>
         <source>Set title for your category.</source>
         <translation>Установите название для вашей категории.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="166"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="173"/>
         <source>Category description</source>
         <translation>Описание категории</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="167"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="174"/>
         <source>Set description for your category.</source>
         <translation>Задайте описание для вашей категории.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="173"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="180"/>
         <source>Icon selection</source>
         <translation>Выбор иконки</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="175"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="182"/>
         <source>Load icon from file...</source>
         <translation>Загрузить иконку из файла...</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="178"/>
+        <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="185"/>
         <source>Use default icon from icon theme</source>
         <translation>Использовать иконку по умолчанию из иконок темы.</translation>
     </message>
@@ -1695,12 +1695,12 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormMain</name>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="413"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="408"/>
         <source>No possible actions</source>
         <translation>Нет возможных действий</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="370"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="365"/>
         <source>No recycle bin</source>
         <translation>Нет корзины</translation>
     </message>
@@ -1755,539 +1755,509 @@ or this functionality is not implemented yet.</source>
         <translation>Добавить элемент (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="112"/>
-        <source>&amp;Move</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="151"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="139"/>
         <source>Art&amp;icles</source>
         <translation>Статьи (&amp;I)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="175"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="163"/>
         <source>&amp;Recycle bin(s)</source>
         <translation>Корзина(ы) (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="182"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="170"/>
         <source>&amp;Accounts</source>
         <translation>Аккаунты (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="190"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="178"/>
         <source>&amp;Web browser &amp;&amp; tabs</source>
         <translation>Веб-браузер и вкладки (&amp;W)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="213"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="201"/>
         <source>&amp;Quit</source>
         <translation>Выход (&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="216"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="204"/>
         <source>Quit the application.</source>
         <translation>Выход из приложения</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="227"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="215"/>
         <source>&amp;Settings</source>
         <translation>Настройки (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="230"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="218"/>
         <source>Display settings of the application.</source>
         <translation>Показать настройки приложения.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="238"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="226"/>
         <source>&amp;About application</source>
         <translation>О приложении (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="241"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="229"/>
         <source>Displays extra info about this application.</source>
         <translation>Отображает дополнительную информацию об этом приложении.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="255"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="243"/>
         <source>&amp;Fullscreen</source>
         <translation>Полный экран (&amp;F)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="258"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="246"/>
         <source>Switch fullscreen mode.</source>
         <translation>Переключиться в полноэкранный режим.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="266"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="254"/>
         <source>&amp;Fetch all</source>
         <translation>Обновить все (&amp;F)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="269"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="257"/>
         <source>Fetch all feeds</source>
         <translation>Обновить все каналы</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="277"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="265"/>
         <source>Fetch &amp;selected</source>
         <translation>Обновить выбранные каналы (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="280"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="268"/>
         <source>Fetch selected feeds</source>
         <translation>Обновить выбранные каналы</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="288"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="276"/>
         <source>&amp;Edit selected item</source>
         <translation>Изменить выбранный элемент (&amp;E)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="296"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="284"/>
         <source>&amp;Delete selected item</source>
         <translation>Удалить выбранный элемент (&amp;D)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="304"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
         <source>Mark articles &amp;read</source>
         <translation>Пометить статьи как прочитанные (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="307"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="295"/>
         <source>Mark selected articles read</source>
         <translation>Пометить выбранные статьи как прочитанные</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="315"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="303"/>
         <source>Mark articles &amp;unread</source>
         <translation>Пометить статьи как непрочитанные (&amp;U)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="318"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="306"/>
         <source>Mark selected articles unread</source>
         <translation>Пометить выбранные статьи как непрочитанные</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="326"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="314"/>
         <source>Switch &amp;importance</source>
         <translation>Переключить важность (&amp;I)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="329"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="317"/>
         <source>Switch importance of selected articles</source>
         <translation>Переключить важность выбранных статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="337"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="325"/>
         <source>Mark selected item &amp;read</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="340"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="328"/>
         <source>Mark all messages (without message filters) from selected items as read.</source>
         <translation>Отметить все сообщения (без фильтров сообщений) из выбранных элементов как прочитанные.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="348"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="336"/>
         <source>Mark selected item &amp;unread</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="351"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="339"/>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
         <translation>Отметить все сообщения (без фильтров сообщений) из выбранных элементов как непрочитанные.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="359"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="347"/>
         <source>&amp;Delete articles</source>
         <translation>Удалить статьи (&amp;D)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="367"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="355"/>
         <source>&amp;Clean selected item</source>
         <translation>Очистить выбранный элемент (&amp;C)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="370"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="358"/>
         <source>Deletes all messages from selected items.</source>
         <translation>Удалить все сообщения из выбранного элемента.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="378"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="366"/>
         <source>Open in &amp;external browser</source>
         <translation>Открыть во внешнем браузере (&amp;E)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="381"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="369"/>
         <source>Open selected articles in external browser</source>
         <translation>Открыть выбранные статьи во внешнем браузере</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="389"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="377"/>
         <source>Open in &amp;internal browser</source>
         <translation>Открыть во внутреннем браузере (&amp;I)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="392"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="380"/>
         <source>Open selected articles in internal browser</source>
         <translation>Открыть выбранные статьи во внутреннем браузере</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="403"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="391"/>
         <source>No actions available</source>
         <translation>Нет доступных действий</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="406"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="394"/>
         <source>No actions are available right now.</source>
         <translation>В данный момент нет доступных действий.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="414"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="402"/>
         <source>&amp;Mark all read</source>
         <translation>Пометить всё как прочитанное (&amp;M)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="417"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="405"/>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
         <translation>Отметить все сообщения во всех прочитанных элементах. Это действие не учитывает фильтры сообщений.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="425"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="413"/>
         <source>View selected item in &amp;newspaper mode</source>
         <translation>Просмотр выбранного элемента в режиме газеты (&amp;N)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="428"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="416"/>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
         <translation>Отобразить все сообщения из выбранного элемента в новой вкладке в &quot;Режиме газеты&quot;. Обратите внимание, что сообщения не считаются автоматически прочитанными.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="439"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="427"/>
         <source>Minimize (or hide) main window</source>
         <translation>Свернуть (или скрыть) главное окно</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="442"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="430"/>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
         <translation>Скрывает главное окно, если оно видно, и показывает его, если оно скрыто.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="456"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="444"/>
         <source>&amp;Feed list</source>
         <translation>Список каналов (&amp;F)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="459"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="447"/>
         <source>Hides or shows the list of feeds/categories.</source>
         <translation>Скрыть/показать список каналов/категорий.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="467"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="455"/>
         <source>&amp;Clean all</source>
         <translation>Очистить все (&amp;C)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="470"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="458"/>
         <source>Deletes all messages from all items.</source>
         <translation>Удалить все сообщения из всех элементов.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="478"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="466"/>
         <source>&amp;Next item</source>
         <translation>Следующий элемент (&amp;N)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="486"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="474"/>
         <source>&amp;Previous item</source>
         <translation>Предыдущий элемент (&amp;P)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="494"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="482"/>
         <source>&amp;Next article</source>
         <translation>Следующая статья (&amp;N)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="502"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="490"/>
         <source>&amp;Previous article</source>
         <translation>Предыдущая статья (&amp;P)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="510"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="498"/>
         <source>Check for &amp;updates</source>
         <translation>Проверить обновления (&amp;U)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="513"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="501"/>
         <source>Check if new update for the application is available for download.</source>
         <translation>Проверить, доступно ли для загрузки новое обновление для приложения.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="527"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="515"/>
         <source>&amp;Main menu</source>
         <translation>Главное меню (&amp;M)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="530"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="518"/>
         <source>Hides or displays the main menu.</source>
         <translation>Скрыть или показать главное меню.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="538"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="526"/>
         <source>Report a &amp;bug...</source>
         <translation>Сообщить об ошибке (&amp;B)...</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="549"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="537"/>
         <source>&amp;Toolbars</source>
         <translation>Панель инструментов (&amp;T)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="552"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="540"/>
         <source>Switch visibility of main toolbars.</source>
         <translation>Переключение видимости основных панелей инструментов.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="566"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="554"/>
         <source>&amp;List headers</source>
         <translation>Список заголовков (&amp;L)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="574"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="562"/>
         <source>&amp;Donate...</source>
         <translation>Пожертвовать... (&amp;D)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="582"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="570"/>
         <source>Display &amp;documentation</source>
         <translation>Показать документацию (&amp;D)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="590"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
         <source>&amp;Restart</source>
         <translation>Перезапустить (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="598"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
         <source>&amp;Restore settings</source>
         <translation>Восстановить настройки (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="606"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="594"/>
         <source>&amp;Backup settings</source>
         <translation>Резервная копия настроек (&amp;B)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="614"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="602"/>
         <source>Switch layout</source>
         <translation>Переключить расположение панелей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="622"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="610"/>
         <source>&amp;Downloads</source>
         <translation>Загрузки (&amp;D)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="630"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="618"/>
         <source>Send via e-mail</source>
         <translation>Отправить по электронной почте</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="633"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="621"/>
         <source>Send selected articles via e-mail</source>
         <translation>Отправить выбранные статьи по электронной почте</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="641"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
         <source>&amp;Cleanup database</source>
         <translation>Очистить базу данных (&amp;C)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="652"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="640"/>
         <source>Show unread items only</source>
         <translation>Показать только непрочитанные элементы</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="660"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="648"/>
         <source>&amp;Expand/collapse selected item</source>
         <translation>Развернуть/свернуть выбранный элемент (&amp;E)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="668"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="656"/>
         <source>&amp;Add account</source>
         <translation>Добавить аккаунт (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="676"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="664"/>
         <source>&amp;Restore articles</source>
         <translation>Восстановить статьи (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="684"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="672"/>
         <source>&amp;Restore all recycle bins</source>
         <translation>Восстановить все корзины (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="692"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="680"/>
         <source>&amp;Empty all recycle bins</source>
         <translation>Очистить все корзины (&amp;E)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="700"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="688"/>
         <source>Next &amp;unread article</source>
         <translation>Следующая непрочитанная статья (&amp;U)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="714"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="702"/>
         <source>Status bar</source>
         <translation>Строка состояния</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="722"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="710"/>
         <source>&amp;Edit selected account</source>
         <translation>Изменить выбранный аккаунт (&amp;E)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="730"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="718"/>
         <source>&amp;Delete selected account</source>
         <translation>Удалить выбранный аккаунт (&amp;D)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="743"/>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="312"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="731"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="307"/>
         <source>Add new category</source>
         <translation>Добавить новую категорию</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="748"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="736"/>
         <source>Stop ongoing fetching</source>
         <translation>Остановить получение</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="744"/>
         <source>New browser tab</source>
         <translation>Новая вкладка браузера</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="752"/>
         <source>Close all tabs</source>
         <translation>Закрыть все вкладки</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="769"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="757"/>
         <source>Close all tabs except current</source>
         <translation>Закрыть все вкладки кроме текущей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="774"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="762"/>
         <source>Go to &amp;next tab</source>
         <translation>Перейти к следующей вкладке (&amp;N)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="779"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="767"/>
         <source>Go to &amp;previous tab</source>
         <translation>Перейти к предыдущей вкладке (&amp;P)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="787"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="775"/>
         <source>&amp;Enable article preview</source>
         <translation>Включить предпросмотр статей (&amp;E)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="792"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="780"/>
         <source>&amp;Copy URL of selected item</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="800"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="788"/>
         <source>Show &amp;unread articles only</source>
         <translation>Показать только непрочитанные статьи (&amp;U)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="805"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="793"/>
         <source>Article &amp;filters</source>
         <translation>Фильтры статей (&amp;F)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="813"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="801"/>
         <source>&amp;Show tree expanders</source>
         <translation>Отображать иерархию расширителей (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="818"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="806"/>
         <source>Fetch feeds with &amp;custom auto-download policy</source>
         <translation>Обновить каналы с настроенной политикой автозагрузки (&amp;C)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="826"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="814"/>
         <source>Alternate row colors in lists</source>
         <translation>Чередовать цвет фона строк в списках</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="834"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="822"/>
         <source>Automatically &amp;expand item when selected</source>
         <translation>Автоматически разворачивать элемент при выборе (&amp;E)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="845"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="833"/>
         <source>Message viewer toolbars</source>
         <translation>Панели инструментов средства просмотра сообщений</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="850"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="838"/>
         <source>Expand/collapse selected item &amp;recursively</source>
         <translation>Рекурсивно развернуть/свернуть выбранный элемент (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="855"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="843"/>
         <source>Close &amp;current tab</source>
         <translation>Закрыть текущую вкладку (&amp;C)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="860"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="848"/>
         <source>&amp;Copy URLs of selected articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="865"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="853"/>
         <source>Open in internal browser (no new tab)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="876"/>
-        <source>&amp;Sort alphabetically</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="881"/>
-        <source>Move &amp;up</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="886"/>
-        <source>Move to &amp;top</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="891"/>
-        <source>Move &amp;down</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="896"/>
-        <source>Move to &amp;bottom</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="738"/>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="324"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="726"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="319"/>
         <source>Add new feed</source>
         <translation>Добавить новый канал</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="378"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="373"/>
         <source>No actions possible</source>
         <translation>Нет возможных действий</translation>
     </message>
@@ -2302,22 +2272,22 @@ or this functionality is not implemented yet.</source>
         <translation>Не удается очистить базу данных, т.к. выполняется другое критическое действие.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="521"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="510"/>
         <source>Close opened modal dialogs first.</source>
         <translation>Сначала закройте открытые модальные диалоги.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="268"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="263"/>
         <source>Ta&amp;bs</source>
         <translation>Вкладки (&amp;B)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="449"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="444"/>
         <source>Fetching common data</source>
         <translation>Получение общих данных</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="520"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="509"/>
         <source>Close dialogs</source>
         <translation>Закрыть диалоги</translation>
     </message>
@@ -4748,7 +4718,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly - это безопасное пространство, где вы можете в частном порядке организовывать и исследовать важные для вас темы и тенденции.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2132"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2099"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation>Невозможно вставить фильтр статьи, поскольку текущая база данных не может вернуть идентификатор последней добавленной строки.</translation>
     </message>
@@ -4827,27 +4797,27 @@ List of supported readers:</source>
         <translation>Упрощенный клиент Reddit.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="400"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="410"/>
         <source>interesting stuff</source>
         <translation>интересный материал</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="403"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="413"/>
         <source>interesting stuff (highlighted)</source>
         <translation>интересный материал (выделено)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="406"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="416"/>
         <source>errored items</source>
         <translation>элементы с ошибками</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="409"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="419"/>
         <source>errored items (highlighted)</source>
         <translation>элементы с ошибками (выделено)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="412"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="422"/>
         <source>OK-ish color</source>
         <translation>Цвет OK</translation>
     </message>
@@ -5114,7 +5084,7 @@ Login tokens expiration: %2</source>
 <context>
     <name>RootItem</name>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="146"/>
+        <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="145"/>
         <source>%n unread article(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n непрочитанная(ых) статья(й)</numerusform><numerusform>%n непрочитанная(ых) статья(й)</numerusform><numerusform>%n непрочитанная(ых) статья(й)</numerusform><numerusform>%n непрочитанная(ых) статья(й)</numerusform></translation>
@@ -5809,74 +5779,81 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
-        <source>Version</source>
-        <translation>Версия</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="35"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
         <source>Author</source>
         <translation>Автор</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
-        <source>You cannot change style because it was explicitly selected in your OS settings.
-Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="225"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="251"/>
         <source>Icon only</source>
         <translation>Только иконка</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="226"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="252"/>
         <source>Text only</source>
         <translation>Только текст</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="227"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="253"/>
         <source>Text beside icon</source>
         <translation>Текст рядом с иконкой</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="228"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="254"/>
         <source>Text under icon</source>
         <translation>Текст под иконкой</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="255"/>
         <source>Follow OS style</source>
         <translation>Стиль ОС</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="145"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="156"/>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
         <translation>тема значков системы</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="147"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="158"/>
         <source>no icon theme</source>
         <translation>тема без значков</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="126"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="140"/>
         <source>(Your OS does not support tray icons at the moment.)</source>
         <translation>(Ваша ОС в настоящий момент не поддерживает значки на панели задач.)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="44"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
+        <source>Forced style</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
+        <source>Forced UI colors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="42"/>
         <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
         <translation>Здесь вы можете переопределить некоторые цвета, определенные вашей темой. Некоторые цвета используются динамически во всем приложении.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="252"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="208"/>
+        <source>%1
+
+Version: %2
+Description: %3</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="278"/>
         <source>Fetch color from activated skin</source>
         <translation>Получить цвет из активированной темы</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="88"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="86"/>
         <source> = default icon size</source>
         <translation>= размер значков по умолчанию</translation>
     </message>
@@ -5901,123 +5878,123 @@ Perhaps it is set with &apos;QT_STYLE_OVERRIDE&apos; environment variable?</sour
         <translation>Тема</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="106"/>
-        <source>Force dark look (Fusion only)</source>
-        <translation>Принудительно темная тема (только Fusion)</translation>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
+        <source>Force UI colors defined in skin</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="114"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
         <source>Custom skin colors</source>
         <translation>Пользовательские цвета тем</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="123"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="129"/>
         <source>Force custom skin colors</source>
         <translation>Принудительные пользовательские цвета тем</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="135"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="141"/>
         <source>Tray area</source>
         <translation>Системный лоток</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="147"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="153"/>
         <source>Tray icon</source>
         <translation>Иконка в панели уведомлений</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="159"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="165"/>
         <source>Use monochrome icon</source>
         <translation>Использовать монохромный значок</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="166"/>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="172"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="216"/>
         <source>Display count of unread messages</source>
         <translation>Отображать количество непрочитанных сообщений</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="173"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="179"/>
         <source>Hide main window when it is minimized</source>
         <translation>Скрыть главное окно при минимизации</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="180"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="186"/>
         <source>Start application hidden</source>
         <translation>Минимизировать при запуске</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="204"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
         <source>Task bar</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="218"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="224"/>
         <source>Tabs</source>
         <translation>Вкладки</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="230"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
         <source>Close tabs with</source>
         <translation>Закрыть вкладки при помощи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="242"/>
         <source>Middle mouse button single-click</source>
         <translation>Средней мышки одиночным кликом</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="243"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="249"/>
         <source>Left mouse button double-click</source>
         <translation>Двойной щелчок левой кнопкой мыши</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="253"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="259"/>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
         <translation>Открыть новую вкладку левой мышкой двойным кликом на панели вкладок</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="260"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="266"/>
         <source>Hide tab bar if just one tab is visible</source>
         <translation>Скрыть панель вкладок, если она одна</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="281"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="287"/>
         <source>Toolbars</source>
         <translation>Панели</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="294"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="300"/>
         <source>Toolbar for feeds list</source>
         <translation>Панель для списка каналов</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="299"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="305"/>
         <source>Toolbar for articles list</source>
         <translation>Панель инструментов для списка статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="304"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="310"/>
         <source>Statusbar</source>
         <translation>Панель статуса</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="382"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="388"/>
         <source>Button style</source>
         <translation>Стили кнопок</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="392"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="398"/>
         <source>Toolbar editor</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="418"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="424"/>
         <source>Icon size</source>
         <translation>Размер иконки</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgui.h" line="34"/>
+        <location filename="../src/librssguard/gui/settings/settingsgui.h" line="35"/>
         <source>User interface</source>
         <translation>Интерфейс</translation>
     </message>
@@ -6223,13 +6200,13 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
 <context>
     <name>SkinFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="180"/>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="184"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="122"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="126"/>
         <source>This page was blocked by AdBlock</source>
         <translation>Эта страница заблокирована AdBlock</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="181"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="123"/>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
         <translation>Заблокированный URL: &quot;%1&quot;&lt;br/&gt;Используемый фильтр: &quot;%2&quot;</translation>
     </message>
@@ -6325,237 +6302,237 @@ Type: %3</source>
 <context>
     <name>StandardFeedDetails</name>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="24"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="27"/>
         <source>Feed title</source>
         <translation>Заголовок канала</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="25"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="28"/>
         <source>Set title for your feed.</source>
         <translation>Установите заголовок для вашего канала.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="26"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="29"/>
         <source>Feed description</source>
         <translation>Описание канала</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="27"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="30"/>
         <source>Set description for your feed.</source>
         <translation>Задайте описание для вашего канала.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="64"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="67"/>
         <source>Icon selection</source>
         <translation>Выбор иконки</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="66"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="69"/>
         <source>Load icon from file...</source>
         <translation>Загрузить иконку из файла...</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="69"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="72"/>
         <source>Use default icon from icon theme</source>
         <translation>Использовать иконку по умолчанию из иконок темы.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="72"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="75"/>
         <source>Fetch icon from feed</source>
         <translation>Получить иконку из канала</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="83"/>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="84"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="86"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="87"/>
         <source>No metadata fetched so far.</source>
         <translation>Метаданные пока не получены.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="139"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="142"/>
         <source>Icon fetched successfully.</source>
         <translation>Иконка получена успешно.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="140"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="143"/>
         <source>Icon metadata fetched.</source>
         <translation>Получены метаданные иконки.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="148"/>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="153"/>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="158"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="151"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="156"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="161"/>
         <source>No icon fetched.</source>
         <translation>Иконка не получена.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="189"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="192"/>
         <source>All metadata fetched successfully.</source>
         <translation>Все метаданные получены успешно.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="190"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="193"/>
         <source>Feed and icon metadata fetched.</source>
         <translation>Получены метаданные канала и значка.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="198"/>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="203"/>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="208"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="201"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="206"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="211"/>
         <source>No metadata fetched.</source>
         <translation>Метаданные не получены.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="214"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="217"/>
         <source>Feed name is ok.</source>
         <translation>Имя канала подходит.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="217"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="220"/>
         <source>Feed name is too short.</source>
         <translation>Имя канала слишком короткое.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="223"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="226"/>
         <source>Description is empty.</source>
         <translation>Описание пустое.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="226"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="229"/>
         <source>The description is ok.</source>
         <translation>Описание подходит.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="233"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="236"/>
         <source>The URL is ok.</source>
         <translation>URL подходит.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="237"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="240"/>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
         <translation>URL не соответствует стандартному шаблону. Ваш URL должен начинается с префикса &quot;http://&quot; или &quot;https://&quot;.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="241"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="244"/>
         <source>The URL is empty.</source>
         <translation>Нет URL.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="275"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="278"/>
         <source>Select icon file for the feed</source>
         <translation>Выбрать файл иконки для канала</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="276"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="279"/>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
         <translation>Изображения (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="282"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="285"/>
         <source>Select icon</source>
         <translation>Выберите иконку</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="283"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="286"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="286"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="289"/>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
         <translation>Искать в:</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="287"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="290"/>
         <source>Icon name:</source>
         <translation>Имя иконки:</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="288"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="291"/>
         <source>Icon type:</source>
         <translation>Тип иконки:</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="28"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="31"/>
         <source>Full feed source identifier</source>
         <translation>Полный идентификатор источника канала</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="29"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="32"/>
         <source>Full feed source identifier which can be URL.</source>
         <translation>Полный идентификатор источника канала, который может быть URL-адресом.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="30"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="33"/>
         <source>Full command to execute</source>
         <translation>Полная команда для выполнения</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="31"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="34"/>
         <source>You can enter full command including interpreter here.</source>
         <translation>Здесь вы можете ввести полную команду, включая интерпретатор.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="39"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="42"/>
         <source>Here you can enter script executaion line, including interpreter.</source>
         <translation>Здесь вы можете ввести строку выполнения скрипта, включая интерпретатор.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="246"/>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="257"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="249"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="260"/>
         <source>The source is ok.</source>
         <translation>Источник подходит.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="253"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="256"/>
         <source>The source is empty.</source>
         <translation>Источник пуст.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="250"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="253"/>
         <source>The source does not seem to use &quot;#&quot; separator for arguments.</source>
         <translation>Источник не использует разделитель &quot;#&quot; для аргументов.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="263"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="266"/>
         <source>Command is ok.</source>
         <translation>Команда в порядке.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="267"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="270"/>
         <source>Command not seem to use &quot;#&quot; separator for arguments.</source>
         <translation>Команда не использует разделитель &quot;#&quot; для аргументов.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="270"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="273"/>
         <source>Command is empty.</source>
         <translation>Команда пуста.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="147"/>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="197"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="150"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="200"/>
         <source>Script failed: %1</source>
         <translation>Сценарий завершился с ошибкой: %1</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="152"/>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="202"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="155"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="205"/>
         <source>Network error: %1</source>
         <translation>Ошибка сети: %1</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="157"/>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="207"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="160"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="210"/>
         <source>Error: %1</source>
         <translation>Ошибка: %1</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="111"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="114"/>
         <source>What is post-processing script?</source>
         <translation>О сценариях постобработки</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="112"/>
+        <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="115"/>
         <source>You can use URL as a source of your feed or you can produce your feed with custom script.
 
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
@@ -6762,7 +6739,7 @@ Unread news: %2</source>
 <context>
     <name>TabWidget</name>
     <message>
-        <location filename="../src/librssguard/gui/tabwidget.cpp" line="137"/>
+        <location filename="../src/librssguard/gui/tabwidget.cpp" line="136"/>
         <source>Feeds</source>
         <translation>Каналы</translation>
     </message>
@@ -6782,17 +6759,17 @@ Unread news: %2</source>
         <translation>Загрузки</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/tabwidget.cpp" line="203"/>
+        <location filename="../src/librssguard/gui/tabwidget.cpp" line="202"/>
         <source>Newspaper view</source>
         <translation>Газетный вид</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/tabwidget.cpp" line="229"/>
+        <location filename="../src/librssguard/gui/tabwidget.cpp" line="228"/>
         <source>Web browser</source>
         <translation>Веб-браузер</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/tabwidget.cpp" line="139"/>
+        <location filename="../src/librssguard/gui/tabwidget.cpp" line="138"/>
         <source>Browse your feeds and articles</source>
         <translation>Обзор каналов и статей</translation>
     </message>
