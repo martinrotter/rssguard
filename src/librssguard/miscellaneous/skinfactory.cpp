@@ -86,7 +86,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
 
   if (isStyleGoodForAlternativeStylePalette(m_currentStyle) &&
       !skin.m_stylePalette.isEmpty() &&
-      (skin.m_forcedStylePalette || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForceDarkFusion)).toBool())) {
+      (skin.m_forcedStylePalette || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForceSkinPalette)).toBool())) {
     qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
 
     QPalette pal = skin.extractPalette();
@@ -182,16 +182,11 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
         }
       }
 
-      // Obtain visible skin name.
+      // Obtain skin data.
       skin.m_visibleName = skin_name;
-
-      // Obtain author.
       skin.m_author = skin_node.namedItem(QSL("author")).namedItem(QSL("name")).toElement().text();
-
-      // Obtain version.
       skin.m_version = skin_node.attributes().namedItem(QSL("version")).toAttr().value();
-
-      // Obtain other information.
+      skin.m_description = skin_node.namedItem(QSL("description")).toElement().text();
       skin.m_baseName = skin_name;
 
       // Obtain color palette.

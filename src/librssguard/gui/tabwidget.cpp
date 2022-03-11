@@ -124,7 +124,6 @@ void TabWidget::tabRemoved(int index) {
 
 void TabWidget::createConnections() {
   connect(tabBar(), &TabBar::tabCloseRequested, this, &TabWidget::closeTab);
-  connect(tabBar(), &TabBar::emptySpaceDoubleClicked, this, &TabWidget::addEmptyBrowser);
   connect(tabBar(), &TabBar::tabMoved, this, &TabWidget::fixContentsAfterMove);
 
   connect(feedMessageViewer()->messagesView(), &MessagesView::openMessagesInNewspaperView, this, &TabWidget::addNewspaperView);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<skin version="0.1.2" base="nudus-base">
+<skin version="0.1.3" base="nudus-base">
   <author>
     <name>akinokonomi, martinrotter</name>
   </author>
@@ -10,39 +10,4 @@
     <color key="FgSelectedError">#FFD7D7</color>
     <color key="Allright">#77dd77</color>
   </palette>
-  <forced-style-palette>false</forced-style-palette>
-  <style-palette>
-    <group id="All">
-      <color role="Base">#373A3D</color>
-      <color role="AlternateBase">#323437</color>
-      <color role="ToolTipBase" brush="Dense1Pattern">#2D2F32</color>
-      <color role="Dark">#202224</color>
-      <color role="Midlight">#292c2e</color>
-      <color role="Mid">#292c2e</color>
-      <color role="Shadow">#292c2e</color>
-      <color role="Light">#323437</color>
-      <color role="Highlight">#8291AD</color>
-
-      <color role="Window" brush="Dense1Pattern">#2D2F32</color>
-      <color role="Button">#323437</color>
-
-      <color role="Text">#D8D8D8</color>
-      <color role="BrightText">#373A3D</color>
-      <color role="HighlightedText">#FFFFFF</color>
-      <color role="PlaceholderText">#A7A7A7</color>
-      <color role="ToolTipText">#D8D8D8</color>
-      <color role="ButtonText">#E7E7E7</color>
-      <color role="WindowText">#D8D8D8</color>
-      <color role="Link">#a1acc1</color>
-      <color role="LinkVisited">#a1acc1</color>
-
-      <color role="NoRole">#2D2F32</color>
-    </group>
-
-    <group id="Disabled">
-      <color role="Text">#999999</color>
-      <color role="ButtonText">#A7A7A7</color>
-      <color role="WindowText">#999999</color>
-    </group>
-  </style-palette>
 </skin>

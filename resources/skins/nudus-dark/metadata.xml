@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<skin version="0.1.2" base="nudus-base">
+<skin version="0.1.3" base="nudus-base">
   <author>
     <name>akinokonomi, martinrotter</name>
   </author>
+  <description>Dark variant of 'nudus-light' skin.</description>
   <palette>
     <color key="FgInteresting">#85ACF6</color>
     <color key="FgSelectedInteresting">#D9E3F7</color>
@@ -10,7 +11,7 @@
     <color key="FgSelectedError">#910303</color>
     <color key="Allright">#44AA44</color>
   </palette>
-  <forced-style-palette>true</forced-style-palette>
+  <forced-style-palette>false</forced-style-palette>
   <style-palette>
     <group id="All">
       <color role="Base">#373A3D</color>
@@ -23,7 +24,7 @@
       <color role="Light">#323437</color>
       <color role="Highlight">#8291AD</color>
 
-      <color role="Window" brush="Dense1Pattern">#2D2F32</color>
+      <color role="Window">#2D2F32</color>
       <color role="Button">#323437</color>
 
       <color role="Text">#D8D8D8</color>

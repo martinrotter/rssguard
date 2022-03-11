@@ -43,6 +43,7 @@ struct RSSGUARD_DLLSPEC Skin {
   QString m_visibleName;
   QString m_author;
   QString m_version;
+  QString m_description;
   QString m_rawData;
   QString m_adblocked;
   QString m_layoutMarkupWrapper;
