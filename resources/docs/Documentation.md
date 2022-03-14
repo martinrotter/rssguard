@@ -89,21 +89,23 @@ Sometimes you need to tweak incoming article - mark it starred, remove ads from 
 <img alt="alt-img" src="images/filters-dialog.png" width="600px">
 
 #### Writing article filter
-Article filters are small JavaScript pieces of code which must provide function with prototype:
+Article filters are small `JavaScript` pieces of code which must provide function with prototype:
 
 ```js
 function filterMessage() { }
 ```
 
-The function should be fast enough and must return values which belong to enumeration [`FilteringAction`](#FilteringAction-enum).
+The function should be fast and must return values which belong to enumeration [`FilteringAction`](#FilteringAction-enum).
 
 Each article is accessible in your script via global variable named `msg` of type `MessageObject`, see [this file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) for the declaration. Some properties are writeable, allowing you to change contents of the article before it is written to RSS Guard's DB. You can mark article important, change its description, perhaps change author name or even assign some label to it!!!
+
+Almost any changes you make are synchronized back to feed service if the particular RSS Guard plugin supports it.
 
 You can use [special placeholders](#userd-plac) within article filter.
 
 Also, there is a special variable named `utils`. This variable is of type `FilterUtils` and offers some useful [utility functions](#utils-object) for you to use in your filters.
 
-RSS Guard allows to use the list of labels assigned to each article. You can, therefore, execute actions in your filtering script, based on which labels are assigned to the article. The property is called `assignedLabels` and is array of [`Label`](#Label-class) objects. If you change labels assigned to some article, then the change will be eventually [synchronized](#sfrl) back to server if respective plugin/service supports it.
+RSS Guard allows to use the list of labels assigned to each article. You can, therefore, execute actions in your filtering script, based on which labels are assigned to the article. The property is called `assignedLabels` and is array of [`Label`](#Label-class) objects.
 
 Passed article also offers special function:
 ```js
