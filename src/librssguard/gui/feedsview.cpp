@@ -293,6 +293,16 @@ void FeedsView::moveSelectedItemUp() {
   m_proxyModel->invalidate();
 }
 
+void FeedsView::moveSelectedItemTop() {
+  m_sourceModel->changeSortOrder(selectedItem(), true, false);
+  m_proxyModel->invalidate();
+}
+
+void FeedsView::moveSelectedItemBottom() {
+  m_sourceModel->changeSortOrder(selectedItem(), false, true);
+  m_proxyModel->invalidate();
+}
+
 void FeedsView::moveSelectedItemDown() {
   m_sourceModel->changeSortOrder(selectedItem(), false, false, selectedItem()->sortOrder() + 1);
   m_proxyModel->invalidate();

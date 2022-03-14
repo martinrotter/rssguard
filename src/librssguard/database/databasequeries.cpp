@@ -2166,7 +2166,7 @@ void DatabaseQueries::moveFeed(Feed* feed, bool move_top, bool move_bottom, int 
     return it->kind() == RootItem::Kind::Feed ? it->sortOrder() : 0;
   }).max();
 
-  if (feed->sortOrder() == move_index || /* Item is already sorted OK. */
+  if ((!move_top && !move_bottom && feed->sortOrder() == move_index) || /* Item is already sorted OK. */
       (!move_top && !move_bottom && move_index < 0 ) || /* Order cannot be smaller than 0 if we do not move to begin/end. */
       (!move_top && !move_bottom && move_index > max_sort_order ) || /* Cannot move past biggest sort order. */
       (move_top && feed->sortOrder() == 0) || /* Item is already on top. */

@@ -901,6 +901,10 @@ void FormMain::createConnections() {
           tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::moveSelectedItemUp);
   connect(m_ui->m_actionFeedMoveDown, &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::moveSelectedItemDown);
+  connect(m_ui->m_actionFeedMoveTop, &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::moveSelectedItemTop);
+  connect(m_ui->m_actionFeedMoveBottom, &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::moveSelectedItemBottom);
 }
 
 void FormMain::backupDatabaseSettings() {

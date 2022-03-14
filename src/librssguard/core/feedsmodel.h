@@ -107,7 +107,7 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     bool restoreAllBins();
     bool emptyAllBins();
 
-    void changeSortOrder(RootItem* item, bool move_top, bool move_bottom, int new_sort_order);
+    void changeSortOrder(RootItem* item, bool move_top, bool move_bottom, int new_sort_order = {});
 
     // Feeds operations.
     bool markItemRead(RootItem* item, RootItem::ReadStatus read);
