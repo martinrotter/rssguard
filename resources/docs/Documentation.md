@@ -108,11 +108,12 @@ Also, there is a special variable named `utils`. This variable is of type `Filte
 RSS Guard allows to use the list of labels assigned to each article. You can, therefore, execute actions in your filtering script, based on which labels are assigned to the article. The property is called `assignedLabels` and is array of [`Label`](#Label-class) objects.
 
 Passed article also offers special function:
+
 ```js
-Boolean MessageObject.isAlreadyInDatabase(DuplicationAttributeCheck)
+Boolean MessageObject.isAlreadyInDatabase(DuplicateCheck)
 ```
 
-which allows you to perform runtime check for existence of the article in RSS Guard's database. The parameter is value from enumeration [`DuplicationAttributeCheck`](#DuplicationAttributeCheck-enum) and specifies how exactly you want to match your article.
+which allows you to perform runtime check for existence of the article in RSS Guard's database. The parameter is value from enumeration [`DuplicateCheck`](#duplicatecheck-enum) and specifies how exactly you want to match your article.
 
 For example, if you want to check if there is already another article with same author in database, you should call `msg.isAlreadyInDatabase(MessageObject.SameAuthor)`. Values of the enumeration can be combined via bitwise OR (`|`) operator in single call, like this: `msg.isAlreadyInDatabase(MessageObject.SameAuthor | MessageObject.SameUrl)`.
 
@@ -137,7 +138,7 @@ Here is the reference of methods and properties of types available in your filte
 | Property  | `isRead`                      | `Boolean`     |           | ✅            | Is message read?
 | Property  | `isImportant`                 | `Boolean`     |           | ✅            | Is message important?
 | Property  | `isDeleted`                   | `Boolean`     |           |              | Is message placed in recycle bin?
-| Method    | `isAlreadyInDatabase(DuplicationAttributeCheck)` | `Boolean` |   |              | Allows you to test if this particular message is already stored in RSS Guard's DB.
+| Method    | `isAlreadyInDatabase(DuplicateCheck)` | `Boolean` |   |              | Allows you to test if this particular message is already stored in RSS Guard's DB.
 | Method    | `assignLabel(String)`         | `Boolean`     |           |              | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | Method    | `deassignLabel(String)`       | `Boolean`     |           |              | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | Property  | `runningFilterWhenFetching`   | `Boolean`     | ✅         |              | Returns `true` if current run of the message filter is done when message is fetched. Returns `false` if message filter runs manually, for example from `Article filters` window.
@@ -158,7 +159,7 @@ Here is the reference of methods and properties of types available in your filte
 
 Note that `MessageObject` attributes are synchronized with service even if you return `Purge` or `Ignore`. In other words, even if your filter ignores the article, you can still tweak its properties which will be synchronized back to your server.
 
-#### `DuplicationAttributeCheck` enum
+#### `DuplicateCheck` enum
 | Enumerant name    | Integer value | Description
 | :---              | :---          | ---
 | `SameTitle`       | 1             | Check if message has same title as some another messages.

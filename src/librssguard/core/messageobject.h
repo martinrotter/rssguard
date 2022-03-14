@@ -43,7 +43,7 @@ class MessageObject : public QObject {
 
     Q_ENUM(FilteringAction)
 
-    enum class DuplicationAttributeCheck {
+    enum class DuplicateCheck {
       // Message with same title in DB.
       SameTitle = 1,
 
@@ -65,7 +65,7 @@ class MessageObject : public QObject {
       SameCustomId = 32
     };
 
-    Q_ENUM(DuplicationAttributeCheck)
+    Q_ENUM(DuplicateCheck)
 
     explicit MessageObject(QSqlDatabase* db,
                            const QString& feed_custom_id,
@@ -77,11 +77,9 @@ class MessageObject : public QObject {
     void setMessage(Message* message);
 
     // Check if message is duplicate with another messages in DB.
-    // Parameter "attribute_check" is DuplicationAttributeCheck enum
-    // value casted to int.
-    Q_INVOKABLE bool isAlreadyInDatabase(MessageObject::DuplicationAttributeCheck attribute_check) const;
-    Q_INVOKABLE bool isDuplicate(MessageObject::DuplicationAttributeCheck attribute_check) const;
-    Q_INVOKABLE bool isDuplicateWithAttribute(MessageObject::DuplicationAttributeCheck attribute_check) const;
+    Q_INVOKABLE bool isAlreadyInDatabase(MessageObject::DuplicateCheck attribute_check) const;
+    Q_INVOKABLE bool isDuplicate(MessageObject::DuplicateCheck attribute_check) const;
+    Q_INVOKABLE bool isDuplicateWithAttribute(MessageObject::DuplicateCheck attribute_check) const;
 
     // Adds given label to list of assigned labels to this message.
     // Returns true if label was assigned now or if the message already has it assigned.
@@ -148,14 +146,14 @@ class MessageObject : public QObject {
     bool m_runningAfterFetching;
 };
 
-inline MessageObject::DuplicationAttributeCheck operator|(MessageObject::DuplicationAttributeCheck lhs,
-                                                          MessageObject::DuplicationAttributeCheck rhs) {
-  return static_cast<MessageObject::DuplicationAttributeCheck>(int(lhs) | int(rhs));
+inline MessageObject::DuplicateCheck operator|(MessageObject::DuplicateCheck lhs,
+                                               MessageObject::DuplicateCheck rhs) {
+  return static_cast<MessageObject::DuplicateCheck>(int(lhs) | int(rhs));
 }
 
-inline MessageObject::DuplicationAttributeCheck operator&(MessageObject::DuplicationAttributeCheck lhs,
-                                                          MessageObject::DuplicationAttributeCheck rhs) {
-  return static_cast<MessageObject::DuplicationAttributeCheck>(int(lhs) & int(rhs));
+inline MessageObject::DuplicateCheck operator&(MessageObject::DuplicateCheck lhs,
+                                               MessageObject::DuplicateCheck rhs) {
+  return static_cast<MessageObject::DuplicateCheck>(int(lhs) & int(rhs));
 }
 
 #endif // MESSAGEOBJECT_H
