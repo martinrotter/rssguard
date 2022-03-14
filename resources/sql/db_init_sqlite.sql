@@ -5,6 +5,7 @@ CREATE TABLE Information (
 -- !
 CREATE TABLE Accounts (
   id              $$,
+  ordr            INTEGER     NOT NULL CHECK (ordr >= 0),
   type            TEXT        NOT NULL CHECK (type != ''), /* ID of the account type. Each account defines its own, for example 'ttrss'. */
   proxy_type      INTEGER     NOT NULL DEFAULT 0 CHECK (proxy_type >= 0),
   proxy_host      TEXT,
@@ -17,6 +18,7 @@ CREATE TABLE Accounts (
 -- !
 CREATE TABLE Categories (
   id              $$,
+  ordr            INTEGER     NOT NULL CHECK (ordr >= 0),
   parent_id       INTEGER     NOT NULL CHECK (parent_id >= -1), /* Root categories contain -1 here. */
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
@@ -30,6 +32,7 @@ CREATE TABLE Categories (
 -- !
 CREATE TABLE Feeds (
   id              $$,
+  ordr            INTEGER     NOT NULL CHECK (ordr >= 0),
   title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
   date_created    BIGINT,

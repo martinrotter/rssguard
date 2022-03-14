@@ -16,7 +16,7 @@
 RootItem::RootItem(RootItem* parent_item)
   : QObject(nullptr), m_kind(RootItem::Kind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QL1S("")),
   m_title(QString()), m_description(QString()), m_creationDate(QDateTime::currentDateTimeUtc()),
-  m_keepOnTop(false), m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
+  m_keepOnTop(false), m_sortOrder(NO_PARENT_CATEGORY), m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
 
 RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setTitle(other.title());
@@ -24,6 +24,7 @@ RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setCustomId(other.customId());
   setIcon(other.icon());
   setKeepOnTop(other.keepOnTop());
+  setSortOrder(other.sortOrder());
 
   // NOTE: We do not need to clone childs, because that would mean that
   // either source or target item tree would get corrupted.
@@ -562,6 +563,14 @@ bool RootItem::keepOnTop() const {
 
 void RootItem::setKeepOnTop(bool keep_on_top) {
   m_keepOnTop = keep_on_top;
+}
+
+int RootItem::sortOrder() const {
+  return m_sortOrder;
+}
+
+void RootItem::setSortOrder(int sort_order) {
+  m_sortOrder = sort_order;
 }
 
 bool RootItem::removeChild(int index) {

@@ -34,6 +34,8 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     void setSelectedItem(const RootItem* selected_item);
     void setView(FeedsView* newView);
 
+    void setSortAlphabetically(bool sort_alphabetically);
+
   public slots:
     void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
 
@@ -52,6 +54,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     FeedsView* m_view;
     const RootItem* m_selectedItem;
     bool m_showUnreadOnly;
+    bool m_sortAlphabetically;
     QList<QPair<int, QModelIndex>> m_hiddenIndices;
     QList<RootItem::Kind> m_priorities;
 };

@@ -107,6 +107,16 @@
       <string>&amp;Add item</string>
      </property>
     </widget>
+    <widget class="QMenu" name="m_menuFeedsMove">
+     <property name="title">
+      <string>&amp;Move</string>
+     </property>
+     <addaction name="m_actionFeedMoveUp"/>
+     <addaction name="m_actionFeedMoveDown"/>
+     <addaction name="separator"/>
+     <addaction name="m_actionFeedMoveTop"/>
+     <addaction name="m_actionFeedMoveBottom"/>
+    </widget>
     <addaction name="m_actionUpdateAllItems"/>
     <addaction name="m_actionUpdateSelectedItems"/>
     <addaction name="m_actionUpdateSelectedItemsWithCustomTimers"/>
@@ -116,11 +126,13 @@
     <addaction name="m_actionEditSelectedItem"/>
     <addaction name="m_actionDeleteSelectedItem"/>
     <addaction name="separator"/>
+    <addaction name="m_actionSortFeedsAlphabetically"/>
     <addaction name="m_actionShowOnlyUnreadItems"/>
     <addaction name="m_actionAutoExpandItemsWhenSelected"/>
     <addaction name="m_actionShowTreeBranches"/>
     <addaction name="m_actionExpandCollapseItem"/>
     <addaction name="m_actionExpandCollapseItemRecursively"/>
+    <addaction name="m_menuFeedsMove"/>
     <addaction name="separator"/>
     <addaction name="m_actionSelectNextItem"/>
     <addaction name="m_actionSelectPreviousItem"/>
@@ -851,6 +863,37 @@
   <action name="m_actionOpenSelectedMessagesInternallyNoTab">
    <property name="text">
     <string>Open in internal browser (no new tab)</string>
+   </property>
+  </action>
+  <action name="m_actionSortFeedsAlphabetically">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Sort alphabetically</string>
+   </property>
+  </action>
+  <action name="m_actionFeedMoveUp">
+   <property name="text">
+    <string>Move &amp;up</string>
+   </property>
+  </action>
+  <action name="m_actionFeedMoveTop">
+   <property name="text">
+    <string>Move to &amp;top</string>
+   </property>
+  </action>
+  <action name="m_actionFeedMoveDown">
+   <property name="text">
+    <string>Move &amp;down</string>
+   </property>
+  </action>
+  <action name="m_actionFeedMoveBottom">
+   <property name="text">
+    <string>Move to &amp;bottom</string>
    </property>
   </action>
  </widget>

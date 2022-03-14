@@ -13,7 +13,7 @@
 
 FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_view(nullptr),
-  m_selectedItem(nullptr), m_showUnreadOnly(false) {
+  m_selectedItem(nullptr), m_showUnreadOnly(false), m_sortAlphabetically(true) {
   setObjectName(QSL("FeedsProxyModel"));
 
   setSortRole(Qt::ItemDataRole::EditRole);
@@ -171,14 +171,32 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
       return sortOrder() == Qt::SortOrder::DescendingOrder;
     }
     else if (left_item->kind() == right_item->kind()) {
-      // Both items are of the same type.
-      if (left.column() == FDS_MODEL_COUNTS_INDEX) {
-        // User wants to sort according to counts.
-        return left_item->countOfUnreadMessages() < right_item->countOfUnreadMessages();
+      if (m_sortAlphabetically) {
+        // Both items are of the same type.
+        if (left.column() == FDS_MODEL_COUNTS_INDEX) {
+          // User wants to sort according to counts.
+          return left_item->countOfUnreadMessages() < right_item->countOfUnreadMessages();
+        }
+        else {
+          // In other cases, sort by title.
+          return QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0;
+        }
       }
       else {
-        // In other cases, sort by title.
-        return QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0;
+        // We sort some types with sort order, other alphabetically.
+        switch (left_item->kind()) {
+          case RootItem::Kind::Feed:
+          case RootItem::Kind::Category:
+          case RootItem::Kind::ServiceRoot:
+            return sortOrder() == Qt::SortOrder::AscendingOrder
+                ? left_item->sortOrder() < right_item->sortOrder()
+                : left_item->sortOrder() > right_item->sortOrder();
+
+          default:
+            return sortOrder() == Qt::SortOrder::AscendingOrder
+                ? QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0
+                : QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) > 0;
+        }
       }
     }
     else {
@@ -295,6 +313,14 @@ void FeedsProxyModel::invalidateReadFeedsFilter(bool set_new_value, bool show_un
 void FeedsProxyModel::setShowUnreadOnly(bool show_unread_only) {
   m_showUnreadOnly = show_unread_only;
   qApp->settings()->setValue(GROUP(Feeds), Feeds::ShowOnlyUnreadFeeds, show_unread_only);
+}
+
+void FeedsProxyModel::setSortAlphabetically(bool sort_alphabetically) {
+  if (sort_alphabetically != m_sortAlphabetically) {
+    m_sortAlphabetically = sort_alphabetically;
+    qApp->settings()->setValue(GROUP(Feeds), Feeds::SortAlphabetically, sort_alphabetically);
+    invalidate();
+  }
 }
 
 QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList& indexes) const {
