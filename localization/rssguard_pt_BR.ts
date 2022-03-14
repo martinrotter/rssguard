@@ -5833,12 +5833,12 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
         <source>Forced style</source>
-        <translation type="unfinished"/>
+        <translation>Estilo forçado</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
         <source>Forced UI colors</source>
-        <translation type="unfinished"/>
+        <translation>Cores forçadas da interface</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="42"/>
@@ -5851,7 +5851,10 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
 
 Version: %2
 Description: %3</source>
-        <translation type="unfinished"/>
+        <translation>%1
+
+Versão: %2
+Descrição: %3</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="278"/>
@@ -5886,7 +5889,7 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
         <source>Force UI colors defined in skin</source>
-        <translation type="unfinished"/>
+        <translation>Forçar cores da interface definidas no tema</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
