@@ -2153,7 +2153,6 @@ void DatabaseQueries::moveItem(RootItem* item, bool move_top, bool move_bottom, 
       break;
 
     case RootItem::Kind::ServiceRoot:
-
       break;
 
     default:
@@ -2162,32 +2161,21 @@ void DatabaseQueries::moveItem(RootItem* item, bool move_top, bool move_bottom, 
 }
 
 void DatabaseQueries::moveFeed(Feed* feed, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db) {
+  auto neighbors = feed->parent()->childItems();
+  int max_sort_order = boolinq::from(neighbors).select([](RootItem* it) {
+    return it->kind() == RootItem::Kind::Feed ? it->sortOrder() : 0;
+  }).max();
+
   if (feed->sortOrder() == move_index || /* Item is already sorted OK. */
       (!move_top && !move_bottom && move_index < 0 ) || /* Order cannot be smaller than 0 if we do not move to begin/end. */
-      (move_top && feed->sortOrder() == 0)) { /* Item is already on top. */
+      (!move_top && !move_bottom && move_index > max_sort_order ) || /* Cannot move past biggest sort order. */
+      (move_top && feed->sortOrder() == 0) || /* Item is already on top. */
+      (move_bottom && feed->sortOrder() == max_sort_order) || /* Item is already on bottom. */
+      max_sort_order <= 0) { /* We only have 1 item, nothing to sort. */
     return;
   }
 
   QSqlQuery q(db);
-
-  q.prepare(QSL("SELECT MAX(ordr) FROM Feeds WHERE account_id = :account_id AND category = :category;"));
-  q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
-  q.bindValue(QSL(":category"), feed->parent()->id());
-
-  int max_sort_order;
-
-  if (q.exec() && q.next()) {
-    max_sort_order = q.value(0).toInt();
-  }
-  else {
-    throw ApplicationException(q.lastError().text());
-  }
-
-  if (max_sort_order == 0 || /* We only have 1 item, nothing to sort. */
-      max_sort_order == feed->sortOrder() || /* Item is already sorted OK. */
-      move_index > max_sort_order) { /* Cannot move past biggest sort order. */
-    return;
-  }
 
   if (move_top) {
     move_index = 0;
@@ -2216,6 +2204,32 @@ void DatabaseQueries::moveFeed(Feed* feed, bool move_top, bool move_bottom, int 
   if (!q.exec()) {
     throw ApplicationException(q.lastError().text());
   }
+
+  q.prepare(QSL("UPDATE Feeds SET ordr = :ordr WHERE id = :id;"));
+  q.bindValue(QSL(":id"), feed->id());
+  q.bindValue(QSL(":ordr"), move_index);
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+
+  // Fix live sort orders.
+  if (feed->sortOrder() > move_index) {
+    boolinq::from(neighbors).where([=](RootItem* it) {
+      return it->kind() == RootItem::Kind::Feed && it->sortOrder() < move_high && it->sortOrder() >= move_low;
+    }).for_each([](RootItem* it) {
+      it->setSortOrder(it->sortOrder() + 1);
+    });
+  }
+  else {
+    boolinq::from(neighbors).where([=](RootItem* it) {
+      return it->kind() == RootItem::Kind::Feed && it->sortOrder() > move_low && it->sortOrder() <= move_high;
+    }).for_each([](RootItem* it) {
+      it->setSortOrder(it->sortOrder() - 1);
+    });
+  }
+
+  feed->setSortOrder(move_index);
 }
 
 MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const QString& title,

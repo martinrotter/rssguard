@@ -68,6 +68,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
 
     // Sort order manipulations.
     void moveSelectedItemUp();
+    void moveSelectedItemDown();
 
     // Selects next/previous item (feed/category) in the list.
     void selectNextItem();

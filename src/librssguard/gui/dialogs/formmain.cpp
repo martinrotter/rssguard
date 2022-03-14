@@ -899,6 +899,8 @@ void FormMain::createConnections() {
   });
   connect(m_ui->m_actionFeedMoveUp, &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::moveSelectedItemUp);
+  connect(m_ui->m_actionFeedMoveDown, &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::moveSelectedItemDown);
 }
 
 void FormMain::backupDatabaseSettings() {

@@ -290,6 +290,12 @@ void FeedsView::deleteSelectedItem() {
 
 void FeedsView::moveSelectedItemUp() {
   m_sourceModel->changeSortOrder(selectedItem(), false, false, selectedItem()->sortOrder() - 1);
+  m_proxyModel->invalidate();
+}
+
+void FeedsView::moveSelectedItemDown() {
+  m_sourceModel->changeSortOrder(selectedItem(), false, false, selectedItem()->sortOrder() + 1);
+  m_proxyModel->invalidate();
 }
 
 void FeedsView::markSelectedItemReadStatus(RootItem::ReadStatus read) {
