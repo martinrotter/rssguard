@@ -114,33 +114,33 @@ Boolean MessageObject.isAlreadyInDatabase(DuplicationAttributeCheck)
 
 which allows you to perform runtime check for existence of the article in RSS Guard's database. The parameter is value from enumeration [`DuplicationAttributeCheck`](#DuplicationAttributeCheck-enum) and specifies how exactly you want to match your article.
 
-For example, if you want to check if there is already another message with same author in database, you should call `msg.isAlreadyInDatabase(MessageObject.SameAuthor)`. Values of the enumeration can be combined via bitwise OR (`|`) operator in single call, like this: `msg.isAlreadyInDatabase(MessageObject.SameAuthor | MessageObject.SameUrl)`.
+For example, if you want to check if there is already another article with same author in database, you should call `msg.isAlreadyInDatabase(MessageObject.SameAuthor)`. Values of the enumeration can be combined via bitwise OR (`|`) operator in single call, like this: `msg.isAlreadyInDatabase(MessageObject.SameAuthor | MessageObject.SameUrl)`.
 
 Here is the reference of methods and properties of types available in your filtering scripts.
 
 #### `MessageObject` class
-| Type      | Name(Parameter)               | Return value  | Read-only | Description
-| :---      | :---                          | :---          | :---:     | ---
-| Property  | `assignedLabels`              | `Array<Label>`| ✅         | List of labels assigned to the message/article.
-| Property  | `availableLabels`             | `Array<Label>`| ✅         | List of labels which are currently available and can be assigned to the message. Available in RSS Guard 3.8.1+.
-| Property  | `feedCustomId`                | `String`      | ✅         | Service-specific ID of the feed which this message belongs to.
-| Property  | `accountId`                   | `Number`      | ✅         | RSS Guard's ID of the account activated in the program. This property is highly advanced and you probably do not need to use it at all.
-| Property  | `id`                          | `Number`      | ✅         | ID assigned to the message in RSS Guard local database.
-| Property  | `customId`                    | `String`      | ✅         | ID of the message as provided by the remote service or feed file.
-| Property  | `title`                       | `String`      |           | Title of the message.
-| Property  | `url`                         | `String`      |           | URL of the message.
-| Property  | `author`                      | `String`      |           | Author of the message.
-| Property  | `contents`                    | `String`      |           | Contents of the message.
-| Property  | `rawContents`                 | `String`      |           | This is RAW contents of the message as it was obtained from remote service/feed. You can expect raw `XML` or `JSON` element data here. Note that this attribute has some value only if `runningFilterWhenFetching` returns `true`. In other words, this attribute is not persistently stored inside RSS Guard's DB. Also, this attribute is artificially filled with ATOM-like data when testing the filter.
-| Property  | `score`                       | `Number`      |           | Arbitrary number in range \<0.0, 100.0\>. You can use this number to sort messages in a custom fashion as this attribute also has its own column in articles list.
-| Property  | `created`                     | `Date`        |           | Date/time of the message.
-| Property  | `isRead`                      | `Boolean`     |           | Is message read?
-| Property  | `isImportant`                 | `Boolean`     |           | Is message important?
-| Property  | `isDeleted`                   | `Boolean`     |           | Is message placed in recycle bin?
-| Method    | `isAlreadyInDatabase(DuplicationAttributeCheck)` | `Boolean` |   | Allows you to test if this particular message is already stored in RSS Guard's DB.
-| Method    | `assignLabel(String)`         | `Boolean`     |           | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
-| Method    | `deassignLabel(String)`       | `Boolean`     |           | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
-| Property  | `runningFilterWhenFetching`   | `Boolean`     | ✅         | Returns `true` if current run of the message filter is done when message is fetched. Returns `false` if message filter runs manually, for example from `Article filters` window.
+| Type      | Name(Parameter)               | Return value  | Read-only | Synchronized | Description
+| :---      | :---                          | :---          | :---:     | :---:        | ---
+| Property  | `assignedLabels`              | `Array<Label>`| ✅         | ✅            | List of labels assigned to the message/article.
+| Property  | `availableLabels`             | `Array<Label>`| ✅         |              | List of labels which are currently available and can be assigned to the message. Available in RSS Guard 3.8.1+.
+| Property  | `feedCustomId`                | `String`      | ✅         |              | Service-specific ID of the feed which this message belongs to.
+| Property  | `accountId`                   | `Number`      | ✅         |              | RSS Guard's ID of the account activated in the program. This property is highly advanced and you probably do not need to use it at all.
+| Property  | `id`                          | `Number`      | ✅         |              | ID assigned to the message in RSS Guard local database.
+| Property  | `customId`                    | `String`      | ✅         |              | ID of the message as provided by the remote service or feed file.
+| Property  | `title`                       | `String`      |           |              | Title of the message.
+| Property  | `url`                         | `String`      |           |              | URL of the message.
+| Property  | `author`                      | `String`      |           |              | Author of the message.
+| Property  | `contents`                    | `String`      |           |              | Contents of the message.
+| Property  | `rawContents`                 | `String`      |           |              | This is RAW contents of the message as it was obtained from remote service/feed. You can expect raw `XML` or `JSON` element data here. Note that this attribute has some value only if `runningFilterWhenFetching` returns `true`. In other words, this attribute is not persistently stored inside RSS Guard's DB. Also, this attribute is artificially filled with ATOM-like data when testing the filter.
+| Property  | `score`                       | `Number`      |           |              | Arbitrary number in range \<0.0, 100.0\>. You can use this number to sort messages in a custom fashion as this attribute also has its own column in articles list.
+| Property  | `created`                     | `Date`        |           |              | Date/time of the message.
+| Property  | `isRead`                      | `Boolean`     |           | ✅            | Is message read?
+| Property  | `isImportant`                 | `Boolean`     |           | ✅            | Is message important?
+| Property  | `isDeleted`                   | `Boolean`     |           |              | Is message placed in recycle bin?
+| Method    | `isAlreadyInDatabase(DuplicationAttributeCheck)` | `Boolean` |   |              | Allows you to test if this particular message is already stored in RSS Guard's DB.
+| Method    | `assignLabel(String)`         | `Boolean`     |           |              | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
+| Method    | `deassignLabel(String)`       | `Boolean`     |           |              | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
+| Property  | `runningFilterWhenFetching`   | `Boolean`     | ✅         |              | Returns `true` if current run of the message filter is done when message is fetched. Returns `false` if message filter runs manually, for example from `Article filters` window.
 
 #### `Label` class
 | Type      | Name          | Return value  | Read-only | Description
