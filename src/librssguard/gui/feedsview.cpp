@@ -270,6 +270,8 @@ void FeedsView::deleteSelectedItem() {
 
       // We have deleteable item selected, remove it via GUI.
       if (!selected_item->deleteViaGui()) {
+        m_proxyModel->invalidate();
+
         qApp->showGuiMessage(Notification::Event::GeneralEvent, {
           tr("Cannot delete \"%1\"").arg(selected_item->title()),
           tr("This item cannot be deleted because something critically failed. Submit bug report."),

@@ -2112,11 +2112,13 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
   }
 }
 
-bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, int feed_custom_id, int account_id) {
+bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account_id) {
+  moveItem(feed, false, true, {}, db);
+
   QSqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM Messages WHERE feed = :feed AND account_id = :account_id;"));
-  q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":feed"), feed->customId());
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
@@ -2125,7 +2127,7 @@ bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, int feed_custom_id, int
 
   // Remove feed itself.
   q.prepare(QSL("DELETE FROM Feeds WHERE custom_id = :feed AND account_id = :account_id;"));
-  q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":feed"), feed->customId());
   q.bindValue(QSL(":account_id"), account_id);
 
   return q.exec() &&

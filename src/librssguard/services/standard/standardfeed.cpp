@@ -492,7 +492,7 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
 bool StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  return DatabaseQueries::deleteFeed(database, customId().toInt(), getParentServiceRoot()->accountId());
+  return DatabaseQueries::deleteFeed(database, this, getParentServiceRoot()->accountId());
 }
 
 StandardFeed::Type StandardFeed::type() const {

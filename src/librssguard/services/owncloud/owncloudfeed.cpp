@@ -29,7 +29,7 @@ bool OwnCloudFeed::deleteViaGui() {
 bool OwnCloudFeed::removeItself() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  return DatabaseQueries::deleteFeed(database, customId().toInt(), serviceRoot()->accountId());
+  return DatabaseQueries::deleteFeed(database, this, serviceRoot()->accountId());
 }
 
 OwnCloudServiceRoot* OwnCloudFeed::serviceRoot() const {
