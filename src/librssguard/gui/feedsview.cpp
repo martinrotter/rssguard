@@ -483,6 +483,15 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
     m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
   }
 
+  if (!qApp->settings()->value(GROUP(Feeds),
+                               SETTING(Feeds::SortAlphabetically)).toBool()) {
+    m_contextMenuService->addSeparator();
+    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveUp);
+    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveDown);
+    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveTop);
+    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveBottom);
+  }
+
   if (!specific_actions.isEmpty()) {
     m_contextMenuService->addSeparator();
     m_contextMenuService->addActions(specific_actions);
@@ -681,6 +690,15 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
 
   if (feed_add) {
     m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
+  }
+
+  if (!qApp->settings()->value(GROUP(Feeds),
+                               SETTING(Feeds::SortAlphabetically)).toBool()) {
+    m_contextMenuCategories->addSeparator();
+    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveUp);
+    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveDown);
+    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveTop);
+    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveBottom);
   }
 
   if (!specific_actions.isEmpty()) {

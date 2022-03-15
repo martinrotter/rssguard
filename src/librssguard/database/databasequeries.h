@@ -136,7 +136,6 @@ class DatabaseQueries {
 
     // Item order methods.
     static void moveItem(RootItem* item, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db);
-    static void moveFeed(Feed* feed, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db);
 
     // Message filters operators.
     static bool purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id);

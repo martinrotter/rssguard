@@ -621,10 +621,10 @@ void FormMain::setupIcons() {
   m_ui->m_actionAddCategoryIntoSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("folder")));
   m_ui->m_actionMessageFilters->setIcon(icon_theme_factory->fromTheme(QSL("view-list-details")));
 
-  m_ui->m_actionFeedMoveUp->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
-  m_ui->m_actionFeedMoveDown->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
-  m_ui->m_actionFeedMoveTop->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up-double")));
-  m_ui->m_actionFeedMoveBottom->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down-double")));
+  m_ui->m_actionFeedMoveUp->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up"), QSL("go-up")));
+  m_ui->m_actionFeedMoveDown->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down"), QSL("go-down")));
+  m_ui->m_actionFeedMoveTop->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up-double"), QSL("go-up")));
+  m_ui->m_actionFeedMoveBottom->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down-double"), QSL("go-down")));
 
   // Tabs & web browser.
   m_ui->m_actionTabNewWebBrowser->setIcon(icon_theme_factory->fromTheme(QSL("tab-new")));

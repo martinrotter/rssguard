@@ -2161,33 +2161,22 @@ bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
 }
 
 void DatabaseQueries::moveItem(RootItem* item, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db) {
-  switch (item->kind()) {
-    case RootItem::Kind::Feed:
-      moveFeed(item->toFeed(), move_top, move_bottom, move_index, db);
-      break;
-
-    case RootItem::Kind::Category:
-      break;
-
-    case RootItem::Kind::ServiceRoot:
-      break;
-
-    default:
-      return;
+  if (item->kind() != RootItem::Kind::Feed &&
+      item->kind() != RootItem::Kind::Category &&
+      item->kind() != RootItem::Kind::ServiceRoot) {
+    return;
   }
-}
 
-void DatabaseQueries::moveFeed(Feed* feed, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db) {
-  auto neighbors = feed->parent()->childItems();
-  int max_sort_order = boolinq::from(neighbors).select([](RootItem* it) {
-    return it->kind() == RootItem::Kind::Feed ? it->sortOrder() : 0;
+  auto neighbors = item->parent()->childItems();
+  int max_sort_order = boolinq::from(neighbors).select([=](RootItem* it) {
+    return it->kind() == item->kind() ? it->sortOrder() : 0;
   }).max();
 
-  if ((!move_top && !move_bottom && feed->sortOrder() == move_index) || /* Item is already sorted OK. */
+  if ((!move_top && !move_bottom && item->sortOrder() == move_index) || /* Item is already sorted OK. */
       (!move_top && !move_bottom && move_index < 0 ) || /* Order cannot be smaller than 0 if we do not move to begin/end. */
       (!move_top && !move_bottom && move_index > max_sort_order ) || /* Cannot move past biggest sort order. */
-      (move_top && feed->sortOrder() == 0) || /* Item is already on top. */
-      (move_bottom && feed->sortOrder() == max_sort_order) || /* Item is already on bottom. */
+      (move_top && item->sortOrder() == 0) || /* Item is already on top. */
+      (move_bottom && item->sortOrder() == max_sort_order) || /* Item is already on bottom. */
       max_sort_order <= 0) { /* We only have 1 item, nothing to sort. */
     return;
   }
@@ -2201,20 +2190,52 @@ void DatabaseQueries::moveFeed(Feed* feed, bool move_top, bool move_bottom, int 
     move_index = max_sort_order;
   }
 
-  int move_low = qMin(move_index, feed->sortOrder());
-  int move_high = qMax(move_index, feed->sortOrder());
+  int move_low = qMin(move_index, item->sortOrder());
+  int move_high = qMax(move_index, item->sortOrder());
+  QString parent_field, table_name;
 
-  if (feed->sortOrder() > move_index) {
-    q.prepare(QSL("UPDATE Feeds SET ordr = ordr + 1 "
-                  "WHERE account_id = :account_id AND category = :category AND ordr < :move_high AND ordr >= :move_low;"));
+  switch (item->kind()) {
+    case RootItem::Kind::Feed:
+      parent_field = QSL("category");
+      table_name = QSL("Feeds");
+      break;
+
+    case RootItem::Kind::Category:
+      parent_field = QSL("parent_id");
+      table_name = QSL("Categories");
+      break;
+
+    case RootItem::Kind::ServiceRoot:
+      table_name = QSL("Accounts");
+      break;
+  }
+
+  if (item->kind() == RootItem::Kind::ServiceRoot) {
+    if (item->sortOrder() > move_index) {
+      q.prepare(QSL("UPDATE Accounts SET ordr = ordr + 1 "
+                    "WHERE ordr < :move_high AND ordr >= :move_low;"));
+    }
+    else {
+      q.prepare(QSL("UPDATE Accounts SET ordr = ordr - 1 "
+                    "WHERE ordr > :move_low AND ordr <= :move_high;"));
+    }
   }
   else {
-    q.prepare(QSL("UPDATE Feeds SET ordr = ordr - 1 "
-                  "WHERE account_id = :account_id AND category = :category AND ordr > :move_low AND ordr <= :move_high;"));
+    if (item->sortOrder() > move_index) {
+      q.prepare(QSL("UPDATE %1 SET ordr = ordr + 1 "
+                    "WHERE account_id = :account_id AND %2 = :category AND ordr < :move_high AND ordr >= :move_low;")
+                .arg(table_name, parent_field));
+    }
+    else {
+      q.prepare(QSL("UPDATE %1 SET ordr = ordr - 1 "
+                    "WHERE account_id = :account_id AND %2 = :category AND ordr > :move_low AND ordr <= :move_high;")
+                .arg(table_name, parent_field));
+    }
+
+    q.bindValue(QSL(":account_id"), item->getParentServiceRoot()->accountId());
+    q.bindValue(QSL(":category"), item->parent()->id());
   }
 
-  q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
-  q.bindValue(QSL(":category"), feed->parent()->id());
   q.bindValue(QSL(":move_low"), move_low);
   q.bindValue(QSL(":move_high"), move_high);
 
@@ -2222,8 +2243,8 @@ void DatabaseQueries::moveFeed(Feed* feed, bool move_top, bool move_bottom, int 
     throw ApplicationException(q.lastError().text());
   }
 
-  q.prepare(QSL("UPDATE Feeds SET ordr = :ordr WHERE id = :id;"));
-  q.bindValue(QSL(":id"), feed->id());
+  q.prepare(QSL("UPDATE %1 SET ordr = :ordr WHERE id = :id;").arg(table_name));
+  q.bindValue(QSL(":id"), item->kind() == RootItem::Kind::ServiceRoot ? item->toServiceRoot()->accountId() : item->id());
   q.bindValue(QSL(":ordr"), move_index);
 
   if (!q.exec()) {
@@ -2231,22 +2252,22 @@ void DatabaseQueries::moveFeed(Feed* feed, bool move_top, bool move_bottom, int 
   }
 
   // Fix live sort orders.
-  if (feed->sortOrder() > move_index) {
+  if (item->sortOrder() > move_index) {
     boolinq::from(neighbors).where([=](RootItem* it) {
-      return it->kind() == RootItem::Kind::Feed && it->sortOrder() < move_high && it->sortOrder() >= move_low;
+      return it->kind() == item->kind() && it->sortOrder() < move_high && it->sortOrder() >= move_low;
     }).for_each([](RootItem* it) {
       it->setSortOrder(it->sortOrder() + 1);
     });
   }
   else {
     boolinq::from(neighbors).where([=](RootItem* it) {
-      return it->kind() == RootItem::Kind::Feed && it->sortOrder() > move_low && it->sortOrder() <= move_high;
+      return it->kind() == item->kind() && it->sortOrder() > move_low && it->sortOrder() <= move_high;
     }).for_each([](RootItem* it) {
       it->setSortOrder(it->sortOrder() - 1);
     });
   }
 
-  feed->setSortOrder(move_index);
+  item->setSortOrder(move_index);
 }
 
 MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const QString& title,
