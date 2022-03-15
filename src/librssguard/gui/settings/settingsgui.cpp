@@ -30,7 +30,7 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(se
   m_ui->m_editorFeedsToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_treeSkins->setColumnCount(4);
   m_ui->m_treeSkins->setHeaderHidden(false);
-  m_ui->m_treeSkins->setHeaderLabels({ tr("Name"), tr("Author"), tr("Forced style"), tr("Forced UI colors") });
+  m_ui->m_treeSkins->setHeaderLabels({ tr("Name"), tr("Author"), tr("Forced style"), tr("Forced skin colors") });
 
   m_ui->m_tabUi->setTabVisible(m_ui->m_tabUi->indexOf(m_ui->m_tabTaskBar),
 #if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)) || defined(Q_OS_WIN)
@@ -122,12 +122,12 @@ void SettingsGui::updateSkinOptions() {
   }
 
   const Skin skin = it->data(0, Qt::ItemDataRole::UserRole).value<Skin>();
-  const bool skin_has_palette = !skin.m_stylePalette.isEmpty();
-  const bool skin_forces_palette = skin.m_forcedStylePalette;
+  const bool skin_has_palette_or_css = !skin.m_stylePalette.isEmpty() || !skin.m_rawData.isEmpty();
+  const bool skin_forces_palette = skin.m_forcedSkinColors;
   const bool skin_forces_style = !skin.m_forcedStyles.isEmpty();
 
   m_ui->m_cmbStyles->setEnabled(!qApp->skins()->styleIsFrozen() && !skin_forces_style);
-  m_ui->m_checkForceAlternativePalette->setEnabled(skin_has_palette && !skin_forces_palette);
+  m_ui->m_checkForceAlternativePalette->setEnabled(skin_has_palette_or_css && !skin_forces_palette);
 }
 
 void SettingsGui::loadSettings() {
@@ -192,7 +192,7 @@ void SettingsGui::loadSettings() {
     m_ui->m_cmbStyles->setCurrentIndex(item_style);
   }
 
-  m_ui->m_checkForceAlternativePalette->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::ForceSkinPalette)).toBool());
+  m_ui->m_checkForceAlternativePalette->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool());
 
   // Load skin.
   const QString selected_skin = qApp->skins()->selectedSkinName();
@@ -219,7 +219,7 @@ void SettingsGui::loadSettings() {
       new_item->setIcon(2, qApp->icons()->fromTheme(QSL("dialog-cancel"), QSL("gtk-cancel")));
     }
 
-    new_item->setIcon(3, skin.m_forcedStylePalette
+    new_item->setIcon(3, skin.m_forcedSkinColors
                       ? qApp->icons()->fromTheme(QSL("dialog-yes"), QSL("dialog-ok"))
                       : qApp->icons()->fromTheme(QSL("dialog-cancel"), QSL("gtk-cancel")));
 
@@ -403,7 +403,7 @@ void SettingsGui::saveSettings() {
   }
 
   if (m_ui->m_checkForceAlternativePalette->isEnabled()) {
-    settings()->setValue(GROUP(GUI), GUI::ForceSkinPalette, m_ui->m_checkForceAlternativePalette->isChecked());
+    settings()->setValue(GROUP(GUI), GUI::ForcedSkinColors, m_ui->m_checkForceAlternativePalette->isChecked());
   }
 
   // Save tab settings.

@@ -258,8 +258,8 @@ namespace GUI {
   KEY HideMainWindowWhenMinimized;
   VALUE(bool) HideMainWindowWhenMinimizedDef;
 
-  KEY ForceSkinPalette;
-  VALUE(bool) ForceSkinPaletteDef;
+  KEY ForcedSkinColors;
+  VALUE(bool) ForcedSkinColorsDef;
 
   KEY AlternateRowColorsInLists;
   VALUE(bool) AlternateRowColorsInListsDef;

@@ -11,7 +11,7 @@
     <color key="FgSelectedError">#910303</color>
     <color key="Allright">#44AA44</color>
   </palette>
-  <forced-style-palette>false</forced-style-palette>
+  <forced-skin-colors>false</forced-skin-colors>
   <style-palette>
     <group id="All">
       <color role="Base">#373A3D</color>

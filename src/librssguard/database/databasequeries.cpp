@@ -2025,6 +2025,9 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
     }
   }
 
+  // TODO: pokus se kanál přesouvá mezi kategoriemi či rootem
+  // je třeba nejdříve kanál přesunout na dno a pak ho vložit do nové kategorie
+
   q.prepare("UPDATE Feeds "
             "SET title = :title, ordr = :ordr, description = :description, date_created = :date_created, "
             "    icon = :icon, category = :category, source = :source, update_type = :update_type, "

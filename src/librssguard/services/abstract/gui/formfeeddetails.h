@@ -24,7 +24,7 @@ class FormFeedDetails : public QDialog {
     virtual ~FormFeedDetails() = default;
 
     template<class T>
-    T* addEditFeed(T* account_to_edit = nullptr);
+    T* addEditFeed(T* feed_to_edit = nullptr);
 
     template<class T>
     T* feed() const;

@@ -260,8 +260,8 @@ DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef = false;
 DKEY GUI::MonochromeTrayIcon = "monochrome_tray_icon";
 DVALUE(bool) GUI::MonochromeTrayIconDef = false;
 
-DKEY GUI::ForceSkinPalette = "force_skin_palette";
-DVALUE(bool) GUI::ForceSkinPaletteDef = true;
+DKEY GUI::ForcedSkinColors = "forced_skin_colors";
+DVALUE(bool) GUI::ForcedSkinColorsDef = true;
 
 DKEY GUI::UnreadNumbersInTrayIcon = "show_unread_numbers_in_tray_icon";
 DVALUE(bool) GUI::UnreadNumbersInTrayIconDef = true;

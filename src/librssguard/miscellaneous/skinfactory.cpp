@@ -84,9 +84,12 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   // they specifically set object name to style name.
   m_currentStyle = qApp->style()->objectName();
 
+  const bool use_skin_colors = skin.m_forcedSkinColors ||
+                               qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool();
+
   if (isStyleGoodForAlternativeStylePalette(m_currentStyle) &&
       !skin.m_stylePalette.isEmpty() &&
-      (skin.m_forcedStylePalette || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForceSkinPalette)).toBool())) {
+      use_skin_colors) {
     qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
 
     QPalette pal = skin.extractPalette();
@@ -96,7 +99,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   }
 
   if (!skin.m_rawData.isEmpty()) {
-    if (qApp->styleSheet().simplified().isEmpty()) {
+    if (qApp->styleSheet().simplified().isEmpty() && use_skin_colors) {
       qApp->setStyleSheet(skin.m_rawData);
     }
     else {
@@ -218,8 +221,8 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
                                                       QString::SplitBehavior::SkipEmptyParts);
 #endif
 
-      skin.m_forcedStylePalette = skin_node.namedItem(QSL("forced-style-palette")).toElement().text() ==
-                                  QVariant(true).toString();
+      skin.m_forcedSkinColors = skin_node.namedItem(QSL("forced-skin-colors")).toElement().text() ==
+                                QVariant(true).toString();
 
       QDomElement style_palette_root = skin_node.namedItem(QSL("style-palette")).toElement();
 
