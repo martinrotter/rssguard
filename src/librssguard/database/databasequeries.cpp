@@ -1492,6 +1492,8 @@ bool DatabaseQueries::purgeMessagesFromBin(const QSqlDatabase& db, bool clear_on
 }
 
 bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, ServiceRoot* account) {
+  moveItem(account, false, true, {}, db);
+
   QSqlQuery query(db);
 
   query.setForwardOnly(true);
@@ -2150,13 +2152,15 @@ bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account
          purgeLeftoverLabelAssignments(db, account_id);
 }
 
-bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, int id) {
+bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, Category* category) {
+  moveItem(category, false, true, {}, db);
+
   QSqlQuery q(db);
 
   // Remove this category from database.
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM Categories WHERE id = :category;"));
-  q.bindValue(QSL(":category"), id);
+  q.bindValue(QSL(":category"), category->id());
   return q.exec();
 }
 

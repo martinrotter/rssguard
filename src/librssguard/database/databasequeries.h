@@ -125,7 +125,7 @@ class DatabaseQueries {
     static void createOverwriteFeed(const QSqlDatabase& db, Feed* feed, int account_id, int new_parent_id);
     static void createOverwriteCategory(const QSqlDatabase& db, Category* category, int account_id, int parent_id);
     static bool deleteFeed(const QSqlDatabase& db, Feed* feed, int account_id);
-    static bool deleteCategory(const QSqlDatabase& db, int id);
+    static bool deleteCategory(const QSqlDatabase& db, Category* category);
 
     template<typename T>
     static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);

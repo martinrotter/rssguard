@@ -94,7 +94,7 @@ bool StandardCategory::removeItself() {
     // Children are removed, remove this standard category too.
     QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-    return DatabaseQueries::deleteCategory(database, id());
+    return DatabaseQueries::deleteCategory(database, this);
   }
   else {
     return false;
