@@ -1938,26 +1938,29 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
 
 void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* category, int account_id, int parent_id) {
   QSqlQuery q(db);
+  int next_sort_order;
 
-  if (category->id() <= 0) {
+  // TODO: check, then go to createoverwriteaccount
+
+  if ((category->id() <= 0 && category->sortOrder() < 0) ||
+      (category->parent() != nullptr && category->parent()->id() != parent_id)) {
     // We need to insert category first.
-    if (category->sortOrder() < 0) {
-      q.prepare(QSL("SELECT MAX(ordr) FROM Categories WHERE account_id = :account_id AND parent_id = :parent_id;"));
-      q.bindValue(QSL(":account_id"), account_id);
-      q.bindValue(QSL(":parent_id"), parent_id);
+    q.prepare(QSL("SELECT MAX(ordr) FROM Categories WHERE account_id = :account_id AND parent_id = :parent_id;"));
+    q.bindValue(QSL(":account_id"), account_id);
+    q.bindValue(QSL(":parent_id"), parent_id);
 
-      if (!q.exec()) {
-        throw ApplicationException(q.lastError().text());
-      }
-
-      q.next();
-
-      int next_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
-
-      category->setSortOrder(next_order);
-      q.finish();
+    if (!q.exec() || !q.next()) {
+      throw ApplicationException(q.lastError().text());
     }
 
+    next_sort_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
+    q.finish();
+  }
+  else {
+    next_sort_order = category->sortOrder();
+  }
+
+  if (category->id() <= 0) {
     q.prepare(QSL("INSERT INTO "
                   "Categories (parent_id, ordr, title, date_created, account_id) "
                   "VALUES (0, 0, 'new', 0, %1);").arg(QString::number(account_id)));
@@ -1969,6 +1972,18 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
       category->setId(q.lastInsertId().toInt());
     }
   }
+  else if (category->parent() != nullptr && category->parent()->id() != parent_id) {
+    // Category is moving between parents.
+    // 1. Move category to bottom of current parent.
+    // 2. Assign proper new sort order.
+    //
+    // NOTE: The category will get reassigned to new parent usually after this method
+    // completes by the caller.
+    moveItem(category, false, true, {}, db);
+  }
+
+  // Restore to correct sort order.
+  category->setSortOrder(next_sort_order);
 
   q.prepare("UPDATE Categories "
             "SET parent_id = :parent_id, ordr = :ordr, title = :title, description = :description, date_created = :date_created, "
