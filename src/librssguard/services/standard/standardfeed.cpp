@@ -196,6 +196,7 @@ void StandardFeed::fetchMetadataForItself() {
     setType(metadata->type());
     setEncoding(metadata->encoding());
     setIcon(metadata->icon());
+
     metadata->deleteLater();
 
     QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());

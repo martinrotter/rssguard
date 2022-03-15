@@ -1987,28 +1987,31 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
   }
 }
 
-void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, int account_id, int parent_id) {
+void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, int account_id, int new_parent_id) {
   QSqlQuery q(db);
+  int next_sort_order;
+
+  if ((feed->id() <= 0 && feed->sortOrder() < 0) ||
+      (feed->parent() != nullptr && feed->parent()->id() != new_parent_id)) {
+    // We either insert completely new feed or we move feed
+    // to new parent. Get new viable sort order.
+    q.prepare(QSL("SELECT MAX(ordr) FROM Feeds WHERE account_id = :account_id AND category = :category;"));
+    q.bindValue(QSL(":account_id"), account_id);
+    q.bindValue(QSL(":category"), new_parent_id);
+
+    if (!q.exec() || !q.next()) {
+      throw ApplicationException(q.lastError().text());
+    }
+
+    next_sort_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
+    q.finish();
+  }
+  else {
+    next_sort_order = feed->sortOrder();
+  }
 
   if (feed->id() <= 0) {
     // We need to insert feed first.
-    if (feed->sortOrder() < 0) {
-      q.prepare(QSL("SELECT MAX(ordr) FROM Feeds WHERE account_id = :account_id AND category = :category;"));
-      q.bindValue(QSL(":account_id"), account_id);
-      q.bindValue(QSL(":category"), parent_id);
-
-      if (!q.exec()) {
-        throw ApplicationException(q.lastError().text());
-      }
-
-      q.next();
-
-      int next_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
-
-      feed->setSortOrder(next_order);
-      q.finish();
-    }
-
     q.prepare(QSL("INSERT INTO "
                   "Feeds (title, ordr, date_created, category, update_type, update_interval, account_id, custom_id) "
                   "VALUES ('new', 0, 0, 0, 0, 1, %1, 'new');").arg(QString::number(account_id)));
@@ -2024,9 +2027,18 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
       }
     }
   }
+  else if (feed->parent() != nullptr && feed->parent()->id() != new_parent_id) {
+    // Feed is moving between categories.
+    // 1. Move feed to bottom of current category.
+    // 2. Assign proper new sort order.
+    //
+    // NOTE: The feed will get reassigned to new parent usually after this method
+    // completes by the caller.
+    moveItem(feed, false, true, {}, db);
+  }
 
-  // TODO: pokus se kanál přesouvá mezi kategoriemi či rootem
-  // je třeba nejdříve kanál přesunout na dno a pak ho vložit do nové kategorie
+  // Restore to correct sort order.
+  feed->setSortOrder(next_sort_order);
 
   q.prepare("UPDATE Feeds "
             "SET title = :title, ordr = :ordr, description = :description, date_created = :date_created, "
@@ -2038,7 +2050,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":description"), feed->description());
   q.bindValue(QSL(":date_created"), feed->creationDate().toMSecsSinceEpoch());
   q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
-  q.bindValue(QSL(":category"), parent_id);
+  q.bindValue(QSL(":category"), new_parent_id);
   q.bindValue(QSL(":source"), feed->source());
   q.bindValue(QSL(":update_type"), int(feed->autoUpdateType()));
   q.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
