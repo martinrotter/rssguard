@@ -16,6 +16,7 @@
     <file>sounds/goodresult.wav</file>
 
     <file>scripts/adblock/adblock-server.js</file>
+    <file>scripts/readability/readabilize-article.js</file>
 
     <file>graphics/rssguard.ico</file>
 

@@ -7,8 +7,13 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 
+#include <QDir>
+
 #define READABILITY_PACKAGE "@mozilla/readability"
 #define READABILITY_VERSION "0.4.2"
+
+#define JSDOM_PACKAGE "jsdom"
+#define JSDOM_VERSION "19.0.0"
 
 Readability::Readability(QObject* parent) : QObject{parent}, m_modulesInstalling(false), m_modulesInstalled(false) {
   connect(qApp->nodejs(), &NodeJs::packageInstalledUpdated, this, &Readability::onPackageReady);
@@ -63,9 +68,13 @@ void Readability::onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, con
 void Readability::makeHtmlReadable(const QString& html, const QString& base_url) {
   if (!m_modulesInstalled) {
     try {
-      NodeJs::PackageStatus st = qApp->nodejs()->packageStatus({ QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION) });
+      NodeJs::PackageStatus stReadability = qApp->nodejs()->packageStatus({ QSL(READABILITY_PACKAGE),
+                                                                            QSL(READABILITY_VERSION) });
+      NodeJs::PackageStatus stJsdom = qApp->nodejs()->packageStatus({ QSL(READABILITY_PACKAGE),
+                                                                      QSL(READABILITY_VERSION) });
 
-      if (st != NodeJs::PackageStatus::UpToDate) {
+      if (stReadability != NodeJs::PackageStatus::UpToDate ||
+          stJsdom != NodeJs::PackageStatus::UpToDate) {
         if (!m_modulesInstalling) {
           // We make sure to update modules.
           m_modulesInstalling = true;
@@ -100,13 +109,20 @@ void Readability::makeHtmlReadable(const QString& html, const QString& base_url)
     }
   }
 
+  QString temp_script = QDir::toNativeSeparators(IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation)) +
+                        QDir::separator() +
+                        QSL("readabilize-article.js");
+
+  if (!IOFactory::copyFile(QSL(":/scripts/readability/readabilize-article.js"), temp_script)) {
+    qWarningNN << LOGSEC_ADBLOCK << "Failed to copy Readability script to TEMP.";
+  }
+
   QProcess* proc = new QProcess(this);
 
   connect(proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &Readability::onReadabilityFinished);
 
   qApp->nodejs()->runScript(proc,
-                            QSL("c:\\Projekty\\Moje\\build-rssguard-Desktop_Qt_6_2_3_MSVC2017_64bit-Debug\\"
-                                "src\\rssguard\\data4\\node-packages-windows\\article-to-readable.js"),
+                            temp_script,
                             { base_url });
 
   proc->write(html.toUtf8());
