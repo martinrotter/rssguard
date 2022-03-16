@@ -1,3 +1,40 @@
+4.2.0
+-----
+
+Added:
+* Items in feed list (accounts, categories, feeds) now can be manually sorted. Go to "Feeds -> Sort alphabetically" menu option to switch the feature. Then you can re-adjust sort order with context menu on each item. (#302)
+* Article list now can display full article titles with multiline layout. Switch the feature in "Settings -> Feeds & articles -> Articles list". (#570)
+* Date/time format of articles in article list is now VERY customizable, you can set to display e. g. time only for today's items, or show relative dates for recent items etc. (#608)
+* Taskbar item of RSS Guard on Windows now displays progress of feed downloading, also show number of unread articles in main window title and as a "bubble" icon in taskbar. (#622)
+* RSS Guard now builds with cmake. (#615)
+* "Add feed" and "Edit feed" dialogs were redesigned a bit for better UX. (#603)
+* New action "Open main menu" can now be added to toolbars. (#604)
+* If feed does not provide date/time for its articles, then current date/time is used and now this artificial date/time is iterated to achieve consistent sorting for those articles. (#621)
+* Individual feeds can now be turned off. Turning feed "off" disables it and it won't get any new articles. See "Edit feed" dialog, specifically "Miscellaneous" tab. (#393)
+* TT-RSS: Added "share to published" feature which allows user to save custom notes to TT-RSS. Can be used with context menu on "[SYSTEM] User-published articles" feed list item. (#198)
+* Count of unread articles in taskbar is now switchable. (#649)
+* Documentation was updated. (#582)
+* All modal dialogs now should have "maximize" button. (#629)
+* Context menu of article list now offers action "Copy links". (#345)
+* Articles downloaded from single feed are now de-duplicated before they are processed and saved into RSS Guard DB. (#650)
+* Node.js integration was polished and generalized and will be used for more optional features in the future.
+* Firefox-inspired "reader mode" is now available in WebEngine version of RSS Guard. Check internal web browser toolbar for the relevant "Open in reader mode" button. (#638)
+* New action "Open in internal browser (no new tab)" which opens source website of article in article previewer. (#590)
+* Polishing of feed import feature. (#619)
+* Updated built-in "nudus-*" skins. Thanks to akinokonomi for this.
+* RSS Guard is now aware of "qt5/6-ct" style used by "qtct" tool.
+* Handling of skins, Qt stylesheets and Qt styles is now rewritten quite a lot to achieve more consistent UX and allow for much greater flexibility for skin creators.
+
+
+Fixed:
+* Feedly: HTML entities/code in article titles were not encoded and displayed correctly. (#576)
+* GUI separators were resetting their positions to middle, hopefully fixed. (#587)
+* Inaccurate reporting of new articles when there are no new articles, due to DB layer error. (#618)
+* "New messages" feed status is now more persistent. (#631)
+* Loading of skins/themes is now done more early to avoid some clashes with GUI initialization. (#611)
+* Fixed displaying of special characters in RSS/RDF/ATOM account name. (#657)
+* No separators in custom source specification are needed now.
+
 4.1.2
 -----
 
