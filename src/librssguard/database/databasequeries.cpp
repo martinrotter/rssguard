@@ -1936,18 +1936,15 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
   return ids;
 }
 
-void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* category, int account_id, int parent_id) {
+void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* category, int account_id, int new_parent_id) {
   QSqlQuery q(db);
   int next_sort_order;
 
-  // TODO: check, then go to createoverwriteaccount
-
-  if ((category->id() <= 0 && category->sortOrder() < 0) ||
-      (category->parent() != nullptr && category->parent()->id() != parent_id)) {
-    // We need to insert category first.
+  if (category->id() <= 0 ||
+      (category->parent() != nullptr && category->parent()->id() != new_parent_id)) {
     q.prepare(QSL("SELECT MAX(ordr) FROM Categories WHERE account_id = :account_id AND parent_id = :parent_id;"));
     q.bindValue(QSL(":account_id"), account_id);
-    q.bindValue(QSL(":parent_id"), parent_id);
+    q.bindValue(QSL(":parent_id"), new_parent_id);
 
     if (!q.exec() || !q.next()) {
       throw ApplicationException(q.lastError().text());
@@ -1961,6 +1958,7 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
   }
 
   if (category->id() <= 0) {
+    // We need to insert category first.
     q.prepare(QSL("INSERT INTO "
                   "Categories (parent_id, ordr, title, date_created, account_id) "
                   "VALUES (0, 0, 'new', 0, %1);").arg(QString::number(account_id)));
@@ -1972,7 +1970,7 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
       category->setId(q.lastInsertId().toInt());
     }
   }
-  else if (category->parent() != nullptr && category->parent()->id() != parent_id) {
+  else if (category->parent() != nullptr && category->parent()->id() != new_parent_id) {
     // Category is moving between parents.
     // 1. Move category to bottom of current parent.
     // 2. Assign proper new sort order.
@@ -1989,7 +1987,7 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db, Category* 
             "SET parent_id = :parent_id, ordr = :ordr, title = :title, description = :description, date_created = :date_created, "
             "    icon = :icon, account_id = :account_id, custom_id = :custom_id "
             "WHERE id = :id;");
-  q.bindValue(QSL(":parent_id"), parent_id);
+  q.bindValue(QSL(":parent_id"), new_parent_id);
   q.bindValue(QSL(":title"), category->title());
   q.bindValue(QSL(":description"), category->description());
   q.bindValue(QSL(":date_created"), category->creationDate().toMSecsSinceEpoch());
@@ -2008,7 +2006,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   QSqlQuery q(db);
   int next_sort_order;
 
-  if ((feed->id() <= 0 && feed->sortOrder() < 0) ||
+  if (feed->id() <= 0 ||
       (feed->parent() != nullptr && feed->parent()->id() != new_parent_id)) {
     // We either insert completely new feed or we move feed
     // to new parent. Get new viable sort order.
