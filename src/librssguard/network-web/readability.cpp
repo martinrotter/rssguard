@@ -70,8 +70,8 @@ void Readability::makeHtmlReadable(const QString& html, const QString& base_url)
     try {
       NodeJs::PackageStatus stReadability = qApp->nodejs()->packageStatus({ QSL(READABILITY_PACKAGE),
                                                                             QSL(READABILITY_VERSION) });
-      NodeJs::PackageStatus stJsdom = qApp->nodejs()->packageStatus({ QSL(READABILITY_PACKAGE),
-                                                                      QSL(READABILITY_VERSION) });
+      NodeJs::PackageStatus stJsdom = qApp->nodejs()->packageStatus({ QSL(JSDOM_PACKAGE),
+                                                                      QSL(JSDOM_VERSION) });
 
       if (stReadability != NodeJs::PackageStatus::UpToDate ||
           stJsdom != NodeJs::PackageStatus::UpToDate) {
@@ -85,7 +85,8 @@ void Readability::makeHtmlReadable(const QString& html, const QString& base_url)
                                     "You will be notified when installation is complete.").arg(QSL(APP_NAME)),
                                  QSystemTrayIcon::MessageIcon::Warning },
                                { true, true, false });
-          qApp->nodejs()->installPackages({ { QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION) } });
+          qApp->nodejs()->installPackages({ { QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION) },
+                                            { QSL(JSDOM_PACKAGE), QSL(JSDOM_VERSION) } });
         }
 
         return;
