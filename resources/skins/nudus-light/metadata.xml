@@ -10,4 +10,6 @@
     <color key="FgSelectedError">#FFD7D7</color>
     <color key="Allright">#77dd77</color>
   </palette>
+  <forced-styles></forced-styles>
+  <forced-skin-colors>false</forced-skin-colors>
 </skin>

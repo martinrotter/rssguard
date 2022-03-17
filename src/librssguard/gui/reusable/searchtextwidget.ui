@@ -29,7 +29,7 @@
    <item>
     <widget class="BaseLineEdit" name="m_txtSearch">
      <property name="placeholderText">
-      <string>Seach text</string>
+      <string>Search text</string>
      </property>
     </widget>
    </item>
