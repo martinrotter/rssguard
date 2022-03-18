@@ -114,7 +114,7 @@ QList<QAction*> GmailServiceRoot::contextMenuMessagesList(const QList<Message>& 
     m_replyToMessage = messages.at(0);
 
     if (m_actionReply == nullptr) {
-      m_actionReply = new QAction(qApp->icons()->fromTheme(QSL("mail-reply-sender")), tr("Reply to this message"), this);
+      m_actionReply = new QAction(qApp->icons()->fromTheme(QSL("mail-reply-sender")), tr("Reply to this e-mail message"), this);
       connect(m_actionReply, &QAction::triggered, this, &GmailServiceRoot::replyToEmail);
     }
 

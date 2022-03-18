@@ -63,15 +63,10 @@ QString GmailNetworkFactory::sendEmail(Mimesis::Message msg, const QNetworkProxy
 
   if (reply_to_message != nullptr) {
     // We need to obtain some extra information.
-
     auto metadata = getMessageMetadata(reply_to_message->m_customId, {
       QSL("References"),
       QSL("Message-ID")
     }, custom_proxy);
-
-    /*if (metadata.contains(QSL("References"))) {
-
-       }*/
 
     if (metadata.contains(QSL("Message-ID"))) {
       msg["References"] = metadata.value(QSL("Message-ID")).toStdString();
