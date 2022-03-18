@@ -49,6 +49,7 @@
     <file>./graphics/Breeze/actions/22/list-add.svg</file>
     <file>./graphics/Breeze/actions/22/list-remove.svg</file>
     <file>./graphics/Breeze/actions/32/mail-attachment.svg</file>
+    <file>./graphics/Breeze/actions/symbolic/mail-inbox-symbolic.svg</file>
     <file>./graphics/Breeze/actions/32/mail-mark-important.svg</file>
     <file>./graphics/Breeze/actions/32/mail-mark-junk.svg</file>
     <file>./graphics/Breeze/actions/32/mail-mark-read.svg</file>
@@ -122,6 +123,7 @@
     <file>./graphics/Breeze Dark/actions/22/list-add.svg</file>
     <file>./graphics/Breeze Dark/actions/22/list-remove.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-attachment.svg</file>
+    <file>./graphics/Breeze Dark/actions/symbolic/mail-inbox-symbolic.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-mark-important.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-mark-junk.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-mark-read.svg</file>

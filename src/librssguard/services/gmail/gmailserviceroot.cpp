@@ -34,7 +34,10 @@ void GmailServiceRoot::replyToEmail() {
 
 RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
   auto* root = new RootItem();
-  Feed* inbox = new Feed(tr("Inbox"), QSL(GMAIL_SYSTEM_LABEL_INBOX), qApp->icons()->fromTheme(QSL("mail-inbox")), root);
+  Feed* inbox = new Feed(tr("Inbox"),
+                         QSL(GMAIL_SYSTEM_LABEL_INBOX),
+                         qApp->icons()->fromTheme(QSL("mail-inbox"), QSL("mail-inbox-symbolic")),
+                         root);
 
   inbox->setKeepOnTop(true);
 
@@ -81,13 +84,17 @@ QList<Message> GmailServiceRoot::obtainNewMessages(Feed* feed,
   Q_UNUSED(tagged_messages)
 
   Feed::Status error = Feed::Status::Normal;
-  QList<Message> messages = network()->messages(feed->customId(), error, networkProxy());
+  QList<Message> messages = network()->messages(feed->customId(), stated_messages, error, networkProxy());
 
   if (error != Feed::Status::NewMessages && error != Feed::Status::Normal) {
     throw FeedFetchException(error);
   }
 
   return messages;
+}
+
+bool GmailServiceRoot::wantsBaggedIdsOfExistingMessages() const {
+  return true;
 }
 
 bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {

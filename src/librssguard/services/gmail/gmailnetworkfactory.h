@@ -10,6 +10,7 @@
 #include "3rd-party/mimesis/mimesis.hpp"
 #include "services/abstract/feed.h"
 #include "services/abstract/rootitem.h"
+#include "services/abstract/serviceroot.h"
 
 #include <QNetworkReply>
 
@@ -41,13 +42,19 @@ class GmailNetworkFactory : public QObject {
     // API methods.
     QString sendEmail(Mimesis::Message msg, const QNetworkProxy& custom_proxy, Message* reply_to_message = nullptr);
     Downloader* downloadAttachment(const QString& msg_id, const QString& attachment_id, const QNetworkProxy& custom_proxy);
-    QList<Message> messages(const QString& stream_id, Feed::Status& error, const QNetworkProxy& custom_proxy);
+    QList<Message> messages(const QString& stream_id, const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                            Feed::Status& error, const QNetworkProxy& custom_proxy);
     QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status,
                                                  const QStringList& custom_ids,
                                                  const QNetworkProxy& custom_proxy);
     QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance,
                                                     const QStringList& custom_ids,
                                                     const QNetworkProxy& custom_proxy);
+    QStringList list(const QString& stream_id,
+                     const QStringList& label_ids,
+                     int max_results,
+                     const QString& query,
+                     const QNetworkProxy& custom_proxy);
     QVariantHash getProfile(const QNetworkProxy& custom_proxy);
 
   private slots:
@@ -59,10 +66,10 @@ class GmailNetworkFactory : public QObject {
     QMap<QString, QString> getMessageMetadata(const QString& msg_id,
                                               const QStringList& metadata,
                                               const QNetworkProxy& custom_proxy);
-    bool obtainAndDecodeFullMessages(QList<Message>& lite_messages,
-                                     const QString& feed_id,
-                                     const QNetworkProxy& custom_proxy);
-    QList<Message> decodeLiteMessages(const QString& messages_json_data, const QString& stream_id, QString& next_page_token);
+    QList<Message> obtainAndDecodeFullMessages(const QStringList& message_ids,
+                                               const QString& feed_id,
+                                               const QNetworkProxy& custom_proxy);
+    QStringList decodeLiteMessages(const QString& messages_json_data, QString& next_page_token);
 
     void initializeOauth();
 

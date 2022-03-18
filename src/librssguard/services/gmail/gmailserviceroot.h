@@ -34,6 +34,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QList<Message> obtainNewMessages(Feed* feed,
                                              const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages);
+    virtual bool wantsBaggedIdsOfExistingMessages() const;
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;

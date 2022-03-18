@@ -179,81 +179,80 @@ Downloader* GmailNetworkFactory::downloadAttachment(const QString& msg_id,
 }
 
 QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
+                                             const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              Feed::Status& error,
                                              const QNetworkProxy& custom_proxy) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
-  QString next_page_token;
-  QList<Message> messages;
-  ulong msecs_wait_between_batches = 1500;
 
   if (bearer.isEmpty()) {
     error = Feed::Status::AuthError;
-    return QList<Message>();
+    return {};
   }
 
-  // We need to quit event loop when the download finishes.
-  QString target_url;
-  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  // 1. Get unread IDs for a feed.
+  // 2. Get read IDs for a feed.
+  // 3. Get starred IDs for a feed.
+  // 4. Download messages/contents for missing or changed IDs.
+  QStringList remote_read_ids_list, remote_unread_ids_list, remote_starred_ids_list;
 
-  do {
-    target_url = QSL(GMAIL_API_MSGS_LIST);
-    target_url += QSL("?labelIds=%1").arg(stream_id);
+  try {
+    remote_starred_ids_list = list(stream_id, {}, 0, QSL("is:starred"), custom_proxy);
+    remote_unread_ids_list = list(stream_id, {}, batchSize(), QSL("is:unread"), custom_proxy);
 
-    if (downloadOnlyUnreadMessages()) {
-      target_url += QSL("&labelIds=%1").arg(QSL(GMAIL_SYSTEM_LABEL_UNREAD));
+    if (!downloadOnlyUnreadMessages()) {
+      remote_read_ids_list = list(stream_id, {}, batchSize(), QSL("is:read"), custom_proxy);
     }
+  }
+  catch (const NetworkException& net_ex) {
+    qCriticalNN << LOGSEC_GMAIL
+                << "Failed to get list of e-mail IDs:" << QUOTE_W_SPACE_DOT(net_ex.message());
+    return {};
+  }
 
-    if (batchSize() > 0) {
-      target_url += QSL("&maxResults=%1").arg(batchSize());
-    }
+  // 1.
+  auto local_unread_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Unread);
+  QSet<QString> remote_unread_ids = FROM_LIST_TO_SET(QSet<QString>, remote_unread_ids_list);
+  QSet<QString> local_unread_ids = FROM_LIST_TO_SET(QSet<QString>, local_unread_ids_list);
 
-    if (!next_page_token.isEmpty()) {
-      target_url += QString("&pageToken=%1").arg(next_page_token);
-    }
+  // 2.
+  auto local_read_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Read);
+  QSet<QString> remote_read_ids = FROM_LIST_TO_SET(QSet<QString>, remote_read_ids_list);
+  QSet<QString> local_read_ids = FROM_LIST_TO_SET(QSet<QString>, local_read_ids_list);
 
-    QByteArray messages_raw_data;
-    auto netw = NetworkFactory::performNetworkOperation(target_url,
-                                                        timeout,
-                                                        {},
-                                                        messages_raw_data,
-                                                        QNetworkAccessManager::Operation::GetOperation,
-                                                        { { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
-                                                          bearer.toLocal8Bit() } },
-                                                        false,
-                                                        {},
-                                                        {},
-                                                        custom_proxy);
+  // 3.
+  auto local_starred_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Starred);
+  QSet<QString> remote_starred_ids = FROM_LIST_TO_SET(QSet<QString>, remote_starred_ids_list);
+  QSet<QString> local_starred_ids = FROM_LIST_TO_SET(QSet<QString>, local_starred_ids_list);
 
-    if (netw.m_networkError == QNetworkReply::NetworkError::NoError) {
-      // We parse this chunk.
-      QString messages_data = QString::fromUtf8(messages_raw_data);
-      QList<Message> more_messages = decodeLiteMessages(messages_data, stream_id, next_page_token);
+  // 4.
+  QSet<QString> to_download;
 
-      if (!more_messages.isEmpty()) {
-        // Now, we via batch HTTP request obtain full data for each message.
-        bool obtained = obtainAndDecodeFullMessages(more_messages, stream_id, custom_proxy);
+  // Undownloaded unread e-mails.
+  to_download += remote_unread_ids - local_unread_ids;
 
-        if (obtained) {
-          messages.append(more_messages);
-          QThread::msleep(msecs_wait_between_batches);
+  // Undownloaded read e-mails.
+  if (!m_downloadOnlyUnreadMessages) {
+    to_download += remote_read_ids - local_read_ids;
+  }
 
-          // New batch of messages was obtained, check if we have enough.
-          if (batchSize() > 0 && batchSize() <= messages.size()) {
-            // We have enough messages.
-            break;
-          }
-        }
-        else {
-          error = Feed::Status::NetworkError;
-          return messages;
-        }
-      }
-    }
-    else {
-      error = Feed::Status::NetworkError;
-      return messages;
-    }
-  } while (!next_page_token.isEmpty());
+  // Undownloaded starred e-mails.
+  to_download += remote_starred_ids - local_starred_ids;
+
+  // Read e-mails newly marked as unread in service.
+  auto moved_read = local_read_ids.intersect(remote_unread_ids);
+
+  to_download += moved_read;
+
+  // Unread e-mails newly marked as read in service.
+  if (!m_downloadOnlyUnreadMessages) {
+    auto moved_unread = local_unread_ids.intersect(remote_read_ids);
+
+    to_download += moved_unread;
+  }
+
+  qDebugNN << LOGSEC_GMAIL << "Will download" << QUOTE_W_SPACE(to_download.size()) << "e-mails.";
+
+  auto messages = obtainAndDecodeFullMessages(QList<QString>(to_download.values()), stream_id, custom_proxy);
 
   error = Feed::Status::Normal;
   return messages;
@@ -377,6 +376,72 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::I
   return QNetworkReply::NetworkError::NoError;
 }
 
+QStringList GmailNetworkFactory::list(const QString& stream_id,
+                                      const QStringList& label_ids,
+                                      int max_results,
+                                      const QString& query,
+                                      const QNetworkProxy& custom_proxy) {
+  QList<QString> message_ids;
+  QString next_page_token;
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  do {
+    QString target_url = QSL(GMAIL_API_MSGS_LIST);
+
+    target_url += QSL("?labelIds=%1").arg(stream_id);
+
+    if (!label_ids.isEmpty()) {
+      for (const QString& label_id : label_ids) {
+        target_url += QSL("&labelIds=%1").arg(label_id);
+      }
+    }
+
+    if (!query.isEmpty()) {
+      target_url += QSL("&q=%1").arg(query);
+    }
+
+    int remaining = max_results - message_ids.size();
+
+    if (max_results <= 0 || remaining > 500) {
+      target_url += QSL("&maxResults=500");
+    }
+    else {
+      target_url += QSL("&maxResults=%1").arg(remaining);
+    }
+
+    if (!next_page_token.isEmpty()) {
+      target_url += QString("&pageToken=%1").arg(next_page_token);
+    }
+
+    QByteArray messages_raw_data;
+    auto netw = NetworkFactory::performNetworkOperation(target_url,
+                                                        timeout,
+                                                        {},
+                                                        messages_raw_data,
+                                                        QNetworkAccessManager::Operation::GetOperation,
+                                                        { { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                                          bearer.toLocal8Bit() } },
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        custom_proxy);
+
+    if (netw.m_networkError == QNetworkReply::NetworkError::NoError) {
+      // We parse this chunk.
+      QString messages_data = QString::fromUtf8(messages_raw_data);
+
+      message_ids << decodeLiteMessages(messages_data, next_page_token);
+
+    }
+    else {
+      throw NetworkException(netw.m_networkError, tr("failed to download IDs of e-mail messages"));
+    }
+  } while (!next_page_token.isEmpty() && (max_results <= 0 || message_ids.size() < max_results));
+
+  return message_ids;
+}
+
 QVariantHash GmailNetworkFactory::getProfile(const QNetworkProxy& custom_proxy) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
@@ -484,8 +549,6 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   msg.m_title = headers[QSL("Subject")];
   msg.m_createdFromFeed = true;
   msg.m_created = TextFactory::parseDateTime(headers[QSL("Date")]);
-
-  QString aa = msg.m_rawContents;
 
   if (msg.m_title.isEmpty()) {
     msg.m_title = tr("No subject");
@@ -607,15 +670,15 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
   }
 }
 
-bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& messages,
-                                                      const QString& feed_id,
-                                                      const QNetworkProxy& custom_proxy) {
-  QHash<QString, int> msgs;
+QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringList& message_ids,
+                                                                const QString& feed_id,
+                                                                const QNetworkProxy& custom_proxy) {
+  QHash<QString, Message> msgs;
   int next_message = 0;
   QString bearer = m_oauth2->bearer();
 
   if (bearer.isEmpty()) {
-    return false;
+    return {};
   }
 
   do {
@@ -623,16 +686,19 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& messages,
 
     multi->setContentType(QHttpMultiPart::ContentType::MixedType);
 
-    for (int window = next_message + 100; next_message < window && next_message < messages.size(); next_message++ ) {
-      Message msg = messages[next_message];
+    for (int window = next_message + 100; next_message < window && next_message < message_ids.size(); next_message++ ) {
+      QString msg_id = message_ids[next_message];
+      Message msg;
       QHttpPart part;
 
+      msg.m_customId = msg_id;
+
       part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);
-      QString full_msg_endpoint = QSL("GET /gmail/v1/users/me/messages/%1\r\n").arg(msg.m_customId);
+      QString full_msg_endpoint = QSL("GET /gmail/v1/users/me/messages/%1\r\n").arg(msg_id);
 
       part.setBody(full_msg_endpoint.toUtf8());
       multi->append(part);
-      msgs.insert(msg.m_customId, next_message);
+      msgs.insert(msg_id, msg);
     }
 
     QList<QPair<QByteArray, QByteArray>> headers;
@@ -660,42 +726,46 @@ bool GmailNetworkFactory::obtainAndDecodeFullMessages(QList<Message>& messages,
         QString msg_id = msg_doc[QSL("id")].toString();
 
         if (msgs.contains(msg_id)) {
-          Message& msg = messages[msgs.value(msg_id)];
+          Message& msg = msgs[msg_id];
+
+          if (msg.m_customId == "17f9bff0f98a868e") {
+            int a = 5;
+          }
 
           if (!fillFullMessage(msg, msg_doc, feed_id)) {
-            qWarningNN << LOGSEC_GMAIL << "Failed to get full message for custom ID:" << QUOTE_W_SPACE_DOT(msg.m_customId);
+            qWarningNN << LOGSEC_GMAIL << "Failed to get (or deliberately skipped) full message for custom ID:"
+                       << QUOTE_W_SPACE_DOT(msg.m_customId);
+
+            msgs.remove(msg_id);
           }
         }
       }
+
+      multi->deleteLater();
     }
     else {
-      return false;
+      multi->deleteLater();
+      return {};
     }
   }
-  while (next_message < messages.size());
+  while (next_message < message_ids.size());
 
-  return true;
+  return msgs.values();
 }
 
-QList<Message> GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data,
-                                                       const QString& stream_id,
-                                                       QString& next_page_token) {
-  QList<Message> messages;
+QStringList GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data, QString& next_page_token) {
+  QList<QString> message_ids;
   QJsonObject top_object = QJsonDocument::fromJson(messages_json_data.toUtf8()).object();
   QJsonArray json_msgs = top_object[QSL("messages")].toArray();
 
   next_page_token = top_object[QSL("nextPageToken")].toString();
-  messages.reserve(json_msgs.count());
+  message_ids.reserve(json_msgs.count());
 
   for (const QJsonValue& obj : json_msgs) {
     auto message_obj = obj.toObject();
-    Message message;
 
-    message.m_customId = message_obj[QSL("id")].toString();
-    message.m_feedId = stream_id;
-
-    messages.append(message);
+    message_ids << message_obj[QSL("id")].toString();
   }
 
-  return messages;
+  return message_ids;
 }
