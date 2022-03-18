@@ -728,10 +728,6 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
         if (msgs.contains(msg_id)) {
           Message& msg = msgs[msg_id];
 
-          if (msg.m_customId == "17f9bff0f98a868e") {
-            int a = 5;
-          }
-
           if (!fillFullMessage(msg, msg_doc, feed_id)) {
             qWarningNN << LOGSEC_GMAIL << "Failed to get (or deliberately skipped) full message for custom ID:"
                        << QUOTE_W_SPACE_DOT(msg.m_customId);
