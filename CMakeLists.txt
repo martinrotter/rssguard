@@ -106,7 +106,7 @@ add_custom_target(AuxFiles SOURCES "resources/scripts/uncrustify/uncrustify.cfg"
 # Global compilation switches.
 option(BUILD_WITH_QT6 "Build application with Qt 6" OFF)
 option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
-option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source" OFF)
+option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)" OFF)
 option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)" OFF)
 option(REVISION_FROM_GIT "Get revision using `git rev-parse`" ON)
 
@@ -229,6 +229,6 @@ elseif(APPLE)
 endif()
 
 # Generate localizations, build library and application.
-add_subdirectory(localization)
 add_subdirectory(src/librssguard)
+add_subdirectory(localization)
 add_subdirectory(src/rssguard)
