@@ -14,6 +14,8 @@
 #endif
 #endif
 
+#include <QTextCodec>
+
 #if defined(Q_OS_MACOS)
 extern void disableWindowTabbing();
 #endif
@@ -60,6 +62,10 @@ int main(int argc, char* argv[]) {
   for (int a = 0; a < argc; a++) {
     raw_cli_args << QString::fromLocal8Bit(av[a]);
   }
+
+#if QT_VERSION_MAJOR == 5
+  QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+#endif
 
   // Instantiate base application object.
   Application application(QSL(APP_LOW_NAME), argc, argv, raw_cli_args);
