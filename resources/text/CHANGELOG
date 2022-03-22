@@ -32,6 +32,7 @@ Fixed:
 * GUI separators were resetting their positions to middle, hopefully fixed. (#587)
 * Inaccurate reporting of new articles when there are no new articles, due to DB layer error. (#618)
 * "New messages" feed status is now more persistent. (#631)
+* Handling of character set in MariaDB backend is now improved, all UTF-8 characters should now work correctly. (#579)
 * Loading of skins/themes is now done more early to avoid some clashes with GUI initialization. (#611)
 * Fixed displaying of special characters in RSS/RDF/ATOM account name. (#657)
 * No separators in custom source specification are needed now.
