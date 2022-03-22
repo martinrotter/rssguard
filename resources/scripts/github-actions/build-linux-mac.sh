@@ -94,14 +94,10 @@ if [ $is_linux = true ]; then
   fi
 else
   # Fix .dylib linking.
-  #install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" "RSS Guard.app/Contents/MacOS/rssguard"
-  otool -L "RSS Guard.app/Contents/MacOS/rssguard"
-  macdeployqt "RSS Guard.app"
+  install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" "RSS Guard.app/Contents/MacOS/rssguard"
 
-  curl "https://raw.githubusercontent.com/iltommi/macdeployqtfix/master/macdeployqtfix.py" -o "fix.py"
-
-  python fix.py "RSS Guard.app/Contents/MacOS/rssguard" "$QTPATH/$QTVERSION/clang_64"
   otool -L "RSS Guard.app/Contents/MacOS/rssguard"
+  macdeployqt "./RSS Guard.app" -dmg
 
   # Rename DMG.
   set -- *.dmg
