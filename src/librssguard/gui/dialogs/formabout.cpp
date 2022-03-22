@@ -57,7 +57,11 @@ void FormAbout::loadLicenseAndInformation() {
   }
 
   try {
+#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
+    m_ui.m_txtChangelog->setMarkdown(IOFactory::readFile(APP_INFO_PATH + QL1S("/CHANGELOG")));
+#else
     m_ui.m_txtChangelog->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/CHANGELOG")));
+#endif
   }
   catch (...) {
     m_ui.m_txtChangelog->setText(tr("Changelog not found."));
