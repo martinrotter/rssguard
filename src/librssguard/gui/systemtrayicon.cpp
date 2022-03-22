@@ -117,34 +117,35 @@ void SystemTrayIcon::setNumber(int number, bool any_feed_has_new_unread_messages
     tray_painter.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
     tray_painter.setRenderHint(QPainter::RenderHint::TextAntialiasing, true);
 
-    // Numbers with more than 2 digits won't be readable, display
+    // Numbers with more than 5 digits won't be readable, display
     // infinity symbol in that case.
-    if (number > 999) {
+    QString num_txt;
+
+    if (number > 99999) {
+      num_txt = QChar(8734);
       m_font.setPixelSize(background.width() * 0.78);
-      tray_painter.setFont(m_font);
-      tray_painter.drawText(background.rect(), Qt::AlignmentFlag::AlignCenter, QChar(8734));
+    }
+    else if (number > 999) {
+      num_txt = QSL("%1k").arg(int(number / 1000));
+      m_font.setPixelSize(background.width() * 0.43);
+    }
+    else if (number > 99) {
+      num_txt = QString::number(number);
+      m_font.setPixelSize(background.width() * 0.43);
+    }
+    else if (number > 9) {
+      num_txt = QString::number(number);
+      m_font.setPixelSize(background.width() * 0.56);
     }
     else {
-      // Smaller number if it has 3 digits.
-      if (number > 99) {
-        m_font.setPixelSize(background.width() * 0.43);
-      }
-      else if (number > 9) {
-        m_font.setPixelSize(background.width() * 0.56);
-      }
-
-      // Bigger number if it has just one digit.
-      else {
-        m_font.setPixelSize(background.width() * 0.78);
-      }
-
-      tray_painter.setFont(m_font);
-      tray_painter.drawText(background.rect(),
-                            Qt::AlignmentFlag::AlignCenter,
-                            QString::number(number));
+      num_txt = QString::number(number);
+      m_font.setPixelSize(background.width() * 0.78);
     }
 
+    tray_painter.setFont(m_font);
+    tray_painter.drawText(background.rect(), Qt::AlignmentFlag::AlignCenter, num_txt);
     tray_painter.end();
+
     QSystemTrayIcon::setIcon(QIcon(background));
   }
 }

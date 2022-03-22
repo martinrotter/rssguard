@@ -732,7 +732,18 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
 QImage Application::generateOverlayIcon(int number) const {
   QImage img(128, 128, QImage::Format::Format_ARGB32);
   QPainter p;
-  QString num_txt = number > 999 ? QChar(8734) : QString::number(number);
+  QString num_txt;
+
+  if (number < 1000) {
+    num_txt = QString::number(number);
+  }
+  else if (number < 100000) {
+    num_txt = QSL("%1k").arg(int(number / 1000));
+  }
+  else {
+    num_txt = QChar(8734);
+  }
+
   QPainterPath rounded_rectangle; rounded_rectangle.addRoundedRect(QRectF(img.rect()), 15, 15);
   QFont fon = font();
 
