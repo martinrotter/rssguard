@@ -98,7 +98,7 @@ else
   otool -L "RSS Guard.app/Contents/MacOS/rssguard"
   macdeployqt "RSS Guard.app"
 
-  curl "https://raw.githubusercontent.com/iltommi/macdeployqtfix/master/macdeployqtfix.py" -O  "fix.py"
+  curl "https://raw.githubusercontent.com/iltommi/macdeployqtfix/master/macdeployqtfix.py" -o "fix.py"
 
   python fix.py "RSS Guard.app/Contents/MacOS/rssguard" "$QTPATH/$QTVERSION/clang_64"
   otool -L "RSS Guard.app/Contents/MacOS/rssguard"
