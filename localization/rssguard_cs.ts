@@ -1743,7 +1743,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="112"/>
         <source>&amp;Move</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Přesunout</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="151"/>
@@ -2244,27 +2244,27 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="876"/>
         <source>&amp;Sort alphabetically</source>
-        <translation type="unfinished"/>
+        <translation>Seřadit &amp;abecedně</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="881"/>
         <source>Move &amp;up</source>
-        <translation type="unfinished"/>
+        <translation>Přesunout &amp;nahoru</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="886"/>
         <source>Move to &amp;top</source>
-        <translation type="unfinished"/>
+        <translation>Přesunout &amp;zcela nahoru</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="891"/>
         <source>Move &amp;down</source>
-        <translation type="unfinished"/>
+        <translation>Přesunout &amp;dolů</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="896"/>
         <source>Move to &amp;bottom</source>
-        <translation type="unfinished"/>
+        <translation>Přesunout z&amp;cela dolů</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="738"/>
@@ -3218,7 +3218,7 @@ Nyní ho můžete nainstalovat.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="438"/>
         <source>failed to download IDs of e-mail messages</source>
-        <translation type="unfinished"/>
+        <translation>nepodařilo se stáhnout IDčka e-mailů</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="498"/>
@@ -3268,7 +3268,7 @@ Nyní ho můžete nainstalovat.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="124"/>
         <source>Reply to this e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Odpovědět na tento e-mail</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="199"/>

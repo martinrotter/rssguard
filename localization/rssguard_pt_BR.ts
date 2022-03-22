@@ -3220,7 +3220,7 @@ Você pode instalar agora.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="438"/>
         <source>failed to download IDs of e-mail messages</source>
-        <translation type="unfinished"/>
+        <translation>falha ao baixar IDs das mensagens de e-mail</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="498"/>
@@ -3270,7 +3270,7 @@ Você pode instalar agora.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="124"/>
         <source>Reply to this e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Responder a esta mensagem de e-mail</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="199"/>
@@ -3977,7 +3977,7 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="279"/>
         <source>Custom ID of the article.</source>
-        <translation type="unfinished"/>
+        <translation>ID personalizado do artigo.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="280"/>
@@ -5139,7 +5139,7 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="32"/>
         <source>Search text</source>
-        <translation type="unfinished"/>
+        <translation>Pesquisar texto</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
@@ -5812,7 +5812,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
         <source>Forced skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Cores forçadas do tema</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="251"/>
@@ -5909,7 +5909,7 @@ Descrição: %3</translation>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
         <source>Use skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Usar cores do tema</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
