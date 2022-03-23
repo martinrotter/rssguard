@@ -1,3 +1,12 @@
+4.2.1
+-----
+
+Added:
+* Number format of unread counts in task bar icon and tray icon is now enhanced. It shows format "%1k" for number bigger than 999, for example 16 000 of unread articles will be displayed as "16k". (#662)
+
+Fixed:
+* Dynamic libraries are now properly "linked" in Mac OS X build. (#663)
+
 4.2.0
 -----
 
