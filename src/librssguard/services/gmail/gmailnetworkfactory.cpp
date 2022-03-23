@@ -189,6 +189,8 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
     return {};
   }
 
+  const bool is_spam_feed = QString::compare(stream_id, QSL("SPAM"), Qt::CaseSensitivity::CaseInsensitive) == 0;
+
   // 1. Get unread IDs for a feed.
   // 2. Get read IDs for a feed.
   // 3. Get starred IDs for a feed.
@@ -196,11 +198,11 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
   QStringList remote_read_ids_list, remote_unread_ids_list, remote_starred_ids_list;
 
   try {
-    remote_starred_ids_list = list(stream_id, {}, 0, QSL("is:starred"), custom_proxy);
-    remote_unread_ids_list = list(stream_id, {}, batchSize(), QSL("is:unread"), custom_proxy);
+    remote_starred_ids_list = list(stream_id, {}, 0, is_spam_feed, QSL("is:starred"), custom_proxy);
+    remote_unread_ids_list = list(stream_id, {}, batchSize(), is_spam_feed, QSL("is:unread"), custom_proxy);
 
     if (!downloadOnlyUnreadMessages()) {
-      remote_read_ids_list = list(stream_id, {}, batchSize(), QSL("is:read"), custom_proxy);
+      remote_read_ids_list = list(stream_id, {}, batchSize(), is_spam_feed, QSL("is:read"), custom_proxy);
     }
   }
   catch (const NetworkException& net_ex) {
@@ -379,6 +381,7 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::I
 QStringList GmailNetworkFactory::list(const QString& stream_id,
                                       const QStringList& label_ids,
                                       int max_results,
+                                      bool include_spam,
                                       const QString& query,
                                       const QNetworkProxy& custom_proxy) {
   QList<QString> message_ids;
@@ -399,6 +402,10 @@ QStringList GmailNetworkFactory::list(const QString& stream_id,
 
     if (!query.isEmpty()) {
       target_url += QSL("&q=%1").arg(query);
+    }
+
+    if (include_spam) {
+      target_url += QSL("&includeSpamTrash=true");
     }
 
     int remaining = max_results - message_ids.size();
@@ -549,6 +556,10 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   msg.m_title = headers[QSL("Subject")];
   msg.m_createdFromFeed = true;
   msg.m_created = TextFactory::parseDateTime(headers[QSL("Date")]);
+
+  if (!msg.m_created.isValid()) {
+    msg.m_created = TextFactory::parseDateTime(headers[QSL("date")]);
+  }
 
   if (msg.m_title.isEmpty()) {
     msg.m_title = tr("No subject");

@@ -53,6 +53,7 @@ class GmailNetworkFactory : public QObject {
     QStringList list(const QString& stream_id,
                      const QStringList& label_ids,
                      int max_results,
+                     bool include_spam,
                      const QString& query,
                      const QNetworkProxy& custom_proxy);
     QVariantHash getProfile(const QNetworkProxy& custom_proxy);
