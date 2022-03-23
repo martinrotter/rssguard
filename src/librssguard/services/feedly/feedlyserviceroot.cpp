@@ -56,6 +56,7 @@ QVariantHash FeedlyServiceRoot::customDatabaseData() const {
 
   data[QSL("batch_size")] = m_network->batchSize();
   data[QSL("download_only_unread")] = m_network->downloadOnlyUnreadMessages();
+  data[QSL("intelligent_synchronization")] = m_network->intelligentSynchronization();
 
   return data;
 }
@@ -70,16 +71,16 @@ void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 
   m_network->setBatchSize(data[QSL("batch_size")].toInt());
   m_network->setDownloadOnlyUnreadMessages(data[QSL("download_only_unread")].toBool());
+  m_network->setIntelligentSynchronization(data[QSL("intelligent_synchronization")].toBool());
 }
 
 QList<Message> FeedlyServiceRoot::obtainNewMessages(Feed* feed,
                                                     const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                     const QHash<QString, QStringList>& tagged_messages) {
-  Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
 
   try {
-    return m_network->streamContents(feed->customId());
+    return m_network->messages(feed->customId(), stated_messages);
   }
   catch (const ApplicationException& ex) {
     throw FeedFetchException(Feed::Status::NetworkError, ex.message());
@@ -257,4 +258,8 @@ RootItem* FeedlyServiceRoot::obtainNewTreeForSyncIn() const {
                 << QUOTE_W_SPACE_DOT(ex.message());
     return nullptr;
   }
+}
+
+bool FeedlyServiceRoot::wantsBaggedIdsOfExistingMessages() const {
+  return m_network->intelligentSynchronization();
 }

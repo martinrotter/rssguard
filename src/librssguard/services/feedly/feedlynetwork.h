@@ -7,6 +7,7 @@
 
 #include "network-web/networkfactory.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/serviceroot.h"
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
 class OAuth2Service;
@@ -20,11 +21,16 @@ class FeedlyNetwork : public QObject {
   public:
     explicit FeedlyNetwork(QObject* parent = nullptr);
 
+    QList<Message> messages(const QString& stream_id,
+                            const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages);
+
     // API operations.
     void untagEntries(const QString& tag_id, const QStringList& msg_custom_ids);
     void tagEntries(const QString& tag_id, const QStringList& msg_custom_ids);
     void markers(const QString& action, const QStringList& msg_custom_ids);
+    QList<Message> entries(const QStringList& ids);
     QList<Message> streamContents(const QString& stream_id);
+    QStringList streamIds(const QString& stream_id, bool unread_only, int batch_size);
     QVariantHash profile(const QNetworkProxy& network_proxy);
     QList<RootItem*> tags();
     RootItem* collections(bool obtain_icons);
@@ -38,6 +44,9 @@ class FeedlyNetwork : public QObject {
 
     bool downloadOnlyUnreadMessages() const;
     void setDownloadOnlyUnreadMessages(bool download_only_unread_messages);
+
+    bool intelligentSynchronization() const;
+    void setIntelligentSynchronization(bool intelligent_sync);
 
     int batchSize() const;
     void setBatchSize(int batch_size);
@@ -61,12 +70,15 @@ class FeedlyNetwork : public QObject {
       Tags,
       StreamContents,
       Markers,
-      TagEntries
+      TagEntries,
+      StreamIds,
+      Entries
     };
 
     QString fullUrl(Service service) const;
     QString bearer() const;
-    QList<Message> decodeStreamContents(const QByteArray& stream_contents, QString& continuation) const;
+    QStringList decodeStreamIds(const QByteArray& stream_ids, QString& continuation) const;
+    QList<Message> decodeStreamContents(const QByteArray& stream_contents, bool nested_items, QString& continuation) const;
     RootItem* decodeCollections(const QByteArray& json, bool obtain_icons, const QNetworkProxy& proxy, int timeout = 0) const;
     QPair<QByteArray, QByteArray> bearerHeader(const QString& bearer) const;
 
@@ -85,6 +97,9 @@ class FeedlyNetwork : public QObject {
 
     // Only download unread messages.
     bool m_downloadOnlyUnreadMessages;
+
+    // Better synchronization algorithm.
+    bool m_intelligentSynchronization;
 };
 
 #endif // FEEDLYNETWORK_H

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>421</width>
-    <height>235</height>
+    <height>321</height>
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout">
@@ -45,7 +45,24 @@
    <item row="2" column="0" colspan="2">
     <widget class="HelpSpoiler" name="m_lblInfo" native="true"/>
    </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="m_checkDownloadOnlyUnreadMessages">
+     <property name="text">
+      <string>Download unread articles only</string>
+     </property>
+    </widget>
+   </item>
    <item row="4" column="0" colspan="2">
+    <widget class="QCheckBox" name="m_cbNewAlgorithm">
+     <property name="text">
+      <string>Intelligent synchronization algorithm</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_lblNewAlgorithm" native="true"/>
+   </item>
+   <item row="6" column="0" colspan="2">
     <layout class="QFormLayout" name="formLayout_3">
      <item row="0" column="0">
       <widget class="QLabel" name="label">
@@ -70,19 +87,9 @@
     </layout>
    </item>
    <item row="7" column="0" colspan="2">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>400</width>
-       <height>86</height>
-      </size>
-     </property>
-    </spacer>
+    <widget class="HelpSpoiler" name="m_lblLimitMessagesInfo" native="true"/>
    </item>
-   <item row="6" column="0" colspan="2">
+   <item row="8" column="0">
     <layout class="QFormLayout" name="formLayout_2">
      <item row="0" column="0">
       <widget class="QPushButton" name="m_btnTestSetup">
@@ -100,29 +107,32 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0" colspan="2">
-    <widget class="QCheckBox" name="m_checkDownloadOnlyUnreadMessages">
-     <property name="text">
-      <string>Download unread articles only</string>
+   <item row="9" column="0" colspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="2">
-    <widget class="HelpSpoiler" name="m_lblLimitMessagesInfo" native="true"/>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>400</width>
+       <height>86</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LineEditWithStatus</class>
-   <extends>QWidget</extends>
-   <header>lineeditwithstatus.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LabelWithStatus</class>
    <extends>QWidget</extends>
    <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LineEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>lineeditwithstatus.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -137,6 +147,13 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_btnGetToken</tabstop>
+  <tabstop>m_checkDownloadOnlyUnreadMessages</tabstop>
+  <tabstop>m_cbNewAlgorithm</tabstop>
+  <tabstop>m_spinLimitMessages</tabstop>
+  <tabstop>m_btnTestSetup</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -28,6 +28,8 @@
 #define FEEDLY_API_URL_COLLETIONS       "collections"
 #define FEEDLY_API_URL_TAGS             "tags"
 #define FEEDLY_API_URL_STREAM_CONTENTS  "streams/contents?streamId=%1"
+#define FEEDLY_API_URL_STREAM_IDS       "streams/%1/ids"
 #define FEEDLY_API_URL_MARKERS          "markers"
+#define FEEDLY_API_URL_ENTRIES          "entries/.mget"
 
 #endif // FEEDLY_DEFINITIONS_H

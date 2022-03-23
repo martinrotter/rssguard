@@ -48,6 +48,13 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent), m
                                               "end up with thousands of articles which you will never read anyway."),
                                            true);
 
+  m_ui.m_lblNewAlgorithm->setHelpText(tr("If you select intelligent synchronization, then only not-yet-fetched "
+                                         "or updated articles are downloaded. Network usage is greatly reduced and "
+                                         "overall synchronization speed is greatly improved, but "
+                                         "first feed fetching could be slow anyway if your feed contains "
+                                         "huge number of articles."),
+                                      false);
+
   connect(m_ui.m_btnGetToken, &QPushButton::clicked, this, &FeedlyAccountDetails::getDeveloperAccessToken);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FeedlyAccountDetails::onUsernameChanged);
   connect(m_ui.m_txtDeveloperAccessToken->lineEdit(), &BaseLineEdit::textChanged,
@@ -56,7 +63,8 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent), m
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_btnGetToken);
   setTabOrder(m_ui.m_btnGetToken, m_ui.m_txtDeveloperAccessToken->lineEdit());
   setTabOrder(m_ui.m_txtDeveloperAccessToken->lineEdit(), m_ui.m_checkDownloadOnlyUnreadMessages);
-  setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_spinLimitMessages);
+  setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_cbNewAlgorithm);
+  setTabOrder(m_ui.m_cbNewAlgorithm, m_ui.m_spinLimitMessages);
   setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_btnTestSetup);
 
   onDeveloperAccessTokenChanged();

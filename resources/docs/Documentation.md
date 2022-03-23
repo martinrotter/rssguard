@@ -60,7 +60,7 @@ I organized the supported web-based feed readers into an elegant table:
 
 | Service | Two-way Synchronization | [Intelligent Synchronization Algorithm](#intel) (ISA) <sup>1</sup> | Synchronized Labels <sup>2</sup> <a id="sfrl"></a> | OAuth <sup>4</sup> |
 | :---              | :---:  | :---: | :---: | :---:
-| Feedly            | ✅ | ❌ | ✅ | ✅ (only for official binaries)
+| Feedly            | ✅ | ✅ | ✅ | ✅ (only for official binaries)
 | Gmail             | ✅ | ✅ | ❌ | ✅
 | Google Reader API <sup>3</sup> | ✅ | ✅ | ✅ | ✅ (only for Inoreader)
 | Nextcloud News    | ✅ | ❌ | ❌ | ❌
