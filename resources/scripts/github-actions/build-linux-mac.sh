@@ -94,9 +94,13 @@ if [ $is_linux = true ]; then
   fi
 else
   # Fix .dylib linking.
-  install_name_tool -change "librssguard.dylib" "@executable_path/librssguard.dylib" "RSS Guard.app/Contents/MacOS/rssguard"
+  otool -L "RSS Guard.app/Contents/MacOS/rssguard"
+
+  install_name_tool -add_rpath "@executable_path" "RSS Guard.app/Contents/MacOS/rssguard"
+  install_name_tool -add_rpath "@executable_path/../Frameworks" "RSS Guard.app/Contents/MacOS/rssguard"
 
   otool -L "RSS Guard.app/Contents/MacOS/rssguard"
+  
   macdeployqt "./RSS Guard.app" -dmg
 
   # Rename DMG.
