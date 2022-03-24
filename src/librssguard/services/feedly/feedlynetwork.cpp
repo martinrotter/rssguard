@@ -539,7 +539,7 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json, bool obtain_i
 
       feed->setSource(fee_obj[QSL("website")].toString());
       feed->setTitle(fee_obj[QSL("title")].toString());
-      feed->setDescription(fee_obj[QSL("description")].toString());
+      feed->setDescription(qApp->web()->stripTags(fee_obj[QSL("description")].toString()));
       feed->setCustomId(fee_obj[QSL("id")].toString());
 
       if (obtain_icons) {
