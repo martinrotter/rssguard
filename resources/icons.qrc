@@ -154,6 +154,7 @@
     <file>./graphics/Faenza/categories/64/applications-office.png</file>
     <file>./graphics/Faenza/categories/64/applications-science.png</file>
     <file>./graphics/Faenza/categories/64/applications-system.png</file>
+    <file>./graphics/Faenza/actions/64/browser-download.png</file>
     <file>./graphics/Faenza/actions/64/call-start.png</file>
     <file>./graphics/Faenza/status/64/dialog-error.png</file>
     <file>./graphics/Faenza/status/64/dialog-information.png</file>
@@ -229,6 +230,7 @@
     <file>./graphics/Numix/22/actions/arrow-down-double.svg</file>
     <file>./graphics/Numix/22/actions/arrow-up.svg</file>
     <file>./graphics/Numix/22/actions/arrow-up-double.svg</file>
+    <file>./graphics/Numix/22/actions/browser-download.svg</file>
     <file>./graphics/Numix/22/actions/call-start.svg</file>
     <file>./graphics/Numix/22/actions/dialog-cancel.svg</file>
     <file>./graphics/Numix/22/status/dialog-error.svg</file>
