@@ -38,9 +38,10 @@
 #include <QDBusMessage>
 #endif
 
-#if defined(USE_WEBENGINE)
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
+
+#if defined(USE_WEBENGINE)
 #include "network-web/webengine/networkurlinterceptor.h"
 
 #if QT_VERSION_MAJOR == 6
@@ -152,6 +153,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   QWebEngineProfile::defaultProfile()->setHttpUserAgent(QString(HTTP_COMPLETE_USERAGENT));
 
   connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
+#endif
+
   connect(m_webFactory->adBlock(), &AdBlockManager::processTerminated, this, &Application::onAdBlockFailure);
 
   QTimer::singleShot(3000, this, [=]() {
@@ -162,7 +165,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
       onAdBlockFailure();
     }
   });
-#endif
 
   m_webFactory->updateProxy();
 
@@ -304,10 +306,7 @@ FeedReader* Application::feedReader() {
 QList<QAction*> Application::userActions() {
   if (m_mainForm != nullptr && m_userActions.isEmpty()) {
     m_userActions = m_mainForm->allActions();
-
-#if defined(USE_WEBENGINE)
     m_userActions.append(m_webFactory->adBlock()->adBlockIcon());
-#endif
   }
 
   return m_userActions;
@@ -799,16 +798,6 @@ void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
   download_item->deleteLater();
 }
 
-void Application::onAdBlockFailure() {
-  qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-    tr("AdBlock needs to be configured"),
-    tr("AdBlock is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
-       "if your Node.js is properly configured."),
-    QSystemTrayIcon::MessageIcon::Critical }, { true, true, false });
-
-  qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, false);
-}
-
 #endif
 
 void Application::onFeedUpdatesStarted() {
@@ -874,6 +863,16 @@ void Application::setupCustomDataFolder(const QString& data_folder) {
 
   // Save custom data folder.
   m_customDataFolder = data_folder;
+}
+
+void Application::onAdBlockFailure() {
+  qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+    tr("AdBlock needs to be configured"),
+    tr("AdBlock is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
+       "if your Node.js is properly configured."),
+    QSystemTrayIcon::MessageIcon::Critical }, { true, true, false });
+
+  qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, false);
 }
 
 void Application::determineFirstRuns() {

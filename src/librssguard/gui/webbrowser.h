@@ -6,7 +6,6 @@
 #include "gui/tabcontent.h"
 
 #include "core/message.h"
-#include "network-web/webengine/webenginepage.h"
 #include "services/abstract/rootitem.h"
 
 #include <QPointer>
@@ -19,7 +18,7 @@ class QProgressBar;
 class QMenu;
 class QLabel;
 class TabWidget;
-class WebEngineViewer;
+class WebViewer;
 class LocationLineEdit;
 class DiscoverFeedsButton;
 class SearchTextWidget;
@@ -27,13 +26,16 @@ class SearchTextWidget;
 class WebBrowser : public TabContent {
   Q_OBJECT
 
+  friend class WebEngineViewer;
+  friend class LiteHtmlViewer;
+
   public:
     explicit WebBrowser(QWidget* parent = nullptr);
     virtual ~WebBrowser();
 
     virtual WebBrowser* webBrowser() const;
 
-    WebEngineViewer* viewer() const;
+    WebViewer* viewer() const;
 
     double verticalScrollBarPosition() const;
     void setVerticalScrollBarPosition(double pos);
@@ -62,6 +64,7 @@ class WebBrowser : public TabContent {
     void onLoadingFinished(bool success);
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
+    void onLinkHovered(const QString& url);
 
     void readabilePage();
     void setReadabledHtml(const QString& better_html);
@@ -79,7 +82,7 @@ class WebBrowser : public TabContent {
   private:
     QVBoxLayout* m_layout;
     QToolBar* m_toolBar;
-    WebEngineViewer* m_webView;
+    WebViewer* m_webView;
     SearchTextWidget* m_searchWidget;
     LocationLineEdit* m_txtLocation;
     DiscoverFeedsButton* m_btnDiscoverFeeds;
@@ -98,7 +101,7 @@ inline WebBrowser* WebBrowser::webBrowser() const {
   return const_cast<WebBrowser*>(this);
 }
 
-inline WebEngineViewer* WebBrowser::viewer() const {
+inline WebViewer* WebBrowser::viewer() const {
   return m_webView;
 }
 

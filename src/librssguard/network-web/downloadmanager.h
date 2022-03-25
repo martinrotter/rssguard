@@ -98,9 +98,7 @@ class DownloadManager : public TabContent {
     explicit DownloadManager(QWidget* parent = nullptr);
     virtual ~DownloadManager();
 
-#if defined(USE_WEBENGINE)
     virtual WebBrowser* webBrowser() const;
-#endif
 
     SilentNetworkAccessManager* networkManager() const;
 
@@ -144,19 +142,15 @@ class DownloadManager : public TabContent {
     AutoSaver* m_autoSaver;
     DownloadModel* m_model;
     SilentNetworkAccessManager* m_networkManager;
-
     QScopedPointer<QFileIconProvider> m_iconProvider;
     QList<DownloadItem*> m_downloads;
     RemovePolicy m_removePolicy;
     QString m_downloadDirectory;
 };
 
-#if defined(USE_WEBENGINE)
 inline WebBrowser* DownloadManager::webBrowser() const {
   return nullptr;
 }
-
-#endif
 
 class DownloadModel : public QAbstractListModel {
   Q_OBJECT

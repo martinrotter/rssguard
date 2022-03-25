@@ -3,7 +3,7 @@
 #ifndef ADBLOCKURLINTERCEPTOR_H
 #define ADBLOCKURLINTERCEPTOR_H
 
-#include "network-web/urlinterceptor.h"
+#include "network-web/webengine//urlinterceptor.h"
 
 class AdBlockManager;
 

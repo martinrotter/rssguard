@@ -7,18 +7,12 @@
 #include "gui/messagebox.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/reusable/searchtextwidget.h"
+#include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
-
-#if defined(USE_WEBENGINE)
-#include "gui/webbrowser.h"
-#include "gui/webengine/webengineviewer.h"
-#else
-#include "gui/messagebrowser.h"
-#endif
 
 #include <QCheckBox>
 #include <QGridLayout>
@@ -45,18 +39,10 @@ void MessagePreviewer::createConnections() {
           &MessagePreviewer::switchMessageImportance);
 }
 
-MessagePreviewer::MessagePreviewer(bool should_resize_to_fit, QWidget* parent)
+MessagePreviewer::MessagePreviewer(QWidget* parent)
   : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)),
   m_separator(nullptr), m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
-#if defined(USE_WEBENGINE)
   m_txtMessage = new WebBrowser(this);
-
-  if (should_resize_to_fit) {
-    m_txtMessage->setFixedHeight(parent->parentWidget()->height());
-  }
-#else
-  m_txtMessage = new MessageBrowser(should_resize_to_fit, this);
-#endif
 
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
 
@@ -79,21 +65,14 @@ void MessagePreviewer::reloadFontSettings() {
 
 void MessagePreviewer::setToolbarsVisible(bool visible) {
   m_toolBar->setVisible(visible);
-
-#if defined(USE_WEBENGINE)
   m_txtMessage->setNavigationBarVisible(visible);
-#endif
 
   qApp->settings()->setValue(GROUP(GUI), GUI::MessageViewerToolbarsVisible, visible);
 }
 
-#if defined(USE_WEBENGINE)
-
 WebBrowser* MessagePreviewer::webBrowser() const {
   return m_txtMessage;
 }
-
-#endif
 
 void MessagePreviewer::clear() {
   updateLabels(true);
@@ -108,11 +87,7 @@ void MessagePreviewer::hideToolbar() {
 }
 
 void MessagePreviewer::loadUrl(const QString& url) {
-#if defined(USE_WEBENGINE)
   m_txtMessage->loadUrl(url);
-#else
-  m_txtMessage->loadUrl(url);
-#endif
 }
 
 void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
@@ -130,22 +105,18 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
     if (!same_message) {
       m_txtMessage->setVerticalScrollBarPosition(0.0);
 
-#if defined(USE_WEBENGINE)
-      const auto msg_feed_id = message.m_feedId;
+      const QString msg_feed_id = message.m_feedId;
       const auto* feed = root->getParentServiceRoot()->getItemFromSubTree(
         [msg_feed_id](const RootItem* it) {
         return it->kind() == RootItem::Kind::Feed && it->customId() == msg_feed_id;
       })->toFeed();
 
-      if (feed != nullptr && feed->openArticlesDirectly()) {
+      if (feed != nullptr && feed->openArticlesDirectly() && !m_message.m_url.isEmpty()) {
         m_txtMessage->loadUrl(m_message.m_url);
       }
       else {
         m_txtMessage->loadMessage(message, m_root);
       }
-#else
-      m_txtMessage->loadMessage(message, m_root);
-#endif
     }
   }
 }

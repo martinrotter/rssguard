@@ -28,16 +28,13 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
+#include "network-web/adblock/adblockicon.h"
+#include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 #include "services/owncloud/owncloudnetworkfactory.h"
 #include "services/standard/gui/formstandardimportexport.h"
-
-#if defined(USE_WEBENGINE)
-#include "network-web/adblock/adblockicon.h"
-#include "network-web/adblock/adblockmanager.h"
-#endif
 
 #include <QCloseEvent>
 #include <QFileDialog>
@@ -92,8 +89,9 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
     qobject_cast<QToolButton*>(m_actionToolbarMainMenu->defaultWidget())->menu()->exec();
   });
 
-#if defined(USE_WEBENGINE)
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->adBlock()->adBlockIcon());
+
+#if defined(USE_WEBENGINE)
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());
 #endif
 
@@ -231,11 +229,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionExpandCollapseItem;
   actions << m_ui->m_actionExpandCollapseItemRecursively;
   actions << m_ui->m_actionMessageFilters;
-
-#if defined(USE_WEBENGINE)
   actions << m_ui->m_actionTabNewWebBrowser;
-#endif
-
   actions << m_ui->m_actionTabsCloseCurrent;
   actions << m_ui->m_actionTabsCloseAll;
   actions << m_ui->m_actionTabsCloseAllExceptCurrent;
@@ -262,11 +256,6 @@ void FormMain::prepareMenus() {
 
     qDebugNN << LOGSEC_GUI << "Creating tray icon menu.";
   }
-
-#if !defined(USE_WEBENGINE)
-  m_ui->m_menuWebBrowserTabs->removeAction(m_ui->m_actionTabNewWebBrowser);
-  m_ui->m_menuWebBrowserTabs->setTitle(tr("Ta&bs"));
-#endif
 
 #if defined(Q_OS_MACOS)
   m_ui->m_actionSwitchMainMenu->setVisible(false);

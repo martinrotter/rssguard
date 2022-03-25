@@ -81,7 +81,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
   Q_OBJECT
 
   public:
-    explicit Application(const QString& id, int& argc, char** argv, const QStringList &raw_cli_args);
+    explicit Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args);
     virtual ~Application();
 
     void reactOnForeignNotifications();
@@ -173,7 +173,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     // Processes incoming message from another RSS Guard instance.
     void parseCmdArgumentsFromOtherInstance(const QString& message);
-    void parseCmdArgumentsFromMyInstance(const QStringList &raw_cli_args);
+    void parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args);
 
   private slots:
     void onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
@@ -182,6 +182,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void onSaveState(QSessionManager& manager);
     void onAboutToQuit();
     void showMessagesNumber(int unread_messages, bool any_feed_has_new_unread_messages);
+    void onAdBlockFailure();
 
 #if defined(USE_WEBENGINE)
 #if QT_VERSION_MAJOR == 6
@@ -189,8 +190,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 #else
     void downloadRequested(QWebEngineDownloadItem* download_item);
 #endif
-
-    void onAdBlockFailure();
 #endif
 
 #if defined(Q_OS_WIN)

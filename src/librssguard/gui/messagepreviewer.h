@@ -13,12 +13,7 @@
 
 class QGridLayout;
 class QToolBar;
-
-#if defined(USE_WEBENGINE)
 class WebBrowser;
-#else
-class MessageBrowser;
-#endif
 
 class LabelButton : public QToolButton {
   Q_OBJECT
@@ -37,13 +32,11 @@ class MessagePreviewer : public QWidget {
   Q_OBJECT
 
   public:
-    explicit MessagePreviewer(bool should_resize_to_fit, QWidget* parent = nullptr);
+    explicit MessagePreviewer(QWidget* parent = nullptr);
 
     void reloadFontSettings();
 
-#if defined(USE_WEBENGINE)
-    WebBrowser* webBrowser() const;
-#endif
+    virtual WebBrowser* webBrowser() const;
 
   public slots:
     void setToolbarsVisible(bool visible);
@@ -72,13 +65,7 @@ class MessagePreviewer : public QWidget {
 
     QGridLayout* m_layout;
     QToolBar* m_toolBar;
-
-#if defined(USE_WEBENGINE)
     WebBrowser* m_txtMessage;
-#else
-    MessageBrowser* m_txtMessage;
-#endif
-
     Message m_message;
     QPointer<RootItem> m_root;
     QAction* m_actionMarkRead;

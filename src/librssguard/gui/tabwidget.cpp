@@ -7,18 +7,14 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "gui/messagesview.h"
-#include "gui/newspaperpreviewer.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/tabbar.h"
+#include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
-
-#if defined(USE_WEBENGINE)
-#include "gui/webbrowser.h"
-#endif
 
 #include <QMenu>
 #include <QToolButton>
@@ -189,23 +185,28 @@ void TabWidget::closeCurrentTab() {
 }
 
 int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) {
-  int msg_height = height() - tabBar()->height() - 50;
-  NewspaperPreviewer* prev = new NewspaperPreviewer(msg_height, root, messages, this);
+  // TODO: dodělat
 
-  connect(prev, &NewspaperPreviewer::markMessageRead,
+  /*
+     int msg_height = height() - tabBar()->height() - 50;
+     NewspaperPreviewer* prev = new NewspaperPreviewer(msg_height, root, messages, this);
+
+     connect(prev, &NewspaperPreviewer::markMessageRead,
           m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageReadById);
-  connect(prev, &NewspaperPreviewer::markMessageImportant,
+     connect(prev, &NewspaperPreviewer::markMessageImportant,
           m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageImportantById);
 
-  int index = addTab(prev,
+     int index = addTab(prev,
                      qApp->icons()->fromTheme(QSL("format-justify-fill")),
                      tr("Newspaper view"),
                      TabBar::TabType::Closable);
 
-  // NOTE: Do not bring "newspaper" tabs to front anymore.
-  //setCurrentIndex(index);
+     // NOTE: Do not bring "newspaper" tabs to front anymore.
+     //setCurrentIndex(index);
 
-  return index;
+     return index;
+   */
+  return -1;
 }
 
 int TabWidget::addEmptyBrowser() {
@@ -221,7 +222,6 @@ int TabWidget::addLinkedBrowser(const QString& initial_url) {
 }
 
 int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url) {
-#if defined(USE_WEBENGINE)
   // Create new WebBrowser.
   WebBrowser* browser = new WebBrowser(this);
   int final_index;
@@ -262,12 +262,6 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
   }
 
   return final_index;
-#else
-  Q_UNUSED(move_after_current)
-  Q_UNUSED(make_active)
-  qApp->web()->openUrlInExternalBrowser(initial_url.toString());
-  return -1;
-#endif
 }
 
 void TabWidget::gotoNextTab() {

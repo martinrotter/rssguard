@@ -9,10 +9,6 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 
-#if defined(USE_WEBENGINE)
-#include <QWebEngineProfile>
-#endif
-
 BaseNetworkAccessManager::BaseNetworkAccessManager(QObject* parent)
   : QNetworkAccessManager(parent) {
   connect(this, &BaseNetworkAccessManager::sslErrors, this, &BaseNetworkAccessManager::onSslErrors);

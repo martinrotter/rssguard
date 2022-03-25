@@ -3,11 +3,18 @@
 #ifndef ADBLOCKREQUESTINFO_H
 #define ADBLOCKREQUESTINFO_H
 
+#if defined(USE_WEBENGINE)
 #include <QWebEngineUrlRequestInfo>
+#endif
+
+#include <QUrl>
 
 class AdblockRequestInfo {
   public:
+#if defined(USE_WEBENGINE)
     explicit AdblockRequestInfo(const QWebEngineUrlRequestInfo& webengine_info);
+#endif
+
     explicit AdblockRequestInfo(const QUrl& url);
 
     QString resourceType() const;
@@ -23,10 +30,12 @@ class AdblockRequestInfo {
     void setRequestMethod(const QByteArray& request_method);
 
   private:
-    void initialize(const QWebEngineUrlRequestInfo& webengine_info);
     void initialize(const QUrl& url);
 
+#if defined(USE_WEBENGINE)
+    void initialize(const QWebEngineUrlRequestInfo& webengine_info);
     QString convertResourceType(QWebEngineUrlRequestInfo::ResourceType rt) const;
+#endif
 
   private:
     QString m_resourceType;

@@ -26,23 +26,13 @@
 #include <QWebEngineContextMenuData>
 #endif
 
+#include <QWebEngineProfile>
 #include <QWheelEvent>
 
 WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_root(nullptr) {
   WebEnginePage* page = new WebEnginePage(this);
 
   setPage(page);
-  resetWebPageZoom();
-
-  connect(page, &WebEnginePage::linkHovered, this, &WebEngineViewer::onLinkHovered);
-}
-
-bool WebEngineViewer::canIncreaseZoom() {
-  return zoomFactor() <= double(MAX_ZOOM_FACTOR) - double(ZOOM_FACTOR_STEP);
-}
-
-bool WebEngineViewer::canDecreaseZoom() {
-  return zoomFactor() >= double(MIN_ZOOM_FACTOR) + double(ZOOM_FACTOR_STEP);
 }
 
 bool WebEngineViewer::event(QEvent* event) {
@@ -64,45 +54,6 @@ WebEnginePage* WebEngineViewer::page() const {
 
 void WebEngineViewer::displayMessage() {
   setHtml(m_messageContents, m_messageBaseUrl /*, QUrl::fromUserInput(INTERNAL_URL_MESSAGE)*/);
-}
-
-bool WebEngineViewer::increaseWebPageZoom() {
-  if (canIncreaseZoom()) {
-    setZoomFactor(zoomFactor() + double(ZOOM_FACTOR_STEP));
-    qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, zoomFactor());
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
-bool WebEngineViewer::decreaseWebPageZoom() {
-  if (canDecreaseZoom()) {
-    setZoomFactor(zoomFactor() - double(ZOOM_FACTOR_STEP));
-    qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, zoomFactor());
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
-bool WebEngineViewer::resetWebPageZoom(bool to_factory_default) {
-  const qreal new_factor = to_factory_default ? 1.0 : qApp->settings()->value(GROUP(Messages),
-                                                                              SETTING(Messages::Zoom)).toReal();
-
-  if (to_factory_default) {
-    qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, new_factor);
-  }
-
-  if (new_factor != zoomFactor()) {
-    setZoomFactor(new_factor);
-    return true;
-  }
-  else {
-    return false;
-  }
 }
 
 void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
@@ -267,7 +218,7 @@ QWebEngineView* WebEngineViewer::createWindow(QWebEnginePage::WebWindowType type
   int index = qApp->mainForm()->tabWidget()->addBrowser(false, false);
 
   if (index >= 0) {
-    return qApp->mainForm()->tabWidget()->widget(index)->webBrowser()->viewer();
+    return dynamic_cast<QWebEngineView*>(qApp->mainForm()->tabWidget()->widget(index)->webBrowser()->viewer());
   }
   else {
     return nullptr;
@@ -286,11 +237,11 @@ bool WebEngineViewer::eventFilter(QObject* object, QEvent* event) {
 
     if ((wh_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
       if (wh_event->angleDelta().y() > 0) {
-        increaseWebPageZoom();
+        zoomIn();
         return true;
       }
       else if (wh_event->angleDelta().y() < 0) {
-        decreaseWebPageZoom();
+        zoomOut();
         return true;
       }
     }
@@ -300,15 +251,15 @@ bool WebEngineViewer::eventFilter(QObject* object, QEvent* event) {
 
     if ((key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
       if (key_event->key() == Qt::Key::Key_Plus) {
-        increaseWebPageZoom();
+        zoomIn();
         return true;
       }
       else if (key_event->key() == Qt::Key::Key_Minus) {
-        decreaseWebPageZoom();
+        zoomOut();
         return true;
       }
       else if (key_event->key() == Qt::Key::Key_0) {
-        resetWebPageZoom(true);
+        setZoomFactor(1.0f);
         return true;
       }
     }
@@ -317,21 +268,112 @@ bool WebEngineViewer::eventFilter(QObject* object, QEvent* event) {
   return false;
 }
 
-void WebEngineViewer::onLinkHovered(const QString& url) {
-  qDebugNN << LOGSEC_GUI << "Hovered link:" << QUOTE_W_SPACE_DOT(url);
-
-  qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                       { url, url, QSystemTrayIcon::MessageIcon::NoIcon },
-                       { false, false, true });
-
-  // NOTE: Disable for now, not needed.
-  //QToolTip::showText(QCursor::pos(), url, {}, {}, 6000);
-}
-
 void WebEngineViewer::openUrlWithExternalTool(ExternalTool tool, const QString& target_url) {
   tool.run(target_url);
 }
 
 RootItem* WebEngineViewer::root() const {
   return m_root;
+}
+
+void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
+  browser->m_actionBack = pageAction(QWebEnginePage::WebAction::Back);
+  browser->m_actionForward = pageAction(QWebEnginePage::WebAction::Forward);
+  browser->m_actionReload = pageAction(QWebEnginePage::WebAction::Reload);
+  browser->m_actionStop = pageAction(QWebEnginePage::WebAction::Stop);
+
+  connect(this, &WebEngineViewer::urlChanged, browser, &WebBrowser::updateUrl);
+  connect(this, &WebEngineViewer::loadStarted, browser, &WebBrowser::onLoadingStarted);
+  connect(this, &WebEngineViewer::loadProgress, browser, &WebBrowser::onLoadingProgress);
+  connect(this, &WebEngineViewer::loadFinished, browser, &WebBrowser::onLoadingFinished);
+  connect(this, &WebEngineViewer::titleChanged, browser, &WebBrowser::onTitleChanged);
+  connect(this, &WebEngineViewer::iconChanged, browser, &WebBrowser::onIconChanged);
+
+  connect(page(), &WebEnginePage::windowCloseRequested, browser, &WebBrowser::closeRequested);
+  connect(page(), &WebEnginePage::linkHovered, browser, &WebBrowser::onLinkHovered);
+}
+
+void WebEngineViewer::findText(const QString& text, bool backwards) {
+  if (backwards) {
+    QWebEngineView::findText(text, QWebEnginePage::FindFlag::FindBackward);
+  }
+  else {
+    QWebEngineView::findText(text);
+  }
+}
+
+void WebEngineViewer::setUrl(const QUrl& url) {
+  QWebEngineView::setUrl(url);
+}
+
+void WebEngineViewer::setHtml(const QString& html, const QUrl& base_url) {
+  QWebEngineView::setHtml(html, base_url);
+}
+
+double WebEngineViewer::verticalScrollBarPosition() const {
+  double position;
+  QEventLoop loop;
+
+  page()->runJavaScript(QSL("window.pageYOffset;"), [&position, &loop](const QVariant& val) {
+    position = val.toDouble();
+    loop.exit();
+  });
+  loop.exec();
+
+  return position;
+}
+
+void WebEngineViewer::setVerticalScrollBarPosition(double pos) {
+  page()->runJavaScript(QSL("window.scrollTo(0, %1);").arg(pos));
+}
+
+void WebEngineViewer::reloadFontSettings(const QFont& fon) {
+  auto pixel_size = QFontMetrics(fon).ascent();
+
+  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont, fon.family());
+  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont, fon.family());
+  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont, fon.family());
+  QWebEngineProfile::defaultProfile()->settings()->setFontSize(QWebEngineSettings::DefaultFontSize, pixel_size);
+}
+
+bool WebEngineViewer::canZoomIn() const {
+  return zoomFactor() <= double(MAX_ZOOM_FACTOR) - double(ZOOM_FACTOR_STEP);
+}
+
+bool WebEngineViewer::canZoomOut() const {
+  return zoomFactor() >= double(MIN_ZOOM_FACTOR) + double(ZOOM_FACTOR_STEP);
+}
+
+qreal WebEngineViewer::zoomFactor() const {
+  return QWebEngineView::zoomFactor();
+}
+
+void WebEngineViewer::zoomIn() {
+  setZoomFactor(zoomFactor() + double(ZOOM_FACTOR_STEP));
+}
+
+void WebEngineViewer::zoomOut() {
+  setZoomFactor(zoomFactor() - double(ZOOM_FACTOR_STEP));
+}
+
+void WebEngineViewer::setZoomFactor(qreal zoom_factor) {
+  QWebEngineView::setZoomFactor(zoom_factor);
+}
+
+QString WebEngineViewer::html() const {
+  QEventLoop loop;
+  QString htmll;
+
+  page()->toHtml([&](const QString& htm) {
+    htmll = htm;
+    loop.exit();
+  });
+
+  loop.exec();
+
+  return htmll;
+}
+
+QUrl WebEngineViewer::url() const {
+  return QWebEngineView::url();
 }
