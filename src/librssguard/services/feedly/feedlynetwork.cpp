@@ -238,6 +238,7 @@ QList<Message> FeedlyNetwork::entries(const QStringList& ids) {
 
   QList<Message> msgs;
   int next_message = 0;
+  QString continuation;
   const QString target_url = fullUrl(Service::Entries);
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
@@ -264,7 +265,7 @@ QList<Message> FeedlyNetwork::entries(const QStringList& ids) {
       throw NetworkException(result.m_networkError, output);
     }
 
-    msgs += decodeStreamContents(output, false, QString());
+    msgs += decodeStreamContents(output, false, continuation);
   }
   while (next_message < ids.size());
 
