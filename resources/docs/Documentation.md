@@ -532,19 +532,21 @@ RSS Guard's main window appearance can be tweaked in many ways. You can hide men
 RSS Guard offers CLI (command line interface). For overview of its features, run `rssguard --help` in your terminal. You will see the overview of the interface.
 
 ```
-rssguard [options] [url-1 ... url-n]
+Usage: rssguard [options] [url-1 ... url-n]
+RSS Guard
 
 Options:
+  -h, --help                     Displays overview of CLI.
+  -v, --version                  Displays version of the application.
   -l, --log <log-file>           Write application debug log to file. Note that
                                  logging to file may slow application down.
   -d, --data <user-data-folder>  Use custom folder for user data and disable
                                  single instance application mode.
   -s, --no-single-instance       Allow running of multiple application
                                  instances.
-  -n, --no-debug-output          Completely disable stdout/stderr outputs.
-  -?, -h, --help                 Displays help on commandline options.
-  --help-all                     Displays help including Qt specific options.
-  -v, --version                  Displays version information.
+  -g, --no-debug-output          Disable just "debug" output.
+  -n, --no-standard-output       Completely disable stdout/stderr outputs.
+  -t, --style <style-name>       Force some application style.
 
 Arguments:
   urls                           List of URL addresses pointing to individual
