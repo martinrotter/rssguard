@@ -532,11 +532,7 @@ void FeedsView::filterItems(const QString& pattern) {
     m_dontSaveExpandState = false;
   }
 
-#if QT_VERSION < 0x050C00 // Qt < 5.12.0
-  m_proxyModel->setFilterRegExp(pattern.toLower());
-#else
   m_proxyModel->setFilterRegularExpression(pattern.toLower());
-#endif
 
   if (pattern.isEmpty()) {
     loadAllExpandStates();

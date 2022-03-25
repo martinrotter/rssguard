@@ -53,11 +53,7 @@ int TextFactory::stringWidth(const QString& string, const QFontMetrics& metrics)
   int width = 0;
 
   for (const QString& line : lines) {
-#if QT_VERSION >= 0x050B00 // Qt >= 5.11.0
     int line_width = metrics.horizontalAdvance(line);
-#else
-    int line_width = metrics.width(line);
-#endif
 
     if (line_width > width) {
       width = line_width;

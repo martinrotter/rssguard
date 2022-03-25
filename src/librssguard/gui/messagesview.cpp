@@ -380,7 +380,6 @@ void MessagesView::initializeContextMenu() {
       << qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages
       << qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
 
-
   if (m_sourceModel->loadedItem() != nullptr) {
     if (m_sourceModel->loadedItem()->kind() == RootItem::Kind::Bin) {
       m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessages);
@@ -551,7 +550,7 @@ void MessagesView::openSelectedMessageUrl() {
     auto msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(rws.at(0)).row());
 
     if (!msg.m_url.isEmpty()) {
-     emit openLinkMiniBrowser(msg.m_url);
+      emit openLinkMiniBrowser(msg.m_url);
     }
   }
 }
@@ -562,7 +561,7 @@ void MessagesView::sendSelectedMessageViaEmail() {
 
     if (!qApp->web()->sendMessageViaEmail(message)) {
       MsgBox::show(this, QMessageBox::Critical, tr("Problem with starting external e-mail client"),
-                       tr("External e-mail client could not be started."));
+                   tr("External e-mail client could not be started."));
     }
   }
 }
@@ -771,11 +770,7 @@ void MessagesView::searchMessages(const QString& pattern) {
            << "Running search of messages with pattern"
            << QUOTE_W_SPACE_DOT(pattern);
 
-#if QT_VERSION < 0x050C00 // Qt < 5.12.0
-  m_proxyModel->setFilterRegExp(pattern.toLower());
-#else
   m_proxyModel->setFilterRegularExpression(pattern.toLower());
-#endif
 
   if (selectionModel()->selectedRows().isEmpty()) {
     emit currentMessageRemoved();
