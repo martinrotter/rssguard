@@ -1,19 +1,19 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#ifndef WEBPAGE_H
-#define WEBPAGE_H
+#ifndef WEBENGINEPAGE_H
+#define WEBENGINEPAGE_H
 
 #include <QWebEnginePage>
 
-class WebViewer;
+class WebEngineViewer;
 
-class WebPage : public QWebEnginePage {
+class WebEnginePage : public QWebEnginePage {
   Q_OBJECT
 
   public:
-    explicit WebPage(QObject* parent = nullptr);
+    explicit WebEnginePage(QObject* parent = nullptr);
 
-    WebViewer* view() const;
+    WebEngineViewer* view() const;
 
   private slots:
     void hideUnwantedElements();
@@ -24,4 +24,4 @@ class WebPage : public QWebEnginePage {
                                           int line_number, const QString& source_id);
 };
 
-#endif // WEBPAGE_H
+#endif // WEBENGINEPAGE_H

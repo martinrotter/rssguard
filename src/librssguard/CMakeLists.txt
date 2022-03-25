@@ -476,12 +476,12 @@ if(USE_WEBENGINE)
     gui/reusable/locationlineedit.h
     gui/webbrowser.cpp
     gui/webbrowser.h
-    gui/webviewer.cpp
-    gui/webviewer.h
     network-web/googlesuggest.cpp
     network-web/googlesuggest.h
-    network-web/webpage.cpp
-    network-web/webpage.h
+    network-web/webengine/webenginepage.cpp
+    network-web/webengine/webenginepage.h
+    gui/webengine/webengineviewer.cpp
+    gui/webengine/webengineviewer.h
 
     # Add AdBlock sources.
     network-web/adblock/adblockdialog.cpp
@@ -494,8 +494,8 @@ if(USE_WEBENGINE)
     network-web/adblock/adblockrequestinfo.h
     network-web/adblock/adblockurlinterceptor.cpp
     network-web/adblock/adblockurlinterceptor.h
-    network-web/networkurlinterceptor.cpp
-    network-web/networkurlinterceptor.h
+    network-web/webengine/networkurlinterceptor.cpp
+    network-web/webengine/networkurlinterceptor.h
     network-web/urlinterceptor.h
   )
 

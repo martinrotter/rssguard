@@ -7,7 +7,7 @@
 #include "gui/reusable/discoverfeedsbutton.h"
 #include "gui/reusable/locationlineedit.h"
 #include "gui/reusable/searchtextwidget.h"
-#include "gui/webviewer.h"
+#include "gui/webengine/webengineviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
@@ -27,7 +27,7 @@
 WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
   m_layout(new QVBoxLayout(this)),
   m_toolBar(new QToolBar(tr("Navigation panel"), this)),
-  m_webView(new WebViewer(this)),
+  m_webView(new WebEngineViewer(this)),
   m_searchWidget(new SearchTextWidget(this)),
   m_txtLocation(new LocationLineEdit(this)),
   m_btnDiscoverFeeds(new DiscoverFeedsButton(this)),
@@ -72,18 +72,18 @@ void WebBrowser::createConnections() {
 
   connect(m_txtLocation, &LocationLineEdit::submitted,
           this, static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
-  connect(m_webView, &WebViewer::urlChanged, this, &WebBrowser::updateUrl);
+  connect(m_webView, &WebEngineViewer::urlChanged, this, &WebBrowser::updateUrl);
 
   // Change location textbox status according to webpage status.
-  connect(m_webView, &WebViewer::loadStarted, this, &WebBrowser::onLoadingStarted);
-  connect(m_webView, &WebViewer::loadProgress, this, &WebBrowser::onLoadingProgress);
-  connect(m_webView, &WebViewer::loadFinished, this, &WebBrowser::onLoadingFinished);
+  connect(m_webView, &WebEngineViewer::loadStarted, this, &WebBrowser::onLoadingStarted);
+  connect(m_webView, &WebEngineViewer::loadProgress, this, &WebBrowser::onLoadingProgress);
+  connect(m_webView, &WebEngineViewer::loadFinished, this, &WebBrowser::onLoadingFinished);
 
   // Forward title/icon changes.
-  connect(m_webView, &WebViewer::titleChanged, this, &WebBrowser::onTitleChanged);
-  connect(m_webView, &WebViewer::iconChanged, this, &WebBrowser::onIconChanged);
+  connect(m_webView, &WebEngineViewer::titleChanged, this, &WebBrowser::onTitleChanged);
+  connect(m_webView, &WebEngineViewer::iconChanged, this, &WebBrowser::onIconChanged);
 
-  connect(m_webView->page(), &WebPage::windowCloseRequested, this, &WebBrowser::closeRequested);
+  connect(m_webView->page(), &WebEnginePage::windowCloseRequested, this, &WebBrowser::closeRequested);
   connect(qApp->web()->readability(), &Readability::htmlReadabled, this, &WebBrowser::setReadabledHtml);
   connect(qApp->web()->readability(), &Readability::errorOnHtmlReadabiliting, this, &WebBrowser::readabilityFailed);
 }
@@ -323,14 +323,4 @@ void WebBrowser::onLoadingFinished(bool success) {
 
   m_loadingProgress->hide();
   m_loadingProgress->setValue(0);
-}
-
-Message* WebBrowser::findMessage(int id) {
-  for (int i = 0; i < m_messages.size(); i++) {
-    if (m_messages.at(i).m_id == id) {
-      return &m_messages[i];
-    }
-  }
-
-  return nullptr;
 }

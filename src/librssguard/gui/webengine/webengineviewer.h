@@ -1,27 +1,27 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#ifndef WEBVIEWER_H
-#define WEBVIEWER_H
+#ifndef WEBENGINEVIEWER_H
+#define WEBENGINEVIEWER_H
 
 #include <QWebEngineView>
 
 #include "core/message.h"
 #include "miscellaneous/externaltool.h"
-#include "network-web/webpage.h"
+#include "network-web/webengine/webenginepage.h"
 
 class RootItem;
 
-class WebViewer : public QWebEngineView {
+class WebEngineViewer : public QWebEngineView {
   Q_OBJECT
 
   public:
-    explicit WebViewer(QWidget* parent = nullptr);
+    explicit WebEngineViewer(QWidget* parent = nullptr);
 
     bool canIncreaseZoom();
     bool canDecreaseZoom();
 
     QString messageContents();
-    WebPage* page() const;
+    WebEnginePage* page() const;
     RootItem* root() const;
 
   public slots:
@@ -50,8 +50,8 @@ class WebViewer : public QWebEngineView {
     QString m_messageContents;
 };
 
-inline QString WebViewer::messageContents() {
+inline QString WebEngineViewer::messageContents() {
   return m_messageContents;
 }
 
-#endif // WEBVIEWER_H
+#endif // WEBENGINEVIEWER_H

@@ -2,12 +2,9 @@
 
 #include "network-web/adblock/adblockicon.h"
 
-#include "gui/dialogs/formmain.h"
-#include "gui/webbrowser.h"
-#include "gui/webviewer.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "network-web/adblock/adblockmanager.h"
-#include "network-web/webpage.h"
 
 #include <QMenu>
 

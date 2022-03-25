@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/webviewer.h"
+#include "gui/webengine/webengineviewer.h"
 
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
@@ -12,8 +12,8 @@
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/networkfactory.h"
+#include "network-web/webengine/webenginepage.h"
 #include "network-web/webfactory.h"
-#include "network-web/webpage.h"
 
 #include <QFileIconProvider>
 #include <QTimer>
@@ -28,24 +28,24 @@
 
 #include <QWheelEvent>
 
-WebViewer::WebViewer(QWidget* parent) : QWebEngineView(parent), m_root(nullptr) {
-  WebPage* page = new WebPage(this);
+WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_root(nullptr) {
+  WebEnginePage* page = new WebEnginePage(this);
 
   setPage(page);
   resetWebPageZoom();
 
-  connect(page, &WebPage::linkHovered, this, &WebViewer::onLinkHovered);
+  connect(page, &WebEnginePage::linkHovered, this, &WebEngineViewer::onLinkHovered);
 }
 
-bool WebViewer::canIncreaseZoom() {
+bool WebEngineViewer::canIncreaseZoom() {
   return zoomFactor() <= double(MAX_ZOOM_FACTOR) - double(ZOOM_FACTOR_STEP);
 }
 
-bool WebViewer::canDecreaseZoom() {
+bool WebEngineViewer::canDecreaseZoom() {
   return zoomFactor() >= double(MIN_ZOOM_FACTOR) + double(ZOOM_FACTOR_STEP);
 }
 
-bool WebViewer::event(QEvent* event) {
+bool WebEngineViewer::event(QEvent* event) {
   if (event->type() == QEvent::Type::ChildAdded) {
     QChildEvent* child_ev = static_cast<QChildEvent*>(event);
     QWidget* w = qobject_cast<QWidget*>(child_ev->child());
@@ -58,15 +58,15 @@ bool WebViewer::event(QEvent* event) {
   return QWebEngineView::event(event);
 }
 
-WebPage* WebViewer::page() const {
-  return qobject_cast<WebPage*>(QWebEngineView::page());
+WebEnginePage* WebEngineViewer::page() const {
+  return qobject_cast<WebEnginePage*>(QWebEngineView::page());
 }
 
-void WebViewer::displayMessage() {
+void WebEngineViewer::displayMessage() {
   setHtml(m_messageContents, m_messageBaseUrl /*, QUrl::fromUserInput(INTERNAL_URL_MESSAGE)*/);
 }
 
-bool WebViewer::increaseWebPageZoom() {
+bool WebEngineViewer::increaseWebPageZoom() {
   if (canIncreaseZoom()) {
     setZoomFactor(zoomFactor() + double(ZOOM_FACTOR_STEP));
     qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, zoomFactor());
@@ -77,7 +77,7 @@ bool WebViewer::increaseWebPageZoom() {
   }
 }
 
-bool WebViewer::decreaseWebPageZoom() {
+bool WebEngineViewer::decreaseWebPageZoom() {
   if (canDecreaseZoom()) {
     setZoomFactor(zoomFactor() - double(ZOOM_FACTOR_STEP));
     qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, zoomFactor());
@@ -88,7 +88,7 @@ bool WebViewer::decreaseWebPageZoom() {
   }
 }
 
-bool WebViewer::resetWebPageZoom(bool to_factory_default) {
+bool WebEngineViewer::resetWebPageZoom(bool to_factory_default) {
   const qreal new_factor = to_factory_default ? 1.0 : qApp->settings()->value(GROUP(Messages),
                                                                               SETTING(Messages::Zoom)).toReal();
 
@@ -105,7 +105,7 @@ bool WebViewer::resetWebPageZoom(bool to_factory_default) {
   }
 }
 
-void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
+void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
   Skin skin = qApp->skins()->currentSkin();
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;
@@ -187,7 +187,7 @@ void WebViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
   page()->runJavaScript(QSL("window.scrollTo(0, 0);"));
 }
 
-void WebViewer::clear() {
+void WebEngineViewer::clear() {
   bool previously_enabled = isEnabled();
 
   setEnabled(false);
@@ -195,7 +195,7 @@ void WebViewer::clear() {
   setEnabled(previously_enabled);
 }
 
-void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
+void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
   event->accept();
 
 #if QT_VERSION_MAJOR == 6
@@ -262,7 +262,7 @@ void WebViewer::contextMenuEvent(QContextMenuEvent* event) {
   menu->popup(p);
 }
 
-QWebEngineView* WebViewer::createWindow(QWebEnginePage::WebWindowType type) {
+QWebEngineView* WebEngineViewer::createWindow(QWebEnginePage::WebWindowType type) {
   Q_UNUSED(type)
   int index = qApp->mainForm()->tabWidget()->addBrowser(false, false);
 
@@ -274,11 +274,11 @@ QWebEngineView* WebViewer::createWindow(QWebEnginePage::WebWindowType type) {
   }
 }
 
-void WebViewer::wheelEvent(QWheelEvent* event) {
+void WebEngineViewer::wheelEvent(QWheelEvent* event) {
   QWebEngineView::wheelEvent(event);
 }
 
-bool WebViewer::eventFilter(QObject* object, QEvent* event) {
+bool WebEngineViewer::eventFilter(QObject* object, QEvent* event) {
   Q_UNUSED(object)
 
   if (event->type() == QEvent::Type::Wheel) {
@@ -317,7 +317,7 @@ bool WebViewer::eventFilter(QObject* object, QEvent* event) {
   return false;
 }
 
-void WebViewer::onLinkHovered(const QString& url) {
+void WebEngineViewer::onLinkHovered(const QString& url) {
   qDebugNN << LOGSEC_GUI << "Hovered link:" << QUOTE_W_SPACE_DOT(url);
 
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -328,10 +328,10 @@ void WebViewer::onLinkHovered(const QString& url) {
   //QToolTip::showText(QCursor::pos(), url, {}, {}, 6000);
 }
 
-void WebViewer::openUrlWithExternalTool(ExternalTool tool, const QString& target_url) {
+void WebEngineViewer::openUrlWithExternalTool(ExternalTool tool, const QString& target_url) {
   tool.run(target_url);
 }
 
-RootItem* WebViewer::root() const {
+RootItem* WebEngineViewer::root() const {
   return m_root;
 }

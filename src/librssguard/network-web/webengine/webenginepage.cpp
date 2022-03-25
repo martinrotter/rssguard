@@ -1,9 +1,9 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "network-web/webpage.h"
+#include "network-web/webengine/webenginepage.h"
 
 #include "definitions/definitions.h"
-#include "gui/webviewer.h"
+#include "gui/webengine/webengineviewer.h"
 #include "miscellaneous/application.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblockrequestinfo.h"
@@ -17,21 +17,21 @@
 #include <QUrlQuery>
 #include <QWebEngineScript>
 
-WebPage::WebPage(QObject* parent) : QWebEnginePage(parent) {
+WebEnginePage::WebEnginePage(QObject* parent) : QWebEnginePage(parent) {
   setBackgroundColor(Qt::GlobalColor::transparent);
 
-  connect(this, &QWebEnginePage::loadFinished, this, &WebPage::hideUnwantedElements);
+  connect(this, &QWebEnginePage::loadFinished, this, &WebEnginePage::hideUnwantedElements);
 }
 
-WebViewer* WebPage::view() const {
+WebEngineViewer* WebEnginePage::view() const {
 #if QT_VERSION_MAJOR == 6
-  return qobject_cast<WebViewer*>(QWebEngineView::forPage(this));
+  return qobject_cast<WebEngineViewer*>(QWebEngineView::forPage(this));
 #else
-  return qobject_cast<WebViewer*>(QWebEnginePage::view());
+  return qobject_cast<WebEngineViewer*>(QWebEnginePage::view());
 #endif
 }
 
-void WebPage::hideUnwantedElements() {
+void WebEnginePage::hideUnwantedElements() {
   if (!qApp->web()->adBlock()->isEnabled()) {
     return;
   }
@@ -46,7 +46,7 @@ void WebPage::hideUnwantedElements() {
   }
 }
 
-bool WebPage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool is_main_frame) {
+bool WebEnginePage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool is_main_frame) {
   const RootItem* root = view()->root();
 
   if (is_main_frame) {
@@ -76,8 +76,8 @@ bool WebPage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool
   //}
 }
 
-void WebPage::javaScriptConsoleMessage(JavaScriptConsoleMessageLevel level, const QString& message,
-                                       int line_number, const QString& source_id) {
+void WebEnginePage::javaScriptConsoleMessage(JavaScriptConsoleMessageLevel level, const QString& message,
+                                             int line_number, const QString& source_id) {
   Q_UNUSED(level)
 
   qWarningNN << LOGSEC_JS << message << QSL(" (source: %1:%2)").arg(source_id, QString::number(line_number));

@@ -15,7 +15,7 @@
 
 #if defined(USE_WEBENGINE)
 #include "gui/webbrowser.h"
-#include "gui/webviewer.h"
+#include "gui/webengine/webengineviewer.h"
 #else
 #include "gui/messagebrowser.h"
 #endif

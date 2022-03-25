@@ -12,7 +12,7 @@
 #include "network-web/adblock/adblockrequestinfo.h"
 #include "network-web/adblock/adblockurlinterceptor.h"
 #include "network-web/networkfactory.h"
-#include "network-web/networkurlinterceptor.h"
+#include "network-web/webengine/networkurlinterceptor.h"
 #include "network-web/webfactory.h"
 
 #include <QDateTime>
@@ -23,7 +23,6 @@
 #include <QThread>
 #include <QTimer>
 #include <QUrlQuery>
-#include <QWebEngineProfile>
 
 AdBlockManager::AdBlockManager(QObject* parent)
   : QObject(parent), m_loaded(false), m_enabled(false), m_installing(false), m_interceptor(new AdBlockUrlInterceptor(this)),

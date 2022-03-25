@@ -6,7 +6,7 @@
 #include "gui/tabcontent.h"
 
 #include "core/message.h"
-#include "network-web/webpage.h"
+#include "network-web/webengine/webenginepage.h"
 #include "services/abstract/rootitem.h"
 
 #include <QPointer>
@@ -19,7 +19,7 @@ class QProgressBar;
 class QMenu;
 class QLabel;
 class TabWidget;
-class WebViewer;
+class WebEngineViewer;
 class LocationLineEdit;
 class DiscoverFeedsButton;
 class SearchTextWidget;
@@ -33,7 +33,7 @@ class WebBrowser : public TabContent {
 
     virtual WebBrowser* webBrowser() const;
 
-    WebViewer* viewer() const;
+    WebEngineViewer* viewer() const;
 
     double verticalScrollBarPosition() const;
     void setVerticalScrollBarPosition(double pos);
@@ -55,7 +55,6 @@ class WebBrowser : public TabContent {
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
-    void readabilePage();
     void openCurrentSiteInSystemBrowser();
     void updateUrl(const QUrl& url);
     void onLoadingStarted();
@@ -63,6 +62,8 @@ class WebBrowser : public TabContent {
     void onLoadingFinished(bool success);
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
+
+    void readabilePage();
     void setReadabledHtml(const QString& better_html);
     void readabilityFailed(const QString& error);
 
@@ -75,12 +76,10 @@ class WebBrowser : public TabContent {
     void initializeLayout();
     void createConnections();
 
-    Message* findMessage(int id);
-
   private:
     QVBoxLayout* m_layout;
     QToolBar* m_toolBar;
-    WebViewer* m_webView;
+    WebEngineViewer* m_webView;
     SearchTextWidget* m_searchWidget;
     LocationLineEdit* m_txtLocation;
     DiscoverFeedsButton* m_btnDiscoverFeeds;
@@ -99,7 +98,7 @@ inline WebBrowser* WebBrowser::webBrowser() const {
   return const_cast<WebBrowser*>(this);
 }
 
-inline WebViewer* WebBrowser::viewer() const {
+inline WebEngineViewer* WebBrowser::viewer() const {
   return m_webView;
 }
 

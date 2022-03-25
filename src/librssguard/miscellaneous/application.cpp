@@ -41,7 +41,7 @@
 #if defined(USE_WEBENGINE)
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
-#include "network-web/networkurlinterceptor.h"
+#include "network-web/webengine/networkurlinterceptor.h"
 
 #if QT_VERSION_MAJOR == 6
 #include <QWebEngineDownloadRequest>
