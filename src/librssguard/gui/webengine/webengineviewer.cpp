@@ -110,6 +110,11 @@ void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* roo
                                 QString::number(message.m_id)));
   }
 
+  m_messageContents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1
+                                                     ? messages.at(0).m_title
+                                                     : tr("Newspaper view"),
+                                                     messages_layout);
+
   m_root = root;
 
   auto* feed = root->getParentServiceRoot()->getItemFromSubTree([messages](const RootItem* it) {
@@ -125,9 +130,6 @@ void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* roo
       m_messageBaseUrl = url.scheme() + QSL("://") + url.host();
     }
   }
-
-  m_messageContents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),
-                                                     messages_layout);
 
   bool previously_enabled = isEnabled();
 

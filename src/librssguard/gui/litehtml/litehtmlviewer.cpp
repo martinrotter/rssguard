@@ -2,7 +2,10 @@
 
 #include "gui/litehtml/litehtmlviewer.h"
 
+#include "core/message.h"
 #include "gui/webbrowser.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/skinfactory.h"
 #include "network-web/networkfactory.h"
 
 #include <QAction>
@@ -72,7 +75,77 @@ QUrl LiteHtmlViewer::url() const {
 void LiteHtmlViewer::clear() {}
 
 void LiteHtmlViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
-  setHtml(messages.at(0).m_contents);
+  Skin skin = qApp->skins()->currentSkin();
+  QString messages_layout;
+  QString single_message_layout = skin.m_layoutMarkup;
+
+  for (const Message& message : messages) {
+    QString enclosures;
+    QString enclosure_images;
+
+    for (const Enclosure& enclosure : message.m_enclosures) {
+      QString enc_url;
+
+      if (!enclosure.m_url.contains(QRegularExpression(QSL("^(http|ftp|\\/)")))) {
+        enc_url = QSL(INTERNAL_URL_PASSATTACHMENT) + QL1S("/?") + enclosure.m_url;
+      }
+      else {
+        enc_url = enclosure.m_url;
+      }
+
+      enc_url = QUrl::fromPercentEncoding(enc_url.toUtf8());
+
+      enclosures += skin.m_enclosureMarkup.arg(enc_url,
+                                               QSL("&#129527;"),
+                                               enclosure.m_mimeType);
+
+      if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
+          qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
+        // Add thumbnail image.
+        enclosure_images += skin.m_enclosureImageMarkup.arg(
+          enclosure.m_url,
+          enclosure.m_mimeType,
+          qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toString());
+      }
+    }
+
+    QString msg_date = qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
+                       ? message.m_created.toLocalTime().toString(qApp->settings()->value(GROUP(Messages),
+                                                                                          SETTING(Messages::CustomDateFormat)).toString())
+                       : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
+                                                                       QLocale::FormatType::ShortFormat);
+
+    messages_layout.append(single_message_layout
+                           .arg(message.m_title,
+                                tr("Written by ") + (message.m_author.isEmpty() ?
+                                                     tr("unknown author") :
+                                                     message.m_author),
+                                message.m_url,
+                                message.m_contents,
+                                msg_date,
+                                enclosures,
+                                enclosure_images,
+                                QString::number(message.m_id)));
+  }
+
+  QString msg_contents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1
+                                                     ? messages.at(0).m_title
+                                                     : tr("Newspaper view"),
+                                                        messages_layout);
+  auto* feed = root->getParentServiceRoot()->getItemFromSubTree([messages](const RootItem* it) {
+    return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
+  })->toFeed();
+  QString base_url;
+
+  if (feed != nullptr) {
+    QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
+
+    if (url.isValid()) {
+      base_url = url.scheme() + QSL("://") + url.host();
+    }
+  }
+
+  setHtml(msg_contents, QUrl::fromUserInput(base_url));
 }
 
 double LiteHtmlViewer::verticalScrollBarPosition() const {
