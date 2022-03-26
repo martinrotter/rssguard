@@ -42,6 +42,7 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
     void loadFinished(bool success);
 
   protected:
+    virtual void keyPressEvent(QKeyEvent* event);
     virtual void wheelEvent(QWheelEvent* event);
 
   private:

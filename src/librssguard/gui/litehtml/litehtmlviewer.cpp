@@ -12,6 +12,7 @@
 #include "network-web/webfactory.h"
 
 #include <QAction>
+#include <QClipboard>
 #include <QScrollBar>
 #include <QWheelEvent>
 
@@ -20,6 +21,18 @@ LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent) {
     emit loadProgress(-1);
     return handleResource(url);
   });
+
+  connect(this, &LiteHtmlViewer::copyAvailable, this, [this](bool available) {
+    if (!available) {
+      return;
+    }
+
+    QString sel_text = QLiteHtmlWidget::selectedText();
+
+    if (!sel_text.isEmpty()) {
+      QGuiApplication::clipboard()->setText(sel_text, QClipboard::Mode::Selection);
+    }
+  });
 }
 
 void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
@@ -27,6 +40,14 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionForward = new QAction(this);
   browser->m_actionReload = new QAction(this);
   browser->m_actionStop = new QAction(this);
+
+  browser->m_actionBack->setEnabled(false);
+  browser->m_actionForward->setEnabled(false);
+  browser->m_actionReload->setEnabled(false);
+
+  // TODO: When clicked "Stop", save the "Stop" state and return {} from "handleResource(...)"
+  // right away.
+  browser->m_actionStop->setEnabled(false);
 
   connect(this, &LiteHtmlViewer::zoomFactorChanged, browser, &WebBrowser::onZoomFactorChanged);
   connect(this, &LiteHtmlViewer::linkHighlighted, browser, [browser](const QUrl& url) {
@@ -259,4 +280,16 @@ QByteArray LiteHtmlViewer::handleResource(const QUrl& url) {
 
     return output;
   }
+}
+
+void LiteHtmlViewer::keyPressEvent(QKeyEvent* event) {
+  if (event->matches(QKeySequence::StandardKey::Copy)) {
+    QString sel_text = QLiteHtmlWidget::selectedText();
+
+    if (!sel_text.isEmpty()) {
+      QGuiApplication::clipboard()->setText(sel_text, QClipboard::Mode::Clipboard);
+    }
+  }
+
+  QLiteHtmlWidget::keyPressEvent(event);
 }
