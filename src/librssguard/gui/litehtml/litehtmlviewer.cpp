@@ -43,7 +43,11 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
    */
 }
 
-void LiteHtmlViewer::findText(const QString& text, bool backwards) {}
+void LiteHtmlViewer::findText(const QString& text, bool backwards) {
+  QLiteHtmlWidget::findText(text, backwards
+                            ? QTextDocument::FindFlag::FindBackward
+                            : QTextDocument::FindFlag(0x0), false);
+}
 
 void LiteHtmlViewer::setUrl(const QUrl& url) {
   QByteArray output;
