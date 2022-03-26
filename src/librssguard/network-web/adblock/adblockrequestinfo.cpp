@@ -103,6 +103,6 @@ void AdblockRequestInfo::initialize(const QUrl& url) {
 #if defined(USE_WEBENGINE)
   setResourceType(convertResourceType(QWebEngineUrlRequestInfo::ResourceType::ResourceTypeMainFrame));
 #else
-  setResourceType(QSL("image"));
+  setResourceType(QSL("main_frame"));
 #endif
 }

@@ -38,6 +38,9 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
 
   protected:
     virtual void wheelEvent(QWheelEvent* event);
+
+  private:
+    QByteArray handleResource(const QUrl& url);
 };
 
 #endif // LITEHTMLVIEWER_H

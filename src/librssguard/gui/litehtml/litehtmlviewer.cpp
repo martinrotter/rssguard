@@ -6,23 +6,17 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/skinfactory.h"
+#include "network-web/adblock/adblockmanager.h"
+#include "network-web/adblock/adblockrequestinfo.h"
 #include "network-web/networkfactory.h"
+#include "network-web/webfactory.h"
 
 #include <QAction>
 #include <QWheelEvent>
 
 LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent) {
   setResourceHandler([this](const QUrl& url) {
-    QByteArray output;
-
-    NetworkFactory::performNetworkOperation(
-      url.toString(),
-      5000,
-      {},
-      output,
-      QNetworkAccessManager::Operation::GetOperation);
-
-    return output;
+    return handleResource(url);
   });
 }
 
@@ -203,4 +197,32 @@ void LiteHtmlViewer::wheelEvent(QWheelEvent* event) {
   }
 
   QLiteHtmlWidget::wheelEvent(event);
+}
+
+QByteArray LiteHtmlViewer::handleResource(const QUrl& url) {
+  AdblockRequestInfo block_request(url);
+
+  if (url.path().endsWith(QSL("css"))) {
+    block_request.setResourceType(QSL("stylesheet"));
+  }
+  else {
+    block_request.setResourceType(QSL("image"));
+  }
+
+  if (qApp->web()->adBlock()->block(block_request).m_blocked) {
+    qWarningNN << LOGSEC_ADBLOCK << "Blocked request:" << QUOTE_W_SPACE_DOT(block_request.requestUrl().toString());
+    return {};
+  }
+  else {
+    QByteArray output;
+
+    NetworkFactory::performNetworkOperation(
+      url.toString(),
+      5000,
+      {},
+      output,
+      QNetworkAccessManager::Operation::GetOperation);
+
+    return output;
+  }
 }
