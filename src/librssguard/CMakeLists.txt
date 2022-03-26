@@ -696,7 +696,9 @@ if(NOT USE_WEBENGINE)
   target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/include)
   target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/include/litehtml)
 
-  target_compile_definitions(rssguard PUBLIC LITEHTML_UTF8)
+  if(WIN32)
+    target_compile_definitions(rssguard PUBLIC LITEHTML_UTF8)
+  endif()
 
   target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml)
 
