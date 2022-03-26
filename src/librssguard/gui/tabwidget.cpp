@@ -17,6 +17,7 @@
 #include "network-web/webfactory.h"
 
 #include <QMenu>
+#include <QTimer>
 #include <QToolButton>
 
 TabWidget::TabWidget(QWidget* parent) : QTabWidget(parent), m_menuMain(nullptr) {
@@ -185,28 +186,20 @@ void TabWidget::closeCurrentTab() {
 }
 
 int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) {
-  // TODO: dodělat
-
-  /*
-     int msg_height = height() - tabBar()->height() - 50;
-     NewspaperPreviewer* prev = new NewspaperPreviewer(msg_height, root, messages, this);
-
-     connect(prev, &NewspaperPreviewer::markMessageRead,
-          m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageReadById);
-     connect(prev, &NewspaperPreviewer::markMessageImportant,
-          m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageImportantById);
-
-     int index = addTab(prev,
+  WebBrowser* browser = new WebBrowser(this);
+  int index = addTab(browser,
                      qApp->icons()->fromTheme(QSL("format-justify-fill")),
                      tr("Newspaper view"),
                      TabBar::TabType::Closable);
 
-     // NOTE: Do not bring "newspaper" tabs to front anymore.
-     //setCurrentIndex(index);
+  // NOTE: Do not bring "newspaper" tabs to front anymore.
+  //setCurrentIndex(index);
 
-     return index;
-   */
-  return -1;
+  QTimer::singleShot(300, browser, [browser, root, messages]() {
+    browser->loadMessages(messages, root);
+  });
+
+  return index;
 }
 
 int TabWidget::addEmptyBrowser() {

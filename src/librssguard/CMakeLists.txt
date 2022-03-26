@@ -505,12 +505,6 @@ if(NOT USE_WEBENGINE)
   )
 endif()
 
-if(APPLE)
-  list(APPEND SOURCES
-    miscellaneous/disablewindowtabbing.mm
-  )
-endif()
-
 set(UI_FILES
   gui/dialogs/formabout.ui
   gui/dialogs/formaddaccount.ui
@@ -685,6 +679,7 @@ target_include_directories(rssguard
 
 # QLiteHtml.
 if(NOT USE_WEBENGINE)
+  # Gumbo.
   target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/include)
   target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/include/gumbo)
 
@@ -692,6 +687,7 @@ if(NOT USE_WEBENGINE)
       target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/visualc/include)
   endif()
 
+  # LiteHtml.
   target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/src)
   target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/include)
   target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/include/litehtml)
@@ -700,6 +696,7 @@ if(NOT USE_WEBENGINE)
     target_compile_definitions(rssguard PUBLIC LITEHTML_UTF8)
   endif()
 
+  # QLiteHtml.
   target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml)
 
   target_compile_definitions(rssguard
