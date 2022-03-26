@@ -9,6 +9,7 @@
 #include "network-web/networkfactory.h"
 
 #include <QAction>
+#include <QWheelEvent>
 
 LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent) {
   setResourceHandler([this](const QUrl& url) {
@@ -30,6 +31,10 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionForward = new QAction(this);
   browser->m_actionReload = new QAction(this);
   browser->m_actionStop = new QAction(this);
+
+  connect(this, &LiteHtmlViewer::zoomFactorChanged, browser, &WebBrowser::onZoomFactorChanged);
+
+  // TODO: změna ikon, změna stavu akcí.
 
   /*
      connect(this, &WebEngineViewer::urlChanged, browser, &WebBrowser::updateUrl);
@@ -157,19 +162,45 @@ void LiteHtmlViewer::setVerticalScrollBarPosition(double pos) {}
 void LiteHtmlViewer::reloadFontSettings(const QFont& fon) {}
 
 bool LiteHtmlViewer::canZoomIn() const {
-  return {};
+  return zoomFactor() <= double(MAX_ZOOM_FACTOR) - double(ZOOM_FACTOR_STEP);
 }
 
 bool LiteHtmlViewer::canZoomOut() const {
-  return {};
+  return zoomFactor() >= double(MIN_ZOOM_FACTOR) + double(ZOOM_FACTOR_STEP);
 }
 
 qreal LiteHtmlViewer::zoomFactor() const {
-  return {};
+  return QLiteHtmlWidget::zoomFactor();
 }
 
-void LiteHtmlViewer::zoomIn() {}
+void LiteHtmlViewer::zoomIn() {
+  setZoomFactor(zoomFactor() + double(ZOOM_FACTOR_STEP));
+}
 
-void LiteHtmlViewer::zoomOut() {}
+void LiteHtmlViewer::zoomOut() {
+  setZoomFactor(zoomFactor() - double(ZOOM_FACTOR_STEP));
+}
 
-void LiteHtmlViewer::setZoomFactor(qreal zoom_factor) {}
+void LiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
+  if (zoom_factor == 0.0) {
+    QLiteHtmlWidget::setZoomFactor(0.1);
+  }
+  else {
+    QLiteHtmlWidget::setZoomFactor(zoom_factor);
+  }
+}
+
+void LiteHtmlViewer::wheelEvent(QWheelEvent* event) {
+  if ((event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
+    if (event->angleDelta().y() > 0 && canZoomIn()) {
+      zoomIn();
+      emit zoomFactorChanged();
+    }
+    else if (event->angleDelta().y() < 0 && canZoomOut()) {
+      zoomOut();
+      emit zoomFactorChanged();
+    }
+  }
+
+  QLiteHtmlWidget::wheelEvent(event);
+}

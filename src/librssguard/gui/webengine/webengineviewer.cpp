@@ -238,12 +238,14 @@ bool WebEngineViewer::eventFilter(QObject* object, QEvent* event) {
     QWheelEvent* wh_event = static_cast<QWheelEvent*>(event);
 
     if ((wh_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
-      if (wh_event->angleDelta().y() > 0) {
+      if (wh_event->angleDelta().y() > 0 && canZoomIn()) {
         zoomIn();
+        emit zoomFactorChanged();
         return true;
       }
-      else if (wh_event->angleDelta().y() < 0) {
+      else if (wh_event->angleDelta().y() < 0 && canZoomOut()) {
         zoomOut();
+        emit zoomFactorChanged();
         return true;
       }
     }

@@ -118,7 +118,7 @@ DKEY Messages::EnableMessagePreview = "enable_message_preview";
 DVALUE(bool) Messages::EnableMessagePreviewDef = true;
 
 DKEY Messages::Zoom = "zoom";
-DVALUE(qreal) Messages::ZoomDef = double(1.0f);
+DVALUE(qreal) Messages::ZoomDef = double(1.0);
 
 DKEY Messages::FixupFutureArticleDateTimes = "fixup_future_datetimes";
 DVALUE(bool) Messages::FixupFutureArticleDateTimesDef = false;

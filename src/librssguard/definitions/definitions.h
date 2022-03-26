@@ -157,7 +157,7 @@
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f
 #define DEFAULT_ZOOM_FACTOR 1.0f
-#define ZOOM_FACTOR_STEP    0.1f
+#define ZOOM_FACTOR_STEP    0.05f
 
 #if defined(USE_WEBENGINE)
 #define HTTP_COMPLETE_USERAGENT (QWebEngineProfile::defaultProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") + QByteArrayLiteral(APP_USERAGENT))

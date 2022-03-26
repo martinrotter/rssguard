@@ -57,6 +57,7 @@ class WebBrowser : public TabContent {
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
+    void onZoomFactorChanged();
     void openCurrentSiteInSystemBrowser();
     void updateUrl(const QUrl& url);
     void onLoadingStarted();

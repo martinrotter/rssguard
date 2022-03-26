@@ -47,7 +47,7 @@ WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
                                     this)) {
   // Initialize the components and layout.
   m_webView->bindToBrowser(this);
-  m_webView->setZoomFactor(qApp->settings()->value(GROUP(Messages), Messages::Zoom).toReal());
+  m_webView->setZoomFactor(qApp->settings()->value(GROUP(Messages), SETTING(Messages::Zoom)).toDouble());
 
   initializeLayout();
 
@@ -110,6 +110,10 @@ void WebBrowser::reloadFontSettings() {
                                          SETTING(Messages::PreviewerFontStandard)).toString());
 
   m_webView->reloadFontSettings(fon);
+}
+
+void WebBrowser::onZoomFactorChanged() {
+  qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, m_webView->zoomFactor());
 }
 
 void WebBrowser::increaseZoom() {

@@ -40,6 +40,9 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
     virtual QString html() const;
     virtual QUrl url() const;
 
+    signals:
+        void zoomFactorChanged();
+
   protected:
     virtual QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
     virtual void contextMenuEvent(QContextMenuEvent* event);

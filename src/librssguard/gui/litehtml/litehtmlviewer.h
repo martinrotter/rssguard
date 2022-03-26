@@ -6,7 +6,11 @@
 #include "3rd-party/qlitehtml/qlitehtmlwidget.h"
 #include "gui/webviewer.h"
 
+class QWheelEvent;
+
 class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
+  Q_OBJECT
+
   public:
     explicit LiteHtmlViewer(QWidget* parent = nullptr);
 
@@ -28,6 +32,12 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
     virtual void zoomIn();
     virtual void zoomOut();
     virtual void setZoomFactor(qreal zoom_factor);
+
+  signals:
+    void zoomFactorChanged();
+
+  protected:
+    virtual void wheelEvent(QWheelEvent* event);
 };
 
 #endif // LITEHTMLVIEWER_H
