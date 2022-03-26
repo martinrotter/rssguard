@@ -35,6 +35,11 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
 
   signals:
     void zoomFactorChanged();
+    void titleChanged(const QString& new_title);
+    void urlChanged(const QUrl& url);
+    void loadStarted();
+    void loadProgress(int progress);
+    void loadFinished(bool success);
 
   protected:
     virtual void wheelEvent(QWheelEvent* event);

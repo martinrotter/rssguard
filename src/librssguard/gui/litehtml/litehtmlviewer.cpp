@@ -16,6 +16,7 @@
 
 LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent) {
   setResourceHandler([this](const QUrl& url) {
+    emit loadProgress(-1);
     return handleResource(url);
   });
 }
@@ -30,19 +31,11 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
   connect(this, &LiteHtmlViewer::linkHighlighted, browser, [browser](const QUrl& url) {
     browser->onLinkHovered(url.toString());
   });
-
-  // TODO: změna ikon, změna stavu akcí.
-
-  /*
-     connect(this, &WebEngineViewer::urlChanged, browser, &WebBrowser::updateUrl);
-     connect(this, &WebEngineViewer::loadStarted, browser, &WebBrowser::onLoadingStarted);
-     connect(this, &WebEngineViewer::loadProgress, browser, &WebBrowser::onLoadingProgress);
-     connect(this, &WebEngineViewer::loadFinished, browser, &WebBrowser::onLoadingFinished);
-     connect(this, &WebEngineViewer::titleChanged, browser, &WebBrowser::onTitleChanged);
-     connect(this, &WebEngineViewer::iconChanged, browser, &WebBrowser::onIconChanged);
-
-     connect(page(), &WebEnginePage::windowCloseRequested, browser, &WebBrowser::closeRequested);
-   */
+  connect(this, &LiteHtmlViewer::titleChanged, browser, &WebBrowser::onTitleChanged);
+  connect(this, &LiteHtmlViewer::urlChanged, browser, &WebBrowser::updateUrl);
+  connect(this, &LiteHtmlViewer::loadStarted, browser, &WebBrowser::onLoadingStarted);
+  connect(this, &LiteHtmlViewer::loadProgress, browser, &WebBrowser::onLoadingProgress);
+  connect(this, &LiteHtmlViewer::loadFinished, browser, &WebBrowser::onLoadingFinished);
 }
 
 void LiteHtmlViewer::findText(const QString& text, bool backwards) {
@@ -52,21 +45,48 @@ void LiteHtmlViewer::findText(const QString& text, bool backwards) {
 }
 
 void LiteHtmlViewer::setUrl(const QUrl& url) {
-  QByteArray output;
+  emit loadStarted();
+  AdblockRequestInfo block_request(url);
 
-  NetworkFactory::performNetworkOperation(
+  if (url.path().endsWith(QSL("css"))) {
+    block_request.setResourceType(QSL("stylesheet"));
+  }
+  else {
+    block_request.setResourceType(QSL("image"));
+  }
+
+  if (qApp->web()->adBlock()->block(block_request).m_blocked) {
+    qWarningNN << LOGSEC_ADBLOCK << "Blocked request:" << QUOTE_W_SPACE_DOT(block_request.requestUrl().toString());
+    return;
+  }
+
+  QByteArray output;
+  auto net_res = NetworkFactory::performNetworkOperation(
     url.toString(),
     5000,
     {},
     output,
     QNetworkAccessManager::Operation::GetOperation);
+  QString html_str;
 
-  setHtml(QString::fromUtf8(output), url);
+  if (net_res.m_networkError != QNetworkReply::NetworkError::NoError) {
+    html_str = "Error!";
+  }
+  else {
+    html_str = QString::fromUtf8(output);
+  }
+
+  setHtml(html_str, url);
+
+  emit loadFinished(net_res.m_networkError == QNetworkReply::NetworkError::NoError);
 }
 
 void LiteHtmlViewer::setHtml(const QString& html, const QUrl& base_url) {
   QLiteHtmlWidget::setUrl(base_url);
   QLiteHtmlWidget::setHtml(html);
+
+  emit titleChanged(title());
+  emit urlChanged(base_url);
 }
 
 QString LiteHtmlViewer::html() const {
@@ -151,6 +171,7 @@ void LiteHtmlViewer::loadMessages(const QList<Message>& messages, RootItem* root
   }
 
   setHtml(msg_contents, QUrl::fromUserInput(base_url));
+  emit loadFinished(true);
 }
 
 double LiteHtmlViewer::verticalScrollBarPosition() const {

@@ -270,7 +270,7 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addWidget(m_txtLocation);
 
   m_loadingProgress = new QProgressBar(this);
-  m_loadingProgress->setFixedHeight(5);
+  m_loadingProgress->setFixedHeight(10);
   m_loadingProgress->setMinimum(0);
   m_loadingProgress->setTextVisible(false);
   m_loadingProgress->setMaximum(100);
@@ -295,7 +295,8 @@ void WebBrowser::onLoadingStarted() {
 }
 
 void WebBrowser::onLoadingProgress(int progress) {
-  m_loadingProgress->setValue(progress);
+  m_loadingProgress->setMaximum(progress < 0 ? 0 : 100);
+  m_loadingProgress->setValue(progress < 0 ? 0 : progress);
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
