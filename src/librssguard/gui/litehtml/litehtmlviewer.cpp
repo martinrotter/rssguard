@@ -22,6 +22,8 @@ LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent) {
     return handleResource(url);
   });
 
+  connect(this, &LiteHtmlViewer::linkClicked, this, &LiteHtmlViewer::setUrl);
+
   connect(this, &LiteHtmlViewer::copyAvailable, this, [this](bool available) {
     if (!available) {
       return;
@@ -79,6 +81,8 @@ void LiteHtmlViewer::setUrl(const QUrl& url) {
 
   if (qApp->web()->adBlock()->block(block_request).m_blocked) {
     qWarningNN << LOGSEC_ADBLOCK << "Blocked request:" << QUOTE_W_SPACE_DOT(block_request.requestUrl().toString());
+
+    // TODO: Display "site blocked" error.
     return;
   }
 
