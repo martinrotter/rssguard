@@ -349,6 +349,13 @@ void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, false);
 }
 
+#if defined(USE_WEBENGINE)
+bool Application::forcedNoWebEngine() const {
+  return m_forcedNoWebEngine;
+}
+
+#endif
+
 NodeJs* Application::nodejs() const {
   return m_nodejs;
 }
@@ -961,6 +968,12 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
                                         QSL("user-data-folder"));
   QCommandLineOption disable_singleinstance({ QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG) },
                                             QSL("Allow running of multiple application instances."));
+
+#if defined(USE_WEBENGINE)
+  QCommandLineOption force_nowebengine({ QSL(CLI_FORCE_NOWEBENGINE_SHORT), QSL(CLI_FORCE_NOWEBENGINE_LONG) },
+                                       QSL("Force usage of simpler text-based embedded web browser."));
+#endif
+
   QCommandLineOption disable_only_debug({ QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG) },
                                         QSL("Disable just \"debug\" output."));
   QCommandLineOption disable_debug({ QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG) },
@@ -969,8 +982,15 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
                                   QSL("Force some application style."),
                                   QSL("style-name"));
 
-  m_cmdParser.addOptions({ help, version, log_file, custom_data_folder,
-                           disable_singleinstance, disable_only_debug, disable_debug,
+  m_cmdParser.addOptions({ help, version,
+                           log_file,
+                           custom_data_folder,
+                           disable_singleinstance,
+                           disable_only_debug,
+                           disable_debug,
+#if defined(USE_WEBENGINE)
+                           force_nowebengine,
+#endif
                            forced_style });
   m_cmdParser.addPositionalArgument(QSL("urls"),
                                     QSL("List of URL addresses pointing to individual online feeds which should be added."),
@@ -1015,6 +1035,14 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
   else if (m_cmdParser.isSet(QSL(CLI_VER_SHORT))) {
     m_cmdParser.showVersion();
   }
+
+#if defined(USE_WEBENGINE)
+  m_forcedNoWebEngine = m_cmdParser.isSet(QSL(CLI_FORCE_NOWEBENGINE_SHORT));
+
+  if (m_forcedNoWebEngine) {
+    qDebugNN << LOGSEC_CORE << "Forcing no-web-engine.";
+  }
+#endif
 
   if (m_cmdParser.isSet(QSL(CLI_SIN_SHORT))) {
     m_allowMultipleInstances = true;

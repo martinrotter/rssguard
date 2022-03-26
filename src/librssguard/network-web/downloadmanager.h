@@ -74,10 +74,7 @@ class DownloadItem : public QWidget {
     bool m_canceledFileSelect;
 };
 
-#if defined(USE_WEBENGINE)
 class WebBrowser;
-#endif
-
 class SilentNetworkAccessManager;
 
 class DownloadManager : public TabContent {

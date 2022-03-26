@@ -125,6 +125,9 @@
 #define CLI_NDEBUG_SHORT  "g"
 #define CLI_NDEBUG_LONG   "no-debug-output"
 
+#define CLI_FORCE_NOWEBENGINE_SHORT  "w"
+#define CLI_FORCE_NOWEBENGINE_LONG   "no-web-engine"
+
 #define CLI_QUIT_INSTANCE "q"
 #define CLI_IS_RUNNING    "a"
 

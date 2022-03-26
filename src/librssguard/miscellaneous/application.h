@@ -160,6 +160,10 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
                         const GuiAction& action = {},
                         QWidget* parent = nullptr);
 
+#if defined(USE_WEBENGINE)
+    bool forcedNoWebEngine() const;
+#endif
+
     // Returns pointer to "GOD" application singleton.
     static Application* instance();
 
@@ -243,6 +247,10 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     bool m_firstRunCurrentVersion;
     QString m_customDataFolder;
     bool m_allowMultipleInstances;
+
+#if defined(USE_WEBENGINE)
+    bool m_forcedNoWebEngine;
+#endif
 
 #if defined(Q_OS_WIN)
     ITaskbarList4* m_windowsTaskBar;

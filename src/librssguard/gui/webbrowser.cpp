@@ -3,6 +3,7 @@
 #include "gui/webbrowser.h"
 
 #include "database/databasequeries.h"
+#include "gui/litehtml/litehtmlviewer.h" // QLiteHtml-based web browsing.
 #include "gui/messagebox.h"
 #include "gui/reusable/discoverfeedsbutton.h"
 #include "gui/reusable/locationlineedit.h"
@@ -15,6 +16,10 @@
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 
+#if defined(USE_WEBENGINE)
+#include "gui/webengine/webengineviewer.h" // WebEngine-based web browsing.
+#endif
+
 #include <QKeyEvent>
 #include <QScrollBar>
 #include <QTimer>
@@ -22,20 +27,9 @@
 #include <QToolTip>
 #include <QWidgetAction>
 
-#if defined(USE_WEBENGINE)
-#include "gui/webengine/webengineviewer.h" // WebEngine-based web browsing.
-#else
-#include "gui/litehtml/litehtmlviewer.h" // QLiteHtml-based web browsing.
-#endif
-
 WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
   m_layout(new QVBoxLayout(this)),
   m_toolBar(new QToolBar(tr("Navigation panel"), this)),
-#if defined(USE_WEBENGINE)
-  m_webView(new WebEngineViewer(this)),
-#else
-  m_webView(new LiteHtmlViewer(this)),
-#endif
   m_searchWidget(new SearchTextWidget(this)),
   m_txtLocation(new LocationLineEdit(this)),
   m_btnDiscoverFeeds(new DiscoverFeedsButton(this)),
@@ -45,6 +39,18 @@ WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
   m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("text-html")),
                                     tr("View website in reader mode"),
                                     this)) {
+
+#if !defined(USE_WEBENGINE)
+  m_webView = new LiteHtmlViewer(this),
+#else
+  if (qApp->forcedNoWebEngine()) {
+    m_webView = new LiteHtmlViewer(this);
+  }
+  else {
+    m_webView = new WebEngineViewer(this);
+  }
+#endif
+
   // Initialize the components and layout.
   m_webView->bindToBrowser(this);
   m_webView->setZoomFactor(qApp->settings()->value(GROUP(Messages), SETTING(Messages::Zoom)).toDouble());
