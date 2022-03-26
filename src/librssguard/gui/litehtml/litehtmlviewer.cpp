@@ -8,6 +8,7 @@
 #include "miscellaneous/skinfactory.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblockrequestinfo.h"
+#include "network-web/downloader.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 
@@ -16,25 +17,14 @@
 #include <QScrollBar>
 #include <QWheelEvent>
 
-LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent) {
+LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent), m_downloader(new Downloader(this)) {
   setResourceHandler([this](const QUrl& url) {
     emit loadProgress(-1);
     return handleResource(url);
   });
 
   connect(this, &LiteHtmlViewer::linkClicked, this, &LiteHtmlViewer::setUrl);
-
-  connect(this, &LiteHtmlViewer::copyAvailable, this, [this](bool available) {
-    if (!available) {
-      return;
-    }
-
-    QString sel_text = QLiteHtmlWidget::selectedText();
-
-    if (!sel_text.isEmpty()) {
-      QGuiApplication::clipboard()->setText(sel_text, QClipboard::Mode::Selection);
-    }
-  });
+  connect(this, &LiteHtmlViewer::copyAvailable, this, &LiteHtmlViewer::selectedTextChanged);
 }
 
 void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
@@ -86,25 +76,29 @@ void LiteHtmlViewer::setUrl(const QUrl& url) {
     return;
   }
 
-  QByteArray output;
-  auto net_res = NetworkFactory::performNetworkOperation(
-    url.toString(),
-    5000,
-    {},
-    output,
-    QNetworkAccessManager::Operation::GetOperation);
+  QEventLoop loop;
+
+  connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
+  m_downloader->manipulateData(url.toString(),
+                               QNetworkAccessManager::Operation::GetOperation,
+                               {},
+                               5000);
+
+  loop.exec();
+
+  auto net_error = m_downloader->lastOutputError();
   QString html_str;
 
-  if (net_res.m_networkError != QNetworkReply::NetworkError::NoError) {
+  if (net_error != QNetworkReply::NetworkError::NoError) {
     html_str = "Error!";
   }
   else {
-    html_str = QString::fromUtf8(output);
+    html_str = QString::fromUtf8(m_downloader->lastOutputData());
   }
 
   setHtml(html_str, url);
 
-  emit loadFinished(net_res.m_networkError == QNetworkReply::NetworkError::NoError);
+  emit loadFinished(net_error == QNetworkReply::NetworkError::NoError);
 }
 
 void LiteHtmlViewer::setHtml(const QString& html, const QUrl& base_url) {
@@ -243,6 +237,18 @@ void LiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
   }
 }
 
+void LiteHtmlViewer::selectedTextChanged(bool available) {
+  if (!available) {
+    return;
+  }
+
+  QString sel_text = QLiteHtmlWidget::selectedText();
+
+  if (!sel_text.isEmpty()) {
+    QGuiApplication::clipboard()->setText(sel_text, QClipboard::Mode::Selection);
+  }
+}
+
 void LiteHtmlViewer::wheelEvent(QWheelEvent* event) {
   if ((event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
     if (event->angleDelta().y() > 0 && canZoomIn()) {
@@ -273,16 +279,16 @@ QByteArray LiteHtmlViewer::handleResource(const QUrl& url) {
     return {};
   }
   else {
-    QByteArray output;
+    QEventLoop loop;
 
-    NetworkFactory::performNetworkOperation(
-      url.toString(),
-      5000,
-      {},
-      output,
-      QNetworkAccessManager::Operation::GetOperation);
+    connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
+    m_downloader->manipulateData(url.toString(),
+                                 QNetworkAccessManager::Operation::GetOperation,
+                                 {},
+                                 5000);
 
-    return output;
+    loop.exec();
+    return m_downloader->lastOutputData();
   }
 }
 

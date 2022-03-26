@@ -6,6 +6,7 @@
 #include "3rd-party/qlitehtml/qlitehtmlwidget.h"
 #include "gui/webviewer.h"
 
+class Downloader;
 class QWheelEvent;
 
 class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
@@ -33,6 +34,9 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
     virtual void zoomOut();
     virtual void setZoomFactor(qreal zoom_factor);
 
+  private slots:
+    void selectedTextChanged(bool available);
+
   signals:
     void zoomFactorChanged();
     void titleChanged(const QString& new_title);
@@ -47,6 +51,9 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
 
   private:
     QByteArray handleResource(const QUrl& url);
+
+  private:
+    QScopedPointer<Downloader> m_downloader;
 };
 
 #endif // LITEHTMLVIEWER_H
