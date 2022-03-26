@@ -12,6 +12,7 @@
 #include "network-web/webfactory.h"
 
 #include <QAction>
+#include <QScrollBar>
 #include <QWheelEvent>
 
 LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent) {
@@ -90,14 +91,16 @@ void LiteHtmlViewer::setHtml(const QString& html, const QUrl& base_url) {
 }
 
 QString LiteHtmlViewer::html() const {
-  return {};
+  return QLiteHtmlWidget::html();
 }
 
 QUrl LiteHtmlViewer::url() const {
-  return {};
+  return QLiteHtmlWidget::url();
 }
 
-void LiteHtmlViewer::clear() {}
+void LiteHtmlViewer::clear() {
+  setHtml({});
+}
 
 void LiteHtmlViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
   Skin skin = qApp->skins()->currentSkin();
@@ -175,12 +178,16 @@ void LiteHtmlViewer::loadMessages(const QList<Message>& messages, RootItem* root
 }
 
 double LiteHtmlViewer::verticalScrollBarPosition() const {
-  return {};
+  return verticalScrollBar()->value();
 }
 
-void LiteHtmlViewer::setVerticalScrollBarPosition(double pos) {}
+void LiteHtmlViewer::setVerticalScrollBarPosition(double pos) {
+  verticalScrollBar()->setValue(pos);
+}
 
-void LiteHtmlViewer::reloadFontSettings(const QFont& fon) {}
+void LiteHtmlViewer::reloadFontSettings(const QFont& fon) {
+  QLiteHtmlWidget::setDefaultFont(fon);
+}
 
 bool LiteHtmlViewer::canZoomIn() const {
   return zoomFactor() <= double(MAX_ZOOM_FACTOR) - double(ZOOM_FACTOR_STEP);
