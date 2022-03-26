@@ -286,6 +286,7 @@ void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionReload = pageAction(QWebEnginePage::WebAction::Reload);
   browser->m_actionStop = pageAction(QWebEnginePage::WebAction::Stop);
 
+  connect(this, &WebEngineViewer::zoomFactorChanged, browser, &WebBrowser::onZoomFactorChanged);
   connect(this, &WebEngineViewer::urlChanged, browser, &WebBrowser::updateUrl);
   connect(this, &WebEngineViewer::loadStarted, browser, &WebBrowser::onLoadingStarted);
   connect(this, &WebEngineViewer::loadProgress, browser, &WebBrowser::onLoadingProgress);

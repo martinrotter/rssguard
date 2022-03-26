@@ -27,6 +27,9 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionStop = new QAction(this);
 
   connect(this, &LiteHtmlViewer::zoomFactorChanged, browser, &WebBrowser::onZoomFactorChanged);
+  connect(this, &LiteHtmlViewer::linkHighlighted, browser, [browser](const QUrl& url) {
+    browser->onLinkHovered(url.toString());
+  });
 
   // TODO: změna ikon, změna stavu akcí.
 
@@ -39,7 +42,6 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
      connect(this, &WebEngineViewer::iconChanged, browser, &WebBrowser::onIconChanged);
 
      connect(page(), &WebEnginePage::windowCloseRequested, browser, &WebBrowser::closeRequested);
-     connect(page(), &WebEnginePage::linkHovered, browser, &WebBrowser::onLinkHovered);
    */
 }
 
