@@ -29,6 +29,7 @@
     <file>./graphics/Breeze/actions/32/edit-reset.svg</file>
     <file>./graphics/Breeze/actions/22/edit-select-all.svg</file>
     <file>./graphics/Breeze/actions/22/edit-select-none.svg</file>
+    <file>./graphics/Breeze/emblems/22/emblem-favorite.svg</file>
     <file>./graphics/Breeze/emblems/22/emblem-shared.svg</file>
     <file>./graphics/Breeze/places/96/folder.svg</file>
     <file>./graphics/Breeze/actions/22/format-indent-more.svg</file>
@@ -103,6 +104,7 @@
     <file>./graphics/Breeze Dark/actions/32/edit-reset.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-select-all.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-select-none.svg</file>
+    <file>./graphics/Breeze Dark/emblems/22/emblem-favorite.svg</file>
     <file>./graphics/Breeze Dark/emblems/22/emblem-shared.svg</file>
     <file>./graphics/Breeze Dark/places/96/folder.svg</file>
     <file>./graphics/Breeze Dark/actions/22/format-indent-more.svg</file>
@@ -174,6 +176,7 @@
     <file>./graphics/Faenza/actions/64/edit-copy.png</file>
     <file>./graphics/Faenza/actions/64/edit-select-all.png</file>
     <file>./graphics/Faenza/emblems/64/emblem-downloads.png</file>
+    <file>./graphics/Faenza/emblems/64/emblem-favorite.png</file>
     <file>./graphics/Faenza/emblems/64/emblem-shared.png</file>
     <file>./graphics/Faenza/emblems/64/emblem-system.png</file>
     <file>./graphics/Faenza/places/64/folder.png</file>
@@ -252,6 +255,7 @@
     <file>./graphics/Numix/22/actions/edit-copy.svg</file>
     <file>./graphics/Numix/22/actions/edit-select-all.svg</file>
     <file>./graphics/Numix/22/emblems/emblem-downloads.svg</file>
+    <file>./graphics/Numix/22/emblems/emblem-favorite.svg</file>
     <file>./graphics/Numix/22/emblems/emblem-shared.svg</file>
     <file>./graphics/Numix/22/emblems/emblem-system.svg</file>
     <file>./graphics/Numix/22/places/folder.svg</file>

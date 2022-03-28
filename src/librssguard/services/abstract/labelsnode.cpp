@@ -15,7 +15,7 @@
 LabelsNode::LabelsNode(RootItem* parent_item) : RootItem(parent_item), m_actLabelNew(nullptr) {
   setKind(RootItem::Kind::Labels);
   setId(ID_LABELS);
-  setIcon(qApp->icons()->fromTheme(QSL("tag-folder")));
+  setIcon(qApp->icons()->fromTheme(QSL("tag-folder"), QSL("emblem-favorite")));
   setTitle(tr("Labels"));
   setDescription(tr("You can see all your labels (tags) here."));
 }

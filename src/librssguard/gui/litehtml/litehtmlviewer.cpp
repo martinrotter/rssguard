@@ -60,45 +60,38 @@ void LiteHtmlViewer::findText(const QString& text, bool backwards) {
 
 void LiteHtmlViewer::setUrl(const QUrl& url) {
   emit loadStarted();
-  AdblockRequestInfo block_request(url);
-
-  if (url.path().endsWith(QSL("css"))) {
-    block_request.setResourceType(QSL("stylesheet"));
-  }
-  else {
-    block_request.setResourceType(QSL("image"));
-  }
-
-  if (qApp->web()->adBlock()->block(block_request).m_blocked) {
-    qWarningNN << LOGSEC_ADBLOCK << "Blocked request:" << QUOTE_W_SPACE_DOT(block_request.requestUrl().toString());
-
-    // TODO: Display "site blocked" error.
-    return;
-  }
-
-  QEventLoop loop;
-
-  connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
-  m_downloader->manipulateData(url.toString(),
-                               QNetworkAccessManager::Operation::GetOperation,
-                               {},
-                               5000);
-
-  loop.exec();
-
-  auto net_error = m_downloader->lastOutputError();
   QString html_str;
+  bool is_error = false;
 
-  if (net_error != QNetworkReply::NetworkError::NoError) {
-    html_str = "Error!";
+  if (blockedWithAdblock(url)) {
+    is_error = true;
+    html_str = tr("Site \"%1\" was blocked with AdBlock.").arg(url.toString());
   }
   else {
-    html_str = QString::fromUtf8(m_downloader->lastOutputData());
+    QEventLoop loop;
+
+    connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
+    m_downloader->manipulateData(url.toString(),
+                                 QNetworkAccessManager::Operation::GetOperation,
+                                 {},
+                                 5000);
+
+    loop.exec();
+
+    auto net_error = m_downloader->lastOutputError();
+
+    if (net_error != QNetworkReply::NetworkError::NoError) {
+      is_error = true;
+      html_str = "Error!";
+    }
+    else {
+      html_str = QString::fromUtf8(m_downloader->lastOutputData());
+    }
   }
 
   setHtml(html_str, url);
 
-  emit loadFinished(net_error == QNetworkReply::NetworkError::NoError);
+  emit loadFinished(is_error);
 }
 
 void LiteHtmlViewer::setHtml(const QString& html, const QUrl& base_url) {
@@ -264,7 +257,7 @@ void LiteHtmlViewer::wheelEvent(QWheelEvent* event) {
   QLiteHtmlWidget::wheelEvent(event);
 }
 
-QByteArray LiteHtmlViewer::handleResource(const QUrl& url) {
+bool LiteHtmlViewer::blockedWithAdblock(const QUrl& url) {
   AdblockRequestInfo block_request(url);
 
   if (url.path().endsWith(QSL("css"))) {
@@ -276,6 +269,15 @@ QByteArray LiteHtmlViewer::handleResource(const QUrl& url) {
 
   if (qApp->web()->adBlock()->block(block_request).m_blocked) {
     qWarningNN << LOGSEC_ADBLOCK << "Blocked request:" << QUOTE_W_SPACE_DOT(block_request.requestUrl().toString());
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+QByteArray LiteHtmlViewer::handleResource(const QUrl& url) {
+  if (blockedWithAdblock(url)) {
     return {};
   }
   else {

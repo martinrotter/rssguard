@@ -50,6 +50,7 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
     virtual void wheelEvent(QWheelEvent* event);
 
   private:
+    bool blockedWithAdblock(const QUrl& url);
     QByteArray handleResource(const QUrl& url);
 
   private:
