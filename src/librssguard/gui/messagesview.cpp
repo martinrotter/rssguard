@@ -129,7 +129,7 @@ void MessagesView::copyUrlOfSelectedArticles() const {
   }
 
   if (qApp->clipboard() != nullptr && !urls.isEmpty()) {
-    qApp->clipboard()->setText(urls.join(TextFactory::newline()));
+    qApp->clipboard()->setText(urls.join(TextFactory::newline()), QClipboard::Mode::Clipboard);
   }
 }
 

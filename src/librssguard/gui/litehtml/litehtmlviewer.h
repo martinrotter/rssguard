@@ -8,6 +8,7 @@
 
 class Downloader;
 class QWheelEvent;
+class QMenu;
 
 class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
   Q_OBJECT
@@ -36,6 +37,7 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
 
   private slots:
     void selectedTextChanged(bool available);
+    void showContextMenu(const QPoint& pos, const QUrl& url);
 
   signals:
     void zoomFactorChanged();
@@ -55,6 +57,7 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
 
   private:
     QScopedPointer<Downloader> m_downloader;
+    QScopedPointer<QMenu> m_contextMenu;
 };
 
 #endif // LITEHTMLVIEWER_H

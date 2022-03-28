@@ -3,9 +3,13 @@
 #include "gui/litehtml/litehtmlviewer.h"
 
 #include "core/message.h"
+#include "gui/dialogs/formmain.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/externaltool.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/skinfactory.h"
+#include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblockrequestinfo.h"
 #include "network-web/downloader.h"
@@ -14,7 +18,10 @@
 
 #include <QAction>
 #include <QClipboard>
+#include <QFileIconProvider>
+#include <QMenu>
 #include <QScrollBar>
+#include <QTimer>
 #include <QWheelEvent>
 
 LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent), m_downloader(new Downloader(this)) {
@@ -25,6 +32,7 @@ LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent), m_dow
 
   connect(this, &LiteHtmlViewer::linkClicked, this, &LiteHtmlViewer::setUrl);
   connect(this, &LiteHtmlViewer::copyAvailable, this, &LiteHtmlViewer::selectedTextChanged);
+  connect(this, &LiteHtmlViewer::contextMenuRequested, this, &LiteHtmlViewer::showContextMenu);
 }
 
 void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
@@ -240,6 +248,72 @@ void LiteHtmlViewer::selectedTextChanged(bool available) {
   if (!sel_text.isEmpty()) {
     QGuiApplication::clipboard()->setText(sel_text, QClipboard::Mode::Selection);
   }
+}
+
+void LiteHtmlViewer::showContextMenu(const QPoint& pos, const QUrl& url) {
+  if (m_contextMenu.isNull()) {
+    m_contextMenu.reset(new QMenu("Context menu for web browser", this));
+  }
+
+  m_contextMenu->clear();
+
+  m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("edit-copy")),
+                           tr("Copy URL"),
+                           [url]() {
+    QGuiApplication::clipboard()->setText(url.toString(), QClipboard::Mode::Clipboard);
+  })->setEnabled(url.isValid());
+
+  m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("edit-copy")),
+                           tr("Copy selection"),
+                           [this]() {
+    QGuiApplication::clipboard()->setText(QLiteHtmlWidget::selectedText(), QClipboard::Mode::Clipboard);
+  })->setEnabled(!QLiteHtmlWidget::selectedText().isEmpty());
+
+  // Add option to open link in external viewe
+  m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("document-open")),
+                           tr("Open link in external browser"),
+                           [url]() {
+    qApp->web()->openUrlInExternalBrowser(url.toString());
+
+    if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool()) {
+      QTimer::singleShot(1000, qApp, []() {
+        qApp->mainForm()->display();
+      });
+    }
+  })->setEnabled(url.isValid());
+
+  if (url.isValid()) {
+    QFileIconProvider icon_provider;
+    QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), this);
+    auto tools = ExternalTool::toolsFromSettings();
+
+    menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
+
+    for (const ExternalTool& tool : qAsConst(tools)) {
+      QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
+
+      act_tool->setIcon(icon_provider.icon(QFileInfo(tool.executable())));
+      act_tool->setToolTip(tool.executable());
+      act_tool->setData(QVariant::fromValue(tool));
+      menu_ext_tools->addAction(act_tool);
+
+      connect(act_tool, &QAction::triggered, this, [act_tool, url]() {
+        act_tool->data().value<ExternalTool>().run(url.toString());
+      });
+    }
+
+    if (menu_ext_tools->actions().isEmpty()) {
+      QAction* act_not_tools = new QAction(tr("No external tools activated"));
+
+      act_not_tools->setEnabled(false);
+      menu_ext_tools->addAction(act_not_tools);
+    }
+
+    m_contextMenu->addMenu(menu_ext_tools);
+  }
+
+  m_contextMenu->addAction(qApp->web()->adBlock()->adBlockIcon());
+  m_contextMenu->popup(mapToGlobal(pos));
 }
 
 void LiteHtmlViewer::wheelEvent(QWheelEvent* event) {
