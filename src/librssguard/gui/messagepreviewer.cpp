@@ -115,7 +115,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
         m_txtMessage->loadUrl(m_message.m_url);
       }
       else {
-        m_txtMessage->loadMessage(message, m_root);
+        m_txtMessage->loadMessages({ message }, m_root);
       }
     }
   }

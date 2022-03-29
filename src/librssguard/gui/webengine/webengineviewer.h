@@ -12,6 +12,7 @@
 #include "network-web/webengine/webenginepage.h"
 
 class RootItem;
+class WebBrowser;
 
 class WebEngineViewer : public QWebEngineView, public WebViewer {
   Q_OBJECT
@@ -47,7 +48,6 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
     virtual QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
     virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual bool event(QEvent* event);
-    virtual bool eventFilter(QObject* object, QEvent* event);
 
   private slots:
     void displayMessage();
@@ -57,6 +57,7 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
     WebEnginePage* page() const;
 
   private:
+    WebBrowser* m_browser;
     RootItem* m_root;
     QString m_messageBaseUrl;
     QString m_messageContents;

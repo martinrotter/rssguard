@@ -122,28 +122,6 @@ void WebBrowser::onZoomFactorChanged() {
   qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, m_webView->zoomFactor());
 }
 
-void WebBrowser::increaseZoom() {
-  if (m_webView->canZoomIn()) {
-    m_webView->zoomIn();
-
-    qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, m_webView->zoomFactor());
-  }
-}
-
-void WebBrowser::decreaseZoom() {
-  if (m_webView->canZoomOut()) {
-    m_webView->zoomOut();
-
-    qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, m_webView->zoomFactor());
-  }
-}
-
-void WebBrowser::resetZoom() {
-  m_webView->setZoomFactor(1.0f);
-
-  qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, m_webView->zoomFactor());
-}
-
 void WebBrowser::clear(bool also_hide) {
   m_webView->clear();
   m_messages.clear();
@@ -170,10 +148,6 @@ void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {
   }
 }
 
-void WebBrowser::loadMessage(const Message& message, RootItem* root) {
-  loadMessages({ message }, root);
-}
-
 void WebBrowser::readabilePage() {
   m_actionReadabilePage->setEnabled(false);
   qApp->web()->readability()->makeHtmlReadable(m_webView->html(), m_webView->url().toString());
@@ -182,14 +156,57 @@ void WebBrowser::readabilePage() {
 bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
   Q_UNUSED(watched)
 
-  if (event->type() == QEvent::KeyPress) {
+  if (event->type() == QEvent::Type::Wheel) {
+    QWheelEvent* wh_event = static_cast<QWheelEvent*>(event);
+
+    // Zoom with mouse.
+    if ((wh_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
+      if (wh_event->angleDelta().y() > 0 && m_webView->canZoomIn()) {
+        m_webView->zoomIn();
+        onZoomFactorChanged();
+        return true;
+      }
+      else if (wh_event->angleDelta().y() < 0 && m_webView->canZoomOut()) {
+        m_webView->zoomOut();
+        onZoomFactorChanged();
+        return true;
+      }
+    }
+  }
+  else if (event->type() == QEvent::KeyPress) {
     QKeyEvent* key_event = static_cast<QKeyEvent*>(event);
 
+    // Find text.
     if (key_event->matches(QKeySequence::StandardKey::Find)) {
       m_searchWidget->clear();
       m_searchWidget->show();
       m_searchWidget->setFocus();
       return true;
+    }
+
+    // Hide visible search box.
+    if (key_event->key() == Qt::Key::Key_Escape && m_searchWidget->isVisible()) {
+      m_searchWidget->hide();
+      return true;
+    }
+
+    // Zoom with keyboard.
+    if ((key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
+      if (key_event->key() == Qt::Key::Key_Plus && m_webView->canZoomIn()) {
+        m_webView->zoomIn();
+        onZoomFactorChanged();
+        return true;
+      }
+      else if (key_event->key() == Qt::Key::Key_Minus && m_webView->canZoomOut()) {
+        m_webView->zoomOut();
+        onZoomFactorChanged();
+        return true;
+      }
+      else if (key_event->key() == Qt::Key::Key_0) {
+        m_webView->setZoomFactor(1.0f);
+        onZoomFactorChanged();
+        return true;
+      }
     }
   }
 

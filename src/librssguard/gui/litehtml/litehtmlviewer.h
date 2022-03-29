@@ -51,7 +51,6 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
 
   protected:
     virtual void keyPressEvent(QKeyEvent* event);
-    virtual void wheelEvent(QWheelEvent* event);
 
   private:
     BlockingResult blockedWithAdblock(const QUrl& url);

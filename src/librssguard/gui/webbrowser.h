@@ -42,15 +42,11 @@ class WebBrowser : public TabContent {
 
   public slots:
     void reloadFontSettings();
-    void increaseZoom();
-    void decreaseZoom();
-    void resetZoom();
 
     void clear(bool also_hide);
     void loadUrl(const QString& url);
     void loadUrl(const QUrl& url);
     void loadMessages(const QList<Message>& messages, RootItem* root);
-    void loadMessage(const Message& message, RootItem* root);
     void setNavigationBarVisible(bool visible);
 
   protected:

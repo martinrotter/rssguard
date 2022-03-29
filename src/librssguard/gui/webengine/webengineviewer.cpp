@@ -29,7 +29,7 @@
 #include <QWebEngineProfile>
 #include <QWheelEvent>
 
-WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_root(nullptr) {
+WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_browser(nullptr), m_root(nullptr) {
   WebEnginePage* page = new WebEnginePage(this);
 
   setPage(page);
@@ -40,8 +40,8 @@ bool WebEngineViewer::event(QEvent* event) {
     QChildEvent* child_ev = static_cast<QChildEvent*>(event);
     QWidget* w = qobject_cast<QWidget*>(child_ev->child());
 
-    if (w != nullptr) {
-      w->installEventFilter(this);
+    if (w != nullptr && m_browser != nullptr) {
+      w->installEventFilter(m_browser);
     }
   }
 
@@ -227,49 +227,6 @@ QWebEngineView* WebEngineViewer::createWindow(QWebEnginePage::WebWindowType type
   }
 }
 
-bool WebEngineViewer::eventFilter(QObject* object, QEvent* event) {
-  Q_UNUSED(object)
-
-  if (event->type() == QEvent::Type::Wheel) {
-    QWheelEvent* wh_event = static_cast<QWheelEvent*>(event);
-
-    if ((wh_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
-      if (wh_event->angleDelta().y() > 0 && canZoomIn()) {
-        zoomIn();
-        emit zoomFactorChanged();
-
-        return true;
-      }
-      else if (wh_event->angleDelta().y() < 0 && canZoomOut()) {
-        zoomOut();
-        emit zoomFactorChanged();
-
-        return true;
-      }
-    }
-  }
-  else if (event->type() == QEvent::Type::KeyPress) {
-    QKeyEvent* key_event = static_cast<QKeyEvent*>(event);
-
-    if ((key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
-      if (key_event->key() == Qt::Key::Key_Plus) {
-        zoomIn();
-        return true;
-      }
-      else if (key_event->key() == Qt::Key::Key_Minus) {
-        zoomOut();
-        return true;
-      }
-      else if (key_event->key() == Qt::Key::Key_0) {
-        setZoomFactor(1.0f);
-        return true;
-      }
-    }
-  }
-
-  return false;
-}
-
 void WebEngineViewer::openUrlWithExternalTool(ExternalTool tool, const QString& target_url) {
   tool.run(target_url);
 }
@@ -279,6 +236,8 @@ RootItem* WebEngineViewer::root() const {
 }
 
 void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
+  m_browser = browser;
+
   browser->m_actionBack = pageAction(QWebEnginePage::WebAction::Back);
   browser->m_actionForward = pageAction(QWebEnginePage::WebAction::Forward);
   browser->m_actionReload = pageAction(QWebEnginePage::WebAction::Reload);

@@ -35,6 +35,8 @@ LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent), m_dow
 }
 
 void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
+  installEventFilter(browser);
+
   browser->m_actionBack = new QAction(this);
   browser->m_actionForward = new QAction(this);
   browser->m_actionReload = new QAction(this);
@@ -317,21 +319,6 @@ void LiteHtmlViewer::showContextMenu(const QPoint& pos, const QUrl& url) {
 
   m_contextMenu->addAction(qApp->web()->adBlock()->adBlockIcon());
   m_contextMenu->popup(mapToGlobal(pos));
-}
-
-void LiteHtmlViewer::wheelEvent(QWheelEvent* event) {
-  if ((event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
-    if (event->angleDelta().y() > 0 && canZoomIn()) {
-      zoomIn();
-      emit zoomFactorChanged();
-    }
-    else if (event->angleDelta().y() < 0 && canZoomOut()) {
-      zoomOut();
-      emit zoomFactorChanged();
-    }
-  }
-
-  QLiteHtmlWidget::wheelEvent(event);
 }
 
 BlockingResult LiteHtmlViewer::blockedWithAdblock(const QUrl& url) {
