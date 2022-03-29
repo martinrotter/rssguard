@@ -44,7 +44,7 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent) : TabContent(parent),
                                     this)) {
   if (m_webView == nullptr) {
 #if !defined(USE_WEBENGINE)
-    m_webView = new LiteHtmlViewer(this),
+    m_webView = new LiteHtmlViewer(this);
 #else
     if (qApp->forcedNoWebEngine()) {
       m_webView = new LiteHtmlViewer(this);
