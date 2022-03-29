@@ -3,11 +3,13 @@
 #include "gui/webbrowser.h"
 
 #include "database/databasequeries.h"
+#include "gui/dialogs/formmain.h"
 #include "gui/litehtml/litehtmlviewer.h" // QLiteHtml-based web browsing.
 #include "gui/messagebox.h"
 #include "gui/reusable/discoverfeedsbutton.h"
 #include "gui/reusable/locationlineedit.h"
 #include "gui/reusable/searchtextwidget.h"
+#include "gui/tabwidget.h"
 #include "gui/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -27,9 +29,10 @@
 #include <QToolTip>
 #include <QWidgetAction>
 
-WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
+WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent) : TabContent(parent),
   m_layout(new QVBoxLayout(this)),
   m_toolBar(new QToolBar(tr("Navigation panel"), this)),
+  m_webView(viewer),
   m_searchWidget(new SearchTextWidget(this)),
   m_txtLocation(new LocationLineEdit(this)),
   m_btnDiscoverFeeds(new DiscoverFeedsButton(this)),
@@ -39,17 +42,18 @@ WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
   m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("text-html")),
                                     tr("View website in reader mode"),
                                     this)) {
-
+  if (m_webView == nullptr) {
 #if !defined(USE_WEBENGINE)
-  m_webView = new LiteHtmlViewer(this),
+    m_webView = new LiteHtmlViewer(this),
 #else
-  if (qApp->forcedNoWebEngine()) {
-    m_webView = new LiteHtmlViewer(this);
-  }
-  else {
-    m_webView = new WebEngineViewer(this);
-  }
+    if (qApp->forcedNoWebEngine()) {
+      m_webView = new LiteHtmlViewer(this);
+    }
+    else {
+      m_webView = new WebEngineViewer(this);
+    }
 #endif
+  }
 
   // Initialize the components and layout.
   m_webView->bindToBrowser(this);
@@ -229,7 +233,7 @@ void WebBrowser::onTitleChanged(const QString& new_title) {
     emit titleChanged(m_index, tr("No title"));
   }
   else {
-    emit titleChanged(m_index, new_title);
+    emit titleChanged(m_index, new_title.simplified());
   }
 }
 
@@ -243,6 +247,12 @@ void WebBrowser::onLinkHovered(const QString& url) {
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
                        { url, url, QSystemTrayIcon::MessageIcon::NoIcon },
                        { false, false, true });
+}
+
+void WebBrowser::newWindowRequested(WebViewer* viewer) {
+  WebBrowser* browser = new WebBrowser(viewer, this);
+
+  qApp->mainForm()->tabWidget()->addBrowser(false, false, browser);
 }
 
 void WebBrowser::setReadabledHtml(const QString& better_html) {

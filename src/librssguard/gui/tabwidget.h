@@ -80,6 +80,7 @@ class TabWidget : public QTabWidget {
 
     // General method for adding WebBrowsers.
     int addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url = QUrl());
+    int addBrowser(bool move_after_current, bool make_active, WebBrowser* browser);
 
     void gotoNextTab();
     void gotoPreviousTab();

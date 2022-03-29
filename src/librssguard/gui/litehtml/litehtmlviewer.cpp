@@ -29,7 +29,7 @@ LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent), m_dow
     return handleResource(url);
   });
 
-  connect(this, &LiteHtmlViewer::linkClicked, this, &LiteHtmlViewer::setUrl);
+  connect(this, &LiteHtmlViewer::linkClicked, this, &LiteHtmlViewer::onLinkClicked);
   connect(this, &LiteHtmlViewer::copyAvailable, this, &LiteHtmlViewer::selectedTextChanged);
   connect(this, &LiteHtmlViewer::contextMenuRequested, this, &LiteHtmlViewer::showContextMenu);
 }
@@ -50,8 +50,6 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
   // right away.
   browser->m_actionStop->setEnabled(false);
 
-  connect(this, &LiteHtmlViewer::zoomFactorChanged, browser, &WebBrowser::onZoomFactorChanged);
-
   connect(this, &LiteHtmlViewer::linkHighlighted, browser, [browser](const QUrl& url) {
     browser->onLinkHovered(url.toString());
   });
@@ -60,6 +58,11 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
   connect(this, &LiteHtmlViewer::loadStarted, browser, &WebBrowser::onLoadingStarted);
   connect(this, &LiteHtmlViewer::loadProgress, browser, &WebBrowser::onLoadingProgress);
   connect(this, &LiteHtmlViewer::loadFinished, browser, &WebBrowser::onLoadingFinished);
+  connect(this, &LiteHtmlViewer::newWindowRequested, browser, &WebBrowser::newWindowRequested);
+
+  // TODO: add "Open in new tab" to context menu.
+  //
+  //connect(page(), &WebEnginePage::windowCloseRequested, browser, &WebBrowser::windowCloseRequested);
 }
 
 void LiteHtmlViewer::findText(const QString& text, bool backwards) {
@@ -252,6 +255,18 @@ void LiteHtmlViewer::selectedTextChanged(bool available) {
 
   if (!sel_text.isEmpty()) {
     QGuiApplication::clipboard()->setText(sel_text, QClipboard::Mode::Selection);
+  }
+}
+
+void LiteHtmlViewer::onLinkClicked(const QUrl& link) {
+  if ((QApplication::queryKeyboardModifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
+    LiteHtmlViewer* viewer = new LiteHtmlViewer(this);
+    emit newWindowRequested(viewer);
+
+    viewer->setUrl(link);
+  }
+  else {
+    setUrl(link);
   }
 }
 

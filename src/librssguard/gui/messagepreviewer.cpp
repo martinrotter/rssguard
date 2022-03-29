@@ -42,7 +42,7 @@ void MessagePreviewer::createConnections() {
 MessagePreviewer::MessagePreviewer(QWidget* parent)
   : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)),
   m_separator(nullptr), m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
-  m_txtMessage = new WebBrowser(this);
+  m_txtMessage = new WebBrowser(nullptr, this);
 
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
 

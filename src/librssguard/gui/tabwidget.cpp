@@ -186,7 +186,7 @@ void TabWidget::closeCurrentTab() {
 }
 
 int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) {
-  WebBrowser* browser = new WebBrowser(this);
+  WebBrowser* browser = new WebBrowser(nullptr, this);
   int index = addTab(browser,
                      qApp->icons()->fromTheme(QSL("format-justify-fill")),
                      tr("Newspaper view"),
@@ -211,12 +211,10 @@ int TabWidget::addLinkedBrowser(const QUrl& initial_url) {
 }
 
 int TabWidget::addLinkedBrowser(const QString& initial_url) {
-  return addLinkedBrowser(QUrl(initial_url));
+  return addLinkedBrowser(QUrl::fromUserInput(initial_url));
 }
 
-int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url) {
-  // Create new WebBrowser.
-  WebBrowser* browser = new WebBrowser(this);
+int TabWidget::addBrowser(bool move_after_current, bool make_active, WebBrowser* browser) {
   int final_index;
   QString browser_tab_name = tr("Web browser");
 
@@ -243,11 +241,6 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
   // Setup the tab index.
   browser->setIndex(final_index);
 
-  // Load initial web page if desired.
-  if (initial_url.isValid()) {
-    browser->loadUrl(initial_url);
-  }
-
   // Make new web browser active if desired.
   if (make_active) {
     setCurrentIndex(final_index);
@@ -255,6 +248,19 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
   }
 
   return final_index;
+}
+
+int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url) {
+  // Create new WebBrowser.
+  WebBrowser* browser = new WebBrowser(nullptr, this);
+  int index = addBrowser(move_after_current, make_active, browser);
+
+  // Load initial web page if desired.
+  if (initial_url.isValid()) {
+    browser->loadUrl(initial_url);
+  }
+
+  return index;
 }
 
 void TabWidget::gotoNextTab() {

@@ -39,15 +39,16 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
 
   private slots:
     void selectedTextChanged(bool available);
+    void onLinkClicked(const QUrl& link);
     void showContextMenu(const QPoint& pos, const QUrl& url);
 
   signals:
-    void zoomFactorChanged();
     void titleChanged(const QString& new_title);
     void urlChanged(const QUrl& url);
     void loadStarted();
     void loadProgress(int progress);
     void loadFinished(bool success);
+    void newWindowRequested(WebViewer* viewer);
 
   protected:
     virtual void keyPressEvent(QKeyEvent* event);

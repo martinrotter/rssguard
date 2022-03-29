@@ -30,19 +30,19 @@ class WebBrowser : public TabContent {
   friend class LiteHtmlViewer;
 
   public:
-    explicit WebBrowser(QWidget* parent = nullptr);
+    explicit WebBrowser(WebViewer* viewer = nullptr, QWidget* parent = nullptr);
     virtual ~WebBrowser();
 
     virtual WebBrowser* webBrowser() const;
 
     WebViewer* viewer() const;
 
+    void reloadFontSettings();
+
     double verticalScrollBarPosition() const;
     void setVerticalScrollBarPosition(double pos);
 
   public slots:
-    void reloadFontSettings();
-
     void clear(bool also_hide);
     void loadUrl(const QString& url);
     void loadUrl(const QUrl& url);
@@ -62,13 +62,14 @@ class WebBrowser : public TabContent {
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
     void onLinkHovered(const QString& url);
+    void newWindowRequested(WebViewer* viewer);
 
     void readabilePage();
     void setReadabledHtml(const QString& better_html);
     void readabilityFailed(const QString& error);
 
   signals:
-    void closeRequested();
+    void windowCloseRequested();
     void iconChanged(int index, const QIcon& icon);
     void titleChanged(int index, const QString& title);
 

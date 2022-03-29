@@ -42,7 +42,7 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
     virtual QUrl url() const;
 
   signals:
-    void zoomFactorChanged();
+    void newWindowRequested(WebViewer* viewer);
 
   protected:
     virtual QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
@@ -50,7 +50,6 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
     virtual bool event(QEvent* event);
 
   private slots:
-    void displayMessage();
     void openUrlWithExternalTool(ExternalTool tool, const QString& target_url);
 
   private:

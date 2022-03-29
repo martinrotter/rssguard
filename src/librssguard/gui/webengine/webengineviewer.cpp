@@ -52,10 +52,6 @@ WebEnginePage* WebEngineViewer::page() const {
   return qobject_cast<WebEnginePage*>(QWebEngineView::page());
 }
 
-void WebEngineViewer::displayMessage() {
-  setHtml(m_messageContents, m_messageBaseUrl /*, QUrl::fromUserInput(INTERNAL_URL_MESSAGE)*/);
-}
-
 void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
   Skin skin = qApp->skins()->currentSkin();
   QString messages_layout;
@@ -134,7 +130,7 @@ void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* roo
   bool previously_enabled = isEnabled();
 
   setEnabled(false);
-  displayMessage();
+  setHtml(m_messageContents, m_messageBaseUrl /*, QUrl::fromUserInput(INTERNAL_URL_MESSAGE)*/);
   setEnabled(previously_enabled);
 
   page()->runJavaScript(QSL("window.scrollTo(0, 0);"));
@@ -216,15 +212,10 @@ void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
 }
 
 QWebEngineView* WebEngineViewer::createWindow(QWebEnginePage::WebWindowType type) {
-  Q_UNUSED(type)
-  int index = qApp->mainForm()->tabWidget()->addBrowser(false, false);
+  auto* viewer = new WebEngineViewer(this);
+  emit newWindowRequested(viewer);
 
-  if (index >= 0) {
-    return dynamic_cast<QWebEngineView*>(qApp->mainForm()->tabWidget()->widget(index)->webBrowser()->viewer());
-  }
-  else {
-    return nullptr;
-  }
+  return viewer;
 }
 
 void WebEngineViewer::openUrlWithExternalTool(ExternalTool tool, const QString& target_url) {
@@ -243,16 +234,15 @@ void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionReload = pageAction(QWebEnginePage::WebAction::Reload);
   browser->m_actionStop = pageAction(QWebEnginePage::WebAction::Stop);
 
-  connect(this, &WebEngineViewer::zoomFactorChanged, browser, &WebBrowser::onZoomFactorChanged);
-
   connect(this, &WebEngineViewer::loadStarted, browser, &WebBrowser::onLoadingStarted);
   connect(this, &WebEngineViewer::loadProgress, browser, &WebBrowser::onLoadingProgress);
   connect(this, &WebEngineViewer::loadFinished, browser, &WebBrowser::onLoadingFinished);
   connect(this, &WebEngineViewer::titleChanged, browser, &WebBrowser::onTitleChanged);
   connect(this, &WebEngineViewer::iconChanged, browser, &WebBrowser::onIconChanged);
   connect(this, &WebEngineViewer::urlChanged, browser, &WebBrowser::updateUrl);
+  connect(this, &WebEngineViewer::newWindowRequested, browser, &WebBrowser::newWindowRequested);
 
-  connect(page(), &WebEnginePage::windowCloseRequested, browser, &WebBrowser::closeRequested);
+  connect(page(), &WebEnginePage::windowCloseRequested, browser, &WebBrowser::windowCloseRequested);
   connect(page(), &WebEnginePage::linkHovered, browser, &WebBrowser::onLinkHovered);
 }
 
