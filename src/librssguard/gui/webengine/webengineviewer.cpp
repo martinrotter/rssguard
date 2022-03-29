@@ -227,10 +227,6 @@ QWebEngineView* WebEngineViewer::createWindow(QWebEnginePage::WebWindowType type
   }
 }
 
-void WebEngineViewer::wheelEvent(QWheelEvent* event) {
-  QWebEngineView::wheelEvent(event);
-}
-
 bool WebEngineViewer::eventFilter(QObject* object, QEvent* event) {
   Q_UNUSED(object)
 
@@ -241,11 +237,13 @@ bool WebEngineViewer::eventFilter(QObject* object, QEvent* event) {
       if (wh_event->angleDelta().y() > 0 && canZoomIn()) {
         zoomIn();
         emit zoomFactorChanged();
+
         return true;
       }
       else if (wh_event->angleDelta().y() < 0 && canZoomOut()) {
         zoomOut();
         emit zoomFactorChanged();
+
         return true;
       }
     }
@@ -287,12 +285,13 @@ void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionStop = pageAction(QWebEnginePage::WebAction::Stop);
 
   connect(this, &WebEngineViewer::zoomFactorChanged, browser, &WebBrowser::onZoomFactorChanged);
-  connect(this, &WebEngineViewer::urlChanged, browser, &WebBrowser::updateUrl);
+
   connect(this, &WebEngineViewer::loadStarted, browser, &WebBrowser::onLoadingStarted);
   connect(this, &WebEngineViewer::loadProgress, browser, &WebBrowser::onLoadingProgress);
   connect(this, &WebEngineViewer::loadFinished, browser, &WebBrowser::onLoadingFinished);
   connect(this, &WebEngineViewer::titleChanged, browser, &WebBrowser::onTitleChanged);
   connect(this, &WebEngineViewer::iconChanged, browser, &WebBrowser::onIconChanged);
+  connect(this, &WebEngineViewer::urlChanged, browser, &WebBrowser::updateUrl);
 
   connect(page(), &WebEnginePage::windowCloseRequested, browser, &WebBrowser::closeRequested);
   connect(page(), &WebEnginePage::linkHovered, browser, &WebBrowser::onLinkHovered);
@@ -332,7 +331,7 @@ void WebEngineViewer::setVerticalScrollBarPosition(double pos) {
   page()->runJavaScript(QSL("window.scrollTo(0, %1);").arg(pos));
 }
 
-void WebEngineViewer::reloadFontSettings(const QFont& fon) {
+void WebEngineViewer::applyFont(const QFont& fon) {
   auto pixel_size = QFontMetrics(fon).ascent();
 
   QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont, fon.family());

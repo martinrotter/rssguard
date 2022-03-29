@@ -10,7 +10,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/skinfactory.h"
 #include "network-web/adblock/adblockicon.h"
-#include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblockrequestinfo.h"
 #include "network-web/downloader.h"
 #include "network-web/networkfactory.h"
@@ -50,6 +49,7 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionStop->setEnabled(false);
 
   connect(this, &LiteHtmlViewer::zoomFactorChanged, browser, &WebBrowser::onZoomFactorChanged);
+
   connect(this, &LiteHtmlViewer::linkHighlighted, browser, [browser](const QUrl& url) {
     browser->onLinkHovered(url.toString());
   });
@@ -69,11 +69,14 @@ void LiteHtmlViewer::findText(const QString& text, bool backwards) {
 void LiteHtmlViewer::setUrl(const QUrl& url) {
   emit loadStarted();
   QString html_str;
+  QUrl nonconst_url = url;
   bool is_error = false;
+  auto block_result = blockedWithAdblock(url);
 
-  if (blockedWithAdblock(url)) {
+  if (block_result.m_blocked) {
     is_error = true;
-    html_str = tr("Site \"%1\" was blocked with AdBlock.").arg(url.toString());
+    nonconst_url = QUrl::fromUserInput(QSL(INTERNAL_URL_ADBLOCKED));
+    html_str = qApp->skins()->adBlockedPage(url.toString(), block_result.m_blockedByFilter);
   }
   else {
     QEventLoop loop;
@@ -97,7 +100,7 @@ void LiteHtmlViewer::setUrl(const QUrl& url) {
     }
   }
 
-  setHtml(html_str, url);
+  setHtml(html_str, nonconst_url);
 
   emit loadFinished(is_error);
 }
@@ -205,7 +208,7 @@ void LiteHtmlViewer::setVerticalScrollBarPosition(double pos) {
   verticalScrollBar()->setValue(pos);
 }
 
-void LiteHtmlViewer::reloadFontSettings(const QFont& fon) {
+void LiteHtmlViewer::applyFont(const QFont& fon) {
   QLiteHtmlWidget::setDefaultFont(fon);
 }
 
@@ -331,7 +334,7 @@ void LiteHtmlViewer::wheelEvent(QWheelEvent* event) {
   QLiteHtmlWidget::wheelEvent(event);
 }
 
-bool LiteHtmlViewer::blockedWithAdblock(const QUrl& url) {
+BlockingResult LiteHtmlViewer::blockedWithAdblock(const QUrl& url) {
   AdblockRequestInfo block_request(url);
 
   if (url.path().endsWith(QSL("css"))) {
@@ -341,17 +344,19 @@ bool LiteHtmlViewer::blockedWithAdblock(const QUrl& url) {
     block_request.setResourceType(QSL("image"));
   }
 
-  if (qApp->web()->adBlock()->block(block_request).m_blocked) {
+  auto block_result = qApp->web()->adBlock()->block(block_request);
+
+  if (block_result.m_blocked) {
     qWarningNN << LOGSEC_ADBLOCK << "Blocked request:" << QUOTE_W_SPACE_DOT(block_request.requestUrl().toString());
-    return true;
+    return block_result;
   }
   else {
-    return false;
+    return block_result;
   }
 }
 
 QByteArray LiteHtmlViewer::handleResource(const QUrl& url) {
-  if (blockedWithAdblock(url)) {
+  if (blockedWithAdblock(url).m_blocked) {
     return {};
   }
   else {

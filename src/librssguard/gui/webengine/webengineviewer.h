@@ -30,7 +30,7 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
     virtual void clear();
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);
-    virtual void reloadFontSettings(const QFont& fon);
+    virtual void applyFont(const QFont& fon);
     virtual bool canZoomIn() const;
     virtual bool canZoomOut() const;
     virtual qreal zoomFactor() const;
@@ -46,7 +46,6 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
   protected:
     virtual QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
     virtual void contextMenuEvent(QContextMenuEvent* event);
-    virtual void wheelEvent(QWheelEvent* event);
     virtual bool event(QEvent* event);
     virtual bool eventFilter(QObject* object, QEvent* event);
 

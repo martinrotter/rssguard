@@ -6,11 +6,16 @@
 class WebBrowser;
 class RootItem;
 
-// Abstract class to define interface for web viewers.
+// Interface for web/article viewers.
 class WebViewer {
   public:
 
     // Performs necessary steps to make viewer work with browser.
+    // NOTE: Each implementor must do this in this method:
+    //   1. Initialize all WebBrowser QActions and maintain their "enabled" state all the time.
+    //   2. Connect to all slots of WebBrowser to ensure updating of title/icon, notifications
+    //      of loading start/progress/finish, link highlight etc.
+    //   3. Viewer must set WebBrowser to be event filter at some point.
     virtual void bindToBrowser(WebBrowser* browser) = 0;
 
     // Perform inline search.
@@ -32,7 +37,7 @@ class WebViewer {
     // Clears displayed URL.
     virtual void clear() = 0;
 
-    // Displays all messages;
+    // Displays all messages and ensures that vertical scrollbar is set to 0 (scrolled to top).
     virtual void loadMessages(const QList<Message>& messages, RootItem* root) = 0;
 
     // Vertical scrollbar changer.
@@ -40,14 +45,14 @@ class WebViewer {
     virtual void setVerticalScrollBarPosition(double pos) = 0;
 
     // Apply font.
-    virtual void reloadFontSettings(const QFont& fon) = 0;
+    virtual void applyFont(const QFont& fon) = 0;
 
     // Zooming.
     virtual bool canZoomIn() const = 0;
     virtual bool canZoomOut() const = 0;
-    virtual qreal zoomFactor() const = 0;
     virtual void zoomIn() = 0;
     virtual void zoomOut() = 0;
+    virtual qreal zoomFactor() const = 0;
     virtual void setZoomFactor(qreal zoom_factor) = 0;
 };
 

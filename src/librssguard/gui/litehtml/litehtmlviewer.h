@@ -6,6 +6,8 @@
 #include "3rd-party/qlitehtml/qlitehtmlwidget.h"
 #include "gui/webviewer.h"
 
+#include "network-web/adblock/adblockmanager.h"
+
 class Downloader;
 class QWheelEvent;
 class QMenu;
@@ -27,7 +29,7 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
     virtual void loadMessages(const QList<Message>& messages, RootItem* root);
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);
-    virtual void reloadFontSettings(const QFont& fon);
+    virtual void applyFont(const QFont& fon);
     virtual bool canZoomIn() const;
     virtual bool canZoomOut() const;
     virtual qreal zoomFactor() const;
@@ -52,7 +54,7 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
     virtual void wheelEvent(QWheelEvent* event);
 
   private:
-    bool blockedWithAdblock(const QUrl& url);
+    BlockingResult blockedWithAdblock(const QUrl& url);
     QByteArray handleResource(const QUrl& url);
 
   private:

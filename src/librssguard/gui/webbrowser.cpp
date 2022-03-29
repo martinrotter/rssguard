@@ -115,7 +115,7 @@ void WebBrowser::reloadFontSettings() {
   fon.fromString(qApp->settings()->value(GROUP(Messages),
                                          SETTING(Messages::PreviewerFontStandard)).toString());
 
-  m_webView->reloadFontSettings(fon);
+  m_webView->applyFont(fon);
 }
 
 void WebBrowser::onZoomFactorChanged() {
