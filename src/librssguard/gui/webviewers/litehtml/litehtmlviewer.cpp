@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/litehtml/litehtmlviewer.h"
+#include "gui/webviewers/litehtml/litehtmlviewer.h"
 
 #include "core/message.h"
 #include "gui/dialogs/formmain.h"

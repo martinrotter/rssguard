@@ -4,13 +4,13 @@
 
 #include "database/databasequeries.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/litehtml/litehtmlviewer.h" // QLiteHtml-based web browsing.
 #include "gui/messagebox.h"
 #include "gui/reusable/discoverfeedsbutton.h"
 #include "gui/reusable/locationlineedit.h"
 #include "gui/reusable/searchtextwidget.h"
 #include "gui/tabwidget.h"
-#include "gui/webviewer.h"
+#include "gui/webviewers/litehtml/litehtmlviewer.h" // QLiteHtml-based web browsing.
+#include "gui/webviewers/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
@@ -19,7 +19,7 @@
 #include "services/abstract/serviceroot.h"
 
 #if defined(USE_WEBENGINE)
-#include "gui/webengine/webengineviewer.h" // WebEngine-based web browsing.
+#include "gui/webviewers/webengine/webengineviewer.h" // WebEngine-based web browsing.
 #endif
 
 #include <QKeyEvent>

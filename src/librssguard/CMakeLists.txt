@@ -165,7 +165,7 @@ set(SOURCES
   gui/tabcontent.h
   gui/tabwidget.cpp
   gui/tabwidget.h
-  gui/webviewer.h
+  gui/webviewers/webviewer.h
   gui/toolbars/basetoolbar.cpp
   gui/toolbars/basetoolbar.h
   gui/toolbars/feedstoolbar.cpp
@@ -392,7 +392,6 @@ set(SOURCES
   services/tt-rss/ttrssserviceentrypoint.h
   services/tt-rss/ttrssserviceroot.cpp
   services/tt-rss/ttrssserviceroot.h
-
   gui/reusable/discoverfeedsbutton.cpp
   gui/reusable/discoverfeedsbutton.h
   gui/reusable/locationlineedit.cpp
@@ -556,8 +555,8 @@ if(USE_WEBENGINE)
     # WebEngine-based web (and message) browser.
     network-web/webengine/webenginepage.cpp
     network-web/webengine/webenginepage.h
-    gui/webengine/webengineviewer.cpp
-    gui/webengine/webengineviewer.h
+    gui/webviewers/webengine/webengineviewer.cpp
+    gui/webviewers/webengine/webengineviewer.h
     network-web/webengine/networkurlinterceptor.cpp
     network-web/webengine/networkurlinterceptor.h
     network-web/webengine/urlinterceptor.h
@@ -568,8 +567,8 @@ endif()
 
 list(APPEND SOURCES
   # Lite non-WebEngine message browser.
-  gui/litehtml/litehtmlviewer.h
-  gui/litehtml/litehtmlviewer.cpp
+  gui/webviewers/litehtml/litehtmlviewer.h
+  gui/webviewers/litehtml/litehtmlviewer.cpp
 )
 
 # Deal with .ui files.
@@ -695,7 +694,7 @@ endif()
 
 # QLiteHtml.
 target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml)
-target_compile_definitions(rssguard PRIVATE QLITEHTML_LIBRARY)
+target_compile_definitions(rssguard PRIVATE QLITEHTML_STATIC_LIBRARY)
 
 # Qt.
 target_link_libraries(rssguard PUBLIC

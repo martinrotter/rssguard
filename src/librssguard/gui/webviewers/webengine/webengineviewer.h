@@ -5,7 +5,7 @@
 
 #include <QWebEngineView>
 
-#include "gui/webviewer.h"
+#include "gui/webviewers/webviewer.h"
 
 #include "core/message.h"
 #include "miscellaneous/externaltool.h"

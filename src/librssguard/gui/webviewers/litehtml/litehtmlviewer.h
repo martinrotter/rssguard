@@ -4,7 +4,7 @@
 #define LITEHTMLVIEWER_H
 
 #include "3rd-party/qlitehtml/qlitehtmlwidget.h"
-#include "gui/webviewer.h"
+#include "gui/webviewers/webviewer.h"
 
 #include "network-web/adblock/adblockmanager.h"
 
