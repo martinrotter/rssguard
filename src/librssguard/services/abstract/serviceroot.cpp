@@ -13,6 +13,7 @@
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/gui/custommessagepreviewer.h"
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
@@ -130,6 +131,10 @@ void ServiceRoot::start(bool freshly_activated) {
 }
 
 void ServiceRoot::stop() {}
+
+CustomMessagePreviewer* ServiceRoot::customMessagePreviewer() {
+  return nullptr;
+}
 
 void ServiceRoot::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;

@@ -250,6 +250,8 @@ set(SOURCES
   services/abstract/gui/formcategorydetails.h
   services/abstract/gui/formfeeddetails.cpp
   services/abstract/gui/formfeeddetails.h
+  services/abstract/gui/custommessagepreviewer.h
+  services/abstract/gui/custommessagepreviewer.cpp
   services/abstract/importantnode.cpp
   services/abstract/importantnode.h
   services/abstract/label.cpp

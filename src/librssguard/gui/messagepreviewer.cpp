@@ -10,6 +10,7 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "network-web/webfactory.h"
+#include "services/abstract/gui/custommessagepreviewer.h"
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
@@ -108,12 +109,22 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
         return it->kind() == RootItem::Kind::Feed && it->customId() == msg_feed_id;
       })->toFeed();
 
+      // TODO: tady místo na otevření skrze custom previewer, pokud
+      // ho root má.
+
       if (feed != nullptr && feed->openArticlesDirectly() && !m_message.m_url.isEmpty()) {
         m_msgBrowser->setVerticalScrollBarPosition(0.0);
         m_msgBrowser->loadUrl(m_message.m_url);
       }
       else {
-        m_msgBrowser->loadMessages({ message }, m_root);
+        CustomMessagePreviewer* custom_previewer = root->getParentServiceRoot()->customMessagePreviewer();
+
+        if (custom_previewer != nullptr) {
+          custom_previewer->loadMessage(message, m_root);
+        }
+        else {
+          m_msgBrowser->loadMessages({ message }, m_root);
+        }
       }
     }
   }
