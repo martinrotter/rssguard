@@ -42,8 +42,9 @@ void MessagePreviewer::createConnections() {
 MessagePreviewer::MessagePreviewer(QWidget* parent)
   : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)),
   m_separator(nullptr), m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
-  m_txtMessage = new WebBrowser(nullptr, this);
+  m_msgBrowser = new WebBrowser(nullptr, this);
 
+  m_actionSwitchImportance->setCheckable(true);
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
 
   // NOTE: To make sure that if we have many labels and short message
@@ -51,32 +52,31 @@ MessagePreviewer::MessagePreviewer(QWidget* parent)
   m_toolBar->setSizePolicy(m_toolBar->sizePolicy().horizontalPolicy(), QSizePolicy::Policy::MinimumExpanding);
 
   m_layout->setContentsMargins(3, 3, 3, 3);
-  m_layout->addWidget(m_txtMessage, 0, 1, 1, 1);
+  m_layout->addWidget(m_msgBrowser, 0, 1, 1, 1);
   m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
 
   createConnections();
-  m_actionSwitchImportance->setCheckable(true);
   clear();
 }
 
 void MessagePreviewer::reloadFontSettings() {
-  m_txtMessage->reloadFontSettings();
+  m_msgBrowser->reloadFontSettings();
 }
 
 void MessagePreviewer::setToolbarsVisible(bool visible) {
   m_toolBar->setVisible(visible);
-  m_txtMessage->setNavigationBarVisible(visible);
+  m_msgBrowser->setNavigationBarVisible(visible);
 
   qApp->settings()->setValue(GROUP(GUI), GUI::MessageViewerToolbarsVisible, visible);
 }
 
 WebBrowser* MessagePreviewer::webBrowser() const {
-  return m_txtMessage;
+  return m_msgBrowser;
 }
 
 void MessagePreviewer::clear() {
   updateLabels(true);
-  m_txtMessage->clear(false);
+  m_msgBrowser->clear(false);
   hide();
   m_root.clear();
   m_message = Message();
@@ -87,7 +87,7 @@ void MessagePreviewer::hideToolbar() {
 }
 
 void MessagePreviewer::loadUrl(const QString& url) {
-  m_txtMessage->loadUrl(url);
+  m_msgBrowser->loadUrl(url);
 }
 
 void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
@@ -100,11 +100,8 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
     updateButtons();
     updateLabels(false);
     show();
-    m_actionSwitchImportance->setChecked(m_message.m_isImportant);
 
     if (!same_message) {
-      m_txtMessage->setVerticalScrollBarPosition(0.0);
-
       const QString msg_feed_id = message.m_feedId;
       const auto* feed = root->getParentServiceRoot()->getItemFromSubTree(
         [msg_feed_id](const RootItem* it) {
@@ -112,10 +109,11 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
       })->toFeed();
 
       if (feed != nullptr && feed->openArticlesDirectly() && !m_message.m_url.isEmpty()) {
-        m_txtMessage->loadUrl(m_message.m_url);
+        m_msgBrowser->setVerticalScrollBarPosition(0.0);
+        m_msgBrowser->loadUrl(m_message.m_url);
       }
       else {
-        m_txtMessage->loadMessages({ message }, m_root);
+        m_msgBrowser->loadMessages({ message }, m_root);
       }
     }
   }
@@ -191,6 +189,7 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
 }
 
 void MessagePreviewer::updateButtons() {
+  m_actionSwitchImportance->setChecked(m_message.m_isImportant);
   m_actionMarkRead->setEnabled(!m_message.m_isRead);
   m_actionMarkUnread->setEnabled(m_message.m_isRead);
 }

@@ -52,8 +52,6 @@ class MessagePreviewer : public QWidget {
     void markMessageAsReadUnread(RootItem::ReadStatus read);
     void switchMessageImportance(bool checked);
 
-  protected:
-
   signals:
     void markMessageRead(int id, RootItem::ReadStatus read);
     void markMessageImportant(int id, RootItem::Importance important);
@@ -65,7 +63,7 @@ class MessagePreviewer : public QWidget {
 
     QGridLayout* m_layout;
     QToolBar* m_toolBar;
-    WebBrowser* m_txtMessage;
+    WebBrowser* m_msgBrowser;
     Message m_message;
     QPointer<RootItem> m_root;
     QAction* m_actionMarkRead;

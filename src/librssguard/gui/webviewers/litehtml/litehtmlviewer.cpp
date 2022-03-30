@@ -29,6 +29,8 @@ LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent), m_dow
     return handleResource(url);
   });
 
+  setFrameShape(QFrame::Shape::NoFrame);
+
   connect(this, &LiteHtmlViewer::linkClicked, this, &LiteHtmlViewer::onLinkClicked);
   connect(this, &LiteHtmlViewer::copyAvailable, this, &LiteHtmlViewer::selectedTextChanged);
   connect(this, &LiteHtmlViewer::contextMenuRequested, this, &LiteHtmlViewer::showContextMenu);
