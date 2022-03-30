@@ -20,6 +20,7 @@
 #include <QKeyEvent>
 #include <QPainter>
 #include <QScrollBar>
+#include <QStackedLayout>
 #include <QToolBar>
 #include <QToolTip>
 
@@ -41,22 +42,28 @@ void MessagePreviewer::createConnections() {
 }
 
 MessagePreviewer::MessagePreviewer(QWidget* parent)
-  : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)),
-  m_separator(nullptr), m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
-  m_msgBrowser = new WebBrowser(nullptr, this);
+  : QWidget(parent), m_mainLayout(new QGridLayout(this)), m_viewerLayout(new QStackedLayout(this)),
+  m_toolBar(new QToolBar(this)), m_msgBrowser(new WebBrowser(nullptr, this)), m_separator(nullptr),
+  m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
 
-  m_actionSwitchImportance->setCheckable(true);
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
 
   // NOTE: To make sure that if we have many labels and short message
   // that whole toolbar is visible.
   m_toolBar->setSizePolicy(m_toolBar->sizePolicy().horizontalPolicy(), QSizePolicy::Policy::MinimumExpanding);
 
-  m_layout->setContentsMargins(3, 3, 3, 3);
-  m_layout->addWidget(m_msgBrowser, 0, 1, 1, 1);
-  m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
+  // This layout holds standard article browser on index 0
+  // and optional custom browser on index 1.
+  m_viewerLayout->addWidget(m_msgBrowser);
+
+  m_mainLayout->setContentsMargins(3, 3, 3, 3);
+  m_mainLayout->addLayout(m_viewerLayout, 0, 1, 1, 1);
+  m_mainLayout->addWidget(m_toolBar, 0, 0, -1, 1);
 
   createConnections();
+
+  m_actionSwitchImportance->setCheckable(true);
+
   clear();
 }
 
@@ -77,6 +84,7 @@ WebBrowser* MessagePreviewer::webBrowser() const {
 
 void MessagePreviewer::clear() {
   updateLabels(true);
+  ensureDefaultBrowserVisible();
   m_msgBrowser->clear(false);
   hide();
   m_root.clear();
@@ -88,6 +96,7 @@ void MessagePreviewer::hideToolbar() {
 }
 
 void MessagePreviewer::loadUrl(const QString& url) {
+  ensureDefaultBrowserVisible();
   m_msgBrowser->loadUrl(url);
 }
 
@@ -109,10 +118,9 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
         return it->kind() == RootItem::Kind::Feed && it->customId() == msg_feed_id;
       })->toFeed();
 
-      // TODO: tady místo na otevření skrze custom previewer, pokud
-      // ho root má.
-
       if (feed != nullptr && feed->openArticlesDirectly() && !m_message.m_url.isEmpty()) {
+        ensureDefaultBrowserVisible();
+
         m_msgBrowser->setVerticalScrollBarPosition(0.0);
         m_msgBrowser->loadUrl(m_message.m_url);
       }
@@ -120,9 +128,24 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
         CustomMessagePreviewer* custom_previewer = root->getParentServiceRoot()->customMessagePreviewer();
 
         if (custom_previewer != nullptr) {
+          auto* current_custom_previewer = m_viewerLayout->widget(1);
+
+          if (current_custom_previewer != nullptr) {
+            if (current_custom_previewer != custom_previewer) {
+              m_viewerLayout->removeWidget(current_custom_previewer);
+              m_viewerLayout->addWidget(custom_previewer);
+            }
+          }
+          else {
+            m_viewerLayout->addWidget(custom_previewer);
+          }
+
+          m_viewerLayout->setCurrentIndex(1);
           custom_previewer->loadMessage(message, m_root);
         }
         else {
+          ensureDefaultBrowserVisible();
+
           m_msgBrowser->loadMessages({ message }, m_root);
         }
       }
@@ -247,6 +270,14 @@ void MessagePreviewer::updateLabels(bool only_clear) {
       m_btnLabels.append({ btn_label, act_label });
     }
   }
+}
+
+void MessagePreviewer::ensureDefaultBrowserVisible() {
+  if (m_viewerLayout->count() > 1) {
+    m_viewerLayout->removeWidget(m_viewerLayout->widget(1));
+  }
+
+  m_viewerLayout->setCurrentIndex(0);
 }
 
 LabelButton::LabelButton(QWidget* parent) : QToolButton(parent), m_label(nullptr) {}

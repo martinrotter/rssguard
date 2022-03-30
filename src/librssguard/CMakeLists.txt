@@ -295,6 +295,8 @@ set(SOURCES
   services/gmail/gui/formeditgmailaccount.h
   services/gmail/gui/gmailaccountdetails.cpp
   services/gmail/gui/gmailaccountdetails.h
+  services/gmail/gui/emailpreviewer.h
+  services/gmail/gui/emailpreviewer.cpp
   services/greader/definitions.h
   services/greader/greaderentrypoint.cpp
   services/greader/greaderentrypoint.h
@@ -541,6 +543,7 @@ set(UI_FILES
   services/gmail/gui/formaddeditemail.ui
   services/gmail/gui/formdownloadattachment.ui
   services/gmail/gui/gmailaccountdetails.ui
+  services/gmail/gui/emailpreviewer.ui
   services/greader/gui/greaderaccountdetails.ui
   services/newsblur/gui/newsbluraccountdetails.ui
   services/owncloud/gui/owncloudaccountdetails.ui

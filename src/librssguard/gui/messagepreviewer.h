@@ -12,6 +12,7 @@
 #include <QPointer>
 
 class QGridLayout;
+class QStackedLayout;
 class QToolBar;
 class WebBrowser;
 
@@ -60,8 +61,10 @@ class MessagePreviewer : public QWidget {
     void createConnections();
     void updateButtons();
     void updateLabels(bool only_clear);
+    void ensureDefaultBrowserVisible();
 
-    QGridLayout* m_layout;
+    QGridLayout* m_mainLayout;
+    QStackedLayout* m_viewerLayout;
     QToolBar* m_toolBar;
     WebBrowser* m_msgBrowser;
     Message m_message;

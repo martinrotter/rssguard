@@ -12,6 +12,7 @@
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailentrypoint.h"
 #include "services/gmail/gmailnetworkfactory.h"
+#include "services/gmail/gui/emailpreviewer.h"
 #include "services/gmail/gui/formaddeditemail.h"
 #include "services/gmail/gui/formdownloadattachment.h"
 #include "services/gmail/gui/formeditgmailaccount.h"
@@ -95,6 +96,14 @@ QList<Message> GmailServiceRoot::obtainNewMessages(Feed* feed,
 
 bool GmailServiceRoot::wantsBaggedIdsOfExistingMessages() const {
   return true;
+}
+
+CustomMessagePreviewer* GmailServiceRoot::customMessagePreviewer() {
+  if (m_emailPreview.isNull()) {
+    m_emailPreview.reset(new EmailPreviewer());
+  }
+
+  return m_emailPreview.data();
 }
 
 bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
