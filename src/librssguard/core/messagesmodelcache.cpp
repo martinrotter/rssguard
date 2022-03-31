@@ -2,8 +2,6 @@
 
 #include "core/messagesmodelcache.h"
 
-#include "miscellaneous/textfactory.h"
-
 MessagesModelCache::MessagesModelCache(QObject* parent) : QObject(parent) {}
 
 void MessagesModelCache::setData(const QModelIndex& index, const QVariant& value, const QSqlRecord& record) {

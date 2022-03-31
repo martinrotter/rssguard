@@ -50,6 +50,7 @@
     <file>./graphics/Breeze/actions/22/list-add.svg</file>
     <file>./graphics/Breeze/actions/22/list-remove.svg</file>
     <file>./graphics/Breeze/actions/32/mail-attachment.svg</file>
+    <file>./graphics/Breeze/actions/32/mail-forward.svg</file>
     <file>./graphics/Breeze/actions/symbolic/mail-inbox-symbolic.svg</file>
     <file>./graphics/Breeze/actions/32/mail-mark-important.svg</file>
     <file>./graphics/Breeze/actions/32/mail-mark-junk.svg</file>
@@ -125,6 +126,7 @@
     <file>./graphics/Breeze Dark/actions/22/list-add.svg</file>
     <file>./graphics/Breeze Dark/actions/22/list-remove.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-attachment.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/mail-forward.svg</file>
     <file>./graphics/Breeze Dark/actions/symbolic/mail-inbox-symbolic.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-mark-important.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-mark-junk.svg</file>
@@ -198,6 +200,7 @@
     <file>./graphics/Faenza/actions/64/list-add.png</file>
     <file>./graphics/Faenza/actions/64/list-remove.png</file>
     <file>./graphics/Faenza/actions/64/mail-attachment.png</file>
+    <file>./graphics/Faenza/actions/64/mail-forward.png</file>
     <file>./graphics/Faenza/actions/64/mail-inbox.png</file>
     <file>./graphics/Faenza/actions/64/mail-mark-important.png</file>
     <file>./graphics/Faenza/actions/64/mail-mark-junk.png</file>
@@ -277,6 +280,7 @@
     <file>./graphics/Numix/22/actions/list-add.svg</file>
     <file>./graphics/Numix/22/actions/list-remove.svg</file>
     <file>./graphics/Numix/22/actions/mail-attachment.svg</file>
+    <file>./graphics/Numix/22/actions/mail-forward.svg</file>
     <file>./graphics/Numix/22/places/mail-inbox.svg</file>
     <file>./graphics/Numix/22/actions/mail-mark-important.svg</file>
     <file>./graphics/Numix/22/actions/mail-mark-junk.svg</file>

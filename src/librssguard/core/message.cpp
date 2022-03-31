@@ -10,9 +10,6 @@
 #include <QDebug>
 #include <QFlags>
 #include <QRegularExpression>
-#include <QSqlDatabase>
-#include <QSqlError>
-#include <QSqlQuery>
 #include <QUrl>
 #include <QVariant>
 #include <QVector>

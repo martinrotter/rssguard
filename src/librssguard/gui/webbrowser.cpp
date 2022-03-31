@@ -9,7 +9,6 @@
 #include "gui/reusable/locationlineedit.h"
 #include "gui/reusable/searchtextwidget.h"
 #include "gui/tabwidget.h"
-#include "gui/webviewers/litehtml/litehtmlviewer.h" // QLiteHtml-based web browsing.
 #include "gui/webviewers/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -17,10 +16,6 @@
 #include "network-web/readability.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
-
-#if defined(USE_WEBENGINE)
-#include "gui/webviewers/webengine/webengineviewer.h" // WebEngine-based web browsing.
-#endif
 
 #include <QKeyEvent>
 #include <QScrollBar>
@@ -43,16 +38,8 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent) : TabContent(parent),
                                     tr("View website in reader mode"),
                                     this)) {
   if (m_webView == nullptr) {
-#if !defined(USE_WEBENGINE)
-    m_webView = new LiteHtmlViewer(this);
-#else
-    if (qApp->forcedNoWebEngine()) {
-      m_webView = new LiteHtmlViewer(this);
-    }
-    else {
-      m_webView = new WebEngineViewer(this);
-    }
-#endif
+    m_webView = qApp->createWebView();
+    dynamic_cast<QWidget*>(m_webView)->setParent(this);
   }
 
   // Initialize the components and layout.
@@ -98,6 +85,10 @@ void WebBrowser::loadUrl(const QUrl& url) {
   if (url.isValid()) {
     m_webView->setUrl(url);
   }
+}
+
+void WebBrowser::setHtml(const QString& html, const QUrl& base_url) {
+  m_webView->setHtml(html, base_url);
 }
 
 WebBrowser::~WebBrowser() {

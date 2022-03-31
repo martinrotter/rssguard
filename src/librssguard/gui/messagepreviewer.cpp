@@ -14,6 +14,7 @@
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
+#include "services/gmail/gui/emailpreviewer.h"
 
 #include <QCheckBox>
 #include <QGridLayout>
@@ -141,7 +142,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
           }
 
           m_viewerLayout->setCurrentIndex(1);
-          custom_previewer->loadMessage(message, m_root);
+          custom_previewer->loadMessage(message, root);
         }
         else {
           ensureDefaultBrowserVisible();

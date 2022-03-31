@@ -43,6 +43,7 @@ class QWebEngineDownloadItem;
 
 class WebFactory;
 class NotificationFactory;
+class WebViewer;
 
 #if defined(Q_OS_WIN)
 struct ITaskbarList4;
@@ -159,6 +160,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
                         const GuiMessageDestination& dest = {},
                         const GuiAction& action = {},
                         QWidget* parent = nullptr);
+
+    WebViewer* createWebView();
 
 #if defined(USE_WEBENGINE)
     bool forcedNoWebEngine() const;

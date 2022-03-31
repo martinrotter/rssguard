@@ -14,6 +14,7 @@ class CustomMessagePreviewer : public QWidget {
 
   public:
     explicit CustomMessagePreviewer(QWidget* parent = nullptr);
+    virtual ~CustomMessagePreviewer();
 
   public:
 

@@ -11,8 +11,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
-DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent)
-{}
+DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent) {}
 
 void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
                                           int source_db_schema_version,

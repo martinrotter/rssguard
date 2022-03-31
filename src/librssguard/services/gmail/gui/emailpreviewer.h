@@ -1,7 +1,11 @@
+// For license of this file, see <project-root-folder>/LICENSE.md.
+
 #ifndef EMAILPREVIEWER_H
 #define EMAILPREVIEWER_H
 
 #include "services/abstract/gui/custommessagepreviewer.h"
+
+#include "gui/webbrowser.h"
 
 #include "ui_emailpreviewer.h"
 
@@ -17,6 +21,7 @@ class EmailPreviewer : public CustomMessagePreviewer {
 
   private:
     Ui::EmailPreviewer m_ui;
+    QScopedPointer<WebBrowser> m_webView;
 };
 
 #endif // EMAILPREVIEWER_H

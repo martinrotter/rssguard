@@ -17,10 +17,8 @@
 #include <QDebug>
 #include <QJSEngine>
 #include <QMutexLocker>
-#include <QRegularExpression>
 #include <QString>
 #include <QThread>
-#include <QUrl>
 
 FeedDownloader::FeedDownloader()
   : QObject(), m_isCacheSynchronizationRunning(false), m_stopCacheSynchronization(false), m_mutex(new QMutex()), m_feedsUpdated(0), m_feedsOriginalCount(0) {

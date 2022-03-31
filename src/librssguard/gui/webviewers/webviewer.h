@@ -3,12 +3,15 @@
 
 #include "core/message.h"
 
+#include <QUrl>
+
 class WebBrowser;
 class RootItem;
 
 // Interface for web/article viewers.
 class WebViewer {
   public:
+    virtual ~WebViewer();
 
     // Performs necessary steps to make viewer work with browser.
     // NOTE: Each implementor must do this in this method:
@@ -55,5 +58,7 @@ class WebViewer {
     virtual qreal zoomFactor() const = 0;
     virtual void setZoomFactor(qreal zoom_factor) = 0;
 };
+
+inline WebViewer::~WebViewer() {}
 
 #endif // WEBVIEWER_H

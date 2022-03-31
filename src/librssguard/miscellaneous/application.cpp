@@ -11,11 +11,14 @@
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/toolbars/statusbar.h"
+#include "gui/webviewers/litehtml/litehtmlviewer.h" // QLiteHtml-based web browsing.
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/notificationfactory.h"
+#include "network-web/adblock/adblockicon.h"
+#include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
@@ -38,10 +41,8 @@
 #include <QDBusMessage>
 #endif
 
-#include "network-web/adblock/adblockicon.h"
-#include "network-web/adblock/adblockmanager.h"
-
 #if defined(USE_WEBENGINE)
+#include "gui/webviewers/webengine/webengineviewer.h" // WebEngine-based web browsing.
 #include "network-web/webengine/networkurlinterceptor.h"
 
 #if QT_VERSION_MAJOR == 6
@@ -610,6 +611,19 @@ void Application::showGuiMessage(Notification::Event event,
   else {
     qDebugNN << LOGSEC_CORE << "Silencing GUI message:" << QUOTE_W_SPACE_DOT(msg.m_message);
   }
+}
+
+WebViewer* Application::createWebView() {
+#if !defined(USE_WEBENGINE)
+  return new LiteHtmlViewer();
+#else
+  if (forcedNoWebEngine()) {
+    return new LiteHtmlViewer();
+  }
+  else {
+    return new WebEngineViewer();
+  }
+#endif
 }
 
 void Application::onCommitData(QSessionManager& manager) {

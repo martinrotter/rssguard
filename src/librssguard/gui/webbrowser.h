@@ -10,6 +10,7 @@
 
 #include <QPointer>
 #include <QToolBar>
+#include <QUrl>
 
 class QToolButton;
 class QVBoxLayout;
@@ -46,6 +47,7 @@ class WebBrowser : public TabContent {
     void clear(bool also_hide);
     void loadUrl(const QString& url);
     void loadUrl(const QUrl& url);
+    void setHtml(const QString& html, const QUrl& base_url = {});
     void loadMessages(const QList<Message>& messages, RootItem* root);
     void setNavigationBarVisible(bool visible);
 
