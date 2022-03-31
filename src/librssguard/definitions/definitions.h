@@ -175,7 +175,6 @@
 #define INTERNAL_URL_BLANK                    "http://rssguard.blank"
 #define INTERNAL_URL_ADBLOCKED                "http://rssguard.adblocked"
 #define INTERNAL_URL_MESSAGE_HOST             "rssguard.message"
-#define INTERNAL_URL_PASSATTACHMENT           "http://rssguard.passattachment"
 
 #define FEED_REGEX_MATCHER                    "<link[^>]+type=\"application\\/(?:atom\\+xml|rss\\+xml|feed\\+json|json)\"[^>]*>"
 #define FEED_HREF_REGEX_MATCHER               "href=\"([^\"]+)\""

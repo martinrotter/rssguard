@@ -60,12 +60,6 @@ bool WebEnginePage::acceptNavigationRequest(const QUrl& url, NavigationType type
     }
   }
 
-  if (url.toString().startsWith(QSL(INTERNAL_URL_PASSATTACHMENT)) &&
-      root != nullptr &&
-      root->getParentServiceRoot()->downloadAttachmentOnMyOwn(url)) {
-    return false;
-  }
-
   /*if (url.host() == INTERNAL_URL_MESSAGE_HOST) {
      setHtml(view()->messageContents(), QUrl(INTERNAL_URL_MESSAGE));
      return true;

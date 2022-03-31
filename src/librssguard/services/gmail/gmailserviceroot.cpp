@@ -106,25 +106,6 @@ CustomMessagePreviewer* GmailServiceRoot::customMessagePreviewer() {
   return m_emailPreview.data();
 }
 
-bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
-  QString str_url = url.toString();
-  QString attachment_id = str_url.mid(str_url.indexOf(QL1C('?')) + 1);
-  QStringList parts = attachment_id.split(QSL(GMAIL_ATTACHMENT_SEP));
-  QString file = QFileDialog::getSaveFileName(qApp->mainFormWidget(), tr("Select attachment destination file"),
-                                              qApp->homeFolder() + QDir::separator() + parts.at(0));
-
-  if (!file.isEmpty() && parts.size() == 3) {
-    Downloader* down = network()->downloadAttachment(parts.at(1), parts.at(2), networkProxy());
-    FormDownloadAttachment form(file, down, qApp->mainFormWidget());
-
-    form.exec();
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
 QList<QAction*> GmailServiceRoot::contextMenuMessagesList(const QList<Message>& messages) {
   if (messages.size() == 1) {
     m_replyToMessage = messages.at(0);

@@ -19,7 +19,6 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void setNetwork(GmailNetworkFactory* network);
     GmailNetworkFactory* network() const;
 
-    virtual bool downloadAttachmentOnMyOwn(const QUrl& url) const;
     virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
     virtual QList<QAction*> serviceMenu();
     virtual bool isSyncable() const;

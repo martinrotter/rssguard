@@ -61,7 +61,6 @@ class ServiceRoot : public RootItem {
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
     virtual bool markAsReadUnread(ReadStatus status);
-    virtual bool downloadAttachmentOnMyOwn(const QUrl& url) const;
     virtual QList<Message> undeletedMessages() const;
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;

@@ -72,11 +72,6 @@ RecycleBin* ServiceRoot::recycleBin() const {
   return m_recycleBin;
 }
 
-bool ServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
-  Q_UNUSED(url)
-  return false;
-}
-
 QList<QAction*> ServiceRoot::contextMenuFeedsList() {
   auto specific = serviceMenu();
   auto base = RootItem::contextMenuFeedsList();

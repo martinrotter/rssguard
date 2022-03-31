@@ -62,16 +62,7 @@ void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* roo
     QString enclosure_images;
 
     for (const Enclosure& enclosure : message.m_enclosures) {
-      QString enc_url;
-
-      if (!enclosure.m_url.contains(QRegularExpression(QSL("^(http|ftp|\\/)")))) {
-        enc_url = QSL(INTERNAL_URL_PASSATTACHMENT) + QL1S("/?") + enclosure.m_url;
-      }
-      else {
-        enc_url = enclosure.m_url;
-      }
-
-      enc_url = QUrl::fromPercentEncoding(enc_url.toUtf8());
+      QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
 
       enclosures += skin.m_enclosureMarkup.arg(enc_url,
                                                QSL("&#129527;"),

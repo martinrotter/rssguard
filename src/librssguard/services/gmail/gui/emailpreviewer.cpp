@@ -14,6 +14,21 @@ EmailPreviewer::EmailPreviewer(QWidget* parent) : CustomMessagePreviewer(parent)
   m_ui.m_btnReply->setIcon(qApp->icons()->fromTheme(QSL("mail-reply-sender")));
 
   m_webView->setNavigationBarVisible(false);
+
+  // TODO: stahovani attachmentu
+
+  /*
+     if (!file.isEmpty() && parts.size() == 3) {
+     Downloader* down = network()->downloadAttachment(parts.at(1), parts.at(2), networkProxy());
+     FormDownloadAttachment form(file, down, qApp->mainFormWidget());
+
+     form.exec();
+     return true;
+     }
+     else {
+     return false;
+     }
+   */
 }
 
 EmailPreviewer::~EmailPreviewer() {
