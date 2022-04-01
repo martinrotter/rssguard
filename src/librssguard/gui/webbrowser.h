@@ -16,6 +16,7 @@ class QToolButton;
 class QVBoxLayout;
 class QHBoxLayout;
 class QProgressBar;
+class QWidgetAction;
 class QMenu;
 class QLabel;
 class TabWidget;
@@ -63,7 +64,7 @@ class WebBrowser : public TabContent {
     void onLoadingFinished(bool success);
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
-    void onLinkHovered(const QUrl &url);
+    void onLinkHovered(const QUrl& url);
     void newWindowRequested(WebViewer* viewer);
 
     void readabilePage();
@@ -85,7 +86,9 @@ class WebBrowser : public TabContent {
     WebViewer* m_webView;
     SearchTextWidget* m_searchWidget;
     LocationLineEdit* m_txtLocation;
+    QAction* m_txtLocationAction;
     DiscoverFeedsButton* m_btnDiscoverFeeds;
+    QWidgetAction* m_btnDiscoverFeedsAction;
     QProgressBar* m_loadingProgress;
     QAction* m_actionBack;
     QAction* m_actionForward;

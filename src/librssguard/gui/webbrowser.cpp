@@ -92,6 +92,9 @@ void WebBrowser::setHtml(const QString& html, const QUrl& base_url) {
 }
 
 WebBrowser::~WebBrowser() {
+  m_toolBar->removeAction(m_txtLocationAction);
+  m_toolBar->removeAction(m_btnDiscoverFeedsAction);
+
   // Delete members. Do not use scoped pointers here.
   delete m_layout;
 }
@@ -276,12 +279,12 @@ void WebBrowser::initializeLayout() {
   m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("reload"), QSL("view-refresh")));
   m_actionStop->setIcon(qApp->icons()->fromTheme(QSL("process-stop")));
 
-  QWidgetAction* act_discover = new QWidgetAction(this);
+  m_btnDiscoverFeedsAction = new QWidgetAction(this);
 
   m_actionOpenInSystemBrowser->setEnabled(false);
   m_actionReadabilePage->setEnabled(false);
 
-  act_discover->setDefaultWidget(m_btnDiscoverFeeds);
+  m_btnDiscoverFeedsAction->setDefaultWidget(m_btnDiscoverFeeds);
 
   // Add needed actions into toolbar.
   m_toolBar->addAction(m_actionBack);
@@ -290,8 +293,9 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(m_actionStop);
   m_toolBar->addAction(m_actionOpenInSystemBrowser);
   m_toolBar->addAction(m_actionReadabilePage);
-  m_toolBar->addAction(act_discover);
-  m_toolBar->addWidget(m_txtLocation);
+
+  m_toolBar->addAction(m_btnDiscoverFeedsAction);
+  m_txtLocationAction = m_toolBar->addWidget(m_txtLocation);
 
   m_loadingProgress = new QProgressBar(this);
   m_loadingProgress->setFixedHeight(10);

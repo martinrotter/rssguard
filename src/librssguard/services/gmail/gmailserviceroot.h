@@ -50,7 +50,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void updateTitle();
 
   private:
-    QPointer<EmailPreviewer> m_emailPreview;
+    QScopedPointer<EmailPreviewer> m_emailPreview;
     GmailNetworkFactory* m_network;
     QAction* m_actionReply;
     Message m_replyToMessage;

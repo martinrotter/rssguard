@@ -13,6 +13,7 @@ class TabContent : public QWidget {
 
   public:
     explicit TabContent(QWidget* parent = nullptr);
+    virtual ~TabContent();
 
     // Gets/sets current index of this TabContent.
     // NOTE: This is the index under which this object lies
