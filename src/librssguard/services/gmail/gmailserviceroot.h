@@ -15,6 +15,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
   public:
     explicit GmailServiceRoot(RootItem* parent = nullptr);
+    virtual ~GmailServiceRoot();
 
     void setNetwork(GmailNetworkFactory* network);
     GmailNetworkFactory* network() const;
@@ -49,7 +50,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void updateTitle();
 
   private:
-    QScopedPointer<EmailPreviewer> m_emailPreview;
+    QPointer<EmailPreviewer> m_emailPreview;
     GmailNetworkFactory* m_network;
     QAction* m_actionReply;
     Message m_replyToMessage;

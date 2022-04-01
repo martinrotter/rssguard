@@ -25,6 +25,12 @@ GmailServiceRoot::GmailServiceRoot(RootItem* parent)
   setIcon(GmailEntryPoint().icon());
 }
 
+GmailServiceRoot::~GmailServiceRoot() {
+  if (!m_emailPreview.isNull()) {
+    m_emailPreview->deleteLater();
+  }
+}
+
 void GmailServiceRoot::updateTitle() {
   setTitle(TextFactory::extractUsernameFromEmail(m_network->username()) + QSL(" (Gmail)"));
 }
@@ -100,7 +106,7 @@ bool GmailServiceRoot::wantsBaggedIdsOfExistingMessages() const {
 
 CustomMessagePreviewer* GmailServiceRoot::customMessagePreviewer() {
   if (m_emailPreview.isNull()) {
-    m_emailPreview.reset(new EmailPreviewer());
+    m_emailPreview = new EmailPreviewer();
   }
 
   return m_emailPreview.data();

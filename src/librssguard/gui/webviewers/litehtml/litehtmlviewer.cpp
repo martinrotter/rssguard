@@ -23,10 +23,11 @@
 #include <QTimer>
 #include <QWheelEvent>
 
-LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent), m_downloader(new Downloader(this)) {
+LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent), m_downloader(new Downloader(this)),
+  m_reloadingWithImages(false) {
   setResourceHandler([this](const QUrl& url) {
     emit loadProgress(-1);
-    return handleResource(url);
+    return m_reloadingWithImages ? handleResource(url) : QByteArray{};
   });
 
   setFrameShape(QFrame::Shape::NoFrame);
@@ -131,68 +132,9 @@ void LiteHtmlViewer::clear() {
 }
 
 void LiteHtmlViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
-  Skin skin = qApp->skins()->currentSkin();
-  QString messages_layout;
-  QString single_message_layout = skin.m_layoutMarkup;
+  auto html_messages = qApp->skins()->generateHtmlOfArticles(messages, root);
 
-  for (const Message& message : messages) {
-    QString enclosures;
-    QString enclosure_images;
-
-    for (const Enclosure& enclosure : message.m_enclosures) {
-      QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
-
-      enclosures += skin.m_enclosureMarkup.arg(enc_url,
-                                               QSL("&#129527;"),
-                                               enclosure.m_mimeType);
-
-      if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
-          qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
-        // Add thumbnail image.
-        enclosure_images += skin.m_enclosureImageMarkup.arg(
-          enclosure.m_url,
-          enclosure.m_mimeType,
-          qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toString());
-      }
-    }
-
-    QString msg_date = qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
-                       ? message.m_created.toLocalTime().toString(qApp->settings()->value(GROUP(Messages),
-                                                                                          SETTING(Messages::CustomDateFormat)).toString())
-                       : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
-                                                                       QLocale::FormatType::ShortFormat);
-
-    messages_layout.append(single_message_layout
-                           .arg(message.m_title,
-                                tr("Written by ") + (message.m_author.isEmpty() ?
-                                                     tr("unknown author") :
-                                                     message.m_author),
-                                message.m_url,
-                                message.m_contents,
-                                msg_date,
-                                enclosures,
-                                enclosure_images,
-                                QString::number(message.m_id)));
-  }
-
-  QString msg_contents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1
-                                                     ? messages.at(0).m_title
-                                                     : tr("Newspaper view"),
-                                                        messages_layout);
-  auto* feed = root->getParentServiceRoot()->getItemFromSubTree([messages](const RootItem* it) {
-    return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
-  })->toFeed();
-  QString base_url;
-
-  if (feed != nullptr) {
-    QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
-
-    if (url.isValid()) {
-      base_url = url.scheme() + QSL("://") + url.host();
-    }
-  }
-
-  setHtml(msg_contents, QUrl::fromUserInput(base_url));
+  setHtml(html_messages.first, html_messages.second);
   emit loadFinished(true);
 }
 
@@ -261,26 +203,46 @@ void LiteHtmlViewer::onLinkClicked(const QUrl& link) {
   }
 }
 
+void LiteHtmlViewer::reloadPageWithImages() {
+  m_reloadingWithImages = true;
+
+  auto scroll = verticalScrollBar()->value();
+
+  setHtml(html(), url());
+
+  if (scroll > 0) {
+    verticalScrollBar()->setValue(scroll);
+  }
+
+  m_reloadingWithImages = false;
+}
+
 void LiteHtmlViewer::showContextMenu(const QPoint& pos, const QUrl& url) {
   if (m_contextMenu.isNull()) {
     m_contextMenu.reset(new QMenu("Context menu for web browser", this));
 
-    m_actionCopyUrl.reset(m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("edit-copy")),
-                                                   tr("Copy URL"),
-                                                   [url]() {
-      QGuiApplication::clipboard()->setText(url.toString(), QClipboard::Mode::Clipboard);
-    }));
+    m_actionCopyUrl.reset(new QAction(qApp->icons()->fromTheme(QSL("edit-copy")),
+                                      tr("Copy URL"),
+                                      this));
 
-    m_actionCopyText.reset(m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("edit-copy")),
-                                                    tr("Copy selection"),
-                                                    [this]() {
+    connect(m_actionCopyUrl.data(), &QAction::triggered, this, [url]() {
+      QGuiApplication::clipboard()->setText(url.toString(), QClipboard::Mode::Clipboard);
+    });
+
+    m_actionCopyText.reset(new QAction(qApp->icons()->fromTheme(QSL("edit-copy")),
+                                       tr("Copy selection"),
+                                       this));
+
+    connect(m_actionCopyText.data(), &QAction::triggered, this, [this]() {
       QGuiApplication::clipboard()->setText(QLiteHtmlWidget::selectedText(), QClipboard::Mode::Clipboard);
-    }));
+    });
 
     // Add option to open link in external viewe
-    m_actionOpenLinkExternally.reset(m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("document-open")),
-                                                              tr("Open link in external browser"),
-                                                              [url]() {
+    m_actionOpenLinkExternally.reset(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
+                                                 tr("Open link in external browser"),
+                                                 this));
+
+    connect(m_actionOpenLinkExternally.data(), &QAction::triggered, this, [url]() {
       qApp->web()->openUrlInExternalBrowser(url.toString());
 
       if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool()) {
@@ -288,19 +250,24 @@ void LiteHtmlViewer::showContextMenu(const QPoint& pos, const QUrl& url) {
           qApp->mainForm()->display();
         });
       }
-    }));
-  }
-  else {
-    m_contextMenu->clear();
+    });
+
+    m_actionReloadWithImages.reset(new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("view-refresh")),
+                                               tr("Reload with images"),
+                                               this));
+
+    connect(m_actionReloadWithImages.data(), &QAction::triggered, this, &LiteHtmlViewer::reloadPageWithImages);
   }
 
   m_actionCopyUrl->setEnabled(url.isValid());
   m_actionCopyText->setEnabled(!QLiteHtmlWidget::selectedText().isEmpty());
   m_actionOpenLinkExternally->setEnabled(url.isValid());
 
+  m_contextMenu->clear();
   m_contextMenu->addActions({ m_actionCopyUrl.data(),
                               m_actionCopyText.data(),
-                              m_actionOpenLinkExternally.data() });
+                              m_actionOpenLinkExternally.data(),
+                              m_actionReloadWithImages.data() });
 
   if (url.isValid()) {
     QFileIconProvider icon_provider;

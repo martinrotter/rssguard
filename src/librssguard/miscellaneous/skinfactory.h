@@ -5,12 +5,16 @@
 
 #include <QObject>
 
+#include "core/message.h"
+
 #include <QColor>
 #include <QHash>
 #include <QMetaType>
 #include <QPalette>
 #include <QStringList>
 #include <QVariant>
+
+class RootItem;
 
 class SkinEnums : public QObject {
   Q_OBJECT
@@ -81,6 +85,8 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     QString selectedSkinName() const;
 
     QString adBlockedPage(const QString& url, const QString& filter);
+
+    QPair<QString, QUrl> generateHtmlOfArticles(const QList<Message>& messages, RootItem* root) const;
 
     // Gets skin about a particular skin.
     Skin skinInfo(const QString& skin_name, bool* ok = nullptr) const;

@@ -440,7 +440,7 @@ void ServiceRoot::syncIn() {
   QIcon original_icon = icon();
 
   setIcon(qApp->icons()->fromTheme(QSL("view-refresh")));
-  itemChanged(QList<RootItem*>() << this);
+  itemChanged({ this });
   RootItem* new_tree = obtainNewTreeForSyncIn();
 
   if (new_tree != nullptr) {

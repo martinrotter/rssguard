@@ -68,6 +68,18 @@ MessagePreviewer::MessagePreviewer(QWidget* parent)
   clear();
 }
 
+MessagePreviewer::~MessagePreviewer() {
+  if (m_viewerLayout->count() > 1) {
+    // Make sure that previewer does not delete any custom article
+    // viewers as those are responsibility to free by their accounts.
+    auto* wdg = m_viewerLayout->widget(1);
+
+    wdg->setParent(nullptr);
+
+    m_viewerLayout->removeWidget(wdg);
+  }
+}
+
 void MessagePreviewer::reloadFontSettings() {
   m_msgBrowser->reloadFontSettings();
 }

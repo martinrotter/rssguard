@@ -58,7 +58,7 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
   private:
     WebBrowser* m_browser;
     RootItem* m_root;
-    QString m_messageBaseUrl;
+    QUrl m_messageBaseUrl;
     QString m_messageContents;
 };
 

@@ -40,6 +40,7 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
   private slots:
     void selectedTextChanged(bool available);
     void onLinkClicked(const QUrl& link);
+    void reloadPageWithImages();
     void showContextMenu(const QPoint& pos, const QUrl& url);
 
   signals:
@@ -63,6 +64,8 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
     QScopedPointer<QAction> m_actionCopyUrl;
     QScopedPointer<QAction> m_actionCopyText;
     QScopedPointer<QAction> m_actionOpenLinkExternally;
+    QScopedPointer<QAction> m_actionReloadWithImages;
+    bool m_reloadingWithImages;
 };
 
 #endif // LITEHTMLVIEWER_H

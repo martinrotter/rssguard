@@ -53,75 +53,16 @@ WebEnginePage* WebEngineViewer::page() const {
 }
 
 void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
-  Skin skin = qApp->skins()->currentSkin();
-  QString messages_layout;
-  QString single_message_layout = skin.m_layoutMarkup;
-
-  for (const Message& message : messages) {
-    QString enclosures;
-    QString enclosure_images;
-
-    for (const Enclosure& enclosure : message.m_enclosures) {
-      QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
-
-      enclosures += skin.m_enclosureMarkup.arg(enc_url,
-                                               QSL("&#129527;"),
-                                               enclosure.m_mimeType);
-
-      if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
-          qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
-        // Add thumbnail image.
-        enclosure_images += skin.m_enclosureImageMarkup.arg(
-          enclosure.m_url,
-          enclosure.m_mimeType,
-          qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toString());
-      }
-    }
-
-    QString msg_date = qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
-                       ? message.m_created.toLocalTime().toString(qApp->settings()->value(GROUP(Messages),
-                                                                                          SETTING(Messages::CustomDateFormat)).toString())
-                       : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
-                                                                       QLocale::FormatType::ShortFormat);
-
-    messages_layout.append(single_message_layout
-                           .arg(message.m_title,
-                                tr("Written by ") + (message.m_author.isEmpty() ?
-                                                     tr("unknown author") :
-                                                     message.m_author),
-                                message.m_url,
-                                message.m_contents,
-                                msg_date,
-                                enclosures,
-                                enclosure_images,
-                                QString::number(message.m_id)));
-  }
-
-  m_messageContents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1
-                                                     ? messages.at(0).m_title
-                                                     : tr("Newspaper view"),
-                                                     messages_layout);
+  auto html_messages = qApp->skins()->generateHtmlOfArticles(messages, root);
 
   m_root = root;
-
-  auto* feed = root->getParentServiceRoot()->getItemFromSubTree([messages](const RootItem* it) {
-    return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
-  })->toFeed();
-
-  m_messageBaseUrl = QString();
-
-  if (feed != nullptr) {
-    QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
-
-    if (url.isValid()) {
-      m_messageBaseUrl = url.scheme() + QSL("://") + url.host();
-    }
-  }
+  m_messageContents = html_messages.first;
+  m_messageBaseUrl = html_messages.second;
 
   bool previously_enabled = isEnabled();
 
   setEnabled(false);
-  setHtml(m_messageContents, m_messageBaseUrl /*, QUrl::fromUserInput(INTERNAL_URL_MESSAGE)*/);
+  setHtml(m_messageContents, m_messageBaseUrl);
   setEnabled(previously_enabled);
 
   page()->runJavaScript(QSL("window.scrollTo(0, 0);"));

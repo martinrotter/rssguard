@@ -34,6 +34,7 @@ class MessagePreviewer : public QWidget {
 
   public:
     explicit MessagePreviewer(QWidget* parent = nullptr);
+    virtual ~MessagePreviewer();
 
     void reloadFontSettings();
 
