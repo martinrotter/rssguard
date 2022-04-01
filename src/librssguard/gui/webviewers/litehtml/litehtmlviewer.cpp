@@ -52,9 +52,7 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
   // right away.
   browser->m_actionStop->setEnabled(false);
 
-  connect(this, &LiteHtmlViewer::linkHighlighted, browser, [browser](const QUrl& url) {
-    browser->onLinkHovered(url.toString());
-  });
+  connect(this, &LiteHtmlViewer::linkHighlighted, browser, &WebBrowser::onLinkHovered);
   connect(this, &LiteHtmlViewer::titleChanged, browser, &WebBrowser::onTitleChanged);
   connect(this, &LiteHtmlViewer::urlChanged, browser, &WebBrowser::updateUrl);
   connect(this, &LiteHtmlViewer::loadStarted, browser, &WebBrowser::onLoadingStarted);
@@ -266,34 +264,43 @@ void LiteHtmlViewer::onLinkClicked(const QUrl& link) {
 void LiteHtmlViewer::showContextMenu(const QPoint& pos, const QUrl& url) {
   if (m_contextMenu.isNull()) {
     m_contextMenu.reset(new QMenu("Context menu for web browser", this));
+
+    m_actionCopyUrl.reset(m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("edit-copy")),
+                                                   tr("Copy URL"),
+                                                   [url]() {
+      QGuiApplication::clipboard()->setText(url.toString(), QClipboard::Mode::Clipboard);
+    }));
+
+    m_actionCopyText.reset(m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("edit-copy")),
+                                                    tr("Copy selection"),
+                                                    [this]() {
+      QGuiApplication::clipboard()->setText(QLiteHtmlWidget::selectedText(), QClipboard::Mode::Clipboard);
+    }));
+
+    // Add option to open link in external viewe
+    m_actionOpenLinkExternally.reset(m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("document-open")),
+                                                              tr("Open link in external browser"),
+                                                              [url]() {
+      qApp->web()->openUrlInExternalBrowser(url.toString());
+
+      if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool()) {
+        QTimer::singleShot(1000, qApp, []() {
+          qApp->mainForm()->display();
+        });
+      }
+    }));
+  }
+  else {
+    m_contextMenu->clear();
   }
 
-  m_contextMenu->clear();
+  m_actionCopyUrl->setEnabled(url.isValid());
+  m_actionCopyText->setEnabled(!QLiteHtmlWidget::selectedText().isEmpty());
+  m_actionOpenLinkExternally->setEnabled(url.isValid());
 
-  m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("edit-copy")),
-                           tr("Copy URL"),
-                           [url]() {
-    QGuiApplication::clipboard()->setText(url.toString(), QClipboard::Mode::Clipboard);
-  })->setEnabled(url.isValid());
-
-  m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("edit-copy")),
-                           tr("Copy selection"),
-                           [this]() {
-    QGuiApplication::clipboard()->setText(QLiteHtmlWidget::selectedText(), QClipboard::Mode::Clipboard);
-  })->setEnabled(!QLiteHtmlWidget::selectedText().isEmpty());
-
-  // Add option to open link in external viewe
-  m_contextMenu->addAction(qApp->icons()->fromTheme(QSL("document-open")),
-                           tr("Open link in external browser"),
-                           [url]() {
-    qApp->web()->openUrlInExternalBrowser(url.toString());
-
-    if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool()) {
-      QTimer::singleShot(1000, qApp, []() {
-        qApp->mainForm()->display();
-      });
-    }
-  })->setEnabled(url.isValid());
+  m_contextMenu->addActions({ m_actionCopyUrl.data(),
+                              m_actionCopyText.data(),
+                              m_actionOpenLinkExternally.data() });
 
   if (url.isValid()) {
     QFileIconProvider icon_provider;

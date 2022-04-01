@@ -63,7 +63,7 @@ class WebBrowser : public TabContent {
     void onLoadingFinished(bool success);
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
-    void onLinkHovered(const QString& url);
+    void onLinkHovered(const QUrl &url);
     void newWindowRequested(WebViewer* viewer);
 
     void readabilePage();

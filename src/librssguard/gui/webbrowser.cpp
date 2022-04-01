@@ -232,11 +232,11 @@ void WebBrowser::onIconChanged(const QIcon& icon) {
   emit iconChanged(m_index, icon);
 }
 
-void WebBrowser::onLinkHovered(const QString& url) {
+void WebBrowser::onLinkHovered(const QUrl& url) {
   qDebugNN << LOGSEC_GUI << "Hovered link:" << QUOTE_W_SPACE_DOT(url);
 
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                       { url, url, QSystemTrayIcon::MessageIcon::NoIcon },
+                       { url.toString(), url.toString(), QSystemTrayIcon::MessageIcon::NoIcon },
                        { false, false, true });
 }
 

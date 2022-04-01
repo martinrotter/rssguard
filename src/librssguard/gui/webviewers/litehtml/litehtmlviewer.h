@@ -60,6 +60,9 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
   private:
     QScopedPointer<Downloader> m_downloader;
     QScopedPointer<QMenu> m_contextMenu;
+    QScopedPointer<QAction> m_actionCopyUrl;
+    QScopedPointer<QAction> m_actionCopyText;
+    QScopedPointer<QAction> m_actionOpenLinkExternally;
 };
 
 #endif // LITEHTMLVIEWER_H
