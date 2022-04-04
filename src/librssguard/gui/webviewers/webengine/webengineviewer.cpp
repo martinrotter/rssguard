@@ -221,24 +221,8 @@ void WebEngineViewer::applyFont(const QFont& fon) {
   QWebEngineProfile::defaultProfile()->settings()->setFontSize(QWebEngineSettings::DefaultFontSize, pixel_size);
 }
 
-bool WebEngineViewer::canZoomIn() const {
-  return zoomFactor() <= double(MAX_ZOOM_FACTOR) - double(ZOOM_FACTOR_STEP);
-}
-
-bool WebEngineViewer::canZoomOut() const {
-  return zoomFactor() >= double(MIN_ZOOM_FACTOR) + double(ZOOM_FACTOR_STEP);
-}
-
 qreal WebEngineViewer::zoomFactor() const {
   return QWebEngineView::zoomFactor();
-}
-
-void WebEngineViewer::zoomIn() {
-  setZoomFactor(zoomFactor() + double(ZOOM_FACTOR_STEP));
-}
-
-void WebEngineViewer::zoomOut() {
-  setZoomFactor(zoomFactor() - double(ZOOM_FACTOR_STEP));
 }
 
 void WebEngineViewer::setZoomFactor(qreal zoom_factor) {

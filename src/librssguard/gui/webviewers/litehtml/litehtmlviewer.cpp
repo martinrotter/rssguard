@@ -150,29 +150,13 @@ void LiteHtmlViewer::applyFont(const QFont& fon) {
   QLiteHtmlWidget::setDefaultFont(fon);
 }
 
-bool LiteHtmlViewer::canZoomIn() const {
-  return zoomFactor() <= double(MAX_ZOOM_FACTOR) - double(ZOOM_FACTOR_STEP);
-}
-
-bool LiteHtmlViewer::canZoomOut() const {
-  return zoomFactor() >= double(MIN_ZOOM_FACTOR) + double(ZOOM_FACTOR_STEP);
-}
-
 qreal LiteHtmlViewer::zoomFactor() const {
   return QLiteHtmlWidget::zoomFactor();
 }
 
-void LiteHtmlViewer::zoomIn() {
-  setZoomFactor(zoomFactor() + double(ZOOM_FACTOR_STEP));
-}
-
-void LiteHtmlViewer::zoomOut() {
-  setZoomFactor(zoomFactor() - double(ZOOM_FACTOR_STEP));
-}
-
 void LiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
   if (zoom_factor == 0.0) {
-    QLiteHtmlWidget::setZoomFactor(0.1);
+    QLiteHtmlWidget::setZoomFactor(MIN_ZOOM_FACTOR);
   }
   else {
     QLiteHtmlWidget::setZoomFactor(zoom_factor);

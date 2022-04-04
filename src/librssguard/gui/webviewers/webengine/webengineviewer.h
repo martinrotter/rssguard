@@ -32,11 +32,7 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);
     virtual void applyFont(const QFont& fon);
-    virtual bool canZoomIn() const;
-    virtual bool canZoomOut() const;
     virtual qreal zoomFactor() const;
-    virtual void zoomIn();
-    virtual void zoomOut();
     virtual void setZoomFactor(qreal zoom_factor);
     virtual QString html() const;
     virtual QUrl url() const;

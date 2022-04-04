@@ -51,14 +51,30 @@ class WebViewer {
     virtual void applyFont(const QFont& fon) = 0;
 
     // Zooming.
-    virtual bool canZoomIn() const = 0;
-    virtual bool canZoomOut() const = 0;
-    virtual void zoomIn() = 0;
-    virtual void zoomOut() = 0;
+    virtual bool canZoomIn() const;
+    virtual bool canZoomOut() const;
+    virtual void zoomIn();
+    virtual void zoomOut();
     virtual qreal zoomFactor() const = 0;
     virtual void setZoomFactor(qreal zoom_factor) = 0;
 };
 
 inline WebViewer::~WebViewer() {}
+
+inline void WebViewer::zoomIn() {
+  setZoomFactor(zoomFactor() + double(ZOOM_FACTOR_STEP));
+}
+
+inline void WebViewer::zoomOut() {
+  setZoomFactor(zoomFactor() - double(ZOOM_FACTOR_STEP));
+}
+
+inline bool WebViewer::canZoomIn() const {
+  return zoomFactor() <= double(MAX_ZOOM_FACTOR) - double(ZOOM_FACTOR_STEP);
+}
+
+inline bool WebViewer::canZoomOut() const {
+  return zoomFactor() >= double(MIN_ZOOM_FACTOR) + double(ZOOM_FACTOR_STEP);
+}
 
 #endif // WEBVIEWER_H

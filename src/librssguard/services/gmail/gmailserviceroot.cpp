@@ -26,9 +26,9 @@ GmailServiceRoot::GmailServiceRoot(RootItem* parent)
 }
 
 GmailServiceRoot::~GmailServiceRoot() {
-  /*if (!m_emailPreview.isNull()) {
-     m_emailPreview->deleteLater();
-     }*/
+  if (!m_emailPreview.isNull()) {
+    m_emailPreview->deleteLater();
+  }
 }
 
 void GmailServiceRoot::updateTitle() {
@@ -106,7 +106,7 @@ bool GmailServiceRoot::wantsBaggedIdsOfExistingMessages() const {
 
 CustomMessagePreviewer* GmailServiceRoot::customMessagePreviewer() {
   if (m_emailPreview.isNull()) {
-    m_emailPreview.reset(new EmailPreviewer());
+    m_emailPreview = new EmailPreviewer();
   }
 
   return m_emailPreview.data();
