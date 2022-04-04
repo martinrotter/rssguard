@@ -11,7 +11,7 @@
 #include <QTimer>
 
 MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_showUnreadOnly(false) {
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_showUnreadOnly(false), m_filter(MessageFilter::NoFiltering) {
   setObjectName(QSL("MessagesProxyModel"));
 
   setSortRole(Qt::ItemDataRole::EditRole);
@@ -100,6 +100,44 @@ bool MessagesProxyModel::lessThan(const QModelIndex& left, const QModelIndex& ri
   return false;
 }
 
+bool MessagesProxyModel::acceptMessage(Message currentMessage) const {
+  const QDate currentDate = QDate::currentDate();
+  const QDateTime currentDateTime = QDateTime::currentDateTime();
+  switch (m_filter) {
+    case MessageFilter::NoFiltering:
+      return true;
+    case MessageFilter::FilterUnread:
+      return !currentMessage.m_isRead;
+    case MessageFilter::FilterImportant:
+      return currentMessage.m_isImportant;
+    case MessageFilter::FilterToday:
+      return
+        currentDate.startOfDay() <= currentMessage.m_created &&
+        currentMessage.m_created <= currentDate.endOfDay();
+    case MessageFilter::FilterYesterday:
+      return
+        currentDate.addDays(-1).startOfDay() <= currentMessage.m_created &&
+        currentMessage.m_created <= currentDate.addDays(-1).endOfDay();
+    case MessageFilter::FilterLast24Hours:
+      return
+        currentDateTime.addSecs(-24 * 60 * 60) <= currentMessage.m_created &&
+        currentMessage.m_created <= currentDateTime;
+    case MessageFilter::FilterLast48Hours:
+      return
+        currentDateTime.addSecs(-48 * 60 * 60) <= currentMessage.m_created &&
+        currentMessage.m_created <= currentDateTime;
+    case MessageFilter::FilterThisWeek:
+      return
+        currentDate.year() == currentMessage.m_created.date().year() &&
+        currentDate.weekNumber() == currentMessage.m_created.date().weekNumber();
+    case MessageFilter::FilterLastWeek:
+      return
+        currentDate.addDays(-7).year() == currentMessage.m_created.date().year() &&
+        currentDate.addDays(-7).weekNumber() == currentMessage.m_created.date().weekNumber();
+  }
+  return false;
+}
+
 bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
   // We want to show only regexped messages when "all" should be visible
   // and we want to show only regexped AND unread messages when unread should be visible.
@@ -110,7 +148,7 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
   return
     QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) &&
     (m_sourceModel->cache()->containsData(source_row) ||
-     (!m_showUnreadOnly || !m_sourceModel->messageAt(source_row).m_isRead));
+     acceptMessage(m_sourceModel->messageAt(source_row)));
 }
 
 bool MessagesProxyModel::showUnreadOnly() const {
@@ -120,6 +158,10 @@ bool MessagesProxyModel::showUnreadOnly() const {
 void MessagesProxyModel::setShowUnreadOnly(bool show_unread_only) {
   m_showUnreadOnly = show_unread_only;
   qApp->settings()->setValue(GROUP(Messages), Messages::ShowOnlyUnreadMessages, show_unread_only);
+}
+
+void MessagesProxyModel::setFilter(MessageFilter filter) {
+  m_filter = filter;
 }
 
 QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList& indexes, bool deep) const {
