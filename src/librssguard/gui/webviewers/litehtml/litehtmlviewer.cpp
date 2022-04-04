@@ -53,17 +53,7 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
   // right away.
   browser->m_actionStop->setEnabled(false);
 
-  connect(this, &LiteHtmlViewer::linkHighlighted, browser, &WebBrowser::onLinkHovered);
-  connect(this, &LiteHtmlViewer::titleChanged, browser, &WebBrowser::onTitleChanged);
-  connect(this, &LiteHtmlViewer::urlChanged, browser, &WebBrowser::updateUrl);
-  connect(this, &LiteHtmlViewer::loadStarted, browser, &WebBrowser::onLoadingStarted);
-  connect(this, &LiteHtmlViewer::loadProgress, browser, &WebBrowser::onLoadingProgress);
-  connect(this, &LiteHtmlViewer::loadFinished, browser, &WebBrowser::onLoadingFinished);
-  connect(this, &LiteHtmlViewer::newWindowRequested, browser, &WebBrowser::newWindowRequested);
-
   // TODO: add "Open in new tab" to context menu.
-  //
-  //connect(page(), &WebEnginePage::windowCloseRequested, browser, &WebBrowser::windowCloseRequested);
 }
 
 void LiteHtmlViewer::findText(const QString& text, bool backwards) {

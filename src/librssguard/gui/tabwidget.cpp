@@ -160,6 +160,14 @@ bool TabWidget::closeTab(int index) {
   }
 }
 
+void TabWidget::closeBrowserTab() {
+  auto idx = indexOf(qobject_cast<WebBrowser*>(sender()));
+
+  if (idx >= 0) {
+    closeTab(idx);
+  }
+}
+
 void TabWidget::closeAllTabsExceptCurrent() {
   // Close tabs after active tab.
   int index_of_active = currentIndex();
@@ -237,6 +245,7 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, WebBrowser*
   // Make connections.
   connect(browser, &WebBrowser::titleChanged, this, &TabWidget::changeTitle);
   connect(browser, &WebBrowser::iconChanged, this, &TabWidget::changeIcon);
+  connect(browser, &WebBrowser::windowCloseRequested, this, &TabWidget::closeBrowserTab);
 
   // Setup the tab index.
   browser->setIndex(final_index);

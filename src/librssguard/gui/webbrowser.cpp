@@ -43,7 +43,8 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent) : TabContent(parent),
   }
 
   // Initialize the components and layout.
-  m_webView->bindToBrowser(this);
+  bindWebView();
+
   m_webView->setZoomFactor(qApp->settings()->value(GROUP(Messages), SETTING(Messages::Zoom)).toDouble());
 
   initializeLayout();
@@ -54,6 +55,22 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent) : TabContent(parent),
 
   createConnections();
   reloadFontSettings();
+}
+
+void WebBrowser::bindWebView() {
+  m_webView->bindToBrowser(this);
+
+  auto* qobj_viewer = dynamic_cast<QObject*>(m_webView);
+
+  connect(qobj_viewer, SIGNAL(linkHighlighted(QUrl)), this, SLOT(onLinkHovered(QUrl)));
+  connect(qobj_viewer, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
+  connect(qobj_viewer, SIGNAL(urlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
+  connect(qobj_viewer, SIGNAL(iconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
+  connect(qobj_viewer, SIGNAL(loadStarted()), this, SLOT(onLoadingStarted()));
+  connect(qobj_viewer, SIGNAL(loadProgress(int)), this, SLOT(onLoadingProgress(int)));
+  connect(qobj_viewer, SIGNAL(loadFinished(bool)), this, SLOT(onLoadingFinished(bool)));
+  connect(qobj_viewer, SIGNAL(newWindowRequested(WebViewer*)), this, SLOT(newWindowRequested(WebViewer*)));
+  connect(qobj_viewer, SIGNAL(closeWindowRequested()), this, SIGNAL(windowCloseRequested()));
 }
 
 void WebBrowser::createConnections() {

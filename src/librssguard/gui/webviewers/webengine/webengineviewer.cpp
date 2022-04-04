@@ -166,16 +166,15 @@ void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionReload = pageAction(QWebEnginePage::WebAction::Reload);
   browser->m_actionStop = pageAction(QWebEnginePage::WebAction::Stop);
 
-  connect(this, &WebEngineViewer::loadStarted, browser, &WebBrowser::onLoadingStarted);
-  connect(this, &WebEngineViewer::loadProgress, browser, &WebBrowser::onLoadingProgress);
-  connect(this, &WebEngineViewer::loadFinished, browser, &WebBrowser::onLoadingFinished);
-  connect(this, &WebEngineViewer::titleChanged, browser, &WebBrowser::onTitleChanged);
-  connect(this, &WebEngineViewer::iconChanged, browser, &WebBrowser::onIconChanged);
-  connect(this, &WebEngineViewer::urlChanged, browser, &WebBrowser::updateUrl);
-  connect(this, &WebEngineViewer::newWindowRequested, browser, &WebBrowser::newWindowRequested);
+  connect(this, &QWebEngineView::loadStarted, this, &WebEngineViewer::loadStarted);
+  connect(this, &QWebEngineView::loadProgress, this, &WebEngineViewer::loadProgress);
+  connect(this, &QWebEngineView::loadFinished, this, &WebEngineViewer::loadFinished);
+  connect(this, &QWebEngineView::titleChanged, this, &WebEngineViewer::titleChanged);
+  connect(this, &QWebEngineView::iconChanged, this, &WebEngineViewer::iconChanged);
+  connect(this, &QWebEngineView::urlChanged, this, &WebEngineViewer::urlChanged);
 
-  connect(page(), &WebEnginePage::windowCloseRequested, browser, &WebBrowser::windowCloseRequested);
-  connect(page(), &WebEnginePage::linkHovered, browser, &WebBrowser::onLinkHovered);
+  connect(page(), &QWebEnginePage::windowCloseRequested, this, &WebEngineViewer::closeWindowRequested);
+  connect(page(), &QWebEnginePage::linkHovered, this, &WebEngineViewer::linkHighlighted);
 }
 
 void WebEngineViewer::findText(const QString& text, bool backwards) {

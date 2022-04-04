@@ -78,6 +78,7 @@ class WebBrowser : public TabContent {
 
   private:
     void initializeLayout();
+    void bindWebView();
     void createConnections();
 
   private:
