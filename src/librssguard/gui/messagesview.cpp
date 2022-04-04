@@ -784,8 +784,8 @@ void MessagesView::searchMessages(const QString& pattern) {
   }
 }
 
-void MessagesView::filterMessages(MessagesModel::MessageHighlighter filter) {
-  m_sourceModel->highlightMessages(filter);
+void MessagesView::highlightMessages(MessagesModel::MessageHighlighter highlighter) {
+  m_sourceModel->highlightMessages(highlighter);
 }
 
 void MessagesView::openSelectedMessagesWithExternalTool() {

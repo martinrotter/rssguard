@@ -172,8 +172,8 @@ bool MessagesModel::setMessageImportantById(int id, RootItem::Importance importa
   return false;
 }
 
-void MessagesModel::highlightMessages(MessagesModel::MessageHighlighter highlight) {
-  m_messageHighlighter = highlight;
+void MessagesModel::highlightMessages(MessagesModel::MessageHighlighter highlighter) {
+  m_messageHighlighter = highlighter;
   emit layoutAboutToBeChanged();
   emit layoutChanged();
 }

@@ -67,7 +67,7 @@ QList<QAction*> MessagesToolBar::convertActions(const QStringList& actions) {
       spec_actions.append(m_actionSearchMessages);
     }
     else if (action_name == QSL(HIGHLIGHTER_ACTION_NAME)) {
-      // Add filter button.
+      // Add highlighter button.
       spec_actions.append(m_actionMessageHighlighter);
     }
     else if (action_name == QSL(SPACER_ACTION_NAME)) {
@@ -101,7 +101,7 @@ void MessagesToolBar::loadSpecificActions(const QList<QAction*>& actions, bool i
 void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
   m_btnMessageHighlighter->setIcon(action->icon());
   m_btnMessageHighlighter->setToolTip(action->text());
-  emit messageFilterChanged(action->data().value<MessagesModel::MessageHighlighter>());
+  emit messageHighlighterChanged(action->data().value<MessagesModel::MessageHighlighter>());
 }
 
 void MessagesToolBar::initializeSearchBox() {

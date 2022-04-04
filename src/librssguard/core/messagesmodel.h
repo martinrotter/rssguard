@@ -21,7 +21,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
 
   public:
 
-    // Enum which describes basic filtering schemes
+    // Enum which describes basic highlighting schemes
     // for messages.
     enum class MessageHighlighter {
       NoHighlighting = 100,
@@ -70,7 +70,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     bool setBatchMessagesRestored(const QModelIndexList& messages);
 
     // Highlights messages.
-    void highlightMessages(MessageHighlighter highlight);
+    void highlightMessages(MessageHighlighter highlighter);
 
     // Loads messages of given feeds.
     void loadMessages(RootItem* item);

@@ -29,7 +29,7 @@ class MessagesToolBar : public BaseToolBar {
 
   signals:
     void messageSearchPatternChanged(const QString& pattern);
-    void messageFilterChanged(MessagesModel::MessageHighlighter filter);
+    void messageHighlighterChanged(MessagesModel::MessageHighlighter highlighter);
 
   private slots:
     void onSearchPatternChanged(const QString& search_pattern);
