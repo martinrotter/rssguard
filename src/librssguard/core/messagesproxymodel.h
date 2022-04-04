@@ -42,8 +42,6 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     // Performs sort of items.
     void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
-    bool showUnreadOnly() const;
-    void setShowUnreadOnly(bool show_unread_only);
     void setFilter(MessageFilter filter);
 
   private:
@@ -56,7 +54,6 @@ class MessagesProxyModel : public QSortFilterProxyModel {
 
     // Source model pointer.
     MessagesModel* m_sourceModel;
-    bool m_showUnreadOnly;
     MessageFilter m_filter;
 };
 

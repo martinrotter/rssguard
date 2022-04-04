@@ -499,14 +499,6 @@ void MessagesView::loadItem(RootItem* item) {
   emit currentMessageRemoved();
 }
 
-void MessagesView::switchShowUnreadOnly(bool set_new_value, bool show_unread_only) {
-  if (set_new_value) {
-    m_proxyModel->setShowUnreadOnly(show_unread_only);
-  }
-
-  reloadSelections();
-}
-
 void MessagesView::changeFilter(MessagesProxyModel::MessageFilter filter) {
     m_proxyModel->setFilter(filter);
     reloadSelections();

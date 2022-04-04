@@ -11,7 +11,7 @@
 #include <QTimer>
 
 MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_showUnreadOnly(false), m_filter(MessageFilter::NoFiltering) {
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_filter(MessageFilter::NoFiltering) {
   setObjectName(QSL("MessagesProxyModel"));
 
   setSortRole(Qt::ItemDataRole::EditRole);
@@ -149,15 +149,6 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
     QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) &&
     (m_sourceModel->cache()->containsData(source_row) ||
      acceptMessage(m_sourceModel->messageAt(source_row)));
-}
-
-bool MessagesProxyModel::showUnreadOnly() const {
-  return m_showUnreadOnly;
-}
-
-void MessagesProxyModel::setShowUnreadOnly(bool show_unread_only) {
-  m_showUnreadOnly = show_unread_only;
-  qApp->settings()->setValue(GROUP(Messages), Messages::ShowOnlyUnreadMessages, show_unread_only);
 }
 
 void MessagesProxyModel::setFilter(MessageFilter filter) {

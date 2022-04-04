@@ -64,8 +64,6 @@ class MessagesView : public BaseTreeView {
     // Searchs the visible message according to given pattern.
     void searchMessages(const QString& pattern);
     void highlightMessages(MessagesModel::MessageHighlighter highlighter);
-
-    void switchShowUnreadOnly(bool set_new_value = false, bool show_unread_only = false);
     void changeFilter(MessagesProxyModel::MessageFilter filter);
 
   private slots:

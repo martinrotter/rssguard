@@ -190,17 +190,6 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
   }
 }
 
-void FeedMessageViewer::toggleShowOnlyUnreadMessages() {
-  const QAction* origin = qobject_cast<QAction*>(sender());
-
-  if (origin == nullptr) {
-    m_messagesView->switchShowUnreadOnly(true, false);
-  }
-  else {
-    m_messagesView->switchShowUnreadOnly(true, origin->isChecked());
-  }
-}
-
 void FeedMessageViewer::changeMessageFilter(MessagesProxyModel::MessageFilter filter) {
     m_messagesView->changeFilter(filter);
 }
