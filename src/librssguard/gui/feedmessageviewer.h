@@ -6,6 +6,7 @@
 #include "gui/tabcontent.h"
 
 #include "core/messagesmodel.h"
+#include "core/messagesproxymodel.h"
 
 #include <QTextBrowser>
 
@@ -65,6 +66,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     void switchFeedComponentVisibility();
 
     void toggleShowOnlyUnreadMessages();
+    void changeMessageFilter(MessagesProxyModel::MessageFilter filter);
     void toggleShowOnlyUnreadFeeds();
     void toggleShowFeedTreeBranches();
     void toggleItemsAutoExpandingOnSelection();

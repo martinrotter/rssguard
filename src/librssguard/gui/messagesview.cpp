@@ -507,6 +507,11 @@ void MessagesView::switchShowUnreadOnly(bool set_new_value, bool show_unread_onl
   reloadSelections();
 }
 
+void MessagesView::changeFilter(MessagesProxyModel::MessageFilter filter) {
+    m_proxyModel->setFilter(filter);
+    reloadSelections();
+}
+
 void MessagesView::openSelectedSourceMessagesExternally() {
   auto rws = selectionModel()->selectedRows();
 

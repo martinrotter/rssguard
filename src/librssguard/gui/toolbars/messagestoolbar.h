@@ -6,6 +6,7 @@
 #include "gui/toolbars/basetoolbar.h"
 
 #include "core/messagesmodel.h"
+#include "core/messagesproxymodel.h"
 
 class BaseLineEdit;
 class QWidgetAction;
@@ -30,10 +31,12 @@ class MessagesToolBar : public BaseToolBar {
   signals:
     void messageSearchPatternChanged(const QString& pattern);
     void messageHighlighterChanged(MessagesModel::MessageHighlighter highlighter);
+    void messageFilterChanged(MessagesProxyModel::MessageFilter filter);
 
   private slots:
     void onSearchPatternChanged(const QString& search_pattern);
     void handleMessageHighlighterChange(QAction* action);
+    void handleMessageFilterChange(QAction* action);
 
   private:
     void initializeSearchBox();
@@ -41,8 +44,11 @@ class MessagesToolBar : public BaseToolBar {
 
   private:
     QWidgetAction* m_actionMessageHighlighter;
+    QWidgetAction* m_actionMessageFilter;
     QToolButton* m_btnMessageHighlighter;
+    QToolButton* m_btnMessageFilter;
     QMenu* m_menuMessageHighlighter;
+    QMenu* m_menuMessageFilter;
     QWidgetAction* m_actionSearchMessages;
     BaseLineEdit* m_txtSearchMessages;
     QTimer* m_tmrSearchPattern;

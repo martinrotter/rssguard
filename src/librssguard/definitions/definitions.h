@@ -80,6 +80,7 @@
 #define FLAG_ICON_SUBFOLDER                   "flags"
 #define SEARCH_BOX_ACTION_NAME                "search"
 #define HIGHLIGHTER_ACTION_NAME               "highlighter"
+#define FILTER_ACTION_NAME                    "filter"
 #define SPACER_ACTION_NAME                    "spacer"
 #define SEPARATOR_ACTION_NAME                 "separator"
 #define FILTER_WIDTH                          125

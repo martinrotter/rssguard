@@ -6,6 +6,7 @@
 #include "gui/reusable/basetreeview.h"
 
 #include "core/messagesmodel.h"
+#include "core/messagesproxymodel.h"
 #include "services/abstract/rootitem.h"
 
 #include <QHeaderView>
@@ -65,6 +66,7 @@ class MessagesView : public BaseTreeView {
     void highlightMessages(MessagesModel::MessageHighlighter highlighter);
 
     void switchShowUnreadOnly(bool set_new_value = false, bool show_unread_only = false);
+    void changeFilter(MessagesProxyModel::MessageFilter filter);
 
   private slots:
     void openSelectedMessagesWithExternalTool();
