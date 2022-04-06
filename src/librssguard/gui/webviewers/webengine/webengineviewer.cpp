@@ -166,6 +166,7 @@ void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionReload = pageAction(QWebEnginePage::WebAction::Reload);
   browser->m_actionStop = pageAction(QWebEnginePage::WebAction::Stop);
 
+  // NOTE: Just forwar QtWebEngine signals, it's all there.
   connect(this, &QWebEngineView::loadStarted, this, &WebEngineViewer::loadStarted);
   connect(this, &QWebEngineView::loadProgress, this, &WebEngineViewer::loadProgress);
   connect(this, &QWebEngineView::loadFinished, this, &WebEngineViewer::loadFinished);

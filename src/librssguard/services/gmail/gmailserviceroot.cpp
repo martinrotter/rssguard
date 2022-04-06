@@ -14,7 +14,6 @@
 #include "services/gmail/gmailnetworkfactory.h"
 #include "services/gmail/gui/emailpreviewer.h"
 #include "services/gmail/gui/formaddeditemail.h"
-#include "services/gmail/gui/formdownloadattachment.h"
 #include "services/gmail/gui/formeditgmailaccount.h"
 
 #include <QFileDialog>
@@ -106,7 +105,7 @@ bool GmailServiceRoot::wantsBaggedIdsOfExistingMessages() const {
 
 CustomMessagePreviewer* GmailServiceRoot::customMessagePreviewer() {
   if (m_emailPreview.isNull()) {
-    m_emailPreview = new EmailPreviewer();
+    m_emailPreview = new EmailPreviewer(this);
   }
 
   return m_emailPreview.data();

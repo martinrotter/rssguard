@@ -147,35 +147,26 @@ void GmailNetworkFactory::setDownloadOnlyUnreadMessages(bool download_only_unrea
   m_downloadOnlyUnreadMessages = download_only_unread_messages;
 }
 
+QNetworkRequest GmailNetworkFactory::requestForAttachment(const QString& email_id, const QString& attachment_id) {
+  QString target_url = QSL(GMAIL_API_GET_ATTACHMENT).arg(email_id, attachment_id);
+  QNetworkRequest req(target_url);
+  QByteArray bearer = m_oauth2->bearer().toLocal8Bit();
+
+  if (bearer.isEmpty()) {
+    throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
+  }
+
+  req.setRawHeader(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer);
+
+  return req;
+}
+
 void GmailNetworkFactory::setOauth(OAuth2Service* oauth) {
   m_oauth2 = oauth;
 }
 
 void GmailNetworkFactory::setUsername(const QString& username) {
   m_username = username;
-}
-
-Downloader* GmailNetworkFactory::downloadAttachment(const QString& msg_id,
-                                                    const QString& attachment_id,
-                                                    const QNetworkProxy& custom_proxy) {
-  QString bearer = m_oauth2->bearer().toLocal8Bit();
-
-  if (bearer.isEmpty()) {
-    return nullptr;
-  }
-  else {
-    auto* downloader = new Downloader();
-    QString target_url = QSL(GMAIL_API_GET_ATTACHMENT).arg(msg_id, attachment_id);
-
-    if (custom_proxy.type() != QNetworkProxy::ProxyType::DefaultProxy) {
-      downloader->setProxy(custom_proxy);
-    }
-
-    downloader->appendRawHeader(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit());
-    downloader->downloadFile(target_url);
-
-    return downloader;
-  }
 }
 
 QList<Message> GmailNetworkFactory::messages(const QString& stream_id,

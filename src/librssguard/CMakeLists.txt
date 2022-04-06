@@ -289,8 +289,6 @@ set(SOURCES
   services/gmail/gui/emailrecipientcontrol.h
   services/gmail/gui/formaddeditemail.cpp
   services/gmail/gui/formaddeditemail.h
-  services/gmail/gui/formdownloadattachment.cpp
-  services/gmail/gui/formdownloadattachment.h
   services/gmail/gui/formeditgmailaccount.cpp
   services/gmail/gui/formeditgmailaccount.h
   services/gmail/gui/gmailaccountdetails.cpp
@@ -541,7 +539,6 @@ set(UI_FILES
   services/abstract/gui/formfeeddetails.ui
   services/feedly/gui/feedlyaccountdetails.ui
   services/gmail/gui/formaddeditemail.ui
-  services/gmail/gui/formdownloadattachment.ui
   services/gmail/gui/gmailaccountdetails.ui
   services/gmail/gui/emailpreviewer.ui
   services/greader/gui/greaderaccountdetails.ui
