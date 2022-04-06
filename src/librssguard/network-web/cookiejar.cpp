@@ -20,11 +20,22 @@
 
 CookieJar::CookieJar(QObject* parent) : QNetworkCookieJar(parent) {
 #if defined(USE_WEBENGINE)
+  // WebEngine does not store cookies, CookieJar does.
   QWebEngineProfile::defaultProfile()->setPersistentCookiesPolicy(QWebEngineProfile::PersistentCookiesPolicy::NoPersistentCookies);
 
   m_webEngineCookies = QWebEngineProfile::defaultProfile()->cookieStore();
+#endif
 
+  // Load all cookies and also set them into WebEngine store.
+  loadCookies();
+
+#if defined(USE_WEBENGINE)
   // When cookies change in WebEngine, then change in main cookie jar too.
+  //
+  // Also, the synchronization between WebEngine cookie jar and main cookie jar is this:
+  // - On app startup, both jars are synchronized to have same cookies.
+  // - If cookies change in WebEngine jar, the change is propagated to main jar.
+  // - If cookies change in main jar, cookies are NOT propagated to WebEngine jar.
   connect(m_webEngineCookies, &QWebEngineCookieStore::cookieAdded, this, [=](const QNetworkCookie& cookie) {
     insertCookieInternal(cookie, false, true);
   });
@@ -32,8 +43,6 @@ CookieJar::CookieJar(QObject* parent) : QNetworkCookieJar(parent) {
     deleteCookieInternal(cookie, false);
   });
 #endif
-
-  loadCookies();
 }
 
 QList<QNetworkCookie> CookieJar::extractCookiesFromUrl(const QString& url) {
@@ -125,7 +134,7 @@ bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
 #if defined(USE_WEBENGINE)
     if (notify_others) {
-      //m_webEngineCookies->setCookie(cookie);
+      m_webEngineCookies->setCookie(cookie);
     }
 #else
     Q_UNUSED(notify_others)
@@ -143,7 +152,7 @@ bool CookieJar::updateCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
 #if defined(USE_WEBENGINE)
     if (notify_others) {
-      //m_webEngineCookies->setCookie(cookie);
+      m_webEngineCookies->setCookie(cookie);
     }
 #else
     Q_UNUSED(notify_others)
@@ -161,7 +170,7 @@ bool CookieJar::deleteCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
 #if defined(USE_WEBENGINE)
     if (notify_others) {
-      //m_webEngineCookies->deleteCookie(cookie);
+      m_webEngineCookies->deleteCookie(cookie);
     }
 #else
     Q_UNUSED(notify_others)
@@ -172,13 +181,13 @@ bool CookieJar::deleteCookieInternal(const QNetworkCookie& cookie, bool notify_o
 }
 
 bool CookieJar::insertCookie(const QNetworkCookie& cookie) {
-  return insertCookieInternal(cookie, true, true);
+  return insertCookieInternal(cookie, false, true);
 }
 
 bool CookieJar::deleteCookie(const QNetworkCookie& cookie) {
-  return deleteCookieInternal(cookie, true);
+  return deleteCookieInternal(cookie, false);
 }
 
 bool CookieJar::updateCookie(const QNetworkCookie& cookie) {
-  return updateCookieInternal(cookie, true);
+  return updateCookieInternal(cookie, false);
 }

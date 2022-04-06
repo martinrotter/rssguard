@@ -151,7 +151,14 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #if defined(USE_WEBENGINE)
   m_webFactory->urlIinterceptor()->load();
 
+  const QString web_data_root = userDataFolder() + QDir::separator() + QSL("web");
+
+  QWebEngineProfile::defaultProfile()->setCachePath(web_data_root + QDir::separator() + QSL("cache"));
+  QWebEngineProfile::defaultProfile()->setPersistentStoragePath(web_data_root + QDir::separator() + QSL("storage"));
   QWebEngineProfile::defaultProfile()->setHttpUserAgent(QString(HTTP_COMPLETE_USERAGENT));
+
+  qDebugNN << LOGSEC_NETWORK << "Persistent web data storage path:"
+           << QUOTE_W_SPACE_DOT(QWebEngineProfile::defaultProfile()->persistentStoragePath());
 
   connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
 #endif
