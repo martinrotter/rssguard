@@ -5,7 +5,7 @@
 #   pip3 install asyncio (if using parallel version of the script)
 #   pip3 install hyper (for HTTP/2 support, much faster than default)
 #
-# You must provide raw RSS 2.0 UTF-8 feed XML data as input, for example with curl:
+# You must provide raw RSS 2.0 (or ATOM) UTF-8 feed XML data as input, for example with curl:
 #   curl 'https://phys.org/rss-feed/' | python ./translate-feed.py "en" "pt_BR" "true"
 #
 # You must provide three command line arguments:
