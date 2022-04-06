@@ -67,13 +67,15 @@ QList<QAction*> MessagesToolBar::convertActions(const QStringList& actions) {
       // Add search box.
       spec_actions.append(m_actionSearchMessages);
     }
-    else if (action_name == QSL(HIGHLIGHTER_ACTION_NAME)) {
+    else if (action_name.startsWith(QSL(HIGHLIGHTER_ACTION_NAME))) {
       // Add highlighter button.
       spec_actions.append(m_actionMessageHighlighter);
+      activateAction(action_name, m_actionMessageHighlighter);
     }
-    else if (action_name == QSL(FILTER_ACTION_NAME)) {
+    else if (action_name.startsWith(QSL(FILTER_ACTION_NAME))) {
       // Add filter button.
       spec_actions.append(m_actionMessageFilter);
+      activateAction(action_name, m_actionMessageFilter);
     }
     else if (action_name == QSL(SPACER_ACTION_NAME)) {
       // Add new spacer.
@@ -104,14 +106,15 @@ void MessagesToolBar::loadSpecificActions(const QList<QAction*>& actions, bool i
 }
 
 void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
-  m_btnMessageHighlighter->setIcon(action->icon());
-  m_btnMessageHighlighter->setToolTip(action->text());
+  m_btnMessageHighlighter->setDefaultAction(action);
+  saveToolButtonSelection(HIGHLIGHTER_ACTION_NAME, action);
+
   emit messageHighlighterChanged(action->data().value<MessagesModel::MessageHighlighter>());
 }
 
 void MessagesToolBar::handleMessageFilterChange(QAction* action) {
-  m_btnMessageFilter->setIcon(action->icon());
-  m_btnMessageFilter->setToolTip(action->text());
+  m_btnMessageFilter->setDefaultAction(action);
+  saveToolButtonSelection(FILTER_ACTION_NAME, action);
 
   emit messageFilterChanged(action->data().value<MessagesProxyModel::MessageFilter>());
 }
@@ -137,43 +140,89 @@ void MessagesToolBar::initializeSearchBox() {
   });
 }
 
+void MessagesToolBar::addActionToMenu(QMenu* menu, const QIcon& icon, const QString& title, const QVariant& value, const QString& name) {
+  QAction* action = menu->addAction(icon, title);
+  action->setData(value);
+  action->setObjectName(name);
+}
+
 void MessagesToolBar::initializeHighlighter() {
   m_menuMessageHighlighter = new QMenu(tr("Menu for highlighting articles"), this);
-  m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                                      tr("No extra highlighting"))->setData(QVariant::fromValue(MessagesModel::MessageHighlighter::NoHighlighting));
-  m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-unread")),
-                                      tr("Highlight unread articles"))->setData(QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightUnread));
-  m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-important")),
-                                      tr("Highlight important articles"))->setData(QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightImportant));
+  addActionToMenu(m_menuMessageHighlighter,
+    qApp->icons()->fromTheme(QSL("mail-mark-read")), 
+    tr("No extra highlighting"),
+    QVariant::fromValue(MessagesModel::MessageHighlighter::NoHighlighting),
+    "no_highlighting");
+  addActionToMenu(m_menuMessageHighlighter,
+    qApp->icons()->fromTheme(QSL("mail-mark-unread")),
+    tr("Highlight unread articles"),
+    QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightUnread),
+    "highlight_unread");
+  addActionToMenu(m_menuMessageHighlighter,
+    qApp->icons()->fromTheme(QSL("mail-mark-important")),
+    tr("Highlight important articles"),
+    QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightImportant),
+    "highlight_important");
+  
   m_menuMessageFilter = new QMenu(tr("Menu for filtering articles"), this);
-  m_menuMessageFilter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")),
-      tr("No extra filtering"))->setData(QVariant::fromValue(MessagesProxyModel::MessageFilter::NoFiltering));
-  m_menuMessageFilter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-unread")),
-      tr("Filter unread articles"))->setData(QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterUnread));
-  m_menuMessageFilter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-important")),
-      tr("Filter important articles"))->setData(QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterImportant));
-  m_menuMessageFilter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")),
-      tr("Filter articles from today"))->setData(QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterToday));
-  m_menuMessageFilter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")),
-      tr("Filter articles from yesterday"))->setData(QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterYesterday));
-  m_menuMessageFilter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")),
-      tr("Filter articles from last 24 hours"))->setData(QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterLast24Hours));
-  m_menuMessageFilter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")),
-      tr("Filter articles from last 48 hours"))->setData(QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterLast48Hours));
-  m_menuMessageFilter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")),
-      tr("Filter articles from this week"))->setData(QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterThisWeek));
-  m_menuMessageFilter->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")),
-      tr("Filter articles from last week"))->setData(QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterLastWeek));
+  addActionToMenu(m_menuMessageFilter,
+    qApp->icons()->fromTheme(QSL("mail-mark-read")),
+    tr("No extra filtering"),
+    QVariant::fromValue(MessagesProxyModel::MessageFilter::NoFiltering),
+    "no_filtering");
+  addActionToMenu(m_menuMessageFilter,
+    qApp->icons()->fromTheme(QSL("mail-mark-unread")),
+    tr("Filter unread articles"),
+    QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterUnread),
+    "filter_unread");
+  addActionToMenu(m_menuMessageFilter,
+    qApp->icons()->fromTheme(QSL("mail-mark-important")),
+    tr("Filter important articles"),
+    QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterImportant),
+    "filter_important");
+  addActionToMenu(m_menuMessageFilter,
+    qApp->icons()->fromTheme(QSL("mail-mark-read")),
+    tr("Filter articles from today"),
+    QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterToday),
+    "filter_today");
+  addActionToMenu(m_menuMessageFilter,
+    qApp->icons()->fromTheme(QSL("mail-mark-read")),
+    tr("Filter articles from yesterday"),
+    QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterYesterday),
+    "filter_yesterday");
+  addActionToMenu(m_menuMessageFilter,
+    qApp->icons()->fromTheme(QSL("mail-mark-read")),
+    tr("Filter articles from last 24 hours"),
+    QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterLast24Hours),
+    "filter_last24hours");
+  addActionToMenu(m_menuMessageFilter,
+    qApp->icons()->fromTheme(QSL("mail-mark-read")),
+    tr("Filter articles from last 48 hours"),
+    QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterLast48Hours),
+    "filter_last48hours");
+  addActionToMenu(m_menuMessageFilter,
+    qApp->icons()->fromTheme(QSL("mail-mark-read")),
+    tr("Filter articles from this week"),
+    QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterThisWeek),
+    "filter_this_week");
+  addActionToMenu(m_menuMessageFilter,
+    qApp->icons()->fromTheme(QSL("mail-mark-read")),
+    tr("Filter articles from last week"),
+    QVariant::fromValue(MessagesProxyModel::MessageFilter::FilterLastWeek),
+    "filter_last_week");
+
   m_btnMessageHighlighter = new QToolButton(this);
   m_btnMessageHighlighter->setToolTip(tr("Display all articles"));
   m_btnMessageHighlighter->setMenu(m_menuMessageHighlighter);
   m_btnMessageHighlighter->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
   m_btnMessageHighlighter->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
+  m_btnMessageHighlighter->setDefaultAction(m_menuMessageHighlighter->actions().front());
   m_btnMessageFilter = new QToolButton(this);
   m_btnMessageFilter->setToolTip(tr("Display all articles"));
   m_btnMessageFilter->setMenu(m_menuMessageFilter);
   m_btnMessageFilter->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
   m_btnMessageFilter->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
+  m_btnMessageFilter->setDefaultAction(m_menuMessageFilter->actions().front());
   m_actionMessageHighlighter = new QWidgetAction(this);
   m_actionMessageHighlighter->setDefaultWidget(m_btnMessageHighlighter);
   m_actionMessageHighlighter->setIcon(m_btnMessageHighlighter->icon());
@@ -187,6 +236,32 @@ void MessagesToolBar::initializeHighlighter() {
 
   connect(m_menuMessageHighlighter, &QMenu::triggered, this, &MessagesToolBar::handleMessageHighlighterChange);
   connect(m_menuMessageFilter, &QMenu::triggered, this, &MessagesToolBar::handleMessageFilterChange);
+}
+
+void MessagesToolBar::saveToolButtonSelection(const QString& buttonName, const QAction* action) const {
+  QStringList action_names = savedActions();
+  for (QString& action_name : action_names) {
+    if (action_name.startsWith(buttonName)) {
+      action_name = buttonName + (action->objectName().isEmpty() ? "" : "[" + action->objectName().toStdString() + "]").c_str();
+    }
+  }
+  qApp->settings()->setValue(GROUP(GUI), GUI::MessagesToolbarDefaultButtons, action_names.join(QSL(",")));
+}
+
+void MessagesToolBar::activateAction(const QString& action_name, QWidgetAction* widgetAction) {
+  const int start = action_name.indexOf('[');
+  const int end = action_name.indexOf(']');
+  if (start != -1 && end != -1 && end == action_name.length() - 1) {
+    const QString menu_action_name = action_name.chopped(1).right(end - start - 1);
+    auto toolButton = qobject_cast<QToolButton*>(widgetAction->defaultWidget());
+    for (QAction* action : toolButton->menu()->actions()) {
+      if (action->objectName() == menu_action_name) {
+          toolButton->setDefaultAction(action);
+          toolButton->menu()->triggered(action);
+          break;
+      }
+    }
+  }
 }
 
 QStringList MessagesToolBar::defaultActions() const {

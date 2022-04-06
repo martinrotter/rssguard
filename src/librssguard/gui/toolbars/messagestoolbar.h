@@ -40,7 +40,10 @@ class MessagesToolBar : public BaseToolBar {
 
   private:
     void initializeSearchBox();
+    void addActionToMenu(QMenu* menu, const QIcon& icon, const QString& title, const QVariant& value, const QString& name);
     void initializeHighlighter();
+    void activateAction(const QString& action_name, QWidgetAction* widgetAction);
+    void saveToolButtonSelection(const QString& buttonName, const QAction* action) const;
 
   private:
     QWidgetAction* m_actionMessageHighlighter;
