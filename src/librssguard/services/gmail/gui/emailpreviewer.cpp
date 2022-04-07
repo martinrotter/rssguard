@@ -10,6 +10,7 @@
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailnetworkfactory.h"
 #include "services/gmail/gmailserviceroot.h"
+#include "services/gmail/gui/formaddeditemail.h"
 
 #include <QJsonObject>
 
@@ -29,6 +30,8 @@ EmailPreviewer::EmailPreviewer(GmailServiceRoot* account, QWidget* parent)
   m_webView->setNavigationBarVisible(false);
 
   connect(menu_attachments, &QMenu::triggered, this, &EmailPreviewer::downloadAttachment);
+  connect(m_ui.m_btnReply, &QToolButton::clicked, this, &EmailPreviewer::replyToEmail);
+  connect(m_ui.m_btnForward, &QToolButton::clicked, this, &EmailPreviewer::forwardEmail);
 }
 
 EmailPreviewer::~EmailPreviewer() {
@@ -58,6 +61,14 @@ void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item) {
   }
 
   m_ui.m_btnAttachments->setDisabled(m_ui.m_btnAttachments->menu()->isEmpty());
+}
+
+void EmailPreviewer::replyToEmail() {
+  FormAddEditEmail(m_account, window()).execForReply(&m_message);
+}
+
+void EmailPreviewer::forwardEmail() {
+  FormAddEditEmail(m_account, window()).execForForward(&m_message);
 }
 
 void EmailPreviewer::downloadAttachment(QAction* act) {

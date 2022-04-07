@@ -54,10 +54,36 @@ void FormAddEditEmail::execForAdd() {
 void FormAddEditEmail::execForReply(Message* original_message) {
   m_originalMessage = original_message;
 
-  addRecipientRow(m_originalMessage->m_author);
   m_ui.m_txtSubject->setText(QSL("Re: %1").arg(m_originalMessage->m_title));
   m_ui.m_txtSubject->setEnabled(false);
   m_ui.m_txtMessage->setFocus();
+
+  addRecipientRow(m_originalMessage->m_author);
+  exec();
+}
+
+void FormAddEditEmail::execForForward(Message* original_message) {
+  m_originalMessage = original_message;
+
+  m_ui.m_txtSubject->setText(QSL("Fwd: %1").arg(m_originalMessage->m_title));
+  m_ui.m_txtSubject->setEnabled(false);
+  m_ui.m_txtMessage->setFocus();
+
+  // TODO: Obtain "To" header from Gmail API and fill it in too.
+  const QString forward_header = QSL("<pre>"
+                                     "---------- Forwarded message ---------<br/>"
+                                     "From: %1<br/>"
+                                     "Date: %2<br/>"
+                                     "Subject: %3<br/>"
+                                     "To: -"
+                                     "</pre><br/>").arg(m_originalMessage->m_author,
+                                                        m_originalMessage->m_created.toString(),
+                                                        m_originalMessage->m_title);
+
+  m_ui.m_txtMessage->setHtml(forward_header + m_originalMessage->m_contents);
+  m_ui.m_txtMessage->moveCursor(QTextCursor::MoveOperation::Start);
+
+  addRecipientRow()->setFocus();
   exec();
 }
 

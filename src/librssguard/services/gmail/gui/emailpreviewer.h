@@ -22,6 +22,8 @@ class EmailPreviewer : public CustomMessagePreviewer {
     virtual void loadMessage(const Message& msg, RootItem* selected_item);
 
   private slots:
+    void replyToEmail();
+    void forwardEmail();
     void downloadAttachment(QAction* act);
 
   private:
