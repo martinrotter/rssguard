@@ -251,6 +251,8 @@ void FormMain::prepareMenus() {
     m_trayMenu->addAction(m_ui->m_actionUpdateAllItems);
     m_trayMenu->addAction(m_ui->m_actionMarkAllItemsRead);
     m_trayMenu->addSeparator();
+
+    m_trayMenu->addAction(m_ui->m_actionSwitchMainWindow);
     m_trayMenu->addAction(m_ui->m_actionSettings);
     m_trayMenu->addAction(m_ui->m_actionQuit);
 
@@ -501,7 +503,7 @@ void FormMain::updateFeedButtonsAvailability() {
 }
 
 void FormMain::switchVisibility(bool force_hide) {
-  if (force_hide || isVisible()) {
+  if (force_hide || (isVisible() && !isMinimized())) {
     if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
 
       if (QApplication::activeModalWidget() != nullptr) {

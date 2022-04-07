@@ -619,9 +619,22 @@ void DocumentContainerPrivate::load_image(const litehtml::tchar_t *src,
     if (m_pixmaps.contains(url))
         return;
 
-    QPixmap pixmap;
-    pixmap.loadFromData(m_dataCallback(url));
-    m_pixmaps.insert(url, pixmap);
+    if (qtSrc.startsWith(QStringLiteral("data:image/"))) {
+        // We have Base64 image embedded directly in HTML.
+        const QStringList splitSrc = qtSrc.split(',');
+
+        if (splitSrc.size() == 2) {
+            QPixmap pixmap;
+
+            pixmap.loadFromData(QByteArray::fromBase64(splitSrc.at(1).toLocal8Bit()));
+            m_pixmaps.insert(url, pixmap);
+        }
+    }
+    else {
+        QPixmap pixmap;
+        pixmap.loadFromData(m_dataCallback(url));
+        m_pixmaps.insert(url, pixmap);
+    }
 }
 
 void DocumentContainerPrivate::get_image_size(const litehtml::tchar_t *src,
