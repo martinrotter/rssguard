@@ -35,6 +35,7 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
     virtual void setZoomFactor(qreal zoom_factor);
 
   private slots:
+    void simpleLayoutChanged(bool activated);
     void selectedTextChanged(bool available);
     void onLinkClicked(const QUrl& link);
     void reloadPageWithImages();
@@ -55,6 +56,7 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
     virtual void keyPressEvent(QKeyEvent* event);
 
   private:
+    QPair<QString, QUrl> prepareHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const;
     BlockingResult blockedWithAdblock(const QUrl& url);
     QByteArray handleResource(const QUrl& url);
 
@@ -64,8 +66,10 @@ class LiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
     QScopedPointer<QAction> m_actionCopyUrl;
     QScopedPointer<QAction> m_actionCopyText;
     QScopedPointer<QAction> m_actionOpenLinkExternally;
+    QScopedPointer<QAction> m_actionSimpleLayout;
     QScopedPointer<QAction> m_actionReloadWithImages;
     bool m_reloadingWithImages;
+    bool m_useSimpleArticleLayout;
 };
 
 #endif // LITEHTMLVIEWER_H
