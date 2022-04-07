@@ -12,8 +12,6 @@ class LocationLineEdit : public BaseLineEdit {
   Q_OBJECT
 
   public:
-
-    // Constructors and destructors.
     explicit LocationLineEdit(QWidget* parent = nullptr);
     virtual ~LocationLineEdit();
 

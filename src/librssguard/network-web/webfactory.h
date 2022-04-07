@@ -11,14 +11,12 @@
 
 #if defined(USE_WEBENGINE)
 #include <QWebEngineSettings>
-#endif
 
-#if defined(USE_WEBENGINE)
-class QMenu;
-class AdBlockManager;
 class NetworkUrlInterceptor;
 #endif
 
+class QMenu;
+class AdBlockManager;
 class CookieJar;
 class Readability;
 
@@ -40,9 +38,10 @@ class WebFactory : public QObject {
 
     QString processFeedUriScheme(const QString& url);
 
-#if defined(USE_WEBENGINE)
     QAction* engineSettingsAction();
     AdBlockManager* adBlock() const;
+
+#if defined(USE_WEBENGINE)
     NetworkUrlInterceptor* urlIinterceptor() const;
 #endif
 
@@ -66,8 +65,9 @@ class WebFactory : public QObject {
     void generateUnescapes();
 
   private:
+    AdBlockManager* m_adBlock;
+
 #if defined(USE_WEBENGINE)
-    AdBlockManager * m_adBlock;
     NetworkUrlInterceptor* m_urlInterceptor;
     QAction* m_engineSettings;
 #endif

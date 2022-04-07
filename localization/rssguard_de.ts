@@ -875,12 +875,12 @@ Status: %3</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="125"/>
         <source>Feeds search box</source>
-        <translation type="unfinished"/>
+        <translation>Suchfeld für Feeds</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="117"/>
         <source>Search feeds (regex only)</source>
-        <translation type="unfinished"/>
+        <translation>Feeds durchsuchen (nur Regex)</translation>
     </message>
 </context>
 <context>
@@ -1103,7 +1103,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="468"/>
         <source>Database location</source>
-        <translation type="unfinished"/>
+        <translation>Speicherort der Datenbank</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="482"/>
@@ -2375,7 +2375,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="178"/>
         <source>New article filter</source>
-        <translation type="unfinished"/>
+        <translation>Neuer Artikel-Filter</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="247"/>
@@ -2421,7 +2421,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
         <source>Article filters</source>
-        <translation type="unfinished"/>
+        <translation>Artikel-Filter</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="35"/>
@@ -2457,7 +2457,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="143"/>
         <source>Title of article filter</source>
-        <translation type="unfinished"/>
+        <translation>Titel des Artikel-Filters</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="150"/>
@@ -3564,7 +3564,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="17"/>
         <source>Important articles</source>
-        <translation type="unfinished"/>
+        <translation>Wichtige Artikel</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="18"/>
@@ -3786,7 +3786,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
         <source>Date</source>
-        <translation type="unfinished"/>
+        <translation>Datum</translation>
     </message>
 </context>
 <context>
@@ -3884,7 +3884,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="246"/>
         <source>Date</source>
-        <translation type="unfinished"/>
+        <translation>Datum</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="149"/>
@@ -3939,7 +3939,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="274"/>
         <source>Creation date of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Erstellungsdatum des Artikels.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="275"/>
@@ -4062,7 +4062,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="113"/>
         <source>Search articles (regex only)</source>
-        <translation type="unfinished"/>
+        <translation>Artikel durchsuchen (nur Regex)</translation>
     </message>
 </context>
 <context>

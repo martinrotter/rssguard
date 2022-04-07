@@ -10,30 +10,26 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
-#include "services/abstract/category.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceentrypoint.h"
 #include "services/abstract/serviceroot.h"
-#include "services/standard/standardserviceentrypoint.h"
 #include "services/standard/standardserviceroot.h"
 
 #include <QMimeData>
 #include <QPair>
 #include <QSqlError>
-#include <QSqlRecord>
 #include <QStack>
 #include <QTimer>
 
-#include <algorithm>
-
 using RootItemPtr = RootItem*;
 
-FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent) {
+FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_rootItem(new RootItem())
+{
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
-  m_rootItem = new RootItem();
+
 
   // : Name of root item of feed list which can be seen in feed add/edit dialog.
   m_rootItem->setTitle(tr("Root"));

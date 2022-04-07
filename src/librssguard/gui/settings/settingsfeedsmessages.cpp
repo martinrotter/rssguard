@@ -32,25 +32,9 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
                                                    "performance of article list with big number of articles."),
                                                 true);
 
-#if defined(USE_WEBENGINE)
-  m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_checkDisplayPlaceholders);
-  m_ui->m_checkDisplayPlaceholders->hide();
-
   connect(m_ui->m_cbShowEnclosuresDirectly, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinHeightImageAttachments, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
           this, &SettingsFeedsMessages::dirtifySettings);
-#else
-  m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_cbShowEnclosuresDirectly);
-  m_ui->m_cbShowEnclosuresDirectly->hide();
-
-  m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_lblHeightImageAttachments);
-  m_ui->m_lblHeightImageAttachments->hide();
-
-  m_ui->m_tabMessages->layout()->removeWidget(m_ui->m_spinHeightImageAttachments);
-  m_ui->m_spinHeightImageAttachments->hide();
-
-  connect(m_ui->m_checkDisplayPlaceholders, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
-#endif
 
   connect(m_ui->m_spinRelativeArticleTime, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
     if (value <= 0) {
@@ -210,14 +194,10 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_checkMultilineArticleList->setChecked(settings()->value(GROUP(Messages),
                                                                   SETTING(Messages::MultilineArticleList)).toBool());
 
-#if !defined (USE_WEBENGINE)
-  m_ui->m_checkDisplayPlaceholders->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::DisplayImagePlaceholders)).toBool());
-#else
   m_ui->m_spinHeightImageAttachments->setValue(settings()->value(GROUP(Messages),
                                                                  SETTING(Messages::MessageHeadImageHeight)).toInt());
   m_ui->m_cbShowEnclosuresDirectly->setChecked(settings()->value(GROUP(Messages),
                                                                  SETTING(Messages::DisplayEnclosuresInMessage)).toBool());
-#endif
 
   m_ui->m_cbFixupArticleDatetime->setChecked(settings()->value(GROUP(Messages),
                                                                SETTING(Messages::FixupFutureArticleDateTimes)).toBool());
@@ -282,15 +262,10 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages, m_ui->m_checkShowTooltips->isChecked());
   settings()->setValue(GROUP(Messages), Messages::IgnoreContentsChanges, m_ui->m_cmbIgnoreContentsChanges->isChecked());
   settings()->setValue(GROUP(Messages), Messages::MultilineArticleList, m_ui->m_checkMultilineArticleList->isChecked());
-
-#if !defined (USE_WEBENGINE)
-  settings()->setValue(GROUP(Messages), Messages::DisplayImagePlaceholders, m_ui->m_checkDisplayPlaceholders->isChecked());
-#else
   settings()->setValue(GROUP(Messages), Messages::MessageHeadImageHeight, m_ui->m_spinHeightImageAttachments->value());
   settings()->setValue(GROUP(Messages),
                        Messages::DisplayEnclosuresInMessage,
                        m_ui->m_cbShowEnclosuresDirectly->isChecked());
-#endif
 
   settings()->setValue(GROUP(Messages), Messages::FixupFutureArticleDateTimes, m_ui->m_cbFixupArticleDatetime->isChecked());
 

@@ -88,7 +88,11 @@ class AdBlockManager : public QObject {
     bool m_enabled;
     bool m_installing;
     AdBlockIcon* m_adblockIcon;
+
+#if defined(USE_WEBENGINE)
     AdBlockUrlInterceptor* m_interceptor;
+#endif
+
     QString m_unifiedFiltersFile;
     QProcess* m_serverProcess;
     QHash<QPair<QString, QString>, BlockingResult> m_cacheBlocks;

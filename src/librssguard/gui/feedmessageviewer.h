@@ -8,12 +8,7 @@
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 
-#include <QTextBrowser>
-
-#if defined(USE_WEBENGINE)
 class WebBrowser;
-#endif
-
 class MessagePreviewer;
 class MessagesView;
 class MessagesToolBar;
@@ -32,9 +27,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     explicit FeedMessageViewer(QWidget* parent = nullptr);
     virtual ~FeedMessageViewer();
 
-#if defined(USE_WEBENGINE)
     virtual WebBrowser* webBrowser() const;
-#endif
 
     FeedsView* feedsView() const;
     MessagesView* messagesView() const;

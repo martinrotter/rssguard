@@ -21,7 +21,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
-#include "network-web/urlinterceptor.h"
+#include "network-web/webengine/urlinterceptor.h"
 
 #include <QWebEngineProfile>
 

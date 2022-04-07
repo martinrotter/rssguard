@@ -12,13 +12,9 @@
 #include <QPointer>
 
 class QGridLayout;
+class QStackedLayout;
 class QToolBar;
-
-#if defined(USE_WEBENGINE)
 class WebBrowser;
-#else
-class MessageBrowser;
-#endif
 
 class LabelButton : public QToolButton {
   Q_OBJECT
@@ -37,13 +33,12 @@ class MessagePreviewer : public QWidget {
   Q_OBJECT
 
   public:
-    explicit MessagePreviewer(bool should_resize_to_fit, QWidget* parent = nullptr);
+    explicit MessagePreviewer(QWidget* parent = nullptr);
+    virtual ~MessagePreviewer();
 
     void reloadFontSettings();
 
-#if defined(USE_WEBENGINE)
-    WebBrowser* webBrowser() const;
-#endif
+    virtual WebBrowser* webBrowser() const;
 
   public slots:
     void setToolbarsVisible(bool visible);
@@ -59,8 +54,6 @@ class MessagePreviewer : public QWidget {
     void markMessageAsReadUnread(RootItem::ReadStatus read);
     void switchMessageImportance(bool checked);
 
-  protected:
-
   signals:
     void markMessageRead(int id, RootItem::ReadStatus read);
     void markMessageImportant(int id, RootItem::Importance important);
@@ -69,16 +62,12 @@ class MessagePreviewer : public QWidget {
     void createConnections();
     void updateButtons();
     void updateLabels(bool only_clear);
+    void ensureDefaultBrowserVisible();
 
-    QGridLayout* m_layout;
+    QGridLayout* m_mainLayout;
+    QStackedLayout* m_viewerLayout;
     QToolBar* m_toolBar;
-
-#if defined(USE_WEBENGINE)
-    WebBrowser* m_txtMessage;
-#else
-    MessageBrowser* m_txtMessage;
-#endif
-
+    WebBrowser* m_msgBrowser;
     Message m_message;
     QPointer<RootItem> m_root;
     QAction* m_actionMarkRead;

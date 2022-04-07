@@ -7,7 +7,11 @@ else()
 endif()
 
 target_compile_definitions(app PRIVATE RSSGUARD_DLLSPEC=Q_DECL_IMPORT)
-set_target_properties(app PROPERTIES OUTPUT_NAME ${CMAKE_PROJECT_NAME})
+
+set_target_properties(app PROPERTIES
+  OUTPUT_NAME ${CMAKE_PROJECT_NAME}
+  C_STANDARD 99
+)
 
 target_include_directories(app PUBLIC
   ${CMAKE_BINARY_DIR}/src/librssguard

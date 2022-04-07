@@ -50,9 +50,9 @@ SystemTrayIcon::~SystemTrayIcon() {
 
 void SystemTrayIcon::onActivated(QSystemTrayIcon::ActivationReason reason) {
   switch (reason) {
-    case SystemTrayIcon::Trigger:
-    case SystemTrayIcon::DoubleClick:
-    case SystemTrayIcon::MiddleClick:
+    case SystemTrayIcon::ActivationReason::Trigger:
+    case SystemTrayIcon::ActivationReason::DoubleClick:
+    case SystemTrayIcon::ActivationReason::MiddleClick:
       static_cast<FormMain*>(parent())->switchVisibility();
       break;
 

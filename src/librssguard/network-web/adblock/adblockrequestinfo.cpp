@@ -4,9 +4,12 @@
 
 #include "definitions/definitions.h"
 
+#if defined(USE_WEBENGINE)
 AdblockRequestInfo::AdblockRequestInfo(const QWebEngineUrlRequestInfo& webengine_info) {
   initialize(webengine_info);
 }
+
+#endif
 
 AdblockRequestInfo::AdblockRequestInfo(const QUrl& url) {
   initialize(url);
@@ -44,18 +47,12 @@ void AdblockRequestInfo::setRequestMethod(const QByteArray& request_method) {
   m_requestMethod = request_method;
 }
 
+#if defined(USE_WEBENGINE)
 void AdblockRequestInfo::initialize(const QWebEngineUrlRequestInfo& webengine_info) {
   setFirstPartyUrl(webengine_info.firstPartyUrl());
   setRequestMethod(webengine_info.requestMethod());
   setRequestUrl(webengine_info.requestUrl());
   setResourceType(convertResourceType(webengine_info.resourceType()));
-}
-
-void AdblockRequestInfo::initialize(const QUrl& url) {
-  setFirstPartyUrl(url);
-  setRequestMethod(QSL("GET").toLocal8Bit());
-  setRequestUrl(url);
-  setResourceType(convertResourceType(QWebEngineUrlRequestInfo::ResourceType::ResourceTypeMainFrame));
 }
 
 QString AdblockRequestInfo::convertResourceType(QWebEngineUrlRequestInfo::ResourceType rt) const {
@@ -94,4 +91,18 @@ QString AdblockRequestInfo::convertResourceType(QWebEngineUrlRequestInfo::Resour
     default:
       return {};
   }
+}
+
+#endif
+
+void AdblockRequestInfo::initialize(const QUrl& url) {
+  setFirstPartyUrl(url);
+  setRequestMethod(QSL("GET").toLocal8Bit());
+  setRequestUrl(url);
+
+#if defined(USE_WEBENGINE)
+  setResourceType(convertResourceType(QWebEngineUrlRequestInfo::ResourceType::ResourceTypeMainFrame));
+#else
+  setResourceType(QSL("main_frame"));
+#endif
 }

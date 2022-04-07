@@ -19,6 +19,7 @@
 #include "gui/toolbars/feedstoolbar.h"
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/toolbars/statusbar.h"
+#include "gui/webbrowser.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
@@ -28,10 +29,6 @@
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
 #include "services/standard/standardserviceroot.h"
-
-#if defined(USE_WEBENGINE)
-#include "gui/webbrowser.h"
-#endif
 
 #include <QAction>
 #include <QDebug>
@@ -49,7 +46,7 @@
 FeedMessageViewer::FeedMessageViewer(QWidget* parent) : TabContent(parent), m_toolBarsEnabled(true), m_listHeadersEnabled(true),
   m_toolBarFeeds(new FeedsToolBar(tr("Toolbar for feeds"), this)), m_toolBarMessages(new MessagesToolBar(tr("Toolbar for articles"), this)),
   m_messagesView(new MessagesView(this)), m_feedsView(new FeedsView(this)),
-  m_messagesBrowser(new MessagePreviewer(false, this)) {
+  m_messagesBrowser(new MessagePreviewer(this)) {
   initialize();
   initializeViews();
   createConnections();
@@ -59,13 +56,9 @@ FeedMessageViewer::~FeedMessageViewer() {
   qDebugNN << LOGSEC_GUI << "Destroying FeedMessageViewer instance.";
 }
 
-#if defined(USE_WEBENGINE)
-
 WebBrowser* FeedMessageViewer::webBrowser() const {
   return m_messagesBrowser->webBrowser();
 }
-
-#endif
 
 FeedsView* FeedMessageViewer::feedsView() const {
   return m_feedsView;

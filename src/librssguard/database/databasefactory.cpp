@@ -13,8 +13,6 @@
 
 #include <QDir>
 #include <QSqlDriver>
-#include <QSqlError>
-#include <QSqlField>
 #include <QSqlQuery>
 #include <QSqlResult>
 #include <QVariant>

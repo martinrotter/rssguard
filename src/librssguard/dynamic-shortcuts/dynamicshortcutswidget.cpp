@@ -4,7 +4,6 @@
 
 #include "definitions/definitions.h"
 #include "dynamic-shortcuts/shortcutcatcher.h"
-#include "gui/reusable/squeezelabel.h"
 
 #include <QAction>
 #include <QGridLayout>

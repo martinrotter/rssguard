@@ -11,7 +11,6 @@
 #include <QHostInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
-#include <QProcess>
 
 FilterUtils::FilterUtils(QObject* parent) : QObject(parent) {}
 

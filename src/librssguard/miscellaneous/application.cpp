@@ -11,11 +11,14 @@
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/toolbars/statusbar.h"
+#include "gui/webviewers/litehtml/litehtmlviewer.h" // QLiteHtml-based web browsing.
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/notificationfactory.h"
+#include "network-web/adblock/adblockicon.h"
+#include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
@@ -39,8 +42,7 @@
 #endif
 
 #if defined(USE_WEBENGINE)
-#include "network-web/adblock/adblockicon.h"
-#include "network-web/adblock/adblockmanager.h"
+#include "gui/webviewers/webengine/webengineviewer.h" // WebEngine-based web browsing.
 #include "network-web/webengine/networkurlinterceptor.h"
 
 #if QT_VERSION_MAJOR == 6
@@ -149,9 +151,18 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #if defined(USE_WEBENGINE)
   m_webFactory->urlIinterceptor()->load();
 
+  const QString web_data_root = userDataFolder() + QDir::separator() + QSL("web");
+
+  QWebEngineProfile::defaultProfile()->setCachePath(web_data_root + QDir::separator() + QSL("cache"));
+  QWebEngineProfile::defaultProfile()->setPersistentStoragePath(web_data_root + QDir::separator() + QSL("storage"));
   QWebEngineProfile::defaultProfile()->setHttpUserAgent(QString(HTTP_COMPLETE_USERAGENT));
 
+  qDebugNN << LOGSEC_NETWORK << "Persistent web data storage path:"
+           << QUOTE_W_SPACE_DOT(QWebEngineProfile::defaultProfile()->persistentStoragePath());
+
   connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
+#endif
+
   connect(m_webFactory->adBlock(), &AdBlockManager::processTerminated, this, &Application::onAdBlockFailure);
 
   QTimer::singleShot(3000, this, [=]() {
@@ -162,7 +173,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
       onAdBlockFailure();
     }
   });
-#endif
 
   m_webFactory->updateProxy();
 
@@ -304,10 +314,7 @@ FeedReader* Application::feedReader() {
 QList<QAction*> Application::userActions() {
   if (m_mainForm != nullptr && m_userActions.isEmpty()) {
     m_userActions = m_mainForm->allActions();
-
-#if defined(USE_WEBENGINE)
     m_userActions.append(m_webFactory->adBlock()->adBlockIcon());
-#endif
   }
 
   return m_userActions;
@@ -349,6 +356,13 @@ void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), General::FirstRun, false);
   settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, false);
 }
+
+#if defined(USE_WEBENGINE)
+bool Application::forcedNoWebEngine() const {
+  return m_forcedNoWebEngine;
+}
+
+#endif
 
 NodeJs* Application::nodejs() const {
   return m_nodejs;
@@ -606,6 +620,19 @@ void Application::showGuiMessage(Notification::Event event,
   }
 }
 
+WebViewer* Application::createWebView() {
+#if !defined(USE_WEBENGINE)
+  return new LiteHtmlViewer();
+#else
+  if (forcedNoWebEngine()) {
+    return new LiteHtmlViewer();
+  }
+  else {
+    return new WebEngineViewer();
+  }
+#endif
+}
+
 void Application::onCommitData(QSessionManager& manager) {
   qDebugNN << LOGSEC_CORE << "OS asked application to commit its data.";
 
@@ -799,16 +826,6 @@ void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
   download_item->deleteLater();
 }
 
-void Application::onAdBlockFailure() {
-  qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-    tr("AdBlock needs to be configured"),
-    tr("AdBlock is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
-       "if your Node.js is properly configured."),
-    QSystemTrayIcon::MessageIcon::Critical }, { true, true, false });
-
-  qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, false);
-}
-
 #endif
 
 void Application::onFeedUpdatesStarted() {
@@ -874,6 +891,16 @@ void Application::setupCustomDataFolder(const QString& data_folder) {
 
   // Save custom data folder.
   m_customDataFolder = data_folder;
+}
+
+void Application::onAdBlockFailure() {
+  qApp->showGuiMessage(Notification::Event::GeneralEvent, {
+    tr("AdBlock needs to be configured"),
+    tr("AdBlock is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
+       "if your Node.js is properly configured."),
+    QSystemTrayIcon::MessageIcon::Critical }, { true, true, false });
+
+  qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, false);
 }
 
 void Application::determineFirstRuns() {
@@ -962,6 +989,12 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
                                         QSL("user-data-folder"));
   QCommandLineOption disable_singleinstance({ QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG) },
                                             QSL("Allow running of multiple application instances."));
+
+#if defined(USE_WEBENGINE)
+  QCommandLineOption force_nowebengine({ QSL(CLI_FORCE_NOWEBENGINE_SHORT), QSL(CLI_FORCE_NOWEBENGINE_LONG) },
+                                       QSL("Force usage of simpler text-based embedded web browser."));
+#endif
+
   QCommandLineOption disable_only_debug({ QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG) },
                                         QSL("Disable just \"debug\" output."));
   QCommandLineOption disable_debug({ QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG) },
@@ -970,8 +1003,15 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
                                   QSL("Force some application style."),
                                   QSL("style-name"));
 
-  m_cmdParser.addOptions({ help, version, log_file, custom_data_folder,
-                           disable_singleinstance, disable_only_debug, disable_debug,
+  m_cmdParser.addOptions({ help, version,
+                           log_file,
+                           custom_data_folder,
+                           disable_singleinstance,
+                           disable_only_debug,
+                           disable_debug,
+#if defined(USE_WEBENGINE)
+                           force_nowebengine,
+#endif
                            forced_style });
   m_cmdParser.addPositionalArgument(QSL("urls"),
                                     QSL("List of URL addresses pointing to individual online feeds which should be added."),
@@ -1016,6 +1056,14 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
   else if (m_cmdParser.isSet(QSL(CLI_VER_SHORT))) {
     m_cmdParser.showVersion();
   }
+
+#if defined(USE_WEBENGINE)
+  m_forcedNoWebEngine = m_cmdParser.isSet(QSL(CLI_FORCE_NOWEBENGINE_SHORT));
+
+  if (m_forcedNoWebEngine) {
+    qDebugNN << LOGSEC_CORE << "Forcing no-web-engine.";
+  }
+#endif
 
   if (m_cmdParser.isSet(QSL(CLI_SIN_SHORT))) {
     m_allowMultipleInstances = true;

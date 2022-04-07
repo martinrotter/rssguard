@@ -111,21 +111,14 @@ DKEY Messages::ID = "messages";
 DKEY Messages::MessageHeadImageHeight = "message_head_image_height";
 DVALUE(int) Messages::MessageHeadImageHeightDef = 36;
 
-#if defined (USE_WEBENGINE)
 DKEY Messages::DisplayEnclosuresInMessage = "show_enclosures_in_message";
 DVALUE(bool) Messages::DisplayEnclosuresInMessageDef = false;
-#endif
 
 DKEY Messages::EnableMessagePreview = "enable_message_preview";
 DVALUE(bool) Messages::EnableMessagePreviewDef = true;
 
-#if !defined (USE_WEBENGINE)
-DKEY Messages::DisplayImagePlaceholders = "display_image_placeholders";
-DVALUE(bool) Messages::DisplayImagePlaceholdersDef = false;
-#endif
-
 DKEY Messages::Zoom = "zoom";
-DVALUE(qreal) Messages::ZoomDef = double(1.0f);
+DVALUE(qreal) Messages::ZoomDef = double(1.0);
 
 DKEY Messages::FixupFutureArticleDateTimes = "fixup_future_datetimes";
 DVALUE(bool) Messages::FixupFutureArticleDateTimesDef = false;

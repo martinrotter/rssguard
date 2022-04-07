@@ -13,14 +13,15 @@
 #include <QNetworkProxy>
 #include <QPair>
 
+class QAction;
 class FeedsModel;
 class RecycleBin;
 class ImportantNode;
 class UnreadNode;
 class LabelsNode;
 class Label;
-class QAction;
 class MessagesModel;
+class CustomMessagePreviewer;
 class CacheForServiceRoot;
 
 // THIS IS the root node of the service.
@@ -60,7 +61,6 @@ class ServiceRoot : public RootItem {
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
     virtual bool markAsReadUnread(ReadStatus status);
-    virtual bool downloadAttachmentOnMyOwn(const QUrl& url) const;
     virtual QList<Message> undeletedMessages() const;
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
@@ -112,11 +112,13 @@ class ServiceRoot : public RootItem {
                                              const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages) = 0;
 
-    // This method should prepare messages for given "item" (download them maybe?)
-    // into predefined "Messages" table
-    // and then use method QSqlTableModel::setFilter(....).
-    // NOTE: It would be more preferable if all messages are downloaded
-    // right when feeds are updated.
+    // Returns special widget to display articles of this account type.
+    // Caller does NOT free returned previewer after usage from memory,
+    // it only may hide it.
+    // Thus, account is responsible to free any custom previewers.
+    virtual CustomMessagePreviewer* customMessagePreviewer();
+
+    // This method should load messages for given "item" into model.
     virtual bool loadMessagesForItem(RootItem* item, MessagesModel* model);
 
     // Called BEFORE this read status update (triggered by user in message list) is stored in DB,
