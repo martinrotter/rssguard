@@ -148,8 +148,13 @@ void FormAddEditEmail::onOkClicked() {
   msg["Subject"] = QSL("=?utf-8?B?%1?=")
                    .arg(QString(m_ui.m_txtSubject->text().toUtf8().toBase64(QByteArray::Base64Option::Base64UrlEncoding)))
                    .toStdString();
-  msg.set_plain(m_ui.m_txtMessage->toPlainText().toStdString());
-  msg.set_header(HTTP_HEADERS_CONTENT_TYPE, "text/plain; charset=utf-8");
+
+  // TODO: Maybe use some more advanced subclass of QTextEdit
+  // to allow to change formatting etc.
+  //
+  // https://github.com/Anchakor/MRichTextEditor
+  msg.set_html(m_ui.m_txtMessage->toHtml().toStdString());
+  msg.set_header(HTTP_HEADERS_CONTENT_TYPE, "text/html; charset=utf-8");
 
   try {
     m_root->network()->sendEmail(msg, m_root->networkProxy(), m_originalMessage);
