@@ -1,10 +1,14 @@
 <RCC>
   <qresource prefix="/">
     <file>text/CHANGELOG</file>
-    <file>text/COPYING_MIT</file>
+
+    <file>text/licenses.json</file>
+    <file>text/COPYING_BOOLINQ</file>
     <file>text/COPYING_GNU_GPL</file>
     <file>text/COPYING_GNU_LGPL</file>
-    <file>text/COPYING_GNU_GPL_HTML</file>
+    <file>text/COPYING_GUMBO</file>
+    <file>text/COPYING_LITEHTML</file>
+    <file>text/COPYING_QLITEHTML</file>
 
     <file>sounds/boing.wav</file>
     <file>sounds/rooster.wav</file>

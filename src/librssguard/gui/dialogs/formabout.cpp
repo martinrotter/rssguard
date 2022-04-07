@@ -14,6 +14,9 @@
 
 #include <QFile>
 #include <QTextStream>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QPlainTextEdit>
 
 FormAbout::FormAbout(QWidget* parent) : QDialog(parent) {
   m_ui.setupUi(this);
@@ -24,6 +27,10 @@ FormAbout::FormAbout(QWidget* parent) : QDialog(parent) {
 }
 
 FormAbout::~FormAbout() {}
+
+void FormAbout::displayLicense() {
+  m_ui.m_tbLicenses->setPlainText(m_ui.m_cbLicenses->currentData().toString());
+}
 
 void FormAbout::loadSettingsAndPaths() {
   if (qApp->settings()->type() == SettingsProperties::SettingsType::Portable) {
@@ -42,18 +49,20 @@ void FormAbout::loadSettingsAndPaths() {
 }
 
 void FormAbout::loadLicenseAndInformation() {
-  try {
-    m_ui.m_txtLicenseGnuGpl->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/COPYING_GNU_GPL_HTML")));
-  }
-  catch (...) {
-    m_ui.m_txtLicenseGnuGpl->setText(tr("License not found."));
-  }
+  connect(m_ui.m_cbLicenses, QOverload<int>::of(&QComboBox::currentIndexChanged),
+          this, &FormAbout::displayLicense);
 
-  try {
-    m_ui.m_txtLicenseGnuLgpl->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/COPYING_GNU_LGPL")));
-  }
-  catch (...) {
-    m_ui.m_txtLicenseGnuLgpl->setText(tr("License not found."));
+  QJsonDocument licenses_index = QJsonDocument::fromJson(IOFactory::readFile(APP_INFO_PATH + QSL("/licenses.json")));
+
+  for (const QJsonValue& license : licenses_index.array()) {
+    const QJsonObject license_obj = license.toObject();
+    const QString license_text = QString::fromUtf8(IOFactory::readFile(APP_INFO_PATH +
+                                                                       QSL("/") +
+                                                                       license_obj["file"].toString()));
+    const QString license_title =  license_obj["title"].toString() + QSL(": ") + license_obj["components"].toString();
+
+
+    m_ui.m_cbLicenses->addItem(license_title, license_text);
   }
 
   try {
@@ -65,13 +74,6 @@ void FormAbout::loadLicenseAndInformation() {
   }
   catch (...) {
     m_ui.m_txtChangelog->setText(tr("Changelog not found."));
-  }
-
-  try {
-    m_ui.m_txtLicenseMit->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/COPYING_MIT")));
-  }
-  catch (...) {
-    m_ui.m_txtLicenseMit->setText(tr("License not found."));
   }
 
   // Set other informative texts.

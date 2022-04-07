@@ -14,6 +14,9 @@ class RSSGUARD_DLLSPEC FormAbout : public QDialog {
     explicit FormAbout(QWidget* parent);
     virtual ~FormAbout();
 
+  private slots:
+    void displayLicense();
+
   private:
     void loadLicenseAndInformation();
     void loadSettingsAndPaths();
