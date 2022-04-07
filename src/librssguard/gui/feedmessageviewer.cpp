@@ -183,8 +183,8 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
   }
 }
 
-void FeedMessageViewer::changeMessageFilter(MessagesProxyModel::MessageFilter filter) {
-    m_messagesView->changeFilter(filter);
+void FeedMessageViewer::changeMessageFilter(MessagesProxyModel::MessageListFilter filter) {
+  m_messagesView->changeFilter(filter);
 }
 
 void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {

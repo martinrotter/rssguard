@@ -499,9 +499,9 @@ void MessagesView::loadItem(RootItem* item) {
   emit currentMessageRemoved();
 }
 
-void MessagesView::changeFilter(MessagesProxyModel::MessageFilter filter) {
-    m_proxyModel->setFilter(filter);
-    reloadSelections();
+void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
+  m_proxyModel->setFilter(filter);
+  reloadSelections();
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {

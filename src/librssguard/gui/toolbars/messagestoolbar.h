@@ -31,7 +31,7 @@ class MessagesToolBar : public BaseToolBar {
   signals:
     void messageSearchPatternChanged(const QString& pattern);
     void messageHighlighterChanged(MessagesModel::MessageHighlighter highlighter);
-    void messageFilterChanged(MessagesProxyModel::MessageFilter filter);
+    void messageFilterChanged(MessagesProxyModel::MessageListFilter filter);
 
   private slots:
     void onSearchPatternChanged(const QString& search_pattern);
@@ -42,8 +42,8 @@ class MessagesToolBar : public BaseToolBar {
     void initializeSearchBox();
     void addActionToMenu(QMenu* menu, const QIcon& icon, const QString& title, const QVariant& value, const QString& name);
     void initializeHighlighter();
-    void activateAction(const QString& action_name, QWidgetAction* widgetAction);
-    void saveToolButtonSelection(const QString& buttonName, const QAction* action) const;
+    void activateAction(const QString& action_name, QWidgetAction* widget_action);
+    void saveToolButtonSelection(const QString& button_name, const QAction* action) const;
 
   private:
     QWidgetAction* m_actionMessageHighlighter;

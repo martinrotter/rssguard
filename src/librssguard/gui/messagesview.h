@@ -64,7 +64,7 @@ class MessagesView : public BaseTreeView {
     // Searchs the visible message according to given pattern.
     void searchMessages(const QString& pattern);
     void highlightMessages(MessagesModel::MessageHighlighter highlighter);
-    void changeFilter(MessagesProxyModel::MessageFilter filter);
+    void changeFilter(MessagesProxyModel::MessageListFilter filter);
 
   private slots:
     void openSelectedMessagesWithExternalTool();

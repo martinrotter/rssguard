@@ -11,7 +11,7 @@
 #include <QTimer>
 
 MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_filter(MessageFilter::NoFiltering) {
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_filter(MessageListFilter::NoFiltering) {
   setObjectName(QSL("MessagesProxyModel"));
 
   setSortRole(Qt::ItemDataRole::EditRole);
@@ -100,41 +100,78 @@ bool MessagesProxyModel::lessThan(const QModelIndex& left, const QModelIndex& ri
   return false;
 }
 
-bool MessagesProxyModel::acceptMessage(Message currentMessage) const {
-  const QDate currentDate = QDate::currentDate();
-  const QDateTime currentDateTime = QDateTime::currentDateTime();
+bool MessagesProxyModel::filterAcceptsMessage(Message currentMessage) const {
   switch (m_filter) {
-    case MessageFilter::NoFiltering:
+    case MessageListFilter::NoFiltering:
       return true;
-    case MessageFilter::FilterUnread:
+
+    case MessageListFilter::ShowUnread:
       return !currentMessage.m_isRead;
-    case MessageFilter::FilterImportant:
+
+    case MessageListFilter::ShowImportant:
       return currentMessage.m_isImportant;
-    case MessageFilter::FilterToday:
+
+    case MessageListFilter::ShowToday:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
       return
         currentDate.startOfDay() <= currentMessage.m_created &&
         currentMessage.m_created <= currentDate.endOfDay();
-    case MessageFilter::FilterYesterday:
+    }
+
+    case MessageListFilter::ShowYesterday:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
       return
         currentDate.addDays(-1).startOfDay() <= currentMessage.m_created &&
         currentMessage.m_created <= currentDate.addDays(-1).endOfDay();
-    case MessageFilter::FilterLast24Hours:
+    }
+
+    case MessageListFilter::ShowLast24Hours:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
       return
         currentDateTime.addSecs(-24 * 60 * 60) <= currentMessage.m_created &&
         currentMessage.m_created <= currentDateTime;
-    case MessageFilter::FilterLast48Hours:
+    }
+
+    case MessageListFilter::ShowLast48Hours:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
       return
         currentDateTime.addSecs(-48 * 60 * 60) <= currentMessage.m_created &&
         currentMessage.m_created <= currentDateTime;
-    case MessageFilter::FilterThisWeek:
+    }
+
+    case MessageListFilter::ShowThisWeek:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
       return
         currentDate.year() == currentMessage.m_created.date().year() &&
         currentDate.weekNumber() == currentMessage.m_created.date().weekNumber();
-    case MessageFilter::FilterLastWeek:
+    }
+
+    case MessageListFilter::ShowLastWeek:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
       return
         currentDate.addDays(-7).year() == currentMessage.m_created.date().year() &&
         currentDate.addDays(-7).weekNumber() == currentMessage.m_created.date().weekNumber();
+    }
   }
+
   return false;
 }
 
@@ -148,10 +185,10 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
   return
     QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) &&
     (m_sourceModel->cache()->containsData(source_row) ||
-     acceptMessage(m_sourceModel->messageAt(source_row)));
+     filterAcceptsMessage(m_sourceModel->messageAt(source_row)));
 }
 
-void MessagesProxyModel::setFilter(MessageFilter filter) {
+void MessagesProxyModel::setFilter(MessageListFilter filter) {
   m_filter = filter;
 }
 

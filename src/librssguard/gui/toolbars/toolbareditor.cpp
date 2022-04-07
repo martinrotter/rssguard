@@ -87,12 +87,14 @@ void ToolBarEditor::loadEditor(const QList<QAction*>& activated_actions, const Q
       action_item->setData(Qt::ItemDataRole::UserRole, action->objectName());
       action_item->setToolTip(action->toolTip());
     }
+
     if (auto widgetAction = qobject_cast<const QWidgetAction*>(action); widgetAction) {
       if (auto toolButton = qobject_cast<const QToolButton*>(widgetAction->defaultWidget()); toolButton) {
         if (const QAction* action = toolButton->defaultAction(); action) {
           const QString objectName = action->objectName();
           const QString name = action_item->data(Qt::ItemDataRole::UserRole).toString() +
                                (objectName.isEmpty() ? "" : "[" + objectName.toStdString() + "]").c_str();
+
           action_item->setData(Qt::ItemDataRole::UserRole, name);
         }
       }
