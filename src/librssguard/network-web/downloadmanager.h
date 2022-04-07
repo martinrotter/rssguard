@@ -25,7 +25,10 @@ class DownloadItem : public QWidget {
   friend class DownloadModel;
 
   public:
-    explicit DownloadItem(QNetworkReply* reply = 0, QWidget* parent = nullptr);
+    explicit DownloadItem(QNetworkReply* reply = nullptr,
+                          const QString& preferred_file_name = {},
+                          const std::function<void (DownloadItem*)>& run_on_finish = {},
+                          QWidget* parent = nullptr);
     virtual ~DownloadItem();
 
     bool downloading() const;
@@ -35,6 +38,7 @@ class DownloadItem : public QWidget {
     qint64 bytesReceived() const;
     double remainingTime() const;
     double currentSpeed() const;
+    const QFile& output() const;
 
   private slots:
     void stop();
@@ -64,6 +68,8 @@ class DownloadItem : public QWidget {
     QUrl m_url;
     QFile m_output;
     QNetworkReply* m_reply;
+    QString m_preferredFileName;
+    std::function<void (DownloadItem*)> m_runOnFinish;
     qint64 m_bytesReceived;
     QElapsedTimer m_downloadTime;
     QTime m_lastProgressTime;
@@ -74,10 +80,7 @@ class DownloadItem : public QWidget {
     bool m_canceledFileSelect;
 };
 
-#if defined(USE_WEBENGINE)
 class WebBrowser;
-#endif
-
 class SilentNetworkAccessManager;
 
 class DownloadManager : public TabContent {
@@ -98,9 +101,7 @@ class DownloadManager : public TabContent {
     explicit DownloadManager(QWidget* parent = nullptr);
     virtual ~DownloadManager();
 
-#if defined(USE_WEBENGINE)
     virtual WebBrowser* webBrowser() const;
-#endif
 
     SilentNetworkAccessManager* networkManager() const;
 
@@ -118,9 +119,10 @@ class DownloadManager : public TabContent {
     static QString dataString(qint64 size);
 
   public slots:
-    void download(const QNetworkRequest& request);
+    void download(const QNetworkRequest& request,
+                  const QString& preferred_file_name = {},
+                  const std::function<void(DownloadItem*)>& run_on_finish = {});
     void download(const QUrl& url);
-    void handleUnsupportedContent(QNetworkReply* reply);
     void cleanup();
 
   private slots:
@@ -138,25 +140,24 @@ class DownloadManager : public TabContent {
     void downloadFinished();
 
   private:
+    void handleUnsupportedContent(QNetworkReply* reply,
+                                  const QString& preferred_file_name,
+                                  const std::function<void (DownloadItem*)>& run_on_finish);
     void addItem(DownloadItem* item);
 
     QScopedPointer<Ui::DownloadManager> m_ui;
     AutoSaver* m_autoSaver;
     DownloadModel* m_model;
     SilentNetworkAccessManager* m_networkManager;
-
     QScopedPointer<QFileIconProvider> m_iconProvider;
     QList<DownloadItem*> m_downloads;
     RemovePolicy m_removePolicy;
     QString m_downloadDirectory;
 };
 
-#if defined(USE_WEBENGINE)
 inline WebBrowser* DownloadManager::webBrowser() const {
   return nullptr;
 }
-
-#endif
 
 class DownloadModel : public QAbstractListModel {
   Q_OBJECT

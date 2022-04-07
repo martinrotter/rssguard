@@ -20,6 +20,7 @@ struct CacheSnapshot {
 class CacheForServiceRoot {
   public:
     explicit CacheForServiceRoot();
+    virtual ~CacheForServiceRoot();
 
     virtual void saveAllCachedData(bool ignore_errors) = 0;
 

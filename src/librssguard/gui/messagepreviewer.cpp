@@ -7,24 +7,21 @@
 #include "gui/messagebox.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/reusable/searchtextwidget.h"
+#include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "network-web/webfactory.h"
+#include "services/abstract/gui/custommessagepreviewer.h"
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
-
-#if defined(USE_WEBENGINE)
-#include "gui/webbrowser.h"
-#include "gui/webengine/webengineviewer.h"
-#else
-#include "gui/messagebrowser.h"
-#endif
+#include "services/gmail/gui/emailpreviewer.h"
 
 #include <QCheckBox>
 #include <QGridLayout>
 #include <QKeyEvent>
 #include <QPainter>
 #include <QScrollBar>
+#include <QStackedLayout>
 #include <QToolBar>
 #include <QToolTip>
 
@@ -45,18 +42,10 @@ void MessagePreviewer::createConnections() {
           &MessagePreviewer::switchMessageImportance);
 }
 
-MessagePreviewer::MessagePreviewer(bool should_resize_to_fit, QWidget* parent)
-  : QWidget(parent), m_layout(new QGridLayout(this)), m_toolBar(new QToolBar(this)),
-  m_separator(nullptr), m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
-#if defined(USE_WEBENGINE)
-  m_txtMessage = new WebBrowser(this);
-
-  if (should_resize_to_fit) {
-    m_txtMessage->setFixedHeight(parent->parentWidget()->height());
-  }
-#else
-  m_txtMessage = new MessageBrowser(should_resize_to_fit, this);
-#endif
+MessagePreviewer::MessagePreviewer(QWidget* parent)
+  : QWidget(parent), m_mainLayout(new QGridLayout(this)), m_viewerLayout(new QStackedLayout(this)),
+  m_toolBar(new QToolBar(this)), m_msgBrowser(new WebBrowser(nullptr, this)), m_separator(nullptr),
+  m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
 
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
 
@@ -64,40 +53,52 @@ MessagePreviewer::MessagePreviewer(bool should_resize_to_fit, QWidget* parent)
   // that whole toolbar is visible.
   m_toolBar->setSizePolicy(m_toolBar->sizePolicy().horizontalPolicy(), QSizePolicy::Policy::MinimumExpanding);
 
-  m_layout->setContentsMargins(3, 3, 3, 3);
-  m_layout->addWidget(m_txtMessage, 0, 1, 1, 1);
-  m_layout->addWidget(m_toolBar, 0, 0, -1, 1);
+  // This layout holds standard article browser on index 0
+  // and optional custom browser on index 1.
+  m_viewerLayout->addWidget(m_msgBrowser);
+
+  m_mainLayout->setContentsMargins(3, 3, 3, 3);
+  m_mainLayout->addLayout(m_viewerLayout, 0, 1, 1, 1);
+  m_mainLayout->addWidget(m_toolBar, 0, 0, -1, 1);
 
   createConnections();
+
   m_actionSwitchImportance->setCheckable(true);
+
   clear();
 }
 
+MessagePreviewer::~MessagePreviewer() {
+  if (m_viewerLayout->count() > 1) {
+    // Make sure that previewer does not delete any custom article
+    // viewers as those are responsibility to free by their accounts.
+    auto* wdg = m_viewerLayout->widget(1);
+
+    wdg->setParent(nullptr);
+
+    m_viewerLayout->removeWidget(wdg);
+  }
+}
+
 void MessagePreviewer::reloadFontSettings() {
-  m_txtMessage->reloadFontSettings();
+  m_msgBrowser->reloadFontSettings();
 }
 
 void MessagePreviewer::setToolbarsVisible(bool visible) {
   m_toolBar->setVisible(visible);
-
-#if defined(USE_WEBENGINE)
-  m_txtMessage->setNavigationBarVisible(visible);
-#endif
+  m_msgBrowser->setNavigationBarVisible(visible);
 
   qApp->settings()->setValue(GROUP(GUI), GUI::MessageViewerToolbarsVisible, visible);
 }
 
-#if defined(USE_WEBENGINE)
-
 WebBrowser* MessagePreviewer::webBrowser() const {
-  return m_txtMessage;
+  return m_msgBrowser;
 }
-
-#endif
 
 void MessagePreviewer::clear() {
   updateLabels(true);
-  m_txtMessage->clear(false);
+  ensureDefaultBrowserVisible();
+  m_msgBrowser->clear(false);
   hide();
   m_root.clear();
   m_message = Message();
@@ -108,11 +109,8 @@ void MessagePreviewer::hideToolbar() {
 }
 
 void MessagePreviewer::loadUrl(const QString& url) {
-#if defined(USE_WEBENGINE)
-  m_txtMessage->loadUrl(url);
-#else
-  m_txtMessage->loadUrl(url);
-#endif
+  ensureDefaultBrowserVisible();
+  m_msgBrowser->loadUrl(url);
 }
 
 void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
@@ -125,27 +123,45 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
     updateButtons();
     updateLabels(false);
     show();
-    m_actionSwitchImportance->setChecked(m_message.m_isImportant);
 
     if (!same_message) {
-      m_txtMessage->setVerticalScrollBarPosition(0.0);
-
-#if defined(USE_WEBENGINE)
-      const auto msg_feed_id = message.m_feedId;
+      const QString msg_feed_id = message.m_feedId;
       const auto* feed = root->getParentServiceRoot()->getItemFromSubTree(
         [msg_feed_id](const RootItem* it) {
         return it->kind() == RootItem::Kind::Feed && it->customId() == msg_feed_id;
       })->toFeed();
 
-      if (feed != nullptr && feed->openArticlesDirectly()) {
-        m_txtMessage->loadUrl(m_message.m_url);
+      if (feed != nullptr && feed->openArticlesDirectly() && !m_message.m_url.isEmpty()) {
+        ensureDefaultBrowserVisible();
+
+        m_msgBrowser->setVerticalScrollBarPosition(0.0);
+        m_msgBrowser->loadUrl(m_message.m_url);
       }
       else {
-        m_txtMessage->loadMessage(message, m_root);
+        CustomMessagePreviewer* custom_previewer = root->getParentServiceRoot()->customMessagePreviewer();
+
+        if (custom_previewer != nullptr) {
+          auto* current_custom_previewer = m_viewerLayout->widget(1);
+
+          if (current_custom_previewer != nullptr) {
+            if (current_custom_previewer != custom_previewer) {
+              m_viewerLayout->removeWidget(current_custom_previewer);
+              m_viewerLayout->addWidget(custom_previewer);
+            }
+          }
+          else {
+            m_viewerLayout->addWidget(custom_previewer);
+          }
+
+          m_viewerLayout->setCurrentIndex(1);
+          custom_previewer->loadMessage(message, root);
+        }
+        else {
+          ensureDefaultBrowserVisible();
+
+          m_msgBrowser->loadMessages({ message }, m_root);
+        }
       }
-#else
-      m_txtMessage->loadMessage(message, m_root);
-#endif
     }
   }
 }
@@ -220,6 +236,7 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
 }
 
 void MessagePreviewer::updateButtons() {
+  m_actionSwitchImportance->setChecked(m_message.m_isImportant);
   m_actionMarkRead->setEnabled(!m_message.m_isRead);
   m_actionMarkUnread->setEnabled(m_message.m_isRead);
 }
@@ -266,6 +283,14 @@ void MessagePreviewer::updateLabels(bool only_clear) {
       m_btnLabels.append({ btn_label, act_label });
     }
   }
+}
+
+void MessagePreviewer::ensureDefaultBrowserVisible() {
+  if (m_viewerLayout->count() > 1) {
+    m_viewerLayout->removeWidget(m_viewerLayout->widget(1));
+  }
+
+  m_viewerLayout->setCurrentIndex(0);
 }
 
 LabelButton::LabelButton(QWidget* parent) : QToolButton(parent), m_label(nullptr) {}

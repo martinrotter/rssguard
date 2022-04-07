@@ -27,6 +27,8 @@ BaseLineEdit::BaseLineEdit(QWidget* parent)
   setClearButtonEnabled(true);
 }
 
+BaseLineEdit::~BaseLineEdit() {}
+
 void BaseLineEdit::setPasswordMode(bool is_password) {
   if (is_password) {
     setEchoMode(QLineEdit::EchoMode::Password);

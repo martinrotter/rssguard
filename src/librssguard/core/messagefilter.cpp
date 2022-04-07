@@ -3,7 +3,6 @@
 #include "core/messagefilter.h"
 
 #include "core/filterutils.h"
-#include "core/message.h"
 #include "exceptions/filteringexception.h"
 #include "miscellaneous/application.h"
 

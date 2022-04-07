@@ -6,6 +6,8 @@
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 
+#include "services/gmail/gui/emailpreviewer.h"
+
 class GmailNetworkFactory;
 
 class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
@@ -13,11 +15,11 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
   public:
     explicit GmailServiceRoot(RootItem* parent = nullptr);
+    virtual ~GmailServiceRoot();
 
     void setNetwork(GmailNetworkFactory* network);
     GmailNetworkFactory* network() const;
 
-    virtual bool downloadAttachmentOnMyOwn(const QUrl& url) const;
     virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
     virtual QList<QAction*> serviceMenu();
     virtual bool isSyncable() const;
@@ -35,6 +37,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
                                              const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages);
     virtual bool wantsBaggedIdsOfExistingMessages() const;
+    virtual CustomMessagePreviewer* customMessagePreviewer();
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
@@ -47,6 +50,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void updateTitle();
 
   private:
+    QPointer<EmailPreviewer> m_emailPreview;
     GmailNetworkFactory* m_network;
     QAction* m_actionReply;
     Message m_replyToMessage;

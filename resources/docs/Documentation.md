@@ -426,18 +426,12 @@ RSS Guard stores its data and settings in single folder. What exact folder it is
 
 ### Built-in Web Browser with AdBlock <a id="webb"></a>
 RSS Guard is distributed in two variants:
-* **Standard package with WebEngine-based bundled article viewer**: This variant displays messages/articles with their full formatting and layout in embedded Chromium-based web viewer. This variant of RSS Guard should be nice for everyone. Also, installation packages are relatively big.
+* **Standard package with WebEngine-based bundled article viewer**: This variant displays messages/articles with their full formatting and layout in embedded Chromium-based web browser. This variant of RSS Guard should be nice for everyone. Also, installation packages are relatively big.
 
-<img alt="alt-img" src="images/webengine-view.png" width="600px">
-
-* **Lite package with simple text-based article viewer**: This variant displays message/article in much simpler and more lightweight text-based component. All packages of this variant have `nowebengine` keyword in their names. Layout and formatting of displayed message is simplified, no big external web viewers are used, which results in much smaller installation packages, much smaller memory footprint and increased privacy of the user, because many web resources are not downloaded by default like pictures, JavaScript and so on. This variant of RSS Guard is meant for advanced users.
-
-<img alt="alt-img" src="images/nonwebengine-view.png" width="600px">
-
-If you're not sure which version to use, **use the WebEngine-based RSS Guard**.
+* **Lite package with simple text-based article viewer**: This variant displays article in much simpler and much more lightweight web viewer component. All packages of this variant have `nowebengine` keyword in their names. This variant of RSS Guard uses [litehtml](https://github.com/litehtml/litehtml) to render HTML/CSS layout of your articles. This component does NOT include JavaScript and is meant to be here for people who value their privacy.
 
 #### AdBlock <a id="adbl"></a>
-[Web-based variant](#webb) of RSS Guard offers ad-blocking functionality via [Adblocker](https://github.com/cliqz-oss/adblocker). Adblocker offers similar performance to [uBlock Origin](https://github.com/gorhill/uBlock).
+Both variants of RSS Guard offer ad-blocking functionality via [Adblocker](https://github.com/cliqz-oss/adblocker). Adblocker offers similar performance to [uBlock Origin](https://github.com/gorhill/uBlock).
 
 If you want to use AdBlock, you need to have [Node.js](#node) installed.
 
@@ -461,9 +455,9 @@ You can right click on any item in embedded web browser and hit `Save as` button
 You can download up to 6 files simultaneously.
 
 ### Node.js <a id="node"></a>
-RSS Guard integrates [`Node.js`](https://nodejs.org). Go to `Node.js` section of `Settings` dialog to see more.
+RSS Guard integrates [Node.js](https://nodejs.org). Go to `Node.js` section of `Settings` dialog to see more.
 
-`Node.js` is used for some advanced functionality like [AdBlock](#adbl).
+Node.js is used for some advanced functionality like [AdBlock](#adbl).
 
 
 ### Labels <a id="lbls"></a>

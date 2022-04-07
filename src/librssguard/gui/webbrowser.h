@@ -6,20 +6,21 @@
 #include "gui/tabcontent.h"
 
 #include "core/message.h"
-#include "network-web/webengine/webenginepage.h"
 #include "services/abstract/rootitem.h"
 
 #include <QPointer>
 #include <QToolBar>
+#include <QUrl>
 
 class QToolButton;
 class QVBoxLayout;
 class QHBoxLayout;
 class QProgressBar;
+class QWidgetAction;
 class QMenu;
 class QLabel;
 class TabWidget;
-class WebEngineViewer;
+class WebViewer;
 class LocationLineEdit;
 class DiscoverFeedsButton;
 class SearchTextWidget;
@@ -27,34 +28,35 @@ class SearchTextWidget;
 class WebBrowser : public TabContent {
   Q_OBJECT
 
+  friend class WebEngineViewer;
+  friend class LiteHtmlViewer;
+
   public:
-    explicit WebBrowser(QWidget* parent = nullptr);
+    explicit WebBrowser(WebViewer* viewer = nullptr, QWidget* parent = nullptr);
     virtual ~WebBrowser();
 
     virtual WebBrowser* webBrowser() const;
 
-    WebEngineViewer* viewer() const;
+    WebViewer* viewer() const;
+
+    void reloadFontSettings();
 
     double verticalScrollBarPosition() const;
     void setVerticalScrollBarPosition(double pos);
 
   public slots:
-    void reloadFontSettings();
-    void increaseZoom();
-    void decreaseZoom();
-    void resetZoom();
-
     void clear(bool also_hide);
     void loadUrl(const QString& url);
     void loadUrl(const QUrl& url);
+    void setHtml(const QString& html, const QUrl& base_url = {});
     void loadMessages(const QList<Message>& messages, RootItem* root);
-    void loadMessage(const Message& message, RootItem* root);
     void setNavigationBarVisible(bool visible);
 
   protected:
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
+    void onZoomFactorChanged();
     void openCurrentSiteInSystemBrowser();
     void updateUrl(const QUrl& url);
     void onLoadingStarted();
@@ -62,27 +64,32 @@ class WebBrowser : public TabContent {
     void onLoadingFinished(bool success);
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
+    void onLinkHovered(const QUrl& url);
+    void newWindowRequested(WebViewer* viewer);
 
     void readabilePage();
     void setReadabledHtml(const QString& better_html);
     void readabilityFailed(const QString& error);
 
   signals:
-    void closeRequested();
+    void windowCloseRequested();
     void iconChanged(int index, const QIcon& icon);
     void titleChanged(int index, const QString& title);
 
   private:
     void initializeLayout();
+    void bindWebView();
     void createConnections();
 
   private:
     QVBoxLayout* m_layout;
     QToolBar* m_toolBar;
-    WebEngineViewer* m_webView;
+    WebViewer* m_webView;
     SearchTextWidget* m_searchWidget;
     LocationLineEdit* m_txtLocation;
+    QAction* m_txtLocationAction;
     DiscoverFeedsButton* m_btnDiscoverFeeds;
+    QWidgetAction* m_btnDiscoverFeedsAction;
     QProgressBar* m_loadingProgress;
     QAction* m_actionBack;
     QAction* m_actionForward;
@@ -98,7 +105,7 @@ inline WebBrowser* WebBrowser::webBrowser() const {
   return const_cast<WebBrowser*>(this);
 }
 
-inline WebEngineViewer* WebBrowser::viewer() const {
+inline WebViewer* WebBrowser::viewer() const {
   return m_webView;
 }
 

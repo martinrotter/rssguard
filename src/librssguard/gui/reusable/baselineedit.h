@@ -10,7 +10,7 @@ class BaseLineEdit : public QLineEdit {
 
   public:
     explicit BaseLineEdit(QWidget* parent = nullptr);
-    virtual ~BaseLineEdit() = default;
+    virtual ~BaseLineEdit();
 
     void setPasswordMode(bool is_password);
 

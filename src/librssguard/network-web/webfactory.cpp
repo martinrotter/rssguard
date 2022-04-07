@@ -5,6 +5,8 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "network-web/adblock/adblockicon.h"
+#include "network-web/adblock/adblockmanager.h"
 #include "network-web/cookiejar.h"
 #include "network-web/readability.h"
 
@@ -13,9 +15,6 @@
 #include <QUrl>
 
 #if defined(USE_WEBENGINE)
-#include "network-web/adblock/adblockicon.h"
-#include "network-web/adblock/adblockmanager.h"
-#include "network-web/urlinterceptor.h"
 #include "network-web/webengine/networkurlinterceptor.h"
 
 #if QT_VERSION_MAJOR == 6
@@ -31,9 +30,10 @@
 
 WebFactory::WebFactory(QObject* parent)
   : QObject(parent) {
+  m_adBlock = new AdBlockManager(this);
+
 #if defined(USE_WEBENGINE)
   m_engineSettings = nullptr;
-  m_adBlock = new AdBlockManager(this);
   m_urlInterceptor = new NetworkUrlInterceptor(this);
 #endif
 
@@ -258,11 +258,11 @@ void WebFactory::updateProxy() {
   }
 }
 
-#if defined(USE_WEBENGINE)
 AdBlockManager* WebFactory::adBlock() const {
   return m_adBlock;
 }
 
+#if defined(USE_WEBENGINE)
 NetworkUrlInterceptor* WebFactory::urlIinterceptor() const {
   return m_urlInterceptor;
 }

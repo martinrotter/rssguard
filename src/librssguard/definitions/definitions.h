@@ -125,6 +125,9 @@
 #define CLI_NDEBUG_SHORT  "g"
 #define CLI_NDEBUG_LONG   "no-debug-output"
 
+#define CLI_FORCE_NOWEBENGINE_SHORT  "w"
+#define CLI_FORCE_NOWEBENGINE_LONG   "no-web-engine"
+
 #define CLI_QUIT_INSTANCE "q"
 #define CLI_IS_RUNNING    "a"
 
@@ -157,7 +160,7 @@
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f
 #define DEFAULT_ZOOM_FACTOR 1.0f
-#define ZOOM_FACTOR_STEP    0.1f
+#define ZOOM_FACTOR_STEP    0.05f
 
 #if defined(USE_WEBENGINE)
 #define HTTP_COMPLETE_USERAGENT (QWebEngineProfile::defaultProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") + QByteArrayLiteral(APP_USERAGENT))
@@ -172,7 +175,6 @@
 #define INTERNAL_URL_BLANK                    "http://rssguard.blank"
 #define INTERNAL_URL_ADBLOCKED                "http://rssguard.adblocked"
 #define INTERNAL_URL_MESSAGE_HOST             "rssguard.message"
-#define INTERNAL_URL_PASSATTACHMENT           "http://rssguard.passattachment"
 
 #define FEED_REGEX_MATCHER                    "<link[^>]+type=\"application\\/(?:atom\\+xml|rss\\+xml|feed\\+json|json)\"[^>]*>"
 #define FEED_HREF_REGEX_MATCHER               "href=\"([^\"]+)\""

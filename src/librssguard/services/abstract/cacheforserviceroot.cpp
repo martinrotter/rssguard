@@ -12,6 +12,8 @@
 
 CacheForServiceRoot::CacheForServiceRoot() : m_uniqueId(NO_PARENT_CATEGORY), m_cacheSaveMutex(new QMutex()) {}
 
+CacheForServiceRoot::~CacheForServiceRoot() {}
+
 void CacheForServiceRoot::addLabelsAssignmentsToCache(const QStringList& ids_of_messages,
                                                       const QString& lbl_custom_id,
                                                       bool assign) {

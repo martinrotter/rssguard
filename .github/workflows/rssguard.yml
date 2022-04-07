@@ -3,7 +3,7 @@ name: rssguard
 
 on:
   push:
-    branches: ["master", "version-4"]
+    branches: ["*"]
     tags: ["*"]
 
 jobs:

@@ -4,6 +4,8 @@
 
 #include "exceptions/ioexception.h"
 #include "miscellaneous/application.h"
+#include "network-web/networkfactory.h"
+#include "services/abstract/rootitem.h"
 
 #include <QDir>
 #include <QDomDocument>
@@ -127,6 +129,71 @@ QString SkinFactory::adBlockedPage(const QString& url, const QString& filter) {
                                                                                                                 filter));
 
   return currentSkin().m_layoutMarkupWrapper.arg(tr("This page was blocked by AdBlock"), adblocked);
+}
+
+QPair<QString, QUrl> SkinFactory::generateHtmlOfArticles(const QList<Message>& messages, RootItem* root) const {
+  Skin skin = currentSkin();
+  QString messages_layout;
+  QString single_message_layout = skin.m_layoutMarkup;
+
+  for (const Message& message : messages) {
+    QString enclosures;
+    QString enclosure_images;
+
+    for (const Enclosure& enclosure : message.m_enclosures) {
+      QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
+
+      enclosures += skin.m_enclosureMarkup.arg(enc_url,
+                                               QSL("&#129527;"),
+                                               enclosure.m_mimeType);
+
+      if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
+          qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
+        // Add thumbnail image.
+        enclosure_images += skin.m_enclosureImageMarkup.arg(
+          enclosure.m_url,
+          enclosure.m_mimeType,
+          qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toString());
+      }
+    }
+
+    QString msg_date = qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
+                       ? message.m_created.toLocalTime().toString(qApp->settings()->value(GROUP(Messages),
+                                                                                          SETTING(Messages::CustomDateFormat)).toString())
+                       : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
+                                                                       QLocale::FormatType::ShortFormat);
+
+    messages_layout.append(single_message_layout
+                           .arg(message.m_title,
+                                tr("Written by ") + (message.m_author.isEmpty() ?
+                                                     tr("unknown author") :
+                                                     message.m_author),
+                                message.m_url,
+                                message.m_contents,
+                                msg_date,
+                                enclosures,
+                                enclosure_images,
+                                QString::number(message.m_id)));
+  }
+
+  QString msg_contents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1
+                                                     ? messages.at(0).m_title
+                                                     : tr("Newspaper view"),
+                                                        messages_layout);
+  auto* feed = root->getParentServiceRoot()->getItemFromSubTree([messages](const RootItem* it) {
+    return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
+  })->toFeed();
+  QString base_url;
+
+  if (feed != nullptr) {
+    QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
+
+    if (url.isValid()) {
+      base_url = url.scheme() + QSL("://") + url.host();
+    }
+  }
+
+  return { msg_contents, base_url };
 }
 
 Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {

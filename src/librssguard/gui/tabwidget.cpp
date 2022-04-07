@@ -7,20 +7,17 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "gui/messagesview.h"
-#include "gui/newspaperpreviewer.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/tabbar.h"
+#include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
 
-#if defined(USE_WEBENGINE)
-#include "gui/webbrowser.h"
-#endif
-
 #include <QMenu>
+#include <QTimer>
 #include <QToolButton>
 
 TabWidget::TabWidget(QWidget* parent) : QTabWidget(parent), m_menuMain(nullptr) {
@@ -163,6 +160,14 @@ bool TabWidget::closeTab(int index) {
   }
 }
 
+void TabWidget::closeBrowserTab() {
+  auto idx = indexOf(qobject_cast<WebBrowser*>(sender()));
+
+  if (idx >= 0) {
+    closeTab(idx);
+  }
+}
+
 void TabWidget::closeAllTabsExceptCurrent() {
   // Close tabs after active tab.
   int index_of_active = currentIndex();
@@ -189,21 +194,18 @@ void TabWidget::closeCurrentTab() {
 }
 
 int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) {
-  int msg_height = height() - tabBar()->height() - 50;
-  NewspaperPreviewer* prev = new NewspaperPreviewer(msg_height, root, messages, this);
-
-  connect(prev, &NewspaperPreviewer::markMessageRead,
-          m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageReadById);
-  connect(prev, &NewspaperPreviewer::markMessageImportant,
-          m_feedMessageViewer->messagesView()->sourceModel(), &MessagesModel::setMessageImportantById);
-
-  int index = addTab(prev,
+  WebBrowser* browser = new WebBrowser(nullptr, this);
+  int index = addTab(browser,
                      qApp->icons()->fromTheme(QSL("format-justify-fill")),
                      tr("Newspaper view"),
                      TabBar::TabType::Closable);
 
   // NOTE: Do not bring "newspaper" tabs to front anymore.
   //setCurrentIndex(index);
+
+  QTimer::singleShot(300, browser, [browser, root, messages]() {
+    browser->loadMessages(messages, root);
+  });
 
   return index;
 }
@@ -217,13 +219,10 @@ int TabWidget::addLinkedBrowser(const QUrl& initial_url) {
 }
 
 int TabWidget::addLinkedBrowser(const QString& initial_url) {
-  return addLinkedBrowser(QUrl(initial_url));
+  return addLinkedBrowser(QUrl::fromUserInput(initial_url));
 }
 
-int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url) {
-#if defined(USE_WEBENGINE)
-  // Create new WebBrowser.
-  WebBrowser* browser = new WebBrowser(this);
+int TabWidget::addBrowser(bool move_after_current, bool make_active, WebBrowser* browser) {
   int final_index;
   QString browser_tab_name = tr("Web browser");
 
@@ -246,14 +245,10 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
   // Make connections.
   connect(browser, &WebBrowser::titleChanged, this, &TabWidget::changeTitle);
   connect(browser, &WebBrowser::iconChanged, this, &TabWidget::changeIcon);
+  connect(browser, &WebBrowser::windowCloseRequested, this, &TabWidget::closeBrowserTab);
 
   // Setup the tab index.
   browser->setIndex(final_index);
-
-  // Load initial web page if desired.
-  if (initial_url.isValid()) {
-    browser->loadUrl(initial_url);
-  }
 
   // Make new web browser active if desired.
   if (make_active) {
@@ -262,12 +257,19 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl&
   }
 
   return final_index;
-#else
-  Q_UNUSED(move_after_current)
-  Q_UNUSED(make_active)
-  qApp->web()->openUrlInExternalBrowser(initial_url.toString());
-  return -1;
-#endif
+}
+
+int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url) {
+  // Create new WebBrowser.
+  WebBrowser* browser = new WebBrowser(nullptr, this);
+  int index = addBrowser(move_after_current, make_active, browser);
+
+  // Load initial web page if desired.
+  if (initial_url.isValid()) {
+    browser->loadUrl(initial_url);
+  }
+
+  return index;
 }
 
 void TabWidget::gotoNextTab() {

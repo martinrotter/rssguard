@@ -3,7 +3,7 @@
 #include "network-web/webengine/webenginepage.h"
 
 #include "definitions/definitions.h"
-#include "gui/webengine/webengineviewer.h"
+#include "gui/webviewers/webengine/webengineviewer.h"
 #include "miscellaneous/application.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblockrequestinfo.h"
@@ -58,12 +58,6 @@ bool WebEnginePage::acceptNavigationRequest(const QUrl& url, NavigationType type
               QUrl::fromUserInput(QSL(INTERNAL_URL_ADBLOCKED)));
       return false;
     }
-  }
-
-  if (url.toString().startsWith(QSL(INTERNAL_URL_PASSATTACHMENT)) &&
-      root != nullptr &&
-      root->getParentServiceRoot()->downloadAttachmentOnMyOwn(url)) {
-    return false;
   }
 
   /*if (url.host() == INTERNAL_URL_MESSAGE_HOST) {

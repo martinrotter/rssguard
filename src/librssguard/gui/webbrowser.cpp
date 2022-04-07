@@ -3,11 +3,13 @@
 #include "gui/webbrowser.h"
 
 #include "database/databasequeries.h"
+#include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/discoverfeedsbutton.h"
 #include "gui/reusable/locationlineedit.h"
 #include "gui/reusable/searchtextwidget.h"
-#include "gui/webengine/webengineviewer.h"
+#include "gui/tabwidget.h"
+#include "gui/webviewers/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
@@ -20,50 +22,65 @@
 #include <QTimer>
 #include <QToolBar>
 #include <QToolTip>
-#include <QWebEngineProfile>
-#include <QWebEngineSettings>
 #include <QWidgetAction>
 
-WebBrowser::WebBrowser(QWidget* parent) : TabContent(parent),
+WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent) : TabContent(parent),
   m_layout(new QVBoxLayout(this)),
   m_toolBar(new QToolBar(tr("Navigation panel"), this)),
-  m_webView(new WebEngineViewer(this)),
+  m_webView(viewer),
   m_searchWidget(new SearchTextWidget(this)),
   m_txtLocation(new LocationLineEdit(this)),
   m_btnDiscoverFeeds(new DiscoverFeedsButton(this)),
-  m_actionBack(m_webView->pageAction(QWebEnginePage::WebAction::Back)),
-  m_actionForward(m_webView->pageAction(QWebEnginePage::WebAction::Forward)),
-  m_actionReload(m_webView->pageAction(QWebEnginePage::WebAction::Reload)),
-  m_actionStop(m_webView->pageAction(QWebEnginePage::WebAction::Stop)),
   m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                           tr("Open this website in system web browser"),
                                           this)),
   m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("text-html")),
                                     tr("View website in reader mode"),
                                     this)) {
+  if (m_webView == nullptr) {
+    m_webView = qApp->createWebView();
+    dynamic_cast<QWidget*>(m_webView)->setParent(this);
+  }
+
   // Initialize the components and layout.
+  bindWebView();
+
+  m_webView->setZoomFactor(qApp->settings()->value(GROUP(Messages), SETTING(Messages::Zoom)).toDouble());
+
   initializeLayout();
+
   setFocusProxy(m_txtLocation);
   setTabOrder(m_txtLocation, m_toolBar);
-  setTabOrder(m_toolBar, m_webView);
+  setTabOrder(m_toolBar, dynamic_cast<QWidget*>(m_webView));
+
   createConnections();
   reloadFontSettings();
+}
+
+void WebBrowser::bindWebView() {
+  m_webView->bindToBrowser(this);
+
+  auto* qobj_viewer = dynamic_cast<QObject*>(m_webView);
+
+  connect(qobj_viewer, SIGNAL(linkHighlighted(QUrl)), this, SLOT(onLinkHovered(QUrl)));
+  connect(qobj_viewer, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
+  connect(qobj_viewer, SIGNAL(urlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
+  connect(qobj_viewer, SIGNAL(iconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
+  connect(qobj_viewer, SIGNAL(loadStarted()), this, SLOT(onLoadingStarted()));
+  connect(qobj_viewer, SIGNAL(loadProgress(int)), this, SLOT(onLoadingProgress(int)));
+  connect(qobj_viewer, SIGNAL(loadFinished(bool)), this, SLOT(onLoadingFinished(bool)));
+  connect(qobj_viewer, SIGNAL(newWindowRequested(WebViewer*)), this, SLOT(newWindowRequested(WebViewer*)));
+  connect(qobj_viewer, SIGNAL(closeWindowRequested()), this, SIGNAL(windowCloseRequested()));
 }
 
 void WebBrowser::createConnections() {
   installEventFilter(this);
 
   connect(m_searchWidget, &SearchTextWidget::searchCancelled, this, [this]() {
-    m_webView->findText(QString());
+    m_webView->findText(QString(), {});
   });
   connect(m_searchWidget, &SearchTextWidget::searchForText, this, [this](const QString& text, bool backwards) {
-    if (backwards) {
-      m_webView->findText(text, QWebEnginePage::FindFlag::FindBackward);
-    }
-    else {
-      m_webView->findText(text);
-    }
-
+    m_webView->findText(text, backwards);
     m_searchWidget->setFocus();
   });
 
@@ -72,18 +89,7 @@ void WebBrowser::createConnections() {
 
   connect(m_txtLocation, &LocationLineEdit::submitted,
           this, static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
-  connect(m_webView, &WebEngineViewer::urlChanged, this, &WebBrowser::updateUrl);
 
-  // Change location textbox status according to webpage status.
-  connect(m_webView, &WebEngineViewer::loadStarted, this, &WebBrowser::onLoadingStarted);
-  connect(m_webView, &WebEngineViewer::loadProgress, this, &WebBrowser::onLoadingProgress);
-  connect(m_webView, &WebEngineViewer::loadFinished, this, &WebBrowser::onLoadingFinished);
-
-  // Forward title/icon changes.
-  connect(m_webView, &WebEngineViewer::titleChanged, this, &WebBrowser::onTitleChanged);
-  connect(m_webView, &WebEngineViewer::iconChanged, this, &WebBrowser::onIconChanged);
-
-  connect(m_webView->page(), &WebEnginePage::windowCloseRequested, this, &WebBrowser::closeRequested);
   connect(qApp->web()->readability(), &Readability::htmlReadabled, this, &WebBrowser::setReadabledHtml);
   connect(qApp->web()->readability(), &Readability::errorOnHtmlReadabiliting, this, &WebBrowser::readabilityFailed);
 }
@@ -94,30 +100,22 @@ void WebBrowser::updateUrl(const QUrl& url) {
 
 void WebBrowser::loadUrl(const QUrl& url) {
   if (url.isValid()) {
-    m_webView->load(url);
+    m_webView->setUrl(url);
   }
 }
 
-WebBrowser::~WebBrowser() {
-  // Delete members. Do not use scoped pointers here.
-  delete m_layout;
+void WebBrowser::setHtml(const QString& html, const QUrl& base_url) {
+  m_webView->setHtml(html, base_url);
 }
 
+WebBrowser::~WebBrowser() {}
+
 double WebBrowser::verticalScrollBarPosition() const {
-  double position;
-  QEventLoop loop;
-
-  viewer()->page()->runJavaScript(QSL("window.pageYOffset;"), [&position, &loop](const QVariant& val) {
-    position = val.toDouble();
-    loop.exit();
-  });
-  loop.exec();
-
-  return position;
+  return m_webView->verticalScrollBarPosition();
 }
 
 void WebBrowser::setVerticalScrollBarPosition(double pos) {
-  viewer()->page()->runJavaScript(QSL("window.scrollTo(0, %1);").arg(pos));
+  m_webView->setVerticalScrollBarPosition(pos);
 }
 
 void WebBrowser::reloadFontSettings() {
@@ -126,24 +124,11 @@ void WebBrowser::reloadFontSettings() {
   fon.fromString(qApp->settings()->value(GROUP(Messages),
                                          SETTING(Messages::PreviewerFontStandard)).toString());
 
-  auto pixel_size = QFontMetrics(fon).ascent();
-
-  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont, fon.family());
-  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont, fon.family());
-  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont, fon.family());
-  QWebEngineProfile::defaultProfile()->settings()->setFontSize(QWebEngineSettings::DefaultFontSize, pixel_size);
+  m_webView->applyFont(fon);
 }
 
-void WebBrowser::increaseZoom() {
-  m_webView->increaseWebPageZoom();
-}
-
-void WebBrowser::decreaseZoom() {
-  m_webView->decreaseWebPageZoom();
-}
-
-void WebBrowser::resetZoom() {
-  m_webView->resetWebPageZoom(true);
+void WebBrowser::onZoomFactorChanged() {
+  qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, m_webView->zoomFactor());
 }
 
 void WebBrowser::clear(bool also_hide) {
@@ -163,6 +148,8 @@ void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {
   m_messages = messages;
   m_root = root;
 
+  setNavigationBarVisible(m_toolBar->isVisible() && m_messages.size() <= 1);
+
   if (!m_root.isNull()) {
     m_searchWidget->hide();
     m_webView->loadMessages(messages, root);
@@ -170,28 +157,65 @@ void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {
   }
 }
 
-void WebBrowser::loadMessage(const Message& message, RootItem* root) {
-  loadMessages({ message }, root);
-}
-
 void WebBrowser::readabilePage() {
   m_actionReadabilePage->setEnabled(false);
-  m_webView->page()->toHtml([this](const QString& htm) {
-    qApp->web()->readability()->makeHtmlReadable(htm, m_webView->url().toString());
-  });
+  qApp->web()->readability()->makeHtmlReadable(m_webView->html(), m_webView->url().toString());
 }
 
 bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
   Q_UNUSED(watched)
 
-  if (event->type() == QEvent::KeyPress) {
+  if (event->type() == QEvent::Type::Wheel) {
+    QWheelEvent* wh_event = static_cast<QWheelEvent*>(event);
+
+    // Zoom with mouse.
+    if ((wh_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
+      if (wh_event->angleDelta().y() > 0 && m_webView->canZoomIn()) {
+        m_webView->zoomIn();
+        onZoomFactorChanged();
+        return true;
+      }
+      else if (wh_event->angleDelta().y() < 0 && m_webView->canZoomOut()) {
+        m_webView->zoomOut();
+        onZoomFactorChanged();
+        return true;
+      }
+    }
+  }
+  else if (event->type() == QEvent::KeyPress) {
     QKeyEvent* key_event = static_cast<QKeyEvent*>(event);
 
+    // Find text.
     if (key_event->matches(QKeySequence::StandardKey::Find)) {
       m_searchWidget->clear();
       m_searchWidget->show();
       m_searchWidget->setFocus();
       return true;
+    }
+
+    // Hide visible search box.
+    if (key_event->key() == Qt::Key::Key_Escape && m_searchWidget->isVisible()) {
+      m_searchWidget->hide();
+      return true;
+    }
+
+    // Zoom with keyboard.
+    if ((key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
+      if (key_event->key() == Qt::Key::Key_Plus && m_webView->canZoomIn()) {
+        m_webView->zoomIn();
+        onZoomFactorChanged();
+        return true;
+      }
+      else if (key_event->key() == Qt::Key::Key_Minus && m_webView->canZoomOut()) {
+        m_webView->zoomOut();
+        onZoomFactorChanged();
+        return true;
+      }
+      else if (key_event->key() == Qt::Key::Key_0) {
+        m_webView->setZoomFactor(1.0f);
+        onZoomFactorChanged();
+        return true;
+      }
     }
   }
 
@@ -214,12 +238,26 @@ void WebBrowser::onTitleChanged(const QString& new_title) {
     emit titleChanged(m_index, tr("No title"));
   }
   else {
-    emit titleChanged(m_index, new_title);
+    emit titleChanged(m_index, new_title.simplified());
   }
 }
 
 void WebBrowser::onIconChanged(const QIcon& icon) {
   emit iconChanged(m_index, icon);
+}
+
+void WebBrowser::onLinkHovered(const QUrl& url) {
+  qDebugNN << LOGSEC_GUI << "Hovered link:" << QUOTE_W_SPACE_DOT(url);
+
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       { url.toString(), url.toString(), QSystemTrayIcon::MessageIcon::NoIcon },
+                       { false, false, true });
+}
+
+void WebBrowser::newWindowRequested(WebViewer* viewer) {
+  WebBrowser* browser = new WebBrowser(viewer, this);
+
+  qApp->mainForm()->tabWidget()->addBrowser(false, false, browser);
 }
 
 void WebBrowser::setReadabledHtml(const QString& better_html) {
@@ -252,12 +290,14 @@ void WebBrowser::initializeLayout() {
   m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("reload"), QSL("view-refresh")));
   m_actionStop->setIcon(qApp->icons()->fromTheme(QSL("process-stop")));
 
-  QWidgetAction* act_discover = new QWidgetAction(this);
+  m_btnDiscoverFeedsAction = new QWidgetAction(this);
 
   m_actionOpenInSystemBrowser->setEnabled(false);
   m_actionReadabilePage->setEnabled(false);
 
-  act_discover->setDefaultWidget(m_btnDiscoverFeeds);
+  //m_btnDiscoverFeedsAction->setDefaultWidget(new QWidget(this));
+
+  m_btnDiscoverFeedsAction->setDefaultWidget(m_btnDiscoverFeeds);
 
   // Add needed actions into toolbar.
   m_toolBar->addAction(m_actionBack);
@@ -266,11 +306,12 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(m_actionStop);
   m_toolBar->addAction(m_actionOpenInSystemBrowser);
   m_toolBar->addAction(m_actionReadabilePage);
-  m_toolBar->addAction(act_discover);
-  m_toolBar->addWidget(m_txtLocation);
+
+  m_toolBar->addAction(m_btnDiscoverFeedsAction);
+  m_txtLocationAction = m_toolBar->addWidget(m_txtLocation);
 
   m_loadingProgress = new QProgressBar(this);
-  m_loadingProgress->setFixedHeight(5);
+  m_loadingProgress->setFixedHeight(10);
   m_loadingProgress->setMinimum(0);
   m_loadingProgress->setTextVisible(false);
   m_loadingProgress->setMaximum(100);
@@ -278,7 +319,7 @@ void WebBrowser::initializeLayout() {
 
   // Setup layout.
   m_layout->addWidget(m_toolBar);
-  m_layout->addWidget(m_webView);
+  m_layout->addWidget(dynamic_cast<QWidget*>(m_webView));
   m_layout->addWidget(m_loadingProgress);
   m_layout->addWidget(m_searchWidget);
   m_layout->setContentsMargins({ 0, 0, 0, 0 });
@@ -295,7 +336,8 @@ void WebBrowser::onLoadingStarted() {
 }
 
 void WebBrowser::onLoadingProgress(int progress) {
-  m_loadingProgress->setValue(progress);
+  m_loadingProgress->setMaximum(progress < 0 ? 0 : 100);
+  m_loadingProgress->setValue(progress < 0 ? 0 : progress);
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
@@ -313,9 +355,7 @@ void WebBrowser::onLoadingFinished(bool success) {
 
     // Let's check if there are any feeds defined on the web and eventually
     // display "Add feeds" button.
-    m_webView->page()->toHtml([this](const QString& result) {
-      this->m_btnDiscoverFeeds->setFeedAddresses(NetworkFactory::extractFeedLinksFromHtmlPage(m_webView->url(), result));
-    });
+    m_btnDiscoverFeeds->setFeedAddresses(NetworkFactory::extractFeedLinksFromHtmlPage(m_webView->url(), m_webView->html()));
   }
   else {
     m_btnDiscoverFeeds->clearFeedAddresses();

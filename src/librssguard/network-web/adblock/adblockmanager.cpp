@@ -10,10 +10,13 @@
 #include "network-web/adblock/adblockdialog.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockrequestinfo.h"
-#include "network-web/adblock/adblockurlinterceptor.h"
 #include "network-web/networkfactory.h"
-#include "network-web/webengine/networkurlinterceptor.h"
 #include "network-web/webfactory.h"
+
+#if defined(USE_WEBENGINE)
+#include "network-web/adblock/adblockurlinterceptor.h"
+#include "network-web/webengine/networkurlinterceptor.h"
+#endif
 
 #include <QDateTime>
 #include <QDir>
@@ -25,7 +28,10 @@
 #include <QUrlQuery>
 
 AdBlockManager::AdBlockManager(QObject* parent)
-  : QObject(parent), m_loaded(false), m_enabled(false), m_installing(false), m_interceptor(new AdBlockUrlInterceptor(this)),
+  : QObject(parent), m_loaded(false), m_enabled(false), m_installing(false),
+#if defined(USE_WEBENGINE)
+  m_interceptor(new AdBlockUrlInterceptor(this)),
+#endif
   m_serverProcess(nullptr), m_cacheBlocks({}) {
   m_adblockIcon = new AdBlockIcon(this);
   m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
@@ -93,7 +99,9 @@ void AdBlockManager::setEnabled(bool enabled) {
   }
 
   if (!m_loaded) {
+#if defined(USE_WEBENGINE)
     qApp->web()->urlIinterceptor()->installUrlInterceptor(m_interceptor);
+#endif
     m_loaded = true;
   }
 

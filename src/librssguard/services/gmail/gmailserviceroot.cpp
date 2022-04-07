@@ -12,8 +12,8 @@
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailentrypoint.h"
 #include "services/gmail/gmailnetworkfactory.h"
+#include "services/gmail/gui/emailpreviewer.h"
 #include "services/gmail/gui/formaddeditemail.h"
-#include "services/gmail/gui/formdownloadattachment.h"
 #include "services/gmail/gui/formeditgmailaccount.h"
 
 #include <QFileDialog>
@@ -22,6 +22,12 @@ GmailServiceRoot::GmailServiceRoot(RootItem* parent)
   : ServiceRoot(parent), m_network(new GmailNetworkFactory(this)), m_actionReply(nullptr) {
   m_network->setService(this);
   setIcon(GmailEntryPoint().icon());
+}
+
+GmailServiceRoot::~GmailServiceRoot() {
+  if (!m_emailPreview.isNull()) {
+    m_emailPreview->deleteLater();
+  }
 }
 
 void GmailServiceRoot::updateTitle() {
@@ -97,23 +103,12 @@ bool GmailServiceRoot::wantsBaggedIdsOfExistingMessages() const {
   return true;
 }
 
-bool GmailServiceRoot::downloadAttachmentOnMyOwn(const QUrl& url) const {
-  QString str_url = url.toString();
-  QString attachment_id = str_url.mid(str_url.indexOf(QL1C('?')) + 1);
-  QStringList parts = attachment_id.split(QSL(GMAIL_ATTACHMENT_SEP));
-  QString file = QFileDialog::getSaveFileName(qApp->mainFormWidget(), tr("Select attachment destination file"),
-                                              qApp->homeFolder() + QDir::separator() + parts.at(0));
-
-  if (!file.isEmpty() && parts.size() == 3) {
-    Downloader* down = network()->downloadAttachment(parts.at(1), parts.at(2), networkProxy());
-    FormDownloadAttachment form(file, down, qApp->mainFormWidget());
-
-    form.exec();
-    return true;
+CustomMessagePreviewer* GmailServiceRoot::customMessagePreviewer() {
+  if (m_emailPreview.isNull()) {
+    m_emailPreview = new EmailPreviewer(this);
   }
-  else {
-    return false;
-  }
+
+  return m_emailPreview.data();
 }
 
 QList<QAction*> GmailServiceRoot::contextMenuMessagesList(const QList<Message>& messages) {

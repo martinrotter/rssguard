@@ -68,7 +68,7 @@ set(APP_URL_ISSUES_NEW "https://github.com/martinrotter/rssguard/issues/new/choo
 
 set(TYPEINFO "????")
 
-project(rssguard VERSION ${APP_VERSION} LANGUAGES CXX)
+project(rssguard VERSION ${APP_VERSION} LANGUAGES CXX C)
 
 # Basic C++ related behavior of cmake.
 set(CMAKE_CXX_STANDARD 17)

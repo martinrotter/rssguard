@@ -9,6 +9,7 @@
 #include "miscellaneous/settings.h"
 
 #include <QDir>
+#include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -58,6 +59,15 @@ QString NodeJs::processedPackageFolder() const {
     qCriticalNN << LOGSEC_NODEJS << "Failed to create package folder structure" << QUOTE_W_SPACE_DOT(path);
   }
 
+  if (!QDir(path).exists(QSL("package.json"))) {
+    QFile fl(path + QDir::separator() + QSL("package.json"));
+
+    fl.open(QIODevice::OpenModeFlag::WriteOnly);
+    fl.write(QString("{}").toUtf8());
+    fl.flush();
+    fl.close();
+  }
+
   return QDir::toNativeSeparators(path);
 }
 
@@ -80,7 +90,9 @@ QString NodeJs::npmVersion(const QString& npm_exe) const {
 NodeJs::PackageStatus NodeJs::packageStatus(const PackageMetadata& pkg) const {
   QString npm_ls = IOFactory::startProcessGetOutput(npmExecutable(),
                                                     { QSL("ls"), QSL("--unicode"), QSL("--json"), QSL("--prefix"),
-                                                      processedPackageFolder() });
+                                                      processedPackageFolder() },
+                                                    {},
+                                                    processedPackageFolder());
   QJsonDocument json = QJsonDocument::fromJson(npm_ls.toUtf8());
   QJsonObject deps = json.object()["dependencies"].toObject();
 
@@ -180,10 +192,11 @@ void NodeJs::installPackages(const QList<PackageMetadata>& pkgs) {
 
     to_install.prepend(QSL("--production"));
     to_install.prepend(QSL("install"));
-    to_install.append(QSL("--prefix"));
-    to_install.append(processedPackageFolder());
 
-    IOFactory::startProcess(proc, npmExecutable(), to_install);
+    //to_install.append(QSL("--prefix"));
+    //to_install.append(processedPackageFolder());
+
+    IOFactory::startProcess(proc, npmExecutable(), to_install, {}, processedPackageFolder());
   }
   catch (const ProcessException& ex) {
     qCriticalNN << LOGSEC_NODEJS << "Packages" << QUOTE_W_SPACE(to_install)

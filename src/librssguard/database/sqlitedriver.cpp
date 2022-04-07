@@ -3,7 +3,6 @@
 #include "database/sqlitedriver.h"
 
 #include "exceptions/applicationexception.h"
-#include "exceptions/ioexception.h"
 #include "miscellaneous/application.h"
 
 #include <QDir>
