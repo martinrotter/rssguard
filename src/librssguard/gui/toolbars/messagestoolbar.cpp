@@ -183,32 +183,32 @@ void MessagesToolBar::initializeHighlighter() {
                   "show_important");
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show articles from today"),
+                  tr("Show today's articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowToday),
                   "show_today");
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show articles from yesterday"),
+                  tr("Show yesterday's articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowYesterday),
                   "show_yesterday");
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show articles from last 24 hours"),
+                  tr("Show articles in last 24 hours"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowLast24Hours),
                   "show_last24hours");
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show articles from last 48 hours"),
+                  tr("Show articles in last 48 hours"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowLast48Hours),
                   "show_last48hours");
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show articles from this week"),
+                  tr("Show this week's articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowThisWeek),
                   "show_this_week");
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show articles from last week"),
+                  tr("Show last week's articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowLastWeek),
                   "show_last_week");
 
