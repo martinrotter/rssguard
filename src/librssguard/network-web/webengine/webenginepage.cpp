@@ -60,18 +60,13 @@ bool WebEnginePage::acceptNavigationRequest(const QUrl& url, NavigationType type
     }
   }
 
-  /*if (url.host() == INTERNAL_URL_MESSAGE_HOST) {
-     setHtml(view()->messageContents(), QUrl(INTERNAL_URL_MESSAGE));
-     return true;
-     }
-     else {*/
   return QWebEnginePage::acceptNavigationRequest(url, type, is_main_frame);
-
-  //}
 }
 
-void WebEnginePage::javaScriptConsoleMessage(JavaScriptConsoleMessageLevel level, const QString& message,
-                                             int line_number, const QString& source_id) {
+void WebEnginePage::javaScriptConsoleMessage(JavaScriptConsoleMessageLevel level,
+                                             const QString& message,
+                                             int line_number,
+                                             const QString& source_id) {
   Q_UNUSED(level)
 
   qWarningNN << LOGSEC_JS << message << QSL(" (source: %1:%2)").arg(source_id, QString::number(line_number));

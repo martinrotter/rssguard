@@ -27,11 +27,18 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-export")));
 
-  m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Error, tr("No file is selected."), tr("No file is selected."));
+  m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Error,
+                                   tr("No file is selected."),
+                                   tr("No file is selected."));
   m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->disconnect();
-  m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning,
+                               tr("No operation executed yet."),
+                               tr("No operation executed yet."));
 
-  connect(m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok), &QPushButton::clicked, this, &FormStandardImportExport::performAction);
+  connect(m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok),
+          &QPushButton::clicked,
+          this,
+          &FormStandardImportExport::performAction);
   connect(m_ui->m_btnSelectFile, &QPushButton::clicked, this, &FormStandardImportExport::selectFile);
   connect(m_ui->m_btnCheckAllItems, &QPushButton::clicked, m_model, &FeedsImportExportModel::checkAllItems);
   connect(m_ui->m_btnUncheckAllItems, &QPushButton::clicked, m_model, &FeedsImportExportModel::uncheckAllItems);
@@ -61,10 +68,12 @@ void FormStandardImportExport::setMode(FeedsImportExportModel::Mode mode) {
     }
 
     case FeedsImportExportModel::Mode::Import: {
+      m_ui->m_cbExportIcons->setVisible(false);
       m_ui->m_groupFile->setTitle(tr("Source file"));
       m_ui->m_groupFeeds->setTitle(tr("Target feeds && categories"));
       m_ui->m_groupFeeds->setDisabled(true);
       m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setText(tr("&Import from file"));
+      m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);
 
       // Load categories.
       loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
@@ -76,8 +85,6 @@ void FormStandardImportExport::setMode(FeedsImportExportModel::Mode mode) {
     default:
       break;
   }
-
-  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);
 }
 
 void FormStandardImportExport::selectFile() {
@@ -122,7 +129,8 @@ void FormStandardImportExport::onParsingFinished(int count_failed, int count_suc
   }
   else {
     m_ui->m_groupFeeds->setEnabled(false);
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, tr("Error, file is not well-formed. Select another file."),
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                 tr("Error, file is not well-formed. Select another file."),
                                  tr("Error occurred. File is not well-formed. Select another file."));
   }
 
@@ -135,8 +143,7 @@ void FormStandardImportExport::onParsingProgress(int completed, int total) {
 }
 
 void FormStandardImportExport::selectExportFile(bool without_dialog) {
-  const QString the_file = qApp->homeFolder() +
-                           QDir::separator() +
+  const QString the_file = qApp->homeFolder() + QDir::separator() +
                            QSL("rssguard_feeds_%1.opml").arg(QDate::currentDate().toString(Qt::DateFormat::ISODate));
   QString selected_file;
   QString selected_filter;
@@ -150,10 +157,8 @@ void FormStandardImportExport::selectExportFile(bool without_dialog) {
     filter += filter_opml20;
     filter += QSL(";;");
     filter += filter_txt_url_per_line;
-    selected_file = QFileDialog::getSaveFileName(this, tr("Select file for feeds export"),
-                                                 the_file,
-                                                 filter,
-                                                 &selected_filter);
+    selected_file =
+      QFileDialog::getSaveFileName(this, tr("Select file for feeds export"), the_file, filter, &selected_filter);
   }
   else {
     selected_file = the_file;
@@ -176,10 +181,14 @@ void FormStandardImportExport::selectExportFile(bool without_dialog) {
       }
     }
 
-    m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
+    m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok,
+                                     QDir::toNativeSeparators(selected_file),
+                                     tr("File is selected."));
   }
 
-  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(m_ui->m_lblSelectFile->status() == WidgetWithStatus::StatusType::Ok);
+  const auto is_ok = m_ui->m_lblSelectFile->status() == WidgetWithStatus::StatusType::Ok;
+
+  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(is_ok);
 }
 
 void FormStandardImportExport::selectImportFile() {
@@ -192,8 +201,11 @@ void FormStandardImportExport::selectImportFile() {
   filter += filter_opml20;
   filter += QSL(";;");
   filter += filter_txt_url_per_line;
-  const QString selected_file = QFileDialog::getOpenFileName(this, tr("Select file for feeds import"), qApp->homeFolder(),
-                                                             filter, &selected_filter);
+  const QString selected_file = QFileDialog::getOpenFileName(this,
+                                                             tr("Select file for feeds import"),
+                                                             qApp->homeFolder(),
+                                                             filter,
+                                                             &selected_filter);
 
   if (!selected_file.isEmpty()) {
     if (selected_filter == filter_opml20) {
@@ -203,17 +215,19 @@ void FormStandardImportExport::selectImportFile() {
       m_conversionType = ConversionType::TxtUrlPerLine;
     }
 
-    m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
-    QMessageBox::StandardButton answer = MsgBox::show(this,
-                                                          QMessageBox::Icon::Warning,
-                                                          tr("Get online metadata"),
-                                                          tr("Metadata for your feeds can be fetched online. Note that the action "
-                                                             "could take several minutes, depending on number of feeds."),
-                                                          tr("Do you want to fetch feed metadata online?"),
-                                                          QString(),
-                                                          QMessageBox::StandardButton::Yes |
-                                                          QMessageBox::StandardButton::No,
-                                                          QMessageBox::StandardButton::Yes);
+    m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok,
+                                     QDir::toNativeSeparators(selected_file),
+                                     tr("File is selected."));
+    QMessageBox::StandardButton answer =
+      MsgBox::show(this,
+                   QMessageBox::Icon::Warning,
+                   tr("Get online metadata"),
+                   tr("Metadata for your feeds can be fetched online. Note that the action "
+                      "could take several minutes, depending on number of feeds."),
+                   tr("Do you want to fetch feed metadata online?"),
+                   QString(),
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                   QMessageBox::StandardButton::Yes);
 
     parseImportFile(selected_file, answer == QMessageBox::StandardButton::Yes);
   }
@@ -228,7 +242,9 @@ void FormStandardImportExport::parseImportFile(const QString& file_name, bool fe
     input_file.close();
   }
   else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, tr("Cannot open source file."), tr("Cannot open source file."));
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                 tr("Cannot open source file."),
+                                 tr("Cannot open source file."));
     return;
   }
 
@@ -267,7 +283,7 @@ void FormStandardImportExport::exportFeeds() {
 
   switch (m_conversionType) {
     case ConversionType::OPML20:
-      result_export = m_model->exportToOMPL20(result_data);
+      result_export = m_model->exportToOMPL20(result_data, m_ui->m_cbExportIcons->isChecked());
       break;
 
     case ConversionType::TxtUrlPerLine:
@@ -281,21 +297,27 @@ void FormStandardImportExport::exportFeeds() {
   if (result_export) {
     try {
       IOFactory::writeFile(m_ui->m_lblSelectFile->label()->text(), result_data);
-      m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("Feeds were exported successfully."),
+      m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                   tr("Feeds were exported successfully."),
                                    tr("Feeds were exported successfully."));
     }
     catch (IOException& ex) {
-      m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, tr("Cannot write into destination file: '%1'."), ex.message());
+      m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                   tr("Cannot write into destination file: '%1'."),
+                                   ex.message());
     }
   }
   else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, tr("Critical error occurred."), tr("Critical error occurred."));
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                 tr("Critical error occurred."),
+                                 tr("Critical error occurred."));
   }
 }
 
 void FormStandardImportExport::importFeeds() {
   QString output_message;
-  RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbRootNode->itemData(m_ui->m_cmbRootNode->currentIndex()).value<void*>());
+  RootItem* parent =
+    static_cast<RootItem*>(m_ui->m_cmbRootNode->itemData(m_ui->m_cmbRootNode->currentIndex()).value<void*>());
 
   if (m_serviceRoot->mergeImportExportModel(m_model, parent, output_message)) {
     m_serviceRoot->requestItemExpand(parent->getSubTree(), true);
@@ -307,9 +329,9 @@ void FormStandardImportExport::importFeeds() {
 }
 
 void FormStandardImportExport::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
-  m_ui->m_cmbRootNode->addItem(root_item->icon(), root_item->title(), QVariant::fromValue((void*) root_item));
+  m_ui->m_cmbRootNode->addItem(root_item->icon(), root_item->title(), QVariant::fromValue((void*)root_item));
 
   for (Category* category : categories) {
-    m_ui->m_cmbRootNode->addItem(category->icon(), category->title(), QVariant::fromValue((void*) category));
+    m_ui->m_cmbRootNode->addItem(category->icon(), category->title(), QVariant::fromValue((void*)category));
   }
 }

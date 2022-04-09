@@ -28,11 +28,10 @@ FeedsImportExportModel::~FeedsImportExportModel() {
   }
 }
 
-bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
+bool FeedsImportExportModel::exportToOMPL20(QByteArray& result, bool export_icons) {
   QDomDocument opml_document;
-  QDomProcessingInstruction xml_declaration = opml_document.createProcessingInstruction(QSL("xml"),
-                                                                                        QSL(
-                                                                                          "version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\""));
+  QDomProcessingInstruction xml_declaration =
+    opml_document.createProcessingInstruction(QSL("xml"), QSL("version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\""));
 
   opml_document.appendChild(xml_declaration);
 
@@ -80,8 +79,9 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
           outline_category.setAttribute(QSL("text"), child_item->title());
           outline_category.setAttribute(QSL("description"), child_item->description());
 
-          if (!child_item->icon().isNull()) {
-            outline_category.setAttribute(QSL("rssguard:icon"), QString(qApp->icons()->toByteArray(child_item->icon())));
+          if (export_icons && !child_item->icon().isNull()) {
+            outline_category.setAttribute(QSL("rssguard:icon"),
+                                          QString(qApp->icons()->toByteArray(child_item->icon())));
           }
 
           active_element.appendChild(outline_category);
@@ -104,7 +104,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result) {
           outline_feed.setAttribute(QSL("rssguard:xmlUrlType"), QString::number(int(child_feed->sourceType())));
           outline_feed.setAttribute(QSL("rssguard:postProcess"), child_feed->postProcessScript());
 
-          if (!child_feed->icon().isNull()) {
+          if (export_icons && !child_feed->icon().isNull()) {
             outline_feed.setAttribute(QSL("rssguard:icon"), QString(qApp->icons()->toByteArray(child_feed->icon())));
           }
 
@@ -168,8 +168,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
   QStack<RootItem*> model_items;
   QNetworkProxy custom_proxy;
 
-  if (sourceModel()->rootItem() != nullptr &&
-      sourceModel()->rootItem()->getParentServiceRoot() != nullptr) {
+  if (sourceModel()->rootItem() != nullptr && sourceModel()->rootItem()->getParentServiceRoot() != nullptr) {
     custom_proxy = sourceModel()->rootItem()->getParentServiceRoot()->networkProxy();
   }
 
@@ -201,23 +200,17 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
           if (!feed_url.isEmpty()) {
             try {
               if (fetch_metadata_online) {
-                StandardFeed* guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
-                                                                feed_url,
-                                                                {}, {}, {},
-                                                                custom_proxy);
+                StandardFeed* guessed =
+                  StandardFeed::guessFeed(StandardFeed::SourceType::Url, feed_url, {}, {}, {}, custom_proxy);
 
                 guessed->setSource(feed_url);
                 active_model_item->appendChild(guessed);
                 succeded++;
                 add_offline_anyway = false;
               }
-            }
-            catch (const ApplicationException& ex) {
-              qCriticalNN << LOGSEC_CORE
-                          << "Cannot fetch medatada for feed:"
-                          << QUOTE_W_SPACE(feed_url)
-                          << "with error:"
-                          << QUOTE_W_SPACE_DOT(ex.message());
+            } catch (const ApplicationException& ex) {
+              qCriticalNN << LOGSEC_CORE << "Cannot fetch medatada for feed:" << QUOTE_W_SPACE(feed_url)
+                          << "with error:" << QUOTE_W_SPACE_DOT(ex.message());
             }
 
             if (add_offline_anyway) {
@@ -225,8 +218,10 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
               QString feed_encoding = child_element.attribute(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING));
               QString feed_type = child_element.attribute(QSL("version"), QSL(DEFAULT_FEED_TYPE)).toUpper();
               QString feed_description = child_element.attribute(QSL("description"));
-              QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
-              StandardFeed::SourceType source_type = StandardFeed::SourceType(child_element.attribute(QSL("rssguard:xmlUrlType")).toInt());
+              QIcon feed_icon =
+                qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
+              StandardFeed::SourceType source_type =
+                StandardFeed::SourceType(child_element.attribute(QSL("rssguard:xmlUrlType")).toInt());
               QString post_process = child_element.attribute(QSL("rssguard:postProcess"));
               auto* new_feed = new StandardFeed(active_model_item);
 
@@ -270,7 +265,8 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
           // Add category and continue.
           QString category_title = child_element.attribute(QSL("text"));
           QString category_description = child_element.attribute(QSL("description"));
-          QIcon category_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
+          QIcon category_icon =
+            qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
 
           if (category_title.isEmpty()) {
             qWarningNN << LOGSEC_CORE
@@ -332,8 +328,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
   auto* root_item = new StandardServiceRoot();
   QNetworkProxy custom_proxy;
 
-  if (sourceModel()->rootItem() != nullptr &&
-      sourceModel()->rootItem()->getParentServiceRoot() != nullptr) {
+  if (sourceModel()->rootItem() != nullptr && sourceModel()->rootItem()->getParentServiceRoot() != nullptr) {
     custom_proxy = sourceModel()->rootItem()->getParentServiceRoot()->networkProxy();
   }
 
@@ -345,22 +340,16 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
 
       try {
         if (fetch_metadata_online) {
-          StandardFeed* guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
-                                                          url, {}, {}, {},
-                                                          custom_proxy);
+          StandardFeed* guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url, url, {}, {}, {}, custom_proxy);
 
           guessed->setSource(url);
           root_item->appendChild(guessed);
           succeded++;
           add_offline_anyway = false;
         }
-      }
-      catch (const ApplicationException& ex) {
-        qCriticalNN << LOGSEC_CORE
-                    << "Cannot fetch medatada for feed:"
-                    << QUOTE_W_SPACE(url)
-                    << "with error:"
-                    << QUOTE_W_SPACE_DOT(ex.message());
+      } catch (const ApplicationException& ex) {
+        qCriticalNN << LOGSEC_CORE << "Cannot fetch medatada for feed:" << QUOTE_W_SPACE(url)
+                    << "with error:" << QUOTE_W_SPACE_DOT(ex.message());
       }
 
       if (add_offline_anyway) {

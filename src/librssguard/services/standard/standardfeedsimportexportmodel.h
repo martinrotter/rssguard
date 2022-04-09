@@ -6,20 +6,17 @@
 #include "services/abstract/accountcheckmodel.h"
 
 class FeedsImportExportModel : public AccountCheckSortedModel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-    enum class Mode {
-      Import,
-      Export
-    };
+    enum class Mode { Import, Export };
 
     explicit FeedsImportExportModel(QObject* parent = nullptr);
     virtual ~FeedsImportExportModel();
 
     // Exports to OPML 2.0
     // NOTE: http://dev.opml.org/spec2.html
-    bool exportToOMPL20(QByteArray& result);
+    bool exportToOMPL20(QByteArray& result, bool export_icons);
     void importAsOPML20(const QByteArray& data, bool fetch_metadata_online);
 
     // Exports to plain text format

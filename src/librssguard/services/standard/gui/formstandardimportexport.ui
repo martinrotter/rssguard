@@ -80,6 +80,13 @@
     </layout>
    </item>
    <item>
+    <widget class="QCheckBox" name="m_cbExportIcons">
+     <property name="text">
+      <string>Export icons</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QGroupBox" name="m_groupFeeds">
      <property name="title">
       <string/>
@@ -97,20 +104,6 @@
       <property name="bottomMargin">
        <number>3</number>
       </property>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="m_btnCheckAllItems">
-        <property name="text">
-         <string>&amp;Check all feeds</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QPushButton" name="m_btnUncheckAllItems">
-        <property name="text">
-         <string>&amp;Uncheck all feeds</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="3">
        <spacer name="horizontalSpacer">
         <property name="orientation">
@@ -150,6 +143,20 @@
         <attribute name="headerVisible">
          <bool>false</bool>
         </attribute>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="m_btnCheckAllItems">
+        <property name="text">
+         <string>&amp;Check all feeds</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QPushButton" name="m_btnUncheckAllItems">
+        <property name="text">
+         <string>&amp;Uncheck all feeds</string>
+        </property>
        </widget>
       </item>
      </layout>
@@ -226,6 +233,7 @@
  <tabstops>
   <tabstop>m_btnSelectFile</tabstop>
   <tabstop>m_cmbRootNode</tabstop>
+  <tabstop>m_cbExportIcons</tabstop>
   <tabstop>m_btnCheckAllItems</tabstop>
   <tabstop>m_btnUncheckAllItems</tabstop>
   <tabstop>m_treeFeeds</tabstop>
