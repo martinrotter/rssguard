@@ -9,10 +9,9 @@ class MessagesModel;
 class Message;
 
 class MessagesProxyModel : public QSortFilterProxyModel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-
     // Enum which describes basic filtering schemes
     // for messages.
     enum class MessageListFilter {
@@ -38,7 +37,11 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     QModelIndexList mapListFromSource(const QModelIndexList& indexes, bool deep = false) const;
 
     // Fix for matching indexes with respect to specifics of the message model.
-    QModelIndexList match(const QModelIndex& start, int role, const QVariant& entered_value, int hits, Qt::MatchFlags flags) const;
+    QModelIndexList match(const QModelIndex& start,
+                          int role,
+                          const QVariant& entered_value,
+                          int hits,
+                          Qt::MatchFlags flags) const;
 
     // Performs sort of items.
     void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
