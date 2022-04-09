@@ -95,7 +95,9 @@ void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
     menu->addAction(qApp->icons()->fromTheme(QSL("document-open")), tr("Open link in external browser"), [link_url]() {
       qApp->web()->openUrlInExternalBrowser(link_url);
 
-      if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool()) {
+      if (qApp->settings()
+            ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
+            .toBool()) {
         QTimer::singleShot(1000, qApp, []() {
           qApp->mainForm()->display();
         });
@@ -104,7 +106,8 @@ void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
   }
 
   if (menu_data.mediaUrl().isValid() || menu_data.linkUrl().isValid()) {
-    QString media_link = menu_data.mediaUrl().isValid() ? menu_data.mediaUrl().toString() : menu_data.linkUrl().toString();
+    QString media_link =
+      menu_data.mediaUrl().isValid() ? menu_data.mediaUrl().toString() : menu_data.linkUrl().toString();
     QFileIconProvider icon_provider;
     QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), menu);
     auto tools = ExternalTool::toolsFromSettings();
@@ -166,16 +169,16 @@ void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionReload = pageAction(QWebEnginePage::WebAction::Reload);
   browser->m_actionStop = pageAction(QWebEnginePage::WebAction::Stop);
 
-  // NOTE: Just forwar QtWebEngine signals, it's all there.
-  connect(this, &QWebEngineView::loadStarted, this, &WebEngineViewer::loadStarted);
-  connect(this, &QWebEngineView::loadProgress, this, &WebEngineViewer::loadProgress);
-  connect(this, &QWebEngineView::loadFinished, this, &WebEngineViewer::loadFinished);
-  connect(this, &QWebEngineView::titleChanged, this, &WebEngineViewer::titleChanged);
-  connect(this, &QWebEngineView::iconChanged, this, &WebEngineViewer::iconChanged);
-  connect(this, &QWebEngineView::urlChanged, this, &WebEngineViewer::urlChanged);
+  // NOTE: Just forward QtWebEngine signals, it's all there.
+  connect(this, &QWebEngineView::loadStarted, this, &WebEngineViewer::loadingStarted);
+  connect(this, &QWebEngineView::loadProgress, this, &WebEngineViewer::loadingProgress);
+  connect(this, &QWebEngineView::loadFinished, this, &WebEngineViewer::loadingFinished);
+  connect(this, &QWebEngineView::titleChanged, this, &WebEngineViewer::pageTitleChanged);
+  connect(this, &QWebEngineView::iconChanged, this, &WebEngineViewer::pageIconChanged);
+  connect(this, &QWebEngineView::urlChanged, this, &WebEngineViewer::pageUrlChanged);
 
   connect(page(), &QWebEnginePage::windowCloseRequested, this, &WebEngineViewer::closeWindowRequested);
-  connect(page(), &QWebEnginePage::linkHovered, this, &WebEngineViewer::linkHighlighted);
+  connect(page(), &QWebEnginePage::linkHovered, this, &WebEngineViewer::linkMouseHighlighted);
 }
 
 void WebEngineViewer::findText(const QString& text, bool backwards) {
@@ -215,9 +218,12 @@ void WebEngineViewer::setVerticalScrollBarPosition(double pos) {
 void WebEngineViewer::applyFont(const QFont& fon) {
   auto pixel_size = QFontMetrics(fon).ascent();
 
-  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont, fon.family());
-  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont, fon.family());
-  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont, fon.family());
+  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont,
+                                                                 fon.family());
+  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont,
+                                                                 fon.family());
+  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont,
+                                                                 fon.family());
   QWebEngineProfile::defaultProfile()->settings()->setFontSize(QWebEngineSettings::DefaultFontSize, pixel_size);
 }
 

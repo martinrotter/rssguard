@@ -59,13 +59,13 @@ class WebViewer {
     virtual void setZoomFactor(qreal zoom_factor) = 0;
 
   signals:
-    virtual void titleChanged(const QString& new_title) = 0;
-    virtual void urlChanged(const QUrl& url) = 0;
-    virtual void iconChanged(const QIcon&) = 0;
-    virtual void linkHighlighted(const QUrl& url) = 0;
-    virtual void loadStarted() = 0;
-    virtual void loadProgress(int progress) = 0;
-    virtual void loadFinished(bool success) = 0;
+    virtual void pageTitleChanged(const QString& new_title) = 0;
+    virtual void pageUrlChanged(const QUrl& url) = 0;
+    virtual void pageIconChanged(const QIcon&) = 0;
+    virtual void linkMouseHighlighted(const QUrl& url) = 0;
+    virtual void loadingStarted() = 0;
+    virtual void loadingProgress(int progress) = 0;
+    virtual void loadingFinished(bool success) = 0;
     virtual void newWindowRequested(WebViewer* viewer) = 0;
     virtual void closeWindowRequested() = 0;
 };

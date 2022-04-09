@@ -15,8 +15,8 @@ class RootItem;
 class WebBrowser;
 
 class WebEngineViewer : public QWebEngineView, public WebViewer {
-  Q_OBJECT
-  Q_INTERFACES(WebViewer)
+    Q_OBJECT
+    Q_INTERFACES(WebViewer)
 
   public:
     explicit WebEngineViewer(QWidget* parent = nullptr);
@@ -39,13 +39,13 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
     virtual QUrl url() const;
 
   signals:
-    void titleChanged(const QString& new_title);
-    void urlChanged(const QUrl& url);
-    void iconChanged(const QIcon&);
-    void linkHighlighted(const QUrl& url);
-    void loadStarted();
-    void loadProgress(int progress);
-    void loadFinished(bool success);
+    void pageTitleChanged(const QString& new_title);
+    void pageUrlChanged(const QUrl& url);
+    void pageIconChanged(const QIcon&);
+    void linkMouseHighlighted(const QUrl& url);
+    void loadingStarted();
+    void loadingProgress(int progress);
+    void loadingFinished(bool success);
     void newWindowRequested(WebViewer* viewer);
     void closeWindowRequested();
 

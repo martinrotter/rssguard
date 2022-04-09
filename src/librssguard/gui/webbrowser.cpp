@@ -24,19 +24,16 @@
 #include <QToolTip>
 #include <QWidgetAction>
 
-WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent) : TabContent(parent),
-  m_layout(new QVBoxLayout(this)),
-  m_toolBar(new QToolBar(tr("Navigation panel"), this)),
-  m_webView(viewer),
-  m_searchWidget(new SearchTextWidget(this)),
-  m_txtLocation(new LocationLineEdit(this)),
-  m_btnDiscoverFeeds(new DiscoverFeedsButton(this)),
-  m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
-                                          tr("Open this website in system web browser"),
-                                          this)),
-  m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("text-html")),
-                                    tr("View website in reader mode"),
-                                    this)) {
+WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
+  : TabContent(parent), m_layout(new QVBoxLayout(this)), m_toolBar(new QToolBar(tr("Navigation panel"), this)),
+    m_webView(viewer), m_searchWidget(new SearchTextWidget(this)), m_txtLocation(new LocationLineEdit(this)),
+    m_btnDiscoverFeeds(new DiscoverFeedsButton(this)),
+    m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
+                                            tr("Open this website in system web browser"),
+                                            this)),
+    m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("text-html")),
+                                      tr("View website in reader mode"),
+                                      this)) {
   if (m_webView == nullptr) {
     m_webView = qApp->createWebView();
     dynamic_cast<QWidget*>(m_webView)->setParent(this);
@@ -62,13 +59,13 @@ void WebBrowser::bindWebView() {
 
   auto* qobj_viewer = dynamic_cast<QObject*>(m_webView);
 
-  connect(qobj_viewer, SIGNAL(linkHighlighted(QUrl)), this, SLOT(onLinkHovered(QUrl)));
-  connect(qobj_viewer, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
-  connect(qobj_viewer, SIGNAL(urlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
-  connect(qobj_viewer, SIGNAL(iconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
-  connect(qobj_viewer, SIGNAL(loadStarted()), this, SLOT(onLoadingStarted()));
-  connect(qobj_viewer, SIGNAL(loadProgress(int)), this, SLOT(onLoadingProgress(int)));
-  connect(qobj_viewer, SIGNAL(loadFinished(bool)), this, SLOT(onLoadingFinished(bool)));
+  connect(qobj_viewer, SIGNAL(linkMouseHighlighted(QUrl)), this, SLOT(onLinkHovered(QUrl)));
+  connect(qobj_viewer, SIGNAL(pageTitleChanged(QString)), this, SLOT(onTitleChanged(QString)));
+  connect(qobj_viewer, SIGNAL(pageUrlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
+  connect(qobj_viewer, SIGNAL(pageIconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
+  connect(qobj_viewer, SIGNAL(loadingStarted()), this, SLOT(onLoadingStarted()));
+  connect(qobj_viewer, SIGNAL(loadingProgress(int)), this, SLOT(onLoadingProgress(int)));
+  connect(qobj_viewer, SIGNAL(loadingFinished(bool)), this, SLOT(onLoadingFinished(bool)));
   connect(qobj_viewer, SIGNAL(newWindowRequested(WebViewer*)), this, SLOT(newWindowRequested(WebViewer*)));
   connect(qobj_viewer, SIGNAL(closeWindowRequested()), this, SIGNAL(windowCloseRequested()));
 }
@@ -87,8 +84,10 @@ void WebBrowser::createConnections() {
   connect(m_actionOpenInSystemBrowser, &QAction::triggered, this, &WebBrowser::openCurrentSiteInSystemBrowser);
   connect(m_actionReadabilePage, &QAction::triggered, this, &WebBrowser::readabilePage);
 
-  connect(m_txtLocation, &LocationLineEdit::submitted,
-          this, static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
+  connect(m_txtLocation,
+          &LocationLineEdit::submitted,
+          this,
+          static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
 
   connect(qApp->web()->readability(), &Readability::htmlReadabled, this, &WebBrowser::setReadabledHtml);
   connect(qApp->web()->readability(), &Readability::errorOnHtmlReadabiliting, this, &WebBrowser::readabilityFailed);
@@ -121,8 +120,7 @@ void WebBrowser::setVerticalScrollBarPosition(double pos) {
 void WebBrowser::reloadFontSettings() {
   QFont fon;
 
-  fon.fromString(qApp->settings()->value(GROUP(Messages),
-                                         SETTING(Messages::PreviewerFontStandard)).toString());
+  fon.fromString(qApp->settings()->value(GROUP(Messages), SETTING(Messages::PreviewerFontStandard)).toString());
 
   m_webView->applyFont(fon);
 }
@@ -250,8 +248,8 @@ void WebBrowser::onLinkHovered(const QUrl& url) {
   qDebugNN << LOGSEC_GUI << "Hovered link:" << QUOTE_W_SPACE_DOT(url);
 
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                       { url.toString(), url.toString(), QSystemTrayIcon::MessageIcon::NoIcon },
-                       { false, false, true });
+                       {url.toString(), url.toString(), QSystemTrayIcon::MessageIcon::NoIcon},
+                       {false, false, true});
 }
 
 void WebBrowser::newWindowRequested(WebViewer* viewer) {
@@ -267,7 +265,8 @@ void WebBrowser::setReadabledHtml(const QString& better_html) {
 }
 
 void WebBrowser::readabilityFailed(const QString& error) {
-  MsgBox::show({}, QMessageBox::Icon::Critical,
+  MsgBox::show({},
+               QMessageBox::Icon::Critical,
                tr("Reader mode failed for this website"),
                tr("Reader mode cannot be applied to current page."),
                {},
@@ -295,7 +294,7 @@ void WebBrowser::initializeLayout() {
   m_actionOpenInSystemBrowser->setEnabled(false);
   m_actionReadabilePage->setEnabled(false);
 
-  //m_btnDiscoverFeedsAction->setDefaultWidget(new QWidget(this));
+  // m_btnDiscoverFeedsAction->setDefaultWidget(new QWidget(this));
 
   m_btnDiscoverFeedsAction->setDefaultWidget(m_btnDiscoverFeeds);
 
@@ -322,7 +321,7 @@ void WebBrowser::initializeLayout() {
   m_layout->addWidget(dynamic_cast<QWidget*>(m_webView));
   m_layout->addWidget(m_loadingProgress);
   m_layout->addWidget(m_searchWidget);
-  m_layout->setContentsMargins({ 0, 0, 0, 0 });
+  m_layout->setContentsMargins({0, 0, 0, 0});
   m_layout->setSpacing(0);
 
   m_searchWidget->hide();
@@ -355,7 +354,8 @@ void WebBrowser::onLoadingFinished(bool success) {
 
     // Let's check if there are any feeds defined on the web and eventually
     // display "Add feeds" button.
-    m_btnDiscoverFeeds->setFeedAddresses(NetworkFactory::extractFeedLinksFromHtmlPage(m_webView->url(), m_webView->html()));
+    m_btnDiscoverFeeds->setFeedAddresses(NetworkFactory::extractFeedLinksFromHtmlPage(m_webView->url(),
+                                                                                      m_webView->html()));
   }
   else {
     m_btnDiscoverFeeds->clearFeedAddresses();

@@ -23,11 +23,13 @@
 #include <QTimer>
 #include <QWheelEvent>
 
-LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent), m_downloader(new Downloader(this)),
-  m_reloadingWithImages(false),
-  m_useSimpleArticleLayout(qApp->settings()->value(GROUP(Messages), SETTING(Messages::SimpleArticleLayout)).toBool()) {
+LiteHtmlViewer::LiteHtmlViewer(QWidget* parent)
+  : QLiteHtmlWidget(parent), m_downloader(new Downloader(this)), m_reloadingWithImages(false),
+    m_useSimpleArticleLayout(qApp->settings()
+                               ->value(GROUP(Messages), SETTING(Messages::SimpleArticleLayout))
+                               .toBool()) {
   setResourceHandler([this](const QUrl& url) {
-    emit loadProgress(-1);
+    emit loadingProgress(-1);
     return m_reloadingWithImages ? handleResource(url) : QByteArray{};
   });
 
@@ -58,13 +60,13 @@ void LiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
 }
 
 void LiteHtmlViewer::findText(const QString& text, bool backwards) {
-  QLiteHtmlWidget::findText(text, backwards
-                            ? QTextDocument::FindFlag::FindBackward
-                            : QTextDocument::FindFlag(0x0), false);
+  QLiteHtmlWidget::findText(text,
+                            backwards ? QTextDocument::FindFlag::FindBackward : QTextDocument::FindFlag(0x0),
+                            false);
 }
 
 void LiteHtmlViewer::setUrl(const QUrl& url) {
-  emit loadStarted();
+  emit loadingStarted();
   QString html_str;
   QUrl nonconst_url = url;
   bool is_error = false;
@@ -79,10 +81,7 @@ void LiteHtmlViewer::setUrl(const QUrl& url) {
     QEventLoop loop;
 
     connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
-    m_downloader->manipulateData(url.toString(),
-                                 QNetworkAccessManager::Operation::GetOperation,
-                                 {},
-                                 5000);
+    m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
 
     loop.exec();
 
@@ -95,8 +94,8 @@ void LiteHtmlViewer::setUrl(const QUrl& url) {
     }
     else {
       if (content_type.startsWith(QSL("image/"))) {
-        html_str = QSL("<img src=\"data:%1;base64,%2\">").arg(content_type,
-                                                              QString::fromLocal8Bit(m_downloader->lastOutputData().toBase64()));
+        html_str = QSL("<img src=\"data:%1;base64,%2\">")
+                     .arg(content_type, QString::fromLocal8Bit(m_downloader->lastOutputData().toBase64()));
       }
       else {
         html_str = QString::fromUtf8(m_downloader->lastOutputData());
@@ -106,15 +105,15 @@ void LiteHtmlViewer::setUrl(const QUrl& url) {
 
   setHtml(html_str, nonconst_url);
 
-  emit loadFinished(is_error);
+  emit loadingFinished(is_error);
 }
 
 void LiteHtmlViewer::setHtml(const QString& html, const QUrl& base_url) {
   QLiteHtmlWidget::setUrl(base_url);
   QLiteHtmlWidget::setHtml(html);
 
-  emit titleChanged(title());
-  emit urlChanged(base_url);
+  emit pageTitleChanged(title());
+  emit pageUrlChanged(base_url);
 }
 
 QString LiteHtmlViewer::html() const {
@@ -129,7 +128,8 @@ void LiteHtmlViewer::clear() {
   setHtml({});
 }
 
-QPair<QString, QUrl> LiteHtmlViewer::prepareHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const {
+QPair<QString, QUrl> LiteHtmlViewer::prepareHtmlForMessage(const QList<Message>& messages,
+                                                           RootItem* selected_item) const {
   QString html;
 
   for (const Message& message : messages) {
@@ -145,7 +145,7 @@ QPair<QString, QUrl> LiteHtmlViewer::prepareHtmlForMessage(const QList<Message>&
 
     QRegularExpression imgTagRegex("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
                                    QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                   QRegularExpression::PatternOption::InvertedGreedinessOption);
+                                     QRegularExpression::PatternOption::InvertedGreedinessOption);
     QRegularExpressionMatchIterator i = imgTagRegex.globalMatch(message.m_contents);
     QString pictures_html;
 
@@ -170,25 +170,24 @@ QPair<QString, QUrl> LiteHtmlViewer::prepareHtmlForMessage(const QList<Message>&
 
   // TODO: If FgInteresting not defined by the skin
   // use current pallette/Highlight color perhaps.
-  return { QSL("<html>"
-               "<head><style>"
-               "a { color: %2; }"
-               "</style></head>"
-               "<body>%1</body>"
-               "</html>").arg(html,
-                              qApp->skins()->currentSkin()
-                              .colorForModel(SkinEnums::PaletteColors::FgInteresting)
-                              .value<QColor>().name()),
-           QUrl() };
+  return {
+    QSL("<html>"
+        "<head><style>"
+        "a { color: %2; }"
+        "</style></head>"
+        "<body>%1</body>"
+        "</html>")
+      .arg(html,
+           qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>().name()),
+    QUrl()};
 }
 
 void LiteHtmlViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
-  auto html_messages = m_useSimpleArticleLayout
-                       ? prepareHtmlForMessage(messages, root)
-                       : qApp->skins()->generateHtmlOfArticles(messages, root);
+  auto html_messages = m_useSimpleArticleLayout ? prepareHtmlForMessage(messages, root)
+                                                : qApp->skins()->generateHtmlOfArticles(messages, root);
 
   setHtml(html_messages.first, html_messages.second);
-  emit loadFinished(true);
+  emit loadingFinished(true);
 }
 
 double LiteHtmlViewer::verticalScrollBarPosition() const {
@@ -264,17 +263,13 @@ void LiteHtmlViewer::showContextMenu(const QPoint& pos, const QUrl& url) {
   if (m_contextMenu.isNull()) {
     m_contextMenu.reset(new QMenu("Context menu for web browser", this));
 
-    m_actionCopyUrl.reset(new QAction(qApp->icons()->fromTheme(QSL("edit-copy")),
-                                      tr("Copy URL"),
-                                      this));
+    m_actionCopyUrl.reset(new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), tr("Copy URL"), this));
 
     connect(m_actionCopyUrl.data(), &QAction::triggered, this, [url]() {
       QGuiApplication::clipboard()->setText(url.toString(), QClipboard::Mode::Clipboard);
     });
 
-    m_actionCopyText.reset(new QAction(qApp->icons()->fromTheme(QSL("edit-copy")),
-                                       tr("Copy selection"),
-                                       this));
+    m_actionCopyText.reset(new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), tr("Copy selection"), this));
 
     connect(m_actionCopyText.data(), &QAction::triggered, this, [this]() {
       QGuiApplication::clipboard()->setText(QLiteHtmlWidget::selectedText(), QClipboard::Mode::Clipboard);
@@ -288,7 +283,9 @@ void LiteHtmlViewer::showContextMenu(const QPoint& pos, const QUrl& url) {
     connect(m_actionOpenLinkExternally.data(), &QAction::triggered, this, [url]() {
       qApp->web()->openUrlInExternalBrowser(url.toString());
 
-      if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool()) {
+      if (qApp->settings()
+            ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
+            .toBool()) {
         QTimer::singleShot(1000, qApp, []() {
           qApp->mainForm()->display();
         });
@@ -314,11 +311,11 @@ void LiteHtmlViewer::showContextMenu(const QPoint& pos, const QUrl& url) {
   m_actionOpenLinkExternally->setEnabled(url.isValid());
 
   m_contextMenu->clear();
-  m_contextMenu->addActions({ m_actionCopyUrl.data(),
-                              m_actionCopyText.data(),
-                              m_actionOpenLinkExternally.data(),
-                              m_actionSimpleLayout.data(),
-                              m_actionReloadWithImages.data() });
+  m_contextMenu->addActions({m_actionCopyUrl.data(),
+                             m_actionCopyText.data(),
+                             m_actionOpenLinkExternally.data(),
+                             m_actionSimpleLayout.data(),
+                             m_actionReloadWithImages.data()});
 
   if (url.isValid()) {
     QFileIconProvider icon_provider;
@@ -383,10 +380,7 @@ QByteArray LiteHtmlViewer::handleResource(const QUrl& url) {
     QEventLoop loop;
 
     connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
-    m_downloader->manipulateData(url.toString(),
-                                 QNetworkAccessManager::Operation::GetOperation,
-                                 {},
-                                 5000);
+    m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
 
     loop.exec();
     return m_downloader->lastOutputData();
