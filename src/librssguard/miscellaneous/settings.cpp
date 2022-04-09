@@ -120,6 +120,9 @@ DVALUE(bool) Messages::EnableMessagePreviewDef = true;
 DKEY Messages::Zoom = "zoom";
 DVALUE(qreal) Messages::ZoomDef = double(1.0);
 
+DKEY Messages::SimpleArticleLayout = "simple_article_layout";
+DVALUE(bool) Messages::SimpleArticleLayoutDef = false;
+
 DKEY Messages::FixupFutureArticleDateTimes = "fixup_future_datetimes";
 DVALUE(bool) Messages::FixupFutureArticleDateTimesDef = false;
 

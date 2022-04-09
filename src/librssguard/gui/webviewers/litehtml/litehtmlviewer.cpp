@@ -24,7 +24,8 @@
 #include <QWheelEvent>
 
 LiteHtmlViewer::LiteHtmlViewer(QWidget* parent) : QLiteHtmlWidget(parent), m_downloader(new Downloader(this)),
-  m_reloadingWithImages(false), m_useSimpleArticleLayout(false) {
+  m_reloadingWithImages(false),
+  m_useSimpleArticleLayout(qApp->settings()->value(GROUP(Messages), SETTING(Messages::SimpleArticleLayout)).toBool()) {
   setResourceHandler([this](const QUrl& url) {
     emit loadProgress(-1);
     return m_reloadingWithImages ? handleResource(url) : QByteArray{};
@@ -155,12 +156,13 @@ QPair<QString, QUrl> LiteHtmlViewer::prepareHtmlForMessage(const QList<Message>&
     }
 
     /*if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayImagePlaceholders)).toBool()) {
-      html += message.m_contents;
-    }
-    else {*/
-      QString cnts = message.m_contents;
+       html += message.m_contents;
+       }
+       else {*/
+    QString cnts = message.m_contents;
 
-      html += cnts.replace(imgTagRegex, QString());
+    html += cnts.replace(imgTagRegex, QString());
+
     //}
 
     html += pictures_html;
@@ -216,6 +218,8 @@ void LiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
 
 void LiteHtmlViewer::simpleLayoutChanged(bool activated) {
   m_useSimpleArticleLayout = activated;
+
+  qApp->settings()->setValue(GROUP(Messages), Messages::SimpleArticleLayout, activated);
 }
 
 void LiteHtmlViewer::selectedTextChanged(bool available) {
@@ -295,6 +299,7 @@ void LiteHtmlViewer::showContextMenu(const QPoint& pos, const QUrl& url) {
                                            tr("Use simple article layout"),
                                            this));
     m_actionSimpleLayout->setCheckable(true);
+    m_actionSimpleLayout->setChecked(m_useSimpleArticleLayout);
 
     m_actionReloadWithImages.reset(new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("view-refresh")),
                                                tr("Reload with images"),
