@@ -62,8 +62,8 @@
 #endif
 #endif
 
-Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
-  : SingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
+Application::Application(const QString &id, int &argc, char **argv, const QStringList &raw_cli_args)
+    : SingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
   parseCmdArgumentsFromMyInstance(raw_cli_args);
   qInstallMessageHandler(performLogging);
 
@@ -86,23 +86,17 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #if defined(Q_OS_WIN)
   m_windowsTaskBar = nullptr;
 
-  const GUID qIID_ITaskbarList4 = { 0xc43dc798, 0x95d1, 0x4bea, { 0x90, 0x30, 0xbb, 0x99, 0xe2, 0x98, 0x3a, 0x1a } };
-  HRESULT task_result = CoCreateInstance(CLSID_TaskbarList,
-                                         nullptr,
-                                         CLSCTX_INPROC_SERVER,
-                                         qIID_ITaskbarList4,
-                                         reinterpret_cast<void**>(&m_windowsTaskBar));
+  const GUID qIID_ITaskbarList4 = {0xc43dc798, 0x95d1, 0x4bea, {0x90, 0x30, 0xbb, 0x99, 0xe2, 0x98, 0x3a, 0x1a}};
+  HRESULT task_result = CoCreateInstance(CLSID_TaskbarList, nullptr, CLSCTX_INPROC_SERVER, qIID_ITaskbarList4,
+                                         reinterpret_cast<void **>(&m_windowsTaskBar));
 
   if (FAILED(task_result)) {
-    qCriticalNN << LOGSEC_CORE
-                << "Taskbar integration for Windows failed to initialize with HRESULT:"
+    qCriticalNN << LOGSEC_CORE << "Taskbar integration for Windows failed to initialize with HRESULT:"
                 << QUOTE_W_SPACE_DOT(task_result);
 
     m_windowsTaskBar = nullptr;
-  }
-  else if (FAILED(m_windowsTaskBar->HrInit())) {
-    qCriticalNN << LOGSEC_CORE
-                << "Taskbar integration for Windows failed to initialize with inner HRESULT:"
+  } else if (FAILED(m_windowsTaskBar->HrInit())) {
+    qCriticalNN << LOGSEC_CORE << "Taskbar integration for Windows failed to initialize with inner HRESULT:"
                 << QUOTE_W_SPACE_DOT(m_windowsTaskBar->HrInit());
 
     m_windowsTaskBar->Release();
@@ -138,10 +132,12 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   if (!app_dir.isEmpty()) {
     bool success = qputenv("GST_PLUGIN_SYSTEM_PATH_1_0",
-                           QSL("%1/usr/lib/gstreamer-1.0:%2").arg(app_dir,
-                                                                  QString::fromLocal8Bit(qgetenv("GST_PLUGIN_SYSTEM_PATH_1_0"))).toLocal8Bit());
+                           QSL("%1/usr/lib/gstreamer-1.0:%2")
+                               .arg(app_dir, QString::fromLocal8Bit(qgetenv("GST_PLUGIN_SYSTEM_PATH_1_0")))
+                               .toLocal8Bit());
     success = qputenv("GST_PLUGIN_SCANNER_1_0",
-                      QSL("%1/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner").arg(app_dir).toLocal8Bit()) && success;
+                      QSL("%1/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner").arg(app_dir).toLocal8Bit()) &&
+              success;
     if (!success) {
       qWarningNN << LOGSEC_CORE << "Unable to set up GStreamer environment.";
     }
@@ -160,16 +156,17 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   qDebugNN << LOGSEC_NETWORK << "Persistent web data storage path:"
            << QUOTE_W_SPACE_DOT(QWebEngineProfile::defaultProfile()->persistentStoragePath());
 
-  connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
+  connect(QWebEngineProfile::defaultProfile(), &QWebEngineProfile::downloadRequested, this,
+          &Application::downloadRequested);
 #endif
 
   connect(m_webFactory->adBlock(), &AdBlockManager::processTerminated, this, &Application::onAdBlockFailure);
 
   QTimer::singleShot(3000, this, [=]() {
     try {
-      m_webFactory->adBlock()->setEnabled(qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::AdBlockEnabled)).toBool());
-    }
-    catch (...) {
+      m_webFactory->adBlock()->setEnabled(
+          qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::AdBlockEnabled)).toBool());
+    } catch (...) {
       onAdBlockFailure();
     }
   });
@@ -177,29 +174,23 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_webFactory->updateProxy();
 
   if (isFirstRun()) {
-    m_notifications->save({
-      Notification(Notification::Event::GeneralEvent, true),
-      Notification(Notification::Event::NewUnreadArticlesFetched, true,
-                   QSL("%1/notify.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
-      Notification(Notification::Event::NewAppVersionAvailable, true),
-      Notification(Notification::Event::LoginFailure, true),
-      Notification(Notification::Event::NodePackageUpdated, true),
-      Notification(Notification::Event::NodePackageFailedToUpdate, true)
-    }, settings());
-  }
-  else {
+    m_notifications->save({Notification(Notification::Event::GeneralEvent, true),
+                           Notification(Notification::Event::NewUnreadArticlesFetched, true,
+                                        QSL("%1/notify.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
+                           Notification(Notification::Event::NewAppVersionAvailable, true),
+                           Notification(Notification::Event::LoginFailure, true),
+                           Notification(Notification::Event::NodePackageUpdated, true),
+                           Notification(Notification::Event::NodePackageFailedToUpdate, true)},
+                          settings());
+  } else {
     m_notifications->load(settings());
   }
 
   QTimer::singleShot(1000, system(), &SystemFactory::checkForUpdatesOnStartup);
 
-  qDebugNN << LOGSEC_CORE
-           << "OpenSSL version:"
-           << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
+  qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
 
-  qDebugNN << LOGSEC_CORE
-           << "OpenSSL supported:"
-           << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
+  qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
 }
 
 Application::~Application() {
@@ -215,7 +206,7 @@ Application::~Application() {
 QString s_customLogFile = QString();
 bool s_disableDebug = false;
 
-void Application::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg) {
+void Application::performLogging(QtMsgType type, const QMessageLogContext &context, const QString &msg) {
 #ifndef QT_NO_DEBUG_OUTPUT
   QString console_message = qFormatLogMessage(type, context, msg);
 
@@ -250,27 +241,23 @@ void Application::reactOnForeignNotifications() {
 void Application::hideOrShowMainForm() {
   // Display main window.
   if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() &&
-      SystemTrayIcon::isSystemTrayDesired() &&
-      SystemTrayIcon::isSystemTrayAreaAvailable()) {
+      SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
     qDebugNN << LOGSEC_CORE << "Hiding the main window when the application is starting.";
     mainForm()->switchVisibility(true);
-  }
-  else {
+  } else {
     qDebugNN << LOGSEC_CORE << "Showing the main window when the application is starting.";
     mainForm()->show();
   }
 }
 
-void Application::loadDynamicShortcuts() {
-  DynamicShortcuts::load(userActions());
-}
+void Application::loadDynamicShortcuts() { DynamicShortcuts::load(userActions()); }
 
 void Application::showPolls() const {
   /*
      if(isFirstRunCurrentVersion()) {
      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         { QSL("%1 survey").arg(QSL(APP_NAME)), QSL("Please, fill the survey."), QSystemTrayIcon::MessageIcon::Warning },
-                         { false, true, false });
+                         { QSL("%1 survey").arg(QSL(APP_NAME)), QSL("Please, fill the survey."),
+     QSystemTrayIcon::MessageIcon::Warning }, { false, true, false });
      qApp->web()->openUrlInExternalBrowser(QSL("https://forms.gle/9GgSa38Awqr37xLV8"));
      }
    */
@@ -278,40 +265,34 @@ void Application::showPolls() const {
 
 void Application::offerChanges() const {
   if (isFirstRunCurrentVersion()) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Welcome"),
-      tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
-         "version by clicking this popup notification.").arg(QSL(APP_LONG_NAME)),
-      QSystemTrayIcon::MessageIcon::NoIcon },
-                         {},
-                         { tr("Go to changelog"), [] {
-                             FormAbout(qApp->mainForm()).exec();
-                           } });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Welcome"),
+                          tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
+                             "version by clicking this popup notification.")
+                              .arg(QSL(APP_LONG_NAME)),
+                          QSystemTrayIcon::MessageIcon::NoIcon},
+                         {}, {tr("Go to changelog"), [] { FormAbout(qApp->mainForm()).exec(); }});
   }
 }
 
 bool Application::isAlreadyRunning() {
   return m_allowMultipleInstances
-      ? false
-      : sendMessage((QStringList() << QSL("-%1").arg(QSL(CLI_IS_RUNNING))
-                                   << Application::arguments().mid(1)).join(QSL(ARGUMENTS_LIST_SEPARATOR)));
+             ? false
+             : sendMessage((QStringList() << QSL("-%1").arg(QSL(CLI_IS_RUNNING)) << Application::arguments().mid(1))
+                               .join(QSL(ARGUMENTS_LIST_SEPARATOR)));
 }
 
 QStringList Application::builtinSounds() const {
   auto builtin_sounds = QDir(QSL(SOUNDS_BUILTIN_DIRECTORY)).entryInfoList(QDir::Filter::Files, QDir::SortFlag::Name);
-  auto iter = boolinq::from(builtin_sounds).select([](const QFileInfo& i) {
-    return i.absoluteFilePath();
-  }).toStdList();
+  auto iter = boolinq::from(builtin_sounds).select([](const QFileInfo &i) { return i.absoluteFilePath(); }).toStdList();
   auto descs = FROM_STD_LIST(QStringList, iter);
 
   return descs;
 }
 
-FeedReader* Application::feedReader() {
-  return m_feedReader;
-}
+FeedReader *Application::feedReader() { return m_feedReader; }
 
-QList<QAction*> Application::userActions() {
+QList<QAction *> Application::userActions() {
   if (m_mainForm != nullptr && m_userActions.isEmpty()) {
     m_userActions = m_mainForm->allActions();
     m_userActions.append(m_webFactory->adBlock()->adBlockIcon());
@@ -320,37 +301,21 @@ QList<QAction*> Application::userActions() {
   return m_userActions;
 }
 
-bool Application::isFirstRun() const {
-  return m_firstRunEver;
-}
+bool Application::isFirstRun() const { return m_firstRunEver; }
 
-bool Application::isFirstRunCurrentVersion() const {
-  return m_firstRunCurrentVersion;
-}
+bool Application::isFirstRunCurrentVersion() const { return m_firstRunCurrentVersion; }
 
-QCommandLineParser* Application::cmdParser() {
-  return &m_cmdParser;
-}
+QCommandLineParser *Application::cmdParser() { return &m_cmdParser; }
 
-WebFactory* Application::web() const {
-  return m_webFactory;
-}
+WebFactory *Application::web() const { return m_webFactory; }
 
-SystemFactory* Application::system() {
-  return m_system;
-}
+SystemFactory *Application::system() { return m_system; }
 
-SkinFactory* Application::skins() {
-  return m_skins;
-}
+SkinFactory *Application::skins() { return m_skins; }
 
-Localization* Application::localization() {
-  return m_localization;
-}
+Localization *Application::localization() { return m_localization; }
 
-DatabaseFactory* Application::database() {
-  return m_database;
-}
+DatabaseFactory *Application::database() { return m_database; }
 
 void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), General::FirstRun, false);
@@ -358,21 +323,15 @@ void Application::eliminateFirstRuns() {
 }
 
 #if defined(USE_WEBENGINE)
-bool Application::forcedNoWebEngine() const {
-  return m_forcedNoWebEngine;
-}
+bool Application::forcedNoWebEngine() const { return m_forcedNoWebEngine; }
 
 #endif
 
-NodeJs* Application::nodejs() const {
-  return m_nodejs;
-}
+NodeJs *Application::nodejs() const { return m_nodejs; }
 
-NotificationFactory* Application::notifications() const {
-  return m_notifications;
-}
+NotificationFactory *Application::notifications() const { return m_notifications; }
 
-void Application::setFeedReader(FeedReader* feed_reader) {
+void Application::setFeedReader(FeedReader *feed_reader) {
   m_feedReader = feed_reader;
 
   connect(m_feedReader, &FeedReader::feedUpdatesStarted, this, &Application::onFeedUpdatesStarted);
@@ -381,39 +340,29 @@ void Application::setFeedReader(FeedReader* feed_reader) {
   connect(m_feedReader->feedsModel(), &FeedsModel::messageCountsChanged, this, &Application::showMessagesNumber);
 }
 
-IconFactory* Application::icons() {
-  return m_icons;
-}
+IconFactory *Application::icons() { return m_icons; }
 
-DownloadManager* Application::downloadManager() {
+DownloadManager *Application::downloadManager() {
   if (m_downloadManager == nullptr) {
     m_downloadManager = new DownloadManager();
-    connect(m_downloadManager, &DownloadManager::downloadFinished, mainForm()->statusBar(), &StatusBar::clearProgressDownload);
-    connect(m_downloadManager, &DownloadManager::downloadProgressed, mainForm()->statusBar(), &StatusBar::showProgressDownload);
+    connect(m_downloadManager, &DownloadManager::downloadFinished, mainForm()->statusBar(),
+            &StatusBar::clearProgressDownload);
+    connect(m_downloadManager, &DownloadManager::downloadProgressed, mainForm()->statusBar(),
+            &StatusBar::showProgressDownload);
   }
 
   return m_downloadManager;
 }
 
-Settings* Application::settings() const {
-  return m_settings;
-}
+Settings *Application::settings() const { return m_settings; }
 
-Mutex* Application::feedUpdateLock() {
-  return m_updateFeedsLock.data();
-}
+Mutex *Application::feedUpdateLock() { return m_updateFeedsLock.data(); }
 
-FormMain* Application::mainForm() {
-  return m_mainForm;
-}
+FormMain *Application::mainForm() { return m_mainForm; }
 
-QWidget* Application::mainFormWidget() {
-  return m_mainForm;
-}
+QWidget *Application::mainFormWidget() { return m_mainForm; }
 
-void Application::setMainForm(FormMain* main_form) {
-  m_mainForm = main_form;
-}
+void Application::setMainForm(FormMain *main_form) { m_mainForm = main_form; }
 
 QString Application::configFolder() const {
   return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::GenericConfigLocation);
@@ -428,11 +377,9 @@ QString Application::userDataAppFolder() const {
 QString Application::userDataFolder() {
   if (settings()->type() == SettingsProperties::SettingsType::Custom) {
     return customDataFolder();
-  }
-  else if (settings()->type() == SettingsProperties::SettingsType::Portable) {
+  } else if (settings()->type() == SettingsProperties::SettingsType::Portable) {
     return userDataAppFolder();
-  }
-  else {
+  } else {
     return userDataHomeFolder();
   }
 }
@@ -451,7 +398,8 @@ QStringList Application::replaceDataUserDataFolderPlaceholder(QStringList texts)
 
 QString Application::userDataHomeFolder() const {
 #if defined(Q_OS_ANDROID)
-  return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME) + QSL(" 4");
+  return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME) +
+         QSL(" 4");
 #else
   return configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" 4");
 #endif
@@ -473,8 +421,8 @@ QString Application::homeFolder() const {
 #endif
 }
 
-void Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
-                                         const QString& target_path, const QString& backup_name) {
+void Application::backupDatabaseSettings(bool backup_database, bool backup_settings, const QString &target_path,
+                                         const QString &backup_name) {
   if (!QFileInfo(target_path).isWritable()) {
     throw ApplicationException(tr("Output directory is not writable."));
   }
@@ -482,7 +430,8 @@ void Application::backupDatabaseSettings(bool backup_database, bool backup_setti
   if (backup_settings) {
     settings()->sync();
 
-    if (!IOFactory::copyFile(settings()->fileName(), target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_SETTINGS)) {
+    if (!IOFactory::copyFile(settings()->fileName(),
+                             target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_SETTINGS)) {
       throw ApplicationException(tr("Settings file not copied to output directory successfully."));
     }
   }
@@ -495,26 +444,28 @@ void Application::backupDatabaseSettings(bool backup_database, bool backup_setti
 }
 
 void Application::restoreDatabaseSettings(bool restore_database, bool restore_settings,
-                                          const QString& source_database_file_path, const QString& source_settings_file_path) {
+                                          const QString &source_database_file_path,
+                                          const QString &source_settings_file_path) {
   if (restore_database) {
     if (!qApp->database()->driver()->initiateRestoration(source_database_file_path)) {
-      throw ApplicationException(tr("Database restoration was not initiated. Make sure that output directory is writable."));
+      throw ApplicationException(
+          tr("Database restoration was not initiated. Make sure that output directory is writable."));
     }
   }
 
   if (restore_settings) {
     if (!qApp->settings()->initiateRestoration(source_settings_file_path)) {
-      throw ApplicationException(tr("Settings restoration was not initiated. Make sure that output directory is writable."));
+      throw ApplicationException(
+          tr("Settings restoration was not initiated. Make sure that output directory is writable."));
     }
   }
 }
 
-SystemTrayIcon* Application::trayIcon() {
+SystemTrayIcon *Application::trayIcon() {
   if (m_trayIcon == nullptr) {
     if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool()) {
       m_trayIcon = new SystemTrayIcon(APP_ICON_MONO_PATH, APP_ICON_MONO_PLAIN_PATH, m_mainForm);
-    }
-    else {
+    } else {
       m_trayIcon = new SystemTrayIcon(APP_ICON_PATH, APP_ICON_PLAIN_PATH, m_mainForm);
     }
 
@@ -529,8 +480,7 @@ QIcon Application::desktopAwareIcon() const {
 
   if (!from_theme.isNull()) {
     return from_theme;
-  }
-  else {
+  } else {
     return QIcon(APP_ICON_PATH);
   }
 }
@@ -544,8 +494,7 @@ void Application::showTrayIcon() {
     if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
       qDebugNN << LOGSEC_GUI << "Tray icon is available, showing now.";
       trayIcon()->show();
-    }
-    else {
+    } else {
       m_feedReader->feedsModel()->notifyWithCounts();
     }
 #else
@@ -555,14 +504,12 @@ void Application::showTrayIcon() {
       if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
         qWarningNN << LOGSEC_GUI << "Tray icon is available, showing now.";
         trayIcon()->show();
-      }
-      else {
+      } else {
         m_feedReader->feedsModel()->notifyWithCounts();
       }
     });
 #endif
-  }
-  else {
+  } else {
     m_feedReader->feedsModel()->notifyWithCounts();
   }
 }
@@ -579,61 +526,48 @@ void Application::deleteTrayIcon() {
   }
 }
 
-void Application::showGuiMessage(Notification::Event event,
-                                 const GuiMessage& msg,
-                                 const GuiMessageDestination& dest,
-                                 const GuiAction& action,
-                                 QWidget* parent) {
+void Application::showGuiMessage(Notification::Event event, const GuiMessage &msg, const GuiMessageDestination &dest,
+                                 const GuiAction &action, QWidget *parent) {
 
   if (SystemTrayIcon::areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
 
     notification.playSound(this);
 
-    if (SystemTrayIcon::isSystemTrayDesired() &&
-        SystemTrayIcon::isSystemTrayAreaAvailable() &&
-        notification.balloonEnabled() &&
-        dest.m_tray) {
-      trayIcon()->showMessage(msg.m_title.simplified().isEmpty()
-                              ? Notification::nameForEvent(notification.event())
-                              : msg.m_title,
-                              msg.m_message,
-                              msg.m_type,
-                              TRAY_ICON_BUBBLE_TIMEOUT,
-                              std::move(action.m_action));
+    if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable() &&
+        notification.balloonEnabled() && dest.m_tray) {
+      trayIcon()->showMessage(msg.m_title.simplified().isEmpty() ? Notification::nameForEvent(notification.event())
+                                                                 : msg.m_title,
+                              msg.m_message, msg.m_type, TRAY_ICON_BUBBLE_TIMEOUT, std::move(action.m_action));
       return;
     }
   }
 
   if (dest.m_messageBox || msg.m_type == QSystemTrayIcon::MessageIcon::Critical) {
     // Tray icon or OSD is not available, display simple text box.
-    MsgBox::show(parent == nullptr ? mainFormWidget() : parent,
-                 QMessageBox::Icon(msg.m_type), msg.m_title, msg.m_message,
-                 {}, {}, QMessageBox::StandardButton::Ok, QMessageBox::StandardButton::Ok, {},
+    MsgBox::show(parent == nullptr ? mainFormWidget() : parent, QMessageBox::Icon(msg.m_type), msg.m_title,
+                 msg.m_message, {}, {}, QMessageBox::StandardButton::Ok, QMessageBox::StandardButton::Ok, {},
                  action.m_title, action.m_action);
-  }
-  else if (dest.m_statusBar && mainForm()->statusBar() != nullptr && mainForm()->statusBar()->isVisible()) {
+  } else if (dest.m_statusBar && mainForm()->statusBar() != nullptr && mainForm()->statusBar()->isVisible()) {
     mainForm()->statusBar()->showMessage(msg.m_message);
-  }
-  else {
+  } else {
     qDebugNN << LOGSEC_CORE << "Silencing GUI message:" << QUOTE_W_SPACE_DOT(msg.m_message);
   }
 }
 
-WebViewer* Application::createWebView() {
+WebViewer *Application::createWebView() {
 #if !defined(USE_WEBENGINE)
   return new LiteHtmlViewer();
 #else
   if (forcedNoWebEngine()) {
     return new LiteHtmlViewer();
-  }
-  else {
+  } else {
     return new WebEngineViewer();
   }
 #endif
 }
 
-void Application::onCommitData(QSessionManager& manager) {
+void Application::onCommitData(QSessionManager &manager) {
   qDebugNN << LOGSEC_CORE << "OS asked application to commit its data.";
 
   onAboutToQuit();
@@ -642,7 +576,7 @@ void Application::onCommitData(QSessionManager& manager) {
   manager.release();
 }
 
-void Application::onSaveState(QSessionManager& manager) {
+void Application::onSaveState(QSessionManager &manager) {
   qDebugNN << LOGSEC_CORE << "OS asked application to save its state.";
 
   manager.setRestartHint(QSessionManager::RestartHint::RestartNever);
@@ -669,8 +603,7 @@ void Application::onAboutToQuit() {
 
     // We locked the lock to exit peacefully, unlock it to avoid warnings.
     feedUpdateLock()->unlock();
-  }
-  else {
+  } else {
     // Request for write lock timed-out. This means
     // that some critical action can be processed right now.
     qWarningNN << LOGSEC_CORE << "Close lock timed-out.";
@@ -688,11 +621,9 @@ void Application::onAboutToQuit() {
     finish();
     qDebugNN << LOGSEC_CORE << "Killing local peer connection to allow another instance to start.";
 
-    if (QProcess::startDetached(QDir::toNativeSeparators(applicationFilePath()),
-                                arguments().mid(1))) {
+    if (QProcess::startDetached(QDir::toNativeSeparators(applicationFilePath()), arguments().mid(1))) {
       qDebugNN << LOGSEC_CORE << "New application instance was started.";
-    }
-    else {
+    } else {
       qCriticalNN << LOGSEC_CORE << "New application instance was not started successfully.";
     }
   }
@@ -706,11 +637,8 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
   // Set task bar overlay with number of unread articles.
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   // Use D-Bus "LauncherEntry" service on Linux.
-  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
-                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
-  QDBusMessage signal = QDBusMessage::createSignal(QSL("/"),
-                                                   QSL("com.canonical.Unity.LauncherEntry"),
-                                                   QSL("Update"));
+  bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+  QDBusMessage signal = QDBusMessage::createSignal(QSL("/"), QSL("com.canonical.Unity.LauncherEntry"), QSL("Update"));
 
   signal << QSL("application://%1").arg(APP_DESKTOP_ENTRY_FILE);
 
@@ -724,8 +652,7 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
   QDBusConnection::sessionBus().send(signal);
 #elif defined(Q_OS_WIN)
   // Use SetOverlayIcon Windows API method on Windows.
-  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
-                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+  bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
 
   if (m_mainForm != nullptr) {
     QImage overlay_icon = generateOverlayIcon(unread_messages);
@@ -736,11 +663,9 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
     HICON overlay_hicon = overlay_icon.toHICON();
 #endif
 
-    HRESULT overlay_result = m_windowsTaskBar->SetOverlayIcon(reinterpret_cast<HWND>(m_mainForm->winId()),
-                                                              (task_bar_count_enabled && unread_messages > 0)
-                                                              ? overlay_hicon
-                                                              : nullptr,
-                                                              nullptr);
+    HRESULT overlay_result = m_windowsTaskBar->SetOverlayIcon(
+        reinterpret_cast<HWND>(m_mainForm->winId()),
+        (task_bar_count_enabled && unread_messages > 0) ? overlay_hicon : nullptr, nullptr);
 
     DestroyIcon(overlay_hicon);
 
@@ -752,8 +677,8 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
 
   if (m_mainForm != nullptr) {
     m_mainForm->setWindowTitle(unread_messages > 0
-                               ? QSL("[%2] %1").arg(QSL(APP_LONG_NAME), QString::number(unread_messages))
-                               : QSL(APP_LONG_NAME));
+                                   ? QSL("[%2] %1").arg(QSL(APP_LONG_NAME), QString::number(unread_messages))
+                                   : QSL(APP_LONG_NAME));
   }
 }
 
@@ -765,24 +690,21 @@ QImage Application::generateOverlayIcon(int number) const {
 
   if (number < 1000) {
     num_txt = QString::number(number);
-  }
-  else if (number < 100000) {
+  } else if (number < 100000) {
     num_txt = QSL("%1k").arg(int(number / 1000));
-  }
-  else {
+  } else {
     num_txt = QChar(8734);
   }
 
-  QPainterPath rounded_rectangle; rounded_rectangle.addRoundedRect(QRectF(img.rect()), 15, 15);
+  QPainterPath rounded_rectangle;
+  rounded_rectangle.addRoundedRect(QRectF(img.rect()), 15, 15);
   QFont fon = font();
 
   if (num_txt.size() == 3) {
     fon.setPixelSize(img.width() * 0.52);
-  }
-  else if (num_txt.size() == 2) {
+  } else if (num_txt.size() == 2) {
     fon.setPixelSize(img.width() * 0.68);
-  }
-  else {
+  } else {
     fon.setPixelSize(img.width() * 0.79);
   }
 
@@ -799,8 +721,7 @@ QImage Application::generateOverlayIcon(int number) const {
   p.setPen(Qt::GlobalColor::black);
   p.drawPath(rounded_rectangle);
 
-  p.drawText(img.rect().marginsRemoved(QMargins(0, 0, 0, img.height() * 0.05)),
-             num_txt,
+  p.drawText(img.rect().marginsRemoved(QMargins(0, 0, 0, img.height() * 0.05)), num_txt,
              QTextOption(Qt::AlignmentFlag::AlignCenter));
   p.end();
 
@@ -817,9 +738,9 @@ void Application::restart() {
 #if defined(USE_WEBENGINE)
 
 #if QT_VERSION_MAJOR == 6
-void Application::downloadRequested(QWebEngineDownloadRequest* download_item) {
+void Application::downloadRequested(QWebEngineDownloadRequest *download_item) {
 #else
-void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
+void Application::downloadRequested(QWebEngineDownloadItem *download_item) {
 #endif
   downloadManager()->download(download_item->url());
   download_item->cancel();
@@ -831,44 +752,35 @@ void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
 void Application::onFeedUpdatesStarted() {
 #if defined(Q_OS_WIN)
   // Use SetOverlayIcon Windows API method on Windows.
-  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
-                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+  bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
 
   if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskBar != nullptr) {
-    m_windowsTaskBar->SetProgressValue(reinterpret_cast<HWND>(m_mainForm->winId()),
-                                       1ul,
-                                       100ul);
+    m_windowsTaskBar->SetProgressValue(reinterpret_cast<HWND>(m_mainForm->winId()), 1ul, 100ul);
   }
 #endif
 }
 
-void Application::onFeedUpdatesProgress(const Feed* feed, int current, int total) {
+void Application::onFeedUpdatesProgress(const Feed *feed, int current, int total) {
 #if defined(Q_OS_WIN)
   // Use SetOverlayIcon Windows API method on Windows.
-  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
-                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+  bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
 
   if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskBar != nullptr) {
-    m_windowsTaskBar->SetProgressValue(reinterpret_cast<HWND>(m_mainForm->winId()),
-                                       current,
-                                       total);
+    m_windowsTaskBar->SetProgressValue(reinterpret_cast<HWND>(m_mainForm->winId()), current, total);
   }
 #endif
 }
 
-void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
+void Application::onFeedUpdatesFinished(const FeedDownloadResults &results) {
   if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(Notification::Event::NewUnreadArticlesFetched, {
-      tr("Unread articles fetched"),
-      results.overview(10),
-      QSystemTrayIcon::MessageIcon::NoIcon });
+    qApp->showGuiMessage(Notification::Event::NewUnreadArticlesFetched,
+                         {tr("Unread articles fetched"), results.overview(10), QSystemTrayIcon::MessageIcon::NoIcon});
   }
 
 #if defined(Q_OS_WIN)
   // Use SetOverlayIcon Windows API method on Windows.
-  bool task_bar_count_enabled = settings()->value(GROUP(GUI),
-                                                  SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+  bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
 
   if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskBar != nullptr) {
     m_windowsTaskBar->SetProgressState(reinterpret_cast<HWND>(m_mainForm->winId()), TBPFLAG::TBPF_NOPROGRESS);
@@ -876,11 +788,9 @@ void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
 #endif
 }
 
-void Application::setupCustomDataFolder(const QString& data_folder) {
+void Application::setupCustomDataFolder(const QString &data_folder) {
   if (!QDir().mkpath(data_folder)) {
-    qCriticalNN << LOGSEC_CORE
-                << "Failed to create custom data path"
-                << QUOTE_W_SPACE(data_folder)
+    qCriticalNN << LOGSEC_CORE << "Failed to create custom data path" << QUOTE_W_SPACE(data_folder)
                 << "thus falling back to standard setup.";
     m_customDataFolder = QString();
     return;
@@ -894,35 +804,31 @@ void Application::setupCustomDataFolder(const QString& data_folder) {
 }
 
 void Application::onAdBlockFailure() {
-  qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-    tr("AdBlock needs to be configured"),
-    tr("AdBlock is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
-       "if your Node.js is properly configured."),
-    QSystemTrayIcon::MessageIcon::Critical }, { true, true, false });
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       {tr("AdBlock needs to be configured"),
+                        tr("AdBlock is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
+                           "if your Node.js is properly configured."),
+                        QSystemTrayIcon::MessageIcon::Critical},
+                       {true, true, false});
 
   qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, false);
 }
 
 void Application::determineFirstRuns() {
-  m_firstRunEver = settings()->value(GROUP(General),
-                                     SETTING(General::FirstRun)).toBool();
-  m_firstRunCurrentVersion = settings()->value(GROUP(General),
-                                               QString(General::FirstRun) + QL1C('_') + APP_VERSION,
-                                               true).toBool();
+  m_firstRunEver = settings()->value(GROUP(General), SETTING(General::FirstRun)).toBool();
+  m_firstRunCurrentVersion =
+      settings()->value(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, true).toBool();
 
   eliminateFirstRuns();
 }
 
-void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
+void Application::parseCmdArgumentsFromOtherInstance(const QString &message) {
   if (message.isEmpty()) {
     qDebugNN << LOGSEC_CORE << "No execution message received from other app instances.";
     return;
   }
 
-  qDebugNN << LOGSEC_CORE
-           << "Received"
-           << QUOTE_W_SPACE(message)
-           << "execution message.";
+  qDebugNN << LOGSEC_CORE << "Received" << QUOTE_W_SPACE(message) << "execution message.";
 
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
   QStringList messages = message.split(QSL(ARGUMENTS_LIST_SEPARATOR), Qt::SplitBehaviorFlags::SkipEmptyParts);
@@ -934,11 +840,11 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
 
   messages.prepend(qApp->applicationFilePath());
 
-  cmd_parser.addOption(QCommandLineOption({ QSL(CLI_QUIT_INSTANCE) }));
-  cmd_parser.addOption(QCommandLineOption({ QSL(CLI_IS_RUNNING) }));
-  cmd_parser.addPositionalArgument(QSL("urls"),
-                                   QSL("List of URL addresses pointing to individual online feeds which should be added."),
-                                   QSL("[url-1 ... url-n]"));
+  cmd_parser.addOption(QCommandLineOption({QSL(CLI_QUIT_INSTANCE)}));
+  cmd_parser.addOption(QCommandLineOption({QSL(CLI_IS_RUNNING)}));
+  cmd_parser.addPositionalArgument(
+      QSL("urls"), QSL("List of URL addresses pointing to individual online feeds which should be added."),
+      QSL("[url-1 ... url-n]"));
 
   if (!cmd_parser.parse(messages)) {
     qCriticalNN << LOGSEC_CORE << cmd_parser.errorText();
@@ -947,75 +853,66 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
   if (cmd_parser.isSet(QSL(CLI_QUIT_INSTANCE))) {
     quit();
     return;
-  }
-  else if (cmd_parser.isSet(QSL(CLI_IS_RUNNING))) {
-    showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Already running"),
-      tr("Application is already running."),
-      QSystemTrayIcon::MessageIcon::Information });
+  } else if (cmd_parser.isSet(QSL(CLI_IS_RUNNING))) {
+    showGuiMessage(Notification::Event::GeneralEvent, {tr("Already running"), tr("Application is already running."),
+                                                       QSystemTrayIcon::MessageIcon::Information});
     mainForm()->display();
   }
 
   messages = cmd_parser.positionalArguments();
 
-  for (const QString& msg : qAsConst(messages)) {
+  for (const QString &msg : qAsConst(messages)) {
     // Application was running, and someone wants to add new feed.
-    ServiceRoot* rt = boolinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
+    ServiceRoot *rt = boolinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot *root) {
       return root->supportsFeedAdding();
     });
 
     if (rt != nullptr) {
       rt->addNewFeed(nullptr, msg);
-    }
-    else {
-      showGuiMessage(Notification::Event::GeneralEvent, {
-        tr("Cannot add feed"),
-        tr("Feed cannot be added because there is no active account which can add feeds."),
-        QSystemTrayIcon::MessageIcon::Warning });
+    } else {
+      showGuiMessage(Notification::Event::GeneralEvent,
+                     {tr("Cannot add feed"),
+                      tr("Feed cannot be added because there is no active account which can add feeds."),
+                      QSystemTrayIcon::MessageIcon::Warning});
     }
   }
 }
 
-void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args) {
-  QCommandLineOption help({ QSL(CLI_HELP_SHORT), QSL(CLI_HELP_LONG) },
-                          QSL("Displays overview of CLI."));
-  QCommandLineOption version({ QSL(CLI_VER_SHORT), QSL(CLI_VER_LONG) },
-                             QSL("Displays version of the application."));
-  QCommandLineOption log_file({ QSL(CLI_LOG_SHORT), QSL(CLI_LOG_LONG) },
-                              QSL("Write application debug log to file. Note that logging to file may slow application down."),
-                              QSL("log-file"));
-  QCommandLineOption custom_data_folder({ QSL(CLI_DAT_SHORT), QSL(CLI_DAT_LONG) },
-                                        QSL("Use custom folder for user data and disable single instance application mode."),
-                                        QSL("user-data-folder"));
-  QCommandLineOption disable_singleinstance({ QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG) },
+void Application::parseCmdArgumentsFromMyInstance(const QStringList &raw_cli_args) {
+  QCommandLineOption help({QSL(CLI_HELP_SHORT), QSL(CLI_HELP_LONG)}, QSL("Displays overview of CLI."));
+  QCommandLineOption version({QSL(CLI_VER_SHORT), QSL(CLI_VER_LONG)}, QSL("Displays version of the application."));
+  QCommandLineOption log_file(
+      {QSL(CLI_LOG_SHORT), QSL(CLI_LOG_LONG)},
+      QSL("Write application debug log to file. Note that logging to file may slow application down."),
+      QSL("log-file"));
+  QCommandLineOption custom_data_folder(
+      {QSL(CLI_DAT_SHORT), QSL(CLI_DAT_LONG)},
+      QSL("Use custom folder for user data and disable single instance application mode."), QSL("user-data-folder"));
+  QCommandLineOption disable_singleinstance({QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG)},
                                             QSL("Allow running of multiple application instances."));
 
 #if defined(USE_WEBENGINE)
-  QCommandLineOption force_nowebengine({ QSL(CLI_FORCE_NOWEBENGINE_SHORT), QSL(CLI_FORCE_NOWEBENGINE_LONG) },
+  QCommandLineOption force_nowebengine({QSL(CLI_FORCE_NOWEBENGINE_SHORT), QSL(CLI_FORCE_NOWEBENGINE_LONG)},
                                        QSL("Force usage of simpler text-based embedded web browser."));
 #endif
 
-  QCommandLineOption disable_only_debug({ QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG) },
+  QCommandLineOption disable_only_debug({QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG)},
                                         QSL("Disable just \"debug\" output."));
-  QCommandLineOption disable_debug({ QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG) },
+  QCommandLineOption disable_debug({QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG)},
                                    QSL("Completely disable stdout/stderr outputs."));
-  QCommandLineOption forced_style({ QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG) },
-                                  QSL("Force some application style."),
+  QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)}, QSL("Force some application style."),
                                   QSL("style-name"));
 
-  m_cmdParser.addOptions({ help, version,
-                           log_file,
-                           custom_data_folder,
-                           disable_singleinstance,
-                           disable_only_debug,
-                           disable_debug,
+  m_cmdParser.addOptions({
+    help, version, log_file, custom_data_folder, disable_singleinstance, disable_only_debug, disable_debug,
 #if defined(USE_WEBENGINE)
-                           force_nowebengine,
+        force_nowebengine,
 #endif
-                           forced_style });
-  m_cmdParser.addPositionalArgument(QSL("urls"),
-                                    QSL("List of URL addresses pointing to individual online feeds which should be added."),
-                                    QSL("[url-1 ... url-n]"));
+        forced_style
+  });
+  m_cmdParser.addPositionalArgument(
+      QSL("urls"), QSL("List of URL addresses pointing to individual online feeds which should be added."),
+      QSL("[url-1 ... url-n]"));
   m_cmdParser.setApplicationDescription(QSL(APP_NAME));
   m_cmdParser.setSingleDashWordOptionMode(QCommandLineParser::SingleDashWordOptionMode::ParseAsLongOptions);
 
@@ -1040,20 +937,17 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
   if (!m_cmdParser.value(QSL(CLI_DAT_SHORT)).isEmpty()) {
     auto data_folder = QDir::toNativeSeparators(m_cmdParser.value(QSL(CLI_DAT_SHORT)));
 
-    qDebugNN << LOGSEC_CORE
-             << "User wants to use custom directory for user data (and disable single instance mode):"
+    qDebugNN << LOGSEC_CORE << "User wants to use custom directory for user data (and disable single instance mode):"
              << QUOTE_W_SPACE_DOT(data_folder);
 
     setupCustomDataFolder(data_folder);
-  }
-  else {
+  } else {
     m_allowMultipleInstances = false;
   }
 
   if (m_cmdParser.isSet(QSL(CLI_HELP_SHORT))) {
     m_cmdParser.showHelp();
-  }
-  else if (m_cmdParser.isSet(QSL(CLI_VER_SHORT))) {
+  } else if (m_cmdParser.isSet(QSL(CLI_VER_SHORT))) {
     m_cmdParser.showVersion();
   }
 
@@ -1076,23 +970,21 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
   }
 }
 
-void Application::onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error) {
-  qApp->showGuiMessage(Notification::Event::NodePackageFailedToUpdate,
-                       { {},
-                         tr("Packages %1 were NOT updated because of error: %2.").arg(NodeJs::packagesToString(pkgs),
-                                                                                      error),
-                         QSystemTrayIcon::MessageIcon::Critical });
+void Application::onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata> &pkgs, const QString &error) {
+  qApp->showGuiMessage(
+      Notification::Event::NodePackageFailedToUpdate,
+      {{},
+       tr("Packages %1 were NOT updated because of error: %2.").arg(NodeJs::packagesToString(pkgs), error),
+       QSystemTrayIcon::MessageIcon::Critical});
 }
 
-void Application::onNodeJsPackageInstalled(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date) {
+void Application::onNodeJsPackageInstalled(const QList<NodeJs::PackageMetadata> &pkgs, bool already_up_to_date) {
   if (!already_up_to_date) {
     qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
-                         { {},
-                           tr("Packages %1 were updated.").arg(NodeJs::packagesToString(pkgs)),
-                           QSystemTrayIcon::MessageIcon::Information });
+                         {{},
+                          tr("Packages %1 were updated.").arg(NodeJs::packagesToString(pkgs)),
+                          QSystemTrayIcon::MessageIcon::Information});
   }
 }
 
-QString Application::customDataFolder() const {
-  return m_customDataFolder;
-}
+QString Application::customDataFolder() const { return m_customDataFolder; }

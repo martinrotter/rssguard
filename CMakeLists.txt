@@ -100,9 +100,6 @@ if(${FORCE_COLORED_OUTPUT})
   endif()
 endif()
 
-# Aux files not used for build but include in project.
-add_custom_target(AuxFiles SOURCES "resources/scripts/uncrustify/uncrustify.cfg")
-
 # Global compilation switches.
 option(BUILD_WITH_QT6 "Build application with Qt 6" OFF)
 option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
