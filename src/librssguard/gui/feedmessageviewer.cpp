@@ -183,15 +183,8 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
   }
 }
 
-void FeedMessageViewer::toggleShowOnlyUnreadMessages() {
-  const QAction* origin = qobject_cast<QAction*>(sender());
-
-  if (origin == nullptr) {
-    m_messagesView->switchShowUnreadOnly(true, false);
-  }
-  else {
-    m_messagesView->switchShowUnreadOnly(true, origin->isChecked());
-  }
+void FeedMessageViewer::changeMessageFilter(MessagesProxyModel::MessageListFilter filter) {
+  m_messagesView->changeFilter(filter);
 }
 
 void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
@@ -244,7 +237,8 @@ void FeedMessageViewer::createConnections() {
   // Filtering & searching.
   connect(m_toolBarMessages, &MessagesToolBar::messageSearchPatternChanged, m_messagesView, &MessagesView::searchMessages);
   connect(m_toolBarFeeds, &FeedsToolBar::feedsFilterPatternChanged, m_feedsView, &FeedsView::filterItems);
-  connect(m_toolBarMessages, &MessagesToolBar::messageFilterChanged, m_messagesView, &MessagesView::filterMessages);
+  connect(m_toolBarMessages, &MessagesToolBar::messageHighlighterChanged, m_messagesView, &MessagesView::highlightMessages);
+  connect(m_toolBarMessages, &MessagesToolBar::messageFilterChanged, this, &FeedMessageViewer::changeMessageFilter);
 
   connect(m_feedSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onFeedSplitterResized);
   connect(m_messageSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onMessageSplitterResized);

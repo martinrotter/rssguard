@@ -281,7 +281,7 @@ DVALUE(bool) GUI::HideTabBarIfOnlyOneTabDef = false;
 
 DKEY GUI::MessagesToolbarDefaultButtons = "messages_toolbar";
 DVALUE(char*) GUI::MessagesToolbarDefaultButtonsDef =
-  "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,separator,highlighter,spacer,search";
+  "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,separator,highlighter,filter,spacer,search";
 
 DKEY GUI::DefaultSortColumnFeeds = "default_sort_column_feeds";
 DVALUE(int) GUI::DefaultSortColumnFeedsDef = FDS_MODEL_TITLE_INDEX;

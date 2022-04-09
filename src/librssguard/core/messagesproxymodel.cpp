@@ -11,7 +11,7 @@
 #include <QTimer>
 
 MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_showUnreadOnly(false) {
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_filter(MessageListFilter::NoFiltering) {
   setObjectName(QSL("MessagesProxyModel"));
 
   setSortRole(Qt::ItemDataRole::EditRole);
@@ -100,6 +100,81 @@ bool MessagesProxyModel::lessThan(const QModelIndex& left, const QModelIndex& ri
   return false;
 }
 
+bool MessagesProxyModel::filterAcceptsMessage(Message currentMessage) const {
+  switch (m_filter) {
+    case MessageListFilter::NoFiltering:
+      return true;
+
+    case MessageListFilter::ShowUnread:
+      return !currentMessage.m_isRead;
+
+    case MessageListFilter::ShowImportant:
+      return currentMessage.m_isImportant;
+
+    case MessageListFilter::ShowToday:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
+      return
+        currentDate.startOfDay() <= currentMessage.m_created &&
+        currentMessage.m_created <= currentDate.endOfDay();
+    }
+
+    case MessageListFilter::ShowYesterday:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
+      return
+        currentDate.addDays(-1).startOfDay() <= currentMessage.m_created &&
+        currentMessage.m_created <= currentDate.addDays(-1).endOfDay();
+    }
+
+    case MessageListFilter::ShowLast24Hours:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
+      return
+        currentDateTime.addSecs(-24 * 60 * 60) <= currentMessage.m_created &&
+        currentMessage.m_created <= currentDateTime;
+    }
+
+    case MessageListFilter::ShowLast48Hours:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
+      return
+        currentDateTime.addSecs(-48 * 60 * 60) <= currentMessage.m_created &&
+        currentMessage.m_created <= currentDateTime;
+    }
+
+    case MessageListFilter::ShowThisWeek:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
+      return
+        currentDate.year() == currentMessage.m_created.date().year() &&
+        currentDate.weekNumber() == currentMessage.m_created.date().weekNumber();
+    }
+
+    case MessageListFilter::ShowLastWeek:
+    {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
+
+      return
+        currentDate.addDays(-7).year() == currentMessage.m_created.date().year() &&
+        currentDate.addDays(-7).weekNumber() == currentMessage.m_created.date().weekNumber();
+    }
+  }
+
+  return false;
+}
+
 bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
   // We want to show only regexped messages when "all" should be visible
   // and we want to show only regexped AND unread messages when unread should be visible.
@@ -110,16 +185,11 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
   return
     QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) &&
     (m_sourceModel->cache()->containsData(source_row) ||
-     (!m_showUnreadOnly || !m_sourceModel->messageAt(source_row).m_isRead));
+     filterAcceptsMessage(m_sourceModel->messageAt(source_row)));
 }
 
-bool MessagesProxyModel::showUnreadOnly() const {
-  return m_showUnreadOnly;
-}
-
-void MessagesProxyModel::setShowUnreadOnly(bool show_unread_only) {
-  m_showUnreadOnly = show_unread_only;
-  qApp->settings()->setValue(GROUP(Messages), Messages::ShowOnlyUnreadMessages, show_unread_only);
+void MessagesProxyModel::setFilter(MessageListFilter filter) {
+  m_filter = filter;
 }
 
 QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList& indexes, bool deep) const {

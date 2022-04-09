@@ -197,7 +197,6 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSortFeedsAlphabetically;
   actions << m_ui->m_actionShowTreeBranches;
   actions << m_ui->m_actionAutoExpandItemsWhenSelected;
-  actions << m_ui->m_actionShowOnlyUnreadMessages;
   actions << m_ui->m_actionMarkSelectedMessagesAsRead;
   actions << m_ui->m_actionMarkSelectedMessagesAsUnread;
   actions << m_ui->m_actionSwitchImportanceOfSelectedMessages;
@@ -599,7 +598,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionSelectNextUnreadMessage->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionSortFeedsAlphabetically->setIcon(icon_theme_factory->fromTheme(QSL("format-text-bold")));
   m_ui->m_actionShowOnlyUnreadItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
-  m_ui->m_actionShowOnlyUnreadMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionExpandCollapseItem->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
   m_ui->m_actionExpandCollapseItemRecursively->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
   m_ui->m_actionRestoreSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
@@ -683,8 +681,6 @@ void FormMain::loadSize() {
                                                              SETTING(Feeds::ShowTreeBranches)).toBool());
   m_ui->m_actionAutoExpandItemsWhenSelected->setChecked(settings->value(GROUP(Feeds),
                                                                         SETTING(Feeds::AutoExpandOnSelection)).toBool());
-  m_ui->m_actionShowOnlyUnreadMessages->setChecked(settings->value(GROUP(Messages),
-                                                                   SETTING(Messages::ShowOnlyUnreadMessages)).toBool());
   m_ui->m_actionAlternateColorsInLists->setChecked(settings->value(GROUP(GUI),
                                                                    SETTING(GUI::AlternateRowColorsInLists)).toBool());
 }
@@ -876,8 +872,6 @@ void FormMain::createConnections() {
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleItemsAutoExpandingOnSelection);
   connect(m_ui->m_actionAlternateColorsInLists, &QAction::toggled,
           tabWidget()->feedMessageViewer(), &FeedMessageViewer::alternateRowColorsInLists);
-  connect(m_ui->m_actionShowOnlyUnreadMessages, &QAction::toggled,
-          tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadMessages);
   connect(m_ui->m_actionRestoreSelectedMessages, &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::restoreSelectedMessages);
   connect(m_ui->m_actionRestoreAllRecycleBins, &QAction::triggered,

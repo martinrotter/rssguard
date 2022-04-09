@@ -499,11 +499,8 @@ void MessagesView::loadItem(RootItem* item) {
   emit currentMessageRemoved();
 }
 
-void MessagesView::switchShowUnreadOnly(bool set_new_value, bool show_unread_only) {
-  if (set_new_value) {
-    m_proxyModel->setShowUnreadOnly(show_unread_only);
-  }
-
+void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
+  m_proxyModel->setFilter(filter);
   reloadSelections();
 }
 
@@ -784,8 +781,8 @@ void MessagesView::searchMessages(const QString& pattern) {
   }
 }
 
-void MessagesView::filterMessages(MessagesModel::MessageHighlighter filter) {
-  m_sourceModel->highlightMessages(filter);
+void MessagesView::highlightMessages(MessagesModel::MessageHighlighter highlighter) {
+  m_sourceModel->highlightMessages(highlighter);
 }
 
 void MessagesView::openSelectedMessagesWithExternalTool() {
