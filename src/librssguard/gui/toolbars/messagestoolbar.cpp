@@ -217,13 +217,13 @@ void MessagesToolBar::initializeHighlighter() {
   m_btnMessageHighlighter->setMenu(m_menuMessageHighlighter);
   m_btnMessageHighlighter->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
   m_btnMessageHighlighter->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
-  m_btnMessageHighlighter->setDefaultAction(m_menuMessageHighlighter->actions().front());
+  m_btnMessageHighlighter->setDefaultAction(m_menuMessageHighlighter->actions().constFirst());
   m_btnMessageFilter = new QToolButton(this);
   m_btnMessageFilter->setToolTip(tr("Display all articles"));
   m_btnMessageFilter->setMenu(m_menuMessageFilter);
   m_btnMessageFilter->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
   m_btnMessageFilter->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
-  m_btnMessageFilter->setDefaultAction(m_menuMessageFilter->actions().front());
+  m_btnMessageFilter->setDefaultAction(m_menuMessageFilter->actions().constFirst());
   m_actionMessageHighlighter = new QWidgetAction(this);
   m_actionMessageHighlighter->setDefaultWidget(m_btnMessageHighlighter);
   m_actionMessageHighlighter->setIcon(m_btnMessageHighlighter->icon());
@@ -233,7 +233,7 @@ void MessagesToolBar::initializeHighlighter() {
   m_actionMessageFilter->setDefaultWidget(m_btnMessageFilter);
   m_actionMessageFilter->setIcon(m_btnMessageFilter->icon());
   m_actionMessageFilter->setProperty("type", FILTER_ACTION_NAME);
-  m_actionMessageFilter->setProperty("name", tr("Article filter"));
+  m_actionMessageFilter->setProperty("name", tr("Article list filter"));
 
   connect(m_menuMessageHighlighter, &QMenu::triggered, this, &MessagesToolBar::handleMessageHighlighterChange);
   connect(m_menuMessageFilter, &QMenu::triggered, this, &MessagesToolBar::handleMessageFilterChange);
@@ -262,7 +262,7 @@ void MessagesToolBar::activateAction(const QString& action_name, QWidgetAction* 
     for (QAction* action : toolButton->menu()->actions()) {
       if (action->objectName() == menu_action_name) {
         toolButton->setDefaultAction(action);
-        toolButton->menu()->triggered(action);
+        action->trigger();
         break;
       }
     }

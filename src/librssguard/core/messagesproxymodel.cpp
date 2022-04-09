@@ -134,7 +134,6 @@ bool MessagesProxyModel::filterAcceptsMessage(Message currentMessage) const {
     case MessageListFilter::ShowLast24Hours:
     {
       const QDateTime currentDateTime = QDateTime::currentDateTime();
-      const QDate currentDate = currentDateTime.date();
 
       return
         currentDateTime.addSecs(-24 * 60 * 60) <= currentMessage.m_created &&
@@ -144,7 +143,6 @@ bool MessagesProxyModel::filterAcceptsMessage(Message currentMessage) const {
     case MessageListFilter::ShowLast48Hours:
     {
       const QDateTime currentDateTime = QDateTime::currentDateTime();
-      const QDate currentDate = currentDateTime.date();
 
       return
         currentDateTime.addSecs(-48 * 60 * 60) <= currentMessage.m_created &&
