@@ -18,10 +18,10 @@
 #include "miscellaneous/systemfactory.h"
 #include "network-web/downloadmanager.h"
 
+#include <functional>
+
 #include <QCommandLineParser>
 #include <QList>
-
-#include <functional>
 
 #if defined(qApp)
 #undef qApp
@@ -79,7 +79,7 @@ struct GuiAction {
 };
 
 class RSSGUARD_DLLSPEC Application : public SingleApplication {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args);
@@ -144,8 +144,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     void setMainForm(FormMain* main_form);
 
-    void backupDatabaseSettings(bool backup_database, bool backup_settings,
-                                const QString& target_path, const QString& backup_name);
+    void backupDatabaseSettings(bool backup_database, bool backup_settings, const QString& target_path,
+                                const QString& backup_name);
     void restoreDatabaseSettings(bool restore_database, bool restore_settings,
                                  const QString& source_database_file_path = QString(),
                                  const QString& source_settings_file_path = QString());
@@ -155,11 +155,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     // Displays given simple message in tray icon bubble or OSD
     // or in message box if tray icon is disabled.
-    void showGuiMessage(Notification::Event event,
-                        const GuiMessage& msg,
-                        const GuiMessageDestination& dest = {},
-                        const GuiAction& action = {},
-                        QWidget* parent = nullptr);
+    void showGuiMessage(Notification::Event event, const GuiMessage& msg, const GuiMessageDestination& dest = {},
+                        const GuiAction& action = {}, QWidget* parent = nullptr);
 
     WebViewer* createWebView();
 
@@ -174,7 +171,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     static void performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg);
 
   public slots:
-
     // Restarts the application.
     void restart();
 
@@ -199,15 +195,15 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 #endif
 #endif
 
-#if defined(Q_OS_WIN)
-    QImage generateOverlayIcon(int number) const;
-#endif
-
     void onFeedUpdatesStarted();
     void onFeedUpdatesProgress(const Feed* feed, int current, int total);
     void onFeedUpdatesFinished(const FeedDownloadResults& results);
 
   private:
+#if defined(Q_OS_WIN)
+    QImage generateOverlayIcon(int number) const;
+#endif
+
     void setupCustomDataFolder(const QString& data_folder);
     void determineFirstRuns();
     void eliminateFirstRuns();
@@ -260,8 +256,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 #endif
 };
 
-inline Application* Application::instance() {
-  return static_cast<Application*>(QCoreApplication::instance());
-}
+inline Application* Application::instance() { return static_cast<Application*>(QCoreApplication::instance()); }
 
 #endif // APPLICATION_H

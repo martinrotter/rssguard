@@ -63,7 +63,7 @@
 #endif
 
 Application::Application(const QString &id, int &argc, char **argv, const QStringList &raw_cli_args)
-    : SingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
+  : SingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
   parseCmdArgumentsFromMyInstance(raw_cli_args);
   qInstallMessageHandler(performLogging);
 
@@ -133,8 +133,8 @@ Application::Application(const QString &id, int &argc, char **argv, const QStrin
   if (!app_dir.isEmpty()) {
     bool success = qputenv("GST_PLUGIN_SYSTEM_PATH_1_0",
                            QSL("%1/usr/lib/gstreamer-1.0:%2")
-                               .arg(app_dir, QString::fromLocal8Bit(qgetenv("GST_PLUGIN_SYSTEM_PATH_1_0")))
-                               .toLocal8Bit());
+                             .arg(app_dir, QString::fromLocal8Bit(qgetenv("GST_PLUGIN_SYSTEM_PATH_1_0")))
+                             .toLocal8Bit());
     success = qputenv("GST_PLUGIN_SCANNER_1_0",
                       QSL("%1/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner").arg(app_dir).toLocal8Bit()) &&
               success;
@@ -165,7 +165,7 @@ Application::Application(const QString &id, int &argc, char **argv, const QStrin
   QTimer::singleShot(3000, this, [=]() {
     try {
       m_webFactory->adBlock()->setEnabled(
-          qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::AdBlockEnabled)).toBool());
+        qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::AdBlockEnabled)).toBool());
     } catch (...) {
       onAdBlockFailure();
     }
@@ -269,7 +269,7 @@ void Application::offerChanges() const {
                          {tr("Welcome"),
                           tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
                              "version by clicking this popup notification.")
-                              .arg(QSL(APP_LONG_NAME)),
+                            .arg(QSL(APP_LONG_NAME)),
                           QSystemTrayIcon::MessageIcon::NoIcon},
                          {}, {tr("Go to changelog"), [] { FormAbout(qApp->mainForm()).exec(); }});
   }
@@ -277,9 +277,9 @@ void Application::offerChanges() const {
 
 bool Application::isAlreadyRunning() {
   return m_allowMultipleInstances
-             ? false
-             : sendMessage((QStringList() << QSL("-%1").arg(QSL(CLI_IS_RUNNING)) << Application::arguments().mid(1))
-                               .join(QSL(ARGUMENTS_LIST_SEPARATOR)));
+           ? false
+           : sendMessage((QStringList() << QSL("-%1").arg(QSL(CLI_IS_RUNNING)) << Application::arguments().mid(1))
+                           .join(QSL(ARGUMENTS_LIST_SEPARATOR)));
 }
 
 QStringList Application::builtinSounds() const {
@@ -449,14 +449,14 @@ void Application::restoreDatabaseSettings(bool restore_database, bool restore_se
   if (restore_database) {
     if (!qApp->database()->driver()->initiateRestoration(source_database_file_path)) {
       throw ApplicationException(
-          tr("Database restoration was not initiated. Make sure that output directory is writable."));
+        tr("Database restoration was not initiated. Make sure that output directory is writable."));
     }
   }
 
   if (restore_settings) {
     if (!qApp->settings()->initiateRestoration(source_settings_file_path)) {
       throw ApplicationException(
-          tr("Settings restoration was not initiated. Make sure that output directory is writable."));
+        tr("Settings restoration was not initiated. Make sure that output directory is writable."));
     }
   }
 }
@@ -664,8 +664,8 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
 #endif
 
     HRESULT overlay_result = m_windowsTaskBar->SetOverlayIcon(
-        reinterpret_cast<HWND>(m_mainForm->winId()),
-        (task_bar_count_enabled && unread_messages > 0) ? overlay_hicon : nullptr, nullptr);
+      reinterpret_cast<HWND>(m_mainForm->winId()),
+      (task_bar_count_enabled && unread_messages > 0) ? overlay_hicon : nullptr, nullptr);
 
     DestroyIcon(overlay_hicon);
 
@@ -677,8 +677,8 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
 
   if (m_mainForm != nullptr) {
     m_mainForm->setWindowTitle(unread_messages > 0
-                                   ? QSL("[%2] %1").arg(QSL(APP_LONG_NAME), QString::number(unread_messages))
-                                   : QSL(APP_LONG_NAME));
+                                 ? QSL("[%2] %1").arg(QSL(APP_LONG_NAME), QString::number(unread_messages))
+                                 : QSL(APP_LONG_NAME));
   }
 }
 
@@ -817,7 +817,7 @@ void Application::onAdBlockFailure() {
 void Application::determineFirstRuns() {
   m_firstRunEver = settings()->value(GROUP(General), SETTING(General::FirstRun)).toBool();
   m_firstRunCurrentVersion =
-      settings()->value(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, true).toBool();
+    settings()->value(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, true).toBool();
 
   eliminateFirstRuns();
 }
@@ -843,8 +843,8 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString &message) {
   cmd_parser.addOption(QCommandLineOption({QSL(CLI_QUIT_INSTANCE)}));
   cmd_parser.addOption(QCommandLineOption({QSL(CLI_IS_RUNNING)}));
   cmd_parser.addPositionalArgument(
-      QSL("urls"), QSL("List of URL addresses pointing to individual online feeds which should be added."),
-      QSL("[url-1 ... url-n]"));
+    QSL("urls"), QSL("List of URL addresses pointing to individual online feeds which should be added."),
+    QSL("[url-1 ... url-n]"));
 
   if (!cmd_parser.parse(messages)) {
     qCriticalNN << LOGSEC_CORE << cmd_parser.errorText();
@@ -882,12 +882,11 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList &raw_cli_arg
   QCommandLineOption help({QSL(CLI_HELP_SHORT), QSL(CLI_HELP_LONG)}, QSL("Displays overview of CLI."));
   QCommandLineOption version({QSL(CLI_VER_SHORT), QSL(CLI_VER_LONG)}, QSL("Displays version of the application."));
   QCommandLineOption log_file(
-      {QSL(CLI_LOG_SHORT), QSL(CLI_LOG_LONG)},
-      QSL("Write application debug log to file. Note that logging to file may slow application down."),
-      QSL("log-file"));
+    {QSL(CLI_LOG_SHORT), QSL(CLI_LOG_LONG)},
+    QSL("Write application debug log to file. Note that logging to file may slow application down."), QSL("log-file"));
   QCommandLineOption custom_data_folder(
-      {QSL(CLI_DAT_SHORT), QSL(CLI_DAT_LONG)},
-      QSL("Use custom folder for user data and disable single instance application mode."), QSL("user-data-folder"));
+    {QSL(CLI_DAT_SHORT), QSL(CLI_DAT_LONG)},
+    QSL("Use custom folder for user data and disable single instance application mode."), QSL("user-data-folder"));
   QCommandLineOption disable_singleinstance({QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG)},
                                             QSL("Allow running of multiple application instances."));
 
@@ -906,13 +905,13 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList &raw_cli_arg
   m_cmdParser.addOptions({
     help, version, log_file, custom_data_folder, disable_singleinstance, disable_only_debug, disable_debug,
 #if defined(USE_WEBENGINE)
-        force_nowebengine,
+      force_nowebengine,
 #endif
-        forced_style
+      forced_style
   });
   m_cmdParser.addPositionalArgument(
-      QSL("urls"), QSL("List of URL addresses pointing to individual online feeds which should be added."),
-      QSL("[url-1 ... url-n]"));
+    QSL("urls"), QSL("List of URL addresses pointing to individual online feeds which should be added."),
+    QSL("[url-1 ... url-n]"));
   m_cmdParser.setApplicationDescription(QSL(APP_NAME));
   m_cmdParser.setSingleDashWordOptionMode(QCommandLineParser::SingleDashWordOptionMode::ParseAsLongOptions);
 
@@ -972,10 +971,10 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList &raw_cli_arg
 
 void Application::onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata> &pkgs, const QString &error) {
   qApp->showGuiMessage(
-      Notification::Event::NodePackageFailedToUpdate,
-      {{},
-       tr("Packages %1 were NOT updated because of error: %2.").arg(NodeJs::packagesToString(pkgs), error),
-       QSystemTrayIcon::MessageIcon::Critical});
+    Notification::Event::NodePackageFailedToUpdate,
+    {{},
+     tr("Packages %1 were NOT updated because of error: %2.").arg(NodeJs::packagesToString(pkgs), error),
+     QSystemTrayIcon::MessageIcon::Critical});
 }
 
 void Application::onNodeJsPackageInstalled(const QList<NodeJs::PackageMetadata> &pkgs, bool already_up_to_date) {

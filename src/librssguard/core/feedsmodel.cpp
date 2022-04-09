@@ -24,12 +24,10 @@
 
 using RootItemPtr = RootItem*;
 
-FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_rootItem(new RootItem())
-{
+FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_rootItem(new RootItem()) {
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
-
 
   // : Name of root item of feed list which can be seen in feed add/edit dialog.
   m_rootItem->setTitle(tr("Root"));
@@ -40,9 +38,8 @@ FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_rootItem
 
   // : Title text in the feed list header.
   m_headerData << tr("Title");
-  m_tooltipData
-    << /*: Feed list header "titles" column tooltip.*/ tr("Titles of feeds/categories.")
-    << /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all mesages.");
+  m_tooltipData << /*: Feed list header "titles" column tooltip.*/ tr("Titles of feeds/categories.")
+                << /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all mesages.");
 
   setupFonts();
 }
@@ -78,8 +75,8 @@ QStringList FeedsModel::mimeTypes() const {
   return QStringList() << QSL(MIME_TYPE_ITEM_POINTER);
 }
 
-bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row,
-                              int column, const QModelIndex& parent) {
+bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column,
+                              const QModelIndex& parent) {
   Q_UNUSED(row)
   Q_UNUSED(column)
 
@@ -99,7 +96,8 @@ bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int 
     QDataStream stream(&dragged_items_data, QIODevice::OpenModeFlag::ReadOnly);
 
     while (!stream.atEnd()) {
-      quintptr pointer_to_item; stream >> pointer_to_item;
+      quintptr pointer_to_item;
+      stream >> pointer_to_item;
 
       // We have item we want to drag, we also determine the target item.
       auto* dragged_item = RootItemPtr(pointer_to_item);
@@ -108,16 +106,17 @@ bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int 
       ServiceRoot* target_item_root = target_item->getParentServiceRoot();
 
       if (dragged_item == target_item || dragged_item->parent() == target_item) {
-        qDebug("Dragged item is equal to target item or its parent is equal to target item. Cancelling drag-drop action.");
+        qDebug(
+          "Dragged item is equal to target item or its parent is equal to target item. Cancelling drag-drop action.");
         return false;
       }
 
       if (dragged_item_root != target_item_root) {
         // Transferring of items between different accounts is not possible.
-        qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-          tr("Cannot perform drag & drop operation"),
-          tr("You can't transfer dragged item into different account, this is not supported."),
-          QSystemTrayIcon::MessageIcon::Critical });
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             {tr("Cannot perform drag & drop operation"),
+                              tr("You can't transfer dragged item into different account, this is not supported."),
+                              QSystemTrayIcon::MessageIcon::Critical});
         qDebugNN << LOGSEC_FEEDMODEL
                  << "Dragged item cannot be dragged into different account. Cancelling drag-drop action.";
         return false;
@@ -155,27 +154,27 @@ QVariant FeedsModel::headerData(int section, Qt::Orientation orientation, int ro
   }
 
   switch (role) {
-    case Qt::DisplayRole:
-      if (section == FDS_MODEL_TITLE_INDEX) {
-        return m_headerData.at(FDS_MODEL_TITLE_INDEX);
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::ToolTipRole:
-      return m_tooltipData.at(section);
-
-    case Qt::DecorationRole:
-      if (section == FDS_MODEL_COUNTS_INDEX) {
-        return m_countsIcon;
-      }
-      else {
-        return QVariant();
-      }
-
-    default:
+  case Qt::DisplayRole:
+    if (section == FDS_MODEL_TITLE_INDEX) {
+      return m_headerData.at(FDS_MODEL_TITLE_INDEX);
+    }
+    else {
       return QVariant();
+    }
+
+  case Qt::ToolTipRole:
+    return m_tooltipData.at(section);
+
+  case Qt::DecorationRole:
+    if (section == FDS_MODEL_COUNTS_INDEX) {
+      return m_countsIcon;
+    }
+    else {
+      return QVariant();
+    }
+
+  default:
+    return QVariant();
   }
 }
 
@@ -291,7 +290,7 @@ void FeedsModel::reassignNodeToNewParent(RootItem* original_node, RootItem* new_
   }
 }
 
-QList<ServiceRoot*>FeedsModel::serviceRoots() const {
+QList<ServiceRoot*> FeedsModel::serviceRoots() const {
   QList<ServiceRoot*> roots;
   auto ch = m_rootItem->childItems();
 
@@ -304,42 +303,42 @@ QList<ServiceRoot*>FeedsModel::serviceRoots() const {
   return roots;
 }
 
-QList<Feed*>FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
-  QList<Feed*>feeds_for_update;
+QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
+  QList<Feed*> feeds_for_update;
   auto stf = m_rootItem->getSubTreeFeeds();
 
   for (Feed* feed : qAsConst(stf)) {
     switch (feed->autoUpdateType()) {
-      case Feed::AutoUpdateType::DontAutoUpdate:
+    case Feed::AutoUpdateType::DontAutoUpdate:
 
-        // Do not auto-update this feed ever.
-        continue;
+      // Do not auto-update this feed ever.
+      continue;
 
-      case Feed::AutoUpdateType::DefaultAutoUpdate:
+    case Feed::AutoUpdateType::DefaultAutoUpdate:
 
-        if (auto_update_now) {
-          feeds_for_update.append(feed);
-        }
+      if (auto_update_now) {
+        feeds_for_update.append(feed);
+      }
 
-        break;
+      break;
 
-      case Feed::AutoUpdateType::SpecificAutoUpdate:
-      default:
-        int remaining_interval = feed->autoUpdateRemainingInterval();
+    case Feed::AutoUpdateType::SpecificAutoUpdate:
+    default:
+      int remaining_interval = feed->autoUpdateRemainingInterval();
 
-        if (--remaining_interval <= 0) {
-          // Interval of this feed passed, include this feed in the output list
-          // and reset the interval.
-          feeds_for_update.append(feed);
-          feed->setAutoUpdateRemainingInterval(feed->autoUpdateInitialInterval());
-        }
-        else {
-          // Interval did not pass, set new decremented interval and do NOT
-          // include this feed in the output list.
-          feed->setAutoUpdateRemainingInterval(remaining_interval);
-        }
+      if (--remaining_interval <= 0) {
+        // Interval of this feed passed, include this feed in the output list
+        // and reset the interval.
+        feeds_for_update.append(feed);
+        feed->setAutoUpdateRemainingInterval(feed->autoUpdateInitialInterval());
+      }
+      else {
+        // Interval did not pass, set new decremented interval and do NOT
+        // include this feed in the output list.
+        feed->setAutoUpdateRemainingInterval(remaining_interval);
+      }
 
-        break;
+      break;
     }
   }
 
@@ -385,9 +384,8 @@ QModelIndex FeedsModel::indexForItem(const RootItem* item) const {
   while (!chain.isEmpty()) {
     const RootItem* parent_item = chain.pop();
 
-    target_index = index(parent_item->parent()->childItems().indexOf(const_cast<RootItem* const>(parent_item)),
-                         0,
-                         target_index);
+    target_index =
+      index(parent_item->parent()->childItems().indexOf(const_cast<RootItem* const>(parent_item)), 0, target_index);
   }
 
   return target_index;
@@ -428,16 +426,12 @@ void FeedsModel::notifyWithCounts() {
 
 void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
   if (items.size() > RELOAD_MODEL_BORDER_NUM) {
-    qDebugNN << LOGSEC_FEEDMODEL
-             << "There is request to reload feed model for more than "
-             << RELOAD_MODEL_BORDER_NUM
+    qDebugNN << LOGSEC_FEEDMODEL << "There is request to reload feed model for more than " << RELOAD_MODEL_BORDER_NUM
              << " items, reloading model fully.";
     reloadWholeLayout();
   }
   else {
-    qDebugNN << LOGSEC_FEEDMODEL
-             << "There is request to reload feed model, reloading the "
-             << items.size()
+    qDebugNN << LOGSEC_FEEDMODEL << "There is request to reload feed model, reloading the " << items.size()
              << " items individually.";
 
     for (RootItem* item : items) {
@@ -451,7 +445,8 @@ void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
 void FeedsModel::setupFonts() {
   QFont fon;
 
-  fon.fromString(qApp->settings()->value(GROUP(Feeds), Feeds::ListFont, Application::font("FeedsView").toString()).toString());
+  fon.fromString(
+    qApp->settings()->value(GROUP(Feeds), Feeds::ListFont, Application::font("FeedsView").toString()).toString());
 
   m_normalFont = fon;
 
@@ -478,7 +473,8 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
   endInsertRows();
 
   // Connect.
-  connect(root, &ServiceRoot::itemRemovalRequested, this, static_cast<void (FeedsModel::*)(RootItem*)>(&FeedsModel::removeItem));
+  connect(root, &ServiceRoot::itemRemovalRequested, this,
+          static_cast<void (FeedsModel::*)(RootItem*)>(&FeedsModel::removeItem));
   connect(root, &ServiceRoot::itemReassignmentRequested, this, &FeedsModel::reassignNodeToNewParent);
   connect(root, &ServiceRoot::dataChanged, this, &FeedsModel::onItemDataChanged);
   connect(root, &ServiceRoot::reloadMessageListRequested, this, &FeedsModel::reloadMessageListRequested);
@@ -554,7 +550,7 @@ void FeedsModel::stopServiceAccounts() {
   }
 }
 
-QList<Feed*>FeedsModel::feedsForIndex(const QModelIndex& index) const {
+QList<Feed*> FeedsModel::feedsForIndex(const QModelIndex& index) const {
   return itemForIndex(index)->getSubTreeFeeds();
 }
 
@@ -576,27 +572,26 @@ bool FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
 
 QVariant FeedsModel::data(const QModelIndex& index, int role) const {
   switch (role) {
-    case Qt::ItemDataRole::FontRole: {
-      RootItem* it = itemForIndex(index);
-      bool is_bold = it->countOfUnreadMessages() > 0;
-      bool is_striked = it->kind() == RootItem::Kind::Feed
-                        ? qobject_cast<Feed*>(it)->isSwitchedOff()
-                        : false;
+  case Qt::ItemDataRole::FontRole: {
+    RootItem* it = itemForIndex(index);
+    bool is_bold = it->countOfUnreadMessages() > 0;
+    bool is_striked = it->kind() == RootItem::Kind::Feed ? qobject_cast<Feed*>(it)->isSwitchedOff() : false;
 
-      if (is_bold) {
-        return is_striked ? m_boldStrikedFont : m_boldFont;
-      }
-      else {
-        return is_striked ? m_normalStrikedFont : m_normalFont;
-      }
+    if (is_bold) {
+      return is_striked ? m_boldStrikedFont : m_boldFont;
+    }
+    else {
+      return is_striked ? m_normalStrikedFont : m_normalFont;
+    }
+  }
+
+  case Qt::ItemDataRole::ToolTipRole:
+    if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
+      return QVariant();
     }
 
-    case Qt::ItemDataRole::ToolTipRole:
-      if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
-        return QVariant();
-      }
-
-    default:
-      return itemForIndex(index)->data(index.column(), role);;
+  default:
+    return itemForIndex(index)->data(index.column(), role);
+    ;
   }
 }
