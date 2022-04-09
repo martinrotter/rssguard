@@ -28,24 +28,27 @@
 void MessagePreviewer::createConnections() {
   installEventFilter(this);
 
-  connect(m_actionMarkRead = m_toolBar->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")), tr("Mark article read")),
+  connect(m_actionMarkRead =
+            m_toolBar->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")), tr("Mark article read")),
           &QAction::triggered,
           this,
           &MessagePreviewer::markMessageAsRead);
-  connect(m_actionMarkUnread = m_toolBar->addAction(qApp->icons()->fromTheme(QSL("mail-mark-unread")), tr("Mark article unread")),
+  connect(m_actionMarkUnread =
+            m_toolBar->addAction(qApp->icons()->fromTheme(QSL("mail-mark-unread")), tr("Mark article unread")),
           &QAction::triggered,
           this,
           &MessagePreviewer::markMessageAsUnread);
-  connect(m_actionSwitchImportance = m_toolBar->addAction(qApp->icons()->fromTheme(QSL("mail-mark-important")), tr("Switch article importance")),
+  connect(m_actionSwitchImportance =
+            m_toolBar->addAction(qApp->icons()->fromTheme(QSL("mail-mark-important")), tr("Switch article importance")),
           &QAction::triggered,
           this,
           &MessagePreviewer::switchMessageImportance);
 }
 
 MessagePreviewer::MessagePreviewer(QWidget* parent)
-  : QWidget(parent), m_mainLayout(new QGridLayout(this)), m_viewerLayout(new QStackedLayout(this)),
-  m_toolBar(new QToolBar(this)), m_msgBrowser(new WebBrowser(nullptr, this)), m_separator(nullptr),
-  m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
+  : QWidget(parent), m_mainLayout(new QGridLayout(this)), m_viewerLayout(new QStackedLayout()),
+    m_toolBar(new QToolBar(this)), m_msgBrowser(new WebBrowser(nullptr, this)), m_separator(nullptr),
+    m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
 
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
 
@@ -126,10 +129,11 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
 
     if (!same_message) {
       const QString msg_feed_id = message.m_feedId;
-      const auto* feed = root->getParentServiceRoot()->getItemFromSubTree(
-        [msg_feed_id](const RootItem* it) {
-        return it->kind() == RootItem::Kind::Feed && it->customId() == msg_feed_id;
-      })->toFeed();
+      const auto* feed = root->getParentServiceRoot()
+                           ->getItemFromSubTree([msg_feed_id](const RootItem* it) {
+                             return it->kind() == RootItem::Kind::Feed && it->customId() == msg_feed_id;
+                           })
+                           ->toFeed();
 
       if (feed != nullptr && feed->openArticlesDirectly() && !m_message.m_url.isEmpty()) {
         ensureDefaultBrowserVisible();
@@ -159,7 +163,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
         else {
           ensureDefaultBrowserVisible();
 
-          m_msgBrowser->loadMessages({ message }, m_root);
+          m_msgBrowser->loadMessages({message}, m_root);
         }
       }
     }
@@ -191,16 +195,14 @@ void MessagePreviewer::markMessageAsUnread() {
 
 void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
   if (!m_root.isNull()) {
-    if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(),
-                                                                QList<Message>() << m_message,
-                                                                read)) {
-      DatabaseQueries::markMessagesReadUnread(qApp->database()->driver()->connection(objectName(),
-                                                                                     DatabaseDriver::DesiredStorageType::FromSettings),
+    if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(), QList<Message>() << m_message, read)) {
+      DatabaseQueries::markMessagesReadUnread(qApp->database()
+                                                ->driver()
+                                                ->connection(objectName(),
+                                                             DatabaseDriver::DesiredStorageType::FromSettings),
                                               QStringList() << QString::number(m_message.m_id),
                                               read);
-      m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(),
-                                                             QList<Message>() << m_message,
-                                                             read);
+      m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(), QList<Message>() << m_message, read);
       m_message.m_isRead = read == RootItem::ReadStatus::Read;
       emit markMessageRead(m_message.m_id, read);
 
@@ -211,24 +213,27 @@ void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
 
 void MessagePreviewer::switchMessageImportance(bool checked) {
   if (!m_root.isNull()) {
-    if (m_root->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_root.data(),
-                                                                        QList<ImportanceChange>()
-                                                                        << ImportanceChange(m_message,
-                                                                                            m_message.
-                                                                                            m_isImportant
-                                                                                            ? RootItem::Importance::NotImportant
-                                                                                            : RootItem::Importance::Important))) {
-      DatabaseQueries::switchMessagesImportance(qApp->database()->driver()->connection(objectName(), DatabaseDriver::DesiredStorageType::FromSettings),
+    if (m_root->getParentServiceRoot()
+          ->onBeforeSwitchMessageImportance(m_root.data(),
+                                            QList<ImportanceChange>()
+                                              << ImportanceChange(m_message,
+                                                                  m_message.m_isImportant
+                                                                    ? RootItem::Importance::NotImportant
+                                                                    : RootItem::Importance::Important))) {
+      DatabaseQueries::switchMessagesImportance(qApp->database()
+                                                  ->driver()
+                                                  ->connection(objectName(),
+                                                               DatabaseDriver::DesiredStorageType::FromSettings),
                                                 QStringList() << QString::number(m_message.m_id));
-      m_root->getParentServiceRoot()->onAfterSwitchMessageImportance(m_root.data(),
-                                                                     QList<ImportanceChange>()
-                                                                     << ImportanceChange(m_message,
-                                                                                         m_message.m_isImportant
-                                                                                         ? RootItem::Importance::NotImportant
-                                                                                         : RootItem::Importance::Important));
-      emit markMessageImportant(m_message.m_id, checked
-                                ? RootItem::Importance::Important
-                                : RootItem::Importance::NotImportant);
+      m_root->getParentServiceRoot()
+        ->onAfterSwitchMessageImportance(m_root.data(),
+                                         QList<ImportanceChange>()
+                                           << ImportanceChange(m_message,
+                                                               m_message.m_isImportant
+                                                                 ? RootItem::Importance::NotImportant
+                                                                 : RootItem::Importance::Important));
+      emit markMessageImportant(m_message.m_id,
+                                checked ? RootItem::Importance::Important : RootItem::Importance::NotImportant);
 
       m_message.m_isImportant = checked;
     }
@@ -271,8 +276,9 @@ void MessagePreviewer::updateLabels(bool only_clear) {
       btn_label->setIcon(Label::generateIcon(label->color()));
       btn_label->setAutoRaise(false);
       btn_label->setText(QSL(" ") + label->title());
-      btn_label->setToolButtonStyle(Qt::ToolButtonStyle(qApp->settings()->value(GROUP(GUI),
-                                                                                SETTING(GUI::ToolbarStyle)).toInt()));
+      btn_label->setToolButtonStyle(Qt::ToolButtonStyle(qApp->settings()
+                                                          ->value(GROUP(GUI), SETTING(GUI::ToolbarStyle))
+                                                          .toInt()));
       btn_label->setToolTip(label->title());
       btn_label->setChecked(DatabaseQueries::isLabelAssignedToMessage(database, label, m_message));
 
@@ -280,7 +286,7 @@ void MessagePreviewer::updateLabels(bool only_clear) {
 
       connect(btn_label, &QToolButton::toggled, this, &MessagePreviewer::switchLabel);
 
-      m_btnLabels.append({ btn_label, act_label });
+      m_btnLabels.append({btn_label, act_label});
     }
   }
 }
