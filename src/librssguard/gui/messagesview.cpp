@@ -500,7 +500,7 @@ void MessagesView::loadItem(RootItem* item) {
 }
 
 void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
-  m_proxyModel->setFilter(filter);
+  m_proxyModel->setMessageListFilter(filter);
   reloadSelections();
 }
 

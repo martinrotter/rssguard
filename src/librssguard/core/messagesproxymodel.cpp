@@ -99,61 +99,62 @@ bool MessagesProxyModel::lessThan(const QModelIndex& left, const QModelIndex& ri
   return false;
 }
 
-bool MessagesProxyModel::filterAcceptsMessage(Message currentMessage) const {
+bool MessagesProxyModel::filterAcceptsMessage(const Message& current_message) const {
   switch (m_filter) {
-  case MessageListFilter::NoFiltering:
-    return true;
+    case MessageListFilter::NoFiltering:
+      return true;
 
-  case MessageListFilter::ShowUnread:
-    return !currentMessage.m_isRead;
+    case MessageListFilter::ShowUnread:
+      return !current_message.m_isRead;
 
-  case MessageListFilter::ShowImportant:
-    return currentMessage.m_isImportant;
+    case MessageListFilter::ShowImportant:
+      return current_message.m_isImportant;
 
-  case MessageListFilter::ShowToday: {
-    const QDateTime currentDateTime = QDateTime::currentDateTime();
-    const QDate currentDate = currentDateTime.date();
+    case MessageListFilter::ShowToday: {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
 
-    return currentDate.startOfDay() <= currentMessage.m_created && currentMessage.m_created <= currentDate.endOfDay();
-  }
+      return currentDate.startOfDay() <= current_message.m_created &&
+             current_message.m_created <= currentDate.endOfDay();
+    }
 
-  case MessageListFilter::ShowYesterday: {
-    const QDateTime currentDateTime = QDateTime::currentDateTime();
-    const QDate currentDate = currentDateTime.date();
+    case MessageListFilter::ShowYesterday: {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
 
-    return currentDate.addDays(-1).startOfDay() <= currentMessage.m_created &&
-           currentMessage.m_created <= currentDate.addDays(-1).endOfDay();
-  }
+      return currentDate.addDays(-1).startOfDay() <= current_message.m_created &&
+             current_message.m_created <= currentDate.addDays(-1).endOfDay();
+    }
 
-  case MessageListFilter::ShowLast24Hours: {
-    const QDateTime currentDateTime = QDateTime::currentDateTime();
+    case MessageListFilter::ShowLast24Hours: {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
 
-    return currentDateTime.addSecs(-24 * 60 * 60) <= currentMessage.m_created &&
-           currentMessage.m_created <= currentDateTime;
-  }
+      return currentDateTime.addSecs(-24 * 60 * 60) <= current_message.m_created &&
+             current_message.m_created <= currentDateTime;
+    }
 
-  case MessageListFilter::ShowLast48Hours: {
-    const QDateTime currentDateTime = QDateTime::currentDateTime();
+    case MessageListFilter::ShowLast48Hours: {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
 
-    return currentDateTime.addSecs(-48 * 60 * 60) <= currentMessage.m_created &&
-           currentMessage.m_created <= currentDateTime;
-  }
+      return currentDateTime.addSecs(-48 * 60 * 60) <= current_message.m_created &&
+             current_message.m_created <= currentDateTime;
+    }
 
-  case MessageListFilter::ShowThisWeek: {
-    const QDateTime currentDateTime = QDateTime::currentDateTime();
-    const QDate currentDate = currentDateTime.date();
+    case MessageListFilter::ShowThisWeek: {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
 
-    return currentDate.year() == currentMessage.m_created.date().year() &&
-           currentDate.weekNumber() == currentMessage.m_created.date().weekNumber();
-  }
+      return currentDate.year() == current_message.m_created.date().year() &&
+             currentDate.weekNumber() == current_message.m_created.date().weekNumber();
+    }
 
-  case MessageListFilter::ShowLastWeek: {
-    const QDateTime currentDateTime = QDateTime::currentDateTime();
-    const QDate currentDate = currentDateTime.date();
+    case MessageListFilter::ShowLastWeek: {
+      const QDateTime currentDateTime = QDateTime::currentDateTime();
+      const QDate currentDate = currentDateTime.date();
 
-    return currentDate.addDays(-7).year() == currentMessage.m_created.date().year() &&
-           currentDate.addDays(-7).weekNumber() == currentMessage.m_created.date().weekNumber();
-  }
+      return currentDate.addDays(-7).year() == current_message.m_created.date().year() &&
+             currentDate.addDays(-7).weekNumber() == current_message.m_created.date().weekNumber();
+    }
   }
 
   return false;
@@ -171,7 +172,7 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
           filterAcceptsMessage(m_sourceModel->messageAt(source_row)));
 }
 
-void MessagesProxyModel::setFilter(MessageListFilter filter) {
+void MessagesProxyModel::setMessageListFilter(MessageListFilter filter) {
   m_filter = filter;
 }
 
@@ -232,59 +233,59 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start,
 
         switch (match_type) {
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-        case Qt::MatchFlag::MatchRegularExpression:
+          case Qt::MatchFlag::MatchRegularExpression:
 #else
-        case Qt::MatchFlag::MatchRegExp:
+          case Qt::MatchFlag::MatchRegExp:
 #endif
-          if (QRegularExpression(entered_text,
-                                 QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                   QRegularExpression::PatternOption::UseUnicodePropertiesOption)
-                .match(item_text)
-                .hasMatch()) {
-            result.append(idx);
-          }
+            if (QRegularExpression(entered_text,
+                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                     QRegularExpression::PatternOption::UseUnicodePropertiesOption)
+                  .match(item_text)
+                  .hasMatch()) {
+              result.append(idx);
+            }
 
-          break;
+            break;
 
-        case Qt::MatchWildcard:
-          if (QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
-                                 QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                   QRegularExpression::PatternOption::UseUnicodePropertiesOption)
-                .match(item_text)
-                .hasMatch()) {
-            result.append(idx);
-          }
+          case Qt::MatchWildcard:
+            if (QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
+                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                     QRegularExpression::PatternOption::UseUnicodePropertiesOption)
+                  .match(item_text)
+                  .hasMatch()) {
+              result.append(idx);
+            }
 
-          break;
+            break;
 
-        case Qt::MatchStartsWith:
-          if (item_text.startsWith(entered_text, case_sensitivity)) {
-            result.append(idx);
-          }
+          case Qt::MatchStartsWith:
+            if (item_text.startsWith(entered_text, case_sensitivity)) {
+              result.append(idx);
+            }
 
-          break;
+            break;
 
-        case Qt::MatchEndsWith:
-          if (item_text.endsWith(entered_text, case_sensitivity)) {
-            result.append(idx);
-          }
+          case Qt::MatchEndsWith:
+            if (item_text.endsWith(entered_text, case_sensitivity)) {
+              result.append(idx);
+            }
 
-          break;
+            break;
 
-        case Qt::MatchFixedString:
-          if (item_text.compare(entered_text, case_sensitivity) == 0) {
-            result.append(idx);
-          }
+          case Qt::MatchFixedString:
+            if (item_text.compare(entered_text, case_sensitivity) == 0) {
+              result.append(idx);
+            }
 
-          break;
+            break;
 
-        case Qt::MatchContains:
-        default:
-          if (item_text.contains(entered_text, case_sensitivity)) {
-            result.append(idx);
-          }
+          case Qt::MatchContains:
+          default:
+            if (item_text.contains(entered_text, case_sensitivity)) {
+              result.append(idx);
+            }
 
-          break;
+            break;
         }
       }
     }

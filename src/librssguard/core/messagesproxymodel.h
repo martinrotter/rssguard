@@ -36,25 +36,26 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     QModelIndexList mapListToSource(const QModelIndexList& indexes) const;
     QModelIndexList mapListFromSource(const QModelIndexList& indexes, bool deep = false) const;
 
+    void setMessageListFilter(MessageListFilter filter);
+
     // Fix for matching indexes with respect to specifics of the message model.
-    QModelIndexList match(const QModelIndex& start,
-                          int role,
-                          const QVariant& entered_value,
-                          int hits,
-                          Qt::MatchFlags flags) const;
+    virtual QModelIndexList match(const QModelIndex& start,
+                                  int role,
+                                  const QVariant& entered_value,
+                                  int hits,
+                                  Qt::MatchFlags flags) const;
 
     // Performs sort of items.
-    void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
-
-    void setFilter(MessageListFilter filter);
+    virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
   private:
     QModelIndex getNextImportantItemIndex(int default_row, int max_row) const;
     QModelIndex getNextUnreadItemIndex(int default_row, int max_row) const;
 
-    bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
-    bool filterAcceptsMessage(Message currentMessage) const;
-    bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
+    bool filterAcceptsMessage(const Message& current_message) const;
+
+    virtual bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
+    virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
 
     // Source model pointer.
     MessagesModel* m_sourceModel;

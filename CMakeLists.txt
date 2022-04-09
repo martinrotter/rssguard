@@ -30,7 +30,7 @@
 # Other information:
 #   - supports Windows, Linux, *BSD, macOS, OS/2, Android,
 #   - Qt 5.12.0 or newer is required,
-#   - Qt 6.2.3 or newer is required,
+#   - Qt 6.3.0 or newer is required,
 #   - cmake 3.9.0 or newer is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules
 #     within repository before compilation,
@@ -60,7 +60,7 @@ set(APP_AUTHOR "Martin Rotter")
 set(APP_COPYRIGHT "\\251 2011-2022 ${APP_AUTHOR}")
 set(APP_REVERSE_NAME "com.github.rssguard")
 set(APP_DONATE_URL "https://github.com/sponsors/martinrotter")
-set(APP_VERSION "4.2.1")
+set(APP_VERSION "4.3.1")
 
 set(APP_URL "https://github.com/martinrotter/rssguard")
 set(APP_URL_DOCUMENTATION "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md")
@@ -108,7 +108,7 @@ option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)
 option(REVISION_FROM_GIT "Get revision using `git rev-parse`" ON)
 
 # Import Qt libraries.
-set(QT6_MIN_VERSION 6.2.3)
+set(QT6_MIN_VERSION 6.3.0)
 set(QT5_MIN_VERSION 5.12.0)
 
 set(QT_COMPONENTS
