@@ -568,9 +568,13 @@ if(USE_WEBENGINE)
 endif()
 
 list(APPEND SOURCES
-  # Lite non-WebEngine message browser.
+  # Litehtml.
   gui/webviewers/litehtml/litehtmlviewer.h
   gui/webviewers/litehtml/litehtmlviewer.cpp
+
+  # QTextBrowser.
+  gui/webviewers/qtextbrowser/textbrowserviewer.h
+  gui/webviewers/qtextbrowser/textbrowserviewer.cpp
 )
 
 # Deal with .ui files.

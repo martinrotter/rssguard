@@ -161,7 +161,8 @@ QPair<QString, QUrl> LiteHtmlViewer::prepareHtmlForMessage(const QList<Message>&
        else {*/
     QString cnts = message.m_contents;
 
-    html += cnts.replace(imgTagRegex, QString());
+    html += cnts;
+    // html += cnts.replace(imgTagRegex, QString());
 
     //}
 

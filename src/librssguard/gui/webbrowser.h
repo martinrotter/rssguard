@@ -26,10 +26,11 @@ class DiscoverFeedsButton;
 class SearchTextWidget;
 
 class WebBrowser : public TabContent {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class WebEngineViewer;
-  friend class LiteHtmlViewer;
+    friend class WebEngineViewer;
+    friend class LiteHtmlViewer;
+    friend class TextBrowserViewer;
 
   public:
     explicit WebBrowser(WebViewer* viewer = nullptr, QWidget* parent = nullptr);
