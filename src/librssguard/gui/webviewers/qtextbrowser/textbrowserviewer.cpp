@@ -29,6 +29,12 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent) : QTextBrowser(parent), m_
 }
 
 QVariant TextBrowserViewer::loadResource(int type, const QUrl& name) {
+  if (!m_reloadingWithResources) {
+    if (type == QTextDocument::ResourceType::ImageResource) {
+      m_resourcesForHtml.append(name);
+    }
+  }
+
   return {};
 }
 
@@ -127,11 +133,19 @@ void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
 
 void TextBrowserViewer::findText(const QString& text, bool backwards) {
   if (!text.isEmpty()) {
-    QTextBrowser::find(text, backwards ? QTextDocument::FindFlag::FindBackward : QTextDocument::FindFlag(0));
+    bool found =
+      QTextBrowser::find(text, backwards ? QTextDocument::FindFlag::FindBackward : QTextDocument::FindFlag(0));
+
+    if (!found) {
+      textCursor().clearSelection();
+      moveCursor(QTextCursor::MoveOperation::Start);
+
+      QTextBrowser::find(text, backwards ? QTextDocument::FindFlag::FindBackward : QTextDocument::FindFlag(0));
+    }
   }
   else {
     textCursor().clearSelection();
-    moveCursor(QTextCursor::MoveOperation::Left);
+    moveCursor(QTextCursor::MoveOperation::Start);
   }
 }
 
@@ -204,6 +218,10 @@ void TextBrowserViewer::setUrl(const QUrl& url) {
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   m_currentUrl = base_url;
 
+  if (!m_reloadingWithResources) {
+    m_resourcesForHtml.clear();
+  }
+
   QTextBrowser::setHtml(html);
 
   setZoomFactor(m_zoomFactor);
@@ -243,20 +261,23 @@ void TextBrowserViewer::setVerticalScrollBarPosition(double pos) {
 }
 
 void TextBrowserViewer::applyFont(const QFont& fon) {
+  m_baseFont = fon;
   setFont(fon);
+  setZoomFactor(zoomFactor());
 }
 
 qreal TextBrowserViewer::zoomFactor() const {
-  return font().pointSizeF() / 8.0;
+  return m_zoomFactor;
 }
 
 void TextBrowserViewer::setZoomFactor(qreal zoom_factor) {
   m_zoomFactor = zoom_factor;
 
   auto fon = font();
-  fon.setPointSizeF(8.0 * zoom_factor);
 
-  applyFont(fon);
+  fon.setPointSizeF(m_baseFont.pointSizeF() * zoom_factor);
+
+  setFont(fon);
 }
 
 void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {
@@ -266,6 +287,14 @@ void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {
 
   if (menu == nullptr) {
     return;
+  }
+
+  if (m_actionReloadWithImages.isNull()) {
+    m_actionReloadWithImages.reset(new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("view-refresh")),
+                                               tr("Reload with images"),
+                                               this));
+
+    connect(m_actionReloadWithImages.data(), &QAction::triggered, this, &TextBrowserViewer::reloadWithImages);
   }
 
   auto anchor = anchorAt(event->pos());
@@ -314,8 +343,16 @@ void TextBrowserViewer::resizeEvent(QResizeEvent* event) {
 }
 
 void TextBrowserViewer::wheelEvent(QWheelEvent* event) {
+  // NOTE: Skip base class implemetation.
   QAbstractScrollArea::wheelEvent(event);
   updateMicroFocus();
+}
+
+void TextBrowserViewer::reloadWithImages() {
+  m_reloadingWithResources = true;
+  m_loadedResources.clear();
+
+  setHtml(html(), m_currentUrl);
 }
 
 void TextBrowserViewer::onAnchorClicked(const QUrl& url) {

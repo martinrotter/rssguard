@@ -47,6 +47,7 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     virtual void wheelEvent(QWheelEvent* event);
 
   private slots:
+    void reloadWithImages();
     void onAnchorClicked(const QUrl& url);
 
   signals:
@@ -68,7 +69,12 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
   private:
     QUrl m_currentUrl;
     QPointer<RootItem> m_root;
+    QFont m_baseFont;
     qreal m_zoomFactor = 1.0;
+    QScopedPointer<QAction> m_actionReloadWithImages;
+    bool m_reloadingWithResources;
+    QList<QUrl> m_resourcesForHtml;
+    QMap<QUrl, QByteArray> m_loadedResources;
 };
 
 #endif // TEXTBROWSERVIEWER_H
