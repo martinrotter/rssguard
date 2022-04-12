@@ -11,7 +11,6 @@
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/toolbars/statusbar.h"
-#include "gui/webviewers/litehtml/litehtmlviewer.h"        // QLiteHtml-based web browsing.
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h" // QTextBrowser-based web browsing.
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
@@ -647,7 +646,6 @@ WebViewer* Application::createWebView() {
 #else
   if (forcedNoWebEngine()) {
     return new TextBrowserViewer();
-    // return new LiteHtmlViewer();
   }
   else {
     return new WebEngineViewer();

@@ -7,11 +7,14 @@
 
 #include <QTextBrowser>
 
+#include "network-web/adblock/adblockmanager.h"
+
 #include <QPointer>
 
 class QContextMenuEvent;
 class QResizeEvent;
 class WebBrowser;
+class Downloader;
 
 class TextBrowserViewer : public QTextBrowser, public WebViewer {
     Q_OBJECT
@@ -41,6 +44,7 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
   protected:
     virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual void resizeEvent(QResizeEvent* event);
+    virtual void wheelEvent(QWheelEvent* event);
 
   private slots:
     void onAnchorClicked(const QUrl& url);
@@ -57,11 +61,14 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     void closeWindowRequested();
 
   private:
+    BlockingResult blockedWithAdblock(const QUrl& url);
+    QScopedPointer<Downloader> m_downloader;
     QPair<QString, QUrl> prepareHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const;
 
   private:
     QUrl m_currentUrl;
     QPointer<RootItem> m_root;
+    qreal m_zoomFactor = 1.0;
 };
 
 #endif // TEXTBROWSERVIEWER_H

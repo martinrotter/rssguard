@@ -7,15 +7,18 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
+#include "network-web/adblock/adblockrequestinfo.h"
+#include "network-web/downloader.h"
+#include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 
 #include <QContextMenuEvent>
 #include <QFileIconProvider>
 #include <QScrollBar>
 
-TextBrowserViewer::TextBrowserViewer(QWidget* parent) : QTextBrowser(parent) {
+TextBrowserViewer::TextBrowserViewer(QWidget* parent) : QTextBrowser(parent), m_downloader(new Downloader(this)) {
   setAutoFillBackground(true);
-  setFrameShape(QFrame::Shape::StyledPanel);
+  setFrameShape(QFrame::Shape::NoFrame);
   setFrameShadow(QFrame::Shadow::Plain);
   setTabChangesFocus(true);
   setOpenLinks(false);
@@ -51,10 +54,10 @@ QPair<QString, QUrl> TextBrowserViewer::prepareHtmlForMessage(const QList<Messag
       html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(enc.m_url, enc.m_mimeType);
     }
 
-    QRegularExpression imgTagRegex("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
-                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                     QRegularExpression::PatternOption::InvertedGreedinessOption);
-    QRegularExpressionMatchIterator i = imgTagRegex.globalMatch(message.m_contents);
+    static QRegularExpression img_tag_rgx("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
+                                          QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                            QRegularExpression::PatternOption::InvertedGreedinessOption);
+    QRegularExpressionMatchIterator i = img_tag_rgx.globalMatch(message.m_contents);
     QString pictures_html;
 
     while (i.hasNext()) {
@@ -77,18 +80,35 @@ QPair<QString, QUrl> TextBrowserViewer::prepareHtmlForMessage(const QList<Messag
     html += pictures_html;
   }
 
-  // TODO: If FgInteresting not defined by the skin
-  // use current pallette/Highlight color perhaps.
-  return {
-    QSL("<html>"
-        "<head><style>"
-        "a { color: %2; }"
-        "</style></head>"
-        "<body>%1</body>"
-        "</html>")
-      .arg(html,
-           qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>().name()),
-    QUrl()};
+  QColor a_color = qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>();
+
+  if (!a_color.isValid()) {
+    a_color = qApp->palette().color(QPalette::ColorRole::Highlight);
+  }
+
+  QString base_url;
+  auto* feed = selected_item->getParentServiceRoot()
+                 ->getItemFromSubTree([messages](const RootItem* it) {
+                   return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
+                 })
+                 ->toFeed();
+
+  if (feed != nullptr) {
+    QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
+
+    if (url.isValid()) {
+      base_url = url.scheme() + QSL("://") + url.host();
+    }
+  }
+
+  return {QSL("<html>"
+              "<head><style>"
+              "a { color: %2; }"
+              "</style></head>"
+              "<body>%1</body>"
+              "</html>")
+            .arg(html, a_color.name()),
+          base_url};
 }
 
 void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
@@ -102,12 +122,7 @@ void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionBack->setEnabled(false);
   browser->m_actionForward->setEnabled(false);
   browser->m_actionReload->setEnabled(false);
-
-  // TODO: When clicked "Stop", save the "Stop" state and return {} from "handleResource(...)"
-  // right away.
   browser->m_actionStop->setEnabled(false);
-
-  // TODO: add "Open in new tab" to context menu.
 }
 
 void TextBrowserViewer::findText(const QString& text, bool backwards) {
@@ -120,12 +135,78 @@ void TextBrowserViewer::findText(const QString& text, bool backwards) {
   }
 }
 
-void TextBrowserViewer::setUrl(const QUrl& url) {}
+BlockingResult TextBrowserViewer::blockedWithAdblock(const QUrl& url) {
+  AdblockRequestInfo block_request(url);
+
+  if (url.path().endsWith(QSL("css"))) {
+    block_request.setResourceType(QSL("stylesheet"));
+  }
+  else {
+    block_request.setResourceType(QSL("image"));
+  }
+
+  auto block_result = qApp->web()->adBlock()->block(block_request);
+
+  if (block_result.m_blocked) {
+    qWarningNN << LOGSEC_ADBLOCK << "Blocked request:" << QUOTE_W_SPACE_DOT(block_request.requestUrl().toString());
+    return block_result;
+  }
+  else {
+    return block_result;
+  }
+}
+
+void TextBrowserViewer::setUrl(const QUrl& url) {
+  emit loadingStarted();
+  QString html_str;
+  QUrl nonconst_url = url;
+  bool is_error = false;
+  auto block_result = blockedWithAdblock(url);
+
+  if (block_result.m_blocked) {
+    is_error = true;
+    nonconst_url = QUrl::fromUserInput(QSL(INTERNAL_URL_ADBLOCKED));
+
+    // TODO: Zjednodušeně.
+    html_str = qApp->skins()->adBlockedPage(url.toString(), block_result.m_blockedByFilter);
+  }
+  else {
+    QEventLoop loop;
+
+    connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
+    m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
+
+    loop.exec();
+
+    const auto net_error = m_downloader->lastOutputError();
+    const QString content_type = m_downloader->lastContentType().toString();
+
+    if (net_error != QNetworkReply::NetworkError::NoError) {
+      is_error = true;
+      // TODO: lepší hlaška.
+      html_str = "Error!";
+    }
+    else {
+      if (content_type.startsWith(QSL("image/"))) {
+        html_str = QSL("<img src=\"%1\">").arg(nonconst_url.toString());
+      }
+      else {
+        html_str = QString::fromUtf8(m_downloader->lastOutputData());
+      }
+    }
+  }
+
+  setHtml(html_str, nonconst_url);
+
+  emit loadingFinished(!is_error);
+}
 
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   m_currentUrl = base_url;
 
   QTextBrowser::setHtml(html);
+
+  setZoomFactor(m_zoomFactor);
 
   emit pageTitleChanged(documentTitle());
   emit pageUrlChanged(base_url);
@@ -144,6 +225,7 @@ void TextBrowserViewer::clear() {
 }
 
 void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
+  emit loadingStarted();
   m_root = root;
 
   auto html_messages = prepareHtmlForMessage(messages, root);
@@ -165,18 +247,22 @@ void TextBrowserViewer::applyFont(const QFont& fon) {
 }
 
 qreal TextBrowserViewer::zoomFactor() const {
-  return font().pointSize() / 12.0;
+  return font().pointSizeF() / 8.0;
 }
 
 void TextBrowserViewer::setZoomFactor(qreal zoom_factor) {
+  m_zoomFactor = zoom_factor;
+
   auto fon = font();
-  fon.setPointSize(fon.pointSize() * zoom_factor);
+  fon.setPointSizeF(8.0 * zoom_factor);
+
+  applyFont(fon);
 }
 
 void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {
   event->accept();
 
-  auto* menu = createStandardContextMenu();
+  auto* menu = createStandardContextMenu(event->pos());
 
   if (menu == nullptr) {
     return;
@@ -214,6 +300,10 @@ void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {
     menu->addMenu(menu_ext_tools);
   }
 
+  connect(menu, &QMenu::aboutToHide, this, [menu] {
+    menu->deleteLater();
+  });
+
   menu->popup(event->globalPos());
 }
 
@@ -221,6 +311,11 @@ void TextBrowserViewer::resizeEvent(QResizeEvent* event) {
   // Notify parents about changed geometry.
   updateGeometry();
   QTextBrowser::resizeEvent(event);
+}
+
+void TextBrowserViewer::wheelEvent(QWheelEvent* event) {
+  QAbstractScrollArea::wheelEvent(event);
+  updateMicroFocus();
 }
 
 void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
@@ -242,7 +337,7 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
       QAbstractButton* btn_open = box.addButton(tr("Open in external browser"), QMessageBox::ButtonRole::ActionRole);
       QAbstractButton* btn_download = box.addButton(tr("Download"), QMessageBox::ButtonRole::ActionRole);
       QAbstractButton* btn_cancel = box.addButton(QMessageBox::StandardButton::Cancel);
-      bool always;
+      bool always = false;
 
       MsgBox::setCheckBox(&box, tr("Always open links in external browser."), &always);
 

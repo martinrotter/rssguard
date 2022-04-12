@@ -29,7 +29,6 @@ class WebBrowser : public TabContent {
     Q_OBJECT
 
     friend class WebEngineViewer;
-    friend class LiteHtmlViewer;
     friend class TextBrowserViewer;
 
   public:

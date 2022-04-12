@@ -6,9 +6,7 @@
     <file>text/COPYING_BOOLINQ</file>
     <file>text/COPYING_GNU_GPL</file>
     <file>text/COPYING_GNU_LGPL</file>
-    <file>text/COPYING_GUMBO</file>
-    <file>text/COPYING_LITEHTML</file>
-    <file>text/COPYING_QLITEHTML</file>
+    <file>text/COPYING_QT</file>
 
     <file>sounds/boing.wav</file>
     <file>sounds/rooster.wav</file>

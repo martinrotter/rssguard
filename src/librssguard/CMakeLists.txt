@@ -431,79 +431,6 @@ list(APPEND SOURCES
   3rd-party/sc/simplecrypt.h
 )
 
-# Add QLiteHtml.
-# Gumbo.
-list(APPEND SOURCES
-  3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/attribute.c
-  3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/char_ref.c
-  3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/error.c
-  3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/parser.c
-  3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/string_buffer.c
-  3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/string_piece.c
-  3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/tag.c
-  3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/tokenizer.c
-  3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/utf8.c
-  3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/util.c
-  3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/vector.c
-)
-
-# LiteHtml.
-list(APPEND SOURCES
-  3rd-party/qlitehtml/3rdparty/litehtml/src/background.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/box.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/codepoint.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/context.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/css_length.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/css_selector.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/document.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_anchor.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_base.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_before_after.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_body.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_break.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_cdata.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_comment.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_div.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/element.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_font.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_image.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_link.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_li.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_para.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_script.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_space.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_style.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_table.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_td.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_text.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_title.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/el_tr.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/html.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/html_tag.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/iterators.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/media_query.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/style.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/stylesheet.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/table.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/tstring_view.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/url.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/url_path.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/utf8_strings.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/web_color.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/num_cvt.cpp
-  3rd-party/qlitehtml/3rdparty/litehtml/src/strtod.cpp
-)
-
-# QLiteHtml.
-list(APPEND SOURCES
-  3rd-party/qlitehtml/container_qpainter.h
-  3rd-party/qlitehtml/container_qpainter_p.h
-  3rd-party/qlitehtml/qlitehtml_global.h
-  3rd-party/qlitehtml/qlitehtmlwidget.h
-  3rd-party/qlitehtml/container_qpainter.cpp
-  3rd-party/qlitehtml/qlitehtmlwidget.cpp
-)
-
 set(UI_FILES
   gui/dialogs/formabout.ui
   gui/dialogs/formaddaccount.ui
@@ -568,10 +495,6 @@ if(USE_WEBENGINE)
 endif()
 
 list(APPEND SOURCES
-  # Litehtml.
-  gui/webviewers/litehtml/litehtmlviewer.h
-  gui/webviewers/litehtml/litehtmlviewer.cpp
-
   # QTextBrowser.
   gui/webviewers/qtextbrowser/textbrowserviewer.h
   gui/webviewers/qtextbrowser/textbrowserviewer.cpp
@@ -679,28 +602,6 @@ target_include_directories(rssguard
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/notifications
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/toolbars
 )
-
-# QLiteHtml.
-# Gumbo.
-target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/include)
-target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/include/gumbo)
-
-if(MSVC)
-  target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/src/gumbo/visualc/include)
-endif()
-
-# LiteHtml.
-target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/src)
-target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/include)
-target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml/3rdparty/litehtml/include/litehtml)
-
-if(WIN32)
-  target_compile_definitions(rssguard PUBLIC LITEHTML_UTF8)
-endif()
-
-# QLiteHtml.
-target_include_directories(rssguard PRIVATE 3rd-party/qlitehtml)
-target_compile_definitions(rssguard PRIVATE QLITEHTML_STATIC_LIBRARY)
 
 # Qt.
 target_link_libraries(rssguard PUBLIC

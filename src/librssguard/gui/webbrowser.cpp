@@ -126,7 +126,8 @@ void WebBrowser::reloadFontSettings() {
 }
 
 void WebBrowser::onZoomFactorChanged() {
-  qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, m_webView->zoomFactor());
+  auto fact = m_webView->zoomFactor();
+  qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, fact);
 }
 
 void WebBrowser::clear(bool also_hide) {
@@ -151,6 +152,7 @@ void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {
   if (!m_root.isNull()) {
     m_searchWidget->hide();
     m_webView->loadMessages(messages, root);
+
     show();
   }
 }

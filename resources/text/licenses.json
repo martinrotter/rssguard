@@ -16,17 +16,7 @@
   },
   {
     "title": "GNU GPL v3.0 + Qt Company GPL Exception 1.0",
-    "file": "COPYING_QLITEHTML",
-    "components": "Qt, qlitehtml"
-  },
-  {
-    "title": "3-Clause BSD License",
-    "file": "COPYING_LITEHTML",
-    "components": "litehtml"
-  },
-  {
-    "title": "Apache License, Version 2.0",
-    "file": "COPYING_GUMBO",
-    "components": "Gumbo"
+    "file": "COPYING_QT",
+    "components": "Qt"
   }
 ]
