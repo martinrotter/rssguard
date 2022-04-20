@@ -16,7 +16,8 @@
 #include <QFileIconProvider>
 #include <QScrollBar>
 
-TextBrowserViewer::TextBrowserViewer(QWidget* parent) : QTextBrowser(parent), m_downloader(new Downloader(this)) {
+TextBrowserViewer::TextBrowserViewer(QWidget* parent)
+  : QTextBrowser(parent), m_downloader(new Downloader(this)), m_reloadingWithResources(false) {
   setAutoFillBackground(true);
   setFrameShape(QFrame::Shape::NoFrame);
   setFrameShadow(QFrame::Shadow::Plain);
@@ -33,9 +34,15 @@ QVariant TextBrowserViewer::loadResource(int type, const QUrl& name) {
     if (type == QTextDocument::ResourceType::ImageResource) {
       m_resourcesForHtml.append(name);
     }
-  }
 
-  return {};
+    return {};
+  }
+  else if (m_loadedResources.contains(name)) {
+    return QImage::fromData(m_loadedResources.value(name));
+  }
+  else {
+    return {};
+  }
 }
 
 QSize TextBrowserViewer::sizeHint() const {
@@ -297,6 +304,8 @@ void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {
     connect(m_actionReloadWithImages.data(), &QAction::triggered, this, &TextBrowserViewer::reloadWithImages);
   }
 
+  menu->addAction(m_actionReloadWithImages.data());
+
   auto anchor = anchorAt(event->pos());
 
   if (!anchor.isEmpty()) {
@@ -352,7 +361,26 @@ void TextBrowserViewer::reloadWithImages() {
   m_reloadingWithResources = true;
   m_loadedResources.clear();
 
+  for (const QUrl& url : m_resourcesForHtml) {
+    if (m_loadedResources.contains(url)) {
+      continue;
+    }
+
+    QEventLoop loop;
+
+    connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
+    m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
+
+    loop.exec();
+
+    if (m_downloader->lastOutputError() == QNetworkReply::NetworkError::NoError) {
+      m_loadedResources.insert(url, m_downloader->lastOutputData());
+    }
+  }
+
   setHtml(html(), m_currentUrl);
+
+  m_reloadingWithResources = false;
 }
 
 void TextBrowserViewer::onAnchorClicked(const QUrl& url) {

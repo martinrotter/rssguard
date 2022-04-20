@@ -642,7 +642,7 @@ void Application::showGuiMessage(Notification::Event event,
 
 WebViewer* Application::createWebView() {
 #if !defined(USE_WEBENGINE)
-  return new LiteHtmlViewer();
+  return new TextBrowserViewer();
 #else
   if (forcedNoWebEngine()) {
     return new TextBrowserViewer();
