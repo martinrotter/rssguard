@@ -359,13 +359,15 @@ Executable file must be always be specified, while arguments not. Be very carefu
 
 Note that the above examples are cross-platform and you can use the exact same command on Windows, Linux or macOS, if your operating system is properly configured.
 
+This feature is very flexible and can be used to scrape data with [CSS selectors](https://www.w3schools.com/cssref/css_selectors.asp). There is ready-made [Python script](https://github.com/Owyn/CSS2RSS) which can be used to scrape websites with CSS selectors very easily. Make sure to give its author the credit he deserves.
+
 RSS Guard offers [placeholder](#userd-plac) `%data%` which is automatically replaced with full path to RSS Guard's [user data folder](#userd), allowing you to make your configuration fully portable. You can, therefore, use something like this as source script line: `bash#%data%/scripts/download-feed.sh`.
 
 Also, working directory of process executing the script is set to point to RSS Guard's user data folder.
 
 There are some examples of website scrapers [here](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers), most of them are written in Python 3, thus their execution line is similar to `python script.py`. Make sure to examine each script for more information on how to use it.
 
-After your source feed data are downloaded either via URL or custom script, you can optionally post-process the data with one more custom script, which will take **raw source data as input** and must produce processed valid feed data to **standard output** while printing all error messages to **error output**.
+After your source feed data are downloaded either via URL or custom script, you can optionally post-process the data with one more custom script, which will take **raw source data as input** and must produce valid feed data to **standard output** while printing all error messages to **error output**.
 
 Format of post-process script execution line is the same as above.
 
