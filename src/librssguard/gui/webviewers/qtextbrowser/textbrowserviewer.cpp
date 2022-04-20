@@ -176,8 +176,7 @@ void TextBrowserViewer::setUrl(const QUrl& url) {
     is_error = true;
     nonconst_url = QUrl::fromUserInput(QSL(INTERNAL_URL_ADBLOCKED));
 
-    // TODO: Zjednodušeně.
-    html_str = qApp->skins()->adBlockedPage(url.toString(), block_result.m_blockedByFilter);
+    html_str = QSL("Blocked!!!<br/>%1").arg(url.toString());
   }
   else {
     QEventLoop loop;
@@ -192,8 +191,7 @@ void TextBrowserViewer::setUrl(const QUrl& url) {
 
     if (net_error != QNetworkReply::NetworkError::NoError) {
       is_error = true;
-      // TODO: lepší hlaška.
-      html_str = "Error!";
+      html_str = QSL("Error!<br/>%1").arg(NetworkFactory::networkErrorText(net_error));
     }
     else {
       if (content_type.startsWith(QSL("image/"))) {
@@ -423,6 +421,16 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   m_document.data()->m_resourcesForHtml.clear();
 
   setHtmlPrivate(html, base_url);
+
+  // TODO: implement RTL for viewers somehow?
+  /*
+  auto to = document()->defaultTextOption();
+
+  to.setTextDirection(Qt::LayoutDirection::RightToLeft);
+  to.setAlignment(Qt::AlignmentFlag::AlignRight);
+
+  document()->setDefaultTextOption(to);
+  */
 }
 
 void TextBrowserViewer::setHtmlPrivate(const QString& html, const QUrl& base_url) {

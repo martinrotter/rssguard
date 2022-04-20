@@ -72,17 +72,8 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text">
+       <property name="toolTip">
         <string>Move action up</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -94,17 +85,8 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text">
+       <property name="toolTip">
         <string>Move action down</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -123,17 +105,8 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text">
+       <property name="toolTip">
         <string>Insert separator</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -145,17 +118,8 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text">
+       <property name="toolTip">
         <string>Insert spacer</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -174,17 +138,8 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text">
+       <property name="toolTip">
         <string>Add selected action</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -196,17 +151,8 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text">
+       <property name="toolTip">
         <string>Delete selected action</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -218,17 +164,8 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text">
+       <property name="toolTip">
         <string>Delete all actions</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
@@ -240,17 +177,8 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text">
+       <property name="toolTip">
         <string>Reset toolbar</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextUnderIcon</enum>
        </property>
       </widget>
      </item>
