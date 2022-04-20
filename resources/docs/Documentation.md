@@ -378,7 +378,7 @@ Typical post-processing filter might do things like advanced CSS formatting, loc
 It's completely up to you if you decide to only use script as `Source` of the script or separate your custom functionality between `Source` script and `Post-process` script. Sometimes you might need different `Source` scripts for different online sources and the same `Post-process` script and vice versa.
 
 ### Notifications <a id="notif"></a>
-RSS Guard allows you to configure behavior of desktop notifications. There is a number of events which can be configured:
+RSS Guard allows you to customize desktop notifications. There are a number of events which can be configured:
 * New (unread) articles fetched.
 * Fetching of articles is started.
 * Login OAuth tokens are refreshed.

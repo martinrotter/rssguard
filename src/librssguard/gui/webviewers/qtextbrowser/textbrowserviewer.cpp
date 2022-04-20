@@ -2,6 +2,7 @@
 
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
 
+#include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
@@ -15,9 +16,10 @@
 #include <QContextMenuEvent>
 #include <QFileIconProvider>
 #include <QScrollBar>
+#include <QTimer>
 
 TextBrowserViewer::TextBrowserViewer(QWidget* parent)
-  : QTextBrowser(parent), m_downloader(new Downloader(this)), m_reloadingWithResources(false) {
+  : QTextBrowser(parent), m_downloader(new Downloader(this)), m_document(new TextBrowserDocument(this)) {
   setAutoFillBackground(true);
   setFrameShape(QFrame::Shape::NoFrame);
   setFrameShadow(QFrame::Shadow::Plain);
@@ -25,24 +27,10 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setOpenLinks(false);
   viewport()->setAutoFillBackground(true);
 
+  setDocument(m_document.data());
+
   connect(this, &QTextBrowser::anchorClicked, this, &TextBrowserViewer::onAnchorClicked);
   connect(this, QOverload<const QUrl&>::of(&QTextBrowser::highlighted), this, &TextBrowserViewer::linkMouseHighlighted);
-}
-
-QVariant TextBrowserViewer::loadResource(int type, const QUrl& name) {
-  if (!m_reloadingWithResources) {
-    if (type == QTextDocument::ResourceType::ImageResource) {
-      m_resourcesForHtml.append(name);
-    }
-
-    return {};
-  }
-  else if (m_loadedResources.contains(name)) {
-    return QImage::fromData(m_loadedResources.value(name));
-  }
-  else {
-    return {};
-  }
 }
 
 QSize TextBrowserViewer::sizeHint() const {
@@ -222,21 +210,6 @@ void TextBrowserViewer::setUrl(const QUrl& url) {
   emit loadingFinished(!is_error);
 }
 
-void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
-  m_currentUrl = base_url;
-
-  if (!m_reloadingWithResources) {
-    m_resourcesForHtml.clear();
-  }
-
-  QTextBrowser::setHtml(html);
-
-  setZoomFactor(m_zoomFactor);
-
-  emit pageTitleChanged(documentTitle());
-  emit pageUrlChanged(base_url);
-}
-
 QString TextBrowserViewer::html() const {
   return QTextBrowser::toHtml();
 }
@@ -300,13 +273,28 @@ void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {
     m_actionReloadWithImages.reset(new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("view-refresh")),
                                                tr("Reload with images"),
                                                this));
+    m_actionOpenExternalBrowser.reset(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
+                                                  tr("Open in external browser"),
+                                                  this));
+    m_actionDownloadLink.reset(new QAction(qApp->icons()->fromTheme(QSL("download")), tr("Download"), this));
 
     connect(m_actionReloadWithImages.data(), &QAction::triggered, this, &TextBrowserViewer::reloadWithImages);
+    connect(m_actionOpenExternalBrowser.data(),
+            &QAction::triggered,
+            this,
+            &TextBrowserViewer::openLinkInExternalBrowser);
+    connect(m_actionDownloadLink.data(), &QAction::triggered, this, &TextBrowserViewer::downloadLink);
   }
 
   menu->addAction(m_actionReloadWithImages.data());
+  menu->addAction(m_actionOpenExternalBrowser.data());
+  menu->addAction(m_actionDownloadLink.data());
 
   auto anchor = anchorAt(event->pos());
+
+  m_lastContextMenuPos = event->pos();
+  m_actionOpenExternalBrowser.data()->setEnabled(!anchor.isEmpty());
+  m_actionDownloadLink.data()->setEnabled(!anchor.isEmpty());
 
   if (!anchor.isEmpty()) {
     QFileIconProvider icon_provider;
@@ -358,11 +346,11 @@ void TextBrowserViewer::wheelEvent(QWheelEvent* event) {
 }
 
 void TextBrowserViewer::reloadWithImages() {
-  m_reloadingWithResources = true;
-  m_loadedResources.clear();
+  m_document.data()->m_reloadingWithResources = true;
+  m_document.data()->m_loadedResources.clear();
 
-  for (const QUrl& url : m_resourcesForHtml) {
-    if (m_loadedResources.contains(url)) {
+  for (const QUrl& url : m_document.data()->m_resourcesForHtml) {
+    if (m_document.data()->m_loadedResources.contains(url)) {
       continue;
     }
 
@@ -374,13 +362,39 @@ void TextBrowserViewer::reloadWithImages() {
     loop.exec();
 
     if (m_downloader->lastOutputError() == QNetworkReply::NetworkError::NoError) {
-      m_loadedResources.insert(url, m_downloader->lastOutputData());
+      m_document.data()->m_loadedResources.insert(url, m_downloader->lastOutputData());
     }
   }
 
-  setHtml(html(), m_currentUrl);
+  auto scrolled = verticalScrollBar()->value();
 
-  m_reloadingWithResources = false;
+  setHtmlPrivate(html(), m_currentUrl);
+
+  verticalScrollBar()->setValue(scrolled);
+}
+
+void TextBrowserViewer::openLinkInExternalBrowser() {
+  auto link = anchorAt(m_lastContextMenuPos);
+
+  if (!link.isEmpty()) {
+    qApp->web()->openUrlInExternalBrowser(link);
+
+    if (qApp->settings()
+          ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
+          .toBool()) {
+      QTimer::singleShot(1000, qApp, []() {
+        qApp->mainForm()->display();
+      });
+    }
+  }
+}
+
+void TextBrowserViewer::downloadLink() {
+  auto link = anchorAt(m_lastContextMenuPos);
+
+  if (!link.isEmpty()) {
+    qApp->downloadManager()->download(link);
+  }
 }
 
 void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
@@ -392,38 +406,7 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
       qApp->web()->openUrlInExternalBrowser(url.toString());
     }
     else {
-      // User clicked some URL. Open it in external browser or download?
-      MsgBox box(qApp->mainFormWidget());
-
-      box.setText(tr("You clicked some link. You can download the link contents or open it in external web browser."));
-      box.setInformativeText(tr("What action do you want to take?"));
-      box.setDetailedText(url.toString());
-
-      QAbstractButton* btn_open = box.addButton(tr("Open in external browser"), QMessageBox::ButtonRole::ActionRole);
-      QAbstractButton* btn_download = box.addButton(tr("Download"), QMessageBox::ButtonRole::ActionRole);
-      QAbstractButton* btn_cancel = box.addButton(QMessageBox::StandardButton::Cancel);
-      bool always = false;
-
-      MsgBox::setCheckBox(&box, tr("Always open links in external browser."), &always);
-
-      box.setDefaultButton(QMessageBox::StandardButton::Cancel);
-      box.exec();
-
-      if (box.clickedButton() != box.button(QMessageBox::StandardButton::Cancel)) {
-        // Store selected checkbox value.
-        qApp->settings()->setValue(GROUP(Browser), Browser::OpenLinksInExternalBrowserRightAway, always);
-      }
-
-      if (box.clickedButton() == btn_open) {
-        qApp->web()->openUrlInExternalBrowser(url.toString());
-      }
-      else if (box.clickedButton() == btn_download) {
-        qApp->downloadManager()->download(url);
-      }
-
-      btn_download->deleteLater();
-      btn_open->deleteLater();
-      btn_cancel->deleteLater();
+      setUrl(url);
     }
   }
   else {
@@ -431,5 +414,46 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
                  QMessageBox::Warning,
                  tr("Incorrect link"),
                  tr("Selected hyperlink is invalid."));
+  }
+}
+
+void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
+  m_document.data()->m_reloadingWithResources = false;
+  m_document.data()->m_loadedResources.clear();
+  m_document.data()->m_resourcesForHtml.clear();
+
+  setHtmlPrivate(html, base_url);
+}
+
+void TextBrowserViewer::setHtmlPrivate(const QString& html, const QUrl& base_url) {
+  m_currentUrl = base_url;
+
+  if (!m_document.data()->m_reloadingWithResources) {
+    m_document.data()->m_resourcesForHtml.clear();
+  }
+
+  QTextBrowser::setHtml(html);
+
+  setZoomFactor(m_zoomFactor);
+
+  emit pageTitleChanged(documentTitle());
+  emit pageUrlChanged(base_url);
+}
+
+TextBrowserDocument::TextBrowserDocument(QObject* parent) : QTextDocument(parent), m_reloadingWithResources(false) {}
+
+QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
+  if (!m_reloadingWithResources) {
+    if (type == QTextDocument::ResourceType::ImageResource && !m_resourcesForHtml.contains(name)) {
+      m_resourcesForHtml.append(name);
+    }
+
+    return QTextDocument::loadResource(type, name);
+  }
+  else if (m_loadedResources.contains(name)) {
+    return QImage::fromData(m_loadedResources.value(name));
+  }
+  else {
+    return QTextDocument::loadResource(type, name);
   }
 }
