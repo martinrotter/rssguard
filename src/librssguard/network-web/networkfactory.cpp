@@ -9,6 +9,7 @@
 
 #include <QEventLoop>
 #include <QIcon>
+#include <QMetaEnum>
 #include <QPixmap>
 #include <QRegularExpression>
 #include <QTextDocument>
@@ -32,9 +33,9 @@ QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const 
       feed_link = QSL(URI_SCHEME_HTTP) + feed_link.mid(2);
     }
     else if (feed_link.startsWith(QL1C('/'))) {
-      feed_link = url.toString(QUrl::UrlFormattingOption::RemovePath |
-                               QUrl::UrlFormattingOption::RemoveQuery |
-                               QUrl::UrlFormattingOption::StripTrailingSlash) + feed_link;
+      feed_link = url.toString(QUrl::UrlFormattingOption::RemovePath | QUrl::UrlFormattingOption::RemoveQuery |
+                               QUrl::UrlFormattingOption::StripTrailingSlash) +
+                  feed_link;
     }
 
     feeds.append(feed_link);
@@ -43,7 +44,8 @@ QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const 
   return feeds;
 }
 
-QPair<QByteArray, QByteArray> NetworkFactory::generateBasicAuthHeader(const QString& username, const QString& password) {
+QPair<QByteArray, QByteArray> NetworkFactory::generateBasicAuthHeader(const QString& username,
+                                                                      const QString& password) {
   if (username.isEmpty()) {
     return QPair<QByteArray, QByteArray>(QByteArray(), QByteArray());
   }
@@ -132,16 +134,17 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
       //: Network status.
       return tr("content not found");
 
-    default:
+    default: {
+      QMetaEnum enumer = QMetaEnum::fromType<QNetworkReply::NetworkError>();
 
       //: Network status.
-      return tr("unknown error");
+      return tr("unknown error (%1)").arg(enumer.valueToKey(error_code));
+    }
   }
 }
 
 QString NetworkFactory::sanitizeUrl(const QString& url) {
-  return QString(url).replace(QRegularExpression(QSL("[^\\w\\-.~:\\/?#\\[\\]@!$&'()*+,;=% \\|]")),
-                              {});
+  return QString(url).replace(QRegularExpression(QSL("[^\\w\\-.~:\\/?#\\[\\]@!$&'()*+,;=% \\|]")), {});
 }
 
 QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QString, bool>>& urls,
@@ -169,7 +172,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
                                                false,
                                                {},
                                                {},
-                                               custom_proxy).m_networkError;
+                                               custom_proxy)
+                         .m_networkError;
 
       if (network_result == QNetworkReply::NetworkError::NoError) {
         QPixmap icon_pixmap;
@@ -198,9 +202,10 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
 
       const QString gs2_icon_service = QSL("https://t2.gstatic.com/faviconV2?"
                                            "client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&"
-                                           "url=%1").arg(host);
+                                           "url=%1")
+                                         .arg(host);
 
-      for (const QString& service : { ddg_icon_service, gs2_icon_service }) {
+      for (const QString& service : {ddg_icon_service, gs2_icon_service}) {
         network_result = performNetworkOperation(service,
                                                  timeout,
                                                  QByteArray(),
@@ -210,7 +215,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
                                                  false,
                                                  {},
                                                  {},
-                                                 custom_proxy).m_networkError;
+                                                 custom_proxy)
+                           .m_networkError;
 
         if (network_result == QNetworkReply::NetworkError::NoError) {
           QPixmap icon_pixmap;
