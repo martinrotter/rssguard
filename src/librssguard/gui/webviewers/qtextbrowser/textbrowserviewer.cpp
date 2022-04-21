@@ -73,7 +73,7 @@ QPair<QString, QUrl> TextBrowserViewer::prepareHtmlForMessage(const QList<Messag
 
     // Fixup all "img" tags.
     html += cnts.replace(img_tag_rgx,
-                         QSL("<a href=\"\\1\"><img width=\"%1\" src=\"\\1\" /></a>")
+                         QSL("<a href=\"\\1\"><img height=\"%1\" src=\"\\1\" /></a>")
                            .arg(forced_img_size <= 0 ? QString() : QString::number(forced_img_size)));
     html += pictures_html;
   }

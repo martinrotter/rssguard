@@ -321,7 +321,7 @@
        <item row="5" column="0">
         <widget class="QLabel" name="m_lblHeightImageAttachments">
          <property name="text">
-          <string>Image attachments height</string>
+          <string>Limit height of images</string>
          </property>
          <property name="buddy">
           <cstring>m_spinHeightImageAttachments</cstring>
