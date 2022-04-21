@@ -364,11 +364,11 @@ void TextBrowserViewer::reloadWithImages() {
     }
   }
 
-  auto scrolled = verticalScrollBar()->value();
+  auto scrolled = verticalScrollBarPosition();
 
   setHtmlPrivate(html(), m_currentUrl);
 
-  verticalScrollBar()->setValue(scrolled);
+  setVerticalScrollBarPosition(scrolled);
 }
 
 void TextBrowserViewer::openLinkInExternalBrowser() {
@@ -397,21 +397,17 @@ void TextBrowserViewer::downloadLink() {
 
 void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
   if (!url.isEmpty()) {
+    const QUrl resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
+
     bool open_externally_now =
       qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
 
     if (open_externally_now) {
-      qApp->web()->openUrlInExternalBrowser(url.toString());
+      qApp->web()->openUrlInExternalBrowser(resolved_url.toString());
     }
     else {
-      setUrl(url);
+      setUrl(resolved_url);
     }
-  }
-  else {
-    MsgBox::show(qApp->mainFormWidget(),
-                 QMessageBox::Warning,
-                 tr("Incorrect link"),
-                 tr("Selected hyperlink is invalid."));
   }
 }
 
@@ -456,12 +452,12 @@ QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
       m_resourcesForHtml.append(name);
     }
 
-    return QTextDocument::loadResource(type, name);
+    return {};
   }
   else if (m_loadedResources.contains(name)) {
     return QImage::fromData(m_loadedResources.value(name));
   }
   else {
-    return QTextDocument::loadResource(type, name);
+    return {};
   }
 }
